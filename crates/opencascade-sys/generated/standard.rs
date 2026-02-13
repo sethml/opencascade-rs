@@ -458,6 +458,20 @@ impl Failure {
 
 pub use crate::ffi::HandleStandardFailure;
 
+impl HandleStandardFailure {
+    /// Dereference this Handle to access the underlying Standard_Failure
+    pub fn get(&self) -> &crate::ffi::Standard_Failure {
+        crate::ffi::HandleStandardFailure_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Standard_Failure
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Standard_Failure> {
+        crate::ffi::HandleStandardFailure_get_mut(self)
+    }
+}
+
 // ========================
 // From Standard_Mutex.hxx
 // ========================
@@ -838,6 +852,20 @@ impl Type {
 }
 
 pub use crate::ffi::HandleStandardType;
+
+impl HandleStandardType {
+    /// Dereference this Handle to access the underlying Standard_Type
+    pub fn get(&self) -> &crate::ffi::Standard_Type {
+        crate::ffi::HandleStandardType_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Standard_Type
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Standard_Type> {
+        crate::ffi::HandleStandardType_get_mut(self)
+    }
+}
 
 // ========================
 // From Standard_TypeMismatch.hxx

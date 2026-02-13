@@ -971,6 +971,18 @@ impl Ellipse {
 pub use crate::ffi::HandleGeom2dEllipse;
 
 impl HandleGeom2dEllipse {
+    /// Dereference this Handle to access the underlying Geom2d_Ellipse
+    pub fn get(&self) -> &crate::ffi::Geom2d_Ellipse {
+        crate::ffi::HandleGeom2dEllipse_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Ellipse
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_Ellipse> {
+        crate::ffi::HandleGeom2dEllipse_get_mut(self)
+    }
+
     /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Conic>
     pub fn to_handle_conic(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dConic> {
         crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dConic(self)
@@ -1314,6 +1326,18 @@ impl TrimmedCurve {
 pub use crate::ffi::HandleGeom2dTrimmedCurve;
 
 impl HandleGeom2dTrimmedCurve {
+    /// Dereference this Handle to access the underlying Geom2d_TrimmedCurve
+    pub fn get(&self) -> &crate::ffi::Geom2d_TrimmedCurve {
+        crate::ffi::HandleGeom2dTrimmedCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_TrimmedCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_TrimmedCurve> {
+        crate::ffi::HandleGeom2dTrimmedCurve_get_mut(self)
+    }
+
     /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_BoundedCurve>
     pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBoundedCurve> {
         crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve(self)

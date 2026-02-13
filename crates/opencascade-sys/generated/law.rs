@@ -72,6 +72,16 @@ impl BSpFunc {
 pub use crate::ffi::HandleLawBSpFunc;
 
 impl HandleLawBSpFunc {
+    /// Dereference this Handle to access the underlying Law_BSpFunc
+    pub fn get(&self) -> &crate::ffi::Law_BSpFunc {
+        crate::ffi::HandleLawBSpFunc_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Law_BSpFunc
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_BSpFunc> {
+        crate::ffi::HandleLawBSpFunc_get_mut(self)
+    }
+
     /// Upcast Handle<Law_BSpFunc> to Handle<Law_Function>
     pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
         crate::ffi::HandleLawBSpFunc_to_HandleLawFunction(self)
@@ -194,6 +204,16 @@ impl Interpol {
 pub use crate::ffi::HandleLawInterpol;
 
 impl HandleLawInterpol {
+    /// Dereference this Handle to access the underlying Law_Interpol
+    pub fn get(&self) -> &crate::ffi::Law_Interpol {
+        crate::ffi::HandleLawInterpol_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Law_Interpol
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_Interpol> {
+        crate::ffi::HandleLawInterpol_get_mut(self)
+    }
+
     /// Upcast Handle<Law_Interpol> to Handle<Law_BSpFunc>
     pub fn to_handle_b_sp_func(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpFunc> {
         crate::ffi::HandleLawInterpol_to_HandleLawBSpFunc(self)

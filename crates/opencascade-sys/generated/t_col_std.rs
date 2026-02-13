@@ -54,6 +54,20 @@ impl HArray1OfBoolean {
 
 pub use crate::ffi::HandleTColStdHArray1OfBoolean;
 
+impl HandleTColStdHArray1OfBoolean {
+    /// Dereference this Handle to access the underlying TColStd_HArray1OfBoolean
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfBoolean {
+        crate::ffi::HandleTColStdHArray1OfBoolean_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfBoolean
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfBoolean> {
+        crate::ffi::HandleTColStdHArray1OfBoolean_get_mut(self)
+    }
+}
+
 // ========================
 // From TColStd_HArray1OfInteger.hxx
 // ========================
@@ -102,6 +116,20 @@ impl HArray1OfInteger {
 
 pub use crate::ffi::HandleTColStdHArray1OfInteger;
 
+impl HandleTColStdHArray1OfInteger {
+    /// Dereference this Handle to access the underlying TColStd_HArray1OfInteger
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfInteger {
+        crate::ffi::HandleTColStdHArray1OfInteger_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfInteger
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfInteger> {
+        crate::ffi::HandleTColStdHArray1OfInteger_get_mut(self)
+    }
+}
+
 // ========================
 // From TColStd_HArray1OfReal.hxx
 // ========================
@@ -148,6 +176,20 @@ impl HArray1OfReal {
 
 pub use crate::ffi::HandleTColStdHArray1OfReal;
 
+impl HandleTColStdHArray1OfReal {
+    /// Dereference this Handle to access the underlying TColStd_HArray1OfReal
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfReal {
+        crate::ffi::HandleTColStdHArray1OfReal_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfReal
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfReal> {
+        crate::ffi::HandleTColStdHArray1OfReal_get_mut(self)
+    }
+}
+
 // ========================
 // From TColStd_HArray1OfTransient.hxx
 // ========================
@@ -182,6 +224,20 @@ impl HArray1OfTransient {
 }
 
 pub use crate::ffi::HandleTColStdHArray1OfTransient;
+
+impl HandleTColStdHArray1OfTransient {
+    /// Dereference this Handle to access the underlying TColStd_HArray1OfTransient
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfTransient {
+        crate::ffi::HandleTColStdHArray1OfTransient_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfTransient
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfTransient> {
+        crate::ffi::HandleTColStdHArray1OfTransient_get_mut(self)
+    }
+}
 
 // ========================
 // From TColStd_HArray2OfReal.hxx
@@ -229,6 +285,20 @@ impl HArray2OfReal {
 
 pub use crate::ffi::HandleTColStdHArray2OfReal;
 
+impl HandleTColStdHArray2OfReal {
+    /// Dereference this Handle to access the underlying TColStd_HArray2OfReal
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray2OfReal {
+        crate::ffi::HandleTColStdHArray2OfReal_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray2OfReal
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray2OfReal> {
+        crate::ffi::HandleTColStdHArray2OfReal_get_mut(self)
+    }
+}
+
 // ========================
 // From TColStd_HSequenceOfHExtendedString.hxx
 // ========================
@@ -259,6 +329,20 @@ impl HSequenceOfHExtendedString {
 }
 
 pub use crate::ffi::HandleTColStdHSequenceOfHExtendedString;
+
+impl HandleTColStdHSequenceOfHExtendedString {
+    /// Dereference this Handle to access the underlying TColStd_HSequenceOfHExtendedString
+    pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfHExtendedString {
+        crate::ffi::HandleTColStdHSequenceOfHExtendedString_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfHExtendedString
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfHExtendedString> {
+        crate::ffi::HandleTColStdHSequenceOfHExtendedString_get_mut(self)
+    }
+}
 
 // ========================
 // From TColStd_HSequenceOfInteger.hxx
@@ -291,6 +375,20 @@ impl HSequenceOfInteger {
 
 pub use crate::ffi::HandleTColStdHSequenceOfInteger;
 
+impl HandleTColStdHSequenceOfInteger {
+    /// Dereference this Handle to access the underlying TColStd_HSequenceOfInteger
+    pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfInteger {
+        crate::ffi::HandleTColStdHSequenceOfInteger_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfInteger
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfInteger> {
+        crate::ffi::HandleTColStdHSequenceOfInteger_get_mut(self)
+    }
+}
+
 // ========================
 // From TColStd_HSequenceOfReal.hxx
 // ========================
@@ -322,6 +420,20 @@ impl HSequenceOfReal {
 
 pub use crate::ffi::HandleTColStdHSequenceOfReal;
 
+impl HandleTColStdHSequenceOfReal {
+    /// Dereference this Handle to access the underlying TColStd_HSequenceOfReal
+    pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfReal {
+        crate::ffi::HandleTColStdHSequenceOfReal_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfReal
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfReal> {
+        crate::ffi::HandleTColStdHSequenceOfReal_get_mut(self)
+    }
+}
+
 // ========================
 // From TColStd_HSequenceOfTransient.hxx
 // ========================
@@ -352,6 +464,20 @@ impl HSequenceOfTransient {
 }
 
 pub use crate::ffi::HandleTColStdHSequenceOfTransient;
+
+impl HandleTColStdHSequenceOfTransient {
+    /// Dereference this Handle to access the underlying TColStd_HSequenceOfTransient
+    pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfTransient {
+        crate::ffi::HandleTColStdHSequenceOfTransient_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfTransient
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfTransient> {
+        crate::ffi::HandleTColStdHSequenceOfTransient_get_mut(self)
+    }
+}
 
 // ========================
 // From TColStd_PackedMapOfInteger.hxx

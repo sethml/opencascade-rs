@@ -320,6 +320,20 @@ impl PipeShell {
 
 pub use crate::ffi::HandleBRepFillPipeShell;
 
+impl HandleBRepFillPipeShell {
+    /// Dereference this Handle to access the underlying BRepFill_PipeShell
+    pub fn get(&self) -> &crate::ffi::BRepFill_PipeShell {
+        crate::ffi::HandleBRepFillPipeShell_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepFill_PipeShell
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepFill_PipeShell> {
+        crate::ffi::HandleBRepFillPipeShell_get_mut(self)
+    }
+}
+
 // ========================
 // From BRepFill_Section.hxx
 // ========================

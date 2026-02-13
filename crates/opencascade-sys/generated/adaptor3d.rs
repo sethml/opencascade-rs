@@ -122,6 +122,20 @@ impl Curve {
 
 pub use crate::ffi::HandleAdaptor3dCurve;
 
+impl HandleAdaptor3dCurve {
+    /// Dereference this Handle to access the underlying Adaptor3d_Curve
+    pub fn get(&self) -> &crate::ffi::Adaptor3d_Curve {
+        crate::ffi::HandleAdaptor3dCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Adaptor3d_Curve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Adaptor3d_Curve> {
+        crate::ffi::HandleAdaptor3dCurve_get_mut(self)
+    }
+}
+
 // ========================
 // From Adaptor3d_CurveOnSurface.hxx
 // ========================
@@ -406,6 +420,20 @@ impl Surface {
 }
 
 pub use crate::ffi::HandleAdaptor3dSurface;
+
+impl HandleAdaptor3dSurface {
+    /// Dereference this Handle to access the underlying Adaptor3d_Surface
+    pub fn get(&self) -> &crate::ffi::Adaptor3d_Surface {
+        crate::ffi::HandleAdaptor3dSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Adaptor3d_Surface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Adaptor3d_Surface> {
+        crate::ffi::HandleAdaptor3dSurface_get_mut(self)
+    }
+}
 
 // ========================
 // Additional type re-exports

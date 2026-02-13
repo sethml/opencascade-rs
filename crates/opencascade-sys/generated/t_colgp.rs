@@ -71,6 +71,20 @@ impl HArray1OfCirc2d {
 
 pub use crate::ffi::HandleTColgpHArray1OfCirc2d;
 
+impl HandleTColgpHArray1OfCirc2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfCirc2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfCirc2d {
+        crate::ffi::HandleTColgpHArray1OfCirc2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfCirc2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfCirc2d> {
+        crate::ffi::HandleTColgpHArray1OfCirc2d_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray1OfDir.hxx
 // ========================
@@ -120,6 +134,20 @@ impl HArray1OfDir {
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfDir;
+
+impl HandleTColgpHArray1OfDir {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfDir
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfDir {
+        crate::ffi::HandleTColgpHArray1OfDir_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfDir
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfDir> {
+        crate::ffi::HandleTColgpHArray1OfDir_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HArray1OfDir2d.hxx
@@ -171,6 +199,20 @@ impl HArray1OfDir2d {
 
 pub use crate::ffi::HandleTColgpHArray1OfDir2d;
 
+impl HandleTColgpHArray1OfDir2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfDir2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfDir2d {
+        crate::ffi::HandleTColgpHArray1OfDir2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfDir2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfDir2d> {
+        crate::ffi::HandleTColgpHArray1OfDir2d_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray1OfLin2d.hxx
 // ========================
@@ -220,6 +262,20 @@ impl HArray1OfLin2d {
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfLin2d;
+
+impl HandleTColgpHArray1OfLin2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfLin2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfLin2d {
+        crate::ffi::HandleTColgpHArray1OfLin2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfLin2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfLin2d> {
+        crate::ffi::HandleTColgpHArray1OfLin2d_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HArray1OfPnt.hxx
@@ -271,6 +327,20 @@ impl HArray1OfPnt {
 
 pub use crate::ffi::HandleTColgpHArray1OfPnt;
 
+impl HandleTColgpHArray1OfPnt {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfPnt {
+        crate::ffi::HandleTColgpHArray1OfPnt_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfPnt
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfPnt> {
+        crate::ffi::HandleTColgpHArray1OfPnt_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray1OfPnt2d.hxx
 // ========================
@@ -320,6 +390,20 @@ impl HArray1OfPnt2d {
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfPnt2d;
+
+impl HandleTColgpHArray1OfPnt2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfPnt2d {
+        crate::ffi::HandleTColgpHArray1OfPnt2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfPnt2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfPnt2d> {
+        crate::ffi::HandleTColgpHArray1OfPnt2d_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HArray1OfVec.hxx
@@ -371,6 +455,20 @@ impl HArray1OfVec {
 
 pub use crate::ffi::HandleTColgpHArray1OfVec;
 
+impl HandleTColgpHArray1OfVec {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfVec
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfVec {
+        crate::ffi::HandleTColgpHArray1OfVec_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfVec
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfVec> {
+        crate::ffi::HandleTColgpHArray1OfVec_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray1OfVec2d.hxx
 // ========================
@@ -420,6 +518,20 @@ impl HArray1OfVec2d {
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfVec2d;
+
+impl HandleTColgpHArray1OfVec2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfVec2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfVec2d {
+        crate::ffi::HandleTColgpHArray1OfVec2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfVec2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfVec2d> {
+        crate::ffi::HandleTColgpHArray1OfVec2d_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HArray1OfXY.hxx
@@ -471,6 +583,20 @@ impl HArray1OfXY {
 
 pub use crate::ffi::HandleTColgpHArray1OfXY;
 
+impl HandleTColgpHArray1OfXY {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfXY
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfXY {
+        crate::ffi::HandleTColgpHArray1OfXY_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfXY
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfXY> {
+        crate::ffi::HandleTColgpHArray1OfXY_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray1OfXYZ.hxx
 // ========================
@@ -521,6 +647,20 @@ impl HArray1OfXYZ {
 
 pub use crate::ffi::HandleTColgpHArray1OfXYZ;
 
+impl HandleTColgpHArray1OfXYZ {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfXYZ
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfXYZ {
+        crate::ffi::HandleTColgpHArray1OfXYZ_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfXYZ
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfXYZ> {
+        crate::ffi::HandleTColgpHArray1OfXYZ_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray2OfCirc2d.hxx
 // ========================
@@ -569,6 +709,20 @@ impl HArray2OfCirc2d {
 
 pub use crate::ffi::HandleTColgpHArray2OfCirc2d;
 
+impl HandleTColgpHArray2OfCirc2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfCirc2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfCirc2d {
+        crate::ffi::HandleTColgpHArray2OfCirc2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfCirc2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfCirc2d> {
+        crate::ffi::HandleTColgpHArray2OfCirc2d_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray2OfDir.hxx
 // ========================
@@ -614,6 +768,20 @@ impl HArray2OfDir {
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfDir;
+
+impl HandleTColgpHArray2OfDir {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfDir
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfDir {
+        crate::ffi::HandleTColgpHArray2OfDir_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfDir
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfDir> {
+        crate::ffi::HandleTColgpHArray2OfDir_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HArray2OfDir2d.hxx
@@ -661,6 +829,20 @@ impl HArray2OfDir2d {
 
 pub use crate::ffi::HandleTColgpHArray2OfDir2d;
 
+impl HandleTColgpHArray2OfDir2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfDir2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfDir2d {
+        crate::ffi::HandleTColgpHArray2OfDir2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfDir2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfDir2d> {
+        crate::ffi::HandleTColgpHArray2OfDir2d_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray2OfLin2d.hxx
 // ========================
@@ -706,6 +888,20 @@ impl HArray2OfLin2d {
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfLin2d;
+
+impl HandleTColgpHArray2OfLin2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfLin2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfLin2d {
+        crate::ffi::HandleTColgpHArray2OfLin2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfLin2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfLin2d> {
+        crate::ffi::HandleTColgpHArray2OfLin2d_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HArray2OfPnt.hxx
@@ -753,6 +949,20 @@ impl HArray2OfPnt {
 
 pub use crate::ffi::HandleTColgpHArray2OfPnt;
 
+impl HandleTColgpHArray2OfPnt {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfPnt {
+        crate::ffi::HandleTColgpHArray2OfPnt_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfPnt
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfPnt> {
+        crate::ffi::HandleTColgpHArray2OfPnt_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray2OfPnt2d.hxx
 // ========================
@@ -798,6 +1008,20 @@ impl HArray2OfPnt2d {
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfPnt2d;
+
+impl HandleTColgpHArray2OfPnt2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfPnt2d {
+        crate::ffi::HandleTColgpHArray2OfPnt2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfPnt2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfPnt2d> {
+        crate::ffi::HandleTColgpHArray2OfPnt2d_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HArray2OfVec.hxx
@@ -845,6 +1069,20 @@ impl HArray2OfVec {
 
 pub use crate::ffi::HandleTColgpHArray2OfVec;
 
+impl HandleTColgpHArray2OfVec {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfVec
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfVec {
+        crate::ffi::HandleTColgpHArray2OfVec_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfVec
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfVec> {
+        crate::ffi::HandleTColgpHArray2OfVec_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray2OfVec2d.hxx
 // ========================
@@ -890,6 +1128,20 @@ impl HArray2OfVec2d {
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfVec2d;
+
+impl HandleTColgpHArray2OfVec2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfVec2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfVec2d {
+        crate::ffi::HandleTColgpHArray2OfVec2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfVec2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfVec2d> {
+        crate::ffi::HandleTColgpHArray2OfVec2d_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HArray2OfXY.hxx
@@ -937,6 +1189,20 @@ impl HArray2OfXY {
 
 pub use crate::ffi::HandleTColgpHArray2OfXY;
 
+impl HandleTColgpHArray2OfXY {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfXY
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfXY {
+        crate::ffi::HandleTColgpHArray2OfXY_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfXY
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfXY> {
+        crate::ffi::HandleTColgpHArray2OfXY_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HArray2OfXYZ.hxx
 // ========================
@@ -983,6 +1249,20 @@ impl HArray2OfXYZ {
 
 pub use crate::ffi::HandleTColgpHArray2OfXYZ;
 
+impl HandleTColgpHArray2OfXYZ {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfXYZ
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfXYZ {
+        crate::ffi::HandleTColgpHArray2OfXYZ_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfXYZ
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfXYZ> {
+        crate::ffi::HandleTColgpHArray2OfXYZ_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HSequenceOfDir.hxx
 // ========================
@@ -1011,6 +1291,20 @@ impl HSequenceOfDir {
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfDir;
+
+impl HandleTColgpHSequenceOfDir {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfDir {
+        crate::ffi::HandleTColgpHSequenceOfDir_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfDir
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfDir> {
+        crate::ffi::HandleTColgpHSequenceOfDir_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HSequenceOfDir2d.hxx
@@ -1043,6 +1337,20 @@ impl HSequenceOfDir2d {
 
 pub use crate::ffi::HandleTColgpHSequenceOfDir2d;
 
+impl HandleTColgpHSequenceOfDir2d {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfDir2d {
+        crate::ffi::HandleTColgpHSequenceOfDir2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfDir2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfDir2d> {
+        crate::ffi::HandleTColgpHSequenceOfDir2d_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HSequenceOfPnt.hxx
 // ========================
@@ -1071,6 +1379,20 @@ impl HSequenceOfPnt {
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfPnt;
+
+impl HandleTColgpHSequenceOfPnt {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfPnt {
+        crate::ffi::HandleTColgpHSequenceOfPnt_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfPnt
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfPnt> {
+        crate::ffi::HandleTColgpHSequenceOfPnt_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HSequenceOfPnt2d.hxx
@@ -1103,6 +1425,20 @@ impl HSequenceOfPnt2d {
 
 pub use crate::ffi::HandleTColgpHSequenceOfPnt2d;
 
+impl HandleTColgpHSequenceOfPnt2d {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfPnt2d {
+        crate::ffi::HandleTColgpHSequenceOfPnt2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfPnt2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfPnt2d> {
+        crate::ffi::HandleTColgpHSequenceOfPnt2d_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HSequenceOfVec.hxx
 // ========================
@@ -1131,6 +1467,20 @@ impl HSequenceOfVec {
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfVec;
+
+impl HandleTColgpHSequenceOfVec {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfVec {
+        crate::ffi::HandleTColgpHSequenceOfVec_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfVec
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfVec> {
+        crate::ffi::HandleTColgpHSequenceOfVec_get_mut(self)
+    }
+}
 
 // ========================
 // From TColgp_HSequenceOfVec2d.hxx
@@ -1163,6 +1513,20 @@ impl HSequenceOfVec2d {
 
 pub use crate::ffi::HandleTColgpHSequenceOfVec2d;
 
+impl HandleTColgpHSequenceOfVec2d {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfVec2d {
+        crate::ffi::HandleTColgpHSequenceOfVec2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfVec2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfVec2d> {
+        crate::ffi::HandleTColgpHSequenceOfVec2d_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HSequenceOfXY.hxx
 // ========================
@@ -1192,6 +1556,20 @@ impl HSequenceOfXY {
 
 pub use crate::ffi::HandleTColgpHSequenceOfXY;
 
+impl HandleTColgpHSequenceOfXY {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfXY
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfXY {
+        crate::ffi::HandleTColgpHSequenceOfXY_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfXY
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfXY> {
+        crate::ffi::HandleTColgpHSequenceOfXY_get_mut(self)
+    }
+}
+
 // ========================
 // From TColgp_HSequenceOfXYZ.hxx
 // ========================
@@ -1220,6 +1598,20 @@ impl HSequenceOfXYZ {
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfXYZ;
+
+impl HandleTColgpHSequenceOfXYZ {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfXYZ
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfXYZ {
+        crate::ffi::HandleTColgpHSequenceOfXYZ_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfXYZ
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfXYZ> {
+        crate::ffi::HandleTColgpHSequenceOfXYZ_get_mut(self)
+    }
+}
 
 // ========================
 // Additional type re-exports

@@ -138,6 +138,20 @@ impl HArray1OfTriangle {
 
 pub use crate::ffi::HandlePolyHArray1OfTriangle;
 
+impl HandlePolyHArray1OfTriangle {
+    /// Dereference this Handle to access the underlying Poly_HArray1OfTriangle
+    pub fn get(&self) -> &crate::ffi::Poly_HArray1OfTriangle {
+        crate::ffi::HandlePolyHArray1OfTriangle_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Poly_HArray1OfTriangle
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_HArray1OfTriangle> {
+        crate::ffi::HandlePolyHArray1OfTriangle_get_mut(self)
+    }
+}
+
 // ========================
 // From Poly_Polygon2D.hxx
 // ========================
@@ -172,6 +186,20 @@ impl Polygon2D {
 }
 
 pub use crate::ffi::HandlePolyPolygon2D;
+
+impl HandlePolyPolygon2D {
+    /// Dereference this Handle to access the underlying Poly_Polygon2D
+    pub fn get(&self) -> &crate::ffi::Poly_Polygon2D {
+        crate::ffi::HandlePolyPolygon2D_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Poly_Polygon2D
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_Polygon2D> {
+        crate::ffi::HandlePolyPolygon2D_get_mut(self)
+    }
+}
 
 // ========================
 // From Poly_Polygon3D.hxx
@@ -226,6 +254,20 @@ impl Polygon3D {
 }
 
 pub use crate::ffi::HandlePolyPolygon3D;
+
+impl HandlePolyPolygon3D {
+    /// Dereference this Handle to access the underlying Poly_Polygon3D
+    pub fn get(&self) -> &crate::ffi::Poly_Polygon3D {
+        crate::ffi::HandlePolyPolygon3D_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Poly_Polygon3D
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_Polygon3D> {
+        crate::ffi::HandlePolyPolygon3D_get_mut(self)
+    }
+}
 
 // ========================
 // From Poly_PolygonOnTriangulation.hxx
@@ -295,6 +337,20 @@ impl PolygonOnTriangulation {
 }
 
 pub use crate::ffi::HandlePolyPolygonOnTriangulation;
+
+impl HandlePolyPolygonOnTriangulation {
+    /// Dereference this Handle to access the underlying Poly_PolygonOnTriangulation
+    pub fn get(&self) -> &crate::ffi::Poly_PolygonOnTriangulation {
+        crate::ffi::HandlePolyPolygonOnTriangulation_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Poly_PolygonOnTriangulation
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_PolygonOnTriangulation> {
+        crate::ffi::HandlePolyPolygonOnTriangulation_get_mut(self)
+    }
+}
 
 // ========================
 // From Poly_Triangle.hxx
@@ -479,6 +535,20 @@ impl Triangulation {
 }
 
 pub use crate::ffi::HandlePolyTriangulation;
+
+impl HandlePolyTriangulation {
+    /// Dereference this Handle to access the underlying Poly_Triangulation
+    pub fn get(&self) -> &crate::ffi::Poly_Triangulation {
+        crate::ffi::HandlePolyTriangulation_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Poly_Triangulation
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_Triangulation> {
+        crate::ffi::HandlePolyTriangulation_get_mut(self)
+    }
+}
 
 // ========================
 // Additional type re-exports

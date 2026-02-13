@@ -1574,6 +1574,20 @@ impl Sewing {
 
 pub use crate::ffi::HandleBRepBuilderAPISewing;
 
+impl HandleBRepBuilderAPISewing {
+    /// Dereference this Handle to access the underlying BRepBuilderAPI_Sewing
+    pub fn get(&self) -> &crate::ffi::BRepBuilderAPI_Sewing {
+        crate::ffi::HandleBRepBuilderAPISewing_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepBuilderAPI_Sewing
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepBuilderAPI_Sewing> {
+        crate::ffi::HandleBRepBuilderAPISewing_get_mut(self)
+    }
+}
+
 // ========================
 // From BRepBuilderAPI_Transform.hxx
 // ========================

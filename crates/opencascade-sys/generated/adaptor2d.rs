@@ -112,3 +112,17 @@ impl Curve2d {
 }
 
 pub use crate::ffi::HandleAdaptor2dCurve2d;
+
+impl HandleAdaptor2dCurve2d {
+    /// Dereference this Handle to access the underlying Adaptor2d_Curve2d
+    pub fn get(&self) -> &crate::ffi::Adaptor2d_Curve2d {
+        crate::ffi::HandleAdaptor2dCurve2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Adaptor2d_Curve2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Adaptor2d_Curve2d> {
+        crate::ffi::HandleAdaptor2dCurve2d_get_mut(self)
+    }
+}

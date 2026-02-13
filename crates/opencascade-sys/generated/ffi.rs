@@ -12217,6 +12217,14 @@ mod ffi {
         fn BRepBuilderAPI_Sewing_to_handle(
             obj: UniquePtr<BRepBuilderAPI_Sewing>,
         ) -> UniquePtr<HandleBRepBuilderAPISewing>;
+        /// Dereference Handle to get &BRepBuilderAPI_Sewing
+        fn HandleBRepBuilderAPISewing_get(
+            handle: &HandleBRepBuilderAPISewing,
+        ) -> &BRepBuilderAPI_Sewing;
+        /// Dereference Handle to get Pin<&mut BRepBuilderAPI_Sewing>
+        fn HandleBRepBuilderAPISewing_get_mut(
+            handle: Pin<&mut HandleBRepBuilderAPISewing>,
+        ) -> Pin<&mut BRepBuilderAPI_Sewing>;
         /// ======================== BRepBuilderAPI_Transform ========================
         /// **Source:** `BRepBuilderAPI_Transform.hxx`:40 - `BRepBuilderAPI_Transform`
         ///
@@ -18222,6 +18230,14 @@ mod ffi {
         fn TopTools_HSequenceOfShape_to_handle(
             obj: UniquePtr<TopTools_HSequenceOfShape>,
         ) -> UniquePtr<HandleTopToolsHSequenceOfShape>;
+        /// Dereference Handle to get &TopTools_HSequenceOfShape
+        fn HandleTopToolsHSequenceOfShape_get(
+            handle: &HandleTopToolsHSequenceOfShape,
+        ) -> &TopTools_HSequenceOfShape;
+        /// Dereference Handle to get Pin<&mut TopTools_HSequenceOfShape>
+        fn HandleTopToolsHSequenceOfShape_get_mut(
+            handle: Pin<&mut HandleTopToolsHSequenceOfShape>,
+        ) -> Pin<&mut TopTools_HSequenceOfShape>;
         /// ======================== Geom_Geometry ========================
         /// **Source:** `Geom_Geometry.hxx`:51 - `Geom_Geometry`
         ///
@@ -20053,6 +20069,12 @@ mod ffi {
         fn Geom_BezierCurve_to_handle(
             obj: UniquePtr<Geom_BezierCurve>,
         ) -> UniquePtr<HandleGeomBezierCurve>;
+        /// Dereference Handle to get &Geom_BezierCurve
+        fn HandleGeomBezierCurve_get(handle: &HandleGeomBezierCurve) -> &Geom_BezierCurve;
+        /// Dereference Handle to get Pin<&mut Geom_BezierCurve>
+        fn HandleGeomBezierCurve_get_mut(
+            handle: Pin<&mut HandleGeomBezierCurve>,
+        ) -> Pin<&mut Geom_BezierCurve>;
         /// Upcast Handle<Geom_BezierCurve> to Handle<Geom_BoundedCurve>
         fn HandleGeomBezierCurve_to_HandleGeomBoundedCurve(
             self_: &HandleGeomBezierCurve,
@@ -20735,6 +20757,12 @@ mod ffi {
         fn Geom_BezierSurface_to_handle(
             obj: UniquePtr<Geom_BezierSurface>,
         ) -> UniquePtr<HandleGeomBezierSurface>;
+        /// Dereference Handle to get &Geom_BezierSurface
+        fn HandleGeomBezierSurface_get(handle: &HandleGeomBezierSurface) -> &Geom_BezierSurface;
+        /// Dereference Handle to get Pin<&mut Geom_BezierSurface>
+        fn HandleGeomBezierSurface_get_mut(
+            handle: Pin<&mut HandleGeomBezierSurface>,
+        ) -> Pin<&mut Geom_BezierSurface>;
         /// Upcast Handle<Geom_BezierSurface> to Handle<Geom_BoundedSurface>
         fn HandleGeomBezierSurface_to_HandleGeomBoundedSurface(
             self_: &HandleGeomBezierSurface,
@@ -21655,6 +21683,12 @@ mod ffi {
         fn Geom_BSplineCurve_to_handle(
             obj: UniquePtr<Geom_BSplineCurve>,
         ) -> UniquePtr<HandleGeomBSplineCurve>;
+        /// Dereference Handle to get &Geom_BSplineCurve
+        fn HandleGeomBSplineCurve_get(handle: &HandleGeomBSplineCurve) -> &Geom_BSplineCurve;
+        /// Dereference Handle to get Pin<&mut Geom_BSplineCurve>
+        fn HandleGeomBSplineCurve_get_mut(
+            handle: Pin<&mut HandleGeomBSplineCurve>,
+        ) -> Pin<&mut Geom_BSplineCurve>;
         /// Upcast Handle<Geom_BSplineCurve> to Handle<Geom_BoundedCurve>
         fn HandleGeomBSplineCurve_to_HandleGeomBoundedCurve(
             self_: &HandleGeomBSplineCurve,
@@ -23079,6 +23113,12 @@ mod ffi {
         fn Geom_BSplineSurface_to_handle(
             obj: UniquePtr<Geom_BSplineSurface>,
         ) -> UniquePtr<HandleGeomBSplineSurface>;
+        /// Dereference Handle to get &Geom_BSplineSurface
+        fn HandleGeomBSplineSurface_get(handle: &HandleGeomBSplineSurface) -> &Geom_BSplineSurface;
+        /// Dereference Handle to get Pin<&mut Geom_BSplineSurface>
+        fn HandleGeomBSplineSurface_get_mut(
+            handle: Pin<&mut HandleGeomBSplineSurface>,
+        ) -> Pin<&mut Geom_BSplineSurface>;
         /// Upcast Handle<Geom_BSplineSurface> to Handle<Geom_BoundedSurface>
         fn HandleGeomBSplineSurface_to_HandleGeomBoundedSurface(
             self_: &HandleGeomBSplineSurface,
@@ -23490,6 +23530,14 @@ mod ffi {
         fn Geom_CylindricalSurface_to_handle(
             obj: UniquePtr<Geom_CylindricalSurface>,
         ) -> UniquePtr<HandleGeomCylindricalSurface>;
+        /// Dereference Handle to get &Geom_CylindricalSurface
+        fn HandleGeomCylindricalSurface_get(
+            handle: &HandleGeomCylindricalSurface,
+        ) -> &Geom_CylindricalSurface;
+        /// Dereference Handle to get Pin<&mut Geom_CylindricalSurface>
+        fn HandleGeomCylindricalSurface_get_mut(
+            handle: Pin<&mut HandleGeomCylindricalSurface>,
+        ) -> Pin<&mut Geom_CylindricalSurface>;
         /// Upcast Handle<Geom_CylindricalSurface> to Handle<Geom_ElementarySurface>
         fn HandleGeomCylindricalSurface_to_HandleGeomElementarySurface(
             self_: &HandleGeomCylindricalSurface,
@@ -23873,6 +23921,10 @@ mod ffi {
         fn Geom_Plane_as_Geom_Surface_mut(self_: Pin<&mut Geom_Plane>) -> Pin<&mut Geom_Surface>;
         /// Wrap Geom_Plane in a Handle
         fn Geom_Plane_to_handle(obj: UniquePtr<Geom_Plane>) -> UniquePtr<HandleGeomPlane>;
+        /// Dereference Handle to get &Geom_Plane
+        fn HandleGeomPlane_get(handle: &HandleGeomPlane) -> &Geom_Plane;
+        /// Dereference Handle to get Pin<&mut Geom_Plane>
+        fn HandleGeomPlane_get_mut(handle: Pin<&mut HandleGeomPlane>) -> Pin<&mut Geom_Plane>;
         /// Upcast Handle<Geom_Plane> to Handle<Geom_ElementarySurface>
         fn HandleGeomPlane_to_HandleGeomElementarySurface(
             self_: &HandleGeomPlane,
@@ -24241,6 +24293,12 @@ mod ffi {
         fn Geom_TrimmedCurve_to_handle(
             obj: UniquePtr<Geom_TrimmedCurve>,
         ) -> UniquePtr<HandleGeomTrimmedCurve>;
+        /// Dereference Handle to get &Geom_TrimmedCurve
+        fn HandleGeomTrimmedCurve_get(handle: &HandleGeomTrimmedCurve) -> &Geom_TrimmedCurve;
+        /// Dereference Handle to get Pin<&mut Geom_TrimmedCurve>
+        fn HandleGeomTrimmedCurve_get_mut(
+            handle: Pin<&mut HandleGeomTrimmedCurve>,
+        ) -> Pin<&mut Geom_TrimmedCurve>;
         /// Upcast Handle<Geom_TrimmedCurve> to Handle<Geom_BoundedCurve>
         fn HandleGeomTrimmedCurve_to_HandleGeomBoundedCurve(
             self_: &HandleGeomTrimmedCurve,
@@ -25377,6 +25435,12 @@ mod ffi {
         fn Geom2d_Ellipse_to_handle(
             obj: UniquePtr<Geom2d_Ellipse>,
         ) -> UniquePtr<HandleGeom2dEllipse>;
+        /// Dereference Handle to get &Geom2d_Ellipse
+        fn HandleGeom2dEllipse_get(handle: &HandleGeom2dEllipse) -> &Geom2d_Ellipse;
+        /// Dereference Handle to get Pin<&mut Geom2d_Ellipse>
+        fn HandleGeom2dEllipse_get_mut(
+            handle: Pin<&mut HandleGeom2dEllipse>,
+        ) -> Pin<&mut Geom2d_Ellipse>;
         /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Conic>
         fn HandleGeom2dEllipse_to_HandleGeom2dConic(
             self_: &HandleGeom2dEllipse,
@@ -25766,6 +25830,12 @@ mod ffi {
         fn Geom2d_TrimmedCurve_to_handle(
             obj: UniquePtr<Geom2d_TrimmedCurve>,
         ) -> UniquePtr<HandleGeom2dTrimmedCurve>;
+        /// Dereference Handle to get &Geom2d_TrimmedCurve
+        fn HandleGeom2dTrimmedCurve_get(handle: &HandleGeom2dTrimmedCurve) -> &Geom2d_TrimmedCurve;
+        /// Dereference Handle to get Pin<&mut Geom2d_TrimmedCurve>
+        fn HandleGeom2dTrimmedCurve_get_mut(
+            handle: Pin<&mut HandleGeom2dTrimmedCurve>,
+        ) -> Pin<&mut Geom2d_TrimmedCurve>;
         /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_BoundedCurve>
         fn HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve(
             self_: &HandleGeom2dTrimmedCurve,
@@ -29659,6 +29729,10 @@ mod ffi {
         fn Law_BSpFunc_as_Law_Function_mut(self_: Pin<&mut Law_BSpFunc>) -> Pin<&mut Law_Function>;
         /// Wrap Law_BSpFunc in a Handle
         fn Law_BSpFunc_to_handle(obj: UniquePtr<Law_BSpFunc>) -> UniquePtr<HandleLawBSpFunc>;
+        /// Dereference Handle to get &Law_BSpFunc
+        fn HandleLawBSpFunc_get(handle: &HandleLawBSpFunc) -> &Law_BSpFunc;
+        /// Dereference Handle to get Pin<&mut Law_BSpFunc>
+        fn HandleLawBSpFunc_get_mut(handle: Pin<&mut HandleLawBSpFunc>) -> Pin<&mut Law_BSpFunc>;
         /// Upcast Handle<Law_BSpFunc> to Handle<Law_Function>
         fn HandleLawBSpFunc_to_HandleLawFunction(
             self_: &HandleLawBSpFunc,
@@ -29757,6 +29831,11 @@ mod ffi {
         ) -> Pin<&mut Law_Function>;
         /// Wrap Law_Interpol in a Handle
         fn Law_Interpol_to_handle(obj: UniquePtr<Law_Interpol>) -> UniquePtr<HandleLawInterpol>;
+        /// Dereference Handle to get &Law_Interpol
+        fn HandleLawInterpol_get(handle: &HandleLawInterpol) -> &Law_Interpol;
+        /// Dereference Handle to get Pin<&mut Law_Interpol>
+        fn HandleLawInterpol_get_mut(handle: Pin<&mut HandleLawInterpol>)
+            -> Pin<&mut Law_Interpol>;
         /// Upcast Handle<Law_Interpol> to Handle<Law_BSpFunc>
         fn HandleLawInterpol_to_HandleLawBSpFunc(
             self_: &HandleLawInterpol,
@@ -30170,6 +30249,12 @@ mod ffi {
         fn Poly_Triangulation_to_handle(
             obj: UniquePtr<Poly_Triangulation>,
         ) -> UniquePtr<HandlePolyTriangulation>;
+        /// Dereference Handle to get &Poly_Triangulation
+        fn HandlePolyTriangulation_get(handle: &HandlePolyTriangulation) -> &Poly_Triangulation;
+        /// Dereference Handle to get Pin<&mut Poly_Triangulation>
+        fn HandlePolyTriangulation_get_mut(
+            handle: Pin<&mut HandlePolyTriangulation>,
+        ) -> Pin<&mut Poly_Triangulation>;
         /// ======================== ShapeUpgrade_UnifySameDomain ========================
         /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:66 - `ShapeUpgrade_UnifySameDomain`
         ///
@@ -30308,6 +30393,14 @@ mod ffi {
         fn ShapeUpgrade_UnifySameDomain_to_handle(
             obj: UniquePtr<ShapeUpgrade_UnifySameDomain>,
         ) -> UniquePtr<HandleShapeUpgradeUnifySameDomain>;
+        /// Dereference Handle to get &ShapeUpgrade_UnifySameDomain
+        fn HandleShapeUpgradeUnifySameDomain_get(
+            handle: &HandleShapeUpgradeUnifySameDomain,
+        ) -> &ShapeUpgrade_UnifySameDomain;
+        /// Dereference Handle to get Pin<&mut ShapeUpgrade_UnifySameDomain>
+        fn HandleShapeUpgradeUnifySameDomain_get_mut(
+            handle: Pin<&mut HandleShapeUpgradeUnifySameDomain>,
+        ) -> Pin<&mut ShapeUpgrade_UnifySameDomain>;
         /// ======================== ShapeAnalysis_FreeBounds ========================
         /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:57 - `ShapeAnalysis_FreeBounds`
         ///
@@ -30509,6 +30602,14 @@ mod ffi {
         fn TColgp_HArray1OfCirc2d_to_handle(
             obj: UniquePtr<TColgp_HArray1OfCirc2d>,
         ) -> UniquePtr<HandleTColgpHArray1OfCirc2d>;
+        /// Dereference Handle to get &TColgp_HArray1OfCirc2d
+        fn HandleTColgpHArray1OfCirc2d_get(
+            handle: &HandleTColgpHArray1OfCirc2d,
+        ) -> &TColgp_HArray1OfCirc2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray1OfCirc2d>
+        fn HandleTColgpHArray1OfCirc2d_get_mut(
+            handle: Pin<&mut HandleTColgpHArray1OfCirc2d>,
+        ) -> Pin<&mut TColgp_HArray1OfCirc2d>;
         /// ======================== TColgp_HArray1OfDir ========================
         /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir`
         type TColgp_HArray1OfDir;
@@ -30551,6 +30652,12 @@ mod ffi {
         fn TColgp_HArray1OfDir_to_handle(
             obj: UniquePtr<TColgp_HArray1OfDir>,
         ) -> UniquePtr<HandleTColgpHArray1OfDir>;
+        /// Dereference Handle to get &TColgp_HArray1OfDir
+        fn HandleTColgpHArray1OfDir_get(handle: &HandleTColgpHArray1OfDir) -> &TColgp_HArray1OfDir;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray1OfDir>
+        fn HandleTColgpHArray1OfDir_get_mut(
+            handle: Pin<&mut HandleTColgpHArray1OfDir>,
+        ) -> Pin<&mut TColgp_HArray1OfDir>;
         /// ======================== TColgp_HArray1OfDir2d ========================
         /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d`
         type TColgp_HArray1OfDir2d;
@@ -30593,6 +30700,14 @@ mod ffi {
         fn TColgp_HArray1OfDir2d_to_handle(
             obj: UniquePtr<TColgp_HArray1OfDir2d>,
         ) -> UniquePtr<HandleTColgpHArray1OfDir2d>;
+        /// Dereference Handle to get &TColgp_HArray1OfDir2d
+        fn HandleTColgpHArray1OfDir2d_get(
+            handle: &HandleTColgpHArray1OfDir2d,
+        ) -> &TColgp_HArray1OfDir2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray1OfDir2d>
+        fn HandleTColgpHArray1OfDir2d_get_mut(
+            handle: Pin<&mut HandleTColgpHArray1OfDir2d>,
+        ) -> Pin<&mut TColgp_HArray1OfDir2d>;
         /// ======================== TColgp_HArray1OfLin2d ========================
         /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d`
         type TColgp_HArray1OfLin2d;
@@ -30635,6 +30750,14 @@ mod ffi {
         fn TColgp_HArray1OfLin2d_to_handle(
             obj: UniquePtr<TColgp_HArray1OfLin2d>,
         ) -> UniquePtr<HandleTColgpHArray1OfLin2d>;
+        /// Dereference Handle to get &TColgp_HArray1OfLin2d
+        fn HandleTColgpHArray1OfLin2d_get(
+            handle: &HandleTColgpHArray1OfLin2d,
+        ) -> &TColgp_HArray1OfLin2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray1OfLin2d>
+        fn HandleTColgpHArray1OfLin2d_get_mut(
+            handle: Pin<&mut HandleTColgpHArray1OfLin2d>,
+        ) -> Pin<&mut TColgp_HArray1OfLin2d>;
         /// ======================== TColgp_HArray1OfPnt ========================
         /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt`
         type TColgp_HArray1OfPnt;
@@ -30677,6 +30800,12 @@ mod ffi {
         fn TColgp_HArray1OfPnt_to_handle(
             obj: UniquePtr<TColgp_HArray1OfPnt>,
         ) -> UniquePtr<HandleTColgpHArray1OfPnt>;
+        /// Dereference Handle to get &TColgp_HArray1OfPnt
+        fn HandleTColgpHArray1OfPnt_get(handle: &HandleTColgpHArray1OfPnt) -> &TColgp_HArray1OfPnt;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray1OfPnt>
+        fn HandleTColgpHArray1OfPnt_get_mut(
+            handle: Pin<&mut HandleTColgpHArray1OfPnt>,
+        ) -> Pin<&mut TColgp_HArray1OfPnt>;
         /// ======================== TColgp_HArray1OfPnt2d ========================
         /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d`
         type TColgp_HArray1OfPnt2d;
@@ -30719,6 +30848,14 @@ mod ffi {
         fn TColgp_HArray1OfPnt2d_to_handle(
             obj: UniquePtr<TColgp_HArray1OfPnt2d>,
         ) -> UniquePtr<HandleTColgpHArray1OfPnt2d>;
+        /// Dereference Handle to get &TColgp_HArray1OfPnt2d
+        fn HandleTColgpHArray1OfPnt2d_get(
+            handle: &HandleTColgpHArray1OfPnt2d,
+        ) -> &TColgp_HArray1OfPnt2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray1OfPnt2d>
+        fn HandleTColgpHArray1OfPnt2d_get_mut(
+            handle: Pin<&mut HandleTColgpHArray1OfPnt2d>,
+        ) -> Pin<&mut TColgp_HArray1OfPnt2d>;
         /// ======================== TColgp_HArray1OfVec ========================
         /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec`
         type TColgp_HArray1OfVec;
@@ -30761,6 +30898,12 @@ mod ffi {
         fn TColgp_HArray1OfVec_to_handle(
             obj: UniquePtr<TColgp_HArray1OfVec>,
         ) -> UniquePtr<HandleTColgpHArray1OfVec>;
+        /// Dereference Handle to get &TColgp_HArray1OfVec
+        fn HandleTColgpHArray1OfVec_get(handle: &HandleTColgpHArray1OfVec) -> &TColgp_HArray1OfVec;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray1OfVec>
+        fn HandleTColgpHArray1OfVec_get_mut(
+            handle: Pin<&mut HandleTColgpHArray1OfVec>,
+        ) -> Pin<&mut TColgp_HArray1OfVec>;
         /// ======================== TColgp_HArray1OfVec2d ========================
         /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d`
         type TColgp_HArray1OfVec2d;
@@ -30803,6 +30946,14 @@ mod ffi {
         fn TColgp_HArray1OfVec2d_to_handle(
             obj: UniquePtr<TColgp_HArray1OfVec2d>,
         ) -> UniquePtr<HandleTColgpHArray1OfVec2d>;
+        /// Dereference Handle to get &TColgp_HArray1OfVec2d
+        fn HandleTColgpHArray1OfVec2d_get(
+            handle: &HandleTColgpHArray1OfVec2d,
+        ) -> &TColgp_HArray1OfVec2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray1OfVec2d>
+        fn HandleTColgpHArray1OfVec2d_get_mut(
+            handle: Pin<&mut HandleTColgpHArray1OfVec2d>,
+        ) -> Pin<&mut TColgp_HArray1OfVec2d>;
         /// ======================== TColgp_HArray1OfXY ========================
         /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY`
         type TColgp_HArray1OfXY;
@@ -30845,6 +30996,12 @@ mod ffi {
         fn TColgp_HArray1OfXY_to_handle(
             obj: UniquePtr<TColgp_HArray1OfXY>,
         ) -> UniquePtr<HandleTColgpHArray1OfXY>;
+        /// Dereference Handle to get &TColgp_HArray1OfXY
+        fn HandleTColgpHArray1OfXY_get(handle: &HandleTColgpHArray1OfXY) -> &TColgp_HArray1OfXY;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray1OfXY>
+        fn HandleTColgpHArray1OfXY_get_mut(
+            handle: Pin<&mut HandleTColgpHArray1OfXY>,
+        ) -> Pin<&mut TColgp_HArray1OfXY>;
         /// ======================== TColgp_HArray1OfXYZ ========================
         /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ`
         type TColgp_HArray1OfXYZ;
@@ -30887,6 +31044,12 @@ mod ffi {
         fn TColgp_HArray1OfXYZ_to_handle(
             obj: UniquePtr<TColgp_HArray1OfXYZ>,
         ) -> UniquePtr<HandleTColgpHArray1OfXYZ>;
+        /// Dereference Handle to get &TColgp_HArray1OfXYZ
+        fn HandleTColgpHArray1OfXYZ_get(handle: &HandleTColgpHArray1OfXYZ) -> &TColgp_HArray1OfXYZ;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray1OfXYZ>
+        fn HandleTColgpHArray1OfXYZ_get_mut(
+            handle: Pin<&mut HandleTColgpHArray1OfXYZ>,
+        ) -> Pin<&mut TColgp_HArray1OfXYZ>;
         /// ======================== TColgp_HArray2OfCirc2d ========================
         /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d`
         type TColgp_HArray2OfCirc2d;
@@ -30925,6 +31088,14 @@ mod ffi {
         fn TColgp_HArray2OfCirc2d_to_handle(
             obj: UniquePtr<TColgp_HArray2OfCirc2d>,
         ) -> UniquePtr<HandleTColgpHArray2OfCirc2d>;
+        /// Dereference Handle to get &TColgp_HArray2OfCirc2d
+        fn HandleTColgpHArray2OfCirc2d_get(
+            handle: &HandleTColgpHArray2OfCirc2d,
+        ) -> &TColgp_HArray2OfCirc2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray2OfCirc2d>
+        fn HandleTColgpHArray2OfCirc2d_get_mut(
+            handle: Pin<&mut HandleTColgpHArray2OfCirc2d>,
+        ) -> Pin<&mut TColgp_HArray2OfCirc2d>;
         /// ======================== TColgp_HArray2OfDir ========================
         /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir`
         type TColgp_HArray2OfDir;
@@ -30962,6 +31133,12 @@ mod ffi {
         fn TColgp_HArray2OfDir_to_handle(
             obj: UniquePtr<TColgp_HArray2OfDir>,
         ) -> UniquePtr<HandleTColgpHArray2OfDir>;
+        /// Dereference Handle to get &TColgp_HArray2OfDir
+        fn HandleTColgpHArray2OfDir_get(handle: &HandleTColgpHArray2OfDir) -> &TColgp_HArray2OfDir;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray2OfDir>
+        fn HandleTColgpHArray2OfDir_get_mut(
+            handle: Pin<&mut HandleTColgpHArray2OfDir>,
+        ) -> Pin<&mut TColgp_HArray2OfDir>;
         /// ======================== TColgp_HArray2OfDir2d ========================
         /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d`
         type TColgp_HArray2OfDir2d;
@@ -30999,6 +31176,14 @@ mod ffi {
         fn TColgp_HArray2OfDir2d_to_handle(
             obj: UniquePtr<TColgp_HArray2OfDir2d>,
         ) -> UniquePtr<HandleTColgpHArray2OfDir2d>;
+        /// Dereference Handle to get &TColgp_HArray2OfDir2d
+        fn HandleTColgpHArray2OfDir2d_get(
+            handle: &HandleTColgpHArray2OfDir2d,
+        ) -> &TColgp_HArray2OfDir2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray2OfDir2d>
+        fn HandleTColgpHArray2OfDir2d_get_mut(
+            handle: Pin<&mut HandleTColgpHArray2OfDir2d>,
+        ) -> Pin<&mut TColgp_HArray2OfDir2d>;
         /// ======================== TColgp_HArray2OfLin2d ========================
         /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d`
         type TColgp_HArray2OfLin2d;
@@ -31036,6 +31221,14 @@ mod ffi {
         fn TColgp_HArray2OfLin2d_to_handle(
             obj: UniquePtr<TColgp_HArray2OfLin2d>,
         ) -> UniquePtr<HandleTColgpHArray2OfLin2d>;
+        /// Dereference Handle to get &TColgp_HArray2OfLin2d
+        fn HandleTColgpHArray2OfLin2d_get(
+            handle: &HandleTColgpHArray2OfLin2d,
+        ) -> &TColgp_HArray2OfLin2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray2OfLin2d>
+        fn HandleTColgpHArray2OfLin2d_get_mut(
+            handle: Pin<&mut HandleTColgpHArray2OfLin2d>,
+        ) -> Pin<&mut TColgp_HArray2OfLin2d>;
         /// ======================== TColgp_HArray2OfPnt ========================
         /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt`
         type TColgp_HArray2OfPnt;
@@ -31073,6 +31266,12 @@ mod ffi {
         fn TColgp_HArray2OfPnt_to_handle(
             obj: UniquePtr<TColgp_HArray2OfPnt>,
         ) -> UniquePtr<HandleTColgpHArray2OfPnt>;
+        /// Dereference Handle to get &TColgp_HArray2OfPnt
+        fn HandleTColgpHArray2OfPnt_get(handle: &HandleTColgpHArray2OfPnt) -> &TColgp_HArray2OfPnt;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray2OfPnt>
+        fn HandleTColgpHArray2OfPnt_get_mut(
+            handle: Pin<&mut HandleTColgpHArray2OfPnt>,
+        ) -> Pin<&mut TColgp_HArray2OfPnt>;
         /// ======================== TColgp_HArray2OfPnt2d ========================
         /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d`
         type TColgp_HArray2OfPnt2d;
@@ -31110,6 +31309,14 @@ mod ffi {
         fn TColgp_HArray2OfPnt2d_to_handle(
             obj: UniquePtr<TColgp_HArray2OfPnt2d>,
         ) -> UniquePtr<HandleTColgpHArray2OfPnt2d>;
+        /// Dereference Handle to get &TColgp_HArray2OfPnt2d
+        fn HandleTColgpHArray2OfPnt2d_get(
+            handle: &HandleTColgpHArray2OfPnt2d,
+        ) -> &TColgp_HArray2OfPnt2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray2OfPnt2d>
+        fn HandleTColgpHArray2OfPnt2d_get_mut(
+            handle: Pin<&mut HandleTColgpHArray2OfPnt2d>,
+        ) -> Pin<&mut TColgp_HArray2OfPnt2d>;
         /// ======================== TColgp_HArray2OfVec ========================
         /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec`
         type TColgp_HArray2OfVec;
@@ -31147,6 +31354,12 @@ mod ffi {
         fn TColgp_HArray2OfVec_to_handle(
             obj: UniquePtr<TColgp_HArray2OfVec>,
         ) -> UniquePtr<HandleTColgpHArray2OfVec>;
+        /// Dereference Handle to get &TColgp_HArray2OfVec
+        fn HandleTColgpHArray2OfVec_get(handle: &HandleTColgpHArray2OfVec) -> &TColgp_HArray2OfVec;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray2OfVec>
+        fn HandleTColgpHArray2OfVec_get_mut(
+            handle: Pin<&mut HandleTColgpHArray2OfVec>,
+        ) -> Pin<&mut TColgp_HArray2OfVec>;
         /// ======================== TColgp_HArray2OfVec2d ========================
         /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d`
         type TColgp_HArray2OfVec2d;
@@ -31184,6 +31397,14 @@ mod ffi {
         fn TColgp_HArray2OfVec2d_to_handle(
             obj: UniquePtr<TColgp_HArray2OfVec2d>,
         ) -> UniquePtr<HandleTColgpHArray2OfVec2d>;
+        /// Dereference Handle to get &TColgp_HArray2OfVec2d
+        fn HandleTColgpHArray2OfVec2d_get(
+            handle: &HandleTColgpHArray2OfVec2d,
+        ) -> &TColgp_HArray2OfVec2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray2OfVec2d>
+        fn HandleTColgpHArray2OfVec2d_get_mut(
+            handle: Pin<&mut HandleTColgpHArray2OfVec2d>,
+        ) -> Pin<&mut TColgp_HArray2OfVec2d>;
         /// ======================== TColgp_HArray2OfXY ========================
         /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY`
         type TColgp_HArray2OfXY;
@@ -31221,6 +31442,12 @@ mod ffi {
         fn TColgp_HArray2OfXY_to_handle(
             obj: UniquePtr<TColgp_HArray2OfXY>,
         ) -> UniquePtr<HandleTColgpHArray2OfXY>;
+        /// Dereference Handle to get &TColgp_HArray2OfXY
+        fn HandleTColgpHArray2OfXY_get(handle: &HandleTColgpHArray2OfXY) -> &TColgp_HArray2OfXY;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray2OfXY>
+        fn HandleTColgpHArray2OfXY_get_mut(
+            handle: Pin<&mut HandleTColgpHArray2OfXY>,
+        ) -> Pin<&mut TColgp_HArray2OfXY>;
         /// ======================== TColgp_HArray2OfXYZ ========================
         /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ`
         type TColgp_HArray2OfXYZ;
@@ -31258,6 +31485,12 @@ mod ffi {
         fn TColgp_HArray2OfXYZ_to_handle(
             obj: UniquePtr<TColgp_HArray2OfXYZ>,
         ) -> UniquePtr<HandleTColgpHArray2OfXYZ>;
+        /// Dereference Handle to get &TColgp_HArray2OfXYZ
+        fn HandleTColgpHArray2OfXYZ_get(handle: &HandleTColgpHArray2OfXYZ) -> &TColgp_HArray2OfXYZ;
+        /// Dereference Handle to get Pin<&mut TColgp_HArray2OfXYZ>
+        fn HandleTColgpHArray2OfXYZ_get_mut(
+            handle: Pin<&mut HandleTColgpHArray2OfXYZ>,
+        ) -> Pin<&mut TColgp_HArray2OfXYZ>;
         /// ======================== TColgp_HSequenceOfPnt ========================
         /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt`
         type TColgp_HSequenceOfPnt;
@@ -31279,6 +31512,14 @@ mod ffi {
         fn TColgp_HSequenceOfPnt_to_handle(
             obj: UniquePtr<TColgp_HSequenceOfPnt>,
         ) -> UniquePtr<HandleTColgpHSequenceOfPnt>;
+        /// Dereference Handle to get &TColgp_HSequenceOfPnt
+        fn HandleTColgpHSequenceOfPnt_get(
+            handle: &HandleTColgpHSequenceOfPnt,
+        ) -> &TColgp_HSequenceOfPnt;
+        /// Dereference Handle to get Pin<&mut TColgp_HSequenceOfPnt>
+        fn HandleTColgpHSequenceOfPnt_get_mut(
+            handle: Pin<&mut HandleTColgpHSequenceOfPnt>,
+        ) -> Pin<&mut TColgp_HSequenceOfPnt>;
         /// ======================== TColgp_HSequenceOfPnt2d ========================
         /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d`
         type TColgp_HSequenceOfPnt2d;
@@ -31300,6 +31541,14 @@ mod ffi {
         fn TColgp_HSequenceOfPnt2d_to_handle(
             obj: UniquePtr<TColgp_HSequenceOfPnt2d>,
         ) -> UniquePtr<HandleTColgpHSequenceOfPnt2d>;
+        /// Dereference Handle to get &TColgp_HSequenceOfPnt2d
+        fn HandleTColgpHSequenceOfPnt2d_get(
+            handle: &HandleTColgpHSequenceOfPnt2d,
+        ) -> &TColgp_HSequenceOfPnt2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HSequenceOfPnt2d>
+        fn HandleTColgpHSequenceOfPnt2d_get_mut(
+            handle: Pin<&mut HandleTColgpHSequenceOfPnt2d>,
+        ) -> Pin<&mut TColgp_HSequenceOfPnt2d>;
         /// ======================== TColgp_HSequenceOfDir ========================
         /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir`
         type TColgp_HSequenceOfDir;
@@ -31321,6 +31570,14 @@ mod ffi {
         fn TColgp_HSequenceOfDir_to_handle(
             obj: UniquePtr<TColgp_HSequenceOfDir>,
         ) -> UniquePtr<HandleTColgpHSequenceOfDir>;
+        /// Dereference Handle to get &TColgp_HSequenceOfDir
+        fn HandleTColgpHSequenceOfDir_get(
+            handle: &HandleTColgpHSequenceOfDir,
+        ) -> &TColgp_HSequenceOfDir;
+        /// Dereference Handle to get Pin<&mut TColgp_HSequenceOfDir>
+        fn HandleTColgpHSequenceOfDir_get_mut(
+            handle: Pin<&mut HandleTColgpHSequenceOfDir>,
+        ) -> Pin<&mut TColgp_HSequenceOfDir>;
         /// ======================== TColgp_HSequenceOfDir2d ========================
         /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d`
         type TColgp_HSequenceOfDir2d;
@@ -31342,6 +31599,14 @@ mod ffi {
         fn TColgp_HSequenceOfDir2d_to_handle(
             obj: UniquePtr<TColgp_HSequenceOfDir2d>,
         ) -> UniquePtr<HandleTColgpHSequenceOfDir2d>;
+        /// Dereference Handle to get &TColgp_HSequenceOfDir2d
+        fn HandleTColgpHSequenceOfDir2d_get(
+            handle: &HandleTColgpHSequenceOfDir2d,
+        ) -> &TColgp_HSequenceOfDir2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HSequenceOfDir2d>
+        fn HandleTColgpHSequenceOfDir2d_get_mut(
+            handle: Pin<&mut HandleTColgpHSequenceOfDir2d>,
+        ) -> Pin<&mut TColgp_HSequenceOfDir2d>;
         /// ======================== TColgp_HSequenceOfVec ========================
         /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec`
         type TColgp_HSequenceOfVec;
@@ -31363,6 +31628,14 @@ mod ffi {
         fn TColgp_HSequenceOfVec_to_handle(
             obj: UniquePtr<TColgp_HSequenceOfVec>,
         ) -> UniquePtr<HandleTColgpHSequenceOfVec>;
+        /// Dereference Handle to get &TColgp_HSequenceOfVec
+        fn HandleTColgpHSequenceOfVec_get(
+            handle: &HandleTColgpHSequenceOfVec,
+        ) -> &TColgp_HSequenceOfVec;
+        /// Dereference Handle to get Pin<&mut TColgp_HSequenceOfVec>
+        fn HandleTColgpHSequenceOfVec_get_mut(
+            handle: Pin<&mut HandleTColgpHSequenceOfVec>,
+        ) -> Pin<&mut TColgp_HSequenceOfVec>;
         /// ======================== TColgp_HSequenceOfVec2d ========================
         /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d`
         type TColgp_HSequenceOfVec2d;
@@ -31384,6 +31657,14 @@ mod ffi {
         fn TColgp_HSequenceOfVec2d_to_handle(
             obj: UniquePtr<TColgp_HSequenceOfVec2d>,
         ) -> UniquePtr<HandleTColgpHSequenceOfVec2d>;
+        /// Dereference Handle to get &TColgp_HSequenceOfVec2d
+        fn HandleTColgpHSequenceOfVec2d_get(
+            handle: &HandleTColgpHSequenceOfVec2d,
+        ) -> &TColgp_HSequenceOfVec2d;
+        /// Dereference Handle to get Pin<&mut TColgp_HSequenceOfVec2d>
+        fn HandleTColgpHSequenceOfVec2d_get_mut(
+            handle: Pin<&mut HandleTColgpHSequenceOfVec2d>,
+        ) -> Pin<&mut TColgp_HSequenceOfVec2d>;
         /// ======================== TColgp_HSequenceOfXY ========================
         /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY`
         type TColgp_HSequenceOfXY;
@@ -31405,6 +31686,14 @@ mod ffi {
         fn TColgp_HSequenceOfXY_to_handle(
             obj: UniquePtr<TColgp_HSequenceOfXY>,
         ) -> UniquePtr<HandleTColgpHSequenceOfXY>;
+        /// Dereference Handle to get &TColgp_HSequenceOfXY
+        fn HandleTColgpHSequenceOfXY_get(
+            handle: &HandleTColgpHSequenceOfXY,
+        ) -> &TColgp_HSequenceOfXY;
+        /// Dereference Handle to get Pin<&mut TColgp_HSequenceOfXY>
+        fn HandleTColgpHSequenceOfXY_get_mut(
+            handle: Pin<&mut HandleTColgpHSequenceOfXY>,
+        ) -> Pin<&mut TColgp_HSequenceOfXY>;
         /// ======================== TColgp_HSequenceOfXYZ ========================
         /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ`
         type TColgp_HSequenceOfXYZ;
@@ -31426,6 +31715,14 @@ mod ffi {
         fn TColgp_HSequenceOfXYZ_to_handle(
             obj: UniquePtr<TColgp_HSequenceOfXYZ>,
         ) -> UniquePtr<HandleTColgpHSequenceOfXYZ>;
+        /// Dereference Handle to get &TColgp_HSequenceOfXYZ
+        fn HandleTColgpHSequenceOfXYZ_get(
+            handle: &HandleTColgpHSequenceOfXYZ,
+        ) -> &TColgp_HSequenceOfXYZ;
+        /// Dereference Handle to get Pin<&mut TColgp_HSequenceOfXYZ>
+        fn HandleTColgpHSequenceOfXYZ_get_mut(
+            handle: Pin<&mut HandleTColgpHSequenceOfXYZ>,
+        ) -> Pin<&mut TColgp_HSequenceOfXYZ>;
         /// ======================== Message_ProgressRange ========================
         /// **Source:** `Message_ProgressRange.hxx`:39 - `Message_ProgressRange`
         ///
@@ -33300,6 +33597,12 @@ mod ffi {
         fn Adaptor3d_Curve_to_handle(
             obj: UniquePtr<Adaptor3d_Curve>,
         ) -> UniquePtr<HandleAdaptor3dCurve>;
+        /// Dereference Handle to get &Adaptor3d_Curve
+        fn HandleAdaptor3dCurve_get(handle: &HandleAdaptor3dCurve) -> &Adaptor3d_Curve;
+        /// Dereference Handle to get Pin<&mut Adaptor3d_Curve>
+        fn HandleAdaptor3dCurve_get_mut(
+            handle: Pin<&mut HandleAdaptor3dCurve>,
+        ) -> Pin<&mut Adaptor3d_Curve>;
         /// ======================== Adaptor3d_Surface ========================
         /// **Source:** `Adaptor3d_Surface.hxx`:58 - `Adaptor3d_Surface`
         ///
@@ -33566,6 +33869,12 @@ mod ffi {
         fn Adaptor3d_Surface_to_handle(
             obj: UniquePtr<Adaptor3d_Surface>,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
+        /// Dereference Handle to get &Adaptor3d_Surface
+        fn HandleAdaptor3dSurface_get(handle: &HandleAdaptor3dSurface) -> &Adaptor3d_Surface;
+        /// Dereference Handle to get Pin<&mut Adaptor3d_Surface>
+        fn HandleAdaptor3dSurface_get_mut(
+            handle: Pin<&mut HandleAdaptor3dSurface>,
+        ) -> Pin<&mut Adaptor3d_Surface>;
         /// ======================== Adaptor2d_Curve2d ========================
         /// **Source:** `Adaptor2d_Curve2d.hxx`:50 - `Adaptor2d_Curve2d`
         ///
@@ -33726,6 +34035,12 @@ mod ffi {
         fn Adaptor2d_Curve2d_to_handle(
             obj: UniquePtr<Adaptor2d_Curve2d>,
         ) -> UniquePtr<HandleAdaptor2dCurve2d>;
+        /// Dereference Handle to get &Adaptor2d_Curve2d
+        fn HandleAdaptor2dCurve2d_get(handle: &HandleAdaptor2dCurve2d) -> &Adaptor2d_Curve2d;
+        /// Dereference Handle to get Pin<&mut Adaptor2d_Curve2d>
+        fn HandleAdaptor2dCurve2d_get_mut(
+            handle: Pin<&mut HandleAdaptor2dCurve2d>,
+        ) -> Pin<&mut Adaptor2d_Curve2d>;
         /// ======================== math_DirectPolynomialRoots ========================
         /// **Source:** `math_DirectPolynomialRoots.hxx`:30 - `math_DirectPolynomialRoots`
         ///
@@ -34024,6 +34339,14 @@ mod ffi {
         fn TColStd_HArray1OfInteger_to_handle(
             obj: UniquePtr<TColStd_HArray1OfInteger>,
         ) -> UniquePtr<HandleTColStdHArray1OfInteger>;
+        /// Dereference Handle to get &TColStd_HArray1OfInteger
+        fn HandleTColStdHArray1OfInteger_get(
+            handle: &HandleTColStdHArray1OfInteger,
+        ) -> &TColStd_HArray1OfInteger;
+        /// Dereference Handle to get Pin<&mut TColStd_HArray1OfInteger>
+        fn HandleTColStdHArray1OfInteger_get_mut(
+            handle: Pin<&mut HandleTColStdHArray1OfInteger>,
+        ) -> Pin<&mut TColStd_HArray1OfInteger>;
         /// ======================== TColStd_HArray1OfReal ========================
         /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal`
         type TColStd_HArray1OfReal;
@@ -34060,6 +34383,14 @@ mod ffi {
         fn TColStd_HArray1OfReal_to_handle(
             obj: UniquePtr<TColStd_HArray1OfReal>,
         ) -> UniquePtr<HandleTColStdHArray1OfReal>;
+        /// Dereference Handle to get &TColStd_HArray1OfReal
+        fn HandleTColStdHArray1OfReal_get(
+            handle: &HandleTColStdHArray1OfReal,
+        ) -> &TColStd_HArray1OfReal;
+        /// Dereference Handle to get Pin<&mut TColStd_HArray1OfReal>
+        fn HandleTColStdHArray1OfReal_get_mut(
+            handle: Pin<&mut HandleTColStdHArray1OfReal>,
+        ) -> Pin<&mut TColStd_HArray1OfReal>;
         /// ======================== TColStd_HSequenceOfInteger ========================
         /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger`
         type TColStd_HSequenceOfInteger;
@@ -34081,6 +34412,14 @@ mod ffi {
         fn TColStd_HSequenceOfInteger_to_handle(
             obj: UniquePtr<TColStd_HSequenceOfInteger>,
         ) -> UniquePtr<HandleTColStdHSequenceOfInteger>;
+        /// Dereference Handle to get &TColStd_HSequenceOfInteger
+        fn HandleTColStdHSequenceOfInteger_get(
+            handle: &HandleTColStdHSequenceOfInteger,
+        ) -> &TColStd_HSequenceOfInteger;
+        /// Dereference Handle to get Pin<&mut TColStd_HSequenceOfInteger>
+        fn HandleTColStdHSequenceOfInteger_get_mut(
+            handle: Pin<&mut HandleTColStdHSequenceOfInteger>,
+        ) -> Pin<&mut TColStd_HSequenceOfInteger>;
         /// ======================== TColStd_HSequenceOfReal ========================
         /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal`
         type TColStd_HSequenceOfReal;
@@ -34102,6 +34441,14 @@ mod ffi {
         fn TColStd_HSequenceOfReal_to_handle(
             obj: UniquePtr<TColStd_HSequenceOfReal>,
         ) -> UniquePtr<HandleTColStdHSequenceOfReal>;
+        /// Dereference Handle to get &TColStd_HSequenceOfReal
+        fn HandleTColStdHSequenceOfReal_get(
+            handle: &HandleTColStdHSequenceOfReal,
+        ) -> &TColStd_HSequenceOfReal;
+        /// Dereference Handle to get Pin<&mut TColStd_HSequenceOfReal>
+        fn HandleTColStdHSequenceOfReal_get_mut(
+            handle: Pin<&mut HandleTColStdHSequenceOfReal>,
+        ) -> Pin<&mut TColStd_HSequenceOfReal>;
         /// ======================== Standard_Failure ========================
         /// **Source:** `Standard_Failure.hxx`:30 - `Standard_Failure`
         ///
@@ -34198,6 +34545,12 @@ mod ffi {
         fn Standard_Failure_to_handle(
             obj: UniquePtr<Standard_Failure>,
         ) -> UniquePtr<HandleStandardFailure>;
+        /// Dereference Handle to get &Standard_Failure
+        fn HandleStandardFailure_get(handle: &HandleStandardFailure) -> &Standard_Failure;
+        /// Dereference Handle to get Pin<&mut Standard_Failure>
+        fn HandleStandardFailure_get_mut(
+            handle: Pin<&mut HandleStandardFailure>,
+        ) -> Pin<&mut Standard_Failure>;
         /// ======================== Standard_Mutex ========================
         /// **Source:** `Standard_Mutex.hxx`:65 - `Standard_Mutex`
         ///
@@ -35629,6 +35982,14 @@ mod ffi {
         fn TCollection_HAsciiString_to_handle(
             obj: UniquePtr<TCollection_HAsciiString>,
         ) -> UniquePtr<HandleTCollectionHAsciiString>;
+        /// Dereference Handle to get &TCollection_HAsciiString
+        fn HandleTCollectionHAsciiString_get(
+            handle: &HandleTCollectionHAsciiString,
+        ) -> &TCollection_HAsciiString;
+        /// Dereference Handle to get Pin<&mut TCollection_HAsciiString>
+        fn HandleTCollectionHAsciiString_get_mut(
+            handle: Pin<&mut HandleTCollectionHAsciiString>,
+        ) -> Pin<&mut TCollection_HAsciiString>;
         /// ======================== TCollection_HExtendedString ========================
         /// **Source:** `TCollection_HExtendedString.hxx`:44 - `TCollection_HExtendedString`
         ///
@@ -35809,6 +36170,14 @@ mod ffi {
         fn TCollection_HExtendedString_to_handle(
             obj: UniquePtr<TCollection_HExtendedString>,
         ) -> UniquePtr<HandleTCollectionHExtendedString>;
+        /// Dereference Handle to get &TCollection_HExtendedString
+        fn HandleTCollectionHExtendedString_get(
+            handle: &HandleTCollectionHExtendedString,
+        ) -> &TCollection_HExtendedString;
+        /// Dereference Handle to get Pin<&mut TCollection_HExtendedString>
+        fn HandleTCollectionHExtendedString_get_mut(
+            handle: Pin<&mut HandleTCollectionHExtendedString>,
+        ) -> Pin<&mut TCollection_HExtendedString>;
         /// ======================== NCollection_Buffer ========================
         /// **Source:** `NCollection_Buffer.hxx`:23 - `NCollection_Buffer`
         ///
@@ -35857,6 +36226,12 @@ mod ffi {
         fn NCollection_Buffer_to_handle(
             obj: UniquePtr<NCollection_Buffer>,
         ) -> UniquePtr<HandleNCollectionBuffer>;
+        /// Dereference Handle to get &NCollection_Buffer
+        fn HandleNCollectionBuffer_get(handle: &HandleNCollectionBuffer) -> &NCollection_Buffer;
+        /// Dereference Handle to get Pin<&mut NCollection_Buffer>
+        fn HandleNCollectionBuffer_get_mut(
+            handle: Pin<&mut HandleNCollectionBuffer>,
+        ) -> Pin<&mut NCollection_Buffer>;
         /// ======================== Standard_DumpValue ========================
         /// **Source:** `Standard_Dump.hxx`:309 - `Standard_DumpValue`
         ///
@@ -36276,6 +36651,12 @@ mod ffi {
         fn Standard_Type_get_type_descriptor() -> &'static HandleStandardType;
         /// Wrap Standard_Type in a Handle
         fn Standard_Type_to_handle(obj: UniquePtr<Standard_Type>) -> UniquePtr<HandleStandardType>;
+        /// Dereference Handle to get &Standard_Type
+        fn HandleStandardType_get(handle: &HandleStandardType) -> &Standard_Type;
+        /// Dereference Handle to get Pin<&mut Standard_Type>
+        fn HandleStandardType_get_mut(
+            handle: Pin<&mut HandleStandardType>,
+        ) -> Pin<&mut Standard_Type>;
         /// ======================== NCollection_BaseAllocator ========================
         /// **Source:** `NCollection_BaseAllocator.hxx`:45 - `NCollection_BaseAllocator`
         ///
@@ -36308,6 +36689,14 @@ mod ffi {
         fn NCollection_BaseAllocator_to_handle(
             obj: UniquePtr<NCollection_BaseAllocator>,
         ) -> UniquePtr<HandleNCollectionBaseAllocator>;
+        /// Dereference Handle to get &NCollection_BaseAllocator
+        fn HandleNCollectionBaseAllocator_get(
+            handle: &HandleNCollectionBaseAllocator,
+        ) -> &NCollection_BaseAllocator;
+        /// Dereference Handle to get Pin<&mut NCollection_BaseAllocator>
+        fn HandleNCollectionBaseAllocator_get_mut(
+            handle: Pin<&mut HandleNCollectionBaseAllocator>,
+        ) -> Pin<&mut NCollection_BaseAllocator>;
         /// ======================== Standard_RangeError ========================
         /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError`
         type Standard_RangeError;
@@ -36591,6 +36980,12 @@ mod ffi {
         fn Message_Messenger_to_handle(
             obj: UniquePtr<Message_Messenger>,
         ) -> UniquePtr<HandleMessageMessenger>;
+        /// Dereference Handle to get &Message_Messenger
+        fn HandleMessageMessenger_get(handle: &HandleMessageMessenger) -> &Message_Messenger;
+        /// Dereference Handle to get Pin<&mut Message_Messenger>
+        fn HandleMessageMessenger_get_mut(
+            handle: Pin<&mut HandleMessageMessenger>,
+        ) -> Pin<&mut Message_Messenger>;
         /// ======================== OSD_MemInfo ========================
         /// **Source:** `OSD_MemInfo.hxx`:49 - `OSD_MemInfo`
         ///
@@ -36795,6 +37190,14 @@ mod ffi {
         fn TColStd_HArray2OfReal_to_handle(
             obj: UniquePtr<TColStd_HArray2OfReal>,
         ) -> UniquePtr<HandleTColStdHArray2OfReal>;
+        /// Dereference Handle to get &TColStd_HArray2OfReal
+        fn HandleTColStdHArray2OfReal_get(
+            handle: &HandleTColStdHArray2OfReal,
+        ) -> &TColStd_HArray2OfReal;
+        /// Dereference Handle to get Pin<&mut TColStd_HArray2OfReal>
+        fn HandleTColStdHArray2OfReal_get_mut(
+            handle: Pin<&mut HandleTColStdHArray2OfReal>,
+        ) -> Pin<&mut TColStd_HArray2OfReal>;
         /// ======================== Bnd_HArray1OfSphere ========================
         /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere`
         type Bnd_HArray1OfSphere;
@@ -36835,6 +37238,12 @@ mod ffi {
         fn Bnd_HArray1OfSphere_to_handle(
             obj: UniquePtr<Bnd_HArray1OfSphere>,
         ) -> UniquePtr<HandleBndHArray1OfSphere>;
+        /// Dereference Handle to get &Bnd_HArray1OfSphere
+        fn HandleBndHArray1OfSphere_get(handle: &HandleBndHArray1OfSphere) -> &Bnd_HArray1OfSphere;
+        /// Dereference Handle to get Pin<&mut Bnd_HArray1OfSphere>
+        fn HandleBndHArray1OfSphere_get_mut(
+            handle: Pin<&mut HandleBndHArray1OfSphere>,
+        ) -> Pin<&mut Bnd_HArray1OfSphere>;
         /// ======================== Extrema_POnSurfParams ========================
         /// **Source:** `Extrema_POnSurfParams.hxx`:30 - `Extrema_POnSurfParams`
         ///
@@ -38511,6 +38920,14 @@ mod ffi {
         fn TColStd_HSequenceOfTransient_to_handle(
             obj: UniquePtr<TColStd_HSequenceOfTransient>,
         ) -> UniquePtr<HandleTColStdHSequenceOfTransient>;
+        /// Dereference Handle to get &TColStd_HSequenceOfTransient
+        fn HandleTColStdHSequenceOfTransient_get(
+            handle: &HandleTColStdHSequenceOfTransient,
+        ) -> &TColStd_HSequenceOfTransient;
+        /// Dereference Handle to get Pin<&mut TColStd_HSequenceOfTransient>
+        fn HandleTColStdHSequenceOfTransient_get_mut(
+            handle: Pin<&mut HandleTColStdHSequenceOfTransient>,
+        ) -> Pin<&mut TColStd_HSequenceOfTransient>;
         /// ======================== DESTEP_Parameters ========================
         /// **Source:** `DESTEP_Parameters.hxx`:23 - `DESTEP_Parameters`
         type DESTEP_Parameters;
@@ -38706,6 +39123,12 @@ mod ffi {
         fn BRepTools_History_to_handle(
             obj: UniquePtr<BRepTools_History>,
         ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Dereference Handle to get &BRepTools_History
+        fn HandleBRepToolsHistory_get(handle: &HandleBRepToolsHistory) -> &BRepTools_History;
+        /// Dereference Handle to get Pin<&mut BRepTools_History>
+        fn HandleBRepToolsHistory_get_mut(
+            handle: Pin<&mut HandleBRepToolsHistory>,
+        ) -> Pin<&mut BRepTools_History>;
         /// ======================== Poly_HArray1OfTriangle ========================
         /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle`
         type Poly_HArray1OfTriangle;
@@ -38742,6 +39165,14 @@ mod ffi {
         fn Poly_HArray1OfTriangle_to_handle(
             obj: UniquePtr<Poly_HArray1OfTriangle>,
         ) -> UniquePtr<HandlePolyHArray1OfTriangle>;
+        /// Dereference Handle to get &Poly_HArray1OfTriangle
+        fn HandlePolyHArray1OfTriangle_get(
+            handle: &HandlePolyHArray1OfTriangle,
+        ) -> &Poly_HArray1OfTriangle;
+        /// Dereference Handle to get Pin<&mut Poly_HArray1OfTriangle>
+        fn HandlePolyHArray1OfTriangle_get_mut(
+            handle: Pin<&mut HandlePolyHArray1OfTriangle>,
+        ) -> Pin<&mut Poly_HArray1OfTriangle>;
         /// ======================== Poly_ArrayOfNodes ========================
         /// **Source:** `Poly_ArrayOfNodes.hxx`:23 - `Poly_ArrayOfNodes`
         ///
@@ -38887,6 +39318,14 @@ mod ffi {
         fn TShort_HArray1OfShortReal_to_handle(
             obj: UniquePtr<TShort_HArray1OfShortReal>,
         ) -> UniquePtr<HandleTShortHArray1OfShortReal>;
+        /// Dereference Handle to get &TShort_HArray1OfShortReal
+        fn HandleTShortHArray1OfShortReal_get(
+            handle: &HandleTShortHArray1OfShortReal,
+        ) -> &TShort_HArray1OfShortReal;
+        /// Dereference Handle to get Pin<&mut TShort_HArray1OfShortReal>
+        fn HandleTShortHArray1OfShortReal_get_mut(
+            handle: Pin<&mut HandleTShortHArray1OfShortReal>,
+        ) -> Pin<&mut TShort_HArray1OfShortReal>;
         /// ======================== Poly_Triangle ========================
         /// **Source:** `Poly_Triangle.hxx`:30 - `Poly_Triangle`
         ///
@@ -39270,6 +39709,12 @@ mod ffi {
         fn IMeshData_Shape_to_handle(
             obj: UniquePtr<IMeshData_Shape>,
         ) -> UniquePtr<HandleIMeshDataShape>;
+        /// Dereference Handle to get &IMeshData_Shape
+        fn HandleIMeshDataShape_get(handle: &HandleIMeshDataShape) -> &IMeshData_Shape;
+        /// Dereference Handle to get Pin<&mut IMeshData_Shape>
+        fn HandleIMeshDataShape_get_mut(
+            handle: Pin<&mut HandleIMeshDataShape>,
+        ) -> Pin<&mut IMeshData_Shape>;
         /// ======================== Bnd_Box2d ========================
         /// **Source:** `Bnd_Box2d.hxx`:51 - `Bnd_Box2d`
         ///
@@ -40407,6 +40852,12 @@ mod ffi {
         fn Message_Algorithm_to_handle(
             obj: UniquePtr<Message_Algorithm>,
         ) -> UniquePtr<HandleMessageAlgorithm>;
+        /// Dereference Handle to get &Message_Algorithm
+        fn HandleMessageAlgorithm_get(handle: &HandleMessageAlgorithm) -> &Message_Algorithm;
+        /// Dereference Handle to get Pin<&mut Message_Algorithm>
+        fn HandleMessageAlgorithm_get_mut(
+            handle: Pin<&mut HandleMessageAlgorithm>,
+        ) -> Pin<&mut Message_Algorithm>;
         /// ======================== Message_ExecStatus ========================
         /// **Source:** `Message_ExecStatus.hxx`:40 - `Message_ExecStatus`
         ///
@@ -40544,6 +40995,14 @@ mod ffi {
         fn TColStd_HArray1OfTransient_to_handle(
             obj: UniquePtr<TColStd_HArray1OfTransient>,
         ) -> UniquePtr<HandleTColStdHArray1OfTransient>;
+        /// Dereference Handle to get &TColStd_HArray1OfTransient
+        fn HandleTColStdHArray1OfTransient_get(
+            handle: &HandleTColStdHArray1OfTransient,
+        ) -> &TColStd_HArray1OfTransient;
+        /// Dereference Handle to get Pin<&mut TColStd_HArray1OfTransient>
+        fn HandleTColStdHArray1OfTransient_get_mut(
+            handle: Pin<&mut HandleTColStdHArray1OfTransient>,
+        ) -> Pin<&mut TColStd_HArray1OfTransient>;
         /// ======================== TColStd_HSequenceOfHExtendedString ========================
         /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString`
         type TColStd_HSequenceOfHExtendedString;
@@ -40562,6 +41021,14 @@ mod ffi {
         fn TColStd_HSequenceOfHExtendedString_to_handle(
             obj: UniquePtr<TColStd_HSequenceOfHExtendedString>,
         ) -> UniquePtr<HandleTColStdHSequenceOfHExtendedString>;
+        /// Dereference Handle to get &TColStd_HSequenceOfHExtendedString
+        fn HandleTColStdHSequenceOfHExtendedString_get(
+            handle: &HandleTColStdHSequenceOfHExtendedString,
+        ) -> &TColStd_HSequenceOfHExtendedString;
+        /// Dereference Handle to get Pin<&mut TColStd_HSequenceOfHExtendedString>
+        fn HandleTColStdHSequenceOfHExtendedString_get_mut(
+            handle: Pin<&mut HandleTColStdHSequenceOfHExtendedString>,
+        ) -> Pin<&mut TColStd_HSequenceOfHExtendedString>;
         /// ======================== Message_Msg ========================
         /// **Source:** `Message_Msg.hxx`:51 - `Message_Msg`
         ///
@@ -40949,6 +41416,12 @@ mod ffi {
         fn Bnd_HArray1OfBox_to_handle(
             obj: UniquePtr<Bnd_HArray1OfBox>,
         ) -> UniquePtr<HandleBndHArray1OfBox>;
+        /// Dereference Handle to get &Bnd_HArray1OfBox
+        fn HandleBndHArray1OfBox_get(handle: &HandleBndHArray1OfBox) -> &Bnd_HArray1OfBox;
+        /// Dereference Handle to get Pin<&mut Bnd_HArray1OfBox>
+        fn HandleBndHArray1OfBox_get_mut(
+            handle: Pin<&mut HandleBndHArray1OfBox>,
+        ) -> Pin<&mut Bnd_HArray1OfBox>;
         /// ======================== IntCurveSurface_IntersectionSegment ========================
         /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:29 - `IntCurveSurface_IntersectionSegment`
         ///
@@ -41173,6 +41646,12 @@ mod ffi {
         fn BSplCLib_Cache_to_handle(
             obj: UniquePtr<BSplCLib_Cache>,
         ) -> UniquePtr<HandleBSplCLibCache>;
+        /// Dereference Handle to get &BSplCLib_Cache
+        fn HandleBSplCLibCache_get(handle: &HandleBSplCLibCache) -> &BSplCLib_Cache;
+        /// Dereference Handle to get Pin<&mut BSplCLib_Cache>
+        fn HandleBSplCLibCache_get_mut(
+            handle: Pin<&mut HandleBSplCLibCache>,
+        ) -> Pin<&mut BSplCLib_Cache>;
         /// ======================== GeomEvaluator_Curve ========================
         /// **Source:** `GeomEvaluator_Curve.hxx`:26 - `GeomEvaluator_Curve`
         ///
@@ -42584,6 +43063,12 @@ mod ffi {
         fn BSplSLib_Cache_to_handle(
             obj: UniquePtr<BSplSLib_Cache>,
         ) -> UniquePtr<HandleBSplSLibCache>;
+        /// Dereference Handle to get &BSplSLib_Cache
+        fn HandleBSplSLibCache_get(handle: &HandleBSplSLibCache) -> &BSplSLib_Cache;
+        /// Dereference Handle to get Pin<&mut BSplSLib_Cache>
+        fn HandleBSplSLibCache_get_mut(
+            handle: Pin<&mut HandleBSplSLibCache>,
+        ) -> Pin<&mut BSplSLib_Cache>;
         /// ======================== GeomEvaluator_Surface ========================
         /// **Source:** `GeomEvaluator_Surface.hxx`:26 - `GeomEvaluator_Surface`
         ///
@@ -42964,6 +43449,12 @@ mod ffi {
         fn Poly_Polygon3D_to_handle(
             obj: UniquePtr<Poly_Polygon3D>,
         ) -> UniquePtr<HandlePolyPolygon3D>;
+        /// Dereference Handle to get &Poly_Polygon3D
+        fn HandlePolyPolygon3D_get(handle: &HandlePolyPolygon3D) -> &Poly_Polygon3D;
+        /// Dereference Handle to get Pin<&mut Poly_Polygon3D>
+        fn HandlePolyPolygon3D_get_mut(
+            handle: Pin<&mut HandlePolyPolygon3D>,
+        ) -> Pin<&mut Poly_Polygon3D>;
         /// ======================== Poly_Polygon2D ========================
         /// **Source:** `Poly_Polygon2D.hxx`:31 - `Poly_Polygon2D`
         ///
@@ -43039,6 +43530,12 @@ mod ffi {
         fn Poly_Polygon2D_to_handle(
             obj: UniquePtr<Poly_Polygon2D>,
         ) -> UniquePtr<HandlePolyPolygon2D>;
+        /// Dereference Handle to get &Poly_Polygon2D
+        fn HandlePolyPolygon2D_get(handle: &HandlePolyPolygon2D) -> &Poly_Polygon2D;
+        /// Dereference Handle to get Pin<&mut Poly_Polygon2D>
+        fn HandlePolyPolygon2D_get_mut(
+            handle: Pin<&mut HandlePolyPolygon2D>,
+        ) -> Pin<&mut Poly_Polygon2D>;
         /// ======================== Poly_PolygonOnTriangulation ========================
         /// **Source:** `Poly_PolygonOnTriangulation.hxx`:40 - `Poly_PolygonOnTriangulation`
         ///
@@ -43161,6 +43658,14 @@ mod ffi {
         fn Poly_PolygonOnTriangulation_to_handle(
             obj: UniquePtr<Poly_PolygonOnTriangulation>,
         ) -> UniquePtr<HandlePolyPolygonOnTriangulation>;
+        /// Dereference Handle to get &Poly_PolygonOnTriangulation
+        fn HandlePolyPolygonOnTriangulation_get(
+            handle: &HandlePolyPolygonOnTriangulation,
+        ) -> &Poly_PolygonOnTriangulation;
+        /// Dereference Handle to get Pin<&mut Poly_PolygonOnTriangulation>
+        fn HandlePolyPolygonOnTriangulation_get_mut(
+            handle: Pin<&mut HandlePolyPolygonOnTriangulation>,
+        ) -> Pin<&mut Poly_PolygonOnTriangulation>;
         /// ======================== GC_Root ========================
         /// **Source:** `GC_Root.hxx`:32 - `GC_Root`
         ///
@@ -43212,6 +43717,14 @@ mod ffi {
         fn TColStd_HArray1OfBoolean_to_handle(
             obj: UniquePtr<TColStd_HArray1OfBoolean>,
         ) -> UniquePtr<HandleTColStdHArray1OfBoolean>;
+        /// Dereference Handle to get &TColStd_HArray1OfBoolean
+        fn HandleTColStdHArray1OfBoolean_get(
+            handle: &HandleTColStdHArray1OfBoolean,
+        ) -> &TColStd_HArray1OfBoolean;
+        /// Dereference Handle to get Pin<&mut TColStd_HArray1OfBoolean>
+        fn HandleTColStdHArray1OfBoolean_get_mut(
+            handle: Pin<&mut HandleTColStdHArray1OfBoolean>,
+        ) -> Pin<&mut TColStd_HArray1OfBoolean>;
         /// ======================== BSplSLib ========================
         /// **Source:** `BSplSLib.hxx`:86 - `BSplSLib`
         ///
@@ -44925,6 +45438,12 @@ mod ffi {
         fn Message_Report_to_handle(
             obj: UniquePtr<Message_Report>,
         ) -> UniquePtr<HandleMessageReport>;
+        /// Dereference Handle to get &Message_Report
+        fn HandleMessageReport_get(handle: &HandleMessageReport) -> &Message_Report;
+        /// Dereference Handle to get Pin<&mut Message_Report>
+        fn HandleMessageReport_get_mut(
+            handle: Pin<&mut HandleMessageReport>,
+        ) -> Pin<&mut Message_Report>;
         /// ======================== Message_Level ========================
         /// **Source:** `Message_Level.hxx`:37 - `Message_Level`
         ///
@@ -45011,6 +45530,12 @@ mod ffi {
         fn Message_Alert_get_type_descriptor() -> &'static HandleStandardType;
         /// Wrap Message_Alert in a Handle
         fn Message_Alert_to_handle(obj: UniquePtr<Message_Alert>) -> UniquePtr<HandleMessageAlert>;
+        /// Dereference Handle to get &Message_Alert
+        fn HandleMessageAlert_get(handle: &HandleMessageAlert) -> &Message_Alert;
+        /// Dereference Handle to get Pin<&mut Message_Alert>
+        fn HandleMessageAlert_get_mut(
+            handle: Pin<&mut HandleMessageAlert>,
+        ) -> Pin<&mut Message_Alert>;
         /// ======================== Message_AlertExtended ========================
         /// **Source:** `Message_AlertExtended.hxx`:30 - `Message_AlertExtended`
         ///
@@ -45771,6 +46296,12 @@ mod ffi {
         fn BRepTools_ReShape_to_handle(
             obj: UniquePtr<BRepTools_ReShape>,
         ) -> UniquePtr<HandleBRepToolsReShape>;
+        /// Dereference Handle to get &BRepTools_ReShape
+        fn HandleBRepToolsReShape_get(handle: &HandleBRepToolsReShape) -> &BRepTools_ReShape;
+        /// Dereference Handle to get Pin<&mut BRepTools_ReShape>
+        fn HandleBRepToolsReShape_get_mut(
+            handle: Pin<&mut HandleBRepToolsReShape>,
+        ) -> Pin<&mut BRepTools_ReShape>;
         /// ======================== BRepOffset_Analyse ========================
         /// **Source:** `BRepOffset_Analyse.hxx`:43 - `BRepOffset_Analyse`
         ///
@@ -46456,6 +46987,12 @@ mod ffi {
         fn BRepFill_PipeShell_to_handle(
             obj: UniquePtr<BRepFill_PipeShell>,
         ) -> UniquePtr<HandleBRepFillPipeShell>;
+        /// Dereference Handle to get &BRepFill_PipeShell
+        fn HandleBRepFillPipeShell_get(handle: &HandleBRepFillPipeShell) -> &BRepFill_PipeShell;
+        /// Dereference Handle to get Pin<&mut BRepFill_PipeShell>
+        fn HandleBRepFillPipeShell_get_mut(
+            handle: Pin<&mut HandleBRepFillPipeShell>,
+        ) -> Pin<&mut BRepFill_PipeShell>;
         /// ======================== TopTools_HArray2OfShape ========================
         /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape`
         type TopTools_HArray2OfShape;
@@ -46487,6 +47024,14 @@ mod ffi {
         fn TopTools_HArray2OfShape_to_handle(
             obj: UniquePtr<TopTools_HArray2OfShape>,
         ) -> UniquePtr<HandleTopToolsHArray2OfShape>;
+        /// Dereference Handle to get &TopTools_HArray2OfShape
+        fn HandleTopToolsHArray2OfShape_get(
+            handle: &HandleTopToolsHArray2OfShape,
+        ) -> &TopTools_HArray2OfShape;
+        /// Dereference Handle to get Pin<&mut TopTools_HArray2OfShape>
+        fn HandleTopToolsHArray2OfShape_get_mut(
+            handle: Pin<&mut HandleTopToolsHArray2OfShape>,
+        ) -> Pin<&mut TopTools_HArray2OfShape>;
         /// ======================== BRepFill_Section ========================
         /// **Source:** `BRepFill_Section.hxx`:27 - `BRepFill_Section`
         ///
@@ -46860,6 +47405,11 @@ mod ffi {
         fn MAT_BasicElt_get_type_descriptor() -> &'static HandleStandardType;
         /// Wrap MAT_BasicElt in a Handle
         fn MAT_BasicElt_to_handle(obj: UniquePtr<MAT_BasicElt>) -> UniquePtr<HandleMATBasicElt>;
+        /// Dereference Handle to get &MAT_BasicElt
+        fn HandleMATBasicElt_get(handle: &HandleMATBasicElt) -> &MAT_BasicElt;
+        /// Dereference Handle to get Pin<&mut MAT_BasicElt>
+        fn HandleMATBasicElt_get_mut(handle: Pin<&mut HandleMATBasicElt>)
+            -> Pin<&mut MAT_BasicElt>;
         /// ======================== MAT2d_Tool2d ========================
         /// **Source:** `MAT2d_Tool2d.hxx`:40 - `MAT2d_Tool2d`
         ///
@@ -47472,6 +48022,12 @@ mod ffi {
         fn ChFiDS_SecHArray1_to_handle(
             obj: UniquePtr<ChFiDS_SecHArray1>,
         ) -> UniquePtr<HandleChFiDSSecHArray1>;
+        /// Dereference Handle to get &ChFiDS_SecHArray1
+        fn HandleChFiDSSecHArray1_get(handle: &HandleChFiDSSecHArray1) -> &ChFiDS_SecHArray1;
+        /// Dereference Handle to get Pin<&mut ChFiDS_SecHArray1>
+        fn HandleChFiDSSecHArray1_get_mut(
+            handle: Pin<&mut HandleChFiDSSecHArray1>,
+        ) -> Pin<&mut ChFiDS_SecHArray1>;
         /// ======================== ChFiDS_CircSection ========================
         /// **Source:** `ChFiDS_CircSection.hxx`:28 - `ChFiDS_CircSection`
         ///
@@ -48038,6 +48594,12 @@ mod ffi {
         fn ChFiDS_SurfData_to_handle(
             obj: UniquePtr<ChFiDS_SurfData>,
         ) -> UniquePtr<HandleChFiDSSurfData>;
+        /// Dereference Handle to get &ChFiDS_SurfData
+        fn HandleChFiDSSurfData_get(handle: &HandleChFiDSSurfData) -> &ChFiDS_SurfData;
+        /// Dereference Handle to get Pin<&mut ChFiDS_SurfData>
+        fn HandleChFiDSSurfData_get_mut(
+            handle: Pin<&mut HandleChFiDSSurfData>,
+        ) -> Pin<&mut ChFiDS_SurfData>;
         /// ======================== ChFiDS_CommonPoint ========================
         /// **Source:** `ChFiDS_CommonPoint.hxx`:34 - `ChFiDS_CommonPoint`
         ///
@@ -48389,6 +48951,12 @@ mod ffi {
         fn ChFiDS_Stripe_get_type_descriptor() -> &'static HandleStandardType;
         /// Wrap ChFiDS_Stripe in a Handle
         fn ChFiDS_Stripe_to_handle(obj: UniquePtr<ChFiDS_Stripe>) -> UniquePtr<HandleChFiDSStripe>;
+        /// Dereference Handle to get &ChFiDS_Stripe
+        fn HandleChFiDSStripe_get(handle: &HandleChFiDSStripe) -> &ChFiDS_Stripe;
+        /// Dereference Handle to get Pin<&mut ChFiDS_Stripe>
+        fn HandleChFiDSStripe_get_mut(
+            handle: Pin<&mut HandleChFiDSStripe>,
+        ) -> Pin<&mut ChFiDS_Stripe>;
         /// ======================== ChFiDS_HData ========================
         /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData`
         type ChFiDS_HData;
@@ -48405,6 +48973,11 @@ mod ffi {
         fn ChFiDS_HData_get_type_descriptor() -> &'static HandleStandardType;
         /// Wrap ChFiDS_HData in a Handle
         fn ChFiDS_HData_to_handle(obj: UniquePtr<ChFiDS_HData>) -> UniquePtr<HandleChFiDSHData>;
+        /// Dereference Handle to get &ChFiDS_HData
+        fn HandleChFiDSHData_get(handle: &HandleChFiDSHData) -> &ChFiDS_HData;
+        /// Dereference Handle to get Pin<&mut ChFiDS_HData>
+        fn HandleChFiDSHData_get_mut(handle: Pin<&mut HandleChFiDSHData>)
+            -> Pin<&mut ChFiDS_HData>;
         /// ======================== BRepAdaptor_Curve2d ========================
         /// **Source:** `BRepAdaptor_Curve2d.hxx`:38 - `BRepAdaptor_Curve2d`
         ///

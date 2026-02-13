@@ -59,6 +59,18 @@ impl BasicElt {
 
 pub use crate::ffi::HandleMATBasicElt;
 
+impl HandleMATBasicElt {
+    /// Dereference this Handle to access the underlying MAT_BasicElt
+    pub fn get(&self) -> &crate::ffi::MAT_BasicElt {
+        crate::ffi::HandleMATBasicElt_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying MAT_BasicElt
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::MAT_BasicElt> {
+        crate::ffi::HandleMATBasicElt_get_mut(self)
+    }
+}
+
 // ========================
 // Additional type re-exports
 // ========================

@@ -75,6 +75,20 @@ impl BaseAllocator {
 
 pub use crate::ffi::HandleNCollectionBaseAllocator;
 
+impl HandleNCollectionBaseAllocator {
+    /// Dereference this Handle to access the underlying NCollection_BaseAllocator
+    pub fn get(&self) -> &crate::ffi::NCollection_BaseAllocator {
+        crate::ffi::HandleNCollectionBaseAllocator_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying NCollection_BaseAllocator
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::NCollection_BaseAllocator> {
+        crate::ffi::HandleNCollectionBaseAllocator_get_mut(self)
+    }
+}
+
 // ========================
 // From NCollection_BaseList.hxx
 // ========================
@@ -129,6 +143,20 @@ impl Buffer {
 }
 
 pub use crate::ffi::HandleNCollectionBuffer;
+
+impl HandleNCollectionBuffer {
+    /// Dereference this Handle to access the underlying NCollection_Buffer
+    pub fn get(&self) -> &crate::ffi::NCollection_Buffer {
+        crate::ffi::HandleNCollectionBuffer_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying NCollection_Buffer
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::NCollection_Buffer> {
+        crate::ffi::HandleNCollectionBuffer_get_mut(self)
+    }
+}
 
 // ========================
 // From NCollection_IncAllocator.hxx

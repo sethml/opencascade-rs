@@ -494,6 +494,20 @@ impl History {
 
 pub use crate::ffi::HandleBRepToolsHistory;
 
+impl HandleBRepToolsHistory {
+    /// Dereference this Handle to access the underlying BRepTools_History
+    pub fn get(&self) -> &crate::ffi::BRepTools_History {
+        crate::ffi::HandleBRepToolsHistory_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepTools_History
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepTools_History> {
+        crate::ffi::HandleBRepToolsHistory_get_mut(self)
+    }
+}
+
 // ========================
 // From BRepTools_Modifier.hxx
 // ========================
@@ -603,6 +617,20 @@ impl ReShape {
 }
 
 pub use crate::ffi::HandleBRepToolsReShape;
+
+impl HandleBRepToolsReShape {
+    /// Dereference this Handle to access the underlying BRepTools_ReShape
+    pub fn get(&self) -> &crate::ffi::BRepTools_ReShape {
+        crate::ffi::HandleBRepToolsReShape_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepTools_ReShape
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepTools_ReShape> {
+        crate::ffi::HandleBRepToolsReShape_get_mut(self)
+    }
+}
 
 // ========================
 // Additional type re-exports

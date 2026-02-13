@@ -413,6 +413,18 @@ impl BSplineCurve {
 pub use crate::ffi::HandleGeomBSplineCurve;
 
 impl HandleGeomBSplineCurve {
+    /// Dereference this Handle to access the underlying Geom_BSplineCurve
+    pub fn get(&self) -> &crate::ffi::Geom_BSplineCurve {
+        crate::ffi::HandleGeomBSplineCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_BSplineCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_BSplineCurve> {
+        crate::ffi::HandleGeomBSplineCurve_get_mut(self)
+    }
+
     /// Upcast Handle<Geom_BSplineCurve> to Handle<Geom_BoundedCurve>
     pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBoundedCurve> {
         crate::ffi::HandleGeomBSplineCurve_to_HandleGeomBoundedCurve(self)
@@ -932,6 +944,18 @@ impl BSplineSurface {
 pub use crate::ffi::HandleGeomBSplineSurface;
 
 impl HandleGeomBSplineSurface {
+    /// Dereference this Handle to access the underlying Geom_BSplineSurface
+    pub fn get(&self) -> &crate::ffi::Geom_BSplineSurface {
+        crate::ffi::HandleGeomBSplineSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_BSplineSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_BSplineSurface> {
+        crate::ffi::HandleGeomBSplineSurface_get_mut(self)
+    }
+
     /// Upcast Handle<Geom_BSplineSurface> to Handle<Geom_BoundedSurface>
     pub fn to_handle_bounded_surface(
         &self,
@@ -1196,6 +1220,18 @@ impl BezierCurve {
 pub use crate::ffi::HandleGeomBezierCurve;
 
 impl HandleGeomBezierCurve {
+    /// Dereference this Handle to access the underlying Geom_BezierCurve
+    pub fn get(&self) -> &crate::ffi::Geom_BezierCurve {
+        crate::ffi::HandleGeomBezierCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_BezierCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_BezierCurve> {
+        crate::ffi::HandleGeomBezierCurve_get_mut(self)
+    }
+
     /// Upcast Handle<Geom_BezierCurve> to Handle<Geom_BoundedCurve>
     pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBoundedCurve> {
         crate::ffi::HandleGeomBezierCurve_to_HandleGeomBoundedCurve(self)
@@ -1513,6 +1549,18 @@ impl BezierSurface {
 pub use crate::ffi::HandleGeomBezierSurface;
 
 impl HandleGeomBezierSurface {
+    /// Dereference this Handle to access the underlying Geom_BezierSurface
+    pub fn get(&self) -> &crate::ffi::Geom_BezierSurface {
+        crate::ffi::HandleGeomBezierSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_BezierSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_BezierSurface> {
+        crate::ffi::HandleGeomBezierSurface_get_mut(self)
+    }
+
     /// Upcast Handle<Geom_BezierSurface> to Handle<Geom_BoundedSurface>
     pub fn to_handle_bounded_surface(
         &self,
@@ -2505,6 +2553,18 @@ impl CylindricalSurface {
 pub use crate::ffi::HandleGeomCylindricalSurface;
 
 impl HandleGeomCylindricalSurface {
+    /// Dereference this Handle to access the underlying Geom_CylindricalSurface
+    pub fn get(&self) -> &crate::ffi::Geom_CylindricalSurface {
+        crate::ffi::HandleGeomCylindricalSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_CylindricalSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_CylindricalSurface> {
+        crate::ffi::HandleGeomCylindricalSurface_get_mut(self)
+    }
+
     /// Upcast Handle<Geom_CylindricalSurface> to Handle<Geom_ElementarySurface>
     pub fn to_handle_elementary_surface(
         &self,
@@ -3177,6 +3237,16 @@ impl Plane {
 pub use crate::ffi::HandleGeomPlane;
 
 impl HandleGeomPlane {
+    /// Dereference this Handle to access the underlying Geom_Plane
+    pub fn get(&self) -> &crate::ffi::Geom_Plane {
+        crate::ffi::HandleGeomPlane_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Plane
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom_Plane> {
+        crate::ffi::HandleGeomPlane_get_mut(self)
+    }
+
     /// Upcast Handle<Geom_Plane> to Handle<Geom_ElementarySurface>
     pub fn to_handle_elementary_surface(
         &self,
@@ -3630,6 +3700,18 @@ impl TrimmedCurve {
 pub use crate::ffi::HandleGeomTrimmedCurve;
 
 impl HandleGeomTrimmedCurve {
+    /// Dereference this Handle to access the underlying Geom_TrimmedCurve
+    pub fn get(&self) -> &crate::ffi::Geom_TrimmedCurve {
+        crate::ffi::HandleGeomTrimmedCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_TrimmedCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_TrimmedCurve> {
+        crate::ffi::HandleGeomTrimmedCurve_get_mut(self)
+    }
+
     /// Upcast Handle<Geom_TrimmedCurve> to Handle<Geom_BoundedCurve>
     pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBoundedCurve> {
         crate::ffi::HandleGeomTrimmedCurve_to_HandleGeomBoundedCurve(self)

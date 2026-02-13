@@ -3599,6 +3599,8 @@ inline const opencascade::handle<Standard_Type>& BRepBuilderAPI_Sewing_get_type_
 inline std::unique_ptr<HandleBRepBuilderAPISewing> BRepBuilderAPI_Sewing_to_handle(std::unique_ptr<BRepBuilderAPI_Sewing> obj) {
     return std::make_unique<HandleBRepBuilderAPISewing>(obj.release());
 }
+inline const BRepBuilderAPI_Sewing& HandleBRepBuilderAPISewing_get(const HandleBRepBuilderAPISewing& handle) { return *handle; }
+inline BRepBuilderAPI_Sewing& HandleBRepBuilderAPISewing_get_mut(HandleBRepBuilderAPISewing& handle) { return *handle; }
 
 // ========================
 // BRepBuilderAPI_Transform wrappers
@@ -5332,6 +5334,8 @@ inline const opencascade::handle<Standard_Type>& TopTools_HSequenceOfShape_get_t
 inline std::unique_ptr<HandleTopToolsHSequenceOfShape> TopTools_HSequenceOfShape_to_handle(std::unique_ptr<TopTools_HSequenceOfShape> obj) {
     return std::make_unique<HandleTopToolsHSequenceOfShape>(obj.release());
 }
+inline const TopTools_HSequenceOfShape& HandleTopToolsHSequenceOfShape_get(const HandleTopToolsHSequenceOfShape& handle) { return *handle; }
+inline TopTools_HSequenceOfShape& HandleTopToolsHSequenceOfShape_get_mut(HandleTopToolsHSequenceOfShape& handle) { return *handle; }
 
 // ========================
 // Geom_Geometry wrappers
@@ -5857,6 +5861,8 @@ inline Geom_Geometry& Geom_BezierCurve_as_Geom_Geometry_mut(Geom_BezierCurve& se
 inline std::unique_ptr<HandleGeomBezierCurve> Geom_BezierCurve_to_handle(std::unique_ptr<Geom_BezierCurve> obj) {
     return std::make_unique<HandleGeomBezierCurve>(obj.release());
 }
+inline const Geom_BezierCurve& HandleGeomBezierCurve_get(const HandleGeomBezierCurve& handle) { return *handle; }
+inline Geom_BezierCurve& HandleGeomBezierCurve_get_mut(HandleGeomBezierCurve& handle) { return *handle; }
 inline std::unique_ptr<HandleGeomBoundedCurve> HandleGeomBezierCurve_to_HandleGeomBoundedCurve(const HandleGeomBezierCurve& self_) {
     return std::make_unique<HandleGeomBoundedCurve>(self_);
 }
@@ -5949,6 +5955,8 @@ inline Geom_Surface& Geom_BezierSurface_as_Geom_Surface_mut(Geom_BezierSurface& 
 inline std::unique_ptr<HandleGeomBezierSurface> Geom_BezierSurface_to_handle(std::unique_ptr<Geom_BezierSurface> obj) {
     return std::make_unique<HandleGeomBezierSurface>(obj.release());
 }
+inline const Geom_BezierSurface& HandleGeomBezierSurface_get(const HandleGeomBezierSurface& handle) { return *handle; }
+inline Geom_BezierSurface& HandleGeomBezierSurface_get_mut(HandleGeomBezierSurface& handle) { return *handle; }
 inline std::unique_ptr<HandleGeomBoundedSurface> HandleGeomBezierSurface_to_HandleGeomBoundedSurface(const HandleGeomBezierSurface& self_) {
     return std::make_unique<HandleGeomBoundedSurface>(self_);
 }
@@ -6056,6 +6064,8 @@ inline Geom_Geometry& Geom_BSplineCurve_as_Geom_Geometry_mut(Geom_BSplineCurve& 
 inline std::unique_ptr<HandleGeomBSplineCurve> Geom_BSplineCurve_to_handle(std::unique_ptr<Geom_BSplineCurve> obj) {
     return std::make_unique<HandleGeomBSplineCurve>(obj.release());
 }
+inline const Geom_BSplineCurve& HandleGeomBSplineCurve_get(const HandleGeomBSplineCurve& handle) { return *handle; }
+inline Geom_BSplineCurve& HandleGeomBSplineCurve_get_mut(HandleGeomBSplineCurve& handle) { return *handle; }
 inline std::unique_ptr<HandleGeomBoundedCurve> HandleGeomBSplineCurve_to_HandleGeomBoundedCurve(const HandleGeomBSplineCurve& self_) {
     return std::make_unique<HandleGeomBoundedCurve>(self_);
 }
@@ -6166,6 +6176,8 @@ inline Geom_Surface& Geom_BSplineSurface_as_Geom_Surface_mut(Geom_BSplineSurface
 inline std::unique_ptr<HandleGeomBSplineSurface> Geom_BSplineSurface_to_handle(std::unique_ptr<Geom_BSplineSurface> obj) {
     return std::make_unique<HandleGeomBSplineSurface>(obj.release());
 }
+inline const Geom_BSplineSurface& HandleGeomBSplineSurface_get(const HandleGeomBSplineSurface& handle) { return *handle; }
+inline Geom_BSplineSurface& HandleGeomBSplineSurface_get_mut(HandleGeomBSplineSurface& handle) { return *handle; }
 inline std::unique_ptr<HandleGeomBoundedSurface> HandleGeomBSplineSurface_to_HandleGeomBoundedSurface(const HandleGeomBSplineSurface& self_) {
     return std::make_unique<HandleGeomBoundedSurface>(self_);
 }
@@ -6264,6 +6276,8 @@ inline Geom_Surface& Geom_CylindricalSurface_as_Geom_Surface_mut(Geom_Cylindrica
 inline std::unique_ptr<HandleGeomCylindricalSurface> Geom_CylindricalSurface_to_handle(std::unique_ptr<Geom_CylindricalSurface> obj) {
     return std::make_unique<HandleGeomCylindricalSurface>(obj.release());
 }
+inline const Geom_CylindricalSurface& HandleGeomCylindricalSurface_get(const HandleGeomCylindricalSurface& handle) { return *handle; }
+inline Geom_CylindricalSurface& HandleGeomCylindricalSurface_get_mut(HandleGeomCylindricalSurface& handle) { return *handle; }
 inline std::unique_ptr<HandleGeomElementarySurface> HandleGeomCylindricalSurface_to_HandleGeomElementarySurface(const HandleGeomCylindricalSurface& self_) {
     return std::make_unique<HandleGeomElementarySurface>(self_);
 }
@@ -6392,6 +6406,8 @@ inline Geom_Surface& Geom_Plane_as_Geom_Surface_mut(Geom_Plane& self_) { return 
 inline std::unique_ptr<HandleGeomPlane> Geom_Plane_to_handle(std::unique_ptr<Geom_Plane> obj) {
     return std::make_unique<HandleGeomPlane>(obj.release());
 }
+inline const Geom_Plane& HandleGeomPlane_get(const HandleGeomPlane& handle) { return *handle; }
+inline Geom_Plane& HandleGeomPlane_get_mut(HandleGeomPlane& handle) { return *handle; }
 inline std::unique_ptr<HandleGeomElementarySurface> HandleGeomPlane_to_HandleGeomElementarySurface(const HandleGeomPlane& self_) {
     return std::make_unique<HandleGeomElementarySurface>(self_);
 }
@@ -6505,6 +6521,8 @@ inline Geom_Geometry& Geom_TrimmedCurve_as_Geom_Geometry_mut(Geom_TrimmedCurve& 
 inline std::unique_ptr<HandleGeomTrimmedCurve> Geom_TrimmedCurve_to_handle(std::unique_ptr<Geom_TrimmedCurve> obj) {
     return std::make_unique<HandleGeomTrimmedCurve>(obj.release());
 }
+inline const Geom_TrimmedCurve& HandleGeomTrimmedCurve_get(const HandleGeomTrimmedCurve& handle) { return *handle; }
+inline Geom_TrimmedCurve& HandleGeomTrimmedCurve_get_mut(HandleGeomTrimmedCurve& handle) { return *handle; }
 inline std::unique_ptr<HandleGeomBoundedCurve> HandleGeomTrimmedCurve_to_HandleGeomBoundedCurve(const HandleGeomTrimmedCurve& self_) {
     return std::make_unique<HandleGeomBoundedCurve>(self_);
 }
@@ -6879,6 +6897,8 @@ inline Geom2d_Geometry& Geom2d_Ellipse_as_Geom2d_Geometry_mut(Geom2d_Ellipse& se
 inline std::unique_ptr<HandleGeom2dEllipse> Geom2d_Ellipse_to_handle(std::unique_ptr<Geom2d_Ellipse> obj) {
     return std::make_unique<HandleGeom2dEllipse>(obj.release());
 }
+inline const Geom2d_Ellipse& HandleGeom2dEllipse_get(const HandleGeom2dEllipse& handle) { return *handle; }
+inline Geom2d_Ellipse& HandleGeom2dEllipse_get_mut(HandleGeom2dEllipse& handle) { return *handle; }
 inline std::unique_ptr<HandleGeom2dConic> HandleGeom2dEllipse_to_HandleGeom2dConic(const HandleGeom2dEllipse& self_) {
     return std::make_unique<HandleGeom2dConic>(self_);
 }
@@ -6998,6 +7018,8 @@ inline Geom2d_Geometry& Geom2d_TrimmedCurve_as_Geom2d_Geometry_mut(Geom2d_Trimme
 inline std::unique_ptr<HandleGeom2dTrimmedCurve> Geom2d_TrimmedCurve_to_handle(std::unique_ptr<Geom2d_TrimmedCurve> obj) {
     return std::make_unique<HandleGeom2dTrimmedCurve>(obj.release());
 }
+inline const Geom2d_TrimmedCurve& HandleGeom2dTrimmedCurve_get(const HandleGeom2dTrimmedCurve& handle) { return *handle; }
+inline Geom2d_TrimmedCurve& HandleGeom2dTrimmedCurve_get_mut(HandleGeom2dTrimmedCurve& handle) { return *handle; }
 inline std::unique_ptr<HandleGeom2dBoundedCurve> HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve(const HandleGeom2dTrimmedCurve& self_) {
     return std::make_unique<HandleGeom2dBoundedCurve>(self_);
 }
@@ -7695,6 +7717,8 @@ inline Law_Function& Law_BSpFunc_as_Law_Function_mut(Law_BSpFunc& self_) { retur
 inline std::unique_ptr<HandleLawBSpFunc> Law_BSpFunc_to_handle(std::unique_ptr<Law_BSpFunc> obj) {
     return std::make_unique<HandleLawBSpFunc>(obj.release());
 }
+inline const Law_BSpFunc& HandleLawBSpFunc_get(const HandleLawBSpFunc& handle) { return *handle; }
+inline Law_BSpFunc& HandleLawBSpFunc_get_mut(HandleLawBSpFunc& handle) { return *handle; }
 inline std::unique_ptr<HandleLawFunction> HandleLawBSpFunc_to_HandleLawFunction(const HandleLawBSpFunc& self_) {
     return std::make_unique<HandleLawFunction>(self_);
 }
@@ -7716,6 +7740,8 @@ inline Law_Function& Law_Interpol_as_Law_Function_mut(Law_Interpol& self_) { ret
 inline std::unique_ptr<HandleLawInterpol> Law_Interpol_to_handle(std::unique_ptr<Law_Interpol> obj) {
     return std::make_unique<HandleLawInterpol>(obj.release());
 }
+inline const Law_Interpol& HandleLawInterpol_get(const HandleLawInterpol& handle) { return *handle; }
+inline Law_Interpol& HandleLawInterpol_get_mut(HandleLawInterpol& handle) { return *handle; }
 inline std::unique_ptr<HandleLawBSpFunc> HandleLawInterpol_to_HandleLawBSpFunc(const HandleLawInterpol& self_) {
     return std::make_unique<HandleLawBSpFunc>(self_);
 }
@@ -7787,6 +7813,8 @@ inline const opencascade::handle<Standard_Type>& Poly_Triangulation_get_type_des
 inline std::unique_ptr<HandlePolyTriangulation> Poly_Triangulation_to_handle(std::unique_ptr<Poly_Triangulation> obj) {
     return std::make_unique<HandlePolyTriangulation>(obj.release());
 }
+inline const Poly_Triangulation& HandlePolyTriangulation_get(const HandlePolyTriangulation& handle) { return *handle; }
+inline Poly_Triangulation& HandlePolyTriangulation_get_mut(HandlePolyTriangulation& handle) { return *handle; }
 
 // ========================
 // ShapeUpgrade_UnifySameDomain wrappers
@@ -7804,6 +7832,8 @@ inline const opencascade::handle<Standard_Type>& ShapeUpgrade_UnifySameDomain_ge
 inline std::unique_ptr<HandleShapeUpgradeUnifySameDomain> ShapeUpgrade_UnifySameDomain_to_handle(std::unique_ptr<ShapeUpgrade_UnifySameDomain> obj) {
     return std::make_unique<HandleShapeUpgradeUnifySameDomain>(obj.release());
 }
+inline const ShapeUpgrade_UnifySameDomain& HandleShapeUpgradeUnifySameDomain_get(const HandleShapeUpgradeUnifySameDomain& handle) { return *handle; }
+inline ShapeUpgrade_UnifySameDomain& HandleShapeUpgradeUnifySameDomain_get_mut(HandleShapeUpgradeUnifySameDomain& handle) { return *handle; }
 
 // ========================
 // ShapeAnalysis_FreeBounds wrappers
@@ -7859,6 +7889,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfCirc2d_get_type
 inline std::unique_ptr<HandleTColgpHArray1OfCirc2d> TColgp_HArray1OfCirc2d_to_handle(std::unique_ptr<TColgp_HArray1OfCirc2d> obj) {
     return std::make_unique<HandleTColgpHArray1OfCirc2d>(obj.release());
 }
+inline const TColgp_HArray1OfCirc2d& HandleTColgpHArray1OfCirc2d_get(const HandleTColgpHArray1OfCirc2d& handle) { return *handle; }
+inline TColgp_HArray1OfCirc2d& HandleTColgpHArray1OfCirc2d_get_mut(HandleTColgpHArray1OfCirc2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray1OfDir wrappers
@@ -7885,6 +7917,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfDir_get_type_de
 inline std::unique_ptr<HandleTColgpHArray1OfDir> TColgp_HArray1OfDir_to_handle(std::unique_ptr<TColgp_HArray1OfDir> obj) {
     return std::make_unique<HandleTColgpHArray1OfDir>(obj.release());
 }
+inline const TColgp_HArray1OfDir& HandleTColgpHArray1OfDir_get(const HandleTColgpHArray1OfDir& handle) { return *handle; }
+inline TColgp_HArray1OfDir& HandleTColgpHArray1OfDir_get_mut(HandleTColgpHArray1OfDir& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray1OfDir2d wrappers
@@ -7911,6 +7945,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfDir2d_get_type_
 inline std::unique_ptr<HandleTColgpHArray1OfDir2d> TColgp_HArray1OfDir2d_to_handle(std::unique_ptr<TColgp_HArray1OfDir2d> obj) {
     return std::make_unique<HandleTColgpHArray1OfDir2d>(obj.release());
 }
+inline const TColgp_HArray1OfDir2d& HandleTColgpHArray1OfDir2d_get(const HandleTColgpHArray1OfDir2d& handle) { return *handle; }
+inline TColgp_HArray1OfDir2d& HandleTColgpHArray1OfDir2d_get_mut(HandleTColgpHArray1OfDir2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray1OfLin2d wrappers
@@ -7937,6 +7973,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfLin2d_get_type_
 inline std::unique_ptr<HandleTColgpHArray1OfLin2d> TColgp_HArray1OfLin2d_to_handle(std::unique_ptr<TColgp_HArray1OfLin2d> obj) {
     return std::make_unique<HandleTColgpHArray1OfLin2d>(obj.release());
 }
+inline const TColgp_HArray1OfLin2d& HandleTColgpHArray1OfLin2d_get(const HandleTColgpHArray1OfLin2d& handle) { return *handle; }
+inline TColgp_HArray1OfLin2d& HandleTColgpHArray1OfLin2d_get_mut(HandleTColgpHArray1OfLin2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray1OfPnt wrappers
@@ -7963,6 +8001,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfPnt_get_type_de
 inline std::unique_ptr<HandleTColgpHArray1OfPnt> TColgp_HArray1OfPnt_to_handle(std::unique_ptr<TColgp_HArray1OfPnt> obj) {
     return std::make_unique<HandleTColgpHArray1OfPnt>(obj.release());
 }
+inline const TColgp_HArray1OfPnt& HandleTColgpHArray1OfPnt_get(const HandleTColgpHArray1OfPnt& handle) { return *handle; }
+inline TColgp_HArray1OfPnt& HandleTColgpHArray1OfPnt_get_mut(HandleTColgpHArray1OfPnt& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray1OfPnt2d wrappers
@@ -7989,6 +8029,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfPnt2d_get_type_
 inline std::unique_ptr<HandleTColgpHArray1OfPnt2d> TColgp_HArray1OfPnt2d_to_handle(std::unique_ptr<TColgp_HArray1OfPnt2d> obj) {
     return std::make_unique<HandleTColgpHArray1OfPnt2d>(obj.release());
 }
+inline const TColgp_HArray1OfPnt2d& HandleTColgpHArray1OfPnt2d_get(const HandleTColgpHArray1OfPnt2d& handle) { return *handle; }
+inline TColgp_HArray1OfPnt2d& HandleTColgpHArray1OfPnt2d_get_mut(HandleTColgpHArray1OfPnt2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray1OfVec wrappers
@@ -8015,6 +8057,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfVec_get_type_de
 inline std::unique_ptr<HandleTColgpHArray1OfVec> TColgp_HArray1OfVec_to_handle(std::unique_ptr<TColgp_HArray1OfVec> obj) {
     return std::make_unique<HandleTColgpHArray1OfVec>(obj.release());
 }
+inline const TColgp_HArray1OfVec& HandleTColgpHArray1OfVec_get(const HandleTColgpHArray1OfVec& handle) { return *handle; }
+inline TColgp_HArray1OfVec& HandleTColgpHArray1OfVec_get_mut(HandleTColgpHArray1OfVec& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray1OfVec2d wrappers
@@ -8041,6 +8085,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfVec2d_get_type_
 inline std::unique_ptr<HandleTColgpHArray1OfVec2d> TColgp_HArray1OfVec2d_to_handle(std::unique_ptr<TColgp_HArray1OfVec2d> obj) {
     return std::make_unique<HandleTColgpHArray1OfVec2d>(obj.release());
 }
+inline const TColgp_HArray1OfVec2d& HandleTColgpHArray1OfVec2d_get(const HandleTColgpHArray1OfVec2d& handle) { return *handle; }
+inline TColgp_HArray1OfVec2d& HandleTColgpHArray1OfVec2d_get_mut(HandleTColgpHArray1OfVec2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray1OfXY wrappers
@@ -8067,6 +8113,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfXY_get_type_des
 inline std::unique_ptr<HandleTColgpHArray1OfXY> TColgp_HArray1OfXY_to_handle(std::unique_ptr<TColgp_HArray1OfXY> obj) {
     return std::make_unique<HandleTColgpHArray1OfXY>(obj.release());
 }
+inline const TColgp_HArray1OfXY& HandleTColgpHArray1OfXY_get(const HandleTColgpHArray1OfXY& handle) { return *handle; }
+inline TColgp_HArray1OfXY& HandleTColgpHArray1OfXY_get_mut(HandleTColgpHArray1OfXY& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray1OfXYZ wrappers
@@ -8093,6 +8141,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfXYZ_get_type_de
 inline std::unique_ptr<HandleTColgpHArray1OfXYZ> TColgp_HArray1OfXYZ_to_handle(std::unique_ptr<TColgp_HArray1OfXYZ> obj) {
     return std::make_unique<HandleTColgpHArray1OfXYZ>(obj.release());
 }
+inline const TColgp_HArray1OfXYZ& HandleTColgpHArray1OfXYZ_get(const HandleTColgpHArray1OfXYZ& handle) { return *handle; }
+inline TColgp_HArray1OfXYZ& HandleTColgpHArray1OfXYZ_get_mut(HandleTColgpHArray1OfXYZ& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray2OfCirc2d wrappers
@@ -8113,6 +8163,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfCirc2d_get_type
 inline std::unique_ptr<HandleTColgpHArray2OfCirc2d> TColgp_HArray2OfCirc2d_to_handle(std::unique_ptr<TColgp_HArray2OfCirc2d> obj) {
     return std::make_unique<HandleTColgpHArray2OfCirc2d>(obj.release());
 }
+inline const TColgp_HArray2OfCirc2d& HandleTColgpHArray2OfCirc2d_get(const HandleTColgpHArray2OfCirc2d& handle) { return *handle; }
+inline TColgp_HArray2OfCirc2d& HandleTColgpHArray2OfCirc2d_get_mut(HandleTColgpHArray2OfCirc2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray2OfDir wrappers
@@ -8133,6 +8185,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfDir_get_type_de
 inline std::unique_ptr<HandleTColgpHArray2OfDir> TColgp_HArray2OfDir_to_handle(std::unique_ptr<TColgp_HArray2OfDir> obj) {
     return std::make_unique<HandleTColgpHArray2OfDir>(obj.release());
 }
+inline const TColgp_HArray2OfDir& HandleTColgpHArray2OfDir_get(const HandleTColgpHArray2OfDir& handle) { return *handle; }
+inline TColgp_HArray2OfDir& HandleTColgpHArray2OfDir_get_mut(HandleTColgpHArray2OfDir& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray2OfDir2d wrappers
@@ -8153,6 +8207,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfDir2d_get_type_
 inline std::unique_ptr<HandleTColgpHArray2OfDir2d> TColgp_HArray2OfDir2d_to_handle(std::unique_ptr<TColgp_HArray2OfDir2d> obj) {
     return std::make_unique<HandleTColgpHArray2OfDir2d>(obj.release());
 }
+inline const TColgp_HArray2OfDir2d& HandleTColgpHArray2OfDir2d_get(const HandleTColgpHArray2OfDir2d& handle) { return *handle; }
+inline TColgp_HArray2OfDir2d& HandleTColgpHArray2OfDir2d_get_mut(HandleTColgpHArray2OfDir2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray2OfLin2d wrappers
@@ -8173,6 +8229,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfLin2d_get_type_
 inline std::unique_ptr<HandleTColgpHArray2OfLin2d> TColgp_HArray2OfLin2d_to_handle(std::unique_ptr<TColgp_HArray2OfLin2d> obj) {
     return std::make_unique<HandleTColgpHArray2OfLin2d>(obj.release());
 }
+inline const TColgp_HArray2OfLin2d& HandleTColgpHArray2OfLin2d_get(const HandleTColgpHArray2OfLin2d& handle) { return *handle; }
+inline TColgp_HArray2OfLin2d& HandleTColgpHArray2OfLin2d_get_mut(HandleTColgpHArray2OfLin2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray2OfPnt wrappers
@@ -8193,6 +8251,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfPnt_get_type_de
 inline std::unique_ptr<HandleTColgpHArray2OfPnt> TColgp_HArray2OfPnt_to_handle(std::unique_ptr<TColgp_HArray2OfPnt> obj) {
     return std::make_unique<HandleTColgpHArray2OfPnt>(obj.release());
 }
+inline const TColgp_HArray2OfPnt& HandleTColgpHArray2OfPnt_get(const HandleTColgpHArray2OfPnt& handle) { return *handle; }
+inline TColgp_HArray2OfPnt& HandleTColgpHArray2OfPnt_get_mut(HandleTColgpHArray2OfPnt& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray2OfPnt2d wrappers
@@ -8213,6 +8273,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfPnt2d_get_type_
 inline std::unique_ptr<HandleTColgpHArray2OfPnt2d> TColgp_HArray2OfPnt2d_to_handle(std::unique_ptr<TColgp_HArray2OfPnt2d> obj) {
     return std::make_unique<HandleTColgpHArray2OfPnt2d>(obj.release());
 }
+inline const TColgp_HArray2OfPnt2d& HandleTColgpHArray2OfPnt2d_get(const HandleTColgpHArray2OfPnt2d& handle) { return *handle; }
+inline TColgp_HArray2OfPnt2d& HandleTColgpHArray2OfPnt2d_get_mut(HandleTColgpHArray2OfPnt2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray2OfVec wrappers
@@ -8233,6 +8295,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfVec_get_type_de
 inline std::unique_ptr<HandleTColgpHArray2OfVec> TColgp_HArray2OfVec_to_handle(std::unique_ptr<TColgp_HArray2OfVec> obj) {
     return std::make_unique<HandleTColgpHArray2OfVec>(obj.release());
 }
+inline const TColgp_HArray2OfVec& HandleTColgpHArray2OfVec_get(const HandleTColgpHArray2OfVec& handle) { return *handle; }
+inline TColgp_HArray2OfVec& HandleTColgpHArray2OfVec_get_mut(HandleTColgpHArray2OfVec& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray2OfVec2d wrappers
@@ -8253,6 +8317,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfVec2d_get_type_
 inline std::unique_ptr<HandleTColgpHArray2OfVec2d> TColgp_HArray2OfVec2d_to_handle(std::unique_ptr<TColgp_HArray2OfVec2d> obj) {
     return std::make_unique<HandleTColgpHArray2OfVec2d>(obj.release());
 }
+inline const TColgp_HArray2OfVec2d& HandleTColgpHArray2OfVec2d_get(const HandleTColgpHArray2OfVec2d& handle) { return *handle; }
+inline TColgp_HArray2OfVec2d& HandleTColgpHArray2OfVec2d_get_mut(HandleTColgpHArray2OfVec2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray2OfXY wrappers
@@ -8273,6 +8339,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfXY_get_type_des
 inline std::unique_ptr<HandleTColgpHArray2OfXY> TColgp_HArray2OfXY_to_handle(std::unique_ptr<TColgp_HArray2OfXY> obj) {
     return std::make_unique<HandleTColgpHArray2OfXY>(obj.release());
 }
+inline const TColgp_HArray2OfXY& HandleTColgpHArray2OfXY_get(const HandleTColgpHArray2OfXY& handle) { return *handle; }
+inline TColgp_HArray2OfXY& HandleTColgpHArray2OfXY_get_mut(HandleTColgpHArray2OfXY& handle) { return *handle; }
 
 // ========================
 // TColgp_HArray2OfXYZ wrappers
@@ -8293,6 +8361,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfXYZ_get_type_de
 inline std::unique_ptr<HandleTColgpHArray2OfXYZ> TColgp_HArray2OfXYZ_to_handle(std::unique_ptr<TColgp_HArray2OfXYZ> obj) {
     return std::make_unique<HandleTColgpHArray2OfXYZ>(obj.release());
 }
+inline const TColgp_HArray2OfXYZ& HandleTColgpHArray2OfXYZ_get(const HandleTColgpHArray2OfXYZ& handle) { return *handle; }
+inline TColgp_HArray2OfXYZ& HandleTColgpHArray2OfXYZ_get_mut(HandleTColgpHArray2OfXYZ& handle) { return *handle; }
 
 // ========================
 // TColgp_HSequenceOfPnt wrappers
@@ -8310,6 +8380,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfPnt_get_type_
 inline std::unique_ptr<HandleTColgpHSequenceOfPnt> TColgp_HSequenceOfPnt_to_handle(std::unique_ptr<TColgp_HSequenceOfPnt> obj) {
     return std::make_unique<HandleTColgpHSequenceOfPnt>(obj.release());
 }
+inline const TColgp_HSequenceOfPnt& HandleTColgpHSequenceOfPnt_get(const HandleTColgpHSequenceOfPnt& handle) { return *handle; }
+inline TColgp_HSequenceOfPnt& HandleTColgpHSequenceOfPnt_get_mut(HandleTColgpHSequenceOfPnt& handle) { return *handle; }
 
 // ========================
 // TColgp_HSequenceOfPnt2d wrappers
@@ -8327,6 +8399,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfPnt2d_get_typ
 inline std::unique_ptr<HandleTColgpHSequenceOfPnt2d> TColgp_HSequenceOfPnt2d_to_handle(std::unique_ptr<TColgp_HSequenceOfPnt2d> obj) {
     return std::make_unique<HandleTColgpHSequenceOfPnt2d>(obj.release());
 }
+inline const TColgp_HSequenceOfPnt2d& HandleTColgpHSequenceOfPnt2d_get(const HandleTColgpHSequenceOfPnt2d& handle) { return *handle; }
+inline TColgp_HSequenceOfPnt2d& HandleTColgpHSequenceOfPnt2d_get_mut(HandleTColgpHSequenceOfPnt2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HSequenceOfDir wrappers
@@ -8344,6 +8418,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfDir_get_type_
 inline std::unique_ptr<HandleTColgpHSequenceOfDir> TColgp_HSequenceOfDir_to_handle(std::unique_ptr<TColgp_HSequenceOfDir> obj) {
     return std::make_unique<HandleTColgpHSequenceOfDir>(obj.release());
 }
+inline const TColgp_HSequenceOfDir& HandleTColgpHSequenceOfDir_get(const HandleTColgpHSequenceOfDir& handle) { return *handle; }
+inline TColgp_HSequenceOfDir& HandleTColgpHSequenceOfDir_get_mut(HandleTColgpHSequenceOfDir& handle) { return *handle; }
 
 // ========================
 // TColgp_HSequenceOfDir2d wrappers
@@ -8361,6 +8437,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfDir2d_get_typ
 inline std::unique_ptr<HandleTColgpHSequenceOfDir2d> TColgp_HSequenceOfDir2d_to_handle(std::unique_ptr<TColgp_HSequenceOfDir2d> obj) {
     return std::make_unique<HandleTColgpHSequenceOfDir2d>(obj.release());
 }
+inline const TColgp_HSequenceOfDir2d& HandleTColgpHSequenceOfDir2d_get(const HandleTColgpHSequenceOfDir2d& handle) { return *handle; }
+inline TColgp_HSequenceOfDir2d& HandleTColgpHSequenceOfDir2d_get_mut(HandleTColgpHSequenceOfDir2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HSequenceOfVec wrappers
@@ -8378,6 +8456,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfVec_get_type_
 inline std::unique_ptr<HandleTColgpHSequenceOfVec> TColgp_HSequenceOfVec_to_handle(std::unique_ptr<TColgp_HSequenceOfVec> obj) {
     return std::make_unique<HandleTColgpHSequenceOfVec>(obj.release());
 }
+inline const TColgp_HSequenceOfVec& HandleTColgpHSequenceOfVec_get(const HandleTColgpHSequenceOfVec& handle) { return *handle; }
+inline TColgp_HSequenceOfVec& HandleTColgpHSequenceOfVec_get_mut(HandleTColgpHSequenceOfVec& handle) { return *handle; }
 
 // ========================
 // TColgp_HSequenceOfVec2d wrappers
@@ -8395,6 +8475,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfVec2d_get_typ
 inline std::unique_ptr<HandleTColgpHSequenceOfVec2d> TColgp_HSequenceOfVec2d_to_handle(std::unique_ptr<TColgp_HSequenceOfVec2d> obj) {
     return std::make_unique<HandleTColgpHSequenceOfVec2d>(obj.release());
 }
+inline const TColgp_HSequenceOfVec2d& HandleTColgpHSequenceOfVec2d_get(const HandleTColgpHSequenceOfVec2d& handle) { return *handle; }
+inline TColgp_HSequenceOfVec2d& HandleTColgpHSequenceOfVec2d_get_mut(HandleTColgpHSequenceOfVec2d& handle) { return *handle; }
 
 // ========================
 // TColgp_HSequenceOfXY wrappers
@@ -8412,6 +8494,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfXY_get_type_d
 inline std::unique_ptr<HandleTColgpHSequenceOfXY> TColgp_HSequenceOfXY_to_handle(std::unique_ptr<TColgp_HSequenceOfXY> obj) {
     return std::make_unique<HandleTColgpHSequenceOfXY>(obj.release());
 }
+inline const TColgp_HSequenceOfXY& HandleTColgpHSequenceOfXY_get(const HandleTColgpHSequenceOfXY& handle) { return *handle; }
+inline TColgp_HSequenceOfXY& HandleTColgpHSequenceOfXY_get_mut(HandleTColgpHSequenceOfXY& handle) { return *handle; }
 
 // ========================
 // TColgp_HSequenceOfXYZ wrappers
@@ -8429,6 +8513,8 @@ inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfXYZ_get_type_
 inline std::unique_ptr<HandleTColgpHSequenceOfXYZ> TColgp_HSequenceOfXYZ_to_handle(std::unique_ptr<TColgp_HSequenceOfXYZ> obj) {
     return std::make_unique<HandleTColgpHSequenceOfXYZ>(obj.release());
 }
+inline const TColgp_HSequenceOfXYZ& HandleTColgpHSequenceOfXYZ_get(const HandleTColgpHSequenceOfXYZ& handle) { return *handle; }
+inline TColgp_HSequenceOfXYZ& HandleTColgpHSequenceOfXYZ_get_mut(HandleTColgpHSequenceOfXYZ& handle) { return *handle; }
 
 // ========================
 // Message_ProgressRange wrappers
@@ -8816,6 +8902,8 @@ inline const opencascade::handle<Standard_Type>& Adaptor3d_Curve_get_type_descri
 inline std::unique_ptr<HandleAdaptor3dCurve> Adaptor3d_Curve_to_handle(std::unique_ptr<Adaptor3d_Curve> obj) {
     return std::make_unique<HandleAdaptor3dCurve>(obj.release());
 }
+inline const Adaptor3d_Curve& HandleAdaptor3dCurve_get(const HandleAdaptor3dCurve& handle) { return *handle; }
+inline Adaptor3d_Curve& HandleAdaptor3dCurve_get_mut(HandleAdaptor3dCurve& handle) { return *handle; }
 
 // ========================
 // Adaptor3d_Surface wrappers
@@ -8893,6 +8981,8 @@ inline const opencascade::handle<Standard_Type>& Adaptor3d_Surface_get_type_desc
 inline std::unique_ptr<HandleAdaptor3dSurface> Adaptor3d_Surface_to_handle(std::unique_ptr<Adaptor3d_Surface> obj) {
     return std::make_unique<HandleAdaptor3dSurface>(obj.release());
 }
+inline const Adaptor3d_Surface& HandleAdaptor3dSurface_get(const HandleAdaptor3dSurface& handle) { return *handle; }
+inline Adaptor3d_Surface& HandleAdaptor3dSurface_get_mut(HandleAdaptor3dSurface& handle) { return *handle; }
 
 // ========================
 // Adaptor2d_Curve2d wrappers
@@ -8943,6 +9033,8 @@ inline const opencascade::handle<Standard_Type>& Adaptor2d_Curve2d_get_type_desc
 inline std::unique_ptr<HandleAdaptor2dCurve2d> Adaptor2d_Curve2d_to_handle(std::unique_ptr<Adaptor2d_Curve2d> obj) {
     return std::make_unique<HandleAdaptor2dCurve2d>(obj.release());
 }
+inline const Adaptor2d_Curve2d& HandleAdaptor2dCurve2d_get(const HandleAdaptor2dCurve2d& handle) { return *handle; }
+inline Adaptor2d_Curve2d& HandleAdaptor2dCurve2d_get_mut(HandleAdaptor2dCurve2d& handle) { return *handle; }
 
 // ========================
 // math_DirectPolynomialRoots wrappers
@@ -9021,6 +9113,8 @@ inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfInteger_get_ty
 inline std::unique_ptr<HandleTColStdHArray1OfInteger> TColStd_HArray1OfInteger_to_handle(std::unique_ptr<TColStd_HArray1OfInteger> obj) {
     return std::make_unique<HandleTColStdHArray1OfInteger>(obj.release());
 }
+inline const TColStd_HArray1OfInteger& HandleTColStdHArray1OfInteger_get(const HandleTColStdHArray1OfInteger& handle) { return *handle; }
+inline TColStd_HArray1OfInteger& HandleTColStdHArray1OfInteger_get_mut(HandleTColStdHArray1OfInteger& handle) { return *handle; }
 
 // ========================
 // TColStd_HArray1OfReal wrappers
@@ -9047,6 +9141,8 @@ inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfReal_get_type_
 inline std::unique_ptr<HandleTColStdHArray1OfReal> TColStd_HArray1OfReal_to_handle(std::unique_ptr<TColStd_HArray1OfReal> obj) {
     return std::make_unique<HandleTColStdHArray1OfReal>(obj.release());
 }
+inline const TColStd_HArray1OfReal& HandleTColStdHArray1OfReal_get(const HandleTColStdHArray1OfReal& handle) { return *handle; }
+inline TColStd_HArray1OfReal& HandleTColStdHArray1OfReal_get_mut(HandleTColStdHArray1OfReal& handle) { return *handle; }
 
 // ========================
 // TColStd_HSequenceOfInteger wrappers
@@ -9064,6 +9160,8 @@ inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfInteger_get_
 inline std::unique_ptr<HandleTColStdHSequenceOfInteger> TColStd_HSequenceOfInteger_to_handle(std::unique_ptr<TColStd_HSequenceOfInteger> obj) {
     return std::make_unique<HandleTColStdHSequenceOfInteger>(obj.release());
 }
+inline const TColStd_HSequenceOfInteger& HandleTColStdHSequenceOfInteger_get(const HandleTColStdHSequenceOfInteger& handle) { return *handle; }
+inline TColStd_HSequenceOfInteger& HandleTColStdHSequenceOfInteger_get_mut(HandleTColStdHSequenceOfInteger& handle) { return *handle; }
 
 // ========================
 // TColStd_HSequenceOfReal wrappers
@@ -9081,6 +9179,8 @@ inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfReal_get_typ
 inline std::unique_ptr<HandleTColStdHSequenceOfReal> TColStd_HSequenceOfReal_to_handle(std::unique_ptr<TColStd_HSequenceOfReal> obj) {
     return std::make_unique<HandleTColStdHSequenceOfReal>(obj.release());
 }
+inline const TColStd_HSequenceOfReal& HandleTColStdHSequenceOfReal_get(const HandleTColStdHSequenceOfReal& handle) { return *handle; }
+inline TColStd_HSequenceOfReal& HandleTColStdHSequenceOfReal_get_mut(HandleTColStdHSequenceOfReal& handle) { return *handle; }
 
 // ========================
 // Standard_Failure wrappers
@@ -9134,6 +9234,8 @@ inline const opencascade::handle<Standard_Type>& Standard_Failure_get_type_descr
 inline std::unique_ptr<HandleStandardFailure> Standard_Failure_to_handle(std::unique_ptr<Standard_Failure> obj) {
     return std::make_unique<HandleStandardFailure>(obj.release());
 }
+inline const Standard_Failure& HandleStandardFailure_get(const HandleStandardFailure& handle) { return *handle; }
+inline Standard_Failure& HandleStandardFailure_get_mut(HandleStandardFailure& handle) { return *handle; }
 
 // ========================
 // Standard_Mutex wrappers
@@ -9331,6 +9433,8 @@ inline const opencascade::handle<Standard_Type>& TCollection_HAsciiString_get_ty
 inline std::unique_ptr<HandleTCollectionHAsciiString> TCollection_HAsciiString_to_handle(std::unique_ptr<TCollection_HAsciiString> obj) {
     return std::make_unique<HandleTCollectionHAsciiString>(obj.release());
 }
+inline const TCollection_HAsciiString& HandleTCollectionHAsciiString_get(const HandleTCollectionHAsciiString& handle) { return *handle; }
+inline TCollection_HAsciiString& HandleTCollectionHAsciiString_get_mut(HandleTCollectionHAsciiString& handle) { return *handle; }
 
 // ========================
 // TCollection_HExtendedString wrappers
@@ -9363,6 +9467,8 @@ inline const opencascade::handle<Standard_Type>& TCollection_HExtendedString_get
 inline std::unique_ptr<HandleTCollectionHExtendedString> TCollection_HExtendedString_to_handle(std::unique_ptr<TCollection_HExtendedString> obj) {
     return std::make_unique<HandleTCollectionHExtendedString>(obj.release());
 }
+inline const TCollection_HExtendedString& HandleTCollectionHExtendedString_get(const HandleTCollectionHExtendedString& handle) { return *handle; }
+inline TCollection_HExtendedString& HandleTCollectionHExtendedString_get_mut(HandleTCollectionHExtendedString& handle) { return *handle; }
 
 // ========================
 // NCollection_Buffer wrappers
@@ -9374,6 +9480,8 @@ inline const opencascade::handle<Standard_Type>& NCollection_Buffer_get_type_des
 inline std::unique_ptr<HandleNCollectionBuffer> NCollection_Buffer_to_handle(std::unique_ptr<NCollection_Buffer> obj) {
     return std::make_unique<HandleNCollectionBuffer>(obj.release());
 }
+inline const NCollection_Buffer& HandleNCollectionBuffer_get(const HandleNCollectionBuffer& handle) { return *handle; }
+inline NCollection_Buffer& HandleNCollectionBuffer_get_mut(HandleNCollectionBuffer& handle) { return *handle; }
 
 // ========================
 // Standard_DumpValue wrappers
@@ -9599,6 +9707,8 @@ inline const opencascade::handle<Standard_Type>& Standard_Type_get_type_descript
 inline std::unique_ptr<HandleStandardType> Standard_Type_to_handle(std::unique_ptr<Standard_Type> obj) {
     return std::make_unique<HandleStandardType>(obj.release());
 }
+inline const Standard_Type& HandleStandardType_get(const HandleStandardType& handle) { return *handle; }
+inline Standard_Type& HandleStandardType_get_mut(HandleStandardType& handle) { return *handle; }
 
 // ========================
 // NCollection_BaseAllocator wrappers
@@ -9613,6 +9723,8 @@ inline const opencascade::handle<Standard_Type>& NCollection_BaseAllocator_get_t
 inline std::unique_ptr<HandleNCollectionBaseAllocator> NCollection_BaseAllocator_to_handle(std::unique_ptr<NCollection_BaseAllocator> obj) {
     return std::make_unique<HandleNCollectionBaseAllocator>(obj.release());
 }
+inline const NCollection_BaseAllocator& HandleNCollectionBaseAllocator_get(const HandleNCollectionBaseAllocator& handle) { return *handle; }
+inline NCollection_BaseAllocator& HandleNCollectionBaseAllocator_get_mut(HandleNCollectionBaseAllocator& handle) { return *handle; }
 
 // ========================
 // Standard_RangeError wrappers
@@ -9777,6 +9889,8 @@ inline const opencascade::handle<Standard_Type>& Message_Messenger_get_type_desc
 inline std::unique_ptr<HandleMessageMessenger> Message_Messenger_to_handle(std::unique_ptr<Message_Messenger> obj) {
     return std::make_unique<HandleMessageMessenger>(obj.release());
 }
+inline const Message_Messenger& HandleMessageMessenger_get(const HandleMessageMessenger& handle) { return *handle; }
+inline Message_Messenger& HandleMessageMessenger_get_mut(HandleMessageMessenger& handle) { return *handle; }
 
 // ========================
 // OSD_MemInfo wrappers
@@ -9856,6 +9970,8 @@ inline const opencascade::handle<Standard_Type>& TColStd_HArray2OfReal_get_type_
 inline std::unique_ptr<HandleTColStdHArray2OfReal> TColStd_HArray2OfReal_to_handle(std::unique_ptr<TColStd_HArray2OfReal> obj) {
     return std::make_unique<HandleTColStdHArray2OfReal>(obj.release());
 }
+inline const TColStd_HArray2OfReal& HandleTColStdHArray2OfReal_get(const HandleTColStdHArray2OfReal& handle) { return *handle; }
+inline TColStd_HArray2OfReal& HandleTColStdHArray2OfReal_get_mut(HandleTColStdHArray2OfReal& handle) { return *handle; }
 
 // ========================
 // Bnd_HArray1OfSphere wrappers
@@ -9883,6 +9999,8 @@ inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_to_owned(const B
 inline std::unique_ptr<HandleBndHArray1OfSphere> Bnd_HArray1OfSphere_to_handle(std::unique_ptr<Bnd_HArray1OfSphere> obj) {
     return std::make_unique<HandleBndHArray1OfSphere>(obj.release());
 }
+inline const Bnd_HArray1OfSphere& HandleBndHArray1OfSphere_get(const HandleBndHArray1OfSphere& handle) { return *handle; }
+inline Bnd_HArray1OfSphere& HandleBndHArray1OfSphere_get_mut(HandleBndHArray1OfSphere& handle) { return *handle; }
 
 // ========================
 // Extrema_POnSurfParams wrappers
@@ -10189,6 +10307,8 @@ inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfTransient_ge
 inline std::unique_ptr<HandleTColStdHSequenceOfTransient> TColStd_HSequenceOfTransient_to_handle(std::unique_ptr<TColStd_HSequenceOfTransient> obj) {
     return std::make_unique<HandleTColStdHSequenceOfTransient>(obj.release());
 }
+inline const TColStd_HSequenceOfTransient& HandleTColStdHSequenceOfTransient_get(const HandleTColStdHSequenceOfTransient& handle) { return *handle; }
+inline TColStd_HSequenceOfTransient& HandleTColStdHSequenceOfTransient_get_mut(HandleTColStdHSequenceOfTransient& handle) { return *handle; }
 
 // ========================
 // DESTEP_Parameters wrappers
@@ -10214,6 +10334,8 @@ inline const opencascade::handle<Standard_Type>& BRepTools_History_get_type_desc
 inline std::unique_ptr<HandleBRepToolsHistory> BRepTools_History_to_handle(std::unique_ptr<BRepTools_History> obj) {
     return std::make_unique<HandleBRepToolsHistory>(obj.release());
 }
+inline const BRepTools_History& HandleBRepToolsHistory_get(const HandleBRepToolsHistory& handle) { return *handle; }
+inline BRepTools_History& HandleBRepToolsHistory_get_mut(HandleBRepToolsHistory& handle) { return *handle; }
 
 // ========================
 // Poly_HArray1OfTriangle wrappers
@@ -10240,6 +10362,8 @@ inline const opencascade::handle<Standard_Type>& Poly_HArray1OfTriangle_get_type
 inline std::unique_ptr<HandlePolyHArray1OfTriangle> Poly_HArray1OfTriangle_to_handle(std::unique_ptr<Poly_HArray1OfTriangle> obj) {
     return std::make_unique<HandlePolyHArray1OfTriangle>(obj.release());
 }
+inline const Poly_HArray1OfTriangle& HandlePolyHArray1OfTriangle_get(const HandlePolyHArray1OfTriangle& handle) { return *handle; }
+inline Poly_HArray1OfTriangle& HandlePolyHArray1OfTriangle_get_mut(HandlePolyHArray1OfTriangle& handle) { return *handle; }
 
 // ========================
 // Poly_ArrayOfNodes wrappers
@@ -10312,6 +10436,8 @@ inline const opencascade::handle<Standard_Type>& TShort_HArray1OfShortReal_get_t
 inline std::unique_ptr<HandleTShortHArray1OfShortReal> TShort_HArray1OfShortReal_to_handle(std::unique_ptr<TShort_HArray1OfShortReal> obj) {
     return std::make_unique<HandleTShortHArray1OfShortReal>(obj.release());
 }
+inline const TShort_HArray1OfShortReal& HandleTShortHArray1OfShortReal_get(const HandleTShortHArray1OfShortReal& handle) { return *handle; }
+inline TShort_HArray1OfShortReal& HandleTShortHArray1OfShortReal_get_mut(HandleTShortHArray1OfShortReal& handle) { return *handle; }
 
 // ========================
 // Poly_Triangle wrappers
@@ -10444,6 +10570,8 @@ inline const opencascade::handle<Standard_Type>& IMeshData_Shape_get_type_descri
 inline std::unique_ptr<HandleIMeshDataShape> IMeshData_Shape_to_handle(std::unique_ptr<IMeshData_Shape> obj) {
     return std::make_unique<HandleIMeshDataShape>(obj.release());
 }
+inline const IMeshData_Shape& HandleIMeshDataShape_get(const HandleIMeshDataShape& handle) { return *handle; }
+inline IMeshData_Shape& HandleIMeshDataShape_get_mut(HandleIMeshDataShape& handle) { return *handle; }
 
 // ========================
 // Bnd_Box2d wrappers
@@ -10641,6 +10769,8 @@ inline const opencascade::handle<Standard_Type>& Message_Algorithm_get_type_desc
 inline std::unique_ptr<HandleMessageAlgorithm> Message_Algorithm_to_handle(std::unique_ptr<Message_Algorithm> obj) {
     return std::make_unique<HandleMessageAlgorithm>(obj.release());
 }
+inline const Message_Algorithm& HandleMessageAlgorithm_get(const HandleMessageAlgorithm& handle) { return *handle; }
+inline Message_Algorithm& HandleMessageAlgorithm_get_mut(HandleMessageAlgorithm& handle) { return *handle; }
 
 // ========================
 // Message_ExecStatus wrappers
@@ -10693,6 +10823,8 @@ inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfTransient_get_
 inline std::unique_ptr<HandleTColStdHArray1OfTransient> TColStd_HArray1OfTransient_to_handle(std::unique_ptr<TColStd_HArray1OfTransient> obj) {
     return std::make_unique<HandleTColStdHArray1OfTransient>(obj.release());
 }
+inline const TColStd_HArray1OfTransient& HandleTColStdHArray1OfTransient_get(const HandleTColStdHArray1OfTransient& handle) { return *handle; }
+inline TColStd_HArray1OfTransient& HandleTColStdHArray1OfTransient_get_mut(HandleTColStdHArray1OfTransient& handle) { return *handle; }
 
 // ========================
 // TColStd_HSequenceOfHExtendedString wrappers
@@ -10710,6 +10842,8 @@ inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHExtendedStr
 inline std::unique_ptr<HandleTColStdHSequenceOfHExtendedString> TColStd_HSequenceOfHExtendedString_to_handle(std::unique_ptr<TColStd_HSequenceOfHExtendedString> obj) {
     return std::make_unique<HandleTColStdHSequenceOfHExtendedString>(obj.release());
 }
+inline const TColStd_HSequenceOfHExtendedString& HandleTColStdHSequenceOfHExtendedString_get(const HandleTColStdHSequenceOfHExtendedString& handle) { return *handle; }
+inline TColStd_HSequenceOfHExtendedString& HandleTColStdHSequenceOfHExtendedString_get_mut(HandleTColStdHSequenceOfHExtendedString& handle) { return *handle; }
 
 // ========================
 // Message_Msg wrappers
@@ -10847,6 +10981,8 @@ inline std::unique_ptr<Bnd_HArray1OfBox> Bnd_HArray1OfBox_to_owned(const Bnd_HAr
 inline std::unique_ptr<HandleBndHArray1OfBox> Bnd_HArray1OfBox_to_handle(std::unique_ptr<Bnd_HArray1OfBox> obj) {
     return std::make_unique<HandleBndHArray1OfBox>(obj.release());
 }
+inline const Bnd_HArray1OfBox& HandleBndHArray1OfBox_get(const HandleBndHArray1OfBox& handle) { return *handle; }
+inline Bnd_HArray1OfBox& HandleBndHArray1OfBox_get_mut(HandleBndHArray1OfBox& handle) { return *handle; }
 
 // ========================
 // IntCurveSurface_IntersectionSegment wrappers
@@ -10886,6 +11022,8 @@ inline const opencascade::handle<Standard_Type>& BSplCLib_Cache_get_type_descrip
 inline std::unique_ptr<HandleBSplCLibCache> BSplCLib_Cache_to_handle(std::unique_ptr<BSplCLib_Cache> obj) {
     return std::make_unique<HandleBSplCLibCache>(obj.release());
 }
+inline const BSplCLib_Cache& HandleBSplCLibCache_get(const HandleBSplCLibCache& handle) { return *handle; }
+inline BSplCLib_Cache& HandleBSplCLibCache_get_mut(HandleBSplCLibCache& handle) { return *handle; }
 
 // ========================
 // GeomEvaluator_Curve wrappers
@@ -11253,6 +11391,8 @@ inline const opencascade::handle<Standard_Type>& BSplSLib_Cache_get_type_descrip
 inline std::unique_ptr<HandleBSplSLibCache> BSplSLib_Cache_to_handle(std::unique_ptr<BSplSLib_Cache> obj) {
     return std::make_unique<HandleBSplSLibCache>(obj.release());
 }
+inline const BSplSLib_Cache& HandleBSplSLibCache_get(const HandleBSplSLibCache& handle) { return *handle; }
+inline BSplSLib_Cache& HandleBSplSLibCache_get_mut(HandleBSplSLibCache& handle) { return *handle; }
 
 // ========================
 // GeomEvaluator_Surface wrappers
@@ -11351,6 +11491,8 @@ inline const opencascade::handle<Standard_Type>& Poly_Polygon3D_get_type_descrip
 inline std::unique_ptr<HandlePolyPolygon3D> Poly_Polygon3D_to_handle(std::unique_ptr<Poly_Polygon3D> obj) {
     return std::make_unique<HandlePolyPolygon3D>(obj.release());
 }
+inline const Poly_Polygon3D& HandlePolyPolygon3D_get(const HandlePolyPolygon3D& handle) { return *handle; }
+inline Poly_Polygon3D& HandlePolyPolygon3D_get_mut(HandlePolyPolygon3D& handle) { return *handle; }
 
 // ========================
 // Poly_Polygon2D wrappers
@@ -11368,6 +11510,8 @@ inline const opencascade::handle<Standard_Type>& Poly_Polygon2D_get_type_descrip
 inline std::unique_ptr<HandlePolyPolygon2D> Poly_Polygon2D_to_handle(std::unique_ptr<Poly_Polygon2D> obj) {
     return std::make_unique<HandlePolyPolygon2D>(obj.release());
 }
+inline const Poly_Polygon2D& HandlePolyPolygon2D_get(const HandlePolyPolygon2D& handle) { return *handle; }
+inline Poly_Polygon2D& HandlePolyPolygon2D_get_mut(HandlePolyPolygon2D& handle) { return *handle; }
 
 // ========================
 // Poly_PolygonOnTriangulation wrappers
@@ -11391,6 +11535,8 @@ inline const opencascade::handle<Standard_Type>& Poly_PolygonOnTriangulation_get
 inline std::unique_ptr<HandlePolyPolygonOnTriangulation> Poly_PolygonOnTriangulation_to_handle(std::unique_ptr<Poly_PolygonOnTriangulation> obj) {
     return std::make_unique<HandlePolyPolygonOnTriangulation>(obj.release());
 }
+inline const Poly_PolygonOnTriangulation& HandlePolyPolygonOnTriangulation_get(const HandlePolyPolygonOnTriangulation& handle) { return *handle; }
+inline Poly_PolygonOnTriangulation& HandlePolyPolygonOnTriangulation_get_mut(HandlePolyPolygonOnTriangulation& handle) { return *handle; }
 
 // ========================
 // GC_Root wrappers
@@ -11425,6 +11571,8 @@ inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfBoolean_get_ty
 inline std::unique_ptr<HandleTColStdHArray1OfBoolean> TColStd_HArray1OfBoolean_to_handle(std::unique_ptr<TColStd_HArray1OfBoolean> obj) {
     return std::make_unique<HandleTColStdHArray1OfBoolean>(obj.release());
 }
+inline const TColStd_HArray1OfBoolean& HandleTColStdHArray1OfBoolean_get(const HandleTColStdHArray1OfBoolean& handle) { return *handle; }
+inline TColStd_HArray1OfBoolean& HandleTColStdHArray1OfBoolean_get_mut(HandleTColStdHArray1OfBoolean& handle) { return *handle; }
 
 // ========================
 // BSplSLib wrappers
@@ -12121,6 +12269,8 @@ inline const opencascade::handle<Standard_Type>& Message_Report_get_type_descrip
 inline std::unique_ptr<HandleMessageReport> Message_Report_to_handle(std::unique_ptr<Message_Report> obj) {
     return std::make_unique<HandleMessageReport>(obj.release());
 }
+inline const Message_Report& HandleMessageReport_get(const HandleMessageReport& handle) { return *handle; }
+inline Message_Report& HandleMessageReport_get_mut(HandleMessageReport& handle) { return *handle; }
 
 // ========================
 // Message_Level wrappers
@@ -12149,6 +12299,8 @@ inline const opencascade::handle<Standard_Type>& Message_Alert_get_type_descript
 inline std::unique_ptr<HandleMessageAlert> Message_Alert_to_handle(std::unique_ptr<Message_Alert> obj) {
     return std::make_unique<HandleMessageAlert>(obj.release());
 }
+inline const Message_Alert& HandleMessageAlert_get(const HandleMessageAlert& handle) { return *handle; }
+inline Message_Alert& HandleMessageAlert_get_mut(HandleMessageAlert& handle) { return *handle; }
 
 // ========================
 // Message_AlertExtended wrappers
@@ -12324,6 +12476,8 @@ inline const opencascade::handle<Standard_Type>& BRepTools_ReShape_get_type_desc
 inline std::unique_ptr<HandleBRepToolsReShape> BRepTools_ReShape_to_handle(std::unique_ptr<BRepTools_ReShape> obj) {
     return std::make_unique<HandleBRepToolsReShape>(obj.release());
 }
+inline const BRepTools_ReShape& HandleBRepToolsReShape_get(const HandleBRepToolsReShape& handle) { return *handle; }
+inline BRepTools_ReShape& HandleBRepToolsReShape_get_mut(HandleBRepToolsReShape& handle) { return *handle; }
 
 // ========================
 // BRepOffset_Analyse wrappers
@@ -12459,6 +12613,8 @@ inline const opencascade::handle<Standard_Type>& BRepFill_PipeShell_get_type_des
 inline std::unique_ptr<HandleBRepFillPipeShell> BRepFill_PipeShell_to_handle(std::unique_ptr<BRepFill_PipeShell> obj) {
     return std::make_unique<HandleBRepFillPipeShell>(obj.release());
 }
+inline const BRepFill_PipeShell& HandleBRepFillPipeShell_get(const HandleBRepFillPipeShell& handle) { return *handle; }
+inline BRepFill_PipeShell& HandleBRepFillPipeShell_get_mut(HandleBRepFillPipeShell& handle) { return *handle; }
 
 // ========================
 // TopTools_HArray2OfShape wrappers
@@ -12479,6 +12635,8 @@ inline const opencascade::handle<Standard_Type>& TopTools_HArray2OfShape_get_typ
 inline std::unique_ptr<HandleTopToolsHArray2OfShape> TopTools_HArray2OfShape_to_handle(std::unique_ptr<TopTools_HArray2OfShape> obj) {
     return std::make_unique<HandleTopToolsHArray2OfShape>(obj.release());
 }
+inline const TopTools_HArray2OfShape& HandleTopToolsHArray2OfShape_get(const HandleTopToolsHArray2OfShape& handle) { return *handle; }
+inline TopTools_HArray2OfShape& HandleTopToolsHArray2OfShape_get_mut(HandleTopToolsHArray2OfShape& handle) { return *handle; }
 
 // ========================
 // BRepFill_Section wrappers
@@ -12581,6 +12739,8 @@ inline const opencascade::handle<Standard_Type>& MAT_BasicElt_get_type_descripto
 inline std::unique_ptr<HandleMATBasicElt> MAT_BasicElt_to_handle(std::unique_ptr<MAT_BasicElt> obj) {
     return std::make_unique<HandleMATBasicElt>(obj.release());
 }
+inline const MAT_BasicElt& HandleMATBasicElt_get(const HandleMATBasicElt& handle) { return *handle; }
+inline MAT_BasicElt& HandleMATBasicElt_get_mut(HandleMATBasicElt& handle) { return *handle; }
 
 // ========================
 // MAT2d_Tool2d wrappers
@@ -12781,6 +12941,8 @@ inline const opencascade::handle<Standard_Type>& ChFiDS_SecHArray1_get_type_desc
 inline std::unique_ptr<HandleChFiDSSecHArray1> ChFiDS_SecHArray1_to_handle(std::unique_ptr<ChFiDS_SecHArray1> obj) {
     return std::make_unique<HandleChFiDSSecHArray1>(obj.release());
 }
+inline const ChFiDS_SecHArray1& HandleChFiDSSecHArray1_get(const HandleChFiDSSecHArray1& handle) { return *handle; }
+inline ChFiDS_SecHArray1& HandleChFiDSSecHArray1_get_mut(HandleChFiDSSecHArray1& handle) { return *handle; }
 
 // ========================
 // ChFiDS_CircSection wrappers
@@ -12908,6 +13070,8 @@ inline const opencascade::handle<Standard_Type>& ChFiDS_SurfData_get_type_descri
 inline std::unique_ptr<HandleChFiDSSurfData> ChFiDS_SurfData_to_handle(std::unique_ptr<ChFiDS_SurfData> obj) {
     return std::make_unique<HandleChFiDSSurfData>(obj.release());
 }
+inline const ChFiDS_SurfData& HandleChFiDSSurfData_get(const HandleChFiDSSurfData& handle) { return *handle; }
+inline ChFiDS_SurfData& HandleChFiDSSurfData_get_mut(HandleChFiDSSurfData& handle) { return *handle; }
 
 // ========================
 // ChFiDS_CommonPoint wrappers
@@ -12989,6 +13153,8 @@ inline const opencascade::handle<Standard_Type>& ChFiDS_Stripe_get_type_descript
 inline std::unique_ptr<HandleChFiDSStripe> ChFiDS_Stripe_to_handle(std::unique_ptr<ChFiDS_Stripe> obj) {
     return std::make_unique<HandleChFiDSStripe>(obj.release());
 }
+inline const ChFiDS_Stripe& HandleChFiDSStripe_get(const HandleChFiDSStripe& handle) { return *handle; }
+inline ChFiDS_Stripe& HandleChFiDSStripe_get_mut(HandleChFiDSStripe& handle) { return *handle; }
 
 // ========================
 // ChFiDS_HData wrappers
@@ -13006,6 +13172,8 @@ inline const opencascade::handle<Standard_Type>& ChFiDS_HData_get_type_descripto
 inline std::unique_ptr<HandleChFiDSHData> ChFiDS_HData_to_handle(std::unique_ptr<ChFiDS_HData> obj) {
     return std::make_unique<HandleChFiDSHData>(obj.release());
 }
+inline const ChFiDS_HData& HandleChFiDSHData_get(const HandleChFiDSHData& handle) { return *handle; }
+inline ChFiDS_HData& HandleChFiDSHData_get_mut(HandleChFiDSHData& handle) { return *handle; }
 
 // ========================
 // BRepAdaptor_Curve2d wrappers

@@ -675,6 +675,20 @@ impl Alert {
 
 pub use crate::ffi::HandleMessageAlert;
 
+impl HandleMessageAlert {
+    /// Dereference this Handle to access the underlying Message_Alert
+    pub fn get(&self) -> &crate::ffi::Message_Alert {
+        crate::ffi::HandleMessageAlert_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_Alert
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Message_Alert> {
+        crate::ffi::HandleMessageAlert_get_mut(self)
+    }
+}
+
 // ========================
 // From Message_AlertExtended.hxx
 // ========================
@@ -940,6 +954,20 @@ impl Algorithm {
 
 pub use crate::ffi::HandleMessageAlgorithm;
 
+impl HandleMessageAlgorithm {
+    /// Dereference this Handle to access the underlying Message_Algorithm
+    pub fn get(&self) -> &crate::ffi::Message_Algorithm {
+        crate::ffi::HandleMessageAlgorithm_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_Algorithm
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Message_Algorithm> {
+        crate::ffi::HandleMessageAlgorithm_get_mut(self)
+    }
+}
+
 // ========================
 // From Message_ExecStatus.hxx
 // ========================
@@ -1131,6 +1159,20 @@ impl Messenger {
 }
 
 pub use crate::ffi::HandleMessageMessenger;
+
+impl HandleMessageMessenger {
+    /// Dereference this Handle to access the underlying Message_Messenger
+    pub fn get(&self) -> &crate::ffi::Message_Messenger {
+        crate::ffi::HandleMessageMessenger_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_Messenger
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Message_Messenger> {
+        crate::ffi::HandleMessageMessenger_get_mut(self)
+    }
+}
 
 // ========================
 // From Message_Msg.hxx
@@ -1659,6 +1701,20 @@ impl Report {
 }
 
 pub use crate::ffi::HandleMessageReport;
+
+impl HandleMessageReport {
+    /// Dereference this Handle to access the underlying Message_Report
+    pub fn get(&self) -> &crate::ffi::Message_Report {
+        crate::ffi::HandleMessageReport_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_Report
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Message_Report> {
+        crate::ffi::HandleMessageReport_get_mut(self)
+    }
+}
 
 // ========================
 // Additional type re-exports

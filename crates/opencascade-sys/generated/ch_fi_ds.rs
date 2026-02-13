@@ -366,6 +366,18 @@ impl HData {
 
 pub use crate::ffi::HandleChFiDSHData;
 
+impl HandleChFiDSHData {
+    /// Dereference this Handle to access the underlying ChFiDS_HData
+    pub fn get(&self) -> &crate::ffi::ChFiDS_HData {
+        crate::ffi::HandleChFiDSHData_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ChFiDS_HData
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::ChFiDS_HData> {
+        crate::ffi::HandleChFiDSHData_get_mut(self)
+    }
+}
+
 // ========================
 // From ChFiDS_Map.hxx
 // ========================
@@ -449,6 +461,20 @@ impl SecHArray1 {
 
 pub use crate::ffi::HandleChFiDSSecHArray1;
 
+impl HandleChFiDSSecHArray1 {
+    /// Dereference this Handle to access the underlying ChFiDS_SecHArray1
+    pub fn get(&self) -> &crate::ffi::ChFiDS_SecHArray1 {
+        crate::ffi::HandleChFiDSSecHArray1_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ChFiDS_SecHArray1
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ChFiDS_SecHArray1> {
+        crate::ffi::HandleChFiDSSecHArray1_get_mut(self)
+    }
+}
+
 // ========================
 // From ChFiDS_Stripe.hxx
 // ========================
@@ -521,6 +547,20 @@ impl Stripe {
 
 pub use crate::ffi::HandleChFiDSStripe;
 
+impl HandleChFiDSStripe {
+    /// Dereference this Handle to access the underlying ChFiDS_Stripe
+    pub fn get(&self) -> &crate::ffi::ChFiDS_Stripe {
+        crate::ffi::HandleChFiDSStripe_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ChFiDS_Stripe
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ChFiDS_Stripe> {
+        crate::ffi::HandleChFiDSStripe_get_mut(self)
+    }
+}
+
 // ========================
 // From ChFiDS_StripeMap.hxx
 // ========================
@@ -572,6 +612,20 @@ impl SurfData {
 }
 
 pub use crate::ffi::HandleChFiDSSurfData;
+
+impl HandleChFiDSSurfData {
+    /// Dereference this Handle to access the underlying ChFiDS_SurfData
+    pub fn get(&self) -> &crate::ffi::ChFiDS_SurfData {
+        crate::ffi::HandleChFiDSSurfData_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ChFiDS_SurfData
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ChFiDS_SurfData> {
+        crate::ffi::HandleChFiDSSurfData_get_mut(self)
+    }
+}
 
 // ========================
 // Additional type re-exports

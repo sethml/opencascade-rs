@@ -249,6 +249,20 @@ impl HArray1OfBox {
 
 pub use crate::ffi::HandleBndHArray1OfBox;
 
+impl HandleBndHArray1OfBox {
+    /// Dereference this Handle to access the underlying Bnd_HArray1OfBox
+    pub fn get(&self) -> &crate::ffi::Bnd_HArray1OfBox {
+        crate::ffi::HandleBndHArray1OfBox_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Bnd_HArray1OfBox
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Bnd_HArray1OfBox> {
+        crate::ffi::HandleBndHArray1OfBox_get_mut(self)
+    }
+}
+
 // ========================
 // From Bnd_HArray1OfSphere.hxx
 // ========================
@@ -303,6 +317,20 @@ impl HArray1OfSphere {
 }
 
 pub use crate::ffi::HandleBndHArray1OfSphere;
+
+impl HandleBndHArray1OfSphere {
+    /// Dereference this Handle to access the underlying Bnd_HArray1OfSphere
+    pub fn get(&self) -> &crate::ffi::Bnd_HArray1OfSphere {
+        crate::ffi::HandleBndHArray1OfSphere_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Bnd_HArray1OfSphere
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Bnd_HArray1OfSphere> {
+        crate::ffi::HandleBndHArray1OfSphere_get_mut(self)
+    }
+}
 
 // ========================
 // From Bnd_OBB.hxx

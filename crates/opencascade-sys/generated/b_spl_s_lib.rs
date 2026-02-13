@@ -216,6 +216,20 @@ impl Cache {
 
 pub use crate::ffi::HandleBSplSLibCache;
 
+impl HandleBSplSLibCache {
+    /// Dereference this Handle to access the underlying BSplSLib_Cache
+    pub fn get(&self) -> &crate::ffi::BSplSLib_Cache {
+        crate::ffi::HandleBSplSLibCache_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BSplSLib_Cache
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BSplSLib_Cache> {
+        crate::ffi::HandleBSplSLibCache_get_mut(self)
+    }
+}
+
 // ========================
 // From BSplSLib_EvaluatorFunction.hxx
 // ========================

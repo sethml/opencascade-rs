@@ -597,6 +597,20 @@ impl HAsciiString {
 
 pub use crate::ffi::HandleTCollectionHAsciiString;
 
+impl HandleTCollectionHAsciiString {
+    /// Dereference this Handle to access the underlying TCollection_HAsciiString
+    pub fn get(&self) -> &crate::ffi::TCollection_HAsciiString {
+        crate::ffi::HandleTCollectionHAsciiString_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TCollection_HAsciiString
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TCollection_HAsciiString> {
+        crate::ffi::HandleTCollectionHAsciiString_get_mut(self)
+    }
+}
+
 // ========================
 // From TCollection_HExtendedString.hxx
 // ========================
@@ -678,3 +692,17 @@ impl HExtendedString {
 }
 
 pub use crate::ffi::HandleTCollectionHExtendedString;
+
+impl HandleTCollectionHExtendedString {
+    /// Dereference this Handle to access the underlying TCollection_HExtendedString
+    pub fn get(&self) -> &crate::ffi::TCollection_HExtendedString {
+        crate::ffi::HandleTCollectionHExtendedString_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TCollection_HExtendedString
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TCollection_HExtendedString> {
+        crate::ffi::HandleTCollectionHExtendedString_get_mut(self)
+    }
+}

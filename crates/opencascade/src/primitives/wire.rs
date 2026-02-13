@@ -8,7 +8,7 @@ use crate::{
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
 use opencascade_sys::{
-    b_rep_builder_api, b_rep_tools, gp, top_loc, topo_ds,
+    b_rep_builder_api, b_rep_tools, gp, shape_analysis, top_loc, top_tools, topo_ds,
 };
 
 pub struct Wire {
@@ -79,11 +79,46 @@ impl Wire {
         Self::from_make_wire(make_wire)
     }
 
-    // NOTE: from_unordered_edges is blocked due to Handle type mismatch between modules.
-    // shape_analysis::FreeBounds::connect_edges_to_wires expects shape_analysis::ffi::HandleTopToolsHSequenceOfShape
-    // but we have top_tools::ffi::HandleTopToolsHSequenceOfShape. These are type aliases for the same
-    // underlying C++ type, but CXX treats them as different types.
-    // See TRANSITION_PLAN.md "Generator Limitations" section 5.
+    pub fn from_unordered_edges<T: AsRef<Edge>>(
+        unordered_edges: impl IntoIterator<Item = T>,
+        edge_connection: EdgeConnection,
+    ) -> Self {
+        let mut edge_seq = top_tools::HSequenceOfShape::new();
+
+        for edge in unordered_edges {
+            let edge_shape = edge.as_ref().inner.as_shape();
+            edge_seq.pin_mut().append_shape(edge_shape);
+        }
+
+        let mut edges_handle = top_tools::HSequenceOfShape::to_handle(edge_seq);
+        let wire_seq = top_tools::HSequenceOfShape::new();
+        let mut wires_handle = top_tools::HSequenceOfShape::to_handle(wire_seq);
+
+        let (tolerance, shared) = match edge_connection {
+            EdgeConnection::Exact => (0.0, true),
+            EdgeConnection::Fuzzy { tolerance } => (tolerance, false),
+        };
+
+        shape_analysis::FreeBounds::connect_edges_to_wires(
+            edges_handle.pin_mut(),
+            tolerance,
+            shared,
+            wires_handle.pin_mut(),
+        );
+
+        let mut make_wire = b_rep_builder_api::MakeWire::new();
+
+        let wire_hseq = wires_handle.get();
+        let wire_seq = wire_hseq.sequence();
+
+        for i in 1..=wire_seq.len() {
+            let wire_shape = wire_seq.value(i);
+            let wire = topo_ds::wire(wire_shape);
+            make_wire.pin_mut().add_wire(wire);
+        }
+
+        Self::from_make_wire(make_wire)
+    }
 
     pub fn from_wires<'a>(wires: impl IntoIterator<Item = &'a Wire>) -> Self {
         let mut make_wire = b_rep_builder_api::MakeWire::new();

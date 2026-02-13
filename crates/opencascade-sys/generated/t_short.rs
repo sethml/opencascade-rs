@@ -56,6 +56,20 @@ impl HArray1OfShortReal {
 
 pub use crate::ffi::HandleTShortHArray1OfShortReal;
 
+impl HandleTShortHArray1OfShortReal {
+    /// Dereference this Handle to access the underlying TShort_HArray1OfShortReal
+    pub fn get(&self) -> &crate::ffi::TShort_HArray1OfShortReal {
+        crate::ffi::HandleTShortHArray1OfShortReal_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TShort_HArray1OfShortReal
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TShort_HArray1OfShortReal> {
+        crate::ffi::HandleTShortHArray1OfShortReal_get_mut(self)
+    }
+}
+
 // ========================
 // Additional type re-exports
 // ========================

@@ -93,6 +93,20 @@ impl HArray2OfShape {
 
 pub use crate::ffi::HandleTopToolsHArray2OfShape;
 
+impl HandleTopToolsHArray2OfShape {
+    /// Dereference this Handle to access the underlying TopTools_HArray2OfShape
+    pub fn get(&self) -> &crate::ffi::TopTools_HArray2OfShape {
+        crate::ffi::HandleTopToolsHArray2OfShape_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopTools_HArray2OfShape
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopTools_HArray2OfShape> {
+        crate::ffi::HandleTopToolsHArray2OfShape_get_mut(self)
+    }
+}
+
 // ========================
 // From TopTools_HSequenceOfShape.hxx
 // ========================
@@ -123,6 +137,20 @@ impl HSequenceOfShape {
 }
 
 pub use crate::ffi::HandleTopToolsHSequenceOfShape;
+
+impl HandleTopToolsHSequenceOfShape {
+    /// Dereference this Handle to access the underlying TopTools_HSequenceOfShape
+    pub fn get(&self) -> &crate::ffi::TopTools_HSequenceOfShape {
+        crate::ffi::HandleTopToolsHSequenceOfShape_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopTools_HSequenceOfShape
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopTools_HSequenceOfShape> {
+        crate::ffi::HandleTopToolsHSequenceOfShape_get_mut(self)
+    }
+}
 
 // ========================
 // Additional type re-exports

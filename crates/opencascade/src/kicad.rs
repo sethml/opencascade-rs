@@ -1,6 +1,6 @@
 use crate::{
     angle::ToAngle,
-    primitives::{Edge, Face, Wire},
+    primitives::{Edge, EdgeConnection, Face, Wire},
     workplane::Workplane,
     Error,
 };
@@ -59,16 +59,11 @@ impl KicadPcb {
         Ok(Self { board: KicadBoard::from_file(file)? })
     }
 
-    // NOTE: edge_cuts() is blocked because from_unordered_edges() is blocked.
-    // from_unordered_edges() uses ShapeAnalysis_FreeBounds::ConnectEdgesToWires
-    // which returns HandleTopToolsHSequenceOfShape, but the Handle type is
-    // module-local and can't be passed across module boundaries.
-    // See TRANSITION_PLAN.md for details.
-    #[allow(unused)]
     pub fn edge_cuts(&self) -> Wire {
-        unimplemented!(
-            "KicadPcb::edge_cuts is blocked because from_unordered_edges is blocked"
-        );
+        Wire::from_unordered_edges(
+            self.layer_edges(&BoardLayer::EdgeCuts),
+            EdgeConnection::default(),
+        )
     }
 
     pub fn layer_edges<'a>(&'a self, layer: &'a BoardLayer) -> impl Iterator<Item = Edge> + 'a {

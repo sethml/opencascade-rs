@@ -62,3 +62,17 @@ impl Shape {
 }
 
 pub use crate::ffi::HandleIMeshDataShape;
+
+impl HandleIMeshDataShape {
+    /// Dereference this Handle to access the underlying IMeshData_Shape
+    pub fn get(&self) -> &crate::ffi::IMeshData_Shape {
+        crate::ffi::HandleIMeshDataShape_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshData_Shape
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IMeshData_Shape> {
+        crate::ffi::HandleIMeshDataShape_get_mut(self)
+    }
+}

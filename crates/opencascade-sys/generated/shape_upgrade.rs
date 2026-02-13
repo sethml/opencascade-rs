@@ -75,3 +75,17 @@ impl UnifySameDomain {
 }
 
 pub use crate::ffi::HandleShapeUpgradeUnifySameDomain;
+
+impl HandleShapeUpgradeUnifySameDomain {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_UnifySameDomain
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_UnifySameDomain {
+        crate::ffi::HandleShapeUpgradeUnifySameDomain_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_UnifySameDomain
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ShapeUpgrade_UnifySameDomain> {
+        crate::ffi::HandleShapeUpgradeUnifySameDomain_get_mut(self)
+    }
+}

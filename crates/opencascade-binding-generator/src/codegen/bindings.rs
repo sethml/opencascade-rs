@@ -2068,6 +2068,21 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(output, "}}").unwrap();
     }
 
+    // 8b. Handle get (dereference) wrapper
+    if bindings.has_to_handle {
+        let handle_type = format!("Handle{}", cn.replace("_", ""));
+        writeln!(
+            output,
+            "inline const {cn}& {handle_type}_get(const {handle_type}& handle) {{ return *handle; }}"
+        )
+        .unwrap();
+        writeln!(
+            output,
+            "inline {cn}& {handle_type}_get_mut({handle_type}& handle) {{ return *handle; }}"
+        )
+        .unwrap();
+    }
+
     // 9. Handle upcast wrappers
     for hup in &bindings.handle_upcasts {
         writeln!(
@@ -2378,7 +2393,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         output.push_str("}\n\n");
     }
 
-    // 7. Handle type re-export and handle upcast methods
+    // 7. Handle type re-export, get method, and handle upcast methods
     if bindings.has_to_handle {
         let handle_type_name = format!("Handle{}", cn.replace("_", ""));
         // Re-export the handle type so external crates can name it
@@ -2387,25 +2402,33 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             handle_type_name
         ));
 
-        // Generate handle upcast methods
-        if !bindings.handle_upcasts.is_empty() {
-            output.push_str(&format!("impl {} {{\n", handle_type_name));
-            for hu in &bindings.handle_upcasts {
-                // Extract the short name from the base class (e.g. "Geom_Curve" -> "Curve")
-                // and snake_case it for the method name
-                let base_short = hu.base_class.split('_').skip(1).collect::<Vec<_>>().join("_");
-                let method_name = format!("to_handle_{}", base_short.to_snake_case());
-                output.push_str(&format!(
-                    "    /// Upcast Handle<{cn}> to Handle<{base}>\n    pub fn {method}(&self) -> cxx::UniquePtr<crate::ffi::{base_handle}> {{\n        crate::ffi::{ffi_fn}(self)\n    }}\n",
-                    cn = cn,
-                    base = hu.base_class,
-                    method = method_name,
-                    base_handle = hu.base_handle_name,
-                    ffi_fn = hu.ffi_fn_name,
-                ));
-            }
-            output.push_str("}\n\n");
+        // Generate impl block with get(), get_mut(), and upcast methods
+        output.push_str(&format!("impl {} {{\n", handle_type_name));
+        // get() - dereference handle to &T
+        output.push_str(&format!(
+            "    /// Dereference this Handle to access the underlying {}\n    pub fn get(&self) -> &crate::ffi::{} {{\n        crate::ffi::{}_get(self)\n    }}\n",
+            cn, cn, handle_type_name
+        ));
+        // get_mut() - dereference handle to Pin<&mut T>
+        output.push_str(&format!(
+            "    /// Dereference this Handle to mutably access the underlying {}\n    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::{}> {{\n        crate::ffi::{}_get_mut(self)\n    }}\n",
+            cn, cn, handle_type_name
+        ));
+        for hu in &bindings.handle_upcasts {
+            // Extract the short name from the base class (e.g. "Geom_Curve" -> "Curve")
+            // and snake_case it for the method name
+            let base_short = hu.base_class.split('_').skip(1).collect::<Vec<_>>().join("_");
+            let method_name = format!("to_handle_{}", base_short.to_snake_case());
+            output.push_str(&format!(
+                "    /// Upcast Handle<{cn}> to Handle<{base}>\n    pub fn {method}(&self) -> cxx::UniquePtr<crate::ffi::{base_handle}> {{\n        crate::ffi::{ffi_fn}(self)\n    }}\n",
+                cn = cn,
+                base = hu.base_class,
+                method = method_name,
+                base_handle = hu.base_handle_name,
+                ffi_fn = hu.ffi_fn_name,
+            ));
         }
+        output.push_str("}\n\n");
     }
 
     output
@@ -2559,6 +2582,15 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
         let handle_type_name = format!("Handle{}", cn.replace('_', ""));
         writeln!(out, "        /// Wrap {} in a Handle", cn).unwrap();
         writeln!(out, "        fn {}_to_handle(obj: UniquePtr<{}>) -> UniquePtr<{}>;", cn, cn, handle_type_name).unwrap();
+    }
+
+    // ── Handle get (dereference) ─────────────────────────────────────────
+    if bindings.has_to_handle {
+        let handle_type_name = format!("Handle{}", cn.replace('_', ""));
+        writeln!(out, "        /// Dereference Handle to get &{}", cn).unwrap();
+        writeln!(out, "        fn {}_get(handle: &{}) -> &{};", handle_type_name, handle_type_name, cn).unwrap();
+        writeln!(out, "        /// Dereference Handle to get Pin<&mut {}>", cn).unwrap();
+        writeln!(out, "        fn {}_get_mut(handle: Pin<&mut {}>) -> Pin<&mut {}>;", handle_type_name, handle_type_name, cn).unwrap();
     }
 
     // ── Handle upcasts ──────────────────────────────────────────────────

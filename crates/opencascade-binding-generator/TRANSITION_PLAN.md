@@ -86,7 +86,7 @@ All methods previously stubbed in the opencascade crate have been unstubbed, exc
 | Status | Files |
 |--------|-------|
 | Fully working | All files |
-| Remaining stubs (generator blocker) | wire.rs: `from_unordered_edges` (Handle type mismatch), kicad.rs: `edge_cuts` (depends on `from_unordered_edges`) |
+| Remaining stubs | None |
 
 **Methods unstubbed in this iteration:**
 - `law_function.rs` — full implementation using TColgp_Array1OfPnt2d, Law_Interpol
@@ -98,6 +98,8 @@ All methods previously stubbed in the opencascade crate have been unstubbed, exc
 - `compound.rs` — `clean()` using ShapeUpgrade_UnifySameDomain
 - `solid.rs` — section edges extraction in `subtract/union/intersect`
 - `wire.rs` — `sweep_along_with_radius_values` using make_pipe_shell_with_law_function_shell
+- `wire.rs` — `from_unordered_edges` using ShapeAnalysis_FreeBounds::ConnectEdgesToWires with Handle get() dereference
+- `kicad.rs` — `edge_cuts()` using from_unordered_edges
 - `mesh.rs` — full Mesher implementation using BRepMesh_IncrementalMesh, BRep_Tool::Triangulation, Poly_Triangulation node/triangle/normal iteration
 
 ### Step 6: Update Examples (COMPLETE)
@@ -164,10 +166,6 @@ Methods listed as "missing re-exports" (e.g., `GProp_GProps::mass()`, `GC_MakeAr
 
 Previously, types were declared in both `ffi.rs` and module-specific bridge blocks. The unified FFI architecture (Step 4i) eliminated this — all types are now declared once in `ffi.rs` and re-exported via `pub use`. Cross-module type identity works correctly.
 
-### 10. Wire::from_unordered_edges — Handle type mismatch (OPEN)
+### 10. ~~Wire::from_unordered_edges — Handle type mismatch~~ RESOLVED
 
-`Wire::from_unordered_edges` uses `ShapeAnalysis_FreeBounds::ConnectEdgesToWires`, which takes a `Handle(TopTools_HSequenceOfShape)`. The generated binding for this method lives in the `shape_analysis` module but references the Handle type as `shape_analysis::ffi::HandleTopToolsHSequenceOfShape`, while the actual construction of the handle happens via `top_tools::ffi::HandleTopToolsHSequenceOfShape`. CXX treats these as different types even though they're the same C++ type.
-
-**Impact:** `Wire::from_unordered_edges` is commented out (not a stub — it compiles but is not available). `KicadPcb::edge_cuts` depends on it and is therefore also stubbed.
-
-**Fix needed:** The binding generator needs to ensure Handle types are only declared in one canonical module and imported elsewhere, rather than being redeclared in each module that uses them. The unified FFI approach already does this for the main `ffi.rs`, but the Handle wrapper types generated in per-module files may still have duplicates.
+The unified FFI architecture (Step 4i) already ensured all Handle types are declared once in `ffi.rs` and re-exported via `pub use`. The type identity issue was already fixed. Additionally, `get()` and `get_mut()` methods were added to all Handle types to allow dereferencing handles back to their contained objects. `Wire::from_unordered_edges` and `KicadPcb::edge_cuts` are now fully implemented.
