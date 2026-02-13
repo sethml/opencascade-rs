@@ -17,3 +17,10 @@
 /// file which defines sequence of operators to be executed
 /// and their parameters.
 pub use crate::ffi::ShapeProcess;
+
+impl ShapeProcess {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeProcess_ctor()
+    }
+}

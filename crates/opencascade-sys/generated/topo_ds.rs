@@ -57,6 +57,11 @@ pub use crate::ffi::{
 pub use crate::ffi::TopoDS_Builder as Builder;
 
 impl Builder {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_Builder_ctor()
+    }
+
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Builder_to_owned(self)

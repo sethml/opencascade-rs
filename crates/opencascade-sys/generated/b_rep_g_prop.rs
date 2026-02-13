@@ -25,6 +25,11 @@
 pub use crate::ffi::BRepGProp;
 
 impl BRepGProp {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_ctor()
+    }
+
     /// Computes the linear global properties of the shape S,
     /// i.e. the global properties induced by each edge of the
     /// shape S, and brings them together with the global

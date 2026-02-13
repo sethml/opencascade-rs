@@ -16,6 +16,11 @@
 pub use crate::ffi::Message;
 
 impl Message {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_ctor()
+    }
+
     /// Defines default messenger for OCCT applications.
     /// This is global static instance of the messenger.
     /// By default, it contains single printer directed to std::cout.
@@ -90,6 +95,11 @@ impl Message {
 pub use crate::ffi::Message_Alert as Alert;
 
 impl Alert {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_Alert_ctor()
+    }
+
     /// Return a C string to be used as a key for generating text user
     /// messages describing this alert.
     /// The messages are generated with help of Message_Msg class, in

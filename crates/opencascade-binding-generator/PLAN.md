@@ -84,7 +84,7 @@ The following patterns cause methods to be intentionally skipped during binding 
 
 2. **Methods with ambiguous lifetimes** -- CXX cannot handle methods returning `Pin<&mut Self>` when there are also reference parameters. The lifetime of the returned reference is ambiguous.
 
-3. **Abstract class constructors** -- Abstract classes cannot be instantiated, so constructor wrappers and `to_handle()` functions are not generated.
+3. **Abstract class constructors** -- Abstract classes cannot be instantiated, so constructor wrappers and `to_handle()` functions are not generated. Abstract detection walks the full inheritance hierarchy to catch classes that inherit unimplemented pure virtual methods from ancestors.
 
 4. **Methods with by-value Handle parameters** -- CXX cannot pass `Handle<T>` by value across the FFI boundary. Methods taking `Handle<T>` parameters (not `const Handle<T>&`) are skipped.
 
@@ -144,7 +144,7 @@ NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 
 ## TODO
 
-- [ ] Implicit default constructors (e.g., `BRep_Builder` has no explicit constructor)
+- [x] Implicit default constructors (e.g., `BRep_Builder` has no explicit constructor)
 - [ ] Constructors with default enum parameters (e.g., `BRepFilletAPI_MakeFillet`)
 - [ ] TColgp array constructors (template instantiation typedefs)
 - [ ] System include path auto-detection (currently passed via `-I`)

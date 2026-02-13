@@ -29,6 +29,11 @@
 pub use crate::ffi::BRep_Builder as Builder;
 
 impl Builder {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_Builder_ctor()
+    }
+
     /// Upcast to TopoDS_Builder
     pub fn as_topo_ds_builder(&self) -> &crate::topo_ds::Builder {
         crate::ffi::BRep_Builder_as_TopoDS_Builder(self)
@@ -51,6 +56,11 @@ impl Builder {
 pub use crate::ffi::BRep_Tool as Tool;
 
 impl Tool {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_Tool_ctor()
+    }
+
     /// If S is Shell, returns True if it has no free boundaries (edges).
     /// If S is Wire, returns True if it has no free ends (vertices).
     /// (Internal and External sub-shepes are ignored in these checks)

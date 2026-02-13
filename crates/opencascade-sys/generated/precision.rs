@@ -88,6 +88,11 @@
 pub use crate::ffi::Precision;
 
 impl Precision {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Precision_ctor()
+    }
+
     /// Returns the recommended precision value
     /// when checking the equality of two angles (given in radians).
     /// Standard_Real Angle1 = ... , Angle2 = ... ;

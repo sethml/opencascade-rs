@@ -103,13 +103,9 @@ Delete `opencascade-sys-old` once everything works.
 
 These are CXX or generator limitations causing methods to be stubbed in the `opencascade` crate:
 
-### 1. Implicit default constructors not generated
+### 1. ~~Implicit default constructors not generated~~ FIXED
 
-`BRep_Builder` has no explicit constructor (uses C++ implicit default). The generator only emits constructors found in the AST. Blocks `compound.rs`.
-
-**Attempted fix:** Tried generating synthetic default constructors for classes with no explicit constructors. Failed because abstract class detection doesn't traverse inheritance -- classes like `BOPAlgo_BuilderShape` inherit unimplemented pure virtual methods but aren't detected as abstract.
-
-**Fix needed:** Enhance abstract class detection to walk the inheritance hierarchy.
+Synthetic default constructors are now generated for classes that have no explicit constructor declarations and are not effectively abstract. Abstract detection walks the full inheritance hierarchy via `is_effectively_abstract()` in `bindings.rs`, collecting pure virtual methods from all ancestors and checking they are overridden. Classes with any explicit constructor (public, protected, or private) do not get synthetic constructors since C++ won't generate an implicit default in that case. `BRep_Builder`, `TopoDS_Builder`, and ~30 other classes now have constructors.
 
 ### 2. Constructors with default enum parameters skipped
 

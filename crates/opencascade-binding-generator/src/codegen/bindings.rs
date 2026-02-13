@@ -719,6 +719,47 @@ fn compute_static_method_names(
         .collect()
 }
 
+// ── Abstract class detection ────────────────────────────────────────────────
+
+/// Check if a class is effectively abstract by walking the inheritance chain.
+///
+/// A class is effectively abstract if:
+/// 1. It declares pure virtual methods itself (`is_abstract` flag), OR
+/// 2. It inherits pure virtual methods from ancestors that are not overridden
+///    by any class in the inheritance chain (including itself).
+fn is_effectively_abstract(
+    class: &ParsedClass,
+    all_classes_by_name: &HashMap<String, &ParsedClass>,
+    symbol_table: &SymbolTable,
+) -> bool {
+    if class.is_abstract {
+        return true;
+    }
+
+    // Collect ALL pure virtual methods from all ancestors
+    let mut all_pvms: HashSet<String> = HashSet::new();
+    // Collect ALL concrete methods from all ancestors + this class
+    let mut all_concrete: HashSet<String> = HashSet::new();
+
+    for ancestor_name in symbol_table.get_all_ancestors_by_name(&class.name) {
+        if let Some(ancestor) = all_classes_by_name.get(&ancestor_name) {
+            all_pvms.extend(ancestor.pure_virtual_methods.iter().cloned());
+            // Concrete = all methods minus pure virtual declarations
+            for m in &ancestor.all_method_names {
+                if !ancestor.pure_virtual_methods.contains(m) {
+                    all_concrete.insert(m.clone());
+                }
+            }
+        }
+    }
+
+    // This class's own methods are concrete (is_abstract is false)
+    all_concrete.extend(class.all_method_names.iter().cloned());
+
+    // If any pure virtual method is not overridden, the class is abstract
+    all_pvms.iter().any(|pvm| !all_concrete.contains(pvm))
+}
+
 // ── Main compute function ───────────────────────────────────────────────────
 
 /// Compute all binding decisions for a class.
@@ -730,13 +771,32 @@ pub fn compute_class_bindings(
     ffi_ctx: &TypeContext,
     symbol_table: &SymbolTable,
     handle_able_classes: &HashSet<String>,
+    all_classes_by_name: &HashMap<String, &ParsedClass>,
 ) -> ClassBindings {
     let cpp_name = &class.name;
     let all_enum_names = ffi_ctx.all_enums;
 
+    let effectively_abstract = is_effectively_abstract(class, all_classes_by_name, symbol_table);
+
     // ── Constructors ────────────────────────────────────────────────────
-    let constructors = if !class.is_abstract && !class.has_protected_destructor {
-        compute_constructor_bindings(class, ffi_ctx, handle_able_classes)
+    let constructors = if !effectively_abstract && !class.has_protected_destructor {
+        let mut ctors = compute_constructor_bindings(class, ffi_ctx, handle_able_classes);
+        // If no bindable constructors AND no explicit constructors at all,
+        // generate a synthetic default constructor (uses C++ implicit default).
+        // We must NOT generate synthetic constructors when:
+        // - The class has explicit constructors (even if filtered out) — C++ won't
+        //   generate an implicit default constructor in that case
+        if ctors.is_empty() && !class.has_explicit_constructors {
+            ctors.push(ConstructorBinding {
+                ffi_fn_name: format!("{}_ctor", cpp_name),
+                impl_method_name: "new".to_string(),
+                params: Vec::new(),
+                cpp_arg_exprs: Vec::new(),
+                doc_comment: Some("Default constructor".to_string()),
+                source_line: None,
+            });
+        }
+        ctors
     } else {
         Vec::new()
     };
@@ -901,11 +961,11 @@ pub fn compute_class_bindings(
     let copyable_modules = ["TopoDS", "gp", "TopLoc", "Bnd", "GProp"];
     let has_to_owned = copyable_modules.contains(&class.module.as_str())
         && !class.has_protected_destructor
-        && !class.is_abstract;
+        && !effectively_abstract;
 
     // ── to_handle ───────────────────────────────────────────────────────
     let has_to_handle =
-        class.is_handle_type && !class.has_protected_destructor && !class.is_abstract;
+        class.is_handle_type && !class.has_protected_destructor && !effectively_abstract;
 
     // ── Handle upcasts ──────────────────────────────────────────────────
     let handle_upcasts = if has_to_handle {
@@ -922,7 +982,7 @@ pub fn compute_class_bindings(
         cpp_name: cpp_name.clone(),
         short_name: class.short_name().to_string(),
         module: class.module.clone(),
-        is_abstract: class.is_abstract,
+        is_abstract: effectively_abstract,
         is_handle_type: class.is_handle_type,
         has_protected_destructor: class.has_protected_destructor,
         doc_comment: class.comment.clone(),
@@ -1235,10 +1295,15 @@ pub fn compute_all_class_bindings(
         handle_able_classes: Some(&handle_able_classes),
     };
 
+    let all_classes_by_name: HashMap<String, &ParsedClass> = all_classes
+        .iter()
+        .map(|c| (c.name.clone(), *c))
+        .collect();
+
     all_classes
         .iter()
         .map(|class| {
-            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes)
+            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name)
         })
         .collect()
 }
@@ -2063,6 +2128,8 @@ mod tests {
             base_classes: Vec::new(),
             has_protected_destructor: false,
             is_abstract: false,
+            pure_virtual_methods: HashSet::new(),
+            has_explicit_constructors: false,
         };
 
         let all_class_names: HashSet<String> = ["gp_Pnt".to_string()].into();
@@ -2093,17 +2160,23 @@ mod tests {
             cross_module_types: HashMap::new(),
         };
 
+        let all_classes_by_name: HashMap<String, &ParsedClass> =
+            [("gp_Pnt".to_string(), &class)].into();
+
         let bindings = compute_class_bindings(
             &class,
             &ffi_ctx,
             &symbol_table,
             &handle_able_classes,
+            &all_classes_by_name,
         );
 
         assert_eq!(bindings.cpp_name, "gp_Pnt");
         assert_eq!(bindings.short_name, "Pnt");
         assert_eq!(bindings.module, "gp");
-        assert!(bindings.constructors.is_empty());
+        // Non-abstract class with no explicit constructors gets a synthetic default constructor
+        assert_eq!(bindings.constructors.len(), 1);
+        assert_eq!(bindings.constructors[0].impl_method_name, "new");
         assert!(bindings.direct_methods.is_empty());
         assert!(bindings.wrapper_methods.is_empty());
         assert!(bindings.static_methods.is_empty());
@@ -2133,6 +2206,8 @@ mod tests {
             base_classes: Vec::new(),
             has_protected_destructor: false,
             is_abstract: true,
+            pure_virtual_methods: HashSet::new(),
+            has_explicit_constructors: true,
         };
 
         let all_class_names: HashSet<String> =
@@ -2164,11 +2239,15 @@ mod tests {
             cross_module_types: HashMap::new(),
         };
 
+        let all_classes_by_name: HashMap<String, &ParsedClass> =
+            [("Geom_Curve".to_string(), &class)].into();
+
         let bindings = compute_class_bindings(
             &class,
             &ffi_ctx,
             &symbol_table,
             &handle_able_classes,
+            &all_classes_by_name,
         );
 
         assert!(bindings.constructors.is_empty());

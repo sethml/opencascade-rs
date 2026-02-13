@@ -27,3 +27,10 @@
 ///
 /// * Methods to manage the enumerations.
 pub use crate::ffi::TopAbs;
+
+impl TopAbs {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopAbs_ctor()
+    }
+}
