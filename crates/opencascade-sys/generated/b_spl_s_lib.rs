@@ -189,6 +189,8 @@ impl Cache {
     }
 }
 
+pub use crate::ffi::HandleBSplSLibCache;
+
 // ========================
 // From BSplSLib_EvaluatorFunction.hxx
 // ========================

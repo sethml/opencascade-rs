@@ -595,6 +595,8 @@ impl HAsciiString {
     }
 }
 
+pub use crate::ffi::HandleTCollectionHAsciiString;
+
 // ========================
 // From TCollection_HExtendedString.hxx
 // ========================
@@ -674,3 +676,5 @@ impl HExtendedString {
         crate::ffi::TCollection_HExtendedString_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTCollectionHExtendedString;

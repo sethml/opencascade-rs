@@ -314,6 +314,8 @@ impl Cache {
     }
 }
 
+pub use crate::ffi::HandleBSplCLibCache;
+
 // ========================
 // From BSplCLib_CacheParams.hxx
 // ========================

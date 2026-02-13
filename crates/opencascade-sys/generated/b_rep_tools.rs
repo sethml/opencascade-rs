@@ -435,6 +435,8 @@ impl History {
     }
 }
 
+pub use crate::ffi::HandleBRepToolsHistory;
+
 // ========================
 // From BRepTools_Modifier.hxx
 // ========================
@@ -524,3 +526,5 @@ impl ReShape {
         crate::ffi::BRepTools_ReShape_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleBRepToolsReShape;

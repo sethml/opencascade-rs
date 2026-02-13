@@ -69,6 +69,8 @@ impl HArray1OfCirc2d {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray1OfCirc2d;
+
 // ========================
 // From TColgp_HArray1OfDir.hxx
 // ========================
@@ -116,6 +118,8 @@ impl HArray1OfDir {
         crate::ffi::TColgp_HArray1OfDir_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHArray1OfDir;
 
 // ========================
 // From TColgp_HArray1OfDir2d.hxx
@@ -165,6 +169,8 @@ impl HArray1OfDir2d {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray1OfDir2d;
+
 // ========================
 // From TColgp_HArray1OfLin2d.hxx
 // ========================
@@ -212,6 +218,8 @@ impl HArray1OfLin2d {
         crate::ffi::TColgp_HArray1OfLin2d_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHArray1OfLin2d;
 
 // ========================
 // From TColgp_HArray1OfPnt.hxx
@@ -261,6 +269,8 @@ impl HArray1OfPnt {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray1OfPnt;
+
 // ========================
 // From TColgp_HArray1OfPnt2d.hxx
 // ========================
@@ -308,6 +318,8 @@ impl HArray1OfPnt2d {
         crate::ffi::TColgp_HArray1OfPnt2d_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHArray1OfPnt2d;
 
 // ========================
 // From TColgp_HArray1OfVec.hxx
@@ -357,6 +369,8 @@ impl HArray1OfVec {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray1OfVec;
+
 // ========================
 // From TColgp_HArray1OfVec2d.hxx
 // ========================
@@ -404,6 +418,8 @@ impl HArray1OfVec2d {
         crate::ffi::TColgp_HArray1OfVec2d_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHArray1OfVec2d;
 
 // ========================
 // From TColgp_HArray1OfXY.hxx
@@ -453,6 +469,8 @@ impl HArray1OfXY {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray1OfXY;
+
 // ========================
 // From TColgp_HArray1OfXYZ.hxx
 // ========================
@@ -501,6 +519,8 @@ impl HArray1OfXYZ {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray1OfXYZ;
+
 // ========================
 // From TColgp_HArray2OfCirc2d.hxx
 // ========================
@@ -547,6 +567,8 @@ impl HArray2OfCirc2d {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray2OfCirc2d;
+
 // ========================
 // From TColgp_HArray2OfDir.hxx
 // ========================
@@ -590,6 +612,8 @@ impl HArray2OfDir {
         crate::ffi::TColgp_HArray2OfDir_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHArray2OfDir;
 
 // ========================
 // From TColgp_HArray2OfDir2d.hxx
@@ -635,6 +659,8 @@ impl HArray2OfDir2d {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray2OfDir2d;
+
 // ========================
 // From TColgp_HArray2OfLin2d.hxx
 // ========================
@@ -678,6 +704,8 @@ impl HArray2OfLin2d {
         crate::ffi::TColgp_HArray2OfLin2d_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHArray2OfLin2d;
 
 // ========================
 // From TColgp_HArray2OfPnt.hxx
@@ -723,6 +751,8 @@ impl HArray2OfPnt {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray2OfPnt;
+
 // ========================
 // From TColgp_HArray2OfPnt2d.hxx
 // ========================
@@ -766,6 +796,8 @@ impl HArray2OfPnt2d {
         crate::ffi::TColgp_HArray2OfPnt2d_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHArray2OfPnt2d;
 
 // ========================
 // From TColgp_HArray2OfVec.hxx
@@ -811,6 +843,8 @@ impl HArray2OfVec {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray2OfVec;
+
 // ========================
 // From TColgp_HArray2OfVec2d.hxx
 // ========================
@@ -854,6 +888,8 @@ impl HArray2OfVec2d {
         crate::ffi::TColgp_HArray2OfVec2d_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHArray2OfVec2d;
 
 // ========================
 // From TColgp_HArray2OfXY.hxx
@@ -899,6 +935,8 @@ impl HArray2OfXY {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray2OfXY;
+
 // ========================
 // From TColgp_HArray2OfXYZ.hxx
 // ========================
@@ -943,6 +981,8 @@ impl HArray2OfXYZ {
     }
 }
 
+pub use crate::ffi::HandleTColgpHArray2OfXYZ;
+
 // ========================
 // From TColgp_HSequenceOfDir.hxx
 // ========================
@@ -969,6 +1009,8 @@ impl HSequenceOfDir {
         crate::ffi::TColgp_HSequenceOfDir_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHSequenceOfDir;
 
 // ========================
 // From TColgp_HSequenceOfDir2d.hxx
@@ -999,6 +1041,8 @@ impl HSequenceOfDir2d {
     }
 }
 
+pub use crate::ffi::HandleTColgpHSequenceOfDir2d;
+
 // ========================
 // From TColgp_HSequenceOfPnt.hxx
 // ========================
@@ -1025,6 +1069,8 @@ impl HSequenceOfPnt {
         crate::ffi::TColgp_HSequenceOfPnt_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHSequenceOfPnt;
 
 // ========================
 // From TColgp_HSequenceOfPnt2d.hxx
@@ -1055,6 +1101,8 @@ impl HSequenceOfPnt2d {
     }
 }
 
+pub use crate::ffi::HandleTColgpHSequenceOfPnt2d;
+
 // ========================
 // From TColgp_HSequenceOfVec.hxx
 // ========================
@@ -1081,6 +1129,8 @@ impl HSequenceOfVec {
         crate::ffi::TColgp_HSequenceOfVec_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHSequenceOfVec;
 
 // ========================
 // From TColgp_HSequenceOfVec2d.hxx
@@ -1111,6 +1161,8 @@ impl HSequenceOfVec2d {
     }
 }
 
+pub use crate::ffi::HandleTColgpHSequenceOfVec2d;
+
 // ========================
 // From TColgp_HSequenceOfXY.hxx
 // ========================
@@ -1138,6 +1190,8 @@ impl HSequenceOfXY {
     }
 }
 
+pub use crate::ffi::HandleTColgpHSequenceOfXY;
+
 // ========================
 // From TColgp_HSequenceOfXYZ.hxx
 // ========================
@@ -1164,3 +1218,5 @@ impl HSequenceOfXYZ {
         crate::ffi::TColgp_HSequenceOfXYZ_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColgpHSequenceOfXYZ;

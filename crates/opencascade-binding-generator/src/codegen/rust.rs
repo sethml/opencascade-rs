@@ -543,6 +543,43 @@ pub fn generate_module_reexports(
     }
 
     // Generate re-exports and impl blocks for classes, grouped by header
+    // Collect all handle types that are directly re-exported (derived handles with to_handle),
+    // so we can avoid duplicating their re-export when they appear as upcast targets.
+    let mut directly_exported_handles: std::collections::HashSet<String> = std::collections::HashSet::new();
+    for b in module_bindings {
+        if b.has_protected_destructor {
+            continue;
+        }
+        if b.has_to_handle {
+            let handle_type_name = format!("Handle{}", b.cpp_name.replace("_", ""));
+            directly_exported_handles.insert(handle_type_name);
+        }
+    }
+
+    // Also collect base handle types referenced by upcast methods that need re-exporting.
+    // These are handle types for base classes (e.g. HandleGeomSurface, HandleGeomCurve)
+    // that external crates need to name.
+    let mut base_handle_reexports: std::collections::BTreeSet<String> = std::collections::BTreeSet::new();
+    for b in module_bindings {
+        if b.has_protected_destructor {
+            continue;
+        }
+        for hu in &b.handle_upcasts {
+            if !directly_exported_handles.contains(&hu.base_handle_name) {
+                base_handle_reexports.insert(hu.base_handle_name.clone());
+            }
+        }
+    }
+
+    // Emit base handle type re-exports at the top of the module
+    if !base_handle_reexports.is_empty() {
+        output.push_str("// Base handle type re-exports (targets of handle upcasts)\n");
+        for handle_name in &base_handle_reexports {
+            output.push_str(&format!("pub use crate::ffi::{};\n", handle_name));
+        }
+        output.push_str("\n");
+    }
+
     for (header, header_bindings) in bindings_by_header {
         // Output section header
         output.push_str("// ========================\n");

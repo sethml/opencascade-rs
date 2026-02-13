@@ -29,3 +29,5 @@ impl BasicElt {
         crate::ffi::MAT_BasicElt_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleMATBasicElt;

@@ -1,6 +1,7 @@
 // NOTE: This module is blocked because:
-// - TColgp_Array1OfPnt2d constructor is not generated (template typedef)
-// - TColgp_Array1OfPnt2d::SetValue is not available
+// - Law_Interpol::Set() is not generated (has Standard_Boolean Periodic = Standard_False
+//   default parameter that is filtered as an enum value)
+// - TColgp_Array1OfPnt2d constructors and set_value ARE now available via ffi impl methods
 // See TRANSITION_PLAN.md for details.
 
 use cxx::UniquePtr;

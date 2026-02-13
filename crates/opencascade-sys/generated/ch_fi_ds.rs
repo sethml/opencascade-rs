@@ -153,6 +153,8 @@ impl HData {
     }
 }
 
+pub use crate::ffi::HandleChFiDSHData;
+
 // ========================
 // From ChFiDS_Map.hxx
 // ========================
@@ -228,6 +230,8 @@ impl SecHArray1 {
     }
 }
 
+pub use crate::ffi::HandleChFiDSSecHArray1;
+
 // ========================
 // From ChFiDS_Stripe.hxx
 // ========================
@@ -249,6 +253,8 @@ impl Stripe {
         crate::ffi::ChFiDS_Stripe_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleChFiDSStripe;
 
 // ========================
 // From ChFiDS_StripeMap.hxx
@@ -295,3 +301,5 @@ impl SurfData {
         crate::ffi::ChFiDS_SurfData_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleChFiDSSurfData;

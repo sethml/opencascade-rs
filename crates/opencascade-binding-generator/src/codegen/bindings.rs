@@ -2027,6 +2027,36 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         output.push_str("}\n\n");
     }
 
+    // 7. Handle type re-export and handle upcast methods
+    if bindings.has_to_handle {
+        let handle_type_name = format!("Handle{}", cn.replace("_", ""));
+        // Re-export the handle type so external crates can name it
+        output.push_str(&format!(
+            "pub use crate::ffi::{};\n\n",
+            handle_type_name
+        ));
+
+        // Generate handle upcast methods
+        if !bindings.handle_upcasts.is_empty() {
+            output.push_str(&format!("impl {} {{\n", handle_type_name));
+            for hu in &bindings.handle_upcasts {
+                // Extract the short name from the base class (e.g. "Geom_Curve" -> "Curve")
+                // and snake_case it for the method name
+                let base_short = hu.base_class.split('_').skip(1).collect::<Vec<_>>().join("_");
+                let method_name = format!("to_handle_{}", base_short.to_snake_case());
+                output.push_str(&format!(
+                    "    /// Upcast Handle<{cn}> to Handle<{base}>\n    pub fn {method}(&self) -> cxx::UniquePtr<crate::ffi::{base_handle}> {{\n        crate::ffi::{ffi_fn}(self)\n    }}\n",
+                    cn = cn,
+                    base = hu.base_class,
+                    method = method_name,
+                    base_handle = hu.base_handle_name,
+                    ffi_fn = hu.ffi_fn_name,
+                ));
+            }
+            output.push_str("}\n\n");
+        }
+    }
+
     output
 }
 

@@ -40,12 +40,11 @@ impl Face {
         Self::from_make_face(make_face)
     }
 
-    // NOTE: from_surface is blocked because BRepBuilderAPI_MakeFace_surface is not generated
-    #[allow(unused)]
-    pub fn from_surface(_surface: &Surface) -> Self {
-        unimplemented!(
-            "Face::from_surface is blocked pending BRepBuilderAPI_MakeFace surface constructor"
-        );
+    pub fn from_surface(surface: &Surface) -> Self {
+        let tol_degen = 1.0e-6;
+        let make_face =
+            b_rep_builder_api::MakeFace::new_handlesurface_real(&surface.inner, tol_degen);
+        Self::from_make_face(make_face)
     }
 
     #[must_use]

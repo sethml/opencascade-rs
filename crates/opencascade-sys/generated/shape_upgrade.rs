@@ -73,3 +73,5 @@ impl UnifySameDomain {
         crate::ffi::ShapeUpgrade_UnifySameDomain_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleShapeUpgradeUnifySameDomain;

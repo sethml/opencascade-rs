@@ -1118,6 +1118,8 @@ impl Sewing {
     }
 }
 
+pub use crate::ffi::HandleBRepBuilderAPISewing;
+
 // ========================
 // From BRepBuilderAPI_Transform.hxx
 // ========================

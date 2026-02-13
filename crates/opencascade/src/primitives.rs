@@ -86,7 +86,7 @@ fn make_dir(p: DVec3) -> UniquePtr<gp::Dir> {
     gp::Dir::new_real3(p.x, p.y, p.z)
 }
 
-fn make_vec(vec: DVec3) -> UniquePtr<gp::Vec> {
+pub(crate) fn make_vec(vec: DVec3) -> UniquePtr<gp::Vec> {
     gp::Vec::new_real3(vec.x, vec.y, vec.z)
 }
 

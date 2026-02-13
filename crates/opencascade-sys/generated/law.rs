@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Base handle type re-exports (targets of handle upcasts)
+pub use crate::ffi::HandleLawFunction;
+
 // ========================
 // From Law_BSpFunc.hxx
 // ========================
@@ -53,6 +56,15 @@ impl BSpFunc {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawBSpFunc> {
         crate::ffi::Law_BSpFunc_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleLawBSpFunc;
+
+impl HandleLawBSpFunc {
+    /// Upcast Handle<Law_BSpFunc> to Handle<Law_Function>
+    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::HandleLawBSpFunc_to_HandleLawFunction(self)
     }
 }
 
@@ -126,5 +138,19 @@ impl Interpol {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawInterpol> {
         crate::ffi::Law_Interpol_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleLawInterpol;
+
+impl HandleLawInterpol {
+    /// Upcast Handle<Law_Interpol> to Handle<Law_BSpFunc>
+    pub fn to_handle_b_sp_func(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpFunc> {
+        crate::ffi::HandleLawInterpol_to_HandleLawBSpFunc(self)
+    }
+
+    /// Upcast Handle<Law_Interpol> to Handle<Law_Function>
+    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::HandleLawInterpol_to_HandleLawFunction(self)
     }
 }

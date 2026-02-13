@@ -6,6 +6,12 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Base handle type re-exports (targets of handle upcasts)
+pub use crate::ffi::{
+    HandleGeomBoundedCurve, HandleGeomBoundedSurface, HandleGeomCurve, HandleGeomElementarySurface,
+    HandleGeomGeometry, HandleGeomSurface,
+};
+
 // ========================
 // From Geom_BSplineCurve.hxx
 // ========================
@@ -283,6 +289,25 @@ impl BSplineCurve {
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineCurve> {
         crate::ffi::Geom_BSplineCurve_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleGeomBSplineCurve;
+
+impl HandleGeomBSplineCurve {
+    /// Upcast Handle<Geom_BSplineCurve> to Handle<Geom_BoundedCurve>
+    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBoundedCurve> {
+        crate::ffi::HandleGeomBSplineCurve_to_HandleGeomBoundedCurve(self)
+    }
+
+    /// Upcast Handle<Geom_BSplineCurve> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomBSplineCurve_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_BSplineCurve> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomBSplineCurve_to_HandleGeomGeometry(self)
     }
 }
 
@@ -635,6 +660,27 @@ impl BSplineSurface {
     }
 }
 
+pub use crate::ffi::HandleGeomBSplineSurface;
+
+impl HandleGeomBSplineSurface {
+    /// Upcast Handle<Geom_BSplineSurface> to Handle<Geom_BoundedSurface>
+    pub fn to_handle_bounded_surface(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomBoundedSurface> {
+        crate::ffi::HandleGeomBSplineSurface_to_HandleGeomBoundedSurface(self)
+    }
+
+    /// Upcast Handle<Geom_BSplineSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomBSplineSurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_BSplineSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomBSplineSurface_to_HandleGeomSurface(self)
+    }
+}
+
 // ========================
 // From Geom_BezierCurve.hxx
 // ========================
@@ -783,6 +829,25 @@ impl BezierCurve {
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierCurve> {
         crate::ffi::Geom_BezierCurve_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleGeomBezierCurve;
+
+impl HandleGeomBezierCurve {
+    /// Upcast Handle<Geom_BezierCurve> to Handle<Geom_BoundedCurve>
+    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBoundedCurve> {
+        crate::ffi::HandleGeomBezierCurve_to_HandleGeomBoundedCurve(self)
+    }
+
+    /// Upcast Handle<Geom_BezierCurve> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomBezierCurve_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_BezierCurve> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomBezierCurve_to_HandleGeomGeometry(self)
     }
 }
 
@@ -975,6 +1040,27 @@ impl BezierSurface {
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierSurface> {
         crate::ffi::Geom_BezierSurface_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleGeomBezierSurface;
+
+impl HandleGeomBezierSurface {
+    /// Upcast Handle<Geom_BezierSurface> to Handle<Geom_BoundedSurface>
+    pub fn to_handle_bounded_surface(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomBoundedSurface> {
+        crate::ffi::HandleGeomBezierSurface_to_HandleGeomBoundedSurface(self)
+    }
+
+    /// Upcast Handle<Geom_BezierSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomBezierSurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_BezierSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomBezierSurface_to_HandleGeomSurface(self)
     }
 }
 
@@ -1320,6 +1406,27 @@ impl CylindricalSurface {
     }
 }
 
+pub use crate::ffi::HandleGeomCylindricalSurface;
+
+impl HandleGeomCylindricalSurface {
+    /// Upcast Handle<Geom_CylindricalSurface> to Handle<Geom_ElementarySurface>
+    pub fn to_handle_elementary_surface(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomElementarySurface> {
+        crate::ffi::HandleGeomCylindricalSurface_to_HandleGeomElementarySurface(self)
+    }
+
+    /// Upcast Handle<Geom_CylindricalSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomCylindricalSurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_CylindricalSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomCylindricalSurface_to_HandleGeomSurface(self)
+    }
+}
+
 // ========================
 // From Geom_ElementarySurface.hxx
 // ========================
@@ -1636,6 +1743,27 @@ impl Plane {
     }
 }
 
+pub use crate::ffi::HandleGeomPlane;
+
+impl HandleGeomPlane {
+    /// Upcast Handle<Geom_Plane> to Handle<Geom_ElementarySurface>
+    pub fn to_handle_elementary_surface(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomElementarySurface> {
+        crate::ffi::HandleGeomPlane_to_HandleGeomElementarySurface(self)
+    }
+
+    /// Upcast Handle<Geom_Plane> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomPlane_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_Plane> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomPlane_to_HandleGeomSurface(self)
+    }
+}
+
 // ========================
 // From Geom_Surface.hxx
 // ========================
@@ -1895,5 +2023,24 @@ impl TrimmedCurve {
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleGeomTrimmedCurve> {
         crate::ffi::Geom_TrimmedCurve_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleGeomTrimmedCurve;
+
+impl HandleGeomTrimmedCurve {
+    /// Upcast Handle<Geom_TrimmedCurve> to Handle<Geom_BoundedCurve>
+    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBoundedCurve> {
+        crate::ffi::HandleGeomTrimmedCurve_to_HandleGeomBoundedCurve(self)
+    }
+
+    /// Upcast Handle<Geom_TrimmedCurve> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomTrimmedCurve_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_TrimmedCurve> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomTrimmedCurve_to_HandleGeomGeometry(self)
     }
 }
