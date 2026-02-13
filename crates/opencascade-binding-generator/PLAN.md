@@ -146,7 +146,7 @@ NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 
 - [x] Implicit default constructors (e.g., `BRep_Builder` has no explicit constructor)
 - [x] Constructors with default enum parameters (e.g., `BRepFilletAPI_MakeFillet`)
-- [ ] TColgp array constructors (template instantiation typedefs)
+- [x] TColgp array constructors (template instantiation typedefs)
 - [ ] System include path auto-detection (currently passed via `-I`)
 
 ---

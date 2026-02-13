@@ -45012,46 +45012,6 @@ mod ffi {
         /// Referenced type from C++
         type TColStd_SequenceOfTransient;
         /// Referenced type from C++
-        type TColgp_Array1OfCirc2d;
-        /// Referenced type from C++
-        type TColgp_Array1OfDir;
-        /// Referenced type from C++
-        type TColgp_Array1OfDir2d;
-        /// Referenced type from C++
-        type TColgp_Array1OfLin2d;
-        /// Referenced type from C++
-        type TColgp_Array1OfPnt;
-        /// Referenced type from C++
-        type TColgp_Array1OfPnt2d;
-        /// Referenced type from C++
-        type TColgp_Array1OfVec;
-        /// Referenced type from C++
-        type TColgp_Array1OfVec2d;
-        /// Referenced type from C++
-        type TColgp_Array1OfXY;
-        /// Referenced type from C++
-        type TColgp_Array1OfXYZ;
-        /// Referenced type from C++
-        type TColgp_Array2OfCirc2d;
-        /// Referenced type from C++
-        type TColgp_Array2OfDir;
-        /// Referenced type from C++
-        type TColgp_Array2OfDir2d;
-        /// Referenced type from C++
-        type TColgp_Array2OfLin2d;
-        /// Referenced type from C++
-        type TColgp_Array2OfPnt;
-        /// Referenced type from C++
-        type TColgp_Array2OfPnt2d;
-        /// Referenced type from C++
-        type TColgp_Array2OfVec;
-        /// Referenced type from C++
-        type TColgp_Array2OfVec2d;
-        /// Referenced type from C++
-        type TColgp_Array2OfXY;
-        /// Referenced type from C++
-        type TColgp_Array2OfXYZ;
-        /// Referenced type from C++
         type TColgp_SequenceOfDir;
         /// Referenced type from C++
         type TColgp_SequenceOfDir2d;
@@ -45098,6 +45058,1016 @@ mod ffi {
         // ========================
         // Collection type wrappers
         // ========================
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfCirc2d;
+
+        /// Create a new empty TColgp_Array1OfCirc2d
+        fn TColgp_Array1OfCirc2d_new() -> UniquePtr<TColgp_Array1OfCirc2d>;
+
+        /// Create TColgp_Array1OfCirc2d with lower and upper bounds
+        fn TColgp_Array1OfCirc2d_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfCirc2d>;
+
+        /// Create TColgp_Array1OfCirc2d with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfCirc2d_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Circ2d,
+        ) -> UniquePtr<TColgp_Array1OfCirc2d>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfCirc2d_length(arr: &TColgp_Array1OfCirc2d) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfCirc2d_lower(arr: &TColgp_Array1OfCirc2d) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfCirc2d_upper(arr: &TColgp_Array1OfCirc2d) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfCirc2d_value(arr: &TColgp_Array1OfCirc2d, theIndex: i32) -> &gp_Circ2d;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfCirc2d_set_value(
+            arr: Pin<&mut TColgp_Array1OfCirc2d>,
+            theIndex: i32,
+            theItem: &gp_Circ2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfCirc2d_init(arr: Pin<&mut TColgp_Array1OfCirc2d>, theValue: &gp_Circ2d);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfDir;
+
+        /// Create a new empty TColgp_Array1OfDir
+        fn TColgp_Array1OfDir_new() -> UniquePtr<TColgp_Array1OfDir>;
+
+        /// Create TColgp_Array1OfDir with lower and upper bounds
+        fn TColgp_Array1OfDir_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfDir>;
+
+        /// Create TColgp_Array1OfDir with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfDir_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Dir,
+        ) -> UniquePtr<TColgp_Array1OfDir>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfDir_length(arr: &TColgp_Array1OfDir) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfDir_lower(arr: &TColgp_Array1OfDir) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfDir_upper(arr: &TColgp_Array1OfDir) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfDir_value(arr: &TColgp_Array1OfDir, theIndex: i32) -> &gp_Dir;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfDir_set_value(
+            arr: Pin<&mut TColgp_Array1OfDir>,
+            theIndex: i32,
+            theItem: &gp_Dir,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfDir_init(arr: Pin<&mut TColgp_Array1OfDir>, theValue: &gp_Dir);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfDir2d;
+
+        /// Create a new empty TColgp_Array1OfDir2d
+        fn TColgp_Array1OfDir2d_new() -> UniquePtr<TColgp_Array1OfDir2d>;
+
+        /// Create TColgp_Array1OfDir2d with lower and upper bounds
+        fn TColgp_Array1OfDir2d_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfDir2d>;
+
+        /// Create TColgp_Array1OfDir2d with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfDir2d_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Dir2d,
+        ) -> UniquePtr<TColgp_Array1OfDir2d>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfDir2d_length(arr: &TColgp_Array1OfDir2d) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfDir2d_lower(arr: &TColgp_Array1OfDir2d) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfDir2d_upper(arr: &TColgp_Array1OfDir2d) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfDir2d_value(arr: &TColgp_Array1OfDir2d, theIndex: i32) -> &gp_Dir2d;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfDir2d_set_value(
+            arr: Pin<&mut TColgp_Array1OfDir2d>,
+            theIndex: i32,
+            theItem: &gp_Dir2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfDir2d_init(arr: Pin<&mut TColgp_Array1OfDir2d>, theValue: &gp_Dir2d);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfLin2d;
+
+        /// Create a new empty TColgp_Array1OfLin2d
+        fn TColgp_Array1OfLin2d_new() -> UniquePtr<TColgp_Array1OfLin2d>;
+
+        /// Create TColgp_Array1OfLin2d with lower and upper bounds
+        fn TColgp_Array1OfLin2d_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfLin2d>;
+
+        /// Create TColgp_Array1OfLin2d with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfLin2d_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Lin2d,
+        ) -> UniquePtr<TColgp_Array1OfLin2d>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfLin2d_length(arr: &TColgp_Array1OfLin2d) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfLin2d_lower(arr: &TColgp_Array1OfLin2d) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfLin2d_upper(arr: &TColgp_Array1OfLin2d) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfLin2d_value(arr: &TColgp_Array1OfLin2d, theIndex: i32) -> &gp_Lin2d;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfLin2d_set_value(
+            arr: Pin<&mut TColgp_Array1OfLin2d>,
+            theIndex: i32,
+            theItem: &gp_Lin2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfLin2d_init(arr: Pin<&mut TColgp_Array1OfLin2d>, theValue: &gp_Lin2d);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfPnt;
+
+        /// Create a new empty TColgp_Array1OfPnt
+        fn TColgp_Array1OfPnt_new() -> UniquePtr<TColgp_Array1OfPnt>;
+
+        /// Create TColgp_Array1OfPnt with lower and upper bounds
+        fn TColgp_Array1OfPnt_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfPnt>;
+
+        /// Create TColgp_Array1OfPnt with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfPnt_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Pnt,
+        ) -> UniquePtr<TColgp_Array1OfPnt>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfPnt_length(arr: &TColgp_Array1OfPnt) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfPnt_lower(arr: &TColgp_Array1OfPnt) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfPnt_upper(arr: &TColgp_Array1OfPnt) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfPnt_value(arr: &TColgp_Array1OfPnt, theIndex: i32) -> &gp_Pnt;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfPnt_set_value(
+            arr: Pin<&mut TColgp_Array1OfPnt>,
+            theIndex: i32,
+            theItem: &gp_Pnt,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfPnt_init(arr: Pin<&mut TColgp_Array1OfPnt>, theValue: &gp_Pnt);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfPnt2d;
+
+        /// Create a new empty TColgp_Array1OfPnt2d
+        fn TColgp_Array1OfPnt2d_new() -> UniquePtr<TColgp_Array1OfPnt2d>;
+
+        /// Create TColgp_Array1OfPnt2d with lower and upper bounds
+        fn TColgp_Array1OfPnt2d_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfPnt2d>;
+
+        /// Create TColgp_Array1OfPnt2d with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfPnt2d_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Pnt2d,
+        ) -> UniquePtr<TColgp_Array1OfPnt2d>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfPnt2d_length(arr: &TColgp_Array1OfPnt2d) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfPnt2d_lower(arr: &TColgp_Array1OfPnt2d) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfPnt2d_upper(arr: &TColgp_Array1OfPnt2d) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfPnt2d_value(arr: &TColgp_Array1OfPnt2d, theIndex: i32) -> &gp_Pnt2d;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfPnt2d_set_value(
+            arr: Pin<&mut TColgp_Array1OfPnt2d>,
+            theIndex: i32,
+            theItem: &gp_Pnt2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfPnt2d_init(arr: Pin<&mut TColgp_Array1OfPnt2d>, theValue: &gp_Pnt2d);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfVec;
+
+        /// Create a new empty TColgp_Array1OfVec
+        fn TColgp_Array1OfVec_new() -> UniquePtr<TColgp_Array1OfVec>;
+
+        /// Create TColgp_Array1OfVec with lower and upper bounds
+        fn TColgp_Array1OfVec_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfVec>;
+
+        /// Create TColgp_Array1OfVec with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfVec_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Vec,
+        ) -> UniquePtr<TColgp_Array1OfVec>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfVec_length(arr: &TColgp_Array1OfVec) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfVec_lower(arr: &TColgp_Array1OfVec) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfVec_upper(arr: &TColgp_Array1OfVec) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfVec_value(arr: &TColgp_Array1OfVec, theIndex: i32) -> &gp_Vec;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfVec_set_value(
+            arr: Pin<&mut TColgp_Array1OfVec>,
+            theIndex: i32,
+            theItem: &gp_Vec,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfVec_init(arr: Pin<&mut TColgp_Array1OfVec>, theValue: &gp_Vec);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfVec2d;
+
+        /// Create a new empty TColgp_Array1OfVec2d
+        fn TColgp_Array1OfVec2d_new() -> UniquePtr<TColgp_Array1OfVec2d>;
+
+        /// Create TColgp_Array1OfVec2d with lower and upper bounds
+        fn TColgp_Array1OfVec2d_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfVec2d>;
+
+        /// Create TColgp_Array1OfVec2d with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfVec2d_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Vec2d,
+        ) -> UniquePtr<TColgp_Array1OfVec2d>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfVec2d_length(arr: &TColgp_Array1OfVec2d) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfVec2d_lower(arr: &TColgp_Array1OfVec2d) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfVec2d_upper(arr: &TColgp_Array1OfVec2d) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfVec2d_value(arr: &TColgp_Array1OfVec2d, theIndex: i32) -> &gp_Vec2d;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfVec2d_set_value(
+            arr: Pin<&mut TColgp_Array1OfVec2d>,
+            theIndex: i32,
+            theItem: &gp_Vec2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfVec2d_init(arr: Pin<&mut TColgp_Array1OfVec2d>, theValue: &gp_Vec2d);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfXY;
+
+        /// Create a new empty TColgp_Array1OfXY
+        fn TColgp_Array1OfXY_new() -> UniquePtr<TColgp_Array1OfXY>;
+
+        /// Create TColgp_Array1OfXY with lower and upper bounds
+        fn TColgp_Array1OfXY_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfXY>;
+
+        /// Create TColgp_Array1OfXY with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfXY_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_XY,
+        ) -> UniquePtr<TColgp_Array1OfXY>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfXY_length(arr: &TColgp_Array1OfXY) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfXY_lower(arr: &TColgp_Array1OfXY) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfXY_upper(arr: &TColgp_Array1OfXY) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfXY_value(arr: &TColgp_Array1OfXY, theIndex: i32) -> &gp_XY;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfXY_set_value(
+            arr: Pin<&mut TColgp_Array1OfXY>,
+            theIndex: i32,
+            theItem: &gp_XY,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfXY_init(arr: Pin<&mut TColgp_Array1OfXY>, theValue: &gp_XY);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfXYZ;
+
+        /// Create a new empty TColgp_Array1OfXYZ
+        fn TColgp_Array1OfXYZ_new() -> UniquePtr<TColgp_Array1OfXYZ>;
+
+        /// Create TColgp_Array1OfXYZ with lower and upper bounds
+        fn TColgp_Array1OfXYZ_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfXYZ>;
+
+        /// Create TColgp_Array1OfXYZ with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfXYZ_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_XYZ,
+        ) -> UniquePtr<TColgp_Array1OfXYZ>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfXYZ_length(arr: &TColgp_Array1OfXYZ) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfXYZ_lower(arr: &TColgp_Array1OfXYZ) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfXYZ_upper(arr: &TColgp_Array1OfXYZ) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfXYZ_value(arr: &TColgp_Array1OfXYZ, theIndex: i32) -> &gp_XYZ;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfXYZ_set_value(
+            arr: Pin<&mut TColgp_Array1OfXYZ>,
+            theIndex: i32,
+            theItem: &gp_XYZ,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfXYZ_init(arr: Pin<&mut TColgp_Array1OfXYZ>, theValue: &gp_XYZ);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfCirc2d;
+
+        /// Create a new empty TColgp_Array2OfCirc2d
+        fn TColgp_Array2OfCirc2d_new() -> UniquePtr<TColgp_Array2OfCirc2d>;
+
+        /// Create TColgp_Array2OfCirc2d with row and column bounds
+        fn TColgp_Array2OfCirc2d_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfCirc2d>;
+
+        /// Create TColgp_Array2OfCirc2d with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfCirc2d_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Circ2d,
+        ) -> UniquePtr<TColgp_Array2OfCirc2d>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfCirc2d_nb_rows(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfCirc2d_nb_columns(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfCirc2d_lower_row(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfCirc2d_upper_row(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfCirc2d_lower_col(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfCirc2d_upper_col(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfCirc2d_length(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfCirc2d_value(
+            arr: &TColgp_Array2OfCirc2d,
+            theRow: i32,
+            theCol: i32,
+        ) -> &gp_Circ2d;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfCirc2d_set_value(
+            arr: Pin<&mut TColgp_Array2OfCirc2d>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Circ2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfCirc2d_init(arr: Pin<&mut TColgp_Array2OfCirc2d>, theValue: &gp_Circ2d);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfDir;
+
+        /// Create a new empty TColgp_Array2OfDir
+        fn TColgp_Array2OfDir_new() -> UniquePtr<TColgp_Array2OfDir>;
+
+        /// Create TColgp_Array2OfDir with row and column bounds
+        fn TColgp_Array2OfDir_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfDir>;
+
+        /// Create TColgp_Array2OfDir with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfDir_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Dir,
+        ) -> UniquePtr<TColgp_Array2OfDir>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfDir_nb_rows(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfDir_nb_columns(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfDir_lower_row(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfDir_upper_row(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfDir_lower_col(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfDir_upper_col(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfDir_length(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfDir_value(arr: &TColgp_Array2OfDir, theRow: i32, theCol: i32) -> &gp_Dir;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfDir_set_value(
+            arr: Pin<&mut TColgp_Array2OfDir>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Dir,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfDir_init(arr: Pin<&mut TColgp_Array2OfDir>, theValue: &gp_Dir);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfDir2d;
+
+        /// Create a new empty TColgp_Array2OfDir2d
+        fn TColgp_Array2OfDir2d_new() -> UniquePtr<TColgp_Array2OfDir2d>;
+
+        /// Create TColgp_Array2OfDir2d with row and column bounds
+        fn TColgp_Array2OfDir2d_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfDir2d>;
+
+        /// Create TColgp_Array2OfDir2d with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfDir2d_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Dir2d,
+        ) -> UniquePtr<TColgp_Array2OfDir2d>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfDir2d_nb_rows(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfDir2d_nb_columns(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfDir2d_lower_row(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfDir2d_upper_row(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfDir2d_lower_col(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfDir2d_upper_col(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfDir2d_length(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfDir2d_value(
+            arr: &TColgp_Array2OfDir2d,
+            theRow: i32,
+            theCol: i32,
+        ) -> &gp_Dir2d;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfDir2d_set_value(
+            arr: Pin<&mut TColgp_Array2OfDir2d>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Dir2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfDir2d_init(arr: Pin<&mut TColgp_Array2OfDir2d>, theValue: &gp_Dir2d);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfLin2d;
+
+        /// Create a new empty TColgp_Array2OfLin2d
+        fn TColgp_Array2OfLin2d_new() -> UniquePtr<TColgp_Array2OfLin2d>;
+
+        /// Create TColgp_Array2OfLin2d with row and column bounds
+        fn TColgp_Array2OfLin2d_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfLin2d>;
+
+        /// Create TColgp_Array2OfLin2d with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfLin2d_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Lin2d,
+        ) -> UniquePtr<TColgp_Array2OfLin2d>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfLin2d_nb_rows(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfLin2d_nb_columns(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfLin2d_lower_row(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfLin2d_upper_row(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfLin2d_lower_col(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfLin2d_upper_col(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfLin2d_length(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfLin2d_value(
+            arr: &TColgp_Array2OfLin2d,
+            theRow: i32,
+            theCol: i32,
+        ) -> &gp_Lin2d;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfLin2d_set_value(
+            arr: Pin<&mut TColgp_Array2OfLin2d>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Lin2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfLin2d_init(arr: Pin<&mut TColgp_Array2OfLin2d>, theValue: &gp_Lin2d);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfPnt;
+
+        /// Create a new empty TColgp_Array2OfPnt
+        fn TColgp_Array2OfPnt_new() -> UniquePtr<TColgp_Array2OfPnt>;
+
+        /// Create TColgp_Array2OfPnt with row and column bounds
+        fn TColgp_Array2OfPnt_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfPnt>;
+
+        /// Create TColgp_Array2OfPnt with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfPnt_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Pnt,
+        ) -> UniquePtr<TColgp_Array2OfPnt>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfPnt_nb_rows(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfPnt_nb_columns(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfPnt_lower_row(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfPnt_upper_row(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfPnt_lower_col(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfPnt_upper_col(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfPnt_length(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfPnt_value(arr: &TColgp_Array2OfPnt, theRow: i32, theCol: i32) -> &gp_Pnt;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfPnt_set_value(
+            arr: Pin<&mut TColgp_Array2OfPnt>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Pnt,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfPnt_init(arr: Pin<&mut TColgp_Array2OfPnt>, theValue: &gp_Pnt);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfPnt2d;
+
+        /// Create a new empty TColgp_Array2OfPnt2d
+        fn TColgp_Array2OfPnt2d_new() -> UniquePtr<TColgp_Array2OfPnt2d>;
+
+        /// Create TColgp_Array2OfPnt2d with row and column bounds
+        fn TColgp_Array2OfPnt2d_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfPnt2d>;
+
+        /// Create TColgp_Array2OfPnt2d with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfPnt2d_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Pnt2d,
+        ) -> UniquePtr<TColgp_Array2OfPnt2d>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfPnt2d_nb_rows(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfPnt2d_nb_columns(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfPnt2d_lower_row(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfPnt2d_upper_row(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfPnt2d_lower_col(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfPnt2d_upper_col(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfPnt2d_length(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfPnt2d_value(
+            arr: &TColgp_Array2OfPnt2d,
+            theRow: i32,
+            theCol: i32,
+        ) -> &gp_Pnt2d;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfPnt2d_set_value(
+            arr: Pin<&mut TColgp_Array2OfPnt2d>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Pnt2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfPnt2d_init(arr: Pin<&mut TColgp_Array2OfPnt2d>, theValue: &gp_Pnt2d);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfVec;
+
+        /// Create a new empty TColgp_Array2OfVec
+        fn TColgp_Array2OfVec_new() -> UniquePtr<TColgp_Array2OfVec>;
+
+        /// Create TColgp_Array2OfVec with row and column bounds
+        fn TColgp_Array2OfVec_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfVec>;
+
+        /// Create TColgp_Array2OfVec with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfVec_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Vec,
+        ) -> UniquePtr<TColgp_Array2OfVec>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfVec_nb_rows(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfVec_nb_columns(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfVec_lower_row(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfVec_upper_row(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfVec_lower_col(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfVec_upper_col(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfVec_length(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfVec_value(arr: &TColgp_Array2OfVec, theRow: i32, theCol: i32) -> &gp_Vec;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfVec_set_value(
+            arr: Pin<&mut TColgp_Array2OfVec>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Vec,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfVec_init(arr: Pin<&mut TColgp_Array2OfVec>, theValue: &gp_Vec);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfVec2d;
+
+        /// Create a new empty TColgp_Array2OfVec2d
+        fn TColgp_Array2OfVec2d_new() -> UniquePtr<TColgp_Array2OfVec2d>;
+
+        /// Create TColgp_Array2OfVec2d with row and column bounds
+        fn TColgp_Array2OfVec2d_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfVec2d>;
+
+        /// Create TColgp_Array2OfVec2d with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfVec2d_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Vec2d,
+        ) -> UniquePtr<TColgp_Array2OfVec2d>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfVec2d_nb_rows(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfVec2d_nb_columns(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfVec2d_lower_row(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfVec2d_upper_row(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfVec2d_lower_col(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfVec2d_upper_col(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfVec2d_length(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfVec2d_value(
+            arr: &TColgp_Array2OfVec2d,
+            theRow: i32,
+            theCol: i32,
+        ) -> &gp_Vec2d;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfVec2d_set_value(
+            arr: Pin<&mut TColgp_Array2OfVec2d>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Vec2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfVec2d_init(arr: Pin<&mut TColgp_Array2OfVec2d>, theValue: &gp_Vec2d);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfXY;
+
+        /// Create a new empty TColgp_Array2OfXY
+        fn TColgp_Array2OfXY_new() -> UniquePtr<TColgp_Array2OfXY>;
+
+        /// Create TColgp_Array2OfXY with row and column bounds
+        fn TColgp_Array2OfXY_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfXY>;
+
+        /// Create TColgp_Array2OfXY with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfXY_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_XY,
+        ) -> UniquePtr<TColgp_Array2OfXY>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfXY_nb_rows(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfXY_nb_columns(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfXY_lower_row(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfXY_upper_row(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfXY_lower_col(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfXY_upper_col(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfXY_length(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfXY_value(arr: &TColgp_Array2OfXY, theRow: i32, theCol: i32) -> &gp_XY;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfXY_set_value(
+            arr: Pin<&mut TColgp_Array2OfXY>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_XY,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfXY_init(arr: Pin<&mut TColgp_Array2OfXY>, theValue: &gp_XY);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfXYZ;
+
+        /// Create a new empty TColgp_Array2OfXYZ
+        fn TColgp_Array2OfXYZ_new() -> UniquePtr<TColgp_Array2OfXYZ>;
+
+        /// Create TColgp_Array2OfXYZ with row and column bounds
+        fn TColgp_Array2OfXYZ_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfXYZ>;
+
+        /// Create TColgp_Array2OfXYZ with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfXYZ_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_XYZ,
+        ) -> UniquePtr<TColgp_Array2OfXYZ>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfXYZ_nb_rows(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfXYZ_nb_columns(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfXYZ_lower_row(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfXYZ_upper_row(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfXYZ_lower_col(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfXYZ_upper_col(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfXYZ_length(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfXYZ_value(arr: &TColgp_Array2OfXYZ, theRow: i32, theCol: i32) -> &gp_XYZ;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfXYZ_set_value(
+            arr: Pin<&mut TColgp_Array2OfXYZ>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_XYZ,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfXYZ_init(arr: Pin<&mut TColgp_Array2OfXYZ>, theValue: &gp_XYZ);
 
         /// Key-value map
         type TopTools_DataMapOfShapeShape;
@@ -45730,6 +46700,1258 @@ mod ffi {
     impl UniquePtr<TopoDS_Iterator> {}
     impl UniquePtr<TopoDS_TShape> {}
     impl UniquePtr<TopAbs> {}
+}
+
+impl ffi::TColgp_Array1OfCirc2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfCirc2d_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfCirc2d_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Circ2d) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfCirc2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfCirc2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfCirc2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfCirc2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Circ2d {
+        ffi::TColgp_Array1OfCirc2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Circ2d) {
+        ffi::TColgp_Array1OfCirc2d_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Circ2d) {
+        ffi::TColgp_Array1OfCirc2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfDir {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Dir) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfDir_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfDir_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfDir_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Dir {
+        ffi::TColgp_Array1OfDir_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Dir) {
+        ffi::TColgp_Array1OfDir_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Dir) {
+        ffi::TColgp_Array1OfDir_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfDir2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir2d_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir2d_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Dir2d) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfDir2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfDir2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfDir2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Dir2d {
+        ffi::TColgp_Array1OfDir2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Dir2d) {
+        ffi::TColgp_Array1OfDir2d_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Dir2d) {
+        ffi::TColgp_Array1OfDir2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfLin2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfLin2d_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfLin2d_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Lin2d) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfLin2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfLin2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfLin2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfLin2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Lin2d {
+        ffi::TColgp_Array1OfLin2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Lin2d) {
+        ffi::TColgp_Array1OfLin2d_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Lin2d) {
+        ffi::TColgp_Array1OfLin2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfPnt {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Pnt {
+        ffi::TColgp_Array1OfPnt_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Pnt) {
+        ffi::TColgp_Array1OfPnt_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Pnt) {
+        ffi::TColgp_Array1OfPnt_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfPnt2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt2d_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt2d_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Pnt2d) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Pnt2d {
+        ffi::TColgp_Array1OfPnt2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Pnt2d) {
+        ffi::TColgp_Array1OfPnt2d_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Pnt2d) {
+        ffi::TColgp_Array1OfPnt2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfVec {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Vec) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfVec_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfVec_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfVec_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Vec {
+        ffi::TColgp_Array1OfVec_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Vec) {
+        ffi::TColgp_Array1OfVec_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Vec) {
+        ffi::TColgp_Array1OfVec_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfVec2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec2d_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec2d_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Vec2d) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfVec2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfVec2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfVec2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Vec2d {
+        ffi::TColgp_Array1OfVec2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Vec2d) {
+        ffi::TColgp_Array1OfVec2d_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Vec2d) {
+        ffi::TColgp_Array1OfVec2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfXY {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXY_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXY_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_XY) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXY_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfXY_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfXY_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfXY_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_XY {
+        ffi::TColgp_Array1OfXY_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_XY) {
+        ffi::TColgp_Array1OfXY_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_XY) {
+        ffi::TColgp_Array1OfXY_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfXYZ {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXYZ_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXYZ_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_XYZ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXYZ_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfXYZ_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfXYZ_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfXYZ_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_XYZ {
+        ffi::TColgp_Array1OfXYZ_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_XYZ) {
+        ffi::TColgp_Array1OfXYZ_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_XYZ) {
+        ffi::TColgp_Array1OfXYZ_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfCirc2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfCirc2d_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfCirc2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Circ2d,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfCirc2d_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Circ2d {
+        ffi::TColgp_Array2OfCirc2d_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Circ2d) {
+        ffi::TColgp_Array2OfCirc2d_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Circ2d) {
+        ffi::TColgp_Array2OfCirc2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfDir {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Dir {
+        ffi::TColgp_Array2OfDir_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Dir) {
+        ffi::TColgp_Array2OfDir_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Dir) {
+        ffi::TColgp_Array2OfDir_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfDir2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir2d_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Dir2d,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir2d_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Dir2d {
+        ffi::TColgp_Array2OfDir2d_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Dir2d) {
+        ffi::TColgp_Array2OfDir2d_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Dir2d) {
+        ffi::TColgp_Array2OfDir2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfLin2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfLin2d_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfLin2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Lin2d,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfLin2d_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Lin2d {
+        ffi::TColgp_Array2OfLin2d_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Lin2d) {
+        ffi::TColgp_Array2OfLin2d_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Lin2d) {
+        ffi::TColgp_Array2OfLin2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfPnt {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Pnt {
+        ffi::TColgp_Array2OfPnt_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Pnt) {
+        ffi::TColgp_Array2OfPnt_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Pnt) {
+        ffi::TColgp_Array2OfPnt_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfPnt2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt2d_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt2d_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Pnt2d {
+        ffi::TColgp_Array2OfPnt2d_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Pnt2d) {
+        ffi::TColgp_Array2OfPnt2d_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Pnt2d) {
+        ffi::TColgp_Array2OfPnt2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfVec {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Vec,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Vec {
+        ffi::TColgp_Array2OfVec_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Vec) {
+        ffi::TColgp_Array2OfVec_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Vec) {
+        ffi::TColgp_Array2OfVec_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfVec2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec2d_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec2d_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Vec2d {
+        ffi::TColgp_Array2OfVec2d_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Vec2d) {
+        ffi::TColgp_Array2OfVec2d_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Vec2d) {
+        ffi::TColgp_Array2OfVec2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfXY {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXY_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXY_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_XY,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXY_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_XY {
+        ffi::TColgp_Array2OfXY_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_XY) {
+        ffi::TColgp_Array2OfXY_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_XY) {
+        ffi::TColgp_Array2OfXY_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfXYZ {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXYZ_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXYZ_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_XYZ,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXYZ_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_XYZ {
+        ffi::TColgp_Array2OfXYZ_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_XYZ) {
+        ffi::TColgp_Array2OfXYZ_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_XYZ) {
+        ffi::TColgp_Array2OfXYZ_init(self, value)
+    }
 }
 
 impl ffi::TopTools_DataMapOfShapeShape {

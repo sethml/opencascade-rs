@@ -6,6 +6,19 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{
+    TColgp_Array1OfCirc2d as Array1OfCirc2d, TColgp_Array1OfDir as Array1OfDir,
+    TColgp_Array1OfDir2d as Array1OfDir2d, TColgp_Array1OfLin2d as Array1OfLin2d,
+    TColgp_Array1OfPnt as Array1OfPnt, TColgp_Array1OfPnt2d as Array1OfPnt2d,
+    TColgp_Array1OfVec as Array1OfVec, TColgp_Array1OfVec2d as Array1OfVec2d,
+    TColgp_Array1OfXY as Array1OfXY, TColgp_Array1OfXYZ as Array1OfXYZ,
+    TColgp_Array2OfCirc2d as Array2OfCirc2d, TColgp_Array2OfDir as Array2OfDir,
+    TColgp_Array2OfDir2d as Array2OfDir2d, TColgp_Array2OfLin2d as Array2OfLin2d,
+    TColgp_Array2OfPnt as Array2OfPnt, TColgp_Array2OfPnt2d as Array2OfPnt2d,
+    TColgp_Array2OfVec as Array2OfVec, TColgp_Array2OfVec2d as Array2OfVec2d,
+    TColgp_Array2OfXY as Array2OfXY, TColgp_Array2OfXYZ as Array2OfXYZ,
+};
+
 // ========================
 // From TColgp_HArray1OfCirc2d.hxx
 // ========================

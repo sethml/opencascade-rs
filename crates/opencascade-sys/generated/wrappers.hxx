@@ -14350,6 +14350,26 @@ inline TopoDS_Compound& TopoDS_compound_mut(TopoDS_Shape& theShape) { return Top
 // Collection type wrappers
 // ========================
 
+#include <TColgp_Array1OfCirc2d.hxx>
+#include <TColgp_Array1OfDir.hxx>
+#include <TColgp_Array1OfDir2d.hxx>
+#include <TColgp_Array1OfLin2d.hxx>
+#include <TColgp_Array1OfPnt.hxx>
+#include <TColgp_Array1OfPnt2d.hxx>
+#include <TColgp_Array1OfVec.hxx>
+#include <TColgp_Array1OfVec2d.hxx>
+#include <TColgp_Array1OfXY.hxx>
+#include <TColgp_Array1OfXYZ.hxx>
+#include <TColgp_Array2OfCirc2d.hxx>
+#include <TColgp_Array2OfDir.hxx>
+#include <TColgp_Array2OfDir2d.hxx>
+#include <TColgp_Array2OfLin2d.hxx>
+#include <TColgp_Array2OfPnt.hxx>
+#include <TColgp_Array2OfPnt2d.hxx>
+#include <TColgp_Array2OfVec.hxx>
+#include <TColgp_Array2OfVec2d.hxx>
+#include <TColgp_Array2OfXY.hxx>
+#include <TColgp_Array2OfXYZ.hxx>
 #include <TopTools_DataMapOfShapeShape.hxx>
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
@@ -14357,6 +14377,1016 @@ inline TopoDS_Compound& TopoDS_compound_mut(TopoDS_Shape& theShape) { return Top
 #include <TopTools_MapOfShape.hxx>
 #include <TopTools_SequenceOfShape.hxx>
 #include <TopoDS_Shape.hxx>
+#include <gp_Circ2d.hxx>
+#include <gp_Dir.hxx>
+#include <gp_Dir2d.hxx>
+#include <gp_Lin2d.hxx>
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
+#include <gp_Vec.hxx>
+#include <gp_Vec2d.hxx>
+#include <gp_XY.hxx>
+#include <gp_XYZ.hxx>
+
+// ========================
+// TColgp_Array1OfCirc2d - Fixed-size 1D array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array1OfCirc2d> TColgp_Array1OfCirc2d_new() {
+    return std::make_unique<TColgp_Array1OfCirc2d>();
+}
+
+inline std::unique_ptr<TColgp_Array1OfCirc2d> TColgp_Array1OfCirc2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_Array1OfCirc2d>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_Array1OfCirc2d> TColgp_Array1OfCirc2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Circ2d& theValue) {
+    auto arr = std::make_unique<TColgp_Array1OfCirc2d>(theLower, theUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array1OfCirc2d_length(const TColgp_Array1OfCirc2d& arr) {
+    return arr.Length();
+}
+
+inline Standard_Integer TColgp_Array1OfCirc2d_lower(const TColgp_Array1OfCirc2d& arr) {
+    return arr.Lower();
+}
+
+inline Standard_Integer TColgp_Array1OfCirc2d_upper(const TColgp_Array1OfCirc2d& arr) {
+    return arr.Upper();
+}
+
+inline const gp_Circ2d& TColgp_Array1OfCirc2d_value(const TColgp_Array1OfCirc2d& arr, Standard_Integer theIndex) {
+    return arr.Value(theIndex);
+}
+
+inline void TColgp_Array1OfCirc2d_set_value(TColgp_Array1OfCirc2d& arr, Standard_Integer theIndex, const gp_Circ2d& theItem) {
+    arr.SetValue(theIndex, theItem);
+}
+
+inline void TColgp_Array1OfCirc2d_init(TColgp_Array1OfCirc2d& arr, const gp_Circ2d& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array1OfDir - Fixed-size 1D array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array1OfDir> TColgp_Array1OfDir_new() {
+    return std::make_unique<TColgp_Array1OfDir>();
+}
+
+inline std::unique_ptr<TColgp_Array1OfDir> TColgp_Array1OfDir_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_Array1OfDir>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_Array1OfDir> TColgp_Array1OfDir_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Dir& theValue) {
+    auto arr = std::make_unique<TColgp_Array1OfDir>(theLower, theUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array1OfDir_length(const TColgp_Array1OfDir& arr) {
+    return arr.Length();
+}
+
+inline Standard_Integer TColgp_Array1OfDir_lower(const TColgp_Array1OfDir& arr) {
+    return arr.Lower();
+}
+
+inline Standard_Integer TColgp_Array1OfDir_upper(const TColgp_Array1OfDir& arr) {
+    return arr.Upper();
+}
+
+inline const gp_Dir& TColgp_Array1OfDir_value(const TColgp_Array1OfDir& arr, Standard_Integer theIndex) {
+    return arr.Value(theIndex);
+}
+
+inline void TColgp_Array1OfDir_set_value(TColgp_Array1OfDir& arr, Standard_Integer theIndex, const gp_Dir& theItem) {
+    arr.SetValue(theIndex, theItem);
+}
+
+inline void TColgp_Array1OfDir_init(TColgp_Array1OfDir& arr, const gp_Dir& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array1OfDir2d - Fixed-size 1D array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array1OfDir2d> TColgp_Array1OfDir2d_new() {
+    return std::make_unique<TColgp_Array1OfDir2d>();
+}
+
+inline std::unique_ptr<TColgp_Array1OfDir2d> TColgp_Array1OfDir2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_Array1OfDir2d>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_Array1OfDir2d> TColgp_Array1OfDir2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Dir2d& theValue) {
+    auto arr = std::make_unique<TColgp_Array1OfDir2d>(theLower, theUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array1OfDir2d_length(const TColgp_Array1OfDir2d& arr) {
+    return arr.Length();
+}
+
+inline Standard_Integer TColgp_Array1OfDir2d_lower(const TColgp_Array1OfDir2d& arr) {
+    return arr.Lower();
+}
+
+inline Standard_Integer TColgp_Array1OfDir2d_upper(const TColgp_Array1OfDir2d& arr) {
+    return arr.Upper();
+}
+
+inline const gp_Dir2d& TColgp_Array1OfDir2d_value(const TColgp_Array1OfDir2d& arr, Standard_Integer theIndex) {
+    return arr.Value(theIndex);
+}
+
+inline void TColgp_Array1OfDir2d_set_value(TColgp_Array1OfDir2d& arr, Standard_Integer theIndex, const gp_Dir2d& theItem) {
+    arr.SetValue(theIndex, theItem);
+}
+
+inline void TColgp_Array1OfDir2d_init(TColgp_Array1OfDir2d& arr, const gp_Dir2d& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array1OfLin2d - Fixed-size 1D array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array1OfLin2d> TColgp_Array1OfLin2d_new() {
+    return std::make_unique<TColgp_Array1OfLin2d>();
+}
+
+inline std::unique_ptr<TColgp_Array1OfLin2d> TColgp_Array1OfLin2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_Array1OfLin2d>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_Array1OfLin2d> TColgp_Array1OfLin2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Lin2d& theValue) {
+    auto arr = std::make_unique<TColgp_Array1OfLin2d>(theLower, theUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array1OfLin2d_length(const TColgp_Array1OfLin2d& arr) {
+    return arr.Length();
+}
+
+inline Standard_Integer TColgp_Array1OfLin2d_lower(const TColgp_Array1OfLin2d& arr) {
+    return arr.Lower();
+}
+
+inline Standard_Integer TColgp_Array1OfLin2d_upper(const TColgp_Array1OfLin2d& arr) {
+    return arr.Upper();
+}
+
+inline const gp_Lin2d& TColgp_Array1OfLin2d_value(const TColgp_Array1OfLin2d& arr, Standard_Integer theIndex) {
+    return arr.Value(theIndex);
+}
+
+inline void TColgp_Array1OfLin2d_set_value(TColgp_Array1OfLin2d& arr, Standard_Integer theIndex, const gp_Lin2d& theItem) {
+    arr.SetValue(theIndex, theItem);
+}
+
+inline void TColgp_Array1OfLin2d_init(TColgp_Array1OfLin2d& arr, const gp_Lin2d& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array1OfPnt - Fixed-size 1D array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array1OfPnt> TColgp_Array1OfPnt_new() {
+    return std::make_unique<TColgp_Array1OfPnt>();
+}
+
+inline std::unique_ptr<TColgp_Array1OfPnt> TColgp_Array1OfPnt_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_Array1OfPnt>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_Array1OfPnt> TColgp_Array1OfPnt_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Pnt& theValue) {
+    auto arr = std::make_unique<TColgp_Array1OfPnt>(theLower, theUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array1OfPnt_length(const TColgp_Array1OfPnt& arr) {
+    return arr.Length();
+}
+
+inline Standard_Integer TColgp_Array1OfPnt_lower(const TColgp_Array1OfPnt& arr) {
+    return arr.Lower();
+}
+
+inline Standard_Integer TColgp_Array1OfPnt_upper(const TColgp_Array1OfPnt& arr) {
+    return arr.Upper();
+}
+
+inline const gp_Pnt& TColgp_Array1OfPnt_value(const TColgp_Array1OfPnt& arr, Standard_Integer theIndex) {
+    return arr.Value(theIndex);
+}
+
+inline void TColgp_Array1OfPnt_set_value(TColgp_Array1OfPnt& arr, Standard_Integer theIndex, const gp_Pnt& theItem) {
+    arr.SetValue(theIndex, theItem);
+}
+
+inline void TColgp_Array1OfPnt_init(TColgp_Array1OfPnt& arr, const gp_Pnt& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array1OfPnt2d - Fixed-size 1D array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array1OfPnt2d> TColgp_Array1OfPnt2d_new() {
+    return std::make_unique<TColgp_Array1OfPnt2d>();
+}
+
+inline std::unique_ptr<TColgp_Array1OfPnt2d> TColgp_Array1OfPnt2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_Array1OfPnt2d>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_Array1OfPnt2d> TColgp_Array1OfPnt2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Pnt2d& theValue) {
+    auto arr = std::make_unique<TColgp_Array1OfPnt2d>(theLower, theUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array1OfPnt2d_length(const TColgp_Array1OfPnt2d& arr) {
+    return arr.Length();
+}
+
+inline Standard_Integer TColgp_Array1OfPnt2d_lower(const TColgp_Array1OfPnt2d& arr) {
+    return arr.Lower();
+}
+
+inline Standard_Integer TColgp_Array1OfPnt2d_upper(const TColgp_Array1OfPnt2d& arr) {
+    return arr.Upper();
+}
+
+inline const gp_Pnt2d& TColgp_Array1OfPnt2d_value(const TColgp_Array1OfPnt2d& arr, Standard_Integer theIndex) {
+    return arr.Value(theIndex);
+}
+
+inline void TColgp_Array1OfPnt2d_set_value(TColgp_Array1OfPnt2d& arr, Standard_Integer theIndex, const gp_Pnt2d& theItem) {
+    arr.SetValue(theIndex, theItem);
+}
+
+inline void TColgp_Array1OfPnt2d_init(TColgp_Array1OfPnt2d& arr, const gp_Pnt2d& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array1OfVec - Fixed-size 1D array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array1OfVec> TColgp_Array1OfVec_new() {
+    return std::make_unique<TColgp_Array1OfVec>();
+}
+
+inline std::unique_ptr<TColgp_Array1OfVec> TColgp_Array1OfVec_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_Array1OfVec>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_Array1OfVec> TColgp_Array1OfVec_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Vec& theValue) {
+    auto arr = std::make_unique<TColgp_Array1OfVec>(theLower, theUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array1OfVec_length(const TColgp_Array1OfVec& arr) {
+    return arr.Length();
+}
+
+inline Standard_Integer TColgp_Array1OfVec_lower(const TColgp_Array1OfVec& arr) {
+    return arr.Lower();
+}
+
+inline Standard_Integer TColgp_Array1OfVec_upper(const TColgp_Array1OfVec& arr) {
+    return arr.Upper();
+}
+
+inline const gp_Vec& TColgp_Array1OfVec_value(const TColgp_Array1OfVec& arr, Standard_Integer theIndex) {
+    return arr.Value(theIndex);
+}
+
+inline void TColgp_Array1OfVec_set_value(TColgp_Array1OfVec& arr, Standard_Integer theIndex, const gp_Vec& theItem) {
+    arr.SetValue(theIndex, theItem);
+}
+
+inline void TColgp_Array1OfVec_init(TColgp_Array1OfVec& arr, const gp_Vec& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array1OfVec2d - Fixed-size 1D array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array1OfVec2d> TColgp_Array1OfVec2d_new() {
+    return std::make_unique<TColgp_Array1OfVec2d>();
+}
+
+inline std::unique_ptr<TColgp_Array1OfVec2d> TColgp_Array1OfVec2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_Array1OfVec2d>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_Array1OfVec2d> TColgp_Array1OfVec2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Vec2d& theValue) {
+    auto arr = std::make_unique<TColgp_Array1OfVec2d>(theLower, theUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array1OfVec2d_length(const TColgp_Array1OfVec2d& arr) {
+    return arr.Length();
+}
+
+inline Standard_Integer TColgp_Array1OfVec2d_lower(const TColgp_Array1OfVec2d& arr) {
+    return arr.Lower();
+}
+
+inline Standard_Integer TColgp_Array1OfVec2d_upper(const TColgp_Array1OfVec2d& arr) {
+    return arr.Upper();
+}
+
+inline const gp_Vec2d& TColgp_Array1OfVec2d_value(const TColgp_Array1OfVec2d& arr, Standard_Integer theIndex) {
+    return arr.Value(theIndex);
+}
+
+inline void TColgp_Array1OfVec2d_set_value(TColgp_Array1OfVec2d& arr, Standard_Integer theIndex, const gp_Vec2d& theItem) {
+    arr.SetValue(theIndex, theItem);
+}
+
+inline void TColgp_Array1OfVec2d_init(TColgp_Array1OfVec2d& arr, const gp_Vec2d& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array1OfXY - Fixed-size 1D array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array1OfXY> TColgp_Array1OfXY_new() {
+    return std::make_unique<TColgp_Array1OfXY>();
+}
+
+inline std::unique_ptr<TColgp_Array1OfXY> TColgp_Array1OfXY_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_Array1OfXY>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_Array1OfXY> TColgp_Array1OfXY_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_XY& theValue) {
+    auto arr = std::make_unique<TColgp_Array1OfXY>(theLower, theUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array1OfXY_length(const TColgp_Array1OfXY& arr) {
+    return arr.Length();
+}
+
+inline Standard_Integer TColgp_Array1OfXY_lower(const TColgp_Array1OfXY& arr) {
+    return arr.Lower();
+}
+
+inline Standard_Integer TColgp_Array1OfXY_upper(const TColgp_Array1OfXY& arr) {
+    return arr.Upper();
+}
+
+inline const gp_XY& TColgp_Array1OfXY_value(const TColgp_Array1OfXY& arr, Standard_Integer theIndex) {
+    return arr.Value(theIndex);
+}
+
+inline void TColgp_Array1OfXY_set_value(TColgp_Array1OfXY& arr, Standard_Integer theIndex, const gp_XY& theItem) {
+    arr.SetValue(theIndex, theItem);
+}
+
+inline void TColgp_Array1OfXY_init(TColgp_Array1OfXY& arr, const gp_XY& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array1OfXYZ - Fixed-size 1D array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array1OfXYZ> TColgp_Array1OfXYZ_new() {
+    return std::make_unique<TColgp_Array1OfXYZ>();
+}
+
+inline std::unique_ptr<TColgp_Array1OfXYZ> TColgp_Array1OfXYZ_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_Array1OfXYZ>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_Array1OfXYZ> TColgp_Array1OfXYZ_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_XYZ& theValue) {
+    auto arr = std::make_unique<TColgp_Array1OfXYZ>(theLower, theUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array1OfXYZ_length(const TColgp_Array1OfXYZ& arr) {
+    return arr.Length();
+}
+
+inline Standard_Integer TColgp_Array1OfXYZ_lower(const TColgp_Array1OfXYZ& arr) {
+    return arr.Lower();
+}
+
+inline Standard_Integer TColgp_Array1OfXYZ_upper(const TColgp_Array1OfXYZ& arr) {
+    return arr.Upper();
+}
+
+inline const gp_XYZ& TColgp_Array1OfXYZ_value(const TColgp_Array1OfXYZ& arr, Standard_Integer theIndex) {
+    return arr.Value(theIndex);
+}
+
+inline void TColgp_Array1OfXYZ_set_value(TColgp_Array1OfXYZ& arr, Standard_Integer theIndex, const gp_XYZ& theItem) {
+    arr.SetValue(theIndex, theItem);
+}
+
+inline void TColgp_Array1OfXYZ_init(TColgp_Array1OfXYZ& arr, const gp_XYZ& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array2OfCirc2d - Fixed-size 2D array (row/col indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array2OfCirc2d> TColgp_Array2OfCirc2d_new() {
+    return std::make_unique<TColgp_Array2OfCirc2d>();
+}
+
+inline std::unique_ptr<TColgp_Array2OfCirc2d> TColgp_Array2OfCirc2d_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return std::make_unique<TColgp_Array2OfCirc2d>(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+inline std::unique_ptr<TColgp_Array2OfCirc2d> TColgp_Array2OfCirc2d_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Circ2d& theValue) {
+    auto arr = std::make_unique<TColgp_Array2OfCirc2d>(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array2OfCirc2d_nb_rows(const TColgp_Array2OfCirc2d& arr) {
+    return arr.NbRows();
+}
+
+inline Standard_Integer TColgp_Array2OfCirc2d_nb_columns(const TColgp_Array2OfCirc2d& arr) {
+    return arr.NbColumns();
+}
+
+inline Standard_Integer TColgp_Array2OfCirc2d_lower_row(const TColgp_Array2OfCirc2d& arr) {
+    return arr.LowerRow();
+}
+
+inline Standard_Integer TColgp_Array2OfCirc2d_upper_row(const TColgp_Array2OfCirc2d& arr) {
+    return arr.UpperRow();
+}
+
+inline Standard_Integer TColgp_Array2OfCirc2d_lower_col(const TColgp_Array2OfCirc2d& arr) {
+    return arr.LowerCol();
+}
+
+inline Standard_Integer TColgp_Array2OfCirc2d_upper_col(const TColgp_Array2OfCirc2d& arr) {
+    return arr.UpperCol();
+}
+
+inline Standard_Integer TColgp_Array2OfCirc2d_length(const TColgp_Array2OfCirc2d& arr) {
+    return arr.Length();
+}
+
+inline const gp_Circ2d& TColgp_Array2OfCirc2d_value(const TColgp_Array2OfCirc2d& arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return arr.Value(theRow, theCol);
+}
+
+inline void TColgp_Array2OfCirc2d_set_value(TColgp_Array2OfCirc2d& arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Circ2d& theItem) {
+    arr.SetValue(theRow, theCol, theItem);
+}
+
+inline void TColgp_Array2OfCirc2d_init(TColgp_Array2OfCirc2d& arr, const gp_Circ2d& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array2OfDir - Fixed-size 2D array (row/col indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array2OfDir> TColgp_Array2OfDir_new() {
+    return std::make_unique<TColgp_Array2OfDir>();
+}
+
+inline std::unique_ptr<TColgp_Array2OfDir> TColgp_Array2OfDir_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return std::make_unique<TColgp_Array2OfDir>(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+inline std::unique_ptr<TColgp_Array2OfDir> TColgp_Array2OfDir_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Dir& theValue) {
+    auto arr = std::make_unique<TColgp_Array2OfDir>(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array2OfDir_nb_rows(const TColgp_Array2OfDir& arr) {
+    return arr.NbRows();
+}
+
+inline Standard_Integer TColgp_Array2OfDir_nb_columns(const TColgp_Array2OfDir& arr) {
+    return arr.NbColumns();
+}
+
+inline Standard_Integer TColgp_Array2OfDir_lower_row(const TColgp_Array2OfDir& arr) {
+    return arr.LowerRow();
+}
+
+inline Standard_Integer TColgp_Array2OfDir_upper_row(const TColgp_Array2OfDir& arr) {
+    return arr.UpperRow();
+}
+
+inline Standard_Integer TColgp_Array2OfDir_lower_col(const TColgp_Array2OfDir& arr) {
+    return arr.LowerCol();
+}
+
+inline Standard_Integer TColgp_Array2OfDir_upper_col(const TColgp_Array2OfDir& arr) {
+    return arr.UpperCol();
+}
+
+inline Standard_Integer TColgp_Array2OfDir_length(const TColgp_Array2OfDir& arr) {
+    return arr.Length();
+}
+
+inline const gp_Dir& TColgp_Array2OfDir_value(const TColgp_Array2OfDir& arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return arr.Value(theRow, theCol);
+}
+
+inline void TColgp_Array2OfDir_set_value(TColgp_Array2OfDir& arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Dir& theItem) {
+    arr.SetValue(theRow, theCol, theItem);
+}
+
+inline void TColgp_Array2OfDir_init(TColgp_Array2OfDir& arr, const gp_Dir& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array2OfDir2d - Fixed-size 2D array (row/col indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array2OfDir2d> TColgp_Array2OfDir2d_new() {
+    return std::make_unique<TColgp_Array2OfDir2d>();
+}
+
+inline std::unique_ptr<TColgp_Array2OfDir2d> TColgp_Array2OfDir2d_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return std::make_unique<TColgp_Array2OfDir2d>(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+inline std::unique_ptr<TColgp_Array2OfDir2d> TColgp_Array2OfDir2d_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Dir2d& theValue) {
+    auto arr = std::make_unique<TColgp_Array2OfDir2d>(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array2OfDir2d_nb_rows(const TColgp_Array2OfDir2d& arr) {
+    return arr.NbRows();
+}
+
+inline Standard_Integer TColgp_Array2OfDir2d_nb_columns(const TColgp_Array2OfDir2d& arr) {
+    return arr.NbColumns();
+}
+
+inline Standard_Integer TColgp_Array2OfDir2d_lower_row(const TColgp_Array2OfDir2d& arr) {
+    return arr.LowerRow();
+}
+
+inline Standard_Integer TColgp_Array2OfDir2d_upper_row(const TColgp_Array2OfDir2d& arr) {
+    return arr.UpperRow();
+}
+
+inline Standard_Integer TColgp_Array2OfDir2d_lower_col(const TColgp_Array2OfDir2d& arr) {
+    return arr.LowerCol();
+}
+
+inline Standard_Integer TColgp_Array2OfDir2d_upper_col(const TColgp_Array2OfDir2d& arr) {
+    return arr.UpperCol();
+}
+
+inline Standard_Integer TColgp_Array2OfDir2d_length(const TColgp_Array2OfDir2d& arr) {
+    return arr.Length();
+}
+
+inline const gp_Dir2d& TColgp_Array2OfDir2d_value(const TColgp_Array2OfDir2d& arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return arr.Value(theRow, theCol);
+}
+
+inline void TColgp_Array2OfDir2d_set_value(TColgp_Array2OfDir2d& arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Dir2d& theItem) {
+    arr.SetValue(theRow, theCol, theItem);
+}
+
+inline void TColgp_Array2OfDir2d_init(TColgp_Array2OfDir2d& arr, const gp_Dir2d& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array2OfLin2d - Fixed-size 2D array (row/col indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array2OfLin2d> TColgp_Array2OfLin2d_new() {
+    return std::make_unique<TColgp_Array2OfLin2d>();
+}
+
+inline std::unique_ptr<TColgp_Array2OfLin2d> TColgp_Array2OfLin2d_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return std::make_unique<TColgp_Array2OfLin2d>(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+inline std::unique_ptr<TColgp_Array2OfLin2d> TColgp_Array2OfLin2d_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Lin2d& theValue) {
+    auto arr = std::make_unique<TColgp_Array2OfLin2d>(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array2OfLin2d_nb_rows(const TColgp_Array2OfLin2d& arr) {
+    return arr.NbRows();
+}
+
+inline Standard_Integer TColgp_Array2OfLin2d_nb_columns(const TColgp_Array2OfLin2d& arr) {
+    return arr.NbColumns();
+}
+
+inline Standard_Integer TColgp_Array2OfLin2d_lower_row(const TColgp_Array2OfLin2d& arr) {
+    return arr.LowerRow();
+}
+
+inline Standard_Integer TColgp_Array2OfLin2d_upper_row(const TColgp_Array2OfLin2d& arr) {
+    return arr.UpperRow();
+}
+
+inline Standard_Integer TColgp_Array2OfLin2d_lower_col(const TColgp_Array2OfLin2d& arr) {
+    return arr.LowerCol();
+}
+
+inline Standard_Integer TColgp_Array2OfLin2d_upper_col(const TColgp_Array2OfLin2d& arr) {
+    return arr.UpperCol();
+}
+
+inline Standard_Integer TColgp_Array2OfLin2d_length(const TColgp_Array2OfLin2d& arr) {
+    return arr.Length();
+}
+
+inline const gp_Lin2d& TColgp_Array2OfLin2d_value(const TColgp_Array2OfLin2d& arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return arr.Value(theRow, theCol);
+}
+
+inline void TColgp_Array2OfLin2d_set_value(TColgp_Array2OfLin2d& arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Lin2d& theItem) {
+    arr.SetValue(theRow, theCol, theItem);
+}
+
+inline void TColgp_Array2OfLin2d_init(TColgp_Array2OfLin2d& arr, const gp_Lin2d& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array2OfPnt - Fixed-size 2D array (row/col indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array2OfPnt> TColgp_Array2OfPnt_new() {
+    return std::make_unique<TColgp_Array2OfPnt>();
+}
+
+inline std::unique_ptr<TColgp_Array2OfPnt> TColgp_Array2OfPnt_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return std::make_unique<TColgp_Array2OfPnt>(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+inline std::unique_ptr<TColgp_Array2OfPnt> TColgp_Array2OfPnt_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Pnt& theValue) {
+    auto arr = std::make_unique<TColgp_Array2OfPnt>(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array2OfPnt_nb_rows(const TColgp_Array2OfPnt& arr) {
+    return arr.NbRows();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt_nb_columns(const TColgp_Array2OfPnt& arr) {
+    return arr.NbColumns();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt_lower_row(const TColgp_Array2OfPnt& arr) {
+    return arr.LowerRow();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt_upper_row(const TColgp_Array2OfPnt& arr) {
+    return arr.UpperRow();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt_lower_col(const TColgp_Array2OfPnt& arr) {
+    return arr.LowerCol();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt_upper_col(const TColgp_Array2OfPnt& arr) {
+    return arr.UpperCol();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt_length(const TColgp_Array2OfPnt& arr) {
+    return arr.Length();
+}
+
+inline const gp_Pnt& TColgp_Array2OfPnt_value(const TColgp_Array2OfPnt& arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return arr.Value(theRow, theCol);
+}
+
+inline void TColgp_Array2OfPnt_set_value(TColgp_Array2OfPnt& arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Pnt& theItem) {
+    arr.SetValue(theRow, theCol, theItem);
+}
+
+inline void TColgp_Array2OfPnt_init(TColgp_Array2OfPnt& arr, const gp_Pnt& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array2OfPnt2d - Fixed-size 2D array (row/col indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array2OfPnt2d> TColgp_Array2OfPnt2d_new() {
+    return std::make_unique<TColgp_Array2OfPnt2d>();
+}
+
+inline std::unique_ptr<TColgp_Array2OfPnt2d> TColgp_Array2OfPnt2d_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return std::make_unique<TColgp_Array2OfPnt2d>(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+inline std::unique_ptr<TColgp_Array2OfPnt2d> TColgp_Array2OfPnt2d_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Pnt2d& theValue) {
+    auto arr = std::make_unique<TColgp_Array2OfPnt2d>(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array2OfPnt2d_nb_rows(const TColgp_Array2OfPnt2d& arr) {
+    return arr.NbRows();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt2d_nb_columns(const TColgp_Array2OfPnt2d& arr) {
+    return arr.NbColumns();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt2d_lower_row(const TColgp_Array2OfPnt2d& arr) {
+    return arr.LowerRow();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt2d_upper_row(const TColgp_Array2OfPnt2d& arr) {
+    return arr.UpperRow();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt2d_lower_col(const TColgp_Array2OfPnt2d& arr) {
+    return arr.LowerCol();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt2d_upper_col(const TColgp_Array2OfPnt2d& arr) {
+    return arr.UpperCol();
+}
+
+inline Standard_Integer TColgp_Array2OfPnt2d_length(const TColgp_Array2OfPnt2d& arr) {
+    return arr.Length();
+}
+
+inline const gp_Pnt2d& TColgp_Array2OfPnt2d_value(const TColgp_Array2OfPnt2d& arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return arr.Value(theRow, theCol);
+}
+
+inline void TColgp_Array2OfPnt2d_set_value(TColgp_Array2OfPnt2d& arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Pnt2d& theItem) {
+    arr.SetValue(theRow, theCol, theItem);
+}
+
+inline void TColgp_Array2OfPnt2d_init(TColgp_Array2OfPnt2d& arr, const gp_Pnt2d& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array2OfVec - Fixed-size 2D array (row/col indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array2OfVec> TColgp_Array2OfVec_new() {
+    return std::make_unique<TColgp_Array2OfVec>();
+}
+
+inline std::unique_ptr<TColgp_Array2OfVec> TColgp_Array2OfVec_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return std::make_unique<TColgp_Array2OfVec>(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+inline std::unique_ptr<TColgp_Array2OfVec> TColgp_Array2OfVec_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Vec& theValue) {
+    auto arr = std::make_unique<TColgp_Array2OfVec>(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array2OfVec_nb_rows(const TColgp_Array2OfVec& arr) {
+    return arr.NbRows();
+}
+
+inline Standard_Integer TColgp_Array2OfVec_nb_columns(const TColgp_Array2OfVec& arr) {
+    return arr.NbColumns();
+}
+
+inline Standard_Integer TColgp_Array2OfVec_lower_row(const TColgp_Array2OfVec& arr) {
+    return arr.LowerRow();
+}
+
+inline Standard_Integer TColgp_Array2OfVec_upper_row(const TColgp_Array2OfVec& arr) {
+    return arr.UpperRow();
+}
+
+inline Standard_Integer TColgp_Array2OfVec_lower_col(const TColgp_Array2OfVec& arr) {
+    return arr.LowerCol();
+}
+
+inline Standard_Integer TColgp_Array2OfVec_upper_col(const TColgp_Array2OfVec& arr) {
+    return arr.UpperCol();
+}
+
+inline Standard_Integer TColgp_Array2OfVec_length(const TColgp_Array2OfVec& arr) {
+    return arr.Length();
+}
+
+inline const gp_Vec& TColgp_Array2OfVec_value(const TColgp_Array2OfVec& arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return arr.Value(theRow, theCol);
+}
+
+inline void TColgp_Array2OfVec_set_value(TColgp_Array2OfVec& arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Vec& theItem) {
+    arr.SetValue(theRow, theCol, theItem);
+}
+
+inline void TColgp_Array2OfVec_init(TColgp_Array2OfVec& arr, const gp_Vec& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array2OfVec2d - Fixed-size 2D array (row/col indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array2OfVec2d> TColgp_Array2OfVec2d_new() {
+    return std::make_unique<TColgp_Array2OfVec2d>();
+}
+
+inline std::unique_ptr<TColgp_Array2OfVec2d> TColgp_Array2OfVec2d_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return std::make_unique<TColgp_Array2OfVec2d>(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+inline std::unique_ptr<TColgp_Array2OfVec2d> TColgp_Array2OfVec2d_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Vec2d& theValue) {
+    auto arr = std::make_unique<TColgp_Array2OfVec2d>(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array2OfVec2d_nb_rows(const TColgp_Array2OfVec2d& arr) {
+    return arr.NbRows();
+}
+
+inline Standard_Integer TColgp_Array2OfVec2d_nb_columns(const TColgp_Array2OfVec2d& arr) {
+    return arr.NbColumns();
+}
+
+inline Standard_Integer TColgp_Array2OfVec2d_lower_row(const TColgp_Array2OfVec2d& arr) {
+    return arr.LowerRow();
+}
+
+inline Standard_Integer TColgp_Array2OfVec2d_upper_row(const TColgp_Array2OfVec2d& arr) {
+    return arr.UpperRow();
+}
+
+inline Standard_Integer TColgp_Array2OfVec2d_lower_col(const TColgp_Array2OfVec2d& arr) {
+    return arr.LowerCol();
+}
+
+inline Standard_Integer TColgp_Array2OfVec2d_upper_col(const TColgp_Array2OfVec2d& arr) {
+    return arr.UpperCol();
+}
+
+inline Standard_Integer TColgp_Array2OfVec2d_length(const TColgp_Array2OfVec2d& arr) {
+    return arr.Length();
+}
+
+inline const gp_Vec2d& TColgp_Array2OfVec2d_value(const TColgp_Array2OfVec2d& arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return arr.Value(theRow, theCol);
+}
+
+inline void TColgp_Array2OfVec2d_set_value(TColgp_Array2OfVec2d& arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Vec2d& theItem) {
+    arr.SetValue(theRow, theCol, theItem);
+}
+
+inline void TColgp_Array2OfVec2d_init(TColgp_Array2OfVec2d& arr, const gp_Vec2d& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array2OfXY - Fixed-size 2D array (row/col indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array2OfXY> TColgp_Array2OfXY_new() {
+    return std::make_unique<TColgp_Array2OfXY>();
+}
+
+inline std::unique_ptr<TColgp_Array2OfXY> TColgp_Array2OfXY_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return std::make_unique<TColgp_Array2OfXY>(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+inline std::unique_ptr<TColgp_Array2OfXY> TColgp_Array2OfXY_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_XY& theValue) {
+    auto arr = std::make_unique<TColgp_Array2OfXY>(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array2OfXY_nb_rows(const TColgp_Array2OfXY& arr) {
+    return arr.NbRows();
+}
+
+inline Standard_Integer TColgp_Array2OfXY_nb_columns(const TColgp_Array2OfXY& arr) {
+    return arr.NbColumns();
+}
+
+inline Standard_Integer TColgp_Array2OfXY_lower_row(const TColgp_Array2OfXY& arr) {
+    return arr.LowerRow();
+}
+
+inline Standard_Integer TColgp_Array2OfXY_upper_row(const TColgp_Array2OfXY& arr) {
+    return arr.UpperRow();
+}
+
+inline Standard_Integer TColgp_Array2OfXY_lower_col(const TColgp_Array2OfXY& arr) {
+    return arr.LowerCol();
+}
+
+inline Standard_Integer TColgp_Array2OfXY_upper_col(const TColgp_Array2OfXY& arr) {
+    return arr.UpperCol();
+}
+
+inline Standard_Integer TColgp_Array2OfXY_length(const TColgp_Array2OfXY& arr) {
+    return arr.Length();
+}
+
+inline const gp_XY& TColgp_Array2OfXY_value(const TColgp_Array2OfXY& arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return arr.Value(theRow, theCol);
+}
+
+inline void TColgp_Array2OfXY_set_value(TColgp_Array2OfXY& arr, Standard_Integer theRow, Standard_Integer theCol, const gp_XY& theItem) {
+    arr.SetValue(theRow, theCol, theItem);
+}
+
+inline void TColgp_Array2OfXY_init(TColgp_Array2OfXY& arr, const gp_XY& theValue) {
+    arr.Init(theValue);
+}
+
+// ========================
+// TColgp_Array2OfXYZ - Fixed-size 2D array (row/col indexed)
+// ========================
+
+inline std::unique_ptr<TColgp_Array2OfXYZ> TColgp_Array2OfXYZ_new() {
+    return std::make_unique<TColgp_Array2OfXYZ>();
+}
+
+inline std::unique_ptr<TColgp_Array2OfXYZ> TColgp_Array2OfXYZ_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+    return std::make_unique<TColgp_Array2OfXYZ>(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+inline std::unique_ptr<TColgp_Array2OfXYZ> TColgp_Array2OfXYZ_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_XYZ& theValue) {
+    auto arr = std::make_unique<TColgp_Array2OfXYZ>(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(theValue);
+    return arr;
+}
+
+inline Standard_Integer TColgp_Array2OfXYZ_nb_rows(const TColgp_Array2OfXYZ& arr) {
+    return arr.NbRows();
+}
+
+inline Standard_Integer TColgp_Array2OfXYZ_nb_columns(const TColgp_Array2OfXYZ& arr) {
+    return arr.NbColumns();
+}
+
+inline Standard_Integer TColgp_Array2OfXYZ_lower_row(const TColgp_Array2OfXYZ& arr) {
+    return arr.LowerRow();
+}
+
+inline Standard_Integer TColgp_Array2OfXYZ_upper_row(const TColgp_Array2OfXYZ& arr) {
+    return arr.UpperRow();
+}
+
+inline Standard_Integer TColgp_Array2OfXYZ_lower_col(const TColgp_Array2OfXYZ& arr) {
+    return arr.LowerCol();
+}
+
+inline Standard_Integer TColgp_Array2OfXYZ_upper_col(const TColgp_Array2OfXYZ& arr) {
+    return arr.UpperCol();
+}
+
+inline Standard_Integer TColgp_Array2OfXYZ_length(const TColgp_Array2OfXYZ& arr) {
+    return arr.Length();
+}
+
+inline const gp_XYZ& TColgp_Array2OfXYZ_value(const TColgp_Array2OfXYZ& arr, Standard_Integer theRow, Standard_Integer theCol) {
+    return arr.Value(theRow, theCol);
+}
+
+inline void TColgp_Array2OfXYZ_set_value(TColgp_Array2OfXYZ& arr, Standard_Integer theRow, Standard_Integer theCol, const gp_XYZ& theItem) {
+    arr.SetValue(theRow, theCol, theItem);
+}
+
+inline void TColgp_Array2OfXYZ_init(TColgp_Array2OfXYZ& arr, const gp_XYZ& theValue) {
+    arr.Init(theValue);
+}
 
 // ========================
 // TopTools_DataMapOfShapeShape - Key-value map
