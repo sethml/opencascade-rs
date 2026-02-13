@@ -51,6 +51,31 @@ impl LocalOperation {
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFilletAPI_LocalOperation_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFilletAPI_LocalOperation_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepFilletAPI_LocalOperation_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFilletAPI_LocalOperation_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepFilletAPI_LocalOperation_inherited_IsDeleted(self, S)
+    }
 }
 
 // ========================
@@ -127,6 +152,21 @@ impl MakeChamfer {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut LocalOperation> {
         crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFilletAPI_MakeChamfer_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Shape(self)
     }
 }
 
@@ -236,6 +276,21 @@ impl MakeFillet {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut LocalOperation> {
         crate::ffi::BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFilletAPI_MakeFillet_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFilletAPI_MakeFillet_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFilletAPI_MakeFillet_inherited_Shape(self)
     }
 }
 
@@ -501,5 +556,25 @@ impl MakeFillet2d {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(self, S)
     }
 }

@@ -9260,6 +9260,76 @@ mod ffi {
         ) -> Pin<&mut TopoDS_Shape>;
         /// Clone into a new UniquePtr via copy constructor
         fn TopoDS_Vertex_to_owned(self_: &TopoDS_Vertex) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from TopoDS_Shape: IsNull()
+        fn TopoDS_Vertex_inherited_IsNull(self_: &TopoDS_Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify()
+        fn TopoDS_Vertex_inherited_Nullify(self_: Pin<&mut TopoDS_Vertex>);
+        /// Inherited from TopoDS_Shape: Location()
+        fn TopoDS_Vertex_inherited_Location(self_: &TopoDS_Vertex) -> &TopLoc_Location;
+        /// Inherited from TopoDS_Shape: Located()
+        fn TopoDS_Vertex_inherited_Located(
+            self_: &TopoDS_Vertex,
+            theLoc: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: TShape()
+        fn TopoDS_Vertex_inherited_TShape(self_: &TopoDS_Vertex) -> &HandleTopoDSTShape;
+        /// Inherited from TopoDS_Shape: Free()
+        fn TopoDS_Vertex_inherited_Free(self_: &TopoDS_Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Locked()
+        fn TopoDS_Vertex_inherited_Locked(self_: &TopoDS_Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Modified()
+        fn TopoDS_Vertex_inherited_Modified(self_: &TopoDS_Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Checked()
+        fn TopoDS_Vertex_inherited_Checked(self_: &TopoDS_Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable()
+        fn TopoDS_Vertex_inherited_Orientable(self_: &TopoDS_Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Closed()
+        fn TopoDS_Vertex_inherited_Closed(self_: &TopoDS_Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite()
+        fn TopoDS_Vertex_inherited_Infinite(self_: &TopoDS_Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Convex()
+        fn TopoDS_Vertex_inherited_Convex(self_: &TopoDS_Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Move()
+        fn TopoDS_Vertex_inherited_Move(
+            self_: Pin<&mut TopoDS_Vertex>,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        );
+        /// Inherited from TopoDS_Shape: Moved()
+        fn TopoDS_Vertex_inherited_Moved(
+            self_: &TopoDS_Vertex,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Reverse()
+        fn TopoDS_Vertex_inherited_Reverse(self_: Pin<&mut TopoDS_Vertex>);
+        /// Inherited from TopoDS_Shape: Reversed()
+        fn TopoDS_Vertex_inherited_Reversed(self_: &TopoDS_Vertex) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Complement()
+        fn TopoDS_Vertex_inherited_Complement(self_: Pin<&mut TopoDS_Vertex>);
+        /// Inherited from TopoDS_Shape: Complemented()
+        fn TopoDS_Vertex_inherited_Complemented(self_: &TopoDS_Vertex) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: NbChildren()
+        fn TopoDS_Vertex_inherited_NbChildren(self_: &TopoDS_Vertex) -> i32;
+        /// Inherited from TopoDS_Shape: IsPartner()
+        fn TopoDS_Vertex_inherited_IsPartner(
+            self_: &TopoDS_Vertex,
+            theOther: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from TopoDS_Shape: IsSame()
+        fn TopoDS_Vertex_inherited_IsSame(self_: &TopoDS_Vertex, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsEqual()
+        fn TopoDS_Vertex_inherited_IsEqual(self_: &TopoDS_Vertex, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsNotEqual()
+        fn TopoDS_Vertex_inherited_IsNotEqual(
+            self_: &TopoDS_Vertex,
+            theOther: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from TopoDS_Shape: EmptyCopy()
+        fn TopoDS_Vertex_inherited_EmptyCopy(self_: Pin<&mut TopoDS_Vertex>);
+        /// Inherited from TopoDS_Shape: EmptyCopied()
+        fn TopoDS_Vertex_inherited_EmptyCopied(self_: &TopoDS_Vertex) -> UniquePtr<TopoDS_Shape>;
         /// ======================== TopoDS_Edge ========================
         /// **Source:** `TopoDS_Edge.hxx`:30 - `TopoDS_Edge`
         ///
@@ -9282,6 +9352,70 @@ mod ffi {
         fn TopoDS_Edge_as_TopoDS_Shape_mut(self_: Pin<&mut TopoDS_Edge>) -> Pin<&mut TopoDS_Shape>;
         /// Clone into a new UniquePtr via copy constructor
         fn TopoDS_Edge_to_owned(self_: &TopoDS_Edge) -> UniquePtr<TopoDS_Edge>;
+        /// Inherited from TopoDS_Shape: IsNull()
+        fn TopoDS_Edge_inherited_IsNull(self_: &TopoDS_Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify()
+        fn TopoDS_Edge_inherited_Nullify(self_: Pin<&mut TopoDS_Edge>);
+        /// Inherited from TopoDS_Shape: Location()
+        fn TopoDS_Edge_inherited_Location(self_: &TopoDS_Edge) -> &TopLoc_Location;
+        /// Inherited from TopoDS_Shape: Located()
+        fn TopoDS_Edge_inherited_Located(
+            self_: &TopoDS_Edge,
+            theLoc: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: TShape()
+        fn TopoDS_Edge_inherited_TShape(self_: &TopoDS_Edge) -> &HandleTopoDSTShape;
+        /// Inherited from TopoDS_Shape: Free()
+        fn TopoDS_Edge_inherited_Free(self_: &TopoDS_Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Locked()
+        fn TopoDS_Edge_inherited_Locked(self_: &TopoDS_Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Modified()
+        fn TopoDS_Edge_inherited_Modified(self_: &TopoDS_Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Checked()
+        fn TopoDS_Edge_inherited_Checked(self_: &TopoDS_Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable()
+        fn TopoDS_Edge_inherited_Orientable(self_: &TopoDS_Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Closed()
+        fn TopoDS_Edge_inherited_Closed(self_: &TopoDS_Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite()
+        fn TopoDS_Edge_inherited_Infinite(self_: &TopoDS_Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Convex()
+        fn TopoDS_Edge_inherited_Convex(self_: &TopoDS_Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Move()
+        fn TopoDS_Edge_inherited_Move(
+            self_: Pin<&mut TopoDS_Edge>,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        );
+        /// Inherited from TopoDS_Shape: Moved()
+        fn TopoDS_Edge_inherited_Moved(
+            self_: &TopoDS_Edge,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Reverse()
+        fn TopoDS_Edge_inherited_Reverse(self_: Pin<&mut TopoDS_Edge>);
+        /// Inherited from TopoDS_Shape: Reversed()
+        fn TopoDS_Edge_inherited_Reversed(self_: &TopoDS_Edge) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Complement()
+        fn TopoDS_Edge_inherited_Complement(self_: Pin<&mut TopoDS_Edge>);
+        /// Inherited from TopoDS_Shape: Complemented()
+        fn TopoDS_Edge_inherited_Complemented(self_: &TopoDS_Edge) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: NbChildren()
+        fn TopoDS_Edge_inherited_NbChildren(self_: &TopoDS_Edge) -> i32;
+        /// Inherited from TopoDS_Shape: IsPartner()
+        fn TopoDS_Edge_inherited_IsPartner(self_: &TopoDS_Edge, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsSame()
+        fn TopoDS_Edge_inherited_IsSame(self_: &TopoDS_Edge, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsEqual()
+        fn TopoDS_Edge_inherited_IsEqual(self_: &TopoDS_Edge, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsNotEqual()
+        fn TopoDS_Edge_inherited_IsNotEqual(self_: &TopoDS_Edge, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: EmptyCopy()
+        fn TopoDS_Edge_inherited_EmptyCopy(self_: Pin<&mut TopoDS_Edge>);
+        /// Inherited from TopoDS_Shape: EmptyCopied()
+        fn TopoDS_Edge_inherited_EmptyCopied(self_: &TopoDS_Edge) -> UniquePtr<TopoDS_Shape>;
         /// ======================== TopoDS_Wire ========================
         /// **Source:** `TopoDS_Wire.hxx`:29 - `TopoDS_Wire`
         ///
@@ -9303,6 +9437,70 @@ mod ffi {
         fn TopoDS_Wire_as_TopoDS_Shape_mut(self_: Pin<&mut TopoDS_Wire>) -> Pin<&mut TopoDS_Shape>;
         /// Clone into a new UniquePtr via copy constructor
         fn TopoDS_Wire_to_owned(self_: &TopoDS_Wire) -> UniquePtr<TopoDS_Wire>;
+        /// Inherited from TopoDS_Shape: IsNull()
+        fn TopoDS_Wire_inherited_IsNull(self_: &TopoDS_Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify()
+        fn TopoDS_Wire_inherited_Nullify(self_: Pin<&mut TopoDS_Wire>);
+        /// Inherited from TopoDS_Shape: Location()
+        fn TopoDS_Wire_inherited_Location(self_: &TopoDS_Wire) -> &TopLoc_Location;
+        /// Inherited from TopoDS_Shape: Located()
+        fn TopoDS_Wire_inherited_Located(
+            self_: &TopoDS_Wire,
+            theLoc: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: TShape()
+        fn TopoDS_Wire_inherited_TShape(self_: &TopoDS_Wire) -> &HandleTopoDSTShape;
+        /// Inherited from TopoDS_Shape: Free()
+        fn TopoDS_Wire_inherited_Free(self_: &TopoDS_Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Locked()
+        fn TopoDS_Wire_inherited_Locked(self_: &TopoDS_Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Modified()
+        fn TopoDS_Wire_inherited_Modified(self_: &TopoDS_Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Checked()
+        fn TopoDS_Wire_inherited_Checked(self_: &TopoDS_Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable()
+        fn TopoDS_Wire_inherited_Orientable(self_: &TopoDS_Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Closed()
+        fn TopoDS_Wire_inherited_Closed(self_: &TopoDS_Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite()
+        fn TopoDS_Wire_inherited_Infinite(self_: &TopoDS_Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Convex()
+        fn TopoDS_Wire_inherited_Convex(self_: &TopoDS_Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Move()
+        fn TopoDS_Wire_inherited_Move(
+            self_: Pin<&mut TopoDS_Wire>,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        );
+        /// Inherited from TopoDS_Shape: Moved()
+        fn TopoDS_Wire_inherited_Moved(
+            self_: &TopoDS_Wire,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Reverse()
+        fn TopoDS_Wire_inherited_Reverse(self_: Pin<&mut TopoDS_Wire>);
+        /// Inherited from TopoDS_Shape: Reversed()
+        fn TopoDS_Wire_inherited_Reversed(self_: &TopoDS_Wire) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Complement()
+        fn TopoDS_Wire_inherited_Complement(self_: Pin<&mut TopoDS_Wire>);
+        /// Inherited from TopoDS_Shape: Complemented()
+        fn TopoDS_Wire_inherited_Complemented(self_: &TopoDS_Wire) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: NbChildren()
+        fn TopoDS_Wire_inherited_NbChildren(self_: &TopoDS_Wire) -> i32;
+        /// Inherited from TopoDS_Shape: IsPartner()
+        fn TopoDS_Wire_inherited_IsPartner(self_: &TopoDS_Wire, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsSame()
+        fn TopoDS_Wire_inherited_IsSame(self_: &TopoDS_Wire, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsEqual()
+        fn TopoDS_Wire_inherited_IsEqual(self_: &TopoDS_Wire, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsNotEqual()
+        fn TopoDS_Wire_inherited_IsNotEqual(self_: &TopoDS_Wire, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: EmptyCopy()
+        fn TopoDS_Wire_inherited_EmptyCopy(self_: Pin<&mut TopoDS_Wire>);
+        /// Inherited from TopoDS_Shape: EmptyCopied()
+        fn TopoDS_Wire_inherited_EmptyCopied(self_: &TopoDS_Wire) -> UniquePtr<TopoDS_Shape>;
         /// ======================== TopoDS_Face ========================
         /// **Source:** `TopoDS_Face.hxx`:29 - `TopoDS_Face`
         ///
@@ -9324,6 +9522,70 @@ mod ffi {
         fn TopoDS_Face_as_TopoDS_Shape_mut(self_: Pin<&mut TopoDS_Face>) -> Pin<&mut TopoDS_Shape>;
         /// Clone into a new UniquePtr via copy constructor
         fn TopoDS_Face_to_owned(self_: &TopoDS_Face) -> UniquePtr<TopoDS_Face>;
+        /// Inherited from TopoDS_Shape: IsNull()
+        fn TopoDS_Face_inherited_IsNull(self_: &TopoDS_Face) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify()
+        fn TopoDS_Face_inherited_Nullify(self_: Pin<&mut TopoDS_Face>);
+        /// Inherited from TopoDS_Shape: Location()
+        fn TopoDS_Face_inherited_Location(self_: &TopoDS_Face) -> &TopLoc_Location;
+        /// Inherited from TopoDS_Shape: Located()
+        fn TopoDS_Face_inherited_Located(
+            self_: &TopoDS_Face,
+            theLoc: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: TShape()
+        fn TopoDS_Face_inherited_TShape(self_: &TopoDS_Face) -> &HandleTopoDSTShape;
+        /// Inherited from TopoDS_Shape: Free()
+        fn TopoDS_Face_inherited_Free(self_: &TopoDS_Face) -> bool;
+        /// Inherited from TopoDS_Shape: Locked()
+        fn TopoDS_Face_inherited_Locked(self_: &TopoDS_Face) -> bool;
+        /// Inherited from TopoDS_Shape: Modified()
+        fn TopoDS_Face_inherited_Modified(self_: &TopoDS_Face) -> bool;
+        /// Inherited from TopoDS_Shape: Checked()
+        fn TopoDS_Face_inherited_Checked(self_: &TopoDS_Face) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable()
+        fn TopoDS_Face_inherited_Orientable(self_: &TopoDS_Face) -> bool;
+        /// Inherited from TopoDS_Shape: Closed()
+        fn TopoDS_Face_inherited_Closed(self_: &TopoDS_Face) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite()
+        fn TopoDS_Face_inherited_Infinite(self_: &TopoDS_Face) -> bool;
+        /// Inherited from TopoDS_Shape: Convex()
+        fn TopoDS_Face_inherited_Convex(self_: &TopoDS_Face) -> bool;
+        /// Inherited from TopoDS_Shape: Move()
+        fn TopoDS_Face_inherited_Move(
+            self_: Pin<&mut TopoDS_Face>,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        );
+        /// Inherited from TopoDS_Shape: Moved()
+        fn TopoDS_Face_inherited_Moved(
+            self_: &TopoDS_Face,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Reverse()
+        fn TopoDS_Face_inherited_Reverse(self_: Pin<&mut TopoDS_Face>);
+        /// Inherited from TopoDS_Shape: Reversed()
+        fn TopoDS_Face_inherited_Reversed(self_: &TopoDS_Face) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Complement()
+        fn TopoDS_Face_inherited_Complement(self_: Pin<&mut TopoDS_Face>);
+        /// Inherited from TopoDS_Shape: Complemented()
+        fn TopoDS_Face_inherited_Complemented(self_: &TopoDS_Face) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: NbChildren()
+        fn TopoDS_Face_inherited_NbChildren(self_: &TopoDS_Face) -> i32;
+        /// Inherited from TopoDS_Shape: IsPartner()
+        fn TopoDS_Face_inherited_IsPartner(self_: &TopoDS_Face, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsSame()
+        fn TopoDS_Face_inherited_IsSame(self_: &TopoDS_Face, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsEqual()
+        fn TopoDS_Face_inherited_IsEqual(self_: &TopoDS_Face, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsNotEqual()
+        fn TopoDS_Face_inherited_IsNotEqual(self_: &TopoDS_Face, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: EmptyCopy()
+        fn TopoDS_Face_inherited_EmptyCopy(self_: Pin<&mut TopoDS_Face>);
+        /// Inherited from TopoDS_Shape: EmptyCopied()
+        fn TopoDS_Face_inherited_EmptyCopied(self_: &TopoDS_Face) -> UniquePtr<TopoDS_Shape>;
         /// ======================== TopoDS_Shell ========================
         /// **Source:** `TopoDS_Shell.hxx`:29 - `TopoDS_Shell`
         ///
@@ -9347,6 +9609,71 @@ mod ffi {
         ) -> Pin<&mut TopoDS_Shape>;
         /// Clone into a new UniquePtr via copy constructor
         fn TopoDS_Shell_to_owned(self_: &TopoDS_Shell) -> UniquePtr<TopoDS_Shell>;
+        /// Inherited from TopoDS_Shape: IsNull()
+        fn TopoDS_Shell_inherited_IsNull(self_: &TopoDS_Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify()
+        fn TopoDS_Shell_inherited_Nullify(self_: Pin<&mut TopoDS_Shell>);
+        /// Inherited from TopoDS_Shape: Location()
+        fn TopoDS_Shell_inherited_Location(self_: &TopoDS_Shell) -> &TopLoc_Location;
+        /// Inherited from TopoDS_Shape: Located()
+        fn TopoDS_Shell_inherited_Located(
+            self_: &TopoDS_Shell,
+            theLoc: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: TShape()
+        fn TopoDS_Shell_inherited_TShape(self_: &TopoDS_Shell) -> &HandleTopoDSTShape;
+        /// Inherited from TopoDS_Shape: Free()
+        fn TopoDS_Shell_inherited_Free(self_: &TopoDS_Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Locked()
+        fn TopoDS_Shell_inherited_Locked(self_: &TopoDS_Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Modified()
+        fn TopoDS_Shell_inherited_Modified(self_: &TopoDS_Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Checked()
+        fn TopoDS_Shell_inherited_Checked(self_: &TopoDS_Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable()
+        fn TopoDS_Shell_inherited_Orientable(self_: &TopoDS_Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Closed()
+        fn TopoDS_Shell_inherited_Closed(self_: &TopoDS_Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite()
+        fn TopoDS_Shell_inherited_Infinite(self_: &TopoDS_Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Convex()
+        fn TopoDS_Shell_inherited_Convex(self_: &TopoDS_Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Move()
+        fn TopoDS_Shell_inherited_Move(
+            self_: Pin<&mut TopoDS_Shell>,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        );
+        /// Inherited from TopoDS_Shape: Moved()
+        fn TopoDS_Shell_inherited_Moved(
+            self_: &TopoDS_Shell,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Reverse()
+        fn TopoDS_Shell_inherited_Reverse(self_: Pin<&mut TopoDS_Shell>);
+        /// Inherited from TopoDS_Shape: Reversed()
+        fn TopoDS_Shell_inherited_Reversed(self_: &TopoDS_Shell) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Complement()
+        fn TopoDS_Shell_inherited_Complement(self_: Pin<&mut TopoDS_Shell>);
+        /// Inherited from TopoDS_Shape: Complemented()
+        fn TopoDS_Shell_inherited_Complemented(self_: &TopoDS_Shell) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: NbChildren()
+        fn TopoDS_Shell_inherited_NbChildren(self_: &TopoDS_Shell) -> i32;
+        /// Inherited from TopoDS_Shape: IsPartner()
+        fn TopoDS_Shell_inherited_IsPartner(self_: &TopoDS_Shell, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsSame()
+        fn TopoDS_Shell_inherited_IsSame(self_: &TopoDS_Shell, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsEqual()
+        fn TopoDS_Shell_inherited_IsEqual(self_: &TopoDS_Shell, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsNotEqual()
+        fn TopoDS_Shell_inherited_IsNotEqual(self_: &TopoDS_Shell, theOther: &TopoDS_Shape)
+            -> bool;
+        /// Inherited from TopoDS_Shape: EmptyCopy()
+        fn TopoDS_Shell_inherited_EmptyCopy(self_: Pin<&mut TopoDS_Shell>);
+        /// Inherited from TopoDS_Shape: EmptyCopied()
+        fn TopoDS_Shell_inherited_EmptyCopied(self_: &TopoDS_Shell) -> UniquePtr<TopoDS_Shape>;
         /// ======================== TopoDS_Solid ========================
         /// **Source:** `TopoDS_Solid.hxx`:30 - `TopoDS_Solid`
         ///
@@ -9371,6 +9698,71 @@ mod ffi {
         ) -> Pin<&mut TopoDS_Shape>;
         /// Clone into a new UniquePtr via copy constructor
         fn TopoDS_Solid_to_owned(self_: &TopoDS_Solid) -> UniquePtr<TopoDS_Solid>;
+        /// Inherited from TopoDS_Shape: IsNull()
+        fn TopoDS_Solid_inherited_IsNull(self_: &TopoDS_Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify()
+        fn TopoDS_Solid_inherited_Nullify(self_: Pin<&mut TopoDS_Solid>);
+        /// Inherited from TopoDS_Shape: Location()
+        fn TopoDS_Solid_inherited_Location(self_: &TopoDS_Solid) -> &TopLoc_Location;
+        /// Inherited from TopoDS_Shape: Located()
+        fn TopoDS_Solid_inherited_Located(
+            self_: &TopoDS_Solid,
+            theLoc: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: TShape()
+        fn TopoDS_Solid_inherited_TShape(self_: &TopoDS_Solid) -> &HandleTopoDSTShape;
+        /// Inherited from TopoDS_Shape: Free()
+        fn TopoDS_Solid_inherited_Free(self_: &TopoDS_Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Locked()
+        fn TopoDS_Solid_inherited_Locked(self_: &TopoDS_Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Modified()
+        fn TopoDS_Solid_inherited_Modified(self_: &TopoDS_Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Checked()
+        fn TopoDS_Solid_inherited_Checked(self_: &TopoDS_Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable()
+        fn TopoDS_Solid_inherited_Orientable(self_: &TopoDS_Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Closed()
+        fn TopoDS_Solid_inherited_Closed(self_: &TopoDS_Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite()
+        fn TopoDS_Solid_inherited_Infinite(self_: &TopoDS_Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Convex()
+        fn TopoDS_Solid_inherited_Convex(self_: &TopoDS_Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Move()
+        fn TopoDS_Solid_inherited_Move(
+            self_: Pin<&mut TopoDS_Solid>,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        );
+        /// Inherited from TopoDS_Shape: Moved()
+        fn TopoDS_Solid_inherited_Moved(
+            self_: &TopoDS_Solid,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Reverse()
+        fn TopoDS_Solid_inherited_Reverse(self_: Pin<&mut TopoDS_Solid>);
+        /// Inherited from TopoDS_Shape: Reversed()
+        fn TopoDS_Solid_inherited_Reversed(self_: &TopoDS_Solid) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Complement()
+        fn TopoDS_Solid_inherited_Complement(self_: Pin<&mut TopoDS_Solid>);
+        /// Inherited from TopoDS_Shape: Complemented()
+        fn TopoDS_Solid_inherited_Complemented(self_: &TopoDS_Solid) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: NbChildren()
+        fn TopoDS_Solid_inherited_NbChildren(self_: &TopoDS_Solid) -> i32;
+        /// Inherited from TopoDS_Shape: IsPartner()
+        fn TopoDS_Solid_inherited_IsPartner(self_: &TopoDS_Solid, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsSame()
+        fn TopoDS_Solid_inherited_IsSame(self_: &TopoDS_Solid, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsEqual()
+        fn TopoDS_Solid_inherited_IsEqual(self_: &TopoDS_Solid, theOther: &TopoDS_Shape) -> bool;
+        /// Inherited from TopoDS_Shape: IsNotEqual()
+        fn TopoDS_Solid_inherited_IsNotEqual(self_: &TopoDS_Solid, theOther: &TopoDS_Shape)
+            -> bool;
+        /// Inherited from TopoDS_Shape: EmptyCopy()
+        fn TopoDS_Solid_inherited_EmptyCopy(self_: Pin<&mut TopoDS_Solid>);
+        /// Inherited from TopoDS_Shape: EmptyCopied()
+        fn TopoDS_Solid_inherited_EmptyCopied(self_: &TopoDS_Solid) -> UniquePtr<TopoDS_Shape>;
         /// ======================== TopoDS_Compound ========================
         /// **Source:** `TopoDS_Compound.hxx`:31 - `TopoDS_Compound`
         ///
@@ -9396,6 +9788,86 @@ mod ffi {
         ) -> Pin<&mut TopoDS_Shape>;
         /// Clone into a new UniquePtr via copy constructor
         fn TopoDS_Compound_to_owned(self_: &TopoDS_Compound) -> UniquePtr<TopoDS_Compound>;
+        /// Inherited from TopoDS_Shape: IsNull()
+        fn TopoDS_Compound_inherited_IsNull(self_: &TopoDS_Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify()
+        fn TopoDS_Compound_inherited_Nullify(self_: Pin<&mut TopoDS_Compound>);
+        /// Inherited from TopoDS_Shape: Location()
+        fn TopoDS_Compound_inherited_Location(self_: &TopoDS_Compound) -> &TopLoc_Location;
+        /// Inherited from TopoDS_Shape: Located()
+        fn TopoDS_Compound_inherited_Located(
+            self_: &TopoDS_Compound,
+            theLoc: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: TShape()
+        fn TopoDS_Compound_inherited_TShape(self_: &TopoDS_Compound) -> &HandleTopoDSTShape;
+        /// Inherited from TopoDS_Shape: Free()
+        fn TopoDS_Compound_inherited_Free(self_: &TopoDS_Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Locked()
+        fn TopoDS_Compound_inherited_Locked(self_: &TopoDS_Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Modified()
+        fn TopoDS_Compound_inherited_Modified(self_: &TopoDS_Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Checked()
+        fn TopoDS_Compound_inherited_Checked(self_: &TopoDS_Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable()
+        fn TopoDS_Compound_inherited_Orientable(self_: &TopoDS_Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Closed()
+        fn TopoDS_Compound_inherited_Closed(self_: &TopoDS_Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite()
+        fn TopoDS_Compound_inherited_Infinite(self_: &TopoDS_Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Convex()
+        fn TopoDS_Compound_inherited_Convex(self_: &TopoDS_Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Move()
+        fn TopoDS_Compound_inherited_Move(
+            self_: Pin<&mut TopoDS_Compound>,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        );
+        /// Inherited from TopoDS_Shape: Moved()
+        fn TopoDS_Compound_inherited_Moved(
+            self_: &TopoDS_Compound,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Reverse()
+        fn TopoDS_Compound_inherited_Reverse(self_: Pin<&mut TopoDS_Compound>);
+        /// Inherited from TopoDS_Shape: Reversed()
+        fn TopoDS_Compound_inherited_Reversed(self_: &TopoDS_Compound) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Complement()
+        fn TopoDS_Compound_inherited_Complement(self_: Pin<&mut TopoDS_Compound>);
+        /// Inherited from TopoDS_Shape: Complemented()
+        fn TopoDS_Compound_inherited_Complemented(
+            self_: &TopoDS_Compound,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: NbChildren()
+        fn TopoDS_Compound_inherited_NbChildren(self_: &TopoDS_Compound) -> i32;
+        /// Inherited from TopoDS_Shape: IsPartner()
+        fn TopoDS_Compound_inherited_IsPartner(
+            self_: &TopoDS_Compound,
+            theOther: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from TopoDS_Shape: IsSame()
+        fn TopoDS_Compound_inherited_IsSame(
+            self_: &TopoDS_Compound,
+            theOther: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from TopoDS_Shape: IsEqual()
+        fn TopoDS_Compound_inherited_IsEqual(
+            self_: &TopoDS_Compound,
+            theOther: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from TopoDS_Shape: IsNotEqual()
+        fn TopoDS_Compound_inherited_IsNotEqual(
+            self_: &TopoDS_Compound,
+            theOther: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from TopoDS_Shape: EmptyCopy()
+        fn TopoDS_Compound_inherited_EmptyCopy(self_: Pin<&mut TopoDS_Compound>);
+        /// Inherited from TopoDS_Shape: EmptyCopied()
+        fn TopoDS_Compound_inherited_EmptyCopied(
+            self_: &TopoDS_Compound,
+        ) -> UniquePtr<TopoDS_Shape>;
         /// ======================== TopoDS_CompSolid ========================
         /// **Source:** `TopoDS_CompSolid.hxx`:31 - `TopoDS_CompSolid`
         ///
@@ -9421,6 +9893,87 @@ mod ffi {
         ) -> Pin<&mut TopoDS_Shape>;
         /// Clone into a new UniquePtr via copy constructor
         fn TopoDS_CompSolid_to_owned(self_: &TopoDS_CompSolid) -> UniquePtr<TopoDS_CompSolid>;
+        /// Inherited from TopoDS_Shape: IsNull()
+        fn TopoDS_CompSolid_inherited_IsNull(self_: &TopoDS_CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify()
+        fn TopoDS_CompSolid_inherited_Nullify(self_: Pin<&mut TopoDS_CompSolid>);
+        /// Inherited from TopoDS_Shape: Location()
+        fn TopoDS_CompSolid_inherited_Location(self_: &TopoDS_CompSolid) -> &TopLoc_Location;
+        /// Inherited from TopoDS_Shape: Located()
+        fn TopoDS_CompSolid_inherited_Located(
+            self_: &TopoDS_CompSolid,
+            theLoc: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: TShape()
+        fn TopoDS_CompSolid_inherited_TShape(self_: &TopoDS_CompSolid) -> &HandleTopoDSTShape;
+        /// Inherited from TopoDS_Shape: Free()
+        fn TopoDS_CompSolid_inherited_Free(self_: &TopoDS_CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Locked()
+        fn TopoDS_CompSolid_inherited_Locked(self_: &TopoDS_CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Modified()
+        fn TopoDS_CompSolid_inherited_Modified(self_: &TopoDS_CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Checked()
+        fn TopoDS_CompSolid_inherited_Checked(self_: &TopoDS_CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable()
+        fn TopoDS_CompSolid_inherited_Orientable(self_: &TopoDS_CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Closed()
+        fn TopoDS_CompSolid_inherited_Closed(self_: &TopoDS_CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite()
+        fn TopoDS_CompSolid_inherited_Infinite(self_: &TopoDS_CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Convex()
+        fn TopoDS_CompSolid_inherited_Convex(self_: &TopoDS_CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Move()
+        fn TopoDS_CompSolid_inherited_Move(
+            self_: Pin<&mut TopoDS_CompSolid>,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        );
+        /// Inherited from TopoDS_Shape: Moved()
+        fn TopoDS_CompSolid_inherited_Moved(
+            self_: &TopoDS_CompSolid,
+            thePosition: &TopLoc_Location,
+            theRaiseExc: bool,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Reverse()
+        fn TopoDS_CompSolid_inherited_Reverse(self_: Pin<&mut TopoDS_CompSolid>);
+        /// Inherited from TopoDS_Shape: Reversed()
+        fn TopoDS_CompSolid_inherited_Reversed(self_: &TopoDS_CompSolid)
+            -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: Complement()
+        fn TopoDS_CompSolid_inherited_Complement(self_: Pin<&mut TopoDS_CompSolid>);
+        /// Inherited from TopoDS_Shape: Complemented()
+        fn TopoDS_CompSolid_inherited_Complemented(
+            self_: &TopoDS_CompSolid,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from TopoDS_Shape: NbChildren()
+        fn TopoDS_CompSolid_inherited_NbChildren(self_: &TopoDS_CompSolid) -> i32;
+        /// Inherited from TopoDS_Shape: IsPartner()
+        fn TopoDS_CompSolid_inherited_IsPartner(
+            self_: &TopoDS_CompSolid,
+            theOther: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from TopoDS_Shape: IsSame()
+        fn TopoDS_CompSolid_inherited_IsSame(
+            self_: &TopoDS_CompSolid,
+            theOther: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from TopoDS_Shape: IsEqual()
+        fn TopoDS_CompSolid_inherited_IsEqual(
+            self_: &TopoDS_CompSolid,
+            theOther: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from TopoDS_Shape: IsNotEqual()
+        fn TopoDS_CompSolid_inherited_IsNotEqual(
+            self_: &TopoDS_CompSolid,
+            theOther: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from TopoDS_Shape: EmptyCopy()
+        fn TopoDS_CompSolid_inherited_EmptyCopy(self_: Pin<&mut TopoDS_CompSolid>);
+        /// Inherited from TopoDS_Shape: EmptyCopied()
+        fn TopoDS_CompSolid_inherited_EmptyCopied(
+            self_: &TopoDS_CompSolid,
+        ) -> UniquePtr<TopoDS_Shape>;
         /// ======================== TopoDS_Builder ========================
         /// **Source:** `TopoDS_Builder.hxx`:71 - `TopoDS_Builder`
         ///
@@ -9862,6 +10415,10 @@ mod ffi {
         fn BRepBuilderAPI_MakeShape_as_BRepBuilderAPI_Command_mut(
             self_: Pin<&mut BRepBuilderAPI_MakeShape>,
         ) -> Pin<&mut BRepBuilderAPI_Command>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepBuilderAPI_MakeShape_inherited_IsDone(self_: &BRepBuilderAPI_MakeShape) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepBuilderAPI_MakeShape_inherited_Check(self_: &BRepBuilderAPI_MakeShape);
         /// ======================== BRepBuilderAPI_MakeEdge ========================
         /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:71 - `BRepBuilderAPI_MakeEdge`
         ///
@@ -10308,6 +10865,22 @@ mod ffi {
         fn BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepBuilderAPI_MakeEdge>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepBuilderAPI_MakeEdge_inherited_Check(self_: &BRepBuilderAPI_MakeEdge);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepBuilderAPI_MakeEdge_inherited_Build(
+            self_: Pin<&mut BRepBuilderAPI_MakeEdge>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepBuilderAPI_MakeEdge_inherited_Shape(
+            self_: Pin<&mut BRepBuilderAPI_MakeEdge>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepBuilderAPI_MakeEdge_inherited_IsDeleted(
+            self_: Pin<&mut BRepBuilderAPI_MakeEdge>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepBuilderAPI_MakeFace ========================
         /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:62 - `BRepBuilderAPI_MakeFace`
         ///
@@ -10643,6 +11216,22 @@ mod ffi {
         fn BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepBuilderAPI_MakeFace>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepBuilderAPI_MakeFace_inherited_Check(self_: &BRepBuilderAPI_MakeFace);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepBuilderAPI_MakeFace_inherited_Build(
+            self_: Pin<&mut BRepBuilderAPI_MakeFace>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepBuilderAPI_MakeFace_inherited_Shape(
+            self_: Pin<&mut BRepBuilderAPI_MakeFace>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepBuilderAPI_MakeFace_inherited_IsDeleted(
+            self_: Pin<&mut BRepBuilderAPI_MakeFace>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepBuilderAPI_MakeSolid ========================
         /// **Source:** `BRepBuilderAPI_MakeSolid.hxx`:41 - `BRepBuilderAPI_MakeSolid`
         ///
@@ -10776,6 +11365,17 @@ mod ffi {
         fn BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepBuilderAPI_MakeSolid>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepBuilderAPI_MakeSolid_inherited_Check(self_: &BRepBuilderAPI_MakeSolid);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepBuilderAPI_MakeSolid_inherited_Build(
+            self_: Pin<&mut BRepBuilderAPI_MakeSolid>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepBuilderAPI_MakeSolid_inherited_Shape(
+            self_: Pin<&mut BRepBuilderAPI_MakeSolid>,
+        ) -> &TopoDS_Shape;
         /// ======================== BRepBuilderAPI_MakeVertex ========================
         /// **Source:** `BRepBuilderAPI_MakeVertex.hxx`:38 - `BRepBuilderAPI_MakeVertex`
         ///
@@ -10817,6 +11417,24 @@ mod ffi {
         fn BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepBuilderAPI_MakeVertex>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepBuilderAPI_MakeVertex_inherited_IsDone(self_: &BRepBuilderAPI_MakeVertex) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepBuilderAPI_MakeVertex_inherited_Check(self_: &BRepBuilderAPI_MakeVertex);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepBuilderAPI_MakeVertex_inherited_Build(
+            self_: Pin<&mut BRepBuilderAPI_MakeVertex>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepBuilderAPI_MakeVertex_inherited_Shape(
+            self_: Pin<&mut BRepBuilderAPI_MakeVertex>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepBuilderAPI_MakeVertex_inherited_IsDeleted(
+            self_: Pin<&mut BRepBuilderAPI_MakeVertex>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepBuilderAPI_MakeWire ========================
         /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:63 - `BRepBuilderAPI_MakeWire`
         ///
@@ -10998,6 +11616,22 @@ mod ffi {
         fn BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepBuilderAPI_MakeWire>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepBuilderAPI_MakeWire_inherited_Check(self_: &BRepBuilderAPI_MakeWire);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepBuilderAPI_MakeWire_inherited_Build(
+            self_: Pin<&mut BRepBuilderAPI_MakeWire>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepBuilderAPI_MakeWire_inherited_Shape(
+            self_: Pin<&mut BRepBuilderAPI_MakeWire>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepBuilderAPI_MakeWire_inherited_IsDeleted(
+            self_: Pin<&mut BRepBuilderAPI_MakeWire>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepBuilderAPI_Sewing ========================
         /// **Source:** `BRepBuilderAPI_Sewing.hxx`:77 - `BRepBuilderAPI_Sewing`
         ///
@@ -11384,6 +12018,24 @@ mod ffi {
         fn BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape_mut(
             self_: Pin<&mut BRepBuilderAPI_Transform>,
         ) -> Pin<&mut BRepBuilderAPI_ModifyShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepBuilderAPI_Transform_inherited_IsDone(self_: &BRepBuilderAPI_Transform) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepBuilderAPI_Transform_inherited_Check(self_: &BRepBuilderAPI_Transform);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepBuilderAPI_Transform_inherited_Build(
+            self_: Pin<&mut BRepBuilderAPI_Transform>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepBuilderAPI_Transform_inherited_Shape(
+            self_: Pin<&mut BRepBuilderAPI_Transform>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepBuilderAPI_Transform_inherited_IsDeleted(
+            self_: Pin<&mut BRepBuilderAPI_Transform>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepPrimAPI_MakeBox ========================
         /// **Source:** `BRepPrimAPI_MakeBox.hxx`:50 - `BRepPrimAPI_MakeBox`
         ///
@@ -11541,6 +12193,19 @@ mod ffi {
         fn BRepPrimAPI_MakeBox_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepPrimAPI_MakeBox>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepPrimAPI_MakeBox_inherited_IsDone(self_: &BRepPrimAPI_MakeBox) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepPrimAPI_MakeBox_inherited_Check(self_: &BRepPrimAPI_MakeBox);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepPrimAPI_MakeBox_inherited_Shape(
+            self_: Pin<&mut BRepPrimAPI_MakeBox>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepPrimAPI_MakeBox_inherited_IsDeleted(
+            self_: Pin<&mut BRepPrimAPI_MakeBox>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepPrimAPI_MakeCone ========================
         /// **Source:** `BRepPrimAPI_MakeCone.hxx`:33 - `BRepPrimAPI_MakeCone`
         ///
@@ -11656,6 +12321,36 @@ mod ffi {
         fn BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut(
             self_: Pin<&mut BRepPrimAPI_MakeCone>,
         ) -> Pin<&mut BRepPrimAPI_MakeOneAxis>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepPrimAPI_MakeCone_inherited_IsDone(self_: &BRepPrimAPI_MakeCone) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepPrimAPI_MakeCone_inherited_Check(self_: &BRepPrimAPI_MakeCone);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepPrimAPI_MakeCone_inherited_Build(
+            self_: Pin<&mut BRepPrimAPI_MakeCone>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepPrimAPI_MakeCone_inherited_Shape(
+            self_: Pin<&mut BRepPrimAPI_MakeCone>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepPrimAPI_MakeCone_inherited_IsDeleted(
+            self_: Pin<&mut BRepPrimAPI_MakeCone>,
+            S: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Face()
+        fn BRepPrimAPI_MakeCone_inherited_Face(
+            self_: Pin<&mut BRepPrimAPI_MakeCone>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Shell()
+        fn BRepPrimAPI_MakeCone_inherited_Shell(
+            self_: Pin<&mut BRepPrimAPI_MakeCone>,
+        ) -> &TopoDS_Shell;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Solid()
+        fn BRepPrimAPI_MakeCone_inherited_Solid(
+            self_: Pin<&mut BRepPrimAPI_MakeCone>,
+        ) -> &TopoDS_Solid;
         /// ======================== BRepPrimAPI_MakeCylinder ========================
         /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:33 - `BRepPrimAPI_MakeCylinder`
         ///
@@ -11759,6 +12454,36 @@ mod ffi {
         fn BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis_mut(
             self_: Pin<&mut BRepPrimAPI_MakeCylinder>,
         ) -> Pin<&mut BRepPrimAPI_MakeOneAxis>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepPrimAPI_MakeCylinder_inherited_IsDone(self_: &BRepPrimAPI_MakeCylinder) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepPrimAPI_MakeCylinder_inherited_Check(self_: &BRepPrimAPI_MakeCylinder);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepPrimAPI_MakeCylinder_inherited_Build(
+            self_: Pin<&mut BRepPrimAPI_MakeCylinder>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepPrimAPI_MakeCylinder_inherited_Shape(
+            self_: Pin<&mut BRepPrimAPI_MakeCylinder>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepPrimAPI_MakeCylinder_inherited_IsDeleted(
+            self_: Pin<&mut BRepPrimAPI_MakeCylinder>,
+            S: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Face()
+        fn BRepPrimAPI_MakeCylinder_inherited_Face(
+            self_: Pin<&mut BRepPrimAPI_MakeCylinder>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Shell()
+        fn BRepPrimAPI_MakeCylinder_inherited_Shell(
+            self_: Pin<&mut BRepPrimAPI_MakeCylinder>,
+        ) -> &TopoDS_Shell;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Solid()
+        fn BRepPrimAPI_MakeCylinder_inherited_Solid(
+            self_: Pin<&mut BRepPrimAPI_MakeCylinder>,
+        ) -> &TopoDS_Solid;
         /// ======================== BRepPrimAPI_MakePrism ========================
         /// **Source:** `BRepPrimAPI_MakePrism.hxx`:47 - `BRepPrimAPI_MakePrism`
         ///
@@ -11878,6 +12603,14 @@ mod ffi {
         fn BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep_mut(
             self_: Pin<&mut BRepPrimAPI_MakePrism>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepPrimAPI_MakePrism_inherited_IsDone(self_: &BRepPrimAPI_MakePrism) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepPrimAPI_MakePrism_inherited_Check(self_: &BRepPrimAPI_MakePrism);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepPrimAPI_MakePrism_inherited_Shape(
+            self_: Pin<&mut BRepPrimAPI_MakePrism>,
+        ) -> &TopoDS_Shape;
         /// ======================== BRepPrimAPI_MakeRevol ========================
         /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:62 - `BRepPrimAPI_MakeRevol`
         ///
@@ -12005,6 +12738,14 @@ mod ffi {
         fn BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep_mut(
             self_: Pin<&mut BRepPrimAPI_MakeRevol>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepPrimAPI_MakeRevol_inherited_IsDone(self_: &BRepPrimAPI_MakeRevol) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepPrimAPI_MakeRevol_inherited_Check(self_: &BRepPrimAPI_MakeRevol);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepPrimAPI_MakeRevol_inherited_Shape(
+            self_: Pin<&mut BRepPrimAPI_MakeRevol>,
+        ) -> &TopoDS_Shape;
         /// ======================== BRepPrimAPI_MakeSphere ========================
         /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:33 - `BRepPrimAPI_MakeSphere`
         ///
@@ -12181,6 +12922,36 @@ mod ffi {
         fn BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut(
             self_: Pin<&mut BRepPrimAPI_MakeSphere>,
         ) -> Pin<&mut BRepPrimAPI_MakeOneAxis>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepPrimAPI_MakeSphere_inherited_IsDone(self_: &BRepPrimAPI_MakeSphere) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepPrimAPI_MakeSphere_inherited_Check(self_: &BRepPrimAPI_MakeSphere);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepPrimAPI_MakeSphere_inherited_Build(
+            self_: Pin<&mut BRepPrimAPI_MakeSphere>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepPrimAPI_MakeSphere_inherited_Shape(
+            self_: Pin<&mut BRepPrimAPI_MakeSphere>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepPrimAPI_MakeSphere_inherited_IsDeleted(
+            self_: Pin<&mut BRepPrimAPI_MakeSphere>,
+            S: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Face()
+        fn BRepPrimAPI_MakeSphere_inherited_Face(
+            self_: Pin<&mut BRepPrimAPI_MakeSphere>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Shell()
+        fn BRepPrimAPI_MakeSphere_inherited_Shell(
+            self_: Pin<&mut BRepPrimAPI_MakeSphere>,
+        ) -> &TopoDS_Shell;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Solid()
+        fn BRepPrimAPI_MakeSphere_inherited_Solid(
+            self_: Pin<&mut BRepPrimAPI_MakeSphere>,
+        ) -> &TopoDS_Solid;
         /// ======================== BRepPrimAPI_MakeTorus ========================
         /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:33 - `BRepPrimAPI_MakeTorus`
         ///
@@ -12333,6 +13104,36 @@ mod ffi {
         fn BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut(
             self_: Pin<&mut BRepPrimAPI_MakeTorus>,
         ) -> Pin<&mut BRepPrimAPI_MakeOneAxis>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepPrimAPI_MakeTorus_inherited_IsDone(self_: &BRepPrimAPI_MakeTorus) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepPrimAPI_MakeTorus_inherited_Check(self_: &BRepPrimAPI_MakeTorus);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepPrimAPI_MakeTorus_inherited_Build(
+            self_: Pin<&mut BRepPrimAPI_MakeTorus>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepPrimAPI_MakeTorus_inherited_Shape(
+            self_: Pin<&mut BRepPrimAPI_MakeTorus>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepPrimAPI_MakeTorus_inherited_IsDeleted(
+            self_: Pin<&mut BRepPrimAPI_MakeTorus>,
+            S: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Face()
+        fn BRepPrimAPI_MakeTorus_inherited_Face(
+            self_: Pin<&mut BRepPrimAPI_MakeTorus>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Shell()
+        fn BRepPrimAPI_MakeTorus_inherited_Shell(
+            self_: Pin<&mut BRepPrimAPI_MakeTorus>,
+        ) -> &TopoDS_Shell;
+        /// Inherited from BRepPrimAPI_MakeOneAxis: Solid()
+        fn BRepPrimAPI_MakeTorus_inherited_Solid(
+            self_: Pin<&mut BRepPrimAPI_MakeTorus>,
+        ) -> &TopoDS_Solid;
         /// ======================== BRepPrimAPI_MakeSweep ========================
         /// **Source:** `BRepPrimAPI_MakeSweep.hxx`:42 - `BRepPrimAPI_MakeSweep`
         ///
@@ -12381,6 +13182,24 @@ mod ffi {
         fn BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepPrimAPI_MakeSweep>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepPrimAPI_MakeSweep_inherited_IsDone(self_: &BRepPrimAPI_MakeSweep) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepPrimAPI_MakeSweep_inherited_Check(self_: &BRepPrimAPI_MakeSweep);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepPrimAPI_MakeSweep_inherited_Build(
+            self_: Pin<&mut BRepPrimAPI_MakeSweep>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepPrimAPI_MakeSweep_inherited_Shape(
+            self_: Pin<&mut BRepPrimAPI_MakeSweep>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepPrimAPI_MakeSweep_inherited_IsDeleted(
+            self_: Pin<&mut BRepPrimAPI_MakeSweep>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepAlgoAPI_BuilderAlgo ========================
         /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:60 - `BRepAlgoAPI_BuilderAlgo`
         ///
@@ -12546,6 +13365,14 @@ mod ffi {
         fn BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepAlgoAPI_BuilderAlgo>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_Algo: Shape()
+        fn BRepAlgoAPI_BuilderAlgo_inherited_Shape(
+            self_: Pin<&mut BRepAlgoAPI_BuilderAlgo>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepAlgoAPI_BuilderAlgo_inherited_IsDone(self_: &BRepAlgoAPI_BuilderAlgo) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepAlgoAPI_BuilderAlgo_inherited_Check(self_: &BRepAlgoAPI_BuilderAlgo);
         /// ======================== BRepAlgoAPI_BooleanOperation ========================
         /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:51 - `BRepAlgoAPI_BooleanOperation`
         ///
@@ -12626,6 +13453,71 @@ mod ffi {
         fn BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_Algo: Shape()
+        fn BRepAlgoAPI_BooleanOperation_inherited_Shape(
+            self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+        fn BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(
+            self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
+            theFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+        fn BRepAlgoAPI_BooleanOperation_inherited_NonDestructive(
+            self_: &BRepAlgoAPI_BooleanOperation,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+        fn BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(
+            self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
+            theCheck: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+        fn BRepAlgoAPI_BooleanOperation_inherited_CheckInverted(
+            self_: &BRepAlgoAPI_BooleanOperation,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+        fn BRepAlgoAPI_BooleanOperation_inherited_SimplifyResult(
+            self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
+            theUnifyEdges: bool,
+            theUnifyFaces: bool,
+            theAngularTol: f64,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+        fn BRepAlgoAPI_BooleanOperation_inherited_IsDeleted(
+            self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
+            aS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+        fn BRepAlgoAPI_BooleanOperation_inherited_HasModified(
+            self_: &BRepAlgoAPI_BooleanOperation,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+        fn BRepAlgoAPI_BooleanOperation_inherited_HasGenerated(
+            self_: &BRepAlgoAPI_BooleanOperation,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+        fn BRepAlgoAPI_BooleanOperation_inherited_HasDeleted(
+            self_: &BRepAlgoAPI_BooleanOperation,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+        fn BRepAlgoAPI_BooleanOperation_inherited_SetToFillHistory(
+            self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+        fn BRepAlgoAPI_BooleanOperation_inherited_HasHistory(
+            self_: &BRepAlgoAPI_BooleanOperation,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+        fn BRepAlgoAPI_BooleanOperation_inherited_History(
+            self_: &BRepAlgoAPI_BooleanOperation,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepAlgoAPI_BooleanOperation_inherited_IsDone(
+            self_: &BRepAlgoAPI_BooleanOperation,
+        ) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepAlgoAPI_BooleanOperation_inherited_Check(self_: &BRepAlgoAPI_BooleanOperation);
         /// ======================== BRepAlgoAPI_Common ========================
         /// **Source:** `BRepAlgoAPI_Common.hxx`:29 - `BRepAlgoAPI_Common`
         ///
@@ -12701,6 +13593,65 @@ mod ffi {
         fn BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepAlgoAPI_Common>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_Algo: Shape()
+        fn BRepAlgoAPI_Common_inherited_Shape(self_: Pin<&mut BRepAlgoAPI_Common>)
+            -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+        fn BRepAlgoAPI_Common_inherited_Shape1(self_: &BRepAlgoAPI_Common) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+        fn BRepAlgoAPI_Common_inherited_Shape2(self_: &BRepAlgoAPI_Common) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
+        fn BRepAlgoAPI_Common_inherited_Build(
+            self_: Pin<&mut BRepAlgoAPI_Common>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+        fn BRepAlgoAPI_Common_inherited_SetNonDestructive(
+            self_: Pin<&mut BRepAlgoAPI_Common>,
+            theFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+        fn BRepAlgoAPI_Common_inherited_NonDestructive(self_: &BRepAlgoAPI_Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+        fn BRepAlgoAPI_Common_inherited_SetCheckInverted(
+            self_: Pin<&mut BRepAlgoAPI_Common>,
+            theCheck: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+        fn BRepAlgoAPI_Common_inherited_CheckInverted(self_: &BRepAlgoAPI_Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+        fn BRepAlgoAPI_Common_inherited_SimplifyResult(
+            self_: Pin<&mut BRepAlgoAPI_Common>,
+            theUnifyEdges: bool,
+            theUnifyFaces: bool,
+            theAngularTol: f64,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+        fn BRepAlgoAPI_Common_inherited_IsDeleted(
+            self_: Pin<&mut BRepAlgoAPI_Common>,
+            aS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+        fn BRepAlgoAPI_Common_inherited_HasModified(self_: &BRepAlgoAPI_Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+        fn BRepAlgoAPI_Common_inherited_HasGenerated(self_: &BRepAlgoAPI_Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+        fn BRepAlgoAPI_Common_inherited_HasDeleted(self_: &BRepAlgoAPI_Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+        fn BRepAlgoAPI_Common_inherited_SetToFillHistory(
+            self_: Pin<&mut BRepAlgoAPI_Common>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+        fn BRepAlgoAPI_Common_inherited_HasHistory(self_: &BRepAlgoAPI_Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+        fn BRepAlgoAPI_Common_inherited_History(
+            self_: &BRepAlgoAPI_Common,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepAlgoAPI_Common_inherited_IsDone(self_: &BRepAlgoAPI_Common) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepAlgoAPI_Common_inherited_Check(self_: &BRepAlgoAPI_Common);
         /// ======================== BRepAlgoAPI_Cut ========================
         /// **Source:** `BRepAlgoAPI_Cut.hxx`:29 - `BRepAlgoAPI_Cut`
         ///
@@ -12775,6 +13726,64 @@ mod ffi {
         fn BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepAlgoAPI_Cut>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_Algo: Shape()
+        fn BRepAlgoAPI_Cut_inherited_Shape(self_: Pin<&mut BRepAlgoAPI_Cut>) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+        fn BRepAlgoAPI_Cut_inherited_Shape1(self_: &BRepAlgoAPI_Cut) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+        fn BRepAlgoAPI_Cut_inherited_Shape2(self_: &BRepAlgoAPI_Cut) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
+        fn BRepAlgoAPI_Cut_inherited_Build(
+            self_: Pin<&mut BRepAlgoAPI_Cut>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+        fn BRepAlgoAPI_Cut_inherited_SetNonDestructive(
+            self_: Pin<&mut BRepAlgoAPI_Cut>,
+            theFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+        fn BRepAlgoAPI_Cut_inherited_NonDestructive(self_: &BRepAlgoAPI_Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+        fn BRepAlgoAPI_Cut_inherited_SetCheckInverted(
+            self_: Pin<&mut BRepAlgoAPI_Cut>,
+            theCheck: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+        fn BRepAlgoAPI_Cut_inherited_CheckInverted(self_: &BRepAlgoAPI_Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+        fn BRepAlgoAPI_Cut_inherited_SimplifyResult(
+            self_: Pin<&mut BRepAlgoAPI_Cut>,
+            theUnifyEdges: bool,
+            theUnifyFaces: bool,
+            theAngularTol: f64,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+        fn BRepAlgoAPI_Cut_inherited_IsDeleted(
+            self_: Pin<&mut BRepAlgoAPI_Cut>,
+            aS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+        fn BRepAlgoAPI_Cut_inherited_HasModified(self_: &BRepAlgoAPI_Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+        fn BRepAlgoAPI_Cut_inherited_HasGenerated(self_: &BRepAlgoAPI_Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+        fn BRepAlgoAPI_Cut_inherited_HasDeleted(self_: &BRepAlgoAPI_Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+        fn BRepAlgoAPI_Cut_inherited_SetToFillHistory(
+            self_: Pin<&mut BRepAlgoAPI_Cut>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+        fn BRepAlgoAPI_Cut_inherited_HasHistory(self_: &BRepAlgoAPI_Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+        fn BRepAlgoAPI_Cut_inherited_History(
+            self_: &BRepAlgoAPI_Cut,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepAlgoAPI_Cut_inherited_IsDone(self_: &BRepAlgoAPI_Cut) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepAlgoAPI_Cut_inherited_Check(self_: &BRepAlgoAPI_Cut);
         /// ======================== BRepAlgoAPI_Fuse ========================
         /// **Source:** `BRepAlgoAPI_Fuse.hxx`:29 - `BRepAlgoAPI_Fuse`
         ///
@@ -12849,6 +13858,64 @@ mod ffi {
         fn BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepAlgoAPI_Fuse>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_Algo: Shape()
+        fn BRepAlgoAPI_Fuse_inherited_Shape(self_: Pin<&mut BRepAlgoAPI_Fuse>) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+        fn BRepAlgoAPI_Fuse_inherited_Shape1(self_: &BRepAlgoAPI_Fuse) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+        fn BRepAlgoAPI_Fuse_inherited_Shape2(self_: &BRepAlgoAPI_Fuse) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
+        fn BRepAlgoAPI_Fuse_inherited_Build(
+            self_: Pin<&mut BRepAlgoAPI_Fuse>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+        fn BRepAlgoAPI_Fuse_inherited_SetNonDestructive(
+            self_: Pin<&mut BRepAlgoAPI_Fuse>,
+            theFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+        fn BRepAlgoAPI_Fuse_inherited_NonDestructive(self_: &BRepAlgoAPI_Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+        fn BRepAlgoAPI_Fuse_inherited_SetCheckInverted(
+            self_: Pin<&mut BRepAlgoAPI_Fuse>,
+            theCheck: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+        fn BRepAlgoAPI_Fuse_inherited_CheckInverted(self_: &BRepAlgoAPI_Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+        fn BRepAlgoAPI_Fuse_inherited_SimplifyResult(
+            self_: Pin<&mut BRepAlgoAPI_Fuse>,
+            theUnifyEdges: bool,
+            theUnifyFaces: bool,
+            theAngularTol: f64,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+        fn BRepAlgoAPI_Fuse_inherited_IsDeleted(
+            self_: Pin<&mut BRepAlgoAPI_Fuse>,
+            aS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+        fn BRepAlgoAPI_Fuse_inherited_HasModified(self_: &BRepAlgoAPI_Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+        fn BRepAlgoAPI_Fuse_inherited_HasGenerated(self_: &BRepAlgoAPI_Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+        fn BRepAlgoAPI_Fuse_inherited_HasDeleted(self_: &BRepAlgoAPI_Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+        fn BRepAlgoAPI_Fuse_inherited_SetToFillHistory(
+            self_: Pin<&mut BRepAlgoAPI_Fuse>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+        fn BRepAlgoAPI_Fuse_inherited_HasHistory(self_: &BRepAlgoAPI_Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+        fn BRepAlgoAPI_Fuse_inherited_History(
+            self_: &BRepAlgoAPI_Fuse,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepAlgoAPI_Fuse_inherited_IsDone(self_: &BRepAlgoAPI_Fuse) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepAlgoAPI_Fuse_inherited_Check(self_: &BRepAlgoAPI_Fuse);
         /// ======================== BRepAlgoAPI_Section ========================
         /// **Source:** `BRepAlgoAPI_Section.hxx`:38 - `BRepAlgoAPI_Section`
         ///
@@ -13102,6 +14169,61 @@ mod ffi {
         fn BRepAlgoAPI_Section_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepAlgoAPI_Section>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_Algo: Shape()
+        fn BRepAlgoAPI_Section_inherited_Shape(
+            self_: Pin<&mut BRepAlgoAPI_Section>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+        fn BRepAlgoAPI_Section_inherited_Shape1(self_: &BRepAlgoAPI_Section) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+        fn BRepAlgoAPI_Section_inherited_Shape2(self_: &BRepAlgoAPI_Section) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+        fn BRepAlgoAPI_Section_inherited_SetNonDestructive(
+            self_: Pin<&mut BRepAlgoAPI_Section>,
+            theFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+        fn BRepAlgoAPI_Section_inherited_NonDestructive(self_: &BRepAlgoAPI_Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+        fn BRepAlgoAPI_Section_inherited_SetCheckInverted(
+            self_: Pin<&mut BRepAlgoAPI_Section>,
+            theCheck: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+        fn BRepAlgoAPI_Section_inherited_CheckInverted(self_: &BRepAlgoAPI_Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+        fn BRepAlgoAPI_Section_inherited_SimplifyResult(
+            self_: Pin<&mut BRepAlgoAPI_Section>,
+            theUnifyEdges: bool,
+            theUnifyFaces: bool,
+            theAngularTol: f64,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+        fn BRepAlgoAPI_Section_inherited_IsDeleted(
+            self_: Pin<&mut BRepAlgoAPI_Section>,
+            aS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+        fn BRepAlgoAPI_Section_inherited_HasModified(self_: &BRepAlgoAPI_Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+        fn BRepAlgoAPI_Section_inherited_HasGenerated(self_: &BRepAlgoAPI_Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+        fn BRepAlgoAPI_Section_inherited_HasDeleted(self_: &BRepAlgoAPI_Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+        fn BRepAlgoAPI_Section_inherited_SetToFillHistory(
+            self_: Pin<&mut BRepAlgoAPI_Section>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+        fn BRepAlgoAPI_Section_inherited_HasHistory(self_: &BRepAlgoAPI_Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+        fn BRepAlgoAPI_Section_inherited_History(
+            self_: &BRepAlgoAPI_Section,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepAlgoAPI_Section_inherited_IsDone(self_: &BRepAlgoAPI_Section) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepAlgoAPI_Section_inherited_Check(self_: &BRepAlgoAPI_Section);
         /// ======================== BRepFilletAPI_LocalOperation ========================
         /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:31 - `BRepFilletAPI_LocalOperation`
         ///
@@ -13227,6 +14349,26 @@ mod ffi {
         fn BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepFilletAPI_LocalOperation>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepFilletAPI_LocalOperation_inherited_IsDone(
+            self_: &BRepFilletAPI_LocalOperation,
+        ) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepFilletAPI_LocalOperation_inherited_Check(self_: &BRepFilletAPI_LocalOperation);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepFilletAPI_LocalOperation_inherited_Build(
+            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepFilletAPI_LocalOperation_inherited_Shape(
+            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepFilletAPI_LocalOperation_inherited_IsDeleted(
+            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepFilletAPI_MakeChamfer ========================
         /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:44 - `BRepFilletAPI_MakeChamfer`
         ///
@@ -13571,6 +14713,14 @@ mod ffi {
         fn BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(
             self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
         ) -> Pin<&mut BRepFilletAPI_LocalOperation>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepFilletAPI_MakeChamfer_inherited_IsDone(self_: &BRepFilletAPI_MakeChamfer) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepFilletAPI_MakeChamfer_inherited_Check(self_: &BRepFilletAPI_MakeChamfer);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepFilletAPI_MakeChamfer_inherited_Shape(
+            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
+        ) -> &TopoDS_Shape;
         /// ======================== BRepFilletAPI_MakeFillet ========================
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:48 - `BRepFilletAPI_MakeFillet`
         ///
@@ -14017,6 +15167,14 @@ mod ffi {
         fn BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(
             self_: Pin<&mut BRepFilletAPI_MakeFillet>,
         ) -> Pin<&mut BRepFilletAPI_LocalOperation>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepFilletAPI_MakeFillet_inherited_IsDone(self_: &BRepFilletAPI_MakeFillet) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepFilletAPI_MakeFillet_inherited_Check(self_: &BRepFilletAPI_MakeFillet);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepFilletAPI_MakeFillet_inherited_Shape(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
+        ) -> &TopoDS_Shape;
         /// ======================== BRepFilletAPI_MakeFillet2d ========================
         /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:51 - `BRepFilletAPI_MakeFillet2d`
         ///
@@ -14334,6 +15492,19 @@ mod ffi {
         fn BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepFilletAPI_MakeFillet2d_inherited_IsDone(self_: &BRepFilletAPI_MakeFillet2d) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepFilletAPI_MakeFillet2d_inherited_Check(self_: &BRepFilletAPI_MakeFillet2d);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepFilletAPI_MakeFillet2d_inherited_Shape(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepOffsetAPI_MakeOffset ========================
         /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:36 - `BRepOffsetAPI_MakeOffset`
         ///
@@ -14408,6 +15579,19 @@ mod ffi {
         fn BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepOffsetAPI_MakeOffset>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepOffsetAPI_MakeOffset_inherited_IsDone(self_: &BRepOffsetAPI_MakeOffset) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepOffsetAPI_MakeOffset_inherited_Check(self_: &BRepOffsetAPI_MakeOffset);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepOffsetAPI_MakeOffset_inherited_Shape(
+            self_: Pin<&mut BRepOffsetAPI_MakeOffset>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepOffsetAPI_MakeOffset_inherited_IsDeleted(
+            self_: Pin<&mut BRepOffsetAPI_MakeOffset>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepOffsetAPI_MakePipe ========================
         /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:41 - `BRepOffsetAPI_MakePipe`
         ///
@@ -14493,6 +15677,19 @@ mod ffi {
         fn BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep_mut(
             self_: Pin<&mut BRepOffsetAPI_MakePipe>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepOffsetAPI_MakePipe_inherited_IsDone(self_: &BRepOffsetAPI_MakePipe) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepOffsetAPI_MakePipe_inherited_Check(self_: &BRepOffsetAPI_MakePipe);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepOffsetAPI_MakePipe_inherited_Shape(
+            self_: Pin<&mut BRepOffsetAPI_MakePipe>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepOffsetAPI_MakePipe_inherited_IsDeleted(
+            self_: Pin<&mut BRepOffsetAPI_MakePipe>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepOffsetAPI_MakePipeShell ========================
         /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:56 - `BRepOffsetAPI_MakePipeShell`
         ///
@@ -14723,6 +15920,21 @@ mod ffi {
         fn BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep_mut(
             self_: Pin<&mut BRepOffsetAPI_MakePipeShell>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepOffsetAPI_MakePipeShell_inherited_IsDone(
+            self_: &BRepOffsetAPI_MakePipeShell,
+        ) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepOffsetAPI_MakePipeShell_inherited_Check(self_: &BRepOffsetAPI_MakePipeShell);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepOffsetAPI_MakePipeShell_inherited_Shape(
+            self_: Pin<&mut BRepOffsetAPI_MakePipeShell>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepOffsetAPI_MakePipeShell_inherited_IsDeleted(
+            self_: Pin<&mut BRepOffsetAPI_MakePipeShell>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepOffsetAPI_MakeThickSolid ========================
         /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:46 - `BRepOffsetAPI_MakeThickSolid`
         ///
@@ -14786,6 +15998,31 @@ mod ffi {
         fn BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut(
             self_: Pin<&mut BRepOffsetAPI_MakeThickSolid>,
         ) -> Pin<&mut BRepOffsetAPI_MakeOffsetShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepOffsetAPI_MakeThickSolid_inherited_IsDone(
+            self_: &BRepOffsetAPI_MakeThickSolid,
+        ) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepOffsetAPI_MakeThickSolid_inherited_Check(self_: &BRepOffsetAPI_MakeThickSolid);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepOffsetAPI_MakeThickSolid_inherited_Shape(
+            self_: Pin<&mut BRepOffsetAPI_MakeThickSolid>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(
+            self_: Pin<&mut BRepOffsetAPI_MakeThickSolid>,
+            S: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepOffsetAPI_MakeOffsetShape: PerformBySimple()
+        fn BRepOffsetAPI_MakeThickSolid_inherited_PerformBySimple(
+            self_: Pin<&mut BRepOffsetAPI_MakeThickSolid>,
+            theS: &TopoDS_Shape,
+            theOffsetValue: f64,
+        );
+        /// Inherited from BRepOffsetAPI_MakeOffsetShape: MakeOffset()
+        fn BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(
+            self_: &BRepOffsetAPI_MakeThickSolid,
+        ) -> &BRepOffset_MakeOffset;
         /// ======================== BRepOffsetAPI_ThruSections ========================
         /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:47 - `BRepOffsetAPI_ThruSections`
         ///
@@ -14953,6 +16190,19 @@ mod ffi {
         fn BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepOffsetAPI_ThruSections>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepOffsetAPI_ThruSections_inherited_IsDone(self_: &BRepOffsetAPI_ThruSections) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepOffsetAPI_ThruSections_inherited_Check(self_: &BRepOffsetAPI_ThruSections);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepOffsetAPI_ThruSections_inherited_Shape(
+            self_: Pin<&mut BRepOffsetAPI_ThruSections>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepOffsetAPI_ThruSections_inherited_IsDeleted(
+            self_: Pin<&mut BRepOffsetAPI_ThruSections>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepFeat_MakeCylindricalHole ========================
         /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:34 - `BRepFeat_MakeCylindricalHole`
         ///
@@ -15097,6 +16347,166 @@ mod ffi {
         fn BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(
             self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
         ) -> Pin<&mut BRepFeat_Builder>;
+        /// Inherited from BOPAlgo_BOP: Clear()
+        fn BRepFeat_MakeCylindricalHole_inherited_Clear(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+        );
+        /// Inherited from BOPAlgo_Builder: AddArgument()
+        fn BRepFeat_MakeCylindricalHole_inherited_AddArgument(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theShape: &TopoDS_Shape,
+        );
+        /// Inherited from BOPAlgo_Builder: SetNonDestructive()
+        fn BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Builder: NonDestructive()
+        fn BRepFeat_MakeCylindricalHole_inherited_NonDestructive(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Builder: SetCheckInverted()
+        fn BRepFeat_MakeCylindricalHole_inherited_SetCheckInverted(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theCheck: bool,
+        );
+        /// Inherited from BOPAlgo_Builder: CheckInverted()
+        fn BRepFeat_MakeCylindricalHole_inherited_CheckInverted(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: Shape()
+        fn BRepFeat_MakeCylindricalHole_inherited_Shape(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
+        fn BRepFeat_MakeCylindricalHole_inherited_IsDeleted(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasModified()
+        fn BRepFeat_MakeCylindricalHole_inherited_HasModified(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
+        fn BRepFeat_MakeCylindricalHole_inherited_HasGenerated(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
+        fn BRepFeat_MakeCylindricalHole_inherited_HasDeleted(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: History()
+        fn BRepFeat_MakeCylindricalHole_inherited_History(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
+        fn BRepFeat_MakeCylindricalHole_inherited_SetToFillHistory(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BOPAlgo_BuilderShape: HasHistory()
+        fn BRepFeat_MakeCylindricalHole_inherited_HasHistory(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: Allocator()
+        fn BRepFeat_MakeCylindricalHole_inherited_Allocator(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> &HandleNCollectionBaseAllocator;
+        /// Inherited from BOPAlgo_Options: AddError()
+        fn BRepFeat_MakeCylindricalHole_inherited_AddError(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: AddWarning()
+        fn BRepFeat_MakeCylindricalHole_inherited_AddWarning(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: HasErrors()
+        fn BRepFeat_MakeCylindricalHole_inherited_HasErrors(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: HasError()
+        fn BRepFeat_MakeCylindricalHole_inherited_HasError(
+            self_: &BRepFeat_MakeCylindricalHole,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings()
+        fn BRepFeat_MakeCylindricalHole_inherited_HasWarnings(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarning()
+        fn BRepFeat_MakeCylindricalHole_inherited_HasWarning(
+            self_: &BRepFeat_MakeCylindricalHole,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: GetReport()
+        fn BRepFeat_MakeCylindricalHole_inherited_GetReport(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> &HandleMessageReport;
+        /// Inherited from BOPAlgo_Options: ClearWarnings()
+        fn BRepFeat_MakeCylindricalHole_inherited_ClearWarnings(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+        );
+        /// Inherited from BOPAlgo_Options: SetRunParallel()
+        fn BRepFeat_MakeCylindricalHole_inherited_SetRunParallel(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Options: RunParallel()
+        fn BRepFeat_MakeCylindricalHole_inherited_RunParallel(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+        fn BRepFeat_MakeCylindricalHole_inherited_SetFuzzyValue(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theFuzz: f64,
+        );
+        /// Inherited from BOPAlgo_Options: FuzzyValue()
+        fn BRepFeat_MakeCylindricalHole_inherited_FuzzyValue(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB()
+        fn BRepFeat_MakeCylindricalHole_inherited_SetUseOBB(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theUseOBB: bool,
+        );
+        /// Inherited from BOPAlgo_Options: UseOBB()
+        fn BRepFeat_MakeCylindricalHole_inherited_UseOBB(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> bool;
+        /// Inherited from BOPAlgo_ToolsProvider: AddTool()
+        fn BRepFeat_MakeCylindricalHole_inherited_AddTool(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theShape: &TopoDS_Shape,
+        );
+        /// Inherited from BRepFeat_Builder: SetOperation()
+        fn BRepFeat_MakeCylindricalHole_inherited_SetOperation(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theFuse: i32,
+        );
+        /// Inherited from BRepFeat_Builder: KeepPart()
+        fn BRepFeat_MakeCylindricalHole_inherited_KeepPart(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theS: &TopoDS_Shape,
+        );
+        /// Inherited from BRepFeat_Builder: PerformResult()
+        fn BRepFeat_MakeCylindricalHole_inherited_PerformResult(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepFeat_Builder: RebuildFaces()
+        fn BRepFeat_MakeCylindricalHole_inherited_RebuildFaces(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+        );
+        /// Inherited from BRepFeat_Builder: CheckSolidImages()
+        fn BRepFeat_MakeCylindricalHole_inherited_CheckSolidImages(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+        );
+        /// Inherited from BRepFeat_Builder: FillRemoved()
+        fn BRepFeat_MakeCylindricalHole_inherited_FillRemoved(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+        );
         /// ======================== BRepFeat_MakeDPrism ========================
         /// **Source:** `BRepFeat_MakeDPrism.hxx`:50 - `BRepFeat_MakeDPrism`
         ///
@@ -15245,6 +16655,38 @@ mod ffi {
         fn BRepFeat_MakeDPrism_as_BRepFeat_Form_mut(
             self_: Pin<&mut BRepFeat_MakeDPrism>,
         ) -> Pin<&mut BRepFeat_Form>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepFeat_MakeDPrism_inherited_IsDone(self_: &BRepFeat_MakeDPrism) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepFeat_MakeDPrism_inherited_Check(self_: &BRepFeat_MakeDPrism);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepFeat_MakeDPrism_inherited_Build(
+            self_: Pin<&mut BRepFeat_MakeDPrism>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepFeat_MakeDPrism_inherited_Shape(
+            self_: Pin<&mut BRepFeat_MakeDPrism>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepFeat_MakeDPrism_inherited_IsDeleted(
+            self_: Pin<&mut BRepFeat_MakeDPrism>,
+            S: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepFeat_Form: BasisShapeValid()
+        fn BRepFeat_MakeDPrism_inherited_BasisShapeValid(self_: Pin<&mut BRepFeat_MakeDPrism>);
+        /// Inherited from BRepFeat_Form: GeneratedShapeValid()
+        fn BRepFeat_MakeDPrism_inherited_GeneratedShapeValid(self_: Pin<&mut BRepFeat_MakeDPrism>);
+        /// Inherited from BRepFeat_Form: ShapeFromValid()
+        fn BRepFeat_MakeDPrism_inherited_ShapeFromValid(self_: Pin<&mut BRepFeat_MakeDPrism>);
+        /// Inherited from BRepFeat_Form: ShapeUntilValid()
+        fn BRepFeat_MakeDPrism_inherited_ShapeUntilValid(self_: Pin<&mut BRepFeat_MakeDPrism>);
+        /// Inherited from BRepFeat_Form: GluedFacesValid()
+        fn BRepFeat_MakeDPrism_inherited_GluedFacesValid(self_: Pin<&mut BRepFeat_MakeDPrism>);
+        /// Inherited from BRepFeat_Form: SketchFaceValid()
+        fn BRepFeat_MakeDPrism_inherited_SketchFaceValid(self_: Pin<&mut BRepFeat_MakeDPrism>);
+        /// Inherited from BRepFeat_Form: PerfSelectionValid()
+        fn BRepFeat_MakeDPrism_inherited_PerfSelectionValid(self_: Pin<&mut BRepFeat_MakeDPrism>);
         /// ======================== BRepTools ========================
         /// **Source:** `BRepTools.hxx`:78 - `BRepTools`
         ///
@@ -15906,6 +17348,45 @@ mod ffi {
         fn Geom_Curve_as_Geom_Geometry(self_: &Geom_Curve) -> &Geom_Geometry;
         /// Upcast Geom_Curve to Geom_Geometry (mutable)
         fn Geom_Curve_as_Geom_Geometry_mut(self_: Pin<&mut Geom_Curve>) -> Pin<&mut Geom_Geometry>;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_Curve_inherited_Mirror(self_: Pin<&mut Geom_Curve>, P: &gp_Pnt);
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_Curve_inherited_Rotate(self_: Pin<&mut Geom_Curve>, A1: &gp_Ax1, Ang: f64);
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_Curve_inherited_Scale(self_: Pin<&mut Geom_Curve>, P: &gp_Pnt, S: f64);
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_Curve_inherited_Translate(self_: Pin<&mut Geom_Curve>, V: &gp_Vec);
+        /// Inherited from Geom_Geometry: Transform()
+        fn Geom_Curve_inherited_Transform(self_: Pin<&mut Geom_Curve>, T: &gp_Trsf);
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_Curve_inherited_Mirrored(
+            self_: &Geom_Curve,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_Curve_inherited_Rotated(
+            self_: &Geom_Curve,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_Curve_inherited_Scaled(
+            self_: &Geom_Curve,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_Curve_inherited_Transformed(
+            self_: &Geom_Curve,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_Curve_inherited_Translated(
+            self_: &Geom_Curve,
+            V: &gp_Vec,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Copy()
+        fn Geom_Curve_inherited_Copy(self_: &Geom_Curve) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_Surface ========================
         /// **Source:** `Geom_Surface.hxx`:52 - `Geom_Surface`
         ///
@@ -16204,6 +17685,45 @@ mod ffi {
         fn Geom_Surface_as_Geom_Geometry_mut(
             self_: Pin<&mut Geom_Surface>,
         ) -> Pin<&mut Geom_Geometry>;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_Surface_inherited_Mirror(self_: Pin<&mut Geom_Surface>, P: &gp_Pnt);
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_Surface_inherited_Rotate(self_: Pin<&mut Geom_Surface>, A1: &gp_Ax1, Ang: f64);
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_Surface_inherited_Scale(self_: Pin<&mut Geom_Surface>, P: &gp_Pnt, S: f64);
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_Surface_inherited_Translate(self_: Pin<&mut Geom_Surface>, V: &gp_Vec);
+        /// Inherited from Geom_Geometry: Transform()
+        fn Geom_Surface_inherited_Transform(self_: Pin<&mut Geom_Surface>, T: &gp_Trsf);
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_Surface_inherited_Mirrored(
+            self_: &Geom_Surface,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_Surface_inherited_Rotated(
+            self_: &Geom_Surface,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_Surface_inherited_Scaled(
+            self_: &Geom_Surface,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_Surface_inherited_Transformed(
+            self_: &Geom_Surface,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_Surface_inherited_Translated(
+            self_: &Geom_Surface,
+            V: &gp_Vec,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Copy()
+        fn Geom_Surface_inherited_Copy(self_: &Geom_Surface) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BoundedCurve ========================
         /// **Source:** `Geom_BoundedCurve.hxx`:44 - `Geom_BoundedCurve`
         ///
@@ -16248,6 +17768,123 @@ mod ffi {
         fn Geom_BoundedCurve_as_Geom_Geometry_mut(
             self_: Pin<&mut Geom_BoundedCurve>,
         ) -> Pin<&mut Geom_Geometry>;
+        /// Inherited from Geom_Curve: Reverse()
+        fn Geom_BoundedCurve_inherited_Reverse(self_: Pin<&mut Geom_BoundedCurve>);
+        /// Inherited from Geom_Curve: ReversedParameter()
+        fn Geom_BoundedCurve_inherited_ReversedParameter(self_: &Geom_BoundedCurve, U: f64) -> f64;
+        /// Inherited from Geom_Curve: TransformedParameter()
+        fn Geom_BoundedCurve_inherited_TransformedParameter(
+            self_: &Geom_BoundedCurve,
+            U: f64,
+            T: &gp_Trsf,
+        ) -> f64;
+        /// Inherited from Geom_Curve: ParametricTransformation()
+        fn Geom_BoundedCurve_inherited_ParametricTransformation(
+            self_: &Geom_BoundedCurve,
+            T: &gp_Trsf,
+        ) -> f64;
+        /// Inherited from Geom_Curve: Reversed()
+        fn Geom_BoundedCurve_inherited_Reversed(
+            self_: &Geom_BoundedCurve,
+        ) -> UniquePtr<HandleGeomCurve>;
+        /// Inherited from Geom_Curve: FirstParameter()
+        fn Geom_BoundedCurve_inherited_FirstParameter(self_: &Geom_BoundedCurve) -> f64;
+        /// Inherited from Geom_Curve: LastParameter()
+        fn Geom_BoundedCurve_inherited_LastParameter(self_: &Geom_BoundedCurve) -> f64;
+        /// Inherited from Geom_Curve: IsClosed()
+        fn Geom_BoundedCurve_inherited_IsClosed(self_: &Geom_BoundedCurve) -> bool;
+        /// Inherited from Geom_Curve: IsPeriodic()
+        fn Geom_BoundedCurve_inherited_IsPeriodic(self_: &Geom_BoundedCurve) -> bool;
+        /// Inherited from Geom_Curve: Period()
+        fn Geom_BoundedCurve_inherited_Period(self_: &Geom_BoundedCurve) -> f64;
+        /// Inherited from Geom_Curve: IsCN()
+        fn Geom_BoundedCurve_inherited_IsCN(self_: &Geom_BoundedCurve, N: i32) -> bool;
+        /// Inherited from Geom_Curve: D0()
+        fn Geom_BoundedCurve_inherited_D0(self_: &Geom_BoundedCurve, U: f64, P: Pin<&mut gp_Pnt>);
+        /// Inherited from Geom_Curve: D1()
+        fn Geom_BoundedCurve_inherited_D1(
+            self_: &Geom_BoundedCurve,
+            U: f64,
+            P: Pin<&mut gp_Pnt>,
+            V1: Pin<&mut gp_Vec>,
+        );
+        /// Inherited from Geom_Curve: D2()
+        fn Geom_BoundedCurve_inherited_D2(
+            self_: &Geom_BoundedCurve,
+            U: f64,
+            P: Pin<&mut gp_Pnt>,
+            V1: Pin<&mut gp_Vec>,
+            V2: Pin<&mut gp_Vec>,
+        );
+        /// Inherited from Geom_Curve: D3()
+        fn Geom_BoundedCurve_inherited_D3(
+            self_: &Geom_BoundedCurve,
+            U: f64,
+            P: Pin<&mut gp_Pnt>,
+            V1: Pin<&mut gp_Vec>,
+            V2: Pin<&mut gp_Vec>,
+            V3: Pin<&mut gp_Vec>,
+        );
+        /// Inherited from Geom_Curve: DN()
+        fn Geom_BoundedCurve_inherited_DN(
+            self_: &Geom_BoundedCurve,
+            U: f64,
+            N: i32,
+        ) -> UniquePtr<gp_Vec>;
+        /// Inherited from Geom_Curve: Value()
+        fn Geom_BoundedCurve_inherited_Value(
+            self_: &Geom_BoundedCurve,
+            U: f64,
+        ) -> UniquePtr<gp_Pnt>;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_BoundedCurve_inherited_Mirror(self_: Pin<&mut Geom_BoundedCurve>, P: &gp_Pnt);
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_BoundedCurve_inherited_Rotate(
+            self_: Pin<&mut Geom_BoundedCurve>,
+            A1: &gp_Ax1,
+            Ang: f64,
+        );
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_BoundedCurve_inherited_Scale(
+            self_: Pin<&mut Geom_BoundedCurve>,
+            P: &gp_Pnt,
+            S: f64,
+        );
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_BoundedCurve_inherited_Translate(self_: Pin<&mut Geom_BoundedCurve>, V: &gp_Vec);
+        /// Inherited from Geom_Geometry: Transform()
+        fn Geom_BoundedCurve_inherited_Transform(self_: Pin<&mut Geom_BoundedCurve>, T: &gp_Trsf);
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_BoundedCurve_inherited_Mirrored(
+            self_: &Geom_BoundedCurve,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_BoundedCurve_inherited_Rotated(
+            self_: &Geom_BoundedCurve,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_BoundedCurve_inherited_Scaled(
+            self_: &Geom_BoundedCurve,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_BoundedCurve_inherited_Transformed(
+            self_: &Geom_BoundedCurve,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_BoundedCurve_inherited_Translated(
+            self_: &Geom_BoundedCurve,
+            V: &gp_Vec,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Copy()
+        fn Geom_BoundedCurve_inherited_Copy(
+            self_: &Geom_BoundedCurve,
+        ) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BoundedSurface ========================
         /// **Source:** `Geom_BoundedSurface.hxx`:53 - `Geom_BoundedSurface`
         ///
@@ -16294,6 +17931,187 @@ mod ffi {
         fn Geom_BoundedSurface_as_Geom_Surface_mut(
             self_: Pin<&mut Geom_BoundedSurface>,
         ) -> Pin<&mut Geom_Surface>;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_BoundedSurface_inherited_Mirror(self_: Pin<&mut Geom_BoundedSurface>, P: &gp_Pnt);
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_BoundedSurface_inherited_Rotate(
+            self_: Pin<&mut Geom_BoundedSurface>,
+            A1: &gp_Ax1,
+            Ang: f64,
+        );
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_BoundedSurface_inherited_Scale(
+            self_: Pin<&mut Geom_BoundedSurface>,
+            P: &gp_Pnt,
+            S: f64,
+        );
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_BoundedSurface_inherited_Translate(
+            self_: Pin<&mut Geom_BoundedSurface>,
+            V: &gp_Vec,
+        );
+        /// Inherited from Geom_Geometry: Transform()
+        fn Geom_BoundedSurface_inherited_Transform(
+            self_: Pin<&mut Geom_BoundedSurface>,
+            T: &gp_Trsf,
+        );
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_BoundedSurface_inherited_Mirrored(
+            self_: &Geom_BoundedSurface,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_BoundedSurface_inherited_Rotated(
+            self_: &Geom_BoundedSurface,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_BoundedSurface_inherited_Scaled(
+            self_: &Geom_BoundedSurface,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_BoundedSurface_inherited_Transformed(
+            self_: &Geom_BoundedSurface,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_BoundedSurface_inherited_Translated(
+            self_: &Geom_BoundedSurface,
+            V: &gp_Vec,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Copy()
+        fn Geom_BoundedSurface_inherited_Copy(
+            self_: &Geom_BoundedSurface,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Surface: UReverse()
+        fn Geom_BoundedSurface_inherited_UReverse(self_: Pin<&mut Geom_BoundedSurface>);
+        /// Inherited from Geom_Surface: UReversed()
+        fn Geom_BoundedSurface_inherited_UReversed(
+            self_: &Geom_BoundedSurface,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: UReversedParameter()
+        fn Geom_BoundedSurface_inherited_UReversedParameter(
+            self_: &Geom_BoundedSurface,
+            U: f64,
+        ) -> f64;
+        /// Inherited from Geom_Surface: VReverse()
+        fn Geom_BoundedSurface_inherited_VReverse(self_: Pin<&mut Geom_BoundedSurface>);
+        /// Inherited from Geom_Surface: VReversed()
+        fn Geom_BoundedSurface_inherited_VReversed(
+            self_: &Geom_BoundedSurface,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: VReversedParameter()
+        fn Geom_BoundedSurface_inherited_VReversedParameter(
+            self_: &Geom_BoundedSurface,
+            V: f64,
+        ) -> f64;
+        /// Inherited from Geom_Surface: TransformParameters()
+        fn Geom_BoundedSurface_inherited_TransformParameters(
+            self_: &Geom_BoundedSurface,
+            U: &mut f64,
+            V: &mut f64,
+            T: &gp_Trsf,
+        );
+        /// Inherited from Geom_Surface: ParametricTransformation()
+        fn Geom_BoundedSurface_inherited_ParametricTransformation(
+            self_: &Geom_BoundedSurface,
+            T: &gp_Trsf,
+        ) -> UniquePtr<gp_GTrsf2d>;
+        /// Inherited from Geom_Surface: Bounds()
+        fn Geom_BoundedSurface_inherited_Bounds(
+            self_: &Geom_BoundedSurface,
+            U1: &mut f64,
+            U2: &mut f64,
+            V1: &mut f64,
+            V2: &mut f64,
+        );
+        /// Inherited from Geom_Surface: IsUClosed()
+        fn Geom_BoundedSurface_inherited_IsUClosed(self_: &Geom_BoundedSurface) -> bool;
+        /// Inherited from Geom_Surface: IsVClosed()
+        fn Geom_BoundedSurface_inherited_IsVClosed(self_: &Geom_BoundedSurface) -> bool;
+        /// Inherited from Geom_Surface: IsUPeriodic()
+        fn Geom_BoundedSurface_inherited_IsUPeriodic(self_: &Geom_BoundedSurface) -> bool;
+        /// Inherited from Geom_Surface: UPeriod()
+        fn Geom_BoundedSurface_inherited_UPeriod(self_: &Geom_BoundedSurface) -> f64;
+        /// Inherited from Geom_Surface: IsVPeriodic()
+        fn Geom_BoundedSurface_inherited_IsVPeriodic(self_: &Geom_BoundedSurface) -> bool;
+        /// Inherited from Geom_Surface: VPeriod()
+        fn Geom_BoundedSurface_inherited_VPeriod(self_: &Geom_BoundedSurface) -> f64;
+        /// Inherited from Geom_Surface: UIso()
+        fn Geom_BoundedSurface_inherited_UIso(
+            self_: &Geom_BoundedSurface,
+            U: f64,
+        ) -> UniquePtr<HandleGeomCurve>;
+        /// Inherited from Geom_Surface: VIso()
+        fn Geom_BoundedSurface_inherited_VIso(
+            self_: &Geom_BoundedSurface,
+            V: f64,
+        ) -> UniquePtr<HandleGeomCurve>;
+        /// Inherited from Geom_Surface: IsCNu()
+        fn Geom_BoundedSurface_inherited_IsCNu(self_: &Geom_BoundedSurface, N: i32) -> bool;
+        /// Inherited from Geom_Surface: IsCNv()
+        fn Geom_BoundedSurface_inherited_IsCNv(self_: &Geom_BoundedSurface, N: i32) -> bool;
+        /// Inherited from Geom_Surface: D0()
+        fn Geom_BoundedSurface_inherited_D0(
+            self_: &Geom_BoundedSurface,
+            U: f64,
+            V: f64,
+            P: Pin<&mut gp_Pnt>,
+        );
+        /// Inherited from Geom_Surface: D1()
+        fn Geom_BoundedSurface_inherited_D1(
+            self_: &Geom_BoundedSurface,
+            U: f64,
+            V: f64,
+            P: Pin<&mut gp_Pnt>,
+            D1U: Pin<&mut gp_Vec>,
+            D1V: Pin<&mut gp_Vec>,
+        );
+        /// Inherited from Geom_Surface: D2()
+        fn Geom_BoundedSurface_inherited_D2(
+            self_: &Geom_BoundedSurface,
+            U: f64,
+            V: f64,
+            P: Pin<&mut gp_Pnt>,
+            D1U: Pin<&mut gp_Vec>,
+            D1V: Pin<&mut gp_Vec>,
+            D2U: Pin<&mut gp_Vec>,
+            D2V: Pin<&mut gp_Vec>,
+            D2UV: Pin<&mut gp_Vec>,
+        );
+        /// Inherited from Geom_Surface: D3()
+        fn Geom_BoundedSurface_inherited_D3(
+            self_: &Geom_BoundedSurface,
+            U: f64,
+            V: f64,
+            P: Pin<&mut gp_Pnt>,
+            D1U: Pin<&mut gp_Vec>,
+            D1V: Pin<&mut gp_Vec>,
+            D2U: Pin<&mut gp_Vec>,
+            D2V: Pin<&mut gp_Vec>,
+            D2UV: Pin<&mut gp_Vec>,
+            D3U: Pin<&mut gp_Vec>,
+            D3V: Pin<&mut gp_Vec>,
+            D3UUV: Pin<&mut gp_Vec>,
+            D3UVV: Pin<&mut gp_Vec>,
+        );
+        /// Inherited from Geom_Surface: DN()
+        fn Geom_BoundedSurface_inherited_DN(
+            self_: &Geom_BoundedSurface,
+            U: f64,
+            V: f64,
+            Nu: i32,
+            Nv: i32,
+        ) -> UniquePtr<gp_Vec>;
+        /// Inherited from Geom_Surface: Value()
+        fn Geom_BoundedSurface_inherited_Value(
+            self_: &Geom_BoundedSurface,
+            U: f64,
+            V: f64,
+        ) -> UniquePtr<gp_Pnt>;
         /// ======================== Geom_ElementarySurface ========================
         /// **Source:** `Geom_ElementarySurface.hxx`:63 - `Geom_ElementarySurface`
         ///
@@ -16429,6 +18247,172 @@ mod ffi {
         fn Geom_ElementarySurface_as_Geom_Surface_mut(
             self_: Pin<&mut Geom_ElementarySurface>,
         ) -> Pin<&mut Geom_Surface>;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_ElementarySurface_inherited_Mirror(
+            self_: Pin<&mut Geom_ElementarySurface>,
+            P: &gp_Pnt,
+        );
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_ElementarySurface_inherited_Rotate(
+            self_: Pin<&mut Geom_ElementarySurface>,
+            A1: &gp_Ax1,
+            Ang: f64,
+        );
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_ElementarySurface_inherited_Scale(
+            self_: Pin<&mut Geom_ElementarySurface>,
+            P: &gp_Pnt,
+            S: f64,
+        );
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_ElementarySurface_inherited_Translate(
+            self_: Pin<&mut Geom_ElementarySurface>,
+            V: &gp_Vec,
+        );
+        /// Inherited from Geom_Geometry: Transform()
+        fn Geom_ElementarySurface_inherited_Transform(
+            self_: Pin<&mut Geom_ElementarySurface>,
+            T: &gp_Trsf,
+        );
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_ElementarySurface_inherited_Mirrored(
+            self_: &Geom_ElementarySurface,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_ElementarySurface_inherited_Rotated(
+            self_: &Geom_ElementarySurface,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_ElementarySurface_inherited_Scaled(
+            self_: &Geom_ElementarySurface,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_ElementarySurface_inherited_Transformed(
+            self_: &Geom_ElementarySurface,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_ElementarySurface_inherited_Translated(
+            self_: &Geom_ElementarySurface,
+            V: &gp_Vec,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Copy()
+        fn Geom_ElementarySurface_inherited_Copy(
+            self_: &Geom_ElementarySurface,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Surface: UReversed()
+        fn Geom_ElementarySurface_inherited_UReversed(
+            self_: &Geom_ElementarySurface,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: VReversed()
+        fn Geom_ElementarySurface_inherited_VReversed(
+            self_: &Geom_ElementarySurface,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: TransformParameters()
+        fn Geom_ElementarySurface_inherited_TransformParameters(
+            self_: &Geom_ElementarySurface,
+            U: &mut f64,
+            V: &mut f64,
+            T: &gp_Trsf,
+        );
+        /// Inherited from Geom_Surface: ParametricTransformation()
+        fn Geom_ElementarySurface_inherited_ParametricTransformation(
+            self_: &Geom_ElementarySurface,
+            T: &gp_Trsf,
+        ) -> UniquePtr<gp_GTrsf2d>;
+        /// Inherited from Geom_Surface: Bounds()
+        fn Geom_ElementarySurface_inherited_Bounds(
+            self_: &Geom_ElementarySurface,
+            U1: &mut f64,
+            U2: &mut f64,
+            V1: &mut f64,
+            V2: &mut f64,
+        );
+        /// Inherited from Geom_Surface: IsUClosed()
+        fn Geom_ElementarySurface_inherited_IsUClosed(self_: &Geom_ElementarySurface) -> bool;
+        /// Inherited from Geom_Surface: IsVClosed()
+        fn Geom_ElementarySurface_inherited_IsVClosed(self_: &Geom_ElementarySurface) -> bool;
+        /// Inherited from Geom_Surface: IsUPeriodic()
+        fn Geom_ElementarySurface_inherited_IsUPeriodic(self_: &Geom_ElementarySurface) -> bool;
+        /// Inherited from Geom_Surface: UPeriod()
+        fn Geom_ElementarySurface_inherited_UPeriod(self_: &Geom_ElementarySurface) -> f64;
+        /// Inherited from Geom_Surface: IsVPeriodic()
+        fn Geom_ElementarySurface_inherited_IsVPeriodic(self_: &Geom_ElementarySurface) -> bool;
+        /// Inherited from Geom_Surface: VPeriod()
+        fn Geom_ElementarySurface_inherited_VPeriod(self_: &Geom_ElementarySurface) -> f64;
+        /// Inherited from Geom_Surface: UIso()
+        fn Geom_ElementarySurface_inherited_UIso(
+            self_: &Geom_ElementarySurface,
+            U: f64,
+        ) -> UniquePtr<HandleGeomCurve>;
+        /// Inherited from Geom_Surface: VIso()
+        fn Geom_ElementarySurface_inherited_VIso(
+            self_: &Geom_ElementarySurface,
+            V: f64,
+        ) -> UniquePtr<HandleGeomCurve>;
+        /// Inherited from Geom_Surface: D0()
+        fn Geom_ElementarySurface_inherited_D0(
+            self_: &Geom_ElementarySurface,
+            U: f64,
+            V: f64,
+            P: Pin<&mut gp_Pnt>,
+        );
+        /// Inherited from Geom_Surface: D1()
+        fn Geom_ElementarySurface_inherited_D1(
+            self_: &Geom_ElementarySurface,
+            U: f64,
+            V: f64,
+            P: Pin<&mut gp_Pnt>,
+            D1U: Pin<&mut gp_Vec>,
+            D1V: Pin<&mut gp_Vec>,
+        );
+        /// Inherited from Geom_Surface: D2()
+        fn Geom_ElementarySurface_inherited_D2(
+            self_: &Geom_ElementarySurface,
+            U: f64,
+            V: f64,
+            P: Pin<&mut gp_Pnt>,
+            D1U: Pin<&mut gp_Vec>,
+            D1V: Pin<&mut gp_Vec>,
+            D2U: Pin<&mut gp_Vec>,
+            D2V: Pin<&mut gp_Vec>,
+            D2UV: Pin<&mut gp_Vec>,
+        );
+        /// Inherited from Geom_Surface: D3()
+        fn Geom_ElementarySurface_inherited_D3(
+            self_: &Geom_ElementarySurface,
+            U: f64,
+            V: f64,
+            P: Pin<&mut gp_Pnt>,
+            D1U: Pin<&mut gp_Vec>,
+            D1V: Pin<&mut gp_Vec>,
+            D2U: Pin<&mut gp_Vec>,
+            D2V: Pin<&mut gp_Vec>,
+            D2UV: Pin<&mut gp_Vec>,
+            D3U: Pin<&mut gp_Vec>,
+            D3V: Pin<&mut gp_Vec>,
+            D3UUV: Pin<&mut gp_Vec>,
+            D3UVV: Pin<&mut gp_Vec>,
+        );
+        /// Inherited from Geom_Surface: DN()
+        fn Geom_ElementarySurface_inherited_DN(
+            self_: &Geom_ElementarySurface,
+            U: f64,
+            V: f64,
+            Nu: i32,
+            Nv: i32,
+        ) -> UniquePtr<gp_Vec>;
+        /// Inherited from Geom_Surface: Value()
+        fn Geom_ElementarySurface_inherited_Value(
+            self_: &Geom_ElementarySurface,
+            U: f64,
+            V: f64,
+        ) -> UniquePtr<gp_Pnt>;
         /// ======================== Geom_BezierCurve ========================
         /// **Source:** `Geom_BezierCurve.hxx`:87 - `Geom_BezierCurve`
         ///
@@ -16812,6 +18796,64 @@ mod ffi {
         /// Upcast Handle<Geom_BezierCurve> to Handle<Geom_Geometry>
         fn HandleGeomBezierCurve_to_HandleGeomGeometry(
             self_: &HandleGeomBezierCurve,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Curve: TransformedParameter()
+        fn Geom_BezierCurve_inherited_TransformedParameter(
+            self_: &Geom_BezierCurve,
+            U: f64,
+            T: &gp_Trsf,
+        ) -> f64;
+        /// Inherited from Geom_Curve: ParametricTransformation()
+        fn Geom_BezierCurve_inherited_ParametricTransformation(
+            self_: &Geom_BezierCurve,
+            T: &gp_Trsf,
+        ) -> f64;
+        /// Inherited from Geom_Curve: Reversed()
+        fn Geom_BezierCurve_inherited_Reversed(
+            self_: &Geom_BezierCurve,
+        ) -> UniquePtr<HandleGeomCurve>;
+        /// Inherited from Geom_Curve: Period()
+        fn Geom_BezierCurve_inherited_Period(self_: &Geom_BezierCurve) -> f64;
+        /// Inherited from Geom_Curve: Value()
+        fn Geom_BezierCurve_inherited_Value(self_: &Geom_BezierCurve, U: f64) -> UniquePtr<gp_Pnt>;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_BezierCurve_inherited_Mirror(self_: Pin<&mut Geom_BezierCurve>, P: &gp_Pnt);
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_BezierCurve_inherited_Rotate(
+            self_: Pin<&mut Geom_BezierCurve>,
+            A1: &gp_Ax1,
+            Ang: f64,
+        );
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_BezierCurve_inherited_Scale(self_: Pin<&mut Geom_BezierCurve>, P: &gp_Pnt, S: f64);
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_BezierCurve_inherited_Translate(self_: Pin<&mut Geom_BezierCurve>, V: &gp_Vec);
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_BezierCurve_inherited_Mirrored(
+            self_: &Geom_BezierCurve,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_BezierCurve_inherited_Rotated(
+            self_: &Geom_BezierCurve,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_BezierCurve_inherited_Scaled(
+            self_: &Geom_BezierCurve,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_BezierCurve_inherited_Transformed(
+            self_: &Geom_BezierCurve,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_BezierCurve_inherited_Translated(
+            self_: &Geom_BezierCurve,
+            V: &gp_Vec,
         ) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BezierSurface ========================
         /// **Source:** `Geom_BezierSurface.hxx`:110 - `Geom_BezierSurface`
@@ -17331,6 +19373,79 @@ mod ffi {
         fn HandleGeomBezierSurface_to_HandleGeomSurface(
             self_: &HandleGeomBezierSurface,
         ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_BezierSurface_inherited_Mirror(self_: Pin<&mut Geom_BezierSurface>, P: &gp_Pnt);
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_BezierSurface_inherited_Rotate(
+            self_: Pin<&mut Geom_BezierSurface>,
+            A1: &gp_Ax1,
+            Ang: f64,
+        );
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_BezierSurface_inherited_Scale(
+            self_: Pin<&mut Geom_BezierSurface>,
+            P: &gp_Pnt,
+            S: f64,
+        );
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_BezierSurface_inherited_Translate(self_: Pin<&mut Geom_BezierSurface>, V: &gp_Vec);
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_BezierSurface_inherited_Mirrored(
+            self_: &Geom_BezierSurface,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_BezierSurface_inherited_Rotated(
+            self_: &Geom_BezierSurface,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_BezierSurface_inherited_Scaled(
+            self_: &Geom_BezierSurface,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_BezierSurface_inherited_Transformed(
+            self_: &Geom_BezierSurface,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_BezierSurface_inherited_Translated(
+            self_: &Geom_BezierSurface,
+            V: &gp_Vec,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Surface: UReversed()
+        fn Geom_BezierSurface_inherited_UReversed(
+            self_: &Geom_BezierSurface,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: VReversed()
+        fn Geom_BezierSurface_inherited_VReversed(
+            self_: &Geom_BezierSurface,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: TransformParameters()
+        fn Geom_BezierSurface_inherited_TransformParameters(
+            self_: &Geom_BezierSurface,
+            U: &mut f64,
+            V: &mut f64,
+            T: &gp_Trsf,
+        );
+        /// Inherited from Geom_Surface: ParametricTransformation()
+        fn Geom_BezierSurface_inherited_ParametricTransformation(
+            self_: &Geom_BezierSurface,
+            T: &gp_Trsf,
+        ) -> UniquePtr<gp_GTrsf2d>;
+        /// Inherited from Geom_Surface: UPeriod()
+        fn Geom_BezierSurface_inherited_UPeriod(self_: &Geom_BezierSurface) -> f64;
+        /// Inherited from Geom_Surface: VPeriod()
+        fn Geom_BezierSurface_inherited_VPeriod(self_: &Geom_BezierSurface) -> f64;
+        /// Inherited from Geom_Surface: Value()
+        fn Geom_BezierSurface_inherited_Value(
+            self_: &Geom_BezierSurface,
+            U: f64,
+            V: f64,
+        ) -> UniquePtr<gp_Pnt>;
         /// ======================== Geom_BSplineCurve ========================
         /// **Source:** `Geom_BSplineCurve.hxx`:128 - `Geom_BSplineCurve`
         ///
@@ -18136,6 +20251,71 @@ mod ffi {
         /// Upcast Handle<Geom_BSplineCurve> to Handle<Geom_Geometry>
         fn HandleGeomBSplineCurve_to_HandleGeomGeometry(
             self_: &HandleGeomBSplineCurve,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Curve: TransformedParameter()
+        fn Geom_BSplineCurve_inherited_TransformedParameter(
+            self_: &Geom_BSplineCurve,
+            U: f64,
+            T: &gp_Trsf,
+        ) -> f64;
+        /// Inherited from Geom_Curve: ParametricTransformation()
+        fn Geom_BSplineCurve_inherited_ParametricTransformation(
+            self_: &Geom_BSplineCurve,
+            T: &gp_Trsf,
+        ) -> f64;
+        /// Inherited from Geom_Curve: Reversed()
+        fn Geom_BSplineCurve_inherited_Reversed(
+            self_: &Geom_BSplineCurve,
+        ) -> UniquePtr<HandleGeomCurve>;
+        /// Inherited from Geom_Curve: Period()
+        fn Geom_BSplineCurve_inherited_Period(self_: &Geom_BSplineCurve) -> f64;
+        /// Inherited from Geom_Curve: Value()
+        fn Geom_BSplineCurve_inherited_Value(
+            self_: &Geom_BSplineCurve,
+            U: f64,
+        ) -> UniquePtr<gp_Pnt>;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_BSplineCurve_inherited_Mirror(self_: Pin<&mut Geom_BSplineCurve>, P: &gp_Pnt);
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_BSplineCurve_inherited_Rotate(
+            self_: Pin<&mut Geom_BSplineCurve>,
+            A1: &gp_Ax1,
+            Ang: f64,
+        );
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_BSplineCurve_inherited_Scale(
+            self_: Pin<&mut Geom_BSplineCurve>,
+            P: &gp_Pnt,
+            S: f64,
+        );
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_BSplineCurve_inherited_Translate(self_: Pin<&mut Geom_BSplineCurve>, V: &gp_Vec);
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_BSplineCurve_inherited_Mirrored(
+            self_: &Geom_BSplineCurve,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_BSplineCurve_inherited_Rotated(
+            self_: &Geom_BSplineCurve,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_BSplineCurve_inherited_Scaled(
+            self_: &Geom_BSplineCurve,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_BSplineCurve_inherited_Transformed(
+            self_: &Geom_BSplineCurve,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_BSplineCurve_inherited_Translated(
+            self_: &Geom_BSplineCurve,
+            V: &gp_Vec,
         ) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BSplineSurface ========================
         /// **Source:** `Geom_BSplineSurface.hxx`:157 - `Geom_BSplineSurface`
@@ -19411,6 +21591,82 @@ mod ffi {
         fn HandleGeomBSplineSurface_to_HandleGeomSurface(
             self_: &HandleGeomBSplineSurface,
         ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_BSplineSurface_inherited_Mirror(self_: Pin<&mut Geom_BSplineSurface>, P: &gp_Pnt);
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_BSplineSurface_inherited_Rotate(
+            self_: Pin<&mut Geom_BSplineSurface>,
+            A1: &gp_Ax1,
+            Ang: f64,
+        );
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_BSplineSurface_inherited_Scale(
+            self_: Pin<&mut Geom_BSplineSurface>,
+            P: &gp_Pnt,
+            S: f64,
+        );
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_BSplineSurface_inherited_Translate(
+            self_: Pin<&mut Geom_BSplineSurface>,
+            V: &gp_Vec,
+        );
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_BSplineSurface_inherited_Mirrored(
+            self_: &Geom_BSplineSurface,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_BSplineSurface_inherited_Rotated(
+            self_: &Geom_BSplineSurface,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_BSplineSurface_inherited_Scaled(
+            self_: &Geom_BSplineSurface,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_BSplineSurface_inherited_Transformed(
+            self_: &Geom_BSplineSurface,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_BSplineSurface_inherited_Translated(
+            self_: &Geom_BSplineSurface,
+            V: &gp_Vec,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Surface: UReversed()
+        fn Geom_BSplineSurface_inherited_UReversed(
+            self_: &Geom_BSplineSurface,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: VReversed()
+        fn Geom_BSplineSurface_inherited_VReversed(
+            self_: &Geom_BSplineSurface,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: TransformParameters()
+        fn Geom_BSplineSurface_inherited_TransformParameters(
+            self_: &Geom_BSplineSurface,
+            U: &mut f64,
+            V: &mut f64,
+            T: &gp_Trsf,
+        );
+        /// Inherited from Geom_Surface: ParametricTransformation()
+        fn Geom_BSplineSurface_inherited_ParametricTransformation(
+            self_: &Geom_BSplineSurface,
+            T: &gp_Trsf,
+        ) -> UniquePtr<gp_GTrsf2d>;
+        /// Inherited from Geom_Surface: UPeriod()
+        fn Geom_BSplineSurface_inherited_UPeriod(self_: &Geom_BSplineSurface) -> f64;
+        /// Inherited from Geom_Surface: VPeriod()
+        fn Geom_BSplineSurface_inherited_VPeriod(self_: &Geom_BSplineSurface) -> f64;
+        /// Inherited from Geom_Surface: Value()
+        fn Geom_BSplineSurface_inherited_Value(
+            self_: &Geom_BSplineSurface,
+            U: f64,
+            V: f64,
+        ) -> UniquePtr<gp_Pnt>;
         /// ======================== Geom_CylindricalSurface ========================
         /// **Source:** `Geom_CylindricalSurface.hxx`:68 - `Geom_CylindricalSurface`
         ///
@@ -19746,6 +22002,104 @@ mod ffi {
         fn HandleGeomCylindricalSurface_to_HandleGeomSurface(
             self_: &HandleGeomCylindricalSurface,
         ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_ElementarySurface: SetAxis()
+        fn Geom_CylindricalSurface_inherited_SetAxis(
+            self_: Pin<&mut Geom_CylindricalSurface>,
+            theA1: &gp_Ax1,
+        );
+        /// Inherited from Geom_ElementarySurface: SetLocation()
+        fn Geom_CylindricalSurface_inherited_SetLocation(
+            self_: Pin<&mut Geom_CylindricalSurface>,
+            theLoc: &gp_Pnt,
+        );
+        /// Inherited from Geom_ElementarySurface: SetPosition()
+        fn Geom_CylindricalSurface_inherited_SetPosition(
+            self_: Pin<&mut Geom_CylindricalSurface>,
+            theAx3: &gp_Ax3,
+        );
+        /// Inherited from Geom_ElementarySurface: Axis()
+        fn Geom_CylindricalSurface_inherited_Axis(self_: &Geom_CylindricalSurface) -> &gp_Ax1;
+        /// Inherited from Geom_ElementarySurface: Location()
+        fn Geom_CylindricalSurface_inherited_Location(self_: &Geom_CylindricalSurface) -> &gp_Pnt;
+        /// Inherited from Geom_ElementarySurface: Position()
+        fn Geom_CylindricalSurface_inherited_Position(self_: &Geom_CylindricalSurface) -> &gp_Ax3;
+        /// Inherited from Geom_ElementarySurface: UReverse()
+        fn Geom_CylindricalSurface_inherited_UReverse(self_: Pin<&mut Geom_CylindricalSurface>);
+        /// Inherited from Geom_ElementarySurface: VReverse()
+        fn Geom_CylindricalSurface_inherited_VReverse(self_: Pin<&mut Geom_CylindricalSurface>);
+        /// Inherited from Geom_ElementarySurface: IsCNu()
+        fn Geom_CylindricalSurface_inherited_IsCNu(self_: &Geom_CylindricalSurface, N: i32)
+            -> bool;
+        /// Inherited from Geom_ElementarySurface: IsCNv()
+        fn Geom_CylindricalSurface_inherited_IsCNv(self_: &Geom_CylindricalSurface, N: i32)
+            -> bool;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_CylindricalSurface_inherited_Mirror(
+            self_: Pin<&mut Geom_CylindricalSurface>,
+            P: &gp_Pnt,
+        );
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_CylindricalSurface_inherited_Rotate(
+            self_: Pin<&mut Geom_CylindricalSurface>,
+            A1: &gp_Ax1,
+            Ang: f64,
+        );
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_CylindricalSurface_inherited_Scale(
+            self_: Pin<&mut Geom_CylindricalSurface>,
+            P: &gp_Pnt,
+            S: f64,
+        );
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_CylindricalSurface_inherited_Translate(
+            self_: Pin<&mut Geom_CylindricalSurface>,
+            V: &gp_Vec,
+        );
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_CylindricalSurface_inherited_Mirrored(
+            self_: &Geom_CylindricalSurface,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_CylindricalSurface_inherited_Rotated(
+            self_: &Geom_CylindricalSurface,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_CylindricalSurface_inherited_Scaled(
+            self_: &Geom_CylindricalSurface,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_CylindricalSurface_inherited_Transformed(
+            self_: &Geom_CylindricalSurface,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_CylindricalSurface_inherited_Translated(
+            self_: &Geom_CylindricalSurface,
+            V: &gp_Vec,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Surface: UReversed()
+        fn Geom_CylindricalSurface_inherited_UReversed(
+            self_: &Geom_CylindricalSurface,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: VReversed()
+        fn Geom_CylindricalSurface_inherited_VReversed(
+            self_: &Geom_CylindricalSurface,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: UPeriod()
+        fn Geom_CylindricalSurface_inherited_UPeriod(self_: &Geom_CylindricalSurface) -> f64;
+        /// Inherited from Geom_Surface: VPeriod()
+        fn Geom_CylindricalSurface_inherited_VPeriod(self_: &Geom_CylindricalSurface) -> f64;
+        /// Inherited from Geom_Surface: Value()
+        fn Geom_CylindricalSurface_inherited_Value(
+            self_: &Geom_CylindricalSurface,
+            U: f64,
+            V: f64,
+        ) -> UniquePtr<gp_Pnt>;
         /// ======================== Geom_Plane ========================
         /// **Source:** `Geom_Plane.hxx`:64 - `Geom_Plane`
         ///
@@ -20031,6 +22385,67 @@ mod ffi {
         fn HandleGeomPlane_to_HandleGeomSurface(
             self_: &HandleGeomPlane,
         ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_ElementarySurface: SetAxis()
+        fn Geom_Plane_inherited_SetAxis(self_: Pin<&mut Geom_Plane>, theA1: &gp_Ax1);
+        /// Inherited from Geom_ElementarySurface: SetLocation()
+        fn Geom_Plane_inherited_SetLocation(self_: Pin<&mut Geom_Plane>, theLoc: &gp_Pnt);
+        /// Inherited from Geom_ElementarySurface: SetPosition()
+        fn Geom_Plane_inherited_SetPosition(self_: Pin<&mut Geom_Plane>, theAx3: &gp_Ax3);
+        /// Inherited from Geom_ElementarySurface: Axis()
+        fn Geom_Plane_inherited_Axis(self_: &Geom_Plane) -> &gp_Ax1;
+        /// Inherited from Geom_ElementarySurface: Location()
+        fn Geom_Plane_inherited_Location(self_: &Geom_Plane) -> &gp_Pnt;
+        /// Inherited from Geom_ElementarySurface: Position()
+        fn Geom_Plane_inherited_Position(self_: &Geom_Plane) -> &gp_Ax3;
+        /// Inherited from Geom_ElementarySurface: IsCNu()
+        fn Geom_Plane_inherited_IsCNu(self_: &Geom_Plane, N: i32) -> bool;
+        /// Inherited from Geom_ElementarySurface: IsCNv()
+        fn Geom_Plane_inherited_IsCNv(self_: &Geom_Plane, N: i32) -> bool;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_Plane_inherited_Mirror(self_: Pin<&mut Geom_Plane>, P: &gp_Pnt);
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_Plane_inherited_Rotate(self_: Pin<&mut Geom_Plane>, A1: &gp_Ax1, Ang: f64);
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_Plane_inherited_Scale(self_: Pin<&mut Geom_Plane>, P: &gp_Pnt, S: f64);
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_Plane_inherited_Translate(self_: Pin<&mut Geom_Plane>, V: &gp_Vec);
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_Plane_inherited_Mirrored(
+            self_: &Geom_Plane,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_Plane_inherited_Rotated(
+            self_: &Geom_Plane,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_Plane_inherited_Scaled(
+            self_: &Geom_Plane,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_Plane_inherited_Transformed(
+            self_: &Geom_Plane,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_Plane_inherited_Translated(
+            self_: &Geom_Plane,
+            V: &gp_Vec,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Surface: UReversed()
+        fn Geom_Plane_inherited_UReversed(self_: &Geom_Plane) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: VReversed()
+        fn Geom_Plane_inherited_VReversed(self_: &Geom_Plane) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from Geom_Surface: UPeriod()
+        fn Geom_Plane_inherited_UPeriod(self_: &Geom_Plane) -> f64;
+        /// Inherited from Geom_Surface: VPeriod()
+        fn Geom_Plane_inherited_VPeriod(self_: &Geom_Plane) -> f64;
+        /// Inherited from Geom_Surface: Value()
+        fn Geom_Plane_inherited_Value(self_: &Geom_Plane, U: f64, V: f64) -> UniquePtr<gp_Pnt>;
         /// ======================== Geom_TrimmedCurve ========================
         /// **Source:** `Geom_TrimmedCurve.hxx`:43 - `Geom_TrimmedCurve`
         ///
@@ -20328,6 +22743,58 @@ mod ffi {
         /// Upcast Handle<Geom_TrimmedCurve> to Handle<Geom_Geometry>
         fn HandleGeomTrimmedCurve_to_HandleGeomGeometry(
             self_: &HandleGeomTrimmedCurve,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Curve: Reversed()
+        fn Geom_TrimmedCurve_inherited_Reversed(
+            self_: &Geom_TrimmedCurve,
+        ) -> UniquePtr<HandleGeomCurve>;
+        /// Inherited from Geom_Curve: Value()
+        fn Geom_TrimmedCurve_inherited_Value(
+            self_: &Geom_TrimmedCurve,
+            U: f64,
+        ) -> UniquePtr<gp_Pnt>;
+        /// Inherited from Geom_Geometry: Mirror()
+        fn Geom_TrimmedCurve_inherited_Mirror(self_: Pin<&mut Geom_TrimmedCurve>, P: &gp_Pnt);
+        /// Inherited from Geom_Geometry: Rotate()
+        fn Geom_TrimmedCurve_inherited_Rotate(
+            self_: Pin<&mut Geom_TrimmedCurve>,
+            A1: &gp_Ax1,
+            Ang: f64,
+        );
+        /// Inherited from Geom_Geometry: Scale()
+        fn Geom_TrimmedCurve_inherited_Scale(
+            self_: Pin<&mut Geom_TrimmedCurve>,
+            P: &gp_Pnt,
+            S: f64,
+        );
+        /// Inherited from Geom_Geometry: Translate()
+        fn Geom_TrimmedCurve_inherited_Translate(self_: Pin<&mut Geom_TrimmedCurve>, V: &gp_Vec);
+        /// Inherited from Geom_Geometry: Mirrored()
+        fn Geom_TrimmedCurve_inherited_Mirrored(
+            self_: &Geom_TrimmedCurve,
+            P: &gp_Pnt,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Rotated()
+        fn Geom_TrimmedCurve_inherited_Rotated(
+            self_: &Geom_TrimmedCurve,
+            A1: &gp_Ax1,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Scaled()
+        fn Geom_TrimmedCurve_inherited_Scaled(
+            self_: &Geom_TrimmedCurve,
+            P: &gp_Pnt,
+            S: f64,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Transformed()
+        fn Geom_TrimmedCurve_inherited_Transformed(
+            self_: &Geom_TrimmedCurve,
+            T: &gp_Trsf,
+        ) -> UniquePtr<HandleGeomGeometry>;
+        /// Inherited from Geom_Geometry: Translated()
+        fn Geom_TrimmedCurve_inherited_Translated(
+            self_: &Geom_TrimmedCurve,
+            V: &gp_Vec,
         ) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom2d_Geometry ========================
         /// **Source:** `Geom2d_Geometry.hxx`:56 - `Geom2d_Geometry`
@@ -20671,6 +23138,45 @@ mod ffi {
         fn Geom2d_Curve_as_Geom2d_Geometry_mut(
             self_: Pin<&mut Geom2d_Curve>,
         ) -> Pin<&mut Geom2d_Geometry>;
+        /// Inherited from Geom2d_Geometry: Mirror()
+        fn Geom2d_Curve_inherited_Mirror(self_: Pin<&mut Geom2d_Curve>, P: &gp_Pnt2d);
+        /// Inherited from Geom2d_Geometry: Rotate()
+        fn Geom2d_Curve_inherited_Rotate(self_: Pin<&mut Geom2d_Curve>, P: &gp_Pnt2d, Ang: f64);
+        /// Inherited from Geom2d_Geometry: Scale()
+        fn Geom2d_Curve_inherited_Scale(self_: Pin<&mut Geom2d_Curve>, P: &gp_Pnt2d, S: f64);
+        /// Inherited from Geom2d_Geometry: Translate()
+        fn Geom2d_Curve_inherited_Translate(self_: Pin<&mut Geom2d_Curve>, V: &gp_Vec2d);
+        /// Inherited from Geom2d_Geometry: Transform()
+        fn Geom2d_Curve_inherited_Transform(self_: Pin<&mut Geom2d_Curve>, T: &gp_Trsf2d);
+        /// Inherited from Geom2d_Geometry: Mirrored()
+        fn Geom2d_Curve_inherited_Mirrored(
+            self_: &Geom2d_Curve,
+            P: &gp_Pnt2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Rotated()
+        fn Geom2d_Curve_inherited_Rotated(
+            self_: &Geom2d_Curve,
+            P: &gp_Pnt2d,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Scaled()
+        fn Geom2d_Curve_inherited_Scaled(
+            self_: &Geom2d_Curve,
+            P: &gp_Pnt2d,
+            S: f64,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Transformed()
+        fn Geom2d_Curve_inherited_Transformed(
+            self_: &Geom2d_Curve,
+            T: &gp_Trsf2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Translated()
+        fn Geom2d_Curve_inherited_Translated(
+            self_: &Geom2d_Curve,
+            V: &gp_Vec2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Copy()
+        fn Geom2d_Curve_inherited_Copy(self_: &Geom2d_Curve) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_BoundedCurve ========================
         /// **Source:** `Geom2d_BoundedCurve.hxx`:45 - `Geom2d_BoundedCurve`
         ///
@@ -20720,6 +23226,136 @@ mod ffi {
         fn Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(
             self_: Pin<&mut Geom2d_BoundedCurve>,
         ) -> Pin<&mut Geom2d_Geometry>;
+        /// Inherited from Geom2d_Curve: Reverse()
+        fn Geom2d_BoundedCurve_inherited_Reverse(self_: Pin<&mut Geom2d_BoundedCurve>);
+        /// Inherited from Geom2d_Curve: ReversedParameter()
+        fn Geom2d_BoundedCurve_inherited_ReversedParameter(
+            self_: &Geom2d_BoundedCurve,
+            U: f64,
+        ) -> f64;
+        /// Inherited from Geom2d_Curve: TransformedParameter()
+        fn Geom2d_BoundedCurve_inherited_TransformedParameter(
+            self_: &Geom2d_BoundedCurve,
+            U: f64,
+            T: &gp_Trsf2d,
+        ) -> f64;
+        /// Inherited from Geom2d_Curve: ParametricTransformation()
+        fn Geom2d_BoundedCurve_inherited_ParametricTransformation(
+            self_: &Geom2d_BoundedCurve,
+            T: &gp_Trsf2d,
+        ) -> f64;
+        /// Inherited from Geom2d_Curve: Reversed()
+        fn Geom2d_BoundedCurve_inherited_Reversed(
+            self_: &Geom2d_BoundedCurve,
+        ) -> UniquePtr<HandleGeom2dCurve>;
+        /// Inherited from Geom2d_Curve: FirstParameter()
+        fn Geom2d_BoundedCurve_inherited_FirstParameter(self_: &Geom2d_BoundedCurve) -> f64;
+        /// Inherited from Geom2d_Curve: LastParameter()
+        fn Geom2d_BoundedCurve_inherited_LastParameter(self_: &Geom2d_BoundedCurve) -> f64;
+        /// Inherited from Geom2d_Curve: IsClosed()
+        fn Geom2d_BoundedCurve_inherited_IsClosed(self_: &Geom2d_BoundedCurve) -> bool;
+        /// Inherited from Geom2d_Curve: IsPeriodic()
+        fn Geom2d_BoundedCurve_inherited_IsPeriodic(self_: &Geom2d_BoundedCurve) -> bool;
+        /// Inherited from Geom2d_Curve: Period()
+        fn Geom2d_BoundedCurve_inherited_Period(self_: &Geom2d_BoundedCurve) -> f64;
+        /// Inherited from Geom2d_Curve: IsCN()
+        fn Geom2d_BoundedCurve_inherited_IsCN(self_: &Geom2d_BoundedCurve, N: i32) -> bool;
+        /// Inherited from Geom2d_Curve: D0()
+        fn Geom2d_BoundedCurve_inherited_D0(
+            self_: &Geom2d_BoundedCurve,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+        );
+        /// Inherited from Geom2d_Curve: D1()
+        fn Geom2d_BoundedCurve_inherited_D1(
+            self_: &Geom2d_BoundedCurve,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V1: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Geom2d_Curve: D2()
+        fn Geom2d_BoundedCurve_inherited_D2(
+            self_: &Geom2d_BoundedCurve,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V1: Pin<&mut gp_Vec2d>,
+            V2: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Geom2d_Curve: D3()
+        fn Geom2d_BoundedCurve_inherited_D3(
+            self_: &Geom2d_BoundedCurve,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V1: Pin<&mut gp_Vec2d>,
+            V2: Pin<&mut gp_Vec2d>,
+            V3: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Geom2d_Curve: DN()
+        fn Geom2d_BoundedCurve_inherited_DN(
+            self_: &Geom2d_BoundedCurve,
+            U: f64,
+            N: i32,
+        ) -> UniquePtr<gp_Vec2d>;
+        /// Inherited from Geom2d_Curve: Value()
+        fn Geom2d_BoundedCurve_inherited_Value(
+            self_: &Geom2d_BoundedCurve,
+            U: f64,
+        ) -> UniquePtr<gp_Pnt2d>;
+        /// Inherited from Geom2d_Geometry: Mirror()
+        fn Geom2d_BoundedCurve_inherited_Mirror(self_: Pin<&mut Geom2d_BoundedCurve>, P: &gp_Pnt2d);
+        /// Inherited from Geom2d_Geometry: Rotate()
+        fn Geom2d_BoundedCurve_inherited_Rotate(
+            self_: Pin<&mut Geom2d_BoundedCurve>,
+            P: &gp_Pnt2d,
+            Ang: f64,
+        );
+        /// Inherited from Geom2d_Geometry: Scale()
+        fn Geom2d_BoundedCurve_inherited_Scale(
+            self_: Pin<&mut Geom2d_BoundedCurve>,
+            P: &gp_Pnt2d,
+            S: f64,
+        );
+        /// Inherited from Geom2d_Geometry: Translate()
+        fn Geom2d_BoundedCurve_inherited_Translate(
+            self_: Pin<&mut Geom2d_BoundedCurve>,
+            V: &gp_Vec2d,
+        );
+        /// Inherited from Geom2d_Geometry: Transform()
+        fn Geom2d_BoundedCurve_inherited_Transform(
+            self_: Pin<&mut Geom2d_BoundedCurve>,
+            T: &gp_Trsf2d,
+        );
+        /// Inherited from Geom2d_Geometry: Mirrored()
+        fn Geom2d_BoundedCurve_inherited_Mirrored(
+            self_: &Geom2d_BoundedCurve,
+            P: &gp_Pnt2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Rotated()
+        fn Geom2d_BoundedCurve_inherited_Rotated(
+            self_: &Geom2d_BoundedCurve,
+            P: &gp_Pnt2d,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Scaled()
+        fn Geom2d_BoundedCurve_inherited_Scaled(
+            self_: &Geom2d_BoundedCurve,
+            P: &gp_Pnt2d,
+            S: f64,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Transformed()
+        fn Geom2d_BoundedCurve_inherited_Transformed(
+            self_: &Geom2d_BoundedCurve,
+            T: &gp_Trsf2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Translated()
+        fn Geom2d_BoundedCurve_inherited_Translated(
+            self_: &Geom2d_BoundedCurve,
+            V: &gp_Vec2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Copy()
+        fn Geom2d_BoundedCurve_inherited_Copy(
+            self_: &Geom2d_BoundedCurve,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_Conic ========================
         /// **Source:** `Geom2d_Conic.hxx`:41 - `Geom2d_Conic`
         ///
@@ -20839,6 +23475,98 @@ mod ffi {
         fn Geom2d_Conic_as_Geom2d_Geometry_mut(
             self_: Pin<&mut Geom2d_Conic>,
         ) -> Pin<&mut Geom2d_Geometry>;
+        /// Inherited from Geom2d_Curve: TransformedParameter()
+        fn Geom2d_Conic_inherited_TransformedParameter(
+            self_: &Geom2d_Conic,
+            U: f64,
+            T: &gp_Trsf2d,
+        ) -> f64;
+        /// Inherited from Geom2d_Curve: ParametricTransformation()
+        fn Geom2d_Conic_inherited_ParametricTransformation(
+            self_: &Geom2d_Conic,
+            T: &gp_Trsf2d,
+        ) -> f64;
+        /// Inherited from Geom2d_Curve: Reversed()
+        fn Geom2d_Conic_inherited_Reversed(self_: &Geom2d_Conic) -> UniquePtr<HandleGeom2dCurve>;
+        /// Inherited from Geom2d_Curve: FirstParameter()
+        fn Geom2d_Conic_inherited_FirstParameter(self_: &Geom2d_Conic) -> f64;
+        /// Inherited from Geom2d_Curve: LastParameter()
+        fn Geom2d_Conic_inherited_LastParameter(self_: &Geom2d_Conic) -> f64;
+        /// Inherited from Geom2d_Curve: IsClosed()
+        fn Geom2d_Conic_inherited_IsClosed(self_: &Geom2d_Conic) -> bool;
+        /// Inherited from Geom2d_Curve: IsPeriodic()
+        fn Geom2d_Conic_inherited_IsPeriodic(self_: &Geom2d_Conic) -> bool;
+        /// Inherited from Geom2d_Curve: Period()
+        fn Geom2d_Conic_inherited_Period(self_: &Geom2d_Conic) -> f64;
+        /// Inherited from Geom2d_Curve: D0()
+        fn Geom2d_Conic_inherited_D0(self_: &Geom2d_Conic, U: f64, P: Pin<&mut gp_Pnt2d>);
+        /// Inherited from Geom2d_Curve: D1()
+        fn Geom2d_Conic_inherited_D1(
+            self_: &Geom2d_Conic,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V1: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Geom2d_Curve: D2()
+        fn Geom2d_Conic_inherited_D2(
+            self_: &Geom2d_Conic,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V1: Pin<&mut gp_Vec2d>,
+            V2: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Geom2d_Curve: D3()
+        fn Geom2d_Conic_inherited_D3(
+            self_: &Geom2d_Conic,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V1: Pin<&mut gp_Vec2d>,
+            V2: Pin<&mut gp_Vec2d>,
+            V3: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Geom2d_Curve: DN()
+        fn Geom2d_Conic_inherited_DN(self_: &Geom2d_Conic, U: f64, N: i32) -> UniquePtr<gp_Vec2d>;
+        /// Inherited from Geom2d_Curve: Value()
+        fn Geom2d_Conic_inherited_Value(self_: &Geom2d_Conic, U: f64) -> UniquePtr<gp_Pnt2d>;
+        /// Inherited from Geom2d_Geometry: Mirror()
+        fn Geom2d_Conic_inherited_Mirror(self_: Pin<&mut Geom2d_Conic>, P: &gp_Pnt2d);
+        /// Inherited from Geom2d_Geometry: Rotate()
+        fn Geom2d_Conic_inherited_Rotate(self_: Pin<&mut Geom2d_Conic>, P: &gp_Pnt2d, Ang: f64);
+        /// Inherited from Geom2d_Geometry: Scale()
+        fn Geom2d_Conic_inherited_Scale(self_: Pin<&mut Geom2d_Conic>, P: &gp_Pnt2d, S: f64);
+        /// Inherited from Geom2d_Geometry: Translate()
+        fn Geom2d_Conic_inherited_Translate(self_: Pin<&mut Geom2d_Conic>, V: &gp_Vec2d);
+        /// Inherited from Geom2d_Geometry: Transform()
+        fn Geom2d_Conic_inherited_Transform(self_: Pin<&mut Geom2d_Conic>, T: &gp_Trsf2d);
+        /// Inherited from Geom2d_Geometry: Mirrored()
+        fn Geom2d_Conic_inherited_Mirrored(
+            self_: &Geom2d_Conic,
+            P: &gp_Pnt2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Rotated()
+        fn Geom2d_Conic_inherited_Rotated(
+            self_: &Geom2d_Conic,
+            P: &gp_Pnt2d,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Scaled()
+        fn Geom2d_Conic_inherited_Scaled(
+            self_: &Geom2d_Conic,
+            P: &gp_Pnt2d,
+            S: f64,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Transformed()
+        fn Geom2d_Conic_inherited_Transformed(
+            self_: &Geom2d_Conic,
+            T: &gp_Trsf2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Translated()
+        fn Geom2d_Conic_inherited_Translated(
+            self_: &Geom2d_Conic,
+            V: &gp_Vec2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Copy()
+        fn Geom2d_Conic_inherited_Copy(self_: &Geom2d_Conic) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_Ellipse ========================
         /// **Source:** `Geom2d_Ellipse.hxx`:65 - `Geom2d_Ellipse`
         ///
@@ -21136,6 +23864,80 @@ mod ffi {
         /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Geometry>
         fn HandleGeom2dEllipse_to_HandleGeom2dGeometry(
             self_: &HandleGeom2dEllipse,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Conic: SetAxis()
+        fn Geom2d_Ellipse_inherited_SetAxis(self_: Pin<&mut Geom2d_Ellipse>, theA: &gp_Ax22d);
+        /// Inherited from Geom2d_Conic: SetXAxis()
+        fn Geom2d_Ellipse_inherited_SetXAxis(self_: Pin<&mut Geom2d_Ellipse>, theAX: &gp_Ax2d);
+        /// Inherited from Geom2d_Conic: SetYAxis()
+        fn Geom2d_Ellipse_inherited_SetYAxis(self_: Pin<&mut Geom2d_Ellipse>, theAY: &gp_Ax2d);
+        /// Inherited from Geom2d_Conic: SetLocation()
+        fn Geom2d_Ellipse_inherited_SetLocation(self_: Pin<&mut Geom2d_Ellipse>, theP: &gp_Pnt2d);
+        /// Inherited from Geom2d_Conic: XAxis()
+        fn Geom2d_Ellipse_inherited_XAxis(self_: &Geom2d_Ellipse) -> UniquePtr<gp_Ax2d>;
+        /// Inherited from Geom2d_Conic: YAxis()
+        fn Geom2d_Ellipse_inherited_YAxis(self_: &Geom2d_Ellipse) -> UniquePtr<gp_Ax2d>;
+        /// Inherited from Geom2d_Conic: Location()
+        fn Geom2d_Ellipse_inherited_Location(self_: &Geom2d_Ellipse) -> &gp_Pnt2d;
+        /// Inherited from Geom2d_Conic: Position()
+        fn Geom2d_Ellipse_inherited_Position(self_: &Geom2d_Ellipse) -> &gp_Ax22d;
+        /// Inherited from Geom2d_Conic: Reverse()
+        fn Geom2d_Ellipse_inherited_Reverse(self_: Pin<&mut Geom2d_Ellipse>);
+        /// Inherited from Geom2d_Conic: IsCN()
+        fn Geom2d_Ellipse_inherited_IsCN(self_: &Geom2d_Ellipse, N: i32) -> bool;
+        /// Inherited from Geom2d_Curve: TransformedParameter()
+        fn Geom2d_Ellipse_inherited_TransformedParameter(
+            self_: &Geom2d_Ellipse,
+            U: f64,
+            T: &gp_Trsf2d,
+        ) -> f64;
+        /// Inherited from Geom2d_Curve: ParametricTransformation()
+        fn Geom2d_Ellipse_inherited_ParametricTransformation(
+            self_: &Geom2d_Ellipse,
+            T: &gp_Trsf2d,
+        ) -> f64;
+        /// Inherited from Geom2d_Curve: Reversed()
+        fn Geom2d_Ellipse_inherited_Reversed(
+            self_: &Geom2d_Ellipse,
+        ) -> UniquePtr<HandleGeom2dCurve>;
+        /// Inherited from Geom2d_Curve: Period()
+        fn Geom2d_Ellipse_inherited_Period(self_: &Geom2d_Ellipse) -> f64;
+        /// Inherited from Geom2d_Curve: Value()
+        fn Geom2d_Ellipse_inherited_Value(self_: &Geom2d_Ellipse, U: f64) -> UniquePtr<gp_Pnt2d>;
+        /// Inherited from Geom2d_Geometry: Mirror()
+        fn Geom2d_Ellipse_inherited_Mirror(self_: Pin<&mut Geom2d_Ellipse>, P: &gp_Pnt2d);
+        /// Inherited from Geom2d_Geometry: Rotate()
+        fn Geom2d_Ellipse_inherited_Rotate(self_: Pin<&mut Geom2d_Ellipse>, P: &gp_Pnt2d, Ang: f64);
+        /// Inherited from Geom2d_Geometry: Scale()
+        fn Geom2d_Ellipse_inherited_Scale(self_: Pin<&mut Geom2d_Ellipse>, P: &gp_Pnt2d, S: f64);
+        /// Inherited from Geom2d_Geometry: Translate()
+        fn Geom2d_Ellipse_inherited_Translate(self_: Pin<&mut Geom2d_Ellipse>, V: &gp_Vec2d);
+        /// Inherited from Geom2d_Geometry: Mirrored()
+        fn Geom2d_Ellipse_inherited_Mirrored(
+            self_: &Geom2d_Ellipse,
+            P: &gp_Pnt2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Rotated()
+        fn Geom2d_Ellipse_inherited_Rotated(
+            self_: &Geom2d_Ellipse,
+            P: &gp_Pnt2d,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Scaled()
+        fn Geom2d_Ellipse_inherited_Scaled(
+            self_: &Geom2d_Ellipse,
+            P: &gp_Pnt2d,
+            S: f64,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Transformed()
+        fn Geom2d_Ellipse_inherited_Transformed(
+            self_: &Geom2d_Ellipse,
+            T: &gp_Trsf2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Translated()
+        fn Geom2d_Ellipse_inherited_Translated(
+            self_: &Geom2d_Ellipse,
+            V: &gp_Vec2d,
         ) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_TrimmedCurve ========================
         /// **Source:** `Geom2d_TrimmedCurve.hxx`:42 - `Geom2d_TrimmedCurve`
@@ -21442,6 +24244,61 @@ mod ffi {
         /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_Geometry>
         fn HandleGeom2dTrimmedCurve_to_HandleGeom2dGeometry(
             self_: &HandleGeom2dTrimmedCurve,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Curve: Reversed()
+        fn Geom2d_TrimmedCurve_inherited_Reversed(
+            self_: &Geom2d_TrimmedCurve,
+        ) -> UniquePtr<HandleGeom2dCurve>;
+        /// Inherited from Geom2d_Curve: Value()
+        fn Geom2d_TrimmedCurve_inherited_Value(
+            self_: &Geom2d_TrimmedCurve,
+            U: f64,
+        ) -> UniquePtr<gp_Pnt2d>;
+        /// Inherited from Geom2d_Geometry: Mirror()
+        fn Geom2d_TrimmedCurve_inherited_Mirror(self_: Pin<&mut Geom2d_TrimmedCurve>, P: &gp_Pnt2d);
+        /// Inherited from Geom2d_Geometry: Rotate()
+        fn Geom2d_TrimmedCurve_inherited_Rotate(
+            self_: Pin<&mut Geom2d_TrimmedCurve>,
+            P: &gp_Pnt2d,
+            Ang: f64,
+        );
+        /// Inherited from Geom2d_Geometry: Scale()
+        fn Geom2d_TrimmedCurve_inherited_Scale(
+            self_: Pin<&mut Geom2d_TrimmedCurve>,
+            P: &gp_Pnt2d,
+            S: f64,
+        );
+        /// Inherited from Geom2d_Geometry: Translate()
+        fn Geom2d_TrimmedCurve_inherited_Translate(
+            self_: Pin<&mut Geom2d_TrimmedCurve>,
+            V: &gp_Vec2d,
+        );
+        /// Inherited from Geom2d_Geometry: Mirrored()
+        fn Geom2d_TrimmedCurve_inherited_Mirrored(
+            self_: &Geom2d_TrimmedCurve,
+            P: &gp_Pnt2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Rotated()
+        fn Geom2d_TrimmedCurve_inherited_Rotated(
+            self_: &Geom2d_TrimmedCurve,
+            P: &gp_Pnt2d,
+            Ang: f64,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Scaled()
+        fn Geom2d_TrimmedCurve_inherited_Scaled(
+            self_: &Geom2d_TrimmedCurve,
+            P: &gp_Pnt2d,
+            S: f64,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Transformed()
+        fn Geom2d_TrimmedCurve_inherited_Transformed(
+            self_: &Geom2d_TrimmedCurve,
+            T: &gp_Trsf2d,
+        ) -> UniquePtr<HandleGeom2dGeometry>;
+        /// Inherited from Geom2d_Geometry: Translated()
+        fn Geom2d_TrimmedCurve_inherited_Translated(
+            self_: &Geom2d_TrimmedCurve,
+            V: &gp_Vec2d,
         ) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== GeomAPI_Interpolate ========================
         /// **Source:** `GeomAPI_Interpolate.hxx`:50 - `GeomAPI_Interpolate`
@@ -22023,6 +24880,8 @@ mod ffi {
         fn GC_MakeArcOfCircle_as_GC_Root_mut(
             self_: Pin<&mut GC_MakeArcOfCircle>,
         ) -> Pin<&mut GC_Root>;
+        /// Inherited from GC_Root: IsDone()
+        fn GC_MakeArcOfCircle_inherited_IsDone(self_: &GC_MakeArcOfCircle) -> bool;
         /// ======================== GC_MakeSegment ========================
         /// **Source:** `GC_MakeSegment.hxx`:39 - `GC_MakeSegment`
         ///
@@ -22080,6 +24939,8 @@ mod ffi {
         fn GC_MakeSegment_as_GC_Root(self_: &GC_MakeSegment) -> &GC_Root;
         /// Upcast GC_MakeSegment to GC_Root (mutable)
         fn GC_MakeSegment_as_GC_Root_mut(self_: Pin<&mut GC_MakeSegment>) -> Pin<&mut GC_Root>;
+        /// Inherited from GC_Root: IsDone()
+        fn GC_MakeSegment_inherited_IsDone(self_: &GC_MakeSegment) -> bool;
         /// ======================== GCPnts_TangentialDeflection ========================
         /// **Source:** `GCPnts_TangentialDeflection.hxx`:62 - `GCPnts_TangentialDeflection`
         ///
@@ -23355,6 +26216,31 @@ mod ffi {
         fn BRep_Builder_as_TopoDS_Builder_mut(
             self_: Pin<&mut BRep_Builder>,
         ) -> Pin<&mut TopoDS_Builder>;
+        /// Inherited from TopoDS_Builder: MakeWire()
+        fn BRep_Builder_inherited_MakeWire(self_: &BRep_Builder, W: Pin<&mut TopoDS_Wire>);
+        /// Inherited from TopoDS_Builder: MakeShell()
+        fn BRep_Builder_inherited_MakeShell(self_: &BRep_Builder, S: Pin<&mut TopoDS_Shell>);
+        /// Inherited from TopoDS_Builder: MakeSolid()
+        fn BRep_Builder_inherited_MakeSolid(self_: &BRep_Builder, S: Pin<&mut TopoDS_Solid>);
+        /// Inherited from TopoDS_Builder: MakeCompSolid()
+        fn BRep_Builder_inherited_MakeCompSolid(
+            self_: &BRep_Builder,
+            C: Pin<&mut TopoDS_CompSolid>,
+        );
+        /// Inherited from TopoDS_Builder: MakeCompound()
+        fn BRep_Builder_inherited_MakeCompound(self_: &BRep_Builder, C: Pin<&mut TopoDS_Compound>);
+        /// Inherited from TopoDS_Builder: Add()
+        fn BRep_Builder_inherited_Add(
+            self_: &BRep_Builder,
+            S: Pin<&mut TopoDS_Shape>,
+            C: &TopoDS_Shape,
+        );
+        /// Inherited from TopoDS_Builder: Remove()
+        fn BRep_Builder_inherited_Remove(
+            self_: &BRep_Builder,
+            S: Pin<&mut TopoDS_Shape>,
+            C: &TopoDS_Shape,
+        );
         /// ======================== BRep_Tool ========================
         /// **Source:** `BRep_Tool.hxx`:44 - `BRep_Tool`
         ///
@@ -24647,6 +27533,17 @@ mod ffi {
         fn BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut(
             self_: Pin<&mut BRepMesh_IncrementalMesh>,
         ) -> Pin<&mut BRepMesh_DiscretRoot>;
+        /// Inherited from BRepMesh_DiscretRoot: SetShape()
+        fn BRepMesh_IncrementalMesh_inherited_SetShape(
+            self_: Pin<&mut BRepMesh_IncrementalMesh>,
+            theShape: &TopoDS_Shape,
+        );
+        /// Inherited from BRepMesh_DiscretRoot: Shape()
+        fn BRepMesh_IncrementalMesh_inherited_Shape(
+            self_: &BRepMesh_IncrementalMesh,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepMesh_DiscretRoot: IsDone()
+        fn BRepMesh_IncrementalMesh_inherited_IsDone(self_: &BRepMesh_IncrementalMesh) -> bool;
         /// ======================== GProp_GProps ========================
         /// **Source:** `GProp_GProps.hxx`:97 - `GProp_GProps`
         ///
@@ -24996,6 +27893,36 @@ mod ffi {
         fn HandleLawInterpol_to_HandleLawFunction(
             self_: &HandleLawInterpol,
         ) -> UniquePtr<HandleLawFunction>;
+        /// Inherited from Law_BSpFunc: Value()
+        fn Law_Interpol_inherited_Value(self_: Pin<&mut Law_Interpol>, X: f64) -> f64;
+        /// Inherited from Law_BSpFunc: D1()
+        fn Law_Interpol_inherited_D1(
+            self_: Pin<&mut Law_Interpol>,
+            X: f64,
+            F: &mut f64,
+            D: &mut f64,
+        );
+        /// Inherited from Law_BSpFunc: D2()
+        fn Law_Interpol_inherited_D2(
+            self_: Pin<&mut Law_Interpol>,
+            X: f64,
+            F: &mut f64,
+            D: &mut f64,
+            D2: &mut f64,
+        );
+        /// Inherited from Law_BSpFunc: Trim()
+        fn Law_Interpol_inherited_Trim(
+            self_: &Law_Interpol,
+            PFirst: f64,
+            PLast: f64,
+            Tol: f64,
+        ) -> UniquePtr<HandleLawFunction>;
+        /// Inherited from Law_BSpFunc: Bounds()
+        fn Law_Interpol_inherited_Bounds(
+            self_: Pin<&mut Law_Interpol>,
+            PFirst: &mut f64,
+            PLast: &mut f64,
+        );
         /// ======================== Poly_Triangulation ========================
         /// **Source:** `Poly_Triangulation.hxx`:59 - `Poly_Triangulation`
         ///
@@ -26604,6 +29531,56 @@ mod ffi {
         fn STEPControl_Reader_as_XSControl_Reader_mut(
             self_: Pin<&mut STEPControl_Reader>,
         ) -> Pin<&mut XSControl_Reader>;
+        /// Inherited from XSControl_Reader: TransferOneRoot()
+        fn STEPControl_Reader_inherited_TransferOneRoot(
+            self_: Pin<&mut STEPControl_Reader>,
+            num: i32,
+            theProgress: &Message_ProgressRange,
+        ) -> bool;
+        /// Inherited from XSControl_Reader: TransferOne()
+        fn STEPControl_Reader_inherited_TransferOne(
+            self_: Pin<&mut STEPControl_Reader>,
+            num: i32,
+            theProgress: &Message_ProgressRange,
+        ) -> bool;
+        /// Inherited from XSControl_Reader: TransferList()
+        fn STEPControl_Reader_inherited_TransferList(
+            self_: Pin<&mut STEPControl_Reader>,
+            list: &HandleTColStdHSequenceOfTransient,
+            theProgress: &Message_ProgressRange,
+        ) -> i32;
+        /// Inherited from XSControl_Reader: TransferRoots()
+        fn STEPControl_Reader_inherited_TransferRoots(
+            self_: Pin<&mut STEPControl_Reader>,
+            theProgress: &Message_ProgressRange,
+        ) -> i32;
+        /// Inherited from XSControl_Reader: ClearShapes()
+        fn STEPControl_Reader_inherited_ClearShapes(self_: Pin<&mut STEPControl_Reader>);
+        /// Inherited from XSControl_Reader: NbShapes()
+        fn STEPControl_Reader_inherited_NbShapes(self_: &STEPControl_Reader) -> i32;
+        /// Inherited from XSControl_Reader: Shape()
+        fn STEPControl_Reader_inherited_Shape(
+            self_: &STEPControl_Reader,
+            num: i32,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from XSControl_Reader: OneShape()
+        fn STEPControl_Reader_inherited_OneShape(
+            self_: &STEPControl_Reader,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from XSControl_Reader: PrintStatsTransfer()
+        fn STEPControl_Reader_inherited_PrintStatsTransfer(
+            self_: &STEPControl_Reader,
+            what: i32,
+            mode: i32,
+        );
+        /// Inherited from XSControl_Reader: GetStatsTransfer()
+        fn STEPControl_Reader_inherited_GetStatsTransfer(
+            self_: &STEPControl_Reader,
+            list: &HandleTColStdHSequenceOfTransient,
+            nbMapped: &mut i32,
+            nbWithResult: &mut i32,
+            nbWithFail: &mut i32,
+        );
         /// ======================== STEPControl_Writer ========================
         /// **Source:** `STEPControl_Writer.hxx`:45 - `STEPControl_Writer`
         ///
@@ -26718,6 +29695,56 @@ mod ffi {
         fn IGESControl_Reader_as_XSControl_Reader_mut(
             self_: Pin<&mut IGESControl_Reader>,
         ) -> Pin<&mut XSControl_Reader>;
+        /// Inherited from XSControl_Reader: TransferOneRoot()
+        fn IGESControl_Reader_inherited_TransferOneRoot(
+            self_: Pin<&mut IGESControl_Reader>,
+            num: i32,
+            theProgress: &Message_ProgressRange,
+        ) -> bool;
+        /// Inherited from XSControl_Reader: TransferOne()
+        fn IGESControl_Reader_inherited_TransferOne(
+            self_: Pin<&mut IGESControl_Reader>,
+            num: i32,
+            theProgress: &Message_ProgressRange,
+        ) -> bool;
+        /// Inherited from XSControl_Reader: TransferList()
+        fn IGESControl_Reader_inherited_TransferList(
+            self_: Pin<&mut IGESControl_Reader>,
+            list: &HandleTColStdHSequenceOfTransient,
+            theProgress: &Message_ProgressRange,
+        ) -> i32;
+        /// Inherited from XSControl_Reader: TransferRoots()
+        fn IGESControl_Reader_inherited_TransferRoots(
+            self_: Pin<&mut IGESControl_Reader>,
+            theProgress: &Message_ProgressRange,
+        ) -> i32;
+        /// Inherited from XSControl_Reader: ClearShapes()
+        fn IGESControl_Reader_inherited_ClearShapes(self_: Pin<&mut IGESControl_Reader>);
+        /// Inherited from XSControl_Reader: NbShapes()
+        fn IGESControl_Reader_inherited_NbShapes(self_: &IGESControl_Reader) -> i32;
+        /// Inherited from XSControl_Reader: Shape()
+        fn IGESControl_Reader_inherited_Shape(
+            self_: &IGESControl_Reader,
+            num: i32,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from XSControl_Reader: OneShape()
+        fn IGESControl_Reader_inherited_OneShape(
+            self_: &IGESControl_Reader,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from XSControl_Reader: PrintStatsTransfer()
+        fn IGESControl_Reader_inherited_PrintStatsTransfer(
+            self_: &IGESControl_Reader,
+            what: i32,
+            mode: i32,
+        );
+        /// Inherited from XSControl_Reader: GetStatsTransfer()
+        fn IGESControl_Reader_inherited_GetStatsTransfer(
+            self_: &IGESControl_Reader,
+            list: &HandleTColStdHSequenceOfTransient,
+            nbMapped: &mut i32,
+            nbWithResult: &mut i32,
+            nbWithFail: &mut i32,
+        );
         /// ======================== IGESControl_Writer ========================
         /// **Source:** `IGESControl_Writer.hxx`:48 - `IGESControl_Writer`
         ///
@@ -27554,6 +30581,10 @@ mod ffi {
         fn math_FunctionWithDerivative_as_math_Function_mut(
             self_: Pin<&mut math_FunctionWithDerivative>,
         ) -> Pin<&mut math_Function>;
+        /// Inherited from math_Function: GetStateNumber()
+        fn math_FunctionWithDerivative_inherited_GetStateNumber(
+            self_: Pin<&mut math_FunctionWithDerivative>,
+        ) -> i32;
         /// ======================== Extrema_ExtCC ========================
         /// **Source:** `Extrema_ExtCC.hxx`:34 - `Extrema_ExtCC`
         ///
@@ -31626,6 +34657,21 @@ mod ffi {
         fn Extrema_POnSurfParams_as_Extrema_POnSurf_mut(
             self_: Pin<&mut Extrema_POnSurfParams>,
         ) -> Pin<&mut Extrema_POnSurf>;
+        /// Inherited from Extrema_POnSurf: Value()
+        fn Extrema_POnSurfParams_inherited_Value(self_: &Extrema_POnSurfParams) -> &gp_Pnt;
+        /// Inherited from Extrema_POnSurf: SetParameters()
+        fn Extrema_POnSurfParams_inherited_SetParameters(
+            self_: Pin<&mut Extrema_POnSurfParams>,
+            theU: f64,
+            theV: f64,
+            thePnt: &gp_Pnt,
+        );
+        /// Inherited from Extrema_POnSurf: Parameter()
+        fn Extrema_POnSurfParams_inherited_Parameter(
+            self_: &Extrema_POnSurfParams,
+            U: &mut f64,
+            V: &mut f64,
+        );
         /// ======================== Extrema_FuncPSNorm ========================
         /// **Source:** `Extrema_FuncPSNorm.hxx`:54 - `Extrema_FuncPSNorm`
         ///
@@ -33782,6 +36828,13 @@ mod ffi {
         fn IMeshTools_Context_as_IMeshData_Shape_mut(
             self_: Pin<&mut IMeshTools_Context>,
         ) -> Pin<&mut IMeshData_Shape>;
+        /// Inherited from IMeshData_Shape: SetShape()
+        fn IMeshTools_Context_inherited_SetShape(
+            self_: Pin<&mut IMeshTools_Context>,
+            theShape: &TopoDS_Shape,
+        );
+        /// Inherited from IMeshData_Shape: GetShape()
+        fn IMeshTools_Context_inherited_GetShape(self_: &IMeshTools_Context) -> &TopoDS_Shape;
         /// ======================== Standard_NumericError ========================
         /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError`
         type Standard_NumericError;
@@ -33825,6 +36878,30 @@ mod ffi {
         fn IMeshTools_ModelBuilder_as_Message_Algorithm_mut(
             self_: Pin<&mut IMeshTools_ModelBuilder>,
         ) -> Pin<&mut Message_Algorithm>;
+        /// Inherited from Message_Algorithm: GetStatus()
+        fn IMeshTools_ModelBuilder_inherited_GetStatus(
+            self_: &IMeshTools_ModelBuilder,
+        ) -> &Message_ExecStatus;
+        /// Inherited from Message_Algorithm: ChangeStatus()
+        fn IMeshTools_ModelBuilder_inherited_ChangeStatus(
+            self_: Pin<&mut IMeshTools_ModelBuilder>,
+        ) -> Pin<&mut Message_ExecStatus>;
+        /// Inherited from Message_Algorithm: ClearStatus()
+        fn IMeshTools_ModelBuilder_inherited_ClearStatus(self_: Pin<&mut IMeshTools_ModelBuilder>);
+        /// Inherited from Message_Algorithm: SetMessenger()
+        fn IMeshTools_ModelBuilder_inherited_SetMessenger(
+            self_: Pin<&mut IMeshTools_ModelBuilder>,
+            theMsgr: &HandleMessageMessenger,
+        );
+        /// Inherited from Message_Algorithm: GetMessenger()
+        fn IMeshTools_ModelBuilder_inherited_GetMessenger(
+            self_: &IMeshTools_ModelBuilder,
+        ) -> UniquePtr<HandleMessageMessenger>;
+        /// Inherited from Message_Algorithm: AddStatus()
+        fn IMeshTools_ModelBuilder_inherited_AddStatus(
+            self_: Pin<&mut IMeshTools_ModelBuilder>,
+            theOther: &HandleMessageAlgorithm,
+        );
         /// ======================== IMeshData_Model ========================
         /// **Source:** `IMeshData_Model.hxx`:28 - `IMeshData_Model`
         ///
@@ -33858,6 +36935,13 @@ mod ffi {
         fn IMeshData_Model_as_IMeshData_Shape_mut(
             self_: Pin<&mut IMeshData_Model>,
         ) -> Pin<&mut IMeshData_Shape>;
+        /// Inherited from IMeshData_Shape: SetShape()
+        fn IMeshData_Model_inherited_SetShape(
+            self_: Pin<&mut IMeshData_Model>,
+            theShape: &TopoDS_Shape,
+        );
+        /// Inherited from IMeshData_Shape: GetShape()
+        fn IMeshData_Model_inherited_GetShape(self_: &IMeshData_Model) -> &TopoDS_Shape;
         /// ======================== IMeshTools_Parameters ========================
         /// **Source:** `IMeshTools_Parameters.hxx`:23 - `IMeshTools_Parameters`
         ///
@@ -34464,6 +37548,10 @@ mod ffi {
         fn BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(
             self_: Pin<&mut BRepMesh_Edge>,
         ) -> Pin<&mut BRepMesh_OrientedEdge>;
+        /// Inherited from BRepMesh_OrientedEdge: FirstNode()
+        fn BRepMesh_Edge_inherited_FirstNode(self_: &BRepMesh_Edge) -> i32;
+        /// Inherited from BRepMesh_OrientedEdge: LastNode()
+        fn BRepMesh_Edge_inherited_LastNode(self_: &BRepMesh_Edge) -> i32;
         /// ======================== BRepMesh_OrientedEdge ========================
         /// **Source:** `BRepMesh_OrientedEdge.hxx`:22 - `BRepMesh_OrientedEdge`
         ///
@@ -35299,6 +38387,26 @@ mod ffi {
             Curve: &HandleAdaptor3dCurve,
             Surface: &HandleAdaptor3dSurface,
         );
+        /// Inherited from IntCurveSurface_Intersection: IsDone()
+        fn IntCurveSurface_HInter_inherited_IsDone(self_: &IntCurveSurface_HInter) -> bool;
+        /// Inherited from IntCurveSurface_Intersection: NbPoints()
+        fn IntCurveSurface_HInter_inherited_NbPoints(self_: &IntCurveSurface_HInter) -> i32;
+        /// Inherited from IntCurveSurface_Intersection: Point()
+        fn IntCurveSurface_HInter_inherited_Point(
+            self_: &IntCurveSurface_HInter,
+            Index: i32,
+        ) -> &IntCurveSurface_IntersectionPoint;
+        /// Inherited from IntCurveSurface_Intersection: NbSegments()
+        fn IntCurveSurface_HInter_inherited_NbSegments(self_: &IntCurveSurface_HInter) -> i32;
+        /// Inherited from IntCurveSurface_Intersection: Segment()
+        fn IntCurveSurface_HInter_inherited_Segment(
+            self_: &IntCurveSurface_HInter,
+            Index: i32,
+        ) -> &IntCurveSurface_IntersectionSegment;
+        /// Inherited from IntCurveSurface_Intersection: IsParallel()
+        fn IntCurveSurface_HInter_inherited_IsParallel(self_: &IntCurveSurface_HInter) -> bool;
+        /// Inherited from IntCurveSurface_Intersection: Dump()
+        fn IntCurveSurface_HInter_inherited_Dump(self_: &IntCurveSurface_HInter);
         /// ======================== Bnd_HArray1OfBox ========================
         /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox`
         type Bnd_HArray1OfBox;
@@ -37686,6 +40794,17 @@ mod ffi {
         fn BRepFeat_Form_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepFeat_Form>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepFeat_Form_inherited_IsDone(self_: &BRepFeat_Form) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepFeat_Form_inherited_Check(self_: &BRepFeat_Form);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepFeat_Form_inherited_Build(
+            self_: Pin<&mut BRepFeat_Form>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepFeat_Form_inherited_Shape(self_: Pin<&mut BRepFeat_Form>) -> &TopoDS_Shape;
         /// ======================== BRepFeat_Builder ========================
         /// **Source:** `BRepFeat_Builder.hxx`:45 - `BRepFeat_Builder`
         ///
@@ -37802,6 +40921,109 @@ mod ffi {
         fn BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(
             self_: Pin<&mut BRepFeat_Builder>,
         ) -> Pin<&mut BOPAlgo_ToolsProvider>;
+        /// Inherited from BOPAlgo_Algo: Perform()
+        fn BRepFeat_Builder_inherited_Perform(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BOPAlgo_Builder: AddArgument()
+        fn BRepFeat_Builder_inherited_AddArgument(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theShape: &TopoDS_Shape,
+        );
+        /// Inherited from BOPAlgo_Builder: SetNonDestructive()
+        fn BRepFeat_Builder_inherited_SetNonDestructive(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Builder: NonDestructive()
+        fn BRepFeat_Builder_inherited_NonDestructive(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_Builder: SetCheckInverted()
+        fn BRepFeat_Builder_inherited_SetCheckInverted(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theCheck: bool,
+        );
+        /// Inherited from BOPAlgo_Builder: CheckInverted()
+        fn BRepFeat_Builder_inherited_CheckInverted(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: Shape()
+        fn BRepFeat_Builder_inherited_Shape(self_: &BRepFeat_Builder) -> &TopoDS_Shape;
+        /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
+        fn BRepFeat_Builder_inherited_IsDeleted(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasModified()
+        fn BRepFeat_Builder_inherited_HasModified(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
+        fn BRepFeat_Builder_inherited_HasGenerated(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
+        fn BRepFeat_Builder_inherited_HasDeleted(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: History()
+        fn BRepFeat_Builder_inherited_History(
+            self_: Pin<&mut BRepFeat_Builder>,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
+        fn BRepFeat_Builder_inherited_SetToFillHistory(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BOPAlgo_BuilderShape: HasHistory()
+        fn BRepFeat_Builder_inherited_HasHistory(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: Allocator()
+        fn BRepFeat_Builder_inherited_Allocator(
+            self_: &BRepFeat_Builder,
+        ) -> &HandleNCollectionBaseAllocator;
+        /// Inherited from BOPAlgo_Options: AddError()
+        fn BRepFeat_Builder_inherited_AddError(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: AddWarning()
+        fn BRepFeat_Builder_inherited_AddWarning(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: HasErrors()
+        fn BRepFeat_Builder_inherited_HasErrors(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: HasError()
+        fn BRepFeat_Builder_inherited_HasError(
+            self_: &BRepFeat_Builder,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings()
+        fn BRepFeat_Builder_inherited_HasWarnings(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarning()
+        fn BRepFeat_Builder_inherited_HasWarning(
+            self_: &BRepFeat_Builder,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: GetReport()
+        fn BRepFeat_Builder_inherited_GetReport(self_: &BRepFeat_Builder) -> &HandleMessageReport;
+        /// Inherited from BOPAlgo_Options: ClearWarnings()
+        fn BRepFeat_Builder_inherited_ClearWarnings(self_: Pin<&mut BRepFeat_Builder>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel()
+        fn BRepFeat_Builder_inherited_SetRunParallel(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Options: RunParallel()
+        fn BRepFeat_Builder_inherited_RunParallel(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+        fn BRepFeat_Builder_inherited_SetFuzzyValue(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theFuzz: f64,
+        );
+        /// Inherited from BOPAlgo_Options: FuzzyValue()
+        fn BRepFeat_Builder_inherited_FuzzyValue(self_: &BRepFeat_Builder) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB()
+        fn BRepFeat_Builder_inherited_SetUseOBB(self_: Pin<&mut BRepFeat_Builder>, theUseOBB: bool);
+        /// Inherited from BOPAlgo_Options: UseOBB()
+        fn BRepFeat_Builder_inherited_UseOBB(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_ToolsProvider: AddTool()
+        fn BRepFeat_Builder_inherited_AddTool(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theShape: &TopoDS_Shape,
+        );
         /// ======================== BOPAlgo_BOP ========================
         /// **Source:** `BOPAlgo_BOP.hxx`:63 - `BOPAlgo_BOP`
         ///
@@ -37879,6 +41101,81 @@ mod ffi {
         fn BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut(
             self_: Pin<&mut BOPAlgo_BOP>,
         ) -> Pin<&mut BOPAlgo_ToolsProvider>;
+        /// Inherited from BOPAlgo_Builder: AddArgument()
+        fn BOPAlgo_BOP_inherited_AddArgument(self_: Pin<&mut BOPAlgo_BOP>, theShape: &TopoDS_Shape);
+        /// Inherited from BOPAlgo_Builder: SetNonDestructive()
+        fn BOPAlgo_BOP_inherited_SetNonDestructive(self_: Pin<&mut BOPAlgo_BOP>, theFlag: bool);
+        /// Inherited from BOPAlgo_Builder: NonDestructive()
+        fn BOPAlgo_BOP_inherited_NonDestructive(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_Builder: SetCheckInverted()
+        fn BOPAlgo_BOP_inherited_SetCheckInverted(self_: Pin<&mut BOPAlgo_BOP>, theCheck: bool);
+        /// Inherited from BOPAlgo_Builder: CheckInverted()
+        fn BOPAlgo_BOP_inherited_CheckInverted(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: Shape()
+        fn BOPAlgo_BOP_inherited_Shape(self_: &BOPAlgo_BOP) -> &TopoDS_Shape;
+        /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
+        fn BOPAlgo_BOP_inherited_IsDeleted(
+            self_: Pin<&mut BOPAlgo_BOP>,
+            theS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasModified()
+        fn BOPAlgo_BOP_inherited_HasModified(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
+        fn BOPAlgo_BOP_inherited_HasGenerated(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
+        fn BOPAlgo_BOP_inherited_HasDeleted(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: History()
+        fn BOPAlgo_BOP_inherited_History(
+            self_: Pin<&mut BOPAlgo_BOP>,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
+        fn BOPAlgo_BOP_inherited_SetToFillHistory(self_: Pin<&mut BOPAlgo_BOP>, theHistFlag: bool);
+        /// Inherited from BOPAlgo_BuilderShape: HasHistory()
+        fn BOPAlgo_BOP_inherited_HasHistory(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_Options: Allocator()
+        fn BOPAlgo_BOP_inherited_Allocator(self_: &BOPAlgo_BOP) -> &HandleNCollectionBaseAllocator;
+        /// Inherited from BOPAlgo_Options: AddError()
+        fn BOPAlgo_BOP_inherited_AddError(
+            self_: Pin<&mut BOPAlgo_BOP>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: AddWarning()
+        fn BOPAlgo_BOP_inherited_AddWarning(
+            self_: Pin<&mut BOPAlgo_BOP>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: HasErrors()
+        fn BOPAlgo_BOP_inherited_HasErrors(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_Options: HasError()
+        fn BOPAlgo_BOP_inherited_HasError(
+            self_: &BOPAlgo_BOP,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings()
+        fn BOPAlgo_BOP_inherited_HasWarnings(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarning()
+        fn BOPAlgo_BOP_inherited_HasWarning(
+            self_: &BOPAlgo_BOP,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: GetReport()
+        fn BOPAlgo_BOP_inherited_GetReport(self_: &BOPAlgo_BOP) -> &HandleMessageReport;
+        /// Inherited from BOPAlgo_Options: ClearWarnings()
+        fn BOPAlgo_BOP_inherited_ClearWarnings(self_: Pin<&mut BOPAlgo_BOP>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel()
+        fn BOPAlgo_BOP_inherited_SetRunParallel(self_: Pin<&mut BOPAlgo_BOP>, theFlag: bool);
+        /// Inherited from BOPAlgo_Options: RunParallel()
+        fn BOPAlgo_BOP_inherited_RunParallel(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+        fn BOPAlgo_BOP_inherited_SetFuzzyValue(self_: Pin<&mut BOPAlgo_BOP>, theFuzz: f64);
+        /// Inherited from BOPAlgo_Options: FuzzyValue()
+        fn BOPAlgo_BOP_inherited_FuzzyValue(self_: &BOPAlgo_BOP) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB()
+        fn BOPAlgo_BOP_inherited_SetUseOBB(self_: Pin<&mut BOPAlgo_BOP>, theUseOBB: bool);
+        /// Inherited from BOPAlgo_Options: UseOBB()
+        fn BOPAlgo_BOP_inherited_UseOBB(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_ToolsProvider: AddTool()
+        fn BOPAlgo_BOP_inherited_AddTool(self_: Pin<&mut BOPAlgo_BOP>, theShape: &TopoDS_Shape);
         /// ======================== BOPAlgo_ToolsProvider ========================
         /// **Source:** `BOPAlgo_ToolsProvider.hxx`:25 - `BOPAlgo_ToolsProvider`
         ///
@@ -37926,6 +41223,109 @@ mod ffi {
         fn BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut(
             self_: Pin<&mut BOPAlgo_ToolsProvider>,
         ) -> Pin<&mut BOPAlgo_Options>;
+        /// Inherited from BOPAlgo_Algo: Perform()
+        fn BOPAlgo_ToolsProvider_inherited_Perform(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BOPAlgo_Builder: AddArgument()
+        fn BOPAlgo_ToolsProvider_inherited_AddArgument(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theShape: &TopoDS_Shape,
+        );
+        /// Inherited from BOPAlgo_Builder: SetNonDestructive()
+        fn BOPAlgo_ToolsProvider_inherited_SetNonDestructive(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Builder: NonDestructive()
+        fn BOPAlgo_ToolsProvider_inherited_NonDestructive(self_: &BOPAlgo_ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Builder: SetCheckInverted()
+        fn BOPAlgo_ToolsProvider_inherited_SetCheckInverted(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theCheck: bool,
+        );
+        /// Inherited from BOPAlgo_Builder: CheckInverted()
+        fn BOPAlgo_ToolsProvider_inherited_CheckInverted(self_: &BOPAlgo_ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: Shape()
+        fn BOPAlgo_ToolsProvider_inherited_Shape(self_: &BOPAlgo_ToolsProvider) -> &TopoDS_Shape;
+        /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
+        fn BOPAlgo_ToolsProvider_inherited_IsDeleted(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasModified()
+        fn BOPAlgo_ToolsProvider_inherited_HasModified(self_: &BOPAlgo_ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
+        fn BOPAlgo_ToolsProvider_inherited_HasGenerated(self_: &BOPAlgo_ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
+        fn BOPAlgo_ToolsProvider_inherited_HasDeleted(self_: &BOPAlgo_ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: History()
+        fn BOPAlgo_ToolsProvider_inherited_History(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
+        fn BOPAlgo_ToolsProvider_inherited_SetToFillHistory(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BOPAlgo_BuilderShape: HasHistory()
+        fn BOPAlgo_ToolsProvider_inherited_HasHistory(self_: &BOPAlgo_ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Options: Allocator()
+        fn BOPAlgo_ToolsProvider_inherited_Allocator(
+            self_: &BOPAlgo_ToolsProvider,
+        ) -> &HandleNCollectionBaseAllocator;
+        /// Inherited from BOPAlgo_Options: AddError()
+        fn BOPAlgo_ToolsProvider_inherited_AddError(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: AddWarning()
+        fn BOPAlgo_ToolsProvider_inherited_AddWarning(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: HasErrors()
+        fn BOPAlgo_ToolsProvider_inherited_HasErrors(self_: &BOPAlgo_ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Options: HasError()
+        fn BOPAlgo_ToolsProvider_inherited_HasError(
+            self_: &BOPAlgo_ToolsProvider,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings()
+        fn BOPAlgo_ToolsProvider_inherited_HasWarnings(self_: &BOPAlgo_ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarning()
+        fn BOPAlgo_ToolsProvider_inherited_HasWarning(
+            self_: &BOPAlgo_ToolsProvider,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: GetReport()
+        fn BOPAlgo_ToolsProvider_inherited_GetReport(
+            self_: &BOPAlgo_ToolsProvider,
+        ) -> &HandleMessageReport;
+        /// Inherited from BOPAlgo_Options: ClearWarnings()
+        fn BOPAlgo_ToolsProvider_inherited_ClearWarnings(self_: Pin<&mut BOPAlgo_ToolsProvider>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel()
+        fn BOPAlgo_ToolsProvider_inherited_SetRunParallel(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Options: RunParallel()
+        fn BOPAlgo_ToolsProvider_inherited_RunParallel(self_: &BOPAlgo_ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+        fn BOPAlgo_ToolsProvider_inherited_SetFuzzyValue(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theFuzz: f64,
+        );
+        /// Inherited from BOPAlgo_Options: FuzzyValue()
+        fn BOPAlgo_ToolsProvider_inherited_FuzzyValue(self_: &BOPAlgo_ToolsProvider) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB()
+        fn BOPAlgo_ToolsProvider_inherited_SetUseOBB(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theUseOBB: bool,
+        );
+        /// Inherited from BOPAlgo_Options: UseOBB()
+        fn BOPAlgo_ToolsProvider_inherited_UseOBB(self_: &BOPAlgo_ToolsProvider) -> bool;
         /// ======================== BOPAlgo_Builder ========================
         /// **Source:** `BOPAlgo_Builder.hxx`:74 - `BOPAlgo_Builder`
         ///
@@ -38031,6 +41431,77 @@ mod ffi {
         fn BOPAlgo_Builder_as_BOPAlgo_Options_mut(
             self_: Pin<&mut BOPAlgo_Builder>,
         ) -> Pin<&mut BOPAlgo_Options>;
+        /// Inherited from BOPAlgo_BuilderShape: Shape()
+        fn BOPAlgo_Builder_inherited_Shape(self_: &BOPAlgo_Builder) -> &TopoDS_Shape;
+        /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
+        fn BOPAlgo_Builder_inherited_IsDeleted(
+            self_: Pin<&mut BOPAlgo_Builder>,
+            theS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasModified()
+        fn BOPAlgo_Builder_inherited_HasModified(self_: &BOPAlgo_Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
+        fn BOPAlgo_Builder_inherited_HasGenerated(self_: &BOPAlgo_Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
+        fn BOPAlgo_Builder_inherited_HasDeleted(self_: &BOPAlgo_Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: History()
+        fn BOPAlgo_Builder_inherited_History(
+            self_: Pin<&mut BOPAlgo_Builder>,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
+        /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
+        fn BOPAlgo_Builder_inherited_SetToFillHistory(
+            self_: Pin<&mut BOPAlgo_Builder>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BOPAlgo_BuilderShape: HasHistory()
+        fn BOPAlgo_Builder_inherited_HasHistory(self_: &BOPAlgo_Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: Allocator()
+        fn BOPAlgo_Builder_inherited_Allocator(
+            self_: &BOPAlgo_Builder,
+        ) -> &HandleNCollectionBaseAllocator;
+        /// Inherited from BOPAlgo_Options: AddError()
+        fn BOPAlgo_Builder_inherited_AddError(
+            self_: Pin<&mut BOPAlgo_Builder>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: AddWarning()
+        fn BOPAlgo_Builder_inherited_AddWarning(
+            self_: Pin<&mut BOPAlgo_Builder>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: HasErrors()
+        fn BOPAlgo_Builder_inherited_HasErrors(self_: &BOPAlgo_Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: HasError()
+        fn BOPAlgo_Builder_inherited_HasError(
+            self_: &BOPAlgo_Builder,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings()
+        fn BOPAlgo_Builder_inherited_HasWarnings(self_: &BOPAlgo_Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarning()
+        fn BOPAlgo_Builder_inherited_HasWarning(
+            self_: &BOPAlgo_Builder,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: GetReport()
+        fn BOPAlgo_Builder_inherited_GetReport(self_: &BOPAlgo_Builder) -> &HandleMessageReport;
+        /// Inherited from BOPAlgo_Options: ClearWarnings()
+        fn BOPAlgo_Builder_inherited_ClearWarnings(self_: Pin<&mut BOPAlgo_Builder>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel()
+        fn BOPAlgo_Builder_inherited_SetRunParallel(
+            self_: Pin<&mut BOPAlgo_Builder>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Options: RunParallel()
+        fn BOPAlgo_Builder_inherited_RunParallel(self_: &BOPAlgo_Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+        fn BOPAlgo_Builder_inherited_SetFuzzyValue(self_: Pin<&mut BOPAlgo_Builder>, theFuzz: f64);
+        /// Inherited from BOPAlgo_Options: FuzzyValue()
+        fn BOPAlgo_Builder_inherited_FuzzyValue(self_: &BOPAlgo_Builder) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB()
+        fn BOPAlgo_Builder_inherited_SetUseOBB(self_: Pin<&mut BOPAlgo_Builder>, theUseOBB: bool);
+        /// Inherited from BOPAlgo_Options: UseOBB()
+        fn BOPAlgo_Builder_inherited_UseOBB(self_: &BOPAlgo_Builder) -> bool;
         /// ======================== BOPAlgo_BuilderShape ========================
         /// **Source:** `BOPAlgo_BuilderShape.hxx`:40 - `BOPAlgo_BuilderShape`
         ///
@@ -38094,6 +41565,66 @@ mod ffi {
         fn BOPAlgo_BuilderShape_as_BOPAlgo_Options_mut(
             self_: Pin<&mut BOPAlgo_BuilderShape>,
         ) -> Pin<&mut BOPAlgo_Options>;
+        /// Inherited from BOPAlgo_Algo: Perform()
+        fn BOPAlgo_BuilderShape_inherited_Perform(
+            self_: Pin<&mut BOPAlgo_BuilderShape>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BOPAlgo_Options: Allocator()
+        fn BOPAlgo_BuilderShape_inherited_Allocator(
+            self_: &BOPAlgo_BuilderShape,
+        ) -> &HandleNCollectionBaseAllocator;
+        /// Inherited from BOPAlgo_Options: AddError()
+        fn BOPAlgo_BuilderShape_inherited_AddError(
+            self_: Pin<&mut BOPAlgo_BuilderShape>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: AddWarning()
+        fn BOPAlgo_BuilderShape_inherited_AddWarning(
+            self_: Pin<&mut BOPAlgo_BuilderShape>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: HasErrors()
+        fn BOPAlgo_BuilderShape_inherited_HasErrors(self_: &BOPAlgo_BuilderShape) -> bool;
+        /// Inherited from BOPAlgo_Options: HasError()
+        fn BOPAlgo_BuilderShape_inherited_HasError(
+            self_: &BOPAlgo_BuilderShape,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings()
+        fn BOPAlgo_BuilderShape_inherited_HasWarnings(self_: &BOPAlgo_BuilderShape) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarning()
+        fn BOPAlgo_BuilderShape_inherited_HasWarning(
+            self_: &BOPAlgo_BuilderShape,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: GetReport()
+        fn BOPAlgo_BuilderShape_inherited_GetReport(
+            self_: &BOPAlgo_BuilderShape,
+        ) -> &HandleMessageReport;
+        /// Inherited from BOPAlgo_Options: ClearWarnings()
+        fn BOPAlgo_BuilderShape_inherited_ClearWarnings(self_: Pin<&mut BOPAlgo_BuilderShape>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel()
+        fn BOPAlgo_BuilderShape_inherited_SetRunParallel(
+            self_: Pin<&mut BOPAlgo_BuilderShape>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Options: RunParallel()
+        fn BOPAlgo_BuilderShape_inherited_RunParallel(self_: &BOPAlgo_BuilderShape) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+        fn BOPAlgo_BuilderShape_inherited_SetFuzzyValue(
+            self_: Pin<&mut BOPAlgo_BuilderShape>,
+            theFuzz: f64,
+        );
+        /// Inherited from BOPAlgo_Options: FuzzyValue()
+        fn BOPAlgo_BuilderShape_inherited_FuzzyValue(self_: &BOPAlgo_BuilderShape) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB()
+        fn BOPAlgo_BuilderShape_inherited_SetUseOBB(
+            self_: Pin<&mut BOPAlgo_BuilderShape>,
+            theUseOBB: bool,
+        );
+        /// Inherited from BOPAlgo_Options: UseOBB()
+        fn BOPAlgo_BuilderShape_inherited_UseOBB(self_: &BOPAlgo_BuilderShape) -> bool;
         /// ======================== BOPAlgo_ParallelAlgo ========================
         /// **Source:** `BOPAlgo_Algo.hxx`:88 - `BOPAlgo_ParallelAlgo`
         ///
@@ -38122,6 +41653,63 @@ mod ffi {
         fn BOPAlgo_ParallelAlgo_as_BOPAlgo_Options_mut(
             self_: Pin<&mut BOPAlgo_ParallelAlgo>,
         ) -> Pin<&mut BOPAlgo_Options>;
+        /// Inherited from BOPAlgo_Options: Allocator()
+        fn BOPAlgo_ParallelAlgo_inherited_Allocator(
+            self_: &BOPAlgo_ParallelAlgo,
+        ) -> &HandleNCollectionBaseAllocator;
+        /// Inherited from BOPAlgo_Options: Clear()
+        fn BOPAlgo_ParallelAlgo_inherited_Clear(self_: Pin<&mut BOPAlgo_ParallelAlgo>);
+        /// Inherited from BOPAlgo_Options: AddError()
+        fn BOPAlgo_ParallelAlgo_inherited_AddError(
+            self_: Pin<&mut BOPAlgo_ParallelAlgo>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: AddWarning()
+        fn BOPAlgo_ParallelAlgo_inherited_AddWarning(
+            self_: Pin<&mut BOPAlgo_ParallelAlgo>,
+            theAlert: &HandleMessageAlert,
+        );
+        /// Inherited from BOPAlgo_Options: HasErrors()
+        fn BOPAlgo_ParallelAlgo_inherited_HasErrors(self_: &BOPAlgo_ParallelAlgo) -> bool;
+        /// Inherited from BOPAlgo_Options: HasError()
+        fn BOPAlgo_ParallelAlgo_inherited_HasError(
+            self_: &BOPAlgo_ParallelAlgo,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings()
+        fn BOPAlgo_ParallelAlgo_inherited_HasWarnings(self_: &BOPAlgo_ParallelAlgo) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarning()
+        fn BOPAlgo_ParallelAlgo_inherited_HasWarning(
+            self_: &BOPAlgo_ParallelAlgo,
+            theType: &HandleStandardType,
+        ) -> bool;
+        /// Inherited from BOPAlgo_Options: GetReport()
+        fn BOPAlgo_ParallelAlgo_inherited_GetReport(
+            self_: &BOPAlgo_ParallelAlgo,
+        ) -> &HandleMessageReport;
+        /// Inherited from BOPAlgo_Options: ClearWarnings()
+        fn BOPAlgo_ParallelAlgo_inherited_ClearWarnings(self_: Pin<&mut BOPAlgo_ParallelAlgo>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel()
+        fn BOPAlgo_ParallelAlgo_inherited_SetRunParallel(
+            self_: Pin<&mut BOPAlgo_ParallelAlgo>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Options: RunParallel()
+        fn BOPAlgo_ParallelAlgo_inherited_RunParallel(self_: &BOPAlgo_ParallelAlgo) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+        fn BOPAlgo_ParallelAlgo_inherited_SetFuzzyValue(
+            self_: Pin<&mut BOPAlgo_ParallelAlgo>,
+            theFuzz: f64,
+        );
+        /// Inherited from BOPAlgo_Options: FuzzyValue()
+        fn BOPAlgo_ParallelAlgo_inherited_FuzzyValue(self_: &BOPAlgo_ParallelAlgo) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB()
+        fn BOPAlgo_ParallelAlgo_inherited_SetUseOBB(
+            self_: Pin<&mut BOPAlgo_ParallelAlgo>,
+            theUseOBB: bool,
+        );
+        /// Inherited from BOPAlgo_Options: UseOBB()
+        fn BOPAlgo_ParallelAlgo_inherited_UseOBB(self_: &BOPAlgo_ParallelAlgo) -> bool;
         /// ======================== BOPAlgo_PISteps ========================
         /// **Source:** `BOPAlgo_Algo.hxx`:110 - `BOPAlgo_PISteps`
         ///
@@ -38543,6 +42131,16 @@ mod ffi {
         fn BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepOffsetAPI_MakeOffsetShape>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepOffsetAPI_MakeOffsetShape_inherited_IsDone(
+            self_: &BRepOffsetAPI_MakeOffsetShape,
+        ) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepOffsetAPI_MakeOffsetShape_inherited_Check(self_: &BRepOffsetAPI_MakeOffsetShape);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepOffsetAPI_MakeOffsetShape_inherited_Shape(
+            self_: Pin<&mut BRepOffsetAPI_MakeOffsetShape>,
+        ) -> &TopoDS_Shape;
         /// ======================== BRepOffset_MakeOffset ========================
         /// **Source:** `BRepOffset_MakeOffset.hxx`:43 - `BRepOffset_MakeOffset`
         type BRepOffset_MakeOffset;
@@ -38830,6 +42428,48 @@ mod ffi {
         fn ShapeBuild_ReShape_as_BRepTools_ReShape_mut(
             self_: Pin<&mut ShapeBuild_ReShape>,
         ) -> Pin<&mut BRepTools_ReShape>;
+        /// Inherited from BRepTools_ReShape: Clear()
+        fn ShapeBuild_ReShape_inherited_Clear(self_: Pin<&mut ShapeBuild_ReShape>);
+        /// Inherited from BRepTools_ReShape: Remove()
+        fn ShapeBuild_ReShape_inherited_Remove(
+            self_: Pin<&mut ShapeBuild_ReShape>,
+            shape: &TopoDS_Shape,
+        );
+        /// Inherited from BRepTools_ReShape: Replace()
+        fn ShapeBuild_ReShape_inherited_Replace(
+            self_: Pin<&mut ShapeBuild_ReShape>,
+            shape: &TopoDS_Shape,
+            newshape: &TopoDS_Shape,
+        );
+        /// Inherited from BRepTools_ReShape: IsRecorded()
+        fn ShapeBuild_ReShape_inherited_IsRecorded(
+            self_: &ShapeBuild_ReShape,
+            shape: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepTools_ReShape: Value()
+        fn ShapeBuild_ReShape_inherited_Value(
+            self_: &ShapeBuild_ReShape,
+            shape: &TopoDS_Shape,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepTools_ReShape: ModeConsiderLocation()
+        fn ShapeBuild_ReShape_inherited_ModeConsiderLocation(
+            self_: Pin<&mut ShapeBuild_ReShape>,
+        ) -> &mut bool;
+        /// Inherited from BRepTools_ReShape: CopyVertex()
+        fn ShapeBuild_ReShape_inherited_CopyVertex(
+            self_: Pin<&mut ShapeBuild_ReShape>,
+            theV: &TopoDS_Vertex,
+            theTol: f64,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from BRepTools_ReShape: IsNewShape()
+        fn ShapeBuild_ReShape_inherited_IsNewShape(
+            self_: &ShapeBuild_ReShape,
+            theShape: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepTools_ReShape: History()
+        fn ShapeBuild_ReShape_inherited_History(
+            self_: &ShapeBuild_ReShape,
+        ) -> UniquePtr<HandleBRepToolsHistory>;
         /// ======================== BRepTools_ReShape ========================
         /// **Source:** `BRepTools_ReShape.hxx`:52 - `BRepTools_ReShape`
         ///
@@ -40151,6 +43791,92 @@ mod ffi {
         fn ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(
             self_: Pin<&mut ChFi3d_FilBuilder>,
         ) -> Pin<&mut ChFi3d_Builder>;
+        /// Inherited from ChFi3d_Builder: SetParams()
+        fn ChFi3d_FilBuilder_inherited_SetParams(
+            self_: Pin<&mut ChFi3d_FilBuilder>,
+            Tang: f64,
+            Tesp: f64,
+            T2d: f64,
+            TApp3d: f64,
+            TolApp2d: f64,
+            Fleche: f64,
+        );
+        /// Inherited from ChFi3d_Builder: Remove()
+        fn ChFi3d_FilBuilder_inherited_Remove(self_: Pin<&mut ChFi3d_FilBuilder>, E: &TopoDS_Edge);
+        /// Inherited from ChFi3d_Builder: Contains()
+        fn ChFi3d_FilBuilder_inherited_Contains(self_: &ChFi3d_FilBuilder, E: &TopoDS_Edge) -> i32;
+        /// Inherited from ChFi3d_Builder: NbElements()
+        fn ChFi3d_FilBuilder_inherited_NbElements(self_: &ChFi3d_FilBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: Length()
+        fn ChFi3d_FilBuilder_inherited_Length(self_: &ChFi3d_FilBuilder, IC: i32) -> f64;
+        /// Inherited from ChFi3d_Builder: FirstVertex()
+        fn ChFi3d_FilBuilder_inherited_FirstVertex(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: LastVertex()
+        fn ChFi3d_FilBuilder_inherited_LastVertex(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: Abscissa()
+        fn ChFi3d_FilBuilder_inherited_Abscissa(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        ) -> f64;
+        /// Inherited from ChFi3d_Builder: RelativeAbscissa()
+        fn ChFi3d_FilBuilder_inherited_RelativeAbscissa(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        ) -> f64;
+        /// Inherited from ChFi3d_Builder: ClosedAndTangent()
+        fn ChFi3d_FilBuilder_inherited_ClosedAndTangent(self_: &ChFi3d_FilBuilder, IC: i32)
+            -> bool;
+        /// Inherited from ChFi3d_Builder: Closed()
+        fn ChFi3d_FilBuilder_inherited_Closed(self_: &ChFi3d_FilBuilder, IC: i32) -> bool;
+        /// Inherited from ChFi3d_Builder: Compute()
+        fn ChFi3d_FilBuilder_inherited_Compute(self_: Pin<&mut ChFi3d_FilBuilder>);
+        /// Inherited from ChFi3d_Builder: IsDone()
+        fn ChFi3d_FilBuilder_inherited_IsDone(self_: &ChFi3d_FilBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: Shape()
+        fn ChFi3d_FilBuilder_inherited_Shape(self_: &ChFi3d_FilBuilder) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from ChFi3d_Builder: NbFaultyContours()
+        fn ChFi3d_FilBuilder_inherited_NbFaultyContours(self_: &ChFi3d_FilBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: FaultyContour()
+        fn ChFi3d_FilBuilder_inherited_FaultyContour(self_: &ChFi3d_FilBuilder, I: i32) -> i32;
+        /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
+        fn ChFi3d_FilBuilder_inherited_NbComputedSurfaces(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+        ) -> i32;
+        /// Inherited from ChFi3d_Builder: ComputedSurface()
+        fn ChFi3d_FilBuilder_inherited_ComputedSurface(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from ChFi3d_Builder: NbFaultyVertices()
+        fn ChFi3d_FilBuilder_inherited_NbFaultyVertices(self_: &ChFi3d_FilBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: FaultyVertex()
+        fn ChFi3d_FilBuilder_inherited_FaultyVertex(
+            self_: &ChFi3d_FilBuilder,
+            IV: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: HasResult()
+        fn ChFi3d_FilBuilder_inherited_HasResult(self_: &ChFi3d_FilBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: BadShape()
+        fn ChFi3d_FilBuilder_inherited_BadShape(
+            self_: &ChFi3d_FilBuilder,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from ChFi3d_Builder: Reset()
+        fn ChFi3d_FilBuilder_inherited_Reset(self_: Pin<&mut ChFi3d_FilBuilder>);
+        /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
+        fn ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(
+            self_: Pin<&mut ChFi3d_FilBuilder>,
+            Index: i32,
+        ) -> bool;
         /// ======================== ChFiDS_SecHArray1 ========================
         /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1`
         type ChFiDS_SecHArray1;
@@ -40515,6 +44241,19 @@ mod ffi {
         fn ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(
             self_: Pin<&mut ChFiDS_ElSpine>,
         ) -> Pin<&mut Adaptor3d_Curve>;
+        /// Inherited from Adaptor3d_Curve: IsClosed()
+        fn ChFiDS_ElSpine_inherited_IsClosed(self_: &ChFiDS_ElSpine) -> bool;
+        /// Inherited from Adaptor3d_Curve: DN()
+        fn ChFiDS_ElSpine_inherited_DN(self_: &ChFiDS_ElSpine, U: f64, N: i32)
+            -> UniquePtr<gp_Vec>;
+        /// Inherited from Adaptor3d_Curve: Degree()
+        fn ChFiDS_ElSpine_inherited_Degree(self_: &ChFiDS_ElSpine) -> i32;
+        /// Inherited from Adaptor3d_Curve: IsRational()
+        fn ChFiDS_ElSpine_inherited_IsRational(self_: &ChFiDS_ElSpine) -> bool;
+        /// Inherited from Adaptor3d_Curve: NbPoles()
+        fn ChFiDS_ElSpine_inherited_NbPoles(self_: &ChFiDS_ElSpine) -> i32;
+        /// Inherited from Adaptor3d_Curve: NbKnots()
+        fn ChFiDS_ElSpine_inherited_NbKnots(self_: &ChFiDS_ElSpine) -> i32;
         /// ======================== ChFiDS_SurfData ========================
         /// **Source:** `ChFiDS_SurfData.hxx`:35 - `ChFiDS_SurfData`
         ///
@@ -41081,6 +44820,103 @@ mod ffi {
         fn BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(
             self_: Pin<&mut BRepAdaptor_Curve2d>,
         ) -> Pin<&mut Geom2dAdaptor_Curve>;
+        /// Inherited from Adaptor2d_Curve2d: FirstParameter()
+        fn BRepAdaptor_Curve2d_inherited_FirstParameter(self_: &BRepAdaptor_Curve2d) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: LastParameter()
+        fn BRepAdaptor_Curve2d_inherited_LastParameter(self_: &BRepAdaptor_Curve2d) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: Trim()
+        fn BRepAdaptor_Curve2d_inherited_Trim(
+            self_: &BRepAdaptor_Curve2d,
+            First: f64,
+            Last: f64,
+            Tol: f64,
+        ) -> UniquePtr<HandleAdaptor2dCurve2d>;
+        /// Inherited from Adaptor2d_Curve2d: IsClosed()
+        fn BRepAdaptor_Curve2d_inherited_IsClosed(self_: &BRepAdaptor_Curve2d) -> bool;
+        /// Inherited from Adaptor2d_Curve2d: IsPeriodic()
+        fn BRepAdaptor_Curve2d_inherited_IsPeriodic(self_: &BRepAdaptor_Curve2d) -> bool;
+        /// Inherited from Adaptor2d_Curve2d: Period()
+        fn BRepAdaptor_Curve2d_inherited_Period(self_: &BRepAdaptor_Curve2d) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: Value()
+        fn BRepAdaptor_Curve2d_inherited_Value(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+        ) -> UniquePtr<gp_Pnt2d>;
+        /// Inherited from Adaptor2d_Curve2d: D0()
+        fn BRepAdaptor_Curve2d_inherited_D0(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+        );
+        /// Inherited from Adaptor2d_Curve2d: D1()
+        fn BRepAdaptor_Curve2d_inherited_D1(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Adaptor2d_Curve2d: D2()
+        fn BRepAdaptor_Curve2d_inherited_D2(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V1: Pin<&mut gp_Vec2d>,
+            V2: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Adaptor2d_Curve2d: D3()
+        fn BRepAdaptor_Curve2d_inherited_D3(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V1: Pin<&mut gp_Vec2d>,
+            V2: Pin<&mut gp_Vec2d>,
+            V3: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Adaptor2d_Curve2d: DN()
+        fn BRepAdaptor_Curve2d_inherited_DN(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+            N: i32,
+        ) -> UniquePtr<gp_Vec2d>;
+        /// Inherited from Adaptor2d_Curve2d: Resolution()
+        fn BRepAdaptor_Curve2d_inherited_Resolution(self_: &BRepAdaptor_Curve2d, R3d: f64) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: Line()
+        fn BRepAdaptor_Curve2d_inherited_Line(self_: &BRepAdaptor_Curve2d) -> UniquePtr<gp_Lin2d>;
+        /// Inherited from Adaptor2d_Curve2d: Circle()
+        fn BRepAdaptor_Curve2d_inherited_Circle(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> UniquePtr<gp_Circ2d>;
+        /// Inherited from Adaptor2d_Curve2d: Ellipse()
+        fn BRepAdaptor_Curve2d_inherited_Ellipse(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> UniquePtr<gp_Elips2d>;
+        /// Inherited from Adaptor2d_Curve2d: Hyperbola()
+        fn BRepAdaptor_Curve2d_inherited_Hyperbola(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> UniquePtr<gp_Hypr2d>;
+        /// Inherited from Adaptor2d_Curve2d: Parabola()
+        fn BRepAdaptor_Curve2d_inherited_Parabola(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> UniquePtr<gp_Parab2d>;
+        /// Inherited from Adaptor2d_Curve2d: Degree()
+        fn BRepAdaptor_Curve2d_inherited_Degree(self_: &BRepAdaptor_Curve2d) -> i32;
+        /// Inherited from Adaptor2d_Curve2d: IsRational()
+        fn BRepAdaptor_Curve2d_inherited_IsRational(self_: &BRepAdaptor_Curve2d) -> bool;
+        /// Inherited from Adaptor2d_Curve2d: NbPoles()
+        fn BRepAdaptor_Curve2d_inherited_NbPoles(self_: &BRepAdaptor_Curve2d) -> i32;
+        /// Inherited from Adaptor2d_Curve2d: NbKnots()
+        fn BRepAdaptor_Curve2d_inherited_NbKnots(self_: &BRepAdaptor_Curve2d) -> i32;
+        /// Inherited from Adaptor2d_Curve2d: NbSamples()
+        fn BRepAdaptor_Curve2d_inherited_NbSamples(self_: &BRepAdaptor_Curve2d) -> i32;
+        /// Inherited from Geom2dAdaptor_Curve: Reset()
+        fn BRepAdaptor_Curve2d_inherited_Reset(self_: Pin<&mut BRepAdaptor_Curve2d>);
+        /// Inherited from Geom2dAdaptor_Curve: Load()
+        fn BRepAdaptor_Curve2d_inherited_Load(
+            self_: Pin<&mut BRepAdaptor_Curve2d>,
+            theCurve: &HandleGeom2dCurve,
+        );
+        /// Inherited from Geom2dAdaptor_Curve: Curve()
+        fn BRepAdaptor_Curve2d_inherited_Curve(self_: &BRepAdaptor_Curve2d) -> &HandleGeom2dCurve;
         /// ======================== ChFiDS_Map ========================
         /// **Source:** `ChFiDS_Map.hxx`:31 - `ChFiDS_Map`
         ///
@@ -41278,6 +45114,87 @@ mod ffi {
         fn ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(
             self_: Pin<&mut ChFi3d_ChBuilder>,
         ) -> Pin<&mut ChFi3d_Builder>;
+        /// Inherited from ChFi3d_Builder: SetParams()
+        fn ChFi3d_ChBuilder_inherited_SetParams(
+            self_: Pin<&mut ChFi3d_ChBuilder>,
+            Tang: f64,
+            Tesp: f64,
+            T2d: f64,
+            TApp3d: f64,
+            TolApp2d: f64,
+            Fleche: f64,
+        );
+        /// Inherited from ChFi3d_Builder: Remove()
+        fn ChFi3d_ChBuilder_inherited_Remove(self_: Pin<&mut ChFi3d_ChBuilder>, E: &TopoDS_Edge);
+        /// Inherited from ChFi3d_Builder: Contains()
+        fn ChFi3d_ChBuilder_inherited_Contains(self_: &ChFi3d_ChBuilder, E: &TopoDS_Edge) -> i32;
+        /// Inherited from ChFi3d_Builder: NbElements()
+        fn ChFi3d_ChBuilder_inherited_NbElements(self_: &ChFi3d_ChBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: Length()
+        fn ChFi3d_ChBuilder_inherited_Length(self_: &ChFi3d_ChBuilder, IC: i32) -> f64;
+        /// Inherited from ChFi3d_Builder: FirstVertex()
+        fn ChFi3d_ChBuilder_inherited_FirstVertex(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: LastVertex()
+        fn ChFi3d_ChBuilder_inherited_LastVertex(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: Abscissa()
+        fn ChFi3d_ChBuilder_inherited_Abscissa(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        ) -> f64;
+        /// Inherited from ChFi3d_Builder: RelativeAbscissa()
+        fn ChFi3d_ChBuilder_inherited_RelativeAbscissa(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        ) -> f64;
+        /// Inherited from ChFi3d_Builder: ClosedAndTangent()
+        fn ChFi3d_ChBuilder_inherited_ClosedAndTangent(self_: &ChFi3d_ChBuilder, IC: i32) -> bool;
+        /// Inherited from ChFi3d_Builder: Closed()
+        fn ChFi3d_ChBuilder_inherited_Closed(self_: &ChFi3d_ChBuilder, IC: i32) -> bool;
+        /// Inherited from ChFi3d_Builder: Compute()
+        fn ChFi3d_ChBuilder_inherited_Compute(self_: Pin<&mut ChFi3d_ChBuilder>);
+        /// Inherited from ChFi3d_Builder: IsDone()
+        fn ChFi3d_ChBuilder_inherited_IsDone(self_: &ChFi3d_ChBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: Shape()
+        fn ChFi3d_ChBuilder_inherited_Shape(self_: &ChFi3d_ChBuilder) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from ChFi3d_Builder: NbFaultyContours()
+        fn ChFi3d_ChBuilder_inherited_NbFaultyContours(self_: &ChFi3d_ChBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: FaultyContour()
+        fn ChFi3d_ChBuilder_inherited_FaultyContour(self_: &ChFi3d_ChBuilder, I: i32) -> i32;
+        /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
+        fn ChFi3d_ChBuilder_inherited_NbComputedSurfaces(self_: &ChFi3d_ChBuilder, IC: i32) -> i32;
+        /// Inherited from ChFi3d_Builder: ComputedSurface()
+        fn ChFi3d_ChBuilder_inherited_ComputedSurface(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from ChFi3d_Builder: NbFaultyVertices()
+        fn ChFi3d_ChBuilder_inherited_NbFaultyVertices(self_: &ChFi3d_ChBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: FaultyVertex()
+        fn ChFi3d_ChBuilder_inherited_FaultyVertex(
+            self_: &ChFi3d_ChBuilder,
+            IV: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: HasResult()
+        fn ChFi3d_ChBuilder_inherited_HasResult(self_: &ChFi3d_ChBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: BadShape()
+        fn ChFi3d_ChBuilder_inherited_BadShape(self_: &ChFi3d_ChBuilder)
+            -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from ChFi3d_Builder: Reset()
+        fn ChFi3d_ChBuilder_inherited_Reset(self_: Pin<&mut ChFi3d_ChBuilder>);
+        /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
+        fn ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(
+            self_: Pin<&mut ChFi3d_ChBuilder>,
+            Index: i32,
+        ) -> bool;
         /// ======================== BRepPrim_Torus ========================
         /// **Source:** `BRepPrim_Torus.hxx`:30 - `BRepPrim_Torus`
         ///
@@ -41326,6 +45243,125 @@ mod ffi {
         fn BRepPrim_Torus_as_BRepPrim_Revolution_mut(
             self_: Pin<&mut BRepPrim_Torus>,
         ) -> Pin<&mut BRepPrim_Revolution>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianOffset()
+        fn BRepPrim_Torus_inherited_SetMeridianOffset(
+            self_: Pin<&mut BRepPrim_Torus>,
+            MeridianOffset: f64,
+        );
+        /// Inherited from BRepPrim_OneAxis: Axes()
+        fn BRepPrim_Torus_inherited_Axes(self_: &BRepPrim_Torus) -> &gp_Ax2;
+        /// Inherited from BRepPrim_OneAxis: Angle()
+        fn BRepPrim_Torus_inherited_Angle(self_: &BRepPrim_Torus) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMin()
+        fn BRepPrim_Torus_inherited_VMin(self_: &BRepPrim_Torus) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMax()
+        fn BRepPrim_Torus_inherited_VMax(self_: &BRepPrim_Torus) -> f64;
+        /// Inherited from BRepPrim_OneAxis: MakeEmptyMeridianEdge()
+        fn BRepPrim_Torus_inherited_MakeEmptyMeridianEdge(
+            self_: &BRepPrim_Torus,
+            Ang: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianPCurve()
+        fn BRepPrim_Torus_inherited_SetMeridianPCurve(
+            self_: &BRepPrim_Torus,
+            E: Pin<&mut TopoDS_Edge>,
+            F: &TopoDS_Face,
+        );
+        /// Inherited from BRepPrim_OneAxis: MeridianValue()
+        fn BRepPrim_Torus_inherited_MeridianValue(
+            self_: &BRepPrim_Torus,
+            V: f64,
+        ) -> UniquePtr<gp_Pnt2d>;
+        /// Inherited from BRepPrim_OneAxis: MeridianOnAxis()
+        fn BRepPrim_Torus_inherited_MeridianOnAxis(self_: &BRepPrim_Torus, V: f64) -> bool;
+        /// Inherited from BRepPrim_OneAxis: MeridianClosed()
+        fn BRepPrim_Torus_inherited_MeridianClosed(self_: &BRepPrim_Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMaxInfinite()
+        fn BRepPrim_Torus_inherited_VMaxInfinite(self_: &BRepPrim_Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMinInfinite()
+        fn BRepPrim_Torus_inherited_VMinInfinite(self_: &BRepPrim_Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasTop()
+        fn BRepPrim_Torus_inherited_HasTop(self_: &BRepPrim_Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasBottom()
+        fn BRepPrim_Torus_inherited_HasBottom(self_: &BRepPrim_Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasSides()
+        fn BRepPrim_Torus_inherited_HasSides(self_: &BRepPrim_Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: Shell()
+        fn BRepPrim_Torus_inherited_Shell(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Shell;
+        /// Inherited from BRepPrim_OneAxis: LateralFace()
+        fn BRepPrim_Torus_inherited_LateralFace(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: TopFace()
+        fn BRepPrim_Torus_inherited_TopFace(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: BottomFace()
+        fn BRepPrim_Torus_inherited_BottomFace(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: StartFace()
+        fn BRepPrim_Torus_inherited_StartFace(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: EndFace()
+        fn BRepPrim_Torus_inherited_EndFace(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: LateralWire()
+        fn BRepPrim_Torus_inherited_LateralWire(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: LateralStartWire()
+        fn BRepPrim_Torus_inherited_LateralStartWire(
+            self_: Pin<&mut BRepPrim_Torus>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: LateralEndWire()
+        fn BRepPrim_Torus_inherited_LateralEndWire(self_: Pin<&mut BRepPrim_Torus>)
+            -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: TopWire()
+        fn BRepPrim_Torus_inherited_TopWire(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: BottomWire()
+        fn BRepPrim_Torus_inherited_BottomWire(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: StartWire()
+        fn BRepPrim_Torus_inherited_StartWire(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisStartWire()
+        fn BRepPrim_Torus_inherited_AxisStartWire(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: EndWire()
+        fn BRepPrim_Torus_inherited_EndWire(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisEndWire()
+        fn BRepPrim_Torus_inherited_AxisEndWire(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisEdge()
+        fn BRepPrim_Torus_inherited_AxisEdge(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartEdge()
+        fn BRepPrim_Torus_inherited_StartEdge(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndEdge()
+        fn BRepPrim_Torus_inherited_EndEdge(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartTopEdge()
+        fn BRepPrim_Torus_inherited_StartTopEdge(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartBottomEdge()
+        fn BRepPrim_Torus_inherited_StartBottomEdge(
+            self_: Pin<&mut BRepPrim_Torus>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndTopEdge()
+        fn BRepPrim_Torus_inherited_EndTopEdge(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndBottomEdge()
+        fn BRepPrim_Torus_inherited_EndBottomEdge(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: TopEdge()
+        fn BRepPrim_Torus_inherited_TopEdge(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: BottomEdge()
+        fn BRepPrim_Torus_inherited_BottomEdge(self_: Pin<&mut BRepPrim_Torus>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: AxisTopVertex()
+        fn BRepPrim_Torus_inherited_AxisTopVertex(
+            self_: Pin<&mut BRepPrim_Torus>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: AxisBottomVertex()
+        fn BRepPrim_Torus_inherited_AxisBottomVertex(
+            self_: Pin<&mut BRepPrim_Torus>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: TopStartVertex()
+        fn BRepPrim_Torus_inherited_TopStartVertex(
+            self_: Pin<&mut BRepPrim_Torus>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: TopEndVertex()
+        fn BRepPrim_Torus_inherited_TopEndVertex(self_: Pin<&mut BRepPrim_Torus>)
+            -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: BottomStartVertex()
+        fn BRepPrim_Torus_inherited_BottomStartVertex(
+            self_: Pin<&mut BRepPrim_Torus>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: BottomEndVertex()
+        fn BRepPrim_Torus_inherited_BottomEndVertex(
+            self_: Pin<&mut BRepPrim_Torus>,
+        ) -> &TopoDS_Vertex;
         /// ======================== BRepPrimAPI_MakeOneAxis ========================
         /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:30 - `BRepPrimAPI_MakeOneAxis`
         ///
@@ -41368,6 +45404,19 @@ mod ffi {
         fn BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepPrimAPI_MakeOneAxis>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepPrimAPI_MakeOneAxis_inherited_IsDone(self_: &BRepPrimAPI_MakeOneAxis) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepPrimAPI_MakeOneAxis_inherited_Check(self_: &BRepPrimAPI_MakeOneAxis);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepPrimAPI_MakeOneAxis_inherited_Shape(
+            self_: Pin<&mut BRepPrimAPI_MakeOneAxis>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepPrimAPI_MakeOneAxis_inherited_IsDeleted(
+            self_: Pin<&mut BRepPrimAPI_MakeOneAxis>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepPrim_Revolution ========================
         /// **Source:** `BRepPrim_Revolution.hxx`:35 - `BRepPrim_Revolution`
         ///
@@ -41429,6 +45478,156 @@ mod ffi {
         fn BRepPrim_Revolution_as_BRepPrim_OneAxis_mut(
             self_: Pin<&mut BRepPrim_Revolution>,
         ) -> Pin<&mut BRepPrim_OneAxis>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianOffset()
+        fn BRepPrim_Revolution_inherited_SetMeridianOffset(
+            self_: Pin<&mut BRepPrim_Revolution>,
+            MeridianOffset: f64,
+        );
+        /// Inherited from BRepPrim_OneAxis: Axes()
+        fn BRepPrim_Revolution_inherited_Axes(self_: &BRepPrim_Revolution) -> &gp_Ax2;
+        /// Inherited from BRepPrim_OneAxis: Angle()
+        fn BRepPrim_Revolution_inherited_Angle(self_: &BRepPrim_Revolution) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMin()
+        fn BRepPrim_Revolution_inherited_VMin(self_: &BRepPrim_Revolution) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMax()
+        fn BRepPrim_Revolution_inherited_VMax(self_: &BRepPrim_Revolution) -> f64;
+        /// Inherited from BRepPrim_OneAxis: MeridianOnAxis()
+        fn BRepPrim_Revolution_inherited_MeridianOnAxis(
+            self_: &BRepPrim_Revolution,
+            V: f64,
+        ) -> bool;
+        /// Inherited from BRepPrim_OneAxis: MeridianClosed()
+        fn BRepPrim_Revolution_inherited_MeridianClosed(self_: &BRepPrim_Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMaxInfinite()
+        fn BRepPrim_Revolution_inherited_VMaxInfinite(self_: &BRepPrim_Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMinInfinite()
+        fn BRepPrim_Revolution_inherited_VMinInfinite(self_: &BRepPrim_Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasTop()
+        fn BRepPrim_Revolution_inherited_HasTop(self_: &BRepPrim_Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasBottom()
+        fn BRepPrim_Revolution_inherited_HasBottom(self_: &BRepPrim_Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasSides()
+        fn BRepPrim_Revolution_inherited_HasSides(self_: &BRepPrim_Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: Shell()
+        fn BRepPrim_Revolution_inherited_Shell(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Shell;
+        /// Inherited from BRepPrim_OneAxis: LateralFace()
+        fn BRepPrim_Revolution_inherited_LateralFace(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: TopFace()
+        fn BRepPrim_Revolution_inherited_TopFace(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: BottomFace()
+        fn BRepPrim_Revolution_inherited_BottomFace(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: StartFace()
+        fn BRepPrim_Revolution_inherited_StartFace(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: EndFace()
+        fn BRepPrim_Revolution_inherited_EndFace(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: LateralWire()
+        fn BRepPrim_Revolution_inherited_LateralWire(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: LateralStartWire()
+        fn BRepPrim_Revolution_inherited_LateralStartWire(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: LateralEndWire()
+        fn BRepPrim_Revolution_inherited_LateralEndWire(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: TopWire()
+        fn BRepPrim_Revolution_inherited_TopWire(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: BottomWire()
+        fn BRepPrim_Revolution_inherited_BottomWire(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: StartWire()
+        fn BRepPrim_Revolution_inherited_StartWire(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisStartWire()
+        fn BRepPrim_Revolution_inherited_AxisStartWire(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: EndWire()
+        fn BRepPrim_Revolution_inherited_EndWire(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisEndWire()
+        fn BRepPrim_Revolution_inherited_AxisEndWire(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisEdge()
+        fn BRepPrim_Revolution_inherited_AxisEdge(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartEdge()
+        fn BRepPrim_Revolution_inherited_StartEdge(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndEdge()
+        fn BRepPrim_Revolution_inherited_EndEdge(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartTopEdge()
+        fn BRepPrim_Revolution_inherited_StartTopEdge(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartBottomEdge()
+        fn BRepPrim_Revolution_inherited_StartBottomEdge(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndTopEdge()
+        fn BRepPrim_Revolution_inherited_EndTopEdge(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndBottomEdge()
+        fn BRepPrim_Revolution_inherited_EndBottomEdge(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: TopEdge()
+        fn BRepPrim_Revolution_inherited_TopEdge(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: BottomEdge()
+        fn BRepPrim_Revolution_inherited_BottomEdge(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: AxisTopVertex()
+        fn BRepPrim_Revolution_inherited_AxisTopVertex(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: AxisBottomVertex()
+        fn BRepPrim_Revolution_inherited_AxisBottomVertex(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: TopStartVertex()
+        fn BRepPrim_Revolution_inherited_TopStartVertex(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: TopEndVertex()
+        fn BRepPrim_Revolution_inherited_TopEndVertex(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: BottomStartVertex()
+        fn BRepPrim_Revolution_inherited_BottomStartVertex(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: BottomEndVertex()
+        fn BRepPrim_Revolution_inherited_BottomEndVertex(
+            self_: Pin<&mut BRepPrim_Revolution>,
+        ) -> &TopoDS_Vertex;
         /// ======================== BRepPrim_OneAxis ========================
         /// **Source:** `BRepPrim_OneAxis.hxx`:63 - `BRepPrim_OneAxis`
         ///
@@ -41975,6 +46174,132 @@ mod ffi {
         fn BRepPrim_Sphere_as_BRepPrim_Revolution_mut(
             self_: Pin<&mut BRepPrim_Sphere>,
         ) -> Pin<&mut BRepPrim_Revolution>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianOffset()
+        fn BRepPrim_Sphere_inherited_SetMeridianOffset(
+            self_: Pin<&mut BRepPrim_Sphere>,
+            MeridianOffset: f64,
+        );
+        /// Inherited from BRepPrim_OneAxis: Axes()
+        fn BRepPrim_Sphere_inherited_Axes(self_: &BRepPrim_Sphere) -> &gp_Ax2;
+        /// Inherited from BRepPrim_OneAxis: Angle()
+        fn BRepPrim_Sphere_inherited_Angle(self_: &BRepPrim_Sphere) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMin()
+        fn BRepPrim_Sphere_inherited_VMin(self_: &BRepPrim_Sphere) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMax()
+        fn BRepPrim_Sphere_inherited_VMax(self_: &BRepPrim_Sphere) -> f64;
+        /// Inherited from BRepPrim_OneAxis: MakeEmptyMeridianEdge()
+        fn BRepPrim_Sphere_inherited_MakeEmptyMeridianEdge(
+            self_: &BRepPrim_Sphere,
+            Ang: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianPCurve()
+        fn BRepPrim_Sphere_inherited_SetMeridianPCurve(
+            self_: &BRepPrim_Sphere,
+            E: Pin<&mut TopoDS_Edge>,
+            F: &TopoDS_Face,
+        );
+        /// Inherited from BRepPrim_OneAxis: MeridianValue()
+        fn BRepPrim_Sphere_inherited_MeridianValue(
+            self_: &BRepPrim_Sphere,
+            V: f64,
+        ) -> UniquePtr<gp_Pnt2d>;
+        /// Inherited from BRepPrim_OneAxis: MeridianOnAxis()
+        fn BRepPrim_Sphere_inherited_MeridianOnAxis(self_: &BRepPrim_Sphere, V: f64) -> bool;
+        /// Inherited from BRepPrim_OneAxis: MeridianClosed()
+        fn BRepPrim_Sphere_inherited_MeridianClosed(self_: &BRepPrim_Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMaxInfinite()
+        fn BRepPrim_Sphere_inherited_VMaxInfinite(self_: &BRepPrim_Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMinInfinite()
+        fn BRepPrim_Sphere_inherited_VMinInfinite(self_: &BRepPrim_Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasTop()
+        fn BRepPrim_Sphere_inherited_HasTop(self_: &BRepPrim_Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasBottom()
+        fn BRepPrim_Sphere_inherited_HasBottom(self_: &BRepPrim_Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasSides()
+        fn BRepPrim_Sphere_inherited_HasSides(self_: &BRepPrim_Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: Shell()
+        fn BRepPrim_Sphere_inherited_Shell(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Shell;
+        /// Inherited from BRepPrim_OneAxis: LateralFace()
+        fn BRepPrim_Sphere_inherited_LateralFace(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: TopFace()
+        fn BRepPrim_Sphere_inherited_TopFace(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: BottomFace()
+        fn BRepPrim_Sphere_inherited_BottomFace(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: StartFace()
+        fn BRepPrim_Sphere_inherited_StartFace(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: EndFace()
+        fn BRepPrim_Sphere_inherited_EndFace(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: LateralWire()
+        fn BRepPrim_Sphere_inherited_LateralWire(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: LateralStartWire()
+        fn BRepPrim_Sphere_inherited_LateralStartWire(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: LateralEndWire()
+        fn BRepPrim_Sphere_inherited_LateralEndWire(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: TopWire()
+        fn BRepPrim_Sphere_inherited_TopWire(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: BottomWire()
+        fn BRepPrim_Sphere_inherited_BottomWire(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: StartWire()
+        fn BRepPrim_Sphere_inherited_StartWire(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisStartWire()
+        fn BRepPrim_Sphere_inherited_AxisStartWire(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: EndWire()
+        fn BRepPrim_Sphere_inherited_EndWire(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisEndWire()
+        fn BRepPrim_Sphere_inherited_AxisEndWire(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisEdge()
+        fn BRepPrim_Sphere_inherited_AxisEdge(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartEdge()
+        fn BRepPrim_Sphere_inherited_StartEdge(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndEdge()
+        fn BRepPrim_Sphere_inherited_EndEdge(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartTopEdge()
+        fn BRepPrim_Sphere_inherited_StartTopEdge(self_: Pin<&mut BRepPrim_Sphere>)
+            -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartBottomEdge()
+        fn BRepPrim_Sphere_inherited_StartBottomEdge(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndTopEdge()
+        fn BRepPrim_Sphere_inherited_EndTopEdge(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndBottomEdge()
+        fn BRepPrim_Sphere_inherited_EndBottomEdge(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: TopEdge()
+        fn BRepPrim_Sphere_inherited_TopEdge(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: BottomEdge()
+        fn BRepPrim_Sphere_inherited_BottomEdge(self_: Pin<&mut BRepPrim_Sphere>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: AxisTopVertex()
+        fn BRepPrim_Sphere_inherited_AxisTopVertex(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: AxisBottomVertex()
+        fn BRepPrim_Sphere_inherited_AxisBottomVertex(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: TopStartVertex()
+        fn BRepPrim_Sphere_inherited_TopStartVertex(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: TopEndVertex()
+        fn BRepPrim_Sphere_inherited_TopEndVertex(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: BottomStartVertex()
+        fn BRepPrim_Sphere_inherited_BottomStartVertex(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: BottomEndVertex()
+        fn BRepPrim_Sphere_inherited_BottomEndVertex(
+            self_: Pin<&mut BRepPrim_Sphere>,
+        ) -> &TopoDS_Vertex;
         /// ======================== BRepSweep_Revol ========================
         /// **Source:** `BRepSweep_Revol.hxx`:33 - `BRepSweep_Revol`
         ///
@@ -42247,6 +46572,46 @@ mod ffi {
         fn BRepSweep_Rotation_as_BRepSweep_Trsf_mut(
             self_: Pin<&mut BRepSweep_Rotation>,
         ) -> Pin<&mut BRepSweep_Trsf>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: SetContinuity()
+        fn BRepSweep_Rotation_inherited_SetContinuity(
+            self_: Pin<&mut BRepSweep_Rotation>,
+            aGenS: &TopoDS_Shape,
+            aDirS: &Sweep_NumShape,
+        );
+        /// Inherited from BRepSweep_NumLinearRegularSweep: Shape()
+        fn BRepSweep_Rotation_inherited_Shape(
+            self_: Pin<&mut BRepSweep_Rotation>,
+            aGenS: &TopoDS_Shape,
+            aDirS: &Sweep_NumShape,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: IsUsed()
+        fn BRepSweep_Rotation_inherited_IsUsed(
+            self_: &BRepSweep_Rotation,
+            aGenS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: GenIsUsed()
+        fn BRepSweep_Rotation_inherited_GenIsUsed(
+            self_: &BRepSweep_Rotation,
+            theS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: FirstShape()
+        fn BRepSweep_Rotation_inherited_FirstShape(
+            self_: Pin<&mut BRepSweep_Rotation>,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: LastShape()
+        fn BRepSweep_Rotation_inherited_LastShape(
+            self_: Pin<&mut BRepSweep_Rotation>,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: Closed()
+        fn BRepSweep_Rotation_inherited_Closed(self_: &BRepSweep_Rotation) -> bool;
+        /// Inherited from BRepSweep_Trsf: Init()
+        fn BRepSweep_Rotation_inherited_Init(self_: Pin<&mut BRepSweep_Rotation>);
+        /// Inherited from BRepSweep_Trsf: Process()
+        fn BRepSweep_Rotation_inherited_Process(
+            self_: Pin<&mut BRepSweep_Rotation>,
+            aGenS: &TopoDS_Shape,
+            aDirV: &Sweep_NumShape,
+        ) -> bool;
         /// ======================== BRepSweep_Trsf ========================
         /// **Source:** `BRepSweep_Trsf.hxx`:43 - `BRepSweep_Trsf`
         ///
@@ -42438,6 +46803,31 @@ mod ffi {
         fn BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep_mut(
             self_: Pin<&mut BRepSweep_Trsf>,
         ) -> Pin<&mut BRepSweep_NumLinearRegularSweep>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: SplitShell()
+        fn BRepSweep_Trsf_inherited_SplitShell(
+            self_: &BRepSweep_Trsf,
+            aNewShape: &TopoDS_Shape,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: Shape()
+        fn BRepSweep_Trsf_inherited_Shape(
+            self_: Pin<&mut BRepSweep_Trsf>,
+            aGenS: &TopoDS_Shape,
+            aDirS: &Sweep_NumShape,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: IsUsed()
+        fn BRepSweep_Trsf_inherited_IsUsed(self_: &BRepSweep_Trsf, aGenS: &TopoDS_Shape) -> bool;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: GenIsUsed()
+        fn BRepSweep_Trsf_inherited_GenIsUsed(self_: &BRepSweep_Trsf, theS: &TopoDS_Shape) -> bool;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: FirstShape()
+        fn BRepSweep_Trsf_inherited_FirstShape(
+            self_: Pin<&mut BRepSweep_Trsf>,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: LastShape()
+        fn BRepSweep_Trsf_inherited_LastShape(
+            self_: Pin<&mut BRepSweep_Trsf>,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: Closed()
+        fn BRepSweep_Trsf_inherited_Closed(self_: &BRepSweep_Trsf) -> bool;
         /// ======================== BRepSweep_NumLinearRegularSweep ========================
         /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:68 - `BRepSweep_NumLinearRegularSweep`
         ///
@@ -43122,6 +47512,51 @@ mod ffi {
         fn BRepSweep_Translation_as_BRepSweep_Trsf_mut(
             self_: Pin<&mut BRepSweep_Translation>,
         ) -> Pin<&mut BRepSweep_Trsf>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: SplitShell()
+        fn BRepSweep_Translation_inherited_SplitShell(
+            self_: &BRepSweep_Translation,
+            aNewShape: &TopoDS_Shape,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: SetContinuity()
+        fn BRepSweep_Translation_inherited_SetContinuity(
+            self_: Pin<&mut BRepSweep_Translation>,
+            aGenS: &TopoDS_Shape,
+            aDirS: &Sweep_NumShape,
+        );
+        /// Inherited from BRepSweep_NumLinearRegularSweep: Shape()
+        fn BRepSweep_Translation_inherited_Shape(
+            self_: Pin<&mut BRepSweep_Translation>,
+            aGenS: &TopoDS_Shape,
+            aDirS: &Sweep_NumShape,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: IsUsed()
+        fn BRepSweep_Translation_inherited_IsUsed(
+            self_: &BRepSweep_Translation,
+            aGenS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: GenIsUsed()
+        fn BRepSweep_Translation_inherited_GenIsUsed(
+            self_: &BRepSweep_Translation,
+            theS: &TopoDS_Shape,
+        ) -> bool;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: FirstShape()
+        fn BRepSweep_Translation_inherited_FirstShape(
+            self_: Pin<&mut BRepSweep_Translation>,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: LastShape()
+        fn BRepSweep_Translation_inherited_LastShape(
+            self_: Pin<&mut BRepSweep_Translation>,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: Closed()
+        fn BRepSweep_Translation_inherited_Closed(self_: &BRepSweep_Translation) -> bool;
+        /// Inherited from BRepSweep_Trsf: Init()
+        fn BRepSweep_Translation_inherited_Init(self_: Pin<&mut BRepSweep_Translation>);
+        /// Inherited from BRepSweep_Trsf: Process()
+        fn BRepSweep_Translation_inherited_Process(
+            self_: Pin<&mut BRepSweep_Translation>,
+            aGenS: &TopoDS_Shape,
+            aDirV: &Sweep_NumShape,
+        ) -> bool;
         /// ======================== BRepPrim_Cylinder ========================
         /// **Source:** `BRepPrim_Cylinder.hxx`:30 - `BRepPrim_Cylinder`
         ///
@@ -43197,6 +47632,154 @@ mod ffi {
         fn BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(
             self_: Pin<&mut BRepPrim_Cylinder>,
         ) -> Pin<&mut BRepPrim_Revolution>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianOffset()
+        fn BRepPrim_Cylinder_inherited_SetMeridianOffset(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+            MeridianOffset: f64,
+        );
+        /// Inherited from BRepPrim_OneAxis: Axes()
+        fn BRepPrim_Cylinder_inherited_Axes(self_: &BRepPrim_Cylinder) -> &gp_Ax2;
+        /// Inherited from BRepPrim_OneAxis: Angle()
+        fn BRepPrim_Cylinder_inherited_Angle(self_: &BRepPrim_Cylinder) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMin()
+        fn BRepPrim_Cylinder_inherited_VMin(self_: &BRepPrim_Cylinder) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMax()
+        fn BRepPrim_Cylinder_inherited_VMax(self_: &BRepPrim_Cylinder) -> f64;
+        /// Inherited from BRepPrim_OneAxis: MakeEmptyMeridianEdge()
+        fn BRepPrim_Cylinder_inherited_MakeEmptyMeridianEdge(
+            self_: &BRepPrim_Cylinder,
+            Ang: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianPCurve()
+        fn BRepPrim_Cylinder_inherited_SetMeridianPCurve(
+            self_: &BRepPrim_Cylinder,
+            E: Pin<&mut TopoDS_Edge>,
+            F: &TopoDS_Face,
+        );
+        /// Inherited from BRepPrim_OneAxis: MeridianValue()
+        fn BRepPrim_Cylinder_inherited_MeridianValue(
+            self_: &BRepPrim_Cylinder,
+            V: f64,
+        ) -> UniquePtr<gp_Pnt2d>;
+        /// Inherited from BRepPrim_OneAxis: MeridianOnAxis()
+        fn BRepPrim_Cylinder_inherited_MeridianOnAxis(self_: &BRepPrim_Cylinder, V: f64) -> bool;
+        /// Inherited from BRepPrim_OneAxis: MeridianClosed()
+        fn BRepPrim_Cylinder_inherited_MeridianClosed(self_: &BRepPrim_Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMaxInfinite()
+        fn BRepPrim_Cylinder_inherited_VMaxInfinite(self_: &BRepPrim_Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMinInfinite()
+        fn BRepPrim_Cylinder_inherited_VMinInfinite(self_: &BRepPrim_Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasTop()
+        fn BRepPrim_Cylinder_inherited_HasTop(self_: &BRepPrim_Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasBottom()
+        fn BRepPrim_Cylinder_inherited_HasBottom(self_: &BRepPrim_Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasSides()
+        fn BRepPrim_Cylinder_inherited_HasSides(self_: &BRepPrim_Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: Shell()
+        fn BRepPrim_Cylinder_inherited_Shell(self_: Pin<&mut BRepPrim_Cylinder>) -> &TopoDS_Shell;
+        /// Inherited from BRepPrim_OneAxis: LateralFace()
+        fn BRepPrim_Cylinder_inherited_LateralFace(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: TopFace()
+        fn BRepPrim_Cylinder_inherited_TopFace(self_: Pin<&mut BRepPrim_Cylinder>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: BottomFace()
+        fn BRepPrim_Cylinder_inherited_BottomFace(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: StartFace()
+        fn BRepPrim_Cylinder_inherited_StartFace(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: EndFace()
+        fn BRepPrim_Cylinder_inherited_EndFace(self_: Pin<&mut BRepPrim_Cylinder>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: LateralWire()
+        fn BRepPrim_Cylinder_inherited_LateralWire(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: LateralStartWire()
+        fn BRepPrim_Cylinder_inherited_LateralStartWire(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: LateralEndWire()
+        fn BRepPrim_Cylinder_inherited_LateralEndWire(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: TopWire()
+        fn BRepPrim_Cylinder_inherited_TopWire(self_: Pin<&mut BRepPrim_Cylinder>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: BottomWire()
+        fn BRepPrim_Cylinder_inherited_BottomWire(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: StartWire()
+        fn BRepPrim_Cylinder_inherited_StartWire(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisStartWire()
+        fn BRepPrim_Cylinder_inherited_AxisStartWire(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: EndWire()
+        fn BRepPrim_Cylinder_inherited_EndWire(self_: Pin<&mut BRepPrim_Cylinder>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisEndWire()
+        fn BRepPrim_Cylinder_inherited_AxisEndWire(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisEdge()
+        fn BRepPrim_Cylinder_inherited_AxisEdge(self_: Pin<&mut BRepPrim_Cylinder>)
+            -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartEdge()
+        fn BRepPrim_Cylinder_inherited_StartEdge(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndEdge()
+        fn BRepPrim_Cylinder_inherited_EndEdge(self_: Pin<&mut BRepPrim_Cylinder>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartTopEdge()
+        fn BRepPrim_Cylinder_inherited_StartTopEdge(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartBottomEdge()
+        fn BRepPrim_Cylinder_inherited_StartBottomEdge(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndTopEdge()
+        fn BRepPrim_Cylinder_inherited_EndTopEdge(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndBottomEdge()
+        fn BRepPrim_Cylinder_inherited_EndBottomEdge(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: TopEdge()
+        fn BRepPrim_Cylinder_inherited_TopEdge(self_: Pin<&mut BRepPrim_Cylinder>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: BottomEdge()
+        fn BRepPrim_Cylinder_inherited_BottomEdge(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: AxisTopVertex()
+        fn BRepPrim_Cylinder_inherited_AxisTopVertex(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: AxisBottomVertex()
+        fn BRepPrim_Cylinder_inherited_AxisBottomVertex(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: TopStartVertex()
+        fn BRepPrim_Cylinder_inherited_TopStartVertex(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: TopEndVertex()
+        fn BRepPrim_Cylinder_inherited_TopEndVertex(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: BottomStartVertex()
+        fn BRepPrim_Cylinder_inherited_BottomStartVertex(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: BottomEndVertex()
+        fn BRepPrim_Cylinder_inherited_BottomEndVertex(
+            self_: Pin<&mut BRepPrim_Cylinder>,
+        ) -> &TopoDS_Vertex;
         /// ======================== BRepPrim_Cone ========================
         /// **Source:** `BRepPrim_Cone.hxx`:30 - `BRepPrim_Cone`
         ///
@@ -43281,6 +47864,117 @@ mod ffi {
         fn BRepPrim_Cone_as_BRepPrim_Revolution_mut(
             self_: Pin<&mut BRepPrim_Cone>,
         ) -> Pin<&mut BRepPrim_Revolution>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianOffset()
+        fn BRepPrim_Cone_inherited_SetMeridianOffset(
+            self_: Pin<&mut BRepPrim_Cone>,
+            MeridianOffset: f64,
+        );
+        /// Inherited from BRepPrim_OneAxis: Axes()
+        fn BRepPrim_Cone_inherited_Axes(self_: &BRepPrim_Cone) -> &gp_Ax2;
+        /// Inherited from BRepPrim_OneAxis: Angle()
+        fn BRepPrim_Cone_inherited_Angle(self_: &BRepPrim_Cone) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMin()
+        fn BRepPrim_Cone_inherited_VMin(self_: &BRepPrim_Cone) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMax()
+        fn BRepPrim_Cone_inherited_VMax(self_: &BRepPrim_Cone) -> f64;
+        /// Inherited from BRepPrim_OneAxis: MakeEmptyMeridianEdge()
+        fn BRepPrim_Cone_inherited_MakeEmptyMeridianEdge(
+            self_: &BRepPrim_Cone,
+            Ang: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianPCurve()
+        fn BRepPrim_Cone_inherited_SetMeridianPCurve(
+            self_: &BRepPrim_Cone,
+            E: Pin<&mut TopoDS_Edge>,
+            F: &TopoDS_Face,
+        );
+        /// Inherited from BRepPrim_OneAxis: MeridianValue()
+        fn BRepPrim_Cone_inherited_MeridianValue(
+            self_: &BRepPrim_Cone,
+            V: f64,
+        ) -> UniquePtr<gp_Pnt2d>;
+        /// Inherited from BRepPrim_OneAxis: MeridianOnAxis()
+        fn BRepPrim_Cone_inherited_MeridianOnAxis(self_: &BRepPrim_Cone, V: f64) -> bool;
+        /// Inherited from BRepPrim_OneAxis: MeridianClosed()
+        fn BRepPrim_Cone_inherited_MeridianClosed(self_: &BRepPrim_Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMaxInfinite()
+        fn BRepPrim_Cone_inherited_VMaxInfinite(self_: &BRepPrim_Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMinInfinite()
+        fn BRepPrim_Cone_inherited_VMinInfinite(self_: &BRepPrim_Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasTop()
+        fn BRepPrim_Cone_inherited_HasTop(self_: &BRepPrim_Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasBottom()
+        fn BRepPrim_Cone_inherited_HasBottom(self_: &BRepPrim_Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasSides()
+        fn BRepPrim_Cone_inherited_HasSides(self_: &BRepPrim_Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: Shell()
+        fn BRepPrim_Cone_inherited_Shell(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Shell;
+        /// Inherited from BRepPrim_OneAxis: LateralFace()
+        fn BRepPrim_Cone_inherited_LateralFace(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: TopFace()
+        fn BRepPrim_Cone_inherited_TopFace(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: BottomFace()
+        fn BRepPrim_Cone_inherited_BottomFace(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: StartFace()
+        fn BRepPrim_Cone_inherited_StartFace(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: EndFace()
+        fn BRepPrim_Cone_inherited_EndFace(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Face;
+        /// Inherited from BRepPrim_OneAxis: LateralWire()
+        fn BRepPrim_Cone_inherited_LateralWire(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: LateralStartWire()
+        fn BRepPrim_Cone_inherited_LateralStartWire(self_: Pin<&mut BRepPrim_Cone>)
+            -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: LateralEndWire()
+        fn BRepPrim_Cone_inherited_LateralEndWire(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: TopWire()
+        fn BRepPrim_Cone_inherited_TopWire(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: BottomWire()
+        fn BRepPrim_Cone_inherited_BottomWire(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: StartWire()
+        fn BRepPrim_Cone_inherited_StartWire(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisStartWire()
+        fn BRepPrim_Cone_inherited_AxisStartWire(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: EndWire()
+        fn BRepPrim_Cone_inherited_EndWire(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisEndWire()
+        fn BRepPrim_Cone_inherited_AxisEndWire(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Wire;
+        /// Inherited from BRepPrim_OneAxis: AxisEdge()
+        fn BRepPrim_Cone_inherited_AxisEdge(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartEdge()
+        fn BRepPrim_Cone_inherited_StartEdge(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndEdge()
+        fn BRepPrim_Cone_inherited_EndEdge(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartTopEdge()
+        fn BRepPrim_Cone_inherited_StartTopEdge(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: StartBottomEdge()
+        fn BRepPrim_Cone_inherited_StartBottomEdge(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndTopEdge()
+        fn BRepPrim_Cone_inherited_EndTopEdge(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: EndBottomEdge()
+        fn BRepPrim_Cone_inherited_EndBottomEdge(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: TopEdge()
+        fn BRepPrim_Cone_inherited_TopEdge(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: BottomEdge()
+        fn BRepPrim_Cone_inherited_BottomEdge(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Edge;
+        /// Inherited from BRepPrim_OneAxis: AxisTopVertex()
+        fn BRepPrim_Cone_inherited_AxisTopVertex(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: AxisBottomVertex()
+        fn BRepPrim_Cone_inherited_AxisBottomVertex(
+            self_: Pin<&mut BRepPrim_Cone>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: TopStartVertex()
+        fn BRepPrim_Cone_inherited_TopStartVertex(self_: Pin<&mut BRepPrim_Cone>)
+            -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: TopEndVertex()
+        fn BRepPrim_Cone_inherited_TopEndVertex(self_: Pin<&mut BRepPrim_Cone>) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: BottomStartVertex()
+        fn BRepPrim_Cone_inherited_BottomStartVertex(
+            self_: Pin<&mut BRepPrim_Cone>,
+        ) -> &TopoDS_Vertex;
+        /// Inherited from BRepPrim_OneAxis: BottomEndVertex()
+        fn BRepPrim_Cone_inherited_BottomEndVertex(
+            self_: Pin<&mut BRepPrim_Cone>,
+        ) -> &TopoDS_Vertex;
         /// ======================== BRepPrim_Wedge ========================
         /// **Source:** `BRepPrim_Wedge.hxx`:28 - `BRepPrim_Wedge`
         ///
@@ -43357,6 +48051,32 @@ mod ffi {
         fn BRepPrim_Wedge_as_BRepPrim_GWedge_mut(
             self_: Pin<&mut BRepPrim_Wedge>,
         ) -> Pin<&mut BRepPrim_GWedge>;
+        /// Inherited from BRepPrim_GWedge: Axes()
+        fn BRepPrim_Wedge_inherited_Axes(self_: &BRepPrim_Wedge) -> UniquePtr<gp_Ax2>;
+        /// Inherited from BRepPrim_GWedge: GetXMin()
+        fn BRepPrim_Wedge_inherited_GetXMin(self_: &BRepPrim_Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetYMin()
+        fn BRepPrim_Wedge_inherited_GetYMin(self_: &BRepPrim_Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetZMin()
+        fn BRepPrim_Wedge_inherited_GetZMin(self_: &BRepPrim_Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetZ2Min()
+        fn BRepPrim_Wedge_inherited_GetZ2Min(self_: &BRepPrim_Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetX2Min()
+        fn BRepPrim_Wedge_inherited_GetX2Min(self_: &BRepPrim_Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetXMax()
+        fn BRepPrim_Wedge_inherited_GetXMax(self_: &BRepPrim_Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetYMax()
+        fn BRepPrim_Wedge_inherited_GetYMax(self_: &BRepPrim_Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetZMax()
+        fn BRepPrim_Wedge_inherited_GetZMax(self_: &BRepPrim_Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetZ2Max()
+        fn BRepPrim_Wedge_inherited_GetZ2Max(self_: &BRepPrim_Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetX2Max()
+        fn BRepPrim_Wedge_inherited_GetX2Max(self_: &BRepPrim_Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: Shell()
+        fn BRepPrim_Wedge_inherited_Shell(self_: Pin<&mut BRepPrim_Wedge>) -> &TopoDS_Shell;
+        /// Inherited from BRepPrim_GWedge: IsDegeneratedShape()
+        fn BRepPrim_Wedge_inherited_IsDegeneratedShape(self_: Pin<&mut BRepPrim_Wedge>) -> bool;
         /// ======================== BRepPrim_GWedge ========================
         /// **Source:** `BRepPrim_GWedge.hxx`:56 - `BRepPrim_GWedge`
         ///
@@ -43562,6 +48282,24 @@ mod ffi {
         fn BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape_mut(
             self_: Pin<&mut BRepBuilderAPI_ModifyShape>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepBuilderAPI_ModifyShape_inherited_IsDone(self_: &BRepBuilderAPI_ModifyShape) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepBuilderAPI_ModifyShape_inherited_Check(self_: &BRepBuilderAPI_ModifyShape);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepBuilderAPI_ModifyShape_inherited_Build(
+            self_: Pin<&mut BRepBuilderAPI_ModifyShape>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepBuilderAPI_ModifyShape_inherited_Shape(
+            self_: Pin<&mut BRepBuilderAPI_ModifyShape>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepBuilderAPI_ModifyShape_inherited_IsDeleted(
+            self_: Pin<&mut BRepBuilderAPI_ModifyShape>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== BRepLib_MakeWire ========================
         /// **Source:** `BRepLib_MakeWire.hxx`:78 - `BRepLib_MakeWire`
         ///
@@ -43688,6 +48426,21 @@ mod ffi {
         fn BRepLib_MakeWire_as_BRepLib_MakeShape_mut(
             self_: Pin<&mut BRepLib_MakeWire>,
         ) -> Pin<&mut BRepLib_MakeShape>;
+        /// Inherited from BRepLib_Command: IsDone()
+        fn BRepLib_MakeWire_inherited_IsDone(self_: &BRepLib_MakeWire) -> bool;
+        /// Inherited from BRepLib_Command: Check()
+        fn BRepLib_MakeWire_inherited_Check(self_: &BRepLib_MakeWire);
+        /// Inherited from BRepLib_MakeShape: Build()
+        fn BRepLib_MakeWire_inherited_Build(self_: Pin<&mut BRepLib_MakeWire>);
+        /// Inherited from BRepLib_MakeShape: Shape()
+        fn BRepLib_MakeWire_inherited_Shape(self_: Pin<&mut BRepLib_MakeWire>) -> &TopoDS_Shape;
+        /// Inherited from BRepLib_MakeShape: HasDescendants()
+        fn BRepLib_MakeWire_inherited_HasDescendants(
+            self_: &BRepLib_MakeWire,
+            F: &TopoDS_Face,
+        ) -> bool;
+        /// Inherited from BRepLib_MakeShape: NbSurfaces()
+        fn BRepLib_MakeWire_inherited_NbSurfaces(self_: &BRepLib_MakeWire) -> i32;
         /// ======================== BRepLib_MakeShape ========================
         /// **Source:** `BRepLib_MakeShape.hxx`:36 - `BRepLib_MakeShape`
         ///
@@ -43723,6 +48476,10 @@ mod ffi {
         fn BRepLib_MakeShape_as_BRepLib_Command_mut(
             self_: Pin<&mut BRepLib_MakeShape>,
         ) -> Pin<&mut BRepLib_Command>;
+        /// Inherited from BRepLib_Command: IsDone()
+        fn BRepLib_MakeShape_inherited_IsDone(self_: &BRepLib_MakeShape) -> bool;
+        /// Inherited from BRepLib_Command: Check()
+        fn BRepLib_MakeShape_inherited_Check(self_: &BRepLib_MakeShape);
         /// ======================== BRepLib_Command ========================
         /// **Source:** `BRepLib_Command.hxx`:35 - `BRepLib_Command`
         ///
@@ -43768,6 +48525,22 @@ mod ffi {
         fn BRepLib_MakeVertex_as_BRepLib_MakeShape_mut(
             self_: Pin<&mut BRepLib_MakeVertex>,
         ) -> Pin<&mut BRepLib_MakeShape>;
+        /// Inherited from BRepLib_Command: IsDone()
+        fn BRepLib_MakeVertex_inherited_IsDone(self_: &BRepLib_MakeVertex) -> bool;
+        /// Inherited from BRepLib_Command: Check()
+        fn BRepLib_MakeVertex_inherited_Check(self_: &BRepLib_MakeVertex);
+        /// Inherited from BRepLib_MakeShape: Build()
+        fn BRepLib_MakeVertex_inherited_Build(self_: Pin<&mut BRepLib_MakeVertex>);
+        /// Inherited from BRepLib_MakeShape: Shape()
+        fn BRepLib_MakeVertex_inherited_Shape(self_: Pin<&mut BRepLib_MakeVertex>)
+            -> &TopoDS_Shape;
+        /// Inherited from BRepLib_MakeShape: HasDescendants()
+        fn BRepLib_MakeVertex_inherited_HasDescendants(
+            self_: &BRepLib_MakeVertex,
+            F: &TopoDS_Face,
+        ) -> bool;
+        /// Inherited from BRepLib_MakeShape: NbSurfaces()
+        fn BRepLib_MakeVertex_inherited_NbSurfaces(self_: &BRepLib_MakeVertex) -> i32;
         /// ======================== BRepLib_MakeSolid ========================
         /// **Source:** `BRepLib_MakeSolid.hxx`:31 - `BRepLib_MakeSolid`
         ///
@@ -43833,6 +48606,21 @@ mod ffi {
         fn BRepLib_MakeSolid_as_BRepLib_MakeShape_mut(
             self_: Pin<&mut BRepLib_MakeSolid>,
         ) -> Pin<&mut BRepLib_MakeShape>;
+        /// Inherited from BRepLib_Command: IsDone()
+        fn BRepLib_MakeSolid_inherited_IsDone(self_: &BRepLib_MakeSolid) -> bool;
+        /// Inherited from BRepLib_Command: Check()
+        fn BRepLib_MakeSolid_inherited_Check(self_: &BRepLib_MakeSolid);
+        /// Inherited from BRepLib_MakeShape: Build()
+        fn BRepLib_MakeSolid_inherited_Build(self_: Pin<&mut BRepLib_MakeSolid>);
+        /// Inherited from BRepLib_MakeShape: Shape()
+        fn BRepLib_MakeSolid_inherited_Shape(self_: Pin<&mut BRepLib_MakeSolid>) -> &TopoDS_Shape;
+        /// Inherited from BRepLib_MakeShape: HasDescendants()
+        fn BRepLib_MakeSolid_inherited_HasDescendants(
+            self_: &BRepLib_MakeSolid,
+            F: &TopoDS_Face,
+        ) -> bool;
+        /// Inherited from BRepLib_MakeShape: NbSurfaces()
+        fn BRepLib_MakeSolid_inherited_NbSurfaces(self_: &BRepLib_MakeSolid) -> i32;
         /// ======================== BRepLib_MakeFace ========================
         /// **Source:** `BRepLib_MakeFace.hxx`:61 - `BRepLib_MakeFace`
         ///
@@ -44093,6 +48881,21 @@ mod ffi {
         fn BRepLib_MakeFace_as_BRepLib_MakeShape_mut(
             self_: Pin<&mut BRepLib_MakeFace>,
         ) -> Pin<&mut BRepLib_MakeShape>;
+        /// Inherited from BRepLib_Command: IsDone()
+        fn BRepLib_MakeFace_inherited_IsDone(self_: &BRepLib_MakeFace) -> bool;
+        /// Inherited from BRepLib_Command: Check()
+        fn BRepLib_MakeFace_inherited_Check(self_: &BRepLib_MakeFace);
+        /// Inherited from BRepLib_MakeShape: Build()
+        fn BRepLib_MakeFace_inherited_Build(self_: Pin<&mut BRepLib_MakeFace>);
+        /// Inherited from BRepLib_MakeShape: Shape()
+        fn BRepLib_MakeFace_inherited_Shape(self_: Pin<&mut BRepLib_MakeFace>) -> &TopoDS_Shape;
+        /// Inherited from BRepLib_MakeShape: HasDescendants()
+        fn BRepLib_MakeFace_inherited_HasDescendants(
+            self_: &BRepLib_MakeFace,
+            F: &TopoDS_Face,
+        ) -> bool;
+        /// Inherited from BRepLib_MakeShape: NbSurfaces()
+        fn BRepLib_MakeFace_inherited_NbSurfaces(self_: &BRepLib_MakeFace) -> i32;
         /// ======================== BRepLib_MakeEdge ========================
         /// **Source:** `BRepLib_MakeEdge.hxx`:69 - `BRepLib_MakeEdge`
         ///
@@ -44445,6 +49248,21 @@ mod ffi {
         fn BRepLib_MakeEdge_as_BRepLib_MakeShape_mut(
             self_: Pin<&mut BRepLib_MakeEdge>,
         ) -> Pin<&mut BRepLib_MakeShape>;
+        /// Inherited from BRepLib_Command: IsDone()
+        fn BRepLib_MakeEdge_inherited_IsDone(self_: &BRepLib_MakeEdge) -> bool;
+        /// Inherited from BRepLib_Command: Check()
+        fn BRepLib_MakeEdge_inherited_Check(self_: &BRepLib_MakeEdge);
+        /// Inherited from BRepLib_MakeShape: Build()
+        fn BRepLib_MakeEdge_inherited_Build(self_: Pin<&mut BRepLib_MakeEdge>);
+        /// Inherited from BRepLib_MakeShape: Shape()
+        fn BRepLib_MakeEdge_inherited_Shape(self_: Pin<&mut BRepLib_MakeEdge>) -> &TopoDS_Shape;
+        /// Inherited from BRepLib_MakeShape: HasDescendants()
+        fn BRepLib_MakeEdge_inherited_HasDescendants(
+            self_: &BRepLib_MakeEdge,
+            F: &TopoDS_Face,
+        ) -> bool;
+        /// Inherited from BRepLib_MakeShape: NbSurfaces()
+        fn BRepLib_MakeEdge_inherited_NbSurfaces(self_: &BRepLib_MakeEdge) -> i32;
         /// ======================== TopLoc_SListOfItemLocation ========================
         /// **Source:** `TopLoc_SListOfItemLocation.hxx`:43 - `TopLoc_SListOfItemLocation`
         ///

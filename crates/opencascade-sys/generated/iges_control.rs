@@ -64,6 +64,83 @@ impl Reader {
     ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
         crate::ffi::IGESControl_Reader_as_XSControl_Reader_mut(self)
     }
+
+    /// Inherited from XSControl_Reader: TransferOneRoot()
+    pub fn transfer_one_root(
+        self: std::pin::Pin<&mut Self>,
+        num: i32,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        crate::ffi::IGESControl_Reader_inherited_TransferOneRoot(self, num, theProgress)
+    }
+
+    /// Inherited from XSControl_Reader: TransferOne()
+    pub fn transfer_one(
+        self: std::pin::Pin<&mut Self>,
+        num: i32,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        crate::ffi::IGESControl_Reader_inherited_TransferOne(self, num, theProgress)
+    }
+
+    /// Inherited from XSControl_Reader: TransferList()
+    pub fn transfer_list(
+        self: std::pin::Pin<&mut Self>,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> i32 {
+        crate::ffi::IGESControl_Reader_inherited_TransferList(self, list, theProgress)
+    }
+
+    /// Inherited from XSControl_Reader: TransferRoots()
+    pub fn transfer_roots(
+        self: std::pin::Pin<&mut Self>,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> i32 {
+        crate::ffi::IGESControl_Reader_inherited_TransferRoots(self, theProgress)
+    }
+
+    /// Inherited from XSControl_Reader: ClearShapes()
+    pub fn clear_shapes(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::IGESControl_Reader_inherited_ClearShapes(self)
+    }
+
+    /// Inherited from XSControl_Reader: NbShapes()
+    pub fn nb_shapes(&self) -> i32 {
+        crate::ffi::IGESControl_Reader_inherited_NbShapes(self)
+    }
+
+    /// Inherited from XSControl_Reader: Shape()
+    pub fn shape(&self, num: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::IGESControl_Reader_inherited_Shape(self, num)
+    }
+
+    /// Inherited from XSControl_Reader: OneShape()
+    pub fn one_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::IGESControl_Reader_inherited_OneShape(self)
+    }
+
+    /// Inherited from XSControl_Reader: PrintStatsTransfer()
+    pub fn print_stats_transfer(&self, what: i32, mode: i32) {
+        crate::ffi::IGESControl_Reader_inherited_PrintStatsTransfer(self, what, mode)
+    }
+
+    /// Inherited from XSControl_Reader: GetStatsTransfer()
+    pub fn get_stats_transfer(
+        &self,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        nbMapped: &mut i32,
+        nbWithResult: &mut i32,
+        nbWithFail: &mut i32,
+    ) {
+        crate::ffi::IGESControl_Reader_inherited_GetStatsTransfer(
+            self,
+            list,
+            nbMapped,
+            nbWithResult,
+            nbWithFail,
+        )
+    }
 }
 
 // ========================

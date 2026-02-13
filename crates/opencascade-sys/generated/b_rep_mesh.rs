@@ -66,6 +66,16 @@ impl Edge {
     ) -> std::pin::Pin<&mut OrientedEdge> {
         crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(self)
     }
+
+    /// Inherited from BRepMesh_OrientedEdge: FirstNode()
+    pub fn first_node(&self) -> i32 {
+        crate::ffi::BRepMesh_Edge_inherited_FirstNode(self)
+    }
+
+    /// Inherited from BRepMesh_OrientedEdge: LastNode()
+    pub fn last_node(&self) -> i32 {
+        crate::ffi::BRepMesh_Edge_inherited_LastNode(self)
+    }
 }
 
 // ========================
@@ -148,6 +158,21 @@ impl IncrementalMesh {
     /// Upcast to BRepMesh_DiscretRoot (mutable)
     pub fn as_discret_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut DiscretRoot> {
         crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut(self)
+    }
+
+    /// Inherited from BRepMesh_DiscretRoot: SetShape()
+    pub fn set_shape(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepMesh_IncrementalMesh_inherited_SetShape(self, theShape)
+    }
+
+    /// Inherited from BRepMesh_DiscretRoot: Shape()
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepMesh_IncrementalMesh_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepMesh_DiscretRoot: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepMesh_IncrementalMesh_inherited_IsDone(self)
     }
 }
 

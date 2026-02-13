@@ -82,6 +82,140 @@ impl ChBuilder {
     pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
         crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(self)
     }
+
+    /// Inherited from ChFi3d_Builder: SetParams()
+    pub fn set_params(
+        self: std::pin::Pin<&mut Self>,
+        Tang: f64,
+        Tesp: f64,
+        T2d: f64,
+        TApp3d: f64,
+        TolApp2d: f64,
+        Fleche: f64,
+    ) {
+        crate::ffi::ChFi3d_ChBuilder_inherited_SetParams(
+            self, Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche,
+        )
+    }
+
+    /// Inherited from ChFi3d_Builder: Remove()
+    pub fn remove(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
+        crate::ffi::ChFi3d_ChBuilder_inherited_Remove(self, E)
+    }
+
+    /// Inherited from ChFi3d_Builder: Contains()
+    pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+        crate::ffi::ChFi3d_ChBuilder_inherited_Contains(self, E)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbElements()
+    pub fn nb_elements(&self) -> i32 {
+        crate::ffi::ChFi3d_ChBuilder_inherited_NbElements(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Length()
+    pub fn length(&self, IC: i32) -> f64 {
+        crate::ffi::ChFi3d_ChBuilder_inherited_Length(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: FirstVertex()
+    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ChFi3d_ChBuilder_inherited_FirstVertex(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: LastVertex()
+    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ChFi3d_ChBuilder_inherited_LastVertex(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: Abscissa()
+    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+        crate::ffi::ChFi3d_ChBuilder_inherited_Abscissa(self, IC, V)
+    }
+
+    /// Inherited from ChFi3d_Builder: RelativeAbscissa()
+    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+        crate::ffi::ChFi3d_ChBuilder_inherited_RelativeAbscissa(self, IC, V)
+    }
+
+    /// Inherited from ChFi3d_Builder: ClosedAndTangent()
+    pub fn closed_and_tangent(&self, IC: i32) -> bool {
+        crate::ffi::ChFi3d_ChBuilder_inherited_ClosedAndTangent(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: Closed()
+    pub fn closed(&self, IC: i32) -> bool {
+        crate::ffi::ChFi3d_ChBuilder_inherited_Closed(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: Compute()
+    pub fn compute(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::ChFi3d_ChBuilder_inherited_Compute(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::ChFi3d_ChBuilder_inherited_IsDone(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Shape()
+    pub fn shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ChFi3d_ChBuilder_inherited_Shape(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbFaultyContours()
+    pub fn nb_faulty_contours(&self) -> i32 {
+        crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyContours(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: FaultyContour()
+    pub fn faulty_contour(&self, I: i32) -> i32 {
+        crate::ffi::ChFi3d_ChBuilder_inherited_FaultyContour(self, I)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
+    pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
+        crate::ffi::ChFi3d_ChBuilder_inherited_NbComputedSurfaces(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: ComputedSurface()
+    pub fn computed_surface(
+        &self,
+        IC: i32,
+        IS: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::ChFi3d_ChBuilder_inherited_ComputedSurface(self, IC, IS)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbFaultyVertices()
+    pub fn nb_faulty_vertices(&self) -> i32 {
+        crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyVertices(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: FaultyVertex()
+    pub fn faulty_vertex(&self, IV: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ChFi3d_ChBuilder_inherited_FaultyVertex(self, IV)
+    }
+
+    /// Inherited from ChFi3d_Builder: HasResult()
+    pub fn has_result(&self) -> bool {
+        crate::ffi::ChFi3d_ChBuilder_inherited_HasResult(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: BadShape()
+    pub fn bad_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ChFi3d_ChBuilder_inherited_BadShape(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Reset()
+    pub fn reset(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::ChFi3d_ChBuilder_inherited_Reset(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
+    pub fn perform_two_cornerby_inter(self: std::pin::Pin<&mut Self>, Index: i32) -> bool {
+        crate::ffi::ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(self, Index)
+    }
 }
 
 // ========================
@@ -119,5 +253,139 @@ impl FilBuilder {
     /// Upcast to ChFi3d_Builder (mutable)
     pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
         crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: SetParams()
+    pub fn set_params(
+        self: std::pin::Pin<&mut Self>,
+        Tang: f64,
+        Tesp: f64,
+        T2d: f64,
+        TApp3d: f64,
+        TolApp2d: f64,
+        Fleche: f64,
+    ) {
+        crate::ffi::ChFi3d_FilBuilder_inherited_SetParams(
+            self, Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche,
+        )
+    }
+
+    /// Inherited from ChFi3d_Builder: Remove()
+    pub fn remove(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
+        crate::ffi::ChFi3d_FilBuilder_inherited_Remove(self, E)
+    }
+
+    /// Inherited from ChFi3d_Builder: Contains()
+    pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+        crate::ffi::ChFi3d_FilBuilder_inherited_Contains(self, E)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbElements()
+    pub fn nb_elements(&self) -> i32 {
+        crate::ffi::ChFi3d_FilBuilder_inherited_NbElements(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Length()
+    pub fn length(&self, IC: i32) -> f64 {
+        crate::ffi::ChFi3d_FilBuilder_inherited_Length(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: FirstVertex()
+    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ChFi3d_FilBuilder_inherited_FirstVertex(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: LastVertex()
+    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ChFi3d_FilBuilder_inherited_LastVertex(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: Abscissa()
+    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+        crate::ffi::ChFi3d_FilBuilder_inherited_Abscissa(self, IC, V)
+    }
+
+    /// Inherited from ChFi3d_Builder: RelativeAbscissa()
+    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+        crate::ffi::ChFi3d_FilBuilder_inherited_RelativeAbscissa(self, IC, V)
+    }
+
+    /// Inherited from ChFi3d_Builder: ClosedAndTangent()
+    pub fn closed_and_tangent(&self, IC: i32) -> bool {
+        crate::ffi::ChFi3d_FilBuilder_inherited_ClosedAndTangent(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: Closed()
+    pub fn closed(&self, IC: i32) -> bool {
+        crate::ffi::ChFi3d_FilBuilder_inherited_Closed(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: Compute()
+    pub fn compute(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::ChFi3d_FilBuilder_inherited_Compute(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::ChFi3d_FilBuilder_inherited_IsDone(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Shape()
+    pub fn shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ChFi3d_FilBuilder_inherited_Shape(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbFaultyContours()
+    pub fn nb_faulty_contours(&self) -> i32 {
+        crate::ffi::ChFi3d_FilBuilder_inherited_NbFaultyContours(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: FaultyContour()
+    pub fn faulty_contour(&self, I: i32) -> i32 {
+        crate::ffi::ChFi3d_FilBuilder_inherited_FaultyContour(self, I)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
+    pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
+        crate::ffi::ChFi3d_FilBuilder_inherited_NbComputedSurfaces(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: ComputedSurface()
+    pub fn computed_surface(
+        &self,
+        IC: i32,
+        IS: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::ChFi3d_FilBuilder_inherited_ComputedSurface(self, IC, IS)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbFaultyVertices()
+    pub fn nb_faulty_vertices(&self) -> i32 {
+        crate::ffi::ChFi3d_FilBuilder_inherited_NbFaultyVertices(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: FaultyVertex()
+    pub fn faulty_vertex(&self, IV: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ChFi3d_FilBuilder_inherited_FaultyVertex(self, IV)
+    }
+
+    /// Inherited from ChFi3d_Builder: HasResult()
+    pub fn has_result(&self) -> bool {
+        crate::ffi::ChFi3d_FilBuilder_inherited_HasResult(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: BadShape()
+    pub fn bad_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ChFi3d_FilBuilder_inherited_BadShape(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Reset()
+    pub fn reset(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::ChFi3d_FilBuilder_inherited_Reset(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
+    pub fn perform_two_cornerby_inter(self: std::pin::Pin<&mut Self>, Index: i32) -> bool {
+        crate::ffi::ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(self, Index)
     }
 }

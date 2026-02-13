@@ -71,6 +71,181 @@ impl BoundedCurve {
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(self)
     }
+
+    /// Inherited from Geom2d_Curve: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom2d_Curve: ReversedParameter()
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom2d_BoundedCurve_inherited_ReversedParameter(self, U)
+    }
+
+    /// Inherited from Geom2d_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_BoundedCurve_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom2d_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_BoundedCurve_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: FirstParameter()
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Geom2d_BoundedCurve_inherited_FirstParameter(self)
+    }
+
+    /// Inherited from Geom2d_Curve: LastParameter()
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Geom2d_BoundedCurve_inherited_LastParameter(self)
+    }
+
+    /// Inherited from Geom2d_Curve: IsClosed()
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Geom2d_BoundedCurve_inherited_IsClosed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: IsPeriodic()
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Geom2d_BoundedCurve_inherited_IsPeriodic(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Period(self)
+    }
+
+    /// Inherited from Geom2d_Curve: IsCN()
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom2d_BoundedCurve_inherited_IsCN(self, N)
+    }
+
+    /// Inherited from Geom2d_Curve: D0()
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>) {
+        crate::ffi::Geom2d_BoundedCurve_inherited_D0(self, U, P)
+    }
+
+    /// Inherited from Geom2d_Curve: D1()
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_BoundedCurve_inherited_D1(self, U, P, V1)
+    }
+
+    /// Inherited from Geom2d_Curve: D2()
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_BoundedCurve_inherited_D2(self, U, P, V1, V2)
+    }
+
+    /// Inherited from Geom2d_Curve: D3()
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_BoundedCurve_inherited_D3(self, U, P, V1, V2, V3)
+    }
+
+    /// Inherited from Geom2d_Curve: DN()
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_BoundedCurve_inherited_DN(self, U, N)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transform()
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf2d) {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Transform(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Copy(self)
+    }
 }
 
 // ========================
@@ -132,6 +307,166 @@ impl Conic {
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         crate::ffi::Geom2d_Conic_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Inherited from Geom2d_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_Conic_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom2d_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_Conic_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_Conic_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: FirstParameter()
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Geom2d_Conic_inherited_FirstParameter(self)
+    }
+
+    /// Inherited from Geom2d_Curve: LastParameter()
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Geom2d_Conic_inherited_LastParameter(self)
+    }
+
+    /// Inherited from Geom2d_Curve: IsClosed()
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Geom2d_Conic_inherited_IsClosed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: IsPeriodic()
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Geom2d_Conic_inherited_IsPeriodic(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_Conic_inherited_Period(self)
+    }
+
+    /// Inherited from Geom2d_Curve: D0()
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>) {
+        crate::ffi::Geom2d_Conic_inherited_D0(self, U, P)
+    }
+
+    /// Inherited from Geom2d_Curve: D1()
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_Conic_inherited_D1(self, U, P, V1)
+    }
+
+    /// Inherited from Geom2d_Curve: D2()
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_Conic_inherited_D2(self, U, P, V1, V2)
+    }
+
+    /// Inherited from Geom2d_Curve: D3()
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_Conic_inherited_D3(self, U, P, V1, V2, V3)
+    }
+
+    /// Inherited from Geom2d_Curve: DN()
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_Conic_inherited_DN(self, U, N)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_Conic_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Conic_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Conic_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Conic_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Conic_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transform()
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf2d) {
+        crate::ffi::Geom2d_Conic_inherited_Transform(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Conic_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Conic_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Conic_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Conic_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Conic_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Conic_inherited_Copy(self)
     }
 }
 
@@ -221,6 +556,78 @@ impl Curve {
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         crate::ffi::Geom2d_Curve_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Curve_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Curve_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Curve_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Curve_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transform()
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf2d) {
+        crate::ffi::Geom2d_Curve_inherited_Transform(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Curve_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Curve_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Curve_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Curve_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Curve_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Curve_inherited_Copy(self)
     }
 }
 
@@ -404,6 +811,143 @@ impl Ellipse {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleGeom2dEllipse> {
         crate::ffi::Geom2d_Ellipse_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Conic: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax22d) {
+        crate::ffi::Geom2d_Ellipse_inherited_SetAxis(self, theA)
+    }
+
+    /// Inherited from Geom2d_Conic: SetXAxis()
+    pub fn set_x_axis(self: std::pin::Pin<&mut Self>, theAX: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Ellipse_inherited_SetXAxis(self, theAX)
+    }
+
+    /// Inherited from Geom2d_Conic: SetYAxis()
+    pub fn set_y_axis(self: std::pin::Pin<&mut Self>, theAY: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Ellipse_inherited_SetYAxis(self, theAY)
+    }
+
+    /// Inherited from Geom2d_Conic: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Ellipse_inherited_SetLocation(self, theP)
+    }
+
+    /// Inherited from Geom2d_Conic: XAxis()
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Ellipse_inherited_XAxis(self)
+    }
+
+    /// Inherited from Geom2d_Conic: YAxis()
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Ellipse_inherited_YAxis(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_Ellipse_inherited_Location(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax22d {
+        crate::ffi::Geom2d_Ellipse_inherited_Position(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom2d_Ellipse_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom2d_Conic: IsCN()
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom2d_Ellipse_inherited_IsCN(self, N)
+    }
+
+    /// Inherited from Geom2d_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_Ellipse_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom2d_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_Ellipse_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_Ellipse_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_Ellipse_inherited_Period(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_Ellipse_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Ellipse_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Ellipse_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Ellipse_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Ellipse_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Ellipse_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Ellipse_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Ellipse_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Ellipse_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Ellipse_inherited_Translated(self, V)
     }
 }
 
@@ -665,6 +1209,78 @@ impl TrimmedCurve {
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dTrimmedCurve> {
         crate::ffi::Geom2d_TrimmedCurve_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_TrimmedCurve_inherited_Translated(self, V)
     }
 }
 

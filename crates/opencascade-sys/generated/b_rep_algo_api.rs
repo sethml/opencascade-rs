@@ -79,6 +79,91 @@ impl BooleanOperation {
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape_mut(self)
     }
+
+    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    pub fn non_destructive(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    pub fn check_inverted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_CheckInverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SimplifyResult(
+            self,
+            theUnifyEdges,
+            theUnifyFaces,
+            theAngularTol,
+        )
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_IsDeleted(self, aS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    pub fn has_modified(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasModified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    pub fn has_generated(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasGenerated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    pub fn has_deleted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasDeleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetToFillHistory(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    pub fn has_history(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_History(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Check(self)
+    }
 }
 
 // ========================
@@ -154,6 +239,21 @@ impl BuilderAlgo {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_Check(self)
     }
 }
 
@@ -249,6 +349,106 @@ impl Common {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         crate::ffi::BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+    pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Shape1(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+    pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Shape2(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SetNonDestructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    pub fn non_destructive(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Common_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SetCheckInverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    pub fn check_inverted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Common_inherited_CheckInverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SimplifyResult(
+            self,
+            theUnifyEdges,
+            theUnifyFaces,
+            theAngularTol,
+        )
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepAlgoAPI_Common_inherited_IsDeleted(self, aS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    pub fn has_modified(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Common_inherited_HasModified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    pub fn has_generated(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Common_inherited_HasGenerated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    pub fn has_deleted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Common_inherited_HasDeleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SetToFillHistory(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    pub fn has_history(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Common_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BRepAlgoAPI_Common_inherited_History(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Common_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Check(self)
     }
 }
 
@@ -348,6 +548,106 @@ impl Cut {
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         crate::ffi::BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape_mut(self)
     }
+
+    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+    pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Shape1(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+    pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Shape2(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SetNonDestructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    pub fn non_destructive(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SetCheckInverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    pub fn check_inverted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_CheckInverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SimplifyResult(
+            self,
+            theUnifyEdges,
+            theUnifyFaces,
+            theAngularTol,
+        )
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_IsDeleted(self, aS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    pub fn has_modified(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_HasModified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    pub fn has_generated(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_HasGenerated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    pub fn has_deleted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_HasDeleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SetToFillHistory(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    pub fn has_history(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_History(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Check(self)
+    }
 }
 
 // ========================
@@ -442,6 +742,106 @@ impl Fuse {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         crate::ffi::BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+    pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Shape1(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+    pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Shape2(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetNonDestructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    pub fn non_destructive(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetCheckInverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    pub fn check_inverted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_CheckInverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SimplifyResult(
+            self,
+            theUnifyEdges,
+            theUnifyFaces,
+            theAngularTol,
+        )
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_IsDeleted(self, aS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    pub fn has_modified(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_HasModified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    pub fn has_generated(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_HasGenerated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    pub fn has_deleted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_HasDeleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetToFillHistory(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    pub fn has_history(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_History(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Check(self)
     }
 }
 
@@ -600,5 +1000,100 @@ impl Section {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         crate::ffi::BRepAlgoAPI_Section_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Section_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+    pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Section_inherited_Shape1(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+    pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Section_inherited_Shape2(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SetNonDestructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    pub fn non_destructive(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Section_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SetCheckInverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    pub fn check_inverted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Section_inherited_CheckInverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SimplifyResult(
+            self,
+            theUnifyEdges,
+            theUnifyFaces,
+            theAngularTol,
+        )
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepAlgoAPI_Section_inherited_IsDeleted(self, aS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    pub fn has_modified(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Section_inherited_HasModified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    pub fn has_generated(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Section_inherited_HasGenerated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    pub fn has_deleted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Section_inherited_HasDeleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SetToFillHistory(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    pub fn has_history(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Section_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BRepAlgoAPI_Section_inherited_History(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Section_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_Check(self)
     }
 }

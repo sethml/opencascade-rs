@@ -128,6 +128,235 @@ impl Cone {
     pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
         crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution_mut(self)
     }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianOffset()
+    pub fn set_meridian_offset(self: std::pin::Pin<&mut Self>, MeridianOffset: f64) {
+        crate::ffi::BRepPrim_Cone_inherited_SetMeridianOffset(self, MeridianOffset)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Axes()
+    pub fn axes(&self) -> &crate::ffi::gp_Ax2 {
+        crate::ffi::BRepPrim_Cone_inherited_Axes(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Angle()
+    pub fn angle(&self) -> f64 {
+        crate::ffi::BRepPrim_Cone_inherited_Angle(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMin()
+    pub fn v_min(&self) -> f64 {
+        crate::ffi::BRepPrim_Cone_inherited_VMin(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMax()
+    pub fn v_max(&self) -> f64 {
+        crate::ffi::BRepPrim_Cone_inherited_VMax(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MakeEmptyMeridianEdge()
+    pub fn make_empty_meridian_edge(&self, Ang: f64) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
+        crate::ffi::BRepPrim_Cone_inherited_MakeEmptyMeridianEdge(self, Ang)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianPCurve()
+    pub fn set_meridian_p_curve(
+        &self,
+        E: std::pin::Pin<&mut crate::ffi::TopoDS_Edge>,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        crate::ffi::BRepPrim_Cone_inherited_SetMeridianPCurve(self, E, F)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianValue()
+    pub fn meridian_value(&self, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepPrim_Cone_inherited_MeridianValue(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianOnAxis()
+    pub fn meridian_on_axis(&self, V: f64) -> bool {
+        crate::ffi::BRepPrim_Cone_inherited_MeridianOnAxis(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianClosed()
+    pub fn meridian_closed(&self) -> bool {
+        crate::ffi::BRepPrim_Cone_inherited_MeridianClosed(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMaxInfinite()
+    pub fn v_max_infinite(&self) -> bool {
+        crate::ffi::BRepPrim_Cone_inherited_VMaxInfinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMinInfinite()
+    pub fn v_min_infinite(&self) -> bool {
+        crate::ffi::BRepPrim_Cone_inherited_VMinInfinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasTop()
+    pub fn has_top(&self) -> bool {
+        crate::ffi::BRepPrim_Cone_inherited_HasTop(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasBottom()
+    pub fn has_bottom(&self) -> bool {
+        crate::ffi::BRepPrim_Cone_inherited_HasBottom(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasSides()
+    pub fn has_sides(&self) -> bool {
+        crate::ffi::BRepPrim_Cone_inherited_HasSides(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Shell()
+    pub fn shell(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shell {
+        crate::ffi::BRepPrim_Cone_inherited_Shell(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralFace()
+    pub fn lateral_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Cone_inherited_LateralFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopFace()
+    pub fn top_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Cone_inherited_TopFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomFace()
+    pub fn bottom_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Cone_inherited_BottomFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartFace()
+    pub fn start_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Cone_inherited_StartFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndFace()
+    pub fn end_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Cone_inherited_EndFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralWire()
+    pub fn lateral_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cone_inherited_LateralWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralStartWire()
+    pub fn lateral_start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cone_inherited_LateralStartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralEndWire()
+    pub fn lateral_end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cone_inherited_LateralEndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopWire()
+    pub fn top_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cone_inherited_TopWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomWire()
+    pub fn bottom_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cone_inherited_BottomWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartWire()
+    pub fn start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cone_inherited_StartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisStartWire()
+    pub fn axis_start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cone_inherited_AxisStartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndWire()
+    pub fn end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cone_inherited_EndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisEndWire()
+    pub fn axis_end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cone_inherited_AxisEndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisEdge()
+    pub fn axis_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cone_inherited_AxisEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartEdge()
+    pub fn start_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cone_inherited_StartEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndEdge()
+    pub fn end_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cone_inherited_EndEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartTopEdge()
+    pub fn start_top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cone_inherited_StartTopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartBottomEdge()
+    pub fn start_bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cone_inherited_StartBottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndTopEdge()
+    pub fn end_top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cone_inherited_EndTopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndBottomEdge()
+    pub fn end_bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cone_inherited_EndBottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopEdge()
+    pub fn top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cone_inherited_TopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomEdge()
+    pub fn bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cone_inherited_BottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisTopVertex()
+    pub fn axis_top_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cone_inherited_AxisTopVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisBottomVertex()
+    pub fn axis_bottom_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cone_inherited_AxisBottomVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopStartVertex()
+    pub fn top_start_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cone_inherited_TopStartVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopEndVertex()
+    pub fn top_end_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cone_inherited_TopEndVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomStartVertex()
+    pub fn bottom_start_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cone_inherited_BottomStartVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomEndVertex()
+    pub fn bottom_end_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cone_inherited_BottomEndVertex(self)
+    }
 }
 
 // ========================
@@ -207,6 +436,235 @@ impl Cylinder {
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
         crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianOffset()
+    pub fn set_meridian_offset(self: std::pin::Pin<&mut Self>, MeridianOffset: f64) {
+        crate::ffi::BRepPrim_Cylinder_inherited_SetMeridianOffset(self, MeridianOffset)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Axes()
+    pub fn axes(&self) -> &crate::ffi::gp_Ax2 {
+        crate::ffi::BRepPrim_Cylinder_inherited_Axes(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Angle()
+    pub fn angle(&self) -> f64 {
+        crate::ffi::BRepPrim_Cylinder_inherited_Angle(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMin()
+    pub fn v_min(&self) -> f64 {
+        crate::ffi::BRepPrim_Cylinder_inherited_VMin(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMax()
+    pub fn v_max(&self) -> f64 {
+        crate::ffi::BRepPrim_Cylinder_inherited_VMax(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MakeEmptyMeridianEdge()
+    pub fn make_empty_meridian_edge(&self, Ang: f64) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
+        crate::ffi::BRepPrim_Cylinder_inherited_MakeEmptyMeridianEdge(self, Ang)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianPCurve()
+    pub fn set_meridian_p_curve(
+        &self,
+        E: std::pin::Pin<&mut crate::ffi::TopoDS_Edge>,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        crate::ffi::BRepPrim_Cylinder_inherited_SetMeridianPCurve(self, E, F)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianValue()
+    pub fn meridian_value(&self, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepPrim_Cylinder_inherited_MeridianValue(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianOnAxis()
+    pub fn meridian_on_axis(&self, V: f64) -> bool {
+        crate::ffi::BRepPrim_Cylinder_inherited_MeridianOnAxis(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianClosed()
+    pub fn meridian_closed(&self) -> bool {
+        crate::ffi::BRepPrim_Cylinder_inherited_MeridianClosed(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMaxInfinite()
+    pub fn v_max_infinite(&self) -> bool {
+        crate::ffi::BRepPrim_Cylinder_inherited_VMaxInfinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMinInfinite()
+    pub fn v_min_infinite(&self) -> bool {
+        crate::ffi::BRepPrim_Cylinder_inherited_VMinInfinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasTop()
+    pub fn has_top(&self) -> bool {
+        crate::ffi::BRepPrim_Cylinder_inherited_HasTop(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasBottom()
+    pub fn has_bottom(&self) -> bool {
+        crate::ffi::BRepPrim_Cylinder_inherited_HasBottom(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasSides()
+    pub fn has_sides(&self) -> bool {
+        crate::ffi::BRepPrim_Cylinder_inherited_HasSides(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Shell()
+    pub fn shell(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shell {
+        crate::ffi::BRepPrim_Cylinder_inherited_Shell(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralFace()
+    pub fn lateral_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Cylinder_inherited_LateralFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopFace()
+    pub fn top_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Cylinder_inherited_TopFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomFace()
+    pub fn bottom_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Cylinder_inherited_BottomFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartFace()
+    pub fn start_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Cylinder_inherited_StartFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndFace()
+    pub fn end_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Cylinder_inherited_EndFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralWire()
+    pub fn lateral_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cylinder_inherited_LateralWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralStartWire()
+    pub fn lateral_start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cylinder_inherited_LateralStartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralEndWire()
+    pub fn lateral_end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cylinder_inherited_LateralEndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopWire()
+    pub fn top_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cylinder_inherited_TopWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomWire()
+    pub fn bottom_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cylinder_inherited_BottomWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartWire()
+    pub fn start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cylinder_inherited_StartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisStartWire()
+    pub fn axis_start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cylinder_inherited_AxisStartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndWire()
+    pub fn end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cylinder_inherited_EndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisEndWire()
+    pub fn axis_end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Cylinder_inherited_AxisEndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisEdge()
+    pub fn axis_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cylinder_inherited_AxisEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartEdge()
+    pub fn start_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cylinder_inherited_StartEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndEdge()
+    pub fn end_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cylinder_inherited_EndEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartTopEdge()
+    pub fn start_top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cylinder_inherited_StartTopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartBottomEdge()
+    pub fn start_bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cylinder_inherited_StartBottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndTopEdge()
+    pub fn end_top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cylinder_inherited_EndTopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndBottomEdge()
+    pub fn end_bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cylinder_inherited_EndBottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopEdge()
+    pub fn top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cylinder_inherited_TopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomEdge()
+    pub fn bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Cylinder_inherited_BottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisTopVertex()
+    pub fn axis_top_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cylinder_inherited_AxisTopVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisBottomVertex()
+    pub fn axis_bottom_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cylinder_inherited_AxisBottomVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopStartVertex()
+    pub fn top_start_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cylinder_inherited_TopStartVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopEndVertex()
+    pub fn top_end_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cylinder_inherited_TopEndVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomStartVertex()
+    pub fn bottom_start_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cylinder_inherited_BottomStartVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomEndVertex()
+    pub fn bottom_end_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Cylinder_inherited_BottomEndVertex(self)
     }
 }
 
@@ -427,6 +885,216 @@ impl Revolution {
     pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
         crate::ffi::BRepPrim_Revolution_as_BRepPrim_OneAxis_mut(self)
     }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianOffset()
+    pub fn set_meridian_offset(self: std::pin::Pin<&mut Self>, MeridianOffset: f64) {
+        crate::ffi::BRepPrim_Revolution_inherited_SetMeridianOffset(self, MeridianOffset)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Axes()
+    pub fn axes(&self) -> &crate::ffi::gp_Ax2 {
+        crate::ffi::BRepPrim_Revolution_inherited_Axes(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Angle()
+    pub fn angle(&self) -> f64 {
+        crate::ffi::BRepPrim_Revolution_inherited_Angle(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMin()
+    pub fn v_min(&self) -> f64 {
+        crate::ffi::BRepPrim_Revolution_inherited_VMin(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMax()
+    pub fn v_max(&self) -> f64 {
+        crate::ffi::BRepPrim_Revolution_inherited_VMax(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianOnAxis()
+    pub fn meridian_on_axis(&self, V: f64) -> bool {
+        crate::ffi::BRepPrim_Revolution_inherited_MeridianOnAxis(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianClosed()
+    pub fn meridian_closed(&self) -> bool {
+        crate::ffi::BRepPrim_Revolution_inherited_MeridianClosed(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMaxInfinite()
+    pub fn v_max_infinite(&self) -> bool {
+        crate::ffi::BRepPrim_Revolution_inherited_VMaxInfinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMinInfinite()
+    pub fn v_min_infinite(&self) -> bool {
+        crate::ffi::BRepPrim_Revolution_inherited_VMinInfinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasTop()
+    pub fn has_top(&self) -> bool {
+        crate::ffi::BRepPrim_Revolution_inherited_HasTop(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasBottom()
+    pub fn has_bottom(&self) -> bool {
+        crate::ffi::BRepPrim_Revolution_inherited_HasBottom(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasSides()
+    pub fn has_sides(&self) -> bool {
+        crate::ffi::BRepPrim_Revolution_inherited_HasSides(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Shell()
+    pub fn shell(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shell {
+        crate::ffi::BRepPrim_Revolution_inherited_Shell(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralFace()
+    pub fn lateral_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Revolution_inherited_LateralFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopFace()
+    pub fn top_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Revolution_inherited_TopFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomFace()
+    pub fn bottom_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Revolution_inherited_BottomFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartFace()
+    pub fn start_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Revolution_inherited_StartFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndFace()
+    pub fn end_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Revolution_inherited_EndFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralWire()
+    pub fn lateral_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Revolution_inherited_LateralWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralStartWire()
+    pub fn lateral_start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Revolution_inherited_LateralStartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralEndWire()
+    pub fn lateral_end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Revolution_inherited_LateralEndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopWire()
+    pub fn top_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Revolution_inherited_TopWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomWire()
+    pub fn bottom_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Revolution_inherited_BottomWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartWire()
+    pub fn start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Revolution_inherited_StartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisStartWire()
+    pub fn axis_start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Revolution_inherited_AxisStartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndWire()
+    pub fn end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Revolution_inherited_EndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisEndWire()
+    pub fn axis_end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Revolution_inherited_AxisEndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisEdge()
+    pub fn axis_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Revolution_inherited_AxisEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartEdge()
+    pub fn start_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Revolution_inherited_StartEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndEdge()
+    pub fn end_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Revolution_inherited_EndEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartTopEdge()
+    pub fn start_top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Revolution_inherited_StartTopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartBottomEdge()
+    pub fn start_bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Revolution_inherited_StartBottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndTopEdge()
+    pub fn end_top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Revolution_inherited_EndTopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndBottomEdge()
+    pub fn end_bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Revolution_inherited_EndBottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopEdge()
+    pub fn top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Revolution_inherited_TopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomEdge()
+    pub fn bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Revolution_inherited_BottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisTopVertex()
+    pub fn axis_top_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Revolution_inherited_AxisTopVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisBottomVertex()
+    pub fn axis_bottom_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Revolution_inherited_AxisBottomVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopStartVertex()
+    pub fn top_start_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Revolution_inherited_TopStartVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopEndVertex()
+    pub fn top_end_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Revolution_inherited_TopEndVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomStartVertex()
+    pub fn bottom_start_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Revolution_inherited_BottomStartVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomEndVertex()
+    pub fn bottom_end_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Revolution_inherited_BottomEndVertex(self)
+    }
 }
 
 // ========================
@@ -480,6 +1148,235 @@ impl Sphere {
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
         crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution_mut(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianOffset()
+    pub fn set_meridian_offset(self: std::pin::Pin<&mut Self>, MeridianOffset: f64) {
+        crate::ffi::BRepPrim_Sphere_inherited_SetMeridianOffset(self, MeridianOffset)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Axes()
+    pub fn axes(&self) -> &crate::ffi::gp_Ax2 {
+        crate::ffi::BRepPrim_Sphere_inherited_Axes(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Angle()
+    pub fn angle(&self) -> f64 {
+        crate::ffi::BRepPrim_Sphere_inherited_Angle(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMin()
+    pub fn v_min(&self) -> f64 {
+        crate::ffi::BRepPrim_Sphere_inherited_VMin(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMax()
+    pub fn v_max(&self) -> f64 {
+        crate::ffi::BRepPrim_Sphere_inherited_VMax(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MakeEmptyMeridianEdge()
+    pub fn make_empty_meridian_edge(&self, Ang: f64) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
+        crate::ffi::BRepPrim_Sphere_inherited_MakeEmptyMeridianEdge(self, Ang)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianPCurve()
+    pub fn set_meridian_p_curve(
+        &self,
+        E: std::pin::Pin<&mut crate::ffi::TopoDS_Edge>,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        crate::ffi::BRepPrim_Sphere_inherited_SetMeridianPCurve(self, E, F)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianValue()
+    pub fn meridian_value(&self, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepPrim_Sphere_inherited_MeridianValue(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianOnAxis()
+    pub fn meridian_on_axis(&self, V: f64) -> bool {
+        crate::ffi::BRepPrim_Sphere_inherited_MeridianOnAxis(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianClosed()
+    pub fn meridian_closed(&self) -> bool {
+        crate::ffi::BRepPrim_Sphere_inherited_MeridianClosed(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMaxInfinite()
+    pub fn v_max_infinite(&self) -> bool {
+        crate::ffi::BRepPrim_Sphere_inherited_VMaxInfinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMinInfinite()
+    pub fn v_min_infinite(&self) -> bool {
+        crate::ffi::BRepPrim_Sphere_inherited_VMinInfinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasTop()
+    pub fn has_top(&self) -> bool {
+        crate::ffi::BRepPrim_Sphere_inherited_HasTop(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasBottom()
+    pub fn has_bottom(&self) -> bool {
+        crate::ffi::BRepPrim_Sphere_inherited_HasBottom(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasSides()
+    pub fn has_sides(&self) -> bool {
+        crate::ffi::BRepPrim_Sphere_inherited_HasSides(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Shell()
+    pub fn shell(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shell {
+        crate::ffi::BRepPrim_Sphere_inherited_Shell(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralFace()
+    pub fn lateral_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Sphere_inherited_LateralFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopFace()
+    pub fn top_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Sphere_inherited_TopFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomFace()
+    pub fn bottom_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Sphere_inherited_BottomFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartFace()
+    pub fn start_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Sphere_inherited_StartFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndFace()
+    pub fn end_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Sphere_inherited_EndFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralWire()
+    pub fn lateral_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Sphere_inherited_LateralWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralStartWire()
+    pub fn lateral_start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Sphere_inherited_LateralStartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralEndWire()
+    pub fn lateral_end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Sphere_inherited_LateralEndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopWire()
+    pub fn top_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Sphere_inherited_TopWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomWire()
+    pub fn bottom_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Sphere_inherited_BottomWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartWire()
+    pub fn start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Sphere_inherited_StartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisStartWire()
+    pub fn axis_start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Sphere_inherited_AxisStartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndWire()
+    pub fn end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Sphere_inherited_EndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisEndWire()
+    pub fn axis_end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Sphere_inherited_AxisEndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisEdge()
+    pub fn axis_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Sphere_inherited_AxisEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartEdge()
+    pub fn start_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Sphere_inherited_StartEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndEdge()
+    pub fn end_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Sphere_inherited_EndEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartTopEdge()
+    pub fn start_top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Sphere_inherited_StartTopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartBottomEdge()
+    pub fn start_bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Sphere_inherited_StartBottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndTopEdge()
+    pub fn end_top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Sphere_inherited_EndTopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndBottomEdge()
+    pub fn end_bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Sphere_inherited_EndBottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopEdge()
+    pub fn top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Sphere_inherited_TopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomEdge()
+    pub fn bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Sphere_inherited_BottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisTopVertex()
+    pub fn axis_top_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Sphere_inherited_AxisTopVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisBottomVertex()
+    pub fn axis_bottom_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Sphere_inherited_AxisBottomVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopStartVertex()
+    pub fn top_start_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Sphere_inherited_TopStartVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopEndVertex()
+    pub fn top_end_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Sphere_inherited_TopEndVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomStartVertex()
+    pub fn bottom_start_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Sphere_inherited_BottomStartVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomEndVertex()
+    pub fn bottom_end_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Sphere_inherited_BottomEndVertex(self)
     }
 }
 
@@ -543,6 +1440,235 @@ impl Torus {
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
         crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution_mut(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianOffset()
+    pub fn set_meridian_offset(self: std::pin::Pin<&mut Self>, MeridianOffset: f64) {
+        crate::ffi::BRepPrim_Torus_inherited_SetMeridianOffset(self, MeridianOffset)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Axes()
+    pub fn axes(&self) -> &crate::ffi::gp_Ax2 {
+        crate::ffi::BRepPrim_Torus_inherited_Axes(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Angle()
+    pub fn angle(&self) -> f64 {
+        crate::ffi::BRepPrim_Torus_inherited_Angle(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMin()
+    pub fn v_min(&self) -> f64 {
+        crate::ffi::BRepPrim_Torus_inherited_VMin(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMax()
+    pub fn v_max(&self) -> f64 {
+        crate::ffi::BRepPrim_Torus_inherited_VMax(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MakeEmptyMeridianEdge()
+    pub fn make_empty_meridian_edge(&self, Ang: f64) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
+        crate::ffi::BRepPrim_Torus_inherited_MakeEmptyMeridianEdge(self, Ang)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianPCurve()
+    pub fn set_meridian_p_curve(
+        &self,
+        E: std::pin::Pin<&mut crate::ffi::TopoDS_Edge>,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        crate::ffi::BRepPrim_Torus_inherited_SetMeridianPCurve(self, E, F)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianValue()
+    pub fn meridian_value(&self, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepPrim_Torus_inherited_MeridianValue(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianOnAxis()
+    pub fn meridian_on_axis(&self, V: f64) -> bool {
+        crate::ffi::BRepPrim_Torus_inherited_MeridianOnAxis(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianClosed()
+    pub fn meridian_closed(&self) -> bool {
+        crate::ffi::BRepPrim_Torus_inherited_MeridianClosed(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMaxInfinite()
+    pub fn v_max_infinite(&self) -> bool {
+        crate::ffi::BRepPrim_Torus_inherited_VMaxInfinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMinInfinite()
+    pub fn v_min_infinite(&self) -> bool {
+        crate::ffi::BRepPrim_Torus_inherited_VMinInfinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasTop()
+    pub fn has_top(&self) -> bool {
+        crate::ffi::BRepPrim_Torus_inherited_HasTop(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasBottom()
+    pub fn has_bottom(&self) -> bool {
+        crate::ffi::BRepPrim_Torus_inherited_HasBottom(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasSides()
+    pub fn has_sides(&self) -> bool {
+        crate::ffi::BRepPrim_Torus_inherited_HasSides(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Shell()
+    pub fn shell(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shell {
+        crate::ffi::BRepPrim_Torus_inherited_Shell(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralFace()
+    pub fn lateral_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Torus_inherited_LateralFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopFace()
+    pub fn top_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Torus_inherited_TopFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomFace()
+    pub fn bottom_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Torus_inherited_BottomFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartFace()
+    pub fn start_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Torus_inherited_StartFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndFace()
+    pub fn end_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Torus_inherited_EndFace(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralWire()
+    pub fn lateral_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Torus_inherited_LateralWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralStartWire()
+    pub fn lateral_start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Torus_inherited_LateralStartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: LateralEndWire()
+    pub fn lateral_end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Torus_inherited_LateralEndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopWire()
+    pub fn top_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Torus_inherited_TopWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomWire()
+    pub fn bottom_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Torus_inherited_BottomWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartWire()
+    pub fn start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Torus_inherited_StartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisStartWire()
+    pub fn axis_start_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Torus_inherited_AxisStartWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndWire()
+    pub fn end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Torus_inherited_EndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisEndWire()
+    pub fn axis_end_wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Torus_inherited_AxisEndWire(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisEdge()
+    pub fn axis_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Torus_inherited_AxisEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartEdge()
+    pub fn start_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Torus_inherited_StartEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndEdge()
+    pub fn end_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Torus_inherited_EndEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartTopEdge()
+    pub fn start_top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Torus_inherited_StartTopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: StartBottomEdge()
+    pub fn start_bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Torus_inherited_StartBottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndTopEdge()
+    pub fn end_top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Torus_inherited_EndTopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: EndBottomEdge()
+    pub fn end_bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Torus_inherited_EndBottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopEdge()
+    pub fn top_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Torus_inherited_TopEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomEdge()
+    pub fn bottom_edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Torus_inherited_BottomEdge(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisTopVertex()
+    pub fn axis_top_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Torus_inherited_AxisTopVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: AxisBottomVertex()
+    pub fn axis_bottom_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Torus_inherited_AxisBottomVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopStartVertex()
+    pub fn top_start_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Torus_inherited_TopStartVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: TopEndVertex()
+    pub fn top_end_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Torus_inherited_TopEndVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomStartVertex()
+    pub fn bottom_start_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Torus_inherited_BottomStartVertex(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: BottomEndVertex()
+    pub fn bottom_end_vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Torus_inherited_BottomEndVertex(self)
     }
 }
 
@@ -633,5 +1759,70 @@ impl Wedge {
     /// Upcast to BRepPrim_GWedge (mutable)
     pub fn as_g_wedge_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GWedge> {
         crate::ffi::BRepPrim_Wedge_as_BRepPrim_GWedge_mut(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: Axes()
+    pub fn axes(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::BRepPrim_Wedge_inherited_Axes(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetXMin()
+    pub fn get_x_min(&self) -> f64 {
+        crate::ffi::BRepPrim_Wedge_inherited_GetXMin(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetYMin()
+    pub fn get_y_min(&self) -> f64 {
+        crate::ffi::BRepPrim_Wedge_inherited_GetYMin(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetZMin()
+    pub fn get_z_min(&self) -> f64 {
+        crate::ffi::BRepPrim_Wedge_inherited_GetZMin(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetZ2Min()
+    pub fn get_z2_min(&self) -> f64 {
+        crate::ffi::BRepPrim_Wedge_inherited_GetZ2Min(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetX2Min()
+    pub fn get_x2_min(&self) -> f64 {
+        crate::ffi::BRepPrim_Wedge_inherited_GetX2Min(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetXMax()
+    pub fn get_x_max(&self) -> f64 {
+        crate::ffi::BRepPrim_Wedge_inherited_GetXMax(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetYMax()
+    pub fn get_y_max(&self) -> f64 {
+        crate::ffi::BRepPrim_Wedge_inherited_GetYMax(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetZMax()
+    pub fn get_z_max(&self) -> f64 {
+        crate::ffi::BRepPrim_Wedge_inherited_GetZMax(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetZ2Max()
+    pub fn get_z2_max(&self) -> f64 {
+        crate::ffi::BRepPrim_Wedge_inherited_GetZ2Max(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetX2Max()
+    pub fn get_x2_max(&self) -> f64 {
+        crate::ffi::BRepPrim_Wedge_inherited_GetX2Max(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: Shell()
+    pub fn shell(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shell {
+        crate::ffi::BRepPrim_Wedge_inherited_Shell(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: IsDegeneratedShape()
+    pub fn is_degenerated_shape(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepPrim_Wedge_inherited_IsDegeneratedShape(self)
     }
 }

@@ -223,7 +223,11 @@ pub struct ReturnTypeBinding {
 #[derive(Debug, Clone)]
 pub struct ResolvedParamBinding {
     pub name: String,
+    /// Rust parameter name (keyword-escaped)
+    pub rust_name: String,
     pub rust_ffi_type: String,
+    /// Type as it appears in re-export impl (e.g. "&crate::ffi::gp_Pnt")
+    pub rust_reexport_type: String,
     pub cpp_type: String,
     pub cpp_arg_expr: String,
 }
@@ -232,11 +236,71 @@ pub struct ResolvedParamBinding {
 #[derive(Debug, Clone)]
 pub struct ResolvedReturnTypeBinding {
     pub rust_ffi_type: String,
+    /// Type as it appears in re-export impl
+    pub rust_reexport_type: String,
     pub cpp_type: String,
     pub needs_unique_ptr: bool,
 }
 
 // ── Helper functions ────────────────────────────────────────────────────────
+
+/// Convert a Type to Rust FFI type string using full C++ names.
+///
+/// Unlike `to_rust_type_string()` which uses short names for same-module types,
+/// this always uses the full C++ name (e.g. `gp_Pnt` not `Pnt`). This is
+/// needed for inherited methods which are declared in the derived class's FFI
+/// block but reference types from the ancestor's module.
+fn type_to_ffi_full_name(ty: &Type) -> String {
+    match ty {
+        Type::Void => "()".to_string(),
+        Type::Bool => "bool".to_string(),
+        Type::I32 => "i32".to_string(),
+        Type::U32 => "u32".to_string(),
+        Type::I64 => "i64".to_string(),
+        Type::U64 => "u64".to_string(),
+        Type::Usize => "usize".to_string(),
+        Type::F32 => "f32".to_string(),
+        Type::F64 => "f64".to_string(),
+        Type::Class(name) => {
+            if name == "char" {
+                "std::os::raw::c_char".to_string()
+            } else {
+                name.clone() // Full C++ name like gp_Pnt, TopLoc_Location
+            }
+        }
+        Type::Handle(name) => format!("Handle{}", name.replace("_", "")),
+        Type::ConstRef(inner) => format!("&{}", type_to_ffi_full_name(inner)),
+        Type::MutRef(inner) => {
+            if inner.is_primitive() {
+                format!("&mut {}", type_to_ffi_full_name(inner))
+            } else {
+                format!("Pin<&mut {}>", type_to_ffi_full_name(inner))
+            }
+        }
+        Type::RValueRef(_) => "()".to_string(),
+        Type::ConstPtr(inner) => {
+            if matches!(inner.as_ref(), Type::Class(name) if name == "char") {
+                "&str".to_string()
+            } else {
+                format!("*const {}", type_to_ffi_full_name(inner))
+            }
+        }
+        Type::MutPtr(inner) => format!("*mut {}", type_to_ffi_full_name(inner)),
+    }
+}
+
+/// Convert a return Type to Rust FFI type string using full C++ names.
+fn return_type_to_ffi_full_name(ty: &Type) -> String {
+    match ty {
+        Type::Class(name) if name != "char" => {
+            format!("UniquePtr<{}>", name) // Full C++ name
+        }
+        Type::Handle(name) => {
+            format!("UniquePtr<Handle{}>", name.replace("_", ""))
+        }
+        _ => type_to_ffi_full_name(ty),
+    }
+}
 
 fn safe_method_name(name: &str) -> String {
     let snake_name = name.to_snake_case();
@@ -976,7 +1040,7 @@ pub fn compute_class_bindings(
 
     // ── Inherited methods ───────────────────────────────────────────────
     let inherited_methods =
-        compute_inherited_method_bindings(class, symbol_table);
+        compute_inherited_method_bindings(class, symbol_table, handle_able_classes, ffi_ctx.all_classes, ffi_ctx.all_enums);
 
     ClassBindings {
         cpp_name: cpp_name.clone(),
@@ -1281,6 +1345,9 @@ fn compute_handle_upcast_bindings(
 fn compute_inherited_method_bindings(
     class: &ParsedClass,
     symbol_table: &SymbolTable,
+    handle_able_classes: &HashSet<String>,
+    all_class_names: &HashSet<String>,
+    all_enum_names: &HashSet<String>,
 ) -> Vec<InheritedMethodBinding> {
     if class.has_protected_destructor {
         return Vec::new();
@@ -1328,6 +1395,45 @@ fn compute_inherited_method_bindings(
                     continue;
                 }
 
+                // Skip methods that reference unknown Handle types or unknown classes
+                let uses_unknown_type = resolved_method.params.iter().any(|p| {
+                    type_mapping::type_uses_unknown_handle(
+                        &p.ty.original,
+                        all_class_names,
+                        handle_able_classes,
+                    )
+                }) || resolved_method
+                    .return_type
+                    .as_ref()
+                    .map(|rt| {
+                        type_mapping::type_uses_unknown_handle(
+                            &rt.original,
+                            all_class_names,
+                            handle_able_classes,
+                        )
+                    })
+                    .unwrap_or(false);
+
+                if uses_unknown_type {
+                    continue;
+                }
+
+                // Skip methods that use enum types (not yet handled for inherited methods)
+                let uses_enum = resolved_method.params.iter().any(|p| {
+                    matches!(&p.ty.original, Type::Class(name) if all_enum_names.contains(name))
+                        || matches!(&p.ty.original, Type::ConstRef(inner) if matches!(inner.as_ref(), Type::Class(name) if all_enum_names.contains(name)))
+                }) || resolved_method
+                    .return_type
+                    .as_ref()
+                    .map(|rt| {
+                        matches!(&rt.original, Type::Class(name) if all_enum_names.contains(name))
+                    })
+                    .unwrap_or(false);
+
+                if uses_enum {
+                    continue;
+                }
+
                 let ffi_fn_name = format!(
                     "{}_inherited_{}",
                     class.name, resolved_method.cpp_name
@@ -1351,7 +1457,9 @@ fn compute_inherited_method_bindings(
                         };
                         ResolvedParamBinding {
                             name: p.name.clone(),
-                            rust_ffi_type: p.ty.rust_ffi_type.clone(),
+                            rust_name: p.rust_name.clone(),
+                            rust_ffi_type: type_to_ffi_full_name(&p.ty.original),
+                            rust_reexport_type: unified_type_to_string(&p.ty.original),
                             cpp_type: cpp_param_type,
                             cpp_arg_expr,
                         }
@@ -1361,7 +1469,8 @@ fn compute_inherited_method_bindings(
                 let return_type =
                     resolved_method.return_type.as_ref().map(|rt| {
                         ResolvedReturnTypeBinding {
-                            rust_ffi_type: rt.rust_ffi_type.clone(),
+                            rust_ffi_type: return_type_to_ffi_full_name(&rt.original),
+                            rust_reexport_type: unified_return_type_to_string(&rt.original),
                             cpp_type: rt.cpp_type.clone(),
                             needs_unique_ptr: rt.needs_unique_ptr,
                         }
@@ -2018,6 +2127,43 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         ));
     }
 
+    // 7. Inherited methods (delegates to inherited wrapper free functions)
+    for im in &bindings.inherited_methods {
+        let self_param = if im.is_const {
+            "&self".to_string()
+        } else {
+            "self: std::pin::Pin<&mut Self>".to_string()
+        };
+
+        let params: Vec<String> = std::iter::once(self_param)
+            .chain(
+                im.params
+                    .iter()
+                    .map(|p| format!("{}: {}", safe_param_name(&p.rust_name), p.rust_reexport_type)),
+            )
+            .collect();
+        let args: Vec<String> = std::iter::once("self".to_string())
+            .chain(im.params.iter().map(|p| safe_param_name(&p.rust_name)))
+            .collect();
+
+        let return_type = im
+            .return_type
+            .as_ref()
+            .map(|rt| format!(" -> {}", rt.rust_reexport_type))
+            .unwrap_or_default();
+
+        impl_methods.push(format!(
+            "    /// Inherited from {source}: {method}()\n    pub fn {}({}){} {{\n        crate::ffi::{}({})\n    }}\n",
+            im.impl_method_name,
+            params.join(", "),
+            return_type,
+            im.ffi_fn_name,
+            args.join(", "),
+            source = im.source_class,
+            method = im.cpp_method_name,
+        ));
+    }
+
     // Generate the impl block
     if !impl_methods.is_empty() {
         output.push_str(&format!("impl {} {{\n", short_name));
@@ -2214,6 +2360,33 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
     for hu in &bindings.handle_upcasts {
         writeln!(out, "        /// Upcast Handle<{}> to Handle<{}>", cn, hu.base_class).unwrap();
         writeln!(out, "        fn {}(self_: &{}) -> UniquePtr<{}>;", hu.ffi_fn_name, hu.derived_handle_name, hu.base_handle_name).unwrap();
+    }
+
+    // ── Inherited methods (free functions with self_ parameter) ─────────
+    for im in &bindings.inherited_methods {
+        writeln!(out, "        /// Inherited from {}: {}()", im.source_class, im.cpp_method_name).unwrap();
+
+        let self_param = if im.is_const {
+            format!("self_: &{}", cn)
+        } else {
+            format!("self_: Pin<&mut {}>", cn)
+        };
+        let params_str: String = im
+            .params
+            .iter()
+            .map(|p| format!("{}: {}", safe_param_name(&p.rust_name), p.rust_ffi_type))
+            .collect::<Vec<_>>()
+            .join(", ");
+        let all_params = if params_str.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, params_str)
+        };
+        let ret = match &im.return_type {
+            Some(rt) => format!(" -> {}", rt.rust_ffi_type),
+            None => String::new(),
+        };
+        writeln!(out, "        fn {}({}){};", im.ffi_fn_name, all_params, ret).unwrap();
     }
 
     out

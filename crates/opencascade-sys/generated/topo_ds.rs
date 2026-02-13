@@ -103,6 +103,148 @@ impl CompSolid {
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_CompSolid_to_owned(self)
     }
+
+    /// Inherited from TopoDS_Shape: IsNull()
+    pub fn is_null(&self) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_IsNull(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify()
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_CompSolid_inherited_Nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::TopoDS_CompSolid_inherited_Location(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Located()
+    pub fn located(
+        &self,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_CompSolid_inherited_Located(self, theLoc, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: TShape()
+    pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
+        crate::ffi::TopoDS_CompSolid_inherited_TShape(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Move()
+    pub fn move_(
+        self: std::pin::Pin<&mut Self>,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) {
+        crate::ffi::TopoDS_CompSolid_inherited_Move(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Moved()
+    pub fn moved(
+        &self,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_CompSolid_inherited_Moved(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_CompSolid_inherited_Reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_CompSolid_inherited_Reversed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement()
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_CompSolid_inherited_Complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complemented()
+    pub fn complemented(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_CompSolid_inherited_Complemented(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_CompSolid_inherited_NbChildren(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsPartner()
+    pub fn is_partner(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_IsPartner(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsSame()
+    pub fn is_same(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_IsSame(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsEqual()
+    pub fn is_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_IsEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNotEqual()
+    pub fn is_not_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_CompSolid_inherited_IsNotEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy()
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_CompSolid_inherited_EmptyCopy(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopied()
+    pub fn empty_copied(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_CompSolid_inherited_EmptyCopied(self)
+    }
 }
 
 // ========================
@@ -140,6 +282,148 @@ impl Compound {
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Compound_to_owned(self)
     }
+
+    /// Inherited from TopoDS_Shape: IsNull()
+    pub fn is_null(&self) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_IsNull(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify()
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Compound_inherited_Nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::TopoDS_Compound_inherited_Location(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Located()
+    pub fn located(
+        &self,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Compound_inherited_Located(self, theLoc, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: TShape()
+    pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
+        crate::ffi::TopoDS_Compound_inherited_TShape(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Move()
+    pub fn move_(
+        self: std::pin::Pin<&mut Self>,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) {
+        crate::ffi::TopoDS_Compound_inherited_Move(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Moved()
+    pub fn moved(
+        &self,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Compound_inherited_Moved(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Compound_inherited_Reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Compound_inherited_Reversed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement()
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Compound_inherited_Complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complemented()
+    pub fn complemented(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Compound_inherited_Complemented(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_Compound_inherited_NbChildren(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsPartner()
+    pub fn is_partner(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_IsPartner(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsSame()
+    pub fn is_same(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_IsSame(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsEqual()
+    pub fn is_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_IsEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNotEqual()
+    pub fn is_not_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Compound_inherited_IsNotEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy()
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Compound_inherited_EmptyCopy(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopied()
+    pub fn empty_copied(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Compound_inherited_EmptyCopied(self)
+    }
 }
 
 // ========================
@@ -176,6 +460,148 @@ impl Edge {
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Edge_to_owned(self)
     }
+
+    /// Inherited from TopoDS_Shape: IsNull()
+    pub fn is_null(&self) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_IsNull(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify()
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Edge_inherited_Nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::TopoDS_Edge_inherited_Location(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Located()
+    pub fn located(
+        &self,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Edge_inherited_Located(self, theLoc, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: TShape()
+    pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
+        crate::ffi::TopoDS_Edge_inherited_TShape(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Move()
+    pub fn move_(
+        self: std::pin::Pin<&mut Self>,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) {
+        crate::ffi::TopoDS_Edge_inherited_Move(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Moved()
+    pub fn moved(
+        &self,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Edge_inherited_Moved(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Edge_inherited_Reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Edge_inherited_Reversed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement()
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Edge_inherited_Complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complemented()
+    pub fn complemented(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Edge_inherited_Complemented(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_Edge_inherited_NbChildren(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsPartner()
+    pub fn is_partner(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_IsPartner(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsSame()
+    pub fn is_same(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_IsSame(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsEqual()
+    pub fn is_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_IsEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNotEqual()
+    pub fn is_not_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Edge_inherited_IsNotEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy()
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Edge_inherited_EmptyCopy(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopied()
+    pub fn empty_copied(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Edge_inherited_EmptyCopied(self)
+    }
 }
 
 // ========================
@@ -210,6 +636,148 @@ impl Face {
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Face_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNull()
+    pub fn is_null(&self) -> bool {
+        crate::ffi::TopoDS_Face_inherited_IsNull(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify()
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Face_inherited_Nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::TopoDS_Face_inherited_Location(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Located()
+    pub fn located(
+        &self,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Face_inherited_Located(self, theLoc, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: TShape()
+    pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
+        crate::ffi::TopoDS_Face_inherited_TShape(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_Face_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_Face_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_Face_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_Face_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_Face_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_Face_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_Face_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_Face_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Move()
+    pub fn move_(
+        self: std::pin::Pin<&mut Self>,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) {
+        crate::ffi::TopoDS_Face_inherited_Move(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Moved()
+    pub fn moved(
+        &self,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Face_inherited_Moved(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Face_inherited_Reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Face_inherited_Reversed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement()
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Face_inherited_Complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complemented()
+    pub fn complemented(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Face_inherited_Complemented(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_Face_inherited_NbChildren(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsPartner()
+    pub fn is_partner(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Face_inherited_IsPartner(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsSame()
+    pub fn is_same(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Face_inherited_IsSame(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsEqual()
+    pub fn is_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Face_inherited_IsEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNotEqual()
+    pub fn is_not_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Face_inherited_IsNotEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy()
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Face_inherited_EmptyCopy(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopied()
+    pub fn empty_copied(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Face_inherited_EmptyCopied(self)
     }
 }
 
@@ -358,6 +926,148 @@ impl Shell {
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Shell_to_owned(self)
     }
+
+    /// Inherited from TopoDS_Shape: IsNull()
+    pub fn is_null(&self) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_IsNull(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify()
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Shell_inherited_Nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::TopoDS_Shell_inherited_Location(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Located()
+    pub fn located(
+        &self,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shell_inherited_Located(self, theLoc, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: TShape()
+    pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
+        crate::ffi::TopoDS_Shell_inherited_TShape(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Move()
+    pub fn move_(
+        self: std::pin::Pin<&mut Self>,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) {
+        crate::ffi::TopoDS_Shell_inherited_Move(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Moved()
+    pub fn moved(
+        &self,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shell_inherited_Moved(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Shell_inherited_Reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shell_inherited_Reversed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement()
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Shell_inherited_Complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complemented()
+    pub fn complemented(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shell_inherited_Complemented(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_Shell_inherited_NbChildren(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsPartner()
+    pub fn is_partner(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_IsPartner(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsSame()
+    pub fn is_same(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_IsSame(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsEqual()
+    pub fn is_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_IsEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNotEqual()
+    pub fn is_not_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Shell_inherited_IsNotEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy()
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Shell_inherited_EmptyCopy(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopied()
+    pub fn empty_copied(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shell_inherited_EmptyCopied(self)
+    }
 }
 
 // ========================
@@ -393,6 +1103,148 @@ impl Solid {
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Solid_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNull()
+    pub fn is_null(&self) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_IsNull(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify()
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Solid_inherited_Nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::TopoDS_Solid_inherited_Location(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Located()
+    pub fn located(
+        &self,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Solid_inherited_Located(self, theLoc, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: TShape()
+    pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
+        crate::ffi::TopoDS_Solid_inherited_TShape(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Move()
+    pub fn move_(
+        self: std::pin::Pin<&mut Self>,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) {
+        crate::ffi::TopoDS_Solid_inherited_Move(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Moved()
+    pub fn moved(
+        &self,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Solid_inherited_Moved(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Solid_inherited_Reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Solid_inherited_Reversed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement()
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Solid_inherited_Complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complemented()
+    pub fn complemented(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Solid_inherited_Complemented(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_Solid_inherited_NbChildren(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsPartner()
+    pub fn is_partner(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_IsPartner(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsSame()
+    pub fn is_same(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_IsSame(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsEqual()
+    pub fn is_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_IsEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNotEqual()
+    pub fn is_not_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Solid_inherited_IsNotEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy()
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Solid_inherited_EmptyCopy(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopied()
+    pub fn empty_copied(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Solid_inherited_EmptyCopied(self)
     }
 }
 
@@ -472,6 +1324,148 @@ impl Vertex {
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Vertex_to_owned(self)
     }
+
+    /// Inherited from TopoDS_Shape: IsNull()
+    pub fn is_null(&self) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_IsNull(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify()
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Vertex_inherited_Nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::TopoDS_Vertex_inherited_Location(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Located()
+    pub fn located(
+        &self,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Vertex_inherited_Located(self, theLoc, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: TShape()
+    pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
+        crate::ffi::TopoDS_Vertex_inherited_TShape(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Move()
+    pub fn move_(
+        self: std::pin::Pin<&mut Self>,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) {
+        crate::ffi::TopoDS_Vertex_inherited_Move(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Moved()
+    pub fn moved(
+        &self,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Vertex_inherited_Moved(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Vertex_inherited_Reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Vertex_inherited_Reversed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement()
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Vertex_inherited_Complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complemented()
+    pub fn complemented(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Vertex_inherited_Complemented(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_Vertex_inherited_NbChildren(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsPartner()
+    pub fn is_partner(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_IsPartner(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsSame()
+    pub fn is_same(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_IsSame(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsEqual()
+    pub fn is_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_IsEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNotEqual()
+    pub fn is_not_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Vertex_inherited_IsNotEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy()
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Vertex_inherited_EmptyCopy(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopied()
+    pub fn empty_copied(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Vertex_inherited_EmptyCopied(self)
+    }
 }
 
 // ========================
@@ -506,5 +1500,147 @@ impl Wire {
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Wire_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNull()
+    pub fn is_null(&self) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_IsNull(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify()
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Wire_inherited_Nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::TopoDS_Wire_inherited_Location(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Located()
+    pub fn located(
+        &self,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Wire_inherited_Located(self, theLoc, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: TShape()
+    pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
+        crate::ffi::TopoDS_Wire_inherited_TShape(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Move()
+    pub fn move_(
+        self: std::pin::Pin<&mut Self>,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) {
+        crate::ffi::TopoDS_Wire_inherited_Move(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Moved()
+    pub fn moved(
+        &self,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Wire_inherited_Moved(self, thePosition, theRaiseExc)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Wire_inherited_Reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Wire_inherited_Reversed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement()
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Wire_inherited_Complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complemented()
+    pub fn complemented(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Wire_inherited_Complemented(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_Wire_inherited_NbChildren(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsPartner()
+    pub fn is_partner(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_IsPartner(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsSame()
+    pub fn is_same(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_IsSame(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsEqual()
+    pub fn is_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_IsEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNotEqual()
+    pub fn is_not_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Wire_inherited_IsNotEqual(self, theOther)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy()
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Wire_inherited_EmptyCopy(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopied()
+    pub fn empty_copied(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Wire_inherited_EmptyCopied(self)
     }
 }

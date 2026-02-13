@@ -3282,12 +3282,6 @@ inline void BRepBuilderAPI_MakeEdge_inherited_Build(BRepBuilderAPI_MakeEdge& sel
 inline const TopoDS_Shape& BRepBuilderAPI_MakeEdge_inherited_Shape(BRepBuilderAPI_MakeEdge& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepBuilderAPI_MakeEdge_inherited_Generated(BRepBuilderAPI_MakeEdge& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepBuilderAPI_MakeEdge_inherited_Modified(BRepBuilderAPI_MakeEdge& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
 inline bool BRepBuilderAPI_MakeEdge_inherited_IsDeleted(BRepBuilderAPI_MakeEdge& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
 }
@@ -3375,12 +3369,6 @@ inline void BRepBuilderAPI_MakeFace_inherited_Build(BRepBuilderAPI_MakeFace& sel
 inline const TopoDS_Shape& BRepBuilderAPI_MakeFace_inherited_Shape(BRepBuilderAPI_MakeFace& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepBuilderAPI_MakeFace_inherited_Generated(BRepBuilderAPI_MakeFace& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepBuilderAPI_MakeFace_inherited_Modified(BRepBuilderAPI_MakeFace& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
 inline bool BRepBuilderAPI_MakeFace_inherited_IsDeleted(BRepBuilderAPI_MakeFace& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
 }
@@ -3423,12 +3411,6 @@ inline void BRepBuilderAPI_MakeSolid_inherited_Build(BRepBuilderAPI_MakeSolid& s
 inline const TopoDS_Shape& BRepBuilderAPI_MakeSolid_inherited_Shape(BRepBuilderAPI_MakeSolid& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepBuilderAPI_MakeSolid_inherited_Generated(BRepBuilderAPI_MakeSolid& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepBuilderAPI_MakeSolid_inherited_Modified(BRepBuilderAPI_MakeSolid& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
 
 // ========================
 // BRepBuilderAPI_MakeVertex wrappers
@@ -3452,12 +3434,6 @@ inline void BRepBuilderAPI_MakeVertex_inherited_Build(BRepBuilderAPI_MakeVertex&
 }
 inline const TopoDS_Shape& BRepBuilderAPI_MakeVertex_inherited_Shape(BRepBuilderAPI_MakeVertex& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepBuilderAPI_MakeVertex_inherited_Generated(BRepBuilderAPI_MakeVertex& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepBuilderAPI_MakeVertex_inherited_Modified(BRepBuilderAPI_MakeVertex& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
 }
 inline bool BRepBuilderAPI_MakeVertex_inherited_IsDeleted(BRepBuilderAPI_MakeVertex& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
@@ -3500,12 +3476,6 @@ inline void BRepBuilderAPI_MakeWire_inherited_Build(BRepBuilderAPI_MakeWire& sel
 }
 inline const TopoDS_Shape& BRepBuilderAPI_MakeWire_inherited_Shape(BRepBuilderAPI_MakeWire& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepBuilderAPI_MakeWire_inherited_Generated(BRepBuilderAPI_MakeWire& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepBuilderAPI_MakeWire_inherited_Modified(BRepBuilderAPI_MakeWire& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
 }
 inline bool BRepBuilderAPI_MakeWire_inherited_IsDeleted(BRepBuilderAPI_MakeWire& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
@@ -3562,9 +3532,6 @@ inline void BRepBuilderAPI_Transform_inherited_Build(BRepBuilderAPI_Transform& s
 inline const TopoDS_Shape& BRepBuilderAPI_Transform_inherited_Shape(BRepBuilderAPI_Transform& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepBuilderAPI_Transform_inherited_Generated(BRepBuilderAPI_Transform& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
 inline bool BRepBuilderAPI_Transform_inherited_IsDeleted(BRepBuilderAPI_Transform& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
 }
@@ -3600,12 +3567,6 @@ inline void BRepPrimAPI_MakeBox_inherited_Check(const BRepPrimAPI_MakeBox& self)
 }
 inline const TopoDS_Shape& BRepPrimAPI_MakeBox_inherited_Shape(BRepPrimAPI_MakeBox& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeBox_inherited_Generated(BRepPrimAPI_MakeBox& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeBox_inherited_Modified(BRepPrimAPI_MakeBox& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
 }
 inline bool BRepPrimAPI_MakeBox_inherited_IsDeleted(BRepPrimAPI_MakeBox& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
@@ -3644,12 +3605,6 @@ inline void BRepPrimAPI_MakeCone_inherited_Build(BRepPrimAPI_MakeCone& self, con
 }
 inline const TopoDS_Shape& BRepPrimAPI_MakeCone_inherited_Shape(BRepPrimAPI_MakeCone& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeCone_inherited_Generated(BRepPrimAPI_MakeCone& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeCone_inherited_Modified(BRepPrimAPI_MakeCone& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
 }
 inline bool BRepPrimAPI_MakeCone_inherited_IsDeleted(BRepPrimAPI_MakeCone& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
@@ -3697,12 +3652,6 @@ inline void BRepPrimAPI_MakeCylinder_inherited_Build(BRepPrimAPI_MakeCylinder& s
 }
 inline const TopoDS_Shape& BRepPrimAPI_MakeCylinder_inherited_Shape(BRepPrimAPI_MakeCylinder& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeCylinder_inherited_Generated(BRepPrimAPI_MakeCylinder& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeCylinder_inherited_Modified(BRepPrimAPI_MakeCylinder& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
 }
 inline bool BRepPrimAPI_MakeCylinder_inherited_IsDeleted(BRepPrimAPI_MakeCylinder& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
@@ -3754,9 +3703,6 @@ inline void BRepPrimAPI_MakePrism_inherited_Check(const BRepPrimAPI_MakePrism& s
 inline const TopoDS_Shape& BRepPrimAPI_MakePrism_inherited_Shape(BRepPrimAPI_MakePrism& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepPrimAPI_MakePrism_inherited_Modified(BRepPrimAPI_MakePrism& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
 
 // ========================
 // BRepPrimAPI_MakeRevol wrappers
@@ -3794,9 +3740,6 @@ inline void BRepPrimAPI_MakeRevol_inherited_Check(const BRepPrimAPI_MakeRevol& s
 }
 inline const TopoDS_Shape& BRepPrimAPI_MakeRevol_inherited_Shape(BRepPrimAPI_MakeRevol& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeRevol_inherited_Modified(BRepPrimAPI_MakeRevol& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
 }
 
 // ========================
@@ -3857,12 +3800,6 @@ inline void BRepPrimAPI_MakeSphere_inherited_Build(BRepPrimAPI_MakeSphere& self,
 inline const TopoDS_Shape& BRepPrimAPI_MakeSphere_inherited_Shape(BRepPrimAPI_MakeSphere& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeSphere_inherited_Generated(BRepPrimAPI_MakeSphere& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeSphere_inherited_Modified(BRepPrimAPI_MakeSphere& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
 inline bool BRepPrimAPI_MakeSphere_inherited_IsDeleted(BRepPrimAPI_MakeSphere& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
 }
@@ -3922,12 +3859,6 @@ inline void BRepPrimAPI_MakeTorus_inherited_Build(BRepPrimAPI_MakeTorus& self, c
 inline const TopoDS_Shape& BRepPrimAPI_MakeTorus_inherited_Shape(BRepPrimAPI_MakeTorus& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeTorus_inherited_Generated(BRepPrimAPI_MakeTorus& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeTorus_inherited_Modified(BRepPrimAPI_MakeTorus& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
 inline bool BRepPrimAPI_MakeTorus_inherited_IsDeleted(BRepPrimAPI_MakeTorus& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
 }
@@ -3966,12 +3897,6 @@ inline void BRepPrimAPI_MakeSweep_inherited_Build(BRepPrimAPI_MakeSweep& self, c
 }
 inline const TopoDS_Shape& BRepPrimAPI_MakeSweep_inherited_Shape(BRepPrimAPI_MakeSweep& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeSweep_inherited_Generated(BRepPrimAPI_MakeSweep& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeSweep_inherited_Modified(BRepPrimAPI_MakeSweep& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
 }
 inline bool BRepPrimAPI_MakeSweep_inherited_IsDeleted(BRepPrimAPI_MakeSweep& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
@@ -4023,12 +3948,6 @@ inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_
 inline const TopoDS_Shape& BRepAlgoAPI_BooleanOperation_inherited_Shape(BRepAlgoAPI_BooleanOperation& self) {
     return self.Shape();
 }
-inline void BRepAlgoAPI_BooleanOperation_inherited_SetArguments(BRepAlgoAPI_BooleanOperation& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_BooleanOperation_inherited_Arguments(const BRepAlgoAPI_BooleanOperation& self) {
-    return self.Arguments();
-}
 inline void BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(BRepAlgoAPI_BooleanOperation& self, bool theFlag) {
     self.SetNonDestructive(theFlag);
 }
@@ -4043,12 +3962,6 @@ inline bool BRepAlgoAPI_BooleanOperation_inherited_CheckInverted(const BRepAlgoA
 }
 inline void BRepAlgoAPI_BooleanOperation_inherited_SimplifyResult(BRepAlgoAPI_BooleanOperation& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_BooleanOperation_inherited_Modified(BRepAlgoAPI_BooleanOperation& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_BooleanOperation_inherited_Generated(BRepAlgoAPI_BooleanOperation& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
 }
 inline bool BRepAlgoAPI_BooleanOperation_inherited_IsDeleted(BRepAlgoAPI_BooleanOperation& self, const TopoDS_Shape& aS) {
     return self.IsDeleted(aS);
@@ -4067,15 +3980,6 @@ inline void BRepAlgoAPI_BooleanOperation_inherited_SetToFillHistory(BRepAlgoAPI_
 }
 inline bool BRepAlgoAPI_BooleanOperation_inherited_HasHistory(const BRepAlgoAPI_BooleanOperation& self) {
     return self.HasHistory();
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_BooleanOperation_inherited_SectionEdges(BRepAlgoAPI_BooleanOperation& self) {
-    return self.SectionEdges();
-}
-inline const BOPAlgo_PPaveFiller& BRepAlgoAPI_BooleanOperation_inherited_DSFiller(const BRepAlgoAPI_BooleanOperation& self) {
-    return self.DSFiller();
-}
-inline const BOPAlgo_PBuilder& BRepAlgoAPI_BooleanOperation_inherited_Builder(const BRepAlgoAPI_BooleanOperation& self) {
-    return self.Builder();
 }
 inline std::unique_ptr<Handle(BRepTools_History)> BRepAlgoAPI_BooleanOperation_inherited_History(const BRepAlgoAPI_BooleanOperation& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
@@ -4120,20 +4024,8 @@ inline const TopoDS_Shape& BRepAlgoAPI_Common_inherited_Shape1(const BRepAlgoAPI
 inline const TopoDS_Shape& BRepAlgoAPI_Common_inherited_Shape2(const BRepAlgoAPI_Common& self) {
     return self.Shape2();
 }
-inline void BRepAlgoAPI_Common_inherited_SetTools(BRepAlgoAPI_Common& self, const TopTools_ListOfShape& theLS) {
-    self.SetTools(theLS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Common_inherited_Tools(const BRepAlgoAPI_Common& self) {
-    return self.Tools();
-}
 inline void BRepAlgoAPI_Common_inherited_Build(BRepAlgoAPI_Common& self, const Message_ProgressRange& theRange) {
     self.Build(theRange);
-}
-inline void BRepAlgoAPI_Common_inherited_SetArguments(BRepAlgoAPI_Common& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Common_inherited_Arguments(const BRepAlgoAPI_Common& self) {
-    return self.Arguments();
 }
 inline void BRepAlgoAPI_Common_inherited_SetNonDestructive(BRepAlgoAPI_Common& self, bool theFlag) {
     self.SetNonDestructive(theFlag);
@@ -4149,12 +4041,6 @@ inline bool BRepAlgoAPI_Common_inherited_CheckInverted(const BRepAlgoAPI_Common&
 }
 inline void BRepAlgoAPI_Common_inherited_SimplifyResult(BRepAlgoAPI_Common& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Common_inherited_Modified(BRepAlgoAPI_Common& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Common_inherited_Generated(BRepAlgoAPI_Common& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
 }
 inline bool BRepAlgoAPI_Common_inherited_IsDeleted(BRepAlgoAPI_Common& self, const TopoDS_Shape& aS) {
     return self.IsDeleted(aS);
@@ -4173,15 +4059,6 @@ inline void BRepAlgoAPI_Common_inherited_SetToFillHistory(BRepAlgoAPI_Common& se
 }
 inline bool BRepAlgoAPI_Common_inherited_HasHistory(const BRepAlgoAPI_Common& self) {
     return self.HasHistory();
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Common_inherited_SectionEdges(BRepAlgoAPI_Common& self) {
-    return self.SectionEdges();
-}
-inline const BOPAlgo_PPaveFiller& BRepAlgoAPI_Common_inherited_DSFiller(const BRepAlgoAPI_Common& self) {
-    return self.DSFiller();
-}
-inline const BOPAlgo_PBuilder& BRepAlgoAPI_Common_inherited_Builder(const BRepAlgoAPI_Common& self) {
-    return self.Builder();
 }
 inline std::unique_ptr<Handle(BRepTools_History)> BRepAlgoAPI_Common_inherited_History(const BRepAlgoAPI_Common& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
@@ -4226,20 +4103,8 @@ inline const TopoDS_Shape& BRepAlgoAPI_Cut_inherited_Shape1(const BRepAlgoAPI_Cu
 inline const TopoDS_Shape& BRepAlgoAPI_Cut_inherited_Shape2(const BRepAlgoAPI_Cut& self) {
     return self.Shape2();
 }
-inline void BRepAlgoAPI_Cut_inherited_SetTools(BRepAlgoAPI_Cut& self, const TopTools_ListOfShape& theLS) {
-    self.SetTools(theLS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Cut_inherited_Tools(const BRepAlgoAPI_Cut& self) {
-    return self.Tools();
-}
 inline void BRepAlgoAPI_Cut_inherited_Build(BRepAlgoAPI_Cut& self, const Message_ProgressRange& theRange) {
     self.Build(theRange);
-}
-inline void BRepAlgoAPI_Cut_inherited_SetArguments(BRepAlgoAPI_Cut& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Cut_inherited_Arguments(const BRepAlgoAPI_Cut& self) {
-    return self.Arguments();
 }
 inline void BRepAlgoAPI_Cut_inherited_SetNonDestructive(BRepAlgoAPI_Cut& self, bool theFlag) {
     self.SetNonDestructive(theFlag);
@@ -4255,12 +4120,6 @@ inline bool BRepAlgoAPI_Cut_inherited_CheckInverted(const BRepAlgoAPI_Cut& self)
 }
 inline void BRepAlgoAPI_Cut_inherited_SimplifyResult(BRepAlgoAPI_Cut& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Cut_inherited_Modified(BRepAlgoAPI_Cut& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Cut_inherited_Generated(BRepAlgoAPI_Cut& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
 }
 inline bool BRepAlgoAPI_Cut_inherited_IsDeleted(BRepAlgoAPI_Cut& self, const TopoDS_Shape& aS) {
     return self.IsDeleted(aS);
@@ -4279,15 +4138,6 @@ inline void BRepAlgoAPI_Cut_inherited_SetToFillHistory(BRepAlgoAPI_Cut& self, bo
 }
 inline bool BRepAlgoAPI_Cut_inherited_HasHistory(const BRepAlgoAPI_Cut& self) {
     return self.HasHistory();
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Cut_inherited_SectionEdges(BRepAlgoAPI_Cut& self) {
-    return self.SectionEdges();
-}
-inline const BOPAlgo_PPaveFiller& BRepAlgoAPI_Cut_inherited_DSFiller(const BRepAlgoAPI_Cut& self) {
-    return self.DSFiller();
-}
-inline const BOPAlgo_PBuilder& BRepAlgoAPI_Cut_inherited_Builder(const BRepAlgoAPI_Cut& self) {
-    return self.Builder();
 }
 inline std::unique_ptr<Handle(BRepTools_History)> BRepAlgoAPI_Cut_inherited_History(const BRepAlgoAPI_Cut& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
@@ -4332,20 +4182,8 @@ inline const TopoDS_Shape& BRepAlgoAPI_Fuse_inherited_Shape1(const BRepAlgoAPI_F
 inline const TopoDS_Shape& BRepAlgoAPI_Fuse_inherited_Shape2(const BRepAlgoAPI_Fuse& self) {
     return self.Shape2();
 }
-inline void BRepAlgoAPI_Fuse_inherited_SetTools(BRepAlgoAPI_Fuse& self, const TopTools_ListOfShape& theLS) {
-    self.SetTools(theLS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Fuse_inherited_Tools(const BRepAlgoAPI_Fuse& self) {
-    return self.Tools();
-}
 inline void BRepAlgoAPI_Fuse_inherited_Build(BRepAlgoAPI_Fuse& self, const Message_ProgressRange& theRange) {
     self.Build(theRange);
-}
-inline void BRepAlgoAPI_Fuse_inherited_SetArguments(BRepAlgoAPI_Fuse& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Fuse_inherited_Arguments(const BRepAlgoAPI_Fuse& self) {
-    return self.Arguments();
 }
 inline void BRepAlgoAPI_Fuse_inherited_SetNonDestructive(BRepAlgoAPI_Fuse& self, bool theFlag) {
     self.SetNonDestructive(theFlag);
@@ -4361,12 +4199,6 @@ inline bool BRepAlgoAPI_Fuse_inherited_CheckInverted(const BRepAlgoAPI_Fuse& sel
 }
 inline void BRepAlgoAPI_Fuse_inherited_SimplifyResult(BRepAlgoAPI_Fuse& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Fuse_inherited_Modified(BRepAlgoAPI_Fuse& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Fuse_inherited_Generated(BRepAlgoAPI_Fuse& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
 }
 inline bool BRepAlgoAPI_Fuse_inherited_IsDeleted(BRepAlgoAPI_Fuse& self, const TopoDS_Shape& aS) {
     return self.IsDeleted(aS);
@@ -4385,15 +4217,6 @@ inline void BRepAlgoAPI_Fuse_inherited_SetToFillHistory(BRepAlgoAPI_Fuse& self, 
 }
 inline bool BRepAlgoAPI_Fuse_inherited_HasHistory(const BRepAlgoAPI_Fuse& self) {
     return self.HasHistory();
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Fuse_inherited_SectionEdges(BRepAlgoAPI_Fuse& self) {
-    return self.SectionEdges();
-}
-inline const BOPAlgo_PPaveFiller& BRepAlgoAPI_Fuse_inherited_DSFiller(const BRepAlgoAPI_Fuse& self) {
-    return self.DSFiller();
-}
-inline const BOPAlgo_PBuilder& BRepAlgoAPI_Fuse_inherited_Builder(const BRepAlgoAPI_Fuse& self) {
-    return self.Builder();
 }
 inline std::unique_ptr<Handle(BRepTools_History)> BRepAlgoAPI_Fuse_inherited_History(const BRepAlgoAPI_Fuse& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
@@ -4450,18 +4273,6 @@ inline const TopoDS_Shape& BRepAlgoAPI_Section_inherited_Shape1(const BRepAlgoAP
 inline const TopoDS_Shape& BRepAlgoAPI_Section_inherited_Shape2(const BRepAlgoAPI_Section& self) {
     return self.Shape2();
 }
-inline void BRepAlgoAPI_Section_inherited_SetTools(BRepAlgoAPI_Section& self, const TopTools_ListOfShape& theLS) {
-    self.SetTools(theLS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Section_inherited_Tools(const BRepAlgoAPI_Section& self) {
-    return self.Tools();
-}
-inline void BRepAlgoAPI_Section_inherited_SetArguments(BRepAlgoAPI_Section& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Section_inherited_Arguments(const BRepAlgoAPI_Section& self) {
-    return self.Arguments();
-}
 inline void BRepAlgoAPI_Section_inherited_SetNonDestructive(BRepAlgoAPI_Section& self, bool theFlag) {
     self.SetNonDestructive(theFlag);
 }
@@ -4476,12 +4287,6 @@ inline bool BRepAlgoAPI_Section_inherited_CheckInverted(const BRepAlgoAPI_Sectio
 }
 inline void BRepAlgoAPI_Section_inherited_SimplifyResult(BRepAlgoAPI_Section& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Section_inherited_Modified(BRepAlgoAPI_Section& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Section_inherited_Generated(BRepAlgoAPI_Section& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
 }
 inline bool BRepAlgoAPI_Section_inherited_IsDeleted(BRepAlgoAPI_Section& self, const TopoDS_Shape& aS) {
     return self.IsDeleted(aS);
@@ -4500,15 +4305,6 @@ inline void BRepAlgoAPI_Section_inherited_SetToFillHistory(BRepAlgoAPI_Section& 
 }
 inline bool BRepAlgoAPI_Section_inherited_HasHistory(const BRepAlgoAPI_Section& self) {
     return self.HasHistory();
-}
-inline const TopTools_ListOfShape& BRepAlgoAPI_Section_inherited_SectionEdges(BRepAlgoAPI_Section& self) {
-    return self.SectionEdges();
-}
-inline const BOPAlgo_PPaveFiller& BRepAlgoAPI_Section_inherited_DSFiller(const BRepAlgoAPI_Section& self) {
-    return self.DSFiller();
-}
-inline const BOPAlgo_PBuilder& BRepAlgoAPI_Section_inherited_Builder(const BRepAlgoAPI_Section& self) {
-    return self.Builder();
 }
 inline std::unique_ptr<Handle(BRepTools_History)> BRepAlgoAPI_Section_inherited_History(const BRepAlgoAPI_Section& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
@@ -4548,12 +4344,6 @@ inline void BRepFilletAPI_LocalOperation_inherited_Build(BRepFilletAPI_LocalOper
 }
 inline const TopoDS_Shape& BRepFilletAPI_LocalOperation_inherited_Shape(BRepFilletAPI_LocalOperation& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepFilletAPI_LocalOperation_inherited_Generated(BRepFilletAPI_LocalOperation& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepFilletAPI_LocalOperation_inherited_Modified(BRepFilletAPI_LocalOperation& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
 }
 inline bool BRepFilletAPI_LocalOperation_inherited_IsDeleted(BRepFilletAPI_LocalOperation& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
@@ -4682,9 +4472,6 @@ inline void BRepFilletAPI_MakeFillet2d_inherited_Check(const BRepFilletAPI_MakeF
 inline const TopoDS_Shape& BRepFilletAPI_MakeFillet2d_inherited_Shape(BRepFilletAPI_MakeFillet2d& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepFilletAPI_MakeFillet2d_inherited_Generated(BRepFilletAPI_MakeFillet2d& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
 inline bool BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(BRepFilletAPI_MakeFillet2d& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
 }
@@ -4717,9 +4504,6 @@ inline void BRepOffsetAPI_MakeOffset_inherited_Check(const BRepOffsetAPI_MakeOff
 }
 inline const TopoDS_Shape& BRepOffsetAPI_MakeOffset_inherited_Shape(BRepOffsetAPI_MakeOffset& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepOffsetAPI_MakeOffset_inherited_Modified(BRepOffsetAPI_MakeOffset& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
 }
 inline bool BRepOffsetAPI_MakeOffset_inherited_IsDeleted(BRepOffsetAPI_MakeOffset& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
@@ -4756,9 +4540,6 @@ inline void BRepOffsetAPI_MakePipe_inherited_Check(const BRepOffsetAPI_MakePipe&
 inline const TopoDS_Shape& BRepOffsetAPI_MakePipe_inherited_Shape(BRepOffsetAPI_MakePipe& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepOffsetAPI_MakePipe_inherited_Modified(BRepOffsetAPI_MakePipe& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
 inline bool BRepOffsetAPI_MakePipe_inherited_IsDeleted(BRepOffsetAPI_MakePipe& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
 }
@@ -4791,9 +4572,6 @@ inline void BRepOffsetAPI_MakePipeShell_inherited_Check(const BRepOffsetAPI_Make
 inline const TopoDS_Shape& BRepOffsetAPI_MakePipeShell_inherited_Shape(BRepOffsetAPI_MakePipeShell& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepOffsetAPI_MakePipeShell_inherited_Modified(BRepOffsetAPI_MakePipeShell& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
 inline bool BRepOffsetAPI_MakePipeShell_inherited_IsDeleted(BRepOffsetAPI_MakePipeShell& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
 }
@@ -4819,9 +4597,6 @@ inline void BRepOffsetAPI_MakeThickSolid_inherited_Check(const BRepOffsetAPI_Mak
 }
 inline const TopoDS_Shape& BRepOffsetAPI_MakeThickSolid_inherited_Shape(BRepOffsetAPI_MakeThickSolid& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepOffsetAPI_MakeThickSolid_inherited_Generated(BRepOffsetAPI_MakeThickSolid& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
 }
 inline bool BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(BRepOffsetAPI_MakeThickSolid& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
@@ -4856,9 +4631,6 @@ inline void BRepOffsetAPI_ThruSections_inherited_Check(const BRepOffsetAPI_ThruS
 inline const TopoDS_Shape& BRepOffsetAPI_ThruSections_inherited_Shape(BRepOffsetAPI_ThruSections& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepOffsetAPI_ThruSections_inherited_Modified(BRepOffsetAPI_ThruSections& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
 inline bool BRepOffsetAPI_ThruSections_inherited_IsDeleted(BRepOffsetAPI_ThruSections& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
 }
@@ -4885,23 +4657,8 @@ inline BRepFeat_Builder& BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(BR
 inline void BRepFeat_MakeCylindricalHole_inherited_Clear(BRepFeat_MakeCylindricalHole& self) {
     self.Clear();
 }
-inline std::unique_ptr<BOPAlgo_PPaveFiller> BRepFeat_MakeCylindricalHole_inherited_PPaveFiller(BRepFeat_MakeCylindricalHole& self) {
-    return std::make_unique<BOPAlgo_PPaveFiller>(self.PPaveFiller());
-}
-inline std::unique_ptr<BOPDS_PDS> BRepFeat_MakeCylindricalHole_inherited_PDS(BRepFeat_MakeCylindricalHole& self) {
-    return std::make_unique<BOPDS_PDS>(self.PDS());
-}
-inline std::unique_ptr<Handle(IntTools_Context)> BRepFeat_MakeCylindricalHole_inherited_Context(const BRepFeat_MakeCylindricalHole& self) {
-    return std::make_unique<Handle(IntTools_Context)>(self.Context());
-}
 inline void BRepFeat_MakeCylindricalHole_inherited_AddArgument(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theShape) {
     self.AddArgument(theShape);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetArguments(BRepFeat_MakeCylindricalHole& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeCylindricalHole_inherited_Arguments(const BRepFeat_MakeCylindricalHole& self) {
-    return self.Arguments();
 }
 inline void BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive(BRepFeat_MakeCylindricalHole& self, bool theFlag) {
     self.SetNonDestructive(theFlag);
@@ -4915,26 +4672,8 @@ inline void BRepFeat_MakeCylindricalHole_inherited_SetCheckInverted(BRepFeat_Mak
 inline bool BRepFeat_MakeCylindricalHole_inherited_CheckInverted(const BRepFeat_MakeCylindricalHole& self) {
     return self.CheckInverted();
 }
-inline void BRepFeat_MakeCylindricalHole_inherited_PerformWithFiller(BRepFeat_MakeCylindricalHole& self, const BOPAlgo_PaveFiller& theFiller, const Message_ProgressRange& theRange) {
-    self.PerformWithFiller(theFiller, theRange);
-}
-inline const TopTools_DataMapOfShapeListOfShape& BRepFeat_MakeCylindricalHole_inherited_Images(const BRepFeat_MakeCylindricalHole& self) {
-    return self.Images();
-}
-inline const TopTools_DataMapOfShapeListOfShape& BRepFeat_MakeCylindricalHole_inherited_Origins(const BRepFeat_MakeCylindricalHole& self) {
-    return self.Origins();
-}
-inline const TopTools_DataMapOfShapeShape& BRepFeat_MakeCylindricalHole_inherited_ShapesSD(const BRepFeat_MakeCylindricalHole& self) {
-    return self.ShapesSD();
-}
 inline const TopoDS_Shape& BRepFeat_MakeCylindricalHole_inherited_Shape(const BRepFeat_MakeCylindricalHole& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeCylindricalHole_inherited_Modified(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeCylindricalHole_inherited_Generated(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
 }
 inline bool BRepFeat_MakeCylindricalHole_inherited_IsDeleted(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theS) {
     return self.IsDeleted(theS);
@@ -5005,20 +4744,8 @@ inline bool BRepFeat_MakeCylindricalHole_inherited_UseOBB(const BRepFeat_MakeCyl
 inline void BRepFeat_MakeCylindricalHole_inherited_AddTool(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theShape) {
     self.AddTool(theShape);
 }
-inline void BRepFeat_MakeCylindricalHole_inherited_SetTools(BRepFeat_MakeCylindricalHole& self, const TopTools_ListOfShape& theShapes) {
-    self.SetTools(theShapes);
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeCylindricalHole_inherited_Tools(const BRepFeat_MakeCylindricalHole& self) {
-    return self.Tools();
-}
 inline void BRepFeat_MakeCylindricalHole_inherited_SetOperation(BRepFeat_MakeCylindricalHole& self, Standard_Integer theFuse) {
     self.SetOperation(theFuse);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(BRepFeat_MakeCylindricalHole& self, TopTools_ListOfShape& theLT) {
-    self.PartsOfTool(theLT);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_KeepParts(BRepFeat_MakeCylindricalHole& self, const TopTools_ListOfShape& theIm) {
-    self.KeepParts(theIm);
 }
 inline void BRepFeat_MakeCylindricalHole_inherited_KeepPart(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theS) {
     self.KeepPart(theS);
@@ -5028,9 +4755,6 @@ inline void BRepFeat_MakeCylindricalHole_inherited_PerformResult(BRepFeat_MakeCy
 }
 inline void BRepFeat_MakeCylindricalHole_inherited_RebuildFaces(BRepFeat_MakeCylindricalHole& self) {
     self.RebuildFaces();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_RebuildEdge(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theE, const TopoDS_Face& theF, const TopTools_MapOfShape& theME, TopTools_ListOfShape& aLEIm) {
-    self.RebuildEdge(theE, theF, theME, aLEIm);
 }
 inline void BRepFeat_MakeCylindricalHole_inherited_CheckSolidImages(BRepFeat_MakeCylindricalHole& self) {
     self.CheckSolidImages();
@@ -5070,26 +4794,8 @@ inline void BRepFeat_MakeDPrism_inherited_Build(BRepFeat_MakeDPrism& self, const
 inline const TopoDS_Shape& BRepFeat_MakeDPrism_inherited_Shape(BRepFeat_MakeDPrism& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_Generated(BRepFeat_MakeDPrism& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_Modified(BRepFeat_MakeDPrism& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
 inline bool BRepFeat_MakeDPrism_inherited_IsDeleted(BRepFeat_MakeDPrism& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_FirstShape(const BRepFeat_MakeDPrism& self) {
-    return self.FirstShape();
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_LastShape(const BRepFeat_MakeDPrism& self) {
-    return self.LastShape();
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_NewEdges(const BRepFeat_MakeDPrism& self) {
-    return self.NewEdges();
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_TgtEdges(const BRepFeat_MakeDPrism& self) {
-    return self.TgtEdges();
 }
 inline void BRepFeat_MakeDPrism_inherited_BasisShapeValid(BRepFeat_MakeDPrism& self) {
     self.BasisShapeValid();
@@ -6998,9 +6704,6 @@ inline GC_Root& GC_MakeArcOfCircle_as_GC_Root_mut(GC_MakeArcOfCircle& self_) { r
 inline bool GC_MakeArcOfCircle_inherited_IsDone(const GC_MakeArcOfCircle& self) {
     return self.IsDone();
 }
-inline std::unique_ptr<gce_ErrorType> GC_MakeArcOfCircle_inherited_Status(const GC_MakeArcOfCircle& self) {
-    return std::make_unique<gce_ErrorType>(self.Status());
-}
 
 // ========================
 // GC_MakeSegment wrappers
@@ -7022,9 +6725,6 @@ inline const GC_Root& GC_MakeSegment_as_GC_Root(const GC_MakeSegment& self_) { r
 inline GC_Root& GC_MakeSegment_as_GC_Root_mut(GC_MakeSegment& self_) { return static_cast<GC_Root&>(self_); }
 inline bool GC_MakeSegment_inherited_IsDone(const GC_MakeSegment& self) {
     return self.IsDone();
-}
-inline std::unique_ptr<gce_ErrorType> GC_MakeSegment_inherited_Status(const GC_MakeSegment& self) {
-    return std::make_unique<gce_ErrorType>(self.Status());
 }
 
 // ========================
@@ -7517,12 +7217,6 @@ inline std::unique_ptr<Handle(Law_Function)> Law_Interpol_inherited_Trim(const L
 }
 inline void Law_Interpol_inherited_Bounds(Law_Interpol& self, Standard_Real& PFirst, Standard_Real& PLast) {
     self.Bounds(PFirst, PLast);
-}
-inline std::unique_ptr<Handle(Law_BSpline)> Law_Interpol_inherited_Curve(const Law_Interpol& self) {
-    return std::make_unique<Handle(Law_BSpline)>(self.Curve());
-}
-inline void Law_Interpol_inherited_SetCurve(Law_Interpol& self, const Handle(Law_BSpline)& C) {
-    self.SetCurve(C);
 }
 
 // ========================
@@ -8234,26 +7928,11 @@ inline std::unique_ptr<STEPControl_Reader> STEPControl_Reader_ctor() {
 }
 inline const XSControl_Reader& STEPControl_Reader_as_XSControl_Reader(const STEPControl_Reader& self_) { return static_cast<const XSControl_Reader&>(self_); }
 inline XSControl_Reader& STEPControl_Reader_as_XSControl_Reader_mut(STEPControl_Reader& self_) { return static_cast<XSControl_Reader&>(self_); }
-inline void STEPControl_Reader_inherited_SetWS(STEPControl_Reader& self, const Handle(XSControl_WorkSession)& WS, bool scratch) {
-    self.SetWS(WS, scratch);
-}
-inline std::unique_ptr<Handle(XSControl_WorkSession)> STEPControl_Reader_inherited_WS(const STEPControl_Reader& self) {
-    return std::make_unique<Handle(XSControl_WorkSession)>(self.WS());
-}
-inline std::unique_ptr<Handle(Interface_InterfaceModel)> STEPControl_Reader_inherited_Model(const STEPControl_Reader& self) {
-    return std::make_unique<Handle(Interface_InterfaceModel)>(self.Model());
-}
-inline std::unique_ptr<Handle(Standard_Transient)> STEPControl_Reader_inherited_RootForTransfer(STEPControl_Reader& self, Standard_Integer num) {
-    return std::make_unique<Handle(Standard_Transient)>(self.RootForTransfer(num));
-}
 inline bool STEPControl_Reader_inherited_TransferOneRoot(STEPControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
     return self.TransferOneRoot(num, theProgress);
 }
 inline bool STEPControl_Reader_inherited_TransferOne(STEPControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
     return self.TransferOne(num, theProgress);
-}
-inline bool STEPControl_Reader_inherited_TransferEntity(STEPControl_Reader& self, const Handle(Standard_Transient)& start, const Message_ProgressRange& theProgress) {
-    return self.TransferEntity(start, theProgress);
 }
 inline Standard_Integer STEPControl_Reader_inherited_TransferList(STEPControl_Reader& self, const Handle(TColStd_HSequenceOfTransient)& list, const Message_ProgressRange& theProgress) {
     return self.TransferList(list, theProgress);
@@ -8297,26 +7976,11 @@ inline std::unique_ptr<IGESControl_Reader> IGESControl_Reader_ctor() {
 }
 inline const XSControl_Reader& IGESControl_Reader_as_XSControl_Reader(const IGESControl_Reader& self_) { return static_cast<const XSControl_Reader&>(self_); }
 inline XSControl_Reader& IGESControl_Reader_as_XSControl_Reader_mut(IGESControl_Reader& self_) { return static_cast<XSControl_Reader&>(self_); }
-inline void IGESControl_Reader_inherited_SetWS(IGESControl_Reader& self, const Handle(XSControl_WorkSession)& WS, bool scratch) {
-    self.SetWS(WS, scratch);
-}
-inline std::unique_ptr<Handle(XSControl_WorkSession)> IGESControl_Reader_inherited_WS(const IGESControl_Reader& self) {
-    return std::make_unique<Handle(XSControl_WorkSession)>(self.WS());
-}
-inline std::unique_ptr<Handle(Interface_InterfaceModel)> IGESControl_Reader_inherited_Model(const IGESControl_Reader& self) {
-    return std::make_unique<Handle(Interface_InterfaceModel)>(self.Model());
-}
-inline std::unique_ptr<Handle(Standard_Transient)> IGESControl_Reader_inherited_RootForTransfer(IGESControl_Reader& self, Standard_Integer num) {
-    return std::make_unique<Handle(Standard_Transient)>(self.RootForTransfer(num));
-}
 inline bool IGESControl_Reader_inherited_TransferOneRoot(IGESControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
     return self.TransferOneRoot(num, theProgress);
 }
 inline bool IGESControl_Reader_inherited_TransferOne(IGESControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
     return self.TransferOne(num, theProgress);
-}
-inline bool IGESControl_Reader_inherited_TransferEntity(IGESControl_Reader& self, const Handle(Standard_Transient)& start, const Message_ProgressRange& theProgress) {
-    return self.TransferEntity(start, theProgress);
 }
 inline Standard_Integer IGESControl_Reader_inherited_TransferList(IGESControl_Reader& self, const Handle(TColStd_HSequenceOfTransient)& list, const Message_ProgressRange& theProgress) {
     return self.TransferList(list, theProgress);
@@ -10860,9 +10524,6 @@ inline const opencascade::handle<Standard_Type>& Adaptor3d_CurveOnSurface_get_ty
 }
 inline const Adaptor3d_Curve& Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve(const Adaptor3d_CurveOnSurface& self_) { return static_cast<const Adaptor3d_Curve&>(self_); }
 inline Adaptor3d_Curve& Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve_mut(Adaptor3d_CurveOnSurface& self_) { return static_cast<Adaptor3d_Curve&>(self_); }
-inline std::unique_ptr<Handle(Geom_OffsetCurve)> Adaptor3d_CurveOnSurface_inherited_OffsetCurve(const Adaptor3d_CurveOnSurface& self) {
-    return std::make_unique<Handle(Geom_OffsetCurve)>(self.OffsetCurve());
-}
 
 // ========================
 // Poly_Polygon3D wrappers
@@ -11021,23 +10682,8 @@ inline BOPAlgo_ToolsProvider& BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(BRep
 inline void BRepFeat_Builder_inherited_Perform(BRepFeat_Builder& self, const Message_ProgressRange& theRange) {
     self.Perform(theRange);
 }
-inline std::unique_ptr<BOPAlgo_PPaveFiller> BRepFeat_Builder_inherited_PPaveFiller(BRepFeat_Builder& self) {
-    return std::make_unique<BOPAlgo_PPaveFiller>(self.PPaveFiller());
-}
-inline std::unique_ptr<BOPDS_PDS> BRepFeat_Builder_inherited_PDS(BRepFeat_Builder& self) {
-    return std::make_unique<BOPDS_PDS>(self.PDS());
-}
-inline std::unique_ptr<Handle(IntTools_Context)> BRepFeat_Builder_inherited_Context(const BRepFeat_Builder& self) {
-    return std::make_unique<Handle(IntTools_Context)>(self.Context());
-}
 inline void BRepFeat_Builder_inherited_AddArgument(BRepFeat_Builder& self, const TopoDS_Shape& theShape) {
     self.AddArgument(theShape);
-}
-inline void BRepFeat_Builder_inherited_SetArguments(BRepFeat_Builder& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BRepFeat_Builder_inherited_Arguments(const BRepFeat_Builder& self) {
-    return self.Arguments();
 }
 inline void BRepFeat_Builder_inherited_SetNonDestructive(BRepFeat_Builder& self, bool theFlag) {
     self.SetNonDestructive(theFlag);
@@ -11051,26 +10697,8 @@ inline void BRepFeat_Builder_inherited_SetCheckInverted(BRepFeat_Builder& self, 
 inline bool BRepFeat_Builder_inherited_CheckInverted(const BRepFeat_Builder& self) {
     return self.CheckInverted();
 }
-inline void BRepFeat_Builder_inherited_PerformWithFiller(BRepFeat_Builder& self, const BOPAlgo_PaveFiller& theFiller, const Message_ProgressRange& theRange) {
-    self.PerformWithFiller(theFiller, theRange);
-}
-inline const TopTools_DataMapOfShapeListOfShape& BRepFeat_Builder_inherited_Images(const BRepFeat_Builder& self) {
-    return self.Images();
-}
-inline const TopTools_DataMapOfShapeListOfShape& BRepFeat_Builder_inherited_Origins(const BRepFeat_Builder& self) {
-    return self.Origins();
-}
-inline const TopTools_DataMapOfShapeShape& BRepFeat_Builder_inherited_ShapesSD(const BRepFeat_Builder& self) {
-    return self.ShapesSD();
-}
 inline const TopoDS_Shape& BRepFeat_Builder_inherited_Shape(const BRepFeat_Builder& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepFeat_Builder_inherited_Modified(BRepFeat_Builder& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BRepFeat_Builder_inherited_Generated(BRepFeat_Builder& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
 }
 inline bool BRepFeat_Builder_inherited_IsDeleted(BRepFeat_Builder& self, const TopoDS_Shape& theS) {
     return self.IsDeleted(theS);
@@ -11141,12 +10769,6 @@ inline bool BRepFeat_Builder_inherited_UseOBB(const BRepFeat_Builder& self) {
 inline void BRepFeat_Builder_inherited_AddTool(BRepFeat_Builder& self, const TopoDS_Shape& theShape) {
     self.AddTool(theShape);
 }
-inline void BRepFeat_Builder_inherited_SetTools(BRepFeat_Builder& self, const TopTools_ListOfShape& theShapes) {
-    self.SetTools(theShapes);
-}
-inline const TopTools_ListOfShape& BRepFeat_Builder_inherited_Tools(const BRepFeat_Builder& self) {
-    return self.Tools();
-}
 
 // ========================
 // BOPAlgo_BOP wrappers
@@ -11166,23 +10788,8 @@ inline const BOPAlgo_Options& BOPAlgo_BOP_as_BOPAlgo_Options(const BOPAlgo_BOP& 
 inline BOPAlgo_Options& BOPAlgo_BOP_as_BOPAlgo_Options_mut(BOPAlgo_BOP& self_) { return static_cast<BOPAlgo_Options&>(self_); }
 inline const BOPAlgo_ToolsProvider& BOPAlgo_BOP_as_BOPAlgo_ToolsProvider(const BOPAlgo_BOP& self_) { return static_cast<const BOPAlgo_ToolsProvider&>(self_); }
 inline BOPAlgo_ToolsProvider& BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut(BOPAlgo_BOP& self_) { return static_cast<BOPAlgo_ToolsProvider&>(self_); }
-inline std::unique_ptr<BOPAlgo_PPaveFiller> BOPAlgo_BOP_inherited_PPaveFiller(BOPAlgo_BOP& self) {
-    return std::make_unique<BOPAlgo_PPaveFiller>(self.PPaveFiller());
-}
-inline std::unique_ptr<BOPDS_PDS> BOPAlgo_BOP_inherited_PDS(BOPAlgo_BOP& self) {
-    return std::make_unique<BOPDS_PDS>(self.PDS());
-}
-inline std::unique_ptr<Handle(IntTools_Context)> BOPAlgo_BOP_inherited_Context(const BOPAlgo_BOP& self) {
-    return std::make_unique<Handle(IntTools_Context)>(self.Context());
-}
 inline void BOPAlgo_BOP_inherited_AddArgument(BOPAlgo_BOP& self, const TopoDS_Shape& theShape) {
     self.AddArgument(theShape);
-}
-inline void BOPAlgo_BOP_inherited_SetArguments(BOPAlgo_BOP& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BOPAlgo_BOP_inherited_Arguments(const BOPAlgo_BOP& self) {
-    return self.Arguments();
 }
 inline void BOPAlgo_BOP_inherited_SetNonDestructive(BOPAlgo_BOP& self, bool theFlag) {
     self.SetNonDestructive(theFlag);
@@ -11196,26 +10803,8 @@ inline void BOPAlgo_BOP_inherited_SetCheckInverted(BOPAlgo_BOP& self, bool theCh
 inline bool BOPAlgo_BOP_inherited_CheckInverted(const BOPAlgo_BOP& self) {
     return self.CheckInverted();
 }
-inline void BOPAlgo_BOP_inherited_PerformWithFiller(BOPAlgo_BOP& self, const BOPAlgo_PaveFiller& theFiller, const Message_ProgressRange& theRange) {
-    self.PerformWithFiller(theFiller, theRange);
-}
-inline const TopTools_DataMapOfShapeListOfShape& BOPAlgo_BOP_inherited_Images(const BOPAlgo_BOP& self) {
-    return self.Images();
-}
-inline const TopTools_DataMapOfShapeListOfShape& BOPAlgo_BOP_inherited_Origins(const BOPAlgo_BOP& self) {
-    return self.Origins();
-}
-inline const TopTools_DataMapOfShapeShape& BOPAlgo_BOP_inherited_ShapesSD(const BOPAlgo_BOP& self) {
-    return self.ShapesSD();
-}
 inline const TopoDS_Shape& BOPAlgo_BOP_inherited_Shape(const BOPAlgo_BOP& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BOPAlgo_BOP_inherited_Modified(BOPAlgo_BOP& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BOPAlgo_BOP_inherited_Generated(BOPAlgo_BOP& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
 }
 inline bool BOPAlgo_BOP_inherited_IsDeleted(BOPAlgo_BOP& self, const TopoDS_Shape& theS) {
     return self.IsDeleted(theS);
@@ -11286,12 +10875,6 @@ inline bool BOPAlgo_BOP_inherited_UseOBB(const BOPAlgo_BOP& self) {
 inline void BOPAlgo_BOP_inherited_AddTool(BOPAlgo_BOP& self, const TopoDS_Shape& theShape) {
     self.AddTool(theShape);
 }
-inline void BOPAlgo_BOP_inherited_SetTools(BOPAlgo_BOP& self, const TopTools_ListOfShape& theShapes) {
-    self.SetTools(theShapes);
-}
-inline const TopTools_ListOfShape& BOPAlgo_BOP_inherited_Tools(const BOPAlgo_BOP& self) {
-    return self.Tools();
-}
 
 // ========================
 // BOPAlgo_ToolsProvider wrappers
@@ -11312,23 +10895,8 @@ inline BOPAlgo_Options& BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut(BOPAlgo_Too
 inline void BOPAlgo_ToolsProvider_inherited_Perform(BOPAlgo_ToolsProvider& self, const Message_ProgressRange& theRange) {
     self.Perform(theRange);
 }
-inline std::unique_ptr<BOPAlgo_PPaveFiller> BOPAlgo_ToolsProvider_inherited_PPaveFiller(BOPAlgo_ToolsProvider& self) {
-    return std::make_unique<BOPAlgo_PPaveFiller>(self.PPaveFiller());
-}
-inline std::unique_ptr<BOPDS_PDS> BOPAlgo_ToolsProvider_inherited_PDS(BOPAlgo_ToolsProvider& self) {
-    return std::make_unique<BOPDS_PDS>(self.PDS());
-}
-inline std::unique_ptr<Handle(IntTools_Context)> BOPAlgo_ToolsProvider_inherited_Context(const BOPAlgo_ToolsProvider& self) {
-    return std::make_unique<Handle(IntTools_Context)>(self.Context());
-}
 inline void BOPAlgo_ToolsProvider_inherited_AddArgument(BOPAlgo_ToolsProvider& self, const TopoDS_Shape& theShape) {
     self.AddArgument(theShape);
-}
-inline void BOPAlgo_ToolsProvider_inherited_SetArguments(BOPAlgo_ToolsProvider& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BOPAlgo_ToolsProvider_inherited_Arguments(const BOPAlgo_ToolsProvider& self) {
-    return self.Arguments();
 }
 inline void BOPAlgo_ToolsProvider_inherited_SetNonDestructive(BOPAlgo_ToolsProvider& self, bool theFlag) {
     self.SetNonDestructive(theFlag);
@@ -11342,26 +10910,8 @@ inline void BOPAlgo_ToolsProvider_inherited_SetCheckInverted(BOPAlgo_ToolsProvid
 inline bool BOPAlgo_ToolsProvider_inherited_CheckInverted(const BOPAlgo_ToolsProvider& self) {
     return self.CheckInverted();
 }
-inline void BOPAlgo_ToolsProvider_inherited_PerformWithFiller(BOPAlgo_ToolsProvider& self, const BOPAlgo_PaveFiller& theFiller, const Message_ProgressRange& theRange) {
-    self.PerformWithFiller(theFiller, theRange);
-}
-inline const TopTools_DataMapOfShapeListOfShape& BOPAlgo_ToolsProvider_inherited_Images(const BOPAlgo_ToolsProvider& self) {
-    return self.Images();
-}
-inline const TopTools_DataMapOfShapeListOfShape& BOPAlgo_ToolsProvider_inherited_Origins(const BOPAlgo_ToolsProvider& self) {
-    return self.Origins();
-}
-inline const TopTools_DataMapOfShapeShape& BOPAlgo_ToolsProvider_inherited_ShapesSD(const BOPAlgo_ToolsProvider& self) {
-    return self.ShapesSD();
-}
 inline const TopoDS_Shape& BOPAlgo_ToolsProvider_inherited_Shape(const BOPAlgo_ToolsProvider& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BOPAlgo_ToolsProvider_inherited_Modified(BOPAlgo_ToolsProvider& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BOPAlgo_ToolsProvider_inherited_Generated(BOPAlgo_ToolsProvider& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
 }
 inline bool BOPAlgo_ToolsProvider_inherited_IsDeleted(BOPAlgo_ToolsProvider& self, const TopoDS_Shape& theS) {
     return self.IsDeleted(theS);
@@ -11446,12 +10996,6 @@ inline const BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options(const BOPAlgo_B
 inline BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options_mut(BOPAlgo_Builder& self_) { return static_cast<BOPAlgo_Options&>(self_); }
 inline const TopoDS_Shape& BOPAlgo_Builder_inherited_Shape(const BOPAlgo_Builder& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BOPAlgo_Builder_inherited_Modified(BOPAlgo_Builder& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BOPAlgo_Builder_inherited_Generated(BOPAlgo_Builder& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
 }
 inline bool BOPAlgo_Builder_inherited_IsDeleted(BOPAlgo_Builder& self, const TopoDS_Shape& theS) {
     return self.IsDeleted(theS);
@@ -12125,9 +11669,6 @@ inline Standard_Integer ChFi3d_FilBuilder_inherited_Contains(const ChFi3d_FilBui
 inline Standard_Integer ChFi3d_FilBuilder_inherited_NbElements(const ChFi3d_FilBuilder& self) {
     return self.NbElements();
 }
-inline std::unique_ptr<Handle(ChFiDS_Spine)> ChFi3d_FilBuilder_inherited_Value(const ChFi3d_FilBuilder& self, Standard_Integer I) {
-    return std::make_unique<Handle(ChFiDS_Spine)>(self.Value(I));
-}
 inline Standard_Real ChFi3d_FilBuilder_inherited_Length(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
     return self.Length(IC);
 }
@@ -12158,9 +11699,6 @@ inline bool ChFi3d_FilBuilder_inherited_IsDone(const ChFi3d_FilBuilder& self) {
 inline std::unique_ptr<TopoDS_Shape> ChFi3d_FilBuilder_inherited_Shape(const ChFi3d_FilBuilder& self) {
     return std::make_unique<TopoDS_Shape>(self.Shape());
 }
-inline const TopTools_ListOfShape& ChFi3d_FilBuilder_inherited_Generated(ChFi3d_FilBuilder& self, const TopoDS_Shape& EouV) {
-    return self.Generated(EouV);
-}
 inline Standard_Integer ChFi3d_FilBuilder_inherited_NbFaultyContours(const ChFi3d_FilBuilder& self) {
     return self.NbFaultyContours();
 }
@@ -12187,12 +11725,6 @@ inline std::unique_ptr<TopoDS_Shape> ChFi3d_FilBuilder_inherited_BadShape(const 
 }
 inline void ChFi3d_FilBuilder_inherited_Reset(ChFi3d_FilBuilder& self) {
     self.Reset();
-}
-inline std::unique_ptr<Handle(TopOpeBRepBuild_HBuilder)> ChFi3d_FilBuilder_inherited_Builder(const ChFi3d_FilBuilder& self) {
-    return std::make_unique<Handle(TopOpeBRepBuild_HBuilder)>(self.Builder());
-}
-inline bool ChFi3d_FilBuilder_inherited_SplitKPart(ChFi3d_FilBuilder& self, const Handle(ChFiDS_SurfData)& Data, ChFiDS_SequenceOfSurfData& SetData, const Handle(ChFiDS_Spine)& Spine, Standard_Integer Iedge, const Handle(Adaptor3d_Surface)& S1, const Handle(Adaptor3d_TopolTool)& I1, const Handle(Adaptor3d_Surface)& S2, const Handle(Adaptor3d_TopolTool)& I2, bool& Intf, bool& Intl) {
-    return self.SplitKPart(Data, SetData, Spine, Iedge, S1, I1, S2, I2, Intf, Intl);
 }
 inline bool ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_FilBuilder& self, Standard_Integer Index) {
     return self.PerformTwoCornerbyInter(Index);
@@ -12314,9 +11846,6 @@ inline Standard_Integer ChFiDS_ElSpine_inherited_NbPoles(const ChFiDS_ElSpine& s
 }
 inline Standard_Integer ChFiDS_ElSpine_inherited_NbKnots(const ChFiDS_ElSpine& self) {
     return self.NbKnots();
-}
-inline std::unique_ptr<Handle(Geom_OffsetCurve)> ChFiDS_ElSpine_inherited_OffsetCurve(const ChFiDS_ElSpine& self) {
-    return std::make_unique<Handle(Geom_OffsetCurve)>(self.OffsetCurve());
 }
 
 // ========================
@@ -12472,12 +12001,6 @@ inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbKnots(const BRepAdaptor_
 inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbSamples(const BRepAdaptor_Curve2d& self) {
     return self.NbSamples();
 }
-inline std::unique_ptr<Handle(Geom2d_BezierCurve)> BRepAdaptor_Curve2d_inherited_Bezier(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<Handle(Geom2d_BezierCurve)>(self.Bezier());
-}
-inline std::unique_ptr<Handle(Geom2d_BSplineCurve)> BRepAdaptor_Curve2d_inherited_BSpline(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<Handle(Geom2d_BSplineCurve)>(self.BSpline());
-}
 inline void BRepAdaptor_Curve2d_inherited_Reset(BRepAdaptor_Curve2d& self) {
     self.Reset();
 }
@@ -12536,9 +12059,6 @@ inline Standard_Integer ChFi3d_ChBuilder_inherited_Contains(const ChFi3d_ChBuild
 inline Standard_Integer ChFi3d_ChBuilder_inherited_NbElements(const ChFi3d_ChBuilder& self) {
     return self.NbElements();
 }
-inline std::unique_ptr<Handle(ChFiDS_Spine)> ChFi3d_ChBuilder_inherited_Value(const ChFi3d_ChBuilder& self, Standard_Integer I) {
-    return std::make_unique<Handle(ChFiDS_Spine)>(self.Value(I));
-}
 inline Standard_Real ChFi3d_ChBuilder_inherited_Length(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
     return self.Length(IC);
 }
@@ -12569,9 +12089,6 @@ inline bool ChFi3d_ChBuilder_inherited_IsDone(const ChFi3d_ChBuilder& self) {
 inline std::unique_ptr<TopoDS_Shape> ChFi3d_ChBuilder_inherited_Shape(const ChFi3d_ChBuilder& self) {
     return std::make_unique<TopoDS_Shape>(self.Shape());
 }
-inline const TopTools_ListOfShape& ChFi3d_ChBuilder_inherited_Generated(ChFi3d_ChBuilder& self, const TopoDS_Shape& EouV) {
-    return self.Generated(EouV);
-}
 inline Standard_Integer ChFi3d_ChBuilder_inherited_NbFaultyContours(const ChFi3d_ChBuilder& self) {
     return self.NbFaultyContours();
 }
@@ -12598,12 +12115,6 @@ inline std::unique_ptr<TopoDS_Shape> ChFi3d_ChBuilder_inherited_BadShape(const C
 }
 inline void ChFi3d_ChBuilder_inherited_Reset(ChFi3d_ChBuilder& self) {
     self.Reset();
-}
-inline std::unique_ptr<Handle(TopOpeBRepBuild_HBuilder)> ChFi3d_ChBuilder_inherited_Builder(const ChFi3d_ChBuilder& self) {
-    return std::make_unique<Handle(TopOpeBRepBuild_HBuilder)>(self.Builder());
-}
-inline bool ChFi3d_ChBuilder_inherited_SplitKPart(ChFi3d_ChBuilder& self, const Handle(ChFiDS_SurfData)& Data, ChFiDS_SequenceOfSurfData& SetData, const Handle(ChFiDS_Spine)& Spine, Standard_Integer Iedge, const Handle(Adaptor3d_Surface)& S1, const Handle(Adaptor3d_TopolTool)& I1, const Handle(Adaptor3d_Surface)& S2, const Handle(Adaptor3d_TopolTool)& I2, bool& Intf, bool& Intl) {
-    return self.SplitKPart(Data, SetData, Spine, Iedge, S1, I1, S2, I2, Intf, Intl);
 }
 inline bool ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_ChBuilder& self, Standard_Integer Index) {
     return self.PerformTwoCornerbyInter(Index);
@@ -12781,12 +12292,6 @@ inline void BRepPrimAPI_MakeOneAxis_inherited_Check(const BRepPrimAPI_MakeOneAxi
 }
 inline const TopoDS_Shape& BRepPrimAPI_MakeOneAxis_inherited_Shape(BRepPrimAPI_MakeOneAxis& self) {
     return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeOneAxis_inherited_Generated(BRepPrimAPI_MakeOneAxis& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeOneAxis_inherited_Modified(BRepPrimAPI_MakeOneAxis& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
 }
 inline bool BRepPrimAPI_MakeOneAxis_inherited_IsDeleted(BRepPrimAPI_MakeOneAxis& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
@@ -13855,9 +13360,6 @@ inline void BRepBuilderAPI_ModifyShape_inherited_Build(BRepBuilderAPI_ModifyShap
 inline const TopoDS_Shape& BRepBuilderAPI_ModifyShape_inherited_Shape(BRepBuilderAPI_ModifyShape& self) {
     return self.Shape();
 }
-inline const TopTools_ListOfShape& BRepBuilderAPI_ModifyShape_inherited_Generated(BRepBuilderAPI_ModifyShape& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
 inline bool BRepBuilderAPI_ModifyShape_inherited_IsDeleted(BRepBuilderAPI_ModifyShape& self, const TopoDS_Shape& S) {
     return self.IsDeleted(S);
 }
@@ -13906,17 +13408,8 @@ inline const TopoDS_Shape& BRepLib_MakeWire_inherited_Shape(BRepLib_MakeWire& se
 inline bool BRepLib_MakeWire_inherited_HasDescendants(const BRepLib_MakeWire& self, const TopoDS_Face& F) {
     return self.HasDescendants(F);
 }
-inline const TopTools_ListOfShape& BRepLib_MakeWire_inherited_DescendantFaces(BRepLib_MakeWire& self, const TopoDS_Face& F) {
-    return self.DescendantFaces(F);
-}
 inline Standard_Integer BRepLib_MakeWire_inherited_NbSurfaces(const BRepLib_MakeWire& self) {
     return self.NbSurfaces();
-}
-inline const TopTools_ListOfShape& BRepLib_MakeWire_inherited_NewFaces(BRepLib_MakeWire& self, Standard_Integer I) {
-    return self.NewFaces(I);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeWire_inherited_FacesFromEdges(BRepLib_MakeWire& self, const TopoDS_Edge& E) {
-    return self.FacesFromEdges(E);
 }
 
 // ========================
@@ -13963,17 +13456,8 @@ inline const TopoDS_Shape& BRepLib_MakeVertex_inherited_Shape(BRepLib_MakeVertex
 inline bool BRepLib_MakeVertex_inherited_HasDescendants(const BRepLib_MakeVertex& self, const TopoDS_Face& F) {
     return self.HasDescendants(F);
 }
-inline const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_DescendantFaces(BRepLib_MakeVertex& self, const TopoDS_Face& F) {
-    return self.DescendantFaces(F);
-}
 inline Standard_Integer BRepLib_MakeVertex_inherited_NbSurfaces(const BRepLib_MakeVertex& self) {
     return self.NbSurfaces();
-}
-inline const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_NewFaces(BRepLib_MakeVertex& self, Standard_Integer I) {
-    return self.NewFaces(I);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_FacesFromEdges(BRepLib_MakeVertex& self, const TopoDS_Edge& E) {
-    return self.FacesFromEdges(E);
 }
 
 // ========================
@@ -14020,17 +13504,8 @@ inline const TopoDS_Shape& BRepLib_MakeSolid_inherited_Shape(BRepLib_MakeSolid& 
 inline bool BRepLib_MakeSolid_inherited_HasDescendants(const BRepLib_MakeSolid& self, const TopoDS_Face& F) {
     return self.HasDescendants(F);
 }
-inline const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_DescendantFaces(BRepLib_MakeSolid& self, const TopoDS_Face& F) {
-    return self.DescendantFaces(F);
-}
 inline Standard_Integer BRepLib_MakeSolid_inherited_NbSurfaces(const BRepLib_MakeSolid& self) {
     return self.NbSurfaces();
-}
-inline const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_NewFaces(BRepLib_MakeSolid& self, Standard_Integer I) {
-    return self.NewFaces(I);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_FacesFromEdges(BRepLib_MakeSolid& self, const TopoDS_Edge& E) {
-    return self.FacesFromEdges(E);
 }
 
 // ========================
@@ -14125,17 +13600,8 @@ inline const TopoDS_Shape& BRepLib_MakeFace_inherited_Shape(BRepLib_MakeFace& se
 inline bool BRepLib_MakeFace_inherited_HasDescendants(const BRepLib_MakeFace& self, const TopoDS_Face& F) {
     return self.HasDescendants(F);
 }
-inline const TopTools_ListOfShape& BRepLib_MakeFace_inherited_DescendantFaces(BRepLib_MakeFace& self, const TopoDS_Face& F) {
-    return self.DescendantFaces(F);
-}
 inline Standard_Integer BRepLib_MakeFace_inherited_NbSurfaces(const BRepLib_MakeFace& self) {
     return self.NbSurfaces();
-}
-inline const TopTools_ListOfShape& BRepLib_MakeFace_inherited_NewFaces(BRepLib_MakeFace& self, Standard_Integer I) {
-    return self.NewFaces(I);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeFace_inherited_FacesFromEdges(BRepLib_MakeFace& self, const TopoDS_Edge& E) {
-    return self.FacesFromEdges(E);
 }
 
 // ========================
@@ -14266,17 +13732,8 @@ inline const TopoDS_Shape& BRepLib_MakeEdge_inherited_Shape(BRepLib_MakeEdge& se
 inline bool BRepLib_MakeEdge_inherited_HasDescendants(const BRepLib_MakeEdge& self, const TopoDS_Face& F) {
     return self.HasDescendants(F);
 }
-inline const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_DescendantFaces(BRepLib_MakeEdge& self, const TopoDS_Face& F) {
-    return self.DescendantFaces(F);
-}
 inline Standard_Integer BRepLib_MakeEdge_inherited_NbSurfaces(const BRepLib_MakeEdge& self) {
     return self.NbSurfaces();
-}
-inline const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_NewFaces(BRepLib_MakeEdge& self, Standard_Integer I) {
-    return self.NewFaces(I);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_FacesFromEdges(BRepLib_MakeEdge& self, const TopoDS_Edge& E) {
-    return self.FacesFromEdges(E);
 }
 
 // ========================
