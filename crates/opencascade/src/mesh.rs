@@ -1,9 +1,8 @@
-// NOTE: This entire file is blocked because:
-// - BRep_Tool_Triangulation free function not generated
-// - HandlePoly_Triangulation_Get helper not generated  
-// - Poly_Triangulation_Node, Poly_Triangulation_UV, Poly_Triangulation_Normal helpers not generated
-// - compute_normals helper not generated
-// - TColgp_Array1OfDir_ctor not generated
+// NOTE: This module is blocked because:
+// - GProp_GProps::mass() is in FFI but not in module re-exports
+// - BRepGProp_Face::normal() is in FFI but not in module re-exports
+// - GeomAPI_ProjectPointOnSurf::lower_distance_parameters() is in FFI but not re-exported
+// - Poly_Triangle accessors (nodes, triangles) need iterating over triangulation
 // See TRANSITION_PLAN.md for details.
 
 use crate::primitives::Shape;

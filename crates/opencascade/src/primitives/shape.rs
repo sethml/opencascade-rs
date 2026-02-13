@@ -6,14 +6,14 @@
 use crate::{
     mesh::Mesh,
     primitives::{
-        make_axis_2, BooleanShape, Compound, Edge, Face, Shell, Solid,
+        make_axis_2, make_vec, BooleanShape, Compound, Edge, Face, Shell, Solid,
         Vertex, Wire,
     },
     Error,
 };
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep_algo_api, b_rep_fillet_api, b_rep_mesh, b_rep_prim_api, gp, message, stl_api, top_abs, top_exp, topo_ds};
+use opencascade_sys::{b_rep, b_rep_algo_api, b_rep_fillet_api, b_rep_mesh, b_rep_offset_api, b_rep_prim_api, gp, message, step_control, stl_api, top_abs, top_exp, top_loc, top_tools, topo_ds};
 use std::path::Path;
 
 pub struct Shape {
@@ -257,12 +257,12 @@ impl Shape {
         Self { inner }
     }
 
-    // NOTE: empty() is blocked because BRep_Builder default constructor not generated
-    #[allow(unused)]
     pub fn empty() -> Self {
-        unimplemented!(
-            "Shape::empty is blocked pending BRep_Builder default constructor support"
-        );
+        let mut compound = topo_ds::Compound::new();
+        let builder = b_rep::Builder::new();
+        builder.make_compound(compound.pin_mut());
+        let inner = compound.as_shape().to_owned();
+        Self { inner }
     }
 
     /// Make a box with one corner at corner_1, and the opposite corner
@@ -476,35 +476,56 @@ impl Shape {
         BooleanShape { shape, new_edges }
     }
 
-    // NOTE: read_step is blocked because STEPControl_Reader helpers not generated
-    #[allow(unused)]
-    pub fn read_step(_path: impl AsRef<Path>) -> Result<Self, Error> {
-        unimplemented!(
-            "Shape::read_step is blocked pending STEPControl_Reader helper functions"
-        );
+    pub fn read_step(path: impl AsRef<Path>) -> Result<Self, Error> {
+        let mut reader = step_control::Reader::new();
+        let path_str = path.as_ref().to_string_lossy();
+        // IFSelect_ReturnStatus: 0 = RetDone (success)
+        let status = reader.pin_mut().read_file_charptr(&path_str);
+        if status != 0 {
+            return Err(Error::StepReadFailed);
+        }
+        let progress = message::ProgressRange::new();
+        reader.pin_mut().transfer_roots(&progress);
+        let inner = reader.pin_mut().one_shape();
+        Ok(Self { inner })
     }
 
-    // NOTE: write_step is blocked because STEPControl_Writer helpers not generated
-    #[allow(unused)]
-    pub fn write_step(&self, _path: impl AsRef<Path>) -> Result<(), Error> {
-        unimplemented!(
-            "Shape::write_step is blocked pending STEPControl_Writer helper functions"
+    pub fn write_step(&self, path: impl AsRef<Path>) -> Result<(), Error> {
+        let mut writer = step_control::Writer::new();
+        let progress = message::ProgressRange::new();
+        // STEPControl_AsIs = 0
+        let status = writer.pin_mut().transfer_shape_stepmodeltype_bool_progressrange(
+            &self.inner,
+            step_control::StepModelType::Asis.into(),
+            true, // compgraph
+            &progress,
         );
+        if status != 1 { // IFSelect_RetDone = 1 for transfer
+            return Err(Error::StepWriteFailed);
+        }
+        let path_str = path.as_ref().to_string_lossy();
+        let status = writer.pin_mut().write(&path_str);
+        if status != 1 { // IFSelect_RetDone = 1
+            return Err(Error::StepWriteFailed);
+        }
+        Ok(())
     }
 
-    // NOTE: read_iges is blocked because IGESControl_Reader helpers not generated
+    // NOTE: read_iges is blocked because IGESControl_Reader::read_file()
+    // is in FFI but not in module re-exports
     #[allow(unused)]
     pub fn read_iges(_path: impl AsRef<Path>) -> Result<Self, Error> {
         unimplemented!(
-            "Shape::read_iges is blocked pending IGESControl_Reader helper functions"
+            "Shape::read_iges is blocked pending IGESControl_Reader read_file re-export"
         );
     }
 
-    // NOTE: write_iges is blocked because IGESControl_Writer helpers not generated
+    // NOTE: write_iges is blocked because IGESControl_Writer::add_shape()/compute_model()
+    // are in FFI but not in module re-exports
     #[allow(unused)]
     pub fn write_iges(&self, _path: impl AsRef<Path>) -> Result<(), Error> {
         unimplemented!(
-            "Shape::write_iges is blocked pending IGESControl_Writer helper functions"
+            "Shape::write_iges is blocked pending IGESControl_Writer re-exports"
         );
     }
 
@@ -602,35 +623,38 @@ impl Shape {
         }
     }
 
-    // NOTE: clean is blocked because ShapeUpgrade_UnifySameDomain not generated
+    // NOTE: clean is blocked because ShapeUpgrade_UnifySameDomain build/shape/
+    // allow_internal_edges methods are in FFI but not in module re-exports
     #[allow(unused)]
     #[must_use]
     pub fn clean(&self) -> Self {
         unimplemented!(
-            "Shape::clean is blocked pending ShapeUpgrade_UnifySameDomain support"
+            "Shape::clean is blocked pending ShapeUpgrade_UnifySameDomain re-export of build()/shape()"
         );
     }
 
-    // NOTE: set_global_translation is blocked because TopLoc_Location helpers not generated
-    #[allow(unused)]
-    pub fn set_global_translation(&mut self, _translation: DVec3) {
-        unimplemented!(
-            "Shape::set_global_translation is blocked pending TopLoc_Location helpers"
-        );
+    pub fn set_global_translation(&mut self, translation: DVec3) {
+        let mut transform = gp::Trsf::new();
+        let translation_vec = make_vec(translation);
+        transform.pin_mut().set_translation_vec(&translation_vec);
+        let location = top_loc::Location::new_trsf(&transform);
+        let raise_exception = false;
+        self.inner.pin_mut().move_(&location, raise_exception);
     }
 
-    // NOTE: mesh is blocked because Mesher is blocked
+    // NOTE: mesh methods are blocked because mesh.rs Mesher is blocked
+    // (GProp_GProps::mass() and other methods not in re-exports)
     #[allow(unused)]
     pub fn mesh(&self) -> Result<Mesh, Error> {
         unimplemented!(
-            "Shape::mesh is blocked pending Mesher support"
+            "Shape::mesh is blocked pending Mesher support (multiple missing re-exports)"
         );
     }
 
     #[allow(unused)]
     pub fn mesh_with_tolerance(&self, _triangulation_tolerance: f64) -> Result<Mesh, Error> {
         unimplemented!(
-            "Shape::mesh_with_tolerance is blocked pending Mesher support"
+            "Shape::mesh_with_tolerance is blocked pending Mesher support (multiple missing re-exports)"
         );
     }
 
@@ -652,41 +676,57 @@ impl Shape {
         super::FaceIterator { explorer }
     }
 
-    // NOTE: faces_along_line is blocked because BRepIntCurveSurface_Inter not generated
+    // NOTE: faces_along_line is blocked because BRepIntCurveSurface_Inter
+    // init/more/next/face methods are in FFI but not in module re-exports
     #[allow(unused)]
     pub fn faces_along_line(&self, _line_origin: DVec3, _line_dir: DVec3) -> Vec<LineFaceHitPoint> {
         unimplemented!(
-            "Shape::faces_along_line is blocked pending BRepIntCurveSurface_Inter support"
+            "Shape::faces_along_line is blocked pending BRepIntCurveSurface_Inter re-exports"
         );
     }
 
-    // NOTE: hollow is blocked because BRepOffsetAPI_MakeThickSolid helpers not generated
-    #[allow(unused)]
     #[must_use]
     pub fn hollow<T: AsRef<Face>>(
         &self,
-        _offset: f64,
-        _faces_to_remove: impl IntoIterator<Item = T>,
+        offset: f64,
+        faces_to_remove: impl IntoIterator<Item = T>,
     ) -> Self {
-        unimplemented!(
-            "Shape::hollow is blocked pending BRepOffsetAPI_MakeThickSolid support"
+        let mut faces_list = top_tools::ListOfShape::new();
+        for face in faces_to_remove.into_iter() {
+            faces_list.pin_mut().append(face.as_ref().inner.as_shape());
+        }
+        let progress = message::ProgressRange::new();
+        let mut solid_maker = b_rep_offset_api::MakeThickSolid::new();
+        // BRepOffset_Skin = 0, GeomAbs_Arc = 0
+        solid_maker.pin_mut().make_thick_solid_by_join(
+            &self.inner,
+            &faces_list,
+            offset,
+            0.001, // tolerance
+            0,     // Mode: BRepOffset_Skin
+            false, // Intersection
+            false, // SelfInter
+            0,     // Join: GeomAbs_Arc
+            false, // RemoveIntEdges
+            &progress,
         );
+        let make_shape = solid_maker.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        Self::from_shape(make_shape.shape())
     }
 
-    #[allow(unused)]
     #[must_use]
-    pub fn offset_surface(&self, _offset: f64) -> Self {
-        unimplemented!(
-            "Shape::offset_surface is blocked pending hollow support"
-        );
+    pub fn offset_surface(&self, offset: f64) -> Self {
+        let faces_to_remove: [Face; 0] = [];
+        self.hollow(offset, faces_to_remove)
     }
 
-    // NOTE: drill_hole is blocked because BRepFeat_MakeCylindricalHole not generated
+    // NOTE: drill_hole is blocked because BRepFeat_MakeCylindricalHole
+    // init/perform methods are in FFI but not in module re-exports
     #[allow(unused)]
     #[must_use]
     pub fn drill_hole(&self, _p: DVec3, _dir: DVec3, _radius: f64) -> Self {
         unimplemented!(
-            "Shape::drill_hole is blocked pending BRepFeat_MakeCylindricalHole support"
+            "Shape::drill_hole is blocked pending BRepFeat_MakeCylindricalHole re-exports"
         );
     }
 }

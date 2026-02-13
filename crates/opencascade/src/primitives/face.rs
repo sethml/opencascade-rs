@@ -8,8 +8,8 @@ use crate::{
     workplane::Workplane,
 };
 use cxx::UniquePtr;
-use glam::DVec3;
-use opencascade_sys::{b_rep_builder_api, b_rep_feat, b_rep_fillet_api, b_rep_prim_api, message, top_abs, top_exp, topo_ds};
+use glam::{dvec3, DVec3};
+use opencascade_sys::{b_rep, b_rep_algo_api, b_rep_builder_api, b_rep_feat, b_rep_fillet_api, b_rep_g_prop, b_rep_offset_api, b_rep_prim_api, b_rep_tools, g_prop, gp, message, top_abs, top_exp, top_loc, topo_ds};
 
 pub struct Face {
     pub(crate) inner: UniquePtr<topo_ds::Face>,
@@ -201,13 +201,14 @@ impl Face {
         Face::from_face(face)
     }
 
-    // NOTE: sweep_along is blocked because BRepOffsetAPI_MakePipe is not generated
-    #[allow(unused)]
     #[must_use]
-    pub fn sweep_along(&self, _path: &Wire) -> Solid {
-        unimplemented!(
-            "Face::sweep_along is blocked pending BRepOffsetAPI_MakePipe support"
-        );
+    pub fn sweep_along(&self, path: &Wire) -> Solid {
+        let profile_shape = self.inner.as_shape();
+        let mut make_pipe = b_rep_offset_api::MakePipe::new_wire_shape(&path.inner, profile_shape);
+        let make_shape = make_pipe.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let pipe_shape = make_shape.shape();
+        let solid = topo_ds::solid(pipe_shape);
+        Solid::from_solid(solid)
     }
 
     // NOTE: sweep_along_with_radius_values is blocked because law_function is blocked
@@ -232,68 +233,94 @@ impl Face {
         super::EdgeIterator { explorer }
     }
 
-    // NOTE: center_of_mass is blocked because BRepGProp_SurfaceProperties is not generated
-    #[allow(unused)]
     pub fn center_of_mass(&self) -> DVec3 {
-        unimplemented!(
-            "Face::center_of_mass is blocked pending BRepGProp_SurfaceProperties support"
+        let mut props = g_prop::GProps::new();
+        let inner_shape = self.inner.as_shape();
+        b_rep_g_prop::BRepGProp::surface_properties_shape_gprops_bool2(
+            inner_shape,
+            props.pin_mut(),
+            false, // SkipShared
+            false, // UseTriangulation
         );
+        let center = props.centre_of_mass();
+        dvec3(center.x(), center.y(), center.z())
     }
 
-    // NOTE: normal_at is blocked because BRep_Tool_Surface and related are not generated
+    // NOTE: normal_at is blocked because GeomAPI_ProjectPointOnSurf::lower_distance_parameters()
+    // and BRepGProp_Face::normal() are in FFI but not in module re-exports
     #[allow(unused)]
     pub fn normal_at(&self, _pos: DVec3) -> DVec3 {
         unimplemented!(
-            "Face::normal_at is blocked pending BRep_Tool_Surface support"
+            "Face::normal_at is blocked pending lower_distance_parameters/BRepGProp_Face::normal re-exports"
         );
     }
 
-    // NOTE: normal_at_center is blocked because it depends on center_of_mass and normal_at
-    #[allow(unused)]
     pub fn normal_at_center(&self) -> DVec3 {
+        let _center = self.center_of_mass();
+        // NOTE: normal_at_center depends on normal_at which is blocked
         unimplemented!(
-            "Face::normal_at_center is blocked pending center_of_mass and normal_at support"
+            "Face::normal_at_center is blocked pending normal_at support"
         );
     }
 
-    // NOTE: workplane is blocked because it depends on center_of_mass and normal_at
-    #[allow(unused)]
     pub fn workplane(&self) -> Workplane {
+        // NOTE: workplane depends on center_of_mass and normal_at
         unimplemented!(
-            "Face::workplane is blocked pending center_of_mass and normal_at support"
+            "Face::workplane is blocked pending normal_at support"
         );
     }
 
-    // NOTE: union is blocked because BRepAlgoAPI_Fuse needs as_shape upcast
-    #[allow(unused)]
-    pub fn union(&self, _other: &Face) -> CompoundFace {
-        unimplemented!(
-            "Face::union is blocked pending boolean operation support"
+    pub fn union(&self, other: &Face) -> CompoundFace {
+        let progress = message::ProgressRange::new();
+        let inner_shape = self.inner.as_shape();
+        let other_inner_shape = other.inner.as_shape();
+        let mut fuse = b_rep_algo_api::Fuse::new_shape2_progressrange(
+            inner_shape,
+            other_inner_shape,
+            &progress,
         );
+        let make_shape = fuse.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let fuse_shape = make_shape.shape();
+        let compound = topo_ds::compound(fuse_shape);
+        CompoundFace::from_compound(compound)
     }
 
-    // NOTE: intersect is blocked because BRepAlgoAPI_Common needs as_shape upcast
-    #[allow(unused)]
     #[must_use]
-    pub fn intersect(&self, _other: &Face) -> CompoundFace {
-        unimplemented!(
-            "Face::intersect is blocked pending boolean operation support"
+    pub fn intersect(&self, other: &Face) -> CompoundFace {
+        let progress = message::ProgressRange::new();
+        let inner_shape = self.inner.as_shape();
+        let other_inner_shape = other.inner.as_shape();
+        let mut common = b_rep_algo_api::Common::new_shape2_progressrange(
+            inner_shape,
+            other_inner_shape,
+            &progress,
         );
+        let make_shape = common.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let common_shape = make_shape.shape();
+        let compound = topo_ds::compound(common_shape);
+        CompoundFace::from_compound(compound)
     }
 
-    // NOTE: subtract is blocked because BRepAlgoAPI_Cut needs as_shape upcast
-    #[allow(unused)]
-    pub fn subtract(&self, _other: &Face) -> CompoundFace {
-        unimplemented!(
-            "Face::subtract is blocked pending boolean operation support"
+    pub fn subtract(&self, other: &Face) -> CompoundFace {
+        let progress = message::ProgressRange::new();
+        let inner_shape = self.inner.as_shape();
+        let other_inner_shape = other.inner.as_shape();
+        let mut cut = b_rep_algo_api::Cut::new_shape2_progressrange(
+            inner_shape,
+            other_inner_shape,
+            &progress,
         );
+        let make_shape = cut.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let cut_shape = make_shape.shape();
+        let compound = topo_ds::compound(cut_shape);
+        CompoundFace::from_compound(compound)
     }
 
-    // NOTE: surface_area is blocked because BRepGProp_SurfaceProperties is not generated
+    // NOTE: surface_area is blocked because GProp_GProps::mass() is not in module re-exports
     #[allow(unused)]
     pub fn surface_area(&self) -> f64 {
         unimplemented!(
-            "Face::surface_area is blocked pending BRepGProp_SurfaceProperties support"
+            "Face::surface_area is blocked pending GProp_GProps::mass() re-export"
         );
     }
 
@@ -304,13 +331,10 @@ impl Face {
         orient.into()
     }
 
-    // NOTE: outer_wire is blocked because the outer_wire helper function is not generated
-    #[allow(unused)]
     #[must_use]
     pub fn outer_wire(&self) -> Wire {
-        unimplemented!(
-            "Face::outer_wire is blocked pending outer_wire helper function support"
-        );
+        let inner = b_rep_tools::BRepTools::outer_wire(&self.inner);
+        Wire { inner }
     }
 }
 
@@ -325,10 +349,14 @@ impl AsRef<CompoundFace> for CompoundFace {
 }
 
 impl From<Face> for CompoundFace {
-    fn from(_face: Face) -> Self {
-        unimplemented!(
-            "CompoundFace::from(Face) is blocked pending BRep_Builder support"
-        );
+    fn from(face: Face) -> Self {
+        let mut compound = topo_ds::Compound::new();
+        let builder = b_rep::Builder::new();
+        builder.make_compound(compound.pin_mut());
+        let mut compound_shape = compound.as_shape().to_owned();
+        builder.add(compound_shape.pin_mut(), face.inner.as_shape());
+        let result_compound = topo_ds::compound(&compound_shape);
+        CompoundFace::from_compound(result_compound)
     }
 }
 
@@ -338,66 +366,102 @@ impl CompoundFace {
         Self { inner }
     }
 
-    // NOTE: clean is blocked because it depends on Shape::clean
+    // NOTE: clean is blocked because ShapeUpgrade_UnifySameDomain build/shape
+    // methods are not in module re-exports
     #[allow(unused)]
     #[must_use]
     pub fn clean(&self) -> Self {
         unimplemented!(
-            "CompoundFace::clean is blocked pending Shape::clean support"
+            "CompoundFace::clean is blocked pending ShapeUpgrade_UnifySameDomain re-export of build()/shape()"
         );
     }
 
-    // NOTE: extrude is blocked because cast_compound_to_shape is not generated
-    #[allow(unused)]
     #[must_use]
-    pub fn extrude(&self, _dir: DVec3) -> Shape {
-        unimplemented!(
-            "CompoundFace::extrude is blocked pending compound upcast support"
+    pub fn extrude(&self, dir: DVec3) -> Shape {
+        let prism_vec = make_vec(dir);
+        let copy = false;
+        let canonize = true;
+
+        let inner_shape = self.inner.as_shape();
+        let mut make_solid = b_rep_prim_api::MakePrism::new_shape_vec_bool2(
+            inner_shape, &prism_vec, copy, canonize
         );
+        let make_shape = make_solid.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        Shape::from_shape(make_shape.shape())
     }
 
-    // NOTE: revolve is blocked because cast_compound_to_shape is not generated
-    #[allow(unused)]
     #[must_use]
-    pub fn revolve(&self, _origin: DVec3, _axis: DVec3, _angle: Option<Angle>) -> Shape {
-        unimplemented!(
-            "CompoundFace::revolve is blocked pending compound upcast support"
-        );
+    pub fn revolve(&self, origin: DVec3, axis: DVec3, angle: Option<Angle>) -> Shape {
+        use crate::primitives::make_axis_1;
+        let revol_axis = make_axis_1(origin, axis);
+        let angle = angle.map(Angle::radians).unwrap_or(std::f64::consts::PI * 2.0);
+        let copy = false;
+
+        let inner_shape = self.inner.as_shape();
+        let mut make_revol =
+            b_rep_prim_api::MakeRevol::new_shape_ax1_real_bool(inner_shape, &revol_axis, angle, copy);
+        let make_shape = make_revol.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        Shape::from_shape(make_shape.shape())
     }
 
-    // NOTE: union is blocked because BRepAlgoAPI_Fuse is not fully accessible
-    #[allow(unused)]
     #[must_use]
-    pub fn union(&self, _other: &CompoundFace) -> CompoundFace {
-        unimplemented!(
-            "CompoundFace::union is blocked pending boolean operation support"
+    pub fn union(&self, other: &CompoundFace) -> CompoundFace {
+        let progress = message::ProgressRange::new();
+        let inner_shape = self.inner.as_shape();
+        let other_inner_shape = other.inner.as_shape();
+        let mut fuse = b_rep_algo_api::Fuse::new_shape2_progressrange(
+            inner_shape,
+            other_inner_shape,
+            &progress,
         );
+        let make_shape = fuse.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let fuse_shape = make_shape.shape();
+        let compound = topo_ds::compound(fuse_shape);
+        CompoundFace::from_compound(compound)
     }
 
-    // NOTE: intersect is blocked because BRepAlgoAPI_Common is not fully accessible
-    #[allow(unused)]
     #[must_use]
-    pub fn intersect(&self, _other: &CompoundFace) -> CompoundFace {
-        unimplemented!(
-            "CompoundFace::intersect is blocked pending boolean operation support"
+    pub fn intersect(&self, other: &CompoundFace) -> CompoundFace {
+        let progress = message::ProgressRange::new();
+        let inner_shape = self.inner.as_shape();
+        let other_inner_shape = other.inner.as_shape();
+        let mut common = b_rep_algo_api::Common::new_shape2_progressrange(
+            inner_shape,
+            other_inner_shape,
+            &progress,
         );
+        let make_shape = common.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let common_shape = make_shape.shape();
+        let compound = topo_ds::compound(common_shape);
+        CompoundFace::from_compound(compound)
     }
 
-    // NOTE: subtract is blocked because BRepAlgoAPI_Cut is not fully accessible
-    #[allow(unused)]
     #[must_use]
-    pub fn subtract(&self, _other: &CompoundFace) -> CompoundFace {
-        unimplemented!(
-            "CompoundFace::subtract is blocked pending boolean operation support"
+    pub fn subtract(&self, other: &CompoundFace) -> CompoundFace {
+        let progress = message::ProgressRange::new();
+        let inner_shape = self.inner.as_shape();
+        let other_inner_shape = other.inner.as_shape();
+        let mut cut = b_rep_algo_api::Cut::new_shape2_progressrange(
+            inner_shape,
+            other_inner_shape,
+            &progress,
         );
+        let make_shape = cut.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let cut_shape = make_shape.shape();
+        let compound = topo_ds::compound(cut_shape);
+        CompoundFace::from_compound(compound)
     }
 
-    // NOTE: set_global_translation is blocked because cast_compound_to_shape is not generated
-    #[allow(unused)]
-    pub fn set_global_translation(&mut self, _translation: DVec3) {
-        unimplemented!(
-            "CompoundFace::set_global_translation is blocked pending compound upcast support"
-        );
+    pub fn set_global_translation(&mut self, translation: DVec3) {
+        let mut transform = gp::Trsf::new();
+        let translation_vec = make_vec(translation);
+        transform.pin_mut().set_translation_vec(&translation_vec);
+        let location = top_loc::Location::new_trsf(&transform);
+        let raise_exception = false;
+        let mut compound_shape = self.inner.as_shape().to_owned();
+        compound_shape.pin_mut().move_(&location, raise_exception);
+        let updated = topo_ds::compound(&compound_shape);
+        self.inner = updated.to_owned();
     }
 }
 

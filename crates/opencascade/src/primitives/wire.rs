@@ -165,14 +165,15 @@ impl Wire {
         Self { inner: wire.to_owned() }
     }
 
-    // NOTE: sweep_along is blocked because shape upcast needs upcast functions
-    // that convert Shape to Wire, and requires generated shape functions.
-    #[allow(unused)]
     #[must_use]
-    pub fn sweep_along(&self, _path: &Wire) -> crate::primitives::Shell {
-        unimplemented!(
-            "Wire::sweep_along is blocked pending shape upcast and MakePipe support"
-        );
+    pub fn sweep_along(&self, path: &Wire) -> crate::primitives::Shell {
+        use opencascade_sys::b_rep_offset_api;
+        let profile_shape = self.inner.as_shape();
+        let mut make_pipe = b_rep_offset_api::MakePipe::new_wire_shape(&path.inner, profile_shape);
+        let make_shape = make_pipe.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let pipe_shape = make_shape.shape();
+        let shell = topo_ds::shell(pipe_shape);
+        crate::primitives::Shell::from_shell(shell)
     }
 
     // NOTE: sweep_along_with_radius_values is blocked by law_function dependency

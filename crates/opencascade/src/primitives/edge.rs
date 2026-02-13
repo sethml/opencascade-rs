@@ -179,12 +179,12 @@ impl Edge {
 
     pub fn tangent_arc(_p1: DVec3, _tangent: DVec3, _p3: DVec3) {}
 
-    // NOTE: edge_type is blocked because GeomAbs_CurveType enum is not generated
-    #[allow(unused)]
     pub fn edge_type(&self) -> EdgeType {
-        unimplemented!(
-            "Edge::edge_type is blocked pending GeomAbs_CurveType enum support"
-        );
+        let curve = b_rep_adaptor::Curve::new_edge(&self.inner);
+        let raw = curve.get_type();
+        let curve_type = geom_abs::CurveType::try_from(raw)
+            .expect("Invalid CurveType value from OCCT");
+        curve_type.into()
     }
 }
 
