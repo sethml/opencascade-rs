@@ -6,6 +6,76 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// This enumeration describes the repartition of the
+/// knots  sequence.   If all the knots  differ  by the
+/// same positive constant from the  preceding knot the
+/// "KnotDistribution" is    <Uniform>    else   it  is
+/// <NonUniform>
+/// C++ enum: `BSplCLib_KnotDistribution`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum KnotDistribution {
+    Nonuniform = 0,
+    Uniform = 1,
+}
+
+impl From<KnotDistribution> for i32 {
+    fn from(value: KnotDistribution) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for KnotDistribution {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(KnotDistribution::Nonuniform),
+            1 => Ok(KnotDistribution::Uniform),
+            _ => Err(value),
+        }
+    }
+}
+
+/// This   enumeration describes the   form  of  the
+/// sequence of mutiplicities.  MultDistribution is :
+///
+/// Constant if all the multiplicities have the same
+/// value.
+///
+/// QuasiConstant if all the internal knots have the
+/// same multiplicity and if the first and last knot
+/// have  a different  multiplicity.
+///
+/// NonConstant in other cases.
+/// C++ enum: `BSplCLib_MultDistribution`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum MultDistribution {
+    Nonconstant = 0,
+    Constant = 1,
+    Quasiconstant = 2,
+}
+
+impl From<MultDistribution> for i32 {
+    fn from(value: MultDistribution) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for MultDistribution {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(MultDistribution::Nonconstant),
+            1 => Ok(MultDistribution::Constant),
+            2 => Ok(MultDistribution::Quasiconstant),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From BSplCLib.hxx
 // ========================
@@ -91,6 +161,31 @@ impl BSplCLib {
     /// Default constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BSplCLib_ctor()
+    }
+
+    /// Reverses the array of poles. Last is the  index of
+    /// the new first pole. On  a  non periodic curve last
+    /// is Poles.Upper(). On a periodic curve last is
+    ///
+    /// (number of flat knots - degree - 1)
+    ///
+    /// or
+    ///
+    /// (sum of multiplicities(but  for the last) + degree
+    /// - 1)
+    pub fn reverse_array1ofpnt_int(
+        Poles: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt>,
+        Last: i32,
+    ) {
+        crate::ffi::BSplCLib_reverse_array1ofpnt_int(Poles, Last)
+    }
+
+    /// Reverses the array of poles.
+    pub fn reverse_array1ofpnt2d_int(
+        Poles: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt2d>,
+        Last: i32,
+    ) {
+        crate::ffi::BSplCLib_reverse_array1ofpnt2d_int(Poles, Last)
     }
 
     /// returns the degree maxima for a BSplineCurve.
@@ -265,6 +360,50 @@ impl BSplCLib {
         )
     }
 
+    /// This solves  the system Matrix.X =  B
+    /// with when Matrix is factored in LU form
+    /// The  Array   has the length of
+    /// the  rank  of the  matrix  Matrix.  The
+    /// result is stored   in Array  when  each
+    /// coordinate is  solved that is  B is the
+    /// array whose values are
+    /// B[i] = Array[i][p] for each p in 1..ArrayDimension
+    pub fn solve_banded_system_matrix_int2_array1ofpnt2d(
+        Matrix: &crate::ffi::math_Matrix,
+        UpperBandWidth: i32,
+        LowerBandWidth: i32,
+        Array: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt2d>,
+    ) -> i32 {
+        crate::ffi::BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(
+            Matrix,
+            UpperBandWidth,
+            LowerBandWidth,
+            Array,
+        )
+    }
+
+    /// This solves  the system Matrix.X =  B
+    /// with when Matrix is factored in LU form
+    /// The  Array   has the length of
+    /// the  rank  of the  matrix  Matrix.  The
+    /// result is stored   in Array  when  each
+    /// coordinate is  solved that is  B is the
+    /// array whose values are
+    /// B[i] = Array[i][p] for each p in 1..ArrayDimension
+    pub fn solve_banded_system_matrix_int2_array1ofpnt(
+        Matrix: &crate::ffi::math_Matrix,
+        UpperBandWidth: i32,
+        LowerBandWidth: i32,
+        Array: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt>,
+    ) -> i32 {
+        crate::ffi::BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(
+            Matrix,
+            UpperBandWidth,
+            LowerBandWidth,
+            Array,
+        )
+    }
+
     pub fn solve_banded_system_matrix_int2_bool_int_real2(
         Matrix: &crate::ffi::math_Matrix,
         UpperBandWidth: i32,
@@ -283,6 +422,20 @@ impl BSplCLib {
             Array,
             Weights,
         )
+    }
+
+    pub fn poles_coefficients_array1ofpnt2d2(
+        Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+        CachePoles: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt2d>,
+    ) {
+        crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2d2(Poles, CachePoles)
+    }
+
+    pub fn poles_coefficients_array1ofpnt2(
+        Poles: &crate::ffi::TColgp_Array1OfPnt,
+        CachePoles: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt>,
+    ) {
+        crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2(Poles, CachePoles)
     }
 
     /// Returns pointer to statically allocated array representing

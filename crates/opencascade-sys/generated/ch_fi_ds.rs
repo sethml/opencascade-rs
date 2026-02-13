@@ -6,6 +6,139 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// C++ enum: `ChFiDS_TypeOfConcavity`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TypeOfConcavity {
+    Concave = 0,
+    Convex = 1,
+    Tangential = 2,
+    Freebound = 3,
+    Other = 4,
+    Mixed = 5,
+}
+
+impl From<TypeOfConcavity> for i32 {
+    fn from(value: TypeOfConcavity) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TypeOfConcavity {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(TypeOfConcavity::Concave),
+            1 => Ok(TypeOfConcavity::Convex),
+            2 => Ok(TypeOfConcavity::Tangential),
+            3 => Ok(TypeOfConcavity::Freebound),
+            4 => Ok(TypeOfConcavity::Other),
+            5 => Ok(TypeOfConcavity::Mixed),
+            _ => Err(value),
+        }
+    }
+}
+
+/// --- Purpose statuts concernant la cause de l'erreur
+/// C++ enum: `ChFiDS_ErrorStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ErrorStatus {
+    Ok = 0,
+    Error = 1,
+    Walkingfailure = 2,
+    Startsolfailure = 3,
+    Twistedsurface = 4,
+}
+
+impl From<ErrorStatus> for i32 {
+    fn from(value: ErrorStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ErrorStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ErrorStatus::Ok),
+            1 => Ok(ErrorStatus::Error),
+            2 => Ok(ErrorStatus::Walkingfailure),
+            3 => Ok(ErrorStatus::Startsolfailure),
+            4 => Ok(ErrorStatus::Twistedsurface),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `ChFiDS_ChamfMethod`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ChamfMethod {
+    Sym = 0,
+    Twodist = 1,
+    Distangle = 2,
+}
+
+impl From<ChamfMethod> for i32 {
+    fn from(value: ChamfMethod) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ChamfMethod {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ChamfMethod::Sym),
+            1 => Ok(ChamfMethod::Twodist),
+            2 => Ok(ChamfMethod::Distangle),
+            _ => Err(value),
+        }
+    }
+}
+
+/// this enumeration defines several modes of chamfer
+/// C++ enum: `ChFiDS_ChamfMode`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ChamfMode {
+    /// chamfer with constant distance from spine to one of the two surfaces
+    Classicchamfer = 0,
+    /// symmetric chamfer with constant throat
+    /// that is the height of isosceles triangle in section
+    Constthroatchamfer = 1,
+    /// chamfer with constant throat: the section of chamfer is right-angled triangle,
+    /// the first of two surfaces (where is the top of the chamfer)
+    /// is virtually moved inside the solid by offset operation,
+    /// the apex of the section is on the intersection curve between moved surface and second surface,
+    /// right angle is at the top of the chamfer,
+    /// the length of the leg from apex to top is constant - it is throat
+    Constthroatwithpenetrationchamfer = 2,
+}
+
+impl From<ChamfMode> for i32 {
+    fn from(value: ChamfMode) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ChamfMode {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ChamfMode::Classicchamfer),
+            1 => Ok(ChamfMode::Constthroatchamfer),
+            2 => Ok(ChamfMode::Constthroatwithpenetrationchamfer),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From ChFiDS_CircSection.hxx
 // ========================

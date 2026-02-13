@@ -6,6 +6,38 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Enumerates built-in meshing algorithms factories implementing IMeshTools_MeshAlgoFactory
+/// interface.
+/// C++ enum: `IMeshTools_MeshAlgoType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum MeshAlgoType {
+    MeshalgotypeDefault = -1,
+    MeshalgotypeWatson = 0,
+    /// < generate 2D Delaunay triangulation based on Delabella
+    /// < algorithm (BRepMesh_DelabellaMeshAlgoFactory)
+    MeshalgotypeDelabella = 1,
+}
+
+impl From<MeshAlgoType> for i32 {
+    fn from(value: MeshAlgoType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for MeshAlgoType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            -1 => Ok(MeshAlgoType::MeshalgotypeDefault),
+            0 => Ok(MeshAlgoType::MeshalgotypeWatson),
+            1 => Ok(MeshAlgoType::MeshalgotypeDelabella),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From IMeshTools_Context.hxx
 // ========================

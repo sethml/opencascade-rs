@@ -6,6 +6,35 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Auxiliary enumeration serving as response from method Inspect
+/// C++ enum: `NCollection_CellFilter_Action`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Action {
+    /// < Target is needed and should be kept
+    Keep = 0,
+    /// < Target is not needed and can be removed from the current cell
+    Purge = 1,
+}
+
+impl From<Action> for i32 {
+    fn from(value: Action) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Action {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Action::Keep),
+            1 => Ok(Action::Purge),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From NCollection_BaseAllocator.hxx
 // ========================

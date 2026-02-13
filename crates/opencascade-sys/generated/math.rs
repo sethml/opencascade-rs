@@ -6,6 +6,38 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// C++ enum: `math_Status`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Status {
+    Ok = 0,
+    Toomanyiterations = 1,
+    Functionerror = 2,
+    Directionsearcherror = 3,
+    Notbracketed = 4,
+}
+
+impl From<Status> for i32 {
+    fn from(value: Status) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Status {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Status::Ok),
+            1 => Ok(Status::Toomanyiterations),
+            2 => Ok(Status::Functionerror),
+            3 => Ok(Status::Directionsearcherror),
+            4 => Ok(Status::Notbracketed),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From math_BissecNewton.hxx
 // ========================

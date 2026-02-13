@@ -6,6 +6,33 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Definition on the Left and the Right on the Fig.
+/// C++ enum: `MAT_Side`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Side {
+    Left = 0,
+    Right = 1,
+}
+
+impl From<Side> for i32 {
+    fn from(value: Side) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Side {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Side::Left),
+            1 => Ok(Side::Right),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From MAT_BasicElt.hxx
 // ========================

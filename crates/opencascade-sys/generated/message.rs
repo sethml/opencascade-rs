@@ -6,6 +6,549 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Defines gravity level of messages
+/// - Trace: low-level details on algorithm execution (usually for debug purposes)
+/// - Info: informative message
+/// - Warning: warning message
+/// - Alarm: non-critical error
+/// - Fail: fatal error
+/// C++ enum: `Message_Gravity`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Gravity {
+    Trace = 0,
+    Info = 1,
+    Warning = 2,
+    Alarm = 3,
+    Fail = 4,
+}
+
+impl From<Gravity> for i32 {
+    fn from(value: Gravity) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Gravity {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Gravity::Trace),
+            1 => Ok(Gravity::Info),
+            2 => Ok(Gravity::Warning),
+            3 => Ok(Gravity::Alarm),
+            4 => Ok(Gravity::Fail),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Specifies kind of report information to collect
+/// C++ enum: `Message_MetricType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum MetricType {
+    /// < no computation
+    MetrictypeNone = 0,
+    /// < OSD_Chronometer::GetThreadCPU user time
+    MetrictypeThreadcpuusertime = 1,
+    /// < OSD_Chronometer::GetThreadCPU system time
+    MetrictypeThreadcpusystemtime = 2,
+    /// < OSD_Chronometer::GetProcessCPU user time
+    MetrictypeProcesscpuusertime = 3,
+    /// < OSD_Chronometer::GetProcessCPU system time
+    MetrictypeProcesscpusystemtime = 4,
+    /// < OSD_Timer elapsed time
+    MetrictypeWallclock = 5,
+    /// < OSD_MemInfo::MemPrivate
+    MetrictypeMemprivate = 6,
+    /// < OSD_MemInfo::MemVirtual
+    MetrictypeMemvirtual = 7,
+    /// < OSD_MemInfo::MemWorkingSet
+    MetrictypeMemworkingset = 8,
+    /// < OSD_MemInfo::MemWorkingSetPeak
+    MetrictypeMemworkingsetpeak = 9,
+    /// < OSD_MemInfo::MemSwapUsage
+    MetrictypeMemswapusage = 10,
+    /// < OSD_MemInfo::MemSwapUsagePeak
+    MetrictypeMemswapusagepeak = 11,
+    /// < OSD_MemInfo::MemHeapUsage
+    MetrictypeMemheapusage = 12,
+}
+
+impl From<MetricType> for i32 {
+    fn from(value: MetricType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for MetricType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(MetricType::MetrictypeNone),
+            1 => Ok(MetricType::MetrictypeThreadcpuusertime),
+            2 => Ok(MetricType::MetrictypeThreadcpusystemtime),
+            3 => Ok(MetricType::MetrictypeProcesscpuusertime),
+            4 => Ok(MetricType::MetrictypeProcesscpusystemtime),
+            5 => Ok(MetricType::MetrictypeWallclock),
+            6 => Ok(MetricType::MetrictypeMemprivate),
+            7 => Ok(MetricType::MetrictypeMemvirtual),
+            8 => Ok(MetricType::MetrictypeMemworkingset),
+            9 => Ok(MetricType::MetrictypeMemworkingsetpeak),
+            10 => Ok(MetricType::MetrictypeMemswapusage),
+            11 => Ok(MetricType::MetrictypeMemswapusagepeak),
+            12 => Ok(MetricType::MetrictypeMemheapusage),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Enumeration covering all execution statuses supported by the class
+/// Message_ExecStatus: 32 statuses per each of 4 types (DONE, WARN, ALARM, FAIL)
+/// C++ enum: `Message_Status`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Status {
+    /// Empty status
+    None = 0,
+    /// Something done, 32 variants
+    Done1 = 256,
+    /// Something done, 32 variants
+    Done2 = 257,
+    /// Something done, 32 variants
+    Done3 = 258,
+    /// Something done, 32 variants
+    Done4 = 259,
+    /// Something done, 32 variants
+    Done5 = 260,
+    /// Something done, 32 variants
+    Done6 = 261,
+    /// Something done, 32 variants
+    Done7 = 262,
+    /// Something done, 32 variants
+    Done8 = 263,
+    /// Something done, 32 variants
+    Done9 = 264,
+    /// Something done, 32 variants
+    Done10 = 265,
+    /// Something done, 32 variants
+    Done11 = 266,
+    /// Something done, 32 variants
+    Done12 = 267,
+    /// Something done, 32 variants
+    Done13 = 268,
+    /// Something done, 32 variants
+    Done14 = 269,
+    /// Something done, 32 variants
+    Done15 = 270,
+    /// Something done, 32 variants
+    Done16 = 271,
+    /// Something done, 32 variants
+    Done17 = 272,
+    /// Something done, 32 variants
+    Done18 = 273,
+    /// Something done, 32 variants
+    Done19 = 274,
+    /// Something done, 32 variants
+    Done20 = 275,
+    /// Something done, 32 variants
+    Done21 = 276,
+    /// Something done, 32 variants
+    Done22 = 277,
+    /// Something done, 32 variants
+    Done23 = 278,
+    /// Something done, 32 variants
+    Done24 = 279,
+    /// Something done, 32 variants
+    Done25 = 280,
+    /// Something done, 32 variants
+    Done26 = 281,
+    /// Something done, 32 variants
+    Done27 = 282,
+    /// Something done, 32 variants
+    Done28 = 283,
+    /// Something done, 32 variants
+    Done29 = 284,
+    /// Something done, 32 variants
+    Done30 = 285,
+    /// Something done, 32 variants
+    Done31 = 286,
+    /// Something done, 32 variants
+    Done32 = 287,
+    /// Warning for possible problem encountered, 32 variants
+    Warn1 = 512,
+    /// Warning for possible problem encountered, 32 variants
+    Warn2 = 513,
+    /// Warning for possible problem encountered, 32 variants
+    Warn3 = 514,
+    /// Warning for possible problem encountered, 32 variants
+    Warn4 = 515,
+    /// Warning for possible problem encountered, 32 variants
+    Warn5 = 516,
+    /// Warning for possible problem encountered, 32 variants
+    Warn6 = 517,
+    /// Warning for possible problem encountered, 32 variants
+    Warn7 = 518,
+    /// Warning for possible problem encountered, 32 variants
+    Warn8 = 519,
+    /// Warning for possible problem encountered, 32 variants
+    Warn9 = 520,
+    /// Warning for possible problem encountered, 32 variants
+    Warn10 = 521,
+    /// Warning for possible problem encountered, 32 variants
+    Warn11 = 522,
+    /// Warning for possible problem encountered, 32 variants
+    Warn12 = 523,
+    /// Warning for possible problem encountered, 32 variants
+    Warn13 = 524,
+    /// Warning for possible problem encountered, 32 variants
+    Warn14 = 525,
+    /// Warning for possible problem encountered, 32 variants
+    Warn15 = 526,
+    /// Warning for possible problem encountered, 32 variants
+    Warn16 = 527,
+    /// Warning for possible problem encountered, 32 variants
+    Warn17 = 528,
+    /// Warning for possible problem encountered, 32 variants
+    Warn18 = 529,
+    /// Warning for possible problem encountered, 32 variants
+    Warn19 = 530,
+    /// Warning for possible problem encountered, 32 variants
+    Warn20 = 531,
+    /// Warning for possible problem encountered, 32 variants
+    Warn21 = 532,
+    /// Warning for possible problem encountered, 32 variants
+    Warn22 = 533,
+    /// Warning for possible problem encountered, 32 variants
+    Warn23 = 534,
+    /// Warning for possible problem encountered, 32 variants
+    Warn24 = 535,
+    /// Warning for possible problem encountered, 32 variants
+    Warn25 = 536,
+    /// Warning for possible problem encountered, 32 variants
+    Warn26 = 537,
+    /// Warning for possible problem encountered, 32 variants
+    Warn27 = 538,
+    /// Warning for possible problem encountered, 32 variants
+    Warn28 = 539,
+    /// Warning for possible problem encountered, 32 variants
+    Warn29 = 540,
+    /// Warning for possible problem encountered, 32 variants
+    Warn30 = 541,
+    /// Warning for possible problem encountered, 32 variants
+    Warn31 = 542,
+    /// Warning for possible problem encountered, 32 variants
+    Warn32 = 543,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm1 = 1024,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm2 = 1025,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm3 = 1026,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm4 = 1027,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm5 = 1028,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm6 = 1029,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm7 = 1030,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm8 = 1031,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm9 = 1032,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm10 = 1033,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm11 = 1034,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm12 = 1035,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm13 = 1036,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm14 = 1037,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm15 = 1038,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm16 = 1039,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm17 = 1040,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm18 = 1041,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm19 = 1042,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm20 = 1043,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm21 = 1044,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm22 = 1045,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm23 = 1046,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm24 = 1047,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm25 = 1048,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm26 = 1049,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm27 = 1050,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm28 = 1051,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm29 = 1052,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm30 = 1053,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm31 = 1054,
+    /// Alarm (severe warning) for problem encountered, 32 variants
+    Alarm32 = 1055,
+    /// Execution failed, 32 variants
+    Fail1 = 2048,
+    /// Execution failed, 32 variants
+    Fail2 = 2049,
+    /// Execution failed, 32 variants
+    Fail3 = 2050,
+    /// Execution failed, 32 variants
+    Fail4 = 2051,
+    /// Execution failed, 32 variants
+    Fail5 = 2052,
+    /// Execution failed, 32 variants
+    Fail6 = 2053,
+    /// Execution failed, 32 variants
+    Fail7 = 2054,
+    /// Execution failed, 32 variants
+    Fail8 = 2055,
+    /// Execution failed, 32 variants
+    Fail9 = 2056,
+    /// Execution failed, 32 variants
+    Fail10 = 2057,
+    /// Execution failed, 32 variants
+    Fail11 = 2058,
+    /// Execution failed, 32 variants
+    Fail12 = 2059,
+    /// Execution failed, 32 variants
+    Fail13 = 2060,
+    /// Execution failed, 32 variants
+    Fail14 = 2061,
+    /// Execution failed, 32 variants
+    Fail15 = 2062,
+    /// Execution failed, 32 variants
+    Fail16 = 2063,
+    /// Execution failed, 32 variants
+    Fail17 = 2064,
+    /// Execution failed, 32 variants
+    Fail18 = 2065,
+    /// Execution failed, 32 variants
+    Fail19 = 2066,
+    /// Execution failed, 32 variants
+    Fail20 = 2067,
+    /// Execution failed, 32 variants
+    Fail21 = 2068,
+    /// Execution failed, 32 variants
+    Fail22 = 2069,
+    /// Execution failed, 32 variants
+    Fail23 = 2070,
+    /// Execution failed, 32 variants
+    Fail24 = 2071,
+    /// Execution failed, 32 variants
+    Fail25 = 2072,
+    /// Execution failed, 32 variants
+    Fail26 = 2073,
+    /// Execution failed, 32 variants
+    Fail27 = 2074,
+    /// Execution failed, 32 variants
+    Fail28 = 2075,
+    /// Execution failed, 32 variants
+    Fail29 = 2076,
+    /// Execution failed, 32 variants
+    Fail30 = 2077,
+    /// Execution failed, 32 variants
+    Fail31 = 2078,
+    /// Execution failed, 32 variants
+    Fail32 = 2079,
+}
+
+impl From<Status> for i32 {
+    fn from(value: Status) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Status {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Status::None),
+            256 => Ok(Status::Done1),
+            257 => Ok(Status::Done2),
+            258 => Ok(Status::Done3),
+            259 => Ok(Status::Done4),
+            260 => Ok(Status::Done5),
+            261 => Ok(Status::Done6),
+            262 => Ok(Status::Done7),
+            263 => Ok(Status::Done8),
+            264 => Ok(Status::Done9),
+            265 => Ok(Status::Done10),
+            266 => Ok(Status::Done11),
+            267 => Ok(Status::Done12),
+            268 => Ok(Status::Done13),
+            269 => Ok(Status::Done14),
+            270 => Ok(Status::Done15),
+            271 => Ok(Status::Done16),
+            272 => Ok(Status::Done17),
+            273 => Ok(Status::Done18),
+            274 => Ok(Status::Done19),
+            275 => Ok(Status::Done20),
+            276 => Ok(Status::Done21),
+            277 => Ok(Status::Done22),
+            278 => Ok(Status::Done23),
+            279 => Ok(Status::Done24),
+            280 => Ok(Status::Done25),
+            281 => Ok(Status::Done26),
+            282 => Ok(Status::Done27),
+            283 => Ok(Status::Done28),
+            284 => Ok(Status::Done29),
+            285 => Ok(Status::Done30),
+            286 => Ok(Status::Done31),
+            287 => Ok(Status::Done32),
+            512 => Ok(Status::Warn1),
+            513 => Ok(Status::Warn2),
+            514 => Ok(Status::Warn3),
+            515 => Ok(Status::Warn4),
+            516 => Ok(Status::Warn5),
+            517 => Ok(Status::Warn6),
+            518 => Ok(Status::Warn7),
+            519 => Ok(Status::Warn8),
+            520 => Ok(Status::Warn9),
+            521 => Ok(Status::Warn10),
+            522 => Ok(Status::Warn11),
+            523 => Ok(Status::Warn12),
+            524 => Ok(Status::Warn13),
+            525 => Ok(Status::Warn14),
+            526 => Ok(Status::Warn15),
+            527 => Ok(Status::Warn16),
+            528 => Ok(Status::Warn17),
+            529 => Ok(Status::Warn18),
+            530 => Ok(Status::Warn19),
+            531 => Ok(Status::Warn20),
+            532 => Ok(Status::Warn21),
+            533 => Ok(Status::Warn22),
+            534 => Ok(Status::Warn23),
+            535 => Ok(Status::Warn24),
+            536 => Ok(Status::Warn25),
+            537 => Ok(Status::Warn26),
+            538 => Ok(Status::Warn27),
+            539 => Ok(Status::Warn28),
+            540 => Ok(Status::Warn29),
+            541 => Ok(Status::Warn30),
+            542 => Ok(Status::Warn31),
+            543 => Ok(Status::Warn32),
+            1024 => Ok(Status::Alarm1),
+            1025 => Ok(Status::Alarm2),
+            1026 => Ok(Status::Alarm3),
+            1027 => Ok(Status::Alarm4),
+            1028 => Ok(Status::Alarm5),
+            1029 => Ok(Status::Alarm6),
+            1030 => Ok(Status::Alarm7),
+            1031 => Ok(Status::Alarm8),
+            1032 => Ok(Status::Alarm9),
+            1033 => Ok(Status::Alarm10),
+            1034 => Ok(Status::Alarm11),
+            1035 => Ok(Status::Alarm12),
+            1036 => Ok(Status::Alarm13),
+            1037 => Ok(Status::Alarm14),
+            1038 => Ok(Status::Alarm15),
+            1039 => Ok(Status::Alarm16),
+            1040 => Ok(Status::Alarm17),
+            1041 => Ok(Status::Alarm18),
+            1042 => Ok(Status::Alarm19),
+            1043 => Ok(Status::Alarm20),
+            1044 => Ok(Status::Alarm21),
+            1045 => Ok(Status::Alarm22),
+            1046 => Ok(Status::Alarm23),
+            1047 => Ok(Status::Alarm24),
+            1048 => Ok(Status::Alarm25),
+            1049 => Ok(Status::Alarm26),
+            1050 => Ok(Status::Alarm27),
+            1051 => Ok(Status::Alarm28),
+            1052 => Ok(Status::Alarm29),
+            1053 => Ok(Status::Alarm30),
+            1054 => Ok(Status::Alarm31),
+            1055 => Ok(Status::Alarm32),
+            2048 => Ok(Status::Fail1),
+            2049 => Ok(Status::Fail2),
+            2050 => Ok(Status::Fail3),
+            2051 => Ok(Status::Fail4),
+            2052 => Ok(Status::Fail5),
+            2053 => Ok(Status::Fail6),
+            2054 => Ok(Status::Fail7),
+            2055 => Ok(Status::Fail8),
+            2056 => Ok(Status::Fail9),
+            2057 => Ok(Status::Fail10),
+            2058 => Ok(Status::Fail11),
+            2059 => Ok(Status::Fail12),
+            2060 => Ok(Status::Fail13),
+            2061 => Ok(Status::Fail14),
+            2062 => Ok(Status::Fail15),
+            2063 => Ok(Status::Fail16),
+            2064 => Ok(Status::Fail17),
+            2065 => Ok(Status::Fail18),
+            2066 => Ok(Status::Fail19),
+            2067 => Ok(Status::Fail20),
+            2068 => Ok(Status::Fail21),
+            2069 => Ok(Status::Fail22),
+            2070 => Ok(Status::Fail23),
+            2071 => Ok(Status::Fail24),
+            2072 => Ok(Status::Fail25),
+            2073 => Ok(Status::Fail26),
+            2074 => Ok(Status::Fail27),
+            2075 => Ok(Status::Fail28),
+            2076 => Ok(Status::Fail29),
+            2077 => Ok(Status::Fail30),
+            2078 => Ok(Status::Fail31),
+            2079 => Ok(Status::Fail32),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Definition of types of execution status supported by
+/// the class Message_ExecStatus
+/// C++ enum: `Message_StatusType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum StatusType {
+    Done = 256,
+    Warn = 512,
+    Alarm = 1024,
+    Fail = 2048,
+}
+
+impl From<StatusType> for i32 {
+    fn from(value: StatusType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for StatusType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            256 => Ok(StatusType::Done),
+            512 => Ok(StatusType::Warn),
+            1024 => Ok(StatusType::Alarm),
+            2048 => Ok(StatusType::Fail),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From Message.hxx
 // ========================

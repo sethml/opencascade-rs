@@ -6,6 +6,155 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Describes the error.
+/// C++ enum: `BRepFeat_StatusError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum StatusError {
+    Ok = 0,
+    Baddirect = 1,
+    Badintersect = 2,
+    Emptybarycurve = 3,
+    Emptycutresult = 4,
+    Falseside = 5,
+    Incdirection = 6,
+    Incslidface = 7,
+    Incparameter = 8,
+    Inctypes = 9,
+    Intervaloverlap = 10,
+    Invfirstshape = 11,
+    Invoption = 12,
+    Invshape = 13,
+    Locopenotdone = 14,
+    Locopeinvnotdone = 15,
+    Noextface = 16,
+    Nofaceprof = 17,
+    Nogluer = 18,
+    Nointersectf = 19,
+    Nointersectu = 20,
+    Noparts = 21,
+    Noprojpt = 22,
+    Notinitialized = 23,
+    Notyetimplemented = 24,
+    Nullrealtool = 25,
+    Nulltoolf = 26,
+    Nulltoolu = 27,
+}
+
+impl From<StatusError> for i32 {
+    fn from(value: StatusError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for StatusError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(StatusError::Ok),
+            1 => Ok(StatusError::Baddirect),
+            2 => Ok(StatusError::Badintersect),
+            3 => Ok(StatusError::Emptybarycurve),
+            4 => Ok(StatusError::Emptycutresult),
+            5 => Ok(StatusError::Falseside),
+            6 => Ok(StatusError::Incdirection),
+            7 => Ok(StatusError::Incslidface),
+            8 => Ok(StatusError::Incparameter),
+            9 => Ok(StatusError::Inctypes),
+            10 => Ok(StatusError::Intervaloverlap),
+            11 => Ok(StatusError::Invfirstshape),
+            12 => Ok(StatusError::Invoption),
+            13 => Ok(StatusError::Invshape),
+            14 => Ok(StatusError::Locopenotdone),
+            15 => Ok(StatusError::Locopeinvnotdone),
+            16 => Ok(StatusError::Noextface),
+            17 => Ok(StatusError::Nofaceprof),
+            18 => Ok(StatusError::Nogluer),
+            19 => Ok(StatusError::Nointersectf),
+            20 => Ok(StatusError::Nointersectu),
+            21 => Ok(StatusError::Noparts),
+            22 => Ok(StatusError::Noprojpt),
+            23 => Ok(StatusError::Notinitialized),
+            24 => Ok(StatusError::Notyetimplemented),
+            25 => Ok(StatusError::Nullrealtool),
+            26 => Ok(StatusError::Nulltoolf),
+            27 => Ok(StatusError::Nulltoolu),
+            _ => Err(value),
+        }
+    }
+}
+
+/// To declare the type of selection semantics for local operation Perform methods
+/// -   NoSelection
+/// -   SelectionFU - selection of a face up to which a
+/// local operation will be performed
+/// -   SelectionU - selection of a point up to which a
+/// local operation will be performed
+/// -   SelectionSh - selection of a shape on which a
+/// local operation will be performed
+/// -   SelectionShU - selection of a shape up to which a
+/// local operation will be performed.
+/// C++ enum: `BRepFeat_PerfSelection`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum PerfSelection {
+    Noselection = 0,
+    Selectionfu = 1,
+    Selectionu = 2,
+    Selectionsh = 3,
+    Selectionshu = 4,
+}
+
+impl From<PerfSelection> for i32 {
+    fn from(value: PerfSelection) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for PerfSelection {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(PerfSelection::Noselection),
+            1 => Ok(PerfSelection::Selectionfu),
+            2 => Ok(PerfSelection::Selectionu),
+            3 => Ok(PerfSelection::Selectionsh),
+            4 => Ok(PerfSelection::Selectionshu),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `BRepFeat_Status`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Status {
+    Noerror = 0,
+    Invalidplacement = 1,
+    Holetoolong = 2,
+}
+
+impl From<Status> for i32 {
+    fn from(value: Status) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Status {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Status::Noerror),
+            1 => Ok(Status::Invalidplacement),
+            2 => Ok(Status::Holetoolong),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From BRepFeat_Builder.hxx
 // ========================

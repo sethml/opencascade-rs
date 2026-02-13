@@ -117,15 +117,6 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_
     }
 }
 
-// Filter functions - delegate to centralized implementations in resolver module
-
-/// Check if params and return type use any enum types
-/// This is a convenience wrapper for the cpp codegen which passes params and return_type separately
-fn method_uses_enum(params: &[Param], return_type: &Option<Type>, all_enums: &HashSet<String>) -> bool {
-    resolver::params_use_enum(params, all_enums)
-        || return_type.as_ref().is_some_and(|t| resolver::type_uses_enum(t, all_enums))
-}
-
 fn type_to_cpp_param(ty: &Type) -> String {
     match ty {
         // const char* parameters should accept rust::Str from CXX
@@ -316,9 +307,6 @@ fn generate_unified_function_wrappers(
             if func.has_unbindable_types() {
                 continue;
             }
-            if method_uses_enum(&func.params, &func.return_type, &symbol_table.all_enum_names) {
-                continue;
-            }
 
             let base_rust_name = heck::AsSnakeCase(&func.short_name).to_string();
             let is_mut_version = func.params.iter().any(|p| matches!(&p.ty, Type::MutRef(_)));
@@ -337,29 +325,72 @@ fn generate_unified_function_wrappers(
                 format!("{}_{}", namespace, base_rust_name)
             };
 
-            let return_type_cpp = match &func.return_type {
-                Some(ty) => type_to_cpp(ty),
-                None => "void".to_string(),
+            let all_enums = &symbol_table.all_enum_names;
+
+            // Check if return type is an enum
+            let return_is_enum = func.return_type.as_ref().map(|ty| {
+                resolver::type_uses_enum(ty, all_enums)
+            }).unwrap_or(false);
+
+            let return_type_cpp = if return_is_enum {
+                "int32_t".to_string()
+            } else {
+                match &func.return_type {
+                    Some(ty) => type_to_cpp(ty),
+                    None => "void".to_string(),
+                }
             };
 
             let params_cpp: Vec<String> = func
                 .params
                 .iter()
-                .map(|p| format!("{} {}", type_to_cpp_param(&p.ty), p.name))
+                .map(|p| {
+                    if resolver::type_uses_enum(&p.ty, all_enums) {
+                        format!("int32_t {}", p.name)
+                    } else {
+                        format!("{} {}", type_to_cpp_param(&p.ty), p.name)
+                    }
+                })
                 .collect();
             let params_str = params_cpp.join(", ");
 
-            let args: Vec<String> = func.params.iter().map(param_to_cpp_arg).collect();
+            let args: Vec<String> = func.params.iter().map(|p| {
+                if resolver::type_uses_enum(&p.ty, all_enums) {
+                    // Extract the enum C++ name for the static_cast
+                    let enum_name = match &p.ty {
+                        Type::Class(name) => name.clone(),
+                        Type::ConstRef(inner) | Type::MutRef(inner) => {
+                            match inner.as_ref() {
+                                Type::Class(name) => name.clone(),
+                                _ => p.name.clone(),
+                            }
+                        }
+                        _ => p.name.clone(),
+                    };
+                    format!("static_cast<{}>({})", enum_name, p.name)
+                } else {
+                    param_to_cpp_arg(p)
+                }
+            }).collect();
             let args_str = args.join(", ");
 
             let call = format!("{}::{}({})", namespace, func.short_name, args_str);
 
-            writeln!(
-                output,
-                "inline {} {}({}) {{ return {}; }}",
-                return_type_cpp, wrapper_name, params_str, call
-            )
-            .unwrap();
+            if return_is_enum {
+                writeln!(
+                    output,
+                    "inline {} {}({}) {{ return static_cast<int32_t>({}); }}",
+                    return_type_cpp, wrapper_name, params_str, call
+                )
+                .unwrap();
+            } else {
+                writeln!(
+                    output,
+                    "inline {} {}({}) {{ return {}; }}",
+                    return_type_cpp, wrapper_name, params_str, call
+                )
+                .unwrap();
+            }
         }
         writeln!(output).unwrap();
     }

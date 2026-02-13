@@ -2382,8 +2382,14 @@ inline const TopLoc_Location& TopoDS_Vertex_inherited_Location(const TopoDS_Vert
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Vertex_inherited_Located(const TopoDS_Vertex& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
+inline int32_t TopoDS_Vertex_inherited_Orientation(const TopoDS_Vertex& self) {
+    return static_cast<int32_t>(self.Orientation());
+}
 inline const Handle(TopoDS_TShape)& TopoDS_Vertex_inherited_TShape(const TopoDS_Vertex& self) {
     return self.TShape();
+}
+inline int32_t TopoDS_Vertex_inherited_ShapeType(const TopoDS_Vertex& self) {
+    return static_cast<int32_t>(self.ShapeType());
 }
 inline bool TopoDS_Vertex_inherited_Free(const TopoDS_Vertex& self) {
     return self.Free();
@@ -2471,8 +2477,14 @@ inline const TopLoc_Location& TopoDS_Edge_inherited_Location(const TopoDS_Edge& 
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Edge_inherited_Located(const TopoDS_Edge& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
+inline int32_t TopoDS_Edge_inherited_Orientation(const TopoDS_Edge& self) {
+    return static_cast<int32_t>(self.Orientation());
+}
 inline const Handle(TopoDS_TShape)& TopoDS_Edge_inherited_TShape(const TopoDS_Edge& self) {
     return self.TShape();
+}
+inline int32_t TopoDS_Edge_inherited_ShapeType(const TopoDS_Edge& self) {
+    return static_cast<int32_t>(self.ShapeType());
 }
 inline bool TopoDS_Edge_inherited_Free(const TopoDS_Edge& self) {
     return self.Free();
@@ -2560,8 +2572,14 @@ inline const TopLoc_Location& TopoDS_Wire_inherited_Location(const TopoDS_Wire& 
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Wire_inherited_Located(const TopoDS_Wire& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
+inline int32_t TopoDS_Wire_inherited_Orientation(const TopoDS_Wire& self) {
+    return static_cast<int32_t>(self.Orientation());
+}
 inline const Handle(TopoDS_TShape)& TopoDS_Wire_inherited_TShape(const TopoDS_Wire& self) {
     return self.TShape();
+}
+inline int32_t TopoDS_Wire_inherited_ShapeType(const TopoDS_Wire& self) {
+    return static_cast<int32_t>(self.ShapeType());
 }
 inline bool TopoDS_Wire_inherited_Free(const TopoDS_Wire& self) {
     return self.Free();
@@ -2649,8 +2667,14 @@ inline const TopLoc_Location& TopoDS_Face_inherited_Location(const TopoDS_Face& 
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Face_inherited_Located(const TopoDS_Face& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
+inline int32_t TopoDS_Face_inherited_Orientation(const TopoDS_Face& self) {
+    return static_cast<int32_t>(self.Orientation());
+}
 inline const Handle(TopoDS_TShape)& TopoDS_Face_inherited_TShape(const TopoDS_Face& self) {
     return self.TShape();
+}
+inline int32_t TopoDS_Face_inherited_ShapeType(const TopoDS_Face& self) {
+    return static_cast<int32_t>(self.ShapeType());
 }
 inline bool TopoDS_Face_inherited_Free(const TopoDS_Face& self) {
     return self.Free();
@@ -2738,8 +2762,14 @@ inline const TopLoc_Location& TopoDS_Shell_inherited_Location(const TopoDS_Shell
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Shell_inherited_Located(const TopoDS_Shell& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
+inline int32_t TopoDS_Shell_inherited_Orientation(const TopoDS_Shell& self) {
+    return static_cast<int32_t>(self.Orientation());
+}
 inline const Handle(TopoDS_TShape)& TopoDS_Shell_inherited_TShape(const TopoDS_Shell& self) {
     return self.TShape();
+}
+inline int32_t TopoDS_Shell_inherited_ShapeType(const TopoDS_Shell& self) {
+    return static_cast<int32_t>(self.ShapeType());
 }
 inline bool TopoDS_Shell_inherited_Free(const TopoDS_Shell& self) {
     return self.Free();
@@ -2827,8 +2857,14 @@ inline const TopLoc_Location& TopoDS_Solid_inherited_Location(const TopoDS_Solid
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Solid_inherited_Located(const TopoDS_Solid& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
+inline int32_t TopoDS_Solid_inherited_Orientation(const TopoDS_Solid& self) {
+    return static_cast<int32_t>(self.Orientation());
+}
 inline const Handle(TopoDS_TShape)& TopoDS_Solid_inherited_TShape(const TopoDS_Solid& self) {
     return self.TShape();
+}
+inline int32_t TopoDS_Solid_inherited_ShapeType(const TopoDS_Solid& self) {
+    return static_cast<int32_t>(self.ShapeType());
 }
 inline bool TopoDS_Solid_inherited_Free(const TopoDS_Solid& self) {
     return self.Free();
@@ -2916,8 +2952,14 @@ inline const TopLoc_Location& TopoDS_Compound_inherited_Location(const TopoDS_Co
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Compound_inherited_Located(const TopoDS_Compound& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
+inline int32_t TopoDS_Compound_inherited_Orientation(const TopoDS_Compound& self) {
+    return static_cast<int32_t>(self.Orientation());
+}
 inline const Handle(TopoDS_TShape)& TopoDS_Compound_inherited_TShape(const TopoDS_Compound& self) {
     return self.TShape();
+}
+inline int32_t TopoDS_Compound_inherited_ShapeType(const TopoDS_Compound& self) {
+    return static_cast<int32_t>(self.ShapeType());
 }
 inline bool TopoDS_Compound_inherited_Free(const TopoDS_Compound& self) {
     return self.Free();
@@ -3005,8 +3047,14 @@ inline const TopLoc_Location& TopoDS_CompSolid_inherited_Location(const TopoDS_C
 inline std::unique_ptr<TopoDS_Shape> TopoDS_CompSolid_inherited_Located(const TopoDS_CompSolid& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
+inline int32_t TopoDS_CompSolid_inherited_Orientation(const TopoDS_CompSolid& self) {
+    return static_cast<int32_t>(self.Orientation());
+}
 inline const Handle(TopoDS_TShape)& TopoDS_CompSolid_inherited_TShape(const TopoDS_CompSolid& self) {
     return self.TShape();
+}
+inline int32_t TopoDS_CompSolid_inherited_ShapeType(const TopoDS_CompSolid& self) {
+    return static_cast<int32_t>(self.ShapeType());
 }
 inline bool TopoDS_CompSolid_inherited_Free(const TopoDS_CompSolid& self) {
     return self.Free();
@@ -4041,6 +4089,9 @@ inline void BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(BRepAlgoAPI
 inline bool BRepAlgoAPI_BooleanOperation_inherited_NonDestructive(const BRepAlgoAPI_BooleanOperation& self) {
     return self.NonDestructive();
 }
+inline int32_t BRepAlgoAPI_BooleanOperation_inherited_Glue(const BRepAlgoAPI_BooleanOperation& self) {
+    return static_cast<int32_t>(self.Glue());
+}
 inline void BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(BRepAlgoAPI_BooleanOperation& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
 }
@@ -4132,6 +4183,9 @@ inline void BRepAlgoAPI_Common_inherited_SetTools(BRepAlgoAPI_Common& self, cons
 inline const TopTools_ListOfShape& BRepAlgoAPI_Common_inherited_Tools(const BRepAlgoAPI_Common& self) {
     return self.Tools();
 }
+inline int32_t BRepAlgoAPI_Common_inherited_Operation(const BRepAlgoAPI_Common& self) {
+    return static_cast<int32_t>(self.Operation());
+}
 inline void BRepAlgoAPI_Common_inherited_Build(BRepAlgoAPI_Common& self, const Message_ProgressRange& theRange) {
     self.Build(theRange);
 }
@@ -4146,6 +4200,9 @@ inline void BRepAlgoAPI_Common_inherited_SetNonDestructive(BRepAlgoAPI_Common& s
 }
 inline bool BRepAlgoAPI_Common_inherited_NonDestructive(const BRepAlgoAPI_Common& self) {
     return self.NonDestructive();
+}
+inline int32_t BRepAlgoAPI_Common_inherited_Glue(const BRepAlgoAPI_Common& self) {
+    return static_cast<int32_t>(self.Glue());
 }
 inline void BRepAlgoAPI_Common_inherited_SetCheckInverted(BRepAlgoAPI_Common& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -4238,6 +4295,9 @@ inline void BRepAlgoAPI_Cut_inherited_SetTools(BRepAlgoAPI_Cut& self, const TopT
 inline const TopTools_ListOfShape& BRepAlgoAPI_Cut_inherited_Tools(const BRepAlgoAPI_Cut& self) {
     return self.Tools();
 }
+inline int32_t BRepAlgoAPI_Cut_inherited_Operation(const BRepAlgoAPI_Cut& self) {
+    return static_cast<int32_t>(self.Operation());
+}
 inline void BRepAlgoAPI_Cut_inherited_Build(BRepAlgoAPI_Cut& self, const Message_ProgressRange& theRange) {
     self.Build(theRange);
 }
@@ -4252,6 +4312,9 @@ inline void BRepAlgoAPI_Cut_inherited_SetNonDestructive(BRepAlgoAPI_Cut& self, b
 }
 inline bool BRepAlgoAPI_Cut_inherited_NonDestructive(const BRepAlgoAPI_Cut& self) {
     return self.NonDestructive();
+}
+inline int32_t BRepAlgoAPI_Cut_inherited_Glue(const BRepAlgoAPI_Cut& self) {
+    return static_cast<int32_t>(self.Glue());
 }
 inline void BRepAlgoAPI_Cut_inherited_SetCheckInverted(BRepAlgoAPI_Cut& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -4344,6 +4407,9 @@ inline void BRepAlgoAPI_Fuse_inherited_SetTools(BRepAlgoAPI_Fuse& self, const To
 inline const TopTools_ListOfShape& BRepAlgoAPI_Fuse_inherited_Tools(const BRepAlgoAPI_Fuse& self) {
     return self.Tools();
 }
+inline int32_t BRepAlgoAPI_Fuse_inherited_Operation(const BRepAlgoAPI_Fuse& self) {
+    return static_cast<int32_t>(self.Operation());
+}
 inline void BRepAlgoAPI_Fuse_inherited_Build(BRepAlgoAPI_Fuse& self, const Message_ProgressRange& theRange) {
     self.Build(theRange);
 }
@@ -4358,6 +4424,9 @@ inline void BRepAlgoAPI_Fuse_inherited_SetNonDestructive(BRepAlgoAPI_Fuse& self,
 }
 inline bool BRepAlgoAPI_Fuse_inherited_NonDestructive(const BRepAlgoAPI_Fuse& self) {
     return self.NonDestructive();
+}
+inline int32_t BRepAlgoAPI_Fuse_inherited_Glue(const BRepAlgoAPI_Fuse& self) {
+    return static_cast<int32_t>(self.Glue());
 }
 inline void BRepAlgoAPI_Fuse_inherited_SetCheckInverted(BRepAlgoAPI_Fuse& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -4462,6 +4531,9 @@ inline void BRepAlgoAPI_Section_inherited_SetTools(BRepAlgoAPI_Section& self, co
 inline const TopTools_ListOfShape& BRepAlgoAPI_Section_inherited_Tools(const BRepAlgoAPI_Section& self) {
     return self.Tools();
 }
+inline int32_t BRepAlgoAPI_Section_inherited_Operation(const BRepAlgoAPI_Section& self) {
+    return static_cast<int32_t>(self.Operation());
+}
 inline void BRepAlgoAPI_Section_inherited_SetArguments(BRepAlgoAPI_Section& self, const TopTools_ListOfShape& theLS) {
     self.SetArguments(theLS);
 }
@@ -4473,6 +4545,9 @@ inline void BRepAlgoAPI_Section_inherited_SetNonDestructive(BRepAlgoAPI_Section&
 }
 inline bool BRepAlgoAPI_Section_inherited_NonDestructive(const BRepAlgoAPI_Section& self) {
     return self.NonDestructive();
+}
+inline int32_t BRepAlgoAPI_Section_inherited_Glue(const BRepAlgoAPI_Section& self) {
+    return static_cast<int32_t>(self.Glue());
 }
 inline void BRepAlgoAPI_Section_inherited_SetCheckInverted(BRepAlgoAPI_Section& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -4838,6 +4913,9 @@ inline void BRepOffsetAPI_MakeThickSolid_inherited_PerformBySimple(BRepOffsetAPI
 inline const BRepOffset_MakeOffset& BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(const BRepOffsetAPI_MakeThickSolid& self) {
     return self.MakeOffset();
 }
+inline int32_t BRepOffsetAPI_MakeThickSolid_inherited_GetJoinType(const BRepOffsetAPI_MakeThickSolid& self) {
+    return static_cast<int32_t>(self.GetJoinType());
+}
 
 // ========================
 // BRepOffsetAPI_ThruSections wrappers
@@ -4891,6 +4969,9 @@ inline BRepFeat_Builder& BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(BR
 inline void BRepFeat_MakeCylindricalHole_inherited_Clear(BRepFeat_MakeCylindricalHole& self) {
     self.Clear();
 }
+inline int32_t BRepFeat_MakeCylindricalHole_inherited_Operation(const BRepFeat_MakeCylindricalHole& self) {
+    return static_cast<int32_t>(self.Operation());
+}
 inline std::unique_ptr<BOPAlgo_PPaveFiller> BRepFeat_MakeCylindricalHole_inherited_PPaveFiller(BRepFeat_MakeCylindricalHole& self) {
     return std::make_unique<BOPAlgo_PPaveFiller>(self.PPaveFiller());
 }
@@ -4914,6 +4995,9 @@ inline void BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive(BRepFeat_Ma
 }
 inline bool BRepFeat_MakeCylindricalHole_inherited_NonDestructive(const BRepFeat_MakeCylindricalHole& self) {
     return self.NonDestructive();
+}
+inline int32_t BRepFeat_MakeCylindricalHole_inherited_Glue(const BRepFeat_MakeCylindricalHole& self) {
+    return static_cast<int32_t>(self.Glue());
 }
 inline void BRepFeat_MakeCylindricalHole_inherited_SetCheckInverted(BRepFeat_MakeCylindricalHole& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -5117,6 +5201,9 @@ inline void BRepFeat_MakeDPrism_inherited_SketchFaceValid(BRepFeat_MakeDPrism& s
 }
 inline void BRepFeat_MakeDPrism_inherited_PerfSelectionValid(BRepFeat_MakeDPrism& self) {
     self.PerfSelectionValid();
+}
+inline int32_t BRepFeat_MakeDPrism_inherited_CurrentStatusError(const BRepFeat_MakeDPrism& self) {
+    return static_cast<int32_t>(self.CurrentStatusError());
 }
 
 // ========================
@@ -5444,6 +5531,9 @@ inline bool Geom_BoundedCurve_inherited_IsPeriodic(const Geom_BoundedCurve& self
 inline Standard_Real Geom_BoundedCurve_inherited_Period(const Geom_BoundedCurve& self) {
     return self.Period();
 }
+inline int32_t Geom_BoundedCurve_inherited_Continuity(const Geom_BoundedCurve& self) {
+    return static_cast<int32_t>(self.Continuity());
+}
 inline bool Geom_BoundedCurve_inherited_IsCN(const Geom_BoundedCurve& self, Standard_Integer N) {
     return self.IsCN(N);
 }
@@ -5593,6 +5683,9 @@ inline std::unique_ptr<Handle(Geom_Curve)> Geom_BoundedSurface_inherited_UIso(co
 }
 inline std::unique_ptr<Handle(Geom_Curve)> Geom_BoundedSurface_inherited_VIso(const Geom_BoundedSurface& self, Standard_Real V) {
     return std::make_unique<Handle(Geom_Curve)>(self.VIso(V));
+}
+inline int32_t Geom_BoundedSurface_inherited_Continuity(const Geom_BoundedSurface& self) {
+    return static_cast<int32_t>(self.Continuity());
 }
 inline bool Geom_BoundedSurface_inherited_IsCNu(const Geom_BoundedSurface& self, Standard_Integer N) {
     return self.IsCNu(N);
@@ -6180,6 +6273,9 @@ inline void Geom_CylindricalSurface_inherited_UReverse(Geom_CylindricalSurface& 
 inline void Geom_CylindricalSurface_inherited_VReverse(Geom_CylindricalSurface& self) {
     self.VReverse();
 }
+inline int32_t Geom_CylindricalSurface_inherited_Continuity(const Geom_CylindricalSurface& self) {
+    return static_cast<int32_t>(self.Continuity());
+}
 inline bool Geom_CylindricalSurface_inherited_IsCNu(const Geom_CylindricalSurface& self, Standard_Integer N) {
     return self.IsCNu(N);
 }
@@ -6301,6 +6397,9 @@ inline const gp_Pnt& Geom_Plane_inherited_Location(const Geom_Plane& self) {
 }
 inline const gp_Ax3& Geom_Plane_inherited_Position(const Geom_Plane& self) {
     return self.Position();
+}
+inline int32_t Geom_Plane_inherited_Continuity(const Geom_Plane& self) {
+    return static_cast<int32_t>(self.Continuity());
 }
 inline bool Geom_Plane_inherited_IsCNu(const Geom_Plane& self, Standard_Integer N) {
     return self.IsCNu(N);
@@ -6559,6 +6658,9 @@ inline bool Geom2d_BoundedCurve_inherited_IsPeriodic(const Geom2d_BoundedCurve& 
 inline Standard_Real Geom2d_BoundedCurve_inherited_Period(const Geom2d_BoundedCurve& self) {
     return self.Period();
 }
+inline int32_t Geom2d_BoundedCurve_inherited_Continuity(const Geom2d_BoundedCurve& self) {
+    return static_cast<int32_t>(self.Continuity());
+}
 inline bool Geom2d_BoundedCurve_inherited_IsCN(const Geom2d_BoundedCurve& self, Standard_Integer N) {
     return self.IsCN(N);
 }
@@ -6788,6 +6890,9 @@ inline const gp_Ax22d& Geom2d_Ellipse_inherited_Position(const Geom2d_Ellipse& s
 }
 inline void Geom2d_Ellipse_inherited_Reverse(Geom2d_Ellipse& self) {
     self.Reverse();
+}
+inline int32_t Geom2d_Ellipse_inherited_Continuity(const Geom2d_Ellipse& self) {
+    return static_cast<int32_t>(self.Continuity());
 }
 inline bool Geom2d_Ellipse_inherited_IsCN(const Geom2d_Ellipse& self, Standard_Integer N) {
     return self.IsCN(N);
@@ -7514,6 +7619,9 @@ inline std::unique_ptr<HandleLawBSpFunc> HandleLawInterpol_to_HandleLawBSpFunc(c
 }
 inline std::unique_ptr<HandleLawFunction> HandleLawInterpol_to_HandleLawFunction(const HandleLawInterpol& self_) {
     return std::make_unique<HandleLawFunction>(self_);
+}
+inline int32_t Law_Interpol_inherited_Continuity(const Law_Interpol& self) {
+    return static_cast<int32_t>(self.Continuity());
 }
 inline Standard_Real Law_Interpol_inherited_Value(Law_Interpol& self, Standard_Real X) {
     return self.Value(X);
@@ -10098,6 +10206,9 @@ inline const opencascade::handle<Standard_Type>& IMeshTools_ModelBuilder_get_typ
 }
 inline const Message_Algorithm& IMeshTools_ModelBuilder_as_Message_Algorithm(const IMeshTools_ModelBuilder& self_) { return static_cast<const Message_Algorithm&>(self_); }
 inline Message_Algorithm& IMeshTools_ModelBuilder_as_Message_Algorithm_mut(IMeshTools_ModelBuilder& self_) { return static_cast<Message_Algorithm&>(self_); }
+inline void IMeshTools_ModelBuilder_inherited_SetStatus(IMeshTools_ModelBuilder& self, int32_t theStat) {
+    self.SetStatus(static_cast<Message_Status>(theStat));
+}
 inline const Message_ExecStatus& IMeshTools_ModelBuilder_inherited_GetStatus(const IMeshTools_ModelBuilder& self) {
     return self.GetStatus();
 }
@@ -10115,6 +10226,12 @@ inline std::unique_ptr<Handle(Message_Messenger)> IMeshTools_ModelBuilder_inheri
 }
 inline void IMeshTools_ModelBuilder_inherited_AddStatus(IMeshTools_ModelBuilder& self, const Handle(Message_Algorithm)& theOther) {
     self.AddStatus(theOther);
+}
+inline std::unique_ptr<Handle(TColStd_HPackedMapOfInteger)> IMeshTools_ModelBuilder_inherited_GetMessageNumbers(const IMeshTools_ModelBuilder& self, int32_t theStatus) {
+    return std::make_unique<Handle(TColStd_HPackedMapOfInteger)>(self.GetMessageNumbers(static_cast<Message_Status>(theStatus)));
+}
+inline std::unique_ptr<Handle(TColStd_HSequenceOfHExtendedString)> IMeshTools_ModelBuilder_inherited_GetMessageStrings(const IMeshTools_ModelBuilder& self, int32_t theStatus) {
+    return std::make_unique<Handle(TColStd_HSequenceOfHExtendedString)>(self.GetMessageStrings(static_cast<Message_Status>(theStatus)));
 }
 
 // ========================
@@ -10569,6 +10686,12 @@ inline std::unique_ptr<BSplCLib_CacheParams> BSplCLib_CacheParams_ctor_int_bool_
 inline std::unique_ptr<BSplCLib> BSplCLib_ctor() {
     return std::make_unique<BSplCLib>();
 }
+inline void BSplCLib_reverse_array1ofpnt_int(TColgp_Array1OfPnt& Poles, Standard_Integer Last) {
+    return BSplCLib::Reverse(Poles, Last);
+}
+inline void BSplCLib_reverse_array1ofpnt2d_int(TColgp_Array1OfPnt2d& Poles, Standard_Integer Last) {
+    return BSplCLib::Reverse(Poles, Last);
+}
 inline Standard_Integer BSplCLib_max_degree() {
     return BSplCLib::MaxDegree();
 }
@@ -10596,8 +10719,20 @@ inline Standard_Integer BSplCLib_factor_banded_matrix(math_Matrix& Matrix, Stand
 inline Standard_Integer BSplCLib_solve_banded_system_matrix_int3_real(const math_Matrix& Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, Standard_Integer ArrayDimension, Standard_Real& Array) {
     return BSplCLib::SolveBandedSystem(Matrix, UpperBandWidth, LowerBandWidth, ArrayDimension, Array);
 }
+inline Standard_Integer BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(const math_Matrix& Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, TColgp_Array1OfPnt2d& Array) {
+    return BSplCLib::SolveBandedSystem(Matrix, UpperBandWidth, LowerBandWidth, Array);
+}
+inline Standard_Integer BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(const math_Matrix& Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, TColgp_Array1OfPnt& Array) {
+    return BSplCLib::SolveBandedSystem(Matrix, UpperBandWidth, LowerBandWidth, Array);
+}
 inline Standard_Integer BSplCLib_solve_banded_system_matrix_int2_bool_int_real2(const math_Matrix& Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, Standard_Boolean HomogenousFlag, Standard_Integer ArrayDimension, Standard_Real& Array, Standard_Real& Weights) {
     return BSplCLib::SolveBandedSystem(Matrix, UpperBandWidth, LowerBandWidth, HomogenousFlag, ArrayDimension, Array, Weights);
+}
+inline void BSplCLib_poles_coefficients_array1ofpnt2d2(const TColgp_Array1OfPnt2d& Poles, TColgp_Array1OfPnt2d& CachePoles) {
+    return BSplCLib::PolesCoefficients(Poles, CachePoles);
+}
+inline void BSplCLib_poles_coefficients_array1ofpnt2(const TColgp_Array1OfPnt& Poles, TColgp_Array1OfPnt& CachePoles) {
+    return BSplCLib::PolesCoefficients(Poles, CachePoles);
 }
 inline const Standard_Real& BSplCLib_flat_bezier_knots(Standard_Integer Degree) {
     return BSplCLib::FlatBezierKnots(Degree);
@@ -10986,6 +11121,12 @@ inline std::unique_ptr<BSplSLib> BSplSLib_ctor() {
 inline void BSplSLib_rational_derivative(Standard_Integer UDeg, Standard_Integer VDeg, Standard_Integer N, Standard_Integer M, Standard_Real& Ders, Standard_Real& RDers, Standard_Boolean All) {
     return BSplSLib::RationalDerivative(UDeg, VDeg, N, M, Ders, RDers, All);
 }
+inline void BSplSLib_reverse(TColgp_Array2OfPnt& Poles, Standard_Integer Last, Standard_Boolean UDirection) {
+    return BSplSLib::Reverse(Poles, Last, UDirection);
+}
+inline void BSplSLib_poles_coefficients(const TColgp_Array2OfPnt& Poles, TColgp_Array2OfPnt& CachePoles) {
+    return BSplSLib::PolesCoefficients(Poles, CachePoles);
+}
 
 // ========================
 // BSplSLib_EvaluatorFunction wrappers
@@ -11036,6 +11177,9 @@ inline BOPAlgo_ToolsProvider& BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(BRep
 inline void BRepFeat_Builder_inherited_Perform(BRepFeat_Builder& self, const Message_ProgressRange& theRange) {
     self.Perform(theRange);
 }
+inline int32_t BRepFeat_Builder_inherited_Operation(const BRepFeat_Builder& self) {
+    return static_cast<int32_t>(self.Operation());
+}
 inline std::unique_ptr<BOPAlgo_PPaveFiller> BRepFeat_Builder_inherited_PPaveFiller(BRepFeat_Builder& self) {
     return std::make_unique<BOPAlgo_PPaveFiller>(self.PPaveFiller());
 }
@@ -11059,6 +11203,9 @@ inline void BRepFeat_Builder_inherited_SetNonDestructive(BRepFeat_Builder& self,
 }
 inline bool BRepFeat_Builder_inherited_NonDestructive(const BRepFeat_Builder& self) {
     return self.NonDestructive();
+}
+inline int32_t BRepFeat_Builder_inherited_Glue(const BRepFeat_Builder& self) {
+    return static_cast<int32_t>(self.Glue());
 }
 inline void BRepFeat_Builder_inherited_SetCheckInverted(BRepFeat_Builder& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -11205,6 +11352,9 @@ inline void BOPAlgo_BOP_inherited_SetNonDestructive(BOPAlgo_BOP& self, bool theF
 inline bool BOPAlgo_BOP_inherited_NonDestructive(const BOPAlgo_BOP& self) {
     return self.NonDestructive();
 }
+inline int32_t BOPAlgo_BOP_inherited_Glue(const BOPAlgo_BOP& self) {
+    return static_cast<int32_t>(self.Glue());
+}
 inline void BOPAlgo_BOP_inherited_SetCheckInverted(BOPAlgo_BOP& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
 }
@@ -11350,6 +11500,9 @@ inline void BOPAlgo_ToolsProvider_inherited_SetNonDestructive(BOPAlgo_ToolsProvi
 }
 inline bool BOPAlgo_ToolsProvider_inherited_NonDestructive(const BOPAlgo_ToolsProvider& self) {
     return self.NonDestructive();
+}
+inline int32_t BOPAlgo_ToolsProvider_inherited_Glue(const BOPAlgo_ToolsProvider& self) {
+    return static_cast<int32_t>(self.Glue());
 }
 inline void BOPAlgo_ToolsProvider_inherited_SetCheckInverted(BOPAlgo_ToolsProvider& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -12200,6 +12353,9 @@ inline bool ChFi3d_FilBuilder_inherited_HasResult(const ChFi3d_FilBuilder& self)
 inline std::unique_ptr<TopoDS_Shape> ChFi3d_FilBuilder_inherited_BadShape(const ChFi3d_FilBuilder& self) {
     return std::make_unique<TopoDS_Shape>(self.BadShape());
 }
+inline int32_t ChFi3d_FilBuilder_inherited_StripeStatus(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return static_cast<int32_t>(self.StripeStatus(IC));
+}
 inline void ChFi3d_FilBuilder_inherited_Reset(ChFi3d_FilBuilder& self) {
     self.Reset();
 }
@@ -12424,6 +12580,9 @@ inline Standard_Real BRepAdaptor_Curve2d_inherited_FirstParameter(const BRepAdap
 inline Standard_Real BRepAdaptor_Curve2d_inherited_LastParameter(const BRepAdaptor_Curve2d& self) {
     return self.LastParameter();
 }
+inline int32_t BRepAdaptor_Curve2d_inherited_Continuity(const BRepAdaptor_Curve2d& self) {
+    return static_cast<int32_t>(self.Continuity());
+}
 inline std::unique_ptr<Handle(Adaptor2d_Curve2d)> BRepAdaptor_Curve2d_inherited_Trim(const BRepAdaptor_Curve2d& self, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
     return std::make_unique<Handle(Adaptor2d_Curve2d)>(self.Trim(First, Last, Tol));
 }
@@ -12456,6 +12615,9 @@ inline std::unique_ptr<gp_Vec2d> BRepAdaptor_Curve2d_inherited_DN(const BRepAdap
 }
 inline Standard_Real BRepAdaptor_Curve2d_inherited_Resolution(const BRepAdaptor_Curve2d& self, Standard_Real R3d) {
     return self.Resolution(R3d);
+}
+inline int32_t BRepAdaptor_Curve2d_inherited_GetType(const BRepAdaptor_Curve2d& self) {
+    return static_cast<int32_t>(self.GetType());
 }
 inline std::unique_ptr<gp_Lin2d> BRepAdaptor_Curve2d_inherited_Line(const BRepAdaptor_Curve2d& self) {
     return std::make_unique<gp_Lin2d>(self.Line());
@@ -12610,6 +12772,9 @@ inline bool ChFi3d_ChBuilder_inherited_HasResult(const ChFi3d_ChBuilder& self) {
 }
 inline std::unique_ptr<TopoDS_Shape> ChFi3d_ChBuilder_inherited_BadShape(const ChFi3d_ChBuilder& self) {
     return std::make_unique<TopoDS_Shape>(self.BadShape());
+}
+inline int32_t ChFi3d_ChBuilder_inherited_StripeStatus(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return static_cast<int32_t>(self.StripeStatus(IC));
 }
 inline void ChFi3d_ChBuilder_inherited_Reset(ChFi3d_ChBuilder& self) {
     self.Reset();
@@ -13240,6 +13405,9 @@ inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_make_empty_face(BRepSweep_Tr
 }
 inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Trsf& self_) { return static_cast<const BRepSweep_NumLinearRegularSweep&>(self_); }
 inline BRepSweep_NumLinearRegularSweep& BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Trsf& self_) { return static_cast<BRepSweep_NumLinearRegularSweep&>(self_); }
+inline int32_t BRepSweep_Trsf_inherited_DirectSolid(BRepSweep_Trsf& self, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
+    return static_cast<int32_t>(self.DirectSolid(aGenS, aDirS));
+}
 inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_inherited_SplitShell(const BRepSweep_Trsf& self, const TopoDS_Shape& aNewShape) {
     return std::make_unique<TopoDS_Shape>(self.SplitShell(aNewShape));
 }
@@ -13918,6 +14086,9 @@ inline void BRepLib_MakeWire_inherited_Build(BRepLib_MakeWire& self) {
 inline const TopoDS_Shape& BRepLib_MakeWire_inherited_Shape(BRepLib_MakeWire& self) {
     return self.Shape();
 }
+inline int32_t BRepLib_MakeWire_inherited_FaceStatus(const BRepLib_MakeWire& self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self.FaceStatus(F));
+}
 inline bool BRepLib_MakeWire_inherited_HasDescendants(const BRepLib_MakeWire& self, const TopoDS_Face& F) {
     return self.HasDescendants(F);
 }
@@ -13974,6 +14145,9 @@ inline void BRepLib_MakeVertex_inherited_Build(BRepLib_MakeVertex& self) {
 }
 inline const TopoDS_Shape& BRepLib_MakeVertex_inherited_Shape(BRepLib_MakeVertex& self) {
     return self.Shape();
+}
+inline int32_t BRepLib_MakeVertex_inherited_FaceStatus(const BRepLib_MakeVertex& self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self.FaceStatus(F));
 }
 inline bool BRepLib_MakeVertex_inherited_HasDescendants(const BRepLib_MakeVertex& self, const TopoDS_Face& F) {
     return self.HasDescendants(F);
@@ -14137,6 +14311,9 @@ inline void BRepLib_MakeFace_inherited_Build(BRepLib_MakeFace& self) {
 inline const TopoDS_Shape& BRepLib_MakeFace_inherited_Shape(BRepLib_MakeFace& self) {
     return self.Shape();
 }
+inline int32_t BRepLib_MakeFace_inherited_FaceStatus(const BRepLib_MakeFace& self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self.FaceStatus(F));
+}
 inline bool BRepLib_MakeFace_inherited_HasDescendants(const BRepLib_MakeFace& self, const TopoDS_Face& F) {
     return self.HasDescendants(F);
 }
@@ -14277,6 +14454,9 @@ inline void BRepLib_MakeEdge_inherited_Build(BRepLib_MakeEdge& self) {
 }
 inline const TopoDS_Shape& BRepLib_MakeEdge_inherited_Shape(BRepLib_MakeEdge& self) {
     return self.Shape();
+}
+inline int32_t BRepLib_MakeEdge_inherited_FaceStatus(const BRepLib_MakeEdge& self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self.FaceStatus(F));
 }
 inline bool BRepLib_MakeEdge_inherited_HasDescendants(const BRepLib_MakeEdge& self, const TopoDS_Face& F) {
     return self.HasDescendants(F);

@@ -6,6 +6,40 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// C++ enum: `BRepPrim_Direction`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Direction {
+    Xmin = 0,
+    Xmax = 1,
+    Ymin = 2,
+    Ymax = 3,
+    Zmin = 4,
+    Zmax = 5,
+}
+
+impl From<Direction> for i32 {
+    fn from(value: Direction) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Direction {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Direction::Xmin),
+            1 => Ok(Direction::Xmax),
+            2 => Ok(Direction::Ymin),
+            3 => Ok(Direction::Ymax),
+            4 => Ok(Direction::Zmin),
+            5 => Ok(Direction::Zmax),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From BRepPrim_Builder.hxx
 // ========================

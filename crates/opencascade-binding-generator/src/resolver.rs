@@ -284,6 +284,8 @@ pub struct ResolvedType {
     pub needs_pin: bool,
     /// Module this type comes from (for cross-module references)
     pub source_module: Option<String>,
+    /// If this is an enum type, the original C++ enum name (for static_cast in wrappers)
+    pub enum_cpp_name: Option<String>,
 }
 
 /// Complete symbol table for all modules
@@ -643,10 +645,9 @@ pub fn build_symbol_table(
                     doc_comment: v.comment.clone(),
                 }
             }).collect(),
-            // Enums are excluded because CXX requires enum class but OCCT uses unscoped enums
-            status: BindingStatus::Excluded(ExclusionReason::UsesEnum { 
-                enum_name: "CXX requires enum class".to_string() 
-            }),
+            // Enums are included via integer pass-through (i32 at FFI boundary,
+            // C++ wrappers static_cast between int32_t and the OCCT enum type)
+            status: BindingStatus::Included,
             doc_comment: enum_decl.comment.clone(),
         };
         
@@ -782,7 +783,7 @@ fn resolve_constructor(
         ResolvedParam {
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
-            ty: resolve_type(&p.ty),
+            ty: resolve_type(&p.ty, all_enum_names),
         }
     }).collect();
     
@@ -791,12 +792,6 @@ fn resolve_constructor(
         BindingStatus::Excluded(ExclusionReason::AbstractClass)
     } else if ctor.has_unbindable_types() {
         BindingStatus::Excluded(ExclusionReason::UnbindableConstructor)
-    } else if params_use_enum(&ctor.params, all_enum_names) {
-        let enum_name = ctor.params.iter()
-            .find(|p| type_uses_enum(&p.ty, all_enum_names))
-            .map(|p| format!("{:?}", p.ty))
-            .unwrap_or_default();
-        BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
     } else {
         BindingStatus::Included
     };
@@ -835,27 +830,18 @@ fn resolve_method(
         ResolvedParam {
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
-            ty: resolve_type(&p.ty),
+            ty: resolve_type(&p.ty, all_enum_names),
         }
     }).collect();
     
     // Resolve return type
-    let return_type = method.return_type.as_ref().map(resolve_type);
+    let return_type = method.return_type.as_ref().map(|t| resolve_type(t, all_enum_names));
     
     // Determine status
     let status = if method.has_unbindable_types() {
         BindingStatus::Excluded(ExclusionReason::UnbindableType {
             description: "method has unbindable types".to_string(),
         })
-    } else if params_use_enum(&method.params, all_enum_names) {
-        let enum_name = method.params.iter()
-            .find(|p| type_uses_enum(&p.ty, all_enum_names))
-            .map(|p| format!("{:?}", p.ty))
-            .unwrap_or_default();
-        BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
-    } else if method.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enum_names)) {
-        let enum_name = format!("{:?}", method.return_type);
-        BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
     } else if method_needs_explicit_lifetimes(method) {
         BindingStatus::Excluded(ExclusionReason::NeedsExplicitLifetimes)
     } else if let Some((param_name, type_name)) = method_has_unsupported_by_value_params(method) {
@@ -902,25 +888,16 @@ fn resolve_static_method(
         ResolvedParam {
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
-            ty: resolve_type(&p.ty),
+            ty: resolve_type(&p.ty, all_enum_names),
         }
     }).collect();
     
     // Resolve return type
-    let return_type = method.return_type.as_ref().map(resolve_type);
+    let return_type = method.return_type.as_ref().map(|t| resolve_type(t, all_enum_names));
     
     // Determine status
     let status = if method.has_unbindable_types() {
         BindingStatus::Excluded(ExclusionReason::UnbindableStaticMethod)
-    } else if params_use_enum(&method.params, all_enum_names) {
-        let enum_name = method.params.iter()
-            .find(|p| type_uses_enum(&p.ty, all_enum_names))
-            .map(|p| format!("{:?}", p.ty))
-            .unwrap_or_default();
-        BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
-    } else if method.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enum_names)) {
-        let enum_name = format!("{:?}", method.return_type);
-        BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
     } else if let Some((param_name, type_name)) = static_method_has_unsupported_by_value_params(method) {
         BindingStatus::Excluded(ExclusionReason::UnsupportedByValueParam { param_name, type_name })
     } else {
@@ -955,25 +932,16 @@ fn resolve_function(
         ResolvedParam {
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
-            ty: resolve_type(&p.ty),
+            ty: resolve_type(&p.ty, all_enum_names),
         }
     }).collect();
     
     // Resolve return type
-    let return_type = func.return_type.as_ref().map(resolve_type);
+    let return_type = func.return_type.as_ref().map(|t| resolve_type(t, all_enum_names));
     
     // Determine status
     let status = if func.has_unbindable_types() {
         BindingStatus::Excluded(ExclusionReason::UnbindableFunction)
-    } else if params_use_enum(&func.params, all_enum_names) {
-        let enum_name = func.params.iter()
-            .find(|p| type_uses_enum(&p.ty, all_enum_names))
-            .map(|p| format!("{:?}", p.ty))
-            .unwrap_or_default();
-        BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
-    } else if func.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enum_names)) {
-        let enum_name = format!("{:?}", func.return_type);
-        BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
     } else {
         BindingStatus::Included
     };
@@ -999,14 +967,28 @@ fn resolve_function(
 }
 
 /// Resolve a type to its code generation form
-fn resolve_type(ty: &Type) -> ResolvedType {
+fn resolve_type(ty: &Type, all_enum_names: &HashSet<String>) -> ResolvedType {
+    // Check if this type is an enum (possibly wrapped in const ref)
+    let enum_name = extract_enum_name_from_type(ty, all_enum_names);
+    if let Some(ref name) = enum_name {
+        return ResolvedType {
+            original: ty.clone(),
+            rust_ffi_type: "i32".to_string(),
+            cpp_type: "int32_t".to_string(),
+            needs_unique_ptr: false,
+            needs_pin: false,
+            source_module: None,
+            enum_cpp_name: Some(name.clone()),
+        };
+    }
+
     // For unbindable types, use a placeholder string
     // The binding status will ensure these don't get generated
     let rust_ffi_type = match ty {
         Type::RValueRef(_) => "<unbindable: rvalue-ref>".to_string(),
         _ => ty.to_rust_type_string(),
     };
-    
+
     ResolvedType {
         original: ty.clone(),
         rust_ffi_type,
@@ -1014,6 +996,18 @@ fn resolve_type(ty: &Type) -> ResolvedType {
         needs_unique_ptr: matches!(ty, Type::Class(_) | Type::Handle(_)),
         needs_pin: matches!(ty, Type::MutRef(inner) if !inner.is_primitive()),
         source_module: ty.module(),
+        enum_cpp_name: None,
+    }
+}
+
+/// Extract the enum C++ name from a type, unwrapping references
+fn extract_enum_name_from_type(ty: &Type, all_enums: &HashSet<String>) -> Option<String> {
+    match ty {
+        Type::Class(name) if all_enums.contains(name) => Some(name.clone()),
+        Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => {
+            extract_enum_name_from_type(inner, all_enums)
+        }
+        _ => None,
     }
 }
 

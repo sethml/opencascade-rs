@@ -6,6 +6,90 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// C++ enum: `Extrema_ExtFlag`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ExtFlag {
+    ExtflagMin = 0,
+    ExtflagMax = 1,
+    ExtflagMinmax = 2,
+}
+
+impl From<ExtFlag> for i32 {
+    fn from(value: ExtFlag) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ExtFlag {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ExtFlag::ExtflagMin),
+            1 => Ok(ExtFlag::ExtflagMax),
+            2 => Ok(ExtFlag::ExtflagMinmax),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `Extrema_ExtAlgo`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ExtAlgo {
+    ExtalgoGrad = 0,
+    ExtalgoTree = 1,
+}
+
+impl From<ExtAlgo> for i32 {
+    fn from(value: ExtAlgo) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ExtAlgo {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ExtAlgo::ExtalgoGrad),
+            1 => Ok(ExtAlgo::ExtalgoTree),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `Extrema_ElementType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ElementType {
+    Node = 0,
+    Uisoedge = 1,
+    Visoedge = 2,
+    Face = 3,
+}
+
+impl From<ElementType> for i32 {
+    fn from(value: ElementType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ElementType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ElementType::Node),
+            1 => Ok(ElementType::Uisoedge),
+            2 => Ok(ElementType::Visoedge),
+            3 => Ok(ElementType::Face),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From Extrema_ECC.hxx
 // ========================

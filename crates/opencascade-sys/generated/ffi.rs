@@ -13808,6 +13808,21 @@ mod ffi {
             L: &HandleLawFunction,
             E: &TopoDS_Edge,
         );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:108 - `BRepFilletAPI_MakeFillet::Add()`
+        ///
+        /// Adds a  fillet description in  the  builder
+        /// - builds a contour  of tangent edges,
+        /// - sets the radius evolution law interpolating the values
+        /// given in the array UandR :
+        ///
+        /// p2d.X() = relative parameter on the spine [0,1]
+        /// p2d.Y() = value of the radius.
+        #[cxx_name = "Add"]
+        fn add_array1ofpnt2d_edge(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            UandR: &TColgp_Array1OfPnt2d,
+            E: &TopoDS_Edge,
+        );
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:114 - `BRepFilletAPI_MakeFillet::SetRadius()`
         ///
         /// Sets the parameters of the fillet
@@ -13847,6 +13862,26 @@ mod ffi {
         fn set_radius_handlefunction_int2(
             self: Pin<&mut BRepFilletAPI_MakeFillet>,
             L: &HandleLawFunction,
+            IC: i32,
+            IinC: i32,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:148 - `BRepFilletAPI_MakeFillet::SetRadius()`
+        ///
+        /// Sets the parameters of the fillet
+        /// along the contour of index IC generated using the Add function
+        /// in the internal data structure of this algorithm,
+        /// where the radius of the fillet evolves according to the evolution law
+        /// which interpolates the set of parameter and radius pairs given
+        /// in the array UandR as follows:
+        /// -   the X coordinate of a point in UandR defines a
+        /// relative parameter on the contour (i.e. a parameter between 0 and 1),
+        /// -          the Y coordinate of a point in UandR gives the
+        /// corresponding value of the radius, and the radius evolves
+        /// between the first and last vertices of the contour of index IC.
+        #[cxx_name = "SetRadius"]
+        fn set_radius_array1ofpnt2d_int2(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            UandR: &TColgp_Array1OfPnt2d,
             IC: i32,
             IinC: i32,
         );
@@ -17056,6 +17091,18 @@ mod ffi {
         /// Raised if Index is not in the range [1, NbPoles]
         #[cxx_name = "Pole"]
         fn pole(self: &Geom_BezierCurve, Index: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BezierCurve.hxx`:290 - `Geom_BezierCurve::Poles()`
+        ///
+        /// Returns all the poles of the curve.
+        ///
+        /// Raised if the length of P is not equal to the number of poles.
+        #[cxx_name = "Poles"]
+        fn poles_array1ofpnt(self: &Geom_BezierCurve, P: Pin<&mut TColgp_Array1OfPnt>);
+        /// **Source:** `Geom_BezierCurve.hxx`:293 - `Geom_BezierCurve::Poles()`
+        ///
+        /// Returns all the poles of the curve.
+        #[cxx_name = "Poles"]
+        fn poles(self: &Geom_BezierCurve) -> &TColgp_Array1OfPnt;
         /// **Source:** `Geom_BezierCurve.hxx`:297 - `Geom_BezierCurve::Weight()`
         ///
         /// Returns the weight of range Index.
@@ -17269,6 +17316,66 @@ mod ffi {
         /// in one of the two directions U or V.
         #[cxx_name = "Increase"]
         fn increase(self: Pin<&mut Geom_BezierSurface>, UDeg: i32, VDeg: i32);
+        /// **Source:** `Geom_BezierSurface.hxx`:170 - `Geom_BezierSurface::InsertPoleColAfter()`
+        ///
+        /// Inserts a column of poles. If the surface is rational the weights
+        /// values associated with CPoles are equal defaulted to 1.
+        ///
+        /// Raised if Vindex < 1 or VIndex > NbVPoles.
+        ///
+        /// raises if VDegree is greater than MaxDegree.
+        /// raises if the Length of CPoles is not equal to NbUPoles
+        #[cxx_name = "InsertPoleColAfter"]
+        fn insert_pole_col_after(
+            self: Pin<&mut Geom_BezierSurface>,
+            VIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
+        /// **Source:** `Geom_BezierSurface.hxx`:193 - `Geom_BezierSurface::InsertPoleColBefore()`
+        ///
+        /// Inserts a column of poles. If the surface is rational the weights
+        /// values associated with CPoles are equal defaulted to 1.
+        ///
+        /// Raised if Vindex < 1 or VIndex > NbVPoles.
+        ///
+        /// Raised if VDegree is greater than MaxDegree.
+        /// Raised if the Length of CPoles is not equal to NbUPoles
+        #[cxx_name = "InsertPoleColBefore"]
+        fn insert_pole_col_before(
+            self: Pin<&mut Geom_BezierSurface>,
+            VIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
+        /// **Source:** `Geom_BezierSurface.hxx`:216 - `Geom_BezierSurface::InsertPoleRowAfter()`
+        ///
+        /// Inserts a row of poles. If the surface is rational the weights
+        /// values associated with CPoles are equal defaulted to 1.
+        ///
+        /// Raised if Uindex < 1 or UIndex > NbUPoles.
+        ///
+        /// Raised if UDegree is greater than MaxDegree.
+        /// Raised if the Length of CPoles is not equal to NbVPoles
+        #[cxx_name = "InsertPoleRowAfter"]
+        fn insert_pole_row_after(
+            self: Pin<&mut Geom_BezierSurface>,
+            UIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
+        /// **Source:** `Geom_BezierSurface.hxx`:239 - `Geom_BezierSurface::InsertPoleRowBefore()`
+        ///
+        /// Inserts a row of poles. If the surface is rational the weights
+        /// values associated with CPoles are equal defaulted to 1.
+        ///
+        /// Raised if Uindex < 1 or UIndex > NbUPoles.
+        ///
+        /// Raised if UDegree is greater than MaxDegree.
+        /// Raised if the Length of CPoles is not equal to NbVPoles
+        #[cxx_name = "InsertPoleRowBefore"]
+        fn insert_pole_row_before(
+            self: Pin<&mut Geom_BezierSurface>,
+            UIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
         /// **Source:** `Geom_BezierSurface.hxx`:261 - `Geom_BezierSurface::RemovePoleCol()`
         ///
         /// Removes a column of poles.
@@ -17345,6 +17452,34 @@ mod ffi {
             VIndex: i32,
             P: &gp_Pnt,
             Weight: f64,
+        );
+        /// **Source:** `Geom_BezierSurface.hxx`:325 - `Geom_BezierSurface::SetPoleCol()`
+        ///
+        /// Modifies a column of poles.
+        /// The length of CPoles can be lower but not greater than NbUPoles
+        /// so you can modify just a part of the column.
+        /// Raised if VIndex < 1 or  VIndex > NbVPoles
+        ///
+        /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles
+        #[cxx_name = "SetPoleCol"]
+        fn set_pole_col(
+            self: Pin<&mut Geom_BezierSurface>,
+            VIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
+        /// **Source:** `Geom_BezierSurface.hxx`:348 - `Geom_BezierSurface::SetPoleRow()`
+        ///
+        /// Modifies a row of poles.
+        /// The length of CPoles can be lower but not greater than NbVPoles
+        /// so you can modify just a part of the row.
+        /// Raised if UIndex < 1 or  UIndex > NbUPoles
+        ///
+        /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles
+        #[cxx_name = "SetPoleRow"]
+        fn set_pole_row(
+            self: Pin<&mut Geom_BezierSurface>,
+            UIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
         );
         /// **Source:** `Geom_BezierSurface.hxx`:372 - `Geom_BezierSurface::SetWeight()`
         ///
@@ -17477,6 +17612,19 @@ mod ffi {
         /// VIndex < 1 or VIndex > NbVPoles.
         #[cxx_name = "Pole"]
         fn pole(self: &Geom_BezierSurface, UIndex: i32, VIndex: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BezierSurface.hxx`:514 - `Geom_BezierSurface::Poles()`
+        ///
+        /// Returns the poles of the Bezier surface.
+        ///
+        /// Raised if the length of P in the U an V direction is not equal to
+        /// NbUPoles and NbVPoles.
+        #[cxx_name = "Poles"]
+        fn poles_array2ofpnt(self: &Geom_BezierSurface, P: Pin<&mut TColgp_Array2OfPnt>);
+        /// **Source:** `Geom_BezierSurface.hxx`:517 - `Geom_BezierSurface::Poles()`
+        ///
+        /// Returns the poles of the Bezier surface.
+        #[cxx_name = "Poles"]
+        fn poles(self: &Geom_BezierSurface) -> &TColgp_Array2OfPnt;
         /// **Source:** `Geom_BezierSurface.hxx`:521 - `Geom_BezierSurface::UDegree()`
         ///
         /// Returns the degree of the surface in the U direction it is
@@ -18323,6 +18471,18 @@ mod ffi {
         /// Raised if Index < 1 or Index > NbPoles.
         #[cxx_name = "Pole"]
         fn pole(self: &Geom_BSplineCurve, Index: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BSplineCurve.hxx`:784 - `Geom_BSplineCurve::Poles()`
+        ///
+        /// Returns the poles of the B-spline curve;
+        ///
+        /// Raised if the length of P is not equal to the number of poles.
+        #[cxx_name = "Poles"]
+        fn poles_array1ofpnt(self: &Geom_BSplineCurve, P: Pin<&mut TColgp_Array1OfPnt>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:787 - `Geom_BSplineCurve::Poles()`
+        ///
+        /// Returns the poles of the B-spline curve;
+        #[cxx_name = "Poles"]
+        fn poles(self: &Geom_BSplineCurve) -> &TColgp_Array1OfPnt;
         /// **Source:** `Geom_BSplineCurve.hxx`:797 - `Geom_BSplineCurve::Weight()`
         ///
         /// Returns the weight of the pole of range Index .
@@ -19204,6 +19364,30 @@ mod ffi {
             P: &gp_Pnt,
             Weight: f64,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:738 - `Geom_BSplineSurface::SetPoleCol()`
+        ///
+        /// Changes a column of poles or a part of this column.
+        /// Raised if Vindex < 1 or VIndex > NbVPoles.
+        ///
+        /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles.
+        #[cxx_name = "SetPoleCol"]
+        fn set_pole_col(
+            self: Pin<&mut Geom_BSplineSurface>,
+            VIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
+        /// **Source:** `Geom_BSplineSurface.hxx`:774 - `Geom_BSplineSurface::SetPoleRow()`
+        ///
+        /// Changes a row of poles or a part of this row.
+        /// Raised if Uindex < 1 or UIndex > NbUPoles.
+        ///
+        /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles.
+        #[cxx_name = "SetPoleRow"]
+        fn set_pole_row(
+            self: Pin<&mut Geom_BSplineSurface>,
+            UIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
         /// **Source:** `Geom_BSplineSurface.hxx`:785 - `Geom_BSplineSurface::SetWeight()`
         ///
         /// Changes the weight of the pole of range UIndex, VIndex.
@@ -19389,6 +19573,19 @@ mod ffi {
         /// VIndex > NbVPoles.
         #[cxx_name = "Pole"]
         fn pole(self: &Geom_BSplineSurface, UIndex: i32, VIndex: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BSplineSurface.hxx`:959 - `Geom_BSplineSurface::Poles()`
+        ///
+        /// Returns the poles of the B-spline surface.
+        ///
+        /// Raised if the length of P in the U and V direction
+        /// is not equal to NbUpoles and NbVPoles.
+        #[cxx_name = "Poles"]
+        fn poles_array2ofpnt(self: &Geom_BSplineSurface, P: Pin<&mut TColgp_Array2OfPnt>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:962 - `Geom_BSplineSurface::Poles()`
+        ///
+        /// Returns the poles of the B-spline surface.
+        #[cxx_name = "Poles"]
+        fn poles(self: &Geom_BSplineSurface) -> &TColgp_Array2OfPnt;
         /// **Source:** `Geom_BSplineSurface.hxx`:966 - `Geom_BSplineSurface::UDegree()`
         ///
         /// Returns the degree of the normalized B-splines Ni,n in the U
@@ -21889,10 +22086,28 @@ mod ffi {
         /// points through which the curve passes, as
         /// defined at the time of initialization).
         #[cxx_name = "Load"]
-        fn load(
+        fn load_vec2_bool(
             self: Pin<&mut GeomAPI_Interpolate>,
             InitialTangent: &gp_Vec,
             FinalTangent: &gp_Vec,
+            Scale: bool,
+        );
+        /// **Source:** `GeomAPI_Interpolate.hxx`:157 - `GeomAPI_Interpolate::Load()`
+        ///
+        /// Assigns this constrained BSpline curve to be
+        /// tangential to vectors defined in the table Tangents,
+        /// which is parallel to the table of points
+        /// through which the curve passes, as
+        /// defined at the time of initialization. Vectors
+        /// in the table Tangents are defined only if
+        /// the flag given in the parallel table
+        /// TangentFlags is true: only these vectors
+        /// are set as tangency constraints.
+        #[cxx_name = "Load"]
+        fn load_array1ofvec_handleharray1ofboolean_bool(
+            self: Pin<&mut GeomAPI_Interpolate>,
+            Tangents: &TColgp_Array1OfVec,
+            TangentFlags: &HandleTColStdHArray1OfBoolean,
             Scale: bool,
         );
         /// **Source:** `GeomAPI_Interpolate.hxx`:163 - `GeomAPI_Interpolate::ClearTangents()`
@@ -25297,6 +25512,72 @@ mod ffi {
         /// Constructs an empty interpolative evolution law.
         /// The function Set is used to define the law.
         fn Law_Interpol_ctor() -> UniquePtr<Law_Interpol>;
+        /// **Source:** `Law_Interpol.hxx`:52 - `Law_Interpol::Set()`
+        ///
+        /// Defines this evolution law by interpolating the set of 2D
+        /// points ParAndRad. The Y coordinate of a point of
+        /// ParAndRad is the value of the function at the parameter
+        /// point given by its X coordinate.
+        /// If Periodic is true, this function is assumed to be periodic.
+        /// Warning
+        /// -   The X coordinates of points in the table ParAndRad
+        /// must be given in ascendant order.
+        /// -   If Periodic is true, the first and last Y coordinates of
+        /// points in the table ParAndRad are assumed to be
+        /// equal. In addition, with the second syntax, Dd and Df
+        /// are also assumed to be equal. If this is not the case,
+        /// Set uses the first value(s) as last value(s).
+        #[cxx_name = "Set"]
+        fn set_array1ofpnt2d_bool(
+            self: Pin<&mut Law_Interpol>,
+            ParAndRad: &TColgp_Array1OfPnt2d,
+            Periodic: bool,
+        );
+        /// **Source:** `Law_Interpol.hxx`:55 - `Law_Interpol::SetInRelative()`
+        #[cxx_name = "SetInRelative"]
+        fn set_in_relative_array1ofpnt2d_real2_bool(
+            self: Pin<&mut Law_Interpol>,
+            ParAndRad: &TColgp_Array1OfPnt2d,
+            Ud: f64,
+            Uf: f64,
+            Periodic: bool,
+        );
+        /// **Source:** `Law_Interpol.hxx`:75 - `Law_Interpol::Set()`
+        ///
+        /// Defines this evolution law by interpolating the set of 2D
+        /// points ParAndRad. The Y coordinate of a point of
+        /// ParAndRad is the value of the function at the parameter
+        /// point given by its X coordinate.
+        /// If Periodic is true, this function is assumed to be periodic.
+        /// In the second syntax, Dd and Df define the values of
+        /// the first derivative of the function at its first and last points.
+        /// Warning
+        /// -   The X coordinates of points in the table ParAndRad
+        /// must be given in ascendant order.
+        /// -   If Periodic is true, the first and last Y coordinates of
+        /// points in the table ParAndRad are assumed to be
+        /// equal. In addition, with the second syntax, Dd and Df
+        /// are also assumed to be equal. If this is not the case,
+        /// Set uses the first value(s) as last value(s).
+        #[cxx_name = "Set"]
+        fn set_array1ofpnt2d_real2_bool(
+            self: Pin<&mut Law_Interpol>,
+            ParAndRad: &TColgp_Array1OfPnt2d,
+            Dd: f64,
+            Df: f64,
+            Periodic: bool,
+        );
+        /// **Source:** `Law_Interpol.hxx`:80 - `Law_Interpol::SetInRelative()`
+        #[cxx_name = "SetInRelative"]
+        fn set_in_relative_array1ofpnt2d_real4_bool(
+            self: Pin<&mut Law_Interpol>,
+            ParAndRad: &TColgp_Array1OfPnt2d,
+            Ud: f64,
+            Uf: f64,
+            Dd: f64,
+            Df: f64,
+            Periodic: bool,
+        );
         /// **Source:** `Law_Interpol.hxx`:87 - `Law_Interpol::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Law_Interpol) -> &HandleStandardType;
@@ -26020,6 +26301,13 @@ mod ffi {
         fn TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(
             theOther: &TColgp_Array1OfCirc2d,
         ) -> UniquePtr<TColgp_HArray1OfCirc2d>;
+        /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfCirc2d) -> &TColgp_Array1OfCirc2d;
+        /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfCirc2d>)
+            -> Pin<&mut TColgp_Array1OfCirc2d>;
         /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfCirc2d) -> &HandleStandardType;
@@ -26056,6 +26344,12 @@ mod ffi {
         fn TColgp_HArray1OfDir_ctor_array1ofdir(
             theOther: &TColgp_Array1OfDir,
         ) -> UniquePtr<TColgp_HArray1OfDir>;
+        /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfDir) -> &TColgp_Array1OfDir;
+        /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfDir>) -> Pin<&mut TColgp_Array1OfDir>;
         /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfDir) -> &HandleStandardType;
@@ -26092,6 +26386,12 @@ mod ffi {
         fn TColgp_HArray1OfDir2d_ctor_array1ofdir2d(
             theOther: &TColgp_Array1OfDir2d,
         ) -> UniquePtr<TColgp_HArray1OfDir2d>;
+        /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfDir2d) -> &TColgp_Array1OfDir2d;
+        /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfDir2d>) -> Pin<&mut TColgp_Array1OfDir2d>;
         /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfDir2d) -> &HandleStandardType;
@@ -26128,6 +26428,12 @@ mod ffi {
         fn TColgp_HArray1OfLin2d_ctor_array1oflin2d(
             theOther: &TColgp_Array1OfLin2d,
         ) -> UniquePtr<TColgp_HArray1OfLin2d>;
+        /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfLin2d) -> &TColgp_Array1OfLin2d;
+        /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfLin2d>) -> Pin<&mut TColgp_Array1OfLin2d>;
         /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfLin2d) -> &HandleStandardType;
@@ -26164,6 +26470,12 @@ mod ffi {
         fn TColgp_HArray1OfPnt_ctor_array1ofpnt(
             theOther: &TColgp_Array1OfPnt,
         ) -> UniquePtr<TColgp_HArray1OfPnt>;
+        /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfPnt) -> &TColgp_Array1OfPnt;
+        /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfPnt>) -> Pin<&mut TColgp_Array1OfPnt>;
         /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfPnt) -> &HandleStandardType;
@@ -26200,6 +26512,12 @@ mod ffi {
         fn TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(
             theOther: &TColgp_Array1OfPnt2d,
         ) -> UniquePtr<TColgp_HArray1OfPnt2d>;
+        /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfPnt2d) -> &TColgp_Array1OfPnt2d;
+        /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfPnt2d>) -> Pin<&mut TColgp_Array1OfPnt2d>;
         /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfPnt2d) -> &HandleStandardType;
@@ -26236,6 +26554,12 @@ mod ffi {
         fn TColgp_HArray1OfVec_ctor_array1ofvec(
             theOther: &TColgp_Array1OfVec,
         ) -> UniquePtr<TColgp_HArray1OfVec>;
+        /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfVec) -> &TColgp_Array1OfVec;
+        /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfVec>) -> Pin<&mut TColgp_Array1OfVec>;
         /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfVec) -> &HandleStandardType;
@@ -26272,6 +26596,12 @@ mod ffi {
         fn TColgp_HArray1OfVec2d_ctor_array1ofvec2d(
             theOther: &TColgp_Array1OfVec2d,
         ) -> UniquePtr<TColgp_HArray1OfVec2d>;
+        /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfVec2d) -> &TColgp_Array1OfVec2d;
+        /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfVec2d>) -> Pin<&mut TColgp_Array1OfVec2d>;
         /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfVec2d) -> &HandleStandardType;
@@ -26308,6 +26638,12 @@ mod ffi {
         fn TColgp_HArray1OfXY_ctor_array1ofxy(
             theOther: &TColgp_Array1OfXY,
         ) -> UniquePtr<TColgp_HArray1OfXY>;
+        /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfXY) -> &TColgp_Array1OfXY;
+        /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfXY>) -> Pin<&mut TColgp_Array1OfXY>;
         /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfXY) -> &HandleStandardType;
@@ -26344,6 +26680,12 @@ mod ffi {
         fn TColgp_HArray1OfXYZ_ctor_array1ofxyz(
             theOther: &TColgp_Array1OfXYZ,
         ) -> UniquePtr<TColgp_HArray1OfXYZ>;
+        /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfXYZ) -> &TColgp_Array1OfXYZ;
+        /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfXYZ>) -> Pin<&mut TColgp_Array1OfXYZ>;
         /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfXYZ) -> &HandleStandardType;
@@ -26375,6 +26717,13 @@ mod ffi {
         fn TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(
             theOther: &TColgp_Array2OfCirc2d,
         ) -> UniquePtr<TColgp_HArray2OfCirc2d>;
+        /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfCirc2d) -> &TColgp_Array2OfCirc2d;
+        /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfCirc2d>)
+            -> Pin<&mut TColgp_Array2OfCirc2d>;
         /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfCirc2d) -> &HandleStandardType;
@@ -26406,6 +26755,12 @@ mod ffi {
         fn TColgp_HArray2OfDir_ctor_array2ofdir(
             theOther: &TColgp_Array2OfDir,
         ) -> UniquePtr<TColgp_HArray2OfDir>;
+        /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfDir) -> &TColgp_Array2OfDir;
+        /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfDir>) -> Pin<&mut TColgp_Array2OfDir>;
         /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfDir) -> &HandleStandardType;
@@ -26437,6 +26792,12 @@ mod ffi {
         fn TColgp_HArray2OfDir2d_ctor_array2ofdir2d(
             theOther: &TColgp_Array2OfDir2d,
         ) -> UniquePtr<TColgp_HArray2OfDir2d>;
+        /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfDir2d) -> &TColgp_Array2OfDir2d;
+        /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfDir2d>) -> Pin<&mut TColgp_Array2OfDir2d>;
         /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfDir2d) -> &HandleStandardType;
@@ -26468,6 +26829,12 @@ mod ffi {
         fn TColgp_HArray2OfLin2d_ctor_array2oflin2d(
             theOther: &TColgp_Array2OfLin2d,
         ) -> UniquePtr<TColgp_HArray2OfLin2d>;
+        /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfLin2d) -> &TColgp_Array2OfLin2d;
+        /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfLin2d>) -> Pin<&mut TColgp_Array2OfLin2d>;
         /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfLin2d) -> &HandleStandardType;
@@ -26499,6 +26866,12 @@ mod ffi {
         fn TColgp_HArray2OfPnt_ctor_array2ofpnt(
             theOther: &TColgp_Array2OfPnt,
         ) -> UniquePtr<TColgp_HArray2OfPnt>;
+        /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfPnt) -> &TColgp_Array2OfPnt;
+        /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfPnt>) -> Pin<&mut TColgp_Array2OfPnt>;
         /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfPnt) -> &HandleStandardType;
@@ -26530,6 +26903,12 @@ mod ffi {
         fn TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(
             theOther: &TColgp_Array2OfPnt2d,
         ) -> UniquePtr<TColgp_HArray2OfPnt2d>;
+        /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfPnt2d) -> &TColgp_Array2OfPnt2d;
+        /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfPnt2d>) -> Pin<&mut TColgp_Array2OfPnt2d>;
         /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfPnt2d) -> &HandleStandardType;
@@ -26561,6 +26940,12 @@ mod ffi {
         fn TColgp_HArray2OfVec_ctor_array2ofvec(
             theOther: &TColgp_Array2OfVec,
         ) -> UniquePtr<TColgp_HArray2OfVec>;
+        /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfVec) -> &TColgp_Array2OfVec;
+        /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfVec>) -> Pin<&mut TColgp_Array2OfVec>;
         /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfVec) -> &HandleStandardType;
@@ -26592,6 +26977,12 @@ mod ffi {
         fn TColgp_HArray2OfVec2d_ctor_array2ofvec2d(
             theOther: &TColgp_Array2OfVec2d,
         ) -> UniquePtr<TColgp_HArray2OfVec2d>;
+        /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfVec2d) -> &TColgp_Array2OfVec2d;
+        /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfVec2d>) -> Pin<&mut TColgp_Array2OfVec2d>;
         /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfVec2d) -> &HandleStandardType;
@@ -26623,6 +27014,12 @@ mod ffi {
         fn TColgp_HArray2OfXY_ctor_array2ofxy(
             theOther: &TColgp_Array2OfXY,
         ) -> UniquePtr<TColgp_HArray2OfXY>;
+        /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfXY) -> &TColgp_Array2OfXY;
+        /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfXY>) -> Pin<&mut TColgp_Array2OfXY>;
         /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfXY) -> &HandleStandardType;
@@ -26654,6 +27051,12 @@ mod ffi {
         fn TColgp_HArray2OfXYZ_ctor_array2ofxyz(
             theOther: &TColgp_Array2OfXYZ,
         ) -> UniquePtr<TColgp_HArray2OfXYZ>;
+        /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfXYZ) -> &TColgp_Array2OfXYZ;
+        /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfXYZ>) -> Pin<&mut TColgp_Array2OfXYZ>;
         /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfXYZ) -> &HandleStandardType;
@@ -36114,6 +36517,23 @@ mod ffi {
         ///
         /// Default constructor
         fn BSplCLib_ctor() -> UniquePtr<BSplCLib>;
+        /// **Source:** `BSplCLib.hxx`:334 - `BSplCLib::Reverse()`
+        ///
+        /// Reverses the array of poles. Last is the  index of
+        /// the new first pole. On  a  non periodic curve last
+        /// is Poles.Upper(). On a periodic curve last is
+        ///
+        /// (number of flat knots - degree - 1)
+        ///
+        /// or
+        ///
+        /// (sum of multiplicities(but  for the last) + degree
+        /// - 1)
+        fn BSplCLib_reverse_array1ofpnt_int(Poles: Pin<&mut TColgp_Array1OfPnt>, Last: i32);
+        /// **Source:** `BSplCLib.hxx`:337 - `BSplCLib::Reverse()`
+        ///
+        /// Reverses the array of poles.
+        fn BSplCLib_reverse_array1ofpnt2d_int(Poles: Pin<&mut TColgp_Array1OfPnt2d>, Last: i32);
         /// **Source:** `BSplCLib.hxx`:352 - `BSplCLib::MaxDegree()`
         ///
         /// returns the degree maxima for a BSplineCurve.
@@ -36271,6 +36691,38 @@ mod ffi {
             ArrayDimension: i32,
             Array: &mut f64,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1282 - `BSplCLib::SolveBandedSystem()`
+        ///
+        /// This solves  the system Matrix.X =  B
+        /// with when Matrix is factored in LU form
+        /// The  Array   has the length of
+        /// the  rank  of the  matrix  Matrix.  The
+        /// result is stored   in Array  when  each
+        /// coordinate is  solved that is  B is the
+        /// array whose values are
+        /// B[i] = Array[i][p] for each p in 1..ArrayDimension
+        fn BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(
+            Matrix: &math_Matrix,
+            UpperBandWidth: i32,
+            LowerBandWidth: i32,
+            Array: Pin<&mut TColgp_Array1OfPnt2d>,
+        ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1295 - `BSplCLib::SolveBandedSystem()`
+        ///
+        /// This solves  the system Matrix.X =  B
+        /// with when Matrix is factored in LU form
+        /// The  Array   has the length of
+        /// the  rank  of the  matrix  Matrix.  The
+        /// result is stored   in Array  when  each
+        /// coordinate is  solved that is  B is the
+        /// array whose values are
+        /// B[i] = Array[i][p] for each p in 1..ArrayDimension
+        fn BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(
+            Matrix: &math_Matrix,
+            UpperBandWidth: i32,
+            LowerBandWidth: i32,
+            Array: Pin<&mut TColgp_Array1OfPnt>,
+        ) -> i32;
         /// **Source:** `BSplCLib.hxx`:1300 - `BSplCLib::SolveBandedSystem()`
         fn BSplCLib_solve_banded_system_matrix_int2_bool_int_real2(
             Matrix: &math_Matrix,
@@ -36281,6 +36733,16 @@ mod ffi {
             Array: &mut f64,
             Weights: &mut f64,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:2003 - `BSplCLib::PolesCoefficients()`
+        fn BSplCLib_poles_coefficients_array1ofpnt2d2(
+            Poles: &TColgp_Array1OfPnt2d,
+            CachePoles: Pin<&mut TColgp_Array1OfPnt2d>,
+        );
+        /// **Source:** `BSplCLib.hxx`:2011 - `BSplCLib::PolesCoefficients()`
+        fn BSplCLib_poles_coefficients_array1ofpnt2(
+            Poles: &TColgp_Array1OfPnt,
+            CachePoles: Pin<&mut TColgp_Array1OfPnt>,
+        );
         /// **Source:** `BSplCLib.hxx`:2025 - `BSplCLib::FlatBezierKnots()`
         ///
         /// Returns pointer to statically allocated array representing
@@ -37536,6 +37998,16 @@ mod ffi {
         /// triangle the function NbNodes returns 4.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &Poly_Polygon3D) -> i32;
+        /// **Source:** `Poly_Polygon3D.hxx`:68 - `Poly_Polygon3D::Nodes()`
+        ///
+        /// Returns the table of nodes for this polygon.
+        #[cxx_name = "Nodes"]
+        fn nodes(self: &Poly_Polygon3D) -> &TColgp_Array1OfPnt;
+        /// **Source:** `Poly_Polygon3D.hxx`:71 - `Poly_Polygon3D::ChangeNodes()`
+        ///
+        /// Returns the table of nodes for this polygon.
+        #[cxx_name = "ChangeNodes"]
+        fn change_nodes(self: Pin<&mut Poly_Polygon3D>) -> Pin<&mut TColgp_Array1OfPnt>;
         /// **Source:** `Poly_Polygon3D.hxx`:75 - `Poly_Polygon3D::HasParameters()`
         ///
         /// Returns the table of the parameters associated with each node in this polygon.
@@ -37611,6 +38083,16 @@ mod ffi {
         /// triangle, the function NbNodes returns 4.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &Poly_Polygon2D) -> i32;
+        /// **Source:** `Poly_Polygon2D.hxx`:71 - `Poly_Polygon2D::Nodes()`
+        ///
+        /// Returns the table of nodes for this polygon.
+        #[cxx_name = "Nodes"]
+        fn nodes(self: &Poly_Polygon2D) -> &TColgp_Array1OfPnt2d;
+        /// **Source:** `Poly_Polygon2D.hxx`:74 - `Poly_Polygon2D::ChangeNodes()`
+        ///
+        /// Returns the table of nodes for this polygon.
+        #[cxx_name = "ChangeNodes"]
+        fn change_nodes(self: Pin<&mut Poly_Polygon2D>) -> Pin<&mut TColgp_Array1OfPnt2d>;
         /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Poly_Polygon2D) -> &HandleStandardType;
@@ -37948,6 +38430,25 @@ mod ffi {
             Ders: &mut f64,
             RDers: &mut f64,
             All: bool,
+        );
+        /// **Source:** `BSplSLib.hxx`:313 - `BSplSLib::Reverse()`
+        ///
+        /// Reverses the array of poles. Last is the Index of
+        /// the new first Row( Col) of Poles.
+        /// On  a  non periodic surface Last is
+        /// Poles.Upper().
+        /// On a periodic curve last is
+        /// (number of flat knots - degree - 1)
+        /// or
+        /// (sum of multiplicities(but  for the last) + degree
+        /// - 1)
+        fn BSplSLib_reverse(Poles: Pin<&mut TColgp_Array2OfPnt>, Last: i32, UDirection: bool);
+        /// **Source:** `BSplSLib.hxx`:647 - `BSplSLib::PolesCoefficients()`
+        ///
+        /// Warning! To be used for BezierSurfaces ONLY!!!
+        fn BSplSLib_poles_coefficients(
+            Poles: &TColgp_Array2OfPnt,
+            CachePoles: Pin<&mut TColgp_Array2OfPnt>,
         );
         /// ======================== BSplSLib_EvaluatorFunction ========================
         /// **Source:** `BSplSLib_EvaluatorFunction.hxx`:31 - `BSplSLib_EvaluatorFunction`

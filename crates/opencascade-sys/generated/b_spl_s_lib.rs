@@ -166,6 +166,31 @@ impl BSplSLib {
     ) {
         crate::ffi::BSplSLib_rational_derivative(UDeg, VDeg, N, M, Ders, RDers, All)
     }
+
+    /// Reverses the array of poles. Last is the Index of
+    /// the new first Row( Col) of Poles.
+    /// On  a  non periodic surface Last is
+    /// Poles.Upper().
+    /// On a periodic curve last is
+    /// (number of flat knots - degree - 1)
+    /// or
+    /// (sum of multiplicities(but  for the last) + degree
+    /// - 1)
+    pub fn reverse(
+        Poles: std::pin::Pin<&mut crate::ffi::TColgp_Array2OfPnt>,
+        Last: i32,
+        UDirection: bool,
+    ) {
+        crate::ffi::BSplSLib_reverse(Poles, Last, UDirection)
+    }
+
+    /// Warning! To be used for BezierSurfaces ONLY!!!
+    pub fn poles_coefficients(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        CachePoles: std::pin::Pin<&mut crate::ffi::TColgp_Array2OfPnt>,
+    ) {
+        crate::ffi::BSplSLib_poles_coefficients(Poles, CachePoles)
+    }
 }
 
 // ========================

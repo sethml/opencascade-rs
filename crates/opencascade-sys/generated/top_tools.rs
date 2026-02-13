@@ -6,6 +6,38 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Defined TopTools format version
+/// C++ enum: `TopTools_FormatVersion`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum FormatVersion {
+    /// < Does not write CurveOnSurface UV Points into the file.
+    FormatversionVersion1 = 1,
+    /// < Stores CurveOnSurface UV Points.
+    FormatversionVersion2 = 2,
+    /// On reading format is recognized from Version string.
+    FormatversionVersion3 = 3,
+}
+
+impl From<FormatVersion> for i32 {
+    fn from(value: FormatVersion) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for FormatVersion {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            1 => Ok(FormatVersion::FormatversionVersion1),
+            2 => Ok(FormatVersion::FormatversionVersion2),
+            3 => Ok(FormatVersion::FormatversionVersion3),
+            _ => Err(value),
+        }
+    }
+}
+
 pub use crate::ffi::{
     TopTools_DataMapOfShapeShape as DataMapOfShapeShape,
     TopTools_IndexedDataMapOfShapeListOfShape as IndexedDataMapOfShapeListOfShape,

@@ -6,6 +6,51 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// \ Uo     ^        \ U1     ^
+/// \       | n       \       | n
+/// Surf  ====\======|===   ====\======|===
+/// \     .           \     .
+/// \    .            \    .
+/// U1  \   .          Uo \   .
+///
+/// ( In )            ( Out )
+///
+/// \           /
+/// \         /
+/// \       /
+/// \     /
+/// Surf =====-----=====
+///
+/// ( Tangent )
+/// Crb and Surf are  C1
+/// C++ enum: `IntCurveSurface_TransitionOnCurve`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TransitionOnCurve {
+    Tangent = 0,
+    In = 1,
+    Out = 2,
+}
+
+impl From<TransitionOnCurve> for i32 {
+    fn from(value: TransitionOnCurve) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TransitionOnCurve {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(TransitionOnCurve::Tangent),
+            1 => Ok(TransitionOnCurve::In),
+            2 => Ok(TransitionOnCurve::Out),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From IntCurveSurface_HInter.hxx
 // ========================
