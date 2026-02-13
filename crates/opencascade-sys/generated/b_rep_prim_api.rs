@@ -105,6 +105,22 @@ impl MakeBox {
         crate::ffi::BRepPrimAPI_MakeBox_inherited_Shape(self)
     }
 
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeBox_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeBox_inherited_Modified(self, S)
+    }
+
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepPrimAPI_MakeBox_inherited_IsDeleted(self, S)
@@ -247,6 +263,22 @@ impl MakeCone {
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepPrimAPI_MakeCone_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeCone_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeCone_inherited_Modified(self, S)
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
@@ -394,6 +426,22 @@ impl MakeCylinder {
         crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Shape(self)
     }
 
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Modified(self, S)
+    }
+
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepPrimAPI_MakeCylinder_inherited_IsDeleted(self, S)
@@ -461,6 +509,22 @@ impl MakeOneAxis {
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_Modified(self, S)
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
@@ -602,6 +666,14 @@ impl MakePrism {
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepPrimAPI_MakePrism_inherited_Shape(self)
     }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakePrism_inherited_Modified(self, S)
+    }
 }
 
 // ========================
@@ -739,6 +811,14 @@ impl MakeRevol {
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepPrimAPI_MakeRevol_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeRevol_inherited_Modified(self, S)
     }
 }
 
@@ -932,6 +1012,22 @@ impl MakeSphere {
         crate::ffi::BRepPrimAPI_MakeSphere_inherited_Shape(self)
     }
 
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeSphere_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeSphere_inherited_Modified(self, S)
+    }
+
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepPrimAPI_MakeSphere_inherited_IsDeleted(self, S)
@@ -1028,6 +1124,22 @@ impl MakeSweep {
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepPrimAPI_MakeSweep_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeSweep_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeSweep_inherited_Modified(self, S)
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
@@ -1209,6 +1321,22 @@ impl MakeTorus {
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepPrimAPI_MakeTorus_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeTorus_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeTorus_inherited_Modified(self, S)
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()

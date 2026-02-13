@@ -93,6 +93,31 @@ impl BSplCLib {
         crate::ffi::BSplCLib_ctor()
     }
 
+    /// Reverses the array of poles. Last is the  index of
+    /// the new first pole. On  a  non periodic curve last
+    /// is Poles.Upper(). On a periodic curve last is
+    ///
+    /// (number of flat knots - degree - 1)
+    ///
+    /// or
+    ///
+    /// (sum of multiplicities(but  for the last) + degree
+    /// - 1)
+    pub fn reverse_array1ofpnt_int(
+        Poles: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt>,
+        Last: i32,
+    ) {
+        crate::ffi::BSplCLib_reverse_array1ofpnt_int(Poles, Last)
+    }
+
+    /// Reverses the array of poles.
+    pub fn reverse_array1ofpnt2d_int(
+        Poles: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt2d>,
+        Last: i32,
+    ) {
+        crate::ffi::BSplCLib_reverse_array1ofpnt2d_int(Poles, Last)
+    }
+
     /// returns the degree maxima for a BSplineCurve.
     pub fn max_degree() -> i32 {
         crate::ffi::BSplCLib_max_degree()
@@ -265,6 +290,50 @@ impl BSplCLib {
         )
     }
 
+    /// This solves  the system Matrix.X =  B
+    /// with when Matrix is factored in LU form
+    /// The  Array   has the length of
+    /// the  rank  of the  matrix  Matrix.  The
+    /// result is stored   in Array  when  each
+    /// coordinate is  solved that is  B is the
+    /// array whose values are
+    /// B[i] = Array[i][p] for each p in 1..ArrayDimension
+    pub fn solve_banded_system_matrix_int2_array1ofpnt2d(
+        Matrix: &crate::ffi::math_Matrix,
+        UpperBandWidth: i32,
+        LowerBandWidth: i32,
+        Array: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt2d>,
+    ) -> i32 {
+        crate::ffi::BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(
+            Matrix,
+            UpperBandWidth,
+            LowerBandWidth,
+            Array,
+        )
+    }
+
+    /// This solves  the system Matrix.X =  B
+    /// with when Matrix is factored in LU form
+    /// The  Array   has the length of
+    /// the  rank  of the  matrix  Matrix.  The
+    /// result is stored   in Array  when  each
+    /// coordinate is  solved that is  B is the
+    /// array whose values are
+    /// B[i] = Array[i][p] for each p in 1..ArrayDimension
+    pub fn solve_banded_system_matrix_int2_array1ofpnt(
+        Matrix: &crate::ffi::math_Matrix,
+        UpperBandWidth: i32,
+        LowerBandWidth: i32,
+        Array: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt>,
+    ) -> i32 {
+        crate::ffi::BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(
+            Matrix,
+            UpperBandWidth,
+            LowerBandWidth,
+            Array,
+        )
+    }
+
     pub fn solve_banded_system_matrix_int2_bool_int_real2(
         Matrix: &crate::ffi::math_Matrix,
         UpperBandWidth: i32,
@@ -283,6 +352,20 @@ impl BSplCLib {
             Array,
             Weights,
         )
+    }
+
+    pub fn poles_coefficients_array1ofpnt2d2(
+        Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+        CachePoles: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt2d>,
+    ) {
+        crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2d2(Poles, CachePoles)
+    }
+
+    pub fn poles_coefficients_array1ofpnt2(
+        Poles: &crate::ffi::TColgp_Array1OfPnt,
+        CachePoles: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt>,
+    ) {
+        crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2(Poles, CachePoles)
     }
 
     /// Returns pointer to statically allocated array representing

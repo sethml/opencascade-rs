@@ -85,6 +85,16 @@ impl BooleanOperation {
         crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Shape(self)
     }
 
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetArguments(self, theLS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Arguments(self)
+    }
+
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
     pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
         crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(self, theFlag)
@@ -120,6 +130,22 @@ impl BooleanOperation {
         )
     }
 
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Generated(self, theS)
+    }
+
     /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_IsDeleted(self, aS)
@@ -148,6 +174,11 @@ impl BooleanOperation {
     /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
     pub fn has_history(&self) -> bool {
         crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    pub fn section_edges(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SectionEdges(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
@@ -366,9 +397,29 @@ impl Common {
         crate::ffi::BRepAlgoAPI_Common_inherited_Shape2(self)
     }
 
+    /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+    pub fn set_tools(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SetTools(self, theLS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Tools(self)
+    }
+
     /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
     pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
         crate::ffi::BRepAlgoAPI_Common_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SetArguments(self, theLS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Arguments(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
@@ -406,6 +457,22 @@ impl Common {
         )
     }
 
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Generated(self, theS)
+    }
+
     /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepAlgoAPI_Common_inherited_IsDeleted(self, aS)
@@ -434,6 +501,11 @@ impl Common {
     /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
     pub fn has_history(&self) -> bool {
         crate::ffi::BRepAlgoAPI_Common_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    pub fn section_edges(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SectionEdges(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
@@ -564,9 +636,29 @@ impl Cut {
         crate::ffi::BRepAlgoAPI_Cut_inherited_Shape2(self)
     }
 
+    /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+    pub fn set_tools(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SetTools(self, theLS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Tools(self)
+    }
+
     /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
     pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
         crate::ffi::BRepAlgoAPI_Cut_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SetArguments(self, theLS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Arguments(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
@@ -604,6 +696,22 @@ impl Cut {
         )
     }
 
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Generated(self, theS)
+    }
+
     /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepAlgoAPI_Cut_inherited_IsDeleted(self, aS)
@@ -632,6 +740,11 @@ impl Cut {
     /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
     pub fn has_history(&self) -> bool {
         crate::ffi::BRepAlgoAPI_Cut_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    pub fn section_edges(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SectionEdges(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
@@ -759,9 +872,29 @@ impl Fuse {
         crate::ffi::BRepAlgoAPI_Fuse_inherited_Shape2(self)
     }
 
+    /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+    pub fn set_tools(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetTools(self, theLS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Tools(self)
+    }
+
     /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
     pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
         crate::ffi::BRepAlgoAPI_Fuse_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetArguments(self, theLS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Arguments(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
@@ -799,6 +932,22 @@ impl Fuse {
         )
     }
 
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Generated(self, theS)
+    }
+
     /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepAlgoAPI_Fuse_inherited_IsDeleted(self, aS)
@@ -827,6 +976,11 @@ impl Fuse {
     /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
     pub fn has_history(&self) -> bool {
         crate::ffi::BRepAlgoAPI_Fuse_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    pub fn section_edges(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SectionEdges(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
@@ -1017,6 +1171,26 @@ impl Section {
         crate::ffi::BRepAlgoAPI_Section_inherited_Shape2(self)
     }
 
+    /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+    pub fn set_tools(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SetTools(self, theLS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Section_inherited_Tools(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SetArguments(self, theLS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Section_inherited_Arguments(self)
+    }
+
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
     pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
         crate::ffi::BRepAlgoAPI_Section_inherited_SetNonDestructive(self, theFlag)
@@ -1052,6 +1226,22 @@ impl Section {
         )
     }
 
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Section_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Section_inherited_Generated(self, theS)
+    }
+
     /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepAlgoAPI_Section_inherited_IsDeleted(self, aS)
@@ -1080,6 +1270,11 @@ impl Section {
     /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
     pub fn has_history(&self) -> bool {
         crate::ffi::BRepAlgoAPI_Section_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    pub fn section_edges(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SectionEdges(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: History()

@@ -10922,6 +10922,16 @@ mod ffi {
         fn BRepBuilderAPI_MakeEdge_inherited_Shape(
             self_: Pin<&mut BRepBuilderAPI_MakeEdge>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepBuilderAPI_MakeEdge_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_MakeEdge>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepBuilderAPI_MakeEdge_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_MakeEdge>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepBuilderAPI_MakeEdge_inherited_IsDeleted(
             self_: Pin<&mut BRepBuilderAPI_MakeEdge>,
@@ -11273,6 +11283,16 @@ mod ffi {
         fn BRepBuilderAPI_MakeFace_inherited_Shape(
             self_: Pin<&mut BRepBuilderAPI_MakeFace>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepBuilderAPI_MakeFace_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_MakeFace>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepBuilderAPI_MakeFace_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_MakeFace>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepBuilderAPI_MakeFace_inherited_IsDeleted(
             self_: Pin<&mut BRepBuilderAPI_MakeFace>,
@@ -11422,6 +11442,16 @@ mod ffi {
         fn BRepBuilderAPI_MakeSolid_inherited_Shape(
             self_: Pin<&mut BRepBuilderAPI_MakeSolid>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepBuilderAPI_MakeSolid_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_MakeSolid>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepBuilderAPI_MakeSolid_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_MakeSolid>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// ======================== BRepBuilderAPI_MakeVertex ========================
         /// **Source:** `BRepBuilderAPI_MakeVertex.hxx`:38 - `BRepBuilderAPI_MakeVertex`
         ///
@@ -11476,6 +11506,16 @@ mod ffi {
         fn BRepBuilderAPI_MakeVertex_inherited_Shape(
             self_: Pin<&mut BRepBuilderAPI_MakeVertex>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepBuilderAPI_MakeVertex_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_MakeVertex>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepBuilderAPI_MakeVertex_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_MakeVertex>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepBuilderAPI_MakeVertex_inherited_IsDeleted(
             self_: Pin<&mut BRepBuilderAPI_MakeVertex>,
@@ -11684,6 +11724,16 @@ mod ffi {
         fn BRepBuilderAPI_MakeWire_inherited_Shape(
             self_: Pin<&mut BRepBuilderAPI_MakeWire>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepBuilderAPI_MakeWire_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_MakeWire>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepBuilderAPI_MakeWire_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_MakeWire>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepBuilderAPI_MakeWire_inherited_IsDeleted(
             self_: Pin<&mut BRepBuilderAPI_MakeWire>,
@@ -12103,6 +12153,11 @@ mod ffi {
         fn BRepBuilderAPI_Transform_inherited_Shape(
             self_: Pin<&mut BRepBuilderAPI_Transform>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepBuilderAPI_Transform_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_Transform>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepBuilderAPI_Transform_inherited_IsDeleted(
             self_: Pin<&mut BRepBuilderAPI_Transform>,
@@ -12273,6 +12328,16 @@ mod ffi {
         fn BRepPrimAPI_MakeBox_inherited_Shape(
             self_: Pin<&mut BRepPrimAPI_MakeBox>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepPrimAPI_MakeBox_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeBox>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepPrimAPI_MakeBox_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeBox>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepPrimAPI_MakeBox_inherited_IsDeleted(
             self_: Pin<&mut BRepPrimAPI_MakeBox>,
@@ -12406,6 +12471,16 @@ mod ffi {
         fn BRepPrimAPI_MakeCone_inherited_Shape(
             self_: Pin<&mut BRepPrimAPI_MakeCone>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepPrimAPI_MakeCone_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeCone>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepPrimAPI_MakeCone_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeCone>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepPrimAPI_MakeCone_inherited_IsDeleted(
             self_: Pin<&mut BRepPrimAPI_MakeCone>,
@@ -12539,6 +12614,16 @@ mod ffi {
         fn BRepPrimAPI_MakeCylinder_inherited_Shape(
             self_: Pin<&mut BRepPrimAPI_MakeCylinder>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepPrimAPI_MakeCylinder_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeCylinder>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepPrimAPI_MakeCylinder_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeCylinder>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepPrimAPI_MakeCylinder_inherited_IsDeleted(
             self_: Pin<&mut BRepPrimAPI_MakeCylinder>,
@@ -12691,6 +12776,11 @@ mod ffi {
         fn BRepPrimAPI_MakePrism_inherited_Shape(
             self_: Pin<&mut BRepPrimAPI_MakePrism>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepPrimAPI_MakePrism_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakePrism>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// ======================== BRepPrimAPI_MakeRevol ========================
         /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:62 - `BRepPrimAPI_MakeRevol`
         ///
@@ -12841,6 +12931,11 @@ mod ffi {
         fn BRepPrimAPI_MakeRevol_inherited_Shape(
             self_: Pin<&mut BRepPrimAPI_MakeRevol>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepPrimAPI_MakeRevol_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeRevol>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// ======================== BRepPrimAPI_MakeSphere ========================
         /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:33 - `BRepPrimAPI_MakeSphere`
         ///
@@ -13030,6 +13125,16 @@ mod ffi {
         fn BRepPrimAPI_MakeSphere_inherited_Shape(
             self_: Pin<&mut BRepPrimAPI_MakeSphere>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepPrimAPI_MakeSphere_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeSphere>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepPrimAPI_MakeSphere_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeSphere>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepPrimAPI_MakeSphere_inherited_IsDeleted(
             self_: Pin<&mut BRepPrimAPI_MakeSphere>,
@@ -13212,6 +13317,16 @@ mod ffi {
         fn BRepPrimAPI_MakeTorus_inherited_Shape(
             self_: Pin<&mut BRepPrimAPI_MakeTorus>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepPrimAPI_MakeTorus_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeTorus>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepPrimAPI_MakeTorus_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeTorus>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepPrimAPI_MakeTorus_inherited_IsDeleted(
             self_: Pin<&mut BRepPrimAPI_MakeTorus>,
@@ -13290,6 +13405,16 @@ mod ffi {
         fn BRepPrimAPI_MakeSweep_inherited_Shape(
             self_: Pin<&mut BRepPrimAPI_MakeSweep>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepPrimAPI_MakeSweep_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeSweep>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepPrimAPI_MakeSweep_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeSweep>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepPrimAPI_MakeSweep_inherited_IsDeleted(
             self_: Pin<&mut BRepPrimAPI_MakeSweep>,
@@ -13604,6 +13729,15 @@ mod ffi {
         fn BRepAlgoAPI_BooleanOperation_inherited_Shape(
             self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+        fn BRepAlgoAPI_BooleanOperation_inherited_SetArguments(
+            self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+        fn BRepAlgoAPI_BooleanOperation_inherited_Arguments(
+            self_: &BRepAlgoAPI_BooleanOperation,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
         fn BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(
             self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
@@ -13629,6 +13763,16 @@ mod ffi {
             theUnifyFaces: bool,
             theAngularTol: f64,
         );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+        fn BRepAlgoAPI_BooleanOperation_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepAlgoAPI_BooleanOperation>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+        fn BRepAlgoAPI_BooleanOperation_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepAlgoAPI_BooleanOperation>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
         fn BRepAlgoAPI_BooleanOperation_inherited_IsDeleted(
             self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
@@ -13655,6 +13799,10 @@ mod ffi {
         fn BRepAlgoAPI_BooleanOperation_inherited_HasHistory(
             self_: &BRepAlgoAPI_BooleanOperation,
         ) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+        fn BRepAlgoAPI_BooleanOperation_inherited_SectionEdges(
+            self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
         fn BRepAlgoAPI_BooleanOperation_inherited_History(
             self_: &BRepAlgoAPI_BooleanOperation,
@@ -13747,11 +13895,27 @@ mod ffi {
         fn BRepAlgoAPI_Common_inherited_Shape1(self_: &BRepAlgoAPI_Common) -> &TopoDS_Shape;
         /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
         fn BRepAlgoAPI_Common_inherited_Shape2(self_: &BRepAlgoAPI_Common) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+        fn BRepAlgoAPI_Common_inherited_SetTools(
+            self_: Pin<&mut BRepAlgoAPI_Common>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+        fn BRepAlgoAPI_Common_inherited_Tools(self_: &BRepAlgoAPI_Common) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
         fn BRepAlgoAPI_Common_inherited_Build(
             self_: Pin<&mut BRepAlgoAPI_Common>,
             theRange: &Message_ProgressRange,
         );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+        fn BRepAlgoAPI_Common_inherited_SetArguments(
+            self_: Pin<&mut BRepAlgoAPI_Common>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+        fn BRepAlgoAPI_Common_inherited_Arguments(
+            self_: &BRepAlgoAPI_Common,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
         fn BRepAlgoAPI_Common_inherited_SetNonDestructive(
             self_: Pin<&mut BRepAlgoAPI_Common>,
@@ -13773,6 +13937,16 @@ mod ffi {
             theUnifyFaces: bool,
             theAngularTol: f64,
         );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+        fn BRepAlgoAPI_Common_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepAlgoAPI_Common>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+        fn BRepAlgoAPI_Common_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepAlgoAPI_Common>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
         fn BRepAlgoAPI_Common_inherited_IsDeleted(
             self_: Pin<&mut BRepAlgoAPI_Common>,
@@ -13791,6 +13965,10 @@ mod ffi {
         );
         /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
         fn BRepAlgoAPI_Common_inherited_HasHistory(self_: &BRepAlgoAPI_Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+        fn BRepAlgoAPI_Common_inherited_SectionEdges(
+            self_: Pin<&mut BRepAlgoAPI_Common>,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
         fn BRepAlgoAPI_Common_inherited_History(
             self_: &BRepAlgoAPI_Common,
@@ -13879,11 +14057,25 @@ mod ffi {
         fn BRepAlgoAPI_Cut_inherited_Shape1(self_: &BRepAlgoAPI_Cut) -> &TopoDS_Shape;
         /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
         fn BRepAlgoAPI_Cut_inherited_Shape2(self_: &BRepAlgoAPI_Cut) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+        fn BRepAlgoAPI_Cut_inherited_SetTools(
+            self_: Pin<&mut BRepAlgoAPI_Cut>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+        fn BRepAlgoAPI_Cut_inherited_Tools(self_: &BRepAlgoAPI_Cut) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
         fn BRepAlgoAPI_Cut_inherited_Build(
             self_: Pin<&mut BRepAlgoAPI_Cut>,
             theRange: &Message_ProgressRange,
         );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+        fn BRepAlgoAPI_Cut_inherited_SetArguments(
+            self_: Pin<&mut BRepAlgoAPI_Cut>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+        fn BRepAlgoAPI_Cut_inherited_Arguments(self_: &BRepAlgoAPI_Cut) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
         fn BRepAlgoAPI_Cut_inherited_SetNonDestructive(
             self_: Pin<&mut BRepAlgoAPI_Cut>,
@@ -13905,6 +14097,16 @@ mod ffi {
             theUnifyFaces: bool,
             theAngularTol: f64,
         );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+        fn BRepAlgoAPI_Cut_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepAlgoAPI_Cut>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+        fn BRepAlgoAPI_Cut_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepAlgoAPI_Cut>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
         fn BRepAlgoAPI_Cut_inherited_IsDeleted(
             self_: Pin<&mut BRepAlgoAPI_Cut>,
@@ -13923,6 +14125,10 @@ mod ffi {
         );
         /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
         fn BRepAlgoAPI_Cut_inherited_HasHistory(self_: &BRepAlgoAPI_Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+        fn BRepAlgoAPI_Cut_inherited_SectionEdges(
+            self_: Pin<&mut BRepAlgoAPI_Cut>,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
         fn BRepAlgoAPI_Cut_inherited_History(
             self_: &BRepAlgoAPI_Cut,
@@ -14011,11 +14217,25 @@ mod ffi {
         fn BRepAlgoAPI_Fuse_inherited_Shape1(self_: &BRepAlgoAPI_Fuse) -> &TopoDS_Shape;
         /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
         fn BRepAlgoAPI_Fuse_inherited_Shape2(self_: &BRepAlgoAPI_Fuse) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+        fn BRepAlgoAPI_Fuse_inherited_SetTools(
+            self_: Pin<&mut BRepAlgoAPI_Fuse>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+        fn BRepAlgoAPI_Fuse_inherited_Tools(self_: &BRepAlgoAPI_Fuse) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
         fn BRepAlgoAPI_Fuse_inherited_Build(
             self_: Pin<&mut BRepAlgoAPI_Fuse>,
             theRange: &Message_ProgressRange,
         );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+        fn BRepAlgoAPI_Fuse_inherited_SetArguments(
+            self_: Pin<&mut BRepAlgoAPI_Fuse>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+        fn BRepAlgoAPI_Fuse_inherited_Arguments(self_: &BRepAlgoAPI_Fuse) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
         fn BRepAlgoAPI_Fuse_inherited_SetNonDestructive(
             self_: Pin<&mut BRepAlgoAPI_Fuse>,
@@ -14037,6 +14257,16 @@ mod ffi {
             theUnifyFaces: bool,
             theAngularTol: f64,
         );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+        fn BRepAlgoAPI_Fuse_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepAlgoAPI_Fuse>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+        fn BRepAlgoAPI_Fuse_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepAlgoAPI_Fuse>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
         fn BRepAlgoAPI_Fuse_inherited_IsDeleted(
             self_: Pin<&mut BRepAlgoAPI_Fuse>,
@@ -14055,6 +14285,10 @@ mod ffi {
         );
         /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
         fn BRepAlgoAPI_Fuse_inherited_HasHistory(self_: &BRepAlgoAPI_Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+        fn BRepAlgoAPI_Fuse_inherited_SectionEdges(
+            self_: Pin<&mut BRepAlgoAPI_Fuse>,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
         fn BRepAlgoAPI_Fuse_inherited_History(
             self_: &BRepAlgoAPI_Fuse,
@@ -14324,6 +14558,24 @@ mod ffi {
         fn BRepAlgoAPI_Section_inherited_Shape1(self_: &BRepAlgoAPI_Section) -> &TopoDS_Shape;
         /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
         fn BRepAlgoAPI_Section_inherited_Shape2(self_: &BRepAlgoAPI_Section) -> &TopoDS_Shape;
+        /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+        fn BRepAlgoAPI_Section_inherited_SetTools(
+            self_: Pin<&mut BRepAlgoAPI_Section>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+        fn BRepAlgoAPI_Section_inherited_Tools(
+            self_: &BRepAlgoAPI_Section,
+        ) -> &TopTools_ListOfShape;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+        fn BRepAlgoAPI_Section_inherited_SetArguments(
+            self_: Pin<&mut BRepAlgoAPI_Section>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+        fn BRepAlgoAPI_Section_inherited_Arguments(
+            self_: &BRepAlgoAPI_Section,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
         fn BRepAlgoAPI_Section_inherited_SetNonDestructive(
             self_: Pin<&mut BRepAlgoAPI_Section>,
@@ -14345,6 +14597,16 @@ mod ffi {
             theUnifyFaces: bool,
             theAngularTol: f64,
         );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+        fn BRepAlgoAPI_Section_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepAlgoAPI_Section>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+        fn BRepAlgoAPI_Section_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepAlgoAPI_Section>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
         fn BRepAlgoAPI_Section_inherited_IsDeleted(
             self_: Pin<&mut BRepAlgoAPI_Section>,
@@ -14363,6 +14625,10 @@ mod ffi {
         );
         /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
         fn BRepAlgoAPI_Section_inherited_HasHistory(self_: &BRepAlgoAPI_Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+        fn BRepAlgoAPI_Section_inherited_SectionEdges(
+            self_: Pin<&mut BRepAlgoAPI_Section>,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
         fn BRepAlgoAPI_Section_inherited_History(
             self_: &BRepAlgoAPI_Section,
@@ -14511,6 +14777,16 @@ mod ffi {
         fn BRepFilletAPI_LocalOperation_inherited_Shape(
             self_: Pin<&mut BRepFilletAPI_LocalOperation>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepFilletAPI_LocalOperation_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepFilletAPI_LocalOperation>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepFilletAPI_LocalOperation_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepFilletAPI_LocalOperation>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepFilletAPI_LocalOperation_inherited_IsDeleted(
             self_: Pin<&mut BRepFilletAPI_LocalOperation>,
@@ -14958,6 +15234,21 @@ mod ffi {
             L: &HandleLawFunction,
             E: &TopoDS_Edge,
         );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:108 - `BRepFilletAPI_MakeFillet::Add()`
+        ///
+        /// Adds a  fillet description in  the  builder
+        /// - builds a contour  of tangent edges,
+        /// - sets the radius evolution law interpolating the values
+        /// given in the array UandR :
+        ///
+        /// p2d.X() = relative parameter on the spine [0,1]
+        /// p2d.Y() = value of the radius.
+        #[cxx_name = "Add"]
+        fn add_array1ofpnt2d_edge(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            UandR: &TColgp_Array1OfPnt2d,
+            E: &TopoDS_Edge,
+        );
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:114 - `BRepFilletAPI_MakeFillet::SetRadius()`
         ///
         /// Sets the parameters of the fillet
@@ -14997,6 +15288,26 @@ mod ffi {
         fn set_radius_handlefunction_int2(
             self: Pin<&mut BRepFilletAPI_MakeFillet>,
             L: &HandleLawFunction,
+            IC: i32,
+            IinC: i32,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:148 - `BRepFilletAPI_MakeFillet::SetRadius()`
+        ///
+        /// Sets the parameters of the fillet
+        /// along the contour of index IC generated using the Add function
+        /// in the internal data structure of this algorithm,
+        /// where the radius of the fillet evolves according to the evolution law
+        /// which interpolates the set of parameter and radius pairs given
+        /// in the array UandR as follows:
+        /// -   the X coordinate of a point in UandR defines a
+        /// relative parameter on the contour (i.e. a parameter between 0 and 1),
+        /// -          the Y coordinate of a point in UandR gives the
+        /// corresponding value of the radius, and the radius evolves
+        /// between the first and last vertices of the contour of index IC.
+        #[cxx_name = "SetRadius"]
+        fn set_radius_array1ofpnt2d_int2(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            UandR: &TColgp_Array1OfPnt2d,
             IC: i32,
             IinC: i32,
         );
@@ -15712,6 +16023,11 @@ mod ffi {
         fn BRepFilletAPI_MakeFillet2d_inherited_Shape(
             self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepFilletAPI_MakeFillet2d_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepFilletAPI_MakeFillet2d>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(
             self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
@@ -15808,6 +16124,11 @@ mod ffi {
         fn BRepOffsetAPI_MakeOffset_inherited_Shape(
             self_: Pin<&mut BRepOffsetAPI_MakeOffset>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepOffsetAPI_MakeOffset_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepOffsetAPI_MakeOffset>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepOffsetAPI_MakeOffset_inherited_IsDeleted(
             self_: Pin<&mut BRepOffsetAPI_MakeOffset>,
@@ -15912,6 +16233,11 @@ mod ffi {
         fn BRepOffsetAPI_MakePipe_inherited_Shape(
             self_: Pin<&mut BRepOffsetAPI_MakePipe>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepOffsetAPI_MakePipe_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepOffsetAPI_MakePipe>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepOffsetAPI_MakePipe_inherited_IsDeleted(
             self_: Pin<&mut BRepOffsetAPI_MakePipe>,
@@ -16193,6 +16519,11 @@ mod ffi {
         fn BRepOffsetAPI_MakePipeShell_inherited_Shape(
             self_: Pin<&mut BRepOffsetAPI_MakePipeShell>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepOffsetAPI_MakePipeShell_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepOffsetAPI_MakePipeShell>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepOffsetAPI_MakePipeShell_inherited_IsDeleted(
             self_: Pin<&mut BRepOffsetAPI_MakePipeShell>,
@@ -16280,6 +16611,11 @@ mod ffi {
         fn BRepOffsetAPI_MakeThickSolid_inherited_Shape(
             self_: Pin<&mut BRepOffsetAPI_MakeThickSolid>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepOffsetAPI_MakeThickSolid_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepOffsetAPI_MakeThickSolid>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(
             self_: Pin<&mut BRepOffsetAPI_MakeThickSolid>,
@@ -16486,6 +16822,11 @@ mod ffi {
         fn BRepOffsetAPI_ThruSections_inherited_Shape(
             self_: Pin<&mut BRepOffsetAPI_ThruSections>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepOffsetAPI_ThruSections_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepOffsetAPI_ThruSections>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepOffsetAPI_ThruSections_inherited_IsDeleted(
             self_: Pin<&mut BRepOffsetAPI_ThruSections>,
@@ -16644,6 +16985,15 @@ mod ffi {
             self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
             theShape: &TopoDS_Shape,
         );
+        /// Inherited from BOPAlgo_Builder: SetArguments()
+        fn BRepFeat_MakeCylindricalHole_inherited_SetArguments(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BOPAlgo_Builder: Arguments()
+        fn BRepFeat_MakeCylindricalHole_inherited_Arguments(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BOPAlgo_Builder: SetNonDestructive()
         fn BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive(
             self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
@@ -16662,10 +17012,24 @@ mod ffi {
         fn BRepFeat_MakeCylindricalHole_inherited_CheckInverted(
             self_: &BRepFeat_MakeCylindricalHole,
         ) -> bool;
+        /// Inherited from BOPAlgo_Builder: ShapesSD()
+        fn BRepFeat_MakeCylindricalHole_inherited_ShapesSD(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> &TopTools_DataMapOfShapeShape;
         /// Inherited from BOPAlgo_BuilderShape: Shape()
         fn BRepFeat_MakeCylindricalHole_inherited_Shape(
             self_: &BRepFeat_MakeCylindricalHole,
         ) -> &TopoDS_Shape;
+        /// Inherited from BOPAlgo_BuilderShape: Modified()
+        fn BRepFeat_MakeCylindricalHole_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepFeat_MakeCylindricalHole>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BOPAlgo_BuilderShape: Generated()
+        fn BRepFeat_MakeCylindricalHole_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepFeat_MakeCylindricalHole>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
         fn BRepFeat_MakeCylindricalHole_inherited_IsDeleted(
             self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
@@ -16768,10 +17132,29 @@ mod ffi {
             self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
             theShape: &TopoDS_Shape,
         );
+        /// Inherited from BOPAlgo_ToolsProvider: SetTools()
+        fn BRepFeat_MakeCylindricalHole_inherited_SetTools(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theShapes: &TopTools_ListOfShape,
+        );
+        /// Inherited from BOPAlgo_ToolsProvider: Tools()
+        fn BRepFeat_MakeCylindricalHole_inherited_Tools(
+            self_: &BRepFeat_MakeCylindricalHole,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BRepFeat_Builder: SetOperation()
         fn BRepFeat_MakeCylindricalHole_inherited_SetOperation(
             self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
             theFuse: i32,
+        );
+        /// Inherited from BRepFeat_Builder: PartsOfTool()
+        fn BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theLT: Pin<&mut TopTools_ListOfShape>,
+        );
+        /// Inherited from BRepFeat_Builder: KeepParts()
+        fn BRepFeat_MakeCylindricalHole_inherited_KeepParts(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theIm: &TopTools_ListOfShape,
         );
         /// Inherited from BRepFeat_Builder: KeepPart()
         fn BRepFeat_MakeCylindricalHole_inherited_KeepPart(
@@ -16786,6 +17169,14 @@ mod ffi {
         /// Inherited from BRepFeat_Builder: RebuildFaces()
         fn BRepFeat_MakeCylindricalHole_inherited_RebuildFaces(
             self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+        );
+        /// Inherited from BRepFeat_Builder: RebuildEdge()
+        fn BRepFeat_MakeCylindricalHole_inherited_RebuildEdge(
+            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
+            theE: &TopoDS_Shape,
+            theF: &TopoDS_Face,
+            theME: &TopTools_MapOfShape,
+            aLEIm: Pin<&mut TopTools_ListOfShape>,
         );
         /// Inherited from BRepFeat_Builder: CheckSolidImages()
         fn BRepFeat_MakeCylindricalHole_inherited_CheckSolidImages(
@@ -16966,11 +17357,37 @@ mod ffi {
         fn BRepFeat_MakeDPrism_inherited_Shape(
             self_: Pin<&mut BRepFeat_MakeDPrism>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepFeat_MakeDPrism_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepFeat_MakeDPrism>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepFeat_MakeDPrism_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepFeat_MakeDPrism>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepFeat_MakeDPrism_inherited_IsDeleted(
             self_: Pin<&mut BRepFeat_MakeDPrism>,
             S: &TopoDS_Shape,
         ) -> bool;
+        /// Inherited from BRepFeat_Form: FirstShape()
+        fn BRepFeat_MakeDPrism_inherited_FirstShape(
+            self_: &BRepFeat_MakeDPrism,
+        ) -> &TopTools_ListOfShape;
+        /// Inherited from BRepFeat_Form: LastShape()
+        fn BRepFeat_MakeDPrism_inherited_LastShape(
+            self_: &BRepFeat_MakeDPrism,
+        ) -> &TopTools_ListOfShape;
+        /// Inherited from BRepFeat_Form: NewEdges()
+        fn BRepFeat_MakeDPrism_inherited_NewEdges(
+            self_: &BRepFeat_MakeDPrism,
+        ) -> &TopTools_ListOfShape;
+        /// Inherited from BRepFeat_Form: TgtEdges()
+        fn BRepFeat_MakeDPrism_inherited_TgtEdges(
+            self_: &BRepFeat_MakeDPrism,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BRepFeat_Form: BasisShapeValid()
         fn BRepFeat_MakeDPrism_inherited_BasisShapeValid(self_: Pin<&mut BRepFeat_MakeDPrism>);
         /// Inherited from BRepFeat_Form: GeneratedShapeValid()
@@ -19040,6 +19457,18 @@ mod ffi {
         /// Raised if Index is not in the range [1, NbPoles]
         #[cxx_name = "Pole"]
         fn pole(self: &Geom_BezierCurve, Index: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BezierCurve.hxx`:290 - `Geom_BezierCurve::Poles()`
+        ///
+        /// Returns all the poles of the curve.
+        ///
+        /// Raised if the length of P is not equal to the number of poles.
+        #[cxx_name = "Poles"]
+        fn poles_array1ofpnt(self: &Geom_BezierCurve, P: Pin<&mut TColgp_Array1OfPnt>);
+        /// **Source:** `Geom_BezierCurve.hxx`:293 - `Geom_BezierCurve::Poles()`
+        ///
+        /// Returns all the poles of the curve.
+        #[cxx_name = "Poles"]
+        fn poles(self: &Geom_BezierCurve) -> &TColgp_Array1OfPnt;
         /// **Source:** `Geom_BezierCurve.hxx`:297 - `Geom_BezierCurve::Weight()`
         ///
         /// Returns the weight of range Index.
@@ -19311,6 +19740,66 @@ mod ffi {
         /// in one of the two directions U or V.
         #[cxx_name = "Increase"]
         fn increase(self: Pin<&mut Geom_BezierSurface>, UDeg: i32, VDeg: i32);
+        /// **Source:** `Geom_BezierSurface.hxx`:170 - `Geom_BezierSurface::InsertPoleColAfter()`
+        ///
+        /// Inserts a column of poles. If the surface is rational the weights
+        /// values associated with CPoles are equal defaulted to 1.
+        ///
+        /// Raised if Vindex < 1 or VIndex > NbVPoles.
+        ///
+        /// raises if VDegree is greater than MaxDegree.
+        /// raises if the Length of CPoles is not equal to NbUPoles
+        #[cxx_name = "InsertPoleColAfter"]
+        fn insert_pole_col_after(
+            self: Pin<&mut Geom_BezierSurface>,
+            VIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
+        /// **Source:** `Geom_BezierSurface.hxx`:193 - `Geom_BezierSurface::InsertPoleColBefore()`
+        ///
+        /// Inserts a column of poles. If the surface is rational the weights
+        /// values associated with CPoles are equal defaulted to 1.
+        ///
+        /// Raised if Vindex < 1 or VIndex > NbVPoles.
+        ///
+        /// Raised if VDegree is greater than MaxDegree.
+        /// Raised if the Length of CPoles is not equal to NbUPoles
+        #[cxx_name = "InsertPoleColBefore"]
+        fn insert_pole_col_before(
+            self: Pin<&mut Geom_BezierSurface>,
+            VIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
+        /// **Source:** `Geom_BezierSurface.hxx`:216 - `Geom_BezierSurface::InsertPoleRowAfter()`
+        ///
+        /// Inserts a row of poles. If the surface is rational the weights
+        /// values associated with CPoles are equal defaulted to 1.
+        ///
+        /// Raised if Uindex < 1 or UIndex > NbUPoles.
+        ///
+        /// Raised if UDegree is greater than MaxDegree.
+        /// Raised if the Length of CPoles is not equal to NbVPoles
+        #[cxx_name = "InsertPoleRowAfter"]
+        fn insert_pole_row_after(
+            self: Pin<&mut Geom_BezierSurface>,
+            UIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
+        /// **Source:** `Geom_BezierSurface.hxx`:239 - `Geom_BezierSurface::InsertPoleRowBefore()`
+        ///
+        /// Inserts a row of poles. If the surface is rational the weights
+        /// values associated with CPoles are equal defaulted to 1.
+        ///
+        /// Raised if Uindex < 1 or UIndex > NbUPoles.
+        ///
+        /// Raised if UDegree is greater than MaxDegree.
+        /// Raised if the Length of CPoles is not equal to NbVPoles
+        #[cxx_name = "InsertPoleRowBefore"]
+        fn insert_pole_row_before(
+            self: Pin<&mut Geom_BezierSurface>,
+            UIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
         /// **Source:** `Geom_BezierSurface.hxx`:261 - `Geom_BezierSurface::RemovePoleCol()`
         ///
         /// Removes a column of poles.
@@ -19387,6 +19876,34 @@ mod ffi {
             VIndex: i32,
             P: &gp_Pnt,
             Weight: f64,
+        );
+        /// **Source:** `Geom_BezierSurface.hxx`:325 - `Geom_BezierSurface::SetPoleCol()`
+        ///
+        /// Modifies a column of poles.
+        /// The length of CPoles can be lower but not greater than NbUPoles
+        /// so you can modify just a part of the column.
+        /// Raised if VIndex < 1 or  VIndex > NbVPoles
+        ///
+        /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles
+        #[cxx_name = "SetPoleCol"]
+        fn set_pole_col(
+            self: Pin<&mut Geom_BezierSurface>,
+            VIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
+        /// **Source:** `Geom_BezierSurface.hxx`:348 - `Geom_BezierSurface::SetPoleRow()`
+        ///
+        /// Modifies a row of poles.
+        /// The length of CPoles can be lower but not greater than NbVPoles
+        /// so you can modify just a part of the row.
+        /// Raised if UIndex < 1 or  UIndex > NbUPoles
+        ///
+        /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles
+        #[cxx_name = "SetPoleRow"]
+        fn set_pole_row(
+            self: Pin<&mut Geom_BezierSurface>,
+            UIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
         );
         /// **Source:** `Geom_BezierSurface.hxx`:372 - `Geom_BezierSurface::SetWeight()`
         ///
@@ -19519,6 +20036,19 @@ mod ffi {
         /// VIndex < 1 or VIndex > NbVPoles.
         #[cxx_name = "Pole"]
         fn pole(self: &Geom_BezierSurface, UIndex: i32, VIndex: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BezierSurface.hxx`:514 - `Geom_BezierSurface::Poles()`
+        ///
+        /// Returns the poles of the Bezier surface.
+        ///
+        /// Raised if the length of P in the U an V direction is not equal to
+        /// NbUPoles and NbVPoles.
+        #[cxx_name = "Poles"]
+        fn poles_array2ofpnt(self: &Geom_BezierSurface, P: Pin<&mut TColgp_Array2OfPnt>);
+        /// **Source:** `Geom_BezierSurface.hxx`:517 - `Geom_BezierSurface::Poles()`
+        ///
+        /// Returns the poles of the Bezier surface.
+        #[cxx_name = "Poles"]
+        fn poles(self: &Geom_BezierSurface) -> &TColgp_Array2OfPnt;
         /// **Source:** `Geom_BezierSurface.hxx`:521 - `Geom_BezierSurface::UDegree()`
         ///
         /// Returns the degree of the surface in the U direction it is
@@ -20438,6 +20968,18 @@ mod ffi {
         /// Raised if Index < 1 or Index > NbPoles.
         #[cxx_name = "Pole"]
         fn pole(self: &Geom_BSplineCurve, Index: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BSplineCurve.hxx`:784 - `Geom_BSplineCurve::Poles()`
+        ///
+        /// Returns the poles of the B-spline curve;
+        ///
+        /// Raised if the length of P is not equal to the number of poles.
+        #[cxx_name = "Poles"]
+        fn poles_array1ofpnt(self: &Geom_BSplineCurve, P: Pin<&mut TColgp_Array1OfPnt>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:787 - `Geom_BSplineCurve::Poles()`
+        ///
+        /// Returns the poles of the B-spline curve;
+        #[cxx_name = "Poles"]
+        fn poles(self: &Geom_BSplineCurve) -> &TColgp_Array1OfPnt;
         /// **Source:** `Geom_BSplineCurve.hxx`:797 - `Geom_BSplineCurve::Weight()`
         ///
         /// Returns the weight of the pole of range Index .
@@ -21384,6 +21926,30 @@ mod ffi {
             P: &gp_Pnt,
             Weight: f64,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:738 - `Geom_BSplineSurface::SetPoleCol()`
+        ///
+        /// Changes a column of poles or a part of this column.
+        /// Raised if Vindex < 1 or VIndex > NbVPoles.
+        ///
+        /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles.
+        #[cxx_name = "SetPoleCol"]
+        fn set_pole_col(
+            self: Pin<&mut Geom_BSplineSurface>,
+            VIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
+        /// **Source:** `Geom_BSplineSurface.hxx`:774 - `Geom_BSplineSurface::SetPoleRow()`
+        ///
+        /// Changes a row of poles or a part of this row.
+        /// Raised if Uindex < 1 or UIndex > NbUPoles.
+        ///
+        /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles.
+        #[cxx_name = "SetPoleRow"]
+        fn set_pole_row(
+            self: Pin<&mut Geom_BSplineSurface>,
+            UIndex: i32,
+            CPoles: &TColgp_Array1OfPnt,
+        );
         /// **Source:** `Geom_BSplineSurface.hxx`:785 - `Geom_BSplineSurface::SetWeight()`
         ///
         /// Changes the weight of the pole of range UIndex, VIndex.
@@ -21569,6 +22135,19 @@ mod ffi {
         /// VIndex > NbVPoles.
         #[cxx_name = "Pole"]
         fn pole(self: &Geom_BSplineSurface, UIndex: i32, VIndex: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BSplineSurface.hxx`:959 - `Geom_BSplineSurface::Poles()`
+        ///
+        /// Returns the poles of the B-spline surface.
+        ///
+        /// Raised if the length of P in the U and V direction
+        /// is not equal to NbUpoles and NbVPoles.
+        #[cxx_name = "Poles"]
+        fn poles_array2ofpnt(self: &Geom_BSplineSurface, P: Pin<&mut TColgp_Array2OfPnt>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:962 - `Geom_BSplineSurface::Poles()`
+        ///
+        /// Returns the poles of the B-spline surface.
+        #[cxx_name = "Poles"]
+        fn poles(self: &Geom_BSplineSurface) -> &TColgp_Array2OfPnt;
         /// **Source:** `Geom_BSplineSurface.hxx`:966 - `Geom_BSplineSurface::UDegree()`
         ///
         /// Returns the degree of the normalized B-splines Ni,n in the U
@@ -24746,10 +25325,28 @@ mod ffi {
         /// points through which the curve passes, as
         /// defined at the time of initialization).
         #[cxx_name = "Load"]
-        fn load(
+        fn load_vec2_bool(
             self: Pin<&mut GeomAPI_Interpolate>,
             InitialTangent: &gp_Vec,
             FinalTangent: &gp_Vec,
+            Scale: bool,
+        );
+        /// **Source:** `GeomAPI_Interpolate.hxx`:157 - `GeomAPI_Interpolate::Load()`
+        ///
+        /// Assigns this constrained BSpline curve to be
+        /// tangential to vectors defined in the table Tangents,
+        /// which is parallel to the table of points
+        /// through which the curve passes, as
+        /// defined at the time of initialization. Vectors
+        /// in the table Tangents are defined only if
+        /// the flag given in the parallel table
+        /// TangentFlags is true: only these vectors
+        /// are set as tangency constraints.
+        #[cxx_name = "Load"]
+        fn load_array1ofvec_handleharray1ofboolean_bool(
+            self: Pin<&mut GeomAPI_Interpolate>,
+            Tangents: &TColgp_Array1OfVec,
+            TangentFlags: &HandleTColStdHArray1OfBoolean,
             Scale: bool,
         );
         /// **Source:** `GeomAPI_Interpolate.hxx`:163 - `GeomAPI_Interpolate::ClearTangents()`
@@ -28194,6 +28791,72 @@ mod ffi {
         /// Constructs an empty interpolative evolution law.
         /// The function Set is used to define the law.
         fn Law_Interpol_ctor() -> UniquePtr<Law_Interpol>;
+        /// **Source:** `Law_Interpol.hxx`:52 - `Law_Interpol::Set()`
+        ///
+        /// Defines this evolution law by interpolating the set of 2D
+        /// points ParAndRad. The Y coordinate of a point of
+        /// ParAndRad is the value of the function at the parameter
+        /// point given by its X coordinate.
+        /// If Periodic is true, this function is assumed to be periodic.
+        /// Warning
+        /// -   The X coordinates of points in the table ParAndRad
+        /// must be given in ascendant order.
+        /// -   If Periodic is true, the first and last Y coordinates of
+        /// points in the table ParAndRad are assumed to be
+        /// equal. In addition, with the second syntax, Dd and Df
+        /// are also assumed to be equal. If this is not the case,
+        /// Set uses the first value(s) as last value(s).
+        #[cxx_name = "Set"]
+        fn set_array1ofpnt2d_bool(
+            self: Pin<&mut Law_Interpol>,
+            ParAndRad: &TColgp_Array1OfPnt2d,
+            Periodic: bool,
+        );
+        /// **Source:** `Law_Interpol.hxx`:55 - `Law_Interpol::SetInRelative()`
+        #[cxx_name = "SetInRelative"]
+        fn set_in_relative_array1ofpnt2d_real2_bool(
+            self: Pin<&mut Law_Interpol>,
+            ParAndRad: &TColgp_Array1OfPnt2d,
+            Ud: f64,
+            Uf: f64,
+            Periodic: bool,
+        );
+        /// **Source:** `Law_Interpol.hxx`:75 - `Law_Interpol::Set()`
+        ///
+        /// Defines this evolution law by interpolating the set of 2D
+        /// points ParAndRad. The Y coordinate of a point of
+        /// ParAndRad is the value of the function at the parameter
+        /// point given by its X coordinate.
+        /// If Periodic is true, this function is assumed to be periodic.
+        /// In the second syntax, Dd and Df define the values of
+        /// the first derivative of the function at its first and last points.
+        /// Warning
+        /// -   The X coordinates of points in the table ParAndRad
+        /// must be given in ascendant order.
+        /// -   If Periodic is true, the first and last Y coordinates of
+        /// points in the table ParAndRad are assumed to be
+        /// equal. In addition, with the second syntax, Dd and Df
+        /// are also assumed to be equal. If this is not the case,
+        /// Set uses the first value(s) as last value(s).
+        #[cxx_name = "Set"]
+        fn set_array1ofpnt2d_real2_bool(
+            self: Pin<&mut Law_Interpol>,
+            ParAndRad: &TColgp_Array1OfPnt2d,
+            Dd: f64,
+            Df: f64,
+            Periodic: bool,
+        );
+        /// **Source:** `Law_Interpol.hxx`:80 - `Law_Interpol::SetInRelative()`
+        #[cxx_name = "SetInRelative"]
+        fn set_in_relative_array1ofpnt2d_real4_bool(
+            self: Pin<&mut Law_Interpol>,
+            ParAndRad: &TColgp_Array1OfPnt2d,
+            Ud: f64,
+            Uf: f64,
+            Dd: f64,
+            Df: f64,
+            Periodic: bool,
+        );
         /// **Source:** `Law_Interpol.hxx`:87 - `Law_Interpol::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Law_Interpol) -> &HandleStandardType;
@@ -28947,6 +29610,13 @@ mod ffi {
         fn TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(
             theOther: &TColgp_Array1OfCirc2d,
         ) -> UniquePtr<TColgp_HArray1OfCirc2d>;
+        /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfCirc2d) -> &TColgp_Array1OfCirc2d;
+        /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfCirc2d>)
+            -> Pin<&mut TColgp_Array1OfCirc2d>;
         /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfCirc2d) -> &HandleStandardType;
@@ -28983,6 +29653,12 @@ mod ffi {
         fn TColgp_HArray1OfDir_ctor_array1ofdir(
             theOther: &TColgp_Array1OfDir,
         ) -> UniquePtr<TColgp_HArray1OfDir>;
+        /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfDir) -> &TColgp_Array1OfDir;
+        /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfDir>) -> Pin<&mut TColgp_Array1OfDir>;
         /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfDir) -> &HandleStandardType;
@@ -29019,6 +29695,12 @@ mod ffi {
         fn TColgp_HArray1OfDir2d_ctor_array1ofdir2d(
             theOther: &TColgp_Array1OfDir2d,
         ) -> UniquePtr<TColgp_HArray1OfDir2d>;
+        /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfDir2d) -> &TColgp_Array1OfDir2d;
+        /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfDir2d>) -> Pin<&mut TColgp_Array1OfDir2d>;
         /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfDir2d) -> &HandleStandardType;
@@ -29055,6 +29737,12 @@ mod ffi {
         fn TColgp_HArray1OfLin2d_ctor_array1oflin2d(
             theOther: &TColgp_Array1OfLin2d,
         ) -> UniquePtr<TColgp_HArray1OfLin2d>;
+        /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfLin2d) -> &TColgp_Array1OfLin2d;
+        /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfLin2d>) -> Pin<&mut TColgp_Array1OfLin2d>;
         /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfLin2d) -> &HandleStandardType;
@@ -29091,6 +29779,12 @@ mod ffi {
         fn TColgp_HArray1OfPnt_ctor_array1ofpnt(
             theOther: &TColgp_Array1OfPnt,
         ) -> UniquePtr<TColgp_HArray1OfPnt>;
+        /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfPnt) -> &TColgp_Array1OfPnt;
+        /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfPnt>) -> Pin<&mut TColgp_Array1OfPnt>;
         /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfPnt) -> &HandleStandardType;
@@ -29127,6 +29821,12 @@ mod ffi {
         fn TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(
             theOther: &TColgp_Array1OfPnt2d,
         ) -> UniquePtr<TColgp_HArray1OfPnt2d>;
+        /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfPnt2d) -> &TColgp_Array1OfPnt2d;
+        /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfPnt2d>) -> Pin<&mut TColgp_Array1OfPnt2d>;
         /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfPnt2d) -> &HandleStandardType;
@@ -29163,6 +29863,12 @@ mod ffi {
         fn TColgp_HArray1OfVec_ctor_array1ofvec(
             theOther: &TColgp_Array1OfVec,
         ) -> UniquePtr<TColgp_HArray1OfVec>;
+        /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfVec) -> &TColgp_Array1OfVec;
+        /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfVec>) -> Pin<&mut TColgp_Array1OfVec>;
         /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfVec) -> &HandleStandardType;
@@ -29199,6 +29905,12 @@ mod ffi {
         fn TColgp_HArray1OfVec2d_ctor_array1ofvec2d(
             theOther: &TColgp_Array1OfVec2d,
         ) -> UniquePtr<TColgp_HArray1OfVec2d>;
+        /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfVec2d) -> &TColgp_Array1OfVec2d;
+        /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfVec2d>) -> Pin<&mut TColgp_Array1OfVec2d>;
         /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfVec2d) -> &HandleStandardType;
@@ -29235,6 +29947,12 @@ mod ffi {
         fn TColgp_HArray1OfXY_ctor_array1ofxy(
             theOther: &TColgp_Array1OfXY,
         ) -> UniquePtr<TColgp_HArray1OfXY>;
+        /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfXY) -> &TColgp_Array1OfXY;
+        /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfXY>) -> Pin<&mut TColgp_Array1OfXY>;
         /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfXY) -> &HandleStandardType;
@@ -29271,6 +29989,12 @@ mod ffi {
         fn TColgp_HArray1OfXYZ_ctor_array1ofxyz(
             theOther: &TColgp_Array1OfXYZ,
         ) -> UniquePtr<TColgp_HArray1OfXYZ>;
+        /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::Array1()`
+        #[cxx_name = "Array1"]
+        fn array1(self: &TColgp_HArray1OfXYZ) -> &TColgp_Array1OfXYZ;
+        /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::ChangeArray1()`
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut TColgp_HArray1OfXYZ>) -> Pin<&mut TColgp_Array1OfXYZ>;
         /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray1OfXYZ) -> &HandleStandardType;
@@ -29302,6 +30026,13 @@ mod ffi {
         fn TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(
             theOther: &TColgp_Array2OfCirc2d,
         ) -> UniquePtr<TColgp_HArray2OfCirc2d>;
+        /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfCirc2d) -> &TColgp_Array2OfCirc2d;
+        /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfCirc2d>)
+            -> Pin<&mut TColgp_Array2OfCirc2d>;
         /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfCirc2d) -> &HandleStandardType;
@@ -29333,6 +30064,12 @@ mod ffi {
         fn TColgp_HArray2OfDir_ctor_array2ofdir(
             theOther: &TColgp_Array2OfDir,
         ) -> UniquePtr<TColgp_HArray2OfDir>;
+        /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfDir) -> &TColgp_Array2OfDir;
+        /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfDir>) -> Pin<&mut TColgp_Array2OfDir>;
         /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfDir) -> &HandleStandardType;
@@ -29364,6 +30101,12 @@ mod ffi {
         fn TColgp_HArray2OfDir2d_ctor_array2ofdir2d(
             theOther: &TColgp_Array2OfDir2d,
         ) -> UniquePtr<TColgp_HArray2OfDir2d>;
+        /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfDir2d) -> &TColgp_Array2OfDir2d;
+        /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfDir2d>) -> Pin<&mut TColgp_Array2OfDir2d>;
         /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfDir2d) -> &HandleStandardType;
@@ -29395,6 +30138,12 @@ mod ffi {
         fn TColgp_HArray2OfLin2d_ctor_array2oflin2d(
             theOther: &TColgp_Array2OfLin2d,
         ) -> UniquePtr<TColgp_HArray2OfLin2d>;
+        /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfLin2d) -> &TColgp_Array2OfLin2d;
+        /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfLin2d>) -> Pin<&mut TColgp_Array2OfLin2d>;
         /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfLin2d) -> &HandleStandardType;
@@ -29426,6 +30175,12 @@ mod ffi {
         fn TColgp_HArray2OfPnt_ctor_array2ofpnt(
             theOther: &TColgp_Array2OfPnt,
         ) -> UniquePtr<TColgp_HArray2OfPnt>;
+        /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfPnt) -> &TColgp_Array2OfPnt;
+        /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfPnt>) -> Pin<&mut TColgp_Array2OfPnt>;
         /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfPnt) -> &HandleStandardType;
@@ -29457,6 +30212,12 @@ mod ffi {
         fn TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(
             theOther: &TColgp_Array2OfPnt2d,
         ) -> UniquePtr<TColgp_HArray2OfPnt2d>;
+        /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfPnt2d) -> &TColgp_Array2OfPnt2d;
+        /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfPnt2d>) -> Pin<&mut TColgp_Array2OfPnt2d>;
         /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfPnt2d) -> &HandleStandardType;
@@ -29488,6 +30249,12 @@ mod ffi {
         fn TColgp_HArray2OfVec_ctor_array2ofvec(
             theOther: &TColgp_Array2OfVec,
         ) -> UniquePtr<TColgp_HArray2OfVec>;
+        /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfVec) -> &TColgp_Array2OfVec;
+        /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfVec>) -> Pin<&mut TColgp_Array2OfVec>;
         /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfVec) -> &HandleStandardType;
@@ -29519,6 +30286,12 @@ mod ffi {
         fn TColgp_HArray2OfVec2d_ctor_array2ofvec2d(
             theOther: &TColgp_Array2OfVec2d,
         ) -> UniquePtr<TColgp_HArray2OfVec2d>;
+        /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfVec2d) -> &TColgp_Array2OfVec2d;
+        /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfVec2d>) -> Pin<&mut TColgp_Array2OfVec2d>;
         /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfVec2d) -> &HandleStandardType;
@@ -29550,6 +30323,12 @@ mod ffi {
         fn TColgp_HArray2OfXY_ctor_array2ofxy(
             theOther: &TColgp_Array2OfXY,
         ) -> UniquePtr<TColgp_HArray2OfXY>;
+        /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfXY) -> &TColgp_Array2OfXY;
+        /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfXY>) -> Pin<&mut TColgp_Array2OfXY>;
         /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfXY) -> &HandleStandardType;
@@ -29581,6 +30360,12 @@ mod ffi {
         fn TColgp_HArray2OfXYZ_ctor_array2ofxyz(
             theOther: &TColgp_Array2OfXYZ,
         ) -> UniquePtr<TColgp_HArray2OfXYZ>;
+        /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::Array2()`
+        #[cxx_name = "Array2"]
+        fn array2(self: &TColgp_HArray2OfXYZ) -> &TColgp_Array2OfXYZ;
+        /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::ChangeArray2()`
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut TColgp_HArray2OfXYZ>) -> Pin<&mut TColgp_Array2OfXYZ>;
         /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TColgp_HArray2OfXYZ) -> &HandleStandardType;
@@ -39222,6 +40007,23 @@ mod ffi {
         ///
         /// Default constructor
         fn BSplCLib_ctor() -> UniquePtr<BSplCLib>;
+        /// **Source:** `BSplCLib.hxx`:334 - `BSplCLib::Reverse()`
+        ///
+        /// Reverses the array of poles. Last is the  index of
+        /// the new first pole. On  a  non periodic curve last
+        /// is Poles.Upper(). On a periodic curve last is
+        ///
+        /// (number of flat knots - degree - 1)
+        ///
+        /// or
+        ///
+        /// (sum of multiplicities(but  for the last) + degree
+        /// - 1)
+        fn BSplCLib_reverse_array1ofpnt_int(Poles: Pin<&mut TColgp_Array1OfPnt>, Last: i32);
+        /// **Source:** `BSplCLib.hxx`:337 - `BSplCLib::Reverse()`
+        ///
+        /// Reverses the array of poles.
+        fn BSplCLib_reverse_array1ofpnt2d_int(Poles: Pin<&mut TColgp_Array1OfPnt2d>, Last: i32);
         /// **Source:** `BSplCLib.hxx`:352 - `BSplCLib::MaxDegree()`
         ///
         /// returns the degree maxima for a BSplineCurve.
@@ -39379,6 +40181,38 @@ mod ffi {
             ArrayDimension: i32,
             Array: &mut f64,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1282 - `BSplCLib::SolveBandedSystem()`
+        ///
+        /// This solves  the system Matrix.X =  B
+        /// with when Matrix is factored in LU form
+        /// The  Array   has the length of
+        /// the  rank  of the  matrix  Matrix.  The
+        /// result is stored   in Array  when  each
+        /// coordinate is  solved that is  B is the
+        /// array whose values are
+        /// B[i] = Array[i][p] for each p in 1..ArrayDimension
+        fn BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(
+            Matrix: &math_Matrix,
+            UpperBandWidth: i32,
+            LowerBandWidth: i32,
+            Array: Pin<&mut TColgp_Array1OfPnt2d>,
+        ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1295 - `BSplCLib::SolveBandedSystem()`
+        ///
+        /// This solves  the system Matrix.X =  B
+        /// with when Matrix is factored in LU form
+        /// The  Array   has the length of
+        /// the  rank  of the  matrix  Matrix.  The
+        /// result is stored   in Array  when  each
+        /// coordinate is  solved that is  B is the
+        /// array whose values are
+        /// B[i] = Array[i][p] for each p in 1..ArrayDimension
+        fn BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(
+            Matrix: &math_Matrix,
+            UpperBandWidth: i32,
+            LowerBandWidth: i32,
+            Array: Pin<&mut TColgp_Array1OfPnt>,
+        ) -> i32;
         /// **Source:** `BSplCLib.hxx`:1300 - `BSplCLib::SolveBandedSystem()`
         fn BSplCLib_solve_banded_system_matrix_int2_bool_int_real2(
             Matrix: &math_Matrix,
@@ -39389,6 +40223,16 @@ mod ffi {
             Array: &mut f64,
             Weights: &mut f64,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:2003 - `BSplCLib::PolesCoefficients()`
+        fn BSplCLib_poles_coefficients_array1ofpnt2d2(
+            Poles: &TColgp_Array1OfPnt2d,
+            CachePoles: Pin<&mut TColgp_Array1OfPnt2d>,
+        );
+        /// **Source:** `BSplCLib.hxx`:2011 - `BSplCLib::PolesCoefficients()`
+        fn BSplCLib_poles_coefficients_array1ofpnt2(
+            Poles: &TColgp_Array1OfPnt,
+            CachePoles: Pin<&mut TColgp_Array1OfPnt>,
+        );
         /// **Source:** `BSplCLib.hxx`:2025 - `BSplCLib::FlatBezierKnots()`
         ///
         /// Returns pointer to statically allocated array representing
@@ -40644,6 +41488,16 @@ mod ffi {
         /// triangle the function NbNodes returns 4.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &Poly_Polygon3D) -> i32;
+        /// **Source:** `Poly_Polygon3D.hxx`:68 - `Poly_Polygon3D::Nodes()`
+        ///
+        /// Returns the table of nodes for this polygon.
+        #[cxx_name = "Nodes"]
+        fn nodes(self: &Poly_Polygon3D) -> &TColgp_Array1OfPnt;
+        /// **Source:** `Poly_Polygon3D.hxx`:71 - `Poly_Polygon3D::ChangeNodes()`
+        ///
+        /// Returns the table of nodes for this polygon.
+        #[cxx_name = "ChangeNodes"]
+        fn change_nodes(self: Pin<&mut Poly_Polygon3D>) -> Pin<&mut TColgp_Array1OfPnt>;
         /// **Source:** `Poly_Polygon3D.hxx`:75 - `Poly_Polygon3D::HasParameters()`
         ///
         /// Returns the table of the parameters associated with each node in this polygon.
@@ -40719,6 +41573,16 @@ mod ffi {
         /// triangle, the function NbNodes returns 4.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &Poly_Polygon2D) -> i32;
+        /// **Source:** `Poly_Polygon2D.hxx`:71 - `Poly_Polygon2D::Nodes()`
+        ///
+        /// Returns the table of nodes for this polygon.
+        #[cxx_name = "Nodes"]
+        fn nodes(self: &Poly_Polygon2D) -> &TColgp_Array1OfPnt2d;
+        /// **Source:** `Poly_Polygon2D.hxx`:74 - `Poly_Polygon2D::ChangeNodes()`
+        ///
+        /// Returns the table of nodes for this polygon.
+        #[cxx_name = "ChangeNodes"]
+        fn change_nodes(self: Pin<&mut Poly_Polygon2D>) -> Pin<&mut TColgp_Array1OfPnt2d>;
         /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Poly_Polygon2D) -> &HandleStandardType;
@@ -41057,6 +41921,25 @@ mod ffi {
             RDers: &mut f64,
             All: bool,
         );
+        /// **Source:** `BSplSLib.hxx`:313 - `BSplSLib::Reverse()`
+        ///
+        /// Reverses the array of poles. Last is the Index of
+        /// the new first Row( Col) of Poles.
+        /// On  a  non periodic surface Last is
+        /// Poles.Upper().
+        /// On a periodic curve last is
+        /// (number of flat knots - degree - 1)
+        /// or
+        /// (sum of multiplicities(but  for the last) + degree
+        /// - 1)
+        fn BSplSLib_reverse(Poles: Pin<&mut TColgp_Array2OfPnt>, Last: i32, UDirection: bool);
+        /// **Source:** `BSplSLib.hxx`:647 - `BSplSLib::PolesCoefficients()`
+        ///
+        /// Warning! To be used for BezierSurfaces ONLY!!!
+        fn BSplSLib_poles_coefficients(
+            Poles: &TColgp_Array2OfPnt,
+            CachePoles: Pin<&mut TColgp_Array2OfPnt>,
+        );
         /// ======================== BSplSLib_EvaluatorFunction ========================
         /// **Source:** `BSplSLib_EvaluatorFunction.hxx`:31 - `BSplSLib_EvaluatorFunction`
         type BSplSLib_EvaluatorFunction;
@@ -41375,6 +42258,13 @@ mod ffi {
             self_: Pin<&mut BRepFeat_Builder>,
             theShape: &TopoDS_Shape,
         );
+        /// Inherited from BOPAlgo_Builder: SetArguments()
+        fn BRepFeat_Builder_inherited_SetArguments(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BOPAlgo_Builder: Arguments()
+        fn BRepFeat_Builder_inherited_Arguments(self_: &BRepFeat_Builder) -> &TopTools_ListOfShape;
         /// Inherited from BOPAlgo_Builder: SetNonDestructive()
         fn BRepFeat_Builder_inherited_SetNonDestructive(
             self_: Pin<&mut BRepFeat_Builder>,
@@ -41389,8 +42279,22 @@ mod ffi {
         );
         /// Inherited from BOPAlgo_Builder: CheckInverted()
         fn BRepFeat_Builder_inherited_CheckInverted(self_: &BRepFeat_Builder) -> bool;
+        /// Inherited from BOPAlgo_Builder: ShapesSD()
+        fn BRepFeat_Builder_inherited_ShapesSD(
+            self_: &BRepFeat_Builder,
+        ) -> &TopTools_DataMapOfShapeShape;
         /// Inherited from BOPAlgo_BuilderShape: Shape()
         fn BRepFeat_Builder_inherited_Shape(self_: &BRepFeat_Builder) -> &TopoDS_Shape;
+        /// Inherited from BOPAlgo_BuilderShape: Modified()
+        fn BRepFeat_Builder_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepFeat_Builder>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BOPAlgo_BuilderShape: Generated()
+        fn BRepFeat_Builder_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepFeat_Builder>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
         fn BRepFeat_Builder_inherited_IsDeleted(
             self_: Pin<&mut BRepFeat_Builder>,
@@ -41468,6 +42372,13 @@ mod ffi {
             self_: Pin<&mut BRepFeat_Builder>,
             theShape: &TopoDS_Shape,
         );
+        /// Inherited from BOPAlgo_ToolsProvider: SetTools()
+        fn BRepFeat_Builder_inherited_SetTools(
+            self_: Pin<&mut BRepFeat_Builder>,
+            theShapes: &TopTools_ListOfShape,
+        );
+        /// Inherited from BOPAlgo_ToolsProvider: Tools()
+        fn BRepFeat_Builder_inherited_Tools(self_: &BRepFeat_Builder) -> &TopTools_ListOfShape;
         /// ======================== BOPAlgo_BOP ========================
         /// **Source:** `BOPAlgo_BOP.hxx`:63 - `BOPAlgo_BOP`
         ///
@@ -41547,6 +42458,13 @@ mod ffi {
         ) -> Pin<&mut BOPAlgo_ToolsProvider>;
         /// Inherited from BOPAlgo_Builder: AddArgument()
         fn BOPAlgo_BOP_inherited_AddArgument(self_: Pin<&mut BOPAlgo_BOP>, theShape: &TopoDS_Shape);
+        /// Inherited from BOPAlgo_Builder: SetArguments()
+        fn BOPAlgo_BOP_inherited_SetArguments(
+            self_: Pin<&mut BOPAlgo_BOP>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BOPAlgo_Builder: Arguments()
+        fn BOPAlgo_BOP_inherited_Arguments(self_: &BOPAlgo_BOP) -> &TopTools_ListOfShape;
         /// Inherited from BOPAlgo_Builder: SetNonDestructive()
         fn BOPAlgo_BOP_inherited_SetNonDestructive(self_: Pin<&mut BOPAlgo_BOP>, theFlag: bool);
         /// Inherited from BOPAlgo_Builder: NonDestructive()
@@ -41555,8 +42473,20 @@ mod ffi {
         fn BOPAlgo_BOP_inherited_SetCheckInverted(self_: Pin<&mut BOPAlgo_BOP>, theCheck: bool);
         /// Inherited from BOPAlgo_Builder: CheckInverted()
         fn BOPAlgo_BOP_inherited_CheckInverted(self_: &BOPAlgo_BOP) -> bool;
+        /// Inherited from BOPAlgo_Builder: ShapesSD()
+        fn BOPAlgo_BOP_inherited_ShapesSD(self_: &BOPAlgo_BOP) -> &TopTools_DataMapOfShapeShape;
         /// Inherited from BOPAlgo_BuilderShape: Shape()
         fn BOPAlgo_BOP_inherited_Shape(self_: &BOPAlgo_BOP) -> &TopoDS_Shape;
+        /// Inherited from BOPAlgo_BuilderShape: Modified()
+        fn BOPAlgo_BOP_inherited_Modified<'a>(
+            self_: Pin<&'a mut BOPAlgo_BOP>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BOPAlgo_BuilderShape: Generated()
+        fn BOPAlgo_BOP_inherited_Generated<'a>(
+            self_: Pin<&'a mut BOPAlgo_BOP>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
         fn BOPAlgo_BOP_inherited_IsDeleted(
             self_: Pin<&mut BOPAlgo_BOP>,
@@ -41620,6 +42550,13 @@ mod ffi {
         fn BOPAlgo_BOP_inherited_UseOBB(self_: &BOPAlgo_BOP) -> bool;
         /// Inherited from BOPAlgo_ToolsProvider: AddTool()
         fn BOPAlgo_BOP_inherited_AddTool(self_: Pin<&mut BOPAlgo_BOP>, theShape: &TopoDS_Shape);
+        /// Inherited from BOPAlgo_ToolsProvider: SetTools()
+        fn BOPAlgo_BOP_inherited_SetTools(
+            self_: Pin<&mut BOPAlgo_BOP>,
+            theShapes: &TopTools_ListOfShape,
+        );
+        /// Inherited from BOPAlgo_ToolsProvider: Tools()
+        fn BOPAlgo_BOP_inherited_Tools(self_: &BOPAlgo_BOP) -> &TopTools_ListOfShape;
         /// ======================== BOPAlgo_ToolsProvider ========================
         /// **Source:** `BOPAlgo_ToolsProvider.hxx`:25 - `BOPAlgo_ToolsProvider`
         ///
@@ -41687,6 +42624,15 @@ mod ffi {
             self_: Pin<&mut BOPAlgo_ToolsProvider>,
             theShape: &TopoDS_Shape,
         );
+        /// Inherited from BOPAlgo_Builder: SetArguments()
+        fn BOPAlgo_ToolsProvider_inherited_SetArguments(
+            self_: Pin<&mut BOPAlgo_ToolsProvider>,
+            theLS: &TopTools_ListOfShape,
+        );
+        /// Inherited from BOPAlgo_Builder: Arguments()
+        fn BOPAlgo_ToolsProvider_inherited_Arguments(
+            self_: &BOPAlgo_ToolsProvider,
+        ) -> &TopTools_ListOfShape;
         /// Inherited from BOPAlgo_Builder: SetNonDestructive()
         fn BOPAlgo_ToolsProvider_inherited_SetNonDestructive(
             self_: Pin<&mut BOPAlgo_ToolsProvider>,
@@ -41701,8 +42647,22 @@ mod ffi {
         );
         /// Inherited from BOPAlgo_Builder: CheckInverted()
         fn BOPAlgo_ToolsProvider_inherited_CheckInverted(self_: &BOPAlgo_ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Builder: ShapesSD()
+        fn BOPAlgo_ToolsProvider_inherited_ShapesSD(
+            self_: &BOPAlgo_ToolsProvider,
+        ) -> &TopTools_DataMapOfShapeShape;
         /// Inherited from BOPAlgo_BuilderShape: Shape()
         fn BOPAlgo_ToolsProvider_inherited_Shape(self_: &BOPAlgo_ToolsProvider) -> &TopoDS_Shape;
+        /// Inherited from BOPAlgo_BuilderShape: Modified()
+        fn BOPAlgo_ToolsProvider_inherited_Modified<'a>(
+            self_: Pin<&'a mut BOPAlgo_ToolsProvider>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BOPAlgo_BuilderShape: Generated()
+        fn BOPAlgo_ToolsProvider_inherited_Generated<'a>(
+            self_: Pin<&'a mut BOPAlgo_ToolsProvider>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
         fn BOPAlgo_ToolsProvider_inherited_IsDeleted(
             self_: Pin<&mut BOPAlgo_ToolsProvider>,
@@ -41903,6 +42863,16 @@ mod ffi {
         ) -> Pin<&mut BOPAlgo_Options>;
         /// Inherited from BOPAlgo_BuilderShape: Shape()
         fn BOPAlgo_Builder_inherited_Shape(self_: &BOPAlgo_Builder) -> &TopoDS_Shape;
+        /// Inherited from BOPAlgo_BuilderShape: Modified()
+        fn BOPAlgo_Builder_inherited_Modified<'a>(
+            self_: Pin<&'a mut BOPAlgo_Builder>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BOPAlgo_BuilderShape: Generated()
+        fn BOPAlgo_Builder_inherited_Generated<'a>(
+            self_: Pin<&'a mut BOPAlgo_Builder>,
+            theS: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
         fn BOPAlgo_Builder_inherited_IsDeleted(
             self_: Pin<&mut BOPAlgo_Builder>,
@@ -44480,6 +45450,11 @@ mod ffi {
         fn ChFi3d_FilBuilder_inherited_IsDone(self_: &ChFi3d_FilBuilder) -> bool;
         /// Inherited from ChFi3d_Builder: Shape()
         fn ChFi3d_FilBuilder_inherited_Shape(self_: &ChFi3d_FilBuilder) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from ChFi3d_Builder: Generated()
+        fn ChFi3d_FilBuilder_inherited_Generated<'a>(
+            self_: Pin<&'a mut ChFi3d_FilBuilder>,
+            EouV: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from ChFi3d_Builder: NbFaultyContours()
         fn ChFi3d_FilBuilder_inherited_NbFaultyContours(self_: &ChFi3d_FilBuilder) -> i32;
         /// Inherited from ChFi3d_Builder: FaultyContour()
@@ -45813,6 +46788,11 @@ mod ffi {
         fn ChFi3d_ChBuilder_inherited_IsDone(self_: &ChFi3d_ChBuilder) -> bool;
         /// Inherited from ChFi3d_Builder: Shape()
         fn ChFi3d_ChBuilder_inherited_Shape(self_: &ChFi3d_ChBuilder) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from ChFi3d_Builder: Generated()
+        fn ChFi3d_ChBuilder_inherited_Generated<'a>(
+            self_: Pin<&'a mut ChFi3d_ChBuilder>,
+            EouV: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from ChFi3d_Builder: NbFaultyContours()
         fn ChFi3d_ChBuilder_inherited_NbFaultyContours(self_: &ChFi3d_ChBuilder) -> i32;
         /// Inherited from ChFi3d_Builder: FaultyContour()
@@ -46061,6 +47041,16 @@ mod ffi {
         fn BRepPrimAPI_MakeOneAxis_inherited_Shape(
             self_: Pin<&mut BRepPrimAPI_MakeOneAxis>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepPrimAPI_MakeOneAxis_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeOneAxis>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepPrimAPI_MakeOneAxis_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepPrimAPI_MakeOneAxis>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepPrimAPI_MakeOneAxis_inherited_IsDeleted(
             self_: Pin<&mut BRepPrimAPI_MakeOneAxis>,
@@ -48953,6 +49943,11 @@ mod ffi {
         fn BRepBuilderAPI_ModifyShape_inherited_Shape(
             self_: Pin<&mut BRepBuilderAPI_ModifyShape>,
         ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepBuilderAPI_ModifyShape_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepBuilderAPI_ModifyShape>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
         fn BRepBuilderAPI_ModifyShape_inherited_IsDeleted(
             self_: Pin<&mut BRepBuilderAPI_ModifyShape>,
@@ -49104,8 +50099,23 @@ mod ffi {
             self_: &BRepLib_MakeWire,
             F: &TopoDS_Face,
         ) -> bool;
+        /// Inherited from BRepLib_MakeShape: DescendantFaces()
+        fn BRepLib_MakeWire_inherited_DescendantFaces<'a>(
+            self_: Pin<&'a mut BRepLib_MakeWire>,
+            F: &TopoDS_Face,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepLib_MakeShape: NbSurfaces()
         fn BRepLib_MakeWire_inherited_NbSurfaces(self_: &BRepLib_MakeWire) -> i32;
+        /// Inherited from BRepLib_MakeShape: NewFaces()
+        fn BRepLib_MakeWire_inherited_NewFaces(
+            self_: Pin<&mut BRepLib_MakeWire>,
+            I: i32,
+        ) -> &TopTools_ListOfShape;
+        /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+        fn BRepLib_MakeWire_inherited_FacesFromEdges<'a>(
+            self_: Pin<&'a mut BRepLib_MakeWire>,
+            E: &TopoDS_Edge,
+        ) -> &'a TopTools_ListOfShape;
         /// ======================== BRepLib_MakeShape ========================
         /// **Source:** `BRepLib_MakeShape.hxx`:36 - `BRepLib_MakeShape`
         ///
@@ -49226,8 +50236,23 @@ mod ffi {
             self_: &BRepLib_MakeVertex,
             F: &TopoDS_Face,
         ) -> bool;
+        /// Inherited from BRepLib_MakeShape: DescendantFaces()
+        fn BRepLib_MakeVertex_inherited_DescendantFaces<'a>(
+            self_: Pin<&'a mut BRepLib_MakeVertex>,
+            F: &TopoDS_Face,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepLib_MakeShape: NbSurfaces()
         fn BRepLib_MakeVertex_inherited_NbSurfaces(self_: &BRepLib_MakeVertex) -> i32;
+        /// Inherited from BRepLib_MakeShape: NewFaces()
+        fn BRepLib_MakeVertex_inherited_NewFaces(
+            self_: Pin<&mut BRepLib_MakeVertex>,
+            I: i32,
+        ) -> &TopTools_ListOfShape;
+        /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+        fn BRepLib_MakeVertex_inherited_FacesFromEdges<'a>(
+            self_: Pin<&'a mut BRepLib_MakeVertex>,
+            E: &TopoDS_Edge,
+        ) -> &'a TopTools_ListOfShape;
         /// ======================== BRepLib_MakeSolid ========================
         /// **Source:** `BRepLib_MakeSolid.hxx`:31 - `BRepLib_MakeSolid`
         ///
@@ -49306,8 +50331,23 @@ mod ffi {
             self_: &BRepLib_MakeSolid,
             F: &TopoDS_Face,
         ) -> bool;
+        /// Inherited from BRepLib_MakeShape: DescendantFaces()
+        fn BRepLib_MakeSolid_inherited_DescendantFaces<'a>(
+            self_: Pin<&'a mut BRepLib_MakeSolid>,
+            F: &TopoDS_Face,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepLib_MakeShape: NbSurfaces()
         fn BRepLib_MakeSolid_inherited_NbSurfaces(self_: &BRepLib_MakeSolid) -> i32;
+        /// Inherited from BRepLib_MakeShape: NewFaces()
+        fn BRepLib_MakeSolid_inherited_NewFaces(
+            self_: Pin<&mut BRepLib_MakeSolid>,
+            I: i32,
+        ) -> &TopTools_ListOfShape;
+        /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+        fn BRepLib_MakeSolid_inherited_FacesFromEdges<'a>(
+            self_: Pin<&'a mut BRepLib_MakeSolid>,
+            E: &TopoDS_Edge,
+        ) -> &'a TopTools_ListOfShape;
         /// ======================== BRepLib_MakeFace ========================
         /// **Source:** `BRepLib_MakeFace.hxx`:61 - `BRepLib_MakeFace`
         ///
@@ -49581,8 +50621,23 @@ mod ffi {
             self_: &BRepLib_MakeFace,
             F: &TopoDS_Face,
         ) -> bool;
+        /// Inherited from BRepLib_MakeShape: DescendantFaces()
+        fn BRepLib_MakeFace_inherited_DescendantFaces<'a>(
+            self_: Pin<&'a mut BRepLib_MakeFace>,
+            F: &TopoDS_Face,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepLib_MakeShape: NbSurfaces()
         fn BRepLib_MakeFace_inherited_NbSurfaces(self_: &BRepLib_MakeFace) -> i32;
+        /// Inherited from BRepLib_MakeShape: NewFaces()
+        fn BRepLib_MakeFace_inherited_NewFaces(
+            self_: Pin<&mut BRepLib_MakeFace>,
+            I: i32,
+        ) -> &TopTools_ListOfShape;
+        /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+        fn BRepLib_MakeFace_inherited_FacesFromEdges<'a>(
+            self_: Pin<&'a mut BRepLib_MakeFace>,
+            E: &TopoDS_Edge,
+        ) -> &'a TopTools_ListOfShape;
         /// ======================== BRepLib_MakeEdge ========================
         /// **Source:** `BRepLib_MakeEdge.hxx`:69 - `BRepLib_MakeEdge`
         ///
@@ -49948,8 +51003,23 @@ mod ffi {
             self_: &BRepLib_MakeEdge,
             F: &TopoDS_Face,
         ) -> bool;
+        /// Inherited from BRepLib_MakeShape: DescendantFaces()
+        fn BRepLib_MakeEdge_inherited_DescendantFaces<'a>(
+            self_: Pin<&'a mut BRepLib_MakeEdge>,
+            F: &TopoDS_Face,
+        ) -> &'a TopTools_ListOfShape;
         /// Inherited from BRepLib_MakeShape: NbSurfaces()
         fn BRepLib_MakeEdge_inherited_NbSurfaces(self_: &BRepLib_MakeEdge) -> i32;
+        /// Inherited from BRepLib_MakeShape: NewFaces()
+        fn BRepLib_MakeEdge_inherited_NewFaces(
+            self_: Pin<&mut BRepLib_MakeEdge>,
+            I: i32,
+        ) -> &TopTools_ListOfShape;
+        /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+        fn BRepLib_MakeEdge_inherited_FacesFromEdges<'a>(
+            self_: Pin<&'a mut BRepLib_MakeEdge>,
+            E: &TopoDS_Edge,
+        ) -> &'a TopTools_ListOfShape;
         /// ======================== TopLoc_SListOfItemLocation ========================
         /// **Source:** `TopLoc_SListOfItemLocation.hxx`:43 - `TopLoc_SListOfItemLocation`
         ///

@@ -345,9 +345,30 @@ impl MakeEdge {
         crate::ffi::BRepLib_MakeEdge_inherited_HasDescendants(self, F)
     }
 
+    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    pub fn descendant_faces(
+        self: std::pin::Pin<&mut Self>,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeEdge_inherited_DescendantFaces(self, F)
+    }
+
     /// Inherited from BRepLib_MakeShape: NbSurfaces()
     pub fn nb_surfaces(&self) -> i32 {
         crate::ffi::BRepLib_MakeEdge_inherited_NbSurfaces(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: NewFaces()
+    pub fn new_faces(self: std::pin::Pin<&mut Self>, I: i32) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeEdge_inherited_NewFaces(self, I)
+    }
+
+    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    pub fn faces_from_edges(
+        self: std::pin::Pin<&mut Self>,
+        E: &crate::ffi::TopoDS_Edge,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeEdge_inherited_FacesFromEdges(self, E)
     }
 }
 
@@ -624,9 +645,30 @@ impl MakeFace {
         crate::ffi::BRepLib_MakeFace_inherited_HasDescendants(self, F)
     }
 
+    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    pub fn descendant_faces(
+        self: std::pin::Pin<&mut Self>,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeFace_inherited_DescendantFaces(self, F)
+    }
+
     /// Inherited from BRepLib_MakeShape: NbSurfaces()
     pub fn nb_surfaces(&self) -> i32 {
         crate::ffi::BRepLib_MakeFace_inherited_NbSurfaces(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: NewFaces()
+    pub fn new_faces(self: std::pin::Pin<&mut Self>, I: i32) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeFace_inherited_NewFaces(self, I)
+    }
+
+    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    pub fn faces_from_edges(
+        self: std::pin::Pin<&mut Self>,
+        E: &crate::ffi::TopoDS_Edge,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeFace_inherited_FacesFromEdges(self, E)
     }
 }
 
@@ -761,9 +803,30 @@ impl MakeSolid {
         crate::ffi::BRepLib_MakeSolid_inherited_HasDescendants(self, F)
     }
 
+    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    pub fn descendant_faces(
+        self: std::pin::Pin<&mut Self>,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeSolid_inherited_DescendantFaces(self, F)
+    }
+
     /// Inherited from BRepLib_MakeShape: NbSurfaces()
     pub fn nb_surfaces(&self) -> i32 {
         crate::ffi::BRepLib_MakeSolid_inherited_NbSurfaces(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: NewFaces()
+    pub fn new_faces(self: std::pin::Pin<&mut Self>, I: i32) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeSolid_inherited_NewFaces(self, I)
+    }
+
+    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    pub fn faces_from_edges(
+        self: std::pin::Pin<&mut Self>,
+        E: &crate::ffi::TopoDS_Edge,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeSolid_inherited_FacesFromEdges(self, E)
     }
 }
 
@@ -824,9 +887,30 @@ impl MakeVertex {
         crate::ffi::BRepLib_MakeVertex_inherited_HasDescendants(self, F)
     }
 
+    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    pub fn descendant_faces(
+        self: std::pin::Pin<&mut Self>,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeVertex_inherited_DescendantFaces(self, F)
+    }
+
     /// Inherited from BRepLib_MakeShape: NbSurfaces()
     pub fn nb_surfaces(&self) -> i32 {
         crate::ffi::BRepLib_MakeVertex_inherited_NbSurfaces(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: NewFaces()
+    pub fn new_faces(self: std::pin::Pin<&mut Self>, I: i32) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeVertex_inherited_NewFaces(self, I)
+    }
+
+    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    pub fn faces_from_edges(
+        self: std::pin::Pin<&mut Self>,
+        E: &crate::ffi::TopoDS_Edge,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeVertex_inherited_FacesFromEdges(self, E)
     }
 }
 
@@ -974,8 +1058,29 @@ impl MakeWire {
         crate::ffi::BRepLib_MakeWire_inherited_HasDescendants(self, F)
     }
 
+    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    pub fn descendant_faces(
+        self: std::pin::Pin<&mut Self>,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeWire_inherited_DescendantFaces(self, F)
+    }
+
     /// Inherited from BRepLib_MakeShape: NbSurfaces()
     pub fn nb_surfaces(&self) -> i32 {
         crate::ffi::BRepLib_MakeWire_inherited_NbSurfaces(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: NewFaces()
+    pub fn new_faces(self: std::pin::Pin<&mut Self>, I: i32) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeWire_inherited_NewFaces(self, I)
+    }
+
+    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    pub fn faces_from_edges(
+        self: std::pin::Pin<&mut Self>,
+        E: &crate::ffi::TopoDS_Edge,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepLib_MakeWire_inherited_FacesFromEdges(self, E)
     }
 }

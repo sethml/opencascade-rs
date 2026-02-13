@@ -163,6 +163,14 @@ impl ChBuilder {
         crate::ffi::ChFi3d_ChBuilder_inherited_Shape(self)
     }
 
+    /// Inherited from ChFi3d_Builder: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        EouV: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::ChFi3d_ChBuilder_inherited_Generated(self, EouV)
+    }
+
     /// Inherited from ChFi3d_Builder: NbFaultyContours()
     pub fn nb_faulty_contours(&self) -> i32 {
         crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyContours(self)
@@ -333,6 +341,14 @@ impl FilBuilder {
     /// Inherited from ChFi3d_Builder: Shape()
     pub fn shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::ChFi3d_FilBuilder_inherited_Shape(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        EouV: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::ChFi3d_FilBuilder_inherited_Generated(self, EouV)
     }
 
     /// Inherited from ChFi3d_Builder: NbFaultyContours()

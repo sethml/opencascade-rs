@@ -218,6 +218,16 @@ impl BOP {
         crate::ffi::BOPAlgo_BOP_inherited_AddArgument(self, theShape)
     }
 
+    /// Inherited from BOPAlgo_Builder: SetArguments()
+    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BOPAlgo_BOP_inherited_SetArguments(self, theLS)
+    }
+
+    /// Inherited from BOPAlgo_Builder: Arguments()
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_BOP_inherited_Arguments(self)
+    }
+
     /// Inherited from BOPAlgo_Builder: SetNonDestructive()
     pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
         crate::ffi::BOPAlgo_BOP_inherited_SetNonDestructive(self, theFlag)
@@ -238,9 +248,30 @@ impl BOP {
         crate::ffi::BOPAlgo_BOP_inherited_CheckInverted(self)
     }
 
+    /// Inherited from BOPAlgo_Builder: ShapesSD()
+    pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
+        crate::ffi::BOPAlgo_BOP_inherited_ShapesSD(self)
+    }
+
     /// Inherited from BOPAlgo_BuilderShape: Shape()
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BOPAlgo_BOP_inherited_Shape(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_BOP_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_BOP_inherited_Generated(self, theS)
     }
 
     /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
@@ -359,6 +390,16 @@ impl BOP {
     pub fn add_tool(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
         crate::ffi::BOPAlgo_BOP_inherited_AddTool(self, theShape)
     }
+
+    /// Inherited from BOPAlgo_ToolsProvider: SetTools()
+    pub fn set_tools(self: std::pin::Pin<&mut Self>, theShapes: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BOPAlgo_BOP_inherited_SetTools(self, theShapes)
+    }
+
+    /// Inherited from BOPAlgo_ToolsProvider: Tools()
+    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_BOP_inherited_Tools(self)
+    }
 }
 
 // ========================
@@ -436,6 +477,22 @@ impl Builder {
     /// Inherited from BOPAlgo_BuilderShape: Shape()
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BOPAlgo_Builder_inherited_Shape(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_Builder_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_Builder_inherited_Generated(self, theS)
     }
 
     /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
@@ -763,6 +820,16 @@ impl ToolsProvider {
         crate::ffi::BOPAlgo_ToolsProvider_inherited_AddArgument(self, theShape)
     }
 
+    /// Inherited from BOPAlgo_Builder: SetArguments()
+    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetArguments(self, theLS)
+    }
+
+    /// Inherited from BOPAlgo_Builder: Arguments()
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_ToolsProvider_inherited_Arguments(self)
+    }
+
     /// Inherited from BOPAlgo_Builder: SetNonDestructive()
     pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
         crate::ffi::BOPAlgo_ToolsProvider_inherited_SetNonDestructive(self, theFlag)
@@ -783,9 +850,30 @@ impl ToolsProvider {
         crate::ffi::BOPAlgo_ToolsProvider_inherited_CheckInverted(self)
     }
 
+    /// Inherited from BOPAlgo_Builder: ShapesSD()
+    pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
+        crate::ffi::BOPAlgo_ToolsProvider_inherited_ShapesSD(self)
+    }
+
     /// Inherited from BOPAlgo_BuilderShape: Shape()
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BOPAlgo_ToolsProvider_inherited_Shape(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_ToolsProvider_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_ToolsProvider_inherited_Generated(self, theS)
     }
 
     /// Inherited from BOPAlgo_BuilderShape: IsDeleted()

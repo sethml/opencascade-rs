@@ -82,6 +82,14 @@ impl MakeOffset {
         crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Shape(self)
     }
 
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Modified(self, S)
+    }
+
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepOffsetAPI_MakeOffset_inherited_IsDeleted(self, S)
@@ -251,6 +259,14 @@ impl MakePipe {
         crate::ffi::BRepOffsetAPI_MakePipe_inherited_Shape(self)
     }
 
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_MakePipe_inherited_Modified(self, S)
+    }
+
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepOffsetAPI_MakePipe_inherited_IsDeleted(self, S)
@@ -350,6 +366,14 @@ impl MakePipeShell {
         crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Shape(self)
     }
 
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Modified(self, S)
+    }
+
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_IsDeleted(self, S)
@@ -432,6 +456,14 @@ impl MakeThickSolid {
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Generated(self, S)
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
@@ -534,6 +566,14 @@ impl ThruSections {
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepOffsetAPI_ThruSections_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_ThruSections_inherited_Modified(self, S)
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()

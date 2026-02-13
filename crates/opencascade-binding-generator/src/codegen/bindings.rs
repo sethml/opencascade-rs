@@ -2370,10 +2370,32 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
     for im in &bindings.inherited_methods {
         writeln!(out, "        /// Inherited from {}: {}()", im.source_class, im.cpp_method_name).unwrap();
 
+        // Detect if we need explicit lifetime annotations.
+        // Inherited methods are emitted as free functions (not using `self:` syntax),
+        // so Rust's lifetime elision fails when there are 2+ input reference lifetimes
+        // and the return type is a reference. We tie the return lifetime to self_.
+        let returns_ref = im.return_type.as_ref()
+            .map(|rt| rt.rust_ffi_type.starts_with('&') || rt.rust_ffi_type.starts_with("Pin<&"))
+            .unwrap_or(false);
+        let has_ref_params = im.params.iter().any(|p| {
+            p.rust_ffi_type.starts_with('&') || p.rust_ffi_type.starts_with("Pin<&")
+        });
+        let needs_lifetime = returns_ref && has_ref_params;
+
+        let lifetime_generic = if needs_lifetime { "<'a>" } else { "" };
+
         let self_param = if im.is_const {
-            format!("self_: &{}", cn)
+            if needs_lifetime {
+                format!("self_: &'a {}", cn)
+            } else {
+                format!("self_: &{}", cn)
+            }
         } else {
-            format!("self_: Pin<&mut {}>", cn)
+            if needs_lifetime {
+                format!("self_: Pin<&'a mut {}>", cn)
+            } else {
+                format!("self_: Pin<&mut {}>", cn)
+            }
         };
         let params_str: String = im
             .params
@@ -2387,10 +2409,28 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
             format!("{}, {}", self_param, params_str)
         };
         let ret = match &im.return_type {
-            Some(rt) => format!(" -> {}", rt.rust_ffi_type),
+            Some(rt) => {
+                if needs_lifetime {
+                    // Insert 'a after the leading & in the return type
+                    let annotated = if rt.rust_ffi_type.starts_with("Pin<&mut ") {
+                        rt.rust_ffi_type.replacen("Pin<&mut ", "Pin<&'a mut ", 1)
+                    } else if rt.rust_ffi_type.starts_with("Pin<&") {
+                        rt.rust_ffi_type.replacen("Pin<&", "Pin<&'a ", 1)
+                    } else if rt.rust_ffi_type.starts_with("&mut ") {
+                        rt.rust_ffi_type.replacen("&mut ", "&'a mut ", 1)
+                    } else if rt.rust_ffi_type.starts_with('&') {
+                        rt.rust_ffi_type.replacen('&', "&'a ", 1)
+                    } else {
+                        rt.rust_ffi_type.clone()
+                    };
+                    format!(" -> {}", annotated)
+                } else {
+                    format!(" -> {}", rt.rust_ffi_type)
+                }
+            }
             None => String::new(),
         };
-        writeln!(out, "        fn {}({}){};", im.ffi_fn_name, all_params, ret).unwrap();
+        writeln!(out, "        fn {}{}({}){};", im.ffi_fn_name, lifetime_generic, all_params, ret).unwrap();
     }
 
     out
