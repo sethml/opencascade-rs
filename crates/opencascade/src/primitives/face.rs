@@ -1,15 +1,12 @@
-// NOTE: This file is partially blocked because:
-// - Many helper functions (cast_face_to_shape, map_shapes, outer_wire) not generated
-// See TRANSITION_PLAN.md for details.
-
 use crate::{
     angle::Angle,
-    primitives::{make_axis_1, make_vec, Shape, Solid, Surface, Wire},
+    make_pipe_shell::make_pipe_shell_with_law_function,
+    primitives::{make_axis_1, make_point, make_vec, Shape, Solid, Surface, Wire},
     workplane::Workplane,
 };
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep, b_rep_algo_api, b_rep_builder_api, b_rep_feat, b_rep_fillet_api, b_rep_g_prop, b_rep_offset_api, b_rep_prim_api, b_rep_tools, g_prop, gp, message, top_abs, top_exp, top_loc, topo_ds};
+use opencascade_sys::{b_rep, b_rep_algo_api, b_rep_builder_api, b_rep_feat, b_rep_fillet_api, b_rep_g_prop, b_rep_offset_api, b_rep_prim_api, b_rep_tools, g_prop, geom_api, gp, message, shape_upgrade, top_abs, top_exp, top_loc, topo_ds};
 
 pub struct Face {
     pub(crate) inner: UniquePtr<topo_ds::Face>,
@@ -211,17 +208,14 @@ impl Face {
         Solid::from_solid(solid)
     }
 
-    // NOTE: sweep_along_with_radius_values is blocked because law_function is blocked
-    #[allow(unused)]
     #[must_use]
     pub fn sweep_along_with_radius_values(
         &self,
-        _path: &Wire,
-        _radius_values: impl IntoIterator<Item = (f64, f64)>,
+        path: &Wire,
+        radius_values: impl IntoIterator<Item = (f64, f64)>,
     ) -> Solid {
-        unimplemented!(
-            "Face::sweep_along_with_radius_values is blocked pending law_function support"
-        );
+        let profile = self.outer_wire();
+        make_pipe_shell_with_law_function(&path, &profile, radius_values)
     }
 
     pub fn edges(&self) -> super::EdgeIterator {
@@ -246,28 +240,48 @@ impl Face {
         dvec3(center.x(), center.y(), center.z())
     }
 
-    // NOTE: normal_at is blocked because GeomAPI_ProjectPointOnSurf::lower_distance_parameters()
-    // and BRepGProp_Face::normal() are in FFI but not in module re-exports
-    #[allow(unused)]
-    pub fn normal_at(&self, _pos: DVec3) -> DVec3 {
-        unimplemented!(
-            "Face::normal_at is blocked pending lower_distance_parameters/BRepGProp_Face::normal re-exports"
+    pub fn normal_at(&self, pos: DVec3) -> DVec3 {
+        let surface_handle = b_rep::Tool::surface_face(&self.inner);
+        let gp_point = make_point(pos);
+        let projector = geom_api::ProjectPointOnSurf::new_pnt_handlesurface_extalgo(
+            &gp_point,
+            &surface_handle,
+            0, // Extrema_ExtAlgo_Grad
         );
+        let mut u = 0.0;
+        let mut v = 0.0;
+        projector.lower_distance_parameters(&mut u, &mut v);
+
+        let gprop_face = b_rep_g_prop::Face::new_face_bool(&self.inner, false);
+        let mut pnt = gp::Pnt::new();
+        let mut normal_vec = gp::Vec::new();
+        gprop_face.normal(u, v, pnt.pin_mut(), normal_vec.pin_mut());
+
+        let norm = dvec3(normal_vec.x(), normal_vec.y(), normal_vec.z());
+        norm.normalize()
     }
 
     pub fn normal_at_center(&self) -> DVec3 {
-        let _center = self.center_of_mass();
-        // NOTE: normal_at_center depends on normal_at which is blocked
-        unimplemented!(
-            "Face::normal_at_center is blocked pending normal_at support"
-        );
+        let center = self.center_of_mass();
+        self.normal_at(center)
     }
 
     pub fn workplane(&self) -> Workplane {
-        // NOTE: workplane depends on center_of_mass and normal_at
-        unimplemented!(
-            "Face::workplane is blocked pending normal_at support"
-        );
+        const NORMAL_DIFF_TOLERANCE: f64 = 0.0001;
+
+        let origin = self.center_of_mass();
+        let normal = self.normal_at(origin);
+        let mut x_dir = dvec3(0.0, 0.0, 1.0).cross(normal);
+
+        if x_dir.length() < NORMAL_DIFF_TOLERANCE {
+            // The normal of this face is too close to the same direction
+            // as the global Z axis. Use the global X axis for X instead.
+            x_dir = dvec3(1.0, 0.0, 0.0);
+        }
+
+        let mut workplane = Workplane::new(x_dir, normal);
+        workplane.set_translation(origin);
+        workplane
     }
 
     pub fn union(&self, other: &Face) -> CompoundFace {
@@ -316,12 +330,16 @@ impl Face {
         CompoundFace::from_compound(compound)
     }
 
-    // NOTE: surface_area is blocked because GProp_GProps::mass() is not in module re-exports
-    #[allow(unused)]
     pub fn surface_area(&self) -> f64 {
-        unimplemented!(
-            "Face::surface_area is blocked pending GProp_GProps::mass() re-export"
+        let mut props = g_prop::GProps::new();
+        let inner_shape = self.inner.as_shape();
+        b_rep_g_prop::BRepGProp::surface_properties_shape_gprops_bool2(
+            inner_shape,
+            props.pin_mut(),
+            false, // SkipShared
+            false, // UseTriangulation
         );
+        props.mass()
     }
 
     pub fn orientation(&self) -> FaceOrientation {
@@ -366,14 +384,19 @@ impl CompoundFace {
         Self { inner }
     }
 
-    // NOTE: clean is blocked because ShapeUpgrade_UnifySameDomain build/shape
-    // methods are not in module re-exports
-    #[allow(unused)]
     #[must_use]
     pub fn clean(&self) -> Self {
-        unimplemented!(
-            "CompoundFace::clean is blocked pending ShapeUpgrade_UnifySameDomain re-export of build()/shape()"
+        let mut unifier = shape_upgrade::UnifySameDomain::new_shape_bool3(
+            self.inner.as_shape(),
+            true,  // UnifyEdges
+            true,  // UnifyFaces
+            false, // ConcatBSplines
         );
+        unifier.pin_mut().allow_internal_edges(false);
+        unifier.pin_mut().build();
+        let result = unifier.shape();
+        let compound = topo_ds::compound(result);
+        CompoundFace::from_compound(compound)
     }
 
     #[must_use]

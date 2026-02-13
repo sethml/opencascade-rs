@@ -1,6 +1,6 @@
 use crate::primitives::Shape;
 use cxx::UniquePtr;
-use opencascade_sys::{b_rep, topo_ds};
+use opencascade_sys::{b_rep, shape_upgrade, topo_ds};
 
 pub struct Compound {
     pub(crate) inner: UniquePtr<topo_ds::Compound>,
@@ -19,14 +19,18 @@ impl Compound {
         Self { inner }
     }
 
-    // NOTE: clean is blocked because ShapeUpgrade_UnifySameDomain build/shape
-    // methods are not in module re-exports
-    #[allow(unused)]
     #[must_use]
     pub fn clean(&self) -> Shape {
-        unimplemented!(
-            "Compound::clean is blocked pending ShapeUpgrade_UnifySameDomain re-export of build()/shape()"
+        let mut unifier = shape_upgrade::UnifySameDomain::new_shape_bool3(
+            self.inner.as_shape(),
+            true,  // UnifyEdges
+            true,  // UnifyFaces
+            false, // ConcatBSplines
         );
+        unifier.pin_mut().allow_internal_edges(false);
+        unifier.pin_mut().build();
+        let result = unifier.shape();
+        Shape::from_shape(result)
     }
 
     pub fn from_shapes<T: AsRef<Shape>>(shapes: impl IntoIterator<Item = T>) -> Self {

@@ -1,5 +1,7 @@
 use crate::{
-    primitives::{BooleanShape, Compound, Edge, Face, Shape, Wire},
+    primitives::{
+        shape::list_of_shape_to_edges, BooleanShape, Compound, Edge, Face, Shape, Wire,
+    },
     Error,
 };
 use cxx::UniquePtr;
@@ -71,10 +73,7 @@ impl Solid {
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
 
-        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
-        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
-        // iterate it. This needs a binding generator fix to properly import cross-module types.
-        let new_edges: Vec<Edge> = Vec::new();
+        let new_edges = list_of_shape_to_edges(cut.pin_mut().section_edges());
 
         BooleanShape { shape, new_edges }
     }
@@ -94,10 +93,7 @@ impl Solid {
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
 
-        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
-        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
-        // iterate it. This needs a binding generator fix to properly import cross-module types.
-        let new_edges: Vec<Edge> = Vec::new();
+        let new_edges = list_of_shape_to_edges(fuse.pin_mut().section_edges());
 
         BooleanShape { shape, new_edges }
     }
@@ -118,10 +114,7 @@ impl Solid {
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
 
-        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
-        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
-        // iterate it. This needs a binding generator fix to properly import cross-module types.
-        let new_edges: Vec<Edge> = Vec::new();
+        let new_edges = list_of_shape_to_edges(common.pin_mut().section_edges());
 
         BooleanShape { shape, new_edges }
     }

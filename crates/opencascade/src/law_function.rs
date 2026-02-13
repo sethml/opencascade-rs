@@ -1,19 +1,27 @@
-// NOTE: This module is blocked because:
-// - Law_Interpol::Set() method is in FFI but not in module re-exports
-// - TColgp_Array1OfPnt2d has no impl block in re-exports (just a type alias)
-// See TRANSITION_PLAN.md for details.
-
 use cxx::UniquePtr;
-use opencascade_sys::law;
+use glam::DVec2;
+use opencascade_sys::{law, t_colgp};
 
-// Stub implementation - blocked due to missing Law_Interpol::Set() re-export
-// and TColgp_Array1OfPnt2d constructor re-export
-#[allow(unused)]
+use crate::primitives::make_point2d;
+
+/// Creates a Law_Function handle from a set of (parameter, radius) pairs.
+/// Used for variable-radius pipe shell sweeps and variable fillets.
 #[must_use]
 pub(crate) fn law_function_from_graph(
-    _pairs: impl IntoIterator<Item = (f64, f64)>,
-) -> UniquePtr<law::Function> {
-    unimplemented!(
-        "law_function_from_graph is blocked pending Law_Interpol::set() and TColgp_Array1OfPnt2d re-exports"
-    );
+    pairs: impl IntoIterator<Item = (f64, f64)>,
+) -> UniquePtr<law::HandleLawFunction> {
+    let pairs: Vec<(f64, f64)> = pairs.into_iter().collect();
+    let n = pairs.len() as i32;
+
+    let mut array = t_colgp::Array1OfPnt2d::new_with_bounds(1, n);
+    for (i, &(param, radius)) in pairs.iter().enumerate() {
+        let pnt2d = make_point2d(DVec2::new(param, radius));
+        array.pin_mut().set_value(i as i32 + 1, &pnt2d);
+    }
+
+    let mut interpol = law::Interpol::new();
+    interpol.pin_mut().set_array1ofpnt2d_bool(&array, false);
+
+    let handle = law::Interpol::to_handle(interpol);
+    handle.to_handle_function()
 }

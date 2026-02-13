@@ -1,19 +1,14 @@
-// NOTE: This file is partially blocked because:
-// - STEP/IGES readers need custom helper functions
-// - Mesher is blocked
-// See TRANSITION_PLAN.md for details.
-
 use crate::{
-    mesh::Mesh,
+    mesh::{Mesh, Mesher},
     primitives::{
-        make_axis_2, make_vec, BooleanShape, Compound, Edge, Face, Shell, Solid,
-        Vertex, Wire,
+        make_axis_1, make_axis_2, make_point, make_point2d, make_vec,
+        BooleanShape, Compound, Edge, Face, Shell, Solid, Vertex, Wire,
     },
     Error,
 };
 use cxx::UniquePtr;
-use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep, b_rep_algo_api, b_rep_fillet_api, b_rep_mesh, b_rep_offset_api, b_rep_prim_api, gp, message, step_control, stl_api, top_abs, top_exp, top_loc, top_tools, topo_ds};
+use glam::{dvec3, DVec2, DVec3};
+use opencascade_sys::{b_rep, b_rep_algo_api, b_rep_feat, b_rep_fillet_api, b_rep_int_curve_surface, b_rep_mesh, b_rep_offset_api, b_rep_prim_api, gp, iges_control, message, shape_upgrade, step_control, stl_api, t_colgp, top_abs, top_exp, top_loc, top_tools, topo_ds};
 use std::path::Path;
 
 pub struct Shape {
@@ -377,17 +372,13 @@ impl Shape {
         self.fillet_edges(radius, [edge])
     }
 
-    // NOTE: variable_fillet_edge is blocked pending TColgp_Array1OfPnt2d support
-    #[allow(unused)]
     #[must_use]
     pub fn variable_fillet_edge(
         &self,
-        _radius_values: impl IntoIterator<Item = (f64, f64)>,
-        _edge: &Edge,
+        radius_values: impl IntoIterator<Item = (f64, f64)>,
+        edge: &Edge,
     ) -> Self {
-        unimplemented!(
-            "Shape::variable_fillet_edge is blocked pending TColgp_Array1OfPnt2d support"
-        );
+        self.variable_fillet_edges(radius_values, [edge])
     }
 
     #[must_use]
@@ -412,17 +403,31 @@ impl Shape {
         Self::from_shape(shape)
     }
 
-    // NOTE: variable_fillet_edges is blocked pending TColgp_Array1OfPnt2d support
-    #[allow(unused)]
     #[must_use]
     pub fn variable_fillet_edges<T: AsRef<Edge>>(
         &self,
-        _radius_values: impl IntoIterator<Item = (f64, f64)>,
-        _edges: impl IntoIterator<Item = T>,
+        radius_values: impl IntoIterator<Item = (f64, f64)>,
+        edges: impl IntoIterator<Item = T>,
     ) -> Self {
-        unimplemented!(
-            "Shape::variable_fillet_edges is blocked pending TColgp_Array1OfPnt2d support"
-        );
+        let progress = message::ProgressRange::new();
+        // ChFi3d_Rational = 0
+        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(&self.inner, 0);
+
+        let pairs: Vec<(f64, f64)> = radius_values.into_iter().collect();
+        let n = pairs.len() as i32;
+        let mut array = t_colgp::Array1OfPnt2d::new_with_bounds(1, n);
+        for (i, &(param, radius)) in pairs.iter().enumerate() {
+            let pnt2d = make_point2d(DVec2::new(param, radius));
+            array.pin_mut().set_value(i as i32 + 1, &pnt2d);
+        }
+
+        for edge in edges {
+            make_fillet.pin_mut().add_array1ofpnt2d_edge(&array, &edge.as_ref().inner);
+        }
+
+        make_fillet.pin_mut().build(&progress);
+        let shape = make_fillet.pin_mut().shape();
+        Self::from_shape(shape)
     }
 
     #[must_use]
@@ -468,10 +473,7 @@ impl Shape {
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
 
-        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
-        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
-        // iterate it. This needs a binding generator fix to properly import cross-module types.
-        let new_edges: Vec<Edge> = Vec::new();
+        let new_edges = list_of_shape_to_edges(cut.pin_mut().section_edges());
 
         BooleanShape { shape, new_edges }
     }
@@ -511,22 +513,35 @@ impl Shape {
         Ok(())
     }
 
-    // NOTE: read_iges is blocked because IGESControl_Reader::read_file()
-    // is in FFI but not in module re-exports
-    #[allow(unused)]
-    pub fn read_iges(_path: impl AsRef<Path>) -> Result<Self, Error> {
-        unimplemented!(
-            "Shape::read_iges is blocked pending IGESControl_Reader read_file re-export"
-        );
+    pub fn read_iges(path: impl AsRef<Path>) -> Result<Self, Error> {
+        let mut reader = iges_control::Reader::new();
+        let path_str = path.as_ref().to_string_lossy();
+        // IFSelect_ReturnStatus: 0 = RetDone (success)
+        let status = reader.pin_mut().as_xs_control_reader_mut().read_file(&path_str);
+        if status != 0 {
+            return Err(Error::IgesReadFailed);
+        }
+        let progress = message::ProgressRange::new();
+        reader.pin_mut().transfer_roots(&progress);
+        let inner = reader.one_shape();
+        Ok(Self { inner })
     }
 
-    // NOTE: write_iges is blocked because IGESControl_Writer::add_shape()/compute_model()
-    // are in FFI but not in module re-exports
-    #[allow(unused)]
-    pub fn write_iges(&self, _path: impl AsRef<Path>) -> Result<(), Error> {
-        unimplemented!(
-            "Shape::write_iges is blocked pending IGESControl_Writer re-exports"
-        );
+    pub fn write_iges(&self, path: impl AsRef<Path>) -> Result<(), Error> {
+        let mut writer = iges_control::Writer::new();
+        let progress = message::ProgressRange::new();
+        let success = writer.pin_mut().add_shape(&self.inner, &progress);
+        if !success {
+            return Err(Error::IgesWriteFailed);
+        }
+        writer.pin_mut().compute_model();
+        let path_str = path.as_ref().to_string_lossy();
+        let fnes = true; // FNES mode
+        let success = writer.pin_mut().write(&path_str, fnes);
+        if !success {
+            return Err(Error::IgesWriteFailed);
+        }
+        Ok(())
     }
 
     /// Boolean union: returns a new shape combining `self` and `other`.
@@ -544,10 +559,7 @@ impl Shape {
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
 
-        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
-        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
-        // iterate it. This needs a binding generator fix to properly import cross-module types.
-        let new_edges: Vec<Edge> = Vec::new();
+        let new_edges = list_of_shape_to_edges(fuse.pin_mut().section_edges());
 
         BooleanShape { shape, new_edges }
     }
@@ -568,10 +580,7 @@ impl Shape {
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
 
-        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
-        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
-        // iterate it. This needs a binding generator fix to properly import cross-module types.
-        let new_edges: Vec<Edge> = Vec::new();
+        let new_edges = list_of_shape_to_edges(common.pin_mut().section_edges());
 
         BooleanShape { shape, new_edges }
     }
@@ -623,14 +632,18 @@ impl Shape {
         }
     }
 
-    // NOTE: clean is blocked because ShapeUpgrade_UnifySameDomain build/shape/
-    // allow_internal_edges methods are in FFI but not in module re-exports
-    #[allow(unused)]
     #[must_use]
     pub fn clean(&self) -> Self {
-        unimplemented!(
-            "Shape::clean is blocked pending ShapeUpgrade_UnifySameDomain re-export of build()/shape()"
+        let mut unifier = shape_upgrade::UnifySameDomain::new_shape_bool3(
+            &self.inner,
+            true,  // UnifyEdges
+            true,  // UnifyFaces
+            false, // ConcatBSplines
         );
+        unifier.pin_mut().allow_internal_edges(false);
+        unifier.pin_mut().build();
+        let result = unifier.shape();
+        Self::from_shape(result)
     }
 
     pub fn set_global_translation(&mut self, translation: DVec3) {
@@ -642,20 +655,13 @@ impl Shape {
         self.inner.pin_mut().move_(&location, raise_exception);
     }
 
-    // NOTE: mesh methods are blocked because mesh.rs Mesher is blocked
-    // (GProp_GProps::mass() and other methods not in re-exports)
-    #[allow(unused)]
     pub fn mesh(&self) -> Result<Mesh, Error> {
-        unimplemented!(
-            "Shape::mesh is blocked pending Mesher support (multiple missing re-exports)"
-        );
+        self.mesh_with_tolerance(0.1)
     }
 
-    #[allow(unused)]
-    pub fn mesh_with_tolerance(&self, _triangulation_tolerance: f64) -> Result<Mesh, Error> {
-        unimplemented!(
-            "Shape::mesh_with_tolerance is blocked pending Mesher support (multiple missing re-exports)"
-        );
+    pub fn mesh_with_tolerance(&self, triangulation_tolerance: f64) -> Result<Mesh, Error> {
+        let mesher = Mesher::try_new(self, triangulation_tolerance)?;
+        mesher.mesh()
     }
 
     pub fn edges(&self) -> super::EdgeIterator {
@@ -676,13 +682,35 @@ impl Shape {
         super::FaceIterator { explorer }
     }
 
-    // NOTE: faces_along_line is blocked because BRepIntCurveSurface_Inter
-    // init/more/next/face methods are in FFI but not in module re-exports
-    #[allow(unused)]
-    pub fn faces_along_line(&self, _line_origin: DVec3, _line_dir: DVec3) -> Vec<LineFaceHitPoint> {
-        unimplemented!(
-            "Shape::faces_along_line is blocked pending BRepIntCurveSurface_Inter re-exports"
-        );
+    pub fn faces_along_line(&self, line_origin: DVec3, line_dir: DVec3) -> Vec<LineFaceHitPoint> {
+        let origin = make_point(line_origin);
+        let dir = gp::Dir::new_real3(line_dir.x, line_dir.y, line_dir.z);
+        let line = gp::Lin::new_pnt_dir(&origin, &dir);
+
+        let mut intersector = b_rep_int_curve_surface::Inter::new();
+        let tolerance = 0.001;
+        intersector.pin_mut().init_shape_lin_real(&self.inner, &line, tolerance);
+
+        let mut results = Vec::new();
+        while intersector.more() {
+            let face = intersector.face();
+            let pnt = intersector.pnt();
+            let t = intersector.w();
+            let u = intersector.u();
+            let v = intersector.v();
+
+            results.push(LineFaceHitPoint {
+                face: Face::from_face(face),
+                t,
+                u,
+                v,
+                point: dvec3(pnt.x(), pnt.y(), pnt.z()),
+            });
+
+            intersector.pin_mut().next();
+        }
+
+        results
     }
 
     #[must_use]
@@ -720,15 +748,30 @@ impl Shape {
         self.hollow(offset, faces_to_remove)
     }
 
-    // NOTE: drill_hole is blocked because BRepFeat_MakeCylindricalHole
-    // init/perform methods are in FFI but not in module re-exports
-    #[allow(unused)]
     #[must_use]
-    pub fn drill_hole(&self, _p: DVec3, _dir: DVec3, _radius: f64) -> Self {
-        unimplemented!(
-            "Shape::drill_hole is blocked pending BRepFeat_MakeCylindricalHole re-exports"
-        );
+    pub fn drill_hole(&self, p: DVec3, dir: DVec3, radius: f64) -> Self {
+        let axis = make_axis_1(p, dir);
+        let mut hole_maker = b_rep_feat::MakeCylindricalHole::new();
+        hole_maker.pin_mut().init_shape_ax1(&self.inner, &axis);
+        hole_maker.pin_mut().perform_real(radius);
+        let result = hole_maker.shape();
+        Self::from_shape(result)
     }
+}
+
+/// Helper to convert a TopTools_ListOfShape reference to a Vec<Edge>.
+pub(crate) fn list_of_shape_to_edges(list: &top_tools::ListOfShape) -> Vec<Edge> {
+    let mut iter = list.iter();
+    let mut edges = Vec::new();
+    loop {
+        let shape = iter.pin_mut().next();
+        if shape.is_null() {
+            break;
+        }
+        let edge = topo_ds::edge(&shape);
+        edges.push(Edge::from_edge(edge));
+    }
+    edges
 }
 
 /// Information about a point where a line hits (i.e. intersects) a face

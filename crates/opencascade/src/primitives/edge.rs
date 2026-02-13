@@ -1,11 +1,10 @@
-// NOTE: arc() is blocked because gc::ffi::HandleGeomTrimmedCurve doesn't have upcast methods
-//   (the Handle type is declared locally in gc.rs instead of imported from geom.rs)
-// See TRANSITION_PLAN.md for details.
+// NOTE: arc() is now unblocked - HandleGeomTrimmedCurve is unified in ffi.rs
+// and has to_handle_curve() upcast available.
 
 use crate::primitives::{make_point, make_axis_2, make_vec};
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep_adaptor, b_rep_builder_api, gc_pnts, geom, geom_abs, geom_api, gp, t_colgp, topo_ds};
+use opencascade_sys::{b_rep_adaptor, b_rep_builder_api, gc, gc_pnts, geom, geom_abs, geom_api, gp, t_colgp, topo_ds};
 
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub enum EdgeType {
@@ -137,14 +136,16 @@ impl Edge {
         Self::from_make_edge(make_edge)
     }
 
-    // NOTE: arc is blocked because gc::ffi::HandleGeomTrimmedCurve doesn't have upcast
-    // methods to convert to HandleGeomCurve. The Handle type is declared locally in gc.rs
-    // instead of being imported from geom.rs, so the impl block in geom.rs doesn't apply.
-    #[allow(unused)]
-    pub fn arc(_p1: DVec3, _p2: DVec3, _p3: DVec3) -> Self {
-        unimplemented!(
-            "Edge::arc is blocked pending Handle upcast support across modules"
-        );
+    /// Create an arc passing through three points.
+    pub fn arc(p1: DVec3, p2: DVec3, p3: DVec3) -> Self {
+        let gp_p1 = make_point(p1);
+        let gp_p2 = make_point(p2);
+        let gp_p3 = make_point(p3);
+        let arc = gc::MakeArcOfCircle::new_pnt3(&gp_p1, &gp_p2, &gp_p3);
+        let handle_trimmed = arc.value();
+        let handle_curve = handle_trimmed.to_handle_curve();
+        let make_edge = b_rep_builder_api::MakeEdge::new_handlecurve(&handle_curve);
+        Self::from_make_edge(make_edge)
     }
 
     pub fn start_point(&self) -> DVec3 {

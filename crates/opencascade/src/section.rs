@@ -16,13 +16,18 @@ impl Section {
     }
 
     /// Get the edges of the resulting intersection.
-    ///
-    /// NOTE: Currently unimplemented - requires SectionEdges() binding which returns
-    /// TopTools_ListOfShape (a collection type not yet supported in unified FFI).
-    pub fn section_edges(self) -> Vec<Shape> {
-        // TODO: Bind BRepAlgoAPI_BooleanOperation::SectionEdges() and implement
-        // collection iteration for TopTools_ListOfShape
-        unimplemented!("section_edges requires SectionEdges() binding for TopTools_ListOfShape")
+    pub fn section_edges(mut self) -> Vec<Shape> {
+        let list = self.inner.pin_mut().section_edges();
+        let mut iter = list.iter();
+        let mut edges = Vec::new();
+        loop {
+            let shape = iter.pin_mut().next();
+            if shape.is_null() {
+                break;
+            }
+            edges.push(Shape::from_shape(&shape));
+        }
+        edges
     }
 }
 
@@ -30,7 +35,3 @@ impl Section {
 pub fn edges(target: &Shape, tool: &Shape) -> Vec<Shape> {
     Section::new(target, tool).section_edges()
 }
-
-// NOTE: Tests are disabled because section_edges() is blocked
-// #[cfg(test)]
-// mod test { ... }

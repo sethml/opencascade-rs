@@ -176,18 +176,13 @@ impl Wire {
         crate::primitives::Shell::from_shell(shell)
     }
 
-    // NOTE: sweep_along_with_radius_values is blocked by law_function dependency
-    // which requires TColgp array support and law function Handle types.
-    #[allow(unused)]
     #[must_use]
     pub fn sweep_along_with_radius_values(
         &self,
-        _path: &Wire,
-        _radius_values: impl IntoIterator<Item = (f64, f64)>,
+        path: &Wire,
+        radius_values: impl IntoIterator<Item = (f64, f64)>,
     ) -> crate::primitives::Shell {
-        unimplemented!(
-            "Wire::sweep_along_with_radius_values is blocked pending law_function support"
-        );
+        crate::make_pipe_shell::make_pipe_shell_with_law_function_shell(path, self, radius_values)
     }
 
     #[must_use]
