@@ -59,6 +59,8 @@ impl HArray2OfShape {
     }
 }
 
+pub use crate::ffi::HandleTopToolsHArray2OfShape;
+
 // ========================
 // From TopTools_HSequenceOfShape.hxx
 // ========================
@@ -87,3 +89,5 @@ impl HSequenceOfShape {
         crate::ffi::TopTools_HSequenceOfShape_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTopToolsHSequenceOfShape;

@@ -117,13 +117,17 @@ The `Param` struct now tracks `has_default: bool` by inspecting libclang AST chi
 
 **Fix needed:** Generate constructors for NCollection template typedefs.
 
-### 4. BRep_Tool static methods
+### 4. ~~BRep_Tool static methods~~ RESOLVED
 
-`mesh.rs` uses `BRep_Tool::Triangulation()`, `BRep_Tool::Surface()`, etc. These may need verification that they're being generated.
+46 of 50 static methods are generated, including `Triangulation()` and `Surface()`. Only 4 are filtered: `Continuity()` and `MaxContinuity()` (return unscoped enum `GeomAbs_Shape`), `MaxTolerance()` (takes unscoped enum `TopAbs_ShapeEnum`), and `Triangulations()` (returns `Poly_ListOfTriangulation`, not yet in `known_collections`). The actual blocker for `mesh.rs` is not BRep_Tool methods but missing Handle dereferencing and `Poly_Triangulation` accessor support, plus the TColgp array issue (#3). Adding `Poly_ListOfTriangulation` to `known_collections` would unblock `Triangulations()` since collection-aware filtering is now in place.
 
-### 5. BRepFeat_MakeDPrism constructors
+### 5. ~~BRepFeat_MakeDPrism constructors~~ RESOLVED
 
-Blocks `Face::extrude_to_face` and `Face::subtractive_extrude`.
+Both constructors are generated: `MakeDPrism::new()` (default) and `MakeDPrism::new_shape_face2_real_int_bool()` (parameterized). All parameters are by-reference or primitive, so no filters apply. `Face::extrude_to_face` and `Face::subtractive_extrude` have been unstubbed.
+
+### 5a. ~~Methods with collection type params/returns filtered~~ FIXED
+
+Methods taking or returning known collection types (e.g., `TopTools_ListOfShape`) were filtered out because collection typedefs weren't in `all_classes`. Fixed by merging collection typedef names into `all_class_names` in `compute_all_class_bindings()`. ~80 new methods unblocked, including `Generated()`, `Modified()`, `TopExp::MapShapes()`, `SectionEdges()`, and many BOP/fillet/offset methods. Collection types not yet in `known_collections` (e.g., `Poly_ListOfTriangulation`) still need to be added there first.
 
 ### 6. STEP/IGES I/O
 

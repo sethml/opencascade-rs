@@ -52,6 +52,8 @@ impl HArray1OfBoolean {
     }
 }
 
+pub use crate::ffi::HandleTColStdHArray1OfBoolean;
+
 // ========================
 // From TColStd_HArray1OfInteger.hxx
 // ========================
@@ -98,6 +100,8 @@ impl HArray1OfInteger {
     }
 }
 
+pub use crate::ffi::HandleTColStdHArray1OfInteger;
+
 // ========================
 // From TColStd_HArray1OfReal.hxx
 // ========================
@@ -142,6 +146,8 @@ impl HArray1OfReal {
     }
 }
 
+pub use crate::ffi::HandleTColStdHArray1OfReal;
+
 // ========================
 // From TColStd_HArray1OfTransient.hxx
 // ========================
@@ -174,6 +180,8 @@ impl HArray1OfTransient {
         crate::ffi::TColStd_HArray1OfTransient_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColStdHArray1OfTransient;
 
 // ========================
 // From TColStd_HArray2OfReal.hxx
@@ -219,6 +227,8 @@ impl HArray2OfReal {
     }
 }
 
+pub use crate::ffi::HandleTColStdHArray2OfReal;
+
 // ========================
 // From TColStd_HSequenceOfHExtendedString.hxx
 // ========================
@@ -247,6 +257,8 @@ impl HSequenceOfHExtendedString {
         crate::ffi::TColStd_HSequenceOfHExtendedString_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColStdHSequenceOfHExtendedString;
 
 // ========================
 // From TColStd_HSequenceOfInteger.hxx
@@ -277,6 +289,8 @@ impl HSequenceOfInteger {
     }
 }
 
+pub use crate::ffi::HandleTColStdHSequenceOfInteger;
+
 // ========================
 // From TColStd_HSequenceOfReal.hxx
 // ========================
@@ -306,6 +320,8 @@ impl HSequenceOfReal {
     }
 }
 
+pub use crate::ffi::HandleTColStdHSequenceOfReal;
+
 // ========================
 // From TColStd_HSequenceOfTransient.hxx
 // ========================
@@ -334,6 +350,8 @@ impl HSequenceOfTransient {
         crate::ffi::TColStd_HSequenceOfTransient_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTColStdHSequenceOfTransient;
 
 // ========================
 // From TColStd_PackedMapOfInteger.hxx

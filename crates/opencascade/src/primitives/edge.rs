@@ -1,14 +1,13 @@
 // NOTE: This file is partially blocked because:
 // - EdgeType enum conversion from GeomAbs_CurveType is blocked (enums not generated)
-// - Some constructors need TColgp_HArray1OfPnt which may have SetValue issues
 // - arc() is blocked because gc::ffi::HandleGeomTrimmedCurve doesn't have upcast methods
 //   (the Handle type is declared locally in gc.rs instead of imported from geom.rs)
 // See TRANSITION_PLAN.md for details.
 
-use crate::primitives::{make_axis_2, make_point};
+use crate::primitives::{make_point, make_axis_2, make_vec};
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep_adaptor, b_rep_builder_api, gc_pnts, gp, topo_ds};
+use opencascade_sys::{b_rep_adaptor, b_rep_builder_api, gc_pnts, geom, geom_api, gp, t_colgp, topo_ds};
 
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub enum EdgeType {
@@ -52,12 +51,19 @@ impl Edge {
         Self::from_make_edge(make_edge)
     }
 
-    // NOTE: bezier is blocked because TColgp_HArray1OfPnt SetValue may not work
-    #[allow(unused)]
-    pub fn bezier(_points: impl IntoIterator<Item = DVec3>) -> Self {
-        unimplemented!(
-            "Edge::bezier is blocked pending TColgp_HArray1OfPnt SetValue support"
-        );
+    pub fn bezier(points: impl IntoIterator<Item = DVec3>) -> Self {
+        let points: Vec<DVec3> = points.into_iter().collect();
+        let n = points.len() as i32;
+        let mut poles = t_colgp::Array1OfPnt::new_with_bounds(1, n);
+        for (i, p) in points.iter().enumerate() {
+            let pnt = make_point(*p);
+            poles.pin_mut().set_value(i as i32 + 1, &pnt);
+        }
+        let curve = geom::BezierCurve::new_array1ofpnt(&poles);
+        let handle = geom::BezierCurve::to_handle(curve);
+        let handle_curve = handle.to_handle_curve();
+        let make_edge = b_rep_builder_api::MakeEdge::new_handlecurve(&handle_curve);
+        Self::from_make_edge(make_edge)
     }
 
     pub fn circle(center: DVec3, normal: DVec3, radius: f64) -> Self {
@@ -69,15 +75,39 @@ impl Edge {
 
     pub fn ellipse() {}
 
-    // NOTE: spline_from_points is blocked because TColgp_HArray1OfPnt SetValue may not work
-    #[allow(unused)]
     pub fn spline_from_points(
-        _points: impl IntoIterator<Item = DVec3>,
-        _tangents: Option<(DVec3, DVec3)>,
+        points: impl IntoIterator<Item = DVec3>,
+        tangents: Option<(DVec3, DVec3)>,
     ) -> Self {
-        unimplemented!(
-            "Edge::spline_from_points is blocked pending TColgp_HArray1OfPnt SetValue support"
+        let points: Vec<DVec3> = points.into_iter().collect();
+        let n = points.len() as i32;
+
+        // Build Array1OfPnt, then wrap in HArray1OfPnt for the interpolator
+        let mut poles = t_colgp::Array1OfPnt::new_with_bounds(1, n);
+        for (i, p) in points.iter().enumerate() {
+            let pnt = make_point(*p);
+            poles.pin_mut().set_value(i as i32 + 1, &pnt);
+        }
+        let harray = t_colgp::HArray1OfPnt::new_array1ofpnt(&poles);
+        let harray_handle = t_colgp::HArray1OfPnt::to_handle(harray);
+
+        let mut interpolator = geom_api::Interpolate::new_handleharray1ofpnt_bool_real(
+            &harray_handle,
+            false,
+            1.0e-6,
         );
+
+        if let Some((start_tangent, end_tangent)) = tangents {
+            let start_vec = make_vec(start_tangent);
+            let end_vec = make_vec(end_tangent);
+            interpolator.pin_mut().load(&start_vec, &end_vec, false);
+        }
+
+        interpolator.pin_mut().perform();
+        let bspline_handle = interpolator.curve();
+        let handle_curve = bspline_handle.to_handle_curve();
+        let make_edge = b_rep_builder_api::MakeEdge::new_handlecurve(&handle_curve);
+        Self::from_make_edge(make_edge)
     }
 
     // NOTE: arc is blocked because gc::ffi::HandleGeomTrimmedCurve doesn't have upcast

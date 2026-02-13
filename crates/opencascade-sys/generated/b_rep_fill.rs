@@ -129,6 +129,8 @@ impl PipeShell {
     }
 }
 
+pub use crate::ffi::HandleBRepFillPipeShell;
+
 // ========================
 // From BRepFill_Section.hxx
 // ========================

@@ -274,6 +274,15 @@ impl BRepTools {
         crate::ffi::BRepTools_outer_wire(F)
     }
 
+    /// Stores in the map  <M> all the 3D topology edges
+    /// of <S>.
+    pub fn map3_d_edges(
+        S: &crate::ffi::TopoDS_Shape,
+        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedMapOfShape>,
+    ) {
+        crate::ffi::BRepTools_map3_d_edges(S, M)
+    }
+
     /// Verifies that the edge  <E> is found two  times on
     /// the face <F> before calling BRep_Tool::IsClosed.
     pub fn is_really_closed(E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) -> bool {
@@ -339,6 +348,16 @@ impl BRepTools {
     /// the given shape from all sub-shapes with internal orientation.
     pub fn remove_internals(theS: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>, theForce: bool) {
         crate::ffi::BRepTools_remove_internals(theS, theForce)
+    }
+
+    /// Check all locations of shape according criterium:
+    /// aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec())
+    /// All sub-shapes having such locations are put in list theProblemShapes
+    pub fn check_locations(
+        theS: &crate::ffi::TopoDS_Shape,
+        theProblemShapes: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
+    ) {
+        crate::ffi::BRepTools_check_locations(theS, theProblemShapes)
     }
 }
 
@@ -435,6 +454,8 @@ impl History {
     }
 }
 
+pub use crate::ffi::HandleBRepToolsHistory;
+
 // ========================
 // From BRepTools_Modifier.hxx
 // ========================
@@ -524,3 +545,5 @@ impl ReShape {
         crate::ffi::BRepTools_ReShape_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleBRepToolsReShape;

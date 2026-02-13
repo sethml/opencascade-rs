@@ -50,3 +50,5 @@ impl Shape {
         crate::ffi::IMeshData_Shape_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleIMeshDataShape;

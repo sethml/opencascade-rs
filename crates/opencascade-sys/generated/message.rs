@@ -119,6 +119,8 @@ impl Alert {
     }
 }
 
+pub use crate::ffi::HandleMessageAlert;
+
 // ========================
 // From Message_AlertExtended.hxx
 // ========================
@@ -229,6 +231,8 @@ impl Algorithm {
     }
 }
 
+pub use crate::ffi::HandleMessageAlgorithm;
+
 // ========================
 // From Message_ExecStatus.hxx
 // ========================
@@ -338,6 +342,8 @@ impl Messenger {
         crate::ffi::Message_Messenger_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleMessageMessenger;
 
 // ========================
 // From Message_Msg.hxx
@@ -769,3 +775,5 @@ impl Report {
         crate::ffi::Message_Report_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleMessageReport;

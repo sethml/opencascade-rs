@@ -92,3 +92,5 @@ impl Curve2d {
         crate::ffi::Adaptor2d_Curve2d_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleAdaptor2dCurve2d;

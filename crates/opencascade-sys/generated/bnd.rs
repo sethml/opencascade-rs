@@ -247,6 +247,8 @@ impl HArray1OfBox {
     }
 }
 
+pub use crate::ffi::HandleBndHArray1OfBox;
+
 // ========================
 // From Bnd_HArray1OfSphere.hxx
 // ========================
@@ -299,6 +301,8 @@ impl HArray1OfSphere {
         crate::ffi::Bnd_HArray1OfSphere_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleBndHArray1OfSphere;
 
 // ========================
 // From Bnd_OBB.hxx

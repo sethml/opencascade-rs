@@ -376,6 +376,8 @@ impl Failure {
     }
 }
 
+pub use crate::ffi::HandleStandardFailure;
+
 // ========================
 // From Standard_Mutex.hxx
 // ========================
@@ -754,6 +756,8 @@ impl Type {
         crate::ffi::Standard_Type_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleStandardType;
 
 // ========================
 // From Standard_TypeMismatch.hxx

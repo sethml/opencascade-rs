@@ -6,6 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Base handle type re-exports (targets of handle upcasts)
+pub use crate::ffi::{
+    HandleGeom2dBoundedCurve, HandleGeom2dConic, HandleGeom2dCurve, HandleGeom2dGeometry,
+};
+
 // ========================
 // From Geom2d_BoundedCurve.hxx
 // ========================
@@ -402,6 +407,25 @@ impl Ellipse {
     }
 }
 
+pub use crate::ffi::HandleGeom2dEllipse;
+
+impl HandleGeom2dEllipse {
+    /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Conic>
+    pub fn to_handle_conic(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dConic> {
+        crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dConic(self)
+    }
+
+    /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dGeometry(self)
+    }
+}
+
 // ========================
 // From Geom2d_Geometry.hxx
 // ========================
@@ -641,5 +665,24 @@ impl TrimmedCurve {
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dTrimmedCurve> {
         crate::ffi::Geom2d_TrimmedCurve_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dTrimmedCurve;
+
+impl HandleGeom2dTrimmedCurve {
+    /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_BoundedCurve>
+    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBoundedCurve> {
+        crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dGeometry(self)
     }
 }

@@ -53,3 +53,5 @@ impl HArray1OfShortReal {
         crate::ffi::TShort_HArray1OfShortReal_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleTShortHArray1OfShortReal;

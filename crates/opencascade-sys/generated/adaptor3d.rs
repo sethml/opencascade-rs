@@ -103,6 +103,8 @@ impl Curve {
     }
 }
 
+pub use crate::ffi::HandleAdaptor3dCurve;
+
 // ========================
 // From Adaptor3d_CurveOnSurface.hxx
 // ========================
@@ -340,3 +342,5 @@ impl Surface {
         crate::ffi::Adaptor3d_Surface_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleAdaptor3dSurface;

@@ -136,6 +136,8 @@ impl HArray1OfTriangle {
     }
 }
 
+pub use crate::ffi::HandlePolyHArray1OfTriangle;
+
 // ========================
 // From Poly_Polygon2D.hxx
 // ========================
@@ -168,6 +170,8 @@ impl Polygon2D {
         crate::ffi::Poly_Polygon2D_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandlePolyPolygon2D;
 
 // ========================
 // From Poly_Polygon3D.hxx
@@ -220,6 +224,8 @@ impl Polygon3D {
         crate::ffi::Poly_Polygon3D_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandlePolyPolygon3D;
 
 // ========================
 // From Poly_PolygonOnTriangulation.hxx
@@ -287,6 +293,8 @@ impl PolygonOnTriangulation {
         crate::ffi::Poly_PolygonOnTriangulation_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandlePolyPolygonOnTriangulation;
 
 // ========================
 // From Poly_Triangle.hxx
@@ -469,3 +477,5 @@ impl Triangulation {
         crate::ffi::Poly_Triangulation_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandlePolyTriangulation;

@@ -44,6 +44,10 @@ pub enum CollectionKind {
     DataMap,
     /// NCollection_IndexedDataMap - key-value map with index access
     IndexedDataMap,
+    /// NCollection_Array1 - fixed-size 1D array (typedef of template instantiation)
+    Array1,
+    /// NCollection_Array2 - fixed-size 2D array (typedef of template instantiation)
+    Array2,
 }
 
 impl CollectionKind {
@@ -56,6 +60,8 @@ impl CollectionKind {
             CollectionKind::Map => "Unordered set",
             CollectionKind::DataMap => "Key-value map",
             CollectionKind::IndexedDataMap => "Key-value map with index access (1-indexed)",
+            CollectionKind::Array1 => "Fixed-size 1D array (1-indexed)",
+            CollectionKind::Array2 => "Fixed-size 2D array (row/col indexed)",
         }
     }
     
@@ -115,12 +121,90 @@ fn known_collections() -> HashMap<&'static str, CollectionMetadata> {
         kind: CollectionKind::IndexedDataMap,
     });
     
-    // TColgp geometry collections (for future expansion)
-    // map.insert("TColgp_Array1OfPnt", CollectionMetadata::Simple {
-    //     element_type: "gp_Pnt",
-    //     kind: CollectionKind::Array1,
-    // });
-    
+    // TColgp Array1 types (typedef NCollection_Array1<T>)
+    map.insert("TColgp_Array1OfCirc2d", CollectionMetadata::Simple {
+        element_type: "gp_Circ2d",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColgp_Array1OfDir", CollectionMetadata::Simple {
+        element_type: "gp_Dir",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColgp_Array1OfDir2d", CollectionMetadata::Simple {
+        element_type: "gp_Dir2d",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColgp_Array1OfLin2d", CollectionMetadata::Simple {
+        element_type: "gp_Lin2d",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColgp_Array1OfPnt", CollectionMetadata::Simple {
+        element_type: "gp_Pnt",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColgp_Array1OfPnt2d", CollectionMetadata::Simple {
+        element_type: "gp_Pnt2d",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColgp_Array1OfVec", CollectionMetadata::Simple {
+        element_type: "gp_Vec",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColgp_Array1OfVec2d", CollectionMetadata::Simple {
+        element_type: "gp_Vec2d",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColgp_Array1OfXY", CollectionMetadata::Simple {
+        element_type: "gp_XY",
+        kind: CollectionKind::Array1,
+    });
+    map.insert("TColgp_Array1OfXYZ", CollectionMetadata::Simple {
+        element_type: "gp_XYZ",
+        kind: CollectionKind::Array1,
+    });
+
+    // TColgp Array2 types (typedef NCollection_Array2<T>)
+    map.insert("TColgp_Array2OfCirc2d", CollectionMetadata::Simple {
+        element_type: "gp_Circ2d",
+        kind: CollectionKind::Array2,
+    });
+    map.insert("TColgp_Array2OfDir", CollectionMetadata::Simple {
+        element_type: "gp_Dir",
+        kind: CollectionKind::Array2,
+    });
+    map.insert("TColgp_Array2OfDir2d", CollectionMetadata::Simple {
+        element_type: "gp_Dir2d",
+        kind: CollectionKind::Array2,
+    });
+    map.insert("TColgp_Array2OfLin2d", CollectionMetadata::Simple {
+        element_type: "gp_Lin2d",
+        kind: CollectionKind::Array2,
+    });
+    map.insert("TColgp_Array2OfPnt", CollectionMetadata::Simple {
+        element_type: "gp_Pnt",
+        kind: CollectionKind::Array2,
+    });
+    map.insert("TColgp_Array2OfPnt2d", CollectionMetadata::Simple {
+        element_type: "gp_Pnt2d",
+        kind: CollectionKind::Array2,
+    });
+    map.insert("TColgp_Array2OfVec", CollectionMetadata::Simple {
+        element_type: "gp_Vec",
+        kind: CollectionKind::Array2,
+    });
+    map.insert("TColgp_Array2OfVec2d", CollectionMetadata::Simple {
+        element_type: "gp_Vec2d",
+        kind: CollectionKind::Array2,
+    });
+    map.insert("TColgp_Array2OfXY", CollectionMetadata::Simple {
+        element_type: "gp_XY",
+        kind: CollectionKind::Array2,
+    });
+    map.insert("TColgp_Array2OfXYZ", CollectionMetadata::Simple {
+        element_type: "gp_XYZ",
+        kind: CollectionKind::Array2,
+    });
+
     map
 }
 
@@ -227,6 +311,12 @@ pub fn generate_cpp_collection(info: &CollectionInfo) -> String {
         CollectionKind::IndexedDataMap => {
             let value_type = info.value_type.as_ref().expect("IndexedDataMap must have value_type");
             generate_cpp_indexed_data_map_collection(&mut output, typedef_name, short_name, element_type, value_type);
+        }
+        CollectionKind::Array1 => {
+            generate_cpp_array1_collection(&mut output, typedef_name, element_type);
+        }
+        CollectionKind::Array2 => {
+            generate_cpp_array2_collection(&mut output, typedef_name, element_type);
         }
     }
     
@@ -642,6 +732,172 @@ fn generate_cpp_indexed_data_map_collection(
     output.push_str("}\n\n");
 }
 
+/// Generate C++ code for NCollection_Array1 (1D fixed-size array)
+fn generate_cpp_array1_collection(
+    output: &mut String,
+    typedef_name: &str,
+    element_type: &str,
+) {
+    // Constructor with bounds
+    output.push_str(&format!(
+        "inline std::unique_ptr<{typedef_name}> {typedef_name}_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {{\n"
+    ));
+    output.push_str(&format!(
+        "    return std::make_unique<{typedef_name}>(theLower, theUpper);\n"
+    ));
+    output.push_str("}\n\n");
+
+    // Constructor with bounds and init value
+    output.push_str(&format!(
+        "inline std::unique_ptr<{typedef_name}> {typedef_name}_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const {element_type}& theValue) {{\n"
+    ));
+    output.push_str(&format!(
+        "    auto arr = std::make_unique<{typedef_name}>(theLower, theUpper);\n"
+    ));
+    output.push_str("    arr->Init(theValue);\n");
+    output.push_str("    return arr;\n");
+    output.push_str("}\n\n");
+
+    // Length
+    output.push_str(&format!(
+        "inline Standard_Integer {typedef_name}_length(const {typedef_name}& arr) {{\n"
+    ));
+    output.push_str("    return arr.Length();\n");
+    output.push_str("}\n\n");
+
+    // Lower bound
+    output.push_str(&format!(
+        "inline Standard_Integer {typedef_name}_lower(const {typedef_name}& arr) {{\n"
+    ));
+    output.push_str("    return arr.Lower();\n");
+    output.push_str("}\n\n");
+
+    // Upper bound
+    output.push_str(&format!(
+        "inline Standard_Integer {typedef_name}_upper(const {typedef_name}& arr) {{\n"
+    ));
+    output.push_str("    return arr.Upper();\n");
+    output.push_str("}\n\n");
+
+    // Value (const reference)
+    output.push_str(&format!(
+        "inline const {element_type}& {typedef_name}_value(const {typedef_name}& arr, Standard_Integer theIndex) {{\n"
+    ));
+    output.push_str("    return arr.Value(theIndex);\n");
+    output.push_str("}\n\n");
+
+    // SetValue
+    output.push_str(&format!(
+        "inline void {typedef_name}_set_value({typedef_name}& arr, Standard_Integer theIndex, const {element_type}& theItem) {{\n"
+    ));
+    output.push_str("    arr.SetValue(theIndex, theItem);\n");
+    output.push_str("}\n\n");
+
+    // Init (fill all elements with a value)
+    output.push_str(&format!(
+        "inline void {typedef_name}_init({typedef_name}& arr, const {element_type}& theValue) {{\n"
+    ));
+    output.push_str("    arr.Init(theValue);\n");
+    output.push_str("}\n\n");
+}
+
+/// Generate C++ code for NCollection_Array2 (2D fixed-size array)
+fn generate_cpp_array2_collection(
+    output: &mut String,
+    typedef_name: &str,
+    element_type: &str,
+) {
+    // Constructor with row/col bounds
+    output.push_str(&format!(
+        "inline std::unique_ptr<{typedef_name}> {typedef_name}_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {{\n"
+    ));
+    output.push_str(&format!(
+        "    return std::make_unique<{typedef_name}>(theRowLower, theRowUpper, theColLower, theColUpper);\n"
+    ));
+    output.push_str("}\n\n");
+
+    // Constructor with row/col bounds and init value
+    output.push_str(&format!(
+        "inline std::unique_ptr<{typedef_name}> {typedef_name}_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const {element_type}& theValue) {{\n"
+    ));
+    output.push_str(&format!(
+        "    auto arr = std::make_unique<{typedef_name}>(theRowLower, theRowUpper, theColLower, theColUpper);\n"
+    ));
+    output.push_str("    arr->Init(theValue);\n");
+    output.push_str("    return arr;\n");
+    output.push_str("}\n\n");
+
+    // NbRows
+    output.push_str(&format!(
+        "inline Standard_Integer {typedef_name}_nb_rows(const {typedef_name}& arr) {{\n"
+    ));
+    output.push_str("    return arr.NbRows();\n");
+    output.push_str("}\n\n");
+
+    // NbColumns
+    output.push_str(&format!(
+        "inline Standard_Integer {typedef_name}_nb_columns(const {typedef_name}& arr) {{\n"
+    ));
+    output.push_str("    return arr.NbColumns();\n");
+    output.push_str("}\n\n");
+
+    // LowerRow
+    output.push_str(&format!(
+        "inline Standard_Integer {typedef_name}_lower_row(const {typedef_name}& arr) {{\n"
+    ));
+    output.push_str("    return arr.LowerRow();\n");
+    output.push_str("}\n\n");
+
+    // UpperRow
+    output.push_str(&format!(
+        "inline Standard_Integer {typedef_name}_upper_row(const {typedef_name}& arr) {{\n"
+    ));
+    output.push_str("    return arr.UpperRow();\n");
+    output.push_str("}\n\n");
+
+    // LowerCol
+    output.push_str(&format!(
+        "inline Standard_Integer {typedef_name}_lower_col(const {typedef_name}& arr) {{\n"
+    ));
+    output.push_str("    return arr.LowerCol();\n");
+    output.push_str("}\n\n");
+
+    // UpperCol
+    output.push_str(&format!(
+        "inline Standard_Integer {typedef_name}_upper_col(const {typedef_name}& arr) {{\n"
+    ));
+    output.push_str("    return arr.UpperCol();\n");
+    output.push_str("}\n\n");
+
+    // Length (total elements)
+    output.push_str(&format!(
+        "inline Standard_Integer {typedef_name}_length(const {typedef_name}& arr) {{\n"
+    ));
+    output.push_str("    return arr.Length();\n");
+    output.push_str("}\n\n");
+
+    // Value (const reference, row/col indexed)
+    output.push_str(&format!(
+        "inline const {element_type}& {typedef_name}_value(const {typedef_name}& arr, Standard_Integer theRow, Standard_Integer theCol) {{\n"
+    ));
+    output.push_str("    return arr.Value(theRow, theCol);\n");
+    output.push_str("}\n\n");
+
+    // SetValue
+    output.push_str(&format!(
+        "inline void {typedef_name}_set_value({typedef_name}& arr, Standard_Integer theRow, Standard_Integer theCol, const {element_type}& theItem) {{\n"
+    ));
+    output.push_str("    arr.SetValue(theRow, theCol, theItem);\n");
+    output.push_str("}\n\n");
+
+    // Init (fill all elements with a value)
+    output.push_str(&format!(
+        "inline void {typedef_name}_init({typedef_name}& arr, const {element_type}& theValue) {{\n"
+    ));
+    output.push_str("    arr.Init(theValue);\n");
+    output.push_str("}\n\n");
+}
+
 fn collection_kind_description(kind: CollectionKind) -> &'static str {
     kind.description()
 }
@@ -672,6 +928,12 @@ pub fn generate_unified_rust_ffi_collections(collections: &[CollectionInfo]) -> 
 /// Generate Rust FFI declarations for a single collection in unified mode
 /// Uses full C++ type names (e.g., TopoDS_Shape, TopTools_ListOfShape)
 fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
+    match info.kind {
+        CollectionKind::Array1 => return generate_unified_rust_ffi_array1(info),
+        CollectionKind::Array2 => return generate_unified_rust_ffi_array2(info),
+        _ => {}
+    }
+
     let mut output = String::new();
     let coll_name = &info.typedef_name;
     let iter_name = format!("{}Iterator", info.short_name);
@@ -753,6 +1015,9 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
                 output.push_str(&format!("                fn {}_contains(coll: &{}, key: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type));
             }
         }
+        CollectionKind::Array1 | CollectionKind::Array2 => {
+            unreachable!("Array types handled by dedicated functions")
+        }
     }
     
     // Iterator creation
@@ -769,6 +1034,118 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
     output.push_str(&format!("                #[cxx_name = \"{}\"]\n", next_fn_name));
     output.push_str(&format!("                fn {}(iter: Pin<&mut {}>) -> UniquePtr<{}>;\n\n", next_fn_name, iter_name, info.element_type));
     
+    output
+}
+
+/// Generate Rust FFI declarations for an Array1 collection
+fn generate_unified_rust_ffi_array1(info: &CollectionInfo) -> String {
+    let mut output = String::new();
+    let coll_name = &info.typedef_name;
+    let elem = &info.element_type;
+
+    output.push_str(&format!("                /// {}\n", info.kind.description()));
+    output.push_str(&format!("                type {};\n\n", coll_name));
+
+    // Default constructor
+    output.push_str(&format!("                /// Create a new empty {}\n", coll_name));
+    output.push_str(&format!("                fn {}_new() -> UniquePtr<{}>;\n\n", coll_name, coll_name));
+
+    // Constructor with bounds
+    output.push_str(&format!("                /// Create {} with lower and upper bounds\n", coll_name));
+    output.push_str(&format!("                fn {}_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<{}>;\n\n", coll_name, coll_name));
+
+    // Constructor with bounds and init value
+    output.push_str(&format!("                /// Create {} with bounds, all elements initialized to theValue\n", coll_name));
+    output.push_str(&format!("                fn {}_ctor_int2_value(theLower: i32, theUpper: i32, theValue: &{}) -> UniquePtr<{}>;\n\n", coll_name, elem, coll_name));
+
+    // Length
+    output.push_str(&format!("                /// Get number of elements\n"));
+    output.push_str(&format!("                fn {}_length(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+
+    // Lower
+    output.push_str(&format!("                /// Get lower bound index\n"));
+    output.push_str(&format!("                fn {}_lower(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+
+    // Upper
+    output.push_str(&format!("                /// Get upper bound index\n"));
+    output.push_str(&format!("                fn {}_upper(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+
+    // Value
+    output.push_str(&format!("                /// Get element at index (bounds-checked)\n"));
+    output.push_str(&format!("                fn {}_value(arr: &{}, theIndex: i32) -> &{};\n\n", coll_name, coll_name, elem));
+
+    // SetValue
+    output.push_str(&format!("                /// Set element at index (bounds-checked)\n"));
+    output.push_str(&format!("                fn {}_set_value(arr: Pin<&mut {}>, theIndex: i32, theItem: &{});\n\n", coll_name, coll_name, elem));
+
+    // Init
+    output.push_str(&format!("                /// Set all elements to the same value\n"));
+    output.push_str(&format!("                fn {}_init(arr: Pin<&mut {}>, theValue: &{});\n\n", coll_name, coll_name, elem));
+
+    output
+}
+
+/// Generate Rust FFI declarations for an Array2 collection
+fn generate_unified_rust_ffi_array2(info: &CollectionInfo) -> String {
+    let mut output = String::new();
+    let coll_name = &info.typedef_name;
+    let elem = &info.element_type;
+
+    output.push_str(&format!("                /// {}\n", info.kind.description()));
+    output.push_str(&format!("                type {};\n\n", coll_name));
+
+    // Default constructor
+    output.push_str(&format!("                /// Create a new empty {}\n", coll_name));
+    output.push_str(&format!("                fn {}_new() -> UniquePtr<{}>;\n\n", coll_name, coll_name));
+
+    // Constructor with row/col bounds
+    output.push_str(&format!("                /// Create {} with row and column bounds\n", coll_name));
+    output.push_str(&format!("                fn {}_ctor_int4(theRowLower: i32, theRowUpper: i32, theColLower: i32, theColUpper: i32) -> UniquePtr<{}>;\n\n", coll_name, coll_name));
+
+    // Constructor with row/col bounds and init value
+    output.push_str(&format!("                /// Create {} with bounds, all elements initialized to theValue\n", coll_name));
+    output.push_str(&format!("                fn {}_ctor_int4_value(theRowLower: i32, theRowUpper: i32, theColLower: i32, theColUpper: i32, theValue: &{}) -> UniquePtr<{}>;\n\n", coll_name, elem, coll_name));
+
+    // NbRows
+    output.push_str(&format!("                /// Get number of rows\n"));
+    output.push_str(&format!("                fn {}_nb_rows(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+
+    // NbColumns
+    output.push_str(&format!("                /// Get number of columns\n"));
+    output.push_str(&format!("                fn {}_nb_columns(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+
+    // LowerRow
+    output.push_str(&format!("                /// Get lower row bound\n"));
+    output.push_str(&format!("                fn {}_lower_row(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+
+    // UpperRow
+    output.push_str(&format!("                /// Get upper row bound\n"));
+    output.push_str(&format!("                fn {}_upper_row(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+
+    // LowerCol
+    output.push_str(&format!("                /// Get lower column bound\n"));
+    output.push_str(&format!("                fn {}_lower_col(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+
+    // UpperCol
+    output.push_str(&format!("                /// Get upper column bound\n"));
+    output.push_str(&format!("                fn {}_upper_col(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+
+    // Length
+    output.push_str(&format!("                /// Get total number of elements\n"));
+    output.push_str(&format!("                fn {}_length(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+
+    // Value
+    output.push_str(&format!("                /// Get element at row/col (bounds-checked)\n"));
+    output.push_str(&format!("                fn {}_value(arr: &{}, theRow: i32, theCol: i32) -> &{};\n\n", coll_name, coll_name, elem));
+
+    // SetValue
+    output.push_str(&format!("                /// Set element at row/col (bounds-checked)\n"));
+    output.push_str(&format!("                fn {}_set_value(arr: Pin<&mut {}>, theRow: i32, theCol: i32, theItem: &{});\n\n", coll_name, coll_name, elem));
+
+    // Init
+    output.push_str(&format!("                /// Set all elements to the same value\n"));
+    output.push_str(&format!("                fn {}_init(arr: Pin<&mut {}>, theValue: &{});\n\n", coll_name, coll_name, elem));
+
     output
 }
 
@@ -790,6 +1167,12 @@ pub fn generate_unified_rust_impl_collections(collections: &[CollectionInfo]) ->
 
 /// Generate Rust impl block for a single collection in unified mode
 fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
+    match info.kind {
+        CollectionKind::Array1 => return generate_unified_rust_impl_array1(info),
+        CollectionKind::Array2 => return generate_unified_rust_impl_array2(info),
+        _ => {}
+    }
+
     let mut output = String::new();
     let coll_name = &info.typedef_name;
     let iter_name = format!("{}Iterator", info.short_name);
@@ -905,6 +1288,9 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
                 output.push_str("    }\n\n");
             }
         }
+        CollectionKind::Array1 | CollectionKind::Array2 => {
+            unreachable!("Array types handled by dedicated functions")
+        }
     }
     
     // Iterator
@@ -928,6 +1314,142 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
     output.push_str("    }\n");
     output.push_str("}\n");
     
+    output
+}
+
+/// Generate Rust impl block for an Array1 collection
+fn generate_unified_rust_impl_array1(info: &CollectionInfo) -> String {
+    let mut output = String::new();
+    let coll_name = &info.typedef_name;
+    let elem = &info.element_type;
+
+    output.push_str(&format!("impl ffi::{} {{\n", coll_name));
+
+    output.push_str("    /// Create a new empty array\n");
+    output.push_str("    pub fn new() -> cxx::UniquePtr<Self> {\n");
+    output.push_str(&format!("        ffi::{}_new()\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Create array with lower and upper bounds\n");
+    output.push_str("    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {\n");
+    output.push_str(&format!("        ffi::{}_ctor_int2(lower, upper)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Create array with bounds, all elements initialized to value\n");
+    output.push_str(&format!("    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::{}) -> cxx::UniquePtr<Self> {{\n", elem));
+    output.push_str(&format!("        ffi::{}_ctor_int2_value(lower, upper, value)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get number of elements\n");
+    output.push_str("    pub fn length(&self) -> i32 {\n");
+    output.push_str(&format!("        ffi::{}_length(self)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get lower bound index\n");
+    output.push_str("    pub fn lower(&self) -> i32 {\n");
+    output.push_str(&format!("        ffi::{}_lower(self)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get upper bound index\n");
+    output.push_str("    pub fn upper(&self) -> i32 {\n");
+    output.push_str(&format!("        ffi::{}_upper(self)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get element at index\n");
+    output.push_str(&format!("    pub fn value(&self, index: i32) -> &ffi::{} {{\n", elem));
+    output.push_str(&format!("        ffi::{}_value(self, index)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Set element at index\n");
+    output.push_str(&format!("    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::{}) {{\n", elem));
+    output.push_str(&format!("        ffi::{}_set_value(self, index, item)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Set all elements to the same value\n");
+    output.push_str(&format!("    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::{}) {{\n", elem));
+    output.push_str(&format!("        ffi::{}_init(self, value)\n", coll_name));
+    output.push_str("    }\n");
+
+    output.push_str("}\n");
+
+    output
+}
+
+/// Generate Rust impl block for an Array2 collection
+fn generate_unified_rust_impl_array2(info: &CollectionInfo) -> String {
+    let mut output = String::new();
+    let coll_name = &info.typedef_name;
+    let elem = &info.element_type;
+
+    output.push_str(&format!("impl ffi::{} {{\n", coll_name));
+
+    output.push_str("    /// Create a new empty array\n");
+    output.push_str("    pub fn new() -> cxx::UniquePtr<Self> {\n");
+    output.push_str(&format!("        ffi::{}_new()\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Create array with row and column bounds\n");
+    output.push_str("    pub fn new_with_bounds(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32) -> cxx::UniquePtr<Self> {\n");
+    output.push_str(&format!("        ffi::{}_ctor_int4(row_lower, row_upper, col_lower, col_upper)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Create array with bounds, all elements initialized to value\n");
+    output.push_str(&format!("    pub fn new_with_value(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32, value: &ffi::{}) -> cxx::UniquePtr<Self> {{\n", elem));
+    output.push_str(&format!("        ffi::{}_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get number of rows\n");
+    output.push_str("    pub fn nb_rows(&self) -> i32 {\n");
+    output.push_str(&format!("        ffi::{}_nb_rows(self)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get number of columns\n");
+    output.push_str("    pub fn nb_columns(&self) -> i32 {\n");
+    output.push_str(&format!("        ffi::{}_nb_columns(self)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get lower row bound\n");
+    output.push_str("    pub fn lower_row(&self) -> i32 {\n");
+    output.push_str(&format!("        ffi::{}_lower_row(self)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get upper row bound\n");
+    output.push_str("    pub fn upper_row(&self) -> i32 {\n");
+    output.push_str(&format!("        ffi::{}_upper_row(self)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get lower column bound\n");
+    output.push_str("    pub fn lower_col(&self) -> i32 {\n");
+    output.push_str(&format!("        ffi::{}_lower_col(self)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get upper column bound\n");
+    output.push_str("    pub fn upper_col(&self) -> i32 {\n");
+    output.push_str(&format!("        ffi::{}_upper_col(self)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get total number of elements\n");
+    output.push_str("    pub fn length(&self) -> i32 {\n");
+    output.push_str(&format!("        ffi::{}_length(self)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Get element at row/col\n");
+    output.push_str(&format!("    pub fn value(&self, row: i32, col: i32) -> &ffi::{} {{\n", elem));
+    output.push_str(&format!("        ffi::{}_value(self, row, col)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Set element at row/col\n");
+    output.push_str(&format!("    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::{}) {{\n", elem));
+    output.push_str(&format!("        ffi::{}_set_value(self, row, col, item)\n", coll_name));
+    output.push_str("    }\n\n");
+
+    output.push_str("    /// Set all elements to the same value\n");
+    output.push_str(&format!("    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::{}) {{\n", elem));
+    output.push_str(&format!("        ffi::{}_init(self, value)\n", coll_name));
+    output.push_str("    }\n");
+
+    output.push_str("}\n");
+
     output
 }
 

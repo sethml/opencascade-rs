@@ -44,6 +44,8 @@ impl BaseAllocator {
     }
 }
 
+pub use crate::ffi::HandleNCollectionBaseAllocator;
+
 // ========================
 // From NCollection_BaseList.hxx
 // ========================
@@ -96,6 +98,8 @@ impl Buffer {
         crate::ffi::NCollection_Buffer_to_handle(obj)
     }
 }
+
+pub use crate::ffi::HandleNCollectionBuffer;
 
 // ========================
 // From NCollection_IncAllocator.hxx

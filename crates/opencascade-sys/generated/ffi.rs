@@ -9641,6 +9641,34 @@ mod ffi {
         ///
         /// Default constructor
         fn TopExp_ctor() -> UniquePtr<TopExp>;
+        /// **Source:** `TopExp.hxx`:64 - `TopExp::MapShapes()`
+        ///
+        /// Stores in the map <M> all  the sub-shapes of <S>.
+        /// - If cumOri is true, the function composes all
+        /// sub-shapes with the orientation of S.
+        /// - If cumLoc is true, the function multiplies all
+        /// sub-shapes by the location of S, i.e. it applies to
+        /// each sub-shape the transformation that is associated with S.
+        fn TopExp_map_shapes_shape_indexedmapofshape_bool2(
+            S: &TopoDS_Shape,
+            M: Pin<&mut TopTools_IndexedMapOfShape>,
+            cumOri: bool,
+            cumLoc: bool,
+        );
+        /// **Source:** `TopExp.hxx`:75 - `TopExp::MapShapes()`
+        ///
+        /// Stores in the map <M> all  the sub-shapes of <S>.
+        /// - If cumOri is true, the function composes all
+        /// sub-shapes with the orientation of S.
+        /// - If cumLoc is true, the function multiplies all
+        /// sub-shapes by the location of S, i.e. it applies to
+        /// each sub-shape the transformation that is associated with S.
+        fn TopExp_map_shapes_shape_mapofshape_bool2(
+            S: &TopoDS_Shape,
+            M: Pin<&mut TopTools_MapOfShape>,
+            cumOri: bool,
+            cumLoc: bool,
+        );
         /// **Source:** `TopExp.hxx`:106 - `TopExp::FirstVertex()`
         ///
         /// Returns the Vertex of orientation FORWARD in E. If
@@ -9849,6 +9877,24 @@ mod ffi {
         /// Raises exception StdFail_NotDone if the shape was not built.
         #[cxx_name = "Shape"]
         fn shape(self: Pin<&mut BRepBuilderAPI_MakeShape>) -> &TopoDS_Shape;
+        /// **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
+        ///
+        /// Returns the  list   of shapes generated   from the
+        /// shape <S>.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepBuilderAPI_MakeShape>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
+        ///
+        /// Returns the list  of shapes modified from the shape
+        /// <S>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepBuilderAPI_MakeShape>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
         ///
         /// Returns true if the shape S has been deleted.
@@ -10946,6 +10992,17 @@ mod ffi {
         /// Add the edges of <W> to the current wire.
         #[cxx_name = "Add"]
         fn add_wire(self: Pin<&mut BRepBuilderAPI_MakeWire>, W: &TopoDS_Wire);
+        /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:146 - `BRepBuilderAPI_MakeWire::Add()`
+        ///
+        /// Adds  the edges of <L>   to the current  wire.  The
+        /// edges are not to be consecutive.   But they are to
+        /// be  all  connected geometrically or topologically.
+        /// If some of them are  not connected the Status give
+        /// DisconnectedWire but the "Maker" is Done() and you
+        /// can get the  partial result. (ie connected to  the
+        /// first edgeof the list <L>)
+        #[cxx_name = "Add"]
+        fn add_listofshape(self: Pin<&mut BRepBuilderAPI_MakeWire>, L: &TopTools_ListOfShape);
         /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:152 - `BRepBuilderAPI_MakeWire::IsDone()`
         ///
         /// Returns true if this algorithm contains a valid wire.
@@ -11115,6 +11172,12 @@ mod ffi {
         /// Gives each contiguous edge
         #[cxx_name = "ContigousEdge"]
         fn contigous_edge(self: &BRepBuilderAPI_Sewing, index: i32) -> &TopoDS_Edge;
+        /// **Source:** `BRepBuilderAPI_Sewing.hxx`:141 - `BRepBuilderAPI_Sewing::ContigousEdgeCouple()`
+        ///
+        /// Gives the sections (edge) belonging to a contiguous edge
+        #[cxx_name = "ContigousEdgeCouple"]
+        fn contigous_edge_couple(self: &BRepBuilderAPI_Sewing, index: i32)
+            -> &TopTools_ListOfShape;
         /// **Source:** `BRepBuilderAPI_Sewing.hxx`:145 - `BRepBuilderAPI_Sewing::IsSectionBound()`
         ///
         /// Indicates if a section is bound (before use SectionToBoundary)
@@ -11353,6 +11416,15 @@ mod ffi {
             theCopyGeom: bool,
             theCopyMesh: bool,
         );
+        /// **Source:** `BRepBuilderAPI_Transform.hxx`:87 - `BRepBuilderAPI_Transform::Modified()`
+        ///
+        /// Returns the list  of shapes modified from the shape
+        /// <S>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepBuilderAPI_Transform>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepBuilderAPI_Transform.hxx`:83 - `BRepBuilderAPI_Transform::ModifiedShape()`
         ///
         /// Returns the modified shape corresponding to <S>.
@@ -11816,6 +11888,14 @@ mod ffi {
         /// Builds the resulting shape (redefined from MakeShape).
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BRepPrimAPI_MakePrism>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepPrimAPI_MakePrism.hxx`:91 - `BRepPrimAPI_MakePrism::Generated()`
+        ///
+        /// Returns ListOfShape from TopTools.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepPrimAPI_MakePrism>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepPrimAPI_MakePrism.hxx`:95 - `BRepPrimAPI_MakePrism::IsDeleted()`
         ///
         /// Returns true if the shape S has been deleted.
@@ -11942,6 +12022,16 @@ mod ffi {
         /// Builds the resulting shape (redefined from MakeShape).
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BRepPrimAPI_MakeRevol>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:97 - `BRepPrimAPI_MakeRevol::Generated()`
+        ///
+        /// Returns list of shape generated from shape S
+        /// Warning: shape S must be shape of type VERTEX, EDGE, FACE, SOLID.
+        /// For shapes of other types method always returns empty list
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepPrimAPI_MakeRevol>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:101 - `BRepPrimAPI_MakeRevol::IsDeleted()`
         ///
         /// Returns true if the shape S has been deleted.
@@ -11952,6 +12042,11 @@ mod ffi {
         /// Check if there are degenerated edges in the result.
         #[cxx_name = "HasDegenerated"]
         fn has_degenerated(self: &BRepPrimAPI_MakeRevol) -> bool;
+        /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:115 - `BRepPrimAPI_MakeRevol::Degenerated()`
+        ///
+        /// Returns the list of degenerated edges
+        #[cxx_name = "Degenerated"]
+        fn degenerated(self: &BRepPrimAPI_MakeRevol) -> &TopTools_ListOfShape;
         /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:89 - `BRepPrimAPI_MakeRevol::FirstShape()`
         ///
         /// Returns the first shape of the revol  (coinciding with
@@ -12424,6 +12519,17 @@ mod ffi {
         fn BRepAlgoAPI_BuilderAlgo_ctor_pavefiller(
             thePF: &BOPAlgo_PaveFiller,
         ) -> UniquePtr<BRepAlgoAPI_BuilderAlgo>;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
+        ///
+        /// @name Setting/Getting data for the algorithm
+        /// Sets the arguments
+        #[cxx_name = "SetArguments"]
+        fn set_arguments(self: Pin<&mut BRepAlgoAPI_BuilderAlgo>, theLS: &TopTools_ListOfShape);
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
+        ///
+        /// Gets the arguments
+        #[cxx_name = "Arguments"]
+        fn arguments(self: &BRepAlgoAPI_BuilderAlgo) -> &TopTools_ListOfShape;
         /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
         ///
         /// @name Setting options
@@ -12489,6 +12595,30 @@ mod ffi {
             theUnifyFaces: bool,
             theAngularTol: f64,
         );
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
+        ///
+        /// @name History support
+        /// Returns the shapes modified from the shape <theS>.
+        /// If any, the list will contain only those splits of the
+        /// given shape, contained in the result.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepAlgoAPI_BuilderAlgo>,
+            theS: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
+        ///
+        /// Returns the list  of shapes generated from the shape <theS>.
+        /// In frames of Boolean Operations algorithms only Edges and Faces
+        /// could have Generated elements, as only they produce new elements
+        /// during intersection:
+        /// - Edges can generate new vertices;
+        /// - Faces can generate new edges and vertices.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepAlgoAPI_BuilderAlgo>,
+            theS: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
         ///
         /// Checks if the shape <theS> has been completely removed from the result,
@@ -12524,6 +12654,13 @@ mod ffi {
         /// Returns flag of history availability
         #[cxx_name = "HasHistory"]
         fn has_history(self: &BRepAlgoAPI_BuilderAlgo) -> bool;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
+        ///
+        /// @name Getting the section edges
+        /// Returns a list of section edges.
+        /// The edges represent the result of intersection between arguments of operation.
+        #[cxx_name = "SectionEdges"]
+        fn section_edges(self: Pin<&mut BRepAlgoAPI_BuilderAlgo>) -> &TopTools_ListOfShape;
         /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
         ///
         /// History tool
@@ -12596,6 +12733,16 @@ mod ffi {
         /// Obsolete
         #[cxx_name = "Shape2"]
         fn shape2(self: &BRepAlgoAPI_BooleanOperation) -> &TopoDS_Shape;
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
+        ///
+        /// Sets the Tool arguments
+        #[cxx_name = "SetTools"]
+        fn set_tools(self: Pin<&mut BRepAlgoAPI_BooleanOperation>, theLS: &TopTools_ListOfShape);
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
+        ///
+        /// Returns the Tools arguments
+        #[cxx_name = "Tools"]
+        fn tools(self: &BRepAlgoAPI_BooleanOperation) -> &TopTools_ListOfShape;
         /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:87 - `BRepAlgoAPI_BooleanOperation::Build()`
         ///
         /// @name Performing the operation
@@ -13512,6 +13659,24 @@ mod ffi {
         /// contours and chamfer parameters in order to rebuild the shape.
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut BRepFilletAPI_MakeChamfer>);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:283 - `BRepFilletAPI_MakeChamfer::Generated()`
+        ///
+        /// Returns the  list   of shapes generated   from the
+        /// shape <EorV>.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
+            EorV: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:288 - `BRepFilletAPI_MakeChamfer::Modified()`
+        ///
+        /// Returns the list  of shapes modified from the shape
+        /// <F>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
+            F: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:291 - `BRepFilletAPI_MakeChamfer::IsDeleted()`
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut BRepFilletAPI_MakeChamfer>, F: &TopoDS_Shape) -> bool;
@@ -13894,6 +14059,24 @@ mod ffi {
         /// contours and fillet parameters in order to rebuild the shape.
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut BRepFilletAPI_MakeFillet>);
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:332 - `BRepFilletAPI_MakeFillet::Generated()`
+        ///
+        /// Returns the  list   of shapes generated   from the
+        /// shape <EorV>.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            EorV: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:337 - `BRepFilletAPI_MakeFillet::Modified()`
+        ///
+        /// Returns the list  of shapes modified from the shape
+        /// <F>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            F: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:340 - `BRepFilletAPI_MakeFillet::IsDeleted()`
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut BRepFilletAPI_MakeFillet>, F: &TopoDS_Shape) -> bool;
@@ -13903,6 +14086,11 @@ mod ffi {
         /// after the shape creation.
         #[cxx_name = "NbSurfaces"]
         fn nb_surfaces(self: &BRepFilletAPI_MakeFillet) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:347 - `BRepFilletAPI_MakeFillet::NewFaces()`
+        ///
+        /// Return the faces created for surface <I>.
+        #[cxx_name = "NewFaces"]
+        fn new_faces(self: Pin<&mut BRepFilletAPI_MakeFillet>, I: i32) -> &TopTools_ListOfShape;
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:349 - `BRepFilletAPI_MakeFillet::Simulate()`
         #[cxx_name = "Simulate"]
         fn simulate(self: Pin<&mut BRepFilletAPI_MakeFillet>, IC: i32);
@@ -14092,22 +14280,46 @@ mod ffi {
         /// Returns false if E does not belong to the face modified by this algorithm.
         #[cxx_name = "IsModified"]
         fn is_modified(self: &BRepFilletAPI_MakeFillet2d, E: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:251 - `BRepFilletAPI_MakeFillet2d::FilletEdges()`
+        ///
+        /// Returns the table of fillets on the face modified by this algorithm.
+        #[cxx_name = "FilletEdges"]
+        fn fillet_edges(self: &BRepFilletAPI_MakeFillet2d) -> &TopTools_SequenceOfShape;
         /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:254 - `BRepFilletAPI_MakeFillet2d::NbFillet()`
         ///
         /// Returns the number of fillets on the face modified by this algorithm.
         #[cxx_name = "NbFillet"]
         fn nb_fillet(self: &BRepFilletAPI_MakeFillet2d) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:257 - `BRepFilletAPI_MakeFillet2d::ChamferEdges()`
+        ///
+        /// Returns the table of chamfers on the face modified by this algorithm.
+        #[cxx_name = "ChamferEdges"]
+        fn chamfer_edges(self: &BRepFilletAPI_MakeFillet2d) -> &TopTools_SequenceOfShape;
         /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:260 - `BRepFilletAPI_MakeFillet2d::NbChamfer()`
         ///
         /// Returns the number of chamfers on the face modified by this algorithm.
         #[cxx_name = "NbChamfer"]
         fn nb_chamfer(self: &BRepFilletAPI_MakeFillet2d) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:264 - `BRepFilletAPI_MakeFillet2d::Modified()`
+        ///
+        /// Returns the list  of shapes modified from the shape
+        /// <S>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:269 - `BRepFilletAPI_MakeFillet2d::NbCurves()`
         ///
         /// returns the number of new curves
         /// after the shape creation.
         #[cxx_name = "NbCurves"]
         fn nb_curves(self: &BRepFilletAPI_MakeFillet2d) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:272 - `BRepFilletAPI_MakeFillet2d::NewEdges()`
+        ///
+        /// Return the Edges created for curve I.
+        #[cxx_name = "NewEdges"]
+        fn new_edges(self: Pin<&mut BRepFilletAPI_MakeFillet2d>, I: i32) -> &TopTools_ListOfShape;
         /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:274 - `BRepFilletAPI_MakeFillet2d::HasDescendant()`
         #[cxx_name = "HasDescendant"]
         fn has_descendant(self: &BRepFilletAPI_MakeFillet2d, E: &TopoDS_Edge) -> bool;
@@ -14384,6 +14596,15 @@ mod ffi {
         /// Builds the resulting shape (redefined from MakeShape).
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BRepOffsetAPI_MakeOffset>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:90 - `BRepOffsetAPI_MakeOffset::Generated()`
+        ///
+        /// returns a list of the created shapes
+        /// from the shape <S>.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepOffsetAPI_MakeOffset>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:95 - `BRepOffsetAPI_MakeOffset::ConvertFace()`
         ///
         /// Converts each wire of the face into contour consisting only of
@@ -14448,6 +14669,12 @@ mod ffi {
         /// Builds the resulting shape (redefined from MakeShape).
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BRepOffsetAPI_MakePipe>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:80 - `BRepOffsetAPI_MakePipe::Generated()`
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepOffsetAPI_MakePipe>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:85 - `BRepOffsetAPI_MakePipe::ErrorOnSurface()`
         #[cxx_name = "ErrorOnSurface"]
         fn error_on_surface(self: &BRepOffsetAPI_MakePipe) -> f64;
@@ -14668,6 +14895,23 @@ mod ffi {
         /// to be C0.
         #[cxx_name = "SetForceApproxC1"]
         fn set_force_approx_c1(self: Pin<&mut BRepOffsetAPI_MakePipeShell>, ForceApproxC1: bool);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:251 - `BRepOffsetAPI_MakePipeShell::Simulate()`
+        ///
+        /// Simulates the resulting shape by calculating its
+        /// cross-sections. The spine is divided by this
+        /// cross-sections into (NumberOfSection - 1) equal
+        /// parts, the number of cross-sections is
+        /// NumberOfSection. The cross-sections are wires and
+        /// they are returned in the list Result.
+        /// This gives a rapid preview of the resulting shape,
+        /// which will be obtained using the settings you have provided.
+        /// Raises  NotDone if  <me> it is not Ready
+        #[cxx_name = "Simulate"]
+        fn simulate(
+            self: Pin<&mut BRepOffsetAPI_MakePipeShell>,
+            NumberOfSection: i32,
+            Result: Pin<&mut TopTools_ListOfShape>,
+        );
         /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:255 - `BRepOffsetAPI_MakePipeShell::Build()`
         ///
         /// Builds the resulting shape (redefined from MakeShape).
@@ -14679,9 +14923,28 @@ mod ffi {
         /// If a propfile is not closed returns False
         #[cxx_name = "MakeSolid"]
         fn make_solid(self: Pin<&mut BRepOffsetAPI_MakePipeShell>) -> bool;
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:272 - `BRepOffsetAPI_MakePipeShell::Generated()`
+        ///
+        /// Returns a list of new shapes generated from the shape
+        /// S by the shell-generating algorithm.
+        /// This function is redefined from BRepOffsetAPI_MakeShape::Generated.
+        /// S can be an edge or a vertex of a given Profile (see methods Add).
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepOffsetAPI_MakePipeShell>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:275 - `BRepOffsetAPI_MakePipeShell::ErrorOnSurface()`
         #[cxx_name = "ErrorOnSurface"]
         fn error_on_surface(self: &BRepOffsetAPI_MakePipeShell) -> f64;
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:278 - `BRepOffsetAPI_MakePipeShell::Profiles()`
+        ///
+        /// Returns the list of original profiles
+        #[cxx_name = "Profiles"]
+        fn profiles(
+            self: Pin<&mut BRepOffsetAPI_MakePipeShell>,
+            theProfiles: Pin<&mut TopTools_ListOfShape>,
+        );
         /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:281 - `BRepOffsetAPI_MakePipeShell::Spine()`
         ///
         /// Returns the spine
@@ -14762,6 +15025,15 @@ mod ffi {
         /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:115 - `BRepOffsetAPI_MakeThickSolid::Build()`
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BRepOffsetAPI_MakeThickSolid>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:120 - `BRepOffsetAPI_MakeThickSolid::Modified()`
+        ///
+        /// Returns the list  of shapes modified from the shape
+        /// <S>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepOffsetAPI_MakeThickSolid>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// Upcast BRepOffsetAPI_MakeThickSolid to BRepBuilderAPI_Command
         fn BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command(
             self_: &BRepOffsetAPI_MakeThickSolid,
@@ -14921,6 +15193,22 @@ mod ffi {
         /// the thrusection operation. Default value is true.
         #[cxx_name = "SetMutableInput"]
         fn set_mutable_input(self: Pin<&mut BRepOffsetAPI_ThruSections>, theIsMutableInput: bool);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:164 - `BRepOffsetAPI_ThruSections::Generated()`
+        ///
+        /// Returns a list of new shapes generated from the shape
+        /// S by the shell-generating algorithm.
+        /// This function is redefined from BRepBuilderAPI_MakeShape::Generated.
+        /// S can be an edge or a vertex of a given Profile (see methods AddWire and AddVertex).
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepOffsetAPI_ThruSections>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:168 - `BRepOffsetAPI_ThruSections::Wires()`
+        ///
+        /// Returns the list of original wires
+        #[cxx_name = "Wires"]
+        fn wires(self: &BRepOffsetAPI_ThruSections) -> &TopTools_ListOfShape;
         /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:171 - `BRepOffsetAPI_ThruSections::IsMutableInput()`
         ///
         /// Returns the current mutable input state
@@ -15219,6 +15507,16 @@ mod ffi {
         /// sig = 2 -> TOpEdges = LastShape of the DPrism
         #[cxx_name = "BossEdges"]
         fn boss_edges(self: Pin<&mut BRepFeat_MakeDPrism>, sig: i32);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:137 - `BRepFeat_MakeDPrism::TopEdges()`
+        ///
+        /// Returns the list of TopoDS Edges of the top of the boss.
+        #[cxx_name = "TopEdges"]
+        fn top_edges(self: Pin<&mut BRepFeat_MakeDPrism>) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:140 - `BRepFeat_MakeDPrism::LatEdges()`
+        ///
+        /// Returns the list of TopoDS Edges of the bottom of the boss.
+        #[cxx_name = "LatEdges"]
+        fn lat_edges(self: Pin<&mut BRepFeat_MakeDPrism>) -> &TopTools_ListOfShape;
         /// **Source:** `BRepFeat_MakeDPrism.hxx`:129 - `BRepFeat_MakeDPrism::BarycCurve()`
         fn BRepFeat_MakeDPrism_baryc_curve(
             self_: Pin<&mut BRepFeat_MakeDPrism>,
@@ -15476,6 +15774,11 @@ mod ffi {
         /// Returns the outer most wire of <F>. Returns a Null
         /// wire if <F> has no wires.
         fn BRepTools_outer_wire(F: &TopoDS_Face) -> UniquePtr<TopoDS_Wire>;
+        /// **Source:** `BRepTools.hxx`:264 - `BRepTools::Map3DEdges()`
+        ///
+        /// Stores in the map  <M> all the 3D topology edges
+        /// of <S>.
+        fn BRepTools_map3_d_edges(S: &TopoDS_Shape, M: Pin<&mut TopTools_IndexedMapOfShape>);
         /// **Source:** `BRepTools.hxx`:268 - `BRepTools::IsReallyClosed()`
         ///
         /// Verifies that the edge  <E> is found two  times on
@@ -15537,6 +15840,15 @@ mod ffi {
         /// The flag <theForce> if set to true disables the connectivity check and clears
         /// the given shape from all sub-shapes with internal orientation.
         fn BRepTools_remove_internals(theS: Pin<&mut TopoDS_Shape>, theForce: bool);
+        /// **Source:** `BRepTools.hxx`:399 - `BRepTools::CheckLocations()`
+        ///
+        /// Check all locations of shape according criterium:
+        /// aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec())
+        /// All sub-shapes having such locations are put in list theProblemShapes
+        fn BRepTools_check_locations(
+            theS: &TopoDS_Shape,
+            theProblemShapes: Pin<&mut TopTools_ListOfShape>,
+        );
         /// ======================== TopTools_HSequenceOfShape ========================
         /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape`
         type TopTools_HSequenceOfShape;
@@ -15546,9 +15858,23 @@ mod ffi {
         fn TopTools_HSequenceOfShape_ctor_sequenceofshape(
             theOther: &TopTools_SequenceOfShape,
         ) -> UniquePtr<TopTools_HSequenceOfShape>;
+        /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Sequence()`
+        #[cxx_name = "Sequence"]
+        fn sequence(self: &TopTools_HSequenceOfShape) -> &TopTools_SequenceOfShape;
         /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Append()`
         #[cxx_name = "Append"]
-        fn append(self: Pin<&mut TopTools_HSequenceOfShape>, theItem: &TopoDS_Shape);
+        fn append_shape(self: Pin<&mut TopTools_HSequenceOfShape>, theItem: &TopoDS_Shape);
+        /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Append()`
+        #[cxx_name = "Append"]
+        fn append_sequenceofshape(
+            self: Pin<&mut TopTools_HSequenceOfShape>,
+            theSequence: Pin<&mut TopTools_SequenceOfShape>,
+        );
+        /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::ChangeSequence()`
+        #[cxx_name = "ChangeSequence"]
+        fn change_sequence(
+            self: Pin<&mut TopTools_HSequenceOfShape>,
+        ) -> Pin<&mut TopTools_SequenceOfShape>;
         /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TopTools_HSequenceOfShape) -> &HandleStandardType;
@@ -25448,6 +25774,16 @@ mod ffi {
         /// This method can be called several times to keep several shapes.
         #[cxx_name = "KeepShape"]
         fn keep_shape(self: Pin<&mut ShapeUpgrade_UnifySameDomain>, theShape: &TopoDS_Shape);
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:111 - `ShapeUpgrade_UnifySameDomain::KeepShapes()`
+        ///
+        /// Sets the map of shapes for avoid merging of the faces/edges.
+        /// It allows passing a ready to use map instead of calling many times
+        /// the method KeepShape.
+        #[cxx_name = "KeepShapes"]
+        fn keep_shapes(
+            self: Pin<&mut ShapeUpgrade_UnifySameDomain>,
+            theShapes: &TopTools_MapOfShape,
+        );
         /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:117 - `ShapeUpgrade_UnifySameDomain::SetSafeInputMode()`
         ///
         /// Sets the flag defining the behavior of the algorithm regarding
@@ -25603,11 +25939,33 @@ mod ffi {
             wires: Pin<&mut HandleTopToolsHSequenceOfShape>,
         );
         /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:120 - `ShapeAnalysis_FreeBounds::ConnectWiresToWires()`
-        fn ShapeAnalysis_FreeBounds_connect_wires_to_wires(
+        fn ShapeAnalysis_FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape(
             iwires: Pin<&mut HandleTopToolsHSequenceOfShape>,
             toler: f64,
             shared: bool,
             owires: Pin<&mut HandleTopToolsHSequenceOfShape>,
+        );
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:138 - `ShapeAnalysis_FreeBounds::ConnectWiresToWires()`
+        ///
+        /// Builds sequence of <owires> out of sequence of not sorted
+        /// <iwires>.
+        /// Tries to build wires of maximum length. Building a wire is
+        /// stopped when no wires can be connected to it at its head or
+        /// at its tail.
+        ///
+        /// Orientation of the wire can change when connecting.
+        /// If <shared> is True connection is performed only when
+        /// adjacent wires share the same vertex.
+        /// If <shared> is False connection is performed only when
+        /// ends of adjacent wires are at distance less than <toler>.
+        /// Map <vertices> stores the correspondence between original
+        /// end vertices of the wires and new connecting vertices.
+        fn ShapeAnalysis_FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape_datamapofshapeshape(
+            iwires: Pin<&mut HandleTopToolsHSequenceOfShape>,
+            toler: f64,
+            shared: bool,
+            owires: Pin<&mut HandleTopToolsHSequenceOfShape>,
+            vertices: Pin<&mut TopTools_DataMapOfShapeShape>,
         );
         /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:151 - `ShapeAnalysis_FreeBounds::SplitWires()`
         ///
@@ -33331,6 +33689,17 @@ mod ffi {
         /// Clears the history.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut BRepTools_History>);
+        /// **Source:** `BRepTools_History.hxx`:181 - `BRepTools_History::Generated()`
+        ///
+        /// Methods to read the history.
+        /// Returns all shapes generated from the shape.
+        #[cxx_name = "Generated"]
+        fn generated(self: &BRepTools_History, theInitial: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepTools_History.hxx`:184 - `BRepTools_History::Modified()`
+        ///
+        /// Returns all shapes modified from the shape.
+        #[cxx_name = "Modified"]
+        fn modified(self: &BRepTools_History, theInitial: &TopoDS_Shape) -> &TopTools_ListOfShape;
         /// **Source:** `BRepTools_History.hxx`:187 - `BRepTools_History::IsRemoved()`
         ///
         /// Returns 'true' if the shape is removed.
@@ -37626,9 +37995,53 @@ mod ffi {
         /// calculations simpler and faster than a global operation. The latter
         /// would entail a second phase of removing unwanted matter to get the same result.
         type BRepFeat_Form;
+        /// **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
+        ///
+        /// returns the list of generated Faces.
+        #[cxx_name = "Modified"]
+        fn modified(self: Pin<&mut BRepFeat_Form>, F: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
+        ///
+        /// returns a list of the created faces
+        /// from the shape <S>.
+        #[cxx_name = "Generated"]
+        fn generated(self: Pin<&mut BRepFeat_Form>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
         /// **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut BRepFeat_Form>, S: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepFeat_Form.hxx`:83 - `BRepFeat_Form::FirstShape()`
+        ///
+        /// Returns the list  of shapes created  at the bottom  of
+        /// the created form.  It may be an empty list.
+        #[cxx_name = "FirstShape"]
+        fn first_shape(self: &BRepFeat_Form) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_Form.hxx`:87 - `BRepFeat_Form::LastShape()`
+        ///
+        /// Returns  the list of shapes  created at the top of the
+        /// created form.  It may be an empty list.
+        #[cxx_name = "LastShape"]
+        fn last_shape(self: &BRepFeat_Form) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_Form.hxx`:94 - `BRepFeat_Form::NewEdges()`
+        ///
+        /// Returns a list of the limiting and glueing edges
+        /// generated by the feature. These edges did not originally
+        /// exist in the basis shape.
+        /// The list provides the information necessary for
+        /// subsequent addition of fillets. It may be an empty list.
+        #[cxx_name = "NewEdges"]
+        fn new_edges(self: &BRepFeat_Form) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_Form.hxx`:104 - `BRepFeat_Form::TgtEdges()`
+        ///
+        /// Returns a list of the tangent edges among the limiting
+        /// and glueing edges generated by the feature. These
+        /// edges did not originally exist in the basis shape and are
+        /// tangent to the face against which the feature is built.
+        /// The list provides the information necessary for
+        /// subsequent addition of fillets. It may be an empty list.
+        /// If an edge is tangent, no fillet is possible, and the edge
+        /// must subsequently be removed if you want to add a fillet.
+        #[cxx_name = "TgtEdges"]
+        fn tgt_edges(self: &BRepFeat_Form) -> &TopTools_ListOfShape;
         /// **Source:** `BRepFeat_Form.hxx`:107 - `BRepFeat_Form::BasisShapeValid()`
         ///
         /// Initializes the topological construction if the basis shape is present.
@@ -37741,6 +38154,17 @@ mod ffi {
         /// If theFlag = FALSE SetOperation(theFuse) function  is called.
         #[cxx_name = "SetOperation"]
         fn set_operation_int_bool(self: Pin<&mut BRepFeat_Builder>, theFuse: i32, theFlag: bool);
+        /// **Source:** `BRepFeat_Builder.hxx`:74 - `BRepFeat_Builder::PartsOfTool()`
+        ///
+        /// Collects parts of the tool.
+        #[cxx_name = "PartsOfTool"]
+        fn parts_of_tool(self: Pin<&mut BRepFeat_Builder>, theLT: Pin<&mut TopTools_ListOfShape>);
+        /// **Source:** `BRepFeat_Builder.hxx`:78 - `BRepFeat_Builder::KeepParts()`
+        ///
+        /// Initializes parts of the tool for second step of algorithm.
+        /// Collects shapes and all sub-shapes into myShapes map.
+        #[cxx_name = "KeepParts"]
+        fn keep_parts(self: Pin<&mut BRepFeat_Builder>, theIm: &TopTools_ListOfShape);
         /// **Source:** `BRepFeat_Builder.hxx`:81 - `BRepFeat_Builder::KeepPart()`
         ///
         /// Adds shape theS and all its sub-shapes into myShapes map.
@@ -37757,6 +38181,17 @@ mod ffi {
         /// Rebuilds faces in accordance with the kept parts of the tool.
         #[cxx_name = "RebuildFaces"]
         fn rebuild_faces(self: Pin<&mut BRepFeat_Builder>);
+        /// **Source:** `BRepFeat_Builder.hxx`:92 - `BRepFeat_Builder::RebuildEdge()`
+        ///
+        /// Rebuilds edges in accordance with the kept parts of the tool.
+        #[cxx_name = "RebuildEdge"]
+        fn rebuild_edge(
+            self: Pin<&mut BRepFeat_Builder>,
+            theE: &TopoDS_Shape,
+            theF: &TopoDS_Face,
+            theME: &TopTools_MapOfShape,
+            aLEIm: Pin<&mut TopTools_ListOfShape>,
+        );
         /// **Source:** `BRepFeat_Builder.hxx`:99 - `BRepFeat_Builder::CheckSolidImages()`
         ///
         /// Collects the images of the object, that contains in
@@ -37768,6 +38203,15 @@ mod ffi {
         /// Collects the removed parts of the tool into myRemoved map.
         #[cxx_name = "FillRemoved"]
         fn fill_removed(self: Pin<&mut BRepFeat_Builder>);
+        /// **Source:** `BRepFeat_Builder.hxx`:105 - `BRepFeat_Builder::FillRemoved()`
+        ///
+        /// Adds the shape S and its sub-shapes into myRemoved map.
+        #[cxx_name = "FillRemoved"]
+        fn fill_removed_shape_mapofshape(
+            self: Pin<&mut BRepFeat_Builder>,
+            theS: &TopoDS_Shape,
+            theM: Pin<&mut TopTools_MapOfShape>,
+        );
         /// Upcast BRepFeat_Builder to BOPAlgo_BOP
         fn BRepFeat_Builder_as_BOPAlgo_BOP(self_: &BRepFeat_Builder) -> &BOPAlgo_BOP;
         /// Upcast BRepFeat_Builder to BOPAlgo_BOP (mutable)
@@ -37902,6 +38346,16 @@ mod ffi {
         /// Adds Tool argument of the operation
         #[cxx_name = "AddTool"]
         fn add_tool(self: Pin<&mut BOPAlgo_ToolsProvider>, theShape: &TopoDS_Shape);
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
+        ///
+        /// Adds the Tool arguments of the operation
+        #[cxx_name = "SetTools"]
+        fn set_tools(self: Pin<&mut BOPAlgo_ToolsProvider>, theShapes: &TopTools_ListOfShape);
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
+        ///
+        /// Returns the Tool arguments of the operation
+        #[cxx_name = "Tools"]
+        fn tools(self: &BOPAlgo_ToolsProvider) -> &TopTools_ListOfShape;
         /// Upcast BOPAlgo_ToolsProvider to BOPAlgo_Builder
         fn BOPAlgo_ToolsProvider_as_BOPAlgo_Builder(
             self_: &BOPAlgo_ToolsProvider,
@@ -37981,6 +38435,16 @@ mod ffi {
         /// Adds the argument to the operation.
         #[cxx_name = "AddArgument"]
         fn add_argument(self: Pin<&mut BOPAlgo_Builder>, theShape: &TopoDS_Shape);
+        /// **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+        ///
+        /// Sets the list of arguments for the operation.
+        #[cxx_name = "SetArguments"]
+        fn set_arguments(self: Pin<&mut BOPAlgo_Builder>, theLS: &TopTools_ListOfShape);
+        /// **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+        ///
+        /// Returns the list of arguments.
+        #[cxx_name = "Arguments"]
+        fn arguments(self: &BOPAlgo_Builder) -> &TopTools_ListOfShape;
         /// **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
         ///
         /// @name Options
@@ -38017,6 +38481,12 @@ mod ffi {
         /// The intersection will be performed also.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut BOPAlgo_Builder>, theRange: &Message_ProgressRange);
+        /// **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+        ///
+        /// Returns the map of Same Domain (SD) shapes - coinciding shapes
+        /// from different arguments.
+        #[cxx_name = "ShapesSD"]
+        fn shapes_sd(self: &BOPAlgo_Builder) -> &TopTools_DataMapOfShapeShape;
         /// Upcast BOPAlgo_Builder to BOPAlgo_BuilderShape
         fn BOPAlgo_Builder_as_BOPAlgo_BuilderShape(
             self_: &BOPAlgo_Builder,
@@ -38047,6 +38517,23 @@ mod ffi {
         /// Returns the result of algorithm
         #[cxx_name = "Shape"]
         fn shape(self: &BOPAlgo_BuilderShape) -> &TopoDS_Shape;
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
+        ///
+        /// @name History methods
+        /// Returns the list of shapes Modified from the shape theS.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BOPAlgo_BuilderShape>,
+            theS: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
+        ///
+        /// Returns the list of shapes Generated from the shape theS.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BOPAlgo_BuilderShape>,
+            theS: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
         ///
         /// Returns true if the shape theS has been deleted.
@@ -38522,6 +39009,22 @@ mod ffi {
         /// Does nothing.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BRepOffsetAPI_MakeOffsetShape>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:125 - `BRepOffsetAPI_MakeOffsetShape::Generated()`
+        ///
+        /// Returns the list of shapes generated from the shape <S>.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepOffsetAPI_MakeOffsetShape>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:129 - `BRepOffsetAPI_MakeOffsetShape::Modified()`
+        ///
+        /// Returns the list of shapes Modified from the shape <S>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepOffsetAPI_MakeOffsetShape>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:133 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
         ///
         /// Returns true if the shape has been removed from the result.
@@ -38609,6 +39112,11 @@ mod ffi {
         /// shapes and offset edges.
         #[cxx_name = "OffsetEdgesFromShapes"]
         fn offset_edges_from_shapes(self: &BRepOffset_MakeOffset) -> &BRepAlgo_Image;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:113 - `BRepOffset_MakeOffset::ClosingFaces()`
+        ///
+        /// Returns the list of closing faces stores by AddFace
+        #[cxx_name = "ClosingFaces"]
+        fn closing_faces(self: &BRepOffset_MakeOffset) -> &TopTools_IndexedMapOfShape;
         /// **Source:** `BRepOffset_MakeOffset.hxx`:122 - `BRepOffset_MakeOffset::CheckInputData()`
         ///
         /// Makes pre analysis of possibility offset perform. Use method Error() to get more information.
@@ -38628,6 +39136,23 @@ mod ffi {
         /// Return bad shape, which obtained in CheckInputData.
         #[cxx_name = "GetBadShape"]
         fn get_bad_shape(self: &BRepOffset_MakeOffset) -> &TopoDS_Shape;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:129 - `BRepOffset_MakeOffset::Generated()`
+        ///
+        /// @name History methods
+        /// Returns the  list of shapes generated from the shape <S>.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepOffset_MakeOffset>,
+            theS: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:132 - `BRepOffset_MakeOffset::Modified()`
+        ///
+        /// Returns the list of shapes modified from the shape <S>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepOffset_MakeOffset>,
+            theS: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepOffset_MakeOffset.hxx`:135 - `BRepOffset_MakeOffset::IsDeleted()`
         ///
         /// Returns true if the shape S has been deleted.
@@ -38974,14 +39499,36 @@ mod ffi {
         /// Returns status of the algorithm
         #[cxx_name = "IsDone"]
         fn is_done(self: &BRepOffset_Analyse) -> bool;
+        /// **Source:** `BRepOffset_Analyse.hxx`:82 - `BRepOffset_Analyse::TangentEdges()`
+        ///
+        /// set in <Edges> all  the Edges of <Shape> which are
+        /// tangent to <Edge> at the vertex <Vertex>.
+        #[cxx_name = "TangentEdges"]
+        fn tangent_edges(
+            self: &BRepOffset_Analyse,
+            theEdge: &TopoDS_Edge,
+            theVertex: &TopoDS_Vertex,
+            theEdges: Pin<&mut TopTools_ListOfShape>,
+        );
         /// **Source:** `BRepOffset_Analyse.hxx`:87 - `BRepOffset_Analyse::HasAncestor()`
         ///
         /// Checks if the given shape has ancestors
         #[cxx_name = "HasAncestor"]
         fn has_ancestor(self: &BRepOffset_Analyse, theS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepOffset_Analyse.hxx`:93 - `BRepOffset_Analyse::Ancestors()`
+        ///
+        /// Returns ancestors for the shape
+        #[cxx_name = "Ancestors"]
+        fn ancestors(self: &BRepOffset_Analyse, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
         /// **Source:** `BRepOffset_Analyse.hxx`:124 - `BRepOffset_Analyse::SetOffsetValue()`
         #[cxx_name = "SetOffsetValue"]
         fn set_offset_value(self: Pin<&mut BRepOffset_Analyse>, theOffset: f64);
+        /// **Source:** `BRepOffset_Analyse.hxx`:131 - `BRepOffset_Analyse::NewFaces()`
+        ///
+        /// Returns the new faces constructed between tangent faces
+        /// having different offset values on the shape
+        #[cxx_name = "NewFaces"]
+        fn new_faces(self: &BRepOffset_Analyse) -> &TopTools_ListOfShape;
         /// **Source:** `BRepOffset_Analyse.hxx`:138 - `BRepOffset_Analyse::HasGenerated()`
         ///
         /// Checks if the edge has generated a new face.
@@ -39026,12 +39573,30 @@ mod ffi {
         ///
         /// Links <NewS> as image of <OldS>.
         #[cxx_name = "Bind"]
-        fn bind(self: Pin<&mut BRepAlgo_Image>, OldS: &TopoDS_Shape, NewS: &TopoDS_Shape);
+        fn bind_shape2(self: Pin<&mut BRepAlgo_Image>, OldS: &TopoDS_Shape, NewS: &TopoDS_Shape);
+        /// **Source:** `BRepAlgo_Image.hxx`:46 - `BRepAlgo_Image::Bind()`
+        ///
+        /// Links <NewS> as image of <OldS>.
+        #[cxx_name = "Bind"]
+        fn bind_shape_listofshape(
+            self: Pin<&mut BRepAlgo_Image>,
+            OldS: &TopoDS_Shape,
+            NewS: &TopTools_ListOfShape,
+        );
         /// **Source:** `BRepAlgo_Image.hxx`:49 - `BRepAlgo_Image::Add()`
         ///
         /// Add <NewS> to the image of <OldS>.
         #[cxx_name = "Add"]
-        fn add(self: Pin<&mut BRepAlgo_Image>, OldS: &TopoDS_Shape, NewS: &TopoDS_Shape);
+        fn add_shape2(self: Pin<&mut BRepAlgo_Image>, OldS: &TopoDS_Shape, NewS: &TopoDS_Shape);
+        /// **Source:** `BRepAlgo_Image.hxx`:52 - `BRepAlgo_Image::Add()`
+        ///
+        /// Add <NewS> to the image of <OldS>.
+        #[cxx_name = "Add"]
+        fn add_shape_listofshape(
+            self: Pin<&mut BRepAlgo_Image>,
+            OldS: &TopoDS_Shape,
+            NewS: &TopTools_ListOfShape,
+        );
         /// **Source:** `BRepAlgo_Image.hxx`:54 - `BRepAlgo_Image::Clear()`
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut BRepAlgo_Image>);
@@ -39056,6 +39621,9 @@ mod ffi {
             OldRoot: &TopoDS_Shape,
             NewRoot: &TopoDS_Shape,
         );
+        /// **Source:** `BRepAlgo_Image.hxx`:67 - `BRepAlgo_Image::Roots()`
+        #[cxx_name = "Roots"]
+        fn roots(self: &BRepAlgo_Image) -> &TopTools_ListOfShape;
         /// **Source:** `BRepAlgo_Image.hxx`:69 - `BRepAlgo_Image::IsImage()`
         #[cxx_name = "IsImage"]
         fn is_image(self: &BRepAlgo_Image, S: &TopoDS_Shape) -> bool;
@@ -39072,6 +39640,18 @@ mod ffi {
         /// **Source:** `BRepAlgo_Image.hxx`:77 - `BRepAlgo_Image::HasImage()`
         #[cxx_name = "HasImage"]
         fn has_image(self: &BRepAlgo_Image, S: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepAlgo_Image.hxx`:81 - `BRepAlgo_Image::Image()`
+        ///
+        /// Returns the Image of <S>.
+        /// Returns <S> in the list if HasImage(S) is false.
+        #[cxx_name = "Image"]
+        fn image(self: &BRepAlgo_Image, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepAlgo_Image.hxx`:85 - `BRepAlgo_Image::LastImage()`
+        ///
+        /// Stores in <L> the images of images of...images of <S>.
+        /// <L> contains only <S> if  HasImage(S) is false.
+        #[cxx_name = "LastImage"]
+        fn last_image(self: &BRepAlgo_Image, S: &TopoDS_Shape, L: Pin<&mut TopTools_ListOfShape>);
         /// **Source:** `BRepAlgo_Image.hxx`:88 - `BRepAlgo_Image::Compact()`
         ///
         /// Keeps only the link between roots and lastimage.
@@ -39317,6 +39897,16 @@ mod ffi {
             BoundTol: f64,
             TolAngular: f64,
         );
+        /// **Source:** `BRepFill_PipeShell.hxx`:173 - `BRepFill_PipeShell::Simulate()`
+        ///
+        /// Perform simulation of the sweep :
+        /// Some Section are returned.
+        #[cxx_name = "Simulate"]
+        fn simulate(
+            self: Pin<&mut BRepFill_PipeShell>,
+            NumberOfSection: i32,
+            Sections: Pin<&mut TopTools_ListOfShape>,
+        );
         /// **Source:** `BRepFill_PipeShell.hxx`:177 - `BRepFill_PipeShell::Build()`
         ///
         /// Builds the resulting shape (redefined from MakeShape).
@@ -39346,11 +39936,29 @@ mod ffi {
         /// Returns the TopoDS Shape of the top of the sweep.
         #[cxx_name = "LastShape"]
         fn last_shape(self: &BRepFill_PipeShell) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_PipeShell.hxx`:195 - `BRepFill_PipeShell::Profiles()`
+        ///
+        /// Returns the list of original profiles
+        #[cxx_name = "Profiles"]
+        fn profiles(
+            self: Pin<&mut BRepFill_PipeShell>,
+            theProfiles: Pin<&mut TopTools_ListOfShape>,
+        );
         /// **Source:** `BRepFill_PipeShell.hxx`:202 - `BRepFill_PipeShell::Spine()`
         ///
         /// Returns the spine
         #[cxx_name = "Spine"]
         fn spine(self: Pin<&mut BRepFill_PipeShell>) -> &TopoDS_Wire;
+        /// **Source:** `BRepFill_PipeShell.hxx`:206 - `BRepFill_PipeShell::Generated()`
+        ///
+        /// Returns the  list   of shapes generated   from the
+        /// shape <S>.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepFill_PipeShell>,
+            S: &TopoDS_Shape,
+            L: Pin<&mut TopTools_ListOfShape>,
+        );
         /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BRepFill_PipeShell) -> &HandleStandardType;
@@ -39477,6 +40085,16 @@ mod ffi {
         /// **Source:** `BRepFill_Pipe.hxx`:73 - `BRepFill_Pipe::LastShape()`
         #[cxx_name = "LastShape"]
         fn last_shape(self: &BRepFill_Pipe) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_Pipe.hxx`:77 - `BRepFill_Pipe::Generated()`
+        ///
+        /// Returns the  list   of shapes generated   from the
+        /// shape <S>.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepFill_Pipe>,
+            S: &TopoDS_Shape,
+            L: Pin<&mut TopTools_ListOfShape>,
+        );
         /// **Source:** `BRepFill_Pipe.hxx`:82 - `BRepFill_Pipe::Face()`
         ///
         /// Returns the face created from an edge of the spine
@@ -39553,6 +40171,16 @@ mod ffi {
         /// returns the generated shape.
         #[cxx_name = "Shape"]
         fn shape(self: &BRepFill_OffsetWire) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_OffsetWire.hxx`:87 - `BRepFill_OffsetWire::GeneratedShapes()`
+        ///
+        /// Returns   the  shapes  created  from   a  subshape
+        /// <SpineShape> of the spine.
+        /// Returns the last computed Offset.
+        #[cxx_name = "GeneratedShapes"]
+        fn generated_shapes(
+            self: Pin<&mut BRepFill_OffsetWire>,
+            SpineShape: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// ======================== BRepMAT2d_BisectingLocus ========================
         /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:73 - `BRepMAT2d_BisectingLocus`
         ///
@@ -39882,9 +40510,19 @@ mod ffi {
         /// **Source:** `ChFi2d_Builder.hxx`:118 - `ChFi2d_Builder::IsModified()`
         #[cxx_name = "IsModified"]
         fn is_modified(self: &ChFi2d_Builder, E: &TopoDS_Edge) -> bool;
+        /// **Source:** `ChFi2d_Builder.hxx`:121 - `ChFi2d_Builder::FilletEdges()`
+        ///
+        /// returns the list of new edges
+        #[cxx_name = "FilletEdges"]
+        fn fillet_edges(self: &ChFi2d_Builder) -> &TopTools_SequenceOfShape;
         /// **Source:** `ChFi2d_Builder.hxx`:123 - `ChFi2d_Builder::NbFillet()`
         #[cxx_name = "NbFillet"]
         fn nb_fillet(self: &ChFi2d_Builder) -> i32;
+        /// **Source:** `ChFi2d_Builder.hxx`:126 - `ChFi2d_Builder::ChamferEdges()`
+        ///
+        /// returns the list of new edges
+        #[cxx_name = "ChamferEdges"]
+        fn chamfer_edges(self: &ChFi2d_Builder) -> &TopTools_SequenceOfShape;
         /// **Source:** `ChFi2d_Builder.hxx`:128 - `ChFi2d_Builder::NbChamfer()`
         #[cxx_name = "NbChamfer"]
         fn nb_chamfer(self: &ChFi2d_Builder) -> i32;
@@ -40293,6 +40931,11 @@ mod ffi {
         /// returns True if the computation  is  success
         #[cxx_name = "IsDone"]
         fn is_done(self: &ChFi3d_Builder) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
+        ///
+        /// Advanced  function for the history
+        #[cxx_name = "Generated"]
+        fn generated(self: Pin<&mut ChFi3d_Builder>, EouV: &TopoDS_Shape) -> &TopTools_ListOfShape;
         /// **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
         ///
         /// Returns the number of contours on  which the calculation
@@ -41093,6 +41736,12 @@ mod ffi {
         /// **Source:** `ChFiDS_Map.hxx`:45 - `ChFiDS_Map::Contains()`
         #[cxx_name = "Contains"]
         fn contains(self: &ChFiDS_Map, S: &TopoDS_Shape) -> bool;
+        /// **Source:** `ChFiDS_Map.hxx`:47 - `ChFiDS_Map::FindFromKey()`
+        #[cxx_name = "FindFromKey"]
+        fn find_from_key(self: &ChFiDS_Map, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `ChFiDS_Map.hxx`:51 - `ChFiDS_Map::FindFromIndex()`
+        #[cxx_name = "FindFromIndex"]
+        fn find_from_index(self: &ChFiDS_Map, I: i32) -> &TopTools_ListOfShape;
         /// ======================== ChFiDS_StripeMap ========================
         /// **Source:** `ChFiDS_StripeMap.hxx`:31 - `ChFiDS_StripeMap`
         ///
@@ -43532,6 +44181,15 @@ mod ffi {
         /// whole geometry of a shape into NURBS geometry,
         /// -   BRepOffsetAPI_DraftAngle to build a tapered shape.
         type BRepBuilderAPI_ModifyShape;
+        /// **Source:** `BRepBuilderAPI_ModifyShape.hxx`:52 - `BRepBuilderAPI_ModifyShape::Modified()`
+        ///
+        /// Returns the list  of shapes modified from the shape
+        /// <S>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepBuilderAPI_ModifyShape>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepBuilderAPI_ModifyShape.hxx`:63 - `BRepBuilderAPI_ModifyShape::ModifiedShape()`
         ///
         /// Returns the modified shape corresponding to <S>.
@@ -43661,6 +44319,13 @@ mod ffi {
         /// Add the edges of <W> to the current wire.
         #[cxx_name = "Add"]
         fn add_wire(self: Pin<&mut BRepLib_MakeWire>, W: &TopoDS_Wire);
+        /// **Source:** `BRepLib_MakeWire.hxx`:118 - `BRepLib_MakeWire::Add()`
+        ///
+        /// Add the edges of <L> to the current wire.
+        /// The edges are not to be consecutive.  But they are
+        /// to be all connected geometrically or topologically.
+        #[cxx_name = "Add"]
+        fn add_listofshape(self: Pin<&mut BRepLib_MakeWire>, L: &TopTools_ListOfShape);
         /// **Source:** `BRepLib_MakeWire.hxx`:123 - `BRepLib_MakeWire::Wire()`
         ///
         /// Returns the new wire.
@@ -43711,12 +44376,34 @@ mod ffi {
         /// Returns True if the Face generates new topology.
         #[cxx_name = "HasDescendants"]
         fn has_descendants(self: &BRepLib_MakeShape, F: &TopoDS_Face) -> bool;
+        /// **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
+        ///
+        /// returns the list of generated Faces.
+        #[cxx_name = "DescendantFaces"]
+        fn descendant_faces(
+            self: Pin<&mut BRepLib_MakeShape>,
+            F: &TopoDS_Face,
+        ) -> &TopTools_ListOfShape;
         /// **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
         ///
         /// returns the number of surfaces
         /// after the shape creation.
         #[cxx_name = "NbSurfaces"]
         fn nb_surfaces(self: &BRepLib_MakeShape) -> i32;
+        /// **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+        ///
+        /// Return the faces created for surface I.
+        #[cxx_name = "NewFaces"]
+        fn new_faces(self: Pin<&mut BRepLib_MakeShape>, I: i32) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
+        ///
+        /// returns a list of the created faces
+        /// from the edge <E>.
+        #[cxx_name = "FacesFromEdges"]
+        fn faces_from_edges(
+            self: Pin<&mut BRepLib_MakeShape>,
+            E: &TopoDS_Edge,
+        ) -> &TopTools_ListOfShape;
         /// Upcast BRepLib_MakeShape to BRepLib_Command
         fn BRepLib_MakeShape_as_BRepLib_Command(self_: &BRepLib_MakeShape) -> &BRepLib_Command;
         /// Upcast BRepLib_MakeShape to BRepLib_Command (mutable)
@@ -45012,46 +45699,6 @@ mod ffi {
         /// Referenced type from C++
         type TColStd_SequenceOfTransient;
         /// Referenced type from C++
-        type TColgp_Array1OfCirc2d;
-        /// Referenced type from C++
-        type TColgp_Array1OfDir;
-        /// Referenced type from C++
-        type TColgp_Array1OfDir2d;
-        /// Referenced type from C++
-        type TColgp_Array1OfLin2d;
-        /// Referenced type from C++
-        type TColgp_Array1OfPnt;
-        /// Referenced type from C++
-        type TColgp_Array1OfPnt2d;
-        /// Referenced type from C++
-        type TColgp_Array1OfVec;
-        /// Referenced type from C++
-        type TColgp_Array1OfVec2d;
-        /// Referenced type from C++
-        type TColgp_Array1OfXY;
-        /// Referenced type from C++
-        type TColgp_Array1OfXYZ;
-        /// Referenced type from C++
-        type TColgp_Array2OfCirc2d;
-        /// Referenced type from C++
-        type TColgp_Array2OfDir;
-        /// Referenced type from C++
-        type TColgp_Array2OfDir2d;
-        /// Referenced type from C++
-        type TColgp_Array2OfLin2d;
-        /// Referenced type from C++
-        type TColgp_Array2OfPnt;
-        /// Referenced type from C++
-        type TColgp_Array2OfPnt2d;
-        /// Referenced type from C++
-        type TColgp_Array2OfVec;
-        /// Referenced type from C++
-        type TColgp_Array2OfVec2d;
-        /// Referenced type from C++
-        type TColgp_Array2OfXY;
-        /// Referenced type from C++
-        type TColgp_Array2OfXYZ;
-        /// Referenced type from C++
         type TColgp_SequenceOfDir;
         /// Referenced type from C++
         type TColgp_SequenceOfDir2d;
@@ -45098,6 +45745,1016 @@ mod ffi {
         // ========================
         // Collection type wrappers
         // ========================
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfCirc2d;
+
+        /// Create a new empty TColgp_Array1OfCirc2d
+        fn TColgp_Array1OfCirc2d_new() -> UniquePtr<TColgp_Array1OfCirc2d>;
+
+        /// Create TColgp_Array1OfCirc2d with lower and upper bounds
+        fn TColgp_Array1OfCirc2d_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfCirc2d>;
+
+        /// Create TColgp_Array1OfCirc2d with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfCirc2d_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Circ2d,
+        ) -> UniquePtr<TColgp_Array1OfCirc2d>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfCirc2d_length(arr: &TColgp_Array1OfCirc2d) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfCirc2d_lower(arr: &TColgp_Array1OfCirc2d) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfCirc2d_upper(arr: &TColgp_Array1OfCirc2d) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfCirc2d_value(arr: &TColgp_Array1OfCirc2d, theIndex: i32) -> &gp_Circ2d;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfCirc2d_set_value(
+            arr: Pin<&mut TColgp_Array1OfCirc2d>,
+            theIndex: i32,
+            theItem: &gp_Circ2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfCirc2d_init(arr: Pin<&mut TColgp_Array1OfCirc2d>, theValue: &gp_Circ2d);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfDir;
+
+        /// Create a new empty TColgp_Array1OfDir
+        fn TColgp_Array1OfDir_new() -> UniquePtr<TColgp_Array1OfDir>;
+
+        /// Create TColgp_Array1OfDir with lower and upper bounds
+        fn TColgp_Array1OfDir_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfDir>;
+
+        /// Create TColgp_Array1OfDir with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfDir_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Dir,
+        ) -> UniquePtr<TColgp_Array1OfDir>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfDir_length(arr: &TColgp_Array1OfDir) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfDir_lower(arr: &TColgp_Array1OfDir) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfDir_upper(arr: &TColgp_Array1OfDir) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfDir_value(arr: &TColgp_Array1OfDir, theIndex: i32) -> &gp_Dir;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfDir_set_value(
+            arr: Pin<&mut TColgp_Array1OfDir>,
+            theIndex: i32,
+            theItem: &gp_Dir,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfDir_init(arr: Pin<&mut TColgp_Array1OfDir>, theValue: &gp_Dir);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfDir2d;
+
+        /// Create a new empty TColgp_Array1OfDir2d
+        fn TColgp_Array1OfDir2d_new() -> UniquePtr<TColgp_Array1OfDir2d>;
+
+        /// Create TColgp_Array1OfDir2d with lower and upper bounds
+        fn TColgp_Array1OfDir2d_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfDir2d>;
+
+        /// Create TColgp_Array1OfDir2d with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfDir2d_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Dir2d,
+        ) -> UniquePtr<TColgp_Array1OfDir2d>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfDir2d_length(arr: &TColgp_Array1OfDir2d) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfDir2d_lower(arr: &TColgp_Array1OfDir2d) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfDir2d_upper(arr: &TColgp_Array1OfDir2d) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfDir2d_value(arr: &TColgp_Array1OfDir2d, theIndex: i32) -> &gp_Dir2d;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfDir2d_set_value(
+            arr: Pin<&mut TColgp_Array1OfDir2d>,
+            theIndex: i32,
+            theItem: &gp_Dir2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfDir2d_init(arr: Pin<&mut TColgp_Array1OfDir2d>, theValue: &gp_Dir2d);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfLin2d;
+
+        /// Create a new empty TColgp_Array1OfLin2d
+        fn TColgp_Array1OfLin2d_new() -> UniquePtr<TColgp_Array1OfLin2d>;
+
+        /// Create TColgp_Array1OfLin2d with lower and upper bounds
+        fn TColgp_Array1OfLin2d_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfLin2d>;
+
+        /// Create TColgp_Array1OfLin2d with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfLin2d_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Lin2d,
+        ) -> UniquePtr<TColgp_Array1OfLin2d>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfLin2d_length(arr: &TColgp_Array1OfLin2d) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfLin2d_lower(arr: &TColgp_Array1OfLin2d) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfLin2d_upper(arr: &TColgp_Array1OfLin2d) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfLin2d_value(arr: &TColgp_Array1OfLin2d, theIndex: i32) -> &gp_Lin2d;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfLin2d_set_value(
+            arr: Pin<&mut TColgp_Array1OfLin2d>,
+            theIndex: i32,
+            theItem: &gp_Lin2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfLin2d_init(arr: Pin<&mut TColgp_Array1OfLin2d>, theValue: &gp_Lin2d);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfPnt;
+
+        /// Create a new empty TColgp_Array1OfPnt
+        fn TColgp_Array1OfPnt_new() -> UniquePtr<TColgp_Array1OfPnt>;
+
+        /// Create TColgp_Array1OfPnt with lower and upper bounds
+        fn TColgp_Array1OfPnt_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfPnt>;
+
+        /// Create TColgp_Array1OfPnt with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfPnt_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Pnt,
+        ) -> UniquePtr<TColgp_Array1OfPnt>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfPnt_length(arr: &TColgp_Array1OfPnt) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfPnt_lower(arr: &TColgp_Array1OfPnt) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfPnt_upper(arr: &TColgp_Array1OfPnt) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfPnt_value(arr: &TColgp_Array1OfPnt, theIndex: i32) -> &gp_Pnt;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfPnt_set_value(
+            arr: Pin<&mut TColgp_Array1OfPnt>,
+            theIndex: i32,
+            theItem: &gp_Pnt,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfPnt_init(arr: Pin<&mut TColgp_Array1OfPnt>, theValue: &gp_Pnt);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfPnt2d;
+
+        /// Create a new empty TColgp_Array1OfPnt2d
+        fn TColgp_Array1OfPnt2d_new() -> UniquePtr<TColgp_Array1OfPnt2d>;
+
+        /// Create TColgp_Array1OfPnt2d with lower and upper bounds
+        fn TColgp_Array1OfPnt2d_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfPnt2d>;
+
+        /// Create TColgp_Array1OfPnt2d with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfPnt2d_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Pnt2d,
+        ) -> UniquePtr<TColgp_Array1OfPnt2d>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfPnt2d_length(arr: &TColgp_Array1OfPnt2d) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfPnt2d_lower(arr: &TColgp_Array1OfPnt2d) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfPnt2d_upper(arr: &TColgp_Array1OfPnt2d) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfPnt2d_value(arr: &TColgp_Array1OfPnt2d, theIndex: i32) -> &gp_Pnt2d;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfPnt2d_set_value(
+            arr: Pin<&mut TColgp_Array1OfPnt2d>,
+            theIndex: i32,
+            theItem: &gp_Pnt2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfPnt2d_init(arr: Pin<&mut TColgp_Array1OfPnt2d>, theValue: &gp_Pnt2d);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfVec;
+
+        /// Create a new empty TColgp_Array1OfVec
+        fn TColgp_Array1OfVec_new() -> UniquePtr<TColgp_Array1OfVec>;
+
+        /// Create TColgp_Array1OfVec with lower and upper bounds
+        fn TColgp_Array1OfVec_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfVec>;
+
+        /// Create TColgp_Array1OfVec with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfVec_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Vec,
+        ) -> UniquePtr<TColgp_Array1OfVec>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfVec_length(arr: &TColgp_Array1OfVec) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfVec_lower(arr: &TColgp_Array1OfVec) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfVec_upper(arr: &TColgp_Array1OfVec) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfVec_value(arr: &TColgp_Array1OfVec, theIndex: i32) -> &gp_Vec;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfVec_set_value(
+            arr: Pin<&mut TColgp_Array1OfVec>,
+            theIndex: i32,
+            theItem: &gp_Vec,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfVec_init(arr: Pin<&mut TColgp_Array1OfVec>, theValue: &gp_Vec);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfVec2d;
+
+        /// Create a new empty TColgp_Array1OfVec2d
+        fn TColgp_Array1OfVec2d_new() -> UniquePtr<TColgp_Array1OfVec2d>;
+
+        /// Create TColgp_Array1OfVec2d with lower and upper bounds
+        fn TColgp_Array1OfVec2d_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfVec2d>;
+
+        /// Create TColgp_Array1OfVec2d with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfVec2d_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_Vec2d,
+        ) -> UniquePtr<TColgp_Array1OfVec2d>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfVec2d_length(arr: &TColgp_Array1OfVec2d) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfVec2d_lower(arr: &TColgp_Array1OfVec2d) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfVec2d_upper(arr: &TColgp_Array1OfVec2d) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfVec2d_value(arr: &TColgp_Array1OfVec2d, theIndex: i32) -> &gp_Vec2d;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfVec2d_set_value(
+            arr: Pin<&mut TColgp_Array1OfVec2d>,
+            theIndex: i32,
+            theItem: &gp_Vec2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfVec2d_init(arr: Pin<&mut TColgp_Array1OfVec2d>, theValue: &gp_Vec2d);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfXY;
+
+        /// Create a new empty TColgp_Array1OfXY
+        fn TColgp_Array1OfXY_new() -> UniquePtr<TColgp_Array1OfXY>;
+
+        /// Create TColgp_Array1OfXY with lower and upper bounds
+        fn TColgp_Array1OfXY_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfXY>;
+
+        /// Create TColgp_Array1OfXY with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfXY_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_XY,
+        ) -> UniquePtr<TColgp_Array1OfXY>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfXY_length(arr: &TColgp_Array1OfXY) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfXY_lower(arr: &TColgp_Array1OfXY) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfXY_upper(arr: &TColgp_Array1OfXY) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfXY_value(arr: &TColgp_Array1OfXY, theIndex: i32) -> &gp_XY;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfXY_set_value(
+            arr: Pin<&mut TColgp_Array1OfXY>,
+            theIndex: i32,
+            theItem: &gp_XY,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfXY_init(arr: Pin<&mut TColgp_Array1OfXY>, theValue: &gp_XY);
+
+        /// Fixed-size 1D array (1-indexed)
+        type TColgp_Array1OfXYZ;
+
+        /// Create a new empty TColgp_Array1OfXYZ
+        fn TColgp_Array1OfXYZ_new() -> UniquePtr<TColgp_Array1OfXYZ>;
+
+        /// Create TColgp_Array1OfXYZ with lower and upper bounds
+        fn TColgp_Array1OfXYZ_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<TColgp_Array1OfXYZ>;
+
+        /// Create TColgp_Array1OfXYZ with bounds, all elements initialized to theValue
+        fn TColgp_Array1OfXYZ_ctor_int2_value(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &gp_XYZ,
+        ) -> UniquePtr<TColgp_Array1OfXYZ>;
+
+        /// Get number of elements
+        fn TColgp_Array1OfXYZ_length(arr: &TColgp_Array1OfXYZ) -> i32;
+
+        /// Get lower bound index
+        fn TColgp_Array1OfXYZ_lower(arr: &TColgp_Array1OfXYZ) -> i32;
+
+        /// Get upper bound index
+        fn TColgp_Array1OfXYZ_upper(arr: &TColgp_Array1OfXYZ) -> i32;
+
+        /// Get element at index (bounds-checked)
+        fn TColgp_Array1OfXYZ_value(arr: &TColgp_Array1OfXYZ, theIndex: i32) -> &gp_XYZ;
+
+        /// Set element at index (bounds-checked)
+        fn TColgp_Array1OfXYZ_set_value(
+            arr: Pin<&mut TColgp_Array1OfXYZ>,
+            theIndex: i32,
+            theItem: &gp_XYZ,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array1OfXYZ_init(arr: Pin<&mut TColgp_Array1OfXYZ>, theValue: &gp_XYZ);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfCirc2d;
+
+        /// Create a new empty TColgp_Array2OfCirc2d
+        fn TColgp_Array2OfCirc2d_new() -> UniquePtr<TColgp_Array2OfCirc2d>;
+
+        /// Create TColgp_Array2OfCirc2d with row and column bounds
+        fn TColgp_Array2OfCirc2d_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfCirc2d>;
+
+        /// Create TColgp_Array2OfCirc2d with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfCirc2d_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Circ2d,
+        ) -> UniquePtr<TColgp_Array2OfCirc2d>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfCirc2d_nb_rows(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfCirc2d_nb_columns(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfCirc2d_lower_row(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfCirc2d_upper_row(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfCirc2d_lower_col(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfCirc2d_upper_col(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfCirc2d_length(arr: &TColgp_Array2OfCirc2d) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfCirc2d_value(
+            arr: &TColgp_Array2OfCirc2d,
+            theRow: i32,
+            theCol: i32,
+        ) -> &gp_Circ2d;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfCirc2d_set_value(
+            arr: Pin<&mut TColgp_Array2OfCirc2d>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Circ2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfCirc2d_init(arr: Pin<&mut TColgp_Array2OfCirc2d>, theValue: &gp_Circ2d);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfDir;
+
+        /// Create a new empty TColgp_Array2OfDir
+        fn TColgp_Array2OfDir_new() -> UniquePtr<TColgp_Array2OfDir>;
+
+        /// Create TColgp_Array2OfDir with row and column bounds
+        fn TColgp_Array2OfDir_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfDir>;
+
+        /// Create TColgp_Array2OfDir with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfDir_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Dir,
+        ) -> UniquePtr<TColgp_Array2OfDir>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfDir_nb_rows(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfDir_nb_columns(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfDir_lower_row(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfDir_upper_row(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfDir_lower_col(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfDir_upper_col(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfDir_length(arr: &TColgp_Array2OfDir) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfDir_value(arr: &TColgp_Array2OfDir, theRow: i32, theCol: i32) -> &gp_Dir;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfDir_set_value(
+            arr: Pin<&mut TColgp_Array2OfDir>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Dir,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfDir_init(arr: Pin<&mut TColgp_Array2OfDir>, theValue: &gp_Dir);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfDir2d;
+
+        /// Create a new empty TColgp_Array2OfDir2d
+        fn TColgp_Array2OfDir2d_new() -> UniquePtr<TColgp_Array2OfDir2d>;
+
+        /// Create TColgp_Array2OfDir2d with row and column bounds
+        fn TColgp_Array2OfDir2d_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfDir2d>;
+
+        /// Create TColgp_Array2OfDir2d with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfDir2d_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Dir2d,
+        ) -> UniquePtr<TColgp_Array2OfDir2d>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfDir2d_nb_rows(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfDir2d_nb_columns(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfDir2d_lower_row(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfDir2d_upper_row(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfDir2d_lower_col(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfDir2d_upper_col(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfDir2d_length(arr: &TColgp_Array2OfDir2d) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfDir2d_value(
+            arr: &TColgp_Array2OfDir2d,
+            theRow: i32,
+            theCol: i32,
+        ) -> &gp_Dir2d;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfDir2d_set_value(
+            arr: Pin<&mut TColgp_Array2OfDir2d>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Dir2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfDir2d_init(arr: Pin<&mut TColgp_Array2OfDir2d>, theValue: &gp_Dir2d);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfLin2d;
+
+        /// Create a new empty TColgp_Array2OfLin2d
+        fn TColgp_Array2OfLin2d_new() -> UniquePtr<TColgp_Array2OfLin2d>;
+
+        /// Create TColgp_Array2OfLin2d with row and column bounds
+        fn TColgp_Array2OfLin2d_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfLin2d>;
+
+        /// Create TColgp_Array2OfLin2d with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfLin2d_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Lin2d,
+        ) -> UniquePtr<TColgp_Array2OfLin2d>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfLin2d_nb_rows(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfLin2d_nb_columns(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfLin2d_lower_row(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfLin2d_upper_row(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfLin2d_lower_col(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfLin2d_upper_col(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfLin2d_length(arr: &TColgp_Array2OfLin2d) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfLin2d_value(
+            arr: &TColgp_Array2OfLin2d,
+            theRow: i32,
+            theCol: i32,
+        ) -> &gp_Lin2d;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfLin2d_set_value(
+            arr: Pin<&mut TColgp_Array2OfLin2d>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Lin2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfLin2d_init(arr: Pin<&mut TColgp_Array2OfLin2d>, theValue: &gp_Lin2d);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfPnt;
+
+        /// Create a new empty TColgp_Array2OfPnt
+        fn TColgp_Array2OfPnt_new() -> UniquePtr<TColgp_Array2OfPnt>;
+
+        /// Create TColgp_Array2OfPnt with row and column bounds
+        fn TColgp_Array2OfPnt_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfPnt>;
+
+        /// Create TColgp_Array2OfPnt with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfPnt_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Pnt,
+        ) -> UniquePtr<TColgp_Array2OfPnt>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfPnt_nb_rows(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfPnt_nb_columns(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfPnt_lower_row(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfPnt_upper_row(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfPnt_lower_col(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfPnt_upper_col(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfPnt_length(arr: &TColgp_Array2OfPnt) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfPnt_value(arr: &TColgp_Array2OfPnt, theRow: i32, theCol: i32) -> &gp_Pnt;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfPnt_set_value(
+            arr: Pin<&mut TColgp_Array2OfPnt>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Pnt,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfPnt_init(arr: Pin<&mut TColgp_Array2OfPnt>, theValue: &gp_Pnt);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfPnt2d;
+
+        /// Create a new empty TColgp_Array2OfPnt2d
+        fn TColgp_Array2OfPnt2d_new() -> UniquePtr<TColgp_Array2OfPnt2d>;
+
+        /// Create TColgp_Array2OfPnt2d with row and column bounds
+        fn TColgp_Array2OfPnt2d_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfPnt2d>;
+
+        /// Create TColgp_Array2OfPnt2d with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfPnt2d_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Pnt2d,
+        ) -> UniquePtr<TColgp_Array2OfPnt2d>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfPnt2d_nb_rows(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfPnt2d_nb_columns(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfPnt2d_lower_row(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfPnt2d_upper_row(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfPnt2d_lower_col(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfPnt2d_upper_col(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfPnt2d_length(arr: &TColgp_Array2OfPnt2d) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfPnt2d_value(
+            arr: &TColgp_Array2OfPnt2d,
+            theRow: i32,
+            theCol: i32,
+        ) -> &gp_Pnt2d;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfPnt2d_set_value(
+            arr: Pin<&mut TColgp_Array2OfPnt2d>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Pnt2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfPnt2d_init(arr: Pin<&mut TColgp_Array2OfPnt2d>, theValue: &gp_Pnt2d);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfVec;
+
+        /// Create a new empty TColgp_Array2OfVec
+        fn TColgp_Array2OfVec_new() -> UniquePtr<TColgp_Array2OfVec>;
+
+        /// Create TColgp_Array2OfVec with row and column bounds
+        fn TColgp_Array2OfVec_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfVec>;
+
+        /// Create TColgp_Array2OfVec with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfVec_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Vec,
+        ) -> UniquePtr<TColgp_Array2OfVec>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfVec_nb_rows(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfVec_nb_columns(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfVec_lower_row(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfVec_upper_row(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfVec_lower_col(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfVec_upper_col(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfVec_length(arr: &TColgp_Array2OfVec) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfVec_value(arr: &TColgp_Array2OfVec, theRow: i32, theCol: i32) -> &gp_Vec;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfVec_set_value(
+            arr: Pin<&mut TColgp_Array2OfVec>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Vec,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfVec_init(arr: Pin<&mut TColgp_Array2OfVec>, theValue: &gp_Vec);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfVec2d;
+
+        /// Create a new empty TColgp_Array2OfVec2d
+        fn TColgp_Array2OfVec2d_new() -> UniquePtr<TColgp_Array2OfVec2d>;
+
+        /// Create TColgp_Array2OfVec2d with row and column bounds
+        fn TColgp_Array2OfVec2d_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfVec2d>;
+
+        /// Create TColgp_Array2OfVec2d with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfVec2d_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_Vec2d,
+        ) -> UniquePtr<TColgp_Array2OfVec2d>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfVec2d_nb_rows(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfVec2d_nb_columns(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfVec2d_lower_row(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfVec2d_upper_row(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfVec2d_lower_col(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfVec2d_upper_col(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfVec2d_length(arr: &TColgp_Array2OfVec2d) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfVec2d_value(
+            arr: &TColgp_Array2OfVec2d,
+            theRow: i32,
+            theCol: i32,
+        ) -> &gp_Vec2d;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfVec2d_set_value(
+            arr: Pin<&mut TColgp_Array2OfVec2d>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_Vec2d,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfVec2d_init(arr: Pin<&mut TColgp_Array2OfVec2d>, theValue: &gp_Vec2d);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfXY;
+
+        /// Create a new empty TColgp_Array2OfXY
+        fn TColgp_Array2OfXY_new() -> UniquePtr<TColgp_Array2OfXY>;
+
+        /// Create TColgp_Array2OfXY with row and column bounds
+        fn TColgp_Array2OfXY_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfXY>;
+
+        /// Create TColgp_Array2OfXY with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfXY_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_XY,
+        ) -> UniquePtr<TColgp_Array2OfXY>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfXY_nb_rows(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfXY_nb_columns(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfXY_lower_row(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfXY_upper_row(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfXY_lower_col(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfXY_upper_col(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfXY_length(arr: &TColgp_Array2OfXY) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfXY_value(arr: &TColgp_Array2OfXY, theRow: i32, theCol: i32) -> &gp_XY;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfXY_set_value(
+            arr: Pin<&mut TColgp_Array2OfXY>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_XY,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfXY_init(arr: Pin<&mut TColgp_Array2OfXY>, theValue: &gp_XY);
+
+        /// Fixed-size 2D array (row/col indexed)
+        type TColgp_Array2OfXYZ;
+
+        /// Create a new empty TColgp_Array2OfXYZ
+        fn TColgp_Array2OfXYZ_new() -> UniquePtr<TColgp_Array2OfXYZ>;
+
+        /// Create TColgp_Array2OfXYZ with row and column bounds
+        fn TColgp_Array2OfXYZ_ctor_int4(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+        ) -> UniquePtr<TColgp_Array2OfXYZ>;
+
+        /// Create TColgp_Array2OfXYZ with bounds, all elements initialized to theValue
+        fn TColgp_Array2OfXYZ_ctor_int4_value(
+            theRowLower: i32,
+            theRowUpper: i32,
+            theColLower: i32,
+            theColUpper: i32,
+            theValue: &gp_XYZ,
+        ) -> UniquePtr<TColgp_Array2OfXYZ>;
+
+        /// Get number of rows
+        fn TColgp_Array2OfXYZ_nb_rows(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get number of columns
+        fn TColgp_Array2OfXYZ_nb_columns(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get lower row bound
+        fn TColgp_Array2OfXYZ_lower_row(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get upper row bound
+        fn TColgp_Array2OfXYZ_upper_row(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get lower column bound
+        fn TColgp_Array2OfXYZ_lower_col(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get upper column bound
+        fn TColgp_Array2OfXYZ_upper_col(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get total number of elements
+        fn TColgp_Array2OfXYZ_length(arr: &TColgp_Array2OfXYZ) -> i32;
+
+        /// Get element at row/col (bounds-checked)
+        fn TColgp_Array2OfXYZ_value(arr: &TColgp_Array2OfXYZ, theRow: i32, theCol: i32) -> &gp_XYZ;
+
+        /// Set element at row/col (bounds-checked)
+        fn TColgp_Array2OfXYZ_set_value(
+            arr: Pin<&mut TColgp_Array2OfXYZ>,
+            theRow: i32,
+            theCol: i32,
+            theItem: &gp_XYZ,
+        );
+
+        /// Set all elements to the same value
+        fn TColgp_Array2OfXYZ_init(arr: Pin<&mut TColgp_Array2OfXYZ>, theValue: &gp_XYZ);
 
         /// Key-value map
         type TopTools_DataMapOfShapeShape;
@@ -45730,6 +47387,1258 @@ mod ffi {
     impl UniquePtr<TopoDS_Iterator> {}
     impl UniquePtr<TopoDS_TShape> {}
     impl UniquePtr<TopAbs> {}
+}
+
+impl ffi::TColgp_Array1OfCirc2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfCirc2d_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfCirc2d_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Circ2d) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfCirc2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfCirc2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfCirc2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfCirc2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Circ2d {
+        ffi::TColgp_Array1OfCirc2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Circ2d) {
+        ffi::TColgp_Array1OfCirc2d_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Circ2d) {
+        ffi::TColgp_Array1OfCirc2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfDir {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Dir) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfDir_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfDir_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfDir_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Dir {
+        ffi::TColgp_Array1OfDir_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Dir) {
+        ffi::TColgp_Array1OfDir_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Dir) {
+        ffi::TColgp_Array1OfDir_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfDir2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir2d_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir2d_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Dir2d) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfDir2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfDir2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfDir2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfDir2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Dir2d {
+        ffi::TColgp_Array1OfDir2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Dir2d) {
+        ffi::TColgp_Array1OfDir2d_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Dir2d) {
+        ffi::TColgp_Array1OfDir2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfLin2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfLin2d_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfLin2d_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Lin2d) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfLin2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfLin2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfLin2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfLin2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Lin2d {
+        ffi::TColgp_Array1OfLin2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Lin2d) {
+        ffi::TColgp_Array1OfLin2d_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Lin2d) {
+        ffi::TColgp_Array1OfLin2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfPnt {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Pnt {
+        ffi::TColgp_Array1OfPnt_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Pnt) {
+        ffi::TColgp_Array1OfPnt_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Pnt) {
+        ffi::TColgp_Array1OfPnt_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfPnt2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt2d_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt2d_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Pnt2d) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfPnt2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfPnt2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Pnt2d {
+        ffi::TColgp_Array1OfPnt2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Pnt2d) {
+        ffi::TColgp_Array1OfPnt2d_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Pnt2d) {
+        ffi::TColgp_Array1OfPnt2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfVec {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Vec) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfVec_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfVec_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfVec_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Vec {
+        ffi::TColgp_Array1OfVec_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Vec) {
+        ffi::TColgp_Array1OfVec_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Vec) {
+        ffi::TColgp_Array1OfVec_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfVec2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec2d_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec2d_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_Vec2d) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfVec2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfVec2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfVec2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfVec2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_Vec2d {
+        ffi::TColgp_Array1OfVec2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_Vec2d) {
+        ffi::TColgp_Array1OfVec2d_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Vec2d) {
+        ffi::TColgp_Array1OfVec2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfXY {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXY_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXY_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_XY) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXY_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfXY_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfXY_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfXY_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_XY {
+        ffi::TColgp_Array1OfXY_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_XY) {
+        ffi::TColgp_Array1OfXY_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_XY) {
+        ffi::TColgp_Array1OfXY_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array1OfXYZ {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXYZ_new()
+    }
+
+    /// Create array with lower and upper bounds
+    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXYZ_ctor_int2(lower, upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::gp_XYZ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array1OfXYZ_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array1OfXYZ_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        ffi::TColgp_Array1OfXYZ_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        ffi::TColgp_Array1OfXYZ_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &ffi::gp_XYZ {
+        ffi::TColgp_Array1OfXYZ_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::gp_XYZ) {
+        ffi::TColgp_Array1OfXYZ_set_value(self, index, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_XYZ) {
+        ffi::TColgp_Array1OfXYZ_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfCirc2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfCirc2d_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfCirc2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Circ2d,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfCirc2d_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfCirc2d_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Circ2d {
+        ffi::TColgp_Array2OfCirc2d_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Circ2d) {
+        ffi::TColgp_Array2OfCirc2d_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Circ2d) {
+        ffi::TColgp_Array2OfCirc2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfDir {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfDir_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Dir {
+        ffi::TColgp_Array2OfDir_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Dir) {
+        ffi::TColgp_Array2OfDir_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Dir) {
+        ffi::TColgp_Array2OfDir_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfDir2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir2d_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Dir2d,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfDir2d_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfDir2d_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Dir2d {
+        ffi::TColgp_Array2OfDir2d_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Dir2d) {
+        ffi::TColgp_Array2OfDir2d_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Dir2d) {
+        ffi::TColgp_Array2OfDir2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfLin2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfLin2d_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfLin2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Lin2d,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfLin2d_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfLin2d_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Lin2d {
+        ffi::TColgp_Array2OfLin2d_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Lin2d) {
+        ffi::TColgp_Array2OfLin2d_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Lin2d) {
+        ffi::TColgp_Array2OfLin2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfPnt {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Pnt {
+        ffi::TColgp_Array2OfPnt_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Pnt) {
+        ffi::TColgp_Array2OfPnt_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Pnt) {
+        ffi::TColgp_Array2OfPnt_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfPnt2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt2d_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfPnt2d_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfPnt2d_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Pnt2d {
+        ffi::TColgp_Array2OfPnt2d_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Pnt2d) {
+        ffi::TColgp_Array2OfPnt2d_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Pnt2d) {
+        ffi::TColgp_Array2OfPnt2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfVec {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Vec,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfVec_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Vec {
+        ffi::TColgp_Array2OfVec_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Vec) {
+        ffi::TColgp_Array2OfVec_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Vec) {
+        ffi::TColgp_Array2OfVec_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfVec2d {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec2d_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfVec2d_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfVec2d_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_Vec2d {
+        ffi::TColgp_Array2OfVec2d_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_Vec2d) {
+        ffi::TColgp_Array2OfVec2d_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_Vec2d) {
+        ffi::TColgp_Array2OfVec2d_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfXY {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXY_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXY_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_XY,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXY_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfXY_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_XY {
+        ffi::TColgp_Array2OfXY_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_XY) {
+        ffi::TColgp_Array2OfXY_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_XY) {
+        ffi::TColgp_Array2OfXY_init(self, value)
+    }
+}
+
+impl ffi::TColgp_Array2OfXYZ {
+    /// Create a new empty array
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXYZ_new()
+    }
+
+    /// Create array with row and column bounds
+    pub fn new_with_bounds(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXYZ_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create array with bounds, all elements initialized to value
+    pub fn new_with_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &ffi::gp_XYZ,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TColgp_Array2OfXYZ_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_nb_columns(self)
+    }
+
+    /// Get lower row bound
+    pub fn lower_row(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_lower_row(self)
+    }
+
+    /// Get upper row bound
+    pub fn upper_row(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_upper_row(self)
+    }
+
+    /// Get lower column bound
+    pub fn lower_col(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_lower_col(self)
+    }
+
+    /// Get upper column bound
+    pub fn upper_col(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_upper_col(self)
+    }
+
+    /// Get total number of elements
+    pub fn length(&self) -> i32 {
+        ffi::TColgp_Array2OfXYZ_length(self)
+    }
+
+    /// Get element at row/col
+    pub fn value(&self, row: i32, col: i32) -> &ffi::gp_XYZ {
+        ffi::TColgp_Array2OfXYZ_value(self, row, col)
+    }
+
+    /// Set element at row/col
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::gp_XYZ) {
+        ffi::TColgp_Array2OfXYZ_set_value(self, row, col, item)
+    }
+
+    /// Set all elements to the same value
+    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::gp_XYZ) {
+        ffi::TColgp_Array2OfXYZ_init(self, value)
+    }
 }
 
 impl ffi::TopTools_DataMapOfShapeShape {

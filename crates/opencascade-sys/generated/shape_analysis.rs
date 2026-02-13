@@ -116,13 +116,36 @@ impl FreeBounds {
         crate::ffi::ShapeAnalysis_FreeBounds_connect_edges_to_wires(edges, toler, shared, wires)
     }
 
-    pub fn connect_wires_to_wires(
+    pub fn connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape(
         iwires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
         toler: f64,
         shared: bool,
         owires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
     ) {
-        crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires(iwires, toler, shared, owires)
+        crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape(iwires, toler, shared, owires)
+    }
+
+    /// Builds sequence of <owires> out of sequence of not sorted
+    /// <iwires>.
+    /// Tries to build wires of maximum length. Building a wire is
+    /// stopped when no wires can be connected to it at its head or
+    /// at its tail.
+    ///
+    /// Orientation of the wire can change when connecting.
+    /// If <shared> is True connection is performed only when
+    /// adjacent wires share the same vertex.
+    /// If <shared> is False connection is performed only when
+    /// ends of adjacent wires are at distance less than <toler>.
+    /// Map <vertices> stores the correspondence between original
+    /// end vertices of the wires and new connecting vertices.
+    pub fn connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape_datamapofshapeshape(
+        iwires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        toler: f64,
+        shared: bool,
+        owires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        vertices: std::pin::Pin<&mut crate::ffi::TopTools_DataMapOfShapeShape>,
+    ) {
+        crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape_datamapofshapeshape(iwires, toler, shared, owires, vertices)
     }
 
     /// Extracts closed sub-wires out of <wires> and adds them
