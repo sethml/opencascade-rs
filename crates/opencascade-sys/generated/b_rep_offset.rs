@@ -70,6 +70,14 @@ impl MakeOffset {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepOffset_MakeOffset_ctor()
     }
+
+    pub fn new_shape_real2(
+        S: &crate::ffi::TopoDS_Shape,
+        Offset: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffset_MakeOffset_ctor_shape_real2(S, Offset, Tol)
+    }
 }
 
 // ========================
@@ -138,6 +146,82 @@ pub use crate::ffi::BRepOffset_Offset as Offset;
 impl Offset {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepOffset_Offset_ctor()
+    }
+
+    pub fn new_face_real_bool(
+        Face: &crate::ffi::TopoDS_Face,
+        Offset: f64,
+        OffsetOutside: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffset_Offset_ctor_face_real_bool(Face, Offset, OffsetOutside)
+    }
+
+    /// This method will be  called when you want to share
+    /// the  edges  soon generated  from  an other  face.
+    /// e.g. when two faces are  tangents the common  edge
+    /// will generate only one edge ( no pipe).
+    ///
+    /// The Map  will be fill  as  follow:
+    ///
+    /// Created(E) = E'
+    /// with: E  = an edge of <Face>
+    /// E' = the image of E in the offsetting  of
+    /// another  face  sharing E  with a
+    /// continuity at least G1
+    pub fn new_face_real_datamapofshapeshape_bool(
+        Face: &crate::ffi::TopoDS_Face,
+        Offset: f64,
+        Created: &crate::ffi::TopTools_DataMapOfShapeShape,
+        OffsetOutside: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool(
+            Face,
+            Offset,
+            Created,
+            OffsetOutside,
+        )
+    }
+
+    pub fn new_edge3_real_bool_real(
+        Path: &crate::ffi::TopoDS_Edge,
+        Edge1: &crate::ffi::TopoDS_Edge,
+        Edge2: &crate::ffi::TopoDS_Edge,
+        Offset: f64,
+        Polynomial: bool,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffset_Offset_ctor_edge3_real_bool_real(
+            Path, Edge1, Edge2, Offset, Polynomial, Tol,
+        )
+    }
+
+    pub fn new_edge3_real_edge2_bool_real(
+        Path: &crate::ffi::TopoDS_Edge,
+        Edge1: &crate::ffi::TopoDS_Edge,
+        Edge2: &crate::ffi::TopoDS_Edge,
+        Offset: f64,
+        FirstEdge: &crate::ffi::TopoDS_Edge,
+        LastEdge: &crate::ffi::TopoDS_Edge,
+        Polynomial: bool,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffset_Offset_ctor_edge3_real_edge2_bool_real(
+            Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol,
+        )
+    }
+
+    /// Tol and Conti are only used if Polynomial is True
+    /// (Used to perform the approximation)
+    pub fn new_vertex_listofshape_real_bool_real(
+        Vertex: &crate::ffi::TopoDS_Vertex,
+        LEdge: &crate::ffi::TopTools_ListOfShape,
+        Offset: f64,
+        Polynomial: bool,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real(
+            Vertex, LEdge, Offset, Polynomial, Tol,
+        )
     }
 
     pub fn generated(

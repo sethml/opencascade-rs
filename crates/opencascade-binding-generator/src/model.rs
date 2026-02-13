@@ -335,6 +335,8 @@ pub struct Param {
     pub name: String,
     /// Parameter type
     pub ty: Type,
+    /// Whether this parameter has a default value in C++
+    pub has_default: bool,
 }
 
 /// Representation of C++ types

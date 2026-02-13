@@ -4595,6 +4595,9 @@ inline const TopoDS_Shape& BRepFilletAPI_MakeChamfer_inherited_Shape(BRepFilletA
 // BRepFilletAPI_MakeFillet wrappers
 // ========================
 
+inline std::unique_ptr<BRepFilletAPI_MakeFillet> BRepFilletAPI_MakeFillet_ctor_shape(const TopoDS_Shape& S) {
+    return std::make_unique<BRepFilletAPI_MakeFillet>(S);
+}
 inline std::unique_ptr<opencascade::handle<Law_Function>> BRepFilletAPI_MakeFillet_get_law(BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, const TopoDS_Edge& E) {
     return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
 }
@@ -4692,6 +4695,12 @@ inline bool BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(BRepFilletAPI_MakeFil
 
 inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor() {
     return std::make_unique<BRepOffsetAPI_MakeOffset>();
+}
+inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_face(const TopoDS_Face& Spine) {
+    return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine);
+}
+inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_wire(const TopoDS_Wire& Spine) {
+    return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine);
 }
 inline std::unique_ptr<TopoDS_Face> BRepOffsetAPI_MakeOffset_convert_face(const TopoDS_Face& theFace, Standard_Real theAngleTolerance) {
     return std::make_unique<TopoDS_Face>(BRepOffsetAPI_MakeOffset::ConvertFace(theFace, theAngleTolerance));
@@ -6909,6 +6918,15 @@ inline std::unique_ptr<GeomAPI_Interpolate> GeomAPI_Interpolate_ctor_handleharra
 inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor() {
     return std::make_unique<GeomAPI_PointsToBSpline>();
 }
+inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2(const TColgp_Array1OfPnt& Points, Standard_Integer DegMin, Standard_Integer DegMax) {
+    return std::make_unique<GeomAPI_PointsToBSpline>(Points, DegMin, DegMax);
+}
+inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2(const TColgp_Array1OfPnt& Points, const TColStd_Array1OfReal& Parameters, Standard_Integer DegMin, Standard_Integer DegMax) {
+    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Parameters, DegMin, DegMax);
+}
+inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int(const TColgp_Array1OfPnt& Points, Standard_Real Weight1, Standard_Real Weight2, Standard_Real Weight3, Standard_Integer DegMax) {
+    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Weight1, Weight2, Weight3, DegMax);
+}
 
 // ========================
 // GeomAPI_ProjectPointOnCurve wrappers
@@ -6936,6 +6954,18 @@ inline std::unique_ptr<gp_Pnt> GeomAPI_ProjectPointOnCurve_nearest_point(const G
 
 inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor() {
     return std::make_unique<GeomAPI_ProjectPointOnSurf>();
+}
+inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface) {
+    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface);
+}
+inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Tolerance) {
+    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Tolerance);
+}
+inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real Tolerance) {
+    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Umin, Usup, Vmin, Vsup, Tolerance);
+}
+inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup) {
+    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Umin, Usup, Vmin, Vsup);
 }
 inline std::unique_ptr<gp_Pnt> GeomAPI_ProjectPointOnSurf_point(const GeomAPI_ProjectPointOnSurf& self_, Standard_Integer Index) {
     return std::make_unique<gp_Pnt>(self_.Point(Index));
@@ -8494,6 +8524,12 @@ inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor_pnt_curve_real(const gp
 inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor() {
     return std::make_unique<Extrema_ExtPS>();
 }
+inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real2(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real TolU, Standard_Real TolV) {
+    return std::make_unique<Extrema_ExtPS>(P, S, TolU, TolV);
+}
+inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real6(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real Uinf, Standard_Real Usup, Standard_Real Vinf, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV) {
+    return std::make_unique<Extrema_ExtPS>(P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV);
+}
 
 // ========================
 // Extrema_GenExtPS wrappers
@@ -8501,6 +8537,12 @@ inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor() {
 
 inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor() {
     return std::make_unique<Extrema_GenExtPS>();
+}
+inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real2(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real TolU, Standard_Real TolV) {
+    return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, TolU, TolV);
+}
+inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real6(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV) {
+    return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV);
 }
 
 // ========================
@@ -8879,6 +8921,9 @@ inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_asc
 }
 inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_asciistring2(const TCollection_AsciiString& astring, const TCollection_AsciiString& message) {
     return std::make_unique<TCollection_AsciiString>(astring, message);
+}
+inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_extendedstring(const TCollection_ExtendedString& astring) {
+    return std::make_unique<TCollection_AsciiString>(astring);
 }
 inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_cat_int(const TCollection_AsciiString& self_, Standard_Integer other) {
     return std::make_unique<TCollection_AsciiString>(self_.Cat(other));
@@ -11696,6 +11741,9 @@ inline const TopoDS_Shape& BRepOffsetAPI_MakeOffsetShape_inherited_Shape(BRepOff
 inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor() {
     return std::make_unique<BRepOffset_MakeOffset>();
 }
+inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol) {
+    return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol);
+}
 
 // ========================
 // BRepOffset_MakeSimpleOffset wrappers
@@ -11831,6 +11879,21 @@ inline std::unique_ptr<BRepOffset_MakeLoops> BRepOffset_MakeLoops_ctor() {
 inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor() {
     return std::make_unique<BRepOffset_Offset>();
 }
+inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_face_real_bool(const TopoDS_Face& Face, Standard_Real Offset, Standard_Boolean OffsetOutside) {
+    return std::make_unique<BRepOffset_Offset>(Face, Offset, OffsetOutside);
+}
+inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool(const TopoDS_Face& Face, Standard_Real Offset, const TopTools_DataMapOfShapeShape& Created, Standard_Boolean OffsetOutside) {
+    return std::make_unique<BRepOffset_Offset>(Face, Offset, Created, OffsetOutside);
+}
+inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_bool_real(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol) {
+    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, Polynomial, Tol);
+}
+inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_edge2_bool_real(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, const TopoDS_Edge& FirstEdge, const TopoDS_Edge& LastEdge, Standard_Boolean Polynomial, Standard_Real Tol) {
+    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol);
+}
+inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real(const TopoDS_Vertex& Vertex, const TopTools_ListOfShape& LEdge, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol) {
+    return std::make_unique<BRepOffset_Offset>(Vertex, LEdge, Offset, Polynomial, Tol);
+}
 inline std::unique_ptr<TopoDS_Shape> BRepOffset_Offset_generated(const BRepOffset_Offset& self_, const TopoDS_Shape& Shape) {
     return std::make_unique<TopoDS_Shape>(self_.Generated(Shape));
 }
@@ -11898,6 +11961,9 @@ inline std::unique_ptr<TopoDS_Shape> BRepFill_Section_modified_shape(const BRepF
 inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor() {
     return std::make_unique<BRepFill_Pipe>();
 }
+inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor_wire_shape(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile) {
+    return std::make_unique<BRepFill_Pipe>(Spine, Profile);
+}
 inline std::unique_ptr<TopoDS_Face> BRepFill_Pipe_face(BRepFill_Pipe& self_, const TopoDS_Edge& ESpine, const TopoDS_Edge& EProfile) {
     return std::make_unique<TopoDS_Face>(self_.Face(ESpine, EProfile));
 }
@@ -11917,6 +11983,9 @@ inline std::unique_ptr<TopoDS_Wire> BRepFill_Pipe_pipe_line(BRepFill_Pipe& self_
 
 inline std::unique_ptr<BRepFill_OffsetWire> BRepFill_OffsetWire_ctor() {
     return std::make_unique<BRepFill_OffsetWire>();
+}
+inline std::unique_ptr<BRepFill_OffsetWire> BRepFill_OffsetWire_ctor_face(const TopoDS_Face& Spine) {
+    return std::make_unique<BRepFill_OffsetWire>(Spine);
 }
 
 // ========================
@@ -12033,6 +12102,9 @@ inline std::unique_ptr<TopoDS_Face> ChFi2d_Builder_result(const ChFi2d_Builder& 
 // ChFi3d_FilBuilder wrappers
 // ========================
 
+inline std::unique_ptr<ChFi3d_FilBuilder> ChFi3d_FilBuilder_ctor_shape(const TopoDS_Shape& S) {
+    return std::make_unique<ChFi3d_FilBuilder>(S);
+}
 inline std::unique_ptr<opencascade::handle<Law_Function>> ChFi3d_FilBuilder_get_law(ChFi3d_FilBuilder& self_, Standard_Integer IC, const TopoDS_Edge& E) {
     return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
 }
@@ -14278,13 +14350,13 @@ inline TopoDS_Compound& TopoDS_compound_mut(TopoDS_Shape& theShape) { return Top
 // Collection type wrappers
 // ========================
 
-#include <TopTools_SequenceOfShape.hxx>
+#include <TopTools_DataMapOfShapeShape.hxx>
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#include <TopoDS_Shape.hxx>
+#include <TopTools_IndexedMapOfShape.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <TopTools_MapOfShape.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
+#include <TopTools_SequenceOfShape.hxx>
+#include <TopoDS_Shape.hxx>
 
 // ========================
 // TopTools_DataMapOfShapeShape - Key-value map

@@ -151,6 +151,57 @@ impl PointsToBSpline {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_PointsToBSpline_ctor()
     }
+
+    /// Approximate  a BSpline  Curve passing  through  an
+    /// array of  Point.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    pub fn new_array1ofpnt_int2(
+        Points: &crate::ffi::TColgp_Array1OfPnt,
+        DegMin: i32,
+        DegMax: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2(Points, DegMin, DegMax)
+    }
+
+    /// Approximate  a  BSpline  Curve  passing through an
+    /// array of Point,  which parameters are given by the
+    /// array <Parameters>.
+    /// The resulting  BSpline   will have the   following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    pub fn new_array1ofpnt_array1ofreal_int2(
+        Points: &crate::ffi::TColgp_Array1OfPnt,
+        Parameters: &crate::ffi::TColStd_Array1OfReal,
+        DegMin: i32,
+        DegMax: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2(
+            Points, Parameters, DegMin, DegMax,
+        )
+    }
+
+    /// Approximate a BSpline Curve  passing through an
+    /// array of Point using variational smoothing algorithm,
+    /// which tries to minimize additional criterium:
+    /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
+    pub fn new_array1ofpnt_real3_int(
+        Points: &crate::ffi::TColgp_Array1OfPnt,
+        Weight1: f64,
+        Weight2: f64,
+        Weight3: f64,
+        DegMax: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int(
+            Points, Weight1, Weight2, Weight3, DegMax,
+        )
+    }
 }
 
 // ========================
@@ -218,6 +269,57 @@ impl ProjectPointOnSurf {
     /// Init function for further initialization.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_ProjectPointOnSurf_ctor()
+    }
+
+    /// Create the projection  of a point <P> on a surface
+    /// <Surface>
+    pub fn new_pnt_handlesurface(
+        P: &crate::ffi::gp_Pnt,
+        Surface: &crate::ffi::HandleGeomSurface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface(P, Surface)
+    }
+
+    /// Create the projection  of a point <P> on a surface
+    /// <Surface>
+    /// Create the projection of a point <P>  on a surface
+    /// <Surface>. The solution are computed in the domain
+    /// [Umin,Usup] [Vmin,Vsup] of the surface.
+    pub fn new_pnt_handlesurface_real(
+        P: &crate::ffi::gp_Pnt,
+        Surface: &crate::ffi::HandleGeomSurface,
+        Tolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real(P, Surface, Tolerance)
+    }
+
+    pub fn new_pnt_handlesurface_real5(
+        P: &crate::ffi::gp_Pnt,
+        Surface: &crate::ffi::HandleGeomSurface,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+        Tolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5(
+            P, Surface, Umin, Usup, Vmin, Vsup, Tolerance,
+        )
+    }
+
+    /// Init the projection  of a point <P> on a surface
+    /// <Surface>
+    pub fn new_pnt_handlesurface_real4(
+        P: &crate::ffi::gp_Pnt,
+        Surface: &crate::ffi::HandleGeomSurface,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4(
+            P, Surface, Umin, Usup, Vmin, Vsup,
+        )
     }
 
     /// Returns the orthogonal projection

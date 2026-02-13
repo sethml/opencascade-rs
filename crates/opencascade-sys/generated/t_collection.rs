@@ -76,6 +76,16 @@ impl AsciiString {
         crate::ffi::TCollection_AsciiString_ctor_asciistring2(astring, message)
     }
 
+    /// Creation by converting an extended string to an ascii string.
+    /// If replaceNonAscii is non-null character, it will be used
+    /// in place of any non-ascii character found in the source string.
+    /// Otherwise, creates UTF-8 unicode string.
+    pub fn new_extendedstring(
+        astring: &crate::ffi::TCollection_ExtendedString,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_AsciiString_ctor_extendedstring(astring)
+    }
+
     /// Appends <other>  to me. This is an unary operator.
     /// ex: aString += "Dummy"
     /// To catenate more than one CString, you must put a

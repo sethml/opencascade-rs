@@ -107,11 +107,9 @@ These are CXX or generator limitations causing methods to be stubbed in the `ope
 
 Synthetic default constructors are now generated for classes that have no explicit constructor declarations and are not effectively abstract. Abstract detection walks the full inheritance hierarchy via `is_effectively_abstract()` in `bindings.rs`, collecting pure virtual methods from all ancestors and checking they are overridden. Classes with any explicit constructor (public, protected, or private) do not get synthetic constructors since C++ won't generate an implicit default in that case. `BRep_Builder`, `TopoDS_Builder`, and ~30 other classes now have constructors.
 
-### 2. Constructors with default enum parameters skipped
+### 2. ~~Constructors with default enum parameters skipped~~ FIXED
 
-`BRepFilletAPI_MakeFillet(const TopoDS_Shape&, ChFi3d_FilletShape FShape = ChFi3d_Rational)` -- generator skips because it can't handle default enum values. Blocks fillet operations in `solid.rs`.
-
-**Fix needed:** Either handle default params or generate explicit overloads without the defaulted enum parameter.
+The `Param` struct now tracks `has_default: bool` by inspecting libclang AST children of each ParmDecl — expression nodes (`DeclRefExpr`, `UnexposedExpr`, `IntegerLiteral`, etc.) indicate defaults, while `TypeRef`/`NamespaceRef`/`TemplateRef` are just type references. When a constructor is filtered out due to enum/class/handle params, `compute_constructor_bindings()` tries trimming defaulted params from the right until the remaining params pass all filters. The C++ wrapper omits those args, letting C++ fill in the defaults. Classes like `BRepFilletAPI_MakeFillet`, `BRepOffsetAPI_MakeOffset`, `GeomAPI_PointsToBSpline`, `Extrema_ExtPS`, and ~20 others now have constructors.
 
 ### 3. TColgp array constructors not generated
 

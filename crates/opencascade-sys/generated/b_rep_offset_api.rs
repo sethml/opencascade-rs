@@ -24,6 +24,16 @@ impl MakeOffset {
         crate::ffi::BRepOffsetAPI_MakeOffset_ctor()
     }
 
+    /// Constructs an algorithm for creating an algorithm
+    /// to build parallels to the spine Spine
+    pub fn new_face(Spine: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_face(Spine)
+    }
+
+    pub fn new_wire(Spine: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_wire(Spine)
+    }
+
     /// Converts each wire of the face into contour consisting only of
     /// arcs and segments. New 3D curves are built too.
     pub fn convert_face(

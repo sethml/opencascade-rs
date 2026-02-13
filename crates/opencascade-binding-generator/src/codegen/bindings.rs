@@ -5,7 +5,7 @@
 //! ffi.rs, wrappers.hxx, and per-module re-exports consume this struct
 //! without re-deriving any decisions.
 
-use crate::model::{Constructor, Method, ParsedClass, StaticMethod, Type};
+use crate::model::{Constructor, Method, Param, ParsedClass, StaticMethod, Type};
 use crate::module_graph;
 use crate::resolver::{self, SymbolTable};
 use crate::type_mapping::{self, map_return_type_in_context, map_type_in_context, TypeContext};
@@ -1002,6 +1002,70 @@ pub fn compute_class_bindings(
 
 // ── Constructor bindings ────────────────────────────────────────────────────
 
+/// A constructor, possibly with trailing defaulted params trimmed.
+struct TrimmedConstructor<'a> {
+    original: &'a Constructor,
+    /// How many params to include (may be less than original.params.len())
+    trimmed_param_count: usize,
+}
+
+/// Check if a slice of params passes all bindability filters.
+fn is_params_bindable(
+    params: &[Param],
+    all_enum_names: &HashSet<String>,
+    handle_able_classes: &HashSet<String>,
+) -> bool {
+    if params
+        .iter()
+        .any(|p| matches!(&p.ty, Type::Class(_) | Type::Handle(_)))
+    {
+        return false;
+    }
+    if params.iter().any(|p| p.ty.is_unbindable()) {
+        return false;
+    }
+    if resolver::params_use_enum(params, all_enum_names) {
+        return false;
+    }
+    if params
+        .iter()
+        .any(|p| param_uses_unknown_handle(&p.ty, handle_able_classes))
+    {
+        return false;
+    }
+    true
+}
+
+/// Compute overload suffix for a param slice (used for trimmed constructors).
+fn overload_suffix_for_params(params: &[Param]) -> String {
+    if params.is_empty() {
+        return String::new();
+    }
+
+    let type_names: Vec<String> = params
+        .iter()
+        .map(|p| p.ty.short_name().to_lowercase())
+        .collect();
+
+    let mut parts: Vec<String> = Vec::new();
+    let mut i = 0;
+    while i < type_names.len() {
+        let current = &type_names[i];
+        let mut count = 1;
+        while i + count < type_names.len() && &type_names[i + count] == current {
+            count += 1;
+        }
+        if count > 1 {
+            parts.push(format!("{}{}", current, count));
+        } else {
+            parts.push(current.clone());
+        }
+        i += count;
+    }
+
+    format!("_{}", parts.join("_"))
+}
+
 fn compute_constructor_bindings(
     class: &ParsedClass,
     ffi_ctx: &TypeContext,
@@ -1010,18 +1074,71 @@ fn compute_constructor_bindings(
     let cpp_name = &class.name;
     let all_enum_names = ffi_ctx.all_enums;
 
-    let bindable_ctors: Vec<&Constructor> = class
+    // Collect directly bindable constructors
+    let mut bindable_ctors: Vec<TrimmedConstructor> = class
         .constructors
         .iter()
         .filter(|c| is_constructor_bindable(c, all_enum_names, handle_able_classes))
+        .map(|c| TrimmedConstructor {
+            original: c,
+            trimmed_param_count: c.params.len(),
+        })
         .collect();
+
+    // For constructors that failed binding, try trimming defaulted trailing params
+    // that are unbindable (enums, by-value classes/handles). C++ requires defaults
+    // contiguous from the right, so we strip from the end until the remaining
+    // params pass the filter.
+    for ctor in &class.constructors {
+        if is_constructor_bindable(ctor, all_enum_names, handle_able_classes) {
+            continue; // Already included
+        }
+        if ctor.has_unbindable_types() {
+            continue; // Can't fix by trimming
+        }
+
+        // Try trimming from the end: find the rightmost non-default param
+        // that still has issues, and see if trimming past it helps.
+        let mut trim_to = ctor.params.len();
+        while trim_to > 0 {
+            let last_param = &ctor.params[trim_to - 1];
+            if !last_param.has_default {
+                break; // Can't trim non-default params
+            }
+            trim_to -= 1;
+
+            // Check if the trimmed constructor would be bindable
+            let trimmed_params = &ctor.params[..trim_to];
+            if is_params_bindable(trimmed_params, all_enum_names, handle_able_classes) {
+                // Check it's not a duplicate of an existing binding
+                let already_exists = bindable_ctors.iter().any(|existing| {
+                    existing.trimmed_param_count == trim_to
+                        && existing
+                            .original
+                            .params
+                            .iter()
+                            .take(trim_to)
+                            .zip(trimmed_params.iter())
+                            .all(|(a, b)| a.ty == b.ty)
+                });
+                if !already_exists {
+                    bindable_ctors.push(TrimmedConstructor {
+                        original: ctor,
+                        trimmed_param_count: trim_to,
+                    });
+                }
+                break;
+            }
+        }
+    }
 
     let mut ctor_names: HashMap<String, usize> = HashMap::new();
 
     bindable_ctors
         .iter()
-        .map(|ctor| {
-            let base_suffix = ctor.overload_suffix();
+        .map(|trimmed| {
+            let params_slice = &trimmed.original.params[..trimmed.trimmed_param_count];
+            let base_suffix = overload_suffix_for_params(params_slice);
             let method_name = if base_suffix.is_empty() {
                 "new".to_string()
             } else {
@@ -1044,14 +1161,12 @@ fn compute_constructor_bindings(
             };
             let ffi_fn_name = format!("{}_{}", cpp_name, ffi_suffix);
 
-            let params: Vec<ParamBinding> = ctor
-                .params
+            let params: Vec<ParamBinding> = params_slice
                 .iter()
                 .map(|p| build_param_binding(&p.name, &p.ty, ffi_ctx))
                 .collect();
 
-            let cpp_arg_exprs: Vec<String> = ctor
-                .params
+            let cpp_arg_exprs: Vec<String> = params_slice
                 .iter()
                 .map(|p| param_to_cpp_arg(&p.name, &p.ty))
                 .collect();
@@ -1061,8 +1176,8 @@ fn compute_constructor_bindings(
                 impl_method_name,
                 params,
                 cpp_arg_exprs,
-                doc_comment: ctor.comment.clone(),
-                source_line: ctor.source_line,
+                doc_comment: trimmed.original.comment.clone(),
+                source_line: trimmed.original.source_line,
             }
         })
         .collect()
@@ -2268,6 +2383,7 @@ mod tests {
                 params: vec![Param {
                     name: "P".to_string(),
                     ty: Type::ConstRef(Box::new(Type::Class("gp_Pnt".to_string()))),
+                    has_default: false,
                 }],
                 return_type: None,
                 source_line: Some(10),
@@ -2279,6 +2395,7 @@ mod tests {
                 params: vec![Param {
                     name: "A1".to_string(),
                     ty: Type::ConstRef(Box::new(Type::Class("gp_Ax1".to_string()))),
+                    has_default: false,
                 }],
                 return_type: None,
                 source_line: Some(20),

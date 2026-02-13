@@ -530,9 +530,11 @@ fn parse_function(entity: &Entity, namespace: &str, source_header: &str, verbose
     for arg in entity.get_arguments().unwrap_or_default() {
         let param_name = arg.get_name().unwrap_or_else(|| format!("arg{}", params.len()));
         if let Some(param_type) = arg.get_type() {
+            let has_default = !arg.get_children().is_empty();
             params.push(Param {
                 name: param_name,
                 ty: parse_type(&param_type),
+                has_default,
             });
         }
     }
@@ -698,7 +700,10 @@ fn parse_constructor(entity: &Entity, verbose: bool) -> Option<Constructor> {
     if verbose {
         let param_str = params
             .iter()
-            .map(|p| format!("{}: {:?}", p.name, p.ty))
+            .map(|p| {
+                let default_str = if p.has_default { " [default]" } else { "" };
+                format!("{}: {:?}{}", p.name, p.ty, default_str)
+            })
             .collect::<Vec<_>>()
             .join(", ");
         println!("    Constructor({})", param_str);
@@ -770,9 +775,20 @@ fn parse_params(entity: &Entity) -> Vec<Param> {
         .filter_map(|(i, param)| {
             let name = param.get_name().unwrap_or_else(|| format!("arg{}", i));
             let param_type = param.get_type()?;
+            // Detect default values: a ParmDecl has a default if it has expression
+            // children (DeclRefExpr, UnexposedExpr, IntegerLiteral, etc.).
+            // TypeRef, NamespaceRef, TemplateRef are just type-related and don't
+            // indicate defaults.
+            let has_default = param.get_children().iter().any(|c| {
+                !matches!(
+                    c.get_kind(),
+                    EntityKind::TypeRef | EntityKind::NamespaceRef | EntityKind::TemplateRef
+                )
+            });
             Some(Param {
                 name,
                 ty: parse_type(&param_type),
+                has_default,
             })
         })
         .collect()

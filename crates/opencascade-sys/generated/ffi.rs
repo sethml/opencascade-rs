@@ -13581,6 +13581,19 @@ mod ffi {
         /// -   building the fillets and constructing the resulting shape, and
         /// -   consulting the result.
         type BRepFilletAPI_MakeFillet;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:61 - `BRepFilletAPI_MakeFillet::BRepFilletAPI_MakeFillet()`
+        ///
+        /// Initializes   the computation    of   the  fillets.
+        /// <FShape> sets   the type   of fillet  surface. The
+        /// default value is ChFi3d_Rational (classical  nurbs
+        /// representation of  circles).   ChFi3d_QuasiAngular
+        /// corresponds to  a  nurbs representation of circles
+        /// which   parameterisation matches  the  circle one.
+        /// ChFi3d_Polynomial  corresponds to  a    polynomial
+        /// representation of circles.
+        fn BRepFilletAPI_MakeFillet_ctor_shape(
+            S: &TopoDS_Shape,
+        ) -> UniquePtr<BRepFilletAPI_MakeFillet>;
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:64 - `BRepFilletAPI_MakeFillet::SetParams()`
         #[cxx_name = "SetParams"]
         fn set_params(
@@ -14335,6 +14348,17 @@ mod ffi {
         ///
         /// Constructs an algorithm for creating an empty offset
         fn BRepOffsetAPI_MakeOffset_ctor() -> UniquePtr<BRepOffsetAPI_MakeOffset>;
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:46 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+        ///
+        /// Constructs an algorithm for creating an algorithm
+        /// to build parallels to the spine Spine
+        fn BRepOffsetAPI_MakeOffset_ctor_face(
+            Spine: &TopoDS_Face,
+        ) -> UniquePtr<BRepOffsetAPI_MakeOffset>;
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:62 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+        fn BRepOffsetAPI_MakeOffset_ctor_wire(
+            Spine: &TopoDS_Wire,
+        ) -> UniquePtr<BRepOffsetAPI_MakeOffset>;
         /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:73 - `BRepOffsetAPI_MakeOffset::SetApprox()`
         ///
         /// Set approximation flag
@@ -21586,6 +21610,50 @@ mod ffi {
         /// Constructs an empty approximation algorithm.
         /// Use an Init function to define and build the BSpline curve.
         fn GeomAPI_PointsToBSpline_ctor() -> UniquePtr<GeomAPI_PointsToBSpline>;
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:54 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
+        ///
+        /// Approximate  a BSpline  Curve passing  through  an
+        /// array of  Point.  The resulting BSpline will  have
+        /// the following properties:
+        /// 1- his degree will be in the range [Degmin,Degmax]
+        /// 2- his  continuity will be  at  least <Continuity>
+        /// 3- the distance from the point <Points> to the
+        /// BSpline will be lower to Tol3D
+        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2(
+            Points: &TColgp_Array1OfPnt,
+            DegMin: i32,
+            DegMax: i32,
+        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:83 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
+        ///
+        /// Approximate  a  BSpline  Curve  passing through an
+        /// array of Point,  which parameters are given by the
+        /// array <Parameters>.
+        /// The resulting  BSpline   will have the   following
+        /// properties:
+        /// 1- his degree will be in the range [Degmin,Degmax]
+        /// 2- his  continuity will be  at  least <Continuity>
+        /// 3- the distance from the point <Points> to the
+        /// BSpline will be lower to Tol3D
+        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2(
+            Points: &TColgp_Array1OfPnt,
+            Parameters: &TColStd_Array1OfReal,
+            DegMin: i32,
+            DegMax: i32,
+        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:94 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
+        ///
+        /// Approximate a BSpline Curve  passing through an
+        /// array of Point using variational smoothing algorithm,
+        /// which tries to minimize additional criterium:
+        /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
+        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int(
+            Points: &TColgp_Array1OfPnt,
+            Weight1: f64,
+            Weight2: f64,
+            Weight3: f64,
+            DegMax: i32,
+        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
         /// **Source:** `GeomAPI_PointsToBSpline.hxx`:159 - `GeomAPI_PointsToBSpline::Curve()`
         ///
         /// Returns the computed BSpline curve.
@@ -21747,6 +21815,48 @@ mod ffi {
         /// Creates an empty object. Use the
         /// Init function for further initialization.
         fn GeomAPI_ProjectPointOnSurf_ctor() -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:45 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
+        ///
+        /// Create the projection  of a point <P> on a surface
+        /// <Surface>
+        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface(
+            P: &gp_Pnt,
+            Surface: &HandleGeomSurface,
+        ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:54 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
+        ///
+        /// Create the projection  of a point <P> on a surface
+        /// <Surface>
+        /// Create the projection of a point <P>  on a surface
+        /// <Surface>. The solution are computed in the domain
+        /// [Umin,Usup] [Vmin,Vsup] of the surface.
+        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real(
+            P: &gp_Pnt,
+            Surface: &HandleGeomSurface,
+            Tolerance: f64,
+        ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:59 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
+        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5(
+            P: &gp_Pnt,
+            Surface: &HandleGeomSurface,
+            Umin: f64,
+            Usup: f64,
+            Vmin: f64,
+            Vsup: f64,
+            Tolerance: f64,
+        ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:70 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
+        ///
+        /// Init the projection  of a point <P> on a surface
+        /// <Surface>
+        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4(
+            P: &gp_Pnt,
+            Surface: &HandleGeomSurface,
+            Umin: f64,
+            Usup: f64,
+            Vmin: f64,
+            Vsup: f64,
+        ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
         /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:134 - `GeomAPI_ProjectPointOnSurf::Perform()`
         ///
         /// Performs the projection of a point on the current surface.
@@ -27685,6 +27795,42 @@ mod ffi {
         type Extrema_ExtPS;
         /// **Source:** `Extrema_ExtPS.hxx`:46 - `Extrema_ExtPS::Extrema_ExtPS()`
         fn Extrema_ExtPS_ctor() -> UniquePtr<Extrema_ExtPS>;
+        /// **Source:** `Extrema_ExtPS.hxx`:56 - `Extrema_ExtPS::Extrema_ExtPS()`
+        ///
+        /// It calculates all the distances.
+        /// NbU and NbV are used to locate the close points
+        /// to find the zeros. They must be great enough
+        /// such that if there is N extrema, there will
+        /// be N extrema between P and the grid.
+        /// TolU et TolV are used to determine the conditions
+        /// to stop the iterations; at the iteration number n:
+        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
+        fn Extrema_ExtPS_ctor_pnt_surface_real2(
+            P: &gp_Pnt,
+            S: &Adaptor3d_Surface,
+            TolU: f64,
+            TolV: f64,
+        ) -> UniquePtr<Extrema_ExtPS>;
+        /// **Source:** `Extrema_ExtPS.hxx`:71 - `Extrema_ExtPS::Extrema_ExtPS()`
+        ///
+        /// It calculates all the distances.
+        /// NbU and NbV are used to locate the close points
+        /// to find the zeros. They must be great enough
+        /// such that if there is N extrema, there will
+        /// be N extrema between P and the grid.
+        /// TolU et TolV are used to determine the conditions
+        /// to stop the iterations; at the iteration number n:
+        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
+        fn Extrema_ExtPS_ctor_pnt_surface_real6(
+            P: &gp_Pnt,
+            S: &Adaptor3d_Surface,
+            Uinf: f64,
+            Usup: f64,
+            Vinf: f64,
+            Vsup: f64,
+            TolU: f64,
+            TolV: f64,
+        ) -> UniquePtr<Extrema_ExtPS>;
         /// **Source:** `Extrema_ExtPS.hxx`:83 - `Extrema_ExtPS::Initialize()`
         ///
         /// Initializes the fields of the algorithm.
@@ -27760,6 +27906,54 @@ mod ffi {
         ///
         /// Empty constructor.
         fn Extrema_GenExtPS_ctor() -> UniquePtr<Extrema_GenExtPS>;
+        /// **Source:** `Extrema_GenExtPS.hxx`:57 - `Extrema_GenExtPS::Extrema_GenExtPS()`
+        ///
+        /// It calculates all the distances.
+        /// The function F(u,v)=distance(P,S(u,v)) has an
+        /// extremum when gradient(F)=0. The algorithm searches
+        /// all the zeros inside the definition ranges of the
+        /// surface.
+        /// NbU and NbV are used to locate the close points
+        /// to find the zeros. They must be great enough
+        /// such that if there is N extrema, there will
+        /// be N extrema between P and the grid.
+        /// TolU et TolV are used to determine the conditions
+        /// to stop the iterations; at the iteration number n:
+        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
+        fn Extrema_GenExtPS_ctor_pnt_surface_int2_real2(
+            P: &gp_Pnt,
+            S: &Adaptor3d_Surface,
+            NbU: i32,
+            NbV: i32,
+            TolU: f64,
+            TolV: f64,
+        ) -> UniquePtr<Extrema_GenExtPS>;
+        /// **Source:** `Extrema_GenExtPS.hxx`:78 - `Extrema_GenExtPS::Extrema_GenExtPS()`
+        ///
+        /// It calculates all the distances.
+        /// The function F(u,v)=distance(P,S(u,v)) has an
+        /// extremum when gradient(F)=0. The algorithm searches
+        /// all the zeros inside the definition ranges of the
+        /// surface.
+        /// NbU and NbV are used to locate the close points
+        /// to find the zeros. They must be great enough
+        /// such that if there is N extrema, there will
+        /// be N extrema between P and the grid.
+        /// TolU et TolV are used to determine the conditions
+        /// to stop the iterations; at the iteration number n:
+        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
+        fn Extrema_GenExtPS_ctor_pnt_surface_int2_real6(
+            P: &gp_Pnt,
+            S: &Adaptor3d_Surface,
+            NbU: i32,
+            NbV: i32,
+            Umin: f64,
+            Usup: f64,
+            Vmin: f64,
+            Vsup: f64,
+            TolU: f64,
+            TolV: f64,
+        ) -> UniquePtr<Extrema_GenExtPS>;
         /// **Source:** `Extrema_GenExtPS.hxx`:91 - `Extrema_GenExtPS::Initialize()`
         #[cxx_name = "Initialize"]
         fn initialize_surface_int2_real2(
@@ -28946,6 +29140,15 @@ mod ffi {
         fn TCollection_AsciiString_ctor_asciistring2(
             astring: &TCollection_AsciiString,
             message: &TCollection_AsciiString,
+        ) -> UniquePtr<TCollection_AsciiString>;
+        /// **Source:** `TCollection_AsciiString.hxx`:101 - `TCollection_AsciiString::TCollection_AsciiString()`
+        ///
+        /// Creation by converting an extended string to an ascii string.
+        /// If replaceNonAscii is non-null character, it will be used
+        /// in place of any non-ascii character found in the source string.
+        /// Otherwise, creates UTF-8 unicode string.
+        fn TCollection_AsciiString_ctor_extendedstring(
+            astring: &TCollection_ExtendedString,
         ) -> UniquePtr<TCollection_AsciiString>;
         /// **Source:** `TCollection_AsciiString.hxx`:119 - `TCollection_AsciiString::AssignCat()`
         ///
@@ -38345,6 +38548,12 @@ mod ffi {
         type BRepOffset_MakeOffset;
         /// **Source:** `BRepOffset_MakeOffset.hxx`:48 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
         fn BRepOffset_MakeOffset_ctor() -> UniquePtr<BRepOffset_MakeOffset>;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:50 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
+        fn BRepOffset_MakeOffset_ctor_shape_real2(
+            S: &TopoDS_Shape,
+            Offset: f64,
+            Tol: f64,
+        ) -> UniquePtr<BRepOffset_MakeOffset>;
         /// **Source:** `BRepOffset_MakeOffset.hxx`:72 - `BRepOffset_MakeOffset::Clear()`
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut BRepOffset_MakeOffset>);
@@ -38884,6 +39093,63 @@ mod ffi {
         type BRepOffset_Offset;
         /// **Source:** `BRepOffset_Offset.hxx`:48 - `BRepOffset_Offset::BRepOffset_Offset()`
         fn BRepOffset_Offset_ctor() -> UniquePtr<BRepOffset_Offset>;
+        /// **Source:** `BRepOffset_Offset.hxx`:50 - `BRepOffset_Offset::BRepOffset_Offset()`
+        fn BRepOffset_Offset_ctor_face_real_bool(
+            Face: &TopoDS_Face,
+            Offset: f64,
+            OffsetOutside: bool,
+        ) -> UniquePtr<BRepOffset_Offset>;
+        /// **Source:** `BRepOffset_Offset.hxx`:67 - `BRepOffset_Offset::BRepOffset_Offset()`
+        ///
+        /// This method will be  called when you want to share
+        /// the  edges  soon generated  from  an other  face.
+        /// e.g. when two faces are  tangents the common  edge
+        /// will generate only one edge ( no pipe).
+        ///
+        /// The Map  will be fill  as  follow:
+        ///
+        /// Created(E) = E'
+        /// with: E  = an edge of <Face>
+        /// E' = the image of E in the offsetting  of
+        /// another  face  sharing E  with a
+        /// continuity at least G1
+        fn BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool(
+            Face: &TopoDS_Face,
+            Offset: f64,
+            Created: &TopTools_DataMapOfShapeShape,
+            OffsetOutside: bool,
+        ) -> UniquePtr<BRepOffset_Offset>;
+        /// **Source:** `BRepOffset_Offset.hxx`:73 - `BRepOffset_Offset::BRepOffset_Offset()`
+        fn BRepOffset_Offset_ctor_edge3_real_bool_real(
+            Path: &TopoDS_Edge,
+            Edge1: &TopoDS_Edge,
+            Edge2: &TopoDS_Edge,
+            Offset: f64,
+            Polynomial: bool,
+            Tol: f64,
+        ) -> UniquePtr<BRepOffset_Offset>;
+        /// **Source:** `BRepOffset_Offset.hxx`:81 - `BRepOffset_Offset::BRepOffset_Offset()`
+        fn BRepOffset_Offset_ctor_edge3_real_edge2_bool_real(
+            Path: &TopoDS_Edge,
+            Edge1: &TopoDS_Edge,
+            Edge2: &TopoDS_Edge,
+            Offset: f64,
+            FirstEdge: &TopoDS_Edge,
+            LastEdge: &TopoDS_Edge,
+            Polynomial: bool,
+            Tol: f64,
+        ) -> UniquePtr<BRepOffset_Offset>;
+        /// **Source:** `BRepOffset_Offset.hxx`:93 - `BRepOffset_Offset::BRepOffset_Offset()`
+        ///
+        /// Tol and Conti are only used if Polynomial is True
+        /// (Used to perform the approximation)
+        fn BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real(
+            Vertex: &TopoDS_Vertex,
+            LEdge: &TopTools_ListOfShape,
+            Offset: f64,
+            Polynomial: bool,
+            Tol: f64,
+        ) -> UniquePtr<BRepOffset_Offset>;
         /// **Source:** `BRepOffset_Offset.hxx`:139 - `BRepOffset_Offset::Init()`
         ///
         /// Only used in Rolling Ball. Pipe on Free Boundary
@@ -39180,6 +39446,11 @@ mod ffi {
         type BRepFill_Pipe;
         /// **Source:** `BRepFill_Pipe.hxx`:51 - `BRepFill_Pipe::BRepFill_Pipe()`
         fn BRepFill_Pipe_ctor() -> UniquePtr<BRepFill_Pipe>;
+        /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
+        fn BRepFill_Pipe_ctor_wire_shape(
+            Spine: &TopoDS_Wire,
+            Profile: &TopoDS_Shape,
+        ) -> UniquePtr<BRepFill_Pipe>;
         /// **Source:** `BRepFill_Pipe.hxx`:59 - `BRepFill_Pipe::Perform()`
         #[cxx_name = "Perform"]
         fn perform(
@@ -39262,6 +39533,8 @@ mod ffi {
         type BRepFill_OffsetWire;
         /// **Source:** `BRepFill_OffsetWire.hxx`:53 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
         fn BRepFill_OffsetWire_ctor() -> UniquePtr<BRepFill_OffsetWire>;
+        /// **Source:** `BRepFill_OffsetWire.hxx`:55 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
+        fn BRepFill_OffsetWire_ctor_face(Spine: &TopoDS_Face) -> UniquePtr<BRepFill_OffsetWire>;
         /// **Source:** `BRepFill_OffsetWire.hxx`:67 - `BRepFill_OffsetWire::Perform()`
         ///
         /// Performs  an OffsetWire at  an altitude <Alt> from
@@ -39735,6 +40008,8 @@ mod ffi {
         ///
         /// Tool  of  construction of  fillets 3d on  edges (on a solid).
         type ChFi3d_FilBuilder;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
+        fn ChFi3d_FilBuilder_ctor_shape(S: &TopoDS_Shape) -> UniquePtr<ChFi3d_FilBuilder>;
         /// **Source:** `ChFi3d_FilBuilder.hxx`:62 - `ChFi3d_FilBuilder::Add()`
         ///
         /// initialisation of  a contour with the first edge

@@ -143,6 +143,18 @@ impl MakeChamfer {
 pub use crate::ffi::BRepFilletAPI_MakeFillet as MakeFillet;
 
 impl MakeFillet {
+    /// Initializes   the computation    of   the  fillets.
+    /// <FShape> sets   the type   of fillet  surface. The
+    /// default value is ChFi3d_Rational (classical  nurbs
+    /// representation of  circles).   ChFi3d_QuasiAngular
+    /// corresponds to  a  nurbs representation of circles
+    /// which   parameterisation matches  the  circle one.
+    /// ChFi3d_Polynomial  corresponds to  a    polynomial
+    /// representation of circles.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFilletAPI_MakeFillet_ctor_shape(S)
+    }
+
     pub fn get_law(
         self: std::pin::Pin<&mut Self>,
         IC: i32,

@@ -28,6 +28,10 @@ impl OffsetWire {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepFill_OffsetWire_ctor()
     }
+
+    pub fn new_face(Spine: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_OffsetWire_ctor_face(Spine)
+    }
 }
 
 // ========================
@@ -45,6 +49,13 @@ pub use crate::ffi::BRepFill_Pipe as Pipe;
 impl Pipe {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepFill_Pipe_ctor()
+    }
+
+    pub fn new_wire_shape(
+        Spine: &crate::ffi::TopoDS_Wire,
+        Profile: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_Pipe_ctor_wire_shape(Spine, Profile)
     }
 
     /// Returns the face created from an edge of the spine

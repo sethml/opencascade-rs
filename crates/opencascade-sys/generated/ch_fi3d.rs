@@ -92,6 +92,10 @@ impl ChBuilder {
 pub use crate::ffi::ChFi3d_FilBuilder as FilBuilder;
 
 impl FilBuilder {
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ChFi3d_FilBuilder_ctor_shape(S)
+    }
+
     /// Returns the rule of  elementary  evolution of  the
     /// part to  variable vector framing E, returns a
     /// rule zero if E is flagged as edge constant.
