@@ -1311,6 +1311,9 @@ inline std::unique_ptr<gp_GTrsf> gp_GTrsf_powered(const gp_GTrsf& self_, Standar
 inline std::unique_ptr<gp_Trsf> gp_GTrsf_trsf(const gp_GTrsf& self_) {
     return std::make_unique<gp_Trsf>(self_.Trsf());
 }
+inline int32_t gp_GTrsf_form(const gp_GTrsf& self_) {
+    return static_cast<int32_t>(self_.Form());
+}
 inline std::unique_ptr<gp_GTrsf> gp_GTrsf_to_owned(const gp_GTrsf& self_) { return std::make_unique<gp_GTrsf>(self_); }
 
 // ========================
@@ -1340,6 +1343,9 @@ inline std::unique_ptr<gp_XY> gp_GTrsf2d_transformed(const gp_GTrsf2d& self_, co
 }
 inline std::unique_ptr<gp_Trsf2d> gp_GTrsf2d_trsf2d(const gp_GTrsf2d& self_) {
     return std::make_unique<gp_Trsf2d>(self_.Trsf2d());
+}
+inline int32_t gp_GTrsf2d_form(const gp_GTrsf2d& self_) {
+    return static_cast<int32_t>(self_.Form());
 }
 inline std::unique_ptr<gp_GTrsf2d> gp_GTrsf2d_to_owned(const gp_GTrsf2d& self_) { return std::make_unique<gp_GTrsf2d>(self_); }
 
@@ -1950,6 +1956,12 @@ inline std::unique_ptr<gp_Quaternion> gp_Quaternion_multiplied(const gp_Quaterni
 inline std::unique_ptr<gp_Vec> gp_Quaternion_multiply(const gp_Quaternion& self_, const gp_Vec& theVec) {
     return std::make_unique<gp_Vec>(self_.Multiply(theVec));
 }
+inline void gp_Quaternion_set_euler_angles(gp_Quaternion& self_, int32_t theOrder, Standard_Real theAlpha, Standard_Real theBeta, Standard_Real theGamma) {
+    self_.SetEulerAngles(static_cast<gp_EulerSequence>(theOrder), theAlpha, theBeta, theGamma);
+}
+inline void gp_Quaternion_get_euler_angles(const gp_Quaternion& self_, int32_t theOrder, Standard_Real& theAlpha, Standard_Real& theBeta, Standard_Real& theGamma) {
+    self_.GetEulerAngles(static_cast<gp_EulerSequence>(theOrder), theAlpha, theBeta, theGamma);
+}
 inline std::unique_ptr<gp_Quaternion> gp_Quaternion_to_owned(const gp_Quaternion& self_) { return std::make_unique<gp_Quaternion>(self_); }
 
 // ========================
@@ -2091,6 +2103,12 @@ inline std::unique_ptr<gp_Trsf> gp_Trsf_multiplied(const gp_Trsf& self_, const g
 inline std::unique_ptr<gp_Trsf> gp_Trsf_powered(const gp_Trsf& self_, Standard_Integer theN) {
     return std::make_unique<gp_Trsf>(self_.Powered(theN));
 }
+inline void gp_Trsf_set_form(gp_Trsf& self_, int32_t theP) {
+    self_.SetForm(static_cast<gp_TrsfForm>(theP));
+}
+inline int32_t gp_Trsf_form(const gp_Trsf& self_) {
+    return static_cast<int32_t>(self_.Form());
+}
 inline std::unique_ptr<gp_Trsf> gp_Trsf_to_owned(const gp_Trsf& self_) { return std::make_unique<gp_Trsf>(self_); }
 
 // ========================
@@ -2114,6 +2132,9 @@ inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_multiplied(const gp_Trsf2d& self_, c
 }
 inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_powered(gp_Trsf2d& self_, Standard_Integer theN) {
     return std::make_unique<gp_Trsf2d>(self_.Powered(theN));
+}
+inline int32_t gp_Trsf2d_form(const gp_Trsf2d& self_) {
+    return static_cast<int32_t>(self_.Form());
 }
 inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_to_owned(const gp_Trsf2d& self_) { return std::make_unique<gp_Trsf2d>(self_); }
 
@@ -2346,6 +2367,9 @@ inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_ctor() {
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_located(const TopoDS_Shape& self_, const TopLoc_Location& theLoc, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self_.Located(theLoc, theRaiseExc));
 }
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_oriented(const TopoDS_Shape& self_, int32_t theOrient) {
+    return std::make_unique<TopoDS_Shape>(self_.Oriented(static_cast<TopAbs_Orientation>(theOrient)));
+}
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_moved(const TopoDS_Shape& self_, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self_.Moved(thePosition, theRaiseExc));
 }
@@ -2355,8 +2379,23 @@ inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_reversed(const TopoDS_Shape& s
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_complemented(const TopoDS_Shape& self_) {
     return std::make_unique<TopoDS_Shape>(self_.Complemented());
 }
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_composed(const TopoDS_Shape& self_, int32_t theOrient) {
+    return std::make_unique<TopoDS_Shape>(self_.Composed(static_cast<TopAbs_Orientation>(theOrient)));
+}
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_empty_copied(const TopoDS_Shape& self_) {
     return std::make_unique<TopoDS_Shape>(self_.EmptyCopied());
+}
+inline int32_t TopoDS_Shape_orientation(const TopoDS_Shape& self_) {
+    return static_cast<int32_t>(self_.Orientation());
+}
+inline void TopoDS_Shape_orientation_orientation(TopoDS_Shape& self_, int32_t theOrient) {
+    self_.Orientation(static_cast<TopAbs_Orientation>(theOrient));
+}
+inline int32_t TopoDS_Shape_shape_type(const TopoDS_Shape& self_) {
+    return static_cast<int32_t>(self_.ShapeType());
+}
+inline void TopoDS_Shape_compose(TopoDS_Shape& self_, int32_t theOrient) {
+    self_.Compose(static_cast<TopAbs_Orientation>(theOrient));
 }
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_to_owned(const TopoDS_Shape& self_) { return std::make_unique<TopoDS_Shape>(self_); }
 
@@ -3088,6 +3127,12 @@ inline std::unique_ptr<TopoDS_Builder> TopoDS_Builder_to_owned(const TopoDS_Buil
 inline std::unique_ptr<TopExp_Explorer> TopExp_Explorer_ctor() {
     return std::make_unique<TopExp_Explorer>();
 }
+inline std::unique_ptr<TopExp_Explorer> TopExp_Explorer_ctor_shape_shapeenum2(const TopoDS_Shape& S, int32_t ToFind, int32_t ToAvoid) {
+    return std::make_unique<TopExp_Explorer>(S, static_cast<TopAbs_ShapeEnum>(ToFind), static_cast<TopAbs_ShapeEnum>(ToAvoid));
+}
+inline void TopExp_Explorer_init(TopExp_Explorer& self_, const TopoDS_Shape& S, int32_t ToFind, int32_t ToAvoid) {
+    self_.Init(S, static_cast<TopAbs_ShapeEnum>(ToFind), static_cast<TopAbs_ShapeEnum>(ToAvoid));
+}
 
 // ========================
 // TopExp wrappers
@@ -3096,11 +3141,20 @@ inline std::unique_ptr<TopExp_Explorer> TopExp_Explorer_ctor() {
 inline std::unique_ptr<TopExp> TopExp_ctor() {
     return std::make_unique<TopExp>();
 }
+inline void TopExp_map_shapes_shape_shapeenum_indexedmapofshape(const TopoDS_Shape& S, int32_t T, TopTools_IndexedMapOfShape& M) {
+    return TopExp::MapShapes(S, static_cast<TopAbs_ShapeEnum>(T), M);
+}
 inline void TopExp_map_shapes_shape_indexedmapofshape_bool2(const TopoDS_Shape& S, TopTools_IndexedMapOfShape& M, Standard_Boolean cumOri, Standard_Boolean cumLoc) {
     return TopExp::MapShapes(S, M, cumOri, cumLoc);
 }
 inline void TopExp_map_shapes_shape_mapofshape_bool2(const TopoDS_Shape& S, TopTools_MapOfShape& M, Standard_Boolean cumOri, Standard_Boolean cumLoc) {
     return TopExp::MapShapes(S, M, cumOri, cumLoc);
+}
+inline void TopExp_map_shapes_and_ancestors(const TopoDS_Shape& S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape& M) {
+    return TopExp::MapShapesAndAncestors(S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), M);
+}
+inline void TopExp_map_shapes_and_unique_ancestors(const TopoDS_Shape& S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape& M, Standard_Boolean useOrientation) {
+    return TopExp::MapShapesAndUniqueAncestors(S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), M, useOrientation);
 }
 inline std::unique_ptr<TopoDS_Vertex> TopExp_first_vertex(const TopoDS_Edge& E, Standard_Boolean CumOri) {
     return std::make_unique<TopoDS_Vertex>(TopExp::FirstVertex(E, CumOri));
@@ -3275,6 +3329,9 @@ inline std::unique_ptr<BRepBuilderAPI_MakeEdge> BRepBuilderAPI_MakeEdge_ctor_han
 inline std::unique_ptr<BRepBuilderAPI_MakeEdge> BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2(const opencascade::handle<Geom2d_Curve>& L, const opencascade::handle<Geom_Surface>& S, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2, Standard_Real p1, Standard_Real p2) {
     return std::make_unique<BRepBuilderAPI_MakeEdge>(L, S, V1, V2, p1, p2);
 }
+inline int32_t BRepBuilderAPI_MakeEdge_error(const BRepBuilderAPI_MakeEdge& self_) {
+    return static_cast<int32_t>(self_.Error());
+}
 inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command(const BRepBuilderAPI_MakeEdge& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeEdge& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
 inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeEdge& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
@@ -3367,6 +3424,9 @@ inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_han
 }
 inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_face_wire(const TopoDS_Face& F, const TopoDS_Wire& W) {
     return std::make_unique<BRepBuilderAPI_MakeFace>(F, W);
+}
+inline int32_t BRepBuilderAPI_MakeFace_error(const BRepBuilderAPI_MakeFace& self_) {
+    return static_cast<int32_t>(self_.Error());
 }
 inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command(const BRepBuilderAPI_MakeFace& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeFace& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
@@ -3493,6 +3553,9 @@ inline std::unique_ptr<BRepBuilderAPI_MakeWire> BRepBuilderAPI_MakeWire_ctor_wir
 }
 inline std::unique_ptr<BRepBuilderAPI_MakeWire> BRepBuilderAPI_MakeWire_ctor_wire_edge(const TopoDS_Wire& W, const TopoDS_Edge& E) {
     return std::make_unique<BRepBuilderAPI_MakeWire>(W, E);
+}
+inline int32_t BRepBuilderAPI_MakeWire_error(const BRepBuilderAPI_MakeWire& self_) {
+    return static_cast<int32_t>(self_.Error());
 }
 inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command(const BRepBuilderAPI_MakeWire& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeWire& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
@@ -3996,6 +4059,12 @@ inline std::unique_ptr<BRepAlgoAPI_BuilderAlgo> BRepAlgoAPI_BuilderAlgo_ctor_pav
 inline std::unique_ptr<opencascade::handle<BRepTools_History>> BRepAlgoAPI_BuilderAlgo_history(const BRepAlgoAPI_BuilderAlgo& self_) {
     return std::make_unique<opencascade::handle<BRepTools_History>>(self_.History());
 }
+inline void BRepAlgoAPI_BuilderAlgo_set_glue(BRepAlgoAPI_BuilderAlgo& self_, int32_t theGlue) {
+    self_.SetGlue(static_cast<BOPAlgo_GlueEnum>(theGlue));
+}
+inline int32_t BRepAlgoAPI_BuilderAlgo_glue(const BRepAlgoAPI_BuilderAlgo& self_) {
+    return static_cast<int32_t>(self_.Glue());
+}
 inline const BRepBuilderAPI_Command& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command(const BRepAlgoAPI_BuilderAlgo& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_BuilderAlgo& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
 inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_BuilderAlgo& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
@@ -4019,6 +4088,12 @@ inline std::unique_ptr<BRepAlgoAPI_BooleanOperation> BRepAlgoAPI_BooleanOperatio
 }
 inline std::unique_ptr<BRepAlgoAPI_BooleanOperation> BRepAlgoAPI_BooleanOperation_ctor_pavefiller(const BOPAlgo_PaveFiller& thePF) {
     return std::make_unique<BRepAlgoAPI_BooleanOperation>(thePF);
+}
+inline void BRepAlgoAPI_BooleanOperation_set_operation(BRepAlgoAPI_BooleanOperation& self_, int32_t theBOP) {
+    self_.SetOperation(static_cast<BOPAlgo_Operation>(theBOP));
+}
+inline int32_t BRepAlgoAPI_BooleanOperation_operation(const BRepAlgoAPI_BooleanOperation& self_) {
+    return static_cast<int32_t>(self_.Operation());
 }
 inline const BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo(const BRepAlgoAPI_BooleanOperation& self_) { return static_cast<const BRepAlgoAPI_BuilderAlgo&>(self_); }
 inline BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo_mut(BRepAlgoAPI_BooleanOperation& self_) { return static_cast<BRepAlgoAPI_BuilderAlgo&>(self_); }
@@ -4551,6 +4626,9 @@ inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeChamfer_last_vertex(cons
 inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_MakeChamfer_sect(const BRepFilletAPI_MakeChamfer& self_, Standard_Integer IC, Standard_Integer IS) {
     return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
 }
+inline void BRepFilletAPI_MakeChamfer_set_mode(BRepFilletAPI_MakeChamfer& self_, int32_t theMode) {
+    self_.SetMode(static_cast<ChFiDS_ChamfMode>(theMode));
+}
 inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeChamfer& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeChamfer& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
 inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeChamfer& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
@@ -4571,8 +4649,8 @@ inline const TopoDS_Shape& BRepFilletAPI_MakeChamfer_inherited_Shape(BRepFilletA
 // BRepFilletAPI_MakeFillet wrappers
 // ========================
 
-inline std::unique_ptr<BRepFilletAPI_MakeFillet> BRepFilletAPI_MakeFillet_ctor_shape(const TopoDS_Shape& S) {
-    return std::make_unique<BRepFilletAPI_MakeFillet>(S);
+inline std::unique_ptr<BRepFilletAPI_MakeFillet> BRepFilletAPI_MakeFillet_ctor_shape_filletshape(const TopoDS_Shape& S, int32_t FShape) {
+    return std::make_unique<BRepFilletAPI_MakeFillet>(S, static_cast<ChFi3d_FilletShape>(FShape));
 }
 inline std::unique_ptr<opencascade::handle<Law_Function>> BRepFilletAPI_MakeFillet_get_law(BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, const TopoDS_Edge& E) {
     return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
@@ -4594,6 +4672,18 @@ inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet_faulty_vertex(con
 }
 inline std::unique_ptr<TopoDS_Shape> BRepFilletAPI_MakeFillet_bad_shape(const BRepFilletAPI_MakeFillet& self_) {
     return std::make_unique<TopoDS_Shape>(self_.BadShape());
+}
+inline void BRepFilletAPI_MakeFillet_set_continuity(BRepFilletAPI_MakeFillet& self_, int32_t InternalContinuity, Standard_Real AngularTolerance) {
+    self_.SetContinuity(static_cast<GeomAbs_Shape>(InternalContinuity), AngularTolerance);
+}
+inline void BRepFilletAPI_MakeFillet_set_fillet_shape(BRepFilletAPI_MakeFillet& self_, int32_t FShape) {
+    self_.SetFilletShape(static_cast<ChFi3d_FilletShape>(FShape));
+}
+inline int32_t BRepFilletAPI_MakeFillet_get_fillet_shape(const BRepFilletAPI_MakeFillet& self_) {
+    return static_cast<int32_t>(self_.GetFilletShape());
+}
+inline int32_t BRepFilletAPI_MakeFillet_stripe_status(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC) {
+    return static_cast<int32_t>(self_.StripeStatus(IC));
 }
 inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeFillet& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeFillet& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
@@ -4645,6 +4735,9 @@ inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_modify_chamfer_ed
 inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet2d_remove_chamfer(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Chamfer) {
     return std::make_unique<TopoDS_Vertex>(self_.RemoveChamfer(Chamfer));
 }
+inline int32_t BRepFilletAPI_MakeFillet2d_status(const BRepFilletAPI_MakeFillet2d& self_) {
+    return static_cast<int32_t>(self_.Status());
+}
 inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeFillet2d& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeFillet2d& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
 inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeFillet2d& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
@@ -4672,11 +4765,17 @@ inline bool BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(BRepFilletAPI_MakeFil
 inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor() {
     return std::make_unique<BRepOffsetAPI_MakeOffset>();
 }
-inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_face(const TopoDS_Face& Spine) {
-    return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine);
+inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_face_jointype_bool(const TopoDS_Face& Spine, int32_t Join, Standard_Boolean IsOpenResult) {
+    return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine, static_cast<GeomAbs_JoinType>(Join), IsOpenResult);
 }
-inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_wire(const TopoDS_Wire& Spine) {
-    return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine);
+inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_wire_jointype_bool(const TopoDS_Wire& Spine, int32_t Join, Standard_Boolean IsOpenResult) {
+    return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine, static_cast<GeomAbs_JoinType>(Join), IsOpenResult);
+}
+inline void BRepOffsetAPI_MakeOffset_init_face_jointype_bool(BRepOffsetAPI_MakeOffset& self_, const TopoDS_Face& Spine, int32_t Join, Standard_Boolean IsOpenResult) {
+    self_.Init(Spine, static_cast<GeomAbs_JoinType>(Join), IsOpenResult);
+}
+inline void BRepOffsetAPI_MakeOffset_init_jointype_bool(BRepOffsetAPI_MakeOffset& self_, int32_t Join, Standard_Boolean IsOpenResult) {
+    self_.Init(static_cast<GeomAbs_JoinType>(Join), IsOpenResult);
 }
 inline std::unique_ptr<TopoDS_Face> BRepOffsetAPI_MakeOffset_convert_face(const TopoDS_Face& theFace, Standard_Real theAngleTolerance) {
     return std::make_unique<TopoDS_Face>(BRepOffsetAPI_MakeOffset::ConvertFace(theFace, theAngleTolerance));
@@ -4707,6 +4806,9 @@ inline bool BRepOffsetAPI_MakeOffset_inherited_IsDeleted(BRepOffsetAPI_MakeOffse
 
 inline std::unique_ptr<BRepOffsetAPI_MakePipe> BRepOffsetAPI_MakePipe_ctor_wire_shape(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile) {
     return std::make_unique<BRepOffsetAPI_MakePipe>(Spine, Profile);
+}
+inline std::unique_ptr<BRepOffsetAPI_MakePipe> BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron_bool(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile, int32_t aMode, Standard_Boolean ForceApproxC1) {
+    return std::make_unique<BRepOffsetAPI_MakePipe>(Spine, Profile, static_cast<GeomFill_Trihedron>(aMode), ForceApproxC1);
 }
 inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_MakePipe_first_shape(BRepOffsetAPI_MakePipe& self_) {
     return std::make_unique<TopoDS_Shape>(self_.FirstShape());
@@ -4752,6 +4854,15 @@ inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_MakePipeShell_first_shape(BRe
 inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_MakePipeShell_last_shape(BRepOffsetAPI_MakePipeShell& self_) {
     return std::make_unique<TopoDS_Shape>(self_.LastShape());
 }
+inline void BRepOffsetAPI_MakePipeShell_set_mode(BRepOffsetAPI_MakePipeShell& self_, const TopoDS_Wire& AuxiliarySpine, Standard_Boolean CurvilinearEquivalence, int32_t KeepContact) {
+    self_.SetMode(AuxiliarySpine, CurvilinearEquivalence, static_cast<BRepFill_TypeOfContact>(KeepContact));
+}
+inline int32_t BRepOffsetAPI_MakePipeShell_get_status(const BRepOffsetAPI_MakePipeShell& self_) {
+    return static_cast<int32_t>(self_.GetStatus());
+}
+inline void BRepOffsetAPI_MakePipeShell_set_transition_mode(BRepOffsetAPI_MakePipeShell& self_, int32_t Mode) {
+    self_.SetTransitionMode(static_cast<BRepBuilderAPI_TransitionMode>(Mode));
+}
 inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command(const BRepOffsetAPI_MakePipeShell& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakePipeShell& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
 inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakePipeShell& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
@@ -4780,6 +4891,9 @@ inline bool BRepOffsetAPI_MakePipeShell_inherited_IsDeleted(BRepOffsetAPI_MakePi
 
 inline std::unique_ptr<BRepOffsetAPI_MakeThickSolid> BRepOffsetAPI_MakeThickSolid_ctor() {
     return std::make_unique<BRepOffsetAPI_MakeThickSolid>();
+}
+inline void BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_join(BRepOffsetAPI_MakeThickSolid& self_, const TopoDS_Shape& S, const TopTools_ListOfShape& ClosingFaces, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter, int32_t Join, Standard_Boolean RemoveIntEdges, const Message_ProgressRange& theRange) {
+    self_.MakeThickSolidByJoin(S, ClosingFaces, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join), RemoveIntEdges, theRange);
 }
 inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command(const BRepOffsetAPI_MakeThickSolid& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakeThickSolid& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
@@ -4819,6 +4933,21 @@ inline std::unique_ptr<BRepOffsetAPI_ThruSections> BRepOffsetAPI_ThruSections_ct
 inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_ThruSections_generated_face(const BRepOffsetAPI_ThruSections& self_, const TopoDS_Shape& Edge) {
     return std::make_unique<TopoDS_Shape>(self_.GeneratedFace(Edge));
 }
+inline void BRepOffsetAPI_ThruSections_set_par_type(BRepOffsetAPI_ThruSections& self_, int32_t ParType) {
+    self_.SetParType(static_cast<Approx_ParametrizationType>(ParType));
+}
+inline void BRepOffsetAPI_ThruSections_set_continuity(BRepOffsetAPI_ThruSections& self_, int32_t C) {
+    self_.SetContinuity(static_cast<GeomAbs_Shape>(C));
+}
+inline int32_t BRepOffsetAPI_ThruSections_par_type(const BRepOffsetAPI_ThruSections& self_) {
+    return static_cast<int32_t>(self_.ParType());
+}
+inline int32_t BRepOffsetAPI_ThruSections_continuity(const BRepOffsetAPI_ThruSections& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline int32_t BRepOffsetAPI_ThruSections_get_status(const BRepOffsetAPI_ThruSections& self_) {
+    return static_cast<int32_t>(self_.GetStatus());
+}
 inline const BRepBuilderAPI_Command& BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command(const BRepOffsetAPI_ThruSections& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_ThruSections& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
 inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_ThruSections& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
@@ -4845,6 +4974,9 @@ inline bool BRepOffsetAPI_ThruSections_inherited_IsDeleted(BRepOffsetAPI_ThruSec
 
 inline std::unique_ptr<BRepFeat_MakeCylindricalHole> BRepFeat_MakeCylindricalHole_ctor() {
     return std::make_unique<BRepFeat_MakeCylindricalHole>();
+}
+inline int32_t BRepFeat_MakeCylindricalHole_status(const BRepFeat_MakeCylindricalHole& self_) {
+    return static_cast<int32_t>(self_.Status());
 }
 inline const BOPAlgo_BOP& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP(const BRepFeat_MakeCylindricalHole& self_) { return static_cast<const BOPAlgo_BOP&>(self_); }
 inline BOPAlgo_BOP& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP_mut(BRepFeat_MakeCylindricalHole& self_) { return static_cast<BOPAlgo_BOP&>(self_); }
@@ -4968,9 +5100,6 @@ inline void BRepFeat_MakeCylindricalHole_inherited_SetTools(BRepFeat_MakeCylindr
 }
 inline const TopTools_ListOfShape& BRepFeat_MakeCylindricalHole_inherited_Tools(const BRepFeat_MakeCylindricalHole& self) {
     return self.Tools();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetOperation(BRepFeat_MakeCylindricalHole& self, Standard_Integer theFuse) {
-    self.SetOperation(theFuse);
 }
 inline void BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(BRepFeat_MakeCylindricalHole& self, TopTools_ListOfShape& theLT) {
     self.PartsOfTool(theLT);
@@ -5165,14 +5294,20 @@ inline Standard_Boolean BRepTools_is_really_closed(const TopoDS_Edge& E, const T
 inline void BRepTools_detect_closedness(const TopoDS_Face& theFace, Standard_Boolean& theUclosed, Standard_Boolean& theVclosed) {
     return BRepTools::DetectClosedness(theFace, theUclosed, theVclosed);
 }
-inline Standard_Boolean BRepTools_write(const TopoDS_Shape& theShape, rust::Str theFile, const Message_ProgressRange& theProgress) {
+inline Standard_Boolean BRepTools_write_shape_charptr_progressrange(const TopoDS_Shape& theShape, rust::Str theFile, const Message_ProgressRange& theProgress) {
     return BRepTools::Write(theShape, std::string(theFile).c_str(), theProgress);
+}
+inline Standard_Boolean BRepTools_write_shape_charptr_bool2_formatversion_progressrange(const TopoDS_Shape& theShape, rust::Str theFile, Standard_Boolean theWithTriangles, Standard_Boolean theWithNormals, int32_t theVersion, const Message_ProgressRange& theProgress) {
+    return BRepTools::Write(theShape, std::string(theFile).c_str(), theWithTriangles, theWithNormals, static_cast<TopTools_FormatVersion>(theVersion), theProgress);
 }
 inline Standard_Boolean BRepTools_read(TopoDS_Shape& Sh, rust::Str File, const BRep_Builder& B, const Message_ProgressRange& theProgress) {
     return BRepTools::Read(Sh, std::string(File).c_str(), B, theProgress);
 }
 inline Standard_Real BRepTools_eval_and_update_tol(const TopoDS_Edge& theE, const opencascade::handle<Geom_Curve>& theC3d, const opencascade::handle<Geom2d_Curve>& theC2d, const opencascade::handle<Geom_Surface>& theS, Standard_Real theF, Standard_Real theL) {
     return BRepTools::EvalAndUpdateTol(theE, theC3d, theC2d, theS, theF, theL);
+}
+inline int32_t BRepTools_ori_edge_in_face(const TopoDS_Edge& theEdge, const TopoDS_Face& theFace) {
+    return static_cast<int32_t>(BRepTools::OriEdgeInFace(theEdge, theFace));
 }
 inline void BRepTools_remove_internals(TopoDS_Shape& theS, Standard_Boolean theForce) {
     return BRepTools::RemoveInternals(theS, theForce);
@@ -5246,6 +5381,9 @@ inline std::unique_ptr<gp_Vec> Geom_Curve_dn(const Geom_Curve& self_, Standard_R
 inline std::unique_ptr<gp_Pnt> Geom_Curve_value(const Geom_Curve& self_, Standard_Real U) {
     return std::make_unique<gp_Pnt>(self_.Value(U));
 }
+inline int32_t Geom_Curve_continuity(const Geom_Curve& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Curve_get_type_descriptor() {
     return Geom_Curve::get_type_descriptor();
 }
@@ -5309,6 +5447,9 @@ inline std::unique_ptr<gp_Vec> Geom_Surface_dn(const Geom_Surface& self_, Standa
 }
 inline std::unique_ptr<gp_Pnt> Geom_Surface_value(const Geom_Surface& self_, Standard_Real U, Standard_Real V) {
     return std::make_unique<gp_Pnt>(self_.Value(U, V));
+}
+inline int32_t Geom_Surface_continuity(const Geom_Surface& self_) {
+    return static_cast<int32_t>(self_.Continuity());
 }
 inline const opencascade::handle<Standard_Type>& Geom_Surface_get_type_descriptor() {
     return Geom_Surface::get_type_descriptor();
@@ -5575,6 +5716,9 @@ inline std::unique_ptr<gp_Pnt> Geom_BoundedSurface_inherited_Value(const Geom_Bo
 // Geom_ElementarySurface wrappers
 // ========================
 
+inline int32_t Geom_ElementarySurface_continuity(const Geom_ElementarySurface& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
 inline const opencascade::handle<Standard_Type>& Geom_ElementarySurface_get_type_descriptor() {
     return Geom_ElementarySurface::get_type_descriptor();
 }
@@ -5695,6 +5839,9 @@ inline std::unique_ptr<gp_Pnt> Geom_BezierCurve_end_point(const Geom_BezierCurve
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_BezierCurve_copy(const Geom_BezierCurve& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline int32_t Geom_BezierCurve_continuity(const Geom_BezierCurve& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
 inline Standard_Integer Geom_BezierCurve_max_degree() {
     return Geom_BezierCurve::MaxDegree();
 }
@@ -5783,6 +5930,9 @@ inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_BezierSurface_v_iso
 }
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_BezierSurface_copy(const Geom_BezierSurface& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
+}
+inline int32_t Geom_BezierSurface_continuity(const Geom_BezierSurface& self_) {
+    return static_cast<int32_t>(self_.Continuity());
 }
 inline Standard_Integer Geom_BezierSurface_max_degree() {
     return Geom_BezierSurface::MaxDegree();
@@ -5885,6 +6035,12 @@ inline std::unique_ptr<gp_Pnt> Geom_BSplineCurve_start_point(const Geom_BSplineC
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_BSplineCurve_copy(const Geom_BSplineCurve& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline int32_t Geom_BSplineCurve_continuity(const Geom_BSplineCurve& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline int32_t Geom_BSplineCurve_knot_distribution(const Geom_BSplineCurve& self_) {
+    return static_cast<int32_t>(self_.KnotDistribution());
+}
 inline Standard_Integer Geom_BSplineCurve_max_degree() {
     return Geom_BSplineCurve::MaxDegree();
 }
@@ -5985,6 +6141,15 @@ inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_BSplineSurface_v_is
 }
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_BSplineSurface_copy(const Geom_BSplineSurface& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
+}
+inline int32_t Geom_BSplineSurface_continuity(const Geom_BSplineSurface& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline int32_t Geom_BSplineSurface_u_knot_distribution(const Geom_BSplineSurface& self_) {
+    return static_cast<int32_t>(self_.UKnotDistribution());
+}
+inline int32_t Geom_BSplineSurface_v_knot_distribution(const Geom_BSplineSurface& self_) {
+    return static_cast<int32_t>(self_.VKnotDistribution());
 }
 inline Standard_Integer Geom_BSplineSurface_max_degree() {
     return Geom_BSplineSurface::MaxDegree();
@@ -6325,6 +6490,9 @@ inline std::unique_ptr<gp_Vec> Geom_TrimmedCurve_dn(const Geom_TrimmedCurve& sel
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_TrimmedCurve_copy(const Geom_TrimmedCurve& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline int32_t Geom_TrimmedCurve_continuity(const Geom_TrimmedCurve& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
 inline const opencascade::handle<Standard_Type>& Geom_TrimmedCurve_get_type_descriptor() {
     return Geom_TrimmedCurve::get_type_descriptor();
 }
@@ -6424,6 +6592,9 @@ inline std::unique_ptr<gp_Vec2d> Geom2d_Curve_dn(const Geom2d_Curve& self_, Stan
 }
 inline std::unique_ptr<gp_Pnt2d> Geom2d_Curve_value(const Geom2d_Curve& self_, Standard_Real U) {
     return std::make_unique<gp_Pnt2d>(self_.Value(U));
+}
+inline int32_t Geom2d_Curve_continuity(const Geom2d_Curve& self_) {
+    return static_cast<int32_t>(self_.Continuity());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_Curve_get_type_descriptor() {
     return Geom2d_Curve::get_type_descriptor();
@@ -6575,6 +6746,9 @@ inline std::unique_ptr<gp_Ax2d> Geom2d_Conic_x_axis(const Geom2d_Conic& self_) {
 }
 inline std::unique_ptr<gp_Ax2d> Geom2d_Conic_y_axis(const Geom2d_Conic& self_) {
     return std::make_unique<gp_Ax2d>(self_.YAxis());
+}
+inline int32_t Geom2d_Conic_continuity(const Geom2d_Conic& self_) {
+    return static_cast<int32_t>(self_.Continuity());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_Conic_get_type_descriptor() {
     return Geom2d_Conic::get_type_descriptor();
@@ -6809,6 +6983,9 @@ inline std::unique_ptr<gp_Vec2d> Geom2d_TrimmedCurve_dn(const Geom2d_TrimmedCurv
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_TrimmedCurve_copy(const Geom2d_TrimmedCurve& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
 }
+inline int32_t Geom2d_TrimmedCurve_continuity(const Geom2d_TrimmedCurve& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_TrimmedCurve_get_type_descriptor() {
     return Geom2d_TrimmedCurve::get_type_descriptor();
 }
@@ -6882,14 +7059,26 @@ inline std::unique_ptr<GeomAPI_Interpolate> GeomAPI_Interpolate_ctor_handleharra
 inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor() {
     return std::make_unique<GeomAPI_PointsToBSpline>();
 }
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2(const TColgp_Array1OfPnt& Points, Standard_Integer DegMin, Standard_Integer DegMax) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, DegMin, DegMax);
+inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2_shape_real(const TColgp_Array1OfPnt& Points, Standard_Integer DegMin, Standard_Integer DegMax, int32_t Continuity, Standard_Real Tol3D) {
+    return std::make_unique<GeomAPI_PointsToBSpline>(Points, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D);
 }
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2(const TColgp_Array1OfPnt& Points, const TColStd_Array1OfReal& Parameters, Standard_Integer DegMin, Standard_Integer DegMax) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Parameters, DegMin, DegMax);
+inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int2_shape_real(const TColgp_Array1OfPnt& Points, int32_t ParType, Standard_Integer DegMin, Standard_Integer DegMax, int32_t Continuity, Standard_Real Tol3D) {
+    return std::make_unique<GeomAPI_PointsToBSpline>(Points, static_cast<Approx_ParametrizationType>(ParType), DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D);
 }
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int(const TColgp_Array1OfPnt& Points, Standard_Real Weight1, Standard_Real Weight2, Standard_Real Weight3, Standard_Integer DegMax) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Weight1, Weight2, Weight3, DegMax);
+inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2_shape_real(const TColgp_Array1OfPnt& Points, const TColStd_Array1OfReal& Parameters, Standard_Integer DegMin, Standard_Integer DegMax, int32_t Continuity, Standard_Real Tol3D) {
+    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Parameters, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D);
+}
+inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int_shape_real(const TColgp_Array1OfPnt& Points, Standard_Real Weight1, Standard_Real Weight2, Standard_Real Weight3, Standard_Integer DegMax, int32_t Continuity, Standard_Real Tol3D) {
+    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Weight1, Weight2, Weight3, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D);
+}
+inline void GeomAPI_PointsToBSpline_init_array1ofpnt_int2_shape_real(GeomAPI_PointsToBSpline& self_, const TColgp_Array1OfPnt& Points, Standard_Integer DegMin, Standard_Integer DegMax, int32_t Continuity, Standard_Real Tol3D) {
+    self_.Init(Points, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D);
+}
+inline void GeomAPI_PointsToBSpline_init_array1ofpnt_parametrizationtype_int2_shape_real(GeomAPI_PointsToBSpline& self_, const TColgp_Array1OfPnt& Points, int32_t ParType, Standard_Integer DegMin, Standard_Integer DegMax, int32_t Continuity, Standard_Real Tol3D) {
+    self_.Init(Points, static_cast<Approx_ParametrizationType>(ParType), DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D);
+}
+inline void GeomAPI_PointsToBSpline_init_array1ofpnt_real3_int_shape_real(GeomAPI_PointsToBSpline& self_, const TColgp_Array1OfPnt& Points, Standard_Real Weight1, Standard_Real Weight2, Standard_Real Weight3, Standard_Integer DegMax, int32_t Continuity, Standard_Real Tol3D) {
+    self_.Init(Points, Weight1, Weight2, Weight3, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D);
 }
 
 // ========================
@@ -6919,23 +7108,47 @@ inline std::unique_ptr<gp_Pnt> GeomAPI_ProjectPointOnCurve_nearest_point(const G
 inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor() {
     return std::make_unique<GeomAPI_ProjectPointOnSurf>();
 }
-inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface) {
-    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface);
+inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_extalgo(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, int32_t Algo) {
+    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, static_cast<Extrema_ExtAlgo>(Algo));
 }
-inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Tolerance) {
-    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Tolerance);
+inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real_extalgo(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Tolerance, int32_t Algo) {
+    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Tolerance, static_cast<Extrema_ExtAlgo>(Algo));
 }
-inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real Tolerance) {
-    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Umin, Usup, Vmin, Vsup, Tolerance);
+inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5_extalgo(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real Tolerance, int32_t Algo) {
+    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Umin, Usup, Vmin, Vsup, Tolerance, static_cast<Extrema_ExtAlgo>(Algo));
 }
-inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup) {
-    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Umin, Usup, Vmin, Vsup);
+inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4_extalgo(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, int32_t Algo) {
+    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Umin, Usup, Vmin, Vsup, static_cast<Extrema_ExtAlgo>(Algo));
 }
 inline std::unique_ptr<gp_Pnt> GeomAPI_ProjectPointOnSurf_point(const GeomAPI_ProjectPointOnSurf& self_, Standard_Integer Index) {
     return std::make_unique<gp_Pnt>(self_.Point(Index));
 }
 inline std::unique_ptr<gp_Pnt> GeomAPI_ProjectPointOnSurf_nearest_point(const GeomAPI_ProjectPointOnSurf& self_) {
     return std::make_unique<gp_Pnt>(self_.NearestPoint());
+}
+inline void GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real_extalgo(GeomAPI_ProjectPointOnSurf& self_, const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Tolerance, int32_t Algo) {
+    self_.Init(P, Surface, Tolerance, static_cast<Extrema_ExtAlgo>(Algo));
+}
+inline void GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_extalgo(GeomAPI_ProjectPointOnSurf& self_, const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, int32_t Algo) {
+    self_.Init(P, Surface, static_cast<Extrema_ExtAlgo>(Algo));
+}
+inline void GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real5_extalgo(GeomAPI_ProjectPointOnSurf& self_, const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real Tolerance, int32_t Algo) {
+    self_.Init(P, Surface, Umin, Usup, Vmin, Vsup, Tolerance, static_cast<Extrema_ExtAlgo>(Algo));
+}
+inline void GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real4_extalgo(GeomAPI_ProjectPointOnSurf& self_, const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, int32_t Algo) {
+    self_.Init(P, Surface, Umin, Usup, Vmin, Vsup, static_cast<Extrema_ExtAlgo>(Algo));
+}
+inline void GeomAPI_ProjectPointOnSurf_init_handlesurface_real5_extalgo(GeomAPI_ProjectPointOnSurf& self_, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real Tolerance, int32_t Algo) {
+    self_.Init(Surface, Umin, Usup, Vmin, Vsup, Tolerance, static_cast<Extrema_ExtAlgo>(Algo));
+}
+inline void GeomAPI_ProjectPointOnSurf_init_handlesurface_real4_extalgo(GeomAPI_ProjectPointOnSurf& self_, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, int32_t Algo) {
+    self_.Init(Surface, Umin, Usup, Vmin, Vsup, static_cast<Extrema_ExtAlgo>(Algo));
+}
+inline void GeomAPI_ProjectPointOnSurf_set_extrema_algo(GeomAPI_ProjectPointOnSurf& self_, int32_t theAlgo) {
+    self_.SetExtremaAlgo(static_cast<Extrema_ExtAlgo>(theAlgo));
+}
+inline void GeomAPI_ProjectPointOnSurf_set_extrema_flag(GeomAPI_ProjectPointOnSurf& self_, int32_t theExtFlag) {
+    self_.SetExtremaFlag(static_cast<Extrema_ExtFlag>(theExtFlag));
 }
 
 // ========================
@@ -7059,6 +7272,12 @@ inline std::unique_ptr<Bnd_OBB> Bnd_OBB_to_owned(const Bnd_OBB& self_) { return 
 
 inline std::unique_ptr<BRep_Builder> BRep_Builder_ctor() {
     return std::make_unique<BRep_Builder>();
+}
+inline void BRep_Builder_continuity_edge_face2_shape(const BRep_Builder& self_, const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2, int32_t C) {
+    self_.Continuity(E, F1, F2, static_cast<GeomAbs_Shape>(C));
+}
+inline void BRep_Builder_continuity_edge_handlesurface2_location2_shape(const BRep_Builder& self_, const TopoDS_Edge& E, const opencascade::handle<Geom_Surface>& S1, const opencascade::handle<Geom_Surface>& S2, const TopLoc_Location& L1, const TopLoc_Location& L2, int32_t C) {
+    self_.Continuity(E, S1, S2, L1, L2, static_cast<GeomAbs_Shape>(C));
 }
 inline const TopoDS_Builder& BRep_Builder_as_TopoDS_Builder(const BRep_Builder& self_) { return static_cast<const TopoDS_Builder&>(self_); }
 inline TopoDS_Builder& BRep_Builder_as_TopoDS_Builder_mut(BRep_Builder& self_) { return static_cast<TopoDS_Builder&>(self_); }
@@ -7199,11 +7418,20 @@ inline void BRep_Tool_set_uv_points_edge_face_pnt2d2(const TopoDS_Edge& E, const
 inline Standard_Boolean BRep_Tool_has_continuity_edge_face2(const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2) {
     return BRep_Tool::HasContinuity(E, F1, F2);
 }
+inline int32_t BRep_Tool_continuity_edge_face2(const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2) {
+    return static_cast<int32_t>(BRep_Tool::Continuity(E, F1, F2));
+}
 inline Standard_Boolean BRep_Tool_has_continuity_edge_handlesurface2_location2(const TopoDS_Edge& E, const opencascade::handle<Geom_Surface>& S1, const opencascade::handle<Geom_Surface>& S2, const TopLoc_Location& L1, const TopLoc_Location& L2) {
     return BRep_Tool::HasContinuity(E, S1, S2, L1, L2);
 }
+inline int32_t BRep_Tool_continuity_edge_handlesurface2_location2(const TopoDS_Edge& E, const opencascade::handle<Geom_Surface>& S1, const opencascade::handle<Geom_Surface>& S2, const TopLoc_Location& L1, const TopLoc_Location& L2) {
+    return static_cast<int32_t>(BRep_Tool::Continuity(E, S1, S2, L1, L2));
+}
 inline Standard_Boolean BRep_Tool_has_continuity_edge(const TopoDS_Edge& E) {
     return BRep_Tool::HasContinuity(E);
+}
+inline int32_t BRep_Tool_max_continuity(const TopoDS_Edge& theEdge) {
+    return static_cast<int32_t>(BRep_Tool::MaxContinuity(theEdge));
 }
 inline std::unique_ptr<gp_Pnt> BRep_Tool_pnt(const TopoDS_Vertex& V) {
     return std::make_unique<gp_Pnt>(BRep_Tool::Pnt(V));
@@ -7225,6 +7453,9 @@ inline Standard_Real BRep_Tool_parameter_vertex_edge_handlesurface_location(cons
 }
 inline std::unique_ptr<gp_Pnt2d> BRep_Tool_parameters(const TopoDS_Vertex& V, const TopoDS_Face& F) {
     return std::make_unique<gp_Pnt2d>(BRep_Tool::Parameters(V, F));
+}
+inline Standard_Real BRep_Tool_max_tolerance(const TopoDS_Shape& theShape, int32_t theSubShape) {
+    return BRep_Tool::MaxTolerance(theShape, static_cast<TopAbs_ShapeEnum>(theSubShape));
 }
 
 // ========================
@@ -7293,6 +7524,15 @@ inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> BRepAdaptor_Curve_
 inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> BRepAdaptor_Curve_b_spline(const BRepAdaptor_Curve& self_) {
     return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
 }
+inline int32_t BRepAdaptor_Curve_continuity(const BRepAdaptor_Curve& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline Standard_Integer BRepAdaptor_Curve_nb_intervals(const BRepAdaptor_Curve& self_, int32_t S) {
+    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline int32_t BRepAdaptor_Curve_get_type(const BRepAdaptor_Curve& self_) {
+    return static_cast<int32_t>(self_.GetType());
+}
 inline const opencascade::handle<Standard_Type>& BRepAdaptor_Curve_get_type_descriptor() {
     return BRepAdaptor_Curve::get_type_descriptor();
 }
@@ -7341,6 +7581,9 @@ inline std::unique_ptr<BRepGProp_Face> BRepGProp_Face_ctor_face_bool(const TopoD
 inline std::unique_ptr<gp_Pnt2d> BRepGProp_Face_value2d(const BRepGProp_Face& self_, Standard_Real U) {
     return std::make_unique<gp_Pnt2d>(self_.Value2d(U));
 }
+inline void BRepGProp_Face_load(BRepGProp_Face& self_, Standard_Boolean IsFirstParam, int32_t theIsoType) {
+    self_.Load(IsFirstParam, static_cast<GeomAbs_IsoType>(theIsoType));
+}
 
 // ========================
 // BRepIntCurveSurface_Inter wrappers
@@ -7351,6 +7594,12 @@ inline std::unique_ptr<BRepIntCurveSurface_Inter> BRepIntCurveSurface_Inter_ctor
 }
 inline std::unique_ptr<IntCurveSurface_IntersectionPoint> BRepIntCurveSurface_Inter_point(const BRepIntCurveSurface_Inter& self_) {
     return std::make_unique<IntCurveSurface_IntersectionPoint>(self_.Point());
+}
+inline int32_t BRepIntCurveSurface_Inter_state(const BRepIntCurveSurface_Inter& self_) {
+    return static_cast<int32_t>(self_.State());
+}
+inline int32_t BRepIntCurveSurface_Inter_transition(const BRepIntCurveSurface_Inter& self_) {
+    return static_cast<int32_t>(self_.Transition());
 }
 
 // ========================
@@ -7412,6 +7661,12 @@ inline std::unique_ptr<GProp_GProps> GProp_GProps_to_owned(const GProp_GProps& s
 inline std::unique_ptr<opencascade::handle<Law_Function>> Law_Function_trim(const Law_Function& self_, Standard_Real PFirst, Standard_Real PLast, Standard_Real Tol) {
     return std::make_unique<opencascade::handle<Law_Function>>(self_.Trim(PFirst, PLast, Tol));
 }
+inline int32_t Law_Function_continuity(const Law_Function& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline Standard_Integer Law_Function_nb_intervals(const Law_Function& self_, int32_t S) {
+    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
 inline const opencascade::handle<Standard_Type>& Law_Function_get_type_descriptor() {
     return Law_Function::get_type_descriptor();
 }
@@ -7425,6 +7680,12 @@ inline std::unique_ptr<Law_BSpFunc> Law_BSpFunc_ctor() {
 }
 inline std::unique_ptr<opencascade::handle<Law_Function>> Law_BSpFunc_trim(const Law_BSpFunc& self_, Standard_Real PFirst, Standard_Real PLast, Standard_Real Tol) {
     return std::make_unique<opencascade::handle<Law_Function>>(self_.Trim(PFirst, PLast, Tol));
+}
+inline int32_t Law_BSpFunc_continuity(const Law_BSpFunc& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline Standard_Integer Law_BSpFunc_nb_intervals(const Law_BSpFunc& self_, int32_t S) {
+    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
 }
 inline const opencascade::handle<Standard_Type>& Law_BSpFunc_get_type_descriptor() {
     return Law_BSpFunc::get_type_descriptor();
@@ -8187,6 +8448,12 @@ inline std::unique_ptr<Message_ProgressRange> Message_ProgressRange_ctor_progres
 inline std::unique_ptr<STEPControl_Reader> STEPControl_Reader_ctor() {
     return std::make_unique<STEPControl_Reader>();
 }
+inline int32_t STEPControl_Reader_read_file_charptr(STEPControl_Reader& self, rust::Str filename) {
+    return static_cast<int32_t>(self.ReadFile(std::string(filename).c_str()));
+}
+inline int32_t STEPControl_Reader_read_file_charptr_parameters(STEPControl_Reader& self, rust::Str filename, const DESTEP_Parameters& theParams) {
+    return static_cast<int32_t>(self.ReadFile(std::string(filename).c_str(), theParams));
+}
 inline const XSControl_Reader& STEPControl_Reader_as_XSControl_Reader(const STEPControl_Reader& self_) { return static_cast<const XSControl_Reader&>(self_); }
 inline XSControl_Reader& STEPControl_Reader_as_XSControl_Reader_mut(STEPControl_Reader& self_) { return static_cast<XSControl_Reader&>(self_); }
 inline bool STEPControl_Reader_inherited_TransferOneRoot(STEPControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
@@ -8227,6 +8494,15 @@ inline void STEPControl_Reader_inherited_GetStatsTransfer(const STEPControl_Read
 inline std::unique_ptr<STEPControl_Writer> STEPControl_Writer_ctor() {
     return std::make_unique<STEPControl_Writer>();
 }
+inline int32_t STEPControl_Writer_write(STEPControl_Writer& self, rust::Str theFileName) {
+    return static_cast<int32_t>(self.Write(std::string(theFileName).c_str()));
+}
+inline int32_t STEPControl_Writer_transfer_shape_stepmodeltype_bool_progressrange(STEPControl_Writer& self_, const TopoDS_Shape& sh, int32_t mode, Standard_Boolean compgraph, const Message_ProgressRange& theProgress) {
+    return static_cast<int32_t>(self_.Transfer(sh, static_cast<STEPControl_StepModelType>(mode), compgraph, theProgress));
+}
+inline int32_t STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(STEPControl_Writer& self_, const TopoDS_Shape& sh, int32_t mode, const DESTEP_Parameters& theParams, Standard_Boolean compgraph, const Message_ProgressRange& theProgress) {
+    return static_cast<int32_t>(self_.Transfer(sh, static_cast<STEPControl_StepModelType>(mode), theParams, compgraph, theProgress));
+}
 
 // ========================
 // IGESControl_Reader wrappers
@@ -8234,6 +8510,9 @@ inline std::unique_ptr<STEPControl_Writer> STEPControl_Writer_ctor() {
 
 inline std::unique_ptr<IGESControl_Reader> IGESControl_Reader_ctor() {
     return std::make_unique<IGESControl_Reader>();
+}
+inline void IGESControl_Reader_print_transfer_info(const IGESControl_Reader& self_, int32_t failwarn, int32_t mode) {
+    self_.PrintTransferInfo(static_cast<IFSelect_PrintFail>(failwarn), static_cast<IFSelect_PrintCount>(mode));
 }
 inline const XSControl_Reader& IGESControl_Reader_as_XSControl_Reader(const IGESControl_Reader& self_) { return static_cast<const XSControl_Reader&>(self_); }
 inline XSControl_Reader& IGESControl_Reader_as_XSControl_Reader_mut(IGESControl_Reader& self_) { return static_cast<XSControl_Reader&>(self_); }
@@ -8449,11 +8728,17 @@ inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor_pnt_curve_real(const gp
 inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor() {
     return std::make_unique<Extrema_ExtPS>();
 }
-inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real2(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real TolU, Standard_Real TolV) {
-    return std::make_unique<Extrema_ExtPS>(P, S, TolU, TolV);
+inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real2_extflag_extalgo(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real TolU, Standard_Real TolV, int32_t F, int32_t A) {
+    return std::make_unique<Extrema_ExtPS>(P, S, TolU, TolV, static_cast<Extrema_ExtFlag>(F), static_cast<Extrema_ExtAlgo>(A));
 }
-inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real6(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real Uinf, Standard_Real Usup, Standard_Real Vinf, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV) {
-    return std::make_unique<Extrema_ExtPS>(P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV);
+inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real6_extflag_extalgo(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real Uinf, Standard_Real Usup, Standard_Real Vinf, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV, int32_t F, int32_t A) {
+    return std::make_unique<Extrema_ExtPS>(P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV, static_cast<Extrema_ExtFlag>(F), static_cast<Extrema_ExtAlgo>(A));
+}
+inline void Extrema_ExtPS_set_flag(Extrema_ExtPS& self_, int32_t F) {
+    self_.SetFlag(static_cast<Extrema_ExtFlag>(F));
+}
+inline void Extrema_ExtPS_set_algo(Extrema_ExtPS& self_, int32_t A) {
+    self_.SetAlgo(static_cast<Extrema_ExtAlgo>(A));
 }
 
 // ========================
@@ -8463,11 +8748,17 @@ inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real6(const
 inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor() {
     return std::make_unique<Extrema_GenExtPS>();
 }
-inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real2(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real TolU, Standard_Real TolV) {
-    return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, TolU, TolV);
+inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real2_extflag_extalgo(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real TolU, Standard_Real TolV, int32_t F, int32_t A) {
+    return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, TolU, TolV, static_cast<Extrema_ExtFlag>(F), static_cast<Extrema_ExtAlgo>(A));
 }
-inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real6(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV) {
-    return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV);
+inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real6_extflag_extalgo(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV, int32_t F, int32_t A) {
+    return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV, static_cast<Extrema_ExtFlag>(F), static_cast<Extrema_ExtAlgo>(A));
+}
+inline void Extrema_GenExtPS_set_flag(Extrema_GenExtPS& self_, int32_t F) {
+    self_.SetFlag(static_cast<Extrema_ExtFlag>(F));
+}
+inline void Extrema_GenExtPS_set_algo(Extrema_GenExtPS& self_, int32_t A) {
+    self_.SetAlgo(static_cast<Extrema_ExtAlgo>(A));
 }
 
 // ========================
@@ -8509,6 +8800,15 @@ inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> Adaptor3d_Curve_be
 }
 inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> Adaptor3d_Curve_b_spline(const Adaptor3d_Curve& self_) {
     return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
+}
+inline int32_t Adaptor3d_Curve_continuity(const Adaptor3d_Curve& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline Standard_Integer Adaptor3d_Curve_nb_intervals(const Adaptor3d_Curve& self_, int32_t S) {
+    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline int32_t Adaptor3d_Curve_get_type(const Adaptor3d_Curve& self_) {
+    return static_cast<int32_t>(self_.GetType());
 }
 inline const opencascade::handle<Standard_Type>& Adaptor3d_Curve_get_type_descriptor() {
     return Adaptor3d_Curve::get_type_descriptor();
@@ -8572,6 +8872,21 @@ inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> Adaptor3d_Surface_b
 inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> Adaptor3d_Surface_basis_surface(const Adaptor3d_Surface& self_) {
     return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.BasisSurface());
 }
+inline int32_t Adaptor3d_Surface_u_continuity(const Adaptor3d_Surface& self_) {
+    return static_cast<int32_t>(self_.UContinuity());
+}
+inline int32_t Adaptor3d_Surface_v_continuity(const Adaptor3d_Surface& self_) {
+    return static_cast<int32_t>(self_.VContinuity());
+}
+inline Standard_Integer Adaptor3d_Surface_nb_u_intervals(const Adaptor3d_Surface& self_, int32_t S) {
+    return self_.NbUIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline Standard_Integer Adaptor3d_Surface_nb_v_intervals(const Adaptor3d_Surface& self_, int32_t S) {
+    return self_.NbVIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline int32_t Adaptor3d_Surface_get_type(const Adaptor3d_Surface& self_) {
+    return static_cast<int32_t>(self_.GetType());
+}
 inline const opencascade::handle<Standard_Type>& Adaptor3d_Surface_get_type_descriptor() {
     return Adaptor3d_Surface::get_type_descriptor();
 }
@@ -8612,6 +8927,15 @@ inline std::unique_ptr<gp_Hypr2d> Adaptor2d_Curve2d_hyperbola(const Adaptor2d_Cu
 }
 inline std::unique_ptr<gp_Parab2d> Adaptor2d_Curve2d_parabola(const Adaptor2d_Curve2d& self_) {
     return std::make_unique<gp_Parab2d>(self_.Parabola());
+}
+inline int32_t Adaptor2d_Curve2d_continuity(const Adaptor2d_Curve2d& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline Standard_Integer Adaptor2d_Curve2d_nb_intervals(const Adaptor2d_Curve2d& self_, int32_t S) {
+    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline int32_t Adaptor2d_Curve2d_get_type(const Adaptor2d_Curve2d& self_) {
+    return static_cast<int32_t>(self_.GetType());
 }
 inline const opencascade::handle<Standard_Type>& Adaptor2d_Curve2d_get_type_descriptor() {
     return Adaptor2d_Curve2d::get_type_descriptor();
@@ -9072,6 +9396,9 @@ inline std::unique_ptr<Standard_Dump> Standard_Dump_ctor() {
 inline Standard_Boolean Standard_Dump_has_child_key(const TCollection_AsciiString& theSourceValue) {
     return Standard_Dump::HasChildKey(theSourceValue);
 }
+inline Standard_Integer Standard_Dump_json_key_length(int32_t theKey) {
+    return Standard_Dump::JsonKeyLength(static_cast<Standard_JsonKey>(theKey));
+}
 inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_get_pointer_prefix() {
     return std::make_unique<TCollection_AsciiString>(Standard_Dump::GetPointerPrefix());
 }
@@ -9397,6 +9724,9 @@ inline std::unique_ptr<Message> Message_ctor() {
 inline const opencascade::handle<Message_Messenger>& Message_default_messenger() {
     return Message::DefaultMessenger();
 }
+inline void Message_send(const TCollection_AsciiString& theMessage, int32_t theGravity) {
+    return Message::Send(theMessage, static_cast<Message_Gravity>(theGravity));
+}
 inline void Message_send_fail(const TCollection_AsciiString& theMessage) {
     return Message::SendFail(theMessage);
 }
@@ -9418,6 +9748,9 @@ inline std::unique_ptr<TCollection_AsciiString> Message_fill_time(Standard_Integ
 inline const opencascade::handle<Message_Report>& Message_default_report(Standard_Boolean theToCreate) {
     return Message::DefaultReport(theToCreate);
 }
+inline int32_t Message_metric_from_string(rust::Str theString) {
+    return static_cast<int32_t>(Message::MetricFromString(std::string(theString).c_str()));
+}
 
 // ========================
 // Message_Messenger wrappers
@@ -9428,6 +9761,15 @@ inline std::unique_ptr<Message_Messenger> Message_Messenger_ctor() {
 }
 inline std::unique_ptr<Message_Messenger> Message_Messenger_ctor_handleprinter(const opencascade::handle<Message_Printer>& thePrinter) {
     return std::make_unique<Message_Messenger>(thePrinter);
+}
+inline void Message_Messenger_send_charptr_gravity(const Message_Messenger& self, rust::Str theString, int32_t theGravity) {
+    self.Send(std::string(theString).c_str(), static_cast<Message_Gravity>(theGravity));
+}
+inline void Message_Messenger_send_asciistring_gravity(const Message_Messenger& self_, const TCollection_AsciiString& theString, int32_t theGravity) {
+    self_.Send(theString, static_cast<Message_Gravity>(theGravity));
+}
+inline void Message_Messenger_send_extendedstring_gravity(const Message_Messenger& self_, const TCollection_ExtendedString& theString, int32_t theGravity) {
+    self_.Send(theString, static_cast<Message_Gravity>(theGravity));
 }
 inline const opencascade::handle<Standard_Type>& Message_Messenger_get_type_descriptor() {
     return Message_Messenger::get_type_descriptor();
@@ -9454,6 +9796,21 @@ inline std::unique_ptr<TCollection_AsciiString> OSD_MemInfo_print_info() {
 // Message_Printer wrappers
 // ========================
 
+inline void Message_Printer_send_charptr_gravity(const Message_Printer& self, rust::Str theString, int32_t theGravity) {
+    self.Send(std::string(theString).c_str(), static_cast<Message_Gravity>(theGravity));
+}
+inline int32_t Message_Printer_get_trace_level(const Message_Printer& self_) {
+    return static_cast<int32_t>(self_.GetTraceLevel());
+}
+inline void Message_Printer_set_trace_level(Message_Printer& self_, int32_t theTraceLevel) {
+    self_.SetTraceLevel(static_cast<Message_Gravity>(theTraceLevel));
+}
+inline void Message_Printer_send_extendedstring_gravity(const Message_Printer& self_, const TCollection_ExtendedString& theString, int32_t theGravity) {
+    self_.Send(theString, static_cast<Message_Gravity>(theGravity));
+}
+inline void Message_Printer_send_asciistring_gravity(const Message_Printer& self_, const TCollection_AsciiString& theString, int32_t theGravity) {
+    self_.Send(theString, static_cast<Message_Gravity>(theGravity));
+}
 inline const opencascade::handle<Standard_Type>& Message_Printer_get_type_descriptor() {
     return Message_Printer::get_type_descriptor();
 }
@@ -9536,6 +9893,12 @@ inline std::unique_ptr<Extrema_POnSurfParams> Extrema_POnSurfParams_ctor() {
 }
 inline std::unique_ptr<Extrema_POnSurfParams> Extrema_POnSurfParams_ctor_real2_pnt(Standard_Real theU, Standard_Real theV, const gp_Pnt& thePnt) {
     return std::make_unique<Extrema_POnSurfParams>(theU, theV, thePnt);
+}
+inline void Extrema_POnSurfParams_set_element_type(Extrema_POnSurfParams& self_, int32_t theElementType) {
+    self_.SetElementType(static_cast<Extrema_ElementType>(theElementType));
+}
+inline int32_t Extrema_POnSurfParams_get_element_type(const Extrema_POnSurfParams& self_) {
+    return static_cast<int32_t>(self_.GetElementType());
 }
 inline const Extrema_POnSurf& Extrema_POnSurfParams_as_Extrema_POnSurf(const Extrema_POnSurfParams& self_) { return static_cast<const Extrema_POnSurf&>(self_); }
 inline Extrema_POnSurf& Extrema_POnSurfParams_as_Extrema_POnSurf_mut(Extrema_POnSurfParams& self_) { return static_cast<Extrema_POnSurf&>(self_); }
@@ -9799,6 +10162,15 @@ inline std::unique_ptr<TopoDS_Shape> XSControl_Reader_one_shape(const XSControl_
 }
 inline Standard_Boolean XSControl_Reader_set_norm(XSControl_Reader& self, rust::Str norm) {
     return self.SetNorm(std::string(norm).c_str());
+}
+inline int32_t XSControl_Reader_read_file(XSControl_Reader& self, rust::Str filename) {
+    return static_cast<int32_t>(self.ReadFile(std::string(filename).c_str()));
+}
+inline void XSControl_Reader_print_check_load(const XSControl_Reader& self_, Standard_Boolean failsonly, int32_t mode) {
+    self_.PrintCheckLoad(failsonly, static_cast<IFSelect_PrintCount>(mode));
+}
+inline void XSControl_Reader_print_check_transfer(const XSControl_Reader& self_, Standard_Boolean failsonly, int32_t mode) {
+    self_.PrintCheckTransfer(failsonly, static_cast<IFSelect_PrintCount>(mode));
 }
 
 // ========================
@@ -10092,6 +10464,21 @@ inline std::unique_ptr<Bnd_Box2d> Bnd_Box2d_to_owned(const Bnd_Box2d& self_) { r
 inline std::unique_ptr<BRepMesh_Vertex> BRepMesh_Vertex_ctor() {
     return std::make_unique<BRepMesh_Vertex>();
 }
+inline std::unique_ptr<BRepMesh_Vertex> BRepMesh_Vertex_ctor_xy_int_degreeoffreedom(const gp_XY& theUV, Standard_Integer theLocation3d, int32_t theMovability) {
+    return std::make_unique<BRepMesh_Vertex>(theUV, theLocation3d, static_cast<BRepMesh_DegreeOfFreedom>(theMovability));
+}
+inline std::unique_ptr<BRepMesh_Vertex> BRepMesh_Vertex_ctor_real2_degreeoffreedom(Standard_Real theU, Standard_Real theV, int32_t theMovability) {
+    return std::make_unique<BRepMesh_Vertex>(theU, theV, static_cast<BRepMesh_DegreeOfFreedom>(theMovability));
+}
+inline void BRepMesh_Vertex_initialize(BRepMesh_Vertex& self_, const gp_XY& theUV, Standard_Integer theLocation3d, int32_t theMovability) {
+    self_.Initialize(theUV, theLocation3d, static_cast<BRepMesh_DegreeOfFreedom>(theMovability));
+}
+inline int32_t BRepMesh_Vertex_movability(const BRepMesh_Vertex& self_) {
+    return static_cast<int32_t>(self_.Movability());
+}
+inline void BRepMesh_Vertex_set_movability(BRepMesh_Vertex& self_, int32_t theMovability) {
+    self_.SetMovability(static_cast<BRepMesh_DegreeOfFreedom>(theMovability));
+}
 
 // ========================
 // Bnd_B2d wrappers
@@ -10132,6 +10519,12 @@ inline std::unique_ptr<BRepMesh_Circle> BRepMesh_Circle_ctor_xy_real(const gp_XY
 inline std::unique_ptr<BRepMesh_Triangle> BRepMesh_Triangle_ctor() {
     return std::make_unique<BRepMesh_Triangle>();
 }
+inline int32_t BRepMesh_Triangle_movability(const BRepMesh_Triangle& self_) {
+    return static_cast<int32_t>(self_.Movability());
+}
+inline void BRepMesh_Triangle_set_movability(BRepMesh_Triangle& self_, int32_t theMovability) {
+    self_.SetMovability(static_cast<BRepMesh_DegreeOfFreedom>(theMovability));
+}
 
 // ========================
 // BRepMesh_PairOfIndex wrappers
@@ -10147,6 +10540,15 @@ inline std::unique_ptr<BRepMesh_PairOfIndex> BRepMesh_PairOfIndex_ctor() {
 
 inline std::unique_ptr<BRepMesh_Edge> BRepMesh_Edge_ctor() {
     return std::make_unique<BRepMesh_Edge>();
+}
+inline std::unique_ptr<BRepMesh_Edge> BRepMesh_Edge_ctor_int2_degreeoffreedom(Standard_Integer theFirstNode, Standard_Integer theLastNode, int32_t theMovability) {
+    return std::make_unique<BRepMesh_Edge>(theFirstNode, theLastNode, static_cast<BRepMesh_DegreeOfFreedom>(theMovability));
+}
+inline int32_t BRepMesh_Edge_movability(const BRepMesh_Edge& self_) {
+    return static_cast<int32_t>(self_.Movability());
+}
+inline void BRepMesh_Edge_set_movability(BRepMesh_Edge& self_, int32_t theMovability) {
+    self_.SetMovability(static_cast<BRepMesh_DegreeOfFreedom>(theMovability));
 }
 inline const BRepMesh_OrientedEdge& BRepMesh_Edge_as_BRepMesh_OrientedEdge(const BRepMesh_Edge& self_) { return static_cast<const BRepMesh_OrientedEdge&>(self_); }
 inline BRepMesh_OrientedEdge& BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(BRepMesh_Edge& self_) { return static_cast<BRepMesh_OrientedEdge&>(self_); }
@@ -10200,6 +10602,39 @@ inline std::unique_ptr<Message_Algorithm> Message_Algorithm_ctor() {
 inline std::unique_ptr<opencascade::handle<Message_Messenger>> Message_Algorithm_get_messenger(const Message_Algorithm& self_) {
     return std::make_unique<opencascade::handle<Message_Messenger>>(self_.GetMessenger());
 }
+inline std::unique_ptr<opencascade::handle<TColStd_HSequenceOfHExtendedString>> Message_Algorithm_get_message_strings(const Message_Algorithm& self_, int32_t theStatus) {
+    return std::make_unique<opencascade::handle<TColStd_HSequenceOfHExtendedString>>(self_.GetMessageStrings(static_cast<Message_Status>(theStatus)));
+}
+inline void Message_Algorithm_set_status_status_charptr_bool(Message_Algorithm& self, int32_t theStat, rust::Str theStr, Standard_Boolean noRepetitions) {
+    self.SetStatus(static_cast<Message_Status>(theStat), std::string(theStr).c_str(), noRepetitions);
+}
+inline void Message_Algorithm_set_status_status(Message_Algorithm& self_, int32_t theStat) {
+    self_.SetStatus(static_cast<Message_Status>(theStat));
+}
+inline void Message_Algorithm_set_status_status_int(Message_Algorithm& self_, int32_t theStat, Standard_Integer theInt) {
+    self_.SetStatus(static_cast<Message_Status>(theStat), theInt);
+}
+inline void Message_Algorithm_set_status_status_asciistring_bool(Message_Algorithm& self_, int32_t theStat, const TCollection_AsciiString& theStr, Standard_Boolean noRepetitions) {
+    self_.SetStatus(static_cast<Message_Status>(theStat), theStr, noRepetitions);
+}
+inline void Message_Algorithm_set_status_status_handlehasciistring_bool(Message_Algorithm& self_, int32_t theStat, const opencascade::handle<TCollection_HAsciiString>& theStr, Standard_Boolean noRepetitions) {
+    self_.SetStatus(static_cast<Message_Status>(theStat), theStr, noRepetitions);
+}
+inline void Message_Algorithm_set_status_status_extendedstring_bool(Message_Algorithm& self_, int32_t theStat, const TCollection_ExtendedString& theStr, Standard_Boolean noRepetitions) {
+    self_.SetStatus(static_cast<Message_Status>(theStat), theStr, noRepetitions);
+}
+inline void Message_Algorithm_set_status_status_handlehextendedstring_bool(Message_Algorithm& self_, int32_t theStat, const opencascade::handle<TCollection_HExtendedString>& theStr, Standard_Boolean noRepetitions) {
+    self_.SetStatus(static_cast<Message_Status>(theStat), theStr, noRepetitions);
+}
+inline void Message_Algorithm_set_status_status_msg(Message_Algorithm& self_, int32_t theStat, const Message_Msg& theMsg) {
+    self_.SetStatus(static_cast<Message_Status>(theStat), theMsg);
+}
+inline void Message_Algorithm_send_status_messages(const Message_Algorithm& self_, const Message_ExecStatus& theFilter, int32_t theTraceLevel, Standard_Integer theMaxCount) {
+    self_.SendStatusMessages(theFilter, static_cast<Message_Gravity>(theTraceLevel), theMaxCount);
+}
+inline void Message_Algorithm_send_messages(const Message_Algorithm& self_, int32_t theTraceLevel, Standard_Integer theMaxCount) {
+    self_.SendMessages(static_cast<Message_Gravity>(theTraceLevel), theMaxCount);
+}
 inline const opencascade::handle<Standard_Type>& Message_Algorithm_get_type_descriptor() {
     return Message_Algorithm::get_type_descriptor();
 }
@@ -10213,6 +10648,30 @@ inline std::unique_ptr<HandleMessageAlgorithm> Message_Algorithm_to_handle(std::
 
 inline std::unique_ptr<Message_ExecStatus> Message_ExecStatus_ctor() {
     return std::make_unique<Message_ExecStatus>();
+}
+inline std::unique_ptr<Message_ExecStatus> Message_ExecStatus_ctor_status(int32_t theStatus) {
+    return std::make_unique<Message_ExecStatus>(static_cast<Message_Status>(theStatus));
+}
+inline void Message_ExecStatus_set(Message_ExecStatus& self_, int32_t theStatus) {
+    self_.Set(static_cast<Message_Status>(theStatus));
+}
+inline Standard_Boolean Message_ExecStatus_is_set(const Message_ExecStatus& self_, int32_t theStatus) {
+    return self_.IsSet(static_cast<Message_Status>(theStatus));
+}
+inline void Message_ExecStatus_clear(Message_ExecStatus& self_, int32_t theStatus) {
+    self_.Clear(static_cast<Message_Status>(theStatus));
+}
+inline Standard_Integer Message_ExecStatus_status_index(int32_t theStatus) {
+    return Message_ExecStatus::StatusIndex(static_cast<Message_Status>(theStatus));
+}
+inline Standard_Integer Message_ExecStatus_local_status_index(int32_t theStatus) {
+    return Message_ExecStatus::LocalStatusIndex(static_cast<Message_Status>(theStatus));
+}
+inline int32_t Message_ExecStatus_type_of_status(int32_t theStatus) {
+    return static_cast<int32_t>(Message_ExecStatus::TypeOfStatus(static_cast<Message_Status>(theStatus)));
+}
+inline int32_t Message_ExecStatus_status_by_index(Standard_Integer theIndex) {
+    return static_cast<int32_t>(Message_ExecStatus::StatusByIndex(theIndex));
 }
 
 // ========================
@@ -10318,6 +10777,15 @@ inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> GeomAdaptor_Curve_
 inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> GeomAdaptor_Curve_b_spline(const GeomAdaptor_Curve& self_) {
     return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
 }
+inline int32_t GeomAdaptor_Curve_continuity(const GeomAdaptor_Curve& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline Standard_Integer GeomAdaptor_Curve_nb_intervals(const GeomAdaptor_Curve& self_, int32_t S) {
+    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline int32_t GeomAdaptor_Curve_get_type(const GeomAdaptor_Curve& self_) {
+    return static_cast<int32_t>(self_.GetType());
+}
 inline const opencascade::handle<Standard_Type>& GeomAdaptor_Curve_get_type_descriptor() {
     return GeomAdaptor_Curve::get_type_descriptor();
 }
@@ -10397,6 +10865,15 @@ inline std::unique_ptr<IntCurveSurface_IntersectionSegment> IntCurveSurface_Inte
 
 inline std::unique_ptr<IntCurveSurface_IntersectionPoint> IntCurveSurface_IntersectionPoint_ctor() {
     return std::make_unique<IntCurveSurface_IntersectionPoint>();
+}
+inline std::unique_ptr<IntCurveSurface_IntersectionPoint> IntCurveSurface_IntersectionPoint_ctor_pnt_real3_transitiononcurve(const gp_Pnt& P, Standard_Real USurf, Standard_Real VSurf, Standard_Real UCurv, int32_t TrCurv) {
+    return std::make_unique<IntCurveSurface_IntersectionPoint>(P, USurf, VSurf, UCurv, static_cast<IntCurveSurface_TransitionOnCurve>(TrCurv));
+}
+inline void IntCurveSurface_IntersectionPoint_set_values(IntCurveSurface_IntersectionPoint& self_, const gp_Pnt& P, Standard_Real USurf, Standard_Real VSurf, Standard_Real UCurv, int32_t TrCurv) {
+    self_.SetValues(P, USurf, VSurf, UCurv, static_cast<IntCurveSurface_TransitionOnCurve>(TrCurv));
+}
+inline int32_t IntCurveSurface_IntersectionPoint_transition(const IntCurveSurface_IntersectionPoint& self_) {
+    return static_cast<int32_t>(self_.Transition());
 }
 
 // ========================
@@ -10594,6 +11071,21 @@ inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> BRepAdaptor_Surface
 inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> BRepAdaptor_Surface_basis_surface(const BRepAdaptor_Surface& self_) {
     return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.BasisSurface());
 }
+inline int32_t BRepAdaptor_Surface_u_continuity(const BRepAdaptor_Surface& self_) {
+    return static_cast<int32_t>(self_.UContinuity());
+}
+inline int32_t BRepAdaptor_Surface_v_continuity(const BRepAdaptor_Surface& self_) {
+    return static_cast<int32_t>(self_.VContinuity());
+}
+inline Standard_Integer BRepAdaptor_Surface_nb_u_intervals(const BRepAdaptor_Surface& self_, int32_t theSh) {
+    return self_.NbUIntervals(static_cast<GeomAbs_Shape>(theSh));
+}
+inline Standard_Integer BRepAdaptor_Surface_nb_v_intervals(const BRepAdaptor_Surface& self_, int32_t theSh) {
+    return self_.NbVIntervals(static_cast<GeomAbs_Shape>(theSh));
+}
+inline int32_t BRepAdaptor_Surface_get_type(const BRepAdaptor_Surface& self_) {
+    return static_cast<int32_t>(self_.GetType());
+}
 inline const opencascade::handle<Standard_Type>& BRepAdaptor_Surface_get_type_descriptor() {
     return BRepAdaptor_Surface::get_type_descriptor();
 }
@@ -10639,6 +11131,15 @@ inline std::unique_ptr<gp_Hypr2d> Geom2dAdaptor_Curve_hyperbola(const Geom2dAdap
 }
 inline std::unique_ptr<gp_Parab2d> Geom2dAdaptor_Curve_parabola(const Geom2dAdaptor_Curve& self_) {
     return std::make_unique<gp_Parab2d>(self_.Parabola());
+}
+inline int32_t Geom2dAdaptor_Curve_continuity(const Geom2dAdaptor_Curve& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline Standard_Integer Geom2dAdaptor_Curve_nb_intervals(const Geom2dAdaptor_Curve& self_, int32_t S) {
+    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline int32_t Geom2dAdaptor_Curve_get_type(const Geom2dAdaptor_Curve& self_) {
+    return static_cast<int32_t>(self_.GetType());
 }
 inline const opencascade::handle<Standard_Type>& Geom2dAdaptor_Curve_get_type_descriptor() {
     return Geom2dAdaptor_Curve::get_type_descriptor();
@@ -10721,6 +11222,21 @@ inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> GeomAdaptor_Surface
 inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> GeomAdaptor_Surface_basis_surface(const GeomAdaptor_Surface& self_) {
     return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.BasisSurface());
 }
+inline int32_t GeomAdaptor_Surface_u_continuity(const GeomAdaptor_Surface& self_) {
+    return static_cast<int32_t>(self_.UContinuity());
+}
+inline int32_t GeomAdaptor_Surface_v_continuity(const GeomAdaptor_Surface& self_) {
+    return static_cast<int32_t>(self_.VContinuity());
+}
+inline Standard_Integer GeomAdaptor_Surface_nb_u_intervals(const GeomAdaptor_Surface& self_, int32_t S) {
+    return self_.NbUIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline Standard_Integer GeomAdaptor_Surface_nb_v_intervals(const GeomAdaptor_Surface& self_, int32_t S) {
+    return self_.NbVIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline int32_t GeomAdaptor_Surface_get_type(const GeomAdaptor_Surface& self_) {
+    return static_cast<int32_t>(self_.GetType());
+}
 inline const opencascade::handle<Standard_Type>& GeomAdaptor_Surface_get_type_descriptor() {
     return GeomAdaptor_Surface::get_type_descriptor();
 }
@@ -10797,6 +11313,15 @@ inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> Adaptor3d_CurveOnS
 }
 inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> Adaptor3d_CurveOnSurface_b_spline(const Adaptor3d_CurveOnSurface& self_) {
     return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
+}
+inline int32_t Adaptor3d_CurveOnSurface_continuity(const Adaptor3d_CurveOnSurface& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline Standard_Integer Adaptor3d_CurveOnSurface_nb_intervals(const Adaptor3d_CurveOnSurface& self_, int32_t S) {
+    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline int32_t Adaptor3d_CurveOnSurface_get_type(const Adaptor3d_CurveOnSurface& self_) {
+    return static_cast<int32_t>(self_.GetType());
 }
 inline const opencascade::handle<Standard_Type>& Adaptor3d_CurveOnSurface_get_type_descriptor() {
     return Adaptor3d_CurveOnSurface::get_type_descriptor();
@@ -10929,6 +11454,9 @@ inline void BSplSLib_poles_coefficients(const TColgp_Array2OfPnt& Poles, TColgp_
 
 inline std::unique_ptr<opencascade::handle<Geom_Curve>> BRepFeat_Form_baryc_curve(BRepFeat_Form& self_) {
     return std::make_unique<opencascade::handle<Geom_Curve>>(self_.BarycCurve());
+}
+inline int32_t BRepFeat_Form_current_status_error(const BRepFeat_Form& self_) {
+    return static_cast<int32_t>(self_.CurrentStatusError());
 }
 inline const BRepBuilderAPI_Command& BRepFeat_Form_as_BRepBuilderAPI_Command(const BRepFeat_Form& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepFeat_Form_as_BRepBuilderAPI_Command_mut(BRepFeat_Form& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
@@ -11085,6 +11613,12 @@ inline std::unique_ptr<BOPAlgo_BOP> BOPAlgo_BOP_ctor() {
 }
 inline std::unique_ptr<BOPAlgo_BOP> BOPAlgo_BOP_ctor_handlebaseallocator(const opencascade::handle<NCollection_BaseAllocator>& theAllocator) {
     return std::make_unique<BOPAlgo_BOP>(theAllocator);
+}
+inline void BOPAlgo_BOP_set_operation(BOPAlgo_BOP& self_, int32_t theOperation) {
+    self_.SetOperation(static_cast<BOPAlgo_Operation>(theOperation));
+}
+inline int32_t BOPAlgo_BOP_operation(const BOPAlgo_BOP& self_) {
+    return static_cast<int32_t>(self_.Operation());
 }
 inline const BOPAlgo_Builder& BOPAlgo_BOP_as_BOPAlgo_Builder(const BOPAlgo_BOP& self_) { return static_cast<const BOPAlgo_Builder&>(self_); }
 inline BOPAlgo_Builder& BOPAlgo_BOP_as_BOPAlgo_Builder_mut(BOPAlgo_BOP& self_) { return static_cast<BOPAlgo_Builder&>(self_); }
@@ -11332,6 +11866,12 @@ inline std::unique_ptr<BOPAlgo_Builder> BOPAlgo_Builder_ctor() {
 inline std::unique_ptr<BOPAlgo_Builder> BOPAlgo_Builder_ctor_handlebaseallocator(const opencascade::handle<NCollection_BaseAllocator>& theAllocator) {
     return std::make_unique<BOPAlgo_Builder>(theAllocator);
 }
+inline void BOPAlgo_Builder_set_glue(BOPAlgo_Builder& self_, int32_t theGlue) {
+    self_.SetGlue(static_cast<BOPAlgo_GlueEnum>(theGlue));
+}
+inline int32_t BOPAlgo_Builder_glue(const BOPAlgo_Builder& self_) {
+    return static_cast<int32_t>(self_.Glue());
+}
 inline const BOPAlgo_BuilderShape& BOPAlgo_Builder_as_BOPAlgo_BuilderShape(const BOPAlgo_Builder& self_) { return static_cast<const BOPAlgo_BuilderShape&>(self_); }
 inline BOPAlgo_BuilderShape& BOPAlgo_Builder_as_BOPAlgo_BuilderShape_mut(BOPAlgo_Builder& self_) { return static_cast<BOPAlgo_BuilderShape&>(self_); }
 inline const BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options(const BOPAlgo_Builder& self_) { return static_cast<const BOPAlgo_Options&>(self_); }
@@ -11557,6 +12097,24 @@ inline void BOPAlgo_Options_set_parallel_mode(Standard_Boolean theNewMode) {
 inline std::unique_ptr<Message_Report> Message_Report_ctor() {
     return std::make_unique<Message_Report>();
 }
+inline void Message_Report_add_alert(Message_Report& self_, int32_t theGravity, const opencascade::handle<Message_Alert>& theAlert) {
+    self_.AddAlert(static_cast<Message_Gravity>(theGravity), theAlert);
+}
+inline Standard_Boolean Message_Report_has_alert(Message_Report& self_, const opencascade::handle<Standard_Type>& theType, int32_t theGravity) {
+    return self_.HasAlert(theType, static_cast<Message_Gravity>(theGravity));
+}
+inline void Message_Report_clear(Message_Report& self_, int32_t theGravity) {
+    self_.Clear(static_cast<Message_Gravity>(theGravity));
+}
+inline void Message_Report_set_active_metric(Message_Report& self_, int32_t theMetricType, Standard_Boolean theActivate) {
+    self_.SetActiveMetric(static_cast<Message_MetricType>(theMetricType), theActivate);
+}
+inline void Message_Report_send_messages(Message_Report& self_, const opencascade::handle<Message_Messenger>& theMessenger, int32_t theGravity) {
+    self_.SendMessages(theMessenger, static_cast<Message_Gravity>(theGravity));
+}
+inline void Message_Report_merge(Message_Report& self_, const opencascade::handle<Message_Report>& theOther, int32_t theGravity) {
+    self_.Merge(theOther, static_cast<Message_Gravity>(theGravity));
+}
 inline const opencascade::handle<Standard_Type>& Message_Report_get_type_descriptor() {
     return Message_Report::get_type_descriptor();
 }
@@ -11570,6 +12128,9 @@ inline std::unique_ptr<HandleMessageReport> Message_Report_to_handle(std::unique
 
 inline std::unique_ptr<Message_Level> Message_Level_ctor_asciistring(const TCollection_AsciiString& theName) {
     return std::make_unique<Message_Level>(theName);
+}
+inline Standard_Boolean Message_Level_add_alert(Message_Level& self_, int32_t theGravity, const opencascade::handle<Message_Alert>& theAlert) {
+    return self_.AddAlert(static_cast<Message_Gravity>(theGravity), theAlert);
 }
 
 // ========================
@@ -11612,6 +12173,12 @@ inline Message_Alert& Message_AlertExtended_as_Message_Alert_mut(Message_AlertEx
 inline std::unique_ptr<BRepOffsetAPI_MakeOffsetShape> BRepOffsetAPI_MakeOffsetShape_ctor() {
     return std::make_unique<BRepOffsetAPI_MakeOffsetShape>();
 }
+inline void BRepOffsetAPI_MakeOffsetShape_perform_by_join(BRepOffsetAPI_MakeOffsetShape& self_, const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter, int32_t Join, Standard_Boolean RemoveIntEdges, const Message_ProgressRange& theRange) {
+    self_.PerformByJoin(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join), RemoveIntEdges, theRange);
+}
+inline int32_t BRepOffsetAPI_MakeOffsetShape_get_join_type(const BRepOffsetAPI_MakeOffsetShape& self_) {
+    return static_cast<int32_t>(self_.GetJoinType());
+}
 inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command(const BRepOffsetAPI_MakeOffsetShape& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakeOffsetShape& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
 inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakeOffsetShape& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
@@ -11633,8 +12200,17 @@ inline const TopoDS_Shape& BRepOffsetAPI_MakeOffsetShape_inherited_Shape(BRepOff
 inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor() {
     return std::make_unique<BRepOffset_MakeOffset>();
 }
-inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol) {
-    return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol);
+inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool2_progressrange(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter, int32_t Join, Standard_Boolean Thickening, Standard_Boolean RemoveIntEdges, const Message_ProgressRange& theRange) {
+    return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join), Thickening, RemoveIntEdges, theRange);
+}
+inline void BRepOffset_MakeOffset_initialize(BRepOffset_MakeOffset& self_, const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter, int32_t Join, Standard_Boolean Thickening, Standard_Boolean RemoveIntEdges) {
+    self_.Initialize(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join), Thickening, RemoveIntEdges);
+}
+inline int32_t BRepOffset_MakeOffset_error(const BRepOffset_MakeOffset& self_) {
+    return static_cast<int32_t>(self_.Error());
+}
+inline int32_t BRepOffset_MakeOffset_get_join_type(const BRepOffset_MakeOffset& self_) {
+    return static_cast<int32_t>(self_.GetJoinType());
 }
 
 // ========================
@@ -11656,6 +12232,9 @@ inline std::unique_ptr<TopoDS_Shape> BRepOffset_MakeSimpleOffset_generated(const
 inline std::unique_ptr<TopoDS_Shape> BRepOffset_MakeSimpleOffset_modified(const BRepOffset_MakeSimpleOffset& self_, const TopoDS_Shape& theShape) {
     return std::make_unique<TopoDS_Shape>(self_.Modified(theShape));
 }
+inline int32_t BRepOffset_MakeSimpleOffset_get_error(const BRepOffset_MakeSimpleOffset& self_) {
+    return static_cast<int32_t>(self_.GetError());
+}
 
 // ========================
 // BRepTools_Modifier wrappers
@@ -11674,6 +12253,15 @@ inline std::unique_ptr<BRepTools_Modifier> BRepTools_Modifier_ctor_shape(const T
 
 inline std::unique_ptr<ShapeBuild_ReShape> ShapeBuild_ReShape_ctor() {
     return std::make_unique<ShapeBuild_ReShape>();
+}
+inline std::unique_ptr<TopoDS_Shape> ShapeBuild_ReShape_apply_shape_shapeenum_int(ShapeBuild_ReShape& self_, const TopoDS_Shape& shape, int32_t until, Standard_Integer buildmode) {
+    return std::make_unique<TopoDS_Shape>(self_.Apply(shape, static_cast<TopAbs_ShapeEnum>(until), buildmode));
+}
+inline std::unique_ptr<TopoDS_Shape> ShapeBuild_ReShape_apply_shape_shapeenum(ShapeBuild_ReShape& self_, const TopoDS_Shape& shape, int32_t until) {
+    return std::make_unique<TopoDS_Shape>(self_.Apply(shape, static_cast<TopAbs_ShapeEnum>(until)));
+}
+inline Standard_Boolean ShapeBuild_ReShape_status(const ShapeBuild_ReShape& self_, int32_t status) {
+    return self_.Status(static_cast<ShapeExtend_Status>(status));
 }
 inline const opencascade::handle<Standard_Type>& ShapeBuild_ReShape_get_type_descriptor() {
     return ShapeBuild_ReShape::get_type_descriptor();
@@ -11718,6 +12306,9 @@ inline std::unique_ptr<BRepTools_ReShape> BRepTools_ReShape_ctor() {
 inline std::unique_ptr<TopoDS_Shape> BRepTools_ReShape_value(const BRepTools_ReShape& self_, const TopoDS_Shape& shape) {
     return std::make_unique<TopoDS_Shape>(self_.Value(shape));
 }
+inline std::unique_ptr<TopoDS_Shape> BRepTools_ReShape_apply(BRepTools_ReShape& self_, const TopoDS_Shape& theShape, int32_t theUntil) {
+    return std::make_unique<TopoDS_Shape>(self_.Apply(theShape, static_cast<TopAbs_ShapeEnum>(theUntil)));
+}
 inline std::unique_ptr<TopoDS_Vertex> BRepTools_ReShape_copy_vertex_vertex_real(BRepTools_ReShape& self_, const TopoDS_Vertex& theV, Standard_Real theTol) {
     return std::make_unique<TopoDS_Vertex>(self_.CopyVertex(theV, theTol));
 }
@@ -11747,6 +12338,24 @@ inline std::unique_ptr<BRepOffset_Analyse> BRepOffset_Analyse_ctor_shape_real(co
 inline std::unique_ptr<TopoDS_Shape> BRepOffset_Analyse_generated(const BRepOffset_Analyse& self_, const TopoDS_Shape& theS) {
     return std::make_unique<TopoDS_Shape>(self_.Generated(theS));
 }
+inline void BRepOffset_Analyse_edges_vertex_typeofconcavity_listofshape(const BRepOffset_Analyse& self_, const TopoDS_Vertex& theV, int32_t theType, TopTools_ListOfShape& theL) {
+    self_.Edges(theV, static_cast<ChFiDS_TypeOfConcavity>(theType), theL);
+}
+inline void BRepOffset_Analyse_edges_face_typeofconcavity_listofshape(const BRepOffset_Analyse& self_, const TopoDS_Face& theF, int32_t theType, TopTools_ListOfShape& theL) {
+    self_.Edges(theF, static_cast<ChFiDS_TypeOfConcavity>(theType), theL);
+}
+inline void BRepOffset_Analyse_explode_listofshape_typeofconcavity(const BRepOffset_Analyse& self_, TopTools_ListOfShape& theL, int32_t theType) {
+    self_.Explode(theL, static_cast<ChFiDS_TypeOfConcavity>(theType));
+}
+inline void BRepOffset_Analyse_explode_listofshape_typeofconcavity2(const BRepOffset_Analyse& self_, TopTools_ListOfShape& theL, int32_t theType1, int32_t theType2) {
+    self_.Explode(theL, static_cast<ChFiDS_TypeOfConcavity>(theType1), static_cast<ChFiDS_TypeOfConcavity>(theType2));
+}
+inline void BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity(const BRepOffset_Analyse& self_, const TopoDS_Face& theFace, TopoDS_Compound& theCo, TopTools_MapOfShape& theMap, int32_t theType) {
+    self_.AddFaces(theFace, theCo, theMap, static_cast<ChFiDS_TypeOfConcavity>(theType));
+}
+inline void BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity2(const BRepOffset_Analyse& self_, const TopoDS_Face& theFace, TopoDS_Compound& theCo, TopTools_MapOfShape& theMap, int32_t theType1, int32_t theType2) {
+    self_.AddFaces(theFace, theCo, theMap, static_cast<ChFiDS_TypeOfConcavity>(theType1), static_cast<ChFiDS_TypeOfConcavity>(theType2));
+}
 
 // ========================
 // BRepAlgo_Image wrappers
@@ -11754,6 +12363,9 @@ inline std::unique_ptr<TopoDS_Shape> BRepOffset_Analyse_generated(const BRepOffs
 
 inline std::unique_ptr<BRepAlgo_Image> BRepAlgo_Image_ctor() {
     return std::make_unique<BRepAlgo_Image>();
+}
+inline void BRepAlgo_Image_filter(BRepAlgo_Image& self_, const TopoDS_Shape& S, int32_t ShapeType) {
+    self_.Filter(S, static_cast<TopAbs_ShapeEnum>(ShapeType));
 }
 
 // ========================
@@ -11771,23 +12383,41 @@ inline std::unique_ptr<BRepOffset_MakeLoops> BRepOffset_MakeLoops_ctor() {
 inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor() {
     return std::make_unique<BRepOffset_Offset>();
 }
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_face_real_bool(const TopoDS_Face& Face, Standard_Real Offset, Standard_Boolean OffsetOutside) {
-    return std::make_unique<BRepOffset_Offset>(Face, Offset, OffsetOutside);
+inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_face_real_bool_jointype(const TopoDS_Face& Face, Standard_Real Offset, Standard_Boolean OffsetOutside, int32_t JoinType) {
+    return std::make_unique<BRepOffset_Offset>(Face, Offset, OffsetOutside, static_cast<GeomAbs_JoinType>(JoinType));
 }
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool(const TopoDS_Face& Face, Standard_Real Offset, const TopTools_DataMapOfShapeShape& Created, Standard_Boolean OffsetOutside) {
-    return std::make_unique<BRepOffset_Offset>(Face, Offset, Created, OffsetOutside);
+inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool_jointype(const TopoDS_Face& Face, Standard_Real Offset, const TopTools_DataMapOfShapeShape& Created, Standard_Boolean OffsetOutside, int32_t JoinType) {
+    return std::make_unique<BRepOffset_Offset>(Face, Offset, Created, OffsetOutside, static_cast<GeomAbs_JoinType>(JoinType));
 }
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_bool_real(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol) {
-    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, Polynomial, Tol);
+inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_bool_real_shape(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol, int32_t Conti) {
+    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti));
 }
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_edge2_bool_real(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, const TopoDS_Edge& FirstEdge, const TopoDS_Edge& LastEdge, Standard_Boolean Polynomial, Standard_Real Tol) {
-    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol);
+inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_edge2_bool_real_shape(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, const TopoDS_Edge& FirstEdge, const TopoDS_Edge& LastEdge, Standard_Boolean Polynomial, Standard_Real Tol, int32_t Conti) {
+    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti));
 }
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real(const TopoDS_Vertex& Vertex, const TopTools_ListOfShape& LEdge, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol) {
-    return std::make_unique<BRepOffset_Offset>(Vertex, LEdge, Offset, Polynomial, Tol);
+inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real_shape(const TopoDS_Vertex& Vertex, const TopTools_ListOfShape& LEdge, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol, int32_t Conti) {
+    return std::make_unique<BRepOffset_Offset>(Vertex, LEdge, Offset, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti));
 }
 inline std::unique_ptr<TopoDS_Shape> BRepOffset_Offset_generated(const BRepOffset_Offset& self_, const TopoDS_Shape& Shape) {
     return std::make_unique<TopoDS_Shape>(self_.Generated(Shape));
+}
+inline void BRepOffset_Offset_init_face_real_bool_jointype(BRepOffset_Offset& self_, const TopoDS_Face& Face, Standard_Real Offset, Standard_Boolean OffsetOutside, int32_t JoinType) {
+    self_.Init(Face, Offset, OffsetOutside, static_cast<GeomAbs_JoinType>(JoinType));
+}
+inline void BRepOffset_Offset_init_face_real_datamapofshapeshape_bool_jointype(BRepOffset_Offset& self_, const TopoDS_Face& Face, Standard_Real Offset, const TopTools_DataMapOfShapeShape& Created, Standard_Boolean OffsetOutside, int32_t JoinType) {
+    self_.Init(Face, Offset, Created, OffsetOutside, static_cast<GeomAbs_JoinType>(JoinType));
+}
+inline void BRepOffset_Offset_init_edge3_real_bool_real_shape(BRepOffset_Offset& self_, const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol, int32_t Conti) {
+    self_.Init(Path, Edge1, Edge2, Offset, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti));
+}
+inline void BRepOffset_Offset_init_edge3_real_edge2_bool_real_shape(BRepOffset_Offset& self_, const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, const TopoDS_Edge& FirstEdge, const TopoDS_Edge& LastEdge, Standard_Boolean Polynomial, Standard_Real Tol, int32_t Conti) {
+    self_.Init(Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti));
+}
+inline void BRepOffset_Offset_init_vertex_listofshape_real_bool_real_shape(BRepOffset_Offset& self_, const TopoDS_Vertex& Vertex, const TopTools_ListOfShape& LEdge, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol, int32_t Conti) {
+    self_.Init(Vertex, LEdge, Offset, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti));
+}
+inline int32_t BRepOffset_Offset_status(const BRepOffset_Offset& self_) {
+    return static_cast<int32_t>(self_.Status());
 }
 
 // ========================
@@ -11797,6 +12427,15 @@ inline std::unique_ptr<TopoDS_Shape> BRepOffset_Offset_generated(const BRepOffse
 inline std::unique_ptr<BRepOffset_Interval> BRepOffset_Interval_ctor() {
     return std::make_unique<BRepOffset_Interval>();
 }
+inline std::unique_ptr<BRepOffset_Interval> BRepOffset_Interval_ctor_real2_typeofconcavity(Standard_Real U1, Standard_Real U2, int32_t Type) {
+    return std::make_unique<BRepOffset_Interval>(U1, U2, static_cast<ChFiDS_TypeOfConcavity>(Type));
+}
+inline void BRepOffset_Interval_type_typeofconcavity(BRepOffset_Interval& self_, int32_t T) {
+    self_.Type(static_cast<ChFiDS_TypeOfConcavity>(T));
+}
+inline int32_t BRepOffset_Interval_type_(const BRepOffset_Interval& self_) {
+    return static_cast<int32_t>(self_.Type());
+}
 
 // ========================
 // BRepFill_PipeShell wrappers
@@ -11804,6 +12443,15 @@ inline std::unique_ptr<BRepOffset_Interval> BRepOffset_Interval_ctor() {
 
 inline std::unique_ptr<BRepFill_PipeShell> BRepFill_PipeShell_ctor_wire(const TopoDS_Wire& Spine) {
     return std::make_unique<BRepFill_PipeShell>(Spine);
+}
+inline void BRepFill_PipeShell_set(BRepFill_PipeShell& self_, const TopoDS_Wire& AuxiliarySpine, Standard_Boolean CurvilinearEquivalence, int32_t KeepContact) {
+    self_.Set(AuxiliarySpine, CurvilinearEquivalence, static_cast<BRepFill_TypeOfContact>(KeepContact));
+}
+inline int32_t BRepFill_PipeShell_get_status(const BRepFill_PipeShell& self_) {
+    return static_cast<int32_t>(self_.GetStatus());
+}
+inline void BRepFill_PipeShell_set_transition(BRepFill_PipeShell& self_, int32_t Mode, Standard_Real Angmin, Standard_Real Angmax) {
+    self_.SetTransition(static_cast<BRepFill_TransitionStyle>(Mode), Angmin, Angmax);
 }
 inline const opencascade::handle<Standard_Type>& BRepFill_PipeShell_get_type_descriptor() {
     return BRepFill_PipeShell::get_type_descriptor();
@@ -11853,8 +12501,8 @@ inline std::unique_ptr<TopoDS_Shape> BRepFill_Section_modified_shape(const BRepF
 inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor() {
     return std::make_unique<BRepFill_Pipe>();
 }
-inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor_wire_shape(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile) {
-    return std::make_unique<BRepFill_Pipe>(Spine, Profile);
+inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor_wire_shape_trihedron_bool2(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile, int32_t aMode, Standard_Boolean ForceApproxC1, Standard_Boolean GeneratePartCase) {
+    return std::make_unique<BRepFill_Pipe>(Spine, Profile, static_cast<GeomFill_Trihedron>(aMode), ForceApproxC1, GeneratePartCase);
 }
 inline std::unique_ptr<TopoDS_Face> BRepFill_Pipe_face(BRepFill_Pipe& self_, const TopoDS_Edge& ESpine, const TopoDS_Edge& EProfile) {
     return std::make_unique<TopoDS_Face>(self_.Face(ESpine, EProfile));
@@ -11876,8 +12524,17 @@ inline std::unique_ptr<TopoDS_Wire> BRepFill_Pipe_pipe_line(BRepFill_Pipe& self_
 inline std::unique_ptr<BRepFill_OffsetWire> BRepFill_OffsetWire_ctor() {
     return std::make_unique<BRepFill_OffsetWire>();
 }
-inline std::unique_ptr<BRepFill_OffsetWire> BRepFill_OffsetWire_ctor_face(const TopoDS_Face& Spine) {
-    return std::make_unique<BRepFill_OffsetWire>(Spine);
+inline std::unique_ptr<BRepFill_OffsetWire> BRepFill_OffsetWire_ctor_face_jointype_bool(const TopoDS_Face& Spine, int32_t Join, Standard_Boolean IsOpenResult) {
+    return std::make_unique<BRepFill_OffsetWire>(Spine, static_cast<GeomAbs_JoinType>(Join), IsOpenResult);
+}
+inline void BRepFill_OffsetWire_init(BRepFill_OffsetWire& self_, const TopoDS_Face& Spine, int32_t Join, Standard_Boolean IsOpenResult) {
+    self_.Init(Spine, static_cast<GeomAbs_JoinType>(Join), IsOpenResult);
+}
+inline void BRepFill_OffsetWire_perform_with_bi_lo(BRepFill_OffsetWire& self_, const TopoDS_Face& WSP, Standard_Real Offset, const BRepMAT2d_BisectingLocus& Locus, BRepMAT2d_LinkTopoBilo& Link, int32_t Join, Standard_Real Alt) {
+    self_.PerformWithBiLo(WSP, Offset, Locus, Link, static_cast<GeomAbs_JoinType>(Join), Alt);
+}
+inline int32_t BRepFill_OffsetWire_join_type(const BRepFill_OffsetWire& self_) {
+    return static_cast<int32_t>(self_.JoinType());
 }
 
 // ========================
@@ -11935,6 +12592,12 @@ inline std::unique_ptr<MAT2d_Tool2d> MAT2d_Tool2d_ctor() {
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> MAT2d_Tool2d_geom_elt(const MAT2d_Tool2d& self_, Standard_Integer Index) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.GeomElt(Index));
 }
+inline void MAT2d_Tool2d_sense(MAT2d_Tool2d& self_, int32_t aside) {
+    self_.Sense(static_cast<MAT_Side>(aside));
+}
+inline void MAT2d_Tool2d_set_join_type(MAT2d_Tool2d& self_, int32_t aJoinType) {
+    self_.SetJoinType(static_cast<GeomAbs_JoinType>(aJoinType));
+}
 
 // ========================
 // MAT2d_BiInt wrappers
@@ -11950,6 +12613,9 @@ inline std::unique_ptr<MAT2d_BiInt> MAT2d_BiInt_ctor_int2(Standard_Integer I1, S
 
 inline std::unique_ptr<Bisector_Bisec> Bisector_Bisec_ctor() {
     return std::make_unique<Bisector_Bisec>();
+}
+inline void Bisector_Bisec_perform(Bisector_Bisec& self_, const opencascade::handle<Geom2d_Curve>& Cu1, const opencascade::handle<Geom2d_Curve>& Cu2, const gp_Pnt2d& P, const gp_Vec2d& V1, const gp_Vec2d& V2, Standard_Real Sense, int32_t ajointype, Standard_Real Tolerance, Standard_Boolean oncurve) {
+    self_.Perform(Cu1, Cu2, P, V1, V2, Sense, static_cast<GeomAbs_JoinType>(ajointype), Tolerance, oncurve);
 }
 
 // ========================
@@ -11989,19 +12655,28 @@ inline std::unique_ptr<TopoDS_Vertex> ChFi2d_Builder_remove_chamfer(ChFi2d_Build
 inline std::unique_ptr<TopoDS_Face> ChFi2d_Builder_result(const ChFi2d_Builder& self_) {
     return std::make_unique<TopoDS_Face>(self_.Result());
 }
+inline int32_t ChFi2d_Builder_status(const ChFi2d_Builder& self_) {
+    return static_cast<int32_t>(self_.Status());
+}
 
 // ========================
 // ChFi3d_FilBuilder wrappers
 // ========================
 
-inline std::unique_ptr<ChFi3d_FilBuilder> ChFi3d_FilBuilder_ctor_shape(const TopoDS_Shape& S) {
-    return std::make_unique<ChFi3d_FilBuilder>(S);
+inline std::unique_ptr<ChFi3d_FilBuilder> ChFi3d_FilBuilder_ctor_shape_filletshape_real(const TopoDS_Shape& S, int32_t FShape, Standard_Real Ta) {
+    return std::make_unique<ChFi3d_FilBuilder>(S, static_cast<ChFi3d_FilletShape>(FShape), Ta);
 }
 inline std::unique_ptr<opencascade::handle<Law_Function>> ChFi3d_FilBuilder_get_law(ChFi3d_FilBuilder& self_, Standard_Integer IC, const TopoDS_Edge& E) {
     return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
 }
 inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_FilBuilder_sect(const ChFi3d_FilBuilder& self_, Standard_Integer IC, Standard_Integer IS) {
     return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
+}
+inline void ChFi3d_FilBuilder_set_fillet_shape(ChFi3d_FilBuilder& self_, int32_t FShape) {
+    self_.SetFilletShape(static_cast<ChFi3d_FilletShape>(FShape));
+}
+inline int32_t ChFi3d_FilBuilder_get_fillet_shape(const ChFi3d_FilBuilder& self_) {
+    return static_cast<int32_t>(self_.GetFilletShape());
 }
 inline const ChFi3d_Builder& ChFi3d_FilBuilder_as_ChFi3d_Builder(const ChFi3d_FilBuilder& self_) { return static_cast<const ChFi3d_Builder&>(self_); }
 inline ChFi3d_Builder& ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(ChFi3d_FilBuilder& self_) { return static_cast<ChFi3d_Builder&>(self_); }
@@ -12137,6 +12812,12 @@ inline std::unique_ptr<TopoDS_Vertex> ChFi3d_Builder_faulty_vertex(const ChFi3d_
 inline std::unique_ptr<TopoDS_Shape> ChFi3d_Builder_bad_shape(const ChFi3d_Builder& self_) {
     return std::make_unique<TopoDS_Shape>(self_.BadShape());
 }
+inline void ChFi3d_Builder_set_continuity(ChFi3d_Builder& self_, int32_t InternalContinuity, Standard_Real AngularTolerance) {
+    self_.SetContinuity(static_cast<GeomAbs_Shape>(InternalContinuity), AngularTolerance);
+}
+inline int32_t ChFi3d_Builder_stripe_status(const ChFi3d_Builder& self_, Standard_Integer IC) {
+    return static_cast<int32_t>(self_.StripeStatus(IC));
+}
 
 // ========================
 // ChFiDS_ElSpine wrappers
@@ -12175,6 +12856,15 @@ inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> ChFiDS_ElSpine_bez
 inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> ChFiDS_ElSpine_b_spline(const ChFiDS_ElSpine& self_) {
     return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
 }
+inline int32_t ChFiDS_ElSpine_continuity(const ChFiDS_ElSpine& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline Standard_Integer ChFiDS_ElSpine_nb_intervals(const ChFiDS_ElSpine& self_, int32_t S) {
+    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline int32_t ChFiDS_ElSpine_get_type(const ChFiDS_ElSpine& self_) {
+    return static_cast<int32_t>(self_.GetType());
+}
 inline const opencascade::handle<Standard_Type>& ChFiDS_ElSpine_get_type_descriptor() {
     return ChFiDS_ElSpine::get_type_descriptor();
 }
@@ -12209,6 +12899,9 @@ inline std::unique_ptr<ChFiDS_SurfData> ChFiDS_SurfData_ctor() {
 inline std::unique_ptr<gp_Pnt2d> ChFiDS_SurfData_get2d_points(const ChFiDS_SurfData& self_, Standard_Boolean First, Standard_Integer OnS) {
     return std::make_unique<gp_Pnt2d>(self_.Get2dPoints(First, OnS));
 }
+inline int32_t ChFiDS_SurfData_orientation(const ChFiDS_SurfData& self_) {
+    return static_cast<int32_t>(self_.Orientation());
+}
 inline const opencascade::handle<Standard_Type>& ChFiDS_SurfData_get_type_descriptor() {
     return ChFiDS_SurfData::get_type_descriptor();
 }
@@ -12223,6 +12916,12 @@ inline std::unique_ptr<HandleChFiDSSurfData> ChFiDS_SurfData_to_handle(std::uniq
 inline std::unique_ptr<ChFiDS_CommonPoint> ChFiDS_CommonPoint_ctor() {
     return std::make_unique<ChFiDS_CommonPoint>();
 }
+inline void ChFiDS_CommonPoint_set_arc(ChFiDS_CommonPoint& self_, Standard_Real Tol, const TopoDS_Edge& A, Standard_Real Param, int32_t TArc) {
+    self_.SetArc(Tol, A, Param, static_cast<TopAbs_Orientation>(TArc));
+}
+inline int32_t ChFiDS_CommonPoint_transition_on_arc(const ChFiDS_CommonPoint& self_) {
+    return static_cast<int32_t>(self_.TransitionOnArc());
+}
 
 // ========================
 // ChFiDS_FaceInterference wrappers
@@ -12231,6 +12930,15 @@ inline std::unique_ptr<ChFiDS_CommonPoint> ChFiDS_CommonPoint_ctor() {
 inline std::unique_ptr<ChFiDS_FaceInterference> ChFiDS_FaceInterference_ctor() {
     return std::make_unique<ChFiDS_FaceInterference>();
 }
+inline void ChFiDS_FaceInterference_set_interference(ChFiDS_FaceInterference& self_, Standard_Integer LineIndex, int32_t Trans, const opencascade::handle<Geom2d_Curve>& PCurv1, const opencascade::handle<Geom2d_Curve>& PCurv2) {
+    self_.SetInterference(LineIndex, static_cast<TopAbs_Orientation>(Trans), PCurv1, PCurv2);
+}
+inline void ChFiDS_FaceInterference_set_transition(ChFiDS_FaceInterference& self_, int32_t Trans) {
+    self_.SetTransition(static_cast<TopAbs_Orientation>(Trans));
+}
+inline int32_t ChFiDS_FaceInterference_transition(const ChFiDS_FaceInterference& self_) {
+    return static_cast<int32_t>(self_.Transition());
+}
 
 // ========================
 // ChFiDS_Stripe wrappers
@@ -12238,6 +12946,42 @@ inline std::unique_ptr<ChFiDS_FaceInterference> ChFiDS_FaceInterference_ctor() {
 
 inline std::unique_ptr<ChFiDS_Stripe> ChFiDS_Stripe_ctor() {
     return std::make_unique<ChFiDS_Stripe>();
+}
+inline int32_t ChFiDS_Stripe_orientation_on_face1(const ChFiDS_Stripe& self_) {
+    return static_cast<int32_t>(self_.OrientationOnFace1());
+}
+inline int32_t ChFiDS_Stripe_orientation_on_face2(const ChFiDS_Stripe& self_) {
+    return static_cast<int32_t>(self_.OrientationOnFace2());
+}
+inline void ChFiDS_Stripe_orientation_on_face1_orientation(ChFiDS_Stripe& self_, int32_t Or1) {
+    self_.OrientationOnFace1(static_cast<TopAbs_Orientation>(Or1));
+}
+inline void ChFiDS_Stripe_orientation_on_face2_orientation(ChFiDS_Stripe& self_, int32_t Or2) {
+    self_.OrientationOnFace2(static_cast<TopAbs_Orientation>(Or2));
+}
+inline int32_t ChFiDS_Stripe_first_p_curve_orientation(const ChFiDS_Stripe& self_) {
+    return static_cast<int32_t>(self_.FirstPCurveOrientation());
+}
+inline int32_t ChFiDS_Stripe_last_p_curve_orientation(const ChFiDS_Stripe& self_) {
+    return static_cast<int32_t>(self_.LastPCurveOrientation());
+}
+inline void ChFiDS_Stripe_first_p_curve_orientation_orientation(ChFiDS_Stripe& self_, int32_t O) {
+    self_.FirstPCurveOrientation(static_cast<TopAbs_Orientation>(O));
+}
+inline void ChFiDS_Stripe_last_p_curve_orientation_orientation(ChFiDS_Stripe& self_, int32_t O) {
+    self_.LastPCurveOrientation(static_cast<TopAbs_Orientation>(O));
+}
+inline int32_t ChFiDS_Stripe_orientation_int(const ChFiDS_Stripe& self_, Standard_Integer OnS) {
+    return static_cast<int32_t>(self_.Orientation(OnS));
+}
+inline void ChFiDS_Stripe_set_orientation_orientation_int(ChFiDS_Stripe& self_, int32_t Or, Standard_Integer OnS) {
+    self_.SetOrientation(static_cast<TopAbs_Orientation>(Or), OnS);
+}
+inline int32_t ChFiDS_Stripe_orientation_bool(const ChFiDS_Stripe& self_, Standard_Boolean First) {
+    return static_cast<int32_t>(self_.Orientation(First));
+}
+inline void ChFiDS_Stripe_set_orientation_orientation_bool(ChFiDS_Stripe& self_, int32_t Or, Standard_Boolean First) {
+    self_.SetOrientation(static_cast<TopAbs_Orientation>(Or), First);
 }
 inline const opencascade::handle<Standard_Type>& ChFiDS_Stripe_get_type_descriptor() {
     return ChFiDS_Stripe::get_type_descriptor();
@@ -12369,6 +13113,9 @@ inline const Handle(Geom2d_Curve)& BRepAdaptor_Curve2d_inherited_Curve(const BRe
 inline std::unique_ptr<ChFiDS_Map> ChFiDS_Map_ctor() {
     return std::make_unique<ChFiDS_Map>();
 }
+inline void ChFiDS_Map_fill(ChFiDS_Map& self_, const TopoDS_Shape& S, int32_t T1, int32_t T2) {
+    self_.Fill(S, static_cast<TopAbs_ShapeEnum>(T1), static_cast<TopAbs_ShapeEnum>(T2));
+}
 
 // ========================
 // ChFiDS_StripeMap wrappers
@@ -12395,6 +13142,15 @@ inline std::unique_ptr<ChFi3d_ChBuilder> ChFi3d_ChBuilder_ctor_shape_real(const 
 }
 inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_ChBuilder_sect(const ChFi3d_ChBuilder& self_, Standard_Integer IC, Standard_Integer IS) {
     return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
+}
+inline void ChFi3d_ChBuilder_set_mode(ChFi3d_ChBuilder& self_, int32_t theMode) {
+    self_.SetMode(static_cast<ChFiDS_ChamfMode>(theMode));
+}
+inline int32_t ChFi3d_ChBuilder_is_chamfer(const ChFi3d_ChBuilder& self_, Standard_Integer IC) {
+    return static_cast<int32_t>(self_.IsChamfer(IC));
+}
+inline int32_t ChFi3d_ChBuilder_mode(const ChFi3d_ChBuilder& self_) {
+    return static_cast<int32_t>(self_.Mode());
 }
 inline const ChFi3d_Builder& ChFi3d_ChBuilder_as_ChFi3d_Builder(const ChFi3d_ChBuilder& self_) { return static_cast<const ChFi3d_Builder&>(self_); }
 inline ChFi3d_Builder& ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(ChFi3d_ChBuilder& self_) { return static_cast<ChFi3d_Builder&>(self_); }
@@ -13040,6 +13796,18 @@ inline std::unique_ptr<TopoDS_Shape> BRepSweep_Rotation_split_shell(const BRepSw
 inline std::unique_ptr<gp_Ax1> BRepSweep_Rotation_axe(const BRepSweep_Rotation& self_) {
     return std::make_unique<gp_Ax1>(self_.Axe());
 }
+inline void BRepSweep_Rotation_set_p_curve(BRepSweep_Rotation& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenF, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirV, int32_t orien) {
+    self_.SetPCurve(aNewFace, aNewEdge, aGenF, aGenE, aDirV, static_cast<TopAbs_Orientation>(orien));
+}
+inline void BRepSweep_Rotation_set_generating_p_curve(BRepSweep_Rotation& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirE, const Sweep_NumShape& aDirV, int32_t orien) {
+    self_.SetGeneratingPCurve(aNewFace, aNewEdge, aGenE, aDirE, aDirV, static_cast<TopAbs_Orientation>(orien));
+}
+inline void BRepSweep_Rotation_set_directing_p_curve(BRepSweep_Rotation& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenE, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE, int32_t orien) {
+    self_.SetDirectingPCurve(aNewFace, aNewEdge, aGenE, aGenV, aDirE, static_cast<TopAbs_Orientation>(orien));
+}
+inline int32_t BRepSweep_Rotation_direct_solid(BRepSweep_Rotation& self_, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
+    return static_cast<int32_t>(self_.DirectSolid(aGenS, aDirS));
+}
 inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Rotation& self_) { return static_cast<const BRepSweep_NumLinearRegularSweep&>(self_); }
 inline BRepSweep_NumLinearRegularSweep& BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Rotation& self_) { return static_cast<BRepSweep_NumLinearRegularSweep&>(self_); }
 inline const BRepSweep_Trsf& BRepSweep_Rotation_as_BRepSweep_Trsf(const BRepSweep_Rotation& self_) { return static_cast<const BRepSweep_Trsf&>(self_); }
@@ -13087,6 +13855,15 @@ inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_make_empty_generating_edge(B
 }
 inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_make_empty_face(BRepSweep_Trsf& self_, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
     return std::make_unique<TopoDS_Shape>(self_.MakeEmptyFace(aGenS, aDirS));
+}
+inline void BRepSweep_Trsf_set_p_curve(BRepSweep_Trsf& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenF, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirV, int32_t orien) {
+    self_.SetPCurve(aNewFace, aNewEdge, aGenF, aGenE, aDirV, static_cast<TopAbs_Orientation>(orien));
+}
+inline void BRepSweep_Trsf_set_generating_p_curve(BRepSweep_Trsf& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirE, const Sweep_NumShape& aDirV, int32_t orien) {
+    self_.SetGeneratingPCurve(aNewFace, aNewEdge, aGenE, aDirE, aDirV, static_cast<TopAbs_Orientation>(orien));
+}
+inline void BRepSweep_Trsf_set_directing_p_curve(BRepSweep_Trsf& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenE, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE, int32_t orien) {
+    self_.SetDirectingPCurve(aNewFace, aNewEdge, aGenE, aGenV, aDirE, static_cast<TopAbs_Orientation>(orien));
 }
 inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Trsf& self_) { return static_cast<const BRepSweep_NumLinearRegularSweep&>(self_); }
 inline BRepSweep_NumLinearRegularSweep& BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Trsf& self_) { return static_cast<BRepSweep_NumLinearRegularSweep&>(self_); }
@@ -13152,6 +13929,18 @@ inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_first_shape
 inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_last_shape_shape(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aGenS) {
     return std::make_unique<TopoDS_Shape>(self_.LastShape(aGenS));
 }
+inline void BRepSweep_NumLinearRegularSweep_set_p_curve(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenF, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirV, int32_t orien) {
+    self_.SetPCurve(aNewFace, aNewEdge, aGenF, aGenE, aDirV, static_cast<TopAbs_Orientation>(orien));
+}
+inline void BRepSweep_NumLinearRegularSweep_set_generating_p_curve(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirE, const Sweep_NumShape& aDirV, int32_t orien) {
+    self_.SetGeneratingPCurve(aNewFace, aNewEdge, aGenE, aDirE, aDirV, static_cast<TopAbs_Orientation>(orien));
+}
+inline void BRepSweep_NumLinearRegularSweep_set_directing_p_curve(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenE, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE, int32_t orien) {
+    self_.SetDirectingPCurve(aNewFace, aNewEdge, aGenE, aGenV, aDirE, static_cast<TopAbs_Orientation>(orien));
+}
+inline int32_t BRepSweep_NumLinearRegularSweep_direct_solid(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
+    return static_cast<int32_t>(self_.DirectSolid(aGenS, aDirS));
+}
 
 // ========================
 // BRepSweep_Builder wrappers
@@ -13159,6 +13948,9 @@ inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_last_shape_
 
 inline std::unique_ptr<BRepSweep_Builder> BRepSweep_Builder_ctor_builder(const BRep_Builder& aBuilder) {
     return std::make_unique<BRepSweep_Builder>(aBuilder);
+}
+inline void BRepSweep_Builder_add(const BRepSweep_Builder& self_, TopoDS_Shape& aShape1, const TopoDS_Shape& aShape2, int32_t Orient) {
+    self_.Add(aShape1, aShape2, static_cast<TopAbs_Orientation>(Orient));
 }
 
 // ========================
@@ -13170,6 +13962,15 @@ inline std::unique_ptr<BRepSweep_Tool> BRepSweep_Tool_ctor_shape(const TopoDS_Sh
 }
 inline std::unique_ptr<TopoDS_Shape> BRepSweep_Tool_shape(const BRepSweep_Tool& self_, Standard_Integer anIndex) {
     return std::make_unique<TopoDS_Shape>(self_.Shape(anIndex));
+}
+inline int32_t BRepSweep_Tool_type_(const BRepSweep_Tool& self_, const TopoDS_Shape& aShape) {
+    return static_cast<int32_t>(self_.Type(aShape));
+}
+inline int32_t BRepSweep_Tool_orientation(const BRepSweep_Tool& self_, const TopoDS_Shape& aShape) {
+    return static_cast<int32_t>(self_.Orientation(aShape));
+}
+inline void BRepSweep_Tool_set_orientation(const BRepSweep_Tool& self_, TopoDS_Shape& aShape, int32_t Or) {
+    self_.SetOrientation(aShape, static_cast<TopAbs_Orientation>(Or));
 }
 
 // ========================
@@ -13188,6 +13989,12 @@ inline std::unique_ptr<Sweep_NumShape> Sweep_NumShapeTool_first_vertex(const Swe
 inline std::unique_ptr<Sweep_NumShape> Sweep_NumShapeTool_last_vertex(const Sweep_NumShapeTool& self_) {
     return std::make_unique<Sweep_NumShape>(self_.LastVertex());
 }
+inline int32_t Sweep_NumShapeTool_type_(const Sweep_NumShapeTool& self_, const Sweep_NumShape& aShape) {
+    return static_cast<int32_t>(self_.Type(aShape));
+}
+inline int32_t Sweep_NumShapeTool_orientation(const Sweep_NumShapeTool& self_, const Sweep_NumShape& aShape) {
+    return static_cast<int32_t>(self_.Orientation(aShape));
+}
 
 // ========================
 // Sweep_NumShape wrappers
@@ -13195,6 +14002,18 @@ inline std::unique_ptr<Sweep_NumShape> Sweep_NumShapeTool_last_vertex(const Swee
 
 inline std::unique_ptr<Sweep_NumShape> Sweep_NumShape_ctor() {
     return std::make_unique<Sweep_NumShape>();
+}
+inline std::unique_ptr<Sweep_NumShape> Sweep_NumShape_ctor_int_shapeenum_bool3(Standard_Integer Index, int32_t Type, Standard_Boolean Closed, Standard_Boolean BegInf, Standard_Boolean EndInf) {
+    return std::make_unique<Sweep_NumShape>(Index, static_cast<TopAbs_ShapeEnum>(Type), Closed, BegInf, EndInf);
+}
+inline void Sweep_NumShape_init(Sweep_NumShape& self_, Standard_Integer Index, int32_t Type, Standard_Boolean Closed, Standard_Boolean BegInf, Standard_Boolean EndInf) {
+    self_.Init(Index, static_cast<TopAbs_ShapeEnum>(Type), Closed, BegInf, EndInf);
+}
+inline int32_t Sweep_NumShape_type_(const Sweep_NumShape& self_) {
+    return static_cast<int32_t>(self_.Type());
+}
+inline int32_t Sweep_NumShape_orientation(const Sweep_NumShape& self_) {
+    return static_cast<int32_t>(self_.Orientation());
 }
 
 // ========================
@@ -13250,6 +14069,18 @@ inline std::unique_ptr<TopoDS_Shape> BRepSweep_Translation_make_empty_face(BRepS
 }
 inline std::unique_ptr<gp_Vec> BRepSweep_Translation_vec(const BRepSweep_Translation& self_) {
     return std::make_unique<gp_Vec>(self_.Vec());
+}
+inline void BRepSweep_Translation_set_p_curve(BRepSweep_Translation& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenF, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirV, int32_t orien) {
+    self_.SetPCurve(aNewFace, aNewEdge, aGenF, aGenE, aDirV, static_cast<TopAbs_Orientation>(orien));
+}
+inline void BRepSweep_Translation_set_generating_p_curve(BRepSweep_Translation& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirE, const Sweep_NumShape& aDirV, int32_t orien) {
+    self_.SetGeneratingPCurve(aNewFace, aNewEdge, aGenE, aDirE, aDirV, static_cast<TopAbs_Orientation>(orien));
+}
+inline void BRepSweep_Translation_set_directing_p_curve(BRepSweep_Translation& self_, const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenE, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE, int32_t orien) {
+    self_.SetDirectingPCurve(aNewFace, aNewEdge, aGenE, aGenV, aDirE, static_cast<TopAbs_Orientation>(orien));
+}
+inline int32_t BRepSweep_Translation_direct_solid(BRepSweep_Translation& self_, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
+    return static_cast<int32_t>(self_.DirectSolid(aGenS, aDirS));
 }
 inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Translation& self_) { return static_cast<const BRepSweep_NumLinearRegularSweep&>(self_); }
 inline BRepSweep_NumLinearRegularSweep& BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Translation& self_) { return static_cast<BRepSweep_NumLinearRegularSweep&>(self_); }
@@ -13696,6 +14527,48 @@ inline std::unique_ptr<BRepPrim_GWedge> BRepPrim_GWedge_ctor_builder_ax2_real10(
 inline std::unique_ptr<gp_Ax2> BRepPrim_GWedge_axes(const BRepPrim_GWedge& self_) {
     return std::make_unique<gp_Ax2>(self_.Axes());
 }
+inline std::unique_ptr<gp_Pln> BRepPrim_GWedge_plane(BRepPrim_GWedge& self_, int32_t d1) {
+    return std::make_unique<gp_Pln>(self_.Plane(static_cast<BRepPrim_Direction>(d1)));
+}
+inline std::unique_ptr<gp_Lin> BRepPrim_GWedge_line(BRepPrim_GWedge& self_, int32_t d1, int32_t d2) {
+    return std::make_unique<gp_Lin>(self_.Line(static_cast<BRepPrim_Direction>(d1), static_cast<BRepPrim_Direction>(d2)));
+}
+inline std::unique_ptr<gp_Pnt> BRepPrim_GWedge_point(BRepPrim_GWedge& self_, int32_t d1, int32_t d2, int32_t d3) {
+    return std::make_unique<gp_Pnt>(self_.Point(static_cast<BRepPrim_Direction>(d1), static_cast<BRepPrim_Direction>(d2), static_cast<BRepPrim_Direction>(d3)));
+}
+inline void BRepPrim_GWedge_open(BRepPrim_GWedge& self_, int32_t d1) {
+    self_.Open(static_cast<BRepPrim_Direction>(d1));
+}
+inline void BRepPrim_GWedge_close(BRepPrim_GWedge& self_, int32_t d1) {
+    self_.Close(static_cast<BRepPrim_Direction>(d1));
+}
+inline Standard_Boolean BRepPrim_GWedge_is_infinite(const BRepPrim_GWedge& self_, int32_t d1) {
+    return self_.IsInfinite(static_cast<BRepPrim_Direction>(d1));
+}
+inline Standard_Boolean BRepPrim_GWedge_has_face(const BRepPrim_GWedge& self_, int32_t d1) {
+    return self_.HasFace(static_cast<BRepPrim_Direction>(d1));
+}
+inline const TopoDS_Face& BRepPrim_GWedge_face(BRepPrim_GWedge& self_, int32_t d1) {
+    return self_.Face(static_cast<BRepPrim_Direction>(d1));
+}
+inline Standard_Boolean BRepPrim_GWedge_has_wire(const BRepPrim_GWedge& self_, int32_t d1) {
+    return self_.HasWire(static_cast<BRepPrim_Direction>(d1));
+}
+inline const TopoDS_Wire& BRepPrim_GWedge_wire(BRepPrim_GWedge& self_, int32_t d1) {
+    return self_.Wire(static_cast<BRepPrim_Direction>(d1));
+}
+inline Standard_Boolean BRepPrim_GWedge_has_edge(const BRepPrim_GWedge& self_, int32_t d1, int32_t d2) {
+    return self_.HasEdge(static_cast<BRepPrim_Direction>(d1), static_cast<BRepPrim_Direction>(d2));
+}
+inline const TopoDS_Edge& BRepPrim_GWedge_edge(BRepPrim_GWedge& self_, int32_t d1, int32_t d2) {
+    return self_.Edge(static_cast<BRepPrim_Direction>(d1), static_cast<BRepPrim_Direction>(d2));
+}
+inline Standard_Boolean BRepPrim_GWedge_has_vertex(const BRepPrim_GWedge& self_, int32_t d1, int32_t d2, int32_t d3) {
+    return self_.HasVertex(static_cast<BRepPrim_Direction>(d1), static_cast<BRepPrim_Direction>(d2), static_cast<BRepPrim_Direction>(d3));
+}
+inline const TopoDS_Vertex& BRepPrim_GWedge_vertex(BRepPrim_GWedge& self_, int32_t d1, int32_t d2, int32_t d3) {
+    return self_.Vertex(static_cast<BRepPrim_Direction>(d1), static_cast<BRepPrim_Direction>(d2), static_cast<BRepPrim_Direction>(d3));
+}
 
 // ========================
 // BRepBuilderAPI_ModifyShape wrappers
@@ -13752,6 +14625,9 @@ inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor_wire(const TopoDS
 inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor_wire_edge(const TopoDS_Wire& W, const TopoDS_Edge& E) {
     return std::make_unique<BRepLib_MakeWire>(W, E);
 }
+inline int32_t BRepLib_MakeWire_error(const BRepLib_MakeWire& self_) {
+    return static_cast<int32_t>(self_.Error());
+}
 inline const BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command(const BRepLib_MakeWire& self_) { return static_cast<const BRepLib_Command&>(self_); }
 inline BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command_mut(BRepLib_MakeWire& self_) { return static_cast<BRepLib_Command&>(self_); }
 inline const BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape(const BRepLib_MakeWire& self_) { return static_cast<const BRepLib_MakeShape&>(self_); }
@@ -13788,6 +14664,9 @@ inline const TopTools_ListOfShape& BRepLib_MakeWire_inherited_FacesFromEdges(BRe
 // BRepLib_MakeShape wrappers
 // ========================
 
+inline int32_t BRepLib_MakeShape_face_status(const BRepLib_MakeShape& self_, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self_.FaceStatus(F));
+}
 inline const BRepLib_Command& BRepLib_MakeShape_as_BRepLib_Command(const BRepLib_MakeShape& self_) { return static_cast<const BRepLib_Command&>(self_); }
 inline BRepLib_Command& BRepLib_MakeShape_as_BRepLib_Command_mut(BRepLib_MakeShape& self_) { return static_cast<BRepLib_Command&>(self_); }
 inline bool BRepLib_MakeShape_inherited_IsDone(const BRepLib_MakeShape& self) {
@@ -13865,6 +14744,9 @@ inline std::unique_ptr<BRepLib_MakeSolid> BRepLib_MakeSolid_ctor_solid(const Top
 }
 inline std::unique_ptr<BRepLib_MakeSolid> BRepLib_MakeSolid_ctor_solid_shell(const TopoDS_Solid& So, const TopoDS_Shell& S) {
     return std::make_unique<BRepLib_MakeSolid>(So, S);
+}
+inline int32_t BRepLib_MakeSolid_face_status(const BRepLib_MakeSolid& self_, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self_.FaceStatus(F));
 }
 inline const BRepLib_Command& BRepLib_MakeSolid_as_BRepLib_Command(const BRepLib_MakeSolid& self_) { return static_cast<const BRepLib_Command&>(self_); }
 inline BRepLib_Command& BRepLib_MakeSolid_as_BRepLib_Command_mut(BRepLib_MakeSolid& self_) { return static_cast<BRepLib_Command&>(self_); }
@@ -13967,6 +14849,9 @@ inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_handlesurface_wir
 }
 inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_face_wire(const TopoDS_Face& F, const TopoDS_Wire& W) {
     return std::make_unique<BRepLib_MakeFace>(F, W);
+}
+inline int32_t BRepLib_MakeFace_error(const BRepLib_MakeFace& self_) {
+    return static_cast<int32_t>(self_.Error());
 }
 inline Standard_Boolean BRepLib_MakeFace_is_degenerated(const opencascade::handle<Geom_Curve>& theCurve, Standard_Real theMaxTol, Standard_Real& theActTol) {
     return BRepLib_MakeFace::IsDegenerated(theCurve, theMaxTol, theActTol);
@@ -14112,6 +14997,9 @@ inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_handl
 inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2(const opencascade::handle<Geom2d_Curve>& L, const opencascade::handle<Geom_Surface>& S, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2, Standard_Real p1, Standard_Real p2) {
     return std::make_unique<BRepLib_MakeEdge>(L, S, V1, V2, p1, p2);
 }
+inline int32_t BRepLib_MakeEdge_error(const BRepLib_MakeEdge& self_) {
+    return static_cast<int32_t>(self_.Error());
+}
 inline const BRepLib_Command& BRepLib_MakeEdge_as_BRepLib_Command(const BRepLib_MakeEdge& self_) { return static_cast<const BRepLib_Command&>(self_); }
 inline BRepLib_Command& BRepLib_MakeEdge_as_BRepLib_Command_mut(BRepLib_MakeEdge& self_) { return static_cast<BRepLib_Command&>(self_); }
 inline const BRepLib_MakeShape& BRepLib_MakeEdge_as_BRepLib_MakeShape(const BRepLib_MakeEdge& self_) { return static_cast<const BRepLib_MakeShape&>(self_); }
@@ -14178,6 +15066,9 @@ inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_to_owned(const TopoDS_It
 inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> TopoDS_TShape_empty_copy(const TopoDS_TShape& self_) {
     return std::make_unique<opencascade::handle<TopoDS_TShape>>(self_.EmptyCopy());
 }
+inline int32_t TopoDS_TShape_shape_type(const TopoDS_TShape& self_) {
+    return static_cast<int32_t>(self_.ShapeType());
+}
 inline const opencascade::handle<Standard_Type>& TopoDS_TShape_get_type_descriptor() {
     return TopoDS_TShape::get_type_descriptor();
 }
@@ -14188,6 +15079,21 @@ inline const opencascade::handle<Standard_Type>& TopoDS_TShape_get_type_descript
 
 inline std::unique_ptr<TopAbs> TopAbs_ctor() {
     return std::make_unique<TopAbs>();
+}
+inline int32_t TopAbs_compose(int32_t Or1, int32_t Or2) {
+    return static_cast<int32_t>(TopAbs::Compose(static_cast<TopAbs_Orientation>(Or1), static_cast<TopAbs_Orientation>(Or2)));
+}
+inline int32_t TopAbs_reverse(int32_t Or) {
+    return static_cast<int32_t>(TopAbs::Reverse(static_cast<TopAbs_Orientation>(Or)));
+}
+inline int32_t TopAbs_complement(int32_t Or) {
+    return static_cast<int32_t>(TopAbs::Complement(static_cast<TopAbs_Orientation>(Or)));
+}
+inline int32_t TopAbs_shape_type_from_string(rust::Str theTypeString) {
+    return static_cast<int32_t>(TopAbs::ShapeTypeFromString(std::string(theTypeString).c_str()));
+}
+inline int32_t TopAbs_shape_orientation_from_string(rust::Str theOrientationString) {
+    return static_cast<int32_t>(TopAbs::ShapeOrientationFromString(std::string(theOrientationString).c_str()));
 }
 
 // ========================

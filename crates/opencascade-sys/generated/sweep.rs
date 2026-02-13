@@ -19,6 +19,58 @@ impl NumShape {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Sweep_NumShape_ctor()
     }
+
+    /// Creates a new simple indexed edge.
+    ///
+    /// For an Edge : Index is the  number of vertices (0,
+    /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
+    /// is a  closed edge, BegInf is true  if  the Edge is
+    /// infinite at the  begenning, EndInf is true  if the
+    /// edge is infinite at the end.
+    ///
+    /// For a Vertex : Index is the index of the vertex in
+    /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
+    /// other fields have no meanning.
+    pub fn new_int_shapeenum_bool3(
+        Index: i32,
+        Type: i32,
+        Closed: bool,
+        BegInf: bool,
+        EndInf: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool3(Index, Type, Closed, BegInf, EndInf)
+    }
+
+    /// Reinitialize a simple indexed edge.
+    ///
+    /// For an Edge : Index is the  number of vertices (0,
+    /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
+    /// is a  closed edge, BegInf is true  if  the Edge is
+    /// infinite at the  begenning, EndInf is true  if the
+    /// edge is infinite at the end.
+    ///
+    /// For a Vertex : Index is the index of the vertex in
+    /// the edge (1 or 2), Type is TopAbsVERTEX, Closed is
+    /// true if it is the vertex of a closed edge, all the
+    /// other fields have no meanning.
+    pub fn init(
+        self: std::pin::Pin<&mut Self>,
+        Index: i32,
+        Type: i32,
+        Closed: bool,
+        BegInf: bool,
+        EndInf: bool,
+    ) {
+        crate::ffi::Sweep_NumShape_init(self, Index, Type, Closed, BegInf, EndInf)
+    }
+
+    pub fn type_(&self) -> i32 {
+        crate::ffi::Sweep_NumShape_type_(self)
+    }
+
+    pub fn orientation(&self) -> i32 {
+        crate::ffi::Sweep_NumShape_orientation(self)
+    }
 }
 
 // ========================
@@ -41,6 +93,16 @@ impl NumShapeTool {
     /// Returns the Shape at index anIndex
     pub fn shape(&self, anIndex: i32) -> cxx::UniquePtr<crate::ffi::Sweep_NumShape> {
         crate::ffi::Sweep_NumShapeTool_shape(self, anIndex)
+    }
+
+    /// Returns the type of <aShape>.
+    pub fn type_(&self, aShape: &crate::ffi::Sweep_NumShape) -> i32 {
+        crate::ffi::Sweep_NumShapeTool_type_(self, aShape)
+    }
+
+    /// Returns the orientation of <aShape>.
+    pub fn orientation(&self, aShape: &crate::ffi::Sweep_NumShape) -> i32 {
+        crate::ffi::Sweep_NumShapeTool_orientation(self, aShape)
     }
 
     /// Returns the first vertex.

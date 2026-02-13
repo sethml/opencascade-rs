@@ -30,6 +30,60 @@ impl ReShape {
         crate::ffi::ShapeBuild_ReShape_ctor()
     }
 
+    /// Applies the substitutions requests to a shape
+    ///
+    /// <until> gives the level of type until which requests are taken
+    /// into account. For subshapes of the type <until> no rebuild
+    /// and further exploring are done.
+    /// ACTUALLY, NOT IMPLEMENTED BELOW  TopAbs_FACE
+    ///
+    /// <buildmode> says how to do on a SOLID,SHELL ... if one of its
+    /// sub-shapes has been changed:
+    /// 0: at least one Replace or Remove -> COMPOUND, else as such
+    /// 1: at least one Remove (Replace are ignored) -> COMPOUND
+    /// 2: Replace and Remove are both ignored
+    /// If Replace/Remove are ignored or absent, the result as same
+    /// type as the starting shape
+    pub fn apply_shape_shapeenum_int(
+        self: std::pin::Pin<&mut Self>,
+        shape: &crate::ffi::TopoDS_Shape,
+        until: i32,
+        buildmode: i32,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum_int(self, shape, until, buildmode)
+    }
+
+    /// Applies the substitutions requests to a shape.
+    ///
+    /// <until> gives the level of type until which requests are taken
+    /// into account. For subshapes of the type <until> no rebuild
+    /// and further exploring are done.
+    ///
+    /// NOTE: each subshape can be replaced by shape of the same type
+    /// or by shape containing only shapes of that type (for
+    /// example, TopoDS_Edge can be replaced by TopoDS_Edge,
+    /// TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges).
+    /// If incompatible shape type is encountered, it is ignored
+    /// and flag FAIL1 is set in Status.
+    pub fn apply_shape_shapeenum(
+        self: std::pin::Pin<&mut Self>,
+        shape: &crate::ffi::TopoDS_Shape,
+        until: i32,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum(self, shape, until)
+    }
+
+    /// Queries the status of last call to Apply(shape,enum)
+    /// OK   : no (sub)shapes replaced or removed
+    /// DONE1: source (starting) shape replaced
+    /// DONE2: source (starting) shape removed
+    /// DONE3: some subshapes replaced
+    /// DONE4: some subshapes removed
+    /// FAIL1: some replacements not done because of bad type of subshape
+    pub fn status_status(&self, status: i32) -> bool {
+        crate::ffi::ShapeBuild_ReShape_status(self, status)
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeBuild_ReShape_get_type_descriptor()
     }

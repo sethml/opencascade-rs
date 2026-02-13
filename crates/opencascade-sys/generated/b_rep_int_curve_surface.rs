@@ -42,4 +42,14 @@ impl Inter {
     pub fn point(&self) -> cxx::UniquePtr<crate::ffi::IntCurveSurface_IntersectionPoint> {
         crate::ffi::BRepIntCurveSurface_Inter_point(self)
     }
+
+    /// returns the current state (IN or ON)
+    pub fn state(&self) -> i32 {
+        crate::ffi::BRepIntCurveSurface_Inter_state(self)
+    }
+
+    /// returns the transition of the line on the surface (IN or OUT or UNKNOWN)
+    pub fn transition(&self) -> i32 {
+        crate::ffi::BRepIntCurveSurface_Inter_transition(self)
+    }
 }

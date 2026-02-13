@@ -312,4 +312,17 @@ impl Face {
     pub fn value2d(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
         crate::ffi::BRepGProp_Face_value2d(self, U)
     }
+
+    /// Loading the boundary arc. This arc is either a top, bottom,
+    /// left or right bound of a UV rectangle in which the
+    /// parameters of surface are defined.
+    /// If IsFirstParam is equal to Standard_True, the face is
+    /// initialized by either left of bottom bound. Otherwise it is
+    /// initialized by the top or right one.
+    /// If theIsoType is equal to GeomAbs_IsoU, the face is
+    /// initialized with either left or right bound. Otherwise -
+    /// with either top or bottom one.
+    pub fn load_bool_isotype(self: std::pin::Pin<&mut Self>, IsFirstParam: bool, theIsoType: i32) {
+        crate::ffi::BRepGProp_Face_load(self, IsFirstParam, theIsoType)
+    }
 }

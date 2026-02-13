@@ -285,6 +285,11 @@ impl Conic {
         crate::ffi::Geom2d_Conic_y_axis(self)
     }
 
+    /// Returns GeomAbs_CN which is the global continuity of any conic.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_Conic_continuity(self)
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_Conic_get_type_descriptor()
     }
@@ -514,6 +519,18 @@ impl Curve {
     /// - Reversed creates a new curve.
     pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
         crate::ffi::Geom2d_Curve_reversed(self)
+    }
+
+    /// It is the global continuity of the curve :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Curve,
+    /// C2 : continuity of the second derivative all along the Curve,
+    /// C3 : continuity of the third derivative all along the Curve,
+    /// G1 : tangency continuity all along the Curve,
+    /// G2 : curvature continuity all along the Curve,
+    /// CN : the order of continuity is infinite.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_Curve_continuity(self)
     }
 
     /// For the point of parameter U of this curve, computes
@@ -1130,6 +1147,16 @@ impl TrimmedCurve {
     /// directly modifies the trimmed curve.
     pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
         crate::ffi::Geom2d_TrimmedCurve_basis_curve(self)
+    }
+
+    /// Returns the global continuity of the basis curve of this trimmed curve.
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Curve,
+    /// C2 : continuity of the second derivative all along the Curve,
+    /// C3 : continuity of the third derivative all along the Curve,
+    /// CN : the order of continuity is infinite.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_TrimmedCurve_continuity(self)
     }
 
     /// Returns the end point of <me>. This point is the

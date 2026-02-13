@@ -150,14 +150,19 @@ impl Wire {
         Self { inner }
     }
 
-    // NOTE: offset is blocked because JoinType enum conversion is not supported.
-    // CXX requires enum class but OCCT uses unscoped enums. See TRANSITION_PLAN.md.
-    #[allow(unused)]
     #[must_use]
-    pub fn offset(&self, _distance: f64, _join_type: crate::primitives::JoinType) -> Self {
-        unimplemented!(
-            "Wire::offset is blocked pending enum conversion support for GeomAbs_JoinType"
+    pub fn offset(&self, distance: f64, join_type: crate::primitives::JoinType) -> Self {
+        use opencascade_sys::{b_rep_offset_api, geom_abs};
+        let join: geom_abs::JoinType = join_type.into();
+        let mut make_offset = b_rep_offset_api::MakeOffset::new_wire_jointype_bool(
+            &self.inner,
+            join.into(),
+            false, // IsOpenResult
         );
+        make_offset.pin_mut().perform(distance, 0.0);
+        let shape = make_offset.pin_mut().shape();
+        let wire = topo_ds::wire(shape);
+        Self { inner: wire.to_owned() }
     }
 
     // NOTE: sweep_along is blocked because shape upcast needs upcast functions

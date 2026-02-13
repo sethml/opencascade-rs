@@ -1,6 +1,6 @@
 use cxx::UniquePtr;
 use glam::{DVec2, DVec3};
-use opencascade_sys::{gp, top_exp, topo_ds};
+use opencascade_sys::{geom_abs, gp, top_abs, top_exp, topo_ds};
 
 mod boolean_shape;
 mod compound;
@@ -60,9 +60,37 @@ pub enum ShapeType {
     Compound,
 }
 
-// NOTE: From<top_abs::ShapeEnum> implementation is blocked because CXX doesn't support
-// unscoped enums. See TRANSITION_PLAN.md "Generator Limitations" section.
-// The ShapeEnum enum values are not generated in new bindings.
+impl From<top_abs::ShapeEnum> for ShapeType {
+    fn from(value: top_abs::ShapeEnum) -> Self {
+        match value {
+            top_abs::ShapeEnum::Compound => ShapeType::Compound,
+            top_abs::ShapeEnum::Compsolid => ShapeType::CompoundSolid,
+            top_abs::ShapeEnum::Solid => ShapeType::Solid,
+            top_abs::ShapeEnum::Shell => ShapeType::Shell,
+            top_abs::ShapeEnum::Face => ShapeType::Face,
+            top_abs::ShapeEnum::Wire => ShapeType::Wire,
+            top_abs::ShapeEnum::Edge => ShapeType::Edge,
+            top_abs::ShapeEnum::Vertex => ShapeType::Vertex,
+            top_abs::ShapeEnum::Shape => ShapeType::Shape,
+        }
+    }
+}
+
+impl From<ShapeType> for top_abs::ShapeEnum {
+    fn from(value: ShapeType) -> Self {
+        match value {
+            ShapeType::Compound => top_abs::ShapeEnum::Compound,
+            ShapeType::CompoundSolid => top_abs::ShapeEnum::Compsolid,
+            ShapeType::Solid => top_abs::ShapeEnum::Solid,
+            ShapeType::Shell => top_abs::ShapeEnum::Shell,
+            ShapeType::Face => top_abs::ShapeEnum::Face,
+            ShapeType::Wire => top_abs::ShapeEnum::Wire,
+            ShapeType::Edge => top_abs::ShapeEnum::Edge,
+            ShapeType::Vertex => top_abs::ShapeEnum::Vertex,
+            ShapeType::Shape => top_abs::ShapeEnum::Shape,
+        }
+    }
+}
 
 pub trait IntoShape {
     fn into_shape(self) -> Shape;
@@ -232,6 +260,21 @@ pub enum JoinType {
     Intersection,
 }
 
-// NOTE: From<geom_abs::JoinType> implementations are blocked because CXX doesn't support
-// unscoped enums. See TRANSITION_PLAN.md "Generator Limitations" section.
-// JoinType is kept as a Rust-only enum for now but cannot convert to/from OCCT types.
+impl From<geom_abs::JoinType> for JoinType {
+    fn from(value: geom_abs::JoinType) -> Self {
+        match value {
+            geom_abs::JoinType::Arc => JoinType::Arc,
+            geom_abs::JoinType::Intersection => JoinType::Intersection,
+            geom_abs::JoinType::Tangent => JoinType::Intersection, // Map unsupported Tangent to Intersection
+        }
+    }
+}
+
+impl From<JoinType> for geom_abs::JoinType {
+    fn from(value: JoinType) -> Self {
+        match value {
+            JoinType::Arc => geom_abs::JoinType::Arc,
+            JoinType::Intersection => geom_abs::JoinType::Intersection,
+        }
+    }
+}

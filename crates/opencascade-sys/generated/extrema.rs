@@ -465,13 +465,15 @@ impl ExtPS {
     /// TolU et TolV are used to determine the conditions
     /// to stop the iterations; at the iteration number n:
     /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_real2(
+    pub fn new_pnt_surface_real2_extflag_extalgo(
         P: &crate::ffi::gp_Pnt,
         S: &crate::ffi::Adaptor3d_Surface,
         TolU: f64,
         TolV: f64,
+        F: i32,
+        A: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real2(P, S, TolU, TolV)
+        crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real2_extflag_extalgo(P, S, TolU, TolV, F, A)
     }
 
     /// It calculates all the distances.
@@ -482,7 +484,7 @@ impl ExtPS {
     /// TolU et TolV are used to determine the conditions
     /// to stop the iterations; at the iteration number n:
     /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_real6(
+    pub fn new_pnt_surface_real6_extflag_extalgo(
         P: &crate::ffi::gp_Pnt,
         S: &crate::ffi::Adaptor3d_Surface,
         Uinf: f64,
@@ -491,8 +493,20 @@ impl ExtPS {
         Vsup: f64,
         TolU: f64,
         TolV: f64,
+        F: i32,
+        A: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real6(P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV)
+        crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real6_extflag_extalgo(
+            P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV, F, A,
+        )
+    }
+
+    pub fn set_flag(self: std::pin::Pin<&mut Self>, F: i32) {
+        crate::ffi::Extrema_ExtPS_set_flag(self, F)
+    }
+
+    pub fn set_algo(self: std::pin::Pin<&mut Self>, A: i32) {
+        crate::ffi::Extrema_ExtPS_set_algo(self, A)
     }
 }
 
@@ -562,15 +576,19 @@ impl GenExtPS {
     /// TolU et TolV are used to determine the conditions
     /// to stop the iterations; at the iteration number n:
     /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_int2_real2(
+    pub fn new_pnt_surface_int2_real2_extflag_extalgo(
         P: &crate::ffi::gp_Pnt,
         S: &crate::ffi::Adaptor3d_Surface,
         NbU: i32,
         NbV: i32,
         TolU: f64,
         TolV: f64,
+        F: i32,
+        A: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real2(P, S, NbU, NbV, TolU, TolV)
+        crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real2_extflag_extalgo(
+            P, S, NbU, NbV, TolU, TolV, F, A,
+        )
     }
 
     /// It calculates all the distances.
@@ -585,7 +603,7 @@ impl GenExtPS {
     /// TolU et TolV are used to determine the conditions
     /// to stop the iterations; at the iteration number n:
     /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_int2_real6(
+    pub fn new_pnt_surface_int2_real6_extflag_extalgo(
         P: &crate::ffi::gp_Pnt,
         S: &crate::ffi::Adaptor3d_Surface,
         NbU: i32,
@@ -596,10 +614,20 @@ impl GenExtPS {
         Vsup: f64,
         TolU: f64,
         TolV: f64,
+        F: i32,
+        A: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real6(
-            P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV,
+        crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real6_extflag_extalgo(
+            P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV, F, A,
         )
+    }
+
+    pub fn set_flag(self: std::pin::Pin<&mut Self>, F: i32) {
+        crate::ffi::Extrema_GenExtPS_set_flag(self, F)
+    }
+
+    pub fn set_algo(self: std::pin::Pin<&mut Self>, A: i32) {
+        crate::ffi::Extrema_GenExtPS_set_algo(self, A)
     }
 }
 
@@ -708,6 +736,16 @@ impl POnSurfParams {
         thePnt: &crate::ffi::gp_Pnt,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_POnSurfParams_ctor_real2_pnt(theU, theV, thePnt)
+    }
+
+    /// Sets the element type on which this point is situated.
+    pub fn set_element_type(self: std::pin::Pin<&mut Self>, theElementType: i32) {
+        crate::ffi::Extrema_POnSurfParams_set_element_type(self, theElementType)
+    }
+
+    /// Query the element type on which this point is situated.
+    pub fn get_element_type(&self) -> i32 {
+        crate::ffi::Extrema_POnSurfParams_get_element_type(self)
     }
 
     /// Upcast to Extrema_POnSurf

@@ -159,12 +159,36 @@ impl PointsToBSpline {
     /// 2- his  continuity will be  at  least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol3D
-    pub fn new_array1ofpnt_int2(
+    pub fn new_array1ofpnt_int2_shape_real(
         Points: &crate::ffi::TColgp_Array1OfPnt,
         DegMin: i32,
         DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2(Points, DegMin, DegMax)
+        crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2_shape_real(
+            Points, DegMin, DegMax, Continuity, Tol3D,
+        )
+    }
+
+    /// Approximate  a BSpline  Curve passing  through  an
+    /// array of  Point.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    pub fn new_array1ofpnt_parametrizationtype_int2_shape_real(
+        Points: &crate::ffi::TColgp_Array1OfPnt,
+        ParType: i32,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int2_shape_real(
+            Points, ParType, DegMin, DegMax, Continuity, Tol3D,
+        )
     }
 
     /// Approximate  a  BSpline  Curve  passing through an
@@ -176,14 +200,16 @@ impl PointsToBSpline {
     /// 2- his  continuity will be  at  least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol3D
-    pub fn new_array1ofpnt_array1ofreal_int2(
+    pub fn new_array1ofpnt_array1ofreal_int2_shape_real(
         Points: &crate::ffi::TColgp_Array1OfPnt,
         Parameters: &crate::ffi::TColStd_Array1OfReal,
         DegMin: i32,
         DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2(
-            Points, Parameters, DegMin, DegMax,
+        crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2_shape_real(
+            Points, Parameters, DegMin, DegMax, Continuity, Tol3D,
         )
     }
 
@@ -191,15 +217,77 @@ impl PointsToBSpline {
     /// array of Point using variational smoothing algorithm,
     /// which tries to minimize additional criterium:
     /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
-    pub fn new_array1ofpnt_real3_int(
+    pub fn new_array1ofpnt_real3_int_shape_real(
         Points: &crate::ffi::TColgp_Array1OfPnt,
         Weight1: f64,
         Weight2: f64,
         Weight3: f64,
         DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int(
-            Points, Weight1, Weight2, Weight3, DegMax,
+        crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int_shape_real(
+            Points, Weight1, Weight2, Weight3, DegMax, Continuity, Tol3D,
+        )
+    }
+
+    /// Approximate  a BSpline  Curve passing  through  an
+    /// array of  Point.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    pub fn init_array1ofpnt_int2_shape_real(
+        self: std::pin::Pin<&mut Self>,
+        Points: &crate::ffi::TColgp_Array1OfPnt,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+    ) {
+        crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_int2_shape_real(
+            self, Points, DegMin, DegMax, Continuity, Tol3D,
+        )
+    }
+
+    /// Approximate  a BSpline  Curve passing  through  an
+    /// array of  Point.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    pub fn init_array1ofpnt_parametrizationtype_int2_shape_real(
+        self: std::pin::Pin<&mut Self>,
+        Points: &crate::ffi::TColgp_Array1OfPnt,
+        ParType: i32,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+    ) {
+        crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_parametrizationtype_int2_shape_real(
+            self, Points, ParType, DegMin, DegMax, Continuity, Tol3D,
+        )
+    }
+
+    /// Approximate a BSpline Curve  passing through an
+    /// array of Point using variational smoothing algorithm,
+    /// which tries to minimize additional criterium:
+    /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
+    pub fn init_array1ofpnt_real3_int_shape_real(
+        self: std::pin::Pin<&mut Self>,
+        Points: &crate::ffi::TColgp_Array1OfPnt,
+        Weight1: f64,
+        Weight2: f64,
+        Weight3: f64,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+    ) {
+        crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_real3_int_shape_real(
+            self, Points, Weight1, Weight2, Weight3, DegMax, Continuity, Tol3D,
         )
     }
 }
@@ -273,11 +361,12 @@ impl ProjectPointOnSurf {
 
     /// Create the projection  of a point <P> on a surface
     /// <Surface>
-    pub fn new_pnt_handlesurface(
+    pub fn new_pnt_handlesurface_extalgo(
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
+        Algo: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface(P, Surface)
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_extalgo(P, Surface, Algo)
     }
 
     /// Create the projection  of a point <P> on a surface
@@ -285,15 +374,18 @@ impl ProjectPointOnSurf {
     /// Create the projection of a point <P>  on a surface
     /// <Surface>. The solution are computed in the domain
     /// [Umin,Usup] [Vmin,Vsup] of the surface.
-    pub fn new_pnt_handlesurface_real(
+    pub fn new_pnt_handlesurface_real_extalgo(
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Tolerance: f64,
+        Algo: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real(P, Surface, Tolerance)
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real_extalgo(
+            P, Surface, Tolerance, Algo,
+        )
     }
 
-    pub fn new_pnt_handlesurface_real5(
+    pub fn new_pnt_handlesurface_real5_extalgo(
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Umin: f64,
@@ -301,25 +393,128 @@ impl ProjectPointOnSurf {
         Vmin: f64,
         Vsup: f64,
         Tolerance: f64,
+        Algo: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5(
-            P, Surface, Umin, Usup, Vmin, Vsup, Tolerance,
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5_extalgo(
+            P, Surface, Umin, Usup, Vmin, Vsup, Tolerance, Algo,
         )
     }
 
     /// Init the projection  of a point <P> on a surface
     /// <Surface>
-    pub fn new_pnt_handlesurface_real4(
+    pub fn new_pnt_handlesurface_real4_extalgo(
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Umin: f64,
         Usup: f64,
         Vmin: f64,
         Vsup: f64,
+        Algo: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4(
-            P, Surface, Umin, Usup, Vmin, Vsup,
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4_extalgo(
+            P, Surface, Umin, Usup, Vmin, Vsup, Algo,
         )
+    }
+
+    pub fn init_pnt_handlesurface_real_extalgo(
+        self: std::pin::Pin<&mut Self>,
+        P: &crate::ffi::gp_Pnt,
+        Surface: &crate::ffi::HandleGeomSurface,
+        Tolerance: f64,
+        Algo: i32,
+    ) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real_extalgo(
+            self, P, Surface, Tolerance, Algo,
+        )
+    }
+
+    /// Init the projection of a point <P>  on a surface
+    /// <Surface>. The solution are computed in the domain
+    /// [Umin,Usup] [Vmin,Vsup] of the surface.
+    pub fn init_pnt_handlesurface_extalgo(
+        self: std::pin::Pin<&mut Self>,
+        P: &crate::ffi::gp_Pnt,
+        Surface: &crate::ffi::HandleGeomSurface,
+        Algo: i32,
+    ) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_extalgo(
+            self, P, Surface, Algo,
+        )
+    }
+
+    pub fn init_pnt_handlesurface_real5_extalgo(
+        self: std::pin::Pin<&mut Self>,
+        P: &crate::ffi::gp_Pnt,
+        Surface: &crate::ffi::HandleGeomSurface,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+        Tolerance: f64,
+        Algo: i32,
+    ) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real5_extalgo(
+            self, P, Surface, Umin, Usup, Vmin, Vsup, Tolerance, Algo,
+        )
+    }
+
+    /// Init the projection for many points on a surface
+    /// <Surface>. The solutions will be computed in the domain
+    /// [Umin,Usup] [Vmin,Vsup] of the surface.
+    pub fn init_pnt_handlesurface_real4_extalgo(
+        self: std::pin::Pin<&mut Self>,
+        P: &crate::ffi::gp_Pnt,
+        Surface: &crate::ffi::HandleGeomSurface,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+        Algo: i32,
+    ) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real4_extalgo(
+            self, P, Surface, Umin, Usup, Vmin, Vsup, Algo,
+        )
+    }
+
+    pub fn init_handlesurface_real5_extalgo(
+        self: std::pin::Pin<&mut Self>,
+        Surface: &crate::ffi::HandleGeomSurface,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+        Tolerance: f64,
+        Algo: i32,
+    ) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_handlesurface_real5_extalgo(
+            self, Surface, Umin, Usup, Vmin, Vsup, Tolerance, Algo,
+        )
+    }
+
+    pub fn init_handlesurface_real4_extalgo(
+        self: std::pin::Pin<&mut Self>,
+        Surface: &crate::ffi::HandleGeomSurface,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+        Algo: i32,
+    ) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_handlesurface_real4_extalgo(
+            self, Surface, Umin, Usup, Vmin, Vsup, Algo,
+        )
+    }
+
+    /// Sets the Extrema search algorithm - Grad or Tree. <br>
+    /// By default the Extrema is initialized with Grad algorithm.
+    pub fn set_extrema_algo(self: std::pin::Pin<&mut Self>, theAlgo: i32) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_set_extrema_algo(self, theAlgo)
+    }
+
+    /// Sets the Extrema search flag - MIN or MAX or MINMAX.<br>
+    /// By default the Extrema is set to search the MinMax solutions.
+    pub fn set_extrema_flag(self: std::pin::Pin<&mut Self>, theExtFlag: i32) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_set_extrema_flag(self, theExtFlag)
     }
 
     /// Returns the orthogonal projection

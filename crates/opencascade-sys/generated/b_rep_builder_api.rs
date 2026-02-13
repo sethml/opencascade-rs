@@ -571,6 +571,14 @@ impl MakeEdge {
         )
     }
 
+    /// Returns the construction status
+    /// -   BRepBuilderAPI_EdgeDone if the edge is built, or
+    /// -   another value of the BRepBuilderAPI_EdgeError
+    /// enumeration indicating the reason of construction failure.
+    pub fn error(&self) -> i32 {
+        crate::ffi::BRepBuilderAPI_MakeEdge_error(self)
+    }
+
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         crate::ffi::BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command(self)
@@ -887,6 +895,16 @@ impl MakeFace {
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepBuilderAPI_MakeFace_ctor_face_wire(F, W)
+    }
+
+    /// Returns the construction status
+    /// BRepBuilderAPI_FaceDone if the face is built, or
+    /// -   another value of the BRepBuilderAPI_FaceError
+    /// enumeration indicating why the construction failed, in
+    /// particular when the given parameters are outside the
+    /// bounds of the surface.
+    pub fn error(&self) -> i32 {
+        crate::ffi::BRepBuilderAPI_MakeFace_error(self)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -1320,6 +1338,14 @@ impl MakeWire {
         E: &crate::ffi::TopoDS_Edge,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepBuilderAPI_MakeWire_ctor_wire_edge(W, E)
+    }
+
+    /// Returns the construction status
+    /// -   BRepBuilderAPI_WireDone if the wire is built, or
+    /// -   another value of the BRepBuilderAPI_WireError
+    /// enumeration indicating why the construction failed.
+    pub fn error(&self) -> i32 {
+        crate::ffi::BRepBuilderAPI_MakeWire_error(self)
     }
 
     /// Upcast to BRepBuilderAPI_Command

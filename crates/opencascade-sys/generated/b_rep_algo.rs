@@ -18,4 +18,11 @@ impl Image {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepAlgo_Image_ctor()
     }
+
+    /// Deletes in the images the shape of type <ShapeType>
+    /// which are not in <S>.
+    /// Warning:  Compact() must be call before.
+    pub fn filter(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape, ShapeType: i32) {
+        crate::ffi::BRepAlgo_Image_filter(self, S, ShapeType)
+    }
 }

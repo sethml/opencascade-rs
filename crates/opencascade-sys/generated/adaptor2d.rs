@@ -34,6 +34,17 @@ impl Curve2d {
         crate::ffi::Adaptor2d_Curve2d_shallow_copy(self)
     }
 
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Adaptor2d_Curve2d_continuity(self)
+    }
+
+    /// If necessary,  breaks the  curve in  intervals  of
+    /// continuity  <S>.    And  returns   the number   of
+    /// intervals.
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Adaptor2d_Curve2d_nb_intervals(self, S)
+    }
+
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
     /// test for 3d points confusion.
@@ -59,6 +70,13 @@ impl Curve2d {
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
         crate::ffi::Adaptor2d_Curve2d_dn(self, U, N)
+    }
+
+    /// Returns  the  type of the   curve  in the  current
+    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::Adaptor2d_Curve2d_get_type(self)
     }
 
     pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {

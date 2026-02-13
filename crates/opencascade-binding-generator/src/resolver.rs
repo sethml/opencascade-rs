@@ -519,12 +519,22 @@ pub fn has_const_mut_return_mismatch(method: &Method) -> bool {
     }).unwrap_or(false)
 }
 
-/// Check if a method has unsupported by-value parameters
-pub fn method_has_unsupported_by_value_params(method: &Method) -> Option<(String, String)> {
+/// Check if a method has unsupported by-value parameters.
+/// By-value enums (Type::Class) are supported (mapped to i32).
+/// MutRef to enums are NOT supported (output params need local variable + writeback).
+pub fn method_has_unsupported_by_value_params(method: &Method, all_enum_names: &HashSet<String>) -> Option<(String, String)> {
     for param in &method.params {
         match &param.ty {
-            Type::Class(name) => {
+            Type::Class(name) if !all_enum_names.contains(name) => {
                 return Some((param.name.clone(), name.clone()));
+            }
+            // MutRef to enum = output parameter, can't bind static_cast temporary to non-const &
+            Type::MutRef(inner) => {
+                if let Type::Class(name) = inner.as_ref() {
+                    if all_enum_names.contains(name) {
+                        return Some((param.name.clone(), format!("&mut {}", name)));
+                    }
+                }
             }
             Type::Handle(name) => {
                 return Some((param.name.clone(), format!("Handle<{}>", name)));
@@ -535,12 +545,21 @@ pub fn method_has_unsupported_by_value_params(method: &Method) -> Option<(String
     None
 }
 
-/// Check if a static method has unsupported by-value parameters
-pub fn static_method_has_unsupported_by_value_params(method: &StaticMethod) -> Option<(String, String)> {
+/// Check if a static method has unsupported by-value parameters.
+/// By-value enums (Type::Class) are supported (mapped to i32).
+/// MutRef to enums are NOT supported (output params need local variable + writeback).
+pub fn static_method_has_unsupported_by_value_params(method: &StaticMethod, all_enum_names: &HashSet<String>) -> Option<(String, String)> {
     for param in &method.params {
         match &param.ty {
-            Type::Class(name) => {
+            Type::Class(name) if !all_enum_names.contains(name) => {
                 return Some((param.name.clone(), name.clone()));
+            }
+            Type::MutRef(inner) => {
+                if let Type::Class(name) = inner.as_ref() {
+                    if all_enum_names.contains(name) {
+                        return Some((param.name.clone(), format!("&mut {}", name)));
+                    }
+                }
             }
             Type::Handle(name) => {
                 return Some((param.name.clone(), format!("Handle<{}>", name)));
@@ -844,12 +863,12 @@ fn resolve_method(
         })
     } else if method_needs_explicit_lifetimes(method) {
         BindingStatus::Excluded(ExclusionReason::NeedsExplicitLifetimes)
-    } else if let Some((param_name, type_name)) = method_has_unsupported_by_value_params(method) {
+    } else if let Some((param_name, type_name)) = method_has_unsupported_by_value_params(method, all_enum_names) {
         BindingStatus::Excluded(ExclusionReason::UnsupportedByValueParam { param_name, type_name })
     } else {
         BindingStatus::Included
     };
-    
+
     ResolvedMethod {
         id: id.clone(),
         class_id: class_id.clone(),
@@ -898,7 +917,7 @@ fn resolve_static_method(
     // Determine status
     let status = if method.has_unbindable_types() {
         BindingStatus::Excluded(ExclusionReason::UnbindableStaticMethod)
-    } else if let Some((param_name, type_name)) = static_method_has_unsupported_by_value_params(method) {
+    } else if let Some((param_name, type_name)) = static_method_has_unsupported_by_value_params(method, all_enum_names) {
         BindingStatus::Excluded(ExclusionReason::UnsupportedByValueParam { param_name, type_name })
     } else {
         BindingStatus::Included
@@ -1004,7 +1023,8 @@ fn resolve_type(ty: &Type, all_enum_names: &HashSet<String>) -> ResolvedType {
 fn extract_enum_name_from_type(ty: &Type, all_enums: &HashSet<String>) -> Option<String> {
     match ty {
         Type::Class(name) if all_enums.contains(name) => Some(name.clone()),
-        Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => {
+        // Only unwrap const refs and rvalue refs, NOT MutRef (output params need special handling)
+        Type::ConstRef(inner) | Type::RValueRef(inner) => {
             extract_enum_name_from_type(inner, all_enums)
         }
         _ => None,

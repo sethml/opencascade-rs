@@ -1,14 +1,10 @@
-// NOTE: This file is partially blocked because:
-// - BRepFilletAPI_MakeFillet needs ChFi3d_FilletShape enum (not generated)
-// See TRANSITION_PLAN.md for details.
-
 use crate::{
     primitives::{BooleanShape, Compound, Edge, Face, Shape, Wire},
     Error,
 };
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep_algo_api, b_rep_offset_api, message, topo_ds};
+use opencascade_sys::{b_rep_algo_api, b_rep_fillet_api, b_rep_offset_api, message, topo_ds};
 
 pub struct Solid {
     pub(crate) inner: UniquePtr<topo_ds::Solid>,
@@ -26,14 +22,19 @@ impl Solid {
         Self { inner }
     }
 
-    // NOTE: fillet_edge is blocked because cast_solid_to_shape and BRepFilletAPI_MakeFillet
-    // aren't fully accessible
-    #[allow(unused)]
     #[must_use]
-    pub fn fillet_edge(&self, _radius: f64, _edge: &Edge) -> Compound {
-        unimplemented!(
-            "Solid::fillet_edge is blocked pending BRepFilletAPI_MakeFillet support"
+    pub fn fillet_edge(&self, radius: f64, edge: &Edge) -> Compound {
+        let progress = message::ProgressRange::new();
+        // ChFi3d_Rational = 0
+        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(
+            self.inner.as_shape(),
+            0,
         );
+        make_fillet.pin_mut().add_real_edge(radius, &edge.inner);
+        make_fillet.pin_mut().build(&progress);
+        let shape = make_fillet.pin_mut().shape();
+        let compound = topo_ds::compound(shape);
+        Compound::from_compound(compound)
     }
 
     pub fn loft<T: AsRef<Wire>>(wires: impl IntoIterator<Item = T>) -> Self {

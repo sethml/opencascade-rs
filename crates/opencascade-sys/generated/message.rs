@@ -580,6 +580,10 @@ impl Message {
         crate::ffi::Message_default_messenger()
     }
 
+    pub fn send(theMessage: &crate::ffi::TCollection_AsciiString, theGravity: i32) {
+        crate::ffi::Message_send(theMessage, theGravity)
+    }
+
     pub fn send_fail(theMessage: &crate::ffi::TCollection_AsciiString) {
         crate::ffi::Message_send_fail(theMessage)
     }
@@ -617,6 +621,13 @@ impl Message {
     /// When theToCreate is true - automatically creates message report when not exist.
     pub fn default_report(theToCreate: bool) -> &'static crate::ffi::HandleMessageReport {
         crate::ffi::Message_default_report(theToCreate)
+    }
+
+    /// Returns the metric type from the given string identifier.
+    /// @param theString string identifier
+    /// @return metric type or Message_MetricType_None if string identifier is invalid
+    pub fn metric_from_string(theString: &str) -> i32 {
+        crate::ffi::Message_metric_from_string(theString)
     }
 }
 
@@ -755,11 +766,164 @@ impl Algorithm {
         crate::ffi::Message_Algorithm_ctor()
     }
 
+    /// Sets status with no parameter
+    pub fn set_status_status(self: std::pin::Pin<&mut Self>, theStat: i32) {
+        crate::ffi::Message_Algorithm_set_status_status(self, theStat)
+    }
+
+    /// Sets status with integer parameter
+    pub fn set_status_status_int(self: std::pin::Pin<&mut Self>, theStat: i32, theInt: i32) {
+        crate::ffi::Message_Algorithm_set_status_status_int(self, theStat, theInt)
+    }
+
+    /// Sets status with string parameter.
+    /// If noRepetitions is True, the parameter will be added only
+    /// if it has not been yet recorded for the same status flag
+    pub fn set_status_status_charptr_bool(
+        self: std::pin::Pin<&mut Self>,
+        theStat: i32,
+        theStr: &str,
+        noRepetitions: bool,
+    ) {
+        crate::ffi::Message_Algorithm_set_status_status_charptr_bool(
+            self,
+            theStat,
+            theStr,
+            noRepetitions,
+        )
+    }
+
+    /// Sets status with string parameter
+    /// If noRepetitions is True, the parameter will be added only
+    /// if it has not been yet recorded for the same status flag
+    pub fn set_status_status_asciistring_bool(
+        self: std::pin::Pin<&mut Self>,
+        theStat: i32,
+        theStr: &crate::ffi::TCollection_AsciiString,
+        noRepetitions: bool,
+    ) {
+        crate::ffi::Message_Algorithm_set_status_status_asciistring_bool(
+            self,
+            theStat,
+            theStr,
+            noRepetitions,
+        )
+    }
+
+    /// Sets status with string parameter
+    /// If noRepetitions is True, the parameter will be added only
+    /// if it has not been yet recorded for the same status flag
+    pub fn set_status_status_handlehasciistring_bool(
+        self: std::pin::Pin<&mut Self>,
+        theStat: i32,
+        theStr: &crate::ffi::HandleTCollectionHAsciiString,
+        noRepetitions: bool,
+    ) {
+        crate::ffi::Message_Algorithm_set_status_status_handlehasciistring_bool(
+            self,
+            theStat,
+            theStr,
+            noRepetitions,
+        )
+    }
+
+    /// Sets status with string parameter
+    /// If noRepetitions is True, the parameter will be added only
+    /// if it has not been yet recorded for the same status flag
+    pub fn set_status_status_extendedstring_bool(
+        self: std::pin::Pin<&mut Self>,
+        theStat: i32,
+        theStr: &crate::ffi::TCollection_ExtendedString,
+        noRepetitions: bool,
+    ) {
+        crate::ffi::Message_Algorithm_set_status_status_extendedstring_bool(
+            self,
+            theStat,
+            theStr,
+            noRepetitions,
+        )
+    }
+
+    /// Sets status with string parameter
+    /// If noRepetitions is True, the parameter will be added only
+    /// if it has not been yet recorded for the same status flag
+    pub fn set_status_status_handlehextendedstring_bool(
+        self: std::pin::Pin<&mut Self>,
+        theStat: i32,
+        theStr: &crate::ffi::HandleTCollectionHExtendedString,
+        noRepetitions: bool,
+    ) {
+        crate::ffi::Message_Algorithm_set_status_status_handlehextendedstring_bool(
+            self,
+            theStat,
+            theStr,
+            noRepetitions,
+        )
+    }
+
+    /// Sets status with preformatted message. This message will be
+    /// used directly to report the status; automatic generation of
+    /// status messages will be disabled for it.
+    pub fn set_status_status_msg(
+        self: std::pin::Pin<&mut Self>,
+        theStat: i32,
+        theMsg: &crate::ffi::Message_Msg,
+    ) {
+        crate::ffi::Message_Algorithm_set_status_status_msg(self, theStat, theMsg)
+    }
+
     /// Returns messenger of algorithm.
     /// The returned handle is always non-null and can
     /// be used for sending messages.
     pub fn get_messenger(&self) -> cxx::UniquePtr<crate::ffi::HandleMessageMessenger> {
         crate::ffi::Message_Algorithm_get_messenger(self)
+    }
+
+    /// Print messages for all status flags that have been set during
+    /// algorithm execution, excluding statuses that are NOT set
+    /// in theFilter.
+    ///
+    /// The messages are taken from resource file, names being
+    /// constructed as {dynamic class type}.{status name},
+    /// for instance, "Message_Algorithm.Fail5".
+    /// If message is not found in resources for this class and all
+    /// its base types, surrogate text is printed.
+    ///
+    /// For the statuses having number or string parameters,
+    /// theMaxCount defines maximal number of numbers or strings to be
+    /// included in the message
+    ///
+    /// Note that this method is virtual; this allows descendant
+    /// classes to customize message output (e.g. by adding
+    /// messages from other sub-algorithms)
+    pub fn send_status_messages(
+        &self,
+        theFilter: &crate::ffi::Message_ExecStatus,
+        theTraceLevel: i32,
+        theMaxCount: i32,
+    ) {
+        crate::ffi::Message_Algorithm_send_status_messages(
+            self,
+            theFilter,
+            theTraceLevel,
+            theMaxCount,
+        )
+    }
+
+    /// Convenient variant of SendStatusMessages() with theFilter
+    /// having defined all WARN, ALARM, and FAIL (but not DONE)
+    /// status flags
+    pub fn send_messages(&self, theTraceLevel: i32, theMaxCount: i32) {
+        crate::ffi::Message_Algorithm_send_messages(self, theTraceLevel, theMaxCount)
+    }
+
+    /// Return the strings associated with the indicated status;
+    /// Null handle if no such status or no strings associated with it
+    pub fn get_message_strings(
+        &self,
+        theStatus: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
+        crate::ffi::Message_Algorithm_get_message_strings(self, theStatus)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -803,6 +967,47 @@ impl ExecStatus {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Message_ExecStatus_ctor()
     }
+
+    /// Initialise the execution status
+    pub fn new_status(theStatus: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_ExecStatus_ctor_status(theStatus)
+    }
+
+    /// Sets a status flag
+    pub fn set(self: std::pin::Pin<&mut Self>, theStatus: i32) {
+        crate::ffi::Message_ExecStatus_set(self, theStatus)
+    }
+
+    /// Check status for being set
+    pub fn is_set(&self, theStatus: i32) -> bool {
+        crate::ffi::Message_ExecStatus_is_set(self, theStatus)
+    }
+
+    /// Clear one status
+    pub fn clear_status(self: std::pin::Pin<&mut Self>, theStatus: i32) {
+        crate::ffi::Message_ExecStatus_clear(self, theStatus)
+    }
+
+    /// Returns index of status in whole range [FirstStatus, LastStatus]
+    pub fn status_index(theStatus: i32) -> i32 {
+        crate::ffi::Message_ExecStatus_status_index(theStatus)
+    }
+
+    /// Returns index of status inside type of status (Done or Warn or, etc)
+    /// in range [1, StatusesPerType]
+    pub fn local_status_index(theStatus: i32) -> i32 {
+        crate::ffi::Message_ExecStatus_local_status_index(theStatus)
+    }
+
+    /// Returns status type (DONE, WARN, ALARM, or FAIL)
+    pub fn type_of_status(theStatus: i32) -> i32 {
+        crate::ffi::Message_ExecStatus_type_of_status(theStatus)
+    }
+
+    /// Returns status with index theIndex in whole range [FirstStatus, LastStatus]
+    pub fn status_by_index(theIndex: i32) -> i32 {
+        crate::ffi::Message_ExecStatus_status_by_index(theIndex)
+    }
 }
 
 // ========================
@@ -830,6 +1035,20 @@ impl Level {
     /// The perf meter is not started automatically, it will be done in AddAlert() method
     pub fn new_asciistring(theName: &crate::ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
         crate::ffi::Message_Level_ctor_asciistring(theName)
+    }
+
+    /// Adds new alert on the level. Stops the last alert metric, appends the alert and starts the
+    /// alert metrics collecting. Sets root alert beforehand this method using, if the root is NULL,
+    /// it does nothing.
+    /// @param theGravity an alert gravity
+    /// @param theAlert an alert
+    /// @return true if alert is added
+    pub fn add_alert(
+        self: std::pin::Pin<&mut Self>,
+        theGravity: i32,
+        theAlert: &crate::ffi::HandleMessageAlert,
+    ) -> bool {
+        crate::ffi::Message_Level_add_alert(self, theGravity, theAlert)
     }
 }
 
@@ -872,6 +1091,31 @@ impl Messenger {
         thePrinter: &crate::ffi::HandleMessagePrinter,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Message_Messenger_ctor_handleprinter(thePrinter)
+    }
+
+    /// Dispatch a message to all the printers in the list.
+    /// Three versions of string representations are accepted for
+    /// convenience, by default all are converted to ExtendedString.
+    pub fn send_charptr_gravity(&self, theString: &str, theGravity: i32) {
+        crate::ffi::Message_Messenger_send_charptr_gravity(self, theString, theGravity)
+    }
+
+    /// See above
+    pub fn send_asciistring_gravity(
+        &self,
+        theString: &crate::ffi::TCollection_AsciiString,
+        theGravity: i32,
+    ) {
+        crate::ffi::Message_Messenger_send_asciistring_gravity(self, theString, theGravity)
+    }
+
+    /// See above
+    pub fn send_extendedstring_gravity(
+        &self,
+        theString: &crate::ffi::TCollection_ExtendedString,
+        theGravity: i32,
+    ) {
+        crate::ffi::Message_Messenger_send_extendedstring_gravity(self, theString, theGravity)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -955,6 +1199,47 @@ impl Msg {
 pub use crate::ffi::Message_Printer as Printer;
 
 impl Printer {
+    /// Return trace level used for filtering messages;
+    /// messages with lover gravity will be ignored.
+    pub fn get_trace_level(&self) -> i32 {
+        crate::ffi::Message_Printer_get_trace_level(self)
+    }
+
+    /// Set trace level used for filtering messages.
+    /// By default, trace level is Message_Info, so that all messages are output
+    pub fn set_trace_level(self: std::pin::Pin<&mut Self>, theTraceLevel: i32) {
+        crate::ffi::Message_Printer_set_trace_level(self, theTraceLevel)
+    }
+
+    /// Send a string message with specified trace level.
+    /// The last Boolean argument is deprecated and unused.
+    /// Default implementation redirects to send().
+    pub fn send_extendedstring_gravity(
+        &self,
+        theString: &crate::ffi::TCollection_ExtendedString,
+        theGravity: i32,
+    ) {
+        crate::ffi::Message_Printer_send_extendedstring_gravity(self, theString, theGravity)
+    }
+
+    /// Send a string message with specified trace level.
+    /// The last Boolean argument is deprecated and unused.
+    /// Default implementation redirects to send().
+    pub fn send_charptr_gravity(&self, theString: &str, theGravity: i32) {
+        crate::ffi::Message_Printer_send_charptr_gravity(self, theString, theGravity)
+    }
+
+    /// Send a string message with specified trace level.
+    /// The last Boolean argument is deprecated and unused.
+    /// Default implementation redirects to send().
+    pub fn send_asciistring_gravity(
+        &self,
+        theString: &crate::ffi::TCollection_AsciiString,
+        theGravity: i32,
+    ) {
+        crate::ffi::Message_Printer_send_asciistring_gravity(self, theString, theGravity)
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Message_Printer_get_type_descriptor()
     }
@@ -1307,6 +1592,60 @@ impl Report {
     /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Message_Report_ctor()
+    }
+
+    /// Add alert with specified gravity.
+    /// This method is thread-safe, i.e. alerts can be added from parallel threads safely.
+    pub fn add_alert(
+        self: std::pin::Pin<&mut Self>,
+        theGravity: i32,
+        theAlert: &crate::ffi::HandleMessageAlert,
+    ) {
+        crate::ffi::Message_Report_add_alert(self, theGravity, theAlert)
+    }
+
+    /// Returns true if specific type of alert is recorded with specified gravity
+    pub fn has_alert_handletype_gravity(
+        self: std::pin::Pin<&mut Self>,
+        theType: &crate::ffi::HandleStandardType,
+        theGravity: i32,
+    ) -> bool {
+        crate::ffi::Message_Report_has_alert(self, theType, theGravity)
+    }
+
+    /// Clears collected alerts with specified gravity
+    pub fn clear_gravity(self: std::pin::Pin<&mut Self>, theGravity: i32) {
+        crate::ffi::Message_Report_clear(self, theGravity)
+    }
+
+    /// Sets metrics to compute when alerts are performed
+    /// @param theMetrics container of metrics
+    pub fn set_active_metric(
+        self: std::pin::Pin<&mut Self>,
+        theMetricType: i32,
+        theActivate: bool,
+    ) {
+        crate::ffi::Message_Report_set_active_metric(self, theMetricType, theActivate)
+    }
+
+    /// Dumps collected alerts with specified gravity to messenger.
+    /// Default implementation creates Message_Msg object with a message
+    /// key returned by alert, and sends it in the messenger.
+    pub fn send_messages_handlemessenger_gravity(
+        self: std::pin::Pin<&mut Self>,
+        theMessenger: &crate::ffi::HandleMessageMessenger,
+        theGravity: i32,
+    ) {
+        crate::ffi::Message_Report_send_messages(self, theMessenger, theGravity)
+    }
+
+    /// Merges alerts with specified gravity from theOther report into this
+    pub fn merge_handlereport_gravity(
+        self: std::pin::Pin<&mut Self>,
+        theOther: &crate::ffi::HandleMessageReport,
+        theGravity: i32,
+    ) {
+        crate::ffi::Message_Report_merge(self, theOther, theGravity)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

@@ -170,6 +170,22 @@ impl BSplineCurve {
         )
     }
 
+    /// Returns the global continuity of the curve :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Curve,
+    /// C2 : continuity of the second derivative all along the Curve,
+    /// C3 : continuity of the third derivative all along the Curve,
+    /// CN : the order of continuity is infinite.
+    /// For a B-spline curve of degree d if a knot Ui has a
+    /// multiplicity p the B-spline curve is only Cd-p continuous
+    /// at Ui. So the global continuity of the curve can't be greater
+    /// than Cd-p where p is the maximum multiplicity of the interior
+    /// Knots. In the interior of a knot span the curve is infinitely
+    /// continuously differentiable.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_BSplineCurve_continuity(self)
+    }
+
     /// For the point of parameter U of this BSpline curve,
     /// computes the vector corresponding to the Nth derivative.
     /// Warning
@@ -227,6 +243,21 @@ impl BSplineCurve {
     /// is lower than Degree.
     pub fn end_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
         crate::ffi::Geom_BSplineCurve_end_point(self)
+    }
+
+    /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
+    /// If all the knots differ by a positive constant from the
+    /// preceding knot the BSpline Curve can be :
+    /// - Uniform if all the knots are of multiplicity 1,
+    /// - QuasiUniform if all the knots are of multiplicity 1 except for
+    /// the first and last knot which are of multiplicity Degree + 1,
+    /// - PiecewiseBezier if the first and last knots have multiplicity
+    /// Degree + 1 and if interior knots have multiplicity Degree
+    /// A piecewise Bezier with only two knots is a BezierCurve.
+    /// else the curve is non uniform.
+    /// The tolerance criterion is Epsilon from class Real.
+    pub fn knot_distribution(&self) -> i32 {
+        crate::ffi::Geom_BSplineCurve_knot_distribution(self)
     }
 
     /// Returns the start point of the curve.
@@ -596,6 +627,57 @@ impl BSplineSurface {
         crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic)
     }
 
+    /// Returns the continuity of the surface :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Surface,
+    /// C2 : continuity of the second derivative all along the Surface,
+    /// C3 : continuity of the third derivative all along the Surface,
+    /// CN : the order of continuity is infinite.
+    /// A B-spline surface is infinitely continuously differentiable
+    /// for the couple of parameters U, V such that U != UKnots(i)
+    /// and V != VKnots(i). The continuity of the surface at a knot
+    /// value depends on the multiplicity of this knot.
+    /// Example :
+    /// If the surface is C1 in the V direction and C2 in the U
+    /// direction this function returns Shape = C1.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface_continuity(self)
+    }
+
+    /// Returns NonUniform or Uniform or QuasiUniform or
+    /// PiecewiseBezier.  If all the knots differ by a
+    /// positive constant from the preceding knot in the U
+    /// direction the B-spline surface can be :
+    /// - Uniform if all the knots are of multiplicity 1,
+    /// - QuasiUniform if all the knots are of multiplicity 1
+    /// except for the first and last knot which are of
+    /// multiplicity Degree + 1,
+    /// - PiecewiseBezier if the first and last knots have
+    /// multiplicity Degree + 1 and if interior knots have
+    /// multiplicity Degree
+    /// otherwise the surface is non uniform in the U direction
+    /// The tolerance criterion is Resolution from package gp.
+    pub fn u_knot_distribution(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface_u_knot_distribution(self)
+    }
+
+    /// Returns NonUniform or Uniform or QuasiUniform or
+    /// PiecewiseBezier. If all the knots differ by a positive
+    /// constant from the preceding knot in the V direction the
+    /// B-spline surface can be :
+    /// - Uniform if all the knots are of multiplicity 1,
+    /// - QuasiUniform if all the knots are of multiplicity 1
+    /// except for the first and last knot which are of
+    /// multiplicity Degree + 1,
+    /// - PiecewiseBezier if the first and last knots have
+    /// multiplicity  Degree + 1 and if interior knots have
+    /// multiplicity Degree
+    /// otherwise the surface is non uniform in the V direction.
+    /// The tolerance criterion is Resolution from package gp.
+    pub fn v_knot_distribution(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface_v_knot_distribution(self)
+    }
+
     /// Nu is the order of derivation in the U parametric direction and
     /// Nv is the order of derivation in the V parametric direction.
     ///
@@ -946,6 +1028,11 @@ impl BezierCurve {
         crate::ffi::Geom_BezierCurve_ctor_array1ofpnt_array1ofreal(CurvePoles, PoleWeights)
     }
 
+    /// a Bezier curve is CN
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_BezierCurve_continuity(self)
+    }
+
     /// For the point of parameter U of this Bezier curve,
     /// computes the vector corresponding to the Nth derivative.
     /// Note: the parameter U can be outside the bounds of the curve.
@@ -1237,6 +1324,12 @@ impl BezierSurface {
         PoleWeights: &crate::ffi::TColStd_Array2OfReal,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Geom_BezierSurface_ctor_array2ofpnt_array2ofreal(SurfacePoles, PoleWeights)
+    }
+
+    /// Returns the continuity of the surface CN : the order of
+    /// continuity is infinite.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_BezierSurface_continuity(self)
     }
 
     /// Computes the derivative of order Nu in the u
@@ -1997,6 +2090,18 @@ impl Curve {
         crate::ffi::Geom_Curve_reversed(self)
     }
 
+    /// It is the global continuity of the curve
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Curve,
+    /// C2 : continuity of the second derivative all along the Curve,
+    /// C3 : continuity of the third derivative all along the Curve,
+    /// G1 : tangency continuity all along the Curve,
+    /// G2 : curvature continuity all along the Curve,
+    /// CN : the order of continuity is infinite.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_Curve_continuity(self)
+    }
+
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if the continuity of the curve is not CN.
@@ -2462,6 +2567,11 @@ impl HandleGeomCylindricalSurface {
 pub use crate::ffi::Geom_ElementarySurface as ElementarySurface;
 
 impl ElementarySurface {
+    /// Returns GeomAbs_CN, the global continuity of any elementary surface.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_ElementarySurface_continuity(self)
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_ElementarySurface_get_type_descriptor()
     }
@@ -3163,6 +3273,22 @@ impl Surface {
         crate::ffi::Geom_Surface_v_iso(self, V)
     }
 
+    /// Returns the Global Continuity of the surface in direction U and V :
+    /// - C0: only geometric continuity,
+    /// - C1: continuity of the first derivative all along the surface,
+    /// - C2: continuity of the second derivative all along the surface,
+    /// - C3: continuity of the third derivative all along the surface,
+    /// - G1: tangency continuity all along the surface,
+    /// - G2: curvature continuity all along the surface,
+    /// - CN: the order of continuity is infinite.
+    ///
+    /// Example:
+    /// If the surface is C1 in the V parametric direction and C2
+    /// in the U parametric direction Shape = C1.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_Surface_continuity(self)
+    }
+
     /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point
     /// P(U, V).
     ///
@@ -3342,6 +3468,16 @@ impl TrimmedCurve {
     /// directly modifies the trimmed curve.
     pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
         crate::ffi::Geom_TrimmedCurve_basis_curve(self)
+    }
+
+    /// Returns the continuity of the curve :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Curve,
+    /// C2 : continuity of the second derivative all along the Curve,
+    /// C3 : continuity of the third derivative all along the Curve,
+    /// CN : the order of continuity is infinite.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_TrimmedCurve_continuity(self)
     }
 
     /// Returns the end point of <me>. This point is the

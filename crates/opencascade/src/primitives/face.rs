@@ -1,7 +1,5 @@
 // NOTE: This file is partially blocked because:
 // - Many helper functions (cast_face_to_shape, map_shapes, outer_wire) not generated
-// - BRepFilletAPI_MakeFillet2d needs TopAbs_ShapeEnum which is blocked (enums)
-// - TopAbs_Orientation enum not generated
 // See TRANSITION_PLAN.md for details.
 
 use crate::{
@@ -11,7 +9,7 @@ use crate::{
 };
 use cxx::UniquePtr;
 use glam::DVec3;
-use opencascade_sys::{b_rep_builder_api, b_rep_feat, b_rep_prim_api, topo_ds};
+use opencascade_sys::{b_rep_builder_api, b_rep_feat, b_rep_fillet_api, b_rep_prim_api, message, top_abs, top_exp, topo_ds};
 
 pub struct Face {
     pub(crate) inner: UniquePtr<topo_ds::Face>,
@@ -126,33 +124,81 @@ impl Face {
         Solid::from_solid(solid)
     }
 
-    // NOTE: fillet is blocked because:
-    // - BRepFilletAPI_MakeFillet2d needs TopAbs_ShapeEnum which is not generated
-    // - map_shapes helper function not generated
-    #[allow(unused)]
     #[must_use]
-    pub fn fillet(&self, _radius: f64) -> Self {
-        unimplemented!(
-            "Face::fillet is blocked pending TopAbs_ShapeEnum and map_shapes support"
+    pub fn fillet(&self, radius: f64) -> Self {
+        let mut make_fillet = b_rep_fillet_api::MakeFillet2d::new_face(&self.inner);
+        let explorer = top_exp::Explorer::new_shape_shapeenum2(
+            self.inner.as_shape(),
+            top_abs::ShapeEnum::Vertex.into(),
+            top_abs::ShapeEnum::Shape.into(),
         );
+        // Iterate all vertices and add fillets
+        let mut explorer = explorer;
+        while explorer.more() {
+            let vertex = topo_ds::vertex(explorer.current());
+            make_fillet.pin_mut().add_fillet(vertex, radius);
+            explorer.pin_mut().next();
+        }
+        let progress = message::ProgressRange::new();
+        make_fillet.pin_mut().build(&progress);
+        let shape = make_fillet.pin_mut().shape();
+        let face = topo_ds::face(shape);
+        Face::from_face(face)
     }
 
-    // NOTE: chamfer is blocked for the same reason as fillet
-    #[allow(unused)]
     #[must_use]
-    pub fn chamfer(&self, _distance_1: f64) -> Self {
-        unimplemented!(
-            "Face::chamfer is blocked pending TopAbs_ShapeEnum and map_shapes support"
+    pub fn chamfer(&self, distance: f64) -> Self {
+        let mut make_fillet = b_rep_fillet_api::MakeFillet2d::new_face(&self.inner);
+        let explorer = top_exp::Explorer::new_shape_shapeenum2(
+            self.inner.as_shape(),
+            top_abs::ShapeEnum::Vertex.into(),
+            top_abs::ShapeEnum::Shape.into(),
         );
+        // Iterate all vertices — for each vertex, we need two adjacent edges
+        // MakeFillet2d::AddChamfer needs the vertex and adjacent edge info
+        // Use the simpler approach: iterate edges and chamfer between adjacent pairs
+        // Actually, the AddChamfer(E, V, D, Ang) form is simpler
+        let mut explorer = explorer;
+        while explorer.more() {
+            let shape = explorer.current();
+            let vertex = topo_ds::vertex(shape);
+            // Get an adjacent edge for the chamfer
+            let edge_explorer = top_exp::Explorer::new_shape_shapeenum2(
+                self.inner.as_shape(),
+                top_abs::ShapeEnum::Edge.into(),
+                top_abs::ShapeEnum::Shape.into(),
+            );
+            if edge_explorer.more() {
+                let edge = topo_ds::edge(edge_explorer.current());
+                make_fillet.pin_mut().add_chamfer_edge_vertex_real2(
+                    edge,
+                    vertex,
+                    distance,
+                    std::f64::consts::FRAC_PI_4, // 45 degree chamfer
+                );
+            }
+            explorer.pin_mut().next();
+        }
+        let progress = message::ProgressRange::new();
+        make_fillet.pin_mut().build(&progress);
+        let shape = make_fillet.pin_mut().shape();
+        let face = topo_ds::face(shape);
+        Face::from_face(face)
     }
 
-    // NOTE: offset is blocked because BRepOffsetAPI_MakeOffset needs JoinType enum
-    #[allow(unused)]
     #[must_use]
-    pub fn offset(&self, _distance: f64, _join_type: super::JoinType) -> Self {
-        unimplemented!(
-            "Face::offset is blocked pending GeomAbs_JoinType enum support"
+    pub fn offset(&self, distance: f64, join_type: super::JoinType) -> Self {
+        use opencascade_sys::{b_rep_offset_api, geom_abs};
+        let join: geom_abs::JoinType = join_type.into();
+        let mut make_offset = b_rep_offset_api::MakeOffset::new_face_jointype_bool(
+            &self.inner,
+            join.into(),
+            false, // IsOpenResult
         );
+        make_offset.pin_mut().perform(distance, 0.0);
+        let shape = make_offset.pin_mut().shape();
+        let face = topo_ds::face(shape);
+        Face::from_face(face)
     }
 
     // NOTE: sweep_along is blocked because BRepOffsetAPI_MakePipe is not generated
@@ -177,12 +223,13 @@ impl Face {
         );
     }
 
-    // NOTE: edges is blocked because TopExp_Explorer needs TopAbs_ShapeEnum
-    #[allow(unused)]
     pub fn edges(&self) -> super::EdgeIterator {
-        unimplemented!(
-            "Face::edges is blocked pending TopAbs_ShapeEnum enum support"
+        let explorer = top_exp::Explorer::new_shape_shapeenum2(
+            self.inner.as_shape(),
+            top_abs::ShapeEnum::Edge.into(),
+            top_abs::ShapeEnum::Shape.into(),
         );
+        super::EdgeIterator { explorer }
     }
 
     // NOTE: center_of_mass is blocked because BRepGProp_SurfaceProperties is not generated
@@ -250,12 +297,11 @@ impl Face {
         );
     }
 
-    // NOTE: orientation is blocked because TopAbs_Orientation enum is not generated
-    #[allow(unused)]
     pub fn orientation(&self) -> FaceOrientation {
-        unimplemented!(
-            "Face::orientation is blocked pending TopAbs_Orientation enum support"
-        );
+        let raw = self.inner.as_shape().orientation();
+        let orient = top_abs::Orientation::try_from(raw)
+            .expect("Invalid Orientation value from OCCT");
+        orient.into()
     }
 
     // NOTE: outer_wire is blocked because the outer_wire helper function is not generated
@@ -363,4 +409,24 @@ pub enum FaceOrientation {
     External,
 }
 
-// NOTE: From<TopAbs_Orientation> is blocked because TopAbs_Orientation enum is not generated
+impl From<top_abs::Orientation> for FaceOrientation {
+    fn from(value: top_abs::Orientation) -> Self {
+        match value {
+            top_abs::Orientation::Forward => FaceOrientation::Forward,
+            top_abs::Orientation::Reversed => FaceOrientation::Reversed,
+            top_abs::Orientation::Internal => FaceOrientation::Internal,
+            top_abs::Orientation::External => FaceOrientation::External,
+        }
+    }
+}
+
+impl From<FaceOrientation> for top_abs::Orientation {
+    fn from(value: FaceOrientation) -> Self {
+        match value {
+            FaceOrientation::Forward => top_abs::Orientation::Forward,
+            FaceOrientation::Reversed => top_abs::Orientation::Reversed,
+            FaceOrientation::Internal => top_abs::Orientation::Internal,
+            FaceOrientation::External => top_abs::Orientation::External,
+        }
+    }
+}

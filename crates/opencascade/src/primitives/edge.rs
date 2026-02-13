@@ -1,13 +1,11 @@
-// NOTE: This file is partially blocked because:
-// - EdgeType enum conversion from GeomAbs_CurveType is blocked (enums not generated)
-// - arc() is blocked because gc::ffi::HandleGeomTrimmedCurve doesn't have upcast methods
+// NOTE: arc() is blocked because gc::ffi::HandleGeomTrimmedCurve doesn't have upcast methods
 //   (the Handle type is declared locally in gc.rs instead of imported from geom.rs)
 // See TRANSITION_PLAN.md for details.
 
 use crate::primitives::{make_point, make_axis_2, make_vec};
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep_adaptor, b_rep_builder_api, gc_pnts, geom, geom_api, gp, t_colgp, topo_ds};
+use opencascade_sys::{b_rep_adaptor, b_rep_builder_api, gc_pnts, geom, geom_abs, geom_api, gp, t_colgp, topo_ds};
 
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub enum EdgeType {
@@ -22,8 +20,37 @@ pub enum EdgeType {
     OtherCurve,
 }
 
-// NOTE: From<GeomAbs_CurveType> is blocked because enums aren't generated
-// When enums are supported, uncomment this impl
+impl From<geom_abs::CurveType> for EdgeType {
+    fn from(value: geom_abs::CurveType) -> Self {
+        match value {
+            geom_abs::CurveType::Line => EdgeType::Line,
+            geom_abs::CurveType::Circle => EdgeType::Circle,
+            geom_abs::CurveType::Ellipse => EdgeType::Ellipse,
+            geom_abs::CurveType::Hyperbola => EdgeType::Hyperbola,
+            geom_abs::CurveType::Parabola => EdgeType::Parabola,
+            geom_abs::CurveType::Beziercurve => EdgeType::BezierCurve,
+            geom_abs::CurveType::Bsplinecurve => EdgeType::BSplineCurve,
+            geom_abs::CurveType::Offsetcurve => EdgeType::OffsetCurve,
+            geom_abs::CurveType::Othercurve => EdgeType::OtherCurve,
+        }
+    }
+}
+
+impl From<EdgeType> for geom_abs::CurveType {
+    fn from(value: EdgeType) -> Self {
+        match value {
+            EdgeType::Line => geom_abs::CurveType::Line,
+            EdgeType::Circle => geom_abs::CurveType::Circle,
+            EdgeType::Ellipse => geom_abs::CurveType::Ellipse,
+            EdgeType::Hyperbola => geom_abs::CurveType::Hyperbola,
+            EdgeType::Parabola => geom_abs::CurveType::Parabola,
+            EdgeType::BezierCurve => geom_abs::CurveType::Beziercurve,
+            EdgeType::BSplineCurve => geom_abs::CurveType::Bsplinecurve,
+            EdgeType::OffsetCurve => geom_abs::CurveType::Offsetcurve,
+            EdgeType::OtherCurve => geom_abs::CurveType::Othercurve,
+        }
+    }
+}
 
 pub struct Edge {
     pub(crate) inner: UniquePtr<topo_ds::Edge>,

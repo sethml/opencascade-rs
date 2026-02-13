@@ -34,6 +34,32 @@ impl Builder {
         crate::ffi::BRep_Builder_ctor()
     }
 
+    /// Sets the geometric continuity on the edge.
+    pub fn continuity_edge_face2_shape(
+        &self,
+        E: &crate::ffi::TopoDS_Edge,
+        F1: &crate::ffi::TopoDS_Face,
+        F2: &crate::ffi::TopoDS_Face,
+        C: i32,
+    ) {
+        crate::ffi::BRep_Builder_continuity_edge_face2_shape(self, E, F1, F2, C)
+    }
+
+    /// Sets the geometric continuity on the edge.
+    pub fn continuity_edge_handlesurface2_location2_shape(
+        &self,
+        E: &crate::ffi::TopoDS_Edge,
+        S1: &crate::ffi::HandleGeomSurface,
+        S2: &crate::ffi::HandleGeomSurface,
+        L1: &crate::ffi::TopLoc_Location,
+        L2: &crate::ffi::TopLoc_Location,
+        C: i32,
+    ) {
+        crate::ffi::BRep_Builder_continuity_edge_handlesurface2_location2_shape(
+            self, E, S1, S2, L1, L2, C,
+        )
+    }
+
     /// Upcast to TopoDS_Builder
     pub fn as_topo_ds_builder(&self) -> &crate::topo_ds::Builder {
         crate::ffi::BRep_Builder_as_TopoDS_Builder(self)
@@ -465,6 +491,15 @@ impl Tool {
         crate::ffi::BRep_Tool_has_continuity_edge_face2(E, F1, F2)
     }
 
+    /// Returns the continuity.
+    pub fn continuity_edge_face2(
+        E: &crate::ffi::TopoDS_Edge,
+        F1: &crate::ffi::TopoDS_Face,
+        F2: &crate::ffi::TopoDS_Face,
+    ) -> i32 {
+        crate::ffi::BRep_Tool_continuity_edge_face2(E, F1, F2)
+    }
+
     /// Returns True if the edge is on the surfaces.
     pub fn has_continuity_edge_handlesurface2_location2(
         E: &crate::ffi::TopoDS_Edge,
@@ -476,10 +511,27 @@ impl Tool {
         crate::ffi::BRep_Tool_has_continuity_edge_handlesurface2_location2(E, S1, S2, L1, L2)
     }
 
+    /// Returns the continuity.
+    pub fn continuity_edge_handlesurface2_location2(
+        E: &crate::ffi::TopoDS_Edge,
+        S1: &crate::ffi::HandleGeomSurface,
+        S2: &crate::ffi::HandleGeomSurface,
+        L1: &crate::ffi::TopLoc_Location,
+        L2: &crate::ffi::TopLoc_Location,
+    ) -> i32 {
+        crate::ffi::BRep_Tool_continuity_edge_handlesurface2_location2(E, S1, S2, L1, L2)
+    }
+
     /// Returns True if the edge has regularity on some
     /// two surfaces
     pub fn has_continuity_edge(E: &crate::ffi::TopoDS_Edge) -> bool {
         crate::ffi::BRep_Tool_has_continuity_edge(E)
+    }
+
+    /// Returns the max continuity of edge between some surfaces or GeomAbs_C0 if there no such
+    /// surfaces.
+    pub fn max_continuity(theEdge: &crate::ffi::TopoDS_Edge) -> i32 {
+        crate::ffi::BRep_Tool_max_continuity(theEdge)
     }
 
     /// Returns the 3d point.
@@ -541,5 +593,9 @@ impl Tool {
         F: &crate::ffi::TopoDS_Face,
     ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
         crate::ffi::BRep_Tool_parameters(V, F)
+    }
+
+    pub fn max_tolerance(theShape: &crate::ffi::TopoDS_Shape, theSubShape: i32) -> f64 {
+        crate::ffi::BRep_Tool_max_tolerance(theShape, theSubShape)
     }
 }

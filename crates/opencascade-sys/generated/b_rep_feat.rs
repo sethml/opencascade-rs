@@ -475,6 +475,10 @@ impl Form {
         crate::ffi::BRepFeat_Form_baryc_curve(self)
     }
 
+    pub fn current_status_error(&self) -> i32 {
+        crate::ffi::BRepFeat_Form_current_status_error(self)
+    }
+
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_Command(self)
@@ -531,6 +535,11 @@ impl MakeCylindricalHole {
     /// Empty constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepFeat_MakeCylindricalHole_ctor()
+    }
+
+    /// Returns the status after a hole is performed.
+    pub fn status(&self) -> i32 {
+        crate::ffi::BRepFeat_MakeCylindricalHole_status(self)
     }
 
     /// Upcast to BOPAlgo_BOP
@@ -794,11 +803,6 @@ impl MakeCylindricalHole {
     /// Inherited from BOPAlgo_ToolsProvider: Tools()
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Tools(self)
-    }
-
-    /// Inherited from BRepFeat_Builder: SetOperation()
-    pub fn set_operation(self: std::pin::Pin<&mut Self>, theFuse: i32) {
-        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetOperation(self, theFuse)
     }
 
     /// Inherited from BRepFeat_Builder: PartsOfTool()

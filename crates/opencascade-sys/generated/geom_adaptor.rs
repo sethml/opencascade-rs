@@ -42,6 +42,16 @@ impl Curve {
         crate::ffi::GeomAdaptor_Curve_shallow_copy(self)
     }
 
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::GeomAdaptor_Curve_continuity(self)
+    }
+
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::GeomAdaptor_Curve_nb_intervals(self, S)
+    }
+
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
     /// test for 3d points confusion.
@@ -69,6 +79,10 @@ impl Curve {
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
         crate::ffi::GeomAdaptor_Curve_dn(self, U, N)
+    }
+
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::GeomAdaptor_Curve_get_type(self)
     }
 
     pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
@@ -169,6 +183,26 @@ impl Surface {
         crate::ffi::GeomAdaptor_Surface_shallow_copy(self)
     }
 
+    pub fn u_continuity(&self) -> i32 {
+        crate::ffi::GeomAdaptor_Surface_u_continuity(self)
+    }
+
+    pub fn v_continuity(&self) -> i32 {
+        crate::ffi::GeomAdaptor_Surface_v_continuity(self)
+    }
+
+    /// Returns the number of U intervals for  continuity
+    /// <S>. May be one if UContinuity(me) >= <S>
+    pub fn nb_u_intervals(&self, S: i32) -> i32 {
+        crate::ffi::GeomAdaptor_Surface_nb_u_intervals(self, S)
+    }
+
+    /// Returns the number of V intervals for  continuity
+    /// <S>. May be one if VContinuity(me) >= <S>
+    pub fn nb_v_intervals(&self, S: i32) -> i32 {
+        crate::ffi::GeomAdaptor_Surface_nb_v_intervals(self, S)
+    }
+
     /// Returns    a  surface trimmed in the U direction
     /// equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
@@ -211,6 +245,14 @@ impl Surface {
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
         crate::ffi::GeomAdaptor_Surface_dn(self, U, V, Nu, Nv)
+    }
+
+    /// Returns the type of the surface : Plane, Cylinder,
+    /// Cone,      Sphere,        Torus,    BezierSurface,
+    /// BSplineSurface,               SurfaceOfRevolution,
+    /// SurfaceOfExtrusion, OtherSurface
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::GeomAdaptor_Surface_get_type(self)
     }
 
     pub fn plane(&self) -> cxx::UniquePtr<crate::ffi::gp_Pln> {

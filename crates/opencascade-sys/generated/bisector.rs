@@ -36,4 +36,25 @@ impl Bisec {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Bisector_Bisec_ctor()
     }
+
+    /// Performs  the bisecting line  between the  curves
+    /// <Cu1> and <Cu2>.
+    /// <oncurve> is True if the point <P> is common to <Cu1>
+    /// and <Cu2>.
+    pub fn perform(
+        self: std::pin::Pin<&mut Self>,
+        Cu1: &crate::ffi::HandleGeom2dCurve,
+        Cu2: &crate::ffi::HandleGeom2dCurve,
+        P: &crate::ffi::gp_Pnt2d,
+        V1: &crate::ffi::gp_Vec2d,
+        V2: &crate::ffi::gp_Vec2d,
+        Sense: f64,
+        ajointype: i32,
+        Tolerance: f64,
+        oncurve: bool,
+    ) {
+        crate::ffi::Bisector_Bisec_perform(
+            self, Cu1, Cu2, P, V1, V2, Sense, ajointype, Tolerance, oncurve,
+        )
+    }
 }

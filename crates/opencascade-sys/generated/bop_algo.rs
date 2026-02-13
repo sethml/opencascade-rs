@@ -269,6 +269,14 @@ impl BOP {
         crate::ffi::BOPAlgo_BOP_ctor_handlebaseallocator(theAllocator)
     }
 
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theOperation: i32) {
+        crate::ffi::BOPAlgo_BOP_set_operation(self, theOperation)
+    }
+
+    pub fn operation(&self) -> i32 {
+        crate::ffi::BOPAlgo_BOP_operation(self)
+    }
+
     /// Upcast to BOPAlgo_Builder
     pub fn as_builder(&self) -> &Builder {
         crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Builder(self)
@@ -550,6 +558,16 @@ impl Builder {
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BOPAlgo_Builder_ctor_handlebaseallocator(theAllocator)
+    }
+
+    /// Sets the glue option for the algorithm
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BOPAlgo_Builder_set_glue(self, theGlue)
+    }
+
+    /// Returns the glue option of the algorithm
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BOPAlgo_Builder_glue(self)
     }
 
     /// Upcast to BOPAlgo_BuilderShape

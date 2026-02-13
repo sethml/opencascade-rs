@@ -249,6 +249,11 @@ impl Dump {
         crate::ffi::Standard_Dump_has_child_key(theSourceValue)
     }
 
+    /// Returns length value for enum type
+    pub fn json_key_length(theKey: i32) -> i32 {
+        crate::ffi::Standard_Dump_json_key_length(theKey)
+    }
+
     /// Returns default prefix added for each pointer info string if short presentation of pointer
     /// used
     pub fn get_pointer_prefix() -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {

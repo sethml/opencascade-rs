@@ -345,8 +345,21 @@ fn param_uses_unknown_handle(ty: &Type, handle_able_classes: &HashSet<String>) -
     }
 }
 
-/// Check if a type uses an unknown class/handle given the TypeContext
+/// Check if a type uses an unknown class/handle given the TypeContext.
+/// Enum types (Type::Class that are in all_enums) are known — they map to i32.
 fn type_uses_unknown_type(ty: &Type, ctx: &TypeContext) -> bool {
+    // Enum types are known (mapped to i32), so skip them
+    match ty {
+        Type::Class(name) if ctx.all_enums.contains(name) => return false,
+        Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => {
+            if let Type::Class(name) = inner.as_ref() {
+                if ctx.all_enums.contains(name) {
+                    return false;
+                }
+            }
+        }
+        _ => {}
+    }
     if let Some(handle_classes) = ctx.handle_able_classes {
         type_mapping::type_uses_unknown_handle(ty, ctx.all_classes, handle_classes)
     } else {
@@ -527,7 +540,7 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext) -> bool {
     if method.has_unbindable_types() {
         return false;
     }
-    if resolver::method_has_unsupported_by_value_params(method).is_some() {
+    if resolver::method_has_unsupported_by_value_params(method, ctx.all_enums).is_some() {
         return false;
     }
     if resolver::has_const_mut_return_mismatch(method) {
@@ -547,6 +560,10 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext) -> bool {
         if type_uses_unknown_type(ret, ctx) {
             return false;
         }
+        // MutRef to enum return type can't be bound — CXX expects int32_t& but C++ has EnumType&
+        if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
+            return false;
+        }
     }
     true
 }
@@ -554,14 +571,15 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext) -> bool {
 /// Filter for constructors
 fn is_constructor_bindable(
     ctor: &Constructor,
-    _all_enum_names: &HashSet<String>,
+    all_enum_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
 ) -> bool {
-    if ctor
-        .params
-        .iter()
-        .any(|p| matches!(&p.ty, Type::Class(_) | Type::Handle(_)))
-    {
+    // Reject by-value class/handle params, but allow enums (they're mapped to i32)
+    if ctor.params.iter().any(|p| match &p.ty {
+        Type::Class(name) => !all_enum_names.contains(name),
+        Type::Handle(_) => true,
+        _ => false,
+    }) {
         return false;
     }
     if ctor.has_unbindable_types() {
@@ -582,6 +600,9 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
     if method.has_unbindable_types() {
         return false;
     }
+    if resolver::static_method_has_unsupported_by_value_params(method, ctx.all_enums).is_some() {
+        return false;
+    }
     if method
         .params
         .iter()
@@ -596,17 +617,34 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
         if type_is_cstring(ret) {
             return false;
         }
+        // MutRef to enum return type can't be bound — CXX expects int32_t& but C++ has EnumType&
+        if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
+            return false;
+        }
     }
     true
 }
 
+/// Check if a return type is a mutable reference to an enum.
+/// CXX can't handle these: Rust side has `&mut i32` but C++ has `EnumType&`.
+fn return_type_is_mut_ref_enum(ty: &Type, all_enums: &HashSet<String>) -> bool {
+    if let Type::MutRef(inner) = ty {
+        if let Type::Class(name) = inner.as_ref() {
+            return all_enums.contains(name);
+        }
+    }
+    false
+}
+
 // ── Building ParamBinding / ReturnTypeBinding ───────────────────────────────
 
-/// Extract the enum C++ name from a type, unwrapping references
+/// Extract the enum C++ name from a type, unwrapping const references.
+/// MutRef to enums is NOT extracted — these are output parameters that need
+/// special handling (local variable + writeback), not supported yet.
 fn extract_enum_name(ty: &Type, all_enums: &HashSet<String>) -> Option<String> {
     match ty {
         Type::Class(name) if all_enums.contains(name) => Some(name.clone()),
-        Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => {
+        Type::ConstRef(inner) | Type::RValueRef(inner) => {
             extract_enum_name(inner, all_enums)
         }
         _ => None,
@@ -754,7 +792,7 @@ fn compute_wrapper_method_names(methods: &[&Method]) -> Vec<String> {
                 } else {
                     base_suffix
                 };
-                format!("{}{}", base_name, suffix)
+                combine_name_suffix(&base_name, &suffix)
             } else {
                 base_name
             }
@@ -785,7 +823,7 @@ fn compute_static_method_names(
             // Level 1: Internal overload suffix
             let candidate_fn_name = if has_internal_conflict {
                 let suffix = method.overload_suffix();
-                format!("{}{}", base_name, suffix)
+                combine_name_suffix(&base_name, &suffix)
             } else {
                 base_name.clone()
             };
@@ -797,7 +835,7 @@ fn compute_static_method_names(
                 if suffix.is_empty() {
                     format!("{}_static", base_name)
                 } else {
-                    format!("{}{}", base_name, suffix)
+                    combine_name_suffix(&base_name, &suffix)
                 }
             } else {
                 candidate_fn_name
@@ -810,7 +848,7 @@ fn compute_static_method_names(
                     if suffix.is_empty() {
                         format!("{}_static", ffi_fn_name_base)
                     } else {
-                        format!("{}{}", base_name, suffix)
+                        combine_name_suffix(&base_name, &suffix)
                     }
                 } else {
                     ffi_fn_name_base.clone()
@@ -974,7 +1012,7 @@ pub fn compute_class_bindings(
                     format!("{}_wrapper", fn_name)
                 } else {
                     let base_name = safe_method_name(&method.name);
-                    format!("{}{}", base_name, suffix)
+                    combine_name_suffix(&base_name, &suffix)
                 }
             } else {
                 fn_name.clone()
@@ -1117,16 +1155,15 @@ fn is_params_bindable(
     all_enum_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
 ) -> bool {
-    if params
-        .iter()
-        .any(|p| matches!(&p.ty, Type::Class(_) | Type::Handle(_)))
-    {
+    // Reject by-value class/handle params, but allow enums (they're mapped to i32)
+    if params.iter().any(|p| match &p.ty {
+        Type::Class(name) => !all_enum_names.contains(name),
+        Type::Handle(_) => true,
+        _ => false,
+    }) {
         return false;
     }
     if params.iter().any(|p| p.ty.is_unbindable()) {
-        return false;
-    }
-    if resolver::params_use_enum(params, all_enum_names) {
         return false;
     }
     if params
@@ -1139,6 +1176,17 @@ fn is_params_bindable(
 }
 
 /// Compute overload suffix for a param slice (used for trimmed constructors).
+/// Combine a base name with an overload suffix, avoiding double underscores.
+/// If base_name ends with '_' (e.g. keyword-escaped "type_") and suffix starts with '_',
+/// we merge them to avoid "type__suffix" → "type_suffix" instead.
+fn combine_name_suffix(base: &str, suffix: &str) -> String {
+    if base.ends_with('_') && suffix.starts_with('_') {
+        format!("{}{}", base, &suffix[1..])
+    } else {
+        format!("{}{}", base, suffix)
+    }
+}
+
 fn overload_suffix_for_params(params: &[Param]) -> String {
     if params.is_empty() {
         return String::new();

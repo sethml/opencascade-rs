@@ -53,6 +53,11 @@ impl Reader {
         crate::ffi::IGESControl_Reader_ctor()
     }
 
+    /// Prints Statistics and check list for Transfer
+    pub fn print_transfer_info(&self, failwarn: i32, mode: i32) {
+        crate::ffi::IGESControl_Reader_print_transfer_info(self, failwarn, mode)
+    }
+
     /// Upcast to XSControl_Reader
     pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
         crate::ffi::IGESControl_Reader_as_XSControl_Reader(self)

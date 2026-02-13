@@ -46,6 +46,17 @@ impl BooleanOperation {
         crate::ffi::BRepAlgoAPI_BooleanOperation_ctor_pavefiller(thePF)
     }
 
+    /// @name Setting/Getting the type of Boolean operation
+    /// Sets the type of Boolean operation
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: i32) {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_set_operation(self, theBOP)
+    }
+
+    /// Returns the type of Boolean Operation
+    pub fn operation(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_operation(self)
+    }
+
     /// Upcast to BRepAlgoAPI_BuilderAlgo
     pub fn as_builder_algo(&self) -> &BuilderAlgo {
         crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo(self)
@@ -241,6 +252,18 @@ impl BuilderAlgo {
     /// Constructor with prepared Filler object
     pub fn new_pavefiller(thePF: &crate::ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepAlgoAPI_BuilderAlgo_ctor_pavefiller(thePF)
+    }
+
+    /// Sets the glue option for the algorithm,
+    /// which allows increasing performance of the intersection
+    /// of the input shapes.
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BRepAlgoAPI_BuilderAlgo_set_glue(self, theGlue)
+    }
+
+    /// Returns the glue option of the algorithm
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_BuilderAlgo_glue(self)
     }
 
     /// History tool

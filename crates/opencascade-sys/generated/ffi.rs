@@ -3527,6 +3527,14 @@ mod ffi {
         /// Transforms a triplet XYZ with a GTrsf.
         #[cxx_name = "Transforms"]
         fn transforms_real3(self: &gp_GTrsf, theX: &mut f64, theY: &mut f64, theZ: &mut f64);
+        /// **Source:** `gp_GTrsf.hxx`:159 - `gp_GTrsf::Form()`
+        ///
+        /// Returns the nature of the transformation.  It can be an
+        /// identity transformation, a rotation, a translation, a mirror
+        /// transformation (relative to a point, an axis or a plane), a
+        /// scaling transformation, a compound transformation or
+        /// some other type of transformation.
+        fn gp_GTrsf_form(self_: &gp_GTrsf) -> i32;
         /// **Source:** `gp_GTrsf.hxx`:192 - `gp_GTrsf::Inverted()`
         ///
         /// Computes the reverse transformation.
@@ -3712,6 +3720,14 @@ mod ffi {
         /// -   Transformed creates a new coordinate pair.
         #[cxx_name = "Transforms"]
         fn transforms_real2(self: &gp_GTrsf2d, theX: &mut f64, theY: &mut f64);
+        /// **Source:** `gp_GTrsf2d.hxx`:126 - `gp_GTrsf2d::Form()`
+        ///
+        /// Returns the nature of the transformation.  It can be
+        /// an identity transformation, a rotation, a translation, a mirror
+        /// transformation (relative to a point or axis), a scaling
+        /// transformation, a compound transformation or some
+        /// other type of transformation.
+        fn gp_GTrsf2d_form(self_: &gp_GTrsf2d) -> i32;
         /// **Source:** `gp_GTrsf2d.hxx`:149 - `gp_GTrsf2d::Inverted()`
         ///
         /// Computes the reverse transformation.
@@ -6507,6 +6523,27 @@ mod ffi {
         ///
         /// Returns rotation operation as 3*3 matrix
         fn gp_Quaternion_get_matrix(self_: &gp_Quaternion) -> UniquePtr<gp_Mat>;
+        /// **Source:** `gp_Quaternion.hxx`:120 - `gp_Quaternion::SetEulerAngles()`
+        ///
+        /// Create a unit quaternion representing rotation defined
+        /// by generalized Euler angles
+        fn gp_Quaternion_set_euler_angles(
+            self_: Pin<&mut gp_Quaternion>,
+            theOrder: i32,
+            theAlpha: f64,
+            theBeta: f64,
+            theGamma: f64,
+        );
+        /// **Source:** `gp_Quaternion.hxx`:126 - `gp_Quaternion::GetEulerAngles()`
+        ///
+        /// Returns Euler angles describing current rotation
+        fn gp_Quaternion_get_euler_angles(
+            self_: &gp_Quaternion,
+            theOrder: i32,
+            theAlpha: &mut f64,
+            theBeta: &mut f64,
+            theGamma: &mut f64,
+        );
         /// **Source:** `gp_Quaternion.hxx`:162 - `gp_Quaternion::Reversed()`
         ///
         /// Return rotation with reversed direction (conjugated quaternion)
@@ -7391,6 +7428,15 @@ mod ffi {
         /// Transformation of a triplet XYZ with a Trsf
         #[cxx_name = "Transforms"]
         fn transforms_xyz(self: &gp_Trsf, theCoord: Pin<&mut gp_XYZ>);
+        /// **Source:** `gp_Trsf.hxx`:190 - `gp_Trsf::SetForm()`
+        fn gp_Trsf_set_form(self_: Pin<&mut gp_Trsf>, theP: i32);
+        /// **Source:** `gp_Trsf.hxx`:224 - `gp_Trsf::Form()`
+        ///
+        /// Returns the nature of the transformation. It can be: an
+        /// identity transformation, a rotation, a translation, a mirror
+        /// transformation (relative to a point, an axis or a plane), a
+        /// scaling transformation, or a compound transformation.
+        fn gp_Trsf_form(self_: &gp_Trsf) -> i32;
         /// **Source:** `gp_Trsf.hxx`:242 - `gp_Trsf::GetRotation()`
         ///
         /// Returns quaternion representing rotational part of the transformation.
@@ -7611,6 +7657,13 @@ mod ffi {
             a22: f64,
             a23: f64,
         );
+        /// **Source:** `gp_Trsf2d.hxx`:106 - `gp_Trsf2d::Form()`
+        ///
+        /// Returns the nature of the transformation. It can be  an
+        /// identity transformation, a rotation, a translation, a mirror
+        /// (relative to a point or an axis), a scaling transformation,
+        /// or a compound transformation.
+        fn gp_Trsf2d_form(self_: &gp_Trsf2d) -> i32;
         /// **Source:** `gp_Trsf2d.hxx`:116 - `gp_Trsf2d::VectorialPart()`
         ///
         /// Returns the vectorial part of the transformation. It is a
@@ -9205,6 +9258,27 @@ mod ffi {
             theLoc: &TopLoc_Location,
             theRaiseExc: bool,
         ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
+        ///
+        /// Returns the shape orientation.
+        fn TopoDS_Shape_orientation(self_: &TopoDS_Shape) -> i32;
+        /// **Source:** `TopoDS_Shape.hxx`:122 - `TopoDS_Shape::Orientation()`
+        ///
+        /// Sets the shape orientation.
+        fn TopoDS_Shape_orientation_orientation(self_: Pin<&mut TopoDS_Shape>, theOrient: i32);
+        /// **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
+        ///
+        /// Returns  a    shape  similar  to  <me>   with  the
+        /// orientation set to <Or>.
+        fn TopoDS_Shape_oriented(self_: &TopoDS_Shape, theOrient: i32) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
+        ///
+        /// Returns the value of the TopAbs_ShapeEnum
+        /// enumeration that corresponds to this shape, for
+        /// example VERTEX, EDGE, and so on.
+        /// Exceptions
+        /// Standard_NullObject if this shape is null.
+        fn TopoDS_Shape_shape_type(self_: &TopoDS_Shape) -> i32;
         /// **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
         ///
         /// Returns a shape similar to <me> with a location multiplied by thePosition.
@@ -9228,6 +9302,17 @@ mod ffi {
         /// orientation complemented,  using   the  Complement
         /// method from the TopAbs package.
         fn TopoDS_Shape_complemented(self_: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
+        ///
+        /// Updates the Shape Orientation by composition with theOrient,
+        /// using the Compose method from the TopAbs package.
+        fn TopoDS_Shape_compose(self_: Pin<&mut TopoDS_Shape>, theOrient: i32);
+        /// **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
+        ///
+        /// Returns  a  shape   similar   to  <me>   with  the
+        /// orientation composed with theOrient, using the
+        /// Compose method from the TopAbs package.
+        fn TopoDS_Shape_composed(self_: &TopoDS_Shape, theOrient: i32) -> UniquePtr<TopoDS_Shape>;
         /// **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
         ///
         /// Returns a new Shape with the  same Orientation and
@@ -10128,6 +10213,22 @@ mod ffi {
         ///
         /// Creates an empty explorer, becomes useful after Init.
         fn TopExp_Explorer_ctor() -> UniquePtr<TopExp_Explorer>;
+        /// **Source:** `TopExp_Explorer.hxx`:98 - `TopExp_Explorer::TopExp_Explorer()`
+        ///
+        /// Creates an Explorer on the Shape <S>.
+        ///
+        /// <ToFind> is the type of shapes to search.
+        /// TopAbs_VERTEX, TopAbs_EDGE, ...
+        ///
+        /// <ToAvoid>   is the type   of shape to  skip in the
+        /// exploration.   If   <ToAvoid>  is  equal  or  less
+        /// complex than <ToFind> or if  <ToAVoid> is SHAPE it
+        /// has no effect on the exploration.
+        fn TopExp_Explorer_ctor_shape_shapeenum2(
+            S: &TopoDS_Shape,
+            ToFind: i32,
+            ToAvoid: i32,
+        ) -> UniquePtr<TopExp_Explorer>;
         /// **Source:** `TopExp_Explorer.hxx`:113 - `TopExp_Explorer::More()`
         ///
         /// Returns True if there are more shapes in the exploration.
@@ -10176,6 +10277,20 @@ mod ffi {
         /// False on More().
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut TopExp_Explorer>);
+        /// **Source:** `TopExp_Explorer.hxx`:108 - `TopExp_Explorer::Init()`
+        ///
+        /// Resets this explorer on the shape S. It is initialized to
+        /// search the shape S, for shapes of type ToFind, that
+        /// are not part of a shape ToAvoid.
+        /// If the shape ToAvoid is equal to TopAbs_SHAPE, or
+        /// if it is the same as, or less complex than, the shape
+        /// ToFind it has no effect on the search.
+        fn TopExp_Explorer_init(
+            self_: Pin<&mut TopExp_Explorer>,
+            S: &TopoDS_Shape,
+            ToFind: i32,
+            ToAvoid: i32,
+        );
         /// ======================== TopExp ========================
         /// **Source:** `TopExp.hxx`:44 - `TopExp`
         ///
@@ -10194,6 +10309,18 @@ mod ffi {
         ///
         /// Default constructor
         fn TopExp_ctor() -> UniquePtr<TopExp>;
+        /// **Source:** `TopExp.hxx`:54 - `TopExp::MapShapes()`
+        ///
+        /// Tool to explore a topological data structure.
+        /// Stores in the map <M> all  the sub-shapes of <S>
+        /// of type <T>.
+        ///
+        /// Warning: The map is not cleared at first.
+        fn TopExp_map_shapes_shape_shapeenum_indexedmapofshape(
+            S: &TopoDS_Shape,
+            T: i32,
+            M: Pin<&mut TopTools_IndexedMapOfShape>,
+        );
         /// **Source:** `TopExp.hxx`:64 - `TopExp::MapShapes()`
         ///
         /// Stores in the map <M> all  the sub-shapes of <S>.
@@ -10221,6 +10348,34 @@ mod ffi {
             M: Pin<&mut TopTools_MapOfShape>,
             cumOri: bool,
             cumLoc: bool,
+        );
+        /// **Source:** `TopExp.hxx`:85 - `TopExp::MapShapesAndAncestors()`
+        ///
+        /// Stores in the map <M> all the subshape of <S> of
+        /// type <TS>  for each one append  to  the list all
+        /// the ancestors of type <TA>.  For example map all
+        /// the edges and bind the list of faces.
+        /// Warning: The map is not cleared at first.
+        fn TopExp_map_shapes_and_ancestors(
+            S: &TopoDS_Shape,
+            TS: i32,
+            TA: i32,
+            M: Pin<&mut TopTools_IndexedDataMapOfShapeListOfShape>,
+        );
+        /// **Source:** `TopExp.hxx`:96 - `TopExp::MapShapesAndUniqueAncestors()`
+        ///
+        /// Stores in the map <M> all the subshape of <S> of
+        /// type <TS> for each one append to the list all
+        /// unique ancestors of type <TA>.  For example map all
+        /// the edges and bind the list of faces.
+        /// useOrientation = True : taking account the ancestor orientation
+        /// Warning: The map is not cleared at first.
+        fn TopExp_map_shapes_and_unique_ancestors(
+            S: &TopoDS_Shape,
+            TS: i32,
+            TA: i32,
+            M: Pin<&mut TopTools_IndexedDataMapOfShapeListOfShape>,
+            useOrientation: bool,
         );
         /// **Source:** `TopExp.hxx`:106 - `TopExp::FirstVertex()`
         ///
@@ -10895,6 +11050,13 @@ mod ffi {
         /// StdFail_NotDone if the edge is not built.
         #[cxx_name = "Vertex2"]
         fn vertex2(self: &BRepBuilderAPI_MakeEdge) -> &TopoDS_Vertex;
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:328 - `BRepBuilderAPI_MakeEdge::Error()`
+        ///
+        /// Returns the construction status
+        /// -   BRepBuilderAPI_EdgeDone if the edge is built, or
+        /// -   another value of the BRepBuilderAPI_EdgeError
+        /// enumeration indicating the reason of construction failure.
+        fn BRepBuilderAPI_MakeEdge_error(self_: &BRepBuilderAPI_MakeEdge) -> i32;
         /// Upcast BRepBuilderAPI_MakeEdge to BRepBuilderAPI_Command
         fn BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command(
             self_: &BRepBuilderAPI_MakeEdge,
@@ -11256,6 +11418,15 @@ mod ffi {
         /// StdFail_NotDone if no face is built.
         #[cxx_name = "Face"]
         fn face(self: &BRepBuilderAPI_MakeFace) -> &TopoDS_Face;
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:283 - `BRepBuilderAPI_MakeFace::Error()`
+        ///
+        /// Returns the construction status
+        /// BRepBuilderAPI_FaceDone if the face is built, or
+        /// -   another value of the BRepBuilderAPI_FaceError
+        /// enumeration indicating why the construction failed, in
+        /// particular when the given parameters are outside the
+        /// bounds of the surface.
+        fn BRepBuilderAPI_MakeFace_error(self_: &BRepBuilderAPI_MakeFace) -> i32;
         /// Upcast BRepBuilderAPI_MakeFace to BRepBuilderAPI_Command
         fn BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command(
             self_: &BRepBuilderAPI_MakeFace,
@@ -11697,6 +11868,13 @@ mod ffi {
         /// add was not connectableR
         #[cxx_name = "Vertex"]
         fn vertex(self: &BRepBuilderAPI_MakeWire) -> &TopoDS_Vertex;
+        /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:158 - `BRepBuilderAPI_MakeWire::Error()`
+        ///
+        /// Returns the construction status
+        /// -   BRepBuilderAPI_WireDone if the wire is built, or
+        /// -   another value of the BRepBuilderAPI_WireError
+        /// enumeration indicating why the construction failed.
+        fn BRepBuilderAPI_MakeWire_error(self_: &BRepBuilderAPI_MakeWire) -> i32;
         /// Upcast BRepBuilderAPI_MakeWire to BRepBuilderAPI_Command
         fn BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command(
             self_: &BRepBuilderAPI_MakeWire,
@@ -13605,6 +13783,16 @@ mod ffi {
         /// The edges represent the result of intersection between arguments of operation.
         #[cxx_name = "SectionEdges"]
         fn section_edges(self: Pin<&mut BRepAlgoAPI_BuilderAlgo>) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
+        ///
+        /// Sets the glue option for the algorithm,
+        /// which allows increasing performance of the intersection
+        /// of the input shapes.
+        fn BRepAlgoAPI_BuilderAlgo_set_glue(self_: Pin<&mut BRepAlgoAPI_BuilderAlgo>, theGlue: i32);
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
+        ///
+        /// Returns the glue option of the algorithm
+        fn BRepAlgoAPI_BuilderAlgo_glue(self_: &BRepAlgoAPI_BuilderAlgo) -> i32;
         /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
         ///
         /// History tool
@@ -13701,6 +13889,18 @@ mod ffi {
         /// Performs the Boolean operation.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BRepAlgoAPI_BooleanOperation>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
+        ///
+        /// @name Setting/Getting the type of Boolean operation
+        /// Sets the type of Boolean operation
+        fn BRepAlgoAPI_BooleanOperation_set_operation(
+            self_: Pin<&mut BRepAlgoAPI_BooleanOperation>,
+            theBOP: i32,
+        );
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:83 - `BRepAlgoAPI_BooleanOperation::Operation()`
+        ///
+        /// Returns the type of Boolean Operation
+        fn BRepAlgoAPI_BooleanOperation_operation(self_: &BRepAlgoAPI_BooleanOperation) -> i32;
         /// Upcast BRepAlgoAPI_BooleanOperation to BRepAlgoAPI_BuilderAlgo
         fn BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo(
             self_: &BRepAlgoAPI_BooleanOperation,
@@ -15104,6 +15304,13 @@ mod ffi {
         /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:295 - `BRepFilletAPI_MakeChamfer::NbSurf()`
         #[cxx_name = "NbSurf"]
         fn nb_surf(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:150 - `BRepFilletAPI_MakeChamfer::SetMode()`
+        ///
+        /// Sets the mode of chamfer
+        fn BRepFilletAPI_MakeChamfer_set_mode(
+            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
+            theMode: i32,
+        );
         /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:212 - `BRepFilletAPI_MakeChamfer::FirstVertex()`
         ///
         /// Returns the first vertex of the contour of index IC
@@ -15182,8 +15389,9 @@ mod ffi {
         /// which   parameterisation matches  the  circle one.
         /// ChFi3d_Polynomial  corresponds to  a    polynomial
         /// representation of circles.
-        fn BRepFilletAPI_MakeFillet_ctor_shape(
+        fn BRepFilletAPI_MakeFillet_ctor_shape_filletshape(
             S: &TopoDS_Shape,
+            FShape: i32,
         ) -> UniquePtr<BRepFilletAPI_MakeFillet>;
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:64 - `BRepFilletAPI_MakeFillet::SetParams()`
         #[cxx_name = "SetParams"]
@@ -15589,12 +15797,36 @@ mod ffi {
         /// if the filling in a corner failed a shape with a hole is returned
         #[cxx_name = "HasResult"]
         fn has_result(self: &BRepFilletAPI_MakeFillet) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:77 - `BRepFilletAPI_MakeFillet::SetContinuity()`
+        ///
+        /// Changes     the      parameters     of  continiuity
+        /// InternalContinuity to produce fillet'surfaces with
+        /// an continuity   Ci (i=0,1 or    2).
+        /// By defaultInternalContinuity = GeomAbs_C1.
+        /// AngularTolerance  is the G1 tolerance between fillet
+        /// and support'faces.
+        fn BRepFilletAPI_MakeFillet_set_continuity(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
+            InternalContinuity: i32,
+            AngularTolerance: f64,
+        );
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:204 - `BRepFilletAPI_MakeFillet::GetLaw()`
         fn BRepFilletAPI_MakeFillet_get_law(
             self_: Pin<&mut BRepFilletAPI_MakeFillet>,
             IC: i32,
             E: &TopoDS_Edge,
         ) -> UniquePtr<HandleLawFunction>;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:211 - `BRepFilletAPI_MakeFillet::SetFilletShape()`
+        ///
+        /// Assigns FShape as the type of fillet shape built by this algorithm.
+        fn BRepFilletAPI_MakeFillet_set_fillet_shape(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
+            FShape: i32,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:214 - `BRepFilletAPI_MakeFillet::GetFilletShape()`
+        ///
+        /// Returns the type of fillet shape built by this algorithm.
+        fn BRepFilletAPI_MakeFillet_get_fillet_shape(self_: &BRepFilletAPI_MakeFillet) -> i32;
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:260 - `BRepFilletAPI_MakeFillet::FirstVertex()`
         ///
         /// Returns the first vertex of the contour of index IC
@@ -15642,6 +15874,18 @@ mod ffi {
         fn BRepFilletAPI_MakeFillet_bad_shape(
             self_: &BRepFilletAPI_MakeFillet,
         ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:395 - `BRepFilletAPI_MakeFillet::StripeStatus()`
+        ///
+        /// returns the status concerning the contour IC in case of error
+        /// ChFiDS_Ok : the computation is Ok
+        /// ChFiDS_StartsolFailure : the computation can't start, perhaps the
+        /// the radius is too big
+        /// ChFiDS_TwistedSurface : the computation failed because of a twisted
+        /// surface
+        /// ChFiDS_WalkingFailure : there is a problem in the walking
+        /// ChFiDS_Error:  other error different from above
+        fn BRepFilletAPI_MakeFillet_stripe_status(self_: &BRepFilletAPI_MakeFillet, IC: i32)
+            -> i32;
         /// Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_Command
         fn BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(
             self_: &BRepFilletAPI_MakeFillet,
@@ -15999,6 +16243,8 @@ mod ffi {
             self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
             Chamfer: &TopoDS_Edge,
         ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:291 - `BRepFilletAPI_MakeFillet2d::Status()`
+        fn BRepFilletAPI_MakeFillet2d_status(self_: &BRepFilletAPI_MakeFillet2d) -> i32;
         /// Upcast BRepFilletAPI_MakeFillet2d to BRepBuilderAPI_Command
         fn BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command(
             self_: &BRepFilletAPI_MakeFillet2d,
@@ -16051,12 +16297,16 @@ mod ffi {
         ///
         /// Constructs an algorithm for creating an algorithm
         /// to build parallels to the spine Spine
-        fn BRepOffsetAPI_MakeOffset_ctor_face(
+        fn BRepOffsetAPI_MakeOffset_ctor_face_jointype_bool(
             Spine: &TopoDS_Face,
+            Join: i32,
+            IsOpenResult: bool,
         ) -> UniquePtr<BRepOffsetAPI_MakeOffset>;
         /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:62 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
-        fn BRepOffsetAPI_MakeOffset_ctor_wire(
+        fn BRepOffsetAPI_MakeOffset_ctor_wire_jointype_bool(
             Spine: &TopoDS_Wire,
+            Join: i32,
+            IsOpenResult: bool,
         ) -> UniquePtr<BRepOffsetAPI_MakeOffset>;
         /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:73 - `BRepOffsetAPI_MakeOffset::SetApprox()`
         ///
@@ -16092,6 +16342,30 @@ mod ffi {
             self: Pin<&mut BRepOffsetAPI_MakeOffset>,
             S: &TopoDS_Shape,
         ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:58 - `BRepOffsetAPI_MakeOffset::Init()`
+        ///
+        /// Initializes the algorithm to construct parallels to the spine Spine.
+        /// Join defines the type of parallel generated by the
+        /// salient vertices of the spine.
+        /// The default type is GeomAbs_Arc where the vertices generate
+        /// sections of a circle.
+        /// If join type is GeomAbs_Intersection, the edges that
+        /// intersect in a salient vertex generate the edges
+        /// prolonged until intersection.
+        fn BRepOffsetAPI_MakeOffset_init_face_jointype_bool(
+            self_: Pin<&mut BRepOffsetAPI_MakeOffset>,
+            Spine: &TopoDS_Face,
+            Join: i32,
+            IsOpenResult: bool,
+        );
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:67 - `BRepOffsetAPI_MakeOffset::Init()`
+        ///
+        /// Initialize the evaluation of Offsetting.
+        fn BRepOffsetAPI_MakeOffset_init_jointype_bool(
+            self_: Pin<&mut BRepOffsetAPI_MakeOffset>,
+            Join: i32,
+            IsOpenResult: bool,
+        );
         /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:95 - `BRepOffsetAPI_MakeOffset::ConvertFace()`
         ///
         /// Converts each wire of the face into contour consisting only of
@@ -16165,6 +16439,18 @@ mod ffi {
         fn BRepOffsetAPI_MakePipe_ctor_wire_shape(
             Spine: &TopoDS_Wire,
             Profile: &TopoDS_Shape,
+        ) -> UniquePtr<BRepOffsetAPI_MakePipe>;
+        /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:63 - `BRepOffsetAPI_MakePipe::BRepOffsetAPI_MakePipe()`
+        ///
+        /// the same as previous but with setting of
+        /// mode of sweep and the flag that indicates attempt
+        /// to approximate a C1-continuous surface if a swept
+        /// surface proved to be C0.
+        fn BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron_bool(
+            Spine: &TopoDS_Wire,
+            Profile: &TopoDS_Shape,
+            aMode: i32,
+            ForceApproxC1: bool,
         ) -> UniquePtr<BRepOffsetAPI_MakePipe>;
         /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:68 - `BRepOffsetAPI_MakePipe::Pipe()`
         #[cxx_name = "Pipe"]
@@ -16473,6 +16759,93 @@ mod ffi {
         /// Returns the spine
         #[cxx_name = "Spine"]
         fn spine(self: Pin<&mut BRepOffsetAPI_MakePipeShell>) -> &TopoDS_Wire;
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:118 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+        ///
+        /// Sets  an  auxiliary  spine  to  define  the Normal
+        /// For  each  Point  of  the  Spine  P,  an  Point  Q  is  evalued
+        /// on  <AuxiliarySpine>
+        /// If <CurvilinearEquivalence>
+        /// Q split <AuxiliarySpine> with  the  same  length ratio
+        /// than P split  <Spline>.
+        /// Else  the  plan  define  by  P  and  the  tangent  to  the  <Spine>
+        /// intersect <AuxiliarySpine> in Q.
+        /// If <KeepContact> equals BRepFill_NoContact: The Normal is defined
+        /// by the vector PQ.
+        /// If <KeepContact> equals BRepFill_Contact: The Normal is defined to
+        /// achieve that the sweeped section is in contact to the
+        /// auxiliarySpine. The width of section is constant all along the path.
+        /// In other words, the auxiliary spine lies on the swept surface,
+        /// but not necessarily is a boundary of this surface. However,
+        /// the auxiliary spine has to be close enough to the main spine
+        /// to provide intersection with any section all along the path.
+        /// If <KeepContact> equals BRepFill_ContactOnBorder: The auxiliary spine
+        /// becomes a boundary of the swept surface and the width of section varies
+        /// along the path.
+        /// Give section to sweep.
+        /// Possibilities are :
+        /// - Give one or several section
+        /// - Give one profile and an homotetic law.
+        /// - Automatic compute of correspondence between spine, and section
+        /// on the sweeped shape
+        /// - correspondence between spine, and section on the sweeped shape
+        /// defined by a vertex of the spine
+        fn BRepOffsetAPI_MakePipeShell_set_mode(
+            self_: Pin<&mut BRepOffsetAPI_MakePipeShell>,
+            AuxiliarySpine: &TopoDS_Wire,
+            CurvilinearEquivalence: bool,
+            KeepContact: i32,
+        );
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:180 - `BRepOffsetAPI_MakePipeShell::GetStatus()`
+        ///
+        /// Get a status, when Simulate or Build failed.       It can be
+        /// BRepBuilderAPI_PipeDone,
+        /// BRepBuilderAPI_PipeNotDone,
+        /// BRepBuilderAPI_PlaneNotIntersectGuide,
+        /// BRepBuilderAPI_ImpossibleContact.
+        fn BRepOffsetAPI_MakePipeShell_get_status(self_: &BRepOffsetAPI_MakePipeShell) -> i32;
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:239 - `BRepOffsetAPI_MakePipeShell::SetTransitionMode()`
+        ///
+        /// Sets the transition mode to manage discontinuities on
+        /// the swept shape caused by fractures on the spine. The
+        /// transition mode can be BRepBuilderAPI_Transformed
+        /// (default value), BRepBuilderAPI_RightCorner,
+        /// BRepBuilderAPI_RoundCorner:
+        /// -              RepBuilderAPI_Transformed:
+        /// discontinuities are treated by
+        /// modification of the sweeping mode. The
+        /// pipe is "transformed" at the fractures of
+        /// the spine. This mode assumes building a
+        /// self-intersected shell.
+        /// -              BRepBuilderAPI_RightCorner:
+        /// discontinuities are treated like right
+        /// corner. Two pieces of the pipe
+        /// corresponding to two adjacent
+        /// segments of the spine are extended
+        /// and intersected at a fracture of the spine.
+        /// -              BRepBuilderAPI_RoundCorner:
+        /// discontinuities are treated like round
+        /// corner. The corner is treated as rotation
+        /// of the profile around an axis which
+        /// passes through the point of the spine's
+        /// fracture. This axis is based on cross
+        /// product of directions tangent to the
+        /// adjacent segments of the spine at their common point.
+        /// Warnings
+        /// The mode BRepBuilderAPI_RightCorner provides a
+        /// valid result if intersection of two pieces of the pipe
+        /// (corresponding to two adjacent segments of the spine)
+        /// in the neighborhood of the spine?s fracture is
+        /// connected and planar. This condition can be violated if
+        /// the spine is non-linear in some neighborhood of the
+        /// fracture or if the profile was set with a scaling law.
+        /// The last mode, BRepBuilderAPI_RoundCorner, will
+        /// assuredly provide a good result only if a profile was set
+        /// with option WithCorrection = True, i.e. it is strictly
+        /// orthogonal to the spine.
+        fn BRepOffsetAPI_MakePipeShell_set_transition_mode(
+            self_: Pin<&mut BRepOffsetAPI_MakePipeShell>,
+            Mode: i32,
+        );
         /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:263 - `BRepOffsetAPI_MakePipeShell::FirstShape()`
         ///
         /// Returns the  TopoDS  Shape of the bottom of the sweep.
@@ -16577,6 +16950,61 @@ mod ffi {
             self: Pin<&mut BRepOffsetAPI_MakeThickSolid>,
             S: &TopoDS_Shape,
         ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:102 - `BRepOffsetAPI_MakeThickSolid::MakeThickSolidByJoin()`
+        ///
+        /// Constructs a hollowed solid from
+        /// the solid S by removing the set of faces ClosingFaces from S, where:
+        /// Offset defines the thickness of the walls. Its sign indicates
+        /// which side of the surface of the solid the hollowed shape is built on;
+        /// - Tol defines the tolerance criterion for coincidence in generated shapes;
+        /// - Mode defines the construction type of parallels applied to free
+        /// edges of shape S. Currently, only one construction type is
+        /// implemented, namely the one where the free edges do not generate
+        /// parallels; this corresponds to the default value BRepOffset_Skin;
+        /// Intersection specifies how the algorithm must work in order to
+        /// limit the parallels to two adjacent shapes:
+        /// - if Intersection is false (default value), the intersection
+        /// is calculated with the parallels to the two adjacent shapes,
+        /// -     if Intersection is true, the intersection is calculated by
+        /// taking account of all parallels generated; this computation
+        /// method is more general as it avoids self-intersections
+        /// generated in the offset shape from features of small dimensions
+        /// on shape S, however this method has not been completely
+        /// implemented and therefore is not recommended for use;
+        /// -     SelfInter tells the algorithm whether a computation to
+        /// eliminate self-intersections needs to be applied to the
+        /// resulting shape. However, as this functionality is not yet
+        /// implemented, you should use the default value (false);
+        /// - Join defines how to fill the holes that may appear between
+        /// parallels to the two adjacent faces. It may take values
+        /// GeomAbs_Arc or GeomAbs_Intersection:
+        /// - if Join is equal to GeomAbs_Arc, then pipes are generated
+        /// between two free edges of two adjacent parallels,
+        /// and spheres are generated on "images" of vertices;
+        /// it is the default value,
+        /// - if Join is equal to GeomAbs_Intersection,
+        /// then the parallels to the two adjacent faces are
+        /// enlarged and intersected, so that there are no free
+        /// edges on parallels to faces.
+        /// RemoveIntEdges flag defines whether to remove the INTERNAL edges
+        /// from the result or not.
+        /// Warnings
+        /// Since the algorithm of MakeThickSolid is based on
+        /// MakeOffsetShape algorithm, the warnings are the same as for
+        /// MakeOffsetShape.
+        fn BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_join(
+            self_: Pin<&mut BRepOffsetAPI_MakeThickSolid>,
+            S: &TopoDS_Shape,
+            ClosingFaces: &TopTools_ListOfShape,
+            Offset: f64,
+            Tol: f64,
+            Mode: i32,
+            Intersection: bool,
+            SelfInter: bool,
+            Join: i32,
+            RemoveIntEdges: bool,
+            theRange: &Message_ProgressRange,
+        );
         /// Upcast BRepOffsetAPI_MakeThickSolid to BRepBuilderAPI_Command
         fn BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command(
             self_: &BRepOffsetAPI_MakeThickSolid,
@@ -16787,6 +17215,28 @@ mod ffi {
         /// Returns the current mutable input state
         #[cxx_name = "IsMutableInput"]
         fn is_mutable_input(self: &BRepOffsetAPI_ThruSections) -> bool;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:105 - `BRepOffsetAPI_ThruSections::SetParType()`
+        ///
+        /// Define the type of parametrization   used in the approximation
+        fn BRepOffsetAPI_ThruSections_set_par_type(
+            self_: Pin<&mut BRepOffsetAPI_ThruSections>,
+            ParType: i32,
+        );
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:108 - `BRepOffsetAPI_ThruSections::SetContinuity()`
+        ///
+        /// Define the Continuity used in the approximation
+        fn BRepOffsetAPI_ThruSections_set_continuity(
+            self_: Pin<&mut BRepOffsetAPI_ThruSections>,
+            C: i32,
+        );
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:122 - `BRepOffsetAPI_ThruSections::ParType()`
+        ///
+        /// returns the type of parametrization used in the approximation
+        fn BRepOffsetAPI_ThruSections_par_type(self_: &BRepOffsetAPI_ThruSections) -> i32;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:125 - `BRepOffsetAPI_ThruSections::Continuity()`
+        ///
+        /// returns the Continuity used in the approximation
+        fn BRepOffsetAPI_ThruSections_continuity(self_: &BRepOffsetAPI_ThruSections) -> i32;
         /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:153 - `BRepOffsetAPI_ThruSections::GeneratedFace()`
         ///
         /// if Ruled
@@ -16798,6 +17248,10 @@ mod ffi {
             self_: &BRepOffsetAPI_ThruSections,
             Edge: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:174 - `BRepOffsetAPI_ThruSections::GetStatus()`
+        ///
+        /// Returns the status of thrusection operation
+        fn BRepOffsetAPI_ThruSections_get_status(self_: &BRepOffsetAPI_ThruSections) -> i32;
         /// Upcast BRepOffsetAPI_ThruSections to BRepBuilderAPI_Command
         fn BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command(
             self_: &BRepOffsetAPI_ThruSections,
@@ -16928,6 +17382,10 @@ mod ffi {
         /// operation.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BRepFeat_MakeCylindricalHole>);
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:92 - `BRepFeat_MakeCylindricalHole::Status()`
+        ///
+        /// Returns the status after a hole is performed.
+        fn BRepFeat_MakeCylindricalHole_status(self_: &BRepFeat_MakeCylindricalHole) -> i32;
         /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BOP
         fn BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP(
             self_: &BRepFeat_MakeCylindricalHole,
@@ -17141,11 +17599,6 @@ mod ffi {
         fn BRepFeat_MakeCylindricalHole_inherited_Tools(
             self_: &BRepFeat_MakeCylindricalHole,
         ) -> &TopTools_ListOfShape;
-        /// Inherited from BRepFeat_Builder: SetOperation()
-        fn BRepFeat_MakeCylindricalHole_inherited_SetOperation(
-            self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
-            theFuse: i32,
-        );
         /// Inherited from BRepFeat_Builder: PartsOfTool()
         fn BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(
             self_: Pin<&mut BRepFeat_MakeCylindricalHole>,
@@ -17658,9 +18111,30 @@ mod ffi {
         /// @param[in] theShape  the shape to write
         /// @param[in] theFile   the path to file to output shape into
         /// @param theProgress the range of progress indicator to fill in
-        fn BRepTools_write(
+        fn BRepTools_write_shape_charptr_progressrange(
             theShape: &TopoDS_Shape,
             theFile: &str,
+            theProgress: &Message_ProgressRange,
+        ) -> bool;
+        /// **Source:** `BRepTools.hxx`:352 - `BRepTools::Write()`
+        ///
+        /// Writes the shape to the file in an ASCII format of specified version.
+        /// @param[in] theShape          the shape to write
+        /// @param[in] theFile           the path to file to output shape into
+        /// @param[in] theWithTriangles  flag which specifies whether to save shape with (TRUE) or without
+        /// (FALSE) triangles;
+        /// has no effect on triangulation-only geometry
+        /// @param[in] theWithNormals    flag which specifies whether to save triangulation with (TRUE) or
+        /// without (FALSE) normals;
+        /// has no effect on triangulation-only geometry
+        /// @param[in] theVersion        the TopTools format version
+        /// @param theProgress the range of progress indicator to fill in
+        fn BRepTools_write_shape_charptr_bool2_formatversion_progressrange(
+            theShape: &TopoDS_Shape,
+            theFile: &str,
+            theWithTriangles: bool,
+            theWithNormals: bool,
+            theVersion: i32,
             theProgress: &Message_ProgressRange,
         ) -> bool;
         /// **Source:** `BRepTools.hxx`:362 - `BRepTools::Read()`
@@ -17689,6 +18163,11 @@ mod ffi {
             theF: f64,
             theL: f64,
         ) -> f64;
+        /// **Source:** `BRepTools.hxx`:383 - `BRepTools::OriEdgeInFace()`
+        ///
+        /// returns the cumul  of the orientation  of <Edge>
+        /// and thc containing wire in <Face>
+        fn BRepTools_ori_edge_in_face(theEdge: &TopoDS_Edge, theFace: &TopoDS_Face) -> i32;
         /// **Source:** `BRepTools.hxx`:393 - `BRepTools::RemoveInternals()`
         ///
         /// Removes internal sub-shapes from the shape.
@@ -18063,6 +18542,17 @@ mod ffi {
         ///
         /// Returns a copy of <me> reversed.
         fn Geom_Curve_reversed(self_: &Geom_Curve) -> UniquePtr<HandleGeomCurve>;
+        /// **Source:** `Geom_Curve.hxx`:165 - `Geom_Curve::Continuity()`
+        ///
+        /// It is the global continuity of the curve
+        /// C0 : only geometric continuity,
+        /// C1 : continuity of the first derivative all along the Curve,
+        /// C2 : continuity of the second derivative all along the Curve,
+        /// C3 : continuity of the third derivative all along the Curve,
+        /// G1 : tangency continuity all along the Curve,
+        /// G2 : curvature continuity all along the Curve,
+        /// CN : the order of continuity is infinite.
+        fn Geom_Curve_continuity(self_: &Geom_Curve) -> i32;
         /// **Source:** `Geom_Curve.hxx`:210 - `Geom_Curve::DN()`
         ///
         /// The returned vector gives the value of the derivative for the
@@ -18397,6 +18887,21 @@ mod ffi {
         ///
         /// Computes the V isoparametric curve.
         fn Geom_Surface_v_iso(self_: &Geom_Surface, V: f64) -> UniquePtr<HandleGeomCurve>;
+        /// **Source:** `Geom_Surface.hxx`:206 - `Geom_Surface::Continuity()`
+        ///
+        /// Returns the Global Continuity of the surface in direction U and V :
+        /// - C0: only geometric continuity,
+        /// - C1: continuity of the first derivative all along the surface,
+        /// - C2: continuity of the second derivative all along the surface,
+        /// - C3: continuity of the third derivative all along the surface,
+        /// - G1: tangency continuity all along the surface,
+        /// - G2: curvature continuity all along the surface,
+        /// - CN: the order of continuity is infinite.
+        ///
+        /// Example:
+        /// If the surface is C1 in the V parametric direction and C2
+        /// in the U parametric direction Shape = C1.
+        fn Geom_Surface_continuity(self_: &Geom_Surface) -> i32;
         /// **Source:** `Geom_Surface.hxx`:267 - `Geom_Surface::DN()`
         ///
         /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point
@@ -18974,6 +19479,10 @@ mod ffi {
         /// **Source:** `Geom_ElementarySurface.hxx`:126 - `Geom_ElementarySurface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Geom_ElementarySurface) -> &HandleStandardType;
+        /// **Source:** `Geom_ElementarySurface.hxx`:114 - `Geom_ElementarySurface::Continuity()`
+        ///
+        /// Returns GeomAbs_CN, the global continuity of any elementary surface.
+        fn Geom_ElementarySurface_continuity(self_: &Geom_ElementarySurface) -> i32;
         /// **Source:** `Geom_ElementarySurface.hxx`:126 - `Geom_ElementarySurface::get_type_descriptor()`
         fn Geom_ElementarySurface_get_type_descriptor() -> &'static HandleStandardType;
         /// Upcast Geom_ElementarySurface to Geom_Geometry
@@ -19492,6 +20001,10 @@ mod ffi {
         /// **Source:** `Geom_BezierCurve.hxx`:333 - `Geom_BezierCurve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Geom_BezierCurve) -> &HandleStandardType;
+        /// **Source:** `Geom_BezierCurve.hxx`:228 - `Geom_BezierCurve::Continuity()`
+        ///
+        /// a Bezier curve is CN
+        fn Geom_BezierCurve_continuity(self_: &Geom_BezierCurve) -> i32;
         /// **Source:** `Geom_BezierCurve.hxx`:263 - `Geom_BezierCurve::DN()`
         ///
         /// For the point of parameter U of this Bezier curve,
@@ -20150,6 +20663,11 @@ mod ffi {
         /// **Source:** `Geom_BezierSurface.hxx`:622 - `Geom_BezierSurface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Geom_BezierSurface) -> &HandleStandardType;
+        /// **Source:** `Geom_BezierSurface.hxx`:444 - `Geom_BezierSurface::Continuity()`
+        ///
+        /// Returns the continuity of the surface CN : the order of
+        /// continuity is infinite.
+        fn Geom_BezierSurface_continuity(self_: &Geom_BezierSurface) -> i32;
         /// **Source:** `Geom_BezierSurface.hxx`:493 - `Geom_BezierSurface::DN()`
         ///
         /// Computes the derivative of order Nu in the u
@@ -21013,6 +21531,21 @@ mod ffi {
         /// **Source:** `Geom_BSplineCurve.hxx`:833 - `Geom_BSplineCurve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Geom_BSplineCurve) -> &HandleStandardType;
+        /// **Source:** `Geom_BSplineCurve.hxx`:510 - `Geom_BSplineCurve::Continuity()`
+        ///
+        /// Returns the global continuity of the curve :
+        /// C0 : only geometric continuity,
+        /// C1 : continuity of the first derivative all along the Curve,
+        /// C2 : continuity of the second derivative all along the Curve,
+        /// C3 : continuity of the third derivative all along the Curve,
+        /// CN : the order of continuity is infinite.
+        /// For a B-spline curve of degree d if a knot Ui has a
+        /// multiplicity p the B-spline curve is only Cd-p continuous
+        /// at Ui. So the global continuity of the curve can't be greater
+        /// than Cd-p where p is the maximum multiplicity of the interior
+        /// Knots. In the interior of a knot span the curve is infinitely
+        /// continuously differentiable.
+        fn Geom_BSplineCurve_continuity(self_: &Geom_BSplineCurve) -> i32;
         /// **Source:** `Geom_BSplineCurve.hxx`:559 - `Geom_BSplineCurve::DN()`
         ///
         /// For the point of parameter U of this BSpline curve,
@@ -21068,6 +21601,20 @@ mod ffi {
         /// pole of the curve if the multiplicity of the last knot
         /// is lower than Degree.
         fn Geom_BSplineCurve_end_point(self_: &Geom_BSplineCurve) -> UniquePtr<gp_Pnt>;
+        /// **Source:** `Geom_BSplineCurve.hxx`:728 - `Geom_BSplineCurve::KnotDistribution()`
+        ///
+        /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
+        /// If all the knots differ by a positive constant from the
+        /// preceding knot the BSpline Curve can be :
+        /// - Uniform if all the knots are of multiplicity 1,
+        /// - QuasiUniform if all the knots are of multiplicity 1 except for
+        /// the first and last knot which are of multiplicity Degree + 1,
+        /// - PiecewiseBezier if the first and last knots have multiplicity
+        /// Degree + 1 and if interior knots have multiplicity Degree
+        /// A piecewise Bezier with only two knots is a BezierCurve.
+        /// else the curve is non uniform.
+        /// The tolerance criterion is Epsilon from class Real.
+        fn Geom_BSplineCurve_knot_distribution(self_: &Geom_BSplineCurve) -> i32;
         /// **Source:** `Geom_BSplineCurve.hxx`:793 - `Geom_BSplineCurve::StartPoint()`
         ///
         /// Returns the start point of the curve.
@@ -22348,6 +22895,54 @@ mod ffi {
         /// **Source:** `Geom_BSplineSurface.hxx`:1299 - `Geom_BSplineSurface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Geom_BSplineSurface) -> &HandleStandardType;
+        /// **Source:** `Geom_BSplineSurface.hxx`:910 - `Geom_BSplineSurface::Continuity()`
+        ///
+        /// Returns the continuity of the surface :
+        /// C0 : only geometric continuity,
+        /// C1 : continuity of the first derivative all along the Surface,
+        /// C2 : continuity of the second derivative all along the Surface,
+        /// C3 : continuity of the third derivative all along the Surface,
+        /// CN : the order of continuity is infinite.
+        /// A B-spline surface is infinitely continuously differentiable
+        /// for the couple of parameters U, V such that U != UKnots(i)
+        /// and V != VKnots(i). The continuity of the surface at a knot
+        /// value depends on the multiplicity of this knot.
+        /// Example :
+        /// If the surface is C1 in the V direction and C2 in the U
+        /// direction this function returns Shape = C1.
+        fn Geom_BSplineSurface_continuity(self_: &Geom_BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:985 - `Geom_BSplineSurface::UKnotDistribution()`
+        ///
+        /// Returns NonUniform or Uniform or QuasiUniform or
+        /// PiecewiseBezier.  If all the knots differ by a
+        /// positive constant from the preceding knot in the U
+        /// direction the B-spline surface can be :
+        /// - Uniform if all the knots are of multiplicity 1,
+        /// - QuasiUniform if all the knots are of multiplicity 1
+        /// except for the first and last knot which are of
+        /// multiplicity Degree + 1,
+        /// - PiecewiseBezier if the first and last knots have
+        /// multiplicity Degree + 1 and if interior knots have
+        /// multiplicity Degree
+        /// otherwise the surface is non uniform in the U direction
+        /// The tolerance criterion is Resolution from package gp.
+        fn Geom_BSplineSurface_u_knot_distribution(self_: &Geom_BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1047 - `Geom_BSplineSurface::VKnotDistribution()`
+        ///
+        /// Returns NonUniform or Uniform or QuasiUniform or
+        /// PiecewiseBezier. If all the knots differ by a positive
+        /// constant from the preceding knot in the V direction the
+        /// B-spline surface can be :
+        /// - Uniform if all the knots are of multiplicity 1,
+        /// - QuasiUniform if all the knots are of multiplicity 1
+        /// except for the first and last knot which are of
+        /// multiplicity Degree + 1,
+        /// - PiecewiseBezier if the first and last knots have
+        /// multiplicity  Degree + 1 and if interior knots have
+        /// multiplicity Degree
+        /// otherwise the surface is non uniform in the V direction.
+        /// The tolerance criterion is Resolution from package gp.
+        fn Geom_BSplineSurface_v_knot_distribution(self_: &Geom_BSplineSurface) -> i32;
         /// **Source:** `Geom_BSplineSurface.hxx`:1161 - `Geom_BSplineSurface::DN()`
         ///
         /// Nu is the order of derivation in the U parametric direction and
@@ -23586,6 +24181,15 @@ mod ffi {
         /// Consequently, any modification of the returned value
         /// directly modifies the trimmed curve.
         fn Geom_TrimmedCurve_basis_curve(self_: &Geom_TrimmedCurve) -> UniquePtr<HandleGeomCurve>;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:144 - `Geom_TrimmedCurve::Continuity()`
+        ///
+        /// Returns the continuity of the curve :
+        /// C0 : only geometric continuity,
+        /// C1 : continuity of the first derivative all along the Curve,
+        /// C2 : continuity of the second derivative all along the Curve,
+        /// C3 : continuity of the third derivative all along the Curve,
+        /// CN : the order of continuity is infinite.
+        fn Geom_TrimmedCurve_continuity(self_: &Geom_TrimmedCurve) -> i32;
         /// **Source:** `Geom_TrimmedCurve.hxx`:158 - `Geom_TrimmedCurve::EndPoint()`
         ///
         /// Returns the end point of <me>. This point is the
@@ -24009,6 +24613,17 @@ mod ffi {
         /// point of the reversed curve.
         /// - Reversed creates a new curve.
         fn Geom2d_Curve_reversed(self_: &Geom2d_Curve) -> UniquePtr<HandleGeom2dCurve>;
+        /// **Source:** `Geom2d_Curve.hxx`:159 - `Geom2d_Curve::Continuity()`
+        ///
+        /// It is the global continuity of the curve :
+        /// C0 : only geometric continuity,
+        /// C1 : continuity of the first derivative all along the Curve,
+        /// C2 : continuity of the second derivative all along the Curve,
+        /// C3 : continuity of the third derivative all along the Curve,
+        /// G1 : tangency continuity all along the Curve,
+        /// G2 : curvature continuity all along the Curve,
+        /// CN : the order of continuity is infinite.
+        fn Geom2d_Curve_continuity(self_: &Geom2d_Curve) -> i32;
         /// **Source:** `Geom2d_Curve.hxx`:206 - `Geom2d_Curve::DN()`
         ///
         /// For the point of parameter U of this curve, computes
@@ -24366,6 +24981,10 @@ mod ffi {
         /// Returns the "YAxis" of the conic.
         /// The "YAxis" is perpendicular to the "Xaxis".
         fn Geom2d_Conic_y_axis(self_: &Geom2d_Conic) -> UniquePtr<gp_Ax2d>;
+        /// **Source:** `Geom2d_Conic.hxx`:104 - `Geom2d_Conic::Continuity()`
+        ///
+        /// Returns GeomAbs_CN which is the global continuity of any conic.
+        fn Geom2d_Conic_continuity(self_: &Geom2d_Conic) -> i32;
         /// **Source:** `Geom2d_Conic.hxx`:113 - `Geom2d_Conic::get_type_descriptor()`
         fn Geom2d_Conic_get_type_descriptor() -> &'static HandleStandardType;
         /// Upcast Geom2d_Conic to Geom2d_Curve
@@ -25075,6 +25694,15 @@ mod ffi {
         fn Geom2d_TrimmedCurve_basis_curve(
             self_: &Geom2d_TrimmedCurve,
         ) -> UniquePtr<HandleGeom2dCurve>;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:139 - `Geom2d_TrimmedCurve::Continuity()`
+        ///
+        /// Returns the global continuity of the basis curve of this trimmed curve.
+        /// C0 : only geometric continuity,
+        /// C1 : continuity of the first derivative all along the Curve,
+        /// C2 : continuity of the second derivative all along the Curve,
+        /// C3 : continuity of the third derivative all along the Curve,
+        /// CN : the order of continuity is infinite.
+        fn Geom2d_TrimmedCurve_continuity(self_: &Geom2d_TrimmedCurve) -> i32;
         /// **Source:** `Geom2d_TrimmedCurve.hxx`:153 - `Geom2d_TrimmedCurve::EndPoint()`
         ///
         /// Returns the end point of <me>. This point is the
@@ -25399,10 +26027,29 @@ mod ffi {
         /// 2- his  continuity will be  at  least <Continuity>
         /// 3- the distance from the point <Points> to the
         /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2(
+        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2_shape_real(
             Points: &TColgp_Array1OfPnt,
             DegMin: i32,
             DegMax: i32,
+            Continuity: i32,
+            Tol3D: f64,
+        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:67 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
+        ///
+        /// Approximate  a BSpline  Curve passing  through  an
+        /// array of  Point.  The resulting BSpline will  have
+        /// the following properties:
+        /// 1- his degree will be in the range [Degmin,Degmax]
+        /// 2- his  continuity will be  at  least <Continuity>
+        /// 3- the distance from the point <Points> to the
+        /// BSpline will be lower to Tol3D
+        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int2_shape_real(
+            Points: &TColgp_Array1OfPnt,
+            ParType: i32,
+            DegMin: i32,
+            DegMax: i32,
+            Continuity: i32,
+            Tol3D: f64,
         ) -> UniquePtr<GeomAPI_PointsToBSpline>;
         /// **Source:** `GeomAPI_PointsToBSpline.hxx`:83 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
         ///
@@ -25415,11 +26062,13 @@ mod ffi {
         /// 2- his  continuity will be  at  least <Continuity>
         /// 3- the distance from the point <Points> to the
         /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2(
+        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2_shape_real(
             Points: &TColgp_Array1OfPnt,
             Parameters: &TColStd_Array1OfReal,
             DegMin: i32,
             DegMax: i32,
+            Continuity: i32,
+            Tol3D: f64,
         ) -> UniquePtr<GeomAPI_PointsToBSpline>;
         /// **Source:** `GeomAPI_PointsToBSpline.hxx`:94 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
         ///
@@ -25427,12 +26076,14 @@ mod ffi {
         /// array of Point using variational smoothing algorithm,
         /// which tries to minimize additional criterium:
         /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int(
+        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int_shape_real(
             Points: &TColgp_Array1OfPnt,
             Weight1: f64,
             Weight2: f64,
             Weight3: f64,
             DegMax: i32,
+            Continuity: i32,
+            Tol3D: f64,
         ) -> UniquePtr<GeomAPI_PointsToBSpline>;
         /// **Source:** `GeomAPI_PointsToBSpline.hxx`:159 - `GeomAPI_PointsToBSpline::Curve()`
         ///
@@ -25443,6 +26094,57 @@ mod ffi {
         /// **Source:** `GeomAPI_PointsToBSpline.hxx`:162 - `GeomAPI_PointsToBSpline::IsDone()`
         #[cxx_name = "IsDone"]
         fn is_done(self: &GeomAPI_PointsToBSpline) -> bool;
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:109 - `GeomAPI_PointsToBSpline::Init()`
+        ///
+        /// Approximate  a BSpline  Curve passing  through  an
+        /// array of  Point.  The resulting BSpline will  have
+        /// the following properties:
+        /// 1- his degree will be in the range [Degmin,Degmax]
+        /// 2- his  continuity will be  at  least <Continuity>
+        /// 3- the distance from the point <Points> to the
+        /// BSpline will be lower to Tol3D
+        fn GeomAPI_PointsToBSpline_init_array1ofpnt_int2_shape_real(
+            self_: Pin<&mut GeomAPI_PointsToBSpline>,
+            Points: &TColgp_Array1OfPnt,
+            DegMin: i32,
+            DegMax: i32,
+            Continuity: i32,
+            Tol3D: f64,
+        );
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:122 - `GeomAPI_PointsToBSpline::Init()`
+        ///
+        /// Approximate  a BSpline  Curve passing  through  an
+        /// array of  Point.  The resulting BSpline will  have
+        /// the following properties:
+        /// 1- his degree will be in the range [Degmin,Degmax]
+        /// 2- his  continuity will be  at  least <Continuity>
+        /// 3- the distance from the point <Points> to the
+        /// BSpline will be lower to Tol3D
+        fn GeomAPI_PointsToBSpline_init_array1ofpnt_parametrizationtype_int2_shape_real(
+            self_: Pin<&mut GeomAPI_PointsToBSpline>,
+            Points: &TColgp_Array1OfPnt,
+            ParType: i32,
+            DegMin: i32,
+            DegMax: i32,
+            Continuity: i32,
+            Tol3D: f64,
+        );
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:149 - `GeomAPI_PointsToBSpline::Init()`
+        ///
+        /// Approximate a BSpline Curve  passing through an
+        /// array of Point using variational smoothing algorithm,
+        /// which tries to minimize additional criterium:
+        /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
+        fn GeomAPI_PointsToBSpline_init_array1ofpnt_real3_int_shape_real(
+            self_: Pin<&mut GeomAPI_PointsToBSpline>,
+            Points: &TColgp_Array1OfPnt,
+            Weight1: f64,
+            Weight2: f64,
+            Weight3: f64,
+            DegMax: i32,
+            Continuity: i32,
+            Tol3D: f64,
+        );
         /// ======================== GeomAPI_ProjectPointOnCurve ========================
         /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:32 - `GeomAPI_ProjectPointOnCurve`
         ///
@@ -25599,9 +26301,10 @@ mod ffi {
         ///
         /// Create the projection  of a point <P> on a surface
         /// <Surface>
-        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface(
+        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_extalgo(
             P: &gp_Pnt,
             Surface: &HandleGeomSurface,
+            Algo: i32,
         ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
         /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:54 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
         ///
@@ -25610,13 +26313,14 @@ mod ffi {
         /// Create the projection of a point <P>  on a surface
         /// <Surface>. The solution are computed in the domain
         /// [Umin,Usup] [Vmin,Vsup] of the surface.
-        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real(
+        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real_extalgo(
             P: &gp_Pnt,
             Surface: &HandleGeomSurface,
             Tolerance: f64,
+            Algo: i32,
         ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
         /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:59 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
-        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5(
+        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5_extalgo(
             P: &gp_Pnt,
             Surface: &HandleGeomSurface,
             Umin: f64,
@@ -25624,18 +26328,20 @@ mod ffi {
             Vmin: f64,
             Vsup: f64,
             Tolerance: f64,
+            Algo: i32,
         ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
         /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:70 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
         ///
         /// Init the projection  of a point <P> on a surface
         /// <Surface>
-        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4(
+        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4_extalgo(
             P: &gp_Pnt,
             Surface: &HandleGeomSurface,
             Umin: f64,
             Usup: f64,
             Vmin: f64,
             Vsup: f64,
+            Algo: i32,
         ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
         /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:134 - `GeomAPI_ProjectPointOnSurf::Perform()`
         ///
@@ -25692,6 +26398,89 @@ mod ffi {
         /// return the algorithmic object from Extrema
         #[cxx_name = "Extrema"]
         fn extrema(self: &GeomAPI_ProjectPointOnSurf) -> &Extrema_ExtPS;
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:78 - `GeomAPI_ProjectPointOnSurf::Init()`
+        fn GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real_extalgo(
+            self_: Pin<&mut GeomAPI_ProjectPointOnSurf>,
+            P: &gp_Pnt,
+            Surface: &HandleGeomSurface,
+            Tolerance: f64,
+            Algo: i32,
+        );
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:86 - `GeomAPI_ProjectPointOnSurf::Init()`
+        ///
+        /// Init the projection of a point <P>  on a surface
+        /// <Surface>. The solution are computed in the domain
+        /// [Umin,Usup] [Vmin,Vsup] of the surface.
+        fn GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_extalgo(
+            self_: Pin<&mut GeomAPI_ProjectPointOnSurf>,
+            P: &gp_Pnt,
+            Surface: &HandleGeomSurface,
+            Algo: i32,
+        );
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:90 - `GeomAPI_ProjectPointOnSurf::Init()`
+        fn GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real5_extalgo(
+            self_: Pin<&mut GeomAPI_ProjectPointOnSurf>,
+            P: &gp_Pnt,
+            Surface: &HandleGeomSurface,
+            Umin: f64,
+            Usup: f64,
+            Vmin: f64,
+            Vsup: f64,
+            Tolerance: f64,
+            Algo: i32,
+        );
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:102 - `GeomAPI_ProjectPointOnSurf::Init()`
+        ///
+        /// Init the projection for many points on a surface
+        /// <Surface>. The solutions will be computed in the domain
+        /// [Umin,Usup] [Vmin,Vsup] of the surface.
+        fn GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real4_extalgo(
+            self_: Pin<&mut GeomAPI_ProjectPointOnSurf>,
+            P: &gp_Pnt,
+            Surface: &HandleGeomSurface,
+            Umin: f64,
+            Usup: f64,
+            Vmin: f64,
+            Vsup: f64,
+            Algo: i32,
+        );
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:110 - `GeomAPI_ProjectPointOnSurf::Init()`
+        fn GeomAPI_ProjectPointOnSurf_init_handlesurface_real5_extalgo(
+            self_: Pin<&mut GeomAPI_ProjectPointOnSurf>,
+            Surface: &HandleGeomSurface,
+            Umin: f64,
+            Usup: f64,
+            Vmin: f64,
+            Vsup: f64,
+            Tolerance: f64,
+            Algo: i32,
+        );
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:118 - `GeomAPI_ProjectPointOnSurf::Init()`
+        fn GeomAPI_ProjectPointOnSurf_init_handlesurface_real4_extalgo(
+            self_: Pin<&mut GeomAPI_ProjectPointOnSurf>,
+            Surface: &HandleGeomSurface,
+            Umin: f64,
+            Usup: f64,
+            Vmin: f64,
+            Vsup: f64,
+            Algo: i32,
+        );
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:127 - `GeomAPI_ProjectPointOnSurf::SetExtremaAlgo()`
+        ///
+        /// Sets the Extrema search algorithm - Grad or Tree. <br>
+        /// By default the Extrema is initialized with Grad algorithm.
+        fn GeomAPI_ProjectPointOnSurf_set_extrema_algo(
+            self_: Pin<&mut GeomAPI_ProjectPointOnSurf>,
+            theAlgo: i32,
+        );
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:131 - `GeomAPI_ProjectPointOnSurf::SetExtremaFlag()`
+        ///
+        /// Sets the Extrema search flag - MIN or MAX or MINMAX.<br>
+        /// By default the Extrema is set to search the MinMax solutions.
+        fn GeomAPI_ProjectPointOnSurf_set_extrema_flag(
+            self_: Pin<&mut GeomAPI_ProjectPointOnSurf>,
+            theExtFlag: i32,
+        );
         /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:148 - `GeomAPI_ProjectPointOnSurf::Point()`
         ///
         /// Returns the orthogonal projection
@@ -27133,6 +27922,28 @@ mod ffi {
             Vin: &TopoDS_Vertex,
             Vout: &TopoDS_Vertex,
         );
+        /// **Source:** `BRep_Builder.hxx`:273 - `BRep_Builder::Continuity()`
+        ///
+        /// Sets the geometric continuity on the edge.
+        fn BRep_Builder_continuity_edge_face2_shape(
+            self_: &BRep_Builder,
+            E: &TopoDS_Edge,
+            F1: &TopoDS_Face,
+            F2: &TopoDS_Face,
+            C: i32,
+        );
+        /// **Source:** `BRep_Builder.hxx`:279 - `BRep_Builder::Continuity()`
+        ///
+        /// Sets the geometric continuity on the edge.
+        fn BRep_Builder_continuity_edge_handlesurface2_location2_shape(
+            self_: &BRep_Builder,
+            E: &TopoDS_Edge,
+            S1: &HandleGeomSurface,
+            S2: &HandleGeomSurface,
+            L1: &TopLoc_Location,
+            L2: &TopLoc_Location,
+            C: i32,
+        );
         /// Upcast BRep_Builder to TopoDS_Builder
         fn BRep_Builder_as_TopoDS_Builder(self_: &BRep_Builder) -> &TopoDS_Builder;
         /// Upcast BRep_Builder to TopoDS_Builder (mutable)
@@ -27487,6 +28298,14 @@ mod ffi {
             F1: &TopoDS_Face,
             F2: &TopoDS_Face,
         ) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:318 - `BRep_Tool::Continuity()`
+        ///
+        /// Returns the continuity.
+        fn BRep_Tool_continuity_edge_face2(
+            E: &TopoDS_Edge,
+            F1: &TopoDS_Face,
+            F2: &TopoDS_Face,
+        ) -> i32;
         /// **Source:** `BRep_Tool.hxx`:323 - `BRep_Tool::HasContinuity()`
         ///
         /// Returns True if the edge is on the surfaces.
@@ -27497,11 +28316,26 @@ mod ffi {
             L1: &TopLoc_Location,
             L2: &TopLoc_Location,
         ) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:330 - `BRep_Tool::Continuity()`
+        ///
+        /// Returns the continuity.
+        fn BRep_Tool_continuity_edge_handlesurface2_location2(
+            E: &TopoDS_Edge,
+            S1: &HandleGeomSurface,
+            S2: &HandleGeomSurface,
+            L1: &TopLoc_Location,
+            L2: &TopLoc_Location,
+        ) -> i32;
         /// **Source:** `BRep_Tool.hxx`:338 - `BRep_Tool::HasContinuity()`
         ///
         /// Returns True if the edge has regularity on some
         /// two surfaces
         fn BRep_Tool_has_continuity_edge(E: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:342 - `BRep_Tool::MaxContinuity()`
+        ///
+        /// Returns the max continuity of edge between some surfaces or GeomAbs_C0 if there no such
+        /// surfaces.
+        fn BRep_Tool_max_continuity(theEdge: &TopoDS_Edge) -> i32;
         /// **Source:** `BRep_Tool.hxx`:345 - `BRep_Tool::Pnt()`
         ///
         /// Returns the 3d point.
@@ -27550,6 +28384,8 @@ mod ffi {
         ///
         /// Returns the parameters of the vertex on the face.
         fn BRep_Tool_parameters(V: &TopoDS_Vertex, F: &TopoDS_Face) -> UniquePtr<gp_Pnt2d>;
+        /// **Source:** `BRep_Tool.hxx`:382 - `BRep_Tool::MaxTolerance()`
+        fn BRep_Tool_max_tolerance(theShape: &TopoDS_Shape, theSubShape: i32) -> f64;
         /// ======================== BRepBndLib ========================
         /// **Source:** `BRepBndLib.hxx`:30 - `BRepBndLib`
         ///
@@ -27813,6 +28649,13 @@ mod ffi {
         fn BRepAdaptor_Curve_shallow_copy(
             self_: &BRepAdaptor_Curve,
         ) -> UniquePtr<HandleAdaptor3dCurve>;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:120 - `BRepAdaptor_Curve::Continuity()`
+        fn BRepAdaptor_Curve_continuity(self_: &BRepAdaptor_Curve) -> i32;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:124 - `BRepAdaptor_Curve::NbIntervals()`
+        ///
+        /// Returns  the number  of  intervals for  continuity
+        /// <S>. May be one if Continuity(me) >= <S>
+        fn BRepAdaptor_Curve_nb_intervals(self_: &BRepAdaptor_Curve, S: i32) -> i32;
         /// **Source:** `BRepAdaptor_Curve.hxx`:138 - `BRepAdaptor_Curve::Trim()`
         ///
         /// Returns    a  curve equivalent   of  <me>  between
@@ -27837,6 +28680,8 @@ mod ffi {
         /// is not CN.
         /// Raised if N < 1.
         fn BRepAdaptor_Curve_dn(self_: &BRepAdaptor_Curve, U: f64, N: i32) -> UniquePtr<gp_Vec>;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:190 - `BRepAdaptor_Curve::GetType()`
+        fn BRepAdaptor_Curve_get_type(self_: &BRepAdaptor_Curve) -> i32;
         /// **Source:** `BRepAdaptor_Curve.hxx`:192 - `BRepAdaptor_Curve::Line()`
         fn BRepAdaptor_Curve_line(self_: &BRepAdaptor_Curve) -> UniquePtr<gp_Lin>;
         /// **Source:** `BRepAdaptor_Curve.hxx`:194 - `BRepAdaptor_Curve::Circle()`
@@ -28260,6 +29105,22 @@ mod ffi {
         ///
         /// Returns the value of the boundary curve of the face.
         fn BRepGProp_Face_value2d(self_: &BRepGProp_Face, U: f64) -> UniquePtr<gp_Pnt2d>;
+        /// **Source:** `BRepGProp_Face.hxx`:132 - `BRepGProp_Face::Load()`
+        ///
+        /// Loading the boundary arc. This arc is either a top, bottom,
+        /// left or right bound of a UV rectangle in which the
+        /// parameters of surface are defined.
+        /// If IsFirstParam is equal to Standard_True, the face is
+        /// initialized by either left of bottom bound. Otherwise it is
+        /// initialized by the top or right one.
+        /// If theIsoType is equal to GeomAbs_IsoU, the face is
+        /// initialized with either left or right bound. Otherwise -
+        /// with either top or bottom one.
+        fn BRepGProp_Face_load(
+            self_: Pin<&mut BRepGProp_Face>,
+            IsFirstParam: bool,
+            theIsoType: i32,
+        );
         /// ======================== BRepIntCurveSurface_Inter ========================
         /// **Source:** `BRepIntCurveSurface_Inter.hxx`:54 - `BRepIntCurveSurface_Inter`
         ///
@@ -28365,6 +29226,14 @@ mod ffi {
         fn BRepIntCurveSurface_Inter_point(
             self_: &BRepIntCurveSurface_Inter,
         ) -> UniquePtr<IntCurveSurface_IntersectionPoint>;
+        /// **Source:** `BRepIntCurveSurface_Inter.hxx`:106 - `BRepIntCurveSurface_Inter::State()`
+        ///
+        /// returns the current state (IN or ON)
+        fn BRepIntCurveSurface_Inter_state(self_: &BRepIntCurveSurface_Inter) -> i32;
+        /// **Source:** `BRepIntCurveSurface_Inter.hxx`:109 - `BRepIntCurveSurface_Inter::Transition()`
+        ///
+        /// returns the transition of the line on the surface (IN or OUT or UNKNOWN)
+        fn BRepIntCurveSurface_Inter_transition(self_: &BRepIntCurveSurface_Inter) -> i32;
         /// ======================== BRepMesh_IncrementalMesh ========================
         /// **Source:** `BRepMesh_IncrementalMesh.hxx`:23 - `BRepMesh_IncrementalMesh`
         ///
@@ -28713,6 +29582,13 @@ mod ffi {
         /// **Source:** `Law_Function.hxx`:75 - `Law_Function::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Law_Function) -> &HandleStandardType;
+        /// **Source:** `Law_Function.hxx`:37 - `Law_Function::Continuity()`
+        fn Law_Function_continuity(self_: &Law_Function) -> i32;
+        /// **Source:** `Law_Function.hxx`:41 - `Law_Function::NbIntervals()`
+        ///
+        /// Returns  the number  of  intervals for  continuity
+        /// <S>. May be one if Continuity(me) >= <S>
+        fn Law_Function_nb_intervals(self_: &Law_Function, S: i32) -> i32;
         /// **Source:** `Law_Function.hxx`:68 - `Law_Function::Trim()`
         ///
         /// Returns a  law equivalent of  <me>  between
@@ -28754,6 +29630,13 @@ mod ffi {
         /// **Source:** `Law_BSpFunc.hxx`:85 - `Law_BSpFunc::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Law_BSpFunc) -> &HandleStandardType;
+        /// **Source:** `Law_BSpFunc.hxx`:46 - `Law_BSpFunc::Continuity()`
+        fn Law_BSpFunc_continuity(self_: &Law_BSpFunc) -> i32;
+        /// **Source:** `Law_BSpFunc.hxx`:50 - `Law_BSpFunc::NbIntervals()`
+        ///
+        /// Returns  the number  of  intervals for  continuity
+        /// <S>. May be one if Continuity(me) >= <S>
+        fn Law_BSpFunc_nb_intervals(self_: &Law_BSpFunc, S: i32) -> i32;
         /// **Source:** `Law_BSpFunc.hxx`:75 - `Law_BSpFunc::Trim()`
         ///
         /// Returns a  law equivalent of  <me>  between
@@ -30668,6 +31551,23 @@ mod ffi {
         /// Performs only if a model is not NULL
         #[cxx_name = "SystemLengthUnit"]
         fn system_length_unit(self: &STEPControl_Reader) -> f64;
+        /// **Source:** `STEPControl_Reader.hxx`:88 - `STEPControl_Reader::ReadFile()`
+        ///
+        /// Loads a file and returns the read status
+        /// Zero for a Model which compies with the Controller
+        fn STEPControl_Reader_read_file_charptr(
+            self_: Pin<&mut STEPControl_Reader>,
+            filename: &str,
+        ) -> i32;
+        /// **Source:** `STEPControl_Reader.hxx`:98 - `STEPControl_Reader::ReadFile()`
+        ///
+        /// Loads a file and returns the read status
+        /// Zero for a Model which compies with the Controller
+        fn STEPControl_Reader_read_file_charptr_parameters(
+            self_: Pin<&mut STEPControl_Reader>,
+            filename: &str,
+            theParams: &DESTEP_Parameters,
+        ) -> i32;
         /// Upcast STEPControl_Reader to XSControl_Reader
         fn STEPControl_Reader_as_XSControl_Reader(self_: &STEPControl_Reader) -> &XSControl_Reader;
         /// Upcast STEPControl_Reader to XSControl_Reader (mutable)
@@ -30773,6 +31673,42 @@ mod ffi {
         /// AND the list of entity numbers in the STEP model.
         #[cxx_name = "PrintStatsTransfer"]
         fn print_stats_transfer(self: &STEPControl_Writer, what: i32, mode: i32);
+        /// **Source:** `STEPControl_Writer.hxx`:92 - `STEPControl_Writer::Transfer()`
+        ///
+        /// Translates shape sh to a STEP
+        /// entity. mode defines the STEP entity type to be output:
+        /// - STEPControlStd_AsIs translates a shape to its highest possible
+        /// STEP representation.
+        /// - STEPControlStd_ManifoldSolidBrep translates a shape to a STEP
+        /// manifold_solid_brep or brep_with_voids entity.
+        /// - STEPControlStd_FacetedBrep translates a shape into a STEP
+        /// faceted_brep entity.
+        /// - STEPControlStd_ShellBasedSurfaceModel translates a shape into a STEP
+        /// shell_based_surface_model entity.
+        /// - STEPControlStd_GeometricCurveSet translates a shape into a STEP
+        /// geometric_curve_set entity.
+        fn STEPControl_Writer_transfer_shape_stepmodeltype_bool_progressrange(
+            self_: Pin<&mut STEPControl_Writer>,
+            sh: &TopoDS_Shape,
+            mode: i32,
+            compgraph: bool,
+            theProgress: &Message_ProgressRange,
+        ) -> i32;
+        /// **Source:** `STEPControl_Writer.hxx`:99 - `STEPControl_Writer::Transfer()`
+        ///
+        /// Translates shape sh to a STEP entity
+        fn STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(
+            self_: Pin<&mut STEPControl_Writer>,
+            sh: &TopoDS_Shape,
+            mode: i32,
+            theParams: &DESTEP_Parameters,
+            compgraph: bool,
+            theProgress: &Message_ProgressRange,
+        ) -> i32;
+        /// **Source:** `STEPControl_Writer.hxx`:106 - `STEPControl_Writer::Write()`
+        ///
+        /// Writes a STEP model in the file identified by filename.
+        fn STEPControl_Writer_write(self_: Pin<&mut STEPControl_Writer>, theFileName: &str) -> i32;
         /// ======================== IGESControl_Reader ========================
         /// **Source:** `IGESControl_Reader.hxx`:65 - `IGESControl_Reader`
         ///
@@ -30832,6 +31768,14 @@ mod ffi {
         /// <theReadOnlyVisible> is taken into account to define roots
         #[cxx_name = "NbRootsForTransfer"]
         fn nb_roots_for_transfer(self: Pin<&mut IGESControl_Reader>) -> i32;
+        /// **Source:** `IGESControl_Reader.hxx`:93 - `IGESControl_Reader::PrintTransferInfo()`
+        ///
+        /// Prints Statistics and check list for Transfer
+        fn IGESControl_Reader_print_transfer_info(
+            self_: &IGESControl_Reader,
+            failwarn: i32,
+            mode: i32,
+        );
         /// Upcast IGESControl_Reader to XSControl_Reader
         fn IGESControl_Reader_as_XSControl_Reader(self_: &IGESControl_Reader) -> &XSControl_Reader;
         /// Upcast IGESControl_Reader to XSControl_Reader (mutable)
@@ -31979,11 +32923,13 @@ mod ffi {
         /// TolU et TolV are used to determine the conditions
         /// to stop the iterations; at the iteration number n:
         /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_ExtPS_ctor_pnt_surface_real2(
+        fn Extrema_ExtPS_ctor_pnt_surface_real2_extflag_extalgo(
             P: &gp_Pnt,
             S: &Adaptor3d_Surface,
             TolU: f64,
             TolV: f64,
+            F: i32,
+            A: i32,
         ) -> UniquePtr<Extrema_ExtPS>;
         /// **Source:** `Extrema_ExtPS.hxx`:71 - `Extrema_ExtPS::Extrema_ExtPS()`
         ///
@@ -31995,7 +32941,7 @@ mod ffi {
         /// TolU et TolV are used to determine the conditions
         /// to stop the iterations; at the iteration number n:
         /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_ExtPS_ctor_pnt_surface_real6(
+        fn Extrema_ExtPS_ctor_pnt_surface_real6_extflag_extalgo(
             P: &gp_Pnt,
             S: &Adaptor3d_Surface,
             Uinf: f64,
@@ -32004,6 +32950,8 @@ mod ffi {
             Vsup: f64,
             TolU: f64,
             TolV: f64,
+            F: i32,
+            A: i32,
         ) -> UniquePtr<Extrema_ExtPS>;
         /// **Source:** `Extrema_ExtPS.hxx`:83 - `Extrema_ExtPS::Initialize()`
         ///
@@ -32069,6 +33017,10 @@ mod ffi {
             PUlVf: Pin<&mut gp_Pnt>,
             PUlVl: Pin<&mut gp_Pnt>,
         );
+        /// **Source:** `Extrema_ExtPS.hxx`:126 - `Extrema_ExtPS::SetFlag()`
+        fn Extrema_ExtPS_set_flag(self_: Pin<&mut Extrema_ExtPS>, F: i32);
+        /// **Source:** `Extrema_ExtPS.hxx`:128 - `Extrema_ExtPS::SetAlgo()`
+        fn Extrema_ExtPS_set_algo(self_: Pin<&mut Extrema_ExtPS>, A: i32);
         /// ======================== Extrema_GenExtPS ========================
         /// **Source:** `Extrema_GenExtPS.hxx`:34 - `Extrema_GenExtPS`
         ///
@@ -32094,13 +33046,15 @@ mod ffi {
         /// TolU et TolV are used to determine the conditions
         /// to stop the iterations; at the iteration number n:
         /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_GenExtPS_ctor_pnt_surface_int2_real2(
+        fn Extrema_GenExtPS_ctor_pnt_surface_int2_real2_extflag_extalgo(
             P: &gp_Pnt,
             S: &Adaptor3d_Surface,
             NbU: i32,
             NbV: i32,
             TolU: f64,
             TolV: f64,
+            F: i32,
+            A: i32,
         ) -> UniquePtr<Extrema_GenExtPS>;
         /// **Source:** `Extrema_GenExtPS.hxx`:78 - `Extrema_GenExtPS::Extrema_GenExtPS()`
         ///
@@ -32116,7 +33070,7 @@ mod ffi {
         /// TolU et TolV are used to determine the conditions
         /// to stop the iterations; at the iteration number n:
         /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_GenExtPS_ctor_pnt_surface_int2_real6(
+        fn Extrema_GenExtPS_ctor_pnt_surface_int2_real6_extflag_extalgo(
             P: &gp_Pnt,
             S: &Adaptor3d_Surface,
             NbU: i32,
@@ -32127,6 +33081,8 @@ mod ffi {
             Vsup: f64,
             TolU: f64,
             TolV: f64,
+            F: i32,
+            A: i32,
         ) -> UniquePtr<Extrema_GenExtPS>;
         /// **Source:** `Extrema_GenExtPS.hxx`:91 - `Extrema_GenExtPS::Initialize()`
         #[cxx_name = "Initialize"]
@@ -32179,6 +33135,10 @@ mod ffi {
         /// Returns the point of the Nth resulting distance.
         #[cxx_name = "Point"]
         fn point(self: &Extrema_GenExtPS, N: i32) -> &Extrema_POnSurf;
+        /// **Source:** `Extrema_GenExtPS.hxx`:112 - `Extrema_GenExtPS::SetFlag()`
+        fn Extrema_GenExtPS_set_flag(self_: Pin<&mut Extrema_GenExtPS>, F: i32);
+        /// **Source:** `Extrema_GenExtPS.hxx`:114 - `Extrema_GenExtPS::SetAlgo()`
+        fn Extrema_GenExtPS_set_algo(self_: Pin<&mut Extrema_GenExtPS>, A: i32);
         /// ======================== Adaptor3d_Curve ========================
         /// **Source:** `Adaptor3d_Curve.hxx`:52 - `Adaptor3d_Curve`
         ///
@@ -32283,6 +33243,13 @@ mod ffi {
         /// Shallow copy of adaptor
         fn Adaptor3d_Curve_shallow_copy(self_: &Adaptor3d_Curve)
             -> UniquePtr<HandleAdaptor3dCurve>;
+        /// **Source:** `Adaptor3d_Curve.hxx`:63 - `Adaptor3d_Curve::Continuity()`
+        fn Adaptor3d_Curve_continuity(self_: &Adaptor3d_Curve) -> i32;
+        /// **Source:** `Adaptor3d_Curve.hxx`:67 - `Adaptor3d_Curve::NbIntervals()`
+        ///
+        /// Returns  the number  of  intervals for  continuity
+        /// <S>. May be one if Continuity(me) >= <S>
+        fn Adaptor3d_Curve_nb_intervals(self_: &Adaptor3d_Curve, S: i32) -> i32;
         /// **Source:** `Adaptor3d_Curve.hxx`:80 - `Adaptor3d_Curve::Trim()`
         ///
         /// Returns    a  curve equivalent   of  <me>  between
@@ -32307,6 +33274,12 @@ mod ffi {
         /// is not CN.
         /// Raised if N < 1.
         fn Adaptor3d_Curve_dn(self_: &Adaptor3d_Curve, U: f64, N: i32) -> UniquePtr<gp_Vec>;
+        /// **Source:** `Adaptor3d_Curve.hxx`:132 - `Adaptor3d_Curve::GetType()`
+        ///
+        /// Returns  the  type of the   curve  in the  current
+        /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+        /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+        fn Adaptor3d_Curve_get_type(self_: &Adaptor3d_Curve) -> i32;
         /// **Source:** `Adaptor3d_Curve.hxx`:134 - `Adaptor3d_Curve::Line()`
         fn Adaptor3d_Curve_line(self_: &Adaptor3d_Curve) -> UniquePtr<gp_Lin>;
         /// **Source:** `Adaptor3d_Curve.hxx`:136 - `Adaptor3d_Curve::Circle()`
@@ -32492,6 +33465,20 @@ mod ffi {
         fn Adaptor3d_Surface_shallow_copy(
             self_: &Adaptor3d_Surface,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
+        /// **Source:** `Adaptor3d_Surface.hxx`:73 - `Adaptor3d_Surface::UContinuity()`
+        fn Adaptor3d_Surface_u_continuity(self_: &Adaptor3d_Surface) -> i32;
+        /// **Source:** `Adaptor3d_Surface.hxx`:75 - `Adaptor3d_Surface::VContinuity()`
+        fn Adaptor3d_Surface_v_continuity(self_: &Adaptor3d_Surface) -> i32;
+        /// **Source:** `Adaptor3d_Surface.hxx`:79 - `Adaptor3d_Surface::NbUIntervals()`
+        ///
+        /// Returns the number of U intervals for  continuity
+        /// <S>. May be one if UContinuity(me) >= <S>
+        fn Adaptor3d_Surface_nb_u_intervals(self_: &Adaptor3d_Surface, S: i32) -> i32;
+        /// **Source:** `Adaptor3d_Surface.hxx`:83 - `Adaptor3d_Surface::NbVIntervals()`
+        ///
+        /// Returns the number of V intervals for  continuity
+        /// <S>. May be one if VContinuity(me) >= <S>
+        fn Adaptor3d_Surface_nb_v_intervals(self_: &Adaptor3d_Surface, S: i32) -> i32;
         /// **Source:** `Adaptor3d_Surface.hxx`:98 - `Adaptor3d_Surface::UTrim()`
         ///
         /// Returns    a  surface trimmed in the U direction
@@ -32536,6 +33523,13 @@ mod ffi {
             Nu: i32,
             Nv: i32,
         ) -> UniquePtr<gp_Vec>;
+        /// **Source:** `Adaptor3d_Surface.hxx`:191 - `Adaptor3d_Surface::GetType()`
+        ///
+        /// Returns the type of the surface : Plane, Cylinder,
+        /// Cone,      Sphere,        Torus,    BezierSurface,
+        /// BSplineSurface,               SurfaceOfRevolution,
+        /// SurfaceOfExtrusion, OtherSurface
+        fn Adaptor3d_Surface_get_type(self_: &Adaptor3d_Surface) -> i32;
         /// **Source:** `Adaptor3d_Surface.hxx`:193 - `Adaptor3d_Surface::Plane()`
         fn Adaptor3d_Surface_plane(self_: &Adaptor3d_Surface) -> UniquePtr<gp_Pln>;
         /// **Source:** `Adaptor3d_Surface.hxx`:195 - `Adaptor3d_Surface::Cylinder()`
@@ -32678,6 +33672,14 @@ mod ffi {
         fn Adaptor2d_Curve2d_shallow_copy(
             self_: &Adaptor2d_Curve2d,
         ) -> UniquePtr<HandleAdaptor2dCurve2d>;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:61 - `Adaptor2d_Curve2d::Continuity()`
+        fn Adaptor2d_Curve2d_continuity(self_: &Adaptor2d_Curve2d) -> i32;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:66 - `Adaptor2d_Curve2d::NbIntervals()`
+        ///
+        /// If necessary,  breaks the  curve in  intervals  of
+        /// continuity  <S>.    And  returns   the number   of
+        /// intervals.
+        fn Adaptor2d_Curve2d_nb_intervals(self_: &Adaptor2d_Curve2d, S: i32) -> i32;
         /// **Source:** `Adaptor2d_Curve2d.hxx`:79 - `Adaptor2d_Curve2d::Trim()`
         ///
         /// Returns    a  curve equivalent   of  <me>  between
@@ -32702,6 +33704,12 @@ mod ffi {
         /// is not CN.
         /// Raised if N < 1.
         fn Adaptor2d_Curve2d_dn(self_: &Adaptor2d_Curve2d, U: f64, N: i32) -> UniquePtr<gp_Vec2d>;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:134 - `Adaptor2d_Curve2d::GetType()`
+        ///
+        /// Returns  the  type of the   curve  in the  current
+        /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+        /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+        fn Adaptor2d_Curve2d_get_type(self_: &Adaptor2d_Curve2d) -> i32;
         /// **Source:** `Adaptor2d_Curve2d.hxx`:136 - `Adaptor2d_Curve2d::Line()`
         fn Adaptor2d_Curve2d_line(self_: &Adaptor2d_Curve2d) -> UniquePtr<gp_Lin2d>;
         /// **Source:** `Adaptor2d_Curve2d.hxx`:138 - `Adaptor2d_Curve2d::Circle()`
@@ -34874,6 +35882,10 @@ mod ffi {
         ///
         /// Returns true if the value has bracket key
         fn Standard_Dump_has_child_key(theSourceValue: &TCollection_AsciiString) -> bool;
+        /// **Source:** `Standard_Dump.hxx`:377 - `Standard_Dump::JsonKeyLength()`
+        ///
+        /// Returns length value for enum type
+        fn Standard_Dump_json_key_length(theKey: i32) -> i32;
         /// **Source:** `Standard_Dump.hxx`:384 - `Standard_Dump::GetPointerPrefix()`
         ///
         /// Returns default prefix added for each pointer info string if short presentation of pointer
@@ -35421,6 +36433,8 @@ mod ffi {
         /// Message::SendFail ("My Failure"); // short-cut for Message_Fail
         /// @endcode
         fn Message_default_messenger() -> &'static HandleMessageMessenger;
+        /// **Source:** `Message.hxx`:60 - `Message::Send()`
+        fn Message_send(theMessage: &TCollection_AsciiString, theGravity: i32);
         /// **Source:** `Message.hxx`:75 - `Message::SendFail()`
         fn Message_send_fail(theMessage: &TCollection_AsciiString);
         /// **Source:** `Message.hxx`:80 - `Message::SendAlarm()`
@@ -35448,6 +36462,12 @@ mod ffi {
         /// returns the only one instance of Report
         /// When theToCreate is true - automatically creates message report when not exist.
         fn Message_default_report(theToCreate: bool) -> &'static HandleMessageReport;
+        /// **Source:** `Message.hxx`:131 - `Message::MetricFromString()`
+        ///
+        /// Returns the metric type from the given string identifier.
+        /// @param theString string identifier
+        /// @return metric type or Message_MetricType_None if string identifier is invalid
+        fn Message_metric_from_string(theString: &str) -> i32;
         /// ======================== Message_Messenger ========================
         /// **Source:** `Message_Messenger.hxx`:53 - `Message_Messenger`
         ///
@@ -35539,6 +36559,32 @@ mod ffi {
         /// Short-cut to Send (theMessage, Message_Trace)
         #[cxx_name = "SendTrace"]
         fn send_trace(self: Pin<&mut Message_Messenger>, theMessage: &TCollection_AsciiString);
+        /// **Source:** `Message_Messenger.hxx`:178 - `Message_Messenger::Send()`
+        ///
+        /// Dispatch a message to all the printers in the list.
+        /// Three versions of string representations are accepted for
+        /// convenience, by default all are converted to ExtendedString.
+        fn Message_Messenger_send_charptr_gravity(
+            self_: &Message_Messenger,
+            theString: &str,
+            theGravity: i32,
+        );
+        /// **Source:** `Message_Messenger.hxx`:186 - `Message_Messenger::Send()`
+        ///
+        /// See above
+        fn Message_Messenger_send_asciistring_gravity(
+            self_: &Message_Messenger,
+            theString: &TCollection_AsciiString,
+            theGravity: i32,
+        );
+        /// **Source:** `Message_Messenger.hxx`:190 - `Message_Messenger::Send()`
+        ///
+        /// See above
+        fn Message_Messenger_send_extendedstring_gravity(
+            self_: &Message_Messenger,
+            theString: &TCollection_ExtendedString,
+            theGravity: i32,
+        );
         /// **Source:** `Message_Messenger.hxx`:55 - `Message_Messenger::get_type_descriptor()`
         fn Message_Messenger_get_type_descriptor() -> &'static HandleStandardType;
         /// Wrap Message_Messenger in a Handle
@@ -35616,6 +36662,46 @@ mod ffi {
         /// **Source:** `Message_Printer.hxx`:38 - `Message_Printer::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Message_Printer) -> &HandleStandardType;
+        /// **Source:** `Message_Printer.hxx`:42 - `Message_Printer::GetTraceLevel()`
+        ///
+        /// Return trace level used for filtering messages;
+        /// messages with lover gravity will be ignored.
+        fn Message_Printer_get_trace_level(self_: &Message_Printer) -> i32;
+        /// **Source:** `Message_Printer.hxx`:46 - `Message_Printer::SetTraceLevel()`
+        ///
+        /// Set trace level used for filtering messages.
+        /// By default, trace level is Message_Info, so that all messages are output
+        fn Message_Printer_set_trace_level(self_: Pin<&mut Message_Printer>, theTraceLevel: i32);
+        /// **Source:** `Message_Printer.hxx`:51 - `Message_Printer::Send()`
+        ///
+        /// Send a string message with specified trace level.
+        /// The last Boolean argument is deprecated and unused.
+        /// Default implementation redirects to send().
+        fn Message_Printer_send_extendedstring_gravity(
+            self_: &Message_Printer,
+            theString: &TCollection_ExtendedString,
+            theGravity: i32,
+        );
+        /// **Source:** `Message_Printer.hxx`:57 - `Message_Printer::Send()`
+        ///
+        /// Send a string message with specified trace level.
+        /// The last Boolean argument is deprecated and unused.
+        /// Default implementation redirects to send().
+        fn Message_Printer_send_charptr_gravity(
+            self_: &Message_Printer,
+            theString: &str,
+            theGravity: i32,
+        );
+        /// **Source:** `Message_Printer.hxx`:63 - `Message_Printer::Send()`
+        ///
+        /// Send a string message with specified trace level.
+        /// The last Boolean argument is deprecated and unused.
+        /// Default implementation redirects to send().
+        fn Message_Printer_send_asciistring_gravity(
+            self_: &Message_Printer,
+            theString: &TCollection_AsciiString,
+            theGravity: i32,
+        );
         /// **Source:** `Message_Printer.hxx`:38 - `Message_Printer::get_type_descriptor()`
         fn Message_Printer_get_type_descriptor() -> &'static HandleStandardType;
         /// ======================== NCollection_BaseList ========================
@@ -35792,6 +36878,17 @@ mod ffi {
         /// this point.
         #[cxx_name = "GetIndices"]
         fn get_indices(self: &Extrema_POnSurfParams, theIndexU: &mut i32, theIndexV: &mut i32);
+        /// **Source:** `Extrema_POnSurfParams.hxx`:50 - `Extrema_POnSurfParams::SetElementType()`
+        ///
+        /// Sets the element type on which this point is situated.
+        fn Extrema_POnSurfParams_set_element_type(
+            self_: Pin<&mut Extrema_POnSurfParams>,
+            theElementType: i32,
+        );
+        /// **Source:** `Extrema_POnSurfParams.hxx`:53 - `Extrema_POnSurfParams::GetElementType()`
+        ///
+        /// Query the element type on which this point is situated.
+        fn Extrema_POnSurfParams_get_element_type(self_: &Extrema_POnSurfParams) -> i32;
         /// Upcast Extrema_POnSurfParams to Extrema_POnSurf
         fn Extrema_POnSurfParams_as_Extrema_POnSurf(
             self_: &Extrema_POnSurfParams,
@@ -37320,6 +38417,11 @@ mod ffi {
         /// Sets a specific norm to <me>
         /// Returns True if done, False if <norm> is not available
         fn XSControl_Reader_set_norm(self_: Pin<&mut XSControl_Reader>, norm: &str) -> bool;
+        /// **Source:** `XSControl_Reader.hxx`:107 - `XSControl_Reader::ReadFile()`
+        ///
+        /// Loads a file and returns the read status
+        /// Zero for a Model which complies with the Controller
+        fn XSControl_Reader_read_file(self_: Pin<&mut XSControl_Reader>, filename: &str) -> i32;
         /// **Source:** `XSControl_Reader.hxx`:143 - `XSControl_Reader::GiveList()`
         ///
         /// Returns a list of entities from the IGES or STEP file
@@ -37369,6 +38471,28 @@ mod ffi {
         /// - a shape if there is one result,
         /// - a compound containing the resulting shapes if there are more than one.
         fn XSControl_Reader_one_shape(self_: &XSControl_Reader) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `XSControl_Reader.hxx`:225 - `XSControl_Reader::PrintCheckLoad()`
+        ///
+        /// Prints the check list attached to loaded data, on the Standard
+        /// Trace File (starts at std::cout)
+        /// All messages or fails only, according to <failsonly>
+        /// mode = 0 : per entity, prints messages
+        /// mode = 1 : per message, just gives count of entities per check
+        /// mode = 2 : also gives entity numbers
+        fn XSControl_Reader_print_check_load(self_: &XSControl_Reader, failsonly: bool, mode: i32);
+        /// **Source:** `XSControl_Reader.hxx`:239 - `XSControl_Reader::PrintCheckTransfer()`
+        ///
+        /// Displays check results for the
+        /// last translation of IGES or STEP entities to Open CASCADE
+        /// entities. Only fail messages are displayed if failsonly is
+        /// true. All messages are displayed if failsonly is
+        /// false. mode determines the contents and the order of the
+        /// messages according to the terms of the IFSelect_PrintCount enumeration.
+        fn XSControl_Reader_print_check_transfer(
+            self_: &XSControl_Reader,
+            failsonly: bool,
+            mode: i32,
+        );
         /// ======================== TColStd_HSequenceOfTransient ========================
         /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient`
         type TColStd_HSequenceOfTransient;
@@ -38388,6 +39512,28 @@ mod ffi {
         ///
         /// Default constructor
         fn BRepMesh_Vertex_ctor() -> UniquePtr<BRepMesh_Vertex>;
+        /// **Source:** `BRepMesh_Vertex.hxx`:42 - `BRepMesh_Vertex::BRepMesh_Vertex()`
+        ///
+        /// Creates vertex associated with point in 3d space.
+        /// @param theUV position of vertex in parametric space.
+        /// @param theLocation3d index of 3d point to be associated with vertex.
+        /// @param theMovability movability of the vertex.
+        fn BRepMesh_Vertex_ctor_xy_int_degreeoffreedom(
+            theUV: &gp_XY,
+            theLocation3d: i32,
+            theMovability: i32,
+        ) -> UniquePtr<BRepMesh_Vertex>;
+        /// **Source:** `BRepMesh_Vertex.hxx`:53 - `BRepMesh_Vertex::BRepMesh_Vertex()`
+        ///
+        /// Creates vertex without association with point in 3d space.
+        /// @param theU U position of vertex in parametric space.
+        /// @param theV V position of vertex in parametric space.
+        /// @param theMovability movability of the vertex.
+        fn BRepMesh_Vertex_ctor_real2_degreeoffreedom(
+            theU: f64,
+            theV: f64,
+            theMovability: i32,
+        ) -> UniquePtr<BRepMesh_Vertex>;
         /// **Source:** `BRepMesh_Vertex.hxx`:76 - `BRepMesh_Vertex::Coord()`
         ///
         /// Returns position of the vertex in parametric space.
@@ -38410,6 +39556,26 @@ mod ffi {
         /// @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &BRepMesh_Vertex, theOther: &BRepMesh_Vertex) -> bool;
+        /// **Source:** `BRepMesh_Vertex.hxx`:66 - `BRepMesh_Vertex::Initialize()`
+        ///
+        /// Initializes vertex associated with point in 3d space.
+        /// @param theUV position of vertex in parametric space.
+        /// @param theLocation3d index of 3d point to be associated with vertex.
+        /// @param theMovability movability of the vertex.
+        fn BRepMesh_Vertex_initialize(
+            self_: Pin<&mut BRepMesh_Vertex>,
+            theUV: &gp_XY,
+            theLocation3d: i32,
+            theMovability: i32,
+        );
+        /// **Source:** `BRepMesh_Vertex.hxx`:85 - `BRepMesh_Vertex::Movability()`
+        ///
+        /// Returns movability of the vertex.
+        fn BRepMesh_Vertex_movability(self_: &BRepMesh_Vertex) -> i32;
+        /// **Source:** `BRepMesh_Vertex.hxx`:88 - `BRepMesh_Vertex::SetMovability()`
+        ///
+        /// Sets movability of the vertex.
+        fn BRepMesh_Vertex_set_movability(self_: Pin<&mut BRepMesh_Vertex>, theMovability: i32);
         /// ======================== Bnd_B2d ========================
         /// **Source:** `Bnd_B2d.hxx`:32 - `Bnd_B2d`
         type Bnd_B2d;
@@ -38608,6 +39774,14 @@ mod ffi {
         /// @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &BRepMesh_Triangle, theOther: &BRepMesh_Triangle) -> bool;
+        /// **Source:** `BRepMesh_Triangle.hxx`:79 - `BRepMesh_Triangle::Movability()`
+        ///
+        /// Returns movability of the triangle.
+        fn BRepMesh_Triangle_movability(self_: &BRepMesh_Triangle) -> i32;
+        /// **Source:** `BRepMesh_Triangle.hxx`:82 - `BRepMesh_Triangle::SetMovability()`
+        ///
+        /// Sets movability of the triangle.
+        fn BRepMesh_Triangle_set_movability(self_: Pin<&mut BRepMesh_Triangle>, theMovability: i32);
         /// ======================== BRepMesh_PairOfIndex ========================
         /// **Source:** `BRepMesh_PairOfIndex.hxx`:24 - `BRepMesh_PairOfIndex`
         ///
@@ -38682,6 +39856,14 @@ mod ffi {
         ///
         /// Default constructor.
         fn BRepMesh_Edge_ctor() -> UniquePtr<BRepMesh_Edge>;
+        /// **Source:** `BRepMesh_Edge.hxx`:34 - `BRepMesh_Edge::BRepMesh_Edge()`
+        ///
+        /// Constructs a link between two vertices.
+        fn BRepMesh_Edge_ctor_int2_degreeoffreedom(
+            theFirstNode: i32,
+            theLastNode: i32,
+            theMovability: i32,
+        ) -> UniquePtr<BRepMesh_Edge>;
         /// **Source:** `BRepMesh_Edge.hxx`:52 - `BRepMesh_Edge::IsSameOrientation()`
         ///
         /// Checks if the given edge and this one have the same orientation.
@@ -38696,6 +39878,15 @@ mod ffi {
         /// @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &BRepMesh_Edge, theOther: &BRepMesh_Edge) -> bool;
+        /// **Source:** `BRepMesh_Edge.hxx`:43 - `BRepMesh_Edge::Movability()`
+        ///
+        /// Returns movability flag of the Link.
+        fn BRepMesh_Edge_movability(self_: &BRepMesh_Edge) -> i32;
+        /// **Source:** `BRepMesh_Edge.hxx`:47 - `BRepMesh_Edge::SetMovability()`
+        ///
+        /// Sets movability flag of the Link.
+        /// @param theMovability flag to be set.
+        fn BRepMesh_Edge_set_movability(self_: Pin<&mut BRepMesh_Edge>, theMovability: i32);
         /// Upcast BRepMesh_Edge to BRepMesh_OrientedEdge
         fn BRepMesh_Edge_as_BRepMesh_OrientedEdge(self_: &BRepMesh_Edge) -> &BRepMesh_OrientedEdge;
         /// Upcast BRepMesh_Edge to BRepMesh_OrientedEdge (mutable)
@@ -39082,6 +40273,83 @@ mod ffi {
         /// **Source:** `Message_Algorithm.hxx`:217 - `Message_Algorithm::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Message_Algorithm) -> &HandleStandardType;
+        /// **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
+        ///
+        /// Sets status with no parameter
+        fn Message_Algorithm_set_status_status(self_: Pin<&mut Message_Algorithm>, theStat: i32);
+        /// **Source:** `Message_Algorithm.hxx`:98 - `Message_Algorithm::SetStatus()`
+        ///
+        /// Sets status with integer parameter
+        fn Message_Algorithm_set_status_status_int(
+            self_: Pin<&mut Message_Algorithm>,
+            theStat: i32,
+            theInt: i32,
+        );
+        /// **Source:** `Message_Algorithm.hxx`:103 - `Message_Algorithm::SetStatus()`
+        ///
+        /// Sets status with string parameter.
+        /// If noRepetitions is True, the parameter will be added only
+        /// if it has not been yet recorded for the same status flag
+        fn Message_Algorithm_set_status_status_charptr_bool(
+            self_: Pin<&mut Message_Algorithm>,
+            theStat: i32,
+            theStr: &str,
+            noRepetitions: bool,
+        );
+        /// **Source:** `Message_Algorithm.hxx`:110 - `Message_Algorithm::SetStatus()`
+        ///
+        /// Sets status with string parameter
+        /// If noRepetitions is True, the parameter will be added only
+        /// if it has not been yet recorded for the same status flag
+        fn Message_Algorithm_set_status_status_asciistring_bool(
+            self_: Pin<&mut Message_Algorithm>,
+            theStat: i32,
+            theStr: &TCollection_AsciiString,
+            noRepetitions: bool,
+        );
+        /// **Source:** `Message_Algorithm.hxx`:117 - `Message_Algorithm::SetStatus()`
+        ///
+        /// Sets status with string parameter
+        /// If noRepetitions is True, the parameter will be added only
+        /// if it has not been yet recorded for the same status flag
+        fn Message_Algorithm_set_status_status_handlehasciistring_bool(
+            self_: Pin<&mut Message_Algorithm>,
+            theStat: i32,
+            theStr: &HandleTCollectionHAsciiString,
+            noRepetitions: bool,
+        );
+        /// **Source:** `Message_Algorithm.hxx`:124 - `Message_Algorithm::SetStatus()`
+        ///
+        /// Sets status with string parameter
+        /// If noRepetitions is True, the parameter will be added only
+        /// if it has not been yet recorded for the same status flag
+        fn Message_Algorithm_set_status_status_extendedstring_bool(
+            self_: Pin<&mut Message_Algorithm>,
+            theStat: i32,
+            theStr: &TCollection_ExtendedString,
+            noRepetitions: bool,
+        );
+        /// **Source:** `Message_Algorithm.hxx`:131 - `Message_Algorithm::SetStatus()`
+        ///
+        /// Sets status with string parameter
+        /// If noRepetitions is True, the parameter will be added only
+        /// if it has not been yet recorded for the same status flag
+        fn Message_Algorithm_set_status_status_handlehextendedstring_bool(
+            self_: Pin<&mut Message_Algorithm>,
+            theStat: i32,
+            theStr: &HandleTCollectionHExtendedString,
+            noRepetitions: bool,
+        );
+        /// **Source:** `Message_Algorithm.hxx`:138 - `Message_Algorithm::SetStatus()`
+        ///
+        /// Sets status with preformatted message. This message will be
+        /// used directly to report the status; automatic generation of
+        /// status messages will be disabled for it.
+        fn Message_Algorithm_set_status_status_msg(
+            self_: Pin<&mut Message_Algorithm>,
+            theStat: i32,
+            theMsg: &Message_Msg,
+        );
         /// **Source:** `Message_Algorithm.hxx`:155 - `Message_Algorithm::GetMessenger()`
         ///
         /// Returns messenger of algorithm.
@@ -39090,6 +40358,49 @@ mod ffi {
         fn Message_Algorithm_get_messenger(
             self_: &Message_Algorithm,
         ) -> UniquePtr<HandleMessageMessenger>;
+        /// **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
+        ///
+        /// Print messages for all status flags that have been set during
+        /// algorithm execution, excluding statuses that are NOT set
+        /// in theFilter.
+        ///
+        /// The messages are taken from resource file, names being
+        /// constructed as {dynamic class type}.{status name},
+        /// for instance, "Message_Algorithm.Fail5".
+        /// If message is not found in resources for this class and all
+        /// its base types, surrogate text is printed.
+        ///
+        /// For the statuses having number or string parameters,
+        /// theMaxCount defines maximal number of numbers or strings to be
+        /// included in the message
+        ///
+        /// Note that this method is virtual; this allows descendant
+        /// classes to customize message output (e.g. by adding
+        /// messages from other sub-algorithms)
+        fn Message_Algorithm_send_status_messages(
+            self_: &Message_Algorithm,
+            theFilter: &Message_ExecStatus,
+            theTraceLevel: i32,
+            theMaxCount: i32,
+        );
+        /// **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
+        ///
+        /// Convenient variant of SendStatusMessages() with theFilter
+        /// having defined all WARN, ALARM, and FAIL (but not DONE)
+        /// status flags
+        fn Message_Algorithm_send_messages(
+            self_: &Message_Algorithm,
+            theTraceLevel: i32,
+            theMaxCount: i32,
+        );
+        /// **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
+        ///
+        /// Return the strings associated with the indicated status;
+        /// Null handle if no such status or no strings associated with it
+        fn Message_Algorithm_get_message_strings(
+            self_: &Message_Algorithm,
+            theStatus: i32,
+        ) -> UniquePtr<HandleTColStdHSequenceOfHExtendedString>;
         /// **Source:** `Message_Algorithm.hxx`:217 - `Message_Algorithm::get_type_descriptor()`
         fn Message_Algorithm_get_type_descriptor() -> &'static HandleStandardType;
         /// Wrap Message_Algorithm in a Handle
@@ -39120,6 +40431,10 @@ mod ffi {
         ///
         /// Create empty execution status
         fn Message_ExecStatus_ctor() -> UniquePtr<Message_ExecStatus>;
+        /// **Source:** `Message_ExecStatus.hxx`:66 - `Message_ExecStatus::Message_ExecStatus()`
+        ///
+        /// Initialise the execution status
+        fn Message_ExecStatus_ctor_status(theStatus: i32) -> UniquePtr<Message_ExecStatus>;
         /// **Source:** `Message_ExecStatus.hxx`:138 - `Message_ExecStatus::IsDone()`
         ///
         /// Check if at least one status of each type is set
@@ -39177,6 +40492,35 @@ mod ffi {
         /// Leave only the statuses common with theOther
         #[cxx_name = "And"]
         fn and(self: Pin<&mut Message_ExecStatus>, theOther: &Message_ExecStatus);
+        /// **Source:** `Message_ExecStatus.hxx`:76 - `Message_ExecStatus::Set()`
+        ///
+        /// Sets a status flag
+        fn Message_ExecStatus_set(self_: Pin<&mut Message_ExecStatus>, theStatus: i32);
+        /// **Source:** `Message_ExecStatus.hxx`:96 - `Message_ExecStatus::IsSet()`
+        ///
+        /// Check status for being set
+        fn Message_ExecStatus_is_set(self_: &Message_ExecStatus, theStatus: i32) -> bool;
+        /// **Source:** `Message_ExecStatus.hxx`:113 - `Message_ExecStatus::Clear()`
+        ///
+        /// Clear one status
+        fn Message_ExecStatus_clear(self_: Pin<&mut Message_ExecStatus>, theStatus: i32);
+        /// **Source:** `Message_ExecStatus.hxx`:213 - `Message_ExecStatus::StatusIndex()`
+        ///
+        /// Returns index of status in whole range [FirstStatus, LastStatus]
+        fn Message_ExecStatus_status_index(theStatus: i32) -> i32;
+        /// **Source:** `Message_ExecStatus.hxx`:231 - `Message_ExecStatus::LocalStatusIndex()`
+        ///
+        /// Returns index of status inside type of status (Done or Warn or, etc)
+        /// in range [1, StatusesPerType]
+        fn Message_ExecStatus_local_status_index(theStatus: i32) -> i32;
+        /// **Source:** `Message_ExecStatus.hxx`:237 - `Message_ExecStatus::TypeOfStatus()`
+        ///
+        /// Returns status type (DONE, WARN, ALARM, or FAIL)
+        fn Message_ExecStatus_type_of_status(theStatus: i32) -> i32;
+        /// **Source:** `Message_ExecStatus.hxx`:243 - `Message_ExecStatus::StatusByIndex()`
+        ///
+        /// Returns status with index theIndex in whole range [FirstStatus, LastStatus]
+        fn Message_ExecStatus_status_by_index(theIndex: i32) -> i32;
         /// ======================== TColStd_HArray1OfTransient ========================
         /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient`
         type TColStd_HArray1OfTransient;
@@ -39462,6 +40806,13 @@ mod ffi {
         fn GeomAdaptor_Curve_shallow_copy(
             self_: &GeomAdaptor_Curve,
         ) -> UniquePtr<HandleAdaptor3dCurve>;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:98 - `GeomAdaptor_Curve::Continuity()`
+        fn GeomAdaptor_Curve_continuity(self_: &GeomAdaptor_Curve) -> i32;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:102 - `GeomAdaptor_Curve::NbIntervals()`
+        ///
+        /// Returns  the number  of  intervals for  continuity
+        /// <S>. May be one if Continuity(me) >= <S>
+        fn GeomAdaptor_Curve_nb_intervals(self_: &GeomAdaptor_Curve, S: i32) -> i32;
         /// **Source:** `GeomAdaptor_Curve.hxx`:116 - `GeomAdaptor_Curve::Trim()`
         ///
         /// Returns    a  curve equivalent   of  <me>  between
@@ -39488,6 +40839,8 @@ mod ffi {
         /// else the derivatives are computed on the basis curve.
         /// Raised if N < 1.
         fn GeomAdaptor_Curve_dn(self_: &GeomAdaptor_Curve, U: f64, N: i32) -> UniquePtr<gp_Vec>;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:179 - `GeomAdaptor_Curve::GetType()`
+        fn GeomAdaptor_Curve_get_type(self_: &GeomAdaptor_Curve) -> i32;
         /// **Source:** `GeomAdaptor_Curve.hxx`:181 - `GeomAdaptor_Curve::Line()`
         fn GeomAdaptor_Curve_line(self_: &GeomAdaptor_Curve) -> UniquePtr<gp_Lin>;
         /// **Source:** `GeomAdaptor_Curve.hxx`:183 - `GeomAdaptor_Curve::Circle()`
@@ -39660,6 +41013,16 @@ mod ffi {
         ///
         /// Empty Constructor.
         fn IntCurveSurface_IntersectionPoint_ctor() -> UniquePtr<IntCurveSurface_IntersectionPoint>;
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:38 - `IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint()`
+        ///
+        /// Create an IntersectionPoint.
+        fn IntCurveSurface_IntersectionPoint_ctor_pnt_real3_transitiononcurve(
+            P: &gp_Pnt,
+            USurf: f64,
+            VSurf: f64,
+            UCurv: f64,
+            TrCurv: i32,
+        ) -> UniquePtr<IntCurveSurface_IntersectionPoint>;
         /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:59 - `IntCurveSurface_IntersectionPoint::Pnt()`
         ///
         /// returns the geometric point.
@@ -39685,6 +41048,23 @@ mod ffi {
         /// Dump all the fields.
         #[cxx_name = "Dump"]
         fn dump(self: &IntCurveSurface_IntersectionPoint);
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:45 - `IntCurveSurface_IntersectionPoint::SetValues()`
+        ///
+        /// Set the fields of the current IntersectionPoint.
+        fn IntCurveSurface_IntersectionPoint_set_values(
+            self_: Pin<&mut IntCurveSurface_IntersectionPoint>,
+            P: &gp_Pnt,
+            USurf: f64,
+            VSurf: f64,
+            UCurv: f64,
+            TrCurv: i32,
+        );
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:71 - `IntCurveSurface_IntersectionPoint::Transition()`
+        ///
+        /// returns the Transition of the point.
+        fn IntCurveSurface_IntersectionPoint_transition(
+            self_: &IntCurveSurface_IntersectionPoint,
+        ) -> i32;
         /// ======================== BSplCLib_Cache ========================
         /// **Source:** `BSplCLib_Cache.hxx`:24 - `BSplCLib_Cache`
         ///
@@ -40440,6 +41820,22 @@ mod ffi {
         fn BRepAdaptor_Surface_shallow_copy(
             self_: &BRepAdaptor_Surface,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:103 - `BRepAdaptor_Surface::UContinuity()`
+        fn BRepAdaptor_Surface_u_continuity(self_: &BRepAdaptor_Surface) -> i32;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:105 - `BRepAdaptor_Surface::VContinuity()`
+        fn BRepAdaptor_Surface_v_continuity(self_: &BRepAdaptor_Surface) -> i32;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:110 - `BRepAdaptor_Surface::NbUIntervals()`
+        ///
+        /// If necessary, breaks the surface in U intervals of
+        /// continuity    <S>.  And   returns  the  number  of
+        /// intervals.
+        fn BRepAdaptor_Surface_nb_u_intervals(self_: &BRepAdaptor_Surface, theSh: i32) -> i32;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:118 - `BRepAdaptor_Surface::NbVIntervals()`
+        ///
+        /// If necessary, breaks the surface in V intervals of
+        /// continuity    <S>.  And   returns  the  number  of
+        /// intervals.
+        fn BRepAdaptor_Surface_nb_v_intervals(self_: &BRepAdaptor_Surface, theSh: i32) -> i32;
         /// **Source:** `BRepAdaptor_Surface.hxx`:138 - `BRepAdaptor_Surface::UTrim()`
         ///
         /// Returns    a  surface trimmed in the U direction
@@ -40488,6 +41884,13 @@ mod ffi {
             Nu: i32,
             Nv: i32,
         ) -> UniquePtr<gp_Vec>;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:240 - `BRepAdaptor_Surface::GetType()`
+        ///
+        /// Returns the type of the surface : Plane, Cylinder,
+        /// Cone,      Sphere,        Torus,    BezierSurface,
+        /// BSplineSurface,               SurfaceOfRevolution,
+        /// SurfaceOfExtrusion, OtherSurface
+        fn BRepAdaptor_Surface_get_type(self_: &BRepAdaptor_Surface) -> i32;
         /// **Source:** `BRepAdaptor_Surface.hxx`:242 - `BRepAdaptor_Surface::Plane()`
         fn BRepAdaptor_Surface_plane(self_: &BRepAdaptor_Surface) -> UniquePtr<gp_Pln>;
         /// **Source:** `BRepAdaptor_Surface.hxx`:244 - `BRepAdaptor_Surface::Cylinder()`
@@ -40670,6 +42073,14 @@ mod ffi {
         fn Geom2dAdaptor_Curve_shallow_copy(
             self_: &Geom2dAdaptor_Curve,
         ) -> UniquePtr<HandleAdaptor2dCurve2d>;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:97 - `Geom2dAdaptor_Curve::Continuity()`
+        fn Geom2dAdaptor_Curve_continuity(self_: &Geom2dAdaptor_Curve) -> i32;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:102 - `Geom2dAdaptor_Curve::NbIntervals()`
+        ///
+        /// If necessary,  breaks the  curve in  intervals  of
+        /// continuity  <S>.    And  returns   the number   of
+        /// intervals.
+        fn Geom2dAdaptor_Curve_nb_intervals(self_: &Geom2dAdaptor_Curve, S: i32) -> i32;
         /// **Source:** `Geom2dAdaptor_Curve.hxx`:116 - `Geom2dAdaptor_Curve::Trim()`
         ///
         /// Returns    a  curve equivalent   of  <me>  between
@@ -40698,6 +42109,8 @@ mod ffi {
             U: f64,
             N: i32,
         ) -> UniquePtr<gp_Vec2d>;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:168 - `Geom2dAdaptor_Curve::GetType()`
+        fn Geom2dAdaptor_Curve_get_type(self_: &Geom2dAdaptor_Curve) -> i32;
         /// **Source:** `Geom2dAdaptor_Curve.hxx`:170 - `Geom2dAdaptor_Curve::Line()`
         fn Geom2dAdaptor_Curve_line(self_: &Geom2dAdaptor_Curve) -> UniquePtr<gp_Lin2d>;
         /// **Source:** `Geom2dAdaptor_Curve.hxx`:172 - `Geom2dAdaptor_Curve::Circle()`
@@ -40976,6 +42389,20 @@ mod ffi {
         fn GeomAdaptor_Surface_shallow_copy(
             self_: &GeomAdaptor_Surface,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:118 - `GeomAdaptor_Surface::UContinuity()`
+        fn GeomAdaptor_Surface_u_continuity(self_: &GeomAdaptor_Surface) -> i32;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:120 - `GeomAdaptor_Surface::VContinuity()`
+        fn GeomAdaptor_Surface_v_continuity(self_: &GeomAdaptor_Surface) -> i32;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:124 - `GeomAdaptor_Surface::NbUIntervals()`
+        ///
+        /// Returns the number of U intervals for  continuity
+        /// <S>. May be one if UContinuity(me) >= <S>
+        fn GeomAdaptor_Surface_nb_u_intervals(self_: &GeomAdaptor_Surface, S: i32) -> i32;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:128 - `GeomAdaptor_Surface::NbVIntervals()`
+        ///
+        /// Returns the number of V intervals for  continuity
+        /// <S>. May be one if VContinuity(me) >= <S>
+        fn GeomAdaptor_Surface_nb_v_intervals(self_: &GeomAdaptor_Surface, S: i32) -> i32;
         /// **Source:** `GeomAdaptor_Surface.hxx`:145 - `GeomAdaptor_Surface::UTrim()`
         ///
         /// Returns    a  surface trimmed in the U direction
@@ -41026,6 +42453,13 @@ mod ffi {
             Nu: i32,
             Nv: i32,
         ) -> UniquePtr<gp_Vec>;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:252 - `GeomAdaptor_Surface::GetType()`
+        ///
+        /// Returns the type of the surface : Plane, Cylinder,
+        /// Cone,      Sphere,        Torus,    BezierSurface,
+        /// BSplineSurface,               SurfaceOfRevolution,
+        /// SurfaceOfExtrusion, OtherSurface
+        fn GeomAdaptor_Surface_get_type(self_: &GeomAdaptor_Surface) -> i32;
         /// **Source:** `GeomAdaptor_Surface.hxx`:254 - `GeomAdaptor_Surface::Plane()`
         fn GeomAdaptor_Surface_plane(self_: &GeomAdaptor_Surface) -> UniquePtr<gp_Pln>;
         /// **Source:** `GeomAdaptor_Surface.hxx`:256 - `GeomAdaptor_Surface::Cylinder()`
@@ -41370,6 +42804,13 @@ mod ffi {
         fn Adaptor3d_CurveOnSurface_shallow_copy(
             self_: &Adaptor3d_CurveOnSurface,
         ) -> UniquePtr<HandleAdaptor3dCurve>;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:71 - `Adaptor3d_CurveOnSurface::Continuity()`
+        fn Adaptor3d_CurveOnSurface_continuity(self_: &Adaptor3d_CurveOnSurface) -> i32;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:75 - `Adaptor3d_CurveOnSurface::NbIntervals()`
+        ///
+        /// Returns  the number  of  intervals for  continuity
+        /// <S>. May be one if Continuity(me) >= <S>
+        fn Adaptor3d_CurveOnSurface_nb_intervals(self_: &Adaptor3d_CurveOnSurface, S: i32) -> i32;
         /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:89 - `Adaptor3d_CurveOnSurface::Trim()`
         ///
         /// Returns    a  curve equivalent   of  <me>  between
@@ -41401,6 +42842,12 @@ mod ffi {
             U: f64,
             N: i32,
         ) -> UniquePtr<gp_Vec>;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:145 - `Adaptor3d_CurveOnSurface::GetType()`
+        ///
+        /// Returns  the  type of the   curve  in the  current
+        /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+        /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+        fn Adaptor3d_CurveOnSurface_get_type(self_: &Adaptor3d_CurveOnSurface) -> i32;
         /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:147 - `Adaptor3d_CurveOnSurface::Line()`
         fn Adaptor3d_CurveOnSurface_line(self_: &Adaptor3d_CurveOnSurface) -> UniquePtr<gp_Lin>;
         /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:149 - `Adaptor3d_CurveOnSurface::Circle()`
@@ -42074,6 +43521,8 @@ mod ffi {
         fn perf_selection_valid(self: Pin<&mut BRepFeat_Form>);
         /// **Source:** `BRepFeat_Form.hxx`:133 - `BRepFeat_Form::BarycCurve()`
         fn BRepFeat_Form_baryc_curve(self_: Pin<&mut BRepFeat_Form>) -> UniquePtr<HandleGeomCurve>;
+        /// **Source:** `BRepFeat_Form.hxx`:135 - `BRepFeat_Form::CurrentStatusError()`
+        fn BRepFeat_Form_current_status_error(self_: &BRepFeat_Form) -> i32;
         /// Upcast BRepFeat_Form to BRepBuilderAPI_Command
         fn BRepFeat_Form_as_BRepBuilderAPI_Command(
             self_: &BRepFeat_Form,
@@ -42432,6 +43881,10 @@ mod ffi {
         /// **Source:** `BOPAlgo_BOP.hxx`:81 - `BOPAlgo_BOP::Perform()`
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut BOPAlgo_BOP>, theRange: &Message_ProgressRange);
+        /// **Source:** `BOPAlgo_BOP.hxx`:77 - `BOPAlgo_BOP::SetOperation()`
+        fn BOPAlgo_BOP_set_operation(self_: Pin<&mut BOPAlgo_BOP>, theOperation: i32);
+        /// **Source:** `BOPAlgo_BOP.hxx`:79 - `BOPAlgo_BOP::Operation()`
+        fn BOPAlgo_BOP_operation(self_: &BOPAlgo_BOP) -> i32;
         /// Upcast BOPAlgo_BOP to BOPAlgo_Builder
         fn BOPAlgo_BOP_as_BOPAlgo_Builder(self_: &BOPAlgo_BOP) -> &BOPAlgo_Builder;
         /// Upcast BOPAlgo_BOP to BOPAlgo_Builder (mutable)
@@ -42847,6 +44300,14 @@ mod ffi {
         /// from different arguments.
         #[cxx_name = "ShapesSD"]
         fn shapes_sd(self: &BOPAlgo_Builder) -> &TopTools_DataMapOfShapeShape;
+        /// **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+        ///
+        /// Sets the glue option for the algorithm
+        fn BOPAlgo_Builder_set_glue(self_: Pin<&mut BOPAlgo_Builder>, theGlue: i32);
+        /// **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+        ///
+        /// Returns the glue option of the algorithm
+        fn BOPAlgo_Builder_glue(self_: &BOPAlgo_Builder) -> i32;
         /// Upcast BOPAlgo_Builder to BOPAlgo_BuilderShape
         fn BOPAlgo_Builder_as_BOPAlgo_BuilderShape(
             self_: &BOPAlgo_Builder,
@@ -43410,6 +44871,54 @@ mod ffi {
         /// **Source:** `Message_Report.hxx`:158 - `Message_Report::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Message_Report) -> &HandleStandardType;
+        /// **Source:** `Message_Report.hxx`:64 - `Message_Report::AddAlert()`
+        ///
+        /// Add alert with specified gravity.
+        /// This method is thread-safe, i.e. alerts can be added from parallel threads safely.
+        fn Message_Report_add_alert(
+            self_: Pin<&mut Message_Report>,
+            theGravity: i32,
+            theAlert: &HandleMessageAlert,
+        );
+        /// **Source:** `Message_Report.hxx`:73 - `Message_Report::HasAlert()`
+        ///
+        /// Returns true if specific type of alert is recorded with specified gravity
+        fn Message_Report_has_alert(
+            self_: Pin<&mut Message_Report>,
+            theType: &HandleStandardType,
+            theGravity: i32,
+        ) -> bool;
+        /// **Source:** `Message_Report.hxx`:105 - `Message_Report::Clear()`
+        ///
+        /// Clears collected alerts with specified gravity
+        fn Message_Report_clear(self_: Pin<&mut Message_Report>, theGravity: i32);
+        /// **Source:** `Message_Report.hxx`:118 - `Message_Report::SetActiveMetric()`
+        ///
+        /// Sets metrics to compute when alerts are performed
+        /// @param theMetrics container of metrics
+        fn Message_Report_set_active_metric(
+            self_: Pin<&mut Message_Report>,
+            theMetricType: i32,
+            theActivate: bool,
+        );
+        /// **Source:** `Message_Report.hxx`:145 - `Message_Report::SendMessages()`
+        ///
+        /// Dumps collected alerts with specified gravity to messenger.
+        /// Default implementation creates Message_Msg object with a message
+        /// key returned by alert, and sends it in the messenger.
+        fn Message_Report_send_messages(
+            self_: Pin<&mut Message_Report>,
+            theMessenger: &HandleMessageMessenger,
+            theGravity: i32,
+        );
+        /// **Source:** `Message_Report.hxx`:152 - `Message_Report::Merge()`
+        ///
+        /// Merges alerts with specified gravity from theOther report into this
+        fn Message_Report_merge(
+            self_: Pin<&mut Message_Report>,
+            theOther: &HandleMessageReport,
+            theGravity: i32,
+        );
         /// **Source:** `Message_Report.hxx`:158 - `Message_Report::get_type_descriptor()`
         fn Message_Report_get_type_descriptor() -> &'static HandleStandardType;
         /// Wrap Message_Report in a Handle
@@ -43441,6 +44950,19 @@ mod ffi {
         fn Message_Level_ctor_asciistring(
             theName: &TCollection_AsciiString,
         ) -> UniquePtr<Message_Level>;
+        /// **Source:** `Message_Level.hxx`:63 - `Message_Level::AddAlert()`
+        ///
+        /// Adds new alert on the level. Stops the last alert metric, appends the alert and starts the
+        /// alert metrics collecting. Sets root alert beforehand this method using, if the root is NULL,
+        /// it does nothing.
+        /// @param theGravity an alert gravity
+        /// @param theAlert an alert
+        /// @return true if alert is added
+        fn Message_Level_add_alert(
+            self_: Pin<&mut Message_Level>,
+            theGravity: i32,
+            theAlert: &HandleMessageAlert,
+        ) -> bool;
         /// ======================== Message_Alert ========================
         /// **Source:** `Message_Alert.hxx`:34 - `Message_Alert`
         ///
@@ -43588,6 +45110,81 @@ mod ffi {
         /// Returns true if the shape has been removed from the result.
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut BRepOffsetAPI_MakeOffsetShape>, S: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:106 - `BRepOffsetAPI_MakeOffsetShape::PerformByJoin()`
+        ///
+        /// Constructs a shape parallel to the shape S, where
+        /// - S may be a face, a shell, a solid or a compound of these shape kinds;
+        /// - Offset is the offset value. The offset shape is constructed:
+        /// - outside S, if Offset is positive,
+        /// - inside S, if Offset is negative;
+        /// - Tol defines the coincidence tolerance criterion for generated shapes;
+        /// - Mode defines the construction type of parallels
+        /// applied to the free edges of shape S; currently, only one
+        /// construction type is implemented, namely the one where the free
+        /// edges do not generate parallels; this corresponds to the default
+        /// value BRepOffset_Skin;
+        /// - Intersection specifies how the algorithm must work in
+        /// order to limit the parallels to two adjacent shapes:
+        /// - if Intersection is false (default value), the intersection
+        /// is calculated with the parallels to the two adjacent shapes,
+        /// - if Intersection is true, the intersection is calculated by
+        /// taking all generated parallels into account; this computation method is
+        /// more general as it avoids some self-intersections generated in the
+        /// offset shape from features of small dimensions on shape S, however this
+        /// method has not been completely implemented and therefore is not
+        /// recommended for use;
+        /// - SelfInter tells the algorithm whether a computation
+        /// to eliminate self-intersections must be applied to the resulting
+        /// shape; however, as this functionality is not yet
+        /// implemented, it is recommended to use the default value (false);
+        /// - Join defines how to fill the holes that may appear between
+        /// parallels to the two adjacent faces. It may take values
+        /// GeomAbs_Arc or GeomAbs_Intersection:
+        /// - if Join is equal to GeomAbs_Arc, then pipes are generated
+        /// between two free edges of two adjacent parallels,
+        /// and spheres are generated on "images" of vertices;
+        /// it is the default value,
+        /// - if Join is equal to GeomAbs_Intersection, then the parallels to the
+        /// two adjacent faces are enlarged and intersected,
+        /// so that there are no free edges on parallels to faces.
+        /// RemoveIntEdges flag defines whether to remove the INTERNAL edges
+        /// from the result or not.
+        /// Warnings
+        /// 1. All the faces of the shape S should be based on the surfaces
+        /// with continuity at least C1.
+        /// 2. The offset value should be sufficiently small to avoid
+        /// self-intersections in resulting shape. Otherwise these
+        /// self-intersections may appear inside an offset face if its
+        /// initial surface is not plane or sphere or cylinder, also some
+        /// non-adjacent offset faces may intersect each other. Also, some
+        /// offset surfaces may "turn inside out".
+        /// 3. The algorithm may fail if the shape S contains vertices where
+        /// more than 3 edges converge.
+        /// 4. Since 3d-offset algorithm involves intersection of surfaces,
+        /// it is under limitations of surface intersection algorithm.
+        /// 5. A result cannot be generated if the underlying geometry of S is
+        /// BSpline with continuity C0.
+        /// Exceptions
+        /// Geom_UndefinedDerivative if the underlying
+        /// geometry of S is BSpline with continuity C0.
+        fn BRepOffsetAPI_MakeOffsetShape_perform_by_join(
+            self_: Pin<&mut BRepOffsetAPI_MakeOffsetShape>,
+            S: &TopoDS_Shape,
+            Offset: f64,
+            Tol: f64,
+            Mode: i32,
+            Intersection: bool,
+            SelfInter: bool,
+            Join: i32,
+            RemoveIntEdges: bool,
+            theRange: &Message_ProgressRange,
+        );
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:136 - `BRepOffsetAPI_MakeOffsetShape::GetJoinType()`
+        ///
+        /// Returns offset join type.
+        fn BRepOffsetAPI_MakeOffsetShape_get_join_type(
+            self_: &BRepOffsetAPI_MakeOffsetShape,
+        ) -> i32;
         /// Upcast BRepOffsetAPI_MakeOffsetShape to BRepBuilderAPI_Command
         fn BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command(
             self_: &BRepOffsetAPI_MakeOffsetShape,
@@ -43620,10 +45217,17 @@ mod ffi {
         /// **Source:** `BRepOffset_MakeOffset.hxx`:48 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
         fn BRepOffset_MakeOffset_ctor() -> UniquePtr<BRepOffset_MakeOffset>;
         /// **Source:** `BRepOffset_MakeOffset.hxx`:50 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
-        fn BRepOffset_MakeOffset_ctor_shape_real2(
+        fn BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool2_progressrange(
             S: &TopoDS_Shape,
             Offset: f64,
             Tol: f64,
+            Mode: i32,
+            Intersection: bool,
+            SelfInter: bool,
+            Join: i32,
+            Thickening: bool,
+            RemoveIntEdges: bool,
+            theRange: &Message_ProgressRange,
         ) -> UniquePtr<BRepOffset_MakeOffset>;
         /// **Source:** `BRepOffset_MakeOffset.hxx`:72 - `BRepOffset_MakeOffset::Clear()`
         #[cxx_name = "Clear"]
@@ -43726,6 +45330,27 @@ mod ffi {
         /// Returns true if the shape S has been deleted.
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut BRepOffset_MakeOffset>, S: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:62 - `BRepOffset_MakeOffset::Initialize()`
+        fn BRepOffset_MakeOffset_initialize(
+            self_: Pin<&mut BRepOffset_MakeOffset>,
+            S: &TopoDS_Shape,
+            Offset: f64,
+            Tol: f64,
+            Mode: i32,
+            Intersection: bool,
+            SelfInter: bool,
+            Join: i32,
+            Thickening: bool,
+            RemoveIntEdges: bool,
+        );
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:99 - `BRepOffset_MakeOffset::Error()`
+        ///
+        /// returns information about offset state.
+        fn BRepOffset_MakeOffset_error(self_: &BRepOffset_MakeOffset) -> i32;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:106 - `BRepOffset_MakeOffset::GetJoinType()`
+        ///
+        /// Returns myJoin.
+        fn BRepOffset_MakeOffset_get_join_type(self_: &BRepOffset_MakeOffset) -> i32;
         /// ======================== BRepOffset_MakeSimpleOffset ========================
         /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:61 - `BRepOffset_MakeSimpleOffset`
         ///
@@ -43819,6 +45444,10 @@ mod ffi {
         fn BRepOffset_MakeSimpleOffset_get_error_message(
             self_: &BRepOffset_MakeSimpleOffset,
         ) -> UniquePtr<TCollection_AsciiString>;
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:82 - `BRepOffset_MakeSimpleOffset::GetError()`
+        ///
+        /// Gets error code.
+        fn BRepOffset_MakeSimpleOffset_get_error(self_: &BRepOffset_MakeSimpleOffset) -> i32;
         /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:113 - `BRepOffset_MakeSimpleOffset::Generated()`
         ///
         /// Returns result shape for the given one (if exists).
@@ -43913,6 +45542,57 @@ mod ffi {
         /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ShapeBuild_ReShape) -> &HandleStandardType;
+        /// **Source:** `ShapeBuild_ReShape.hxx`:70 - `ShapeBuild_ReShape::Apply()`
+        ///
+        /// Applies the substitutions requests to a shape
+        ///
+        /// <until> gives the level of type until which requests are taken
+        /// into account. For subshapes of the type <until> no rebuild
+        /// and further exploring are done.
+        /// ACTUALLY, NOT IMPLEMENTED BELOW  TopAbs_FACE
+        ///
+        /// <buildmode> says how to do on a SOLID,SHELL ... if one of its
+        /// sub-shapes has been changed:
+        /// 0: at least one Replace or Remove -> COMPOUND, else as such
+        /// 1: at least one Remove (Replace are ignored) -> COMPOUND
+        /// 2: Replace and Remove are both ignored
+        /// If Replace/Remove are ignored or absent, the result as same
+        /// type as the starting shape
+        fn ShapeBuild_ReShape_apply_shape_shapeenum_int(
+            self_: Pin<&mut ShapeBuild_ReShape>,
+            shape: &TopoDS_Shape,
+            until: i32,
+            buildmode: i32,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `ShapeBuild_ReShape.hxx`:86 - `ShapeBuild_ReShape::Apply()`
+        ///
+        /// Applies the substitutions requests to a shape.
+        ///
+        /// <until> gives the level of type until which requests are taken
+        /// into account. For subshapes of the type <until> no rebuild
+        /// and further exploring are done.
+        ///
+        /// NOTE: each subshape can be replaced by shape of the same type
+        /// or by shape containing only shapes of that type (for
+        /// example, TopoDS_Edge can be replaced by TopoDS_Edge,
+        /// TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges).
+        /// If incompatible shape type is encountered, it is ignored
+        /// and flag FAIL1 is set in Status.
+        fn ShapeBuild_ReShape_apply_shape_shapeenum(
+            self_: Pin<&mut ShapeBuild_ReShape>,
+            shape: &TopoDS_Shape,
+            until: i32,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `ShapeBuild_ReShape.hxx`:109 - `ShapeBuild_ReShape::Status()`
+        ///
+        /// Queries the status of last call to Apply(shape,enum)
+        /// OK   : no (sub)shapes replaced or removed
+        /// DONE1: source (starting) shape replaced
+        /// DONE2: source (starting) shape removed
+        /// DONE3: some subshapes replaced
+        /// DONE4: some subshapes removed
+        /// FAIL1: some replacements not done because of bad type of subshape
+        fn ShapeBuild_ReShape_status(self_: &ShapeBuild_ReShape, status: i32) -> bool;
         /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::get_type_descriptor()`
         fn ShapeBuild_ReShape_get_type_descriptor() -> &'static HandleStandardType;
         /// Upcast ShapeBuild_ReShape to BRepTools_ReShape
@@ -44049,6 +45729,23 @@ mod ffi {
             self_: &BRepTools_ReShape,
             shape: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `BRepTools_ReShape.hxx`:123 - `BRepTools_ReShape::Apply()`
+        ///
+        /// Applies the substitutions requests to a shape.
+        ///
+        /// theUntil gives the level of type until which requests are taken into account.
+        /// For subshapes of the type <until> no rebuild and further exploring are done.
+        ///
+        /// NOTE: each subshape can be replaced by shape of the same type
+        /// or by shape containing only shapes of that type
+        /// (for example, TopoDS_Edge can be replaced by TopoDS_Edge,
+        /// TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges).
+        /// If incompatible shape type is encountered, it is ignored and flag FAIL1 is set in Status.
+        fn BRepTools_ReShape_apply(
+            self_: Pin<&mut BRepTools_ReShape>,
+            theShape: &TopoDS_Shape,
+            theUntil: i32,
+        ) -> UniquePtr<TopoDS_Shape>;
         /// **Source:** `BRepTools_ReShape.hxx`:134 - `BRepTools_ReShape::CopyVertex()`
         fn BRepTools_ReShape_copy_vertex_vertex_real(
             self_: Pin<&mut BRepTools_ReShape>,
@@ -44160,6 +45857,68 @@ mod ffi {
         /// Clears the content of the algorithm
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut BRepOffset_Analyse>);
+        /// **Source:** `BRepOffset_Analyse.hxx`:70 - `BRepOffset_Analyse::Edges()`
+        ///
+        /// Stores in <L> all the edges of Type <T>
+        /// on the vertex <V>.
+        fn BRepOffset_Analyse_edges_vertex_typeofconcavity_listofshape(
+            self_: &BRepOffset_Analyse,
+            theV: &TopoDS_Vertex,
+            theType: i32,
+            theL: Pin<&mut TopTools_ListOfShape>,
+        );
+        /// **Source:** `BRepOffset_Analyse.hxx`:76 - `BRepOffset_Analyse::Edges()`
+        ///
+        /// Stores in <L> all the edges of Type <T>
+        /// on the face <F>.
+        fn BRepOffset_Analyse_edges_face_typeofconcavity_listofshape(
+            self_: &BRepOffset_Analyse,
+            theF: &TopoDS_Face,
+            theType: i32,
+            theL: Pin<&mut TopTools_ListOfShape>,
+        );
+        /// **Source:** `BRepOffset_Analyse.hxx`:100 - `BRepOffset_Analyse::Explode()`
+        ///
+        /// Explode in compounds of faces where
+        /// all the connex edges are of type <Side>
+        fn BRepOffset_Analyse_explode_listofshape_typeofconcavity(
+            self_: &BRepOffset_Analyse,
+            theL: Pin<&mut TopTools_ListOfShape>,
+            theType: i32,
+        );
+        /// **Source:** `BRepOffset_Analyse.hxx`:105 - `BRepOffset_Analyse::Explode()`
+        ///
+        /// Explode in compounds of faces where
+        /// all the connex edges are of type <Side1> or <Side2>
+        fn BRepOffset_Analyse_explode_listofshape_typeofconcavity2(
+            self_: &BRepOffset_Analyse,
+            theL: Pin<&mut TopTools_ListOfShape>,
+            theType1: i32,
+            theType2: i32,
+        );
+        /// **Source:** `BRepOffset_Analyse.hxx`:111 - `BRepOffset_Analyse::AddFaces()`
+        ///
+        /// Add in <CO> the faces of the shell containing <Face>
+        /// where all the connex edges are of type <Side>.
+        fn BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity(
+            self_: &BRepOffset_Analyse,
+            theFace: &TopoDS_Face,
+            theCo: Pin<&mut TopoDS_Compound>,
+            theMap: Pin<&mut TopTools_MapOfShape>,
+            theType: i32,
+        );
+        /// **Source:** `BRepOffset_Analyse.hxx`:118 - `BRepOffset_Analyse::AddFaces()`
+        ///
+        /// Add in <CO> the faces of the shell containing <Face>
+        /// where all the connex edges are of type <Side1> or <Side2>.
+        fn BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity2(
+            self_: &BRepOffset_Analyse,
+            theFace: &TopoDS_Face,
+            theCo: Pin<&mut TopoDS_Compound>,
+            theMap: Pin<&mut TopTools_MapOfShape>,
+            theType1: i32,
+            theType2: i32,
+        );
         /// **Source:** `BRepOffset_Analyse.hxx`:135 - `BRepOffset_Analyse::Generated()`
         ///
         /// Returns the new face constructed for the edge connecting
@@ -44267,6 +46026,12 @@ mod ffi {
         /// Keeps only the link between roots and lastimage.
         #[cxx_name = "Compact"]
         fn compact(self: Pin<&mut BRepAlgo_Image>);
+        /// **Source:** `BRepAlgo_Image.hxx`:93 - `BRepAlgo_Image::Filter()`
+        ///
+        /// Deletes in the images the shape of type <ShapeType>
+        /// which are not in <S>.
+        /// Warning:  Compact() must be call before.
+        fn BRepAlgo_Image_filter(self_: Pin<&mut BRepAlgo_Image>, S: &TopoDS_Shape, ShapeType: i32);
         /// ======================== BRepOffset_MakeLoops ========================
         /// **Source:** `BRepOffset_MakeLoops.hxx`:32 - `BRepOffset_MakeLoops`
         type BRepOffset_MakeLoops;
@@ -44284,10 +46049,11 @@ mod ffi {
         /// **Source:** `BRepOffset_Offset.hxx`:48 - `BRepOffset_Offset::BRepOffset_Offset()`
         fn BRepOffset_Offset_ctor() -> UniquePtr<BRepOffset_Offset>;
         /// **Source:** `BRepOffset_Offset.hxx`:50 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_face_real_bool(
+        fn BRepOffset_Offset_ctor_face_real_bool_jointype(
             Face: &TopoDS_Face,
             Offset: f64,
             OffsetOutside: bool,
+            JoinType: i32,
         ) -> UniquePtr<BRepOffset_Offset>;
         /// **Source:** `BRepOffset_Offset.hxx`:67 - `BRepOffset_Offset::BRepOffset_Offset()`
         ///
@@ -44303,23 +46069,25 @@ mod ffi {
         /// E' = the image of E in the offsetting  of
         /// another  face  sharing E  with a
         /// continuity at least G1
-        fn BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool(
+        fn BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool_jointype(
             Face: &TopoDS_Face,
             Offset: f64,
             Created: &TopTools_DataMapOfShapeShape,
             OffsetOutside: bool,
+            JoinType: i32,
         ) -> UniquePtr<BRepOffset_Offset>;
         /// **Source:** `BRepOffset_Offset.hxx`:73 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_edge3_real_bool_real(
+        fn BRepOffset_Offset_ctor_edge3_real_bool_real_shape(
             Path: &TopoDS_Edge,
             Edge1: &TopoDS_Edge,
             Edge2: &TopoDS_Edge,
             Offset: f64,
             Polynomial: bool,
             Tol: f64,
+            Conti: i32,
         ) -> UniquePtr<BRepOffset_Offset>;
         /// **Source:** `BRepOffset_Offset.hxx`:81 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_edge3_real_edge2_bool_real(
+        fn BRepOffset_Offset_ctor_edge3_real_edge2_bool_real_shape(
             Path: &TopoDS_Edge,
             Edge1: &TopoDS_Edge,
             Edge2: &TopoDS_Edge,
@@ -44328,17 +46096,19 @@ mod ffi {
             LastEdge: &TopoDS_Edge,
             Polynomial: bool,
             Tol: f64,
+            Conti: i32,
         ) -> UniquePtr<BRepOffset_Offset>;
         /// **Source:** `BRepOffset_Offset.hxx`:93 - `BRepOffset_Offset::BRepOffset_Offset()`
         ///
         /// Tol and Conti are only used if Polynomial is True
         /// (Used to perform the approximation)
-        fn BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real(
+        fn BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real_shape(
             Vertex: &TopoDS_Vertex,
             LEdge: &TopTools_ListOfShape,
             Offset: f64,
             Polynomial: bool,
             Tol: f64,
+            Conti: i32,
         ) -> UniquePtr<BRepOffset_Offset>;
         /// **Source:** `BRepOffset_Offset.hxx`:139 - `BRepOffset_Offset::Init()`
         ///
@@ -44351,16 +46121,78 @@ mod ffi {
         /// **Source:** `BRepOffset_Offset.hxx`:143 - `BRepOffset_Offset::Face()`
         #[cxx_name = "Face"]
         fn face(self: &BRepOffset_Offset) -> &TopoDS_Face;
+        /// **Source:** `BRepOffset_Offset.hxx`:100 - `BRepOffset_Offset::Init()`
+        fn BRepOffset_Offset_init_face_real_bool_jointype(
+            self_: Pin<&mut BRepOffset_Offset>,
+            Face: &TopoDS_Face,
+            Offset: f64,
+            OffsetOutside: bool,
+            JoinType: i32,
+        );
+        /// **Source:** `BRepOffset_Offset.hxx`:105 - `BRepOffset_Offset::Init()`
+        fn BRepOffset_Offset_init_face_real_datamapofshapeshape_bool_jointype(
+            self_: Pin<&mut BRepOffset_Offset>,
+            Face: &TopoDS_Face,
+            Offset: f64,
+            Created: &TopTools_DataMapOfShapeShape,
+            OffsetOutside: bool,
+            JoinType: i32,
+        );
+        /// **Source:** `BRepOffset_Offset.hxx`:111 - `BRepOffset_Offset::Init()`
+        fn BRepOffset_Offset_init_edge3_real_bool_real_shape(
+            self_: Pin<&mut BRepOffset_Offset>,
+            Path: &TopoDS_Edge,
+            Edge1: &TopoDS_Edge,
+            Edge2: &TopoDS_Edge,
+            Offset: f64,
+            Polynomial: bool,
+            Tol: f64,
+            Conti: i32,
+        );
+        /// **Source:** `BRepOffset_Offset.hxx`:119 - `BRepOffset_Offset::Init()`
+        fn BRepOffset_Offset_init_edge3_real_edge2_bool_real_shape(
+            self_: Pin<&mut BRepOffset_Offset>,
+            Path: &TopoDS_Edge,
+            Edge1: &TopoDS_Edge,
+            Edge2: &TopoDS_Edge,
+            Offset: f64,
+            FirstEdge: &TopoDS_Edge,
+            LastEdge: &TopoDS_Edge,
+            Polynomial: bool,
+            Tol: f64,
+            Conti: i32,
+        );
+        /// **Source:** `BRepOffset_Offset.hxx`:131 - `BRepOffset_Offset::Init()`
+        ///
+        /// Tol and Conti are only used if Polynomial is True
+        /// (Used to perform the approximation)
+        fn BRepOffset_Offset_init_vertex_listofshape_real_bool_real_shape(
+            self_: Pin<&mut BRepOffset_Offset>,
+            Vertex: &TopoDS_Vertex,
+            LEdge: &TopTools_ListOfShape,
+            Offset: f64,
+            Polynomial: bool,
+            Tol: f64,
+            Conti: i32,
+        );
         /// **Source:** `BRepOffset_Offset.hxx`:145 - `BRepOffset_Offset::Generated()`
         fn BRepOffset_Offset_generated(
             self_: &BRepOffset_Offset,
             Shape: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `BRepOffset_Offset.hxx`:147 - `BRepOffset_Offset::Status()`
+        fn BRepOffset_Offset_status(self_: &BRepOffset_Offset) -> i32;
         /// ======================== BRepOffset_Interval ========================
         /// **Source:** `BRepOffset_Interval.hxx`:27 - `BRepOffset_Interval`
         type BRepOffset_Interval;
         /// **Source:** `BRepOffset_Interval.hxx`:32 - `BRepOffset_Interval::BRepOffset_Interval()`
         fn BRepOffset_Interval_ctor() -> UniquePtr<BRepOffset_Interval>;
+        /// **Source:** `BRepOffset_Interval.hxx`:34 - `BRepOffset_Interval::BRepOffset_Interval()`
+        fn BRepOffset_Interval_ctor_real2_typeofconcavity(
+            U1: f64,
+            U2: f64,
+            Type: i32,
+        ) -> UniquePtr<BRepOffset_Interval>;
         /// **Source:** `BRepOffset_Interval.hxx`:38 - `BRepOffset_Interval::First()`
         #[cxx_name = "First"]
         fn first_real(self: Pin<&mut BRepOffset_Interval>, U: f64);
@@ -44373,6 +46205,10 @@ mod ffi {
         /// **Source:** `BRepOffset_Interval.hxx`:46 - `BRepOffset_Interval::Last()`
         #[cxx_name = "Last"]
         fn last(self: &BRepOffset_Interval) -> f64;
+        /// **Source:** `BRepOffset_Interval.hxx`:42 - `BRepOffset_Interval::Type()`
+        fn BRepOffset_Interval_type_typeofconcavity(self_: Pin<&mut BRepOffset_Interval>, T: i32);
+        /// **Source:** `BRepOffset_Interval.hxx`:48 - `BRepOffset_Interval::Type()`
+        fn BRepOffset_Interval_type_(self_: &BRepOffset_Interval) -> i32;
         /// ======================== BRepFill_PipeShell ========================
         /// **Source:** `BRepFill_PipeShell.hxx`:52 - `BRepFill_PipeShell`
         ///
@@ -44572,6 +46408,48 @@ mod ffi {
         /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BRepFill_PipeShell) -> &HandleStandardType;
+        /// **Source:** `BRepFill_PipeShell.hxx`:102 - `BRepFill_PipeShell::Set()`
+        ///
+        /// Set  an  auxiliary  spine  to  define  the Normal
+        /// For  each  Point  of  the  Spine  P,  an  Point  Q  is  evalued
+        /// on  <AuxiliarySpine>
+        /// If <CurvilinearEquivalence>
+        /// Q split <AuxiliarySpine> with  the  same  length ratio
+        /// than P split  <Spline>.
+        /// Else  the  plan  define  by  P  and  the  tangent  to  the  <Spine>
+        /// intersect <AuxiliarySpine> in Q.
+        /// If <KeepContact> equals BRepFill_NoContact: The Normal is defined
+        /// by the vector PQ.
+        /// If <KeepContact> equals BRepFill_Contact: The Normal is defined to
+        /// achieve that the sweeped section is in contact to the
+        /// auxiliarySpine. The width of section is constant all along the path.
+        /// In other words, the auxiliary spine lies on the swept surface,
+        /// but not necessarily is a boundary of this surface. However,
+        /// the auxiliary spine has to be close enough to the main spine
+        /// to provide intersection with any section all along the path.
+        /// If <KeepContact> equals BRepFill_ContactOnBorder: The auxiliary spine
+        /// becomes a boundary of the swept surface and the width of section varies
+        /// along the path.
+        fn BRepFill_PipeShell_set(
+            self_: Pin<&mut BRepFill_PipeShell>,
+            AuxiliarySpine: &TopoDS_Wire,
+            CurvilinearEquivalence: bool,
+            KeepContact: i32,
+        );
+        /// **Source:** `BRepFill_PipeShell.hxx`:159 - `BRepFill_PipeShell::GetStatus()`
+        ///
+        /// Get a status, when Simulate or Build failed.
+        fn BRepFill_PipeShell_get_status(self_: &BRepFill_PipeShell) -> i32;
+        /// **Source:** `BRepFill_PipeShell.hxx`:167 - `BRepFill_PipeShell::SetTransition()`
+        ///
+        /// Set the  Transition Mode to manage discontinuities
+        /// on the sweep.
+        fn BRepFill_PipeShell_set_transition(
+            self_: Pin<&mut BRepFill_PipeShell>,
+            Mode: i32,
+            Angmin: f64,
+            Angmax: f64,
+        );
         /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::get_type_descriptor()`
         fn BRepFill_PipeShell_get_type_descriptor() -> &'static HandleStandardType;
         /// Wrap BRepFill_PipeShell in a Handle
@@ -44665,9 +46543,12 @@ mod ffi {
         /// **Source:** `BRepFill_Pipe.hxx`:51 - `BRepFill_Pipe::BRepFill_Pipe()`
         fn BRepFill_Pipe_ctor() -> UniquePtr<BRepFill_Pipe>;
         /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
-        fn BRepFill_Pipe_ctor_wire_shape(
+        fn BRepFill_Pipe_ctor_wire_shape_trihedron_bool2(
             Spine: &TopoDS_Wire,
             Profile: &TopoDS_Shape,
+            aMode: i32,
+            ForceApproxC1: bool,
+            GeneratePartCase: bool,
         ) -> UniquePtr<BRepFill_Pipe>;
         /// **Source:** `BRepFill_Pipe.hxx`:59 - `BRepFill_Pipe::Perform()`
         #[cxx_name = "Perform"]
@@ -44762,7 +46643,11 @@ mod ffi {
         /// **Source:** `BRepFill_OffsetWire.hxx`:53 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
         fn BRepFill_OffsetWire_ctor() -> UniquePtr<BRepFill_OffsetWire>;
         /// **Source:** `BRepFill_OffsetWire.hxx`:55 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
-        fn BRepFill_OffsetWire_ctor_face(Spine: &TopoDS_Face) -> UniquePtr<BRepFill_OffsetWire>;
+        fn BRepFill_OffsetWire_ctor_face_jointype_bool(
+            Spine: &TopoDS_Face,
+            Join: i32,
+            IsOpenResult: bool,
+        ) -> UniquePtr<BRepFill_OffsetWire>;
         /// **Source:** `BRepFill_OffsetWire.hxx`:67 - `BRepFill_OffsetWire::Perform()`
         ///
         /// Performs  an OffsetWire at  an altitude <Alt> from
@@ -44791,6 +46676,29 @@ mod ffi {
             self: Pin<&mut BRepFill_OffsetWire>,
             SpineShape: &TopoDS_Shape,
         ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFill_OffsetWire.hxx`:60 - `BRepFill_OffsetWire::Init()`
+        ///
+        /// Initialize the evaluation of Offsetting.
+        fn BRepFill_OffsetWire_init(
+            self_: Pin<&mut BRepFill_OffsetWire>,
+            Spine: &TopoDS_Face,
+            Join: i32,
+            IsOpenResult: bool,
+        );
+        /// **Source:** `BRepFill_OffsetWire.hxx`:70 - `BRepFill_OffsetWire::PerformWithBiLo()`
+        ///
+        /// Performs an  OffsetWire
+        fn BRepFill_OffsetWire_perform_with_bi_lo(
+            self_: Pin<&mut BRepFill_OffsetWire>,
+            WSP: &TopoDS_Face,
+            Offset: f64,
+            Locus: &BRepMAT2d_BisectingLocus,
+            Link: Pin<&mut BRepMAT2d_LinkTopoBilo>,
+            Join: i32,
+            Alt: f64,
+        );
+        /// **Source:** `BRepFill_OffsetWire.hxx`:89 - `BRepFill_OffsetWire::JoinType()`
+        fn BRepFill_OffsetWire_join_type(self_: &BRepFill_OffsetWire) -> i32;
         /// ======================== BRepMAT2d_BisectingLocus ========================
         /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:73 - `BRepMAT2d_BisectingLocus`
         ///
@@ -45033,6 +46941,12 @@ mod ffi {
         /// <theGeomBisectors>.
         #[cxx_name = "ChangeGeomBis"]
         fn change_geom_bis(self: Pin<&mut MAT2d_Tool2d>, Index: i32) -> Pin<&mut Bisector_Bisec>;
+        /// **Source:** `MAT2d_Tool2d.hxx`:49 - `MAT2d_Tool2d::Sense()`
+        ///
+        /// <aSide> defines the side of the computation of the map.
+        fn MAT2d_Tool2d_sense(self_: Pin<&mut MAT2d_Tool2d>, aside: i32);
+        /// **Source:** `MAT2d_Tool2d.hxx`:51 - `MAT2d_Tool2d::SetJoinType()`
+        fn MAT2d_Tool2d_set_join_type(self_: Pin<&mut MAT2d_Tool2d>, aJoinType: i32);
         /// **Source:** `MAT2d_Tool2d.hxx`:128 - `MAT2d_Tool2d::GeomElt()`
         ///
         /// Returns the Geometry of index <Index> in <theGeomElts>.
@@ -45098,6 +47012,24 @@ mod ffi {
         /// Returns the Curve of <me>.
         #[cxx_name = "ChangeValue"]
         fn change_value(self: Pin<&mut Bisector_Bisec>) -> &HandleGeom2dTrimmedCurve;
+        /// **Source:** `Bisector_Bisec.hxx`:62 - `Bisector_Bisec::Perform()`
+        ///
+        /// Performs  the bisecting line  between the  curves
+        /// <Cu1> and <Cu2>.
+        /// <oncurve> is True if the point <P> is common to <Cu1>
+        /// and <Cu2>.
+        fn Bisector_Bisec_perform(
+            self_: Pin<&mut Bisector_Bisec>,
+            Cu1: &HandleGeom2dCurve,
+            Cu2: &HandleGeom2dCurve,
+            P: &gp_Pnt2d,
+            V1: &gp_Vec2d,
+            V2: &gp_Vec2d,
+            Sense: f64,
+            ajointype: i32,
+            Tolerance: f64,
+            oncurve: bool,
+        );
         /// ======================== ChFi2d_Builder ========================
         /// **Source:** `ChFi2d_Builder.hxx`:39 - `ChFi2d_Builder`
         ///
@@ -45251,13 +47183,19 @@ mod ffi {
         ///
         /// returns the modified face
         fn ChFi2d_Builder_result(self_: &ChFi2d_Builder) -> UniquePtr<TopoDS_Face>;
+        /// **Source:** `ChFi2d_Builder.hxx`:141 - `ChFi2d_Builder::Status()`
+        fn ChFi2d_Builder_status(self_: &ChFi2d_Builder) -> i32;
         /// ======================== ChFi3d_FilBuilder ========================
         /// **Source:** `ChFi3d_FilBuilder.hxx`:44 - `ChFi3d_FilBuilder`
         ///
         /// Tool  of  construction of  fillets 3d on  edges (on a solid).
         type ChFi3d_FilBuilder;
         /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
-        fn ChFi3d_FilBuilder_ctor_shape(S: &TopoDS_Shape) -> UniquePtr<ChFi3d_FilBuilder>;
+        fn ChFi3d_FilBuilder_ctor_shape_filletshape_real(
+            S: &TopoDS_Shape,
+            FShape: i32,
+            Ta: f64,
+        ) -> UniquePtr<ChFi3d_FilBuilder>;
         /// **Source:** `ChFi3d_FilBuilder.hxx`:62 - `ChFi3d_FilBuilder::Add()`
         ///
         /// initialisation of  a contour with the first edge
@@ -45377,6 +47315,14 @@ mod ffi {
         /// **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
         #[cxx_name = "NbSurf"]
         fn nb_surf(self: &ChFi3d_FilBuilder, IC: i32) -> i32;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`
+        ///
+        /// Sets the type of fillet surface.
+        fn ChFi3d_FilBuilder_set_fillet_shape(self_: Pin<&mut ChFi3d_FilBuilder>, FShape: i32);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:57 - `ChFi3d_FilBuilder::GetFilletShape()`
+        ///
+        /// Returns the type of fillet surface.
+        fn ChFi3d_FilBuilder_get_fillet_shape(self_: &ChFi3d_FilBuilder) -> i32;
         /// **Source:** `ChFi3d_FilBuilder.hxx`:122 - `ChFi3d_FilBuilder::GetLaw()`
         ///
         /// Returns the rule of  elementary  evolution of  the
@@ -45674,6 +47620,12 @@ mod ffi {
         /// **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
         #[cxx_name = "PerformTwoCornerbyInter"]
         fn perform_two_cornerby_inter(self: Pin<&mut ChFi3d_Builder>, Index: i32) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
+        fn ChFi3d_Builder_set_continuity(
+            self_: Pin<&mut ChFi3d_Builder>,
+            InternalContinuity: i32,
+            AngularTolerance: f64,
+        );
         /// **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
         ///
         /// returns the First vertex V of
@@ -45710,6 +47662,11 @@ mod ffi {
         /// if (HasResult()) returns partial result
         /// if (!HasResult())
         fn ChFi3d_Builder_bad_shape(self_: &ChFi3d_Builder) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
+        ///
+        /// for the stripe IC ,indication on the cause
+        /// of  failure WalkingFailure,TwistedSurface,Error, Ok
+        fn ChFi3d_Builder_stripe_status(self_: &ChFi3d_Builder, IC: i32) -> i32;
         /// ======================== ChFiDS_ElSpine ========================
         /// **Source:** `ChFiDS_ElSpine.hxx`:47 - `ChFiDS_ElSpine`
         ///
@@ -45824,6 +47781,10 @@ mod ffi {
         ///
         /// Shallow copy of adaptor
         fn ChFiDS_ElSpine_shallow_copy(self_: &ChFiDS_ElSpine) -> UniquePtr<HandleAdaptor3dCurve>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:64 - `ChFiDS_ElSpine::Continuity()`
+        fn ChFiDS_ElSpine_continuity(self_: &ChFiDS_ElSpine) -> i32;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:66 - `ChFiDS_ElSpine::NbIntervals()`
+        fn ChFiDS_ElSpine_nb_intervals(self_: &ChFiDS_ElSpine, S: i32) -> i32;
         /// **Source:** `ChFiDS_ElSpine.hxx`:74 - `ChFiDS_ElSpine::Trim()`
         ///
         /// Returns    a  curve equivalent   of  <me>  between
@@ -45835,6 +47796,8 @@ mod ffi {
             Last: f64,
             Tol: f64,
         ) -> UniquePtr<HandleAdaptor3dCurve>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:81 - `ChFiDS_ElSpine::GetType()`
+        fn ChFiDS_ElSpine_get_type(self_: &ChFiDS_ElSpine) -> i32;
         /// **Source:** `ChFiDS_ElSpine.hxx`:89 - `ChFiDS_ElSpine::Value()`
         fn ChFiDS_ElSpine_value(self_: &ChFiDS_ElSpine, AbsC: f64) -> UniquePtr<gp_Pnt>;
         /// **Source:** `ChFiDS_ElSpine.hxx`:142 - `ChFiDS_ElSpine::Line()`
@@ -46061,6 +48024,8 @@ mod ffi {
         /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ChFiDS_SurfData) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_SurfData.hxx`:57 - `ChFiDS_SurfData::Orientation()`
+        fn ChFiDS_SurfData_orientation(self_: &ChFiDS_SurfData) -> i32;
         /// **Source:** `ChFiDS_SurfData.hxx`:137 - `ChFiDS_SurfData::Get2dPoints()`
         fn ChFiDS_SurfData_get2d_points(
             self_: &ChFiDS_SurfData,
@@ -46174,6 +48139,22 @@ mod ffi {
         /// Returns the output  3d vector
         #[cxx_name = "Vector"]
         fn vector(self: &ChFiDS_CommonPoint) -> &gp_Vec;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:56 - `ChFiDS_CommonPoint::SetArc()`
+        ///
+        /// Sets the values of a point which is on the arc
+        /// A, at parameter Param.
+        fn ChFiDS_CommonPoint_set_arc(
+            self_: Pin<&mut ChFiDS_CommonPoint>,
+            Tol: f64,
+            A: &TopoDS_Edge,
+            Param: f64,
+            TArc: i32,
+        );
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:114 - `ChFiDS_CommonPoint::TransitionOnArc()`
+        ///
+        /// Returns the transition of the point on the arc
+        /// returned by Arc().
+        fn ChFiDS_CommonPoint_transition_on_arc(self_: &ChFiDS_CommonPoint) -> i32;
         /// ======================== ChFiDS_FaceInterference ========================
         /// **Source:** `ChFiDS_FaceInterference.hxx`:31 - `ChFiDS_FaceInterference`
         ///
@@ -46221,6 +48202,21 @@ mod ffi {
         /// **Source:** `ChFiDS_FaceInterference.hxx`:69 - `ChFiDS_FaceInterference::Parameter()`
         #[cxx_name = "Parameter"]
         fn parameter(self: &ChFiDS_FaceInterference, IsFirst: bool) -> f64;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:38 - `ChFiDS_FaceInterference::SetInterference()`
+        fn ChFiDS_FaceInterference_set_interference(
+            self_: Pin<&mut ChFiDS_FaceInterference>,
+            LineIndex: i32,
+            Trans: i32,
+            PCurv1: &HandleGeom2dCurve,
+            PCurv2: &HandleGeom2dCurve,
+        );
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:43 - `ChFiDS_FaceInterference::SetTransition()`
+        fn ChFiDS_FaceInterference_set_transition(
+            self_: Pin<&mut ChFiDS_FaceInterference>,
+            Trans: i32,
+        );
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:55 - `ChFiDS_FaceInterference::Transition()`
+        fn ChFiDS_FaceInterference_transition(self_: &ChFiDS_FaceInterference) -> i32;
         /// ======================== ChFiDS_Stripe ========================
         /// **Source:** `ChFiDS_Stripe.hxx`:34 - `ChFiDS_Stripe`
         ///
@@ -46351,6 +48347,44 @@ mod ffi {
         /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ChFiDS_Stripe) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_Stripe.hxx`:47 - `ChFiDS_Stripe::OrientationOnFace1()`
+        fn ChFiDS_Stripe_orientation_on_face1(self_: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:49 - `ChFiDS_Stripe::OrientationOnFace2()`
+        fn ChFiDS_Stripe_orientation_on_face2(self_: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:57 - `ChFiDS_Stripe::OrientationOnFace1()`
+        fn ChFiDS_Stripe_orientation_on_face1_orientation(self_: Pin<&mut ChFiDS_Stripe>, Or1: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:59 - `ChFiDS_Stripe::OrientationOnFace2()`
+        fn ChFiDS_Stripe_orientation_on_face2_orientation(self_: Pin<&mut ChFiDS_Stripe>, Or2: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:87 - `ChFiDS_Stripe::FirstPCurveOrientation()`
+        fn ChFiDS_Stripe_first_p_curve_orientation(self_: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:89 - `ChFiDS_Stripe::LastPCurveOrientation()`
+        fn ChFiDS_Stripe_last_p_curve_orientation(self_: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:91 - `ChFiDS_Stripe::FirstPCurveOrientation()`
+        fn ChFiDS_Stripe_first_p_curve_orientation_orientation(
+            self_: Pin<&mut ChFiDS_Stripe>,
+            O: i32,
+        );
+        /// **Source:** `ChFiDS_Stripe.hxx`:93 - `ChFiDS_Stripe::LastPCurveOrientation()`
+        fn ChFiDS_Stripe_last_p_curve_orientation_orientation(
+            self_: Pin<&mut ChFiDS_Stripe>,
+            O: i32,
+        );
+        /// **Source:** `ChFiDS_Stripe.hxx`:127 - `ChFiDS_Stripe::Orientation()`
+        fn ChFiDS_Stripe_orientation_int(self_: &ChFiDS_Stripe, OnS: i32) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:129 - `ChFiDS_Stripe::SetOrientation()`
+        fn ChFiDS_Stripe_set_orientation_orientation_int(
+            self_: Pin<&mut ChFiDS_Stripe>,
+            Or: i32,
+            OnS: i32,
+        );
+        /// **Source:** `ChFiDS_Stripe.hxx`:131 - `ChFiDS_Stripe::Orientation()`
+        fn ChFiDS_Stripe_orientation_bool(self_: &ChFiDS_Stripe, First: bool) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:133 - `ChFiDS_Stripe::SetOrientation()`
+        fn ChFiDS_Stripe_set_orientation_orientation_bool(
+            self_: Pin<&mut ChFiDS_Stripe>,
+            Or: i32,
+            First: bool,
+        );
         /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_descriptor()`
         fn ChFiDS_Stripe_get_type_descriptor() -> &'static HandleStandardType;
         /// Wrap ChFiDS_Stripe in a Handle
@@ -46553,6 +48587,11 @@ mod ffi {
         /// **Source:** `ChFiDS_Map.hxx`:51 - `ChFiDS_Map::FindFromIndex()`
         #[cxx_name = "FindFromIndex"]
         fn find_from_index(self: &ChFiDS_Map, I: i32) -> &TopTools_ListOfShape;
+        /// **Source:** `ChFiDS_Map.hxx`:41 - `ChFiDS_Map::Fill()`
+        ///
+        /// Fills the map with the subshapes of type T1 as keys
+        /// and the list of ancestors  of type T2 as items.
+        fn ChFiDS_Map_fill(self_: Pin<&mut ChFiDS_Map>, S: &TopoDS_Shape, T1: i32, T2: i32);
         /// ======================== ChFiDS_StripeMap ========================
         /// **Source:** `ChFiDS_StripeMap.hxx`:31 - `ChFiDS_StripeMap`
         ///
@@ -46726,6 +48765,18 @@ mod ffi {
         /// **Source:** `ChFi3d_ChBuilder.hxx`:138 - `ChFi3d_ChBuilder::NbSurf()`
         #[cxx_name = "NbSurf"]
         fn nb_surf(self: &ChFi3d_ChBuilder, IC: i32) -> i32;
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:125 - `ChFi3d_ChBuilder::SetMode()`
+        ///
+        /// set the mode of shamfer
+        fn ChFi3d_ChBuilder_set_mode(self_: Pin<&mut ChFi3d_ChBuilder>, theMode: i32);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:128 - `ChFi3d_ChBuilder::IsChamfer()`
+        ///
+        /// renvoi la methode des chanfreins utilisee
+        fn ChFi3d_ChBuilder_is_chamfer(self_: &ChFi3d_ChBuilder, IC: i32) -> i32;
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:131 - `ChFi3d_ChBuilder::Mode()`
+        ///
+        /// returns the mode of chamfer used
+        fn ChFi3d_ChBuilder_mode(self_: &ChFi3d_ChBuilder) -> i32;
         /// **Source:** `ChFi3d_ChBuilder.hxx`:140 - `ChFi3d_ChBuilder::Sect()`
         fn ChFi3d_ChBuilder_sect(
             self_: &ChFi3d_ChBuilder,
@@ -48183,6 +50234,59 @@ mod ffi {
             aGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `BRepSweep_Rotation.hxx`:103 - `BRepSweep_Rotation::SetPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenF, aGenE and aDirV.
+        fn BRepSweep_Rotation_set_p_curve(
+            self_: Pin<&mut BRepSweep_Rotation>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenF: &TopoDS_Shape,
+            aGenE: &TopoDS_Shape,
+            aDirV: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_Rotation.hxx`:113 - `BRepSweep_Rotation::SetGeneratingPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenE, aDirE and aDirV.
+        fn BRepSweep_Rotation_set_generating_p_curve(
+            self_: Pin<&mut BRepSweep_Rotation>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenE: &TopoDS_Shape,
+            aDirE: &Sweep_NumShape,
+            aDirV: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_Rotation.hxx`:123 - `BRepSweep_Rotation::SetDirectingPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenE, aDirE and aGenV.
+        fn BRepSweep_Rotation_set_directing_p_curve(
+            self_: Pin<&mut BRepSweep_Rotation>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenE: &TopoDS_Shape,
+            aGenV: &TopoDS_Shape,
+            aDirE: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_Rotation.hxx`:134 - `BRepSweep_Rotation::DirectSolid()`
+        ///
+        /// Returns the Orientation of the  shell in the solid
+        /// generated by the face aGenS  with  the edge aDirS.
+        /// It is  REVERSED  if the surface is  swept  in  the
+        /// direction of the normal.
+        fn BRepSweep_Rotation_direct_solid(
+            self_: Pin<&mut BRepSweep_Rotation>,
+            aGenS: &TopoDS_Shape,
+            aDirS: &Sweep_NumShape,
+        ) -> i32;
         /// **Source:** `BRepSweep_Rotation.hxx`:173 - `BRepSweep_Rotation::SplitShell()`
         ///
         /// In  some  particular  cases  the   topology  of  a
@@ -48434,6 +50538,48 @@ mod ffi {
             aGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `BRepSweep_Trsf.hxx`:110 - `BRepSweep_Trsf::SetPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenF, aGenE and aDirV.
+        fn BRepSweep_Trsf_set_p_curve(
+            self_: Pin<&mut BRepSweep_Trsf>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenF: &TopoDS_Shape,
+            aGenE: &TopoDS_Shape,
+            aDirV: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_Trsf.hxx`:120 - `BRepSweep_Trsf::SetGeneratingPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenE, aDirE and aDirV.
+        fn BRepSweep_Trsf_set_generating_p_curve(
+            self_: Pin<&mut BRepSweep_Trsf>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenE: &TopoDS_Shape,
+            aDirE: &Sweep_NumShape,
+            aDirV: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_Trsf.hxx`:130 - `BRepSweep_Trsf::SetDirectingPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenE, aDirE and aGenV.
+        fn BRepSweep_Trsf_set_directing_p_curve(
+            self_: Pin<&mut BRepSweep_Trsf>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenE: &TopoDS_Shape,
+            aGenV: &TopoDS_Shape,
+            aDirE: &Sweep_NumShape,
+            orien: i32,
+        );
         /// Upcast BRepSweep_Trsf to BRepSweep_NumLinearRegularSweep
         fn BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep(
             self_: &BRepSweep_Trsf,
@@ -48675,6 +50821,59 @@ mod ffi {
             aGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:127 - `BRepSweep_NumLinearRegularSweep::SetPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenF, aGenE and aDirV.
+        fn BRepSweep_NumLinearRegularSweep_set_p_curve(
+            self_: Pin<&mut BRepSweep_NumLinearRegularSweep>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenF: &TopoDS_Shape,
+            aGenE: &TopoDS_Shape,
+            aDirV: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:137 - `BRepSweep_NumLinearRegularSweep::SetGeneratingPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenE, aDirE and aDirV.
+        fn BRepSweep_NumLinearRegularSweep_set_generating_p_curve(
+            self_: Pin<&mut BRepSweep_NumLinearRegularSweep>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenE: &TopoDS_Shape,
+            aDirE: &Sweep_NumShape,
+            aDirV: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:147 - `BRepSweep_NumLinearRegularSweep::SetDirectingPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenE, aDirE and aGenV.
+        fn BRepSweep_NumLinearRegularSweep_set_directing_p_curve(
+            self_: Pin<&mut BRepSweep_NumLinearRegularSweep>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenE: &TopoDS_Shape,
+            aGenV: &TopoDS_Shape,
+            aDirE: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:158 - `BRepSweep_NumLinearRegularSweep::DirectSolid()`
+        ///
+        /// Returns the Orientation of the  shell in the solid
+        /// generated by the face aGenS  with  the edge aDirS.
+        /// It is  REVERSED  if the surface is  swept  in  the
+        /// direction of the normal.
+        fn BRepSweep_NumLinearRegularSweep_direct_solid(
+            self_: Pin<&mut BRepSweep_NumLinearRegularSweep>,
+            aGenS: &TopoDS_Shape,
+            aDirS: &Sweep_NumShape,
+        ) -> i32;
         /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
         ///
         /// In  some  particular  cases  the   topology  of  a
@@ -48781,6 +50980,16 @@ mod ffi {
         /// Adds the Shape 1 in the Shape 2.
         #[cxx_name = "Add"]
         fn add(self: &BRepSweep_Builder, aShape1: Pin<&mut TopoDS_Shape>, aShape2: &TopoDS_Shape);
+        /// **Source:** `BRepSweep_Builder.hxx`:56 - `BRepSweep_Builder::Add()`
+        ///
+        /// Adds the Shape 1 in the Shape 2, set to
+        /// <Orient> orientation.
+        fn BRepSweep_Builder_add(
+            self_: &BRepSweep_Builder,
+            aShape1: Pin<&mut TopoDS_Shape>,
+            aShape2: &TopoDS_Shape,
+            Orient: i32,
+        );
         /// ======================== BRepSweep_Tool ========================
         /// **Source:** `BRepSweep_Tool.hxx`:31 - `BRepSweep_Tool`
         ///
@@ -48807,6 +51016,22 @@ mod ffi {
         ///
         /// Returns the Shape at Index anIdex.
         fn BRepSweep_Tool_shape(self_: &BRepSweep_Tool, anIndex: i32) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `BRepSweep_Tool.hxx`:51 - `BRepSweep_Tool::Type()`
+        ///
+        /// Returns the type of <aShape>.
+        fn BRepSweep_Tool_type_(self_: &BRepSweep_Tool, aShape: &TopoDS_Shape) -> i32;
+        /// **Source:** `BRepSweep_Tool.hxx`:54 - `BRepSweep_Tool::Orientation()`
+        ///
+        /// Returns the Orientation of <aShape>.
+        fn BRepSweep_Tool_orientation(self_: &BRepSweep_Tool, aShape: &TopoDS_Shape) -> i32;
+        /// **Source:** `BRepSweep_Tool.hxx`:57 - `BRepSweep_Tool::SetOrientation()`
+        ///
+        /// Set the Orientation of <aShape> with Or.
+        fn BRepSweep_Tool_set_orientation(
+            self_: &BRepSweep_Tool,
+            aShape: Pin<&mut TopoDS_Shape>,
+            Or: i32,
+        );
         /// ======================== Sweep_NumShapeTool ========================
         /// **Source:** `Sweep_NumShapeTool.hxx`:31 - `Sweep_NumShapeTool`
         ///
@@ -48849,6 +51074,17 @@ mod ffi {
             self_: &Sweep_NumShapeTool,
             anIndex: i32,
         ) -> UniquePtr<Sweep_NumShape>;
+        /// **Source:** `Sweep_NumShapeTool.hxx`:51 - `Sweep_NumShapeTool::Type()`
+        ///
+        /// Returns the type of <aShape>.
+        fn Sweep_NumShapeTool_type_(self_: &Sweep_NumShapeTool, aShape: &Sweep_NumShape) -> i32;
+        /// **Source:** `Sweep_NumShapeTool.hxx`:54 - `Sweep_NumShapeTool::Orientation()`
+        ///
+        /// Returns the orientation of <aShape>.
+        fn Sweep_NumShapeTool_orientation(
+            self_: &Sweep_NumShapeTool,
+            aShape: &Sweep_NumShape,
+        ) -> i32;
         /// **Source:** `Sweep_NumShapeTool.hxx`:63 - `Sweep_NumShapeTool::FirstVertex()`
         ///
         /// Returns the first vertex.
@@ -48868,6 +51104,26 @@ mod ffi {
         ///
         /// Creates a dummy indexed edge.
         fn Sweep_NumShape_ctor() -> UniquePtr<Sweep_NumShape>;
+        /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
+        ///
+        /// Creates a new simple indexed edge.
+        ///
+        /// For an Edge : Index is the  number of vertices (0,
+        /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
+        /// is a  closed edge, BegInf is true  if  the Edge is
+        /// infinite at the  begenning, EndInf is true  if the
+        /// edge is infinite at the end.
+        ///
+        /// For a Vertex : Index is the index of the vertex in
+        /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
+        /// other fields have no meanning.
+        fn Sweep_NumShape_ctor_int_shapeenum_bool3(
+            Index: i32,
+            Type: i32,
+            Closed: bool,
+            BegInf: bool,
+            EndInf: bool,
+        ) -> UniquePtr<Sweep_NumShape>;
         /// **Source:** `Sweep_NumShape.hxx`:73 - `Sweep_NumShape::Index()`
         #[cxx_name = "Index"]
         fn index(self: &Sweep_NumShape) -> i32;
@@ -48880,6 +51136,32 @@ mod ffi {
         /// **Source:** `Sweep_NumShape.hxx`:81 - `Sweep_NumShape::EndInfinite()`
         #[cxx_name = "EndInfinite"]
         fn end_infinite(self: &Sweep_NumShape) -> bool;
+        /// **Source:** `Sweep_NumShape.hxx`:67 - `Sweep_NumShape::Init()`
+        ///
+        /// Reinitialize a simple indexed edge.
+        ///
+        /// For an Edge : Index is the  number of vertices (0,
+        /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
+        /// is a  closed edge, BegInf is true  if  the Edge is
+        /// infinite at the  begenning, EndInf is true  if the
+        /// edge is infinite at the end.
+        ///
+        /// For a Vertex : Index is the index of the vertex in
+        /// the edge (1 or 2), Type is TopAbsVERTEX, Closed is
+        /// true if it is the vertex of a closed edge, all the
+        /// other fields have no meanning.
+        fn Sweep_NumShape_init(
+            self_: Pin<&mut Sweep_NumShape>,
+            Index: i32,
+            Type: i32,
+            Closed: bool,
+            BegInf: bool,
+            EndInf: bool,
+        );
+        /// **Source:** `Sweep_NumShape.hxx`:75 - `Sweep_NumShape::Type()`
+        fn Sweep_NumShape_type_(self_: &Sweep_NumShape) -> i32;
+        /// **Source:** `Sweep_NumShape.hxx`:83 - `Sweep_NumShape::Orientation()`
+        fn Sweep_NumShape_orientation(self_: &Sweep_NumShape) -> i32;
         /// ======================== BRepSweep_Prism ========================
         /// **Source:** `BRepSweep_Prism.hxx`:34 - `BRepSweep_Prism`
         ///
@@ -49130,6 +51412,59 @@ mod ffi {
             aGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `BRepSweep_Translation.hxx`:103 - `BRepSweep_Translation::SetPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenF, aGenE and aDirV.
+        fn BRepSweep_Translation_set_p_curve(
+            self_: Pin<&mut BRepSweep_Translation>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenF: &TopoDS_Shape,
+            aGenE: &TopoDS_Shape,
+            aDirV: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_Translation.hxx`:113 - `BRepSweep_Translation::SetGeneratingPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenE, aDirE and aDirV.
+        fn BRepSweep_Translation_set_generating_p_curve(
+            self_: Pin<&mut BRepSweep_Translation>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenE: &TopoDS_Shape,
+            aDirE: &Sweep_NumShape,
+            aDirV: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_Translation.hxx`:123 - `BRepSweep_Translation::SetDirectingPCurve()`
+        ///
+        /// Sets the PCurve for a new edge on a new face. The
+        /// new edge and  the  new face were generated  using
+        /// aGenE, aDirE and aGenV.
+        fn BRepSweep_Translation_set_directing_p_curve(
+            self_: Pin<&mut BRepSweep_Translation>,
+            aNewFace: &TopoDS_Shape,
+            aNewEdge: Pin<&mut TopoDS_Shape>,
+            aGenE: &TopoDS_Shape,
+            aGenV: &TopoDS_Shape,
+            aDirE: &Sweep_NumShape,
+            orien: i32,
+        );
+        /// **Source:** `BRepSweep_Translation.hxx`:134 - `BRepSweep_Translation::DirectSolid()`
+        ///
+        /// Returns the Orientation of the  shell in the solid
+        /// generated by the face aGenS  with  the edge aDirS.
+        /// It is  REVERSED  if the surface is  swept  in  the
+        /// direction of the normal.
+        fn BRepSweep_Translation_direct_solid(
+            self_: Pin<&mut BRepSweep_Translation>,
+            aGenS: &TopoDS_Shape,
+            aDirS: &Sweep_NumShape,
+        ) -> i32;
         /// **Source:** `BRepSweep_Translation.hxx`:179 - `BRepSweep_Translation::Vec()`
         ///
         /// Returns the Vector of the Prism,  if it is an infinite
@@ -49872,6 +52207,84 @@ mod ffi {
         ///
         /// Returns the coordinates system from <me>.
         fn BRepPrim_GWedge_axes(self_: &BRepPrim_GWedge) -> UniquePtr<gp_Ax2>;
+        /// **Source:** `BRepPrim_GWedge.hxx`:154 - `BRepPrim_GWedge::Open()`
+        ///
+        /// Opens <me> in <d1> direction. A face and its edges
+        /// or vertices are said nonexistent.
+        fn BRepPrim_GWedge_open(self_: Pin<&mut BRepPrim_GWedge>, d1: i32);
+        /// **Source:** `BRepPrim_GWedge.hxx`:158 - `BRepPrim_GWedge::Close()`
+        ///
+        /// Closes <me> in <d1> direction. A face and its
+        /// edges or vertices are said existent.
+        fn BRepPrim_GWedge_close(self_: Pin<&mut BRepPrim_GWedge>, d1: i32);
+        /// **Source:** `BRepPrim_GWedge.hxx`:161 - `BRepPrim_GWedge::IsInfinite()`
+        ///
+        /// Returns True if <me> is open in <d1> direction.
+        fn BRepPrim_GWedge_is_infinite(self_: &BRepPrim_GWedge, d1: i32) -> bool;
+        /// **Source:** `BRepPrim_GWedge.hxx`:167 - `BRepPrim_GWedge::HasFace()`
+        ///
+        /// Returns True if <me> has a Face in <d1> direction.
+        fn BRepPrim_GWedge_has_face(self_: &BRepPrim_GWedge, d1: i32) -> bool;
+        /// **Source:** `BRepPrim_GWedge.hxx`:170 - `BRepPrim_GWedge::Face()`
+        ///
+        /// Returns the Face of <me> located in <d1> direction.
+        fn BRepPrim_GWedge_face(self_: Pin<&mut BRepPrim_GWedge>, d1: i32) -> &TopoDS_Face;
+        /// **Source:** `BRepPrim_GWedge.hxx`:174 - `BRepPrim_GWedge::Plane()`
+        ///
+        /// Returns the plane of the Face of <me> located in
+        /// <d1> direction.
+        fn BRepPrim_GWedge_plane(self_: Pin<&mut BRepPrim_GWedge>, d1: i32) -> UniquePtr<gp_Pln>;
+        /// **Source:** `BRepPrim_GWedge.hxx`:177 - `BRepPrim_GWedge::HasWire()`
+        ///
+        /// Returns True if <me> has a Wire in <d1> direction.
+        fn BRepPrim_GWedge_has_wire(self_: &BRepPrim_GWedge, d1: i32) -> bool;
+        /// **Source:** `BRepPrim_GWedge.hxx`:180 - `BRepPrim_GWedge::Wire()`
+        ///
+        /// Returns the Wire of <me> located in <d1> direction.
+        fn BRepPrim_GWedge_wire(self_: Pin<&mut BRepPrim_GWedge>, d1: i32) -> &TopoDS_Wire;
+        /// **Source:** `BRepPrim_GWedge.hxx`:183 - `BRepPrim_GWedge::HasEdge()`
+        ///
+        /// Returns True if <me> has an Edge in <d1><d2> direction.
+        fn BRepPrim_GWedge_has_edge(self_: &BRepPrim_GWedge, d1: i32, d2: i32) -> bool;
+        /// **Source:** `BRepPrim_GWedge.hxx`:187 - `BRepPrim_GWedge::Edge()`
+        ///
+        /// Returns the Edge of <me> located in <d1><d2> direction.
+        fn BRepPrim_GWedge_edge(self_: Pin<&mut BRepPrim_GWedge>, d1: i32, d2: i32)
+            -> &TopoDS_Edge;
+        /// **Source:** `BRepPrim_GWedge.hxx`:191 - `BRepPrim_GWedge::Line()`
+        ///
+        /// Returns the line of the Edge of <me> located in
+        /// <d1><d2> direction.
+        fn BRepPrim_GWedge_line(
+            self_: Pin<&mut BRepPrim_GWedge>,
+            d1: i32,
+            d2: i32,
+        ) -> UniquePtr<gp_Lin>;
+        /// **Source:** `BRepPrim_GWedge.hxx`:195 - `BRepPrim_GWedge::HasVertex()`
+        ///
+        /// Returns True if <me> has a Vertex in <d1><d2><d3>
+        /// direction.
+        fn BRepPrim_GWedge_has_vertex(self_: &BRepPrim_GWedge, d1: i32, d2: i32, d3: i32) -> bool;
+        /// **Source:** `BRepPrim_GWedge.hxx`:201 - `BRepPrim_GWedge::Vertex()`
+        ///
+        /// Returns the Vertex of <me> located in <d1><d2><d3>
+        /// direction.
+        fn BRepPrim_GWedge_vertex(
+            self_: Pin<&mut BRepPrim_GWedge>,
+            d1: i32,
+            d2: i32,
+            d3: i32,
+        ) -> &TopoDS_Vertex;
+        /// **Source:** `BRepPrim_GWedge.hxx`:207 - `BRepPrim_GWedge::Point()`
+        ///
+        /// Returns the point of the Vertex of <me> located in
+        /// <d1><d2><d3> direction.
+        fn BRepPrim_GWedge_point(
+            self_: Pin<&mut BRepPrim_GWedge>,
+            d1: i32,
+            d2: i32,
+            d3: i32,
+        ) -> UniquePtr<gp_Pnt>;
         /// ======================== BRepBuilderAPI_ModifyShape ========================
         /// **Source:** `BRepBuilderAPI_ModifyShape.hxx`:45 - `BRepBuilderAPI_ModifyShape`
         ///
@@ -50074,6 +52487,8 @@ mod ffi {
         /// Returns the last connecting vertex.
         #[cxx_name = "Vertex"]
         fn vertex(self: &BRepLib_MakeWire) -> &TopoDS_Vertex;
+        /// **Source:** `BRepLib_MakeWire.hxx`:120 - `BRepLib_MakeWire::Error()`
+        fn BRepLib_MakeWire_error(self_: &BRepLib_MakeWire) -> i32;
         /// Upcast BRepLib_MakeWire to BRepLib_Command
         fn BRepLib_MakeWire_as_BRepLib_Command(self_: &BRepLib_MakeWire) -> &BRepLib_Command;
         /// Upcast BRepLib_MakeWire to BRepLib_Command (mutable)
@@ -50167,6 +52582,11 @@ mod ffi {
             self: Pin<&mut BRepLib_MakeShape>,
             E: &TopoDS_Edge,
         ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepLib_MakeShape.hxx`:50 - `BRepLib_MakeShape::FaceStatus()`
+        ///
+        /// returns the status of the Face after
+        /// the shape creation.
+        fn BRepLib_MakeShape_face_status(self_: &BRepLib_MakeShape, F: &TopoDS_Face) -> i32;
         /// Upcast BRepLib_MakeShape to BRepLib_Command
         fn BRepLib_MakeShape_as_BRepLib_Command(self_: &BRepLib_MakeShape) -> &BRepLib_Command;
         /// Upcast BRepLib_MakeShape to BRepLib_Command (mutable)
@@ -50306,6 +52726,11 @@ mod ffi {
         /// Returns the new Solid.
         #[cxx_name = "Solid"]
         fn solid(self: Pin<&mut BRepLib_MakeSolid>) -> &TopoDS_Solid;
+        /// **Source:** `BRepLib_MakeSolid.hxx`:68 - `BRepLib_MakeSolid::FaceStatus()`
+        ///
+        /// returns the status of the Face after
+        /// the shape creation.
+        fn BRepLib_MakeSolid_face_status(self_: &BRepLib_MakeSolid, F: &TopoDS_Face) -> i32;
         /// Upcast BRepLib_MakeSolid to BRepLib_Command
         fn BRepLib_MakeSolid_as_BRepLib_Command(self_: &BRepLib_MakeSolid) -> &BRepLib_Command;
         /// Upcast BRepLib_MakeSolid to BRepLib_Command (mutable)
@@ -50584,6 +53009,8 @@ mod ffi {
         /// Returns the new face.
         #[cxx_name = "Face"]
         fn face(self: &BRepLib_MakeFace) -> &TopoDS_Face;
+        /// **Source:** `BRepLib_MakeFace.hxx`:200 - `BRepLib_MakeFace::Error()`
+        fn BRepLib_MakeFace_error(self_: &BRepLib_MakeFace) -> i32;
         /// **Source:** `BRepLib_MakeFace.hxx`:211 - `BRepLib_MakeFace::IsDegenerated()`
         ///
         /// Checks the specified curve is degenerated
@@ -50978,6 +53405,10 @@ mod ffi {
         /// Returns the second vertex of the edge. May be Null.
         #[cxx_name = "Vertex2"]
         fn vertex2(self: &BRepLib_MakeEdge) -> &TopoDS_Vertex;
+        /// **Source:** `BRepLib_MakeEdge.hxx`:249 - `BRepLib_MakeEdge::Error()`
+        ///
+        /// Returns the error description when NotDone.
+        fn BRepLib_MakeEdge_error(self_: &BRepLib_MakeEdge) -> i32;
         /// Upcast BRepLib_MakeEdge to BRepLib_Command
         fn BRepLib_MakeEdge_as_BRepLib_Command(self_: &BRepLib_MakeEdge) -> &BRepLib_Command;
         /// Upcast BRepLib_MakeEdge to BRepLib_Command (mutable)
@@ -51278,6 +53709,11 @@ mod ffi {
         /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TopoDS_TShape) -> &HandleStandardType;
+        /// **Source:** `TopoDS_TShape.hxx`:126 - `TopoDS_TShape::ShapeType()`
+        ///
+        /// Returns the type as a term of the ShapeEnum enum :
+        /// VERTEX, EDGE, WIRE, FACE, ....
+        fn TopoDS_TShape_shape_type(self_: &TopoDS_TShape) -> i32;
         /// **Source:** `TopoDS_TShape.hxx`:129 - `TopoDS_TShape::EmptyCopy()`
         ///
         /// Returns a copy  of the  TShape  with no sub-shapes.
@@ -51308,6 +53744,69 @@ mod ffi {
         ///
         /// Default constructor
         fn TopAbs_ctor() -> UniquePtr<TopAbs>;
+        /// **Source:** `TopAbs.hxx`:69 - `TopAbs::Compose()`
+        ///
+        /// Compose  the Orientation    <Or1>  and  <Or2>.    This
+        /// composition is not symmetric (if  you switch <Or1> and
+        /// <Or2> the result  is different). It assumes that <Or1>
+        /// is the Orientation of a Shape S1 containing a Shape S2
+        /// of Orientation   Or2.  The result    is the  cumulated
+        /// orientation of S2 in S1.  The composition law is :
+        ///
+        /// \ Or2     FORWARD  REVERSED INTERNAL EXTERNAL
+        /// Or1       -------------------------------------
+        /// FORWARD   | FORWARD  REVERSED INTERNAL EXTERNAL
+        /// |
+        /// REVERSED  | REVERSED FORWARD  INTERNAL EXTERNAL
+        /// |
+        /// INTERNAL  | INTERNAL INTERNAL INTERNAL INTERNAL
+        /// |
+        /// EXTERNAL  | EXTERNAL EXTERNAL EXTERNAL EXTERNAL
+        /// Note: The top corner in the table is the most important
+        /// for the purposes of Open CASCADE topology and shape sharing.
+        fn TopAbs_compose(Or1: i32, Or2: i32) -> i32;
+        /// **Source:** `TopAbs.hxx`:82 - `TopAbs::Reverse()`
+        ///
+        /// xchanges the interior/exterior status of the two
+        /// sides. This is what happens when the sense of
+        /// direction is reversed. The following rules apply:
+        ///
+        /// FORWARD          REVERSED
+        /// REVERSED         FORWARD
+        /// INTERNAL         INTERNAL
+        /// EXTERNAL         EXTERNAL
+        ///
+        /// Reverse exchange the material sides.
+        fn TopAbs_reverse(Or: i32) -> i32;
+        /// **Source:** `TopAbs.hxx`:97 - `TopAbs::Complement()`
+        ///
+        /// Reverses the interior/exterior status of each side of
+        /// the object. So, to take the complement of an object
+        /// means to reverse the interior/exterior status of its
+        /// boundary, i.e. inside becomes outside.
+        /// The method returns the complementary orientation,
+        /// following the rules in the table below:
+        /// FORWARD          REVERSED
+        /// REVERSED         FORWARD
+        /// INTERNAL         EXTERNAL
+        /// EXTERNAL         INTERNAL
+        ///
+        /// Complement  complements   the  material  side.  Inside
+        /// becomes outside.
+        fn TopAbs_complement(Or: i32) -> i32;
+        /// **Source:** `TopAbs.hxx`:125 - `TopAbs::ShapeTypeFromString()`
+        ///
+        /// Returns the shape type from the given string identifier (using case-insensitive comparison).
+        /// @param theTypeString string identifier
+        /// @return shape type or TopAbs_SHAPE if string identifier is invalid
+        fn TopAbs_shape_type_from_string(theTypeString: &str) -> i32;
+        /// **Source:** `TopAbs.hxx`:150 - `TopAbs::ShapeOrientationFromString()`
+        ///
+        /// Returns the shape orientation from the given string identifier (using case-insensitive
+        /// comparison).
+        /// @param theOrientationString string identifier
+        /// @return shape orientation or TopAbs_FORWARD if string identifier is invalid
+        fn TopAbs_shape_orientation_from_string(theOrientationString: &str) -> i32;
 
         // ========================
         // Free functions

@@ -33,6 +33,15 @@ impl Tool2d {
         crate::ffi::MAT2d_Tool2d_ctor()
     }
 
+    /// <aSide> defines the side of the computation of the map.
+    pub fn sense(self: std::pin::Pin<&mut Self>, aside: i32) {
+        crate::ffi::MAT2d_Tool2d_sense(self, aside)
+    }
+
+    pub fn set_join_type(self: std::pin::Pin<&mut Self>, aJoinType: i32) {
+        crate::ffi::MAT2d_Tool2d_set_join_type(self, aJoinType)
+    }
+
     /// Returns the Geometry of index <Index> in <theGeomElts>.
     pub fn geom_elt(&self, Index: i32) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
         crate::ffi::MAT2d_Tool2d_geom_elt(self, Index)

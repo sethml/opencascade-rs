@@ -112,6 +112,38 @@ impl IntersectionPoint {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::IntCurveSurface_IntersectionPoint_ctor()
     }
+
+    /// Create an IntersectionPoint.
+    pub fn new_pnt_real3_transitiononcurve(
+        P: &crate::ffi::gp_Pnt,
+        USurf: f64,
+        VSurf: f64,
+        UCurv: f64,
+        TrCurv: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IntCurveSurface_IntersectionPoint_ctor_pnt_real3_transitiononcurve(
+            P, USurf, VSurf, UCurv, TrCurv,
+        )
+    }
+
+    /// Set the fields of the current IntersectionPoint.
+    pub fn set_values(
+        self: std::pin::Pin<&mut Self>,
+        P: &crate::ffi::gp_Pnt,
+        USurf: f64,
+        VSurf: f64,
+        UCurv: f64,
+        TrCurv: i32,
+    ) {
+        crate::ffi::IntCurveSurface_IntersectionPoint_set_values(
+            self, P, USurf, VSurf, UCurv, TrCurv,
+        )
+    }
+
+    /// returns the Transition of the point.
+    pub fn transition(&self) -> i32 {
+        crate::ffi::IntCurveSurface_IntersectionPoint_transition(self)
+    }
 }
 
 // ========================

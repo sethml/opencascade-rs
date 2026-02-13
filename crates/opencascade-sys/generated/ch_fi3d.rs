@@ -53,6 +53,14 @@ impl TryFrom<i32> for FilletShape {
 pub use crate::ffi::ChFi3d_Builder as Builder;
 
 impl Builder {
+    pub fn set_continuity(
+        self: std::pin::Pin<&mut Self>,
+        InternalContinuity: i32,
+        AngularTolerance: f64,
+    ) {
+        crate::ffi::ChFi3d_Builder_set_continuity(self, InternalContinuity, AngularTolerance)
+    }
+
     /// returns the First vertex V of
     /// the contour of index IC.
     pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
@@ -90,6 +98,12 @@ impl Builder {
     pub fn bad_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::ChFi3d_Builder_bad_shape(self)
     }
+
+    /// for the stripe IC ,indication on the cause
+    /// of  failure WalkingFailure,TwistedSurface,Error, Ok
+    pub fn stripe_status(&self, IC: i32) -> i32 {
+        crate::ffi::ChFi3d_Builder_stripe_status(self, IC)
+    }
 }
 
 // ========================
@@ -104,6 +118,21 @@ impl ChBuilder {
     /// computation of chamfers
     pub fn new_shape_real(S: &crate::ffi::TopoDS_Shape, Ta: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::ChFi3d_ChBuilder_ctor_shape_real(S, Ta)
+    }
+
+    /// set the mode of shamfer
+    pub fn set_mode(self: std::pin::Pin<&mut Self>, theMode: i32) {
+        crate::ffi::ChFi3d_ChBuilder_set_mode(self, theMode)
+    }
+
+    /// renvoi la methode des chanfreins utilisee
+    pub fn is_chamfer(&self, IC: i32) -> i32 {
+        crate::ffi::ChFi3d_ChBuilder_is_chamfer(self, IC)
+    }
+
+    /// returns the mode of chamfer used
+    pub fn mode(&self) -> i32 {
+        crate::ffi::ChFi3d_ChBuilder_mode(self)
     }
 
     pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<crate::ffi::HandleChFiDSSecHArray1> {
@@ -271,8 +300,22 @@ impl ChBuilder {
 pub use crate::ffi::ChFi3d_FilBuilder as FilBuilder;
 
 impl FilBuilder {
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::ChFi3d_FilBuilder_ctor_shape(S)
+    pub fn new_shape_filletshape_real(
+        S: &crate::ffi::TopoDS_Shape,
+        FShape: i32,
+        Ta: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ChFi3d_FilBuilder_ctor_shape_filletshape_real(S, FShape, Ta)
+    }
+
+    /// Sets the type of fillet surface.
+    pub fn set_fillet_shape(self: std::pin::Pin<&mut Self>, FShape: i32) {
+        crate::ffi::ChFi3d_FilBuilder_set_fillet_shape(self, FShape)
+    }
+
+    /// Returns the type of fillet surface.
+    pub fn get_fillet_shape(&self) -> i32 {
+        crate::ffi::ChFi3d_FilBuilder_get_fillet_shape(self)
     }
 
     /// Returns the rule of  elementary  evolution of  the

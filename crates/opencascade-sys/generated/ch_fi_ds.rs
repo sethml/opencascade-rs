@@ -166,6 +166,24 @@ impl CommonPoint {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::ChFiDS_CommonPoint_ctor()
     }
+
+    /// Sets the values of a point which is on the arc
+    /// A, at parameter Param.
+    pub fn set_arc(
+        self: std::pin::Pin<&mut Self>,
+        Tol: f64,
+        A: &crate::ffi::TopoDS_Edge,
+        Param: f64,
+        TArc: i32,
+    ) {
+        crate::ffi::ChFiDS_CommonPoint_set_arc(self, Tol, A, Param, TArc)
+    }
+
+    /// Returns the transition of the point on the arc
+    /// returned by Arc().
+    pub fn transition_on_arc(&self) -> i32 {
+        crate::ffi::ChFiDS_CommonPoint_transition_on_arc(self)
+    }
 }
 
 // ========================
@@ -185,6 +203,14 @@ impl ElSpine {
         crate::ffi::ChFiDS_ElSpine_shallow_copy(self)
     }
 
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::ChFiDS_ElSpine_continuity(self)
+    }
+
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::ChFiDS_ElSpine_nb_intervals(self, S)
+    }
+
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
     /// test for 3d points confusion.
@@ -195,6 +221,10 @@ impl ElSpine {
         Tol: f64,
     ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
         crate::ffi::ChFiDS_ElSpine_trim(self, First, Last, Tol)
+    }
+
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::ChFiDS_ElSpine_get_type(self)
     }
 
     pub fn value(&self, AbsC: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
@@ -287,6 +317,24 @@ impl FaceInterference {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::ChFiDS_FaceInterference_ctor()
     }
+
+    pub fn set_interference(
+        self: std::pin::Pin<&mut Self>,
+        LineIndex: i32,
+        Trans: i32,
+        PCurv1: &crate::ffi::HandleGeom2dCurve,
+        PCurv2: &crate::ffi::HandleGeom2dCurve,
+    ) {
+        crate::ffi::ChFiDS_FaceInterference_set_interference(self, LineIndex, Trans, PCurv1, PCurv2)
+    }
+
+    pub fn set_transition(self: std::pin::Pin<&mut Self>, Trans: i32) {
+        crate::ffi::ChFiDS_FaceInterference_set_transition(self, Trans)
+    }
+
+    pub fn transition(&self) -> i32 {
+        crate::ffi::ChFiDS_FaceInterference_transition(self)
+    }
 }
 
 // ========================
@@ -329,6 +377,12 @@ impl Map {
     /// Create an empty Map
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::ChFiDS_Map_ctor()
+    }
+
+    /// Fills the map with the subshapes of type T1 as keys
+    /// and the list of ancestors  of type T2 as items.
+    pub fn fill(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape, T1: i32, T2: i32) {
+        crate::ffi::ChFiDS_Map_fill(self, S, T1, T2)
     }
 }
 
@@ -407,6 +461,54 @@ impl Stripe {
         crate::ffi::ChFiDS_Stripe_ctor()
     }
 
+    pub fn orientation_on_face1(&self) -> i32 {
+        crate::ffi::ChFiDS_Stripe_orientation_on_face1(self)
+    }
+
+    pub fn orientation_on_face2(&self) -> i32 {
+        crate::ffi::ChFiDS_Stripe_orientation_on_face2(self)
+    }
+
+    pub fn orientation_on_face1_orientation(self: std::pin::Pin<&mut Self>, Or1: i32) {
+        crate::ffi::ChFiDS_Stripe_orientation_on_face1_orientation(self, Or1)
+    }
+
+    pub fn orientation_on_face2_orientation(self: std::pin::Pin<&mut Self>, Or2: i32) {
+        crate::ffi::ChFiDS_Stripe_orientation_on_face2_orientation(self, Or2)
+    }
+
+    pub fn first_p_curve_orientation(&self) -> i32 {
+        crate::ffi::ChFiDS_Stripe_first_p_curve_orientation(self)
+    }
+
+    pub fn last_p_curve_orientation(&self) -> i32 {
+        crate::ffi::ChFiDS_Stripe_last_p_curve_orientation(self)
+    }
+
+    pub fn first_p_curve_orientation_orientation(self: std::pin::Pin<&mut Self>, O: i32) {
+        crate::ffi::ChFiDS_Stripe_first_p_curve_orientation_orientation(self, O)
+    }
+
+    pub fn last_p_curve_orientation_orientation(self: std::pin::Pin<&mut Self>, O: i32) {
+        crate::ffi::ChFiDS_Stripe_last_p_curve_orientation_orientation(self, O)
+    }
+
+    pub fn orientation_int(&self, OnS: i32) -> i32 {
+        crate::ffi::ChFiDS_Stripe_orientation_int(self, OnS)
+    }
+
+    pub fn set_orientation_orientation_int(self: std::pin::Pin<&mut Self>, Or: i32, OnS: i32) {
+        crate::ffi::ChFiDS_Stripe_set_orientation_orientation_int(self, Or, OnS)
+    }
+
+    pub fn orientation_bool(&self, First: bool) -> i32 {
+        crate::ffi::ChFiDS_Stripe_orientation_bool(self, First)
+    }
+
+    pub fn set_orientation_orientation_bool(self: std::pin::Pin<&mut Self>, Or: i32, First: bool) {
+        crate::ffi::ChFiDS_Stripe_set_orientation_orientation_bool(self, Or, First)
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ChFiDS_Stripe_get_type_descriptor()
     }
@@ -443,6 +545,10 @@ pub use crate::ffi::ChFiDS_SurfData as SurfData;
 impl SurfData {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::ChFiDS_SurfData_ctor()
+    }
+
+    pub fn orientation(&self) -> i32 {
+        crate::ffi::ChFiDS_SurfData_orientation(self)
     }
 
     pub fn get2d_points_bool_int(

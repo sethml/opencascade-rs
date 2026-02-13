@@ -131,8 +131,41 @@ impl OffsetWire {
         crate::ffi::BRepFill_OffsetWire_ctor()
     }
 
-    pub fn new_face(Spine: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_OffsetWire_ctor_face(Spine)
+    pub fn new_face_jointype_bool(
+        Spine: &crate::ffi::TopoDS_Face,
+        Join: i32,
+        IsOpenResult: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_OffsetWire_ctor_face_jointype_bool(Spine, Join, IsOpenResult)
+    }
+
+    /// Initialize the evaluation of Offsetting.
+    pub fn init(
+        self: std::pin::Pin<&mut Self>,
+        Spine: &crate::ffi::TopoDS_Face,
+        Join: i32,
+        IsOpenResult: bool,
+    ) {
+        crate::ffi::BRepFill_OffsetWire_init(self, Spine, Join, IsOpenResult)
+    }
+
+    /// Performs an  OffsetWire
+    pub fn perform_with_bi_lo(
+        self: std::pin::Pin<&mut Self>,
+        WSP: &crate::ffi::TopoDS_Face,
+        Offset: f64,
+        Locus: &crate::ffi::BRepMAT2d_BisectingLocus,
+        Link: std::pin::Pin<&mut crate::ffi::BRepMAT2d_LinkTopoBilo>,
+        Join: i32,
+        Alt: f64,
+    ) {
+        crate::ffi::BRepFill_OffsetWire_perform_with_bi_lo(
+            self, WSP, Offset, Locus, Link, Join, Alt,
+        )
+    }
+
+    pub fn join_type(&self) -> i32 {
+        crate::ffi::BRepFill_OffsetWire_join_type(self)
     }
 }
 
@@ -153,11 +186,20 @@ impl Pipe {
         crate::ffi::BRepFill_Pipe_ctor()
     }
 
-    pub fn new_wire_shape(
+    pub fn new_wire_shape_trihedron_bool2(
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
+        aMode: i32,
+        ForceApproxC1: bool,
+        GeneratePartCase: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Pipe_ctor_wire_shape(Spine, Profile)
+        crate::ffi::BRepFill_Pipe_ctor_wire_shape_trihedron_bool2(
+            Spine,
+            Profile,
+            aMode,
+            ForceApproxC1,
+            GeneratePartCase,
+        )
     }
 
     /// Returns the face created from an edge of the spine
@@ -217,6 +259,51 @@ impl PipeShell {
     /// If no mode are set, the mode used in MakePipe is used
     pub fn new_wire(Spine: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepFill_PipeShell_ctor_wire(Spine)
+    }
+
+    /// Set  an  auxiliary  spine  to  define  the Normal
+    /// For  each  Point  of  the  Spine  P,  an  Point  Q  is  evalued
+    /// on  <AuxiliarySpine>
+    /// If <CurvilinearEquivalence>
+    /// Q split <AuxiliarySpine> with  the  same  length ratio
+    /// than P split  <Spline>.
+    /// Else  the  plan  define  by  P  and  the  tangent  to  the  <Spine>
+    /// intersect <AuxiliarySpine> in Q.
+    /// If <KeepContact> equals BRepFill_NoContact: The Normal is defined
+    /// by the vector PQ.
+    /// If <KeepContact> equals BRepFill_Contact: The Normal is defined to
+    /// achieve that the sweeped section is in contact to the
+    /// auxiliarySpine. The width of section is constant all along the path.
+    /// In other words, the auxiliary spine lies on the swept surface,
+    /// but not necessarily is a boundary of this surface. However,
+    /// the auxiliary spine has to be close enough to the main spine
+    /// to provide intersection with any section all along the path.
+    /// If <KeepContact> equals BRepFill_ContactOnBorder: The auxiliary spine
+    /// becomes a boundary of the swept surface and the width of section varies
+    /// along the path.
+    pub fn set_wire_bool_typeofcontact(
+        self: std::pin::Pin<&mut Self>,
+        AuxiliarySpine: &crate::ffi::TopoDS_Wire,
+        CurvilinearEquivalence: bool,
+        KeepContact: i32,
+    ) {
+        crate::ffi::BRepFill_PipeShell_set(
+            self,
+            AuxiliarySpine,
+            CurvilinearEquivalence,
+            KeepContact,
+        )
+    }
+
+    /// Get a status, when Simulate or Build failed.
+    pub fn get_status(&self) -> i32 {
+        crate::ffi::BRepFill_PipeShell_get_status(self)
+    }
+
+    /// Set the  Transition Mode to manage discontinuities
+    /// on the sweep.
+    pub fn set_transition(self: std::pin::Pin<&mut Self>, Mode: i32, Angmin: f64, Angmax: f64) {
+        crate::ffi::BRepFill_PipeShell_set_transition(self, Mode, Angmin, Angmax)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

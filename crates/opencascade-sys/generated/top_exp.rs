@@ -28,6 +28,19 @@ impl TopExp {
         crate::ffi::TopExp_ctor()
     }
 
+    /// Tool to explore a topological data structure.
+    /// Stores in the map <M> all  the sub-shapes of <S>
+    /// of type <T>.
+    ///
+    /// Warning: The map is not cleared at first.
+    pub fn map_shapes_shape_shapeenum_indexedmapofshape(
+        S: &crate::ffi::TopoDS_Shape,
+        T: i32,
+        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedMapOfShape>,
+    ) {
+        crate::ffi::TopExp_map_shapes_shape_shapeenum_indexedmapofshape(S, T, M)
+    }
+
     /// Stores in the map <M> all  the sub-shapes of <S>.
     /// - If cumOri is true, the function composes all
     /// sub-shapes with the orientation of S.
@@ -56,6 +69,36 @@ impl TopExp {
         cumLoc: bool,
     ) {
         crate::ffi::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc)
+    }
+
+    /// Stores in the map <M> all the subshape of <S> of
+    /// type <TS>  for each one append  to  the list all
+    /// the ancestors of type <TA>.  For example map all
+    /// the edges and bind the list of faces.
+    /// Warning: The map is not cleared at first.
+    pub fn map_shapes_and_ancestors(
+        S: &crate::ffi::TopoDS_Shape,
+        TS: i32,
+        TA: i32,
+        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape>,
+    ) {
+        crate::ffi::TopExp_map_shapes_and_ancestors(S, TS, TA, M)
+    }
+
+    /// Stores in the map <M> all the subshape of <S> of
+    /// type <TS> for each one append to the list all
+    /// unique ancestors of type <TA>.  For example map all
+    /// the edges and bind the list of faces.
+    /// useOrientation = True : taking account the ancestor orientation
+    /// Warning: The map is not cleared at first.
+    pub fn map_shapes_and_unique_ancestors(
+        S: &crate::ffi::TopoDS_Shape,
+        TS: i32,
+        TA: i32,
+        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape>,
+        useOrientation: bool,
+    ) {
+        crate::ffi::TopExp_map_shapes_and_unique_ancestors(S, TS, TA, M, useOrientation)
     }
 
     /// Returns the Vertex of orientation FORWARD in E. If
@@ -184,5 +227,37 @@ impl Explorer {
     /// Creates an empty explorer, becomes useful after Init.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::TopExp_Explorer_ctor()
+    }
+
+    /// Creates an Explorer on the Shape <S>.
+    ///
+    /// <ToFind> is the type of shapes to search.
+    /// TopAbs_VERTEX, TopAbs_EDGE, ...
+    ///
+    /// <ToAvoid>   is the type   of shape to  skip in the
+    /// exploration.   If   <ToAvoid>  is  equal  or  less
+    /// complex than <ToFind> or if  <ToAVoid> is SHAPE it
+    /// has no effect on the exploration.
+    pub fn new_shape_shapeenum2(
+        S: &crate::ffi::TopoDS_Shape,
+        ToFind: i32,
+        ToAvoid: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopExp_Explorer_ctor_shape_shapeenum2(S, ToFind, ToAvoid)
+    }
+
+    /// Resets this explorer on the shape S. It is initialized to
+    /// search the shape S, for shapes of type ToFind, that
+    /// are not part of a shape ToAvoid.
+    /// If the shape ToAvoid is equal to TopAbs_SHAPE, or
+    /// if it is the same as, or less complex than, the shape
+    /// ToFind it has no effect on the search.
+    pub fn init(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+        ToFind: i32,
+        ToAvoid: i32,
+    ) {
+        crate::ffi::TopExp_Explorer_init(self, S, ToFind, ToAvoid)
     }
 }

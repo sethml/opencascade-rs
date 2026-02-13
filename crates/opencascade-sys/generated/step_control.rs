@@ -103,6 +103,22 @@ impl Reader {
         crate::ffi::STEPControl_Reader_ctor()
     }
 
+    /// Loads a file and returns the read status
+    /// Zero for a Model which compies with the Controller
+    pub fn read_file_charptr(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
+        crate::ffi::STEPControl_Reader_read_file_charptr(self, filename)
+    }
+
+    /// Loads a file and returns the read status
+    /// Zero for a Model which compies with the Controller
+    pub fn read_file_charptr_parameters(
+        self: std::pin::Pin<&mut Self>,
+        filename: &str,
+        theParams: &crate::ffi::DESTEP_Parameters,
+    ) -> i32 {
+        crate::ffi::STEPControl_Reader_read_file_charptr_parameters(self, filename, theParams)
+    }
+
     /// Upcast to XSControl_Reader
     pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
         crate::ffi::STEPControl_Reader_as_XSControl_Reader(self)
@@ -208,5 +224,57 @@ impl Writer {
     /// Creates a Writer from scratch
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::STEPControl_Writer_ctor()
+    }
+
+    /// Translates shape sh to a STEP
+    /// entity. mode defines the STEP entity type to be output:
+    /// - STEPControlStd_AsIs translates a shape to its highest possible
+    /// STEP representation.
+    /// - STEPControlStd_ManifoldSolidBrep translates a shape to a STEP
+    /// manifold_solid_brep or brep_with_voids entity.
+    /// - STEPControlStd_FacetedBrep translates a shape into a STEP
+    /// faceted_brep entity.
+    /// - STEPControlStd_ShellBasedSurfaceModel translates a shape into a STEP
+    /// shell_based_surface_model entity.
+    /// - STEPControlStd_GeometricCurveSet translates a shape into a STEP
+    /// geometric_curve_set entity.
+    pub fn transfer_shape_stepmodeltype_bool_progressrange(
+        self: std::pin::Pin<&mut Self>,
+        sh: &crate::ffi::TopoDS_Shape,
+        mode: i32,
+        compgraph: bool,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> i32 {
+        crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_bool_progressrange(
+            self,
+            sh,
+            mode,
+            compgraph,
+            theProgress,
+        )
+    }
+
+    /// Translates shape sh to a STEP entity
+    pub fn transfer_shape_stepmodeltype_parameters_bool_progressrange(
+        self: std::pin::Pin<&mut Self>,
+        sh: &crate::ffi::TopoDS_Shape,
+        mode: i32,
+        theParams: &crate::ffi::DESTEP_Parameters,
+        compgraph: bool,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> i32 {
+        crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(
+            self,
+            sh,
+            mode,
+            theParams,
+            compgraph,
+            theProgress,
+        )
+    }
+
+    /// Writes a STEP model in the file identified by filename.
+    pub fn write(self: std::pin::Pin<&mut Self>, theFileName: &str) -> i32 {
+        crate::ffi::STEPControl_Writer_write(self, theFileName)
     }
 }

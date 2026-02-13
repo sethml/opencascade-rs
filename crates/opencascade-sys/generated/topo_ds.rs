@@ -854,6 +854,31 @@ impl Shape {
         crate::ffi::TopoDS_Shape_located(self, theLoc, theRaiseExc)
     }
 
+    /// Returns the shape orientation.
+    pub fn orientation(&self) -> i32 {
+        crate::ffi::TopoDS_Shape_orientation(self)
+    }
+
+    /// Sets the shape orientation.
+    pub fn orientation_orientation(self: std::pin::Pin<&mut Self>, theOrient: i32) {
+        crate::ffi::TopoDS_Shape_orientation_orientation(self, theOrient)
+    }
+
+    /// Returns  a    shape  similar  to  <me>   with  the
+    /// orientation set to <Or>.
+    pub fn oriented(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shape_oriented(self, theOrient)
+    }
+
+    /// Returns the value of the TopAbs_ShapeEnum
+    /// enumeration that corresponds to this shape, for
+    /// example VERTEX, EDGE, and so on.
+    /// Exceptions
+    /// Standard_NullObject if this shape is null.
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::TopoDS_Shape_shape_type(self)
+    }
+
     /// Returns a shape similar to <me> with a location multiplied by thePosition.
     /// @param thePosition the transformation to apply.
     /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
@@ -878,6 +903,19 @@ impl Shape {
     /// method from the TopAbs package.
     pub fn complemented(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::TopoDS_Shape_complemented(self)
+    }
+
+    /// Updates the Shape Orientation by composition with theOrient,
+    /// using the Compose method from the TopAbs package.
+    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: i32) {
+        crate::ffi::TopoDS_Shape_compose(self, theOrient)
+    }
+
+    /// Returns  a  shape   similar   to  <me>   with  the
+    /// orientation composed with theOrient, using the
+    /// Compose method from the TopAbs package.
+    pub fn composed(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shape_composed(self, theOrient)
     }
 
     /// Returns a new Shape with the  same Orientation and
@@ -1280,6 +1318,12 @@ impl Solid {
 pub use crate::ffi::TopoDS_TShape as TShape;
 
 impl TShape {
+    /// Returns the type as a term of the ShapeEnum enum :
+    /// VERTEX, EDGE, WIRE, FACE, ....
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::TopoDS_TShape_shape_type(self)
+    }
+
     /// Returns a copy  of the  TShape  with no sub-shapes.
     pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
         crate::ffi::TopoDS_TShape_empty_copy(self)

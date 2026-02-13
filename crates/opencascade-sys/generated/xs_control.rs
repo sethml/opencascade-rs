@@ -62,6 +62,12 @@ impl Reader {
         crate::ffi::XSControl_Reader_set_norm(self, norm)
     }
 
+    /// Loads a file and returns the read status
+    /// Zero for a Model which complies with the Controller
+    pub fn read_file(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
+        crate::ffi::XSControl_Reader_read_file(self, filename)
+    }
+
     /// Returns a list of entities from the IGES or STEP file
     /// according to the following rules:
     /// - if first and second are empty strings, the whole file is selected.
@@ -112,5 +118,25 @@ impl Reader {
     /// - a compound containing the resulting shapes if there are more than one.
     pub fn one_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::XSControl_Reader_one_shape(self)
+    }
+
+    /// Prints the check list attached to loaded data, on the Standard
+    /// Trace File (starts at std::cout)
+    /// All messages or fails only, according to <failsonly>
+    /// mode = 0 : per entity, prints messages
+    /// mode = 1 : per message, just gives count of entities per check
+    /// mode = 2 : also gives entity numbers
+    pub fn print_check_load(&self, failsonly: bool, mode: i32) {
+        crate::ffi::XSControl_Reader_print_check_load(self, failsonly, mode)
+    }
+
+    /// Displays check results for the
+    /// last translation of IGES or STEP entities to Open CASCADE
+    /// entities. Only fail messages are displayed if failsonly is
+    /// true. All messages are displayed if failsonly is
+    /// false. mode determines the contents and the order of the
+    /// messages according to the terms of the IFSelect_PrintCount enumeration.
+    pub fn print_check_transfer(&self, failsonly: bool, mode: i32) {
+        crate::ffi::XSControl_Reader_print_check_transfer(self, failsonly, mode)
     }
 }

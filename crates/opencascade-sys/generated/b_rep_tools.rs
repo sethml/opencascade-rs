@@ -303,12 +303,41 @@ impl BRepTools {
     /// @param[in] theShape  the shape to write
     /// @param[in] theFile   the path to file to output shape into
     /// @param theProgress the range of progress indicator to fill in
-    pub fn write(
+    pub fn write_shape_charptr_progressrange(
         theShape: &crate::ffi::TopoDS_Shape,
         theFile: &str,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> bool {
-        crate::ffi::BRepTools_write(theShape, theFile, theProgress)
+        crate::ffi::BRepTools_write_shape_charptr_progressrange(theShape, theFile, theProgress)
+    }
+
+    /// Writes the shape to the file in an ASCII format of specified version.
+    /// @param[in] theShape          the shape to write
+    /// @param[in] theFile           the path to file to output shape into
+    /// @param[in] theWithTriangles  flag which specifies whether to save shape with (TRUE) or without
+    /// (FALSE) triangles;
+    /// has no effect on triangulation-only geometry
+    /// @param[in] theWithNormals    flag which specifies whether to save triangulation with (TRUE) or
+    /// without (FALSE) normals;
+    /// has no effect on triangulation-only geometry
+    /// @param[in] theVersion        the TopTools format version
+    /// @param theProgress the range of progress indicator to fill in
+    pub fn write_shape_charptr_bool2_formatversion_progressrange(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theFile: &str,
+        theWithTriangles: bool,
+        theWithNormals: bool,
+        theVersion: i32,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        crate::ffi::BRepTools_write_shape_charptr_bool2_formatversion_progressrange(
+            theShape,
+            theFile,
+            theWithTriangles,
+            theWithNormals,
+            theVersion,
+            theProgress,
+        )
     }
 
     /// Reads a Shape  from <File>,  returns it in  <Sh>.
@@ -337,6 +366,15 @@ impl BRepTools {
         theL: f64,
     ) -> f64 {
         crate::ffi::BRepTools_eval_and_update_tol(theE, theC3d, theC2d, theS, theF, theL)
+    }
+
+    /// returns the cumul  of the orientation  of <Edge>
+    /// and thc containing wire in <Face>
+    pub fn ori_edge_in_face(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+    ) -> i32 {
+        crate::ffi::BRepTools_ori_edge_in_face(theEdge, theFace)
     }
 
     /// Removes internal sub-shapes from the shape.
@@ -510,6 +548,24 @@ impl ReShape {
         shape: &crate::ffi::TopoDS_Shape,
     ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::BRepTools_ReShape_value(self, shape)
+    }
+
+    /// Applies the substitutions requests to a shape.
+    ///
+    /// theUntil gives the level of type until which requests are taken into account.
+    /// For subshapes of the type <until> no rebuild and further exploring are done.
+    ///
+    /// NOTE: each subshape can be replaced by shape of the same type
+    /// or by shape containing only shapes of that type
+    /// (for example, TopoDS_Edge can be replaced by TopoDS_Edge,
+    /// TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges).
+    /// If incompatible shape type is encountered, it is ignored and flag FAIL1 is set in Status.
+    pub fn apply(
+        self: std::pin::Pin<&mut Self>,
+        theShape: &crate::ffi::TopoDS_Shape,
+        theUntil: i32,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepTools_ReShape_apply(self, theShape, theUntil)
     }
 
     pub fn copy_vertex_vertex_real(

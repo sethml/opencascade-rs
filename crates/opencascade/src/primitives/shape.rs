@@ -1,6 +1,4 @@
 // NOTE: This file is partially blocked because:
-// - TopAbs_ShapeEnum not generated (enums blocked)
-// - BRepFilletAPI needs ChFi3d_FilletShape enum (not generated)
 // - STEP/IGES readers need custom helper functions
 // - Mesher is blocked
 // See TRANSITION_PLAN.md for details.
@@ -15,7 +13,7 @@ use crate::{
 };
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep_algo_api, b_rep_mesh, b_rep_prim_api, gp, message, stl_api, topo_ds};
+use opencascade_sys::{b_rep_algo_api, b_rep_fillet_api, b_rep_mesh, b_rep_prim_api, gp, message, stl_api, top_abs, top_exp, topo_ds};
 use std::path::Path;
 
 pub struct Shape {
@@ -367,23 +365,19 @@ impl Shape {
         }
     }
 
-    // NOTE: shape_type is blocked because TopAbs_ShapeEnum not generated
-    #[allow(unused)]
     pub fn shape_type(&self) -> super::ShapeType {
-        unimplemented!(
-            "Shape::shape_type is blocked pending TopAbs_ShapeEnum support"
-        );
+        let raw = self.inner.shape_type();
+        let shape_enum = top_abs::ShapeEnum::try_from(raw)
+            .expect("Invalid ShapeEnum value from OCCT");
+        shape_enum.into()
     }
 
-    // NOTE: fillet_edge is blocked because BRepFilletAPI_MakeFillet needs edge casting
-    #[allow(unused)]
     #[must_use]
-    pub fn fillet_edge(&self, _radius: f64, _edge: &Edge) -> Self {
-        unimplemented!(
-            "Shape::fillet_edge is blocked pending BRepFilletAPI_MakeFillet support"
-        );
+    pub fn fillet_edge(&self, radius: f64, edge: &Edge) -> Self {
+        self.fillet_edges(radius, [edge])
     }
 
+    // NOTE: variable_fillet_edge is blocked pending TColgp_Array1OfPnt2d support
     #[allow(unused)]
     #[must_use]
     pub fn variable_fillet_edge(
@@ -392,30 +386,33 @@ impl Shape {
         _edge: &Edge,
     ) -> Self {
         unimplemented!(
-            "Shape::variable_fillet_edge is blocked pending BRepFilletAPI_MakeFillet support"
+            "Shape::variable_fillet_edge is blocked pending TColgp_Array1OfPnt2d support"
         );
     }
 
-    #[allow(unused)]
     #[must_use]
-    pub fn chamfer_edge(&self, _distance: f64, _edge: &Edge) -> Self {
-        unimplemented!(
-            "Shape::chamfer_edge is blocked pending BRepFilletAPI_MakeChamfer support"
-        );
+    pub fn chamfer_edge(&self, distance: f64, edge: &Edge) -> Self {
+        self.chamfer_edges(distance, [edge])
     }
 
-    #[allow(unused)]
     #[must_use]
     pub fn fillet_edges<T: AsRef<Edge>>(
         &self,
-        _radius: f64,
-        _edges: impl IntoIterator<Item = T>,
+        radius: f64,
+        edges: impl IntoIterator<Item = T>,
     ) -> Self {
-        unimplemented!(
-            "Shape::fillet_edges is blocked pending BRepFilletAPI_MakeFillet support"
-        );
+        let progress = message::ProgressRange::new();
+        // ChFi3d_Rational = 0
+        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(&self.inner, 0);
+        for edge in edges {
+            make_fillet.pin_mut().add_real_edge(radius, &edge.as_ref().inner);
+        }
+        make_fillet.pin_mut().build(&progress);
+        let shape = make_fillet.pin_mut().shape();
+        Self::from_shape(shape)
     }
 
+    // NOTE: variable_fillet_edges is blocked pending TColgp_Array1OfPnt2d support
     #[allow(unused)]
     #[must_use]
     pub fn variable_fillet_edges<T: AsRef<Edge>>(
@@ -424,37 +421,36 @@ impl Shape {
         _edges: impl IntoIterator<Item = T>,
     ) -> Self {
         unimplemented!(
-            "Shape::variable_fillet_edges is blocked pending BRepFilletAPI_MakeFillet support"
+            "Shape::variable_fillet_edges is blocked pending TColgp_Array1OfPnt2d support"
         );
     }
 
-    #[allow(unused)]
     #[must_use]
     pub fn chamfer_edges<T: AsRef<Edge>>(
         &self,
-        _distance: f64,
-        _edges: impl IntoIterator<Item = T>,
+        distance: f64,
+        edges: impl IntoIterator<Item = T>,
     ) -> Self {
-        unimplemented!(
-            "Shape::chamfer_edges is blocked pending BRepFilletAPI_MakeChamfer support"
-        );
+        let progress = message::ProgressRange::new();
+        let mut make_chamfer = b_rep_fillet_api::MakeChamfer::new_shape(&self.inner);
+        for edge in edges {
+            make_chamfer.pin_mut().add_real_edge(distance, &edge.as_ref().inner);
+        }
+        make_chamfer.pin_mut().build(&progress);
+        let shape = make_chamfer.pin_mut().shape();
+        Self::from_shape(shape)
     }
 
-    // NOTE: fillet (all edges) is blocked because edges() is blocked
-    #[allow(unused)]
     #[must_use]
-    pub fn fillet(&self, _radius: f64) -> Self {
-        unimplemented!(
-            "Shape::fillet is blocked pending TopAbs_ShapeEnum enum support"
-        );
+    pub fn fillet(&self, radius: f64) -> Self {
+        let edges: Vec<Edge> = self.edges().collect();
+        self.fillet_edges(radius, &edges)
     }
 
-    #[allow(unused)]
     #[must_use]
-    pub fn chamfer(&self, _distance: f64) -> Self {
-        unimplemented!(
-            "Shape::chamfer is blocked pending TopAbs_ShapeEnum enum support"
-        );
+    pub fn chamfer(&self, distance: f64) -> Self {
+        let edges: Vec<Edge> = self.edges().collect();
+        self.chamfer_edges(distance, &edges)
     }
 
     /// Boolean subtraction: returns a new shape with `other` removed from `self`.
@@ -638,20 +634,22 @@ impl Shape {
         );
     }
 
-    // NOTE: edges is blocked because TopExp_Explorer needs TopAbs_ShapeEnum
-    #[allow(unused)]
     pub fn edges(&self) -> super::EdgeIterator {
-        unimplemented!(
-            "Shape::edges is blocked pending TopAbs_ShapeEnum enum support"
+        let explorer = top_exp::Explorer::new_shape_shapeenum2(
+            &self.inner,
+            top_abs::ShapeEnum::Edge.into(),
+            top_abs::ShapeEnum::Shape.into(),
         );
+        super::EdgeIterator { explorer }
     }
 
-    // NOTE: faces is blocked because TopExp_Explorer needs TopAbs_ShapeEnum
-    #[allow(unused)]
     pub fn faces(&self) -> super::FaceIterator {
-        unimplemented!(
-            "Shape::faces is blocked pending TopAbs_ShapeEnum enum support"
+        let explorer = top_exp::Explorer::new_shape_shapeenum2(
+            &self.inner,
+            top_abs::ShapeEnum::Face.into(),
+            top_abs::ShapeEnum::Shape.into(),
         );
+        super::FaceIterator { explorer }
     }
 
     // NOTE: faces_along_line is blocked because BRepIntCurveSurface_Inter not generated
@@ -707,30 +705,24 @@ pub struct LineFaceHitPoint {
     pub point: DVec3,
 }
 
-// NOTE: ChamferMaker is blocked because BRepFilletAPI_MakeChamfer is not fully accessible
 pub struct ChamferMaker {
-    _private: (),
+    inner: UniquePtr<b_rep_fillet_api::MakeChamfer>,
 }
 
 impl ChamferMaker {
-    #[allow(unused)]
-    pub fn new(_shape: &Shape) -> Self {
-        unimplemented!(
-            "ChamferMaker::new is blocked pending BRepFilletAPI_MakeChamfer support"
-        );
+    pub fn new(shape: &Shape) -> Self {
+        let inner = b_rep_fillet_api::MakeChamfer::new_shape(&shape.inner);
+        Self { inner }
     }
 
-    #[allow(unused)]
-    pub fn add_edge(&mut self, _distance: f64, _edge: &Edge) {
-        unimplemented!(
-            "ChamferMaker::add_edge is blocked pending BRepFilletAPI_MakeChamfer support"
-        );
+    pub fn add_edge(&mut self, distance: f64, edge: &Edge) {
+        self.inner.pin_mut().add_real_edge(distance, &edge.inner);
     }
 
-    #[allow(unused)]
-    pub fn build(self) -> Shape {
-        unimplemented!(
-            "ChamferMaker::build is blocked pending BRepFilletAPI_MakeChamfer support"
-        );
+    pub fn build(mut self) -> Shape {
+        let progress = message::ProgressRange::new();
+        self.inner.pin_mut().build(&progress);
+        let shape = self.inner.pin_mut().shape();
+        Shape::from_shape(shape)
     }
 }

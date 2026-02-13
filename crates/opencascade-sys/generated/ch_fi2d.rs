@@ -195,4 +195,8 @@ impl Builder {
     pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {
         crate::ffi::ChFi2d_Builder_result(self)
     }
+
+    pub fn status(&self) -> i32 {
+        crate::ffi::ChFi2d_Builder_status(self)
+    }
 }

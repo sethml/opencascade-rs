@@ -91,6 +91,30 @@ impl Edge {
         crate::ffi::BRepMesh_Edge_ctor()
     }
 
+    /// Constructs a link between two vertices.
+    pub fn new_int2_degreeoffreedom(
+        theFirstNode: i32,
+        theLastNode: i32,
+        theMovability: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_Edge_ctor_int2_degreeoffreedom(
+            theFirstNode,
+            theLastNode,
+            theMovability,
+        )
+    }
+
+    /// Returns movability flag of the Link.
+    pub fn movability(&self) -> i32 {
+        crate::ffi::BRepMesh_Edge_movability(self)
+    }
+
+    /// Sets movability flag of the Link.
+    /// @param theMovability flag to be set.
+    pub fn set_movability(self: std::pin::Pin<&mut Self>, theMovability: i32) {
+        crate::ffi::BRepMesh_Edge_set_movability(self, theMovability)
+    }
+
     /// Upcast to BRepMesh_OrientedEdge
     pub fn as_oriented_edge(&self) -> &OrientedEdge {
         crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge(self)
@@ -260,6 +284,16 @@ impl Triangle {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_Triangle_ctor()
     }
+
+    /// Returns movability of the triangle.
+    pub fn movability(&self) -> i32 {
+        crate::ffi::BRepMesh_Triangle_movability(self)
+    }
+
+    /// Sets movability of the triangle.
+    pub fn set_movability(self: std::pin::Pin<&mut Self>, theMovability: i32) {
+        crate::ffi::BRepMesh_Triangle_set_movability(self, theMovability)
+    }
 }
 
 // ========================
@@ -275,5 +309,52 @@ impl Vertex {
     /// Default constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_Vertex_ctor()
+    }
+
+    /// Creates vertex associated with point in 3d space.
+    /// @param theUV position of vertex in parametric space.
+    /// @param theLocation3d index of 3d point to be associated with vertex.
+    /// @param theMovability movability of the vertex.
+    pub fn new_xy_int_degreeoffreedom(
+        theUV: &crate::ffi::gp_XY,
+        theLocation3d: i32,
+        theMovability: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_Vertex_ctor_xy_int_degreeoffreedom(theUV, theLocation3d, theMovability)
+    }
+
+    /// Creates vertex without association with point in 3d space.
+    /// @param theU U position of vertex in parametric space.
+    /// @param theV V position of vertex in parametric space.
+    /// @param theMovability movability of the vertex.
+    pub fn new_real2_degreeoffreedom(
+        theU: f64,
+        theV: f64,
+        theMovability: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_Vertex_ctor_real2_degreeoffreedom(theU, theV, theMovability)
+    }
+
+    /// Initializes vertex associated with point in 3d space.
+    /// @param theUV position of vertex in parametric space.
+    /// @param theLocation3d index of 3d point to be associated with vertex.
+    /// @param theMovability movability of the vertex.
+    pub fn initialize(
+        self: std::pin::Pin<&mut Self>,
+        theUV: &crate::ffi::gp_XY,
+        theLocation3d: i32,
+        theMovability: i32,
+    ) {
+        crate::ffi::BRepMesh_Vertex_initialize(self, theUV, theLocation3d, theMovability)
+    }
+
+    /// Returns movability of the vertex.
+    pub fn movability(&self) -> i32 {
+        crate::ffi::BRepMesh_Vertex_movability(self)
+    }
+
+    /// Sets movability of the vertex.
+    pub fn set_movability(self: std::pin::Pin<&mut Self>, theMovability: i32) {
+        crate::ffi::BRepMesh_Vertex_set_movability(self, theMovability)
     }
 }

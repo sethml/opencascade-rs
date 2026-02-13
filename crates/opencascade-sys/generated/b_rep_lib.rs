@@ -438,6 +438,11 @@ impl MakeEdge {
         )
     }
 
+    /// Returns the error description when NotDone.
+    pub fn error(&self) -> i32 {
+        crate::ffi::BRepLib_MakeEdge_error(self)
+    }
+
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
         crate::ffi::BRepLib_MakeEdge_as_BRepLib_Command(self)
@@ -725,6 +730,10 @@ impl MakeFace {
         crate::ffi::BRepLib_MakeFace_ctor_face_wire(F, W)
     }
 
+    pub fn error(&self) -> i32 {
+        crate::ffi::BRepLib_MakeFace_error(self)
+    }
+
     /// Checks the specified curve is degenerated
     /// according to specified tolerance.
     /// Returns <theActTol> less than <theMaxTol>, which shows
@@ -822,6 +831,12 @@ impl MakeFace {
 pub use crate::ffi::BRepLib_MakeShape as MakeShape;
 
 impl MakeShape {
+    /// returns the status of the Face after
+    /// the shape creation.
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
+        crate::ffi::BRepLib_MakeShape_face_status(self, F)
+    }
+
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
         crate::ffi::BRepLib_MakeShape_as_BRepLib_Command(self)
@@ -894,6 +909,12 @@ impl MakeSolid {
         S: &crate::ffi::TopoDS_Shell,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepLib_MakeSolid_ctor_solid_shell(So, S)
+    }
+
+    /// returns the status of the Face after
+    /// the shape creation.
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
+        crate::ffi::BRepLib_MakeSolid_face_status(self, F)
     }
 
     /// Upcast to BRepLib_Command
@@ -1149,6 +1170,10 @@ impl MakeWire {
         E: &crate::ffi::TopoDS_Edge,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepLib_MakeWire_ctor_wire_edge(W, E)
+    }
+
+    pub fn error(&self) -> i32 {
+        crate::ffi::BRepLib_MakeWire_error(self)
     }
 
     /// Upcast to BRepLib_Command

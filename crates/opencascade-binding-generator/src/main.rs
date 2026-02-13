@@ -441,7 +441,8 @@ fn generate_unified(
             .copied()
             .collect();
 
-        if module_classes.is_empty() && module_functions.is_empty() {
+        let has_module_enums = symbol_table.enums_by_module.contains_key(&module.rust_name);
+        if module_classes.is_empty() && module_functions.is_empty() && !has_module_enums {
             continue;
         }
 

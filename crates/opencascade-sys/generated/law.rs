@@ -24,6 +24,16 @@ impl BSpFunc {
         crate::ffi::Law_BSpFunc_ctor()
     }
 
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Law_BSpFunc_continuity(self)
+    }
+
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Law_BSpFunc_nb_intervals(self, S)
+    }
+
     /// Returns a  law equivalent of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
     /// test for 3d points confusion.
@@ -76,6 +86,16 @@ impl HandleLawBSpFunc {
 pub use crate::ffi::Law_Function as Function;
 
 impl Function {
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Law_Function_continuity(self)
+    }
+
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Law_Function_nb_intervals(self, S)
+    }
+
     /// Returns a  law equivalent of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
     /// test for 3d points confusion.

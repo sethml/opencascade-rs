@@ -114,6 +114,11 @@ impl MakeChamfer {
         crate::ffi::BRepFilletAPI_MakeChamfer_ctor_shape(S)
     }
 
+    /// Sets the mode of chamfer
+    pub fn set_mode(self: std::pin::Pin<&mut Self>, theMode: i32) {
+        crate::ffi::BRepFilletAPI_MakeChamfer_set_mode(self, theMode)
+    }
+
     /// Returns the first vertex of the contour of index IC
     /// in the internal data structure of this algorithm.
     /// Warning
@@ -207,8 +212,29 @@ impl MakeFillet {
     /// which   parameterisation matches  the  circle one.
     /// ChFi3d_Polynomial  corresponds to  a    polynomial
     /// representation of circles.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFilletAPI_MakeFillet_ctor_shape(S)
+    pub fn new_shape_filletshape(
+        S: &crate::ffi::TopoDS_Shape,
+        FShape: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFilletAPI_MakeFillet_ctor_shape_filletshape(S, FShape)
+    }
+
+    /// Changes     the      parameters     of  continiuity
+    /// InternalContinuity to produce fillet'surfaces with
+    /// an continuity   Ci (i=0,1 or    2).
+    /// By defaultInternalContinuity = GeomAbs_C1.
+    /// AngularTolerance  is the G1 tolerance between fillet
+    /// and support'faces.
+    pub fn set_continuity(
+        self: std::pin::Pin<&mut Self>,
+        InternalContinuity: i32,
+        AngularTolerance: f64,
+    ) {
+        crate::ffi::BRepFilletAPI_MakeFillet_set_continuity(
+            self,
+            InternalContinuity,
+            AngularTolerance,
+        )
     }
 
     pub fn get_law(
@@ -217,6 +243,16 @@ impl MakeFillet {
         E: &crate::ffi::TopoDS_Edge,
     ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
         crate::ffi::BRepFilletAPI_MakeFillet_get_law(self, IC, E)
+    }
+
+    /// Assigns FShape as the type of fillet shape built by this algorithm.
+    pub fn set_fillet_shape(self: std::pin::Pin<&mut Self>, FShape: i32) {
+        crate::ffi::BRepFilletAPI_MakeFillet_set_fillet_shape(self, FShape)
+    }
+
+    /// Returns the type of fillet shape built by this algorithm.
+    pub fn get_fillet_shape(&self) -> i32 {
+        crate::ffi::BRepFilletAPI_MakeFillet_get_fillet_shape(self)
     }
 
     /// Returns the first vertex of the contour of index IC
@@ -256,6 +292,18 @@ impl MakeFillet {
     /// if (HasResult()) returns the partial result
     pub fn bad_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::BRepFilletAPI_MakeFillet_bad_shape(self)
+    }
+
+    /// returns the status concerning the contour IC in case of error
+    /// ChFiDS_Ok : the computation is Ok
+    /// ChFiDS_StartsolFailure : the computation can't start, perhaps the
+    /// the radius is too big
+    /// ChFiDS_TwistedSurface : the computation failed because of a twisted
+    /// surface
+    /// ChFiDS_WalkingFailure : there is a problem in the walking
+    /// ChFiDS_Error:  other error different from above
+    pub fn stripe_status(&self, IC: i32) -> i32 {
+        crate::ffi::BRepFilletAPI_MakeFillet_stripe_status(self, IC)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -548,6 +596,10 @@ impl MakeFillet2d {
         Chamfer: &crate::ffi::TopoDS_Edge,
     ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
         crate::ffi::BRepFilletAPI_MakeFillet2d_remove_chamfer(self, Chamfer)
+    }
+
+    pub fn status(&self) -> i32 {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_status(self)
     }
 
     /// Upcast to BRepBuilderAPI_Command

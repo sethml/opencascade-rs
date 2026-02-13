@@ -806,6 +806,97 @@ impl GWedge {
     pub fn axes(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
         crate::ffi::BRepPrim_GWedge_axes(self)
     }
+
+    /// Opens <me> in <d1> direction. A face and its edges
+    /// or vertices are said nonexistent.
+    pub fn open(self: std::pin::Pin<&mut Self>, d1: i32) {
+        crate::ffi::BRepPrim_GWedge_open(self, d1)
+    }
+
+    /// Closes <me> in <d1> direction. A face and its
+    /// edges or vertices are said existent.
+    pub fn close(self: std::pin::Pin<&mut Self>, d1: i32) {
+        crate::ffi::BRepPrim_GWedge_close(self, d1)
+    }
+
+    /// Returns True if <me> is open in <d1> direction.
+    pub fn is_infinite(&self, d1: i32) -> bool {
+        crate::ffi::BRepPrim_GWedge_is_infinite(self, d1)
+    }
+
+    /// Returns True if <me> has a Face in <d1> direction.
+    pub fn has_face(&self, d1: i32) -> bool {
+        crate::ffi::BRepPrim_GWedge_has_face(self, d1)
+    }
+
+    /// Returns the Face of <me> located in <d1> direction.
+    pub fn face(self: std::pin::Pin<&mut Self>, d1: i32) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_GWedge_face(self, d1)
+    }
+
+    /// Returns the plane of the Face of <me> located in
+    /// <d1> direction.
+    pub fn plane(self: std::pin::Pin<&mut Self>, d1: i32) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::BRepPrim_GWedge_plane(self, d1)
+    }
+
+    /// Returns True if <me> has a Wire in <d1> direction.
+    pub fn has_wire(&self, d1: i32) -> bool {
+        crate::ffi::BRepPrim_GWedge_has_wire(self, d1)
+    }
+
+    /// Returns the Wire of <me> located in <d1> direction.
+    pub fn wire(self: std::pin::Pin<&mut Self>, d1: i32) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_GWedge_wire(self, d1)
+    }
+
+    /// Returns True if <me> has an Edge in <d1><d2> direction.
+    pub fn has_edge(&self, d1: i32, d2: i32) -> bool {
+        crate::ffi::BRepPrim_GWedge_has_edge(self, d1, d2)
+    }
+
+    /// Returns the Edge of <me> located in <d1><d2> direction.
+    pub fn edge(self: std::pin::Pin<&mut Self>, d1: i32, d2: i32) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_GWedge_edge(self, d1, d2)
+    }
+
+    /// Returns the line of the Edge of <me> located in
+    /// <d1><d2> direction.
+    pub fn line(
+        self: std::pin::Pin<&mut Self>,
+        d1: i32,
+        d2: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::BRepPrim_GWedge_line(self, d1, d2)
+    }
+
+    /// Returns True if <me> has a Vertex in <d1><d2><d3>
+    /// direction.
+    pub fn has_vertex(&self, d1: i32, d2: i32, d3: i32) -> bool {
+        crate::ffi::BRepPrim_GWedge_has_vertex(self, d1, d2, d3)
+    }
+
+    /// Returns the Vertex of <me> located in <d1><d2><d3>
+    /// direction.
+    pub fn vertex(
+        self: std::pin::Pin<&mut Self>,
+        d1: i32,
+        d2: i32,
+        d3: i32,
+    ) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_GWedge_vertex(self, d1, d2, d3)
+    }
+
+    /// Returns the point of the Vertex of <me> located in
+    /// <d1><d2><d3> direction.
+    pub fn point(
+        self: std::pin::Pin<&mut Self>,
+        d1: i32,
+        d2: i32,
+        d3: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepPrim_GWedge_point(self, d1, d2, d3)
+    }
 }
 
 // ========================

@@ -146,6 +146,84 @@ impl Analyse {
         crate::ffi::BRepOffset_Analyse_ctor_shape_real(theS, theAngle)
     }
 
+    /// Stores in <L> all the edges of Type <T>
+    /// on the vertex <V>.
+    pub fn edges_vertex_typeofconcavity_listofshape(
+        &self,
+        theV: &crate::ffi::TopoDS_Vertex,
+        theType: i32,
+        theL: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
+    ) {
+        crate::ffi::BRepOffset_Analyse_edges_vertex_typeofconcavity_listofshape(
+            self, theV, theType, theL,
+        )
+    }
+
+    /// Stores in <L> all the edges of Type <T>
+    /// on the face <F>.
+    pub fn edges_face_typeofconcavity_listofshape(
+        &self,
+        theF: &crate::ffi::TopoDS_Face,
+        theType: i32,
+        theL: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
+    ) {
+        crate::ffi::BRepOffset_Analyse_edges_face_typeofconcavity_listofshape(
+            self, theF, theType, theL,
+        )
+    }
+
+    /// Explode in compounds of faces where
+    /// all the connex edges are of type <Side>
+    pub fn explode_listofshape_typeofconcavity(
+        &self,
+        theL: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
+        theType: i32,
+    ) {
+        crate::ffi::BRepOffset_Analyse_explode_listofshape_typeofconcavity(self, theL, theType)
+    }
+
+    /// Explode in compounds of faces where
+    /// all the connex edges are of type <Side1> or <Side2>
+    pub fn explode_listofshape_typeofconcavity2(
+        &self,
+        theL: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
+        theType1: i32,
+        theType2: i32,
+    ) {
+        crate::ffi::BRepOffset_Analyse_explode_listofshape_typeofconcavity2(
+            self, theL, theType1, theType2,
+        )
+    }
+
+    /// Add in <CO> the faces of the shell containing <Face>
+    /// where all the connex edges are of type <Side>.
+    pub fn add_faces_face_compound_mapofshape_typeofconcavity(
+        &self,
+        theFace: &crate::ffi::TopoDS_Face,
+        theCo: std::pin::Pin<&mut crate::ffi::TopoDS_Compound>,
+        theMap: std::pin::Pin<&mut crate::ffi::TopTools_MapOfShape>,
+        theType: i32,
+    ) {
+        crate::ffi::BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity(
+            self, theFace, theCo, theMap, theType,
+        )
+    }
+
+    /// Add in <CO> the faces of the shell containing <Face>
+    /// where all the connex edges are of type <Side1> or <Side2>.
+    pub fn add_faces_face_compound_mapofshape_typeofconcavity2(
+        &self,
+        theFace: &crate::ffi::TopoDS_Face,
+        theCo: std::pin::Pin<&mut crate::ffi::TopoDS_Compound>,
+        theMap: std::pin::Pin<&mut crate::ffi::TopTools_MapOfShape>,
+        theType1: i32,
+        theType2: i32,
+    ) {
+        crate::ffi::BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity2(
+            self, theFace, theCo, theMap, theType1, theType2,
+        )
+    }
+
     /// Returns the new face constructed for the edge connecting
     /// the two tangent faces having different offset values
     pub fn generated(
@@ -165,6 +243,18 @@ pub use crate::ffi::BRepOffset_Interval as Interval;
 impl Interval {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepOffset_Interval_ctor()
+    }
+
+    pub fn new_real2_typeofconcavity(U1: f64, U2: f64, Type: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffset_Interval_ctor_real2_typeofconcavity(U1, U2, Type)
+    }
+
+    pub fn type_typeofconcavity(self: std::pin::Pin<&mut Self>, T: i32) {
+        crate::ffi::BRepOffset_Interval_type_typeofconcavity(self, T)
+    }
+
+    pub fn type_(&self) -> i32 {
+        crate::ffi::BRepOffset_Interval_type_(self)
     }
 }
 
@@ -191,12 +281,66 @@ impl MakeOffset {
         crate::ffi::BRepOffset_MakeOffset_ctor()
     }
 
-    pub fn new_shape_real2(
+    pub fn new_shape_real2_mode_bool2_jointype_bool2_progressrange(
         S: &crate::ffi::TopoDS_Shape,
         Offset: f64,
         Tol: f64,
+        Mode: i32,
+        Intersection: bool,
+        SelfInter: bool,
+        Join: i32,
+        Thickening: bool,
+        RemoveIntEdges: bool,
+        theRange: &crate::ffi::Message_ProgressRange,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffset_MakeOffset_ctor_shape_real2(S, Offset, Tol)
+        crate::ffi::BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool2_progressrange(
+            S,
+            Offset,
+            Tol,
+            Mode,
+            Intersection,
+            SelfInter,
+            Join,
+            Thickening,
+            RemoveIntEdges,
+            theRange,
+        )
+    }
+
+    pub fn initialize(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+        Offset: f64,
+        Tol: f64,
+        Mode: i32,
+        Intersection: bool,
+        SelfInter: bool,
+        Join: i32,
+        Thickening: bool,
+        RemoveIntEdges: bool,
+    ) {
+        crate::ffi::BRepOffset_MakeOffset_initialize(
+            self,
+            S,
+            Offset,
+            Tol,
+            Mode,
+            Intersection,
+            SelfInter,
+            Join,
+            Thickening,
+            RemoveIntEdges,
+        )
+    }
+
+    /// returns information about offset state.
+    pub fn error(&self) -> i32 {
+        crate::ffi::BRepOffset_MakeOffset_error(self)
+    }
+
+    /// Returns myJoin.
+    pub fn get_join_type(&self) -> i32 {
+        crate::ffi::BRepOffset_MakeOffset_get_join_type(self)
     }
 }
 
@@ -235,6 +379,11 @@ impl MakeSimpleOffset {
         crate::ffi::BRepOffset_MakeSimpleOffset_get_error_message(self)
     }
 
+    /// Gets error code.
+    pub fn get_error(&self) -> i32 {
+        crate::ffi::BRepOffset_MakeSimpleOffset_get_error(self)
+    }
+
     /// Returns result shape for the given one (if exists).
     pub fn generated(
         &self,
@@ -268,12 +417,18 @@ impl Offset {
         crate::ffi::BRepOffset_Offset_ctor()
     }
 
-    pub fn new_face_real_bool(
+    pub fn new_face_real_bool_jointype(
         Face: &crate::ffi::TopoDS_Face,
         Offset: f64,
         OffsetOutside: bool,
+        JoinType: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffset_Offset_ctor_face_real_bool(Face, Offset, OffsetOutside)
+        crate::ffi::BRepOffset_Offset_ctor_face_real_bool_jointype(
+            Face,
+            Offset,
+            OffsetOutside,
+            JoinType,
+        )
     }
 
     /// This method will be  called when you want to share
@@ -288,34 +443,37 @@ impl Offset {
     /// E' = the image of E in the offsetting  of
     /// another  face  sharing E  with a
     /// continuity at least G1
-    pub fn new_face_real_datamapofshapeshape_bool(
+    pub fn new_face_real_datamapofshapeshape_bool_jointype(
         Face: &crate::ffi::TopoDS_Face,
         Offset: f64,
         Created: &crate::ffi::TopTools_DataMapOfShapeShape,
         OffsetOutside: bool,
+        JoinType: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool(
+        crate::ffi::BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool_jointype(
             Face,
             Offset,
             Created,
             OffsetOutside,
+            JoinType,
         )
     }
 
-    pub fn new_edge3_real_bool_real(
+    pub fn new_edge3_real_bool_real_shape(
         Path: &crate::ffi::TopoDS_Edge,
         Edge1: &crate::ffi::TopoDS_Edge,
         Edge2: &crate::ffi::TopoDS_Edge,
         Offset: f64,
         Polynomial: bool,
         Tol: f64,
+        Conti: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffset_Offset_ctor_edge3_real_bool_real(
-            Path, Edge1, Edge2, Offset, Polynomial, Tol,
+        crate::ffi::BRepOffset_Offset_ctor_edge3_real_bool_real_shape(
+            Path, Edge1, Edge2, Offset, Polynomial, Tol, Conti,
         )
     }
 
-    pub fn new_edge3_real_edge2_bool_real(
+    pub fn new_edge3_real_edge2_bool_real_shape(
         Path: &crate::ffi::TopoDS_Edge,
         Edge1: &crate::ffi::TopoDS_Edge,
         Edge2: &crate::ffi::TopoDS_Edge,
@@ -324,23 +482,107 @@ impl Offset {
         LastEdge: &crate::ffi::TopoDS_Edge,
         Polynomial: bool,
         Tol: f64,
+        Conti: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffset_Offset_ctor_edge3_real_edge2_bool_real(
-            Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol,
+        crate::ffi::BRepOffset_Offset_ctor_edge3_real_edge2_bool_real_shape(
+            Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol, Conti,
         )
     }
 
     /// Tol and Conti are only used if Polynomial is True
     /// (Used to perform the approximation)
-    pub fn new_vertex_listofshape_real_bool_real(
+    pub fn new_vertex_listofshape_real_bool_real_shape(
         Vertex: &crate::ffi::TopoDS_Vertex,
         LEdge: &crate::ffi::TopTools_ListOfShape,
         Offset: f64,
         Polynomial: bool,
         Tol: f64,
+        Conti: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real(
-            Vertex, LEdge, Offset, Polynomial, Tol,
+        crate::ffi::BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real_shape(
+            Vertex, LEdge, Offset, Polynomial, Tol, Conti,
+        )
+    }
+
+    pub fn init_face_real_bool_jointype(
+        self: std::pin::Pin<&mut Self>,
+        Face: &crate::ffi::TopoDS_Face,
+        Offset: f64,
+        OffsetOutside: bool,
+        JoinType: i32,
+    ) {
+        crate::ffi::BRepOffset_Offset_init_face_real_bool_jointype(
+            self,
+            Face,
+            Offset,
+            OffsetOutside,
+            JoinType,
+        )
+    }
+
+    pub fn init_face_real_datamapofshapeshape_bool_jointype(
+        self: std::pin::Pin<&mut Self>,
+        Face: &crate::ffi::TopoDS_Face,
+        Offset: f64,
+        Created: &crate::ffi::TopTools_DataMapOfShapeShape,
+        OffsetOutside: bool,
+        JoinType: i32,
+    ) {
+        crate::ffi::BRepOffset_Offset_init_face_real_datamapofshapeshape_bool_jointype(
+            self,
+            Face,
+            Offset,
+            Created,
+            OffsetOutside,
+            JoinType,
+        )
+    }
+
+    pub fn init_edge3_real_bool_real_shape(
+        self: std::pin::Pin<&mut Self>,
+        Path: &crate::ffi::TopoDS_Edge,
+        Edge1: &crate::ffi::TopoDS_Edge,
+        Edge2: &crate::ffi::TopoDS_Edge,
+        Offset: f64,
+        Polynomial: bool,
+        Tol: f64,
+        Conti: i32,
+    ) {
+        crate::ffi::BRepOffset_Offset_init_edge3_real_bool_real_shape(
+            self, Path, Edge1, Edge2, Offset, Polynomial, Tol, Conti,
+        )
+    }
+
+    pub fn init_edge3_real_edge2_bool_real_shape(
+        self: std::pin::Pin<&mut Self>,
+        Path: &crate::ffi::TopoDS_Edge,
+        Edge1: &crate::ffi::TopoDS_Edge,
+        Edge2: &crate::ffi::TopoDS_Edge,
+        Offset: f64,
+        FirstEdge: &crate::ffi::TopoDS_Edge,
+        LastEdge: &crate::ffi::TopoDS_Edge,
+        Polynomial: bool,
+        Tol: f64,
+        Conti: i32,
+    ) {
+        crate::ffi::BRepOffset_Offset_init_edge3_real_edge2_bool_real_shape(
+            self, Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol, Conti,
+        )
+    }
+
+    /// Tol and Conti are only used if Polynomial is True
+    /// (Used to perform the approximation)
+    pub fn init_vertex_listofshape_real_bool_real_shape(
+        self: std::pin::Pin<&mut Self>,
+        Vertex: &crate::ffi::TopoDS_Vertex,
+        LEdge: &crate::ffi::TopTools_ListOfShape,
+        Offset: f64,
+        Polynomial: bool,
+        Tol: f64,
+        Conti: i32,
+    ) {
+        crate::ffi::BRepOffset_Offset_init_vertex_listofshape_real_bool_real_shape(
+            self, Vertex, LEdge, Offset, Polynomial, Tol, Conti,
         )
     }
 
@@ -349,5 +591,9 @@ impl Offset {
         Shape: &crate::ffi::TopoDS_Shape,
     ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::BRepOffset_Offset_generated(self, Shape)
+    }
+
+    pub fn status(&self) -> i32 {
+        crate::ffi::BRepOffset_Offset_status(self)
     }
 }
