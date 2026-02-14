@@ -535,6 +535,7 @@ fn parse_function(entity: &Entity, namespace: &str, source_header: &str, verbose
                 name: param_name,
                 ty: parse_type(&param_type),
                 has_default,
+                default_value: None,
             });
         }
     }
@@ -779,19 +780,146 @@ fn parse_params(entity: &Entity) -> Vec<Param> {
             // children (DeclRefExpr, UnexposedExpr, IntegerLiteral, etc.).
             // TypeRef, NamespaceRef, TemplateRef are just type-related and don't
             // indicate defaults.
-            let has_default = param.get_children().iter().any(|c| {
+            let children = param.get_children();
+            let has_default = children.iter().any(|c| {
                 !matches!(
                     c.get_kind(),
                     EntityKind::TypeRef | EntityKind::NamespaceRef | EntityKind::TemplateRef
                 )
             });
+            let default_value = if has_default {
+                extract_default_value(&param)
+            } else {
+                None
+            };
             Some(Param {
                 name,
                 ty: parse_type(&param_type),
                 has_default,
+                default_value,
             })
         })
         .collect()
+}
+
+/// Extract a default value from a parameter's AST children as a Rust literal expression.
+/// Recursively walks through wrapper nodes (UnexposedExpr, CStyleCastExpr, etc.)
+/// to find the actual literal.
+fn extract_default_value(param: &Entity) -> Option<String> {
+    for child in param.get_children() {
+        if let Some(val) = extract_default_from_expr(&child) {
+            return Some(val);
+        }
+    }
+    // Fallback: for macro-expanded literals (e.g., Standard_False → false),
+    // the individual expression node may not have usable source ranges.
+    // Try tokenizing the entire ParmDecl to find `= <value>` pattern.
+    if let Some(range) = param.get_range() {
+        let tokens = range.tokenize();
+        let spellings: Vec<String> = tokens.iter().map(|t| t.get_spelling()).collect();
+        // Look for "=" followed by a value token
+        if let Some(eq_pos) = spellings.iter().position(|s| s == "=") {
+            if eq_pos + 1 < spellings.len() {
+                let val = &spellings[eq_pos + 1];
+                match val.as_str() {
+                    "true" | "Standard_True" => return Some("true".to_string()),
+                    "false" | "Standard_False" => return Some("false".to_string()),
+                    _ => {
+                        // Could be an integer or float literal
+                        if val.parse::<i64>().is_ok() || val.parse::<u64>().is_ok() {
+                            return Some(val.clone());
+                        }
+                        if val.parse::<f64>().is_ok() {
+                            return Some(val.clone());
+                        }
+                        // Check for negative literal: = - <number>
+                        if val == "-" && eq_pos + 2 < spellings.len() {
+                            let next = &spellings[eq_pos + 2];
+                            if next.parse::<i64>().is_ok() || next.parse::<f64>().is_ok() {
+                                return Some(format!("-{}", next));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Debug: print AST for params where we expected a default but couldn't extract it
+    if std::env::var("BINDGEN_DEBUG_DEFAULTS").is_ok() {
+        eprintln!("  [default-debug] Could not extract default for param {:?}", param.get_name());
+    }
+    None
+}
+
+/// Recursively extract a literal value from an expression AST node.
+fn extract_default_from_expr(expr: &Entity) -> Option<String> {
+    use clang::EntityKind::*;
+    match expr.get_kind() {
+        IntegerLiteral => {
+            if let Some(range) = expr.get_range() {
+                let tokens = range.tokenize();
+                if let Some(tok) = tokens.first() {
+                    return Some(tok.get_spelling());
+                }
+            }
+            None
+        }
+        FloatingLiteral => {
+            if let Some(range) = expr.get_range() {
+                let tokens = range.tokenize();
+                if let Some(tok) = tokens.first() {
+                    let text = tok.get_spelling();
+                    // Ensure it has a decimal point for Rust
+                    if text.contains('.') {
+                        return Some(text);
+                    } else {
+                        return Some(format!("{}.0", text));
+                    }
+                }
+            }
+            None
+        }
+        BoolLiteralExpr => {
+            // Try tokenization (works for non-macro-expanded bool literals)
+            if let Some(range) = expr.get_range() {
+                let tokens = range.tokenize();
+                if let Some(tok) = tokens.first() {
+                    let text = tok.get_spelling();
+                    return match text.as_str() {
+                        "true" => Some("true".to_string()),
+                        "false" => Some("false".to_string()),
+                        _ => None,
+                    };
+                }
+            }
+            // For macro-expanded bool literals (Standard_False, Standard_True),
+            // tokenization fails. Return None here; the fallback in
+            // extract_default_value will handle it by tokenizing the parent ParmDecl.
+            None
+        }
+        NullPtrLiteralExpr => Some("std::ptr::null()".to_string()),
+        // Wrapper expressions — look through them to find the actual literal
+        UnexposedExpr | ParenExpr | CStyleCastExpr => {
+            for child in expr.get_children() {
+                if let Some(val) = extract_default_from_expr(&child) {
+                    return Some(val);
+                }
+            }
+            None
+        }
+        UnaryOperator => {
+            // Check if it's a negation of a literal (e.g. -1)
+            if let Some(range) = expr.get_range() {
+                let tokens = range.tokenize();
+                let texts: Vec<String> = tokens.iter().map(|t| t.get_spelling()).collect();
+                if texts.len() >= 2 && texts[0] == "-" {
+                    return Some(format!("-{}", texts[1]));
+                }
+            }
+            None
+        }
+        _ => None,
+    }
 }
 
 /// Parse the return type of a function

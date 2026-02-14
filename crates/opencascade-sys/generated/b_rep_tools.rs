@@ -144,7 +144,7 @@ impl Modifier {
 
     /// Creates an empty Modifier.
     pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_Modifier_ctor()
+        Self::new_bool(false)
     }
 }
 

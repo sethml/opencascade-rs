@@ -399,7 +399,7 @@ impl Surface {
     /// the  parameter  range  in   the  UV space  of  the
     /// restriction.
     pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Surface_ctor_face(F)
+        Self::new_face_bool(F, true)
     }
 
     /// Shallow copy of adaptor

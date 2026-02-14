@@ -376,7 +376,7 @@ impl ExtendedString {
     /// then <isMultiByte> is ignored and each character is
     /// copied to ExtCharacter.
     pub fn new_charptr(astring: &str) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_charptr(astring)
+        Self::new_charptr_bool(astring, false)
     }
 
     /// Creation by converting an Ascii string to an extended
@@ -384,7 +384,7 @@ impl ExtendedString {
     /// If it is not a UTF-8 or multi byte then
     /// each character is copied to ExtCharacter.
     pub fn new_asciistring(astring: &crate::ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_asciistring(astring)
+        Self::new_asciistring_bool(astring, true)
     }
 
     /// Appends <other> to me.

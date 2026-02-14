@@ -593,7 +593,7 @@ impl MakePrism {
         V: &crate::ffi::gp_Vec,
         Copy: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_vec_bool(S, V, Copy)
+        Self::new_shape_vec_bool2(S, V, Copy, true)
     }
 
     /// Builds the prism of base S and vector V. If C is true,
@@ -603,7 +603,7 @@ impl MakePrism {
         S: &crate::ffi::TopoDS_Shape,
         V: &crate::ffi::gp_Vec,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_vec(S, V)
+        Self::new_shape_vec_bool2(S, V, false, true)
     }
 
     /// Builds a semi-infinite or an infinite prism of base S.
@@ -618,7 +618,7 @@ impl MakePrism {
         Inf: bool,
         Copy: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_dir_bool2(S, D, Inf, Copy)
+        Self::new_shape_dir_bool3(S, D, Inf, Copy, true)
     }
 
     /// Builds a semi-infinite or an infinite prism of base S.
@@ -632,7 +632,7 @@ impl MakePrism {
         D: &crate::ffi::gp_Dir,
         Inf: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_dir_bool(S, D, Inf)
+        Self::new_shape_dir_bool3(S, D, Inf, false, true)
     }
 
     /// Builds a semi-infinite or an infinite prism of base S.
@@ -645,7 +645,7 @@ impl MakePrism {
         S: &crate::ffi::TopoDS_Shape,
         D: &crate::ffi::gp_Dir,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_dir(S, D)
+        Self::new_shape_dir_bool3(S, D, true, false, true)
     }
 
     /// Returns the  TopoDS  Shape of the bottom of the prism.
@@ -805,7 +805,7 @@ impl MakeRevol {
         A: &crate::ffi::gp_Ax1,
         D: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepPrimAPI_MakeRevol_ctor_shape_ax1_real(S, A, D)
+        Self::new_shape_ax1_real_bool(S, A, D, false)
     }
 
     /// Builds the Revol of base S, axis  A and angle 2*Pi. If
@@ -814,7 +814,7 @@ impl MakeRevol {
         S: &crate::ffi::TopoDS_Shape,
         A: &crate::ffi::gp_Ax1,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepPrimAPI_MakeRevol_ctor_shape_ax1(S, A)
+        Self::new_shape_ax1_bool(S, A, false)
     }
 
     /// Returns the first shape of the revol  (coinciding with

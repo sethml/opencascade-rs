@@ -69,7 +69,7 @@ impl UnifySameDomain {
         UnifyEdges: bool,
         UnifyFaces: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeUpgrade_UnifySameDomain_ctor_shape_bool2(aShape, UnifyEdges, UnifyFaces)
+        Self::new_shape_bool3(aShape, UnifyEdges, UnifyFaces, false)
     }
 
     /// Constructor defining input shape and necessary flags.
@@ -78,13 +78,13 @@ impl UnifySameDomain {
         aShape: &crate::ffi::TopoDS_Shape,
         UnifyEdges: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeUpgrade_UnifySameDomain_ctor_shape_bool(aShape, UnifyEdges)
+        Self::new_shape_bool3(aShape, UnifyEdges, true, false)
     }
 
     /// Constructor defining input shape and necessary flags.
     /// It does not perform unification.
     pub fn new_shape(aShape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeUpgrade_UnifySameDomain_ctor_shape(aShape)
+        Self::new_shape_bool3(aShape, true, true, false)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

@@ -799,12 +799,6 @@ inline std::unique_ptr<gp_Ax22d> gp_Ax22d_ctor_pnt2d_dir2d_bool(const gp_Pnt2d& 
 inline std::unique_ptr<gp_Ax22d> gp_Ax22d_ctor_ax2d_bool(const gp_Ax2d& theA, Standard_Boolean theIsSense) {
     return std::make_unique<gp_Ax22d>(theA, theIsSense);
 }
-inline std::unique_ptr<gp_Ax22d> gp_Ax22d_ctor_pnt2d_dir2d(const gp_Pnt2d& theP, const gp_Dir2d& theV) {
-    return std::make_unique<gp_Ax22d>(theP, theV);
-}
-inline std::unique_ptr<gp_Ax22d> gp_Ax22d_ctor_ax2d(const gp_Ax2d& theA) {
-    return std::make_unique<gp_Ax22d>(theA);
-}
 inline std::unique_ptr<gp_Ax2d> gp_Ax22d_x_axis(const gp_Ax22d& self_) {
     return std::make_unique<gp_Ax2d>(self_.XAxis());
 }
@@ -969,9 +963,6 @@ inline std::unique_ptr<gp_Circ2d> gp_Circ2d_ctor_ax2d_real_bool(const gp_Ax2d& t
 }
 inline std::unique_ptr<gp_Circ2d> gp_Circ2d_ctor_ax22d_real(const gp_Ax22d& theAxis, Standard_Real theRadius) {
     return std::make_unique<gp_Circ2d>(theAxis, theRadius);
-}
-inline std::unique_ptr<gp_Circ2d> gp_Circ2d_ctor_ax2d_real(const gp_Ax2d& theXAxis, Standard_Real theRadius) {
-    return std::make_unique<gp_Circ2d>(theXAxis, theRadius);
 }
 inline std::unique_ptr<gp_Ax2d> gp_Circ2d_x_axis(const gp_Circ2d& self_) {
     return std::make_unique<gp_Ax2d>(self_.XAxis());
@@ -1234,9 +1225,6 @@ inline std::unique_ptr<gp_Elips2d> gp_Elips2d_ctor_ax2d_real2_bool(const gp_Ax2d
 inline std::unique_ptr<gp_Elips2d> gp_Elips2d_ctor_ax22d_real2(const gp_Ax22d& theA, Standard_Real theMajorRadius, Standard_Real theMinorRadius) {
     return std::make_unique<gp_Elips2d>(theA, theMajorRadius, theMinorRadius);
 }
-inline std::unique_ptr<gp_Elips2d> gp_Elips2d_ctor_ax2d_real2(const gp_Ax2d& theMajorAxis, Standard_Real theMajorRadius, Standard_Real theMinorRadius) {
-    return std::make_unique<gp_Elips2d>(theMajorAxis, theMajorRadius, theMinorRadius);
-}
 inline std::unique_ptr<gp_Ax2d> gp_Elips2d_directrix1(const gp_Elips2d& self_) {
     return std::make_unique<gp_Ax2d>(self_.Directrix1());
 }
@@ -1425,9 +1413,6 @@ inline std::unique_ptr<gp_Hypr2d> gp_Hypr2d_ctor_ax2d_real2_bool(const gp_Ax2d& 
 }
 inline std::unique_ptr<gp_Hypr2d> gp_Hypr2d_ctor_ax22d_real2(const gp_Ax22d& theA, Standard_Real theMajorRadius, Standard_Real theMinorRadius) {
     return std::make_unique<gp_Hypr2d>(theA, theMajorRadius, theMinorRadius);
-}
-inline std::unique_ptr<gp_Hypr2d> gp_Hypr2d_ctor_ax2d_real2(const gp_Ax2d& theMajorAxis, Standard_Real theMajorRadius, Standard_Real theMinorRadius) {
-    return std::make_unique<gp_Hypr2d>(theMajorAxis, theMajorRadius, theMinorRadius);
 }
 inline std::unique_ptr<gp_Ax2d> gp_Hypr2d_asymptote1(const gp_Hypr2d& self_) {
     return std::make_unique<gp_Ax2d>(self_.Asymptote1());
@@ -1737,12 +1722,6 @@ inline std::unique_ptr<gp_Parab2d> gp_Parab2d_ctor_ax22d_real(const gp_Ax22d& th
 }
 inline std::unique_ptr<gp_Parab2d> gp_Parab2d_ctor_ax2d_pnt2d_bool(const gp_Ax2d& theDirectrix, const gp_Pnt2d& theFocus, Standard_Boolean theSense) {
     return std::make_unique<gp_Parab2d>(theDirectrix, theFocus, theSense);
-}
-inline std::unique_ptr<gp_Parab2d> gp_Parab2d_ctor_ax2d_real(const gp_Ax2d& theMirrorAxis, Standard_Real theFocalLength) {
-    return std::make_unique<gp_Parab2d>(theMirrorAxis, theFocalLength);
-}
-inline std::unique_ptr<gp_Parab2d> gp_Parab2d_ctor_ax2d_pnt2d(const gp_Ax2d& theDirectrix, const gp_Pnt2d& theFocus) {
-    return std::make_unique<gp_Parab2d>(theDirectrix, theFocus);
 }
 inline std::unique_ptr<gp_Ax2d> gp_Parab2d_directrix(const gp_Parab2d& self_) {
     return std::make_unique<gp_Ax2d>(self_.Directrix());
@@ -3134,9 +3113,6 @@ inline std::unique_ptr<TopExp_Explorer> TopExp_Explorer_ctor() {
 inline std::unique_ptr<TopExp_Explorer> TopExp_Explorer_ctor_shape_shapeenum2(const TopoDS_Shape& S, int32_t ToFind, int32_t ToAvoid) {
     return std::make_unique<TopExp_Explorer>(S, static_cast<TopAbs_ShapeEnum>(ToFind), static_cast<TopAbs_ShapeEnum>(ToAvoid));
 }
-inline std::unique_ptr<TopExp_Explorer> TopExp_Explorer_ctor_shape_shapeenum(const TopoDS_Shape& S, int32_t ToFind) {
-    return std::make_unique<TopExp_Explorer>(S, static_cast<TopAbs_ShapeEnum>(ToFind));
-}
 inline void TopExp_Explorer_init(TopExp_Explorer& self_, const TopoDS_Shape& S, int32_t ToFind, int32_t ToAvoid) {
     self_.Init(S, static_cast<TopAbs_ShapeEnum>(ToFind), static_cast<TopAbs_ShapeEnum>(ToAvoid));
 }
@@ -3394,27 +3370,6 @@ inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_han
 inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_face_wire(const TopoDS_Face& F, const TopoDS_Wire& W) {
     return std::make_unique<BRepBuilderAPI_MakeFace>(F, W);
 }
-inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_wire(const TopoDS_Wire& W) {
-    return std::make_unique<BRepBuilderAPI_MakeFace>(W);
-}
-inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_pln_wire(const gp_Pln& P, const TopoDS_Wire& W) {
-    return std::make_unique<BRepBuilderAPI_MakeFace>(P, W);
-}
-inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_cylinder_wire(const gp_Cylinder& C, const TopoDS_Wire& W) {
-    return std::make_unique<BRepBuilderAPI_MakeFace>(C, W);
-}
-inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_cone_wire(const gp_Cone& C, const TopoDS_Wire& W) {
-    return std::make_unique<BRepBuilderAPI_MakeFace>(C, W);
-}
-inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_sphere_wire(const gp_Sphere& S, const TopoDS_Wire& W) {
-    return std::make_unique<BRepBuilderAPI_MakeFace>(S, W);
-}
-inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_torus_wire(const gp_Torus& C, const TopoDS_Wire& W) {
-    return std::make_unique<BRepBuilderAPI_MakeFace>(C, W);
-}
-inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_handlesurface_wire(const opencascade::handle<Geom_Surface>& S, const TopoDS_Wire& W) {
-    return std::make_unique<BRepBuilderAPI_MakeFace>(S, W);
-}
 inline int32_t BRepBuilderAPI_MakeFace_error(const BRepBuilderAPI_MakeFace& self_) {
     return static_cast<int32_t>(self_.Error());
 }
@@ -3577,21 +3532,6 @@ inline bool BRepBuilderAPI_MakeWire_inherited_IsDeleted(BRepBuilderAPI_MakeWire&
 inline std::unique_ptr<BRepBuilderAPI_Sewing> BRepBuilderAPI_Sewing_ctor_real_bool4(Standard_Real tolerance, Standard_Boolean option1, Standard_Boolean option2, Standard_Boolean option3, Standard_Boolean option4) {
     return std::make_unique<BRepBuilderAPI_Sewing>(tolerance, option1, option2, option3, option4);
 }
-inline std::unique_ptr<BRepBuilderAPI_Sewing> BRepBuilderAPI_Sewing_ctor_real_bool3(Standard_Real tolerance, Standard_Boolean option1, Standard_Boolean option2, Standard_Boolean option3) {
-    return std::make_unique<BRepBuilderAPI_Sewing>(tolerance, option1, option2, option3);
-}
-inline std::unique_ptr<BRepBuilderAPI_Sewing> BRepBuilderAPI_Sewing_ctor_real_bool2(Standard_Real tolerance, Standard_Boolean option1, Standard_Boolean option2) {
-    return std::make_unique<BRepBuilderAPI_Sewing>(tolerance, option1, option2);
-}
-inline std::unique_ptr<BRepBuilderAPI_Sewing> BRepBuilderAPI_Sewing_ctor_real_bool(Standard_Real tolerance, Standard_Boolean option1) {
-    return std::make_unique<BRepBuilderAPI_Sewing>(tolerance, option1);
-}
-inline std::unique_ptr<BRepBuilderAPI_Sewing> BRepBuilderAPI_Sewing_ctor_real(Standard_Real tolerance) {
-    return std::make_unique<BRepBuilderAPI_Sewing>(tolerance);
-}
-inline std::unique_ptr<BRepBuilderAPI_Sewing> BRepBuilderAPI_Sewing_ctor() {
-    return std::make_unique<BRepBuilderAPI_Sewing>();
-}
 inline std::unique_ptr<TopoDS_Shape> BRepBuilderAPI_Sewing_modified_sub_shape(const BRepBuilderAPI_Sewing& self_, const TopoDS_Shape& shape) {
     return std::make_unique<TopoDS_Shape>(self_.ModifiedSubShape(shape));
 }
@@ -3616,12 +3556,6 @@ inline std::unique_ptr<BRepBuilderAPI_Transform> BRepBuilderAPI_Transform_ctor_t
 }
 inline std::unique_ptr<BRepBuilderAPI_Transform> BRepBuilderAPI_Transform_ctor_shape_trsf_bool2(const TopoDS_Shape& theShape, const gp_Trsf& theTrsf, Standard_Boolean theCopyGeom, Standard_Boolean theCopyMesh) {
     return std::make_unique<BRepBuilderAPI_Transform>(theShape, theTrsf, theCopyGeom, theCopyMesh);
-}
-inline std::unique_ptr<BRepBuilderAPI_Transform> BRepBuilderAPI_Transform_ctor_shape_trsf_bool(const TopoDS_Shape& theShape, const gp_Trsf& theTrsf, Standard_Boolean theCopyGeom) {
-    return std::make_unique<BRepBuilderAPI_Transform>(theShape, theTrsf, theCopyGeom);
-}
-inline std::unique_ptr<BRepBuilderAPI_Transform> BRepBuilderAPI_Transform_ctor_shape_trsf(const TopoDS_Shape& theShape, const gp_Trsf& theTrsf) {
-    return std::make_unique<BRepBuilderAPI_Transform>(theShape, theTrsf);
 }
 inline std::unique_ptr<TopoDS_Shape> BRepBuilderAPI_Transform_modified_shape(const BRepBuilderAPI_Transform& self_, const TopoDS_Shape& S) {
     return std::make_unique<TopoDS_Shape>(self_.ModifiedShape(S));
@@ -3809,21 +3743,6 @@ inline std::unique_ptr<BRepPrimAPI_MakePrism> BRepPrimAPI_MakePrism_ctor_shape_v
 inline std::unique_ptr<BRepPrimAPI_MakePrism> BRepPrimAPI_MakePrism_ctor_shape_dir_bool3(const TopoDS_Shape& S, const gp_Dir& D, Standard_Boolean Inf, Standard_Boolean Copy, Standard_Boolean Canonize) {
     return std::make_unique<BRepPrimAPI_MakePrism>(S, D, Inf, Copy, Canonize);
 }
-inline std::unique_ptr<BRepPrimAPI_MakePrism> BRepPrimAPI_MakePrism_ctor_shape_vec_bool(const TopoDS_Shape& S, const gp_Vec& V, Standard_Boolean Copy) {
-    return std::make_unique<BRepPrimAPI_MakePrism>(S, V, Copy);
-}
-inline std::unique_ptr<BRepPrimAPI_MakePrism> BRepPrimAPI_MakePrism_ctor_shape_vec(const TopoDS_Shape& S, const gp_Vec& V) {
-    return std::make_unique<BRepPrimAPI_MakePrism>(S, V);
-}
-inline std::unique_ptr<BRepPrimAPI_MakePrism> BRepPrimAPI_MakePrism_ctor_shape_dir_bool2(const TopoDS_Shape& S, const gp_Dir& D, Standard_Boolean Inf, Standard_Boolean Copy) {
-    return std::make_unique<BRepPrimAPI_MakePrism>(S, D, Inf, Copy);
-}
-inline std::unique_ptr<BRepPrimAPI_MakePrism> BRepPrimAPI_MakePrism_ctor_shape_dir_bool(const TopoDS_Shape& S, const gp_Dir& D, Standard_Boolean Inf) {
-    return std::make_unique<BRepPrimAPI_MakePrism>(S, D, Inf);
-}
-inline std::unique_ptr<BRepPrimAPI_MakePrism> BRepPrimAPI_MakePrism_ctor_shape_dir(const TopoDS_Shape& S, const gp_Dir& D) {
-    return std::make_unique<BRepPrimAPI_MakePrism>(S, D);
-}
 inline std::unique_ptr<TopoDS_Shape> BRepPrimAPI_MakePrism_first_shape(BRepPrimAPI_MakePrism& self_) {
     return std::make_unique<TopoDS_Shape>(self_.FirstShape());
 }
@@ -3864,12 +3783,6 @@ inline std::unique_ptr<BRepPrimAPI_MakeRevol> BRepPrimAPI_MakeRevol_ctor_shape_a
 }
 inline std::unique_ptr<BRepPrimAPI_MakeRevol> BRepPrimAPI_MakeRevol_ctor_shape_ax1_bool(const TopoDS_Shape& S, const gp_Ax1& A, Standard_Boolean Copy) {
     return std::make_unique<BRepPrimAPI_MakeRevol>(S, A, Copy);
-}
-inline std::unique_ptr<BRepPrimAPI_MakeRevol> BRepPrimAPI_MakeRevol_ctor_shape_ax1_real(const TopoDS_Shape& S, const gp_Ax1& A, Standard_Real D) {
-    return std::make_unique<BRepPrimAPI_MakeRevol>(S, A, D);
-}
-inline std::unique_ptr<BRepPrimAPI_MakeRevol> BRepPrimAPI_MakeRevol_ctor_shape_ax1(const TopoDS_Shape& S, const gp_Ax1& A) {
-    return std::make_unique<BRepPrimAPI_MakeRevol>(S, A);
 }
 inline std::unique_ptr<TopoDS_Shape> BRepPrimAPI_MakeRevol_first_shape(BRepPrimAPI_MakeRevol& self_) {
     return std::make_unique<TopoDS_Shape>(self_.FirstShape());
@@ -4212,12 +4125,6 @@ inline std::unique_ptr<BRepAlgoAPI_Common> BRepAlgoAPI_Common_ctor_shape2_progre
 inline std::unique_ptr<BRepAlgoAPI_Common> BRepAlgoAPI_Common_ctor_shape2_pavefiller_progressrange(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& PF, const Message_ProgressRange& theRange) {
     return std::make_unique<BRepAlgoAPI_Common>(S1, S2, PF, theRange);
 }
-inline std::unique_ptr<BRepAlgoAPI_Common> BRepAlgoAPI_Common_ctor_shape2(const TopoDS_Shape& S1, const TopoDS_Shape& S2) {
-    return std::make_unique<BRepAlgoAPI_Common>(S1, S2);
-}
-inline std::unique_ptr<BRepAlgoAPI_Common> BRepAlgoAPI_Common_ctor_shape2_pavefiller(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& PF) {
-    return std::make_unique<BRepAlgoAPI_Common>(S1, S2, PF);
-}
 inline const BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation(const BRepAlgoAPI_Common& self_) { return static_cast<const BRepAlgoAPI_BooleanOperation&>(self_); }
 inline BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation_mut(BRepAlgoAPI_Common& self_) { return static_cast<BRepAlgoAPI_BooleanOperation&>(self_); }
 inline const BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_Common_as_BRepAlgoAPI_BuilderAlgo(const BRepAlgoAPI_Common& self_) { return static_cast<const BRepAlgoAPI_BuilderAlgo&>(self_); }
@@ -4318,15 +4225,6 @@ inline std::unique_ptr<BRepAlgoAPI_Cut> BRepAlgoAPI_Cut_ctor_shape2_progressrang
 inline std::unique_ptr<BRepAlgoAPI_Cut> BRepAlgoAPI_Cut_ctor_shape2_pavefiller_bool_progressrange(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF, Standard_Boolean bFWD, const Message_ProgressRange& theRange) {
     return std::make_unique<BRepAlgoAPI_Cut>(S1, S2, aDSF, bFWD, theRange);
 }
-inline std::unique_ptr<BRepAlgoAPI_Cut> BRepAlgoAPI_Cut_ctor_shape2(const TopoDS_Shape& S1, const TopoDS_Shape& S2) {
-    return std::make_unique<BRepAlgoAPI_Cut>(S1, S2);
-}
-inline std::unique_ptr<BRepAlgoAPI_Cut> BRepAlgoAPI_Cut_ctor_shape2_pavefiller_bool(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF, Standard_Boolean bFWD) {
-    return std::make_unique<BRepAlgoAPI_Cut>(S1, S2, aDSF, bFWD);
-}
-inline std::unique_ptr<BRepAlgoAPI_Cut> BRepAlgoAPI_Cut_ctor_shape2_pavefiller(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF) {
-    return std::make_unique<BRepAlgoAPI_Cut>(S1, S2, aDSF);
-}
 inline const BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation(const BRepAlgoAPI_Cut& self_) { return static_cast<const BRepAlgoAPI_BooleanOperation&>(self_); }
 inline BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation_mut(BRepAlgoAPI_Cut& self_) { return static_cast<BRepAlgoAPI_BooleanOperation&>(self_); }
 inline const BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo(const BRepAlgoAPI_Cut& self_) { return static_cast<const BRepAlgoAPI_BuilderAlgo&>(self_); }
@@ -4426,12 +4324,6 @@ inline std::unique_ptr<BRepAlgoAPI_Fuse> BRepAlgoAPI_Fuse_ctor_shape2_progressra
 }
 inline std::unique_ptr<BRepAlgoAPI_Fuse> BRepAlgoAPI_Fuse_ctor_shape2_pavefiller_progressrange(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF, const Message_ProgressRange& theRange) {
     return std::make_unique<BRepAlgoAPI_Fuse>(S1, S2, aDSF, theRange);
-}
-inline std::unique_ptr<BRepAlgoAPI_Fuse> BRepAlgoAPI_Fuse_ctor_shape2(const TopoDS_Shape& S1, const TopoDS_Shape& S2) {
-    return std::make_unique<BRepAlgoAPI_Fuse>(S1, S2);
-}
-inline std::unique_ptr<BRepAlgoAPI_Fuse> BRepAlgoAPI_Fuse_ctor_shape2_pavefiller(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF) {
-    return std::make_unique<BRepAlgoAPI_Fuse>(S1, S2, aDSF);
 }
 inline const BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BooleanOperation(const BRepAlgoAPI_Fuse& self_) { return static_cast<const BRepAlgoAPI_BooleanOperation&>(self_); }
 inline BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BooleanOperation_mut(BRepAlgoAPI_Fuse& self_) { return static_cast<BRepAlgoAPI_BooleanOperation&>(self_); }
@@ -4544,24 +4436,6 @@ inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_handlesurfa
 }
 inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_handlesurface2_bool(const opencascade::handle<Geom_Surface>& Sf1, const opencascade::handle<Geom_Surface>& Sf2, Standard_Boolean PerformNow) {
     return std::make_unique<BRepAlgoAPI_Section>(Sf1, Sf2, PerformNow);
-}
-inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_shape2(const TopoDS_Shape& S1, const TopoDS_Shape& S2) {
-    return std::make_unique<BRepAlgoAPI_Section>(S1, S2);
-}
-inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_shape2_pavefiller(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF) {
-    return std::make_unique<BRepAlgoAPI_Section>(S1, S2, aDSF);
-}
-inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_shape_pln(const TopoDS_Shape& S1, const gp_Pln& Pl) {
-    return std::make_unique<BRepAlgoAPI_Section>(S1, Pl);
-}
-inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_shape_handlesurface(const TopoDS_Shape& S1, const opencascade::handle<Geom_Surface>& Sf) {
-    return std::make_unique<BRepAlgoAPI_Section>(S1, Sf);
-}
-inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_handlesurface_shape(const opencascade::handle<Geom_Surface>& Sf, const TopoDS_Shape& S2) {
-    return std::make_unique<BRepAlgoAPI_Section>(Sf, S2);
-}
-inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_handlesurface2(const opencascade::handle<Geom_Surface>& Sf1, const opencascade::handle<Geom_Surface>& Sf2) {
-    return std::make_unique<BRepAlgoAPI_Section>(Sf1, Sf2);
 }
 inline const BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Section_as_BRepAlgoAPI_BooleanOperation(const BRepAlgoAPI_Section& self_) { return static_cast<const BRepAlgoAPI_BooleanOperation&>(self_); }
 inline BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Section_as_BRepAlgoAPI_BooleanOperation_mut(BRepAlgoAPI_Section& self_) { return static_cast<BRepAlgoAPI_BooleanOperation&>(self_); }
@@ -4725,9 +4599,6 @@ inline const TopoDS_Shape& BRepFilletAPI_MakeChamfer_inherited_Shape(BRepFilletA
 inline std::unique_ptr<BRepFilletAPI_MakeFillet> BRepFilletAPI_MakeFillet_ctor_shape_filletshape(const TopoDS_Shape& S, int32_t FShape) {
     return std::make_unique<BRepFilletAPI_MakeFillet>(S, static_cast<ChFi3d_FilletShape>(FShape));
 }
-inline std::unique_ptr<BRepFilletAPI_MakeFillet> BRepFilletAPI_MakeFillet_ctor_shape(const TopoDS_Shape& S) {
-    return std::make_unique<BRepFilletAPI_MakeFillet>(S);
-}
 inline std::unique_ptr<opencascade::handle<Law_Function>> BRepFilletAPI_MakeFillet_get_law(BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, const TopoDS_Edge& E) {
     return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
 }
@@ -4847,18 +4718,6 @@ inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_f
 inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_wire_jointype_bool(const TopoDS_Wire& Spine, int32_t Join, Standard_Boolean IsOpenResult) {
     return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine, static_cast<GeomAbs_JoinType>(Join), IsOpenResult);
 }
-inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_face_jointype(const TopoDS_Face& Spine, int32_t Join) {
-    return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine, static_cast<GeomAbs_JoinType>(Join));
-}
-inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_face(const TopoDS_Face& Spine) {
-    return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine);
-}
-inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_wire_jointype(const TopoDS_Wire& Spine, int32_t Join) {
-    return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine, static_cast<GeomAbs_JoinType>(Join));
-}
-inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor_wire(const TopoDS_Wire& Spine) {
-    return std::make_unique<BRepOffsetAPI_MakeOffset>(Spine);
-}
 inline void BRepOffsetAPI_MakeOffset_init_face_jointype_bool(BRepOffsetAPI_MakeOffset& self_, const TopoDS_Face& Spine, int32_t Join, Standard_Boolean IsOpenResult) {
     self_.Init(Spine, static_cast<GeomAbs_JoinType>(Join), IsOpenResult);
 }
@@ -4897,9 +4756,6 @@ inline std::unique_ptr<BRepOffsetAPI_MakePipe> BRepOffsetAPI_MakePipe_ctor_wire_
 }
 inline std::unique_ptr<BRepOffsetAPI_MakePipe> BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron_bool(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile, int32_t aMode, Standard_Boolean ForceApproxC1) {
     return std::make_unique<BRepOffsetAPI_MakePipe>(Spine, Profile, static_cast<GeomFill_Trihedron>(aMode), ForceApproxC1);
-}
-inline std::unique_ptr<BRepOffsetAPI_MakePipe> BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile, int32_t aMode) {
-    return std::make_unique<BRepOffsetAPI_MakePipe>(Spine, Profile, static_cast<GeomFill_Trihedron>(aMode));
 }
 inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_MakePipe_first_shape(BRepOffsetAPI_MakePipe& self_) {
     return std::make_unique<TopoDS_Shape>(self_.FirstShape());
@@ -5020,15 +4876,6 @@ inline const BRepOffset_MakeOffset& BRepOffsetAPI_MakeThickSolid_inherited_MakeO
 
 inline std::unique_ptr<BRepOffsetAPI_ThruSections> BRepOffsetAPI_ThruSections_ctor_bool2_real(Standard_Boolean isSolid, Standard_Boolean ruled, Standard_Real pres3d) {
     return std::make_unique<BRepOffsetAPI_ThruSections>(isSolid, ruled, pres3d);
-}
-inline std::unique_ptr<BRepOffsetAPI_ThruSections> BRepOffsetAPI_ThruSections_ctor_bool2(Standard_Boolean isSolid, Standard_Boolean ruled) {
-    return std::make_unique<BRepOffsetAPI_ThruSections>(isSolid, ruled);
-}
-inline std::unique_ptr<BRepOffsetAPI_ThruSections> BRepOffsetAPI_ThruSections_ctor_bool(Standard_Boolean isSolid) {
-    return std::make_unique<BRepOffsetAPI_ThruSections>(isSolid);
-}
-inline std::unique_ptr<BRepOffsetAPI_ThruSections> BRepOffsetAPI_ThruSections_ctor() {
-    return std::make_unique<BRepOffsetAPI_ThruSections>();
 }
 inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_ThruSections_generated_face(const BRepOffsetAPI_ThruSections& self_, const TopoDS_Shape& Edge) {
     return std::make_unique<TopoDS_Shape>(self_.GeneratedFace(Edge));
@@ -6045,15 +5892,6 @@ inline std::unique_ptr<Geom_BSplineCurve> Geom_BSplineCurve_ctor_array1ofpnt_arr
 inline std::unique_ptr<Geom_BSplineCurve> Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(const TColgp_Array1OfPnt& Poles, const TColStd_Array1OfReal& Weights, const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Multiplicities, Standard_Integer Degree, Standard_Boolean Periodic, Standard_Boolean CheckRational) {
     return std::make_unique<Geom_BSplineCurve>(Poles, Weights, Knots, Multiplicities, Degree, Periodic, CheckRational);
 }
-inline std::unique_ptr<Geom_BSplineCurve> Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal_array1ofinteger_int(const TColgp_Array1OfPnt& Poles, const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Multiplicities, Standard_Integer Degree) {
-    return std::make_unique<Geom_BSplineCurve>(Poles, Knots, Multiplicities, Degree);
-}
-inline std::unique_ptr<Geom_BSplineCurve> Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int_bool(const TColgp_Array1OfPnt& Poles, const TColStd_Array1OfReal& Weights, const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Multiplicities, Standard_Integer Degree, Standard_Boolean Periodic) {
-    return std::make_unique<Geom_BSplineCurve>(Poles, Weights, Knots, Multiplicities, Degree, Periodic);
-}
-inline std::unique_ptr<Geom_BSplineCurve> Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int(const TColgp_Array1OfPnt& Poles, const TColStd_Array1OfReal& Weights, const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Multiplicities, Standard_Integer Degree) {
-    return std::make_unique<Geom_BSplineCurve>(Poles, Weights, Knots, Multiplicities, Degree);
-}
 inline std::unique_ptr<gp_Vec> Geom_BSplineCurve_dn(const Geom_BSplineCurve& self_, Standard_Real U, Standard_Integer N) {
     return std::make_unique<gp_Vec>(self_.DN(U, N));
 }
@@ -6156,18 +5994,6 @@ inline std::unique_ptr<Geom_BSplineSurface> Geom_BSplineSurface_ctor_array2ofpnt
 }
 inline std::unique_ptr<Geom_BSplineSurface> Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(const TColgp_Array2OfPnt& Poles, const TColStd_Array2OfReal& Weights, const TColStd_Array1OfReal& UKnots, const TColStd_Array1OfReal& VKnots, const TColStd_Array1OfInteger& UMults, const TColStd_Array1OfInteger& VMults, Standard_Integer UDegree, Standard_Integer VDegree, Standard_Boolean UPeriodic, Standard_Boolean VPeriodic) {
     return std::make_unique<Geom_BSplineSurface>(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic);
-}
-inline std::unique_ptr<Geom_BSplineSurface> Geom_BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool(const TColgp_Array2OfPnt& Poles, const TColStd_Array1OfReal& UKnots, const TColStd_Array1OfReal& VKnots, const TColStd_Array1OfInteger& UMults, const TColStd_Array1OfInteger& VMults, Standard_Integer UDegree, Standard_Integer VDegree, Standard_Boolean UPeriodic) {
-    return std::make_unique<Geom_BSplineSurface>(Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic);
-}
-inline std::unique_ptr<Geom_BSplineSurface> Geom_BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2(const TColgp_Array2OfPnt& Poles, const TColStd_Array1OfReal& UKnots, const TColStd_Array1OfReal& VKnots, const TColStd_Array1OfInteger& UMults, const TColStd_Array1OfInteger& VMults, Standard_Integer UDegree, Standard_Integer VDegree) {
-    return std::make_unique<Geom_BSplineSurface>(Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree);
-}
-inline std::unique_ptr<Geom_BSplineSurface> Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool(const TColgp_Array2OfPnt& Poles, const TColStd_Array2OfReal& Weights, const TColStd_Array1OfReal& UKnots, const TColStd_Array1OfReal& VKnots, const TColStd_Array1OfInteger& UMults, const TColStd_Array1OfInteger& VMults, Standard_Integer UDegree, Standard_Integer VDegree, Standard_Boolean UPeriodic) {
-    return std::make_unique<Geom_BSplineSurface>(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic);
-}
-inline std::unique_ptr<Geom_BSplineSurface> Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2(const TColgp_Array2OfPnt& Poles, const TColStd_Array2OfReal& Weights, const TColStd_Array1OfReal& UKnots, const TColStd_Array1OfReal& VKnots, const TColStd_Array1OfInteger& UMults, const TColStd_Array1OfInteger& VMults, Standard_Integer UDegree, Standard_Integer VDegree) {
-    return std::make_unique<Geom_BSplineSurface>(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree);
 }
 inline std::unique_ptr<gp_Vec> Geom_BSplineSurface_dn(const Geom_BSplineSurface& self_, Standard_Real U, Standard_Real V, Standard_Integer Nu, Standard_Integer Nv) {
     return std::make_unique<gp_Vec>(self_.DN(U, V, Nu, Nv));
@@ -6531,12 +6357,6 @@ inline std::unique_ptr<gp_Pnt> Geom_Plane_inherited_Value(const Geom_Plane& self
 
 inline std::unique_ptr<Geom_TrimmedCurve> Geom_TrimmedCurve_ctor_handlecurve_real2_bool2(const opencascade::handle<Geom_Curve>& C, Standard_Real U1, Standard_Real U2, Standard_Boolean Sense, Standard_Boolean theAdjustPeriodic) {
     return std::make_unique<Geom_TrimmedCurve>(C, U1, U2, Sense, theAdjustPeriodic);
-}
-inline std::unique_ptr<Geom_TrimmedCurve> Geom_TrimmedCurve_ctor_handlecurve_real2_bool(const opencascade::handle<Geom_Curve>& C, Standard_Real U1, Standard_Real U2, Standard_Boolean Sense) {
-    return std::make_unique<Geom_TrimmedCurve>(C, U1, U2, Sense);
-}
-inline std::unique_ptr<Geom_TrimmedCurve> Geom_TrimmedCurve_ctor_handlecurve_real2(const opencascade::handle<Geom_Curve>& C, Standard_Real U1, Standard_Real U2) {
-    return std::make_unique<Geom_TrimmedCurve>(C, U1, U2);
 }
 inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_TrimmedCurve_basis_curve(const Geom_TrimmedCurve& self_) {
     return std::make_unique<opencascade::handle<Geom_Curve>>(self_.BasisCurve());
@@ -6934,9 +6754,6 @@ inline std::unique_ptr<Geom2d_Ellipse> Geom2d_Ellipse_ctor_ax2d_real2_bool(const
 inline std::unique_ptr<Geom2d_Ellipse> Geom2d_Ellipse_ctor_ax22d_real2(const gp_Ax22d& Axis, Standard_Real MajorRadius, Standard_Real MinorRadius) {
     return std::make_unique<Geom2d_Ellipse>(Axis, MajorRadius, MinorRadius);
 }
-inline std::unique_ptr<Geom2d_Ellipse> Geom2d_Ellipse_ctor_ax2d_real2(const gp_Ax2d& MajorAxis, Standard_Real MajorRadius, Standard_Real MinorRadius) {
-    return std::make_unique<Geom2d_Ellipse>(MajorAxis, MajorRadius, MinorRadius);
-}
 inline std::unique_ptr<gp_Elips2d> Geom2d_Ellipse_elips2d(const Geom2d_Ellipse& self_) {
     return std::make_unique<gp_Elips2d>(self_.Elips2d());
 }
@@ -7061,12 +6878,6 @@ inline std::unique_ptr<Handle(Geom2d_Geometry)> Geom2d_Ellipse_inherited_Transla
 inline std::unique_ptr<Geom2d_TrimmedCurve> Geom2d_TrimmedCurve_ctor_handlecurve_real2_bool2(const opencascade::handle<Geom2d_Curve>& C, Standard_Real U1, Standard_Real U2, Standard_Boolean Sense, Standard_Boolean theAdjustPeriodic) {
     return std::make_unique<Geom2d_TrimmedCurve>(C, U1, U2, Sense, theAdjustPeriodic);
 }
-inline std::unique_ptr<Geom2d_TrimmedCurve> Geom2d_TrimmedCurve_ctor_handlecurve_real2_bool(const opencascade::handle<Geom2d_Curve>& C, Standard_Real U1, Standard_Real U2, Standard_Boolean Sense) {
-    return std::make_unique<Geom2d_TrimmedCurve>(C, U1, U2, Sense);
-}
-inline std::unique_ptr<Geom2d_TrimmedCurve> Geom2d_TrimmedCurve_ctor_handlecurve_real2(const opencascade::handle<Geom2d_Curve>& C, Standard_Real U1, Standard_Real U2) {
-    return std::make_unique<Geom2d_TrimmedCurve>(C, U1, U2);
-}
 inline std::unique_ptr<opencascade::handle<Geom2d_Curve>> Geom2d_TrimmedCurve_basis_curve(const Geom2d_TrimmedCurve& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Curve>>(self_.BasisCurve());
 }
@@ -7172,51 +6983,6 @@ inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_arr
 inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int_shape_real(const TColgp_Array1OfPnt& Points, Standard_Real Weight1, Standard_Real Weight2, Standard_Real Weight3, Standard_Integer DegMax, int32_t Continuity, Standard_Real Tol3D) {
     return std::make_unique<GeomAPI_PointsToBSpline>(Points, Weight1, Weight2, Weight3, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D);
 }
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2_shape(const TColgp_Array1OfPnt& Points, Standard_Integer DegMin, Standard_Integer DegMax, int32_t Continuity) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity));
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2(const TColgp_Array1OfPnt& Points, Standard_Integer DegMin, Standard_Integer DegMax) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, DegMin, DegMax);
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_int(const TColgp_Array1OfPnt& Points, Standard_Integer DegMin) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, DegMin);
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt(const TColgp_Array1OfPnt& Points) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points);
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int2_shape(const TColgp_Array1OfPnt& Points, int32_t ParType, Standard_Integer DegMin, Standard_Integer DegMax, int32_t Continuity) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, static_cast<Approx_ParametrizationType>(ParType), DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity));
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int2(const TColgp_Array1OfPnt& Points, int32_t ParType, Standard_Integer DegMin, Standard_Integer DegMax) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, static_cast<Approx_ParametrizationType>(ParType), DegMin, DegMax);
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int(const TColgp_Array1OfPnt& Points, int32_t ParType, Standard_Integer DegMin) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, static_cast<Approx_ParametrizationType>(ParType), DegMin);
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype(const TColgp_Array1OfPnt& Points, int32_t ParType) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, static_cast<Approx_ParametrizationType>(ParType));
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2_shape(const TColgp_Array1OfPnt& Points, const TColStd_Array1OfReal& Parameters, Standard_Integer DegMin, Standard_Integer DegMax, int32_t Continuity) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Parameters, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity));
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2(const TColgp_Array1OfPnt& Points, const TColStd_Array1OfReal& Parameters, Standard_Integer DegMin, Standard_Integer DegMax) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Parameters, DegMin, DegMax);
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int(const TColgp_Array1OfPnt& Points, const TColStd_Array1OfReal& Parameters, Standard_Integer DegMin) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Parameters, DegMin);
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal(const TColgp_Array1OfPnt& Points, const TColStd_Array1OfReal& Parameters) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Parameters);
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int_shape(const TColgp_Array1OfPnt& Points, Standard_Real Weight1, Standard_Real Weight2, Standard_Real Weight3, Standard_Integer DegMax, int32_t Continuity) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Weight1, Weight2, Weight3, DegMax, static_cast<GeomAbs_Shape>(Continuity));
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int(const TColgp_Array1OfPnt& Points, Standard_Real Weight1, Standard_Real Weight2, Standard_Real Weight3, Standard_Integer DegMax) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Weight1, Weight2, Weight3, DegMax);
-}
-inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3(const TColgp_Array1OfPnt& Points, Standard_Real Weight1, Standard_Real Weight2, Standard_Real Weight3) {
-    return std::make_unique<GeomAPI_PointsToBSpline>(Points, Weight1, Weight2, Weight3);
-}
 inline void GeomAPI_PointsToBSpline_init_array1ofpnt_int2_shape_real(GeomAPI_PointsToBSpline& self_, const TColgp_Array1OfPnt& Points, Standard_Integer DegMin, Standard_Integer DegMax, int32_t Continuity, Standard_Real Tol3D) {
     self_.Init(Points, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D);
 }
@@ -7265,18 +7031,6 @@ inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ct
 }
 inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4_extalgo(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, int32_t Algo) {
     return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Umin, Usup, Vmin, Vsup, static_cast<Extrema_ExtAlgo>(Algo));
-}
-inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface) {
-    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface);
-}
-inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Tolerance) {
-    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Tolerance);
-}
-inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real Tolerance) {
-    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Umin, Usup, Vmin, Vsup, Tolerance);
-}
-inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4(const gp_Pnt& P, const opencascade::handle<Geom_Surface>& Surface, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup) {
-    return std::make_unique<GeomAPI_ProjectPointOnSurf>(P, Surface, Umin, Usup, Vmin, Vsup);
 }
 inline std::unique_ptr<gp_Pnt> GeomAPI_ProjectPointOnSurf_point(const GeomAPI_ProjectPointOnSurf& self_, Standard_Integer Index) {
     return std::make_unique<gp_Pnt>(self_.Point(Index));
@@ -7399,42 +7153,6 @@ inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_
 }
 inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve2d_real4_int_real2(const Adaptor2d_Curve2d& theC, Standard_Real theFirstParameter, Standard_Real theLastParameter, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection, Standard_Integer theMinimumOfPoints, Standard_Real theUTol, Standard_Real theMinLen) {
     return std::make_unique<GCPnts_TangentialDeflection>(theC, theFirstParameter, theLastParameter, theAngularDeflection, theCurvatureDeflection, theMinimumOfPoints, theUTol, theMinLen);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve_real2_int_real(const Adaptor3d_Curve& theC, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection, Standard_Integer theMinimumOfPoints, Standard_Real theUTol) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theAngularDeflection, theCurvatureDeflection, theMinimumOfPoints, theUTol);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve_real2_int(const Adaptor3d_Curve& theC, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection, Standard_Integer theMinimumOfPoints) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theAngularDeflection, theCurvatureDeflection, theMinimumOfPoints);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve_real2(const Adaptor3d_Curve& theC, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theAngularDeflection, theCurvatureDeflection);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve_real4_int_real(const Adaptor3d_Curve& theC, Standard_Real theFirstParameter, Standard_Real theLastParameter, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection, Standard_Integer theMinimumOfPoints, Standard_Real theUTol) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theFirstParameter, theLastParameter, theAngularDeflection, theCurvatureDeflection, theMinimumOfPoints, theUTol);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve_real4_int(const Adaptor3d_Curve& theC, Standard_Real theFirstParameter, Standard_Real theLastParameter, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection, Standard_Integer theMinimumOfPoints) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theFirstParameter, theLastParameter, theAngularDeflection, theCurvatureDeflection, theMinimumOfPoints);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve_real4(const Adaptor3d_Curve& theC, Standard_Real theFirstParameter, Standard_Real theLastParameter, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theFirstParameter, theLastParameter, theAngularDeflection, theCurvatureDeflection);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve2d_real2_int_real(const Adaptor2d_Curve2d& theC, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection, Standard_Integer theMinimumOfPoints, Standard_Real theUTol) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theAngularDeflection, theCurvatureDeflection, theMinimumOfPoints, theUTol);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve2d_real2_int(const Adaptor2d_Curve2d& theC, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection, Standard_Integer theMinimumOfPoints) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theAngularDeflection, theCurvatureDeflection, theMinimumOfPoints);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve2d_real2(const Adaptor2d_Curve2d& theC, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theAngularDeflection, theCurvatureDeflection);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve2d_real4_int_real(const Adaptor2d_Curve2d& theC, Standard_Real theFirstParameter, Standard_Real theLastParameter, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection, Standard_Integer theMinimumOfPoints, Standard_Real theUTol) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theFirstParameter, theLastParameter, theAngularDeflection, theCurvatureDeflection, theMinimumOfPoints, theUTol);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve2d_real4_int(const Adaptor2d_Curve2d& theC, Standard_Real theFirstParameter, Standard_Real theLastParameter, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection, Standard_Integer theMinimumOfPoints) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theFirstParameter, theLastParameter, theAngularDeflection, theCurvatureDeflection, theMinimumOfPoints);
-}
-inline std::unique_ptr<GCPnts_TangentialDeflection> GCPnts_TangentialDeflection_ctor_curve2d_real4(const Adaptor2d_Curve2d& theC, Standard_Real theFirstParameter, Standard_Real theLastParameter, Standard_Real theAngularDeflection, Standard_Real theCurvatureDeflection) {
-    return std::make_unique<GCPnts_TangentialDeflection>(theC, theFirstParameter, theLastParameter, theAngularDeflection, theCurvatureDeflection);
 }
 inline std::unique_ptr<gp_Pnt> GCPnts_TangentialDeflection_value(const GCPnts_TangentialDeflection& self_, Standard_Integer I) {
     return std::make_unique<gp_Pnt>(self_.Value(I));
@@ -7748,12 +7466,6 @@ inline std::unique_ptr<BRepGProp_Face> BRepGProp_Face_ctor_bool(Standard_Boolean
 inline std::unique_ptr<BRepGProp_Face> BRepGProp_Face_ctor_face_bool(const TopoDS_Face& F, Standard_Boolean IsUseSpan) {
     return std::make_unique<BRepGProp_Face>(F, IsUseSpan);
 }
-inline std::unique_ptr<BRepGProp_Face> BRepGProp_Face_ctor() {
-    return std::make_unique<BRepGProp_Face>();
-}
-inline std::unique_ptr<BRepGProp_Face> BRepGProp_Face_ctor_face(const TopoDS_Face& F) {
-    return std::make_unique<BRepGProp_Face>(F);
-}
 inline std::unique_ptr<gp_Pnt2d> BRepGProp_Face_value2d(const BRepGProp_Face& self_, Standard_Real U) {
     return std::make_unique<gp_Pnt2d>(self_.Value2d(U));
 }
@@ -7790,18 +7502,6 @@ inline std::unique_ptr<BRepMesh_IncrementalMesh> BRepMesh_IncrementalMesh_ctor_s
 }
 inline std::unique_ptr<BRepMesh_IncrementalMesh> BRepMesh_IncrementalMesh_ctor_shape_parameters_progressrange(const TopoDS_Shape& theShape, const IMeshTools_Parameters& theParameters, const Message_ProgressRange& theRange) {
     return std::make_unique<BRepMesh_IncrementalMesh>(theShape, theParameters, theRange);
-}
-inline std::unique_ptr<BRepMesh_IncrementalMesh> BRepMesh_IncrementalMesh_ctor_shape_real_bool_real(const TopoDS_Shape& theShape, Standard_Real theLinDeflection, Standard_Boolean isRelative, Standard_Real theAngDeflection) {
-    return std::make_unique<BRepMesh_IncrementalMesh>(theShape, theLinDeflection, isRelative, theAngDeflection);
-}
-inline std::unique_ptr<BRepMesh_IncrementalMesh> BRepMesh_IncrementalMesh_ctor_shape_real_bool(const TopoDS_Shape& theShape, Standard_Real theLinDeflection, Standard_Boolean isRelative) {
-    return std::make_unique<BRepMesh_IncrementalMesh>(theShape, theLinDeflection, isRelative);
-}
-inline std::unique_ptr<BRepMesh_IncrementalMesh> BRepMesh_IncrementalMesh_ctor_shape_real(const TopoDS_Shape& theShape, Standard_Real theLinDeflection) {
-    return std::make_unique<BRepMesh_IncrementalMesh>(theShape, theLinDeflection);
-}
-inline std::unique_ptr<BRepMesh_IncrementalMesh> BRepMesh_IncrementalMesh_ctor_shape_parameters(const TopoDS_Shape& theShape, const IMeshTools_Parameters& theParameters) {
-    return std::make_unique<BRepMesh_IncrementalMesh>(theShape, theParameters);
 }
 inline Standard_Boolean BRepMesh_IncrementalMesh_is_parallel_default() {
     return BRepMesh_IncrementalMesh::IsParallelDefault();
@@ -7951,9 +7651,6 @@ inline std::unique_ptr<Poly_Triangulation> Poly_Triangulation_ctor_array1ofpnt_a
 inline std::unique_ptr<Poly_Triangulation> Poly_Triangulation_ctor_handletriangulation(const opencascade::handle<Poly_Triangulation>& theTriangulation) {
     return std::make_unique<Poly_Triangulation>(theTriangulation);
 }
-inline std::unique_ptr<Poly_Triangulation> Poly_Triangulation_ctor_int2_bool(Standard_Integer theNbNodes, Standard_Integer theNbTriangles, Standard_Boolean theHasUVNodes) {
-    return std::make_unique<Poly_Triangulation>(theNbNodes, theNbTriangles, theHasUVNodes);
-}
 inline std::unique_ptr<opencascade::handle<Poly_Triangulation>> Poly_Triangulation_copy(const Poly_Triangulation& self_) {
     return std::make_unique<opencascade::handle<Poly_Triangulation>>(self_.Copy());
 }
@@ -7997,15 +7694,6 @@ inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomai
 inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomain_ctor_shape_bool3(const TopoDS_Shape& aShape, Standard_Boolean UnifyEdges, Standard_Boolean UnifyFaces, Standard_Boolean ConcatBSplines) {
     return std::make_unique<ShapeUpgrade_UnifySameDomain>(aShape, UnifyEdges, UnifyFaces, ConcatBSplines);
 }
-inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomain_ctor_shape_bool2(const TopoDS_Shape& aShape, Standard_Boolean UnifyEdges, Standard_Boolean UnifyFaces) {
-    return std::make_unique<ShapeUpgrade_UnifySameDomain>(aShape, UnifyEdges, UnifyFaces);
-}
-inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomain_ctor_shape_bool(const TopoDS_Shape& aShape, Standard_Boolean UnifyEdges) {
-    return std::make_unique<ShapeUpgrade_UnifySameDomain>(aShape, UnifyEdges);
-}
-inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomain_ctor_shape(const TopoDS_Shape& aShape) {
-    return std::make_unique<ShapeUpgrade_UnifySameDomain>(aShape);
-}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_UnifySameDomain_get_type_descriptor() {
     return ShapeUpgrade_UnifySameDomain::get_type_descriptor();
 }
@@ -8027,21 +7715,6 @@ inline std::unique_ptr<ShapeAnalysis_FreeBounds> ShapeAnalysis_FreeBounds_ctor_s
 }
 inline std::unique_ptr<ShapeAnalysis_FreeBounds> ShapeAnalysis_FreeBounds_ctor_shape_bool3(const TopoDS_Shape& shape, Standard_Boolean splitclosed, Standard_Boolean splitopen, Standard_Boolean checkinternaledges) {
     return std::make_unique<ShapeAnalysis_FreeBounds>(shape, splitclosed, splitopen, checkinternaledges);
-}
-inline std::unique_ptr<ShapeAnalysis_FreeBounds> ShapeAnalysis_FreeBounds_ctor_shape_real_bool(const TopoDS_Shape& shape, Standard_Real toler, Standard_Boolean splitclosed) {
-    return std::make_unique<ShapeAnalysis_FreeBounds>(shape, toler, splitclosed);
-}
-inline std::unique_ptr<ShapeAnalysis_FreeBounds> ShapeAnalysis_FreeBounds_ctor_shape_real(const TopoDS_Shape& shape, Standard_Real toler) {
-    return std::make_unique<ShapeAnalysis_FreeBounds>(shape, toler);
-}
-inline std::unique_ptr<ShapeAnalysis_FreeBounds> ShapeAnalysis_FreeBounds_ctor_shape_bool2(const TopoDS_Shape& shape, Standard_Boolean splitclosed, Standard_Boolean splitopen) {
-    return std::make_unique<ShapeAnalysis_FreeBounds>(shape, splitclosed, splitopen);
-}
-inline std::unique_ptr<ShapeAnalysis_FreeBounds> ShapeAnalysis_FreeBounds_ctor_shape_bool(const TopoDS_Shape& shape, Standard_Boolean splitclosed) {
-    return std::make_unique<ShapeAnalysis_FreeBounds>(shape, splitclosed);
-}
-inline std::unique_ptr<ShapeAnalysis_FreeBounds> ShapeAnalysis_FreeBounds_ctor_shape(const TopoDS_Shape& shape) {
-    return std::make_unique<ShapeAnalysis_FreeBounds>(shape);
 }
 inline void ShapeAnalysis_FreeBounds_connect_edges_to_wires(opencascade::handle<TopTools_HSequenceOfShape>& edges, Standard_Real toler, Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape>& wires) {
     return ShapeAnalysis_FreeBounds::ConnectEdgesToWires(edges, toler, shared, wires);
@@ -8878,9 +8551,6 @@ inline std::unique_ptr<IGESControl_Writer> IGESControl_Writer_ctor() {
 inline std::unique_ptr<IGESControl_Writer> IGESControl_Writer_ctor_charptr_int(rust::Str theUnit, Standard_Integer theModecr) {
     return std::make_unique<IGESControl_Writer>(std::string(theUnit).c_str(), theModecr);
 }
-inline std::unique_ptr<IGESControl_Writer> IGESControl_Writer_ctor_charptr(rust::Str theUnit) {
-    return std::make_unique<IGESControl_Writer>(std::string(theUnit).c_str());
-}
 inline Standard_Boolean IGESControl_Writer_write(IGESControl_Writer& self, rust::Str file, Standard_Boolean fnes) {
     return self.Write(std::string(file).c_str(), fnes);
 }
@@ -8968,24 +8638,6 @@ inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor_curve2_real2(const Adap
 inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor_curve2_real6(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, Standard_Real U1, Standard_Real U2, Standard_Real V1, Standard_Real V2, Standard_Real TolC1, Standard_Real TolC2) {
     return std::make_unique<Extrema_ExtCC>(C1, C2, U1, U2, V1, V2, TolC1, TolC2);
 }
-inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor_real(Standard_Real TolC1) {
-    return std::make_unique<Extrema_ExtCC>(TolC1);
-}
-inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor() {
-    return std::make_unique<Extrema_ExtCC>();
-}
-inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor_curve2_real(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, Standard_Real TolC1) {
-    return std::make_unique<Extrema_ExtCC>(C1, C2, TolC1);
-}
-inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor_curve2(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2) {
-    return std::make_unique<Extrema_ExtCC>(C1, C2);
-}
-inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor_curve2_real5(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, Standard_Real U1, Standard_Real U2, Standard_Real V1, Standard_Real V2, Standard_Real TolC1) {
-    return std::make_unique<Extrema_ExtCC>(C1, C2, U1, U2, V1, V2, TolC1);
-}
-inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor_curve2_real4(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, Standard_Real U1, Standard_Real U2, Standard_Real V1, Standard_Real V2) {
-    return std::make_unique<Extrema_ExtCC>(C1, C2, U1, U2, V1, V2);
-}
 
 // ========================
 // Extrema_ExtPC wrappers
@@ -9000,12 +8652,6 @@ inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor_pnt_curve_real3(const g
 inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor_pnt_curve_real(const gp_Pnt& P, const Adaptor3d_Curve& C, Standard_Real TolF) {
     return std::make_unique<Extrema_ExtPC>(P, C, TolF);
 }
-inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor_pnt_curve_real2(const gp_Pnt& P, const Adaptor3d_Curve& C, Standard_Real Uinf, Standard_Real Usup) {
-    return std::make_unique<Extrema_ExtPC>(P, C, Uinf, Usup);
-}
-inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor_pnt_curve(const gp_Pnt& P, const Adaptor3d_Curve& C) {
-    return std::make_unique<Extrema_ExtPC>(P, C);
-}
 
 // ========================
 // Extrema_ExtPS wrappers
@@ -9019,18 +8665,6 @@ inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real2_extfl
 }
 inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real6_extflag_extalgo(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real Uinf, Standard_Real Usup, Standard_Real Vinf, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV, int32_t F, int32_t A) {
     return std::make_unique<Extrema_ExtPS>(P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV, static_cast<Extrema_ExtFlag>(F), static_cast<Extrema_ExtAlgo>(A));
-}
-inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real2_extflag(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real TolU, Standard_Real TolV, int32_t F) {
-    return std::make_unique<Extrema_ExtPS>(P, S, TolU, TolV, static_cast<Extrema_ExtFlag>(F));
-}
-inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real2(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real TolU, Standard_Real TolV) {
-    return std::make_unique<Extrema_ExtPS>(P, S, TolU, TolV);
-}
-inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real6_extflag(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real Uinf, Standard_Real Usup, Standard_Real Vinf, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV, int32_t F) {
-    return std::make_unique<Extrema_ExtPS>(P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV, static_cast<Extrema_ExtFlag>(F));
-}
-inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor_pnt_surface_real6(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Real Uinf, Standard_Real Usup, Standard_Real Vinf, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV) {
-    return std::make_unique<Extrema_ExtPS>(P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV);
 }
 inline void Extrema_ExtPS_set_flag(Extrema_ExtPS& self_, int32_t F) {
     self_.SetFlag(static_cast<Extrema_ExtFlag>(F));
@@ -9051,18 +8685,6 @@ inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_
 }
 inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real6_extflag_extalgo(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV, int32_t F, int32_t A) {
     return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV, static_cast<Extrema_ExtFlag>(F), static_cast<Extrema_ExtAlgo>(A));
-}
-inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real2_extflag(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real TolU, Standard_Real TolV, int32_t F) {
-    return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, TolU, TolV, static_cast<Extrema_ExtFlag>(F));
-}
-inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real2(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real TolU, Standard_Real TolV) {
-    return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, TolU, TolV);
-}
-inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real6_extflag(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV, int32_t F) {
-    return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV, static_cast<Extrema_ExtFlag>(F));
-}
-inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor_pnt_surface_int2_real6(const gp_Pnt& P, const Adaptor3d_Surface& S, Standard_Integer NbU, Standard_Integer NbV, Standard_Real Umin, Standard_Real Usup, Standard_Real Vmin, Standard_Real Vsup, Standard_Real TolU, Standard_Real TolV) {
-    return std::make_unique<Extrema_GenExtPS>(P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV);
 }
 inline void Extrema_GenExtPS_set_flag(Extrema_GenExtPS& self_, int32_t F) {
     self_.SetFlag(static_cast<Extrema_ExtFlag>(F));
@@ -9295,18 +8917,6 @@ inline std::unique_ptr<math_BrentMinimum> math_BrentMinimum_ctor_real_int_real(S
 inline std::unique_ptr<math_BrentMinimum> math_BrentMinimum_ctor_real2_int_real(Standard_Real TolX, Standard_Real Fbx, Standard_Integer NbIterations, Standard_Real ZEPS) {
     return std::make_unique<math_BrentMinimum>(TolX, Fbx, NbIterations, ZEPS);
 }
-inline std::unique_ptr<math_BrentMinimum> math_BrentMinimum_ctor_real_int(Standard_Real TolX, Standard_Integer NbIterations) {
-    return std::make_unique<math_BrentMinimum>(TolX, NbIterations);
-}
-inline std::unique_ptr<math_BrentMinimum> math_BrentMinimum_ctor_real(Standard_Real TolX) {
-    return std::make_unique<math_BrentMinimum>(TolX);
-}
-inline std::unique_ptr<math_BrentMinimum> math_BrentMinimum_ctor_real2_int(Standard_Real TolX, Standard_Real Fbx, Standard_Integer NbIterations) {
-    return std::make_unique<math_BrentMinimum>(TolX, Fbx, NbIterations);
-}
-inline std::unique_ptr<math_BrentMinimum> math_BrentMinimum_ctor_real2(Standard_Real TolX, Standard_Real Fbx) {
-    return std::make_unique<math_BrentMinimum>(TolX, Fbx);
-}
 
 // ========================
 // math_EigenValuesSearcher wrappers
@@ -9322,9 +8932,6 @@ inline std::unique_ptr<math_EigenValuesSearcher> math_EigenValuesSearcher_ctor_a
 
 inline std::unique_ptr<math_GaussLeastSquare> math_GaussLeastSquare_ctor_matrix_real(const math_Matrix& A, Standard_Real MinPivot) {
     return std::make_unique<math_GaussLeastSquare>(A, MinPivot);
-}
-inline std::unique_ptr<math_GaussLeastSquare> math_GaussLeastSquare_ctor_matrix(const math_Matrix& A) {
-    return std::make_unique<math_GaussLeastSquare>(A);
 }
 
 // ========================
@@ -9601,12 +9208,6 @@ inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ct
 inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_asciistring_bool(const TCollection_AsciiString& astring, Standard_Boolean isMultiByte) {
     return std::make_unique<TCollection_ExtendedString>(astring, isMultiByte);
 }
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_charptr(rust::Str astring) {
-    return std::make_unique<TCollection_ExtendedString>(std::string(astring).c_str());
-}
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_asciistring(const TCollection_AsciiString& astring) {
-    return std::make_unique<TCollection_ExtendedString>(astring);
-}
 inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_cat(const TCollection_ExtendedString& self_, const TCollection_ExtendedString& other) {
     return std::make_unique<TCollection_ExtendedString>(self_.Cat(other));
 }
@@ -9828,9 +9429,6 @@ inline const opencascade::handle<Standard_Type>& Standard_DimensionMismatch_get_
 
 inline std::unique_ptr<Standard_OutOfMemory> Standard_OutOfMemory_ctor_charptr(rust::Str theMessage) {
     return std::make_unique<Standard_OutOfMemory>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_OutOfMemory> Standard_OutOfMemory_ctor() {
-    return std::make_unique<Standard_OutOfMemory>();
 }
 inline void Standard_OutOfMemory_set_message_string(Standard_OutOfMemory& self, rust::Str aMessage) {
     self.SetMessageString(std::string(aMessage).c_str());
@@ -10097,9 +9695,6 @@ inline Message_Messenger& HandleMessageMessenger_get_mut(HandleMessageMessenger&
 
 inline std::unique_ptr<OSD_MemInfo> OSD_MemInfo_ctor_bool(Standard_Boolean theImmediateUpdate) {
     return std::make_unique<OSD_MemInfo>(theImmediateUpdate);
-}
-inline std::unique_ptr<OSD_MemInfo> OSD_MemInfo_ctor() {
-    return std::make_unique<OSD_MemInfo>();
 }
 inline std::unique_ptr<TCollection_AsciiString> OSD_MemInfo_to_string(const OSD_MemInfo& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ToString());
@@ -10377,9 +9972,6 @@ inline std::unique_ptr<Message_ProgressScope> Message_ProgressScope_ctor() {
 }
 inline std::unique_ptr<Message_ProgressScope> Message_ProgressScope_ctor_progressrange_asciistring_real_bool(const Message_ProgressRange& theRange, const TCollection_AsciiString& theName, Standard_Real theMax, Standard_Boolean isInfinite) {
     return std::make_unique<Message_ProgressScope>(theRange, theName, theMax, isInfinite);
-}
-inline std::unique_ptr<Message_ProgressScope> Message_ProgressScope_ctor_progressrange_asciistring_real(const Message_ProgressRange& theRange, const TCollection_AsciiString& theName, Standard_Real theMax) {
-    return std::make_unique<Message_ProgressScope>(theRange, theName, theMax);
 }
 inline std::unique_ptr<Message_ProgressRange> Message_ProgressScope_next(Message_ProgressScope& self_, Standard_Real theStep) {
     return std::make_unique<Message_ProgressRange>(self_.Next(theStep));
@@ -10910,9 +10502,6 @@ inline std::unique_ptr<BRepMesh_OrientedEdge> BRepMesh_OrientedEdge_ctor_int2(St
 inline std::unique_ptr<NCollection_IncAllocator> NCollection_IncAllocator_ctor_size(size_t theBlockSize) {
     return std::make_unique<NCollection_IncAllocator>(theBlockSize);
 }
-inline std::unique_ptr<NCollection_IncAllocator> NCollection_IncAllocator_ctor() {
-    return std::make_unique<NCollection_IncAllocator>();
-}
 inline const opencascade::handle<Standard_Type>& NCollection_IncAllocator_get_type_descriptor() {
     return NCollection_IncAllocator::get_type_descriptor();
 }
@@ -10926,9 +10515,6 @@ inline std::unique_ptr<TColStd_PackedMapOfInteger> TColStd_PackedMapOfInteger_ct
 }
 inline std::unique_ptr<TColStd_PackedMapOfInteger> TColStd_PackedMapOfInteger_ctor_packedmapofinteger(const TColStd_PackedMapOfInteger& theOther) {
     return std::make_unique<TColStd_PackedMapOfInteger>(theOther);
-}
-inline std::unique_ptr<TColStd_PackedMapOfInteger> TColStd_PackedMapOfInteger_ctor() {
-    return std::make_unique<TColStd_PackedMapOfInteger>();
 }
 
 // ========================
@@ -11315,9 +10901,6 @@ inline std::unique_ptr<BRepAdaptor_Surface> BRepAdaptor_Surface_ctor() {
 inline std::unique_ptr<BRepAdaptor_Surface> BRepAdaptor_Surface_ctor_face_bool(const TopoDS_Face& F, Standard_Boolean R) {
     return std::make_unique<BRepAdaptor_Surface>(F, R);
 }
-inline std::unique_ptr<BRepAdaptor_Surface> BRepAdaptor_Surface_ctor_face(const TopoDS_Face& F) {
-    return std::make_unique<BRepAdaptor_Surface>(F);
-}
 inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> BRepAdaptor_Surface_shallow_copy(const BRepAdaptor_Surface& self_) {
     return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.ShallowCopy());
 }
@@ -11470,12 +11053,6 @@ inline std::unique_ptr<GeomAdaptor_Surface> GeomAdaptor_Surface_ctor_handlesurfa
 }
 inline std::unique_ptr<GeomAdaptor_Surface> GeomAdaptor_Surface_ctor_handlesurface_real6(const opencascade::handle<Geom_Surface>& theSurf, Standard_Real theUFirst, Standard_Real theULast, Standard_Real theVFirst, Standard_Real theVLast, Standard_Real theTolU, Standard_Real theTolV) {
     return std::make_unique<GeomAdaptor_Surface>(theSurf, theUFirst, theULast, theVFirst, theVLast, theTolU, theTolV);
-}
-inline std::unique_ptr<GeomAdaptor_Surface> GeomAdaptor_Surface_ctor_handlesurface_real5(const opencascade::handle<Geom_Surface>& theSurf, Standard_Real theUFirst, Standard_Real theULast, Standard_Real theVFirst, Standard_Real theVLast, Standard_Real theTolU) {
-    return std::make_unique<GeomAdaptor_Surface>(theSurf, theUFirst, theULast, theVFirst, theVLast, theTolU);
-}
-inline std::unique_ptr<GeomAdaptor_Surface> GeomAdaptor_Surface_ctor_handlesurface_real4(const opencascade::handle<Geom_Surface>& theSurf, Standard_Real theUFirst, Standard_Real theULast, Standard_Real theVFirst, Standard_Real theVLast) {
-    return std::make_unique<GeomAdaptor_Surface>(theSurf, theUFirst, theULast, theVFirst, theVLast);
 }
 inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> GeomAdaptor_Surface_shallow_copy(const GeomAdaptor_Surface& self_) {
     return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.ShallowCopy());
@@ -12437,9 +12014,6 @@ inline Message_Report& HandleMessageReport_get_mut(HandleMessageReport& handle) 
 inline std::unique_ptr<Message_Level> Message_Level_ctor_asciistring(const TCollection_AsciiString& theName) {
     return std::make_unique<Message_Level>(theName);
 }
-inline std::unique_ptr<Message_Level> Message_Level_ctor() {
-    return std::make_unique<Message_Level>();
-}
 inline Standard_Boolean Message_Level_add_alert(Message_Level& self_, int32_t theGravity, const opencascade::handle<Message_Alert>& theAlert) {
     return self_.AddAlert(static_cast<Message_Gravity>(theGravity), theAlert);
 }
@@ -12516,27 +12090,6 @@ inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor() {
 inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool2_progressrange(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter, int32_t Join, Standard_Boolean Thickening, Standard_Boolean RemoveIntEdges, const Message_ProgressRange& theRange) {
     return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join), Thickening, RemoveIntEdges, theRange);
 }
-inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool2(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter, int32_t Join, Standard_Boolean Thickening, Standard_Boolean RemoveIntEdges) {
-    return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join), Thickening, RemoveIntEdges);
-}
-inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter, int32_t Join, Standard_Boolean Thickening) {
-    return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join), Thickening);
-}
-inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter, int32_t Join) {
-    return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join));
-}
-inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter) {
-    return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter);
-}
-inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2_mode_bool(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection) {
-    return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection);
-}
-inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2_mode(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode) {
-    return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode));
-}
-inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor_shape_real2(const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol) {
-    return std::make_unique<BRepOffset_MakeOffset>(S, Offset, Tol);
-}
 inline void BRepOffset_MakeOffset_initialize(BRepOffset_MakeOffset& self_, const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter, int32_t Join, Standard_Boolean Thickening, Standard_Boolean RemoveIntEdges) {
     self_.Initialize(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join), Thickening, RemoveIntEdges);
 }
@@ -12579,9 +12132,6 @@ inline std::unique_ptr<BRepTools_Modifier> BRepTools_Modifier_ctor_bool(Standard
 }
 inline std::unique_ptr<BRepTools_Modifier> BRepTools_Modifier_ctor_shape(const TopoDS_Shape& S) {
     return std::make_unique<BRepTools_Modifier>(S);
-}
-inline std::unique_ptr<BRepTools_Modifier> BRepTools_Modifier_ctor() {
-    return std::make_unique<BRepTools_Modifier>();
 }
 
 // ========================
@@ -12737,45 +12287,6 @@ inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_edge
 inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real_shape(const TopoDS_Vertex& Vertex, const TopTools_ListOfShape& LEdge, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol, int32_t Conti) {
     return std::make_unique<BRepOffset_Offset>(Vertex, LEdge, Offset, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti));
 }
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_face_real_bool(const TopoDS_Face& Face, Standard_Real Offset, Standard_Boolean OffsetOutside) {
-    return std::make_unique<BRepOffset_Offset>(Face, Offset, OffsetOutside);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_face_real(const TopoDS_Face& Face, Standard_Real Offset) {
-    return std::make_unique<BRepOffset_Offset>(Face, Offset);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool(const TopoDS_Face& Face, Standard_Real Offset, const TopTools_DataMapOfShapeShape& Created, Standard_Boolean OffsetOutside) {
-    return std::make_unique<BRepOffset_Offset>(Face, Offset, Created, OffsetOutside);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_face_real_datamapofshapeshape(const TopoDS_Face& Face, Standard_Real Offset, const TopTools_DataMapOfShapeShape& Created) {
-    return std::make_unique<BRepOffset_Offset>(Face, Offset, Created);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_bool_real(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol) {
-    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, Polynomial, Tol);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_bool(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, Standard_Boolean Polynomial) {
-    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, Polynomial);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset) {
-    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_edge2_bool_real(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, const TopoDS_Edge& FirstEdge, const TopoDS_Edge& LastEdge, Standard_Boolean Polynomial, Standard_Real Tol) {
-    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_edge2_bool(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, const TopoDS_Edge& FirstEdge, const TopoDS_Edge& LastEdge, Standard_Boolean Polynomial) {
-    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_edge3_real_edge2(const TopoDS_Edge& Path, const TopoDS_Edge& Edge1, const TopoDS_Edge& Edge2, Standard_Real Offset, const TopoDS_Edge& FirstEdge, const TopoDS_Edge& LastEdge) {
-    return std::make_unique<BRepOffset_Offset>(Path, Edge1, Edge2, Offset, FirstEdge, LastEdge);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real(const TopoDS_Vertex& Vertex, const TopTools_ListOfShape& LEdge, Standard_Real Offset, Standard_Boolean Polynomial, Standard_Real Tol) {
-    return std::make_unique<BRepOffset_Offset>(Vertex, LEdge, Offset, Polynomial, Tol);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_vertex_listofshape_real_bool(const TopoDS_Vertex& Vertex, const TopTools_ListOfShape& LEdge, Standard_Real Offset, Standard_Boolean Polynomial) {
-    return std::make_unique<BRepOffset_Offset>(Vertex, LEdge, Offset, Polynomial);
-}
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor_vertex_listofshape_real(const TopoDS_Vertex& Vertex, const TopTools_ListOfShape& LEdge, Standard_Real Offset) {
-    return std::make_unique<BRepOffset_Offset>(Vertex, LEdge, Offset);
-}
 inline std::unique_ptr<TopoDS_Shape> BRepOffset_Offset_generated(const BRepOffset_Offset& self_, const TopoDS_Shape& Shape) {
     return std::make_unique<TopoDS_Shape>(self_.Generated(Shape));
 }
@@ -12886,15 +12397,6 @@ inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor() {
 inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor_wire_shape_trihedron_bool2(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile, int32_t aMode, Standard_Boolean ForceApproxC1, Standard_Boolean GeneratePartCase) {
     return std::make_unique<BRepFill_Pipe>(Spine, Profile, static_cast<GeomFill_Trihedron>(aMode), ForceApproxC1, GeneratePartCase);
 }
-inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor_wire_shape_trihedron_bool(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile, int32_t aMode, Standard_Boolean ForceApproxC1) {
-    return std::make_unique<BRepFill_Pipe>(Spine, Profile, static_cast<GeomFill_Trihedron>(aMode), ForceApproxC1);
-}
-inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor_wire_shape_trihedron(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile, int32_t aMode) {
-    return std::make_unique<BRepFill_Pipe>(Spine, Profile, static_cast<GeomFill_Trihedron>(aMode));
-}
-inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor_wire_shape(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile) {
-    return std::make_unique<BRepFill_Pipe>(Spine, Profile);
-}
 inline std::unique_ptr<TopoDS_Face> BRepFill_Pipe_face(BRepFill_Pipe& self_, const TopoDS_Edge& ESpine, const TopoDS_Edge& EProfile) {
     return std::make_unique<TopoDS_Face>(self_.Face(ESpine, EProfile));
 }
@@ -12917,12 +12419,6 @@ inline std::unique_ptr<BRepFill_OffsetWire> BRepFill_OffsetWire_ctor() {
 }
 inline std::unique_ptr<BRepFill_OffsetWire> BRepFill_OffsetWire_ctor_face_jointype_bool(const TopoDS_Face& Spine, int32_t Join, Standard_Boolean IsOpenResult) {
     return std::make_unique<BRepFill_OffsetWire>(Spine, static_cast<GeomAbs_JoinType>(Join), IsOpenResult);
-}
-inline std::unique_ptr<BRepFill_OffsetWire> BRepFill_OffsetWire_ctor_face_jointype(const TopoDS_Face& Spine, int32_t Join) {
-    return std::make_unique<BRepFill_OffsetWire>(Spine, static_cast<GeomAbs_JoinType>(Join));
-}
-inline std::unique_ptr<BRepFill_OffsetWire> BRepFill_OffsetWire_ctor_face(const TopoDS_Face& Spine) {
-    return std::make_unique<BRepFill_OffsetWire>(Spine);
 }
 inline void BRepFill_OffsetWire_init(BRepFill_OffsetWire& self_, const TopoDS_Face& Spine, int32_t Join, Standard_Boolean IsOpenResult) {
     self_.Init(Spine, static_cast<GeomAbs_JoinType>(Join), IsOpenResult);
@@ -13064,12 +12560,6 @@ inline int32_t ChFi2d_Builder_status(const ChFi2d_Builder& self_) {
 
 inline std::unique_ptr<ChFi3d_FilBuilder> ChFi3d_FilBuilder_ctor_shape_filletshape_real(const TopoDS_Shape& S, int32_t FShape, Standard_Real Ta) {
     return std::make_unique<ChFi3d_FilBuilder>(S, static_cast<ChFi3d_FilletShape>(FShape), Ta);
-}
-inline std::unique_ptr<ChFi3d_FilBuilder> ChFi3d_FilBuilder_ctor_shape_filletshape(const TopoDS_Shape& S, int32_t FShape) {
-    return std::make_unique<ChFi3d_FilBuilder>(S, static_cast<ChFi3d_FilletShape>(FShape));
-}
-inline std::unique_ptr<ChFi3d_FilBuilder> ChFi3d_FilBuilder_ctor_shape(const TopoDS_Shape& S) {
-    return std::make_unique<ChFi3d_FilBuilder>(S);
 }
 inline std::unique_ptr<opencascade::handle<Law_Function>> ChFi3d_FilBuilder_get_law(ChFi3d_FilBuilder& self_, Standard_Integer IC, const TopoDS_Edge& E) {
     return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
@@ -13552,9 +13042,6 @@ inline std::unique_ptr<ChFiDS_Regul> ChFiDS_Regul_ctor() {
 
 inline std::unique_ptr<ChFi3d_ChBuilder> ChFi3d_ChBuilder_ctor_shape_real(const TopoDS_Shape& S, Standard_Real Ta) {
     return std::make_unique<ChFi3d_ChBuilder>(S, Ta);
-}
-inline std::unique_ptr<ChFi3d_ChBuilder> ChFi3d_ChBuilder_ctor_shape(const TopoDS_Shape& S) {
-    return std::make_unique<ChFi3d_ChBuilder>(S);
 }
 inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_ChBuilder_sect(const ChFi3d_ChBuilder& self_, Standard_Integer IC, Standard_Integer IS) {
     return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
@@ -14165,12 +13652,6 @@ inline std::unique_ptr<BRepSweep_Revol> BRepSweep_Revol_ctor_shape_ax1_real_bool
 inline std::unique_ptr<BRepSweep_Revol> BRepSweep_Revol_ctor_shape_ax1_bool(const TopoDS_Shape& S, const gp_Ax1& A, Standard_Boolean C) {
     return std::make_unique<BRepSweep_Revol>(S, A, C);
 }
-inline std::unique_ptr<BRepSweep_Revol> BRepSweep_Revol_ctor_shape_ax1_real(const TopoDS_Shape& S, const gp_Ax1& A, Standard_Real D) {
-    return std::make_unique<BRepSweep_Revol>(S, A, D);
-}
-inline std::unique_ptr<BRepSweep_Revol> BRepSweep_Revol_ctor_shape_ax1(const TopoDS_Shape& S, const gp_Ax1& A) {
-    return std::make_unique<BRepSweep_Revol>(S, A);
-}
 inline std::unique_ptr<TopoDS_Shape> BRepSweep_Revol_shape(BRepSweep_Revol& self_) {
     return std::make_unique<TopoDS_Shape>(self_.Shape());
 }
@@ -14428,15 +13909,6 @@ inline std::unique_ptr<Sweep_NumShape> Sweep_NumShape_ctor() {
 inline std::unique_ptr<Sweep_NumShape> Sweep_NumShape_ctor_int_shapeenum_bool3(Standard_Integer Index, int32_t Type, Standard_Boolean Closed, Standard_Boolean BegInf, Standard_Boolean EndInf) {
     return std::make_unique<Sweep_NumShape>(Index, static_cast<TopAbs_ShapeEnum>(Type), Closed, BegInf, EndInf);
 }
-inline std::unique_ptr<Sweep_NumShape> Sweep_NumShape_ctor_int_shapeenum_bool2(Standard_Integer Index, int32_t Type, Standard_Boolean Closed, Standard_Boolean BegInf) {
-    return std::make_unique<Sweep_NumShape>(Index, static_cast<TopAbs_ShapeEnum>(Type), Closed, BegInf);
-}
-inline std::unique_ptr<Sweep_NumShape> Sweep_NumShape_ctor_int_shapeenum_bool(Standard_Integer Index, int32_t Type, Standard_Boolean Closed) {
-    return std::make_unique<Sweep_NumShape>(Index, static_cast<TopAbs_ShapeEnum>(Type), Closed);
-}
-inline std::unique_ptr<Sweep_NumShape> Sweep_NumShape_ctor_int_shapeenum(Standard_Integer Index, int32_t Type) {
-    return std::make_unique<Sweep_NumShape>(Index, static_cast<TopAbs_ShapeEnum>(Type));
-}
 inline void Sweep_NumShape_init(Sweep_NumShape& self_, Standard_Integer Index, int32_t Type, Standard_Boolean Closed, Standard_Boolean BegInf, Standard_Boolean EndInf) {
     self_.Init(Index, static_cast<TopAbs_ShapeEnum>(Type), Closed, BegInf, EndInf);
 }
@@ -14456,21 +13928,6 @@ inline std::unique_ptr<BRepSweep_Prism> BRepSweep_Prism_ctor_shape_vec_bool2(con
 }
 inline std::unique_ptr<BRepSweep_Prism> BRepSweep_Prism_ctor_shape_dir_bool3(const TopoDS_Shape& S, const gp_Dir& D, Standard_Boolean Inf, Standard_Boolean Copy, Standard_Boolean Canonize) {
     return std::make_unique<BRepSweep_Prism>(S, D, Inf, Copy, Canonize);
-}
-inline std::unique_ptr<BRepSweep_Prism> BRepSweep_Prism_ctor_shape_vec_bool(const TopoDS_Shape& S, const gp_Vec& V, Standard_Boolean Copy) {
-    return std::make_unique<BRepSweep_Prism>(S, V, Copy);
-}
-inline std::unique_ptr<BRepSweep_Prism> BRepSweep_Prism_ctor_shape_vec(const TopoDS_Shape& S, const gp_Vec& V) {
-    return std::make_unique<BRepSweep_Prism>(S, V);
-}
-inline std::unique_ptr<BRepSweep_Prism> BRepSweep_Prism_ctor_shape_dir_bool2(const TopoDS_Shape& S, const gp_Dir& D, Standard_Boolean Inf, Standard_Boolean Copy) {
-    return std::make_unique<BRepSweep_Prism>(S, D, Inf, Copy);
-}
-inline std::unique_ptr<BRepSweep_Prism> BRepSweep_Prism_ctor_shape_dir_bool(const TopoDS_Shape& S, const gp_Dir& D, Standard_Boolean Inf) {
-    return std::make_unique<BRepSweep_Prism>(S, D, Inf);
-}
-inline std::unique_ptr<BRepSweep_Prism> BRepSweep_Prism_ctor_shape_dir(const TopoDS_Shape& S, const gp_Dir& D) {
-    return std::make_unique<BRepSweep_Prism>(S, D);
 }
 inline std::unique_ptr<TopoDS_Shape> BRepSweep_Prism_shape(BRepSweep_Prism& self_) {
     return std::make_unique<TopoDS_Shape>(self_.Shape());
@@ -14500,9 +13957,6 @@ inline std::unique_ptr<gp_Vec> BRepSweep_Prism_vec(const BRepSweep_Prism& self_)
 
 inline std::unique_ptr<BRepSweep_Translation> BRepSweep_Translation_ctor_shape_numshape_location_vec_bool2(const TopoDS_Shape& S, const Sweep_NumShape& N, const TopLoc_Location& L, const gp_Vec& V, Standard_Boolean C, Standard_Boolean Canonize) {
     return std::make_unique<BRepSweep_Translation>(S, N, L, V, C, Canonize);
-}
-inline std::unique_ptr<BRepSweep_Translation> BRepSweep_Translation_ctor_shape_numshape_location_vec_bool(const TopoDS_Shape& S, const Sweep_NumShape& N, const TopLoc_Location& L, const gp_Vec& V, Standard_Boolean C) {
-    return std::make_unique<BRepSweep_Translation>(S, N, L, V, C);
 }
 inline std::unique_ptr<TopoDS_Shape> BRepSweep_Translation_make_empty_vertex(BRepSweep_Translation& self_, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirV) {
     return std::make_unique<TopoDS_Shape>(self_.MakeEmptyVertex(aGenV, aDirV));
@@ -14755,9 +14209,6 @@ inline std::unique_ptr<BRepPrim_Cone> BRepPrim_Cone_ctor_pnt_real3(const gp_Pnt&
 }
 inline std::unique_ptr<BRepPrim_Cone> BRepPrim_Cone_ctor_ax2_real3(const gp_Ax2& Axes, Standard_Real R1, Standard_Real R2, Standard_Real H) {
     return std::make_unique<BRepPrim_Cone>(Axes, R1, R2, H);
-}
-inline std::unique_ptr<BRepPrim_Cone> BRepPrim_Cone_ctor_real_ax2_real(Standard_Real Angle, const gp_Ax2& Position, Standard_Real Height) {
-    return std::make_unique<BRepPrim_Cone>(Angle, Position, Height);
 }
 inline std::unique_ptr<TopoDS_Face> BRepPrim_Cone_make_empty_lateral_face(const BRepPrim_Cone& self_) {
     return std::make_unique<TopoDS_Face>(self_.MakeEmptyLateralFace());
@@ -15302,27 +14753,6 @@ inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_handlesurface_wir
 inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_face_wire(const TopoDS_Face& F, const TopoDS_Wire& W) {
     return std::make_unique<BRepLib_MakeFace>(F, W);
 }
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_wire(const TopoDS_Wire& W) {
-    return std::make_unique<BRepLib_MakeFace>(W);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_pln_wire(const gp_Pln& P, const TopoDS_Wire& W) {
-    return std::make_unique<BRepLib_MakeFace>(P, W);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_cylinder_wire(const gp_Cylinder& C, const TopoDS_Wire& W) {
-    return std::make_unique<BRepLib_MakeFace>(C, W);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_cone_wire(const gp_Cone& C, const TopoDS_Wire& W) {
-    return std::make_unique<BRepLib_MakeFace>(C, W);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_sphere_wire(const gp_Sphere& S, const TopoDS_Wire& W) {
-    return std::make_unique<BRepLib_MakeFace>(S, W);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_torus_wire(const gp_Torus& C, const TopoDS_Wire& W) {
-    return std::make_unique<BRepLib_MakeFace>(C, W);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_handlesurface_wire(const opencascade::handle<Geom_Surface>& S, const TopoDS_Wire& W) {
-    return std::make_unique<BRepLib_MakeFace>(S, W);
-}
 inline int32_t BRepLib_MakeFace_error(const BRepLib_MakeFace& self_) {
     return static_cast<int32_t>(self_.Error());
 }
@@ -15529,12 +14959,6 @@ inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_ctor() {
 }
 inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_ctor_shape_bool2(const TopoDS_Shape& S, Standard_Boolean cumOri, Standard_Boolean cumLoc) {
     return std::make_unique<TopoDS_Iterator>(S, cumOri, cumLoc);
-}
-inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_ctor_shape_bool(const TopoDS_Shape& S, Standard_Boolean cumOri) {
-    return std::make_unique<TopoDS_Iterator>(S, cumOri);
-}
-inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_ctor_shape(const TopoDS_Shape& S) {
-    return std::make_unique<TopoDS_Iterator>(S);
 }
 inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_to_owned(const TopoDS_Iterator& self_) { return std::make_unique<TopoDS_Iterator>(self_); }
 

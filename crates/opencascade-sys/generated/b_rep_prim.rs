@@ -153,7 +153,7 @@ impl Cone {
         Position: &crate::ffi::gp_Ax2,
         Height: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepPrim_Cone_ctor_real_ax2_real(Angle, Position, Height)
+        Self::new_real_ax2_real2(Angle, Position, Height, 0.0)
     }
 
     /// The surface normal should be directed  towards the

@@ -534,7 +534,7 @@ impl Ax22d {
         theP: &crate::ffi::gp_Pnt2d,
         theV: &crate::ffi::gp_Dir2d,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::gp_Ax22d_ctor_pnt2d_dir2d(theP, theV)
+        Self::new_pnt2d_dir2d_bool(theP, theV, true)
     }
 
     /// Creates -   a coordinate system where its origin is the origin of
@@ -542,7 +542,7 @@ impl Ax22d {
     /// -   right-handed if theIsSense is true (default value), or
     /// -   left-handed if theIsSense is false.
     pub fn new_ax2d(theA: &crate::ffi::gp_Ax2d) -> cxx::UniquePtr<Self> {
-        crate::ffi::gp_Ax22d_ctor_ax2d(theA)
+        Self::new_ax2d_bool(theA, true)
     }
 
     /// Returns an axis, for which
@@ -1129,7 +1129,7 @@ impl Circ2d {
     /// It is not forbidden to create a circle with theRadius = 0.0   Raises ConstructionError if
     /// theRadius < 0.0. Raised if theRadius < 0.0.
     pub fn new_ax2d_real(theXAxis: &crate::ffi::gp_Ax2d, theRadius: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::gp_Circ2d_ctor_ax2d_real(theXAxis, theRadius)
+        Self::new_ax2d_real_bool(theXAxis, theRadius, true)
     }
 
     /// returns the X axis of the circle.
@@ -1965,7 +1965,7 @@ impl Elips2d {
         theMajorRadius: f64,
         theMinorRadius: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::gp_Elips2d_ctor_ax2d_real2(theMajorAxis, theMajorRadius, theMinorRadius)
+        Self::new_ax2d_real2_bool(theMajorAxis, theMajorRadius, theMinorRadius, true)
     }
 
     /// This directrix is the line normal to the XAxis of the ellipse
@@ -2669,7 +2669,7 @@ impl Hypr2d {
         theMajorRadius: f64,
         theMinorRadius: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::gp_Hypr2d_ctor_ax2d_real2(theMajorAxis, theMajorRadius, theMinorRadius)
+        Self::new_ax2d_real2_bool(theMajorAxis, theMajorRadius, theMinorRadius, true)
     }
 
     /// In the local coordinate system of the hyperbola the equation of
@@ -3595,7 +3595,7 @@ impl Parab2d {
         theMirrorAxis: &crate::ffi::gp_Ax2d,
         theFocalLength: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::gp_Parab2d_ctor_ax2d_real(theMirrorAxis, theFocalLength)
+        Self::new_ax2d_real_bool(theMirrorAxis, theFocalLength, true)
     }
 
     /// Creates a parabola with the directrix and the focus point.
@@ -3613,7 +3613,7 @@ impl Parab2d {
         theDirectrix: &crate::ffi::gp_Ax2d,
         theFocus: &crate::ffi::gp_Pnt2d,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::gp_Parab2d_ctor_ax2d_pnt2d(theDirectrix, theFocus)
+        Self::new_ax2d_pnt2d_bool(theDirectrix, theFocus, true)
     }
 
     /// Computes the directrix of the parabola.

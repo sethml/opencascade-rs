@@ -988,13 +988,6 @@ impl Level {
         crate::ffi::Message_Level_ctor_asciistring(theName)
     }
 
-    /// Constructor.
-    /// One string key is used for all alert meters.
-    /// The perf meter is not started automatically, it will be done in AddAlert() method
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Message_Level_ctor()
-    }
-
     /// Adds new alert on the level. Stops the last alert metric, appends the alert and starts the
     /// alert metrics collecting. Sets root alert beforehand this method using, if the root is NULL,
     /// it does nothing.
@@ -1563,9 +1556,7 @@ impl ProgressScope {
         theName: &crate::ffi::TCollection_AsciiString,
         theMax: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Message_ProgressScope_ctor_progressrange_asciistring_real(
-            theRange, theName, theMax,
-        )
+        Self::new_progressrange_asciistring_real_bool(theRange, theName, theMax, false)
     }
 
     /// Advances position by specified step and returns the range

@@ -45,21 +45,11 @@ impl MakeOffset {
     /// Constructs an algorithm for creating an algorithm
     /// to build parallels to the spine Spine
     pub fn new_face_jointype(Spine: &crate::ffi::TopoDS_Face, Join: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_face_jointype(Spine, Join)
-    }
-
-    /// Constructs an algorithm for creating an algorithm
-    /// to build parallels to the spine Spine
-    pub fn new_face(Spine: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_face(Spine)
+        Self::new_face_jointype_bool(Spine, Join, false)
     }
 
     pub fn new_wire_jointype(Spine: &crate::ffi::TopoDS_Wire, Join: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_wire_jointype(Spine, Join)
-    }
-
-    pub fn new_wire(Spine: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_wire(Spine)
+        Self::new_wire_jointype_bool(Spine, Join, false)
     }
 
     /// Initializes the algorithm to construct parallels to the spine Spine.
@@ -358,7 +348,7 @@ impl MakePipe {
         Profile: &crate::ffi::TopoDS_Shape,
         aMode: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron(Spine, Profile, aMode)
+        Self::new_wire_shape_trihedron_bool(Spine, Profile, aMode, false)
     }
 
     /// Returns the  TopoDS  Shape of the bottom of the prism.
@@ -861,7 +851,7 @@ impl ThruSections {
     /// Use AddWire and AddVertex to define the
     /// successive sections of the shell or solid to be built.
     pub fn new_bool2(isSolid: bool, ruled: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_ThruSections_ctor_bool2(isSolid, ruled)
+        Self::new_bool2_real(isSolid, ruled, 1.0e-06)
     }
 
     /// Initializes an algorithm for building a shell or a solid
@@ -877,7 +867,7 @@ impl ThruSections {
     /// Use AddWire and AddVertex to define the
     /// successive sections of the shell or solid to be built.
     pub fn new_bool(isSolid: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_ThruSections_ctor_bool(isSolid)
+        Self::new_bool2_real(isSolid, false, 1.0e-06)
     }
 
     /// Initializes an algorithm for building a shell or a solid
@@ -893,7 +883,7 @@ impl ThruSections {
     /// Use AddWire and AddVertex to define the
     /// successive sections of the shell or solid to be built.
     pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_ThruSections_ctor()
+        Self::new_bool2_real(false, false, 1.0e-06)
     }
 
     /// Define the type of parametrization   used in the approximation

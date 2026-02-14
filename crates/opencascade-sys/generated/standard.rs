@@ -635,11 +635,6 @@ impl OutOfMemory {
         crate::ffi::Standard_OutOfMemory_ctor_charptr(theMessage)
     }
 
-    /// Constructor is kept public for backward compatibility
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Standard_OutOfMemory_ctor()
-    }
-
     /// Returns error message
     pub fn get_message_string(&self) -> String {
         crate::ffi::Standard_OutOfMemory_get_message_string(self)

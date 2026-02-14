@@ -821,7 +821,7 @@ impl Iterator {
     /// sub-shapes by the location of S, i.e. it applies to
     /// each sub-shape the transformation that is associated with S.
     pub fn new_shape_bool(S: &crate::ffi::TopoDS_Shape, cumOri: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopoDS_Iterator_ctor_shape_bool(S, cumOri)
+        Self::new_shape_bool2(S, cumOri, true)
     }
 
     /// Creates an Iterator on <S> sub-shapes.
@@ -832,7 +832,7 @@ impl Iterator {
     /// sub-shapes by the location of S, i.e. it applies to
     /// each sub-shape the transformation that is associated with S.
     pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopoDS_Iterator_ctor_shape(S)
+        Self::new_shape_bool2(S, true, true)
     }
 
     /// Clone into a new UniquePtr via copy constructor

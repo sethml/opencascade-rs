@@ -201,19 +201,6 @@ impl IncAllocator {
         crate::ffi::NCollection_IncAllocator_ctor_size(theBlockSize)
     }
 
-    /// Constructor.
-    /// Note that this constructor does NOT setup mutex for using allocator concurrently from
-    /// different threads, see SetThreadSafe() method.
-    ///
-    /// The default size of the memory blocks is 12KB.
-    /// It is not recommended to use memory blocks larger than 16KB on Windows
-    /// platform for the repeated operations (and thus multiple allocations)
-    /// because Low Fragmentation Heap is not going to be used for these allocations,
-    /// leading to memory fragmentation and eventual performance slow down.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::NCollection_IncAllocator_ctor()
-    }
-
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::NCollection_IncAllocator_get_type_descriptor()
     }

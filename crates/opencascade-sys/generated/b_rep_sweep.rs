@@ -292,7 +292,7 @@ impl Prism {
         V: &crate::ffi::gp_Vec,
         Copy: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepSweep_Prism_ctor_shape_vec_bool(S, V, Copy)
+        Self::new_shape_vec_bool2(S, V, Copy, true)
     }
 
     /// Builds the prism of base S and vector V. If C is true,
@@ -302,7 +302,7 @@ impl Prism {
         S: &crate::ffi::TopoDS_Shape,
         V: &crate::ffi::gp_Vec,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepSweep_Prism_ctor_shape_vec(S, V)
+        Self::new_shape_vec_bool2(S, V, false, true)
     }
 
     /// Builds a semi-infinite or an infinite prism of base S.
@@ -316,7 +316,7 @@ impl Prism {
         Inf: bool,
         Copy: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepSweep_Prism_ctor_shape_dir_bool2(S, D, Inf, Copy)
+        Self::new_shape_dir_bool3(S, D, Inf, Copy, true)
     }
 
     /// Builds a semi-infinite or an infinite prism of base S.
@@ -329,7 +329,7 @@ impl Prism {
         D: &crate::ffi::gp_Dir,
         Inf: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepSweep_Prism_ctor_shape_dir_bool(S, D, Inf)
+        Self::new_shape_dir_bool3(S, D, Inf, false, true)
     }
 
     /// Builds a semi-infinite or an infinite prism of base S.
@@ -341,7 +341,7 @@ impl Prism {
         S: &crate::ffi::TopoDS_Shape,
         D: &crate::ffi::gp_Dir,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepSweep_Prism_ctor_shape_dir(S, D)
+        Self::new_shape_dir_bool3(S, D, true, false, true)
     }
 
     /// Returns the TopoDS Shape attached to the prism.
@@ -432,7 +432,7 @@ impl Revol {
         A: &crate::ffi::gp_Ax1,
         D: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepSweep_Revol_ctor_shape_ax1_real(S, A, D)
+        Self::new_shape_ax1_real_bool(S, A, D, false)
     }
 
     /// Builds the Revol of meridian S  axis A and angle 2*Pi.
@@ -441,7 +441,7 @@ impl Revol {
         S: &crate::ffi::TopoDS_Shape,
         A: &crate::ffi::gp_Ax1,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepSweep_Revol_ctor_shape_ax1(S, A)
+        Self::new_shape_ax1_bool(S, A, false)
     }
 
     /// Returns the TopoDS Shape attached to the Revol.
@@ -792,7 +792,7 @@ impl Translation {
         V: &crate::ffi::gp_Vec,
         C: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepSweep_Translation_ctor_shape_numshape_location_vec_bool(S, N, L, V, C)
+        Self::new_shape_numshape_location_vec_bool2(S, N, L, V, C, true)
     }
 
     /// Builds the vertex addressed by [aGenV,aDirV], with its

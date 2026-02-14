@@ -359,32 +359,6 @@ impl Common {
         crate::ffi::BRepAlgoAPI_Common_ctor_shape2_pavefiller_progressrange(S1, S2, PF, theRange)
     }
 
-    /// Constructor with two shapes
-    /// <S1>  -argument
-    /// <S2>  -tool
-    /// <anOperation> - the type of the operation
-    /// Obsolete
-    pub fn new_shape2(
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Common_ctor_shape2(S1, S2)
-    }
-
-    /// Constructor with two shapes
-    /// <S1>  -argument
-    /// <S2>  -tool
-    /// <anOperation> - the type of the operation
-    /// <PF> - PaveFiller object that is carried out
-    /// Obsolete
-    pub fn new_shape2_pavefiller(
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
-        PF: &crate::ffi::BOPAlgo_PaveFiller,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Common_ctor_shape2_pavefiller(S1, S2, PF)
-    }
-
     /// Upcast to BRepAlgoAPI_BooleanOperation
     pub fn as_boolean_operation(&self) -> &BooleanOperation {
         crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation(self)
@@ -624,47 +598,6 @@ impl Cut {
         )
     }
 
-    /// Constructor with two shapes
-    /// <S1>  -argument
-    /// <S2>  -tool
-    /// <anOperation> - the type of the operation
-    /// Obsolete
-    pub fn new_shape2(
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Cut_ctor_shape2(S1, S2)
-    }
-
-    /// Constructor with two shapes
-    /// <S1>  -argument
-    /// <S2>  -tool
-    /// <anOperation> - the type of the operation
-    /// <PF> - PaveFiller object that is carried out
-    /// Obsolete
-    pub fn new_shape2_pavefiller_bool(
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
-        aDSF: &crate::ffi::BOPAlgo_PaveFiller,
-        bFWD: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Cut_ctor_shape2_pavefiller_bool(S1, S2, aDSF, bFWD)
-    }
-
-    /// Constructor with two shapes
-    /// <S1>  -argument
-    /// <S2>  -tool
-    /// <anOperation> - the type of the operation
-    /// <PF> - PaveFiller object that is carried out
-    /// Obsolete
-    pub fn new_shape2_pavefiller(
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
-        aDSF: &crate::ffi::BOPAlgo_PaveFiller,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Cut_ctor_shape2_pavefiller(S1, S2, aDSF)
-    }
-
     /// Upcast to BRepAlgoAPI_BooleanOperation
     pub fn as_boolean_operation(&self) -> &BooleanOperation {
         crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation(self)
@@ -899,32 +832,6 @@ impl Fuse {
         theRange: &crate::ffi::Message_ProgressRange,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepAlgoAPI_Fuse_ctor_shape2_pavefiller_progressrange(S1, S2, aDSF, theRange)
-    }
-
-    /// Constructor with two shapes
-    /// <S1>  -argument
-    /// <S2>  -tool
-    /// <anOperation> - the type of the operation
-    /// Obsolete
-    pub fn new_shape2(
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Fuse_ctor_shape2(S1, S2)
-    }
-
-    /// Constructor with two shapes
-    /// <S1>  -argument
-    /// <S2>  -tool
-    /// <anOperation> - the type of the operation
-    /// <PF> - PaveFiller object that is carried out
-    /// Obsolete
-    pub fn new_shape2_pavefiller(
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
-        aDSF: &crate::ffi::BOPAlgo_PaveFiller,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Fuse_ctor_shape2_pavefiller(S1, S2, aDSF)
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation
@@ -1236,7 +1143,7 @@ impl Section {
         S1: &crate::ffi::TopoDS_Shape,
         S2: &crate::ffi::TopoDS_Shape,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Section_ctor_shape2(S1, S2)
+        Self::new_shape2_bool(S1, S2, true)
     }
 
     /// Constructor with two shapes
@@ -1251,7 +1158,7 @@ impl Section {
         S2: &crate::ffi::TopoDS_Shape,
         aDSF: &crate::ffi::BOPAlgo_PaveFiller,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Section_ctor_shape2_pavefiller(S1, S2, aDSF)
+        Self::new_shape2_pavefiller_bool(S1, S2, aDSF, true)
     }
 
     /// Constructor with two shapes
@@ -1264,7 +1171,7 @@ impl Section {
         S1: &crate::ffi::TopoDS_Shape,
         Pl: &crate::ffi::gp_Pln,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Section_ctor_shape_pln(S1, Pl)
+        Self::new_shape_pln_bool(S1, Pl, true)
     }
 
     /// Constructor with two shapes
@@ -1277,7 +1184,7 @@ impl Section {
         S1: &crate::ffi::TopoDS_Shape,
         Sf: &crate::ffi::HandleGeomSurface,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Section_ctor_shape_handlesurface(S1, Sf)
+        Self::new_shape_handlesurface_bool(S1, Sf, true)
     }
 
     /// Constructor with two shapes
@@ -1290,7 +1197,7 @@ impl Section {
         Sf: &crate::ffi::HandleGeomSurface,
         S2: &crate::ffi::TopoDS_Shape,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Section_ctor_handlesurface_shape(Sf, S2)
+        Self::new_handlesurface_shape_bool(Sf, S2, true)
     }
 
     /// Constructor with two shapes
@@ -1303,7 +1210,7 @@ impl Section {
         Sf1: &crate::ffi::HandleGeomSurface,
         Sf2: &crate::ffi::HandleGeomSurface,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Section_ctor_handlesurface2(Sf1, Sf2)
+        Self::new_handlesurface2_bool(Sf1, Sf2, true)
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation

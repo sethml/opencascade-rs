@@ -48,7 +48,7 @@ impl MemInfo {
 
     /// Create and initialize. By default all countes are active
     pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::OSD_MemInfo_ctor()
+        Self::new_bool(true)
     }
 
     /// Return the string representation for all available counter.

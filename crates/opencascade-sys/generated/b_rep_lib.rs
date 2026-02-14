@@ -745,7 +745,7 @@ impl MakeFace {
     /// a plane. If it is not possible to find a plane, the
     /// flag NotDone will be set.
     pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_MakeFace_ctor_wire(W)
+        Self::new_wire_bool(W, false)
     }
 
     /// Make a face from a plane and a wire.
@@ -753,7 +753,7 @@ impl MakeFace {
         P: &crate::ffi::gp_Pln,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_MakeFace_ctor_pln_wire(P, W)
+        Self::new_pln_wire_bool(P, W, true)
     }
 
     /// Make a face from a cylinder and a wire.
@@ -761,7 +761,7 @@ impl MakeFace {
         C: &crate::ffi::gp_Cylinder,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_MakeFace_ctor_cylinder_wire(C, W)
+        Self::new_cylinder_wire_bool(C, W, true)
     }
 
     /// Make a face from a cone and a wire.
@@ -769,7 +769,7 @@ impl MakeFace {
         C: &crate::ffi::gp_Cone,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_MakeFace_ctor_cone_wire(C, W)
+        Self::new_cone_wire_bool(C, W, true)
     }
 
     /// Make a face from a sphere and a wire.
@@ -777,7 +777,7 @@ impl MakeFace {
         S: &crate::ffi::gp_Sphere,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_MakeFace_ctor_sphere_wire(S, W)
+        Self::new_sphere_wire_bool(S, W, true)
     }
 
     /// Make a face from a torus and a wire.
@@ -785,7 +785,7 @@ impl MakeFace {
         C: &crate::ffi::gp_Torus,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_MakeFace_ctor_torus_wire(C, W)
+        Self::new_torus_wire_bool(C, W, true)
     }
 
     /// Make a face from a Surface and a wire.
@@ -793,7 +793,7 @@ impl MakeFace {
         S: &crate::ffi::HandleGeomSurface,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_MakeFace_ctor_handlesurface_wire(S, W)
+        Self::new_handlesurface_wire_bool(S, W, true)
     }
 
     pub fn error(&self) -> i32 {

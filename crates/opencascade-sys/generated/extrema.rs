@@ -223,11 +223,11 @@ impl ExtCC {
     }
 
     pub fn new_real(TolC1: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtCC_ctor_real(TolC1)
+        Self::new_real2(TolC1, 1.0e-10)
     }
 
     pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtCC_ctor()
+        Self::new_real2(1.0e-10, 1.0e-10)
     }
 
     /// It calculates all the distances.
@@ -236,7 +236,7 @@ impl ExtCC {
         C2: &crate::ffi::Adaptor3d_Curve,
         TolC1: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtCC_ctor_curve2_real(C1, C2, TolC1)
+        Self::new_curve2_real2(C1, C2, TolC1, 1.0e-10)
     }
 
     /// It calculates all the distances.
@@ -244,7 +244,7 @@ impl ExtCC {
         C1: &crate::ffi::Adaptor3d_Curve,
         C2: &crate::ffi::Adaptor3d_Curve,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtCC_ctor_curve2(C1, C2)
+        Self::new_curve2_real2(C1, C2, 1.0e-10, 1.0e-10)
     }
 
     /// It calculates all the distances.
@@ -257,7 +257,7 @@ impl ExtCC {
         V2: f64,
         TolC1: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtCC_ctor_curve2_real5(C1, C2, U1, U2, V1, V2, TolC1)
+        Self::new_curve2_real6(C1, C2, U1, U2, V1, V2, TolC1, 1.0e-10)
     }
 
     /// It calculates all the distances.
@@ -269,7 +269,7 @@ impl ExtCC {
         V1: f64,
         V2: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtCC_ctor_curve2_real4(C1, C2, U1, U2, V1, V2)
+        Self::new_curve2_real6(C1, C2, U1, U2, V1, V2, 1.0e-10, 1.0e-10)
     }
 }
 
@@ -334,7 +334,7 @@ impl ExtPC {
         Uinf: f64,
         Usup: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPC_ctor_pnt_curve_real2(P, C, Uinf, Usup)
+        Self::new_pnt_curve_real3(P, C, Uinf, Usup, 1.0e-10)
     }
 
     /// It calculates all the distances.
@@ -349,7 +349,7 @@ impl ExtPC {
         P: &crate::ffi::gp_Pnt,
         C: &crate::ffi::Adaptor3d_Curve,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPC_ctor_pnt_curve(P, C)
+        Self::new_pnt_curve_real(P, C, 1.0e-10)
     }
 }
 
@@ -584,86 +584,6 @@ impl ExtPS {
         )
     }
 
-    /// It calculates all the distances.
-    /// NbU and NbV are used to locate the close points
-    /// to find the zeros. They must be great enough
-    /// such that if there is N extrema, there will
-    /// be N extrema between P and the grid.
-    /// TolU et TolV are used to determine the conditions
-    /// to stop the iterations; at the iteration number n:
-    /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_real2_extflag(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::Adaptor3d_Surface,
-        TolU: f64,
-        TolV: f64,
-        F: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real2_extflag(P, S, TolU, TolV, F)
-    }
-
-    /// It calculates all the distances.
-    /// NbU and NbV are used to locate the close points
-    /// to find the zeros. They must be great enough
-    /// such that if there is N extrema, there will
-    /// be N extrema between P and the grid.
-    /// TolU et TolV are used to determine the conditions
-    /// to stop the iterations; at the iteration number n:
-    /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_real2(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::Adaptor3d_Surface,
-        TolU: f64,
-        TolV: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real2(P, S, TolU, TolV)
-    }
-
-    /// It calculates all the distances.
-    /// NbU and NbV are used to locate the close points
-    /// to find the zeros. They must be great enough
-    /// such that if there is N extrema, there will
-    /// be N extrema between P and the grid.
-    /// TolU et TolV are used to determine the conditions
-    /// to stop the iterations; at the iteration number n:
-    /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_real6_extflag(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::Adaptor3d_Surface,
-        Uinf: f64,
-        Usup: f64,
-        Vinf: f64,
-        Vsup: f64,
-        TolU: f64,
-        TolV: f64,
-        F: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real6_extflag(
-            P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV, F,
-        )
-    }
-
-    /// It calculates all the distances.
-    /// NbU and NbV are used to locate the close points
-    /// to find the zeros. They must be great enough
-    /// such that if there is N extrema, there will
-    /// be N extrema between P and the grid.
-    /// TolU et TolV are used to determine the conditions
-    /// to stop the iterations; at the iteration number n:
-    /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_real6(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::Adaptor3d_Surface,
-        Uinf: f64,
-        Usup: f64,
-        Vinf: f64,
-        Vsup: f64,
-        TolU: f64,
-        TolV: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real6(P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV)
-    }
-
     pub fn set_flag(self: std::pin::Pin<&mut Self>, F: i32) {
         crate::ffi::Extrema_ExtPS_set_flag(self, F)
     }
@@ -782,114 +702,6 @@ impl GenExtPS {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real6_extflag_extalgo(
             P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV, F, A,
-        )
-    }
-
-    /// It calculates all the distances.
-    /// The function F(u,v)=distance(P,S(u,v)) has an
-    /// extremum when gradient(F)=0. The algorithm searches
-    /// all the zeros inside the definition ranges of the
-    /// surface.
-    /// NbU and NbV are used to locate the close points
-    /// to find the zeros. They must be great enough
-    /// such that if there is N extrema, there will
-    /// be N extrema between P and the grid.
-    /// TolU et TolV are used to determine the conditions
-    /// to stop the iterations; at the iteration number n:
-    /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_int2_real2_extflag(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::Adaptor3d_Surface,
-        NbU: i32,
-        NbV: i32,
-        TolU: f64,
-        TolV: f64,
-        F: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real2_extflag(
-            P, S, NbU, NbV, TolU, TolV, F,
-        )
-    }
-
-    /// It calculates all the distances.
-    /// The function F(u,v)=distance(P,S(u,v)) has an
-    /// extremum when gradient(F)=0. The algorithm searches
-    /// all the zeros inside the definition ranges of the
-    /// surface.
-    /// NbU and NbV are used to locate the close points
-    /// to find the zeros. They must be great enough
-    /// such that if there is N extrema, there will
-    /// be N extrema between P and the grid.
-    /// TolU et TolV are used to determine the conditions
-    /// to stop the iterations; at the iteration number n:
-    /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_int2_real2(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::Adaptor3d_Surface,
-        NbU: i32,
-        NbV: i32,
-        TolU: f64,
-        TolV: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real2(P, S, NbU, NbV, TolU, TolV)
-    }
-
-    /// It calculates all the distances.
-    /// The function F(u,v)=distance(P,S(u,v)) has an
-    /// extremum when gradient(F)=0. The algorithm searches
-    /// all the zeros inside the definition ranges of the
-    /// surface.
-    /// NbU and NbV are used to locate the close points
-    /// to find the zeros. They must be great enough
-    /// such that if there is N extrema, there will
-    /// be N extrema between P and the grid.
-    /// TolU et TolV are used to determine the conditions
-    /// to stop the iterations; at the iteration number n:
-    /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_int2_real6_extflag(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::Adaptor3d_Surface,
-        NbU: i32,
-        NbV: i32,
-        Umin: f64,
-        Usup: f64,
-        Vmin: f64,
-        Vsup: f64,
-        TolU: f64,
-        TolV: f64,
-        F: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real6_extflag(
-            P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV, F,
-        )
-    }
-
-    /// It calculates all the distances.
-    /// The function F(u,v)=distance(P,S(u,v)) has an
-    /// extremum when gradient(F)=0. The algorithm searches
-    /// all the zeros inside the definition ranges of the
-    /// surface.
-    /// NbU and NbV are used to locate the close points
-    /// to find the zeros. They must be great enough
-    /// such that if there is N extrema, there will
-    /// be N extrema between P and the grid.
-    /// TolU et TolV are used to determine the conditions
-    /// to stop the iterations; at the iteration number n:
-    /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-    pub fn new_pnt_surface_int2_real6(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::Adaptor3d_Surface,
-        NbU: i32,
-        NbV: i32,
-        Umin: f64,
-        Usup: f64,
-        Vmin: f64,
-        Vsup: f64,
-        TolU: f64,
-        TolV: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real6(
-            P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV,
         )
     }
 

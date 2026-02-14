@@ -40,7 +40,7 @@ impl Face {
     /// This option has an effect only for BSpline faces. Spans
     /// are returned by the methods GetUKnots and GetTKnots.
     pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepGProp_Face_ctor()
+        Self::new_bool(false)
     }
 
     /// Constructor. Initializes the object with the face and the
@@ -49,7 +49,7 @@ impl Face {
     /// BSpline faces. Spans are returned by the methods GetUKnots
     /// and GetTKnots.
     pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepGProp_Face_ctor_face(F)
+        Self::new_face_bool(F, false)
     }
 
     /// Returns the value of the boundary curve of the face.

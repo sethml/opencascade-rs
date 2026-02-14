@@ -51,8 +51,8 @@ let mut compound = topo_ds::Compound::new();
 
 ### Constructors with Default Arguments
 
-C++ constructors often have trailing default parameters. The Rust API currently
-only exposes the fully-specified variant. You must pass all arguments explicitly:
+C++ constructors with trailing default parameters have convenience wrappers
+that omit the defaulted arguments. You can use either the short or full form:
 
 ```cpp
 // C++: BRepBuilderAPI_Transform(shape, trsf)  — copy defaults to false
@@ -60,7 +60,12 @@ BRepBuilderAPI_Transform aBRepTrsf(aShape, aTrsf);
 ```
 
 ```rust
-// Rust: must pass all args including defaults
+// Rust: convenience wrapper fills in defaults
+let mut brep_transform = b_rep_builder_api::Transform::new_shape_trsf(
+    wire.pin_mut().shape(), &trsf,
+);
+
+// Or explicitly pass all args
 let mut brep_transform = b_rep_builder_api::Transform::new_shape_trsf_bool2(
     wire.pin_mut().shape(), &trsf, false, false,
 );

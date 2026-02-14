@@ -337,6 +337,9 @@ pub struct Param {
     pub ty: Type,
     /// Whether this parameter has a default value in C++
     pub has_default: bool,
+    /// The default value as a Rust expression (e.g. "false", "0", "0.0")
+    /// Only populated for types we can represent as Rust literals.
+    pub default_value: Option<String>,
 }
 
 /// Representation of C++ types

@@ -225,11 +225,12 @@ impl IncrementalMesh {
         isRelative: bool,
         theAngDeflection: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_real_bool_real(
+        Self::new_shape_real_bool_real_bool(
             theShape,
             theLinDeflection,
             isRelative,
             theAngDeflection,
+            false,
         )
     }
 
@@ -247,11 +248,7 @@ impl IncrementalMesh {
         theLinDeflection: f64,
         isRelative: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_real_bool(
-            theShape,
-            theLinDeflection,
-            isRelative,
-        )
+        Self::new_shape_real_bool_real_bool(theShape, theLinDeflection, isRelative, 0.5, false)
     }
 
     /// Constructor.
@@ -267,18 +264,7 @@ impl IncrementalMesh {
         theShape: &crate::ffi::TopoDS_Shape,
         theLinDeflection: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_real(theShape, theLinDeflection)
-    }
-
-    /// Constructor.
-    /// Automatically calls method Perform.
-    /// @param theShape shape to be meshed.
-    /// @param theParameters - parameters of meshing
-    pub fn new_shape_parameters(
-        theShape: &crate::ffi::TopoDS_Shape,
-        theParameters: &crate::ffi::IMeshTools_Parameters,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_parameters(theShape, theParameters)
+        Self::new_shape_real_bool_real_bool(theShape, theLinDeflection, false, 0.5, false)
     }
 
     /// Returns multi-threading usage flag set by default in

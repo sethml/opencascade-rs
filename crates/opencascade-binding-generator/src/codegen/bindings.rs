@@ -51,7 +51,8 @@ pub struct ClassBindings {
     pub inherited_methods: Vec<InheritedMethodBinding>,
 }
 
-/// A constructor that will have a C++ wrapper (std::make_unique).
+/// A constructor that will have a C++ wrapper (std::make_unique),
+/// or a Rust-only convenience wrapper that delegates to a full-argument constructor.
 #[derive(Debug, Clone)]
 pub struct ConstructorBinding {
     /// FFI function name, e.g. "gp_Pnt_ctor_real3"
@@ -66,6 +67,21 @@ pub struct ConstructorBinding {
     pub doc_comment: Option<String>,
     /// Source line in C++ header
     pub source_line: Option<u32>,
+    /// If this is a convenience wrapper (fewer params with defaults filled in),
+    /// contains info about the full-argument constructor it delegates to.
+    /// When set, no ffi.rs or wrappers.hxx entry is generated — only a Rust-only
+    /// method in the module re-export that calls the full-argument version.
+    pub convenience_of: Option<ConvenienceInfo>,
+}
+
+/// Info for a convenience constructor that delegates to a full-argument version.
+#[derive(Debug, Clone)]
+pub struct ConvenienceInfo {
+    /// The impl_method_name of the full-argument constructor to call
+    pub full_method_name: String,
+    /// Rust expressions for the default values of the trimmed trailing params,
+    /// in order. E.g. ["false", "false"] for two defaulted bool params.
+    pub default_exprs: Vec<String>,
 }
 
 /// A method bound directly by CXX (self receiver, no wrapper needed).
@@ -936,6 +952,7 @@ pub fn compute_class_bindings(
                 cpp_arg_exprs: Vec::new(),
                 doc_comment: Some("Default constructor".to_string()),
                 source_line: None,
+                convenience_of: None,
             });
         }
         ctors
@@ -1148,11 +1165,64 @@ pub fn compute_class_bindings(
 
 // ── Constructor bindings ────────────────────────────────────────────────────
 
+/// Adapt a C++ default value expression to be valid for the corresponding Rust type.
+///
+/// C++ allows implicit conversions (e.g., `0` for `double`, `0` for `nullptr`).
+/// This function returns `None` if the default can't be properly expressed in Rust.
+fn adapt_default_for_rust_type(default_expr: &str, param_type: &Type) -> Option<String> {
+    // Unwrap references since the default applies to the underlying type
+    let inner_type = match param_type {
+        Type::ConstRef(inner) | Type::MutRef(inner) => inner.as_ref(),
+        _ => param_type,
+    };
+
+    match inner_type {
+        Type::Bool => {
+            // Bool defaults should already be "true" or "false"
+            match default_expr {
+                "true" | "false" => Some(default_expr.to_string()),
+                "0" => Some("false".to_string()),
+                "1" => Some("true".to_string()),
+                _ => None,
+            }
+        }
+        Type::F64 | Type::F32 => {
+            // C++ allows integer literals for floating types (e.g., `0` for `0.0`)
+            if default_expr.contains('.') {
+                Some(default_expr.to_string())
+            } else if let Ok(_) = default_expr.parse::<i64>() {
+                Some(format!("{}.0", default_expr))
+            } else {
+                None
+            }
+        }
+        Type::I32 | Type::U32 | Type::I64 | Type::U64 | Type::Usize => {
+            // Integer literals should work directly
+            if default_expr.parse::<i64>().is_ok() || default_expr.parse::<u64>().is_ok() {
+                Some(default_expr.to_string())
+            } else {
+                None
+            }
+        }
+        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
+            // const char* defaults — `0`/`nullptr` means null pointer, not expressible as &str
+            None
+        }
+        _ => {
+            // For other types (classes, handles, etc.), we can't express defaults
+            None
+        }
+    }
+}
+
 /// A constructor, possibly with trailing defaulted params trimmed.
 struct TrimmedConstructor<'a> {
     original: &'a Constructor,
     /// How many params to include (may be less than original.params.len())
     trimmed_param_count: usize,
+    /// If this is a convenience wrapper, the index of the full-argument parent
+    /// in the regular_ctors vec, plus that parent's trimmed_param_count.
+    convenience_parent: Option<(usize, usize)>,
 }
 
 /// Check if a slice of params passes all bindability filters.
@@ -1238,6 +1308,7 @@ fn compute_constructor_bindings(
         .map(|c| TrimmedConstructor {
             original: c,
             trimmed_param_count: c.params.len(),
+            convenience_parent: None,
         })
         .collect();
 
@@ -1281,6 +1352,7 @@ fn compute_constructor_bindings(
                     bindable_ctors.push(TrimmedConstructor {
                         original: ctor,
                         trimmed_param_count: trim_to,
+                        convenience_parent: None,
                     });
                 }
                 break;
@@ -1289,14 +1361,14 @@ fn compute_constructor_bindings(
     }
 
     // For bindable constructors that have trailing default params, also generate
-    // convenience wrappers with fewer params. Each trimmed version gets its own
-    // C++ wrapper that omits the trailing params, letting C++ fill in defaults.
+    // convenience wrappers with fewer params. These are Rust-only wrappers that
+    // call the full-argument version with default values filled in.
     // E.g., BRepBuilderAPI_Transform(S, T, copy=false, copyMesh=false) generates:
-    //   new_shape_trsf_bool2(S, T, copy, copyMesh)  — full version (already included)
-    //   new_shape_trsf_bool(S, T, copy)              — 3-param convenience
-    //   new_shape_trsf(S, T)                         — 2-param convenience
-    let bindable_count = bindable_ctors.len();
-    for i in 0..bindable_count {
+    //   new_shape_trsf_bool2(S, T, copy, copyMesh)  — full version (C++ wrapper)
+    //   new_shape_trsf_bool(S, T, copy)              — 3-param convenience (Rust-only)
+    //   new_shape_trsf(S, T)                         — 2-param convenience (Rust-only)
+    let regular_count = bindable_ctors.len();
+    for i in 0..regular_count {
         let ctor = bindable_ctors[i].original;
         let full_count = bindable_ctors[i].trimmed_param_count;
 
@@ -1312,6 +1384,17 @@ fn compute_constructor_bindings(
                 break; // Can't trim non-default params
             }
             trim_to -= 1;
+
+            // Check that we can express all trimmed params' defaults as valid Rust
+            let trimmed_range = &ctor.params[trim_to..full_count];
+            let all_defaults_expressible = trimmed_range.iter().all(|p| {
+                p.default_value.is_some()
+                    && adapt_default_for_rust_type(p.default_value.as_deref().unwrap(), &p.ty).is_some()
+            });
+            if !all_defaults_expressible {
+                // Can't generate a Rust-only convenience without valid defaults
+                continue;
+            }
 
             let trimmed_params = &ctor.params[..trim_to];
             // Check it's not a duplicate of an existing binding
@@ -1329,14 +1412,17 @@ fn compute_constructor_bindings(
                 bindable_ctors.push(TrimmedConstructor {
                     original: ctor,
                     trimmed_param_count: trim_to,
+                    convenience_parent: Some((i, full_count)),
                 });
             }
         }
     }
 
+    // Now compute names and build ConstructorBindings.
+    // Phase 1: Assign names to all constructors (regular and convenience alike).
     let mut ctor_names: HashMap<String, usize> = HashMap::new();
 
-    bindable_ctors
+    let all_names: Vec<String> = bindable_ctors
         .iter()
         .map(|trimmed| {
             let params_slice = &trimmed.original.params[..trimmed.trimmed_param_count];
@@ -1354,24 +1440,58 @@ fn compute_constructor_bindings(
             } else {
                 method_name
             };
-            let impl_method_name = final_method_name.to_snake_case();
+            final_method_name.to_snake_case()
+        })
+        .collect();
 
-            let ffi_suffix = if base_suffix.is_empty() {
-                "ctor".to_string()
-            } else {
-                format!("ctor{}", base_suffix)
-            };
-            let ffi_fn_name = format!("{}_{}", cpp_name, ffi_suffix);
+    // Phase 2: Build ConstructorBindings using the computed names.
+    bindable_ctors
+        .iter()
+        .enumerate()
+        .map(|(idx, trimmed)| {
+            let params_slice = &trimmed.original.params[..trimmed.trimmed_param_count];
+            let impl_method_name = all_names[idx].clone();
 
             let params: Vec<ParamBinding> = params_slice
                 .iter()
                 .map(|p| build_param_binding(&p.name, &p.ty, ffi_ctx))
                 .collect();
 
-            let cpp_arg_exprs: Vec<String> = params
-                .iter()
-                .map(|p| p.cpp_arg_expr.clone())
-                .collect();
+            let convenience_of = trimmed.convenience_parent.map(|(parent_idx, parent_param_count)| {
+                let full_method_name = all_names[parent_idx].clone();
+                let default_exprs: Vec<String> = trimmed
+                    .original
+                    .params[trimmed.trimmed_param_count..parent_param_count]
+                    .iter()
+                    .map(|p| {
+                        let raw = p.default_value.as_deref().unwrap_or("Default::default()");
+                        adapt_default_for_rust_type(raw, &p.ty)
+                            .unwrap_or_else(|| "Default::default()".to_string())
+                    })
+                    .collect();
+                ConvenienceInfo {
+                    full_method_name,
+                    default_exprs,
+                }
+            });
+
+            let (ffi_fn_name, cpp_arg_exprs) = if convenience_of.is_some() {
+                // Convenience constructors don't need FFI entries
+                (String::new(), Vec::new())
+            } else {
+                let base_suffix = overload_suffix_for_params(params_slice);
+                let ffi_suffix = if base_suffix.is_empty() {
+                    "ctor".to_string()
+                } else {
+                    format!("ctor{}", base_suffix)
+                };
+                let ffi_fn_name = format!("{}_{}", cpp_name, ffi_suffix);
+                let cpp_arg_exprs: Vec<String> = params
+                    .iter()
+                    .map(|p| p.cpp_arg_expr.clone())
+                    .collect();
+                (ffi_fn_name, cpp_arg_exprs)
+            };
 
             ConstructorBinding {
                 ffi_fn_name,
@@ -1380,6 +1500,7 @@ fn compute_constructor_bindings(
                 cpp_arg_exprs,
                 doc_comment: trimmed.original.comment.clone(),
                 source_line: trimmed.original.source_line,
+                convenience_of,
             }
         })
         .collect()
@@ -1695,8 +1816,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
     writeln!(output, "// ========================").unwrap();
     writeln!(output).unwrap();
 
-    // 1. Constructor wrappers
-    for ctor in &bindings.constructors {
+    // 1. Constructor wrappers (skip convenience — they are Rust-only)
+    for ctor in bindings.constructors.iter().filter(|c| c.convenience_of.is_none()) {
         let params_cpp: Vec<String> = ctor
             .params
             .iter()
@@ -2277,14 +2398,30 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let args: Vec<String> = ctor.params.iter().map(|p| p.rust_name.clone()).collect();
 
         let doc = format_reexport_doc(&ctor.doc_comment);
-        impl_methods.push(format!(
-            "{}    pub fn {}({}) -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}({})\n    }}\n",
-            doc,
-            ctor.impl_method_name,
-            params.join(", "),
-            ctor.ffi_fn_name,
-            args.join(", ")
-        ));
+
+        if let Some(ref conv) = ctor.convenience_of {
+            // Convenience constructor: Rust-only wrapper that delegates to full-arg version
+            let mut all_args = args.clone();
+            all_args.extend(conv.default_exprs.iter().cloned());
+            impl_methods.push(format!(
+                "{}    pub fn {}({}) -> cxx::UniquePtr<Self> {{\n        Self::{}({})\n    }}\n",
+                doc,
+                ctor.impl_method_name,
+                params.join(", "),
+                conv.full_method_name,
+                all_args.join(", ")
+            ));
+        } else {
+            // Regular constructor: delegates to ffi function
+            impl_methods.push(format!(
+                "{}    pub fn {}({}) -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}({})\n    }}\n",
+                doc,
+                ctor.impl_method_name,
+                params.join(", "),
+                ctor.ffi_fn_name,
+                args.join(", ")
+            ));
+        }
     }
 
     // 2. Wrapper methods (impl delegates to ffi free functions)
@@ -2527,8 +2664,8 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
     emit_ffi_doc(&mut out, &source_attr, &bindings.doc_comment);
     writeln!(out, "        type {};", cn).unwrap();
 
-    // ── Constructors ────────────────────────────────────────────────────
-    for ctor in &bindings.constructors {
+    // ── Constructors (skip convenience wrappers — they are Rust-only) ──
+    for ctor in bindings.constructors.iter().filter(|c| c.convenience_of.is_none()) {
         let source = format_source_attribution(
             &bindings.source_header,
             ctor.source_line,
@@ -2925,6 +3062,7 @@ mod tests {
                     name: "P".to_string(),
                     ty: Type::ConstRef(Box::new(Type::Class("gp_Pnt".to_string()))),
                     has_default: false,
+                    default_value: None,
                 }],
                 return_type: None,
                 source_line: Some(10),
@@ -2937,6 +3075,7 @@ mod tests {
                     name: "A1".to_string(),
                     ty: Type::ConstRef(Box::new(Type::Class("gp_Ax1".to_string()))),
                     has_default: false,
+                    default_value: None,
                 }],
                 return_type: None,
                 source_line: Some(20),

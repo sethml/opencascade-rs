@@ -187,8 +187,8 @@ impl Surface {
         theVLast: f64,
         theTolU: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAdaptor_Surface_ctor_handlesurface_real5(
-            theSurf, theUFirst, theULast, theVFirst, theVLast, theTolU,
+        Self::new_handlesurface_real6(
+            theSurf, theUFirst, theULast, theVFirst, theVLast, theTolU, 0.0,
         )
     }
 
@@ -200,9 +200,7 @@ impl Surface {
         theVFirst: f64,
         theVLast: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAdaptor_Surface_ctor_handlesurface_real4(
-            theSurf, theUFirst, theULast, theVFirst, theVLast,
-        )
+        Self::new_handlesurface_real6(theSurf, theUFirst, theULast, theVFirst, theVLast, 0.0, 0.0)
     }
 
     /// Shallow copy of adaptor

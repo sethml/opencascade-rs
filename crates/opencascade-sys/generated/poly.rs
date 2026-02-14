@@ -481,7 +481,7 @@ impl Triangulation {
         theNbTriangles: i32,
         theHasUVNodes: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_Triangulation_ctor_int2_bool(theNbNodes, theNbTriangles, theHasUVNodes)
+        Self::new_int2_bool2(theNbNodes, theNbTriangles, theHasUVNodes, false)
     }
 
     /// Creates full copy of current triangulation

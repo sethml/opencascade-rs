@@ -823,7 +823,7 @@ impl Ellipse {
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom2d_Ellipse_ctor_ax2d_real2(MajorAxis, MajorRadius, MinorRadius)
+        Self::new_ax2d_real2_bool(MajorAxis, MajorRadius, MinorRadius, true)
     }
 
     /// Converts this ellipse into a gp_Elips2d ellipse.
@@ -1293,7 +1293,7 @@ impl TrimmedCurve {
         U2: f64,
         Sense: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom2d_TrimmedCurve_ctor_handlecurve_real2_bool(C, U1, U2, Sense)
+        Self::new_handlecurve_real2_bool2(C, U1, U2, Sense, true)
     }
 
     /// Creates a trimmed curve from the basis curve C limited between
@@ -1333,7 +1333,7 @@ impl TrimmedCurve {
         U1: f64,
         U2: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom2d_TrimmedCurve_ctor_handlecurve_real2(C, U1, U2)
+        Self::new_handlecurve_real2_bool2(C, U1, U2, true, true)
     }
 
     /// Returns the basis curve.

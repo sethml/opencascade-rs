@@ -86,27 +86,27 @@ impl BrentMinimum {
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     pub fn new_real_int(TolX: f64, NbIterations: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::math_BrentMinimum_ctor_real_int(TolX, NbIterations)
+        Self::new_real_int_real(TolX, NbIterations, 1.0e-12)
     }
 
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     pub fn new_real(TolX: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::math_BrentMinimum_ctor_real(TolX)
+        Self::new_real_int_real(TolX, 100, 1.0e-12)
     }
 
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     /// It has to be used if F(Bx) is known.
     pub fn new_real2_int(TolX: f64, Fbx: f64, NbIterations: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::math_BrentMinimum_ctor_real2_int(TolX, Fbx, NbIterations)
+        Self::new_real2_int_real(TolX, Fbx, NbIterations, 1.0e-12)
     }
 
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     /// It has to be used if F(Bx) is known.
     pub fn new_real2(TolX: f64, Fbx: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::math_BrentMinimum_ctor_real2(TolX, Fbx)
+        Self::new_real2_int_real(TolX, Fbx, 100, 1.0e-12)
     }
 }
 
@@ -226,7 +226,7 @@ impl GaussLeastSquare {
     /// If the largest pivot found is less than MinPivot the matrix <A>
     /// is considered as singular.
     pub fn new_matrix(A: &crate::ffi::math_Matrix) -> cxx::UniquePtr<Self> {
-        crate::ffi::math_GaussLeastSquare_ctor_matrix(A)
+        Self::new_matrix_real(A, 1.0e-20)
     }
 }
 

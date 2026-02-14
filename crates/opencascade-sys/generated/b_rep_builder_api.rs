@@ -902,7 +902,7 @@ impl MakeFace {
     /// a plane. If it is not possible to find a plane, the
     /// flag NotDone will be set.
     pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeFace_ctor_wire(W)
+        Self::new_wire_bool(W, false)
     }
 
     /// Make a face from a plane and a wire.
@@ -910,7 +910,7 @@ impl MakeFace {
         P: &crate::ffi::gp_Pln,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeFace_ctor_pln_wire(P, W)
+        Self::new_pln_wire_bool(P, W, true)
     }
 
     /// Make a face from a cylinder and a wire.
@@ -918,7 +918,7 @@ impl MakeFace {
         C: &crate::ffi::gp_Cylinder,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeFace_ctor_cylinder_wire(C, W)
+        Self::new_cylinder_wire_bool(C, W, true)
     }
 
     /// Make a face from a cone and a wire.
@@ -926,7 +926,7 @@ impl MakeFace {
         C: &crate::ffi::gp_Cone,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeFace_ctor_cone_wire(C, W)
+        Self::new_cone_wire_bool(C, W, true)
     }
 
     /// Make a face from a sphere and a wire.
@@ -934,7 +934,7 @@ impl MakeFace {
         S: &crate::ffi::gp_Sphere,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeFace_ctor_sphere_wire(S, W)
+        Self::new_sphere_wire_bool(S, W, true)
     }
 
     /// Make a face from a torus and a wire.
@@ -942,7 +942,7 @@ impl MakeFace {
         C: &crate::ffi::gp_Torus,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeFace_ctor_torus_wire(C, W)
+        Self::new_torus_wire_bool(C, W, true)
     }
 
     /// Make a face from a Surface and a wire.
@@ -953,7 +953,7 @@ impl MakeFace {
         S: &crate::ffi::HandleGeomSurface,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlesurface_wire(S, W)
+        Self::new_handlesurface_wire_bool(S, W, true)
     }
 
     /// Returns the construction status
@@ -1614,7 +1614,7 @@ impl Sewing {
         option2: bool,
         option3: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_Sewing_ctor_real_bool3(tolerance, option1, option2, option3)
+        Self::new_real_bool4(tolerance, option1, option2, option3, false)
     }
 
     /// Creates an object with
@@ -1624,7 +1624,7 @@ impl Sewing {
     /// option for cutting of free edges.
     /// option for non manifold processing
     pub fn new_real_bool2(tolerance: f64, option1: bool, option2: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_Sewing_ctor_real_bool2(tolerance, option1, option2)
+        Self::new_real_bool4(tolerance, option1, option2, true, false)
     }
 
     /// Creates an object with
@@ -1634,7 +1634,7 @@ impl Sewing {
     /// option for cutting of free edges.
     /// option for non manifold processing
     pub fn new_real_bool(tolerance: f64, option1: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_Sewing_ctor_real_bool(tolerance, option1)
+        Self::new_real_bool4(tolerance, option1, true, true, false)
     }
 
     /// Creates an object with
@@ -1644,7 +1644,7 @@ impl Sewing {
     /// option for cutting of free edges.
     /// option for non manifold processing
     pub fn new_real(tolerance: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_Sewing_ctor_real(tolerance)
+        Self::new_real_bool4(tolerance, true, true, true, false)
     }
 
     /// Creates an object with
@@ -1654,7 +1654,7 @@ impl Sewing {
     /// option for cutting of free edges.
     /// option for non manifold processing
     pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_Sewing_ctor()
+        Self::new_real_bool4(1.0e-06, true, true, true, false)
     }
 
     /// Gives a modifieded subshape
@@ -1764,7 +1764,7 @@ impl Transform {
         theTrsf: &crate::ffi::gp_Trsf,
         theCopyGeom: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_Transform_ctor_shape_trsf_bool(theShape, theTrsf, theCopyGeom)
+        Self::new_shape_trsf_bool2(theShape, theTrsf, theCopyGeom, false)
     }
 
     /// Creates a transformation from the gp_Trsf <theTrsf>, and
@@ -1780,7 +1780,7 @@ impl Transform {
         theShape: &crate::ffi::TopoDS_Shape,
         theTrsf: &crate::ffi::gp_Trsf,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_Transform_ctor_shape_trsf(theShape, theTrsf)
+        Self::new_shape_trsf_bool2(theShape, theTrsf, false, false)
     }
 
     /// Returns the modified shape corresponding to <S>.

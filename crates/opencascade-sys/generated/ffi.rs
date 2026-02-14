@@ -811,20 +811,6 @@ mod ffi {
         /// -   right-handed if theIsSense is true (default value), or
         /// -   left-handed if theIsSense is false.
         fn gp_Ax22d_ctor_ax2d_bool(theA: &gp_Ax2d, theIsSense: bool) -> UniquePtr<gp_Ax22d>;
-        /// **Source:** `gp_Ax22d.hxx`:80 - `gp_Ax22d::gp_Ax22d()`
-        ///
-        /// Creates -   a coordinate system with origin theP and "X Direction"
-        /// theV, which is:
-        /// -   right-handed if theIsSense is true (default value), or
-        /// -   left-handed if theIsSense is false
-        fn gp_Ax22d_ctor_pnt2d_dir2d(theP: &gp_Pnt2d, theV: &gp_Dir2d) -> UniquePtr<gp_Ax22d>;
-        /// **Source:** `gp_Ax22d.hxx`:100 - `gp_Ax22d::gp_Ax22d()`
-        ///
-        /// Creates -   a coordinate system where its origin is the origin of
-        /// theA and its "X Direction" is the unit vector of theA, which   is:
-        /// -   right-handed if theIsSense is true (default value), or
-        /// -   left-handed if theIsSense is false.
-        fn gp_Ax22d_ctor_ax2d(theA: &gp_Ax2d) -> UniquePtr<gp_Ax22d>;
         /// **Source:** `gp_Ax22d.hxx`:116 - `gp_Ax22d::SetAxis()`
         ///
         /// Assigns the origin and the two unit vectors of the
@@ -1706,13 +1692,6 @@ mod ffi {
         /// It is not forbidden to create a circle with theRadius = 0.0 Raises ConstructionError if
         /// theRadius < 0.0. Raised if theRadius < 0.0.
         fn gp_Circ2d_ctor_ax22d_real(theAxis: &gp_Ax22d, theRadius: f64) -> UniquePtr<gp_Circ2d>;
-        /// **Source:** `gp_Circ2d.hxx`:64 - `gp_Circ2d::gp_Circ2d()`
-        ///
-        /// The location point of theXAxis is the center of the circle.
-        /// Warnings :
-        /// It is not forbidden to create a circle with theRadius = 0.0   Raises ConstructionError if
-        /// theRadius < 0.0. Raised if theRadius < 0.0.
-        fn gp_Circ2d_ctor_ax2d_real(theXAxis: &gp_Ax2d, theRadius: f64) -> UniquePtr<gp_Circ2d>;
         /// **Source:** `gp_Circ2d.hxx`:89 - `gp_Circ2d::SetLocation()`
         ///
         /// Changes the location point (center) of the circle.
@@ -3163,21 +3142,6 @@ mod ffi {
             theMajorRadius: f64,
             theMinorRadius: f64,
         ) -> UniquePtr<gp_Elips2d>;
-        /// **Source:** `gp_Elips2d.hxx`:64 - `gp_Elips2d::gp_Elips2d()`
-        ///
-        /// Creates an ellipse with the major axis, the major and the
-        /// minor radius. The location of the theMajorAxis is the center
-        /// of the  ellipse.
-        /// The sense of parametrization is given by theIsSense.
-        /// Warnings :
-        /// It is possible to create an ellipse with
-        /// theMajorRadius = theMinorRadius.
-        /// Raises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.0
-        fn gp_Elips2d_ctor_ax2d_real2(
-            theMajorAxis: &gp_Ax2d,
-            theMajorRadius: f64,
-            theMinorRadius: f64,
-        ) -> UniquePtr<gp_Elips2d>;
         /// **Source:** `gp_Elips2d.hxx`:104 - `gp_Elips2d::SetLocation()`
         ///
         /// Modifies this ellipse, by redefining its local coordinate system so that
@@ -4204,23 +4168,6 @@ mod ffi {
         /// Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0
         fn gp_Hypr2d_ctor_ax22d_real2(
             theA: &gp_Ax22d,
-            theMajorRadius: f64,
-            theMinorRadius: f64,
-        ) -> UniquePtr<gp_Hypr2d>;
-        /// **Source:** `gp_Hypr2d.hxx`:87 - `gp_Hypr2d::gp_Hypr2d()`
-        ///
-        /// Creates a hyperbola with radii theMajorRadius and
-        /// theMinorRadius, centered on the origin of theMajorAxis
-        /// and where the unit vector of theMajorAxis is the "X
-        /// Direction" of the local coordinate system of the
-        /// hyperbola. This coordinate system is direct if theIsSense
-        /// is true (the default value), and indirect if theIsSense is false.
-        /// Warnings :
-        /// It is yet  possible to create an Hyperbola with
-        /// theMajorRadius <= theMinorRadius.
-        /// Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0
-        fn gp_Hypr2d_ctor_ax2d_real2(
-            theMajorAxis: &gp_Ax2d,
             theMajorRadius: f64,
             theMinorRadius: f64,
         ) -> UniquePtr<gp_Hypr2d>;
@@ -5582,37 +5529,6 @@ mod ffi {
             theDirectrix: &gp_Ax2d,
             theFocus: &gp_Pnt2d,
             theSense: bool,
-        ) -> UniquePtr<gp_Parab2d>;
-        /// **Source:** `gp_Parab2d.hxx`:66 - `gp_Parab2d::gp_Parab2d()`
-        ///
-        /// Creates a parabola with its vertex point, its axis of symmetry
-        /// ("XAxis") and its focal length.
-        /// The sense of parametrization is given by theSense. If theSense == TRUE
-        /// (by default) then right-handed coordinate system is used,
-        /// otherwise - left-handed.
-        /// Warnings : It is possible to have FocalLength = 0. In this case,
-        /// the parabola looks like a line, which is parallel to the symmetry-axis.
-        /// Raises ConstructionError if FocalLength < 0.0
-        fn gp_Parab2d_ctor_ax2d_real(
-            theMirrorAxis: &gp_Ax2d,
-            theFocalLength: f64,
-        ) -> UniquePtr<gp_Parab2d>;
-        /// **Source:** `gp_Parab2d.hxx`:100 - `gp_Parab2d::gp_Parab2d()`
-        ///
-        /// Creates a parabola with the directrix and the focus point.
-        /// Y-axis of the parabola (in User Coordinate System - UCS) is
-        /// the direction of theDirectrix. X-axis always directs from theDirectrix
-        /// to theFocus point and always comes through theFocus.
-        /// Apex of the parabola is a middle point between the theFocus and the
-        /// intersection point of theDirectrix and the X-axis.
-        /// Warnings : It is possible to have FocalLength = 0 (when theFocus lies
-        /// in theDirectrix). In this case, X-direction of the parabola is defined
-        /// by theSense parameter. If theSense == TRUE (by default) then right-handed
-        /// coordinate system is used, otherwise - left-handed. Result parabola will look
-        /// like a line, which is perpendicular to the directrix.
-        fn gp_Parab2d_ctor_ax2d_pnt2d(
-            theDirectrix: &gp_Ax2d,
-            theFocus: &gp_Pnt2d,
         ) -> UniquePtr<gp_Parab2d>;
         /// **Source:** `gp_Parab2d.hxx`:107 - `gp_Parab2d::SetFocal()`
         ///
@@ -10313,21 +10229,6 @@ mod ffi {
             ToFind: i32,
             ToAvoid: i32,
         ) -> UniquePtr<TopExp_Explorer>;
-        /// **Source:** `TopExp_Explorer.hxx`:98 - `TopExp_Explorer::TopExp_Explorer()`
-        ///
-        /// Creates an Explorer on the Shape <S>.
-        ///
-        /// <ToFind> is the type of shapes to search.
-        /// TopAbs_VERTEX, TopAbs_EDGE, ...
-        ///
-        /// <ToAvoid>   is the type   of shape to  skip in the
-        /// exploration.   If   <ToAvoid>  is  equal  or  less
-        /// complex than <ToFind> or if  <ToAVoid> is SHAPE it
-        /// has no effect on the exploration.
-        fn TopExp_Explorer_ctor_shape_shapeenum(
-            S: &TopoDS_Shape,
-            ToFind: i32,
-        ) -> UniquePtr<TopExp_Explorer>;
         /// **Source:** `TopExp_Explorer.hxx`:113 - `TopExp_Explorer::More()`
         ///
         /// Returns True if there are more shapes in the exploration.
@@ -11306,59 +11207,6 @@ mod ffi {
             F: &TopoDS_Face,
             W: &TopoDS_Wire,
         ) -> UniquePtr<BRepBuilderAPI_MakeFace>;
-        /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:141 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
-        ///
-        /// Find a surface from the wire and make a face.
-        /// if <OnlyPlane> is true, the computed surface will be
-        /// a plane. If it is not possible to find a plane, the
-        /// flag NotDone will be set.
-        fn BRepBuilderAPI_MakeFace_ctor_wire(W: &TopoDS_Wire)
-            -> UniquePtr<BRepBuilderAPI_MakeFace>;
-        /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:145 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
-        ///
-        /// Make a face from a plane and a wire.
-        fn BRepBuilderAPI_MakeFace_ctor_pln_wire(
-            P: &gp_Pln,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepBuilderAPI_MakeFace>;
-        /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:150 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
-        ///
-        /// Make a face from a cylinder and a wire.
-        fn BRepBuilderAPI_MakeFace_ctor_cylinder_wire(
-            C: &gp_Cylinder,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepBuilderAPI_MakeFace>;
-        /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:155 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
-        ///
-        /// Make a face from a cone and a wire.
-        fn BRepBuilderAPI_MakeFace_ctor_cone_wire(
-            C: &gp_Cone,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepBuilderAPI_MakeFace>;
-        /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:160 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
-        ///
-        /// Make a face from a sphere and a wire.
-        fn BRepBuilderAPI_MakeFace_ctor_sphere_wire(
-            S: &gp_Sphere,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepBuilderAPI_MakeFace>;
-        /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:165 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
-        ///
-        /// Make a face from a torus and a wire.
-        fn BRepBuilderAPI_MakeFace_ctor_torus_wire(
-            C: &gp_Torus,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepBuilderAPI_MakeFace>;
-        /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:173 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
-        ///
-        /// Make a face from a Surface and a wire.
-        /// If the surface S is not plane,
-        /// it must contain pcurves for all edges in W,
-        /// otherwise the wrong shape will be created.
-        fn BRepBuilderAPI_MakeFace_ctor_handlesurface_wire(
-            S: &HandleGeomSurface,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepBuilderAPI_MakeFace>;
         /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:227 - `BRepBuilderAPI_MakeFace::Init()`
         ///
         /// Initializes (or reinitializes) the
@@ -11977,63 +11825,6 @@ mod ffi {
             option3: bool,
             option4: bool,
         ) -> UniquePtr<BRepBuilderAPI_Sewing>;
-        /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
-        ///
-        /// Creates an object with
-        /// tolerance of connexity
-        /// option for sewing (if false only control)
-        /// option for analysis of degenerated shapes
-        /// option for cutting of free edges.
-        /// option for non manifold processing
-        fn BRepBuilderAPI_Sewing_ctor_real_bool3(
-            tolerance: f64,
-            option1: bool,
-            option2: bool,
-            option3: bool,
-        ) -> UniquePtr<BRepBuilderAPI_Sewing>;
-        /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
-        ///
-        /// Creates an object with
-        /// tolerance of connexity
-        /// option for sewing (if false only control)
-        /// option for analysis of degenerated shapes
-        /// option for cutting of free edges.
-        /// option for non manifold processing
-        fn BRepBuilderAPI_Sewing_ctor_real_bool2(
-            tolerance: f64,
-            option1: bool,
-            option2: bool,
-        ) -> UniquePtr<BRepBuilderAPI_Sewing>;
-        /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
-        ///
-        /// Creates an object with
-        /// tolerance of connexity
-        /// option for sewing (if false only control)
-        /// option for analysis of degenerated shapes
-        /// option for cutting of free edges.
-        /// option for non manifold processing
-        fn BRepBuilderAPI_Sewing_ctor_real_bool(
-            tolerance: f64,
-            option1: bool,
-        ) -> UniquePtr<BRepBuilderAPI_Sewing>;
-        /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
-        ///
-        /// Creates an object with
-        /// tolerance of connexity
-        /// option for sewing (if false only control)
-        /// option for analysis of degenerated shapes
-        /// option for cutting of free edges.
-        /// option for non manifold processing
-        fn BRepBuilderAPI_Sewing_ctor_real(tolerance: f64) -> UniquePtr<BRepBuilderAPI_Sewing>;
-        /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
-        ///
-        /// Creates an object with
-        /// tolerance of connexity
-        /// option for sewing (if false only control)
-        /// option for analysis of degenerated shapes
-        /// option for cutting of free edges.
-        /// option for non manifold processing
-        fn BRepBuilderAPI_Sewing_ctor() -> UniquePtr<BRepBuilderAPI_Sewing>;
         /// **Source:** `BRepBuilderAPI_Sewing.hxx`:94 - `BRepBuilderAPI_Sewing::Init()`
         ///
         /// initialize the parameters if necessary
@@ -12338,37 +12129,6 @@ mod ffi {
             theTrsf: &gp_Trsf,
             theCopyGeom: bool,
             theCopyMesh: bool,
-        ) -> UniquePtr<BRepBuilderAPI_Transform>;
-        /// **Source:** `BRepBuilderAPI_Transform.hxx`:59 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
-        ///
-        /// Creates a transformation from the gp_Trsf <theTrsf>, and
-        /// applies it to the shape <theShape>. If the transformation
-        /// is  direct   and isometric (determinant  =  1) and
-        /// <theCopyGeom> =  Standard_False,  the resulting shape  is
-        /// <theShape> on   which  a  new  location has    been  set.
-        /// Otherwise,  the   transformation is applied   on a
-        /// duplication of <theShape>.
-        /// If <theCopyMesh> is true, the triangulation will be copied,
-        /// and the copy will be assigned to the result shape.
-        fn BRepBuilderAPI_Transform_ctor_shape_trsf_bool(
-            theShape: &TopoDS_Shape,
-            theTrsf: &gp_Trsf,
-            theCopyGeom: bool,
-        ) -> UniquePtr<BRepBuilderAPI_Transform>;
-        /// **Source:** `BRepBuilderAPI_Transform.hxx`:59 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
-        ///
-        /// Creates a transformation from the gp_Trsf <theTrsf>, and
-        /// applies it to the shape <theShape>. If the transformation
-        /// is  direct   and isometric (determinant  =  1) and
-        /// <theCopyGeom> =  Standard_False,  the resulting shape  is
-        /// <theShape> on   which  a  new  location has    been  set.
-        /// Otherwise,  the   transformation is applied   on a
-        /// duplication of <theShape>.
-        /// If <theCopyMesh> is true, the triangulation will be copied,
-        /// and the copy will be assigned to the result shape.
-        fn BRepBuilderAPI_Transform_ctor_shape_trsf(
-            theShape: &TopoDS_Shape,
-            theTrsf: &gp_Trsf,
         ) -> UniquePtr<BRepBuilderAPI_Transform>;
         /// **Source:** `BRepBuilderAPI_Transform.hxx`:78 - `BRepBuilderAPI_Transform::Perform()`
         ///
@@ -12981,64 +12741,6 @@ mod ffi {
             Copy: bool,
             Canonize: bool,
         ) -> UniquePtr<BRepPrimAPI_MakePrism>;
-        /// **Source:** `BRepPrimAPI_MakePrism.hxx`:55 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
-        ///
-        /// Builds the prism of base S and vector V. If C is true,
-        /// S is copied. If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepPrimAPI_MakePrism_ctor_shape_vec_bool(
-            S: &TopoDS_Shape,
-            V: &gp_Vec,
-            Copy: bool,
-        ) -> UniquePtr<BRepPrimAPI_MakePrism>;
-        /// **Source:** `BRepPrimAPI_MakePrism.hxx`:55 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
-        ///
-        /// Builds the prism of base S and vector V. If C is true,
-        /// S is copied. If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepPrimAPI_MakePrism_ctor_shape_vec(
-            S: &TopoDS_Shape,
-            V: &gp_Vec,
-        ) -> UniquePtr<BRepPrimAPI_MakePrism>;
-        /// **Source:** `BRepPrimAPI_MakePrism.hxx`:66 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
-        ///
-        /// Builds a semi-infinite or an infinite prism of base S.
-        /// If Inf is true the prism  is infinite, if Inf is false
-        /// the prism is semi-infinite (in the direction D).  If C
-        /// is true S is copied (for semi-infinite prisms).
-        /// If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepPrimAPI_MakePrism_ctor_shape_dir_bool2(
-            S: &TopoDS_Shape,
-            D: &gp_Dir,
-            Inf: bool,
-            Copy: bool,
-        ) -> UniquePtr<BRepPrimAPI_MakePrism>;
-        /// **Source:** `BRepPrimAPI_MakePrism.hxx`:66 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
-        ///
-        /// Builds a semi-infinite or an infinite prism of base S.
-        /// If Inf is true the prism  is infinite, if Inf is false
-        /// the prism is semi-infinite (in the direction D).  If C
-        /// is true S is copied (for semi-infinite prisms).
-        /// If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepPrimAPI_MakePrism_ctor_shape_dir_bool(
-            S: &TopoDS_Shape,
-            D: &gp_Dir,
-            Inf: bool,
-        ) -> UniquePtr<BRepPrimAPI_MakePrism>;
-        /// **Source:** `BRepPrimAPI_MakePrism.hxx`:66 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
-        ///
-        /// Builds a semi-infinite or an infinite prism of base S.
-        /// If Inf is true the prism  is infinite, if Inf is false
-        /// the prism is semi-infinite (in the direction D).  If C
-        /// is true S is copied (for semi-infinite prisms).
-        /// If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepPrimAPI_MakePrism_ctor_shape_dir(
-            S: &TopoDS_Shape,
-            D: &gp_Dir,
-        ) -> UniquePtr<BRepPrimAPI_MakePrism>;
         /// **Source:** `BRepPrimAPI_MakePrism.hxx`:73 - `BRepPrimAPI_MakePrism::Prism()`
         ///
         /// Returns the internal sweeping algorithm.
@@ -13185,23 +12887,6 @@ mod ffi {
             S: &TopoDS_Shape,
             A: &gp_Ax1,
             Copy: bool,
-        ) -> UniquePtr<BRepPrimAPI_MakeRevol>;
-        /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:69 - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
-        ///
-        /// Builds the Revol of base S, axis  A and angle  D. If C
-        /// is true, S is copied.
-        fn BRepPrimAPI_MakeRevol_ctor_shape_ax1_real(
-            S: &TopoDS_Shape,
-            A: &gp_Ax1,
-            D: f64,
-        ) -> UniquePtr<BRepPrimAPI_MakeRevol>;
-        /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:76 - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
-        ///
-        /// Builds the Revol of base S, axis  A and angle 2*Pi. If
-        /// C is true, S is copied.
-        fn BRepPrimAPI_MakeRevol_ctor_shape_ax1(
-            S: &TopoDS_Shape,
-            A: &gp_Ax1,
         ) -> UniquePtr<BRepPrimAPI_MakeRevol>;
         /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:81 - `BRepPrimAPI_MakeRevol::Revol()`
         ///
@@ -14246,30 +13931,6 @@ mod ffi {
             PF: &BOPAlgo_PaveFiller,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<BRepAlgoAPI_Common>;
-        /// **Source:** `BRepAlgoAPI_Common.hxx`:47 - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  -argument
-        /// <S2>  -tool
-        /// <anOperation> - the type of the operation
-        /// Obsolete
-        fn BRepAlgoAPI_Common_ctor_shape2(
-            S1: &TopoDS_Shape,
-            S2: &TopoDS_Shape,
-        ) -> UniquePtr<BRepAlgoAPI_Common>;
-        /// **Source:** `BRepAlgoAPI_Common.hxx`:58 - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  -argument
-        /// <S2>  -tool
-        /// <anOperation> - the type of the operation
-        /// <PF> - PaveFiller object that is carried out
-        /// Obsolete
-        fn BRepAlgoAPI_Common_ctor_shape2_pavefiller(
-            S1: &TopoDS_Shape,
-            S2: &TopoDS_Shape,
-            PF: &BOPAlgo_PaveFiller,
-        ) -> UniquePtr<BRepAlgoAPI_Common>;
         /// Upcast BRepAlgoAPI_Common to BRepAlgoAPI_BooleanOperation
         fn BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation(
             self_: &BRepAlgoAPI_Common,
@@ -14433,44 +14094,6 @@ mod ffi {
             bFWD: bool,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<BRepAlgoAPI_Cut>;
-        /// **Source:** `BRepAlgoAPI_Cut.hxx`:47 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  -argument
-        /// <S2>  -tool
-        /// <anOperation> - the type of the operation
-        /// Obsolete
-        fn BRepAlgoAPI_Cut_ctor_shape2(
-            S1: &TopoDS_Shape,
-            S2: &TopoDS_Shape,
-        ) -> UniquePtr<BRepAlgoAPI_Cut>;
-        /// **Source:** `BRepAlgoAPI_Cut.hxx`:57 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  -argument
-        /// <S2>  -tool
-        /// <anOperation> - the type of the operation
-        /// <PF> - PaveFiller object that is carried out
-        /// Obsolete
-        fn BRepAlgoAPI_Cut_ctor_shape2_pavefiller_bool(
-            S1: &TopoDS_Shape,
-            S2: &TopoDS_Shape,
-            aDSF: &BOPAlgo_PaveFiller,
-            bFWD: bool,
-        ) -> UniquePtr<BRepAlgoAPI_Cut>;
-        /// **Source:** `BRepAlgoAPI_Cut.hxx`:57 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  -argument
-        /// <S2>  -tool
-        /// <anOperation> - the type of the operation
-        /// <PF> - PaveFiller object that is carried out
-        /// Obsolete
-        fn BRepAlgoAPI_Cut_ctor_shape2_pavefiller(
-            S1: &TopoDS_Shape,
-            S2: &TopoDS_Shape,
-            aDSF: &BOPAlgo_PaveFiller,
-        ) -> UniquePtr<BRepAlgoAPI_Cut>;
         /// Upcast BRepAlgoAPI_Cut to BRepAlgoAPI_BooleanOperation
         fn BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation(
             self_: &BRepAlgoAPI_Cut,
@@ -14630,30 +14253,6 @@ mod ffi {
             S2: &TopoDS_Shape,
             aDSF: &BOPAlgo_PaveFiller,
             theRange: &Message_ProgressRange,
-        ) -> UniquePtr<BRepAlgoAPI_Fuse>;
-        /// **Source:** `BRepAlgoAPI_Fuse.hxx`:47 - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  -argument
-        /// <S2>  -tool
-        /// <anOperation> - the type of the operation
-        /// Obsolete
-        fn BRepAlgoAPI_Fuse_ctor_shape2(
-            S1: &TopoDS_Shape,
-            S2: &TopoDS_Shape,
-        ) -> UniquePtr<BRepAlgoAPI_Fuse>;
-        /// **Source:** `BRepAlgoAPI_Fuse.hxx`:57 - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  -argument
-        /// <S2>  -tool
-        /// <anOperation> - the type of the operation
-        /// <PF> - PaveFiller object that is carried out
-        /// Obsolete
-        fn BRepAlgoAPI_Fuse_ctor_shape2_pavefiller(
-            S1: &TopoDS_Shape,
-            S2: &TopoDS_Shape,
-            aDSF: &BOPAlgo_PaveFiller,
         ) -> UniquePtr<BRepAlgoAPI_Fuse>;
         /// Upcast BRepAlgoAPI_Fuse to BRepAlgoAPI_BooleanOperation
         fn BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BooleanOperation(
@@ -14874,80 +14473,6 @@ mod ffi {
             Sf1: &HandleGeomSurface,
             Sf2: &HandleGeomSurface,
             PerformNow: bool,
-        ) -> UniquePtr<BRepAlgoAPI_Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx`:57 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  -argument
-        /// <S2>  -tool
-        /// <PerformNow> - the flag:
-        /// if <PerformNow>=True - the algorithm is performed immediately
-        /// Obsolete
-        fn BRepAlgoAPI_Section_ctor_shape2(
-            S1: &TopoDS_Shape,
-            S2: &TopoDS_Shape,
-        ) -> UniquePtr<BRepAlgoAPI_Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx`:68 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  -argument
-        /// <S2>  -tool
-        /// <PF> - PaveFiller object that is carried out
-        /// <PerformNow> - the flag:
-        /// if <PerformNow>=True - the algorithm is performed immediately
-        /// Obsolete
-        fn BRepAlgoAPI_Section_ctor_shape2_pavefiller(
-            S1: &TopoDS_Shape,
-            S2: &TopoDS_Shape,
-            aDSF: &BOPAlgo_PaveFiller,
-        ) -> UniquePtr<BRepAlgoAPI_Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx`:79 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  - argument
-        /// <Pl>  - tool
-        /// <PerformNow> - the flag:
-        /// if <PerformNow>=True - the algorithm is performed immediately
-        /// Obsolete
-        fn BRepAlgoAPI_Section_ctor_shape_pln(
-            S1: &TopoDS_Shape,
-            Pl: &gp_Pln,
-        ) -> UniquePtr<BRepAlgoAPI_Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx`:89 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
-        ///
-        /// Constructor with two shapes
-        /// <S1>  - argument
-        /// <Sf>  - tool
-        /// <PerformNow> - the flag:
-        /// if <PerformNow>=True - the algorithm is performed immediately
-        /// Obsolete
-        fn BRepAlgoAPI_Section_ctor_shape_handlesurface(
-            S1: &TopoDS_Shape,
-            Sf: &HandleGeomSurface,
-        ) -> UniquePtr<BRepAlgoAPI_Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx`:99 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
-        ///
-        /// Constructor with two shapes
-        /// <Sf>  - argument
-        /// <S2>  - tool
-        /// <PerformNow> - the flag:
-        /// if <PerformNow>=True - the algorithm is performed immediately
-        /// Obsolete
-        fn BRepAlgoAPI_Section_ctor_handlesurface_shape(
-            Sf: &HandleGeomSurface,
-            S2: &TopoDS_Shape,
-        ) -> UniquePtr<BRepAlgoAPI_Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx`:109 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
-        ///
-        /// Constructor with two shapes
-        /// <Sf1>  - argument
-        /// <Sf2>  - tool
-        /// <PerformNow> - the flag:
-        /// if <PerformNow>=True - the algorithm is performed immediately
-        /// Obsolete
-        fn BRepAlgoAPI_Section_ctor_handlesurface2(
-            Sf1: &HandleGeomSurface,
-            Sf2: &HandleGeomSurface,
         ) -> UniquePtr<BRepAlgoAPI_Section>;
         /// **Source:** `BRepAlgoAPI_Section.hxx`:116 - `BRepAlgoAPI_Section::Init1()`
         ///
@@ -15742,19 +15267,6 @@ mod ffi {
         fn BRepFilletAPI_MakeFillet_ctor_shape_filletshape(
             S: &TopoDS_Shape,
             FShape: i32,
-        ) -> UniquePtr<BRepFilletAPI_MakeFillet>;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:61 - `BRepFilletAPI_MakeFillet::BRepFilletAPI_MakeFillet()`
-        ///
-        /// Initializes   the computation    of   the  fillets.
-        /// <FShape> sets   the type   of fillet  surface. The
-        /// default value is ChFi3d_Rational (classical  nurbs
-        /// representation of  circles).   ChFi3d_QuasiAngular
-        /// corresponds to  a  nurbs representation of circles
-        /// which   parameterisation matches  the  circle one.
-        /// ChFi3d_Polynomial  corresponds to  a    polynomial
-        /// representation of circles.
-        fn BRepFilletAPI_MakeFillet_ctor_shape(
-            S: &TopoDS_Shape,
         ) -> UniquePtr<BRepFilletAPI_MakeFillet>;
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:64 - `BRepFilletAPI_MakeFillet::SetParams()`
         #[cxx_name = "SetParams"]
@@ -16671,30 +16183,6 @@ mod ffi {
             Join: i32,
             IsOpenResult: bool,
         ) -> UniquePtr<BRepOffsetAPI_MakeOffset>;
-        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:46 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
-        ///
-        /// Constructs an algorithm for creating an algorithm
-        /// to build parallels to the spine Spine
-        fn BRepOffsetAPI_MakeOffset_ctor_face_jointype(
-            Spine: &TopoDS_Face,
-            Join: i32,
-        ) -> UniquePtr<BRepOffsetAPI_MakeOffset>;
-        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:46 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
-        ///
-        /// Constructs an algorithm for creating an algorithm
-        /// to build parallels to the spine Spine
-        fn BRepOffsetAPI_MakeOffset_ctor_face(
-            Spine: &TopoDS_Face,
-        ) -> UniquePtr<BRepOffsetAPI_MakeOffset>;
-        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:62 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
-        fn BRepOffsetAPI_MakeOffset_ctor_wire_jointype(
-            Spine: &TopoDS_Wire,
-            Join: i32,
-        ) -> UniquePtr<BRepOffsetAPI_MakeOffset>;
-        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:62 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
-        fn BRepOffsetAPI_MakeOffset_ctor_wire(
-            Spine: &TopoDS_Wire,
-        ) -> UniquePtr<BRepOffsetAPI_MakeOffset>;
         /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:73 - `BRepOffsetAPI_MakeOffset::SetApprox()`
         ///
         /// Set approximation flag
@@ -16838,17 +16326,6 @@ mod ffi {
             Profile: &TopoDS_Shape,
             aMode: i32,
             ForceApproxC1: bool,
-        ) -> UniquePtr<BRepOffsetAPI_MakePipe>;
-        /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:63 - `BRepOffsetAPI_MakePipe::BRepOffsetAPI_MakePipe()`
-        ///
-        /// the same as previous but with setting of
-        /// mode of sweep and the flag that indicates attempt
-        /// to approximate a C1-continuous surface if a swept
-        /// surface proved to be C0.
-        fn BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron(
-            Spine: &TopoDS_Wire,
-            Profile: &TopoDS_Shape,
-            aMode: i32,
         ) -> UniquePtr<BRepOffsetAPI_MakePipe>;
         /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:68 - `BRepOffsetAPI_MakePipe::Pipe()`
         #[cxx_name = "Pipe"]
@@ -17484,56 +16961,6 @@ mod ffi {
             ruled: bool,
             pres3d: f64,
         ) -> UniquePtr<BRepOffsetAPI_ThruSections>;
-        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:64 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
-        ///
-        /// Initializes an algorithm for building a shell or a solid
-        /// passing through a set of sections, where:
-        /// -          isSolid is set to true if the construction algorithm is
-        /// required to build a solid or to false if it is required to build
-        /// a shell (the default value),
-        /// -          ruled is set to true if the faces generated between
-        /// the edges of two consecutive wires are ruled surfaces or to
-        /// false (the default value) if they are smoothed out by approximation,
-        /// -          pres3d defines the precision criterion used by the
-        /// approximation algorithm; the default value is 1.0e-6.
-        /// Use AddWire and AddVertex to define the
-        /// successive sections of the shell or solid to be built.
-        fn BRepOffsetAPI_ThruSections_ctor_bool2(
-            isSolid: bool,
-            ruled: bool,
-        ) -> UniquePtr<BRepOffsetAPI_ThruSections>;
-        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:64 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
-        ///
-        /// Initializes an algorithm for building a shell or a solid
-        /// passing through a set of sections, where:
-        /// -          isSolid is set to true if the construction algorithm is
-        /// required to build a solid or to false if it is required to build
-        /// a shell (the default value),
-        /// -          ruled is set to true if the faces generated between
-        /// the edges of two consecutive wires are ruled surfaces or to
-        /// false (the default value) if they are smoothed out by approximation,
-        /// -          pres3d defines the precision criterion used by the
-        /// approximation algorithm; the default value is 1.0e-6.
-        /// Use AddWire and AddVertex to define the
-        /// successive sections of the shell or solid to be built.
-        fn BRepOffsetAPI_ThruSections_ctor_bool(
-            isSolid: bool,
-        ) -> UniquePtr<BRepOffsetAPI_ThruSections>;
-        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:64 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
-        ///
-        /// Initializes an algorithm for building a shell or a solid
-        /// passing through a set of sections, where:
-        /// -          isSolid is set to true if the construction algorithm is
-        /// required to build a solid or to false if it is required to build
-        /// a shell (the default value),
-        /// -          ruled is set to true if the faces generated between
-        /// the edges of two consecutive wires are ruled surfaces or to
-        /// false (the default value) if they are smoothed out by approximation,
-        /// -          pres3d defines the precision criterion used by the
-        /// approximation algorithm; the default value is 1.0e-6.
-        /// Use AddWire and AddVertex to define the
-        /// successive sections of the shell or solid to be built.
-        fn BRepOffsetAPI_ThruSections_ctor() -> UniquePtr<BRepOffsetAPI_ThruSections>;
         /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:80 - `BRepOffsetAPI_ThruSections::Init()`
         ///
         /// Initializes this algorithm for building a shell or a solid
@@ -21170,89 +20597,6 @@ mod ffi {
             Periodic: bool,
             CheckRational: bool,
         ) -> UniquePtr<Geom_BSplineCurve>;
-        /// **Source:** `Geom_BSplineCurve.hxx`:134 - `Geom_BSplineCurve::Geom_BSplineCurve()`
-        ///
-        /// Creates a  non-rational B_spline curve   on  the
-        /// basis <Knots, Multiplicities> of degree <Degree>.
-        fn Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal_array1ofinteger_int(
-            Poles: &TColgp_Array1OfPnt,
-            Knots: &TColStd_Array1OfReal,
-            Multiplicities: &TColStd_Array1OfInteger,
-            Degree: i32,
-        ) -> UniquePtr<Geom_BSplineCurve>;
-        /// **Source:** `Geom_BSplineCurve.hxx`:167 - `Geom_BSplineCurve::Geom_BSplineCurve()`
-        ///
-        /// Creates  a rational B_spline  curve  on the basis
-        /// <Knots, Multiplicities> of degree <Degree>.
-        /// Raises ConstructionError subject to the following conditions
-        /// 0 < Degree <= MaxDegree.
-        ///
-        /// Weights.Length() == Poles.Length()
-        ///
-        /// Knots.Length() == Mults.Length() >= 2
-        ///
-        /// Knots(i) < Knots(i+1) (Knots are increasing)
-        ///
-        /// 1 <= Mults(i) <= Degree
-        ///
-        /// On a non periodic curve the first and last multiplicities
-        /// may be Degree+1 (this is even recommended if you want the
-        /// curve to start and finish on the first and last pole).
-        ///
-        /// On a periodic  curve the first  and  the last multicities
-        /// must be the same.
-        ///
-        /// on non-periodic curves
-        ///
-        /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
-        ///
-        /// on periodic curves
-        ///
-        /// Poles.Length() == Sum(Mults(i)) except the first or last
-        fn Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int_bool(
-            Poles: &TColgp_Array1OfPnt,
-            Weights: &TColStd_Array1OfReal,
-            Knots: &TColStd_Array1OfReal,
-            Multiplicities: &TColStd_Array1OfInteger,
-            Degree: i32,
-            Periodic: bool,
-        ) -> UniquePtr<Geom_BSplineCurve>;
-        /// **Source:** `Geom_BSplineCurve.hxx`:167 - `Geom_BSplineCurve::Geom_BSplineCurve()`
-        ///
-        /// Creates  a rational B_spline  curve  on the basis
-        /// <Knots, Multiplicities> of degree <Degree>.
-        /// Raises ConstructionError subject to the following conditions
-        /// 0 < Degree <= MaxDegree.
-        ///
-        /// Weights.Length() == Poles.Length()
-        ///
-        /// Knots.Length() == Mults.Length() >= 2
-        ///
-        /// Knots(i) < Knots(i+1) (Knots are increasing)
-        ///
-        /// 1 <= Mults(i) <= Degree
-        ///
-        /// On a non periodic curve the first and last multiplicities
-        /// may be Degree+1 (this is even recommended if you want the
-        /// curve to start and finish on the first and last pole).
-        ///
-        /// On a periodic  curve the first  and  the last multicities
-        /// must be the same.
-        ///
-        /// on non-periodic curves
-        ///
-        /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
-        ///
-        /// on periodic curves
-        ///
-        /// Poles.Length() == Sum(Mults(i)) except the first or last
-        fn Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int(
-            Poles: &TColgp_Array1OfPnt,
-            Weights: &TColStd_Array1OfReal,
-            Knots: &TColStd_Array1OfReal,
-            Multiplicities: &TColStd_Array1OfInteger,
-            Degree: i32,
-        ) -> UniquePtr<Geom_BSplineCurve>;
         /// **Source:** `Geom_BSplineCurve.hxx`:183 - `Geom_BSplineCurve::IncreaseDegree()`
         ///
         /// Increases the degree of this BSpline curve to
@@ -22222,152 +21566,6 @@ mod ffi {
             VDegree: i32,
             UPeriodic: bool,
             VPeriodic: bool,
-        ) -> UniquePtr<Geom_BSplineSurface>;
-        /// **Source:** `Geom_BSplineSurface.hxx`:180 - `Geom_BSplineSurface::Geom_BSplineSurface()`
-        ///
-        /// Creates  a non-rational b-spline surface (weights
-        /// default value is 1.).
-        /// The following conditions must be verified.
-        /// 0 < UDegree <= MaxDegree.
-        /// UKnots.Length() == UMults.Length() >= 2
-        /// UKnots(i) < UKnots(i+1) (Knots are increasing)
-        /// 1 <= UMults(i) <= UDegree
-        /// On a   non  uperiodic   surface    the  first and    last
-        /// umultiplicities  may  be     UDegree+1  (this   is   even
-        /// recommended if you want the curve  to start and finish on
-        /// the first and last pole).
-        /// On a uperiodic     surface  the first    and   the   last
-        /// umultiplicities must be the same.
-        /// on non-uperiodic surfaces
-        /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
-        /// on uperiodic surfaces
-        /// Poles.ColLength() == Sum(UMults(i)) except the first or last
-        /// The previous conditions for U holds  also for V, with the
-        /// RowLength of the poles.
-        fn Geom_BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool(
-            Poles: &TColgp_Array2OfPnt,
-            UKnots: &TColStd_Array1OfReal,
-            VKnots: &TColStd_Array1OfReal,
-            UMults: &TColStd_Array1OfInteger,
-            VMults: &TColStd_Array1OfInteger,
-            UDegree: i32,
-            VDegree: i32,
-            UPeriodic: bool,
-        ) -> UniquePtr<Geom_BSplineSurface>;
-        /// **Source:** `Geom_BSplineSurface.hxx`:180 - `Geom_BSplineSurface::Geom_BSplineSurface()`
-        ///
-        /// Creates  a non-rational b-spline surface (weights
-        /// default value is 1.).
-        /// The following conditions must be verified.
-        /// 0 < UDegree <= MaxDegree.
-        /// UKnots.Length() == UMults.Length() >= 2
-        /// UKnots(i) < UKnots(i+1) (Knots are increasing)
-        /// 1 <= UMults(i) <= UDegree
-        /// On a   non  uperiodic   surface    the  first and    last
-        /// umultiplicities  may  be     UDegree+1  (this   is   even
-        /// recommended if you want the curve  to start and finish on
-        /// the first and last pole).
-        /// On a uperiodic     surface  the first    and   the   last
-        /// umultiplicities must be the same.
-        /// on non-uperiodic surfaces
-        /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
-        /// on uperiodic surfaces
-        /// Poles.ColLength() == Sum(UMults(i)) except the first or last
-        /// The previous conditions for U holds  also for V, with the
-        /// RowLength of the poles.
-        fn Geom_BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2(
-            Poles: &TColgp_Array2OfPnt,
-            UKnots: &TColStd_Array1OfReal,
-            VKnots: &TColStd_Array1OfReal,
-            UMults: &TColStd_Array1OfInteger,
-            VMults: &TColStd_Array1OfInteger,
-            UDegree: i32,
-            VDegree: i32,
-        ) -> UniquePtr<Geom_BSplineSurface>;
-        /// **Source:** `Geom_BSplineSurface.hxx`:220 - `Geom_BSplineSurface::Geom_BSplineSurface()`
-        ///
-        /// Creates  a non-rational b-spline surface (weights
-        /// default value is 1.).
-        ///
-        /// The following conditions must be verified.
-        /// 0 < UDegree <= MaxDegree.
-        ///
-        /// UKnots.Length() == UMults.Length() >= 2
-        ///
-        /// UKnots(i) < UKnots(i+1) (Knots are increasing)
-        /// 1 <= UMults(i) <= UDegree
-        ///
-        /// On a   non  uperiodic   surface    the  first and    last
-        /// umultiplicities  may  be     UDegree+1  (this   is   even
-        /// recommended if you want the curve  to start and finish on
-        /// the first and last pole).
-        ///
-        /// On a uperiodic     surface  the first    and   the   last
-        /// umultiplicities must be the same.
-        ///
-        /// on non-uperiodic surfaces
-        ///
-        /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
-        ///
-        /// on uperiodic surfaces
-        ///
-        /// Poles.ColLength() == Sum(UMults(i)) except the first or
-        /// last
-        ///
-        /// The previous conditions for U holds  also for V, with the
-        /// RowLength of the poles.
-        fn Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool(
-            Poles: &TColgp_Array2OfPnt,
-            Weights: &TColStd_Array2OfReal,
-            UKnots: &TColStd_Array1OfReal,
-            VKnots: &TColStd_Array1OfReal,
-            UMults: &TColStd_Array1OfInteger,
-            VMults: &TColStd_Array1OfInteger,
-            UDegree: i32,
-            VDegree: i32,
-            UPeriodic: bool,
-        ) -> UniquePtr<Geom_BSplineSurface>;
-        /// **Source:** `Geom_BSplineSurface.hxx`:220 - `Geom_BSplineSurface::Geom_BSplineSurface()`
-        ///
-        /// Creates  a non-rational b-spline surface (weights
-        /// default value is 1.).
-        ///
-        /// The following conditions must be verified.
-        /// 0 < UDegree <= MaxDegree.
-        ///
-        /// UKnots.Length() == UMults.Length() >= 2
-        ///
-        /// UKnots(i) < UKnots(i+1) (Knots are increasing)
-        /// 1 <= UMults(i) <= UDegree
-        ///
-        /// On a   non  uperiodic   surface    the  first and    last
-        /// umultiplicities  may  be     UDegree+1  (this   is   even
-        /// recommended if you want the curve  to start and finish on
-        /// the first and last pole).
-        ///
-        /// On a uperiodic     surface  the first    and   the   last
-        /// umultiplicities must be the same.
-        ///
-        /// on non-uperiodic surfaces
-        ///
-        /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
-        ///
-        /// on uperiodic surfaces
-        ///
-        /// Poles.ColLength() == Sum(UMults(i)) except the first or
-        /// last
-        ///
-        /// The previous conditions for U holds  also for V, with the
-        /// RowLength of the poles.
-        fn Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2(
-            Poles: &TColgp_Array2OfPnt,
-            Weights: &TColStd_Array2OfReal,
-            UKnots: &TColStd_Array1OfReal,
-            VKnots: &TColStd_Array1OfReal,
-            UMults: &TColStd_Array1OfInteger,
-            VMults: &TColStd_Array1OfInteger,
-            UDegree: i32,
-            VDegree: i32,
         ) -> UniquePtr<Geom_BSplineSurface>;
         /// **Source:** `Geom_BSplineSurface.hxx`:239 - `Geom_BSplineSurface::ExchangeUV()`
         ///
@@ -24466,91 +23664,6 @@ mod ffi {
             Sense: bool,
             theAdjustPeriodic: bool,
         ) -> UniquePtr<Geom_TrimmedCurve>;
-        /// **Source:** `Geom_TrimmedCurve.hxx`:82 - `Geom_TrimmedCurve::Geom_TrimmedCurve()`
-        ///
-        /// Constructs a trimmed curve from the basis curve C
-        /// which is limited between parameter values U1 and U2.
-        /// Note: - U1 can be greater or less than U2; in both cases,
-        /// the returned curve is oriented from U1 to U2.
-        /// - If the basis curve C is periodic, there is an
-        /// ambiguity because two parts are available. In this
-        /// case, the trimmed curve has the same orientation
-        /// as the basis curve if Sense is true (default value)
-        /// or the opposite orientation if Sense is false.
-        /// - If the curve is closed but not periodic, it is not
-        /// possible to keep the part of the curve which
-        /// includes the junction point (except if the junction
-        /// point is at the beginning or at the end of the
-        /// trimmed curve). If you tried to do this, you could
-        /// alter the fundamental characteristics of the basis
-        /// curve, which are used, for example, to compute
-        /// the derivatives of the trimmed curve. The rules
-        /// for a closed curve are therefore the same as
-        /// those for an open curve.
-        /// Warning: The trimmed curve is built from a copy of curve C.
-        /// Therefore, when C is modified, the trimmed curve
-        /// is not modified.
-        /// - If the basis curve is periodic and theAdjustPeriodic is True,
-        /// the bounds of the trimmed curve may be different from U1 and U2
-        /// if the parametric origin of the basis curve is within
-        /// the arc of the trimmed curve. In this case, the
-        /// modified parameter will be equal to U1 or U2
-        /// plus or minus the period.
-        /// When theAdjustPeriodic is False, parameters U1 and U2 will be
-        /// the same, without adjustment into the first period.
-        /// Exceptions
-        /// Standard_ConstructionError if:
-        /// - C is not periodic and U1 or U2 is outside the
-        /// bounds of C, or
-        /// - U1 is equal to U2.
-        fn Geom_TrimmedCurve_ctor_handlecurve_real2_bool(
-            C: &HandleGeomCurve,
-            U1: f64,
-            U2: f64,
-            Sense: bool,
-        ) -> UniquePtr<Geom_TrimmedCurve>;
-        /// **Source:** `Geom_TrimmedCurve.hxx`:82 - `Geom_TrimmedCurve::Geom_TrimmedCurve()`
-        ///
-        /// Constructs a trimmed curve from the basis curve C
-        /// which is limited between parameter values U1 and U2.
-        /// Note: - U1 can be greater or less than U2; in both cases,
-        /// the returned curve is oriented from U1 to U2.
-        /// - If the basis curve C is periodic, there is an
-        /// ambiguity because two parts are available. In this
-        /// case, the trimmed curve has the same orientation
-        /// as the basis curve if Sense is true (default value)
-        /// or the opposite orientation if Sense is false.
-        /// - If the curve is closed but not periodic, it is not
-        /// possible to keep the part of the curve which
-        /// includes the junction point (except if the junction
-        /// point is at the beginning or at the end of the
-        /// trimmed curve). If you tried to do this, you could
-        /// alter the fundamental characteristics of the basis
-        /// curve, which are used, for example, to compute
-        /// the derivatives of the trimmed curve. The rules
-        /// for a closed curve are therefore the same as
-        /// those for an open curve.
-        /// Warning: The trimmed curve is built from a copy of curve C.
-        /// Therefore, when C is modified, the trimmed curve
-        /// is not modified.
-        /// - If the basis curve is periodic and theAdjustPeriodic is True,
-        /// the bounds of the trimmed curve may be different from U1 and U2
-        /// if the parametric origin of the basis curve is within
-        /// the arc of the trimmed curve. In this case, the
-        /// modified parameter will be equal to U1 or U2
-        /// plus or minus the period.
-        /// When theAdjustPeriodic is False, parameters U1 and U2 will be
-        /// the same, without adjustment into the first period.
-        /// Exceptions
-        /// Standard_ConstructionError if:
-        /// - C is not periodic and U1 or U2 is outside the
-        /// bounds of C, or
-        /// - U1 is equal to U2.
-        fn Geom_TrimmedCurve_ctor_handlecurve_real2(
-            C: &HandleGeomCurve,
-            U1: f64,
-            U2: f64,
-        ) -> UniquePtr<Geom_TrimmedCurve>;
         /// **Source:** `Geom_TrimmedCurve.hxx`:102 - `Geom_TrimmedCurve::Reverse()`
         ///
         /// Changes the orientation of this trimmed curve.
@@ -25773,28 +24886,6 @@ mod ffi {
             MajorRadius: f64,
             MinorRadius: f64,
         ) -> UniquePtr<Geom2d_Ellipse>;
-        /// **Source:** `Geom2d_Ellipse.hxx`:87 - `Geom2d_Ellipse::Geom2d_Ellipse()`
-        ///
-        /// Creates an ellipse defined by its major and minor radii,
-        /// MajorRadius and MinorRadius, and positioned
-        /// in the plane by its major axis MajorAxis; the
-        /// center of the ellipse is the origin of MajorAxis
-        /// and the unit vector of MajorAxis is the "X
-        /// Direction" of the local coordinate system of the
-        /// ellipse; this coordinate system is direct if Sense
-        /// is true (default value) or indirect if Sense is false.
-        /// Warnings :
-        /// It is not forbidden to create an ellipse with MajorRadius =
-        /// MinorRadius.
-        /// Exceptions
-        /// Standard_ConstructionError if:
-        /// - MajorRadius is less than MinorRadius, or
-        /// - MinorRadius is less than 0.
-        fn Geom2d_Ellipse_ctor_ax2d_real2(
-            MajorAxis: &gp_Ax2d,
-            MajorRadius: f64,
-            MinorRadius: f64,
-        ) -> UniquePtr<Geom2d_Ellipse>;
         /// **Source:** `Geom2d_Ellipse.hxx`:115 - `Geom2d_Ellipse::SetElips2d()`
         ///
         /// Converts the gp_Elips2d ellipse E into this ellipse.
@@ -26139,85 +25230,6 @@ mod ffi {
             U2: f64,
             Sense: bool,
             theAdjustPeriodic: bool,
-        ) -> UniquePtr<Geom2d_TrimmedCurve>;
-        /// **Source:** `Geom2d_TrimmedCurve.hxx`:78 - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`
-        ///
-        /// Creates a trimmed curve from the basis curve C limited between
-        /// U1 and U2.
-        ///
-        /// . U1 can be greater or lower than U2.
-        /// . The returned curve is oriented from U1 to U2.
-        /// . If the basis curve C is periodic there is an ambiguity
-        /// because two parts are available. In this case by default
-        /// the trimmed curve has the same orientation as the basis
-        /// curve (Sense = True). If Sense = False then the orientation
-        /// of the trimmed curve is opposite to the orientation of the
-        /// basis curve C.
-        /// If the curve is closed but not periodic it is not possible
-        /// to keep the part of the curve including the junction point
-        /// (except if the junction point is at the beginning or
-        /// at the end of the trimmed curve) because you could lose the
-        /// fundamental characteristics of the basis curve which are
-        /// used for example to compute the derivatives of the trimmed
-        /// curve. So for a closed curve the rules are the same as for
-        /// a open curve.
-        /// Warnings :
-        /// In this package the entities are not shared. The TrimmedCurve is
-        /// built with a copy of the curve C. So when C is modified the
-        /// TrimmedCurve is not modified
-        /// Warnings :
-        /// If <C> is periodic and <theAdjustPeriodic> is True, parametrics
-        /// bounds of the TrimmedCurve, can be different to [<U1>;<U2>},
-        /// if <U1> or <U2> are not in the principal period.
-        /// Include :
-        /// For more explanation see the scheme given with this class.
-        /// Raises ConstructionError the C is not periodic and U1 or U2 are out of
-        /// the bounds of C.
-        /// Raised if U1 = U2.
-        fn Geom2d_TrimmedCurve_ctor_handlecurve_real2_bool(
-            C: &HandleGeom2dCurve,
-            U1: f64,
-            U2: f64,
-            Sense: bool,
-        ) -> UniquePtr<Geom2d_TrimmedCurve>;
-        /// **Source:** `Geom2d_TrimmedCurve.hxx`:78 - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`
-        ///
-        /// Creates a trimmed curve from the basis curve C limited between
-        /// U1 and U2.
-        ///
-        /// . U1 can be greater or lower than U2.
-        /// . The returned curve is oriented from U1 to U2.
-        /// . If the basis curve C is periodic there is an ambiguity
-        /// because two parts are available. In this case by default
-        /// the trimmed curve has the same orientation as the basis
-        /// curve (Sense = True). If Sense = False then the orientation
-        /// of the trimmed curve is opposite to the orientation of the
-        /// basis curve C.
-        /// If the curve is closed but not periodic it is not possible
-        /// to keep the part of the curve including the junction point
-        /// (except if the junction point is at the beginning or
-        /// at the end of the trimmed curve) because you could lose the
-        /// fundamental characteristics of the basis curve which are
-        /// used for example to compute the derivatives of the trimmed
-        /// curve. So for a closed curve the rules are the same as for
-        /// a open curve.
-        /// Warnings :
-        /// In this package the entities are not shared. The TrimmedCurve is
-        /// built with a copy of the curve C. So when C is modified the
-        /// TrimmedCurve is not modified
-        /// Warnings :
-        /// If <C> is periodic and <theAdjustPeriodic> is True, parametrics
-        /// bounds of the TrimmedCurve, can be different to [<U1>;<U2>},
-        /// if <U1> or <U2> are not in the principal period.
-        /// Include :
-        /// For more explanation see the scheme given with this class.
-        /// Raises ConstructionError the C is not periodic and U1 or U2 are out of
-        /// the bounds of C.
-        /// Raised if U1 = U2.
-        fn Geom2d_TrimmedCurve_ctor_handlecurve_real2(
-            C: &HandleGeom2dCurve,
-            U1: f64,
-            U2: f64,
         ) -> UniquePtr<Geom2d_TrimmedCurve>;
         /// **Source:** `Geom2d_TrimmedCurve.hxx`:96 - `Geom2d_TrimmedCurve::Reverse()`
         ///
@@ -26795,223 +25807,6 @@ mod ffi {
             Continuity: i32,
             Tol3D: f64,
         ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:54 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a BSpline  Curve passing  through  an
-        /// array of  Point.  The resulting BSpline will  have
-        /// the following properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2_shape(
-            Points: &TColgp_Array1OfPnt,
-            DegMin: i32,
-            DegMax: i32,
-            Continuity: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:54 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a BSpline  Curve passing  through  an
-        /// array of  Point.  The resulting BSpline will  have
-        /// the following properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2(
-            Points: &TColgp_Array1OfPnt,
-            DegMin: i32,
-            DegMax: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:54 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a BSpline  Curve passing  through  an
-        /// array of  Point.  The resulting BSpline will  have
-        /// the following properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_int(
-            Points: &TColgp_Array1OfPnt,
-            DegMin: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:54 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a BSpline  Curve passing  through  an
-        /// array of  Point.  The resulting BSpline will  have
-        /// the following properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt(
-            Points: &TColgp_Array1OfPnt,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:67 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a BSpline  Curve passing  through  an
-        /// array of  Point.  The resulting BSpline will  have
-        /// the following properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int2_shape(
-            Points: &TColgp_Array1OfPnt,
-            ParType: i32,
-            DegMin: i32,
-            DegMax: i32,
-            Continuity: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:67 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a BSpline  Curve passing  through  an
-        /// array of  Point.  The resulting BSpline will  have
-        /// the following properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int2(
-            Points: &TColgp_Array1OfPnt,
-            ParType: i32,
-            DegMin: i32,
-            DegMax: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:67 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a BSpline  Curve passing  through  an
-        /// array of  Point.  The resulting BSpline will  have
-        /// the following properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int(
-            Points: &TColgp_Array1OfPnt,
-            ParType: i32,
-            DegMin: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:67 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a BSpline  Curve passing  through  an
-        /// array of  Point.  The resulting BSpline will  have
-        /// the following properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype(
-            Points: &TColgp_Array1OfPnt,
-            ParType: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:83 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a  BSpline  Curve  passing through an
-        /// array of Point,  which parameters are given by the
-        /// array <Parameters>.
-        /// The resulting  BSpline   will have the   following
-        /// properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2_shape(
-            Points: &TColgp_Array1OfPnt,
-            Parameters: &TColStd_Array1OfReal,
-            DegMin: i32,
-            DegMax: i32,
-            Continuity: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:83 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a  BSpline  Curve  passing through an
-        /// array of Point,  which parameters are given by the
-        /// array <Parameters>.
-        /// The resulting  BSpline   will have the   following
-        /// properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2(
-            Points: &TColgp_Array1OfPnt,
-            Parameters: &TColStd_Array1OfReal,
-            DegMin: i32,
-            DegMax: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:83 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a  BSpline  Curve  passing through an
-        /// array of Point,  which parameters are given by the
-        /// array <Parameters>.
-        /// The resulting  BSpline   will have the   following
-        /// properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int(
-            Points: &TColgp_Array1OfPnt,
-            Parameters: &TColStd_Array1OfReal,
-            DegMin: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:83 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate  a  BSpline  Curve  passing through an
-        /// array of Point,  which parameters are given by the
-        /// array <Parameters>.
-        /// The resulting  BSpline   will have the   following
-        /// properties:
-        /// 1- his degree will be in the range [Degmin,Degmax]
-        /// 2- his  continuity will be  at  least <Continuity>
-        /// 3- the distance from the point <Points> to the
-        /// BSpline will be lower to Tol3D
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal(
-            Points: &TColgp_Array1OfPnt,
-            Parameters: &TColStd_Array1OfReal,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:94 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate a BSpline Curve  passing through an
-        /// array of Point using variational smoothing algorithm,
-        /// which tries to minimize additional criterium:
-        /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int_shape(
-            Points: &TColgp_Array1OfPnt,
-            Weight1: f64,
-            Weight2: f64,
-            Weight3: f64,
-            DegMax: i32,
-            Continuity: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:94 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate a BSpline Curve  passing through an
-        /// array of Point using variational smoothing algorithm,
-        /// which tries to minimize additional criterium:
-        /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int(
-            Points: &TColgp_Array1OfPnt,
-            Weight1: f64,
-            Weight2: f64,
-            Weight3: f64,
-            DegMax: i32,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:94 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
-        ///
-        /// Approximate a BSpline Curve  passing through an
-        /// array of Point using variational smoothing algorithm,
-        /// which tries to minimize additional criterium:
-        /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
-        fn GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3(
-            Points: &TColgp_Array1OfPnt,
-            Weight1: f64,
-            Weight2: f64,
-            Weight3: f64,
-        ) -> UniquePtr<GeomAPI_PointsToBSpline>;
         /// **Source:** `GeomAPI_PointsToBSpline.hxx`:159 - `GeomAPI_PointsToBSpline::Curve()`
         ///
         /// Returns the computed BSpline curve.
@@ -27269,48 +26064,6 @@ mod ffi {
             Vmin: f64,
             Vsup: f64,
             Algo: i32,
-        ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
-        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:45 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
-        ///
-        /// Create the projection  of a point <P> on a surface
-        /// <Surface>
-        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface(
-            P: &gp_Pnt,
-            Surface: &HandleGeomSurface,
-        ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
-        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:54 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
-        ///
-        /// Create the projection  of a point <P> on a surface
-        /// <Surface>
-        /// Create the projection of a point <P>  on a surface
-        /// <Surface>. The solution are computed in the domain
-        /// [Umin,Usup] [Vmin,Vsup] of the surface.
-        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real(
-            P: &gp_Pnt,
-            Surface: &HandleGeomSurface,
-            Tolerance: f64,
-        ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
-        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:59 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
-        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5(
-            P: &gp_Pnt,
-            Surface: &HandleGeomSurface,
-            Umin: f64,
-            Usup: f64,
-            Vmin: f64,
-            Vsup: f64,
-            Tolerance: f64,
-        ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
-        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:70 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
-        ///
-        /// Init the projection  of a point <P> on a surface
-        /// <Surface>
-        fn GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4(
-            P: &gp_Pnt,
-            Surface: &HandleGeomSurface,
-            Umin: f64,
-            Usup: f64,
-            Vmin: f64,
-            Vsup: f64,
         ) -> UniquePtr<GeomAPI_ProjectPointOnSurf>;
         /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:134 - `GeomAPI_ProjectPointOnSurf::Perform()`
         ///
@@ -27822,210 +26575,6 @@ mod ffi {
             theMinimumOfPoints: i32,
             theUTol: f64,
             theMinLen: f64,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:78 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 3D curve.
-        /// @param[in] theC  3d curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param[in] theUTol    tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve_real2_int_real(
-            theC: &Adaptor3d_Curve,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-            theMinimumOfPoints: i32,
-            theUTol: f64,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:78 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 3D curve.
-        /// @param[in] theC  3d curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param[in] theUTol    tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve_real2_int(
-            theC: &Adaptor3d_Curve,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-            theMinimumOfPoints: i32,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:78 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 3D curve.
-        /// @param[in] theC  3d curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param[in] theUTol    tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve_real2(
-            theC: &Adaptor3d_Curve,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:94 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 3D curve with restricted range.
-        /// @param[in] theC  3d curve
-        /// @param[in] theFirstParameter  first parameter on curve
-        /// @param[in] theLastParameter   last  parameter on curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param theUTo  l[in]  tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve_real4_int_real(
-            theC: &Adaptor3d_Curve,
-            theFirstParameter: f64,
-            theLastParameter: f64,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-            theMinimumOfPoints: i32,
-            theUTol: f64,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:94 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 3D curve with restricted range.
-        /// @param[in] theC  3d curve
-        /// @param[in] theFirstParameter  first parameter on curve
-        /// @param[in] theLastParameter   last  parameter on curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param theUTo  l[in]  tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve_real4_int(
-            theC: &Adaptor3d_Curve,
-            theFirstParameter: f64,
-            theLastParameter: f64,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-            theMinimumOfPoints: i32,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:94 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 3D curve with restricted range.
-        /// @param[in] theC  3d curve
-        /// @param[in] theFirstParameter  first parameter on curve
-        /// @param[in] theLastParameter   last  parameter on curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param theUTo  l[in]  tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve_real4(
-            theC: &Adaptor3d_Curve,
-            theFirstParameter: f64,
-            theLastParameter: f64,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:110 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 2D curve.
-        /// @param[in] theC  2d curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param[in] theUTol    tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve2d_real2_int_real(
-            theC: &Adaptor2d_Curve2d,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-            theMinimumOfPoints: i32,
-            theUTol: f64,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:110 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 2D curve.
-        /// @param[in] theC  2d curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param[in] theUTol    tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve2d_real2_int(
-            theC: &Adaptor2d_Curve2d,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-            theMinimumOfPoints: i32,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:110 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 2D curve.
-        /// @param[in] theC  2d curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param[in] theUTol    tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve2d_real2(
-            theC: &Adaptor2d_Curve2d,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:126 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 2D curve with restricted range.
-        /// @param[in] theC  2d curve
-        /// @param[in] theFirstParameter  first parameter on curve
-        /// @param[in] theLastParameter   last  parameter on curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param[in] theUTol    tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve2d_real4_int_real(
-            theC: &Adaptor2d_Curve2d,
-            theFirstParameter: f64,
-            theLastParameter: f64,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-            theMinimumOfPoints: i32,
-            theUTol: f64,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:126 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 2D curve with restricted range.
-        /// @param[in] theC  2d curve
-        /// @param[in] theFirstParameter  first parameter on curve
-        /// @param[in] theLastParameter   last  parameter on curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param[in] theUTol    tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve2d_real4_int(
-            theC: &Adaptor2d_Curve2d,
-            theFirstParameter: f64,
-            theLastParameter: f64,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
-            theMinimumOfPoints: i32,
-        ) -> UniquePtr<GCPnts_TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx`:126 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
-        ///
-        /// Constructor for 2D curve with restricted range.
-        /// @param[in] theC  2d curve
-        /// @param[in] theFirstParameter  first parameter on curve
-        /// @param[in] theLastParameter   last  parameter on curve
-        /// @param[in] theAngularDeflection    angular deflection in radians
-        /// @param[in] theCurvatureDeflection  linear deflection
-        /// @param[in] theMinimumOfPoints  minimum number of points
-        /// @param[in] theUTol    tolerance in curve parametric scope
-        /// @param[in] theMinLen  minimal length
-        fn GCPnts_TangentialDeflection_ctor_curve2d_real4(
-            theC: &Adaptor2d_Curve2d,
-            theFirstParameter: f64,
-            theLastParameter: f64,
-            theAngularDeflection: f64,
-            theCurvatureDeflection: f64,
         ) -> UniquePtr<GCPnts_TangentialDeflection>;
         /// **Source:** `GCPnts_TangentialDeflection.hxx`:142 - `GCPnts_TangentialDeflection::Initialize()`
         ///
@@ -29907,21 +28456,6 @@ mod ffi {
             F: &TopoDS_Face,
             IsUseSpan: bool,
         ) -> UniquePtr<BRepGProp_Face>;
-        /// **Source:** `BRepGProp_Face.hxx`:47 - `BRepGProp_Face::BRepGProp_Face()`
-        ///
-        /// Constructor. Initializes the object with a flag IsUseSpan
-        /// that says if it is necessary to define spans on a face.
-        /// This option has an effect only for BSpline faces. Spans
-        /// are returned by the methods GetUKnots and GetTKnots.
-        fn BRepGProp_Face_ctor() -> UniquePtr<BRepGProp_Face>;
-        /// **Source:** `BRepGProp_Face.hxx`:54 - `BRepGProp_Face::BRepGProp_Face()`
-        ///
-        /// Constructor. Initializes the object with the face and the
-        /// flag IsUseSpan that says if it is necessary to define
-        /// spans on a face. This option has an effect only for
-        /// BSpline faces. Spans are returned by the methods GetUKnots
-        /// and GetTKnots.
-        fn BRepGProp_Face_ctor_face(F: &TopoDS_Face) -> UniquePtr<BRepGProp_Face>;
         /// **Source:** `BRepGProp_Face.hxx`:56 - `BRepGProp_Face::Load()`
         #[cxx_name = "Load"]
         fn load_face(self: Pin<&mut BRepGProp_Face>, F: &TopoDS_Face);
@@ -30212,64 +28746,6 @@ mod ffi {
             theShape: &TopoDS_Shape,
             theParameters: &IMeshTools_Parameters,
             theRange: &Message_ProgressRange,
-        ) -> UniquePtr<BRepMesh_IncrementalMesh>;
-        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:41 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
-        ///
-        /// Constructor.
-        /// Automatically calls method Perform.
-        /// @param theShape shape to be meshed.
-        /// @param theLinDeflection linear deflection.
-        /// @param isRelative if TRUE deflection used for discretization of
-        /// each edge will be <theLinDeflection> * <size of edge>. Deflection
-        /// used for the faces will be the maximum deflection of their edges.
-        /// @param theAngDeflection angular deflection.
-        /// @param isInParallel if TRUE shape will be meshed in parallel.
-        fn BRepMesh_IncrementalMesh_ctor_shape_real_bool_real(
-            theShape: &TopoDS_Shape,
-            theLinDeflection: f64,
-            isRelative: bool,
-            theAngDeflection: f64,
-        ) -> UniquePtr<BRepMesh_IncrementalMesh>;
-        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:41 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
-        ///
-        /// Constructor.
-        /// Automatically calls method Perform.
-        /// @param theShape shape to be meshed.
-        /// @param theLinDeflection linear deflection.
-        /// @param isRelative if TRUE deflection used for discretization of
-        /// each edge will be <theLinDeflection> * <size of edge>. Deflection
-        /// used for the faces will be the maximum deflection of their edges.
-        /// @param theAngDeflection angular deflection.
-        /// @param isInParallel if TRUE shape will be meshed in parallel.
-        fn BRepMesh_IncrementalMesh_ctor_shape_real_bool(
-            theShape: &TopoDS_Shape,
-            theLinDeflection: f64,
-            isRelative: bool,
-        ) -> UniquePtr<BRepMesh_IncrementalMesh>;
-        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:41 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
-        ///
-        /// Constructor.
-        /// Automatically calls method Perform.
-        /// @param theShape shape to be meshed.
-        /// @param theLinDeflection linear deflection.
-        /// @param isRelative if TRUE deflection used for discretization of
-        /// each edge will be <theLinDeflection> * <size of edge>. Deflection
-        /// used for the faces will be the maximum deflection of their edges.
-        /// @param theAngDeflection angular deflection.
-        /// @param isInParallel if TRUE shape will be meshed in parallel.
-        fn BRepMesh_IncrementalMesh_ctor_shape_real(
-            theShape: &TopoDS_Shape,
-            theLinDeflection: f64,
-        ) -> UniquePtr<BRepMesh_IncrementalMesh>;
-        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:51 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
-        ///
-        /// Constructor.
-        /// Automatically calls method Perform.
-        /// @param theShape shape to be meshed.
-        /// @param theParameters - parameters of meshing
-        fn BRepMesh_IncrementalMesh_ctor_shape_parameters(
-            theShape: &TopoDS_Shape,
-            theParameters: &IMeshTools_Parameters,
         ) -> UniquePtr<BRepMesh_IncrementalMesh>;
         /// **Source:** `BRepMesh_IncrementalMesh.hxx`:57 - `BRepMesh_IncrementalMesh::Perform()`
         ///
@@ -30883,21 +29359,6 @@ mod ffi {
         fn Poly_Triangulation_ctor_handletriangulation(
             theTriangulation: &HandlePolyTriangulation,
         ) -> UniquePtr<Poly_Triangulation>;
-        /// **Source:** `Poly_Triangulation.hxx`:74 - `Poly_Triangulation::Poly_Triangulation()`
-        ///
-        /// Constructs a triangulation from a set of triangles.
-        /// The triangulation is initialized without a triangle or a node,
-        /// but capable of containing specified number of nodes and triangles.
-        /// @param[in] theNbNodes      number of nodes to allocate
-        /// @param[in] theNbTriangles  number of triangles to allocate
-        /// @param[in] theHasUVNodes   indicates whether 2D nodes will be associated with 3D ones,
-        /// (i.e. to enable a 2D representation)
-        /// @param[in] theHasNormals   indicates whether normals will be given and associated with nodes
-        fn Poly_Triangulation_ctor_int2_bool(
-            theNbNodes: i32,
-            theNbTriangles: i32,
-            theHasUVNodes: bool,
-        ) -> UniquePtr<Poly_Triangulation>;
         /// **Source:** `Poly_Triangulation.hxx`:61 - `Poly_Triangulation::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Poly_Triangulation) -> &HandleStandardType;
@@ -31248,30 +29709,6 @@ mod ffi {
             UnifyFaces: bool,
             ConcatBSplines: bool,
         ) -> UniquePtr<ShapeUpgrade_UnifySameDomain>;
-        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:80 - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
-        ///
-        /// Constructor defining input shape and necessary flags.
-        /// It does not perform unification.
-        fn ShapeUpgrade_UnifySameDomain_ctor_shape_bool2(
-            aShape: &TopoDS_Shape,
-            UnifyEdges: bool,
-            UnifyFaces: bool,
-        ) -> UniquePtr<ShapeUpgrade_UnifySameDomain>;
-        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:80 - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
-        ///
-        /// Constructor defining input shape and necessary flags.
-        /// It does not perform unification.
-        fn ShapeUpgrade_UnifySameDomain_ctor_shape_bool(
-            aShape: &TopoDS_Shape,
-            UnifyEdges: bool,
-        ) -> UniquePtr<ShapeUpgrade_UnifySameDomain>;
-        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:80 - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
-        ///
-        /// Constructor defining input shape and necessary flags.
-        /// It does not perform unification.
-        fn ShapeUpgrade_UnifySameDomain_ctor_shape(
-            aShape: &TopoDS_Shape,
-        ) -> UniquePtr<ShapeUpgrade_UnifySameDomain>;
         /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:90 - `ShapeUpgrade_UnifySameDomain::Initialize()`
         ///
         /// Initializes with a shape and necessary flags.
@@ -31445,92 +29882,6 @@ mod ffi {
             splitclosed: bool,
             splitopen: bool,
             checkinternaledges: bool,
-        ) -> UniquePtr<ShapeAnalysis_FreeBounds>;
-        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:76 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
-        ///
-        /// Builds forecasting free bounds of the <shape>.
-        /// <shape> should be a compound of faces.
-        /// This constructor is to be used for forecasting free edges
-        /// with help of sewing analyzer BRepAlgo_Sewing which is called
-        /// with tolerance <toler>.
-        /// Free edges are connected into wires only when their ends are
-        /// at distance less than <toler>.
-        /// If <splitclosed> is True extracts closed sub-wires out of
-        /// built closed wires.
-        /// If <splitopen> is True extracts closed sub-wires out of
-        /// built open wires.
-        fn ShapeAnalysis_FreeBounds_ctor_shape_real_bool(
-            shape: &TopoDS_Shape,
-            toler: f64,
-            splitclosed: bool,
-        ) -> UniquePtr<ShapeAnalysis_FreeBounds>;
-        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:76 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
-        ///
-        /// Builds forecasting free bounds of the <shape>.
-        /// <shape> should be a compound of faces.
-        /// This constructor is to be used for forecasting free edges
-        /// with help of sewing analyzer BRepAlgo_Sewing which is called
-        /// with tolerance <toler>.
-        /// Free edges are connected into wires only when their ends are
-        /// at distance less than <toler>.
-        /// If <splitclosed> is True extracts closed sub-wires out of
-        /// built closed wires.
-        /// If <splitopen> is True extracts closed sub-wires out of
-        /// built open wires.
-        fn ShapeAnalysis_FreeBounds_ctor_shape_real(
-            shape: &TopoDS_Shape,
-            toler: f64,
-        ) -> UniquePtr<ShapeAnalysis_FreeBounds>;
-        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:92 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
-        ///
-        /// Builds actual free bounds of the <shape>.
-        /// <shape> should be a compound of shells.
-        /// This constructor is to be used for getting free edges (ones
-        /// referenced by the only face) with help of analyzer
-        /// ShapeAnalysis_Shell.
-        /// Free edges are connected into wires only when they share the
-        /// same vertex.
-        /// If <splitclosed> is True extracts closed sub-wires out of
-        /// built closed wires.
-        /// If <splitopen> is True extracts closed sub-wires out of
-        /// built open wires.
-        fn ShapeAnalysis_FreeBounds_ctor_shape_bool2(
-            shape: &TopoDS_Shape,
-            splitclosed: bool,
-            splitopen: bool,
-        ) -> UniquePtr<ShapeAnalysis_FreeBounds>;
-        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:92 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
-        ///
-        /// Builds actual free bounds of the <shape>.
-        /// <shape> should be a compound of shells.
-        /// This constructor is to be used for getting free edges (ones
-        /// referenced by the only face) with help of analyzer
-        /// ShapeAnalysis_Shell.
-        /// Free edges are connected into wires only when they share the
-        /// same vertex.
-        /// If <splitclosed> is True extracts closed sub-wires out of
-        /// built closed wires.
-        /// If <splitopen> is True extracts closed sub-wires out of
-        /// built open wires.
-        fn ShapeAnalysis_FreeBounds_ctor_shape_bool(
-            shape: &TopoDS_Shape,
-            splitclosed: bool,
-        ) -> UniquePtr<ShapeAnalysis_FreeBounds>;
-        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:92 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
-        ///
-        /// Builds actual free bounds of the <shape>.
-        /// <shape> should be a compound of shells.
-        /// This constructor is to be used for getting free edges (ones
-        /// referenced by the only face) with help of analyzer
-        /// ShapeAnalysis_Shell.
-        /// Free edges are connected into wires only when they share the
-        /// same vertex.
-        /// If <splitclosed> is True extracts closed sub-wires out of
-        /// built closed wires.
-        /// If <splitopen> is True extracts closed sub-wires out of
-        /// built open wires.
-        fn ShapeAnalysis_FreeBounds_ctor_shape(
-            shape: &TopoDS_Shape,
         ) -> UniquePtr<ShapeAnalysis_FreeBounds>;
         /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:99 - `ShapeAnalysis_FreeBounds::GetClosedWires()`
         ///
@@ -33380,16 +31731,6 @@ mod ffi {
             theUnit: &str,
             theModecr: i32,
         ) -> UniquePtr<IGESControl_Writer>;
-        /// **Source:** `IGESControl_Writer.hxx`:67 - `IGESControl_Writer::IGESControl_Writer()`
-        ///
-        /// Creates a writer with given
-        /// values for units and for write mode.
-        /// theUnit may be any unit that is accepted by the IGES standard.
-        /// By default, it is the millimeter.
-        /// theModecr defines the write mode and may be:
-        /// - 0: Faces (default)
-        /// - 1: BRep.
-        fn IGESControl_Writer_ctor_charptr(theUnit: &str) -> UniquePtr<IGESControl_Writer>;
         /// **Source:** `IGESControl_Writer.hxx`:90 - `IGESControl_Writer::AddShape()`
         ///
         /// Translates a Shape to IGES Entities and adds them to the model
@@ -33892,48 +32233,6 @@ mod ffi {
             TolC1: f64,
             TolC2: f64,
         ) -> UniquePtr<Extrema_ExtCC>;
-        /// **Source:** `Extrema_ExtCC.hxx`:39 - `Extrema_ExtCC::Extrema_ExtCC()`
-        fn Extrema_ExtCC_ctor_real(TolC1: f64) -> UniquePtr<Extrema_ExtCC>;
-        /// **Source:** `Extrema_ExtCC.hxx`:39 - `Extrema_ExtCC::Extrema_ExtCC()`
-        fn Extrema_ExtCC_ctor() -> UniquePtr<Extrema_ExtCC>;
-        /// **Source:** `Extrema_ExtCC.hxx`:43 - `Extrema_ExtCC::Extrema_ExtCC()`
-        ///
-        /// It calculates all the distances.
-        fn Extrema_ExtCC_ctor_curve2_real(
-            C1: &Adaptor3d_Curve,
-            C2: &Adaptor3d_Curve,
-            TolC1: f64,
-        ) -> UniquePtr<Extrema_ExtCC>;
-        /// **Source:** `Extrema_ExtCC.hxx`:43 - `Extrema_ExtCC::Extrema_ExtCC()`
-        ///
-        /// It calculates all the distances.
-        fn Extrema_ExtCC_ctor_curve2(
-            C1: &Adaptor3d_Curve,
-            C2: &Adaptor3d_Curve,
-        ) -> UniquePtr<Extrema_ExtCC>;
-        /// **Source:** `Extrema_ExtCC.hxx`:49 - `Extrema_ExtCC::Extrema_ExtCC()`
-        ///
-        /// It calculates all the distances.
-        fn Extrema_ExtCC_ctor_curve2_real5(
-            C1: &Adaptor3d_Curve,
-            C2: &Adaptor3d_Curve,
-            U1: f64,
-            U2: f64,
-            V1: f64,
-            V2: f64,
-            TolC1: f64,
-        ) -> UniquePtr<Extrema_ExtCC>;
-        /// **Source:** `Extrema_ExtCC.hxx`:49 - `Extrema_ExtCC::Extrema_ExtCC()`
-        ///
-        /// It calculates all the distances.
-        fn Extrema_ExtCC_ctor_curve2_real4(
-            C1: &Adaptor3d_Curve,
-            C2: &Adaptor3d_Curve,
-            U1: f64,
-            U2: f64,
-            V1: f64,
-            V2: f64,
-        ) -> UniquePtr<Extrema_ExtCC>;
         /// **Source:** `Extrema_ExtCC.hxx`:59 - `Extrema_ExtCC::Initialize()`
         ///
         /// Initializes but does not perform algorithm.
@@ -34078,37 +32377,6 @@ mod ffi {
             C: &Adaptor3d_Curve,
             TolF: f64,
         ) -> UniquePtr<Extrema_ExtPC>;
-        /// **Source:** `Extrema_ExtPC.hxx`:58 - `Extrema_ExtPC::Extrema_ExtPC()`
-        ///
-        /// It calculates all the distances.
-        /// The function F(u)=distance(P,C(u)) has an extremum
-        /// when g(u)=dF/du=0. The algorithm searches all the
-        /// zeros inside the definition range of the curve.
-        /// Zeros are searched between uinf and usup.
-        /// Tol  is used to decide to stop the
-        /// iterations according to the following condition:
-        /// if n is the number of iterations,
-        /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-        fn Extrema_ExtPC_ctor_pnt_curve_real2(
-            P: &gp_Pnt,
-            C: &Adaptor3d_Curve,
-            Uinf: f64,
-            Usup: f64,
-        ) -> UniquePtr<Extrema_ExtPC>;
-        /// **Source:** `Extrema_ExtPC.hxx`:72 - `Extrema_ExtPC::Extrema_ExtPC()`
-        ///
-        /// It calculates all the distances.
-        /// The function F(u)=distance(P,C(u)) has an extremum
-        /// when g(u)=dF/du=0. The algorithm searches all the
-        /// zeros inside the definition range of the curve.
-        /// Tol is used to decide to stop the
-        /// iterations according to the following condition:
-        /// if n is the number of iterations,
-        /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-        fn Extrema_ExtPC_ctor_pnt_curve(
-            P: &gp_Pnt,
-            C: &Adaptor3d_Curve,
-        ) -> UniquePtr<Extrema_ExtPC>;
         /// **Source:** `Extrema_ExtPC.hxx`:77 - `Extrema_ExtPC::Initialize()`
         ///
         /// initializes the fields of the algorithm.
@@ -34215,80 +32483,6 @@ mod ffi {
             TolV: f64,
             F: i32,
             A: i32,
-        ) -> UniquePtr<Extrema_ExtPS>;
-        /// **Source:** `Extrema_ExtPS.hxx`:56 - `Extrema_ExtPS::Extrema_ExtPS()`
-        ///
-        /// It calculates all the distances.
-        /// NbU and NbV are used to locate the close points
-        /// to find the zeros. They must be great enough
-        /// such that if there is N extrema, there will
-        /// be N extrema between P and the grid.
-        /// TolU et TolV are used to determine the conditions
-        /// to stop the iterations; at the iteration number n:
-        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_ExtPS_ctor_pnt_surface_real2_extflag(
-            P: &gp_Pnt,
-            S: &Adaptor3d_Surface,
-            TolU: f64,
-            TolV: f64,
-            F: i32,
-        ) -> UniquePtr<Extrema_ExtPS>;
-        /// **Source:** `Extrema_ExtPS.hxx`:56 - `Extrema_ExtPS::Extrema_ExtPS()`
-        ///
-        /// It calculates all the distances.
-        /// NbU and NbV are used to locate the close points
-        /// to find the zeros. They must be great enough
-        /// such that if there is N extrema, there will
-        /// be N extrema between P and the grid.
-        /// TolU et TolV are used to determine the conditions
-        /// to stop the iterations; at the iteration number n:
-        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_ExtPS_ctor_pnt_surface_real2(
-            P: &gp_Pnt,
-            S: &Adaptor3d_Surface,
-            TolU: f64,
-            TolV: f64,
-        ) -> UniquePtr<Extrema_ExtPS>;
-        /// **Source:** `Extrema_ExtPS.hxx`:71 - `Extrema_ExtPS::Extrema_ExtPS()`
-        ///
-        /// It calculates all the distances.
-        /// NbU and NbV are used to locate the close points
-        /// to find the zeros. They must be great enough
-        /// such that if there is N extrema, there will
-        /// be N extrema between P and the grid.
-        /// TolU et TolV are used to determine the conditions
-        /// to stop the iterations; at the iteration number n:
-        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_ExtPS_ctor_pnt_surface_real6_extflag(
-            P: &gp_Pnt,
-            S: &Adaptor3d_Surface,
-            Uinf: f64,
-            Usup: f64,
-            Vinf: f64,
-            Vsup: f64,
-            TolU: f64,
-            TolV: f64,
-            F: i32,
-        ) -> UniquePtr<Extrema_ExtPS>;
-        /// **Source:** `Extrema_ExtPS.hxx`:71 - `Extrema_ExtPS::Extrema_ExtPS()`
-        ///
-        /// It calculates all the distances.
-        /// NbU and NbV are used to locate the close points
-        /// to find the zeros. They must be great enough
-        /// such that if there is N extrema, there will
-        /// be N extrema between P and the grid.
-        /// TolU et TolV are used to determine the conditions
-        /// to stop the iterations; at the iteration number n:
-        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_ExtPS_ctor_pnt_surface_real6(
-            P: &gp_Pnt,
-            S: &Adaptor3d_Surface,
-            Uinf: f64,
-            Usup: f64,
-            Vinf: f64,
-            Vsup: f64,
-            TolU: f64,
-            TolV: f64,
         ) -> UniquePtr<Extrema_ExtPS>;
         /// **Source:** `Extrema_ExtPS.hxx`:83 - `Extrema_ExtPS::Initialize()`
         ///
@@ -34420,104 +32614,6 @@ mod ffi {
             TolV: f64,
             F: i32,
             A: i32,
-        ) -> UniquePtr<Extrema_GenExtPS>;
-        /// **Source:** `Extrema_GenExtPS.hxx`:57 - `Extrema_GenExtPS::Extrema_GenExtPS()`
-        ///
-        /// It calculates all the distances.
-        /// The function F(u,v)=distance(P,S(u,v)) has an
-        /// extremum when gradient(F)=0. The algorithm searches
-        /// all the zeros inside the definition ranges of the
-        /// surface.
-        /// NbU and NbV are used to locate the close points
-        /// to find the zeros. They must be great enough
-        /// such that if there is N extrema, there will
-        /// be N extrema between P and the grid.
-        /// TolU et TolV are used to determine the conditions
-        /// to stop the iterations; at the iteration number n:
-        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_GenExtPS_ctor_pnt_surface_int2_real2_extflag(
-            P: &gp_Pnt,
-            S: &Adaptor3d_Surface,
-            NbU: i32,
-            NbV: i32,
-            TolU: f64,
-            TolV: f64,
-            F: i32,
-        ) -> UniquePtr<Extrema_GenExtPS>;
-        /// **Source:** `Extrema_GenExtPS.hxx`:57 - `Extrema_GenExtPS::Extrema_GenExtPS()`
-        ///
-        /// It calculates all the distances.
-        /// The function F(u,v)=distance(P,S(u,v)) has an
-        /// extremum when gradient(F)=0. The algorithm searches
-        /// all the zeros inside the definition ranges of the
-        /// surface.
-        /// NbU and NbV are used to locate the close points
-        /// to find the zeros. They must be great enough
-        /// such that if there is N extrema, there will
-        /// be N extrema between P and the grid.
-        /// TolU et TolV are used to determine the conditions
-        /// to stop the iterations; at the iteration number n:
-        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_GenExtPS_ctor_pnt_surface_int2_real2(
-            P: &gp_Pnt,
-            S: &Adaptor3d_Surface,
-            NbU: i32,
-            NbV: i32,
-            TolU: f64,
-            TolV: f64,
-        ) -> UniquePtr<Extrema_GenExtPS>;
-        /// **Source:** `Extrema_GenExtPS.hxx`:78 - `Extrema_GenExtPS::Extrema_GenExtPS()`
-        ///
-        /// It calculates all the distances.
-        /// The function F(u,v)=distance(P,S(u,v)) has an
-        /// extremum when gradient(F)=0. The algorithm searches
-        /// all the zeros inside the definition ranges of the
-        /// surface.
-        /// NbU and NbV are used to locate the close points
-        /// to find the zeros. They must be great enough
-        /// such that if there is N extrema, there will
-        /// be N extrema between P and the grid.
-        /// TolU et TolV are used to determine the conditions
-        /// to stop the iterations; at the iteration number n:
-        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_GenExtPS_ctor_pnt_surface_int2_real6_extflag(
-            P: &gp_Pnt,
-            S: &Adaptor3d_Surface,
-            NbU: i32,
-            NbV: i32,
-            Umin: f64,
-            Usup: f64,
-            Vmin: f64,
-            Vsup: f64,
-            TolU: f64,
-            TolV: f64,
-            F: i32,
-        ) -> UniquePtr<Extrema_GenExtPS>;
-        /// **Source:** `Extrema_GenExtPS.hxx`:78 - `Extrema_GenExtPS::Extrema_GenExtPS()`
-        ///
-        /// It calculates all the distances.
-        /// The function F(u,v)=distance(P,S(u,v)) has an
-        /// extremum when gradient(F)=0. The algorithm searches
-        /// all the zeros inside the definition ranges of the
-        /// surface.
-        /// NbU and NbV are used to locate the close points
-        /// to find the zeros. They must be great enough
-        /// such that if there is N extrema, there will
-        /// be N extrema between P and the grid.
-        /// TolU et TolV are used to determine the conditions
-        /// to stop the iterations; at the iteration number n:
-        /// (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
-        fn Extrema_GenExtPS_ctor_pnt_surface_int2_real6(
-            P: &gp_Pnt,
-            S: &Adaptor3d_Surface,
-            NbU: i32,
-            NbV: i32,
-            Umin: f64,
-            Usup: f64,
-            Vmin: f64,
-            Vsup: f64,
-            TolU: f64,
-            TolV: f64,
         ) -> UniquePtr<Extrema_GenExtPS>;
         /// **Source:** `Extrema_GenExtPS.hxx`:91 - `Extrema_GenExtPS::Initialize()`
         #[cxx_name = "Initialize"]
@@ -35337,35 +33433,6 @@ mod ffi {
             NbIterations: i32,
             ZEPS: f64,
         ) -> UniquePtr<math_BrentMinimum>;
-        /// **Source:** `math_BrentMinimum.hxx`:38 - `math_BrentMinimum::math_BrentMinimum()`
-        ///
-        /// This constructor should be used in a sub-class to initialize
-        /// correctly all the fields of this class.
-        fn math_BrentMinimum_ctor_real_int(
-            TolX: f64,
-            NbIterations: i32,
-        ) -> UniquePtr<math_BrentMinimum>;
-        /// **Source:** `math_BrentMinimum.hxx`:38 - `math_BrentMinimum::math_BrentMinimum()`
-        ///
-        /// This constructor should be used in a sub-class to initialize
-        /// correctly all the fields of this class.
-        fn math_BrentMinimum_ctor_real(TolX: f64) -> UniquePtr<math_BrentMinimum>;
-        /// **Source:** `math_BrentMinimum.hxx`:45 - `math_BrentMinimum::math_BrentMinimum()`
-        ///
-        /// This constructor should be used in a sub-class to initialize
-        /// correctly all the fields of this class.
-        /// It has to be used if F(Bx) is known.
-        fn math_BrentMinimum_ctor_real2_int(
-            TolX: f64,
-            Fbx: f64,
-            NbIterations: i32,
-        ) -> UniquePtr<math_BrentMinimum>;
-        /// **Source:** `math_BrentMinimum.hxx`:45 - `math_BrentMinimum::math_BrentMinimum()`
-        ///
-        /// This constructor should be used in a sub-class to initialize
-        /// correctly all the fields of this class.
-        /// It has to be used if F(Bx) is known.
-        fn math_BrentMinimum_ctor_real2(TolX: f64, Fbx: f64) -> UniquePtr<math_BrentMinimum>;
         /// **Source:** `math_BrentMinimum.hxx`:57 - `math_BrentMinimum::Perform()`
         ///
         /// Brent minimization is performed on function F from a given
@@ -35465,16 +33532,6 @@ mod ffi {
             A: &math_Matrix,
             MinPivot: f64,
         ) -> UniquePtr<math_GaussLeastSquare>;
-        /// **Source:** `math_GaussLeastSquare.hxx`:46 - `math_GaussLeastSquare::math_GaussLeastSquare()`
-        ///
-        /// Given an input n X m matrix A with n >= m this constructor
-        /// performs the LU decomposition with partial pivoting
-        /// (interchange of rows) of the matrix AA = A.Transposed() * A;
-        /// This LU decomposition is stored internally and may be used
-        /// to do subsequent calculation.
-        /// If the largest pivot found is less than MinPivot the matrix <A>
-        /// is considered as singular.
-        fn math_GaussLeastSquare_ctor_matrix(A: &math_Matrix) -> UniquePtr<math_GaussLeastSquare>;
         /// **Source:** `math_GaussLeastSquare.hxx`:50 - `math_GaussLeastSquare::IsDone()`
         ///
         /// Returns true if the computations are successful, otherwise returns false.e
@@ -36484,25 +34541,6 @@ mod ffi {
         fn TCollection_ExtendedString_ctor_asciistring_bool(
             astring: &TCollection_AsciiString,
             isMultiByte: bool,
-        ) -> UniquePtr<TCollection_ExtendedString>;
-        /// **Source:** `TCollection_ExtendedString.hxx`:64 - `TCollection_ExtendedString::TCollection_ExtendedString()`
-        ///
-        /// Creation by converting a CString to an extended
-        /// string.  If <isMultiByte> is true then the string is
-        /// treated as having UTF-8 coding.  If it is not a UTF-8
-        /// then <isMultiByte> is ignored and each character is
-        /// copied to ExtCharacter.
-        fn TCollection_ExtendedString_ctor_charptr(
-            astring: &str,
-        ) -> UniquePtr<TCollection_ExtendedString>;
-        /// **Source:** `TCollection_ExtendedString.hxx`:107 - `TCollection_ExtendedString::TCollection_ExtendedString()`
-        ///
-        /// Creation by converting an Ascii string to an extended
-        /// string. The string is treated as having UTF-8 coding.
-        /// If it is not a UTF-8 or multi byte then
-        /// each character is copied to ExtCharacter.
-        fn TCollection_ExtendedString_ctor_asciistring(
-            astring: &TCollection_AsciiString,
         ) -> UniquePtr<TCollection_ExtendedString>;
         /// **Source:** `TCollection_ExtendedString.hxx`:113 - `TCollection_ExtendedString::AssignCat()`
         ///
@@ -37670,10 +35708,6 @@ mod ffi {
         ///
         /// Constructor is kept public for backward compatibility
         fn Standard_OutOfMemory_ctor_charptr(theMessage: &str) -> UniquePtr<Standard_OutOfMemory>;
-        /// **Source:** `Standard_OutOfMemory.hxx`:54 - `Standard_OutOfMemory::Standard_OutOfMemory()`
-        ///
-        /// Constructor is kept public for backward compatibility
-        fn Standard_OutOfMemory_ctor() -> UniquePtr<Standard_OutOfMemory>;
         /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Standard_OutOfMemory) -> &HandleStandardType;
@@ -38145,10 +36179,6 @@ mod ffi {
         ///
         /// Create and initialize. By default all countes are active
         fn OSD_MemInfo_ctor_bool(theImmediateUpdate: bool) -> UniquePtr<OSD_MemInfo>;
-        /// **Source:** `OSD_MemInfo.hxx`:67 - `OSD_MemInfo::OSD_MemInfo()`
-        ///
-        /// Create and initialize. By default all countes are active
-        fn OSD_MemInfo_ctor() -> UniquePtr<OSD_MemInfo>;
         /// **Source:** `OSD_MemInfo.hxx`:77 - `OSD_MemInfo::SetActive()`
         ///
         /// Set all counters active. The information is collected for active counters.
@@ -39457,25 +37487,6 @@ mod ffi {
             theName: &TCollection_AsciiString,
             theMax: f64,
             isInfinite: bool,
-        ) -> UniquePtr<Message_ProgressScope>;
-        /// **Source:** `Message_ProgressScope.hxx`:225 - `Message_ProgressScope::Message_ProgressScope()`
-        ///
-        /// Creates a new scope taking responsibility of the part of the progress
-        /// scale described by theRange. The new scope has own range from 0 to
-        /// theMax, which is mapped to the given range.
-        ///
-        /// The topmost scope is created and owned by Message_ProgressIndicator
-        /// and its pointer is contained in the Message_ProgressRange returned by the Start() method of
-        /// progress indicator.
-        ///
-        /// @param[in][out] theRange  range to fill (will be disarmed)
-        /// @param[in] theName        new scope name
-        /// @param[in] theMax         number of steps in scope
-        /// @param[in] isInfinite     infinite flag
-        fn Message_ProgressScope_ctor_progressrange_asciistring_real(
-            theRange: &Message_ProgressRange,
-            theName: &TCollection_AsciiString,
-            theMax: f64,
         ) -> UniquePtr<Message_ProgressScope>;
         /// **Source:** `Message_ProgressScope.hxx`:267 - `Message_ProgressScope::SetName()`
         ///
@@ -41578,18 +39589,6 @@ mod ffi {
         fn NCollection_IncAllocator_ctor_size(
             theBlockSize: usize,
         ) -> UniquePtr<NCollection_IncAllocator>;
-        /// **Source:** `NCollection_IncAllocator.hxx`:61 - `NCollection_IncAllocator::NCollection_IncAllocator()`
-        ///
-        /// Constructor.
-        /// Note that this constructor does NOT setup mutex for using allocator concurrently from
-        /// different threads, see SetThreadSafe() method.
-        ///
-        /// The default size of the memory blocks is 12KB.
-        /// It is not recommended to use memory blocks larger than 16KB on Windows
-        /// platform for the repeated operations (and thus multiple allocations)
-        /// because Low Fragmentation Heap is not going to be used for these allocations,
-        /// leading to memory fragmentation and eventual performance slow down.
-        fn NCollection_IncAllocator_ctor() -> UniquePtr<NCollection_IncAllocator>;
         /// **Source:** `NCollection_IncAllocator.hxx`:64 - `NCollection_IncAllocator::SetThreadSafe()`
         ///
         /// Setup mutex for thread-safe allocations.
@@ -41629,10 +39628,6 @@ mod ffi {
         fn TColStd_PackedMapOfInteger_ctor_packedmapofinteger(
             theOther: &TColStd_PackedMapOfInteger,
         ) -> UniquePtr<TColStd_PackedMapOfInteger>;
-        /// **Source:** `TColStd_PackedMapOfInteger.hxx`:266 - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`
-        ///
-        /// Constructor
-        fn TColStd_PackedMapOfInteger_ctor() -> UniquePtr<TColStd_PackedMapOfInteger>;
         /// **Source:** `TColStd_PackedMapOfInteger.hxx`:290 - `TColStd_PackedMapOfInteger::ReSize()`
         #[cxx_name = "ReSize"]
         fn re_size(self: Pin<&mut TColStd_PackedMapOfInteger>, NbBuckets: i32);
@@ -43000,13 +40995,6 @@ mod ffi {
             F: &TopoDS_Face,
             R: bool,
         ) -> UniquePtr<BRepAdaptor_Surface>;
-        /// **Source:** `BRepAdaptor_Surface.hxx`:64 - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
-        ///
-        /// Creates a surface to  access the geometry  of <F>.
-        /// If  <Restriction> is  true  the parameter range is
-        /// the  parameter  range  in   the  UV space  of  the
-        /// restriction.
-        fn BRepAdaptor_Surface_ctor_face(F: &TopoDS_Face) -> UniquePtr<BRepAdaptor_Surface>;
         /// **Source:** `BRepAdaptor_Surface.hxx`:55 - `BRepAdaptor_Surface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BRepAdaptor_Surface) -> &HandleStandardType;
@@ -43584,27 +41572,6 @@ mod ffi {
             theVLast: f64,
             theTolU: f64,
             theTolV: f64,
-        ) -> UniquePtr<GeomAdaptor_Surface>;
-        /// **Source:** `GeomAdaptor_Surface.hxx`:61 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
-        ///
-        /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
-        fn GeomAdaptor_Surface_ctor_handlesurface_real5(
-            theSurf: &HandleGeomSurface,
-            theUFirst: f64,
-            theULast: f64,
-            theVFirst: f64,
-            theVLast: f64,
-            theTolU: f64,
-        ) -> UniquePtr<GeomAdaptor_Surface>;
-        /// **Source:** `GeomAdaptor_Surface.hxx`:61 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
-        ///
-        /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
-        fn GeomAdaptor_Surface_ctor_handlesurface_real4(
-            theSurf: &HandleGeomSurface,
-            theUFirst: f64,
-            theULast: f64,
-            theVFirst: f64,
-            theVLast: f64,
         ) -> UniquePtr<GeomAdaptor_Surface>;
         /// **Source:** `GeomAdaptor_Surface.hxx`:40 - `GeomAdaptor_Surface::DynamicType()`
         #[cxx_name = "DynamicType"]
@@ -46222,12 +44189,6 @@ mod ffi {
         fn Message_Level_ctor_asciistring(
             theName: &TCollection_AsciiString,
         ) -> UniquePtr<Message_Level>;
-        /// **Source:** `Message_Level.hxx`:43 - `Message_Level::Message_Level()`
-        ///
-        /// Constructor.
-        /// One string key is used for all alert meters.
-        /// The perf meter is not started automatically, it will be done in AddAlert() method
-        fn Message_Level_ctor() -> UniquePtr<Message_Level>;
         /// **Source:** `Message_Level.hxx`:63 - `Message_Level::AddAlert()`
         ///
         /// Adds new alert on the level. Stops the last alert metric, appends the alert and starts the
@@ -46513,69 +44474,6 @@ mod ffi {
             RemoveIntEdges: bool,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<BRepOffset_MakeOffset>;
-        /// **Source:** `BRepOffset_MakeOffset.hxx`:50 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
-        fn BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool2(
-            S: &TopoDS_Shape,
-            Offset: f64,
-            Tol: f64,
-            Mode: i32,
-            Intersection: bool,
-            SelfInter: bool,
-            Join: i32,
-            Thickening: bool,
-            RemoveIntEdges: bool,
-        ) -> UniquePtr<BRepOffset_MakeOffset>;
-        /// **Source:** `BRepOffset_MakeOffset.hxx`:50 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
-        fn BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool(
-            S: &TopoDS_Shape,
-            Offset: f64,
-            Tol: f64,
-            Mode: i32,
-            Intersection: bool,
-            SelfInter: bool,
-            Join: i32,
-            Thickening: bool,
-        ) -> UniquePtr<BRepOffset_MakeOffset>;
-        /// **Source:** `BRepOffset_MakeOffset.hxx`:50 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
-        fn BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype(
-            S: &TopoDS_Shape,
-            Offset: f64,
-            Tol: f64,
-            Mode: i32,
-            Intersection: bool,
-            SelfInter: bool,
-            Join: i32,
-        ) -> UniquePtr<BRepOffset_MakeOffset>;
-        /// **Source:** `BRepOffset_MakeOffset.hxx`:50 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
-        fn BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2(
-            S: &TopoDS_Shape,
-            Offset: f64,
-            Tol: f64,
-            Mode: i32,
-            Intersection: bool,
-            SelfInter: bool,
-        ) -> UniquePtr<BRepOffset_MakeOffset>;
-        /// **Source:** `BRepOffset_MakeOffset.hxx`:50 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
-        fn BRepOffset_MakeOffset_ctor_shape_real2_mode_bool(
-            S: &TopoDS_Shape,
-            Offset: f64,
-            Tol: f64,
-            Mode: i32,
-            Intersection: bool,
-        ) -> UniquePtr<BRepOffset_MakeOffset>;
-        /// **Source:** `BRepOffset_MakeOffset.hxx`:50 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
-        fn BRepOffset_MakeOffset_ctor_shape_real2_mode(
-            S: &TopoDS_Shape,
-            Offset: f64,
-            Tol: f64,
-            Mode: i32,
-        ) -> UniquePtr<BRepOffset_MakeOffset>;
-        /// **Source:** `BRepOffset_MakeOffset.hxx`:50 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
-        fn BRepOffset_MakeOffset_ctor_shape_real2(
-            S: &TopoDS_Shape,
-            Offset: f64,
-            Tol: f64,
-        ) -> UniquePtr<BRepOffset_MakeOffset>;
         /// **Source:** `BRepOffset_MakeOffset.hxx`:72 - `BRepOffset_MakeOffset::Clear()`
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut BRepOffset_MakeOffset>);
@@ -46822,10 +44720,6 @@ mod ffi {
         ///
         /// Creates a modifier on the shape <S>.
         fn BRepTools_Modifier_ctor_shape(S: &TopoDS_Shape) -> UniquePtr<BRepTools_Modifier>;
-        /// **Source:** `BRepTools_Modifier.hxx`:47 - `BRepTools_Modifier::BRepTools_Modifier()`
-        ///
-        /// Creates an empty Modifier.
-        fn BRepTools_Modifier_ctor() -> UniquePtr<BRepTools_Modifier>;
         /// **Source:** `BRepTools_Modifier.hxx`:58 - `BRepTools_Modifier::Init()`
         ///
         /// Initializes the modifier with the shape <S>.
@@ -47467,140 +45361,6 @@ mod ffi {
             Tol: f64,
             Conti: i32,
         ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:50 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_face_real_bool(
-            Face: &TopoDS_Face,
-            Offset: f64,
-            OffsetOutside: bool,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:50 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_face_real(
-            Face: &TopoDS_Face,
-            Offset: f64,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:67 - `BRepOffset_Offset::BRepOffset_Offset()`
-        ///
-        /// This method will be  called when you want to share
-        /// the  edges  soon generated  from  an other  face.
-        /// e.g. when two faces are  tangents the common  edge
-        /// will generate only one edge ( no pipe).
-        ///
-        /// The Map  will be fill  as  follow:
-        ///
-        /// Created(E) = E'
-        /// with: E  = an edge of <Face>
-        /// E' = the image of E in the offsetting  of
-        /// another  face  sharing E  with a
-        /// continuity at least G1
-        fn BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool(
-            Face: &TopoDS_Face,
-            Offset: f64,
-            Created: &TopTools_DataMapOfShapeShape,
-            OffsetOutside: bool,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:67 - `BRepOffset_Offset::BRepOffset_Offset()`
-        ///
-        /// This method will be  called when you want to share
-        /// the  edges  soon generated  from  an other  face.
-        /// e.g. when two faces are  tangents the common  edge
-        /// will generate only one edge ( no pipe).
-        ///
-        /// The Map  will be fill  as  follow:
-        ///
-        /// Created(E) = E'
-        /// with: E  = an edge of <Face>
-        /// E' = the image of E in the offsetting  of
-        /// another  face  sharing E  with a
-        /// continuity at least G1
-        fn BRepOffset_Offset_ctor_face_real_datamapofshapeshape(
-            Face: &TopoDS_Face,
-            Offset: f64,
-            Created: &TopTools_DataMapOfShapeShape,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:73 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_edge3_real_bool_real(
-            Path: &TopoDS_Edge,
-            Edge1: &TopoDS_Edge,
-            Edge2: &TopoDS_Edge,
-            Offset: f64,
-            Polynomial: bool,
-            Tol: f64,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:73 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_edge3_real_bool(
-            Path: &TopoDS_Edge,
-            Edge1: &TopoDS_Edge,
-            Edge2: &TopoDS_Edge,
-            Offset: f64,
-            Polynomial: bool,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:73 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_edge3_real(
-            Path: &TopoDS_Edge,
-            Edge1: &TopoDS_Edge,
-            Edge2: &TopoDS_Edge,
-            Offset: f64,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:81 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_edge3_real_edge2_bool_real(
-            Path: &TopoDS_Edge,
-            Edge1: &TopoDS_Edge,
-            Edge2: &TopoDS_Edge,
-            Offset: f64,
-            FirstEdge: &TopoDS_Edge,
-            LastEdge: &TopoDS_Edge,
-            Polynomial: bool,
-            Tol: f64,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:81 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_edge3_real_edge2_bool(
-            Path: &TopoDS_Edge,
-            Edge1: &TopoDS_Edge,
-            Edge2: &TopoDS_Edge,
-            Offset: f64,
-            FirstEdge: &TopoDS_Edge,
-            LastEdge: &TopoDS_Edge,
-            Polynomial: bool,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:81 - `BRepOffset_Offset::BRepOffset_Offset()`
-        fn BRepOffset_Offset_ctor_edge3_real_edge2(
-            Path: &TopoDS_Edge,
-            Edge1: &TopoDS_Edge,
-            Edge2: &TopoDS_Edge,
-            Offset: f64,
-            FirstEdge: &TopoDS_Edge,
-            LastEdge: &TopoDS_Edge,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:93 - `BRepOffset_Offset::BRepOffset_Offset()`
-        ///
-        /// Tol and Conti are only used if Polynomial is True
-        /// (Used to perform the approximation)
-        fn BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real(
-            Vertex: &TopoDS_Vertex,
-            LEdge: &TopTools_ListOfShape,
-            Offset: f64,
-            Polynomial: bool,
-            Tol: f64,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:93 - `BRepOffset_Offset::BRepOffset_Offset()`
-        ///
-        /// Tol and Conti are only used if Polynomial is True
-        /// (Used to perform the approximation)
-        fn BRepOffset_Offset_ctor_vertex_listofshape_real_bool(
-            Vertex: &TopoDS_Vertex,
-            LEdge: &TopTools_ListOfShape,
-            Offset: f64,
-            Polynomial: bool,
-        ) -> UniquePtr<BRepOffset_Offset>;
-        /// **Source:** `BRepOffset_Offset.hxx`:93 - `BRepOffset_Offset::BRepOffset_Offset()`
-        ///
-        /// Tol and Conti are only used if Polynomial is True
-        /// (Used to perform the approximation)
-        fn BRepOffset_Offset_ctor_vertex_listofshape_real(
-            Vertex: &TopoDS_Vertex,
-            LEdge: &TopTools_ListOfShape,
-            Offset: f64,
-        ) -> UniquePtr<BRepOffset_Offset>;
         /// **Source:** `BRepOffset_Offset.hxx`:139 - `BRepOffset_Offset::Init()`
         ///
         /// Only used in Rolling Ball. Pipe on Free Boundary
@@ -48055,24 +45815,6 @@ mod ffi {
             ForceApproxC1: bool,
             GeneratePartCase: bool,
         ) -> UniquePtr<BRepFill_Pipe>;
-        /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
-        fn BRepFill_Pipe_ctor_wire_shape_trihedron_bool(
-            Spine: &TopoDS_Wire,
-            Profile: &TopoDS_Shape,
-            aMode: i32,
-            ForceApproxC1: bool,
-        ) -> UniquePtr<BRepFill_Pipe>;
-        /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
-        fn BRepFill_Pipe_ctor_wire_shape_trihedron(
-            Spine: &TopoDS_Wire,
-            Profile: &TopoDS_Shape,
-            aMode: i32,
-        ) -> UniquePtr<BRepFill_Pipe>;
-        /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
-        fn BRepFill_Pipe_ctor_wire_shape(
-            Spine: &TopoDS_Wire,
-            Profile: &TopoDS_Shape,
-        ) -> UniquePtr<BRepFill_Pipe>;
         /// **Source:** `BRepFill_Pipe.hxx`:59 - `BRepFill_Pipe::Perform()`
         #[cxx_name = "Perform"]
         fn perform(
@@ -48171,13 +45913,6 @@ mod ffi {
             Join: i32,
             IsOpenResult: bool,
         ) -> UniquePtr<BRepFill_OffsetWire>;
-        /// **Source:** `BRepFill_OffsetWire.hxx`:55 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
-        fn BRepFill_OffsetWire_ctor_face_jointype(
-            Spine: &TopoDS_Face,
-            Join: i32,
-        ) -> UniquePtr<BRepFill_OffsetWire>;
-        /// **Source:** `BRepFill_OffsetWire.hxx`:55 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
-        fn BRepFill_OffsetWire_ctor_face(Spine: &TopoDS_Face) -> UniquePtr<BRepFill_OffsetWire>;
         /// **Source:** `BRepFill_OffsetWire.hxx`:67 - `BRepFill_OffsetWire::Perform()`
         ///
         /// Performs  an OffsetWire at  an altitude <Alt> from
@@ -48731,13 +46466,6 @@ mod ffi {
             FShape: i32,
             Ta: f64,
         ) -> UniquePtr<ChFi3d_FilBuilder>;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
-        fn ChFi3d_FilBuilder_ctor_shape_filletshape(
-            S: &TopoDS_Shape,
-            FShape: i32,
-        ) -> UniquePtr<ChFi3d_FilBuilder>;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
-        fn ChFi3d_FilBuilder_ctor_shape(S: &TopoDS_Shape) -> UniquePtr<ChFi3d_FilBuilder>;
         /// **Source:** `ChFi3d_FilBuilder.hxx`:62 - `ChFi3d_FilBuilder::Add()`
         ///
         /// initialisation of  a contour with the first edge
@@ -50220,11 +47948,6 @@ mod ffi {
             S: &TopoDS_Shape,
             Ta: f64,
         ) -> UniquePtr<ChFi3d_ChBuilder>;
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:49 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
-        ///
-        /// initializes the Builder with the Shape <S> for the
-        /// computation of chamfers
-        fn ChFi3d_ChBuilder_ctor_shape(S: &TopoDS_Shape) -> UniquePtr<ChFi3d_ChBuilder>;
         /// **Source:** `ChFi3d_ChBuilder.hxx`:56 - `ChFi3d_ChBuilder::Add()`
         ///
         /// initializes a contour with the edge <E> as first
@@ -51585,23 +49308,6 @@ mod ffi {
             A: &gp_Ax1,
             C: bool,
         ) -> UniquePtr<BRepSweep_Revol>;
-        /// **Source:** `BRepSweep_Revol.hxx`:40 - `BRepSweep_Revol::BRepSweep_Revol()`
-        ///
-        /// Builds the Revol of meridian S axis A  and angle D. If
-        /// C is true S is copied.
-        fn BRepSweep_Revol_ctor_shape_ax1_real(
-            S: &TopoDS_Shape,
-            A: &gp_Ax1,
-            D: f64,
-        ) -> UniquePtr<BRepSweep_Revol>;
-        /// **Source:** `BRepSweep_Revol.hxx`:47 - `BRepSweep_Revol::BRepSweep_Revol()`
-        ///
-        /// Builds the Revol of meridian S  axis A and angle 2*Pi.
-        /// If C is true S is copied.
-        fn BRepSweep_Revol_ctor_shape_ax1(
-            S: &TopoDS_Shape,
-            A: &gp_Ax1,
-        ) -> UniquePtr<BRepSweep_Revol>;
         /// **Source:** `BRepSweep_Revol.hxx`:78 - `BRepSweep_Revol::Angle()`
         ///
         /// returns the angle.
@@ -52711,57 +50417,6 @@ mod ffi {
             BegInf: bool,
             EndInf: bool,
         ) -> UniquePtr<Sweep_NumShape>;
-        /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
-        ///
-        /// Creates a new simple indexed edge.
-        ///
-        /// For an Edge : Index is the  number of vertices (0,
-        /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
-        /// is a  closed edge, BegInf is true  if  the Edge is
-        /// infinite at the  begenning, EndInf is true  if the
-        /// edge is infinite at the end.
-        ///
-        /// For a Vertex : Index is the index of the vertex in
-        /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
-        /// other fields have no meanning.
-        fn Sweep_NumShape_ctor_int_shapeenum_bool2(
-            Index: i32,
-            Type: i32,
-            Closed: bool,
-            BegInf: bool,
-        ) -> UniquePtr<Sweep_NumShape>;
-        /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
-        ///
-        /// Creates a new simple indexed edge.
-        ///
-        /// For an Edge : Index is the  number of vertices (0,
-        /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
-        /// is a  closed edge, BegInf is true  if  the Edge is
-        /// infinite at the  begenning, EndInf is true  if the
-        /// edge is infinite at the end.
-        ///
-        /// For a Vertex : Index is the index of the vertex in
-        /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
-        /// other fields have no meanning.
-        fn Sweep_NumShape_ctor_int_shapeenum_bool(
-            Index: i32,
-            Type: i32,
-            Closed: bool,
-        ) -> UniquePtr<Sweep_NumShape>;
-        /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
-        ///
-        /// Creates a new simple indexed edge.
-        ///
-        /// For an Edge : Index is the  number of vertices (0,
-        /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
-        /// is a  closed edge, BegInf is true  if  the Edge is
-        /// infinite at the  begenning, EndInf is true  if the
-        /// edge is infinite at the end.
-        ///
-        /// For a Vertex : Index is the index of the vertex in
-        /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
-        /// other fields have no meanning.
-        fn Sweep_NumShape_ctor_int_shapeenum(Index: i32, Type: i32) -> UniquePtr<Sweep_NumShape>;
         /// **Source:** `Sweep_NumShape.hxx`:73 - `Sweep_NumShape::Index()`
         #[cxx_name = "Index"]
         fn index(self: &Sweep_NumShape) -> i32;
@@ -52830,61 +50485,6 @@ mod ffi {
             Inf: bool,
             Copy: bool,
             Canonize: bool,
-        ) -> UniquePtr<BRepSweep_Prism>;
-        /// **Source:** `BRepSweep_Prism.hxx`:42 - `BRepSweep_Prism::BRepSweep_Prism()`
-        ///
-        /// Builds the prism of base S and vector V. If C is true,
-        /// S is copied. If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepSweep_Prism_ctor_shape_vec_bool(
-            S: &TopoDS_Shape,
-            V: &gp_Vec,
-            Copy: bool,
-        ) -> UniquePtr<BRepSweep_Prism>;
-        /// **Source:** `BRepSweep_Prism.hxx`:42 - `BRepSweep_Prism::BRepSweep_Prism()`
-        ///
-        /// Builds the prism of base S and vector V. If C is true,
-        /// S is copied. If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepSweep_Prism_ctor_shape_vec(
-            S: &TopoDS_Shape,
-            V: &gp_Vec,
-        ) -> UniquePtr<BRepSweep_Prism>;
-        /// **Source:** `BRepSweep_Prism.hxx`:52 - `BRepSweep_Prism::BRepSweep_Prism()`
-        ///
-        /// Builds a semi-infinite or an infinite prism of base S.
-        /// If Copy is true S is copied.  If Inf is true the prism
-        /// is infinite, if Inf is false the  prism is infinite in
-        /// the direction D. If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepSweep_Prism_ctor_shape_dir_bool2(
-            S: &TopoDS_Shape,
-            D: &gp_Dir,
-            Inf: bool,
-            Copy: bool,
-        ) -> UniquePtr<BRepSweep_Prism>;
-        /// **Source:** `BRepSweep_Prism.hxx`:52 - `BRepSweep_Prism::BRepSweep_Prism()`
-        ///
-        /// Builds a semi-infinite or an infinite prism of base S.
-        /// If Copy is true S is copied.  If Inf is true the prism
-        /// is infinite, if Inf is false the  prism is infinite in
-        /// the direction D. If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepSweep_Prism_ctor_shape_dir_bool(
-            S: &TopoDS_Shape,
-            D: &gp_Dir,
-            Inf: bool,
-        ) -> UniquePtr<BRepSweep_Prism>;
-        /// **Source:** `BRepSweep_Prism.hxx`:52 - `BRepSweep_Prism::BRepSweep_Prism()`
-        ///
-        /// Builds a semi-infinite or an infinite prism of base S.
-        /// If Copy is true S is copied.  If Inf is true the prism
-        /// is infinite, if Inf is false the  prism is infinite in
-        /// the direction D. If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepSweep_Prism_ctor_shape_dir(
-            S: &TopoDS_Shape,
-            D: &gp_Dir,
         ) -> UniquePtr<BRepSweep_Prism>;
         /// **Source:** `BRepSweep_Prism.hxx`:87 - `BRepSweep_Prism::IsUsed()`
         ///
@@ -52961,19 +50561,6 @@ mod ffi {
             V: &gp_Vec,
             C: bool,
             Canonize: bool,
-        ) -> UniquePtr<BRepSweep_Translation>;
-        /// **Source:** `BRepSweep_Translation.hxx`:43 - `BRepSweep_Translation::BRepSweep_Translation()`
-        ///
-        /// Creates  a  topology by  translating <S>  with the
-        /// vector  <V>. If  C  is   true S Sucomponents   are
-        /// copied. If Canonize is true then generated surfaces
-        /// are attempted to be canonized in simple types
-        fn BRepSweep_Translation_ctor_shape_numshape_location_vec_bool(
-            S: &TopoDS_Shape,
-            N: &Sweep_NumShape,
-            L: &TopLoc_Location,
-            V: &gp_Vec,
-            C: bool,
         ) -> UniquePtr<BRepSweep_Translation>;
         /// **Source:** `BRepSweep_Translation.hxx`:68 - `BRepSweep_Translation::SetParameters()`
         ///
@@ -53526,24 +51113,6 @@ mod ffi {
             R1: f64,
             R2: f64,
             H: f64,
-        ) -> UniquePtr<BRepPrim_Cone>;
-        /// **Source:** `BRepPrim_Cone.hxx`:46 - `BRepPrim_Cone::BRepPrim_Cone()`
-        ///
-        /// the STEP definition
-        /// Angle = semi-angle of the cone
-        /// Position : the coordinate system
-        /// Height : height of the cone.
-        /// Radius : radius of truncated face at z = 0
-        ///
-        /// The apex is on z < 0
-        ///
-        /// Errors : Height < Resolution
-        /// Angle < Resolution / Height
-        /// Angle > PI/2 - Resolution / Height
-        fn BRepPrim_Cone_ctor_real_ax2_real(
-            Angle: f64,
-            Position: &gp_Ax2,
-            Height: f64,
         ) -> UniquePtr<BRepPrim_Cone>;
         /// **Source:** `BRepPrim_Cone.hxx`:88 - `BRepPrim_Cone::MakeEmptyLateralFace()`
         ///
@@ -54690,55 +52259,6 @@ mod ffi {
             F: &TopoDS_Face,
             W: &TopoDS_Wire,
         ) -> UniquePtr<BRepLib_MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx`:140 - `BRepLib_MakeFace::BRepLib_MakeFace()`
-        ///
-        /// Find a surface from the wire and make a face.
-        /// if <OnlyPlane> is true, the computed surface will be
-        /// a plane. If it is not possible to find a plane, the
-        /// flag NotDone will be set.
-        fn BRepLib_MakeFace_ctor_wire(W: &TopoDS_Wire) -> UniquePtr<BRepLib_MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx`:144 - `BRepLib_MakeFace::BRepLib_MakeFace()`
-        ///
-        /// Make a face from a plane and a wire.
-        fn BRepLib_MakeFace_ctor_pln_wire(
-            P: &gp_Pln,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepLib_MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx`:149 - `BRepLib_MakeFace::BRepLib_MakeFace()`
-        ///
-        /// Make a face from a cylinder and a wire.
-        fn BRepLib_MakeFace_ctor_cylinder_wire(
-            C: &gp_Cylinder,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepLib_MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx`:154 - `BRepLib_MakeFace::BRepLib_MakeFace()`
-        ///
-        /// Make a face from a cone and a wire.
-        fn BRepLib_MakeFace_ctor_cone_wire(
-            C: &gp_Cone,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepLib_MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx`:159 - `BRepLib_MakeFace::BRepLib_MakeFace()`
-        ///
-        /// Make a face from a sphere and a wire.
-        fn BRepLib_MakeFace_ctor_sphere_wire(
-            S: &gp_Sphere,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepLib_MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx`:164 - `BRepLib_MakeFace::BRepLib_MakeFace()`
-        ///
-        /// Make a face from a torus and a wire.
-        fn BRepLib_MakeFace_ctor_torus_wire(
-            C: &gp_Torus,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepLib_MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx`:169 - `BRepLib_MakeFace::BRepLib_MakeFace()`
-        ///
-        /// Make a face from a Surface and a wire.
-        fn BRepLib_MakeFace_ctor_handlesurface_wire(
-            S: &HandleGeomSurface,
-            W: &TopoDS_Wire,
-        ) -> UniquePtr<BRepLib_MakeFace>;
         /// **Source:** `BRepLib_MakeFace.hxx`:177 - `BRepLib_MakeFace::Init()`
         ///
         /// Load the face.
@@ -55324,29 +52844,6 @@ mod ffi {
             cumOri: bool,
             cumLoc: bool,
         ) -> UniquePtr<TopoDS_Iterator>;
-        /// **Source:** `TopoDS_Iterator.hxx`:49 - `TopoDS_Iterator::TopoDS_Iterator()`
-        ///
-        /// Creates an Iterator on <S> sub-shapes.
-        /// Note:
-        /// - If cumOri is true, the function composes all
-        /// sub-shapes with the orientation of S.
-        /// - If cumLoc is true, the function multiplies all
-        /// sub-shapes by the location of S, i.e. it applies to
-        /// each sub-shape the transformation that is associated with S.
-        fn TopoDS_Iterator_ctor_shape_bool(
-            S: &TopoDS_Shape,
-            cumOri: bool,
-        ) -> UniquePtr<TopoDS_Iterator>;
-        /// **Source:** `TopoDS_Iterator.hxx`:49 - `TopoDS_Iterator::TopoDS_Iterator()`
-        ///
-        /// Creates an Iterator on <S> sub-shapes.
-        /// Note:
-        /// - If cumOri is true, the function composes all
-        /// sub-shapes with the orientation of S.
-        /// - If cumLoc is true, the function multiplies all
-        /// sub-shapes by the location of S, i.e. it applies to
-        /// each sub-shape the transformation that is associated with S.
-        fn TopoDS_Iterator_ctor_shape(S: &TopoDS_Shape) -> UniquePtr<TopoDS_Iterator>;
         /// **Source:** `TopoDS_Iterator.hxx`:63 - `TopoDS_Iterator::Initialize()`
         ///
         /// Initializes this iterator with shape S.

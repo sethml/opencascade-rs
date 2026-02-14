@@ -502,7 +502,7 @@ impl PackedMapOfInteger {
 
     /// Constructor
     pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_PackedMapOfInteger_ctor()
+        Self::new_int(1)
     }
 }
 

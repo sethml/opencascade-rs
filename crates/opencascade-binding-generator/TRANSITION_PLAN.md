@@ -180,4 +180,9 @@ OCCT utility classes (classes with only static methods, no instance methods, and
 
 ### 12. ~~Helper functions for constructors with default arguments~~ RESOLVED
 
-When a C++ constructor has trailing parameters with default values, the generator now emits convenience wrappers in the re-export module that omit trailing defaulted parameters and delegate to the full version with the C++ default values filled in. For example, `BRepBuilderAPI_Transform(S, T)` becomes `Transform::new_shape_trsf(shape, trsf)` calling `new_shape_trsf_bool2(shape, trsf, false, false)`. These wrappers are purely Rust-side (no FFI changes needed). The default values are extracted from the C++ AST by inspecting `IntegerLiteral`, `FloatingLiteral`, `CXXBoolLiteralExpr`, and `CXXNullPtrLiteralExpr` cursor kinds.
+When a C++ constructor has trailing parameters with default values, the generator emits convenience wrappers in the re-export module that omit trailing defaulted parameters and delegate to the full-argument version with the C++ default values filled in. For example, `BRepBuilderAPI_Transform(S, T, copy=false, copyMesh=false)` generates:
+- `new_shape_trsf_bool2(S, T, copy, copyMesh)` — full version with C++ wrapper
+- `new_shape_trsf_bool(S, T, copy)` — Rust-only, calls `Self::new_shape_trsf_bool2(S, T, copy, false)`
+- `new_shape_trsf(S, T)` — Rust-only, calls `Self::new_shape_trsf_bool2(S, T, false, false)`
+
+These convenience wrappers are purely Rust-side (no ffi.rs or wrappers.hxx entries generated). Default values are extracted from the C++ AST via `IntegerLiteral`, `FloatingLiteral`, `BoolLiteralExpr`, and `NullPtrLiteralExpr` cursor kinds, with a fallback that tokenizes the parent `ParmDecl` for macro-expanded defaults like `Standard_False`. The `adapt_default_for_rust_type()` function ensures default values are properly cast for Rust (e.g., C++ integer `0` becomes `0.0` for `f64` parameters). Convenience wrappers are only generated when all trimmed parameters have extractable defaults that can be expressed as valid Rust literals.

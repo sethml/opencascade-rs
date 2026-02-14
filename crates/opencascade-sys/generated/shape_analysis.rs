@@ -112,7 +112,7 @@ impl FreeBounds {
         toler: f64,
         splitclosed: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_real_bool(shape, toler, splitclosed)
+        Self::new_shape_real_bool2(shape, toler, splitclosed, true)
     }
 
     /// Builds forecasting free bounds of the <shape>.
@@ -127,7 +127,7 @@ impl FreeBounds {
     /// If <splitopen> is True extracts closed sub-wires out of
     /// built open wires.
     pub fn new_shape_real(shape: &crate::ffi::TopoDS_Shape, toler: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_real(shape, toler)
+        Self::new_shape_real_bool2(shape, toler, false, true)
     }
 
     /// Builds actual free bounds of the <shape>.
@@ -146,7 +146,7 @@ impl FreeBounds {
         splitclosed: bool,
         splitopen: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_bool2(shape, splitclosed, splitopen)
+        Self::new_shape_bool3(shape, splitclosed, splitopen, false)
     }
 
     /// Builds actual free bounds of the <shape>.
@@ -164,7 +164,7 @@ impl FreeBounds {
         shape: &crate::ffi::TopoDS_Shape,
         splitclosed: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_bool(shape, splitclosed)
+        Self::new_shape_bool3(shape, splitclosed, true, false)
     }
 
     /// Builds actual free bounds of the <shape>.
@@ -179,7 +179,7 @@ impl FreeBounds {
     /// If <splitopen> is True extracts closed sub-wires out of
     /// built open wires.
     pub fn new_shape(shape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape(shape)
+        Self::new_shape_bool3(shape, false, true, false)
     }
 
     /// Builds sequence of <wires> out of sequence of not sorted

@@ -140,11 +140,7 @@ impl OffsetWire {
     }
 
     pub fn new_face_jointype(Spine: &crate::ffi::TopoDS_Face, Join: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_OffsetWire_ctor_face_jointype(Spine, Join)
-    }
-
-    pub fn new_face(Spine: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_OffsetWire_ctor_face(Spine)
+        Self::new_face_jointype_bool(Spine, Join, false)
     }
 
     /// Initialize the evaluation of Offsetting.
@@ -216,12 +212,7 @@ impl Pipe {
         aMode: i32,
         ForceApproxC1: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Pipe_ctor_wire_shape_trihedron_bool(
-            Spine,
-            Profile,
-            aMode,
-            ForceApproxC1,
-        )
+        Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode, ForceApproxC1, false)
     }
 
     pub fn new_wire_shape_trihedron(
@@ -229,14 +220,7 @@ impl Pipe {
         Profile: &crate::ffi::TopoDS_Shape,
         aMode: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Pipe_ctor_wire_shape_trihedron(Spine, Profile, aMode)
-    }
-
-    pub fn new_wire_shape(
-        Spine: &crate::ffi::TopoDS_Wire,
-        Profile: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Pipe_ctor_wire_shape(Spine, Profile)
+        Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode, false, false)
     }
 
     /// Returns the face created from an edge of the spine

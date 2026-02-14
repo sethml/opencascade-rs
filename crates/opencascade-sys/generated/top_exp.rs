@@ -96,19 +96,6 @@ impl Explorer {
         crate::ffi::TopExp_Explorer_ctor_shape_shapeenum2(S, ToFind, ToAvoid)
     }
 
-    /// Creates an Explorer on the Shape <S>.
-    ///
-    /// <ToFind> is the type of shapes to search.
-    /// TopAbs_VERTEX, TopAbs_EDGE, ...
-    ///
-    /// <ToAvoid>   is the type   of shape to  skip in the
-    /// exploration.   If   <ToAvoid>  is  equal  or  less
-    /// complex than <ToFind> or if  <ToAVoid> is SHAPE it
-    /// has no effect on the exploration.
-    pub fn new_shape_shapeenum(S: &crate::ffi::TopoDS_Shape, ToFind: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopExp_Explorer_ctor_shape_shapeenum(S, ToFind)
-    }
-
     /// Resets this explorer on the shape S. It is initialized to
     /// search the shape S, for shapes of type ToFind, that
     /// are not part of a shape ToAvoid.

@@ -58,7 +58,7 @@ impl NumShape {
         Closed: bool,
         BegInf: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool2(Index, Type, Closed, BegInf)
+        Self::new_int_shapeenum_bool3(Index, Type, Closed, BegInf, false)
     }
 
     /// Creates a new simple indexed edge.
@@ -73,7 +73,7 @@ impl NumShape {
     /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
     /// other fields have no meanning.
     pub fn new_int_shapeenum_bool(Index: i32, Type: i32, Closed: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool(Index, Type, Closed)
+        Self::new_int_shapeenum_bool3(Index, Type, Closed, false, false)
     }
 
     /// Creates a new simple indexed edge.
@@ -88,7 +88,7 @@ impl NumShape {
     /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
     /// other fields have no meanning.
     pub fn new_int_shapeenum(Index: i32, Type: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Sweep_NumShape_ctor_int_shapeenum(Index, Type)
+        Self::new_int_shapeenum_bool3(Index, Type, false, false, false)
     }
 
     /// Reinitialize a simple indexed edge.

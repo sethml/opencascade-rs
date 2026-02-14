@@ -192,7 +192,7 @@ impl Writer {
     /// - 0: Faces (default)
     /// - 1: BRep.
     pub fn new_charptr(theUnit: &str) -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESControl_Writer_ctor_charptr(theUnit)
+        Self::new_charptr_int(theUnit, 0)
     }
 
     /// Prepares and writes an IGES model

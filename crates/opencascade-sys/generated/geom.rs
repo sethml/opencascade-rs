@@ -172,11 +172,12 @@ impl BSplineCurve {
         Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
         Degree: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal_array1ofinteger_int(
+        Self::new_array1ofpnt_array1ofreal_array1ofinteger_int_bool(
             Poles,
             Knots,
             Multiplicities,
             Degree,
+            false,
         )
     }
 
@@ -215,13 +216,14 @@ impl BSplineCurve {
         Degree: i32,
         Periodic: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int_bool(
+        Self::new_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(
             Poles,
             Weights,
             Knots,
             Multiplicities,
             Degree,
             Periodic,
+            true,
         )
     }
 
@@ -259,12 +261,14 @@ impl BSplineCurve {
         Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
         Degree: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int(
+        Self::new_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(
             Poles,
             Weights,
             Knots,
             Multiplicities,
             Degree,
+            false,
+            true,
         )
     }
 
@@ -766,8 +770,8 @@ impl BSplineSurface {
         VDegree: i32,
         UPeriodic: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool(
-            Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic,
+        Self::new_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(
+            Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, false,
         )
     }
 
@@ -799,8 +803,8 @@ impl BSplineSurface {
         UDegree: i32,
         VDegree: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2(
-            Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree,
+        Self::new_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(
+            Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, false, false,
         )
     }
 
@@ -845,7 +849,9 @@ impl BSplineSurface {
         VDegree: i32,
         UPeriodic: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic)
+        Self::new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(
+            Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, false,
+        )
     }
 
     /// Creates  a non-rational b-spline surface (weights
@@ -888,7 +894,9 @@ impl BSplineSurface {
         UDegree: i32,
         VDegree: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree)
+        Self::new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(
+            Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, false, false,
+        )
     }
 
     /// Returns the continuity of the surface :
@@ -3956,7 +3964,7 @@ impl TrimmedCurve {
         U2: f64,
         Sense: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom_TrimmedCurve_ctor_handlecurve_real2_bool(C, U1, U2, Sense)
+        Self::new_handlecurve_real2_bool2(C, U1, U2, Sense, true)
     }
 
     /// Constructs a trimmed curve from the basis curve C
@@ -3999,7 +4007,7 @@ impl TrimmedCurve {
         U1: f64,
         U2: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom_TrimmedCurve_ctor_handlecurve_real2(C, U1, U2)
+        Self::new_handlecurve_real2_bool2(C, U1, U2, true, true)
     }
 
     /// Returns the basis curve.

@@ -123,7 +123,7 @@ impl ChBuilder {
     /// initializes the Builder with the Shape <S> for the
     /// computation of chamfers
     pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::ChFi3d_ChBuilder_ctor_shape(S)
+        Self::new_shape_real(S, 1.0e-2)
     }
 
     /// set the mode of shamfer
@@ -318,11 +318,7 @@ impl FilBuilder {
         S: &crate::ffi::TopoDS_Shape,
         FShape: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ChFi3d_FilBuilder_ctor_shape_filletshape(S, FShape)
-    }
-
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::ChFi3d_FilBuilder_ctor_shape(S)
+        Self::new_shape_filletshape_real(S, FShape, 1.0e-2)
     }
 
     /// Sets the type of fillet surface.

@@ -179,12 +179,13 @@ impl TangentialDeflection {
         theMinimumOfPoints: i32,
         theUTol: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real2_int_real(
+        Self::new_curve_real2_int_real2(
             theC,
             theAngularDeflection,
             theCurvatureDeflection,
             theMinimumOfPoints,
             theUTol,
+            1.0e-7,
         )
     }
 
@@ -201,11 +202,13 @@ impl TangentialDeflection {
         theCurvatureDeflection: f64,
         theMinimumOfPoints: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real2_int(
+        Self::new_curve_real2_int_real2(
             theC,
             theAngularDeflection,
             theCurvatureDeflection,
             theMinimumOfPoints,
+            1.0e-9,
+            1.0e-7,
         )
     }
 
@@ -221,10 +224,13 @@ impl TangentialDeflection {
         theAngularDeflection: f64,
         theCurvatureDeflection: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real2(
+        Self::new_curve_real2_int_real2(
             theC,
             theAngularDeflection,
             theCurvatureDeflection,
+            2,
+            1.0e-9,
+            1.0e-7,
         )
     }
 
@@ -246,7 +252,7 @@ impl TangentialDeflection {
         theMinimumOfPoints: i32,
         theUTol: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real4_int_real(
+        Self::new_curve_real4_int_real2(
             theC,
             theFirstParameter,
             theLastParameter,
@@ -254,6 +260,7 @@ impl TangentialDeflection {
             theCurvatureDeflection,
             theMinimumOfPoints,
             theUTol,
+            1.0e-7,
         )
     }
 
@@ -274,13 +281,15 @@ impl TangentialDeflection {
         theCurvatureDeflection: f64,
         theMinimumOfPoints: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real4_int(
+        Self::new_curve_real4_int_real2(
             theC,
             theFirstParameter,
             theLastParameter,
             theAngularDeflection,
             theCurvatureDeflection,
             theMinimumOfPoints,
+            1.0e-9,
+            1.0e-7,
         )
     }
 
@@ -300,12 +309,15 @@ impl TangentialDeflection {
         theAngularDeflection: f64,
         theCurvatureDeflection: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real4(
+        Self::new_curve_real4_int_real2(
             theC,
             theFirstParameter,
             theLastParameter,
             theAngularDeflection,
             theCurvatureDeflection,
+            2,
+            1.0e-9,
+            1.0e-7,
         )
     }
 
@@ -323,12 +335,13 @@ impl TangentialDeflection {
         theMinimumOfPoints: i32,
         theUTol: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real2_int_real(
+        Self::new_curve2d_real2_int_real2(
             theC,
             theAngularDeflection,
             theCurvatureDeflection,
             theMinimumOfPoints,
             theUTol,
+            1.0e-7,
         )
     }
 
@@ -345,11 +358,13 @@ impl TangentialDeflection {
         theCurvatureDeflection: f64,
         theMinimumOfPoints: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real2_int(
+        Self::new_curve2d_real2_int_real2(
             theC,
             theAngularDeflection,
             theCurvatureDeflection,
             theMinimumOfPoints,
+            1.0e-9,
+            1.0e-7,
         )
     }
 
@@ -365,10 +380,13 @@ impl TangentialDeflection {
         theAngularDeflection: f64,
         theCurvatureDeflection: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real2(
+        Self::new_curve2d_real2_int_real2(
             theC,
             theAngularDeflection,
             theCurvatureDeflection,
+            2,
+            1.0e-9,
+            1.0e-7,
         )
     }
 
@@ -390,7 +408,7 @@ impl TangentialDeflection {
         theMinimumOfPoints: i32,
         theUTol: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real4_int_real(
+        Self::new_curve2d_real4_int_real2(
             theC,
             theFirstParameter,
             theLastParameter,
@@ -398,6 +416,7 @@ impl TangentialDeflection {
             theCurvatureDeflection,
             theMinimumOfPoints,
             theUTol,
+            1.0e-7,
         )
     }
 
@@ -418,13 +437,15 @@ impl TangentialDeflection {
         theCurvatureDeflection: f64,
         theMinimumOfPoints: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real4_int(
+        Self::new_curve2d_real4_int_real2(
             theC,
             theFirstParameter,
             theLastParameter,
             theAngularDeflection,
             theCurvatureDeflection,
             theMinimumOfPoints,
+            1.0e-9,
+            1.0e-7,
         )
     }
 
@@ -444,12 +465,15 @@ impl TangentialDeflection {
         theAngularDeflection: f64,
         theCurvatureDeflection: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real4(
+        Self::new_curve2d_real4_int_real2(
             theC,
             theFirstParameter,
             theLastParameter,
             theAngularDeflection,
             theCurvatureDeflection,
+            2,
+            1.0e-9,
+            1.0e-7,
         )
     }
 
