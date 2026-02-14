@@ -60,6 +60,18 @@ Single `ffi.rs` with all types (full C++ names), single `wrappers.hxx`, per-modu
 
 Automatic dependency resolution handles this. 262 explicit headers -> 378 total.
 
+### Step 10: Module Derivation Centralization
+
+Module assignment for types is now determined solely by their source header file name, centralized in `resolver.rs`. Previously, module names were derived from type name prefixes (splitting on the first `_`), which was 99.3% accurate but failed for the 34 types whose name-based module prefix doesn't match their source header's module (see item #13 below).
+
+**Changes:**
+- `SymbolTable` now contains a `type_to_module: HashMap<String, String>` built from parsed class/enum header data
+- `module_graph.rs` second pass uses the HashMap lookup instead of `extract_module_from_type()`
+- `Type::module()` removed from `model.rs` — no longer possible to derive module from a `Type` node alone
+- `TypeContext` carries `type_to_module` for use during type mapping
+
+Short names (the Rust re-export alias, e.g., `MakeBox` from `BRepPrimAPI_MakeBox`) are now computed module-relative via `short_name_for_module(cpp_name, module)` in `type_mapping.rs`. This strips the actual module prefix rather than splitting on the first `_`, preserving extra prefix text. For example, `BRepOffsetSimple_Status` in module `BRepOffset` becomes `SimpleStatus` instead of the incorrect `Status` (which would collide with `BRepOffset_Status`).
+
 ---
 
 ## Current Work
@@ -186,3 +198,61 @@ When a C++ constructor has trailing parameters with default values, the generato
 - `new_shape_trsf(S, T)` — Rust-only, calls `Self::new_shape_trsf_bool2(S, T, false, false)`
 
 These convenience wrappers are purely Rust-side (no ffi.rs or wrappers.hxx entries generated). Default values are extracted from the C++ AST via `IntegerLiteral`, `FloatingLiteral`, `BoolLiteralExpr`, and `NullPtrLiteralExpr` cursor kinds, with a fallback that tokenizes the parent `ParmDecl` for macro-expanded defaults like `Standard_False`. The `adapt_default_for_rust_type()` function ensures default values are properly cast for Rust (e.g., C++ integer `0` becomes `0.0` for `f64` parameters). Convenience wrappers are only generated when all trimmed parameters have extractable defaults that can be expressed as valid Rust literals.
+
+---
+
+## Future Work: Expanding to All OCCT Headers
+
+Currently 267 explicit headers are listed in `headers.txt`. OCCT ships 6,875 `.hxx` headers across ~349 modules. An experimental run generating bindings for all headers produced 6,565 types and 90,295 functions in 333 modules, but surfaced several issues that need fixing first.
+
+### 13. Invalid Rust identifiers from Fortran common blocks (11 instances)
+
+**Problem:** `AdvApp2Var_Data.hxx` defines Fortran COMMON block wrapper structs with names like `maovpar_1_`, `mmapgs0_1_`, `mdnombr_1_`. These don't follow OCCT's `Module_Class` naming convention. The generator's `extract_module_from_name()` splits on the first `_`, producing module `maovpar` and short name `1_` — not a valid Rust identifier.
+
+**Affected:** 11 structs (maovpar, maovpch, mdnombr, minombr, mlgdrtl, mmapgs0, mmapgs1, mmapgs2, mmapgss, mmcmcnp, mmjcobi). These appear as dependency-resolved types, not explicit headers.
+
+**Analysis:** A scan of all 6,875 OCCT headers found 4,920 top-level class/struct definitions, of which 4,886 (99.3%) have matching module names. Only 34 (0.7%) are mismatches, in three categories:
+
+- **11 Fortran common blocks** — `maovpar_1_`, `mmapgs0_1_`, etc. in `AdvApp2Var_Data.hxx`. Pure data structs, no methods. Skipped by the parser (no bindable members) but pulled in as opaque referenced types.
+- **21 no-underscore helper classes** — e.g., `FilletPoint` in `ChFi2d_FilletAlgo.hxx`, `Alert` in `Message_Alert.hxx`, `parser`/`scanner` in `exptocas.tab.hxx`. These are file-local helper types defined alongside the main class.
+- **2 genuinely different modules** — `Persistence_` in `TObj_Persistence.hxx`, `PSO_Particle` in `math_PSOParticlesPool.hxx`.
+
+The module derivation from class names is 99.3% accurate. The mismatches are edge cases.
+
+**Fix options:**
+- (a) In `safe_short_name()` (type_mapping.rs), prefix short names starting with a digit with `_` (so `1_` becomes `_1_`)
+- (b) Exclude these structs entirely in the parser — they're C wrappers for Fortran internals with no useful public API
+- (c) Improve module derivation: detect that `maovpar_1_` doesn't correspond to any known OCCT module prefix and either skip it or assign it to its source header's module (AdvApp2Var)
+
+Option (b) is probably best since these types have no methods and aren't useful from Rust. The no-underscore helpers are typically skipped by the parser already (no bindable members or inner classes). The 2 genuine mismatches (`Persistence_`, `PSO_Particle`) would need either a hardcoded map or source-header-based module derivation as a fallback.
+
+### 14. Non-type template parameter in opaque type declaration (1 instance)
+
+**Problem:** `BVH_Tree` is a C++ template with `template <class T, int N>` — the `int N` is a non-type template parameter. The generator emits `type BVH_Tree<Standard_Real, 3>;` which is invalid Rust/CXX syntax (CXX generics only support type parameters, not value parameters).
+
+**Fix:** In `generate_unified_opaque_declarations()` (codegen/rust.rs) or `is_unbindable()` (model.rs), filter out type names containing `<..., numeric_literal>`. The existing `is_nested_type()` checks for `<` but this type bypasses it because it enters as an opaque reference collected from function signatures. Add a regex check for numeric template arguments.
+
+### 15. Raw pointer syntax leaking into type names (2 instances)
+
+**Problem:** `IMeshData_Edge *const` and `IMeshData_Face *const` appear as `type IMeshData_Edge *const;` in ffi.rs. The C++ pointer syntax leaked into the class name string instead of being parsed as `Type::ConstPtr(Type::Class("IMeshData_Edge"))`.
+
+**Fix:** Either fix the parser to properly decompose these pointer types, or add validation in `generate_unified_opaque_declarations()` to reject type name strings containing `*`.
+
+### 16. Scale concerns for all-headers build
+
+**Problem:** Going from 267 to 6,875 headers produces:
+- ffi.rs: 356K lines (vs current 57K) — 6.3x growth
+- wrappers.hxx: 201K lines (vs current 17K) — 12x growth
+- 90K wrapper functions, 6.4K includes
+
+CXX processes the entire bridge as one compilation unit. This will likely cause extreme compile times (potentially 10-30+ minutes) and large binary sizes.
+
+**Fix options:**
+- (a) Split the CXX bridge into multiple modules (per OCCT toolkit — there are ~15 toolkits in OCCT)
+- (b) Use Cargo feature flags to enable header subsets on demand
+- (c) Accept the compile time if it stays under ~5 minutes; only split if proved necessary
+- (d) Generate but don't compile all wrappers — only compile wrapper functions that are actually called
+
+### 17. Windows-only header parse failure (non-blocking)
+
+`OSD_WNT.hxx` includes `<windows.h>` which doesn't exist on macOS/Linux. Clang emits a fatal error but the generator continues. No types are lost. Could suppress the warning by detecting known Windows-only headers.

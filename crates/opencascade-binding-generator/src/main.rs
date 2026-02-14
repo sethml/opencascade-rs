@@ -575,8 +575,10 @@ fn generate_unified(
         if collection_type_names.contains(type_name) { continue; }
         if already_reexported.contains(type_name) { continue; }
 
-        // Determine module from type name prefix
-        if let Some(underscore_pos) = type_name.find('_') {
+        // Determine module from type_to_module map, falling back to name-based
+        if let Some(module) = symbol_table.type_to_module.get(type_name) {
+            all_ffi_types.push((type_name.clone(), module.clone()));
+        } else if let Some(underscore_pos) = type_name.find('_') {
             let module_prefix = &type_name[..underscore_pos];
             all_ffi_types.push((type_name.clone(), module_prefix.to_string()));
         }
@@ -613,12 +615,9 @@ fn generate_unified(
         } else if ffi_name.ends_with("Iterator") && !ffi_name.contains('_') {
             // Collection iterator types like "ListOfShapeIterator" — keep as-is
             ffi_name.clone()
-        } else if let Some(underscore_pos) = ffi_name.find('_') {
-            // Normal types like "BRepLib_MakeEdge" → "MakeEdge"
-            ffi_name[underscore_pos + 1..].to_string()
         } else {
-            // No underscore and not a Handle/Iterator — keep as-is
-            ffi_name.clone()
+            // Use module-relative short name derivation
+            opencascade_binding_generator::type_mapping::short_name_for_module(ffi_name, module_prefix)
         };
         extra_types_by_module
             .entry(module_prefix.clone())

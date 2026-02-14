@@ -41,6 +41,40 @@ impl TryFrom<i32> for Mode {
     }
 }
 
+/// C++ enum: `BRepOffsetSimple_Status`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum SimpleStatus {
+    Ok = 0,
+    Nullinputshape = 1,
+    Erroroffsetcomputation = 2,
+    Errorwallfacecomputation = 3,
+    Errorinvalidnbshells = 4,
+    Errornonclosedshell = 5,
+}
+
+impl From<SimpleStatus> for i32 {
+    fn from(value: SimpleStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for SimpleStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(SimpleStatus::Ok),
+            1 => Ok(SimpleStatus::Nullinputshape),
+            2 => Ok(SimpleStatus::Erroroffsetcomputation),
+            3 => Ok(SimpleStatus::Errorwallfacecomputation),
+            4 => Ok(SimpleStatus::Errorinvalidnbshells),
+            5 => Ok(SimpleStatus::Errornonclosedshell),
+            _ => Err(value),
+        }
+    }
+}
+
 /// C++ enum: `BRepOffset_Error`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]

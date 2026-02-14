@@ -5,7 +5,7 @@
 
 use crate::model::{ParsedClass, ParsedHeader, Type};
 use heck::ToSnakeCase;
-use std::collections::{BTreeMap, BTreeSet, HashSet};
+use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 
 /// A graph of module dependencies
 #[derive(Debug, Default)]
@@ -96,15 +96,24 @@ impl ModuleGraph {
             }
         }
 
-        // Second pass: analyze dependencies
+        // Build reverse lookup: type_name -> module_name from first pass data
+        let type_to_module: HashMap<String, String> = graph
+            .modules
+            .iter()
+            .flat_map(|(module_name, module)| {
+                module.types.iter().map(move |type_name| (type_name.clone(), module_name.clone()))
+            })
+            .collect();
+
+        // Second pass: analyze dependencies using lookup from first pass
         for header in headers {
             for class in &header.classes {
                 let dependencies = collect_type_dependencies(class);
 
                 if let Some(module) = graph.modules.get_mut(&class.module) {
                     for dep_type in dependencies {
-                        if let Some(dep_module) = extract_module_from_type(&dep_type) {
-                            module.add_dependency(&dep_module);
+                        if let Some(dep_module) = type_to_module.get(&dep_type) {
+                            module.add_dependency(dep_module);
                         }
                     }
                 }
@@ -174,7 +183,7 @@ impl ModuleGraph {
                     for type_name in &dep_module.types {
                         result.push(CrossModuleType {
                             cpp_name: type_name.clone(),
-                            rust_name: extract_rust_type_name(type_name),
+                            rust_name: crate::type_mapping::short_name_for_module(type_name, &dep_module.name),
                             source_module: dep_module.rust_name.clone(),
                             is_enum: dep_module.is_enum(type_name),
                         });
@@ -263,11 +272,6 @@ fn collect_types_from_type(ty: &Type, deps: &mut HashSet<String>) {
     }
 }
 
-/// Extract module name from a type name
-fn extract_module_from_type(type_name: &str) -> Option<String> {
-    type_name.find('_').map(|underscore_pos| type_name[..underscore_pos].to_string())
-}
-
 /// Convert C++ module name to Rust module name (snake_case)
 pub fn module_to_rust_name(name: &str) -> String {
     // Handle special cases
@@ -278,6 +282,7 @@ pub fn module_to_rust_name(name: &str) -> String {
 }
 
 /// Extract Rust type name from C++ class name (remove module prefix)
+#[cfg(test)]
 fn extract_rust_type_name(cpp_name: &str) -> String {
     if let Some(underscore_pos) = cpp_name.find('_') {
         cpp_name[underscore_pos + 1..].to_string()

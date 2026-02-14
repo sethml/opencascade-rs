@@ -325,6 +325,9 @@ pub struct SymbolTable {
     pub handle_able_classes: HashSet<String>,
     /// Cross-module type references by module
     pub cross_module_types: HashMap<String, Vec<CrossModuleType>>,
+    /// Authoritative mapping from C++ type name to module name (built from parsed headers)
+    /// This is the single source of truth for "which module does type X belong to?"
+    pub type_to_module: HashMap<String, String>,
 }
 
 impl SymbolTable {
@@ -658,6 +661,16 @@ pub fn build_symbol_table(
         .map(|c| c.name.clone())
         .collect();
     
+    // Build authoritative type→module mapping from parsed header data.
+    // This is the single source of truth for module membership.
+    let type_to_module: HashMap<String, String> = all_classes
+        .iter()
+        .map(|c| (c.name.clone(), c.module.clone()))
+        .chain(all_enums.iter().map(|e| (e.name.clone(), e.module.clone())))
+        .collect();
+    // Keep a reference copy for resolve_* functions (avoids borrow conflicts with table)
+    let type_to_module_ref = type_to_module.clone();
+    
     let mut table = SymbolTable {
         classes: HashMap::new(),
         constructors: HashMap::new(),
@@ -672,6 +685,7 @@ pub fn build_symbol_table(
         all_class_names: all_class_names.clone(),
         handle_able_classes: handle_able_classes.clone(),
         cross_module_types: HashMap::new(),
+        type_to_module,
     };
     
     // Build cross-module types map
@@ -688,7 +702,7 @@ pub fn build_symbol_table(
             id: id.clone(),
             cpp_name: enum_decl.name.clone(),
             rust_module: crate::module_graph::module_to_rust_name(&enum_decl.module),
-            rust_name: safe_short_name(enum_decl.name.split('_').next_back().unwrap_or(&enum_decl.name)),
+            rust_name: safe_short_name(&crate::type_mapping::short_name_for_module(&enum_decl.name, &enum_decl.module)),
             source_header: enum_decl.source_header.clone(),
             variants: enum_decl.variants.iter().map(|v| {
                 // Convert SCREAMING_SNAKE to PascalCase for Rust
@@ -727,12 +741,12 @@ pub fn build_symbol_table(
     
     // Resolve all classes
     for class in all_classes {
-        resolve_class(&mut table, class, &all_enum_names);
+        resolve_class(&mut table, class, &all_enum_names, &type_to_module_ref);
     }
     
     // Resolve all free functions
     for func in all_functions {
-        resolve_function(&mut table, func, &all_enum_names, &all_class_names, &handle_able_classes);
+        resolve_function(&mut table, func, &all_enum_names, &all_class_names, &handle_able_classes, &type_to_module_ref);
     }
     
     // Assign deduplicated names for all included functions.
@@ -748,11 +762,12 @@ fn resolve_class(
     table: &mut SymbolTable,
     class: &ParsedClass,
     all_enum_names: &HashSet<String>,
+    type_to_module: &HashMap<String, String>,
 ) {
     let class_id = SymbolId::new(format!("class::{}", class.name));
     let rust_module = crate::module_graph::module_to_rust_name(&class.module);
-    let short_name = class.short_name();
-    let rust_ffi_name = safe_short_name(short_name);
+    let short_name = crate::type_mapping::short_name_for_module(&class.name, &class.module);
+    let rust_ffi_name = safe_short_name(&short_name);
     
     // Determine class binding status
     let class_status = if class.has_protected_destructor {
@@ -773,6 +788,7 @@ fn resolve_class(
             idx,
             class.is_abstract,
             all_enum_names,
+            type_to_module,
         );
         constructor_ids.push(ctor_id.clone());
         table.constructors.insert(ctor_id, resolved_ctor);
@@ -788,6 +804,7 @@ fn resolve_class(
             &class.name,
             method,
             all_enum_names,
+            type_to_module,
         );
         method_ids.push(method_id.clone());
         table.methods.insert(method_id, resolved_method);
@@ -803,6 +820,7 @@ fn resolve_class(
             &class.name,
             method,
             all_enum_names,
+            type_to_module,
         );
         static_method_ids.push(method_id.clone());
         table.static_methods.insert(method_id, resolved_method);
@@ -842,6 +860,7 @@ fn resolve_constructor(
     _idx: usize,
     is_abstract: bool,
     all_enum_names: &HashSet<String>,
+    type_to_module: &HashMap<String, String>,
 ) -> ResolvedConstructor {
     // Determine constructor name (new, new_real3, etc.)
     let suffix = ctor.overload_suffix();
@@ -855,7 +874,7 @@ fn resolve_constructor(
         ResolvedParam {
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
-            ty: resolve_type(&p.ty, all_enum_names),
+            ty: resolve_type(&p.ty, all_enum_names, type_to_module),
         }
     }).collect();
     
@@ -886,6 +905,7 @@ fn resolve_method(
     class_name: &str,
     method: &Method,
     all_enum_names: &HashSet<String>,
+    type_to_module: &HashMap<String, String>,
 ) -> ResolvedMethod {
     let rust_name = safe_method_name(&method.name);
     let needs_wrapper = method_needs_wrapper(method);
@@ -902,12 +922,12 @@ fn resolve_method(
         ResolvedParam {
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
-            ty: resolve_type(&p.ty, all_enum_names),
+            ty: resolve_type(&p.ty, all_enum_names, type_to_module),
         }
     }).collect();
     
     // Resolve return type
-    let return_type = method.return_type.as_ref().map(|t| resolve_type(t, all_enum_names));
+    let return_type = method.return_type.as_ref().map(|t| resolve_type(t, all_enum_names, type_to_module));
     
     // Determine status
     let status = if method.has_unbindable_types() {
@@ -944,6 +964,7 @@ fn resolve_static_method(
     class_name: &str,
     method: &StaticMethod,
     all_enum_names: &HashSet<String>,
+    type_to_module: &HashMap<String, String>,
 ) -> ResolvedStaticMethod {
     let rust_name = safe_method_name(&method.name);
     let needs_wrapper = static_method_needs_wrapper(method);
@@ -960,12 +981,12 @@ fn resolve_static_method(
         ResolvedParam {
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
-            ty: resolve_type(&p.ty, all_enum_names),
+            ty: resolve_type(&p.ty, all_enum_names, type_to_module),
         }
     }).collect();
     
     // Resolve return type
-    let return_type = method.return_type.as_ref().map(|t| resolve_type(t, all_enum_names));
+    let return_type = method.return_type.as_ref().map(|t| resolve_type(t, all_enum_names, type_to_module));
     
     // Determine status
     let status = if method.has_unbindable_types() {
@@ -997,6 +1018,7 @@ fn resolve_function(
     all_enum_names: &HashSet<String>,
     all_class_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
+    type_to_module: &HashMap<String, String>,
 ) {
     // Build a unique ID that distinguishes overloads by parameter types
     let param_sig: String = func.params.iter()
@@ -1025,12 +1047,12 @@ fn resolve_function(
         ResolvedParam {
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
-            ty: resolve_type(&p.ty, all_enum_names),
+            ty: resolve_type(&p.ty, all_enum_names, type_to_module),
         }
     }).collect();
     
     // Resolve return type
-    let return_type = func.return_type.as_ref().map(|t| resolve_type(t, all_enum_names));
+    let return_type = func.return_type.as_ref().map(|t| resolve_type(t, all_enum_names, type_to_module));
     
     // Determine status — check unbindable types AND unknown handle types
     let status = if func.has_unbindable_types() {
@@ -1152,7 +1174,7 @@ fn assign_function_names(table: &mut SymbolTable) {
 }
 
 /// Resolve a type to its code generation form
-fn resolve_type(ty: &Type, all_enum_names: &HashSet<String>) -> ResolvedType {
+fn resolve_type(ty: &Type, all_enum_names: &HashSet<String>, type_to_module: &HashMap<String, String>) -> ResolvedType {
     // Check if this type is an enum (possibly wrapped in const ref)
     let enum_name = extract_enum_name_from_type(ty, all_enum_names);
     if let Some(ref name) = enum_name {
@@ -1180,8 +1202,19 @@ fn resolve_type(ty: &Type, all_enum_names: &HashSet<String>) -> ResolvedType {
         cpp_type: type_to_cpp_string(ty),
         needs_unique_ptr: matches!(ty, Type::Class(_) | Type::Handle(_)),
         needs_pin: matches!(ty, Type::MutRef(inner) if !inner.is_primitive()),
-        source_module: ty.module(),
+        source_module: lookup_type_module(ty, type_to_module),
         enum_cpp_name: None,
+    }
+}
+
+/// Look up the module for a Type from the authoritative type→module mapping
+fn lookup_type_module(ty: &Type, type_to_module: &HashMap<String, String>) -> Option<String> {
+    match ty {
+        Type::Class(name) | Type::Handle(name) => type_to_module.get(name).cloned(),
+        Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => {
+            lookup_type_module(inner, type_to_module)
+        }
+        _ => None,
     }
 }
 

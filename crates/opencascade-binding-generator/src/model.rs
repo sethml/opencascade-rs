@@ -533,17 +533,6 @@ impl Type {
         self.is_stream() || self.is_void_ptr() || self.is_array() || self.is_raw_ptr() || self.is_nested_type() || self.is_rvalue_ref()
     }
 
-    /// Get the module this type belongs to (if it's an OCCT class)
-    pub fn module(&self) -> Option<String> {
-        match self {
-            Type::Class(name) | Type::Handle(name) => {
-                name.find('_').map(|underscore_pos| name[..underscore_pos].to_string())
-            }
-            Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => inner.module(),
-            _ => None,
-        }
-    }
-
     /// Convert this type to a Rust type string for use in method signatures
     pub fn to_rust_type_string(&self) -> String {
         match self {

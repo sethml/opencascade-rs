@@ -300,7 +300,7 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
     }
 
     let comment = extract_doxygen_comment(entity);
-    let module = extract_module_from_name(&name);
+    let module = extract_module_from_header(source_header);
 
     // Extract direct base classes for upcast generation
     let base_classes = extract_base_classes(entity);
@@ -467,7 +467,7 @@ fn parse_enum(entity: &Entity, source_header: &str, verbose: bool) -> Option<Par
     }
 
     let comment = extract_doxygen_comment(entity);
-    let module = extract_module_from_name(&name);
+    let module = extract_module_from_header(source_header);
 
     if verbose {
         println!("  Parsing enum: {}", name);
@@ -640,14 +640,21 @@ fn extract_doxygen_comment(entity: &Entity) -> Option<String> {
     None
 }
 
-/// Extract module name from OCCT class name (e.g., "gp_Pnt" -> "gp")
-fn extract_module_from_name(name: &str) -> String {
-    // OCCT naming convention: ModuleName_ClassName
-    // Examples: gp_Pnt, TopoDS_Shape, BRepPrimAPI_MakeBox
+/// Extract module name from OCCT header filename (e.g., "gp_Pnt.hxx" -> "gp")
+///
+/// Module names are derived from the header file, not the class/type name.
+/// This avoids mismatches for types like Fortran common blocks (e.g., `maovpar_1_`
+/// in `AdvApp2Var_Data.hxx`) and helper classes that don't follow the standard
+/// `Module_Class` naming convention.
+fn extract_module_from_header(header: &str) -> String {
+    // Strip .hxx extension first
+    let name = header.strip_suffix(".hxx").unwrap_or(header);
+    // OCCT naming convention: ModuleName_ClassName.hxx
+    // Examples: gp_Pnt.hxx -> "gp", TopoDS_Shape.hxx -> "TopoDS"
     if let Some(underscore_pos) = name.find('_') {
         name[..underscore_pos].to_string()
     } else {
-        // No underscore - might be a single-word class name
+        // No underscore - single-word module (e.g., "gp.hxx" -> "gp")
         name.to_string()
     }
 }
@@ -1217,11 +1224,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_extract_module_from_name() {
-        assert_eq!(extract_module_from_name("gp_Pnt"), "gp");
-        assert_eq!(extract_module_from_name("TopoDS_Shape"), "TopoDS");
-        assert_eq!(extract_module_from_name("BRepPrimAPI_MakeBox"), "BRepPrimAPI");
-        assert_eq!(extract_module_from_name("Standalone"), "Standalone");
+    fn test_extract_module_from_header() {
+        assert_eq!(extract_module_from_header("gp_Pnt.hxx"), "gp");
+        assert_eq!(extract_module_from_header("TopoDS_Shape.hxx"), "TopoDS");
+        assert_eq!(extract_module_from_header("BRepPrimAPI_MakeBox.hxx"), "BRepPrimAPI");
+        assert_eq!(extract_module_from_header("gp.hxx"), "gp");
+        // Fortran common blocks in AdvApp2Var_Data.hxx get module "AdvApp2Var"
+        assert_eq!(extract_module_from_header("AdvApp2Var_Data.hxx"), "AdvApp2Var");
+        // Helper types without underscore still work
+        assert_eq!(extract_module_from_header("Standalone.hxx"), "Standalone");
     }
 
     #[test]

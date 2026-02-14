@@ -23,7 +23,6 @@ pub mod b_rep_mat2d;
 pub mod b_rep_mesh;
 pub mod b_rep_offset;
 pub mod b_rep_offset_api;
-pub mod b_rep_offset_simple;
 pub mod b_rep_prim;
 pub mod b_rep_prim_api;
 pub mod b_rep_sweep;

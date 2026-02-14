@@ -176,6 +176,7 @@ pub fn generate_unified_ffi(
         all_enums: all_enum_names,
         all_classes: &all_class_names,
         handle_able_classes: Some(&handle_able_classes),
+        type_to_module: Some(&symbol_table.type_to_module),
     };
 
     // Get all classes with protected destructors

@@ -214,7 +214,50 @@ pub fn safe_short_name(short_name: &str) -> String {
     }
 }
 
-/// Extract module name from class name
+/// Compute the short type name by stripping the module prefix from a C++ type name.
+///
+/// When the type's name-based prefix differs from its header-based module,
+/// the extra prefix text is preserved in the short name.
+///
+/// Examples:
+///   - `("gp_Pnt", "gp")` → `"Pnt"`
+///   - `("BRepOffset_Status", "BRepOffset")` → `"Status"`
+///   - `("BRepOffsetSimple_Status", "BRepOffset")` → `"SimpleStatus"`
+///   - `("TopoDS_Shape", "TopoDS")` → `"Shape"`
+pub fn short_name_for_module(cpp_name: &str, module: &str) -> String {
+    if let Some(rest) = cpp_name.strip_prefix(module) {
+        // After stripping the module prefix, the remainder starts with either:
+        // - "_Foo" (exact module match) → "Foo"
+        // - "Simple_Foo" (longer prefix) → "SimpleFoo"  
+        let rest = rest.strip_prefix('_').unwrap_or(rest);
+        if rest.is_empty() {
+            // Type name equals the module name (rare but possible)
+            cpp_name.to_string()
+        } else {
+            // Remove any remaining underscore separators to get a PascalCase name
+            // e.g., "Simple_Status" → "SimpleStatus"
+            rest.replace('_', "")
+        }
+    } else {
+        // Module prefix doesn't match at all — fall back to first-underscore split
+        extract_short_class_name(cpp_name)
+    }
+}
+
+/// Look up module name for a type, using the authoritative map if available,
+/// falling back to name-based derivation for context-free callers.
+fn lookup_module_for_type(
+    class_name: &str,
+    type_to_module: Option<&std::collections::HashMap<String, String>>,
+) -> Option<String> {
+    if let Some(map) = type_to_module {
+        map.get(class_name).map(|m| module_to_rust_name(m))
+    } else {
+        extract_module_from_class(class_name)
+    }
+}
+
+/// Extract module name from class name (name-based fallback)
 fn extract_module_from_class(class_name: &str) -> Option<String> {
     class_name.find('_').map(|underscore_pos| module_to_rust_name(&class_name[..underscore_pos]))
 }
@@ -241,6 +284,9 @@ pub struct TypeContext<'a> {
     /// Classes that can have Handle<T> declarations (is_handle_type && !has_protected_destructor)
     /// If None, falls back to all_classes for Handle type checking
     pub handle_able_classes: Option<&'a std::collections::HashSet<String>>,
+    /// Authoritative type→module mapping (from resolver's SymbolTable)
+    /// When present, used instead of name-based derivation
+    pub type_to_module: Option<&'a std::collections::HashMap<String, String>>,
 }
 
 /// Check if a type references an unknown class/handle
@@ -286,7 +332,7 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
                 };
             }
             
-            let type_module = extract_module_from_class(class_name);
+            let type_module = lookup_module_for_type(class_name, ctx.type_to_module);
             let short_name = extract_short_class_name(class_name);
             
             // Check if this is a same-module reference
@@ -340,7 +386,7 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
             }
         }
         Type::Handle(class_name) => {
-            let source_module = extract_module_from_class(class_name);
+            let source_module = lookup_module_for_type(class_name, ctx.type_to_module);
             // Use full class name to avoid collisions (e.g., Geom_Curve vs Geom2d_Curve)
             let handle_type = format!("Handle{}", class_name.replace("_", ""));
             RustTypeMapping {

@@ -5,19 +5,24 @@ into Rust using the `opencascade-sys` crate.
 
 ## Module Structure
 
-OCCT C++ classes like `BRepBuilderAPI_MakeEdge` are re-exported in Rust modules
-derived from the package prefix. The module name is the snake_case form of the
-C++ package, and the type name is the suffix after the first underscore:
+Each OCCT type is assigned to a Rust module based on the header file it was
+parsed from (e.g., a class in `BRepBuilderAPI_MakeEdge.hxx` goes into module
+`b_rep_builder_api`). The module name is the snake_case form of the header's
+package prefix. The type's short name is derived by stripping that module prefix
+from the C++ class name. When a type's name has a longer prefix than its module
+(e.g., `BRepOffsetSimple_Status` in module `BRepOffset`), the extra text is
+preserved in the short name (`SimpleStatus`):
 
-| C++ Class                      | Rust Path                              |
-|--------------------------------|----------------------------------------|
-| `gp_Pnt`                       | `gp::Pnt`                             |
-| `BRepBuilderAPI_MakeEdge`      | `b_rep_builder_api::MakeEdge`          |
-| `BRepOffsetAPI_MakeThickSolid` | `b_rep_offset_api::MakeThickSolid`     |
-| `TopoDS_Shape`                 | `topo_ds::Shape`                       |
-| `Geom_CylindricalSurface`      | `geom::CylindricalSurface`            |
-| `Geom2d_Ellipse`               | `geom2d::Ellipse`                     |
-| `GC_MakeSegment`               | `gc::MakeSegment`                     |
+| C++ Class                      | Header                              | Rust Path                              |
+|--------------------------------|-------------------------------------|----------------------------------------|
+| `gp_Pnt`                       | `gp_Pnt.hxx`                       | `gp::Pnt`                             |
+| `BRepBuilderAPI_MakeEdge`      | `BRepBuilderAPI_MakeEdge.hxx`       | `b_rep_builder_api::MakeEdge`          |
+| `BRepOffsetAPI_MakeThickSolid` | `BRepOffsetAPI_MakeThickSolid.hxx`  | `b_rep_offset_api::MakeThickSolid`     |
+| `BRepOffsetSimple_Status`      | `BRepOffset_MakeSimpleOffset.hxx`   | `b_rep_offset::SimpleStatus`           |
+| `TopoDS_Shape`                 | `TopoDS_Shape.hxx`                  | `topo_ds::Shape`                       |
+| `Geom_CylindricalSurface`      | `Geom_CylindricalSurface.hxx`      | `geom::CylindricalSurface`            |
+| `Geom2d_Ellipse`               | `Geom2d_Ellipse.hxx`               | `geom2d::Ellipse`                     |
+| `GC_MakeSegment`               | `GC_MakeSegment.hxx`               | `gc::MakeSegment`                     |
 
 ## Constructors
 

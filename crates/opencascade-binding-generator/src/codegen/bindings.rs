@@ -1142,7 +1142,7 @@ pub fn compute_class_bindings(
 
     ClassBindings {
         cpp_name: cpp_name.clone(),
-        short_name: class.short_name().to_string(),
+        short_name: crate::type_mapping::short_name_for_module(&class.name, &class.module),
         module: class.module.clone(),
         is_abstract: effectively_abstract,
         is_handle_type: class.is_handle_type,
@@ -1783,6 +1783,7 @@ pub fn compute_all_class_bindings(
         all_enums: all_enum_names,
         all_classes: &all_class_names,
         handle_able_classes: Some(&handle_able_classes),
+        type_to_module: Some(&symbol_table.type_to_module),
     };
 
     let all_classes_by_name: HashMap<String, &ParsedClass> = all_classes
@@ -2935,6 +2936,7 @@ mod tests {
             all_enums: &all_enum_names,
             all_classes: &all_class_names,
             handle_able_classes: Some(&handle_able_classes),
+            type_to_module: None,
         };
 
         // Create a minimal SymbolTable
@@ -2950,7 +2952,9 @@ mod tests {
             enums_by_module: HashMap::new(),
             all_enum_names: HashSet::new(),
             all_class_names: ["gp_Pnt".to_string()].into(),
+            handle_able_classes: HashSet::new(),
             cross_module_types: HashMap::new(),
+            type_to_module: HashMap::new(),
         };
 
         let all_classes_by_name: HashMap<String, &ParsedClass> =
@@ -3015,6 +3019,7 @@ mod tests {
             all_enums: &all_enum_names,
             all_classes: &all_class_names,
             handle_able_classes: Some(&handle_able_classes),
+            type_to_module: None,
         };
 
         let symbol_table = SymbolTable {
@@ -3029,7 +3034,9 @@ mod tests {
             enums_by_module: HashMap::new(),
             all_enum_names: HashSet::new(),
             all_class_names: ["Geom_Curve".to_string()].into(),
+            handle_able_classes: ["Geom_Curve".to_string()].into(),
             cross_module_types: HashMap::new(),
+            type_to_module: HashMap::new(),
         };
 
         let all_classes_by_name: HashMap<String, &ParsedClass> =

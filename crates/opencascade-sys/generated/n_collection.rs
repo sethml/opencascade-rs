@@ -10,26 +10,26 @@
 /// C++ enum: `NCollection_CellFilter_Action`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
-pub enum Action {
+pub enum CellFilterAction {
     /// < Target is needed and should be kept
     Keep = 0,
     /// < Target is not needed and can be removed from the current cell
     Purge = 1,
 }
 
-impl From<Action> for i32 {
-    fn from(value: Action) -> Self {
+impl From<CellFilterAction> for i32 {
+    fn from(value: CellFilterAction) -> Self {
         value as i32
     }
 }
 
-impl TryFrom<i32> for Action {
+impl TryFrom<i32> for CellFilterAction {
     type Error = i32;
 
     fn try_from(value: i32) -> Result<Self, i32> {
         match value {
-            0 => Ok(Action::Keep),
-            1 => Ok(Action::Purge),
+            0 => Ok(CellFilterAction::Keep),
+            1 => Ok(CellFilterAction::Purge),
             _ => Err(value),
         }
     }
