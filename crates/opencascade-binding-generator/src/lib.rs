@@ -4,6 +4,7 @@
 //! with a unified FFI module and per-module re-exports.
 
 pub mod codegen;
+pub mod config;
 pub mod header_deps;
 pub mod model;
 pub mod module_graph;

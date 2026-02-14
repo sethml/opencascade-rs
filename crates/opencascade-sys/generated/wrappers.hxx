@@ -2341,6 +2341,193 @@ inline std::unique_ptr<gp_XYZ> gp_XYZ_subtracted(const gp_XYZ& self_, const gp_X
 inline std::unique_ptr<gp_XYZ> gp_XYZ_to_owned(const gp_XYZ& self_) { return std::make_unique<gp_XYZ>(self_); }
 
 // ========================
+// BRepFilletAPI_LocalOperation wrappers
+// ========================
+
+inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_LocalOperation_first_vertex(const BRepFilletAPI_LocalOperation& self_, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self_.FirstVertex(IC));
+}
+inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_LocalOperation_last_vertex(const BRepFilletAPI_LocalOperation& self_, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
+}
+inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_LocalOperation_sect(const BRepFilletAPI_LocalOperation& self_, Standard_Integer IC, Standard_Integer IS) {
+    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
+}
+inline const BRepBuilderAPI_Command& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command(const BRepFilletAPI_LocalOperation& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
+inline BRepBuilderAPI_Command& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_LocalOperation& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
+inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_LocalOperation& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
+inline BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_LocalOperation& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
+inline bool BRepFilletAPI_LocalOperation_inherited_IsDone(const BRepFilletAPI_LocalOperation& self) {
+    return self.IsDone();
+}
+inline void BRepFilletAPI_LocalOperation_inherited_Check(const BRepFilletAPI_LocalOperation& self) {
+    self.Check();
+}
+inline void BRepFilletAPI_LocalOperation_inherited_Build(BRepFilletAPI_LocalOperation& self, const Message_ProgressRange& theRange) {
+    self.Build(theRange);
+}
+inline const TopoDS_Shape& BRepFilletAPI_LocalOperation_inherited_Shape(BRepFilletAPI_LocalOperation& self) {
+    return self.Shape();
+}
+inline const TopTools_ListOfShape& BRepFilletAPI_LocalOperation_inherited_Generated(BRepFilletAPI_LocalOperation& self, const TopoDS_Shape& S) {
+    return self.Generated(S);
+}
+inline const TopTools_ListOfShape& BRepFilletAPI_LocalOperation_inherited_Modified(BRepFilletAPI_LocalOperation& self, const TopoDS_Shape& S) {
+    return self.Modified(S);
+}
+inline bool BRepFilletAPI_LocalOperation_inherited_IsDeleted(BRepFilletAPI_LocalOperation& self, const TopoDS_Shape& S) {
+    return self.IsDeleted(S);
+}
+
+// ========================
+// BRepFilletAPI_MakeChamfer wrappers
+// ========================
+
+inline std::unique_ptr<BRepFilletAPI_MakeChamfer> BRepFilletAPI_MakeChamfer_ctor_shape(const TopoDS_Shape& S) {
+    return std::make_unique<BRepFilletAPI_MakeChamfer>(S);
+}
+inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeChamfer_first_vertex(const BRepFilletAPI_MakeChamfer& self_, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self_.FirstVertex(IC));
+}
+inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeChamfer_last_vertex(const BRepFilletAPI_MakeChamfer& self_, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
+}
+inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_MakeChamfer_sect(const BRepFilletAPI_MakeChamfer& self_, Standard_Integer IC, Standard_Integer IS) {
+    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
+}
+inline void BRepFilletAPI_MakeChamfer_set_mode(BRepFilletAPI_MakeChamfer& self_, int32_t theMode) {
+    self_.SetMode(static_cast<ChFiDS_ChamfMode>(theMode));
+}
+inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeChamfer& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
+inline BRepBuilderAPI_Command& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeChamfer& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
+inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeChamfer& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
+inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeChamfer& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
+inline const BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(const BRepFilletAPI_MakeChamfer& self_) { return static_cast<const BRepFilletAPI_LocalOperation&>(self_); }
+inline BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(BRepFilletAPI_MakeChamfer& self_) { return static_cast<BRepFilletAPI_LocalOperation&>(self_); }
+inline bool BRepFilletAPI_MakeChamfer_inherited_IsDone(const BRepFilletAPI_MakeChamfer& self) {
+    return self.IsDone();
+}
+inline void BRepFilletAPI_MakeChamfer_inherited_Check(const BRepFilletAPI_MakeChamfer& self) {
+    self.Check();
+}
+inline const TopoDS_Shape& BRepFilletAPI_MakeChamfer_inherited_Shape(BRepFilletAPI_MakeChamfer& self) {
+    return self.Shape();
+}
+
+// ========================
+// BRepFilletAPI_MakeFillet wrappers
+// ========================
+
+inline std::unique_ptr<BRepFilletAPI_MakeFillet> BRepFilletAPI_MakeFillet_ctor_shape_filletshape(const TopoDS_Shape& S, int32_t FShape) {
+    return std::make_unique<BRepFilletAPI_MakeFillet>(S, static_cast<ChFi3d_FilletShape>(FShape));
+}
+inline std::unique_ptr<opencascade::handle<Law_Function>> BRepFilletAPI_MakeFillet_get_law(BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, const TopoDS_Edge& E) {
+    return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
+}
+inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet_first_vertex(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self_.FirstVertex(IC));
+}
+inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet_last_vertex(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
+}
+inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_MakeFillet_sect(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, Standard_Integer IS) {
+    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
+}
+inline std::unique_ptr<opencascade::handle<Geom_Surface>> BRepFilletAPI_MakeFillet_computed_surface(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, Standard_Integer IS) {
+    return std::make_unique<opencascade::handle<Geom_Surface>>(self_.ComputedSurface(IC, IS));
+}
+inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet_faulty_vertex(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IV) {
+    return std::make_unique<TopoDS_Vertex>(self_.FaultyVertex(IV));
+}
+inline std::unique_ptr<TopoDS_Shape> BRepFilletAPI_MakeFillet_bad_shape(const BRepFilletAPI_MakeFillet& self_) {
+    return std::make_unique<TopoDS_Shape>(self_.BadShape());
+}
+inline void BRepFilletAPI_MakeFillet_set_continuity(BRepFilletAPI_MakeFillet& self_, int32_t InternalContinuity, Standard_Real AngularTolerance) {
+    self_.SetContinuity(static_cast<GeomAbs_Shape>(InternalContinuity), AngularTolerance);
+}
+inline void BRepFilletAPI_MakeFillet_set_fillet_shape(BRepFilletAPI_MakeFillet& self_, int32_t FShape) {
+    self_.SetFilletShape(static_cast<ChFi3d_FilletShape>(FShape));
+}
+inline int32_t BRepFilletAPI_MakeFillet_get_fillet_shape(const BRepFilletAPI_MakeFillet& self_) {
+    return static_cast<int32_t>(self_.GetFilletShape());
+}
+inline int32_t BRepFilletAPI_MakeFillet_stripe_status(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC) {
+    return static_cast<int32_t>(self_.StripeStatus(IC));
+}
+inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeFillet& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
+inline BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeFillet& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
+inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeFillet& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
+inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeFillet& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
+inline const BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(const BRepFilletAPI_MakeFillet& self_) { return static_cast<const BRepFilletAPI_LocalOperation&>(self_); }
+inline BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(BRepFilletAPI_MakeFillet& self_) { return static_cast<BRepFilletAPI_LocalOperation&>(self_); }
+inline bool BRepFilletAPI_MakeFillet_inherited_IsDone(const BRepFilletAPI_MakeFillet& self) {
+    return self.IsDone();
+}
+inline void BRepFilletAPI_MakeFillet_inherited_Check(const BRepFilletAPI_MakeFillet& self) {
+    self.Check();
+}
+inline const TopoDS_Shape& BRepFilletAPI_MakeFillet_inherited_Shape(BRepFilletAPI_MakeFillet& self) {
+    return self.Shape();
+}
+
+// ========================
+// BRepFilletAPI_MakeFillet2d wrappers
+// ========================
+
+inline std::unique_ptr<BRepFilletAPI_MakeFillet2d> BRepFilletAPI_MakeFillet2d_ctor() {
+    return std::make_unique<BRepFilletAPI_MakeFillet2d>();
+}
+inline std::unique_ptr<BRepFilletAPI_MakeFillet2d> BRepFilletAPI_MakeFillet2d_ctor_face(const TopoDS_Face& F) {
+    return std::make_unique<BRepFilletAPI_MakeFillet2d>(F);
+}
+inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_add_fillet(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Vertex& V, Standard_Real Radius) {
+    return std::make_unique<TopoDS_Edge>(self_.AddFillet(V, Radius));
+}
+inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_modify_fillet(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Fillet, Standard_Real Radius) {
+    return std::make_unique<TopoDS_Edge>(self_.ModifyFillet(Fillet, Radius));
+}
+inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet2d_remove_fillet(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Fillet) {
+    return std::make_unique<TopoDS_Vertex>(self_.RemoveFillet(Fillet));
+}
+inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_add_chamfer_edge2_real2(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& E1, const TopoDS_Edge& E2, Standard_Real D1, Standard_Real D2) {
+    return std::make_unique<TopoDS_Edge>(self_.AddChamfer(E1, E2, D1, D2));
+}
+inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_add_chamfer_edge_vertex_real2(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& E, const TopoDS_Vertex& V, Standard_Real D, Standard_Real Ang) {
+    return std::make_unique<TopoDS_Edge>(self_.AddChamfer(E, V, D, Ang));
+}
+inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_modify_chamfer_edge3_real2(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Chamfer, const TopoDS_Edge& E1, const TopoDS_Edge& E2, Standard_Real D1, Standard_Real D2) {
+    return std::make_unique<TopoDS_Edge>(self_.ModifyChamfer(Chamfer, E1, E2, D1, D2));
+}
+inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_modify_chamfer_edge2_real2(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Chamfer, const TopoDS_Edge& E, Standard_Real D, Standard_Real Ang) {
+    return std::make_unique<TopoDS_Edge>(self_.ModifyChamfer(Chamfer, E, D, Ang));
+}
+inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet2d_remove_chamfer(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Chamfer) {
+    return std::make_unique<TopoDS_Vertex>(self_.RemoveChamfer(Chamfer));
+}
+inline int32_t BRepFilletAPI_MakeFillet2d_status(const BRepFilletAPI_MakeFillet2d& self_) {
+    return static_cast<int32_t>(self_.Status());
+}
+inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeFillet2d& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
+inline BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeFillet2d& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
+inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeFillet2d& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
+inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeFillet2d& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
+inline bool BRepFilletAPI_MakeFillet2d_inherited_IsDone(const BRepFilletAPI_MakeFillet2d& self) {
+    return self.IsDone();
+}
+inline void BRepFilletAPI_MakeFillet2d_inherited_Check(const BRepFilletAPI_MakeFillet2d& self) {
+    self.Check();
+}
+inline const TopoDS_Shape& BRepFilletAPI_MakeFillet2d_inherited_Shape(BRepFilletAPI_MakeFillet2d& self) {
+    return self.Shape();
+}
+inline const TopTools_ListOfShape& BRepFilletAPI_MakeFillet2d_inherited_Generated(BRepFilletAPI_MakeFillet2d& self, const TopoDS_Shape& S) {
+    return self.Generated(S);
+}
+inline bool BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(BRepFilletAPI_MakeFillet2d& self, const TopoDS_Shape& S) {
+    return self.IsDeleted(S);
+}
+
+// ========================
 // TopoDS_Shape wrappers
 // ========================
 
@@ -4516,193 +4703,6 @@ inline bool BRepAlgoAPI_Section_inherited_IsDone(const BRepAlgoAPI_Section& self
 }
 inline void BRepAlgoAPI_Section_inherited_Check(const BRepAlgoAPI_Section& self) {
     self.Check();
-}
-
-// ========================
-// BRepFilletAPI_LocalOperation wrappers
-// ========================
-
-inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_LocalOperation_first_vertex(const BRepFilletAPI_LocalOperation& self_, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self_.FirstVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_LocalOperation_last_vertex(const BRepFilletAPI_LocalOperation& self_, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
-}
-inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_LocalOperation_sect(const BRepFilletAPI_LocalOperation& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
-}
-inline const BRepBuilderAPI_Command& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command(const BRepFilletAPI_LocalOperation& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_LocalOperation& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_LocalOperation& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_LocalOperation& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline bool BRepFilletAPI_LocalOperation_inherited_IsDone(const BRepFilletAPI_LocalOperation& self) {
-    return self.IsDone();
-}
-inline void BRepFilletAPI_LocalOperation_inherited_Check(const BRepFilletAPI_LocalOperation& self) {
-    self.Check();
-}
-inline void BRepFilletAPI_LocalOperation_inherited_Build(BRepFilletAPI_LocalOperation& self, const Message_ProgressRange& theRange) {
-    self.Build(theRange);
-}
-inline const TopoDS_Shape& BRepFilletAPI_LocalOperation_inherited_Shape(BRepFilletAPI_LocalOperation& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepFilletAPI_LocalOperation_inherited_Generated(BRepFilletAPI_LocalOperation& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepFilletAPI_LocalOperation_inherited_Modified(BRepFilletAPI_LocalOperation& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
-inline bool BRepFilletAPI_LocalOperation_inherited_IsDeleted(BRepFilletAPI_LocalOperation& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
-}
-
-// ========================
-// BRepFilletAPI_MakeChamfer wrappers
-// ========================
-
-inline std::unique_ptr<BRepFilletAPI_MakeChamfer> BRepFilletAPI_MakeChamfer_ctor_shape(const TopoDS_Shape& S) {
-    return std::make_unique<BRepFilletAPI_MakeChamfer>(S);
-}
-inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeChamfer_first_vertex(const BRepFilletAPI_MakeChamfer& self_, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self_.FirstVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeChamfer_last_vertex(const BRepFilletAPI_MakeChamfer& self_, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
-}
-inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_MakeChamfer_sect(const BRepFilletAPI_MakeChamfer& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
-}
-inline void BRepFilletAPI_MakeChamfer_set_mode(BRepFilletAPI_MakeChamfer& self_, int32_t theMode) {
-    self_.SetMode(static_cast<ChFiDS_ChamfMode>(theMode));
-}
-inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeChamfer& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeChamfer& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeChamfer& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeChamfer& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline const BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(const BRepFilletAPI_MakeChamfer& self_) { return static_cast<const BRepFilletAPI_LocalOperation&>(self_); }
-inline BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(BRepFilletAPI_MakeChamfer& self_) { return static_cast<BRepFilletAPI_LocalOperation&>(self_); }
-inline bool BRepFilletAPI_MakeChamfer_inherited_IsDone(const BRepFilletAPI_MakeChamfer& self) {
-    return self.IsDone();
-}
-inline void BRepFilletAPI_MakeChamfer_inherited_Check(const BRepFilletAPI_MakeChamfer& self) {
-    self.Check();
-}
-inline const TopoDS_Shape& BRepFilletAPI_MakeChamfer_inherited_Shape(BRepFilletAPI_MakeChamfer& self) {
-    return self.Shape();
-}
-
-// ========================
-// BRepFilletAPI_MakeFillet wrappers
-// ========================
-
-inline std::unique_ptr<BRepFilletAPI_MakeFillet> BRepFilletAPI_MakeFillet_ctor_shape_filletshape(const TopoDS_Shape& S, int32_t FShape) {
-    return std::make_unique<BRepFilletAPI_MakeFillet>(S, static_cast<ChFi3d_FilletShape>(FShape));
-}
-inline std::unique_ptr<opencascade::handle<Law_Function>> BRepFilletAPI_MakeFillet_get_law(BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, const TopoDS_Edge& E) {
-    return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
-}
-inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet_first_vertex(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self_.FirstVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet_last_vertex(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
-}
-inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_MakeFillet_sect(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
-}
-inline std::unique_ptr<opencascade::handle<Geom_Surface>> BRepFilletAPI_MakeFillet_computed_surface(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<Geom_Surface>>(self_.ComputedSurface(IC, IS));
-}
-inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet_faulty_vertex(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IV) {
-    return std::make_unique<TopoDS_Vertex>(self_.FaultyVertex(IV));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepFilletAPI_MakeFillet_bad_shape(const BRepFilletAPI_MakeFillet& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.BadShape());
-}
-inline void BRepFilletAPI_MakeFillet_set_continuity(BRepFilletAPI_MakeFillet& self_, int32_t InternalContinuity, Standard_Real AngularTolerance) {
-    self_.SetContinuity(static_cast<GeomAbs_Shape>(InternalContinuity), AngularTolerance);
-}
-inline void BRepFilletAPI_MakeFillet_set_fillet_shape(BRepFilletAPI_MakeFillet& self_, int32_t FShape) {
-    self_.SetFilletShape(static_cast<ChFi3d_FilletShape>(FShape));
-}
-inline int32_t BRepFilletAPI_MakeFillet_get_fillet_shape(const BRepFilletAPI_MakeFillet& self_) {
-    return static_cast<int32_t>(self_.GetFilletShape());
-}
-inline int32_t BRepFilletAPI_MakeFillet_stripe_status(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC) {
-    return static_cast<int32_t>(self_.StripeStatus(IC));
-}
-inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeFillet& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeFillet& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeFillet& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeFillet& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline const BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(const BRepFilletAPI_MakeFillet& self_) { return static_cast<const BRepFilletAPI_LocalOperation&>(self_); }
-inline BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(BRepFilletAPI_MakeFillet& self_) { return static_cast<BRepFilletAPI_LocalOperation&>(self_); }
-inline bool BRepFilletAPI_MakeFillet_inherited_IsDone(const BRepFilletAPI_MakeFillet& self) {
-    return self.IsDone();
-}
-inline void BRepFilletAPI_MakeFillet_inherited_Check(const BRepFilletAPI_MakeFillet& self) {
-    self.Check();
-}
-inline const TopoDS_Shape& BRepFilletAPI_MakeFillet_inherited_Shape(BRepFilletAPI_MakeFillet& self) {
-    return self.Shape();
-}
-
-// ========================
-// BRepFilletAPI_MakeFillet2d wrappers
-// ========================
-
-inline std::unique_ptr<BRepFilletAPI_MakeFillet2d> BRepFilletAPI_MakeFillet2d_ctor() {
-    return std::make_unique<BRepFilletAPI_MakeFillet2d>();
-}
-inline std::unique_ptr<BRepFilletAPI_MakeFillet2d> BRepFilletAPI_MakeFillet2d_ctor_face(const TopoDS_Face& F) {
-    return std::make_unique<BRepFilletAPI_MakeFillet2d>(F);
-}
-inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_add_fillet(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Vertex& V, Standard_Real Radius) {
-    return std::make_unique<TopoDS_Edge>(self_.AddFillet(V, Radius));
-}
-inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_modify_fillet(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Fillet, Standard_Real Radius) {
-    return std::make_unique<TopoDS_Edge>(self_.ModifyFillet(Fillet, Radius));
-}
-inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet2d_remove_fillet(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Fillet) {
-    return std::make_unique<TopoDS_Vertex>(self_.RemoveFillet(Fillet));
-}
-inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_add_chamfer_edge2_real2(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& E1, const TopoDS_Edge& E2, Standard_Real D1, Standard_Real D2) {
-    return std::make_unique<TopoDS_Edge>(self_.AddChamfer(E1, E2, D1, D2));
-}
-inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_add_chamfer_edge_vertex_real2(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& E, const TopoDS_Vertex& V, Standard_Real D, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self_.AddChamfer(E, V, D, Ang));
-}
-inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_modify_chamfer_edge3_real2(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Chamfer, const TopoDS_Edge& E1, const TopoDS_Edge& E2, Standard_Real D1, Standard_Real D2) {
-    return std::make_unique<TopoDS_Edge>(self_.ModifyChamfer(Chamfer, E1, E2, D1, D2));
-}
-inline std::unique_ptr<TopoDS_Edge> BRepFilletAPI_MakeFillet2d_modify_chamfer_edge2_real2(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Chamfer, const TopoDS_Edge& E, Standard_Real D, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self_.ModifyChamfer(Chamfer, E, D, Ang));
-}
-inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet2d_remove_chamfer(BRepFilletAPI_MakeFillet2d& self_, const TopoDS_Edge& Chamfer) {
-    return std::make_unique<TopoDS_Vertex>(self_.RemoveChamfer(Chamfer));
-}
-inline int32_t BRepFilletAPI_MakeFillet2d_status(const BRepFilletAPI_MakeFillet2d& self_) {
-    return static_cast<int32_t>(self_.Status());
-}
-inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeFillet2d& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeFillet2d& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeFillet2d& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeFillet2d& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline bool BRepFilletAPI_MakeFillet2d_inherited_IsDone(const BRepFilletAPI_MakeFillet2d& self) {
-    return self.IsDone();
-}
-inline void BRepFilletAPI_MakeFillet2d_inherited_Check(const BRepFilletAPI_MakeFillet2d& self) {
-    self.Check();
-}
-inline const TopoDS_Shape& BRepFilletAPI_MakeFillet2d_inherited_Shape(BRepFilletAPI_MakeFillet2d& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepFilletAPI_MakeFillet2d_inherited_Generated(BRepFilletAPI_MakeFillet2d& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline bool BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(BRepFilletAPI_MakeFillet2d& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
 }
 
 // ========================
@@ -8626,6 +8626,58 @@ inline Standard_Integer math_FunctionWithDerivative_inherited_GetStateNumber(mat
 }
 
 // ========================
+// math_DirectPolynomialRoots wrappers
+// ========================
+
+inline std::unique_ptr<math_DirectPolynomialRoots> math_DirectPolynomialRoots_ctor_real5(Standard_Real A, Standard_Real B, Standard_Real C, Standard_Real D, Standard_Real E) {
+    return std::make_unique<math_DirectPolynomialRoots>(A, B, C, D, E);
+}
+inline std::unique_ptr<math_DirectPolynomialRoots> math_DirectPolynomialRoots_ctor_real4(Standard_Real A, Standard_Real B, Standard_Real C, Standard_Real D) {
+    return std::make_unique<math_DirectPolynomialRoots>(A, B, C, D);
+}
+inline std::unique_ptr<math_DirectPolynomialRoots> math_DirectPolynomialRoots_ctor_real3(Standard_Real A, Standard_Real B, Standard_Real C) {
+    return std::make_unique<math_DirectPolynomialRoots>(A, B, C);
+}
+inline std::unique_ptr<math_DirectPolynomialRoots> math_DirectPolynomialRoots_ctor_real2(Standard_Real A, Standard_Real B) {
+    return std::make_unique<math_DirectPolynomialRoots>(A, B);
+}
+
+// ========================
+// math_BissecNewton wrappers
+// ========================
+
+inline std::unique_ptr<math_BissecNewton> math_BissecNewton_ctor_real(Standard_Real theXTolerance) {
+    return std::make_unique<math_BissecNewton>(theXTolerance);
+}
+
+// ========================
+// math_BrentMinimum wrappers
+// ========================
+
+inline std::unique_ptr<math_BrentMinimum> math_BrentMinimum_ctor_real_int_real(Standard_Real TolX, Standard_Integer NbIterations, Standard_Real ZEPS) {
+    return std::make_unique<math_BrentMinimum>(TolX, NbIterations, ZEPS);
+}
+inline std::unique_ptr<math_BrentMinimum> math_BrentMinimum_ctor_real2_int_real(Standard_Real TolX, Standard_Real Fbx, Standard_Integer NbIterations, Standard_Real ZEPS) {
+    return std::make_unique<math_BrentMinimum>(TolX, Fbx, NbIterations, ZEPS);
+}
+
+// ========================
+// math_EigenValuesSearcher wrappers
+// ========================
+
+inline std::unique_ptr<math_EigenValuesSearcher> math_EigenValuesSearcher_ctor_array1ofreal2(const TColStd_Array1OfReal& Diagonal, const TColStd_Array1OfReal& Subdiagonal) {
+    return std::make_unique<math_EigenValuesSearcher>(Diagonal, Subdiagonal);
+}
+
+// ========================
+// math_GaussLeastSquare wrappers
+// ========================
+
+inline std::unique_ptr<math_GaussLeastSquare> math_GaussLeastSquare_ctor_matrix_real(const math_Matrix& A, Standard_Real MinPivot) {
+    return std::make_unique<math_GaussLeastSquare>(A, MinPivot);
+}
+
+// ========================
 // Extrema_ExtCC wrappers
 // ========================
 
@@ -8881,58 +8933,6 @@ inline std::unique_ptr<HandleAdaptor2dCurve2d> Adaptor2d_Curve2d_to_handle(std::
 }
 inline const Adaptor2d_Curve2d& HandleAdaptor2dCurve2d_get(const HandleAdaptor2dCurve2d& handle) { return *handle; }
 inline Adaptor2d_Curve2d& HandleAdaptor2dCurve2d_get_mut(HandleAdaptor2dCurve2d& handle) { return *handle; }
-
-// ========================
-// math_DirectPolynomialRoots wrappers
-// ========================
-
-inline std::unique_ptr<math_DirectPolynomialRoots> math_DirectPolynomialRoots_ctor_real5(Standard_Real A, Standard_Real B, Standard_Real C, Standard_Real D, Standard_Real E) {
-    return std::make_unique<math_DirectPolynomialRoots>(A, B, C, D, E);
-}
-inline std::unique_ptr<math_DirectPolynomialRoots> math_DirectPolynomialRoots_ctor_real4(Standard_Real A, Standard_Real B, Standard_Real C, Standard_Real D) {
-    return std::make_unique<math_DirectPolynomialRoots>(A, B, C, D);
-}
-inline std::unique_ptr<math_DirectPolynomialRoots> math_DirectPolynomialRoots_ctor_real3(Standard_Real A, Standard_Real B, Standard_Real C) {
-    return std::make_unique<math_DirectPolynomialRoots>(A, B, C);
-}
-inline std::unique_ptr<math_DirectPolynomialRoots> math_DirectPolynomialRoots_ctor_real2(Standard_Real A, Standard_Real B) {
-    return std::make_unique<math_DirectPolynomialRoots>(A, B);
-}
-
-// ========================
-// math_BissecNewton wrappers
-// ========================
-
-inline std::unique_ptr<math_BissecNewton> math_BissecNewton_ctor_real(Standard_Real theXTolerance) {
-    return std::make_unique<math_BissecNewton>(theXTolerance);
-}
-
-// ========================
-// math_BrentMinimum wrappers
-// ========================
-
-inline std::unique_ptr<math_BrentMinimum> math_BrentMinimum_ctor_real_int_real(Standard_Real TolX, Standard_Integer NbIterations, Standard_Real ZEPS) {
-    return std::make_unique<math_BrentMinimum>(TolX, NbIterations, ZEPS);
-}
-inline std::unique_ptr<math_BrentMinimum> math_BrentMinimum_ctor_real2_int_real(Standard_Real TolX, Standard_Real Fbx, Standard_Integer NbIterations, Standard_Real ZEPS) {
-    return std::make_unique<math_BrentMinimum>(TolX, Fbx, NbIterations, ZEPS);
-}
-
-// ========================
-// math_EigenValuesSearcher wrappers
-// ========================
-
-inline std::unique_ptr<math_EigenValuesSearcher> math_EigenValuesSearcher_ctor_array1ofreal2(const TColStd_Array1OfReal& Diagonal, const TColStd_Array1OfReal& Subdiagonal) {
-    return std::make_unique<math_EigenValuesSearcher>(Diagonal, Subdiagonal);
-}
-
-// ========================
-// math_GaussLeastSquare wrappers
-// ========================
-
-inline std::unique_ptr<math_GaussLeastSquare> math_GaussLeastSquare_ctor_matrix_real(const math_Matrix& A, Standard_Real MinPivot) {
-    return std::make_unique<math_GaussLeastSquare>(A, MinPivot);
-}
 
 // ========================
 // TColStd_HArray1OfInteger wrappers
@@ -9751,28 +9751,6 @@ inline Standard_Boolean Standard_ErrorHandler_is_in_try_block() {
 }
 
 // ========================
-// TColStd_HArray2OfReal wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
-    return std::make_unique<TColStd_HArray2OfReal>(theRowLow, theRowUpp, theColLow, theColUpp);
-}
-inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4_real(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const Standard_Real& theValue) {
-    return std::make_unique<TColStd_HArray2OfReal>(theRowLow, theRowUpp, theColLow, theColUpp, theValue);
-}
-inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_array2ofreal(const TColStd_Array2OfReal& theOther) {
-    return std::make_unique<TColStd_HArray2OfReal>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColStd_HArray2OfReal_get_type_descriptor() {
-    return TColStd_HArray2OfReal::get_type_descriptor();
-}
-inline std::unique_ptr<HandleTColStdHArray2OfReal> TColStd_HArray2OfReal_to_handle(std::unique_ptr<TColStd_HArray2OfReal> obj) {
-    return std::make_unique<HandleTColStdHArray2OfReal>(obj.release());
-}
-inline const TColStd_HArray2OfReal& HandleTColStdHArray2OfReal_get(const HandleTColStdHArray2OfReal& handle) { return *handle; }
-inline TColStd_HArray2OfReal& HandleTColStdHArray2OfReal_get_mut(HandleTColStdHArray2OfReal& handle) { return *handle; }
-
-// ========================
 // Bnd_HArray1OfSphere wrappers
 // ========================
 
@@ -9962,6 +9940,28 @@ inline std::unique_ptr<Extrema_ECC> Extrema_ECC_ctor_curve2(const Adaptor3d_Curv
 inline std::unique_ptr<Extrema_ECC> Extrema_ECC_ctor_curve2_real4(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, Standard_Real Uinf, Standard_Real Usup, Standard_Real Vinf, Standard_Real Vsup) {
     return std::make_unique<Extrema_ECC>(C1, C2, Uinf, Usup, Vinf, Vsup);
 }
+
+// ========================
+// TColStd_HArray2OfReal wrappers
+// ========================
+
+inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
+    return std::make_unique<TColStd_HArray2OfReal>(theRowLow, theRowUpp, theColLow, theColUpp);
+}
+inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4_real(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const Standard_Real& theValue) {
+    return std::make_unique<TColStd_HArray2OfReal>(theRowLow, theRowUpp, theColLow, theColUpp, theValue);
+}
+inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_array2ofreal(const TColStd_Array2OfReal& theOther) {
+    return std::make_unique<TColStd_HArray2OfReal>(theOther);
+}
+inline const opencascade::handle<Standard_Type>& TColStd_HArray2OfReal_get_type_descriptor() {
+    return TColStd_HArray2OfReal::get_type_descriptor();
+}
+inline std::unique_ptr<HandleTColStdHArray2OfReal> TColStd_HArray2OfReal_to_handle(std::unique_ptr<TColStd_HArray2OfReal> obj) {
+    return std::make_unique<HandleTColStdHArray2OfReal>(obj.release());
+}
+inline const TColStd_HArray2OfReal& HandleTColStdHArray2OfReal_get(const HandleTColStdHArray2OfReal& handle) { return *handle; }
+inline TColStd_HArray2OfReal& HandleTColStdHArray2OfReal_get_mut(HandleTColStdHArray2OfReal& handle) { return *handle; }
 
 // ========================
 // Message_ProgressScope wrappers
@@ -12514,626 +12514,6 @@ inline void Bisector_Bisec_perform(Bisector_Bisec& self_, const opencascade::han
 }
 
 // ========================
-// ChFi2d_Builder wrappers
-// ========================
-
-inline std::unique_ptr<ChFi2d_Builder> ChFi2d_Builder_ctor() {
-    return std::make_unique<ChFi2d_Builder>();
-}
-inline std::unique_ptr<ChFi2d_Builder> ChFi2d_Builder_ctor_face(const TopoDS_Face& F) {
-    return std::make_unique<ChFi2d_Builder>(F);
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_add_fillet(ChFi2d_Builder& self_, const TopoDS_Vertex& V, Standard_Real Radius) {
-    return std::make_unique<TopoDS_Edge>(self_.AddFillet(V, Radius));
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_modify_fillet(ChFi2d_Builder& self_, const TopoDS_Edge& Fillet, Standard_Real Radius) {
-    return std::make_unique<TopoDS_Edge>(self_.ModifyFillet(Fillet, Radius));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi2d_Builder_remove_fillet(ChFi2d_Builder& self_, const TopoDS_Edge& Fillet) {
-    return std::make_unique<TopoDS_Vertex>(self_.RemoveFillet(Fillet));
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_add_chamfer_edge2_real2(ChFi2d_Builder& self_, const TopoDS_Edge& E1, const TopoDS_Edge& E2, Standard_Real D1, Standard_Real D2) {
-    return std::make_unique<TopoDS_Edge>(self_.AddChamfer(E1, E2, D1, D2));
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_add_chamfer_edge_vertex_real2(ChFi2d_Builder& self_, const TopoDS_Edge& E, const TopoDS_Vertex& V, Standard_Real D, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self_.AddChamfer(E, V, D, Ang));
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_modify_chamfer_edge3_real2(ChFi2d_Builder& self_, const TopoDS_Edge& Chamfer, const TopoDS_Edge& E1, const TopoDS_Edge& E2, Standard_Real D1, Standard_Real D2) {
-    return std::make_unique<TopoDS_Edge>(self_.ModifyChamfer(Chamfer, E1, E2, D1, D2));
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_modify_chamfer_edge2_real2(ChFi2d_Builder& self_, const TopoDS_Edge& Chamfer, const TopoDS_Edge& E, Standard_Real D, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self_.ModifyChamfer(Chamfer, E, D, Ang));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi2d_Builder_remove_chamfer(ChFi2d_Builder& self_, const TopoDS_Edge& Chamfer) {
-    return std::make_unique<TopoDS_Vertex>(self_.RemoveChamfer(Chamfer));
-}
-inline std::unique_ptr<TopoDS_Face> ChFi2d_Builder_result(const ChFi2d_Builder& self_) {
-    return std::make_unique<TopoDS_Face>(self_.Result());
-}
-inline int32_t ChFi2d_Builder_status(const ChFi2d_Builder& self_) {
-    return static_cast<int32_t>(self_.Status());
-}
-
-// ========================
-// ChFi3d_FilBuilder wrappers
-// ========================
-
-inline std::unique_ptr<ChFi3d_FilBuilder> ChFi3d_FilBuilder_ctor_shape_filletshape_real(const TopoDS_Shape& S, int32_t FShape, Standard_Real Ta) {
-    return std::make_unique<ChFi3d_FilBuilder>(S, static_cast<ChFi3d_FilletShape>(FShape), Ta);
-}
-inline std::unique_ptr<opencascade::handle<Law_Function>> ChFi3d_FilBuilder_get_law(ChFi3d_FilBuilder& self_, Standard_Integer IC, const TopoDS_Edge& E) {
-    return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
-}
-inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_FilBuilder_sect(const ChFi3d_FilBuilder& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
-}
-inline void ChFi3d_FilBuilder_set_fillet_shape(ChFi3d_FilBuilder& self_, int32_t FShape) {
-    self_.SetFilletShape(static_cast<ChFi3d_FilletShape>(FShape));
-}
-inline int32_t ChFi3d_FilBuilder_get_fillet_shape(const ChFi3d_FilBuilder& self_) {
-    return static_cast<int32_t>(self_.GetFilletShape());
-}
-inline const ChFi3d_Builder& ChFi3d_FilBuilder_as_ChFi3d_Builder(const ChFi3d_FilBuilder& self_) { return static_cast<const ChFi3d_Builder&>(self_); }
-inline ChFi3d_Builder& ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(ChFi3d_FilBuilder& self_) { return static_cast<ChFi3d_Builder&>(self_); }
-inline void ChFi3d_FilBuilder_inherited_SetParams(ChFi3d_FilBuilder& self, Standard_Real Tang, Standard_Real Tesp, Standard_Real T2d, Standard_Real TApp3d, Standard_Real TolApp2d, Standard_Real Fleche) {
-    self.SetParams(Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche);
-}
-inline void ChFi3d_FilBuilder_inherited_Remove(ChFi3d_FilBuilder& self, const TopoDS_Edge& E) {
-    self.Remove(E);
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_Contains(const ChFi3d_FilBuilder& self, const TopoDS_Edge& E) {
-    return self.Contains(E);
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_NbElements(const ChFi3d_FilBuilder& self) {
-    return self.NbElements();
-}
-inline Standard_Real ChFi3d_FilBuilder_inherited_Length(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return self.Length(IC);
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_FilBuilder_inherited_FirstVertex(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self.FirstVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_FilBuilder_inherited_LastVertex(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self.LastVertex(IC));
-}
-inline Standard_Real ChFi3d_FilBuilder_inherited_Abscissa(const ChFi3d_FilBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
-    return self.Abscissa(IC, V);
-}
-inline Standard_Real ChFi3d_FilBuilder_inherited_RelativeAbscissa(const ChFi3d_FilBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
-    return self.RelativeAbscissa(IC, V);
-}
-inline bool ChFi3d_FilBuilder_inherited_ClosedAndTangent(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return self.ClosedAndTangent(IC);
-}
-inline bool ChFi3d_FilBuilder_inherited_Closed(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return self.Closed(IC);
-}
-inline void ChFi3d_FilBuilder_inherited_Compute(ChFi3d_FilBuilder& self) {
-    self.Compute();
-}
-inline bool ChFi3d_FilBuilder_inherited_IsDone(const ChFi3d_FilBuilder& self) {
-    return self.IsDone();
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_FilBuilder_inherited_Shape(const ChFi3d_FilBuilder& self) {
-    return std::make_unique<TopoDS_Shape>(self.Shape());
-}
-inline const TopTools_ListOfShape& ChFi3d_FilBuilder_inherited_Generated(ChFi3d_FilBuilder& self, const TopoDS_Shape& EouV) {
-    return self.Generated(EouV);
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_NbFaultyContours(const ChFi3d_FilBuilder& self) {
-    return self.NbFaultyContours();
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_FaultyContour(const ChFi3d_FilBuilder& self, Standard_Integer I) {
-    return self.FaultyContour(I);
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_NbComputedSurfaces(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return self.NbComputedSurfaces(IC);
-}
-inline std::unique_ptr<Handle(Geom_Surface)> ChFi3d_FilBuilder_inherited_ComputedSurface(const ChFi3d_FilBuilder& self, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<Handle(Geom_Surface)>(self.ComputedSurface(IC, IS));
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_NbFaultyVertices(const ChFi3d_FilBuilder& self) {
-    return self.NbFaultyVertices();
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_FilBuilder_inherited_FaultyVertex(const ChFi3d_FilBuilder& self, Standard_Integer IV) {
-    return std::make_unique<TopoDS_Vertex>(self.FaultyVertex(IV));
-}
-inline bool ChFi3d_FilBuilder_inherited_HasResult(const ChFi3d_FilBuilder& self) {
-    return self.HasResult();
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_FilBuilder_inherited_BadShape(const ChFi3d_FilBuilder& self) {
-    return std::make_unique<TopoDS_Shape>(self.BadShape());
-}
-inline void ChFi3d_FilBuilder_inherited_Reset(ChFi3d_FilBuilder& self) {
-    self.Reset();
-}
-inline bool ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_FilBuilder& self, Standard_Integer Index) {
-    return self.PerformTwoCornerbyInter(Index);
-}
-
-// ========================
-// ChFiDS_SecHArray1 wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor() {
-    return std::make_unique<ChFiDS_SecHArray1>();
-}
-inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<ChFiDS_SecHArray1>(theLower, theUpper);
-}
-inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_int2_circsection(Standard_Integer theLower, Standard_Integer theUpper, const ChFiDS_CircSection& theValue) {
-    return std::make_unique<ChFiDS_SecHArray1>(theLower, theUpper, theValue);
-}
-inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_circsection_int2_bool(const ChFiDS_CircSection& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return std::make_unique<ChFiDS_SecHArray1>(theBegin, theLower, theUpper, arg3);
-}
-inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_secarray1(const ChFiDS_SecArray1& theOther) {
-    return std::make_unique<ChFiDS_SecHArray1>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& ChFiDS_SecHArray1_get_type_descriptor() {
-    return ChFiDS_SecHArray1::get_type_descriptor();
-}
-inline std::unique_ptr<HandleChFiDSSecHArray1> ChFiDS_SecHArray1_to_handle(std::unique_ptr<ChFiDS_SecHArray1> obj) {
-    return std::make_unique<HandleChFiDSSecHArray1>(obj.release());
-}
-inline const ChFiDS_SecHArray1& HandleChFiDSSecHArray1_get(const HandleChFiDSSecHArray1& handle) { return *handle; }
-inline ChFiDS_SecHArray1& HandleChFiDSSecHArray1_get_mut(HandleChFiDSSecHArray1& handle) { return *handle; }
-
-// ========================
-// ChFiDS_CircSection wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_CircSection> ChFiDS_CircSection_ctor() {
-    return std::make_unique<ChFiDS_CircSection>();
-}
-
-// ========================
-// ChFi3d_Builder wrappers
-// ========================
-
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_Builder_first_vertex(const ChFi3d_Builder& self_, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self_.FirstVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_Builder_last_vertex(const ChFi3d_Builder& self_, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_Builder_shape(const ChFi3d_Builder& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape());
-}
-inline std::unique_ptr<opencascade::handle<Geom_Surface>> ChFi3d_Builder_computed_surface(const ChFi3d_Builder& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<Geom_Surface>>(self_.ComputedSurface(IC, IS));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_Builder_faulty_vertex(const ChFi3d_Builder& self_, Standard_Integer IV) {
-    return std::make_unique<TopoDS_Vertex>(self_.FaultyVertex(IV));
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_Builder_bad_shape(const ChFi3d_Builder& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.BadShape());
-}
-inline void ChFi3d_Builder_set_continuity(ChFi3d_Builder& self_, int32_t InternalContinuity, Standard_Real AngularTolerance) {
-    self_.SetContinuity(static_cast<GeomAbs_Shape>(InternalContinuity), AngularTolerance);
-}
-inline int32_t ChFi3d_Builder_stripe_status(const ChFi3d_Builder& self_, Standard_Integer IC) {
-    return static_cast<int32_t>(self_.StripeStatus(IC));
-}
-
-// ========================
-// ChFiDS_ElSpine wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_ElSpine> ChFiDS_ElSpine_ctor() {
-    return std::make_unique<ChFiDS_ElSpine>();
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> ChFiDS_ElSpine_shallow_copy(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.ShallowCopy());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> ChFiDS_ElSpine_trim(const ChFiDS_ElSpine& self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.Trim(First, Last, Tol));
-}
-inline std::unique_ptr<gp_Pnt> ChFiDS_ElSpine_value(const ChFiDS_ElSpine& self_, Standard_Real AbsC) {
-    return std::make_unique<gp_Pnt>(self_.Value(AbsC));
-}
-inline std::unique_ptr<gp_Lin> ChFiDS_ElSpine_line(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<gp_Lin>(self_.Line());
-}
-inline std::unique_ptr<gp_Circ> ChFiDS_ElSpine_circle(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<gp_Circ>(self_.Circle());
-}
-inline std::unique_ptr<gp_Elips> ChFiDS_ElSpine_ellipse(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<gp_Elips>(self_.Ellipse());
-}
-inline std::unique_ptr<gp_Hypr> ChFiDS_ElSpine_hyperbola(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<gp_Hypr>(self_.Hyperbola());
-}
-inline std::unique_ptr<gp_Parab> ChFiDS_ElSpine_parabola(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<gp_Parab>(self_.Parabola());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> ChFiDS_ElSpine_bezier(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<opencascade::handle<Geom_BezierCurve>>(self_.Bezier());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> ChFiDS_ElSpine_b_spline(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
-}
-inline int32_t ChFiDS_ElSpine_continuity(const ChFiDS_ElSpine& self_) {
-    return static_cast<int32_t>(self_.Continuity());
-}
-inline Standard_Integer ChFiDS_ElSpine_nb_intervals(const ChFiDS_ElSpine& self_, int32_t S) {
-    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
-}
-inline int32_t ChFiDS_ElSpine_get_type(const ChFiDS_ElSpine& self_) {
-    return static_cast<int32_t>(self_.GetType());
-}
-inline const opencascade::handle<Standard_Type>& ChFiDS_ElSpine_get_type_descriptor() {
-    return ChFiDS_ElSpine::get_type_descriptor();
-}
-inline const Adaptor3d_Curve& ChFiDS_ElSpine_as_Adaptor3d_Curve(const ChFiDS_ElSpine& self_) { return static_cast<const Adaptor3d_Curve&>(self_); }
-inline Adaptor3d_Curve& ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(ChFiDS_ElSpine& self_) { return static_cast<Adaptor3d_Curve&>(self_); }
-inline bool ChFiDS_ElSpine_inherited_IsClosed(const ChFiDS_ElSpine& self) {
-    return self.IsClosed();
-}
-inline std::unique_ptr<gp_Vec> ChFiDS_ElSpine_inherited_DN(const ChFiDS_ElSpine& self, Standard_Real U, Standard_Integer N) {
-    return std::make_unique<gp_Vec>(self.DN(U, N));
-}
-inline Standard_Integer ChFiDS_ElSpine_inherited_Degree(const ChFiDS_ElSpine& self) {
-    return self.Degree();
-}
-inline bool ChFiDS_ElSpine_inherited_IsRational(const ChFiDS_ElSpine& self) {
-    return self.IsRational();
-}
-inline Standard_Integer ChFiDS_ElSpine_inherited_NbPoles(const ChFiDS_ElSpine& self) {
-    return self.NbPoles();
-}
-inline Standard_Integer ChFiDS_ElSpine_inherited_NbKnots(const ChFiDS_ElSpine& self) {
-    return self.NbKnots();
-}
-
-// ========================
-// ChFiDS_SurfData wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_SurfData> ChFiDS_SurfData_ctor() {
-    return std::make_unique<ChFiDS_SurfData>();
-}
-inline std::unique_ptr<gp_Pnt2d> ChFiDS_SurfData_get2d_points(const ChFiDS_SurfData& self_, Standard_Boolean First, Standard_Integer OnS) {
-    return std::make_unique<gp_Pnt2d>(self_.Get2dPoints(First, OnS));
-}
-inline int32_t ChFiDS_SurfData_orientation(const ChFiDS_SurfData& self_) {
-    return static_cast<int32_t>(self_.Orientation());
-}
-inline const opencascade::handle<Standard_Type>& ChFiDS_SurfData_get_type_descriptor() {
-    return ChFiDS_SurfData::get_type_descriptor();
-}
-inline std::unique_ptr<HandleChFiDSSurfData> ChFiDS_SurfData_to_handle(std::unique_ptr<ChFiDS_SurfData> obj) {
-    return std::make_unique<HandleChFiDSSurfData>(obj.release());
-}
-inline const ChFiDS_SurfData& HandleChFiDSSurfData_get(const HandleChFiDSSurfData& handle) { return *handle; }
-inline ChFiDS_SurfData& HandleChFiDSSurfData_get_mut(HandleChFiDSSurfData& handle) { return *handle; }
-
-// ========================
-// ChFiDS_CommonPoint wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_CommonPoint> ChFiDS_CommonPoint_ctor() {
-    return std::make_unique<ChFiDS_CommonPoint>();
-}
-inline void ChFiDS_CommonPoint_set_arc(ChFiDS_CommonPoint& self_, Standard_Real Tol, const TopoDS_Edge& A, Standard_Real Param, int32_t TArc) {
-    self_.SetArc(Tol, A, Param, static_cast<TopAbs_Orientation>(TArc));
-}
-inline int32_t ChFiDS_CommonPoint_transition_on_arc(const ChFiDS_CommonPoint& self_) {
-    return static_cast<int32_t>(self_.TransitionOnArc());
-}
-
-// ========================
-// ChFiDS_FaceInterference wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_FaceInterference> ChFiDS_FaceInterference_ctor() {
-    return std::make_unique<ChFiDS_FaceInterference>();
-}
-inline void ChFiDS_FaceInterference_set_interference(ChFiDS_FaceInterference& self_, Standard_Integer LineIndex, int32_t Trans, const opencascade::handle<Geom2d_Curve>& PCurv1, const opencascade::handle<Geom2d_Curve>& PCurv2) {
-    self_.SetInterference(LineIndex, static_cast<TopAbs_Orientation>(Trans), PCurv1, PCurv2);
-}
-inline void ChFiDS_FaceInterference_set_transition(ChFiDS_FaceInterference& self_, int32_t Trans) {
-    self_.SetTransition(static_cast<TopAbs_Orientation>(Trans));
-}
-inline int32_t ChFiDS_FaceInterference_transition(const ChFiDS_FaceInterference& self_) {
-    return static_cast<int32_t>(self_.Transition());
-}
-
-// ========================
-// ChFiDS_Stripe wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_Stripe> ChFiDS_Stripe_ctor() {
-    return std::make_unique<ChFiDS_Stripe>();
-}
-inline int32_t ChFiDS_Stripe_orientation_on_face1(const ChFiDS_Stripe& self_) {
-    return static_cast<int32_t>(self_.OrientationOnFace1());
-}
-inline int32_t ChFiDS_Stripe_orientation_on_face2(const ChFiDS_Stripe& self_) {
-    return static_cast<int32_t>(self_.OrientationOnFace2());
-}
-inline void ChFiDS_Stripe_orientation_on_face1_orientation(ChFiDS_Stripe& self_, int32_t Or1) {
-    self_.OrientationOnFace1(static_cast<TopAbs_Orientation>(Or1));
-}
-inline void ChFiDS_Stripe_orientation_on_face2_orientation(ChFiDS_Stripe& self_, int32_t Or2) {
-    self_.OrientationOnFace2(static_cast<TopAbs_Orientation>(Or2));
-}
-inline int32_t ChFiDS_Stripe_first_p_curve_orientation(const ChFiDS_Stripe& self_) {
-    return static_cast<int32_t>(self_.FirstPCurveOrientation());
-}
-inline int32_t ChFiDS_Stripe_last_p_curve_orientation(const ChFiDS_Stripe& self_) {
-    return static_cast<int32_t>(self_.LastPCurveOrientation());
-}
-inline void ChFiDS_Stripe_first_p_curve_orientation_orientation(ChFiDS_Stripe& self_, int32_t O) {
-    self_.FirstPCurveOrientation(static_cast<TopAbs_Orientation>(O));
-}
-inline void ChFiDS_Stripe_last_p_curve_orientation_orientation(ChFiDS_Stripe& self_, int32_t O) {
-    self_.LastPCurveOrientation(static_cast<TopAbs_Orientation>(O));
-}
-inline int32_t ChFiDS_Stripe_orientation_int(const ChFiDS_Stripe& self_, Standard_Integer OnS) {
-    return static_cast<int32_t>(self_.Orientation(OnS));
-}
-inline void ChFiDS_Stripe_set_orientation_orientation_int(ChFiDS_Stripe& self_, int32_t Or, Standard_Integer OnS) {
-    self_.SetOrientation(static_cast<TopAbs_Orientation>(Or), OnS);
-}
-inline int32_t ChFiDS_Stripe_orientation_bool(const ChFiDS_Stripe& self_, Standard_Boolean First) {
-    return static_cast<int32_t>(self_.Orientation(First));
-}
-inline void ChFiDS_Stripe_set_orientation_orientation_bool(ChFiDS_Stripe& self_, int32_t Or, Standard_Boolean First) {
-    self_.SetOrientation(static_cast<TopAbs_Orientation>(Or), First);
-}
-inline const opencascade::handle<Standard_Type>& ChFiDS_Stripe_get_type_descriptor() {
-    return ChFiDS_Stripe::get_type_descriptor();
-}
-inline std::unique_ptr<HandleChFiDSStripe> ChFiDS_Stripe_to_handle(std::unique_ptr<ChFiDS_Stripe> obj) {
-    return std::make_unique<HandleChFiDSStripe>(obj.release());
-}
-inline const ChFiDS_Stripe& HandleChFiDSStripe_get(const HandleChFiDSStripe& handle) { return *handle; }
-inline ChFiDS_Stripe& HandleChFiDSStripe_get_mut(HandleChFiDSStripe& handle) { return *handle; }
-
-// ========================
-// ChFiDS_HData wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_HData> ChFiDS_HData_ctor() {
-    return std::make_unique<ChFiDS_HData>();
-}
-inline std::unique_ptr<ChFiDS_HData> ChFiDS_HData_ctor_sequenceofsurfdata(const ChFiDS_SequenceOfSurfData& theOther) {
-    return std::make_unique<ChFiDS_HData>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& ChFiDS_HData_get_type_descriptor() {
-    return ChFiDS_HData::get_type_descriptor();
-}
-inline std::unique_ptr<HandleChFiDSHData> ChFiDS_HData_to_handle(std::unique_ptr<ChFiDS_HData> obj) {
-    return std::make_unique<HandleChFiDSHData>(obj.release());
-}
-inline const ChFiDS_HData& HandleChFiDSHData_get(const HandleChFiDSHData& handle) { return *handle; }
-inline ChFiDS_HData& HandleChFiDSHData_get_mut(HandleChFiDSHData& handle) { return *handle; }
-
-// ========================
-// BRepAdaptor_Curve2d wrappers
-// ========================
-
-inline std::unique_ptr<BRepAdaptor_Curve2d> BRepAdaptor_Curve2d_ctor() {
-    return std::make_unique<BRepAdaptor_Curve2d>();
-}
-inline std::unique_ptr<BRepAdaptor_Curve2d> BRepAdaptor_Curve2d_ctor_edge_face(const TopoDS_Edge& E, const TopoDS_Face& F) {
-    return std::make_unique<BRepAdaptor_Curve2d>(E, F);
-}
-inline std::unique_ptr<opencascade::handle<Adaptor2d_Curve2d>> BRepAdaptor_Curve2d_shallow_copy(const BRepAdaptor_Curve2d& self_) {
-    return std::make_unique<opencascade::handle<Adaptor2d_Curve2d>>(self_.ShallowCopy());
-}
-inline const opencascade::handle<Standard_Type>& BRepAdaptor_Curve2d_get_type_descriptor() {
-    return BRepAdaptor_Curve2d::get_type_descriptor();
-}
-inline const Adaptor2d_Curve2d& BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(const BRepAdaptor_Curve2d& self_) { return static_cast<const Adaptor2d_Curve2d&>(self_); }
-inline Adaptor2d_Curve2d& BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(BRepAdaptor_Curve2d& self_) { return static_cast<Adaptor2d_Curve2d&>(self_); }
-inline const Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(const BRepAdaptor_Curve2d& self_) { return static_cast<const Geom2dAdaptor_Curve&>(self_); }
-inline Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(BRepAdaptor_Curve2d& self_) { return static_cast<Geom2dAdaptor_Curve&>(self_); }
-inline Standard_Real BRepAdaptor_Curve2d_inherited_FirstParameter(const BRepAdaptor_Curve2d& self) {
-    return self.FirstParameter();
-}
-inline Standard_Real BRepAdaptor_Curve2d_inherited_LastParameter(const BRepAdaptor_Curve2d& self) {
-    return self.LastParameter();
-}
-inline std::unique_ptr<Handle(Adaptor2d_Curve2d)> BRepAdaptor_Curve2d_inherited_Trim(const BRepAdaptor_Curve2d& self, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<Handle(Adaptor2d_Curve2d)>(self.Trim(First, Last, Tol));
-}
-inline bool BRepAdaptor_Curve2d_inherited_IsClosed(const BRepAdaptor_Curve2d& self) {
-    return self.IsClosed();
-}
-inline bool BRepAdaptor_Curve2d_inherited_IsPeriodic(const BRepAdaptor_Curve2d& self) {
-    return self.IsPeriodic();
-}
-inline Standard_Real BRepAdaptor_Curve2d_inherited_Period(const BRepAdaptor_Curve2d& self) {
-    return self.Period();
-}
-inline std::unique_ptr<gp_Pnt2d> BRepAdaptor_Curve2d_inherited_Value(const BRepAdaptor_Curve2d& self, Standard_Real U) {
-    return std::make_unique<gp_Pnt2d>(self.Value(U));
-}
-inline void BRepAdaptor_Curve2d_inherited_D0(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P) {
-    self.D0(U, P);
-}
-inline void BRepAdaptor_Curve2d_inherited_D1(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V) {
-    self.D1(U, P, V);
-}
-inline void BRepAdaptor_Curve2d_inherited_D2(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
-    self.D2(U, P, V1, V2);
-}
-inline void BRepAdaptor_Curve2d_inherited_D3(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
-    self.D3(U, P, V1, V2, V3);
-}
-inline std::unique_ptr<gp_Vec2d> BRepAdaptor_Curve2d_inherited_DN(const BRepAdaptor_Curve2d& self, Standard_Real U, Standard_Integer N) {
-    return std::make_unique<gp_Vec2d>(self.DN(U, N));
-}
-inline Standard_Real BRepAdaptor_Curve2d_inherited_Resolution(const BRepAdaptor_Curve2d& self, Standard_Real R3d) {
-    return self.Resolution(R3d);
-}
-inline std::unique_ptr<gp_Lin2d> BRepAdaptor_Curve2d_inherited_Line(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<gp_Lin2d>(self.Line());
-}
-inline std::unique_ptr<gp_Circ2d> BRepAdaptor_Curve2d_inherited_Circle(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<gp_Circ2d>(self.Circle());
-}
-inline std::unique_ptr<gp_Elips2d> BRepAdaptor_Curve2d_inherited_Ellipse(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<gp_Elips2d>(self.Ellipse());
-}
-inline std::unique_ptr<gp_Hypr2d> BRepAdaptor_Curve2d_inherited_Hyperbola(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<gp_Hypr2d>(self.Hyperbola());
-}
-inline std::unique_ptr<gp_Parab2d> BRepAdaptor_Curve2d_inherited_Parabola(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<gp_Parab2d>(self.Parabola());
-}
-inline Standard_Integer BRepAdaptor_Curve2d_inherited_Degree(const BRepAdaptor_Curve2d& self) {
-    return self.Degree();
-}
-inline bool BRepAdaptor_Curve2d_inherited_IsRational(const BRepAdaptor_Curve2d& self) {
-    return self.IsRational();
-}
-inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbPoles(const BRepAdaptor_Curve2d& self) {
-    return self.NbPoles();
-}
-inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbKnots(const BRepAdaptor_Curve2d& self) {
-    return self.NbKnots();
-}
-inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbSamples(const BRepAdaptor_Curve2d& self) {
-    return self.NbSamples();
-}
-inline void BRepAdaptor_Curve2d_inherited_Reset(BRepAdaptor_Curve2d& self) {
-    self.Reset();
-}
-inline void BRepAdaptor_Curve2d_inherited_Load(BRepAdaptor_Curve2d& self, const Handle(Geom2d_Curve)& theCurve) {
-    self.Load(theCurve);
-}
-inline const Handle(Geom2d_Curve)& BRepAdaptor_Curve2d_inherited_Curve(const BRepAdaptor_Curve2d& self) {
-    return self.Curve();
-}
-
-// ========================
-// ChFiDS_Map wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_Map> ChFiDS_Map_ctor() {
-    return std::make_unique<ChFiDS_Map>();
-}
-inline void ChFiDS_Map_fill(ChFiDS_Map& self_, const TopoDS_Shape& S, int32_t T1, int32_t T2) {
-    self_.Fill(S, static_cast<TopAbs_ShapeEnum>(T1), static_cast<TopAbs_ShapeEnum>(T2));
-}
-
-// ========================
-// ChFiDS_StripeMap wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_StripeMap> ChFiDS_StripeMap_ctor() {
-    return std::make_unique<ChFiDS_StripeMap>();
-}
-
-// ========================
-// ChFiDS_Regul wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_Regul> ChFiDS_Regul_ctor() {
-    return std::make_unique<ChFiDS_Regul>();
-}
-
-// ========================
-// ChFi3d_ChBuilder wrappers
-// ========================
-
-inline std::unique_ptr<ChFi3d_ChBuilder> ChFi3d_ChBuilder_ctor_shape_real(const TopoDS_Shape& S, Standard_Real Ta) {
-    return std::make_unique<ChFi3d_ChBuilder>(S, Ta);
-}
-inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_ChBuilder_sect(const ChFi3d_ChBuilder& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
-}
-inline void ChFi3d_ChBuilder_set_mode(ChFi3d_ChBuilder& self_, int32_t theMode) {
-    self_.SetMode(static_cast<ChFiDS_ChamfMode>(theMode));
-}
-inline int32_t ChFi3d_ChBuilder_is_chamfer(const ChFi3d_ChBuilder& self_, Standard_Integer IC) {
-    return static_cast<int32_t>(self_.IsChamfer(IC));
-}
-inline int32_t ChFi3d_ChBuilder_mode(const ChFi3d_ChBuilder& self_) {
-    return static_cast<int32_t>(self_.Mode());
-}
-inline const ChFi3d_Builder& ChFi3d_ChBuilder_as_ChFi3d_Builder(const ChFi3d_ChBuilder& self_) { return static_cast<const ChFi3d_Builder&>(self_); }
-inline ChFi3d_Builder& ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(ChFi3d_ChBuilder& self_) { return static_cast<ChFi3d_Builder&>(self_); }
-inline void ChFi3d_ChBuilder_inherited_SetParams(ChFi3d_ChBuilder& self, Standard_Real Tang, Standard_Real Tesp, Standard_Real T2d, Standard_Real TApp3d, Standard_Real TolApp2d, Standard_Real Fleche) {
-    self.SetParams(Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche);
-}
-inline void ChFi3d_ChBuilder_inherited_Remove(ChFi3d_ChBuilder& self, const TopoDS_Edge& E) {
-    self.Remove(E);
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_Contains(const ChFi3d_ChBuilder& self, const TopoDS_Edge& E) {
-    return self.Contains(E);
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_NbElements(const ChFi3d_ChBuilder& self) {
-    return self.NbElements();
-}
-inline Standard_Real ChFi3d_ChBuilder_inherited_Length(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return self.Length(IC);
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_ChBuilder_inherited_FirstVertex(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self.FirstVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_ChBuilder_inherited_LastVertex(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self.LastVertex(IC));
-}
-inline Standard_Real ChFi3d_ChBuilder_inherited_Abscissa(const ChFi3d_ChBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
-    return self.Abscissa(IC, V);
-}
-inline Standard_Real ChFi3d_ChBuilder_inherited_RelativeAbscissa(const ChFi3d_ChBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
-    return self.RelativeAbscissa(IC, V);
-}
-inline bool ChFi3d_ChBuilder_inherited_ClosedAndTangent(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return self.ClosedAndTangent(IC);
-}
-inline bool ChFi3d_ChBuilder_inherited_Closed(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return self.Closed(IC);
-}
-inline void ChFi3d_ChBuilder_inherited_Compute(ChFi3d_ChBuilder& self) {
-    self.Compute();
-}
-inline bool ChFi3d_ChBuilder_inherited_IsDone(const ChFi3d_ChBuilder& self) {
-    return self.IsDone();
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_ChBuilder_inherited_Shape(const ChFi3d_ChBuilder& self) {
-    return std::make_unique<TopoDS_Shape>(self.Shape());
-}
-inline const TopTools_ListOfShape& ChFi3d_ChBuilder_inherited_Generated(ChFi3d_ChBuilder& self, const TopoDS_Shape& EouV) {
-    return self.Generated(EouV);
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_NbFaultyContours(const ChFi3d_ChBuilder& self) {
-    return self.NbFaultyContours();
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_FaultyContour(const ChFi3d_ChBuilder& self, Standard_Integer I) {
-    return self.FaultyContour(I);
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_NbComputedSurfaces(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return self.NbComputedSurfaces(IC);
-}
-inline std::unique_ptr<Handle(Geom_Surface)> ChFi3d_ChBuilder_inherited_ComputedSurface(const ChFi3d_ChBuilder& self, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<Handle(Geom_Surface)>(self.ComputedSurface(IC, IS));
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_NbFaultyVertices(const ChFi3d_ChBuilder& self) {
-    return self.NbFaultyVertices();
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_ChBuilder_inherited_FaultyVertex(const ChFi3d_ChBuilder& self, Standard_Integer IV) {
-    return std::make_unique<TopoDS_Vertex>(self.FaultyVertex(IV));
-}
-inline bool ChFi3d_ChBuilder_inherited_HasResult(const ChFi3d_ChBuilder& self) {
-    return self.HasResult();
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_ChBuilder_inherited_BadShape(const ChFi3d_ChBuilder& self) {
-    return std::make_unique<TopoDS_Shape>(self.BadShape());
-}
-inline void ChFi3d_ChBuilder_inherited_Reset(ChFi3d_ChBuilder& self) {
-    self.Reset();
-}
-inline bool ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_ChBuilder& self, Standard_Integer Index) {
-    return self.PerformTwoCornerbyInter(Index);
-}
-
-// ========================
 // BRepPrim_Torus wrappers
 // ========================
 
@@ -14977,6 +14357,626 @@ inline const opencascade::handle<Standard_Type>& TopoDS_TShape_get_type_descript
 }
 inline const TopoDS_TShape& HandleTopoDSTShape_get(const HandleTopoDSTShape& handle) { return *handle; }
 inline TopoDS_TShape& HandleTopoDSTShape_get_mut(HandleTopoDSTShape& handle) { return *handle; }
+
+// ========================
+// ChFi2d_Builder wrappers
+// ========================
+
+inline std::unique_ptr<ChFi2d_Builder> ChFi2d_Builder_ctor() {
+    return std::make_unique<ChFi2d_Builder>();
+}
+inline std::unique_ptr<ChFi2d_Builder> ChFi2d_Builder_ctor_face(const TopoDS_Face& F) {
+    return std::make_unique<ChFi2d_Builder>(F);
+}
+inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_add_fillet(ChFi2d_Builder& self_, const TopoDS_Vertex& V, Standard_Real Radius) {
+    return std::make_unique<TopoDS_Edge>(self_.AddFillet(V, Radius));
+}
+inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_modify_fillet(ChFi2d_Builder& self_, const TopoDS_Edge& Fillet, Standard_Real Radius) {
+    return std::make_unique<TopoDS_Edge>(self_.ModifyFillet(Fillet, Radius));
+}
+inline std::unique_ptr<TopoDS_Vertex> ChFi2d_Builder_remove_fillet(ChFi2d_Builder& self_, const TopoDS_Edge& Fillet) {
+    return std::make_unique<TopoDS_Vertex>(self_.RemoveFillet(Fillet));
+}
+inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_add_chamfer_edge2_real2(ChFi2d_Builder& self_, const TopoDS_Edge& E1, const TopoDS_Edge& E2, Standard_Real D1, Standard_Real D2) {
+    return std::make_unique<TopoDS_Edge>(self_.AddChamfer(E1, E2, D1, D2));
+}
+inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_add_chamfer_edge_vertex_real2(ChFi2d_Builder& self_, const TopoDS_Edge& E, const TopoDS_Vertex& V, Standard_Real D, Standard_Real Ang) {
+    return std::make_unique<TopoDS_Edge>(self_.AddChamfer(E, V, D, Ang));
+}
+inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_modify_chamfer_edge3_real2(ChFi2d_Builder& self_, const TopoDS_Edge& Chamfer, const TopoDS_Edge& E1, const TopoDS_Edge& E2, Standard_Real D1, Standard_Real D2) {
+    return std::make_unique<TopoDS_Edge>(self_.ModifyChamfer(Chamfer, E1, E2, D1, D2));
+}
+inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_modify_chamfer_edge2_real2(ChFi2d_Builder& self_, const TopoDS_Edge& Chamfer, const TopoDS_Edge& E, Standard_Real D, Standard_Real Ang) {
+    return std::make_unique<TopoDS_Edge>(self_.ModifyChamfer(Chamfer, E, D, Ang));
+}
+inline std::unique_ptr<TopoDS_Vertex> ChFi2d_Builder_remove_chamfer(ChFi2d_Builder& self_, const TopoDS_Edge& Chamfer) {
+    return std::make_unique<TopoDS_Vertex>(self_.RemoveChamfer(Chamfer));
+}
+inline std::unique_ptr<TopoDS_Face> ChFi2d_Builder_result(const ChFi2d_Builder& self_) {
+    return std::make_unique<TopoDS_Face>(self_.Result());
+}
+inline int32_t ChFi2d_Builder_status(const ChFi2d_Builder& self_) {
+    return static_cast<int32_t>(self_.Status());
+}
+
+// ========================
+// ChFi3d_FilBuilder wrappers
+// ========================
+
+inline std::unique_ptr<ChFi3d_FilBuilder> ChFi3d_FilBuilder_ctor_shape_filletshape_real(const TopoDS_Shape& S, int32_t FShape, Standard_Real Ta) {
+    return std::make_unique<ChFi3d_FilBuilder>(S, static_cast<ChFi3d_FilletShape>(FShape), Ta);
+}
+inline std::unique_ptr<opencascade::handle<Law_Function>> ChFi3d_FilBuilder_get_law(ChFi3d_FilBuilder& self_, Standard_Integer IC, const TopoDS_Edge& E) {
+    return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
+}
+inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_FilBuilder_sect(const ChFi3d_FilBuilder& self_, Standard_Integer IC, Standard_Integer IS) {
+    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
+}
+inline void ChFi3d_FilBuilder_set_fillet_shape(ChFi3d_FilBuilder& self_, int32_t FShape) {
+    self_.SetFilletShape(static_cast<ChFi3d_FilletShape>(FShape));
+}
+inline int32_t ChFi3d_FilBuilder_get_fillet_shape(const ChFi3d_FilBuilder& self_) {
+    return static_cast<int32_t>(self_.GetFilletShape());
+}
+inline const ChFi3d_Builder& ChFi3d_FilBuilder_as_ChFi3d_Builder(const ChFi3d_FilBuilder& self_) { return static_cast<const ChFi3d_Builder&>(self_); }
+inline ChFi3d_Builder& ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(ChFi3d_FilBuilder& self_) { return static_cast<ChFi3d_Builder&>(self_); }
+inline void ChFi3d_FilBuilder_inherited_SetParams(ChFi3d_FilBuilder& self, Standard_Real Tang, Standard_Real Tesp, Standard_Real T2d, Standard_Real TApp3d, Standard_Real TolApp2d, Standard_Real Fleche) {
+    self.SetParams(Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche);
+}
+inline void ChFi3d_FilBuilder_inherited_Remove(ChFi3d_FilBuilder& self, const TopoDS_Edge& E) {
+    self.Remove(E);
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_Contains(const ChFi3d_FilBuilder& self, const TopoDS_Edge& E) {
+    return self.Contains(E);
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_NbElements(const ChFi3d_FilBuilder& self) {
+    return self.NbElements();
+}
+inline Standard_Real ChFi3d_FilBuilder_inherited_Length(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return self.Length(IC);
+}
+inline std::unique_ptr<TopoDS_Vertex> ChFi3d_FilBuilder_inherited_FirstVertex(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self.FirstVertex(IC));
+}
+inline std::unique_ptr<TopoDS_Vertex> ChFi3d_FilBuilder_inherited_LastVertex(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self.LastVertex(IC));
+}
+inline Standard_Real ChFi3d_FilBuilder_inherited_Abscissa(const ChFi3d_FilBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
+    return self.Abscissa(IC, V);
+}
+inline Standard_Real ChFi3d_FilBuilder_inherited_RelativeAbscissa(const ChFi3d_FilBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
+    return self.RelativeAbscissa(IC, V);
+}
+inline bool ChFi3d_FilBuilder_inherited_ClosedAndTangent(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return self.ClosedAndTangent(IC);
+}
+inline bool ChFi3d_FilBuilder_inherited_Closed(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return self.Closed(IC);
+}
+inline void ChFi3d_FilBuilder_inherited_Compute(ChFi3d_FilBuilder& self) {
+    self.Compute();
+}
+inline bool ChFi3d_FilBuilder_inherited_IsDone(const ChFi3d_FilBuilder& self) {
+    return self.IsDone();
+}
+inline std::unique_ptr<TopoDS_Shape> ChFi3d_FilBuilder_inherited_Shape(const ChFi3d_FilBuilder& self) {
+    return std::make_unique<TopoDS_Shape>(self.Shape());
+}
+inline const TopTools_ListOfShape& ChFi3d_FilBuilder_inherited_Generated(ChFi3d_FilBuilder& self, const TopoDS_Shape& EouV) {
+    return self.Generated(EouV);
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_NbFaultyContours(const ChFi3d_FilBuilder& self) {
+    return self.NbFaultyContours();
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_FaultyContour(const ChFi3d_FilBuilder& self, Standard_Integer I) {
+    return self.FaultyContour(I);
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_NbComputedSurfaces(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return self.NbComputedSurfaces(IC);
+}
+inline std::unique_ptr<Handle(Geom_Surface)> ChFi3d_FilBuilder_inherited_ComputedSurface(const ChFi3d_FilBuilder& self, Standard_Integer IC, Standard_Integer IS) {
+    return std::make_unique<Handle(Geom_Surface)>(self.ComputedSurface(IC, IS));
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_NbFaultyVertices(const ChFi3d_FilBuilder& self) {
+    return self.NbFaultyVertices();
+}
+inline std::unique_ptr<TopoDS_Vertex> ChFi3d_FilBuilder_inherited_FaultyVertex(const ChFi3d_FilBuilder& self, Standard_Integer IV) {
+    return std::make_unique<TopoDS_Vertex>(self.FaultyVertex(IV));
+}
+inline bool ChFi3d_FilBuilder_inherited_HasResult(const ChFi3d_FilBuilder& self) {
+    return self.HasResult();
+}
+inline std::unique_ptr<TopoDS_Shape> ChFi3d_FilBuilder_inherited_BadShape(const ChFi3d_FilBuilder& self) {
+    return std::make_unique<TopoDS_Shape>(self.BadShape());
+}
+inline void ChFi3d_FilBuilder_inherited_Reset(ChFi3d_FilBuilder& self) {
+    self.Reset();
+}
+inline bool ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_FilBuilder& self, Standard_Integer Index) {
+    return self.PerformTwoCornerbyInter(Index);
+}
+
+// ========================
+// ChFiDS_SecHArray1 wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor() {
+    return std::make_unique<ChFiDS_SecHArray1>();
+}
+inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<ChFiDS_SecHArray1>(theLower, theUpper);
+}
+inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_int2_circsection(Standard_Integer theLower, Standard_Integer theUpper, const ChFiDS_CircSection& theValue) {
+    return std::make_unique<ChFiDS_SecHArray1>(theLower, theUpper, theValue);
+}
+inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_circsection_int2_bool(const ChFiDS_CircSection& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return std::make_unique<ChFiDS_SecHArray1>(theBegin, theLower, theUpper, arg3);
+}
+inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_secarray1(const ChFiDS_SecArray1& theOther) {
+    return std::make_unique<ChFiDS_SecHArray1>(theOther);
+}
+inline const opencascade::handle<Standard_Type>& ChFiDS_SecHArray1_get_type_descriptor() {
+    return ChFiDS_SecHArray1::get_type_descriptor();
+}
+inline std::unique_ptr<HandleChFiDSSecHArray1> ChFiDS_SecHArray1_to_handle(std::unique_ptr<ChFiDS_SecHArray1> obj) {
+    return std::make_unique<HandleChFiDSSecHArray1>(obj.release());
+}
+inline const ChFiDS_SecHArray1& HandleChFiDSSecHArray1_get(const HandleChFiDSSecHArray1& handle) { return *handle; }
+inline ChFiDS_SecHArray1& HandleChFiDSSecHArray1_get_mut(HandleChFiDSSecHArray1& handle) { return *handle; }
+
+// ========================
+// ChFiDS_CircSection wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_CircSection> ChFiDS_CircSection_ctor() {
+    return std::make_unique<ChFiDS_CircSection>();
+}
+
+// ========================
+// ChFi3d_Builder wrappers
+// ========================
+
+inline std::unique_ptr<TopoDS_Vertex> ChFi3d_Builder_first_vertex(const ChFi3d_Builder& self_, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self_.FirstVertex(IC));
+}
+inline std::unique_ptr<TopoDS_Vertex> ChFi3d_Builder_last_vertex(const ChFi3d_Builder& self_, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
+}
+inline std::unique_ptr<TopoDS_Shape> ChFi3d_Builder_shape(const ChFi3d_Builder& self_) {
+    return std::make_unique<TopoDS_Shape>(self_.Shape());
+}
+inline std::unique_ptr<opencascade::handle<Geom_Surface>> ChFi3d_Builder_computed_surface(const ChFi3d_Builder& self_, Standard_Integer IC, Standard_Integer IS) {
+    return std::make_unique<opencascade::handle<Geom_Surface>>(self_.ComputedSurface(IC, IS));
+}
+inline std::unique_ptr<TopoDS_Vertex> ChFi3d_Builder_faulty_vertex(const ChFi3d_Builder& self_, Standard_Integer IV) {
+    return std::make_unique<TopoDS_Vertex>(self_.FaultyVertex(IV));
+}
+inline std::unique_ptr<TopoDS_Shape> ChFi3d_Builder_bad_shape(const ChFi3d_Builder& self_) {
+    return std::make_unique<TopoDS_Shape>(self_.BadShape());
+}
+inline void ChFi3d_Builder_set_continuity(ChFi3d_Builder& self_, int32_t InternalContinuity, Standard_Real AngularTolerance) {
+    self_.SetContinuity(static_cast<GeomAbs_Shape>(InternalContinuity), AngularTolerance);
+}
+inline int32_t ChFi3d_Builder_stripe_status(const ChFi3d_Builder& self_, Standard_Integer IC) {
+    return static_cast<int32_t>(self_.StripeStatus(IC));
+}
+
+// ========================
+// ChFiDS_ElSpine wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_ElSpine> ChFiDS_ElSpine_ctor() {
+    return std::make_unique<ChFiDS_ElSpine>();
+}
+inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> ChFiDS_ElSpine_shallow_copy(const ChFiDS_ElSpine& self_) {
+    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.ShallowCopy());
+}
+inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> ChFiDS_ElSpine_trim(const ChFiDS_ElSpine& self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
+    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.Trim(First, Last, Tol));
+}
+inline std::unique_ptr<gp_Pnt> ChFiDS_ElSpine_value(const ChFiDS_ElSpine& self_, Standard_Real AbsC) {
+    return std::make_unique<gp_Pnt>(self_.Value(AbsC));
+}
+inline std::unique_ptr<gp_Lin> ChFiDS_ElSpine_line(const ChFiDS_ElSpine& self_) {
+    return std::make_unique<gp_Lin>(self_.Line());
+}
+inline std::unique_ptr<gp_Circ> ChFiDS_ElSpine_circle(const ChFiDS_ElSpine& self_) {
+    return std::make_unique<gp_Circ>(self_.Circle());
+}
+inline std::unique_ptr<gp_Elips> ChFiDS_ElSpine_ellipse(const ChFiDS_ElSpine& self_) {
+    return std::make_unique<gp_Elips>(self_.Ellipse());
+}
+inline std::unique_ptr<gp_Hypr> ChFiDS_ElSpine_hyperbola(const ChFiDS_ElSpine& self_) {
+    return std::make_unique<gp_Hypr>(self_.Hyperbola());
+}
+inline std::unique_ptr<gp_Parab> ChFiDS_ElSpine_parabola(const ChFiDS_ElSpine& self_) {
+    return std::make_unique<gp_Parab>(self_.Parabola());
+}
+inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> ChFiDS_ElSpine_bezier(const ChFiDS_ElSpine& self_) {
+    return std::make_unique<opencascade::handle<Geom_BezierCurve>>(self_.Bezier());
+}
+inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> ChFiDS_ElSpine_b_spline(const ChFiDS_ElSpine& self_) {
+    return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
+}
+inline int32_t ChFiDS_ElSpine_continuity(const ChFiDS_ElSpine& self_) {
+    return static_cast<int32_t>(self_.Continuity());
+}
+inline Standard_Integer ChFiDS_ElSpine_nb_intervals(const ChFiDS_ElSpine& self_, int32_t S) {
+    return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+inline int32_t ChFiDS_ElSpine_get_type(const ChFiDS_ElSpine& self_) {
+    return static_cast<int32_t>(self_.GetType());
+}
+inline const opencascade::handle<Standard_Type>& ChFiDS_ElSpine_get_type_descriptor() {
+    return ChFiDS_ElSpine::get_type_descriptor();
+}
+inline const Adaptor3d_Curve& ChFiDS_ElSpine_as_Adaptor3d_Curve(const ChFiDS_ElSpine& self_) { return static_cast<const Adaptor3d_Curve&>(self_); }
+inline Adaptor3d_Curve& ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(ChFiDS_ElSpine& self_) { return static_cast<Adaptor3d_Curve&>(self_); }
+inline bool ChFiDS_ElSpine_inherited_IsClosed(const ChFiDS_ElSpine& self) {
+    return self.IsClosed();
+}
+inline std::unique_ptr<gp_Vec> ChFiDS_ElSpine_inherited_DN(const ChFiDS_ElSpine& self, Standard_Real U, Standard_Integer N) {
+    return std::make_unique<gp_Vec>(self.DN(U, N));
+}
+inline Standard_Integer ChFiDS_ElSpine_inherited_Degree(const ChFiDS_ElSpine& self) {
+    return self.Degree();
+}
+inline bool ChFiDS_ElSpine_inherited_IsRational(const ChFiDS_ElSpine& self) {
+    return self.IsRational();
+}
+inline Standard_Integer ChFiDS_ElSpine_inherited_NbPoles(const ChFiDS_ElSpine& self) {
+    return self.NbPoles();
+}
+inline Standard_Integer ChFiDS_ElSpine_inherited_NbKnots(const ChFiDS_ElSpine& self) {
+    return self.NbKnots();
+}
+
+// ========================
+// ChFiDS_SurfData wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_SurfData> ChFiDS_SurfData_ctor() {
+    return std::make_unique<ChFiDS_SurfData>();
+}
+inline std::unique_ptr<gp_Pnt2d> ChFiDS_SurfData_get2d_points(const ChFiDS_SurfData& self_, Standard_Boolean First, Standard_Integer OnS) {
+    return std::make_unique<gp_Pnt2d>(self_.Get2dPoints(First, OnS));
+}
+inline int32_t ChFiDS_SurfData_orientation(const ChFiDS_SurfData& self_) {
+    return static_cast<int32_t>(self_.Orientation());
+}
+inline const opencascade::handle<Standard_Type>& ChFiDS_SurfData_get_type_descriptor() {
+    return ChFiDS_SurfData::get_type_descriptor();
+}
+inline std::unique_ptr<HandleChFiDSSurfData> ChFiDS_SurfData_to_handle(std::unique_ptr<ChFiDS_SurfData> obj) {
+    return std::make_unique<HandleChFiDSSurfData>(obj.release());
+}
+inline const ChFiDS_SurfData& HandleChFiDSSurfData_get(const HandleChFiDSSurfData& handle) { return *handle; }
+inline ChFiDS_SurfData& HandleChFiDSSurfData_get_mut(HandleChFiDSSurfData& handle) { return *handle; }
+
+// ========================
+// ChFiDS_CommonPoint wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_CommonPoint> ChFiDS_CommonPoint_ctor() {
+    return std::make_unique<ChFiDS_CommonPoint>();
+}
+inline void ChFiDS_CommonPoint_set_arc(ChFiDS_CommonPoint& self_, Standard_Real Tol, const TopoDS_Edge& A, Standard_Real Param, int32_t TArc) {
+    self_.SetArc(Tol, A, Param, static_cast<TopAbs_Orientation>(TArc));
+}
+inline int32_t ChFiDS_CommonPoint_transition_on_arc(const ChFiDS_CommonPoint& self_) {
+    return static_cast<int32_t>(self_.TransitionOnArc());
+}
+
+// ========================
+// ChFiDS_FaceInterference wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_FaceInterference> ChFiDS_FaceInterference_ctor() {
+    return std::make_unique<ChFiDS_FaceInterference>();
+}
+inline void ChFiDS_FaceInterference_set_interference(ChFiDS_FaceInterference& self_, Standard_Integer LineIndex, int32_t Trans, const opencascade::handle<Geom2d_Curve>& PCurv1, const opencascade::handle<Geom2d_Curve>& PCurv2) {
+    self_.SetInterference(LineIndex, static_cast<TopAbs_Orientation>(Trans), PCurv1, PCurv2);
+}
+inline void ChFiDS_FaceInterference_set_transition(ChFiDS_FaceInterference& self_, int32_t Trans) {
+    self_.SetTransition(static_cast<TopAbs_Orientation>(Trans));
+}
+inline int32_t ChFiDS_FaceInterference_transition(const ChFiDS_FaceInterference& self_) {
+    return static_cast<int32_t>(self_.Transition());
+}
+
+// ========================
+// ChFiDS_Stripe wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_Stripe> ChFiDS_Stripe_ctor() {
+    return std::make_unique<ChFiDS_Stripe>();
+}
+inline int32_t ChFiDS_Stripe_orientation_on_face1(const ChFiDS_Stripe& self_) {
+    return static_cast<int32_t>(self_.OrientationOnFace1());
+}
+inline int32_t ChFiDS_Stripe_orientation_on_face2(const ChFiDS_Stripe& self_) {
+    return static_cast<int32_t>(self_.OrientationOnFace2());
+}
+inline void ChFiDS_Stripe_orientation_on_face1_orientation(ChFiDS_Stripe& self_, int32_t Or1) {
+    self_.OrientationOnFace1(static_cast<TopAbs_Orientation>(Or1));
+}
+inline void ChFiDS_Stripe_orientation_on_face2_orientation(ChFiDS_Stripe& self_, int32_t Or2) {
+    self_.OrientationOnFace2(static_cast<TopAbs_Orientation>(Or2));
+}
+inline int32_t ChFiDS_Stripe_first_p_curve_orientation(const ChFiDS_Stripe& self_) {
+    return static_cast<int32_t>(self_.FirstPCurveOrientation());
+}
+inline int32_t ChFiDS_Stripe_last_p_curve_orientation(const ChFiDS_Stripe& self_) {
+    return static_cast<int32_t>(self_.LastPCurveOrientation());
+}
+inline void ChFiDS_Stripe_first_p_curve_orientation_orientation(ChFiDS_Stripe& self_, int32_t O) {
+    self_.FirstPCurveOrientation(static_cast<TopAbs_Orientation>(O));
+}
+inline void ChFiDS_Stripe_last_p_curve_orientation_orientation(ChFiDS_Stripe& self_, int32_t O) {
+    self_.LastPCurveOrientation(static_cast<TopAbs_Orientation>(O));
+}
+inline int32_t ChFiDS_Stripe_orientation_int(const ChFiDS_Stripe& self_, Standard_Integer OnS) {
+    return static_cast<int32_t>(self_.Orientation(OnS));
+}
+inline void ChFiDS_Stripe_set_orientation_orientation_int(ChFiDS_Stripe& self_, int32_t Or, Standard_Integer OnS) {
+    self_.SetOrientation(static_cast<TopAbs_Orientation>(Or), OnS);
+}
+inline int32_t ChFiDS_Stripe_orientation_bool(const ChFiDS_Stripe& self_, Standard_Boolean First) {
+    return static_cast<int32_t>(self_.Orientation(First));
+}
+inline void ChFiDS_Stripe_set_orientation_orientation_bool(ChFiDS_Stripe& self_, int32_t Or, Standard_Boolean First) {
+    self_.SetOrientation(static_cast<TopAbs_Orientation>(Or), First);
+}
+inline const opencascade::handle<Standard_Type>& ChFiDS_Stripe_get_type_descriptor() {
+    return ChFiDS_Stripe::get_type_descriptor();
+}
+inline std::unique_ptr<HandleChFiDSStripe> ChFiDS_Stripe_to_handle(std::unique_ptr<ChFiDS_Stripe> obj) {
+    return std::make_unique<HandleChFiDSStripe>(obj.release());
+}
+inline const ChFiDS_Stripe& HandleChFiDSStripe_get(const HandleChFiDSStripe& handle) { return *handle; }
+inline ChFiDS_Stripe& HandleChFiDSStripe_get_mut(HandleChFiDSStripe& handle) { return *handle; }
+
+// ========================
+// ChFiDS_HData wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_HData> ChFiDS_HData_ctor() {
+    return std::make_unique<ChFiDS_HData>();
+}
+inline std::unique_ptr<ChFiDS_HData> ChFiDS_HData_ctor_sequenceofsurfdata(const ChFiDS_SequenceOfSurfData& theOther) {
+    return std::make_unique<ChFiDS_HData>(theOther);
+}
+inline const opencascade::handle<Standard_Type>& ChFiDS_HData_get_type_descriptor() {
+    return ChFiDS_HData::get_type_descriptor();
+}
+inline std::unique_ptr<HandleChFiDSHData> ChFiDS_HData_to_handle(std::unique_ptr<ChFiDS_HData> obj) {
+    return std::make_unique<HandleChFiDSHData>(obj.release());
+}
+inline const ChFiDS_HData& HandleChFiDSHData_get(const HandleChFiDSHData& handle) { return *handle; }
+inline ChFiDS_HData& HandleChFiDSHData_get_mut(HandleChFiDSHData& handle) { return *handle; }
+
+// ========================
+// BRepAdaptor_Curve2d wrappers
+// ========================
+
+inline std::unique_ptr<BRepAdaptor_Curve2d> BRepAdaptor_Curve2d_ctor() {
+    return std::make_unique<BRepAdaptor_Curve2d>();
+}
+inline std::unique_ptr<BRepAdaptor_Curve2d> BRepAdaptor_Curve2d_ctor_edge_face(const TopoDS_Edge& E, const TopoDS_Face& F) {
+    return std::make_unique<BRepAdaptor_Curve2d>(E, F);
+}
+inline std::unique_ptr<opencascade::handle<Adaptor2d_Curve2d>> BRepAdaptor_Curve2d_shallow_copy(const BRepAdaptor_Curve2d& self_) {
+    return std::make_unique<opencascade::handle<Adaptor2d_Curve2d>>(self_.ShallowCopy());
+}
+inline const opencascade::handle<Standard_Type>& BRepAdaptor_Curve2d_get_type_descriptor() {
+    return BRepAdaptor_Curve2d::get_type_descriptor();
+}
+inline const Adaptor2d_Curve2d& BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(const BRepAdaptor_Curve2d& self_) { return static_cast<const Adaptor2d_Curve2d&>(self_); }
+inline Adaptor2d_Curve2d& BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(BRepAdaptor_Curve2d& self_) { return static_cast<Adaptor2d_Curve2d&>(self_); }
+inline const Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(const BRepAdaptor_Curve2d& self_) { return static_cast<const Geom2dAdaptor_Curve&>(self_); }
+inline Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(BRepAdaptor_Curve2d& self_) { return static_cast<Geom2dAdaptor_Curve&>(self_); }
+inline Standard_Real BRepAdaptor_Curve2d_inherited_FirstParameter(const BRepAdaptor_Curve2d& self) {
+    return self.FirstParameter();
+}
+inline Standard_Real BRepAdaptor_Curve2d_inherited_LastParameter(const BRepAdaptor_Curve2d& self) {
+    return self.LastParameter();
+}
+inline std::unique_ptr<Handle(Adaptor2d_Curve2d)> BRepAdaptor_Curve2d_inherited_Trim(const BRepAdaptor_Curve2d& self, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
+    return std::make_unique<Handle(Adaptor2d_Curve2d)>(self.Trim(First, Last, Tol));
+}
+inline bool BRepAdaptor_Curve2d_inherited_IsClosed(const BRepAdaptor_Curve2d& self) {
+    return self.IsClosed();
+}
+inline bool BRepAdaptor_Curve2d_inherited_IsPeriodic(const BRepAdaptor_Curve2d& self) {
+    return self.IsPeriodic();
+}
+inline Standard_Real BRepAdaptor_Curve2d_inherited_Period(const BRepAdaptor_Curve2d& self) {
+    return self.Period();
+}
+inline std::unique_ptr<gp_Pnt2d> BRepAdaptor_Curve2d_inherited_Value(const BRepAdaptor_Curve2d& self, Standard_Real U) {
+    return std::make_unique<gp_Pnt2d>(self.Value(U));
+}
+inline void BRepAdaptor_Curve2d_inherited_D0(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P) {
+    self.D0(U, P);
+}
+inline void BRepAdaptor_Curve2d_inherited_D1(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V) {
+    self.D1(U, P, V);
+}
+inline void BRepAdaptor_Curve2d_inherited_D2(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    self.D2(U, P, V1, V2);
+}
+inline void BRepAdaptor_Curve2d_inherited_D3(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    self.D3(U, P, V1, V2, V3);
+}
+inline std::unique_ptr<gp_Vec2d> BRepAdaptor_Curve2d_inherited_DN(const BRepAdaptor_Curve2d& self, Standard_Real U, Standard_Integer N) {
+    return std::make_unique<gp_Vec2d>(self.DN(U, N));
+}
+inline Standard_Real BRepAdaptor_Curve2d_inherited_Resolution(const BRepAdaptor_Curve2d& self, Standard_Real R3d) {
+    return self.Resolution(R3d);
+}
+inline std::unique_ptr<gp_Lin2d> BRepAdaptor_Curve2d_inherited_Line(const BRepAdaptor_Curve2d& self) {
+    return std::make_unique<gp_Lin2d>(self.Line());
+}
+inline std::unique_ptr<gp_Circ2d> BRepAdaptor_Curve2d_inherited_Circle(const BRepAdaptor_Curve2d& self) {
+    return std::make_unique<gp_Circ2d>(self.Circle());
+}
+inline std::unique_ptr<gp_Elips2d> BRepAdaptor_Curve2d_inherited_Ellipse(const BRepAdaptor_Curve2d& self) {
+    return std::make_unique<gp_Elips2d>(self.Ellipse());
+}
+inline std::unique_ptr<gp_Hypr2d> BRepAdaptor_Curve2d_inherited_Hyperbola(const BRepAdaptor_Curve2d& self) {
+    return std::make_unique<gp_Hypr2d>(self.Hyperbola());
+}
+inline std::unique_ptr<gp_Parab2d> BRepAdaptor_Curve2d_inherited_Parabola(const BRepAdaptor_Curve2d& self) {
+    return std::make_unique<gp_Parab2d>(self.Parabola());
+}
+inline Standard_Integer BRepAdaptor_Curve2d_inherited_Degree(const BRepAdaptor_Curve2d& self) {
+    return self.Degree();
+}
+inline bool BRepAdaptor_Curve2d_inherited_IsRational(const BRepAdaptor_Curve2d& self) {
+    return self.IsRational();
+}
+inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbPoles(const BRepAdaptor_Curve2d& self) {
+    return self.NbPoles();
+}
+inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbKnots(const BRepAdaptor_Curve2d& self) {
+    return self.NbKnots();
+}
+inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbSamples(const BRepAdaptor_Curve2d& self) {
+    return self.NbSamples();
+}
+inline void BRepAdaptor_Curve2d_inherited_Reset(BRepAdaptor_Curve2d& self) {
+    self.Reset();
+}
+inline void BRepAdaptor_Curve2d_inherited_Load(BRepAdaptor_Curve2d& self, const Handle(Geom2d_Curve)& theCurve) {
+    self.Load(theCurve);
+}
+inline const Handle(Geom2d_Curve)& BRepAdaptor_Curve2d_inherited_Curve(const BRepAdaptor_Curve2d& self) {
+    return self.Curve();
+}
+
+// ========================
+// ChFiDS_Map wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_Map> ChFiDS_Map_ctor() {
+    return std::make_unique<ChFiDS_Map>();
+}
+inline void ChFiDS_Map_fill(ChFiDS_Map& self_, const TopoDS_Shape& S, int32_t T1, int32_t T2) {
+    self_.Fill(S, static_cast<TopAbs_ShapeEnum>(T1), static_cast<TopAbs_ShapeEnum>(T2));
+}
+
+// ========================
+// ChFiDS_StripeMap wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_StripeMap> ChFiDS_StripeMap_ctor() {
+    return std::make_unique<ChFiDS_StripeMap>();
+}
+
+// ========================
+// ChFiDS_Regul wrappers
+// ========================
+
+inline std::unique_ptr<ChFiDS_Regul> ChFiDS_Regul_ctor() {
+    return std::make_unique<ChFiDS_Regul>();
+}
+
+// ========================
+// ChFi3d_ChBuilder wrappers
+// ========================
+
+inline std::unique_ptr<ChFi3d_ChBuilder> ChFi3d_ChBuilder_ctor_shape_real(const TopoDS_Shape& S, Standard_Real Ta) {
+    return std::make_unique<ChFi3d_ChBuilder>(S, Ta);
+}
+inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_ChBuilder_sect(const ChFi3d_ChBuilder& self_, Standard_Integer IC, Standard_Integer IS) {
+    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
+}
+inline void ChFi3d_ChBuilder_set_mode(ChFi3d_ChBuilder& self_, int32_t theMode) {
+    self_.SetMode(static_cast<ChFiDS_ChamfMode>(theMode));
+}
+inline int32_t ChFi3d_ChBuilder_is_chamfer(const ChFi3d_ChBuilder& self_, Standard_Integer IC) {
+    return static_cast<int32_t>(self_.IsChamfer(IC));
+}
+inline int32_t ChFi3d_ChBuilder_mode(const ChFi3d_ChBuilder& self_) {
+    return static_cast<int32_t>(self_.Mode());
+}
+inline const ChFi3d_Builder& ChFi3d_ChBuilder_as_ChFi3d_Builder(const ChFi3d_ChBuilder& self_) { return static_cast<const ChFi3d_Builder&>(self_); }
+inline ChFi3d_Builder& ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(ChFi3d_ChBuilder& self_) { return static_cast<ChFi3d_Builder&>(self_); }
+inline void ChFi3d_ChBuilder_inherited_SetParams(ChFi3d_ChBuilder& self, Standard_Real Tang, Standard_Real Tesp, Standard_Real T2d, Standard_Real TApp3d, Standard_Real TolApp2d, Standard_Real Fleche) {
+    self.SetParams(Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche);
+}
+inline void ChFi3d_ChBuilder_inherited_Remove(ChFi3d_ChBuilder& self, const TopoDS_Edge& E) {
+    self.Remove(E);
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_Contains(const ChFi3d_ChBuilder& self, const TopoDS_Edge& E) {
+    return self.Contains(E);
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_NbElements(const ChFi3d_ChBuilder& self) {
+    return self.NbElements();
+}
+inline Standard_Real ChFi3d_ChBuilder_inherited_Length(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return self.Length(IC);
+}
+inline std::unique_ptr<TopoDS_Vertex> ChFi3d_ChBuilder_inherited_FirstVertex(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self.FirstVertex(IC));
+}
+inline std::unique_ptr<TopoDS_Vertex> ChFi3d_ChBuilder_inherited_LastVertex(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return std::make_unique<TopoDS_Vertex>(self.LastVertex(IC));
+}
+inline Standard_Real ChFi3d_ChBuilder_inherited_Abscissa(const ChFi3d_ChBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
+    return self.Abscissa(IC, V);
+}
+inline Standard_Real ChFi3d_ChBuilder_inherited_RelativeAbscissa(const ChFi3d_ChBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
+    return self.RelativeAbscissa(IC, V);
+}
+inline bool ChFi3d_ChBuilder_inherited_ClosedAndTangent(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return self.ClosedAndTangent(IC);
+}
+inline bool ChFi3d_ChBuilder_inherited_Closed(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return self.Closed(IC);
+}
+inline void ChFi3d_ChBuilder_inherited_Compute(ChFi3d_ChBuilder& self) {
+    self.Compute();
+}
+inline bool ChFi3d_ChBuilder_inherited_IsDone(const ChFi3d_ChBuilder& self) {
+    return self.IsDone();
+}
+inline std::unique_ptr<TopoDS_Shape> ChFi3d_ChBuilder_inherited_Shape(const ChFi3d_ChBuilder& self) {
+    return std::make_unique<TopoDS_Shape>(self.Shape());
+}
+inline const TopTools_ListOfShape& ChFi3d_ChBuilder_inherited_Generated(ChFi3d_ChBuilder& self, const TopoDS_Shape& EouV) {
+    return self.Generated(EouV);
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_NbFaultyContours(const ChFi3d_ChBuilder& self) {
+    return self.NbFaultyContours();
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_FaultyContour(const ChFi3d_ChBuilder& self, Standard_Integer I) {
+    return self.FaultyContour(I);
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_NbComputedSurfaces(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return self.NbComputedSurfaces(IC);
+}
+inline std::unique_ptr<Handle(Geom_Surface)> ChFi3d_ChBuilder_inherited_ComputedSurface(const ChFi3d_ChBuilder& self, Standard_Integer IC, Standard_Integer IS) {
+    return std::make_unique<Handle(Geom_Surface)>(self.ComputedSurface(IC, IS));
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_NbFaultyVertices(const ChFi3d_ChBuilder& self) {
+    return self.NbFaultyVertices();
+}
+inline std::unique_ptr<TopoDS_Vertex> ChFi3d_ChBuilder_inherited_FaultyVertex(const ChFi3d_ChBuilder& self, Standard_Integer IV) {
+    return std::make_unique<TopoDS_Vertex>(self.FaultyVertex(IV));
+}
+inline bool ChFi3d_ChBuilder_inherited_HasResult(const ChFi3d_ChBuilder& self) {
+    return self.HasResult();
+}
+inline std::unique_ptr<TopoDS_Shape> ChFi3d_ChBuilder_inherited_BadShape(const ChFi3d_ChBuilder& self) {
+    return std::make_unique<TopoDS_Shape>(self.BadShape());
+}
+inline void ChFi3d_ChBuilder_inherited_Reset(ChFi3d_ChBuilder& self) {
+    self.Reset();
+}
+inline bool ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_ChBuilder& self, Standard_Integer Index) {
+    return self.PerformTwoCornerbyInter(Index);
+}
 
 // ========================
 // BRepBndLib namespace functions

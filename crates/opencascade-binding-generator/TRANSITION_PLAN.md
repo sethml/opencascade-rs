@@ -22,7 +22,7 @@ The generator was built, old bindings moved to `opencascade-sys-old`, and a new 
 
 ### Step 4a: Header Coverage
 
-262 explicit headers in `headers.txt` expand to 378 via automatic dependency resolution (`--resolve-deps`). The generator produces 79 modules.
+265 explicit headers (from `bindings.toml` — 2 full modules + 219 individual headers) expand to 628 via automatic dependency resolution. The generator produces 84 modules.
 
 ### Step 4b: Collection Support
 
@@ -203,7 +203,7 @@ These convenience wrappers are purely Rust-side (no ffi.rs or wrappers.hxx entri
 
 ## Future Work: Expanding to All OCCT Headers
 
-Currently 267 explicit headers are listed in `headers.txt`. OCCT ships 6,875 `.hxx` headers across ~349 modules. An experimental run generating bindings for all headers produced 6,565 types and 90,295 functions in 333 modules, but surfaced several issues that need fixing first.
+Currently 265 explicit headers are configured in `bindings.toml` (2 full modules + 219 individual headers). OCCT ships 6,875 `.hxx` headers across ~349 modules. An experimental run generating bindings for all headers produced 6,565 types and 90,295 functions in 333 modules, but surfaced several issues that need fixing first.
 
 ### 13. Invalid Rust identifiers from Fortran common blocks (11 instances)
 

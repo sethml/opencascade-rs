@@ -20,7 +20,7 @@ cd "$REPO_ROOT"
 # Paths
 OCCT_INCLUDE="$REPO_ROOT/target/OCCT/include"
 OUTPUT_DIR="$REPO_ROOT/crates/opencascade-sys/generated"
-HEADERS_FILE="$REPO_ROOT/crates/opencascade-sys/headers.txt"
+CONFIG_FILE="$REPO_ROOT/crates/opencascade-sys/bindings.toml"
 
 # Check prerequisites
 if [[ ! -d "$OCCT_INCLUDE" ]]; then
@@ -29,8 +29,8 @@ if [[ ! -d "$OCCT_INCLUDE" ]]; then
     exit 1
 fi
 
-if [[ ! -f "$HEADERS_FILE" ]]; then
-    echo "Error: Headers file not found at $HEADERS_FILE"
+if [[ ! -f "$CONFIG_FILE" ]]; then
+    echo "Error: Config file not found at $CONFIG_FILE"
     exit 1
 fi
 
@@ -38,28 +38,7 @@ fi
 echo "Building binding generator..."
 cargo build --release -p opencascade-binding-generator
 
-# Read headers from headers.txt, skipping comments and empty lines
-HEADERS=()
-while IFS= read -r line || [[ -n "$line" ]]; do
-    # Skip comments and empty lines
-    [[ "$line" =~ ^[[:space:]]*# ]] && continue
-    [[ -z "${line// }" ]] && continue
-    
-    # Add full path
-    header_path="$OCCT_INCLUDE/$line"
-    if [[ -f "$header_path" ]]; then
-        HEADERS+=("$header_path")
-    else
-        echo "Warning: Header not found: $header_path"
-    fi
-done < "$HEADERS_FILE"
-
-if [[ ${#HEADERS[@]} -eq 0 ]]; then
-    echo "Error: No valid headers found"
-    exit 1
-fi
-
-echo "Generating bindings for ${#HEADERS[@]} headers..."
+echo "Generating bindings from $CONFIG_FILE..."
 
 # Clean generated directory
 echo "Cleaning $OUTPUT_DIR..."
@@ -72,14 +51,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 # Run the generator
-# --resolve-deps: automatically include headers that our explicit headers depend on
-#                 so that all required base classes and types are parsed
 "$REPO_ROOT/target/release/occt-bindgen" \
-    --resolve-deps \
+    --config "$CONFIG_FILE" \
     -I "$OCCT_INCLUDE" \
     -o "$OUTPUT_DIR" \
-    "$@" \
-    "${HEADERS[@]}"
+    "$@"
 
 echo ""
 echo "Bindings generated in $OUTPUT_DIR"

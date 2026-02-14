@@ -3,7 +3,7 @@
 //! A tool using libclang to parse OCCT C++ headers and generate CXX bridge code
 //! with a unified FFI module and per-module re-exports.
 
-use opencascade_binding_generator::{codegen, header_deps, model, module_graph, parser, resolver};
+use opencascade_binding_generator::{codegen, config, header_deps, model, module_graph, parser, resolver};
 
 use anyhow::Result;
 use clap::Parser;
@@ -16,8 +16,11 @@ use std::process::Command;
 #[command(name = "occt-bindgen")]
 #[command(about = "Parse OCCT C++ headers and generate CXX bridge code")]
 struct Args {
-    /// OCCT headers to process
-    #[arg(required = true)]
+    /// TOML configuration file specifying which headers to process
+    #[arg(long)]
+    config: Option<PathBuf>,
+
+    /// OCCT headers to process (alternative to --config)
     headers: Vec<PathBuf>,
 
     /// OCCT include directory (can be specified multiple times)
@@ -55,7 +58,6 @@ fn main() -> Result<()> {
     if args.verbose {
         println!("OCCT Binding Generator");
         println!("======================");
-        println!("Headers to process: {:?}", args.headers);
         println!("Include directories: {:?}", args.include_dirs);
         println!("Output directory: {:?}", args.output);
         if let Some(ref module) = args.module {
@@ -63,8 +65,38 @@ fn main() -> Result<()> {
         }
     }
 
+    // Determine explicit headers from config file or CLI arguments
+    let (explicit_headers, resolve_deps) = if let Some(ref config_path) = args.config {
+        let cfg = config::load_config(config_path)?;
+        let resolve = cfg.general.resolve_deps;
+
+        if args.include_dirs.is_empty() {
+            anyhow::bail!("--config requires at least one -I <include_dir>");
+        }
+        let occt_include_dir = &args.include_dirs[0];
+
+        let headers = config::expand_headers(&cfg, occt_include_dir)?;
+
+        if args.verbose {
+            println!("Config file: {:?}", config_path);
+            println!("  Modules: {:?}", cfg.modules);
+            println!("  Include headers: {} entries", cfg.include_headers.len());
+            println!("  Exclude headers: {} entries", cfg.exclude_headers.len());
+            println!("  Expanded to {} headers", headers.len());
+        }
+
+        println!("Loaded config: {} modules, {} individual headers, {} exclusions -> {} headers",
+            cfg.modules.len(), cfg.include_headers.len(), cfg.exclude_headers.len(), headers.len());
+
+        (headers, resolve)
+    } else if !args.headers.is_empty() {
+        (args.headers.clone(), args.resolve_deps)
+    } else {
+        anyhow::bail!("Either --config <file.toml> or positional header arguments are required");
+    };
+
     // Resolve header dependencies if requested
-    let headers_to_process = if args.resolve_deps && !args.include_dirs.is_empty() {
+    let headers_to_process = if resolve_deps && !args.include_dirs.is_empty() {
         // Use first include dir as OCCT include root
         let occt_include_dir = &args.include_dirs[0];
 
@@ -74,20 +106,20 @@ fn main() -> Result<()> {
         }
 
         let resolved = header_deps::resolve_header_dependencies(
-            &args.headers,
+            &explicit_headers,
             occt_include_dir,
             args.verbose,
         )?;
 
         if args.verbose {
-            println!("  Explicit headers: {}", args.headers.len());
+            println!("  Explicit headers: {}", explicit_headers.len());
             println!("  Resolved headers: {}", resolved.len());
-            println!("  Added {} dependency headers", resolved.len() - args.headers.len());
+            println!("  Added {} dependency headers", resolved.len() - explicit_headers.len());
         }
 
         resolved
     } else {
-        args.headers.clone()
+        explicit_headers
     };
 
     println!("Parsing {} headers...", headers_to_process.len());

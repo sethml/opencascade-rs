@@ -4,7 +4,7 @@ A Rust tool using libclang to parse OCCT headers and generate CXX bridge code wi
 
 ## Status
 
-The binding generator is functional and deployed. It parses 378 OCCT headers (262 explicit + automatic dependency resolution), generating a unified `ffi.rs` (45K lines, 602 types, 6079 functions) plus 79 per-module re-export files.
+The binding generator is functional and deployed. It reads `bindings.toml` to determine which OCCT modules and headers to process, then parses them (with automatic dependency resolution) to generate a unified `ffi.rs` plus per-module re-export files.
 
 The `opencascade` high-level crate compiles against the generated bindings. Some methods are stubbed due to generator limitations documented below.
 
@@ -61,16 +61,22 @@ All method filtering (enum checks, lifetime issues, by-value params, etc.) is ce
 # Standard regeneration (from repo root):
 ./scripts/regenerate-bindings.sh
 
-# Manual invocation:
+# Manual invocation with TOML config:
 cargo run -p opencascade-binding-generator -- \
-    --resolve-deps \
+    --config crates/opencascade-sys/bindings.toml \
+    -I target/OCCT/include \
+    -o crates/opencascade-sys/generated
+
+# Or with explicit header arguments (legacy):
+cargo run -p opencascade-binding-generator -- \
     -I target/OCCT/include \
     -o crates/opencascade-sys/generated \
-    $(cat crates/opencascade-sys/headers.txt | grep -v '^#' | grep -v '^$' | sed 's|^|target/OCCT/include/|')
+    target/OCCT/include/gp_Pnt.hxx target/OCCT/include/TopoDS_Shape.hxx ...
 ```
 
 **Flags:**
-- `--resolve-deps` -- Auto-include header dependencies (always used)
+- `--config <file>` -- TOML configuration file specifying headers (recommended)
+- `--resolve-deps` -- Auto-include header dependencies (default: true)
 - `--dump-symbols` -- Dump symbol table for debugging
 - `--dry-run` -- Parse without generating
 - `-v, --verbose` -- Verbose output

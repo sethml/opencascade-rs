@@ -9053,6 +9053,1448 @@ mod ffi {
         fn gp_XYZ_subtracted(self_: &gp_XYZ, theOther: &gp_XYZ) -> UniquePtr<gp_XYZ>;
         /// Clone into a new UniquePtr via copy constructor
         fn gp_XYZ_to_owned(self_: &gp_XYZ) -> UniquePtr<gp_XYZ>;
+        /// ======================== BRepFilletAPI_LocalOperation ========================
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:31 - `BRepFilletAPI_LocalOperation`
+        ///
+        /// Construction of fillets on the edges of a Shell.
+        type BRepFilletAPI_LocalOperation;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:38 - `BRepFilletAPI_LocalOperation::Add()`
+        ///
+        /// Adds a  contour in  the  builder  (builds a
+        /// contour  of tangent edges).
+        #[cxx_name = "Add"]
+        fn add(self: Pin<&mut BRepFilletAPI_LocalOperation>, E: &TopoDS_Edge);
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:42 - `BRepFilletAPI_LocalOperation::ResetContour()`
+        ///
+        /// Reset the contour of index IC, there is nomore
+        /// information in the contour.
+        #[cxx_name = "ResetContour"]
+        fn reset_contour(self: Pin<&mut BRepFilletAPI_LocalOperation>, IC: i32);
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:45 - `BRepFilletAPI_LocalOperation::NbContours()`
+        ///
+        /// Number of contours.
+        #[cxx_name = "NbContours"]
+        fn nb_contours(self: &BRepFilletAPI_LocalOperation) -> i32;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:49 - `BRepFilletAPI_LocalOperation::Contour()`
+        ///
+        /// Returns the index of  the  contour containing the edge
+        /// E, returns 0 if E doesn't belong to any contour.
+        #[cxx_name = "Contour"]
+        fn contour(self: &BRepFilletAPI_LocalOperation, E: &TopoDS_Edge) -> i32;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:52 - `BRepFilletAPI_LocalOperation::NbEdges()`
+        ///
+        /// Number of Edges in the contour I.
+        #[cxx_name = "NbEdges"]
+        fn nb_edges(self: &BRepFilletAPI_LocalOperation, I: i32) -> i32;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:55 - `BRepFilletAPI_LocalOperation::Edge()`
+        ///
+        /// Returns the Edge J in the contour I.
+        #[cxx_name = "Edge"]
+        fn edge(self: &BRepFilletAPI_LocalOperation, I: i32, J: i32) -> &TopoDS_Edge;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:59 - `BRepFilletAPI_LocalOperation::Remove()`
+        ///
+        /// remove the contour containing the Edge E.
+        #[cxx_name = "Remove"]
+        fn remove(self: Pin<&mut BRepFilletAPI_LocalOperation>, E: &TopoDS_Edge);
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:62 - `BRepFilletAPI_LocalOperation::Length()`
+        ///
+        /// returns the length the contour of index IC.
+        #[cxx_name = "Length"]
+        fn length(self: &BRepFilletAPI_LocalOperation, IC: i32) -> f64;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:72 - `BRepFilletAPI_LocalOperation::Abscissa()`
+        ///
+        /// returns the abscissa of the vertex V on
+        /// the contour of index IC.
+        #[cxx_name = "Abscissa"]
+        fn abscissa(self: &BRepFilletAPI_LocalOperation, IC: i32, V: &TopoDS_Vertex) -> f64;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:77 - `BRepFilletAPI_LocalOperation::RelativeAbscissa()`
+        ///
+        /// returns the relative abscissa([0.,1.]) of the
+        /// vertex V on the contour of index IC.
+        #[cxx_name = "RelativeAbscissa"]
+        fn relative_abscissa(
+            self: &BRepFilletAPI_LocalOperation,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        ) -> f64;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:82 - `BRepFilletAPI_LocalOperation::ClosedAndTangent()`
+        ///
+        /// returns true if the contour of index IC is closed
+        /// an tangent.
+        #[cxx_name = "ClosedAndTangent"]
+        fn closed_and_tangent(self: &BRepFilletAPI_LocalOperation, IC: i32) -> bool;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:85 - `BRepFilletAPI_LocalOperation::Closed()`
+        ///
+        /// returns true if the contour of index IC is closed
+        #[cxx_name = "Closed"]
+        fn closed(self: &BRepFilletAPI_LocalOperation, IC: i32) -> bool;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:91 - `BRepFilletAPI_LocalOperation::Reset()`
+        ///
+        /// Reset all the fields updated   by Build operation  and
+        /// leave the  algorithm in  the  same state  than  before
+        /// build    call.  It   allows   contours    and   radius
+        /// modifications  to build the result another time.
+        #[cxx_name = "Reset"]
+        fn reset(self: Pin<&mut BRepFilletAPI_LocalOperation>);
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:93 - `BRepFilletAPI_LocalOperation::Simulate()`
+        #[cxx_name = "Simulate"]
+        fn simulate(self: Pin<&mut BRepFilletAPI_LocalOperation>, IC: i32);
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:95 - `BRepFilletAPI_LocalOperation::NbSurf()`
+        #[cxx_name = "NbSurf"]
+        fn nb_surf(self: &BRepFilletAPI_LocalOperation, IC: i32) -> i32;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:65 - `BRepFilletAPI_LocalOperation::FirstVertex()`
+        ///
+        /// Returns the first Vertex of the contour of index IC.
+        fn BRepFilletAPI_LocalOperation_first_vertex(
+            self_: &BRepFilletAPI_LocalOperation,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:68 - `BRepFilletAPI_LocalOperation::LastVertex()`
+        ///
+        /// Returns the last Vertex of the contour of index IC.
+        fn BRepFilletAPI_LocalOperation_last_vertex(
+            self_: &BRepFilletAPI_LocalOperation,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:97 - `BRepFilletAPI_LocalOperation::Sect()`
+        fn BRepFilletAPI_LocalOperation_sect(
+            self_: &BRepFilletAPI_LocalOperation,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleChFiDSSecHArray1>;
+        /// Upcast BRepFilletAPI_LocalOperation to BRepBuilderAPI_Command
+        fn BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command(
+            self_: &BRepFilletAPI_LocalOperation,
+        ) -> &BRepBuilderAPI_Command;
+        /// Upcast BRepFilletAPI_LocalOperation to BRepBuilderAPI_Command (mutable)
+        fn BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(
+            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
+        ) -> Pin<&mut BRepBuilderAPI_Command>;
+        /// Upcast BRepFilletAPI_LocalOperation to BRepBuilderAPI_MakeShape
+        fn BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(
+            self_: &BRepFilletAPI_LocalOperation,
+        ) -> &BRepBuilderAPI_MakeShape;
+        /// Upcast BRepFilletAPI_LocalOperation to BRepBuilderAPI_MakeShape (mutable)
+        fn BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(
+            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepFilletAPI_LocalOperation_inherited_IsDone(
+            self_: &BRepFilletAPI_LocalOperation,
+        ) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepFilletAPI_LocalOperation_inherited_Check(self_: &BRepFilletAPI_LocalOperation);
+        /// Inherited from BRepBuilderAPI_MakeShape: Build()
+        fn BRepFilletAPI_LocalOperation_inherited_Build(
+            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
+            theRange: &Message_ProgressRange,
+        );
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepFilletAPI_LocalOperation_inherited_Shape(
+            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepFilletAPI_LocalOperation_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepFilletAPI_LocalOperation>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+        fn BRepFilletAPI_LocalOperation_inherited_Modified<'a>(
+            self_: Pin<&'a mut BRepFilletAPI_LocalOperation>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepFilletAPI_LocalOperation_inherited_IsDeleted(
+            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
+            S: &TopoDS_Shape,
+        ) -> bool;
+        /// ======================== BRepFilletAPI_MakeChamfer ========================
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:44 - `BRepFilletAPI_MakeChamfer`
+        ///
+        /// Describes functions to build chamfers on edges of a shell or solid.
+        /// Chamfered Edge of a Shell or Solid
+        /// A MakeChamfer object provides a framework for:
+        /// -   initializing the construction algorithm with a given shape,
+        /// -   acquiring the data characterizing the chamfers,
+        /// -   building the chamfers and constructing the resulting shape, and
+        /// -   consulting the result.
+        type BRepFilletAPI_MakeChamfer;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:51 - `BRepFilletAPI_MakeChamfer::BRepFilletAPI_MakeChamfer()`
+        ///
+        /// Initializes an algorithm for computing chamfers on the shape S.
+        /// The edges on which chamfers are built are defined using the Add function.
+        fn BRepFilletAPI_MakeChamfer_ctor_shape(
+            S: &TopoDS_Shape,
+        ) -> UniquePtr<BRepFilletAPI_MakeChamfer>;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:56 - `BRepFilletAPI_MakeChamfer::Add()`
+        ///
+        /// Adds edge E to the table of edges used by this
+        /// algorithm to build chamfers, where the parameters
+        /// of the chamfer must be set after the
+        #[cxx_name = "Add"]
+        fn add_edge(self: Pin<&mut BRepFilletAPI_MakeChamfer>, E: &TopoDS_Edge);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:70 - `BRepFilletAPI_MakeChamfer::Add()`
+        ///
+        /// Adds edge E to the table of edges used by this
+        /// algorithm to build chamfers, where
+        /// the parameters of the chamfer are given by
+        /// the distance Dis (symmetric chamfer).
+        /// The Add function results in a contour being built by
+        /// propagation from the edge E (i.e. the contour contains at
+        /// least this edge). This contour is composed of edges of
+        /// the shape which are tangential to one another and
+        /// which delimit two series of tangential faces, with one
+        /// series of faces being located on either side of the contour.
+        /// Warning
+        /// Nothing is done if edge E or the face F does not belong to the initial shape.
+        #[cxx_name = "Add"]
+        fn add_real_edge(self: Pin<&mut BRepFilletAPI_MakeChamfer>, Dis: f64, E: &TopoDS_Edge);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:80 - `BRepFilletAPI_MakeChamfer::SetDist()`
+        ///
+        /// Sets the distances Dis1 and Dis2 which give the
+        /// parameters of the chamfer along the contour of index
+        /// IC generated using the Add function in the internal
+        /// data structure of this algorithm. The face F identifies
+        /// the side where Dis1 is measured.
+        /// Warning
+        /// Nothing is done if either the edge E or the face F
+        /// does not belong to the initial shape.
+        #[cxx_name = "SetDist"]
+        fn set_dist(self: Pin<&mut BRepFilletAPI_MakeChamfer>, Dis: f64, IC: i32, F: &TopoDS_Face);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:84 - `BRepFilletAPI_MakeChamfer::GetDist()`
+        #[cxx_name = "GetDist"]
+        fn get_dist(self: &BRepFilletAPI_MakeChamfer, IC: i32, Dis: &mut f64);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:99 - `BRepFilletAPI_MakeChamfer::Add()`
+        ///
+        /// Adds edge E to the table of edges used by this
+        /// algorithm to build chamfers, where
+        /// the parameters of the chamfer are given by the two
+        /// distances Dis1 and Dis2; the face F identifies the side
+        /// where Dis1 is measured.
+        /// The Add function results in a contour being built by
+        /// propagation from the edge E (i.e. the contour contains at
+        /// least this edge). This contour is composed of edges of
+        /// the shape which are tangential to one another and
+        /// which delimit two series of tangential faces, with one
+        /// series of faces being located on either side of the contour.
+        /// Warning
+        /// Nothing is done if edge E or the face F does not belong to the initial shape.
+        #[cxx_name = "Add"]
+        fn add_real2_edge_face(
+            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
+            Dis1: f64,
+            Dis2: f64,
+            E: &TopoDS_Edge,
+            F: &TopoDS_Face,
+        );
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:112 - `BRepFilletAPI_MakeChamfer::SetDists()`
+        ///
+        /// Sets the distances Dis1 and Dis2 which give the
+        /// parameters of the chamfer along the contour of index
+        /// IC generated using the Add function in the internal
+        /// data structure of this algorithm. The face F identifies
+        /// the side where Dis1 is measured.
+        /// Warning
+        /// Nothing is done if either the edge E or the face F
+        /// does not belong to the initial shape.
+        #[cxx_name = "SetDists"]
+        fn set_dists(
+            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
+            Dis1: f64,
+            Dis2: f64,
+            IC: i32,
+            F: &TopoDS_Face,
+        );
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:122 - `BRepFilletAPI_MakeChamfer::Dists()`
+        ///
+        /// Returns the distances Dis1 and Dis2 which give the
+        /// parameters of the chamfer along the contour of index IC
+        /// in the internal data structure of this algorithm.
+        /// Warning
+        /// -1. is returned if IC is outside the bounds of the table of contours.
+        #[cxx_name = "Dists"]
+        fn dists(self: &BRepFilletAPI_MakeChamfer, IC: i32, Dis1: &mut f64, Dis2: &mut f64);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:129 - `BRepFilletAPI_MakeChamfer::AddDA()`
+        ///
+        /// Adds a  fillet contour in  the  builder  (builds a
+        /// contour  of tangent edges to <E> and sets the
+        /// distance <Dis1> and angle <Angle> ( parameters of the chamfer ) ).
+        #[cxx_name = "AddDA"]
+        fn add_da(
+            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
+            Dis: f64,
+            Angle: f64,
+            E: &TopoDS_Edge,
+            F: &TopoDS_Face,
+        );
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:138 - `BRepFilletAPI_MakeChamfer::SetDistAngle()`
+        ///
+        /// set the distance <Dis> and <Angle> of the fillet
+        /// contour of index <IC> in the DS with <Dis> on <F>.
+        /// if the face <F> is not one of common faces
+        /// of an edge of the contour <IC>
+        #[cxx_name = "SetDistAngle"]
+        fn set_dist_angle(
+            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
+            Dis: f64,
+            Angle: f64,
+            IC: i32,
+            F: &TopoDS_Face,
+        );
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:145 - `BRepFilletAPI_MakeChamfer::GetDistAngle()`
+        ///
+        /// gives the distances <Dis> and <Angle> of the fillet
+        /// contour of index <IC> in the DS
+        #[cxx_name = "GetDistAngle"]
+        fn get_dist_angle(
+            self: &BRepFilletAPI_MakeChamfer,
+            IC: i32,
+            Dis: &mut f64,
+            Angle: &mut f64,
+        );
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:153 - `BRepFilletAPI_MakeChamfer::IsSymetric()`
+        ///
+        /// return True if chamfer symmetric false else.
+        #[cxx_name = "IsSymetric"]
+        fn is_symetric(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:156 - `BRepFilletAPI_MakeChamfer::IsTwoDistances()`
+        ///
+        /// return True if chamfer is made with two distances false else.
+        #[cxx_name = "IsTwoDistances"]
+        fn is_two_distances(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:159 - `BRepFilletAPI_MakeChamfer::IsDistanceAngle()`
+        ///
+        /// return True if chamfer is made with distance and angle false else.
+        #[cxx_name = "IsDistanceAngle"]
+        fn is_distance_angle(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:166 - `BRepFilletAPI_MakeChamfer::ResetContour()`
+        ///
+        /// Erases the chamfer parameters on the contour of
+        /// index IC in the internal data structure of this algorithm.
+        /// Use the SetDists function to reset this data.
+        /// Warning
+        /// Nothing is done if IC is outside the bounds of the table of contours.
+        #[cxx_name = "ResetContour"]
+        fn reset_contour(self: Pin<&mut BRepFilletAPI_MakeChamfer>, IC: i32);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:170 - `BRepFilletAPI_MakeChamfer::NbContours()`
+        ///
+        /// Returns the number of contours generated using the
+        /// Add function in the internal data structure of this algorithm.
+        #[cxx_name = "NbContours"]
+        fn nb_contours(self: &BRepFilletAPI_MakeChamfer) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:178 - `BRepFilletAPI_MakeChamfer::Contour()`
+        ///
+        /// Returns the index of the contour in the internal data
+        /// structure of this algorithm, which contains the edge E of the shape.
+        /// This function returns 0 if the edge E does not belong to any contour.
+        /// Warning
+        /// This index can change if a contour is removed from the
+        /// internal data structure of this algorithm using the function Remove.
+        #[cxx_name = "Contour"]
+        fn contour(self: &BRepFilletAPI_MakeChamfer, E: &TopoDS_Edge) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:184 - `BRepFilletAPI_MakeChamfer::NbEdges()`
+        ///
+        /// Returns the number of edges in the contour of index I in
+        /// the internal data structure of this algorithm.
+        /// Warning
+        /// Returns 0 if I is outside the bounds of the table of contours.
+        #[cxx_name = "NbEdges"]
+        fn nb_edges(self: &BRepFilletAPI_MakeChamfer, I: i32) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:192 - `BRepFilletAPI_MakeChamfer::Edge()`
+        ///
+        /// Returns the edge of index J in the contour of index I in
+        /// the internal data structure of this algorithm.
+        /// Warning
+        /// Returns a null shape if:
+        /// -   I is outside the bounds of the table of contours, or
+        /// -   J is outside the bounds of the table of edges of the contour of index I.
+        #[cxx_name = "Edge"]
+        fn edge(self: &BRepFilletAPI_MakeChamfer, I: i32, J: i32) -> &TopoDS_Edge;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:200 - `BRepFilletAPI_MakeChamfer::Remove()`
+        ///
+        /// Removes the contour in the internal data structure of
+        /// this algorithm which contains the edge E of the shape.
+        /// Warning
+        /// Nothing is done if the edge E does not belong to the
+        /// contour in the internal data structure of this algorithm.
+        #[cxx_name = "Remove"]
+        fn remove(self: Pin<&mut BRepFilletAPI_MakeChamfer>, E: &TopoDS_Edge);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:206 - `BRepFilletAPI_MakeChamfer::Length()`
+        ///
+        /// Returns the length of the contour of index IC in the
+        /// internal data structure of this algorithm.
+        /// Warning
+        /// Returns -1. if IC is outside the bounds of the table of contours.
+        #[cxx_name = "Length"]
+        fn length(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> f64;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:226 - `BRepFilletAPI_MakeChamfer::Abscissa()`
+        ///
+        /// Returns the curvilinear abscissa of the vertex V on the
+        /// contour of index IC in the internal data structure of this algorithm.
+        /// Warning
+        /// Returns -1. if:
+        /// -   IC is outside the bounds of the table of contours, or
+        /// -   V is not on the contour of index IC.
+        #[cxx_name = "Abscissa"]
+        fn abscissa(self: &BRepFilletAPI_MakeChamfer, IC: i32, V: &TopoDS_Vertex) -> f64;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:236 - `BRepFilletAPI_MakeChamfer::RelativeAbscissa()`
+        ///
+        /// Returns the relative curvilinear abscissa (i.e. between 0
+        /// and 1) of the vertex V on the contour of index IC in the
+        /// internal data structure of this algorithm.
+        /// Warning
+        /// Returns -1. if:
+        /// -   IC is outside the bounds of the table of contours, or
+        /// -   V is not on the contour of index IC.
+        #[cxx_name = "RelativeAbscissa"]
+        fn relative_abscissa(self: &BRepFilletAPI_MakeChamfer, IC: i32, V: &TopoDS_Vertex) -> f64;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:244 - `BRepFilletAPI_MakeChamfer::ClosedAndTangent()`
+        ///
+        /// eturns true if the contour of index IC in the internal
+        /// data structure of this algorithm is closed and tangential at the point of closure.
+        /// Warning
+        /// Returns false if IC is outside the bounds of the table of contours.
+        #[cxx_name = "ClosedAndTangent"]
+        fn closed_and_tangent(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:250 - `BRepFilletAPI_MakeChamfer::Closed()`
+        ///
+        /// Returns true if the contour of index IC in the internal
+        /// data structure of this algorithm is closed.
+        /// Warning
+        /// Returns false if IC is outside the bounds of the table of contours.
+        #[cxx_name = "Closed"]
+        fn closed(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:270 - `BRepFilletAPI_MakeChamfer::Build()`
+        ///
+        /// Builds the chamfers on all the contours in the internal
+        /// data structure of this algorithm and constructs the resulting shape.
+        /// Use the function IsDone to verify that the chamfered
+        /// shape is built. Use the function Shape to retrieve the chamfered shape.
+        /// Warning
+        /// The construction of chamfers implements highly complex
+        /// construction algorithms. Consequently, there may be
+        /// instances where the algorithm fails, for example if the
+        /// data defining the parameters of the chamfer is not
+        /// compatible with the geometry of the initial shape. There
+        /// is no initial analysis of errors and these only become
+        /// evident at the construction stage.
+        /// Additionally, in the current software release, the following
+        /// cases are not handled:
+        /// -   the end point of the contour is the point of
+        /// intersection of 4 or more edges of the shape, or
+        /// -   the intersection of the chamfer with a face which
+        /// limits the contour is not fully contained in this face.
+        #[cxx_name = "Build"]
+        fn build(self: Pin<&mut BRepFilletAPI_MakeChamfer>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:276 - `BRepFilletAPI_MakeChamfer::Reset()`
+        ///
+        /// Reinitializes this algorithm, thus canceling the effects of the Build function.
+        /// This function allows modifications to be made to the
+        /// contours and chamfer parameters in order to rebuild the shape.
+        #[cxx_name = "Reset"]
+        fn reset(self: Pin<&mut BRepFilletAPI_MakeChamfer>);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:283 - `BRepFilletAPI_MakeChamfer::Generated()`
+        ///
+        /// Returns the  list   of shapes generated   from the
+        /// shape <EorV>.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
+            EorV: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:288 - `BRepFilletAPI_MakeChamfer::Modified()`
+        ///
+        /// Returns the list  of shapes modified from the shape
+        /// <F>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
+            F: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:291 - `BRepFilletAPI_MakeChamfer::IsDeleted()`
+        #[cxx_name = "IsDeleted"]
+        fn is_deleted(self: Pin<&mut BRepFilletAPI_MakeChamfer>, F: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:293 - `BRepFilletAPI_MakeChamfer::Simulate()`
+        #[cxx_name = "Simulate"]
+        fn simulate(self: Pin<&mut BRepFilletAPI_MakeChamfer>, IC: i32);
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:295 - `BRepFilletAPI_MakeChamfer::NbSurf()`
+        #[cxx_name = "NbSurf"]
+        fn nb_surf(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:150 - `BRepFilletAPI_MakeChamfer::SetMode()`
+        ///
+        /// Sets the mode of chamfer
+        fn BRepFilletAPI_MakeChamfer_set_mode(
+            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
+            theMode: i32,
+        );
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:212 - `BRepFilletAPI_MakeChamfer::FirstVertex()`
+        ///
+        /// Returns the first vertex of the contour of index IC
+        /// in the internal data structure of this algorithm.
+        /// Warning
+        /// Returns a null shape if IC is outside the bounds of the table of contours.
+        fn BRepFilletAPI_MakeChamfer_first_vertex(
+            self_: &BRepFilletAPI_MakeChamfer,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:218 - `BRepFilletAPI_MakeChamfer::LastVertex()`
+        ///
+        /// Returns the last vertex of the contour of index IC
+        /// in the internal data structure of this algorithm.
+        /// Warning
+        /// Returns a null shape if IC is outside the bounds of the table of contours.
+        fn BRepFilletAPI_MakeChamfer_last_vertex(
+            self_: &BRepFilletAPI_MakeChamfer,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:297 - `BRepFilletAPI_MakeChamfer::Sect()`
+        fn BRepFilletAPI_MakeChamfer_sect(
+            self_: &BRepFilletAPI_MakeChamfer,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleChFiDSSecHArray1>;
+        /// Upcast BRepFilletAPI_MakeChamfer to BRepBuilderAPI_Command
+        fn BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(
+            self_: &BRepFilletAPI_MakeChamfer,
+        ) -> &BRepBuilderAPI_Command;
+        /// Upcast BRepFilletAPI_MakeChamfer to BRepBuilderAPI_Command (mutable)
+        fn BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(
+            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
+        ) -> Pin<&mut BRepBuilderAPI_Command>;
+        /// Upcast BRepFilletAPI_MakeChamfer to BRepBuilderAPI_MakeShape
+        fn BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape(
+            self_: &BRepFilletAPI_MakeChamfer,
+        ) -> &BRepBuilderAPI_MakeShape;
+        /// Upcast BRepFilletAPI_MakeChamfer to BRepBuilderAPI_MakeShape (mutable)
+        fn BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape_mut(
+            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Upcast BRepFilletAPI_MakeChamfer to BRepFilletAPI_LocalOperation
+        fn BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(
+            self_: &BRepFilletAPI_MakeChamfer,
+        ) -> &BRepFilletAPI_LocalOperation;
+        /// Upcast BRepFilletAPI_MakeChamfer to BRepFilletAPI_LocalOperation (mutable)
+        fn BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(
+            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
+        ) -> Pin<&mut BRepFilletAPI_LocalOperation>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepFilletAPI_MakeChamfer_inherited_IsDone(self_: &BRepFilletAPI_MakeChamfer) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepFilletAPI_MakeChamfer_inherited_Check(self_: &BRepFilletAPI_MakeChamfer);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepFilletAPI_MakeChamfer_inherited_Shape(
+            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
+        ) -> &TopoDS_Shape;
+        /// ======================== BRepFilletAPI_MakeFillet ========================
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:48 - `BRepFilletAPI_MakeFillet`
+        ///
+        /// Describes functions to build fillets on the broken edges of a shell or solid.
+        /// A MakeFillet object provides a framework for:
+        /// -   initializing the construction algorithm with a given shape,
+        /// -   acquiring the data characterizing the fillets,
+        /// -   building the fillets and constructing the resulting shape, and
+        /// -   consulting the result.
+        type BRepFilletAPI_MakeFillet;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:61 - `BRepFilletAPI_MakeFillet::BRepFilletAPI_MakeFillet()`
+        ///
+        /// Initializes   the computation    of   the  fillets.
+        /// <FShape> sets   the type   of fillet  surface. The
+        /// default value is ChFi3d_Rational (classical  nurbs
+        /// representation of  circles).   ChFi3d_QuasiAngular
+        /// corresponds to  a  nurbs representation of circles
+        /// which   parameterisation matches  the  circle one.
+        /// ChFi3d_Polynomial  corresponds to  a    polynomial
+        /// representation of circles.
+        fn BRepFilletAPI_MakeFillet_ctor_shape_filletshape(
+            S: &TopoDS_Shape,
+            FShape: i32,
+        ) -> UniquePtr<BRepFilletAPI_MakeFillet>;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:64 - `BRepFilletAPI_MakeFillet::SetParams()`
+        #[cxx_name = "SetParams"]
+        fn set_params(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            Tang: f64,
+            Tesp: f64,
+            T2d: f64,
+            TApp3d: f64,
+            TolApp2d: f64,
+            Fleche: f64,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:83 - `BRepFilletAPI_MakeFillet::Add()`
+        ///
+        /// Adds a  fillet contour in  the  builder  (builds a
+        /// contour  of tangent edges).
+        /// The Radius must be set after.
+        #[cxx_name = "Add"]
+        fn add_edge(self: Pin<&mut BRepFilletAPI_MakeFillet>, E: &TopoDS_Edge);
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:88 - `BRepFilletAPI_MakeFillet::Add()`
+        ///
+        /// Adds a  fillet description in  the  builder
+        /// - builds a contour  of tangent edges,
+        /// - sets the radius.
+        #[cxx_name = "Add"]
+        fn add_real_edge(self: Pin<&mut BRepFilletAPI_MakeFillet>, Radius: f64, E: &TopoDS_Edge);
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:94 - `BRepFilletAPI_MakeFillet::Add()`
+        ///
+        /// Adds a  fillet description in  the  builder
+        /// - builds a contour  of tangent edges,
+        /// - sets a linear radius evolution law between
+        /// the first and last vertex of the spine.
+        #[cxx_name = "Add"]
+        fn add_real2_edge(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            R1: f64,
+            R2: f64,
+            E: &TopoDS_Edge,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:99 - `BRepFilletAPI_MakeFillet::Add()`
+        ///
+        /// Adds a  fillet description in  the  builder
+        /// - builds a contour  of tangent edges,
+        /// - sest the radius evolution law.
+        #[cxx_name = "Add"]
+        fn add_handlefunction_edge(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            L: &HandleLawFunction,
+            E: &TopoDS_Edge,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:108 - `BRepFilletAPI_MakeFillet::Add()`
+        ///
+        /// Adds a  fillet description in  the  builder
+        /// - builds a contour  of tangent edges,
+        /// - sets the radius evolution law interpolating the values
+        /// given in the array UandR :
+        ///
+        /// p2d.X() = relative parameter on the spine [0,1]
+        /// p2d.Y() = value of the radius.
+        #[cxx_name = "Add"]
+        fn add_array1ofpnt2d_edge(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            UandR: &TColgp_Array1OfPnt2d,
+            E: &TopoDS_Edge,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:114 - `BRepFilletAPI_MakeFillet::SetRadius()`
+        ///
+        /// Sets the parameters of the fillet
+        /// along the contour of index IC generated using the Add function
+        /// in the internal data structure of
+        /// this algorithm, where Radius is the radius of the fillet.
+        #[cxx_name = "SetRadius"]
+        fn set_radius_real_int2(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            Radius: f64,
+            IC: i32,
+            IinC: i32,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:123 - `BRepFilletAPI_MakeFillet::SetRadius()`
+        ///
+        /// Sets the parameters of the fillet
+        /// along the contour of index IC generated using the Add function
+        /// in the internal data structure of this algorithm, where the radius of the
+        /// fillet evolves according to a linear evolution law defined
+        /// from R1 to R2, between the first and last vertices of the contour of index IC.
+        #[cxx_name = "SetRadius"]
+        fn set_radius_real2_int2(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            R1: f64,
+            R2: f64,
+            IC: i32,
+            IinC: i32,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:133 - `BRepFilletAPI_MakeFillet::SetRadius()`
+        ///
+        /// Sets the parameters of the fillet
+        /// along the contour of index IC generated using the Add function
+        /// in the internal data structure of this algorithm, where the radius of the
+        /// fillet evolves according to the evolution law L, between the
+        /// first and last vertices of the contour of index IC.
+        #[cxx_name = "SetRadius"]
+        fn set_radius_handlefunction_int2(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            L: &HandleLawFunction,
+            IC: i32,
+            IinC: i32,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:148 - `BRepFilletAPI_MakeFillet::SetRadius()`
+        ///
+        /// Sets the parameters of the fillet
+        /// along the contour of index IC generated using the Add function
+        /// in the internal data structure of this algorithm,
+        /// where the radius of the fillet evolves according to the evolution law
+        /// which interpolates the set of parameter and radius pairs given
+        /// in the array UandR as follows:
+        /// -   the X coordinate of a point in UandR defines a
+        /// relative parameter on the contour (i.e. a parameter between 0 and 1),
+        /// -          the Y coordinate of a point in UandR gives the
+        /// corresponding value of the radius, and the radius evolves
+        /// between the first and last vertices of the contour of index IC.
+        #[cxx_name = "SetRadius"]
+        fn set_radius_array1ofpnt2d_int2(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            UandR: &TColgp_Array1OfPnt2d,
+            IC: i32,
+            IinC: i32,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:157 - `BRepFilletAPI_MakeFillet::ResetContour()`
+        ///
+        /// Erases the radius information on the contour of index
+        /// IC in the internal data structure of this algorithm.
+        /// Use the SetRadius function to reset this data.
+        /// Warning
+        /// Nothing is done if IC is outside the bounds of the table of contours.
+        #[cxx_name = "ResetContour"]
+        fn reset_contour(self: Pin<&mut BRepFilletAPI_MakeFillet>, IC: i32);
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:164 - `BRepFilletAPI_MakeFillet::IsConstant()`
+        ///
+        /// Returns true if the radius of the fillet along the contour of index IC
+        /// in the internal data structure of this algorithm is constant,
+        /// Warning
+        /// False is returned if IC is outside the bounds of the table
+        /// of contours or if E does not belong to the contour of index IC.
+        #[cxx_name = "IsConstant"]
+        fn is_constant_int(self: Pin<&mut BRepFilletAPI_MakeFillet>, IC: i32) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:172 - `BRepFilletAPI_MakeFillet::Radius()`
+        ///
+        /// Returns the radius of the fillet along the contour of index IC in the
+        /// internal data structure of this algorithm
+        /// Warning
+        /// -   Use this function only if the radius is constant.
+        /// -   -1. is returned if IC is outside the bounds of the
+        /// table of contours or if E does not belong to the contour of index IC.
+        #[cxx_name = "Radius"]
+        fn radius_int(self: Pin<&mut BRepFilletAPI_MakeFillet>, IC: i32) -> f64;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:180 - `BRepFilletAPI_MakeFillet::IsConstant()`
+        ///
+        /// Returns true if the radius of the fillet along the edge E of the
+        /// contour of index IC in the internal data structure of
+        /// this algorithm is constant.
+        /// Warning
+        /// False is returned if IC is outside the bounds of the table
+        /// of contours or if E does not belong to the contour of index IC.
+        #[cxx_name = "IsConstant"]
+        fn is_constant_int_edge(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            IC: i32,
+            E: &TopoDS_Edge,
+        ) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:188 - `BRepFilletAPI_MakeFillet::Radius()`
+        ///
+        /// Returns the radius of the fillet along the edge E of the contour of index
+        /// IC in the internal data structure of this algorithm.
+        /// Warning
+        /// -   Use this function only if the radius is constant.
+        /// -   -1 is returned if IC is outside the bounds of the
+        /// table of contours or if E does not belong to the contour of index IC.
+        #[cxx_name = "Radius"]
+        fn radius_int_edge(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            IC: i32,
+            E: &TopoDS_Edge,
+        ) -> f64;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:191 - `BRepFilletAPI_MakeFillet::SetRadius()`
+        ///
+        /// Assigns Radius as the radius of the fillet on the edge E
+        #[cxx_name = "SetRadius"]
+        fn set_radius_real_int_edge(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            Radius: f64,
+            IC: i32,
+            E: &TopoDS_Edge,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:195 - `BRepFilletAPI_MakeFillet::SetRadius()`
+        #[cxx_name = "SetRadius"]
+        fn set_radius_real_int_vertex(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            Radius: f64,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:199 - `BRepFilletAPI_MakeFillet::GetBounds()`
+        #[cxx_name = "GetBounds"]
+        fn get_bounds(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            IC: i32,
+            E: &TopoDS_Edge,
+            F: &mut f64,
+            L: &mut f64,
+        ) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:206 - `BRepFilletAPI_MakeFillet::SetLaw()`
+        #[cxx_name = "SetLaw"]
+        fn set_law(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            IC: i32,
+            E: &TopoDS_Edge,
+            L: &HandleLawFunction,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:218 - `BRepFilletAPI_MakeFillet::NbContours()`
+        ///
+        /// Returns the number of contours generated using the
+        /// Add function in the internal data structure of this algorithm.
+        #[cxx_name = "NbContours"]
+        fn nb_contours(self: &BRepFilletAPI_MakeFillet) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:226 - `BRepFilletAPI_MakeFillet::Contour()`
+        ///
+        /// Returns the index of the contour in the internal data
+        /// structure of this algorithm which contains the edge E of the shape.
+        /// This function returns 0 if the edge E does not belong to any contour.
+        /// Warning
+        /// This index can change if a contour is removed from the
+        /// internal data structure of this algorithm using the function Remove.
+        #[cxx_name = "Contour"]
+        fn contour(self: &BRepFilletAPI_MakeFillet, E: &TopoDS_Edge) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:232 - `BRepFilletAPI_MakeFillet::NbEdges()`
+        ///
+        /// Returns the number of edges in the contour of index I in
+        /// the internal data structure of this algorithm.
+        /// Warning
+        /// Returns 0 if I is outside the bounds of the table of contours.
+        #[cxx_name = "NbEdges"]
+        fn nb_edges(self: &BRepFilletAPI_MakeFillet, I: i32) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:240 - `BRepFilletAPI_MakeFillet::Edge()`
+        ///
+        /// Returns the edge of index J in the contour of index I in
+        /// the internal data structure of this algorithm.
+        /// Warning
+        /// Returns a null shape if:
+        /// -   I is outside the bounds of the table of contours, or
+        /// -   J is outside the bounds of the table of edges of the index I contour.
+        #[cxx_name = "Edge"]
+        fn edge(self: &BRepFilletAPI_MakeFillet, I: i32, J: i32) -> &TopoDS_Edge;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:248 - `BRepFilletAPI_MakeFillet::Remove()`
+        ///
+        /// Removes the contour in the internal data structure of
+        /// this algorithm which contains the edge E of the shape.
+        /// Warning
+        /// Nothing is done if the edge E does not belong to the
+        /// contour in the internal data structure of this algorithm.
+        #[cxx_name = "Remove"]
+        fn remove(self: Pin<&mut BRepFilletAPI_MakeFillet>, E: &TopoDS_Edge);
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:254 - `BRepFilletAPI_MakeFillet::Length()`
+        ///
+        /// Returns the length of the contour of index IC in the
+        /// internal data structure of this algorithm.
+        /// Warning
+        /// Returns -1. if IC is outside the bounds of the table of contours.
+        #[cxx_name = "Length"]
+        fn length(self: &BRepFilletAPI_MakeFillet, IC: i32) -> f64;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:274 - `BRepFilletAPI_MakeFillet::Abscissa()`
+        ///
+        /// Returns the curvilinear abscissa of the vertex V on the
+        /// contour of index IC in the internal data structure of this algorithm.
+        /// Warning
+        /// Returns -1. if:
+        /// -   IC is outside the bounds of the table of contours, or
+        /// -   V is not on the contour of index IC.
+        #[cxx_name = "Abscissa"]
+        fn abscissa(self: &BRepFilletAPI_MakeFillet, IC: i32, V: &TopoDS_Vertex) -> f64;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:284 - `BRepFilletAPI_MakeFillet::RelativeAbscissa()`
+        ///
+        /// Returns the relative curvilinear abscissa (i.e. between 0
+        /// and 1) of the vertex V on the contour of index IC in the
+        /// internal data structure of this algorithm.
+        /// Warning
+        /// Returns -1. if:
+        /// -   IC is outside the bounds of the table of contours, or
+        /// -   V is not on the contour of index IC.
+        #[cxx_name = "RelativeAbscissa"]
+        fn relative_abscissa(self: &BRepFilletAPI_MakeFillet, IC: i32, V: &TopoDS_Vertex) -> f64;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:293 - `BRepFilletAPI_MakeFillet::ClosedAndTangent()`
+        ///
+        /// Returns true if the contour of index IC in the internal
+        /// data structure of this algorithm is closed and tangential
+        /// at the point of closure.
+        /// Warning
+        /// Returns false if IC is outside the bounds of the table of contours.
+        #[cxx_name = "ClosedAndTangent"]
+        fn closed_and_tangent(self: &BRepFilletAPI_MakeFillet, IC: i32) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:299 - `BRepFilletAPI_MakeFillet::Closed()`
+        ///
+        /// Returns true if the contour of index IC in the internal
+        /// data structure of this algorithm is closed.
+        /// Warning
+        /// Returns false if IC is outside the bounds of the table of contours.
+        #[cxx_name = "Closed"]
+        fn closed(self: &BRepFilletAPI_MakeFillet, IC: i32) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:319 - `BRepFilletAPI_MakeFillet::Build()`
+        ///
+        /// Builds the fillets on all the contours in the internal data
+        /// structure of this algorithm and constructs the resulting shape.
+        /// Use the function IsDone to verify that the filleted shape
+        /// is built. Use the function Shape to retrieve the filleted shape.
+        /// Warning
+        /// The construction of fillets implements highly complex
+        /// construction algorithms. Consequently, there may be
+        /// instances where the algorithm fails, for example if the
+        /// data defining the radius of the fillet is not compatible
+        /// with the geometry of the initial shape. There is no initial
+        /// analysis of errors and they only become evident at the
+        /// construction stage.
+        /// Additionally, in the current software release, the
+        /// following cases are not handled:
+        /// -   the end point of the contour is the point of
+        /// intersection of 4 or more edges of the shape, or
+        /// -   the intersection of the fillet with a face which limits
+        /// the contour is not fully contained in this face.
+        #[cxx_name = "Build"]
+        fn build(self: Pin<&mut BRepFilletAPI_MakeFillet>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:325 - `BRepFilletAPI_MakeFillet::Reset()`
+        ///
+        /// Reinitializes this algorithm, thus canceling the effects of the Build function.
+        /// This function allows modifications to be made to the
+        /// contours and fillet parameters in order to rebuild the shape.
+        #[cxx_name = "Reset"]
+        fn reset(self: Pin<&mut BRepFilletAPI_MakeFillet>);
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:332 - `BRepFilletAPI_MakeFillet::Generated()`
+        ///
+        /// Returns the  list   of shapes generated   from the
+        /// shape <EorV>.
+        #[cxx_name = "Generated"]
+        fn generated(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            EorV: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:337 - `BRepFilletAPI_MakeFillet::Modified()`
+        ///
+        /// Returns the list  of shapes modified from the shape
+        /// <F>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepFilletAPI_MakeFillet>,
+            F: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:340 - `BRepFilletAPI_MakeFillet::IsDeleted()`
+        #[cxx_name = "IsDeleted"]
+        fn is_deleted(self: Pin<&mut BRepFilletAPI_MakeFillet>, F: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:344 - `BRepFilletAPI_MakeFillet::NbSurfaces()`
+        ///
+        /// returns the number of surfaces
+        /// after the shape creation.
+        #[cxx_name = "NbSurfaces"]
+        fn nb_surfaces(self: &BRepFilletAPI_MakeFillet) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:347 - `BRepFilletAPI_MakeFillet::NewFaces()`
+        ///
+        /// Return the faces created for surface <I>.
+        #[cxx_name = "NewFaces"]
+        fn new_faces(self: Pin<&mut BRepFilletAPI_MakeFillet>, I: i32) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:349 - `BRepFilletAPI_MakeFillet::Simulate()`
+        #[cxx_name = "Simulate"]
+        fn simulate(self: Pin<&mut BRepFilletAPI_MakeFillet>, IC: i32);
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:351 - `BRepFilletAPI_MakeFillet::NbSurf()`
+        #[cxx_name = "NbSurf"]
+        fn nb_surf(self: &BRepFilletAPI_MakeFillet, IC: i32) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:358 - `BRepFilletAPI_MakeFillet::NbFaultyContours()`
+        ///
+        /// Returns the number of contours where the computation
+        /// of the fillet failed
+        #[cxx_name = "NbFaultyContours"]
+        fn nb_faulty_contours(self: &BRepFilletAPI_MakeFillet) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:364 - `BRepFilletAPI_MakeFillet::FaultyContour()`
+        ///
+        /// for each I in [1.. NbFaultyContours] returns the index IC of
+        /// the contour where the computation of the fillet failed.
+        /// the method NbEdges(IC) gives the number of edges in the contour IC
+        /// the method Edge(IC,ie) gives the edge number ie of the contour IC
+        #[cxx_name = "FaultyContour"]
+        fn faulty_contour(self: &BRepFilletAPI_MakeFillet, I: i32) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:368 - `BRepFilletAPI_MakeFillet::NbComputedSurfaces()`
+        ///
+        /// returns the number of surfaces which have been
+        /// computed on the contour IC
+        #[cxx_name = "NbComputedSurfaces"]
+        fn nb_computed_surfaces(self: &BRepFilletAPI_MakeFillet, IC: i32) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:375 - `BRepFilletAPI_MakeFillet::NbFaultyVertices()`
+        ///
+        /// returns the number of vertices where the computation failed
+        #[cxx_name = "NbFaultyVertices"]
+        fn nb_faulty_vertices(self: &BRepFilletAPI_MakeFillet) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:382 - `BRepFilletAPI_MakeFillet::HasResult()`
+        ///
+        /// returns true if a part of the result has been computed
+        /// if the filling in a corner failed a shape with a hole is returned
+        #[cxx_name = "HasResult"]
+        fn has_result(self: &BRepFilletAPI_MakeFillet) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:77 - `BRepFilletAPI_MakeFillet::SetContinuity()`
+        ///
+        /// Changes     the      parameters     of  continiuity
+        /// InternalContinuity to produce fillet'surfaces with
+        /// an continuity   Ci (i=0,1 or    2).
+        /// By defaultInternalContinuity = GeomAbs_C1.
+        /// AngularTolerance  is the G1 tolerance between fillet
+        /// and support'faces.
+        fn BRepFilletAPI_MakeFillet_set_continuity(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
+            InternalContinuity: i32,
+            AngularTolerance: f64,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:204 - `BRepFilletAPI_MakeFillet::GetLaw()`
+        fn BRepFilletAPI_MakeFillet_get_law(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
+            IC: i32,
+            E: &TopoDS_Edge,
+        ) -> UniquePtr<HandleLawFunction>;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:211 - `BRepFilletAPI_MakeFillet::SetFilletShape()`
+        ///
+        /// Assigns FShape as the type of fillet shape built by this algorithm.
+        fn BRepFilletAPI_MakeFillet_set_fillet_shape(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
+            FShape: i32,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:214 - `BRepFilletAPI_MakeFillet::GetFilletShape()`
+        ///
+        /// Returns the type of fillet shape built by this algorithm.
+        fn BRepFilletAPI_MakeFillet_get_fillet_shape(self_: &BRepFilletAPI_MakeFillet) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:260 - `BRepFilletAPI_MakeFillet::FirstVertex()`
+        ///
+        /// Returns the first vertex of the contour of index IC
+        /// in the internal data structure of this algorithm.
+        /// Warning
+        /// Returns a null shape if IC is outside the bounds of the table of contours.
+        fn BRepFilletAPI_MakeFillet_first_vertex(
+            self_: &BRepFilletAPI_MakeFillet,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:266 - `BRepFilletAPI_MakeFillet::LastVertex()`
+        ///
+        /// Returns the  last vertex of the contour of index IC
+        /// in the internal data structure of this algorithm.
+        /// Warning
+        /// Returns a null shape if IC is outside the bounds of the table of contours.
+        fn BRepFilletAPI_MakeFillet_last_vertex(
+            self_: &BRepFilletAPI_MakeFillet,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:353 - `BRepFilletAPI_MakeFillet::Sect()`
+        fn BRepFilletAPI_MakeFillet_sect(
+            self_: &BRepFilletAPI_MakeFillet,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleChFiDSSecHArray1>;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:371 - `BRepFilletAPI_MakeFillet::ComputedSurface()`
+        ///
+        /// returns the surface number IS concerning the contour IC
+        fn BRepFilletAPI_MakeFillet_computed_surface(
+            self_: &BRepFilletAPI_MakeFillet,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:378 - `BRepFilletAPI_MakeFillet::FaultyVertex()`
+        ///
+        /// returns the vertex where the computation failed
+        fn BRepFilletAPI_MakeFillet_faulty_vertex(
+            self_: &BRepFilletAPI_MakeFillet,
+            IV: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:385 - `BRepFilletAPI_MakeFillet::BadShape()`
+        ///
+        /// if (HasResult()) returns the partial result
+        fn BRepFilletAPI_MakeFillet_bad_shape(
+            self_: &BRepFilletAPI_MakeFillet,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:395 - `BRepFilletAPI_MakeFillet::StripeStatus()`
+        ///
+        /// returns the status concerning the contour IC in case of error
+        /// ChFiDS_Ok : the computation is Ok
+        /// ChFiDS_StartsolFailure : the computation can't start, perhaps the
+        /// the radius is too big
+        /// ChFiDS_TwistedSurface : the computation failed because of a twisted
+        /// surface
+        /// ChFiDS_WalkingFailure : there is a problem in the walking
+        /// ChFiDS_Error:  other error different from above
+        fn BRepFilletAPI_MakeFillet_stripe_status(self_: &BRepFilletAPI_MakeFillet, IC: i32)
+            -> i32;
+        /// Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_Command
+        fn BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(
+            self_: &BRepFilletAPI_MakeFillet,
+        ) -> &BRepBuilderAPI_Command;
+        /// Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_Command (mutable)
+        fn BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
+        ) -> Pin<&mut BRepBuilderAPI_Command>;
+        /// Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_MakeShape
+        fn BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape(
+            self_: &BRepFilletAPI_MakeFillet,
+        ) -> &BRepBuilderAPI_MakeShape;
+        /// Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_MakeShape (mutable)
+        fn BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape_mut(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Upcast BRepFilletAPI_MakeFillet to BRepFilletAPI_LocalOperation
+        fn BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(
+            self_: &BRepFilletAPI_MakeFillet,
+        ) -> &BRepFilletAPI_LocalOperation;
+        /// Upcast BRepFilletAPI_MakeFillet to BRepFilletAPI_LocalOperation (mutable)
+        fn BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
+        ) -> Pin<&mut BRepFilletAPI_LocalOperation>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepFilletAPI_MakeFillet_inherited_IsDone(self_: &BRepFilletAPI_MakeFillet) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepFilletAPI_MakeFillet_inherited_Check(self_: &BRepFilletAPI_MakeFillet);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepFilletAPI_MakeFillet_inherited_Shape(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
+        ) -> &TopoDS_Shape;
+        /// ======================== BRepFilletAPI_MakeFillet2d ========================
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:51 - `BRepFilletAPI_MakeFillet2d`
+        ///
+        /// Describes functions to build fillets and chamfers on the
+        /// vertices of a planar face.
+        /// Fillets and Chamfers on the Vertices of a Planar Face
+        /// A MakeFillet2d object provides a framework for:
+        /// - initializing the construction algorithm with a given face,
+        /// - acquiring the data characterizing the fillets and chamfers,
+        /// -   building the fillets and chamfers, and constructing the
+        /// resulting shape, and
+        /// -   consulting the result.
+        /// Warning
+        /// Only segments of straight lines and arcs of circles are
+        /// treated. BSplines are not processed.
+        type BRepFilletAPI_MakeFillet2d;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:67 - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
+        ///
+        /// Initializes an empty algorithm for computing fillets and
+        /// chamfers. The face on which the fillets and
+        /// chamfers are built is defined using the Init function.
+        /// The vertices on which fillets or chamfers are built are
+        /// defined using the AddFillet or AddChamfer function.
+        /// Warning
+        /// The status of the initialization, as given by the Status
+        /// function, can be one of the following:
+        /// -   ChFi2d_Ready if the initialization is correct,
+        /// -   ChFi2d_NotPlanar if F is not planar,
+        /// -   ChFi2d_NoFace if F is a null face.
+        fn BRepFilletAPI_MakeFillet2d_ctor() -> UniquePtr<BRepFilletAPI_MakeFillet2d>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:78 - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
+        ///
+        /// Initializes an algorithm for computing fillets and chamfers on the face F.
+        /// The vertices on which fillets or chamfers are built are
+        /// defined using the AddFillet or AddChamfer function.
+        /// Warning
+        /// The status of the initialization, as given by the Status
+        /// function, can be one of the following:
+        /// -   ChFi2d_Ready if the initialization is correct,
+        /// -   ChFi2d_NotPlanar if F is not planar,
+        /// -   ChFi2d_NoFace if F is a null face.
+        fn BRepFilletAPI_MakeFillet2d_ctor_face(
+            F: &TopoDS_Face,
+        ) -> UniquePtr<BRepFilletAPI_MakeFillet2d>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:88 - `BRepFilletAPI_MakeFillet2d::Init()`
+        ///
+        /// Initializes this algorithm for constructing fillets or
+        /// chamfers with the face F.
+        /// Warning
+        /// The status of the initialization, as given by the Status
+        /// function, can be one of the following:
+        /// -   ChFi2d_Ready if the initialization is correct,
+        /// -   ChFi2d_NotPlanar if F is not planar,
+        /// -   ChFi2d_NoFace if F is a null face.
+        #[cxx_name = "Init"]
+        fn init_face(self: Pin<&mut BRepFilletAPI_MakeFillet2d>, F: &TopoDS_Face);
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:93 - `BRepFilletAPI_MakeFillet2d::Init()`
+        ///
+        /// This initialize method allow to init the builder
+        /// from a face RefFace and another face ModFace which derive from RefFace.
+        /// This  is useful to modify a fillet or a chamfer already created on ModFace.
+        #[cxx_name = "Init"]
+        fn init_face2(
+            self: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            RefFace: &TopoDS_Face,
+            ModFace: &TopoDS_Face,
+        );
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:248 - `BRepFilletAPI_MakeFillet2d::IsModified()`
+        ///
+        /// Returns true if the edge E on the face modified by this
+        /// algorithm is chamfered or filleted.
+        /// Warning
+        /// Returns false if E does not belong to the face modified by this algorithm.
+        #[cxx_name = "IsModified"]
+        fn is_modified(self: &BRepFilletAPI_MakeFillet2d, E: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:251 - `BRepFilletAPI_MakeFillet2d::FilletEdges()`
+        ///
+        /// Returns the table of fillets on the face modified by this algorithm.
+        #[cxx_name = "FilletEdges"]
+        fn fillet_edges(self: &BRepFilletAPI_MakeFillet2d) -> &TopTools_SequenceOfShape;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:254 - `BRepFilletAPI_MakeFillet2d::NbFillet()`
+        ///
+        /// Returns the number of fillets on the face modified by this algorithm.
+        #[cxx_name = "NbFillet"]
+        fn nb_fillet(self: &BRepFilletAPI_MakeFillet2d) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:257 - `BRepFilletAPI_MakeFillet2d::ChamferEdges()`
+        ///
+        /// Returns the table of chamfers on the face modified by this algorithm.
+        #[cxx_name = "ChamferEdges"]
+        fn chamfer_edges(self: &BRepFilletAPI_MakeFillet2d) -> &TopTools_SequenceOfShape;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:260 - `BRepFilletAPI_MakeFillet2d::NbChamfer()`
+        ///
+        /// Returns the number of chamfers on the face modified by this algorithm.
+        #[cxx_name = "NbChamfer"]
+        fn nb_chamfer(self: &BRepFilletAPI_MakeFillet2d) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:264 - `BRepFilletAPI_MakeFillet2d::Modified()`
+        ///
+        /// Returns the list  of shapes modified from the shape
+        /// <S>.
+        #[cxx_name = "Modified"]
+        fn modified(
+            self: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            S: &TopoDS_Shape,
+        ) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:269 - `BRepFilletAPI_MakeFillet2d::NbCurves()`
+        ///
+        /// returns the number of new curves
+        /// after the shape creation.
+        #[cxx_name = "NbCurves"]
+        fn nb_curves(self: &BRepFilletAPI_MakeFillet2d) -> i32;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:272 - `BRepFilletAPI_MakeFillet2d::NewEdges()`
+        ///
+        /// Return the Edges created for curve I.
+        #[cxx_name = "NewEdges"]
+        fn new_edges(self: Pin<&mut BRepFilletAPI_MakeFillet2d>, I: i32) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:274 - `BRepFilletAPI_MakeFillet2d::HasDescendant()`
+        #[cxx_name = "HasDescendant"]
+        fn has_descendant(self: &BRepFilletAPI_MakeFillet2d, E: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:282 - `BRepFilletAPI_MakeFillet2d::DescendantEdge()`
+        ///
+        /// Returns the chamfered or filleted edge built from the
+        /// edge E on the face modified by this algorithm. If E has
+        /// not been modified, this function returns E.
+        /// Exceptions
+        /// Standard_NoSuchObject if the edge E does not
+        /// belong to the initial face.
+        #[cxx_name = "DescendantEdge"]
+        fn descendant_edge(self: &BRepFilletAPI_MakeFillet2d, E: &TopoDS_Edge) -> &TopoDS_Edge;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:289 - `BRepFilletAPI_MakeFillet2d::BasisEdge()`
+        ///
+        /// Returns the basis edge on the face modified by this
+        /// algorithm from which the chamfered or filleted edge E is
+        /// built. If E has not been modified, this function returns E.
+        /// Warning
+        /// E is returned if it does not belong to the initial face.
+        #[cxx_name = "BasisEdge"]
+        fn basis_edge(self: &BRepFilletAPI_MakeFillet2d, E: &TopoDS_Edge) -> &TopoDS_Edge;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:294 - `BRepFilletAPI_MakeFillet2d::Build()`
+        ///
+        /// Update the result and set the Done flag
+        #[cxx_name = "Build"]
+        fn build(self: Pin<&mut BRepFilletAPI_MakeFillet2d>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:113 - `BRepFilletAPI_MakeFillet2d::AddFillet()`
+        ///
+        /// Adds a fillet of radius Radius between the two edges
+        /// adjacent to the vertex V on the face modified by this
+        /// algorithm. The two edges do not need to be rectilinear.
+        /// This function returns the fillet and builds the resulting face.
+        /// Warning
+        /// The status of the construction, as given by the Status
+        /// function, can be one of the following:
+        /// - ChFi2d_IsDone if the fillet is built,
+        /// - ChFi2d_ConnexionError if V does not belong to the initial face,
+        /// -   ChFi2d_ComputationError if Radius is too large
+        /// to build a fillet between the two adjacent edges,
+        /// -   ChFi2d_NotAuthorized
+        /// -   if one of the two edges connected to V is a fillet or chamfer, or
+        /// -   if a curve other than a straight line or an arc of a
+        /// circle is used as E, E1 or E2.
+        /// Do not use the returned fillet if the status of the construction is not ChFi2d_IsDone.
+        /// Exceptions
+        /// Standard_NegativeValue if Radius is less than or equal to zero.
+        fn BRepFilletAPI_MakeFillet2d_add_fillet(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            V: &TopoDS_Vertex,
+            Radius: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:130 - `BRepFilletAPI_MakeFillet2d::ModifyFillet()`
+        ///
+        /// Assigns the radius Radius to the fillet Fillet already
+        /// built on the face modified by this algorithm.
+        /// This function returns the new fillet and modifies the existing face.
+        /// Warning
+        /// The status of the construction, as given by the Status
+        /// function, can be one of the following:
+        /// -   ChFi2d_IsDone if the new fillet is built,
+        /// -   ChFi2d_ConnexionError if Fillet does not
+        /// belong to the existing face,
+        /// -   ChFi2d_ComputationError if Radius is too
+        /// large to build a fillet between the two adjacent edges.
+        /// Do not use the returned fillet if the status of the
+        /// construction is not ChFi2d_IsDone.
+        /// Exceptions
+        /// Standard_NegativeValue if Radius is less than or equal to zero.
+        fn BRepFilletAPI_MakeFillet2d_modify_fillet(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            Fillet: &TopoDS_Edge,
+            Radius: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:141 - `BRepFilletAPI_MakeFillet2d::RemoveFillet()`
+        ///
+        /// Removes the fillet Fillet already built on the face
+        /// modified by this algorithm.
+        /// This function returns the vertex connecting the two
+        /// adjacent edges of Fillet and modifies the existing face.
+        /// Warning
+        /// -   The returned vertex is only valid if the Status
+        /// function returns ChFi2d_IsDone.
+        /// -   A null vertex is returned if the edge Fillet does not
+        /// belong to the initial face.
+        fn BRepFilletAPI_MakeFillet2d_remove_fillet(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            Fillet: &TopoDS_Edge,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:153 - `BRepFilletAPI_MakeFillet2d::AddChamfer()`
+        ///
+        /// Adds a chamfer on the face modified by this algorithm
+        /// between the two adjacent edges E1 and E2, where
+        /// the extremities of the chamfer are on E1 and E2 at
+        /// distances D1 and D2 respectively
+        /// In cases where the edges are not rectilinear, distances
+        /// are measured using the curvilinear abscissa of the
+        /// edges and the angle is measured with respect to the
+        /// tangent at the corresponding point.
+        /// The angle Ang is given in radians.
+        /// This function returns the chamfer and builds the resulting face.
+        fn BRepFilletAPI_MakeFillet2d_add_chamfer_edge2_real2(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            E1: &TopoDS_Edge,
+            E2: &TopoDS_Edge,
+            D1: f64,
+            D2: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:185 - `BRepFilletAPI_MakeFillet2d::AddChamfer()`
+        ///
+        /// Adds a chamfer on the face modified by this algorithm
+        /// between the two edges connected by the vertex V,
+        /// where E is one of the two edges. The chamfer makes
+        /// an angle Ang with E and one of its extremities is on
+        /// E at distance D from V.
+        /// In cases where the edges are not rectilinear, distances
+        /// are measured using the curvilinear abscissa of the
+        /// edges and the angle is measured with respect to the
+        /// tangent at the corresponding point.
+        /// The angle Ang is given in radians.
+        /// This function returns the chamfer and builds the resulting face.
+        /// Warning
+        /// The status of the construction, as given by the Status function, can
+        /// be one of the following:
+        /// -          ChFi2d_IsDone if the chamfer is built,
+        /// -  ChFi2d_ParametersError if D1, D2, D or Ang is less than or equal to zero,
+        /// -          ChFi2d_ConnexionError if:
+        /// - the edge E, E1 or E2 does not belong to the initial face, or
+        /// -  the edges E1 and E2 are not adjacent, or
+        /// -  the vertex V is not one of the limit points of the edge E,
+        /// -          ChFi2d_ComputationError if the parameters of the chamfer
+        /// are too large to build a chamfer between the two adjacent edges,
+        /// -          ChFi2d_NotAuthorized if:
+        /// - the edge E1, E2 or one of the two edges connected to V is a fillet or chamfer, or
+        /// - a curve other than a straight line or an arc of a circle is used as E, E1 or E2.
+        /// Do not use the returned chamfer if
+        /// the status of the construction is not ChFi2d_IsDone.
+        fn BRepFilletAPI_MakeFillet2d_add_chamfer_edge_vertex_real2(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            E: &TopoDS_Edge,
+            V: &TopoDS_Vertex,
+            D: f64,
+            Ang: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:195 - `BRepFilletAPI_MakeFillet2d::ModifyChamfer()`
+        ///
+        /// Modifies the chamfer Chamfer on the face modified
+        /// by this algorithm, where:
+        /// E1 and E2 are the two adjacent edges on which
+        /// Chamfer is already built; the extremities of the new
+        /// chamfer are on E1 and E2 at distances D1 and D2 respectively.
+        fn BRepFilletAPI_MakeFillet2d_modify_chamfer_edge3_real2(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            Chamfer: &TopoDS_Edge,
+            E1: &TopoDS_Edge,
+            E2: &TopoDS_Edge,
+            D1: f64,
+            D2: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:228 - `BRepFilletAPI_MakeFillet2d::ModifyChamfer()`
+        ///
+        /// Modifies the chamfer Chamfer on the face modified
+        /// by this algorithm, where:
+        /// E is one of the two adjacent edges on which
+        /// Chamfer is already built; the new chamfer makes
+        /// an angle Ang with E and one of its extremities is
+        /// on E at distance D from the vertex on which the chamfer is built.
+        /// In cases where the edges are not rectilinear, the
+        /// distances are measured using the curvilinear abscissa
+        /// of the edges and the angle is measured with respect
+        /// to the tangent at the corresponding point.
+        /// The angle Ang is given in radians.
+        /// This function returns the new chamfer and modifies the existing face.
+        /// Warning
+        /// The status of the construction, as given by the Status
+        /// function, can be one of the following:
+        /// -   ChFi2d_IsDone if the chamfer is built,
+        /// -   ChFi2d_ParametersError if D1, D2, D or Ang is less than or equal to zero,
+        /// -   ChFi2d_ConnexionError if:
+        /// -   the edge E, E1, E2 or Chamfer does not belong
+        /// to the existing face, or
+        /// -   the edges E1 and E2 are not adjacent,
+        /// -   ChFi2d_ComputationError if the parameters of
+        /// the chamfer are too large to build a chamfer
+        /// between the two adjacent edges,
+        /// -   ChFi2d_NotAuthorized if E1 or E2 is a fillet or chamfer.
+        /// Do not use the returned chamfer if the status of the
+        /// construction is not ChFi2d_IsDone.
+        fn BRepFilletAPI_MakeFillet2d_modify_chamfer_edge2_real2(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            Chamfer: &TopoDS_Edge,
+            E: &TopoDS_Edge,
+            D: f64,
+            Ang: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:242 - `BRepFilletAPI_MakeFillet2d::RemoveChamfer()`
+        ///
+        /// Removes the chamfer Chamfer already built on the face
+        /// modified by this algorithm.
+        /// This function returns the vertex connecting the two
+        /// adjacent edges of Chamfer and modifies the existing face.
+        /// Warning
+        /// -   The returned vertex is only valid if the Status
+        /// function returns ChFi2d_IsDone.
+        /// -   A null vertex is returned if the edge Chamfer does
+        /// not belong to the initial face.
+        fn BRepFilletAPI_MakeFillet2d_remove_chamfer(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            Chamfer: &TopoDS_Edge,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:291 - `BRepFilletAPI_MakeFillet2d::Status()`
+        fn BRepFilletAPI_MakeFillet2d_status(self_: &BRepFilletAPI_MakeFillet2d) -> i32;
+        /// Upcast BRepFilletAPI_MakeFillet2d to BRepBuilderAPI_Command
+        fn BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command(
+            self_: &BRepFilletAPI_MakeFillet2d,
+        ) -> &BRepBuilderAPI_Command;
+        /// Upcast BRepFilletAPI_MakeFillet2d to BRepBuilderAPI_Command (mutable)
+        fn BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command_mut(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+        ) -> Pin<&mut BRepBuilderAPI_Command>;
+        /// Upcast BRepFilletAPI_MakeFillet2d to BRepBuilderAPI_MakeShape
+        fn BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape(
+            self_: &BRepFilletAPI_MakeFillet2d,
+        ) -> &BRepBuilderAPI_MakeShape;
+        /// Upcast BRepFilletAPI_MakeFillet2d to BRepBuilderAPI_MakeShape (mutable)
+        fn BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape_mut(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone()
+        fn BRepFilletAPI_MakeFillet2d_inherited_IsDone(self_: &BRepFilletAPI_MakeFillet2d) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check()
+        fn BRepFilletAPI_MakeFillet2d_inherited_Check(self_: &BRepFilletAPI_MakeFillet2d);
+        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+        fn BRepFilletAPI_MakeFillet2d_inherited_Shape(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+        ) -> &TopoDS_Shape;
+        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+        fn BRepFilletAPI_MakeFillet2d_inherited_Generated<'a>(
+            self_: Pin<&'a mut BRepFilletAPI_MakeFillet2d>,
+            S: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+        fn BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(
+            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
+            S: &TopoDS_Shape,
+        ) -> bool;
         /// ======================== TopoDS_Shape ========================
         /// **Source:** `TopoDS_Shape.hxx`:40 - `TopoDS_Shape`
         ///
@@ -14712,1448 +16154,6 @@ mod ffi {
         fn BRepAlgoAPI_Section_inherited_IsDone(self_: &BRepAlgoAPI_Section) -> bool;
         /// Inherited from BRepBuilderAPI_Command: Check()
         fn BRepAlgoAPI_Section_inherited_Check(self_: &BRepAlgoAPI_Section);
-        /// ======================== BRepFilletAPI_LocalOperation ========================
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:31 - `BRepFilletAPI_LocalOperation`
-        ///
-        /// Construction of fillets on the edges of a Shell.
-        type BRepFilletAPI_LocalOperation;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:38 - `BRepFilletAPI_LocalOperation::Add()`
-        ///
-        /// Adds a  contour in  the  builder  (builds a
-        /// contour  of tangent edges).
-        #[cxx_name = "Add"]
-        fn add(self: Pin<&mut BRepFilletAPI_LocalOperation>, E: &TopoDS_Edge);
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:42 - `BRepFilletAPI_LocalOperation::ResetContour()`
-        ///
-        /// Reset the contour of index IC, there is nomore
-        /// information in the contour.
-        #[cxx_name = "ResetContour"]
-        fn reset_contour(self: Pin<&mut BRepFilletAPI_LocalOperation>, IC: i32);
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:45 - `BRepFilletAPI_LocalOperation::NbContours()`
-        ///
-        /// Number of contours.
-        #[cxx_name = "NbContours"]
-        fn nb_contours(self: &BRepFilletAPI_LocalOperation) -> i32;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:49 - `BRepFilletAPI_LocalOperation::Contour()`
-        ///
-        /// Returns the index of  the  contour containing the edge
-        /// E, returns 0 if E doesn't belong to any contour.
-        #[cxx_name = "Contour"]
-        fn contour(self: &BRepFilletAPI_LocalOperation, E: &TopoDS_Edge) -> i32;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:52 - `BRepFilletAPI_LocalOperation::NbEdges()`
-        ///
-        /// Number of Edges in the contour I.
-        #[cxx_name = "NbEdges"]
-        fn nb_edges(self: &BRepFilletAPI_LocalOperation, I: i32) -> i32;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:55 - `BRepFilletAPI_LocalOperation::Edge()`
-        ///
-        /// Returns the Edge J in the contour I.
-        #[cxx_name = "Edge"]
-        fn edge(self: &BRepFilletAPI_LocalOperation, I: i32, J: i32) -> &TopoDS_Edge;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:59 - `BRepFilletAPI_LocalOperation::Remove()`
-        ///
-        /// remove the contour containing the Edge E.
-        #[cxx_name = "Remove"]
-        fn remove(self: Pin<&mut BRepFilletAPI_LocalOperation>, E: &TopoDS_Edge);
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:62 - `BRepFilletAPI_LocalOperation::Length()`
-        ///
-        /// returns the length the contour of index IC.
-        #[cxx_name = "Length"]
-        fn length(self: &BRepFilletAPI_LocalOperation, IC: i32) -> f64;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:72 - `BRepFilletAPI_LocalOperation::Abscissa()`
-        ///
-        /// returns the abscissa of the vertex V on
-        /// the contour of index IC.
-        #[cxx_name = "Abscissa"]
-        fn abscissa(self: &BRepFilletAPI_LocalOperation, IC: i32, V: &TopoDS_Vertex) -> f64;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:77 - `BRepFilletAPI_LocalOperation::RelativeAbscissa()`
-        ///
-        /// returns the relative abscissa([0.,1.]) of the
-        /// vertex V on the contour of index IC.
-        #[cxx_name = "RelativeAbscissa"]
-        fn relative_abscissa(
-            self: &BRepFilletAPI_LocalOperation,
-            IC: i32,
-            V: &TopoDS_Vertex,
-        ) -> f64;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:82 - `BRepFilletAPI_LocalOperation::ClosedAndTangent()`
-        ///
-        /// returns true if the contour of index IC is closed
-        /// an tangent.
-        #[cxx_name = "ClosedAndTangent"]
-        fn closed_and_tangent(self: &BRepFilletAPI_LocalOperation, IC: i32) -> bool;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:85 - `BRepFilletAPI_LocalOperation::Closed()`
-        ///
-        /// returns true if the contour of index IC is closed
-        #[cxx_name = "Closed"]
-        fn closed(self: &BRepFilletAPI_LocalOperation, IC: i32) -> bool;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:91 - `BRepFilletAPI_LocalOperation::Reset()`
-        ///
-        /// Reset all the fields updated   by Build operation  and
-        /// leave the  algorithm in  the  same state  than  before
-        /// build    call.  It   allows   contours    and   radius
-        /// modifications  to build the result another time.
-        #[cxx_name = "Reset"]
-        fn reset(self: Pin<&mut BRepFilletAPI_LocalOperation>);
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:93 - `BRepFilletAPI_LocalOperation::Simulate()`
-        #[cxx_name = "Simulate"]
-        fn simulate(self: Pin<&mut BRepFilletAPI_LocalOperation>, IC: i32);
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:95 - `BRepFilletAPI_LocalOperation::NbSurf()`
-        #[cxx_name = "NbSurf"]
-        fn nb_surf(self: &BRepFilletAPI_LocalOperation, IC: i32) -> i32;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:65 - `BRepFilletAPI_LocalOperation::FirstVertex()`
-        ///
-        /// Returns the first Vertex of the contour of index IC.
-        fn BRepFilletAPI_LocalOperation_first_vertex(
-            self_: &BRepFilletAPI_LocalOperation,
-            IC: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:68 - `BRepFilletAPI_LocalOperation::LastVertex()`
-        ///
-        /// Returns the last Vertex of the contour of index IC.
-        fn BRepFilletAPI_LocalOperation_last_vertex(
-            self_: &BRepFilletAPI_LocalOperation,
-            IC: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:97 - `BRepFilletAPI_LocalOperation::Sect()`
-        fn BRepFilletAPI_LocalOperation_sect(
-            self_: &BRepFilletAPI_LocalOperation,
-            IC: i32,
-            IS: i32,
-        ) -> UniquePtr<HandleChFiDSSecHArray1>;
-        /// Upcast BRepFilletAPI_LocalOperation to BRepBuilderAPI_Command
-        fn BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command(
-            self_: &BRepFilletAPI_LocalOperation,
-        ) -> &BRepBuilderAPI_Command;
-        /// Upcast BRepFilletAPI_LocalOperation to BRepBuilderAPI_Command (mutable)
-        fn BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(
-            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
-        ) -> Pin<&mut BRepBuilderAPI_Command>;
-        /// Upcast BRepFilletAPI_LocalOperation to BRepBuilderAPI_MakeShape
-        fn BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(
-            self_: &BRepFilletAPI_LocalOperation,
-        ) -> &BRepBuilderAPI_MakeShape;
-        /// Upcast BRepFilletAPI_LocalOperation to BRepBuilderAPI_MakeShape (mutable)
-        fn BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(
-            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
-        /// Inherited from BRepBuilderAPI_Command: IsDone()
-        fn BRepFilletAPI_LocalOperation_inherited_IsDone(
-            self_: &BRepFilletAPI_LocalOperation,
-        ) -> bool;
-        /// Inherited from BRepBuilderAPI_Command: Check()
-        fn BRepFilletAPI_LocalOperation_inherited_Check(self_: &BRepFilletAPI_LocalOperation);
-        /// Inherited from BRepBuilderAPI_MakeShape: Build()
-        fn BRepFilletAPI_LocalOperation_inherited_Build(
-            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
-            theRange: &Message_ProgressRange,
-        );
-        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-        fn BRepFilletAPI_LocalOperation_inherited_Shape(
-            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
-        ) -> &TopoDS_Shape;
-        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
-        fn BRepFilletAPI_LocalOperation_inherited_Generated<'a>(
-            self_: Pin<&'a mut BRepFilletAPI_LocalOperation>,
-            S: &TopoDS_Shape,
-        ) -> &'a TopTools_ListOfShape;
-        /// Inherited from BRepBuilderAPI_MakeShape: Modified()
-        fn BRepFilletAPI_LocalOperation_inherited_Modified<'a>(
-            self_: Pin<&'a mut BRepFilletAPI_LocalOperation>,
-            S: &TopoDS_Shape,
-        ) -> &'a TopTools_ListOfShape;
-        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-        fn BRepFilletAPI_LocalOperation_inherited_IsDeleted(
-            self_: Pin<&mut BRepFilletAPI_LocalOperation>,
-            S: &TopoDS_Shape,
-        ) -> bool;
-        /// ======================== BRepFilletAPI_MakeChamfer ========================
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:44 - `BRepFilletAPI_MakeChamfer`
-        ///
-        /// Describes functions to build chamfers on edges of a shell or solid.
-        /// Chamfered Edge of a Shell or Solid
-        /// A MakeChamfer object provides a framework for:
-        /// -   initializing the construction algorithm with a given shape,
-        /// -   acquiring the data characterizing the chamfers,
-        /// -   building the chamfers and constructing the resulting shape, and
-        /// -   consulting the result.
-        type BRepFilletAPI_MakeChamfer;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:51 - `BRepFilletAPI_MakeChamfer::BRepFilletAPI_MakeChamfer()`
-        ///
-        /// Initializes an algorithm for computing chamfers on the shape S.
-        /// The edges on which chamfers are built are defined using the Add function.
-        fn BRepFilletAPI_MakeChamfer_ctor_shape(
-            S: &TopoDS_Shape,
-        ) -> UniquePtr<BRepFilletAPI_MakeChamfer>;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:56 - `BRepFilletAPI_MakeChamfer::Add()`
-        ///
-        /// Adds edge E to the table of edges used by this
-        /// algorithm to build chamfers, where the parameters
-        /// of the chamfer must be set after the
-        #[cxx_name = "Add"]
-        fn add_edge(self: Pin<&mut BRepFilletAPI_MakeChamfer>, E: &TopoDS_Edge);
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:70 - `BRepFilletAPI_MakeChamfer::Add()`
-        ///
-        /// Adds edge E to the table of edges used by this
-        /// algorithm to build chamfers, where
-        /// the parameters of the chamfer are given by
-        /// the distance Dis (symmetric chamfer).
-        /// The Add function results in a contour being built by
-        /// propagation from the edge E (i.e. the contour contains at
-        /// least this edge). This contour is composed of edges of
-        /// the shape which are tangential to one another and
-        /// which delimit two series of tangential faces, with one
-        /// series of faces being located on either side of the contour.
-        /// Warning
-        /// Nothing is done if edge E or the face F does not belong to the initial shape.
-        #[cxx_name = "Add"]
-        fn add_real_edge(self: Pin<&mut BRepFilletAPI_MakeChamfer>, Dis: f64, E: &TopoDS_Edge);
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:80 - `BRepFilletAPI_MakeChamfer::SetDist()`
-        ///
-        /// Sets the distances Dis1 and Dis2 which give the
-        /// parameters of the chamfer along the contour of index
-        /// IC generated using the Add function in the internal
-        /// data structure of this algorithm. The face F identifies
-        /// the side where Dis1 is measured.
-        /// Warning
-        /// Nothing is done if either the edge E or the face F
-        /// does not belong to the initial shape.
-        #[cxx_name = "SetDist"]
-        fn set_dist(self: Pin<&mut BRepFilletAPI_MakeChamfer>, Dis: f64, IC: i32, F: &TopoDS_Face);
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:84 - `BRepFilletAPI_MakeChamfer::GetDist()`
-        #[cxx_name = "GetDist"]
-        fn get_dist(self: &BRepFilletAPI_MakeChamfer, IC: i32, Dis: &mut f64);
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:99 - `BRepFilletAPI_MakeChamfer::Add()`
-        ///
-        /// Adds edge E to the table of edges used by this
-        /// algorithm to build chamfers, where
-        /// the parameters of the chamfer are given by the two
-        /// distances Dis1 and Dis2; the face F identifies the side
-        /// where Dis1 is measured.
-        /// The Add function results in a contour being built by
-        /// propagation from the edge E (i.e. the contour contains at
-        /// least this edge). This contour is composed of edges of
-        /// the shape which are tangential to one another and
-        /// which delimit two series of tangential faces, with one
-        /// series of faces being located on either side of the contour.
-        /// Warning
-        /// Nothing is done if edge E or the face F does not belong to the initial shape.
-        #[cxx_name = "Add"]
-        fn add_real2_edge_face(
-            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
-            Dis1: f64,
-            Dis2: f64,
-            E: &TopoDS_Edge,
-            F: &TopoDS_Face,
-        );
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:112 - `BRepFilletAPI_MakeChamfer::SetDists()`
-        ///
-        /// Sets the distances Dis1 and Dis2 which give the
-        /// parameters of the chamfer along the contour of index
-        /// IC generated using the Add function in the internal
-        /// data structure of this algorithm. The face F identifies
-        /// the side where Dis1 is measured.
-        /// Warning
-        /// Nothing is done if either the edge E or the face F
-        /// does not belong to the initial shape.
-        #[cxx_name = "SetDists"]
-        fn set_dists(
-            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
-            Dis1: f64,
-            Dis2: f64,
-            IC: i32,
-            F: &TopoDS_Face,
-        );
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:122 - `BRepFilletAPI_MakeChamfer::Dists()`
-        ///
-        /// Returns the distances Dis1 and Dis2 which give the
-        /// parameters of the chamfer along the contour of index IC
-        /// in the internal data structure of this algorithm.
-        /// Warning
-        /// -1. is returned if IC is outside the bounds of the table of contours.
-        #[cxx_name = "Dists"]
-        fn dists(self: &BRepFilletAPI_MakeChamfer, IC: i32, Dis1: &mut f64, Dis2: &mut f64);
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:129 - `BRepFilletAPI_MakeChamfer::AddDA()`
-        ///
-        /// Adds a  fillet contour in  the  builder  (builds a
-        /// contour  of tangent edges to <E> and sets the
-        /// distance <Dis1> and angle <Angle> ( parameters of the chamfer ) ).
-        #[cxx_name = "AddDA"]
-        fn add_da(
-            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
-            Dis: f64,
-            Angle: f64,
-            E: &TopoDS_Edge,
-            F: &TopoDS_Face,
-        );
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:138 - `BRepFilletAPI_MakeChamfer::SetDistAngle()`
-        ///
-        /// set the distance <Dis> and <Angle> of the fillet
-        /// contour of index <IC> in the DS with <Dis> on <F>.
-        /// if the face <F> is not one of common faces
-        /// of an edge of the contour <IC>
-        #[cxx_name = "SetDistAngle"]
-        fn set_dist_angle(
-            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
-            Dis: f64,
-            Angle: f64,
-            IC: i32,
-            F: &TopoDS_Face,
-        );
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:145 - `BRepFilletAPI_MakeChamfer::GetDistAngle()`
-        ///
-        /// gives the distances <Dis> and <Angle> of the fillet
-        /// contour of index <IC> in the DS
-        #[cxx_name = "GetDistAngle"]
-        fn get_dist_angle(
-            self: &BRepFilletAPI_MakeChamfer,
-            IC: i32,
-            Dis: &mut f64,
-            Angle: &mut f64,
-        );
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:153 - `BRepFilletAPI_MakeChamfer::IsSymetric()`
-        ///
-        /// return True if chamfer symmetric false else.
-        #[cxx_name = "IsSymetric"]
-        fn is_symetric(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:156 - `BRepFilletAPI_MakeChamfer::IsTwoDistances()`
-        ///
-        /// return True if chamfer is made with two distances false else.
-        #[cxx_name = "IsTwoDistances"]
-        fn is_two_distances(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:159 - `BRepFilletAPI_MakeChamfer::IsDistanceAngle()`
-        ///
-        /// return True if chamfer is made with distance and angle false else.
-        #[cxx_name = "IsDistanceAngle"]
-        fn is_distance_angle(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:166 - `BRepFilletAPI_MakeChamfer::ResetContour()`
-        ///
-        /// Erases the chamfer parameters on the contour of
-        /// index IC in the internal data structure of this algorithm.
-        /// Use the SetDists function to reset this data.
-        /// Warning
-        /// Nothing is done if IC is outside the bounds of the table of contours.
-        #[cxx_name = "ResetContour"]
-        fn reset_contour(self: Pin<&mut BRepFilletAPI_MakeChamfer>, IC: i32);
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:170 - `BRepFilletAPI_MakeChamfer::NbContours()`
-        ///
-        /// Returns the number of contours generated using the
-        /// Add function in the internal data structure of this algorithm.
-        #[cxx_name = "NbContours"]
-        fn nb_contours(self: &BRepFilletAPI_MakeChamfer) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:178 - `BRepFilletAPI_MakeChamfer::Contour()`
-        ///
-        /// Returns the index of the contour in the internal data
-        /// structure of this algorithm, which contains the edge E of the shape.
-        /// This function returns 0 if the edge E does not belong to any contour.
-        /// Warning
-        /// This index can change if a contour is removed from the
-        /// internal data structure of this algorithm using the function Remove.
-        #[cxx_name = "Contour"]
-        fn contour(self: &BRepFilletAPI_MakeChamfer, E: &TopoDS_Edge) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:184 - `BRepFilletAPI_MakeChamfer::NbEdges()`
-        ///
-        /// Returns the number of edges in the contour of index I in
-        /// the internal data structure of this algorithm.
-        /// Warning
-        /// Returns 0 if I is outside the bounds of the table of contours.
-        #[cxx_name = "NbEdges"]
-        fn nb_edges(self: &BRepFilletAPI_MakeChamfer, I: i32) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:192 - `BRepFilletAPI_MakeChamfer::Edge()`
-        ///
-        /// Returns the edge of index J in the contour of index I in
-        /// the internal data structure of this algorithm.
-        /// Warning
-        /// Returns a null shape if:
-        /// -   I is outside the bounds of the table of contours, or
-        /// -   J is outside the bounds of the table of edges of the contour of index I.
-        #[cxx_name = "Edge"]
-        fn edge(self: &BRepFilletAPI_MakeChamfer, I: i32, J: i32) -> &TopoDS_Edge;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:200 - `BRepFilletAPI_MakeChamfer::Remove()`
-        ///
-        /// Removes the contour in the internal data structure of
-        /// this algorithm which contains the edge E of the shape.
-        /// Warning
-        /// Nothing is done if the edge E does not belong to the
-        /// contour in the internal data structure of this algorithm.
-        #[cxx_name = "Remove"]
-        fn remove(self: Pin<&mut BRepFilletAPI_MakeChamfer>, E: &TopoDS_Edge);
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:206 - `BRepFilletAPI_MakeChamfer::Length()`
-        ///
-        /// Returns the length of the contour of index IC in the
-        /// internal data structure of this algorithm.
-        /// Warning
-        /// Returns -1. if IC is outside the bounds of the table of contours.
-        #[cxx_name = "Length"]
-        fn length(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> f64;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:226 - `BRepFilletAPI_MakeChamfer::Abscissa()`
-        ///
-        /// Returns the curvilinear abscissa of the vertex V on the
-        /// contour of index IC in the internal data structure of this algorithm.
-        /// Warning
-        /// Returns -1. if:
-        /// -   IC is outside the bounds of the table of contours, or
-        /// -   V is not on the contour of index IC.
-        #[cxx_name = "Abscissa"]
-        fn abscissa(self: &BRepFilletAPI_MakeChamfer, IC: i32, V: &TopoDS_Vertex) -> f64;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:236 - `BRepFilletAPI_MakeChamfer::RelativeAbscissa()`
-        ///
-        /// Returns the relative curvilinear abscissa (i.e. between 0
-        /// and 1) of the vertex V on the contour of index IC in the
-        /// internal data structure of this algorithm.
-        /// Warning
-        /// Returns -1. if:
-        /// -   IC is outside the bounds of the table of contours, or
-        /// -   V is not on the contour of index IC.
-        #[cxx_name = "RelativeAbscissa"]
-        fn relative_abscissa(self: &BRepFilletAPI_MakeChamfer, IC: i32, V: &TopoDS_Vertex) -> f64;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:244 - `BRepFilletAPI_MakeChamfer::ClosedAndTangent()`
-        ///
-        /// eturns true if the contour of index IC in the internal
-        /// data structure of this algorithm is closed and tangential at the point of closure.
-        /// Warning
-        /// Returns false if IC is outside the bounds of the table of contours.
-        #[cxx_name = "ClosedAndTangent"]
-        fn closed_and_tangent(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:250 - `BRepFilletAPI_MakeChamfer::Closed()`
-        ///
-        /// Returns true if the contour of index IC in the internal
-        /// data structure of this algorithm is closed.
-        /// Warning
-        /// Returns false if IC is outside the bounds of the table of contours.
-        #[cxx_name = "Closed"]
-        fn closed(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:270 - `BRepFilletAPI_MakeChamfer::Build()`
-        ///
-        /// Builds the chamfers on all the contours in the internal
-        /// data structure of this algorithm and constructs the resulting shape.
-        /// Use the function IsDone to verify that the chamfered
-        /// shape is built. Use the function Shape to retrieve the chamfered shape.
-        /// Warning
-        /// The construction of chamfers implements highly complex
-        /// construction algorithms. Consequently, there may be
-        /// instances where the algorithm fails, for example if the
-        /// data defining the parameters of the chamfer is not
-        /// compatible with the geometry of the initial shape. There
-        /// is no initial analysis of errors and these only become
-        /// evident at the construction stage.
-        /// Additionally, in the current software release, the following
-        /// cases are not handled:
-        /// -   the end point of the contour is the point of
-        /// intersection of 4 or more edges of the shape, or
-        /// -   the intersection of the chamfer with a face which
-        /// limits the contour is not fully contained in this face.
-        #[cxx_name = "Build"]
-        fn build(self: Pin<&mut BRepFilletAPI_MakeChamfer>, theRange: &Message_ProgressRange);
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:276 - `BRepFilletAPI_MakeChamfer::Reset()`
-        ///
-        /// Reinitializes this algorithm, thus canceling the effects of the Build function.
-        /// This function allows modifications to be made to the
-        /// contours and chamfer parameters in order to rebuild the shape.
-        #[cxx_name = "Reset"]
-        fn reset(self: Pin<&mut BRepFilletAPI_MakeChamfer>);
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:283 - `BRepFilletAPI_MakeChamfer::Generated()`
-        ///
-        /// Returns the  list   of shapes generated   from the
-        /// shape <EorV>.
-        #[cxx_name = "Generated"]
-        fn generated(
-            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
-            EorV: &TopoDS_Shape,
-        ) -> &TopTools_ListOfShape;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:288 - `BRepFilletAPI_MakeChamfer::Modified()`
-        ///
-        /// Returns the list  of shapes modified from the shape
-        /// <F>.
-        #[cxx_name = "Modified"]
-        fn modified(
-            self: Pin<&mut BRepFilletAPI_MakeChamfer>,
-            F: &TopoDS_Shape,
-        ) -> &TopTools_ListOfShape;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:291 - `BRepFilletAPI_MakeChamfer::IsDeleted()`
-        #[cxx_name = "IsDeleted"]
-        fn is_deleted(self: Pin<&mut BRepFilletAPI_MakeChamfer>, F: &TopoDS_Shape) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:293 - `BRepFilletAPI_MakeChamfer::Simulate()`
-        #[cxx_name = "Simulate"]
-        fn simulate(self: Pin<&mut BRepFilletAPI_MakeChamfer>, IC: i32);
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:295 - `BRepFilletAPI_MakeChamfer::NbSurf()`
-        #[cxx_name = "NbSurf"]
-        fn nb_surf(self: &BRepFilletAPI_MakeChamfer, IC: i32) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:150 - `BRepFilletAPI_MakeChamfer::SetMode()`
-        ///
-        /// Sets the mode of chamfer
-        fn BRepFilletAPI_MakeChamfer_set_mode(
-            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
-            theMode: i32,
-        );
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:212 - `BRepFilletAPI_MakeChamfer::FirstVertex()`
-        ///
-        /// Returns the first vertex of the contour of index IC
-        /// in the internal data structure of this algorithm.
-        /// Warning
-        /// Returns a null shape if IC is outside the bounds of the table of contours.
-        fn BRepFilletAPI_MakeChamfer_first_vertex(
-            self_: &BRepFilletAPI_MakeChamfer,
-            IC: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:218 - `BRepFilletAPI_MakeChamfer::LastVertex()`
-        ///
-        /// Returns the last vertex of the contour of index IC
-        /// in the internal data structure of this algorithm.
-        /// Warning
-        /// Returns a null shape if IC is outside the bounds of the table of contours.
-        fn BRepFilletAPI_MakeChamfer_last_vertex(
-            self_: &BRepFilletAPI_MakeChamfer,
-            IC: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:297 - `BRepFilletAPI_MakeChamfer::Sect()`
-        fn BRepFilletAPI_MakeChamfer_sect(
-            self_: &BRepFilletAPI_MakeChamfer,
-            IC: i32,
-            IS: i32,
-        ) -> UniquePtr<HandleChFiDSSecHArray1>;
-        /// Upcast BRepFilletAPI_MakeChamfer to BRepBuilderAPI_Command
-        fn BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(
-            self_: &BRepFilletAPI_MakeChamfer,
-        ) -> &BRepBuilderAPI_Command;
-        /// Upcast BRepFilletAPI_MakeChamfer to BRepBuilderAPI_Command (mutable)
-        fn BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(
-            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
-        ) -> Pin<&mut BRepBuilderAPI_Command>;
-        /// Upcast BRepFilletAPI_MakeChamfer to BRepBuilderAPI_MakeShape
-        fn BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape(
-            self_: &BRepFilletAPI_MakeChamfer,
-        ) -> &BRepBuilderAPI_MakeShape;
-        /// Upcast BRepFilletAPI_MakeChamfer to BRepBuilderAPI_MakeShape (mutable)
-        fn BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape_mut(
-            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
-        /// Upcast BRepFilletAPI_MakeChamfer to BRepFilletAPI_LocalOperation
-        fn BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(
-            self_: &BRepFilletAPI_MakeChamfer,
-        ) -> &BRepFilletAPI_LocalOperation;
-        /// Upcast BRepFilletAPI_MakeChamfer to BRepFilletAPI_LocalOperation (mutable)
-        fn BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(
-            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
-        ) -> Pin<&mut BRepFilletAPI_LocalOperation>;
-        /// Inherited from BRepBuilderAPI_Command: IsDone()
-        fn BRepFilletAPI_MakeChamfer_inherited_IsDone(self_: &BRepFilletAPI_MakeChamfer) -> bool;
-        /// Inherited from BRepBuilderAPI_Command: Check()
-        fn BRepFilletAPI_MakeChamfer_inherited_Check(self_: &BRepFilletAPI_MakeChamfer);
-        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-        fn BRepFilletAPI_MakeChamfer_inherited_Shape(
-            self_: Pin<&mut BRepFilletAPI_MakeChamfer>,
-        ) -> &TopoDS_Shape;
-        /// ======================== BRepFilletAPI_MakeFillet ========================
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:48 - `BRepFilletAPI_MakeFillet`
-        ///
-        /// Describes functions to build fillets on the broken edges of a shell or solid.
-        /// A MakeFillet object provides a framework for:
-        /// -   initializing the construction algorithm with a given shape,
-        /// -   acquiring the data characterizing the fillets,
-        /// -   building the fillets and constructing the resulting shape, and
-        /// -   consulting the result.
-        type BRepFilletAPI_MakeFillet;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:61 - `BRepFilletAPI_MakeFillet::BRepFilletAPI_MakeFillet()`
-        ///
-        /// Initializes   the computation    of   the  fillets.
-        /// <FShape> sets   the type   of fillet  surface. The
-        /// default value is ChFi3d_Rational (classical  nurbs
-        /// representation of  circles).   ChFi3d_QuasiAngular
-        /// corresponds to  a  nurbs representation of circles
-        /// which   parameterisation matches  the  circle one.
-        /// ChFi3d_Polynomial  corresponds to  a    polynomial
-        /// representation of circles.
-        fn BRepFilletAPI_MakeFillet_ctor_shape_filletshape(
-            S: &TopoDS_Shape,
-            FShape: i32,
-        ) -> UniquePtr<BRepFilletAPI_MakeFillet>;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:64 - `BRepFilletAPI_MakeFillet::SetParams()`
-        #[cxx_name = "SetParams"]
-        fn set_params(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            Tang: f64,
-            Tesp: f64,
-            T2d: f64,
-            TApp3d: f64,
-            TolApp2d: f64,
-            Fleche: f64,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:83 - `BRepFilletAPI_MakeFillet::Add()`
-        ///
-        /// Adds a  fillet contour in  the  builder  (builds a
-        /// contour  of tangent edges).
-        /// The Radius must be set after.
-        #[cxx_name = "Add"]
-        fn add_edge(self: Pin<&mut BRepFilletAPI_MakeFillet>, E: &TopoDS_Edge);
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:88 - `BRepFilletAPI_MakeFillet::Add()`
-        ///
-        /// Adds a  fillet description in  the  builder
-        /// - builds a contour  of tangent edges,
-        /// - sets the radius.
-        #[cxx_name = "Add"]
-        fn add_real_edge(self: Pin<&mut BRepFilletAPI_MakeFillet>, Radius: f64, E: &TopoDS_Edge);
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:94 - `BRepFilletAPI_MakeFillet::Add()`
-        ///
-        /// Adds a  fillet description in  the  builder
-        /// - builds a contour  of tangent edges,
-        /// - sets a linear radius evolution law between
-        /// the first and last vertex of the spine.
-        #[cxx_name = "Add"]
-        fn add_real2_edge(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            R1: f64,
-            R2: f64,
-            E: &TopoDS_Edge,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:99 - `BRepFilletAPI_MakeFillet::Add()`
-        ///
-        /// Adds a  fillet description in  the  builder
-        /// - builds a contour  of tangent edges,
-        /// - sest the radius evolution law.
-        #[cxx_name = "Add"]
-        fn add_handlefunction_edge(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            L: &HandleLawFunction,
-            E: &TopoDS_Edge,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:108 - `BRepFilletAPI_MakeFillet::Add()`
-        ///
-        /// Adds a  fillet description in  the  builder
-        /// - builds a contour  of tangent edges,
-        /// - sets the radius evolution law interpolating the values
-        /// given in the array UandR :
-        ///
-        /// p2d.X() = relative parameter on the spine [0,1]
-        /// p2d.Y() = value of the radius.
-        #[cxx_name = "Add"]
-        fn add_array1ofpnt2d_edge(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            UandR: &TColgp_Array1OfPnt2d,
-            E: &TopoDS_Edge,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:114 - `BRepFilletAPI_MakeFillet::SetRadius()`
-        ///
-        /// Sets the parameters of the fillet
-        /// along the contour of index IC generated using the Add function
-        /// in the internal data structure of
-        /// this algorithm, where Radius is the radius of the fillet.
-        #[cxx_name = "SetRadius"]
-        fn set_radius_real_int2(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            Radius: f64,
-            IC: i32,
-            IinC: i32,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:123 - `BRepFilletAPI_MakeFillet::SetRadius()`
-        ///
-        /// Sets the parameters of the fillet
-        /// along the contour of index IC generated using the Add function
-        /// in the internal data structure of this algorithm, where the radius of the
-        /// fillet evolves according to a linear evolution law defined
-        /// from R1 to R2, between the first and last vertices of the contour of index IC.
-        #[cxx_name = "SetRadius"]
-        fn set_radius_real2_int2(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            R1: f64,
-            R2: f64,
-            IC: i32,
-            IinC: i32,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:133 - `BRepFilletAPI_MakeFillet::SetRadius()`
-        ///
-        /// Sets the parameters of the fillet
-        /// along the contour of index IC generated using the Add function
-        /// in the internal data structure of this algorithm, where the radius of the
-        /// fillet evolves according to the evolution law L, between the
-        /// first and last vertices of the contour of index IC.
-        #[cxx_name = "SetRadius"]
-        fn set_radius_handlefunction_int2(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            L: &HandleLawFunction,
-            IC: i32,
-            IinC: i32,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:148 - `BRepFilletAPI_MakeFillet::SetRadius()`
-        ///
-        /// Sets the parameters of the fillet
-        /// along the contour of index IC generated using the Add function
-        /// in the internal data structure of this algorithm,
-        /// where the radius of the fillet evolves according to the evolution law
-        /// which interpolates the set of parameter and radius pairs given
-        /// in the array UandR as follows:
-        /// -   the X coordinate of a point in UandR defines a
-        /// relative parameter on the contour (i.e. a parameter between 0 and 1),
-        /// -          the Y coordinate of a point in UandR gives the
-        /// corresponding value of the radius, and the radius evolves
-        /// between the first and last vertices of the contour of index IC.
-        #[cxx_name = "SetRadius"]
-        fn set_radius_array1ofpnt2d_int2(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            UandR: &TColgp_Array1OfPnt2d,
-            IC: i32,
-            IinC: i32,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:157 - `BRepFilletAPI_MakeFillet::ResetContour()`
-        ///
-        /// Erases the radius information on the contour of index
-        /// IC in the internal data structure of this algorithm.
-        /// Use the SetRadius function to reset this data.
-        /// Warning
-        /// Nothing is done if IC is outside the bounds of the table of contours.
-        #[cxx_name = "ResetContour"]
-        fn reset_contour(self: Pin<&mut BRepFilletAPI_MakeFillet>, IC: i32);
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:164 - `BRepFilletAPI_MakeFillet::IsConstant()`
-        ///
-        /// Returns true if the radius of the fillet along the contour of index IC
-        /// in the internal data structure of this algorithm is constant,
-        /// Warning
-        /// False is returned if IC is outside the bounds of the table
-        /// of contours or if E does not belong to the contour of index IC.
-        #[cxx_name = "IsConstant"]
-        fn is_constant_int(self: Pin<&mut BRepFilletAPI_MakeFillet>, IC: i32) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:172 - `BRepFilletAPI_MakeFillet::Radius()`
-        ///
-        /// Returns the radius of the fillet along the contour of index IC in the
-        /// internal data structure of this algorithm
-        /// Warning
-        /// -   Use this function only if the radius is constant.
-        /// -   -1. is returned if IC is outside the bounds of the
-        /// table of contours or if E does not belong to the contour of index IC.
-        #[cxx_name = "Radius"]
-        fn radius_int(self: Pin<&mut BRepFilletAPI_MakeFillet>, IC: i32) -> f64;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:180 - `BRepFilletAPI_MakeFillet::IsConstant()`
-        ///
-        /// Returns true if the radius of the fillet along the edge E of the
-        /// contour of index IC in the internal data structure of
-        /// this algorithm is constant.
-        /// Warning
-        /// False is returned if IC is outside the bounds of the table
-        /// of contours or if E does not belong to the contour of index IC.
-        #[cxx_name = "IsConstant"]
-        fn is_constant_int_edge(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            IC: i32,
-            E: &TopoDS_Edge,
-        ) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:188 - `BRepFilletAPI_MakeFillet::Radius()`
-        ///
-        /// Returns the radius of the fillet along the edge E of the contour of index
-        /// IC in the internal data structure of this algorithm.
-        /// Warning
-        /// -   Use this function only if the radius is constant.
-        /// -   -1 is returned if IC is outside the bounds of the
-        /// table of contours or if E does not belong to the contour of index IC.
-        #[cxx_name = "Radius"]
-        fn radius_int_edge(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            IC: i32,
-            E: &TopoDS_Edge,
-        ) -> f64;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:191 - `BRepFilletAPI_MakeFillet::SetRadius()`
-        ///
-        /// Assigns Radius as the radius of the fillet on the edge E
-        #[cxx_name = "SetRadius"]
-        fn set_radius_real_int_edge(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            Radius: f64,
-            IC: i32,
-            E: &TopoDS_Edge,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:195 - `BRepFilletAPI_MakeFillet::SetRadius()`
-        #[cxx_name = "SetRadius"]
-        fn set_radius_real_int_vertex(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            Radius: f64,
-            IC: i32,
-            V: &TopoDS_Vertex,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:199 - `BRepFilletAPI_MakeFillet::GetBounds()`
-        #[cxx_name = "GetBounds"]
-        fn get_bounds(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            IC: i32,
-            E: &TopoDS_Edge,
-            F: &mut f64,
-            L: &mut f64,
-        ) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:206 - `BRepFilletAPI_MakeFillet::SetLaw()`
-        #[cxx_name = "SetLaw"]
-        fn set_law(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            IC: i32,
-            E: &TopoDS_Edge,
-            L: &HandleLawFunction,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:218 - `BRepFilletAPI_MakeFillet::NbContours()`
-        ///
-        /// Returns the number of contours generated using the
-        /// Add function in the internal data structure of this algorithm.
-        #[cxx_name = "NbContours"]
-        fn nb_contours(self: &BRepFilletAPI_MakeFillet) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:226 - `BRepFilletAPI_MakeFillet::Contour()`
-        ///
-        /// Returns the index of the contour in the internal data
-        /// structure of this algorithm which contains the edge E of the shape.
-        /// This function returns 0 if the edge E does not belong to any contour.
-        /// Warning
-        /// This index can change if a contour is removed from the
-        /// internal data structure of this algorithm using the function Remove.
-        #[cxx_name = "Contour"]
-        fn contour(self: &BRepFilletAPI_MakeFillet, E: &TopoDS_Edge) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:232 - `BRepFilletAPI_MakeFillet::NbEdges()`
-        ///
-        /// Returns the number of edges in the contour of index I in
-        /// the internal data structure of this algorithm.
-        /// Warning
-        /// Returns 0 if I is outside the bounds of the table of contours.
-        #[cxx_name = "NbEdges"]
-        fn nb_edges(self: &BRepFilletAPI_MakeFillet, I: i32) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:240 - `BRepFilletAPI_MakeFillet::Edge()`
-        ///
-        /// Returns the edge of index J in the contour of index I in
-        /// the internal data structure of this algorithm.
-        /// Warning
-        /// Returns a null shape if:
-        /// -   I is outside the bounds of the table of contours, or
-        /// -   J is outside the bounds of the table of edges of the index I contour.
-        #[cxx_name = "Edge"]
-        fn edge(self: &BRepFilletAPI_MakeFillet, I: i32, J: i32) -> &TopoDS_Edge;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:248 - `BRepFilletAPI_MakeFillet::Remove()`
-        ///
-        /// Removes the contour in the internal data structure of
-        /// this algorithm which contains the edge E of the shape.
-        /// Warning
-        /// Nothing is done if the edge E does not belong to the
-        /// contour in the internal data structure of this algorithm.
-        #[cxx_name = "Remove"]
-        fn remove(self: Pin<&mut BRepFilletAPI_MakeFillet>, E: &TopoDS_Edge);
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:254 - `BRepFilletAPI_MakeFillet::Length()`
-        ///
-        /// Returns the length of the contour of index IC in the
-        /// internal data structure of this algorithm.
-        /// Warning
-        /// Returns -1. if IC is outside the bounds of the table of contours.
-        #[cxx_name = "Length"]
-        fn length(self: &BRepFilletAPI_MakeFillet, IC: i32) -> f64;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:274 - `BRepFilletAPI_MakeFillet::Abscissa()`
-        ///
-        /// Returns the curvilinear abscissa of the vertex V on the
-        /// contour of index IC in the internal data structure of this algorithm.
-        /// Warning
-        /// Returns -1. if:
-        /// -   IC is outside the bounds of the table of contours, or
-        /// -   V is not on the contour of index IC.
-        #[cxx_name = "Abscissa"]
-        fn abscissa(self: &BRepFilletAPI_MakeFillet, IC: i32, V: &TopoDS_Vertex) -> f64;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:284 - `BRepFilletAPI_MakeFillet::RelativeAbscissa()`
-        ///
-        /// Returns the relative curvilinear abscissa (i.e. between 0
-        /// and 1) of the vertex V on the contour of index IC in the
-        /// internal data structure of this algorithm.
-        /// Warning
-        /// Returns -1. if:
-        /// -   IC is outside the bounds of the table of contours, or
-        /// -   V is not on the contour of index IC.
-        #[cxx_name = "RelativeAbscissa"]
-        fn relative_abscissa(self: &BRepFilletAPI_MakeFillet, IC: i32, V: &TopoDS_Vertex) -> f64;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:293 - `BRepFilletAPI_MakeFillet::ClosedAndTangent()`
-        ///
-        /// Returns true if the contour of index IC in the internal
-        /// data structure of this algorithm is closed and tangential
-        /// at the point of closure.
-        /// Warning
-        /// Returns false if IC is outside the bounds of the table of contours.
-        #[cxx_name = "ClosedAndTangent"]
-        fn closed_and_tangent(self: &BRepFilletAPI_MakeFillet, IC: i32) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:299 - `BRepFilletAPI_MakeFillet::Closed()`
-        ///
-        /// Returns true if the contour of index IC in the internal
-        /// data structure of this algorithm is closed.
-        /// Warning
-        /// Returns false if IC is outside the bounds of the table of contours.
-        #[cxx_name = "Closed"]
-        fn closed(self: &BRepFilletAPI_MakeFillet, IC: i32) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:319 - `BRepFilletAPI_MakeFillet::Build()`
-        ///
-        /// Builds the fillets on all the contours in the internal data
-        /// structure of this algorithm and constructs the resulting shape.
-        /// Use the function IsDone to verify that the filleted shape
-        /// is built. Use the function Shape to retrieve the filleted shape.
-        /// Warning
-        /// The construction of fillets implements highly complex
-        /// construction algorithms. Consequently, there may be
-        /// instances where the algorithm fails, for example if the
-        /// data defining the radius of the fillet is not compatible
-        /// with the geometry of the initial shape. There is no initial
-        /// analysis of errors and they only become evident at the
-        /// construction stage.
-        /// Additionally, in the current software release, the
-        /// following cases are not handled:
-        /// -   the end point of the contour is the point of
-        /// intersection of 4 or more edges of the shape, or
-        /// -   the intersection of the fillet with a face which limits
-        /// the contour is not fully contained in this face.
-        #[cxx_name = "Build"]
-        fn build(self: Pin<&mut BRepFilletAPI_MakeFillet>, theRange: &Message_ProgressRange);
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:325 - `BRepFilletAPI_MakeFillet::Reset()`
-        ///
-        /// Reinitializes this algorithm, thus canceling the effects of the Build function.
-        /// This function allows modifications to be made to the
-        /// contours and fillet parameters in order to rebuild the shape.
-        #[cxx_name = "Reset"]
-        fn reset(self: Pin<&mut BRepFilletAPI_MakeFillet>);
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:332 - `BRepFilletAPI_MakeFillet::Generated()`
-        ///
-        /// Returns the  list   of shapes generated   from the
-        /// shape <EorV>.
-        #[cxx_name = "Generated"]
-        fn generated(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            EorV: &TopoDS_Shape,
-        ) -> &TopTools_ListOfShape;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:337 - `BRepFilletAPI_MakeFillet::Modified()`
-        ///
-        /// Returns the list  of shapes modified from the shape
-        /// <F>.
-        #[cxx_name = "Modified"]
-        fn modified(
-            self: Pin<&mut BRepFilletAPI_MakeFillet>,
-            F: &TopoDS_Shape,
-        ) -> &TopTools_ListOfShape;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:340 - `BRepFilletAPI_MakeFillet::IsDeleted()`
-        #[cxx_name = "IsDeleted"]
-        fn is_deleted(self: Pin<&mut BRepFilletAPI_MakeFillet>, F: &TopoDS_Shape) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:344 - `BRepFilletAPI_MakeFillet::NbSurfaces()`
-        ///
-        /// returns the number of surfaces
-        /// after the shape creation.
-        #[cxx_name = "NbSurfaces"]
-        fn nb_surfaces(self: &BRepFilletAPI_MakeFillet) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:347 - `BRepFilletAPI_MakeFillet::NewFaces()`
-        ///
-        /// Return the faces created for surface <I>.
-        #[cxx_name = "NewFaces"]
-        fn new_faces(self: Pin<&mut BRepFilletAPI_MakeFillet>, I: i32) -> &TopTools_ListOfShape;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:349 - `BRepFilletAPI_MakeFillet::Simulate()`
-        #[cxx_name = "Simulate"]
-        fn simulate(self: Pin<&mut BRepFilletAPI_MakeFillet>, IC: i32);
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:351 - `BRepFilletAPI_MakeFillet::NbSurf()`
-        #[cxx_name = "NbSurf"]
-        fn nb_surf(self: &BRepFilletAPI_MakeFillet, IC: i32) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:358 - `BRepFilletAPI_MakeFillet::NbFaultyContours()`
-        ///
-        /// Returns the number of contours where the computation
-        /// of the fillet failed
-        #[cxx_name = "NbFaultyContours"]
-        fn nb_faulty_contours(self: &BRepFilletAPI_MakeFillet) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:364 - `BRepFilletAPI_MakeFillet::FaultyContour()`
-        ///
-        /// for each I in [1.. NbFaultyContours] returns the index IC of
-        /// the contour where the computation of the fillet failed.
-        /// the method NbEdges(IC) gives the number of edges in the contour IC
-        /// the method Edge(IC,ie) gives the edge number ie of the contour IC
-        #[cxx_name = "FaultyContour"]
-        fn faulty_contour(self: &BRepFilletAPI_MakeFillet, I: i32) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:368 - `BRepFilletAPI_MakeFillet::NbComputedSurfaces()`
-        ///
-        /// returns the number of surfaces which have been
-        /// computed on the contour IC
-        #[cxx_name = "NbComputedSurfaces"]
-        fn nb_computed_surfaces(self: &BRepFilletAPI_MakeFillet, IC: i32) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:375 - `BRepFilletAPI_MakeFillet::NbFaultyVertices()`
-        ///
-        /// returns the number of vertices where the computation failed
-        #[cxx_name = "NbFaultyVertices"]
-        fn nb_faulty_vertices(self: &BRepFilletAPI_MakeFillet) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:382 - `BRepFilletAPI_MakeFillet::HasResult()`
-        ///
-        /// returns true if a part of the result has been computed
-        /// if the filling in a corner failed a shape with a hole is returned
-        #[cxx_name = "HasResult"]
-        fn has_result(self: &BRepFilletAPI_MakeFillet) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:77 - `BRepFilletAPI_MakeFillet::SetContinuity()`
-        ///
-        /// Changes     the      parameters     of  continiuity
-        /// InternalContinuity to produce fillet'surfaces with
-        /// an continuity   Ci (i=0,1 or    2).
-        /// By defaultInternalContinuity = GeomAbs_C1.
-        /// AngularTolerance  is the G1 tolerance between fillet
-        /// and support'faces.
-        fn BRepFilletAPI_MakeFillet_set_continuity(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
-            InternalContinuity: i32,
-            AngularTolerance: f64,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:204 - `BRepFilletAPI_MakeFillet::GetLaw()`
-        fn BRepFilletAPI_MakeFillet_get_law(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
-            IC: i32,
-            E: &TopoDS_Edge,
-        ) -> UniquePtr<HandleLawFunction>;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:211 - `BRepFilletAPI_MakeFillet::SetFilletShape()`
-        ///
-        /// Assigns FShape as the type of fillet shape built by this algorithm.
-        fn BRepFilletAPI_MakeFillet_set_fillet_shape(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
-            FShape: i32,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:214 - `BRepFilletAPI_MakeFillet::GetFilletShape()`
-        ///
-        /// Returns the type of fillet shape built by this algorithm.
-        fn BRepFilletAPI_MakeFillet_get_fillet_shape(self_: &BRepFilletAPI_MakeFillet) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:260 - `BRepFilletAPI_MakeFillet::FirstVertex()`
-        ///
-        /// Returns the first vertex of the contour of index IC
-        /// in the internal data structure of this algorithm.
-        /// Warning
-        /// Returns a null shape if IC is outside the bounds of the table of contours.
-        fn BRepFilletAPI_MakeFillet_first_vertex(
-            self_: &BRepFilletAPI_MakeFillet,
-            IC: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:266 - `BRepFilletAPI_MakeFillet::LastVertex()`
-        ///
-        /// Returns the  last vertex of the contour of index IC
-        /// in the internal data structure of this algorithm.
-        /// Warning
-        /// Returns a null shape if IC is outside the bounds of the table of contours.
-        fn BRepFilletAPI_MakeFillet_last_vertex(
-            self_: &BRepFilletAPI_MakeFillet,
-            IC: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:353 - `BRepFilletAPI_MakeFillet::Sect()`
-        fn BRepFilletAPI_MakeFillet_sect(
-            self_: &BRepFilletAPI_MakeFillet,
-            IC: i32,
-            IS: i32,
-        ) -> UniquePtr<HandleChFiDSSecHArray1>;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:371 - `BRepFilletAPI_MakeFillet::ComputedSurface()`
-        ///
-        /// returns the surface number IS concerning the contour IC
-        fn BRepFilletAPI_MakeFillet_computed_surface(
-            self_: &BRepFilletAPI_MakeFillet,
-            IC: i32,
-            IS: i32,
-        ) -> UniquePtr<HandleGeomSurface>;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:378 - `BRepFilletAPI_MakeFillet::FaultyVertex()`
-        ///
-        /// returns the vertex where the computation failed
-        fn BRepFilletAPI_MakeFillet_faulty_vertex(
-            self_: &BRepFilletAPI_MakeFillet,
-            IV: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:385 - `BRepFilletAPI_MakeFillet::BadShape()`
-        ///
-        /// if (HasResult()) returns the partial result
-        fn BRepFilletAPI_MakeFillet_bad_shape(
-            self_: &BRepFilletAPI_MakeFillet,
-        ) -> UniquePtr<TopoDS_Shape>;
-        /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:395 - `BRepFilletAPI_MakeFillet::StripeStatus()`
-        ///
-        /// returns the status concerning the contour IC in case of error
-        /// ChFiDS_Ok : the computation is Ok
-        /// ChFiDS_StartsolFailure : the computation can't start, perhaps the
-        /// the radius is too big
-        /// ChFiDS_TwistedSurface : the computation failed because of a twisted
-        /// surface
-        /// ChFiDS_WalkingFailure : there is a problem in the walking
-        /// ChFiDS_Error:  other error different from above
-        fn BRepFilletAPI_MakeFillet_stripe_status(self_: &BRepFilletAPI_MakeFillet, IC: i32)
-            -> i32;
-        /// Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_Command
-        fn BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(
-            self_: &BRepFilletAPI_MakeFillet,
-        ) -> &BRepBuilderAPI_Command;
-        /// Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_Command (mutable)
-        fn BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
-        ) -> Pin<&mut BRepBuilderAPI_Command>;
-        /// Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_MakeShape
-        fn BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape(
-            self_: &BRepFilletAPI_MakeFillet,
-        ) -> &BRepBuilderAPI_MakeShape;
-        /// Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_MakeShape (mutable)
-        fn BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape_mut(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
-        /// Upcast BRepFilletAPI_MakeFillet to BRepFilletAPI_LocalOperation
-        fn BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(
-            self_: &BRepFilletAPI_MakeFillet,
-        ) -> &BRepFilletAPI_LocalOperation;
-        /// Upcast BRepFilletAPI_MakeFillet to BRepFilletAPI_LocalOperation (mutable)
-        fn BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
-        ) -> Pin<&mut BRepFilletAPI_LocalOperation>;
-        /// Inherited from BRepBuilderAPI_Command: IsDone()
-        fn BRepFilletAPI_MakeFillet_inherited_IsDone(self_: &BRepFilletAPI_MakeFillet) -> bool;
-        /// Inherited from BRepBuilderAPI_Command: Check()
-        fn BRepFilletAPI_MakeFillet_inherited_Check(self_: &BRepFilletAPI_MakeFillet);
-        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-        fn BRepFilletAPI_MakeFillet_inherited_Shape(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet>,
-        ) -> &TopoDS_Shape;
-        /// ======================== BRepFilletAPI_MakeFillet2d ========================
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:51 - `BRepFilletAPI_MakeFillet2d`
-        ///
-        /// Describes functions to build fillets and chamfers on the
-        /// vertices of a planar face.
-        /// Fillets and Chamfers on the Vertices of a Planar Face
-        /// A MakeFillet2d object provides a framework for:
-        /// - initializing the construction algorithm with a given face,
-        /// - acquiring the data characterizing the fillets and chamfers,
-        /// -   building the fillets and chamfers, and constructing the
-        /// resulting shape, and
-        /// -   consulting the result.
-        /// Warning
-        /// Only segments of straight lines and arcs of circles are
-        /// treated. BSplines are not processed.
-        type BRepFilletAPI_MakeFillet2d;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:67 - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
-        ///
-        /// Initializes an empty algorithm for computing fillets and
-        /// chamfers. The face on which the fillets and
-        /// chamfers are built is defined using the Init function.
-        /// The vertices on which fillets or chamfers are built are
-        /// defined using the AddFillet or AddChamfer function.
-        /// Warning
-        /// The status of the initialization, as given by the Status
-        /// function, can be one of the following:
-        /// -   ChFi2d_Ready if the initialization is correct,
-        /// -   ChFi2d_NotPlanar if F is not planar,
-        /// -   ChFi2d_NoFace if F is a null face.
-        fn BRepFilletAPI_MakeFillet2d_ctor() -> UniquePtr<BRepFilletAPI_MakeFillet2d>;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:78 - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
-        ///
-        /// Initializes an algorithm for computing fillets and chamfers on the face F.
-        /// The vertices on which fillets or chamfers are built are
-        /// defined using the AddFillet or AddChamfer function.
-        /// Warning
-        /// The status of the initialization, as given by the Status
-        /// function, can be one of the following:
-        /// -   ChFi2d_Ready if the initialization is correct,
-        /// -   ChFi2d_NotPlanar if F is not planar,
-        /// -   ChFi2d_NoFace if F is a null face.
-        fn BRepFilletAPI_MakeFillet2d_ctor_face(
-            F: &TopoDS_Face,
-        ) -> UniquePtr<BRepFilletAPI_MakeFillet2d>;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:88 - `BRepFilletAPI_MakeFillet2d::Init()`
-        ///
-        /// Initializes this algorithm for constructing fillets or
-        /// chamfers with the face F.
-        /// Warning
-        /// The status of the initialization, as given by the Status
-        /// function, can be one of the following:
-        /// -   ChFi2d_Ready if the initialization is correct,
-        /// -   ChFi2d_NotPlanar if F is not planar,
-        /// -   ChFi2d_NoFace if F is a null face.
-        #[cxx_name = "Init"]
-        fn init_face(self: Pin<&mut BRepFilletAPI_MakeFillet2d>, F: &TopoDS_Face);
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:93 - `BRepFilletAPI_MakeFillet2d::Init()`
-        ///
-        /// This initialize method allow to init the builder
-        /// from a face RefFace and another face ModFace which derive from RefFace.
-        /// This  is useful to modify a fillet or a chamfer already created on ModFace.
-        #[cxx_name = "Init"]
-        fn init_face2(
-            self: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            RefFace: &TopoDS_Face,
-            ModFace: &TopoDS_Face,
-        );
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:248 - `BRepFilletAPI_MakeFillet2d::IsModified()`
-        ///
-        /// Returns true if the edge E on the face modified by this
-        /// algorithm is chamfered or filleted.
-        /// Warning
-        /// Returns false if E does not belong to the face modified by this algorithm.
-        #[cxx_name = "IsModified"]
-        fn is_modified(self: &BRepFilletAPI_MakeFillet2d, E: &TopoDS_Edge) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:251 - `BRepFilletAPI_MakeFillet2d::FilletEdges()`
-        ///
-        /// Returns the table of fillets on the face modified by this algorithm.
-        #[cxx_name = "FilletEdges"]
-        fn fillet_edges(self: &BRepFilletAPI_MakeFillet2d) -> &TopTools_SequenceOfShape;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:254 - `BRepFilletAPI_MakeFillet2d::NbFillet()`
-        ///
-        /// Returns the number of fillets on the face modified by this algorithm.
-        #[cxx_name = "NbFillet"]
-        fn nb_fillet(self: &BRepFilletAPI_MakeFillet2d) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:257 - `BRepFilletAPI_MakeFillet2d::ChamferEdges()`
-        ///
-        /// Returns the table of chamfers on the face modified by this algorithm.
-        #[cxx_name = "ChamferEdges"]
-        fn chamfer_edges(self: &BRepFilletAPI_MakeFillet2d) -> &TopTools_SequenceOfShape;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:260 - `BRepFilletAPI_MakeFillet2d::NbChamfer()`
-        ///
-        /// Returns the number of chamfers on the face modified by this algorithm.
-        #[cxx_name = "NbChamfer"]
-        fn nb_chamfer(self: &BRepFilletAPI_MakeFillet2d) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:264 - `BRepFilletAPI_MakeFillet2d::Modified()`
-        ///
-        /// Returns the list  of shapes modified from the shape
-        /// <S>.
-        #[cxx_name = "Modified"]
-        fn modified(
-            self: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            S: &TopoDS_Shape,
-        ) -> &TopTools_ListOfShape;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:269 - `BRepFilletAPI_MakeFillet2d::NbCurves()`
-        ///
-        /// returns the number of new curves
-        /// after the shape creation.
-        #[cxx_name = "NbCurves"]
-        fn nb_curves(self: &BRepFilletAPI_MakeFillet2d) -> i32;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:272 - `BRepFilletAPI_MakeFillet2d::NewEdges()`
-        ///
-        /// Return the Edges created for curve I.
-        #[cxx_name = "NewEdges"]
-        fn new_edges(self: Pin<&mut BRepFilletAPI_MakeFillet2d>, I: i32) -> &TopTools_ListOfShape;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:274 - `BRepFilletAPI_MakeFillet2d::HasDescendant()`
-        #[cxx_name = "HasDescendant"]
-        fn has_descendant(self: &BRepFilletAPI_MakeFillet2d, E: &TopoDS_Edge) -> bool;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:282 - `BRepFilletAPI_MakeFillet2d::DescendantEdge()`
-        ///
-        /// Returns the chamfered or filleted edge built from the
-        /// edge E on the face modified by this algorithm. If E has
-        /// not been modified, this function returns E.
-        /// Exceptions
-        /// Standard_NoSuchObject if the edge E does not
-        /// belong to the initial face.
-        #[cxx_name = "DescendantEdge"]
-        fn descendant_edge(self: &BRepFilletAPI_MakeFillet2d, E: &TopoDS_Edge) -> &TopoDS_Edge;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:289 - `BRepFilletAPI_MakeFillet2d::BasisEdge()`
-        ///
-        /// Returns the basis edge on the face modified by this
-        /// algorithm from which the chamfered or filleted edge E is
-        /// built. If E has not been modified, this function returns E.
-        /// Warning
-        /// E is returned if it does not belong to the initial face.
-        #[cxx_name = "BasisEdge"]
-        fn basis_edge(self: &BRepFilletAPI_MakeFillet2d, E: &TopoDS_Edge) -> &TopoDS_Edge;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:294 - `BRepFilletAPI_MakeFillet2d::Build()`
-        ///
-        /// Update the result and set the Done flag
-        #[cxx_name = "Build"]
-        fn build(self: Pin<&mut BRepFilletAPI_MakeFillet2d>, theRange: &Message_ProgressRange);
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:113 - `BRepFilletAPI_MakeFillet2d::AddFillet()`
-        ///
-        /// Adds a fillet of radius Radius between the two edges
-        /// adjacent to the vertex V on the face modified by this
-        /// algorithm. The two edges do not need to be rectilinear.
-        /// This function returns the fillet and builds the resulting face.
-        /// Warning
-        /// The status of the construction, as given by the Status
-        /// function, can be one of the following:
-        /// - ChFi2d_IsDone if the fillet is built,
-        /// - ChFi2d_ConnexionError if V does not belong to the initial face,
-        /// -   ChFi2d_ComputationError if Radius is too large
-        /// to build a fillet between the two adjacent edges,
-        /// -   ChFi2d_NotAuthorized
-        /// -   if one of the two edges connected to V is a fillet or chamfer, or
-        /// -   if a curve other than a straight line or an arc of a
-        /// circle is used as E, E1 or E2.
-        /// Do not use the returned fillet if the status of the construction is not ChFi2d_IsDone.
-        /// Exceptions
-        /// Standard_NegativeValue if Radius is less than or equal to zero.
-        fn BRepFilletAPI_MakeFillet2d_add_fillet(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            V: &TopoDS_Vertex,
-            Radius: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:130 - `BRepFilletAPI_MakeFillet2d::ModifyFillet()`
-        ///
-        /// Assigns the radius Radius to the fillet Fillet already
-        /// built on the face modified by this algorithm.
-        /// This function returns the new fillet and modifies the existing face.
-        /// Warning
-        /// The status of the construction, as given by the Status
-        /// function, can be one of the following:
-        /// -   ChFi2d_IsDone if the new fillet is built,
-        /// -   ChFi2d_ConnexionError if Fillet does not
-        /// belong to the existing face,
-        /// -   ChFi2d_ComputationError if Radius is too
-        /// large to build a fillet between the two adjacent edges.
-        /// Do not use the returned fillet if the status of the
-        /// construction is not ChFi2d_IsDone.
-        /// Exceptions
-        /// Standard_NegativeValue if Radius is less than or equal to zero.
-        fn BRepFilletAPI_MakeFillet2d_modify_fillet(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            Fillet: &TopoDS_Edge,
-            Radius: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:141 - `BRepFilletAPI_MakeFillet2d::RemoveFillet()`
-        ///
-        /// Removes the fillet Fillet already built on the face
-        /// modified by this algorithm.
-        /// This function returns the vertex connecting the two
-        /// adjacent edges of Fillet and modifies the existing face.
-        /// Warning
-        /// -   The returned vertex is only valid if the Status
-        /// function returns ChFi2d_IsDone.
-        /// -   A null vertex is returned if the edge Fillet does not
-        /// belong to the initial face.
-        fn BRepFilletAPI_MakeFillet2d_remove_fillet(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            Fillet: &TopoDS_Edge,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:153 - `BRepFilletAPI_MakeFillet2d::AddChamfer()`
-        ///
-        /// Adds a chamfer on the face modified by this algorithm
-        /// between the two adjacent edges E1 and E2, where
-        /// the extremities of the chamfer are on E1 and E2 at
-        /// distances D1 and D2 respectively
-        /// In cases where the edges are not rectilinear, distances
-        /// are measured using the curvilinear abscissa of the
-        /// edges and the angle is measured with respect to the
-        /// tangent at the corresponding point.
-        /// The angle Ang is given in radians.
-        /// This function returns the chamfer and builds the resulting face.
-        fn BRepFilletAPI_MakeFillet2d_add_chamfer_edge2_real2(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            E1: &TopoDS_Edge,
-            E2: &TopoDS_Edge,
-            D1: f64,
-            D2: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:185 - `BRepFilletAPI_MakeFillet2d::AddChamfer()`
-        ///
-        /// Adds a chamfer on the face modified by this algorithm
-        /// between the two edges connected by the vertex V,
-        /// where E is one of the two edges. The chamfer makes
-        /// an angle Ang with E and one of its extremities is on
-        /// E at distance D from V.
-        /// In cases where the edges are not rectilinear, distances
-        /// are measured using the curvilinear abscissa of the
-        /// edges and the angle is measured with respect to the
-        /// tangent at the corresponding point.
-        /// The angle Ang is given in radians.
-        /// This function returns the chamfer and builds the resulting face.
-        /// Warning
-        /// The status of the construction, as given by the Status function, can
-        /// be one of the following:
-        /// -          ChFi2d_IsDone if the chamfer is built,
-        /// -  ChFi2d_ParametersError if D1, D2, D or Ang is less than or equal to zero,
-        /// -          ChFi2d_ConnexionError if:
-        /// - the edge E, E1 or E2 does not belong to the initial face, or
-        /// -  the edges E1 and E2 are not adjacent, or
-        /// -  the vertex V is not one of the limit points of the edge E,
-        /// -          ChFi2d_ComputationError if the parameters of the chamfer
-        /// are too large to build a chamfer between the two adjacent edges,
-        /// -          ChFi2d_NotAuthorized if:
-        /// - the edge E1, E2 or one of the two edges connected to V is a fillet or chamfer, or
-        /// - a curve other than a straight line or an arc of a circle is used as E, E1 or E2.
-        /// Do not use the returned chamfer if
-        /// the status of the construction is not ChFi2d_IsDone.
-        fn BRepFilletAPI_MakeFillet2d_add_chamfer_edge_vertex_real2(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            E: &TopoDS_Edge,
-            V: &TopoDS_Vertex,
-            D: f64,
-            Ang: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:195 - `BRepFilletAPI_MakeFillet2d::ModifyChamfer()`
-        ///
-        /// Modifies the chamfer Chamfer on the face modified
-        /// by this algorithm, where:
-        /// E1 and E2 are the two adjacent edges on which
-        /// Chamfer is already built; the extremities of the new
-        /// chamfer are on E1 and E2 at distances D1 and D2 respectively.
-        fn BRepFilletAPI_MakeFillet2d_modify_chamfer_edge3_real2(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            Chamfer: &TopoDS_Edge,
-            E1: &TopoDS_Edge,
-            E2: &TopoDS_Edge,
-            D1: f64,
-            D2: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:228 - `BRepFilletAPI_MakeFillet2d::ModifyChamfer()`
-        ///
-        /// Modifies the chamfer Chamfer on the face modified
-        /// by this algorithm, where:
-        /// E is one of the two adjacent edges on which
-        /// Chamfer is already built; the new chamfer makes
-        /// an angle Ang with E and one of its extremities is
-        /// on E at distance D from the vertex on which the chamfer is built.
-        /// In cases where the edges are not rectilinear, the
-        /// distances are measured using the curvilinear abscissa
-        /// of the edges and the angle is measured with respect
-        /// to the tangent at the corresponding point.
-        /// The angle Ang is given in radians.
-        /// This function returns the new chamfer and modifies the existing face.
-        /// Warning
-        /// The status of the construction, as given by the Status
-        /// function, can be one of the following:
-        /// -   ChFi2d_IsDone if the chamfer is built,
-        /// -   ChFi2d_ParametersError if D1, D2, D or Ang is less than or equal to zero,
-        /// -   ChFi2d_ConnexionError if:
-        /// -   the edge E, E1, E2 or Chamfer does not belong
-        /// to the existing face, or
-        /// -   the edges E1 and E2 are not adjacent,
-        /// -   ChFi2d_ComputationError if the parameters of
-        /// the chamfer are too large to build a chamfer
-        /// between the two adjacent edges,
-        /// -   ChFi2d_NotAuthorized if E1 or E2 is a fillet or chamfer.
-        /// Do not use the returned chamfer if the status of the
-        /// construction is not ChFi2d_IsDone.
-        fn BRepFilletAPI_MakeFillet2d_modify_chamfer_edge2_real2(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            Chamfer: &TopoDS_Edge,
-            E: &TopoDS_Edge,
-            D: f64,
-            Ang: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:242 - `BRepFilletAPI_MakeFillet2d::RemoveChamfer()`
-        ///
-        /// Removes the chamfer Chamfer already built on the face
-        /// modified by this algorithm.
-        /// This function returns the vertex connecting the two
-        /// adjacent edges of Chamfer and modifies the existing face.
-        /// Warning
-        /// -   The returned vertex is only valid if the Status
-        /// function returns ChFi2d_IsDone.
-        /// -   A null vertex is returned if the edge Chamfer does
-        /// not belong to the initial face.
-        fn BRepFilletAPI_MakeFillet2d_remove_chamfer(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            Chamfer: &TopoDS_Edge,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:291 - `BRepFilletAPI_MakeFillet2d::Status()`
-        fn BRepFilletAPI_MakeFillet2d_status(self_: &BRepFilletAPI_MakeFillet2d) -> i32;
-        /// Upcast BRepFilletAPI_MakeFillet2d to BRepBuilderAPI_Command
-        fn BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command(
-            self_: &BRepFilletAPI_MakeFillet2d,
-        ) -> &BRepBuilderAPI_Command;
-        /// Upcast BRepFilletAPI_MakeFillet2d to BRepBuilderAPI_Command (mutable)
-        fn BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command_mut(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-        ) -> Pin<&mut BRepBuilderAPI_Command>;
-        /// Upcast BRepFilletAPI_MakeFillet2d to BRepBuilderAPI_MakeShape
-        fn BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape(
-            self_: &BRepFilletAPI_MakeFillet2d,
-        ) -> &BRepBuilderAPI_MakeShape;
-        /// Upcast BRepFilletAPI_MakeFillet2d to BRepBuilderAPI_MakeShape (mutable)
-        fn BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape_mut(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
-        /// Inherited from BRepBuilderAPI_Command: IsDone()
-        fn BRepFilletAPI_MakeFillet2d_inherited_IsDone(self_: &BRepFilletAPI_MakeFillet2d) -> bool;
-        /// Inherited from BRepBuilderAPI_Command: Check()
-        fn BRepFilletAPI_MakeFillet2d_inherited_Check(self_: &BRepFilletAPI_MakeFillet2d);
-        /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-        fn BRepFilletAPI_MakeFillet2d_inherited_Shape(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-        ) -> &TopoDS_Shape;
-        /// Inherited from BRepBuilderAPI_MakeShape: Generated()
-        fn BRepFilletAPI_MakeFillet2d_inherited_Generated<'a>(
-            self_: Pin<&'a mut BRepFilletAPI_MakeFillet2d>,
-            S: &TopoDS_Shape,
-        ) -> &'a TopTools_ListOfShape;
-        /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-        fn BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(
-            self_: Pin<&mut BRepFilletAPI_MakeFillet2d>,
-            S: &TopoDS_Shape,
-        ) -> bool;
         /// ======================== BRepOffsetAPI_MakeOffset ========================
         /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:36 - `BRepOffsetAPI_MakeOffset`
         ///
@@ -32203,6 +32203,268 @@ mod ffi {
         fn math_FunctionWithDerivative_inherited_GetStateNumber(
             self_: Pin<&mut math_FunctionWithDerivative>,
         ) -> i32;
+        /// ======================== math_DirectPolynomialRoots ========================
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:30 - `math_DirectPolynomialRoots`
+        ///
+        /// This class implements the calculation of all the real roots of a real
+        /// polynomial of degree <= 4 using a direct method. Once found,
+        /// the roots are polished using the Newton method.
+        type math_DirectPolynomialRoots;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:37 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        ///
+        /// computes all the real roots of the polynomial
+        /// Ax4 + Bx3 + Cx2 + Dx + E using a direct method.
+        fn math_DirectPolynomialRoots_ctor_real5(
+            A: f64,
+            B: f64,
+            C: f64,
+            D: f64,
+            E: f64,
+        ) -> UniquePtr<math_DirectPolynomialRoots>;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:45 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        ///
+        /// computes all the real roots of the polynomial
+        /// Ax3 + Bx2 + Cx + D using a direct method.
+        fn math_DirectPolynomialRoots_ctor_real4(
+            A: f64,
+            B: f64,
+            C: f64,
+            D: f64,
+        ) -> UniquePtr<math_DirectPolynomialRoots>;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:52 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        ///
+        /// computes all the real roots of the polynomial
+        /// Ax2 + Bx + C using a direct method.
+        fn math_DirectPolynomialRoots_ctor_real3(
+            A: f64,
+            B: f64,
+            C: f64,
+        ) -> UniquePtr<math_DirectPolynomialRoots>;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:57 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        ///
+        /// computes the real root of the polynomial Ax + B.
+        fn math_DirectPolynomialRoots_ctor_real2(
+            A: f64,
+            B: f64,
+        ) -> UniquePtr<math_DirectPolynomialRoots>;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:60 - `math_DirectPolynomialRoots::IsDone()`
+        ///
+        /// Returns true if the computations are successful, otherwise returns false.
+        #[cxx_name = "IsDone"]
+        fn is_done(self: &math_DirectPolynomialRoots) -> bool;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:63 - `math_DirectPolynomialRoots::InfiniteRoots()`
+        ///
+        /// Returns true if there is an infinity of roots, otherwise returns false.
+        #[cxx_name = "InfiniteRoots"]
+        fn infinite_roots(self: &math_DirectPolynomialRoots) -> bool;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:67 - `math_DirectPolynomialRoots::NbSolutions()`
+        ///
+        /// returns the number of solutions.
+        /// An exception is raised if there are an infinity of roots.
+        #[cxx_name = "NbSolutions"]
+        fn nb_solutions(self: &math_DirectPolynomialRoots) -> i32;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:73 - `math_DirectPolynomialRoots::Value()`
+        ///
+        /// returns the value of the Nieme root.
+        /// An exception is raised if there are an infinity of roots.
+        /// Exception RangeError is raised if Nieme is < 1
+        /// or Nieme > NbSolutions.
+        #[cxx_name = "Value"]
+        fn value(self: &math_DirectPolynomialRoots, Nieme: i32) -> f64;
+        /// ======================== math_BissecNewton ========================
+        /// **Source:** `math_BissecNewton.hxx`:32 - `math_BissecNewton`
+        ///
+        /// This class implements a combination of Newton-Raphson and bissection
+        /// methods to find the root of the function between two bounds.
+        /// Knowledge of the derivative is required.
+        type math_BissecNewton;
+        /// **Source:** `math_BissecNewton.hxx`:39 - `math_BissecNewton::math_BissecNewton()`
+        ///
+        /// Constructor.
+        /// @param theXTolerance - algorithm tolerance.
+        fn math_BissecNewton_ctor_real(theXTolerance: f64) -> UniquePtr<math_BissecNewton>;
+        /// **Source:** `math_BissecNewton.hxx`:48 - `math_BissecNewton::Perform()`
+        ///
+        /// A combination of Newton-Raphson and bissection methods is done to find
+        /// the root of the function F between the bounds Bound1 and Bound2
+        /// on the function F.
+        /// The tolerance required on the root is given by TolX.
+        /// The solution is found when:
+        /// abs(Xi - Xi-1) <= TolX and F(Xi) * F(Xi-1) <= 0
+        /// The maximum number of iterations allowed is given by NbIterations.
+        #[cxx_name = "Perform"]
+        fn perform(
+            self: Pin<&mut math_BissecNewton>,
+            F: Pin<&mut math_FunctionWithDerivative>,
+            Bound1: f64,
+            Bound2: f64,
+            NbIterations: i32,
+        );
+        /// **Source:** `math_BissecNewton.hxx`:57 - `math_BissecNewton::IsSolutionReached()`
+        ///
+        /// This method is called at the end of each iteration to check if the
+        /// solution has been found.
+        /// It can be redefined in a sub-class to implement a specific test to
+        /// stop the iterations.
+        #[cxx_name = "IsSolutionReached"]
+        fn is_solution_reached(
+            self: Pin<&mut math_BissecNewton>,
+            theFunction: Pin<&mut math_FunctionWithDerivative>,
+        ) -> bool;
+        /// **Source:** `math_BissecNewton.hxx`:60 - `math_BissecNewton::IsDone()`
+        ///
+        /// Tests is the root has been successfully found.
+        #[cxx_name = "IsDone"]
+        fn is_done(self: &math_BissecNewton) -> bool;
+        /// **Source:** `math_BissecNewton.hxx`:64 - `math_BissecNewton::Root()`
+        ///
+        /// returns the value of the root.
+        /// Exception NotDone is raised if the minimum was not found.
+        #[cxx_name = "Root"]
+        fn root(self: &math_BissecNewton) -> f64;
+        /// **Source:** `math_BissecNewton.hxx`:68 - `math_BissecNewton::Derivative()`
+        ///
+        /// returns the value of the derivative at the root.
+        /// Exception NotDone is raised if the minimum was not found.
+        #[cxx_name = "Derivative"]
+        fn derivative(self: &math_BissecNewton) -> f64;
+        /// **Source:** `math_BissecNewton.hxx`:72 - `math_BissecNewton::Value()`
+        ///
+        /// returns the value of the function at the root.
+        /// Exception NotDone is raised if the minimum was not found.
+        #[cxx_name = "Value"]
+        fn value(self: &math_BissecNewton) -> f64;
+        /// ======================== math_BrentMinimum ========================
+        /// **Source:** `math_BrentMinimum.hxx`:31 - `math_BrentMinimum`
+        ///
+        /// This class implements the Brent's method to find the minimum of
+        /// a function of a single variable.
+        /// No knowledge of the derivative is required.
+        type math_BrentMinimum;
+        /// **Source:** `math_BrentMinimum.hxx`:38 - `math_BrentMinimum::math_BrentMinimum()`
+        ///
+        /// This constructor should be used in a sub-class to initialize
+        /// correctly all the fields of this class.
+        fn math_BrentMinimum_ctor_real_int_real(
+            TolX: f64,
+            NbIterations: i32,
+            ZEPS: f64,
+        ) -> UniquePtr<math_BrentMinimum>;
+        /// **Source:** `math_BrentMinimum.hxx`:45 - `math_BrentMinimum::math_BrentMinimum()`
+        ///
+        /// This constructor should be used in a sub-class to initialize
+        /// correctly all the fields of this class.
+        /// It has to be used if F(Bx) is known.
+        fn math_BrentMinimum_ctor_real2_int_real(
+            TolX: f64,
+            Fbx: f64,
+            NbIterations: i32,
+            ZEPS: f64,
+        ) -> UniquePtr<math_BrentMinimum>;
+        /// **Source:** `math_BrentMinimum.hxx`:57 - `math_BrentMinimum::Perform()`
+        ///
+        /// Brent minimization is performed on function F from a given
+        /// bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is
+        /// between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx))
+        /// The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
+        #[cxx_name = "Perform"]
+        fn perform(
+            self: Pin<&mut math_BrentMinimum>,
+            F: Pin<&mut math_Function>,
+            Ax: f64,
+            Bx: f64,
+            Cx: f64,
+        );
+        /// **Source:** `math_BrentMinimum.hxx`:66 - `math_BrentMinimum::IsSolutionReached()`
+        ///
+        /// This method is called at the end of each iteration to check if the
+        /// solution is found.
+        /// It can be redefined in a sub-class to implement a specific test to
+        /// stop the iterations.
+        #[cxx_name = "IsSolutionReached"]
+        fn is_solution_reached(
+            self: Pin<&mut math_BrentMinimum>,
+            theFunction: Pin<&mut math_Function>,
+        ) -> bool;
+        /// **Source:** `math_BrentMinimum.hxx`:69 - `math_BrentMinimum::IsDone()`
+        ///
+        /// Returns true if the computations are successful, otherwise returns false.
+        #[cxx_name = "IsDone"]
+        fn is_done(self: &math_BrentMinimum) -> bool;
+        /// **Source:** `math_BrentMinimum.hxx`:73 - `math_BrentMinimum::Location()`
+        ///
+        /// returns the location value of the minimum.
+        /// Exception NotDone is raised if the minimum was not found.
+        #[cxx_name = "Location"]
+        fn location(self: &math_BrentMinimum) -> f64;
+        /// **Source:** `math_BrentMinimum.hxx`:77 - `math_BrentMinimum::Minimum()`
+        ///
+        /// returns the value of the minimum.
+        /// Exception NotDone is raised if the minimum was not found.
+        #[cxx_name = "Minimum"]
+        fn minimum(self: &math_BrentMinimum) -> f64;
+        /// **Source:** `math_BrentMinimum.hxx`:82 - `math_BrentMinimum::NbIterations()`
+        ///
+        /// returns the number of iterations really done during the
+        /// computation of the minimum.
+        /// Exception NotDone is raised if the minimum was not found.
+        #[cxx_name = "NbIterations"]
+        fn nb_iterations(self: &math_BrentMinimum) -> i32;
+        /// ======================== math_EigenValuesSearcher ========================
+        /// **Source:** `math_EigenValuesSearcher.hxx`:32 - `math_EigenValuesSearcher`
+        ///
+        /// This class finds eigen values and vectors of
+        /// real symmetric tridiagonal matrix
+        type math_EigenValuesSearcher;
+        /// **Source:** `math_EigenValuesSearcher.hxx`:37 - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
+        fn math_EigenValuesSearcher_ctor_array1ofreal2(
+            Diagonal: &TColStd_Array1OfReal,
+            Subdiagonal: &TColStd_Array1OfReal,
+        ) -> UniquePtr<math_EigenValuesSearcher>;
+        /// **Source:** `math_EigenValuesSearcher.hxx`:42 - `math_EigenValuesSearcher::IsDone()`
+        ///
+        /// Returns Standard_True if computation is performed
+        /// successfully.
+        #[cxx_name = "IsDone"]
+        fn is_done(self: &math_EigenValuesSearcher) -> bool;
+        /// **Source:** `math_EigenValuesSearcher.hxx`:45 - `math_EigenValuesSearcher::Dimension()`
+        ///
+        /// Returns the dimension of matrix
+        #[cxx_name = "Dimension"]
+        fn dimension(self: &math_EigenValuesSearcher) -> i32;
+        /// **Source:** `math_EigenValuesSearcher.hxx`:49 - `math_EigenValuesSearcher::EigenValue()`
+        ///
+        /// Returns the Index_th eigen value of matrix
+        /// Index must be in [1, Dimension()]
+        #[cxx_name = "EigenValue"]
+        fn eigen_value(self: &math_EigenValuesSearcher, Index: i32) -> f64;
+        /// ======================== math_GaussLeastSquare ========================
+        /// **Source:** `math_GaussLeastSquare.hxx`:34 - `math_GaussLeastSquare`
+        ///
+        /// This class implements the least square solution of a set of
+        /// n linear equations of m unknowns (n >= m) using the gauss LU
+        /// decomposition algorithm.
+        /// This algorithm is more likely subject to numerical instability
+        /// than math_SVD.
+        type math_GaussLeastSquare;
+        /// **Source:** `math_GaussLeastSquare.hxx`:46 - `math_GaussLeastSquare::math_GaussLeastSquare()`
+        ///
+        /// Given an input n X m matrix A with n >= m this constructor
+        /// performs the LU decomposition with partial pivoting
+        /// (interchange of rows) of the matrix AA = A.Transposed() * A;
+        /// This LU decomposition is stored internally and may be used
+        /// to do subsequent calculation.
+        /// If the largest pivot found is less than MinPivot the matrix <A>
+        /// is considered as singular.
+        fn math_GaussLeastSquare_ctor_matrix_real(
+            A: &math_Matrix,
+            MinPivot: f64,
+        ) -> UniquePtr<math_GaussLeastSquare>;
+        /// **Source:** `math_GaussLeastSquare.hxx`:50 - `math_GaussLeastSquare::IsDone()`
+        ///
+        /// Returns true if the computations are successful, otherwise returns false.e
+        #[cxx_name = "IsDone"]
+        fn is_done(self: &math_GaussLeastSquare) -> bool;
         /// ======================== Extrema_ExtCC ========================
         /// **Source:** `Extrema_ExtCC.hxx`:34 - `Extrema_ExtCC`
         ///
@@ -33275,268 +33537,6 @@ mod ffi {
         fn HandleAdaptor2dCurve2d_get_mut(
             handle: Pin<&mut HandleAdaptor2dCurve2d>,
         ) -> Pin<&mut Adaptor2d_Curve2d>;
-        /// ======================== math_DirectPolynomialRoots ========================
-        /// **Source:** `math_DirectPolynomialRoots.hxx`:30 - `math_DirectPolynomialRoots`
-        ///
-        /// This class implements the calculation of all the real roots of a real
-        /// polynomial of degree <= 4 using a direct method. Once found,
-        /// the roots are polished using the Newton method.
-        type math_DirectPolynomialRoots;
-        /// **Source:** `math_DirectPolynomialRoots.hxx`:37 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
-        ///
-        /// computes all the real roots of the polynomial
-        /// Ax4 + Bx3 + Cx2 + Dx + E using a direct method.
-        fn math_DirectPolynomialRoots_ctor_real5(
-            A: f64,
-            B: f64,
-            C: f64,
-            D: f64,
-            E: f64,
-        ) -> UniquePtr<math_DirectPolynomialRoots>;
-        /// **Source:** `math_DirectPolynomialRoots.hxx`:45 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
-        ///
-        /// computes all the real roots of the polynomial
-        /// Ax3 + Bx2 + Cx + D using a direct method.
-        fn math_DirectPolynomialRoots_ctor_real4(
-            A: f64,
-            B: f64,
-            C: f64,
-            D: f64,
-        ) -> UniquePtr<math_DirectPolynomialRoots>;
-        /// **Source:** `math_DirectPolynomialRoots.hxx`:52 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
-        ///
-        /// computes all the real roots of the polynomial
-        /// Ax2 + Bx + C using a direct method.
-        fn math_DirectPolynomialRoots_ctor_real3(
-            A: f64,
-            B: f64,
-            C: f64,
-        ) -> UniquePtr<math_DirectPolynomialRoots>;
-        /// **Source:** `math_DirectPolynomialRoots.hxx`:57 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
-        ///
-        /// computes the real root of the polynomial Ax + B.
-        fn math_DirectPolynomialRoots_ctor_real2(
-            A: f64,
-            B: f64,
-        ) -> UniquePtr<math_DirectPolynomialRoots>;
-        /// **Source:** `math_DirectPolynomialRoots.hxx`:60 - `math_DirectPolynomialRoots::IsDone()`
-        ///
-        /// Returns true if the computations are successful, otherwise returns false.
-        #[cxx_name = "IsDone"]
-        fn is_done(self: &math_DirectPolynomialRoots) -> bool;
-        /// **Source:** `math_DirectPolynomialRoots.hxx`:63 - `math_DirectPolynomialRoots::InfiniteRoots()`
-        ///
-        /// Returns true if there is an infinity of roots, otherwise returns false.
-        #[cxx_name = "InfiniteRoots"]
-        fn infinite_roots(self: &math_DirectPolynomialRoots) -> bool;
-        /// **Source:** `math_DirectPolynomialRoots.hxx`:67 - `math_DirectPolynomialRoots::NbSolutions()`
-        ///
-        /// returns the number of solutions.
-        /// An exception is raised if there are an infinity of roots.
-        #[cxx_name = "NbSolutions"]
-        fn nb_solutions(self: &math_DirectPolynomialRoots) -> i32;
-        /// **Source:** `math_DirectPolynomialRoots.hxx`:73 - `math_DirectPolynomialRoots::Value()`
-        ///
-        /// returns the value of the Nieme root.
-        /// An exception is raised if there are an infinity of roots.
-        /// Exception RangeError is raised if Nieme is < 1
-        /// or Nieme > NbSolutions.
-        #[cxx_name = "Value"]
-        fn value(self: &math_DirectPolynomialRoots, Nieme: i32) -> f64;
-        /// ======================== math_BissecNewton ========================
-        /// **Source:** `math_BissecNewton.hxx`:32 - `math_BissecNewton`
-        ///
-        /// This class implements a combination of Newton-Raphson and bissection
-        /// methods to find the root of the function between two bounds.
-        /// Knowledge of the derivative is required.
-        type math_BissecNewton;
-        /// **Source:** `math_BissecNewton.hxx`:39 - `math_BissecNewton::math_BissecNewton()`
-        ///
-        /// Constructor.
-        /// @param theXTolerance - algorithm tolerance.
-        fn math_BissecNewton_ctor_real(theXTolerance: f64) -> UniquePtr<math_BissecNewton>;
-        /// **Source:** `math_BissecNewton.hxx`:48 - `math_BissecNewton::Perform()`
-        ///
-        /// A combination of Newton-Raphson and bissection methods is done to find
-        /// the root of the function F between the bounds Bound1 and Bound2
-        /// on the function F.
-        /// The tolerance required on the root is given by TolX.
-        /// The solution is found when:
-        /// abs(Xi - Xi-1) <= TolX and F(Xi) * F(Xi-1) <= 0
-        /// The maximum number of iterations allowed is given by NbIterations.
-        #[cxx_name = "Perform"]
-        fn perform(
-            self: Pin<&mut math_BissecNewton>,
-            F: Pin<&mut math_FunctionWithDerivative>,
-            Bound1: f64,
-            Bound2: f64,
-            NbIterations: i32,
-        );
-        /// **Source:** `math_BissecNewton.hxx`:57 - `math_BissecNewton::IsSolutionReached()`
-        ///
-        /// This method is called at the end of each iteration to check if the
-        /// solution has been found.
-        /// It can be redefined in a sub-class to implement a specific test to
-        /// stop the iterations.
-        #[cxx_name = "IsSolutionReached"]
-        fn is_solution_reached(
-            self: Pin<&mut math_BissecNewton>,
-            theFunction: Pin<&mut math_FunctionWithDerivative>,
-        ) -> bool;
-        /// **Source:** `math_BissecNewton.hxx`:60 - `math_BissecNewton::IsDone()`
-        ///
-        /// Tests is the root has been successfully found.
-        #[cxx_name = "IsDone"]
-        fn is_done(self: &math_BissecNewton) -> bool;
-        /// **Source:** `math_BissecNewton.hxx`:64 - `math_BissecNewton::Root()`
-        ///
-        /// returns the value of the root.
-        /// Exception NotDone is raised if the minimum was not found.
-        #[cxx_name = "Root"]
-        fn root(self: &math_BissecNewton) -> f64;
-        /// **Source:** `math_BissecNewton.hxx`:68 - `math_BissecNewton::Derivative()`
-        ///
-        /// returns the value of the derivative at the root.
-        /// Exception NotDone is raised if the minimum was not found.
-        #[cxx_name = "Derivative"]
-        fn derivative(self: &math_BissecNewton) -> f64;
-        /// **Source:** `math_BissecNewton.hxx`:72 - `math_BissecNewton::Value()`
-        ///
-        /// returns the value of the function at the root.
-        /// Exception NotDone is raised if the minimum was not found.
-        #[cxx_name = "Value"]
-        fn value(self: &math_BissecNewton) -> f64;
-        /// ======================== math_BrentMinimum ========================
-        /// **Source:** `math_BrentMinimum.hxx`:31 - `math_BrentMinimum`
-        ///
-        /// This class implements the Brent's method to find the minimum of
-        /// a function of a single variable.
-        /// No knowledge of the derivative is required.
-        type math_BrentMinimum;
-        /// **Source:** `math_BrentMinimum.hxx`:38 - `math_BrentMinimum::math_BrentMinimum()`
-        ///
-        /// This constructor should be used in a sub-class to initialize
-        /// correctly all the fields of this class.
-        fn math_BrentMinimum_ctor_real_int_real(
-            TolX: f64,
-            NbIterations: i32,
-            ZEPS: f64,
-        ) -> UniquePtr<math_BrentMinimum>;
-        /// **Source:** `math_BrentMinimum.hxx`:45 - `math_BrentMinimum::math_BrentMinimum()`
-        ///
-        /// This constructor should be used in a sub-class to initialize
-        /// correctly all the fields of this class.
-        /// It has to be used if F(Bx) is known.
-        fn math_BrentMinimum_ctor_real2_int_real(
-            TolX: f64,
-            Fbx: f64,
-            NbIterations: i32,
-            ZEPS: f64,
-        ) -> UniquePtr<math_BrentMinimum>;
-        /// **Source:** `math_BrentMinimum.hxx`:57 - `math_BrentMinimum::Perform()`
-        ///
-        /// Brent minimization is performed on function F from a given
-        /// bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is
-        /// between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx))
-        /// The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
-        #[cxx_name = "Perform"]
-        fn perform(
-            self: Pin<&mut math_BrentMinimum>,
-            F: Pin<&mut math_Function>,
-            Ax: f64,
-            Bx: f64,
-            Cx: f64,
-        );
-        /// **Source:** `math_BrentMinimum.hxx`:66 - `math_BrentMinimum::IsSolutionReached()`
-        ///
-        /// This method is called at the end of each iteration to check if the
-        /// solution is found.
-        /// It can be redefined in a sub-class to implement a specific test to
-        /// stop the iterations.
-        #[cxx_name = "IsSolutionReached"]
-        fn is_solution_reached(
-            self: Pin<&mut math_BrentMinimum>,
-            theFunction: Pin<&mut math_Function>,
-        ) -> bool;
-        /// **Source:** `math_BrentMinimum.hxx`:69 - `math_BrentMinimum::IsDone()`
-        ///
-        /// Returns true if the computations are successful, otherwise returns false.
-        #[cxx_name = "IsDone"]
-        fn is_done(self: &math_BrentMinimum) -> bool;
-        /// **Source:** `math_BrentMinimum.hxx`:73 - `math_BrentMinimum::Location()`
-        ///
-        /// returns the location value of the minimum.
-        /// Exception NotDone is raised if the minimum was not found.
-        #[cxx_name = "Location"]
-        fn location(self: &math_BrentMinimum) -> f64;
-        /// **Source:** `math_BrentMinimum.hxx`:77 - `math_BrentMinimum::Minimum()`
-        ///
-        /// returns the value of the minimum.
-        /// Exception NotDone is raised if the minimum was not found.
-        #[cxx_name = "Minimum"]
-        fn minimum(self: &math_BrentMinimum) -> f64;
-        /// **Source:** `math_BrentMinimum.hxx`:82 - `math_BrentMinimum::NbIterations()`
-        ///
-        /// returns the number of iterations really done during the
-        /// computation of the minimum.
-        /// Exception NotDone is raised if the minimum was not found.
-        #[cxx_name = "NbIterations"]
-        fn nb_iterations(self: &math_BrentMinimum) -> i32;
-        /// ======================== math_EigenValuesSearcher ========================
-        /// **Source:** `math_EigenValuesSearcher.hxx`:32 - `math_EigenValuesSearcher`
-        ///
-        /// This class finds eigen values and vectors of
-        /// real symmetric tridiagonal matrix
-        type math_EigenValuesSearcher;
-        /// **Source:** `math_EigenValuesSearcher.hxx`:37 - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
-        fn math_EigenValuesSearcher_ctor_array1ofreal2(
-            Diagonal: &TColStd_Array1OfReal,
-            Subdiagonal: &TColStd_Array1OfReal,
-        ) -> UniquePtr<math_EigenValuesSearcher>;
-        /// **Source:** `math_EigenValuesSearcher.hxx`:42 - `math_EigenValuesSearcher::IsDone()`
-        ///
-        /// Returns Standard_True if computation is performed
-        /// successfully.
-        #[cxx_name = "IsDone"]
-        fn is_done(self: &math_EigenValuesSearcher) -> bool;
-        /// **Source:** `math_EigenValuesSearcher.hxx`:45 - `math_EigenValuesSearcher::Dimension()`
-        ///
-        /// Returns the dimension of matrix
-        #[cxx_name = "Dimension"]
-        fn dimension(self: &math_EigenValuesSearcher) -> i32;
-        /// **Source:** `math_EigenValuesSearcher.hxx`:49 - `math_EigenValuesSearcher::EigenValue()`
-        ///
-        /// Returns the Index_th eigen value of matrix
-        /// Index must be in [1, Dimension()]
-        #[cxx_name = "EigenValue"]
-        fn eigen_value(self: &math_EigenValuesSearcher, Index: i32) -> f64;
-        /// ======================== math_GaussLeastSquare ========================
-        /// **Source:** `math_GaussLeastSquare.hxx`:34 - `math_GaussLeastSquare`
-        ///
-        /// This class implements the least square solution of a set of
-        /// n linear equations of m unknowns (n >= m) using the gauss LU
-        /// decomposition algorithm.
-        /// This algorithm is more likely subject to numerical instability
-        /// than math_SVD.
-        type math_GaussLeastSquare;
-        /// **Source:** `math_GaussLeastSquare.hxx`:46 - `math_GaussLeastSquare::math_GaussLeastSquare()`
-        ///
-        /// Given an input n X m matrix A with n >= m this constructor
-        /// performs the LU decomposition with partial pivoting
-        /// (interchange of rows) of the matrix AA = A.Transposed() * A;
-        /// This LU decomposition is stored internally and may be used
-        /// to do subsequent calculation.
-        /// If the largest pivot found is less than MinPivot the matrix <A>
-        /// is considered as singular.
-        fn math_GaussLeastSquare_ctor_matrix_real(
-            A: &math_Matrix,
-            MinPivot: f64,
-        ) -> UniquePtr<math_GaussLeastSquare>;
-        /// **Source:** `math_GaussLeastSquare.hxx`:50 - `math_GaussLeastSquare::IsDone()`
-        ///
-        /// Returns true if the computations are successful, otherwise returns false.e
-        #[cxx_name = "IsDone"]
-        fn is_done(self: &math_GaussLeastSquare) -> bool;
         /// ======================== TColStd_HArray1OfInteger ========================
         /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger`
         type TColStd_HArray1OfInteger;
@@ -36322,45 +36322,6 @@ mod ffi {
         ///
         /// Test if the code is currently running in a try block
         fn Standard_ErrorHandler_is_in_try_block() -> bool;
-        /// ======================== TColStd_HArray2OfReal ========================
-        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal`
-        type TColStd_HArray2OfReal;
-        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
-        fn TColStd_HArray2OfReal_ctor_int4(
-            theRowLow: i32,
-            theRowUpp: i32,
-            theColLow: i32,
-            theColUpp: i32,
-        ) -> UniquePtr<TColStd_HArray2OfReal>;
-        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
-        fn TColStd_HArray2OfReal_ctor_int4_real(
-            theRowLow: i32,
-            theRowUpp: i32,
-            theColLow: i32,
-            theColUpp: i32,
-            theValue: &f64,
-        ) -> UniquePtr<TColStd_HArray2OfReal>;
-        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
-        fn TColStd_HArray2OfReal_ctor_array2ofreal(
-            theOther: &TColStd_Array2OfReal,
-        ) -> UniquePtr<TColStd_HArray2OfReal>;
-        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::DynamicType()`
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &TColStd_HArray2OfReal) -> &HandleStandardType;
-        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::get_type_descriptor()`
-        fn TColStd_HArray2OfReal_get_type_descriptor() -> &'static HandleStandardType;
-        /// Wrap TColStd_HArray2OfReal in a Handle
-        fn TColStd_HArray2OfReal_to_handle(
-            obj: UniquePtr<TColStd_HArray2OfReal>,
-        ) -> UniquePtr<HandleTColStdHArray2OfReal>;
-        /// Dereference Handle to get &TColStd_HArray2OfReal
-        fn HandleTColStdHArray2OfReal_get(
-            handle: &HandleTColStdHArray2OfReal,
-        ) -> &TColStd_HArray2OfReal;
-        /// Dereference Handle to get Pin<&mut TColStd_HArray2OfReal>
-        fn HandleTColStdHArray2OfReal_get_mut(
-            handle: Pin<&mut HandleTColStdHArray2OfReal>,
-        ) -> Pin<&mut TColStd_HArray2OfReal>;
         /// ======================== Bnd_HArray1OfSphere ========================
         /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere`
         type Bnd_HArray1OfSphere;
@@ -37295,6 +37256,45 @@ mod ffi {
             P1: Pin<&mut Extrema_POnCurv>,
             P2: Pin<&mut Extrema_POnCurv>,
         );
+        /// ======================== TColStd_HArray2OfReal ========================
+        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal`
+        type TColStd_HArray2OfReal;
+        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
+        fn TColStd_HArray2OfReal_ctor_int4(
+            theRowLow: i32,
+            theRowUpp: i32,
+            theColLow: i32,
+            theColUpp: i32,
+        ) -> UniquePtr<TColStd_HArray2OfReal>;
+        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
+        fn TColStd_HArray2OfReal_ctor_int4_real(
+            theRowLow: i32,
+            theRowUpp: i32,
+            theColLow: i32,
+            theColUpp: i32,
+            theValue: &f64,
+        ) -> UniquePtr<TColStd_HArray2OfReal>;
+        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
+        fn TColStd_HArray2OfReal_ctor_array2ofreal(
+            theOther: &TColStd_Array2OfReal,
+        ) -> UniquePtr<TColStd_HArray2OfReal>;
+        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::DynamicType()`
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &TColStd_HArray2OfReal) -> &HandleStandardType;
+        /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::get_type_descriptor()`
+        fn TColStd_HArray2OfReal_get_type_descriptor() -> &'static HandleStandardType;
+        /// Wrap TColStd_HArray2OfReal in a Handle
+        fn TColStd_HArray2OfReal_to_handle(
+            obj: UniquePtr<TColStd_HArray2OfReal>,
+        ) -> UniquePtr<HandleTColStdHArray2OfReal>;
+        /// Dereference Handle to get &TColStd_HArray2OfReal
+        fn HandleTColStdHArray2OfReal_get(
+            handle: &HandleTColStdHArray2OfReal,
+        ) -> &TColStd_HArray2OfReal;
+        /// Dereference Handle to get Pin<&mut TColStd_HArray2OfReal>
+        fn HandleTColStdHArray2OfReal_get_mut(
+            handle: Pin<&mut HandleTColStdHArray2OfReal>,
+        ) -> Pin<&mut TColStd_HArray2OfReal>;
         /// ======================== Message_ProgressScope ========================
         /// **Source:** `Message_ProgressScope.hxx`:192 - `Message_ProgressScope`
         ///
@@ -46300,1874 +46300,6 @@ mod ffi {
             Tolerance: f64,
             oncurve: bool,
         );
-        /// ======================== ChFi2d_Builder ========================
-        /// **Source:** `ChFi2d_Builder.hxx`:39 - `ChFi2d_Builder`
-        ///
-        /// This  class contains  the algorithm  used to build
-        /// fillet on planar wire.
-        type ChFi2d_Builder;
-        /// **Source:** `ChFi2d_Builder.hxx`:44 - `ChFi2d_Builder::ChFi2d_Builder()`
-        fn ChFi2d_Builder_ctor() -> UniquePtr<ChFi2d_Builder>;
-        /// **Source:** `ChFi2d_Builder.hxx`:48 - `ChFi2d_Builder::ChFi2d_Builder()`
-        ///
-        /// The face  <F> can be build  on a closed or an open
-        /// wire.
-        fn ChFi2d_Builder_ctor_face(F: &TopoDS_Face) -> UniquePtr<ChFi2d_Builder>;
-        /// **Source:** `ChFi2d_Builder.hxx`:50 - `ChFi2d_Builder::Init()`
-        #[cxx_name = "Init"]
-        fn init_face(self: Pin<&mut ChFi2d_Builder>, F: &TopoDS_Face);
-        /// **Source:** `ChFi2d_Builder.hxx`:52 - `ChFi2d_Builder::Init()`
-        #[cxx_name = "Init"]
-        fn init_face2(self: Pin<&mut ChFi2d_Builder>, RefFace: &TopoDS_Face, ModFace: &TopoDS_Face);
-        /// **Source:** `ChFi2d_Builder.hxx`:118 - `ChFi2d_Builder::IsModified()`
-        #[cxx_name = "IsModified"]
-        fn is_modified(self: &ChFi2d_Builder, E: &TopoDS_Edge) -> bool;
-        /// **Source:** `ChFi2d_Builder.hxx`:121 - `ChFi2d_Builder::FilletEdges()`
-        ///
-        /// returns the list of new edges
-        #[cxx_name = "FilletEdges"]
-        fn fillet_edges(self: &ChFi2d_Builder) -> &TopTools_SequenceOfShape;
-        /// **Source:** `ChFi2d_Builder.hxx`:123 - `ChFi2d_Builder::NbFillet()`
-        #[cxx_name = "NbFillet"]
-        fn nb_fillet(self: &ChFi2d_Builder) -> i32;
-        /// **Source:** `ChFi2d_Builder.hxx`:126 - `ChFi2d_Builder::ChamferEdges()`
-        ///
-        /// returns the list of new edges
-        #[cxx_name = "ChamferEdges"]
-        fn chamfer_edges(self: &ChFi2d_Builder) -> &TopTools_SequenceOfShape;
-        /// **Source:** `ChFi2d_Builder.hxx`:128 - `ChFi2d_Builder::NbChamfer()`
-        #[cxx_name = "NbChamfer"]
-        fn nb_chamfer(self: &ChFi2d_Builder) -> i32;
-        /// **Source:** `ChFi2d_Builder.hxx`:130 - `ChFi2d_Builder::HasDescendant()`
-        #[cxx_name = "HasDescendant"]
-        fn has_descendant(self: &ChFi2d_Builder, E: &TopoDS_Edge) -> bool;
-        /// **Source:** `ChFi2d_Builder.hxx`:134 - `ChFi2d_Builder::DescendantEdge()`
-        ///
-        /// returns the modified edge if <E> has descendant or
-        /// <E> in the other case.
-        #[cxx_name = "DescendantEdge"]
-        fn descendant_edge(self: &ChFi2d_Builder, E: &TopoDS_Edge) -> &TopoDS_Edge;
-        /// **Source:** `ChFi2d_Builder.hxx`:139 - `ChFi2d_Builder::BasisEdge()`
-        ///
-        /// Returns the parent edge of  <E>
-        /// Warning: If <E>is a basis edge,  the returned edge would be
-        /// equal to <E>
-        #[cxx_name = "BasisEdge"]
-        fn basis_edge(self: &ChFi2d_Builder, E: &TopoDS_Edge) -> &TopoDS_Edge;
-        /// **Source:** `ChFi2d_Builder.hxx`:59 - `ChFi2d_Builder::AddFillet()`
-        ///
-        /// Add  a fillet  of   radius  <Radius> on  the  wire
-        /// between the two edges connected to the vertex <V>.
-        /// <AddFillet> returns the  fillet edge. The returned
-        /// edge has  sense only   if the status   <status> is
-        /// <IsDone>
-        fn ChFi2d_Builder_add_fillet(
-            self_: Pin<&mut ChFi2d_Builder>,
-            V: &TopoDS_Vertex,
-            Radius: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `ChFi2d_Builder.hxx`:64 - `ChFi2d_Builder::ModifyFillet()`
-        ///
-        /// modify the fillet radius and return the new fillet
-        /// edge. this    edge has sense  only if   the status
-        /// <status> is <IsDone>.
-        fn ChFi2d_Builder_modify_fillet(
-            self_: Pin<&mut ChFi2d_Builder>,
-            Fillet: &TopoDS_Edge,
-            Radius: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `ChFi2d_Builder.hxx`:68 - `ChFi2d_Builder::RemoveFillet()`
-        ///
-        /// removes the fillet <Fillet> and returns the vertex
-        /// connecting the two adjacent edges to  this fillet.
-        fn ChFi2d_Builder_remove_fillet(
-            self_: Pin<&mut ChFi2d_Builder>,
-            Fillet: &TopoDS_Edge,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `ChFi2d_Builder.hxx`:74 - `ChFi2d_Builder::AddChamfer()`
-        ///
-        /// Add a chamfer on  the  wire between the two  edges
-        /// connected <E1> and  <E2>. <AddChamfer> returns the
-        /// chamfer  edge. This  edge  has  sense only if  the
-        /// status <status> is <IsDone>.
-        fn ChFi2d_Builder_add_chamfer_edge2_real2(
-            self_: Pin<&mut ChFi2d_Builder>,
-            E1: &TopoDS_Edge,
-            E2: &TopoDS_Edge,
-            D1: f64,
-            D2: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `ChFi2d_Builder.hxx`:86 - `ChFi2d_Builder::AddChamfer()`
-        ///
-        /// Add  a chamfer on the   wire between the two edges
-        /// connected to the vertex <V>. The chamfer will make
-        /// an  angle <Ang> with the edge  <E>, and one of its
-        /// extremities  will be on  <E>  at distance <D>. The
-        /// returned   edge has sense   only   if the   status
-        /// <status> is <IsDone>.
-        /// Warning: The value of <Ang> must be expressed in Radian.
-        fn ChFi2d_Builder_add_chamfer_edge_vertex_real2(
-            self_: Pin<&mut ChFi2d_Builder>,
-            E: &TopoDS_Edge,
-            V: &TopoDS_Vertex,
-            D: f64,
-            Ang: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `ChFi2d_Builder.hxx`:95 - `ChFi2d_Builder::ModifyChamfer()`
-        ///
-        /// modify the chamfer <Chamfer>  and returns  the new
-        /// chamfer edge.
-        /// This edge as sense only  if the status <status> is
-        /// <IsDone>.
-        fn ChFi2d_Builder_modify_chamfer_edge3_real2(
-            self_: Pin<&mut ChFi2d_Builder>,
-            Chamfer: &TopoDS_Edge,
-            E1: &TopoDS_Edge,
-            E2: &TopoDS_Edge,
-            D1: f64,
-            D2: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `ChFi2d_Builder.hxx`:105 - `ChFi2d_Builder::ModifyChamfer()`
-        ///
-        /// modify the  chamfer <Chamfer>  and returns the new
-        /// chamfer edge. This    edge as sense  only   if the
-        /// status <status>   is  <IsDone>.
-        /// Warning: The value of <Ang> must be expressed in Radian.
-        fn ChFi2d_Builder_modify_chamfer_edge2_real2(
-            self_: Pin<&mut ChFi2d_Builder>,
-            Chamfer: &TopoDS_Edge,
-            E: &TopoDS_Edge,
-            D: f64,
-            Ang: f64,
-        ) -> UniquePtr<TopoDS_Edge>;
-        /// **Source:** `ChFi2d_Builder.hxx`:113 - `ChFi2d_Builder::RemoveChamfer()`
-        ///
-        /// removes   the chamfer  <Chamfer>   and returns the
-        /// vertex connecting  the two adjacent  edges to this
-        /// chamfer.
-        fn ChFi2d_Builder_remove_chamfer(
-            self_: Pin<&mut ChFi2d_Builder>,
-            Chamfer: &TopoDS_Edge,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `ChFi2d_Builder.hxx`:116 - `ChFi2d_Builder::Result()`
-        ///
-        /// returns the modified face
-        fn ChFi2d_Builder_result(self_: &ChFi2d_Builder) -> UniquePtr<TopoDS_Face>;
-        /// **Source:** `ChFi2d_Builder.hxx`:141 - `ChFi2d_Builder::Status()`
-        fn ChFi2d_Builder_status(self_: &ChFi2d_Builder) -> i32;
-        /// ======================== ChFi3d_FilBuilder ========================
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:44 - `ChFi3d_FilBuilder`
-        ///
-        /// Tool  of  construction of  fillets 3d on  edges (on a solid).
-        type ChFi3d_FilBuilder;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
-        fn ChFi3d_FilBuilder_ctor_shape_filletshape_real(
-            S: &TopoDS_Shape,
-            FShape: i32,
-            Ta: f64,
-        ) -> UniquePtr<ChFi3d_FilBuilder>;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:62 - `ChFi3d_FilBuilder::Add()`
-        ///
-        /// initialisation of  a contour with the first edge
-        /// (the following are found  by propagation).
-        /// Attention, you  need  to start  with  SetRadius.
-        #[cxx_name = "Add"]
-        fn add_edge(self: Pin<&mut ChFi3d_FilBuilder>, E: &TopoDS_Edge);
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:65 - `ChFi3d_FilBuilder::Add()`
-        ///
-        /// initialisation of the constant vector the corresponding  1st  edge.
-        #[cxx_name = "Add"]
-        fn add_real_edge(self: Pin<&mut ChFi3d_FilBuilder>, Radius: f64, E: &TopoDS_Edge);
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:68 - `ChFi3d_FilBuilder::SetRadius()`
-        ///
-        /// Set the radius of the contour of index IC.
-        #[cxx_name = "SetRadius"]
-        fn set_radius_handlefunction_int2(
-            self: Pin<&mut ChFi3d_FilBuilder>,
-            C: &HandleLawFunction,
-            IC: i32,
-            IinC: i32,
-        );
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:73 - `ChFi3d_FilBuilder::IsConstant()`
-        ///
-        /// Returns true the contour is flagged as edge constant.
-        #[cxx_name = "IsConstant"]
-        fn is_constant_int(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32) -> bool;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:77 - `ChFi3d_FilBuilder::Radius()`
-        ///
-        /// Returns the vector if the contour is flagged as edge
-        /// constant.
-        #[cxx_name = "Radius"]
-        fn radius_int(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32) -> f64;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:80 - `ChFi3d_FilBuilder::ResetContour()`
-        ///
-        /// Reset all vectors of contour IC.
-        #[cxx_name = "ResetContour"]
-        fn reset_contour(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32);
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:84 - `ChFi3d_FilBuilder::SetRadius()`
-        ///
-        /// Set a constant on edge E of  the contour of
-        /// index IC. Since  then  E is flagged as constant.
-        #[cxx_name = "SetRadius"]
-        fn set_radius_real_int_edge(
-            self: Pin<&mut ChFi3d_FilBuilder>,
-            Radius: f64,
-            IC: i32,
-            E: &TopoDS_Edge,
-        );
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:89 - `ChFi3d_FilBuilder::UnSet()`
-        ///
-        /// Extracts the flag constant and the vector of edge E.
-        #[cxx_name = "UnSet"]
-        fn un_set_int_edge(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32, E: &TopoDS_Edge);
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:92 - `ChFi3d_FilBuilder::SetRadius()`
-        ///
-        /// Set a vector on vertex  V of  the contour of index IC.
-        #[cxx_name = "SetRadius"]
-        fn set_radius_real_int_vertex(
-            self: Pin<&mut ChFi3d_FilBuilder>,
-            Radius: f64,
-            IC: i32,
-            V: &TopoDS_Vertex,
-        );
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:97 - `ChFi3d_FilBuilder::UnSet()`
-        ///
-        /// Extracts the vector of  the vertex V.
-        #[cxx_name = "UnSet"]
-        fn un_set_int_vertex(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32, V: &TopoDS_Vertex);
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:101 - `ChFi3d_FilBuilder::SetRadius()`
-        ///
-        /// Set  a vertex on the point of parametre U in the edge IinC
-        /// of  the contour of index IC
-        #[cxx_name = "SetRadius"]
-        fn set_radius_xy_int2(self: Pin<&mut ChFi3d_FilBuilder>, UandR: &gp_XY, IC: i32, IinC: i32);
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:106 - `ChFi3d_FilBuilder::IsConstant()`
-        ///
-        /// Returns true E is flagged as edge constant.
-        #[cxx_name = "IsConstant"]
-        fn is_constant_int_edge(
-            self: Pin<&mut ChFi3d_FilBuilder>,
-            IC: i32,
-            E: &TopoDS_Edge,
-        ) -> bool;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:109 - `ChFi3d_FilBuilder::Radius()`
-        ///
-        /// Returns the vector if E is flagged as edge constant.
-        #[cxx_name = "Radius"]
-        fn radius_int_edge(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32, E: &TopoDS_Edge) -> f64;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:114 - `ChFi3d_FilBuilder::GetBounds()`
-        ///
-        /// Returns in First and Last  les extremities of  the
-        /// part of variable  vector framing E, returns
-        /// False  if  E is flagged as edge constant.
-        #[cxx_name = "GetBounds"]
-        fn get_bounds(
-            self: Pin<&mut ChFi3d_FilBuilder>,
-            IC: i32,
-            E: &TopoDS_Edge,
-            First: &mut f64,
-            Last: &mut f64,
-        ) -> bool;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:126 - `ChFi3d_FilBuilder::SetLaw()`
-        ///
-        /// Sets the rule of elementary evolution of  the
-        /// part to variable  vector framing E.
-        #[cxx_name = "SetLaw"]
-        fn set_law(
-            self: Pin<&mut ChFi3d_FilBuilder>,
-            IC: i32,
-            E: &TopoDS_Edge,
-            L: &HandleLawFunction,
-        );
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:130 - `ChFi3d_FilBuilder::Simulate()`
-        #[cxx_name = "Simulate"]
-        fn simulate(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32);
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
-        #[cxx_name = "NbSurf"]
-        fn nb_surf(self: &ChFi3d_FilBuilder, IC: i32) -> i32;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`
-        ///
-        /// Sets the type of fillet surface.
-        fn ChFi3d_FilBuilder_set_fillet_shape(self_: Pin<&mut ChFi3d_FilBuilder>, FShape: i32);
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:57 - `ChFi3d_FilBuilder::GetFilletShape()`
-        ///
-        /// Returns the type of fillet surface.
-        fn ChFi3d_FilBuilder_get_fillet_shape(self_: &ChFi3d_FilBuilder) -> i32;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:122 - `ChFi3d_FilBuilder::GetLaw()`
-        ///
-        /// Returns the rule of  elementary  evolution of  the
-        /// part to  variable vector framing E, returns a
-        /// rule zero if E is flagged as edge constant.
-        fn ChFi3d_FilBuilder_get_law(
-            self_: Pin<&mut ChFi3d_FilBuilder>,
-            IC: i32,
-            E: &TopoDS_Edge,
-        ) -> UniquePtr<HandleLawFunction>;
-        /// **Source:** `ChFi3d_FilBuilder.hxx`:134 - `ChFi3d_FilBuilder::Sect()`
-        fn ChFi3d_FilBuilder_sect(
-            self_: &ChFi3d_FilBuilder,
-            IC: i32,
-            IS: i32,
-        ) -> UniquePtr<HandleChFiDSSecHArray1>;
-        /// Upcast ChFi3d_FilBuilder to ChFi3d_Builder
-        fn ChFi3d_FilBuilder_as_ChFi3d_Builder(self_: &ChFi3d_FilBuilder) -> &ChFi3d_Builder;
-        /// Upcast ChFi3d_FilBuilder to ChFi3d_Builder (mutable)
-        fn ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(
-            self_: Pin<&mut ChFi3d_FilBuilder>,
-        ) -> Pin<&mut ChFi3d_Builder>;
-        /// Inherited from ChFi3d_Builder: SetParams()
-        fn ChFi3d_FilBuilder_inherited_SetParams(
-            self_: Pin<&mut ChFi3d_FilBuilder>,
-            Tang: f64,
-            Tesp: f64,
-            T2d: f64,
-            TApp3d: f64,
-            TolApp2d: f64,
-            Fleche: f64,
-        );
-        /// Inherited from ChFi3d_Builder: Remove()
-        fn ChFi3d_FilBuilder_inherited_Remove(self_: Pin<&mut ChFi3d_FilBuilder>, E: &TopoDS_Edge);
-        /// Inherited from ChFi3d_Builder: Contains()
-        fn ChFi3d_FilBuilder_inherited_Contains(self_: &ChFi3d_FilBuilder, E: &TopoDS_Edge) -> i32;
-        /// Inherited from ChFi3d_Builder: NbElements()
-        fn ChFi3d_FilBuilder_inherited_NbElements(self_: &ChFi3d_FilBuilder) -> i32;
-        /// Inherited from ChFi3d_Builder: Length()
-        fn ChFi3d_FilBuilder_inherited_Length(self_: &ChFi3d_FilBuilder, IC: i32) -> f64;
-        /// Inherited from ChFi3d_Builder: FirstVertex()
-        fn ChFi3d_FilBuilder_inherited_FirstVertex(
-            self_: &ChFi3d_FilBuilder,
-            IC: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// Inherited from ChFi3d_Builder: LastVertex()
-        fn ChFi3d_FilBuilder_inherited_LastVertex(
-            self_: &ChFi3d_FilBuilder,
-            IC: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// Inherited from ChFi3d_Builder: Abscissa()
-        fn ChFi3d_FilBuilder_inherited_Abscissa(
-            self_: &ChFi3d_FilBuilder,
-            IC: i32,
-            V: &TopoDS_Vertex,
-        ) -> f64;
-        /// Inherited from ChFi3d_Builder: RelativeAbscissa()
-        fn ChFi3d_FilBuilder_inherited_RelativeAbscissa(
-            self_: &ChFi3d_FilBuilder,
-            IC: i32,
-            V: &TopoDS_Vertex,
-        ) -> f64;
-        /// Inherited from ChFi3d_Builder: ClosedAndTangent()
-        fn ChFi3d_FilBuilder_inherited_ClosedAndTangent(self_: &ChFi3d_FilBuilder, IC: i32)
-            -> bool;
-        /// Inherited from ChFi3d_Builder: Closed()
-        fn ChFi3d_FilBuilder_inherited_Closed(self_: &ChFi3d_FilBuilder, IC: i32) -> bool;
-        /// Inherited from ChFi3d_Builder: Compute()
-        fn ChFi3d_FilBuilder_inherited_Compute(self_: Pin<&mut ChFi3d_FilBuilder>);
-        /// Inherited from ChFi3d_Builder: IsDone()
-        fn ChFi3d_FilBuilder_inherited_IsDone(self_: &ChFi3d_FilBuilder) -> bool;
-        /// Inherited from ChFi3d_Builder: Shape()
-        fn ChFi3d_FilBuilder_inherited_Shape(self_: &ChFi3d_FilBuilder) -> UniquePtr<TopoDS_Shape>;
-        /// Inherited from ChFi3d_Builder: Generated()
-        fn ChFi3d_FilBuilder_inherited_Generated<'a>(
-            self_: Pin<&'a mut ChFi3d_FilBuilder>,
-            EouV: &TopoDS_Shape,
-        ) -> &'a TopTools_ListOfShape;
-        /// Inherited from ChFi3d_Builder: NbFaultyContours()
-        fn ChFi3d_FilBuilder_inherited_NbFaultyContours(self_: &ChFi3d_FilBuilder) -> i32;
-        /// Inherited from ChFi3d_Builder: FaultyContour()
-        fn ChFi3d_FilBuilder_inherited_FaultyContour(self_: &ChFi3d_FilBuilder, I: i32) -> i32;
-        /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
-        fn ChFi3d_FilBuilder_inherited_NbComputedSurfaces(
-            self_: &ChFi3d_FilBuilder,
-            IC: i32,
-        ) -> i32;
-        /// Inherited from ChFi3d_Builder: ComputedSurface()
-        fn ChFi3d_FilBuilder_inherited_ComputedSurface(
-            self_: &ChFi3d_FilBuilder,
-            IC: i32,
-            IS: i32,
-        ) -> UniquePtr<HandleGeomSurface>;
-        /// Inherited from ChFi3d_Builder: NbFaultyVertices()
-        fn ChFi3d_FilBuilder_inherited_NbFaultyVertices(self_: &ChFi3d_FilBuilder) -> i32;
-        /// Inherited from ChFi3d_Builder: FaultyVertex()
-        fn ChFi3d_FilBuilder_inherited_FaultyVertex(
-            self_: &ChFi3d_FilBuilder,
-            IV: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// Inherited from ChFi3d_Builder: HasResult()
-        fn ChFi3d_FilBuilder_inherited_HasResult(self_: &ChFi3d_FilBuilder) -> bool;
-        /// Inherited from ChFi3d_Builder: BadShape()
-        fn ChFi3d_FilBuilder_inherited_BadShape(
-            self_: &ChFi3d_FilBuilder,
-        ) -> UniquePtr<TopoDS_Shape>;
-        /// Inherited from ChFi3d_Builder: Reset()
-        fn ChFi3d_FilBuilder_inherited_Reset(self_: Pin<&mut ChFi3d_FilBuilder>);
-        /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
-        fn ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(
-            self_: Pin<&mut ChFi3d_FilBuilder>,
-            Index: i32,
-        ) -> bool;
-        /// ======================== ChFiDS_SecHArray1 ========================
-        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1`
-        type ChFiDS_SecHArray1;
-        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-        fn ChFiDS_SecHArray1_ctor() -> UniquePtr<ChFiDS_SecHArray1>;
-        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-        fn ChFiDS_SecHArray1_ctor_int2(
-            theLower: i32,
-            theUpper: i32,
-        ) -> UniquePtr<ChFiDS_SecHArray1>;
-        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-        fn ChFiDS_SecHArray1_ctor_int2_circsection(
-            theLower: i32,
-            theUpper: i32,
-            theValue: &ChFiDS_CircSection,
-        ) -> UniquePtr<ChFiDS_SecHArray1>;
-        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-        fn ChFiDS_SecHArray1_ctor_circsection_int2_bool(
-            theBegin: &ChFiDS_CircSection,
-            theLower: i32,
-            theUpper: i32,
-            arg3: bool,
-        ) -> UniquePtr<ChFiDS_SecHArray1>;
-        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-        fn ChFiDS_SecHArray1_ctor_secarray1(
-            theOther: &ChFiDS_SecArray1,
-        ) -> UniquePtr<ChFiDS_SecHArray1>;
-        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::DynamicType()`
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &ChFiDS_SecHArray1) -> &HandleStandardType;
-        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_descriptor()`
-        fn ChFiDS_SecHArray1_get_type_descriptor() -> &'static HandleStandardType;
-        /// Wrap ChFiDS_SecHArray1 in a Handle
-        fn ChFiDS_SecHArray1_to_handle(
-            obj: UniquePtr<ChFiDS_SecHArray1>,
-        ) -> UniquePtr<HandleChFiDSSecHArray1>;
-        /// Dereference Handle to get &ChFiDS_SecHArray1
-        fn HandleChFiDSSecHArray1_get(handle: &HandleChFiDSSecHArray1) -> &ChFiDS_SecHArray1;
-        /// Dereference Handle to get Pin<&mut ChFiDS_SecHArray1>
-        fn HandleChFiDSSecHArray1_get_mut(
-            handle: Pin<&mut HandleChFiDSSecHArray1>,
-        ) -> Pin<&mut ChFiDS_SecHArray1>;
-        /// ======================== ChFiDS_CircSection ========================
-        /// **Source:** `ChFiDS_CircSection.hxx`:28 - `ChFiDS_CircSection`
-        ///
-        /// A Section of fillet.
-        type ChFiDS_CircSection;
-        /// **Source:** `ChFiDS_CircSection.hxx`:33 - `ChFiDS_CircSection::ChFiDS_CircSection()`
-        fn ChFiDS_CircSection_ctor() -> UniquePtr<ChFiDS_CircSection>;
-        /// **Source:** `ChFiDS_CircSection.hxx`:35 - `ChFiDS_CircSection::Set()`
-        #[cxx_name = "Set"]
-        fn set_circ_real2(self: Pin<&mut ChFiDS_CircSection>, C: &gp_Circ, F: f64, L: f64);
-        /// **Source:** `ChFiDS_CircSection.hxx`:37 - `ChFiDS_CircSection::Set()`
-        #[cxx_name = "Set"]
-        fn set_lin_real2(self: Pin<&mut ChFiDS_CircSection>, C: &gp_Lin, F: f64, L: f64);
-        /// **Source:** `ChFiDS_CircSection.hxx`:39 - `ChFiDS_CircSection::Get()`
-        #[cxx_name = "Get"]
-        fn get_circ_real2(
-            self: &ChFiDS_CircSection,
-            C: Pin<&mut gp_Circ>,
-            F: &mut f64,
-            L: &mut f64,
-        );
-        /// **Source:** `ChFiDS_CircSection.hxx`:41 - `ChFiDS_CircSection::Get()`
-        #[cxx_name = "Get"]
-        fn get_lin_real2(self: &ChFiDS_CircSection, C: Pin<&mut gp_Lin>, F: &mut f64, L: &mut f64);
-        /// ======================== ChFi3d_Builder ========================
-        /// **Source:** `ChFi3d_Builder.hxx`:64 - `ChFi3d_Builder`
-        ///
-        /// Root  class  for calculation of  surfaces (fillets,
-        /// chamfers)  destined  to smooth edges  of
-        /// a gap on a Shape and the reconstruction of  the   Shape.
-        type ChFi3d_Builder;
-        /// **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
-        #[cxx_name = "SetParams"]
-        fn set_params(
-            self: Pin<&mut ChFi3d_Builder>,
-            Tang: f64,
-            Tesp: f64,
-            T2d: f64,
-            TApp3d: f64,
-            TolApp2d: f64,
-            Fleche: f64,
-        );
-        /// **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
-        ///
-        /// extracts from  the list the contour containing edge E.
-        #[cxx_name = "Remove"]
-        fn remove(self: Pin<&mut ChFi3d_Builder>, E: &TopoDS_Edge);
-        /// **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
-        ///
-        /// gives the number of  the contour containing E or 0
-        /// if E does  not  belong to  any  contour.
-        #[cxx_name = "Contains"]
-        fn contains_edge(self: &ChFi3d_Builder, E: &TopoDS_Edge) -> i32;
-        /// **Source:** `ChFi3d_Builder.hxx`:91 - `ChFi3d_Builder::Contains()`
-        ///
-        /// gives  the number of  the contour containing E or 0
-        /// if E does  not  belong  to  any  contour.
-        /// Sets in IndexInSpine the index of E in the contour if it's found
-        #[cxx_name = "Contains"]
-        fn contains_edge_int(self: &ChFi3d_Builder, E: &TopoDS_Edge, IndexInSpine: &mut i32)
-            -> i32;
-        /// **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
-        ///
-        /// gives the number of  disjoint contours on  which
-        /// the  fillets  are  calculated
-        #[cxx_name = "NbElements"]
-        fn nb_elements(self: &ChFi3d_Builder) -> i32;
-        /// **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
-        ///
-        /// returns the length of  the contour of index IC.
-        #[cxx_name = "Length"]
-        fn length(self: &ChFi3d_Builder, IC: i32) -> f64;
-        /// **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
-        ///
-        /// returns the abscissa of the vertex V on
-        /// the contour of index IC.
-        #[cxx_name = "Abscissa"]
-        fn abscissa(self: &ChFi3d_Builder, IC: i32, V: &TopoDS_Vertex) -> f64;
-        /// **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
-        ///
-        /// returns the relative abscissa([0.,1.]) of the
-        /// vertex V on the contour of index IC.
-        #[cxx_name = "RelativeAbscissa"]
-        fn relative_abscissa(self: &ChFi3d_Builder, IC: i32, V: &TopoDS_Vertex) -> f64;
-        /// **Source:** `ChFi3d_Builder.hxx`:124 - `ChFi3d_Builder::ClosedAndTangent()`
-        ///
-        /// returns true if the contour of index IC is closed
-        /// an tangent.
-        #[cxx_name = "ClosedAndTangent"]
-        fn closed_and_tangent(self: &ChFi3d_Builder, IC: i32) -> bool;
-        /// **Source:** `ChFi3d_Builder.hxx`:127 - `ChFi3d_Builder::Closed()`
-        ///
-        /// returns true if the contour of index IC is closed
-        #[cxx_name = "Closed"]
-        fn closed(self: &ChFi3d_Builder, IC: i32) -> bool;
-        /// **Source:** `ChFi3d_Builder.hxx`:131 - `ChFi3d_Builder::Compute()`
-        ///
-        /// general calculation of geometry on all edges,
-        /// topologic reconstruction.
-        #[cxx_name = "Compute"]
-        fn compute(self: Pin<&mut ChFi3d_Builder>);
-        /// **Source:** `ChFi3d_Builder.hxx`:134 - `ChFi3d_Builder::IsDone()`
-        ///
-        /// returns True if the computation  is  success
-        #[cxx_name = "IsDone"]
-        fn is_done(self: &ChFi3d_Builder) -> bool;
-        /// **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
-        ///
-        /// Advanced  function for the history
-        #[cxx_name = "Generated"]
-        fn generated(self: Pin<&mut ChFi3d_Builder>, EouV: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        /// **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
-        ///
-        /// Returns the number of contours on  which the calculation
-        /// has failed.
-        #[cxx_name = "NbFaultyContours"]
-        fn nb_faulty_contours(self: &ChFi3d_Builder) -> i32;
-        /// **Source:** `ChFi3d_Builder.hxx`:149 - `ChFi3d_Builder::FaultyContour()`
-        ///
-        /// Returns the number of  I'th contour on  which the calculation
-        /// has failed.
-        #[cxx_name = "FaultyContour"]
-        fn faulty_contour(self: &ChFi3d_Builder, I: i32) -> i32;
-        /// **Source:** `ChFi3d_Builder.hxx`:152 - `ChFi3d_Builder::NbComputedSurfaces()`
-        ///
-        /// Returns the number of  surfaces calculated  on  the contour IC.
-        #[cxx_name = "NbComputedSurfaces"]
-        fn nb_computed_surfaces(self: &ChFi3d_Builder, IC: i32) -> i32;
-        /// **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
-        ///
-        /// Returns the number of vertices on  which the calculation
-        /// has failed.
-        #[cxx_name = "NbFaultyVertices"]
-        fn nb_faulty_vertices(self: &ChFi3d_Builder) -> i32;
-        /// **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
-        ///
-        /// returns True if  a partial result has  been  calculated
-        #[cxx_name = "HasResult"]
-        fn has_result(self: &ChFi3d_Builder) -> bool;
-        /// **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
-        ///
-        /// Reset all results of compute and returns the algorithm
-        /// in the state of the last acquisition to enable modification of contours or areas.
-        #[cxx_name = "Reset"]
-        fn reset(self: Pin<&mut ChFi3d_Builder>);
-        /// **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
-        #[cxx_name = "PerformTwoCornerbyInter"]
-        fn perform_two_cornerby_inter(self: Pin<&mut ChFi3d_Builder>, Index: i32) -> bool;
-        /// **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
-        fn ChFi3d_Builder_set_continuity(
-            self_: Pin<&mut ChFi3d_Builder>,
-            InternalContinuity: i32,
-            AngularTolerance: f64,
-        );
-        /// **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
-        ///
-        /// returns the First vertex V of
-        /// the contour of index IC.
-        fn ChFi3d_Builder_first_vertex(self_: &ChFi3d_Builder, IC: i32)
-            -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
-        ///
-        /// returns the Last vertex V of
-        /// the contour of index IC.
-        fn ChFi3d_Builder_last_vertex(self_: &ChFi3d_Builder, IC: i32) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `ChFi3d_Builder.hxx`:138 - `ChFi3d_Builder::Shape()`
-        ///
-        /// if (Isdone()) makes the result.
-        /// if (!Isdone())
-        fn ChFi3d_Builder_shape(self_: &ChFi3d_Builder) -> UniquePtr<TopoDS_Shape>;
-        /// **Source:** `ChFi3d_Builder.hxx`:155 - `ChFi3d_Builder::ComputedSurface()`
-        ///
-        /// Returns the IS'th surface calculated on  the contour IC.
-        fn ChFi3d_Builder_computed_surface(
-            self_: &ChFi3d_Builder,
-            IC: i32,
-            IS: i32,
-        ) -> UniquePtr<HandleGeomSurface>;
-        /// **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
-        ///
-        /// Returns the IV'th vertex on  which the calculation has failed.
-        fn ChFi3d_Builder_faulty_vertex(
-            self_: &ChFi3d_Builder,
-            IV: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
-        ///
-        /// if (HasResult()) returns partial result
-        /// if (!HasResult())
-        fn ChFi3d_Builder_bad_shape(self_: &ChFi3d_Builder) -> UniquePtr<TopoDS_Shape>;
-        /// **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
-        ///
-        /// for the stripe IC ,indication on the cause
-        /// of  failure WalkingFailure,TwistedSurface,Error, Ok
-        fn ChFi3d_Builder_stripe_status(self_: &ChFi3d_Builder, IC: i32) -> i32;
-        /// ======================== ChFiDS_ElSpine ========================
-        /// **Source:** `ChFiDS_ElSpine.hxx`:47 - `ChFiDS_ElSpine`
-        ///
-        /// Elementary  Spine for cheminements and approximations.
-        type ChFiDS_ElSpine;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:51 - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
-        fn ChFiDS_ElSpine_ctor() -> UniquePtr<ChFiDS_ElSpine>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::DynamicType()`
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &ChFiDS_ElSpine) -> &HandleStandardType;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:56 - `ChFiDS_ElSpine::FirstParameter()`
-        #[cxx_name = "FirstParameter"]
-        fn first_parameter(self: &ChFiDS_ElSpine) -> f64;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:58 - `ChFiDS_ElSpine::LastParameter()`
-        #[cxx_name = "LastParameter"]
-        fn last_parameter(self: &ChFiDS_ElSpine) -> f64;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:60 - `ChFiDS_ElSpine::GetSavedFirstParameter()`
-        #[cxx_name = "GetSavedFirstParameter"]
-        fn get_saved_first_parameter(self: &ChFiDS_ElSpine) -> f64;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:62 - `ChFiDS_ElSpine::GetSavedLastParameter()`
-        #[cxx_name = "GetSavedLastParameter"]
-        fn get_saved_last_parameter(self: &ChFiDS_ElSpine) -> f64;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:79 - `ChFiDS_ElSpine::Resolution()`
-        #[cxx_name = "Resolution"]
-        fn resolution(self: &ChFiDS_ElSpine, R3d: f64) -> f64;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:83 - `ChFiDS_ElSpine::IsPeriodic()`
-        #[cxx_name = "IsPeriodic"]
-        fn is_periodic(self: &ChFiDS_ElSpine) -> bool;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:85 - `ChFiDS_ElSpine::SetPeriodic()`
-        #[cxx_name = "SetPeriodic"]
-        fn set_periodic(self: Pin<&mut ChFiDS_ElSpine>, I: bool);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:87 - `ChFiDS_ElSpine::Period()`
-        #[cxx_name = "Period"]
-        fn period(self: &ChFiDS_ElSpine) -> f64;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:91 - `ChFiDS_ElSpine::D0()`
-        #[cxx_name = "D0"]
-        fn d0(self: &ChFiDS_ElSpine, AbsC: f64, P: Pin<&mut gp_Pnt>);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:93 - `ChFiDS_ElSpine::D1()`
-        #[cxx_name = "D1"]
-        fn d1(self: &ChFiDS_ElSpine, AbsC: f64, P: Pin<&mut gp_Pnt>, V1: Pin<&mut gp_Vec>);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:97 - `ChFiDS_ElSpine::D2()`
-        #[cxx_name = "D2"]
-        fn d2(
-            self: &ChFiDS_ElSpine,
-            AbsC: f64,
-            P: Pin<&mut gp_Pnt>,
-            V1: Pin<&mut gp_Vec>,
-            V2: Pin<&mut gp_Vec>,
-        );
-        /// **Source:** `ChFiDS_ElSpine.hxx`:102 - `ChFiDS_ElSpine::D3()`
-        #[cxx_name = "D3"]
-        fn d3(
-            self: &ChFiDS_ElSpine,
-            AbsC: f64,
-            P: Pin<&mut gp_Pnt>,
-            V1: Pin<&mut gp_Vec>,
-            V2: Pin<&mut gp_Vec>,
-            V3: Pin<&mut gp_Vec>,
-        );
-        /// **Source:** `ChFiDS_ElSpine.hxx`:108 - `ChFiDS_ElSpine::FirstParameter()`
-        #[cxx_name = "FirstParameter"]
-        fn first_parameter_real(self: Pin<&mut ChFiDS_ElSpine>, P: f64);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:110 - `ChFiDS_ElSpine::LastParameter()`
-        #[cxx_name = "LastParameter"]
-        fn last_parameter_real(self: Pin<&mut ChFiDS_ElSpine>, P: f64);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:112 - `ChFiDS_ElSpine::SaveFirstParameter()`
-        #[cxx_name = "SaveFirstParameter"]
-        fn save_first_parameter(self: Pin<&mut ChFiDS_ElSpine>);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:114 - `ChFiDS_ElSpine::SaveLastParameter()`
-        #[cxx_name = "SaveLastParameter"]
-        fn save_last_parameter(self: Pin<&mut ChFiDS_ElSpine>);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:116 - `ChFiDS_ElSpine::SetOrigin()`
-        #[cxx_name = "SetOrigin"]
-        fn set_origin(self: Pin<&mut ChFiDS_ElSpine>, O: f64);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:118 - `ChFiDS_ElSpine::FirstPointAndTgt()`
-        #[cxx_name = "FirstPointAndTgt"]
-        fn first_point_and_tgt(self: &ChFiDS_ElSpine, P: Pin<&mut gp_Pnt>, T: Pin<&mut gp_Vec>);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:120 - `ChFiDS_ElSpine::LastPointAndTgt()`
-        #[cxx_name = "LastPointAndTgt"]
-        fn last_point_and_tgt(self: &ChFiDS_ElSpine, P: Pin<&mut gp_Pnt>, T: Pin<&mut gp_Vec>);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:122 - `ChFiDS_ElSpine::NbVertices()`
-        #[cxx_name = "NbVertices"]
-        fn nb_vertices(self: &ChFiDS_ElSpine) -> i32;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:124 - `ChFiDS_ElSpine::VertexWithTangent()`
-        #[cxx_name = "VertexWithTangent"]
-        fn vertex_with_tangent(self: &ChFiDS_ElSpine, Index: i32) -> &gp_Ax1;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:126 - `ChFiDS_ElSpine::SetFirstPointAndTgt()`
-        #[cxx_name = "SetFirstPointAndTgt"]
-        fn set_first_point_and_tgt(self: Pin<&mut ChFiDS_ElSpine>, P: &gp_Pnt, T: &gp_Vec);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:128 - `ChFiDS_ElSpine::SetLastPointAndTgt()`
-        #[cxx_name = "SetLastPointAndTgt"]
-        fn set_last_point_and_tgt(self: Pin<&mut ChFiDS_ElSpine>, P: &gp_Pnt, T: &gp_Vec);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:130 - `ChFiDS_ElSpine::AddVertexWithTangent()`
-        #[cxx_name = "AddVertexWithTangent"]
-        fn add_vertex_with_tangent(self: Pin<&mut ChFiDS_ElSpine>, anAx1: &gp_Ax1);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:132 - `ChFiDS_ElSpine::SetCurve()`
-        #[cxx_name = "SetCurve"]
-        fn set_curve(self: Pin<&mut ChFiDS_ElSpine>, C: &HandleGeomCurve);
-        /// **Source:** `ChFiDS_ElSpine.hxx`:134 - `ChFiDS_ElSpine::Previous()`
-        #[cxx_name = "Previous"]
-        fn previous(self: &ChFiDS_ElSpine) -> &HandleChFiDSSurfData;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:136 - `ChFiDS_ElSpine::ChangePrevious()`
-        #[cxx_name = "ChangePrevious"]
-        fn change_previous(self: Pin<&mut ChFiDS_ElSpine>) -> Pin<&mut HandleChFiDSSurfData>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:138 - `ChFiDS_ElSpine::Next()`
-        #[cxx_name = "Next"]
-        fn next(self: &ChFiDS_ElSpine) -> &HandleChFiDSSurfData;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:140 - `ChFiDS_ElSpine::ChangeNext()`
-        #[cxx_name = "ChangeNext"]
-        fn change_next(self: Pin<&mut ChFiDS_ElSpine>) -> Pin<&mut HandleChFiDSSurfData>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:54 - `ChFiDS_ElSpine::ShallowCopy()`
-        ///
-        /// Shallow copy of adaptor
-        fn ChFiDS_ElSpine_shallow_copy(self_: &ChFiDS_ElSpine) -> UniquePtr<HandleAdaptor3dCurve>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:64 - `ChFiDS_ElSpine::Continuity()`
-        fn ChFiDS_ElSpine_continuity(self_: &ChFiDS_ElSpine) -> i32;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:66 - `ChFiDS_ElSpine::NbIntervals()`
-        fn ChFiDS_ElSpine_nb_intervals(self_: &ChFiDS_ElSpine, S: i32) -> i32;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:74 - `ChFiDS_ElSpine::Trim()`
-        ///
-        /// Returns    a  curve equivalent   of  <me>  between
-        /// parameters <First>  and <Last>. <Tol>  is used  to
-        /// test for 3d points confusion.
-        fn ChFiDS_ElSpine_trim(
-            self_: &ChFiDS_ElSpine,
-            First: f64,
-            Last: f64,
-            Tol: f64,
-        ) -> UniquePtr<HandleAdaptor3dCurve>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:81 - `ChFiDS_ElSpine::GetType()`
-        fn ChFiDS_ElSpine_get_type(self_: &ChFiDS_ElSpine) -> i32;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:89 - `ChFiDS_ElSpine::Value()`
-        fn ChFiDS_ElSpine_value(self_: &ChFiDS_ElSpine, AbsC: f64) -> UniquePtr<gp_Pnt>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:142 - `ChFiDS_ElSpine::Line()`
-        fn ChFiDS_ElSpine_line(self_: &ChFiDS_ElSpine) -> UniquePtr<gp_Lin>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:144 - `ChFiDS_ElSpine::Circle()`
-        fn ChFiDS_ElSpine_circle(self_: &ChFiDS_ElSpine) -> UniquePtr<gp_Circ>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:146 - `ChFiDS_ElSpine::Ellipse()`
-        fn ChFiDS_ElSpine_ellipse(self_: &ChFiDS_ElSpine) -> UniquePtr<gp_Elips>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:148 - `ChFiDS_ElSpine::Hyperbola()`
-        fn ChFiDS_ElSpine_hyperbola(self_: &ChFiDS_ElSpine) -> UniquePtr<gp_Hypr>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:150 - `ChFiDS_ElSpine::Parabola()`
-        fn ChFiDS_ElSpine_parabola(self_: &ChFiDS_ElSpine) -> UniquePtr<gp_Parab>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:152 - `ChFiDS_ElSpine::Bezier()`
-        fn ChFiDS_ElSpine_bezier(self_: &ChFiDS_ElSpine) -> UniquePtr<HandleGeomBezierCurve>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:154 - `ChFiDS_ElSpine::BSpline()`
-        fn ChFiDS_ElSpine_b_spline(self_: &ChFiDS_ElSpine) -> UniquePtr<HandleGeomBSplineCurve>;
-        /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::get_type_descriptor()`
-        fn ChFiDS_ElSpine_get_type_descriptor() -> &'static HandleStandardType;
-        /// Upcast ChFiDS_ElSpine to Adaptor3d_Curve
-        fn ChFiDS_ElSpine_as_Adaptor3d_Curve(self_: &ChFiDS_ElSpine) -> &Adaptor3d_Curve;
-        /// Upcast ChFiDS_ElSpine to Adaptor3d_Curve (mutable)
-        fn ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(
-            self_: Pin<&mut ChFiDS_ElSpine>,
-        ) -> Pin<&mut Adaptor3d_Curve>;
-        /// Inherited from Adaptor3d_Curve: IsClosed()
-        fn ChFiDS_ElSpine_inherited_IsClosed(self_: &ChFiDS_ElSpine) -> bool;
-        /// Inherited from Adaptor3d_Curve: DN()
-        fn ChFiDS_ElSpine_inherited_DN(self_: &ChFiDS_ElSpine, U: f64, N: i32)
-            -> UniquePtr<gp_Vec>;
-        /// Inherited from Adaptor3d_Curve: Degree()
-        fn ChFiDS_ElSpine_inherited_Degree(self_: &ChFiDS_ElSpine) -> i32;
-        /// Inherited from Adaptor3d_Curve: IsRational()
-        fn ChFiDS_ElSpine_inherited_IsRational(self_: &ChFiDS_ElSpine) -> bool;
-        /// Inherited from Adaptor3d_Curve: NbPoles()
-        fn ChFiDS_ElSpine_inherited_NbPoles(self_: &ChFiDS_ElSpine) -> i32;
-        /// Inherited from Adaptor3d_Curve: NbKnots()
-        fn ChFiDS_ElSpine_inherited_NbKnots(self_: &ChFiDS_ElSpine) -> i32;
-        /// ======================== ChFiDS_SurfData ========================
-        /// **Source:** `ChFiDS_SurfData.hxx`:35 - `ChFiDS_SurfData`
-        ///
-        /// data structure for all information related to  the
-        /// fillet and to 2 faces vis a vis
-        type ChFiDS_SurfData;
-        /// **Source:** `ChFiDS_SurfData.hxx`:39 - `ChFiDS_SurfData::ChFiDS_SurfData()`
-        fn ChFiDS_SurfData_ctor() -> UniquePtr<ChFiDS_SurfData>;
-        /// **Source:** `ChFiDS_SurfData.hxx`:41 - `ChFiDS_SurfData::Copy()`
-        #[cxx_name = "Copy"]
-        fn copy(self: Pin<&mut ChFiDS_SurfData>, Other: &HandleChFiDSSurfData);
-        /// **Source:** `ChFiDS_SurfData.hxx`:43 - `ChFiDS_SurfData::IndexOfS1()`
-        #[cxx_name = "IndexOfS1"]
-        fn index_of_s1(self: &ChFiDS_SurfData) -> i32;
-        /// **Source:** `ChFiDS_SurfData.hxx`:45 - `ChFiDS_SurfData::IndexOfS2()`
-        #[cxx_name = "IndexOfS2"]
-        fn index_of_s2(self: &ChFiDS_SurfData) -> i32;
-        /// **Source:** `ChFiDS_SurfData.hxx`:47 - `ChFiDS_SurfData::IsOnCurve1()`
-        #[cxx_name = "IsOnCurve1"]
-        fn is_on_curve1(self: &ChFiDS_SurfData) -> bool;
-        /// **Source:** `ChFiDS_SurfData.hxx`:49 - `ChFiDS_SurfData::IsOnCurve2()`
-        #[cxx_name = "IsOnCurve2"]
-        fn is_on_curve2(self: &ChFiDS_SurfData) -> bool;
-        /// **Source:** `ChFiDS_SurfData.hxx`:51 - `ChFiDS_SurfData::IndexOfC1()`
-        #[cxx_name = "IndexOfC1"]
-        fn index_of_c1(self: &ChFiDS_SurfData) -> i32;
-        /// **Source:** `ChFiDS_SurfData.hxx`:53 - `ChFiDS_SurfData::IndexOfC2()`
-        #[cxx_name = "IndexOfC2"]
-        fn index_of_c2(self: &ChFiDS_SurfData) -> i32;
-        /// **Source:** `ChFiDS_SurfData.hxx`:55 - `ChFiDS_SurfData::Surf()`
-        #[cxx_name = "Surf"]
-        fn surf(self: &ChFiDS_SurfData) -> i32;
-        /// **Source:** `ChFiDS_SurfData.hxx`:59 - `ChFiDS_SurfData::InterferenceOnS1()`
-        #[cxx_name = "InterferenceOnS1"]
-        fn interference_on_s1(self: &ChFiDS_SurfData) -> &ChFiDS_FaceInterference;
-        /// **Source:** `ChFiDS_SurfData.hxx`:61 - `ChFiDS_SurfData::InterferenceOnS2()`
-        #[cxx_name = "InterferenceOnS2"]
-        fn interference_on_s2(self: &ChFiDS_SurfData) -> &ChFiDS_FaceInterference;
-        /// **Source:** `ChFiDS_SurfData.hxx`:63 - `ChFiDS_SurfData::VertexFirstOnS1()`
-        #[cxx_name = "VertexFirstOnS1"]
-        fn vertex_first_on_s1(self: &ChFiDS_SurfData) -> &ChFiDS_CommonPoint;
-        /// **Source:** `ChFiDS_SurfData.hxx`:65 - `ChFiDS_SurfData::VertexFirstOnS2()`
-        #[cxx_name = "VertexFirstOnS2"]
-        fn vertex_first_on_s2(self: &ChFiDS_SurfData) -> &ChFiDS_CommonPoint;
-        /// **Source:** `ChFiDS_SurfData.hxx`:67 - `ChFiDS_SurfData::VertexLastOnS1()`
-        #[cxx_name = "VertexLastOnS1"]
-        fn vertex_last_on_s1(self: &ChFiDS_SurfData) -> &ChFiDS_CommonPoint;
-        /// **Source:** `ChFiDS_SurfData.hxx`:69 - `ChFiDS_SurfData::VertexLastOnS2()`
-        #[cxx_name = "VertexLastOnS2"]
-        fn vertex_last_on_s2(self: &ChFiDS_SurfData) -> &ChFiDS_CommonPoint;
-        /// **Source:** `ChFiDS_SurfData.hxx`:71 - `ChFiDS_SurfData::ChangeIndexOfS1()`
-        #[cxx_name = "ChangeIndexOfS1"]
-        fn change_index_of_s1(self: Pin<&mut ChFiDS_SurfData>, Index: i32);
-        /// **Source:** `ChFiDS_SurfData.hxx`:73 - `ChFiDS_SurfData::ChangeIndexOfS2()`
-        #[cxx_name = "ChangeIndexOfS2"]
-        fn change_index_of_s2(self: Pin<&mut ChFiDS_SurfData>, Index: i32);
-        /// **Source:** `ChFiDS_SurfData.hxx`:75 - `ChFiDS_SurfData::ChangeSurf()`
-        #[cxx_name = "ChangeSurf"]
-        fn change_surf(self: Pin<&mut ChFiDS_SurfData>, Index: i32);
-        /// **Source:** `ChFiDS_SurfData.hxx`:77 - `ChFiDS_SurfData::SetIndexOfC1()`
-        #[cxx_name = "SetIndexOfC1"]
-        fn set_index_of_c1(self: Pin<&mut ChFiDS_SurfData>, Index: i32);
-        /// **Source:** `ChFiDS_SurfData.hxx`:79 - `ChFiDS_SurfData::SetIndexOfC2()`
-        #[cxx_name = "SetIndexOfC2"]
-        fn set_index_of_c2(self: Pin<&mut ChFiDS_SurfData>, Index: i32);
-        /// **Source:** `ChFiDS_SurfData.hxx`:83 - `ChFiDS_SurfData::ChangeInterferenceOnS1()`
-        #[cxx_name = "ChangeInterferenceOnS1"]
-        fn change_interference_on_s1(
-            self: Pin<&mut ChFiDS_SurfData>,
-        ) -> Pin<&mut ChFiDS_FaceInterference>;
-        /// **Source:** `ChFiDS_SurfData.hxx`:85 - `ChFiDS_SurfData::ChangeInterferenceOnS2()`
-        #[cxx_name = "ChangeInterferenceOnS2"]
-        fn change_interference_on_s2(
-            self: Pin<&mut ChFiDS_SurfData>,
-        ) -> Pin<&mut ChFiDS_FaceInterference>;
-        /// **Source:** `ChFiDS_SurfData.hxx`:87 - `ChFiDS_SurfData::ChangeVertexFirstOnS1()`
-        #[cxx_name = "ChangeVertexFirstOnS1"]
-        fn change_vertex_first_on_s1(
-            self: Pin<&mut ChFiDS_SurfData>,
-        ) -> Pin<&mut ChFiDS_CommonPoint>;
-        /// **Source:** `ChFiDS_SurfData.hxx`:89 - `ChFiDS_SurfData::ChangeVertexFirstOnS2()`
-        #[cxx_name = "ChangeVertexFirstOnS2"]
-        fn change_vertex_first_on_s2(
-            self: Pin<&mut ChFiDS_SurfData>,
-        ) -> Pin<&mut ChFiDS_CommonPoint>;
-        /// **Source:** `ChFiDS_SurfData.hxx`:91 - `ChFiDS_SurfData::ChangeVertexLastOnS1()`
-        #[cxx_name = "ChangeVertexLastOnS1"]
-        fn change_vertex_last_on_s1(
-            self: Pin<&mut ChFiDS_SurfData>,
-        ) -> Pin<&mut ChFiDS_CommonPoint>;
-        /// **Source:** `ChFiDS_SurfData.hxx`:93 - `ChFiDS_SurfData::ChangeVertexLastOnS2()`
-        #[cxx_name = "ChangeVertexLastOnS2"]
-        fn change_vertex_last_on_s2(
-            self: Pin<&mut ChFiDS_SurfData>,
-        ) -> Pin<&mut ChFiDS_CommonPoint>;
-        /// **Source:** `ChFiDS_SurfData.hxx`:95 - `ChFiDS_SurfData::Interference()`
-        #[cxx_name = "Interference"]
-        fn interference(self: &ChFiDS_SurfData, OnS: i32) -> &ChFiDS_FaceInterference;
-        /// **Source:** `ChFiDS_SurfData.hxx`:97 - `ChFiDS_SurfData::ChangeInterference()`
-        #[cxx_name = "ChangeInterference"]
-        fn change_interference(
-            self: Pin<&mut ChFiDS_SurfData>,
-            OnS: i32,
-        ) -> Pin<&mut ChFiDS_FaceInterference>;
-        /// **Source:** `ChFiDS_SurfData.hxx`:99 - `ChFiDS_SurfData::Index()`
-        #[cxx_name = "Index"]
-        fn index(self: &ChFiDS_SurfData, OfS: i32) -> i32;
-        /// **Source:** `ChFiDS_SurfData.hxx`:103 - `ChFiDS_SurfData::Vertex()`
-        ///
-        /// returns one of the four vertices  whether First is true
-        /// or wrong and OnS equals 1 or 2.
-        #[cxx_name = "Vertex"]
-        fn vertex(self: &ChFiDS_SurfData, First: bool, OnS: i32) -> &ChFiDS_CommonPoint;
-        /// **Source:** `ChFiDS_SurfData.hxx`:108 - `ChFiDS_SurfData::ChangeVertex()`
-        ///
-        /// returns one of the four vertices  whether First is true
-        /// or wrong and OnS equals 1 or 2.
-        #[cxx_name = "ChangeVertex"]
-        fn change_vertex(
-            self: Pin<&mut ChFiDS_SurfData>,
-            First: bool,
-            OnS: i32,
-        ) -> Pin<&mut ChFiDS_CommonPoint>;
-        /// **Source:** `ChFiDS_SurfData.hxx`:111 - `ChFiDS_SurfData::IsOnCurve()`
-        #[cxx_name = "IsOnCurve"]
-        fn is_on_curve(self: &ChFiDS_SurfData, OnS: i32) -> bool;
-        /// **Source:** `ChFiDS_SurfData.hxx`:113 - `ChFiDS_SurfData::IndexOfC()`
-        #[cxx_name = "IndexOfC"]
-        fn index_of_c(self: &ChFiDS_SurfData, OnS: i32) -> i32;
-        /// **Source:** `ChFiDS_SurfData.hxx`:115 - `ChFiDS_SurfData::FirstSpineParam()`
-        #[cxx_name = "FirstSpineParam"]
-        fn first_spine_param(self: &ChFiDS_SurfData) -> f64;
-        /// **Source:** `ChFiDS_SurfData.hxx`:117 - `ChFiDS_SurfData::LastSpineParam()`
-        #[cxx_name = "LastSpineParam"]
-        fn last_spine_param(self: &ChFiDS_SurfData) -> f64;
-        /// **Source:** `ChFiDS_SurfData.hxx`:119 - `ChFiDS_SurfData::FirstSpineParam()`
-        #[cxx_name = "FirstSpineParam"]
-        fn first_spine_param_real(self: Pin<&mut ChFiDS_SurfData>, Par: f64);
-        /// **Source:** `ChFiDS_SurfData.hxx`:121 - `ChFiDS_SurfData::LastSpineParam()`
-        #[cxx_name = "LastSpineParam"]
-        fn last_spine_param_real(self: Pin<&mut ChFiDS_SurfData>, Par: f64);
-        /// **Source:** `ChFiDS_SurfData.hxx`:123 - `ChFiDS_SurfData::FirstExtensionValue()`
-        #[cxx_name = "FirstExtensionValue"]
-        fn first_extension_value(self: &ChFiDS_SurfData) -> f64;
-        /// **Source:** `ChFiDS_SurfData.hxx`:125 - `ChFiDS_SurfData::LastExtensionValue()`
-        #[cxx_name = "LastExtensionValue"]
-        fn last_extension_value(self: &ChFiDS_SurfData) -> f64;
-        /// **Source:** `ChFiDS_SurfData.hxx`:127 - `ChFiDS_SurfData::FirstExtensionValue()`
-        #[cxx_name = "FirstExtensionValue"]
-        fn first_extension_value_real(self: Pin<&mut ChFiDS_SurfData>, Extend: f64);
-        /// **Source:** `ChFiDS_SurfData.hxx`:129 - `ChFiDS_SurfData::LastExtensionValue()`
-        #[cxx_name = "LastExtensionValue"]
-        fn last_extension_value_real(self: Pin<&mut ChFiDS_SurfData>, Extend: f64);
-        /// **Source:** `ChFiDS_SurfData.hxx`:135 - `ChFiDS_SurfData::ResetSimul()`
-        #[cxx_name = "ResetSimul"]
-        fn reset_simul(self: Pin<&mut ChFiDS_SurfData>);
-        /// **Source:** `ChFiDS_SurfData.hxx`:140 - `ChFiDS_SurfData::Get2dPoints()`
-        #[cxx_name = "Get2dPoints"]
-        fn get2d_points(
-            self: &ChFiDS_SurfData,
-            P2df1: Pin<&mut gp_Pnt2d>,
-            P2dl1: Pin<&mut gp_Pnt2d>,
-            P2df2: Pin<&mut gp_Pnt2d>,
-            P2dl2: Pin<&mut gp_Pnt2d>,
-        );
-        /// **Source:** `ChFiDS_SurfData.hxx`:145 - `ChFiDS_SurfData::Set2dPoints()`
-        #[cxx_name = "Set2dPoints"]
-        fn set2d_points(
-            self: Pin<&mut ChFiDS_SurfData>,
-            P2df1: &gp_Pnt2d,
-            P2dl1: &gp_Pnt2d,
-            P2df2: &gp_Pnt2d,
-            P2dl2: &gp_Pnt2d,
-        );
-        /// **Source:** `ChFiDS_SurfData.hxx`:150 - `ChFiDS_SurfData::TwistOnS1()`
-        #[cxx_name = "TwistOnS1"]
-        fn twist_on_s1(self: &ChFiDS_SurfData) -> bool;
-        /// **Source:** `ChFiDS_SurfData.hxx`:152 - `ChFiDS_SurfData::TwistOnS2()`
-        #[cxx_name = "TwistOnS2"]
-        fn twist_on_s2(self: &ChFiDS_SurfData) -> bool;
-        /// **Source:** `ChFiDS_SurfData.hxx`:154 - `ChFiDS_SurfData::TwistOnS1()`
-        #[cxx_name = "TwistOnS1"]
-        fn twist_on_s1_bool(self: Pin<&mut ChFiDS_SurfData>, T: bool);
-        /// **Source:** `ChFiDS_SurfData.hxx`:156 - `ChFiDS_SurfData::TwistOnS2()`
-        #[cxx_name = "TwistOnS2"]
-        fn twist_on_s2_bool(self: Pin<&mut ChFiDS_SurfData>, T: bool);
-        /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::DynamicType()`
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &ChFiDS_SurfData) -> &HandleStandardType;
-        /// **Source:** `ChFiDS_SurfData.hxx`:57 - `ChFiDS_SurfData::Orientation()`
-        fn ChFiDS_SurfData_orientation(self_: &ChFiDS_SurfData) -> i32;
-        /// **Source:** `ChFiDS_SurfData.hxx`:137 - `ChFiDS_SurfData::Get2dPoints()`
-        fn ChFiDS_SurfData_get2d_points(
-            self_: &ChFiDS_SurfData,
-            First: bool,
-            OnS: i32,
-        ) -> UniquePtr<gp_Pnt2d>;
-        /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::get_type_descriptor()`
-        fn ChFiDS_SurfData_get_type_descriptor() -> &'static HandleStandardType;
-        /// Wrap ChFiDS_SurfData in a Handle
-        fn ChFiDS_SurfData_to_handle(
-            obj: UniquePtr<ChFiDS_SurfData>,
-        ) -> UniquePtr<HandleChFiDSSurfData>;
-        /// Dereference Handle to get &ChFiDS_SurfData
-        fn HandleChFiDSSurfData_get(handle: &HandleChFiDSSurfData) -> &ChFiDS_SurfData;
-        /// Dereference Handle to get Pin<&mut ChFiDS_SurfData>
-        fn HandleChFiDSSurfData_get_mut(
-            handle: Pin<&mut HandleChFiDSSurfData>,
-        ) -> Pin<&mut ChFiDS_SurfData>;
-        /// ======================== ChFiDS_CommonPoint ========================
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:34 - `ChFiDS_CommonPoint`
-        ///
-        /// point    start/end of  fillet common  to  2 adjacent  filets
-        /// and  to an edge on  one of 2 faces participating
-        /// in  the construction of  the  fillet
-        type ChFiDS_CommonPoint;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:40 - `ChFiDS_CommonPoint::ChFiDS_CommonPoint()`
-        ///
-        /// Empty constructor.
-        fn ChFiDS_CommonPoint_ctor() -> UniquePtr<ChFiDS_CommonPoint>;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:43 - `ChFiDS_CommonPoint::Reset()`
-        ///
-        /// default value for all fields
-        #[cxx_name = "Reset"]
-        fn reset(self: Pin<&mut ChFiDS_CommonPoint>);
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:48 - `ChFiDS_CommonPoint::SetVertex()`
-        ///
-        /// Sets the values of a point which is a vertex on
-        /// the initial facet of restriction of one
-        /// of the surface.
-        #[cxx_name = "SetVertex"]
-        fn set_vertex(self: Pin<&mut ChFiDS_CommonPoint>, theVertex: &TopoDS_Vertex);
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:62 - `ChFiDS_CommonPoint::SetParameter()`
-        ///
-        /// Sets the value of the parameter on the spine
-        #[cxx_name = "SetParameter"]
-        fn set_parameter(self: Pin<&mut ChFiDS_CommonPoint>, Param: f64);
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:66 - `ChFiDS_CommonPoint::SetPoint()`
-        ///
-        /// Set the 3d point for a commonpoint that is not
-        /// a vertex or on an arc.
-        #[cxx_name = "SetPoint"]
-        fn set_point(self: Pin<&mut ChFiDS_CommonPoint>, thePoint: &gp_Pnt);
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:69 - `ChFiDS_CommonPoint::SetVector()`
-        ///
-        /// Set the output 3d  vector
-        #[cxx_name = "SetVector"]
-        fn set_vector(self: Pin<&mut ChFiDS_CommonPoint>, theVector: &gp_Vec);
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:76 - `ChFiDS_CommonPoint::SetTolerance()`
-        ///
-        /// This method set the fuzziness on the point.
-        #[cxx_name = "SetTolerance"]
-        fn set_tolerance(self: Pin<&mut ChFiDS_CommonPoint>, Tol: f64);
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:85 - `ChFiDS_CommonPoint::Tolerance()`
-        ///
-        /// This method returns the fuzziness on the point.
-        #[cxx_name = "Tolerance"]
-        fn tolerance(self: &ChFiDS_CommonPoint) -> f64;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:89 - `ChFiDS_CommonPoint::IsVertex()`
-        ///
-        /// Returns TRUE if the point is a vertex on the initial
-        /// restriction facet of the surface.
-        #[cxx_name = "IsVertex"]
-        fn is_vertex(self: &ChFiDS_CommonPoint) -> bool;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:95 - `ChFiDS_CommonPoint::Vertex()`
-        ///
-        /// Returns the information about the point when it is
-        /// on the domain of the first patch, i-e when the function
-        /// IsVertex returns True.
-        /// Otherwise, an exception is raised.
-        #[cxx_name = "Vertex"]
-        fn vertex(self: &ChFiDS_CommonPoint) -> &TopoDS_Vertex;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:106 - `ChFiDS_CommonPoint::IsOnArc()`
-        ///
-        /// Returns TRUE if the point is a on an edge of the initial
-        /// restriction facet of the surface.
-        #[cxx_name = "IsOnArc"]
-        fn is_on_arc(self: &ChFiDS_CommonPoint) -> bool;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:110 - `ChFiDS_CommonPoint::Arc()`
-        ///
-        /// Returns the arc of restriction containing the
-        /// vertex.
-        #[cxx_name = "Arc"]
-        fn arc(self: &ChFiDS_CommonPoint) -> &TopoDS_Edge;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:118 - `ChFiDS_CommonPoint::ParameterOnArc()`
-        ///
-        /// Returns the parameter of the point on the
-        /// arc returned by the method Arc().
-        #[cxx_name = "ParameterOnArc"]
-        fn parameter_on_arc(self: &ChFiDS_CommonPoint) -> f64;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:121 - `ChFiDS_CommonPoint::Parameter()`
-        ///
-        /// Returns the parameter on the spine
-        #[cxx_name = "Parameter"]
-        fn parameter(self: &ChFiDS_CommonPoint) -> f64;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:124 - `ChFiDS_CommonPoint::Point()`
-        ///
-        /// Returns the 3d point
-        #[cxx_name = "Point"]
-        fn point(self: &ChFiDS_CommonPoint) -> &gp_Pnt;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:127 - `ChFiDS_CommonPoint::HasVector()`
-        ///
-        /// Returns TRUE if the output vector is  stored.
-        #[cxx_name = "HasVector"]
-        fn has_vector(self: &ChFiDS_CommonPoint) -> bool;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:130 - `ChFiDS_CommonPoint::Vector()`
-        ///
-        /// Returns the output  3d vector
-        #[cxx_name = "Vector"]
-        fn vector(self: &ChFiDS_CommonPoint) -> &gp_Vec;
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:56 - `ChFiDS_CommonPoint::SetArc()`
-        ///
-        /// Sets the values of a point which is on the arc
-        /// A, at parameter Param.
-        fn ChFiDS_CommonPoint_set_arc(
-            self_: Pin<&mut ChFiDS_CommonPoint>,
-            Tol: f64,
-            A: &TopoDS_Edge,
-            Param: f64,
-            TArc: i32,
-        );
-        /// **Source:** `ChFiDS_CommonPoint.hxx`:114 - `ChFiDS_CommonPoint::TransitionOnArc()`
-        ///
-        /// Returns the transition of the point on the arc
-        /// returned by Arc().
-        fn ChFiDS_CommonPoint_transition_on_arc(self_: &ChFiDS_CommonPoint) -> i32;
-        /// ======================== ChFiDS_FaceInterference ========================
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:31 - `ChFiDS_FaceInterference`
-        ///
-        /// interference face/fillet
-        type ChFiDS_FaceInterference;
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:36 - `ChFiDS_FaceInterference::ChFiDS_FaceInterference()`
-        fn ChFiDS_FaceInterference_ctor() -> UniquePtr<ChFiDS_FaceInterference>;
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:45 - `ChFiDS_FaceInterference::SetFirstParameter()`
-        #[cxx_name = "SetFirstParameter"]
-        fn set_first_parameter(self: Pin<&mut ChFiDS_FaceInterference>, U1: f64);
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:47 - `ChFiDS_FaceInterference::SetLastParameter()`
-        #[cxx_name = "SetLastParameter"]
-        fn set_last_parameter(self: Pin<&mut ChFiDS_FaceInterference>, U1: f64);
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:49 - `ChFiDS_FaceInterference::SetParameter()`
-        #[cxx_name = "SetParameter"]
-        fn set_parameter(self: Pin<&mut ChFiDS_FaceInterference>, U1: f64, IsFirst: bool);
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:51 - `ChFiDS_FaceInterference::LineIndex()`
-        #[cxx_name = "LineIndex"]
-        fn line_index(self: &ChFiDS_FaceInterference) -> i32;
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:53 - `ChFiDS_FaceInterference::SetLineIndex()`
-        #[cxx_name = "SetLineIndex"]
-        fn set_line_index(self: Pin<&mut ChFiDS_FaceInterference>, I: i32);
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:57 - `ChFiDS_FaceInterference::PCurveOnFace()`
-        #[cxx_name = "PCurveOnFace"]
-        fn p_curve_on_face(self: &ChFiDS_FaceInterference) -> &HandleGeom2dCurve;
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:59 - `ChFiDS_FaceInterference::PCurveOnSurf()`
-        #[cxx_name = "PCurveOnSurf"]
-        fn p_curve_on_surf(self: &ChFiDS_FaceInterference) -> &HandleGeom2dCurve;
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:61 - `ChFiDS_FaceInterference::ChangePCurveOnFace()`
-        #[cxx_name = "ChangePCurveOnFace"]
-        fn change_p_curve_on_face(
-            self: Pin<&mut ChFiDS_FaceInterference>,
-        ) -> Pin<&mut HandleGeom2dCurve>;
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:63 - `ChFiDS_FaceInterference::ChangePCurveOnSurf()`
-        #[cxx_name = "ChangePCurveOnSurf"]
-        fn change_p_curve_on_surf(
-            self: Pin<&mut ChFiDS_FaceInterference>,
-        ) -> Pin<&mut HandleGeom2dCurve>;
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:65 - `ChFiDS_FaceInterference::FirstParameter()`
-        #[cxx_name = "FirstParameter"]
-        fn first_parameter(self: &ChFiDS_FaceInterference) -> f64;
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:67 - `ChFiDS_FaceInterference::LastParameter()`
-        #[cxx_name = "LastParameter"]
-        fn last_parameter(self: &ChFiDS_FaceInterference) -> f64;
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:69 - `ChFiDS_FaceInterference::Parameter()`
-        #[cxx_name = "Parameter"]
-        fn parameter(self: &ChFiDS_FaceInterference, IsFirst: bool) -> f64;
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:38 - `ChFiDS_FaceInterference::SetInterference()`
-        fn ChFiDS_FaceInterference_set_interference(
-            self_: Pin<&mut ChFiDS_FaceInterference>,
-            LineIndex: i32,
-            Trans: i32,
-            PCurv1: &HandleGeom2dCurve,
-            PCurv2: &HandleGeom2dCurve,
-        );
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:43 - `ChFiDS_FaceInterference::SetTransition()`
-        fn ChFiDS_FaceInterference_set_transition(
-            self_: Pin<&mut ChFiDS_FaceInterference>,
-            Trans: i32,
-        );
-        /// **Source:** `ChFiDS_FaceInterference.hxx`:55 - `ChFiDS_FaceInterference::Transition()`
-        fn ChFiDS_FaceInterference_transition(self_: &ChFiDS_FaceInterference) -> i32;
-        /// ======================== ChFiDS_Stripe ========================
-        /// **Source:** `ChFiDS_Stripe.hxx`:34 - `ChFiDS_Stripe`
-        ///
-        /// Data characterising a band of fillet.
-        type ChFiDS_Stripe;
-        /// **Source:** `ChFiDS_Stripe.hxx`:38 - `ChFiDS_Stripe::ChFiDS_Stripe()`
-        fn ChFiDS_Stripe_ctor() -> UniquePtr<ChFiDS_Stripe>;
-        /// **Source:** `ChFiDS_Stripe.hxx`:41 - `ChFiDS_Stripe::Reset()`
-        ///
-        /// Reset everything except Spine.
-        #[cxx_name = "Reset"]
-        fn reset(self: Pin<&mut ChFiDS_Stripe>);
-        /// **Source:** `ChFiDS_Stripe.hxx`:43 - `ChFiDS_Stripe::SetOfSurfData()`
-        #[cxx_name = "SetOfSurfData"]
-        fn set_of_surf_data(self: &ChFiDS_Stripe) -> &HandleChFiDSHData;
-        /// **Source:** `ChFiDS_Stripe.hxx`:51 - `ChFiDS_Stripe::Choix()`
-        #[cxx_name = "Choix"]
-        fn choix(self: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:53 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
-        #[cxx_name = "ChangeSetOfSurfData"]
-        fn change_set_of_surf_data(self: Pin<&mut ChFiDS_Stripe>) -> Pin<&mut HandleChFiDSHData>;
-        /// **Source:** `ChFiDS_Stripe.hxx`:61 - `ChFiDS_Stripe::Choix()`
-        #[cxx_name = "Choix"]
-        fn choix_int(self: Pin<&mut ChFiDS_Stripe>, C: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:63 - `ChFiDS_Stripe::FirstParameters()`
-        #[cxx_name = "FirstParameters"]
-        fn first_parameters(self: &ChFiDS_Stripe, Pdeb: &mut f64, Pfin: &mut f64);
-        /// **Source:** `ChFiDS_Stripe.hxx`:65 - `ChFiDS_Stripe::LastParameters()`
-        #[cxx_name = "LastParameters"]
-        fn last_parameters(self: &ChFiDS_Stripe, Pdeb: &mut f64, Pfin: &mut f64);
-        /// **Source:** `ChFiDS_Stripe.hxx`:67 - `ChFiDS_Stripe::ChangeFirstParameters()`
-        #[cxx_name = "ChangeFirstParameters"]
-        fn change_first_parameters(self: Pin<&mut ChFiDS_Stripe>, Pdeb: f64, Pfin: f64);
-        /// **Source:** `ChFiDS_Stripe.hxx`:69 - `ChFiDS_Stripe::ChangeLastParameters()`
-        #[cxx_name = "ChangeLastParameters"]
-        fn change_last_parameters(self: Pin<&mut ChFiDS_Stripe>, Pdeb: f64, Pfin: f64);
-        /// **Source:** `ChFiDS_Stripe.hxx`:71 - `ChFiDS_Stripe::FirstCurve()`
-        #[cxx_name = "FirstCurve"]
-        fn first_curve(self: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:73 - `ChFiDS_Stripe::LastCurve()`
-        #[cxx_name = "LastCurve"]
-        fn last_curve(self: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:75 - `ChFiDS_Stripe::ChangeFirstCurve()`
-        #[cxx_name = "ChangeFirstCurve"]
-        fn change_first_curve(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:77 - `ChFiDS_Stripe::ChangeLastCurve()`
-        #[cxx_name = "ChangeLastCurve"]
-        fn change_last_curve(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:79 - `ChFiDS_Stripe::FirstPCurve()`
-        #[cxx_name = "FirstPCurve"]
-        fn first_p_curve(self: &ChFiDS_Stripe) -> &HandleGeom2dCurve;
-        /// **Source:** `ChFiDS_Stripe.hxx`:81 - `ChFiDS_Stripe::LastPCurve()`
-        #[cxx_name = "LastPCurve"]
-        fn last_p_curve(self: &ChFiDS_Stripe) -> &HandleGeom2dCurve;
-        /// **Source:** `ChFiDS_Stripe.hxx`:83 - `ChFiDS_Stripe::ChangeFirstPCurve()`
-        #[cxx_name = "ChangeFirstPCurve"]
-        fn change_first_p_curve(self: Pin<&mut ChFiDS_Stripe>) -> Pin<&mut HandleGeom2dCurve>;
-        /// **Source:** `ChFiDS_Stripe.hxx`:85 - `ChFiDS_Stripe::ChangeLastPCurve()`
-        #[cxx_name = "ChangeLastPCurve"]
-        fn change_last_p_curve(self: Pin<&mut ChFiDS_Stripe>) -> Pin<&mut HandleGeom2dCurve>;
-        /// **Source:** `ChFiDS_Stripe.hxx`:95 - `ChFiDS_Stripe::IndexFirstPointOnS1()`
-        #[cxx_name = "IndexFirstPointOnS1"]
-        fn index_first_point_on_s1(self: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:97 - `ChFiDS_Stripe::IndexFirstPointOnS2()`
-        #[cxx_name = "IndexFirstPointOnS2"]
-        fn index_first_point_on_s2(self: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:99 - `ChFiDS_Stripe::IndexLastPointOnS1()`
-        #[cxx_name = "IndexLastPointOnS1"]
-        fn index_last_point_on_s1(self: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:101 - `ChFiDS_Stripe::IndexLastPointOnS2()`
-        #[cxx_name = "IndexLastPointOnS2"]
-        fn index_last_point_on_s2(self: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:103 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS1()`
-        #[cxx_name = "ChangeIndexFirstPointOnS1"]
-        fn change_index_first_point_on_s1(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:105 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS2()`
-        #[cxx_name = "ChangeIndexFirstPointOnS2"]
-        fn change_index_first_point_on_s2(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:107 - `ChFiDS_Stripe::ChangeIndexLastPointOnS1()`
-        #[cxx_name = "ChangeIndexLastPointOnS1"]
-        fn change_index_last_point_on_s1(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:109 - `ChFiDS_Stripe::ChangeIndexLastPointOnS2()`
-        #[cxx_name = "ChangeIndexLastPointOnS2"]
-        fn change_index_last_point_on_s2(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:111 - `ChFiDS_Stripe::Parameters()`
-        #[cxx_name = "Parameters"]
-        fn parameters(self: &ChFiDS_Stripe, First: bool, Pdeb: &mut f64, Pfin: &mut f64);
-        /// **Source:** `ChFiDS_Stripe.hxx`:115 - `ChFiDS_Stripe::SetParameters()`
-        #[cxx_name = "SetParameters"]
-        fn set_parameters(self: Pin<&mut ChFiDS_Stripe>, First: bool, Pdeb: f64, Pfin: f64);
-        /// **Source:** `ChFiDS_Stripe.hxx`:119 - `ChFiDS_Stripe::Curve()`
-        #[cxx_name = "Curve"]
-        fn curve(self: &ChFiDS_Stripe, First: bool) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:121 - `ChFiDS_Stripe::SetCurve()`
-        #[cxx_name = "SetCurve"]
-        fn set_curve(self: Pin<&mut ChFiDS_Stripe>, Index: i32, First: bool);
-        /// **Source:** `ChFiDS_Stripe.hxx`:123 - `ChFiDS_Stripe::PCurve()`
-        #[cxx_name = "PCurve"]
-        fn p_curve(self: &ChFiDS_Stripe, First: bool) -> &HandleGeom2dCurve;
-        /// **Source:** `ChFiDS_Stripe.hxx`:125 - `ChFiDS_Stripe::ChangePCurve()`
-        #[cxx_name = "ChangePCurve"]
-        fn change_p_curve(
-            self: Pin<&mut ChFiDS_Stripe>,
-            First: bool,
-        ) -> Pin<&mut HandleGeom2dCurve>;
-        /// **Source:** `ChFiDS_Stripe.hxx`:135 - `ChFiDS_Stripe::IndexPoint()`
-        #[cxx_name = "IndexPoint"]
-        fn index_point(self: &ChFiDS_Stripe, First: bool, OnS: i32) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:138 - `ChFiDS_Stripe::SetIndexPoint()`
-        #[cxx_name = "SetIndexPoint"]
-        fn set_index_point(self: Pin<&mut ChFiDS_Stripe>, Index: i32, First: bool, OnS: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:142 - `ChFiDS_Stripe::SolidIndex()`
-        #[cxx_name = "SolidIndex"]
-        fn solid_index(self: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:144 - `ChFiDS_Stripe::SetSolidIndex()`
-        #[cxx_name = "SetSolidIndex"]
-        fn set_solid_index(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:147 - `ChFiDS_Stripe::InDS()`
-        ///
-        /// Set nb of SurfData's at end put in DS
-        #[cxx_name = "InDS"]
-        fn in_ds(self: Pin<&mut ChFiDS_Stripe>, First: bool, Nb: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:150 - `ChFiDS_Stripe::IsInDS()`
-        ///
-        /// Returns nb of SurfData's at end being in DS
-        #[cxx_name = "IsInDS"]
-        fn is_in_ds(self: &ChFiDS_Stripe, First: bool) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::DynamicType()`
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &ChFiDS_Stripe) -> &HandleStandardType;
-        /// **Source:** `ChFiDS_Stripe.hxx`:47 - `ChFiDS_Stripe::OrientationOnFace1()`
-        fn ChFiDS_Stripe_orientation_on_face1(self_: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:49 - `ChFiDS_Stripe::OrientationOnFace2()`
-        fn ChFiDS_Stripe_orientation_on_face2(self_: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:57 - `ChFiDS_Stripe::OrientationOnFace1()`
-        fn ChFiDS_Stripe_orientation_on_face1_orientation(self_: Pin<&mut ChFiDS_Stripe>, Or1: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:59 - `ChFiDS_Stripe::OrientationOnFace2()`
-        fn ChFiDS_Stripe_orientation_on_face2_orientation(self_: Pin<&mut ChFiDS_Stripe>, Or2: i32);
-        /// **Source:** `ChFiDS_Stripe.hxx`:87 - `ChFiDS_Stripe::FirstPCurveOrientation()`
-        fn ChFiDS_Stripe_first_p_curve_orientation(self_: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:89 - `ChFiDS_Stripe::LastPCurveOrientation()`
-        fn ChFiDS_Stripe_last_p_curve_orientation(self_: &ChFiDS_Stripe) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:91 - `ChFiDS_Stripe::FirstPCurveOrientation()`
-        fn ChFiDS_Stripe_first_p_curve_orientation_orientation(
-            self_: Pin<&mut ChFiDS_Stripe>,
-            O: i32,
-        );
-        /// **Source:** `ChFiDS_Stripe.hxx`:93 - `ChFiDS_Stripe::LastPCurveOrientation()`
-        fn ChFiDS_Stripe_last_p_curve_orientation_orientation(
-            self_: Pin<&mut ChFiDS_Stripe>,
-            O: i32,
-        );
-        /// **Source:** `ChFiDS_Stripe.hxx`:127 - `ChFiDS_Stripe::Orientation()`
-        fn ChFiDS_Stripe_orientation_int(self_: &ChFiDS_Stripe, OnS: i32) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:129 - `ChFiDS_Stripe::SetOrientation()`
-        fn ChFiDS_Stripe_set_orientation_orientation_int(
-            self_: Pin<&mut ChFiDS_Stripe>,
-            Or: i32,
-            OnS: i32,
-        );
-        /// **Source:** `ChFiDS_Stripe.hxx`:131 - `ChFiDS_Stripe::Orientation()`
-        fn ChFiDS_Stripe_orientation_bool(self_: &ChFiDS_Stripe, First: bool) -> i32;
-        /// **Source:** `ChFiDS_Stripe.hxx`:133 - `ChFiDS_Stripe::SetOrientation()`
-        fn ChFiDS_Stripe_set_orientation_orientation_bool(
-            self_: Pin<&mut ChFiDS_Stripe>,
-            Or: i32,
-            First: bool,
-        );
-        /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_descriptor()`
-        fn ChFiDS_Stripe_get_type_descriptor() -> &'static HandleStandardType;
-        /// Wrap ChFiDS_Stripe in a Handle
-        fn ChFiDS_Stripe_to_handle(obj: UniquePtr<ChFiDS_Stripe>) -> UniquePtr<HandleChFiDSStripe>;
-        /// Dereference Handle to get &ChFiDS_Stripe
-        fn HandleChFiDSStripe_get(handle: &HandleChFiDSStripe) -> &ChFiDS_Stripe;
-        /// Dereference Handle to get Pin<&mut ChFiDS_Stripe>
-        fn HandleChFiDSStripe_get_mut(
-            handle: Pin<&mut HandleChFiDSStripe>,
-        ) -> Pin<&mut ChFiDS_Stripe>;
-        /// ======================== ChFiDS_HData ========================
-        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData`
-        type ChFiDS_HData;
-        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
-        fn ChFiDS_HData_ctor() -> UniquePtr<ChFiDS_HData>;
-        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
-        fn ChFiDS_HData_ctor_sequenceofsurfdata(
-            theOther: &ChFiDS_SequenceOfSurfData,
-        ) -> UniquePtr<ChFiDS_HData>;
-        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::DynamicType()`
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &ChFiDS_HData) -> &HandleStandardType;
-        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_descriptor()`
-        fn ChFiDS_HData_get_type_descriptor() -> &'static HandleStandardType;
-        /// Wrap ChFiDS_HData in a Handle
-        fn ChFiDS_HData_to_handle(obj: UniquePtr<ChFiDS_HData>) -> UniquePtr<HandleChFiDSHData>;
-        /// Dereference Handle to get &ChFiDS_HData
-        fn HandleChFiDSHData_get(handle: &HandleChFiDSHData) -> &ChFiDS_HData;
-        /// Dereference Handle to get Pin<&mut ChFiDS_HData>
-        fn HandleChFiDSHData_get_mut(handle: Pin<&mut HandleChFiDSHData>)
-            -> Pin<&mut ChFiDS_HData>;
-        /// ======================== BRepAdaptor_Curve2d ========================
-        /// **Source:** `BRepAdaptor_Curve2d.hxx`:38 - `BRepAdaptor_Curve2d`
-        ///
-        /// The Curve2d from BRepAdaptor allows to use an Edge
-        /// on   a Face like   a  2d   curve. (curve  in   the
-        /// parametric space).
-        ///
-        /// It  has  the methods    of the class Curve2d  from
-        /// Adpator.
-        ///
-        /// It  is created or  initialized with a  Face and an
-        /// Edge.  The methods are  inherited from  Curve from
-        /// Geom2dAdaptor.
-        type BRepAdaptor_Curve2d;
-        /// **Source:** `BRepAdaptor_Curve2d.hxx`:43 - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
-        ///
-        /// Creates an uninitialized curve2d.
-        fn BRepAdaptor_Curve2d_ctor() -> UniquePtr<BRepAdaptor_Curve2d>;
-        /// **Source:** `BRepAdaptor_Curve2d.hxx`:46 - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
-        ///
-        /// Creates with the pcurve of <E> on <F>.
-        fn BRepAdaptor_Curve2d_ctor_edge_face(
-            E: &TopoDS_Edge,
-            F: &TopoDS_Face,
-        ) -> UniquePtr<BRepAdaptor_Curve2d>;
-        /// **Source:** `BRepAdaptor_Curve2d.hxx`:40 - `BRepAdaptor_Curve2d::DynamicType()`
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &BRepAdaptor_Curve2d) -> &HandleStandardType;
-        /// **Source:** `BRepAdaptor_Curve2d.hxx`:52 - `BRepAdaptor_Curve2d::Initialize()`
-        ///
-        /// Initialize with the pcurve of <E> on <F>.
-        #[cxx_name = "Initialize"]
-        fn initialize(self: Pin<&mut BRepAdaptor_Curve2d>, E: &TopoDS_Edge, F: &TopoDS_Face);
-        /// **Source:** `BRepAdaptor_Curve2d.hxx`:55 - `BRepAdaptor_Curve2d::Edge()`
-        ///
-        /// Returns the Edge.
-        #[cxx_name = "Edge"]
-        fn edge(self: &BRepAdaptor_Curve2d) -> &TopoDS_Edge;
-        /// **Source:** `BRepAdaptor_Curve2d.hxx`:58 - `BRepAdaptor_Curve2d::Face()`
-        ///
-        /// Returns the Face.
-        #[cxx_name = "Face"]
-        fn face(self: &BRepAdaptor_Curve2d) -> &TopoDS_Face;
-        /// **Source:** `BRepAdaptor_Curve2d.hxx`:49 - `BRepAdaptor_Curve2d::ShallowCopy()`
-        ///
-        /// Shallow copy of adaptor
-        fn BRepAdaptor_Curve2d_shallow_copy(
-            self_: &BRepAdaptor_Curve2d,
-        ) -> UniquePtr<HandleAdaptor2dCurve2d>;
-        /// **Source:** `BRepAdaptor_Curve2d.hxx`:40 - `BRepAdaptor_Curve2d::get_type_descriptor()`
-        fn BRepAdaptor_Curve2d_get_type_descriptor() -> &'static HandleStandardType;
-        /// Upcast BRepAdaptor_Curve2d to Adaptor2d_Curve2d
-        fn BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(
-            self_: &BRepAdaptor_Curve2d,
-        ) -> &Adaptor2d_Curve2d;
-        /// Upcast BRepAdaptor_Curve2d to Adaptor2d_Curve2d (mutable)
-        fn BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(
-            self_: Pin<&mut BRepAdaptor_Curve2d>,
-        ) -> Pin<&mut Adaptor2d_Curve2d>;
-        /// Upcast BRepAdaptor_Curve2d to Geom2dAdaptor_Curve
-        fn BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(
-            self_: &BRepAdaptor_Curve2d,
-        ) -> &Geom2dAdaptor_Curve;
-        /// Upcast BRepAdaptor_Curve2d to Geom2dAdaptor_Curve (mutable)
-        fn BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(
-            self_: Pin<&mut BRepAdaptor_Curve2d>,
-        ) -> Pin<&mut Geom2dAdaptor_Curve>;
-        /// Inherited from Adaptor2d_Curve2d: FirstParameter()
-        fn BRepAdaptor_Curve2d_inherited_FirstParameter(self_: &BRepAdaptor_Curve2d) -> f64;
-        /// Inherited from Adaptor2d_Curve2d: LastParameter()
-        fn BRepAdaptor_Curve2d_inherited_LastParameter(self_: &BRepAdaptor_Curve2d) -> f64;
-        /// Inherited from Adaptor2d_Curve2d: Trim()
-        fn BRepAdaptor_Curve2d_inherited_Trim(
-            self_: &BRepAdaptor_Curve2d,
-            First: f64,
-            Last: f64,
-            Tol: f64,
-        ) -> UniquePtr<HandleAdaptor2dCurve2d>;
-        /// Inherited from Adaptor2d_Curve2d: IsClosed()
-        fn BRepAdaptor_Curve2d_inherited_IsClosed(self_: &BRepAdaptor_Curve2d) -> bool;
-        /// Inherited from Adaptor2d_Curve2d: IsPeriodic()
-        fn BRepAdaptor_Curve2d_inherited_IsPeriodic(self_: &BRepAdaptor_Curve2d) -> bool;
-        /// Inherited from Adaptor2d_Curve2d: Period()
-        fn BRepAdaptor_Curve2d_inherited_Period(self_: &BRepAdaptor_Curve2d) -> f64;
-        /// Inherited from Adaptor2d_Curve2d: Value()
-        fn BRepAdaptor_Curve2d_inherited_Value(
-            self_: &BRepAdaptor_Curve2d,
-            U: f64,
-        ) -> UniquePtr<gp_Pnt2d>;
-        /// Inherited from Adaptor2d_Curve2d: D0()
-        fn BRepAdaptor_Curve2d_inherited_D0(
-            self_: &BRepAdaptor_Curve2d,
-            U: f64,
-            P: Pin<&mut gp_Pnt2d>,
-        );
-        /// Inherited from Adaptor2d_Curve2d: D1()
-        fn BRepAdaptor_Curve2d_inherited_D1(
-            self_: &BRepAdaptor_Curve2d,
-            U: f64,
-            P: Pin<&mut gp_Pnt2d>,
-            V: Pin<&mut gp_Vec2d>,
-        );
-        /// Inherited from Adaptor2d_Curve2d: D2()
-        fn BRepAdaptor_Curve2d_inherited_D2(
-            self_: &BRepAdaptor_Curve2d,
-            U: f64,
-            P: Pin<&mut gp_Pnt2d>,
-            V1: Pin<&mut gp_Vec2d>,
-            V2: Pin<&mut gp_Vec2d>,
-        );
-        /// Inherited from Adaptor2d_Curve2d: D3()
-        fn BRepAdaptor_Curve2d_inherited_D3(
-            self_: &BRepAdaptor_Curve2d,
-            U: f64,
-            P: Pin<&mut gp_Pnt2d>,
-            V1: Pin<&mut gp_Vec2d>,
-            V2: Pin<&mut gp_Vec2d>,
-            V3: Pin<&mut gp_Vec2d>,
-        );
-        /// Inherited from Adaptor2d_Curve2d: DN()
-        fn BRepAdaptor_Curve2d_inherited_DN(
-            self_: &BRepAdaptor_Curve2d,
-            U: f64,
-            N: i32,
-        ) -> UniquePtr<gp_Vec2d>;
-        /// Inherited from Adaptor2d_Curve2d: Resolution()
-        fn BRepAdaptor_Curve2d_inherited_Resolution(self_: &BRepAdaptor_Curve2d, R3d: f64) -> f64;
-        /// Inherited from Adaptor2d_Curve2d: Line()
-        fn BRepAdaptor_Curve2d_inherited_Line(self_: &BRepAdaptor_Curve2d) -> UniquePtr<gp_Lin2d>;
-        /// Inherited from Adaptor2d_Curve2d: Circle()
-        fn BRepAdaptor_Curve2d_inherited_Circle(
-            self_: &BRepAdaptor_Curve2d,
-        ) -> UniquePtr<gp_Circ2d>;
-        /// Inherited from Adaptor2d_Curve2d: Ellipse()
-        fn BRepAdaptor_Curve2d_inherited_Ellipse(
-            self_: &BRepAdaptor_Curve2d,
-        ) -> UniquePtr<gp_Elips2d>;
-        /// Inherited from Adaptor2d_Curve2d: Hyperbola()
-        fn BRepAdaptor_Curve2d_inherited_Hyperbola(
-            self_: &BRepAdaptor_Curve2d,
-        ) -> UniquePtr<gp_Hypr2d>;
-        /// Inherited from Adaptor2d_Curve2d: Parabola()
-        fn BRepAdaptor_Curve2d_inherited_Parabola(
-            self_: &BRepAdaptor_Curve2d,
-        ) -> UniquePtr<gp_Parab2d>;
-        /// Inherited from Adaptor2d_Curve2d: Degree()
-        fn BRepAdaptor_Curve2d_inherited_Degree(self_: &BRepAdaptor_Curve2d) -> i32;
-        /// Inherited from Adaptor2d_Curve2d: IsRational()
-        fn BRepAdaptor_Curve2d_inherited_IsRational(self_: &BRepAdaptor_Curve2d) -> bool;
-        /// Inherited from Adaptor2d_Curve2d: NbPoles()
-        fn BRepAdaptor_Curve2d_inherited_NbPoles(self_: &BRepAdaptor_Curve2d) -> i32;
-        /// Inherited from Adaptor2d_Curve2d: NbKnots()
-        fn BRepAdaptor_Curve2d_inherited_NbKnots(self_: &BRepAdaptor_Curve2d) -> i32;
-        /// Inherited from Adaptor2d_Curve2d: NbSamples()
-        fn BRepAdaptor_Curve2d_inherited_NbSamples(self_: &BRepAdaptor_Curve2d) -> i32;
-        /// Inherited from Geom2dAdaptor_Curve: Reset()
-        fn BRepAdaptor_Curve2d_inherited_Reset(self_: Pin<&mut BRepAdaptor_Curve2d>);
-        /// Inherited from Geom2dAdaptor_Curve: Load()
-        fn BRepAdaptor_Curve2d_inherited_Load(
-            self_: Pin<&mut BRepAdaptor_Curve2d>,
-            theCurve: &HandleGeom2dCurve,
-        );
-        /// Inherited from Geom2dAdaptor_Curve: Curve()
-        fn BRepAdaptor_Curve2d_inherited_Curve(self_: &BRepAdaptor_Curve2d) -> &HandleGeom2dCurve;
-        /// ======================== ChFiDS_Map ========================
-        /// **Source:** `ChFiDS_Map.hxx`:31 - `ChFiDS_Map`
-        ///
-        /// Encapsulation of IndexedDataMapOfShapeListOfShape.
-        type ChFiDS_Map;
-        /// **Source:** `ChFiDS_Map.hxx`:37 - `ChFiDS_Map::ChFiDS_Map()`
-        ///
-        /// Create an empty Map
-        fn ChFiDS_Map_ctor() -> UniquePtr<ChFiDS_Map>;
-        /// **Source:** `ChFiDS_Map.hxx`:45 - `ChFiDS_Map::Contains()`
-        #[cxx_name = "Contains"]
-        fn contains(self: &ChFiDS_Map, S: &TopoDS_Shape) -> bool;
-        /// **Source:** `ChFiDS_Map.hxx`:47 - `ChFiDS_Map::FindFromKey()`
-        #[cxx_name = "FindFromKey"]
-        fn find_from_key(self: &ChFiDS_Map, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        /// **Source:** `ChFiDS_Map.hxx`:51 - `ChFiDS_Map::FindFromIndex()`
-        #[cxx_name = "FindFromIndex"]
-        fn find_from_index(self: &ChFiDS_Map, I: i32) -> &TopTools_ListOfShape;
-        /// **Source:** `ChFiDS_Map.hxx`:41 - `ChFiDS_Map::Fill()`
-        ///
-        /// Fills the map with the subshapes of type T1 as keys
-        /// and the list of ancestors  of type T2 as items.
-        fn ChFiDS_Map_fill(self_: Pin<&mut ChFiDS_Map>, S: &TopoDS_Shape, T1: i32, T2: i32);
-        /// ======================== ChFiDS_StripeMap ========================
-        /// **Source:** `ChFiDS_StripeMap.hxx`:31 - `ChFiDS_StripeMap`
-        ///
-        /// encapsulation of IndexedDataMapOfVertexListOfStripe
-        type ChFiDS_StripeMap;
-        /// **Source:** `ChFiDS_StripeMap.hxx`:36 - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
-        fn ChFiDS_StripeMap_ctor() -> UniquePtr<ChFiDS_StripeMap>;
-        /// **Source:** `ChFiDS_StripeMap.hxx`:38 - `ChFiDS_StripeMap::Add()`
-        #[cxx_name = "Add"]
-        fn add(self: Pin<&mut ChFiDS_StripeMap>, V: &TopoDS_Vertex, F: &HandleChFiDSStripe);
-        /// **Source:** `ChFiDS_StripeMap.hxx`:40 - `ChFiDS_StripeMap::Extent()`
-        #[cxx_name = "Extent"]
-        fn extent(self: &ChFiDS_StripeMap) -> i32;
-        /// **Source:** `ChFiDS_StripeMap.hxx`:50 - `ChFiDS_StripeMap::FindKey()`
-        #[cxx_name = "FindKey"]
-        fn find_key(self: &ChFiDS_StripeMap, I: i32) -> &TopoDS_Vertex;
-        /// **Source:** `ChFiDS_StripeMap.hxx`:52 - `ChFiDS_StripeMap::Clear()`
-        #[cxx_name = "Clear"]
-        fn clear(self: Pin<&mut ChFiDS_StripeMap>);
-        /// ======================== ChFiDS_Regul ========================
-        /// **Source:** `ChFiDS_Regul.hxx`:27 - `ChFiDS_Regul`
-        ///
-        /// Storage of  a curve  and its 2 faces or surfaces of  support.
-        type ChFiDS_Regul;
-        /// **Source:** `ChFiDS_Regul.hxx`:32 - `ChFiDS_Regul::ChFiDS_Regul()`
-        fn ChFiDS_Regul_ctor() -> UniquePtr<ChFiDS_Regul>;
-        /// **Source:** `ChFiDS_Regul.hxx`:34 - `ChFiDS_Regul::SetCurve()`
-        #[cxx_name = "SetCurve"]
-        fn set_curve(self: Pin<&mut ChFiDS_Regul>, IC: i32);
-        /// **Source:** `ChFiDS_Regul.hxx`:36 - `ChFiDS_Regul::SetS1()`
-        #[cxx_name = "SetS1"]
-        fn set_s1(self: Pin<&mut ChFiDS_Regul>, IS1: i32, IsFace: bool);
-        /// **Source:** `ChFiDS_Regul.hxx`:39 - `ChFiDS_Regul::SetS2()`
-        #[cxx_name = "SetS2"]
-        fn set_s2(self: Pin<&mut ChFiDS_Regul>, IS2: i32, IsFace: bool);
-        /// **Source:** `ChFiDS_Regul.hxx`:42 - `ChFiDS_Regul::IsSurface1()`
-        #[cxx_name = "IsSurface1"]
-        fn is_surface1(self: &ChFiDS_Regul) -> bool;
-        /// **Source:** `ChFiDS_Regul.hxx`:44 - `ChFiDS_Regul::IsSurface2()`
-        #[cxx_name = "IsSurface2"]
-        fn is_surface2(self: &ChFiDS_Regul) -> bool;
-        /// **Source:** `ChFiDS_Regul.hxx`:46 - `ChFiDS_Regul::Curve()`
-        #[cxx_name = "Curve"]
-        fn curve(self: &ChFiDS_Regul) -> i32;
-        /// **Source:** `ChFiDS_Regul.hxx`:48 - `ChFiDS_Regul::S1()`
-        #[cxx_name = "S1"]
-        fn s1(self: &ChFiDS_Regul) -> i32;
-        /// **Source:** `ChFiDS_Regul.hxx`:50 - `ChFiDS_Regul::S2()`
-        #[cxx_name = "S2"]
-        fn s2(self: &ChFiDS_Regul) -> i32;
-        /// ======================== ChFi3d_ChBuilder ========================
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:42 - `ChFi3d_ChBuilder`
-        ///
-        /// construction tool for 3D chamfers on edges (on a solid).
-        type ChFi3d_ChBuilder;
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:49 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
-        ///
-        /// initializes the Builder with the Shape <S> for the
-        /// computation of chamfers
-        fn ChFi3d_ChBuilder_ctor_shape_real(
-            S: &TopoDS_Shape,
-            Ta: f64,
-        ) -> UniquePtr<ChFi3d_ChBuilder>;
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:56 - `ChFi3d_ChBuilder::Add()`
-        ///
-        /// initializes a contour with the edge <E> as first
-        /// (the next are found by propagation ).
-        /// The two distances (parameters of the chamfer) must
-        /// be set after.
-        /// if the edge <E> has more than 2 adjacent faces
-        #[cxx_name = "Add"]
-        fn add_edge(self: Pin<&mut ChFi3d_ChBuilder>, E: &TopoDS_Edge);
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:62 - `ChFi3d_ChBuilder::Add()`
-        ///
-        /// initializes a new contour with the edge <E> as first
-        /// (the next are found by propagation ), and  the
-        /// distance <Dis>
-        /// if the edge <E> has more than 2 adjacent faces
-        #[cxx_name = "Add"]
-        fn add_real_edge(self: Pin<&mut ChFi3d_ChBuilder>, Dis: f64, E: &TopoDS_Edge);
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:68 - `ChFi3d_ChBuilder::SetDist()`
-        ///
-        /// set the distance <Dis> of the fillet
-        /// contour of index <IC> in the DS with <Dis> on <F>.
-        /// if the face <F> is not one of common faces
-        /// of an edge of the contour <IC>
-        #[cxx_name = "SetDist"]
-        fn set_dist(self: Pin<&mut ChFi3d_ChBuilder>, Dis: f64, IC: i32, F: &TopoDS_Face);
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:74 - `ChFi3d_ChBuilder::GetDist()`
-        ///
-        /// gives the distances <Dis> of the fillet
-        /// contour of index <IC> in the DS
-        #[cxx_name = "GetDist"]
-        fn get_dist(self: &ChFi3d_ChBuilder, IC: i32, Dis: &mut f64);
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:80 - `ChFi3d_ChBuilder::Add()`
-        ///
-        /// initializes a new contour with the edge <E> as first
-        /// (the next are found by propagation ), and  the
-        /// distance <Dis1> and <Dis2>
-        /// if the edge <E> has more than 2 adjacent faces
-        #[cxx_name = "Add"]
-        fn add_real2_edge_face(
-            self: Pin<&mut ChFi3d_ChBuilder>,
-            Dis1: f64,
-            Dis2: f64,
-            E: &TopoDS_Edge,
-            F: &TopoDS_Face,
-        );
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:89 - `ChFi3d_ChBuilder::SetDists()`
-        ///
-        /// set the distances <Dis1> and <Dis2> of the fillet
-        /// contour of index <IC> in the DS with <Dis1> on <F>.
-        /// if the face <F> is not one of common faces
-        /// of an edge of the contour <IC>
-        #[cxx_name = "SetDists"]
-        fn set_dists(
-            self: Pin<&mut ChFi3d_ChBuilder>,
-            Dis1: f64,
-            Dis2: f64,
-            IC: i32,
-            F: &TopoDS_Face,
-        );
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:96 - `ChFi3d_ChBuilder::Dists()`
-        ///
-        /// gives the distances <Dis1> and <Dis2> of the fillet
-        /// contour of index <IC> in the DS
-        #[cxx_name = "Dists"]
-        fn dists(self: &ChFi3d_ChBuilder, IC: i32, Dis1: &mut f64, Dis2: &mut f64);
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:104 - `ChFi3d_ChBuilder::AddDA()`
-        ///
-        /// initializes a new contour with the edge <E> as first
-        /// (the next are found by propagation ), and  the
-        /// distance <Dis1> and <Angle>
-        /// if the edge <E> has more than 2 adjacent faces
-        #[cxx_name = "AddDA"]
-        fn add_da(
-            self: Pin<&mut ChFi3d_ChBuilder>,
-            Dis: f64,
-            Angle: f64,
-            E: &TopoDS_Edge,
-            F: &TopoDS_Face,
-        );
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:113 - `ChFi3d_ChBuilder::SetDistAngle()`
-        ///
-        /// set the distance <Dis> and <Angle> of the fillet
-        /// contour of index <IC> in the DS with <Dis> on <F>.
-        /// if the face <F> is not one of common faces
-        /// of an edge of the contour <IC>
-        #[cxx_name = "SetDistAngle"]
-        fn set_dist_angle(
-            self: Pin<&mut ChFi3d_ChBuilder>,
-            Dis: f64,
-            Angle: f64,
-            IC: i32,
-            F: &TopoDS_Face,
-        );
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:120 - `ChFi3d_ChBuilder::GetDistAngle()`
-        ///
-        /// gives the distances <Dis> and <Angle> of the fillet
-        /// contour of index <IC> in the DS
-        #[cxx_name = "GetDistAngle"]
-        fn get_dist_angle(self: &ChFi3d_ChBuilder, IC: i32, Dis: &mut f64, Angle: &mut f64);
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:134 - `ChFi3d_ChBuilder::ResetContour()`
-        ///
-        /// Reset tous rayons du contour IC.
-        #[cxx_name = "ResetContour"]
-        fn reset_contour(self: Pin<&mut ChFi3d_ChBuilder>, IC: i32);
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:136 - `ChFi3d_ChBuilder::Simulate()`
-        #[cxx_name = "Simulate"]
-        fn simulate(self: Pin<&mut ChFi3d_ChBuilder>, IC: i32);
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:138 - `ChFi3d_ChBuilder::NbSurf()`
-        #[cxx_name = "NbSurf"]
-        fn nb_surf(self: &ChFi3d_ChBuilder, IC: i32) -> i32;
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:125 - `ChFi3d_ChBuilder::SetMode()`
-        ///
-        /// set the mode of shamfer
-        fn ChFi3d_ChBuilder_set_mode(self_: Pin<&mut ChFi3d_ChBuilder>, theMode: i32);
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:128 - `ChFi3d_ChBuilder::IsChamfer()`
-        ///
-        /// renvoi la methode des chanfreins utilisee
-        fn ChFi3d_ChBuilder_is_chamfer(self_: &ChFi3d_ChBuilder, IC: i32) -> i32;
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:131 - `ChFi3d_ChBuilder::Mode()`
-        ///
-        /// returns the mode of chamfer used
-        fn ChFi3d_ChBuilder_mode(self_: &ChFi3d_ChBuilder) -> i32;
-        /// **Source:** `ChFi3d_ChBuilder.hxx`:140 - `ChFi3d_ChBuilder::Sect()`
-        fn ChFi3d_ChBuilder_sect(
-            self_: &ChFi3d_ChBuilder,
-            IC: i32,
-            IS: i32,
-        ) -> UniquePtr<HandleChFiDSSecHArray1>;
-        /// Upcast ChFi3d_ChBuilder to ChFi3d_Builder
-        fn ChFi3d_ChBuilder_as_ChFi3d_Builder(self_: &ChFi3d_ChBuilder) -> &ChFi3d_Builder;
-        /// Upcast ChFi3d_ChBuilder to ChFi3d_Builder (mutable)
-        fn ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(
-            self_: Pin<&mut ChFi3d_ChBuilder>,
-        ) -> Pin<&mut ChFi3d_Builder>;
-        /// Inherited from ChFi3d_Builder: SetParams()
-        fn ChFi3d_ChBuilder_inherited_SetParams(
-            self_: Pin<&mut ChFi3d_ChBuilder>,
-            Tang: f64,
-            Tesp: f64,
-            T2d: f64,
-            TApp3d: f64,
-            TolApp2d: f64,
-            Fleche: f64,
-        );
-        /// Inherited from ChFi3d_Builder: Remove()
-        fn ChFi3d_ChBuilder_inherited_Remove(self_: Pin<&mut ChFi3d_ChBuilder>, E: &TopoDS_Edge);
-        /// Inherited from ChFi3d_Builder: Contains()
-        fn ChFi3d_ChBuilder_inherited_Contains(self_: &ChFi3d_ChBuilder, E: &TopoDS_Edge) -> i32;
-        /// Inherited from ChFi3d_Builder: NbElements()
-        fn ChFi3d_ChBuilder_inherited_NbElements(self_: &ChFi3d_ChBuilder) -> i32;
-        /// Inherited from ChFi3d_Builder: Length()
-        fn ChFi3d_ChBuilder_inherited_Length(self_: &ChFi3d_ChBuilder, IC: i32) -> f64;
-        /// Inherited from ChFi3d_Builder: FirstVertex()
-        fn ChFi3d_ChBuilder_inherited_FirstVertex(
-            self_: &ChFi3d_ChBuilder,
-            IC: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// Inherited from ChFi3d_Builder: LastVertex()
-        fn ChFi3d_ChBuilder_inherited_LastVertex(
-            self_: &ChFi3d_ChBuilder,
-            IC: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// Inherited from ChFi3d_Builder: Abscissa()
-        fn ChFi3d_ChBuilder_inherited_Abscissa(
-            self_: &ChFi3d_ChBuilder,
-            IC: i32,
-            V: &TopoDS_Vertex,
-        ) -> f64;
-        /// Inherited from ChFi3d_Builder: RelativeAbscissa()
-        fn ChFi3d_ChBuilder_inherited_RelativeAbscissa(
-            self_: &ChFi3d_ChBuilder,
-            IC: i32,
-            V: &TopoDS_Vertex,
-        ) -> f64;
-        /// Inherited from ChFi3d_Builder: ClosedAndTangent()
-        fn ChFi3d_ChBuilder_inherited_ClosedAndTangent(self_: &ChFi3d_ChBuilder, IC: i32) -> bool;
-        /// Inherited from ChFi3d_Builder: Closed()
-        fn ChFi3d_ChBuilder_inherited_Closed(self_: &ChFi3d_ChBuilder, IC: i32) -> bool;
-        /// Inherited from ChFi3d_Builder: Compute()
-        fn ChFi3d_ChBuilder_inherited_Compute(self_: Pin<&mut ChFi3d_ChBuilder>);
-        /// Inherited from ChFi3d_Builder: IsDone()
-        fn ChFi3d_ChBuilder_inherited_IsDone(self_: &ChFi3d_ChBuilder) -> bool;
-        /// Inherited from ChFi3d_Builder: Shape()
-        fn ChFi3d_ChBuilder_inherited_Shape(self_: &ChFi3d_ChBuilder) -> UniquePtr<TopoDS_Shape>;
-        /// Inherited from ChFi3d_Builder: Generated()
-        fn ChFi3d_ChBuilder_inherited_Generated<'a>(
-            self_: Pin<&'a mut ChFi3d_ChBuilder>,
-            EouV: &TopoDS_Shape,
-        ) -> &'a TopTools_ListOfShape;
-        /// Inherited from ChFi3d_Builder: NbFaultyContours()
-        fn ChFi3d_ChBuilder_inherited_NbFaultyContours(self_: &ChFi3d_ChBuilder) -> i32;
-        /// Inherited from ChFi3d_Builder: FaultyContour()
-        fn ChFi3d_ChBuilder_inherited_FaultyContour(self_: &ChFi3d_ChBuilder, I: i32) -> i32;
-        /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
-        fn ChFi3d_ChBuilder_inherited_NbComputedSurfaces(self_: &ChFi3d_ChBuilder, IC: i32) -> i32;
-        /// Inherited from ChFi3d_Builder: ComputedSurface()
-        fn ChFi3d_ChBuilder_inherited_ComputedSurface(
-            self_: &ChFi3d_ChBuilder,
-            IC: i32,
-            IS: i32,
-        ) -> UniquePtr<HandleGeomSurface>;
-        /// Inherited from ChFi3d_Builder: NbFaultyVertices()
-        fn ChFi3d_ChBuilder_inherited_NbFaultyVertices(self_: &ChFi3d_ChBuilder) -> i32;
-        /// Inherited from ChFi3d_Builder: FaultyVertex()
-        fn ChFi3d_ChBuilder_inherited_FaultyVertex(
-            self_: &ChFi3d_ChBuilder,
-            IV: i32,
-        ) -> UniquePtr<TopoDS_Vertex>;
-        /// Inherited from ChFi3d_Builder: HasResult()
-        fn ChFi3d_ChBuilder_inherited_HasResult(self_: &ChFi3d_ChBuilder) -> bool;
-        /// Inherited from ChFi3d_Builder: BadShape()
-        fn ChFi3d_ChBuilder_inherited_BadShape(self_: &ChFi3d_ChBuilder)
-            -> UniquePtr<TopoDS_Shape>;
-        /// Inherited from ChFi3d_Builder: Reset()
-        fn ChFi3d_ChBuilder_inherited_Reset(self_: Pin<&mut ChFi3d_ChBuilder>);
-        /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
-        fn ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(
-            self_: Pin<&mut ChFi3d_ChBuilder>,
-            Index: i32,
-        ) -> bool;
         /// ======================== BRepPrim_Torus ========================
         /// **Source:** `BRepPrim_Torus.hxx`:30 - `BRepPrim_Torus`
         ///
@@ -53019,6 +51151,1874 @@ mod ffi {
         fn HandleTopoDSTShape_get_mut(
             handle: Pin<&mut HandleTopoDSTShape>,
         ) -> Pin<&mut TopoDS_TShape>;
+        /// ======================== ChFi2d_Builder ========================
+        /// **Source:** `ChFi2d_Builder.hxx`:39 - `ChFi2d_Builder`
+        ///
+        /// This  class contains  the algorithm  used to build
+        /// fillet on planar wire.
+        type ChFi2d_Builder;
+        /// **Source:** `ChFi2d_Builder.hxx`:44 - `ChFi2d_Builder::ChFi2d_Builder()`
+        fn ChFi2d_Builder_ctor() -> UniquePtr<ChFi2d_Builder>;
+        /// **Source:** `ChFi2d_Builder.hxx`:48 - `ChFi2d_Builder::ChFi2d_Builder()`
+        ///
+        /// The face  <F> can be build  on a closed or an open
+        /// wire.
+        fn ChFi2d_Builder_ctor_face(F: &TopoDS_Face) -> UniquePtr<ChFi2d_Builder>;
+        /// **Source:** `ChFi2d_Builder.hxx`:50 - `ChFi2d_Builder::Init()`
+        #[cxx_name = "Init"]
+        fn init_face(self: Pin<&mut ChFi2d_Builder>, F: &TopoDS_Face);
+        /// **Source:** `ChFi2d_Builder.hxx`:52 - `ChFi2d_Builder::Init()`
+        #[cxx_name = "Init"]
+        fn init_face2(self: Pin<&mut ChFi2d_Builder>, RefFace: &TopoDS_Face, ModFace: &TopoDS_Face);
+        /// **Source:** `ChFi2d_Builder.hxx`:118 - `ChFi2d_Builder::IsModified()`
+        #[cxx_name = "IsModified"]
+        fn is_modified(self: &ChFi2d_Builder, E: &TopoDS_Edge) -> bool;
+        /// **Source:** `ChFi2d_Builder.hxx`:121 - `ChFi2d_Builder::FilletEdges()`
+        ///
+        /// returns the list of new edges
+        #[cxx_name = "FilletEdges"]
+        fn fillet_edges(self: &ChFi2d_Builder) -> &TopTools_SequenceOfShape;
+        /// **Source:** `ChFi2d_Builder.hxx`:123 - `ChFi2d_Builder::NbFillet()`
+        #[cxx_name = "NbFillet"]
+        fn nb_fillet(self: &ChFi2d_Builder) -> i32;
+        /// **Source:** `ChFi2d_Builder.hxx`:126 - `ChFi2d_Builder::ChamferEdges()`
+        ///
+        /// returns the list of new edges
+        #[cxx_name = "ChamferEdges"]
+        fn chamfer_edges(self: &ChFi2d_Builder) -> &TopTools_SequenceOfShape;
+        /// **Source:** `ChFi2d_Builder.hxx`:128 - `ChFi2d_Builder::NbChamfer()`
+        #[cxx_name = "NbChamfer"]
+        fn nb_chamfer(self: &ChFi2d_Builder) -> i32;
+        /// **Source:** `ChFi2d_Builder.hxx`:130 - `ChFi2d_Builder::HasDescendant()`
+        #[cxx_name = "HasDescendant"]
+        fn has_descendant(self: &ChFi2d_Builder, E: &TopoDS_Edge) -> bool;
+        /// **Source:** `ChFi2d_Builder.hxx`:134 - `ChFi2d_Builder::DescendantEdge()`
+        ///
+        /// returns the modified edge if <E> has descendant or
+        /// <E> in the other case.
+        #[cxx_name = "DescendantEdge"]
+        fn descendant_edge(self: &ChFi2d_Builder, E: &TopoDS_Edge) -> &TopoDS_Edge;
+        /// **Source:** `ChFi2d_Builder.hxx`:139 - `ChFi2d_Builder::BasisEdge()`
+        ///
+        /// Returns the parent edge of  <E>
+        /// Warning: If <E>is a basis edge,  the returned edge would be
+        /// equal to <E>
+        #[cxx_name = "BasisEdge"]
+        fn basis_edge(self: &ChFi2d_Builder, E: &TopoDS_Edge) -> &TopoDS_Edge;
+        /// **Source:** `ChFi2d_Builder.hxx`:59 - `ChFi2d_Builder::AddFillet()`
+        ///
+        /// Add  a fillet  of   radius  <Radius> on  the  wire
+        /// between the two edges connected to the vertex <V>.
+        /// <AddFillet> returns the  fillet edge. The returned
+        /// edge has  sense only   if the status   <status> is
+        /// <IsDone>
+        fn ChFi2d_Builder_add_fillet(
+            self_: Pin<&mut ChFi2d_Builder>,
+            V: &TopoDS_Vertex,
+            Radius: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `ChFi2d_Builder.hxx`:64 - `ChFi2d_Builder::ModifyFillet()`
+        ///
+        /// modify the fillet radius and return the new fillet
+        /// edge. this    edge has sense  only if   the status
+        /// <status> is <IsDone>.
+        fn ChFi2d_Builder_modify_fillet(
+            self_: Pin<&mut ChFi2d_Builder>,
+            Fillet: &TopoDS_Edge,
+            Radius: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `ChFi2d_Builder.hxx`:68 - `ChFi2d_Builder::RemoveFillet()`
+        ///
+        /// removes the fillet <Fillet> and returns the vertex
+        /// connecting the two adjacent edges to  this fillet.
+        fn ChFi2d_Builder_remove_fillet(
+            self_: Pin<&mut ChFi2d_Builder>,
+            Fillet: &TopoDS_Edge,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `ChFi2d_Builder.hxx`:74 - `ChFi2d_Builder::AddChamfer()`
+        ///
+        /// Add a chamfer on  the  wire between the two  edges
+        /// connected <E1> and  <E2>. <AddChamfer> returns the
+        /// chamfer  edge. This  edge  has  sense only if  the
+        /// status <status> is <IsDone>.
+        fn ChFi2d_Builder_add_chamfer_edge2_real2(
+            self_: Pin<&mut ChFi2d_Builder>,
+            E1: &TopoDS_Edge,
+            E2: &TopoDS_Edge,
+            D1: f64,
+            D2: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `ChFi2d_Builder.hxx`:86 - `ChFi2d_Builder::AddChamfer()`
+        ///
+        /// Add  a chamfer on the   wire between the two edges
+        /// connected to the vertex <V>. The chamfer will make
+        /// an  angle <Ang> with the edge  <E>, and one of its
+        /// extremities  will be on  <E>  at distance <D>. The
+        /// returned   edge has sense   only   if the   status
+        /// <status> is <IsDone>.
+        /// Warning: The value of <Ang> must be expressed in Radian.
+        fn ChFi2d_Builder_add_chamfer_edge_vertex_real2(
+            self_: Pin<&mut ChFi2d_Builder>,
+            E: &TopoDS_Edge,
+            V: &TopoDS_Vertex,
+            D: f64,
+            Ang: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `ChFi2d_Builder.hxx`:95 - `ChFi2d_Builder::ModifyChamfer()`
+        ///
+        /// modify the chamfer <Chamfer>  and returns  the new
+        /// chamfer edge.
+        /// This edge as sense only  if the status <status> is
+        /// <IsDone>.
+        fn ChFi2d_Builder_modify_chamfer_edge3_real2(
+            self_: Pin<&mut ChFi2d_Builder>,
+            Chamfer: &TopoDS_Edge,
+            E1: &TopoDS_Edge,
+            E2: &TopoDS_Edge,
+            D1: f64,
+            D2: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `ChFi2d_Builder.hxx`:105 - `ChFi2d_Builder::ModifyChamfer()`
+        ///
+        /// modify the  chamfer <Chamfer>  and returns the new
+        /// chamfer edge. This    edge as sense  only   if the
+        /// status <status>   is  <IsDone>.
+        /// Warning: The value of <Ang> must be expressed in Radian.
+        fn ChFi2d_Builder_modify_chamfer_edge2_real2(
+            self_: Pin<&mut ChFi2d_Builder>,
+            Chamfer: &TopoDS_Edge,
+            E: &TopoDS_Edge,
+            D: f64,
+            Ang: f64,
+        ) -> UniquePtr<TopoDS_Edge>;
+        /// **Source:** `ChFi2d_Builder.hxx`:113 - `ChFi2d_Builder::RemoveChamfer()`
+        ///
+        /// removes   the chamfer  <Chamfer>   and returns the
+        /// vertex connecting  the two adjacent  edges to this
+        /// chamfer.
+        fn ChFi2d_Builder_remove_chamfer(
+            self_: Pin<&mut ChFi2d_Builder>,
+            Chamfer: &TopoDS_Edge,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `ChFi2d_Builder.hxx`:116 - `ChFi2d_Builder::Result()`
+        ///
+        /// returns the modified face
+        fn ChFi2d_Builder_result(self_: &ChFi2d_Builder) -> UniquePtr<TopoDS_Face>;
+        /// **Source:** `ChFi2d_Builder.hxx`:141 - `ChFi2d_Builder::Status()`
+        fn ChFi2d_Builder_status(self_: &ChFi2d_Builder) -> i32;
+        /// ======================== ChFi3d_FilBuilder ========================
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:44 - `ChFi3d_FilBuilder`
+        ///
+        /// Tool  of  construction of  fillets 3d on  edges (on a solid).
+        type ChFi3d_FilBuilder;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
+        fn ChFi3d_FilBuilder_ctor_shape_filletshape_real(
+            S: &TopoDS_Shape,
+            FShape: i32,
+            Ta: f64,
+        ) -> UniquePtr<ChFi3d_FilBuilder>;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:62 - `ChFi3d_FilBuilder::Add()`
+        ///
+        /// initialisation of  a contour with the first edge
+        /// (the following are found  by propagation).
+        /// Attention, you  need  to start  with  SetRadius.
+        #[cxx_name = "Add"]
+        fn add_edge(self: Pin<&mut ChFi3d_FilBuilder>, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:65 - `ChFi3d_FilBuilder::Add()`
+        ///
+        /// initialisation of the constant vector the corresponding  1st  edge.
+        #[cxx_name = "Add"]
+        fn add_real_edge(self: Pin<&mut ChFi3d_FilBuilder>, Radius: f64, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:68 - `ChFi3d_FilBuilder::SetRadius()`
+        ///
+        /// Set the radius of the contour of index IC.
+        #[cxx_name = "SetRadius"]
+        fn set_radius_handlefunction_int2(
+            self: Pin<&mut ChFi3d_FilBuilder>,
+            C: &HandleLawFunction,
+            IC: i32,
+            IinC: i32,
+        );
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:73 - `ChFi3d_FilBuilder::IsConstant()`
+        ///
+        /// Returns true the contour is flagged as edge constant.
+        #[cxx_name = "IsConstant"]
+        fn is_constant_int(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32) -> bool;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:77 - `ChFi3d_FilBuilder::Radius()`
+        ///
+        /// Returns the vector if the contour is flagged as edge
+        /// constant.
+        #[cxx_name = "Radius"]
+        fn radius_int(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32) -> f64;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:80 - `ChFi3d_FilBuilder::ResetContour()`
+        ///
+        /// Reset all vectors of contour IC.
+        #[cxx_name = "ResetContour"]
+        fn reset_contour(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:84 - `ChFi3d_FilBuilder::SetRadius()`
+        ///
+        /// Set a constant on edge E of  the contour of
+        /// index IC. Since  then  E is flagged as constant.
+        #[cxx_name = "SetRadius"]
+        fn set_radius_real_int_edge(
+            self: Pin<&mut ChFi3d_FilBuilder>,
+            Radius: f64,
+            IC: i32,
+            E: &TopoDS_Edge,
+        );
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:89 - `ChFi3d_FilBuilder::UnSet()`
+        ///
+        /// Extracts the flag constant and the vector of edge E.
+        #[cxx_name = "UnSet"]
+        fn un_set_int_edge(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:92 - `ChFi3d_FilBuilder::SetRadius()`
+        ///
+        /// Set a vector on vertex  V of  the contour of index IC.
+        #[cxx_name = "SetRadius"]
+        fn set_radius_real_int_vertex(
+            self: Pin<&mut ChFi3d_FilBuilder>,
+            Radius: f64,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        );
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:97 - `ChFi3d_FilBuilder::UnSet()`
+        ///
+        /// Extracts the vector of  the vertex V.
+        #[cxx_name = "UnSet"]
+        fn un_set_int_vertex(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32, V: &TopoDS_Vertex);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:101 - `ChFi3d_FilBuilder::SetRadius()`
+        ///
+        /// Set  a vertex on the point of parametre U in the edge IinC
+        /// of  the contour of index IC
+        #[cxx_name = "SetRadius"]
+        fn set_radius_xy_int2(self: Pin<&mut ChFi3d_FilBuilder>, UandR: &gp_XY, IC: i32, IinC: i32);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:106 - `ChFi3d_FilBuilder::IsConstant()`
+        ///
+        /// Returns true E is flagged as edge constant.
+        #[cxx_name = "IsConstant"]
+        fn is_constant_int_edge(
+            self: Pin<&mut ChFi3d_FilBuilder>,
+            IC: i32,
+            E: &TopoDS_Edge,
+        ) -> bool;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:109 - `ChFi3d_FilBuilder::Radius()`
+        ///
+        /// Returns the vector if E is flagged as edge constant.
+        #[cxx_name = "Radius"]
+        fn radius_int_edge(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32, E: &TopoDS_Edge) -> f64;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:114 - `ChFi3d_FilBuilder::GetBounds()`
+        ///
+        /// Returns in First and Last  les extremities of  the
+        /// part of variable  vector framing E, returns
+        /// False  if  E is flagged as edge constant.
+        #[cxx_name = "GetBounds"]
+        fn get_bounds(
+            self: Pin<&mut ChFi3d_FilBuilder>,
+            IC: i32,
+            E: &TopoDS_Edge,
+            First: &mut f64,
+            Last: &mut f64,
+        ) -> bool;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:126 - `ChFi3d_FilBuilder::SetLaw()`
+        ///
+        /// Sets the rule of elementary evolution of  the
+        /// part to variable  vector framing E.
+        #[cxx_name = "SetLaw"]
+        fn set_law(
+            self: Pin<&mut ChFi3d_FilBuilder>,
+            IC: i32,
+            E: &TopoDS_Edge,
+            L: &HandleLawFunction,
+        );
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:130 - `ChFi3d_FilBuilder::Simulate()`
+        #[cxx_name = "Simulate"]
+        fn simulate(self: Pin<&mut ChFi3d_FilBuilder>, IC: i32);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
+        #[cxx_name = "NbSurf"]
+        fn nb_surf(self: &ChFi3d_FilBuilder, IC: i32) -> i32;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`
+        ///
+        /// Sets the type of fillet surface.
+        fn ChFi3d_FilBuilder_set_fillet_shape(self_: Pin<&mut ChFi3d_FilBuilder>, FShape: i32);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:57 - `ChFi3d_FilBuilder::GetFilletShape()`
+        ///
+        /// Returns the type of fillet surface.
+        fn ChFi3d_FilBuilder_get_fillet_shape(self_: &ChFi3d_FilBuilder) -> i32;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:122 - `ChFi3d_FilBuilder::GetLaw()`
+        ///
+        /// Returns the rule of  elementary  evolution of  the
+        /// part to  variable vector framing E, returns a
+        /// rule zero if E is flagged as edge constant.
+        fn ChFi3d_FilBuilder_get_law(
+            self_: Pin<&mut ChFi3d_FilBuilder>,
+            IC: i32,
+            E: &TopoDS_Edge,
+        ) -> UniquePtr<HandleLawFunction>;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:134 - `ChFi3d_FilBuilder::Sect()`
+        fn ChFi3d_FilBuilder_sect(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleChFiDSSecHArray1>;
+        /// Upcast ChFi3d_FilBuilder to ChFi3d_Builder
+        fn ChFi3d_FilBuilder_as_ChFi3d_Builder(self_: &ChFi3d_FilBuilder) -> &ChFi3d_Builder;
+        /// Upcast ChFi3d_FilBuilder to ChFi3d_Builder (mutable)
+        fn ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(
+            self_: Pin<&mut ChFi3d_FilBuilder>,
+        ) -> Pin<&mut ChFi3d_Builder>;
+        /// Inherited from ChFi3d_Builder: SetParams()
+        fn ChFi3d_FilBuilder_inherited_SetParams(
+            self_: Pin<&mut ChFi3d_FilBuilder>,
+            Tang: f64,
+            Tesp: f64,
+            T2d: f64,
+            TApp3d: f64,
+            TolApp2d: f64,
+            Fleche: f64,
+        );
+        /// Inherited from ChFi3d_Builder: Remove()
+        fn ChFi3d_FilBuilder_inherited_Remove(self_: Pin<&mut ChFi3d_FilBuilder>, E: &TopoDS_Edge);
+        /// Inherited from ChFi3d_Builder: Contains()
+        fn ChFi3d_FilBuilder_inherited_Contains(self_: &ChFi3d_FilBuilder, E: &TopoDS_Edge) -> i32;
+        /// Inherited from ChFi3d_Builder: NbElements()
+        fn ChFi3d_FilBuilder_inherited_NbElements(self_: &ChFi3d_FilBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: Length()
+        fn ChFi3d_FilBuilder_inherited_Length(self_: &ChFi3d_FilBuilder, IC: i32) -> f64;
+        /// Inherited from ChFi3d_Builder: FirstVertex()
+        fn ChFi3d_FilBuilder_inherited_FirstVertex(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: LastVertex()
+        fn ChFi3d_FilBuilder_inherited_LastVertex(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: Abscissa()
+        fn ChFi3d_FilBuilder_inherited_Abscissa(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        ) -> f64;
+        /// Inherited from ChFi3d_Builder: RelativeAbscissa()
+        fn ChFi3d_FilBuilder_inherited_RelativeAbscissa(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        ) -> f64;
+        /// Inherited from ChFi3d_Builder: ClosedAndTangent()
+        fn ChFi3d_FilBuilder_inherited_ClosedAndTangent(self_: &ChFi3d_FilBuilder, IC: i32)
+            -> bool;
+        /// Inherited from ChFi3d_Builder: Closed()
+        fn ChFi3d_FilBuilder_inherited_Closed(self_: &ChFi3d_FilBuilder, IC: i32) -> bool;
+        /// Inherited from ChFi3d_Builder: Compute()
+        fn ChFi3d_FilBuilder_inherited_Compute(self_: Pin<&mut ChFi3d_FilBuilder>);
+        /// Inherited from ChFi3d_Builder: IsDone()
+        fn ChFi3d_FilBuilder_inherited_IsDone(self_: &ChFi3d_FilBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: Shape()
+        fn ChFi3d_FilBuilder_inherited_Shape(self_: &ChFi3d_FilBuilder) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from ChFi3d_Builder: Generated()
+        fn ChFi3d_FilBuilder_inherited_Generated<'a>(
+            self_: Pin<&'a mut ChFi3d_FilBuilder>,
+            EouV: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from ChFi3d_Builder: NbFaultyContours()
+        fn ChFi3d_FilBuilder_inherited_NbFaultyContours(self_: &ChFi3d_FilBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: FaultyContour()
+        fn ChFi3d_FilBuilder_inherited_FaultyContour(self_: &ChFi3d_FilBuilder, I: i32) -> i32;
+        /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
+        fn ChFi3d_FilBuilder_inherited_NbComputedSurfaces(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+        ) -> i32;
+        /// Inherited from ChFi3d_Builder: ComputedSurface()
+        fn ChFi3d_FilBuilder_inherited_ComputedSurface(
+            self_: &ChFi3d_FilBuilder,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from ChFi3d_Builder: NbFaultyVertices()
+        fn ChFi3d_FilBuilder_inherited_NbFaultyVertices(self_: &ChFi3d_FilBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: FaultyVertex()
+        fn ChFi3d_FilBuilder_inherited_FaultyVertex(
+            self_: &ChFi3d_FilBuilder,
+            IV: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: HasResult()
+        fn ChFi3d_FilBuilder_inherited_HasResult(self_: &ChFi3d_FilBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: BadShape()
+        fn ChFi3d_FilBuilder_inherited_BadShape(
+            self_: &ChFi3d_FilBuilder,
+        ) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from ChFi3d_Builder: Reset()
+        fn ChFi3d_FilBuilder_inherited_Reset(self_: Pin<&mut ChFi3d_FilBuilder>);
+        /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
+        fn ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(
+            self_: Pin<&mut ChFi3d_FilBuilder>,
+            Index: i32,
+        ) -> bool;
+        /// ======================== ChFiDS_SecHArray1 ========================
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1`
+        type ChFiDS_SecHArray1;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        fn ChFiDS_SecHArray1_ctor() -> UniquePtr<ChFiDS_SecHArray1>;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        fn ChFiDS_SecHArray1_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<ChFiDS_SecHArray1>;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        fn ChFiDS_SecHArray1_ctor_int2_circsection(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &ChFiDS_CircSection,
+        ) -> UniquePtr<ChFiDS_SecHArray1>;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        fn ChFiDS_SecHArray1_ctor_circsection_int2_bool(
+            theBegin: &ChFiDS_CircSection,
+            theLower: i32,
+            theUpper: i32,
+            arg3: bool,
+        ) -> UniquePtr<ChFiDS_SecHArray1>;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        fn ChFiDS_SecHArray1_ctor_secarray1(
+            theOther: &ChFiDS_SecArray1,
+        ) -> UniquePtr<ChFiDS_SecHArray1>;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::DynamicType()`
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &ChFiDS_SecHArray1) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_descriptor()`
+        fn ChFiDS_SecHArray1_get_type_descriptor() -> &'static HandleStandardType;
+        /// Wrap ChFiDS_SecHArray1 in a Handle
+        fn ChFiDS_SecHArray1_to_handle(
+            obj: UniquePtr<ChFiDS_SecHArray1>,
+        ) -> UniquePtr<HandleChFiDSSecHArray1>;
+        /// Dereference Handle to get &ChFiDS_SecHArray1
+        fn HandleChFiDSSecHArray1_get(handle: &HandleChFiDSSecHArray1) -> &ChFiDS_SecHArray1;
+        /// Dereference Handle to get Pin<&mut ChFiDS_SecHArray1>
+        fn HandleChFiDSSecHArray1_get_mut(
+            handle: Pin<&mut HandleChFiDSSecHArray1>,
+        ) -> Pin<&mut ChFiDS_SecHArray1>;
+        /// ======================== ChFiDS_CircSection ========================
+        /// **Source:** `ChFiDS_CircSection.hxx`:28 - `ChFiDS_CircSection`
+        ///
+        /// A Section of fillet.
+        type ChFiDS_CircSection;
+        /// **Source:** `ChFiDS_CircSection.hxx`:33 - `ChFiDS_CircSection::ChFiDS_CircSection()`
+        fn ChFiDS_CircSection_ctor() -> UniquePtr<ChFiDS_CircSection>;
+        /// **Source:** `ChFiDS_CircSection.hxx`:35 - `ChFiDS_CircSection::Set()`
+        #[cxx_name = "Set"]
+        fn set_circ_real2(self: Pin<&mut ChFiDS_CircSection>, C: &gp_Circ, F: f64, L: f64);
+        /// **Source:** `ChFiDS_CircSection.hxx`:37 - `ChFiDS_CircSection::Set()`
+        #[cxx_name = "Set"]
+        fn set_lin_real2(self: Pin<&mut ChFiDS_CircSection>, C: &gp_Lin, F: f64, L: f64);
+        /// **Source:** `ChFiDS_CircSection.hxx`:39 - `ChFiDS_CircSection::Get()`
+        #[cxx_name = "Get"]
+        fn get_circ_real2(
+            self: &ChFiDS_CircSection,
+            C: Pin<&mut gp_Circ>,
+            F: &mut f64,
+            L: &mut f64,
+        );
+        /// **Source:** `ChFiDS_CircSection.hxx`:41 - `ChFiDS_CircSection::Get()`
+        #[cxx_name = "Get"]
+        fn get_lin_real2(self: &ChFiDS_CircSection, C: Pin<&mut gp_Lin>, F: &mut f64, L: &mut f64);
+        /// ======================== ChFi3d_Builder ========================
+        /// **Source:** `ChFi3d_Builder.hxx`:64 - `ChFi3d_Builder`
+        ///
+        /// Root  class  for calculation of  surfaces (fillets,
+        /// chamfers)  destined  to smooth edges  of
+        /// a gap on a Shape and the reconstruction of  the   Shape.
+        type ChFi3d_Builder;
+        /// **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
+        #[cxx_name = "SetParams"]
+        fn set_params(
+            self: Pin<&mut ChFi3d_Builder>,
+            Tang: f64,
+            Tesp: f64,
+            T2d: f64,
+            TApp3d: f64,
+            TolApp2d: f64,
+            Fleche: f64,
+        );
+        /// **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
+        ///
+        /// extracts from  the list the contour containing edge E.
+        #[cxx_name = "Remove"]
+        fn remove(self: Pin<&mut ChFi3d_Builder>, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
+        ///
+        /// gives the number of  the contour containing E or 0
+        /// if E does  not  belong to  any  contour.
+        #[cxx_name = "Contains"]
+        fn contains_edge(self: &ChFi3d_Builder, E: &TopoDS_Edge) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:91 - `ChFi3d_Builder::Contains()`
+        ///
+        /// gives  the number of  the contour containing E or 0
+        /// if E does  not  belong  to  any  contour.
+        /// Sets in IndexInSpine the index of E in the contour if it's found
+        #[cxx_name = "Contains"]
+        fn contains_edge_int(self: &ChFi3d_Builder, E: &TopoDS_Edge, IndexInSpine: &mut i32)
+            -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
+        ///
+        /// gives the number of  disjoint contours on  which
+        /// the  fillets  are  calculated
+        #[cxx_name = "NbElements"]
+        fn nb_elements(self: &ChFi3d_Builder) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
+        ///
+        /// returns the length of  the contour of index IC.
+        #[cxx_name = "Length"]
+        fn length(self: &ChFi3d_Builder, IC: i32) -> f64;
+        /// **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
+        ///
+        /// returns the abscissa of the vertex V on
+        /// the contour of index IC.
+        #[cxx_name = "Abscissa"]
+        fn abscissa(self: &ChFi3d_Builder, IC: i32, V: &TopoDS_Vertex) -> f64;
+        /// **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
+        ///
+        /// returns the relative abscissa([0.,1.]) of the
+        /// vertex V on the contour of index IC.
+        #[cxx_name = "RelativeAbscissa"]
+        fn relative_abscissa(self: &ChFi3d_Builder, IC: i32, V: &TopoDS_Vertex) -> f64;
+        /// **Source:** `ChFi3d_Builder.hxx`:124 - `ChFi3d_Builder::ClosedAndTangent()`
+        ///
+        /// returns true if the contour of index IC is closed
+        /// an tangent.
+        #[cxx_name = "ClosedAndTangent"]
+        fn closed_and_tangent(self: &ChFi3d_Builder, IC: i32) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:127 - `ChFi3d_Builder::Closed()`
+        ///
+        /// returns true if the contour of index IC is closed
+        #[cxx_name = "Closed"]
+        fn closed(self: &ChFi3d_Builder, IC: i32) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:131 - `ChFi3d_Builder::Compute()`
+        ///
+        /// general calculation of geometry on all edges,
+        /// topologic reconstruction.
+        #[cxx_name = "Compute"]
+        fn compute(self: Pin<&mut ChFi3d_Builder>);
+        /// **Source:** `ChFi3d_Builder.hxx`:134 - `ChFi3d_Builder::IsDone()`
+        ///
+        /// returns True if the computation  is  success
+        #[cxx_name = "IsDone"]
+        fn is_done(self: &ChFi3d_Builder) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
+        ///
+        /// Advanced  function for the history
+        #[cxx_name = "Generated"]
+        fn generated(self: Pin<&mut ChFi3d_Builder>, EouV: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
+        ///
+        /// Returns the number of contours on  which the calculation
+        /// has failed.
+        #[cxx_name = "NbFaultyContours"]
+        fn nb_faulty_contours(self: &ChFi3d_Builder) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:149 - `ChFi3d_Builder::FaultyContour()`
+        ///
+        /// Returns the number of  I'th contour on  which the calculation
+        /// has failed.
+        #[cxx_name = "FaultyContour"]
+        fn faulty_contour(self: &ChFi3d_Builder, I: i32) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:152 - `ChFi3d_Builder::NbComputedSurfaces()`
+        ///
+        /// Returns the number of  surfaces calculated  on  the contour IC.
+        #[cxx_name = "NbComputedSurfaces"]
+        fn nb_computed_surfaces(self: &ChFi3d_Builder, IC: i32) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
+        ///
+        /// Returns the number of vertices on  which the calculation
+        /// has failed.
+        #[cxx_name = "NbFaultyVertices"]
+        fn nb_faulty_vertices(self: &ChFi3d_Builder) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
+        ///
+        /// returns True if  a partial result has  been  calculated
+        #[cxx_name = "HasResult"]
+        fn has_result(self: &ChFi3d_Builder) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
+        ///
+        /// Reset all results of compute and returns the algorithm
+        /// in the state of the last acquisition to enable modification of contours or areas.
+        #[cxx_name = "Reset"]
+        fn reset(self: Pin<&mut ChFi3d_Builder>);
+        /// **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
+        #[cxx_name = "PerformTwoCornerbyInter"]
+        fn perform_two_cornerby_inter(self: Pin<&mut ChFi3d_Builder>, Index: i32) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
+        fn ChFi3d_Builder_set_continuity(
+            self_: Pin<&mut ChFi3d_Builder>,
+            InternalContinuity: i32,
+            AngularTolerance: f64,
+        );
+        /// **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
+        ///
+        /// returns the First vertex V of
+        /// the contour of index IC.
+        fn ChFi3d_Builder_first_vertex(self_: &ChFi3d_Builder, IC: i32)
+            -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
+        ///
+        /// returns the Last vertex V of
+        /// the contour of index IC.
+        fn ChFi3d_Builder_last_vertex(self_: &ChFi3d_Builder, IC: i32) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `ChFi3d_Builder.hxx`:138 - `ChFi3d_Builder::Shape()`
+        ///
+        /// if (Isdone()) makes the result.
+        /// if (!Isdone())
+        fn ChFi3d_Builder_shape(self_: &ChFi3d_Builder) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `ChFi3d_Builder.hxx`:155 - `ChFi3d_Builder::ComputedSurface()`
+        ///
+        /// Returns the IS'th surface calculated on  the contour IC.
+        fn ChFi3d_Builder_computed_surface(
+            self_: &ChFi3d_Builder,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
+        ///
+        /// Returns the IV'th vertex on  which the calculation has failed.
+        fn ChFi3d_Builder_faulty_vertex(
+            self_: &ChFi3d_Builder,
+            IV: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
+        ///
+        /// if (HasResult()) returns partial result
+        /// if (!HasResult())
+        fn ChFi3d_Builder_bad_shape(self_: &ChFi3d_Builder) -> UniquePtr<TopoDS_Shape>;
+        /// **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
+        ///
+        /// for the stripe IC ,indication on the cause
+        /// of  failure WalkingFailure,TwistedSurface,Error, Ok
+        fn ChFi3d_Builder_stripe_status(self_: &ChFi3d_Builder, IC: i32) -> i32;
+        /// ======================== ChFiDS_ElSpine ========================
+        /// **Source:** `ChFiDS_ElSpine.hxx`:47 - `ChFiDS_ElSpine`
+        ///
+        /// Elementary  Spine for cheminements and approximations.
+        type ChFiDS_ElSpine;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:51 - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
+        fn ChFiDS_ElSpine_ctor() -> UniquePtr<ChFiDS_ElSpine>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::DynamicType()`
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &ChFiDS_ElSpine) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:56 - `ChFiDS_ElSpine::FirstParameter()`
+        #[cxx_name = "FirstParameter"]
+        fn first_parameter(self: &ChFiDS_ElSpine) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:58 - `ChFiDS_ElSpine::LastParameter()`
+        #[cxx_name = "LastParameter"]
+        fn last_parameter(self: &ChFiDS_ElSpine) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:60 - `ChFiDS_ElSpine::GetSavedFirstParameter()`
+        #[cxx_name = "GetSavedFirstParameter"]
+        fn get_saved_first_parameter(self: &ChFiDS_ElSpine) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:62 - `ChFiDS_ElSpine::GetSavedLastParameter()`
+        #[cxx_name = "GetSavedLastParameter"]
+        fn get_saved_last_parameter(self: &ChFiDS_ElSpine) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:79 - `ChFiDS_ElSpine::Resolution()`
+        #[cxx_name = "Resolution"]
+        fn resolution(self: &ChFiDS_ElSpine, R3d: f64) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:83 - `ChFiDS_ElSpine::IsPeriodic()`
+        #[cxx_name = "IsPeriodic"]
+        fn is_periodic(self: &ChFiDS_ElSpine) -> bool;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:85 - `ChFiDS_ElSpine::SetPeriodic()`
+        #[cxx_name = "SetPeriodic"]
+        fn set_periodic(self: Pin<&mut ChFiDS_ElSpine>, I: bool);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:87 - `ChFiDS_ElSpine::Period()`
+        #[cxx_name = "Period"]
+        fn period(self: &ChFiDS_ElSpine) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:91 - `ChFiDS_ElSpine::D0()`
+        #[cxx_name = "D0"]
+        fn d0(self: &ChFiDS_ElSpine, AbsC: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:93 - `ChFiDS_ElSpine::D1()`
+        #[cxx_name = "D1"]
+        fn d1(self: &ChFiDS_ElSpine, AbsC: f64, P: Pin<&mut gp_Pnt>, V1: Pin<&mut gp_Vec>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:97 - `ChFiDS_ElSpine::D2()`
+        #[cxx_name = "D2"]
+        fn d2(
+            self: &ChFiDS_ElSpine,
+            AbsC: f64,
+            P: Pin<&mut gp_Pnt>,
+            V1: Pin<&mut gp_Vec>,
+            V2: Pin<&mut gp_Vec>,
+        );
+        /// **Source:** `ChFiDS_ElSpine.hxx`:102 - `ChFiDS_ElSpine::D3()`
+        #[cxx_name = "D3"]
+        fn d3(
+            self: &ChFiDS_ElSpine,
+            AbsC: f64,
+            P: Pin<&mut gp_Pnt>,
+            V1: Pin<&mut gp_Vec>,
+            V2: Pin<&mut gp_Vec>,
+            V3: Pin<&mut gp_Vec>,
+        );
+        /// **Source:** `ChFiDS_ElSpine.hxx`:108 - `ChFiDS_ElSpine::FirstParameter()`
+        #[cxx_name = "FirstParameter"]
+        fn first_parameter_real(self: Pin<&mut ChFiDS_ElSpine>, P: f64);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:110 - `ChFiDS_ElSpine::LastParameter()`
+        #[cxx_name = "LastParameter"]
+        fn last_parameter_real(self: Pin<&mut ChFiDS_ElSpine>, P: f64);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:112 - `ChFiDS_ElSpine::SaveFirstParameter()`
+        #[cxx_name = "SaveFirstParameter"]
+        fn save_first_parameter(self: Pin<&mut ChFiDS_ElSpine>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:114 - `ChFiDS_ElSpine::SaveLastParameter()`
+        #[cxx_name = "SaveLastParameter"]
+        fn save_last_parameter(self: Pin<&mut ChFiDS_ElSpine>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:116 - `ChFiDS_ElSpine::SetOrigin()`
+        #[cxx_name = "SetOrigin"]
+        fn set_origin(self: Pin<&mut ChFiDS_ElSpine>, O: f64);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:118 - `ChFiDS_ElSpine::FirstPointAndTgt()`
+        #[cxx_name = "FirstPointAndTgt"]
+        fn first_point_and_tgt(self: &ChFiDS_ElSpine, P: Pin<&mut gp_Pnt>, T: Pin<&mut gp_Vec>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:120 - `ChFiDS_ElSpine::LastPointAndTgt()`
+        #[cxx_name = "LastPointAndTgt"]
+        fn last_point_and_tgt(self: &ChFiDS_ElSpine, P: Pin<&mut gp_Pnt>, T: Pin<&mut gp_Vec>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:122 - `ChFiDS_ElSpine::NbVertices()`
+        #[cxx_name = "NbVertices"]
+        fn nb_vertices(self: &ChFiDS_ElSpine) -> i32;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:124 - `ChFiDS_ElSpine::VertexWithTangent()`
+        #[cxx_name = "VertexWithTangent"]
+        fn vertex_with_tangent(self: &ChFiDS_ElSpine, Index: i32) -> &gp_Ax1;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:126 - `ChFiDS_ElSpine::SetFirstPointAndTgt()`
+        #[cxx_name = "SetFirstPointAndTgt"]
+        fn set_first_point_and_tgt(self: Pin<&mut ChFiDS_ElSpine>, P: &gp_Pnt, T: &gp_Vec);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:128 - `ChFiDS_ElSpine::SetLastPointAndTgt()`
+        #[cxx_name = "SetLastPointAndTgt"]
+        fn set_last_point_and_tgt(self: Pin<&mut ChFiDS_ElSpine>, P: &gp_Pnt, T: &gp_Vec);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:130 - `ChFiDS_ElSpine::AddVertexWithTangent()`
+        #[cxx_name = "AddVertexWithTangent"]
+        fn add_vertex_with_tangent(self: Pin<&mut ChFiDS_ElSpine>, anAx1: &gp_Ax1);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:132 - `ChFiDS_ElSpine::SetCurve()`
+        #[cxx_name = "SetCurve"]
+        fn set_curve(self: Pin<&mut ChFiDS_ElSpine>, C: &HandleGeomCurve);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:134 - `ChFiDS_ElSpine::Previous()`
+        #[cxx_name = "Previous"]
+        fn previous(self: &ChFiDS_ElSpine) -> &HandleChFiDSSurfData;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:136 - `ChFiDS_ElSpine::ChangePrevious()`
+        #[cxx_name = "ChangePrevious"]
+        fn change_previous(self: Pin<&mut ChFiDS_ElSpine>) -> Pin<&mut HandleChFiDSSurfData>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:138 - `ChFiDS_ElSpine::Next()`
+        #[cxx_name = "Next"]
+        fn next(self: &ChFiDS_ElSpine) -> &HandleChFiDSSurfData;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:140 - `ChFiDS_ElSpine::ChangeNext()`
+        #[cxx_name = "ChangeNext"]
+        fn change_next(self: Pin<&mut ChFiDS_ElSpine>) -> Pin<&mut HandleChFiDSSurfData>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:54 - `ChFiDS_ElSpine::ShallowCopy()`
+        ///
+        /// Shallow copy of adaptor
+        fn ChFiDS_ElSpine_shallow_copy(self_: &ChFiDS_ElSpine) -> UniquePtr<HandleAdaptor3dCurve>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:64 - `ChFiDS_ElSpine::Continuity()`
+        fn ChFiDS_ElSpine_continuity(self_: &ChFiDS_ElSpine) -> i32;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:66 - `ChFiDS_ElSpine::NbIntervals()`
+        fn ChFiDS_ElSpine_nb_intervals(self_: &ChFiDS_ElSpine, S: i32) -> i32;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:74 - `ChFiDS_ElSpine::Trim()`
+        ///
+        /// Returns    a  curve equivalent   of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        fn ChFiDS_ElSpine_trim(
+            self_: &ChFiDS_ElSpine,
+            First: f64,
+            Last: f64,
+            Tol: f64,
+        ) -> UniquePtr<HandleAdaptor3dCurve>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:81 - `ChFiDS_ElSpine::GetType()`
+        fn ChFiDS_ElSpine_get_type(self_: &ChFiDS_ElSpine) -> i32;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:89 - `ChFiDS_ElSpine::Value()`
+        fn ChFiDS_ElSpine_value(self_: &ChFiDS_ElSpine, AbsC: f64) -> UniquePtr<gp_Pnt>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:142 - `ChFiDS_ElSpine::Line()`
+        fn ChFiDS_ElSpine_line(self_: &ChFiDS_ElSpine) -> UniquePtr<gp_Lin>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:144 - `ChFiDS_ElSpine::Circle()`
+        fn ChFiDS_ElSpine_circle(self_: &ChFiDS_ElSpine) -> UniquePtr<gp_Circ>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:146 - `ChFiDS_ElSpine::Ellipse()`
+        fn ChFiDS_ElSpine_ellipse(self_: &ChFiDS_ElSpine) -> UniquePtr<gp_Elips>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:148 - `ChFiDS_ElSpine::Hyperbola()`
+        fn ChFiDS_ElSpine_hyperbola(self_: &ChFiDS_ElSpine) -> UniquePtr<gp_Hypr>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:150 - `ChFiDS_ElSpine::Parabola()`
+        fn ChFiDS_ElSpine_parabola(self_: &ChFiDS_ElSpine) -> UniquePtr<gp_Parab>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:152 - `ChFiDS_ElSpine::Bezier()`
+        fn ChFiDS_ElSpine_bezier(self_: &ChFiDS_ElSpine) -> UniquePtr<HandleGeomBezierCurve>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:154 - `ChFiDS_ElSpine::BSpline()`
+        fn ChFiDS_ElSpine_b_spline(self_: &ChFiDS_ElSpine) -> UniquePtr<HandleGeomBSplineCurve>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::get_type_descriptor()`
+        fn ChFiDS_ElSpine_get_type_descriptor() -> &'static HandleStandardType;
+        /// Upcast ChFiDS_ElSpine to Adaptor3d_Curve
+        fn ChFiDS_ElSpine_as_Adaptor3d_Curve(self_: &ChFiDS_ElSpine) -> &Adaptor3d_Curve;
+        /// Upcast ChFiDS_ElSpine to Adaptor3d_Curve (mutable)
+        fn ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(
+            self_: Pin<&mut ChFiDS_ElSpine>,
+        ) -> Pin<&mut Adaptor3d_Curve>;
+        /// Inherited from Adaptor3d_Curve: IsClosed()
+        fn ChFiDS_ElSpine_inherited_IsClosed(self_: &ChFiDS_ElSpine) -> bool;
+        /// Inherited from Adaptor3d_Curve: DN()
+        fn ChFiDS_ElSpine_inherited_DN(self_: &ChFiDS_ElSpine, U: f64, N: i32)
+            -> UniquePtr<gp_Vec>;
+        /// Inherited from Adaptor3d_Curve: Degree()
+        fn ChFiDS_ElSpine_inherited_Degree(self_: &ChFiDS_ElSpine) -> i32;
+        /// Inherited from Adaptor3d_Curve: IsRational()
+        fn ChFiDS_ElSpine_inherited_IsRational(self_: &ChFiDS_ElSpine) -> bool;
+        /// Inherited from Adaptor3d_Curve: NbPoles()
+        fn ChFiDS_ElSpine_inherited_NbPoles(self_: &ChFiDS_ElSpine) -> i32;
+        /// Inherited from Adaptor3d_Curve: NbKnots()
+        fn ChFiDS_ElSpine_inherited_NbKnots(self_: &ChFiDS_ElSpine) -> i32;
+        /// ======================== ChFiDS_SurfData ========================
+        /// **Source:** `ChFiDS_SurfData.hxx`:35 - `ChFiDS_SurfData`
+        ///
+        /// data structure for all information related to  the
+        /// fillet and to 2 faces vis a vis
+        type ChFiDS_SurfData;
+        /// **Source:** `ChFiDS_SurfData.hxx`:39 - `ChFiDS_SurfData::ChFiDS_SurfData()`
+        fn ChFiDS_SurfData_ctor() -> UniquePtr<ChFiDS_SurfData>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:41 - `ChFiDS_SurfData::Copy()`
+        #[cxx_name = "Copy"]
+        fn copy(self: Pin<&mut ChFiDS_SurfData>, Other: &HandleChFiDSSurfData);
+        /// **Source:** `ChFiDS_SurfData.hxx`:43 - `ChFiDS_SurfData::IndexOfS1()`
+        #[cxx_name = "IndexOfS1"]
+        fn index_of_s1(self: &ChFiDS_SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:45 - `ChFiDS_SurfData::IndexOfS2()`
+        #[cxx_name = "IndexOfS2"]
+        fn index_of_s2(self: &ChFiDS_SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:47 - `ChFiDS_SurfData::IsOnCurve1()`
+        #[cxx_name = "IsOnCurve1"]
+        fn is_on_curve1(self: &ChFiDS_SurfData) -> bool;
+        /// **Source:** `ChFiDS_SurfData.hxx`:49 - `ChFiDS_SurfData::IsOnCurve2()`
+        #[cxx_name = "IsOnCurve2"]
+        fn is_on_curve2(self: &ChFiDS_SurfData) -> bool;
+        /// **Source:** `ChFiDS_SurfData.hxx`:51 - `ChFiDS_SurfData::IndexOfC1()`
+        #[cxx_name = "IndexOfC1"]
+        fn index_of_c1(self: &ChFiDS_SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:53 - `ChFiDS_SurfData::IndexOfC2()`
+        #[cxx_name = "IndexOfC2"]
+        fn index_of_c2(self: &ChFiDS_SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:55 - `ChFiDS_SurfData::Surf()`
+        #[cxx_name = "Surf"]
+        fn surf(self: &ChFiDS_SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:59 - `ChFiDS_SurfData::InterferenceOnS1()`
+        #[cxx_name = "InterferenceOnS1"]
+        fn interference_on_s1(self: &ChFiDS_SurfData) -> &ChFiDS_FaceInterference;
+        /// **Source:** `ChFiDS_SurfData.hxx`:61 - `ChFiDS_SurfData::InterferenceOnS2()`
+        #[cxx_name = "InterferenceOnS2"]
+        fn interference_on_s2(self: &ChFiDS_SurfData) -> &ChFiDS_FaceInterference;
+        /// **Source:** `ChFiDS_SurfData.hxx`:63 - `ChFiDS_SurfData::VertexFirstOnS1()`
+        #[cxx_name = "VertexFirstOnS1"]
+        fn vertex_first_on_s1(self: &ChFiDS_SurfData) -> &ChFiDS_CommonPoint;
+        /// **Source:** `ChFiDS_SurfData.hxx`:65 - `ChFiDS_SurfData::VertexFirstOnS2()`
+        #[cxx_name = "VertexFirstOnS2"]
+        fn vertex_first_on_s2(self: &ChFiDS_SurfData) -> &ChFiDS_CommonPoint;
+        /// **Source:** `ChFiDS_SurfData.hxx`:67 - `ChFiDS_SurfData::VertexLastOnS1()`
+        #[cxx_name = "VertexLastOnS1"]
+        fn vertex_last_on_s1(self: &ChFiDS_SurfData) -> &ChFiDS_CommonPoint;
+        /// **Source:** `ChFiDS_SurfData.hxx`:69 - `ChFiDS_SurfData::VertexLastOnS2()`
+        #[cxx_name = "VertexLastOnS2"]
+        fn vertex_last_on_s2(self: &ChFiDS_SurfData) -> &ChFiDS_CommonPoint;
+        /// **Source:** `ChFiDS_SurfData.hxx`:71 - `ChFiDS_SurfData::ChangeIndexOfS1()`
+        #[cxx_name = "ChangeIndexOfS1"]
+        fn change_index_of_s1(self: Pin<&mut ChFiDS_SurfData>, Index: i32);
+        /// **Source:** `ChFiDS_SurfData.hxx`:73 - `ChFiDS_SurfData::ChangeIndexOfS2()`
+        #[cxx_name = "ChangeIndexOfS2"]
+        fn change_index_of_s2(self: Pin<&mut ChFiDS_SurfData>, Index: i32);
+        /// **Source:** `ChFiDS_SurfData.hxx`:75 - `ChFiDS_SurfData::ChangeSurf()`
+        #[cxx_name = "ChangeSurf"]
+        fn change_surf(self: Pin<&mut ChFiDS_SurfData>, Index: i32);
+        /// **Source:** `ChFiDS_SurfData.hxx`:77 - `ChFiDS_SurfData::SetIndexOfC1()`
+        #[cxx_name = "SetIndexOfC1"]
+        fn set_index_of_c1(self: Pin<&mut ChFiDS_SurfData>, Index: i32);
+        /// **Source:** `ChFiDS_SurfData.hxx`:79 - `ChFiDS_SurfData::SetIndexOfC2()`
+        #[cxx_name = "SetIndexOfC2"]
+        fn set_index_of_c2(self: Pin<&mut ChFiDS_SurfData>, Index: i32);
+        /// **Source:** `ChFiDS_SurfData.hxx`:83 - `ChFiDS_SurfData::ChangeInterferenceOnS1()`
+        #[cxx_name = "ChangeInterferenceOnS1"]
+        fn change_interference_on_s1(
+            self: Pin<&mut ChFiDS_SurfData>,
+        ) -> Pin<&mut ChFiDS_FaceInterference>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:85 - `ChFiDS_SurfData::ChangeInterferenceOnS2()`
+        #[cxx_name = "ChangeInterferenceOnS2"]
+        fn change_interference_on_s2(
+            self: Pin<&mut ChFiDS_SurfData>,
+        ) -> Pin<&mut ChFiDS_FaceInterference>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:87 - `ChFiDS_SurfData::ChangeVertexFirstOnS1()`
+        #[cxx_name = "ChangeVertexFirstOnS1"]
+        fn change_vertex_first_on_s1(
+            self: Pin<&mut ChFiDS_SurfData>,
+        ) -> Pin<&mut ChFiDS_CommonPoint>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:89 - `ChFiDS_SurfData::ChangeVertexFirstOnS2()`
+        #[cxx_name = "ChangeVertexFirstOnS2"]
+        fn change_vertex_first_on_s2(
+            self: Pin<&mut ChFiDS_SurfData>,
+        ) -> Pin<&mut ChFiDS_CommonPoint>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:91 - `ChFiDS_SurfData::ChangeVertexLastOnS1()`
+        #[cxx_name = "ChangeVertexLastOnS1"]
+        fn change_vertex_last_on_s1(
+            self: Pin<&mut ChFiDS_SurfData>,
+        ) -> Pin<&mut ChFiDS_CommonPoint>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:93 - `ChFiDS_SurfData::ChangeVertexLastOnS2()`
+        #[cxx_name = "ChangeVertexLastOnS2"]
+        fn change_vertex_last_on_s2(
+            self: Pin<&mut ChFiDS_SurfData>,
+        ) -> Pin<&mut ChFiDS_CommonPoint>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:95 - `ChFiDS_SurfData::Interference()`
+        #[cxx_name = "Interference"]
+        fn interference(self: &ChFiDS_SurfData, OnS: i32) -> &ChFiDS_FaceInterference;
+        /// **Source:** `ChFiDS_SurfData.hxx`:97 - `ChFiDS_SurfData::ChangeInterference()`
+        #[cxx_name = "ChangeInterference"]
+        fn change_interference(
+            self: Pin<&mut ChFiDS_SurfData>,
+            OnS: i32,
+        ) -> Pin<&mut ChFiDS_FaceInterference>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:99 - `ChFiDS_SurfData::Index()`
+        #[cxx_name = "Index"]
+        fn index(self: &ChFiDS_SurfData, OfS: i32) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:103 - `ChFiDS_SurfData::Vertex()`
+        ///
+        /// returns one of the four vertices  whether First is true
+        /// or wrong and OnS equals 1 or 2.
+        #[cxx_name = "Vertex"]
+        fn vertex(self: &ChFiDS_SurfData, First: bool, OnS: i32) -> &ChFiDS_CommonPoint;
+        /// **Source:** `ChFiDS_SurfData.hxx`:108 - `ChFiDS_SurfData::ChangeVertex()`
+        ///
+        /// returns one of the four vertices  whether First is true
+        /// or wrong and OnS equals 1 or 2.
+        #[cxx_name = "ChangeVertex"]
+        fn change_vertex(
+            self: Pin<&mut ChFiDS_SurfData>,
+            First: bool,
+            OnS: i32,
+        ) -> Pin<&mut ChFiDS_CommonPoint>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:111 - `ChFiDS_SurfData::IsOnCurve()`
+        #[cxx_name = "IsOnCurve"]
+        fn is_on_curve(self: &ChFiDS_SurfData, OnS: i32) -> bool;
+        /// **Source:** `ChFiDS_SurfData.hxx`:113 - `ChFiDS_SurfData::IndexOfC()`
+        #[cxx_name = "IndexOfC"]
+        fn index_of_c(self: &ChFiDS_SurfData, OnS: i32) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:115 - `ChFiDS_SurfData::FirstSpineParam()`
+        #[cxx_name = "FirstSpineParam"]
+        fn first_spine_param(self: &ChFiDS_SurfData) -> f64;
+        /// **Source:** `ChFiDS_SurfData.hxx`:117 - `ChFiDS_SurfData::LastSpineParam()`
+        #[cxx_name = "LastSpineParam"]
+        fn last_spine_param(self: &ChFiDS_SurfData) -> f64;
+        /// **Source:** `ChFiDS_SurfData.hxx`:119 - `ChFiDS_SurfData::FirstSpineParam()`
+        #[cxx_name = "FirstSpineParam"]
+        fn first_spine_param_real(self: Pin<&mut ChFiDS_SurfData>, Par: f64);
+        /// **Source:** `ChFiDS_SurfData.hxx`:121 - `ChFiDS_SurfData::LastSpineParam()`
+        #[cxx_name = "LastSpineParam"]
+        fn last_spine_param_real(self: Pin<&mut ChFiDS_SurfData>, Par: f64);
+        /// **Source:** `ChFiDS_SurfData.hxx`:123 - `ChFiDS_SurfData::FirstExtensionValue()`
+        #[cxx_name = "FirstExtensionValue"]
+        fn first_extension_value(self: &ChFiDS_SurfData) -> f64;
+        /// **Source:** `ChFiDS_SurfData.hxx`:125 - `ChFiDS_SurfData::LastExtensionValue()`
+        #[cxx_name = "LastExtensionValue"]
+        fn last_extension_value(self: &ChFiDS_SurfData) -> f64;
+        /// **Source:** `ChFiDS_SurfData.hxx`:127 - `ChFiDS_SurfData::FirstExtensionValue()`
+        #[cxx_name = "FirstExtensionValue"]
+        fn first_extension_value_real(self: Pin<&mut ChFiDS_SurfData>, Extend: f64);
+        /// **Source:** `ChFiDS_SurfData.hxx`:129 - `ChFiDS_SurfData::LastExtensionValue()`
+        #[cxx_name = "LastExtensionValue"]
+        fn last_extension_value_real(self: Pin<&mut ChFiDS_SurfData>, Extend: f64);
+        /// **Source:** `ChFiDS_SurfData.hxx`:135 - `ChFiDS_SurfData::ResetSimul()`
+        #[cxx_name = "ResetSimul"]
+        fn reset_simul(self: Pin<&mut ChFiDS_SurfData>);
+        /// **Source:** `ChFiDS_SurfData.hxx`:140 - `ChFiDS_SurfData::Get2dPoints()`
+        #[cxx_name = "Get2dPoints"]
+        fn get2d_points(
+            self: &ChFiDS_SurfData,
+            P2df1: Pin<&mut gp_Pnt2d>,
+            P2dl1: Pin<&mut gp_Pnt2d>,
+            P2df2: Pin<&mut gp_Pnt2d>,
+            P2dl2: Pin<&mut gp_Pnt2d>,
+        );
+        /// **Source:** `ChFiDS_SurfData.hxx`:145 - `ChFiDS_SurfData::Set2dPoints()`
+        #[cxx_name = "Set2dPoints"]
+        fn set2d_points(
+            self: Pin<&mut ChFiDS_SurfData>,
+            P2df1: &gp_Pnt2d,
+            P2dl1: &gp_Pnt2d,
+            P2df2: &gp_Pnt2d,
+            P2dl2: &gp_Pnt2d,
+        );
+        /// **Source:** `ChFiDS_SurfData.hxx`:150 - `ChFiDS_SurfData::TwistOnS1()`
+        #[cxx_name = "TwistOnS1"]
+        fn twist_on_s1(self: &ChFiDS_SurfData) -> bool;
+        /// **Source:** `ChFiDS_SurfData.hxx`:152 - `ChFiDS_SurfData::TwistOnS2()`
+        #[cxx_name = "TwistOnS2"]
+        fn twist_on_s2(self: &ChFiDS_SurfData) -> bool;
+        /// **Source:** `ChFiDS_SurfData.hxx`:154 - `ChFiDS_SurfData::TwistOnS1()`
+        #[cxx_name = "TwistOnS1"]
+        fn twist_on_s1_bool(self: Pin<&mut ChFiDS_SurfData>, T: bool);
+        /// **Source:** `ChFiDS_SurfData.hxx`:156 - `ChFiDS_SurfData::TwistOnS2()`
+        #[cxx_name = "TwistOnS2"]
+        fn twist_on_s2_bool(self: Pin<&mut ChFiDS_SurfData>, T: bool);
+        /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::DynamicType()`
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &ChFiDS_SurfData) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_SurfData.hxx`:57 - `ChFiDS_SurfData::Orientation()`
+        fn ChFiDS_SurfData_orientation(self_: &ChFiDS_SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:137 - `ChFiDS_SurfData::Get2dPoints()`
+        fn ChFiDS_SurfData_get2d_points(
+            self_: &ChFiDS_SurfData,
+            First: bool,
+            OnS: i32,
+        ) -> UniquePtr<gp_Pnt2d>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::get_type_descriptor()`
+        fn ChFiDS_SurfData_get_type_descriptor() -> &'static HandleStandardType;
+        /// Wrap ChFiDS_SurfData in a Handle
+        fn ChFiDS_SurfData_to_handle(
+            obj: UniquePtr<ChFiDS_SurfData>,
+        ) -> UniquePtr<HandleChFiDSSurfData>;
+        /// Dereference Handle to get &ChFiDS_SurfData
+        fn HandleChFiDSSurfData_get(handle: &HandleChFiDSSurfData) -> &ChFiDS_SurfData;
+        /// Dereference Handle to get Pin<&mut ChFiDS_SurfData>
+        fn HandleChFiDSSurfData_get_mut(
+            handle: Pin<&mut HandleChFiDSSurfData>,
+        ) -> Pin<&mut ChFiDS_SurfData>;
+        /// ======================== ChFiDS_CommonPoint ========================
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:34 - `ChFiDS_CommonPoint`
+        ///
+        /// point    start/end of  fillet common  to  2 adjacent  filets
+        /// and  to an edge on  one of 2 faces participating
+        /// in  the construction of  the  fillet
+        type ChFiDS_CommonPoint;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:40 - `ChFiDS_CommonPoint::ChFiDS_CommonPoint()`
+        ///
+        /// Empty constructor.
+        fn ChFiDS_CommonPoint_ctor() -> UniquePtr<ChFiDS_CommonPoint>;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:43 - `ChFiDS_CommonPoint::Reset()`
+        ///
+        /// default value for all fields
+        #[cxx_name = "Reset"]
+        fn reset(self: Pin<&mut ChFiDS_CommonPoint>);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:48 - `ChFiDS_CommonPoint::SetVertex()`
+        ///
+        /// Sets the values of a point which is a vertex on
+        /// the initial facet of restriction of one
+        /// of the surface.
+        #[cxx_name = "SetVertex"]
+        fn set_vertex(self: Pin<&mut ChFiDS_CommonPoint>, theVertex: &TopoDS_Vertex);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:62 - `ChFiDS_CommonPoint::SetParameter()`
+        ///
+        /// Sets the value of the parameter on the spine
+        #[cxx_name = "SetParameter"]
+        fn set_parameter(self: Pin<&mut ChFiDS_CommonPoint>, Param: f64);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:66 - `ChFiDS_CommonPoint::SetPoint()`
+        ///
+        /// Set the 3d point for a commonpoint that is not
+        /// a vertex or on an arc.
+        #[cxx_name = "SetPoint"]
+        fn set_point(self: Pin<&mut ChFiDS_CommonPoint>, thePoint: &gp_Pnt);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:69 - `ChFiDS_CommonPoint::SetVector()`
+        ///
+        /// Set the output 3d  vector
+        #[cxx_name = "SetVector"]
+        fn set_vector(self: Pin<&mut ChFiDS_CommonPoint>, theVector: &gp_Vec);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:76 - `ChFiDS_CommonPoint::SetTolerance()`
+        ///
+        /// This method set the fuzziness on the point.
+        #[cxx_name = "SetTolerance"]
+        fn set_tolerance(self: Pin<&mut ChFiDS_CommonPoint>, Tol: f64);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:85 - `ChFiDS_CommonPoint::Tolerance()`
+        ///
+        /// This method returns the fuzziness on the point.
+        #[cxx_name = "Tolerance"]
+        fn tolerance(self: &ChFiDS_CommonPoint) -> f64;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:89 - `ChFiDS_CommonPoint::IsVertex()`
+        ///
+        /// Returns TRUE if the point is a vertex on the initial
+        /// restriction facet of the surface.
+        #[cxx_name = "IsVertex"]
+        fn is_vertex(self: &ChFiDS_CommonPoint) -> bool;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:95 - `ChFiDS_CommonPoint::Vertex()`
+        ///
+        /// Returns the information about the point when it is
+        /// on the domain of the first patch, i-e when the function
+        /// IsVertex returns True.
+        /// Otherwise, an exception is raised.
+        #[cxx_name = "Vertex"]
+        fn vertex(self: &ChFiDS_CommonPoint) -> &TopoDS_Vertex;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:106 - `ChFiDS_CommonPoint::IsOnArc()`
+        ///
+        /// Returns TRUE if the point is a on an edge of the initial
+        /// restriction facet of the surface.
+        #[cxx_name = "IsOnArc"]
+        fn is_on_arc(self: &ChFiDS_CommonPoint) -> bool;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:110 - `ChFiDS_CommonPoint::Arc()`
+        ///
+        /// Returns the arc of restriction containing the
+        /// vertex.
+        #[cxx_name = "Arc"]
+        fn arc(self: &ChFiDS_CommonPoint) -> &TopoDS_Edge;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:118 - `ChFiDS_CommonPoint::ParameterOnArc()`
+        ///
+        /// Returns the parameter of the point on the
+        /// arc returned by the method Arc().
+        #[cxx_name = "ParameterOnArc"]
+        fn parameter_on_arc(self: &ChFiDS_CommonPoint) -> f64;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:121 - `ChFiDS_CommonPoint::Parameter()`
+        ///
+        /// Returns the parameter on the spine
+        #[cxx_name = "Parameter"]
+        fn parameter(self: &ChFiDS_CommonPoint) -> f64;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:124 - `ChFiDS_CommonPoint::Point()`
+        ///
+        /// Returns the 3d point
+        #[cxx_name = "Point"]
+        fn point(self: &ChFiDS_CommonPoint) -> &gp_Pnt;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:127 - `ChFiDS_CommonPoint::HasVector()`
+        ///
+        /// Returns TRUE if the output vector is  stored.
+        #[cxx_name = "HasVector"]
+        fn has_vector(self: &ChFiDS_CommonPoint) -> bool;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:130 - `ChFiDS_CommonPoint::Vector()`
+        ///
+        /// Returns the output  3d vector
+        #[cxx_name = "Vector"]
+        fn vector(self: &ChFiDS_CommonPoint) -> &gp_Vec;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:56 - `ChFiDS_CommonPoint::SetArc()`
+        ///
+        /// Sets the values of a point which is on the arc
+        /// A, at parameter Param.
+        fn ChFiDS_CommonPoint_set_arc(
+            self_: Pin<&mut ChFiDS_CommonPoint>,
+            Tol: f64,
+            A: &TopoDS_Edge,
+            Param: f64,
+            TArc: i32,
+        );
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:114 - `ChFiDS_CommonPoint::TransitionOnArc()`
+        ///
+        /// Returns the transition of the point on the arc
+        /// returned by Arc().
+        fn ChFiDS_CommonPoint_transition_on_arc(self_: &ChFiDS_CommonPoint) -> i32;
+        /// ======================== ChFiDS_FaceInterference ========================
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:31 - `ChFiDS_FaceInterference`
+        ///
+        /// interference face/fillet
+        type ChFiDS_FaceInterference;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:36 - `ChFiDS_FaceInterference::ChFiDS_FaceInterference()`
+        fn ChFiDS_FaceInterference_ctor() -> UniquePtr<ChFiDS_FaceInterference>;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:45 - `ChFiDS_FaceInterference::SetFirstParameter()`
+        #[cxx_name = "SetFirstParameter"]
+        fn set_first_parameter(self: Pin<&mut ChFiDS_FaceInterference>, U1: f64);
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:47 - `ChFiDS_FaceInterference::SetLastParameter()`
+        #[cxx_name = "SetLastParameter"]
+        fn set_last_parameter(self: Pin<&mut ChFiDS_FaceInterference>, U1: f64);
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:49 - `ChFiDS_FaceInterference::SetParameter()`
+        #[cxx_name = "SetParameter"]
+        fn set_parameter(self: Pin<&mut ChFiDS_FaceInterference>, U1: f64, IsFirst: bool);
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:51 - `ChFiDS_FaceInterference::LineIndex()`
+        #[cxx_name = "LineIndex"]
+        fn line_index(self: &ChFiDS_FaceInterference) -> i32;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:53 - `ChFiDS_FaceInterference::SetLineIndex()`
+        #[cxx_name = "SetLineIndex"]
+        fn set_line_index(self: Pin<&mut ChFiDS_FaceInterference>, I: i32);
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:57 - `ChFiDS_FaceInterference::PCurveOnFace()`
+        #[cxx_name = "PCurveOnFace"]
+        fn p_curve_on_face(self: &ChFiDS_FaceInterference) -> &HandleGeom2dCurve;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:59 - `ChFiDS_FaceInterference::PCurveOnSurf()`
+        #[cxx_name = "PCurveOnSurf"]
+        fn p_curve_on_surf(self: &ChFiDS_FaceInterference) -> &HandleGeom2dCurve;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:61 - `ChFiDS_FaceInterference::ChangePCurveOnFace()`
+        #[cxx_name = "ChangePCurveOnFace"]
+        fn change_p_curve_on_face(
+            self: Pin<&mut ChFiDS_FaceInterference>,
+        ) -> Pin<&mut HandleGeom2dCurve>;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:63 - `ChFiDS_FaceInterference::ChangePCurveOnSurf()`
+        #[cxx_name = "ChangePCurveOnSurf"]
+        fn change_p_curve_on_surf(
+            self: Pin<&mut ChFiDS_FaceInterference>,
+        ) -> Pin<&mut HandleGeom2dCurve>;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:65 - `ChFiDS_FaceInterference::FirstParameter()`
+        #[cxx_name = "FirstParameter"]
+        fn first_parameter(self: &ChFiDS_FaceInterference) -> f64;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:67 - `ChFiDS_FaceInterference::LastParameter()`
+        #[cxx_name = "LastParameter"]
+        fn last_parameter(self: &ChFiDS_FaceInterference) -> f64;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:69 - `ChFiDS_FaceInterference::Parameter()`
+        #[cxx_name = "Parameter"]
+        fn parameter(self: &ChFiDS_FaceInterference, IsFirst: bool) -> f64;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:38 - `ChFiDS_FaceInterference::SetInterference()`
+        fn ChFiDS_FaceInterference_set_interference(
+            self_: Pin<&mut ChFiDS_FaceInterference>,
+            LineIndex: i32,
+            Trans: i32,
+            PCurv1: &HandleGeom2dCurve,
+            PCurv2: &HandleGeom2dCurve,
+        );
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:43 - `ChFiDS_FaceInterference::SetTransition()`
+        fn ChFiDS_FaceInterference_set_transition(
+            self_: Pin<&mut ChFiDS_FaceInterference>,
+            Trans: i32,
+        );
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:55 - `ChFiDS_FaceInterference::Transition()`
+        fn ChFiDS_FaceInterference_transition(self_: &ChFiDS_FaceInterference) -> i32;
+        /// ======================== ChFiDS_Stripe ========================
+        /// **Source:** `ChFiDS_Stripe.hxx`:34 - `ChFiDS_Stripe`
+        ///
+        /// Data characterising a band of fillet.
+        type ChFiDS_Stripe;
+        /// **Source:** `ChFiDS_Stripe.hxx`:38 - `ChFiDS_Stripe::ChFiDS_Stripe()`
+        fn ChFiDS_Stripe_ctor() -> UniquePtr<ChFiDS_Stripe>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:41 - `ChFiDS_Stripe::Reset()`
+        ///
+        /// Reset everything except Spine.
+        #[cxx_name = "Reset"]
+        fn reset(self: Pin<&mut ChFiDS_Stripe>);
+        /// **Source:** `ChFiDS_Stripe.hxx`:43 - `ChFiDS_Stripe::SetOfSurfData()`
+        #[cxx_name = "SetOfSurfData"]
+        fn set_of_surf_data(self: &ChFiDS_Stripe) -> &HandleChFiDSHData;
+        /// **Source:** `ChFiDS_Stripe.hxx`:51 - `ChFiDS_Stripe::Choix()`
+        #[cxx_name = "Choix"]
+        fn choix(self: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:53 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
+        #[cxx_name = "ChangeSetOfSurfData"]
+        fn change_set_of_surf_data(self: Pin<&mut ChFiDS_Stripe>) -> Pin<&mut HandleChFiDSHData>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:61 - `ChFiDS_Stripe::Choix()`
+        #[cxx_name = "Choix"]
+        fn choix_int(self: Pin<&mut ChFiDS_Stripe>, C: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:63 - `ChFiDS_Stripe::FirstParameters()`
+        #[cxx_name = "FirstParameters"]
+        fn first_parameters(self: &ChFiDS_Stripe, Pdeb: &mut f64, Pfin: &mut f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:65 - `ChFiDS_Stripe::LastParameters()`
+        #[cxx_name = "LastParameters"]
+        fn last_parameters(self: &ChFiDS_Stripe, Pdeb: &mut f64, Pfin: &mut f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:67 - `ChFiDS_Stripe::ChangeFirstParameters()`
+        #[cxx_name = "ChangeFirstParameters"]
+        fn change_first_parameters(self: Pin<&mut ChFiDS_Stripe>, Pdeb: f64, Pfin: f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:69 - `ChFiDS_Stripe::ChangeLastParameters()`
+        #[cxx_name = "ChangeLastParameters"]
+        fn change_last_parameters(self: Pin<&mut ChFiDS_Stripe>, Pdeb: f64, Pfin: f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:71 - `ChFiDS_Stripe::FirstCurve()`
+        #[cxx_name = "FirstCurve"]
+        fn first_curve(self: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:73 - `ChFiDS_Stripe::LastCurve()`
+        #[cxx_name = "LastCurve"]
+        fn last_curve(self: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:75 - `ChFiDS_Stripe::ChangeFirstCurve()`
+        #[cxx_name = "ChangeFirstCurve"]
+        fn change_first_curve(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:77 - `ChFiDS_Stripe::ChangeLastCurve()`
+        #[cxx_name = "ChangeLastCurve"]
+        fn change_last_curve(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:79 - `ChFiDS_Stripe::FirstPCurve()`
+        #[cxx_name = "FirstPCurve"]
+        fn first_p_curve(self: &ChFiDS_Stripe) -> &HandleGeom2dCurve;
+        /// **Source:** `ChFiDS_Stripe.hxx`:81 - `ChFiDS_Stripe::LastPCurve()`
+        #[cxx_name = "LastPCurve"]
+        fn last_p_curve(self: &ChFiDS_Stripe) -> &HandleGeom2dCurve;
+        /// **Source:** `ChFiDS_Stripe.hxx`:83 - `ChFiDS_Stripe::ChangeFirstPCurve()`
+        #[cxx_name = "ChangeFirstPCurve"]
+        fn change_first_p_curve(self: Pin<&mut ChFiDS_Stripe>) -> Pin<&mut HandleGeom2dCurve>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:85 - `ChFiDS_Stripe::ChangeLastPCurve()`
+        #[cxx_name = "ChangeLastPCurve"]
+        fn change_last_p_curve(self: Pin<&mut ChFiDS_Stripe>) -> Pin<&mut HandleGeom2dCurve>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:95 - `ChFiDS_Stripe::IndexFirstPointOnS1()`
+        #[cxx_name = "IndexFirstPointOnS1"]
+        fn index_first_point_on_s1(self: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:97 - `ChFiDS_Stripe::IndexFirstPointOnS2()`
+        #[cxx_name = "IndexFirstPointOnS2"]
+        fn index_first_point_on_s2(self: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:99 - `ChFiDS_Stripe::IndexLastPointOnS1()`
+        #[cxx_name = "IndexLastPointOnS1"]
+        fn index_last_point_on_s1(self: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:101 - `ChFiDS_Stripe::IndexLastPointOnS2()`
+        #[cxx_name = "IndexLastPointOnS2"]
+        fn index_last_point_on_s2(self: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:103 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS1()`
+        #[cxx_name = "ChangeIndexFirstPointOnS1"]
+        fn change_index_first_point_on_s1(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:105 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS2()`
+        #[cxx_name = "ChangeIndexFirstPointOnS2"]
+        fn change_index_first_point_on_s2(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:107 - `ChFiDS_Stripe::ChangeIndexLastPointOnS1()`
+        #[cxx_name = "ChangeIndexLastPointOnS1"]
+        fn change_index_last_point_on_s1(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:109 - `ChFiDS_Stripe::ChangeIndexLastPointOnS2()`
+        #[cxx_name = "ChangeIndexLastPointOnS2"]
+        fn change_index_last_point_on_s2(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:111 - `ChFiDS_Stripe::Parameters()`
+        #[cxx_name = "Parameters"]
+        fn parameters(self: &ChFiDS_Stripe, First: bool, Pdeb: &mut f64, Pfin: &mut f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:115 - `ChFiDS_Stripe::SetParameters()`
+        #[cxx_name = "SetParameters"]
+        fn set_parameters(self: Pin<&mut ChFiDS_Stripe>, First: bool, Pdeb: f64, Pfin: f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:119 - `ChFiDS_Stripe::Curve()`
+        #[cxx_name = "Curve"]
+        fn curve(self: &ChFiDS_Stripe, First: bool) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:121 - `ChFiDS_Stripe::SetCurve()`
+        #[cxx_name = "SetCurve"]
+        fn set_curve(self: Pin<&mut ChFiDS_Stripe>, Index: i32, First: bool);
+        /// **Source:** `ChFiDS_Stripe.hxx`:123 - `ChFiDS_Stripe::PCurve()`
+        #[cxx_name = "PCurve"]
+        fn p_curve(self: &ChFiDS_Stripe, First: bool) -> &HandleGeom2dCurve;
+        /// **Source:** `ChFiDS_Stripe.hxx`:125 - `ChFiDS_Stripe::ChangePCurve()`
+        #[cxx_name = "ChangePCurve"]
+        fn change_p_curve(
+            self: Pin<&mut ChFiDS_Stripe>,
+            First: bool,
+        ) -> Pin<&mut HandleGeom2dCurve>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:135 - `ChFiDS_Stripe::IndexPoint()`
+        #[cxx_name = "IndexPoint"]
+        fn index_point(self: &ChFiDS_Stripe, First: bool, OnS: i32) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:138 - `ChFiDS_Stripe::SetIndexPoint()`
+        #[cxx_name = "SetIndexPoint"]
+        fn set_index_point(self: Pin<&mut ChFiDS_Stripe>, Index: i32, First: bool, OnS: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:142 - `ChFiDS_Stripe::SolidIndex()`
+        #[cxx_name = "SolidIndex"]
+        fn solid_index(self: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:144 - `ChFiDS_Stripe::SetSolidIndex()`
+        #[cxx_name = "SetSolidIndex"]
+        fn set_solid_index(self: Pin<&mut ChFiDS_Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:147 - `ChFiDS_Stripe::InDS()`
+        ///
+        /// Set nb of SurfData's at end put in DS
+        #[cxx_name = "InDS"]
+        fn in_ds(self: Pin<&mut ChFiDS_Stripe>, First: bool, Nb: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:150 - `ChFiDS_Stripe::IsInDS()`
+        ///
+        /// Returns nb of SurfData's at end being in DS
+        #[cxx_name = "IsInDS"]
+        fn is_in_ds(self: &ChFiDS_Stripe, First: bool) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::DynamicType()`
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &ChFiDS_Stripe) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_Stripe.hxx`:47 - `ChFiDS_Stripe::OrientationOnFace1()`
+        fn ChFiDS_Stripe_orientation_on_face1(self_: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:49 - `ChFiDS_Stripe::OrientationOnFace2()`
+        fn ChFiDS_Stripe_orientation_on_face2(self_: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:57 - `ChFiDS_Stripe::OrientationOnFace1()`
+        fn ChFiDS_Stripe_orientation_on_face1_orientation(self_: Pin<&mut ChFiDS_Stripe>, Or1: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:59 - `ChFiDS_Stripe::OrientationOnFace2()`
+        fn ChFiDS_Stripe_orientation_on_face2_orientation(self_: Pin<&mut ChFiDS_Stripe>, Or2: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:87 - `ChFiDS_Stripe::FirstPCurveOrientation()`
+        fn ChFiDS_Stripe_first_p_curve_orientation(self_: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:89 - `ChFiDS_Stripe::LastPCurveOrientation()`
+        fn ChFiDS_Stripe_last_p_curve_orientation(self_: &ChFiDS_Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:91 - `ChFiDS_Stripe::FirstPCurveOrientation()`
+        fn ChFiDS_Stripe_first_p_curve_orientation_orientation(
+            self_: Pin<&mut ChFiDS_Stripe>,
+            O: i32,
+        );
+        /// **Source:** `ChFiDS_Stripe.hxx`:93 - `ChFiDS_Stripe::LastPCurveOrientation()`
+        fn ChFiDS_Stripe_last_p_curve_orientation_orientation(
+            self_: Pin<&mut ChFiDS_Stripe>,
+            O: i32,
+        );
+        /// **Source:** `ChFiDS_Stripe.hxx`:127 - `ChFiDS_Stripe::Orientation()`
+        fn ChFiDS_Stripe_orientation_int(self_: &ChFiDS_Stripe, OnS: i32) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:129 - `ChFiDS_Stripe::SetOrientation()`
+        fn ChFiDS_Stripe_set_orientation_orientation_int(
+            self_: Pin<&mut ChFiDS_Stripe>,
+            Or: i32,
+            OnS: i32,
+        );
+        /// **Source:** `ChFiDS_Stripe.hxx`:131 - `ChFiDS_Stripe::Orientation()`
+        fn ChFiDS_Stripe_orientation_bool(self_: &ChFiDS_Stripe, First: bool) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:133 - `ChFiDS_Stripe::SetOrientation()`
+        fn ChFiDS_Stripe_set_orientation_orientation_bool(
+            self_: Pin<&mut ChFiDS_Stripe>,
+            Or: i32,
+            First: bool,
+        );
+        /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_descriptor()`
+        fn ChFiDS_Stripe_get_type_descriptor() -> &'static HandleStandardType;
+        /// Wrap ChFiDS_Stripe in a Handle
+        fn ChFiDS_Stripe_to_handle(obj: UniquePtr<ChFiDS_Stripe>) -> UniquePtr<HandleChFiDSStripe>;
+        /// Dereference Handle to get &ChFiDS_Stripe
+        fn HandleChFiDSStripe_get(handle: &HandleChFiDSStripe) -> &ChFiDS_Stripe;
+        /// Dereference Handle to get Pin<&mut ChFiDS_Stripe>
+        fn HandleChFiDSStripe_get_mut(
+            handle: Pin<&mut HandleChFiDSStripe>,
+        ) -> Pin<&mut ChFiDS_Stripe>;
+        /// ======================== ChFiDS_HData ========================
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData`
+        type ChFiDS_HData;
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
+        fn ChFiDS_HData_ctor() -> UniquePtr<ChFiDS_HData>;
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
+        fn ChFiDS_HData_ctor_sequenceofsurfdata(
+            theOther: &ChFiDS_SequenceOfSurfData,
+        ) -> UniquePtr<ChFiDS_HData>;
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::DynamicType()`
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &ChFiDS_HData) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_descriptor()`
+        fn ChFiDS_HData_get_type_descriptor() -> &'static HandleStandardType;
+        /// Wrap ChFiDS_HData in a Handle
+        fn ChFiDS_HData_to_handle(obj: UniquePtr<ChFiDS_HData>) -> UniquePtr<HandleChFiDSHData>;
+        /// Dereference Handle to get &ChFiDS_HData
+        fn HandleChFiDSHData_get(handle: &HandleChFiDSHData) -> &ChFiDS_HData;
+        /// Dereference Handle to get Pin<&mut ChFiDS_HData>
+        fn HandleChFiDSHData_get_mut(handle: Pin<&mut HandleChFiDSHData>)
+            -> Pin<&mut ChFiDS_HData>;
+        /// ======================== BRepAdaptor_Curve2d ========================
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:38 - `BRepAdaptor_Curve2d`
+        ///
+        /// The Curve2d from BRepAdaptor allows to use an Edge
+        /// on   a Face like   a  2d   curve. (curve  in   the
+        /// parametric space).
+        ///
+        /// It  has  the methods    of the class Curve2d  from
+        /// Adpator.
+        ///
+        /// It  is created or  initialized with a  Face and an
+        /// Edge.  The methods are  inherited from  Curve from
+        /// Geom2dAdaptor.
+        type BRepAdaptor_Curve2d;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:43 - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
+        ///
+        /// Creates an uninitialized curve2d.
+        fn BRepAdaptor_Curve2d_ctor() -> UniquePtr<BRepAdaptor_Curve2d>;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:46 - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
+        ///
+        /// Creates with the pcurve of <E> on <F>.
+        fn BRepAdaptor_Curve2d_ctor_edge_face(
+            E: &TopoDS_Edge,
+            F: &TopoDS_Face,
+        ) -> UniquePtr<BRepAdaptor_Curve2d>;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:40 - `BRepAdaptor_Curve2d::DynamicType()`
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &BRepAdaptor_Curve2d) -> &HandleStandardType;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:52 - `BRepAdaptor_Curve2d::Initialize()`
+        ///
+        /// Initialize with the pcurve of <E> on <F>.
+        #[cxx_name = "Initialize"]
+        fn initialize(self: Pin<&mut BRepAdaptor_Curve2d>, E: &TopoDS_Edge, F: &TopoDS_Face);
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:55 - `BRepAdaptor_Curve2d::Edge()`
+        ///
+        /// Returns the Edge.
+        #[cxx_name = "Edge"]
+        fn edge(self: &BRepAdaptor_Curve2d) -> &TopoDS_Edge;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:58 - `BRepAdaptor_Curve2d::Face()`
+        ///
+        /// Returns the Face.
+        #[cxx_name = "Face"]
+        fn face(self: &BRepAdaptor_Curve2d) -> &TopoDS_Face;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:49 - `BRepAdaptor_Curve2d::ShallowCopy()`
+        ///
+        /// Shallow copy of adaptor
+        fn BRepAdaptor_Curve2d_shallow_copy(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> UniquePtr<HandleAdaptor2dCurve2d>;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:40 - `BRepAdaptor_Curve2d::get_type_descriptor()`
+        fn BRepAdaptor_Curve2d_get_type_descriptor() -> &'static HandleStandardType;
+        /// Upcast BRepAdaptor_Curve2d to Adaptor2d_Curve2d
+        fn BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> &Adaptor2d_Curve2d;
+        /// Upcast BRepAdaptor_Curve2d to Adaptor2d_Curve2d (mutable)
+        fn BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(
+            self_: Pin<&mut BRepAdaptor_Curve2d>,
+        ) -> Pin<&mut Adaptor2d_Curve2d>;
+        /// Upcast BRepAdaptor_Curve2d to Geom2dAdaptor_Curve
+        fn BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> &Geom2dAdaptor_Curve;
+        /// Upcast BRepAdaptor_Curve2d to Geom2dAdaptor_Curve (mutable)
+        fn BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(
+            self_: Pin<&mut BRepAdaptor_Curve2d>,
+        ) -> Pin<&mut Geom2dAdaptor_Curve>;
+        /// Inherited from Adaptor2d_Curve2d: FirstParameter()
+        fn BRepAdaptor_Curve2d_inherited_FirstParameter(self_: &BRepAdaptor_Curve2d) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: LastParameter()
+        fn BRepAdaptor_Curve2d_inherited_LastParameter(self_: &BRepAdaptor_Curve2d) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: Trim()
+        fn BRepAdaptor_Curve2d_inherited_Trim(
+            self_: &BRepAdaptor_Curve2d,
+            First: f64,
+            Last: f64,
+            Tol: f64,
+        ) -> UniquePtr<HandleAdaptor2dCurve2d>;
+        /// Inherited from Adaptor2d_Curve2d: IsClosed()
+        fn BRepAdaptor_Curve2d_inherited_IsClosed(self_: &BRepAdaptor_Curve2d) -> bool;
+        /// Inherited from Adaptor2d_Curve2d: IsPeriodic()
+        fn BRepAdaptor_Curve2d_inherited_IsPeriodic(self_: &BRepAdaptor_Curve2d) -> bool;
+        /// Inherited from Adaptor2d_Curve2d: Period()
+        fn BRepAdaptor_Curve2d_inherited_Period(self_: &BRepAdaptor_Curve2d) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: Value()
+        fn BRepAdaptor_Curve2d_inherited_Value(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+        ) -> UniquePtr<gp_Pnt2d>;
+        /// Inherited from Adaptor2d_Curve2d: D0()
+        fn BRepAdaptor_Curve2d_inherited_D0(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+        );
+        /// Inherited from Adaptor2d_Curve2d: D1()
+        fn BRepAdaptor_Curve2d_inherited_D1(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Adaptor2d_Curve2d: D2()
+        fn BRepAdaptor_Curve2d_inherited_D2(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V1: Pin<&mut gp_Vec2d>,
+            V2: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Adaptor2d_Curve2d: D3()
+        fn BRepAdaptor_Curve2d_inherited_D3(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+            P: Pin<&mut gp_Pnt2d>,
+            V1: Pin<&mut gp_Vec2d>,
+            V2: Pin<&mut gp_Vec2d>,
+            V3: Pin<&mut gp_Vec2d>,
+        );
+        /// Inherited from Adaptor2d_Curve2d: DN()
+        fn BRepAdaptor_Curve2d_inherited_DN(
+            self_: &BRepAdaptor_Curve2d,
+            U: f64,
+            N: i32,
+        ) -> UniquePtr<gp_Vec2d>;
+        /// Inherited from Adaptor2d_Curve2d: Resolution()
+        fn BRepAdaptor_Curve2d_inherited_Resolution(self_: &BRepAdaptor_Curve2d, R3d: f64) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: Line()
+        fn BRepAdaptor_Curve2d_inherited_Line(self_: &BRepAdaptor_Curve2d) -> UniquePtr<gp_Lin2d>;
+        /// Inherited from Adaptor2d_Curve2d: Circle()
+        fn BRepAdaptor_Curve2d_inherited_Circle(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> UniquePtr<gp_Circ2d>;
+        /// Inherited from Adaptor2d_Curve2d: Ellipse()
+        fn BRepAdaptor_Curve2d_inherited_Ellipse(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> UniquePtr<gp_Elips2d>;
+        /// Inherited from Adaptor2d_Curve2d: Hyperbola()
+        fn BRepAdaptor_Curve2d_inherited_Hyperbola(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> UniquePtr<gp_Hypr2d>;
+        /// Inherited from Adaptor2d_Curve2d: Parabola()
+        fn BRepAdaptor_Curve2d_inherited_Parabola(
+            self_: &BRepAdaptor_Curve2d,
+        ) -> UniquePtr<gp_Parab2d>;
+        /// Inherited from Adaptor2d_Curve2d: Degree()
+        fn BRepAdaptor_Curve2d_inherited_Degree(self_: &BRepAdaptor_Curve2d) -> i32;
+        /// Inherited from Adaptor2d_Curve2d: IsRational()
+        fn BRepAdaptor_Curve2d_inherited_IsRational(self_: &BRepAdaptor_Curve2d) -> bool;
+        /// Inherited from Adaptor2d_Curve2d: NbPoles()
+        fn BRepAdaptor_Curve2d_inherited_NbPoles(self_: &BRepAdaptor_Curve2d) -> i32;
+        /// Inherited from Adaptor2d_Curve2d: NbKnots()
+        fn BRepAdaptor_Curve2d_inherited_NbKnots(self_: &BRepAdaptor_Curve2d) -> i32;
+        /// Inherited from Adaptor2d_Curve2d: NbSamples()
+        fn BRepAdaptor_Curve2d_inherited_NbSamples(self_: &BRepAdaptor_Curve2d) -> i32;
+        /// Inherited from Geom2dAdaptor_Curve: Reset()
+        fn BRepAdaptor_Curve2d_inherited_Reset(self_: Pin<&mut BRepAdaptor_Curve2d>);
+        /// Inherited from Geom2dAdaptor_Curve: Load()
+        fn BRepAdaptor_Curve2d_inherited_Load(
+            self_: Pin<&mut BRepAdaptor_Curve2d>,
+            theCurve: &HandleGeom2dCurve,
+        );
+        /// Inherited from Geom2dAdaptor_Curve: Curve()
+        fn BRepAdaptor_Curve2d_inherited_Curve(self_: &BRepAdaptor_Curve2d) -> &HandleGeom2dCurve;
+        /// ======================== ChFiDS_Map ========================
+        /// **Source:** `ChFiDS_Map.hxx`:31 - `ChFiDS_Map`
+        ///
+        /// Encapsulation of IndexedDataMapOfShapeListOfShape.
+        type ChFiDS_Map;
+        /// **Source:** `ChFiDS_Map.hxx`:37 - `ChFiDS_Map::ChFiDS_Map()`
+        ///
+        /// Create an empty Map
+        fn ChFiDS_Map_ctor() -> UniquePtr<ChFiDS_Map>;
+        /// **Source:** `ChFiDS_Map.hxx`:45 - `ChFiDS_Map::Contains()`
+        #[cxx_name = "Contains"]
+        fn contains(self: &ChFiDS_Map, S: &TopoDS_Shape) -> bool;
+        /// **Source:** `ChFiDS_Map.hxx`:47 - `ChFiDS_Map::FindFromKey()`
+        #[cxx_name = "FindFromKey"]
+        fn find_from_key(self: &ChFiDS_Map, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `ChFiDS_Map.hxx`:51 - `ChFiDS_Map::FindFromIndex()`
+        #[cxx_name = "FindFromIndex"]
+        fn find_from_index(self: &ChFiDS_Map, I: i32) -> &TopTools_ListOfShape;
+        /// **Source:** `ChFiDS_Map.hxx`:41 - `ChFiDS_Map::Fill()`
+        ///
+        /// Fills the map with the subshapes of type T1 as keys
+        /// and the list of ancestors  of type T2 as items.
+        fn ChFiDS_Map_fill(self_: Pin<&mut ChFiDS_Map>, S: &TopoDS_Shape, T1: i32, T2: i32);
+        /// ======================== ChFiDS_StripeMap ========================
+        /// **Source:** `ChFiDS_StripeMap.hxx`:31 - `ChFiDS_StripeMap`
+        ///
+        /// encapsulation of IndexedDataMapOfVertexListOfStripe
+        type ChFiDS_StripeMap;
+        /// **Source:** `ChFiDS_StripeMap.hxx`:36 - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
+        fn ChFiDS_StripeMap_ctor() -> UniquePtr<ChFiDS_StripeMap>;
+        /// **Source:** `ChFiDS_StripeMap.hxx`:38 - `ChFiDS_StripeMap::Add()`
+        #[cxx_name = "Add"]
+        fn add(self: Pin<&mut ChFiDS_StripeMap>, V: &TopoDS_Vertex, F: &HandleChFiDSStripe);
+        /// **Source:** `ChFiDS_StripeMap.hxx`:40 - `ChFiDS_StripeMap::Extent()`
+        #[cxx_name = "Extent"]
+        fn extent(self: &ChFiDS_StripeMap) -> i32;
+        /// **Source:** `ChFiDS_StripeMap.hxx`:50 - `ChFiDS_StripeMap::FindKey()`
+        #[cxx_name = "FindKey"]
+        fn find_key(self: &ChFiDS_StripeMap, I: i32) -> &TopoDS_Vertex;
+        /// **Source:** `ChFiDS_StripeMap.hxx`:52 - `ChFiDS_StripeMap::Clear()`
+        #[cxx_name = "Clear"]
+        fn clear(self: Pin<&mut ChFiDS_StripeMap>);
+        /// ======================== ChFiDS_Regul ========================
+        /// **Source:** `ChFiDS_Regul.hxx`:27 - `ChFiDS_Regul`
+        ///
+        /// Storage of  a curve  and its 2 faces or surfaces of  support.
+        type ChFiDS_Regul;
+        /// **Source:** `ChFiDS_Regul.hxx`:32 - `ChFiDS_Regul::ChFiDS_Regul()`
+        fn ChFiDS_Regul_ctor() -> UniquePtr<ChFiDS_Regul>;
+        /// **Source:** `ChFiDS_Regul.hxx`:34 - `ChFiDS_Regul::SetCurve()`
+        #[cxx_name = "SetCurve"]
+        fn set_curve(self: Pin<&mut ChFiDS_Regul>, IC: i32);
+        /// **Source:** `ChFiDS_Regul.hxx`:36 - `ChFiDS_Regul::SetS1()`
+        #[cxx_name = "SetS1"]
+        fn set_s1(self: Pin<&mut ChFiDS_Regul>, IS1: i32, IsFace: bool);
+        /// **Source:** `ChFiDS_Regul.hxx`:39 - `ChFiDS_Regul::SetS2()`
+        #[cxx_name = "SetS2"]
+        fn set_s2(self: Pin<&mut ChFiDS_Regul>, IS2: i32, IsFace: bool);
+        /// **Source:** `ChFiDS_Regul.hxx`:42 - `ChFiDS_Regul::IsSurface1()`
+        #[cxx_name = "IsSurface1"]
+        fn is_surface1(self: &ChFiDS_Regul) -> bool;
+        /// **Source:** `ChFiDS_Regul.hxx`:44 - `ChFiDS_Regul::IsSurface2()`
+        #[cxx_name = "IsSurface2"]
+        fn is_surface2(self: &ChFiDS_Regul) -> bool;
+        /// **Source:** `ChFiDS_Regul.hxx`:46 - `ChFiDS_Regul::Curve()`
+        #[cxx_name = "Curve"]
+        fn curve(self: &ChFiDS_Regul) -> i32;
+        /// **Source:** `ChFiDS_Regul.hxx`:48 - `ChFiDS_Regul::S1()`
+        #[cxx_name = "S1"]
+        fn s1(self: &ChFiDS_Regul) -> i32;
+        /// **Source:** `ChFiDS_Regul.hxx`:50 - `ChFiDS_Regul::S2()`
+        #[cxx_name = "S2"]
+        fn s2(self: &ChFiDS_Regul) -> i32;
+        /// ======================== ChFi3d_ChBuilder ========================
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:42 - `ChFi3d_ChBuilder`
+        ///
+        /// construction tool for 3D chamfers on edges (on a solid).
+        type ChFi3d_ChBuilder;
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:49 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
+        ///
+        /// initializes the Builder with the Shape <S> for the
+        /// computation of chamfers
+        fn ChFi3d_ChBuilder_ctor_shape_real(
+            S: &TopoDS_Shape,
+            Ta: f64,
+        ) -> UniquePtr<ChFi3d_ChBuilder>;
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:56 - `ChFi3d_ChBuilder::Add()`
+        ///
+        /// initializes a contour with the edge <E> as first
+        /// (the next are found by propagation ).
+        /// The two distances (parameters of the chamfer) must
+        /// be set after.
+        /// if the edge <E> has more than 2 adjacent faces
+        #[cxx_name = "Add"]
+        fn add_edge(self: Pin<&mut ChFi3d_ChBuilder>, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:62 - `ChFi3d_ChBuilder::Add()`
+        ///
+        /// initializes a new contour with the edge <E> as first
+        /// (the next are found by propagation ), and  the
+        /// distance <Dis>
+        /// if the edge <E> has more than 2 adjacent faces
+        #[cxx_name = "Add"]
+        fn add_real_edge(self: Pin<&mut ChFi3d_ChBuilder>, Dis: f64, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:68 - `ChFi3d_ChBuilder::SetDist()`
+        ///
+        /// set the distance <Dis> of the fillet
+        /// contour of index <IC> in the DS with <Dis> on <F>.
+        /// if the face <F> is not one of common faces
+        /// of an edge of the contour <IC>
+        #[cxx_name = "SetDist"]
+        fn set_dist(self: Pin<&mut ChFi3d_ChBuilder>, Dis: f64, IC: i32, F: &TopoDS_Face);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:74 - `ChFi3d_ChBuilder::GetDist()`
+        ///
+        /// gives the distances <Dis> of the fillet
+        /// contour of index <IC> in the DS
+        #[cxx_name = "GetDist"]
+        fn get_dist(self: &ChFi3d_ChBuilder, IC: i32, Dis: &mut f64);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:80 - `ChFi3d_ChBuilder::Add()`
+        ///
+        /// initializes a new contour with the edge <E> as first
+        /// (the next are found by propagation ), and  the
+        /// distance <Dis1> and <Dis2>
+        /// if the edge <E> has more than 2 adjacent faces
+        #[cxx_name = "Add"]
+        fn add_real2_edge_face(
+            self: Pin<&mut ChFi3d_ChBuilder>,
+            Dis1: f64,
+            Dis2: f64,
+            E: &TopoDS_Edge,
+            F: &TopoDS_Face,
+        );
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:89 - `ChFi3d_ChBuilder::SetDists()`
+        ///
+        /// set the distances <Dis1> and <Dis2> of the fillet
+        /// contour of index <IC> in the DS with <Dis1> on <F>.
+        /// if the face <F> is not one of common faces
+        /// of an edge of the contour <IC>
+        #[cxx_name = "SetDists"]
+        fn set_dists(
+            self: Pin<&mut ChFi3d_ChBuilder>,
+            Dis1: f64,
+            Dis2: f64,
+            IC: i32,
+            F: &TopoDS_Face,
+        );
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:96 - `ChFi3d_ChBuilder::Dists()`
+        ///
+        /// gives the distances <Dis1> and <Dis2> of the fillet
+        /// contour of index <IC> in the DS
+        #[cxx_name = "Dists"]
+        fn dists(self: &ChFi3d_ChBuilder, IC: i32, Dis1: &mut f64, Dis2: &mut f64);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:104 - `ChFi3d_ChBuilder::AddDA()`
+        ///
+        /// initializes a new contour with the edge <E> as first
+        /// (the next are found by propagation ), and  the
+        /// distance <Dis1> and <Angle>
+        /// if the edge <E> has more than 2 adjacent faces
+        #[cxx_name = "AddDA"]
+        fn add_da(
+            self: Pin<&mut ChFi3d_ChBuilder>,
+            Dis: f64,
+            Angle: f64,
+            E: &TopoDS_Edge,
+            F: &TopoDS_Face,
+        );
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:113 - `ChFi3d_ChBuilder::SetDistAngle()`
+        ///
+        /// set the distance <Dis> and <Angle> of the fillet
+        /// contour of index <IC> in the DS with <Dis> on <F>.
+        /// if the face <F> is not one of common faces
+        /// of an edge of the contour <IC>
+        #[cxx_name = "SetDistAngle"]
+        fn set_dist_angle(
+            self: Pin<&mut ChFi3d_ChBuilder>,
+            Dis: f64,
+            Angle: f64,
+            IC: i32,
+            F: &TopoDS_Face,
+        );
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:120 - `ChFi3d_ChBuilder::GetDistAngle()`
+        ///
+        /// gives the distances <Dis> and <Angle> of the fillet
+        /// contour of index <IC> in the DS
+        #[cxx_name = "GetDistAngle"]
+        fn get_dist_angle(self: &ChFi3d_ChBuilder, IC: i32, Dis: &mut f64, Angle: &mut f64);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:134 - `ChFi3d_ChBuilder::ResetContour()`
+        ///
+        /// Reset tous rayons du contour IC.
+        #[cxx_name = "ResetContour"]
+        fn reset_contour(self: Pin<&mut ChFi3d_ChBuilder>, IC: i32);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:136 - `ChFi3d_ChBuilder::Simulate()`
+        #[cxx_name = "Simulate"]
+        fn simulate(self: Pin<&mut ChFi3d_ChBuilder>, IC: i32);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:138 - `ChFi3d_ChBuilder::NbSurf()`
+        #[cxx_name = "NbSurf"]
+        fn nb_surf(self: &ChFi3d_ChBuilder, IC: i32) -> i32;
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:125 - `ChFi3d_ChBuilder::SetMode()`
+        ///
+        /// set the mode of shamfer
+        fn ChFi3d_ChBuilder_set_mode(self_: Pin<&mut ChFi3d_ChBuilder>, theMode: i32);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:128 - `ChFi3d_ChBuilder::IsChamfer()`
+        ///
+        /// renvoi la methode des chanfreins utilisee
+        fn ChFi3d_ChBuilder_is_chamfer(self_: &ChFi3d_ChBuilder, IC: i32) -> i32;
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:131 - `ChFi3d_ChBuilder::Mode()`
+        ///
+        /// returns the mode of chamfer used
+        fn ChFi3d_ChBuilder_mode(self_: &ChFi3d_ChBuilder) -> i32;
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:140 - `ChFi3d_ChBuilder::Sect()`
+        fn ChFi3d_ChBuilder_sect(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleChFiDSSecHArray1>;
+        /// Upcast ChFi3d_ChBuilder to ChFi3d_Builder
+        fn ChFi3d_ChBuilder_as_ChFi3d_Builder(self_: &ChFi3d_ChBuilder) -> &ChFi3d_Builder;
+        /// Upcast ChFi3d_ChBuilder to ChFi3d_Builder (mutable)
+        fn ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(
+            self_: Pin<&mut ChFi3d_ChBuilder>,
+        ) -> Pin<&mut ChFi3d_Builder>;
+        /// Inherited from ChFi3d_Builder: SetParams()
+        fn ChFi3d_ChBuilder_inherited_SetParams(
+            self_: Pin<&mut ChFi3d_ChBuilder>,
+            Tang: f64,
+            Tesp: f64,
+            T2d: f64,
+            TApp3d: f64,
+            TolApp2d: f64,
+            Fleche: f64,
+        );
+        /// Inherited from ChFi3d_Builder: Remove()
+        fn ChFi3d_ChBuilder_inherited_Remove(self_: Pin<&mut ChFi3d_ChBuilder>, E: &TopoDS_Edge);
+        /// Inherited from ChFi3d_Builder: Contains()
+        fn ChFi3d_ChBuilder_inherited_Contains(self_: &ChFi3d_ChBuilder, E: &TopoDS_Edge) -> i32;
+        /// Inherited from ChFi3d_Builder: NbElements()
+        fn ChFi3d_ChBuilder_inherited_NbElements(self_: &ChFi3d_ChBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: Length()
+        fn ChFi3d_ChBuilder_inherited_Length(self_: &ChFi3d_ChBuilder, IC: i32) -> f64;
+        /// Inherited from ChFi3d_Builder: FirstVertex()
+        fn ChFi3d_ChBuilder_inherited_FirstVertex(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: LastVertex()
+        fn ChFi3d_ChBuilder_inherited_LastVertex(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: Abscissa()
+        fn ChFi3d_ChBuilder_inherited_Abscissa(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        ) -> f64;
+        /// Inherited from ChFi3d_Builder: RelativeAbscissa()
+        fn ChFi3d_ChBuilder_inherited_RelativeAbscissa(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+            V: &TopoDS_Vertex,
+        ) -> f64;
+        /// Inherited from ChFi3d_Builder: ClosedAndTangent()
+        fn ChFi3d_ChBuilder_inherited_ClosedAndTangent(self_: &ChFi3d_ChBuilder, IC: i32) -> bool;
+        /// Inherited from ChFi3d_Builder: Closed()
+        fn ChFi3d_ChBuilder_inherited_Closed(self_: &ChFi3d_ChBuilder, IC: i32) -> bool;
+        /// Inherited from ChFi3d_Builder: Compute()
+        fn ChFi3d_ChBuilder_inherited_Compute(self_: Pin<&mut ChFi3d_ChBuilder>);
+        /// Inherited from ChFi3d_Builder: IsDone()
+        fn ChFi3d_ChBuilder_inherited_IsDone(self_: &ChFi3d_ChBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: Shape()
+        fn ChFi3d_ChBuilder_inherited_Shape(self_: &ChFi3d_ChBuilder) -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from ChFi3d_Builder: Generated()
+        fn ChFi3d_ChBuilder_inherited_Generated<'a>(
+            self_: Pin<&'a mut ChFi3d_ChBuilder>,
+            EouV: &TopoDS_Shape,
+        ) -> &'a TopTools_ListOfShape;
+        /// Inherited from ChFi3d_Builder: NbFaultyContours()
+        fn ChFi3d_ChBuilder_inherited_NbFaultyContours(self_: &ChFi3d_ChBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: FaultyContour()
+        fn ChFi3d_ChBuilder_inherited_FaultyContour(self_: &ChFi3d_ChBuilder, I: i32) -> i32;
+        /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
+        fn ChFi3d_ChBuilder_inherited_NbComputedSurfaces(self_: &ChFi3d_ChBuilder, IC: i32) -> i32;
+        /// Inherited from ChFi3d_Builder: ComputedSurface()
+        fn ChFi3d_ChBuilder_inherited_ComputedSurface(
+            self_: &ChFi3d_ChBuilder,
+            IC: i32,
+            IS: i32,
+        ) -> UniquePtr<HandleGeomSurface>;
+        /// Inherited from ChFi3d_Builder: NbFaultyVertices()
+        fn ChFi3d_ChBuilder_inherited_NbFaultyVertices(self_: &ChFi3d_ChBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: FaultyVertex()
+        fn ChFi3d_ChBuilder_inherited_FaultyVertex(
+            self_: &ChFi3d_ChBuilder,
+            IV: i32,
+        ) -> UniquePtr<TopoDS_Vertex>;
+        /// Inherited from ChFi3d_Builder: HasResult()
+        fn ChFi3d_ChBuilder_inherited_HasResult(self_: &ChFi3d_ChBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: BadShape()
+        fn ChFi3d_ChBuilder_inherited_BadShape(self_: &ChFi3d_ChBuilder)
+            -> UniquePtr<TopoDS_Shape>;
+        /// Inherited from ChFi3d_Builder: Reset()
+        fn ChFi3d_ChBuilder_inherited_Reset(self_: Pin<&mut ChFi3d_ChBuilder>);
+        /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
+        fn ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(
+            self_: Pin<&mut ChFi3d_ChBuilder>,
+            Index: i32,
+        ) -> bool;
 
         // ========================
         // Free functions
@@ -56395,6 +56395,10 @@ mod ffi {
     impl UniquePtr<gp_VectorWithNullMagnitude> {}
     impl UniquePtr<gp_XY> {}
     impl UniquePtr<gp_XYZ> {}
+    impl UniquePtr<BRepFilletAPI_LocalOperation> {}
+    impl UniquePtr<BRepFilletAPI_MakeChamfer> {}
+    impl UniquePtr<BRepFilletAPI_MakeFillet> {}
+    impl UniquePtr<BRepFilletAPI_MakeFillet2d> {}
     impl UniquePtr<TopoDS_Shape> {}
     impl UniquePtr<TopoDS_Vertex> {}
     impl UniquePtr<TopoDS_Edge> {}
@@ -56430,10 +56434,6 @@ mod ffi {
     impl UniquePtr<BRepAlgoAPI_Cut> {}
     impl UniquePtr<BRepAlgoAPI_Fuse> {}
     impl UniquePtr<BRepAlgoAPI_Section> {}
-    impl UniquePtr<BRepFilletAPI_LocalOperation> {}
-    impl UniquePtr<BRepFilletAPI_MakeChamfer> {}
-    impl UniquePtr<BRepFilletAPI_MakeFillet> {}
-    impl UniquePtr<BRepFilletAPI_MakeFillet2d> {}
     impl UniquePtr<BRepOffsetAPI_MakeOffset> {}
     impl UniquePtr<BRepOffsetAPI_MakePipe> {}
     impl UniquePtr<BRepOffsetAPI_MakePipeShell> {}
@@ -56521,6 +56521,11 @@ mod ffi {
     impl UniquePtr<math_Matrix> {}
     impl UniquePtr<math_Function> {}
     impl UniquePtr<math_FunctionWithDerivative> {}
+    impl UniquePtr<math_DirectPolynomialRoots> {}
+    impl UniquePtr<math_BissecNewton> {}
+    impl UniquePtr<math_BrentMinimum> {}
+    impl UniquePtr<math_EigenValuesSearcher> {}
+    impl UniquePtr<math_GaussLeastSquare> {}
     impl UniquePtr<Extrema_ExtCC> {}
     impl UniquePtr<Extrema_ExtPC> {}
     impl UniquePtr<Extrema_ExtPS> {}
@@ -56528,11 +56533,6 @@ mod ffi {
     impl UniquePtr<Adaptor3d_Curve> {}
     impl UniquePtr<Adaptor3d_Surface> {}
     impl UniquePtr<Adaptor2d_Curve2d> {}
-    impl UniquePtr<math_DirectPolynomialRoots> {}
-    impl UniquePtr<math_BissecNewton> {}
-    impl UniquePtr<math_BrentMinimum> {}
-    impl UniquePtr<math_EigenValuesSearcher> {}
-    impl UniquePtr<math_GaussLeastSquare> {}
     impl UniquePtr<TColStd_HArray1OfInteger> {}
     impl UniquePtr<TColStd_HArray1OfReal> {}
     impl UniquePtr<TColStd_HSequenceOfInteger> {}
@@ -56566,7 +56566,6 @@ mod ffi {
     impl UniquePtr<Message_Printer> {}
     impl UniquePtr<NCollection_BaseList> {}
     impl UniquePtr<Standard_ErrorHandler> {}
-    impl UniquePtr<TColStd_HArray2OfReal> {}
     impl UniquePtr<Bnd_HArray1OfSphere> {}
     impl UniquePtr<Extrema_POnSurfParams> {}
     impl UniquePtr<Extrema_FuncPSNorm> {}
@@ -56578,6 +56577,7 @@ mod ffi {
     impl UniquePtr<Extrema_PCFOfEPCOfExtPC> {}
     impl UniquePtr<Extrema_POnCurv> {}
     impl UniquePtr<Extrema_ECC> {}
+    impl UniquePtr<TColStd_HArray2OfReal> {}
     impl UniquePtr<Message_ProgressScope> {}
     impl UniquePtr<Message_ProgressIndicator> {}
     impl UniquePtr<IGESData_BasicEditor> {}
@@ -56676,22 +56676,6 @@ mod ffi {
     impl UniquePtr<MAT2d_Tool2d> {}
     impl UniquePtr<MAT2d_BiInt> {}
     impl UniquePtr<Bisector_Bisec> {}
-    impl UniquePtr<ChFi2d_Builder> {}
-    impl UniquePtr<ChFi3d_FilBuilder> {}
-    impl UniquePtr<ChFiDS_SecHArray1> {}
-    impl UniquePtr<ChFiDS_CircSection> {}
-    impl UniquePtr<ChFi3d_Builder> {}
-    impl UniquePtr<ChFiDS_ElSpine> {}
-    impl UniquePtr<ChFiDS_SurfData> {}
-    impl UniquePtr<ChFiDS_CommonPoint> {}
-    impl UniquePtr<ChFiDS_FaceInterference> {}
-    impl UniquePtr<ChFiDS_Stripe> {}
-    impl UniquePtr<ChFiDS_HData> {}
-    impl UniquePtr<BRepAdaptor_Curve2d> {}
-    impl UniquePtr<ChFiDS_Map> {}
-    impl UniquePtr<ChFiDS_StripeMap> {}
-    impl UniquePtr<ChFiDS_Regul> {}
-    impl UniquePtr<ChFi3d_ChBuilder> {}
     impl UniquePtr<BRepPrim_Torus> {}
     impl UniquePtr<BRepPrimAPI_MakeOneAxis> {}
     impl UniquePtr<BRepPrim_Revolution> {}
@@ -56723,6 +56707,22 @@ mod ffi {
     impl UniquePtr<TopLoc_SListOfItemLocation> {}
     impl UniquePtr<TopoDS_Iterator> {}
     impl UniquePtr<TopoDS_TShape> {}
+    impl UniquePtr<ChFi2d_Builder> {}
+    impl UniquePtr<ChFi3d_FilBuilder> {}
+    impl UniquePtr<ChFiDS_SecHArray1> {}
+    impl UniquePtr<ChFiDS_CircSection> {}
+    impl UniquePtr<ChFi3d_Builder> {}
+    impl UniquePtr<ChFiDS_ElSpine> {}
+    impl UniquePtr<ChFiDS_SurfData> {}
+    impl UniquePtr<ChFiDS_CommonPoint> {}
+    impl UniquePtr<ChFiDS_FaceInterference> {}
+    impl UniquePtr<ChFiDS_Stripe> {}
+    impl UniquePtr<ChFiDS_HData> {}
+    impl UniquePtr<BRepAdaptor_Curve2d> {}
+    impl UniquePtr<ChFiDS_Map> {}
+    impl UniquePtr<ChFiDS_StripeMap> {}
+    impl UniquePtr<ChFiDS_Regul> {}
+    impl UniquePtr<ChFi3d_ChBuilder> {}
 }
 
 // Re-export all FFI types to crate::ffi namespace
