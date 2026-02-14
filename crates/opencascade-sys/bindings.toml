@@ -12,322 +12,93 @@
 
 # Include ALL headers from these modules.
 modules = [
-    "gp",              # Geometric primitives (Pnt, Vec, Dir, Trsf, etc.)
-    "BRepFilletAPI",   # Fillets and chamfers
+    "Adaptor2d",           # 2D curve adaptors
+    "Adaptor3d",           # 3D curve/surface adaptors
+    "Bnd",                 # Bounding boxes
+    "BRep",                # Boundary representation utilities
+    "BRepAdaptor",         # BRep curve/surface adaptors
+    "BRepAlgoAPI",         # Boolean operations
+    "BRepBndLib",          # Bounding box utilities
+    "BRepBuilderAPI",      # Shape construction
+    "BRepFeat",            # Feature operations
+    "BRepFilletAPI",       # Fillets and chamfers
+    "BRepGProp",           # Global properties
+    "BRepIntCurveSurface", # Intersection
+    "BRepLib",             # Topology building utilities
+    "BRepMesh",            # Meshing
+    "BRepOffsetAPI",       # Offsets, sweeps, thick solids, lofts
+    "BRepPrimAPI",         # Primitive shapes
+    "BRepTools",           # Shape I/O and utilities
+    "Extrema",             # Distance calculations
+    "GC",                  # Geometry construction
+    "GCE2d",               # 2D geometry construction
+    "GCPnts",              # Geometry points
+    "Geom",                # 3D geometry
+    "Geom2d",              # 2D geometry
+    "GeomAbs",             # Geometry enums
+    "GeomAPI",             # Geometry utilities
+    "gp",                  # Geometric primitives (Pnt, Vec, Dir, Trsf, etc.)
+    "GProp",               # Global properties
+    "IFSelect",            # Interface select enums
+    "IGESControl",         # IGES I/O
+    "Law",                 # Functions
+    "math",                # Numerical methods
+    "Message",             # Progress reporting
+    "NCollection",         # Essential collections
+    "Poly",                # Triangulation
+    "Precision",           # Precision utilities
+    "ShapeAnalysis",       # Shape analysis tools
+    "ShapeUpgrade",        # Shape healing
+    "Standard",            # Core types
+    "STEPControl",         # STEP I/O
+    "StlAPI",              # STL I/O
+    "TColgp",              # Collections of geometric primitives
+    "TCollection",         # String types
+    "TColStd",             # Typed collections
+    "TopAbs",              # Topology enums
+    "TopExp",              # Topology exploration
+    "TopLoc",              # Locations
+    "TopoDS",              # Shape types
+    "TopTools",            # Topology tools
 ]
 
 # Exclude specific headers (even if their module is in `modules` above).
-exclude_headers = []
+exclude_headers = [
+    # Init method signature mismatch: subclass overrides Init() with different
+    # signature, hiding parent version. Generator creates inherited_Init wrapper
+    # that calls the parent signature which doesn't exist on the subclass.
+    "ShapeUpgrade_ConvertCurve2dToBezier.hxx",
+    "ShapeUpgrade_ConvertCurve3dToBezier.hxx",
+    "ShapeUpgrade_SplitCurve2dContinuity.hxx",
+    "ShapeUpgrade_SplitCurve3dContinuity.hxx",
+
+    # i64 vs long type mismatch on arm64: Standard_Size maps to long but
+    # generator emits i64 (long long).
+    "Standard_ReadBuffer.hxx",
+
+    # const char*& output parameter: generator converts const char* to rust::Str
+    # but can't handle output reference parameters (&) to C strings.
+    "Transfer_Finder.hxx",
+
+    # Standard_CString (const char*) parameter passed by const ref: generator
+    # converts to rust::Str but the C++ function expects const char* const&.
+    "BRepFill_AdvancedEvolved.hxx",
+
+    # Protected operator new/delete: class has protected allocation operators
+    # (inherited from Message_ProgressScope), can't use std::make_unique.
+    "Message_ProgressScope.hxx",
+    "Message_ProgressSentry.hxx",
+    "Message_LazyProgressScope.hxx",
+
+    # No suitable operator delete for Poly_CoherentTriPtr.
+    "Poly_CoherentTriPtr.hxx",
+
+    # Deleted copy constructor: TopoDS_AlertAttribute can't be copy-constructed.
+    "TopoDS_AlertAttribute.hxx",
+]
 
 # Include specific individual headers (from modules not fully included above).
-include_headers = [
-    # TopAbs module - Enums
-    "TopAbs_ShapeEnum.hxx",
-    "TopAbs_Orientation.hxx",
-
-    # TopoDS module - Shape types
-    "TopoDS.hxx",
-    "TopoDS_Shape.hxx",
-    "TopoDS_Vertex.hxx",
-    "TopoDS_Edge.hxx",
-    "TopoDS_Wire.hxx",
-    "TopoDS_Face.hxx",
-    "TopoDS_Shell.hxx",
-    "TopoDS_Solid.hxx",
-    "TopoDS_Compound.hxx",
-    "TopoDS_CompSolid.hxx",
-    "TopoDS_Builder.hxx",
-
-    # TopExp module - Topology exploration
-    "TopExp_Explorer.hxx",
-    "TopExp.hxx",
-
-    # TopLoc module - Locations
-    "TopLoc_Location.hxx",
-
-    # BRepBuilderAPI module - Shape construction
-    "BRepBuilderAPI_Command.hxx",
-    "BRepBuilderAPI_MakeShape.hxx",
-    "BRepBuilderAPI_MakeEdge.hxx",
-    "BRepBuilderAPI_MakeFace.hxx",
-    "BRepBuilderAPI_MakeSolid.hxx",
-    "BRepBuilderAPI_MakeVertex.hxx",
-    "BRepBuilderAPI_MakeWire.hxx",
-    "BRepBuilderAPI_Sewing.hxx",
-    "BRepBuilderAPI_Transform.hxx",
-
-    # BRepPrimAPI module - Primitive shapes
-    "BRepPrimAPI_MakeBox.hxx",
-    "BRepPrimAPI_MakeCone.hxx",
-    "BRepPrimAPI_MakeCylinder.hxx",
-    "BRepPrimAPI_MakePrism.hxx",
-    "BRepPrimAPI_MakeRevol.hxx",
-    "BRepPrimAPI_MakeSphere.hxx",
-    "BRepPrimAPI_MakeTorus.hxx",
-    "BRepPrimAPI_MakeSweep.hxx",
-
-    # BRepAlgoAPI module - Boolean operations
-    "BRepAlgoAPI_Algo.hxx",
-    "BRepAlgoAPI_BuilderAlgo.hxx",
-    "BRepAlgoAPI_BooleanOperation.hxx",
-    "BRepAlgoAPI_Common.hxx",
-    "BRepAlgoAPI_Cut.hxx",
-    "BRepAlgoAPI_Fuse.hxx",
-    "BRepAlgoAPI_Section.hxx",
-
-    # BRepOffsetAPI module - Offsets, sweeps, thick solids, lofts
-    "BRepOffsetAPI_MakeOffset.hxx",
-    "BRepOffsetAPI_MakePipe.hxx",
-    "BRepOffsetAPI_MakePipeShell.hxx",
-    "BRepOffsetAPI_MakeThickSolid.hxx",
-    "BRepOffsetAPI_ThruSections.hxx",
-
-    # BRepFeat module - Feature operations
-    "BRepFeat_MakeCylindricalHole.hxx",
-    "BRepFeat_MakeDPrism.hxx",
-
-    # BRepTools module - Shape I/O and utilities
-    "BRepTools.hxx",
-    "TopTools_FormatVersion.hxx",
-    "TopTools_HSequenceOfShape.hxx",
-    "TopTools_ListOfShape.hxx",
-    "TopTools_IndexedMapOfShape.hxx",
-    "TopTools_IndexedDataMapOfShapeListOfShape.hxx",
-
-    # Geom module - 3D geometry
-    "Geom_Geometry.hxx",
-    "Geom_Curve.hxx",
-    "Geom_Surface.hxx",
-    "Geom_BoundedCurve.hxx",
-    "Geom_BoundedSurface.hxx",
-    "Geom_ElementarySurface.hxx",
-    "Geom_BezierCurve.hxx",
-    "Geom_BezierSurface.hxx",
-    "Geom_BSplineCurve.hxx",
-    "Geom_BSplineSurface.hxx",
-    "Geom_CylindricalSurface.hxx",
-    "Geom_Plane.hxx",
-    "Geom_TrimmedCurve.hxx",
-
-    # Geom2d module - 2D geometry
-    "Geom2d_Geometry.hxx",
-    "Geom2d_Curve.hxx",
-    "Geom2d_BoundedCurve.hxx",
-    "Geom2d_Conic.hxx",
-    "Geom2d_Ellipse.hxx",
-    "Geom2d_TrimmedCurve.hxx",
-
-    # GeomAPI module - Geometry utilities
-    "GeomAPI_Interpolate.hxx",
-    "GeomAPI_PointsToBSpline.hxx",
-    "GeomAPI_ProjectPointOnCurve.hxx",
-    "GeomAPI_ProjectPointOnSurf.hxx",
-
-    # GeomAbs module - Geometry enums
-    "GeomAbs_CurveType.hxx",
-    "GeomAbs_JoinType.hxx",
-    "GeomAbs_Shape.hxx",
-    "GeomAbs_SurfaceType.hxx",
-
-    # GC module - Geometry construction
-    "GC_MakeArcOfCircle.hxx",
-    "GC_MakeSegment.hxx",
-
-    # GCE2d module - 2D geometry construction
-    "GCE2d_MakeSegment.hxx",
-
-    # GCPnts module - Geometry points
-    "GCPnts_TangentialDeflection.hxx",
-
-    # Bnd module - Bounding boxes
-    "Bnd_Box.hxx",
-    "Bnd_OBB.hxx",
-
-    # BRep module - Boundary representation utilities
-    "BRep_Builder.hxx",
-    "BRep_Tool.hxx",
-
-    # BRepBndLib module - Bounding box utilities
-    "BRepBndLib.hxx",
-
-    # BRepLib module - Topology building utilities
-    "BRepLib.hxx",
-
-    # BRepAdaptor module - Curve/surface adaptors
-    "BRepAdaptor_Curve.hxx",
-
-    # BRepGProp module - Global properties
-    "BRepGProp.hxx",
-    "BRepGProp_Face.hxx",
-
-    # BRepIntCurveSurface module - Intersection
-    "BRepIntCurveSurface_Inter.hxx",
-
-    # BRepMesh module - Meshing
-    "BRepMesh_IncrementalMesh.hxx",
-
-    # GProp module - Global properties
-    "GProp_GProps.hxx",
-
-    # Law module - Functions
-    "Law_Function.hxx",
-    "Law_BSpFunc.hxx",
-    "Law_Interpol.hxx",
-
-    # Poly module - Triangulation
-    "Poly_Triangulation.hxx",
-
-    # ShapeUpgrade module - Shape healing
-    "ShapeUpgrade_UnifySameDomain.hxx",
-
-    # ShapeAnalysis module - Shape analysis tools
-    "ShapeAnalysis_FreeBounds.hxx",
-
-    # TColgp module - Collections of geometric primitives
-    "TColgp_Array1OfCirc2d.hxx",
-    "TColgp_Array1OfDir.hxx",
-    "TColgp_Array1OfDir2d.hxx",
-    "TColgp_Array1OfLin2d.hxx",
-    "TColgp_Array1OfPnt.hxx",
-    "TColgp_Array1OfPnt2d.hxx",
-    "TColgp_Array1OfVec.hxx",
-    "TColgp_Array1OfVec2d.hxx",
-    "TColgp_Array1OfXY.hxx",
-    "TColgp_Array1OfXYZ.hxx",
-    "TColgp_Array2OfCirc2d.hxx",
-    "TColgp_Array2OfDir.hxx",
-    "TColgp_Array2OfDir2d.hxx",
-    "TColgp_Array2OfLin2d.hxx",
-    "TColgp_Array2OfPnt.hxx",
-    "TColgp_Array2OfPnt2d.hxx",
-    "TColgp_Array2OfVec.hxx",
-    "TColgp_Array2OfVec2d.hxx",
-    "TColgp_Array2OfXY.hxx",
-    "TColgp_Array2OfXYZ.hxx",
-    "TColgp_HArray1OfCirc2d.hxx",
-    "TColgp_HArray1OfDir.hxx",
-    "TColgp_HArray1OfDir2d.hxx",
-    "TColgp_HArray1OfLin2d.hxx",
-    "TColgp_HArray1OfPnt.hxx",
-    "TColgp_HArray1OfPnt2d.hxx",
-    "TColgp_HArray1OfVec.hxx",
-    "TColgp_HArray1OfVec2d.hxx",
-    "TColgp_HArray1OfXY.hxx",
-    "TColgp_HArray1OfXYZ.hxx",
-    "TColgp_HArray2OfCirc2d.hxx",
-    "TColgp_HArray2OfDir.hxx",
-    "TColgp_HArray2OfDir2d.hxx",
-    "TColgp_HArray2OfLin2d.hxx",
-    "TColgp_HArray2OfPnt.hxx",
-    "TColgp_HArray2OfPnt2d.hxx",
-    "TColgp_HArray2OfVec.hxx",
-    "TColgp_HArray2OfVec2d.hxx",
-    "TColgp_HArray2OfXY.hxx",
-    "TColgp_HArray2OfXYZ.hxx",
-    "TColgp_SequenceOfPnt.hxx",
-    "TColgp_SequenceOfPnt2d.hxx",
-    "TColgp_SequenceOfDir.hxx",
-    "TColgp_SequenceOfDir2d.hxx",
-    "TColgp_SequenceOfVec.hxx",
-    "TColgp_SequenceOfVec2d.hxx",
-    "TColgp_SequenceOfXY.hxx",
-    "TColgp_SequenceOfXYZ.hxx",
-    "TColgp_SequenceOfAx1.hxx",
-    "TColgp_HSequenceOfPnt.hxx",
-    "TColgp_HSequenceOfPnt2d.hxx",
-    "TColgp_HSequenceOfDir.hxx",
-    "TColgp_HSequenceOfDir2d.hxx",
-    "TColgp_HSequenceOfVec.hxx",
-    "TColgp_HSequenceOfVec2d.hxx",
-    "TColgp_HSequenceOfXY.hxx",
-    "TColgp_HSequenceOfXYZ.hxx",
-
-    # Message module - Progress reporting
-    "Message_ProgressRange.hxx",
-
-    # STEPControl module - STEP I/O
-    "STEPControl_Reader.hxx",
-    "STEPControl_Writer.hxx",
-
-    # IGESControl module - IGES I/O
-    "IGESControl_Reader.hxx",
-    "IGESControl_Writer.hxx",
-
-    # StlAPI module - STL I/O
-    "StlAPI_Writer.hxx",
-
-    # IFSelect module - Interface select enums
-    "IFSelect_ReturnStatus.hxx",
-
-    # Precision module
-    "Precision.hxx",
-
-    # math module - Numerical methods
-    "math_Matrix.hxx",
-    "math_Vector.hxx",
-    "math_Function.hxx",
-    "math_FunctionWithDerivative.hxx",
-    "math_Status.hxx",
-    "math_DirectPolynomialRoots.hxx",
-    "math_BissecNewton.hxx",
-    "math_BrentMinimum.hxx",
-    "math_EigenValuesSearcher.hxx",
-    "math_GaussLeastSquare.hxx",
-    "math_IntegerVector.hxx",
-
-    # Extrema module - Distance calculations
-    "Extrema_ExtCC.hxx",
-    "Extrema_ExtPC.hxx",
-    "Extrema_ExtPS.hxx",
-    "Extrema_GenExtCC.hxx",
-    "Extrema_GenExtPC.hxx",
-    "Extrema_GenExtPS.hxx",
-
-    # Adaptor modules - Curve/surface adaptors
-    "Adaptor3d_Curve.hxx",
-    "Adaptor3d_Surface.hxx",
-    "Adaptor2d_Curve2d.hxx",
-
-    # TColStd module - Typed collections
-    "TColStd_Array1OfInteger.hxx",
-    "TColStd_Array1OfReal.hxx",
-    "TColStd_Array2OfInteger.hxx",
-    "TColStd_Array2OfReal.hxx",
-    "TColStd_HArray1OfInteger.hxx",
-    "TColStd_HArray1OfReal.hxx",
-    "TColStd_SequenceOfInteger.hxx",
-    "TColStd_SequenceOfReal.hxx",
-    "TColStd_HSequenceOfInteger.hxx",
-    "TColStd_HSequenceOfReal.hxx",
-    "TColStd_MapOfInteger.hxx",
-    "TColStd_MapOfReal.hxx",
-    "TColStd_ListOfInteger.hxx",
-    "TColStd_ListOfReal.hxx",
-
-    # Standard module - Core types
-    "Standard_Failure.hxx",
-    "Standard_Mutex.hxx",
-    "Standard_Time.hxx",
-    "Standard_Version.hxx",
-
-    # TCollection module - String types
-    "TCollection_AsciiString.hxx",
-    "TCollection_ExtendedString.hxx",
-    "TCollection_HAsciiString.hxx",
-    "TCollection_HExtendedString.hxx",
-
-    # NCollection module - Essential collections
-    "NCollection_Array1.hxx",
-    "NCollection_Array2.hxx",
-    "NCollection_Sequence.hxx",
-    "NCollection_List.hxx",
-    "NCollection_Map.hxx",
-    "NCollection_IndexedMap.hxx",
-    "NCollection_DataMap.hxx",
-    "NCollection_IndexedDataMap.hxx",
-    "NCollection_Vector.hxx",
-    "NCollection_Buffer.hxx",
-]
+include_headers = []
 
 [general]
 resolve_deps = true

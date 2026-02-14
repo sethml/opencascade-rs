@@ -81,6 +81,103 @@ impl Context {
 }
 
 // ========================
+// From IMeshTools_CurveTessellator.hxx
+// ========================
+
+/// Interface class providing API for edge tessellation tools.
+pub use crate::ffi::IMeshTools_CurveTessellator as CurveTessellator;
+
+impl CurveTessellator {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IMeshTools_CurveTessellator_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIMeshToolsCurveTessellator;
+
+impl HandleIMeshToolsCurveTessellator {
+    /// Dereference this Handle to access the underlying IMeshTools_CurveTessellator
+    pub fn get(&self) -> &crate::ffi::IMeshTools_CurveTessellator {
+        crate::ffi::HandleIMeshToolsCurveTessellator_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshTools_CurveTessellator
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IMeshTools_CurveTessellator> {
+        crate::ffi::HandleIMeshToolsCurveTessellator_get_mut(self)
+    }
+}
+
+// ========================
+// From IMeshTools_MeshAlgo.hxx
+// ========================
+
+/// Interface class providing API for algorithms intended to create mesh for discrete face.
+pub use crate::ffi::IMeshTools_MeshAlgo as MeshAlgo;
+
+impl MeshAlgo {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IMeshTools_MeshAlgo_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIMeshToolsMeshAlgo;
+
+impl HandleIMeshToolsMeshAlgo {
+    /// Dereference this Handle to access the underlying IMeshTools_MeshAlgo
+    pub fn get(&self) -> &crate::ffi::IMeshTools_MeshAlgo {
+        crate::ffi::HandleIMeshToolsMeshAlgo_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshTools_MeshAlgo
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IMeshTools_MeshAlgo> {
+        crate::ffi::HandleIMeshToolsMeshAlgo_get_mut(self)
+    }
+}
+
+// ========================
+// From IMeshTools_MeshAlgoFactory.hxx
+// ========================
+
+/// Base interface for factories producing instances of triangulation
+/// algorithms taking into account type of surface of target face.
+pub use crate::ffi::IMeshTools_MeshAlgoFactory as MeshAlgoFactory;
+
+impl MeshAlgoFactory {
+    /// Creates instance of meshing algorithm for the given type of surface.
+    pub fn get_algo(
+        &self,
+        theSurfaceType: i32,
+        theParameters: &crate::ffi::IMeshTools_Parameters,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
+        crate::ffi::IMeshTools_MeshAlgoFactory_get_algo(self, theSurfaceType, theParameters)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IMeshTools_MeshAlgoFactory_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIMeshToolsMeshAlgoFactory;
+
+impl HandleIMeshToolsMeshAlgoFactory {
+    /// Dereference this Handle to access the underlying IMeshTools_MeshAlgoFactory
+    pub fn get(&self) -> &crate::ffi::IMeshTools_MeshAlgoFactory {
+        crate::ffi::HandleIMeshToolsMeshAlgoFactory_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshTools_MeshAlgoFactory
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IMeshTools_MeshAlgoFactory> {
+        crate::ffi::HandleIMeshToolsMeshAlgoFactory_get_mut(self)
+    }
+}
+
+// ========================
 // From IMeshTools_ModelAlgo.hxx
 // ========================
 
@@ -194,5 +291,34 @@ impl Parameters {
     /// (minimum mesh edge length) from deflection
     pub fn rel_min_size() -> f64 {
         crate::ffi::IMeshTools_Parameters_rel_min_size()
+    }
+}
+
+// ========================
+// From IMeshTools_ShapeVisitor.hxx
+// ========================
+
+/// Interface class for shape visitor.
+pub use crate::ffi::IMeshTools_ShapeVisitor as ShapeVisitor;
+
+impl ShapeVisitor {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IMeshTools_ShapeVisitor_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIMeshToolsShapeVisitor;
+
+impl HandleIMeshToolsShapeVisitor {
+    /// Dereference this Handle to access the underlying IMeshTools_ShapeVisitor
+    pub fn get(&self) -> &crate::ffi::IMeshTools_ShapeVisitor {
+        crate::ffi::HandleIMeshToolsShapeVisitor_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshTools_ShapeVisitor
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IMeshTools_ShapeVisitor> {
+        crate::ffi::HandleIMeshToolsShapeVisitor_get_mut(self)
     }
 }

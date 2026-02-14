@@ -6,6 +6,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::init;
+
 /// This enumeration is used in
 /// ShapeHealing toolkit for representing flags in the
 /// return statuses of class methods.
@@ -109,4 +111,8 @@ impl TryFrom<i32> for Status {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::ShapeExtend_MsgRegistrator as MsgRegistrator;
+pub use crate::ffi::{
+    ShapeExtend_BasicMsgRegistrator as BasicMsgRegistrator,
+    ShapeExtend_CompositeSurface as CompositeSurface, ShapeExtend_MsgRegistrator as MsgRegistrator,
+    ShapeExtend_WireData as WireData,
+};

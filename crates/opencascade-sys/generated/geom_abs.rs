@@ -6,6 +6,39 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// This enumeration is used in the classes BSplineCurve and
+/// BSplineSurface to describe the repartition of set of knots.
+/// (comments in classes BSplineCurve and BSplineSurface)
+/// C++ enum: `GeomAbs_BSplKnotDistribution`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum BSplKnotDistribution {
+    Nonuniform = 0,
+    Uniform = 1,
+    Quasiuniform = 2,
+    Piecewisebezier = 3,
+}
+
+impl From<BSplKnotDistribution> for i32 {
+    fn from(value: BSplKnotDistribution) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for BSplKnotDistribution {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(BSplKnotDistribution::Nonuniform),
+            1 => Ok(BSplKnotDistribution::Uniform),
+            2 => Ok(BSplKnotDistribution::Quasiuniform),
+            3 => Ok(BSplKnotDistribution::Piecewisebezier),
+            _ => Err(value),
+        }
+    }
+}
+
 /// Identifies the type of a curve.
 /// C++ enum: `GeomAbs_CurveType`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -42,6 +75,36 @@ impl TryFrom<i32> for CurveType {
             6 => Ok(CurveType::Bsplinecurve),
             7 => Ok(CurveType::Offsetcurve),
             8 => Ok(CurveType::Othercurve),
+            _ => Err(value),
+        }
+    }
+}
+
+/// this enumeration describes if a curve is an U isoparaetric
+/// or V isoparametric
+/// C++ enum: `GeomAbs_IsoType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum IsoType {
+    Isou = 0,
+    Isov = 1,
+    Noneiso = 2,
+}
+
+impl From<IsoType> for i32 {
+    fn from(value: IsoType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for IsoType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(IsoType::Isou),
+            1 => Ok(IsoType::Isov),
+            2 => Ok(IsoType::Noneiso),
             _ => Err(value),
         }
     }
@@ -180,69 +243,6 @@ impl TryFrom<i32> for SurfaceType {
             8 => Ok(SurfaceType::Surfaceofextrusion),
             9 => Ok(SurfaceType::Offsetsurface),
             10 => Ok(SurfaceType::Othersurface),
-            _ => Err(value),
-        }
-    }
-}
-
-/// This enumeration is used in the classes BSplineCurve and
-/// BSplineSurface to describe the repartition of set of knots.
-/// (comments in classes BSplineCurve and BSplineSurface)
-/// C++ enum: `GeomAbs_BSplKnotDistribution`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum BSplKnotDistribution {
-    Nonuniform = 0,
-    Uniform = 1,
-    Quasiuniform = 2,
-    Piecewisebezier = 3,
-}
-
-impl From<BSplKnotDistribution> for i32 {
-    fn from(value: BSplKnotDistribution) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for BSplKnotDistribution {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(BSplKnotDistribution::Nonuniform),
-            1 => Ok(BSplKnotDistribution::Uniform),
-            2 => Ok(BSplKnotDistribution::Quasiuniform),
-            3 => Ok(BSplKnotDistribution::Piecewisebezier),
-            _ => Err(value),
-        }
-    }
-}
-
-/// this enumeration describes if a curve is an U isoparaetric
-/// or V isoparametric
-/// C++ enum: `GeomAbs_IsoType`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum IsoType {
-    Isou = 0,
-    Isov = 1,
-    Noneiso = 2,
-}
-
-impl From<IsoType> for i32 {
-    fn from(value: IsoType) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for IsoType {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(IsoType::Isou),
-            1 => Ok(IsoType::Isov),
-            2 => Ok(IsoType::Noneiso),
             _ => Err(value),
         }
     }

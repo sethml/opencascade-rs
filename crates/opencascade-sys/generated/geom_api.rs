@@ -6,6 +6,291 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{to2d, to3d};
+
+// ========================
+// From GeomAPI_ExtremaCurveCurve.hxx
+// ========================
+
+/// Describes functions for computing all the extrema
+/// between two 3D curves.
+/// An ExtremaCurveCurve algorithm minimizes or
+/// maximizes the distance between a point on the first
+/// curve and a point on the second curve. Thus, it
+/// computes start and end points of perpendiculars
+/// common to the two curves (an intersection point is
+/// not an extremum unless the two curves are tangential at this point).
+/// Solutions consist of pairs of points, and an extremum
+/// is considered to be a segment joining the two points of a solution.
+/// An ExtremaCurveCurve object provides a framework for:
+/// -   defining the construction of the extrema,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results.
+/// Warning
+/// In some cases, the nearest points between two
+/// curves do not correspond to one of the computed
+/// extrema. Instead, they may be given by:
+/// -   a limit point of one curve and one of the following:
+/// -   its orthogonal projection on the other curve,
+/// -   a limit point of the other curve; or
+/// -   an intersection point between the two curves.
+pub use crate::ffi::GeomAPI_ExtremaCurveCurve as ExtremaCurveCurve;
+
+impl ExtremaCurveCurve {
+    /// Constructs an empty algorithm for computing
+    /// extrema between two curves. Use an Init function
+    /// to define the curves on which it is going to work.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ExtremaCurveCurve_ctor()
+    }
+
+    /// Computes the extrema between the curves C1 and C2.
+    pub fn new_handlegeomcurve2(
+        C1: &crate::ffi::HandleGeomCurve,
+        C2: &crate::ffi::HandleGeomCurve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ExtremaCurveCurve_ctor_handlegeomcurve2(C1, C2)
+    }
+
+    /// Computes   the portion of the curve C1 limited by the two
+    /// points of parameter (U1min,U1max), and
+    /// -   the portion of the curve C2 limited by the two
+    /// points of parameter (U2min,U2max).
+    /// Warning
+    /// Use the function NbExtrema to obtain the number
+    /// of solutions. If this algorithm fails, NbExtrema returns 0.
+    pub fn new_handlegeomcurve2_real4(
+        C1: &crate::ffi::HandleGeomCurve,
+        C2: &crate::ffi::HandleGeomCurve,
+        U1min: f64,
+        U1max: f64,
+        U2min: f64,
+        U2max: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ExtremaCurveCurve_ctor_handlegeomcurve2_real4(
+            C1, C2, U1min, U1max, U2min, U2max,
+        )
+    }
+}
+
+// ========================
+// From GeomAPI_ExtremaCurveSurface.hxx
+// ========================
+
+/// Describes functions for computing all the extrema
+/// between a curve and a surface.
+/// An ExtremaCurveSurface algorithm minimizes or
+/// maximizes the distance between a point on the curve
+/// and a point on the surface. Thus, it computes start
+/// and end points of perpendiculars common to the
+/// curve and the surface (an intersection point is not an
+/// extremum except where the curve and the surface
+/// are tangential at this point).
+/// Solutions consist of pairs of points, and an extremum
+/// is considered to be a segment joining the two points of a solution.
+/// An ExtremaCurveSurface object provides a framework for:
+/// -   defining the construction of the extrema,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results.
+/// Warning
+/// In some cases, the nearest points between a curve
+/// and a surface do not correspond to one of the
+/// computed extrema. Instead, they may be given by:
+/// -   a point of a bounding curve of the surface and one of the following:
+/// -   its orthogonal projection on the curve,
+/// -   a limit point of the curve; or
+/// -   a limit point of the curve and its projection on the surface; or
+/// -   an intersection point between the curve and the surface.
+pub use crate::ffi::GeomAPI_ExtremaCurveSurface as ExtremaCurveSurface;
+
+impl ExtremaCurveSurface {
+    /// Constructs an empty algorithm for computing
+    /// extrema between a curve and a surface. Use an
+    /// Init function to define the curve and the surface on
+    /// which it is going to work.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ExtremaCurveSurface_ctor()
+    }
+
+    /// Computes  the  extrema  distances  between  the
+    /// curve <C> and the surface  <S>.
+    pub fn new_handlegeomcurve_handlegeomsurface(
+        Curve: &crate::ffi::HandleGeomCurve,
+        Surface: &crate::ffi::HandleGeomSurface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ExtremaCurveSurface_ctor_handlegeomcurve_handlegeomsurface(
+            Curve, Surface,
+        )
+    }
+
+    /// Computes  the  extrema  distances  between  the
+    /// curve <C>  and the  surface  <S>.  The solution
+    /// point are computed in the domain [Wmin,Wmax] of
+    /// the  curve   and  in  the  domain   [Umin,Umax]
+    /// [Vmin,Vmax] of the surface.
+    /// Warning
+    /// Use the function NbExtrema to obtain the number
+    /// of solutions. If this algorithm fails, NbExtrema returns 0.
+    pub fn new_handlegeomcurve_handlegeomsurface_real6(
+        Curve: &crate::ffi::HandleGeomCurve,
+        Surface: &crate::ffi::HandleGeomSurface,
+        Wmin: f64,
+        Wmax: f64,
+        Umin: f64,
+        Umax: f64,
+        Vmin: f64,
+        Vmax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ExtremaCurveSurface_ctor_handlegeomcurve_handlegeomsurface_real6(
+            Curve, Surface, Wmin, Wmax, Umin, Umax, Vmin, Vmax,
+        )
+    }
+}
+
+// ========================
+// From GeomAPI_ExtremaSurfaceSurface.hxx
+// ========================
+
+/// Describes functions for computing all the extrema
+/// between two surfaces.
+/// An ExtremaSurfaceSurface algorithm minimizes or
+/// maximizes the distance between a point on the first
+/// surface and a point on the second surface. Results
+/// are start and end points of perpendiculars common to the two surfaces.
+/// Solutions consist of pairs of points, and an extremum
+/// is considered to be a segment joining the two points of a solution.
+/// An ExtremaSurfaceSurface object provides a framework for:
+/// -   defining the construction of the extrema,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results.
+/// Warning
+/// In some cases, the nearest points between the two
+/// surfaces do not correspond to one of the computed
+/// extrema. Instead, they may be given by:
+/// -   a point of a bounding curve of one surface and one of the following:
+/// -   its orthogonal projection on the other surface,
+/// -   a point of a bounding curve of the other surface; or
+/// -   any point on intersection curves between the two surfaces.
+pub use crate::ffi::GeomAPI_ExtremaSurfaceSurface as ExtremaSurfaceSurface;
+
+impl ExtremaSurfaceSurface {
+    /// Constructs an empty algorithm for computing
+    /// extrema between two surfaces. Use an Init function
+    /// to define the surfaces on which it is going to work.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ExtremaSurfaceSurface_ctor()
+    }
+
+    /// Computes  the  extrema  distances  between  the
+    /// surfaces <S1>  and <S2>
+    pub fn new_handlegeomsurface2(
+        S1: &crate::ffi::HandleGeomSurface,
+        S2: &crate::ffi::HandleGeomSurface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ExtremaSurfaceSurface_ctor_handlegeomsurface2(S1, S2)
+    }
+
+    /// Computes  the  extrema  distances  between
+    /// the portion of the surface S1 limited by the
+    /// two values of parameter (U1min,U1max) in
+    /// the u parametric direction, and by the two
+    /// values of parameter (V1min,V1max) in the v
+    /// parametric direction, and
+    /// -   the portion of the surface S2 limited by the
+    /// two values of parameter (U2min,U2max) in
+    /// the u parametric direction, and by the two
+    /// values of parameter (V2min,V2max) in the v
+    /// parametric direction.
+    pub fn new_handlegeomsurface2_real8(
+        S1: &crate::ffi::HandleGeomSurface,
+        S2: &crate::ffi::HandleGeomSurface,
+        U1min: f64,
+        U1max: f64,
+        V1min: f64,
+        V1max: f64,
+        U2min: f64,
+        U2max: f64,
+        V2min: f64,
+        V2max: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_ExtremaSurfaceSurface_ctor_handlegeomsurface2_real8(
+            S1, S2, U1min, U1max, V1min, V1max, U2min, U2max, V2min, V2max,
+        )
+    }
+}
+
+// ========================
+// From GeomAPI_IntCS.hxx
+// ========================
+
+/// This class implements methods for
+/// computing intersection points and  segments between a
+pub use crate::ffi::GeomAPI_IntCS as IntCS;
+
+impl IntCS {
+    /// Creates an empty object. Use the
+    /// function Perform for further initialization of the algorithm by
+    /// the curve and the surface.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_IntCS_ctor()
+    }
+
+    /// Computes the intersections between
+    /// the curve C and the surface S.
+    /// Warning
+    /// Use function IsDone to verify that the intersections are computed successfully.
+    pub fn new_handlegeomcurve_handlegeomsurface(
+        C: &crate::ffi::HandleGeomCurve,
+        S: &crate::ffi::HandleGeomSurface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_IntCS_ctor_handlegeomcurve_handlegeomsurface(C, S)
+    }
+
+    /// Returns the computed intersection
+    /// segment of index Index in case of tangential intersection.
+    /// Intersection segment is a portion of the initial curve tangent to surface.
+    /// Exceptions
+    /// StdFail_NotDone if intersection algorithm fails or is not initialized.
+    /// Standard_OutOfRange if Index is not in the range [ 1,NbSegments ],
+    /// where NbSegments is the number of computed intersection segments.
+    pub fn segment(&self, Index: i32) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::GeomAPI_IntCS_segment(self, Index)
+    }
+}
+
+// ========================
+// From GeomAPI_IntSS.hxx
+// ========================
+
+/// This class implements methods for
+/// computing the intersection curves   between two surfaces.
+/// The result is curves from Geom.  The "domain" used for
+/// a surface   is the natural  parametric domain
+/// unless the surface is a  RectangularTrimmedSurface
+/// from Geom.
+pub use crate::ffi::GeomAPI_IntSS as IntSS;
+
+impl IntSS {
+    /// Constructs an empty object. Use the
+    /// function Perform for further initialization algorithm by two surfaces.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_IntSS_ctor()
+    }
+
+    /// Computes the intersection curves
+    /// between the two surfaces S1 and S2. Parameter Tol defines the precision
+    /// of curves computation. For most cases the value 1.0e-7 is recommended to use.
+    /// Warning
+    /// Use the function IsDone to verify that the intersections are successfully computed.I
+    pub fn new_handlegeomsurface2_real(
+        S1: &crate::ffi::HandleGeomSurface,
+        S2: &crate::ffi::HandleGeomSurface,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_IntSS_ctor_handlegeomsurface2_real(S1, S2, Tol)
+    }
+}
+
 // ========================
 // From GeomAPI_Interpolate.hxx
 // ========================
@@ -67,12 +352,12 @@ impl Interpolate {
     /// -   conditions relating to the respective
     /// number of elements in the parallel tables
     /// Points and Parameters are not respected.
-    pub fn new_handleharray1ofpnt_bool_real(
+    pub fn new_handletcolgpharray1ofpnt_bool_real(
         Points: &crate::ffi::HandleTColgpHArray1OfPnt,
         PeriodicFlag: bool,
         Tolerance: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_Interpolate_ctor_handleharray1ofpnt_bool_real(
+        crate::ffi::GeomAPI_Interpolate_ctor_handletcolgpharray1ofpnt_bool_real(
             Points,
             PeriodicFlag,
             Tolerance,
@@ -117,18 +402,13 @@ impl Interpolate {
     /// -   conditions relating to the respective
     /// number of elements in the parallel tables
     /// Points and Parameters are not respected.
-    pub fn new_handleharray1ofpnt_handleharray1ofreal_bool_real(
+    pub fn new_handletcolgpharray1ofpnt_handletcolstdharray1ofreal_bool_real(
         Points: &crate::ffi::HandleTColgpHArray1OfPnt,
         Parameters: &crate::ffi::HandleTColStdHArray1OfReal,
         PeriodicFlag: bool,
         Tolerance: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_Interpolate_ctor_handleharray1ofpnt_handleharray1ofreal_bool_real(
-            Points,
-            Parameters,
-            PeriodicFlag,
-            Tolerance,
-        )
+        crate::ffi::GeomAPI_Interpolate_ctor_handletcolgpharray1ofpnt_handletcolstdharray1ofreal_bool_real(Points, Parameters, PeriodicFlag, Tolerance)
     }
 }
 
@@ -366,6 +646,306 @@ impl PointsToBSpline {
 }
 
 // ========================
+// From GeomAPI_PointsToBSplineSurface.hxx
+// ========================
+
+/// This class is used to approximate or interpolate
+/// a BSplineSurface passing through an  Array2 of
+/// points, with a given continuity.
+/// Describes functions for building a BSpline
+/// surface which approximates or interpolates a set of points.
+/// A PointsToBSplineSurface object provides a framework for:
+/// -   defining the data of the BSpline surface to be built,
+/// -   implementing the approximation algorithm
+/// or the interpolation algorithm, and consulting the results.
+/// In fact, class contains 3 algorithms, 2 for approximation and 1
+/// for interpolation.
+/// First approximation algorithm is based on usual least square criterium:
+/// minimization of square distance between samplimg points and result surface.
+/// Second approximation algorithm uses least square criterium and additional
+/// minimization of some local characteristic of surface (first, second and third
+/// partial derivative), which allows managing shape of surface.
+/// Interpolation algorithm produces surface, which passes through sampling points.
+///
+/// There is accordance between parametrization of result surface S(U, V) and
+/// indexes of array Points(i, j): first index corresponds U parameter of surface,
+/// second - V parameter of surface.
+/// So, points of any j-th column Points(*, j) represent any V isoline of surface,
+/// points of any i-th row Point(i, *) represent any U isoline of surface.
+///
+/// For each sampling point parameters U, V are calculated according to
+/// type of parametrization, which can be Approx_ChordLength, Approx_Centripetal
+/// or Approx_IsoParametric. Default value is Approx_ChordLength.
+/// For ChordLength parametrisation U(i) = U(i-1) + P(i).Distance(P(i-1)),
+/// For Centripetal type  U(i) = U(i-1) + Sqrt(P(i).Distance(P(i-1))).
+/// Centripetal type can get better result for irregular distances between points.
+///
+/// Approximation and interpolation algorithms can build periodical surface along U
+/// direction, which corresponds columns of array Points(i, j),
+/// if corresponding parameter (thePeriodic, see comments below) of called
+/// methods is set to True. Algorithm uses first row Points(1, *) as periodic boundary,
+/// so to avoid getting wrong surface it is necessary to keep distance between
+/// corresponding points of first and last rows of Points:
+/// Points(1, *) != Points(Upper, *).
+pub use crate::ffi::GeomAPI_PointsToBSplineSurface as PointsToBSplineSurface;
+
+impl PointsToBSplineSurface {
+    /// Constructs an empty algorithm for
+    /// approximation or interpolation of a surface.
+    /// Use:
+    /// -   an Init function to define and build the
+    /// BSpline surface by approximation, or
+    /// -   an Interpolate function to define and build
+    /// the BSpline surface by interpolation.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_PointsToBSplineSurface_ctor()
+    }
+
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  Points.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D.
+    pub fn new_array2ofpnt_int2_shape_real(
+        Points: &crate::ffi::TColgp_Array2OfPnt,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_int2_shape_real(
+            Points, DegMin, DegMax, Continuity, Tol3D,
+        )
+    }
+
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  Points.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D.
+    pub fn new_array2ofpnt_parametrizationtype_int2_shape_real(
+        Points: &crate::ffi::TColgp_Array2OfPnt,
+        ParType: i32,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_parametrizationtype_int2_shape_real(Points, ParType, DegMin, DegMax, Continuity, Tol3D)
+    }
+
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  points using variational smoothing algorithm,
+    /// which tries to minimize additional criterium:
+    /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion.
+    pub fn new_array2ofpnt_real3_int_shape_real(
+        Points: &crate::ffi::TColgp_Array2OfPnt,
+        Weight1: f64,
+        Weight2: f64,
+        Weight3: f64,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_real3_int_shape_real(
+            Points, Weight1, Weight2, Weight3, DegMax, Continuity, Tol3D,
+        )
+    }
+
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  Points.
+    ///
+    /// The points will be constructed as follow:
+    /// P(i,j) = gp_Pnt( X0 + (i-1)*dX ,
+    /// Y0 + (j-1)*dY ,
+    /// ZPoints(i,j)   )
+    ///
+    /// The resulting BSpline will  have the following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    /// 4- the parametrization of the surface will verify:
+    /// S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
+    pub fn new_array2ofreal_real4_int2_shape_real(
+        ZPoints: &crate::ffi::TColStd_Array2OfReal,
+        X0: f64,
+        dX: f64,
+        Y0: f64,
+        dY: f64,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofreal_real4_int2_shape_real(
+            ZPoints, X0, dX, Y0, dY, DegMin, DegMax, Continuity, Tol3D,
+        )
+    }
+
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  Points.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D.
+    pub fn new_array2ofpnt_int2_shape(
+        Points: &crate::ffi::TColgp_Array2OfPnt,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_array2ofpnt_int2_shape_real(Points, DegMin, DegMax, Continuity, 1.0e-3)
+    }
+
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  Points.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D.
+    pub fn new_array2ofpnt_parametrizationtype_int2_shape(
+        Points: &crate::ffi::TColgp_Array2OfPnt,
+        ParType: i32,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_array2ofpnt_parametrizationtype_int2_shape_real(
+            Points, ParType, DegMin, DegMax, Continuity, 1.0e-3,
+        )
+    }
+
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  points using variational smoothing algorithm,
+    /// which tries to minimize additional criterium:
+    /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion.
+    pub fn new_array2ofpnt_real3_int_shape(
+        Points: &crate::ffi::TColgp_Array2OfPnt,
+        Weight1: f64,
+        Weight2: f64,
+        Weight3: f64,
+        DegMax: i32,
+        Continuity: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_array2ofpnt_real3_int_shape_real(
+            Points, Weight1, Weight2, Weight3, DegMax, Continuity, 1.0e-3,
+        )
+    }
+
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  Points.
+    ///
+    /// The points will be constructed as follow:
+    /// P(i,j) = gp_Pnt( X0 + (i-1)*dX ,
+    /// Y0 + (j-1)*dY ,
+    /// ZPoints(i,j)   )
+    ///
+    /// The resulting BSpline will  have the following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    /// 4- the parametrization of the surface will verify:
+    /// S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
+    pub fn new_array2ofreal_real4_int2_shape(
+        ZPoints: &crate::ffi::TColStd_Array2OfReal,
+        X0: f64,
+        dX: f64,
+        Y0: f64,
+        dY: f64,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_array2ofreal_real4_int2_shape_real(
+            ZPoints, X0, dX, Y0, dY, DegMin, DegMax, Continuity, 1.0e-3,
+        )
+    }
+
+    /// Approximates  a BSpline Surface passing  through  an
+    /// array of  Point.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D.
+    pub fn init_array2ofpnt_int2_shape_real(
+        self: std::pin::Pin<&mut Self>,
+        Points: &crate::ffi::TColgp_Array2OfPnt,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+    ) {
+        crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofpnt_int2_shape_real(
+            self, Points, DegMin, DegMax, Continuity, Tol3D,
+        )
+    }
+
+    /// Interpolates  a BSpline Surface passing  through  an
+    /// array of  Point.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be 3.
+    /// 2- his  continuity will be  C2.
+    pub fn interpolate_array2ofpnt_parametrizationtype_bool(
+        self: std::pin::Pin<&mut Self>,
+        Points: &crate::ffi::TColgp_Array2OfPnt,
+        ParType: i32,
+        thePeriodic: bool,
+    ) {
+        crate::ffi::GeomAPI_PointsToBSplineSurface_interpolate(self, Points, ParType, thePeriodic)
+    }
+
+    /// Approximates  a BSpline Surface passing  through  an
+    /// array of  Point.  The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D.
+    pub fn init_array2ofpnt_parametrizationtype_int2_shape_real_bool(
+        self: std::pin::Pin<&mut Self>,
+        Points: &crate::ffi::TColgp_Array2OfPnt,
+        ParType: i32,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+        thePeriodic: bool,
+    ) {
+        crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofpnt_parametrizationtype_int2_shape_real_bool(self, Points, ParType, DegMin, DegMax, Continuity, Tol3D, thePeriodic)
+    }
+
+    /// Approximates  a BSpline Surface passing  through  an
+    /// array of  point using variational smoothing algorithm,
+    /// which tries to minimize additional criterium:
+    /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion.
+    pub fn init_array2ofpnt_real3_int_shape_real(
+        self: std::pin::Pin<&mut Self>,
+        Points: &crate::ffi::TColgp_Array2OfPnt,
+        Weight1: f64,
+        Weight2: f64,
+        Weight3: f64,
+        DegMax: i32,
+        Continuity: i32,
+        Tol3D: f64,
+    ) {
+        crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofpnt_real3_int_shape_real(
+            self, Points, Weight1, Weight2, Weight3, DegMax, Continuity, Tol3D,
+        )
+    }
+}
+
+// ========================
 // From GeomAPI_ProjectPointOnCurve.hxx
 // ========================
 
@@ -382,22 +962,22 @@ impl ProjectPointOnCurve {
 
     /// Create the projection  of a  point  <P> on a curve
     /// <Curve>
-    pub fn new_pnt_handlecurve(
+    pub fn new_pnt_handlegeomcurve(
         P: &crate::ffi::gp_Pnt,
         Curve: &crate::ffi::HandleGeomCurve,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnCurve_ctor_pnt_handlecurve(P, Curve)
+        crate::ffi::GeomAPI_ProjectPointOnCurve_ctor_pnt_handlegeomcurve(P, Curve)
     }
 
     /// Create  the projection  of a point <P>  on a curve
     /// <Curve> limited by the two points of parameter Umin and Usup.
-    pub fn new_pnt_handlecurve_real2(
+    pub fn new_pnt_handlegeomcurve_real2(
         P: &crate::ffi::gp_Pnt,
         Curve: &crate::ffi::HandleGeomCurve,
         Umin: f64,
         Usup: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnCurve_ctor_pnt_handlecurve_real2(P, Curve, Umin, Usup)
+        crate::ffi::GeomAPI_ProjectPointOnCurve_ctor_pnt_handlegeomcurve_real2(P, Curve, Umin, Usup)
     }
 
     /// Returns the orthogonal projection
@@ -434,12 +1014,12 @@ impl ProjectPointOnSurf {
 
     /// Create the projection  of a point <P> on a surface
     /// <Surface>
-    pub fn new_pnt_handlesurface_extalgo(
+    pub fn new_pnt_handlegeomsurface_extalgo(
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Algo: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_extalgo(P, Surface, Algo)
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlegeomsurface_extalgo(P, Surface, Algo)
     }
 
     /// Create the projection  of a point <P> on a surface
@@ -447,18 +1027,18 @@ impl ProjectPointOnSurf {
     /// Create the projection of a point <P>  on a surface
     /// <Surface>. The solution are computed in the domain
     /// [Umin,Usup] [Vmin,Vsup] of the surface.
-    pub fn new_pnt_handlesurface_real_extalgo(
+    pub fn new_pnt_handlegeomsurface_real_extalgo(
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Tolerance: f64,
         Algo: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real_extalgo(
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlegeomsurface_real_extalgo(
             P, Surface, Tolerance, Algo,
         )
     }
 
-    pub fn new_pnt_handlesurface_real5_extalgo(
+    pub fn new_pnt_handlegeomsurface_real5_extalgo(
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Umin: f64,
@@ -468,14 +1048,14 @@ impl ProjectPointOnSurf {
         Tolerance: f64,
         Algo: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real5_extalgo(
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlegeomsurface_real5_extalgo(
             P, Surface, Umin, Usup, Vmin, Vsup, Tolerance, Algo,
         )
     }
 
     /// Init the projection  of a point <P> on a surface
     /// <Surface>
-    pub fn new_pnt_handlesurface_real4_extalgo(
+    pub fn new_pnt_handlegeomsurface_real4_extalgo(
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Umin: f64,
@@ -484,19 +1064,19 @@ impl ProjectPointOnSurf {
         Vsup: f64,
         Algo: i32,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlesurface_real4_extalgo(
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlegeomsurface_real4_extalgo(
             P, Surface, Umin, Usup, Vmin, Vsup, Algo,
         )
     }
 
-    pub fn init_pnt_handlesurface_real_extalgo(
+    pub fn init_pnt_handlegeomsurface_real_extalgo(
         self: std::pin::Pin<&mut Self>,
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Tolerance: f64,
         Algo: i32,
     ) {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real_extalgo(
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_real_extalgo(
             self, P, Surface, Tolerance, Algo,
         )
     }
@@ -504,18 +1084,18 @@ impl ProjectPointOnSurf {
     /// Init the projection of a point <P>  on a surface
     /// <Surface>. The solution are computed in the domain
     /// [Umin,Usup] [Vmin,Vsup] of the surface.
-    pub fn init_pnt_handlesurface_extalgo(
+    pub fn init_pnt_handlegeomsurface_extalgo(
         self: std::pin::Pin<&mut Self>,
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Algo: i32,
     ) {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_extalgo(
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_extalgo(
             self, P, Surface, Algo,
         )
     }
 
-    pub fn init_pnt_handlesurface_real5_extalgo(
+    pub fn init_pnt_handlegeomsurface_real5_extalgo(
         self: std::pin::Pin<&mut Self>,
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
@@ -526,7 +1106,7 @@ impl ProjectPointOnSurf {
         Tolerance: f64,
         Algo: i32,
     ) {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real5_extalgo(
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_real5_extalgo(
             self, P, Surface, Umin, Usup, Vmin, Vsup, Tolerance, Algo,
         )
     }
@@ -534,7 +1114,7 @@ impl ProjectPointOnSurf {
     /// Init the projection for many points on a surface
     /// <Surface>. The solutions will be computed in the domain
     /// [Umin,Usup] [Vmin,Vsup] of the surface.
-    pub fn init_pnt_handlesurface_real4_extalgo(
+    pub fn init_pnt_handlegeomsurface_real4_extalgo(
         self: std::pin::Pin<&mut Self>,
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
@@ -544,12 +1124,12 @@ impl ProjectPointOnSurf {
         Vsup: f64,
         Algo: i32,
     ) {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlesurface_real4_extalgo(
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_real4_extalgo(
             self, P, Surface, Umin, Usup, Vmin, Vsup, Algo,
         )
     }
 
-    pub fn init_handlesurface_real5_extalgo(
+    pub fn init_handlegeomsurface_real5_extalgo(
         self: std::pin::Pin<&mut Self>,
         Surface: &crate::ffi::HandleGeomSurface,
         Umin: f64,
@@ -559,12 +1139,12 @@ impl ProjectPointOnSurf {
         Tolerance: f64,
         Algo: i32,
     ) {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_init_handlesurface_real5_extalgo(
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_handlegeomsurface_real5_extalgo(
             self, Surface, Umin, Usup, Vmin, Vsup, Tolerance, Algo,
         )
     }
 
-    pub fn init_handlesurface_real4_extalgo(
+    pub fn init_handlegeomsurface_real4_extalgo(
         self: std::pin::Pin<&mut Self>,
         Surface: &crate::ffi::HandleGeomSurface,
         Umin: f64,
@@ -573,7 +1153,7 @@ impl ProjectPointOnSurf {
         Vsup: f64,
         Algo: i32,
     ) {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_init_handlesurface_real4_extalgo(
+        crate::ffi::GeomAPI_ProjectPointOnSurf_init_handlegeomsurface_real4_extalgo(
             self, Surface, Umin, Usup, Vmin, Vsup, Algo,
         )
     }

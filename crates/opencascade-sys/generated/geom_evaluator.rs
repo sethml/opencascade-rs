@@ -46,6 +46,100 @@ impl HandleGeomEvaluatorCurve {
 }
 
 // ========================
+// From GeomEvaluator_OffsetCurve.hxx
+// ========================
+
+/// Allows to calculate values and derivatives for offset curves in 3D
+pub use crate::ffi::GeomEvaluator_OffsetCurve as OffsetCurve;
+
+impl OffsetCurve {
+    /// Initialize evaluator by curve
+    pub fn new_handlegeomcurve_real_dir(
+        theBase: &crate::ffi::HandleGeomCurve,
+        theOffset: f64,
+        theDirection: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomEvaluator_OffsetCurve_ctor_handlegeomcurve_real_dir(
+            theBase,
+            theOffset,
+            theDirection,
+        )
+    }
+
+    /// Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1
+    pub fn dn(&self, theU: f64, theDeriv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::GeomEvaluator_OffsetCurve_dn(self, theU, theDeriv)
+    }
+
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomEvaluatorCurve> {
+        crate::ffi::GeomEvaluator_OffsetCurve_shallow_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::GeomEvaluator_OffsetCurve_get_type_descriptor()
+    }
+
+    /// Upcast to GeomEvaluator_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::GeomEvaluator_OffsetCurve_as_GeomEvaluator_Curve(self)
+    }
+
+    /// Upcast to GeomEvaluator_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::GeomEvaluator_OffsetCurve_as_GeomEvaluator_Curve_mut(self)
+    }
+}
+
+// ========================
+// From GeomEvaluator_OffsetSurface.hxx
+// ========================
+
+/// Allows to calculate values and derivatives for offset surfaces
+pub use crate::ffi::GeomEvaluator_OffsetSurface as OffsetSurface;
+
+impl OffsetSurface {
+    /// Initialize evaluator by surface
+    pub fn new_handlegeomsurface_real_handlegeomosculatingsurface(
+        theBase: &crate::ffi::HandleGeomSurface,
+        theOffset: f64,
+        theOscSurf: &crate::ffi::HandleGeomOsculatingSurface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomEvaluator_OffsetSurface_ctor_handlegeomsurface_real_handlegeomosculatingsurface(theBase, theOffset, theOscSurf)
+    }
+
+    /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
+    ///
+    /// Raises if N < 1 or theDerU < 0 or theDerV < 0
+    pub fn dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theDerU: i32,
+        theDerV: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::GeomEvaluator_OffsetSurface_dn(self, theU, theV, theDerU, theDerV)
+    }
+
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomEvaluatorSurface> {
+        crate::ffi::GeomEvaluator_OffsetSurface_shallow_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::GeomEvaluator_OffsetSurface_get_type_descriptor()
+    }
+
+    /// Upcast to GeomEvaluator_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::GeomEvaluator_OffsetSurface_as_GeomEvaluator_Surface(self)
+    }
+
+    /// Upcast to GeomEvaluator_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::GeomEvaluator_OffsetSurface_as_GeomEvaluator_Surface_mut(self)
+    }
+}
+
+// ========================
 // From GeomEvaluator_Surface.hxx
 // ========================
 
@@ -89,5 +183,133 @@ impl HandleGeomEvaluatorSurface {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::ffi::GeomEvaluator_Surface> {
         crate::ffi::HandleGeomEvaluatorSurface_get_mut(self)
+    }
+}
+
+// ========================
+// From GeomEvaluator_SurfaceOfExtrusion.hxx
+// ========================
+
+/// Allows to calculate values and derivatives for surfaces of linear extrusion
+pub use crate::ffi::GeomEvaluator_SurfaceOfExtrusion as SurfaceOfExtrusion;
+
+impl SurfaceOfExtrusion {
+    /// Initialize evaluator by surface
+    pub fn new_handlegeomcurve_dir(
+        theBase: &crate::ffi::HandleGeomCurve,
+        theExtrusionDir: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomEvaluator_SurfaceOfExtrusion_ctor_handlegeomcurve_dir(
+            theBase,
+            theExtrusionDir,
+        )
+    }
+
+    /// Initialize evaluator by surface adaptor
+    pub fn new_handleadaptor3dcurve_dir(
+        theBase: &crate::ffi::HandleAdaptor3dCurve,
+        theExtrusionDir: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomEvaluator_SurfaceOfExtrusion_ctor_handleadaptor3dcurve_dir(
+            theBase,
+            theExtrusionDir,
+        )
+    }
+
+    /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
+    ///
+    /// Raises if N < 1 or theDerU < 0 or theDerV < 0
+    pub fn dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theDerU: i32,
+        theDerV: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::GeomEvaluator_SurfaceOfExtrusion_dn(self, theU, theV, theDerU, theDerV)
+    }
+
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomEvaluatorSurface> {
+        crate::ffi::GeomEvaluator_SurfaceOfExtrusion_shallow_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::GeomEvaluator_SurfaceOfExtrusion_get_type_descriptor()
+    }
+
+    /// Upcast to GeomEvaluator_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::GeomEvaluator_SurfaceOfExtrusion_as_GeomEvaluator_Surface(self)
+    }
+
+    /// Upcast to GeomEvaluator_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::GeomEvaluator_SurfaceOfExtrusion_as_GeomEvaluator_Surface_mut(self)
+    }
+}
+
+// ========================
+// From GeomEvaluator_SurfaceOfRevolution.hxx
+// ========================
+
+/// Allows to calculate values and derivatives for surfaces of revolution
+pub use crate::ffi::GeomEvaluator_SurfaceOfRevolution as SurfaceOfRevolution;
+
+impl SurfaceOfRevolution {
+    /// Initialize evaluator by revolved curve, the axis of revolution and the location
+    pub fn new_handlegeomcurve_dir_pnt(
+        theBase: &crate::ffi::HandleGeomCurve,
+        theRevolDir: &crate::ffi::gp_Dir,
+        theRevolLoc: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomEvaluator_SurfaceOfRevolution_ctor_handlegeomcurve_dir_pnt(
+            theBase,
+            theRevolDir,
+            theRevolLoc,
+        )
+    }
+
+    /// Initialize evaluator by adaptor of the revolved curve, the axis of revolution and the location
+    pub fn new_handleadaptor3dcurve_dir_pnt(
+        theBase: &crate::ffi::HandleAdaptor3dCurve,
+        theRevolDir: &crate::ffi::gp_Dir,
+        theRevolLoc: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomEvaluator_SurfaceOfRevolution_ctor_handleadaptor3dcurve_dir_pnt(
+            theBase,
+            theRevolDir,
+            theRevolLoc,
+        )
+    }
+
+    /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
+    ///
+    /// Raises if N < 1 or theDerU < 0 or theDerV < 0
+    pub fn dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theDerU: i32,
+        theDerV: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::GeomEvaluator_SurfaceOfRevolution_dn(self, theU, theV, theDerU, theDerV)
+    }
+
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomEvaluatorSurface> {
+        crate::ffi::GeomEvaluator_SurfaceOfRevolution_shallow_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::GeomEvaluator_SurfaceOfRevolution_get_type_descriptor()
+    }
+
+    /// Upcast to GeomEvaluator_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::GeomEvaluator_SurfaceOfRevolution_as_GeomEvaluator_Surface(self)
+    }
+
+    /// Upcast to GeomEvaluator_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::GeomEvaluator_SurfaceOfRevolution_as_GeomEvaluator_Surface_mut(self)
     }
 }

@@ -88,7 +88,7 @@ impl Edge {
         let curve = geom::BezierCurve::new_array1ofpnt(&poles);
         let handle = geom::BezierCurve::to_handle(curve);
         let handle_curve = handle.to_handle_curve();
-        let make_edge = b_rep_builder_api::MakeEdge::new_handlecurve(&handle_curve);
+        let make_edge = b_rep_builder_api::MakeEdge::new_handlegeomcurve(&handle_curve);
         Self::from_make_edge(make_edge)
     }
 
@@ -117,7 +117,7 @@ impl Edge {
         let harray = t_colgp::HArray1OfPnt::new_array1ofpnt(&poles);
         let harray_handle = t_colgp::HArray1OfPnt::to_handle(harray);
 
-        let mut interpolator = geom_api::Interpolate::new_handleharray1ofpnt_bool_real(
+        let mut interpolator = geom_api::Interpolate::new_handletcolgpharray1ofpnt_bool_real(
             &harray_handle,
             false,
             1.0e-6,
@@ -132,7 +132,7 @@ impl Edge {
         interpolator.pin_mut().perform();
         let bspline_handle = interpolator.curve();
         let handle_curve = bspline_handle.to_handle_curve();
-        let make_edge = b_rep_builder_api::MakeEdge::new_handlecurve(&handle_curve);
+        let make_edge = b_rep_builder_api::MakeEdge::new_handlegeomcurve(&handle_curve);
         Self::from_make_edge(make_edge)
     }
 
@@ -144,7 +144,7 @@ impl Edge {
         let arc = gc::MakeArcOfCircle::new_pnt3(&gp_p1, &gp_p2, &gp_p3);
         let handle_trimmed = arc.value();
         let handle_curve = handle_trimmed.to_handle_curve();
-        let make_edge = b_rep_builder_api::MakeEdge::new_handlecurve(&handle_curve);
+        let make_edge = b_rep_builder_api::MakeEdge::new_handlegeomcurve(&handle_curve);
         Self::from_make_edge(make_edge)
     }
 

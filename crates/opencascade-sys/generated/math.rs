@@ -6,6 +6,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{gauss_points_max, kronrod_points_max};
+
 /// C++ enum: `math_Status`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -39,6 +41,75 @@ impl TryFrom<i32> for Status {
 }
 
 // ========================
+// From math_BFGS.hxx
+// ========================
+
+/// This class implements the Broyden-Fletcher-Goldfarb-Shanno variant of
+/// Davidson-Fletcher-Powell minimization algorithm of a function of
+/// multiple variables.Knowledge of the function's gradient is required.
+///
+/// It is possible to solve conditional optimization problem on hyperparallelepiped.
+/// Method SetBoundary is used to define hyperparallelepiped borders. With boundaries
+/// defined, the algorithm will not make evaluations of the function outside of the
+/// borders.
+pub use crate::ffi::math_BFGS as BFGS;
+
+impl BFGS {
+    /// Initializes the computation of the minimum of a function with
+    /// NbVariables.
+    /// Tolerance, ZEPS and NbIterations are described in the method Perform.
+    /// Warning:
+    /// A call to the Perform method must be made after this
+    /// initialization to effectively compute the minimum of the
+    /// function F.
+    pub fn new_int_real_int_real(
+        NbVariables: i32,
+        Tolerance: f64,
+        NbIterations: i32,
+        ZEPS: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BFGS_ctor_int_real_int_real(NbVariables, Tolerance, NbIterations, ZEPS)
+    }
+
+    /// Initializes the computation of the minimum of a function with
+    /// NbVariables.
+    /// Tolerance, ZEPS and NbIterations are described in the method Perform.
+    /// Warning:
+    /// A call to the Perform method must be made after this
+    /// initialization to effectively compute the minimum of the
+    /// function F.
+    pub fn new_int_real_int(
+        NbVariables: i32,
+        Tolerance: f64,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int_real_int_real(NbVariables, Tolerance, NbIterations, 1.0e-12)
+    }
+
+    /// Initializes the computation of the minimum of a function with
+    /// NbVariables.
+    /// Tolerance, ZEPS and NbIterations are described in the method Perform.
+    /// Warning:
+    /// A call to the Perform method must be made after this
+    /// initialization to effectively compute the minimum of the
+    /// function F.
+    pub fn new_int_real(NbVariables: i32, Tolerance: f64) -> cxx::UniquePtr<Self> {
+        Self::new_int_real_int_real(NbVariables, Tolerance, 200, 1.0e-12)
+    }
+
+    /// Initializes the computation of the minimum of a function with
+    /// NbVariables.
+    /// Tolerance, ZEPS and NbIterations are described in the method Perform.
+    /// Warning:
+    /// A call to the Perform method must be made after this
+    /// initialization to effectively compute the minimum of the
+    /// function F.
+    pub fn new_int(NbVariables: i32) -> cxx::UniquePtr<Self> {
+        Self::new_int_real_int_real(NbVariables, 1.0e-8, 200, 1.0e-12)
+    }
+}
+
+// ========================
 // From math_BissecNewton.hxx
 // ========================
 
@@ -52,6 +123,140 @@ impl BissecNewton {
     /// @param theXTolerance - algorithm tolerance.
     pub fn new_real(theXTolerance: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::math_BissecNewton_ctor_real(theXTolerance)
+    }
+}
+
+// ========================
+// From math_BracketMinimum.hxx
+// ========================
+
+/// Given two distinct initial points, BracketMinimum
+/// implements the computation of three points (a, b, c) which
+/// bracket the minimum of the function and verify A less than
+/// B, B less than C and F(B) less than F(A), F(B) less than F(C).
+///
+/// The algorithm supports conditional optimization. By default no limits are
+/// applied to the parameter change. The method SetLimits defines the allowed range.
+/// If no minimum is found in limits then IsDone() will return false. The user
+/// is in charge of providing A and B to be in limits.
+pub use crate::ffi::math_BracketMinimum as BracketMinimum;
+
+impl BracketMinimum {
+    /// Constructor preparing A and B parameters only. It does not perform the job.
+    pub fn new_real2(A: f64, B: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BracketMinimum_ctor_real2(A, B)
+    }
+
+    /// Given two initial values this class computes a
+    /// bracketing triplet of abscissae Ax, Bx, Cx
+    /// (such that Bx is between Ax and Cx, F(Bx) is
+    /// less than both F(Bx) and F(Cx)) the Brent minimization is done
+    /// on the function F.
+    pub fn new_function_real2(
+        F: std::pin::Pin<&mut crate::ffi::math_Function>,
+        A: f64,
+        B: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BracketMinimum_ctor_function_real2(F, A, B)
+    }
+
+    /// Given two initial values this class computes a
+    /// bracketing triplet of abscissae Ax, Bx, Cx
+    /// (such that Bx is between Ax and Cx, F(Bx) is
+    /// less than both F(Bx) and F(Cx)) the Brent minimization is done
+    /// on the function F.
+    /// This constructor has to be used if F(A) is known.
+    pub fn new_function_real3(
+        F: std::pin::Pin<&mut crate::ffi::math_Function>,
+        A: f64,
+        B: f64,
+        FA: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BracketMinimum_ctor_function_real3(F, A, B, FA)
+    }
+
+    /// Given two initial values this class computes a
+    /// bracketing triplet of abscissae Ax, Bx, Cx
+    /// (such that Bx is between Ax and Cx, F(Bx) is
+    /// less than both F(Bx) and F(Cx)) the Brent minimization is done
+    /// on the function F.
+    /// This constructor has to be used if F(A) and F(B) are known.
+    pub fn new_function_real4(
+        F: std::pin::Pin<&mut crate::ffi::math_Function>,
+        A: f64,
+        B: f64,
+        FA: f64,
+        FB: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BracketMinimum_ctor_function_real4(F, A, B, FA, FB)
+    }
+}
+
+// ========================
+// From math_BracketedRoot.hxx
+// ========================
+
+/// This class implements the Brent method to find the root of a function
+/// located within two bounds. No knowledge of the derivative is required.
+pub use crate::ffi::math_BracketedRoot as BracketedRoot;
+
+impl BracketedRoot {
+    /// The Brent method is used to find the root of the function F between
+    /// the bounds Bound1 and Bound2 on the function F.
+    /// If F(Bound1)*F(Bound2) >0 the Brent method fails.
+    /// The tolerance required for the root is given by Tolerance.
+    /// The solution is found when :
+    /// abs(Xi - Xi-1) <= Tolerance;
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_function_real3_int_real(
+        F: std::pin::Pin<&mut crate::ffi::math_Function>,
+        Bound1: f64,
+        Bound2: f64,
+        Tolerance: f64,
+        NbIterations: i32,
+        ZEPS: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BracketedRoot_ctor_function_real3_int_real(
+            F,
+            Bound1,
+            Bound2,
+            Tolerance,
+            NbIterations,
+            ZEPS,
+        )
+    }
+
+    /// The Brent method is used to find the root of the function F between
+    /// the bounds Bound1 and Bound2 on the function F.
+    /// If F(Bound1)*F(Bound2) >0 the Brent method fails.
+    /// The tolerance required for the root is given by Tolerance.
+    /// The solution is found when :
+    /// abs(Xi - Xi-1) <= Tolerance;
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_function_real3_int(
+        F: std::pin::Pin<&mut crate::ffi::math_Function>,
+        Bound1: f64,
+        Bound2: f64,
+        Tolerance: f64,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_function_real3_int_real(F, Bound1, Bound2, Tolerance, NbIterations, 1.0e-12)
+    }
+
+    /// The Brent method is used to find the root of the function F between
+    /// the bounds Bound1 and Bound2 on the function F.
+    /// If F(Bound1)*F(Bound2) >0 the Brent method fails.
+    /// The tolerance required for the root is given by Tolerance.
+    /// The solution is found when :
+    /// abs(Xi - Xi-1) <= Tolerance;
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_function_real3(
+        F: std::pin::Pin<&mut crate::ffi::math_Function>,
+        Bound1: f64,
+        Bound2: f64,
+        Tolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_function_real3_int_real(F, Bound1, Bound2, Tolerance, 100, 1.0e-12)
     }
 }
 
@@ -111,6 +316,88 @@ impl BrentMinimum {
 }
 
 // ========================
+// From math_BullardGenerator.hxx
+// ========================
+
+/// Fast random number generator (the algorithm proposed by Ian C. Bullard).
+pub use crate::ffi::math_BullardGenerator as BullardGenerator;
+
+impl BullardGenerator {
+    /// Creates new Xorshift 64-bit RNG.
+    pub fn new_uint(theSeed: u32) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BullardGenerator_ctor_uint(theSeed)
+    }
+
+    /// Creates new Xorshift 64-bit RNG.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_uint(1)
+    }
+}
+
+// ========================
+// From math_ComputeGaussPointsAndWeights.hxx
+// ========================
+
+pub use crate::ffi::math_ComputeGaussPointsAndWeights as ComputeGaussPointsAndWeights;
+
+impl ComputeGaussPointsAndWeights {
+    pub fn new_int(Number: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_ComputeGaussPointsAndWeights_ctor_int(Number)
+    }
+}
+
+// ========================
+// From math_ComputeKronrodPointsAndWeights.hxx
+// ========================
+
+pub use crate::ffi::math_ComputeKronrodPointsAndWeights as ComputeKronrodPointsAndWeights;
+
+impl ComputeKronrodPointsAndWeights {
+    pub fn new_int(Number: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_ComputeKronrodPointsAndWeights_ctor_int(Number)
+    }
+}
+
+// ========================
+// From math_Crout.hxx
+// ========================
+
+/// This class implements the Crout algorithm used to solve a
+/// system A*X = B where A is a symmetric matrix. It can be used to
+/// invert a symmetric matrix.
+/// This algorithm is similar to Gauss but is faster than Gauss.
+/// Only the inferior triangle of A and the diagonal can be given.
+pub use crate::ffi::math_Crout as Crout;
+
+impl Crout {
+    /// Given an input matrix A, this algorithm inverts A by the
+    /// Crout algorithm. The user can give only the inferior
+    /// triangle for the implementation.
+    /// A can be decomposed like this:
+    /// A = L * D * T(L) where L is triangular inferior and D is
+    /// diagonal.
+    /// If one element of A is less than MinPivot, A is
+    /// considered as singular.
+    /// Exception NotSquare is raised if A is not a square matrix.
+    pub fn new_matrix_real(A: &crate::ffi::math_Matrix, MinPivot: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_Crout_ctor_matrix_real(A, MinPivot)
+    }
+
+    /// Given an input matrix A, this algorithm inverts A by the
+    /// Crout algorithm. The user can give only the inferior
+    /// triangle for the implementation.
+    /// A can be decomposed like this:
+    /// A = L * D * T(L) where L is triangular inferior and D is
+    /// diagonal.
+    /// If one element of A is less than MinPivot, A is
+    /// considered as singular.
+    /// Exception NotSquare is raised if A is not a square matrix.
+    pub fn new_matrix(A: &crate::ffi::math_Matrix) -> cxx::UniquePtr<Self> {
+        Self::new_matrix_real(A, 1.0e-20)
+    }
+}
+
+// ========================
 // From math_DirectPolynomialRoots.hxx
 // ========================
 
@@ -145,6 +432,27 @@ impl DirectPolynomialRoots {
 }
 
 // ========================
+// From math_DoubleTab.hxx
+// ========================
+
+pub use crate::ffi::math_DoubleTab as DoubleTab;
+
+impl DoubleTab {
+    pub fn new_int4(
+        LowerRow: i32,
+        UpperRow: i32,
+        LowerCol: i32,
+        UpperCol: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_DoubleTab_ctor_int4(LowerRow, UpperRow, LowerCol, UpperCol)
+    }
+
+    pub fn new_doubletab(Other: &crate::ffi::math_DoubleTab) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_DoubleTab_ctor_doubletab(Other)
+    }
+}
+
+// ========================
 // From math_EigenValuesSearcher.hxx
 // ========================
 
@@ -162,12 +470,404 @@ impl EigenValuesSearcher {
 }
 
 // ========================
+// From math_FRPR.hxx
+// ========================
+
+/// this class implements the Fletcher-Reeves-Polak_Ribiere minimization
+/// algorithm of a function of multiple variables.
+/// Knowledge of the function's gradient is required.
+pub use crate::ffi::math_FRPR as FRPR;
+
+impl FRPR {
+    /// Initializes the computation of the minimum of F.
+    /// Warning: constructor does not perform computations.
+    pub fn new_multiplevarfunctionwithgradient_real_int_real(
+        theFunction: &crate::ffi::math_MultipleVarFunctionWithGradient,
+        theTolerance: f64,
+        theNbIterations: i32,
+        theZEPS: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_FRPR_ctor_multiplevarfunctionwithgradient_real_int_real(
+            theFunction,
+            theTolerance,
+            theNbIterations,
+            theZEPS,
+        )
+    }
+
+    /// Initializes the computation of the minimum of F.
+    /// Warning: constructor does not perform computations.
+    pub fn new_multiplevarfunctionwithgradient_real_int(
+        theFunction: &crate::ffi::math_MultipleVarFunctionWithGradient,
+        theTolerance: f64,
+        theNbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_multiplevarfunctionwithgradient_real_int_real(
+            theFunction,
+            theTolerance,
+            theNbIterations,
+            1.0e-12,
+        )
+    }
+
+    /// Initializes the computation of the minimum of F.
+    /// Warning: constructor does not perform computations.
+    pub fn new_multiplevarfunctionwithgradient_real(
+        theFunction: &crate::ffi::math_MultipleVarFunctionWithGradient,
+        theTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_multiplevarfunctionwithgradient_real_int_real(
+            theFunction,
+            theTolerance,
+            200,
+            1.0e-12,
+        )
+    }
+}
+
+// ========================
 // From math_Function.hxx
 // ========================
 
 /// This abstract class describes the virtual functions
 /// associated with a Function of a single variable.
 pub use crate::ffi::math_Function as Function;
+
+// ========================
+// From math_FunctionAllRoots.hxx
+// ========================
+
+/// This algorithm uses a sample of the function to find
+/// all intervals on which the function is null, and afterwards
+/// uses the FunctionRoots algorithm to find the points
+/// where the function is null outside the "null intervals".
+/// Knowledge of the derivative is required.
+pub use crate::ffi::math_FunctionAllRoots as FunctionAllRoots;
+
+impl FunctionAllRoots {
+    /// The algorithm uses the sample to find intervals on which
+    /// the function is null. An interval is found if, for at least
+    /// two consecutive points of the sample, Ui and Ui+1, we get
+    /// |F(Ui)|<=EpsNul and |F(Ui+1)|<=EpsNul. The real bounds of
+    /// an interval are computed with the FunctionRoots.
+    /// algorithm.
+    /// Between two intervals, the roots of the function F are
+    /// calculated using the FunctionRoots algorithm.
+    pub fn new_functionwithderivative_functionsample_real3(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        S: &crate::ffi::math_FunctionSample,
+        EpsX: f64,
+        EpsF: f64,
+        EpsNul: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_FunctionAllRoots_ctor_functionwithderivative_functionsample_real3(
+            F, S, EpsX, EpsF, EpsNul,
+        )
+    }
+}
+
+// ========================
+// From math_FunctionRoot.hxx
+// ========================
+
+/// This class implements the computation of a root of a function of
+/// a single variable which is near an initial guess using a minimization
+/// algorithm.Knowledge of the derivative is required. The
+/// algorithm used is the same as in
+pub use crate::ffi::math_FunctionRoot as FunctionRoot;
+
+impl FunctionRoot {
+    /// The Newton-Raphson method is done to find the root of the function F
+    /// from the initial guess Guess.The tolerance required on
+    /// the root is given by Tolerance. Iterations are stopped if
+    /// the expected solution does not stay in the range A..B.
+    /// The solution is found when abs(Xi - Xi-1) <= Tolerance;
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_functionwithderivative_real2_int(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        Guess: f64,
+        Tolerance: f64,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_FunctionRoot_ctor_functionwithderivative_real2_int(
+            F,
+            Guess,
+            Tolerance,
+            NbIterations,
+        )
+    }
+
+    /// The Newton-Raphson method is done to find the root of the function F
+    /// from the initial guess Guess.
+    /// The tolerance required on the root is given by Tolerance.
+    /// Iterations are stopped if the expected solution does not stay in the
+    /// range A..B
+    /// The solution is found when abs(Xi - Xi-1) <= Tolerance;
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_functionwithderivative_real4_int(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        Guess: f64,
+        Tolerance: f64,
+        A: f64,
+        B: f64,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_FunctionRoot_ctor_functionwithderivative_real4_int(
+            F,
+            Guess,
+            Tolerance,
+            A,
+            B,
+            NbIterations,
+        )
+    }
+
+    /// The Newton-Raphson method is done to find the root of the function F
+    /// from the initial guess Guess.The tolerance required on
+    /// the root is given by Tolerance. Iterations are stopped if
+    /// the expected solution does not stay in the range A..B.
+    /// The solution is found when abs(Xi - Xi-1) <= Tolerance;
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_functionwithderivative_real2(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        Guess: f64,
+        Tolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionwithderivative_real2_int(F, Guess, Tolerance, 100)
+    }
+
+    /// The Newton-Raphson method is done to find the root of the function F
+    /// from the initial guess Guess.
+    /// The tolerance required on the root is given by Tolerance.
+    /// Iterations are stopped if the expected solution does not stay in the
+    /// range A..B
+    /// The solution is found when abs(Xi - Xi-1) <= Tolerance;
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_functionwithderivative_real4(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        Guess: f64,
+        Tolerance: f64,
+        A: f64,
+        B: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionwithderivative_real4_int(F, Guess, Tolerance, A, B, 100)
+    }
+}
+
+// ========================
+// From math_FunctionRoots.hxx
+// ========================
+
+/// This class implements an algorithm which finds all the real roots of
+/// a function with derivative within a given range.
+/// Knowledge of the derivative is required.
+pub use crate::ffi::math_FunctionRoots as FunctionRoots;
+
+impl FunctionRoots {
+    /// Calculates all the real roots of a function F-K within the range
+    /// A..B. without conditions on A and B
+    /// A solution X is found when
+    /// abs(Xi - Xi-1) <= Epsx and abs(F(Xi)-K) <= EpsF.
+    /// The function is considered as null between A and B if
+    /// abs(F-K) <= EpsNull within this range.
+    pub fn new_functionwithderivative_real2_int_real4(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        A: f64,
+        B: f64,
+        NbSample: i32,
+        EpsX: f64,
+        EpsF: f64,
+        EpsNull: f64,
+        K: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_FunctionRoots_ctor_functionwithderivative_real2_int_real4(
+            F, A, B, NbSample, EpsX, EpsF, EpsNull, K,
+        )
+    }
+
+    /// Calculates all the real roots of a function F-K within the range
+    /// A..B. without conditions on A and B
+    /// A solution X is found when
+    /// abs(Xi - Xi-1) <= Epsx and abs(F(Xi)-K) <= EpsF.
+    /// The function is considered as null between A and B if
+    /// abs(F-K) <= EpsNull within this range.
+    pub fn new_functionwithderivative_real2_int_real3(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        A: f64,
+        B: f64,
+        NbSample: i32,
+        EpsX: f64,
+        EpsF: f64,
+        EpsNull: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionwithderivative_real2_int_real4(
+            F, A, B, NbSample, EpsX, EpsF, EpsNull, 0.0,
+        )
+    }
+
+    /// Calculates all the real roots of a function F-K within the range
+    /// A..B. without conditions on A and B
+    /// A solution X is found when
+    /// abs(Xi - Xi-1) <= Epsx and abs(F(Xi)-K) <= EpsF.
+    /// The function is considered as null between A and B if
+    /// abs(F-K) <= EpsNull within this range.
+    pub fn new_functionwithderivative_real2_int_real2(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        A: f64,
+        B: f64,
+        NbSample: i32,
+        EpsX: f64,
+        EpsF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionwithderivative_real2_int_real4(F, A, B, NbSample, EpsX, EpsF, 0.0, 0.0)
+    }
+
+    /// Calculates all the real roots of a function F-K within the range
+    /// A..B. without conditions on A and B
+    /// A solution X is found when
+    /// abs(Xi - Xi-1) <= Epsx and abs(F(Xi)-K) <= EpsF.
+    /// The function is considered as null between A and B if
+    /// abs(F-K) <= EpsNull within this range.
+    pub fn new_functionwithderivative_real2_int_real(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        A: f64,
+        B: f64,
+        NbSample: i32,
+        EpsX: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionwithderivative_real2_int_real4(F, A, B, NbSample, EpsX, 0.0, 0.0, 0.0)
+    }
+
+    /// Calculates all the real roots of a function F-K within the range
+    /// A..B. without conditions on A and B
+    /// A solution X is found when
+    /// abs(Xi - Xi-1) <= Epsx and abs(F(Xi)-K) <= EpsF.
+    /// The function is considered as null between A and B if
+    /// abs(F-K) <= EpsNull within this range.
+    pub fn new_functionwithderivative_real2_int(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        A: f64,
+        B: f64,
+        NbSample: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionwithderivative_real2_int_real4(F, A, B, NbSample, 0.0, 0.0, 0.0, 0.0)
+    }
+}
+
+// ========================
+// From math_FunctionSample.hxx
+// ========================
+
+/// This class gives a default sample (constant difference
+/// of parameter) for a function defined between
+/// two bound A,B.
+pub use crate::ffi::math_FunctionSample as FunctionSample;
+
+impl FunctionSample {
+    pub fn new_real2_int(A: f64, B: f64, N: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_FunctionSample_ctor_real2_int(A, B, N)
+    }
+}
+
+// ========================
+// From math_FunctionSet.hxx
+// ========================
+
+/// This abstract class describes the virtual functions associated to
+/// a set on N Functions of M independent variables.
+pub use crate::ffi::math_FunctionSet as FunctionSet;
+
+// ========================
+// From math_FunctionSetRoot.hxx
+// ========================
+
+/// The math_FunctionSetRoot class calculates the root
+/// of a set of N functions of M variables (N<M, N=M or N>M). Knowing
+/// an initial guess of the solution and using a minimization algorithm, a search
+/// is made in the Newton direction and then in the Gradient direction if there
+/// is no success in the Newton direction. This algorithm can also be
+/// used for functions minimization. Knowledge of all the partial
+/// derivatives (the Jacobian) is required.
+pub use crate::ffi::math_FunctionSetRoot as FunctionSetRoot;
+
+impl FunctionSetRoot {
+    /// is used in a sub-class to initialize correctly all the fields
+    /// of this class.
+    /// The range (1, F.NbVariables()) must be especially
+    /// respected for all vectors and matrix declarations.
+    pub fn new_functionsetwithderivatives_vector_int(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionSetWithDerivatives>,
+        Tolerance: &crate::ffi::math_Vector,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_FunctionSetRoot_ctor_functionsetwithderivatives_vector_int(
+            F,
+            Tolerance,
+            NbIterations,
+        )
+    }
+
+    /// is used in a sub-class to initialize correctly all the fields
+    /// of this class.
+    /// The range (1, F.NbVariables()) must be especially
+    /// respected for all vectors and matrix declarations.
+    /// The method SetTolerance must be called after this
+    /// constructor.
+    pub fn new_functionsetwithderivatives_int(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionSetWithDerivatives>,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_FunctionSetRoot_ctor_functionsetwithderivatives_int(F, NbIterations)
+    }
+
+    /// is used in a sub-class to initialize correctly all the fields
+    /// of this class.
+    /// The range (1, F.NbVariables()) must be especially
+    /// respected for all vectors and matrix declarations.
+    pub fn new_functionsetwithderivatives_vector(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionSetWithDerivatives>,
+        Tolerance: &crate::ffi::math_Vector,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionsetwithderivatives_vector_int(F, Tolerance, 100)
+    }
+
+    /// is used in a sub-class to initialize correctly all the fields
+    /// of this class.
+    /// The range (1, F.NbVariables()) must be especially
+    /// respected for all vectors and matrix declarations.
+    /// The method SetTolerance must be called after this
+    /// constructor.
+    pub fn new_functionsetwithderivatives(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionSetWithDerivatives>,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionsetwithderivatives_int(F, 100)
+    }
+}
+
+// ========================
+// From math_FunctionSetWithDerivatives.hxx
+// ========================
+
+/// This abstract class describes the virtual functions associated
+/// with a set of N Functions each of M independent variables.
+pub use crate::ffi::math_FunctionSetWithDerivatives as FunctionSetWithDerivatives;
+
+impl FunctionSetWithDerivatives {
+    /// Upcast to math_FunctionSet
+    pub fn as_function_set(&self) -> &FunctionSet {
+        crate::ffi::math_FunctionSetWithDerivatives_as_math_FunctionSet(self)
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_function_set_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut FunctionSet> {
+        crate::ffi::math_FunctionSetWithDerivatives_as_math_FunctionSet_mut(self)
+    }
+
+    /// Inherited from math_FunctionSet: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::math_FunctionSetWithDerivatives_inherited_GetStateNumber(self)
+    }
+}
 
 // ========================
 // From math_FunctionWithDerivative.hxx
@@ -192,6 +892,35 @@ impl FunctionWithDerivative {
     /// Inherited from math_Function: GetStateNumber()
     pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
         crate::ffi::math_FunctionWithDerivative_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From math_Gauss.hxx
+// ========================
+
+/// This class implements the Gauss LU decomposition (Crout algorithm)
+/// with partial pivoting (rows interchange) of a square matrix and
+/// the different possible derived calculation :
+/// - solution of a set of linear equations.
+/// - inverse of a matrix.
+/// - determinant of a matrix.
+pub use crate::ffi::math_Gauss as Gauss;
+
+impl Gauss {
+    /// Given an input n X n matrix A this constructor performs its LU
+    /// decomposition with partial pivoting (interchange of rows).
+    /// This LU decomposition is stored internally and may be used to
+    /// do subsequent calculation.
+    /// If the largest pivot found is less than MinPivot the matrix A is
+    /// considered as singular.
+    /// Exception NotSquare is raised if A is not a square matrix.
+    pub fn new_matrix_real_progressrange(
+        A: &crate::ffi::math_Matrix,
+        MinPivot: f64,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_Gauss_ctor_matrix_real_progressrange(A, MinPivot, theProgress)
     }
 }
 
@@ -227,6 +956,316 @@ impl GaussLeastSquare {
     /// is considered as singular.
     pub fn new_matrix(A: &crate::ffi::math_Matrix) -> cxx::UniquePtr<Self> {
         Self::new_matrix_real(A, 1.0e-20)
+    }
+}
+
+// ========================
+// From math_GaussMultipleIntegration.hxx
+// ========================
+
+/// This class implements the integration of a function of multiple
+/// variables between the parameter bounds Lower[a..b] and Upper[a..b].
+/// Warning: Each element of Order must be inferior or equal to 61.
+pub use crate::ffi::math_GaussMultipleIntegration as GaussMultipleIntegration;
+
+impl GaussMultipleIntegration {
+    /// The Gauss-Legendre integration with Order = points of
+    /// integration for each unknown, is done on the function F
+    /// between the bounds Lower and Upper.
+    pub fn new_multiplevarfunction_vector2_integervector(
+        F: std::pin::Pin<&mut crate::ffi::math_MultipleVarFunction>,
+        Lower: &crate::ffi::math_Vector,
+        Upper: &crate::ffi::math_Vector,
+        Order: &crate::ffi::math_IntegerVector,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_GaussMultipleIntegration_ctor_multiplevarfunction_vector2_integervector(
+            F, Lower, Upper, Order,
+        )
+    }
+}
+
+// ========================
+// From math_GaussSetIntegration.hxx
+// ========================
+
+/// -- This class implements the integration of a set of N
+/// functions of M  variables variables between the
+/// parameter bounds Lower[a..b] and Upper[a..b].
+/// Warning: - The case M>1 is not implemented.
+pub use crate::ffi::math_GaussSetIntegration as GaussSetIntegration;
+
+impl GaussSetIntegration {
+    /// The Gauss-Legendre integration with Order = points of
+    /// integration for each unknown, is done on the function F
+    /// between the bounds Lower and Upper.
+    pub fn new_functionset_vector2_integervector(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionSet>,
+        Lower: &crate::ffi::math_Vector,
+        Upper: &crate::ffi::math_Vector,
+        Order: &crate::ffi::math_IntegerVector,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_GaussSetIntegration_ctor_functionset_vector2_integervector(
+            F, Lower, Upper, Order,
+        )
+    }
+}
+
+// ========================
+// From math_GaussSingleIntegration.hxx
+// ========================
+
+/// This class implements the integration of a function of a single variable
+/// between the parameter bounds Lower and Upper.
+/// Warning: Order must be inferior or equal to 61.
+pub use crate::ffi::math_GaussSingleIntegration as GaussSingleIntegration;
+
+impl GaussSingleIntegration {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::math_GaussSingleIntegration_ctor()
+    }
+
+    /// The Gauss-Legendre integration with N = Order points of integration,
+    /// is done on the function F between the bounds Lower and Upper.
+    pub fn new_function_real2_int(
+        F: std::pin::Pin<&mut crate::ffi::math_Function>,
+        Lower: f64,
+        Upper: f64,
+        Order: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_GaussSingleIntegration_ctor_function_real2_int(F, Lower, Upper, Order)
+    }
+
+    /// The Gauss-Legendre integration with N = Order points of integration  and
+    /// given tolerance = Tol is done on the function F between the bounds
+    /// Lower and Upper.
+    pub fn new_function_real2_int_real(
+        F: std::pin::Pin<&mut crate::ffi::math_Function>,
+        Lower: f64,
+        Upper: f64,
+        Order: i32,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_GaussSingleIntegration_ctor_function_real2_int_real(
+            F, Lower, Upper, Order, Tol,
+        )
+    }
+}
+
+// ========================
+// From math_GlobOptMin.hxx
+// ========================
+
+/// This class represents Evtushenko's algorithm of global optimization based on non-uniform mesh.
+/// Article: Yu. Evtushenko. Numerical methods for finding global extreme (case of a non-uniform
+/// mesh). U.S.S.R. Comput. Maths. Math. Phys., Vol. 11, N 6, pp. 38-54.
+///
+/// This method performs search on non-uniform mesh. The search space is a box in R^n space.
+/// The default behavior is to find all minimums in that box. Computation of maximums is not
+/// supported.
+///
+/// The search box can be split into smaller boxes by discontinuity criteria.
+/// This functionality is covered by SetGlobalParams and SetLocalParams API.
+///
+/// It is possible to set continuity of the local boxes.
+/// Such option can forcibly change local extrema search.
+/// In other words if theFunc can be casted to the function with Hessian but, continuity is set to 1
+/// Gradient based local optimization method will be used, not Hessian based method.
+/// This functionality is covered by SetContinuity and GetContinuity API.
+///
+/// It is possible to freeze Lipschitz const to avoid internal modifications on it.
+/// This functionality is covered by SetLipConstState and GetLipConstState API.
+///
+/// It is possible to perform single solution search.
+/// This functionality is covered by first parameter in Perform method.
+///
+/// It is possible to set / get minimal value of the functional.
+/// It works well together with single solution search.
+/// This functionality is covered by SetFunctionalMinimalValue and GetFunctionalMinimalValue API.
+pub use crate::ffi::math_GlobOptMin as GlobOptMin;
+
+// ========================
+// From math_Householder.hxx
+// ========================
+
+/// This class implements the least square solution of a set of
+/// linear equations of m unknowns (n >= m) using the Householder
+/// method. It solves A.X = B.
+/// This algorithm has more numerical stability than
+/// GaussLeastSquare but is longer.
+/// It must be used if the matrix is singular or nearly singular.
+/// It is about 16% longer than GaussLeastSquare if there is only
+/// one member B to solve.
+/// It is about 30% longer if there are twenty B members to solve.
+pub use crate::ffi::math_Householder as Householder;
+
+impl Householder {
+    /// Given an input matrix A with n>= m, given an input matrix B
+    /// this constructor performs the least square resolution of
+    /// the set of linear equations A.X = B for each column of B.
+    /// If a column norm is less than EPS, the resolution can't
+    /// be done.
+    /// Exception DimensionError is raised if the row number of B
+    /// is different from the A row number.
+    pub fn new_matrix2_real(
+        A: &crate::ffi::math_Matrix,
+        B: &crate::ffi::math_Matrix,
+        EPS: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_Householder_ctor_matrix2_real(A, B, EPS)
+    }
+
+    /// Given an input matrix A with n>= m, given an input matrix B
+    /// this constructor performs the least square resolution of
+    /// the set of linear equations A.X = B for each column of B.
+    /// If a column norm is less than EPS, the resolution can't
+    /// be done.
+    /// Exception DimensionError is raised if the row number of B
+    /// is different from the A row number.
+    pub fn new_matrix2_int4_real(
+        A: &crate::ffi::math_Matrix,
+        B: &crate::ffi::math_Matrix,
+        lowerArow: i32,
+        upperArow: i32,
+        lowerAcol: i32,
+        upperAcol: i32,
+        EPS: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_Householder_ctor_matrix2_int4_real(
+            A, B, lowerArow, upperArow, lowerAcol, upperAcol, EPS,
+        )
+    }
+
+    /// Given an input matrix A with n>= m, given an input vector B
+    /// this constructor performs the least square resolution of
+    /// the set of linear equations A.X = B.
+    /// If a column norm is less than EPS, the resolution can't
+    /// be done.
+    /// Exception DimensionError is raised if the length of B
+    /// is different from the A row number.
+    pub fn new_matrix_vector_real(
+        A: &crate::ffi::math_Matrix,
+        B: &crate::ffi::math_Vector,
+        EPS: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_Householder_ctor_matrix_vector_real(A, B, EPS)
+    }
+
+    /// Given an input matrix A with n>= m, given an input matrix B
+    /// this constructor performs the least square resolution of
+    /// the set of linear equations A.X = B for each column of B.
+    /// If a column norm is less than EPS, the resolution can't
+    /// be done.
+    /// Exception DimensionError is raised if the row number of B
+    /// is different from the A row number.
+    pub fn new_matrix2(
+        A: &crate::ffi::math_Matrix,
+        B: &crate::ffi::math_Matrix,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_matrix2_real(A, B, 1.0e-20)
+    }
+
+    /// Given an input matrix A with n>= m, given an input matrix B
+    /// this constructor performs the least square resolution of
+    /// the set of linear equations A.X = B for each column of B.
+    /// If a column norm is less than EPS, the resolution can't
+    /// be done.
+    /// Exception DimensionError is raised if the row number of B
+    /// is different from the A row number.
+    pub fn new_matrix2_int4(
+        A: &crate::ffi::math_Matrix,
+        B: &crate::ffi::math_Matrix,
+        lowerArow: i32,
+        upperArow: i32,
+        lowerAcol: i32,
+        upperAcol: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_matrix2_int4_real(A, B, lowerArow, upperArow, lowerAcol, upperAcol, 1.0e-20)
+    }
+
+    /// Given an input matrix A with n>= m, given an input vector B
+    /// this constructor performs the least square resolution of
+    /// the set of linear equations A.X = B.
+    /// If a column norm is less than EPS, the resolution can't
+    /// be done.
+    /// Exception DimensionError is raised if the length of B
+    /// is different from the A row number.
+    pub fn new_matrix_vector(
+        A: &crate::ffi::math_Matrix,
+        B: &crate::ffi::math_Vector,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_matrix_vector_real(A, B, 1.0e-20)
+    }
+}
+
+// ========================
+// From math_Jacobi.hxx
+// ========================
+
+/// This class implements the Jacobi method to find the eigenvalues and
+/// the eigenvectors of a real symmetric square matrix.
+/// A sort of eigenvalues is done.
+pub use crate::ffi::math_Jacobi as Jacobi;
+
+impl Jacobi {
+    /// Given a Real n X n matrix A, this constructor computes all its
+    /// eigenvalues and eigenvectors using the Jacobi method.
+    /// The exception NotSquare is raised if the matrix is not square.
+    /// No verification that the matrix A is really symmetric is done.
+    pub fn new_matrix(A: &crate::ffi::math_Matrix) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_Jacobi_ctor_matrix(A)
+    }
+}
+
+// ========================
+// From math_KronrodSingleIntegration.hxx
+// ========================
+
+/// This class implements the Gauss-Kronrod method of
+/// integral computation.
+pub use crate::ffi::math_KronrodSingleIntegration as KronrodSingleIntegration;
+
+impl KronrodSingleIntegration {
+    /// An empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::math_KronrodSingleIntegration_ctor()
+    }
+
+    /// Constructor. Takes the function, the lower and upper bound
+    /// values, the initial number of Kronrod points
+    pub fn new_function_real2_int(
+        theFunction: std::pin::Pin<&mut crate::ffi::math_Function>,
+        theLower: f64,
+        theUpper: f64,
+        theNbPnts: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_KronrodSingleIntegration_ctor_function_real2_int(
+            theFunction,
+            theLower,
+            theUpper,
+            theNbPnts,
+        )
+    }
+
+    /// Constructor. Takes the function, the lower and upper bound
+    /// values, the initial number of Kronrod points, the
+    /// tolerance value and the maximal number of iterations as
+    /// parameters.
+    pub fn new_function_real2_int_real_int(
+        theFunction: std::pin::Pin<&mut crate::ffi::math_Function>,
+        theLower: f64,
+        theUpper: f64,
+        theNbPnts: i32,
+        theTolerance: f64,
+        theMaxNbIter: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_KronrodSingleIntegration_ctor_function_real2_int_real_int(
+            theFunction,
+            theLower,
+            theUpper,
+            theNbPnts,
+            theTolerance,
+            theMaxNbIter,
+        )
     }
 }
 
@@ -403,7 +1442,883 @@ impl Matrix {
 }
 
 // ========================
+// From math_MultipleVarFunction.hxx
+// ========================
+
+/// Describes the virtual functions associated with a multiple variable function.
+pub use crate::ffi::math_MultipleVarFunction as MultipleVarFunction;
+
+// ========================
+// From math_MultipleVarFunctionWithGradient.hxx
+// ========================
+
+/// The abstract class MultipleVarFunctionWithGradient
+/// describes the virtual functions associated with a multiple variable function.
+pub use crate::ffi::math_MultipleVarFunctionWithGradient as MultipleVarFunctionWithGradient;
+
+impl MultipleVarFunctionWithGradient {
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_multiple_var_function(&self) -> &MultipleVarFunction {
+        crate::ffi::math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut MultipleVarFunction> {
+        crate::ffi::math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::math_MultipleVarFunctionWithGradient_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From math_MultipleVarFunctionWithHessian.hxx
+// ========================
+
+pub use crate::ffi::math_MultipleVarFunctionWithHessian as MultipleVarFunctionWithHessian;
+
+impl MultipleVarFunctionWithHessian {
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_multiple_var_function(&self) -> &MultipleVarFunction {
+        crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut MultipleVarFunction> {
+        crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_multiple_var_function_with_gradient(&self) -> &MultipleVarFunctionWithGradient {
+        crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient(
+            self,
+        )
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_multiple_var_function_with_gradient_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut MultipleVarFunctionWithGradient> {
+        crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient_mut(
+            self,
+        )
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::math_MultipleVarFunctionWithHessian_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From math_NewtonFunctionRoot.hxx
+// ========================
+
+/// This class implements the calculation of a root of a function of
+/// a single variable starting from an initial near guess using the
+/// Newton algorithm. Knowledge of the derivative is required.
+pub use crate::ffi::math_NewtonFunctionRoot as NewtonFunctionRoot;
+
+impl NewtonFunctionRoot {
+    /// The Newton method is done to find the root of the function F
+    /// from the initial guess Guess.
+    /// The tolerance required on the root is given by Tolerance.
+    /// The solution is found when :
+    /// abs(Xi - Xi-1) <= EpsX and abs(F(Xi))<= EpsF
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_functionwithderivative_real3_int(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        Guess: f64,
+        EpsX: f64,
+        EpsF: f64,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_NewtonFunctionRoot_ctor_functionwithderivative_real3_int(
+            F,
+            Guess,
+            EpsX,
+            EpsF,
+            NbIterations,
+        )
+    }
+
+    /// The Newton method is done to find the root of the function F
+    /// from the initial guess Guess.
+    /// The solution must be inside the interval [A, B].
+    /// The tolerance required on the root is given by Tolerance.
+    /// The solution is found when :
+    /// abs(Xi - Xi-1) <= EpsX and abs(F(Xi))<= EpsF
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_functionwithderivative_real5_int(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        Guess: f64,
+        EpsX: f64,
+        EpsF: f64,
+        A: f64,
+        B: f64,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_NewtonFunctionRoot_ctor_functionwithderivative_real5_int(
+            F,
+            Guess,
+            EpsX,
+            EpsF,
+            A,
+            B,
+            NbIterations,
+        )
+    }
+
+    /// is used in a sub-class to initialize correctly all the fields
+    /// of this class.
+    pub fn new_real4_int(
+        A: f64,
+        B: f64,
+        EpsX: f64,
+        EpsF: f64,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_NewtonFunctionRoot_ctor_real4_int(A, B, EpsX, EpsF, NbIterations)
+    }
+
+    /// The Newton method is done to find the root of the function F
+    /// from the initial guess Guess.
+    /// The tolerance required on the root is given by Tolerance.
+    /// The solution is found when :
+    /// abs(Xi - Xi-1) <= EpsX and abs(F(Xi))<= EpsF
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_functionwithderivative_real3(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        Guess: f64,
+        EpsX: f64,
+        EpsF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionwithderivative_real3_int(F, Guess, EpsX, EpsF, 100)
+    }
+
+    /// The Newton method is done to find the root of the function F
+    /// from the initial guess Guess.
+    /// The solution must be inside the interval [A, B].
+    /// The tolerance required on the root is given by Tolerance.
+    /// The solution is found when :
+    /// abs(Xi - Xi-1) <= EpsX and abs(F(Xi))<= EpsF
+    /// The maximum number of iterations allowed is given by NbIterations.
+    pub fn new_functionwithderivative_real5(
+        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
+        Guess: f64,
+        EpsX: f64,
+        EpsF: f64,
+        A: f64,
+        B: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionwithderivative_real5_int(F, Guess, EpsX, EpsF, A, B, 100)
+    }
+
+    /// is used in a sub-class to initialize correctly all the fields
+    /// of this class.
+    pub fn new_real4(A: f64, B: f64, EpsX: f64, EpsF: f64) -> cxx::UniquePtr<Self> {
+        Self::new_real4_int(A, B, EpsX, EpsF, 100)
+    }
+}
+
+// ========================
+// From math_NewtonFunctionSetRoot.hxx
+// ========================
+
+/// This class computes the root of a set of N functions of N variables,
+/// knowing an initial guess at the solution and using the
+/// Newton Raphson algorithm. Knowledge of all the partial
+/// derivatives (Jacobian) is required.
+pub use crate::ffi::math_NewtonFunctionSetRoot as NewtonFunctionSetRoot;
+
+impl NewtonFunctionSetRoot {
+    /// Initialize correctly all the fields of this class.
+    /// The range (1, F.NbVariables()) must be especially respected for
+    /// all vectors and matrix declarations.
+    pub fn new_functionsetwithderivatives_vector_real_int(
+        theFunction: std::pin::Pin<&mut crate::ffi::math_FunctionSetWithDerivatives>,
+        theXTolerance: &crate::ffi::math_Vector,
+        theFTolerance: f64,
+        tehNbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_vector_real_int(
+            theFunction,
+            theXTolerance,
+            theFTolerance,
+            tehNbIterations,
+        )
+    }
+
+    /// This constructor should be used in a sub-class to initialize
+    /// correctly all the fields of this class.
+    /// The range (1, F.NbVariables()) must be especially respected for
+    /// all vectors and matrix declarations.
+    /// The method SetTolerance must be called before performing the algorithm.
+    pub fn new_functionsetwithderivatives_real_int(
+        theFunction: std::pin::Pin<&mut crate::ffi::math_FunctionSetWithDerivatives>,
+        theFTolerance: f64,
+        theNbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_real_int(
+            theFunction,
+            theFTolerance,
+            theNbIterations,
+        )
+    }
+
+    /// Initialize correctly all the fields of this class.
+    /// The range (1, F.NbVariables()) must be especially respected for
+    /// all vectors and matrix declarations.
+    pub fn new_functionsetwithderivatives_vector_real(
+        theFunction: std::pin::Pin<&mut crate::ffi::math_FunctionSetWithDerivatives>,
+        theXTolerance: &crate::ffi::math_Vector,
+        theFTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionsetwithderivatives_vector_real_int(
+            theFunction,
+            theXTolerance,
+            theFTolerance,
+            100,
+        )
+    }
+
+    /// This constructor should be used in a sub-class to initialize
+    /// correctly all the fields of this class.
+    /// The range (1, F.NbVariables()) must be especially respected for
+    /// all vectors and matrix declarations.
+    /// The method SetTolerance must be called before performing the algorithm.
+    pub fn new_functionsetwithderivatives_real(
+        theFunction: std::pin::Pin<&mut crate::ffi::math_FunctionSetWithDerivatives>,
+        theFTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_functionsetwithderivatives_real_int(theFunction, theFTolerance, 100)
+    }
+}
+
+// ========================
+// From math_NewtonMinimum.hxx
+// ========================
+
+pub use crate::ffi::math_NewtonMinimum as NewtonMinimum;
+
+impl NewtonMinimum {
+    /// The tolerance required on the solution is given by Tolerance.
+    /// Iteration are  stopped if (!WithSingularity) and H(F(Xi)) is not definite
+    /// positive (if the smaller eigenvalue of H < Convexity)
+    /// or IsConverged() returns True for 2 successives Iterations.
+    /// Warning: This constructor does not perform computation.
+    pub fn new_multiplevarfunctionwithhessian_real_int_real_bool(
+        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theTolerance: f64,
+        theNbIterations: i32,
+        theConvexity: f64,
+        theWithSingularity: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_NewtonMinimum_ctor_multiplevarfunctionwithhessian_real_int_real_bool(
+            theFunction,
+            theTolerance,
+            theNbIterations,
+            theConvexity,
+            theWithSingularity,
+        )
+    }
+
+    /// The tolerance required on the solution is given by Tolerance.
+    /// Iteration are  stopped if (!WithSingularity) and H(F(Xi)) is not definite
+    /// positive (if the smaller eigenvalue of H < Convexity)
+    /// or IsConverged() returns True for 2 successives Iterations.
+    /// Warning: This constructor does not perform computation.
+    pub fn new_multiplevarfunctionwithhessian_real_int_real(
+        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theTolerance: f64,
+        theNbIterations: i32,
+        theConvexity: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_multiplevarfunctionwithhessian_real_int_real_bool(
+            theFunction,
+            theTolerance,
+            theNbIterations,
+            theConvexity,
+            true,
+        )
+    }
+
+    /// The tolerance required on the solution is given by Tolerance.
+    /// Iteration are  stopped if (!WithSingularity) and H(F(Xi)) is not definite
+    /// positive (if the smaller eigenvalue of H < Convexity)
+    /// or IsConverged() returns True for 2 successives Iterations.
+    /// Warning: This constructor does not perform computation.
+    pub fn new_multiplevarfunctionwithhessian_real_int(
+        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theTolerance: f64,
+        theNbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_multiplevarfunctionwithhessian_real_int_real_bool(
+            theFunction,
+            theTolerance,
+            theNbIterations,
+            1.0e-6,
+            true,
+        )
+    }
+
+    /// The tolerance required on the solution is given by Tolerance.
+    /// Iteration are  stopped if (!WithSingularity) and H(F(Xi)) is not definite
+    /// positive (if the smaller eigenvalue of H < Convexity)
+    /// or IsConverged() returns True for 2 successives Iterations.
+    /// Warning: This constructor does not perform computation.
+    pub fn new_multiplevarfunctionwithhessian_real(
+        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_multiplevarfunctionwithhessian_real_int_real_bool(
+            theFunction,
+            theTolerance,
+            40,
+            1.0e-6,
+            true,
+        )
+    }
+
+    /// Returns the Status of computation.
+    /// The exception NotDone is raised if an error has occurred.
+    pub fn get_status(&self) -> i32 {
+        crate::ffi::math_NewtonMinimum_get_status(self)
+    }
+}
+
+// ========================
+// From math_NotSquare.hxx
+// ========================
+
+pub use crate::ffi::math_NotSquare as NotSquare;
+
+impl NotSquare {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::math_NotSquare_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_NotSquare_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_NotSquare_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::math_NotSquare_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::math_NotSquare_get_type_descriptor()
+    }
+}
+
+// ========================
+// From math_PSO.hxx
+// ========================
+
+/// In this class implemented variation of Particle Swarm Optimization (PSO) method.
+/// A. Ismael F. Vaz, L. N. Vicente
+/// "A particle swarm pattern search method for bound constrained global optimization"
+///
+/// Algorithm description:
+/// Init Section:
+/// At start of computation a number of "particles" are placed in the search space.
+/// Each particle is assigned a random velocity.
+///
+/// Computational loop:
+/// The particles are moved in cycle, simulating some "social" behavior, so that new position of
+/// a particle on each step depends not only on its velocity and previous path, but also on the
+/// position of the best particle in the pool and best obtained position for current particle.
+/// The velocity of the particles is decreased on each step, so that convergence is guaranteed.
+///
+/// Algorithm output:
+/// Best point in param space (position of the best particle) and value of objective function.
+///
+/// Pros:
+/// One of the fastest algorithms.
+/// Work over functions with a lot local extremums.
+/// Does not require calculation of derivatives of the functional.
+///
+/// Cons:
+/// Convergence to global minimum not proved, which is a typical drawback for all stochastic
+/// algorithms. The result depends on random number generator.
+///
+/// Warning: PSO is effective to walk into optimum surrounding, not to get strict optimum.
+/// Run local optimization from pso output point.
+/// Warning: In PSO used fixed seed in RNG, so results are reproducible.
+pub use crate::ffi::math_PSO as PSO;
+
+// ========================
+// From math_PSOParticlesPool.hxx
+// ========================
+
+/// Describes particle pool for using in PSO algorithm.
+/// Indexes:
+/// 0 <= aDimidx <= myDimensionCount - 1
+pub use crate::ffi::PSO_Particle as Particle;
+
+impl Particle {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::PSO_Particle_ctor()
+    }
+}
+
+pub use crate::ffi::math_PSOParticlesPool as PSOParticlesPool;
+
+impl PSOParticlesPool {
+    pub fn new_int2(theParticlesCount: i32, theDimensionCount: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_PSOParticlesPool_ctor_int2(theParticlesCount, theDimensionCount)
+    }
+}
+
+// ========================
+// From math_Powell.hxx
+// ========================
+
+/// This class implements the Powell method to find the minimum of
+/// function of multiple variables (the gradient does not have to be known).
+pub use crate::ffi::math_Powell as Powell;
+
+impl Powell {
+    /// Constructor. Initialize new entity.
+    pub fn new_multiplevarfunction_real_int_real(
+        theFunction: &crate::ffi::math_MultipleVarFunction,
+        theTolerance: f64,
+        theNbIterations: i32,
+        theZEPS: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_Powell_ctor_multiplevarfunction_real_int_real(
+            theFunction,
+            theTolerance,
+            theNbIterations,
+            theZEPS,
+        )
+    }
+
+    /// Constructor. Initialize new entity.
+    pub fn new_multiplevarfunction_real_int(
+        theFunction: &crate::ffi::math_MultipleVarFunction,
+        theTolerance: f64,
+        theNbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_multiplevarfunction_real_int_real(
+            theFunction,
+            theTolerance,
+            theNbIterations,
+            1.0e-12,
+        )
+    }
+
+    /// Constructor. Initialize new entity.
+    pub fn new_multiplevarfunction_real(
+        theFunction: &crate::ffi::math_MultipleVarFunction,
+        theTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_multiplevarfunction_real_int_real(theFunction, theTolerance, 200, 1.0e-12)
+    }
+}
+
+// ========================
+// From math_SVD.hxx
+// ========================
+
+/// SVD implements the solution of a set of N linear equations
+/// of M unknowns without condition on N or M. The Singular
+/// Value Decomposition algorithm is used. For singular or
+/// nearly singular matrices SVD is a better choice than Gauss
+/// or GaussLeastSquare.
+pub use crate::ffi::math_SVD as SVD;
+
+impl SVD {
+    /// Given as input an n X m matrix A with n < m, n = m or n > m
+    /// this constructor performs the Singular Value Decomposition.
+    pub fn new_matrix(A: &crate::ffi::math_Matrix) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_SVD_ctor_matrix(A)
+    }
+}
+
+// ========================
+// From math_SingularMatrix.hxx
+// ========================
+
+pub use crate::ffi::math_SingularMatrix as SingularMatrix;
+
+impl SingularMatrix {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::math_SingularMatrix_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_SingularMatrix_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_SingularMatrix_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::math_SingularMatrix_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::math_SingularMatrix_get_type_descriptor()
+    }
+}
+
+// ========================
+// From math_TrigonometricEquationFunction.hxx
+// ========================
+
+/// This is function, which corresponds trigonometric equation
+/// a*Cos(x)*Cos(x) + 2*b*Cos(x)*Sin(x) + c*Cos(x) + d*Sin(x) + e = 0
+/// See class math_TrigonometricFunctionRoots
+pub use crate::ffi::math_TrigonometricEquationFunction as TrigonometricEquationFunction;
+
+impl TrigonometricEquationFunction {
+    pub fn new_real5(A: f64, B: f64, C: f64, D: f64, E: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_TrigonometricEquationFunction_ctor_real5(A, B, C, D, E)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_function(&self) -> &Function {
+        crate::ffi::math_TrigonometricEquationFunction_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
+        crate::ffi::math_TrigonometricEquationFunction_as_math_Function_mut(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_function_with_derivative(&self) -> &FunctionWithDerivative {
+        crate::ffi::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_function_with_derivative_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut FunctionWithDerivative> {
+        crate::ffi::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative_mut(self)
+    }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::math_TrigonometricEquationFunction_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From math_TrigonometricFunctionRoots.hxx
+// ========================
+
+/// This class implements the solutions of the equation
+/// a*Cos(x)*Cos(x) + 2*b*Cos(x)*Sin(x) + c*Cos(x) + d*Sin(x) + e
+/// The degree of this equation can be 4, 3 or 2.
+pub use crate::ffi::math_TrigonometricFunctionRoots as TrigonometricFunctionRoots;
+
+impl TrigonometricFunctionRoots {
+    /// Given coefficients a, b, c, d , e, this constructor
+    /// performs the resolution of the equation above.
+    /// The solutions must be contained in [InfBound, SupBound].
+    /// InfBound and SupBound can be set by default to 0 and 2*PI.
+    pub fn new_real7(
+        A: f64,
+        B: f64,
+        C: f64,
+        D: f64,
+        E: f64,
+        InfBound: f64,
+        SupBound: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_TrigonometricFunctionRoots_ctor_real7(A, B, C, D, E, InfBound, SupBound)
+    }
+
+    /// Given the two coefficients d and e, it performs
+    /// the resolution of d*sin(x) + e = 0.
+    /// The solutions must be contained in [InfBound, SupBound].
+    /// InfBound and SupBound can be set by default to 0 and 2*PI.
+    pub fn new_real4(D: f64, E: f64, InfBound: f64, SupBound: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_TrigonometricFunctionRoots_ctor_real4(D, E, InfBound, SupBound)
+    }
+
+    /// Given the three coefficients c, d and e, it performs
+    /// the resolution of c*Cos(x) + d*sin(x) + e = 0.
+    /// The solutions must be contained in [InfBound, SupBound].
+    /// InfBound and SupBound can be set by default to 0 and 2*PI.
+    pub fn new_real5(C: f64, D: f64, E: f64, InfBound: f64, SupBound: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_TrigonometricFunctionRoots_ctor_real5(C, D, E, InfBound, SupBound)
+    }
+}
+
+// ========================
+// From math_Uzawa.hxx
+// ========================
+
+/// This class implements a system resolution C*X = B with
+/// an approach solution X0. There are no conditions on the
+/// number of equations. The algorithm used is the Uzawa
+/// algorithm. It is possible to have equal or inequal  (<)
+/// equations to solve. The resolution is done with a
+/// minimization of Norm(X-X0).
+/// If there are only equal equations, the resolution is directly
+/// done and is similar to Gauss resolution with an optimisation
+/// because the matrix is a symmetric matrix.
+/// (The resolution is done with Crout algorithm)
+pub use crate::ffi::math_Uzawa as Uzawa;
+
+impl Uzawa {
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (only
+    /// = equations) with a minimization of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont.
+    pub fn new_matrix_vector2_real2_int(
+        Cont: &crate::ffi::math_Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        EpsLix: f64,
+        EpsLic: f64,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_Uzawa_ctor_matrix_vector2_real2_int(
+            Cont,
+            Secont,
+            StartingPoint,
+            EpsLix,
+            EpsLic,
+            NbIterations,
+        )
+    }
+
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (the Nce
+    /// first equations are equal equations and the Nci last
+    /// equations are inequalities <) with a minimization
+    /// of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// There are no conditions on Nce and Nci.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont and from
+    /// Nce + Nci.
+    pub fn new_matrix_vector2_int2_real2_int(
+        Cont: &crate::ffi::math_Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        Nci: i32,
+        Nce: i32,
+        EpsLix: f64,
+        EpsLic: f64,
+        NbIterations: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_Uzawa_ctor_matrix_vector2_int2_real2_int(
+            Cont,
+            Secont,
+            StartingPoint,
+            Nci,
+            Nce,
+            EpsLix,
+            EpsLic,
+            NbIterations,
+        )
+    }
+
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (only
+    /// = equations) with a minimization of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont.
+    pub fn new_matrix_vector2_real2(
+        Cont: &crate::ffi::math_Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        EpsLix: f64,
+        EpsLic: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, EpsLix, EpsLic, 500)
+    }
+
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (only
+    /// = equations) with a minimization of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont.
+    pub fn new_matrix_vector2_real(
+        Cont: &crate::ffi::math_Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        EpsLix: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, EpsLix, 1.0e-06, 500)
+    }
+
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (only
+    /// = equations) with a minimization of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont.
+    pub fn new_matrix_vector2(
+        Cont: &crate::ffi::math_Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, 1.0e-06, 1.0e-06, 500)
+    }
+
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (the Nce
+    /// first equations are equal equations and the Nci last
+    /// equations are inequalities <) with a minimization
+    /// of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// There are no conditions on Nce and Nci.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont and from
+    /// Nce + Nci.
+    pub fn new_matrix_vector2_int2_real2(
+        Cont: &crate::ffi::math_Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        Nci: i32,
+        Nce: i32,
+        EpsLix: f64,
+        EpsLic: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_matrix_vector2_int2_real2_int(
+            Cont,
+            Secont,
+            StartingPoint,
+            Nci,
+            Nce,
+            EpsLix,
+            EpsLic,
+            500,
+        )
+    }
+
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (the Nce
+    /// first equations are equal equations and the Nci last
+    /// equations are inequalities <) with a minimization
+    /// of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// There are no conditions on Nce and Nci.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont and from
+    /// Nce + Nci.
+    pub fn new_matrix_vector2_int2_real(
+        Cont: &crate::ffi::math_Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        Nci: i32,
+        Nce: i32,
+        EpsLix: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_matrix_vector2_int2_real2_int(
+            Cont,
+            Secont,
+            StartingPoint,
+            Nci,
+            Nce,
+            EpsLix,
+            1.0e-06,
+            500,
+        )
+    }
+
+    /// Given an input matrix Cont, two input vectors Secont
+    /// and StartingPoint, it solves Cont*X = Secont (the Nce
+    /// first equations are equal equations and the Nci last
+    /// equations are inequalities <) with a minimization
+    /// of Norme(X-X0).
+    /// The maximum iterations number allowed is fixed to
+    /// NbIterations.
+    /// The tolerance EpsLic is fixed for the dual variable
+    /// convergence. The tolerance EpsLix is used for the
+    /// convergence of X.
+    /// There are no conditions on Nce and Nci.
+    /// Exception ConstructionError is raised if the line number
+    /// of Cont is different from the length of Secont and from
+    /// Nce + Nci.
+    pub fn new_matrix_vector2_int2(
+        Cont: &crate::ffi::math_Matrix,
+        Secont: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi::math_Vector,
+        Nci: i32,
+        Nce: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_matrix_vector2_int2_real2_int(
+            Cont,
+            Secont,
+            StartingPoint,
+            Nci,
+            Nce,
+            1.0e-06,
+            1.0e-06,
+            500,
+        )
+    }
+}
+
+// ========================
+// From math_ValueAndWeight.hxx
+// ========================
+
+/// Simple container storing two reals: value and weight
+pub use crate::ffi::math_ValueAndWeight as ValueAndWeight;
+
+impl ValueAndWeight {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::math_ValueAndWeight_ctor()
+    }
+
+    pub fn new_real2(theValue: f64, theWeight: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_ValueAndWeight_ctor_real2(theValue, theWeight)
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::math_Vector as Vector;
+pub use crate::ffi::{math_IntegerVector as IntegerVector, math_Vector as Vector};

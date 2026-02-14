@@ -6,6 +6,35 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::write_2;
+
+// ========================
+// From StlAPI_Reader.hxx
+// ========================
+
+/// Reading from stereolithography format.
+/// Reads STL file and creates a shape composed of triangular faces, one per facet.
+/// IMPORTANT: This approach is very inefficient, especially for large files.
+/// IMPORTANT: Consider reading STL file to Poly_Triangulation object instead (see class RWStl).
+pub use crate::ffi::StlAPI_Reader as Reader;
+
+impl Reader {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::StlAPI_Reader_ctor()
+    }
+
+    /// Reads STL file to the TopoDS_Shape (each triangle is converted to the face).
+    /// @return True if reading is successful
+    pub fn read(
+        self: std::pin::Pin<&mut Self>,
+        theShape: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
+        theFileName: &str,
+    ) -> bool {
+        crate::ffi::StlAPI_Reader_read(self, theShape, theFileName)
+    }
+}
+
 // ========================
 // From StlAPI_Writer.hxx
 // ========================

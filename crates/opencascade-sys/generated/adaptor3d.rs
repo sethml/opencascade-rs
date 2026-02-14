@@ -108,6 +108,10 @@ impl Curve {
         crate::ffi::Adaptor3d_Curve_b_spline(self)
     }
 
+    pub fn offset_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetCurve> {
+        crate::ffi::Adaptor3d_Curve_offset_curve(self)
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Adaptor3d_Curve_get_type_descriptor()
     }
@@ -152,17 +156,21 @@ impl CurveOnSurface {
         crate::ffi::Adaptor3d_CurveOnSurface_ctor()
     }
 
-    pub fn new_handlesurface(S: &crate::ffi::HandleAdaptor3dSurface) -> cxx::UniquePtr<Self> {
-        crate::ffi::Adaptor3d_CurveOnSurface_ctor_handlesurface(S)
+    pub fn new_handleadaptor3dsurface(
+        S: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_CurveOnSurface_ctor_handleadaptor3dsurface(S)
     }
 
     /// Creates a CurveOnSurface from the 2d curve <C> and
     /// the surface <S>.
-    pub fn new_handlecurve2d_handlesurface(
+    pub fn new_handleadaptor2dcurve2d_handleadaptor3dsurface(
         C: &crate::ffi::HandleAdaptor2dCurve2d,
         S: &crate::ffi::HandleAdaptor3dSurface,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Adaptor3d_CurveOnSurface_ctor_handlecurve2d_handlesurface(C, S)
+        crate::ffi::Adaptor3d_CurveOnSurface_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface(
+            C, S,
+        )
     }
 
     /// Shallow copy of adaptor
@@ -254,6 +262,555 @@ impl CurveOnSurface {
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
         crate::ffi::Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve_mut(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: OffsetCurve()
+    pub fn offset_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetCurve> {
+        crate::ffi::Adaptor3d_CurveOnSurface_inherited_OffsetCurve(self)
+    }
+}
+
+// ========================
+// From Adaptor3d_HSurfaceTool.hxx
+// ========================
+
+pub use crate::ffi::Adaptor3d_HSurfaceTool as HSurfaceTool;
+
+impl HSurfaceTool {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_HSurfaceTool_ctor()
+    }
+
+    pub fn first_u_parameter(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
+        crate::ffi::Adaptor3d_HSurfaceTool_first_u_parameter(theSurf)
+    }
+
+    pub fn first_v_parameter(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
+        crate::ffi::Adaptor3d_HSurfaceTool_first_v_parameter(theSurf)
+    }
+
+    pub fn last_u_parameter(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
+        crate::ffi::Adaptor3d_HSurfaceTool_last_u_parameter(theSurf)
+    }
+
+    pub fn last_v_parameter(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
+        crate::ffi::Adaptor3d_HSurfaceTool_last_v_parameter(theSurf)
+    }
+
+    pub fn nb_u_intervals(theSurf: &crate::ffi::HandleAdaptor3dSurface, theSh: i32) -> i32 {
+        crate::ffi::Adaptor3d_HSurfaceTool_nb_u_intervals(theSurf, theSh)
+    }
+
+    pub fn nb_v_intervals(theSurf: &crate::ffi::HandleAdaptor3dSurface, theSh: i32) -> i32 {
+        crate::ffi::Adaptor3d_HSurfaceTool_nb_v_intervals(theSurf, theSh)
+    }
+
+    /// If <First> >= <Last>
+    pub fn u_trim(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theFirst: f64,
+        theLast: f64,
+        theTol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::Adaptor3d_HSurfaceTool_u_trim(theSurf, theFirst, theLast, theTol)
+    }
+
+    /// If <First> >= <Last>
+    pub fn v_trim(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theFirst: f64,
+        theLast: f64,
+        theTol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::Adaptor3d_HSurfaceTool_v_trim(theSurf, theFirst, theLast, theTol)
+    }
+
+    pub fn is_u_closed(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        crate::ffi::Adaptor3d_HSurfaceTool_is_u_closed(theSurf)
+    }
+
+    pub fn is_v_closed(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        crate::ffi::Adaptor3d_HSurfaceTool_is_v_closed(theSurf)
+    }
+
+    pub fn is_u_periodic(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        crate::ffi::Adaptor3d_HSurfaceTool_is_u_periodic(theSurf)
+    }
+
+    pub fn u_period(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
+        crate::ffi::Adaptor3d_HSurfaceTool_u_period(theSurf)
+    }
+
+    pub fn is_v_periodic(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> bool {
+        crate::ffi::Adaptor3d_HSurfaceTool_is_v_periodic(theSurf)
+    }
+
+    pub fn v_period(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
+        crate::ffi::Adaptor3d_HSurfaceTool_v_period(theSurf)
+    }
+
+    pub fn value(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theU: f64,
+        theV: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Adaptor3d_HSurfaceTool_value(theSurf, theU, theV)
+    }
+
+    pub fn d0(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theU: f64,
+        theV: f64,
+        thePnt: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+    ) {
+        crate::ffi::Adaptor3d_HSurfaceTool_d0(theSurf, theU, theV, thePnt)
+    }
+
+    pub fn d1(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theU: f64,
+        theV: f64,
+        thePnt: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        theD1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Adaptor3d_HSurfaceTool_d1(theSurf, theU, theV, thePnt, theD1U, theD1V)
+    }
+
+    pub fn d2(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theU: f64,
+        theV: f64,
+        thePnt: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        theD1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Adaptor3d_HSurfaceTool_d2(
+            theSurf, theU, theV, thePnt, theD1U, theD1V, theD2U, theD2V, theD2UV,
+        )
+    }
+
+    pub fn d3(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theU: f64,
+        theV: f64,
+        thePnt: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        theD1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        theD3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Adaptor3d_HSurfaceTool_d3(
+            theSurf, theU, theV, thePnt, theD1U, theD1V, theD2U, theD2V, theD2UV, theD3U, theD3V,
+            theD3UUV, theD3UVV,
+        )
+    }
+
+    pub fn dn(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theU: f64,
+        theV: f64,
+        theNU: i32,
+        theNV: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Adaptor3d_HSurfaceTool_dn(theSurf, theU, theV, theNU, theNV)
+    }
+
+    pub fn u_resolution(theSurf: &crate::ffi::HandleAdaptor3dSurface, theR3d: f64) -> f64 {
+        crate::ffi::Adaptor3d_HSurfaceTool_u_resolution(theSurf, theR3d)
+    }
+
+    pub fn v_resolution(theSurf: &crate::ffi::HandleAdaptor3dSurface, theR3d: f64) -> f64 {
+        crate::ffi::Adaptor3d_HSurfaceTool_v_resolution(theSurf, theR3d)
+    }
+
+    pub fn get_type(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> i32 {
+        crate::ffi::Adaptor3d_HSurfaceTool_get_type(theSurf)
+    }
+
+    pub fn plane(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::Adaptor3d_HSurfaceTool_plane(theSurf)
+    }
+
+    pub fn cylinder(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::Adaptor3d_HSurfaceTool_cylinder(theSurf)
+    }
+
+    pub fn cone(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::Adaptor3d_HSurfaceTool_cone(theSurf)
+    }
+
+    pub fn torus(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::Adaptor3d_HSurfaceTool_torus(theSurf)
+    }
+
+    pub fn sphere(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::Adaptor3d_HSurfaceTool_sphere(theSurf)
+    }
+
+    pub fn bezier(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierSurface> {
+        crate::ffi::Adaptor3d_HSurfaceTool_bezier(theSurf)
+    }
+
+    pub fn b_spline(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineSurface> {
+        crate::ffi::Adaptor3d_HSurfaceTool_b_spline(theSurf)
+    }
+
+    pub fn axe_of_revolution(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Adaptor3d_HSurfaceTool_axe_of_revolution(theSurf)
+    }
+
+    pub fn direction(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::Adaptor3d_HSurfaceTool_direction(theSurf)
+    }
+
+    pub fn basis_curve(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
+        crate::ffi::Adaptor3d_HSurfaceTool_basis_curve(theSurf)
+    }
+
+    pub fn basis_surface(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::Adaptor3d_HSurfaceTool_basis_surface(theSurf)
+    }
+
+    pub fn offset_value(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
+        crate::ffi::Adaptor3d_HSurfaceTool_offset_value(theSurf)
+    }
+
+    pub fn is_surf_g1(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theAlongU: bool,
+        theAngTol: f64,
+    ) -> bool {
+        crate::ffi::Adaptor3d_HSurfaceTool_is_surf_g1(theSurf, theAlongU, theAngTol)
+    }
+
+    pub fn nb_samples_u_handleadaptor3dsurface(S: &crate::ffi::HandleAdaptor3dSurface) -> i32 {
+        crate::ffi::Adaptor3d_HSurfaceTool_nb_samples_u_handleadaptor3dsurface(S)
+    }
+
+    pub fn nb_samples_v_handleadaptor3dsurface(S: &crate::ffi::HandleAdaptor3dSurface) -> i32 {
+        crate::ffi::Adaptor3d_HSurfaceTool_nb_samples_v_handleadaptor3dsurface(S)
+    }
+
+    pub fn nb_samples_u_handleadaptor3dsurface_real2(
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        u1: f64,
+        u2: f64,
+    ) -> i32 {
+        crate::ffi::Adaptor3d_HSurfaceTool_nb_samples_u_handleadaptor3dsurface_real2(S, u1, u2)
+    }
+
+    pub fn nb_samples_v_handleadaptor3dsurface_real2(
+        arg0: &crate::ffi::HandleAdaptor3dSurface,
+        v1: f64,
+        v2: f64,
+    ) -> i32 {
+        crate::ffi::Adaptor3d_HSurfaceTool_nb_samples_v_handleadaptor3dsurface_real2(arg0, v1, v2)
+    }
+}
+
+// ========================
+// From Adaptor3d_HVertex.hxx
+// ========================
+
+pub use crate::ffi::Adaptor3d_HVertex as HVertex;
+
+impl HVertex {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_HVertex_ctor()
+    }
+
+    pub fn new_pnt2d_orientation_real(
+        P: &crate::ffi::gp_Pnt2d,
+        Ori: i32,
+        Resolution: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_HVertex_ctor_pnt2d_orientation_real(P, Ori, Resolution)
+    }
+
+    pub fn value(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Adaptor3d_HVertex_value(self)
+    }
+
+    pub fn orientation(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Adaptor3d_HVertex_orientation(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Adaptor3d_HVertex_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dHVertex> {
+        crate::ffi::Adaptor3d_HVertex_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleAdaptor3dHVertex;
+
+impl HandleAdaptor3dHVertex {
+    /// Dereference this Handle to access the underlying Adaptor3d_HVertex
+    pub fn get(&self) -> &crate::ffi::Adaptor3d_HVertex {
+        crate::ffi::HandleAdaptor3dHVertex_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Adaptor3d_HVertex
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Adaptor3d_HVertex> {
+        crate::ffi::HandleAdaptor3dHVertex_get_mut(self)
+    }
+}
+
+// ========================
+// From Adaptor3d_InterFunc.hxx
+// ========================
+
+/// Used to find the points U(t) = U0 or V(t) = V0 in
+/// order to determine the  Cn discontinuities of  an
+/// Adpator_CurveOnSurface  relatively  to    the
+/// discontinuities of the surface. Used to
+/// find the roots of the functions
+pub use crate::ffi::Adaptor3d_InterFunc as InterFunc;
+
+impl InterFunc {
+    /// build the function  U(t)=FixVal   if Fix =1 or
+    /// V(t)=FixVal if Fix=2
+    pub fn new_handleadaptor2dcurve2d_real_int(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        FixVal: f64,
+        Fix: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_InterFunc_ctor_handleadaptor2dcurve2d_real_int(C, FixVal, Fix)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        crate::ffi::Adaptor3d_InterFunc_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::Function> {
+        crate::ffi::Adaptor3d_InterFunc_as_math_Function_mut(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        crate::ffi::Adaptor3d_InterFunc_as_math_FunctionWithDerivative(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
+        crate::ffi::Adaptor3d_InterFunc_as_math_FunctionWithDerivative_mut(self)
+    }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Adaptor3d_InterFunc_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From Adaptor3d_IsoCurve.hxx
+// ========================
+
+/// Defines an isoparametric curve on  a surface.  The
+/// type  of isoparametric curve  (U  or V) is defined
+/// with the   enumeration  IsoType from   GeomAbs  if
+/// NoneIso is given an error is raised.
+pub use crate::ffi::Adaptor3d_IsoCurve as IsoCurve;
+
+impl IsoCurve {
+    /// The iso is set to NoneIso.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_IsoCurve_ctor()
+    }
+
+    /// The surface is loaded. The iso is set to NoneIso.
+    pub fn new_handleadaptor3dsurface(
+        S: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface(S)
+    }
+
+    /// Creates  an  IsoCurve curve.   Iso  defines the
+    /// type (isoU or  isoU) Param defines the value of
+    /// the iso. The bounds  of  the iso are the bounds
+    /// of the surface.
+    pub fn new_handleadaptor3dsurface_isotype_real(
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        Iso: i32,
+        Param: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface_isotype_real(S, Iso, Param)
+    }
+
+    /// Create an IsoCurve curve.  Iso defines the type
+    /// (isoU or isov).  Param defines the value of the
+    /// iso. WFirst,WLast define the bounds of the iso.
+    pub fn new_handleadaptor3dsurface_isotype_real3(
+        S: &crate::ffi::HandleAdaptor3dSurface,
+        Iso: i32,
+        Param: f64,
+        WFirst: f64,
+        WLast: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface_isotype_real3(
+            S, Iso, Param, WFirst, WLast,
+        )
+    }
+
+    /// Shallow copy of adaptor
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
+        crate::ffi::Adaptor3d_IsoCurve_shallow_copy(self)
+    }
+
+    /// Changes the iso on the current surface.
+    pub fn load_isotype_real(self: std::pin::Pin<&mut Self>, Iso: i32, Param: f64) {
+        crate::ffi::Adaptor3d_IsoCurve_load_isotype_real(self, Iso, Param)
+    }
+
+    /// Changes the iso on the current surface.
+    pub fn load_isotype_real3(
+        self: std::pin::Pin<&mut Self>,
+        Iso: i32,
+        Param: f64,
+        WFirst: f64,
+        WLast: f64,
+    ) {
+        crate::ffi::Adaptor3d_IsoCurve_load_isotype_real3(self, Iso, Param, WFirst, WLast)
+    }
+
+    pub fn iso(&self) -> i32 {
+        crate::ffi::Adaptor3d_IsoCurve_iso(self)
+    }
+
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Adaptor3d_IsoCurve_continuity(self)
+    }
+
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Adaptor3d_IsoCurve_nb_intervals(self, S)
+    }
+
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
+        crate::ffi::Adaptor3d_IsoCurve_trim(self, First, Last, Tol)
+    }
+
+    /// Computes the point of parameter U on the curve.
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Adaptor3d_IsoCurve_value(self, U)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Adaptor3d_IsoCurve_dn(self, U, N)
+    }
+
+    /// Returns  the  type of the   curve  in the  current
+    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::Adaptor3d_IsoCurve_get_type(self)
+    }
+
+    pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::Adaptor3d_IsoCurve_line(self)
+    }
+
+    pub fn circle(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::Adaptor3d_IsoCurve_circle(self)
+    }
+
+    pub fn ellipse(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::Adaptor3d_IsoCurve_ellipse(self)
+    }
+
+    pub fn hyperbola(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::Adaptor3d_IsoCurve_hyperbola(self)
+    }
+
+    pub fn parabola(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::Adaptor3d_IsoCurve_parabola(self)
+    }
+
+    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierCurve> {
+        crate::ffi::Adaptor3d_IsoCurve_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineCurve> {
+        crate::ffi::Adaptor3d_IsoCurve_b_spline(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Adaptor3d_IsoCurve_get_type_descriptor()
+    }
+
+    /// Upcast to Adaptor3d_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Adaptor3d_IsoCurve_as_Adaptor3d_Curve(self)
+    }
+
+    /// Upcast to Adaptor3d_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Adaptor3d_IsoCurve_as_Adaptor3d_Curve_mut(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: OffsetCurve()
+    pub fn offset_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetCurve> {
+        crate::ffi::Adaptor3d_IsoCurve_inherited_OffsetCurve(self)
     }
 }
 
@@ -436,7 +993,110 @@ impl HandleAdaptor3dSurface {
 }
 
 // ========================
-// Additional type re-exports
+// From Adaptor3d_TopolTool.hxx
 // ========================
 
+/// This class provides a default topological tool,
+/// based on the Umin,Vmin,Umax,Vmax of an HSurface from Adaptor3d.
+/// All methods and fields may be redefined when inheriting from this class.
+/// This class is used to instantiate algorithms as Intersection, outlines,...
 pub use crate::ffi::Adaptor3d_TopolTool as TopolTool;
+
+impl TopolTool {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_TopolTool_ctor()
+    }
+
+    pub fn new_handleadaptor3dsurface(
+        Surface: &crate::ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_TopolTool_ctor_handleadaptor3dsurface(Surface)
+    }
+
+    pub fn value(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        crate::ffi::Adaptor3d_TopolTool_value(self)
+    }
+
+    pub fn vertex(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dHVertex> {
+        crate::ffi::Adaptor3d_TopolTool_vertex(self)
+    }
+
+    pub fn classify(
+        self: std::pin::Pin<&mut Self>,
+        P: &crate::ffi::gp_Pnt2d,
+        Tol: f64,
+        ReacdreOnPeriodic: bool,
+    ) -> i32 {
+        crate::ffi::Adaptor3d_TopolTool_classify(self, P, Tol, ReacdreOnPeriodic)
+    }
+
+    /// If the function returns the orientation of the arc.
+    /// If the orientation is FORWARD or REVERSED, the arc is
+    /// a "real" limit of the surface.
+    /// If the orientation is INTERNAL or EXTERNAL, the arc is
+    /// considered as an arc on the surface.
+    pub fn orientation_handleadaptor2dcurve2d(
+        self: std::pin::Pin<&mut Self>,
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> i32 {
+        crate::ffi::Adaptor3d_TopolTool_orientation_handleadaptor2dcurve2d(self, C)
+    }
+
+    /// Returns the orientation of the vertex V.
+    /// The vertex has been found with an exploration on
+    /// a given arc. The orientation is the orientation
+    /// of the vertex on this arc.
+    pub fn orientation_handleadaptor3dhvertex(
+        self: std::pin::Pin<&mut Self>,
+        V: &crate::ffi::HandleAdaptor3dHVertex,
+    ) -> i32 {
+        crate::ffi::Adaptor3d_TopolTool_orientation_handleadaptor3dhvertex(self, V)
+    }
+
+    /// returns 3d point of the vertex V
+    pub fn pnt(
+        &self,
+        V: &crate::ffi::HandleAdaptor3dHVertex,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Adaptor3d_TopolTool_pnt(self, V)
+    }
+
+    /// Computes the cone's apex parameters.
+    /// @param[in] theC conical surface
+    /// @param[in] theU U parameter of cone's apex
+    /// @param[in] theV V parameter of cone's apex
+    pub fn get_cone_apex_param(theC: &crate::ffi::gp_Cone, theU: &mut f64, theV: &mut f64) {
+        crate::ffi::Adaptor3d_TopolTool_get_cone_apex_param(theC, theU, theV)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Adaptor3d_TopolTool_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dTopolTool> {
+        crate::ffi::Adaptor3d_TopolTool_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleAdaptor3dTopolTool;
+
+impl HandleAdaptor3dTopolTool {
+    /// Dereference this Handle to access the underlying Adaptor3d_TopolTool
+    pub fn get(&self) -> &crate::ffi::Adaptor3d_TopolTool {
+        crate::ffi::HandleAdaptor3dTopolTool_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Adaptor3d_TopolTool
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Adaptor3d_TopolTool> {
+        crate::ffi::HandleAdaptor3dTopolTool_get_mut(self)
+    }
+}

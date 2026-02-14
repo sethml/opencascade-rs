@@ -99,6 +99,14 @@ impl Curve2d {
         crate::ffi::Adaptor2d_Curve2d_parabola(self)
     }
 
+    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBezierCurve> {
+        crate::ffi::Adaptor2d_Curve2d_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        crate::ffi::Adaptor2d_Curve2d_b_spline(self)
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Adaptor2d_Curve2d_get_type_descriptor()
     }
@@ -124,5 +132,250 @@ impl HandleAdaptor2dCurve2d {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::ffi::Adaptor2d_Curve2d> {
         crate::ffi::HandleAdaptor2dCurve2d_get_mut(self)
+    }
+}
+
+// ========================
+// From Adaptor2d_Line2d.hxx
+// ========================
+
+/// Use by the TopolTool to trim a surface.
+pub use crate::ffi::Adaptor2d_Line2d as Line2d;
+
+impl Line2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor2d_Line2d_ctor()
+    }
+
+    pub fn new_pnt2d_dir2d_real2(
+        P: &crate::ffi::gp_Pnt2d,
+        D: &crate::ffi::gp_Dir2d,
+        UFirst: f64,
+        ULast: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor2d_Line2d_ctor_pnt2d_dir2d_real2(P, D, UFirst, ULast)
+    }
+
+    /// Shallow copy of adaptor
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        crate::ffi::Adaptor2d_Line2d_shallow_copy(self)
+    }
+
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Adaptor2d_Line2d_continuity(self)
+    }
+
+    /// If necessary,  breaks the  curve in  intervals  of
+    /// continuity  <S>.    And  returns   the number   of
+    /// intervals.
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Adaptor2d_Line2d_nb_intervals(self, S)
+    }
+
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        crate::ffi::Adaptor2d_Line2d_trim(self, First, Last, Tol)
+    }
+
+    pub fn value(&self, X: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Adaptor2d_Line2d_value(self, X)
+    }
+
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Adaptor2d_Line2d_dn(self, U, N)
+    }
+
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::Adaptor2d_Line2d_get_type(self)
+    }
+
+    pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::Adaptor2d_Line2d_line(self)
+    }
+
+    pub fn circle(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::Adaptor2d_Line2d_circle(self)
+    }
+
+    pub fn ellipse(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::Adaptor2d_Line2d_ellipse(self)
+    }
+
+    pub fn hyperbola(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::Adaptor2d_Line2d_hyperbola(self)
+    }
+
+    pub fn parabola(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::Adaptor2d_Line2d_parabola(self)
+    }
+
+    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBezierCurve> {
+        crate::ffi::Adaptor2d_Line2d_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        crate::ffi::Adaptor2d_Line2d_b_spline(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Adaptor2d_Line2d_get_type_descriptor()
+    }
+
+    /// Upcast to Adaptor2d_Curve2d
+    pub fn as_curve2d(&self) -> &Curve2d {
+        crate::ffi::Adaptor2d_Line2d_as_Adaptor2d_Curve2d(self)
+    }
+
+    /// Upcast to Adaptor2d_Curve2d (mutable)
+    pub fn as_curve2d_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve2d> {
+        crate::ffi::Adaptor2d_Line2d_as_Adaptor2d_Curve2d_mut(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: NbSamples()
+    pub fn nb_samples(&self) -> i32 {
+        crate::ffi::Adaptor2d_Line2d_inherited_NbSamples(self)
+    }
+}
+
+// ========================
+// From Adaptor2d_OffsetCurve.hxx
+// ========================
+
+/// Defines an Offset curve (algorithmic 2d curve).
+pub use crate::ffi::Adaptor2d_OffsetCurve as OffsetCurve;
+
+impl OffsetCurve {
+    /// The Offset is set to 0.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor2d_OffsetCurve_ctor()
+    }
+
+    /// The curve is loaded. The Offset is set to 0.
+    pub fn new_handleadaptor2dcurve2d(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d(C)
+    }
+
+    /// Creates  an  OffsetCurve curve.
+    /// The Offset is set to Offset.
+    pub fn new_handleadaptor2dcurve2d_real(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        Offset: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d_real(C, Offset)
+    }
+
+    /// Create an Offset curve.
+    /// WFirst,WLast define the bounds of the Offset curve.
+    pub fn new_handleadaptor2dcurve2d_real3(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        Offset: f64,
+        WFirst: f64,
+        WLast: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d_real3(
+            C, Offset, WFirst, WLast,
+        )
+    }
+
+    /// Shallow copy of adaptor
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        crate::ffi::Adaptor2d_OffsetCurve_shallow_copy(self)
+    }
+
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Adaptor2d_OffsetCurve_continuity(self)
+    }
+
+    /// If necessary,  breaks the  curve in  intervals  of
+    /// continuity  <S>.    And  returns   the number   of
+    /// intervals.
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Adaptor2d_OffsetCurve_nb_intervals(self, S)
+    }
+
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        crate::ffi::Adaptor2d_OffsetCurve_trim(self, First, Last, Tol)
+    }
+
+    /// Computes the point of parameter U on the curve.
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Adaptor2d_OffsetCurve_value(self, U)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Adaptor2d_OffsetCurve_dn(self, U, N)
+    }
+
+    /// Returns  the  type of the   curve  in the  current
+    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::Adaptor2d_OffsetCurve_get_type(self)
+    }
+
+    pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::Adaptor2d_OffsetCurve_line(self)
+    }
+
+    pub fn circle(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::Adaptor2d_OffsetCurve_circle(self)
+    }
+
+    pub fn ellipse(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::Adaptor2d_OffsetCurve_ellipse(self)
+    }
+
+    pub fn hyperbola(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::Adaptor2d_OffsetCurve_hyperbola(self)
+    }
+
+    pub fn parabola(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::Adaptor2d_OffsetCurve_parabola(self)
+    }
+
+    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBezierCurve> {
+        crate::ffi::Adaptor2d_OffsetCurve_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        crate::ffi::Adaptor2d_OffsetCurve_b_spline(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Adaptor2d_OffsetCurve_get_type_descriptor()
+    }
+
+    /// Upcast to Adaptor2d_Curve2d
+    pub fn as_curve2d(&self) -> &Curve2d {
+        crate::ffi::Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d(self)
+    }
+
+    /// Upcast to Adaptor2d_Curve2d (mutable)
+    pub fn as_curve2d_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve2d> {
+        crate::ffi::Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d_mut(self)
     }
 }

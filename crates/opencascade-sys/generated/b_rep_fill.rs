@@ -109,6 +109,477 @@ impl TryFrom<i32> for TransitionStyle {
 }
 
 // ========================
+// From BRepFill_Draft.hxx
+// ========================
+
+pub use crate::ffi::BRepFill_Draft as Draft;
+
+impl Draft {
+    pub fn new_shape_dir_real(
+        Shape: &crate::ffi::TopoDS_Shape,
+        Dir: &crate::ffi::gp_Dir,
+        Angle: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_Draft_ctor_shape_dir_real(Shape, Dir, Angle)
+    }
+
+    pub fn set_options(self: std::pin::Pin<&mut Self>, Style: i32, AngleMin: f64, AngleMax: f64) {
+        crate::ffi::BRepFill_Draft_set_options(self, Style, AngleMin, AngleMax)
+    }
+
+    /// Returns the draft surface
+    /// To have the complete shape
+    /// you have to use the Shape() methode.
+    pub fn shell(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shell> {
+        crate::ffi::BRepFill_Draft_shell(self)
+    }
+
+    pub fn shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepFill_Draft_shape(self)
+    }
+}
+
+// ========================
+// From BRepFill_EdgeFaceAndOrder.hxx
+// ========================
+
+pub use crate::ffi::BRepFill_EdgeFaceAndOrder as EdgeFaceAndOrder;
+
+impl EdgeFaceAndOrder {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_EdgeFaceAndOrder_ctor()
+    }
+
+    pub fn new_edge_face_shape(
+        anEdge: &crate::ffi::TopoDS_Edge,
+        aFace: &crate::ffi::TopoDS_Face,
+        anOrder: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_EdgeFaceAndOrder_ctor_edge_face_shape(anEdge, aFace, anOrder)
+    }
+}
+
+// ========================
+// From BRepFill_Evolved.hxx
+// ========================
+
+/// Constructs an evolved volume from a spine (wire or face)
+/// and  a profile ( wire).
+pub use crate::ffi::BRepFill_Evolved as Evolved;
+
+impl Evolved {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_Evolved_ctor()
+    }
+
+    /// Creates an evolved shape by sweeping the <Profile>
+    /// along the  <Spine>.  <AxeProf> is  used to set the
+    /// position of <Profile> along  <Spine> as  follows:
+    /// <AxeProf> slides on the profile with direction
+    /// colinear to the normal to <Spine>, and its
+    /// <XDirection> mixed with the tangent to <Spine>.
+    pub fn new_wire2_ax3_jointype_bool(
+        Spine: &crate::ffi::TopoDS_Wire,
+        Profile: &crate::ffi::TopoDS_Wire,
+        AxeProf: &crate::ffi::gp_Ax3,
+        Join: i32,
+        Solid: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_Evolved_ctor_wire2_ax3_jointype_bool(
+            Spine, Profile, AxeProf, Join, Solid,
+        )
+    }
+
+    /// Creates an  evolved shape  by sweeping the <Profile>
+    /// along the <Spine>
+    pub fn new_face_wire_ax3_jointype_bool(
+        Spine: &crate::ffi::TopoDS_Face,
+        Profile: &crate::ffi::TopoDS_Wire,
+        AxeProf: &crate::ffi::gp_Ax3,
+        Join: i32,
+        Solid: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_Evolved_ctor_face_wire_ax3_jointype_bool(
+            Spine, Profile, AxeProf, Join, Solid,
+        )
+    }
+
+    /// Creates an evolved shape by sweeping the <Profile>
+    /// along the  <Spine>.  <AxeProf> is  used to set the
+    /// position of <Profile> along  <Spine> as  follows:
+    /// <AxeProf> slides on the profile with direction
+    /// colinear to the normal to <Spine>, and its
+    /// <XDirection> mixed with the tangent to <Spine>.
+    pub fn new_wire2_ax3_jointype(
+        Spine: &crate::ffi::TopoDS_Wire,
+        Profile: &crate::ffi::TopoDS_Wire,
+        AxeProf: &crate::ffi::gp_Ax3,
+        Join: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_wire2_ax3_jointype_bool(Spine, Profile, AxeProf, Join, false)
+    }
+
+    /// Creates an  evolved shape  by sweeping the <Profile>
+    /// along the <Spine>
+    pub fn new_face_wire_ax3_jointype(
+        Spine: &crate::ffi::TopoDS_Face,
+        Profile: &crate::ffi::TopoDS_Wire,
+        AxeProf: &crate::ffi::gp_Ax3,
+        Join: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_wire_ax3_jointype_bool(Spine, Profile, AxeProf, Join, false)
+    }
+
+    /// Performs an  evolved shape  by sweeping the <Profile>
+    /// along the <Spine>
+    pub fn perform_wire2_ax3_jointype_bool(
+        self: std::pin::Pin<&mut Self>,
+        Spine: &crate::ffi::TopoDS_Wire,
+        Profile: &crate::ffi::TopoDS_Wire,
+        AxeProf: &crate::ffi::gp_Ax3,
+        Join: i32,
+        Solid: bool,
+    ) {
+        crate::ffi::BRepFill_Evolved_perform_wire2_ax3_jointype_bool(
+            self, Spine, Profile, AxeProf, Join, Solid,
+        )
+    }
+
+    /// Performs an  evolved shape  by sweeping the <Profile>
+    /// along the <Spine>
+    pub fn perform_face_wire_ax3_jointype_bool(
+        self: std::pin::Pin<&mut Self>,
+        Spine: &crate::ffi::TopoDS_Face,
+        Profile: &crate::ffi::TopoDS_Wire,
+        AxeProf: &crate::ffi::gp_Ax3,
+        Join: i32,
+        Solid: bool,
+    ) {
+        crate::ffi::BRepFill_Evolved_perform_face_wire_ax3_jointype_bool(
+            self, Spine, Profile, AxeProf, Join, Solid,
+        )
+    }
+
+    pub fn join_type(&self) -> i32 {
+        crate::ffi::BRepFill_Evolved_join_type(self)
+    }
+}
+
+// ========================
+// From BRepFill_FaceAndOrder.hxx
+// ========================
+
+/// A structure containing Face and Order of constraint
+pub use crate::ffi::BRepFill_FaceAndOrder as FaceAndOrder;
+
+impl FaceAndOrder {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_FaceAndOrder_ctor()
+    }
+
+    pub fn new_face_shape(aFace: &crate::ffi::TopoDS_Face, anOrder: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_FaceAndOrder_ctor_face_shape(aFace, anOrder)
+    }
+}
+
+// ========================
+// From BRepFill_Filling.hxx
+// ========================
+
+/// N-Side Filling
+/// This algorithm avoids to build a face from:
+/// * a set of edges defining the bounds of the face and some
+/// constraints the surface support has to satisfy
+/// * a set of edges and points defining some constraints
+/// the support surface has to satisfy
+/// * an initial surface to deform for satisfying the constraints
+/// * a set of parameters to control the constraints.
+///
+/// The support surface of the face is computed by deformation
+/// of the initial surface in order to satisfy the given constraints.
+/// The set of bounding edges defines the wire of the face.
+///
+/// If no initial surface is given, the algorithm computes it
+/// automatically.
+/// If the set of edges is not connected (Free constraint)
+/// missing edges are automatically computed.
+///
+/// Limitations:
+/// * If some constraints are not compatible
+/// The algorithm does not take them into account.
+/// So the constraints will not be satisfied in an area containing
+/// the incompatibilities.
+/// * The constraints defining the bound of the face have to be
+/// entered in order to have a continuous wire.
+///
+/// Other Applications:
+/// * Deformation of a face to satisfy internal constraints
+/// * Deformation of a face to improve Gi continuity with
+/// connected faces
+pub use crate::ffi::BRepFill_Filling as Filling;
+
+impl Filling {
+    /// Constructor
+    pub fn new_int3_bool_real4_int2(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+        TolCurv: f64,
+        MaxDeg: i32,
+        MaxSegments: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_Filling_ctor_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            Tol3d,
+            TolAng,
+            TolCurv,
+            MaxDeg,
+            MaxSegments,
+        )
+    }
+
+    /// Constructor
+    pub fn new_int3_bool_real4_int(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+        TolCurv: f64,
+        MaxDeg: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            Tol3d,
+            TolAng,
+            TolCurv,
+            MaxDeg,
+            9,
+        )
+    }
+
+    /// Constructor
+    pub fn new_int3_bool_real4(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+        TolCurv: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            Tol3d,
+            TolAng,
+            TolCurv,
+            8,
+            9,
+        )
+    }
+
+    /// Constructor
+    pub fn new_int3_bool_real3(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            Tol3d,
+            TolAng,
+            0.1,
+            8,
+            9,
+        )
+    }
+
+    /// Constructor
+    pub fn new_int3_bool_real2(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+        Tol3d: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            Tol3d,
+            0.01,
+            0.1,
+            8,
+            9,
+        )
+    }
+
+    /// Constructor
+    pub fn new_int3_bool_real(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            0.0001,
+            0.01,
+            0.1,
+            8,
+            9,
+        )
+    }
+
+    /// Constructor
+    pub fn new_int3_bool(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            0.00001,
+            0.0001,
+            0.01,
+            0.1,
+            8,
+            9,
+        )
+    }
+
+    /// Constructor
+    pub fn new_int3(Degree: i32, NbPtsOnCur: i32, NbIter: i32) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree, NbPtsOnCur, NbIter, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9,
+        )
+    }
+
+    /// Constructor
+    pub fn new_int2(Degree: i32, NbPtsOnCur: i32) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree, NbPtsOnCur, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9,
+        )
+    }
+
+    /// Constructor
+    pub fn new_int(Degree: i32) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(Degree, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
+    }
+
+    /// Constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(3, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
+    }
+
+    /// Adds a new constraint which also defines an edge of the wire
+    /// of the face
+    /// Order: Order of the constraint:
+    /// GeomAbs_C0 : the surface has to pass by 3D representation
+    /// of the edge
+    /// GeomAbs_G1 : the surface has to pass by 3D representation
+    /// of the edge and to respect tangency with the first
+    /// face of the edge
+    /// GeomAbs_G2 : the surface has to pass by 3D representation
+    /// of the edge and to respect tangency and curvature
+    /// with the first face of the edge.
+    pub fn add_edge_shape_bool(
+        self: std::pin::Pin<&mut Self>,
+        anEdge: &crate::ffi::TopoDS_Edge,
+        Order: i32,
+        IsBound: bool,
+    ) -> i32 {
+        crate::ffi::BRepFill_Filling_add_edge_shape_bool(self, anEdge, Order, IsBound)
+    }
+
+    /// Adds a new constraint which also defines an edge of the wire
+    /// of the face
+    /// Order: Order of the constraint:
+    /// GeomAbs_C0 : the surface has to pass by 3D representation
+    /// of the edge
+    /// GeomAbs_G1 : the surface has to pass by 3D representation
+    /// of the edge and to respect tangency with the
+    /// given face
+    /// GeomAbs_G2 : the surface has to pass by 3D representation
+    /// of the edge and to respect tangency and curvature
+    /// with the given face.
+    pub fn add_edge_face_shape_bool(
+        self: std::pin::Pin<&mut Self>,
+        anEdge: &crate::ffi::TopoDS_Edge,
+        Support: &crate::ffi::TopoDS_Face,
+        Order: i32,
+        IsBound: bool,
+    ) -> i32 {
+        crate::ffi::BRepFill_Filling_add_edge_face_shape_bool(self, anEdge, Support, Order, IsBound)
+    }
+
+    /// Adds a free constraint on a face. The corresponding edge has to
+    /// be automatically recomputed.
+    /// It is always a bound.
+    pub fn add_face_shape(
+        self: std::pin::Pin<&mut Self>,
+        Support: &crate::ffi::TopoDS_Face,
+        Order: i32,
+    ) -> i32 {
+        crate::ffi::BRepFill_Filling_add_face_shape(self, Support, Order)
+    }
+
+    /// Adds a punctual constraint.
+    pub fn add_real2_face_shape(
+        self: std::pin::Pin<&mut Self>,
+        U: f64,
+        V: f64,
+        Support: &crate::ffi::TopoDS_Face,
+        Order: i32,
+    ) -> i32 {
+        crate::ffi::BRepFill_Filling_add_real2_face_shape(self, U, V, Support, Order)
+    }
+
+    pub fn face(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {
+        crate::ffi::BRepFill_Filling_face(self)
+    }
+}
+
+// ========================
 // From BRepFill_OffsetWire.hxx
 // ========================
 

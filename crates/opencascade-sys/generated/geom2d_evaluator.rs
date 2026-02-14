@@ -44,3 +44,43 @@ impl HandleGeom2dEvaluatorCurve {
         crate::ffi::HandleGeom2dEvaluatorCurve_get_mut(self)
     }
 }
+
+// ========================
+// From Geom2dEvaluator_OffsetCurve.hxx
+// ========================
+
+/// Allows to calculate values and derivatives for offset curves in 2D
+pub use crate::ffi::Geom2dEvaluator_OffsetCurve as OffsetCurve;
+
+impl OffsetCurve {
+    /// Initialize evaluator by curve
+    pub fn new_handlegeom2dcurve_real(
+        theBase: &crate::ffi::HandleGeom2dCurve,
+        theOffset: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dcurve_real(theBase, theOffset)
+    }
+
+    /// Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1
+    pub fn dn(&self, theU: f64, theDeriv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2dEvaluator_OffsetCurve_dn(self, theU, theDeriv)
+    }
+
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
+        crate::ffi::Geom2dEvaluator_OffsetCurve_shallow_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2dEvaluator_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve(self)
+    }
+
+    /// Upcast to Geom2dEvaluator_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve_mut(self)
+    }
+}

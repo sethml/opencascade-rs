@@ -6,6 +6,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{mix_bnd, reparametrize, scale, scale_cub};
+
 // ========================
 // From Law_BSpFunc.hxx
 // ========================
@@ -19,6 +21,14 @@ pub use crate::ffi::Law_BSpFunc as BSpFunc;
 impl BSpFunc {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Law_BSpFunc_ctor()
+    }
+
+    pub fn new_handlelawbspline_real2(
+        C: &crate::ffi::HandleLawBSpline,
+        First: f64,
+        Last: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_BSpFunc_ctor_handlelawbspline_real2(C, First, Last)
     }
 
     pub fn continuity(&self) -> i32 {
@@ -44,6 +54,10 @@ impl BSpFunc {
         Tol: f64,
     ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
         crate::ffi::Law_BSpFunc_trim(self, PFirst, PLast, Tol)
+    }
+
+    pub fn curve(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
+        crate::ffi::Law_BSpFunc_curve(self)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -82,6 +96,404 @@ impl HandleLawBSpFunc {
     /// Upcast Handle<Law_BSpFunc> to Handle<Law_Function>
     pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
         crate::ffi::HandleLawBSpFunc_to_HandleLawFunction(self)
+    }
+}
+
+// ========================
+// From Law_BSpline.hxx
+// ========================
+
+/// Definition of the 1D B_spline curve.
+///
+/// Uniform  or non-uniform
+/// Rational or non-rational
+/// Periodic or non-periodic
+///
+/// a b-spline curve is defined by :
+///
+/// The Degree (up to 25)
+///
+/// The Poles  (and the weights if it is rational)
+///
+/// The Knots and Multiplicities
+///
+/// The knot vector   is an  increasing  sequence  of
+/// reals without  repetition. The multiplicities are
+/// the repetition of the knots.
+///
+/// If the knots are regularly spaced (the difference
+/// of two  consecutive  knots  is a   constant), the
+/// knots repartition is :
+///
+/// - Uniform if all multiplicities are 1.
+///
+/// -  Quasi-uniform if  all multiplicities are  1
+/// but the first and the last which are Degree+1.
+///
+/// -   PiecewiseBezier if  all multiplicities are
+/// Degree but the   first and the  last which are
+/// Degree+1.
+///
+/// The curve may be periodic.
+///
+/// On a periodic curve if there are k knots and p
+/// poles. the period is knot(k) - knot(1)
+///
+/// the poles and knots are infinite vectors with :
+///
+/// knot(i+k) = knot(i) + period
+///
+/// pole(i+p) = pole(i)
+///
+/// References :
+/// . A survey of curve and surface methods in CADG Wolfgang BOHM
+/// CAGD 1 (1984)
+/// . On de Boor-like algorithms and blossoming Wolfgang BOEHM
+/// cagd 5 (1988)
+/// . Blossoming and knot insertion algorithms for B-spline curves
+/// Ronald N. GOLDMAN
+/// . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA
+/// . Curves and Surfaces for Computer Aided Geometric Design,
+/// a practical guide Gerald Farin
+pub use crate::ffi::Law_BSpline as BSpline;
+
+impl BSpline {
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofreal2_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_BSpline_ctor_array1ofreal2_array1ofinteger_int_bool(
+            Poles,
+            Knots,
+            Multiplicities,
+            Degree,
+            Periodic,
+        )
+    }
+
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofreal3_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColStd_Array1OfReal,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_BSpline_ctor_array1ofreal3_array1ofinteger_int_bool(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+            Periodic,
+        )
+    }
+
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofreal2_array1ofinteger_int(
+        Poles: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_array1ofreal2_array1ofinteger_int_bool(
+            Poles,
+            Knots,
+            Multiplicities,
+            Degree,
+            false,
+        )
+    }
+
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofreal3_array1ofinteger_int(
+        Poles: &crate::ffi::TColStd_Array1OfReal,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_array1ofreal3_array1ofinteger_int_bool(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+            false,
+        )
+    }
+
+    /// Returns the global continuity of the curve :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Curve,
+    /// C2 : continuity of the second derivative all along the Curve,
+    /// C3 : continuity of the third derivative all along the Curve,
+    /// CN : the order of continuity is infinite.
+    /// For a B-spline curve of degree d if a knot Ui has a
+    /// multiplicity p the B-spline curve is only Cd-p continuous
+    /// at Ui. So the global continuity of the curve can't be greater
+    /// than Cd-p where p is the maximum multiplicity of the interior
+    /// Knots. In the interior of a knot span the curve is infinitely
+    /// continuously differentiable.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Law_BSpline_continuity(self)
+    }
+
+    /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
+    /// If all the knots differ by a positive constant from the
+    /// preceding knot the BSpline Curve can be :
+    /// - Uniform if all the knots are of multiplicity 1,
+    /// - QuasiUniform if all the knots are of multiplicity 1 except for
+    /// the first and last knot which are of multiplicity Degree + 1,
+    /// - PiecewiseBezier if the first and last knots have multiplicity
+    /// Degree + 1 and if interior knots have multiplicity Degree
+    /// A piecewise Bezier with only two knots is a BezierCurve.
+    /// else the curve is non uniform.
+    /// The tolerance criterion is Epsilon from class Real.
+    pub fn knot_distribution(&self) -> i32 {
+        crate::ffi::Law_BSpline_knot_distribution(self)
+    }
+
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
+        crate::ffi::Law_BSpline_copy(self)
+    }
+
+    /// Returns the value of the maximum degree of the normalized
+    /// B-spline basis functions in this package.
+    pub fn max_degree() -> i32 {
+        crate::ffi::Law_BSpline_max_degree()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Law_BSpline_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
+        crate::ffi::Law_BSpline_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleLawBSpline;
+
+impl HandleLawBSpline {
+    /// Dereference this Handle to access the underlying Law_BSpline
+    pub fn get(&self) -> &crate::ffi::Law_BSpline {
+        crate::ffi::HandleLawBSpline_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Law_BSpline
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_BSpline> {
+        crate::ffi::HandleLawBSpline_get_mut(self)
+    }
+}
+
+// ========================
+// From Law_BSplineKnotSplitting.hxx
+// ========================
+
+/// For a B-spline curve the discontinuities are localised at the
+/// knot values and between two knots values the B-spline is
+/// infinitely continuously differentiable.
+/// At a knot of range index the continuity is equal to :
+/// Degree - Mult (Index)   where  Degree is the degree of the
+/// basis B-spline functions and Mult the multiplicity of the knot
+/// of range Index.
+/// If for your computation you need to have B-spline curves with a
+/// minima of continuity it can be interesting to know between which
+/// knot values, a B-spline curve arc, has a continuity of given order.
+/// This algorithm computes the indexes of the knots where you should
+/// split the curve, to obtain arcs with a constant continuity given
+/// at the construction time. The splitting values are in the range
+/// [FirstUKnotValue, LastUKnotValue] (See class B-spline curve from
+/// package Geom).
+/// If you just want to compute the local derivatives on the curve you
+/// don't need to create the B-spline curve arcs, you can use the
+/// functions LocalD1, LocalD2, LocalD3, LocalDN of the class
+/// BSplineCurve.
+pub use crate::ffi::Law_BSplineKnotSplitting as BSplineKnotSplitting;
+
+impl BSplineKnotSplitting {
+    /// Locates the knot values which correspond to the segmentation of
+    /// the curve into arcs with a continuity equal to ContinuityRange.
+    ///
+    /// Raised if ContinuityRange is not greater or equal zero.
+    pub fn new_handlelawbspline_int(
+        BasisLaw: &crate::ffi::HandleLawBSpline,
+        ContinuityRange: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_BSplineKnotSplitting_ctor_handlelawbspline_int(BasisLaw, ContinuityRange)
+    }
+}
+
+// ========================
+// From Law_Composite.hxx
+// ========================
+
+/// Loi  composite constituee  d une liste  de lois de
+/// ranges consecutifs.
+/// Cette implementation un peu lourde permet de reunir
+/// en une seule loi des portions de loi construites de
+/// facon independantes (par exemple en interactif) et
+/// de lancer le walking d un coup a l echelle d une
+/// ElSpine.
+/// CET OBJET REPOND DONC A UN PROBLEME D IMPLEMENTATION
+/// SPECIFIQUE AUX CONGES!!!
+pub use crate::ffi::Law_Composite as Composite;
+
+impl Composite {
+    /// Construct an empty Law
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_Composite_ctor()
+    }
+
+    /// Construct an empty, trimmed Law
+    pub fn new_real3(First: f64, Last: f64, Tol: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_Composite_ctor_real3(First, Last, Tol)
+    }
+
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Law_Composite_continuity(self)
+    }
+
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Law_Composite_nb_intervals(self, S)
+    }
+
+    /// Returns a  law equivalent of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// It is usfule to determines the derivatives
+    /// in these values <First> and <Last> if
+    /// the Law is not Cn.
+    pub fn trim(
+        &self,
+        PFirst: f64,
+        PLast: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::Law_Composite_trim(self, PFirst, PLast, Tol)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Law_Composite_get_type_descriptor()
+    }
+
+    /// Upcast to Law_Function
+    pub fn as_function(&self) -> &Function {
+        crate::ffi::Law_Composite_as_Law_Function(self)
+    }
+
+    /// Upcast to Law_Function (mutable)
+    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
+        crate::ffi::Law_Composite_as_Law_Function_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawComposite> {
+        crate::ffi::Law_Composite_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleLawComposite;
+
+impl HandleLawComposite {
+    /// Dereference this Handle to access the underlying Law_Composite
+    pub fn get(&self) -> &crate::ffi::Law_Composite {
+        crate::ffi::HandleLawComposite_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Law_Composite
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Law_Composite> {
+        crate::ffi::HandleLawComposite_get_mut(self)
+    }
+
+    /// Upcast Handle<Law_Composite> to Handle<Law_Function>
+    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::HandleLawComposite_to_HandleLawFunction(self)
+    }
+}
+
+// ========================
+// From Law_Constant.hxx
+// ========================
+
+/// Loi constante
+pub use crate::ffi::Law_Constant as Constant;
+
+impl Constant {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_Constant_ctor()
+    }
+
+    /// Returns GeomAbs_CN
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Law_Constant_continuity(self)
+    }
+
+    /// Returns  1
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Law_Constant_nb_intervals(self, S)
+    }
+
+    pub fn trim(
+        &self,
+        PFirst: f64,
+        PLast: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::Law_Constant_trim(self, PFirst, PLast, Tol)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Law_Constant_get_type_descriptor()
+    }
+
+    /// Upcast to Law_Function
+    pub fn as_function(&self) -> &Function {
+        crate::ffi::Law_Constant_as_Law_Function(self)
+    }
+
+    /// Upcast to Law_Function (mutable)
+    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
+        crate::ffi::Law_Constant_as_Law_Function_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawConstant> {
+        crate::ffi::Law_Constant_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleLawConstant;
+
+impl HandleLawConstant {
+    /// Dereference this Handle to access the underlying Law_Constant
+    pub fn get(&self) -> &crate::ffi::Law_Constant {
+        crate::ffi::HandleLawConstant_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Law_Constant
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_Constant> {
+        crate::ffi::HandleLawConstant_get_mut(self)
+    }
+
+    /// Upcast Handle<Law_Constant> to Handle<Law_Function>
+    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::HandleLawConstant_to_HandleLawFunction(self)
     }
 }
 
@@ -210,6 +622,16 @@ impl Interpol {
     pub fn bounds(self: std::pin::Pin<&mut Self>, PFirst: &mut f64, PLast: &mut f64) {
         crate::ffi::Law_Interpol_inherited_Bounds(self, PFirst, PLast)
     }
+
+    /// Inherited from Law_BSpFunc: Curve()
+    pub fn curve(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
+        crate::ffi::Law_Interpol_inherited_Curve(self)
+    }
+
+    /// Inherited from Law_BSpFunc: SetCurve()
+    pub fn set_curve(self: std::pin::Pin<&mut Self>, C: &crate::ffi::HandleLawBSpline) {
+        crate::ffi::Law_Interpol_inherited_SetCurve(self, C)
+    }
 }
 
 pub use crate::ffi::HandleLawInterpol;
@@ -237,7 +659,242 @@ impl HandleLawInterpol {
 }
 
 // ========================
+// From Law_Interpolate.hxx
+// ========================
+
+/// This  class   is used  to   interpolate a BsplineCurve
+/// passing through    an  array of  points,   with   a C2
+/// Continuity if tangency  is not requested at the point.
+/// If tangency is  requested at the  point the continuity
+/// will be C1.  If Perodicity is requested the curve will
+/// be  closed  and the junction will  be  the first point
+/// given. The curve will than be only C1
+pub use crate::ffi::Law_Interpolate as Interpolate;
+
+impl Interpolate {
+    /// Tolerance is to check if  the points are not too close
+    /// to one an  other.  It is  also  used to check   if the
+    /// tangent vector  is not too small.   There should be at
+    /// least 2 points. If PeriodicFlag is True then the curve
+    /// will be periodic be periodic
+    pub fn new_handletcolstdharray1ofreal_bool_real(
+        Points: &crate::ffi::HandleTColStdHArray1OfReal,
+        PeriodicFlag: bool,
+        Tolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_Interpolate_ctor_handletcolstdharray1ofreal_bool_real(
+            Points,
+            PeriodicFlag,
+            Tolerance,
+        )
+    }
+
+    /// Tolerance is to check if  the points are not too close
+    /// to one an  other.  It is  also  used to check   if the
+    /// tangent vector  is not too small.   There should be at
+    /// least 2 points. If PeriodicFlag is True then the curve
+    /// will be periodic be periodic
+    pub fn new_handletcolstdharray1ofreal2_bool_real(
+        Points: &crate::ffi::HandleTColStdHArray1OfReal,
+        Parameters: &crate::ffi::HandleTColStdHArray1OfReal,
+        PeriodicFlag: bool,
+        Tolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_Interpolate_ctor_handletcolstdharray1ofreal2_bool_real(
+            Points,
+            Parameters,
+            PeriodicFlag,
+            Tolerance,
+        )
+    }
+}
+
+// ========================
+// From Law_Linear.hxx
+// ========================
+
+/// Describes an linear evolution law.
+pub use crate::ffi::Law_Linear as Linear;
+
+impl Linear {
+    /// Constructs an empty linear evolution law.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_Linear_ctor()
+    }
+
+    /// Returns GeomAbs_CN
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Law_Linear_continuity(self)
+    }
+
+    /// Returns  1
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Law_Linear_nb_intervals(self, S)
+    }
+
+    /// Returns a  law equivalent of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// It is usfule to determines the derivatives
+    /// in these values <First> and <Last> if
+    /// the Law is not Cn.
+    pub fn trim(
+        &self,
+        PFirst: f64,
+        PLast: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::Law_Linear_trim(self, PFirst, PLast, Tol)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Law_Linear_get_type_descriptor()
+    }
+
+    /// Upcast to Law_Function
+    pub fn as_function(&self) -> &Function {
+        crate::ffi::Law_Linear_as_Law_Function(self)
+    }
+
+    /// Upcast to Law_Function (mutable)
+    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
+        crate::ffi::Law_Linear_as_Law_Function_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawLinear> {
+        crate::ffi::Law_Linear_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleLawLinear;
+
+impl HandleLawLinear {
+    /// Dereference this Handle to access the underlying Law_Linear
+    pub fn get(&self) -> &crate::ffi::Law_Linear {
+        crate::ffi::HandleLawLinear_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Law_Linear
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_Linear> {
+        crate::ffi::HandleLawLinear_get_mut(self)
+    }
+
+    /// Upcast Handle<Law_Linear> to Handle<Law_Function>
+    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::HandleLawLinear_to_HandleLawFunction(self)
+    }
+}
+
+// ========================
+// From Law_S.hxx
+// ========================
+
+/// Describes an "S" evolution law.
+pub use crate::ffi::Law_S as S;
+
+impl S {
+    /// Constructs an empty "S" evolution law.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Law_S_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Law_S_get_type_descriptor()
+    }
+
+    /// Upcast to Law_BSpFunc
+    pub fn as_b_sp_func(&self) -> &BSpFunc {
+        crate::ffi::Law_S_as_Law_BSpFunc(self)
+    }
+
+    /// Upcast to Law_BSpFunc (mutable)
+    pub fn as_b_sp_func_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BSpFunc> {
+        crate::ffi::Law_S_as_Law_BSpFunc_mut(self)
+    }
+
+    /// Upcast to Law_Function
+    pub fn as_function(&self) -> &Function {
+        crate::ffi::Law_S_as_Law_Function(self)
+    }
+
+    /// Upcast to Law_Function (mutable)
+    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
+        crate::ffi::Law_S_as_Law_Function_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawS> {
+        crate::ffi::Law_S_to_handle(obj)
+    }
+
+    /// Inherited from Law_BSpFunc: Value()
+    pub fn value(self: std::pin::Pin<&mut Self>, X: f64) -> f64 {
+        crate::ffi::Law_S_inherited_Value(self, X)
+    }
+
+    /// Inherited from Law_BSpFunc: D1()
+    pub fn d1(self: std::pin::Pin<&mut Self>, X: f64, F: &mut f64, D: &mut f64) {
+        crate::ffi::Law_S_inherited_D1(self, X, F, D)
+    }
+
+    /// Inherited from Law_BSpFunc: D2()
+    pub fn d2(self: std::pin::Pin<&mut Self>, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
+        crate::ffi::Law_S_inherited_D2(self, X, F, D, D2)
+    }
+
+    /// Inherited from Law_BSpFunc: Trim()
+    pub fn trim(
+        &self,
+        PFirst: f64,
+        PLast: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::Law_S_inherited_Trim(self, PFirst, PLast, Tol)
+    }
+
+    /// Inherited from Law_BSpFunc: Bounds()
+    pub fn bounds(self: std::pin::Pin<&mut Self>, PFirst: &mut f64, PLast: &mut f64) {
+        crate::ffi::Law_S_inherited_Bounds(self, PFirst, PLast)
+    }
+
+    /// Inherited from Law_BSpFunc: Curve()
+    pub fn curve(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
+        crate::ffi::Law_S_inherited_Curve(self)
+    }
+
+    /// Inherited from Law_BSpFunc: SetCurve()
+    pub fn set_curve(self: std::pin::Pin<&mut Self>, C: &crate::ffi::HandleLawBSpline) {
+        crate::ffi::Law_S_inherited_SetCurve(self, C)
+    }
+}
+
+pub use crate::ffi::HandleLawS;
+
+impl HandleLawS {
+    /// Dereference this Handle to access the underlying Law_S
+    pub fn get(&self) -> &crate::ffi::Law_S {
+        crate::ffi::HandleLawS_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Law_S
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_S> {
+        crate::ffi::HandleLawS_get_mut(self)
+    }
+
+    /// Upcast Handle<Law_S> to Handle<Law_BSpFunc>
+    pub fn to_handle_b_sp_func(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpFunc> {
+        crate::ffi::HandleLawS_to_HandleLawBSpFunc(self)
+    }
+
+    /// Upcast Handle<Law_S> to Handle<Law_Function>
+    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::HandleLawS_to_HandleLawFunction(self)
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::Law_BSpline as BSpline;
+pub use crate::ffi::Law_Laws as Laws;

@@ -6,6 +6,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::next_prime_for_map_2;
+
 // ========================
 // From TCollection_AsciiString.hxx
 // ========================
@@ -464,10 +466,10 @@ impl HAsciiString {
     }
 
     /// Initializes a HAsciiString with a HAsciiString.
-    pub fn new_handlehasciistring(
+    pub fn new_handletcollectionhasciistring(
         aString: &crate::ffi::HandleTCollectionHAsciiString,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HAsciiString_ctor_handlehasciistring(aString)
+        crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhasciistring(aString)
     }
 
     /// Appends <other>  to me.
@@ -497,11 +499,11 @@ impl HAsciiString {
     /// Creates a new string by concatenation of this
     /// ASCII string and the other ASCII string.
     /// Example:  aString = aString + anotherString
-    pub fn cat_handlehasciistring(
+    pub fn cat_handletcollectionhasciistring(
         &self,
         other: &crate::ffi::HandleTCollectionHAsciiString,
     ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::TCollection_HAsciiString_cat_handlehasciistring(self, other)
+        crate::ffi::TCollection_HAsciiString_cat_handletcollectionhasciistring(self, other)
     }
 
     /// Insert a HAsciiString at position <where>.
@@ -664,17 +666,17 @@ impl HExtendedString {
     }
 
     /// Initializes a HExtendedString with an HAsciiString.
-    pub fn new_handlehasciistring(
+    pub fn new_handletcollectionhasciistring(
         aString: &crate::ffi::HandleTCollectionHAsciiString,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HExtendedString_ctor_handlehasciistring(aString)
+        crate::ffi::TCollection_HExtendedString_ctor_handletcollectionhasciistring(aString)
     }
 
     /// Initializes a HExtendedString with a HExtendedString.
-    pub fn new_handlehextendedstring(
+    pub fn new_handletcollectionhextendedstring(
         aString: &crate::ffi::HandleTCollectionHExtendedString,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HExtendedString_ctor_handlehextendedstring(aString)
+        crate::ffi::TCollection_HExtendedString_ctor_handletcollectionhextendedstring(aString)
     }
 
     /// Returns a string appending <other>  to me.

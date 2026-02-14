@@ -6,6 +6,1930 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{
+    c0b_spline_to_sequence_of_c1b_spline_curve, c0b_spline_to_sequence_of_c1b_spline_curve_mut,
+};
+
+// ========================
+// From ShapeUpgrade_ClosedEdgeDivide.hxx
+// ========================
+
+pub use crate::ffi::ShapeUpgrade_ClosedEdgeDivide as ClosedEdgeDivide;
+
+impl ClosedEdgeDivide {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_EdgeDivide
+    pub fn as_edge_divide(&self) -> &EdgeDivide {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_EdgeDivide(self)
+    }
+
+    /// Upcast to ShapeUpgrade_EdgeDivide (mutable)
+    pub fn as_edge_divide_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut EdgeDivide> {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_EdgeDivide_mut(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool
+    pub fn as_tool(&self) -> &Tool {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool (mutable)
+    pub fn as_tool_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Tool> {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_EdgeDivide: Clear()
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Clear(self)
+    }
+
+    /// Inherited from ShapeUpgrade_EdgeDivide: SetFace()
+    pub fn set_face(self: std::pin::Pin<&mut Self>, F: &crate::ffi::TopoDS_Face) {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetFace(self, F)
+    }
+
+    /// Inherited from ShapeUpgrade_EdgeDivide: HasCurve2d()
+    pub fn has_curve2d(&self) -> bool {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve2d(self)
+    }
+
+    /// Inherited from ShapeUpgrade_EdgeDivide: HasCurve3d()
+    pub fn has_curve3d(&self) -> bool {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve3d(self)
+    }
+
+    /// Inherited from ShapeUpgrade_EdgeDivide: Knots2d()
+    pub fn knots2d(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Knots2d(self)
+    }
+
+    /// Inherited from ShapeUpgrade_EdgeDivide: Knots3d()
+    pub fn knots3d(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Knots3d(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Set()
+    pub fn set(self: std::pin::Pin<&mut Self>, tool: &crate::ffi::HandleShapeUpgradeTool) {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Set(self, tool)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, preci: f64) {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetPrecision(self, preci)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Precision()
+    pub fn precision(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Precision(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    pub fn min_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_MinTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    pub fn max_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_MaxTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_LimitTolerance(self, toler)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ClosedFaceDivide.hxx
+// ========================
+
+/// Divides a Face with one or more seam edge to avoid closed faces.
+/// Splitting is performed by U and V direction. The number of
+/// resulting faces can be defined by user.
+pub use crate::ffi::ShapeUpgrade_ClosedFaceDivide as ClosedFaceDivide;
+
+impl ClosedFaceDivide {
+    /// Creates empty  constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_ctor()
+    }
+
+    /// Initialize by a Face.
+    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_ctor_face(F)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_FaceDivide
+    pub fn as_face_divide(&self) -> &FaceDivide {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_FaceDivide(self)
+    }
+
+    /// Upcast to ShapeUpgrade_FaceDivide (mutable)
+    pub fn as_face_divide_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut FaceDivide> {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_FaceDivide_mut(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool
+    pub fn as_tool(&self) -> &Tool {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool (mutable)
+    pub fn as_tool_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Tool> {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, F: &crate::ffi::TopoDS_Face) {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Init(self, F)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: SetSurfaceSegmentMode()
+    pub fn set_surface_segment_mode(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetSurfaceSegmentMode(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, theArea: f64) -> bool {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Perform(self, theArea)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: SplitCurves()
+    pub fn split_curves(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SplitCurves(self)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: Result()
+    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Result(self)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: SetSplitSurfaceTool()
+    pub fn set_split_surface_tool(
+        self: std::pin::Pin<&mut Self>,
+        splitSurfaceTool: &crate::ffi::HandleShapeUpgradeSplitSurface,
+    ) {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetSplitSurfaceTool(
+            self,
+            splitSurfaceTool,
+        )
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: GetSplitSurfaceTool()
+    pub fn get_split_surface_tool(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_GetSplitSurfaceTool(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Set()
+    pub fn set(self: std::pin::Pin<&mut Self>, tool: &crate::ffi::HandleShapeUpgradeTool) {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Set(self, tool)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, preci: f64) {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetPrecision(self, preci)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Precision()
+    pub fn precision(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Precision(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    pub fn min_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_MinTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    pub fn max_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_MaxTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_LimitTolerance(self, toler)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx
+// ========================
+
+/// Converts a plane, bspline surface, surface of revolution, surface
+/// of extrusion, offset surface to grid of bezier basis surface (
+/// bezier surface,
+/// surface of revolution based on bezier curve,
+/// offset surface based on any previous type).
+pub use crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis as ConvertSurfaceToBezierBasis;
+
+impl ConvertSurfaceToBezierBasis {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_SplitSurface
+    pub fn as_split_surface(&self) -> &SplitSurface {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface(self)
+    }
+
+    /// Upcast to ShapeUpgrade_SplitSurface (mutable)
+    pub fn as_split_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SplitSurface> {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, S: &crate::ffi::HandleGeomSurface) {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Init(self, S)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: SetUSplitValues()
+    pub fn set_u_split_values(
+        self: std::pin::Pin<&mut Self>,
+        UValues: &crate::ffi::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetUSplitValues(
+            self, UValues,
+        )
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: SetVSplitValues()
+    pub fn set_v_split_values(
+        self: std::pin::Pin<&mut Self>,
+        VValues: &crate::ffi::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetVSplitValues(
+            self, VValues,
+        )
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Perform(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: USplitValues()
+    pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_USplitValues(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: VSplitValues()
+    pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_VSplitValues(self)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_EdgeDivide.hxx
+// ========================
+
+pub use crate::ffi::ShapeUpgrade_EdgeDivide as EdgeDivide;
+
+impl EdgeDivide {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_EdgeDivide_ctor()
+    }
+
+    pub fn knots2d(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        crate::ffi::ShapeUpgrade_EdgeDivide_knots2d(self)
+    }
+
+    pub fn knots3d(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        crate::ffi::ShapeUpgrade_EdgeDivide_knots3d(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_EdgeDivide_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_Tool
+    pub fn as_tool(&self) -> &Tool {
+        crate::ffi::ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool (mutable)
+    pub fn as_tool_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Tool> {
+        crate::ffi::ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Set()
+    pub fn set(self: std::pin::Pin<&mut Self>, tool: &crate::ffi::HandleShapeUpgradeTool) {
+        crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Set(self, tool)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, preci: f64) {
+        crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetPrecision(self, preci)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Precision()
+    pub fn precision(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Precision(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    pub fn min_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_EdgeDivide_inherited_MinTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    pub fn max_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_EdgeDivide_inherited_MaxTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::ffi::ShapeUpgrade_EdgeDivide_inherited_LimitTolerance(self, toler)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_FaceDivide.hxx
+// ========================
+
+/// Divides a Face (both edges in the wires, by splitting
+/// curves and pcurves, and the face itself, by splitting
+/// supporting surface) according to splitting criteria.
+/// * The domain of the face to divide is defined by the PCurves
+/// of the wires on the Face.
+///
+/// * all the PCurves are supposed to be defined (in the parametric
+/// space of the supporting surface).
+///
+/// The result is available after the call to the Build method.
+/// It is a Shell containing all the resulting Faces.
+///
+/// All the modifications made during splitting are recorded in the
+/// external context (ShapeBuild_ReShape).
+pub use crate::ffi::ShapeUpgrade_FaceDivide as FaceDivide;
+
+impl FaceDivide {
+    /// Creates empty  constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_FaceDivide_ctor()
+    }
+
+    /// Initialize by a Face.
+    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_FaceDivide_ctor_face(F)
+    }
+
+    /// Gives the resulting Shell, or Face, or Null shape if not done.
+    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_FaceDivide_result(self)
+    }
+
+    /// Queries the status of last call to Perform
+    /// OK   : no splitting was done (or no call to Perform)
+    /// DONE1: some edges were split
+    /// DONE2: surface was split
+    /// DONE3: surface was modified without splitting
+    /// FAIL1: some fails encountered during splitting wires
+    /// FAIL2: face cannot be split
+    pub fn status(&self, status: i32) -> bool {
+        crate::ffi::ShapeUpgrade_FaceDivide_status(self, status)
+    }
+
+    /// Returns the tool for splitting surfaces.
+    /// This tool must be already initialized.
+    pub fn get_split_surface_tool(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+        crate::ffi::ShapeUpgrade_FaceDivide_get_split_surface_tool(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_FaceDivide_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_Tool
+    pub fn as_tool(&self) -> &Tool {
+        crate::ffi::ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool (mutable)
+    pub fn as_tool_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Tool> {
+        crate::ffi::ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Set()
+    pub fn set(self: std::pin::Pin<&mut Self>, tool: &crate::ffi::HandleShapeUpgradeTool) {
+        crate::ffi::ShapeUpgrade_FaceDivide_inherited_Set(self, tool)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, preci: f64) {
+        crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetPrecision(self, preci)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Precision()
+    pub fn precision(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FaceDivide_inherited_Precision(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    pub fn min_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FaceDivide_inherited_MinTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    pub fn max_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FaceDivide_inherited_MaxTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::ffi::ShapeUpgrade_FaceDivide_inherited_LimitTolerance(self, toler)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_FaceDivideArea.hxx
+// ========================
+
+/// Divides face by max area criterium.
+pub use crate::ffi::ShapeUpgrade_FaceDivideArea as FaceDivideArea;
+
+impl FaceDivideArea {
+    /// Creates empty  constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_ctor()
+    }
+
+    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_ctor_face(F)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_FaceDivide
+    pub fn as_face_divide(&self) -> &FaceDivide {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_FaceDivide(self)
+    }
+
+    /// Upcast to ShapeUpgrade_FaceDivide (mutable)
+    pub fn as_face_divide_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut FaceDivide> {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_FaceDivide_mut(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool
+    pub fn as_tool(&self) -> &Tool {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool (mutable)
+    pub fn as_tool_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Tool> {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, F: &crate::ffi::TopoDS_Face) {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Init(self, F)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: SetSurfaceSegmentMode()
+    pub fn set_surface_segment_mode(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetSurfaceSegmentMode(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: SplitSurface()
+    pub fn split_surface(self: std::pin::Pin<&mut Self>, theArea: f64) -> bool {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SplitSurface(self, theArea)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: SplitCurves()
+    pub fn split_curves(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SplitCurves(self)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: Result()
+    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Result(self)
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: SetSplitSurfaceTool()
+    pub fn set_split_surface_tool(
+        self: std::pin::Pin<&mut Self>,
+        splitSurfaceTool: &crate::ffi::HandleShapeUpgradeSplitSurface,
+    ) {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetSplitSurfaceTool(
+            self,
+            splitSurfaceTool,
+        )
+    }
+
+    /// Inherited from ShapeUpgrade_FaceDivide: GetSplitSurfaceTool()
+    pub fn get_split_surface_tool(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_GetSplitSurfaceTool(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Set()
+    pub fn set(self: std::pin::Pin<&mut Self>, tool: &crate::ffi::HandleShapeUpgradeTool) {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Set(self, tool)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, preci: f64) {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetPrecision(self, preci)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Precision()
+    pub fn precision(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Precision(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    pub fn min_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_MinTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    pub fn max_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_MaxTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_LimitTolerance(self, toler)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_FixSmallBezierCurves.hxx
+// ========================
+
+pub use crate::ffi::ShapeUpgrade_FixSmallBezierCurves as FixSmallBezierCurves;
+
+impl FixSmallBezierCurves {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_FixSmallCurves
+    pub fn as_fix_small_curves(&self) -> &FixSmallCurves {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_FixSmallCurves(self)
+    }
+
+    /// Upcast to ShapeUpgrade_FixSmallCurves (mutable)
+    pub fn as_fix_small_curves_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut FixSmallCurves> {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_FixSmallCurves_mut(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool
+    pub fn as_tool(&self) -> &Tool {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool (mutable)
+    pub fn as_tool_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Tool> {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_FixSmallCurves: Init()
+    pub fn init(
+        self: std::pin::Pin<&mut Self>,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+    ) {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Init(self, theEdge, theFace)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Set()
+    pub fn set(self: std::pin::Pin<&mut Self>, tool: &crate::ffi::HandleShapeUpgradeTool) {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Set(self, tool)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, preci: f64) {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetPrecision(self, preci)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Precision()
+    pub fn precision(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Precision(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    pub fn min_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_MinTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    pub fn max_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_MaxTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_LimitTolerance(self, toler)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_FixSmallCurves.hxx
+// ========================
+
+pub use crate::ffi::ShapeUpgrade_FixSmallCurves as FixSmallCurves;
+
+impl FixSmallCurves {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_ctor()
+    }
+
+    /// Queries the status of last call to Perform
+    /// OK   :
+    /// DONE1:
+    /// DONE2:
+    /// FAIL1:
+    pub fn status(&self, status: i32) -> bool {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_status(self, status)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_Tool
+    pub fn as_tool(&self) -> &Tool {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool (mutable)
+    pub fn as_tool_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Tool> {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Set()
+    pub fn set(self: std::pin::Pin<&mut Self>, tool: &crate::ffi::HandleShapeUpgradeTool) {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Set(self, tool)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, preci: f64) {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetPrecision(self, preci)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Precision()
+    pub fn precision(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Precision(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    pub fn min_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_MinTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    pub fn max_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_MaxTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_LimitTolerance(self, toler)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_RemoveInternalWires.hxx
+// ========================
+
+/// Removes all internal wires having area less than specified min area
+pub use crate::ffi::ShapeUpgrade_RemoveInternalWires as RemoveInternalWires;
+
+impl RemoveInternalWires {
+    /// Creates empty  constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_ctor()
+    }
+
+    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_ctor_shape(theShape)
+    }
+
+    /// Get result shape
+    pub fn get_result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_get_result(self)
+    }
+
+    /// Queries status of last call to Perform()
+    /// : OK - nothing was done
+    /// :DONE1 - internal wires were removed
+    /// :DONE2 - small faces were removed.
+    /// :FAIL1 - initial shape is not specified
+    /// :FAIL2 - specified sub-shape is not belonged to inotial shape.
+    pub fn status(&self, theStatus: i32) -> bool {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_status(self, theStatus)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_Tool
+    pub fn as_tool(&self) -> &Tool {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool (mutable)
+    pub fn as_tool_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Tool> {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Set()
+    pub fn set(self: std::pin::Pin<&mut Self>, tool: &crate::ffi::HandleShapeUpgradeTool) {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Set(self, tool)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, preci: f64) {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetPrecision(self, preci)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Precision()
+    pub fn precision(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Precision(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    pub fn min_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_MinTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    pub fn max_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_MaxTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_LimitTolerance(self, toler)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_RemoveLocations.hxx
+// ========================
+
+/// Removes all locations sub-shapes of specified shape
+pub use crate::ffi::ShapeUpgrade_RemoveLocations as RemoveLocations;
+
+impl RemoveLocations {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_RemoveLocations_ctor()
+    }
+
+    /// Returns shape with removed locations.
+    pub fn get_result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_RemoveLocations_get_result(self)
+    }
+
+    /// sets level starting with that location will be removed,
+    /// by default TopAbs_SHAPE. In this case locations will be kept for specified shape
+    /// and if specified shape is TopAbs_COMPOUND for sub-shapes of first level.
+    pub fn set_remove_level(self: std::pin::Pin<&mut Self>, theLevel: i32) {
+        crate::ffi::ShapeUpgrade_RemoveLocations_set_remove_level(self, theLevel)
+    }
+
+    /// sets level starting with that location will be removed.Value of level can be set to
+    /// TopAbs_SHAPE,TopAbs_COMPOUND,TopAbs_SOLID,TopAbs_SHELL,TopAbs_FACE.By default TopAbs_SHAPE.
+    /// In this case location will be removed for all shape types for exception of compound.
+    pub fn remove_level(&self) -> i32 {
+        crate::ffi::ShapeUpgrade_RemoveLocations_remove_level(self)
+    }
+
+    /// Returns modified shape obtained from initial shape.
+    pub fn modified_shape(
+        &self,
+        theInitShape: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_RemoveLocations_modified_shape(self, theInitShape)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_RemoveLocations_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeUpgradeRemoveLocations> {
+        crate::ffi::ShapeUpgrade_RemoveLocations_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeRemoveLocations;
+
+impl HandleShapeUpgradeRemoveLocations {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_RemoveLocations
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_RemoveLocations {
+        crate::ffi::HandleShapeUpgradeRemoveLocations_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_RemoveLocations
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ShapeUpgrade_RemoveLocations> {
+        crate::ffi::HandleShapeUpgradeRemoveLocations_get_mut(self)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ShapeConvertToBezier.hxx
+// ========================
+
+/// API class for performing conversion of 3D, 2D curves to bezier curves
+/// and surfaces to bezier based surfaces (
+/// bezier surface,
+/// surface of revolution based on bezier curve,
+/// offset surface based on any previous type).
+pub use crate::ffi::ShapeUpgrade_ShapeConvertToBezier as ShapeConvertToBezier;
+
+impl ShapeConvertToBezier {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_ctor()
+    }
+
+    /// Initialize by a Shape.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_ctor_shape(S)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide
+    pub fn as_shape_divide(&self) -> &ShapeDivide {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_as_ShapeUpgrade_ShapeDivide(self)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
+    pub fn as_shape_divide_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut ShapeDivide> {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_as_ShapeUpgrade_ShapeDivide_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Init(self, S)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, Prec: f64) {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetPrecision(self, Prec)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    pub fn set_surface_segment_mode(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetSurfaceSegmentMode(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Result(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    pub fn set_edge_mode(self: std::pin::Pin<&mut Self>, aEdgeMode: i32) {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetEdgeMode(self, aEdgeMode)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ShapeDivide.hxx
+// ========================
+
+/// Divides a all faces in shell with given criteria Shell.
+pub use crate::ffi::ShapeUpgrade_ShapeDivide as ShapeDivide;
+
+impl ShapeDivide {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeDivide_ctor()
+    }
+
+    /// Initialize by a Shape.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeDivide_ctor_shape(S)
+    }
+
+    /// Gives the resulting Shape, or Null shape if not done.
+    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_ShapeDivide_result(self)
+    }
+
+    /// Sends a message to be attached to the shape.
+    /// Calls corresponding message of message registrator.
+    pub fn send_msg(
+        &self,
+        shape: &crate::ffi::TopoDS_Shape,
+        message: &crate::ffi::Message_Msg,
+        gravity: i32,
+    ) {
+        crate::ffi::ShapeUpgrade_ShapeDivide_send_msg(self, shape, message, gravity)
+    }
+
+    /// Queries the status of last call to Perform
+    /// OK   : no splitting was done (or no call to Perform)
+    /// DONE1: some edges were split
+    /// DONE2: surface was split
+    /// FAIL1: some errors occurred
+    pub fn status(&self, status: i32) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivide_status(self, status)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ShapeDivideAngle.hxx
+// ========================
+
+/// Splits all surfaces of revolution, cylindrical, toroidal,
+/// conical, spherical surfaces in the given shape so that
+/// each resulting segment covers not more than defined number
+/// of degrees (to segments less than 90).
+pub use crate::ffi::ShapeUpgrade_ShapeDivideAngle as ShapeDivideAngle;
+
+impl ShapeDivideAngle {
+    /// Empty constructor.
+    pub fn new_real(MaxAngle: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_ctor_real(MaxAngle)
+    }
+
+    /// Initialize by a Shape.
+    pub fn new_real_shape(MaxAngle: f64, S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_ctor_real_shape(MaxAngle, S)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide
+    pub fn as_shape_divide(&self) -> &ShapeDivide {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_as_ShapeUpgrade_ShapeDivide(self)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
+    pub fn as_shape_divide_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut ShapeDivide> {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_as_ShapeUpgrade_ShapeDivide_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Init(self, S)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, Prec: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetPrecision(self, Prec)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    pub fn set_surface_segment_mode(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetSurfaceSegmentMode(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, newContext: bool) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Perform(self, newContext)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Result(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    pub fn set_edge_mode(self: std::pin::Pin<&mut Self>, aEdgeMode: i32) {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetEdgeMode(self, aEdgeMode)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ShapeDivideArea.hxx
+// ========================
+
+/// Divides faces from sprcified shape  by max area criterium.
+pub use crate::ffi::ShapeUpgrade_ShapeDivideArea as ShapeDivideArea;
+
+impl ShapeDivideArea {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_ctor()
+    }
+
+    /// Initialize by a Shape.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_ctor_shape(S)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide
+    pub fn as_shape_divide(&self) -> &ShapeDivide {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_as_ShapeUpgrade_ShapeDivide(self)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
+    pub fn as_shape_divide_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut ShapeDivide> {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_as_ShapeUpgrade_ShapeDivide_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Init(self, S)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, Prec: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetPrecision(self, Prec)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    pub fn set_surface_segment_mode(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetSurfaceSegmentMode(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, newContext: bool) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Perform(self, newContext)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Result(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    pub fn set_edge_mode(self: std::pin::Pin<&mut Self>, aEdgeMode: i32) {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetEdgeMode(self, aEdgeMode)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ShapeDivideClosed.hxx
+// ========================
+
+/// Divides all closed faces in the shape. Class
+/// ShapeUpgrade_ClosedFaceDivide is used as divide tool.
+pub use crate::ffi::ShapeUpgrade_ShapeDivideClosed as ShapeDivideClosed;
+
+impl ShapeDivideClosed {
+    /// Initialises tool with shape and default parameter.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_ctor_shape(S)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide
+    pub fn as_shape_divide(&self) -> &ShapeDivide {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_as_ShapeUpgrade_ShapeDivide(self)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
+    pub fn as_shape_divide_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut ShapeDivide> {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_as_ShapeUpgrade_ShapeDivide_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Init(self, S)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, Prec: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetPrecision(self, Prec)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    pub fn set_surface_segment_mode(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetSurfaceSegmentMode(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, newContext: bool) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Perform(self, newContext)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Result(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    pub fn set_edge_mode(self: std::pin::Pin<&mut Self>, aEdgeMode: i32) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetEdgeMode(self, aEdgeMode)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ShapeDivideClosedEdges.hxx
+// ========================
+
+pub use crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges as ShapeDivideClosedEdges;
+
+impl ShapeDivideClosedEdges {
+    /// Initialises tool with shape and default parameter.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_ctor_shape(S)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide
+    pub fn as_shape_divide(&self) -> &ShapeDivide {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_as_ShapeUpgrade_ShapeDivide(self)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
+    pub fn as_shape_divide_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut ShapeDivide> {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_as_ShapeUpgrade_ShapeDivide_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Init(self, S)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, Prec: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetPrecision(self, Prec)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    pub fn set_surface_segment_mode(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSurfaceSegmentMode(
+            self, Segment,
+        )
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, newContext: bool) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Perform(self, newContext)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Result(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    pub fn set_edge_mode(self: std::pin::Pin<&mut Self>, aEdgeMode: i32) {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetEdgeMode(self, aEdgeMode)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ShapeDivideContinuity.hxx
+// ========================
+
+/// API Tool for converting shapes with C0 geometry into C1 ones
+pub use crate::ffi::ShapeUpgrade_ShapeDivideContinuity as ShapeDivideContinuity;
+
+impl ShapeDivideContinuity {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_ctor()
+    }
+
+    /// Initialize by a Shape.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_ctor_shape(S)
+    }
+
+    /// Defines a criterion of continuity for the boundary (all the
+    /// Wires)
+    ///
+    /// The possible values are C0, G1, C1, G2, C2, C3, CN The
+    /// default is C1 to respect the Cas.Cade Shape Validity.  G1
+    /// and G2 are not authorized.
+    pub fn set_boundary_criterion(self: std::pin::Pin<&mut Self>, Criterion: i32) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_boundary_criterion(self, Criterion)
+    }
+
+    /// Defines a criterion of continuity for the boundary (all the
+    /// pcurves of Wires)
+    ///
+    /// The possible values are C0, G1, C1, G2, C2, C3, CN The
+    /// default is C1 to respect the Cas.Cade Shape Validity.  G1
+    /// and G2 are not authorized.
+    pub fn set_p_curve_criterion(self: std::pin::Pin<&mut Self>, Criterion: i32) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_p_curve_criterion(self, Criterion)
+    }
+
+    /// Defines a criterion of continuity for the boundary (all the
+    /// Wires)
+    ///
+    /// The possible values are C0, G1, C1, G2, C2, C3, CN The
+    /// default is C1 to respect the Cas.Cade Shape Validity.  G1
+    /// and G2 are not authorized.
+    pub fn set_surface_criterion(self: std::pin::Pin<&mut Self>, Criterion: i32) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_surface_criterion(self, Criterion)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide
+    pub fn as_shape_divide(&self) -> &ShapeDivide {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_as_ShapeUpgrade_ShapeDivide(self)
+    }
+
+    /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
+    pub fn as_shape_divide_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut ShapeDivide> {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_as_ShapeUpgrade_ShapeDivide_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Init(self, S)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, Prec: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetPrecision(self, Prec)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    pub fn set_surface_segment_mode(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetSurfaceSegmentMode(
+            self, Segment,
+        )
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, newContext: bool) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Perform(self, newContext)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Result(self)
+    }
+
+    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    pub fn set_edge_mode(self: std::pin::Pin<&mut Self>, aEdgeMode: i32) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetEdgeMode(self, aEdgeMode)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ShellSewing.hxx
+// ========================
+
+/// This class provides a tool for applying sewing algorithm from
+/// BRepBuilderAPI: it takes a shape, calls sewing for each shell,
+/// and then replaces sewed shells with use of ShapeBuild_ReShape
+pub use crate::ffi::ShapeUpgrade_ShellSewing as ShellSewing;
+
+impl ShellSewing {
+    /// Creates a ShellSewing, empty
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_ShellSewing_ctor()
+    }
+
+    /// Builds a new shape from a former one, by calling Sewing from
+    /// BRepBuilderAPI. Rebuilt solids are oriented to be "not infinite"
+    ///
+    /// If <tol> is not given (i.e. value 0. by default), it is
+    /// computed as the mean tolerance recorded in <shape>
+    ///
+    /// If no shell has been sewed, this method returns the input
+    /// shape
+    pub fn apply_sewing(
+        self: std::pin::Pin<&mut Self>,
+        shape: &crate::ffi::TopoDS_Shape,
+        tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeUpgrade_ShellSewing_apply_sewing(self, shape, tol)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_SplitCurve.hxx
+// ========================
+
+/// Splits a  curve with a  criterion.
+pub use crate::ffi::ShapeUpgrade_SplitCurve as SplitCurve;
+
+impl SplitCurve {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_SplitCurve_ctor()
+    }
+
+    /// Returns the status
+    /// OK    - no splitting is needed
+    /// DONE1 - splitting required and gives more than one segment
+    /// DONE2 - splitting is required, but gives only one segment (initial)
+    /// DONE3 - geometric form of the curve or parametrisation is modified
+    pub fn status(&self, status: i32) -> bool {
+        crate::ffi::ShapeUpgrade_SplitCurve_status(self, status)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_SplitCurve_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+        crate::ffi::ShapeUpgrade_SplitCurve_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeSplitCurve;
+
+impl HandleShapeUpgradeSplitCurve {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve {
+        crate::ffi::HandleShapeUpgradeSplitCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ShapeUpgrade_SplitCurve> {
+        crate::ffi::HandleShapeUpgradeSplitCurve_get_mut(self)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_SplitCurve2d.hxx
+// ========================
+
+/// Splits a 2d curve with a criterion.
+pub use crate::ffi::ShapeUpgrade_SplitCurve2d as SplitCurve2d;
+
+impl SplitCurve2d {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_SplitCurve2d_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_SplitCurve2d_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve
+    pub fn as_split_curve(&self) -> &SplitCurve {
+        crate::ffi::ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve(self)
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve (mutable)
+    pub fn as_split_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut SplitCurve> {
+        crate::ffi::ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitCurve: SetSplitValues()
+    pub fn set_split_values(
+        self: std::pin::Pin<&mut Self>,
+        SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_SetSplitValues(self, SplitValues)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitCurve: SplitValues()
+    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_SplitValues(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitCurve: Compute()
+    pub fn compute(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Compute(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitCurve: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Perform(self, Segment)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_SplitCurve3d.hxx
+// ========================
+
+/// Splits a 3d curve with a criterion.
+pub use crate::ffi::ShapeUpgrade_SplitCurve3d as SplitCurve3d;
+
+impl SplitCurve3d {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_SplitCurve3d_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_SplitCurve3d_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve
+    pub fn as_split_curve(&self) -> &SplitCurve {
+        crate::ffi::ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve(self)
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve (mutable)
+    pub fn as_split_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut SplitCurve> {
+        crate::ffi::ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitCurve: SetSplitValues()
+    pub fn set_split_values(
+        self: std::pin::Pin<&mut Self>,
+        SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_SetSplitValues(self, SplitValues)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitCurve: SplitValues()
+    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_SplitValues(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitCurve: Compute()
+    pub fn compute(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Compute(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitCurve: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Perform(self, Segment)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_SplitSurface.hxx
+// ========================
+
+/// Splits a Surface with a criterion.
+pub use crate::ffi::ShapeUpgrade_SplitSurface as SplitSurface;
+
+impl SplitSurface {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_SplitSurface_ctor()
+    }
+
+    /// Returns the status
+    /// OK    - no splitting is needed
+    /// DONE1 - splitting required and gives more than one patch
+    /// DONE2 - splitting is required, but gives only single patch (initial)
+    /// DONE3 - geometric form of the surface or parametrisation is modified
+    pub fn status(&self, status: i32) -> bool {
+        crate::ffi::ShapeUpgrade_SplitSurface_status(self, status)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_SplitSurface_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+        crate::ffi::ShapeUpgrade_SplitSurface_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeSplitSurface;
+
+impl HandleShapeUpgradeSplitSurface {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurface
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurface {
+        crate::ffi::HandleShapeUpgradeSplitSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ShapeUpgrade_SplitSurface> {
+        crate::ffi::HandleShapeUpgradeSplitSurface_get_mut(self)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_SplitSurfaceAngle.hxx
+// ========================
+
+/// Splits a surfaces of revolution, cylindrical, toroidal,
+/// conical, spherical so that each resulting segment covers
+/// not more than defined number of degrees.
+pub use crate::ffi::ShapeUpgrade_SplitSurfaceAngle as SplitSurfaceAngle;
+
+impl SplitSurfaceAngle {
+    /// Empty constructor.
+    pub fn new_real(MaxAngle: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_ctor_real(MaxAngle)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_SplitSurface
+    pub fn as_split_surface(&self) -> &SplitSurface {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface(self)
+    }
+
+    /// Upcast to ShapeUpgrade_SplitSurface (mutable)
+    pub fn as_split_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SplitSurface> {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, S: &crate::ffi::HandleGeomSurface) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Init(self, S)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: SetUSplitValues()
+    pub fn set_u_split_values(
+        self: std::pin::Pin<&mut Self>,
+        UValues: &crate::ffi::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_SetUSplitValues(self, UValues)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: SetVSplitValues()
+    pub fn set_v_split_values(
+        self: std::pin::Pin<&mut Self>,
+        VValues: &crate::ffi::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_SetVSplitValues(self, VValues)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Build(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Perform(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: USplitValues()
+    pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_USplitValues(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: VSplitValues()
+    pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_VSplitValues(self)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_SplitSurfaceArea.hxx
+// ========================
+
+/// Split surface in the parametric space
+/// in according specified number of splits on the
+pub use crate::ffi::ShapeUpgrade_SplitSurfaceArea as SplitSurfaceArea;
+
+impl SplitSurfaceArea {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_SplitSurface
+    pub fn as_split_surface(&self) -> &SplitSurface {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface(self)
+    }
+
+    /// Upcast to ShapeUpgrade_SplitSurface (mutable)
+    pub fn as_split_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SplitSurface> {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, S: &crate::ffi::HandleGeomSurface) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Init(self, S)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: SetUSplitValues()
+    pub fn set_u_split_values(
+        self: std::pin::Pin<&mut Self>,
+        UValues: &crate::ffi::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_SetUSplitValues(self, UValues)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: SetVSplitValues()
+    pub fn set_v_split_values(
+        self: std::pin::Pin<&mut Self>,
+        VValues: &crate::ffi::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_SetVSplitValues(self, VValues)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Build(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Perform(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: USplitValues()
+    pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_USplitValues(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: VSplitValues()
+    pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_VSplitValues(self)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_SplitSurfaceContinuity.hxx
+// ========================
+
+/// Splits a Surface with a continuity criterion.
+/// At the present moment C1 criterion is used only.
+/// This tool works with tolerance. If C0 surface can be corrected
+/// at a knot with given tolerance then the surface is corrected,
+/// otherwise it is spltted at that knot.
+pub use crate::ffi::ShapeUpgrade_SplitSurfaceContinuity as SplitSurfaceContinuity;
+
+impl SplitSurfaceContinuity {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_ctor()
+    }
+
+    /// Sets criterion for splitting.
+    pub fn set_criterion(self: std::pin::Pin<&mut Self>, Criterion: i32) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_set_criterion(self, Criterion)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_SplitSurface
+    pub fn as_split_surface(&self) -> &SplitSurface {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface(self)
+    }
+
+    /// Upcast to ShapeUpgrade_SplitSurface (mutable)
+    pub fn as_split_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SplitSurface> {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>, S: &crate::ffi::HandleGeomSurface) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Init(self, S)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: SetUSplitValues()
+    pub fn set_u_split_values(
+        self: std::pin::Pin<&mut Self>,
+        UValues: &crate::ffi::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_SetUSplitValues(self, UValues)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: SetVSplitValues()
+    pub fn set_v_split_values(
+        self: std::pin::Pin<&mut Self>,
+        VValues: &crate::ffi::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_SetVSplitValues(self, VValues)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Build(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, Segment: bool) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Perform(self, Segment)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: USplitValues()
+    pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_USplitValues(self)
+    }
+
+    /// Inherited from ShapeUpgrade_SplitSurface: VSplitValues()
+    pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_VSplitValues(self)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_Tool.hxx
+// ========================
+
+/// Tool is a root class for splitting classes
+/// Provides context for recording changes, basic
+/// precision value and limit (minimal and maximal)
+/// values for tolerances
+pub use crate::ffi::ShapeUpgrade_Tool as Tool;
+
+impl Tool {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_Tool_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_Tool_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeUpgradeTool> {
+        crate::ffi::ShapeUpgrade_Tool_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeTool;
+
+impl HandleShapeUpgradeTool {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_Tool
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_Tool {
+        crate::ffi::HandleShapeUpgradeTool_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_Tool
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ShapeUpgrade_Tool> {
+        crate::ffi::HandleShapeUpgradeTool_get_mut(self)
+    }
+}
+
 // ========================
 // From ShapeUpgrade_UnifySameDomain.hxx
 // ========================
@@ -112,5 +2036,99 @@ impl HandleShapeUpgradeUnifySameDomain {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::ffi::ShapeUpgrade_UnifySameDomain> {
         crate::ffi::HandleShapeUpgradeUnifySameDomain_get_mut(self)
+    }
+}
+
+// ========================
+// From ShapeUpgrade_WireDivide.hxx
+// ========================
+
+/// Divides edges in the wire lying on the face or free wires or
+/// free edges with a criterion.
+/// Splits 3D curve and pcurve(s) of the edge on the face.
+/// Other pcurves which may be associated with the edge are simply
+/// copied.
+/// If 3D curve is split then pcurve on the face is split as
+/// well, and vice-versa.
+/// Input shape is not modified.
+/// The modifications made are recorded in external context
+/// (ShapeBuild_ReShape). This tool is applied to all edges
+/// before splitting them in order to keep sharing.
+pub use crate::ffi::ShapeUpgrade_WireDivide as WireDivide;
+
+impl WireDivide {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeUpgrade_WireDivide_ctor()
+    }
+
+    /// Queries status of last call to Perform()
+    /// OK - no edges were split, wire left untouched
+    /// DONE1 - some edges were split
+    /// FAIL1 - some edges have no 3d curve (skipped)
+    /// FAIL2 - some edges have no pcurve (skipped)
+    pub fn status(&self, status: i32) -> bool {
+        crate::ffi::ShapeUpgrade_WireDivide_status(self, status)
+    }
+
+    /// Returns the tool for Transfer of parameters.
+    pub fn get_transfer_param_tool(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisTransferParameters> {
+        crate::ffi::ShapeUpgrade_WireDivide_get_transfer_param_tool(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeUpgrade_WireDivide_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeUpgrade_Tool
+    pub fn as_tool(&self) -> &Tool {
+        crate::ffi::ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool(self)
+    }
+
+    /// Upcast to ShapeUpgrade_Tool (mutable)
+    pub fn as_tool_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Tool> {
+        crate::ffi::ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool_mut(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Set()
+    pub fn set(self: std::pin::Pin<&mut Self>, tool: &crate::ffi::HandleShapeUpgradeTool) {
+        crate::ffi::ShapeUpgrade_WireDivide_inherited_Set(self, tool)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    pub fn set_precision(self: std::pin::Pin<&mut Self>, preci: f64) {
+        crate::ffi::ShapeUpgrade_WireDivide_inherited_SetPrecision(self, preci)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: Precision()
+    pub fn precision(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_WireDivide_inherited_Precision(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, mintol: f64) {
+        crate::ffi::ShapeUpgrade_WireDivide_inherited_SetMinTolerance(self, mintol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    pub fn min_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_WireDivide_inherited_MinTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeUpgrade_WireDivide_inherited_SetMaxTolerance(self, maxtol)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    pub fn max_tolerance(&self) -> f64 {
+        crate::ffi::ShapeUpgrade_WireDivide_inherited_MaxTolerance(self)
+    }
+
+    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::ffi::ShapeUpgrade_WireDivide_inherited_LimitTolerance(self, toler)
     }
 }

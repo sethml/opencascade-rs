@@ -6,10 +6,409 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// result status of transferring an entity (see Transcriptor)
+/// C++ enum: `Transfer_StatusResult`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum StatusResult {
+    Statusvoid = 0,
+    Statusdefined = 1,
+    Statusused = 2,
+}
+
+impl From<StatusResult> for i32 {
+    fn from(value: StatusResult) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for StatusResult {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(StatusResult::Statusvoid),
+            1 => Ok(StatusResult::Statusdefined),
+            2 => Ok(StatusResult::Statusused),
+            _ => Err(value),
+        }
+    }
+}
+
+/// execution status of an individual transfer (see Transcriptor)
+/// C++ enum: `Transfer_StatusExec`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum StatusExec {
+    Statusinitial = 0,
+    Statusrun = 1,
+    Statusdone = 2,
+    Statuserror = 3,
+    Statusloop = 4,
+}
+
+impl From<StatusExec> for i32 {
+    fn from(value: StatusExec) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for StatusExec {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(StatusExec::Statusinitial),
+            1 => Ok(StatusExec::Statusrun),
+            2 => Ok(StatusExec::Statusdone),
+            3 => Ok(StatusExec::Statuserror),
+            4 => Ok(StatusExec::Statusloop),
+            _ => Err(value),
+        }
+    }
+}
+
+// ========================
+// From Transfer_ActorOfFinderProcess.hxx
+// ========================
+
+/// The original class was renamed. Compatibility only
+///
+/// ModeTrans : a simple way of transmitting a transfer mode from
+/// a user. To be interpreted for each norm
+pub use crate::ffi::Transfer_ActorOfFinderProcess as ActorOfFinderProcess;
+
+impl ActorOfFinderProcess {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Transfer_ActorOfFinderProcess_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Transfer_ActorOfFinderProcess_get_type_descriptor()
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForFinder
+    pub fn as_actor_of_process_for_finder(&self) -> &ActorOfProcessForFinder {
+        crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder(self)
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForFinder (mutable)
+    pub fn as_actor_of_process_for_finder_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ActorOfProcessForFinder> {
+        crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder_mut(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: NullResult()
+    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
+        crate::ffi::Transfer_ActorOfFinderProcess_inherited_NullResult(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: SetLast()
+    pub fn set_last(self: std::pin::Pin<&mut Self>, mode: bool) {
+        crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetLast(self, mode)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: IsLast()
+    pub fn is_last(&self) -> bool {
+        crate::ffi::Transfer_ActorOfFinderProcess_inherited_IsLast(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: SetNext()
+    pub fn set_next(
+        self: std::pin::Pin<&mut Self>,
+        next: &crate::ffi::HandleTransferActorOfProcessForFinder,
+    ) {
+        crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetNext(self, next)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: Next()
+    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        crate::ffi::Transfer_ActorOfFinderProcess_inherited_Next(self)
+    }
+}
+
+// ========================
+// From Transfer_ActorOfProcessForFinder.hxx
+// ========================
+
+pub use crate::ffi::Transfer_ActorOfProcessForFinder as ActorOfProcessForFinder;
+
+impl ActorOfProcessForFinder {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Transfer_ActorOfProcessForFinder_ctor()
+    }
+
+    /// Returns a Binder for No Result, i.e. a Null Handle
+    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
+        crate::ffi::Transfer_ActorOfProcessForFinder_null_result(self)
+    }
+
+    /// Returns the Actor defined as Next, or a Null Handle
+    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        crate::ffi::Transfer_ActorOfProcessForFinder_next(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Transfer_ActorOfProcessForFinder_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        crate::ffi::Transfer_ActorOfProcessForFinder_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTransferActorOfProcessForFinder;
+
+impl HandleTransferActorOfProcessForFinder {
+    /// Dereference this Handle to access the underlying Transfer_ActorOfProcessForFinder
+    pub fn get(&self) -> &crate::ffi::Transfer_ActorOfProcessForFinder {
+        crate::ffi::HandleTransferActorOfProcessForFinder_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Transfer_ActorOfProcessForFinder
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Transfer_ActorOfProcessForFinder> {
+        crate::ffi::HandleTransferActorOfProcessForFinder_get_mut(self)
+    }
+}
+
+// ========================
+// From Transfer_ActorOfProcessForTransient.hxx
+// ========================
+
+pub use crate::ffi::Transfer_ActorOfProcessForTransient as ActorOfProcessForTransient;
+
+impl ActorOfProcessForTransient {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Transfer_ActorOfProcessForTransient_ctor()
+    }
+
+    /// Returns a Binder for No Result, i.e. a Null Handle
+    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
+        crate::ffi::Transfer_ActorOfProcessForTransient_null_result(self)
+    }
+
+    /// Returns the Actor defined as Next, or a Null Handle
+    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        crate::ffi::Transfer_ActorOfProcessForTransient_next(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Transfer_ActorOfProcessForTransient_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        crate::ffi::Transfer_ActorOfProcessForTransient_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTransferActorOfProcessForTransient;
+
+impl HandleTransferActorOfProcessForTransient {
+    /// Dereference this Handle to access the underlying Transfer_ActorOfProcessForTransient
+    pub fn get(&self) -> &crate::ffi::Transfer_ActorOfProcessForTransient {
+        crate::ffi::HandleTransferActorOfProcessForTransient_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Transfer_ActorOfProcessForTransient
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Transfer_ActorOfProcessForTransient> {
+        crate::ffi::HandleTransferActorOfProcessForTransient_get_mut(self)
+    }
+}
+
+// ========================
+// From Transfer_ActorOfTransientProcess.hxx
+// ========================
+
+/// The original class was renamed. Compatibility only
+pub use crate::ffi::Transfer_ActorOfTransientProcess as ActorOfTransientProcess;
+
+impl ActorOfTransientProcess {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Transfer_ActorOfTransientProcess_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Transfer_ActorOfTransientProcess_get_type_descriptor()
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForTransient
+    pub fn as_actor_of_process_for_transient(&self) -> &ActorOfProcessForTransient {
+        crate::ffi::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient(self)
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForTransient (mutable)
+    pub fn as_actor_of_process_for_transient_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ActorOfProcessForTransient> {
+        crate::ffi::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient_mut(
+            self,
+        )
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForTransient: NullResult()
+    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
+        crate::ffi::Transfer_ActorOfTransientProcess_inherited_NullResult(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForTransient: SetLast()
+    pub fn set_last(self: std::pin::Pin<&mut Self>, mode: bool) {
+        crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetLast(self, mode)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForTransient: IsLast()
+    pub fn is_last(&self) -> bool {
+        crate::ffi::Transfer_ActorOfTransientProcess_inherited_IsLast(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForTransient: SetNext()
+    pub fn set_next(
+        self: std::pin::Pin<&mut Self>,
+        next: &crate::ffi::HandleTransferActorOfProcessForTransient,
+    ) {
+        crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetNext(self, next)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForTransient: Next()
+    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        crate::ffi::Transfer_ActorOfTransientProcess_inherited_Next(self)
+    }
+}
+
+// ========================
+// From Transfer_Binder.hxx
+// ========================
+
+/// A Binder is an auxiliary object to Map the Result of the
+/// Transfer of a given Object : it records the Result of the
+/// Unitary Transfer (Resulting Object), status of progress and
+/// error (if any) of the Process
+///
+/// The class Binder itself makes no definition for the Result :
+/// it is defined by sub-classes : it can be either Simple (and
+/// has to be typed : see generic class SimpleBinder) or Multiple
+/// (see class MultipleBinder).
+///
+/// In principle, for a Transfer in progress, Result cannot be
+/// accessed : this would cause an exception raising.
+/// This is controlled by the value if StatusResult : if it is
+/// "Used", the Result cannot be changed. This status is normally
+/// controlled by TransferProcess but can be directly (see method
+/// SetAlreadyUsed)
+///
+/// Checks can be completed by a record of cases, as string which
+/// can be used as codes, but not to be printed
+///
+/// In addition to the Result, a Binder can bring a list of
+/// Attributes, which are additional data, each of them has a name
+pub use crate::ffi::Transfer_Binder as Binder;
+
+impl Binder {
+    /// Returns the Type which characterizes the Result (if known)
+    pub fn result_type(&self) -> cxx::UniquePtr<crate::ffi::HandleStandardType> {
+        crate::ffi::Transfer_Binder_result_type(self)
+    }
+
+    /// Returns the Name of the Type which characterizes the Result
+    /// Can be returned even if ResultType itself is unknown
+    pub fn result_type_name(&self) -> String {
+        crate::ffi::Transfer_Binder_result_type_name(self)
+    }
+
+    /// Returns the next result, Null if none
+    pub fn next_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
+        crate::ffi::Transfer_Binder_next_result(self)
+    }
+
+    /// Returns status, which can be Initial (not yet done), Made (a
+    /// result is recorded, not yet shared), Used (it is shared and
+    /// cannot be modified)
+    pub fn status(&self) -> i32 {
+        crate::ffi::Transfer_Binder_status(self)
+    }
+
+    /// Returns execution status
+    pub fn status_exec(&self) -> i32 {
+        crate::ffi::Transfer_Binder_status_exec(self)
+    }
+
+    /// Modifies execution status; called by TransferProcess only
+    /// (for StatusError, rather use SetError, below)
+    pub fn set_status_exec(self: std::pin::Pin<&mut Self>, stat: i32) {
+        crate::ffi::Transfer_Binder_set_status_exec(self, stat)
+    }
+
+    /// Used to declare an individual transfer as being erroneous
+    /// (Status is set to Void, StatusExec is set to Error, <errmess>
+    /// is added to Check's list of Fails)
+    /// It is possible to record several messages of error
+    ///
+    /// It has same effect for TransferProcess as raising an exception
+    /// during the operation of Transfer, except the Transfer tries to
+    /// continue (as if ErrorHandle had been set)
+    pub fn add_fail(self: std::pin::Pin<&mut Self>, mess: &str, orig: &str) {
+        crate::ffi::Transfer_Binder_add_fail(self, mess, orig)
+    }
+
+    /// Used to attach a Warning Message to an individual Transfer
+    /// It has no effect on the Status
+    pub fn add_warning(self: std::pin::Pin<&mut Self>, mess: &str, orig: &str) {
+        crate::ffi::Transfer_Binder_add_warning(self, mess, orig)
+    }
+
+    /// Returns Check which stores Fail messages
+    /// Note that no Entity is associated in this Check
+    pub fn check(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceCheck> {
+        crate::ffi::Transfer_Binder_check(self)
+    }
+
+    /// Returns Check which stores Fail messages, in order to modify
+    /// it (adding messages, or replacing it)
+    pub fn c_check(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceCheck> {
+        crate::ffi::Transfer_Binder_c_check(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Transfer_Binder_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleTransferBinder;
+
+impl HandleTransferBinder {
+    /// Dereference this Handle to access the underlying Transfer_Binder
+    pub fn get(&self) -> &crate::ffi::Transfer_Binder {
+        crate::ffi::HandleTransferBinder_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Transfer_Binder
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Transfer_Binder> {
+        crate::ffi::HandleTransferBinder_get_mut(self)
+    }
+}
+
 // ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    Transfer_FinderProcess as FinderProcess, Transfer_TransientProcess as TransientProcess,
+    Transfer_Finder as Finder, Transfer_FinderProcess as FinderProcess,
+    Transfer_ProcessForFinder as ProcessForFinder,
+    Transfer_ProcessForTransient as ProcessForTransient,
+    Transfer_SimpleBinderOfTransient as SimpleBinderOfTransient,
+    Transfer_TransientProcess as TransientProcess,
 };

@@ -6,6 +6,181 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::h_operator;
+
+/// C++ enum: `GProp_EquaType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum EquaType {
+    Plane = 0,
+    Line = 1,
+    Point = 2,
+    Space = 3,
+    None = 4,
+}
+
+impl From<EquaType> for i32 {
+    fn from(value: EquaType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for EquaType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(EquaType::Plane),
+            1 => Ok(EquaType::Line),
+            2 => Ok(EquaType::Point),
+            3 => Ok(EquaType::Space),
+            4 => Ok(EquaType::None),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Algorithms:
+/// C++ enum: `GProp_ValueType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ValueType {
+    Mass = 0,
+    Centermassx = 1,
+    Centermassy = 2,
+    Centermassz = 3,
+    Inertiaxx = 4,
+    Inertiayy = 5,
+    Inertiazz = 6,
+    Inertiaxy = 7,
+    Inertiaxz = 8,
+    Inertiayz = 9,
+    Unknown = 10,
+}
+
+impl From<ValueType> for i32 {
+    fn from(value: ValueType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ValueType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ValueType::Mass),
+            1 => Ok(ValueType::Centermassx),
+            2 => Ok(ValueType::Centermassy),
+            3 => Ok(ValueType::Centermassz),
+            4 => Ok(ValueType::Inertiaxx),
+            5 => Ok(ValueType::Inertiayy),
+            6 => Ok(ValueType::Inertiazz),
+            7 => Ok(ValueType::Inertiaxy),
+            8 => Ok(ValueType::Inertiaxz),
+            9 => Ok(ValueType::Inertiayz),
+            10 => Ok(ValueType::Unknown),
+            _ => Err(value),
+        }
+    }
+}
+
+// ========================
+// From GProp_CelGProps.hxx
+// ========================
+
+/// Computes the  global properties of bounded curves
+/// in 3D space.
+/// It can be an elementary curve from package gp such as
+/// Lin, Circ, Elips, Parab .
+pub use crate::ffi::GProp_CelGProps as CelGProps;
+
+impl CelGProps {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_CelGProps_ctor()
+    }
+
+    pub fn new_circ_pnt(
+        C: &crate::ffi::gp_Circ,
+        CLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_CelGProps_ctor_circ_pnt(C, CLocation)
+    }
+
+    pub fn new_circ_real2_pnt(
+        C: &crate::ffi::gp_Circ,
+        U1: f64,
+        U2: f64,
+        CLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_CelGProps_ctor_circ_real2_pnt(C, U1, U2, CLocation)
+    }
+
+    pub fn new_lin_real2_pnt(
+        C: &crate::ffi::gp_Lin,
+        U1: f64,
+        U2: f64,
+        CLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_CelGProps_ctor_lin_real2_pnt(C, U1, U2, CLocation)
+    }
+
+    /// Upcast to GProp_GProps
+    pub fn as_g_props(&self) -> &GProps {
+        crate::ffi::GProp_CelGProps_as_GProp_GProps(self)
+    }
+
+    /// Upcast to GProp_GProps (mutable)
+    pub fn as_g_props_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GProps> {
+        crate::ffi::GProp_CelGProps_as_GProp_GProps_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_CelGProps_to_owned(self)
+    }
+
+    /// Inherited from GProp_GProps: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::GProp_CelGProps_inherited_Add(self, Item, Density)
+    }
+
+    /// Inherited from GProp_GProps: Mass()
+    pub fn mass(&self) -> f64 {
+        crate::ffi::GProp_CelGProps_inherited_Mass(self)
+    }
+
+    /// Inherited from GProp_GProps: CentreOfMass()
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GProp_CelGProps_inherited_CentreOfMass(self)
+    }
+
+    /// Inherited from GProp_GProps: MatrixOfInertia()
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::GProp_CelGProps_inherited_MatrixOfInertia(self)
+    }
+
+    /// Inherited from GProp_GProps: StaticMoments()
+    pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
+        crate::ffi::GProp_CelGProps_inherited_StaticMoments(self, Ix, Iy, Iz)
+    }
+
+    /// Inherited from GProp_GProps: MomentOfInertia()
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::GProp_CelGProps_inherited_MomentOfInertia(self, A)
+    }
+
+    /// Inherited from GProp_GProps: PrincipalProperties()
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::GProp_CelGProps_inherited_PrincipalProperties(self)
+    }
+
+    /// Inherited from GProp_GProps: RadiusOfGyration()
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::GProp_CelGProps_inherited_RadiusOfGyration(self, A)
+    }
+}
+
 // ========================
 // From GProp_GProps.hxx
 // ========================
@@ -140,6 +315,23 @@ impl GProps {
         crate::ffi::GProp_GProps_matrix_of_inertia(self)
     }
 
+    /// Computes the principal properties of inertia of the current system.
+    /// There is always a set of axes for which the products
+    /// of inertia of a geometric system are equal to 0; i.e. the
+    /// matrix of inertia of the system is diagonal. These axes
+    /// are the principal axes of inertia. Their origin is
+    /// coincident with the center of mass of the system. The
+    /// associated moments are called the principal moments of inertia.
+    /// This function computes the eigen values and the
+    /// eigen vectors of the matrix of inertia of the system.
+    /// Results are stored by using a presentation framework
+    /// of principal properties of inertia
+    /// (GProp_PrincipalProps object) which may be
+    /// queried to access the value sought.
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::GProp_GProps_principal_properties(self)
+    }
+
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::GProp_GProps_to_owned(self)
@@ -147,7 +339,540 @@ impl GProps {
 }
 
 // ========================
-// Additional type re-exports
+// From GProp_PEquation.hxx
 // ========================
 
+/// A framework to analyze a collection - or cloud
+/// - of points and to verify if they are coincident,
+/// collinear or coplanar within a given precision. If
+/// so, it also computes the mean point, the mean
+/// line or the mean plane of the points. If not, it
+/// computes the minimal box which includes all the points.
+pub use crate::ffi::GProp_PEquation as PEquation;
+
+impl PEquation {
+    /// Constructs a framework to analyze the
+    /// collection of points Pnts and computes:
+    /// -   the mean point if the points in question are
+    /// considered to be coincident within the precision Tol, or
+    /// -   the mean line if they are considered to be
+    /// collinear within the precision Tol, or
+    /// -   the mean plane if they are considered to be
+    /// coplanar within the precision Tol, or
+    /// -   the minimal box which contains all the points. Use :
+    /// -   the functions IsPoint, IsLinear, IsPlanar
+    /// and IsSpace to find the result of the analysis, and
+    /// -   the function Point, Line, Plane or Box to
+    /// access the computed result.
+    pub fn new_array1ofpnt_real(
+        Pnts: &crate::ffi::TColgp_Array1OfPnt,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_PEquation_ctor_array1ofpnt_real(Pnts, Tol)
+    }
+
+    /// Returns the mean plane passing near all the
+    /// points analyzed by this framework if, according
+    /// to the given precision, the points are considered to be coplanar.
+    /// Exceptions
+    /// Standard_NoSuchObject if, according to the
+    /// given precision value, the points analyzed by
+    /// this framework are considered to be:
+    /// -   coincident, or
+    /// -   collinear, or
+    /// -   not coplanar.
+    pub fn plane(&self) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::GProp_PEquation_plane(self)
+    }
+
+    /// Returns the mean line passing near all the
+    /// points analyzed by this framework if, according
+    /// to the given precision value, the points are considered to be collinear.
+    /// Exceptions
+    /// Standard_NoSuchObject if, according to the
+    /// given precision, the points analyzed by this
+    /// framework are considered to be:
+    /// -   coincident, or
+    /// -   not collinear.
+    pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::GProp_PEquation_line(self)
+    }
+
+    /// Returns the mean point of all the points
+    /// analyzed by this framework if, according to the
+    /// given precision, the points are considered to be coincident.
+    /// Exceptions
+    /// Standard_NoSuchObject if, according to the
+    /// given precision, the points analyzed by this
+    /// framework are not considered to be coincident.
+    pub fn point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GProp_PEquation_point(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_PEquation_to_owned(self)
+    }
+}
+
+// ========================
+// From GProp_PGProps.hxx
+// ========================
+
+/// A framework for computing the global properties of a
+/// set of points.
+/// A point mass is attached to each point. The global
+/// mass of the system is the sum of each individual
+/// mass. By default, the point mass is equal to 1 and the
+/// mass of a system composed of N points is equal to N.
+/// Warning
+/// A framework of this sort provides functions to handle
+/// sets of points easily. But, like any GProp_GProps
+/// object, by using the Add function, it can theoretically
+/// bring together the computed global properties and
+/// those of a system more complex than a set of points .
+/// The mass of each point and the density of each
+/// component of the composed system must be
+/// coherent. Note that this coherence cannot be checked.
+/// Nonetheless, you are advised to restrict your use of a
+/// GProp_PGProps object to a set of points and to
+/// create a GProp_GProps object in order to bring
+/// together global properties of different systems.
+pub use crate::ffi::GProp_PGProps as PGProps;
+
+impl PGProps {
+    /// Initializes a framework to compute global properties
+    /// on a set of points.
+    /// The point relative to which the inertia of the system is
+    /// computed will be the origin (0, 0, 0) of the
+    /// absolute Cartesian coordinate system.
+    /// At initialization, the framework is empty, i.e. it retains
+    /// no dimensional information such as mass and inertia.
+    /// It is, however, now able to keep global properties of a
+    /// set of points while new points are added using the
+    /// AddPoint function.
+    /// The set of points whose global properties are brought
+    /// together by this framework will then be referred to as
+    /// the current system. The current system is, however,
+    /// not kept by this framework, which only keeps that
+    /// system's global properties. Note that the current
+    /// system may be more complex than a set of points.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_PGProps_ctor()
+    }
+
+    /// computes the global properties of the system of points Pnts.
+    /// The density of the points are defaulted to all being 1
+    pub fn new_array1ofpnt(Pnts: &crate::ffi::TColgp_Array1OfPnt) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_PGProps_ctor_array1ofpnt(Pnts)
+    }
+
+    /// computes the global properties of the system of points Pnts.
+    /// The density of the points are defaulted to all being 1
+    pub fn new_array2ofpnt(Pnts: &crate::ffi::TColgp_Array2OfPnt) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_PGProps_ctor_array2ofpnt(Pnts)
+    }
+
+    /// computes the global properties of the system of points Pnts.
+    /// A density is associated with each point.
+    ///
+    /// raises if a density is lower or equal to Resolution from package
+    /// gp.
+    ///
+    /// raises if the length of Pnts and the length of Density
+    /// is not the same.
+    pub fn new_array1ofpnt_array1ofreal(
+        Pnts: &crate::ffi::TColgp_Array1OfPnt,
+        Density: &crate::ffi::TColStd_Array1OfReal,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_PGProps_ctor_array1ofpnt_array1ofreal(Pnts, Density)
+    }
+
+    /// computes the global properties of the system of points Pnts.
+    /// A density is associated with each point.
+    ///
+    /// Raised if a density is lower or equal to Resolution from package
+    /// gp.
+    ///
+    /// Raised if the length of Pnts and the length of Density
+    /// is not the same.
+    pub fn new_array2ofpnt_array2ofreal(
+        Pnts: &crate::ffi::TColgp_Array2OfPnt,
+        Density: &crate::ffi::TColStd_Array2OfReal,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_PGProps_ctor_array2ofpnt_array2ofreal(Pnts, Density)
+    }
+
+    /// Computes the barycentre of a set of points. The density of the
+    /// points is defaulted to 1.
+    pub fn barycentre_array1ofpnt(
+        Pnts: &crate::ffi::TColgp_Array1OfPnt,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GProp_PGProps_barycentre_array1ofpnt(Pnts)
+    }
+
+    /// Computes the barycentre of a set of points. The density of the
+    /// points is defaulted to 1.
+    pub fn barycentre_array2ofpnt(
+        Pnts: &crate::ffi::TColgp_Array2OfPnt,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GProp_PGProps_barycentre_array2ofpnt(Pnts)
+    }
+
+    /// Upcast to GProp_GProps
+    pub fn as_g_props(&self) -> &GProps {
+        crate::ffi::GProp_PGProps_as_GProp_GProps(self)
+    }
+
+    /// Upcast to GProp_GProps (mutable)
+    pub fn as_g_props_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GProps> {
+        crate::ffi::GProp_PGProps_as_GProp_GProps_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_PGProps_to_owned(self)
+    }
+
+    /// Inherited from GProp_GProps: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::GProp_PGProps_inherited_Add(self, Item, Density)
+    }
+
+    /// Inherited from GProp_GProps: Mass()
+    pub fn mass(&self) -> f64 {
+        crate::ffi::GProp_PGProps_inherited_Mass(self)
+    }
+
+    /// Inherited from GProp_GProps: CentreOfMass()
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GProp_PGProps_inherited_CentreOfMass(self)
+    }
+
+    /// Inherited from GProp_GProps: MatrixOfInertia()
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::GProp_PGProps_inherited_MatrixOfInertia(self)
+    }
+
+    /// Inherited from GProp_GProps: StaticMoments()
+    pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
+        crate::ffi::GProp_PGProps_inherited_StaticMoments(self, Ix, Iy, Iz)
+    }
+
+    /// Inherited from GProp_GProps: MomentOfInertia()
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::GProp_PGProps_inherited_MomentOfInertia(self, A)
+    }
+
+    /// Inherited from GProp_GProps: PrincipalProperties()
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::GProp_PGProps_inherited_PrincipalProperties(self)
+    }
+
+    /// Inherited from GProp_GProps: RadiusOfGyration()
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::GProp_PGProps_inherited_RadiusOfGyration(self, A)
+    }
+}
+
+// ========================
+// From GProp_PrincipalProps.hxx
+// ========================
+
+/// A framework to present the principal properties of
+/// inertia of a system of which global properties are
+/// computed by a GProp_GProps object.
+/// There is always a set of axes for which the
+/// products of inertia of a geometric system are equal
+/// to 0; i.e. the matrix of inertia of the system is
+/// diagonal. These axes are the principal axes of
+/// inertia. Their origin is coincident with the center of
+/// mass of the system. The associated moments are
+/// called the principal moments of inertia.
+/// This sort of presentation object is created, filled and
+/// returned by the function PrincipalProperties for
+/// any GProp_GProps object, and can be queried to access the result.
+/// Note: The system whose principal properties of
+/// inertia are returned by this framework is referred to
+/// as the current system. The current system,
+/// however, is retained neither by this presentation
+/// framework nor by the GProp_GProps object which activates it.
 pub use crate::ffi::GProp_PrincipalProps as PrincipalProps;
+
+impl PrincipalProps {
+    /// creates an undefined PrincipalProps.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_PrincipalProps_ctor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_PrincipalProps_to_owned(self)
+    }
+}
+
+// ========================
+// From GProp_SelGProps.hxx
+// ========================
+
+/// Computes the global properties of a bounded
+/// elementary surface in 3d (surface of the gp package)
+pub use crate::ffi::GProp_SelGProps as SelGProps;
+
+impl SelGProps {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_SelGProps_ctor()
+    }
+
+    pub fn new_cylinder_real4_pnt(
+        S: &crate::ffi::gp_Cylinder,
+        Alpha1: f64,
+        Alpha2: f64,
+        Z1: f64,
+        Z2: f64,
+        SLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_SelGProps_ctor_cylinder_real4_pnt(S, Alpha1, Alpha2, Z1, Z2, SLocation)
+    }
+
+    pub fn new_cone_real4_pnt(
+        S: &crate::ffi::gp_Cone,
+        Alpha1: f64,
+        Alpha2: f64,
+        Z1: f64,
+        Z2: f64,
+        SLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_SelGProps_ctor_cone_real4_pnt(S, Alpha1, Alpha2, Z1, Z2, SLocation)
+    }
+
+    pub fn new_sphere_real4_pnt(
+        S: &crate::ffi::gp_Sphere,
+        Teta1: f64,
+        Teta2: f64,
+        Alpha1: f64,
+        Alpha2: f64,
+        SLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_SelGProps_ctor_sphere_real4_pnt(
+            S, Teta1, Teta2, Alpha1, Alpha2, SLocation,
+        )
+    }
+
+    pub fn new_torus_real4_pnt(
+        S: &crate::ffi::gp_Torus,
+        Teta1: f64,
+        Teta2: f64,
+        Alpha1: f64,
+        Alpha2: f64,
+        SLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_SelGProps_ctor_torus_real4_pnt(S, Teta1, Teta2, Alpha1, Alpha2, SLocation)
+    }
+
+    /// Upcast to GProp_GProps
+    pub fn as_g_props(&self) -> &GProps {
+        crate::ffi::GProp_SelGProps_as_GProp_GProps(self)
+    }
+
+    /// Upcast to GProp_GProps (mutable)
+    pub fn as_g_props_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GProps> {
+        crate::ffi::GProp_SelGProps_as_GProp_GProps_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_SelGProps_to_owned(self)
+    }
+
+    /// Inherited from GProp_GProps: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::GProp_SelGProps_inherited_Add(self, Item, Density)
+    }
+
+    /// Inherited from GProp_GProps: Mass()
+    pub fn mass(&self) -> f64 {
+        crate::ffi::GProp_SelGProps_inherited_Mass(self)
+    }
+
+    /// Inherited from GProp_GProps: CentreOfMass()
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GProp_SelGProps_inherited_CentreOfMass(self)
+    }
+
+    /// Inherited from GProp_GProps: MatrixOfInertia()
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::GProp_SelGProps_inherited_MatrixOfInertia(self)
+    }
+
+    /// Inherited from GProp_GProps: StaticMoments()
+    pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
+        crate::ffi::GProp_SelGProps_inherited_StaticMoments(self, Ix, Iy, Iz)
+    }
+
+    /// Inherited from GProp_GProps: MomentOfInertia()
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::GProp_SelGProps_inherited_MomentOfInertia(self, A)
+    }
+
+    /// Inherited from GProp_GProps: PrincipalProperties()
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::GProp_SelGProps_inherited_PrincipalProperties(self)
+    }
+
+    /// Inherited from GProp_GProps: RadiusOfGyration()
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::GProp_SelGProps_inherited_RadiusOfGyration(self, A)
+    }
+}
+
+// ========================
+// From GProp_UndefinedAxis.hxx
+// ========================
+
+/// This exception is raised when a method makes reference to
+/// an undefined inertia axis of symmetry.
+pub use crate::ffi::GProp_UndefinedAxis as UndefinedAxis;
+
+impl UndefinedAxis {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_UndefinedAxis_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_UndefinedAxis_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_UndefinedAxis_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::GProp_UndefinedAxis_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::GProp_UndefinedAxis_get_type_descriptor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_UndefinedAxis_to_owned(self)
+    }
+}
+
+// ========================
+// From GProp_VelGProps.hxx
+// ========================
+
+/// Computes the global properties and the volume of a geometric solid
+/// (3D closed region of space)
+/// The solid can be elementary(definition in the gp package)
+pub use crate::ffi::GProp_VelGProps as VelGProps;
+
+impl VelGProps {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_VelGProps_ctor()
+    }
+
+    pub fn new_cylinder_real4_pnt(
+        S: &crate::ffi::gp_Cylinder,
+        Alpha1: f64,
+        Alpha2: f64,
+        Z1: f64,
+        Z2: f64,
+        VLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_VelGProps_ctor_cylinder_real4_pnt(S, Alpha1, Alpha2, Z1, Z2, VLocation)
+    }
+
+    pub fn new_cone_real4_pnt(
+        S: &crate::ffi::gp_Cone,
+        Alpha1: f64,
+        Alpha2: f64,
+        Z1: f64,
+        Z2: f64,
+        VLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_VelGProps_ctor_cone_real4_pnt(S, Alpha1, Alpha2, Z1, Z2, VLocation)
+    }
+
+    pub fn new_sphere_real4_pnt(
+        S: &crate::ffi::gp_Sphere,
+        Teta1: f64,
+        Teta2: f64,
+        Alpha1: f64,
+        Alpha2: f64,
+        VLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_VelGProps_ctor_sphere_real4_pnt(
+            S, Teta1, Teta2, Alpha1, Alpha2, VLocation,
+        )
+    }
+
+    pub fn new_torus_real4_pnt(
+        S: &crate::ffi::gp_Torus,
+        Teta1: f64,
+        Teta2: f64,
+        Alpha1: f64,
+        Alpha2: f64,
+        VLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_VelGProps_ctor_torus_real4_pnt(S, Teta1, Teta2, Alpha1, Alpha2, VLocation)
+    }
+
+    /// Upcast to GProp_GProps
+    pub fn as_g_props(&self) -> &GProps {
+        crate::ffi::GProp_VelGProps_as_GProp_GProps(self)
+    }
+
+    /// Upcast to GProp_GProps (mutable)
+    pub fn as_g_props_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GProps> {
+        crate::ffi::GProp_VelGProps_as_GProp_GProps_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::GProp_VelGProps_to_owned(self)
+    }
+
+    /// Inherited from GProp_GProps: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::GProp_VelGProps_inherited_Add(self, Item, Density)
+    }
+
+    /// Inherited from GProp_GProps: Mass()
+    pub fn mass(&self) -> f64 {
+        crate::ffi::GProp_VelGProps_inherited_Mass(self)
+    }
+
+    /// Inherited from GProp_GProps: CentreOfMass()
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GProp_VelGProps_inherited_CentreOfMass(self)
+    }
+
+    /// Inherited from GProp_GProps: MatrixOfInertia()
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::GProp_VelGProps_inherited_MatrixOfInertia(self)
+    }
+
+    /// Inherited from GProp_GProps: StaticMoments()
+    pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
+        crate::ffi::GProp_VelGProps_inherited_StaticMoments(self, Ix, Iy, Iz)
+    }
+
+    /// Inherited from GProp_GProps: MomentOfInertia()
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::GProp_VelGProps_inherited_MomentOfInertia(self, A)
+    }
+
+    /// Inherited from GProp_GProps: PrincipalProperties()
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::GProp_VelGProps_inherited_PrincipalProperties(self)
+    }
+
+    /// Inherited from GProp_GProps: RadiusOfGyration()
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::GProp_VelGProps_inherited_RadiusOfGyration(self, A)
+    }
+}

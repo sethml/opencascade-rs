@@ -84,6 +84,121 @@ impl TryFrom<i32> for HandlerStatus {
 }
 
 // ========================
+// From Standard_AbortiveTransaction.hxx
+// ========================
+
+pub use crate::ffi::Standard_AbortiveTransaction as AbortiveTransaction;
+
+impl AbortiveTransaction {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_AbortiveTransaction_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_AbortiveTransaction_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_AbortiveTransaction_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_AbortiveTransaction_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_AbortiveTransaction_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_ArrayStreamBuffer.hxx
+// ========================
+
+/// Custom buffer object implementing STL interface std::streambuf for streamed reading from
+/// allocated memory block. Implements minimal sub-set of methods for passing buffer to
+/// std::istream, including seek support.
+///
+/// This class can be used for creating a seekable input stream in cases,
+/// when the source data does not satisfies Reader requirements (non-seekable stream, compressed
+/// data) or represents an in-memory resource.
+///
+/// The memory itself is NOT managed by this class - it is up to the caller to ensure that passed
+/// memory pointer is not released during Standard_ArrayStreamBuffer lifetime.
+///
+/// Usage example:
+/// @code
+/// const char*  theBuffer;
+/// const size_t theBufferLength;
+/// Standard_ArrayStreamBuffer aStreamBuffer (theBuffer, theBufferLength);
+/// std::istream aStream (&aStreamBuffer);
+/// TopoDS_Shape aShape;
+/// BRep_Builder aBuilder;
+/// BRepTools::Read (aShape, aStream, aBuilder);
+/// @endcode
+pub use crate::ffi::Standard_ArrayStreamBuffer as ArrayStreamBuffer;
+
+impl ArrayStreamBuffer {
+    /// Main constructor.
+    /// Passed pointer is stored as is (memory is NOT copied nor released with destructor).
+    /// @param theBegin pointer to the beginning of pre-allocated buffer
+    /// @param theSize  length of pre-allocated buffer
+    pub fn new_charptr_size(theBegin: &str, theSize: usize) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ArrayStreamBuffer_ctor_charptr_size(theBegin, theSize)
+    }
+
+    /// (Re)-initialize the stream.
+    /// Passed pointer is stored as is (memory is NOT copied nor released with destructor).
+    /// @param theBegin pointer to the beginning of pre-allocated buffer
+    /// @param theSize  length of pre-allocated buffer
+    pub fn init(self: std::pin::Pin<&mut Self>, theBegin: &str, theSize: usize) {
+        crate::ffi::Standard_ArrayStreamBuffer_init(self, theBegin, theSize)
+    }
+}
+
+// ========================
+// From Standard_CLocaleSentry.hxx
+// ========================
+
+/// This class intended to temporary switch C locale and logically equivalent to setlocale(LC_ALL,
+/// "C"). It is intended to format text regardless of user locale settings (for import/export
+/// functionality). Thus following calls to sprintf, atoi and other functions will use "C" locale.
+/// Destructor of this class will return original locale.
+///
+/// Notice that this functionality is platform dependent and intended only to workaround alien code
+/// that doesn't setup locale correctly.
+///
+/// Internally you should prefer more portable C++ locale interfaces
+/// or OCCT wrappers to some C functions like Sprintf, Atof, Strtod.
+pub use crate::ffi::Standard_CLocaleSentry as CLocaleSentry;
+
+impl CLocaleSentry {
+    /// Setup current C locale to "C".
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_CLocaleSentry_ctor()
+    }
+}
+
+// ========================
+// From Standard_Condition.hxx
+// ========================
+
+/// This is boolean flag intended for communication between threads.
+/// One thread sets this flag to TRUE to indicate some event happened
+/// and another thread either waits this event or checks periodically its state to perform job.
+///
+/// This class provides interface similar to WinAPI Event objects.
+pub use crate::ffi::Standard_Condition as Condition;
+
+impl Condition {
+    /// Default constructor.
+    /// @param theIsSet Initial flag state
+    pub fn new_bool(theIsSet: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Condition_ctor_bool(theIsSet)
+    }
+}
+
+// ========================
 // From Standard_ConstructionError.hxx
 // ========================
 
@@ -164,6 +279,34 @@ impl DimensionMismatch {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_DimensionMismatch_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_DivideByZero.hxx
+// ========================
+
+pub use crate::ffi::Standard_DivideByZero as DivideByZero;
+
+impl DivideByZero {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DivideByZero_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DivideByZero_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DivideByZero_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_DivideByZero_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_DivideByZero_get_type_descriptor()
     }
 }
 
@@ -453,6 +596,263 @@ impl HandleStandardFailure {
 }
 
 // ========================
+// From Standard_GUID.hxx
+// ========================
+
+pub use crate::ffi::Standard_GUID as GUID;
+
+impl GUID {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_GUID_ctor()
+    }
+
+    /// build a GUID from an ascii string with the
+    /// following format:
+    /// Length : 36 char
+    /// "00000000-0000-0000-0000-000000000000"
+    pub fn new_charptr(aGuid: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_GUID_ctor_charptr(aGuid)
+    }
+
+    pub fn new_uuid(aGuid: &crate::ffi::Standard_UUID) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_GUID_ctor_uuid(aGuid)
+    }
+
+    pub fn new_guid(aGuid: &crate::ffi::Standard_GUID) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_GUID_ctor_guid(aGuid)
+    }
+
+    /// Check the format of a GUID string.
+    /// It checks the size, the position of the '-' and the correct size of fields.
+    pub fn check_guid_format(aGuid: &str) -> bool {
+        crate::ffi::Standard_GUID_check_guid_format(aGuid)
+    }
+}
+
+// ========================
+// From Standard_ImmutableObject.hxx
+// ========================
+
+pub use crate::ffi::Standard_ImmutableObject as ImmutableObject;
+
+impl ImmutableObject {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ImmutableObject_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ImmutableObject_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ImmutableObject_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_ImmutableObject_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_ImmutableObject_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_LicenseError.hxx
+// ========================
+
+pub use crate::ffi::Standard_LicenseError as LicenseError;
+
+impl LicenseError {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_LicenseError_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_LicenseError_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_LicenseError_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_LicenseError_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_LicenseError_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_LicenseNotFound.hxx
+// ========================
+
+pub use crate::ffi::Standard_LicenseNotFound as LicenseNotFound;
+
+impl LicenseNotFound {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_LicenseNotFound_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_LicenseNotFound_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_LicenseNotFound_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_LicenseNotFound_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_LicenseNotFound_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_MMgrOpt.hxx
+// ========================
+
+///
+/// @brief Open CASCADE memory manager optimized for speed.
+///
+/// The behaviour is different for memory blocks of different sizes,
+/// according to specified options provided to constructor:
+///
+/// - Small blocks with size less than or equal to aCellSize are allocated
+/// in big pools of memory. The parameter aNbPages specifies size of
+/// these pools in pages (operating system-dependent).
+/// When freed, small block is not returned to the system but added
+/// into free blocks list and reused when block of the same size is
+/// requested.
+///
+/// - Medium size blocks with size less than aThreshold are allocated
+/// using malloc() or calloc() function but not returned to the system
+/// when method Free() is called; instead they are put into free list
+/// and reused when block of the same size is requested.
+/// Blocks of medium size stored in free lists can be released to the
+/// system (by free()) by calling method Purge().
+///
+/// - Large blocks with size greater than or equal to aThreshold are allocated
+/// and freed directly: either using malloc()/calloc() and free(), or using
+/// memory mapped files (if option aMMap is True)
+///
+/// Thus the optimization of memory allocation/deallocation is reached
+/// for small and medium size blocks using free lists method;
+/// note that space allocated for small blocks cannot be (currently) released
+/// to the system while space for medium size blocks can be released by method Purge().
+///
+/// Note that destructor of that class frees all free lists and memory pools
+/// allocated for small blocks.
+///
+/// Note that size of memory blocks allocated by this memory manager is always
+/// rounded up to 16 bytes. In addition, 8 bytes are added at the beginning
+/// of the memory block to hold auxiliary information (size of the block when
+/// in use, or pointer to the next free block when in free list).
+/// This the expense of speed optimization. At the same time, allocating small
+/// blocks is usually less costly than directly by malloc since allocation is made
+/// once (when allocating a pool) and overheads induced by malloc are minimized.
+pub use crate::ffi::Standard_MMgrOpt as MMgrOpt;
+
+impl MMgrOpt {
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new_bool2_size_int_size(
+        aClear: bool,
+        aMMap: bool,
+        aCellSize: usize,
+        aNbPages: i32,
+        aThreshold: usize,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_MMgrOpt_ctor_bool2_size_int_size(
+            aClear, aMMap, aCellSize, aNbPages, aThreshold,
+        )
+    }
+
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new_bool2_size_int(
+        aClear: bool,
+        aMMap: bool,
+        aCellSize: usize,
+        aNbPages: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_bool2_size_int_size(aClear, aMMap, aCellSize, aNbPages, 40000)
+    }
+
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new_bool2_size(aClear: bool, aMMap: bool, aCellSize: usize) -> cxx::UniquePtr<Self> {
+        Self::new_bool2_size_int_size(aClear, aMMap, aCellSize, 10000, 40000)
+    }
+
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new_bool2(aClear: bool, aMMap: bool) -> cxx::UniquePtr<Self> {
+        Self::new_bool2_size_int_size(aClear, aMMap, 200, 10000, 40000)
+    }
+
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new_bool(aClear: bool) -> cxx::UniquePtr<Self> {
+        Self::new_bool2_size_int_size(aClear, true, 200, 10000, 40000)
+    }
+
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool2_size_int_size(true, true, 200, 10000, 40000)
+    }
+}
+
+// ========================
+// From Standard_MMgrRoot.hxx
+// ========================
+
+///
+/// Root class for Open CASCADE mmemory managers.
+/// Defines only abstract interface functions.
+pub use crate::ffi::Standard_MMgrRoot as MMgrRoot;
+
+// ========================
+// From Standard_MultiplyDefined.hxx
+// ========================
+
+pub use crate::ffi::Standard_MultiplyDefined as MultiplyDefined;
+
+impl MultiplyDefined {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_MultiplyDefined_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_MultiplyDefined_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_MultiplyDefined_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_MultiplyDefined_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_MultiplyDefined_get_type_descriptor()
+    }
+}
+
+// ========================
 // From Standard_Mutex.hxx
 // ========================
 
@@ -495,6 +895,62 @@ impl Mutex {
     /// static objects whenever possible.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Standard_Mutex_ctor()
+    }
+}
+
+// ========================
+// From Standard_NegativeValue.hxx
+// ========================
+
+pub use crate::ffi::Standard_NegativeValue as NegativeValue;
+
+impl NegativeValue {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NegativeValue_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NegativeValue_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NegativeValue_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_NegativeValue_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_NegativeValue_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_NoMoreObject.hxx
+// ========================
+
+pub use crate::ffi::Standard_NoMoreObject as NoMoreObject;
+
+impl NoMoreObject {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NoMoreObject_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NoMoreObject_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NoMoreObject_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_NoMoreObject_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_NoMoreObject_get_type_descriptor()
     }
 }
 
@@ -579,6 +1035,34 @@ impl NullObject {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_NullObject_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_NullValue.hxx
+// ========================
+
+pub use crate::ffi::Standard_NullValue as NullValue;
+
+impl NullValue {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NullValue_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NullValue_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NullValue_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_NullValue_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_NullValue_get_type_descriptor()
     }
 }
 
@@ -684,6 +1168,75 @@ impl OutOfRange {
 }
 
 // ========================
+// From Standard_Overflow.hxx
+// ========================
+
+pub use crate::ffi::Standard_Overflow as Overflow;
+
+impl Overflow {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Overflow_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Overflow_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Overflow_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_Overflow_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_Overflow_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_Persistent.hxx
+// ========================
+
+/// Root of "persistent" classes, a legacy support of
+/// object oriented databases, now outdated.
+pub use crate::ffi::Standard_Persistent as Persistent;
+
+impl Persistent {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Persistent_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_Persistent_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleStandardPersistent> {
+        crate::ffi::Standard_Persistent_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleStandardPersistent;
+
+impl HandleStandardPersistent {
+    /// Dereference this Handle to access the underlying Standard_Persistent
+    pub fn get(&self) -> &crate::ffi::Standard_Persistent {
+        crate::ffi::HandleStandardPersistent_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Standard_Persistent
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Standard_Persistent> {
+        crate::ffi::HandleStandardPersistent_get_mut(self)
+    }
+}
+
+// ========================
 // From Standard_ProgramError.hxx
 // ========================
 
@@ -736,6 +1289,21 @@ impl RangeError {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_RangeError_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_ReadLineBuffer.hxx
+// ========================
+
+/// Auxiliary tool for buffered reading of lines from input stream.
+pub use crate::ffi::Standard_ReadLineBuffer as ReadLineBuffer;
+
+impl ReadLineBuffer {
+    /// Constructor with initialization.
+    /// @param theMaxBufferSizeBytes the length of buffer to read (in bytes)
+    pub fn new_size(theMaxBufferSizeBytes: usize) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ReadLineBuffer_ctor_size(theMaxBufferSizeBytes)
     }
 }
 
@@ -876,11 +1444,40 @@ impl TypeMismatch {
 }
 
 // ========================
+// From Standard_Underflow.hxx
+// ========================
+
+pub use crate::ffi::Standard_Underflow as Underflow;
+
+impl Underflow {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Underflow_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Underflow_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Underflow_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_Underflow_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_Underflow_get_type_descriptor()
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    Standard_Character as Character, Standard_ExtCharacter as ExtCharacter,
+    Standard_Byte as Byte, Standard_Character as Character, Standard_ExtCharacter as ExtCharacter,
     Standard_ExtString as ExtString, Standard_JmpBuf as JmpBuf, Standard_PCharacter as PCharacter,
-    Standard_SStream as SStream, Standard_Utf16Char as Utf16Char,
+    Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream, Standard_UUID as UUID,
+    Standard_Utf16Char as Utf16Char,
 };

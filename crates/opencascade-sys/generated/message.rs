@@ -11,6 +11,56 @@ pub use crate::ffi::{
     send_warning,
 };
 
+/// Color definition for console/terminal output (limited palette).
+/// C++ enum: `Message_ConsoleColor`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ConsoleColor {
+    /// < default (white) color
+    ConsolecolorDefault = 0,
+    /// < black   color
+    ConsolecolorBlack = 1,
+    /// < white   color
+    ConsolecolorWhite = 2,
+    /// < red     color
+    ConsolecolorRed = 3,
+    /// < blue    color
+    ConsolecolorBlue = 4,
+    /// < green   color
+    ConsolecolorGreen = 5,
+    /// < yellow  color
+    ConsolecolorYellow = 6,
+    /// < cyan    color
+    ConsolecolorCyan = 7,
+    /// < magenta color
+    ConsolecolorMagenta = 8,
+}
+
+impl From<ConsoleColor> for i32 {
+    fn from(value: ConsoleColor) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ConsoleColor {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ConsoleColor::ConsolecolorDefault),
+            1 => Ok(ConsoleColor::ConsolecolorBlack),
+            2 => Ok(ConsoleColor::ConsolecolorWhite),
+            3 => Ok(ConsoleColor::ConsolecolorRed),
+            4 => Ok(ConsoleColor::ConsolecolorBlue),
+            5 => Ok(ConsoleColor::ConsolecolorGreen),
+            6 => Ok(ConsoleColor::ConsolecolorYellow),
+            7 => Ok(ConsoleColor::ConsolecolorCyan),
+            8 => Ok(ConsoleColor::ConsolecolorMagenta),
+            _ => Err(value),
+        }
+    }
+}
+
 /// Defines gravity level of messages
 /// - Trace: low-level details on algorithm execution (usually for debug purposes)
 /// - Info: informative message
@@ -635,6 +685,30 @@ impl AlertExtended {
         crate::ffi::Message_AlertExtended_get_message_key(self)
     }
 
+    /// Returns class provided hierarchy of alerts if created or create if the parameter is true
+    /// @param theToCreate if composite alert has not been created for this alert, it should be
+    /// created
+    /// @return instance or NULL
+    pub fn composite_alerts(
+        self: std::pin::Pin<&mut Self>,
+        theToCreate: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleMessageCompositeAlerts> {
+        crate::ffi::Message_AlertExtended_composite_alerts(self, theToCreate)
+    }
+
+    /// Creates new instance of the alert and put it into report with Message_Info gravity.
+    /// It does nothing if such kind of gravity is not active in the report
+    /// @param theReport the message report where new alert is placed
+    /// @param theAttribute container of additional values of the alert
+    /// @return created alert or NULL if Message_Info is not active in report
+    pub fn add_alert(
+        theReport: &crate::ffi::HandleMessageReport,
+        theAttribute: &crate::ffi::HandleMessageAttribute,
+        theGravity: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleMessageAlert> {
+        crate::ffi::Message_AlertExtended_add_alert(theReport, theAttribute, theGravity)
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Message_AlertExtended_get_type_descriptor()
     }
@@ -750,13 +824,13 @@ impl Algorithm {
     /// Sets status with string parameter
     /// If noRepetitions is True, the parameter will be added only
     /// if it has not been yet recorded for the same status flag
-    pub fn set_status_status_handlehasciistring_bool(
+    pub fn set_status_status_handletcollectionhasciistring_bool(
         self: std::pin::Pin<&mut Self>,
         theStat: i32,
         theStr: &crate::ffi::HandleTCollectionHAsciiString,
         noRepetitions: bool,
     ) {
-        crate::ffi::Message_Algorithm_set_status_status_handlehasciistring_bool(
+        crate::ffi::Message_Algorithm_set_status_status_handletcollectionhasciistring_bool(
             self,
             theStat,
             theStr,
@@ -784,13 +858,13 @@ impl Algorithm {
     /// Sets status with string parameter
     /// If noRepetitions is True, the parameter will be added only
     /// if it has not been yet recorded for the same status flag
-    pub fn set_status_status_handlehextendedstring_bool(
+    pub fn set_status_status_handletcollectionhextendedstring_bool(
         self: std::pin::Pin<&mut Self>,
         theStat: i32,
         theStr: &crate::ffi::HandleTCollectionHExtendedString,
         noRepetitions: bool,
     ) {
-        crate::ffi::Message_Algorithm_set_status_status_handlehextendedstring_bool(
+        crate::ffi::Message_Algorithm_set_status_status_handletcollectionhextendedstring_bool(
             self,
             theStat,
             theStr,
@@ -854,6 +928,15 @@ impl Algorithm {
         crate::ffi::Message_Algorithm_send_messages(self, theTraceLevel, theMaxCount)
     }
 
+    /// Return the numbers associated with the indicated status;
+    /// Null handle if no such status or no numbers associated with it
+    pub fn get_message_numbers(
+        &self,
+        theStatus: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
+        crate::ffi::Message_Algorithm_get_message_numbers(self, theStatus)
+    }
+
     /// Return the strings associated with the indicated status;
     /// Null handle if no such status or no strings associated with it
     pub fn get_message_strings(
@@ -861,6 +944,15 @@ impl Algorithm {
         theStatus: i32,
     ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
         crate::ffi::Message_Algorithm_get_message_strings(self, theStatus)
+    }
+
+    /// Prepares a string containing a list of integers contained
+    /// in theError map, but not more than theMaxCount
+    pub fn prepare_report(
+        theError: &crate::ffi::HandleTColStdHPackedMapOfInteger,
+        theMaxCount: i32,
+    ) -> cxx::UniquePtr<crate::ffi::TCollection_ExtendedString> {
+        crate::ffi::Message_Algorithm_prepare_report(theError, theMaxCount)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -888,6 +980,297 @@ impl HandleMessageAlgorithm {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::ffi::Message_Algorithm> {
         crate::ffi::HandleMessageAlgorithm_get_mut(self)
+    }
+}
+
+// ========================
+// From Message_Attribute.hxx
+// ========================
+
+/// Additional information of extended alert attribute
+/// To provide other custom attribute container, it might be redefined.
+pub use crate::ffi::Message_Attribute as Attribute;
+
+impl Attribute {
+    /// Empty constructor
+    pub fn new_asciistring(theName: &crate::ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_Attribute_ctor_asciistring(theName)
+    }
+
+    /// Return a C string to be used as a key for generating text user messages describing this alert.
+    /// The messages are generated with help of Message_Msg class, in Message_Report::Dump().
+    /// Base implementation returns dynamic type name of the instance.
+    pub fn get_message_key(&self) -> String {
+        crate::ffi::Message_Attribute_get_message_key(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Message_Attribute_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleMessageAttribute> {
+        crate::ffi::Message_Attribute_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleMessageAttribute;
+
+impl HandleMessageAttribute {
+    /// Dereference this Handle to access the underlying Message_Attribute
+    pub fn get(&self) -> &crate::ffi::Message_Attribute {
+        crate::ffi::HandleMessageAttribute_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_Attribute
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Message_Attribute> {
+        crate::ffi::HandleMessageAttribute_get_mut(self)
+    }
+}
+
+// ========================
+// From Message_AttributeMeter.hxx
+// ========================
+
+/// Alert object storing alert metrics values.
+/// Start and stop values for each metric.
+pub use crate::ffi::Message_AttributeMeter as AttributeMeter;
+
+impl AttributeMeter {
+    /// Constructor with string argument
+    pub fn new_asciistring(theName: &crate::ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_AttributeMeter_ctor_asciistring(theName)
+    }
+
+    /// Checks whether the attribute has values for the metric
+    /// @param[in] theMetric  metric type
+    /// @return true if the metric values exist in the attribute
+    pub fn has_metric(&self, theMetric: i32) -> bool {
+        crate::ffi::Message_AttributeMeter_has_metric(self, theMetric)
+    }
+
+    /// Returns true when both values of the metric are set.
+    /// @param[in] theMetric  metric type
+    /// @return true if metric values are valid
+    pub fn is_metric_valid(&self, theMetric: i32) -> bool {
+        crate::ffi::Message_AttributeMeter_is_metric_valid(self, theMetric)
+    }
+
+    /// Returns start value for the metric
+    /// @param[in] theMetric  metric type
+    /// @return real value
+    pub fn start_value(&self, theMetric: i32) -> f64 {
+        crate::ffi::Message_AttributeMeter_start_value(self, theMetric)
+    }
+
+    /// Sets start values for the metric
+    /// @param[in] theMetric  metric type
+    pub fn set_start_value(self: std::pin::Pin<&mut Self>, theMetric: i32, theValue: f64) {
+        crate::ffi::Message_AttributeMeter_set_start_value(self, theMetric, theValue)
+    }
+
+    /// Returns stop value for the metric
+    /// @param[in] theMetric  metric type
+    /// @return real value
+    pub fn stop_value(&self, theMetric: i32) -> f64 {
+        crate::ffi::Message_AttributeMeter_stop_value(self, theMetric)
+    }
+
+    /// Sets stop values for the metric
+    /// @param[in] theMetric  metric type
+    pub fn set_stop_value(self: std::pin::Pin<&mut Self>, theMetric: i32, theValue: f64) {
+        crate::ffi::Message_AttributeMeter_set_stop_value(self, theMetric, theValue)
+    }
+
+    /// Returns default value of the metric when it is not defined
+    /// @return undefined value
+    pub fn undefined_metric_value() -> f64 {
+        crate::ffi::Message_AttributeMeter_undefined_metric_value()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Message_AttributeMeter_get_type_descriptor()
+    }
+
+    /// Upcast to Message_Attribute
+    pub fn as_attribute(&self) -> &Attribute {
+        crate::ffi::Message_AttributeMeter_as_Message_Attribute(self)
+    }
+
+    /// Upcast to Message_Attribute (mutable)
+    pub fn as_attribute_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Attribute> {
+        crate::ffi::Message_AttributeMeter_as_Message_Attribute_mut(self)
+    }
+
+    /// Inherited from Message_Attribute: GetName()
+    pub fn get_name(&self) -> &crate::ffi::TCollection_AsciiString {
+        crate::ffi::Message_AttributeMeter_inherited_GetName(self)
+    }
+
+    /// Inherited from Message_Attribute: SetName()
+    pub fn set_name(self: std::pin::Pin<&mut Self>, theName: &crate::ffi::TCollection_AsciiString) {
+        crate::ffi::Message_AttributeMeter_inherited_SetName(self, theName)
+    }
+}
+
+// ========================
+// From Message_AttributeObject.hxx
+// ========================
+
+/// Alert object storing a transient object
+pub use crate::ffi::Message_AttributeObject as AttributeObject;
+
+impl AttributeObject {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Message_AttributeObject_get_type_descriptor()
+    }
+
+    /// Upcast to Message_Attribute
+    pub fn as_attribute(&self) -> &Attribute {
+        crate::ffi::Message_AttributeObject_as_Message_Attribute(self)
+    }
+
+    /// Upcast to Message_Attribute (mutable)
+    pub fn as_attribute_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Attribute> {
+        crate::ffi::Message_AttributeObject_as_Message_Attribute_mut(self)
+    }
+
+    /// Inherited from Message_Attribute: GetName()
+    pub fn get_name(&self) -> &crate::ffi::TCollection_AsciiString {
+        crate::ffi::Message_AttributeObject_inherited_GetName(self)
+    }
+
+    /// Inherited from Message_Attribute: SetName()
+    pub fn set_name(self: std::pin::Pin<&mut Self>, theName: &crate::ffi::TCollection_AsciiString) {
+        crate::ffi::Message_AttributeObject_inherited_SetName(self, theName)
+    }
+}
+
+// ========================
+// From Message_AttributeStream.hxx
+// ========================
+
+/// Alert object storing stream value
+pub use crate::ffi::Message_AttributeStream as AttributeStream;
+
+impl AttributeStream {
+    /// Constructor with string argument
+    pub fn new_sstream_asciistring(
+        theStream: &crate::ffi::Standard_SStream,
+        theName: &crate::ffi::TCollection_AsciiString,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_AttributeStream_ctor_sstream_asciistring(theStream, theName)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Message_AttributeStream_get_type_descriptor()
+    }
+
+    /// Upcast to Message_Attribute
+    pub fn as_attribute(&self) -> &Attribute {
+        crate::ffi::Message_AttributeStream_as_Message_Attribute(self)
+    }
+
+    /// Upcast to Message_Attribute (mutable)
+    pub fn as_attribute_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Attribute> {
+        crate::ffi::Message_AttributeStream_as_Message_Attribute_mut(self)
+    }
+
+    /// Inherited from Message_Attribute: GetName()
+    pub fn get_name(&self) -> &crate::ffi::TCollection_AsciiString {
+        crate::ffi::Message_AttributeStream_inherited_GetName(self)
+    }
+
+    /// Inherited from Message_Attribute: SetName()
+    pub fn set_name(self: std::pin::Pin<&mut Self>, theName: &crate::ffi::TCollection_AsciiString) {
+        crate::ffi::Message_AttributeStream_inherited_SetName(self, theName)
+    }
+}
+
+// ========================
+// From Message_CompositeAlerts.hxx
+// ========================
+
+/// Class providing container of alerts
+pub use crate::ffi::Message_CompositeAlerts as CompositeAlerts;
+
+impl CompositeAlerts {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_CompositeAlerts_ctor()
+    }
+
+    /// Add alert with specified gravity. If the alert supports merge it will be merged.
+    /// @param theGravity an alert gravity
+    /// @param theAlert an alert to be added as a child alert
+    /// @return true if the alert is added or merged
+    pub fn add_alert(
+        self: std::pin::Pin<&mut Self>,
+        theGravity: i32,
+        theAlert: &crate::ffi::HandleMessageAlert,
+    ) -> bool {
+        crate::ffi::Message_CompositeAlerts_add_alert(self, theGravity, theAlert)
+    }
+
+    /// Removes alert with specified gravity.
+    /// @param theGravity an alert gravity
+    /// @param theAlert an alert to be removed from the children
+    /// @return true if the alert is removed
+    pub fn remove_alert(
+        self: std::pin::Pin<&mut Self>,
+        theGravity: i32,
+        theAlert: &crate::ffi::HandleMessageAlert,
+    ) -> bool {
+        crate::ffi::Message_CompositeAlerts_remove_alert(self, theGravity, theAlert)
+    }
+
+    /// Returns true if specific type of alert is recorded with specified gravity
+    /// @param theType an alert type
+    /// @param theGravity an alert gravity
+    /// @return true if the alert is found in a container of children
+    pub fn has_alert_handlestandardtype_gravity(
+        self: std::pin::Pin<&mut Self>,
+        theType: &crate::ffi::HandleStandardType,
+        theGravity: i32,
+    ) -> bool {
+        crate::ffi::Message_CompositeAlerts_has_alert(self, theType, theGravity)
+    }
+
+    /// Clears collected alerts with specified gravity
+    /// @param theGravity an alert gravity
+    pub fn clear_gravity(self: std::pin::Pin<&mut Self>, theGravity: i32) {
+        crate::ffi::Message_CompositeAlerts_clear(self, theGravity)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Message_CompositeAlerts_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleMessageCompositeAlerts> {
+        crate::ffi::Message_CompositeAlerts_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleMessageCompositeAlerts;
+
+impl HandleMessageCompositeAlerts {
+    /// Dereference this Handle to access the underlying Message_CompositeAlerts
+    pub fn get(&self) -> &crate::ffi::Message_CompositeAlerts {
+        crate::ffi::HandleMessageCompositeAlerts_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_CompositeAlerts
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Message_CompositeAlerts> {
+        crate::ffi::HandleMessageCompositeAlerts_get_mut(self)
     }
 }
 
@@ -1038,10 +1421,10 @@ impl Messenger {
     }
 
     /// Create messenger with single printer
-    pub fn new_handleprinter(
+    pub fn new_handlemessageprinter(
         thePrinter: &crate::ffi::HandleMessagePrinter,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Message_Messenger_ctor_handleprinter(thePrinter)
+        crate::ffi::Message_Messenger_ctor_handlemessageprinter(thePrinter)
     }
 
     /// Dispatch a message to all the printers in the list.
@@ -1154,6 +1537,108 @@ impl Msg {
 }
 
 // ========================
+// From Message_MsgFile.hxx
+// ========================
+
+/// A tool providing facility to load definitions of message strings from
+/// resource file(s).
+///
+/// The message file is an ASCII file which defines a set of messages.
+/// Each message is identified by its keyword (string).
+///
+/// All lines in the file starting with the exclamation sign
+/// (perhaps preceding by spaces and/or tabs) are ignored as comments.
+///
+/// Each line in the file starting with the dot character "."
+/// (perhaps preceding by spaces and/or tabs) defines the keyword.
+/// The keyword is a string starting from the next symbol after dot
+/// and ending at the symbol preceding ending newline character "\n".
+///
+/// All the lines in the file after the keyword and before next
+/// keyword (and which are not comments) define the message for that
+/// keyword. If the message consists of several lines, the message
+/// string will contain newline symbols "\n" between parts (but not
+/// at the end).
+///
+/// The experimental support of Unicode message files is provided.
+/// These are distinguished by two bytes FF.FE or FE.FF at the beginning.
+///
+/// The loaded messages are stored in static data map; all methods of that
+/// class are also static.
+pub use crate::ffi::Message_MsgFile as MsgFile;
+
+impl MsgFile {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_MsgFile_ctor()
+    }
+
+    /// Load message file <theFileName> from directory <theDirName>
+    /// or its sub-directory
+    pub fn load(theDirName: &str, theFileName: &str) -> bool {
+        crate::ffi::Message_MsgFile_load(theDirName, theFileName)
+    }
+
+    /// Load the messages from the given file, additive to any previously
+    /// loaded messages. Messages with same keywords, if already present,
+    /// are replaced with the new ones.
+    pub fn load_file(theFName: &str) -> bool {
+        crate::ffi::Message_MsgFile_load_file(theFName)
+    }
+
+    /// Loads the messages from the file with name (without extension) given by environment variable.
+    /// Extension of the file name is given separately. If its not defined, it is taken:
+    /// - by default from environment CSF_LANGUAGE,
+    /// - if not defined either, as "us".
+    /// @name theEnvName  environment variable name
+    /// @name theFileName file name without language suffix
+    /// @name theLangExt  language file name extension
+    /// @return TRUE on success
+    pub fn load_from_env(theEnvName: &str, theFileName: &str, theLangExt: &str) -> bool {
+        crate::ffi::Message_MsgFile_load_from_env(theEnvName, theFileName, theLangExt)
+    }
+
+    /// Loads the messages from the given text buffer.
+    /// @param theContent string containing the messages
+    /// @param theLength  length of the buffer;
+    /// when -1 specified - theContent will be considered as NULL-terminated string
+    pub fn load_from_string(theContent: &str, theLength: i32) -> bool {
+        crate::ffi::Message_MsgFile_load_from_string(theContent, theLength)
+    }
+
+    /// Adds new message to the map. Parameter <key> gives
+    /// the key of the message, <text> defines the message itself.
+    /// If there already was defined the message identified by the
+    /// same keyword, it is replaced with the new one.
+    pub fn add_msg(
+        key: &crate::ffi::TCollection_AsciiString,
+        text: &crate::ffi::TCollection_ExtendedString,
+    ) -> bool {
+        crate::ffi::Message_MsgFile_add_msg(key, text)
+    }
+
+    /// Returns True if message with specified keyword is registered
+    pub fn has_msg(key: &crate::ffi::TCollection_AsciiString) -> bool {
+        crate::ffi::Message_MsgFile_has_msg(key)
+    }
+
+    pub fn msg_charptr(key: &str) -> &'static crate::ffi::TCollection_ExtendedString {
+        crate::ffi::Message_MsgFile_msg_charptr(key)
+    }
+
+    /// Gives the text for the message identified by the keyword <key>.
+    /// If there are no messages with such keyword defined, the error message is returned.
+    /// In that case reference to static string is returned, it can be changed with next call(s) to
+    /// Msg(). Note: The error message is constructed like 'Unknown message: <key>', and can itself be
+    /// customized by defining message with key Message_Msg_BadKeyword.
+    pub fn msg_asciistring(
+        key: &crate::ffi::TCollection_AsciiString,
+    ) -> &'static crate::ffi::TCollection_ExtendedString {
+        crate::ffi::Message_MsgFile_msg_asciistring(key)
+    }
+}
+
+// ========================
 // From Message_Printer.hxx
 // ========================
 
@@ -1227,6 +1712,120 @@ impl HandleMessagePrinter {
 }
 
 // ========================
+// From Message_PrinterOStream.hxx
+// ========================
+
+/// Implementation of a message printer associated with an std::ostream
+/// The std::ostream may be either externally defined one (e.g. std::cout),
+/// or file stream maintained internally (depending on constructor).
+pub use crate::ffi::Message_PrinterOStream as PrinterOStream;
+
+impl PrinterOStream {
+    /// Empty constructor, defaulting to cout
+    pub fn new_gravity(theTraceLevel: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_PrinterOStream_ctor_gravity(theTraceLevel)
+    }
+
+    /// Create printer for output to a specified file.
+    /// The option theDoAppend specifies whether file should be
+    /// appended or rewritten.
+    /// For specific file names (cout, cerr) standard streams are used
+    pub fn new_charptr_bool_gravity(
+        theFileName: &str,
+        theDoAppend: bool,
+        theTraceLevel: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_PrinterOStream_ctor_charptr_bool_gravity(
+            theFileName,
+            theDoAppend,
+            theTraceLevel,
+        )
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Message_PrinterOStream_get_type_descriptor()
+    }
+
+    /// Upcast to Message_Printer
+    pub fn as_printer(&self) -> &Printer {
+        crate::ffi::Message_PrinterOStream_as_Message_Printer(self)
+    }
+
+    /// Upcast to Message_Printer (mutable)
+    pub fn as_printer_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Printer> {
+        crate::ffi::Message_PrinterOStream_as_Message_Printer_mut(self)
+    }
+}
+
+// ========================
+// From Message_PrinterSystemLog.hxx
+// ========================
+
+/// Implementation of a message printer associated with system log.
+/// Implemented for the following systems:
+/// - Windows, through ReportEventW().
+/// - Android, through __android_log_write().
+/// - UNIX/Linux, through syslog().
+pub use crate::ffi::Message_PrinterSystemLog as PrinterSystemLog;
+
+impl PrinterSystemLog {
+    /// Main constructor.
+    pub fn new_asciistring_gravity(
+        theEventSourceName: &crate::ffi::TCollection_AsciiString,
+        theTraceLevel: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_PrinterSystemLog_ctor_asciistring_gravity(
+            theEventSourceName,
+            theTraceLevel,
+        )
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Message_PrinterSystemLog_get_type_descriptor()
+    }
+
+    /// Upcast to Message_Printer
+    pub fn as_printer(&self) -> &Printer {
+        crate::ffi::Message_PrinterSystemLog_as_Message_Printer(self)
+    }
+
+    /// Upcast to Message_Printer (mutable)
+    pub fn as_printer_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Printer> {
+        crate::ffi::Message_PrinterSystemLog_as_Message_Printer_mut(self)
+    }
+}
+
+// ========================
+// From Message_PrinterToReport.hxx
+// ========================
+
+/// Implementation of a message printer associated with Message_Report
+/// Send will create a new alert of the report. If string is sent, an alert is created by Eol only.
+/// The alerts are sent into set report or default report of Message.
+pub use crate::ffi::Message_PrinterToReport as PrinterToReport;
+
+impl PrinterToReport {
+    /// Create printer for redirecting messages into report.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_PrinterToReport_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Message_PrinterToReport_get_type_descriptor()
+    }
+
+    /// Upcast to Message_Printer
+    pub fn as_printer(&self) -> &Printer {
+        crate::ffi::Message_PrinterToReport_as_Message_Printer(self)
+    }
+
+    /// Upcast to Message_Printer (mutable)
+    pub fn as_printer_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Printer> {
+        crate::ffi::Message_PrinterToReport_as_Message_Printer_mut(self)
+    }
+}
+
+// ========================
 // From Message_ProgressIndicator.hxx
 // ========================
 
@@ -1280,10 +1879,10 @@ impl ProgressIndicator {
     /// If argument is non-null handle, returns theProgress->Start().
     /// Otherwise, returns dummy range that can be safely used in the algorithms
     /// but not bound to progress indicator.
-    pub fn start_handleprogressindicator(
+    pub fn start_handlemessageprogressindicator(
         theProgress: &crate::ffi::HandleMessageProgressIndicator,
     ) -> cxx::UniquePtr<crate::ffi::Message_ProgressRange> {
-        crate::ffi::Message_ProgressIndicator_start_handleprogressindicator(theProgress)
+        crate::ffi::Message_ProgressIndicator_start_handlemessageprogressindicator(theProgress)
     }
 }
 
@@ -1340,243 +1939,6 @@ impl ProgressRange {
 }
 
 // ========================
-// From Message_ProgressScope.hxx
-// ========================
-
-/// Message_ProgressScope class provides convenient way to advance progress
-/// indicator in context of complex program organized in hierarchical way,
-/// where usually it is difficult (or even not possible) to consider process
-/// as linear with fixed step.
-///
-/// On every level (sub-operation) in hierarchy of operations
-/// the local instance of the Message_ProgressScope class is created.
-/// It takes a part of the upper-level scope (via Message_ProgressRange) and provides
-/// a way to consider this part as independent scale with locally defined range.
-///
-/// The position on the local scale may be advanced using the method Next(),
-/// which allows iteration-like advancement. This method can take argument to
-/// advance by the specified value (with default step equal to 1).
-/// This method returns Message_ProgressRange object that takes responsibility
-/// of making the specified step, either directly at its destruction or by
-/// delegating this task to another sub-scope created from that range object.
-///
-/// It is important that sub-scope must have life time less than
-/// the life time of its parent scope that provided the range.
-/// The usage pattern is to create scope objects as local variables in the
-/// functions that do the job, and pass range objects returned by Next() to
-/// the functions of the lower level, to allow them creating their own scopes.
-///
-/// The scope has a name that can be used in visualization of the progress.
-/// It can be null. Note that when C string literal is used as a name, then its
-/// value is not copied, just pointer is stored. In other variants (char pointer
-/// or a string class) the string is copied, which is additional overhead.
-///
-/// The same instance of the progress scope! must not be used concurrently from different threads.
-/// For the algorithm running its tasks in parallel threads, a common scope is
-/// created before the parallel execution, and the range objects produced by method
-/// Next() are used to initialise the data pertinent to each task.
-/// Then the progress is advanced within each task using its own range object.
-/// See example below.
-///
-/// Note that while a range of the scope is specified using Standard_Real
-/// (double) parameter, it is expected to be a positive integer value.
-/// If the range is not an integer, method Next() shall be called with
-/// explicit step argument, and the rounded value returned by method Value()
-/// may be not coherent with the step and range.
-///
-/// A scope can be created with option "infinite". This is useful when
-/// the number of steps is not known by the time of the scope creation.
-/// In this case the progress will be advanced logarithmically, approaching
-/// the end of the scope at infinite number of steps. The parameter Max
-/// for infinite scope indicates number of steps corresponding to mid-range.
-///
-/// A progress scope created with empty constructor is not connected to any
-/// progress indicator, and passing the range created on it to any algorithm
-/// allows it executing safely without actual progress indication.
-///
-/// Example of preparation of progress indicator:
-///
-/// @code{.cpp}
-/// Handle(Message_ProgressIndicator) aProgress = ...; // assume it can be null
-/// func (Message_ProgressIndicator::Start (aProgress));
-/// @endcode
-///
-/// Example of usage in sequential process:
-///
-/// @code{.cpp}
-/// Message_ProgressScope aWholePS(aRange, "Whole process", 100);
-///
-/// // do one step taking 20%
-/// func1 (aWholePS.Next (20)); // func1 will take 20% of the whole scope
-/// if (aWholePS.UserBreak()) // exit prematurely if the user requested break
-/// return;
-///
-/// // ... do next step taking 50%
-/// func2 (aWholePS.Next (50));
-/// if (aWholePS.UserBreak())
-/// return;
-/// @endcode
-///
-/// Example of usage in nested cycle:
-///
-/// @code{.cpp}
-/// // Outer cycle
-/// Message_ProgressScope anOuter (theProgress, "Outer", nbOuter);
-/// for (Standard_Integer i = 0; i < nbOuter && anOuter.More(); i++)
-/// {
-/// // Inner cycle
-/// Message_ProgressScope anInner (anOuter.Next(), "Inner", nbInner);
-/// for (Standard_Integer j = 0; j < nbInner && anInner.More(); j++)
-/// {
-/// // Cycle body
-/// func (anInner.Next());
-/// }
-/// }
-/// @endcode
-///
-/// Example of use in function:
-///
-/// @code{.cpp}
-/// //! Implementation of iterative algorithm showing its progress
-/// func (const Message_ProgressRange& theProgress)
-/// {
-/// // Create local scope covering the given progress range.
-/// // Set this scope to count aNbSteps steps.
-/// Message_ProgressScope aScope (theProgress, "", aNbSteps);
-/// for (Standard_Integer i = 0; i < aNbSteps && aScope.More(); i++)
-/// {
-/// // Optional: pass range returned by method Next() to the nested algorithm
-/// // to allow it to show its progress too (by creating its own scope object).
-/// // In any case the progress will advance to the next step by the end of the func2 call.
-/// func2 (aScope.Next());
-/// }
-/// }
-/// @endcode
-///
-/// Example of usage in parallel process:
-///
-/// @code{.cpp}
-/// struct Task
-/// {
-/// Data& Data;
-/// Message_ProgressRange Range;
-///
-/// Task (const Data& theData, const Message_ProgressRange& theRange)
-/// : Data (theData), Range (theRange) {}
-/// };
-/// struct Functor
-/// {
-/// void operator() (Task& theTask) const
-/// {
-/// // Note: it is essential that this method is executed only once for the same Task object
-/// Message_ProgressScope aPS (theTask.Range, NULL, theTask.Data.NbItems);
-/// for (Standard_Integer i = 0; i < theTask.Data.NbSteps && aPS.More(); i++)
-/// {
-/// do_job (theTask.Data.Item[i], aPS.Next());
-/// }
-/// }
-/// };
-/// ...
-/// {
-/// std::vector<Data> aData = ...;
-/// std::vector<Task> aTasks;
-///
-/// Message_ProgressScope aPS (aRootRange, "Data processing", aData.size());
-/// for (Standard_Integer i = 0; i < aData.size(); ++i)
-/// aTasks.push_back (Task (aData[i], aPS.Next()));
-///
-/// OSD_Parallel::ForEach (aTasks.begin(), aTasks.end(), Functor());
-/// }
-/// @endcode
-///
-/// For lightweight algorithms that do not need advancing the progress
-/// within individual tasks the code can be simplified to avoid inner scopes:
-///
-/// @code
-/// struct Functor
-/// {
-/// void operator() (Task& theTask) const
-/// {
-/// if (theTask.Range.More())
-/// {
-/// do_job (theTask.Data);
-/// // advance the progress
-/// theTask.Range.Close();
-/// }
-/// }
-/// };
-/// @endcode
-pub use crate::ffi::Message_ProgressScope as ProgressScope;
-
-impl ProgressScope {
-    /// @name Preparation methods
-    /// Creates dummy scope.
-    /// It can be safely passed to algorithms; no progress indication will be done.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Message_ProgressScope_ctor()
-    }
-
-    /// Creates a new scope taking responsibility of the part of the progress
-    /// scale described by theRange. The new scope has own range from 0 to
-    /// theMax, which is mapped to the given range.
-    ///
-    /// The topmost scope is created and owned by Message_ProgressIndicator
-    /// and its pointer is contained in the Message_ProgressRange returned by the Start() method of
-    /// progress indicator.
-    ///
-    /// @param[in][out] theRange  range to fill (will be disarmed)
-    /// @param[in] theName        new scope name
-    /// @param[in] theMax         number of steps in scope
-    /// @param[in] isInfinite     infinite flag
-    pub fn new_progressrange_asciistring_real_bool(
-        theRange: &crate::ffi::Message_ProgressRange,
-        theName: &crate::ffi::TCollection_AsciiString,
-        theMax: f64,
-        isInfinite: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Message_ProgressScope_ctor_progressrange_asciistring_real_bool(
-            theRange, theName, theMax, isInfinite,
-        )
-    }
-
-    /// Creates a new scope taking responsibility of the part of the progress
-    /// scale described by theRange. The new scope has own range from 0 to
-    /// theMax, which is mapped to the given range.
-    ///
-    /// The topmost scope is created and owned by Message_ProgressIndicator
-    /// and its pointer is contained in the Message_ProgressRange returned by the Start() method of
-    /// progress indicator.
-    ///
-    /// @param[in][out] theRange  range to fill (will be disarmed)
-    /// @param[in] theName        new scope name
-    /// @param[in] theMax         number of steps in scope
-    /// @param[in] isInfinite     infinite flag
-    pub fn new_progressrange_asciistring_real(
-        theRange: &crate::ffi::Message_ProgressRange,
-        theName: &crate::ffi::TCollection_AsciiString,
-        theMax: f64,
-    ) -> cxx::UniquePtr<Self> {
-        Self::new_progressrange_asciistring_real_bool(theRange, theName, theMax, false)
-    }
-
-    /// Advances position by specified step and returns the range
-    /// covering this step
-    pub fn next(
-        self: std::pin::Pin<&mut Self>,
-        theStep: f64,
-    ) -> cxx::UniquePtr<crate::ffi::Message_ProgressRange> {
-        crate::ffi::Message_ProgressScope_next(self, theStep)
-    }
-
-    /// Returns the name of the scope (may be null).
-    /// Scopes with null name (e.g. root scope) should
-    /// be bypassed when reporting progress to the user.
-    pub fn name(&self) -> String {
-        crate::ffi::Message_ProgressScope_name(self)
-    }
-}
-
-// ========================
 // From Message_Report.hxx
 // ========================
 
@@ -1622,7 +1984,7 @@ impl Report {
     }
 
     /// Returns true if specific type of alert is recorded with specified gravity
-    pub fn has_alert_handletype_gravity(
+    pub fn has_alert_handlestandardtype_gravity(
         self: std::pin::Pin<&mut Self>,
         theType: &crate::ffi::HandleStandardType,
         theGravity: i32,
@@ -1648,7 +2010,7 @@ impl Report {
     /// Dumps collected alerts with specified gravity to messenger.
     /// Default implementation creates Message_Msg object with a message
     /// key returned by alert, and sends it in the messenger.
-    pub fn send_messages_handlemessenger_gravity(
+    pub fn send_messages_handlemessagemessenger_gravity(
         self: std::pin::Pin<&mut Self>,
         theMessenger: &crate::ffi::HandleMessageMessenger,
         theGravity: i32,
@@ -1657,7 +2019,7 @@ impl Report {
     }
 
     /// Merges alerts with specified gravity from theOther report into this
-    pub fn merge_handlereport_gravity(
+    pub fn merge_handlemessagereport_gravity(
         self: std::pin::Pin<&mut Self>,
         theOther: &crate::ffi::HandleMessageReport,
         theGravity: i32,
@@ -1696,6 +2058,5 @@ impl HandleMessageReport {
 // ========================
 
 pub use crate::ffi::{
-    Message_Attribute as Attribute, Message_CompositeAlerts as CompositeAlerts,
     Message_ListOfAlert as ListOfAlert, Message_SequenceOfPrinters as SequenceOfPrinters,
 };

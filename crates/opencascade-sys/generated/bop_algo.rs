@@ -106,6 +106,52 @@ impl TryFrom<i32> for Operation {
     }
 }
 
+/// C++ enum: `BOPAlgo_CheckStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum CheckStatus {
+    Checkunknown = 0,
+    Badtype = 1,
+    Selfintersect = 2,
+    Toosmalledge = 3,
+    Nonrecoverableface = 4,
+    Incompatibilityofvertex = 5,
+    Incompatibilityofedge = 6,
+    Incompatibilityofface = 7,
+    Operationaborted = 8,
+    GeomabsC0 = 9,
+    Invalidcurveonsurface = 10,
+    Notvalid = 11,
+}
+
+impl From<CheckStatus> for i32 {
+    fn from(value: CheckStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for CheckStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(CheckStatus::Checkunknown),
+            1 => Ok(CheckStatus::Badtype),
+            2 => Ok(CheckStatus::Selfintersect),
+            3 => Ok(CheckStatus::Toosmalledge),
+            4 => Ok(CheckStatus::Nonrecoverableface),
+            5 => Ok(CheckStatus::Incompatibilityofvertex),
+            6 => Ok(CheckStatus::Incompatibilityofedge),
+            7 => Ok(CheckStatus::Incompatibilityofface),
+            8 => Ok(CheckStatus::Operationaborted),
+            9 => Ok(CheckStatus::GeomabsC0),
+            10 => Ok(CheckStatus::Invalidcurveonsurface),
+            11 => Ok(CheckStatus::Notvalid),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From BOPAlgo_Algo.hxx
 // ========================
@@ -263,10 +309,10 @@ impl BOP {
         crate::ffi::BOPAlgo_BOP_ctor()
     }
 
-    pub fn new_handlebaseallocator(
+    pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_BOP_ctor_handlebaseallocator(theAllocator)
+        crate::ffi::BOPAlgo_BOP_ctor_handlencollectionbaseallocator(theAllocator)
     }
 
     pub fn set_operation(self: std::pin::Pin<&mut Self>, theOperation: i32) {
@@ -554,10 +600,10 @@ impl Builder {
         crate::ffi::BOPAlgo_Builder_ctor()
     }
 
-    pub fn new_handlebaseallocator(
+    pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_Builder_ctor_handlebaseallocator(theAllocator)
+        crate::ffi::BOPAlgo_Builder_ctor_handlencollectionbaseallocator(theAllocator)
     }
 
     /// Sets the glue option for the algorithm
@@ -838,6 +884,31 @@ impl BuilderShape {
 }
 
 // ========================
+// From BOPAlgo_CheckResult.hxx
+// ========================
+
+/// contains information about faulty shapes and faulty types
+/// can't be processed by Boolean Operations
+pub use crate::ffi::BOPAlgo_CheckResult as CheckResult;
+
+impl CheckResult {
+    /// empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BOPAlgo_CheckResult_ctor()
+    }
+
+    /// set status of faulty
+    pub fn set_check_status(self: std::pin::Pin<&mut Self>, TheStatus: i32) {
+        crate::ffi::BOPAlgo_CheckResult_set_check_status(self, TheStatus)
+    }
+
+    /// gets status of faulty
+    pub fn get_check_status(&self) -> i32 {
+        crate::ffi::BOPAlgo_CheckResult_get_check_status(self)
+    }
+}
+
+// ========================
 // From BOPAlgo_Options.hxx
 // ========================
 
@@ -860,10 +931,10 @@ impl Options {
     }
 
     /// Constructor with allocator
-    pub fn new_handlebaseallocator(
+    pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_Options_ctor_handlebaseallocator(theAllocator)
+        crate::ffi::BOPAlgo_Options_ctor_handlencollectionbaseallocator(theAllocator)
     }
 
     /// Gets the global parallel mode
@@ -874,6 +945,291 @@ impl Options {
     /// Sets the global parallel mode
     pub fn set_parallel_mode(theNewMode: bool) {
         crate::ffi::BOPAlgo_Options_set_parallel_mode(theNewMode)
+    }
+}
+
+// ========================
+// From BOPAlgo_RemoveFeatures.hxx
+// ========================
+
+/// The RemoveFeatures algorithm is intended for reconstruction of
+/// the shape by removal of the unwanted parts from it. These parts can
+/// be holes, protrusions, spikes, fillets etc.
+/// The shape itself is not modified, the new shape is built in
+/// the result.
+///
+/// Currently, only the shapes of type SOLID, COMPSOLID, and
+/// COMPOUND of Solids are supported. And only the FACEs can be
+/// removed from the shape.
+///
+/// On the input the algorithm accepts the shape itself and the
+/// faces which have to be removed. It does not matter how the faces
+/// are given. It could be the separate faces or the collections of faces.
+/// The faces should belong to the initial shape, and those that
+/// do not belong will be ignored.
+/// Before reconstructing the shape, the algorithm will sort all
+/// the given faces on the connected blocks (features).
+///
+/// The features will be removed from the shape one by one.
+/// It will allow removing all possible features even if there
+/// were problems with the removal of some of them.
+///
+/// The removed feature is filled by the extension of the faces adjacent
+/// to the feature. In general, the algorithm of removing of the single
+/// feature from the shape looks as follows:
+/// - Find the faces adjacent to the feature;
+/// - Extend the adjacent faces to cover the feature;
+/// - Trim the extended faces by the bounds of original face
+/// (except for bounds common with the feature), so it will cover
+/// the feature only;
+/// - Rebuild the solids with reconstructed adjacent faces
+/// avoiding the faces from the feature.
+///
+/// If the removal is successful, the result is overwritten with the
+/// new shape and the next feature is treated. Otherwise, the warning
+/// will be given.
+///
+/// The algorithm has the following options:
+/// - History support;
+///
+/// and the options available from base class:
+/// - Error/Warning reporting system;
+/// - Parallel processing mode.
+///
+/// Please note that the other options of the base class are not supported
+/// here and will have no effect.
+///
+/// <b>History support</b> allows tracking modification of the input shape
+/// in terms of Modified, IsDeleted and Generated. The history is
+/// available through the methods of the history tool *BRepTools_History*,
+/// which can be accessed here through the method *History()*.
+/// By default, the history is collected, but it is possible to disable it
+/// using the method *SetToFillHistory(false)*;
+///
+/// <b>Error/Warning reporting system</b> - allows obtaining the extended overview
+/// of the Errors/Warnings occurred during the operation. As soon as any error
+/// appears the algorithm stops working. The warnings allow continuing the job,
+/// informing the user that something went wrong.
+/// The algorithm returns the following errors/warnings:
+/// - *BOPAlgo_AlertTooFewArguments* - the error alert is given if the input
+/// shape does not contain any solids;
+/// - *BOPAlgo_AlertUnsupportedType* - the warning alert is given if the input
+/// shape contains not only solids, but also other shapes;
+/// - *BOPAlgo_AlertNoFacesToRemove* - the error alert is given in case
+/// there are no faces to remove from the shape (nothing to do);
+/// - *BOPAlgo_AlertUnableToRemoveTheFeature* - the warning alert is given to
+/// inform the user the removal of the feature is not possible. The algorithm
+/// will still try to remove the other features;
+/// - *BOPAlgo_AlertRemoveFeaturesFailed* - the error alert is given in case if
+/// the operation was aborted by the unknown reason.
+///
+/// <b>Parallel processing mode</b> - allows running the algorithm in parallel mode
+/// obtaining the result faster.
+///
+/// The algorithm has certain limitations:
+/// - Intersection of the connected faces adjacent to the feature should not be empty.
+/// It means, that such faces should not be tangent to each other.
+/// If the intersection of the adjacent faces will be empty, the algorithm will
+/// be unable to trim the faces correctly and, most likely, the feature will not be removed.
+/// - The algorithm does not process the INTERNAL parts of the solids, they are simply
+/// removed during reconstruction.
+///
+/// Note that for successful removal of the feature, the extended faces adjacent
+/// to the feature should cover the feature completely, otherwise the solids will
+/// not be rebuild.
+///
+/// Here is the example of usage of the algorithm:
+/// ~~~~
+/// TopoDS_Shape aSolid = ...;              // Input shape to remove the features from
+/// TopTools_ListOfShape aFaces = ...;      // Faces to remove from the shape
+/// Standard_Boolean bRunParallel = ...;    // Parallel processing mode
+/// Standard_Boolean isHistoryNeeded = ...; // History support
+///
+/// BOPAlgo_RemoveFeatures aRF;             // Feature removal algorithm
+/// aRF.SetShape(aSolid);                   // Set the shape
+/// aRF.AddFacesToRemove(aFaces);           // Add faces to remove
+/// aRF.SetRunParallel(bRunParallel);       // Define the processing mode (parallel or single)
+/// aRF.SetToFillHistory(isHistoryNeeded);  // Define whether to track the shapes modifications
+/// aRF.Perform();                          // Perform the operation
+/// if (aRF.HasErrors())                    // Check for the errors
+/// {
+/// // error treatment
+/// return;
+/// }
+/// if (aRF.HasWarnings())                  // Check for the warnings
+/// {
+/// // warnings treatment
+/// }
+/// const TopoDS_Shape& aResult = aRF.Shape(); // Result shape
+/// ~~~~
+///
+/// The algorithm preserves the type of the input shape in the result shape. Thus,
+/// if the input shape is a COMPSOLID, the resulting solids will also be put into a COMPSOLID.
+///
+/// When all possible features are removed, the shape is simplified by
+/// removing extra edges and vertices, created during operation, from the result shape.
+pub use crate::ffi::BOPAlgo_RemoveFeatures as RemoveFeatures;
+
+impl RemoveFeatures {
+    /// @name Constructors
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BOPAlgo_RemoveFeatures_ctor()
+    }
+
+    /// Upcast to BOPAlgo_BuilderShape
+    pub fn as_builder_shape(&self) -> &BuilderShape {
+        crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_BuilderShape(self)
+    }
+
+    /// Upcast to BOPAlgo_BuilderShape (mutable)
+    pub fn as_builder_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BuilderShape> {
+        crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_BuilderShape_mut(self)
+    }
+
+    /// Upcast to BOPAlgo_Options
+    pub fn as_options(&self) -> &Options {
+        crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_Options(self)
+    }
+
+    /// Upcast to BOPAlgo_Options (mutable)
+    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
+        crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_Options_mut(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Shape()
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_Shape(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_Generated(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_IsDeleted(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasModified()
+    pub fn has_modified(&self) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasModified(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
+    pub fn has_generated(&self) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasGenerated(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
+    pub fn has_deleted(&self) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasDeleted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: History()
+    pub fn history(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_History(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetToFillHistory(self, theHistFlag)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasHistory()
+    pub fn has_history(&self) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: Allocator()
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_Allocator(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: AddError()
+    pub fn add_error(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_AddError(self, theAlert)
+    }
+
+    /// Inherited from BOPAlgo_Options: AddWarning()
+    pub fn add_warning(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_AddWarning(self, theAlert)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasErrors()
+    pub fn has_errors(&self) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasErrors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasError()
+    pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasError(self, theType)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings()
+    pub fn has_warnings(&self) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasWarnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarning()
+    pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasWarning(self, theType)
+    }
+
+    /// Inherited from BOPAlgo_Options: GetReport()
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_GetReport(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings()
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_ClearWarnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel()
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetRunParallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel()
+    pub fn run_parallel(&self) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_RunParallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetFuzzyValue(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue()
+    pub fn fuzzy_value(&self) -> f64 {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_FuzzyValue(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB()
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetUseOBB(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB()
+    pub fn use_obb(&self) -> bool {
+        crate::ffi::BOPAlgo_RemoveFeatures_inherited_UseOBB(self)
     }
 }
 
@@ -890,10 +1246,10 @@ impl ToolsProvider {
         crate::ffi::BOPAlgo_ToolsProvider_ctor()
     }
 
-    pub fn new_handlebaseallocator(
+    pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_ToolsProvider_ctor_handlebaseallocator(theAllocator)
+        crate::ffi::BOPAlgo_ToolsProvider_ctor_handlencollectionbaseallocator(theAllocator)
     }
 
     /// Upcast to BOPAlgo_Builder
@@ -1112,6 +1468,6 @@ impl ToolsProvider {
 // ========================
 
 pub use crate::ffi::{
-    BOPAlgo_PBuilder as PBuilder, BOPAlgo_PPaveFiller as PPaveFiller,
-    BOPAlgo_PaveFiller as PaveFiller,
+    BOPAlgo_ListOfCheckResult as ListOfCheckResult, BOPAlgo_PBuilder as PBuilder,
+    BOPAlgo_PPaveFiller as PPaveFiller, BOPAlgo_PaveFiller as PaveFiller,
 };

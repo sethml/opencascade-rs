@@ -57,6 +57,244 @@ impl TryFrom<i32> for StepModelType {
 }
 
 // ========================
+// From STEPControl_ActorRead.hxx
+// ========================
+
+/// This class performs the transfer of an Entity from
+/// AP214 and AP203, either Geometric or Topologic.
+///
+/// I.E. for each type of Entity, it invokes the appropriate Tool
+/// then returns the Binder which contains the Result
+pub use crate::ffi::STEPControl_ActorRead as ActorRead;
+
+impl ActorRead {
+    pub fn new_handleinterfaceinterfacemodel(
+        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::STEPControl_ActorRead_ctor_handleinterfaceinterfacemodel(theModel)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::STEPControl_ActorRead_get_type_descriptor()
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForTransient
+    pub fn as_transfer_actor_of_process_for_transient(
+        &self,
+    ) -> &crate::transfer::ActorOfProcessForTransient {
+        crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient(self)
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForTransient (mutable)
+    pub fn as_transfer_actor_of_process_for_transient_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::transfer::ActorOfProcessForTransient> {
+        crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient_mut(self)
+    }
+
+    /// Upcast to Transfer_ActorOfTransientProcess
+    pub fn as_transfer_actor_of_transient_process(
+        &self,
+    ) -> &crate::transfer::ActorOfTransientProcess {
+        crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess(self)
+    }
+
+    /// Upcast to Transfer_ActorOfTransientProcess (mutable)
+    pub fn as_transfer_actor_of_transient_process_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::transfer::ActorOfTransientProcess> {
+        crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess_mut(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForTransient: NullResult()
+    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
+        crate::ffi::STEPControl_ActorRead_inherited_NullResult(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForTransient: SetLast()
+    pub fn set_last(self: std::pin::Pin<&mut Self>, mode: bool) {
+        crate::ffi::STEPControl_ActorRead_inherited_SetLast(self, mode)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForTransient: IsLast()
+    pub fn is_last(&self) -> bool {
+        crate::ffi::STEPControl_ActorRead_inherited_IsLast(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForTransient: SetNext()
+    pub fn set_next(
+        self: std::pin::Pin<&mut Self>,
+        next: &crate::ffi::HandleTransferActorOfProcessForTransient,
+    ) {
+        crate::ffi::STEPControl_ActorRead_inherited_SetNext(self, next)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForTransient: Next()
+    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        crate::ffi::STEPControl_ActorRead_inherited_Next(self)
+    }
+}
+
+// ========================
+// From STEPControl_ActorWrite.hxx
+// ========================
+
+/// This class performs the transfer of a Shape from TopoDS
+/// to AP203 or AP214 (CD2 or DIS)
+pub use crate::ffi::STEPControl_ActorWrite as ActorWrite;
+
+impl ActorWrite {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::STEPControl_ActorWrite_ctor()
+    }
+
+    pub fn set_mode(self: std::pin::Pin<&mut Self>, M: i32) {
+        crate::ffi::STEPControl_ActorWrite_set_mode(self, M)
+    }
+
+    pub fn mode(&self) -> i32 {
+        crate::ffi::STEPControl_ActorWrite_mode(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::STEPControl_ActorWrite_get_type_descriptor()
+    }
+
+    /// Upcast to Transfer_ActorOfFinderProcess
+    pub fn as_transfer_actor_of_finder_process(&self) -> &crate::transfer::ActorOfFinderProcess {
+        crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess(self)
+    }
+
+    /// Upcast to Transfer_ActorOfFinderProcess (mutable)
+    pub fn as_transfer_actor_of_finder_process_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::transfer::ActorOfFinderProcess> {
+        crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(self)
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForFinder
+    pub fn as_transfer_actor_of_process_for_finder(
+        &self,
+    ) -> &crate::transfer::ActorOfProcessForFinder {
+        crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(self)
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForFinder (mutable)
+    pub fn as_transfer_actor_of_process_for_finder_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::transfer::ActorOfProcessForFinder> {
+        crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(self)
+    }
+
+    /// Inherited from Transfer_ActorOfFinderProcess: ModeTrans()
+    pub fn mode_trans(self: std::pin::Pin<&mut Self>) -> &mut i32 {
+        crate::ffi::STEPControl_ActorWrite_inherited_ModeTrans(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: NullResult()
+    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
+        crate::ffi::STEPControl_ActorWrite_inherited_NullResult(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: SetLast()
+    pub fn set_last(self: std::pin::Pin<&mut Self>, mode: bool) {
+        crate::ffi::STEPControl_ActorWrite_inherited_SetLast(self, mode)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: IsLast()
+    pub fn is_last(&self) -> bool {
+        crate::ffi::STEPControl_ActorWrite_inherited_IsLast(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: SetNext()
+    pub fn set_next(
+        self: std::pin::Pin<&mut Self>,
+        next: &crate::ffi::HandleTransferActorOfProcessForFinder,
+    ) {
+        crate::ffi::STEPControl_ActorWrite_inherited_SetNext(self, next)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: Next()
+    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        crate::ffi::STEPControl_ActorWrite_inherited_Next(self)
+    }
+}
+
+// ========================
+// From STEPControl_Controller.hxx
+// ========================
+
+/// defines basic controller for STEP processor
+pub use crate::ffi::STEPControl_Controller as Controller;
+
+impl Controller {
+    /// Initializes the use of STEP Norm (the first time) and
+    /// returns a Controller
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::STEPControl_Controller_ctor()
+    }
+
+    /// Creates a new empty Model ready to receive data of the Norm.
+    /// It is taken from STEP Template Model
+    pub fn new_model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::STEPControl_Controller_new_model(self)
+    }
+
+    /// Standard Initialisation. It creates a Controller for STEP
+    /// and records it to various names, available to select it later
+    /// Returns True when done, False if could not be done
+    pub fn init() -> bool {
+        crate::ffi::STEPControl_Controller_init()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::STEPControl_Controller_get_type_descriptor()
+    }
+
+    /// Upcast to XSControl_Controller
+    pub fn as_xs_control_controller(&self) -> &crate::xs_control::Controller {
+        crate::ffi::STEPControl_Controller_as_XSControl_Controller(self)
+    }
+
+    /// Upcast to XSControl_Controller (mutable)
+    pub fn as_xs_control_controller_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::xs_control::Controller> {
+        crate::ffi::STEPControl_Controller_as_XSControl_Controller_mut(self)
+    }
+
+    /// Inherited from XSControl_Controller: AutoRecord()
+    pub fn auto_record(&self) {
+        crate::ffi::STEPControl_Controller_inherited_AutoRecord(self)
+    }
+
+    /// Inherited from XSControl_Controller: WorkLibrary()
+    pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
+        crate::ffi::STEPControl_Controller_inherited_WorkLibrary(self)
+    }
+
+    /// Inherited from XSControl_Controller: SetModeWrite()
+    pub fn set_mode_write(self: std::pin::Pin<&mut Self>, modemin: i32, modemax: i32, shape: bool) {
+        crate::ffi::STEPControl_Controller_inherited_SetModeWrite(self, modemin, modemax, shape)
+    }
+
+    /// Inherited from XSControl_Controller: ModeWriteBounds()
+    pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
+        crate::ffi::STEPControl_Controller_inherited_ModeWriteBounds(self, modemin, modemax, shape)
+    }
+
+    /// Inherited from XSControl_Controller: IsModeWrite()
+    pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
+        crate::ffi::STEPControl_Controller_inherited_IsModeWrite(self, modetrans, shape)
+    }
+
+    /// Inherited from XSControl_Controller: RecognizeWriteShape()
+    pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
+        crate::ffi::STEPControl_Controller_inherited_RecognizeWriteShape(self, shape, modetrans)
+    }
+}
+
+// ========================
 // From STEPControl_Reader.hxx
 // ========================
 
@@ -129,6 +367,11 @@ impl Reader {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
         crate::ffi::STEPControl_Reader_as_XSControl_Reader_mut(self)
+    }
+
+    /// Inherited from XSControl_Reader: Model()
+    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::STEPControl_Reader_inherited_Model(self)
     }
 
     /// Inherited from XSControl_Reader: TransferOneRoot()

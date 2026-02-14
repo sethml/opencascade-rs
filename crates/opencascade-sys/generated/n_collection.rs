@@ -36,6 +36,61 @@ impl TryFrom<i32> for CellFilterAction {
 }
 
 // ========================
+// From NCollection_AccAllocator.hxx
+// ========================
+
+///
+/// Class  NCollection_AccAllocator  -  accumulating  memory  allocator.  This
+/// class  allocates  memory on request returning the pointer to the allocated
+/// space.  The  allocation  units  are  grouped  in blocks requested from the
+/// system  as  required.  This  memory  is  returned  to  the system when all
+/// allocations in a block are freed.
+///
+/// By comparison with  the standard new() and malloc()  calls, this method is
+/// faster and consumes very small additional memory to maintain the heap.
+///
+/// By comparison with NCollection_IncAllocator,  this class requires some more
+/// additional memory  and a little more time for allocation and deallocation.
+/// Memory overhead for NCollection_IncAllocator is 12 bytes per block;
+/// average memory overhead for NCollection_AccAllocator is 28 bytes per block.
+///
+/// All pointers  returned by Allocate() are aligned to 4 byte boundaries.
+/// To  define  the size  of  memory  blocks  requested  from the OS,  use the
+/// parameter of the constructor (measured in bytes).
+pub use crate::ffi::NCollection_AccAllocator as AccAllocator;
+
+impl AccAllocator {
+    /// Constructor
+    pub fn new_size(theBlockSize: usize) -> cxx::UniquePtr<Self> {
+        crate::ffi::NCollection_AccAllocator_ctor_size(theBlockSize)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::NCollection_AccAllocator_get_type_descriptor()
+    }
+}
+
+// ========================
+// From NCollection_AlignedAllocator.hxx
+// ========================
+
+/// NCollection allocator with managed memory alignment capabilities.
+pub use crate::ffi::NCollection_AlignedAllocator as AlignedAllocator;
+
+impl AlignedAllocator {
+    /// Constructor. The alignment should be specified explicitly:
+    /// 16 bytes for SSE instructions
+    /// 32 bytes for AVX instructions
+    pub fn new_size(theAlignment: usize) -> cxx::UniquePtr<Self> {
+        crate::ffi::NCollection_AlignedAllocator_ctor_size(theAlignment)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::NCollection_AlignedAllocator_get_type_descriptor()
+    }
+}
+
+// ========================
 // From NCollection_BaseAllocator.hxx
 // ========================
 
@@ -159,6 +214,20 @@ impl HandleNCollectionBuffer {
 }
 
 // ========================
+// From NCollection_HeapAllocator.hxx
+// ========================
+
+///
+/// Allocator that uses the global dynamic heap (malloc / free).
+pub use crate::ffi::NCollection_HeapAllocator as HeapAllocator;
+
+impl HeapAllocator {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::NCollection_HeapAllocator_get_type_descriptor()
+    }
+}
+
+// ========================
 // From NCollection_IncAllocator.hxx
 // ========================
 
@@ -203,5 +272,35 @@ impl IncAllocator {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::NCollection_IncAllocator_get_type_descriptor()
+    }
+}
+
+// ========================
+// From NCollection_WinHeapAllocator.hxx
+// ========================
+
+/// This memory allocator creates dedicated heap for allocations.
+/// This technics available only on Windows platform
+/// (no alternative on Unix systems).
+/// It may be used to take control over memory fragmentation
+/// because on destruction ALL allocated memory will be released
+/// to the system.
+///
+/// This allocator can also be created per each working thread
+/// however its real multi-threading performance is dubious.
+///
+/// Notice that this also means that existing pointers will be broken
+/// and you should control that allocator is alive along all objects
+/// allocated with him.
+pub use crate::ffi::NCollection_WinHeapAllocator as WinHeapAllocator;
+
+impl WinHeapAllocator {
+    /// Main constructor
+    pub fn new_size(theInitSizeBytes: usize) -> cxx::UniquePtr<Self> {
+        crate::ffi::NCollection_WinHeapAllocator_ctor_size(theInitSizeBytes)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::NCollection_WinHeapAllocator_get_type_descriptor()
     }
 }

@@ -42,6 +42,141 @@ impl TryFrom<i32> for DegreeOfFreedom {
     }
 }
 
+/// C++ enum: `BRepMesh_FactoryError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum FactoryError {
+    FeNoerror = 0,
+    FeLibrarynotfound = 1,
+    FeFunctionnotfound = 2,
+    FeCannotcreatealgo = 3,
+}
+
+impl From<FactoryError> for i32 {
+    fn from(value: FactoryError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for FactoryError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(FactoryError::FeNoerror),
+            1 => Ok(FactoryError::FeLibrarynotfound),
+            2 => Ok(FactoryError::FeFunctionnotfound),
+            3 => Ok(FactoryError::FeCannotcreatealgo),
+            _ => Err(value),
+        }
+    }
+}
+
+// ========================
+// From BRepMesh_BaseMeshAlgo.hxx
+// ========================
+
+/// Class provides base functionality for algorithms building face triangulation.
+/// Performs initialization of BRepMesh_DataStructureOfDelaun and nodes map structures.
+pub use crate::ffi::BRepMesh_BaseMeshAlgo as BaseMeshAlgo;
+
+impl BaseMeshAlgo {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_BaseMeshAlgo_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_MeshAlgo
+    pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
+        crate::ffi::BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgo (mutable)
+    pub fn as_i_mesh_tools_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgo> {
+        crate::ffi::BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_BoundaryParamsRangeSplitter.hxx
+// ========================
+
+/// Auxiliary class extending UV range splitter in order to generate
+/// internal nodes for NURBS surface.
+pub use crate::ffi::BRepMesh_BoundaryParamsRangeSplitter as BoundaryParamsRangeSplitter;
+
+impl BoundaryParamsRangeSplitter {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_ctor()
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    }
+
+    /// Upcast to BRepMesh_NURBSRangeSplitter
+    pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_NURBSRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_NURBSRangeSplitter (mutable)
+    pub fn as_nurbs_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut NURBSRangeSplitter> {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(self)
+    }
+
+    /// Upcast to BRepMesh_UVParamRangeSplitter
+    pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_UVParamRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
+    pub fn as_uv_param_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut UVParamRangeSplitter> {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_AdjustRange(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_IsValid(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    pub fn scale(
+        &self,
+        thePoint: &crate::ffi::gp_Pnt2d,
+        isToFaceBasis: bool,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Scale(
+            self,
+            thePoint,
+            isToFaceBasis,
+        )
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Point(self, thePoint2d)
+    }
+}
+
 // ========================
 // From BRepMesh_Circle.hxx
 // ========================
@@ -61,6 +196,824 @@ impl Circle {
     /// @param theRadius radius of a circle.
     pub fn new_xy_real(theLocation: &crate::ffi::gp_XY, theRadius: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_Circle_ctor_xy_real(theLocation, theRadius)
+    }
+}
+
+// ========================
+// From BRepMesh_CircleTool.hxx
+// ========================
+
+/// Create sort and destroy the circles used in triangulation. <br>
+pub use crate::ffi::BRepMesh_CircleTool as CircleTool;
+
+impl CircleTool {
+    /// Computes circle on three points.
+    /// @param thePoint1 first point.
+    /// @param thePoint2 second point.
+    /// @param thePoint3 third point.
+    /// @param[out] theLocation center of computed circle.
+    /// @param[out] theRadius radius of computed circle.
+    /// @return FALSE in case of impossibility to build a circle
+    /// on the given points, TRUE elsewhere.
+    pub fn make_circle(
+        thePoint1: &crate::ffi::gp_XY,
+        thePoint2: &crate::ffi::gp_XY,
+        thePoint3: &crate::ffi::gp_XY,
+        theLocation: std::pin::Pin<&mut crate::ffi::gp_XY>,
+        theRadius: &mut f64,
+    ) -> bool {
+        crate::ffi::BRepMesh_CircleTool_make_circle(
+            thePoint1,
+            thePoint2,
+            thePoint3,
+            theLocation,
+            theRadius,
+        )
+    }
+}
+
+// ========================
+// From BRepMesh_Classifier.hxx
+// ========================
+
+/// Auxiliary class intended for classification of points
+/// regarding internals of discrete face.
+pub use crate::ffi::BRepMesh_Classifier as Classifier;
+
+impl Classifier {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_Classifier_ctor()
+    }
+
+    /// Performs classification of the given point regarding to face internals.
+    /// @param thePoint Point in parametric space to be classified.
+    /// @return TopAbs_IN if point lies within face boundaries and TopAbs_OUT elsewhere.
+    pub fn perform(&self, thePoint: &crate::ffi::gp_Pnt2d) -> i32 {
+        crate::ffi::BRepMesh_Classifier_perform(self, thePoint)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_Classifier_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshClassifier> {
+        crate::ffi::BRepMesh_Classifier_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepMeshClassifier;
+
+impl HandleBRepMeshClassifier {
+    /// Dereference this Handle to access the underlying BRepMesh_Classifier
+    pub fn get(&self) -> &crate::ffi::BRepMesh_Classifier {
+        crate::ffi::HandleBRepMeshClassifier_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepMesh_Classifier
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_Classifier> {
+        crate::ffi::HandleBRepMeshClassifier_get_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_ConeRangeSplitter.hxx
+// ========================
+
+/// Auxiliary class extending default range splitter in
+/// order to generate internal nodes for conical surface.
+pub use crate::ffi::BRepMesh_ConeRangeSplitter as ConeRangeSplitter;
+
+impl ConeRangeSplitter {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_ConeRangeSplitter_ctor()
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        crate::ffi::BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
+        crate::ffi::BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AddPoint(self, thePoint)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AdjustRange(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_ConeRangeSplitter_inherited_IsValid(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    pub fn scale(
+        &self,
+        thePoint: &crate::ffi::gp_Pnt2d,
+        isToFaceBasis: bool,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Point(self, thePoint2d)
+    }
+}
+
+// ========================
+// From BRepMesh_ConstrainedBaseMeshAlgo.hxx
+// ========================
+
+/// Class provides base functionality to build face triangulation using Dealunay approach.
+/// Performs generation of mesh using raw data from model.
+pub use crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo as ConstrainedBaseMeshAlgo;
+
+impl ConstrainedBaseMeshAlgo {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_descriptor()
+    }
+
+    /// Upcast to BRepMesh_BaseMeshAlgo
+    pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
+        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(self)
+    }
+
+    /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
+    pub fn as_base_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BaseMeshAlgo> {
+        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgo
+    pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
+        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgo (mutable)
+    pub fn as_i_mesh_tools_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgo> {
+        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_Context.hxx
+// ========================
+
+/// Class implementing default context of BRepMesh algorithm.
+/// Initializes context by default algorithms.
+pub use crate::ffi::BRepMesh_Context as Context;
+
+impl Context {
+    /// Constructor.
+    pub fn new_meshalgotype(theMeshType: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_Context_ctor_meshalgotype(theMeshType)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_Context_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshData_Shape
+    pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
+        crate::ffi::BRepMesh_Context_as_IMeshData_Shape(self)
+    }
+
+    /// Upcast to IMeshData_Shape (mutable)
+    pub fn as_i_mesh_data_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_data::Shape> {
+        crate::ffi::BRepMesh_Context_as_IMeshData_Shape_mut(self)
+    }
+
+    /// Upcast to IMeshTools_Context
+    pub fn as_i_mesh_tools_context(&self) -> &crate::i_mesh_tools::Context {
+        crate::ffi::BRepMesh_Context_as_IMeshTools_Context(self)
+    }
+
+    /// Upcast to IMeshTools_Context (mutable)
+    pub fn as_i_mesh_tools_context_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::Context> {
+        crate::ffi::BRepMesh_Context_as_IMeshTools_Context_mut(self)
+    }
+
+    /// Inherited from IMeshData_Shape: SetShape()
+    pub fn set_shape(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepMesh_Context_inherited_SetShape(self, theShape)
+    }
+
+    /// Inherited from IMeshData_Shape: GetShape()
+    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepMesh_Context_inherited_GetShape(self)
+    }
+
+    /// Inherited from IMeshTools_Context: BuildModel()
+    pub fn build_model(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_Context_inherited_BuildModel(self)
+    }
+
+    /// Inherited from IMeshTools_Context: DiscretizeEdges()
+    pub fn discretize_edges(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_Context_inherited_DiscretizeEdges(self)
+    }
+
+    /// Inherited from IMeshTools_Context: HealModel()
+    pub fn heal_model(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_Context_inherited_HealModel(self)
+    }
+
+    /// Inherited from IMeshTools_Context: PreProcessModel()
+    pub fn pre_process_model(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_Context_inherited_PreProcessModel(self)
+    }
+
+    /// Inherited from IMeshTools_Context: DiscretizeFaces()
+    pub fn discretize_faces(
+        self: std::pin::Pin<&mut Self>,
+        theRange: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        crate::ffi::BRepMesh_Context_inherited_DiscretizeFaces(self, theRange)
+    }
+
+    /// Inherited from IMeshTools_Context: PostProcessModel()
+    pub fn post_process_model(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_Context_inherited_PostProcessModel(self)
+    }
+
+    /// Inherited from IMeshTools_Context: Clean()
+    pub fn clean(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepMesh_Context_inherited_Clean(self)
+    }
+
+    /// Inherited from IMeshTools_Context: GetEdgeDiscret()
+    pub fn get_edge_discret(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
+        crate::ffi::BRepMesh_Context_inherited_GetEdgeDiscret(self)
+    }
+
+    /// Inherited from IMeshTools_Context: SetEdgeDiscret()
+    pub fn set_edge_discret(
+        self: std::pin::Pin<&mut Self>,
+        theEdgeDiscret: &crate::ffi::HandleIMeshToolsModelAlgo,
+    ) {
+        crate::ffi::BRepMesh_Context_inherited_SetEdgeDiscret(self, theEdgeDiscret)
+    }
+
+    /// Inherited from IMeshTools_Context: GetModelHealer()
+    pub fn get_model_healer(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
+        crate::ffi::BRepMesh_Context_inherited_GetModelHealer(self)
+    }
+
+    /// Inherited from IMeshTools_Context: SetModelHealer()
+    pub fn set_model_healer(
+        self: std::pin::Pin<&mut Self>,
+        theModelHealer: &crate::ffi::HandleIMeshToolsModelAlgo,
+    ) {
+        crate::ffi::BRepMesh_Context_inherited_SetModelHealer(self, theModelHealer)
+    }
+
+    /// Inherited from IMeshTools_Context: GetPreProcessor()
+    pub fn get_pre_processor(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
+        crate::ffi::BRepMesh_Context_inherited_GetPreProcessor(self)
+    }
+
+    /// Inherited from IMeshTools_Context: SetPreProcessor()
+    pub fn set_pre_processor(
+        self: std::pin::Pin<&mut Self>,
+        thePreProcessor: &crate::ffi::HandleIMeshToolsModelAlgo,
+    ) {
+        crate::ffi::BRepMesh_Context_inherited_SetPreProcessor(self, thePreProcessor)
+    }
+
+    /// Inherited from IMeshTools_Context: GetFaceDiscret()
+    pub fn get_face_discret(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
+        crate::ffi::BRepMesh_Context_inherited_GetFaceDiscret(self)
+    }
+
+    /// Inherited from IMeshTools_Context: SetFaceDiscret()
+    pub fn set_face_discret(
+        self: std::pin::Pin<&mut Self>,
+        theFaceDiscret: &crate::ffi::HandleIMeshToolsModelAlgo,
+    ) {
+        crate::ffi::BRepMesh_Context_inherited_SetFaceDiscret(self, theFaceDiscret)
+    }
+
+    /// Inherited from IMeshTools_Context: GetPostProcessor()
+    pub fn get_post_processor(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
+        crate::ffi::BRepMesh_Context_inherited_GetPostProcessor(self)
+    }
+
+    /// Inherited from IMeshTools_Context: SetPostProcessor()
+    pub fn set_post_processor(
+        self: std::pin::Pin<&mut Self>,
+        thePostProcessor: &crate::ffi::HandleIMeshToolsModelAlgo,
+    ) {
+        crate::ffi::BRepMesh_Context_inherited_SetPostProcessor(self, thePostProcessor)
+    }
+
+    /// Inherited from IMeshTools_Context: GetParameters()
+    pub fn get_parameters(&self) -> &crate::ffi::IMeshTools_Parameters {
+        crate::ffi::BRepMesh_Context_inherited_GetParameters(self)
+    }
+
+    /// Inherited from IMeshTools_Context: ChangeParameters()
+    pub fn change_parameters(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IMeshTools_Parameters> {
+        crate::ffi::BRepMesh_Context_inherited_ChangeParameters(self)
+    }
+}
+
+// ========================
+// From BRepMesh_CurveTessellator.hxx
+// ========================
+
+/// Auxiliary class performing tessellation of passed edge according to specified parameters.
+pub use crate::ffi::BRepMesh_CurveTessellator as CurveTessellator;
+
+impl CurveTessellator {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_CurveTessellator_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_CurveTessellator
+    pub fn as_i_mesh_tools_curve_tessellator(&self) -> &crate::i_mesh_tools::CurveTessellator {
+        crate::ffi::BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator(self)
+    }
+
+    /// Upcast to IMeshTools_CurveTessellator (mutable)
+    pub fn as_i_mesh_tools_curve_tessellator_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::CurveTessellator> {
+        crate::ffi::BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_CustomBaseMeshAlgo.hxx
+// ========================
+
+/// Class provides base functionality to build face triangulation using custom triangulation
+/// algorithm. Performs generation of mesh using raw data from model.
+pub use crate::ffi::BRepMesh_CustomBaseMeshAlgo as CustomBaseMeshAlgo;
+
+impl CustomBaseMeshAlgo {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_descriptor()
+    }
+
+    /// Upcast to BRepMesh_BaseMeshAlgo
+    pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
+        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(self)
+    }
+
+    /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
+    pub fn as_base_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BaseMeshAlgo> {
+        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(self)
+    }
+
+    /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
+    pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
+        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(self)
+    }
+
+    /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
+    pub fn as_constrained_base_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ConstrainedBaseMeshAlgo> {
+        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgo
+    pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
+        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgo (mutable)
+    pub fn as_i_mesh_tools_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgo> {
+        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_CylinderRangeSplitter.hxx
+// ========================
+
+/// Auxiliary class extending default range splitter in
+/// order to generate internal nodes for cylindrical surface.
+pub use crate::ffi::BRepMesh_CylinderRangeSplitter as CylinderRangeSplitter;
+
+impl CylinderRangeSplitter {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_CylinderRangeSplitter_ctor()
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        crate::ffi::BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
+        crate::ffi::BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AddPoint(self, thePoint)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AdjustRange(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_IsValid(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    pub fn scale(
+        &self,
+        thePoint: &crate::ffi::gp_Pnt2d,
+        isToFaceBasis: bool,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Point(self, thePoint2d)
+    }
+}
+
+// ========================
+// From BRepMesh_DataStructureOfDelaun.hxx
+// ========================
+
+/// Describes the data structure necessary for the mesh algorithms in
+/// two dimensions plane or on surface by meshing in UV space.
+pub use crate::ffi::BRepMesh_DataStructureOfDelaun as DataStructureOfDelaun;
+
+impl DataStructureOfDelaun {
+    pub fn dump(self: std::pin::Pin<&mut Self>, theFileNameStr: &str) {
+        crate::ffi::BRepMesh_DataStructureOfDelaun_dump(self, theFileNameStr)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshDataStructureOfDelaun> {
+        crate::ffi::BRepMesh_DataStructureOfDelaun_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepMeshDataStructureOfDelaun;
+
+impl HandleBRepMeshDataStructureOfDelaun {
+    /// Dereference this Handle to access the underlying BRepMesh_DataStructureOfDelaun
+    pub fn get(&self) -> &crate::ffi::BRepMesh_DataStructureOfDelaun {
+        crate::ffi::HandleBRepMeshDataStructureOfDelaun_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepMesh_DataStructureOfDelaun
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_DataStructureOfDelaun> {
+        crate::ffi::HandleBRepMeshDataStructureOfDelaun_get_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_DefaultRangeSplitter.hxx
+// ========================
+
+/// Default tool to define range of discrete face model and
+/// obtain grid points distributed within this range.
+pub use crate::ffi::BRepMesh_DefaultRangeSplitter as DefaultRangeSplitter;
+
+impl DefaultRangeSplitter {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_DefaultRangeSplitter_ctor()
+    }
+
+    /// Scales the given point from real parametric space
+    /// to face basis and otherwise.
+    /// @param thePoint point to be scaled.
+    /// @param isToFaceBasis if TRUE converts point to face basis,
+    /// otherwise performs reverse conversion.
+    /// @return scaled point.
+    pub fn scale(
+        &self,
+        thePoint: &crate::ffi::gp_Pnt2d,
+        isToFaceBasis: bool,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepMesh_DefaultRangeSplitter_scale(self, thePoint, isToFaceBasis)
+    }
+
+    /// Returns point in 3d space corresponded to the given
+    /// point defined in parametric space of surface.
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_DefaultRangeSplitter_point(self, thePoint2d)
+    }
+}
+
+// ========================
+// From BRepMesh_Deflection.hxx
+// ========================
+
+/// Auxiliary tool encompassing methods to compute deflection of shapes.
+pub use crate::ffi::BRepMesh_Deflection as Deflection;
+
+impl Deflection {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_Deflection_ctor()
+    }
+
+    /// Returns absolute deflection for theShape with respect to the
+    /// relative deflection and theMaxShapeSize.
+    /// @param theShape shape for that the deflection should be computed.
+    /// @param theRelativeDeflection relative deflection.
+    /// @param theMaxShapeSize maximum size of the whole shape.
+    /// @return absolute deflection for the shape.
+    pub fn compute_absolute_deflection(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theRelativeDeflection: f64,
+        theMaxShapeSize: f64,
+    ) -> f64 {
+        crate::ffi::BRepMesh_Deflection_compute_absolute_deflection(
+            theShape,
+            theRelativeDeflection,
+            theMaxShapeSize,
+        )
+    }
+
+    /// Checks if the deflection of current polygonal representation
+    /// is consistent with the required deflection.
+    /// @param[in] theCurrent  Current deflection.
+    /// @param[in] theRequired  Required deflection.
+    /// @param[in] theAllowDecrease  Flag controlling the check. If decrease is allowed,
+    /// to be consistent the current and required deflections should be approximately the same.
+    /// If not allowed, the current deflection should be less than required.
+    /// @param[in] theRatio  The ratio for comparison of the deflections (value from 0 to 1).
+    pub fn is_consistent(
+        theCurrent: f64,
+        theRequired: f64,
+        theAllowDecrease: bool,
+        theRatio: f64,
+    ) -> bool {
+        crate::ffi::BRepMesh_Deflection_is_consistent(
+            theCurrent,
+            theRequired,
+            theAllowDecrease,
+            theRatio,
+        )
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_Deflection_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshDeflection> {
+        crate::ffi::BRepMesh_Deflection_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepMeshDeflection;
+
+impl HandleBRepMeshDeflection {
+    /// Dereference this Handle to access the underlying BRepMesh_Deflection
+    pub fn get(&self) -> &crate::ffi::BRepMesh_Deflection {
+        crate::ffi::HandleBRepMeshDeflection_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepMesh_Deflection
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_Deflection> {
+        crate::ffi::HandleBRepMeshDeflection_get_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_DelabellaBaseMeshAlgo.hxx
+// ========================
+
+/// Class provides base functionality to build face triangulation using Delabella project.
+/// Performs generation of mesh using raw data from model.
+pub use crate::ffi::BRepMesh_DelabellaBaseMeshAlgo as DelabellaBaseMeshAlgo;
+
+impl DelabellaBaseMeshAlgo {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_descriptor()
+    }
+
+    /// Upcast to BRepMesh_BaseMeshAlgo
+    pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(self)
+    }
+
+    /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
+    pub fn as_base_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BaseMeshAlgo> {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(self)
+    }
+
+    /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
+    pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(self)
+    }
+
+    /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
+    pub fn as_constrained_base_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ConstrainedBaseMeshAlgo> {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self)
+    }
+
+    /// Upcast to BRepMesh_CustomBaseMeshAlgo
+    pub fn as_custom_base_mesh_algo(&self) -> &CustomBaseMeshAlgo {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo(self)
+    }
+
+    /// Upcast to BRepMesh_CustomBaseMeshAlgo (mutable)
+    pub fn as_custom_base_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CustomBaseMeshAlgo> {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo_mut(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgo
+    pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgo (mutable)
+    pub fn as_i_mesh_tools_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgo> {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_DelabellaMeshAlgoFactory.hxx
+// ========================
+
+/// Implementation of IMeshTools_MeshAlgoFactory providing Delabella-based
+/// algorithms of different complexity depending on type of target surface.
+pub use crate::ffi::BRepMesh_DelabellaMeshAlgoFactory as DelabellaMeshAlgoFactory;
+
+impl DelabellaMeshAlgoFactory {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_ctor()
+    }
+
+    /// Creates instance of meshing algorithm for the given type of surface.
+    pub fn get_algo(
+        &self,
+        theSurfaceType: i32,
+        theParameters: &crate::ffi::IMeshTools_Parameters,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
+        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_algo(self, theSurfaceType, theParameters)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_MeshAlgoFactory
+    pub fn as_i_mesh_tools_mesh_algo_factory(&self) -> &crate::i_mesh_tools::MeshAlgoFactory {
+        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgoFactory (mutable)
+    pub fn as_i_mesh_tools_mesh_algo_factory_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgoFactory> {
+        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_Delaun.hxx
+// ========================
+
+/// Compute the Delaunay's triangulation with the algorithm of Watson.
+pub use crate::ffi::BRepMesh_Delaun as Delaun;
+
+impl Delaun {
+    /// Creates instance of triangulator, but do not run the algorithm automatically.
+    pub fn new_handlebrepmeshdatastructureofdelaun_int2_bool(
+        theOldMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
+        theCellsCountU: i32,
+        theCellsCountV: i32,
+        isFillCircles: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_int2_bool(
+            theOldMesh,
+            theCellsCountU,
+            theCellsCountV,
+            isFillCircles,
+        )
+    }
+}
+
+// ========================
+// From BRepMesh_DelaunayBaseMeshAlgo.hxx
+// ========================
+
+/// Class provides base functionality to build face triangulation using Dealunay approach.
+/// Performs generation of mesh using raw data from model.
+pub use crate::ffi::BRepMesh_DelaunayBaseMeshAlgo as DelaunayBaseMeshAlgo;
+
+impl DelaunayBaseMeshAlgo {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_descriptor()
+    }
+
+    /// Upcast to BRepMesh_BaseMeshAlgo
+    pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
+        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(self)
+    }
+
+    /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
+    pub fn as_base_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BaseMeshAlgo> {
+        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(self)
+    }
+
+    /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
+    pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
+        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(self)
+    }
+
+    /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
+    pub fn as_constrained_base_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ConstrainedBaseMeshAlgo> {
+        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgo
+    pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
+        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgo (mutable)
+    pub fn as_i_mesh_tools_mesh_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgo> {
+        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self)
     }
 }
 
@@ -151,6 +1104,272 @@ impl Edge {
     /// Inherited from BRepMesh_OrientedEdge: LastNode()
     pub fn last_node(&self) -> i32 {
         crate::ffi::BRepMesh_Edge_inherited_LastNode(self)
+    }
+}
+
+// ========================
+// From BRepMesh_EdgeDiscret.hxx
+// ========================
+
+/// Class implements functionality of edge discret tool.
+/// Performs check of the edges for existing Poly_PolygonOnTriangulation.
+/// In case if it fits specified deflection, restores data structure using
+/// it, else clears edges from outdated data.
+pub use crate::ffi::BRepMesh_EdgeDiscret as EdgeDiscret;
+
+impl EdgeDiscret {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_EdgeDiscret_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_EdgeDiscret_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_ModelAlgo
+    pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
+        crate::ffi::BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo(self)
+    }
+
+    /// Upcast to IMeshTools_ModelAlgo (mutable)
+    pub fn as_i_mesh_tools_model_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelAlgo> {
+        crate::ffi::BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_EdgeTessellationExtractor.hxx
+// ========================
+
+/// Auxiliary class implements functionality retrieving tessellated
+/// representation of an edge stored in polygon.
+pub use crate::ffi::BRepMesh_EdgeTessellationExtractor as EdgeTessellationExtractor;
+
+impl EdgeTessellationExtractor {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_CurveTessellator
+    pub fn as_i_mesh_tools_curve_tessellator(&self) -> &crate::i_mesh_tools::CurveTessellator {
+        crate::ffi::BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator(self)
+    }
+
+    /// Upcast to IMeshTools_CurveTessellator (mutable)
+    pub fn as_i_mesh_tools_curve_tessellator_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::CurveTessellator> {
+        crate::ffi::BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_ExtrusionRangeSplitter.hxx
+// ========================
+
+/// Auxiliary class analysing extrusion surface in order to generate internal nodes.
+pub use crate::ffi::BRepMesh_ExtrusionRangeSplitter as ExtrusionRangeSplitter;
+
+impl ExtrusionRangeSplitter {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_ctor()
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    }
+
+    /// Upcast to BRepMesh_NURBSRangeSplitter
+    pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_NURBSRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_NURBSRangeSplitter (mutable)
+    pub fn as_nurbs_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut NURBSRangeSplitter> {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(self)
+    }
+
+    /// Upcast to BRepMesh_UVParamRangeSplitter
+    pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_UVParamRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
+    pub fn as_uv_param_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut UVParamRangeSplitter> {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AddPoint(self, thePoint)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AdjustRange(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_IsValid(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    pub fn scale(
+        &self,
+        thePoint: &crate::ffi::gp_Pnt2d,
+        isToFaceBasis: bool,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Point(self, thePoint2d)
+    }
+}
+
+// ========================
+// From BRepMesh_FaceChecker.hxx
+// ========================
+
+/// Auxiliary class checking wires of target face for self-intersections.
+/// Explodes wires of discrete face on sets of segments using tessellation
+/// data stored in model. Each segment is then checked for intersection with
+/// other ones. All collisions are registered and returned as result of check.
+pub use crate::ffi::BRepMesh_FaceChecker as FaceChecker;
+
+impl FaceChecker {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_FaceChecker_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshFaceChecker> {
+        crate::ffi::BRepMesh_FaceChecker_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepMeshFaceChecker;
+
+impl HandleBRepMeshFaceChecker {
+    /// Dereference this Handle to access the underlying BRepMesh_FaceChecker
+    pub fn get(&self) -> &crate::ffi::BRepMesh_FaceChecker {
+        crate::ffi::HandleBRepMeshFaceChecker_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepMesh_FaceChecker
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_FaceChecker> {
+        crate::ffi::HandleBRepMeshFaceChecker_get_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_FaceDiscret.hxx
+// ========================
+
+/// Class implements functionality starting triangulation of model's faces.
+/// Each face is processed separately and can be executed in parallel mode.
+/// Uses mesh algo factory passed as initializer to create instance of triangulation
+/// algorithm according to type of surface of target face.
+pub use crate::ffi::BRepMesh_FaceDiscret as FaceDiscret;
+
+impl FaceDiscret {
+    /// Constructor.
+    pub fn new_handleimeshtoolsmeshalgofactory(
+        theAlgoFactory: &crate::ffi::HandleIMeshToolsMeshAlgoFactory,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_FaceDiscret_ctor_handleimeshtoolsmeshalgofactory(theAlgoFactory)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_FaceDiscret_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_ModelAlgo
+    pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
+        crate::ffi::BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo(self)
+    }
+
+    /// Upcast to IMeshTools_ModelAlgo (mutable)
+    pub fn as_i_mesh_tools_model_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelAlgo> {
+        crate::ffi::BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_GeomTool.hxx
+// ========================
+
+/// Tool class accumulating common geometrical functions as well as
+/// functionality using shape geometry to produce data necessary for
+/// tessellation.
+/// General aim is to calculate discretization points for the given
+/// curve or iso curve of surface according to the specified parameters.
+pub use crate::ffi::BRepMesh_GeomTool as GeomTool;
+
+impl GeomTool {
+    /// Constructor.
+    /// Initiates discretization of the given geometric curve.
+    /// @param theCurve curve to be discretized.
+    /// @param theFirstParam first parameter of the curve.
+    /// @param theLastParam last parameter of the curve.
+    /// @param theLinDeflection linear deflection.
+    /// @param theAngDeflection angular deflection.
+    /// @param theMinPointsNb minimum number of points to be produced.
+    pub fn new_curve_real4_int_real(
+        theCurve: &crate::ffi::BRepAdaptor_Curve,
+        theFirstParam: f64,
+        theLastParam: f64,
+        theLinDeflection: f64,
+        theAngDeflection: f64,
+        theMinPointsNb: i32,
+        theMinSize: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_GeomTool_ctor_curve_real4_int_real(
+            theCurve,
+            theFirstParam,
+            theLastParam,
+            theLinDeflection,
+            theAngDeflection,
+            theMinPointsNb,
+            theMinSize,
+        )
+    }
+
+    /// Compute deflection of the given segment.
+    pub fn square_deflection_of_segment(
+        theFirstPoint: &crate::ffi::gp_Pnt,
+        theLastPoint: &crate::ffi::gp_Pnt,
+        theMidPoint: &crate::ffi::gp_Pnt,
+    ) -> f64 {
+        crate::ffi::BRepMesh_GeomTool_square_deflection_of_segment(
+            theFirstPoint,
+            theLastPoint,
+            theMidPoint,
+        )
     }
 }
 
@@ -310,6 +1529,342 @@ impl IncrementalMesh {
 }
 
 // ========================
+// From BRepMesh_MeshAlgoFactory.hxx
+// ========================
+
+/// Default implementation of IMeshTools_MeshAlgoFactory providing algorithms
+/// of different complexity depending on type of target surface.
+pub use crate::ffi::BRepMesh_MeshAlgoFactory as MeshAlgoFactory;
+
+impl MeshAlgoFactory {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_MeshAlgoFactory_ctor()
+    }
+
+    /// Creates instance of meshing algorithm for the given type of surface.
+    pub fn get_algo(
+        &self,
+        theSurfaceType: i32,
+        theParameters: &crate::ffi::IMeshTools_Parameters,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
+        crate::ffi::BRepMesh_MeshAlgoFactory_get_algo(self, theSurfaceType, theParameters)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_MeshAlgoFactory_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_MeshAlgoFactory
+    pub fn as_i_mesh_tools_mesh_algo_factory(&self) -> &crate::i_mesh_tools::MeshAlgoFactory {
+        crate::ffi::BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(self)
+    }
+
+    /// Upcast to IMeshTools_MeshAlgoFactory (mutable)
+    pub fn as_i_mesh_tools_mesh_algo_factory_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgoFactory> {
+        crate::ffi::BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_MeshTool.hxx
+// ========================
+
+/// Auxiliary tool providing API for manipulation with BRepMesh_DataStructureOfDelaun.
+pub use crate::ffi::BRepMesh_MeshTool as MeshTool;
+
+impl MeshTool {
+    /// Constructor.
+    /// Initializes tool by the given data structure.
+    pub fn new_handlebrepmeshdatastructureofdelaun(
+        theStructure: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_MeshTool_ctor_handlebrepmeshdatastructureofdelaun(theStructure)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_MeshTool_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshMeshTool> {
+        crate::ffi::BRepMesh_MeshTool_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepMeshMeshTool;
+
+impl HandleBRepMeshMeshTool {
+    /// Dereference this Handle to access the underlying BRepMesh_MeshTool
+    pub fn get(&self) -> &crate::ffi::BRepMesh_MeshTool {
+        crate::ffi::HandleBRepMeshMeshTool_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepMesh_MeshTool
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_MeshTool> {
+        crate::ffi::HandleBRepMeshMeshTool_get_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_ModelBuilder.hxx
+// ========================
+
+/// Class implements interface representing tool for discrete model building.
+///
+/// The following statuses should be used by default:
+/// Message_Done1 - model has been successfully built.
+/// Message_Fail1 - empty shape.
+/// Message_Fail2 - model has not been build due to unexpected reason.
+pub use crate::ffi::BRepMesh_ModelBuilder as ModelBuilder;
+
+impl ModelBuilder {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_ModelBuilder_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_ModelBuilder_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_ModelBuilder
+    pub fn as_i_mesh_tools_model_builder(&self) -> &crate::i_mesh_tools::ModelBuilder {
+        crate::ffi::BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder(self)
+    }
+
+    /// Upcast to IMeshTools_ModelBuilder (mutable)
+    pub fn as_i_mesh_tools_model_builder_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelBuilder> {
+        crate::ffi::BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder_mut(self)
+    }
+
+    /// Upcast to Message_Algorithm
+    pub fn as_message_algorithm(&self) -> &crate::message::Algorithm {
+        crate::ffi::BRepMesh_ModelBuilder_as_Message_Algorithm(self)
+    }
+
+    /// Upcast to Message_Algorithm (mutable)
+    pub fn as_message_algorithm_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::message::Algorithm> {
+        crate::ffi::BRepMesh_ModelBuilder_as_Message_Algorithm_mut(self)
+    }
+
+    /// Inherited from Message_Algorithm: GetStatus()
+    pub fn get_status(&self) -> &crate::ffi::Message_ExecStatus {
+        crate::ffi::BRepMesh_ModelBuilder_inherited_GetStatus(self)
+    }
+
+    /// Inherited from Message_Algorithm: ChangeStatus()
+    pub fn change_status(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Message_ExecStatus> {
+        crate::ffi::BRepMesh_ModelBuilder_inherited_ChangeStatus(self)
+    }
+
+    /// Inherited from Message_Algorithm: ClearStatus()
+    pub fn clear_status(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepMesh_ModelBuilder_inherited_ClearStatus(self)
+    }
+
+    /// Inherited from Message_Algorithm: SetMessenger()
+    pub fn set_messenger(
+        self: std::pin::Pin<&mut Self>,
+        theMsgr: &crate::ffi::HandleMessageMessenger,
+    ) {
+        crate::ffi::BRepMesh_ModelBuilder_inherited_SetMessenger(self, theMsgr)
+    }
+
+    /// Inherited from Message_Algorithm: GetMessenger()
+    pub fn get_messenger(&self) -> cxx::UniquePtr<crate::ffi::HandleMessageMessenger> {
+        crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessenger(self)
+    }
+
+    /// Inherited from Message_Algorithm: AddStatus()
+    pub fn add_status(
+        self: std::pin::Pin<&mut Self>,
+        theOther: &crate::ffi::HandleMessageAlgorithm,
+    ) {
+        crate::ffi::BRepMesh_ModelBuilder_inherited_AddStatus(self, theOther)
+    }
+}
+
+// ========================
+// From BRepMesh_ModelHealer.hxx
+// ========================
+
+/// Class implements functionality of model healer tool.
+/// Iterates over model's faces and checks consistency of their wires,
+/// i.e.whether wires are closed and do not contain self - intersections.
+/// In case if wire contains disconnected parts, ends of adjacent edges
+/// forming the gaps are connected in parametric space forcibly. The notion
+/// of this operation is to create correct discrete model defined relatively
+/// parametric space of target face taking into account connectivity and
+/// tolerances of 3D space only. This means that there are no specific
+/// computations are made for the sake of determination of U and V tolerance.
+/// Registers intersections on edges forming the face's shape and tries to
+/// amplify discrete representation by decreasing of deflection for the target edge.
+/// Checks can be performed in parallel mode.
+pub use crate::ffi::BRepMesh_ModelHealer as ModelHealer;
+
+impl ModelHealer {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_ModelHealer_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_ModelHealer_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_ModelAlgo
+    pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
+        crate::ffi::BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo(self)
+    }
+
+    /// Upcast to IMeshTools_ModelAlgo (mutable)
+    pub fn as_i_mesh_tools_model_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelAlgo> {
+        crate::ffi::BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_ModelPostProcessor.hxx
+// ========================
+
+/// Class implements functionality of model post-processing tool.
+/// Stores polygons on triangulations to TopoDS_Edge.
+pub use crate::ffi::BRepMesh_ModelPostProcessor as ModelPostProcessor;
+
+impl ModelPostProcessor {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_ModelPostProcessor_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_ModelPostProcessor_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_ModelAlgo
+    pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
+        crate::ffi::BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo(self)
+    }
+
+    /// Upcast to IMeshTools_ModelAlgo (mutable)
+    pub fn as_i_mesh_tools_model_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelAlgo> {
+        crate::ffi::BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_ModelPreProcessor.hxx
+// ========================
+
+/// Class implements functionality of model pre-processing tool.
+/// Nullifies existing polygonal data in case if model elements
+/// have IMeshData_Outdated status.
+pub use crate::ffi::BRepMesh_ModelPreProcessor as ModelPreProcessor;
+
+impl ModelPreProcessor {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_ModelPreProcessor_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_ModelPreProcessor_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_ModelAlgo
+    pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
+        crate::ffi::BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo(self)
+    }
+
+    /// Upcast to IMeshTools_ModelAlgo (mutable)
+    pub fn as_i_mesh_tools_model_algo_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelAlgo> {
+        crate::ffi::BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_NURBSRangeSplitter.hxx
+// ========================
+
+/// Auxiliary class extending UV range splitter in order to generate
+/// internal nodes for NURBS surface.
+pub use crate::ffi::BRepMesh_NURBSRangeSplitter as NURBSRangeSplitter;
+
+impl NURBSRangeSplitter {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_NURBSRangeSplitter_ctor()
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
+        crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    }
+
+    /// Upcast to BRepMesh_UVParamRangeSplitter
+    pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
+        crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
+    pub fn as_uv_param_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut UVParamRangeSplitter> {
+        crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_AddPoint(self, thePoint)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_IsValid(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    pub fn scale(
+        &self,
+        thePoint: &crate::ffi::gp_Pnt2d,
+        isToFaceBasis: bool,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Point(self, thePoint2d)
+    }
+}
+
+// ========================
 // From BRepMesh_OrientedEdge.hxx
 // ========================
 
@@ -345,6 +1900,406 @@ impl PairOfIndex {
 }
 
 // ========================
+// From BRepMesh_SelectorOfDataStructureOfDelaun.hxx
+// ========================
+
+/// Describes a selector and an iterator on a
+/// selector of components of a mesh.
+pub use crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun as SelectorOfDataStructureOfDelaun;
+
+impl SelectorOfDataStructureOfDelaun {
+    /// Default constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor()
+    }
+
+    /// Constructor.
+    /// Initializes selector by the mesh.
+    pub fn new_handlebrepmeshdatastructureofdelaun(
+        theMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor_handlebrepmeshdatastructureofdelaun(theMesh)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun> {
+        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun;
+
+impl HandleBRepMeshSelectorOfDataStructureOfDelaun {
+    /// Dereference this Handle to access the underlying BRepMesh_SelectorOfDataStructureOfDelaun
+    pub fn get(&self) -> &crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun {
+        crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepMesh_SelectorOfDataStructureOfDelaun
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun> {
+        crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_get_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_ShapeTool.hxx
+// ========================
+
+/// Auxiliary class providing functionality to compute,
+/// retrieve and store data to TopoDS and model shape.
+pub use crate::ffi::BRepMesh_ShapeTool as ShapeTool;
+
+impl ShapeTool {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_ShapeTool_ctor()
+    }
+
+    /// Returns maximum tolerance of the given face.
+    /// Considers tolerances of edges and vertices contained in the given face.
+    pub fn max_face_tolerance(theFace: &crate::ffi::TopoDS_Face) -> f64 {
+        crate::ffi::BRepMesh_ShapeTool_max_face_tolerance(theFace)
+    }
+
+    /// Gets the maximum dimension of the given bounding box.
+    /// If the given bounding box is void leaves the resulting value unchanged.
+    /// @param theBox bounding box to be processed.
+    /// @param theMaxDimension maximum dimension of the given box.
+    pub fn box_max_dimension(theBox: &crate::ffi::Bnd_Box, theMaxDimension: &mut f64) {
+        crate::ffi::BRepMesh_ShapeTool_box_max_dimension(theBox, theMaxDimension)
+    }
+
+    /// Stores the given triangulation into the given face.
+    /// @param theFace face to be updated by triangulation.
+    /// @param theTriangulation triangulation to be stored into the face.
+    pub fn add_in_face(
+        theFace: &crate::ffi::TopoDS_Face,
+        theTriangulation: std::pin::Pin<&mut crate::ffi::HandlePolyTriangulation>,
+    ) {
+        crate::ffi::BRepMesh_ShapeTool_add_in_face(theFace, theTriangulation)
+    }
+
+    /// Nullifies triangulation stored in the face.
+    /// @param theFace face to be updated by null triangulation.
+    pub fn nullify_face(theFace: &crate::ffi::TopoDS_Face) {
+        crate::ffi::BRepMesh_ShapeTool_nullify_face(theFace)
+    }
+
+    /// Nullifies polygon on triangulation stored in the edge.
+    /// @param theEdge edge to be updated by null polygon.
+    /// @param theTriangulation triangulation the given edge is associated to.
+    /// @param theLocation face location.
+    pub fn nullify_edge_edge_handlepolytriangulation_location(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theTriangulation: &crate::ffi::HandlePolyTriangulation,
+        theLocation: &crate::ffi::TopLoc_Location,
+    ) {
+        crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_handlepolytriangulation_location(
+            theEdge,
+            theTriangulation,
+            theLocation,
+        )
+    }
+
+    /// Nullifies 3d polygon stored in the edge.
+    /// @param theEdge edge to be updated by null polygon.
+    /// @param theLocation face location.
+    pub fn nullify_edge_edge_location(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theLocation: &crate::ffi::TopLoc_Location,
+    ) {
+        crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_location(theEdge, theLocation)
+    }
+
+    /// Updates the given edge by the given tessellated representation.
+    /// @param theEdge edge to be updated.
+    /// @param thePolygon tessellated representation of the edge to be stored.
+    /// @param theTriangulation triangulation the given edge is associated to.
+    /// @param theLocation face location.
+    pub fn update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        thePolygon: &crate::ffi::HandlePolyPolygonOnTriangulation,
+        theTriangulation: &crate::ffi::HandlePolyTriangulation,
+        theLocation: &crate::ffi::TopLoc_Location,
+    ) {
+        crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(theEdge, thePolygon, theTriangulation, theLocation)
+    }
+
+    /// Updates the given edge by the given tessellated representation.
+    /// @param theEdge edge to be updated.
+    /// @param thePolygon tessellated representation of the edge to be stored.
+    pub fn update_edge_edge_handlepolypolygon3d(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        thePolygon: &crate::ffi::HandlePolyPolygon3D,
+    ) {
+        crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygon3d(theEdge, thePolygon)
+    }
+
+    /// Updates the given seam edge by the given tessellated representations.
+    /// @param theEdge edge to be updated.
+    /// @param thePolygon1 tessellated representation corresponding to
+    /// forward direction of the seam edge.
+    /// @param thePolygon2 tessellated representation corresponding to
+    /// reversed direction of the seam edge.
+    /// @param theTriangulation triangulation the given edge is associated to.
+    /// @param theLocation face location.
+    pub fn update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation_location(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        thePolygon1: &crate::ffi::HandlePolyPolygonOnTriangulation,
+        thePolygon2: &crate::ffi::HandlePolyPolygonOnTriangulation,
+        theTriangulation: &crate::ffi::HandlePolyTriangulation,
+        theLocation: &crate::ffi::TopLoc_Location,
+    ) {
+        crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation_location(theEdge, thePolygon1, thePolygon2, theTriangulation, theLocation)
+    }
+
+    /// Applies location to the given point and return result.
+    /// @param thePnt point to be transformed.
+    /// @param theLoc location to be applied.
+    pub fn use_location(
+        thePnt: &crate::ffi::gp_Pnt,
+        theLoc: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_ShapeTool_use_location(thePnt, theLoc)
+    }
+
+    /// Gets the strict UV locations of the extremities of the edge using pcurve.
+    pub fn uv_points(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+        theFirstPoint2d: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        theLastPoint2d: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        isConsiderOrientation: bool,
+    ) -> bool {
+        crate::ffi::BRepMesh_ShapeTool_uv_points(
+            theEdge,
+            theFace,
+            theFirstPoint2d,
+            theLastPoint2d,
+            isConsiderOrientation,
+        )
+    }
+
+    /// Gets the parametric range of the given edge on the given face.
+    pub fn range_edge_face_handlegeom2dcurve_real2_bool(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+        thePCurve: std::pin::Pin<&mut crate::ffi::HandleGeom2dCurve>,
+        theFirstParam: &mut f64,
+        theLastParam: &mut f64,
+        isConsiderOrientation: bool,
+    ) -> bool {
+        crate::ffi::BRepMesh_ShapeTool_range_edge_face_handlegeom2dcurve_real2_bool(
+            theEdge,
+            theFace,
+            thePCurve,
+            theFirstParam,
+            theLastParam,
+            isConsiderOrientation,
+        )
+    }
+
+    /// Gets the 3d range of the given edge.
+    pub fn range_edge_handlegeomcurve_real2_bool(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theCurve: std::pin::Pin<&mut crate::ffi::HandleGeomCurve>,
+        theFirstParam: &mut f64,
+        theLastParam: &mut f64,
+        isConsiderOrientation: bool,
+    ) -> bool {
+        crate::ffi::BRepMesh_ShapeTool_range_edge_handlegeomcurve_real2_bool(
+            theEdge,
+            theCurve,
+            theFirstParam,
+            theLastParam,
+            isConsiderOrientation,
+        )
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_ShapeTool_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshShapeTool> {
+        crate::ffi::BRepMesh_ShapeTool_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepMeshShapeTool;
+
+impl HandleBRepMeshShapeTool {
+    /// Dereference this Handle to access the underlying BRepMesh_ShapeTool
+    pub fn get(&self) -> &crate::ffi::BRepMesh_ShapeTool {
+        crate::ffi::HandleBRepMeshShapeTool_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepMesh_ShapeTool
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_ShapeTool> {
+        crate::ffi::HandleBRepMeshShapeTool_get_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_ShapeVisitor.hxx
+// ========================
+
+/// Builds discrete model of a shape by adding faces and free edges.
+/// Computes deflection for corresponded shape and checks whether it
+/// fits existing polygonal representation. If not, cleans shape from
+/// outdated info.
+pub use crate::ffi::BRepMesh_ShapeVisitor as ShapeVisitor;
+
+impl ShapeVisitor {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_ShapeVisitor_get_type_descriptor()
+    }
+
+    /// Upcast to IMeshTools_ShapeVisitor
+    pub fn as_i_mesh_tools_shape_visitor(&self) -> &crate::i_mesh_tools::ShapeVisitor {
+        crate::ffi::BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor(self)
+    }
+
+    /// Upcast to IMeshTools_ShapeVisitor (mutable)
+    pub fn as_i_mesh_tools_shape_visitor_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ShapeVisitor> {
+        crate::ffi::BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor_mut(self)
+    }
+}
+
+// ========================
+// From BRepMesh_SphereRangeSplitter.hxx
+// ========================
+
+/// Auxiliary class extending default range splitter in
+/// order to generate internal nodes for spherical surface.
+pub use crate::ffi::BRepMesh_SphereRangeSplitter as SphereRangeSplitter;
+
+impl SphereRangeSplitter {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_SphereRangeSplitter_ctor()
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        crate::ffi::BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
+        crate::ffi::BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AddPoint(self, thePoint)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AdjustRange(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_SphereRangeSplitter_inherited_IsValid(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    pub fn scale(
+        &self,
+        thePoint: &crate::ffi::gp_Pnt2d,
+        isToFaceBasis: bool,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Point(self, thePoint2d)
+    }
+}
+
+// ========================
+// From BRepMesh_TorusRangeSplitter.hxx
+// ========================
+
+/// Auxiliary class extending UV range splitter in order to generate
+/// internal nodes for NURBS surface.
+pub use crate::ffi::BRepMesh_TorusRangeSplitter as TorusRangeSplitter;
+
+impl TorusRangeSplitter {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_TorusRangeSplitter_ctor()
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
+        crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    }
+
+    /// Upcast to BRepMesh_UVParamRangeSplitter
+    pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
+        crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
+    pub fn as_uv_param_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut UVParamRangeSplitter> {
+        crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepMesh_TorusRangeSplitter_inherited_AdjustRange(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_TorusRangeSplitter_inherited_IsValid(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    pub fn scale(
+        &self,
+        thePoint: &crate::ffi::gp_Pnt2d,
+        isToFaceBasis: bool,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Point(self, thePoint2d)
+    }
+}
+
+// ========================
 // From BRepMesh_Triangle.hxx
 // ========================
 
@@ -366,6 +2321,148 @@ impl Triangle {
     /// Sets movability of the triangle.
     pub fn set_movability(self: std::pin::Pin<&mut Self>, theMovability: i32) {
         crate::ffi::BRepMesh_Triangle_set_movability(self, theMovability)
+    }
+}
+
+// ========================
+// From BRepMesh_Triangulator.hxx
+// ========================
+
+/// Auxiliary tool to generate triangulation
+pub use crate::ffi::BRepMesh_Triangulator as Triangulator;
+
+// ========================
+// From BRepMesh_UVParamRangeSplitter.hxx
+// ========================
+
+/// Intended to generate internal mesh nodes using UV parameters of boundary discrete points.
+pub use crate::ffi::BRepMesh_UVParamRangeSplitter as UVParamRangeSplitter;
+
+impl UVParamRangeSplitter {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_UVParamRangeSplitter_ctor()
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        crate::ffi::BRepMesh_UVParamRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
+        crate::ffi::BRepMesh_UVParamRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AddPoint(self, thePoint)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AdjustRange(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_IsValid(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    pub fn scale(
+        &self,
+        thePoint: &crate::ffi::gp_Pnt2d,
+        isToFaceBasis: bool,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Point(self, thePoint2d)
+    }
+}
+
+// ========================
+// From BRepMesh_UndefinedRangeSplitter.hxx
+// ========================
+
+/// Auxiliary class provides safe value for surfaces that looks like NURBS
+/// but has no poles or other characteristics.
+pub use crate::ffi::BRepMesh_UndefinedRangeSplitter as UndefinedRangeSplitter;
+
+impl UndefinedRangeSplitter {
+    /// Constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_ctor()
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    }
+
+    /// Upcast to BRepMesh_NURBSRangeSplitter
+    pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_NURBSRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_NURBSRangeSplitter (mutable)
+    pub fn as_nurbs_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut NURBSRangeSplitter> {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(self)
+    }
+
+    /// Upcast to BRepMesh_UVParamRangeSplitter
+    pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_UVParamRangeSplitter(self)
+    }
+
+    /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
+    pub fn as_uv_param_range_splitter_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut UVParamRangeSplitter> {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AddPoint(self, thePoint)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AdjustRange(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_IsValid(self)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    pub fn scale(
+        &self,
+        thePoint: &crate::ffi::gp_Pnt2d,
+        isToFaceBasis: bool,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    }
+
+    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Point(self, thePoint2d)
     }
 }
 
@@ -429,5 +2526,43 @@ impl Vertex {
     /// Sets movability of the vertex.
     pub fn set_movability(self: std::pin::Pin<&mut Self>, theMovability: i32) {
         crate::ffi::BRepMesh_Vertex_set_movability(self, theMovability)
+    }
+}
+
+// ========================
+// From BRepMesh_VertexTool.hxx
+// ========================
+
+/// Describes data structure intended to keep mesh nodes
+/// defined in UV space and implements functionality
+/// providing their uniqueness regarding their position.
+pub use crate::ffi::BRepMesh_VertexTool as VertexTool;
+
+impl VertexTool {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepMesh_VertexTool_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshVertexTool> {
+        crate::ffi::BRepMesh_VertexTool_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepMeshVertexTool;
+
+impl HandleBRepMeshVertexTool {
+    /// Dereference this Handle to access the underlying BRepMesh_VertexTool
+    pub fn get(&self) -> &crate::ffi::BRepMesh_VertexTool {
+        crate::ffi::HandleBRepMeshVertexTool_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepMesh_VertexTool
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_VertexTool> {
+        crate::ffi::HandleBRepMeshVertexTool_get_mut(self)
     }
 }

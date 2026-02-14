@@ -6,29 +6,31 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// C++ enum: `Extrema_ExtFlag`
+/// C++ enum: `Extrema_ElementType`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
-pub enum ExtFlag {
-    ExtflagMin = 0,
-    ExtflagMax = 1,
-    ExtflagMinmax = 2,
+pub enum ElementType {
+    Node = 0,
+    Uisoedge = 1,
+    Visoedge = 2,
+    Face = 3,
 }
 
-impl From<ExtFlag> for i32 {
-    fn from(value: ExtFlag) -> Self {
+impl From<ElementType> for i32 {
+    fn from(value: ElementType) -> Self {
         value as i32
     }
 }
 
-impl TryFrom<i32> for ExtFlag {
+impl TryFrom<i32> for ElementType {
     type Error = i32;
 
     fn try_from(value: i32) -> Result<Self, i32> {
         match value {
-            0 => Ok(ExtFlag::ExtflagMin),
-            1 => Ok(ExtFlag::ExtflagMax),
-            2 => Ok(ExtFlag::ExtflagMinmax),
+            0 => Ok(ElementType::Node),
+            1 => Ok(ElementType::Uisoedge),
+            2 => Ok(ElementType::Visoedge),
+            3 => Ok(ElementType::Face),
             _ => Err(value),
         }
     }
@@ -60,33 +62,470 @@ impl TryFrom<i32> for ExtAlgo {
     }
 }
 
-/// C++ enum: `Extrema_ElementType`
+/// C++ enum: `Extrema_ExtFlag`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
-pub enum ElementType {
-    Node = 0,
-    Uisoedge = 1,
-    Visoedge = 2,
-    Face = 3,
+pub enum ExtFlag {
+    ExtflagMin = 0,
+    ExtflagMax = 1,
+    ExtflagMinmax = 2,
 }
 
-impl From<ElementType> for i32 {
-    fn from(value: ElementType) -> Self {
+impl From<ExtFlag> for i32 {
+    fn from(value: ExtFlag) -> Self {
         value as i32
     }
 }
 
-impl TryFrom<i32> for ElementType {
+impl TryFrom<i32> for ExtFlag {
     type Error = i32;
 
     fn try_from(value: i32) -> Result<Self, i32> {
         match value {
-            0 => Ok(ElementType::Node),
-            1 => Ok(ElementType::Uisoedge),
-            2 => Ok(ElementType::Visoedge),
-            3 => Ok(ElementType::Face),
+            0 => Ok(ExtFlag::ExtflagMin),
+            1 => Ok(ExtFlag::ExtflagMax),
+            2 => Ok(ExtFlag::ExtflagMinmax),
             _ => Err(value),
         }
+    }
+}
+
+// ========================
+// From Extrema_CCLocFOfLocECC.hxx
+// ========================
+
+pub use crate::ffi::Extrema_CCLocFOfLocECC as CCLocFOfLocECC;
+
+impl CCLocFOfLocECC {
+    pub fn new_real(thetol: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_CCLocFOfLocECC_ctor_real(thetol)
+    }
+
+    pub fn new_curve2_real(
+        C1: &crate::ffi::Adaptor3d_Curve,
+        C2: &crate::ffi::Adaptor3d_Curve,
+        thetol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_CCLocFOfLocECC_ctor_curve2_real(C1, C2, thetol)
+    }
+
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_real(1.0e-10)
+    }
+
+    pub fn new_curve2(
+        C1: &crate::ffi::Adaptor3d_Curve,
+        C2: &crate::ffi::Adaptor3d_Curve,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2_real(C1, C2, 1.0e-10)
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet(self)
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionSet> {
+        crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet_mut(self)
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives(self)
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionSetWithDerivatives> {
+        crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_CCLocFOfLocECC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_CCLocFOfLocECC2d as CCLocFOfLocECC2d;
+
+impl CCLocFOfLocECC2d {
+    pub fn new_real(thetol: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_CCLocFOfLocECC2d_ctor_real(thetol)
+    }
+
+    pub fn new_curve2d2_real(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+        thetol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_CCLocFOfLocECC2d_ctor_curve2d2_real(C1, C2, thetol)
+    }
+
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_real(1.0e-10)
+    }
+
+    pub fn new_curve2d2(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d2_real(C1, C2, 1.0e-10)
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet(self)
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionSet> {
+        crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet_mut(self)
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives(self)
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionSetWithDerivatives> {
+        crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_Curve2dTool.hxx
+// ========================
+
+pub use crate::ffi::Extrema_Curve2dTool as Curve2dTool;
+
+impl Curve2dTool {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_Curve2dTool_ctor()
+    }
+
+    pub fn first_parameter(C: &crate::ffi::Adaptor2d_Curve2d) -> f64 {
+        crate::ffi::Extrema_Curve2dTool_first_parameter(C)
+    }
+
+    pub fn last_parameter(C: &crate::ffi::Adaptor2d_Curve2d) -> f64 {
+        crate::ffi::Extrema_Curve2dTool_last_parameter(C)
+    }
+
+    pub fn continuity(C: &crate::ffi::Adaptor2d_Curve2d) -> i32 {
+        crate::ffi::Extrema_Curve2dTool_continuity(C)
+    }
+
+    /// If necessary,   breaks the curve  in  intervals of
+    /// continuity <S>.     And   returns  the  number  of
+    /// intervals.
+    pub fn nb_intervals(C: &crate::ffi::Adaptor2d_Curve2d, S: i32) -> i32 {
+        crate::ffi::Extrema_Curve2dTool_nb_intervals(C, S)
+    }
+
+    /// Returns the parameters bounding the intervals of subdivision of curve
+    /// according to Curvature deflection. Value of deflection is defined in method.
+    pub fn defl_curv_intervals(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        crate::ffi::Extrema_Curve2dTool_defl_curv_intervals(C)
+    }
+
+    pub fn is_closed(C: &crate::ffi::Adaptor2d_Curve2d) -> bool {
+        crate::ffi::Extrema_Curve2dTool_is_closed(C)
+    }
+
+    pub fn is_periodic(C: &crate::ffi::Adaptor2d_Curve2d) -> bool {
+        crate::ffi::Extrema_Curve2dTool_is_periodic(C)
+    }
+
+    pub fn period(C: &crate::ffi::Adaptor2d_Curve2d) -> f64 {
+        crate::ffi::Extrema_Curve2dTool_period(C)
+    }
+
+    /// Computes the point of parameter U on the curve.
+    pub fn value(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Extrema_Curve2dTool_value(C, U)
+    }
+
+    /// Computes the point of parameter U on the curve.
+    pub fn d0(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+    ) {
+        crate::ffi::Extrema_Curve2dTool_d0(C, U, P)
+    }
+
+    /// Computes the point of parameter U on the curve with its
+    /// first derivative.
+    pub fn d1(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Extrema_Curve2dTool_d1(C, U, P, V)
+    }
+
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    pub fn d2(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Extrema_Curve2dTool_d2(C, U, P, V1, V2)
+    }
+
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    pub fn d3(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Extrema_Curve2dTool_d3(C, U, P, V1, V2, V3)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    pub fn dn(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U: f64,
+        N: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Extrema_Curve2dTool_dn(C, U, N)
+    }
+
+    /// Returns the parametric  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn resolution(C: &crate::ffi::Adaptor2d_Curve2d, R3d: f64) -> f64 {
+        crate::ffi::Extrema_Curve2dTool_resolution(C, R3d)
+    }
+
+    /// Returns  the  type of the   curve  in the  current
+    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub fn get_type(C: &crate::ffi::Adaptor2d_Curve2d) -> i32 {
+        crate::ffi::Extrema_Curve2dTool_get_type(C)
+    }
+
+    pub fn line(C: &crate::ffi::Adaptor2d_Curve2d) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::Extrema_Curve2dTool_line(C)
+    }
+
+    pub fn circle(C: &crate::ffi::Adaptor2d_Curve2d) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::Extrema_Curve2dTool_circle(C)
+    }
+
+    pub fn ellipse(C: &crate::ffi::Adaptor2d_Curve2d) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::Extrema_Curve2dTool_ellipse(C)
+    }
+
+    pub fn hyperbola(C: &crate::ffi::Adaptor2d_Curve2d) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::Extrema_Curve2dTool_hyperbola(C)
+    }
+
+    pub fn parabola(C: &crate::ffi::Adaptor2d_Curve2d) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::Extrema_Curve2dTool_parabola(C)
+    }
+
+    pub fn degree(C: &crate::ffi::Adaptor2d_Curve2d) -> i32 {
+        crate::ffi::Extrema_Curve2dTool_degree(C)
+    }
+
+    pub fn is_rational(C: &crate::ffi::Adaptor2d_Curve2d) -> bool {
+        crate::ffi::Extrema_Curve2dTool_is_rational(C)
+    }
+
+    pub fn nb_poles(C: &crate::ffi::Adaptor2d_Curve2d) -> i32 {
+        crate::ffi::Extrema_Curve2dTool_nb_poles(C)
+    }
+
+    pub fn nb_knots(C: &crate::ffi::Adaptor2d_Curve2d) -> i32 {
+        crate::ffi::Extrema_Curve2dTool_nb_knots(C)
+    }
+
+    pub fn bezier(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBezierCurve> {
+        crate::ffi::Extrema_Curve2dTool_bezier(C)
+    }
+
+    pub fn b_spline(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        crate::ffi::Extrema_Curve2dTool_b_spline(C)
+    }
+}
+
+// ========================
+// From Extrema_CurveTool.hxx
+// ========================
+
+pub use crate::ffi::Extrema_CurveTool as CurveTool;
+
+impl CurveTool {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_CurveTool_ctor()
+    }
+
+    pub fn first_parameter(C: &crate::ffi::Adaptor3d_Curve) -> f64 {
+        crate::ffi::Extrema_CurveTool_first_parameter(C)
+    }
+
+    pub fn last_parameter(C: &crate::ffi::Adaptor3d_Curve) -> f64 {
+        crate::ffi::Extrema_CurveTool_last_parameter(C)
+    }
+
+    pub fn continuity(C: &crate::ffi::Adaptor3d_Curve) -> i32 {
+        crate::ffi::Extrema_CurveTool_continuity(C)
+    }
+
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(C: std::pin::Pin<&mut crate::ffi::Adaptor3d_Curve>, S: i32) -> i32 {
+        crate::ffi::Extrema_CurveTool_nb_intervals(C, S)
+    }
+
+    /// Returns the parameters bounding the intervals of subdivision of curve
+    /// according to Curvature deflection. Value of deflection is defined in method.
+    pub fn defl_curv_intervals(
+        C: &crate::ffi::Adaptor3d_Curve,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        crate::ffi::Extrema_CurveTool_defl_curv_intervals(C)
+    }
+
+    pub fn is_periodic(C: &crate::ffi::Adaptor3d_Curve) -> bool {
+        crate::ffi::Extrema_CurveTool_is_periodic(C)
+    }
+
+    pub fn period(C: &crate::ffi::Adaptor3d_Curve) -> f64 {
+        crate::ffi::Extrema_CurveTool_period(C)
+    }
+
+    pub fn resolution(C: &crate::ffi::Adaptor3d_Curve, R3d: f64) -> f64 {
+        crate::ffi::Extrema_CurveTool_resolution(C, R3d)
+    }
+
+    pub fn get_type(C: &crate::ffi::Adaptor3d_Curve) -> i32 {
+        crate::ffi::Extrema_CurveTool_get_type(C)
+    }
+
+    pub fn value(C: &crate::ffi::Adaptor3d_Curve, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Extrema_CurveTool_value(C, U)
+    }
+
+    pub fn d0(C: &crate::ffi::Adaptor3d_Curve, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Extrema_CurveTool_d0(C, U, P)
+    }
+
+    pub fn d1(
+        C: &crate::ffi::Adaptor3d_Curve,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Extrema_CurveTool_d1(C, U, P, V)
+    }
+
+    pub fn d2(
+        C: &crate::ffi::Adaptor3d_Curve,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Extrema_CurveTool_d2(C, U, P, V1, V2)
+    }
+
+    pub fn d3(
+        C: &crate::ffi::Adaptor3d_Curve,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Extrema_CurveTool_d3(C, U, P, V1, V2, V3)
+    }
+
+    pub fn dn(
+        C: &crate::ffi::Adaptor3d_Curve,
+        U: f64,
+        N: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Extrema_CurveTool_dn(C, U, N)
+    }
+
+    pub fn line(C: &crate::ffi::Adaptor3d_Curve) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::Extrema_CurveTool_line(C)
+    }
+
+    pub fn circle(C: &crate::ffi::Adaptor3d_Curve) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::Extrema_CurveTool_circle(C)
+    }
+
+    pub fn ellipse(C: &crate::ffi::Adaptor3d_Curve) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::Extrema_CurveTool_ellipse(C)
+    }
+
+    pub fn hyperbola(C: &crate::ffi::Adaptor3d_Curve) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::Extrema_CurveTool_hyperbola(C)
+    }
+
+    pub fn parabola(C: &crate::ffi::Adaptor3d_Curve) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::Extrema_CurveTool_parabola(C)
+    }
+
+    pub fn degree(C: &crate::ffi::Adaptor3d_Curve) -> i32 {
+        crate::ffi::Extrema_CurveTool_degree(C)
+    }
+
+    pub fn is_rational(C: &crate::ffi::Adaptor3d_Curve) -> bool {
+        crate::ffi::Extrema_CurveTool_is_rational(C)
+    }
+
+    pub fn nb_poles(C: &crate::ffi::Adaptor3d_Curve) -> i32 {
+        crate::ffi::Extrema_CurveTool_nb_poles(C)
+    }
+
+    pub fn nb_knots(C: &crate::ffi::Adaptor3d_Curve) -> i32 {
+        crate::ffi::Extrema_CurveTool_nb_knots(C)
+    }
+
+    pub fn bezier(
+        C: &crate::ffi::Adaptor3d_Curve,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierCurve> {
+        crate::ffi::Extrema_CurveTool_bezier(C)
+    }
+
+    pub fn b_spline(
+        C: &crate::ffi::Adaptor3d_Curve,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineCurve> {
+        crate::ffi::Extrema_CurveTool_b_spline(C)
     }
 }
 
@@ -127,6 +566,322 @@ impl ECC {
         Vsup: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_ECC_ctor_curve2_real4(C1, C2, Uinf, Usup, Vinf, Vsup)
+    }
+}
+
+// ========================
+// From Extrema_ECC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_ECC2d as ECC2d;
+
+impl ECC2d {
+    /// Calculates all the distances as above
+    /// between Uinf and Usup for C1 and  between Vinf and Vsup
+    /// for C2.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ECC2d_ctor()
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u,v)=distance(C1(u),C2(v)) has an
+    /// extremum when gradient(f)=0. The algorithm uses
+    /// Evtushenko's global optimization solver.
+    pub fn new_curve2d2(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ECC2d_ctor_curve2d2(C1, C2)
+    }
+
+    /// Calculates all the distances as above
+    /// between Uinf and Usup for C1 and  between Vinf and Vsup
+    /// for C2.
+    pub fn new_curve2d2_real4(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+        Uinf: f64,
+        Usup: f64,
+        Vinf: f64,
+        Vsup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ECC2d_ctor_curve2d2_real4(C1, C2, Uinf, Usup, Vinf, Vsup)
+    }
+}
+
+// ========================
+// From Extrema_ELPCOfLocateExtPC.hxx
+// ========================
+
+pub use crate::ffi::Extrema_ELPCOfLocateExtPC as ELPCOfLocateExtPC;
+
+impl ELPCOfLocateExtPC {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ELPCOfLocateExtPC_ctor()
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Zeros are searched between uinf and usup.
+    /// Tol  is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt_curve_real3(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+        Uinf: f64,
+        Usup: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ELPCOfLocateExtPC_ctor_pnt_curve_real3(P, C, Uinf, Usup, TolF)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Tol is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt_curve_real(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ELPCOfLocateExtPC_ctor_pnt_curve_real(P, C, TolF)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Zeros are searched between uinf and usup.
+    /// Tol  is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt_curve_real2(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+        Uinf: f64,
+        Usup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_pnt_curve_real3(P, C, Uinf, Usup, 1.0e-10)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Tol is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt_curve(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_pnt_curve_real(P, C, 1.0e-10)
+    }
+}
+
+// ========================
+// From Extrema_ELPCOfLocateExtPC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_ELPCOfLocateExtPC2d as ELPCOfLocateExtPC2d;
+
+impl ELPCOfLocateExtPC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ELPCOfLocateExtPC2d_ctor()
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Zeros are searched between uinf and usup.
+    /// Tol  is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d_real3(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        Uinf: f64,
+        Usup: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real3(P, C, Uinf, Usup, TolF)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Tol is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d_real(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real(P, C, TolF)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Zeros are searched between uinf and usup.
+    /// Tol  is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d_real2(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        Uinf: f64,
+        Usup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_pnt2d_curve2d_real3(P, C, Uinf, Usup, 1.0e-10)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Tol is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_pnt2d_curve2d_real(P, C, 1.0e-10)
+    }
+}
+
+// ========================
+// From Extrema_EPCOfELPCOfLocateExtPC.hxx
+// ========================
+
+pub use crate::ffi::Extrema_EPCOfELPCOfLocateExtPC as EPCOfELPCOfLocateExtPC;
+
+impl EPCOfELPCOfLocateExtPC {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_ctor()
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// NbU is used to locate the close points to
+    /// find the zeros.
+    /// Tol and TolU are used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt_curve_int_real2(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+        NbU: i32,
+        TolU: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_ctor_pnt_curve_int_real2(P, C, NbU, TolU, TolF)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// NbU is used to locate the close points to
+    /// find the zeros.
+    /// Zeros are searched between umin and usup.
+    /// Tol and TolU are used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt_curve_int_real4(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+        NbU: i32,
+        Umin: f64,
+        Usup: f64,
+        TolU: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_ctor_pnt_curve_int_real4(
+            P, C, NbU, Umin, Usup, TolU, TolF,
+        )
+    }
+}
+
+// ========================
+// From Extrema_EPCOfELPCOfLocateExtPC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d as EPCOfELPCOfLocateExtPC2d;
+
+impl EPCOfELPCOfLocateExtPC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_ctor()
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// NbU is used to locate the close points to
+    /// find the zeros.
+    /// Tol and TolU are used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d_int_real2(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        NbU: i32,
+        TolU: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_int_real2(
+            P, C, NbU, TolU, TolF,
+        )
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// NbU is used to locate the close points to
+    /// find the zeros.
+    /// Zeros are searched between umin and usup.
+    /// Tol and TolU are used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d_int_real4(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        NbU: i32,
+        Umin: f64,
+        Usup: f64,
+        TolU: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_int_real4(
+            P, C, NbU, Umin, Usup, TolU, TolF,
+        )
     }
 }
 
@@ -182,6 +937,63 @@ impl EPCOfExtPC {
         TolF: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_EPCOfExtPC_ctor_pnt_curve_int_real4(P, C, NbU, Umin, Usup, TolU, TolF)
+    }
+}
+
+// ========================
+// From Extrema_EPCOfExtPC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_EPCOfExtPC2d as EPCOfExtPC2d;
+
+impl EPCOfExtPC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_EPCOfExtPC2d_ctor()
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// NbU is used to locate the close points to
+    /// find the zeros.
+    /// Tol and TolU are used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d_int_real2(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        NbU: i32,
+        TolU: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_EPCOfExtPC2d_ctor_pnt2d_curve2d_int_real2(P, C, NbU, TolU, TolF)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// NbU is used to locate the close points to
+    /// find the zeros.
+    /// Zeros are searched between umin and usup.
+    /// Tol and TolU are used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d_int_real4(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        NbU: i32,
+        Umin: f64,
+        Usup: f64,
+        TolU: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_EPCOfExtPC2d_ctor_pnt2d_curve2d_int_real4(
+            P, C, NbU, Umin, Usup, TolU, TolF,
+        )
     }
 }
 
@@ -274,6 +1086,458 @@ impl ExtCC {
 }
 
 // ========================
+// From Extrema_ExtCC2d.hxx
+// ========================
+
+/// It calculates all the distance between two curves.
+/// These distances can be maximum or minimum.
+pub use crate::ffi::Extrema_ExtCC2d as ExtCC2d;
+
+impl ExtCC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtCC2d_ctor()
+    }
+
+    /// It calculates all the distances.
+    pub fn new_curve2d2_real2(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+        TolC1: f64,
+        TolC2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtCC2d_ctor_curve2d2_real2(C1, C2, TolC1, TolC2)
+    }
+
+    /// It calculates all the distances.
+    pub fn new_curve2d2_real6(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+        U1: f64,
+        U2: f64,
+        V1: f64,
+        V2: f64,
+        TolC1: f64,
+        TolC2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtCC2d_ctor_curve2d2_real6(C1, C2, U1, U2, V1, V2, TolC1, TolC2)
+    }
+
+    /// It calculates all the distances.
+    pub fn new_curve2d2_real(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+        TolC1: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d2_real2(C1, C2, TolC1, 1.0e-10)
+    }
+
+    /// It calculates all the distances.
+    pub fn new_curve2d2(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d2_real2(C1, C2, 1.0e-10, 1.0e-10)
+    }
+
+    /// It calculates all the distances.
+    pub fn new_curve2d2_real5(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+        U1: f64,
+        U2: f64,
+        V1: f64,
+        V2: f64,
+        TolC1: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d2_real6(C1, C2, U1, U2, V1, V2, TolC1, 1.0e-10)
+    }
+
+    /// It calculates all the distances.
+    pub fn new_curve2d2_real4(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+        U1: f64,
+        U2: f64,
+        V1: f64,
+        V2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d2_real6(C1, C2, U1, U2, V1, V2, 1.0e-10, 1.0e-10)
+    }
+}
+
+// ========================
+// From Extrema_ExtCS.hxx
+// ========================
+
+/// It calculates all the extremum distances
+/// between a curve and a surface.
+/// These distances can be minimum or maximum.
+pub use crate::ffi::Extrema_ExtCS as ExtCS;
+
+impl ExtCS {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtCS_ctor()
+    }
+
+    /// It calculates all the distances between C and S.
+    pub fn new_curve_surface_real2(
+        C: &crate::ffi::Adaptor3d_Curve,
+        S: &crate::ffi::Adaptor3d_Surface,
+        TolC: f64,
+        TolS: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtCS_ctor_curve_surface_real2(C, S, TolC, TolS)
+    }
+
+    /// It calculates all the distances between C and S.
+    /// UCinf and UCmax are the start and end parameters
+    /// of the curve.
+    pub fn new_curve_surface_real8(
+        C: &crate::ffi::Adaptor3d_Curve,
+        S: &crate::ffi::Adaptor3d_Surface,
+        UCinf: f64,
+        UCsup: f64,
+        Uinf: f64,
+        Usup: f64,
+        Vinf: f64,
+        Vsup: f64,
+        TolC: f64,
+        TolS: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtCS_ctor_curve_surface_real8(
+            C, S, UCinf, UCsup, Uinf, Usup, Vinf, Vsup, TolC, TolS,
+        )
+    }
+}
+
+// ========================
+// From Extrema_ExtElC.hxx
+// ========================
+
+/// It calculates all the distance between two elementary
+/// curves.
+/// These distances can be maximum or minimum.
+pub use crate::ffi::Extrema_ExtElC as ExtElC;
+
+impl ExtElC {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC_ctor()
+    }
+
+    /// Calculates the distance between two lines.
+    /// AngTol is used to test if the lines are parallel:
+    /// Angle(C1,C2) < AngTol.
+    pub fn new_lin2_real(
+        C1: &crate::ffi::gp_Lin,
+        C2: &crate::ffi::gp_Lin,
+        AngTol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC_ctor_lin2_real(C1, C2, AngTol)
+    }
+
+    /// Calculates the distance between a line and a
+    /// circle.
+    pub fn new_lin_circ_real(
+        C1: &crate::ffi::gp_Lin,
+        C2: &crate::ffi::gp_Circ,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC_ctor_lin_circ_real(C1, C2, Tol)
+    }
+
+    /// Calculates the distance between a line and an
+    /// ellipse.
+    pub fn new_lin_elips(
+        C1: &crate::ffi::gp_Lin,
+        C2: &crate::ffi::gp_Elips,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC_ctor_lin_elips(C1, C2)
+    }
+
+    /// Calculates the distance between a line and a
+    /// hyperbola.
+    pub fn new_lin_hypr(C1: &crate::ffi::gp_Lin, C2: &crate::ffi::gp_Hypr) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC_ctor_lin_hypr(C1, C2)
+    }
+
+    /// Calculates the distance between a line and a
+    /// parabola.
+    pub fn new_lin_parab(
+        C1: &crate::ffi::gp_Lin,
+        C2: &crate::ffi::gp_Parab,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC_ctor_lin_parab(C1, C2)
+    }
+
+    /// Calculates the distance between two circles.
+    /// The circles can be parallel or identical.
+    pub fn new_circ2(C1: &crate::ffi::gp_Circ, C2: &crate::ffi::gp_Circ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC_ctor_circ2(C1, C2)
+    }
+}
+
+// ========================
+// From Extrema_ExtElC2d.hxx
+// ========================
+
+/// It calculates all the distance between two elementary
+/// curves.
+/// These distances can be maximum or minimum.
+pub use crate::ffi::Extrema_ExtElC2d as ExtElC2d;
+
+impl ExtElC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC2d_ctor()
+    }
+
+    /// Calculates the distance between two lines.
+    /// AngTol is used to test if the lines are parallel:
+    /// Angle(C1,C2) < AngTol.
+    pub fn new_lin2d2_real(
+        C1: &crate::ffi::gp_Lin2d,
+        C2: &crate::ffi::gp_Lin2d,
+        AngTol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC2d_ctor_lin2d2_real(C1, C2, AngTol)
+    }
+
+    /// Calculates the distance between a line and a
+    /// circle.
+    pub fn new_lin2d_circ2d_real(
+        C1: &crate::ffi::gp_Lin2d,
+        C2: &crate::ffi::gp_Circ2d,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC2d_ctor_lin2d_circ2d_real(C1, C2, Tol)
+    }
+
+    /// Calculates the distance between a line and an
+    /// ellipse.
+    pub fn new_lin2d_elips2d(
+        C1: &crate::ffi::gp_Lin2d,
+        C2: &crate::ffi::gp_Elips2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC2d_ctor_lin2d_elips2d(C1, C2)
+    }
+
+    /// Calculates the distance between a line and a
+    /// hyperbola.
+    pub fn new_lin2d_hypr2d(
+        C1: &crate::ffi::gp_Lin2d,
+        C2: &crate::ffi::gp_Hypr2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC2d_ctor_lin2d_hypr2d(C1, C2)
+    }
+
+    /// Calculates the distance between a line and a
+    /// parabola.
+    pub fn new_lin2d_parab2d(
+        C1: &crate::ffi::gp_Lin2d,
+        C2: &crate::ffi::gp_Parab2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC2d_ctor_lin2d_parab2d(C1, C2)
+    }
+
+    /// Calculates the distance between two circles.
+    /// The circles can be parallel or identical.
+    pub fn new_circ2d2(
+        C1: &crate::ffi::gp_Circ2d,
+        C2: &crate::ffi::gp_Circ2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC2d_ctor_circ2d2(C1, C2)
+    }
+
+    /// Calculates the distance between a circle and an
+    /// ellipse.
+    pub fn new_circ2d_elips2d(
+        C1: &crate::ffi::gp_Circ2d,
+        C2: &crate::ffi::gp_Elips2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC2d_ctor_circ2d_elips2d(C1, C2)
+    }
+
+    /// Calculates the distance between a circle and a
+    /// hyperbola.
+    pub fn new_circ2d_hypr2d(
+        C1: &crate::ffi::gp_Circ2d,
+        C2: &crate::ffi::gp_Hypr2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC2d_ctor_circ2d_hypr2d(C1, C2)
+    }
+
+    /// Calculates the distance between a circle and a
+    /// parabola.
+    pub fn new_circ2d_parab2d(
+        C1: &crate::ffi::gp_Circ2d,
+        C2: &crate::ffi::gp_Parab2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElC2d_ctor_circ2d_parab2d(C1, C2)
+    }
+}
+
+// ========================
+// From Extrema_ExtElCS.hxx
+// ========================
+
+/// It calculates all the distances between a curve and
+/// a surface.
+/// These distances can be maximum or minimum.
+pub use crate::ffi::Extrema_ExtElCS as ExtElCS;
+
+impl ExtElCS {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor()
+    }
+
+    /// Calculates the distances between a line and a
+    /// plane. The line can be on the plane or on a parallel
+    /// plane.
+    pub fn new_lin_pln(C: &crate::ffi::gp_Lin, S: &crate::ffi::gp_Pln) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_lin_pln(C, S)
+    }
+
+    /// Calculates the distances between a line and a
+    /// cylinder.
+    pub fn new_lin_cylinder(
+        C: &crate::ffi::gp_Lin,
+        S: &crate::ffi::gp_Cylinder,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_lin_cylinder(C, S)
+    }
+
+    /// Calculates the distances between a line and a cone.
+    pub fn new_lin_cone(C: &crate::ffi::gp_Lin, S: &crate::ffi::gp_Cone) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_lin_cone(C, S)
+    }
+
+    /// Calculates the distances between a line and a
+    /// sphere.
+    pub fn new_lin_sphere(
+        C: &crate::ffi::gp_Lin,
+        S: &crate::ffi::gp_Sphere,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_lin_sphere(C, S)
+    }
+
+    /// Calculates the distances between a line and a
+    /// torus.
+    pub fn new_lin_torus(C: &crate::ffi::gp_Lin, S: &crate::ffi::gp_Torus) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_lin_torus(C, S)
+    }
+
+    /// Calculates the distances between a circle and a
+    /// plane.
+    pub fn new_circ_pln(C: &crate::ffi::gp_Circ, S: &crate::ffi::gp_Pln) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_circ_pln(C, S)
+    }
+
+    /// Calculates the distances between a circle and a
+    /// cylinder.
+    pub fn new_circ_cylinder(
+        C: &crate::ffi::gp_Circ,
+        S: &crate::ffi::gp_Cylinder,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_circ_cylinder(C, S)
+    }
+
+    /// Calculates the distances between a circle and a
+    /// cone.
+    pub fn new_circ_cone(C: &crate::ffi::gp_Circ, S: &crate::ffi::gp_Cone) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_circ_cone(C, S)
+    }
+
+    /// Calculates the distances between a circle and a
+    /// sphere.
+    pub fn new_circ_sphere(
+        C: &crate::ffi::gp_Circ,
+        S: &crate::ffi::gp_Sphere,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_circ_sphere(C, S)
+    }
+
+    /// Calculates the distances between a circle and a
+    /// torus.
+    pub fn new_circ_torus(
+        C: &crate::ffi::gp_Circ,
+        S: &crate::ffi::gp_Torus,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_circ_torus(C, S)
+    }
+
+    /// Calculates the distances between a hyperbola and a
+    /// plane.
+    pub fn new_hypr_pln(C: &crate::ffi::gp_Hypr, S: &crate::ffi::gp_Pln) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElCS_ctor_hypr_pln(C, S)
+    }
+}
+
+// ========================
+// From Extrema_ExtElSS.hxx
+// ========================
+
+/// It calculates all the distances between 2 elementary
+/// surfaces.
+/// These distances can be maximum or minimum.
+pub use crate::ffi::Extrema_ExtElSS as ExtElSS;
+
+impl ExtElSS {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElSS_ctor()
+    }
+
+    /// Calculates the distances between 2 planes.
+    /// These planes can be parallel.
+    pub fn new_pln2(S1: &crate::ffi::gp_Pln, S2: &crate::ffi::gp_Pln) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElSS_ctor_pln2(S1, S2)
+    }
+
+    /// Calculates the distances between a plane
+    /// and a sphere.
+    pub fn new_pln_sphere(
+        S1: &crate::ffi::gp_Pln,
+        S2: &crate::ffi::gp_Sphere,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElSS_ctor_pln_sphere(S1, S2)
+    }
+
+    /// Calculates the distances between 2 spheres.
+    /// These spheres can be parallel.
+    pub fn new_sphere2(
+        S1: &crate::ffi::gp_Sphere,
+        S2: &crate::ffi::gp_Sphere,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElSS_ctor_sphere2(S1, S2)
+    }
+
+    /// Calculates the distances between a sphere
+    /// and a cylinder.
+    pub fn new_sphere_cylinder(
+        S1: &crate::ffi::gp_Sphere,
+        S2: &crate::ffi::gp_Cylinder,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElSS_ctor_sphere_cylinder(S1, S2)
+    }
+
+    /// Calculates the distances between a sphere
+    /// and a cone.
+    pub fn new_sphere_cone(
+        S1: &crate::ffi::gp_Sphere,
+        S2: &crate::ffi::gp_Cone,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElSS_ctor_sphere_cone(S1, S2)
+    }
+
+    /// Calculates the distances between a sphere
+    /// and a torus.
+    pub fn new_sphere_torus(
+        S1: &crate::ffi::gp_Sphere,
+        S2: &crate::ffi::gp_Torus,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtElSS_ctor_sphere_torus(S1, S2)
+    }
+}
+
+// ========================
 // From Extrema_ExtPC.hxx
 // ========================
 
@@ -350,6 +1614,86 @@ impl ExtPC {
         C: &crate::ffi::Adaptor3d_Curve,
     ) -> cxx::UniquePtr<Self> {
         Self::new_pnt_curve_real(P, C, 1.0e-10)
+    }
+}
+
+// ========================
+// From Extrema_ExtPC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_ExtPC2d as ExtPC2d;
+
+impl ExtPC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPC2d_ctor()
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Zeros are searched between uinf and usup.
+    /// Tol  is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d_real3(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        Uinf: f64,
+        Usup: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPC2d_ctor_pnt2d_curve2d_real3(P, C, Uinf, Usup, TolF)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Tol is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d_real(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPC2d_ctor_pnt2d_curve2d_real(P, C, TolF)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Zeros are searched between uinf and usup.
+    /// Tol  is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d_real2(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        Uinf: f64,
+        Usup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_pnt2d_curve2d_real3(P, C, Uinf, Usup, 1.0e-10)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Tol is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    pub fn new_pnt2d_curve2d(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_pnt2d_curve2d_real(P, C, 1.0e-10)
     }
 }
 
@@ -456,6 +1800,108 @@ impl ExtPElC {
 }
 
 // ========================
+// From Extrema_ExtPElC2d.hxx
+// ========================
+
+/// It calculates all the distances between a point
+/// and an elementary curve.
+/// These distances can be minimum or maximum.
+pub use crate::ffi::Extrema_ExtPElC2d as ExtPElC2d;
+
+impl ExtPElC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPElC2d_ctor()
+    }
+
+    /// Calculates the extremum distance between the
+    /// point P and the segment [Uinf,Usup] of the line L.
+    pub fn new_pnt2d_lin2d_real3(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::gp_Lin2d,
+        Tol: f64,
+        Uinf: f64,
+        Usup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_lin2d_real3(P, C, Tol, Uinf, Usup)
+    }
+
+    /// Calculates the 2 extremum distances between the
+    /// point P and the segment [Uinf,Usup] of the circle C.
+    /// Tol is used to determine
+    /// if P is on the axis of the circle or
+    /// if an extremum is on an endpoint of the segment.
+    /// If P is on the axis of the circle,
+    /// there are infinite solution then IsDone(me)=False.
+    /// The conditions on the Uinf and Usup are:
+    /// 0. <= Uinf <= 2.*PI and Usup > Uinf.
+    /// If Usup > Uinf + 2.*PI, then only the solutions in
+    /// the range [Uinf,Uinf+2.*PI[ are computed.
+    pub fn new_pnt2d_circ2d_real3(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::gp_Circ2d,
+        Tol: f64,
+        Uinf: f64,
+        Usup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_circ2d_real3(P, C, Tol, Uinf, Usup)
+    }
+
+    /// Calculates the 4 extremum distances between the
+    /// point P and the segment [Uinf,Usup] of the ellipse C.
+    /// Tol is used to determine
+    /// if the point is on the axis of the ellipse and
+    /// if the major radius is equal to the minor radius or
+    /// if an extremum is on an endpoint of the segment.
+    /// If P is on the axis of the ellipse,
+    /// there are infinite solution then IsDone(me)=False.
+    /// The conditions on the Uinf and Usup are:
+    /// 0. <= Uinf <= 2.*PI and Usup > Uinf.
+    /// If Usup > Uinf + 2.*PI, then only the solutions in
+    /// the range [Uinf,Uinf+2.*PI[ are computed.
+    pub fn new_pnt2d_elips2d_real3(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::gp_Elips2d,
+        Tol: f64,
+        Uinf: f64,
+        Usup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_elips2d_real3(P, C, Tol, Uinf, Usup)
+    }
+
+    /// Calculates the extremum distances between the
+    /// point P and the segment [Uinf,Usup] of the hyperbola
+    /// C.
+    /// Tol is used to determine if two solutions u and v
+    /// are identical; the condition is:
+    /// dist(C(u),C(v)) < Tol.
+    pub fn new_pnt2d_hypr2d_real3(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::gp_Hypr2d,
+        Tol: f64,
+        Uinf: f64,
+        Usup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_hypr2d_real3(P, C, Tol, Uinf, Usup)
+    }
+
+    /// Calculates the 4 extremum distances between the
+    /// point P and the segment [Uinf,Usup] of the parabola
+    /// C.
+    /// Tol is used to determine if two solutions u and v
+    /// are identical; the condition is:
+    /// dist(C(u),C(v)) < Tol.
+    pub fn new_pnt2d_parab2d_real3(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::gp_Parab2d,
+        Tol: f64,
+        Uinf: f64,
+        Usup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_parab2d_real3(P, C, Tol, Uinf, Usup)
+    }
+}
+
+// ========================
 // From Extrema_ExtPElS.hxx
 // ========================
 
@@ -527,6 +1973,90 @@ impl ExtPElS {
 }
 
 // ========================
+// From Extrema_ExtPExtS.hxx
+// ========================
+
+/// It calculates all the extremum (minimum and
+/// maximum) distances between a point and a linear
+/// extrusion surface.
+pub use crate::ffi::Extrema_ExtPExtS as ExtPExtS;
+
+impl ExtPExtS {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPExtS_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Extrema_ExtPExtS_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleExtremaExtPExtS> {
+        crate::ffi::Extrema_ExtPExtS_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleExtremaExtPExtS;
+
+impl HandleExtremaExtPExtS {
+    /// Dereference this Handle to access the underlying Extrema_ExtPExtS
+    pub fn get(&self) -> &crate::ffi::Extrema_ExtPExtS {
+        crate::ffi::HandleExtremaExtPExtS_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Extrema_ExtPExtS
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Extrema_ExtPExtS> {
+        crate::ffi::HandleExtremaExtPExtS_get_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_ExtPRevS.hxx
+// ========================
+
+/// It calculates all the extremum (minimum and
+/// maximum) distances between a point and a surface
+/// of revolution.
+pub use crate::ffi::Extrema_ExtPRevS as ExtPRevS;
+
+impl ExtPRevS {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtPRevS_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Extrema_ExtPRevS_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleExtremaExtPRevS> {
+        crate::ffi::Extrema_ExtPRevS_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleExtremaExtPRevS;
+
+impl HandleExtremaExtPRevS {
+    /// Dereference this Handle to access the underlying Extrema_ExtPRevS
+    pub fn get(&self) -> &crate::ffi::Extrema_ExtPRevS {
+        crate::ffi::HandleExtremaExtPRevS_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Extrema_ExtPRevS
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Extrema_ExtPRevS> {
+        crate::ffi::HandleExtremaExtPRevS_get_mut(self)
+    }
+}
+
+// ========================
 // From Extrema_ExtPS.hxx
 // ========================
 
@@ -594,6 +2124,206 @@ impl ExtPS {
 }
 
 // ========================
+// From Extrema_ExtSS.hxx
+// ========================
+
+/// It calculates all the extremum distances
+/// between two surfaces.
+/// These distances can be minimum or maximum.
+pub use crate::ffi::Extrema_ExtSS as ExtSS;
+
+impl ExtSS {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtSS_ctor()
+    }
+
+    /// It calculates all the distances between S1 and S2.
+    pub fn new_surface2_real2(
+        S1: &crate::ffi::Adaptor3d_Surface,
+        S2: &crate::ffi::Adaptor3d_Surface,
+        TolS1: f64,
+        TolS2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtSS_ctor_surface2_real2(S1, S2, TolS1, TolS2)
+    }
+
+    /// It calculates all the distances between S1 and S2.
+    pub fn new_surface2_real10(
+        S1: &crate::ffi::Adaptor3d_Surface,
+        S2: &crate::ffi::Adaptor3d_Surface,
+        Uinf1: f64,
+        Usup1: f64,
+        Vinf1: f64,
+        Vsup1: f64,
+        Uinf2: f64,
+        Usup2: f64,
+        Vinf2: f64,
+        Vsup2: f64,
+        TolS1: f64,
+        TolS2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_ExtSS_ctor_surface2_real10(
+            S1, S2, Uinf1, Usup1, Vinf1, Vsup1, Uinf2, Usup2, Vinf2, Vsup2, TolS1, TolS2,
+        )
+    }
+}
+
+// ========================
+// From Extrema_FuncExtCS.hxx
+// ========================
+
+/// Function to find extrema of the
+/// distance between a curve and a surface.
+pub use crate::ffi::Extrema_FuncExtCS as FuncExtCS;
+
+impl FuncExtCS {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_FuncExtCS_ctor()
+    }
+
+    pub fn new_curve_surface(
+        C: &crate::ffi::Adaptor3d_Curve,
+        S: &crate::ffi::Adaptor3d_Surface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_FuncExtCS_ctor_curve_surface(C, S)
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet(self)
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionSet> {
+        crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet_mut(self)
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives(self)
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionSetWithDerivatives> {
+        crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_FuncExtSS.hxx
+// ========================
+
+/// Function to find extrema of the
+/// distance between two surfaces.
+pub use crate::ffi::Extrema_FuncExtSS as FuncExtSS;
+
+impl FuncExtSS {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_FuncExtSS_ctor()
+    }
+
+    pub fn new_surface2(
+        S1: &crate::ffi::Adaptor3d_Surface,
+        S2: &crate::ffi::Adaptor3d_Surface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_FuncExtSS_ctor_surface2(S1, S2)
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet(self)
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionSet> {
+        crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet_mut(self)
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives(self)
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionSetWithDerivatives> {
+        crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_FuncPSDist.hxx
+// ========================
+
+/// Functional for search of extremum of the square Euclidean distance between point P and
+/// surface S, starting from approximate solution (u0, v0).
+///
+/// The class inherits math_MultipleVarFunctionWithGradient and thus is intended
+/// for use in math_BFGS algorithm.
+///
+/// The criteria is:
+/// F = SquareDist(P, S(u, v)) - > min
+///
+/// The first derivative are:
+/// F1(u,v) = (S(u,v) - P) * Su
+/// F2(u,v) = (S(u,v) - P) * Sv
+///
+/// Su and Sv are first derivatives of the surface, * symbol means dot product.
+pub use crate::ffi::Extrema_FuncPSDist as FuncPSDist;
+
+impl FuncPSDist {
+    /// Constructor.
+    pub fn new_surface_pnt(
+        theS: &crate::ffi::Adaptor3d_Surface,
+        theP: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_FuncPSDist_ctor_surface_pnt(theS, theP)
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
+        crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithGradient> {
+        crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient_mut(self)
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Extrema_FuncPSDist_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
 // From Extrema_FuncPSNorm.hxx
 // ========================
 
@@ -629,6 +2359,94 @@ impl FuncPSNorm {
         S: &crate::ffi::Adaptor3d_Surface,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_FuncPSNorm_ctor_pnt_surface(P, S)
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet(self)
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionSet> {
+        crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet_mut(self)
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives(self)
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionSetWithDerivatives> {
+        crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_GenExtCS.hxx
+// ========================
+
+/// It calculates all the extremum distances
+/// between acurve and a surface.
+/// These distances can be minimum or maximum.
+pub use crate::ffi::Extrema_GenExtCS as GenExtCS;
+
+impl GenExtCS {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenExtCS_ctor()
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u,v)=distance(S1(u1,v1),S2(u2,v2)) has an
+    /// extremum when gradient(F)=0. The algorithm searches
+    /// all the zeros inside the definition ranges of the
+    /// surfaces.
+    /// NbU and NbV are used to locate the close points on the
+    /// surface and NbT on the curve to find the zeros.
+    pub fn new_curve_surface_int3_real2(
+        C: &crate::ffi::Adaptor3d_Curve,
+        S: &crate::ffi::Adaptor3d_Surface,
+        NbT: i32,
+        NbU: i32,
+        NbV: i32,
+        Tol1: f64,
+        Tol2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenExtCS_ctor_curve_surface_int3_real2(C, S, NbT, NbU, NbV, Tol1, Tol2)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u,v)=distance(P,S(u,v)) has an
+    /// extremum when gradient(F)=0. The algorithm searches
+    /// all the zeros inside the definition ranges of the
+    /// surface.
+    /// NbT,NbU and NbV are used to locate the close points
+    /// to find the zeros.
+    pub fn new_curve_surface_int3_real8(
+        C: &crate::ffi::Adaptor3d_Curve,
+        S: &crate::ffi::Adaptor3d_Surface,
+        NbT: i32,
+        NbU: i32,
+        NbV: i32,
+        tmin: f64,
+        tsup: f64,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+        Tol1: f64,
+        Tol2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenExtCS_ctor_curve_surface_int3_real8(
+            C, S, NbT, NbU, NbV, tmin, tsup, Umin, Usup, Vmin, Vsup, Tol1, Tol2,
+        )
     }
 }
 
@@ -715,6 +2533,1216 @@ impl GenExtPS {
 }
 
 // ========================
+// From Extrema_GenExtSS.hxx
+// ========================
+
+/// It calculates all the extremum distances
+/// between two surfaces.
+/// These distances can be minimum or maximum.
+pub use crate::ffi::Extrema_GenExtSS as GenExtSS;
+
+impl GenExtSS {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenExtSS_ctor()
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u,v)=distance(S1(u1,v1),S2(u2,v2)) has an
+    /// extremum when gradient(F)=0. The algorithm searches
+    /// all the zeros inside the definition ranges of the
+    /// surfaces.
+    /// NbU and NbV are used to locate the close points
+    /// to find the zeros.
+    pub fn new_surface2_int2_real2(
+        S1: &crate::ffi::Adaptor3d_Surface,
+        S2: &crate::ffi::Adaptor3d_Surface,
+        NbU: i32,
+        NbV: i32,
+        Tol1: f64,
+        Tol2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenExtSS_ctor_surface2_int2_real2(S1, S2, NbU, NbV, Tol1, Tol2)
+    }
+
+    /// It calculates all the distances.
+    /// The function F(u,v)=distance(P,S(u,v)) has an
+    /// extremum when gradient(F)=0. The algorithm searches
+    /// all the zeros inside the definition ranges of the
+    /// surface.
+    /// NbU and NbV are used to locate the close points
+    /// to find the zeros.
+    pub fn new_surface2_int2_real10(
+        S1: &crate::ffi::Adaptor3d_Surface,
+        S2: &crate::ffi::Adaptor3d_Surface,
+        NbU: i32,
+        NbV: i32,
+        U1min: f64,
+        U1sup: f64,
+        V1min: f64,
+        V1sup: f64,
+        U2min: f64,
+        U2sup: f64,
+        V2min: f64,
+        V2sup: f64,
+        Tol1: f64,
+        Tol2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenExtSS_ctor_surface2_int2_real10(
+            S1, S2, NbU, NbV, U1min, U1sup, V1min, V1sup, U2min, U2sup, V2min, V2sup, Tol1, Tol2,
+        )
+    }
+}
+
+// ========================
+// From Extrema_GenLocateExtCS.hxx
+// ========================
+
+/// With two close points it calculates the distance
+/// between two surfaces.
+/// This distance can be a minimum or a maximum.
+pub use crate::ffi::Extrema_GenLocateExtCS as GenLocateExtCS;
+
+impl GenLocateExtCS {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenLocateExtCS_ctor()
+    }
+
+    /// Calculates the distance with two close points.
+    /// The close points are defined by the parameter values
+    /// T for C and (U,V) for S.
+    /// The function F(t,u,v)=distance(C(t),S(u,v))
+    /// has an extremun when gradient(F)=0. The algorithm searches
+    /// a zero near the close points.
+    pub fn new_curve_surface_real5(
+        C: &crate::ffi::Adaptor3d_Curve,
+        S: &crate::ffi::Adaptor3d_Surface,
+        T: f64,
+        U: f64,
+        V: f64,
+        Tol1: f64,
+        Tol2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenLocateExtCS_ctor_curve_surface_real5(C, S, T, U, V, Tol1, Tol2)
+    }
+}
+
+// ========================
+// From Extrema_GenLocateExtPS.hxx
+// ========================
+
+/// With a close point, it calculates the distance
+/// between a point and a surface.
+/// Criteria type is defined in "Perform" method.
+pub use crate::ffi::Extrema_GenLocateExtPS as GenLocateExtPS;
+
+impl GenLocateExtPS {
+    /// Constructor.
+    pub fn new_surface_real2(
+        theS: &crate::ffi::Adaptor3d_Surface,
+        theTolU: f64,
+        theTolV: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenLocateExtPS_ctor_surface_real2(theS, theTolU, theTolV)
+    }
+
+    /// Returns True if UV point theU0, theV0 is point of local minimum of square distance between
+    /// point theP and points theS(U, V), U, V are in small area around theU0, theV0
+    pub fn is_min_dist(
+        theP: &crate::ffi::gp_Pnt,
+        theS: &crate::ffi::Adaptor3d_Surface,
+        theU0: f64,
+        theV0: f64,
+    ) -> bool {
+        crate::ffi::Extrema_GenLocateExtPS_is_min_dist(theP, theS, theU0, theV0)
+    }
+}
+
+// ========================
+// From Extrema_GenLocateExtSS.hxx
+// ========================
+
+/// With two close points it calculates the distance
+/// between two surfaces.
+/// This distance can be a minimum or a maximum.
+pub use crate::ffi::Extrema_GenLocateExtSS as GenLocateExtSS;
+
+impl GenLocateExtSS {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenLocateExtSS_ctor()
+    }
+
+    /// Calculates the distance with two close points.
+    /// The close points are defined by the parameter values
+    /// (U1,V1) for S1 and (U2,V2) for S2.
+    /// The function F(u1,v1,u2,v2)=distance(S1(u1,v1),S2(u2,v2))
+    /// has an extremun when gradient(F)=0. The algorithm searches
+    /// a zero near the close points.
+    pub fn new_surface2_real6(
+        S1: &crate::ffi::Adaptor3d_Surface,
+        S2: &crate::ffi::Adaptor3d_Surface,
+        U1: f64,
+        V1: f64,
+        U2: f64,
+        V2: f64,
+        Tol1: f64,
+        Tol2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GenLocateExtSS_ctor_surface2_real6(S1, S2, U1, V1, U2, V2, Tol1, Tol2)
+    }
+}
+
+// ========================
+// From Extrema_GlobOptFuncCC.hxx
+// ========================
+
+/// This class implements function which calculate Eucluidean distance
+/// between point on curve and point on other curve in case of C1 and C2 continuity is C0.
+pub use crate::ffi::Extrema_GlobOptFuncCCC0 as GlobOptFuncCCC0;
+
+impl GlobOptFuncCCC0 {
+    pub fn new_curve2(
+        C1: &crate::ffi::Adaptor3d_Curve,
+        C2: &crate::ffi::Adaptor3d_Curve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GlobOptFuncCCC0_ctor_curve2(C1, C2)
+    }
+
+    pub fn new_curve2d2(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GlobOptFuncCCC0_ctor_curve2d2(C1, C2)
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
+        crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Extrema_GlobOptFuncCCC0_inherited_GetStateNumber(self)
+    }
+}
+
+/// This class implements function which calculate Eucluidean distance
+/// between point on curve and point on other curve in case of C1 and C2 continuity is C1.
+pub use crate::ffi::Extrema_GlobOptFuncCCC1 as GlobOptFuncCCC1;
+
+impl GlobOptFuncCCC1 {
+    pub fn new_curve2(
+        C1: &crate::ffi::Adaptor3d_Curve,
+        C2: &crate::ffi::Adaptor3d_Curve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GlobOptFuncCCC1_ctor_curve2(C1, C2)
+    }
+
+    pub fn new_curve2d2(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GlobOptFuncCCC1_ctor_curve2d2(C1, C2)
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
+        crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithGradient> {
+        crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient_mut(self)
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Extrema_GlobOptFuncCCC1_inherited_GetStateNumber(self)
+    }
+}
+
+/// This class implements function which calculate Eucluidean distance
+/// between point on curve and point on other curve in case of C1 and C2 continuity is C2.
+pub use crate::ffi::Extrema_GlobOptFuncCCC2 as GlobOptFuncCCC2;
+
+impl GlobOptFuncCCC2 {
+    pub fn new_curve2(
+        C1: &crate::ffi::Adaptor3d_Curve,
+        C2: &crate::ffi::Adaptor3d_Curve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GlobOptFuncCCC2_ctor_curve2(C1, C2)
+    }
+
+    pub fn new_curve2d2(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_GlobOptFuncCCC2_ctor_curve2d2(C1, C2)
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
+        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithGradient> {
+        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient_mut(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithHessian
+    pub fn as_math_multiple_var_function_with_hessian(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithHessian {
+        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
+    pub fn as_math_multiple_var_function_with_hessian_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithHessian> {
+        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian_mut(self)
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Extrema_GlobOptFuncCCC2_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From Extrema_GlobOptFuncCQuadric.hxx
+// ========================
+
+/// This class implements function which calculate square Eucluidean distance
+/// between point on surface and nearest point on Conic.
+pub use crate::ffi::Extrema_GlobOptFuncCQuadric as GlobOptFuncCQuadric;
+
+impl GlobOptFuncCQuadric {
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
+        crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Extrema_GlobOptFuncCQuadric_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From Extrema_GlobOptFuncCS.hxx
+// ========================
+
+/// This class implements function which calculate square Eucluidean distance
+/// between point on curve and point on surface in case of continuity is C2.
+pub use crate::ffi::Extrema_GlobOptFuncCS as GlobOptFuncCS;
+
+impl GlobOptFuncCS {
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
+        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithGradient> {
+        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient_mut(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithHessian
+    pub fn as_math_multiple_var_function_with_hessian(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithHessian {
+        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian(self)
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
+    pub fn as_math_multiple_var_function_with_hessian_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithHessian> {
+        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian_mut(self)
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Extrema_GlobOptFuncCS_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From Extrema_GlobOptFuncConicS.hxx
+// ========================
+
+/// This class implements function which calculate square Eucluidean distance
+/// between point on surface and nearest point on Conic.
+pub use crate::ffi::Extrema_GlobOptFuncConicS as GlobOptFuncConicS;
+
+impl GlobOptFuncConicS {
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
+        crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Extrema_GlobOptFuncConicS_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From Extrema_HArray1OfPOnCurv.hxx
+// ========================
+
+pub use crate::ffi::Extrema_HArray1OfPOnCurv as HArray1OfPOnCurv;
+
+impl HArray1OfPOnCurv {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnCurv_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnCurv_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_poncurv(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::Extrema_POnCurv,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnCurv_ctor_int2_poncurv(theLower, theUpper, theValue)
+    }
+
+    pub fn new_poncurv_int2_bool(
+        theBegin: &crate::ffi::Extrema_POnCurv,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnCurv_ctor_poncurv_int2_bool(
+            theBegin, theLower, theUpper, arg3,
+        )
+    }
+
+    pub fn new_array1ofponcurv(
+        theOther: &crate::ffi::Extrema_Array1OfPOnCurv,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnCurv_ctor_array1ofponcurv(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Extrema_HArray1OfPOnCurv_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleExtremaHArray1OfPOnCurv> {
+        crate::ffi::Extrema_HArray1OfPOnCurv_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleExtremaHArray1OfPOnCurv;
+
+impl HandleExtremaHArray1OfPOnCurv {
+    /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv
+    pub fn get(&self) -> &crate::ffi::Extrema_HArray1OfPOnCurv {
+        crate::ffi::HandleExtremaHArray1OfPOnCurv_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnCurv
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Extrema_HArray1OfPOnCurv> {
+        crate::ffi::HandleExtremaHArray1OfPOnCurv_get_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_HArray1OfPOnCurv2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_HArray1OfPOnCurv2d as HArray1OfPOnCurv2d;
+
+impl HArray1OfPOnCurv2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_poncurv2d(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::Extrema_POnCurv2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_int2_poncurv2d(theLower, theUpper, theValue)
+    }
+
+    pub fn new_poncurv2d_int2_bool(
+        theBegin: &crate::ffi::Extrema_POnCurv2d,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_poncurv2d_int2_bool(
+            theBegin, theLower, theUpper, arg3,
+        )
+    }
+
+    pub fn new_array1ofponcurv2d(
+        theOther: &crate::ffi::Extrema_Array1OfPOnCurv2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_array1ofponcurv2d(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Extrema_HArray1OfPOnCurv2d_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleExtremaHArray1OfPOnCurv2d> {
+        crate::ffi::Extrema_HArray1OfPOnCurv2d_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleExtremaHArray1OfPOnCurv2d;
+
+impl HandleExtremaHArray1OfPOnCurv2d {
+    /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv2d
+    pub fn get(&self) -> &crate::ffi::Extrema_HArray1OfPOnCurv2d {
+        crate::ffi::HandleExtremaHArray1OfPOnCurv2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnCurv2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Extrema_HArray1OfPOnCurv2d> {
+        crate::ffi::HandleExtremaHArray1OfPOnCurv2d_get_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_HArray1OfPOnSurf.hxx
+// ========================
+
+pub use crate::ffi::Extrema_HArray1OfPOnSurf as HArray1OfPOnSurf;
+
+impl HArray1OfPOnSurf {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnSurf_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnSurf_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_ponsurf(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::Extrema_POnSurf,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnSurf_ctor_int2_ponsurf(theLower, theUpper, theValue)
+    }
+
+    pub fn new_ponsurf_int2_bool(
+        theBegin: &crate::ffi::Extrema_POnSurf,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnSurf_ctor_ponsurf_int2_bool(
+            theBegin, theLower, theUpper, arg3,
+        )
+    }
+
+    pub fn new_array1ofponsurf(
+        theOther: &crate::ffi::Extrema_Array1OfPOnSurf,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray1OfPOnSurf_ctor_array1ofponsurf(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Extrema_HArray1OfPOnSurf_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleExtremaHArray1OfPOnSurf> {
+        crate::ffi::Extrema_HArray1OfPOnSurf_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleExtremaHArray1OfPOnSurf;
+
+impl HandleExtremaHArray1OfPOnSurf {
+    /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnSurf
+    pub fn get(&self) -> &crate::ffi::Extrema_HArray1OfPOnSurf {
+        crate::ffi::HandleExtremaHArray1OfPOnSurf_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnSurf
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Extrema_HArray1OfPOnSurf> {
+        crate::ffi::HandleExtremaHArray1OfPOnSurf_get_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_HArray2OfPOnCurv.hxx
+// ========================
+
+pub use crate::ffi::Extrema_HArray2OfPOnCurv as HArray2OfPOnCurv;
+
+impl HArray2OfPOnCurv {
+    pub fn new_int4(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray2OfPOnCurv_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    }
+
+    pub fn new_int4_poncurv(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::ffi::Extrema_POnCurv,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray2OfPOnCurv_ctor_int4_poncurv(
+            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+        )
+    }
+
+    pub fn new_array2ofponcurv(
+        theOther: &crate::ffi::Extrema_Array2OfPOnCurv,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray2OfPOnCurv_ctor_array2ofponcurv(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Extrema_HArray2OfPOnCurv_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleExtremaHArray2OfPOnCurv> {
+        crate::ffi::Extrema_HArray2OfPOnCurv_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleExtremaHArray2OfPOnCurv;
+
+impl HandleExtremaHArray2OfPOnCurv {
+    /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv
+    pub fn get(&self) -> &crate::ffi::Extrema_HArray2OfPOnCurv {
+        crate::ffi::HandleExtremaHArray2OfPOnCurv_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnCurv
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Extrema_HArray2OfPOnCurv> {
+        crate::ffi::HandleExtremaHArray2OfPOnCurv_get_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_HArray2OfPOnCurv2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_HArray2OfPOnCurv2d as HArray2OfPOnCurv2d;
+
+impl HArray2OfPOnCurv2d {
+    pub fn new_int4(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    }
+
+    pub fn new_int4_poncurv2d(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::ffi::Extrema_POnCurv2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_int4_poncurv2d(
+            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+        )
+    }
+
+    pub fn new_array2ofponcurv2d(
+        theOther: &crate::ffi::Extrema_Array2OfPOnCurv2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_array2ofponcurv2d(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Extrema_HArray2OfPOnCurv2d_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleExtremaHArray2OfPOnCurv2d> {
+        crate::ffi::Extrema_HArray2OfPOnCurv2d_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleExtremaHArray2OfPOnCurv2d;
+
+impl HandleExtremaHArray2OfPOnCurv2d {
+    /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv2d
+    pub fn get(&self) -> &crate::ffi::Extrema_HArray2OfPOnCurv2d {
+        crate::ffi::HandleExtremaHArray2OfPOnCurv2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnCurv2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Extrema_HArray2OfPOnCurv2d> {
+        crate::ffi::HandleExtremaHArray2OfPOnCurv2d_get_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_HArray2OfPOnSurf.hxx
+// ========================
+
+pub use crate::ffi::Extrema_HArray2OfPOnSurf as HArray2OfPOnSurf;
+
+impl HArray2OfPOnSurf {
+    pub fn new_int4(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray2OfPOnSurf_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    }
+
+    pub fn new_int4_ponsurf(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::ffi::Extrema_POnSurf,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray2OfPOnSurf_ctor_int4_ponsurf(
+            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+        )
+    }
+
+    pub fn new_array2ofponsurf(
+        theOther: &crate::ffi::Extrema_Array2OfPOnSurf,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_HArray2OfPOnSurf_ctor_array2ofponsurf(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Extrema_HArray2OfPOnSurf_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleExtremaHArray2OfPOnSurf> {
+        crate::ffi::Extrema_HArray2OfPOnSurf_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleExtremaHArray2OfPOnSurf;
+
+impl HandleExtremaHArray2OfPOnSurf {
+    /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnSurf
+    pub fn get(&self) -> &crate::ffi::Extrema_HArray2OfPOnSurf {
+        crate::ffi::HandleExtremaHArray2OfPOnSurf_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnSurf
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Extrema_HArray2OfPOnSurf> {
+        crate::ffi::HandleExtremaHArray2OfPOnSurf_get_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_LocECC.hxx
+// ========================
+
+pub use crate::ffi::Extrema_LocECC as LocECC;
+
+impl LocECC {
+    /// Calculates the distance with a close point. The
+    /// close point is defined by a parameter value on each
+    /// curve.
+    /// The function F(u,v)=distance(C1(u),C2(v)) has an
+    /// extremun when gradient(f)=0. The algorithm searches
+    /// the zero near the close point.
+    pub fn new_curve2_real4(
+        C1: &crate::ffi::Adaptor3d_Curve,
+        C2: &crate::ffi::Adaptor3d_Curve,
+        U0: f64,
+        V0: f64,
+        TolU: f64,
+        TolV: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocECC_ctor_curve2_real4(C1, C2, U0, V0, TolU, TolV)
+    }
+}
+
+// ========================
+// From Extrema_LocECC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_LocECC2d as LocECC2d;
+
+impl LocECC2d {
+    /// Calculates the distance with a close point. The
+    /// close point is defined by a parameter value on each
+    /// curve.
+    /// The function F(u,v)=distance(C1(u),C2(v)) has an
+    /// extremun when gradient(f)=0. The algorithm searches
+    /// the zero near the close point.
+    pub fn new_curve2d2_real4(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+        U0: f64,
+        V0: f64,
+        TolU: f64,
+        TolV: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocECC2d_ctor_curve2d2_real4(C1, C2, U0, V0, TolU, TolV)
+    }
+}
+
+// ========================
+// From Extrema_LocEPCOfLocateExtPC.hxx
+// ========================
+
+pub use crate::ffi::Extrema_LocEPCOfLocateExtPC as LocEPCOfLocateExtPC;
+
+impl LocEPCOfLocateExtPC {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor()
+    }
+
+    /// Calculates the distance with a close point.
+    /// The close point is defined by the parameter value
+    /// U0.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches a zero
+    /// near the close point.
+    /// TolU is used to decide to stop the iterations.
+    /// At the nth iteration, the criteria is:
+    /// abs(Un - Un-1) < TolU.
+    pub fn new_pnt_curve_real2(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+        U0: f64,
+        TolU: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor_pnt_curve_real2(P, C, U0, TolU)
+    }
+
+    /// Calculates the distance with a close point.
+    /// The close point is defined by the parameter value
+    /// U0.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches a zero
+    /// near the close point.
+    /// Zeros are searched between Umin et Usup.
+    /// TolU is used to decide to stop the iterations.
+    /// At the nth iteration, the criteria is:
+    /// abs(Un - Un-1) < TolU.
+    pub fn new_pnt_curve_real4(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+        U0: f64,
+        Umin: f64,
+        Usup: f64,
+        TolU: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor_pnt_curve_real4(P, C, U0, Umin, Usup, TolU)
+    }
+}
+
+// ========================
+// From Extrema_LocEPCOfLocateExtPC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_LocEPCOfLocateExtPC2d as LocEPCOfLocateExtPC2d;
+
+impl LocEPCOfLocateExtPC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocEPCOfLocateExtPC2d_ctor()
+    }
+
+    /// Calculates the distance with a close point.
+    /// The close point is defined by the parameter value
+    /// U0.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches a zero
+    /// near the close point.
+    /// TolU is used to decide to stop the iterations.
+    /// At the nth iteration, the criteria is:
+    /// abs(Un - Un-1) < TolU.
+    pub fn new_pnt2d_curve2d_real2(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U0: f64,
+        TolU: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real2(P, C, U0, TolU)
+    }
+
+    /// Calculates the distance with a close point.
+    /// The close point is defined by the parameter value
+    /// U0.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches a zero
+    /// near the close point.
+    /// Zeros are searched between Umin et Usup.
+    /// TolU is used to decide to stop the iterations.
+    /// At the nth iteration, the criteria is:
+    /// abs(Un - Un-1) < TolU.
+    pub fn new_pnt2d_curve2d_real4(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U0: f64,
+        Umin: f64,
+        Usup: f64,
+        TolU: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real4(
+            P, C, U0, Umin, Usup, TolU,
+        )
+    }
+}
+
+// ========================
+// From Extrema_LocateExtCC.hxx
+// ========================
+
+/// It calculates the distance between two curves with
+/// a close point; these distances can be maximum or
+/// minimum.
+pub use crate::ffi::Extrema_LocateExtCC as LocateExtCC;
+
+impl LocateExtCC {
+    /// Calculates the distance with a close point. The
+    /// close point is defined by a parameter value on each
+    /// curve.
+    /// The function F(u,v)=distance(C1(u),C2(v)) has an
+    /// extremun when gradient(f)=0. The algorithm searches
+    /// the zero near the close point.
+    pub fn new_curve2_real2(
+        C1: &crate::ffi::Adaptor3d_Curve,
+        C2: &crate::ffi::Adaptor3d_Curve,
+        U0: f64,
+        V0: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocateExtCC_ctor_curve2_real2(C1, C2, U0, V0)
+    }
+}
+
+// ========================
+// From Extrema_LocateExtCC2d.hxx
+// ========================
+
+/// It calculates the distance between two curves with
+/// a close point; these distances can be maximum or
+/// minimum.
+pub use crate::ffi::Extrema_LocateExtCC2d as LocateExtCC2d;
+
+impl LocateExtCC2d {
+    /// Calculates the distance with a close point. The
+    /// close point is defined by a parameter value on each
+    /// curve.
+    /// The function F(u,v)=distance(C1(u),C2(v)) has an
+    /// extremun when gradient(f)=0. The algorithm searches
+    /// the zero near the close point.
+    pub fn new_curve2d2_real2(
+        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C2: &crate::ffi::Adaptor2d_Curve2d,
+        U0: f64,
+        V0: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocateExtCC2d_ctor_curve2d2_real2(C1, C2, U0, V0)
+    }
+}
+
+// ========================
+// From Extrema_LocateExtPC.hxx
+// ========================
+
+pub use crate::ffi::Extrema_LocateExtPC as LocateExtPC;
+
+impl LocateExtPC {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocateExtPC_ctor()
+    }
+
+    /// Calculates the distance with a close point.
+    /// The close point is defined by the parameter value
+    /// U0.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches a zero
+    /// near the close point.
+    /// TolF is used to decide to stop the iterations.
+    /// At the nth iteration, the criteria is:
+    /// abs(Un - Un-1) < TolF.
+    pub fn new_pnt_curve_real2(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+        U0: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocateExtPC_ctor_pnt_curve_real2(P, C, U0, TolF)
+    }
+
+    /// Calculates the distance with a close point.
+    /// The close point is defined by the parameter value
+    /// U0.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches a zero
+    /// near the close point.
+    /// Zeros are searched between Umin et Usup.
+    /// TolF is used to decide to stop the iterations.
+    /// At the nth iteration, the criteria is:
+    /// abs(Un - Un-1) < TolF.
+    pub fn new_pnt_curve_real4(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+        U0: f64,
+        Umin: f64,
+        Usup: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocateExtPC_ctor_pnt_curve_real4(P, C, U0, Umin, Usup, TolF)
+    }
+}
+
+// ========================
+// From Extrema_LocateExtPC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_LocateExtPC2d as LocateExtPC2d;
+
+impl LocateExtPC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocateExtPC2d_ctor()
+    }
+
+    /// Calculates the distance with a close point.
+    /// The close point is defined by the parameter value
+    /// U0.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches a zero
+    /// near the close point.
+    /// TolF is used to decide to stop the iterations.
+    /// At the nth iteration, the criteria is:
+    /// abs(Un - Un-1) < TolF.
+    pub fn new_pnt2d_curve2d_real2(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U0: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocateExtPC2d_ctor_pnt2d_curve2d_real2(P, C, U0, TolF)
+    }
+
+    /// Calculates the distance with a close point.
+    /// The close point is defined by the parameter value
+    /// U0.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches a zero
+    /// near the close point.
+    /// Zeros are searched between Umin et Usup.
+    /// TolF is used to decide to stop the iterations.
+    /// At the nth iteration, the criteria is:
+    /// abs(Un - Un-1) < TolF.
+    pub fn new_pnt2d_curve2d_real4(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U0: f64,
+        Umin: f64,
+        Usup: f64,
+        TolF: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_LocateExtPC2d_ctor_pnt2d_curve2d_real4(P, C, U0, Umin, Usup, TolF)
+    }
+}
+
+// ========================
+// From Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx
+// ========================
+
+pub use crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC as PCFOfEPCOfELPCOfLocateExtPC;
+
+impl PCFOfEPCOfELPCOfLocateExtPC {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor()
+    }
+
+    pub fn new_pnt_curve(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor_pnt_curve(P, C)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::Function> {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function_mut(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d as PCFOfEPCOfELPCOfLocateExtPC2d;
+
+impl PCFOfEPCOfELPCOfLocateExtPC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor()
+    }
+
+    pub fn new_pnt2d_curve2d(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::Function> {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function_mut(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
+        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(self)
+    }
+}
+
+// ========================
 // From Extrema_PCFOfEPCOfExtPC.hxx
 // ========================
 
@@ -758,6 +3786,135 @@ impl PCFOfEPCOfExtPC {
 }
 
 // ========================
+// From Extrema_PCFOfEPCOfExtPC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_PCFOfEPCOfExtPC2d as PCFOfEPCOfExtPC2d;
+
+impl PCFOfEPCOfExtPC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_PCFOfEPCOfExtPC2d_ctor()
+    }
+
+    pub fn new_pnt2d_curve2d(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_PCFOfEPCOfExtPC2d_ctor_pnt2d_curve2d(P, C)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::Function> {
+        crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function_mut(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
+        crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx
+// ========================
+
+pub use crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC as PCLocFOfLocEPCOfLocateExtPC;
+
+impl PCLocFOfLocEPCOfLocateExtPC {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor()
+    }
+
+    pub fn new_pnt_curve(
+        P: &crate::ffi::gp_Pnt,
+        C: &crate::ffi::Adaptor3d_Curve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor_pnt_curve(P, C)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::Function> {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function_mut(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(self)
+    }
+}
+
+// ========================
+// From Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d as PCLocFOfLocEPCOfLocateExtPC2d;
+
+impl PCLocFOfLocEPCOfLocateExtPC2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor()
+    }
+
+    pub fn new_pnt2d_curve2d(
+        P: &crate::ffi::gp_Pnt2d,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::Function> {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function_mut(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative(self)
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
+        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(self)
+    }
+}
+
+// ========================
 // From Extrema_POnCurv.hxx
 // ========================
 
@@ -773,6 +3930,25 @@ impl POnCurv {
     /// value on the curve and a Pnt from gp.
     pub fn new_real_pnt(U: f64, P: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_POnCurv_ctor_real_pnt(U, P)
+    }
+}
+
+// ========================
+// From Extrema_POnCurv2d.hxx
+// ========================
+
+pub use crate::ffi::Extrema_POnCurv2d as POnCurv2d;
+
+impl POnCurv2d {
+    /// Creation of an indefinite point on curve.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_POnCurv2d_ctor()
+    }
+
+    /// Creation of a point on curve with a parameter
+    /// value on the curve and a Pnt from gp.
+    pub fn new_real_pnt2d(U: f64, P: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Extrema_POnCurv2d_ctor_real_pnt2d(U, P)
     }
 }
 
@@ -861,3 +4037,14 @@ impl POnSurfParams {
         crate::ffi::Extrema_POnSurfParams_inherited_Parameter(self, U, V)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    Extrema_Array1OfPOnCurv as Array1OfPOnCurv, Extrema_Array1OfPOnCurv2d as Array1OfPOnCurv2d,
+    Extrema_Array1OfPOnSurf as Array1OfPOnSurf, Extrema_Array2OfPOnCurv as Array2OfPOnCurv,
+    Extrema_Array2OfPOnCurv2d as Array2OfPOnCurv2d, Extrema_Array2OfPOnSurf as Array2OfPOnSurf,
+    Extrema_SequenceOfPOnCurv as SequenceOfPOnCurv, Extrema_SequenceOfPOnSurf as SequenceOfPOnSurf,
+};

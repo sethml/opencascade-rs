@@ -6,6 +6,283 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{
+    adjust_by_period, adjust_to_period, contour_area, find_bounds, get_face_uv_bounds,
+    is_outer_bound, outer_wire_2,
+};
+
+// ========================
+// From ShapeAnalysis_BoxBndTree.hxx
+// ========================
+
+pub use crate::ffi::ShapeAnalysis_BoxBndTreeSelector as BoxBndTreeSelector;
+
+impl BoxBndTreeSelector {
+    pub fn last_check_status(&self, theStatus: i32) -> bool {
+        crate::ffi::ShapeAnalysis_BoxBndTreeSelector_last_check_status(self, theStatus)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_CanonicalRecognition.hxx
+// ========================
+
+/// This class provides operators for analysis surfaces and curves of shapes
+/// in order to find out more simple geometry entities, which could replace
+/// existing complex (for example, BSpline) geometry objects with given tolerance.
+pub use crate::ffi::ShapeAnalysis_CanonicalRecognition as CanonicalRecognition;
+
+impl CanonicalRecognition {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_CanonicalRecognition_ctor()
+    }
+
+    /// constructor with shape initialisation
+    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_CanonicalRecognition_ctor_shape(theShape)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_CheckSmallFace.hxx
+// ========================
+
+/// Analysis of the face size
+pub use crate::ffi::ShapeAnalysis_CheckSmallFace as CheckSmallFace;
+
+impl CheckSmallFace {
+    /// Creates an empty tool
+    /// Checks a Shape i.e. each of its faces, records checks as
+    /// diagnostics in the <infos>
+    ///
+    /// If <infos> has not been set before, no check is done
+    ///
+    /// For faces which are in a Shell, topological data are recorded
+    /// to allow recovering connectivities after fixing or removing
+    /// the small faces or parts of faces
+    /// Enchains various checks on a face
+    /// inshell : to compute more information, relevant to topology
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_ctor()
+    }
+
+    /// Returns the status of last call to Perform()
+    /// ShapeExtend_OK   : face was OK, nothing done
+    /// ShapeExtend_DONE1: some wires are fixed
+    /// ShapeExtend_DONE2: orientation of wires fixed
+    /// ShapeExtend_DONE3: missing seam added
+    /// ShapeExtend_DONE4: small area wire removed
+    /// ShapeExtend_DONE5: natural bounds added
+    /// ShapeExtend_FAIL1: some fails during fixing wires
+    /// ShapeExtend_FAIL2: cannot fix orientation of wires
+    /// ShapeExtend_FAIL3: cannot add missing seam
+    /// ShapeExtend_FAIL4: cannot remove small area wire
+    pub fn status(&self, status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status(self, status)
+    }
+
+    pub fn status_spot(&self, status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_spot(self, status)
+    }
+
+    pub fn status_strip(&self, status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_strip(self, status)
+    }
+
+    pub fn status_pin(&self, status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin(self, status)
+    }
+
+    pub fn status_twisted(&self, status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_twisted(self, status)
+    }
+
+    pub fn status_split_vert(&self, status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_split_vert(self, status)
+    }
+
+    pub fn status_pin_face(&self, status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin_face(self, status)
+    }
+
+    pub fn status_pin_edges(&self, status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin_edges(self, status)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_Curve.hxx
+// ========================
+
+/// Analyzing tool for 2d or 3d curve.
+/// Computes parameters of projected point onto a curve.
+pub use crate::ffi::ShapeAnalysis_Curve as Curve;
+
+impl Curve {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_Curve_ctor()
+    }
+
+    /// Checks if points are planar with given preci. If Normal has not zero
+    /// modulus, checks with given normal
+    pub fn is_planar_array1ofpnt_xyz_real(
+        pnts: &crate::ffi::TColgp_Array1OfPnt,
+        Normal: std::pin::Pin<&mut crate::ffi::gp_XYZ>,
+        preci: f64,
+    ) -> bool {
+        crate::ffi::ShapeAnalysis_Curve_is_planar_array1ofpnt_xyz_real(pnts, Normal, preci)
+    }
+
+    /// Checks if curve is planar with given preci. If Normal has not zero
+    /// modulus, checks with given normal
+    pub fn is_planar_handlegeomcurve_xyz_real(
+        curve: &crate::ffi::HandleGeomCurve,
+        Normal: std::pin::Pin<&mut crate::ffi::gp_XYZ>,
+        preci: f64,
+    ) -> bool {
+        crate::ffi::ShapeAnalysis_Curve_is_planar_handlegeomcurve_xyz_real(curve, Normal, preci)
+    }
+
+    /// Tells if the Curve is closed with given precision.
+    /// If <preci> < 0 then Precision::Confusion is used.
+    pub fn is_closed(curve: &crate::ffi::HandleGeomCurve, preci: f64) -> bool {
+        crate::ffi::ShapeAnalysis_Curve_is_closed(curve, preci)
+    }
+
+    /// This method was implemented as fix for changes in trimmed curve
+    /// behaviour. For the moment trimmed curve returns false anyway.
+    /// So it is necessary to adapt all Data exchange tools for this behaviour.
+    /// Current implementation takes into account that curve may be offset.
+    pub fn is_periodic_handlegeomcurve(curve: &crate::ffi::HandleGeomCurve) -> bool {
+        crate::ffi::ShapeAnalysis_Curve_is_periodic_handlegeomcurve(curve)
+    }
+
+    /// The same as for Curve3d.
+    pub fn is_periodic_handlegeom2dcurve(curve: &crate::ffi::HandleGeom2dCurve) -> bool {
+        crate::ffi::ShapeAnalysis_Curve_is_periodic_handlegeom2dcurve(curve)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_Edge.hxx
+// ========================
+
+/// Tool for analyzing the edge.
+/// Queries geometrical representations of the edge (3d curve, pcurve
+/// on the given face or surface) and topological sub-shapes (bounding
+/// vertices).
+/// Provides methods for analyzing geometry and topology consistency
+/// (3d and pcurve(s) consistency, their adjacency to the vertices).
+pub use crate::ffi::ShapeAnalysis_Edge as Edge;
+
+impl Edge {
+    /// Empty constructor; initialises Status to OK
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_Edge_ctor()
+    }
+
+    /// Returns start vertex of the edge (taking edge orientation
+    /// into account).
+    pub fn first_vertex(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ShapeAnalysis_Edge_first_vertex(self, edge)
+    }
+
+    /// Returns end vertex of the edge (taking edge orientation
+    /// into account).
+    pub fn last_vertex(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ShapeAnalysis_Edge_last_vertex(self, edge)
+    }
+
+    /// Returns the status (in the form of True/False) of last Check
+    pub fn status(&self, status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Edge_status(self, status)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_FreeBoundData.hxx
+// ========================
+
+/// This class is intended to represent free bound and to store
+/// its properties.
+///
+/// This class is used by ShapeAnalysis_FreeBoundsProperties
+/// class when storing each free bound and its properties.
+///
+/// The properties stored in this class are the following:
+/// - area of the contour,
+/// - perimeter of the contour,
+/// - ratio of average length to average width of the contour,
+/// - average width of contour,
+/// - notches (narrow 'V'-like sub-contours) on the contour and
+/// their maximum width.
+///
+/// This class provides methods for setting and getting fields
+/// only.
+pub use crate::ffi::ShapeAnalysis_FreeBoundData as FreeBoundData;
+
+impl FreeBoundData {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_FreeBoundData_ctor()
+    }
+
+    /// Creates object with contour given in the form of TopoDS_Wire
+    pub fn new_wire(freebound: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_FreeBoundData_ctor_wire(freebound)
+    }
+
+    /// Returns contour
+    pub fn free_bound(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Wire> {
+        crate::ffi::ShapeAnalysis_FreeBoundData_free_bound(self)
+    }
+
+    /// Returns sequence of notches on the contour
+    pub fn notches(&self) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+        crate::ffi::ShapeAnalysis_FreeBoundData_notches(self)
+    }
+
+    /// Returns notch on the contour
+    pub fn notch(&self, index: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Wire> {
+        crate::ffi::ShapeAnalysis_FreeBoundData_notch(self, index)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeAnalysis_FreeBoundData_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisFreeBoundData> {
+        crate::ffi::ShapeAnalysis_FreeBoundData_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleShapeAnalysisFreeBoundData;
+
+impl HandleShapeAnalysisFreeBoundData {
+    /// Dereference this Handle to access the underlying ShapeAnalysis_FreeBoundData
+    pub fn get(&self) -> &crate::ffi::ShapeAnalysis_FreeBoundData {
+        crate::ffi::HandleShapeAnalysisFreeBoundData_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeAnalysis_FreeBoundData
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ShapeAnalysis_FreeBoundData> {
+        crate::ffi::HandleShapeAnalysisFreeBoundData_get_mut(self)
+    }
+}
+
 // ========================
 // From ShapeAnalysis_FreeBounds.hxx
 // ========================
@@ -202,13 +479,13 @@ impl FreeBounds {
         crate::ffi::ShapeAnalysis_FreeBounds_connect_edges_to_wires(edges, toler, shared, wires)
     }
 
-    pub fn connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape(
+    pub fn connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape(
         iwires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
         toler: f64,
         shared: bool,
         owires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
     ) {
-        crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape(iwires, toler, shared, owires)
+        crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape(iwires, toler, shared, owires)
     }
 
     /// Builds sequence of <owires> out of sequence of not sorted
@@ -224,14 +501,14 @@ impl FreeBounds {
     /// ends of adjacent wires are at distance less than <toler>.
     /// Map <vertices> stores the correspondence between original
     /// end vertices of the wires and new connecting vertices.
-    pub fn connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape_datamapofshapeshape(
+    pub fn connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape_datamapofshapeshape(
         iwires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
         toler: f64,
         shared: bool,
         owires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
         vertices: std::pin::Pin<&mut crate::ffi::TopTools_DataMapOfShapeShape>,
     ) {
-        crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape_datamapofshapeshape(iwires, toler, shared, owires, vertices)
+        crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape_datamapofshapeshape(iwires, toler, shared, owires, vertices)
     }
 
     /// Extracts closed sub-wires out of <wires> and adds them
@@ -262,3 +539,850 @@ impl FreeBounds {
         crate::ffi::ShapeAnalysis_FreeBounds_dispatch_wires(wires, closed, open)
     }
 }
+
+// ========================
+// From ShapeAnalysis_FreeBoundsProperties.hxx
+// ========================
+
+/// This class is intended to calculate shape free bounds
+/// properties.
+/// This class provides the following functionalities:
+/// - calculates area of the contour,
+/// - calculates perimeter of the contour,
+/// - calculates ratio of average length to average width of the
+/// contour,
+/// - estimates average width of contour,
+/// - finds the notches (narrow 'V'-like sub-contour) on the
+/// contour.
+///
+/// For getting free bounds this class uses
+/// ShapeAnalysis_FreeBounds class.
+///
+/// For description of parameters used for initializing this
+/// class refer to CDL of ShapeAnalysis_FreeBounds.
+///
+/// Properties of each contour are stored in the data structure
+/// ShapeAnalysis_FreeBoundData.
+pub use crate::ffi::ShapeAnalysis_FreeBoundsProperties as FreeBoundsProperties;
+
+impl FreeBoundsProperties {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_FreeBoundsProperties_ctor()
+    }
+
+    /// Creates the object and calls corresponding Init.
+    /// <shape> should be a compound of faces.
+    pub fn new_shape_real_bool2(
+        shape: &crate::ffi::TopoDS_Shape,
+        tolerance: f64,
+        splitclosed: bool,
+        splitopen: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_FreeBoundsProperties_ctor_shape_real_bool2(
+            shape,
+            tolerance,
+            splitclosed,
+            splitopen,
+        )
+    }
+
+    /// Creates the object and calls corresponding Init.
+    /// <shape> should be a compound of shells.
+    pub fn new_shape_bool2(
+        shape: &crate::ffi::TopoDS_Shape,
+        splitclosed: bool,
+        splitopen: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_FreeBoundsProperties_ctor_shape_bool2(
+            shape,
+            splitclosed,
+            splitopen,
+        )
+    }
+
+    /// Creates the object and calls corresponding Init.
+    /// <shape> should be a compound of faces.
+    pub fn new_shape_real_bool(
+        shape: &crate::ffi::TopoDS_Shape,
+        tolerance: f64,
+        splitclosed: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_shape_real_bool2(shape, tolerance, splitclosed, false)
+    }
+
+    /// Creates the object and calls corresponding Init.
+    /// <shape> should be a compound of faces.
+    pub fn new_shape_real(
+        shape: &crate::ffi::TopoDS_Shape,
+        tolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_shape_real_bool2(shape, tolerance, false, false)
+    }
+
+    /// Creates the object and calls corresponding Init.
+    /// <shape> should be a compound of shells.
+    pub fn new_shape_bool(
+        shape: &crate::ffi::TopoDS_Shape,
+        splitclosed: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_shape_bool2(shape, splitclosed, false)
+    }
+
+    /// Creates the object and calls corresponding Init.
+    /// <shape> should be a compound of shells.
+    pub fn new_shape(shape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        Self::new_shape_bool2(shape, false, false)
+    }
+
+    /// Returns shape
+    pub fn shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeAnalysis_FreeBoundsProperties_shape(self)
+    }
+
+    /// Returns all closed free bounds
+    pub fn closed_free_bounds(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
+        crate::ffi::ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(self)
+    }
+
+    /// Returns all open free bounds
+    pub fn open_free_bounds(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
+        crate::ffi::ShapeAnalysis_FreeBoundsProperties_open_free_bounds(self)
+    }
+
+    /// Returns properties of closed free bound specified by its rank
+    /// number
+    pub fn closed_free_bound(
+        &self,
+        index: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisFreeBoundData> {
+        crate::ffi::ShapeAnalysis_FreeBoundsProperties_closed_free_bound(self, index)
+    }
+
+    /// Returns properties of open free bound specified by its rank
+    /// number
+    pub fn open_free_bound(
+        &self,
+        index: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisFreeBoundData> {
+        crate::ffi::ShapeAnalysis_FreeBoundsProperties_open_free_bound(self, index)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_Geom.hxx
+// ========================
+
+/// Analyzing tool aimed to work on primitive geometrical objects
+pub use crate::ffi::ShapeAnalysis_Geom as Geom;
+
+impl Geom {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_Geom_ctor()
+    }
+
+    /// Builds a plane out of a set of points in array
+    /// Returns in <dmax> the maximal distance between the produced
+    /// plane and given points
+    pub fn nearest_plane(
+        Pnts: &crate::ffi::TColgp_Array1OfPnt,
+        aPln: std::pin::Pin<&mut crate::ffi::gp_Pln>,
+        Dmax: &mut f64,
+    ) -> bool {
+        crate::ffi::ShapeAnalysis_Geom_nearest_plane(Pnts, aPln, Dmax)
+    }
+
+    /// Builds transformation object out of matrix.
+    /// Matrix must be 3 x 4.
+    /// Unit is used as multiplier.
+    pub fn position_trsf(
+        coefs: &crate::ffi::HandleTColStdHArray2OfReal,
+        trsf: std::pin::Pin<&mut crate::ffi::gp_Trsf>,
+        unit: f64,
+        prec: f64,
+    ) -> bool {
+        crate::ffi::ShapeAnalysis_Geom_position_trsf(coefs, trsf, unit, prec)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_HSequenceOfFreeBounds.hxx
+// ========================
+
+pub use crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds as HSequenceOfFreeBounds;
+
+impl HSequenceOfFreeBounds {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_ctor()
+    }
+
+    pub fn new_sequenceoffreebounds(
+        theOther: &crate::ffi::ShapeAnalysis_SequenceOfFreeBounds,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_ctor_sequenceoffreebounds(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
+        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds;
+
+impl HandleShapeAnalysisHSequenceOfFreeBounds {
+    /// Dereference this Handle to access the underlying ShapeAnalysis_HSequenceOfFreeBounds
+    pub fn get(&self) -> &crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds {
+        crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeAnalysis_HSequenceOfFreeBounds
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds> {
+        crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_get_mut(self)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_ShapeContents.hxx
+// ========================
+
+/// Dumps shape contents
+pub use crate::ffi::ShapeAnalysis_ShapeContents as ShapeContents;
+
+impl ShapeContents {
+    /// Initialize fields and call ClearFlags()
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_ShapeContents_ctor()
+    }
+}
+
+// ========================
+// From ShapeAnalysis_ShapeTolerance.hxx
+// ========================
+
+/// Tool for computing shape tolerances (minimal, maximal, average),
+/// finding shape with tolerance matching given criteria,
+/// setting or limitating tolerances.
+pub use crate::ffi::ShapeAnalysis_ShapeTolerance as ShapeTolerance;
+
+impl ShapeTolerance {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_ShapeTolerance_ctor()
+    }
+
+    /// Determines a tolerance from the ones stored in a shape
+    /// Remark : calls InitTolerance and AddTolerance,
+    /// hence, can be used to start a series for cumulating tolerance
+    /// <mode> = 0 : returns the average value between sub-shapes,
+    /// <mode> > 0 : returns the maximal found,
+    /// <mode> < 0 : returns the minimal found.
+    /// <type> defines what kinds of sub-shapes to consider:
+    /// SHAPE (default) : all : VERTEX, EDGE, FACE,
+    /// VERTEX : only vertices,
+    /// EDGE   : only edges,
+    /// FACE   : only faces,
+    /// SHELL  : combined SHELL + FACE, for each face (and containing
+    /// shell), also checks EDGE and VERTEX
+    pub fn tolerance(
+        self: std::pin::Pin<&mut Self>,
+        shape: &crate::ffi::TopoDS_Shape,
+        mode: i32,
+        type_: i32,
+    ) -> f64 {
+        crate::ffi::ShapeAnalysis_ShapeTolerance_tolerance(self, shape, mode, type_)
+    }
+
+    /// Determines which shapes have a tolerance over the given value
+    /// <type> is interpreted as in the method Tolerance
+    pub fn over_tolerance(
+        &self,
+        shape: &crate::ffi::TopoDS_Shape,
+        value: f64,
+        type_: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+        crate::ffi::ShapeAnalysis_ShapeTolerance_over_tolerance(self, shape, value, type_)
+    }
+
+    /// Determines which shapes have a tolerance within a given interval
+    /// <type> is interpreted as in the method Tolerance
+    pub fn in_tolerance(
+        &self,
+        shape: &crate::ffi::TopoDS_Shape,
+        valmin: f64,
+        valmax: f64,
+        type_: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+        crate::ffi::ShapeAnalysis_ShapeTolerance_in_tolerance(self, shape, valmin, valmax, type_)
+    }
+
+    /// Adds data on new Shape to compute Cumulated Tolerance
+    /// (prepares three computations : maximal, average, minimal)
+    pub fn add_tolerance(
+        self: std::pin::Pin<&mut Self>,
+        shape: &crate::ffi::TopoDS_Shape,
+        type_: i32,
+    ) {
+        crate::ffi::ShapeAnalysis_ShapeTolerance_add_tolerance(self, shape, type_)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_Shell.hxx
+// ========================
+
+/// This class provides operators to analyze edges orientation
+/// in the shell.
+pub use crate::ffi::ShapeAnalysis_Shell as Shell;
+
+impl Shell {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_Shell_ctor()
+    }
+
+    /// Returns a loaded shape specified by its rank number.
+    /// Returns null shape if <num> is out of range
+    pub fn loaded(&self, num: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeAnalysis_Shell_loaded(self, num)
+    }
+
+    /// Returns the list of bad edges as a Compound
+    /// It is empty (not null) if no edge are recorded as bad
+    pub fn bad_edges(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Compound> {
+        crate::ffi::ShapeAnalysis_Shell_bad_edges(self)
+    }
+
+    /// Returns the list of free (not connected) edges as a Compound
+    /// It is empty (not null) if no edge are recorded as free
+    pub fn free_edges(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Compound> {
+        crate::ffi::ShapeAnalysis_Shell_free_edges(self)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_Surface.hxx
+// ========================
+
+/// Complements standard tool Geom_Surface by providing additional
+/// functionality for detection surface singularities, checking
+/// spatial surface closure and computing projections of 3D points
+/// onto a surface.
+///
+/// * The singularities
+/// Each singularity stores the precision with which corresponding
+/// surface iso-line is considered as degenerated.
+/// The number of singularities is determined by specifying precision
+/// and always not greater than 4.
+///
+/// * The spatial closure
+/// The check for spatial closure is performed with given precision
+/// (default value is Precision::Confusion).
+/// If Geom_Surface says that the surface is closed, this class
+/// also says this. Otherwise additional analysis is performed.
+///
+/// * The parameters of 3D point on the surface
+/// The projection of the point is performed with given precision.
+/// This class tries to find a solution taking into account possible
+/// singularities.
+/// Additional method for searching the solution from already built
+/// one is also provided.
+///
+/// This tool is optimised: computes most information only once
+pub use crate::ffi::ShapeAnalysis_Surface as Surface;
+
+impl Surface {
+    /// Creates an analyzer object on the basis of existing surface
+    pub fn new_handlegeomsurface(S: &crate::ffi::HandleGeomSurface) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_Surface_ctor_handlegeomsurface(S)
+    }
+
+    /// Returns a 3D point specified by parameters in surface
+    /// parametrical space
+    pub fn value_real2(
+        self: std::pin::Pin<&mut Self>,
+        u: f64,
+        v: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::ShapeAnalysis_Surface_value_real2(self, u, v)
+    }
+
+    /// Returns a 3d point specified by a point in surface
+    /// parametrical space
+    pub fn value_pnt2d(
+        self: std::pin::Pin<&mut Self>,
+        p2d: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::ShapeAnalysis_Surface_value_pnt2d(self, p2d)
+    }
+
+    /// Returns a U-Iso. Null if not possible or failed
+    /// Remark : bound isos are buffered
+    pub fn u_iso(
+        self: std::pin::Pin<&mut Self>,
+        U: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::ShapeAnalysis_Surface_u_iso(self, U)
+    }
+
+    /// Returns a V-Iso. Null if not possible or failed
+    /// Remark : bound isos are buffered
+    pub fn v_iso(
+        self: std::pin::Pin<&mut Self>,
+        V: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::ShapeAnalysis_Surface_v_iso(self, V)
+    }
+
+    /// Computes the parameters in the surface parametrical space of
+    /// 3D point.
+    /// The result is parameters of the point projected onto the
+    /// surface.
+    /// This method enhances functionality provided by the standard
+    /// tool GeomAPI_ProjectPointOnSurface by treatment of cases when
+    /// the projected point is near to the surface boundaries and
+    /// when this standard tool fails.
+    pub fn value_of_uv(
+        self: std::pin::Pin<&mut Self>,
+        P3D: &crate::ffi::gp_Pnt,
+        preci: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::ShapeAnalysis_Surface_value_of_uv(self, P3D, preci)
+    }
+
+    /// Projects a point P3D on the surface.
+    /// Does the same thing as ValueOfUV but tries to optimize
+    /// computations by taking into account previous point <p2dPrev>:
+    /// makes a step by UV and tries Newton algorithm.
+    /// If <maxpreci> >0. and distance between solution and
+    /// P3D is greater than <maxpreci>, that solution is considered
+    /// as bad, and ValueOfUV() is used.
+    /// If not succeeded, calls ValueOfUV()
+    pub fn next_value_of_uv(
+        self: std::pin::Pin<&mut Self>,
+        p2dPrev: &crate::ffi::gp_Pnt2d,
+        P3D: &crate::ffi::gp_Pnt,
+        preci: f64,
+        maxpreci: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::ShapeAnalysis_Surface_next_value_of_uv(self, p2dPrev, P3D, preci, maxpreci)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeAnalysis_Surface_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisSurface> {
+        crate::ffi::ShapeAnalysis_Surface_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleShapeAnalysisSurface;
+
+impl HandleShapeAnalysisSurface {
+    /// Dereference this Handle to access the underlying ShapeAnalysis_Surface
+    pub fn get(&self) -> &crate::ffi::ShapeAnalysis_Surface {
+        crate::ffi::HandleShapeAnalysisSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeAnalysis_Surface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ShapeAnalysis_Surface> {
+        crate::ffi::HandleShapeAnalysisSurface_get_mut(self)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_TransferParameters.hxx
+// ========================
+
+/// This tool is used for transferring parameters
+/// from 3d curve of the edge to pcurve and vice versa.
+///
+/// Default behaviour is to trsnafer parameters with help
+/// of linear transformation:
+///
+/// T2d = myShift + myScale * T3d
+/// where
+/// myScale = ( Last2d - First2d ) / ( Last3d - First3d )
+/// myShift = First2d - First3d * myScale
+/// [First3d, Last3d] and [First2d, Last2d] are ranges of
+/// edge on curve and pcurve
+///
+/// This behaviour can be redefined in derived classes, for example,
+/// using projection.
+pub use crate::ffi::ShapeAnalysis_TransferParameters as TransferParameters;
+
+impl TransferParameters {
+    /// Creates empty tool with myShift = 0 and myScale = 1
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_TransferParameters_ctor()
+    }
+
+    /// Creates a tool and initializes it with edge and face
+    pub fn new_edge_face(
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_TransferParameters_ctor_edge_face(E, F)
+    }
+
+    /// Transfers parameters given by sequence Params from 3d curve
+    /// to pcurve (if To2d is True) or back (if To2d is False)
+    pub fn perform_handletcolstdhsequenceofreal_bool(
+        self: std::pin::Pin<&mut Self>,
+        Params: &crate::ffi::HandleTColStdHSequenceOfReal,
+        To2d: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        crate::ffi::ShapeAnalysis_TransferParameters_perform(self, Params, To2d)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeAnalysis_TransferParameters_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisTransferParameters> {
+        crate::ffi::ShapeAnalysis_TransferParameters_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleShapeAnalysisTransferParameters;
+
+impl HandleShapeAnalysisTransferParameters {
+    /// Dereference this Handle to access the underlying ShapeAnalysis_TransferParameters
+    pub fn get(&self) -> &crate::ffi::ShapeAnalysis_TransferParameters {
+        crate::ffi::HandleShapeAnalysisTransferParameters_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeAnalysis_TransferParameters
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ShapeAnalysis_TransferParameters> {
+        crate::ffi::HandleShapeAnalysisTransferParameters_get_mut(self)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_TransferParametersProj.hxx
+// ========================
+
+/// This tool is used for transferring parameters
+/// from 3d curve of the edge to pcurve and vice versa.
+/// This tool transfers parameters with help of
+/// projection points from curve 3d on curve 2d and
+/// vice versa
+pub use crate::ffi::ShapeAnalysis_TransferParametersProj as TransferParametersProj;
+
+impl TransferParametersProj {
+    /// Creates empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_ctor()
+    }
+
+    pub fn new_edge_face(
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_ctor_edge_face(E, F)
+    }
+
+    /// Transfers parameters given by sequence Params from 3d curve
+    /// to pcurve (if To2d is True) or back (if To2d is False)
+    pub fn perform_handletcolstdhsequenceofreal_bool(
+        self: std::pin::Pin<&mut Self>,
+        Papams: &crate::ffi::HandleTColStdHSequenceOfReal,
+        To2d: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_perform(self, Papams, To2d)
+    }
+
+    /// Make a copy of non-manifold vertex theVert
+    /// (i.e. create new  TVertex and replace PointRepresentations for this vertex
+    /// from fromedge to toedge. Other representations were copied)
+    pub fn copy_nm_vertex_vertex_edge2(
+        theVert: &crate::ffi::TopoDS_Vertex,
+        toedge: &crate::ffi::TopoDS_Edge,
+        fromedge: &crate::ffi::TopoDS_Edge,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_copy_nm_vertex_vertex_edge2(
+            theVert, toedge, fromedge,
+        )
+    }
+
+    /// Make a copy of non-manifold vertex theVert
+    /// (i.e. create new  TVertex and replace PointRepresentations for this vertex
+    /// from fromFace to toFace. Other representations were copied)
+    pub fn copy_nm_vertex_vertex_face2(
+        theVert: &crate::ffi::TopoDS_Vertex,
+        toFace: &crate::ffi::TopoDS_Face,
+        fromFace: &crate::ffi::TopoDS_Face,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_copy_nm_vertex_vertex_face2(
+            theVert, toFace, fromFace,
+        )
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_get_type_descriptor()
+    }
+
+    /// Upcast to ShapeAnalysis_TransferParameters
+    pub fn as_transfer_parameters(&self) -> &TransferParameters {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_as_ShapeAnalysis_TransferParameters(self)
+    }
+
+    /// Upcast to ShapeAnalysis_TransferParameters (mutable)
+    pub fn as_transfer_parameters_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut TransferParameters> {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_as_ShapeAnalysis_TransferParameters_mut(
+            self,
+        )
+    }
+
+    /// Inherited from ShapeAnalysis_TransferParameters: SetMaxTolerance()
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_inherited_SetMaxTolerance(self, maxtol)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_Wire.hxx
+// ========================
+
+/// This class provides analysis of a wire to be compliant to
+/// CAS.CADE requirements.
+///
+/// The functionalities provided are the following:
+/// 1. consistency of 2d and 3d edge curve senses
+/// 2. connection of adjacent edges regarding to:
+/// a. their vertices
+/// b. their pcurves
+/// c. their 3d curves
+/// 3. adjacency of the edge vertices to its pcurve and 3d curve
+/// 4. if a wire is closed or not (considering its 3d and 2d
+/// contour)
+/// 5. if a wire is outer on its face (considering pcurves)
+///
+/// This class can be used in conjunction with class
+/// ShapeFix_Wire, which will fix the problems detected by this class.
+///
+/// The methods of the given class match to ones of the class
+/// ShapeFix_Wire, e.g., CheckSmall and FixSmall.
+/// This class also includes some auxiliary methods
+/// (e.g., CheckOuterBound, etc.),
+/// which have no pair in ShapeFix_Wire.
+///
+/// Like methods of ShapeFix_Wire the ones of this class are
+/// grouped into two levels:
+/// - Public which are recommended for use (the most global
+/// method is Perform),
+/// - Advanced, for optional use only
+///
+/// For analyzing result of Public API checking methods use
+/// corresponding Status... method.
+/// The 'advanced' functions share the single status field which
+/// contains the result of the last performed 'advanced' method.
+/// It is queried by the method LastCheckStatus().
+///
+/// In order to prepare an analyzer, it is necessary to load a wire,
+/// set face and precision.
+pub use crate::ffi::ShapeAnalysis_Wire as Wire;
+
+impl Wire {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_Wire_ctor()
+    }
+
+    /// Creates object with standard TopoDS_Wire, face
+    /// and precision
+    pub fn new_wire_face_real(
+        wire: &crate::ffi::TopoDS_Wire,
+        face: &crate::ffi::TopoDS_Face,
+        precision: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_Wire_ctor_wire_face_real(wire, face, precision)
+    }
+
+    pub fn status_order(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_order(self, Status)
+    }
+
+    pub fn status_connected(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_connected(self, Status)
+    }
+
+    pub fn status_edge_curves(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_edge_curves(self, Status)
+    }
+
+    pub fn status_degenerated(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_degenerated(self, Status)
+    }
+
+    pub fn status_closed(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_closed(self, Status)
+    }
+
+    pub fn status_small(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_small(self, Status)
+    }
+
+    pub fn status_self_intersection(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_self_intersection(self, Status)
+    }
+
+    pub fn status_lacking(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_lacking(self, Status)
+    }
+
+    pub fn status_gaps3d(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_gaps3d(self, Status)
+    }
+
+    pub fn status_gaps2d(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_gaps2d(self, Status)
+    }
+
+    pub fn status_curve_gaps(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_curve_gaps(self, Status)
+    }
+
+    pub fn status_loop(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_loop(self, Status)
+    }
+
+    /// Querying the status of the LAST performed 'Advanced' checking procedure
+    pub fn last_check_status(&self, Status: i32) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_last_check_status(self, Status)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::ShapeAnalysis_Wire_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisWire> {
+        crate::ffi::ShapeAnalysis_Wire_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleShapeAnalysisWire;
+
+impl HandleShapeAnalysisWire {
+    /// Dereference this Handle to access the underlying ShapeAnalysis_Wire
+    pub fn get(&self) -> &crate::ffi::ShapeAnalysis_Wire {
+        crate::ffi::HandleShapeAnalysisWire_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeAnalysis_Wire
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::ShapeAnalysis_Wire> {
+        crate::ffi::HandleShapeAnalysisWire_get_mut(self)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_WireOrder.hxx
+// ========================
+
+/// This class is intended to control and, if possible, redefine
+/// the order of a list of edges which define a wire
+/// Edges are not given directly, but as their bounds (start,end)
+///
+/// This allows to use this tool, either on existing wire, or on
+/// data just taken from a file (coordinates are easy to get)
+///
+/// It can work, either in 2D, or in 3D, or miscible mode
+/// The tolerance for each mode is fixed
+///
+/// Two phases : firstly add the couples (start, end)
+/// secondly perform then get the result
+pub use crate::ffi::ShapeAnalysis_WireOrder as WireOrder;
+
+impl WireOrder {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_WireOrder_ctor()
+    }
+
+    /// Creates a WireOrder.
+    /// Flag <theMode3D> defines 3D or 2d mode.
+    /// Flag <theModeBoth> defines miscible mode and the flag <theMode3D> is ignored.
+    /// Warning: Parameter <theTolerance> is not used in algorithm.
+    pub fn new_bool_real_bool(
+        theMode3D: bool,
+        theTolerance: f64,
+        theModeBoth: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_WireOrder_ctor_bool_real_bool(
+            theMode3D,
+            theTolerance,
+            theModeBoth,
+        )
+    }
+
+    /// Creates a WireOrder.
+    /// Flag <theMode3D> defines 3D or 2d mode.
+    /// Flag <theModeBoth> defines miscible mode and the flag <theMode3D> is ignored.
+    /// Warning: Parameter <theTolerance> is not used in algorithm.
+    pub fn new_bool_real(theMode3D: bool, theTolerance: f64) -> cxx::UniquePtr<Self> {
+        Self::new_bool_real_bool(theMode3D, theTolerance, false)
+    }
+}
+
+// ========================
+// From ShapeAnalysis_WireVertex.hxx
+// ========================
+
+/// Analyzes and records status of vertices in a Wire
+///
+/// The Wire has formerly been loaded in a ShapeExtend_WireData
+/// For each Vertex, a status and some data can be attached
+/// (case found, position and parameters)
+/// Then, these information can be used to fix problems
+pub use crate::ffi::ShapeAnalysis_WireVertex as WireVertex;
+
+impl WireVertex {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_WireVertex_ctor()
+    }
+
+    pub fn position(&self, num: i32) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::ShapeAnalysis_WireVertex_position(self, num)
+    }
+}
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    ShapeAnalysis_DataMapOfShapeListOfReal as DataMapOfShapeListOfReal,
+    ShapeAnalysis_SequenceOfFreeBounds as SequenceOfFreeBounds,
+};

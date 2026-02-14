@@ -6,6 +6,727 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// C++ enum: `GCPnts_AbscissaType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum AbscissaType {
+    Lengthparametrized = 0,
+    Parametrized = 1,
+    Abscomposite = 2,
+}
+
+impl From<AbscissaType> for i32 {
+    fn from(value: AbscissaType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for AbscissaType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(AbscissaType::Lengthparametrized),
+            1 => Ok(AbscissaType::Parametrized),
+            2 => Ok(AbscissaType::Abscomposite),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `GCPnts_DeflectionType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum DeflectionType {
+    Linear = 0,
+    Circular = 1,
+    Curved = 2,
+    Defcomposite = 3,
+}
+
+impl From<DeflectionType> for i32 {
+    fn from(value: DeflectionType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for DeflectionType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(DeflectionType::Linear),
+            1 => Ok(DeflectionType::Circular),
+            2 => Ok(DeflectionType::Curved),
+            3 => Ok(DeflectionType::Defcomposite),
+            _ => Err(value),
+        }
+    }
+}
+
+// ========================
+// From GCPnts_AbscissaPoint.hxx
+// ========================
+
+/// Provides an algorithm to compute a point on a curve
+/// situated at a given distance from another point on the curve,
+/// the distance being measured along the curve (curvilinear abscissa on the curve).
+/// This algorithm is also used to compute the length of a curve.
+/// An AbscissaPoint object provides a framework for:
+/// -   defining the point to compute
+/// -   implementing the construction algorithm
+/// -   consulting the result.
+pub use crate::ffi::GCPnts_AbscissaPoint as AbscissaPoint;
+
+impl AbscissaPoint {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_AbscissaPoint_ctor()
+    }
+
+    /// The algorithm computes a point on a curve at the
+    /// distance theAbscissa from the point of parameter theU0.
+    pub fn new_curve_real2(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAbscissa: f64,
+        theU0: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_AbscissaPoint_ctor_curve_real2(theC, theAbscissa, theU0)
+    }
+
+    /// The algorithm computes a point on a curve at
+    /// the distance theAbscissa from the point of parameter
+    /// theU0 with the given tolerance.
+    pub fn new_real_curve_real2(
+        theTol: f64,
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAbscissa: f64,
+        theU0: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_AbscissaPoint_ctor_real_curve_real2(theTol, theC, theAbscissa, theU0)
+    }
+
+    /// The algorithm computes a point on a curve at
+    /// the distance theAbscissa from the point of parameter
+    /// theU0 with the given tolerance.
+    pub fn new_real_curve2d_real2(
+        theTol: f64,
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAbscissa: f64,
+        theU0: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_AbscissaPoint_ctor_real_curve2d_real2(theTol, theC, theAbscissa, theU0)
+    }
+
+    /// The algorithm computes a point on a curve at the
+    /// distance theAbscissa from the point of parameter theU0.
+    pub fn new_curve2d_real2(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAbscissa: f64,
+        theU0: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_AbscissaPoint_ctor_curve2d_real2(theC, theAbscissa, theU0)
+    }
+
+    /// The algorithm computes a point on a curve at the
+    /// distance theAbscissa from the point of parameter theU0.
+    /// theUi is the starting value used in the iterative process
+    /// which find the solution, it must be close to the final solution.
+    pub fn new_curve_real3(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAbscissa: f64,
+        theU0: f64,
+        theUi: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_AbscissaPoint_ctor_curve_real3(theC, theAbscissa, theU0, theUi)
+    }
+
+    /// The algorithm computes a point on a curve at the
+    /// distance theAbscissa from the point of parameter theU0.
+    /// theUi is the starting value used in the iterative process
+    /// which find the solution, it must be closed to the final solution
+    pub fn new_curve2d_real3(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAbscissa: f64,
+        theU0: f64,
+        theUi: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_AbscissaPoint_ctor_curve2d_real3(theC, theAbscissa, theU0, theUi)
+    }
+
+    /// The algorithm computes a point on a curve at the
+    /// distance theAbscissa from the point of parameter theU0.
+    /// theUi is the starting value used in the iterative process
+    /// which find the solution, it must be close to the final solution
+    pub fn new_curve_real4(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAbscissa: f64,
+        theU0: f64,
+        theUi: f64,
+        theTol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_AbscissaPoint_ctor_curve_real4(theC, theAbscissa, theU0, theUi, theTol)
+    }
+
+    /// The algorithm computes a point on a curve at the
+    /// distance theAbscissa from the point of parameter theU0.
+    /// theUi is the starting value used in the iterative process
+    /// which find the solution, it must be close to the final solution
+    pub fn new_curve2d_real4(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAbscissa: f64,
+        theU0: f64,
+        theUi: f64,
+        theTol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_AbscissaPoint_ctor_curve2d_real4(theC, theAbscissa, theU0, theUi, theTol)
+    }
+
+    /// Computes the length of the 3D Curve.
+    pub fn length_curve(theC: &crate::ffi::Adaptor3d_Curve) -> f64 {
+        crate::ffi::GCPnts_AbscissaPoint_length_curve(theC)
+    }
+
+    /// Computes the length of the 2D Curve.
+    pub fn length_curve2d(theC: &crate::ffi::Adaptor2d_Curve2d) -> f64 {
+        crate::ffi::GCPnts_AbscissaPoint_length_curve2d(theC)
+    }
+
+    /// Computes the length of the 3D Curve with the given tolerance.
+    pub fn length_curve_real(theC: &crate::ffi::Adaptor3d_Curve, theTol: f64) -> f64 {
+        crate::ffi::GCPnts_AbscissaPoint_length_curve_real(theC, theTol)
+    }
+
+    /// Computes the length of the 2D Curve with the given tolerance.
+    pub fn length_curve2d_real(theC: &crate::ffi::Adaptor2d_Curve2d, theTol: f64) -> f64 {
+        crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real(theC, theTol)
+    }
+
+    /// Computes the length of the 3D Curve.
+    pub fn length_curve_real2(theC: &crate::ffi::Adaptor3d_Curve, theU1: f64, theU2: f64) -> f64 {
+        crate::ffi::GCPnts_AbscissaPoint_length_curve_real2(theC, theU1, theU2)
+    }
+
+    /// Computes the length of the 2D Curve.
+    pub fn length_curve2d_real2(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theU1: f64,
+        theU2: f64,
+    ) -> f64 {
+        crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real2(theC, theU1, theU2)
+    }
+
+    /// Computes the length of the 3D Curve with the given tolerance.
+    pub fn length_curve_real3(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theU1: f64,
+        theU2: f64,
+        theTol: f64,
+    ) -> f64 {
+        crate::ffi::GCPnts_AbscissaPoint_length_curve_real3(theC, theU1, theU2, theTol)
+    }
+
+    /// Computes the length of the Curve with the given tolerance.
+    pub fn length_curve2d_real3(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theU1: f64,
+        theU2: f64,
+        theTol: f64,
+    ) -> f64 {
+        crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real3(theC, theU1, theU2, theTol)
+    }
+}
+
+// ========================
+// From GCPnts_DistFunction.hxx
+// ========================
+
+/// Class to define function, which calculates square distance between point on curve
+/// C(u), U1 <= u <= U2 and line passing through points C(U1) and C(U2)
+/// This function is used in any minimization algorithm to define maximal deviation between curve
+/// and line, which required one variable function without derivative (for ex. math_BrentMinimum)
+pub use crate::ffi::GCPnts_DistFunction as DistFunction;
+
+impl DistFunction {
+    pub fn new_curve_real2(
+        theCurve: &crate::ffi::Adaptor3d_Curve,
+        U1: f64,
+        U2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_DistFunction_ctor_curve_real2(theCurve, U1, U2)
+    }
+
+    pub fn new_distfunction(theOther: &crate::ffi::GCPnts_DistFunction) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_DistFunction_ctor_distfunction(theOther)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        crate::ffi::GCPnts_DistFunction_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::Function> {
+        crate::ffi::GCPnts_DistFunction_as_math_Function_mut(self)
+    }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::GCPnts_DistFunction_inherited_GetStateNumber(self)
+    }
+}
+
+/// The same as class GCPnts_DistFunction, but it can be used in minimization algorithms that
+/// requires multi variable function
+pub use crate::ffi::GCPnts_DistFunctionMV as DistFunctionMV;
+
+impl DistFunctionMV {
+    pub fn new_distfunction(
+        theCurvLinDist: std::pin::Pin<&mut crate::ffi::GCPnts_DistFunction>,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_DistFunctionMV_ctor_distfunction(theCurvLinDist)
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        crate::ffi::GCPnts_DistFunctionMV_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
+        crate::ffi::GCPnts_DistFunctionMV_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::GCPnts_DistFunctionMV_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From GCPnts_DistFunction2d.hxx
+// ========================
+
+/// Class to define function, which calculates square distance between point on curve
+/// C(u), U1 <= u <= U2 and line passing through points C(U1) and C(U2)
+/// This function is used in any minimisation algorithm to define maximal deviation between curve
+/// and line, which required one variable function without derivative (for ex. math_BrentMinimum)
+pub use crate::ffi::GCPnts_DistFunction2d as DistFunction2d;
+
+impl DistFunction2d {
+    pub fn new_curve2d_real2(
+        theCurve: &crate::ffi::Adaptor2d_Curve2d,
+        U1: f64,
+        U2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_DistFunction2d_ctor_curve2d_real2(theCurve, U1, U2)
+    }
+
+    pub fn new_distfunction2d(
+        theOther: &crate::ffi::GCPnts_DistFunction2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_DistFunction2d_ctor_distfunction2d(theOther)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        crate::ffi::GCPnts_DistFunction2d_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::Function> {
+        crate::ffi::GCPnts_DistFunction2d_as_math_Function_mut(self)
+    }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::GCPnts_DistFunction2d_inherited_GetStateNumber(self)
+    }
+}
+
+/// The same as class GCPnts_DistFunction2d,
+/// but it can be used in minimization algorithms that
+/// requires multi variable function
+pub use crate::ffi::GCPnts_DistFunction2dMV as DistFunction2dMV;
+
+impl DistFunction2dMV {
+    pub fn new_distfunction2d(
+        theCurvLinDist: std::pin::Pin<&mut crate::ffi::GCPnts_DistFunction2d>,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_DistFunction2dMV_ctor_distfunction2d(theCurvLinDist)
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        crate::ffi::GCPnts_DistFunction2dMV_as_math_MultipleVarFunction(self)
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
+        crate::ffi::GCPnts_DistFunction2dMV_as_math_MultipleVarFunction_mut(self)
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::GCPnts_DistFunction2dMV_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From GCPnts_QuasiUniformAbscissa.hxx
+// ========================
+
+/// This class provides an algorithm to compute a uniform abscissa
+/// distribution of points on a curve, i.e. a sequence of equidistant points.
+/// The distance between two consecutive points is measured along the curve.
+///
+/// The distribution is defined by a number of points.
+pub use crate::ffi::GCPnts_QuasiUniformAbscissa as QuasiUniformAbscissa;
+
+impl QuasiUniformAbscissa {
+    /// Constructs an empty algorithm.
+    /// To define the problem to be solved, use the function Initialize.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_QuasiUniformAbscissa_ctor()
+    }
+
+    /// Computes a uniform abscissa distribution of points
+    /// -   on the curve where Abscissa is the curvilinear distance between
+    /// two consecutive points of the distribution.
+    pub fn new_curve_int(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theNbPoints: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_QuasiUniformAbscissa_ctor_curve_int(theC, theNbPoints)
+    }
+
+    /// Computes a uniform abscissa distribution of points
+    /// on the part of curve limited by the two parameter values theU1 and theU2,
+    /// where Abscissa is the curvilinear distance between
+    /// two consecutive points of the distribution.
+    /// The first point of the distribution is either the origin of
+    /// curve or the point of parameter theU1.
+    /// The following points are computed such that the curvilinear
+    /// distance between two consecutive points is equal to Abscissa.
+    /// The last point of the distribution is either the end
+    /// point of curve or the point of parameter theU2.
+    /// However the curvilinear distance between this last
+    /// point and the point just preceding it in the distribution is,
+    /// of course, generally not equal to Abscissa.
+    /// Use the function IsDone() to verify that the computation was successful,
+    /// the function NbPoints() to obtain the number of points of the computed distribution,
+    /// and the function Parameter() to read the parameter of each point.
+    ///
+    /// Warning
+    /// The roles of theU1 and theU2 are inverted if theU1 > theU2.
+    /// Warning
+    /// theC is an adapted curve, that is, an object which is an interface between:
+    /// -   the services provided by either a 2D curve from
+    /// the package Geom2d (in the case of an Adaptor2d_Curve2d curve)
+    /// or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve),
+    /// -   and those required on the curve by the computation algorithm.
+    /// @param[in] theC  input 3D curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    pub fn new_curve_int_real2(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theNbPoints: i32,
+        theU1: f64,
+        theU2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_QuasiUniformAbscissa_ctor_curve_int_real2(
+            theC,
+            theNbPoints,
+            theU1,
+            theU2,
+        )
+    }
+
+    /// Computes a uniform abscissa distribution of points on the 2D curve.
+    /// @param[in] theC  input 2D curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    pub fn new_curve2d_int(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theNbPoints: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_QuasiUniformAbscissa_ctor_curve2d_int(theC, theNbPoints)
+    }
+
+    /// Computes a Uniform abscissa distribution of points on a part of the 2D curve.
+    /// @param[in] theC  input 2D curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    pub fn new_curve2d_int_real2(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theNbPoints: i32,
+        theU1: f64,
+        theU2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_QuasiUniformAbscissa_ctor_curve2d_int_real2(
+            theC,
+            theNbPoints,
+            theU1,
+            theU2,
+        )
+    }
+}
+
+// ========================
+// From GCPnts_QuasiUniformDeflection.hxx
+// ========================
+
+/// This class computes a distribution of points on a curve.
+/// The points may respect the deflection.
+/// The algorithm is not based on the classical prediction (with second derivative of curve),
+/// but either on the evaluation of the distance between the mid point
+/// and the point of mid parameter of the two points,
+/// or the distance between the mid point and the point at parameter 0.5
+/// on the cubic interpolation of the two points and their tangents.
+///
+/// Note: this algorithm is faster than a GCPnts_UniformDeflection algorithm,
+/// and is able to work with non-"C2" continuous curves.
+/// However, it generates more points in the distribution.
+pub use crate::ffi::GCPnts_QuasiUniformDeflection as QuasiUniformDeflection;
+
+impl QuasiUniformDeflection {
+    /// Constructs an empty algorithm.
+    /// To define the problem to be solved, use the function Initialize().
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_QuasiUniformDeflection_ctor()
+    }
+
+    /// Computes a QuasiUniform Deflection distribution of points on the Curve.
+    pub fn new_curve_real_shape(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theDeflection: f64,
+        theContinuity: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve_real_shape(
+            theC,
+            theDeflection,
+            theContinuity,
+        )
+    }
+
+    /// Computes a QuasiUniform Deflection distribution of points on the Curve.
+    pub fn new_curve2d_real_shape(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theDeflection: f64,
+        theContinuity: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve2d_real_shape(
+            theC,
+            theDeflection,
+            theContinuity,
+        )
+    }
+
+    /// Computes a QuasiUniform Deflection distribution of points on a part of the Curve.
+    pub fn new_curve_real3_shape(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theDeflection: f64,
+        theU1: f64,
+        theU2: f64,
+        theContinuity: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve_real3_shape(
+            theC,
+            theDeflection,
+            theU1,
+            theU2,
+            theContinuity,
+        )
+    }
+
+    /// Computes a QuasiUniform Deflection distribution of points on a part of the Curve.
+    /// This and the above algorithms compute a distribution of points:
+    /// -   on the curve theC, or
+    /// -   on the part of curve theC limited by the two parameter values theU1 and theU2,
+    /// where the deflection resulting from the distributed
+    /// points is not greater than theDeflection.
+    ///
+    /// The first point of the distribution is either the origin of
+    /// curve theC or the point of parameter theU1.
+    /// The last point of the distribution is either the end point
+    /// of curve theC or the point of parameter theU2.
+    ///
+    /// Intermediate points of the distribution are built such
+    /// that the deflection is not greater than theDeflection.
+    /// Using the following evaluation of the deflection:
+    /// if Pi and Pj are two consecutive points of the
+    /// distribution, respectively of parameter ui and uj on the curve,
+    /// the deflection is the distance between:
+    /// -   the mid-point of Pi and Pj (the center of the chord joining these two points)
+    /// -   and the point of mid-parameter of these two
+    /// points (the point of parameter [(ui+uj) / 2] on curve theC).
+    /// theContinuity, defaulted to GeomAbs_C1, gives the degree of continuity of the curve theC.
+    /// (Note that C is an Adaptor3d_Curve or an Adaptor2d_Curve2d object,
+    /// and does not know the degree of continuity of the underlying curve).
+    /// Use the function IsDone() to verify that the computation was successful,
+    /// the function NbPoints() to obtain the number of points of the computed distribution,
+    /// and the function Parameter() to read the parameter of each point.
+    ///
+    /// Warning
+    /// -   The roles of theU1 and theU2 are inverted if theU1 > theU2.
+    /// -   Derivative functions on the curve are called according to theContinuity.
+    /// An error may occur if theContinuity is greater than
+    /// the real degree of continuity of the curve.
+    ///
+    /// Warning
+    /// theC is an adapted curve, i.e. an object which is an interface between:
+    /// -   the services provided by either a 2D curve from
+    /// the package Geom2d (in the case of an Adaptor2d_Curve2d curve)
+    /// or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve),
+    /// -   and those required on the curve by the computation algorithm.
+    pub fn new_curve2d_real3_shape(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theDeflection: f64,
+        theU1: f64,
+        theU2: f64,
+        theContinuity: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve2d_real3_shape(
+            theC,
+            theDeflection,
+            theU1,
+            theU2,
+            theContinuity,
+        )
+    }
+
+    /// Initialize the algorithms with 3D curve and deflection.
+    pub fn initialize_curve_real_shape(
+        self: std::pin::Pin<&mut Self>,
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theDeflection: f64,
+        theContinuity: i32,
+    ) {
+        crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve_real_shape(
+            self,
+            theC,
+            theDeflection,
+            theContinuity,
+        )
+    }
+
+    /// Initialize the algorithms with 2D curve and deflection.
+    pub fn initialize_curve2d_real_shape(
+        self: std::pin::Pin<&mut Self>,
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theDeflection: f64,
+        theContinuity: i32,
+    ) {
+        crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve2d_real_shape(
+            self,
+            theC,
+            theDeflection,
+            theContinuity,
+        )
+    }
+
+    /// Initialize the algorithms with 3D curve, deflection and parameter range.
+    pub fn initialize_curve_real3_shape(
+        self: std::pin::Pin<&mut Self>,
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theDeflection: f64,
+        theU1: f64,
+        theU2: f64,
+        theContinuity: i32,
+    ) {
+        crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve_real3_shape(
+            self,
+            theC,
+            theDeflection,
+            theU1,
+            theU2,
+            theContinuity,
+        )
+    }
+
+    /// Initialize the algorithms with theC, theDeflection, theU1, theU2.
+    /// This and the above algorithms initialize (or reinitialize)
+    /// this algorithm and compute a distribution of points:
+    /// -   on the curve theC, or
+    /// -   on the part of curve theC limited by the two parameter values theU1 and theU2,
+    /// where the deflection resulting from the distributed
+    /// points is not greater than theDeflection.
+    ///
+    /// The first point of the distribution is either the origin
+    /// of curve theC or the point of parameter theU1.
+    /// The last point of the distribution is either the end point of
+    /// curve theC or the point of parameter theU2.
+    ///
+    /// Intermediate points of the distribution are built in
+    /// such a way that the deflection is not greater than theDeflection.
+    /// Using the following evaluation of the deflection:
+    /// if Pi and Pj are two consecutive points of the distribution,
+    /// respectively of parameter ui and uj on the curve,
+    /// the deflection is the distance between:
+    /// -   the mid-point of Pi and Pj (the center of the chord joining these two points)
+    /// -   and the point of mid-parameter of these two
+    /// points (the point of parameter [(ui+uj) / 2] on curve theC).
+    /// theContinuity, defaulted to GeomAbs_C1, gives the degree of continuity of the curve theC.
+    /// (Note that C is an Adaptor3d_Curve or an Adaptor2d_Curve2d object,
+    /// and does not know the degree of continuity of the underlying curve).
+    /// Use the function IsDone to verify that the computation was successful,
+    /// the function NbPoints() to obtain the number of points of the computed distribution,
+    /// and the function Parameter() to read the parameter of each point.
+    ///
+    /// Warning
+    /// -   The roles of theU1 and theU2 are inverted if theU1 > theU2.
+    /// -   Derivative functions on the curve are called according to theContinuity.
+    /// An error may occur if theContinuity is greater than
+    /// the real degree of continuity of the curve.
+    ///
+    /// Warning
+    /// theC is an adapted curve, i.e. an object which is an interface between:
+    /// -   the services provided by either a 2D curve from
+    /// the package Geom2d (in the case of an Adaptor2d_Curve2d curve)
+    /// or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve),
+    /// and those required on the curve by the computation algorithm.
+    pub fn initialize_curve2d_real3_shape(
+        self: std::pin::Pin<&mut Self>,
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theDeflection: f64,
+        theU1: f64,
+        theU2: f64,
+        theContinuity: i32,
+    ) {
+        crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve2d_real3_shape(
+            self,
+            theC,
+            theDeflection,
+            theU1,
+            theU2,
+            theContinuity,
+        )
+    }
+
+    /// Returns the point of index Index in the distribution
+    /// computed by this algorithm.
+    /// Warning
+    /// Index must be greater than or equal to 1, and less
+    /// than or equal to the number of points of the
+    /// distribution. However, pay particular attention as this
+    /// condition is not checked by this function.
+    /// Exceptions
+    /// StdFail_NotDone if this algorithm has not been
+    /// initialized, or if the computation was not successful.
+    pub fn value(&self, Index: i32) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GCPnts_QuasiUniformDeflection_value(self, Index)
+    }
+}
+
 // ========================
 // From GCPnts_TangentialDeflection.hxx
 // ========================
@@ -494,5 +1215,440 @@ impl TangentialDeflection {
             theAngularDeflection,
             theMinLength,
         )
+    }
+}
+
+// ========================
+// From GCPnts_UniformAbscissa.hxx
+// ========================
+
+/// This class allows to compute a uniform distribution of points
+/// on a curve (i.e. the points will all be equally distant).
+pub use crate::ffi::GCPnts_UniformAbscissa as UniformAbscissa;
+
+impl UniformAbscissa {
+    /// creation of a indefinite UniformAbscissa
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformAbscissa_ctor()
+    }
+
+    /// Computes a uniform abscissa distribution of points on the 3D curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve_real2(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAbscissa: f64,
+        theToler: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformAbscissa_ctor_curve_real2(theC, theAbscissa, theToler)
+    }
+
+    /// Computes a Uniform abscissa distribution of points on a part of the 3D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve_real4(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAbscissa: f64,
+        theU1: f64,
+        theU2: f64,
+        theToler: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformAbscissa_ctor_curve_real4(
+            theC,
+            theAbscissa,
+            theU1,
+            theU2,
+            theToler,
+        )
+    }
+
+    /// Computes a uniform abscissa distribution of points on the 3D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve_int_real(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theNbPoints: i32,
+        theToler: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformAbscissa_ctor_curve_int_real(theC, theNbPoints, theToler)
+    }
+
+    /// Computes a Uniform abscissa distribution of points on a part of the 3D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve_int_real3(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theNbPoints: i32,
+        theU1: f64,
+        theU2: f64,
+        theToler: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformAbscissa_ctor_curve_int_real3(
+            theC,
+            theNbPoints,
+            theU1,
+            theU2,
+            theToler,
+        )
+    }
+
+    /// Computes a uniform abscissa distribution of points on the 2D curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve2d_real2(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAbscissa: f64,
+        theToler: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformAbscissa_ctor_curve2d_real2(theC, theAbscissa, theToler)
+    }
+
+    /// Computes a Uniform abscissa distribution of points on a part of the 2D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve2d_real4(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAbscissa: f64,
+        theU1: f64,
+        theU2: f64,
+        theToler: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformAbscissa_ctor_curve2d_real4(
+            theC,
+            theAbscissa,
+            theU1,
+            theU2,
+            theToler,
+        )
+    }
+
+    /// Computes a uniform abscissa distribution of points on the 2D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve2d_int_real(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theNbPoints: i32,
+        theToler: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformAbscissa_ctor_curve2d_int_real(theC, theNbPoints, theToler)
+    }
+
+    /// Computes a Uniform abscissa distribution of points on a part of the 2D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve2d_int_real3(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theNbPoints: i32,
+        theU1: f64,
+        theU2: f64,
+        theToler: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformAbscissa_ctor_curve2d_int_real3(
+            theC,
+            theNbPoints,
+            theU1,
+            theU2,
+            theToler,
+        )
+    }
+
+    /// Computes a uniform abscissa distribution of points on the 3D curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve_real(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAbscissa: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve_real2(theC, theAbscissa, -1.0)
+    }
+
+    /// Computes a Uniform abscissa distribution of points on a part of the 3D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve_real3(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAbscissa: f64,
+        theU1: f64,
+        theU2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve_real4(theC, theAbscissa, theU1, theU2, -1.0)
+    }
+
+    /// Computes a uniform abscissa distribution of points on the 3D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve_int(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theNbPoints: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve_int_real(theC, theNbPoints, -1.0)
+    }
+
+    /// Computes a Uniform abscissa distribution of points on a part of the 3D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve_int_real2(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theNbPoints: i32,
+        theU1: f64,
+        theU2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve_int_real3(theC, theNbPoints, theU1, theU2, -1.0)
+    }
+
+    /// Computes a uniform abscissa distribution of points on the 2D curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve2d_real(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAbscissa: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d_real2(theC, theAbscissa, -1.0)
+    }
+
+    /// Computes a Uniform abscissa distribution of points on a part of the 2D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve2d_real3(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAbscissa: f64,
+        theU1: f64,
+        theU2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d_real4(theC, theAbscissa, theU1, theU2, -1.0)
+    }
+
+    /// Computes a uniform abscissa distribution of points on the 2D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve2d_int(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theNbPoints: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d_int_real(theC, theNbPoints, -1.0)
+    }
+
+    /// Computes a Uniform abscissa distribution of points on a part of the 2D Curve.
+    /// @param[in] theC  input curve
+    /// @param[in] theNbPoints  defines the number of desired points
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theToler  used for more precise calculation of curve length
+    /// (Precision::Confusion() by default)
+    pub fn new_curve2d_int_real2(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theNbPoints: i32,
+        theU1: f64,
+        theU2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d_int_real3(theC, theNbPoints, theU1, theU2, -1.0)
+    }
+}
+
+// ========================
+// From GCPnts_UniformDeflection.hxx
+// ========================
+
+/// Provides an algorithm to compute a distribution of
+/// points on a 'C2' continuous curve.
+/// The algorithm respects a criterion of maximum deflection between
+/// the curve and the polygon that results from the computed points.
+/// Note: This algorithm is relatively time consuming.
+/// A GCPnts_QuasiUniformDeflection algorithm is quicker;
+/// it can also work with non-'C2' continuous curves,
+/// but it generates more points in the distribution.
+pub use crate::ffi::GCPnts_UniformDeflection as UniformDeflection;
+
+impl UniformDeflection {
+    /// Constructs an empty algorithm.
+    /// To define the problem to be solved, use the function Initialize.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformDeflection_ctor()
+    }
+
+    /// Computes a uniform Deflection distribution of points on the curve.
+    /// @param[in] theC  input 3D curve
+    /// @param[in] theDeflection  target deflection
+    /// @param[in] theWithControl  when TRUE, the algorithm controls the estimate deflection
+    pub fn new_curve_real_bool(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theDeflection: f64,
+        theWithControl: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformDeflection_ctor_curve_real_bool(
+            theC,
+            theDeflection,
+            theWithControl,
+        )
+    }
+
+    /// Computes a uniform Deflection distribution of points on the curve.
+    /// @param[in] theC  input 2D curve
+    /// @param[in] theDeflection  target deflection
+    /// @param[in] theWithControl  when TRUE, the algorithm controls the estimate deflection
+    pub fn new_curve2d_real_bool(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theDeflection: f64,
+        theWithControl: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformDeflection_ctor_curve2d_real_bool(
+            theC,
+            theDeflection,
+            theWithControl,
+        )
+    }
+
+    /// Computes a Uniform Deflection distribution of points on a part of the curve.
+    /// @param[in] theC  input 3D curve
+    /// @param[in] theDeflection  target deflection
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theWithControl  when TRUE, the algorithm controls the estimate deflection
+    pub fn new_curve_real3_bool(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theDeflection: f64,
+        theU1: f64,
+        theU2: f64,
+        theWithControl: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformDeflection_ctor_curve_real3_bool(
+            theC,
+            theDeflection,
+            theU1,
+            theU2,
+            theWithControl,
+        )
+    }
+
+    /// Computes a Uniform Deflection distribution of points on a part of the curve.
+    /// @param[in] theC  input 2D curve
+    /// @param[in] theDeflection  target deflection
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theWithControl  when TRUE, the algorithm controls the estimate deflection
+    pub fn new_curve2d_real3_bool(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theDeflection: f64,
+        theU1: f64,
+        theU2: f64,
+        theWithControl: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_UniformDeflection_ctor_curve2d_real3_bool(
+            theC,
+            theDeflection,
+            theU1,
+            theU2,
+            theWithControl,
+        )
+    }
+
+    /// Computes a uniform Deflection distribution of points on the curve.
+    /// @param[in] theC  input 3D curve
+    /// @param[in] theDeflection  target deflection
+    /// @param[in] theWithControl  when TRUE, the algorithm controls the estimate deflection
+    pub fn new_curve_real(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theDeflection: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve_real_bool(theC, theDeflection, true)
+    }
+
+    /// Computes a uniform Deflection distribution of points on the curve.
+    /// @param[in] theC  input 2D curve
+    /// @param[in] theDeflection  target deflection
+    /// @param[in] theWithControl  when TRUE, the algorithm controls the estimate deflection
+    pub fn new_curve2d_real(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theDeflection: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d_real_bool(theC, theDeflection, true)
+    }
+
+    /// Computes a Uniform Deflection distribution of points on a part of the curve.
+    /// @param[in] theC  input 3D curve
+    /// @param[in] theDeflection  target deflection
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theWithControl  when TRUE, the algorithm controls the estimate deflection
+    pub fn new_curve_real3(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theDeflection: f64,
+        theU1: f64,
+        theU2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve_real3_bool(theC, theDeflection, theU1, theU2, true)
+    }
+
+    /// Computes a Uniform Deflection distribution of points on a part of the curve.
+    /// @param[in] theC  input 2D curve
+    /// @param[in] theDeflection  target deflection
+    /// @param[in] theU1  first parameter on curve
+    /// @param[in] theU2  last  parameter on curve
+    /// @param[in] theWithControl  when TRUE, the algorithm controls the estimate deflection
+    pub fn new_curve2d_real3(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theDeflection: f64,
+        theU1: f64,
+        theU2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_curve2d_real3_bool(theC, theDeflection, theU1, theU2, true)
+    }
+
+    /// Returns the point of index Index in the distribution
+    /// computed by this algorithm.
+    /// Warning
+    /// Index must be greater than or equal to 1, and less
+    /// than or equal to the number of points of the
+    /// distribution. However, pay particular attention as this
+    /// condition is not checked by this function.
+    /// Exceptions
+    /// StdFAil_NotDone if this algorithm has not been
+    /// initialized, or if the computation was not successful.
+    pub fn value(&self, Index: i32) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GCPnts_UniformDeflection_value(self, Index)
     }
 }

@@ -7,6 +7,153 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From BRepAdaptor_CompCurve.hxx
+// ========================
+
+/// The Curve from BRepAdaptor allows to use a Wire
+/// of the BRep topology like a 3D curve.
+/// Warning: With this  class of curve,  C0 and C1 continuities
+/// are not assumed. So be careful with some algorithm!
+/// Please note that BRepAdaptor_CompCurve cannot be
+/// periodic curve at all (even if it contains single
+/// periodic edge).
+///
+/// BRepAdaptor_CompCurve can only work on valid wires where all edges are
+/// connected to each other to make a chain.
+pub use crate::ffi::BRepAdaptor_CompCurve as CompCurve;
+
+impl CompCurve {
+    /// Creates an undefined Curve with no Wire loaded.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAdaptor_CompCurve_ctor()
+    }
+
+    pub fn new_wire_bool(
+        W: &crate::ffi::TopoDS_Wire,
+        KnotByCurvilinearAbcissa: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAdaptor_CompCurve_ctor_wire_bool(W, KnotByCurvilinearAbcissa)
+    }
+
+    /// Creates a Curve  to  access the geometry of edge
+    /// <W>.
+    pub fn new_wire_bool_real3(
+        W: &crate::ffi::TopoDS_Wire,
+        KnotByCurvilinearAbcissa: bool,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAdaptor_CompCurve_ctor_wire_bool_real3(
+            W,
+            KnotByCurvilinearAbcissa,
+            First,
+            Last,
+            Tol,
+        )
+    }
+
+    pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
+        Self::new_wire_bool(W, false)
+    }
+
+    /// Shallow copy of adaptor
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
+        crate::ffi::BRepAdaptor_CompCurve_shallow_copy(self)
+    }
+
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRepAdaptor_CompCurve_continuity(self)
+    }
+
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::BRepAdaptor_CompCurve_nb_intervals(self, S)
+    }
+
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
+        crate::ffi::BRepAdaptor_CompCurve_trim(self, First, Last, Tol)
+    }
+
+    /// Computes the point of parameter U on the curve
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepAdaptor_CompCurve_value(self, U)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::BRepAdaptor_CompCurve_dn(self, U, N)
+    }
+
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::BRepAdaptor_CompCurve_get_type(self)
+    }
+
+    pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::BRepAdaptor_CompCurve_line(self)
+    }
+
+    pub fn circle(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::BRepAdaptor_CompCurve_circle(self)
+    }
+
+    pub fn ellipse(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::BRepAdaptor_CompCurve_ellipse(self)
+    }
+
+    pub fn hyperbola(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::BRepAdaptor_CompCurve_hyperbola(self)
+    }
+
+    pub fn parabola(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::BRepAdaptor_CompCurve_parabola(self)
+    }
+
+    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierCurve> {
+        crate::ffi::BRepAdaptor_CompCurve_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineCurve> {
+        crate::ffi::BRepAdaptor_CompCurve_b_spline(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepAdaptor_CompCurve_get_type_descriptor()
+    }
+
+    /// Upcast to Adaptor3d_Curve
+    pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
+        crate::ffi::BRepAdaptor_CompCurve_as_Adaptor3d_Curve(self)
+    }
+
+    /// Upcast to Adaptor3d_Curve (mutable)
+    pub fn as_adaptor3d_curve_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::adaptor3d::Curve> {
+        crate::ffi::BRepAdaptor_CompCurve_as_Adaptor3d_Curve_mut(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: OffsetCurve()
+    pub fn offset_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetCurve> {
+        crate::ffi::BRepAdaptor_CompCurve_inherited_OffsetCurve(self)
+    }
+}
+
+// ========================
 // From BRepAdaptor_Curve.hxx
 // ========================
 
@@ -126,6 +273,10 @@ impl Curve {
     /// Be careful when using this method.
     pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineCurve> {
         crate::ffi::BRepAdaptor_Curve_b_spline(self)
+    }
+
+    pub fn offset_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetCurve> {
+        crate::ffi::BRepAdaptor_Curve_offset_curve(self)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -346,6 +497,16 @@ impl Curve2d {
         crate::ffi::BRepAdaptor_Curve2d_inherited_NbSamples(self)
     }
 
+    /// Inherited from Adaptor2d_Curve2d: Bezier()
+    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBezierCurve> {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Bezier(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: BSpline()
+    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_BSpline(self)
+    }
+
     /// Inherited from Geom2dAdaptor_Curve: Reset()
     pub fn reset(self: std::pin::Pin<&mut Self>) {
         crate::ffi::BRepAdaptor_Curve2d_inherited_Reset(self)
@@ -359,6 +520,74 @@ impl Curve2d {
     /// Inherited from Geom2dAdaptor_Curve: Curve()
     pub fn curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         crate::ffi::BRepAdaptor_Curve2d_inherited_Curve(self)
+    }
+}
+
+// ========================
+// From BRepAdaptor_HArray1OfCurve.hxx
+// ========================
+
+pub use crate::ffi::BRepAdaptor_HArray1OfCurve as HArray1OfCurve;
+
+impl HArray1OfCurve {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAdaptor_HArray1OfCurve_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_curve(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::BRepAdaptor_Curve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2_curve(theLower, theUpper, theValue)
+    }
+
+    pub fn new_curve_int2_bool(
+        theBegin: &crate::ffi::BRepAdaptor_Curve,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_curve_int2_bool(
+            theBegin, theLower, theUpper, arg3,
+        )
+    }
+
+    pub fn new_array1ofcurve(
+        theOther: &crate::ffi::BRepAdaptor_Array1OfCurve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_array1ofcurve(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepAdaptorHArray1OfCurve> {
+        crate::ffi::BRepAdaptor_HArray1OfCurve_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepAdaptorHArray1OfCurve;
+
+impl HandleBRepAdaptorHArray1OfCurve {
+    /// Dereference this Handle to access the underlying BRepAdaptor_HArray1OfCurve
+    pub fn get(&self) -> &crate::ffi::BRepAdaptor_HArray1OfCurve {
+        crate::ffi::HandleBRepAdaptorHArray1OfCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepAdaptor_HArray1OfCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepAdaptor_HArray1OfCurve> {
+        crate::ffi::HandleBRepAdaptorHArray1OfCurve_get_mut(self)
     }
 }
 
@@ -547,3 +776,9 @@ impl Surface {
         crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface_mut(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::BRepAdaptor_Array1OfCurve as Array1OfCurve;

@@ -6,6 +6,80 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{
+    barycenter, face_until, is_inside, parametric_barycenter, parametric_min_max,
+};
+
+/// To declare the type of selection semantics for local operation Perform methods
+/// -   NoSelection
+/// -   SelectionFU - selection of a face up to which a
+/// local operation will be performed
+/// -   SelectionU - selection of a point up to which a
+/// local operation will be performed
+/// -   SelectionSh - selection of a shape on which a
+/// local operation will be performed
+/// -   SelectionShU - selection of a shape up to which a
+/// local operation will be performed.
+/// C++ enum: `BRepFeat_PerfSelection`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum PerfSelection {
+    Noselection = 0,
+    Selectionfu = 1,
+    Selectionu = 2,
+    Selectionsh = 3,
+    Selectionshu = 4,
+}
+
+impl From<PerfSelection> for i32 {
+    fn from(value: PerfSelection) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for PerfSelection {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(PerfSelection::Noselection),
+            1 => Ok(PerfSelection::Selectionfu),
+            2 => Ok(PerfSelection::Selectionu),
+            3 => Ok(PerfSelection::Selectionsh),
+            4 => Ok(PerfSelection::Selectionshu),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `BRepFeat_Status`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Status {
+    Noerror = 0,
+    Invalidplacement = 1,
+    Holetoolong = 2,
+}
+
+impl From<Status> for i32 {
+    fn from(value: Status) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Status {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Status::Noerror),
+            1 => Ok(Status::Invalidplacement),
+            2 => Ok(Status::Holetoolong),
+            _ => Err(value),
+        }
+    }
+}
+
 /// Describes the error.
 /// C++ enum: `BRepFeat_StatusError`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -80,76 +154,6 @@ impl TryFrom<i32> for StatusError {
             25 => Ok(StatusError::Nullrealtool),
             26 => Ok(StatusError::Nulltoolf),
             27 => Ok(StatusError::Nulltoolu),
-            _ => Err(value),
-        }
-    }
-}
-
-/// To declare the type of selection semantics for local operation Perform methods
-/// -   NoSelection
-/// -   SelectionFU - selection of a face up to which a
-/// local operation will be performed
-/// -   SelectionU - selection of a point up to which a
-/// local operation will be performed
-/// -   SelectionSh - selection of a shape on which a
-/// local operation will be performed
-/// -   SelectionShU - selection of a shape up to which a
-/// local operation will be performed.
-/// C++ enum: `BRepFeat_PerfSelection`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum PerfSelection {
-    Noselection = 0,
-    Selectionfu = 1,
-    Selectionu = 2,
-    Selectionsh = 3,
-    Selectionshu = 4,
-}
-
-impl From<PerfSelection> for i32 {
-    fn from(value: PerfSelection) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for PerfSelection {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(PerfSelection::Noselection),
-            1 => Ok(PerfSelection::Selectionfu),
-            2 => Ok(PerfSelection::Selectionu),
-            3 => Ok(PerfSelection::Selectionsh),
-            4 => Ok(PerfSelection::Selectionshu),
-            _ => Err(value),
-        }
-    }
-}
-
-/// C++ enum: `BRepFeat_Status`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum Status {
-    Noerror = 0,
-    Invalidplacement = 1,
-    Holetoolong = 2,
-}
-
-impl From<Status> for i32 {
-    fn from(value: Status) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for Status {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(Status::Noerror),
-            1 => Ok(Status::Invalidplacement),
-            2 => Ok(Status::Holetoolong),
             _ => Err(value),
         }
     }
@@ -521,6 +525,96 @@ impl Form {
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepFeat_Form_inherited_Shape(self)
+    }
+}
+
+// ========================
+// From BRepFeat_Gluer.hxx
+// ========================
+
+/// One of the most significant aspects
+/// of BRepFeat functionality is the use of local operations as opposed
+/// to global ones. In a global operation, you would first
+/// construct a form of the type you wanted in your final feature, and
+/// then remove matter so that it could fit into your initial basis object.
+/// In a local operation, however, you specify the domain of the feature
+/// construction with aspects of the shape on which the feature is being
+/// created. These semantics are expressed in terms of a member
+/// shape of the basis shape from which - or up to which - matter will be
+/// added or removed. As a result, local operations make calculations
+/// simpler and faster than global operations.
+/// Glueing uses wires or edges of a face in the basis shape. These are
+/// to become a part of the feature. They are first cut out and then
+/// projected to a plane outside or inside the basis shape. By
+/// rebuilding the initial shape incorporating the edges and the
+/// faces of the tool, protrusion features can be constructed.
+pub use crate::ffi::BRepFeat_Gluer as Gluer;
+
+impl Gluer {
+    /// Initializes an empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_Gluer_ctor()
+    }
+
+    /// Initializes the shapes to be glued, the new shape
+    /// Snew and the basis shape Sbase.
+    pub fn new_shape2(
+        Snew: &crate::ffi::TopoDS_Shape,
+        Sbase: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_Gluer_ctor_shape2(Snew, Sbase)
+    }
+
+    /// Determine which operation type to use glueing or sliding.
+    pub fn ope_type(&self) -> i32 {
+        crate::ffi::BRepFeat_Gluer_ope_type(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepFeat_Gluer_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepFeat_Gluer_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepFeat_Gluer_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepFeat_Gluer_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFeat_Gluer_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFeat_Gluer_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_Gluer_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_Gluer_inherited_Generated(self, S)
     }
 }
 
@@ -1043,5 +1137,1018 @@ impl MakeDPrism {
     /// Inherited from BRepFeat_Form: PerfSelectionValid()
     pub fn perf_selection_valid(self: std::pin::Pin<&mut Self>) {
         crate::ffi::BRepFeat_MakeDPrism_inherited_PerfSelectionValid(self)
+    }
+}
+
+// ========================
+// From BRepFeat_MakeLinearForm.hxx
+// ========================
+
+/// Builds a rib or a groove along a developable, planar surface.
+/// The semantics of mechanical features is built around
+/// giving thickness to a contour. This thickness can either
+/// be symmetrical - on one side of the contour - or
+/// dissymmetrical - on both sides. As in the semantics of
+/// form features, the thickness is defined by construction of
+/// shapes in specific contexts.
+/// The development contexts differ, however, in case of
+/// mechanical features. Here they include extrusion:
+/// -   to a limiting face of the basis shape
+/// -   to or from a limiting plane
+/// -   to a height.
+pub use crate::ffi::BRepFeat_MakeLinearForm as MakeLinearForm;
+
+impl MakeLinearForm {
+    /// initializes the linear form class
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_MakeLinearForm_ctor()
+    }
+
+    /// contour W, a shape Sbase and a
+    /// plane P are initialized to serve as the basic
+    /// elements in the construction of the rib or groove.
+    /// Direction and Direction1 give The vectors for
+    /// defining the direction(s) in which thickness will be built up.
+    /// Fuse offers a choice between:
+    /// -   removing matter with a Boolean cut using the
+    /// setting 0 in case of the groove
+    /// -   adding matter with Boolean fusion using the
+    /// setting 1 in case of the rib.
+    pub fn new_shape_wire_handlegeomplane_vec2_int_bool(
+        Sbase: &crate::ffi::TopoDS_Shape,
+        W: &crate::ffi::TopoDS_Wire,
+        P: &crate::ffi::HandleGeomPlane,
+        Direction: &crate::ffi::gp_Vec,
+        Direction1: &crate::ffi::gp_Vec,
+        Fuse: i32,
+        Modify: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_MakeLinearForm_ctor_shape_wire_handlegeomplane_vec2_int_bool(
+            Sbase, W, P, Direction, Direction1, Fuse, Modify,
+        )
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepFeat_MakeLinearForm_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepFeat_MakeLinearForm_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepFeat_MakeLinearForm_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepFeat_MakeLinearForm_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepFeat_RibSlot
+    pub fn as_rib_slot(&self) -> &RibSlot {
+        crate::ffi::BRepFeat_MakeLinearForm_as_BRepFeat_RibSlot(self)
+    }
+
+    /// Upcast to BRepFeat_RibSlot (mutable)
+    pub fn as_rib_slot_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut RibSlot> {
+        crate::ffi::BRepFeat_MakeLinearForm_as_BRepFeat_RibSlot_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_IsDeleted(self, S)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: FirstShape()
+    pub fn first_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_FirstShape(self)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: LastShape()
+    pub fn last_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_LastShape(self)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: FacesForDraft()
+    pub fn faces_for_draft(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_FacesForDraft(self)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: NewEdges()
+    pub fn new_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_NewEdges(self)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: TgtEdges()
+    pub fn tgt_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_TgtEdges(self)
+    }
+}
+
+// ========================
+// From BRepFeat_MakePipe.hxx
+// ========================
+
+/// Constructs compound shapes with pipe
+/// features. These can be depressions or protrusions.
+/// The semantics of pipe feature creation is based on the construction of shapes:
+/// -   along a length
+/// -   up to a limiting face
+/// -   from a limiting face to a height.
+/// The shape defining construction of the pipe feature can be either the supporting edge or
+/// the concerned area of a face.
+/// In case of the supporting edge, this contour
+/// can be attached to a face of the basis shape
+/// by binding. When the contour is bound to this
+/// face, the information that the contour will
+/// slide on the face becomes available to the relevant class methods.
+/// In case of the concerned area of a face, you
+/// could, for example, cut it out and move it to a
+/// different height which will define the limiting
+/// face of a protrusion or depression.
+pub use crate::ffi::BRepFeat_MakePipe as MakePipe;
+
+impl MakePipe {
+    /// initializes the pipe class.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_MakePipe_ctor()
+    }
+
+    /// A face Pbase is selected in the
+    /// shape Sbase to serve as the basis for the
+    /// pipe. It will be defined by the wire Spine.
+    /// Fuse offers a choice between:
+    /// -   removing matter with a Boolean cut using the setting 0
+    /// -   adding matter with Boolean fusion using the setting 1.
+    /// The sketch face Skface serves to determine
+    /// the type of operation. If it is inside the basis
+    /// shape, a local operation such as glueing can be performed.
+    pub fn new_shape2_face_wire_int_bool(
+        Sbase: &crate::ffi::TopoDS_Shape,
+        Pbase: &crate::ffi::TopoDS_Shape,
+        Skface: &crate::ffi::TopoDS_Face,
+        Spine: &crate::ffi::TopoDS_Wire,
+        Fuse: i32,
+        Modify: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_MakePipe_ctor_shape2_face_wire_int_bool(
+            Sbase, Pbase, Skface, Spine, Fuse, Modify,
+        )
+    }
+
+    pub fn baryc_curve(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::BRepFeat_MakePipe_baryc_curve(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepFeat_MakePipe_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepFeat_MakePipe_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepFeat_MakePipe_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepFeat_MakePipe_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepFeat_Form
+    pub fn as_form(&self) -> &Form {
+        crate::ffi::BRepFeat_MakePipe_as_BRepFeat_Form(self)
+    }
+
+    /// Upcast to BRepFeat_Form (mutable)
+    pub fn as_form_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Form> {
+        crate::ffi::BRepFeat_MakePipe_as_BRepFeat_Form_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFeat_MakePipe_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFeat_MakePipe_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepFeat_MakePipe_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_MakePipe_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePipe_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePipe_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepFeat_MakePipe_inherited_IsDeleted(self, S)
+    }
+
+    /// Inherited from BRepFeat_Form: FirstShape()
+    pub fn first_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePipe_inherited_FirstShape(self)
+    }
+
+    /// Inherited from BRepFeat_Form: LastShape()
+    pub fn last_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePipe_inherited_LastShape(self)
+    }
+
+    /// Inherited from BRepFeat_Form: NewEdges()
+    pub fn new_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePipe_inherited_NewEdges(self)
+    }
+
+    /// Inherited from BRepFeat_Form: TgtEdges()
+    pub fn tgt_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePipe_inherited_TgtEdges(self)
+    }
+
+    /// Inherited from BRepFeat_Form: BasisShapeValid()
+    pub fn basis_shape_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePipe_inherited_BasisShapeValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: GeneratedShapeValid()
+    pub fn generated_shape_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePipe_inherited_GeneratedShapeValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: ShapeFromValid()
+    pub fn shape_from_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePipe_inherited_ShapeFromValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: ShapeUntilValid()
+    pub fn shape_until_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePipe_inherited_ShapeUntilValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: GluedFacesValid()
+    pub fn glued_faces_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePipe_inherited_GluedFacesValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: SketchFaceValid()
+    pub fn sketch_face_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePipe_inherited_SketchFaceValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: PerfSelectionValid()
+    pub fn perf_selection_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePipe_inherited_PerfSelectionValid(self)
+    }
+}
+
+// ========================
+// From BRepFeat_MakePrism.hxx
+// ========================
+
+/// Describes functions to build prism features.
+/// These can be depressions or protrusions.
+/// The semantics of prism feature creation is
+/// based on the construction of shapes:
+/// -   along a length
+/// -   up to a limiting face
+/// -   from a limiting face to a height.
+/// The shape defining construction of the prism feature can be
+/// either the supporting edge or the concerned area of a face.
+/// In case of the supporting edge, this contour
+/// can be attached to a face of the basis shape by
+/// binding. When the contour is bound to this face,
+/// the information that the contour will slide on the
+/// face becomes available to the relevant class methods.
+/// In case of the concerned area of a face, you
+/// could, for example, cut it out and move it to a
+/// different height which will define the limiting
+/// face of a protrusion or depression.
+pub use crate::ffi::BRepFeat_MakePrism as MakePrism;
+
+impl MakePrism {
+    /// Builds a prism by projecting a
+    /// wire along the face of a shape. Initializes the prism class.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_MakePrism_ctor()
+    }
+
+    /// Builds a prism by projecting a
+    /// wire along the face of a shape. a face Pbase is selected in
+    /// the shape Sbase to serve as the basis for
+    /// the prism. The orientation of the prism will
+    /// be defined by the vector Direction.
+    /// Fuse offers a choice between:
+    /// -   removing matter with a Boolean cut using the setting 0
+    /// -   adding matter with Boolean fusion using the setting 1.
+    /// The sketch face Skface serves to determine
+    /// the type of operation. If it is inside the basis
+    /// shape, a local operation such as glueing can be performed.
+    /// Exceptions
+    /// Standard_ConstructionError if the face
+    /// does not belong to the basis or the prism shape.
+    pub fn new_shape2_face_dir_int_bool(
+        Sbase: &crate::ffi::TopoDS_Shape,
+        Pbase: &crate::ffi::TopoDS_Shape,
+        Skface: &crate::ffi::TopoDS_Face,
+        Direction: &crate::ffi::gp_Dir,
+        Fuse: i32,
+        Modify: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_MakePrism_ctor_shape2_face_dir_int_bool(
+            Sbase, Pbase, Skface, Direction, Fuse, Modify,
+        )
+    }
+
+    /// Generates a curve along the center of mass of the primitive.
+    pub fn baryc_curve(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::BRepFeat_MakePrism_baryc_curve(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepFeat_MakePrism_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepFeat_MakePrism_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepFeat_MakePrism_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepFeat_MakePrism_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepFeat_Form
+    pub fn as_form(&self) -> &Form {
+        crate::ffi::BRepFeat_MakePrism_as_BRepFeat_Form(self)
+    }
+
+    /// Upcast to BRepFeat_Form (mutable)
+    pub fn as_form_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Form> {
+        crate::ffi::BRepFeat_MakePrism_as_BRepFeat_Form_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFeat_MakePrism_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFeat_MakePrism_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepFeat_MakePrism_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_MakePrism_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePrism_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePrism_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepFeat_MakePrism_inherited_IsDeleted(self, S)
+    }
+
+    /// Inherited from BRepFeat_Form: FirstShape()
+    pub fn first_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePrism_inherited_FirstShape(self)
+    }
+
+    /// Inherited from BRepFeat_Form: LastShape()
+    pub fn last_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePrism_inherited_LastShape(self)
+    }
+
+    /// Inherited from BRepFeat_Form: NewEdges()
+    pub fn new_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePrism_inherited_NewEdges(self)
+    }
+
+    /// Inherited from BRepFeat_Form: TgtEdges()
+    pub fn tgt_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakePrism_inherited_TgtEdges(self)
+    }
+
+    /// Inherited from BRepFeat_Form: BasisShapeValid()
+    pub fn basis_shape_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePrism_inherited_BasisShapeValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: GeneratedShapeValid()
+    pub fn generated_shape_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePrism_inherited_GeneratedShapeValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: ShapeFromValid()
+    pub fn shape_from_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePrism_inherited_ShapeFromValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: ShapeUntilValid()
+    pub fn shape_until_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePrism_inherited_ShapeUntilValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: GluedFacesValid()
+    pub fn glued_faces_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePrism_inherited_GluedFacesValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: SketchFaceValid()
+    pub fn sketch_face_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePrism_inherited_SketchFaceValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: PerfSelectionValid()
+    pub fn perf_selection_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakePrism_inherited_PerfSelectionValid(self)
+    }
+}
+
+// ========================
+// From BRepFeat_MakeRevol.hxx
+// ========================
+
+/// Describes functions to build revolved shells from basis shapes.
+pub use crate::ffi::BRepFeat_MakeRevol as MakeRevol;
+
+impl MakeRevol {
+    /// initializes the revolved shell class.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_MakeRevol_ctor()
+    }
+
+    /// a face Pbase is selected in the
+    /// shape Sbase to serve as the basis for the
+    /// revolved shell. The revolution will be defined
+    /// by the axis Axis and Fuse offers a choice between:
+    /// -   removing matter with a Boolean cut using the setting 0
+    /// -   adding matter with Boolean fusion using the setting 1.
+    /// The sketch face Skface serves to determine
+    /// the type of operation. If it is inside the basis
+    /// shape, a local operation such as glueing can be performed.
+    pub fn new_shape2_face_ax1_int_bool(
+        Sbase: &crate::ffi::TopoDS_Shape,
+        Pbase: &crate::ffi::TopoDS_Shape,
+        Skface: &crate::ffi::TopoDS_Face,
+        Axis: &crate::ffi::gp_Ax1,
+        Fuse: i32,
+        Modify: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_MakeRevol_ctor_shape2_face_ax1_int_bool(
+            Sbase, Pbase, Skface, Axis, Fuse, Modify,
+        )
+    }
+
+    pub fn baryc_curve(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::BRepFeat_MakeRevol_baryc_curve(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepFeat_MakeRevol_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepFeat_MakeRevol_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepFeat_MakeRevol_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepFeat_MakeRevol_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepFeat_Form
+    pub fn as_form(&self) -> &Form {
+        crate::ffi::BRepFeat_MakeRevol_as_BRepFeat_Form(self)
+    }
+
+    /// Upcast to BRepFeat_Form (mutable)
+    pub fn as_form_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Form> {
+        crate::ffi::BRepFeat_MakeRevol_as_BRepFeat_Form_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFeat_MakeRevol_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFeat_MakeRevol_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepFeat_MakeRevol_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_MakeRevol_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevol_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevol_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepFeat_MakeRevol_inherited_IsDeleted(self, S)
+    }
+
+    /// Inherited from BRepFeat_Form: FirstShape()
+    pub fn first_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevol_inherited_FirstShape(self)
+    }
+
+    /// Inherited from BRepFeat_Form: LastShape()
+    pub fn last_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevol_inherited_LastShape(self)
+    }
+
+    /// Inherited from BRepFeat_Form: NewEdges()
+    pub fn new_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevol_inherited_NewEdges(self)
+    }
+
+    /// Inherited from BRepFeat_Form: TgtEdges()
+    pub fn tgt_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevol_inherited_TgtEdges(self)
+    }
+
+    /// Inherited from BRepFeat_Form: BasisShapeValid()
+    pub fn basis_shape_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeRevol_inherited_BasisShapeValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: GeneratedShapeValid()
+    pub fn generated_shape_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeRevol_inherited_GeneratedShapeValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: ShapeFromValid()
+    pub fn shape_from_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeRevol_inherited_ShapeFromValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: ShapeUntilValid()
+    pub fn shape_until_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeRevol_inherited_ShapeUntilValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: GluedFacesValid()
+    pub fn glued_faces_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeRevol_inherited_GluedFacesValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: SketchFaceValid()
+    pub fn sketch_face_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeRevol_inherited_SketchFaceValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: PerfSelectionValid()
+    pub fn perf_selection_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeRevol_inherited_PerfSelectionValid(self)
+    }
+}
+
+// ========================
+// From BRepFeat_MakeRevolutionForm.hxx
+// ========================
+
+/// MakeRevolutionForm Generates a surface of
+/// revolution in the feature as it slides along a
+/// revolved face in the basis shape.
+/// The semantics of mechanical features is built
+/// around giving thickness to a contour. This
+/// thickness can either be unilateral - on one side
+/// of the contour - or bilateral - on both sides. As
+/// in the semantics of form features, the thickness
+/// is defined by construction of shapes in specific contexts.
+/// The development contexts differ, however,in
+/// case of mechanical features. Here they include extrusion:
+/// -   to a limiting face of the basis shape
+/// -   to or from a limiting plane
+/// -   to a height.
+pub use crate::ffi::BRepFeat_MakeRevolutionForm as MakeRevolutionForm;
+
+impl MakeRevolutionForm {
+    /// initializes the linear form class.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_MakeRevolutionForm_ctor()
+    }
+
+    /// a contour W, a shape Sbase and a plane P are initialized to serve as
+    /// the basic elements in the construction of the rib or groove. The axis Axis of the
+    /// revolved surface in the basis shape defines the feature's axis of revolution.
+    /// Height1 and Height2 may be used as limits to the construction of the feature.
+    /// Fuse offers a choice between:
+    /// -   removing matter with a Boolean cut using the setting 0 in case of the groove
+    /// -   adding matter with Boolean fusion using the setting 1 in case of the rib.
+    pub fn new_shape_wire_handlegeomplane_ax1_real2_int_bool(
+        Sbase: &crate::ffi::TopoDS_Shape,
+        W: &crate::ffi::TopoDS_Wire,
+        Plane: &crate::ffi::HandleGeomPlane,
+        Axis: &crate::ffi::gp_Ax1,
+        Height1: f64,
+        Height2: f64,
+        Fuse: i32,
+        Sliding: &mut bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_MakeRevolutionForm_ctor_shape_wire_handlegeomplane_ax1_real2_int_bool(
+            Sbase, W, Plane, Axis, Height1, Height2, Fuse, Sliding,
+        )
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepFeat_RibSlot
+    pub fn as_rib_slot(&self) -> &RibSlot {
+        crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepFeat_RibSlot(self)
+    }
+
+    /// Upcast to BRepFeat_RibSlot (mutable)
+    pub fn as_rib_slot_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut RibSlot> {
+        crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepFeat_RibSlot_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_IsDeleted(self, S)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: FirstShape()
+    pub fn first_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_FirstShape(self)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: LastShape()
+    pub fn last_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_LastShape(self)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: FacesForDraft()
+    pub fn faces_for_draft(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_FacesForDraft(self)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: NewEdges()
+    pub fn new_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_NewEdges(self)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: TgtEdges()
+    pub fn tgt_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_TgtEdges(self)
+    }
+}
+
+// ========================
+// From BRepFeat_RibSlot.hxx
+// ========================
+
+/// Provides functions to build mechanical features.
+/// Mechanical features include ribs - protrusions and grooves (or slots) - depressions along
+/// planar (linear) surfaces or revolution surfaces. The semantics of mechanical features is built
+/// around giving thickness to a contour. This thickness can either be unilateral - on one side
+/// of the contour - or bilateral - on both sides.
+/// As in the semantics of form features, the thickness is defined by construction of shapes
+/// in specific contexts. The development contexts differ, however,in case of mechanical features.
+/// Here they include extrusion:
+/// -   to a limiting face of the basis shape
+/// -   to or from a limiting plane
+/// -   to a height.
+pub use crate::ffi::BRepFeat_RibSlot as RibSlot;
+
+impl RibSlot {
+    pub fn current_status_error(&self) -> i32 {
+        crate::ffi::BRepFeat_RibSlot_current_status_error(self)
+    }
+
+    pub fn int_par(C: &crate::ffi::HandleGeomCurve, P: &crate::ffi::gp_Pnt) -> f64 {
+        crate::ffi::BRepFeat_RibSlot_int_par(C, P)
+    }
+
+    pub fn choice_of_faces(
+        faces: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
+        cc: &crate::ffi::HandleGeomCurve,
+        par: f64,
+        bnd: f64,
+        Pln: &crate::ffi::HandleGeomPlane,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {
+        crate::ffi::BRepFeat_RibSlot_choice_of_faces(faces, cc, par, bnd, Pln)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepFeat_RibSlot_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepFeat_RibSlot_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepFeat_RibSlot_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepFeat_RibSlot_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFeat_RibSlot_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFeat_RibSlot_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepFeat_RibSlot_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_RibSlot_inherited_Shape(self)
+    }
+}
+
+// ========================
+// From BRepFeat_SplitShape.hxx
+// ========================
+
+/// One of the most significant aspects of BRepFeat functionality is the use of local
+/// operations as opposed to global ones. In a global operation, you would first construct a
+/// form of the type you wanted in your final feature, and then remove matter so that it could
+/// fit into your initial basis object. In a local operation, however, you specify the domain of
+/// the feature construction with aspects of the shape on which the feature is being created.
+/// These semantics are expressed in terms of a member shape of the basis shape from which -
+/// or up to which - matter will be added or removed. As a result, local operations make
+/// calculations simpler and faster than global operations.
+/// In BRepFeat, the semantics of local operations define features constructed from a contour or a
+/// part of the basis shape referred to as the tool. In a SplitShape object, wires or edges of a
+/// face in the basis shape to be used as a part of the feature are cut out and projected to a plane
+/// outside or inside the basis shape. By rebuilding the initial shape incorporating the edges and
+/// the faces of the tool, protrusion or depression features can be constructed.
+pub use crate::ffi::BRepFeat_SplitShape as SplitShape;
+
+impl SplitShape {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_SplitShape_ctor()
+    }
+
+    /// Creates the process  with the shape <S>.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFeat_SplitShape_ctor_shape(S)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepFeat_SplitShape_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepFeat_SplitShape_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepFeat_SplitShape_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepFeat_SplitShape_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFeat_SplitShape_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFeat_SplitShape_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_SplitShape_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_SplitShape_inherited_Generated(self, S)
     }
 }

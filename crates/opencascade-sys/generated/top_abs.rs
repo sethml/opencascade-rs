@@ -6,6 +6,56 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Identifies the orientation of a topological shape.
+/// Orientation can represent a relation between two
+/// entities, or it can apply to a shape in its own right.
+/// When used to describe a relation between two
+/// shapes, orientation allows you to use the underlying
+/// entity in either direction. For example on a curve
+/// which is oriented FORWARD (say from left to right)
+/// you can have both a FORWARD and a REVERSED
+/// edge. The FORWARD edge will be oriented from
+/// left to right, and the REVERSED edge from right to
+/// left. In this way, you share the underlying entity. In
+/// other words, two faces of a cube can share an
+/// edge, and can also be used to build compound shapes.
+/// For each case in which an element is used as the
+/// boundary of a geometric domain of a higher
+/// dimension, this element defines two local regions of
+/// which one is arbitrarily considered as the default
+/// region. A change in orientation implies a switch of
+/// default region. This allows you to apply changes of
+/// orientation to the shape as a whole.
+/// C++ enum: `TopAbs_Orientation`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Orientation {
+    Forward = 0,
+    Reversed = 1,
+    Internal = 2,
+    External = 3,
+}
+
+impl From<Orientation> for i32 {
+    fn from(value: Orientation) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Orientation {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Orientation::Forward),
+            1 => Ok(Orientation::Reversed),
+            2 => Ok(Orientation::Internal),
+            3 => Ok(Orientation::External),
+            _ => Err(value),
+        }
+    }
+}
+
 /// Identifies various topological shapes. This
 /// enumeration allows you to use dynamic typing of shapes.
 /// The values are listed in order of complexity, from the
@@ -66,56 +116,6 @@ impl TryFrom<i32> for ShapeEnum {
             6 => Ok(ShapeEnum::Edge),
             7 => Ok(ShapeEnum::Vertex),
             8 => Ok(ShapeEnum::Shape),
-            _ => Err(value),
-        }
-    }
-}
-
-/// Identifies the orientation of a topological shape.
-/// Orientation can represent a relation between two
-/// entities, or it can apply to a shape in its own right.
-/// When used to describe a relation between two
-/// shapes, orientation allows you to use the underlying
-/// entity in either direction. For example on a curve
-/// which is oriented FORWARD (say from left to right)
-/// you can have both a FORWARD and a REVERSED
-/// edge. The FORWARD edge will be oriented from
-/// left to right, and the REVERSED edge from right to
-/// left. In this way, you share the underlying entity. In
-/// other words, two faces of a cube can share an
-/// edge, and can also be used to build compound shapes.
-/// For each case in which an element is used as the
-/// boundary of a geometric domain of a higher
-/// dimension, this element defines two local regions of
-/// which one is arbitrarily considered as the default
-/// region. A change in orientation implies a switch of
-/// default region. This allows you to apply changes of
-/// orientation to the shape as a whole.
-/// C++ enum: `TopAbs_Orientation`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum Orientation {
-    Forward = 0,
-    Reversed = 1,
-    Internal = 2,
-    External = 3,
-}
-
-impl From<Orientation> for i32 {
-    fn from(value: Orientation) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for Orientation {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(Orientation::Forward),
-            1 => Ok(Orientation::Reversed),
-            2 => Ok(Orientation::Internal),
-            3 => Ok(Orientation::External),
             _ => Err(value),
         }
     }

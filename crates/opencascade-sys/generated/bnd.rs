@@ -56,6 +56,179 @@ impl B2d {
 }
 
 // ========================
+// From Bnd_B2f.hxx
+// ========================
+
+pub use crate::ffi::Bnd_B2f as B2f;
+
+impl B2f {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B2f_ctor()
+    }
+
+    /// Constructor.
+    pub fn new_xy2(
+        theCenter: &crate::ffi::gp_XY,
+        theHSize: &crate::ffi::gp_XY,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B2f_ctor_xy2(theCenter, theHSize)
+    }
+
+    /// Query a box corner: (Center - HSize). You must make sure that
+    /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+    /// irrelevant result.
+    pub fn corner_min(&self) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::Bnd_B2f_corner_min(self)
+    }
+
+    /// Query a box corner: (Center + HSize). You must make sure that
+    /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+    /// irrelevant result.
+    pub fn corner_max(&self) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::Bnd_B2f_corner_max(self)
+    }
+
+    /// Transform the bounding box with the given transformation.
+    /// The resulting box will be larger if theTrsf contains rotation.
+    pub fn transformed(
+        &self,
+        theTrsf: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::Bnd_B2f> {
+        crate::ffi::Bnd_B2f_transformed(self, theTrsf)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B2f_to_owned(self)
+    }
+}
+
+// ========================
+// From Bnd_B3d.hxx
+// ========================
+
+pub use crate::ffi::Bnd_B3d as B3d;
+
+impl B3d {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B3d_ctor()
+    }
+
+    /// Constructor.
+    pub fn new_xyz2(
+        theCenter: &crate::ffi::gp_XYZ,
+        theHSize: &crate::ffi::gp_XYZ,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B3d_ctor_xyz2(theCenter, theHSize)
+    }
+
+    /// Query the lower corner: (Center - HSize). You must make sure that
+    /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+    /// irrelevant result.
+    pub fn corner_min(&self) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Bnd_B3d_corner_min(self)
+    }
+
+    /// Query the upper corner: (Center + HSize). You must make sure that
+    /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+    /// irrelevant result.
+    pub fn corner_max(&self) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Bnd_B3d_corner_max(self)
+    }
+
+    /// Transform the bounding box with the given transformation.
+    /// The resulting box will be larger if theTrsf contains rotation.
+    pub fn transformed(
+        &self,
+        theTrsf: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::Bnd_B3d> {
+        crate::ffi::Bnd_B3d_transformed(self, theTrsf)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B3d_to_owned(self)
+    }
+}
+
+// ========================
+// From Bnd_B3f.hxx
+// ========================
+
+pub use crate::ffi::Bnd_B3f as B3f;
+
+impl B3f {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B3f_ctor()
+    }
+
+    /// Constructor.
+    pub fn new_xyz2(
+        theCenter: &crate::ffi::gp_XYZ,
+        theHSize: &crate::ffi::gp_XYZ,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B3f_ctor_xyz2(theCenter, theHSize)
+    }
+
+    /// Query the lower corner: (Center - HSize). You must make sure that
+    /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+    /// irrelevant result.
+    pub fn corner_min(&self) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Bnd_B3f_corner_min(self)
+    }
+
+    /// Query the upper corner: (Center + HSize). You must make sure that
+    /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+    /// irrelevant result.
+    pub fn corner_max(&self) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Bnd_B3f_corner_max(self)
+    }
+
+    /// Transform the bounding box with the given transformation.
+    /// The resulting box will be larger if theTrsf contains rotation.
+    pub fn transformed(
+        &self,
+        theTrsf: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::Bnd_B3f> {
+        crate::ffi::Bnd_B3f_transformed(self, theTrsf)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B3f_to_owned(self)
+    }
+}
+
+// ========================
+// From Bnd_BoundSortBox.hxx
+// ========================
+
+/// A tool to compare a bounding box or a plane with a set of
+/// bounding boxes. It sorts the set of bounding boxes to give
+/// the list of boxes which intersect the element being compared.
+/// The boxes being sorted generally bound a set of shapes,
+/// while the box being compared bounds a shape to be
+/// compared. The resulting list of intersecting boxes therefore
+/// gives the list of items which potentially intersect the shape to be compared.
+pub use crate::ffi::Bnd_BoundSortBox as BoundSortBox;
+
+impl BoundSortBox {
+    /// Constructs an empty comparison algorithm for bounding boxes.
+    /// The bounding boxes are then defined using the Initialize function.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_BoundSortBox_ctor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_BoundSortBox_to_owned(self)
+    }
+}
+
+// ========================
 // From Bnd_Box.hxx
 // ========================
 
@@ -264,6 +437,75 @@ impl HandleBndHArray1OfBox {
 }
 
 // ========================
+// From Bnd_HArray1OfBox2d.hxx
+// ========================
+
+pub use crate::ffi::Bnd_HArray1OfBox2d as HArray1OfBox2d;
+
+impl HArray1OfBox2d {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox2d_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox2d_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_box2d(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::Bnd_Box2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox2d_ctor_int2_box2d(theLower, theUpper, theValue)
+    }
+
+    pub fn new_box2d_int2_bool(
+        theBegin: &crate::ffi::Bnd_Box2d,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox2d_ctor_box2d_int2_bool(theBegin, theLower, theUpper, arg3)
+    }
+
+    pub fn new_array1ofbox2d(theOther: &crate::ffi::Bnd_Array1OfBox2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox2d_ctor_array1ofbox2d(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Bnd_HArray1OfBox2d_get_type_descriptor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox2d_to_owned(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBndHArray1OfBox2d> {
+        crate::ffi::Bnd_HArray1OfBox2d_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBndHArray1OfBox2d;
+
+impl HandleBndHArray1OfBox2d {
+    /// Dereference this Handle to access the underlying Bnd_HArray1OfBox2d
+    pub fn get(&self) -> &crate::ffi::Bnd_HArray1OfBox2d {
+        crate::ffi::HandleBndHArray1OfBox2d_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Bnd_HArray1OfBox2d
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Bnd_HArray1OfBox2d> {
+        crate::ffi::HandleBndHArray1OfBox2d_get_mut(self)
+    }
+}
+
+// ========================
 // From Bnd_HArray1OfSphere.hxx
 // ========================
 
@@ -395,6 +637,37 @@ impl OBB {
 }
 
 // ========================
+// From Bnd_Range.hxx
+// ========================
+
+/// This class describes a range in 1D space restricted
+/// by two real values.
+/// A range can be void indicating there is no point included in the range.
+pub use crate::ffi::Bnd_Range as Range;
+
+impl Range {
+    /// Default constructor. Creates VOID range.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_Range_ctor()
+    }
+
+    /// Constructor. Never creates VOID range.
+    pub fn new_real2(theMin: f64, theMax: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_Range_ctor_real2(theMin, theMax)
+    }
+
+    /// Returns the copy of <*this> shifted by theVal
+    pub fn shifted(&self, theVal: f64) -> cxx::UniquePtr<crate::ffi::Bnd_Range> {
+        crate::ffi::Bnd_Range_shifted(self, theVal)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_Range_to_owned(self)
+    }
+}
+
+// ========================
 // From Bnd_Sphere.hxx
 // ========================
 
@@ -425,10 +698,29 @@ impl Sphere {
 }
 
 // ========================
+// From Bnd_Tools.hxx
+// ========================
+
+/// Defines a set of static methods operating with bounding boxes
+pub use crate::ffi::Bnd_Tools as Tools;
+
+impl Tools {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_Tools_ctor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_Tools_to_owned(self)
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    Bnd_Array1OfBox as Array1OfBox, Bnd_Array1OfSphere as Array1OfSphere,
-    Bnd_BoundSortBox as BoundSortBox,
+    Bnd_Array1OfBox as Array1OfBox, Bnd_Array1OfBox2d as Array1OfBox2d,
+    Bnd_Array1OfSphere as Array1OfSphere,
 };

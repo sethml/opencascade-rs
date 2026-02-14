@@ -312,6 +312,199 @@ impl BuilderAlgo {
 }
 
 // ========================
+// From BRepAlgoAPI_Check.hxx
+// ========================
+
+/// The class Check provides a diagnostic tool for checking the validity
+/// of the single shape or couple of shapes.
+/// The shapes are checked on:
+/// - Topological validity;
+/// - Small edges;
+/// - Self-interference;
+/// - Validity for Boolean operation of certain type (for couple of shapes only).
+///
+/// The class provides two ways of checking shape(-s)
+/// 1. Constructors
+/// BRepAlgoAPI_Check aCh(theS);
+/// Standard_Boolean isValid = aCh.IsValid();
+/// 2. Methods SetData and Perform
+/// BRepAlgoAPI_Check aCh;
+/// aCh.SetData(theS1, theS2, BOPAlgo_FUSE, Standard_False);
+/// aCh.Perform();
+/// Standard_Boolean isValid = aCh.IsValid();
+pub use crate::ffi::BRepAlgoAPI_Check as Check;
+
+impl Check {
+    /// @name Constructors
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgoAPI_Check_ctor()
+    }
+
+    /// Constructor for checking single shape.
+    ///
+    /// @param[in] theS  - the shape to check;
+    /// @param[in] bTestSE  - flag which specifies whether to check the shape
+    /// on small edges or not; by default it is set to TRUE;
+    /// @param[in] bTestSI  - flag which specifies whether to check the shape
+    /// on self-interference or not; by default it is set to TRUE;
+    /// @param[in] theRange  - parameter to use progress indicator
+    pub fn new_shape_bool2_progressrange(
+        theS: &crate::ffi::TopoDS_Shape,
+        bTestSE: bool,
+        bTestSI: bool,
+        theRange: &crate::ffi::Message_ProgressRange,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgoAPI_Check_ctor_shape_bool2_progressrange(
+            theS, bTestSE, bTestSI, theRange,
+        )
+    }
+
+    /// Constructor for checking the couple of shapes.
+    /// Additionally to the validity checks of each given shape,
+    /// the types of the given shapes will be checked on validity
+    /// for Boolean operation of given type.
+    ///
+    /// @param[in] theS1  - the first shape to check;
+    /// @param[in] theS2  - the second shape to check;
+    /// @param[in] theOp  - the type of Boolean Operation for which the validity
+    /// of given shapes should be checked.
+    /// @param[in] bTestSE  - flag which specifies whether to check the shape
+    /// on small edges or not; by default it is set to TRUE;
+    /// @param[in] bTestSI  - flag which specifies whether to check the shape
+    /// on self-interference or not; by default it is set to TRUE;
+    /// @param[in] theRange  - parameter to use progress indicator
+    pub fn new_shape2_operation_bool2_progressrange(
+        theS1: &crate::ffi::TopoDS_Shape,
+        theS2: &crate::ffi::TopoDS_Shape,
+        theOp: i32,
+        bTestSE: bool,
+        bTestSI: bool,
+        theRange: &crate::ffi::Message_ProgressRange,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgoAPI_Check_ctor_shape2_operation_bool2_progressrange(
+            theS1, theS2, theOp, bTestSE, bTestSI, theRange,
+        )
+    }
+
+    /// Initializes the algorithm with couple of shapes.
+    /// Additionally to the validity checks of each given shape,
+    /// the types of the given shapes will be checked on validity
+    /// for Boolean operation of given type.
+    ///
+    /// @param[in] theS1  - the first shape to check;
+    /// @param[in] theS2  - the second shape to check;
+    /// @param[in] theOp  - the type of Boolean Operation for which the validity
+    /// of given shapes should be checked.
+    /// @param[in] bTestSE  - flag which specifies whether to check the shape
+    /// on small edges or not; by default it is set to TRUE;
+    /// @param[in] bTestSI  - flag which specifies whether to check the shape
+    /// on self-interference or not; by default it is set to TRUE;
+    pub fn set_data_shape2_operation_bool2(
+        self: std::pin::Pin<&mut Self>,
+        theS1: &crate::ffi::TopoDS_Shape,
+        theS2: &crate::ffi::TopoDS_Shape,
+        theOp: i32,
+        bTestSE: bool,
+        bTestSI: bool,
+    ) {
+        crate::ffi::BRepAlgoAPI_Check_set_data(self, theS1, theS2, theOp, bTestSE, bTestSI)
+    }
+
+    /// Upcast to BOPAlgo_Options
+    pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
+        crate::ffi::BRepAlgoAPI_Check_as_BOPAlgo_Options(self)
+    }
+
+    /// Upcast to BOPAlgo_Options (mutable)
+    pub fn as_bop_algo_options_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::bop_algo::Options> {
+        crate::ffi::BRepAlgoAPI_Check_as_BOPAlgo_Options_mut(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: Allocator()
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        crate::ffi::BRepAlgoAPI_Check_inherited_Allocator(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: Clear()
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepAlgoAPI_Check_inherited_Clear(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: AddError()
+    pub fn add_error(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
+        crate::ffi::BRepAlgoAPI_Check_inherited_AddError(self, theAlert)
+    }
+
+    /// Inherited from BOPAlgo_Options: AddWarning()
+    pub fn add_warning(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
+        crate::ffi::BRepAlgoAPI_Check_inherited_AddWarning(self, theAlert)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasErrors()
+    pub fn has_errors(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Check_inherited_HasErrors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasError()
+    pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        crate::ffi::BRepAlgoAPI_Check_inherited_HasError(self, theType)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings()
+    pub fn has_warnings(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Check_inherited_HasWarnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarning()
+    pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        crate::ffi::BRepAlgoAPI_Check_inherited_HasWarning(self, theType)
+    }
+
+    /// Inherited from BOPAlgo_Options: GetReport()
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        crate::ffi::BRepAlgoAPI_Check_inherited_GetReport(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings()
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepAlgoAPI_Check_inherited_ClearWarnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel()
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Check_inherited_SetRunParallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel()
+    pub fn run_parallel(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Check_inherited_RunParallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        crate::ffi::BRepAlgoAPI_Check_inherited_SetFuzzyValue(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue()
+    pub fn fuzzy_value(&self) -> f64 {
+        crate::ffi::BRepAlgoAPI_Check_inherited_FuzzyValue(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB()
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        crate::ffi::BRepAlgoAPI_Check_inherited_SetUseOBB(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB()
+    pub fn use_obb(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Check_inherited_UseOBB(self)
+    }
+}
+
+// ========================
 // From BRepAlgoAPI_Common.hxx
 // ========================
 
@@ -787,6 +980,140 @@ impl Cut {
 }
 
 // ========================
+// From BRepAlgoAPI_Defeaturing.hxx
+// ========================
+
+/// The BRepAlgoAPI_Defeaturing algorithm is the API algorithm intended for
+/// removal of the unwanted parts from the shape. The unwanted parts
+/// (or features) can be holes, protrusions, gaps, chamfers, fillets etc.
+/// The shape itself is not modified, the new shape is built as the result.
+///
+/// The actual removal of the features from the shape is performed by
+/// the low-level *BOPAlgo_RemoveFeatures* tool. So the defeaturing algorithm
+/// has the same options, input data requirements, limitations as the
+/// low-level algorithm.
+///
+/// <b>Input data</b>
+///
+/// Currently, only the shapes of type SOLID, COMPSOLID, and COMPOUND of Solids
+/// are supported. And only the FACEs can be removed from the shape.
+///
+/// On the input the algorithm accepts the shape itself and the
+/// features which have to be removed. It does not matter how the features
+/// are given. It could be the separate faces or the collections
+/// of faces. The faces should belong to the initial shape, and those that
+/// do not belong will be ignored.
+///
+/// <b>Options</b>
+///
+/// The algorithm has the following options:
+/// - History support;
+///
+/// and the options available from base class:
+/// - Error/Warning reporting system;
+/// - Parallel processing mode.
+///
+/// Please note that the other options of the base class are not supported
+/// here and will have no effect.
+///
+/// For the details on the available options please refer to the description
+/// of *BOPAlgo_RemoveFeatures* algorithm.
+///
+/// <b>Limitations</b>
+///
+/// The defeaturing algorithm has the same limitations as *BOPAlgo_RemoveFeatures*
+/// algorithm.
+///
+/// <b>Example</b>
+///
+/// Here is the example of usage of the algorithm:
+/// ~~~~
+/// TopoDS_Shape aSolid = ...;               // Input shape to remove the features from
+/// TopTools_ListOfShape aFeatures = ...;    // Features to remove from the shape
+/// Standard_Boolean bRunParallel = ...;     // Parallel processing mode
+/// Standard_Boolean isHistoryNeeded = ...;  // History support
+///
+/// BRepAlgoAPI_Defeaturing aDF;             // De-Featuring algorithm
+/// aDF.SetShape(aSolid);                    // Set the shape
+/// aDF.AddFacesToRemove(aFaces);            // Add faces to remove
+/// aDF.SetRunParallel(bRunParallel);        // Define the processing mode (parallel or single)
+/// aDF.SetToFillHistory(isHistoryNeeded);   // Define whether to track the shapes modifications
+/// aDF.Build();                             // Perform the operation
+/// if (!aDF.IsDone())                       // Check for the errors
+/// {
+/// // error treatment
+/// Standard_SStream aSStream;
+/// aDF.DumpErrors(aSStream);
+/// return;
+/// }
+/// if (aDF.HasWarnings())                   // Check for the warnings
+/// {
+/// // warnings treatment
+/// Standard_SStream aSStream;
+/// aDF.DumpWarnings(aSStream);
+/// }
+/// const TopoDS_Shape& aResult = aDF.Shape(); // Result shape
+/// ~~~~
+///
+/// The algorithm preserves the type of the input shape in the result shape. Thus,
+/// if the input shape is a COMPSOLID, the resulting solids will also be put into a COMPSOLID.
+pub use crate::ffi::BRepAlgoAPI_Defeaturing as Defeaturing;
+
+impl Defeaturing {
+    /// @name Constructors
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgoAPI_Defeaturing_ctor()
+    }
+
+    /// Returns the History of shapes modifications
+    pub fn history(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BRepAlgoAPI_Defeaturing_history(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Defeaturing_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Defeaturing_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepAlgoAPI_Defeaturing_inherited_Check(self)
+    }
+}
+
+// ========================
 // From BRepAlgoAPI_Fuse.hxx
 // ========================
 
@@ -1097,12 +1424,12 @@ impl Section {
     /// <PerformNow> - the flag:
     /// if <PerformNow>=True - the algorithm is performed immediately
     /// Obsolete
-    pub fn new_shape_handlesurface_bool(
+    pub fn new_shape_handlegeomsurface_bool(
         S1: &crate::ffi::TopoDS_Shape,
         Sf: &crate::ffi::HandleGeomSurface,
         PerformNow: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Section_ctor_shape_handlesurface_bool(S1, Sf, PerformNow)
+        crate::ffi::BRepAlgoAPI_Section_ctor_shape_handlegeomsurface_bool(S1, Sf, PerformNow)
     }
 
     /// Constructor with two shapes
@@ -1111,12 +1438,12 @@ impl Section {
     /// <PerformNow> - the flag:
     /// if <PerformNow>=True - the algorithm is performed immediately
     /// Obsolete
-    pub fn new_handlesurface_shape_bool(
+    pub fn new_handlegeomsurface_shape_bool(
         Sf: &crate::ffi::HandleGeomSurface,
         S2: &crate::ffi::TopoDS_Shape,
         PerformNow: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Section_ctor_handlesurface_shape_bool(Sf, S2, PerformNow)
+        crate::ffi::BRepAlgoAPI_Section_ctor_handlegeomsurface_shape_bool(Sf, S2, PerformNow)
     }
 
     /// Constructor with two shapes
@@ -1125,12 +1452,12 @@ impl Section {
     /// <PerformNow> - the flag:
     /// if <PerformNow>=True - the algorithm is performed immediately
     /// Obsolete
-    pub fn new_handlesurface2_bool(
+    pub fn new_handlegeomsurface2_bool(
         Sf1: &crate::ffi::HandleGeomSurface,
         Sf2: &crate::ffi::HandleGeomSurface,
         PerformNow: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgoAPI_Section_ctor_handlesurface2_bool(Sf1, Sf2, PerformNow)
+        crate::ffi::BRepAlgoAPI_Section_ctor_handlegeomsurface2_bool(Sf1, Sf2, PerformNow)
     }
 
     /// Constructor with two shapes
@@ -1180,11 +1507,11 @@ impl Section {
     /// <PerformNow> - the flag:
     /// if <PerformNow>=True - the algorithm is performed immediately
     /// Obsolete
-    pub fn new_shape_handlesurface(
+    pub fn new_shape_handlegeomsurface(
         S1: &crate::ffi::TopoDS_Shape,
         Sf: &crate::ffi::HandleGeomSurface,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_shape_handlesurface_bool(S1, Sf, true)
+        Self::new_shape_handlegeomsurface_bool(S1, Sf, true)
     }
 
     /// Constructor with two shapes
@@ -1193,11 +1520,11 @@ impl Section {
     /// <PerformNow> - the flag:
     /// if <PerformNow>=True - the algorithm is performed immediately
     /// Obsolete
-    pub fn new_handlesurface_shape(
+    pub fn new_handlegeomsurface_shape(
         Sf: &crate::ffi::HandleGeomSurface,
         S2: &crate::ffi::TopoDS_Shape,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_handlesurface_shape_bool(Sf, S2, true)
+        Self::new_handlegeomsurface_shape_bool(Sf, S2, true)
     }
 
     /// Constructor with two shapes
@@ -1206,11 +1533,11 @@ impl Section {
     /// <PerformNow> - the flag:
     /// if <PerformNow>=True - the algorithm is performed immediately
     /// Obsolete
-    pub fn new_handlesurface2(
+    pub fn new_handlegeomsurface2(
         Sf1: &crate::ffi::HandleGeomSurface,
         Sf2: &crate::ffi::HandleGeomSurface,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_handlesurface2_bool(Sf1, Sf2, true)
+        Self::new_handlegeomsurface2_bool(Sf1, Sf2, true)
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation
@@ -1393,5 +1720,201 @@ impl Section {
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
         crate::ffi::BRepAlgoAPI_Section_inherited_Check(self)
+    }
+}
+
+// ========================
+// From BRepAlgoAPI_Splitter.hxx
+// ========================
+
+/// The class contains API level of the **Splitter** algorithm,
+/// which allows splitting a group of arbitrary shapes by the
+/// other group of arbitrary shapes.<br>
+/// The arguments of the operation are divided on two groups:<br>
+/// *Objects* - shapes that will be split;<br>
+/// *Tools*   - shapes by which the *Objects* will be split.<br>
+/// The result of the operation contains only the split parts
+/// of the shapes from the group of *Objects*.<br>
+/// The split parts of the shapes from the group of *Tools* are excluded
+/// from the result.<br>
+/// The shapes can be split by the other shapes from the same group
+/// (in case these shapes are interfering).
+///
+/// The class is a General Fuse based algorithm. Thus, all options
+/// of the General Fuse algorithm such as Fuzzy mode, safe processing mode,
+/// parallel processing mode, gluing mode and history support are also
+/// available in this algorithm.<br>
+/// There is no requirement on the existence of the *Tools* shapes.
+/// And if there are no *Tools* shapes, the result of the splitting
+/// operation will be equivalent to the General Fuse result.
+///
+/// The algorithm returns the following Error statuses:<br>
+/// - 0 - in case of success;<br>
+/// - *BOPAlgo_AlertTooFewArguments*    - in case there is no enough arguments for the
+/// operation;<br>
+/// - *BOPAlgo_AlertIntersectionFailed* - in case the Intersection of the arguments has failed;<br>
+/// - *BOPAlgo_AlertBuilderFailed*      - in case the Building of the result has failed.
+pub use crate::ffi::BRepAlgoAPI_Splitter as Splitter;
+
+impl Splitter {
+    /// @name Constructors
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgoAPI_Splitter_ctor()
+    }
+
+    /// Constructor with already prepared intersection tool - PaveFiller
+    pub fn new_pavefiller(thePF: &crate::ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgoAPI_Splitter_ctor_pavefiller(thePF)
+    }
+
+    /// Upcast to BRepAlgoAPI_BuilderAlgo
+    pub fn as_builder_algo(&self) -> &BuilderAlgo {
+        crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_BuilderAlgo(self)
+    }
+
+    /// Upcast to BRepAlgoAPI_BuilderAlgo (mutable)
+    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
+        crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_BuilderAlgo_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_SetArguments(self, theLS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_Arguments(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_SetNonDestructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    pub fn non_destructive(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_SetCheckInverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    pub fn check_inverted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_CheckInverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_SimplifyResult(
+            self,
+            theUnifyEdges,
+            theUnifyFaces,
+            theAngularTol,
+        )
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_Generated(self, theS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_IsDeleted(self, aS)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    pub fn has_modified(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_HasModified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    pub fn has_generated(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_HasGenerated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    pub fn has_deleted(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_HasDeleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_SetToFillHistory(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    pub fn has_history(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    pub fn section_edges(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_SectionEdges(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_History(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_Check(self)
     }
 }

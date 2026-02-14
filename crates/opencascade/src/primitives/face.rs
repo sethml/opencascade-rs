@@ -37,7 +37,7 @@ impl Face {
     pub fn from_surface(surface: &Surface) -> Self {
         let tol_degen = 1.0e-6;
         let make_face =
-            b_rep_builder_api::MakeFace::new_handlesurface_real(&surface.inner, tol_degen);
+            b_rep_builder_api::MakeFace::new_handlegeomsurface_real(&surface.inner, tol_degen);
         Self::from_make_face(make_face)
     }
 
@@ -243,7 +243,7 @@ impl Face {
     pub fn normal_at(&self, pos: DVec3) -> DVec3 {
         let surface_handle = b_rep::Tool::surface_face(&self.inner);
         let gp_point = make_point(pos);
-        let projector = geom_api::ProjectPointOnSurf::new_pnt_handlesurface_extalgo(
+        let projector = geom_api::ProjectPointOnSurf::new_pnt_handlegeomsurface_extalgo(
             &gp_point,
             &surface_handle,
             0, // Extrema_ExtAlgo_Grad

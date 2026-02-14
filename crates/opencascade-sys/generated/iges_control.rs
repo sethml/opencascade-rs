@@ -7,6 +7,268 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From IGESControl_ActorWrite.hxx
+// ========================
+
+/// Actor to write Shape to IGES
+pub use crate::ffi::IGESControl_ActorWrite as ActorWrite;
+
+impl ActorWrite {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESControl_ActorWrite_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IGESControl_ActorWrite_get_type_descriptor()
+    }
+
+    /// Upcast to Transfer_ActorOfFinderProcess
+    pub fn as_transfer_actor_of_finder_process(&self) -> &crate::transfer::ActorOfFinderProcess {
+        crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfFinderProcess(self)
+    }
+
+    /// Upcast to Transfer_ActorOfFinderProcess (mutable)
+    pub fn as_transfer_actor_of_finder_process_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::transfer::ActorOfFinderProcess> {
+        crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(self)
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForFinder
+    pub fn as_transfer_actor_of_process_for_finder(
+        &self,
+    ) -> &crate::transfer::ActorOfProcessForFinder {
+        crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(self)
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForFinder (mutable)
+    pub fn as_transfer_actor_of_process_for_finder_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::transfer::ActorOfProcessForFinder> {
+        crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(self)
+    }
+
+    /// Inherited from Transfer_ActorOfFinderProcess: ModeTrans()
+    pub fn mode_trans(self: std::pin::Pin<&mut Self>) -> &mut i32 {
+        crate::ffi::IGESControl_ActorWrite_inherited_ModeTrans(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: NullResult()
+    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
+        crate::ffi::IGESControl_ActorWrite_inherited_NullResult(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: SetLast()
+    pub fn set_last(self: std::pin::Pin<&mut Self>, mode: bool) {
+        crate::ffi::IGESControl_ActorWrite_inherited_SetLast(self, mode)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: IsLast()
+    pub fn is_last(&self) -> bool {
+        crate::ffi::IGESControl_ActorWrite_inherited_IsLast(self)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: SetNext()
+    pub fn set_next(
+        self: std::pin::Pin<&mut Self>,
+        next: &crate::ffi::HandleTransferActorOfProcessForFinder,
+    ) {
+        crate::ffi::IGESControl_ActorWrite_inherited_SetNext(self, next)
+    }
+
+    /// Inherited from Transfer_ActorOfProcessForFinder: Next()
+    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        crate::ffi::IGESControl_ActorWrite_inherited_Next(self)
+    }
+}
+
+// ========================
+// From IGESControl_AlgoContainer.hxx
+// ========================
+
+pub use crate::ffi::IGESControl_AlgoContainer as AlgoContainer;
+
+impl AlgoContainer {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESControl_AlgoContainer_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IGESControl_AlgoContainer_get_type_descriptor()
+    }
+
+    /// Upcast to IGESToBRep_AlgoContainer
+    pub fn as_iges_to_b_rep_algo_container(&self) -> &crate::iges_to_b_rep::AlgoContainer {
+        crate::ffi::IGESControl_AlgoContainer_as_IGESToBRep_AlgoContainer(self)
+    }
+
+    /// Upcast to IGESToBRep_AlgoContainer (mutable)
+    pub fn as_iges_to_b_rep_algo_container_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::iges_to_b_rep::AlgoContainer> {
+        crate::ffi::IGESControl_AlgoContainer_as_IGESToBRep_AlgoContainer_mut(self)
+    }
+
+    /// Inherited from IGESToBRep_AlgoContainer: SetToolContainer()
+    pub fn set_tool_container(
+        self: std::pin::Pin<&mut Self>,
+        TC: &crate::ffi::HandleIGESToBRepToolContainer,
+    ) {
+        crate::ffi::IGESControl_AlgoContainer_inherited_SetToolContainer(self, TC)
+    }
+
+    /// Inherited from IGESToBRep_AlgoContainer: ToolContainer()
+    pub fn tool_container(&self) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepToolContainer> {
+        crate::ffi::IGESControl_AlgoContainer_inherited_ToolContainer(self)
+    }
+}
+
+// ========================
+// From IGESControl_Controller.hxx
+// ========================
+
+/// Controller for IGES-5.1
+pub use crate::ffi::IGESControl_Controller as Controller;
+
+impl Controller {
+    /// Initializes the use of IGES Norm (the first time) and returns
+    /// a Controller for IGES-5.1
+    /// If <modefnes> is True, sets it to internal FNES format
+    pub fn new_bool(modefnes: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESControl_Controller_ctor_bool(modefnes)
+    }
+
+    /// Initializes the use of IGES Norm (the first time) and returns
+    /// a Controller for IGES-5.1
+    /// If <modefnes> is True, sets it to internal FNES format
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool(false)
+    }
+
+    /// Creates a new empty Model ready to receive data of the Norm.
+    /// It is taken from IGES Template Model
+    pub fn new_model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::IGESControl_Controller_new_model(self)
+    }
+
+    /// Standard Initialisation. It creates a Controller for IGES and
+    /// records it to various names, available to select it later
+    /// Returns True when done, False if could not be done
+    /// Also, it creates and records an Adaptor for FNES
+    pub fn init() -> bool {
+        crate::ffi::IGESControl_Controller_init()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IGESControl_Controller_get_type_descriptor()
+    }
+
+    /// Upcast to XSControl_Controller
+    pub fn as_xs_control_controller(&self) -> &crate::xs_control::Controller {
+        crate::ffi::IGESControl_Controller_as_XSControl_Controller(self)
+    }
+
+    /// Upcast to XSControl_Controller (mutable)
+    pub fn as_xs_control_controller_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::xs_control::Controller> {
+        crate::ffi::IGESControl_Controller_as_XSControl_Controller_mut(self)
+    }
+
+    /// Inherited from XSControl_Controller: AutoRecord()
+    pub fn auto_record(&self) {
+        crate::ffi::IGESControl_Controller_inherited_AutoRecord(self)
+    }
+
+    /// Inherited from XSControl_Controller: WorkLibrary()
+    pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
+        crate::ffi::IGESControl_Controller_inherited_WorkLibrary(self)
+    }
+
+    /// Inherited from XSControl_Controller: SetModeWrite()
+    pub fn set_mode_write(self: std::pin::Pin<&mut Self>, modemin: i32, modemax: i32, shape: bool) {
+        crate::ffi::IGESControl_Controller_inherited_SetModeWrite(self, modemin, modemax, shape)
+    }
+
+    /// Inherited from XSControl_Controller: ModeWriteBounds()
+    pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
+        crate::ffi::IGESControl_Controller_inherited_ModeWriteBounds(self, modemin, modemax, shape)
+    }
+
+    /// Inherited from XSControl_Controller: IsModeWrite()
+    pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
+        crate::ffi::IGESControl_Controller_inherited_IsModeWrite(self, modetrans, shape)
+    }
+
+    /// Inherited from XSControl_Controller: RecognizeWriteShape()
+    pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
+        crate::ffi::IGESControl_Controller_inherited_RecognizeWriteShape(self, shape, modetrans)
+    }
+}
+
+// ========================
+// From IGESControl_IGESBoundary.hxx
+// ========================
+
+/// Translates IGES boundary entity (types 141, 142 and 508)
+/// in Advanced Data Exchange.
+/// Redefines translation and treatment methods from inherited
+/// open class IGESToBRep_IGESBoundary.
+pub use crate::ffi::IGESControl_IGESBoundary as IGESBoundary;
+
+impl IGESBoundary {
+    /// Creates an object and calls inherited constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESControl_IGESBoundary_ctor()
+    }
+
+    /// Creates an object and calls inherited constructor.
+    pub fn new_curveandsurface(
+        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESControl_IGESBoundary_ctor_curveandsurface(CS)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IGESControl_IGESBoundary_get_type_descriptor()
+    }
+
+    /// Upcast to IGESToBRep_IGESBoundary
+    pub fn as_iges_to_b_rep_iges_boundary(&self) -> &crate::iges_to_b_rep::IGESBoundary {
+        crate::ffi::IGESControl_IGESBoundary_as_IGESToBRep_IGESBoundary(self)
+    }
+
+    /// Upcast to IGESToBRep_IGESBoundary (mutable)
+    pub fn as_iges_to_b_rep_iges_boundary_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::iges_to_b_rep::IGESBoundary> {
+        crate::ffi::IGESControl_IGESBoundary_as_IGESToBRep_IGESBoundary_mut(self)
+    }
+
+    /// Inherited from IGESToBRep_IGESBoundary: Init()
+    pub fn init(
+        self: std::pin::Pin<&mut Self>,
+        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+        entity: &crate::ffi::HandleIGESDataIGESEntity,
+        face: &crate::ffi::TopoDS_Face,
+        trans: &crate::ffi::gp_Trsf2d,
+        uFact: f64,
+        filepreference: i32,
+    ) {
+        crate::ffi::IGESControl_IGESBoundary_inherited_Init(
+            self,
+            CS,
+            entity,
+            face,
+            trans,
+            uFact,
+            filepreference,
+        )
+    }
+}
+
+// ========================
 // From IGESControl_Reader.hxx
 // ========================
 
@@ -68,6 +330,11 @@ impl Reader {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
         crate::ffi::IGESControl_Reader_as_XSControl_Reader_mut(self)
+    }
+
+    /// Inherited from XSControl_Reader: Model()
+    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::IGESControl_Reader_inherited_Model(self)
     }
 
     /// Inherited from XSControl_Reader: TransferOneRoot()
@@ -145,6 +412,40 @@ impl Reader {
             nbWithResult,
             nbWithFail,
         )
+    }
+}
+
+// ========================
+// From IGESControl_ToolContainer.hxx
+// ========================
+
+pub use crate::ffi::IGESControl_ToolContainer as ToolContainer;
+
+impl ToolContainer {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESControl_ToolContainer_ctor()
+    }
+
+    /// Returns IGESControl_IGESBoundary
+    pub fn iges_boundary(&self) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
+        crate::ffi::IGESControl_ToolContainer_iges_boundary(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IGESControl_ToolContainer_get_type_descriptor()
+    }
+
+    /// Upcast to IGESToBRep_ToolContainer
+    pub fn as_iges_to_b_rep_tool_container(&self) -> &crate::iges_to_b_rep::ToolContainer {
+        crate::ffi::IGESControl_ToolContainer_as_IGESToBRep_ToolContainer(self)
+    }
+
+    /// Upcast to IGESToBRep_ToolContainer (mutable)
+    pub fn as_iges_to_b_rep_tool_container_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::iges_to_b_rep::ToolContainer> {
+        crate::ffi::IGESControl_ToolContainer_as_IGESToBRep_ToolContainer_mut(self)
     }
 }
 

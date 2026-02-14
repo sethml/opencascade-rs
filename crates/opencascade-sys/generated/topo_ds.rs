@@ -12,6 +12,41 @@ pub use crate::ffi::{
 };
 
 // ========================
+// From TopoDS_AlertWithShape.hxx
+// ========================
+
+/// Alert object storing TopoDS shape in its field
+pub use crate::ffi::TopoDS_AlertWithShape as AlertWithShape;
+
+impl AlertWithShape {
+    /// Constructor with shape argument
+    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_AlertWithShape_ctor_shape(theShape)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_AlertWithShape_get_type_descriptor()
+    }
+
+    /// Upcast to Message_Alert
+    pub fn as_message_alert(&self) -> &crate::message::Alert {
+        crate::ffi::TopoDS_AlertWithShape_as_Message_Alert(self)
+    }
+
+    /// Upcast to Message_Alert (mutable)
+    pub fn as_message_alert_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::message::Alert> {
+        crate::ffi::TopoDS_AlertWithShape_as_Message_Alert_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_AlertWithShape_to_owned(self)
+    }
+}
+
+// ========================
 // From TopoDS_Builder.hxx
 // ========================
 
@@ -782,6 +817,90 @@ impl Face {
 }
 
 // ========================
+// From TopoDS_FrozenShape.hxx
+// ========================
+
+/// An  attempt was  made to   modify  a Shape  already
+/// shared or protected.
+pub use crate::ffi::TopoDS_FrozenShape as FrozenShape;
+
+impl FrozenShape {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_FrozenShape_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_FrozenShape_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_FrozenShape_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::TopoDS_FrozenShape_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_FrozenShape_get_type_descriptor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_FrozenShape_to_owned(self)
+    }
+}
+
+// ========================
+// From TopoDS_HShape.hxx
+// ========================
+
+/// Class to manipulate a Shape with  handle.
+pub use crate::ffi::TopoDS_HShape as HShape;
+
+impl HShape {
+    /// Constructs an empty shape object
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_HShape_ctor()
+    }
+
+    /// Constructs a shape object defined by the shape aShape.
+    pub fn new_shape(aShape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_HShape_ctor_shape(aShape)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_HShape_get_type_descriptor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_HShape_to_owned(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleTopoDSHShape> {
+        crate::ffi::TopoDS_HShape_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTopoDSHShape;
+
+impl HandleTopoDSHShape {
+    /// Dereference this Handle to access the underlying TopoDS_HShape
+    pub fn get(&self) -> &crate::ffi::TopoDS_HShape {
+        crate::ffi::HandleTopoDSHShape_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_HShape
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopoDS_HShape> {
+        crate::ffi::HandleTopoDSHShape_get_mut(self)
+    }
+}
+
+// ========================
 // From TopoDS_Iterator.hxx
 // ========================
 
@@ -838,6 +957,41 @@ impl Iterator {
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Iterator_to_owned(self)
+    }
+}
+
+// ========================
+// From TopoDS_LockedShape.hxx
+// ========================
+
+/// An attempt was made to modify a geometry of Shape already
+/// shared or protected.
+pub use crate::ffi::TopoDS_LockedShape as LockedShape;
+
+impl LockedShape {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_LockedShape_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_LockedShape_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_LockedShape_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::TopoDS_LockedShape_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_LockedShape_get_type_descriptor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_LockedShape_to_owned(self)
     }
 }
 
@@ -1309,6 +1463,351 @@ impl Solid {
 }
 
 // ========================
+// From TopoDS_TCompSolid.hxx
+// ========================
+
+/// A set of solids connected by their faces.
+pub use crate::ffi::TopoDS_TCompSolid as TCompSolid;
+
+impl TCompSolid {
+    /// Creates an empty TCompSolid.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TCompSolid_ctor()
+    }
+
+    /// returns COMPSOLID
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::TopoDS_TCompSolid_shape_type(self)
+    }
+
+    /// Returns an empty TCompSolid.
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::TopoDS_TCompSolid_empty_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_TCompSolid_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_t_shape(&self) -> &TShape {
+        crate::ffi::TopoDS_TCompSolid_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_t_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut TShape> {
+        crate::ffi::TopoDS_TCompSolid_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TCompSolid_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_TCompSolid_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_TCompSolid_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_TCompSolid_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_TCompSolid_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_TCompSolid_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_TCompSolid_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_TCompSolid_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_TCompSolid_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_TCompSolid_inherited_NbChildren(self)
+    }
+}
+
+// ========================
+// From TopoDS_TCompound.hxx
+// ========================
+
+/// A TCompound is an all-purpose set of Shapes.
+pub use crate::ffi::TopoDS_TCompound as TCompound;
+
+impl TCompound {
+    /// Creates an empty TCompound.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TCompound_ctor()
+    }
+
+    /// Returns COMPOUND.
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::TopoDS_TCompound_shape_type(self)
+    }
+
+    /// Returns an empty TCompound.
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::TopoDS_TCompound_empty_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_TCompound_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_t_shape(&self) -> &TShape {
+        crate::ffi::TopoDS_TCompound_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_t_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut TShape> {
+        crate::ffi::TopoDS_TCompound_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TCompound_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_TCompound_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_TCompound_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_TCompound_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_TCompound_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_TCompound_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_TCompound_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_TCompound_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_TCompound_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_TCompound_inherited_NbChildren(self)
+    }
+}
+
+// ========================
+// From TopoDS_TEdge.hxx
+// ========================
+
+/// A topological part  of a  curve  in 2D or 3D,  the
+/// boundary    is   a   set  of oriented    Vertices.
+pub use crate::ffi::TopoDS_TEdge as TEdge;
+
+impl TEdge {
+    /// Returns  EDGE.
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::TopoDS_TEdge_shape_type(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_TEdge_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_t_shape(&self) -> &TShape {
+        crate::ffi::TopoDS_TEdge_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_t_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut TShape> {
+        crate::ffi::TopoDS_TEdge_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_TEdge_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_TEdge_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_TEdge_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_TEdge_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_TEdge_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_TEdge_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_TEdge_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_TEdge_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: EmptyCopy()
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::TopoDS_TEdge_inherited_EmptyCopy(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_TEdge_inherited_NbChildren(self)
+    }
+}
+
+// ========================
+// From TopoDS_TFace.hxx
+// ========================
+
+/// A  topological part  of a surface   or  of the  2D
+/// space.  The  boundary  is  a   set of  wires   and
+/// vertices.
+pub use crate::ffi::TopoDS_TFace as TFace;
+
+impl TFace {
+    /// Creates an empty TFace.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TFace_ctor()
+    }
+
+    /// returns FACE.
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::TopoDS_TFace_shape_type(self)
+    }
+
+    /// Returns an empty TFace.
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::TopoDS_TFace_empty_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_TFace_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_t_shape(&self) -> &TShape {
+        crate::ffi::TopoDS_TFace_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_t_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut TShape> {
+        crate::ffi::TopoDS_TFace_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TFace_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_TFace_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_TFace_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_TFace_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_TFace_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_TFace_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_TFace_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_TFace_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_TFace_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_TFace_inherited_NbChildren(self)
+    }
+}
+
+// ========================
 // From TopoDS_TShape.hxx
 // ========================
 
@@ -1369,6 +1868,384 @@ impl HandleTopoDSTShape {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::ffi::TopoDS_TShape> {
         crate::ffi::HandleTopoDSTShape_get_mut(self)
+    }
+}
+
+// ========================
+// From TopoDS_TShell.hxx
+// ========================
+
+/// A set of faces connected by their edges.
+pub use crate::ffi::TopoDS_TShell as TShell;
+
+impl TShell {
+    /// Creates an empty TShell.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TShell_ctor()
+    }
+
+    /// Returns SHELL.
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::TopoDS_TShell_shape_type(self)
+    }
+
+    /// Returns an empty TShell.
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::TopoDS_TShell_empty_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_TShell_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_t_shape(&self) -> &TShape {
+        crate::ffi::TopoDS_TShell_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_t_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut TShape> {
+        crate::ffi::TopoDS_TShell_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TShell_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_TShell_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_TShell_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_TShell_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_TShell_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_TShell_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_TShell_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_TShell_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_TShell_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_TShell_inherited_NbChildren(self)
+    }
+}
+
+// ========================
+// From TopoDS_TSolid.hxx
+// ========================
+
+/// A Topological part of 3D space, bounded by shells,
+/// edges and vertices.
+pub use crate::ffi::TopoDS_TSolid as TSolid;
+
+impl TSolid {
+    /// Creates an empty TSolid.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TSolid_ctor()
+    }
+
+    /// returns SOLID.
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::TopoDS_TSolid_shape_type(self)
+    }
+
+    /// Returns an empty TSolid.
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::TopoDS_TSolid_empty_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_TSolid_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_t_shape(&self) -> &TShape {
+        crate::ffi::TopoDS_TSolid_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_t_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut TShape> {
+        crate::ffi::TopoDS_TSolid_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TSolid_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_TSolid_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_TSolid_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_TSolid_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_TSolid_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_TSolid_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_TSolid_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_TSolid_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_TSolid_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_TSolid_inherited_NbChildren(self)
+    }
+}
+
+// ========================
+// From TopoDS_TVertex.hxx
+// ========================
+
+/// A  Vertex is a topological  point in  two or three
+/// dimensions.
+pub use crate::ffi::TopoDS_TVertex as TVertex;
+
+impl TVertex {
+    /// Returns VERTEX.
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::TopoDS_TVertex_shape_type(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_TVertex_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_t_shape(&self) -> &TShape {
+        crate::ffi::TopoDS_TVertex_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_t_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut TShape> {
+        crate::ffi::TopoDS_TVertex_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_TVertex_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_TVertex_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_TVertex_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_TVertex_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_TVertex_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_TVertex_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_TVertex_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_TVertex_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: EmptyCopy()
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::TopoDS_TVertex_inherited_EmptyCopy(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_TVertex_inherited_NbChildren(self)
+    }
+}
+
+// ========================
+// From TopoDS_TWire.hxx
+// ========================
+
+/// A set of edges connected by their vertices.
+pub use crate::ffi::TopoDS_TWire as TWire;
+
+impl TWire {
+    /// Creates an empty TWire.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TWire_ctor()
+    }
+
+    /// Returns WIRE.
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::TopoDS_TWire_shape_type(self)
+    }
+
+    /// Returns an empty TWire.
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::TopoDS_TWire_empty_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_TWire_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_t_shape(&self) -> &TShape {
+        crate::ffi::TopoDS_TWire_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_t_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut TShape> {
+        crate::ffi::TopoDS_TWire_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_TWire_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_TWire_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_TWire_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_TWire_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_TWire_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_TWire_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_TWire_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_TWire_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_TWire_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_TWire_inherited_NbChildren(self)
+    }
+}
+
+// ========================
+// From TopoDS_UnCompatibleShapes.hxx
+// ========================
+
+/// An incorrect insertion was attempted.
+pub use crate::ffi::TopoDS_UnCompatibleShapes as UnCompatibleShapes;
+
+impl UnCompatibleShapes {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_UnCompatibleShapes_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_UnCompatibleShapes_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_UnCompatibleShapes_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::TopoDS_UnCompatibleShapes_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopoDS_UnCompatibleShapes_get_type_descriptor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopoDS_UnCompatibleShapes_to_owned(self)
     }
 }
 

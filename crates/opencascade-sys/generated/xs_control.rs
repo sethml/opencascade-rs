@@ -7,6 +7,97 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From XSControl_Controller.hxx
+// ========================
+
+/// This class allows a general X-STEP engine to run generic
+/// functions on any interface norm, in the same way. It includes
+/// the transfer operations. I.e. it gathers the already available
+/// general modules, the engine has just to know it
+///
+/// The important point is that a given X-STEP Controller is
+/// attached to a given couple made of an Interface Norm (such as
+/// IGES-5.1) and an application data model (CasCade Shapes for
+/// instance).
+///
+/// Finally, Controller can be gathered in a general dictionary then
+/// retrieved later by a general call (method Recorded)
+///
+/// It does not manage the produced data, but the Actors make the
+/// link between the norm and the application
+pub use crate::ffi::XSControl_Controller as Controller;
+
+impl Controller {
+    /// Changes names
+    /// if a name is empty, the formerly set one remains
+    /// Remark : Does not call Record or AutoRecord
+    pub fn set_names(self: std::pin::Pin<&mut Self>, theLongName: &str, theShortName: &str) {
+        crate::ffi::XSControl_Controller_set_names(self, theLongName, theShortName)
+    }
+
+    /// Records <me> in a general dictionary under a name
+    /// Error if <name> already used for another one
+    pub fn record(&self, name: &str) {
+        crate::ffi::XSControl_Controller_record(self, name)
+    }
+
+    /// Returns a name, as given when initializing :
+    /// rsc = False (D) : True Name attached to the Norm (long name)
+    /// rsc = True : Name of the resource set (i.e. short name)
+    pub fn name(&self, rsc: bool) -> String {
+        crate::ffi::XSControl_Controller_name(self, rsc)
+    }
+
+    /// Creates a new empty Model ready to receive data of the Norm
+    /// Used to write data from Imagine to an interface file
+    pub fn new_model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::XSControl_Controller_new_model(self)
+    }
+
+    /// Attaches a short line of help to a value of modetrans (write)
+    pub fn set_mode_write_help(
+        self: std::pin::Pin<&mut Self>,
+        modetrans: i32,
+        help: &str,
+        shape: bool,
+    ) {
+        crate::ffi::XSControl_Controller_set_mode_write_help(self, modetrans, help, shape)
+    }
+
+    /// Returns the help line recorded for a value of modetrans
+    /// empty if help not defined or not within bounds or if values are free
+    pub fn mode_write_help(&self, modetrans: i32, shape: bool) -> String {
+        crate::ffi::XSControl_Controller_mode_write_help(self, modetrans, shape)
+    }
+
+    /// Returns the Controller attached to a given name
+    /// Returns a Null Handle if <name> is unknown
+    pub fn recorded(name: &str) -> cxx::UniquePtr<crate::ffi::HandleXSControlController> {
+        crate::ffi::XSControl_Controller_recorded(name)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::XSControl_Controller_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleXSControlController;
+
+impl HandleXSControlController {
+    /// Dereference this Handle to access the underlying XSControl_Controller
+    pub fn get(&self) -> &crate::ffi::XSControl_Controller {
+        crate::ffi::HandleXSControlController_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying XSControl_Controller
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::XSControl_Controller> {
+        crate::ffi::HandleXSControlController_get_mut(self)
+    }
+}
+
+// ========================
 // From XSControl_Reader.hxx
 // ========================
 
@@ -66,6 +157,11 @@ impl Reader {
     /// Zero for a Model which complies with the Controller
     pub fn read_file(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
         crate::ffi::XSControl_Reader_read_file(self, filename)
+    }
+
+    /// Returns the model. It can then be consulted (header, product)
+    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::XSControl_Reader_model(self)
     }
 
     /// Returns a list of entities from the IGES or STEP file

@@ -991,14 +991,16 @@ impl Revolution {
     /// Create a  revolution body <M>  is the  meridian nd
     /// must   be in the XZ  plane   of <A>. <PM>  is  the
     /// meridian in the XZ plane.
-    pub fn new_ax2_real2_handlecurve2(
+    pub fn new_ax2_real2_handlegeomcurve_handlegeom2dcurve(
         A: &crate::ffi::gp_Ax2,
         VMin: f64,
         VMax: f64,
         M: &crate::ffi::HandleGeomCurve,
         PM: &crate::ffi::HandleGeom2dCurve,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepPrim_Revolution_ctor_ax2_real2_handlecurve2(A, VMin, VMax, M, PM)
+        crate::ffi::BRepPrim_Revolution_ctor_ax2_real2_handlegeomcurve_handlegeom2dcurve(
+            A, VMin, VMax, M, PM,
+        )
     }
 
     /// The surface normal should be directed  towards the

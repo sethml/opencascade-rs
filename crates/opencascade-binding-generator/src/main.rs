@@ -66,7 +66,7 @@ fn main() -> Result<()> {
     }
 
     // Determine explicit headers from config file or CLI arguments
-    let (explicit_headers, resolve_deps) = if let Some(ref config_path) = args.config {
+    let (explicit_headers, resolve_deps, exclude_set) = if let Some(ref config_path) = args.config {
         let cfg = config::load_config(config_path)?;
         let resolve = cfg.general.resolve_deps;
 
@@ -88,9 +88,10 @@ fn main() -> Result<()> {
         println!("Loaded config: {} modules, {} individual headers, {} exclusions -> {} headers",
             cfg.modules.len(), cfg.include_headers.len(), cfg.exclude_headers.len(), headers.len());
 
-        (headers, resolve)
+        let excludes: std::collections::HashSet<String> = cfg.exclude_headers.into_iter().collect();
+        (headers, resolve, excludes)
     } else if !args.headers.is_empty() {
-        (args.headers.clone(), args.resolve_deps)
+        (args.headers.clone(), args.resolve_deps, std::collections::HashSet::new())
     } else {
         anyhow::bail!("Either --config <file.toml> or positional header arguments are required");
     };
@@ -120,6 +121,24 @@ fn main() -> Result<()> {
         resolved
     } else {
         explicit_headers
+    };
+
+    // Apply exclusions to resolved headers (exclusions apply after dep resolution too)
+    let headers_to_process = if !exclude_set.is_empty() {
+        let before = headers_to_process.len();
+        let filtered: Vec<_> = headers_to_process
+            .into_iter()
+            .filter(|path| {
+                let filename = path.file_name().and_then(|f| f.to_str()).unwrap_or("");
+                !exclude_set.contains(filename)
+            })
+            .collect();
+        if filtered.len() < before {
+            println!("  Excluded {} dependency headers after resolution", before - filtered.len());
+        }
+        filtered
+    } else {
+        headers_to_process
     };
 
     println!("Parsing {} headers...", headers_to_process.len());
@@ -606,6 +625,9 @@ fn generate_unified(
         if codegen::rust::is_primitive_type(type_name) { continue; }
         if collection_type_names.contains(type_name) { continue; }
         if already_reexported.contains(type_name) { continue; }
+        // Skip namespace-scoped types and types with pointer/ref qualifiers
+        // leaked into the name (e.g., "IMeshData::ListOfPnt2d", "IMeshData_Edge *const")
+        if type_name.contains("::") || type_name.contains('*') || type_name.contains('&') { continue; }
 
         // Determine module from type_to_module map, falling back to name-based
         if let Some(module) = symbol_table.type_to_module.get(type_name) {

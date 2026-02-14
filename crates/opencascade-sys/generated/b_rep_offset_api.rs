@@ -7,6 +7,1087 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From BRepOffsetAPI_DraftAngle.hxx
+// ========================
+
+/// Taper-adding transformations on a shape.
+/// The resulting shape is constructed by defining one face
+/// to be tapered after another one, as well as the
+/// geometric properties of their tapered transformation.
+/// Each tapered transformation is propagated along the
+/// series of faces which are tangential to one another and
+/// which contains the face to be tapered.
+/// This algorithm is useful in the construction of molds or
+/// dies. It facilitates the removal of the article being produced.
+/// A DraftAngle object provides a framework for:
+/// - initializing the construction algorithm with a given shape,
+/// - acquiring the data characterizing the faces to be tapered,
+/// - implementing the construction algorithm, and
+/// - consulting the results.
+/// Warning
+/// - This algorithm treats planar, cylindrical and conical faces.
+/// - Do not use shapes, which with a draft angle added to
+/// a face would modify the topology. This would, for
+/// example, involve creation of new vertices, edges or
+/// faces, or suppression of existing vertices, edges or faces.
+/// - Any face, which is continuous in tangency with the
+/// face to be tapered, will also be tapered. These
+/// connected faces must also respect the above criteria.
+pub use crate::ffi::BRepOffsetAPI_DraftAngle as DraftAngle;
+
+impl DraftAngle {
+    /// Constructs an empty algorithm to perform
+    /// taper-adding transformations on faces of a shape.
+    /// Use the Init function to define the shape to be tapered.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_DraftAngle_ctor()
+    }
+
+    /// Initializes an algorithm to perform taper-adding
+    /// transformations on faces of the shape S.
+    /// S will be referred to as the initial shape of the algorithm.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_DraftAngle_ctor_shape(S)
+    }
+
+    /// Returns an error  status when an error has occurred
+    /// (Face,   Edge    or Vertex  recomputation problem).
+    /// Otherwise returns Draft_NoError. The method may be
+    /// called if AddDone  returns Standard_False, or when
+    /// IsDone returns Standard_False.
+    pub fn status(&self) -> i32 {
+        crate::ffi::BRepOffsetAPI_DraftAngle_status(self)
+    }
+
+    /// Returns the modified shape corresponding to <S>.
+    /// S can correspond to the entire initial shape or to its subshape.
+    /// Raises exceptions
+    /// Standard_NoSuchObject if S is not the initial shape or
+    /// a subshape of the initial shape to which the
+    /// transformation has been applied.
+    pub fn modified_shape(
+        &self,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepOffsetAPI_DraftAngle_modified_shape(self, S)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_ModifyShape
+    pub fn as_b_rep_builder_api_modify_shape(&self) -> &crate::b_rep_builder_api::ModifyShape {
+        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_ModifyShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_ModifyShape (mutable)
+    pub fn as_b_rep_builder_api_modify_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::ModifyShape> {
+        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_ModifyShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepOffsetAPI_DraftAngle_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepOffsetAPI_DraftAngle_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepOffsetAPI_DraftAngle_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepOffsetAPI_DraftAngle_inherited_IsDeleted(self, S)
+    }
+}
+
+// ========================
+// From BRepOffsetAPI_FindContigousEdges.hxx
+// ========================
+
+/// Provides methods to identify contiguous boundaries for continuity control (C0, C1, ...)
+///
+/// Use this function as following:
+/// - create an object
+/// - default tolerance 1.E-06
+/// - with analysis of degenerated faces on
+/// - define if necessary a new tolerance
+/// - set if necessary analysis of degenerated shapes off
+/// - add shapes to be controlled -> Add
+/// - compute -> Perform
+/// - output couples of connected edges for control
+/// - output the problems if any
+pub use crate::ffi::BRepOffsetAPI_FindContigousEdges as FindContigousEdges;
+
+impl FindContigousEdges {
+    /// Initializes an algorithm for identifying contiguous edges
+    /// on shapes with tolerance as the tolerance of contiguity
+    /// (defaulted to 1.0e-6). This tolerance value is used to
+    /// determine whether two edges or sections of edges are coincident.
+    /// Use the function Add to define the shapes to be checked.
+    /// Set option to false. This argument (defaulted to true) will
+    /// serve in subsequent software releases for performing an
+    /// analysis of degenerated shapes.
+    pub fn new_real_bool(tolerance: f64, option: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_FindContigousEdges_ctor_real_bool(tolerance, option)
+    }
+
+    /// Initializes an algorithm for identifying contiguous edges
+    /// on shapes with tolerance as the tolerance of contiguity
+    /// (defaulted to 1.0e-6). This tolerance value is used to
+    /// determine whether two edges or sections of edges are coincident.
+    /// Use the function Add to define the shapes to be checked.
+    /// Set option to false. This argument (defaulted to true) will
+    /// serve in subsequent software releases for performing an
+    /// analysis of degenerated shapes.
+    pub fn new_real(tolerance: f64) -> cxx::UniquePtr<Self> {
+        Self::new_real_bool(tolerance, true)
+    }
+
+    /// Initializes an algorithm for identifying contiguous edges
+    /// on shapes with tolerance as the tolerance of contiguity
+    /// (defaulted to 1.0e-6). This tolerance value is used to
+    /// determine whether two edges or sections of edges are coincident.
+    /// Use the function Add to define the shapes to be checked.
+    /// Set option to false. This argument (defaulted to true) will
+    /// serve in subsequent software releases for performing an
+    /// analysis of degenerated shapes.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_real_bool(1.0e-06, true)
+    }
+}
+
+// ========================
+// From BRepOffsetAPI_MakeDraft.hxx
+// ========================
+
+/// Build a draft surface along a wire
+pub use crate::ffi::BRepOffsetAPI_MakeDraft as MakeDraft;
+
+impl MakeDraft {
+    /// Constructs the draft surface object defined by the shape
+    /// Shape, the direction Dir, and the angle Angle.
+    /// Shape must be a TopoDS_Wire, Topo_DS_Face or
+    /// TopoDS_Shell with free boundaries.
+    /// Exceptions
+    /// Standard_NotDone if Shape is not a TopoDS_Wire,
+    /// Topo_DS_Face or TopoDS_Shell with free boundaries.
+    pub fn new_shape_dir_real(
+        Shape: &crate::ffi::TopoDS_Shape,
+        Dir: &crate::ffi::gp_Dir,
+        Angle: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_MakeDraft_ctor_shape_dir_real(Shape, Dir, Angle)
+    }
+
+    /// Sets the options of this draft tool.
+    /// If a transition has to be performed, it can be defined by
+    /// the mode Style as RightCorner or RoundCorner,
+    /// RightCorner being a corner defined by a sharp angle,
+    /// and RoundCorner being a rounded corner.
+    /// AngleMin is an angular tolerance used to detect
+    /// whether a transition has to be performed or not.
+    /// AngleMax sets the maximum value within which a
+    /// RightCorner transition can be performed.
+    /// AngleMin and AngleMax are expressed in radians.
+    pub fn set_options(self: std::pin::Pin<&mut Self>, Style: i32, AngleMin: f64, AngleMax: f64) {
+        crate::ffi::BRepOffsetAPI_MakeDraft_set_options(self, Style, AngleMin, AngleMax)
+    }
+
+    /// Returns the shell resulting from performance of the
+    /// draft along the wire.
+    pub fn shell(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shell> {
+        crate::ffi::BRepOffsetAPI_MakeDraft_shell(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_IsDeleted(self, S)
+    }
+}
+
+// ========================
+// From BRepOffsetAPI_MakeEvolved.hxx
+// ========================
+
+/// Describes functions to build evolved shapes.
+/// An evolved shape is built from a planar spine (face or
+/// wire) and a profile (wire). The evolved shape is the
+/// unlooped sweep (pipe) of the profile along the spine.
+/// Self-intersections are removed.
+/// A MakeEvolved object provides a framework for:
+/// - defining the construction of an evolved shape,
+/// - implementing the construction algorithm, and
+/// - consulting the result.
+/// Computes an Evolved by
+/// 1 - sweeping a profile along a spine.
+/// 2 - removing the self-intersections.
+///
+/// The Profile is expected to be planar and can be a line
+/// (which lies in infinite number of planes).
+///
+/// The profile is defined in a Referential R. The position of
+/// the profile at the current point of the  spine is given by
+/// confusing R  and the local  referential given by (  D0, D1
+/// and the normal of the Spine).
+///
+/// The coordinate system is determined by theIsAxeProf argument:
+/// - if theIsAxeProf is true, R is the global coordinate system,
+/// - if theIsAxeProf is false, R is computed so that:
+/// * its origin is given by the point on the spine which is
+/// closest to the profile,
+/// * its "X Axis" is given by the tangent to the spine at this point, and
+/// * its "Z Axis" is the normal to the plane which contains the spine.
+///
+/// theJoinType defines the type of pipe generated by the salient
+/// vertices of the spine. The default type is GeomAbs_Arc
+/// where the vertices generate revolved pipes about the
+/// axis passing along the vertex and the normal to the
+/// plane of the spine. At present, this is the only
+/// construction type implemented.
+///
+/// if <theIsSolid> is TRUE the Shape result is completed to be a
+/// solid or a compound of solids.
+///
+/// If theIsProfOnSpine == TRUE then the profile must connect with the spine.
+///
+/// If theIsVolume option is switched on then self-intersections
+/// in the result of Pipe-algorithm will be removed by
+/// BOPAlgo_MakerVolume algorithm. At that the arguments
+/// "theJoinType", "theIsAxeProf", "theIsProfOnSpine" are not used.
+pub use crate::ffi::BRepOffsetAPI_MakeEvolved as MakeEvolved;
+
+impl MakeEvolved {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_ctor()
+    }
+
+    /// Constructs an evolved shape by sweeping the profile
+    /// (theProfile) along the spine (theSpine).
+    /// theSpine can be shape only of type wire or face.
+    /// See description to this class for detailed information.
+    pub fn new_shape_wire_jointype_bool3_real_bool2(
+        theSpine: &crate::ffi::TopoDS_Shape,
+        theProfile: &crate::ffi::TopoDS_Wire,
+        theJoinType: i32,
+        theIsAxeProf: bool,
+        theIsSolid: bool,
+        theIsProfOnSpine: bool,
+        theTol: f64,
+        theIsVolume: bool,
+        theRunInParallel: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_ctor_shape_wire_jointype_bool3_real_bool2(
+            theSpine,
+            theProfile,
+            theJoinType,
+            theIsAxeProf,
+            theIsSolid,
+            theIsProfOnSpine,
+            theTol,
+            theIsVolume,
+            theRunInParallel,
+        )
+    }
+
+    /// Constructs an evolved shape by sweeping the profile
+    /// (theProfile) along the spine (theSpine).
+    /// theSpine can be shape only of type wire or face.
+    /// See description to this class for detailed information.
+    pub fn new_shape_wire_jointype_bool3_real_bool(
+        theSpine: &crate::ffi::TopoDS_Shape,
+        theProfile: &crate::ffi::TopoDS_Wire,
+        theJoinType: i32,
+        theIsAxeProf: bool,
+        theIsSolid: bool,
+        theIsProfOnSpine: bool,
+        theTol: f64,
+        theIsVolume: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_shape_wire_jointype_bool3_real_bool2(
+            theSpine,
+            theProfile,
+            theJoinType,
+            theIsAxeProf,
+            theIsSolid,
+            theIsProfOnSpine,
+            theTol,
+            theIsVolume,
+            false,
+        )
+    }
+
+    /// Constructs an evolved shape by sweeping the profile
+    /// (theProfile) along the spine (theSpine).
+    /// theSpine can be shape only of type wire or face.
+    /// See description to this class for detailed information.
+    pub fn new_shape_wire_jointype_bool3_real(
+        theSpine: &crate::ffi::TopoDS_Shape,
+        theProfile: &crate::ffi::TopoDS_Wire,
+        theJoinType: i32,
+        theIsAxeProf: bool,
+        theIsSolid: bool,
+        theIsProfOnSpine: bool,
+        theTol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_shape_wire_jointype_bool3_real_bool2(
+            theSpine,
+            theProfile,
+            theJoinType,
+            theIsAxeProf,
+            theIsSolid,
+            theIsProfOnSpine,
+            theTol,
+            false,
+            false,
+        )
+    }
+
+    /// Constructs an evolved shape by sweeping the profile
+    /// (theProfile) along the spine (theSpine).
+    /// theSpine can be shape only of type wire or face.
+    /// See description to this class for detailed information.
+    pub fn new_shape_wire_jointype_bool3(
+        theSpine: &crate::ffi::TopoDS_Shape,
+        theProfile: &crate::ffi::TopoDS_Wire,
+        theJoinType: i32,
+        theIsAxeProf: bool,
+        theIsSolid: bool,
+        theIsProfOnSpine: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_shape_wire_jointype_bool3_real_bool2(
+            theSpine,
+            theProfile,
+            theJoinType,
+            theIsAxeProf,
+            theIsSolid,
+            theIsProfOnSpine,
+            0.0000001,
+            false,
+            false,
+        )
+    }
+
+    /// Constructs an evolved shape by sweeping the profile
+    /// (theProfile) along the spine (theSpine).
+    /// theSpine can be shape only of type wire or face.
+    /// See description to this class for detailed information.
+    pub fn new_shape_wire_jointype_bool2(
+        theSpine: &crate::ffi::TopoDS_Shape,
+        theProfile: &crate::ffi::TopoDS_Wire,
+        theJoinType: i32,
+        theIsAxeProf: bool,
+        theIsSolid: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_shape_wire_jointype_bool3_real_bool2(
+            theSpine,
+            theProfile,
+            theJoinType,
+            theIsAxeProf,
+            theIsSolid,
+            false,
+            0.0000001,
+            false,
+            false,
+        )
+    }
+
+    /// Constructs an evolved shape by sweeping the profile
+    /// (theProfile) along the spine (theSpine).
+    /// theSpine can be shape only of type wire or face.
+    /// See description to this class for detailed information.
+    pub fn new_shape_wire_jointype_bool(
+        theSpine: &crate::ffi::TopoDS_Shape,
+        theProfile: &crate::ffi::TopoDS_Wire,
+        theJoinType: i32,
+        theIsAxeProf: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_shape_wire_jointype_bool3_real_bool2(
+            theSpine,
+            theProfile,
+            theJoinType,
+            theIsAxeProf,
+            false,
+            false,
+            0.0000001,
+            false,
+            false,
+        )
+    }
+
+    /// Constructs an evolved shape by sweeping the profile
+    /// (theProfile) along the spine (theSpine).
+    /// theSpine can be shape only of type wire or face.
+    /// See description to this class for detailed information.
+    pub fn new_shape_wire_jointype(
+        theSpine: &crate::ffi::TopoDS_Shape,
+        theProfile: &crate::ffi::TopoDS_Wire,
+        theJoinType: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_shape_wire_jointype_bool3_real_bool2(
+            theSpine,
+            theProfile,
+            theJoinType,
+            true,
+            false,
+            false,
+            0.0000001,
+            false,
+            false,
+        )
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_IsDeleted(self, S)
+    }
+}
+
+// ========================
+// From BRepOffsetAPI_MakeFilling.hxx
+// ========================
+
+/// N-Side Filling
+/// This algorithm avoids to build a face from:
+/// * a set of edges defining the bounds of the face and some
+/// constraints the surface of the face has to satisfy
+/// * a set of edges and points defining some constraints
+/// the support surface has to satisfy
+/// * an initial surface to deform for satisfying the constraints
+/// * a set of parameters to control the constraints.
+///
+/// The support surface of the face is computed by deformation
+/// of the initial surface in order to satisfy the given constraints.
+/// The set of bounding edges defines the wire of the face.
+///
+/// If no initial surface is given, the algorithm computes it
+/// automatically.
+/// If the set of edges is not connected (Free constraint)
+/// missing edges are automatically computed.
+///
+/// Limitations:
+/// * If some constraints are not compatible
+/// The algorithm does not take them into account.
+/// So the constraints will not be satisfyed in an area containing
+/// the incompatibilitries.
+/// * The constraints defining the bound of the face have to be
+/// entered in order to have a continuous wire.
+///
+/// Other Applications:
+/// * Deformation of a face to satisfy internal constraints
+/// * Deformation of a face to improve Gi continuity with
+/// connected faces
+pub use crate::ffi::BRepOffsetAPI_MakeFilling as MakeFilling;
+
+impl MakeFilling {
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new_int3_bool_real4_int2(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+        TolCurv: f64,
+        MaxDeg: i32,
+        MaxSegments: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_MakeFilling_ctor_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            Tol3d,
+            TolAng,
+            TolCurv,
+            MaxDeg,
+            MaxSegments,
+        )
+    }
+
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new_int3_bool_real4_int(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+        TolCurv: f64,
+        MaxDeg: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            Tol3d,
+            TolAng,
+            TolCurv,
+            MaxDeg,
+            9,
+        )
+    }
+
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new_int3_bool_real4(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+        TolCurv: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            Tol3d,
+            TolAng,
+            TolCurv,
+            8,
+            9,
+        )
+    }
+
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new_int3_bool_real3(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            Tol3d,
+            TolAng,
+            0.1,
+            8,
+            9,
+        )
+    }
+
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new_int3_bool_real2(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+        Tol3d: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            Tol3d,
+            0.01,
+            0.1,
+            8,
+            9,
+        )
+    }
+
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new_int3_bool_real(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+        Tol2d: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            Tol2d,
+            0.0001,
+            0.01,
+            0.1,
+            8,
+            9,
+        )
+    }
+
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new_int3_bool(
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree,
+            NbPtsOnCur,
+            NbIter,
+            Anisotropie,
+            0.00001,
+            0.0001,
+            0.01,
+            0.1,
+            8,
+            9,
+        )
+    }
+
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new_int3(Degree: i32, NbPtsOnCur: i32, NbIter: i32) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree, NbPtsOnCur, NbIter, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9,
+        )
+    }
+
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new_int2(Degree: i32, NbPtsOnCur: i32) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(
+            Degree, NbPtsOnCur, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9,
+        )
+    }
+
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new_int(Degree: i32) -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(Degree, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
+    }
+
+    /// Constructs a wire filling object defined by
+    /// - the energy minimizing criterion Degree
+    /// - the number of points on the curve NbPntsOnCur
+    /// - the number of iterations NbIter
+    /// - the Boolean Anisotropie
+    /// - the 2D tolerance Tol2d
+    /// - the 3D tolerance Tol3d
+    /// - the angular tolerance TolAng
+    /// - the tolerance for curvature TolCur
+    /// - the highest polynomial degree MaxDeg
+    /// - the greatest number of segments MaxSeg.
+    /// If the Boolean Anistropie is true, the algorithm's
+    /// performance is better in cases where the ratio of the
+    /// length U and the length V indicate a great difference
+    /// between the two. In other words, when the surface is, for
+    /// example, extremely long.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_int3_bool_real4_int2(3, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
+    }
+
+    /// Adds a new constraint which also defines an edge of the wire
+    /// of the face
+    /// Order: Order of the constraint:
+    /// GeomAbs_C0 : the surface has to pass by 3D representation
+    /// of the edge
+    /// GeomAbs_G1 : the surface has to pass by 3D representation
+    /// of the edge and to respect tangency with the first
+    /// face of the edge
+    /// GeomAbs_G2 : the surface has to pass by 3D representation
+    /// of the edge and to respect tangency and curvature
+    /// with the first face of the edge.
+    /// Raises ConstructionError if the edge has no representation on a face and Order is
+    /// GeomAbs_G1 or GeomAbs_G2.
+    pub fn add_edge_shape_bool(
+        self: std::pin::Pin<&mut Self>,
+        Constr: &crate::ffi::TopoDS_Edge,
+        Order: i32,
+        IsBound: bool,
+    ) -> i32 {
+        crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_shape_bool(self, Constr, Order, IsBound)
+    }
+
+    /// Adds a new constraint which also defines an edge of the wire
+    /// of the face
+    /// Order: Order of the constraint:
+    /// GeomAbs_C0 : the surface has to pass by 3D representation
+    /// of the edge
+    /// GeomAbs_G1 : the surface has to pass by 3D representation
+    /// of the edge and to respect tangency with the
+    /// given face
+    /// GeomAbs_G2 : the surface has to pass by 3D representation
+    /// of the edge and to respect tangency and curvature
+    /// with the given face.
+    /// Raises ConstructionError if the edge has no 2d representation on the given face
+    pub fn add_edge_face_shape_bool(
+        self: std::pin::Pin<&mut Self>,
+        Constr: &crate::ffi::TopoDS_Edge,
+        Support: &crate::ffi::TopoDS_Face,
+        Order: i32,
+        IsBound: bool,
+    ) -> i32 {
+        crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_face_shape_bool(
+            self, Constr, Support, Order, IsBound,
+        )
+    }
+
+    /// Adds a free constraint on a face. The corresponding edge has to
+    /// be automatically recomputed. It is always a bound.
+    pub fn add_face_shape(
+        self: std::pin::Pin<&mut Self>,
+        Support: &crate::ffi::TopoDS_Face,
+        Order: i32,
+    ) -> i32 {
+        crate::ffi::BRepOffsetAPI_MakeFilling_add_face_shape(self, Support, Order)
+    }
+
+    /// Adds a punctual constraint.
+    pub fn add_real2_face_shape(
+        self: std::pin::Pin<&mut Self>,
+        U: f64,
+        V: f64,
+        Support: &crate::ffi::TopoDS_Face,
+        Order: i32,
+    ) -> i32 {
+        crate::ffi::BRepOffsetAPI_MakeFilling_add_real2_face_shape(self, U, V, Support, Order)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepOffsetAPI_MakeFilling_inherited_IsDeleted(self, S)
+    }
+}
+
+// ========================
 // From BRepOffsetAPI_MakeOffset.hxx
 // ========================
 
@@ -808,6 +1889,186 @@ impl MakeThickSolid {
     /// Inherited from BRepOffsetAPI_MakeOffsetShape: MakeOffset()
     pub fn make_offset(&self) -> &crate::ffi::BRepOffset_MakeOffset {
         crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(self)
+    }
+}
+
+// ========================
+// From BRepOffsetAPI_MiddlePath.hxx
+// ========================
+
+/// Describes functions to build a middle path of a
+/// pipe-like shape
+pub use crate::ffi::BRepOffsetAPI_MiddlePath as MiddlePath;
+
+impl MiddlePath {
+    /// General constructor.
+    /// StartShape and EndShape may be
+    /// a wire or a face
+    pub fn new_shape3(
+        aShape: &crate::ffi::TopoDS_Shape,
+        StartShape: &crate::ffi::TopoDS_Shape,
+        EndShape: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_MiddlePath_ctor_shape3(aShape, StartShape, EndShape)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_IsDeleted(self, S)
+    }
+}
+
+// ========================
+// From BRepOffsetAPI_NormalProjection.hxx
+// ========================
+
+/// A framework to define projection onto a shape
+/// according to the normal from each point to be projected.
+/// The target shape is a face, and the source shape is an edge or a wire.
+pub use crate::ffi::BRepOffsetAPI_NormalProjection as NormalProjection;
+
+impl NormalProjection {
+    /// Constructs an empty framework to define projection on
+    /// a shape according to the normal from each point to be
+    /// projected to the shape.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_NormalProjection_ctor()
+    }
+
+    /// Constructs a framework to define projection onto the
+    /// basis shape S according to the normal from each point
+    /// to be projected from the shape added to this framework by Add.
+    /// Default parameters of the algorithm: Tol3D = 1.e-04, Tol2D =sqr(tol3d)
+    /// , InternalContinuity = GeomAbs_C2, MaxDegree = 14, MaxSeg = 16.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_NormalProjection_ctor_shape(S)
+    }
+
+    /// Sets the parameters  used  for computation
+    /// Tol3 is the required  tolerance between the  3d projected
+    /// curve  and     its    2d    representation
+    /// InternalContinuity  is the order of constraints
+    /// used for  approximation
+    /// MaxDeg and MaxSeg are the maximum degree and the maximum
+    /// number of segment for BSpline resulting of an approximation.
+    pub fn set_params(
+        self: std::pin::Pin<&mut Self>,
+        Tol3D: f64,
+        Tol2D: f64,
+        InternalContinuity: i32,
+        MaxDegree: i32,
+        MaxSeg: i32,
+    ) {
+        crate::ffi::BRepOffsetAPI_NormalProjection_set_params(
+            self,
+            Tol3D,
+            Tol2D,
+            InternalContinuity,
+            MaxDegree,
+            MaxSeg,
+        )
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepOffsetAPI_NormalProjection_inherited_IsDeleted(self, S)
     }
 }
 

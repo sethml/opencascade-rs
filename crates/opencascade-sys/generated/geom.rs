@@ -7,6 +7,563 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From Geom_Axis1Placement.hxx
+// ========================
+
+/// Describes an axis in 3D space.
+/// An axis is defined by:
+/// - its origin, also termed the "Location point" of the axis,
+/// - its unit vector, termed the "Direction" of the axis.
+/// Note: Geom_Axis1Placement axes provide the
+/// same kind of "geometric" services as gp_Ax1 axes
+/// but have more complex data structures. The
+/// geometric objects provided by the Geom package
+/// use gp_Ax1 objects to include axes in their data
+/// structures, or to define an axis of symmetry or axis of rotation.
+/// Geom_Axis1Placement axes are used in a context
+/// where they can be shared by several objects
+/// contained inside a common data structure.
+pub use crate::ffi::Geom_Axis1Placement as Axis1Placement;
+
+impl Axis1Placement {
+    /// Returns a transient copy of A1.
+    pub fn new_ax1(A1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Axis1Placement_ctor_ax1(A1)
+    }
+
+    /// P is the origin of the axis placement and V is the direction
+    /// of the axis placement.
+    pub fn new_pnt_dir(P: &crate::ffi::gp_Pnt, V: &crate::ffi::gp_Dir) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Axis1Placement_ctor_pnt_dir(P, V)
+    }
+
+    /// Returns a copy of <me> reversed.
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomAxis1Placement> {
+        crate::ffi::Geom_Axis1Placement_reversed(self)
+    }
+
+    /// Creates a new object, which is a copy of this axis.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis1Placement_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Axis1Placement_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_AxisPlacement
+    pub fn as_axis_placement(&self) -> &AxisPlacement {
+        crate::ffi::Geom_Axis1Placement_as_Geom_AxisPlacement(self)
+    }
+
+    /// Upcast to Geom_AxisPlacement (mutable)
+    pub fn as_axis_placement_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut AxisPlacement> {
+        crate::ffi::Geom_Axis1Placement_as_Geom_AxisPlacement_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Axis1Placement_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Axis1Placement_as_Geom_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomAxis1Placement> {
+        crate::ffi::Geom_Axis1Placement_to_handle(obj)
+    }
+
+    /// Inherited from Geom_AxisPlacement: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_Axis1Placement_inherited_SetAxis(self, A1)
+    }
+
+    /// Inherited from Geom_AxisPlacement: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Axis1Placement_inherited_SetLocation(self, P)
+    }
+
+    /// Inherited from Geom_AxisPlacement: Angle()
+    pub fn angle(&self, Other: &crate::ffi::HandleGeomAxisPlacement) -> f64 {
+        crate::ffi::Geom_Axis1Placement_inherited_Angle(self, Other)
+    }
+
+    /// Inherited from Geom_AxisPlacement: Axis()
+    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
+        crate::ffi::Geom_Axis1Placement_inherited_Axis(self)
+    }
+
+    /// Inherited from Geom_AxisPlacement: Direction()
+    pub fn direction(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::Geom_Axis1Placement_inherited_Direction(self)
+    }
+
+    /// Inherited from Geom_AxisPlacement: Location()
+    pub fn location(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Axis1Placement_inherited_Location(self)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Axis1Placement_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Axis1Placement_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Axis1Placement_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Axis1Placement_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis1Placement_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis1Placement_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis1Placement_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis1Placement_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis1Placement_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomAxis1Placement;
+
+impl HandleGeomAxis1Placement {
+    /// Dereference this Handle to access the underlying Geom_Axis1Placement
+    pub fn get(&self) -> &crate::ffi::Geom_Axis1Placement {
+        crate::ffi::HandleGeomAxis1Placement_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Axis1Placement
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_Axis1Placement> {
+        crate::ffi::HandleGeomAxis1Placement_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Axis1Placement> to Handle<Geom_AxisPlacement>
+    pub fn to_handle_axis_placement(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomAxisPlacement> {
+        crate::ffi::HandleGeomAxis1Placement_to_HandleGeomAxisPlacement(self)
+    }
+
+    /// Upcast Handle<Geom_Axis1Placement> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomAxis1Placement_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
+// From Geom_Axis2Placement.hxx
+// ========================
+
+/// Describes a right-handed coordinate system in 3D space.
+/// A coordinate system is defined by:
+/// - its origin, also termed the "Location point" of the coordinate system,
+/// - three orthogonal unit vectors, termed respectively
+/// the "X Direction", "Y Direction" and "Direction" (or
+/// "main Direction") of the coordinate system.
+/// As a Geom_Axis2Placement coordinate system is
+/// right-handed, its "Direction" is always equal to the
+/// cross product of its "X Direction" and "Y Direction".
+/// The "Direction" of a coordinate system is called the
+/// "main Direction" because when this unit vector is
+/// modified, the "X Direction" and "Y Direction" are
+/// recomputed, whereas when the "X Direction" or "Y
+/// Direction" is changed, the "main Direction" is
+/// retained. The "main Direction" is also the "Z Direction".
+/// Note: Geom_Axis2Placement coordinate systems
+/// provide the same kind of "geometric" services as
+/// gp_Ax2 coordinate systems but have more complex
+/// data structures. The geometric objects provided by
+/// the Geom package use gp_Ax2 objects to include
+/// coordinate systems in their data structures, or to
+/// define the geometric transformations, which are applied to them.
+/// Geom_Axis2Placement coordinate systems are
+/// used in a context where they can be shared by
+/// several objects contained inside a common data structure.
+pub use crate::ffi::Geom_Axis2Placement as Axis2Placement;
+
+impl Axis2Placement {
+    /// Returns a transient copy of A2.
+    pub fn new_ax2(A2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Axis2Placement_ctor_ax2(A2)
+    }
+
+    /// P is the origin of the axis placement, N is the main
+    /// direction of the axis placement and Vx is the "XDirection".
+    /// If the two directions N and Vx are not orthogonal the
+    /// "XDirection" is computed as follow :
+    /// XDirection = N ^ (Vx ^ N).
+    /// Raised if N and Vx are parallel.
+    pub fn new_pnt_dir2(
+        P: &crate::ffi::gp_Pnt,
+        N: &crate::ffi::gp_Dir,
+        Vx: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Axis2Placement_ctor_pnt_dir2(P, N, Vx)
+    }
+
+    /// Returns a non transient copy of <me>.
+    pub fn ax2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::Geom_Axis2Placement_ax2(self)
+    }
+
+    /// Creates a new object which is a copy of this coordinate system.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis2Placement_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Axis2Placement_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_AxisPlacement
+    pub fn as_axis_placement(&self) -> &AxisPlacement {
+        crate::ffi::Geom_Axis2Placement_as_Geom_AxisPlacement(self)
+    }
+
+    /// Upcast to Geom_AxisPlacement (mutable)
+    pub fn as_axis_placement_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut AxisPlacement> {
+        crate::ffi::Geom_Axis2Placement_as_Geom_AxisPlacement_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Axis2Placement_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Axis2Placement_as_Geom_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomAxis2Placement> {
+        crate::ffi::Geom_Axis2Placement_to_handle(obj)
+    }
+
+    /// Inherited from Geom_AxisPlacement: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_Axis2Placement_inherited_SetAxis(self, A1)
+    }
+
+    /// Inherited from Geom_AxisPlacement: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Axis2Placement_inherited_SetLocation(self, P)
+    }
+
+    /// Inherited from Geom_AxisPlacement: Angle()
+    pub fn angle(&self, Other: &crate::ffi::HandleGeomAxisPlacement) -> f64 {
+        crate::ffi::Geom_Axis2Placement_inherited_Angle(self, Other)
+    }
+
+    /// Inherited from Geom_AxisPlacement: Axis()
+    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
+        crate::ffi::Geom_Axis2Placement_inherited_Axis(self)
+    }
+
+    /// Inherited from Geom_AxisPlacement: Direction()
+    pub fn direction(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::Geom_Axis2Placement_inherited_Direction(self)
+    }
+
+    /// Inherited from Geom_AxisPlacement: Location()
+    pub fn location(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Axis2Placement_inherited_Location(self)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Axis2Placement_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Axis2Placement_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Axis2Placement_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Axis2Placement_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis2Placement_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis2Placement_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis2Placement_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis2Placement_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Axis2Placement_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomAxis2Placement;
+
+impl HandleGeomAxis2Placement {
+    /// Dereference this Handle to access the underlying Geom_Axis2Placement
+    pub fn get(&self) -> &crate::ffi::Geom_Axis2Placement {
+        crate::ffi::HandleGeomAxis2Placement_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Axis2Placement
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_Axis2Placement> {
+        crate::ffi::HandleGeomAxis2Placement_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Axis2Placement> to Handle<Geom_AxisPlacement>
+    pub fn to_handle_axis_placement(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomAxisPlacement> {
+        crate::ffi::HandleGeomAxis2Placement_to_HandleGeomAxisPlacement(self)
+    }
+
+    /// Upcast Handle<Geom_Axis2Placement> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomAxis2Placement_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
+// From Geom_AxisPlacement.hxx
+// ========================
+
+/// The abstract class AxisPlacement describes the
+/// common behavior of positioning systems in 3D space,
+/// such as axis or coordinate systems.
+/// The Geom package provides two implementations of
+/// 3D positioning systems:
+/// - the axis (Geom_Axis1Placement class), which is defined by:
+/// - its origin, also termed the "Location point" of the  axis,
+/// - its unit vector, termed the "Direction" or "main
+/// Direction" of the axis;
+/// - the right-handed coordinate system
+/// (Geom_Axis2Placement class), which is defined by:
+/// - its origin, also termed the "Location point" of the coordinate system,
+/// - three orthogonal unit vectors, termed
+/// respectively the "X Direction", the "Y Direction"
+/// and the "Direction" of the coordinate system. As
+/// the coordinate system is right-handed, these
+/// unit vectors have the following relation:
+/// "Direction" = "X Direction" ^
+/// "Y Direction". The "Direction" is also
+/// called the "main Direction" because, when the
+/// unit vector is modified, the "X Direction" and "Y
+/// Direction" are recomputed, whereas when the "X
+/// Direction" or "Y Direction" is modified, the "main Direction" does not change.
+/// The axis whose origin is the origin of the positioning
+/// system and whose unit vector is its "main Direction" is
+/// also called the "Axis" or "main Axis" of the positioning system.
+pub use crate::ffi::Geom_AxisPlacement as AxisPlacement;
+
+impl AxisPlacement {
+    /// Returns the main "Direction" of an axis placement.
+    pub fn direction(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::Geom_AxisPlacement_direction(self)
+    }
+
+    /// Returns the Location point (origin) of the axis placement.
+    pub fn location(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_AxisPlacement_location(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_AxisPlacement_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_AxisPlacement_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_AxisPlacement_as_Geom_Geometry_mut(self)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_AxisPlacement_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_AxisPlacement_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_AxisPlacement_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_AxisPlacement_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Transform()
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_AxisPlacement_inherited_Transform(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_AxisPlacement_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_AxisPlacement_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_AxisPlacement_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_AxisPlacement_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_AxisPlacement_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_AxisPlacement_inherited_Copy(self)
+    }
+}
+
+pub use crate::ffi::HandleGeomAxisPlacement;
+
+impl HandleGeomAxisPlacement {
+    /// Dereference this Handle to access the underlying Geom_AxisPlacement
+    pub fn get(&self) -> &crate::ffi::Geom_AxisPlacement {
+        crate::ffi::HandleGeomAxisPlacement_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_AxisPlacement
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_AxisPlacement> {
+        crate::ffi::HandleGeomAxisPlacement_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_AxisPlacement> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomAxisPlacement_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
 // From Geom_BSplineCurve.hxx
 // ========================
 
@@ -2414,6 +2971,1052 @@ impl HandleGeomBoundedSurface {
 }
 
 // ========================
+// From Geom_CartesianPoint.hxx
+// ========================
+
+/// Describes a point in 3D space. A
+/// Geom_CartesianPoint is defined by a gp_Pnt point,
+/// with its three Cartesian coordinates X, Y and Z.
+pub use crate::ffi::Geom_CartesianPoint as CartesianPoint;
+
+impl CartesianPoint {
+    /// Returns a transient copy of P.
+    pub fn new_pnt(P: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_CartesianPoint_ctor_pnt(P)
+    }
+
+    /// Constructs a point defined by its three Cartesian coordinates X, Y and Z.
+    pub fn new_real3(X: f64, Y: f64, Z: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_CartesianPoint_ctor_real3(X, Y, Z)
+    }
+
+    /// Returns a non transient cartesian point with
+    /// the same coordinates as <me>.
+    pub fn pnt(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_CartesianPoint_pnt(self)
+    }
+
+    /// Creates a new object which is a copy of this point.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_CartesianPoint_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_CartesianPoint_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_CartesianPoint_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_CartesianPoint_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Point
+    pub fn as_point(&self) -> &Point {
+        crate::ffi::Geom_CartesianPoint_as_Geom_Point(self)
+    }
+
+    /// Upcast to Geom_Point (mutable)
+    pub fn as_point_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Point> {
+        crate::ffi::Geom_CartesianPoint_as_Geom_Point_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomCartesianPoint> {
+        crate::ffi::Geom_CartesianPoint_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_CartesianPoint_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_CartesianPoint_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_CartesianPoint_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_CartesianPoint_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_CartesianPoint_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_CartesianPoint_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_CartesianPoint_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_CartesianPoint_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_CartesianPoint_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Point: Distance()
+    pub fn distance(&self, Other: &crate::ffi::HandleGeomPoint) -> f64 {
+        crate::ffi::Geom_CartesianPoint_inherited_Distance(self, Other)
+    }
+
+    /// Inherited from Geom_Point: SquareDistance()
+    pub fn square_distance(&self, Other: &crate::ffi::HandleGeomPoint) -> f64 {
+        crate::ffi::Geom_CartesianPoint_inherited_SquareDistance(self, Other)
+    }
+}
+
+pub use crate::ffi::HandleGeomCartesianPoint;
+
+impl HandleGeomCartesianPoint {
+    /// Dereference this Handle to access the underlying Geom_CartesianPoint
+    pub fn get(&self) -> &crate::ffi::Geom_CartesianPoint {
+        crate::ffi::HandleGeomCartesianPoint_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_CartesianPoint
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_CartesianPoint> {
+        crate::ffi::HandleGeomCartesianPoint_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_CartesianPoint> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomCartesianPoint_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_CartesianPoint> to Handle<Geom_Point>
+    pub fn to_handle_point(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomPoint> {
+        crate::ffi::HandleGeomCartesianPoint_to_HandleGeomPoint(self)
+    }
+}
+
+// ========================
+// From Geom_Circle.hxx
+// ========================
+
+/// Describes a circle in 3D space.
+/// A circle is defined by its radius and, as with any conic
+/// curve, is positioned in space with a right-handed
+/// coordinate system (gp_Ax2 object) where:
+/// - the origin is the center of the circle, and
+/// - the origin, "X Direction" and "Y Direction" define the
+/// plane of the circle.
+/// This coordinate system is the local coordinate
+/// system of the circle.
+/// The "main Direction" of this coordinate system is the
+/// vector normal to the plane of the circle. The axis, of
+/// which the origin and unit vector are respectively the
+/// origin and "main Direction" of the local coordinate
+/// system, is termed the "Axis" or "main Axis" of the circle.
+/// The "main Direction" of the local coordinate system
+/// gives an explicit orientation to the circle (definition of
+/// the trigonometric sense), determining the direction in
+/// which the parameter increases along the circle.
+/// The Geom_Circle circle is parameterized by an angle:
+/// P(U) = O + R*Cos(U)*XDir + R*Sin(U)*YDir, where:
+/// - P is the point of parameter U,
+/// - O, XDir and YDir are respectively the origin, "X
+/// Direction" and "Y Direction" of its local coordinate system,
+/// - R is the radius of the circle.
+/// The "X Axis" of the local coordinate system therefore
+/// defines the origin of the parameter of the circle. The
+/// parameter is the angle with this "X Direction".
+/// A circle is a closed and periodic curve. The period is
+/// 2.*Pi and the parameter range is [ 0, 2.*Pi [.
+pub use crate::ffi::Geom_Circle as Circle;
+
+impl Circle {
+    /// Constructs a circle by conversion of the gp_Circ circle C.
+    pub fn new_circ(C: &crate::ffi::gp_Circ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Circle_ctor_circ(C)
+    }
+
+    /// Constructs a circle of radius Radius, where A2 locates the circle and
+    /// defines its orientation in 3D space such that:
+    /// - the center of the circle is the origin of A2,
+    /// - the origin, "X Direction" and "Y Direction" of A2
+    /// define the plane of the circle,
+    /// - A2 is the local coordinate system of the circle.
+    /// Note: It is possible to create a circle where Radius is equal to 0.0.
+    /// raised if Radius < 0.
+    pub fn new_ax2_real(A2: &crate::ffi::gp_Ax2, Radius: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Circle_ctor_ax2_real(A2, Radius)
+    }
+
+    /// returns the non transient circle from gp with the same
+    /// geometric properties as <me>.
+    pub fn circ(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::Geom_Circle_circ(self)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_Circle_dn(self, U, N)
+    }
+
+    /// Creates a new object which is a copy of this circle.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Circle_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Circle_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Conic
+    pub fn as_conic(&self) -> &Conic {
+        crate::ffi::Geom_Circle_as_Geom_Conic(self)
+    }
+
+    /// Upcast to Geom_Conic (mutable)
+    pub fn as_conic_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Conic> {
+        crate::ffi::Geom_Circle_as_Geom_Conic_mut(self)
+    }
+
+    /// Upcast to Geom_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom_Circle_as_Geom_Curve(self)
+    }
+
+    /// Upcast to Geom_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom_Circle_as_Geom_Curve_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Circle_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Circle_as_Geom_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleGeomCircle> {
+        crate::ffi::Geom_Circle_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Conic: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_Circle_inherited_SetAxis(self, theA1)
+    }
+
+    /// Inherited from Geom_Conic: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Circle_inherited_SetLocation(self, theP)
+    }
+
+    /// Inherited from Geom_Conic: SetPosition()
+    pub fn set_position(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
+        crate::ffi::Geom_Circle_inherited_SetPosition(self, theA2)
+    }
+
+    /// Inherited from Geom_Conic: Axis()
+    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
+        crate::ffi::Geom_Circle_inherited_Axis(self)
+    }
+
+    /// Inherited from Geom_Conic: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_Circle_inherited_Location(self)
+    }
+
+    /// Inherited from Geom_Conic: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax2 {
+        crate::ffi::Geom_Circle_inherited_Position(self)
+    }
+
+    /// Inherited from Geom_Conic: XAxis()
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Circle_inherited_XAxis(self)
+    }
+
+    /// Inherited from Geom_Conic: YAxis()
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Circle_inherited_YAxis(self)
+    }
+
+    /// Inherited from Geom_Conic: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_Circle_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom_Conic: IsCN()
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom_Circle_inherited_IsCN(self, N)
+    }
+
+    /// Inherited from Geom_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_Circle_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_Circle_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_Circle_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom_Circle_inherited_Period(self)
+    }
+
+    /// Inherited from Geom_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Circle_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Circle_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Circle_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Circle_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Circle_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Circle_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Circle_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Circle_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Circle_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Circle_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomCircle;
+
+impl HandleGeomCircle {
+    /// Dereference this Handle to access the underlying Geom_Circle
+    pub fn get(&self) -> &crate::ffi::Geom_Circle {
+        crate::ffi::HandleGeomCircle_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Circle
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom_Circle> {
+        crate::ffi::HandleGeomCircle_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Circle> to Handle<Geom_Conic>
+    pub fn to_handle_conic(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomConic> {
+        crate::ffi::HandleGeomCircle_to_HandleGeomConic(self)
+    }
+
+    /// Upcast Handle<Geom_Circle> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomCircle_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_Circle> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomCircle_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
+// From Geom_Conic.hxx
+// ========================
+
+/// The abstract class Conic describes the common
+/// behavior of conic curves in 3D space and, in
+/// particular, their general characteristics. The Geom
+/// package provides four concrete classes of conics:
+/// Geom_Circle, Geom_Ellipse, Geom_Hyperbola and Geom_Parabola.
+/// A conic is positioned in space with a right-handed
+/// coordinate system (gp_Ax2 object), where:
+/// - the origin is the center of the conic (or the apex in
+/// the case of a parabola),
+/// - the origin, "X Direction" and "Y Direction" define the
+/// plane of the conic.
+/// This coordinate system is the local coordinate
+/// system of the conic.
+/// The "main Direction" of this coordinate system is the
+/// vector normal to the plane of the conic. The axis, of
+/// which the origin and unit vector are respectively the
+/// origin and "main Direction" of the local coordinate
+/// system, is termed the "Axis" or "main Axis" of the conic.
+/// The "main Direction" of the local coordinate system
+/// gives an explicit orientation to the conic, determining
+/// the direction in which the parameter increases along
+/// the conic. The "X Axis" of the local coordinate system
+/// also defines the origin of the parameter of the conic.
+pub use crate::ffi::Geom_Conic as Conic;
+
+impl Conic {
+    /// Returns the XAxis of the conic.
+    /// This axis defines the origin of parametrization of the conic.
+    /// This axis is perpendicular to the Axis of the conic.
+    /// This axis and the Yaxis define the plane of the conic.
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Conic_x_axis(self)
+    }
+
+    /// Returns the YAxis of the conic.
+    /// The YAxis is perpendicular to the Xaxis.
+    /// This axis and the Xaxis define the plane of the conic.
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Conic_y_axis(self)
+    }
+
+    /// The continuity of the conic is Cn.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_Conic_continuity(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Conic_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom_Conic_as_Geom_Curve(self)
+    }
+
+    /// Upcast to Geom_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom_Conic_as_Geom_Curve_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Conic_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Conic_as_Geom_Geometry_mut(self)
+    }
+
+    /// Inherited from Geom_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_Conic_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_Conic_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_Conic_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom_Curve: FirstParameter()
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Geom_Conic_inherited_FirstParameter(self)
+    }
+
+    /// Inherited from Geom_Curve: LastParameter()
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Geom_Conic_inherited_LastParameter(self)
+    }
+
+    /// Inherited from Geom_Curve: IsClosed()
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Geom_Conic_inherited_IsClosed(self)
+    }
+
+    /// Inherited from Geom_Curve: IsPeriodic()
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Geom_Conic_inherited_IsPeriodic(self)
+    }
+
+    /// Inherited from Geom_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom_Conic_inherited_Period(self)
+    }
+
+    /// Inherited from Geom_Curve: D0()
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_Conic_inherited_D0(self, U, P)
+    }
+
+    /// Inherited from Geom_Curve: D1()
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Conic_inherited_D1(self, U, P, V1)
+    }
+
+    /// Inherited from Geom_Curve: D2()
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Conic_inherited_D2(self, U, P, V1, V2)
+    }
+
+    /// Inherited from Geom_Curve: D3()
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Conic_inherited_D3(self, U, P, V1, V2, V3)
+    }
+
+    /// Inherited from Geom_Curve: DN()
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_Conic_inherited_DN(self, U, N)
+    }
+
+    /// Inherited from Geom_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Conic_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Conic_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Conic_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Conic_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Conic_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Transform()
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_Conic_inherited_Transform(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Conic_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Conic_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Conic_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Conic_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Conic_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Conic_inherited_Copy(self)
+    }
+}
+
+pub use crate::ffi::HandleGeomConic;
+
+impl HandleGeomConic {
+    /// Dereference this Handle to access the underlying Geom_Conic
+    pub fn get(&self) -> &crate::ffi::Geom_Conic {
+        crate::ffi::HandleGeomConic_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Conic
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom_Conic> {
+        crate::ffi::HandleGeomConic_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Conic> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomConic_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_Conic> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomConic_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
+// From Geom_ConicalSurface.hxx
+// ========================
+
+/// Describes a cone.
+/// A cone is defined by the half-angle (can be negative) at its apex, and
+/// is positioned in space by a coordinate system (a
+/// gp_Ax3 object) and a reference radius as follows:
+/// - The "main Axis" of the coordinate system is the
+/// axis of revolution of the cone.
+/// - The plane defined by the origin, the "X Direction"
+/// and the "Y Direction" of the coordinate system is
+/// the reference plane of the cone. The intersection
+/// of the cone with this reference plane is a circle of
+/// radius equal to the reference radius.
+/// - The apex of the cone is on the negative side of
+/// the "main Axis" of the coordinate system if the
+/// half-angle is positive, and on the positive side if
+/// the half-angle is negative.
+/// This coordinate system is the "local coordinate
+/// system" of the cone. The following apply:
+/// - Rotation around its "main Axis", in the
+/// trigonometric sense given by the "X Direction"
+/// and the "Y Direction", defines the u parametric direction.
+/// - Its "X Axis" gives the origin for the u parameter.
+/// - Its "main Direction" is the v parametric direction of the cone.
+/// - Its origin is the origin of the v parameter.
+/// The parametric range of the two parameters is:
+/// @code
+/// - [ 0, 2.*Pi ] for u, and
+/// - ] -infinity, +infinity [ for v
+/// @endcode
+/// The parametric equation of the cone is:
+/// @code
+/// P(u, v) = O + (R + v*sin(Ang)) * (cos(u)*XDir + sin(u)*YDir) + v*cos(Ang)*ZDir
+/// @endcode
+/// where:
+/// - O, XDir, YDir and ZDir are respectively
+/// the origin, the "X Direction", the "Y Direction" and
+/// the "Z Direction" of the cone's local coordinate system,
+/// - Ang is the half-angle at the apex of the cone,   and
+/// - R is the reference radius.
+pub use crate::ffi::Geom_ConicalSurface as ConicalSurface;
+
+impl ConicalSurface {
+    /// A3 defines the local coordinate system of the conical surface.
+    /// Ang is the conical surface semi-angle. Its absolute value is in range
+    /// ]0, PI/2[.
+    /// Radius is the radius of the circle Viso in the placement plane
+    /// of the conical surface defined with "XAxis" and "YAxis".
+    /// The "ZDirection" of A3 defines the direction of the surface's
+    /// axis of symmetry.
+    /// If the location point of A3 is the apex of the surface
+    /// Radius = 0 .
+    /// At the creation the parametrization of the surface is defined
+    /// such that the normal Vector (N = D1U ^ D1V) is oriented towards
+    /// the "outside region" of the surface.
+    ///
+    /// Raised if Radius < 0.0 or Abs(Ang) < Resolution from gp or
+    /// Abs(Ang) >= PI/2 - Resolution
+    pub fn new_ax3_real2(A3: &crate::ffi::gp_Ax3, Ang: f64, Radius: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_ConicalSurface_ctor_ax3_real2(A3, Ang, Radius)
+    }
+
+    /// Creates a ConicalSurface from a non transient gp_Cone.
+    pub fn new_cone(C: &crate::ffi::gp_Cone) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_ConicalSurface_ctor_cone(C)
+    }
+
+    /// Returns a non transient cone with the same geometric properties as <me>.
+    pub fn cone(&self) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::Geom_ConicalSurface_cone(self)
+    }
+
+    /// Returns a 2d transformation used to find the new
+    /// parameters of a point on the transformed surface.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are obtained by transforming U,V with the 2d transformation returned by
+    /// @code
+    /// me->ParametricTransformation(T)
+    /// @endcode
+    /// This method returns a scale centered on the U axis with T.ScaleFactor
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::Geom_ConicalSurface_parametric_transformation(self, T)
+    }
+
+    /// Computes the apex of this cone. It is on the negative
+    /// side of the axis of revolution of this cone if the
+    /// half-angle at the apex is positive, and on the positive
+    /// side of the "main Axis" if the half-angle is negative.
+    pub fn apex(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_ConicalSurface_apex(self)
+    }
+
+    /// Builds the U isoparametric line of this cone.
+    /// The origin of this line is on the reference plane of this cone
+    /// (i.e. the plane defined by the origin, "X Direction"
+    /// and "Y Direction" of the local coordinate system of this cone).
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_ConicalSurface_u_iso(self, U)
+    }
+
+    /// Builds the V isoparametric circle of this cone.
+    /// It is the circle on this cone, located in the plane of Z
+    /// coordinate V*cos(Semi-Angle) in the local coordinate system of this cone.
+    /// The "Axis" of this circle is the axis of revolution of this cone.
+    /// Its starting point is defined by the "X Direction" of this cone.
+    /// Warning
+    /// If the V isoparametric circle is close to the apex of
+    /// this cone, the radius of the circle becomes very small.
+    /// It is possible to have a circle with radius equal to 0.0.
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_ConicalSurface_v_iso(self, V)
+    }
+
+    /// Computes the derivative of order Nu in the u
+    /// parametric direction, and Nv in the v parametric
+    /// direction at the point of parameters (U, V) of this cone.
+    /// Exceptions
+    /// Standard_RangeError if:
+    /// - Nu + Nv is less than 1,
+    /// - Nu or Nv is negative.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_ConicalSurface_dn(self, U, V, Nu, Nv)
+    }
+
+    /// Creates a new object which is a copy of this cone.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ConicalSurface_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_ConicalSurface_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_ElementarySurface
+    pub fn as_elementary_surface(&self) -> &ElementarySurface {
+        crate::ffi::Geom_ConicalSurface_as_Geom_ElementarySurface(self)
+    }
+
+    /// Upcast to Geom_ElementarySurface (mutable)
+    pub fn as_elementary_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ElementarySurface> {
+        crate::ffi::Geom_ConicalSurface_as_Geom_ElementarySurface_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_ConicalSurface_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_ConicalSurface_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::Geom_ConicalSurface_as_Geom_Surface(self)
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::Geom_ConicalSurface_as_Geom_Surface_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomConicalSurface> {
+        crate::ffi::Geom_ConicalSurface_to_handle(obj)
+    }
+
+    /// Inherited from Geom_ElementarySurface: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_ConicalSurface_inherited_SetAxis(self, theA1)
+    }
+
+    /// Inherited from Geom_ElementarySurface: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theLoc: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_ConicalSurface_inherited_SetLocation(self, theLoc)
+    }
+
+    /// Inherited from Geom_ElementarySurface: SetPosition()
+    pub fn set_position(self: std::pin::Pin<&mut Self>, theAx3: &crate::ffi::gp_Ax3) {
+        crate::ffi::Geom_ConicalSurface_inherited_SetPosition(self, theAx3)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Axis()
+    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
+        crate::ffi::Geom_ConicalSurface_inherited_Axis(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_ConicalSurface_inherited_Location(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax3 {
+        crate::ffi::Geom_ConicalSurface_inherited_Position(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: UReverse()
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_ConicalSurface_inherited_UReverse(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: IsCNu()
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        crate::ffi::Geom_ConicalSurface_inherited_IsCNu(self, N)
+    }
+
+    /// Inherited from Geom_ElementarySurface: IsCNv()
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        crate::ffi::Geom_ConicalSurface_inherited_IsCNv(self, N)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_ConicalSurface_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_ConicalSurface_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_ConicalSurface_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_ConicalSurface_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ConicalSurface_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ConicalSurface_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ConicalSurface_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ConicalSurface_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ConicalSurface_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Surface: UReversed()
+    pub fn u_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_ConicalSurface_inherited_UReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: VReversed()
+    pub fn v_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_ConicalSurface_inherited_VReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: UPeriod()
+    pub fn u_period(&self) -> f64 {
+        crate::ffi::Geom_ConicalSurface_inherited_UPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod()
+    pub fn v_period(&self) -> f64 {
+        crate::ffi::Geom_ConicalSurface_inherited_VPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: Value()
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_ConicalSurface_inherited_Value(self, U, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomConicalSurface;
+
+impl HandleGeomConicalSurface {
+    /// Dereference this Handle to access the underlying Geom_ConicalSurface
+    pub fn get(&self) -> &crate::ffi::Geom_ConicalSurface {
+        crate::ffi::HandleGeomConicalSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_ConicalSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_ConicalSurface> {
+        crate::ffi::HandleGeomConicalSurface_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_ConicalSurface> to Handle<Geom_ElementarySurface>
+    pub fn to_handle_elementary_surface(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomElementarySurface> {
+        crate::ffi::HandleGeomConicalSurface_to_HandleGeomElementarySurface(self)
+    }
+
+    /// Upcast Handle<Geom_ConicalSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomConicalSurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_ConicalSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomConicalSurface_to_HandleGeomSurface(self)
+    }
+}
+
+// ========================
 // From Geom_Curve.hxx
 // ========================
 
@@ -2915,6 +4518,243 @@ impl HandleGeomCylindricalSurface {
 }
 
 // ========================
+// From Geom_Direction.hxx
+// ========================
+
+/// The class Direction specifies a vector that is never null.
+/// It is a unit vector.
+pub use crate::ffi::Geom_Direction as Direction;
+
+impl Direction {
+    /// Creates a unit vector with it 3 cartesian coordinates.
+    ///
+    /// Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
+    pub fn new_real3(X: f64, Y: f64, Z: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Direction_ctor_real3(X, Y, Z)
+    }
+
+    /// Creates a transient copy of <me>.
+    pub fn new_dir(V: &crate::ffi::gp_Dir) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Direction_ctor_dir(V)
+    }
+
+    /// Returns the non transient direction with the same
+    /// coordinates as <me>.
+    pub fn dir(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::Geom_Direction_dir(self)
+    }
+
+    /// Computes the cross product between <me> and <Other>.
+    /// A new direction is returned.
+    ///
+    /// Raised if the two vectors are parallel because it is
+    /// not possible to have a direction with null length.
+    pub fn crossed(
+        &self,
+        Other: &crate::ffi::HandleGeomVector,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::Geom_Direction_crossed(self, Other)
+    }
+
+    /// Computes the triple vector product <me> ^(V1 ^ V2).
+    ///
+    /// Raised if V1 and V2 are parallel or <me> and (V1 ^ V2) are
+    /// parallel
+    pub fn cross_crossed(
+        &self,
+        V1: &crate::ffi::HandleGeomVector,
+        V2: &crate::ffi::HandleGeomVector,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::Geom_Direction_cross_crossed(self, V1, V2)
+    }
+
+    /// Creates a new object which is a copy of this unit vector.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Direction_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Direction_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Direction_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Direction_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Vector
+    pub fn as_vector(&self) -> &Vector {
+        crate::ffi::Geom_Direction_as_Geom_Vector(self)
+    }
+
+    /// Upcast to Geom_Vector (mutable)
+    pub fn as_vector_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Vector> {
+        crate::ffi::Geom_Direction_as_Geom_Vector_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleGeomDirection> {
+        crate::ffi::Geom_Direction_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Direction_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Direction_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Direction_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Direction_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Direction_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Direction_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Direction_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Direction_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Direction_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Vector: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_Direction_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom_Vector: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::Geom_Direction_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom_Vector: Angle()
+    pub fn angle(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
+        crate::ffi::Geom_Direction_inherited_Angle(self, Other)
+    }
+
+    /// Inherited from Geom_Vector: AngleWithRef()
+    pub fn angle_with_ref(
+        &self,
+        Other: &crate::ffi::HandleGeomVector,
+        VRef: &crate::ffi::HandleGeomVector,
+    ) -> f64 {
+        crate::ffi::Geom_Direction_inherited_AngleWithRef(self, Other, VRef)
+    }
+
+    /// Inherited from Geom_Vector: Coord()
+    pub fn coord(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
+        crate::ffi::Geom_Direction_inherited_Coord(self, X, Y, Z)
+    }
+
+    /// Inherited from Geom_Vector: X()
+    pub fn x(&self) -> f64 {
+        crate::ffi::Geom_Direction_inherited_X(self)
+    }
+
+    /// Inherited from Geom_Vector: Y()
+    pub fn y(&self) -> f64 {
+        crate::ffi::Geom_Direction_inherited_Y(self)
+    }
+
+    /// Inherited from Geom_Vector: Z()
+    pub fn z(&self) -> f64 {
+        crate::ffi::Geom_Direction_inherited_Z(self)
+    }
+
+    /// Inherited from Geom_Vector: Dot()
+    pub fn dot(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
+        crate::ffi::Geom_Direction_inherited_Dot(self, Other)
+    }
+
+    /// Inherited from Geom_Vector: DotCross()
+    pub fn dot_cross(
+        &self,
+        V1: &crate::ffi::HandleGeomVector,
+        V2: &crate::ffi::HandleGeomVector,
+    ) -> f64 {
+        crate::ffi::Geom_Direction_inherited_DotCross(self, V1, V2)
+    }
+
+    /// Inherited from Geom_Vector: Vec()
+    pub fn vec(&self) -> &crate::ffi::gp_Vec {
+        crate::ffi::Geom_Direction_inherited_Vec(self)
+    }
+}
+
+pub use crate::ffi::HandleGeomDirection;
+
+impl HandleGeomDirection {
+    /// Dereference this Handle to access the underlying Geom_Direction
+    pub fn get(&self) -> &crate::ffi::Geom_Direction {
+        crate::ffi::HandleGeomDirection_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Direction
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_Direction> {
+        crate::ffi::HandleGeomDirection_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Direction> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomDirection_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_Direction> to Handle<Geom_Vector>
+    pub fn to_handle_vector(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::HandleGeomDirection_to_HandleGeomVector(self)
+    }
+}
+
+// ========================
 // From Geom_ElementarySurface.hxx
 // ========================
 
@@ -3218,6 +5058,333 @@ impl HandleGeomElementarySurface {
 }
 
 // ========================
+// From Geom_Ellipse.hxx
+// ========================
+
+/// Describes an ellipse in 3D space.
+/// An ellipse is defined by its major and minor radii and,
+/// as with any conic curve, is positioned in space with a
+/// right-handed coordinate system (gp_Ax2 object) where:
+/// - the origin is the center of the ellipse,
+/// - the "X Direction" defines the major axis, and
+/// - the "Y Direction" defines the minor axis.
+/// The origin, "X Direction" and "Y Direction" of this
+/// coordinate system define the plane of the ellipse. The
+/// coordinate system is the local coordinate system of the ellipse.
+/// The "main Direction" of this coordinate system is the
+/// vector normal to the plane of the ellipse. The axis, of
+/// which the origin and unit vector are respectively the
+/// origin and "main Direction" of the local coordinate
+/// system, is termed the "Axis" or "main Axis" of the ellipse.
+/// The "main Direction" of the local coordinate system
+/// gives an explicit orientation to the ellipse (definition of
+/// the trigonometric sense), determining the direction in
+/// which the parameter increases along the ellipse.
+/// The Geom_Ellipse ellipse is parameterized by an angle:
+/// P(U) = O + MajorRad*Cos(U)*XDir + MinorRad*Sin(U)*YDir
+/// where:
+/// - P is the point of parameter U,
+/// - O, XDir and YDir are respectively the origin, "X
+/// Direction" and "Y Direction" of its local coordinate system,
+/// - MajorRad and MinorRad are the major and minor radii of the ellipse.
+/// The "X Axis" of the local coordinate system therefore
+/// defines the origin of the parameter of the ellipse.
+/// An ellipse is a closed and periodic curve. The period
+/// is 2.*Pi and the parameter range is [ 0, 2.*Pi [.
+pub use crate::ffi::Geom_Ellipse as Ellipse;
+
+impl Ellipse {
+    /// Constructs an ellipse by conversion of the gp_Elips ellipse E.
+    pub fn new_elips(E: &crate::ffi::gp_Elips) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Ellipse_ctor_elips(E)
+    }
+
+    /// Constructs an ellipse
+    /// defined by its major and minor radii, MajorRadius
+    /// and MinorRadius, where A2 locates the ellipse
+    /// and defines its orientation in 3D space such that:
+    /// - the center of the ellipse is the origin of A2,
+    /// - the "X Direction" of A2 defines the major axis
+    /// of the ellipse, i.e. the major radius
+    /// MajorRadius is measured along this axis,
+    /// - the "Y Direction" of A2 defines the minor axis
+    /// of the ellipse, i.e. the minor radius
+    /// MinorRadius is measured along this axis,
+    /// - A2 is the local coordinate system of the ellipse.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - MajorRadius is less than MinorRadius, or
+    /// - MinorRadius is less than 0.
+    /// Warning The Geom package does not prevent the
+    /// construction of an ellipse where MajorRadius and
+    /// MinorRadius are equal.
+    pub fn new_ax2_real2(
+        A2: &crate::ffi::gp_Ax2,
+        MajorRadius: f64,
+        MinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Ellipse_ctor_ax2_real2(A2, MajorRadius, MinorRadius)
+    }
+
+    /// returns the non transient ellipse from gp with the same
+    pub fn elips(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::Geom_Ellipse_elips(self)
+    }
+
+    /// This directrix is the line normal to the XAxis of the ellipse
+    /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+    /// from the center of the ellipse, where e is the eccentricity of
+    /// the ellipse.
+    /// This line is parallel to the "YAxis". The intersection point
+    /// between directrix1 and the "XAxis" is the "Location" point
+    /// of the directrix1. This point is on the positive side of
+    /// the "XAxis".
+    /// Raised if Eccentricity = 0.0. (The ellipse degenerates
+    /// into a circle)
+    pub fn directrix1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Ellipse_directrix1(self)
+    }
+
+    /// This line is obtained by the symmetrical transformation
+    /// of "Directrix1" with respect to the "YAxis" of the ellipse.
+    ///
+    /// Raised if Eccentricity = 0.0. (The ellipse degenerates into a
+    /// circle).
+    pub fn directrix2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Ellipse_directrix2(self)
+    }
+
+    /// Returns the first focus of the ellipse. This focus is on the
+    /// positive side of the "XAxis" of the ellipse.
+    pub fn focus1(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Ellipse_focus1(self)
+    }
+
+    /// Returns the second focus of the ellipse. This focus is on
+    /// the negative side of the "XAxis" of the ellipse.
+    pub fn focus2(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Ellipse_focus2(self)
+    }
+
+    /// For the point of parameter U of this ellipse, computes
+    /// the vector corresponding to the Nth derivative.
+    /// Exceptions Standard_RangeError if N is less than 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_Ellipse_dn(self, U, N)
+    }
+
+    /// Creates a new object which is a copy of this ellipse.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Ellipse_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Ellipse_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Conic
+    pub fn as_conic(&self) -> &Conic {
+        crate::ffi::Geom_Ellipse_as_Geom_Conic(self)
+    }
+
+    /// Upcast to Geom_Conic (mutable)
+    pub fn as_conic_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Conic> {
+        crate::ffi::Geom_Ellipse_as_Geom_Conic_mut(self)
+    }
+
+    /// Upcast to Geom_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom_Ellipse_as_Geom_Curve(self)
+    }
+
+    /// Upcast to Geom_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom_Ellipse_as_Geom_Curve_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Ellipse_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Ellipse_as_Geom_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleGeomEllipse> {
+        crate::ffi::Geom_Ellipse_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Conic: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_Ellipse_inherited_SetAxis(self, theA1)
+    }
+
+    /// Inherited from Geom_Conic: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Ellipse_inherited_SetLocation(self, theP)
+    }
+
+    /// Inherited from Geom_Conic: SetPosition()
+    pub fn set_position(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
+        crate::ffi::Geom_Ellipse_inherited_SetPosition(self, theA2)
+    }
+
+    /// Inherited from Geom_Conic: Axis()
+    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
+        crate::ffi::Geom_Ellipse_inherited_Axis(self)
+    }
+
+    /// Inherited from Geom_Conic: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_Ellipse_inherited_Location(self)
+    }
+
+    /// Inherited from Geom_Conic: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax2 {
+        crate::ffi::Geom_Ellipse_inherited_Position(self)
+    }
+
+    /// Inherited from Geom_Conic: XAxis()
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Ellipse_inherited_XAxis(self)
+    }
+
+    /// Inherited from Geom_Conic: YAxis()
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Ellipse_inherited_YAxis(self)
+    }
+
+    /// Inherited from Geom_Conic: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_Ellipse_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom_Conic: IsCN()
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom_Ellipse_inherited_IsCN(self, N)
+    }
+
+    /// Inherited from Geom_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_Ellipse_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_Ellipse_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_Ellipse_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom_Ellipse_inherited_Period(self)
+    }
+
+    /// Inherited from Geom_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Ellipse_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Ellipse_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Ellipse_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Ellipse_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Ellipse_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Ellipse_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Ellipse_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Ellipse_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Ellipse_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Ellipse_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomEllipse;
+
+impl HandleGeomEllipse {
+    /// Dereference this Handle to access the underlying Geom_Ellipse
+    pub fn get(&self) -> &crate::ffi::Geom_Ellipse {
+        crate::ffi::HandleGeomEllipse_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Ellipse
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom_Ellipse> {
+        crate::ffi::HandleGeomEllipse_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Ellipse> to Handle<Geom_Conic>
+    pub fn to_handle_conic(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomConic> {
+        crate::ffi::HandleGeomEllipse_to_HandleGeomConic(self)
+    }
+
+    /// Upcast Handle<Geom_Ellipse> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomEllipse_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_Ellipse> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomEllipse_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
 // From Geom_Geometry.hxx
 // ========================
 
@@ -3323,6 +5490,1581 @@ impl HandleGeomGeometry {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::ffi::Geom_Geometry> {
         crate::ffi::HandleGeomGeometry_get_mut(self)
+    }
+}
+
+// ========================
+// From Geom_HSequenceOfBSplineSurface.hxx
+// ========================
+
+pub use crate::ffi::Geom_HSequenceOfBSplineSurface as HSequenceOfBSplineSurface;
+
+impl HSequenceOfBSplineSurface {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_HSequenceOfBSplineSurface_ctor()
+    }
+
+    pub fn new_sequenceofbsplinesurface(
+        theOther: &crate::ffi::Geom_SequenceOfBSplineSurface,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_HSequenceOfBSplineSurface_ctor_sequenceofbsplinesurface(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_HSequenceOfBSplineSurface_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomHSequenceOfBSplineSurface> {
+        crate::ffi::Geom_HSequenceOfBSplineSurface_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleGeomHSequenceOfBSplineSurface;
+
+impl HandleGeomHSequenceOfBSplineSurface {
+    /// Dereference this Handle to access the underlying Geom_HSequenceOfBSplineSurface
+    pub fn get(&self) -> &crate::ffi::Geom_HSequenceOfBSplineSurface {
+        crate::ffi::HandleGeomHSequenceOfBSplineSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_HSequenceOfBSplineSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_HSequenceOfBSplineSurface> {
+        crate::ffi::HandleGeomHSequenceOfBSplineSurface_get_mut(self)
+    }
+}
+
+// ========================
+// From Geom_Hyperbola.hxx
+// ========================
+
+/// Describes a branch of a hyperbola in 3D space.
+/// A hyperbola is defined by its major and minor radii
+/// and, as with any conic curve, is positioned in space
+/// with a right-handed coordinate system (gp_Ax2 object) where:
+/// - the origin is the center of the hyperbola,
+/// - the "X Direction" defines the major axis, and
+/// - the "Y Direction" defines the minor axis.
+/// The origin, "X Direction" and "Y Direction" of this
+/// coordinate system define the plane of the hyperbola.
+/// The coordinate system is the local coordinate
+/// system of the hyperbola.
+/// The branch of the hyperbola described is the one
+/// located on the positive side of the major axis.
+/// The "main Direction" of the local coordinate system is
+/// a vector normal to the plane of the hyperbola. The
+/// axis, of which the origin and unit vector are
+/// respectively the origin and "main Direction" of the
+/// local coordinate system, is termed the "Axis" or "main
+/// Axis" of the hyperbola.
+/// The "main Direction" of the local coordinate system
+/// gives an explicit orientation to the hyperbola,
+/// determining the direction in which the parameter
+/// increases along the hyperbola.
+/// The Geom_Hyperbola hyperbola is parameterized as follows:
+/// P(U) = O + MajRad*Cosh(U)*XDir + MinRad*Sinh(U)*YDir, where:
+/// - P is the point of parameter U,
+/// - O, XDir and YDir are respectively the origin, "X
+/// Direction" and "Y Direction" of its local coordinate system,
+/// - MajRad and MinRad are the major and minor radii of the hyperbola.
+/// The "X Axis" of the local coordinate system therefore
+/// defines the origin of the parameter of the hyperbola.
+/// The parameter range is ] -infinite, +infinite [.
+/// The following diagram illustrates the respective
+/// positions, in the plane of the hyperbola, of the three
+/// branches of hyperbolas constructed using the
+/// functions OtherBranch, ConjugateBranch1 and
+/// ConjugateBranch2: Defines the main branch of an hyperbola.
+/// ^YAxis
+/// |
+/// FirstConjugateBranch
+/// |
+/// Other            |                Main
+/// --------------------- C ------------------------------>XAxis
+/// Branch           |                Branch
+/// |
+/// SecondConjugateBranch
+/// |
+/// Warning
+/// The value of the major radius (on the major axis) can
+/// be less than the value of the minor radius (on the minor axis).
+pub use crate::ffi::Geom_Hyperbola as Hyperbola;
+
+impl Hyperbola {
+    /// Constructs a hyperbola by conversion of the gp_Hypr hyperbola H.
+    pub fn new_hypr(H: &crate::ffi::gp_Hypr) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Hyperbola_ctor_hypr(H)
+    }
+
+    /// Constructs a hyperbola defined by its major and
+    /// minor radii, MajorRadius and MinorRadius, where A2 locates the
+    /// hyperbola and defines its orientation in 3D space such that:
+    /// - the center of the hyperbola is the origin of A2,
+    /// - the "X Direction" of A2 defines the major axis
+    /// of the hyperbola, i.e. the major radius
+    /// MajorRadius is measured along this axis,
+    /// - the "Y Direction" of A2 defines the minor axis
+    /// of the hyperbola, i.e. the minor radius
+    /// MinorRadius is measured along this axis,
+    /// - A2 is the local coordinate system of the   hyperbola.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - MajorRadius is less than 0.0,
+    /// - MinorRadius is less than 0.0.
+    pub fn new_ax2_real2(
+        A2: &crate::ffi::gp_Ax2,
+        MajorRadius: f64,
+        MinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Hyperbola_ctor_ax2_real2(A2, MajorRadius, MinorRadius)
+    }
+
+    /// returns the non transient parabola from gp with the same
+    /// geometric properties as <me>.
+    pub fn hypr(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::Geom_Hyperbola_hypr(self)
+    }
+
+    /// In the local coordinate system of the hyperbola the equation of
+    /// the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
+    /// equation of the first asymptote is Y = (B/A)*X.
+    /// Raises ConstructionError if MajorRadius = 0.0
+    pub fn asymptote1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Hyperbola_asymptote1(self)
+    }
+
+    /// In the local coordinate system of the hyperbola the equation of
+    /// the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
+    /// equation of the first asymptote is Y = -(B/A)*X.
+    /// Raises ConstructionError if MajorRadius = 0.0
+    pub fn asymptote2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Hyperbola_asymptote2(self)
+    }
+
+    /// This branch of hyperbola is on the positive side of the
+    /// YAxis of <me>.
+    pub fn conjugate_branch1(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::Geom_Hyperbola_conjugate_branch1(self)
+    }
+
+    /// This branch of hyperbola is on the negative side of the
+    /// YAxis of <me>.
+    /// Note: The diagram given under the class purpose
+    /// indicates where these two branches of hyperbola are
+    /// positioned in relation to this branch of hyperbola.
+    pub fn conjugate_branch2(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::Geom_Hyperbola_conjugate_branch2(self)
+    }
+
+    /// This directrix is the line normal to the XAxis of the hyperbola
+    /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+    /// from the center of the hyperbola, where e is the eccentricity of
+    /// the hyperbola.
+    /// This line is parallel to the YAxis. The intersection point between
+    /// directrix1 and the XAxis is the location point of the directrix1.
+    /// This point is on the positive side of the XAxis.
+    pub fn directrix1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Hyperbola_directrix1(self)
+    }
+
+    /// This line is obtained by the symmetrical transformation
+    /// of "directrix1" with respect to the YAxis of the hyperbola.
+    pub fn directrix2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Hyperbola_directrix2(self)
+    }
+
+    /// Returns the first focus of the hyperbola. This focus is on the
+    /// positive side of the XAxis of the hyperbola.
+    pub fn focus1(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Hyperbola_focus1(self)
+    }
+
+    /// Returns the second focus of the hyperbola. This focus is on the
+    /// negative side of the XAxis of the hyperbola.
+    pub fn focus2(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Hyperbola_focus2(self)
+    }
+
+    /// Computes the "other" branch of this hyperbola. This
+    /// is the symmetrical branch with respect to the center of this hyperbola.
+    /// Note: The diagram given under the class purpose
+    /// indicates where the "other" branch is positioned in
+    /// relation to this branch of the hyperbola.
+    pub fn other_branch(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::Geom_Hyperbola_other_branch(self)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_Hyperbola_dn(self, U, N)
+    }
+
+    /// Creates a new object which is a copy of this hyperbola.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Hyperbola_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Hyperbola_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Conic
+    pub fn as_conic(&self) -> &Conic {
+        crate::ffi::Geom_Hyperbola_as_Geom_Conic(self)
+    }
+
+    /// Upcast to Geom_Conic (mutable)
+    pub fn as_conic_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Conic> {
+        crate::ffi::Geom_Hyperbola_as_Geom_Conic_mut(self)
+    }
+
+    /// Upcast to Geom_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom_Hyperbola_as_Geom_Curve(self)
+    }
+
+    /// Upcast to Geom_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom_Hyperbola_as_Geom_Curve_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Hyperbola_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Hyperbola_as_Geom_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleGeomHyperbola> {
+        crate::ffi::Geom_Hyperbola_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Conic: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_Hyperbola_inherited_SetAxis(self, theA1)
+    }
+
+    /// Inherited from Geom_Conic: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Hyperbola_inherited_SetLocation(self, theP)
+    }
+
+    /// Inherited from Geom_Conic: SetPosition()
+    pub fn set_position(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
+        crate::ffi::Geom_Hyperbola_inherited_SetPosition(self, theA2)
+    }
+
+    /// Inherited from Geom_Conic: Axis()
+    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
+        crate::ffi::Geom_Hyperbola_inherited_Axis(self)
+    }
+
+    /// Inherited from Geom_Conic: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_Hyperbola_inherited_Location(self)
+    }
+
+    /// Inherited from Geom_Conic: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax2 {
+        crate::ffi::Geom_Hyperbola_inherited_Position(self)
+    }
+
+    /// Inherited from Geom_Conic: XAxis()
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Hyperbola_inherited_XAxis(self)
+    }
+
+    /// Inherited from Geom_Conic: YAxis()
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Hyperbola_inherited_YAxis(self)
+    }
+
+    /// Inherited from Geom_Conic: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_Hyperbola_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom_Conic: IsCN()
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom_Hyperbola_inherited_IsCN(self, N)
+    }
+
+    /// Inherited from Geom_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_Hyperbola_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_Hyperbola_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_Hyperbola_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom_Hyperbola_inherited_Period(self)
+    }
+
+    /// Inherited from Geom_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Hyperbola_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Hyperbola_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Hyperbola_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Hyperbola_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Hyperbola_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Hyperbola_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Hyperbola_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Hyperbola_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Hyperbola_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Hyperbola_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomHyperbola;
+
+impl HandleGeomHyperbola {
+    /// Dereference this Handle to access the underlying Geom_Hyperbola
+    pub fn get(&self) -> &crate::ffi::Geom_Hyperbola {
+        crate::ffi::HandleGeomHyperbola_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Hyperbola
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_Hyperbola> {
+        crate::ffi::HandleGeomHyperbola_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Hyperbola> to Handle<Geom_Conic>
+    pub fn to_handle_conic(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomConic> {
+        crate::ffi::HandleGeomHyperbola_to_HandleGeomConic(self)
+    }
+
+    /// Upcast Handle<Geom_Hyperbola> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomHyperbola_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_Hyperbola> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomHyperbola_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
+// From Geom_Line.hxx
+// ========================
+
+/// Describes an infinite line.
+/// A line is defined and positioned in space with an axis
+/// (gp_Ax1 object) which gives it an origin and a unit vector.
+/// The Geom_Line line is parameterized:
+/// P (U) = O + U*Dir, where:
+/// - P is the point of parameter U,
+/// - O is the origin and Dir the unit vector of its positioning axis.
+/// The parameter range is ] -infinite, +infinite [.
+/// The orientation of the line is given by the unit vector
+/// of its positioning axis.
+pub use crate::ffi::Geom_Line as Line;
+
+impl Line {
+    /// Creates a line located in 3D space with the axis placement A1.
+    /// The Location of A1 is the origin of the line.
+    pub fn new_ax1(A1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Line_ctor_ax1(A1)
+    }
+
+    /// Creates a line from a non transient line from package gp.
+    pub fn new_lin(L: &crate::ffi::gp_Lin) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Line_ctor_lin(L)
+    }
+
+    /// Constructs a line passing through point P and parallel to vector V
+    /// (P and V are, respectively, the origin and the unit
+    /// vector of the positioning axis of the line).
+    pub fn new_pnt_dir(P: &crate::ffi::gp_Pnt, V: &crate::ffi::gp_Dir) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Line_ctor_pnt_dir(P, V)
+    }
+
+    /// Returns non transient line from gp with the same geometric
+    /// properties as <me>
+    pub fn lin(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::Geom_Line_lin(self)
+    }
+
+    /// Returns GeomAbs_CN, which is the global continuity of any line.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_Line_continuity(self)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_Line_dn(self, U, N)
+    }
+
+    /// Creates a new object which is a copy of this line.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Line_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Line_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom_Line_as_Geom_Curve(self)
+    }
+
+    /// Upcast to Geom_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom_Line_as_Geom_Curve_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Line_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Line_as_Geom_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleGeomLine> {
+        crate::ffi::Geom_Line_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_Line_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom_Line_inherited_Period(self)
+    }
+
+    /// Inherited from Geom_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Line_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Line_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Line_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Line_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Line_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Line_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Line_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Line_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Line_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Line_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomLine;
+
+impl HandleGeomLine {
+    /// Dereference this Handle to access the underlying Geom_Line
+    pub fn get(&self) -> &crate::ffi::Geom_Line {
+        crate::ffi::HandleGeomLine_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Line
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom_Line> {
+        crate::ffi::HandleGeomLine_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Line> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomLine_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_Line> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomLine_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
+// From Geom_OffsetCurve.hxx
+// ========================
+
+/// This class implements the basis services for an offset curve
+/// in 3D space. The Offset curve in this package can be a self
+/// intersecting curve even if the basis curve does not
+/// self-intersect. The self intersecting portions are not deleted
+/// at the construction time.
+/// An offset curve is a curve at constant distance (Offset) from
+/// a basis curve in a reference direction V. The offset curve
+/// takes its parametrization from the basis curve.
+/// The Offset curve is in the direction of the normal N
+/// defined with the cross product  T^V, where the vector T
+/// is given by the first derivative on the basis curve with
+/// non zero length.
+/// The distance offset may be positive or negative to indicate the
+/// preferred side of the curve :
+/// . distance offset >0 => the curve is in the direction of N
+/// . distance offset <0 => the curve is in the direction of - N
+///
+/// On the Offset curve :
+/// Value (U) = BasisCurve.Value(U) + (Offset * (T ^ V)) / ||T ^ V||
+///
+/// At any point the Offset direction V must not be parallel to the
+/// vector T and the vector T must not have null length else the
+/// offset curve is not defined. So the offset curve has not the
+/// same continuity as the basis curve.
+///
+/// Warnings :
+///
+/// In this package we suppose that the continuity of the offset
+/// curve is one degree less than the continuity of the basis
+/// curve and we don't check that at any point ||T^V|| != 0.0
+///
+/// So to evaluate the curve it is better to check that the offset
+/// curve is well defined at any point because an exception could
+/// be raised. The check is not done in this package at the creation
+/// of the offset curve because the control needs the use of an
+/// algorithm which cannot be implemented in this package.
+///
+/// The OffsetCurve is closed if the first point and the last point
+/// are the same (The distance between these two points is lower or
+/// equal to the Resolution sea package gp) . The OffsetCurve can be
+/// closed even if the basis curve is not closed.
+pub use crate::ffi::Geom_OffsetCurve as OffsetCurve;
+
+impl OffsetCurve {
+    /// C is the basis curve, Offset is the distance between <me> and
+    /// the basis curve at any point. V defines the fixed reference
+    /// direction (offset direction). If P is a point on the basis
+    /// curve and T the first derivative with non zero length
+    /// at this point, the corresponding point on the offset curve is
+    /// in the direction of the vector-product N = V ^ T   where
+    /// N is a unitary vector.
+    /// If isNotCheckC0 = TRUE checking if basis curve has C0-continuity
+    /// is not made.
+    /// Warnings :
+    /// In this package the entities are not shared. The OffsetCurve is
+    /// built with a copy of the curve C. So when C is modified the
+    /// OffsetCurve is not modified
+    ///
+    /// Raised if the basis curve C is not at least C1.
+    /// Warnings :
+    /// No check is done to know if ||V^T|| != 0.0 at any point.
+    pub fn new_handlegeomcurve_real_dir_bool(
+        C: &crate::ffi::HandleGeomCurve,
+        Offset: f64,
+        V: &crate::ffi::gp_Dir,
+        isNotCheckC0: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_OffsetCurve_ctor_handlegeomcurve_real_dir_bool(C, Offset, V, isNotCheckC0)
+    }
+
+    /// C is the basis curve, Offset is the distance between <me> and
+    /// the basis curve at any point. V defines the fixed reference
+    /// direction (offset direction). If P is a point on the basis
+    /// curve and T the first derivative with non zero length
+    /// at this point, the corresponding point on the offset curve is
+    /// in the direction of the vector-product N = V ^ T   where
+    /// N is a unitary vector.
+    /// If isNotCheckC0 = TRUE checking if basis curve has C0-continuity
+    /// is not made.
+    /// Warnings :
+    /// In this package the entities are not shared. The OffsetCurve is
+    /// built with a copy of the curve C. So when C is modified the
+    /// OffsetCurve is not modified
+    ///
+    /// Raised if the basis curve C is not at least C1.
+    /// Warnings :
+    /// No check is done to know if ||V^T|| != 0.0 at any point.
+    pub fn new_handlegeomcurve_real_dir(
+        C: &crate::ffi::HandleGeomCurve,
+        Offset: f64,
+        V: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_handlegeomcurve_real_dir_bool(C, Offset, V, false)
+    }
+
+    /// Returns the basis curve of this offset curve.
+    /// Note: The basis curve can be an offset curve.
+    pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_OffsetCurve_basis_curve(self)
+    }
+
+    /// Returns the global continuity of this offset curve as a
+    /// value of the GeomAbs_Shape enumeration.
+    /// The degree of continuity of this offset curve is equal
+    /// to the degree of continuity of the basis curve minus 1.
+    /// Continuity of the Offset curve :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Curve,
+    /// C2 : continuity of the second derivative all along the Curve,
+    /// C3 : continuity of the third derivative all along the Curve,
+    /// G1 : tangency continuity all along the Curve,
+    /// G2 : curvature continuity all along the Curve,
+    /// CN : the order of continuity is infinite.
+    /// Warnings :
+    /// Returns the continuity of the basis curve - 1.
+    /// The offset curve must have a unique offset direction defined
+    /// at any point.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_OffsetCurve_continuity(self)
+    }
+
+    /// The returned vector gives the value of the derivative
+    /// for the order of derivation N.
+    ///
+    /// The following functions compute the value and derivatives
+    /// on the offset curve and returns the derivatives on the
+    /// basis curve too.
+    /// The computation of the value and derivatives on the basis
+    /// curve are used to evaluate the offset curve
+    ///
+    /// Warning:
+    /// The exception UndefinedValue or UndefinedDerivative is
+    /// raised if it is not possible to compute a unique offset
+    /// direction.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_OffsetCurve_dn(self, U, N)
+    }
+
+    /// Creates a new object which is a copy of this offset curve.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetCurve_copy(self)
+    }
+
+    /// Returns continuity of the basis curve.
+    pub fn get_basis_curve_continuity(&self) -> i32 {
+        crate::ffi::Geom_OffsetCurve_get_basis_curve_continuity(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_OffsetCurve_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom_OffsetCurve_as_Geom_Curve(self)
+    }
+
+    /// Upcast to Geom_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom_OffsetCurve_as_Geom_Curve_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_OffsetCurve_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_OffsetCurve_as_Geom_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetCurve> {
+        crate::ffi::Geom_OffsetCurve_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_OffsetCurve_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_OffsetCurve_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_OffsetCurve_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_OffsetCurve_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_OffsetCurve_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_OffsetCurve_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetCurve_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetCurve_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetCurve_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetCurve_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetCurve_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomOffsetCurve;
+
+impl HandleGeomOffsetCurve {
+    /// Dereference this Handle to access the underlying Geom_OffsetCurve
+    pub fn get(&self) -> &crate::ffi::Geom_OffsetCurve {
+        crate::ffi::HandleGeomOffsetCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_OffsetCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_OffsetCurve> {
+        crate::ffi::HandleGeomOffsetCurve_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_OffsetCurve> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomOffsetCurve_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_OffsetCurve> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomOffsetCurve_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
+// From Geom_OffsetSurface.hxx
+// ========================
+
+/// Describes an offset surface in 3D space.
+/// An offset surface is defined by:
+/// - the basis surface to which it is parallel, and
+/// - the distance between the offset surface and its basis surface.
+/// A point on the offset surface is built by measuring the
+/// offset value along the normal vector at a point on the
+/// basis surface. This normal vector is given by the cross
+/// product D1u^D1v, where D1u and D1v are the
+/// vectors tangential to the basis surface in the u and v
+/// parametric directions at this point. The side of the
+/// basis surface on which the offset is measured
+/// depends on the sign of the offset value.
+/// A Geom_OffsetSurface surface can be
+/// self-intersecting, even if the basis surface does not
+/// self-intersect. The self-intersecting portions are not
+/// deleted at the time of construction.
+/// Warning
+/// There must be only one normal vector defined at any
+/// point on the basis surface. This must be verified by the
+/// user as no check is made at the time of construction
+/// to detect points with multiple possible normal
+/// directions (for example, the top of a conical surface).
+pub use crate::ffi::Geom_OffsetSurface as OffsetSurface;
+
+impl OffsetSurface {
+    /// Constructs a surface offset from the basis surface
+    /// S, where Offset is the distance between the offset
+    /// surface and the basis surface at any point.
+    /// A point on the offset surface is built by measuring
+    /// the offset value along a normal vector at a point on
+    /// S. This normal vector is given by the cross product
+    /// D1u^D1v, where D1u and D1v are the vectors
+    /// tangential to the basis surface in the u and v
+    /// parametric directions at this point. The side of S on
+    /// which the offset value is measured is indicated by
+    /// this normal vector if Offset is positive, or is the
+    /// inverse sense if Offset is negative.
+    /// If isNotCheckC0 = TRUE checking if basis surface has C0-continuity
+    /// is not made.
+    /// Warnings :
+    /// - The offset surface is built with a copy of the
+    /// surface S. Therefore, when S is modified the
+    /// offset surface is not modified.
+    /// - No check is made at the time of construction to
+    /// detect points on S with multiple possible normal directions.
+    /// Raised if S is not at least C1.
+    /// Warnings :
+    /// No check is done to verify that a unique normal direction is
+    /// defined at any point of the basis surface S.
+    pub fn new_handlegeomsurface_real_bool(
+        S: &crate::ffi::HandleGeomSurface,
+        Offset: f64,
+        isNotCheckC0: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_OffsetSurface_ctor_handlegeomsurface_real_bool(S, Offset, isNotCheckC0)
+    }
+
+    /// Constructs a surface offset from the basis surface
+    /// S, where Offset is the distance between the offset
+    /// surface and the basis surface at any point.
+    /// A point on the offset surface is built by measuring
+    /// the offset value along a normal vector at a point on
+    /// S. This normal vector is given by the cross product
+    /// D1u^D1v, where D1u and D1v are the vectors
+    /// tangential to the basis surface in the u and v
+    /// parametric directions at this point. The side of S on
+    /// which the offset value is measured is indicated by
+    /// this normal vector if Offset is positive, or is the
+    /// inverse sense if Offset is negative.
+    /// If isNotCheckC0 = TRUE checking if basis surface has C0-continuity
+    /// is not made.
+    /// Warnings :
+    /// - The offset surface is built with a copy of the
+    /// surface S. Therefore, when S is modified the
+    /// offset surface is not modified.
+    /// - No check is made at the time of construction to
+    /// detect points on S with multiple possible normal directions.
+    /// Raised if S is not at least C1.
+    /// Warnings :
+    /// No check is done to verify that a unique normal direction is
+    /// defined at any point of the basis surface S.
+    pub fn new_handlegeomsurface_real(
+        S: &crate::ffi::HandleGeomSurface,
+        Offset: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_handlegeomsurface_real_bool(S, Offset, false)
+    }
+
+    /// This method returns the continuity of the basis surface - 1.
+    /// Continuity of the Offset surface :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Surface,
+    /// C2 : continuity of the second derivative all along the Surface,
+    /// C3 : continuity of the third derivative all along the Surface,
+    /// CN : the order of continuity is infinite.
+    /// Example :
+    /// If the basis surface is C2 in the V direction and C3 in the U
+    /// direction Shape = C1.
+    /// Warnings :
+    /// If the basis surface has a unique normal direction defined at
+    /// any point this method gives the continuity of the offset
+    /// surface otherwise the effective continuity can be lower than
+    /// the continuity of the basis surface - 1.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_OffsetSurface_continuity(self)
+    }
+
+    /// Computes the U isoparametric curve.
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_OffsetSurface_u_iso(self, U)
+    }
+
+    /// Computes the V isoparametric curve.
+    ///
+    /// The following methods compute value and derivatives.
+    ///
+    /// Warnings
+    /// An exception is raised if a unique normal vector is
+    /// not defined on the basis surface for the parametric value (U,V).
+    /// No check is done at the creation time and we suppose
+    /// in this package that the offset surface can be defined at any point.
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_OffsetSurface_v_iso(self, V)
+    }
+
+    /// Computes the derivative of order Nu in the direction u and Nv in the direction v.
+    ///
+    /// Raised if the continuity of the basis surface is not CNu + 1
+    /// in the U direction and CNv + 1 in the V direction.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    ///
+    /// The following methods compute the value and derivatives
+    /// on the offset surface and returns the derivatives on the
+    /// basis surface too.
+    /// The computation of the value and derivatives on the basis
+    /// surface are used to evaluate the offset surface.
+    ///
+    /// Warnings:
+    /// The exception UndefinedValue or UndefinedDerivative is
+    /// raised if it is not possible to compute a unique offset direction.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_OffsetSurface_dn(self, U, V, Nu, Nv)
+    }
+
+    /// Returns a 2d transformation used to find the new
+    /// parameters of a point on the transformed surface.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are obtained by transforming U,V with the 2d transformation returned by
+    /// @code
+    /// me->ParametricTransformation(T)
+    /// @endcode
+    /// This method calls the basis surface method.
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::Geom_OffsetSurface_parametric_transformation(self, T)
+    }
+
+    /// Creates a new object which is a copy of this offset surface.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetSurface_copy(self)
+    }
+
+    /// returns an  equivalent surface of the offset surface
+    /// when  the basis surface   is a canonic  surface or a
+    /// rectangular  limited surface on canonic surface or if
+    /// the offset is null.
+    pub fn surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_OffsetSurface_surface(self)
+    }
+
+    /// Returns continuity of the basis surface.
+    pub fn get_basis_surf_continuity(&self) -> i32 {
+        crate::ffi::Geom_OffsetSurface_get_basis_surf_continuity(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_OffsetSurface_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_OffsetSurface_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_OffsetSurface_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::Geom_OffsetSurface_as_Geom_Surface(self)
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::Geom_OffsetSurface_as_Geom_Surface_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetSurface> {
+        crate::ffi::Geom_OffsetSurface_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_OffsetSurface_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_OffsetSurface_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_OffsetSurface_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_OffsetSurface_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetSurface_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetSurface_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetSurface_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetSurface_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_OffsetSurface_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Surface: UReversed()
+    pub fn u_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_OffsetSurface_inherited_UReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: VReversed()
+    pub fn v_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_OffsetSurface_inherited_VReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: Value()
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_OffsetSurface_inherited_Value(self, U, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomOffsetSurface;
+
+impl HandleGeomOffsetSurface {
+    /// Dereference this Handle to access the underlying Geom_OffsetSurface
+    pub fn get(&self) -> &crate::ffi::Geom_OffsetSurface {
+        crate::ffi::HandleGeomOffsetSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_OffsetSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_OffsetSurface> {
+        crate::ffi::HandleGeomOffsetSurface_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_OffsetSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomOffsetSurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_OffsetSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomOffsetSurface_to_HandleGeomSurface(self)
+    }
+}
+
+// ========================
+// From Geom_OsculatingSurface.hxx
+// ========================
+
+pub use crate::ffi::Geom_OsculatingSurface as OsculatingSurface;
+
+impl OsculatingSurface {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_OsculatingSurface_ctor()
+    }
+
+    /// detects if the  surface has punctual U  or  V
+    /// isoparametric  curve along on  the bounds of the surface
+    /// relatively to the tolerance Tol and Builds the corresponding
+    /// osculating surfaces.
+    pub fn new_handlegeomsurface_real(
+        BS: &crate::ffi::HandleGeomSurface,
+        Tol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_OsculatingSurface_ctor_handlegeomsurface_real(BS, Tol)
+    }
+
+    pub fn basis_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_OsculatingSurface_basis_surface(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_OsculatingSurface_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomOsculatingSurface> {
+        crate::ffi::Geom_OsculatingSurface_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleGeomOsculatingSurface;
+
+impl HandleGeomOsculatingSurface {
+    /// Dereference this Handle to access the underlying Geom_OsculatingSurface
+    pub fn get(&self) -> &crate::ffi::Geom_OsculatingSurface {
+        crate::ffi::HandleGeomOsculatingSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_OsculatingSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_OsculatingSurface> {
+        crate::ffi::HandleGeomOsculatingSurface_get_mut(self)
+    }
+}
+
+// ========================
+// From Geom_Parabola.hxx
+// ========================
+
+/// Describes a parabola in 3D space.
+/// A parabola is defined by its focal length (i.e. the
+/// distance between its focus and its apex) and is
+/// positioned in space with a coordinate system
+/// (gp_Ax2 object) where:
+/// - the origin is the apex of the parabola,
+/// - the "X Axis" defines the axis of symmetry; the
+/// parabola is on the positive side of this axis,
+/// - the origin, "X Direction" and "Y Direction" define the
+/// plane of the parabola.
+/// This coordinate system is the local coordinate
+/// system of the parabola.
+/// The "main Direction" of this coordinate system is a
+/// vector normal to the plane of the parabola. The axis,
+/// of which the origin and unit vector are respectively the
+/// origin and "main Direction" of the local coordinate
+/// system, is termed the "Axis" or "main Axis" of the parabola.
+/// The "main Direction" of the local coordinate system
+/// gives an explicit orientation to the parabola,
+/// determining the direction in which the parameter
+/// increases along the parabola.
+/// The Geom_Parabola parabola is parameterized as follows:
+/// P(U) = O + U*U/(4.*F)*XDir + U*YDir
+/// where:
+/// - P is the point of parameter U,
+/// - O, XDir and YDir are respectively the origin, "X
+/// Direction" and "Y Direction" of its local coordinate system,
+/// - F is the focal length of the parabola.
+/// The parameter of the parabola is therefore its Y
+/// coordinate in the local coordinate system, with the "X
+/// Axis" of the local coordinate system defining the origin
+/// of the parameter.
+/// The parameter range is ] -infinite, +infinite [.
+pub use crate::ffi::Geom_Parabola as Parabola;
+
+impl Parabola {
+    /// Creates a parabola from a non transient one.
+    pub fn new_parab(Prb: &crate::ffi::gp_Parab) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Parabola_ctor_parab(Prb)
+    }
+
+    /// Creates a parabola with its local coordinate system "A2"
+    /// and it's focal length "Focal".
+    /// The XDirection of A2 defines the axis of symmetry of the
+    /// parabola. The YDirection of A2 is parallel to the directrix
+    /// of the parabola. The Location point of A2 is the vertex of
+    /// the parabola
+    /// Raised if Focal < 0.0
+    pub fn new_ax2_real(A2: &crate::ffi::gp_Ax2, Focal: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Parabola_ctor_ax2_real(A2, Focal)
+    }
+
+    /// D is the directrix of the parabola and F the focus point.
+    /// The symmetry axis (XAxis) of the parabola is normal to the
+    /// directrix and pass through the focus point F, but its
+    /// location point is the vertex of the parabola.
+    /// The YAxis of the parabola is parallel to D and its location
+    /// point is the vertex of the parabola. The normal to the plane
+    /// of the parabola is the cross product between the XAxis and the
+    /// YAxis.
+    pub fn new_ax1_pnt(D: &crate::ffi::gp_Ax1, F: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Parabola_ctor_ax1_pnt(D, F)
+    }
+
+    /// Returns the non transient parabola from gp with the same
+    /// geometric properties as <me>.
+    pub fn parab(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::Geom_Parabola_parab(self)
+    }
+
+    /// Computes the directrix of this parabola.
+    /// This is a line normal to the axis of symmetry, in the
+    /// plane of this parabola, located on the negative side
+    /// of its axis of symmetry, at a distance from the apex
+    /// equal to the focal length.
+    /// The directrix is returned as an axis (gp_Ax1 object),
+    /// where the origin is located on the "X Axis" of this parabola.
+    pub fn directrix(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Parabola_directrix(self)
+    }
+
+    /// Computes the focus of this parabola. The focus is on the
+    /// positive side of the "X Axis" of the local coordinate
+    /// system of the parabola.
+    pub fn focus(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Parabola_focus(self)
+    }
+
+    /// For the point of parameter U of this parabola,
+    /// computes the vector corresponding to the Nth derivative.
+    /// Exceptions Standard_RangeError if N is less than 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_Parabola_dn(self, U, N)
+    }
+
+    /// Creates a new object which is a copy of this parabola.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Parabola_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Parabola_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Conic
+    pub fn as_conic(&self) -> &Conic {
+        crate::ffi::Geom_Parabola_as_Geom_Conic(self)
+    }
+
+    /// Upcast to Geom_Conic (mutable)
+    pub fn as_conic_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Conic> {
+        crate::ffi::Geom_Parabola_as_Geom_Conic_mut(self)
+    }
+
+    /// Upcast to Geom_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom_Parabola_as_Geom_Curve(self)
+    }
+
+    /// Upcast to Geom_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom_Parabola_as_Geom_Curve_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Parabola_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Parabola_as_Geom_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleGeomParabola> {
+        crate::ffi::Geom_Parabola_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Conic: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_Parabola_inherited_SetAxis(self, theA1)
+    }
+
+    /// Inherited from Geom_Conic: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Parabola_inherited_SetLocation(self, theP)
+    }
+
+    /// Inherited from Geom_Conic: SetPosition()
+    pub fn set_position(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
+        crate::ffi::Geom_Parabola_inherited_SetPosition(self, theA2)
+    }
+
+    /// Inherited from Geom_Conic: Axis()
+    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
+        crate::ffi::Geom_Parabola_inherited_Axis(self)
+    }
+
+    /// Inherited from Geom_Conic: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_Parabola_inherited_Location(self)
+    }
+
+    /// Inherited from Geom_Conic: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax2 {
+        crate::ffi::Geom_Parabola_inherited_Position(self)
+    }
+
+    /// Inherited from Geom_Conic: XAxis()
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Parabola_inherited_XAxis(self)
+    }
+
+    /// Inherited from Geom_Conic: YAxis()
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_Parabola_inherited_YAxis(self)
+    }
+
+    /// Inherited from Geom_Conic: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_Parabola_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom_Conic: IsCN()
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom_Parabola_inherited_IsCN(self, N)
+    }
+
+    /// Inherited from Geom_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_Parabola_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom_Parabola_inherited_Period(self)
+    }
+
+    /// Inherited from Geom_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Parabola_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Parabola_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Parabola_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Parabola_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Parabola_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Parabola_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Parabola_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Parabola_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Parabola_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Parabola_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomParabola;
+
+impl HandleGeomParabola {
+    /// Dereference this Handle to access the underlying Geom_Parabola
+    pub fn get(&self) -> &crate::ffi::Geom_Parabola {
+        crate::ffi::HandleGeomParabola_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Parabola
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_Parabola> {
+        crate::ffi::HandleGeomParabola_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Parabola> to Handle<Geom_Conic>
+    pub fn to_handle_conic(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomConic> {
+        crate::ffi::HandleGeomParabola_to_HandleGeomConic(self)
+    }
+
+    /// Upcast Handle<Geom_Parabola> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomParabola_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_Parabola> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomParabola_to_HandleGeomGeometry(self)
     }
 }
 
@@ -3639,6 +7381,855 @@ impl HandleGeomPlane {
 }
 
 // ========================
+// From Geom_Point.hxx
+// ========================
+
+/// The abstract class Point describes the common
+/// behavior of geometric points in 3D space.
+/// The Geom package also provides the concrete class
+/// Geom_CartesianPoint.
+pub use crate::ffi::Geom_Point as Point;
+
+impl Point {
+    /// returns a non transient copy of <me>
+    pub fn pnt(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_Point_pnt(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Point_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Point_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Point_as_Geom_Geometry_mut(self)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Point_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Point_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Point_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Point_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Transform()
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_Point_inherited_Transform(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Point_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Point_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Point_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Point_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Point_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Point_inherited_Copy(self)
+    }
+}
+
+pub use crate::ffi::HandleGeomPoint;
+
+impl HandleGeomPoint {
+    /// Dereference this Handle to access the underlying Geom_Point
+    pub fn get(&self) -> &crate::ffi::Geom_Point {
+        crate::ffi::HandleGeomPoint_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Point
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom_Point> {
+        crate::ffi::HandleGeomPoint_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Point> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomPoint_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
+// From Geom_RectangularTrimmedSurface.hxx
+// ========================
+
+/// Describes a portion of a surface (a patch) limited
+/// by two values of the u parameter in the u
+/// parametric direction, and two values of the v
+/// parameter in the v parametric direction. The
+/// domain of the trimmed surface must be within the
+/// domain of the surface being trimmed.
+/// The trimmed surface is defined by:
+/// - the basis surface, and
+/// - the values (umin, umax) and (vmin, vmax)
+/// which limit it in the u and v parametric directions.
+/// The trimmed surface is built from a copy of the basis
+/// surface. Therefore, when the basis surface is
+/// modified the trimmed surface is not changed.
+/// Consequently, the trimmed surface does not
+/// necessarily have the same orientation as the basis surface.
+/// Warning:  The  case of surface   being trimmed is  periodic and
+/// parametrics values are outside the domain is possible.
+/// But, domain of the  trimmed surface can be translated
+/// by (n X) the period.
+pub use crate::ffi::Geom_RectangularTrimmedSurface as RectangularTrimmedSurface;
+
+impl RectangularTrimmedSurface {
+    /// The U parametric direction of the surface is oriented from U1
+    /// to U2. The V parametric direction of the surface is oriented
+    /// from V1 to V2.
+    /// These two directions define the orientation of the surface
+    /// (normal). If the surface is not periodic USense and VSense are
+    /// not used for the construction. If the surface S is periodic in
+    /// one direction USense and VSense give the available part of the
+    /// surface. By default in this case the surface has the same
+    /// orientation as the basis surface S.
+    /// The returned surface is not closed and not periodic.
+    /// ConstructionError   Raised if
+    /// S is not periodic in the UDirection and U1 or U2 are out of the
+    /// bounds of S.
+    /// S is not periodic in the VDirection and V1 or V2 are out of the
+    /// bounds of S.
+    /// U1 = U2 or V1 = V2
+    pub fn new_handlegeomsurface_real4_bool2(
+        S: &crate::ffi::HandleGeomSurface,
+        U1: f64,
+        U2: f64,
+        V1: f64,
+        V2: f64,
+        USense: bool,
+        VSense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_RectangularTrimmedSurface_ctor_handlegeomsurface_real4_bool2(
+            S, U1, U2, V1, V2, USense, VSense,
+        )
+    }
+
+    /// The basis surface S is only trim in one parametric direction.
+    /// If UTrim = True the surface is trimmed in the U parametric
+    /// direction else the surface is trimmed in the V parametric
+    /// direction.
+    /// In the considered parametric direction the resulting surface is
+    /// oriented from Param1 to Param2. If S is periodic Sense gives the
+    /// available part of the surface. By default the trimmed surface has
+    /// the same orientation as the basis surface S in the considered
+    /// parametric direction (Sense = True).
+    /// If the basis surface S is closed or periodic in the parametric
+    /// direction opposite to the trimming direction the trimmed surface
+    /// has the same characteristics as the surface S in this direction.
+    /// Warnings :
+    /// In this package the entities are not shared.
+    /// The RectangularTrimmedSurface is built with a copy of the
+    /// surface S. So when S is modified the RectangularTrimmedSurface
+    /// is not modified
+    /// Raised if
+    /// S is not periodic in the considered parametric direction and
+    /// Param1 or Param2 are out of the bounds of S.
+    /// Param1 = Param2
+    pub fn new_handlegeomsurface_real2_bool2(
+        S: &crate::ffi::HandleGeomSurface,
+        Param1: f64,
+        Param2: f64,
+        UTrim: bool,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_RectangularTrimmedSurface_ctor_handlegeomsurface_real2_bool2(
+            S, Param1, Param2, UTrim, Sense,
+        )
+    }
+
+    /// The U parametric direction of the surface is oriented from U1
+    /// to U2. The V parametric direction of the surface is oriented
+    /// from V1 to V2.
+    /// These two directions define the orientation of the surface
+    /// (normal). If the surface is not periodic USense and VSense are
+    /// not used for the construction. If the surface S is periodic in
+    /// one direction USense and VSense give the available part of the
+    /// surface. By default in this case the surface has the same
+    /// orientation as the basis surface S.
+    /// The returned surface is not closed and not periodic.
+    /// ConstructionError   Raised if
+    /// S is not periodic in the UDirection and U1 or U2 are out of the
+    /// bounds of S.
+    /// S is not periodic in the VDirection and V1 or V2 are out of the
+    /// bounds of S.
+    /// U1 = U2 or V1 = V2
+    pub fn new_handlegeomsurface_real4_bool(
+        S: &crate::ffi::HandleGeomSurface,
+        U1: f64,
+        U2: f64,
+        V1: f64,
+        V2: f64,
+        USense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_handlegeomsurface_real4_bool2(S, U1, U2, V1, V2, USense, true)
+    }
+
+    /// The U parametric direction of the surface is oriented from U1
+    /// to U2. The V parametric direction of the surface is oriented
+    /// from V1 to V2.
+    /// These two directions define the orientation of the surface
+    /// (normal). If the surface is not periodic USense and VSense are
+    /// not used for the construction. If the surface S is periodic in
+    /// one direction USense and VSense give the available part of the
+    /// surface. By default in this case the surface has the same
+    /// orientation as the basis surface S.
+    /// The returned surface is not closed and not periodic.
+    /// ConstructionError   Raised if
+    /// S is not periodic in the UDirection and U1 or U2 are out of the
+    /// bounds of S.
+    /// S is not periodic in the VDirection and V1 or V2 are out of the
+    /// bounds of S.
+    /// U1 = U2 or V1 = V2
+    pub fn new_handlegeomsurface_real4(
+        S: &crate::ffi::HandleGeomSurface,
+        U1: f64,
+        U2: f64,
+        V1: f64,
+        V2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_handlegeomsurface_real4_bool2(S, U1, U2, V1, V2, true, true)
+    }
+
+    /// The basis surface S is only trim in one parametric direction.
+    /// If UTrim = True the surface is trimmed in the U parametric
+    /// direction else the surface is trimmed in the V parametric
+    /// direction.
+    /// In the considered parametric direction the resulting surface is
+    /// oriented from Param1 to Param2. If S is periodic Sense gives the
+    /// available part of the surface. By default the trimmed surface has
+    /// the same orientation as the basis surface S in the considered
+    /// parametric direction (Sense = True).
+    /// If the basis surface S is closed or periodic in the parametric
+    /// direction opposite to the trimming direction the trimmed surface
+    /// has the same characteristics as the surface S in this direction.
+    /// Warnings :
+    /// In this package the entities are not shared.
+    /// The RectangularTrimmedSurface is built with a copy of the
+    /// surface S. So when S is modified the RectangularTrimmedSurface
+    /// is not modified
+    /// Raised if
+    /// S is not periodic in the considered parametric direction and
+    /// Param1 or Param2 are out of the bounds of S.
+    /// Param1 = Param2
+    pub fn new_handlegeomsurface_real2_bool(
+        S: &crate::ffi::HandleGeomSurface,
+        Param1: f64,
+        Param2: f64,
+        UTrim: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_handlegeomsurface_real2_bool2(S, Param1, Param2, UTrim, true)
+    }
+
+    /// Returns the Basis surface of <me>.
+    pub fn basis_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_RectangularTrimmedSurface_basis_surface(self)
+    }
+
+    /// Returns  the continuity of the surface :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Surface,
+    /// C2 : continuity of the second derivative all along the Surface,
+    /// C3 : continuity of the third derivative all along the Surface,
+    /// CN : the order of continuity is infinite.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_RectangularTrimmedSurface_continuity(self)
+    }
+
+    /// computes the U isoparametric curve.
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_RectangularTrimmedSurface_u_iso(self, U)
+    }
+
+    /// Computes the V isoparametric curve.
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_RectangularTrimmedSurface_v_iso(self, V)
+    }
+
+    /// The returned derivative has the same orientation as the
+    /// derivative of the basis surface even if the trimmed surface
+    /// has not the same parametric orientation.
+    /// Warning!  UndefinedDerivative raised if the continuity of the surface is not CNu in the U
+    /// parametric direction and CNv in the V parametric direction.
+    /// RangeError Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_RectangularTrimmedSurface_dn(self, U, V, Nu, Nv)
+    }
+
+    /// Returns a 2d transformation  used to find the  new
+    /// parameters of a point on the transformed surface.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are  obtained by transforming U,V with
+    /// the 2d transformation returned by
+    /// @code
+    /// me->ParametricTransformation(T)
+    /// @endcode
+    /// This method calls the basis surface method.
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::Geom_RectangularTrimmedSurface_parametric_transformation(self, T)
+    }
+
+    /// Creates a new object which is a copy of this patch.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_RectangularTrimmedSurface_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_RectangularTrimmedSurface_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_BoundedSurface
+    pub fn as_bounded_surface(&self) -> &BoundedSurface {
+        crate::ffi::Geom_RectangularTrimmedSurface_as_Geom_BoundedSurface(self)
+    }
+
+    /// Upcast to Geom_BoundedSurface (mutable)
+    pub fn as_bounded_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BoundedSurface> {
+        crate::ffi::Geom_RectangularTrimmedSurface_as_Geom_BoundedSurface_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_RectangularTrimmedSurface_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_RectangularTrimmedSurface_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::Geom_RectangularTrimmedSurface_as_Geom_Surface(self)
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::Geom_RectangularTrimmedSurface_as_Geom_Surface_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomRectangularTrimmedSurface> {
+        crate::ffi::Geom_RectangularTrimmedSurface_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Surface: UReversed()
+    pub fn u_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_UReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: VReversed()
+    pub fn v_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_VReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: Value()
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_RectangularTrimmedSurface_inherited_Value(self, U, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomRectangularTrimmedSurface;
+
+impl HandleGeomRectangularTrimmedSurface {
+    /// Dereference this Handle to access the underlying Geom_RectangularTrimmedSurface
+    pub fn get(&self) -> &crate::ffi::Geom_RectangularTrimmedSurface {
+        crate::ffi::HandleGeomRectangularTrimmedSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_RectangularTrimmedSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_RectangularTrimmedSurface> {
+        crate::ffi::HandleGeomRectangularTrimmedSurface_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_RectangularTrimmedSurface> to Handle<Geom_BoundedSurface>
+    pub fn to_handle_bounded_surface(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomBoundedSurface> {
+        crate::ffi::HandleGeomRectangularTrimmedSurface_to_HandleGeomBoundedSurface(self)
+    }
+
+    /// Upcast Handle<Geom_RectangularTrimmedSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomRectangularTrimmedSurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_RectangularTrimmedSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomRectangularTrimmedSurface_to_HandleGeomSurface(self)
+    }
+}
+
+// ========================
+// From Geom_SphericalSurface.hxx
+// ========================
+
+/// Describes a sphere.
+/// A sphere is defined by its radius, and is positioned in
+/// space by a coordinate system (a gp_Ax3 object), the
+/// origin of which is the center of the sphere.
+/// This coordinate system is the "local coordinate
+/// system" of the sphere. The following apply:
+/// - Rotation around its "main Axis", in the trigonometric
+/// sense given by the "X Direction" and the "Y
+/// Direction", defines the u parametric direction.
+/// - Its "X Axis" gives the origin for the u parameter.
+/// - The "reference meridian" of the sphere is a
+/// half-circle, of radius equal to the radius of the
+/// sphere. It is located in the plane defined by the
+/// origin, "X Direction" and "main Direction", centered
+/// on the origin, and positioned on the positive side of the "X Axis".
+/// - Rotation around the "Y Axis" gives the v parameter
+/// on the reference meridian.
+/// - The "X Axis" gives the origin of the v parameter on
+/// the reference meridian.
+/// - The v parametric direction is oriented by the "main
+/// Direction", i.e. when v increases, the Z coordinate
+/// increases. (This implies that the "Y Direction"
+/// orients the reference meridian only when the local
+/// coordinate system is indirect.)
+/// - The u isoparametric curve is a half-circle obtained
+/// by rotating the reference meridian of the sphere
+/// through an angle u around the "main Axis", in the
+/// trigonometric sense defined by the "X Direction"
+/// and the "Y Direction".
+/// The parametric equation of the sphere is:
+/// P(u,v) = O + R*cos(v)*(cos(u)*XDir + sin(u)*YDir)+R*sin(v)*ZDir
+/// where:
+/// - O, XDir, YDir and ZDir are respectively the
+/// origin, the "X Direction", the "Y Direction" and the "Z
+/// Direction" of its local coordinate system, and
+/// - R is the radius of the sphere.
+/// The parametric range of the two parameters is:
+/// - [ 0, 2.*Pi ] for u, and
+/// - [ - Pi/2., + Pi/2. ] for v.
+pub use crate::ffi::Geom_SphericalSurface as SphericalSurface;
+
+impl SphericalSurface {
+    /// A3 is the local coordinate system of the surface.
+    /// At the creation the parametrization of the surface is defined
+    /// such as the normal Vector (N = D1U ^ D1V) is directed away from
+    /// the center of the sphere.
+    /// The direction of increasing parametric value V is defined by the
+    /// rotation around the "YDirection" of A2 in the trigonometric sense
+    /// and the orientation of increasing parametric value U is defined
+    /// by the rotation around the main direction of A2 in the
+    /// trigonometric sense.
+    /// Warnings :
+    /// It is not forbidden to create a spherical surface with
+    /// Radius = 0.0
+    /// Raised if Radius < 0.0.
+    pub fn new_ax3_real(A3: &crate::ffi::gp_Ax3, Radius: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_SphericalSurface_ctor_ax3_real(A3, Radius)
+    }
+
+    /// Creates a SphericalSurface from a non persistent Sphere from
+    /// package gp.
+    pub fn new_sphere(S: &crate::ffi::gp_Sphere) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_SphericalSurface_ctor_sphere(S)
+    }
+
+    /// Returns a non persistent sphere with the same geometric
+    /// properties as <me>.
+    pub fn sphere(&self) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::Geom_SphericalSurface_sphere(self)
+    }
+
+    /// Computes the U isoparametric curve.
+    /// The U isoparametric curves of the surface are defined by the
+    /// section of the spherical surface with plane obtained by rotation
+    /// of the plane (Location, XAxis, ZAxis) around ZAxis. This plane
+    /// defines the origin of parametrization u.
+    /// For a SphericalSurface the UIso curve is a Circle.
+    /// Warnings : The radius of this circle can be zero.
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SphericalSurface_u_iso(self, U)
+    }
+
+    /// Computes the V isoparametric curve.
+    /// The V isoparametric curves of the surface  are defined by
+    /// the section of the spherical surface with plane parallel to the
+    /// plane (Location, XAxis, YAxis). This plane defines the origin of
+    /// parametrization V.
+    /// Be careful if  V is close to PI/2 or 3*PI/2 the radius of the
+    /// circle becomes tiny. It is not forbidden in this toolkit to
+    /// create circle with radius = 0.0
+    /// For a SphericalSurface the VIso curve is a Circle.
+    /// Warnings : The radius of this circle can be zero.
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SphericalSurface_v_iso(self, V)
+    }
+
+    /// Computes the derivative of order Nu in the direction u
+    /// and Nv in the direction v.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_SphericalSurface_dn(self, U, V, Nu, Nv)
+    }
+
+    /// Creates a new object which is a copy of this sphere.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SphericalSurface_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_SphericalSurface_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_ElementarySurface
+    pub fn as_elementary_surface(&self) -> &ElementarySurface {
+        crate::ffi::Geom_SphericalSurface_as_Geom_ElementarySurface(self)
+    }
+
+    /// Upcast to Geom_ElementarySurface (mutable)
+    pub fn as_elementary_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ElementarySurface> {
+        crate::ffi::Geom_SphericalSurface_as_Geom_ElementarySurface_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_SphericalSurface_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_SphericalSurface_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::Geom_SphericalSurface_as_Geom_Surface(self)
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::Geom_SphericalSurface_as_Geom_Surface_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomSphericalSurface> {
+        crate::ffi::Geom_SphericalSurface_to_handle(obj)
+    }
+
+    /// Inherited from Geom_ElementarySurface: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_SphericalSurface_inherited_SetAxis(self, theA1)
+    }
+
+    /// Inherited from Geom_ElementarySurface: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theLoc: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_SphericalSurface_inherited_SetLocation(self, theLoc)
+    }
+
+    /// Inherited from Geom_ElementarySurface: SetPosition()
+    pub fn set_position(self: std::pin::Pin<&mut Self>, theAx3: &crate::ffi::gp_Ax3) {
+        crate::ffi::Geom_SphericalSurface_inherited_SetPosition(self, theAx3)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Axis()
+    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
+        crate::ffi::Geom_SphericalSurface_inherited_Axis(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_SphericalSurface_inherited_Location(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax3 {
+        crate::ffi::Geom_SphericalSurface_inherited_Position(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: UReverse()
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_SphericalSurface_inherited_UReverse(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: VReverse()
+    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_SphericalSurface_inherited_VReverse(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: IsCNu()
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        crate::ffi::Geom_SphericalSurface_inherited_IsCNu(self, N)
+    }
+
+    /// Inherited from Geom_ElementarySurface: IsCNv()
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        crate::ffi::Geom_SphericalSurface_inherited_IsCNv(self, N)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_SphericalSurface_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_SphericalSurface_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_SphericalSurface_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_SphericalSurface_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SphericalSurface_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SphericalSurface_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SphericalSurface_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SphericalSurface_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SphericalSurface_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Surface: UReversed()
+    pub fn u_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_SphericalSurface_inherited_UReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: VReversed()
+    pub fn v_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_SphericalSurface_inherited_VReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: TransformParameters()
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_SphericalSurface_inherited_TransformParameters(self, U, V, T)
+    }
+
+    /// Inherited from Geom_Surface: ParametricTransformation()
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::Geom_SphericalSurface_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom_Surface: UPeriod()
+    pub fn u_period(&self) -> f64 {
+        crate::ffi::Geom_SphericalSurface_inherited_UPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod()
+    pub fn v_period(&self) -> f64 {
+        crate::ffi::Geom_SphericalSurface_inherited_VPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: Value()
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_SphericalSurface_inherited_Value(self, U, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomSphericalSurface;
+
+impl HandleGeomSphericalSurface {
+    /// Dereference this Handle to access the underlying Geom_SphericalSurface
+    pub fn get(&self) -> &crate::ffi::Geom_SphericalSurface {
+        crate::ffi::HandleGeomSphericalSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_SphericalSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_SphericalSurface> {
+        crate::ffi::HandleGeomSphericalSurface_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_SphericalSurface> to Handle<Geom_ElementarySurface>
+    pub fn to_handle_elementary_surface(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomElementarySurface> {
+        crate::ffi::HandleGeomSphericalSurface_to_HandleGeomElementarySurface(self)
+    }
+
+    /// Upcast Handle<Geom_SphericalSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomSphericalSurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_SphericalSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomSphericalSurface_to_HandleGeomSurface(self)
+    }
+}
+
+// ========================
 // From Geom_Surface.hxx
 // ========================
 
@@ -3858,6 +8449,1378 @@ impl HandleGeomSurface {
 }
 
 // ========================
+// From Geom_SurfaceOfLinearExtrusion.hxx
+// ========================
+
+/// Describes a surface of linear extrusion ("extruded
+/// surface"), e.g. a generalized cylinder. Such a surface
+/// is obtained by sweeping a curve (called the "extruded
+/// curve" or "basis") in a given direction (referred to as
+/// the "direction of extrusion" and defined by a unit vector).
+/// The u parameter is along the extruded curve. The v
+/// parameter is along the direction of extrusion.
+/// The parameter range for the u parameter is defined
+/// by the reference curve.
+/// The parameter range for the v parameter is ] -
+/// infinity, + infinity [.
+/// The position of the curve gives the origin of the v parameter.
+/// The surface is "CN" in the v parametric direction.
+/// The form of a surface of linear extrusion is generally a
+/// ruled surface (GeomAbs_RuledForm). It can be:
+/// - a cylindrical surface, if the extruded curve is a circle,
+/// or a trimmed circle, with an axis parallel to the
+/// direction of extrusion (GeomAbs_CylindricalForm), or
+/// - a planar surface, if the extruded curve is a line
+/// (GeomAbs_PlanarForm).
+/// Note: The surface of extrusion is built from a copy of
+/// the original basis curve, so the original curve is not
+/// modified when the surface is modified.
+/// Warning
+/// Degenerate surfaces are not detected. A degenerate
+/// surface is obtained, for example, when the extruded
+/// curve is a line and the direction of extrusion is parallel
+/// to that line.
+pub use crate::ffi::Geom_SurfaceOfLinearExtrusion as SurfaceOfLinearExtrusion;
+
+impl SurfaceOfLinearExtrusion {
+    /// V is the direction of extrusion.
+    /// C is the extruded curve.
+    /// The form of a SurfaceOfLinearExtrusion can be :
+    /// . ruled surface (RuledForm),
+    /// . a cylindrical surface if the extruded curve is a circle or
+    /// a trimmed circle (CylindricalForm),
+    /// . a plane surface if the extruded curve is a Line (PlanarForm).
+    /// Warnings :
+    /// Degenerated surface cases are not detected. For example if the
+    /// curve C is a line and V is parallel to the direction of this
+    /// line.
+    pub fn new_handlegeomcurve_dir(
+        C: &crate::ffi::HandleGeomCurve,
+        V: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_ctor_handlegeomcurve_dir(C, V)
+    }
+
+    /// Computes the U isoparametric curve of this surface
+    /// of linear extrusion. This is the line parallel to the
+    /// direction of extrusion, passing through the point of
+    /// parameter U of the basis curve.
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_u_iso(self, U)
+    }
+
+    /// Computes the V isoparametric curve of this surface
+    /// of linear extrusion. This curve is obtained by
+    /// translating the extruded curve in the direction of
+    /// extrusion, with the magnitude V.
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_v_iso(self, V)
+    }
+
+    /// Computes the derivative of order Nu in the direction u
+    /// and Nv in the direction v.
+    /// Raises UndefinedDerivative if the continuity of the surface is not CNu in the u
+    /// direction and CNv in the v direction.
+    /// Raises RangeError if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_dn(self, U, V, Nu, Nv)
+    }
+
+    /// Returns a 2d transformation  used to find the  new
+    /// parameters of a point on the transformed surface.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are  obtained by transforming U,V with
+    /// the 2d transformation returned by
+    /// @code
+    /// me->ParametricTransformation(T)
+    /// @endcode
+    /// This method returns a scale
+    /// U by BasisCurve()->ParametricTransformation(T)
+    /// V by T.ScaleFactor()
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_parametric_transformation(self, T)
+    }
+
+    /// Creates a new object which is a copy of this surface of linear extrusion.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_Surface(self)
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_Surface_mut(self)
+    }
+
+    /// Upcast to Geom_SweptSurface
+    pub fn as_swept_surface(&self) -> &SweptSurface {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_SweptSurface(self)
+    }
+
+    /// Upcast to Geom_SweptSurface (mutable)
+    pub fn as_swept_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SweptSurface> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_SweptSurface_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomSurfaceOfLinearExtrusion> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Surface: UReversed()
+    pub fn u_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_UReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: VReversed()
+    pub fn v_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_VReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: UPeriod()
+    pub fn u_period(&self) -> f64 {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_UPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod()
+    pub fn v_period(&self) -> f64 {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_VPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: Value()
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Value(self, U, V)
+    }
+
+    /// Inherited from Geom_SweptSurface: Direction()
+    pub fn direction(&self) -> &crate::ffi::gp_Dir {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Direction(self)
+    }
+
+    /// Inherited from Geom_SweptSurface: BasisCurve()
+    pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_BasisCurve(self)
+    }
+}
+
+pub use crate::ffi::HandleGeomSurfaceOfLinearExtrusion;
+
+impl HandleGeomSurfaceOfLinearExtrusion {
+    /// Dereference this Handle to access the underlying Geom_SurfaceOfLinearExtrusion
+    pub fn get(&self) -> &crate::ffi::Geom_SurfaceOfLinearExtrusion {
+        crate::ffi::HandleGeomSurfaceOfLinearExtrusion_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_SurfaceOfLinearExtrusion
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_SurfaceOfLinearExtrusion> {
+        crate::ffi::HandleGeomSurfaceOfLinearExtrusion_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_SurfaceOfLinearExtrusion> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomSurfaceOfLinearExtrusion_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_SurfaceOfLinearExtrusion> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomSurfaceOfLinearExtrusion_to_HandleGeomSurface(self)
+    }
+
+    /// Upcast Handle<Geom_SurfaceOfLinearExtrusion> to Handle<Geom_SweptSurface>
+    pub fn to_handle_swept_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSweptSurface> {
+        crate::ffi::HandleGeomSurfaceOfLinearExtrusion_to_HandleGeomSweptSurface(self)
+    }
+}
+
+// ========================
+// From Geom_SurfaceOfRevolution.hxx
+// ========================
+
+/// Describes a surface of revolution (revolved surface).
+/// Such a surface is obtained by rotating a curve (called
+/// the "meridian") through a complete revolution about
+/// an axis (referred to as the "axis of revolution"). The
+/// curve and the axis must be in the same plane (the
+/// "reference plane" of the surface).
+/// Rotation around the axis of revolution in the
+/// trigonometric sense defines the u parametric
+/// direction. So the u parameter is an angle, and its
+/// origin is given by the position of the meridian on the surface.
+/// The parametric range for the u parameter is: [ 0, 2.*Pi ]
+/// The v parameter is that of the meridian.
+/// Note: A surface of revolution is built from a copy of the
+/// original meridian. As a result the original meridian is
+/// not modified when the surface is modified.
+/// The form of a surface of revolution is typically a
+/// general revolution surface
+/// (GeomAbs_RevolutionForm). It can be:
+/// - a conical surface, if the meridian is a line or a
+/// trimmed line (GeomAbs_ConicalForm),
+/// - a cylindrical surface, if the meridian is a line or a
+/// trimmed line parallel to the axis of revolution
+/// (GeomAbs_CylindricalForm),
+/// - a planar surface if the meridian is a line or a
+/// trimmed line perpendicular to the axis of revolution
+/// of the surface (GeomAbs_PlanarForm),
+/// - a toroidal surface, if the meridian is a circle or a
+/// trimmed circle (GeomAbs_ToroidalForm), or
+/// - a spherical surface, if the meridian is a circle, the
+/// center of which is located on the axis of the
+/// revolved surface (GeomAbs_SphericalForm).
+/// Warning
+/// Be careful not to construct a surface of revolution
+/// where the curve and the axis or revolution are not
+/// defined in the same plane. If you do not have a
+/// correct configuration, you can correct your initial
+/// curve, using a cylindrical projection in the reference plane.
+pub use crate::ffi::Geom_SurfaceOfRevolution as SurfaceOfRevolution;
+
+impl SurfaceOfRevolution {
+    /// C : is the meridian  or the referenced curve.
+    /// A1 is the axis of revolution.
+    /// The form of a SurfaceOfRevolution can be :
+    /// . a general revolution surface (RevolutionForm),
+    /// . a conical surface if the meridian is a line or a trimmed line
+    /// (ConicalForm),
+    /// . a cylindrical surface if the meridian is a line or a trimmed
+    /// line parallel to the revolution axis (CylindricalForm),
+    /// . a planar surface if the meridian is a line perpendicular to
+    /// the revolution axis of the surface (PlanarForm).
+    /// . a spherical surface,
+    /// . a toroidal surface,
+    /// . a quadric surface.
+    /// Warnings :
+    /// It is not checked that the curve C is planar and that the
+    /// surface axis is in the plane of the curve.
+    /// It is not checked that the revolved curve C doesn't
+    /// self-intersects.
+    pub fn new_handlegeomcurve_ax1(
+        C: &crate::ffi::HandleGeomCurve,
+        A1: &crate::ffi::gp_Ax1,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_SurfaceOfRevolution_ctor_handlegeomcurve_ax1(C, A1)
+    }
+
+    /// Returns the revolution axis of the surface.
+    pub fn axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::Geom_SurfaceOfRevolution_axis(self)
+    }
+
+    /// Computes the position of the reference plane of the surface
+    /// defined by the basis curve and the symmetry axis.
+    /// The location point is the location point of the revolution's
+    /// axis, the XDirection of the plane is given by the revolution's
+    /// axis and the orientation of the normal to the plane is given
+    /// by the sense of revolution.
+    ///
+    /// Raised if the revolved curve is not planar or if the revolved
+    /// curve and the symmetry axis are not in the same plane or if
+    /// the maximum of distance between the axis and the revolved
+    /// curve is lower or equal to Resolution from gp.
+    pub fn reference_plane(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::Geom_SurfaceOfRevolution_reference_plane(self)
+    }
+
+    /// Returns a 2d transformation  used to find the  new
+    /// parameters of a point on the transformed surface.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are  obtained by transforming U,V with
+    /// the 2d transformation returned by
+    /// @code
+    /// me->ParametricTransformation(T)
+    /// @endcode
+    /// This  method  returns  a scale  centered  on  the
+    /// U axis with BasisCurve()->ParametricTransformation(T)
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::Geom_SurfaceOfRevolution_parametric_transformation(self, T)
+    }
+
+    /// Computes the U isoparametric curve of this surface
+    /// of revolution. It is the curve obtained by rotating the
+    /// meridian through an angle U about the axis of revolution.
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SurfaceOfRevolution_u_iso(self, U)
+    }
+
+    /// Computes the U isoparametric curve of this surface
+    /// of revolution. It is the curve obtained by rotating the
+    /// meridian through an angle U about the axis of revolution.
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SurfaceOfRevolution_v_iso(self, V)
+    }
+
+    /// Computes the derivative of order Nu in the direction u and
+    /// Nv in the direction v.
+    ///
+    /// Raised if the continuity of the surface is not CNu in the u
+    /// direction and CNv in the v direction.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    /// The following  functions  evaluates the  local
+    /// derivatives on surface. Useful to manage discontinuities
+    /// on the surface.
+    /// if    Side  =  1  ->  P  =  S( U+,V )
+    /// if    Side  = -1  ->  P  =  S( U-,V )
+    /// else  P  is betveen discontinuities
+    /// can be evaluated using methods  of
+    /// global evaluations    P  =  S( U ,V )
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_SurfaceOfRevolution_dn(self, U, V, Nu, Nv)
+    }
+
+    /// Creates a new object which is a copy of this surface of revolution.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfRevolution_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_SurfaceOfRevolution_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_SurfaceOfRevolution_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_SurfaceOfRevolution_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::Geom_SurfaceOfRevolution_as_Geom_Surface(self)
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::Geom_SurfaceOfRevolution_as_Geom_Surface_mut(self)
+    }
+
+    /// Upcast to Geom_SweptSurface
+    pub fn as_swept_surface(&self) -> &SweptSurface {
+        crate::ffi::Geom_SurfaceOfRevolution_as_Geom_SweptSurface(self)
+    }
+
+    /// Upcast to Geom_SweptSurface (mutable)
+    pub fn as_swept_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SweptSurface> {
+        crate::ffi::Geom_SurfaceOfRevolution_as_Geom_SweptSurface_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomSurfaceOfRevolution> {
+        crate::ffi::Geom_SurfaceOfRevolution_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Surface: UReversed()
+    pub fn u_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_UReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: VReversed()
+    pub fn v_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_VReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: UPeriod()
+    pub fn u_period(&self) -> f64 {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_UPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod()
+    pub fn v_period(&self) -> f64 {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_VPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: Value()
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Value(self, U, V)
+    }
+
+    /// Inherited from Geom_SweptSurface: Direction()
+    pub fn direction(&self) -> &crate::ffi::gp_Dir {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Direction(self)
+    }
+
+    /// Inherited from Geom_SweptSurface: BasisCurve()
+    pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_BasisCurve(self)
+    }
+}
+
+pub use crate::ffi::HandleGeomSurfaceOfRevolution;
+
+impl HandleGeomSurfaceOfRevolution {
+    /// Dereference this Handle to access the underlying Geom_SurfaceOfRevolution
+    pub fn get(&self) -> &crate::ffi::Geom_SurfaceOfRevolution {
+        crate::ffi::HandleGeomSurfaceOfRevolution_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_SurfaceOfRevolution
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_SurfaceOfRevolution> {
+        crate::ffi::HandleGeomSurfaceOfRevolution_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_SurfaceOfRevolution> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomSurfaceOfRevolution_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_SurfaceOfRevolution> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomSurfaceOfRevolution_to_HandleGeomSurface(self)
+    }
+
+    /// Upcast Handle<Geom_SurfaceOfRevolution> to Handle<Geom_SweptSurface>
+    pub fn to_handle_swept_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSweptSurface> {
+        crate::ffi::HandleGeomSurfaceOfRevolution_to_HandleGeomSweptSurface(self)
+    }
+}
+
+// ========================
+// From Geom_SweptSurface.hxx
+// ========================
+
+/// Describes the common behavior for surfaces
+/// constructed by sweeping a curve with another curve.
+/// The Geom package provides two concrete derived
+/// surfaces: surface of revolution (a revolved surface),
+/// and surface of linear extrusion (an extruded surface).
+pub use crate::ffi::Geom_SweptSurface as SweptSurface;
+
+impl SweptSurface {
+    /// returns the continuity of the surface :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the surface,
+    /// C2 : continuity of the second derivative all along the surface,
+    /// C3 : continuity of the third derivative all along the surface,
+    /// G1 : tangency continuity all along the surface,
+    /// G2 : curvature continuity all along the surface,
+    /// CN : the order of continuity is infinite.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_SweptSurface_continuity(self)
+    }
+
+    /// Returns the referenced curve of the surface.
+    /// For a surface of revolution it is the revolution curve,
+    /// for a surface of linear extrusion it is the extruded curve.
+    pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SweptSurface_basis_curve(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_SweptSurface_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_SweptSurface_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_SweptSurface_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::Geom_SweptSurface_as_Geom_Surface(self)
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::Geom_SweptSurface_as_Geom_Surface_mut(self)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_SweptSurface_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_SweptSurface_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_SweptSurface_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_SweptSurface_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Transform()
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_SweptSurface_inherited_Transform(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SweptSurface_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SweptSurface_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SweptSurface_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SweptSurface_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SweptSurface_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_SweptSurface_inherited_Copy(self)
+    }
+
+    /// Inherited from Geom_Surface: UReverse()
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_SweptSurface_inherited_UReverse(self)
+    }
+
+    /// Inherited from Geom_Surface: UReversed()
+    pub fn u_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_SweptSurface_inherited_UReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: UReversedParameter()
+    pub fn u_reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_SweptSurface_inherited_UReversedParameter(self, U)
+    }
+
+    /// Inherited from Geom_Surface: VReverse()
+    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_SweptSurface_inherited_VReverse(self)
+    }
+
+    /// Inherited from Geom_Surface: VReversed()
+    pub fn v_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_SweptSurface_inherited_VReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: VReversedParameter()
+    pub fn v_reversed_parameter(&self, V: f64) -> f64 {
+        crate::ffi::Geom_SweptSurface_inherited_VReversedParameter(self, V)
+    }
+
+    /// Inherited from Geom_Surface: TransformParameters()
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_SweptSurface_inherited_TransformParameters(self, U, V, T)
+    }
+
+    /// Inherited from Geom_Surface: ParametricTransformation()
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::Geom_SweptSurface_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom_Surface: Bounds()
+    pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
+        crate::ffi::Geom_SweptSurface_inherited_Bounds(self, U1, U2, V1, V2)
+    }
+
+    /// Inherited from Geom_Surface: IsUClosed()
+    pub fn is_u_closed(&self) -> bool {
+        crate::ffi::Geom_SweptSurface_inherited_IsUClosed(self)
+    }
+
+    /// Inherited from Geom_Surface: IsVClosed()
+    pub fn is_v_closed(&self) -> bool {
+        crate::ffi::Geom_SweptSurface_inherited_IsVClosed(self)
+    }
+
+    /// Inherited from Geom_Surface: IsUPeriodic()
+    pub fn is_u_periodic(&self) -> bool {
+        crate::ffi::Geom_SweptSurface_inherited_IsUPeriodic(self)
+    }
+
+    /// Inherited from Geom_Surface: UPeriod()
+    pub fn u_period(&self) -> f64 {
+        crate::ffi::Geom_SweptSurface_inherited_UPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: IsVPeriodic()
+    pub fn is_v_periodic(&self) -> bool {
+        crate::ffi::Geom_SweptSurface_inherited_IsVPeriodic(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod()
+    pub fn v_period(&self) -> f64 {
+        crate::ffi::Geom_SweptSurface_inherited_VPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: UIso()
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SweptSurface_inherited_UIso(self, U)
+    }
+
+    /// Inherited from Geom_Surface: VIso()
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_SweptSurface_inherited_VIso(self, V)
+    }
+
+    /// Inherited from Geom_Surface: IsCNu()
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        crate::ffi::Geom_SweptSurface_inherited_IsCNu(self, N)
+    }
+
+    /// Inherited from Geom_Surface: IsCNv()
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        crate::ffi::Geom_SweptSurface_inherited_IsCNv(self, N)
+    }
+
+    /// Inherited from Geom_Surface: D0()
+    pub fn d0(&self, U: f64, V: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_SweptSurface_inherited_D0(self, U, V, P)
+    }
+
+    /// Inherited from Geom_Surface: D1()
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_SweptSurface_inherited_D1(self, U, V, P, D1U, D1V)
+    }
+
+    /// Inherited from Geom_Surface: D2()
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_SweptSurface_inherited_D2(self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+    }
+
+    /// Inherited from Geom_Surface: D3()
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_SweptSurface_inherited_D3(
+            self, U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+        )
+    }
+
+    /// Inherited from Geom_Surface: DN()
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_SweptSurface_inherited_DN(self, U, V, Nu, Nv)
+    }
+
+    /// Inherited from Geom_Surface: Value()
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_SweptSurface_inherited_Value(self, U, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomSweptSurface;
+
+impl HandleGeomSweptSurface {
+    /// Dereference this Handle to access the underlying Geom_SweptSurface
+    pub fn get(&self) -> &crate::ffi::Geom_SweptSurface {
+        crate::ffi::HandleGeomSweptSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_SweptSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_SweptSurface> {
+        crate::ffi::HandleGeomSweptSurface_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_SweptSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomSweptSurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_SweptSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomSweptSurface_to_HandleGeomSurface(self)
+    }
+}
+
+// ========================
+// From Geom_ToroidalSurface.hxx
+// ========================
+
+/// Describes a torus.
+/// A torus is defined by its major and minor radii, and
+/// positioned in space with a coordinate system (a
+/// gp_Ax3 object) as follows:
+/// - The origin is the center of the torus.
+/// - The surface is obtained by rotating a circle around
+/// the "main Direction". This circle has a radius equal
+/// to the minor radius, and is located in the plane
+/// defined by the origin, "X Direction" and "main
+/// Direction". It is centered on the "X Axis", on its
+/// positive side, and positioned at a distance from the
+/// origin equal to the major radius. This circle is the
+/// "reference circle" of the torus.
+/// - The plane defined by the origin, the "X Direction"
+/// and the "Y Direction" is called the "reference plane" of the torus.
+/// This coordinate system is the "local coordinate
+/// system" of the torus. The following apply:
+/// - Rotation around its "main Axis", in the trigonometric
+/// sense given by "X Direction" and "Y Direction",
+/// defines the u parametric direction.
+/// - The "X Axis" gives the origin for the u parameter.
+/// - Rotation around an axis parallel to the "Y Axis" and
+/// passing through the center of the "reference circle"
+/// gives the v parameter on the "reference circle".
+/// - The "X Axis" gives the origin of the v parameter on
+/// the "reference circle".
+/// - The v parametric direction is oriented by the
+/// inverse of the "main Direction", i.e. near 0, as v
+/// increases, the Z coordinate decreases. (This
+/// implies that the "Y Direction" orients the reference
+/// circle only when the local coordinate system is direct.)
+/// - The u isoparametric curve is a circle obtained by
+/// rotating the "reference circle" of the torus through
+/// an angle u about the "main Axis".
+/// The parametric equation of the torus is :
+/// P(u, v) = O + (R + r*cos(v)) * (cos(u)*XDir +
+/// sin(u)*YDir ) + r*sin(v)*ZDir, where:
+/// - O, XDir, YDir and ZDir are respectively the
+/// origin, the "X Direction", the "Y Direction" and the "Z
+/// Direction" of the local coordinate system,
+/// - r and R are, respectively, the minor and major radius.
+/// The parametric range of the two parameters is:
+/// - [ 0, 2.*Pi ] for u
+/// - [ 0, 2.*Pi ] for v
+pub use crate::ffi::Geom_ToroidalSurface as ToroidalSurface;
+
+impl ToroidalSurface {
+    /// A3 is the local coordinate system of the surface.
+    /// The orientation of increasing V parametric value is defined
+    /// by the rotation around the main axis (ZAxis) in the
+    /// trigonometric sense. The parametrization of the surface in the
+    /// U direction is defined such as the normal Vector (N = D1U ^ D1V)
+    /// is oriented towards the "outside region" of the surface.
+    /// Warnings :
+    /// It is not forbidden to create a toroidal surface with
+    /// MajorRadius = MinorRadius = 0.0
+    ///
+    /// Raised if MinorRadius < 0.0 or if MajorRadius < 0.0
+    pub fn new_ax3_real2(
+        A3: &crate::ffi::gp_Ax3,
+        MajorRadius: f64,
+        MinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_ToroidalSurface_ctor_ax3_real2(A3, MajorRadius, MinorRadius)
+    }
+
+    /// Creates a ToroidalSurface from a non transient Torus from
+    /// package gp.
+    pub fn new_torus(T: &crate::ffi::gp_Torus) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_ToroidalSurface_ctor_torus(T)
+    }
+
+    /// Returns the non transient torus with the same geometric
+    /// properties as <me>.
+    pub fn torus(&self) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::Geom_ToroidalSurface_torus(self)
+    }
+
+    /// Computes the U isoparametric curve.
+    ///
+    /// For a toroidal surface the UIso curve is a circle.
+    /// The center of the Uiso circle is at the distance MajorRadius
+    /// from the location point of the toroidal surface.
+    /// Warnings :
+    /// The radius of the circle can be zero if for the surface
+    /// MinorRadius = 0.0
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_ToroidalSurface_u_iso(self, U)
+    }
+
+    /// Computes the V isoparametric curve.
+    ///
+    /// For a ToroidalSurface the VIso curve is a circle.
+    /// The axis of the circle is the main axis (ZAxis) of the
+    /// toroidal  surface.
+    /// Warnings :
+    /// The radius of the circle can be zero if for the surface
+    /// MajorRadius = MinorRadius
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::Geom_ToroidalSurface_v_iso(self, V)
+    }
+
+    /// Computes the derivative of order Nu in the direction u and
+    /// Nv in the direction v.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::Geom_ToroidalSurface_dn(self, U, V, Nu, Nv)
+    }
+
+    /// Creates a new object which is a copy of this torus.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ToroidalSurface_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_ToroidalSurface_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_ElementarySurface
+    pub fn as_elementary_surface(&self) -> &ElementarySurface {
+        crate::ffi::Geom_ToroidalSurface_as_Geom_ElementarySurface(self)
+    }
+
+    /// Upcast to Geom_ElementarySurface (mutable)
+    pub fn as_elementary_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ElementarySurface> {
+        crate::ffi::Geom_ToroidalSurface_as_Geom_ElementarySurface_mut(self)
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_ToroidalSurface_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_ToroidalSurface_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::Geom_ToroidalSurface_as_Geom_Surface(self)
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::Geom_ToroidalSurface_as_Geom_Surface_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomToroidalSurface> {
+        crate::ffi::Geom_ToroidalSurface_to_handle(obj)
+    }
+
+    /// Inherited from Geom_ElementarySurface: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_ToroidalSurface_inherited_SetAxis(self, theA1)
+    }
+
+    /// Inherited from Geom_ElementarySurface: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theLoc: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_ToroidalSurface_inherited_SetLocation(self, theLoc)
+    }
+
+    /// Inherited from Geom_ElementarySurface: SetPosition()
+    pub fn set_position(self: std::pin::Pin<&mut Self>, theAx3: &crate::ffi::gp_Ax3) {
+        crate::ffi::Geom_ToroidalSurface_inherited_SetPosition(self, theAx3)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Axis()
+    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
+        crate::ffi::Geom_ToroidalSurface_inherited_Axis(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_ToroidalSurface_inherited_Location(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax3 {
+        crate::ffi::Geom_ToroidalSurface_inherited_Position(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: UReverse()
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_ToroidalSurface_inherited_UReverse(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: VReverse()
+    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_ToroidalSurface_inherited_VReverse(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: IsCNu()
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        crate::ffi::Geom_ToroidalSurface_inherited_IsCNu(self, N)
+    }
+
+    /// Inherited from Geom_ElementarySurface: IsCNv()
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        crate::ffi::Geom_ToroidalSurface_inherited_IsCNv(self, N)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_ToroidalSurface_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_ToroidalSurface_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_ToroidalSurface_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_ToroidalSurface_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ToroidalSurface_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ToroidalSurface_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ToroidalSurface_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ToroidalSurface_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_ToroidalSurface_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Surface: UReversed()
+    pub fn u_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_ToroidalSurface_inherited_UReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: VReversed()
+    pub fn v_reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::Geom_ToroidalSurface_inherited_VReversed(self)
+    }
+
+    /// Inherited from Geom_Surface: TransformParameters()
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_ToroidalSurface_inherited_TransformParameters(self, U, V, T)
+    }
+
+    /// Inherited from Geom_Surface: ParametricTransformation()
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::Geom_ToroidalSurface_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom_Surface: UPeriod()
+    pub fn u_period(&self) -> f64 {
+        crate::ffi::Geom_ToroidalSurface_inherited_UPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod()
+    pub fn v_period(&self) -> f64 {
+        crate::ffi::Geom_ToroidalSurface_inherited_VPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: Value()
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Geom_ToroidalSurface_inherited_Value(self, U, V)
+    }
+}
+
+pub use crate::ffi::HandleGeomToroidalSurface;
+
+impl HandleGeomToroidalSurface {
+    /// Dereference this Handle to access the underlying Geom_ToroidalSurface
+    pub fn get(&self) -> &crate::ffi::Geom_ToroidalSurface {
+        crate::ffi::HandleGeomToroidalSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_ToroidalSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_ToroidalSurface> {
+        crate::ffi::HandleGeomToroidalSurface_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_ToroidalSurface> to Handle<Geom_ElementarySurface>
+    pub fn to_handle_elementary_surface(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomElementarySurface> {
+        crate::ffi::HandleGeomToroidalSurface_to_HandleGeomElementarySurface(self)
+    }
+
+    /// Upcast Handle<Geom_ToroidalSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomToroidalSurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_ToroidalSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomToroidalSurface_to_HandleGeomSurface(self)
+    }
+}
+
+// ========================
+// From Geom_Transformation.hxx
+// ========================
+
+/// Describes how to construct the following elementary transformations
+/// - translations,
+/// - rotations,
+/// - symmetries,
+/// - scales.
+/// The Transformation class can also be used to
+/// construct complex transformations by combining these
+/// elementary transformations.
+/// However, these transformations can never change
+/// the type of an object. For example, the projection
+/// transformation can change a circle into an ellipse, and
+/// therefore change the real type of the object. Such a
+/// transformation is forbidden in this environment and
+/// cannot be a Geom_Transformation.
+/// The transformation can be represented as follow :
+///
+/// V1   V2   V3    T
+/// | a11  a12  a13   a14 |   | x |      | x'|
+/// | a21  a22  a23   a24 |   | y |      | y'|
+/// | a31  a32  a33   a34 |   | z |   =  | z'|
+/// |  0    0    0     1  |   | 1 |      | 1 |
+///
+/// where {V1, V2, V3} defines the vectorial part of the
+/// transformation and T defines the translation part of
+/// the transformation.
+/// Note: Geom_Transformation transformations
+/// provide the same kind of "geometric" services as
+/// gp_Trsf ones but have more complex data structures.
+/// The geometric objects provided by the Geom
+/// package use gp_Trsf transformations in the syntaxes
+/// Transform and Transformed.
+/// Geom_Transformation transformations are used in
+/// a context where they can be shared by several
+/// objects contained inside a common data structure.
+pub use crate::ffi::Geom_Transformation as Transformation;
+
+impl Transformation {
+    /// Creates an identity transformation.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Transformation_ctor()
+    }
+
+    /// Creates a transient copy of T.
+    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_Transformation_ctor_trsf(T)
+    }
+
+    /// Returns the nature of this transformation as a value
+    /// of the gp_TrsfForm enumeration.
+    pub fn form(&self) -> i32 {
+        crate::ffi::Geom_Transformation_form(self)
+    }
+
+    /// Raised if the transformation is singular. This means that
+    /// the ScaleFactor is lower or equal to Resolution from
+    /// package gp.
+    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomTransformation> {
+        crate::ffi::Geom_Transformation_inverted(self)
+    }
+
+    /// Computes the transformation composed with Other and <me>.
+    /// <me> * Other.
+    /// Returns a new transformation
+    pub fn multiplied(
+        &self,
+        Other: &crate::ffi::HandleGeomTransformation,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomTransformation> {
+        crate::ffi::Geom_Transformation_multiplied(self, Other)
+    }
+
+    /// Raised if N < 0 and if the transformation is not inversible
+    pub fn powered(&self, N: i32) -> cxx::UniquePtr<crate::ffi::HandleGeomTransformation> {
+        crate::ffi::Geom_Transformation_powered(self, N)
+    }
+
+    /// Creates a new object which is a copy of this transformation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomTransformation> {
+        crate::ffi::Geom_Transformation_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Transformation_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomTransformation> {
+        crate::ffi::Geom_Transformation_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleGeomTransformation;
+
+impl HandleGeomTransformation {
+    /// Dereference this Handle to access the underlying Geom_Transformation
+    pub fn get(&self) -> &crate::ffi::Geom_Transformation {
+        crate::ffi::HandleGeomTransformation_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Transformation
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_Transformation> {
+        crate::ffi::HandleGeomTransformation_get_mut(self)
+    }
+}
+
+// ========================
 // From Geom_TrimmedCurve.hxx
 // ========================
 
@@ -3907,14 +9870,14 @@ impl TrimmedCurve {
     /// - C is not periodic and U1 or U2 is outside the
     /// bounds of C, or
     /// - U1 is equal to U2.
-    pub fn new_handlecurve_real2_bool2(
+    pub fn new_handlegeomcurve_real2_bool2(
         C: &crate::ffi::HandleGeomCurve,
         U1: f64,
         U2: f64,
         Sense: bool,
         theAdjustPeriodic: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom_TrimmedCurve_ctor_handlecurve_real2_bool2(
+        crate::ffi::Geom_TrimmedCurve_ctor_handlegeomcurve_real2_bool2(
             C,
             U1,
             U2,
@@ -3958,13 +9921,13 @@ impl TrimmedCurve {
     /// - C is not periodic and U1 or U2 is outside the
     /// bounds of C, or
     /// - U1 is equal to U2.
-    pub fn new_handlecurve_real2_bool(
+    pub fn new_handlegeomcurve_real2_bool(
         C: &crate::ffi::HandleGeomCurve,
         U1: f64,
         U2: f64,
         Sense: bool,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_handlecurve_real2_bool2(C, U1, U2, Sense, true)
+        Self::new_handlegeomcurve_real2_bool2(C, U1, U2, Sense, true)
     }
 
     /// Constructs a trimmed curve from the basis curve C
@@ -4002,12 +9965,12 @@ impl TrimmedCurve {
     /// - C is not periodic and U1 or U2 is outside the
     /// bounds of C, or
     /// - U1 is equal to U2.
-    pub fn new_handlecurve_real2(
+    pub fn new_handlegeomcurve_real2(
         C: &crate::ffi::HandleGeomCurve,
         U1: f64,
         U2: f64,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_handlecurve_real2_bool2(C, U1, U2, true, true)
+        Self::new_handlegeomcurve_real2_bool2(C, U1, U2, true, true)
     }
 
     /// Returns the basis curve.
@@ -4208,7 +10171,483 @@ impl HandleGeomTrimmedCurve {
 }
 
 // ========================
+// From Geom_UndefinedDerivative.hxx
+// ========================
+
+pub use crate::ffi::Geom_UndefinedDerivative as UndefinedDerivative;
+
+impl UndefinedDerivative {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_UndefinedDerivative_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_UndefinedDerivative_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_UndefinedDerivative_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Geom_UndefinedDerivative_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_UndefinedDerivative_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Geom_UndefinedValue.hxx
+// ========================
+
+pub use crate::ffi::Geom_UndefinedValue as UndefinedValue;
+
+impl UndefinedValue {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_UndefinedValue_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_UndefinedValue_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_UndefinedValue_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Geom_UndefinedValue_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_UndefinedValue_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Geom_Vector.hxx
+// ========================
+
+/// The abstract class Vector describes the common
+/// behavior of vectors in 3D space.
+/// The Geom package provides two concrete classes of
+/// vectors: Geom_Direction (unit vector) and Geom_VectorWithMagnitude.
+pub use crate::ffi::Geom_Vector as Vector;
+
+impl Vector {
+    /// Returns a copy of <me> reversed.
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::Geom_Vector_reversed(self)
+    }
+
+    /// Computes the cross product between <me> and <Other>.
+    /// A new direction is returned.
+    ///
+    /// Raised if <me> is a "Direction" and if the two vectors
+    /// are parallel because it is not possible to create a
+    /// "Direction" with null length.
+    pub fn crossed(
+        &self,
+        Other: &crate::ffi::HandleGeomVector,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::Geom_Vector_crossed(self, Other)
+    }
+
+    /// Computes the triple vector product <me> ^(V1 ^ V2).
+    ///
+    /// Raised if <me> is a direction and if V1 and V2 are
+    /// parallel or <me> and (V1 ^ V2) are parallel
+    pub fn cross_crossed(
+        &self,
+        V1: &crate::ffi::HandleGeomVector,
+        V2: &crate::ffi::HandleGeomVector,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::Geom_Vector_cross_crossed(self, V1, V2)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_Vector_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_Vector_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_Vector_as_Geom_Geometry_mut(self)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Vector_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Vector_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Vector_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Vector_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Transform()
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_Vector_inherited_Transform(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Vector_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Vector_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Vector_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Vector_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Vector_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_Vector_inherited_Copy(self)
+    }
+}
+
+pub use crate::ffi::HandleGeomVector;
+
+impl HandleGeomVector {
+    /// Dereference this Handle to access the underlying Geom_Vector
+    pub fn get(&self) -> &crate::ffi::Geom_Vector {
+        crate::ffi::HandleGeomVector_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Vector
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom_Vector> {
+        crate::ffi::HandleGeomVector_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Vector> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomVector_to_HandleGeomGeometry(self)
+    }
+}
+
+// ========================
+// From Geom_VectorWithMagnitude.hxx
+// ========================
+
+/// Defines a vector with magnitude.
+/// A vector with magnitude can have a zero length.
+pub use crate::ffi::Geom_VectorWithMagnitude as VectorWithMagnitude;
+
+impl VectorWithMagnitude {
+    /// Creates a transient copy of V.
+    pub fn new_vec(V: &crate::ffi::gp_Vec) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_VectorWithMagnitude_ctor_vec(V)
+    }
+
+    /// Creates a vector with three cartesian coordinates.
+    pub fn new_real3(X: f64, Y: f64, Z: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_VectorWithMagnitude_ctor_real3(X, Y, Z)
+    }
+
+    /// Creates a vector from the point P1 to the point P2.
+    /// The magnitude of the vector is the distance between P1 and P2
+    pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_VectorWithMagnitude_ctor_pnt2(P1, P2)
+    }
+
+    /// Adds the vector Other to <me>.
+    pub fn added(
+        &self,
+        Other: &crate::ffi::HandleGeomVector,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVectorWithMagnitude> {
+        crate::ffi::Geom_VectorWithMagnitude_added(self, Other)
+    }
+
+    /// Computes the cross product  between <me> and Other
+    /// <me> ^ Other. A new vector is returned.
+    pub fn crossed(
+        &self,
+        Other: &crate::ffi::HandleGeomVector,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::Geom_VectorWithMagnitude_crossed(self, Other)
+    }
+
+    /// Computes the triple vector product  <me> ^ (V1 ^ V2).
+    /// A new vector is returned.
+    pub fn cross_crossed(
+        &self,
+        V1: &crate::ffi::HandleGeomVector,
+        V2: &crate::ffi::HandleGeomVector,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::Geom_VectorWithMagnitude_cross_crossed(self, V1, V2)
+    }
+
+    /// Divides <me> by a scalar. A new vector is returned.
+    pub fn divided(
+        &self,
+        Scalar: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVectorWithMagnitude> {
+        crate::ffi::Geom_VectorWithMagnitude_divided(self, Scalar)
+    }
+
+    /// Computes the product of the vector <me> by a scalar.
+    /// A new vector is returned.
+    pub fn multiplied(
+        &self,
+        Scalar: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVectorWithMagnitude> {
+        crate::ffi::Geom_VectorWithMagnitude_multiplied(self, Scalar)
+    }
+
+    /// Returns a copy of <me> Normalized.
+    ///
+    /// Raised if the magnitude of the vector is lower or equal to
+    /// Resolution from package gp.
+    pub fn normalized(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomVectorWithMagnitude> {
+        crate::ffi::Geom_VectorWithMagnitude_normalized(self)
+    }
+
+    /// Subtracts the vector Other to <me>. A new vector is returned.
+    pub fn subtracted(
+        &self,
+        Other: &crate::ffi::HandleGeomVector,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVectorWithMagnitude> {
+        crate::ffi::Geom_VectorWithMagnitude_subtracted(self, Other)
+    }
+
+    /// Creates a new object which is a copy of this vector.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_VectorWithMagnitude_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom_VectorWithMagnitude_get_type_descriptor()
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom_VectorWithMagnitude_as_Geom_Geometry(self)
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom_VectorWithMagnitude_as_Geom_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom_Vector
+    pub fn as_vector(&self) -> &Vector {
+        crate::ffi::Geom_VectorWithMagnitude_as_Geom_Vector(self)
+    }
+
+    /// Upcast to Geom_Vector (mutable)
+    pub fn as_vector_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Vector> {
+        crate::ffi::Geom_VectorWithMagnitude_as_Geom_Vector_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomVectorWithMagnitude> {
+        crate::ffi::Geom_VectorWithMagnitude_to_handle(obj)
+    }
+
+    /// Inherited from Geom_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Rotate(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Rotated(self, A1, Ang)
+    }
+
+    /// Inherited from Geom_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom_Vector: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom_Vector: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom_Vector: Angle()
+    pub fn angle(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Angle(self, Other)
+    }
+
+    /// Inherited from Geom_Vector: AngleWithRef()
+    pub fn angle_with_ref(
+        &self,
+        Other: &crate::ffi::HandleGeomVector,
+        VRef: &crate::ffi::HandleGeomVector,
+    ) -> f64 {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_AngleWithRef(self, Other, VRef)
+    }
+
+    /// Inherited from Geom_Vector: Coord()
+    pub fn coord(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Coord(self, X, Y, Z)
+    }
+
+    /// Inherited from Geom_Vector: X()
+    pub fn x(&self) -> f64 {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_X(self)
+    }
+
+    /// Inherited from Geom_Vector: Y()
+    pub fn y(&self) -> f64 {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Y(self)
+    }
+
+    /// Inherited from Geom_Vector: Z()
+    pub fn z(&self) -> f64 {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Z(self)
+    }
+
+    /// Inherited from Geom_Vector: Dot()
+    pub fn dot(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Dot(self, Other)
+    }
+
+    /// Inherited from Geom_Vector: DotCross()
+    pub fn dot_cross(
+        &self,
+        V1: &crate::ffi::HandleGeomVector,
+        V2: &crate::ffi::HandleGeomVector,
+    ) -> f64 {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_DotCross(self, V1, V2)
+    }
+
+    /// Inherited from Geom_Vector: Vec()
+    pub fn vec(&self) -> &crate::ffi::gp_Vec {
+        crate::ffi::Geom_VectorWithMagnitude_inherited_Vec(self)
+    }
+}
+
+pub use crate::ffi::HandleGeomVectorWithMagnitude;
+
+impl HandleGeomVectorWithMagnitude {
+    /// Dereference this Handle to access the underlying Geom_VectorWithMagnitude
+    pub fn get(&self) -> &crate::ffi::Geom_VectorWithMagnitude {
+        crate::ffi::HandleGeomVectorWithMagnitude_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_VectorWithMagnitude
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_VectorWithMagnitude> {
+        crate::ffi::HandleGeomVectorWithMagnitude_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_VectorWithMagnitude> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomVectorWithMagnitude_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_VectorWithMagnitude> to Handle<Geom_Vector>
+    pub fn to_handle_vector(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
+        crate::ffi::HandleGeomVectorWithMagnitude_to_HandleGeomVector(self)
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::Geom_OffsetCurve as OffsetCurve;
+pub use crate::ffi::Geom_SequenceOfBSplineSurface as SequenceOfBSplineSurface;

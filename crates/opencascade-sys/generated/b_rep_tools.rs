@@ -16,6 +16,121 @@ pub use crate::ffi::{
 };
 
 // ========================
+// From BRepTools_CopyModification.hxx
+// ========================
+
+/// Tool class implementing necessary functionality for copying geometry and triangulation.
+pub use crate::ffi::BRepTools_CopyModification as CopyModification;
+
+impl CopyModification {
+    /// Constructor.
+    /// \param[in] theCopyGeom  indicates that the geometry (surfaces and curves) should be copied
+    /// \param[in] theCopyMesh  indicates that the triangulation should be copied
+    pub fn new_bool2(theCopyGeom: bool, theCopyMesh: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_CopyModification_ctor_bool2(theCopyGeom, theCopyMesh)
+    }
+
+    /// Constructor.
+    /// \param[in] theCopyGeom  indicates that the geometry (surfaces and curves) should be copied
+    /// \param[in] theCopyMesh  indicates that the triangulation should be copied
+    pub fn new_bool(theCopyGeom: bool) -> cxx::UniquePtr<Self> {
+        Self::new_bool2(theCopyGeom, true)
+    }
+
+    /// Constructor.
+    /// \param[in] theCopyGeom  indicates that the geometry (surfaces and curves) should be copied
+    /// \param[in] theCopyMesh  indicates that the triangulation should be copied
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool2(true, true)
+    }
+
+    /// Returns the continuity of theNewEdge between theNewFace1 and theNewFace2.
+    ///
+    /// theNewEdge is the new edge created from theEdge.  theNewFace1
+    /// (resp. theNewFace2) is the new face created from theFace1 (resp. theFace2).
+    pub fn continuity(
+        self: std::pin::Pin<&mut Self>,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace1: &crate::ffi::TopoDS_Face,
+        theFace2: &crate::ffi::TopoDS_Face,
+        theNewEdge: &crate::ffi::TopoDS_Edge,
+        theNewFace1: &crate::ffi::TopoDS_Face,
+        theNewFace2: &crate::ffi::TopoDS_Face,
+    ) -> i32 {
+        crate::ffi::BRepTools_CopyModification_continuity(
+            self,
+            theEdge,
+            theFace1,
+            theFace2,
+            theNewEdge,
+            theNewFace1,
+            theNewFace2,
+        )
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepTools_CopyModification_get_type_descriptor()
+    }
+
+    /// Upcast to BRepTools_Modification
+    pub fn as_modification(&self) -> &Modification {
+        crate::ffi::BRepTools_CopyModification_as_BRepTools_Modification(self)
+    }
+
+    /// Upcast to BRepTools_Modification (mutable)
+    pub fn as_modification_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Modification> {
+        crate::ffi::BRepTools_CopyModification_as_BRepTools_Modification_mut(self)
+    }
+}
+
+// ========================
+// From BRepTools_GTrsfModification.hxx
+// ========================
+
+/// Defines a modification of the  geometry by a  GTrsf
+/// from gp. All methods return True and transform the
+/// geometry.
+pub use crate::ffi::BRepTools_GTrsfModification as GTrsfModification;
+
+impl GTrsfModification {
+    pub fn new_gtrsf(T: &crate::ffi::gp_GTrsf) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_GTrsfModification_ctor_gtrsf(T)
+    }
+
+    /// Returns the  continuity of  <NewE> between <NewF1>
+    /// and <NewF2>.
+    ///
+    /// <NewE> is the new  edge created from <E>.  <NewF1>
+    /// (resp. <NewF2>) is the new  face created from <F1>
+    /// (resp. <F2>).
+    pub fn continuity(
+        self: std::pin::Pin<&mut Self>,
+        E: &crate::ffi::TopoDS_Edge,
+        F1: &crate::ffi::TopoDS_Face,
+        F2: &crate::ffi::TopoDS_Face,
+        NewE: &crate::ffi::TopoDS_Edge,
+        NewF1: &crate::ffi::TopoDS_Face,
+        NewF2: &crate::ffi::TopoDS_Face,
+    ) -> i32 {
+        crate::ffi::BRepTools_GTrsfModification_continuity(self, E, F1, F2, NewE, NewF1, NewF2)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepTools_GTrsfModification_get_type_descriptor()
+    }
+
+    /// Upcast to BRepTools_Modification
+    pub fn as_modification(&self) -> &Modification {
+        crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification(self)
+    }
+
+    /// Upcast to BRepTools_Modification (mutable)
+    pub fn as_modification_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Modification> {
+        crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification_mut(self)
+    }
+}
+
+// ========================
 // From BRepTools_History.hxx
 // ========================
 
@@ -125,6 +240,53 @@ impl HandleBRepToolsHistory {
 }
 
 // ========================
+// From BRepTools_Modification.hxx
+// ========================
+
+/// Defines geometric modifications to a shape, i.e.
+/// changes to faces, edges and vertices.
+pub use crate::ffi::BRepTools_Modification as Modification;
+
+impl Modification {
+    /// Returns the  continuity of  <NewE> between <NewF1>
+    /// and <NewF2>.
+    /// <NewE> is the new  edge created from <E>.  <NewF1>
+    /// (resp. <NewF2>) is the new  face created from <F1>
+    /// (resp. <F2>).
+    pub fn continuity(
+        self: std::pin::Pin<&mut Self>,
+        E: &crate::ffi::TopoDS_Edge,
+        F1: &crate::ffi::TopoDS_Face,
+        F2: &crate::ffi::TopoDS_Face,
+        NewE: &crate::ffi::TopoDS_Edge,
+        NewF1: &crate::ffi::TopoDS_Face,
+        NewF2: &crate::ffi::TopoDS_Face,
+    ) -> i32 {
+        crate::ffi::BRepTools_Modification_continuity(self, E, F1, F2, NewE, NewF1, NewF2)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepTools_Modification_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleBRepToolsModification;
+
+impl HandleBRepToolsModification {
+    /// Dereference this Handle to access the underlying BRepTools_Modification
+    pub fn get(&self) -> &crate::ffi::BRepTools_Modification {
+        crate::ffi::HandleBRepToolsModification_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepTools_Modification
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepTools_Modification> {
+        crate::ffi::HandleBRepToolsModification_get_mut(self)
+    }
+}
+
+// ========================
 // From BRepTools_Modifier.hxx
 // ========================
 
@@ -142,9 +304,136 @@ impl Modifier {
         crate::ffi::BRepTools_Modifier_ctor_shape(S)
     }
 
+    /// Creates a modifier on  the shape <S>, and performs
+    /// the modifications described by <M>.
+    pub fn new_shape_handlebreptoolsmodification(
+        S: &crate::ffi::TopoDS_Shape,
+        M: &crate::ffi::HandleBRepToolsModification,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_Modifier_ctor_shape_handlebreptoolsmodification(S, M)
+    }
+
     /// Creates an empty Modifier.
     pub fn new() -> cxx::UniquePtr<Self> {
         Self::new_bool(false)
+    }
+}
+
+// ========================
+// From BRepTools_NurbsConvertModification.hxx
+// ========================
+
+/// Defines a modification of the  geometry by a  Trsf
+/// from gp. All methods return True and transform the
+/// geometry.
+pub use crate::ffi::BRepTools_NurbsConvertModification as NurbsConvertModification;
+
+impl NurbsConvertModification {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_NurbsConvertModification_ctor()
+    }
+
+    /// Returns the  continuity of  <NewE> between <NewF1>
+    /// and <NewF2>.
+    ///
+    /// <NewE> is the new  edge created from <E>.  <NewF1>
+    /// (resp. <NewF2>) is the new  face created from <F1>
+    /// (resp. <F2>).
+    pub fn continuity(
+        self: std::pin::Pin<&mut Self>,
+        E: &crate::ffi::TopoDS_Edge,
+        F1: &crate::ffi::TopoDS_Face,
+        F2: &crate::ffi::TopoDS_Face,
+        NewE: &crate::ffi::TopoDS_Edge,
+        NewF1: &crate::ffi::TopoDS_Face,
+        NewF2: &crate::ffi::TopoDS_Face,
+    ) -> i32 {
+        crate::ffi::BRepTools_NurbsConvertModification_continuity(
+            self, E, F1, F2, NewE, NewF1, NewF2,
+        )
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepTools_NurbsConvertModification_get_type_descriptor()
+    }
+
+    /// Upcast to BRepTools_CopyModification
+    pub fn as_copy_modification(&self) -> &CopyModification {
+        crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_CopyModification(self)
+    }
+
+    /// Upcast to BRepTools_CopyModification (mutable)
+    pub fn as_copy_modification_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CopyModification> {
+        crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_CopyModification_mut(self)
+    }
+
+    /// Upcast to BRepTools_Modification
+    pub fn as_modification(&self) -> &Modification {
+        crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_Modification(self)
+    }
+
+    /// Upcast to BRepTools_Modification (mutable)
+    pub fn as_modification_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Modification> {
+        crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_Modification_mut(self)
+    }
+}
+
+// ========================
+// From BRepTools_PurgeLocations.hxx
+// ========================
+
+/// Removes location datums, which satisfy conditions:
+/// aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec())
+/// from all locations of shape and its subshapes
+pub use crate::ffi::BRepTools_PurgeLocations as PurgeLocations;
+
+impl PurgeLocations {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_PurgeLocations_ctor()
+    }
+
+    /// Returns modified shape obtained from initial shape.
+    pub fn modified_shape(
+        &self,
+        theInitShape: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepTools_PurgeLocations_modified_shape(self, theInitShape)
+    }
+}
+
+// ========================
+// From BRepTools_Quilt.hxx
+// ========================
+
+/// A Tool to glue faces at common edges and reconstruct shells.
+///
+/// The user designate pairs of common edges using the method Bind.
+/// One edge is designated as the edge to use in place of the other one
+/// (they are supposed to be geometrically confused, but this not checked).
+/// They can be of opposite directions, this is specified by the orientations.
+///
+/// The user can add shapes with the Add method, all the faces are registered and copies of faces
+/// and edges are made to glue at the bound edges.
+///
+/// The user can call the Shells methods to compute a compound of shells from the current set of
+/// faces.
+///
+/// If no binding is made this class can be used to make shell from faces already sharing their
+/// edges.
+pub use crate::ffi::BRepTools_Quilt as Quilt;
+
+impl Quilt {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_Quilt_ctor()
+    }
+
+    /// Returns a Compound of shells made from the current
+    /// set of faces. The shells will be flagged as closed
+    /// or not closed.
+    pub fn shells(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepTools_Quilt_shells(self)
     }
 }
 
@@ -254,7 +543,242 @@ impl HandleBRepToolsReShape {
 }
 
 // ========================
-// Additional type re-exports
+// From BRepTools_ShapeSet.hxx
 // ========================
 
-pub use crate::ffi::BRepTools_Modification as Modification;
+/// Contains a Shape and all  its subshapes, locations
+/// and geometries.
+///
+/// The topology is inherited from TopTools.
+pub use crate::ffi::BRepTools_ShapeSet as ShapeSet;
+
+impl ShapeSet {
+    /// Builds an empty ShapeSet.
+    /// @param theWithTriangles flag to write triangulation data
+    pub fn new_bool2(theWithTriangles: bool, theWithNormals: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_ShapeSet_ctor_bool2(theWithTriangles, theWithNormals)
+    }
+
+    /// Builds an empty ShapeSet.
+    /// @param theWithTriangles flag to write triangulation data
+    pub fn new_builder_bool2(
+        theBuilder: &crate::ffi::BRep_Builder,
+        theWithTriangles: bool,
+        theWithNormals: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_ShapeSet_ctor_builder_bool2(
+            theBuilder,
+            theWithTriangles,
+            theWithNormals,
+        )
+    }
+
+    /// Builds an empty ShapeSet.
+    /// @param theWithTriangles flag to write triangulation data
+    pub fn new_bool(theWithTriangles: bool) -> cxx::UniquePtr<Self> {
+        Self::new_bool2(theWithTriangles, false)
+    }
+
+    /// Builds an empty ShapeSet.
+    /// @param theWithTriangles flag to write triangulation data
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool2(true, false)
+    }
+
+    /// Builds an empty ShapeSet.
+    /// @param theWithTriangles flag to write triangulation data
+    pub fn new_builder_bool(
+        theBuilder: &crate::ffi::BRep_Builder,
+        theWithTriangles: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_builder_bool2(theBuilder, theWithTriangles, false)
+    }
+
+    /// Builds an empty ShapeSet.
+    /// @param theWithTriangles flag to write triangulation data
+    pub fn new_builder(theBuilder: &crate::ffi::BRep_Builder) -> cxx::UniquePtr<Self> {
+        Self::new_builder_bool2(theBuilder, true, false)
+    }
+
+    pub fn check(
+        self: std::pin::Pin<&mut Self>,
+        T: i32,
+        S: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
+    ) {
+        crate::ffi::BRepTools_ShapeSet_check(self, T, S)
+    }
+
+    /// Upcast to TopTools_ShapeSet
+    pub fn as_top_tools_shape_set(&self) -> &crate::top_tools::ShapeSet {
+        crate::ffi::BRepTools_ShapeSet_as_TopTools_ShapeSet(self)
+    }
+
+    /// Upcast to TopTools_ShapeSet (mutable)
+    pub fn as_top_tools_shape_set_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::top_tools::ShapeSet> {
+        crate::ffi::BRepTools_ShapeSet_as_TopTools_ShapeSet_mut(self)
+    }
+
+    /// Inherited from TopTools_ShapeSet: SetFormatNb()
+    pub fn set_format_nb(self: std::pin::Pin<&mut Self>, theFormatNb: i32) {
+        crate::ffi::BRepTools_ShapeSet_inherited_SetFormatNb(self, theFormatNb)
+    }
+
+    /// Inherited from TopTools_ShapeSet: FormatNb()
+    pub fn format_nb(&self) -> i32 {
+        crate::ffi::BRepTools_ShapeSet_inherited_FormatNb(self)
+    }
+
+    /// Inherited from TopTools_ShapeSet: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> i32 {
+        crate::ffi::BRepTools_ShapeSet_inherited_Add(self, S)
+    }
+
+    /// Inherited from TopTools_ShapeSet: Shape()
+    pub fn shape(&self, I: i32) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepTools_ShapeSet_inherited_Shape(self, I)
+    }
+
+    /// Inherited from TopTools_ShapeSet: Index()
+    pub fn index(&self, S: &crate::ffi::TopoDS_Shape) -> i32 {
+        crate::ffi::BRepTools_ShapeSet_inherited_Index(self, S)
+    }
+
+    /// Inherited from TopTools_ShapeSet: Locations()
+    pub fn locations(&self) -> &crate::ffi::TopTools_LocationSet {
+        crate::ffi::BRepTools_ShapeSet_inherited_Locations(self)
+    }
+
+    /// Inherited from TopTools_ShapeSet: ChangeLocations()
+    pub fn change_locations(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopTools_LocationSet> {
+        crate::ffi::BRepTools_ShapeSet_inherited_ChangeLocations(self)
+    }
+
+    /// Inherited from TopTools_ShapeSet: DumpExtent()
+    pub fn dump_extent(&self, S: std::pin::Pin<&mut crate::ffi::TCollection_AsciiString>) {
+        crate::ffi::BRepTools_ShapeSet_inherited_DumpExtent(self, S)
+    }
+
+    /// Inherited from TopTools_ShapeSet: NbShapes()
+    pub fn nb_shapes(&self) -> i32 {
+        crate::ffi::BRepTools_ShapeSet_inherited_NbShapes(self)
+    }
+}
+
+// ========================
+// From BRepTools_Substitution.hxx
+// ========================
+
+/// A tool to substitute subshapes by other shapes.
+///
+/// The user use the method Substitute to define the
+/// modifications.
+/// A set of shapes is designated to replace a initial
+/// shape.
+///
+/// The method Build reconstructs a new Shape with the
+/// modifications.The Shape and the new shape are
+/// registered.
+pub use crate::ffi::BRepTools_Substitution as Substitution;
+
+impl Substitution {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_Substitution_ctor()
+    }
+}
+
+// ========================
+// From BRepTools_TrsfModification.hxx
+// ========================
+
+/// Describes a modification that uses a gp_Trsf to
+/// change the geometry of a shape. All functions return
+/// true and transform the geometry of the shape.
+pub use crate::ffi::BRepTools_TrsfModification as TrsfModification;
+
+impl TrsfModification {
+    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_TrsfModification_ctor_trsf(T)
+    }
+
+    /// Returns the  continuity of  <NewE> between <NewF1>
+    /// and <NewF2>.
+    ///
+    /// <NewE> is the new  edge created from <E>.  <NewF1>
+    /// (resp. <NewF2>) is the new  face created from <F1>
+    /// (resp. <F2>).
+    pub fn continuity(
+        self: std::pin::Pin<&mut Self>,
+        E: &crate::ffi::TopoDS_Edge,
+        F1: &crate::ffi::TopoDS_Face,
+        F2: &crate::ffi::TopoDS_Face,
+        NewE: &crate::ffi::TopoDS_Edge,
+        NewF1: &crate::ffi::TopoDS_Face,
+        NewF2: &crate::ffi::TopoDS_Face,
+    ) -> i32 {
+        crate::ffi::BRepTools_TrsfModification_continuity(self, E, F1, F2, NewE, NewF1, NewF2)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepTools_TrsfModification_get_type_descriptor()
+    }
+
+    /// Upcast to BRepTools_Modification
+    pub fn as_modification(&self) -> &Modification {
+        crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification(self)
+    }
+
+    /// Upcast to BRepTools_Modification (mutable)
+    pub fn as_modification_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Modification> {
+        crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification_mut(self)
+    }
+}
+
+// ========================
+// From BRepTools_WireExplorer.hxx
+// ========================
+
+/// The WireExplorer is a tool to explore the edges of
+/// a wire in a connection order.
+///
+/// i.e. each edge is connected to the previous one by
+/// its origin.
+/// If a wire is not closed returns only a segment of edges which
+/// length depends on started in exploration edge.
+/// Algorithm suggests that wire is valid and has no any defects, which
+/// can stop edge exploration. Such defects can be loops, wrong orientation of edges
+/// (two edges go in to shared vertex or go out from shared vertex), branching of edges,
+/// the presens of edges with INTERNAL or EXTERNAL orientation. If wire has
+/// such kind of defects WireExplorer can return not all
+/// edges in a wire. it depends on type of defect and position of starting edge.
+pub use crate::ffi::BRepTools_WireExplorer as WireExplorer;
+
+impl WireExplorer {
+    /// Constructs an empty explorer (which can be initialized using Init)
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_WireExplorer_ctor()
+    }
+
+    /// IInitializes an exploration  of the wire <W>.
+    pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_WireExplorer_ctor_wire(W)
+    }
+
+    /// Initializes an exploration  of the wire <W>.
+    /// F is used to select the edge connected to the
+    /// previous in the parametric representation of <F>.
+    pub fn new_wire_face(
+        W: &crate::ffi::TopoDS_Wire,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_WireExplorer_ctor_wire_face(W, F)
+    }
+
+    /// Returns an Orientation for the current edge.
+    pub fn orientation(&self) -> i32 {
+        crate::ffi::BRepTools_WireExplorer_orientation(self)
+    }
+}

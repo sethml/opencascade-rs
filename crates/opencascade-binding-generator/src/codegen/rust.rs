@@ -125,7 +125,7 @@ pub fn is_primitive_type(name: &str) -> bool {
     matches!(
         name,
         // Rust primitive names
-        "bool" | "i32" | "u32" | "i64" | "u64" | "f32" | "f64" | "char" |
+        "bool" | "i32" | "u32" | "i64" | "u64" | "f32" | "f64" | "char" | "c_char" |
         // C++ primitive names (may appear from canonical type resolution)
         "double" | "float" | "int" | "unsigned int" | "long" | "unsigned long" |
         "long long" | "unsigned long long" | "short" | "unsigned short" |
@@ -406,6 +406,16 @@ fn generate_unified_opaque_declarations(
         }
         // Skip collection types - they're generated separately
         if collection_type_names.contains(type_name) {
+            continue;
+        }
+        // Skip namespace-scoped types (e.g., "IMeshData::ListOfPnt2d") — CXX
+        // doesn't support `::` in type names within extern "C++" blocks
+        if type_name.contains("::") {
+            continue;
+        }
+        // Skip types with pointer/ref qualifiers leaked into the name
+        // (e.g., "IMeshData_Edge *const" from typedef resolution)
+        if type_name.contains('*') || type_name.contains('&') {
             continue;
         }
 

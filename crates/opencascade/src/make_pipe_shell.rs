@@ -19,7 +19,7 @@ pub(crate) fn make_pipe_shell_with_law_function(
     let with_contact = false;
     let with_correction = true;
     pipe.pin_mut()
-        .set_law_shape_handlefunction_bool2(profile_shape, &law_handle, with_contact, with_correction);
+        .set_law_shape_handlelawfunction_bool2(profile_shape, &law_handle, with_contact, with_correction);
 
     let progress = message::ProgressRange::new();
     pipe.pin_mut().build(&progress);
@@ -47,7 +47,7 @@ pub(crate) fn make_pipe_shell_with_law_function_shell(
     let with_contact = false;
     let with_correction = true;
     pipe.pin_mut()
-        .set_law_shape_handlefunction_bool2(profile_shape, &law_handle, with_contact, with_correction);
+        .set_law_shape_handlelawfunction_bool2(profile_shape, &law_handle, with_contact, with_correction);
 
     let progress = message::ProgressRange::new();
     pipe.pin_mut().build(&progress);

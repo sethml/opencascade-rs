@@ -24,17 +24,17 @@ impl Curve {
         crate::ffi::GeomAdaptor_Curve_ctor()
     }
 
-    pub fn new_handlecurve(theCurve: &crate::ffi::HandleGeomCurve) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAdaptor_Curve_ctor_handlecurve(theCurve)
+    pub fn new_handlegeomcurve(theCurve: &crate::ffi::HandleGeomCurve) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAdaptor_Curve_ctor_handlegeomcurve(theCurve)
     }
 
     /// Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()
-    pub fn new_handlecurve_real2(
+    pub fn new_handlegeomcurve_real2(
         theCurve: &crate::ffi::HandleGeomCurve,
         theUFirst: f64,
         theULast: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAdaptor_Curve_ctor_handlecurve_real2(theCurve, theUFirst, theULast)
+        crate::ffi::GeomAdaptor_Curve_ctor_handlegeomcurve_real2(theCurve, theUFirst, theULast)
     }
 
     /// Shallow copy of adaptor
@@ -123,6 +123,10 @@ impl Curve {
         crate::ffi::GeomAdaptor_Curve_b_spline(self)
     }
 
+    pub fn offset_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetCurve> {
+        crate::ffi::GeomAdaptor_Curve_offset_curve(self)
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GeomAdaptor_Curve_get_type_descriptor()
     }
@@ -159,12 +163,12 @@ impl Surface {
         crate::ffi::GeomAdaptor_Surface_ctor()
     }
 
-    pub fn new_handlesurface(theSurf: &crate::ffi::HandleGeomSurface) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAdaptor_Surface_ctor_handlesurface(theSurf)
+    pub fn new_handlegeomsurface(theSurf: &crate::ffi::HandleGeomSurface) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAdaptor_Surface_ctor_handlegeomsurface(theSurf)
     }
 
     /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
-    pub fn new_handlesurface_real6(
+    pub fn new_handlegeomsurface_real6(
         theSurf: &crate::ffi::HandleGeomSurface,
         theUFirst: f64,
         theULast: f64,
@@ -173,13 +177,13 @@ impl Surface {
         theTolU: f64,
         theTolV: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAdaptor_Surface_ctor_handlesurface_real6(
+        crate::ffi::GeomAdaptor_Surface_ctor_handlegeomsurface_real6(
             theSurf, theUFirst, theULast, theVFirst, theVLast, theTolU, theTolV,
         )
     }
 
     /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
-    pub fn new_handlesurface_real5(
+    pub fn new_handlegeomsurface_real5(
         theSurf: &crate::ffi::HandleGeomSurface,
         theUFirst: f64,
         theULast: f64,
@@ -187,20 +191,22 @@ impl Surface {
         theVLast: f64,
         theTolU: f64,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_handlesurface_real6(
+        Self::new_handlegeomsurface_real6(
             theSurf, theUFirst, theULast, theVFirst, theVLast, theTolU, 0.0,
         )
     }
 
     /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
-    pub fn new_handlesurface_real4(
+    pub fn new_handlegeomsurface_real4(
         theSurf: &crate::ffi::HandleGeomSurface,
         theUFirst: f64,
         theULast: f64,
         theVFirst: f64,
         theVLast: f64,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_handlesurface_real6(theSurf, theUFirst, theULast, theVFirst, theVLast, 0.0, 0.0)
+        Self::new_handlegeomsurface_real6(
+            theSurf, theUFirst, theULast, theVFirst, theVLast, 0.0, 0.0,
+        )
     }
 
     /// Shallow copy of adaptor
@@ -348,5 +354,530 @@ impl Surface {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::adaptor3d::Surface> {
         crate::ffi::GeomAdaptor_Surface_as_Adaptor3d_Surface_mut(self)
+    }
+}
+
+// ========================
+// From GeomAdaptor_SurfaceOfLinearExtrusion.hxx
+// ========================
+
+/// Generalised cylinder. This surface is obtained  by sweeping a  curve in  a given
+/// direction. The parametrization range  for the parameter U is defined
+/// with referenced the curve.
+/// The parametrization range for the parameter V is ]-infinite,+infinite[
+/// The  position of  the   curve gives  the origin for    the
+/// parameter V.
+/// The continuity of the surface is CN in the V direction.
+pub use crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion as SurfaceOfLinearExtrusion;
+
+impl SurfaceOfLinearExtrusion {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_ctor()
+    }
+
+    /// The Curve is loaded.
+    pub fn new_handleadaptor3dcurve(C: &crate::ffi::HandleAdaptor3dCurve) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_ctor_handleadaptor3dcurve(C)
+    }
+
+    /// Thew Curve and the Direction are loaded.
+    pub fn new_handleadaptor3dcurve_dir(
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        V: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_ctor_handleadaptor3dcurve_dir(C, V)
+    }
+
+    /// Shallow copy of adaptor
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_shallow_copy(self)
+    }
+
+    pub fn u_continuity(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_u_continuity(self)
+    }
+
+    /// Return CN.
+    pub fn v_continuity(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_v_continuity(self)
+    }
+
+    /// Returns the number of U intervals for  continuity
+    /// <S>. May be one if UContinuity(me) >= <S>
+    pub fn nb_u_intervals(&self, S: i32) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_nb_u_intervals(self, S)
+    }
+
+    /// Returns the number of V intervals for  continuity
+    /// <S>. May be one if VContinuity(me) >= <S>
+    pub fn nb_v_intervals(&self, S: i32) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_nb_v_intervals(self, S)
+    }
+
+    /// Returns    a  surface trimmed in the U direction
+    /// equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn u_trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_u_trim(self, First, Last, Tol)
+    }
+
+    /// Returns    a  surface trimmed in the V direction  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn v_trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_v_trim(self, First, Last, Tol)
+    }
+
+    /// Returns the type of the surface : Plane, Cylinder,
+    /// Cone,      Sphere,        Torus,    BezierSurface,
+    /// BSplineSurface,               SurfaceOfRevolution,
+    /// SurfaceOfExtrusion, OtherSurface
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_get_type(self)
+    }
+
+    pub fn plane(&self) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_plane(self)
+    }
+
+    pub fn cylinder(&self) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_cylinder(self)
+    }
+
+    pub fn cone(&self) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_cone(self)
+    }
+
+    pub fn sphere(&self) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_sphere(self)
+    }
+
+    pub fn torus(&self) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_torus(self)
+    }
+
+    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_b_spline(self)
+    }
+
+    pub fn axe_of_revolution(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_axe_of_revolution(self)
+    }
+
+    pub fn direction(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_direction(self)
+    }
+
+    pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_basis_curve(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_get_type_descriptor()
+    }
+
+    /// Upcast to Adaptor3d_Surface
+    pub fn as_adaptor3d_surface(&self) -> &crate::adaptor3d::Surface {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Adaptor3d_Surface(self)
+    }
+
+    /// Upcast to Adaptor3d_Surface (mutable)
+    pub fn as_adaptor3d_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::adaptor3d::Surface> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Adaptor3d_Surface_mut(self)
+    }
+
+    /// Upcast to GeomAdaptor_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_GeomAdaptor_Surface(self)
+    }
+
+    /// Upcast to GeomAdaptor_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_GeomAdaptor_Surface_mut(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: Value()
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Value(self, U, V)
+    }
+
+    /// Inherited from Adaptor3d_Surface: D0()
+    pub fn d0(&self, U: f64, V: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D0(self, U, V, P)
+    }
+
+    /// Inherited from Adaptor3d_Surface: D1()
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D1(self, U, V, P, D1U, D1V)
+    }
+
+    /// Inherited from Adaptor3d_Surface: D2()
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D2(
+            self, U, V, P, D1U, D1V, D2U, D2V, D2UV,
+        )
+    }
+
+    /// Inherited from Adaptor3d_Surface: D3()
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D3(
+            self, U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+        )
+    }
+
+    /// Inherited from Adaptor3d_Surface: DN()
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_DN(self, U, V, Nu, Nv)
+    }
+
+    /// Inherited from Adaptor3d_Surface: VDegree()
+    pub fn v_degree(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_VDegree(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: NbVPoles()
+    pub fn nb_v_poles(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_NbVPoles(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: NbUKnots()
+    pub fn nb_u_knots(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_NbUKnots(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: NbVKnots()
+    pub fn nb_v_knots(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_NbVKnots(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: BasisSurface()
+    pub fn basis_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_BasisSurface(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: OffsetValue()
+    pub fn offset_value(&self) -> f64 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_OffsetValue(self)
+    }
+
+    /// Inherited from GeomAdaptor_Surface: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Surface(self)
+    }
+}
+
+// ========================
+// From GeomAdaptor_SurfaceOfRevolution.hxx
+// ========================
+
+/// This class defines a complete surface of revolution.
+/// The surface is obtained by rotating a curve a complete revolution
+/// about an axis. The curve and the axis must be in the same plane.
+/// If the curve and the axis are not in the same plane it is always
+/// possible to be in the previous case after a cylindrical projection
+/// of the curve in a referenced plane.
+/// For a complete surface of revolution the parametric range is
+/// 0 <= U <= 2*PI.       --
+/// The parametric range for V is defined with the revolved curve.
+/// The origin of the U parametrization is given by the position
+/// of the revolved curve (reference). The direction of the revolution
+/// axis defines the positive sense of rotation (trigonometric sense)
+/// corresponding to the increasing of the parametric value U.
+/// The derivatives are always defined for the u direction.
+/// For the v direction the definition of the derivatives depends on
+/// the degree of continuity of the referenced curve.
+pub use crate::ffi::GeomAdaptor_SurfaceOfRevolution as SurfaceOfRevolution;
+
+impl SurfaceOfRevolution {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_ctor()
+    }
+
+    /// The Curve is loaded.
+    pub fn new_handleadaptor3dcurve(C: &crate::ffi::HandleAdaptor3dCurve) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_ctor_handleadaptor3dcurve(C)
+    }
+
+    /// The Curve and the Direction are loaded.
+    pub fn new_handleadaptor3dcurve_ax1(
+        C: &crate::ffi::HandleAdaptor3dCurve,
+        V: &crate::ffi::gp_Ax1,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_ctor_handleadaptor3dcurve_ax1(C, V)
+    }
+
+    /// Shallow copy of adaptor
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_shallow_copy(self)
+    }
+
+    pub fn axe_of_revolution(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_axe_of_revolution(self)
+    }
+
+    pub fn u_continuity(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_u_continuity(self)
+    }
+
+    /// Return CN.
+    pub fn v_continuity(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_v_continuity(self)
+    }
+
+    /// Returns the number of U intervals for  continuity
+    /// <S>. May be one if UContinuity(me) >= <S>
+    pub fn nb_u_intervals(&self, S: i32) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_nb_u_intervals(self, S)
+    }
+
+    /// Returns the number of V intervals for  continuity
+    /// <S>. May be one if VContinuity(me) >= <S>
+    pub fn nb_v_intervals(&self, S: i32) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_nb_v_intervals(self, S)
+    }
+
+    /// Returns    a  surface trimmed in the U direction
+    /// equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn u_trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_u_trim(self, First, Last, Tol)
+    }
+
+    /// Returns    a  surface trimmed in the V direction  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn v_trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_v_trim(self, First, Last, Tol)
+    }
+
+    /// Returns the type of the surface : Plane, Cylinder,
+    /// Cone,      Sphere,        Torus,    BezierSurface,
+    /// BSplineSurface,               SurfaceOfRevolution,
+    /// SurfaceOfExtrusion, OtherSurface
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_get_type(self)
+    }
+
+    pub fn plane(&self) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_plane(self)
+    }
+
+    pub fn cylinder(&self) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_cylinder(self)
+    }
+
+    /// Apex of the Cone = Cone.Position().Location()
+    /// ==> ReferenceRadius = 0.
+    pub fn cone(&self) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_cone(self)
+    }
+
+    pub fn sphere(&self) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_sphere(self)
+    }
+
+    pub fn torus(&self) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_torus(self)
+    }
+
+    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_b_spline(self)
+    }
+
+    pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_basis_curve(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_get_type_descriptor()
+    }
+
+    /// Upcast to Adaptor3d_Surface
+    pub fn as_adaptor3d_surface(&self) -> &crate::adaptor3d::Surface {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Adaptor3d_Surface(self)
+    }
+
+    /// Upcast to Adaptor3d_Surface (mutable)
+    pub fn as_adaptor3d_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::adaptor3d::Surface> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Adaptor3d_Surface_mut(self)
+    }
+
+    /// Upcast to GeomAdaptor_Surface
+    pub fn as_surface(&self) -> &Surface {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_GeomAdaptor_Surface(self)
+    }
+
+    /// Upcast to GeomAdaptor_Surface (mutable)
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_GeomAdaptor_Surface_mut(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: Value()
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Value(self, U, V)
+    }
+
+    /// Inherited from Adaptor3d_Surface: D0()
+    pub fn d0(&self, U: f64, V: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D0(self, U, V, P)
+    }
+
+    /// Inherited from Adaptor3d_Surface: D1()
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D1(self, U, V, P, D1U, D1V)
+    }
+
+    /// Inherited from Adaptor3d_Surface: D2()
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D2(
+            self, U, V, P, D1U, D1V, D2U, D2V, D2UV,
+        )
+    }
+
+    /// Inherited from Adaptor3d_Surface: D3()
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D3(
+            self, U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+        )
+    }
+
+    /// Inherited from Adaptor3d_Surface: DN()
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_DN(self, U, V, Nu, Nv)
+    }
+
+    /// Inherited from Adaptor3d_Surface: UDegree()
+    pub fn u_degree(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_UDegree(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: NbUPoles()
+    pub fn nb_u_poles(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_NbUPoles(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: NbUKnots()
+    pub fn nb_u_knots(&self) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_NbUKnots(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: Direction()
+    pub fn direction(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Direction(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: BasisSurface()
+    pub fn basis_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_BasisSurface(self)
+    }
+
+    /// Inherited from Adaptor3d_Surface: OffsetValue()
+    pub fn offset_value(&self) -> f64 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_OffsetValue(self)
+    }
+
+    /// Inherited from GeomAdaptor_Surface: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Surface(self)
     }
 }

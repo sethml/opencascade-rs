@@ -7,6 +7,97 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From TopLoc_Datum3D.hxx
+// ========================
+
+/// Describes a coordinate transformation, i.e. a change
+/// to an elementary 3D coordinate system, or position in 3D space.
+/// A Datum3D is always described relative to the default datum.
+/// The default datum is described relative to itself: its
+/// origin is (0,0,0), and its axes are (1,0,0) (0,1,0) (0,0,1).
+pub use crate::ffi::TopLoc_Datum3D as Datum3D;
+
+impl Datum3D {
+    /// Constructs a default Datum3D.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_Datum3D_ctor()
+    }
+
+    /// Constructs a Datum3D form a Trsf from gp. An error is
+    /// raised if the Trsf is not a rigid transformation.
+    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_Datum3D_ctor_trsf(T)
+    }
+
+    /// Return transformation form.
+    pub fn form(&self) -> i32 {
+        crate::ffi::TopLoc_Datum3D_form(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopLoc_Datum3D_get_type_descriptor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_Datum3D_to_owned(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleTopLocDatum3D> {
+        crate::ffi::TopLoc_Datum3D_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTopLocDatum3D;
+
+impl HandleTopLocDatum3D {
+    /// Dereference this Handle to access the underlying TopLoc_Datum3D
+    pub fn get(&self) -> &crate::ffi::TopLoc_Datum3D {
+        crate::ffi::HandleTopLocDatum3D_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopLoc_Datum3D
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopLoc_Datum3D> {
+        crate::ffi::HandleTopLocDatum3D_get_mut(self)
+    }
+}
+
+// ========================
+// From TopLoc_ItemLocation.hxx
+// ========================
+
+/// An ItemLocation is an elementary coordinate system
+/// in a Location.
+///
+/// The  ItemLocation     contains :
+///
+/// * The elementary Datum.
+///
+/// * The exponent of the elementary Datum.
+///
+/// * The transformation associated to the composition.
+pub use crate::ffi::TopLoc_ItemLocation as ItemLocation;
+
+impl ItemLocation {
+    /// Sets the elementary Datum to <D>
+    /// Sets the exponent to <P>
+    pub fn new_handletoplocdatum3d_int(
+        D: &crate::ffi::HandleTopLocDatum3D,
+        P: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_ItemLocation_ctor_handletoplocdatum3d_int(D, P)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_ItemLocation_to_owned(self)
+    }
+}
+
+// ========================
 // From TopLoc_Location.hxx
 // ========================
 
@@ -27,6 +118,14 @@ impl Location {
     /// by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
     pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
         crate::ffi::TopLoc_Location_ctor_trsf(T)
+    }
+
+    /// Constructs the local coordinate system object defined by the 3D datum D.
+    /// Exceptions
+    /// Standard_ConstructionError if the transformation
+    /// T does not represent a 3D coordinate system.
+    pub fn new_handletoplocdatum3d(D: &crate::ffi::HandleTopLocDatum3D) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_Location_ctor_handletoplocdatum3d(D)
     }
 
     /// Returns the inverse of <me>.
@@ -79,6 +178,53 @@ impl Location {
 }
 
 // ========================
+// From TopLoc_SListNodeOfItemLocation.hxx
+// ========================
+
+pub use crate::ffi::TopLoc_SListNodeOfItemLocation as SListNodeOfItemLocation;
+
+impl SListNodeOfItemLocation {
+    pub fn new_itemlocation_slistofitemlocation(
+        I: &crate::ffi::TopLoc_ItemLocation,
+        aTail: &crate::ffi::TopLoc_SListOfItemLocation,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_SListNodeOfItemLocation_ctor_itemlocation_slistofitemlocation(I, aTail)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_descriptor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_SListNodeOfItemLocation_to_owned(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTopLocSListNodeOfItemLocation> {
+        crate::ffi::TopLoc_SListNodeOfItemLocation_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTopLocSListNodeOfItemLocation;
+
+impl HandleTopLocSListNodeOfItemLocation {
+    /// Dereference this Handle to access the underlying TopLoc_SListNodeOfItemLocation
+    pub fn get(&self) -> &crate::ffi::TopLoc_SListNodeOfItemLocation {
+        crate::ffi::HandleTopLocSListNodeOfItemLocation_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopLoc_SListNodeOfItemLocation
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopLoc_SListNodeOfItemLocation> {
+        crate::ffi::HandleTopLocSListNodeOfItemLocation_get_mut(self)
+    }
+}
+
+// ========================
 // From TopLoc_SListOfItemLocation.hxx
 // ========================
 
@@ -125,9 +271,3 @@ impl SListOfItemLocation {
         crate::ffi::TopLoc_SListOfItemLocation_to_owned(self)
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::{TopLoc_Datum3D as Datum3D, TopLoc_ItemLocation as ItemLocation};

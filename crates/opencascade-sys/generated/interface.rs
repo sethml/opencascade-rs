@@ -6,6 +6,514 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// C++ enum: `Interface_ParamType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ParamType {
+    Parammisc = 0,
+    Paraminteger = 1,
+    Paramreal = 2,
+    Paramident = 3,
+    Paramvoid = 4,
+    Paramtext = 5,
+    Paramenum = 6,
+    Paramlogical = 7,
+    Paramsub = 8,
+    Paramhexa = 9,
+    Parambinary = 10,
+}
+
+impl From<ParamType> for i32 {
+    fn from(value: ParamType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ParamType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ParamType::Parammisc),
+            1 => Ok(ParamType::Paraminteger),
+            2 => Ok(ParamType::Paramreal),
+            3 => Ok(ParamType::Paramident),
+            4 => Ok(ParamType::Paramvoid),
+            5 => Ok(ParamType::Paramtext),
+            6 => Ok(ParamType::Paramenum),
+            7 => Ok(ParamType::Paramlogical),
+            8 => Ok(ParamType::Paramsub),
+            9 => Ok(ParamType::Paramhexa),
+            10 => Ok(ParamType::Parambinary),
+            _ => Err(value),
+        }
+    }
+}
+
+/// validity state of anentity's content (see InterfaceModel)
+/// C++ enum: `Interface_DataState`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum DataState {
+    Stateok = 0,
+    Loadwarning = 1,
+    Loadfail = 2,
+    Datawarning = 3,
+    Datafail = 4,
+    Stateunloaded = 5,
+    Stateunknown = 6,
+}
+
+impl From<DataState> for i32 {
+    fn from(value: DataState) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for DataState {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(DataState::Stateok),
+            1 => Ok(DataState::Loadwarning),
+            2 => Ok(DataState::Loadfail),
+            3 => Ok(DataState::Datawarning),
+            4 => Ok(DataState::Datafail),
+            5 => Ok(DataState::Stateunloaded),
+            6 => Ok(DataState::Stateunknown),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Classifies checks
+/// OK : check is empty  Warning : Warning, no Fail   Fail : Fail
+/// Others to query :
+/// Any : any status   Message : Warning/Fail  NoFail : Warning/OK
+/// C++ enum: `Interface_CheckStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum CheckStatus {
+    Checkok = 0,
+    Checkwarning = 1,
+    Checkfail = 2,
+    Checkany = 3,
+    Checkmessage = 4,
+    Checknofail = 5,
+}
+
+impl From<CheckStatus> for i32 {
+    fn from(value: CheckStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for CheckStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(CheckStatus::Checkok),
+            1 => Ok(CheckStatus::Checkwarning),
+            2 => Ok(CheckStatus::Checkfail),
+            3 => Ok(CheckStatus::Checkany),
+            4 => Ok(CheckStatus::Checkmessage),
+            5 => Ok(CheckStatus::Checknofail),
+            _ => Err(value),
+        }
+    }
+}
+
+// ========================
+// From Interface_BitMap.hxx
+// ========================
+
+/// A bit map simply allows to associate a boolean flag to each
+/// item of a list, such as a list of entities, etc... numbered
+/// between 1 and a positive count nbitems
+///
+/// The BitMap class allows to associate several binary flags,
+/// each of one is identified by a number from 0 to a count
+/// which can remain at zero or be positive : nbflags
+///
+/// Flags lists over than numflag=0 are added after creation
+/// Each of one can be named, hence the user can identify it
+/// either by its flag number or by a name which gives a flag n0
+/// (flag n0 0 has no name)
+pub use crate::ffi::Interface_BitMap as BitMap;
+
+impl BitMap {
+    /// Creates a empty BitMap
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_BitMap_ctor()
+    }
+
+    /// Creates a BitMap for <nbitems> items
+    /// One flag is defined, n0 0
+    /// <resflags> prepares allocation for <resflags> more flags
+    /// Flags values start at false
+    pub fn new_int2(nbitems: i32, resflags: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_BitMap_ctor_int2(nbitems, resflags)
+    }
+
+    /// Creates a BitMap from another one
+    /// if <copied> is True, copies data
+    /// else, data are not copied, only the header object is
+    pub fn new_bitmap_bool(
+        other: &crate::ffi::Interface_BitMap,
+        copied: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_BitMap_ctor_bitmap_bool(other, copied)
+    }
+
+    /// Creates a BitMap for <nbitems> items
+    /// One flag is defined, n0 0
+    /// <resflags> prepares allocation for <resflags> more flags
+    /// Flags values start at false
+    pub fn new_int(nbitems: i32) -> cxx::UniquePtr<Self> {
+        Self::new_int2(nbitems, 0)
+    }
+
+    /// Creates a BitMap from another one
+    /// if <copied> is True, copies data
+    /// else, data are not copied, only the header object is
+    pub fn new_bitmap(other: &crate::ffi::Interface_BitMap) -> cxx::UniquePtr<Self> {
+        Self::new_bitmap_bool(other, false)
+    }
+
+    /// Adds a flag, a name can be attached to it
+    /// Returns its flag number
+    /// Makes required reservation
+    pub fn add_flag(self: std::pin::Pin<&mut Self>, name: &str) -> i32 {
+        crate::ffi::Interface_BitMap_add_flag(self, name)
+    }
+
+    /// Sets a name for a flag, given its number
+    /// name can be empty (to erase the name of a flag)
+    /// Returns True if done, false if : num is out of range, or
+    /// name non-empty already set to another flag
+    pub fn set_flag_name(self: std::pin::Pin<&mut Self>, num: i32, name: &str) -> bool {
+        crate::ffi::Interface_BitMap_set_flag_name(self, num, name)
+    }
+
+    /// Returns the name recorded for a flag, or an empty string
+    pub fn flag_name(&self, num: i32) -> String {
+        crate::ffi::Interface_BitMap_flag_name(self, num)
+    }
+
+    /// Returns the number or a flag given its name, or zero
+    pub fn flag_number(&self, name: &str) -> i32 {
+        crate::ffi::Interface_BitMap_flag_number(self, name)
+    }
+}
+
+// ========================
+// From Interface_Check.hxx
+// ========================
+
+/// Defines a Check, as a list of Fail or Warning Messages under
+/// a literal form, which can be empty. A Check can also bring an
+/// Entity, which is the Entity to which the messages apply
+/// (this Entity may be any Transient Object).
+///
+/// Messages can be stored in two forms : the definitive form
+/// (the only one by default), and another form, the original
+/// form, which can be different if it contains values to be
+/// inserted (integers, reals, strings)
+/// The original form can be more suitable for some operations
+/// such as counting messages
+pub use crate::ffi::Interface_Check as Check;
+
+impl Check {
+    /// Allows definition of a Sequence. Used also for Global Check
+    /// of an InterfaceModel (which stores global messages for file)
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_Check_ctor()
+    }
+
+    /// Records a new Fail message given as "error text" directly
+    /// If <orig> is given, a distinct original form is recorded
+    /// else (D), the original form equates <amess>
+    pub fn add_fail_charptr2(self: std::pin::Pin<&mut Self>, amess: &str, orig: &str) {
+        crate::ffi::Interface_Check_add_fail(self, amess, orig)
+    }
+
+    /// Same as above, but returns a CString (to be printed ...)
+    /// Final form by default, Original form if <final> is False
+    pub fn c_fail(&self, num: i32, final_: bool) -> String {
+        crate::ffi::Interface_Check_c_fail(self, num, final_)
+    }
+
+    /// Returns the list of Fails, for a frontal-engine logic
+    /// Final forms by default, Original forms if <final> is False
+    /// Can be empty
+    pub fn fails(
+        &self,
+        final_: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::Interface_Check_fails(self, final_)
+    }
+
+    /// Records a Warning message given as "warning message" directly
+    /// If <orig> is given, a distinct original form is recorded
+    /// else (D), the original form equates <amess>
+    pub fn add_warning_charptr2(self: std::pin::Pin<&mut Self>, amess: &str, orig: &str) {
+        crate::ffi::Interface_Check_add_warning(self, amess, orig)
+    }
+
+    /// Same as above, but returns a CString (to be printed ...)
+    /// Final form by default, Original form if <final> is False
+    pub fn c_warning(&self, num: i32, final_: bool) -> String {
+        crate::ffi::Interface_Check_c_warning(self, num, final_)
+    }
+
+    /// Returns the list of Warnings, for a frontal-engine logic
+    /// Final forms by default, Original forms if <final> is False
+    /// Can be empty
+    pub fn warnings(
+        &self,
+        final_: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::Interface_Check_warnings(self, final_)
+    }
+
+    /// Same as above, but returns a CString (to be printed ...)
+    /// Final form by default, Original form if <final> is False
+    pub fn c_info_msg(&self, num: i32, final_: bool) -> String {
+        crate::ffi::Interface_Check_c_info_msg(self, num, final_)
+    }
+
+    /// Returns the list of Info Msg, for a frontal-engine logic
+    /// Final forms by default, Original forms if <final> is False
+    /// Can be empty
+    pub fn info_msgs(
+        &self,
+        final_: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::Interface_Check_info_msgs(self, final_)
+    }
+
+    /// Returns the Check Status : OK, Warning or Fail
+    pub fn status(&self) -> i32 {
+        crate::ffi::Interface_Check_status(self)
+    }
+
+    /// Tells if Check Status complies with a given one
+    /// (i.e. also status for query)
+    pub fn complies_checkstatus(&self, status: i32) -> bool {
+        crate::ffi::Interface_Check_complies_checkstatus(self, status)
+    }
+
+    /// Tells if a message is brought by a Check, as follows :
+    /// <incl> = 0 : <mess> exactly matches one of the messages
+    /// <incl> < 0 : <mess> is contained by one of the messages
+    /// <incl> > 0 : <mess> contains one of the messages
+    /// For <status> : for CheckWarning and CheckFail, considers only
+    /// resp. Warning or Check messages. for CheckAny, considers all
+    /// other values are ignored (answer will be false)
+    pub fn complies_handletcollectionhasciistring_int_checkstatus(
+        &self,
+        mess: &crate::ffi::HandleTCollectionHAsciiString,
+        incl: i32,
+        status: i32,
+    ) -> bool {
+        crate::ffi::Interface_Check_complies_handletcollectionhasciistring_int_checkstatus(
+            self, mess, incl, status,
+        )
+    }
+
+    /// Removes the messages which comply with <mess>, as follows :
+    /// <incl> = 0 : <mess> exactly matches one of the messages
+    /// <incl> < 0 : <mess> is contained by one of the messages
+    /// <incl> > 0 : <mess> contains one of the messages
+    /// For <status> : for CheckWarning and CheckFail, considers only
+    /// resp. Warning or Check messages. for CheckAny, considers all
+    /// other values are ignored (nothing is done)
+    /// Returns True if at least one message has been removed, False else
+    pub fn remove(
+        self: std::pin::Pin<&mut Self>,
+        mess: &crate::ffi::HandleTCollectionHAsciiString,
+        incl: i32,
+        status: i32,
+    ) -> bool {
+        crate::ffi::Interface_Check_remove(self, mess, incl, status)
+    }
+
+    /// Mends messages, according <pref> and <num>
+    /// According to <num>, works on the whole list of Fails if = 0(D)
+    /// or only one Fail message, given its rank
+    /// If <pref> is empty, converts Fail(s) to Warning(s)
+    /// Else, does the conversion but prefixes the new Warning(s) but
+    /// <pref> followed by a semi-column
+    /// Some reserved values of <pref> are :
+    /// "FM" : standard prefix "Mended" (can be translated)
+    /// "CF" : clears Fail(s)
+    /// "CW" : clears Warning(s) : here, <num> refers to Warning list
+    /// "CA" : clears all messages : here, <num> is ignored
+    pub fn mend(self: std::pin::Pin<&mut Self>, pref: &str, num: i32) -> bool {
+        crate::ffi::Interface_Check_mend(self, pref, num)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Interface_Check_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceCheck> {
+        crate::ffi::Interface_Check_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleInterfaceCheck;
+
+impl HandleInterfaceCheck {
+    /// Dereference this Handle to access the underlying Interface_Check
+    pub fn get(&self) -> &crate::ffi::Interface_Check {
+        crate::ffi::HandleInterfaceCheck_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Interface_Check
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Interface_Check> {
+        crate::ffi::HandleInterfaceCheck_get_mut(self)
+    }
+}
+
+// ========================
+// From Interface_CheckIterator.hxx
+// ========================
+
+/// Result of a Check operation (especially from InterfaceModel)
+pub use crate::ffi::Interface_CheckIterator as CheckIterator;
+
+impl CheckIterator {
+    /// Creates an empty CheckIterator
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_CheckIterator_ctor()
+    }
+
+    /// Creates a CheckIterator with a name (displayed by Print as a
+    /// title)
+    pub fn new_charptr(name: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_CheckIterator_ctor_charptr(name)
+    }
+
+    /// Sets / Changes the name
+    pub fn set_name(self: std::pin::Pin<&mut Self>, name: &str) {
+        crate::ffi::Interface_CheckIterator_set_name(self, name)
+    }
+
+    /// Returns the recorded name (can be empty)
+    pub fn name(&self) -> String {
+        crate::ffi::Interface_CheckIterator_name(self)
+    }
+
+    /// Returns the stored model (can be a null handle)
+    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::Interface_CheckIterator_model(self)
+    }
+
+    /// Returns worst status among : OK, Warning, Fail
+    pub fn status(&self) -> i32 {
+        crate::ffi::Interface_CheckIterator_status(self)
+    }
+
+    /// Tells if this check list complies with a given status :
+    /// OK (i.e. empty),  Warning (at least one Warning, but no Fail),
+    /// Fail (at least one), Message (not OK), NoFail, Any
+    pub fn complies(&self, status: i32) -> bool {
+        crate::ffi::Interface_CheckIterator_complies(self, status)
+    }
+
+    /// Returns a CheckIterator which contains the checks which comply
+    /// with a given status
+    /// Each check is added completely (no split Warning/Fail)
+    pub fn extract_checkstatus(
+        &self,
+        status: i32,
+    ) -> cxx::UniquePtr<crate::ffi::Interface_CheckIterator> {
+        crate::ffi::Interface_CheckIterator_extract_checkstatus(self, status)
+    }
+
+    /// Returns a CheckIterator which contains the check which comply
+    /// with a message, plus some conditions as follows :
+    /// <incl> = 0 : <mess> exactly matches one of the messages
+    /// <incl> < 0 : <mess> is contained by one of the messages
+    /// <incl> > 0 : <mess> contains one of the messages
+    /// For <status> : for CheckWarning and CheckFail, considers only
+    /// resp. Warning or Check messages. for CheckAny, considers all
+    /// other values are ignored (answer will be false)
+    /// Each Check which complies is entirely taken
+    pub fn extract_charptr_int_checkstatus(
+        &self,
+        mess: &str,
+        incl: i32,
+        status: i32,
+    ) -> cxx::UniquePtr<crate::ffi::Interface_CheckIterator> {
+        crate::ffi::Interface_CheckIterator_extract_charptr_int_checkstatus(
+            self, mess, incl, status,
+        )
+    }
+
+    /// Removes the messages of all Checks, under these conditions :
+    /// <incl> = 0 : <mess> exactly matches one of the messages
+    /// <incl> < 0 : <mess> is contained by one of the messages
+    /// <incl> > 0 : <mess> contains one of the messages
+    /// For <status> : for CheckWarning and CheckFail, considers only
+    /// resp. Warning or Check messages. for CheckAny, considers all
+    /// other values are ignored (nothing is done)
+    /// Returns True if at least one message has been removed, False else
+    pub fn remove(self: std::pin::Pin<&mut Self>, mess: &str, incl: i32, status: i32) -> bool {
+        crate::ffi::Interface_CheckIterator_remove(self, mess, incl, status)
+    }
+
+    /// Returns the list of entities concerned by a Check
+    /// Only fails if <failsonly> is True, else all non-empty checks
+    /// If <global> is true, adds the model for a global check
+    /// Else, global check is ignored
+    pub fn checkeds(
+        &self,
+        failsonly: bool,
+        global: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        crate::ffi::Interface_CheckIterator_checkeds(self, failsonly, global)
+    }
+}
+
+// ========================
+// From Interface_EntityList.hxx
+// ========================
+
+/// This class defines a list of Entities (Transient Objects),
+/// it can be used as a field of other Transient classes, with
+/// these features :
+/// - oriented to define a little list, that is, slower than an
+/// Array or a Map of Entities for a big count (about 100 and
+/// over), but faster than a Sequence
+/// - allows to work as a Sequence, limited to Clear, Append,
+/// Remove, Access to an Item identified by its rank in the list
+/// - space saving, compared to a Sequence, especially for little
+/// amounts; better than an Array for a very little amount (less
+/// than 10) but less good for a greater amount
+///
+/// Works in conjunction with EntityCluster
+/// An EntityList gives access to a list of Entity Clusters, which
+/// are chained (in one sense : Single List)
+/// Remark : a new Item may not be Null, because this is the
+/// criterium used for "End of List"
+pub use crate::ffi::Interface_EntityList as EntityList;
+
+impl EntityList {
+    /// Creates a List as being empty
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_EntityList_ctor()
+    }
+}
+
 // ========================
 // From Interface_GeneralLib.hxx
 // ========================
@@ -21,10 +529,388 @@ impl GeneralLib {
 }
 
 // ========================
+// From Interface_Graph.hxx
+// ========================
+
+/// Gives basic data structure for operating and storing
+/// graph results (usage is normally internal)
+/// Entities are Mapped according their Number in the Model
+///
+/// Each Entity from the Model can be known as "Present" or
+/// not; if it is, it is Mapped with a Status : an Integer
+/// which can be used according to needs of each algorithm
+/// In addition, the Graph brings a BitMap which can be used
+/// by any caller
+///
+/// Also, it is bound with two lists : a list of Shared
+/// Entities (in fact, their Numbers in the Model) which is
+/// filled by a ShareTool, and a list of Sharing Entities,
+/// computed by deduction from the Shared Lists
+///
+/// Moreover, it is possible to redefine the list of Entities
+/// Shared by an Entity (instead of standard answer by general
+/// service Shareds) : this new list can be empty; it can
+/// be changed or reset (i.e. to come back to standard answer)
+pub use crate::ffi::Interface_Graph as Graph;
+
+impl Graph {
+    /// Creates an empty graph, ready to receive Entities from amodel
+    /// Note that this way of Creation allows <me> to verify that
+    /// Entities to work with are contained in <amodel>
+    /// Basic Shared and Sharing lists are obtained from a General
+    /// Services Library, given directly as an argument
+    pub fn new_handleinterfaceinterfacemodel_generallib_bool(
+        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        lib: &crate::ffi::Interface_GeneralLib,
+        theModeStats: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_Graph_ctor_handleinterfaceinterfacemodel_generallib_bool(
+            amodel,
+            lib,
+            theModeStats,
+        )
+    }
+
+    /// Same a above but works with the Protocol recorded in the Model
+    pub fn new_handleinterfaceinterfacemodel_bool(
+        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        theModeStats: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_Graph_ctor_handleinterfaceinterfacemodel_bool(amodel, theModeStats)
+    }
+
+    /// Creates a Graph from another one, getting all its data
+    /// Remark that status are copied from <agraph>, but the other
+    /// lists (sharing/shared) are copied only if <copied> = True
+    pub fn new_graph_bool(
+        agraph: &crate::ffi::Interface_Graph,
+        copied: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_Graph_ctor_graph_bool(agraph, copied)
+    }
+
+    /// Creates an empty graph, ready to receive Entities from amodel
+    /// Note that this way of Creation allows <me> to verify that
+    /// Entities to work with are contained in <amodel>
+    /// Basic Shared and Sharing lists are obtained from a General
+    /// Services Library, given directly as an argument
+    pub fn new_handleinterfaceinterfacemodel_generallib(
+        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        lib: &crate::ffi::Interface_GeneralLib,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_handleinterfaceinterfacemodel_generallib_bool(amodel, lib, true)
+    }
+
+    /// Same a above but works with the Protocol recorded in the Model
+    pub fn new_handleinterfaceinterfacemodel(
+        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_handleinterfaceinterfacemodel_bool(amodel, true)
+    }
+
+    /// Creates a Graph from another one, getting all its data
+    /// Remark that status are copied from <agraph>, but the other
+    /// lists (sharing/shared) are copied only if <copied> = True
+    pub fn new_graph(agraph: &crate::ffi::Interface_Graph) -> cxx::UniquePtr<Self> {
+        Self::new_graph_bool(agraph, false)
+    }
+}
+
+// ========================
+// From Interface_HArray1OfHAsciiString.hxx
+// ========================
+
+pub use crate::ffi::Interface_HArray1OfHAsciiString as HArray1OfHAsciiString;
+
+impl HArray1OfHAsciiString {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_HArray1OfHAsciiString_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_HArray1OfHAsciiString_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_array1ofhasciistring(
+        theOther: &crate::ffi::Interface_Array1OfHAsciiString,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_HArray1OfHAsciiString_ctor_array1ofhasciistring(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Interface_HArray1OfHAsciiString_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
+        crate::ffi::Interface_HArray1OfHAsciiString_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleInterfaceHArray1OfHAsciiString;
+
+impl HandleInterfaceHArray1OfHAsciiString {
+    /// Dereference this Handle to access the underlying Interface_HArray1OfHAsciiString
+    pub fn get(&self) -> &crate::ffi::Interface_HArray1OfHAsciiString {
+        crate::ffi::HandleInterfaceHArray1OfHAsciiString_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Interface_HArray1OfHAsciiString
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Interface_HArray1OfHAsciiString> {
+        crate::ffi::HandleInterfaceHArray1OfHAsciiString_get_mut(self)
+    }
+}
+
+// ========================
+// From Interface_HSequenceOfCheck.hxx
+// ========================
+
+pub use crate::ffi::Interface_HSequenceOfCheck as HSequenceOfCheck;
+
+impl HSequenceOfCheck {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_HSequenceOfCheck_ctor()
+    }
+
+    pub fn new_sequenceofcheck(
+        theOther: &crate::ffi::Interface_SequenceOfCheck,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_HSequenceOfCheck_ctor_sequenceofcheck(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Interface_HSequenceOfCheck_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceHSequenceOfCheck> {
+        crate::ffi::Interface_HSequenceOfCheck_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleInterfaceHSequenceOfCheck;
+
+impl HandleInterfaceHSequenceOfCheck {
+    /// Dereference this Handle to access the underlying Interface_HSequenceOfCheck
+    pub fn get(&self) -> &crate::ffi::Interface_HSequenceOfCheck {
+        crate::ffi::HandleInterfaceHSequenceOfCheck_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Interface_HSequenceOfCheck
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Interface_HSequenceOfCheck> {
+        crate::ffi::HandleInterfaceHSequenceOfCheck_get_mut(self)
+    }
+}
+
+// ========================
+// From Interface_IntList.hxx
+// ========================
+
+/// This class detains the data which describe a Graph. A Graph
+/// has two lists, one for shared refs, one for sharing refs
+/// (the reverses). Each list comprises, for each Entity of the
+/// Model of the Graph, a list of Entities (shared or sharing).
+/// In fact, entities are identified by their numbers in the Model
+/// or Graph : this gives better performances.
+///
+/// A simple way to implement this is to instantiate a HArray1
+/// with a HSequenceOfInteger : each Entity Number designates a
+/// value, which is a Sequence (if it is null, it is considered as
+/// empty : this is a little optimisation).
+///
+/// This class gives a more efficient way to implement this.
+/// It has two lists (two arrays of integers), one to describe
+/// list (empty, one value given immediately, or negated index in
+/// the second list), one to store refs (pointed from the first
+/// list). This is much more efficient than a list of sequences,
+/// in terms of speed (especially for read) and of memory
+///
+/// An IntList can also be set to access data for a given entity
+/// number, it then acts as a single sequence
+///
+/// Remark that if an IntList is created from another one, it can
+/// be read, but if it is created without copying, it may not be
+/// edited
+pub use crate::ffi::Interface_IntList as IntList;
+
+impl IntList {
+    /// Creates empty IntList.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_IntList_ctor()
+    }
+
+    /// Creates an IntList for <nbe> entities
+    pub fn new_int(nbe: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_IntList_ctor_int(nbe)
+    }
+
+    /// Creates an IntList from another one.
+    /// if <copied> is True, copies data
+    /// else, data are not copied, only the header object is
+    pub fn new_intlist_bool(
+        other: &crate::ffi::Interface_IntList,
+        copied: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Interface_IntList_ctor_intlist_bool(other, copied)
+    }
+
+    /// Returns an IntList, identical to <me> but set to a specified
+    /// entity Number
+    /// By default, not copied (in order to be read)
+    /// Specified <copied> to produce another list and edit it
+    pub fn list(&self, number: i32, copied: bool) -> cxx::UniquePtr<crate::ffi::Interface_IntList> {
+        crate::ffi::Interface_IntList_list(self, number, copied)
+    }
+}
+
+// ========================
+// From Interface_InterfaceModel.hxx
+// ========================
+
+/// Defines an (Indexed) Set of data corresponding to a complete
+/// Transfer by a File Interface, i.e. File Header and Transient
+/// Entities (Objects) contained in a File. Contained Entities are
+/// identified in the Model by unique and consecutive Numbers.
+///
+/// In addition, a Model can attach to each entity, a specific
+/// Label according to the norm (e.g. Name for VDA, #ident for
+/// Step ...), intended to be output on a string or a stream
+/// (remark : labels are not obliged to be unique)
+///
+/// InterfaceModel itself is not Transient, it is intended to
+/// work on a set of Transient Data. The services offered are
+/// basic Listing and Identification operations on Transient
+/// Entities, storage of Error Reports, Copying.
+///
+/// Moreovere, it is possible to define and use templates. These
+/// are empty Models, from which copies can be obtained in order
+/// to be filled with effective data. This allows to record
+/// standard definitions for headers, avoiding to recreate them
+/// for each sendings, and assuring customisation of produced
+/// files for a given site.
+/// A template is attached to a name. It is possible to define a
+/// template from another one (get it, edit it then record it
+/// under another name).
+///
+/// See also Graph, ShareTool, CheckTool for more
+pub use crate::ffi::Interface_InterfaceModel as InterfaceModel;
+
+impl InterfaceModel {
+    /// Returns the State of an entity, given its number
+    pub fn entity_state(&self, num: i32) -> i32 {
+        crate::ffi::Interface_InterfaceModel_entity_state(self, num)
+    }
+
+    /// Returns a New Empty Model, same type as <me> (whatever its
+    /// Type); called to Copy parts a Model into other ones, then
+    /// followed by a call to GetFromAnother (Header) then filling
+    /// with specified Entities, themselves copied
+    pub fn new_empty_model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::Interface_InterfaceModel_new_empty_model(self)
+    }
+
+    /// Searches a label which matches with one entity.
+    /// Begins from <lastnum>+1 (default:1) and scans the entities
+    /// until <NbEntities>. For the first which matches <label>,
+    /// this method returns its Number. Returns 0 if nothing found
+    /// Can be called recursively (labels are not specified as unique)
+    /// <exact> : if True (default), exact match is required
+    /// else, checks the END of entity label
+    ///
+    /// This method is virtual, hence it can be redefined for a more
+    /// efficient search (if exact is true).
+    pub fn next_number_for_label(&self, label: &str, lastnum: i32, exact: bool) -> i32 {
+        crate::ffi::Interface_InterfaceModel_next_number_for_label(self, label, lastnum, exact)
+    }
+
+    /// Returns true if a template is attached to a given name
+    pub fn has_template(name: &str) -> bool {
+        crate::ffi::Interface_InterfaceModel_has_template(name)
+    }
+
+    /// Returns the template model attached to a name, or a Null Handle
+    pub fn template(name: &str) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::Interface_InterfaceModel_template(name)
+    }
+
+    /// Records a new template model with a name. If the name was
+    /// already recorded, the corresponding template is replaced by
+    /// the new one. Then, WARNING : test HasTemplate to avoid
+    /// surprises
+    pub fn set_template(name: &str, model: &crate::ffi::HandleInterfaceInterfaceModel) -> bool {
+        crate::ffi::Interface_InterfaceModel_set_template(name, model)
+    }
+
+    /// Returns the complete list of names attached to template models
+    pub fn list_templates() -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::Interface_InterfaceModel_list_templates()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Interface_InterfaceModel_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleInterfaceInterfaceModel;
+
+impl HandleInterfaceInterfaceModel {
+    /// Dereference this Handle to access the underlying Interface_InterfaceModel
+    pub fn get(&self) -> &crate::ffi::Interface_InterfaceModel {
+        crate::ffi::HandleInterfaceInterfaceModel_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Interface_InterfaceModel
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Interface_InterfaceModel> {
+        crate::ffi::HandleInterfaceInterfaceModel_get_mut(self)
+    }
+}
+
+// ========================
+// From Interface_SignType.hxx
+// ========================
+
+/// Provides the basic service to get a type name, according
+/// to a norm
+/// It can be used for other classes (general signatures ...)
+pub use crate::ffi::Interface_SignType as SignType;
+
+impl SignType {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Interface_SignType_get_type_descriptor()
+    }
+
+    /// Upcast to MoniTool_SignText
+    pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
+        crate::ffi::Interface_SignType_as_MoniTool_SignText(self)
+    }
+
+    /// Upcast to MoniTool_SignText (mutable)
+    pub fn as_moni_tool_sign_text_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::moni_tool::SignText> {
+        crate::ffi::Interface_SignType_as_MoniTool_SignText_mut(self)
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    Interface_GeneralModule as GeneralModule, Interface_InterfaceModel as InterfaceModel,
-    Interface_Protocol as Protocol,
+    Interface_Array1OfHAsciiString as Array1OfHAsciiString, Interface_CopyControl as CopyControl,
+    Interface_CopyTool as CopyTool, Interface_EntityIterator as EntityIterator,
+    Interface_GTool as GTool, Interface_GeneralModule as GeneralModule,
+    Interface_GraphContent as GraphContent, Interface_HGraph as HGraph,
+    Interface_Protocol as Protocol, Interface_ReportEntity as ReportEntity,
+    Interface_SequenceOfCheck as SequenceOfCheck, Interface_TypedValue as TypedValue,
 };

@@ -6,72 +6,44 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// Qualifies an execution status :
-/// RetVoid  : normal execution which created nothing, or
-/// no data to process
-/// RetDone  : normal execution with a result
-/// RetError : error in command or input data, no execution
-/// RetFail  : execution was run and has failed
-/// RetStop  : indicates end or stop (such as Raise)
-/// C++ enum: `IFSelect_ReturnStatus`
+pub use crate::ffi::{restore_session, save_session};
+
+/// Controls access on Values by an Editor
+/// EditOptional  : normal access, in addition may be removed
+/// Editable      : normal access, must be present
+/// EditProtected : access must be validated
+/// EditComputed  : why write it ?  it will be recomputed
+/// EditRead      : no way to write it, only for read
+/// EditDynamic   : not a field, only to be displayed
+/// C++ enum: `IFSelect_EditValue`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
-pub enum ReturnStatus {
-    Retvoid = 0,
-    Retdone = 1,
-    Reterror = 2,
-    Retfail = 3,
-    Retstop = 4,
+pub enum EditValue {
+    Optional = 0,
+    Editable = 1,
+    Editprotected = 2,
+    Editcomputed = 3,
+    Editread = 4,
+    Editdynamic = 5,
 }
 
-impl From<ReturnStatus> for i32 {
-    fn from(value: ReturnStatus) -> Self {
+impl From<EditValue> for i32 {
+    fn from(value: EditValue) -> Self {
         value as i32
     }
 }
 
-impl TryFrom<i32> for ReturnStatus {
+impl TryFrom<i32> for EditValue {
     type Error = i32;
 
     fn try_from(value: i32) -> Result<Self, i32> {
         match value {
-            0 => Ok(ReturnStatus::Retvoid),
-            1 => Ok(ReturnStatus::Retdone),
-            2 => Ok(ReturnStatus::Reterror),
-            3 => Ok(ReturnStatus::Retfail),
-            4 => Ok(ReturnStatus::Retstop),
-            _ => Err(value),
-        }
-    }
-}
-
-/// Indicates whether there will
-/// be information on warnings as well as on failures. The
-/// terms of this enumeration have the following semantics:
-/// - IFSelect_FailOnly gives information on failures only
-/// - IFSelect_FailAndWarn gives information on both
-/// failures and warnings. used to pilot PrintCheckList
-/// C++ enum: `IFSelect_PrintFail`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum PrintFail {
-    Failonly = 0,
-    Failandwarn = 1,
-}
-
-impl From<PrintFail> for i32 {
-    fn from(value: PrintFail) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for PrintFail {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(PrintFail::Failonly),
-            1 => Ok(PrintFail::Failandwarn),
+            0 => Ok(EditValue::Optional),
+            1 => Ok(EditValue::Editable),
+            2 => Ok(EditValue::Editprotected),
+            3 => Ok(EditValue::Editcomputed),
+            4 => Ok(EditValue::Editread),
+            5 => Ok(EditValue::Editdynamic),
             _ => Err(value),
         }
     }
@@ -143,3 +115,7117 @@ impl TryFrom<i32> for PrintCount {
         }
     }
 }
+
+/// Indicates whether there will
+/// be information on warnings as well as on failures. The
+/// terms of this enumeration have the following semantics:
+/// - IFSelect_FailOnly gives information on failures only
+/// - IFSelect_FailAndWarn gives information on both
+/// failures and warnings. used to pilot PrintCheckList
+/// C++ enum: `IFSelect_PrintFail`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum PrintFail {
+    Failonly = 0,
+    Failandwarn = 1,
+}
+
+impl From<PrintFail> for i32 {
+    fn from(value: PrintFail) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for PrintFail {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(PrintFail::Failonly),
+            1 => Ok(PrintFail::Failandwarn),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `IFSelect_RemainMode`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum RemainMode {
+    Remainforget = 0,
+    Remaincompute = 1,
+    Remaindisplay = 2,
+    Remainundo = 3,
+}
+
+impl From<RemainMode> for i32 {
+    fn from(value: RemainMode) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for RemainMode {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(RemainMode::Remainforget),
+            1 => Ok(RemainMode::Remaincompute),
+            2 => Ok(RemainMode::Remaindisplay),
+            3 => Ok(RemainMode::Remainundo),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Qualifies an execution status :
+/// RetVoid  : normal execution which created nothing, or
+/// no data to process
+/// RetDone  : normal execution with a result
+/// RetError : error in command or input data, no execution
+/// RetFail  : execution was run and has failed
+/// RetStop  : indicates end or stop (such as Raise)
+/// C++ enum: `IFSelect_ReturnStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ReturnStatus {
+    Retvoid = 0,
+    Retdone = 1,
+    Reterror = 2,
+    Retfail = 3,
+    Retstop = 4,
+}
+
+impl From<ReturnStatus> for i32 {
+    fn from(value: ReturnStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ReturnStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ReturnStatus::Retvoid),
+            1 => Ok(ReturnStatus::Retdone),
+            2 => Ok(ReturnStatus::Reterror),
+            3 => Ok(ReturnStatus::Retfail),
+            4 => Ok(ReturnStatus::Retstop),
+            _ => Err(value),
+        }
+    }
+}
+
+// ========================
+// From IFSelect_Act.hxx
+// ========================
+
+/// Act gives a simple way to define and add functions to be ran
+/// from a SessionPilot, as follows :
+///
+/// Define a function as
+/// static IFSelect_RetStatus myfunc
+/// (const Standard_CString name,
+/// const Handle(IFSelect_SessionPilot)& pilot)
+/// { ... }
+/// When ran, it receives the exact name (string) of the called
+/// function, and the SessionPilot which brings other infos
+///
+/// Add it by
+/// IFSelect_Act::AddFunc (name,help,myfunc);
+/// for a normal function, or
+/// IFSelect_Act::AddFSet (name,help,myfunc);
+/// for a function which is intended to create a control item
+/// name and help are given as CString
+///
+/// Then, it is available for run
+pub use crate::ffi::IFSelect_Act as Act;
+
+impl Act {
+    /// Short Help for commands : returns the help given to create
+    pub fn help(&self, number: i32) -> String {
+        crate::ffi::IFSelect_Act_help(self, number)
+    }
+
+    /// Changes the default group name for the following Acts
+    /// group empty means to come back to default from Activator
+    /// Also a file name can be precised (to query by getsource)
+    pub fn set_group(group: &str, file: &str) {
+        crate::ffi::IFSelect_Act_set_group(group, file)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_Act_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Activator
+    pub fn as_activator(&self) -> &Activator {
+        crate::ffi::IFSelect_Act_as_IFSelect_Activator(self)
+    }
+
+    /// Upcast to IFSelect_Activator (mutable)
+    pub fn as_activator_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Activator> {
+        crate::ffi::IFSelect_Act_as_IFSelect_Activator_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_Activator.hxx
+// ========================
+
+/// Defines the general frame for working with a SessionPilot.
+/// Each Activator treats a set of Commands. Commands are given as
+/// alphanumeric strings. They can be of two main forms :
+/// - classic, to list, evaluate, enrich the session (by itself) :
+/// no specific remark, its complete execution must be described
+/// - creation of a new item : instead of creatinf it plus adding
+/// it to the session (which is a classic way), it is possible
+/// to create it and make it recorded by the SessionPilot :
+/// then, the Pilot will add it to the session; this way allows
+/// the Pilot to manage itself named items
+///
+/// In order to make easier the use of Activator, this class
+/// provides a simple way to Select an Actor for a Command :
+/// each sub-class of SectionActor defines the command titles it
+/// recognizes, plus attaches a Number, unique for this sub-class,
+/// to each distinct command title.
+///
+/// Each time an action is required, the corresponding Number
+/// can then be given to help the selection of the action to do.
+///
+/// The result of an Execution must indicate if it is worth to be
+/// recorded or not : see method Do
+pub use crate::ffi::IFSelect_Activator as Activator;
+
+impl Activator {
+    /// Allows a self-definition by an Activator of the Commands it
+    /// processes, call the class method Adding (mode 0)
+    pub fn add(&self, number: i32, command: &str) {
+        crate::ffi::IFSelect_Activator_add(self, number, command)
+    }
+
+    /// Same as Add but specifies that this command is candidate for
+    /// xset (creation of items, xset : named items; mode 1)
+    pub fn add_set(&self, number: i32, command: &str) {
+        crate::ffi::IFSelect_Activator_add_set(self, number, command)
+    }
+
+    /// Sends a short help message for a given command identified by
+    /// it number for this Activator (must take one line max)
+    pub fn help(&self, number: i32) -> String {
+        crate::ffi::IFSelect_Activator_help(self, number)
+    }
+
+    pub fn group(&self) -> String {
+        crate::ffi::IFSelect_Activator_group(self)
+    }
+
+    pub fn file(&self) -> String {
+        crate::ffi::IFSelect_Activator_file(self)
+    }
+
+    /// Group and SetGroup define a "Group of commands" which
+    /// correspond to an Activator. Default is "XSTEP"
+    /// Also a file may be attached
+    pub fn set_for_group(self: std::pin::Pin<&mut Self>, group: &str, file: &str) {
+        crate::ffi::IFSelect_Activator_set_for_group(self, group, file)
+    }
+
+    /// Records, in a Dictionary available for all the Activators,
+    /// the command title an Activator can process, attached with
+    /// its number, proper for this Activator
+    /// <mode> allows to distinguish various execution modes
+    /// 0: default mode; 1 : for xset
+    pub fn adding(
+        actor: &crate::ffi::HandleIFSelectActivator,
+        number: i32,
+        command: &str,
+        mode: i32,
+    ) {
+        crate::ffi::IFSelect_Activator_adding(actor, number, command, mode)
+    }
+
+    /// Removes a Command, if it is recorded (else, does nothing)
+    pub fn remove(command: &str) {
+        crate::ffi::IFSelect_Activator_remove(command)
+    }
+
+    /// Selects, for a Command given by its title, an actor with its
+    /// command number. Returns True if found, False else
+    pub fn select(
+        command: &str,
+        number: &mut i32,
+        actor: std::pin::Pin<&mut crate::ffi::HandleIFSelectActivator>,
+    ) -> bool {
+        crate::ffi::IFSelect_Activator_select(command, number, actor)
+    }
+
+    /// Returns mode recorded for a command. -1 if not found
+    pub fn mode(command: &str) -> i32 {
+        crate::ffi::IFSelect_Activator_mode(command)
+    }
+
+    /// Returns, for a root of command title, the list of possible
+    /// commands.
+    /// <mode> : -1 (D) for all commands if <commands> is empty
+    /// -1 + command : about a Group , >= 0 see Adding
+    /// By default, it returns the whole list of known commands.
+    pub fn commands(
+        mode: i32,
+        command: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+        crate::ffi::IFSelect_Activator_commands(mode, command)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_Activator_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIFSelectActivator;
+
+impl HandleIFSelectActivator {
+    /// Dereference this Handle to access the underlying IFSelect_Activator
+    pub fn get(&self) -> &crate::ffi::IFSelect_Activator {
+        crate::ffi::HandleIFSelectActivator_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_Activator
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_Activator> {
+        crate::ffi::HandleIFSelectActivator_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_AppliedModifiers.hxx
+// ========================
+
+/// This class allows to memorize and access to the modifiers
+/// which are to be applied to a file. To each modifier, is bound
+/// a list of integers (optional) : if this list is absent,
+/// the modifier applies to all the file. Else, it applies to the
+/// entities designated by these numbers in the produced file.
+///
+/// To record a modifier, and a possible list of entity numbers to be applied on:
+/// AddModif (amodifier);
+/// loop on  AddNum (anumber);
+///
+/// To query it,  Count gives the count of recorded modifiers, then for each one:
+/// Item (numodif, amodifier, entcount);
+/// IsForAll ()  -> can be called, if True, applies on the whole file
+///
+/// for (i = 1; i <= entcount; i ++)
+/// nument = ItemNum (i);  -> return an entity number
+pub use crate::ffi::IFSelect_AppliedModifiers as AppliedModifiers;
+
+impl AppliedModifiers {
+    /// Creates an AppliedModifiers, ready to record up to <nbmax>
+    /// modifiers, on a model of <nbent> entities
+    pub fn new_int2(nbmax: i32, nbent: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_AppliedModifiers_ctor_int2(nbmax, nbent)
+    }
+
+    /// Returns the list of entities to be applied on (see Item)
+    /// as a HSequence (IsForAll produces the complete list of all
+    /// the entity numbers of the file
+    pub fn item_list(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
+        crate::ffi::IFSelect_AppliedModifiers_item_list(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_AppliedModifiers_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectAppliedModifiers> {
+        crate::ffi::IFSelect_AppliedModifiers_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIFSelectAppliedModifiers;
+
+impl HandleIFSelectAppliedModifiers {
+    /// Dereference this Handle to access the underlying IFSelect_AppliedModifiers
+    pub fn get(&self) -> &crate::ffi::IFSelect_AppliedModifiers {
+        crate::ffi::HandleIFSelectAppliedModifiers_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_AppliedModifiers
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_AppliedModifiers> {
+        crate::ffi::HandleIFSelectAppliedModifiers_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_BasicDumper.hxx
+// ========================
+
+/// BasicDumper takes into account, for SessionFile, all the
+/// classes defined in the package IFSelect : Selections,
+/// Dispatches (there is no Modifier)
+pub use crate::ffi::IFSelect_BasicDumper as BasicDumper;
+
+impl BasicDumper {
+    /// Creates a BasicDumper and puts it into the Library of Dumper
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_BasicDumper_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_BasicDumper_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SessionDumper
+    pub fn as_session_dumper(&self) -> &SessionDumper {
+        crate::ffi::IFSelect_BasicDumper_as_IFSelect_SessionDumper(self)
+    }
+
+    /// Upcast to IFSelect_SessionDumper (mutable)
+    pub fn as_session_dumper_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SessionDumper> {
+        crate::ffi::IFSelect_BasicDumper_as_IFSelect_SessionDumper_mut(self)
+    }
+
+    /// Inherited from IFSelect_SessionDumper: Next()
+    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSessionDumper> {
+        crate::ffi::IFSelect_BasicDumper_inherited_Next(self)
+    }
+}
+
+// ========================
+// From IFSelect_CheckCounter.hxx
+// ========================
+
+/// A CheckCounter allows to see a CheckList (i.e. CheckIterator)
+/// not per entity, its messages, but per message, the entities
+/// attached (count and list). Because many messages can be
+/// repeated if they are due to systematic errors
+pub use crate::ffi::IFSelect_CheckCounter as CheckCounter;
+
+impl CheckCounter {
+    /// Creates a CheckCounter, empty ready to work
+    pub fn new_bool(withlist: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_CheckCounter_ctor_bool(withlist)
+    }
+
+    /// Creates a CheckCounter, empty ready to work
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool(false)
+    }
+
+    /// Returns the Signature;
+    pub fn signature(&self) -> cxx::UniquePtr<crate::ffi::HandleMoniToolSignText> {
+        crate::ffi::IFSelect_CheckCounter_signature(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_CheckCounter_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SignatureList
+    pub fn as_signature_list(&self) -> &SignatureList {
+        crate::ffi::IFSelect_CheckCounter_as_IFSelect_SignatureList(self)
+    }
+
+    /// Upcast to IFSelect_SignatureList (mutable)
+    pub fn as_signature_list_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SignatureList> {
+        crate::ffi::IFSelect_CheckCounter_as_IFSelect_SignatureList_mut(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: SetList()
+    pub fn set_list(self: std::pin::Pin<&mut Self>, withlist: bool) {
+        crate::ffi::IFSelect_CheckCounter_inherited_SetList(self, withlist)
+    }
+
+    /// Inherited from IFSelect_SignatureList: ModeSignOnly()
+    pub fn mode_sign_only(self: std::pin::Pin<&mut Self>) -> &mut bool {
+        crate::ffi::IFSelect_CheckCounter_inherited_ModeSignOnly(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: Clear()
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::IFSelect_CheckCounter_inherited_Clear(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: HasEntities()
+    pub fn has_entities(&self) -> bool {
+        crate::ffi::IFSelect_CheckCounter_inherited_HasEntities(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: NbNulls()
+    pub fn nb_nulls(&self) -> i32 {
+        crate::ffi::IFSelect_CheckCounter_inherited_NbNulls(self)
+    }
+}
+
+// ========================
+// From IFSelect_ContextModif.hxx
+// ========================
+
+/// This class gathers various information used by Model Modifiers
+/// apart from the target model itself, and the CopyTool which
+/// must be passed directly.
+///
+/// These information report to original data : model, entities,
+/// and the selection list if there is one : it allows to query
+/// about such or such starting entity, or result entity, or
+/// iterate on selection list ...
+/// Also data useful for file output are available (because some
+/// Modifiers concern models produced for file output).
+///
+/// Furthermore, in return, ContextModif can record Checks, either
+/// one for all, or one for each Entity. It supports trace too.
+pub use crate::ffi::IFSelect_ContextModif as ContextModif;
+
+impl ContextModif {
+    /// Prepares a ContextModif with these information :
+    /// - the graph established from original model (target passed
+    /// directly to Modifier)
+    /// - the CopyTool which detains the CopyControl, which maps
+    /// starting (in original) and result (in target) entities
+    /// - an optional file name (for file output)
+    ///
+    /// Such a ContextModif is considered to be applied on all
+    /// transferred entities (no filter active)
+    pub fn new_graph_copytool_charptr(
+        graph: &crate::ffi::Interface_Graph,
+        TC: &crate::ffi::Interface_CopyTool,
+        filename: &str,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ContextModif_ctor_graph_copytool_charptr(graph, TC, filename)
+    }
+
+    /// Prepares a ContextModif with these information :
+    /// - the graph established from original model (target passed
+    /// directly to Modifier)
+    /// - an optional file name (for file output)
+    /// Here, no CopyControl, hence all entities are considered equal
+    /// as starting and result
+    ///
+    /// Such a ContextModif is considered to be applied on all
+    /// transferred entities (no filter active)
+    pub fn new_graph_charptr(
+        graph: &crate::ffi::Interface_Graph,
+        filename: &str,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ContextModif_ctor_graph_charptr(graph, filename)
+    }
+
+    /// Returns the original model
+    pub fn original_model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::IFSelect_ContextModif_original_model(self)
+    }
+
+    /// Returns File Name (can be empty)
+    pub fn file_name(&self) -> String {
+        crate::ffi::IFSelect_ContextModif_file_name(self)
+    }
+
+    /// Traces the modification of the current entity (see above,
+    /// ValueOriginal and ValueResult) for default trace level >= 2.
+    /// To be called on each individual entity really modified
+    /// <mess> is an optional additional message
+    pub fn trace(self: std::pin::Pin<&mut Self>, mess: &str) {
+        crate::ffi::IFSelect_ContextModif_trace(self, mess)
+    }
+
+    /// Returns a Check given an Entity number (in the original Model)
+    /// by default a Global Check. Creates it the first time.
+    /// It can then be acknowledged on the spot, in condition that the
+    /// caller works by reference ("Interface_Check& check = ...")
+    pub fn c_check(
+        self: std::pin::Pin<&mut Self>,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceCheck> {
+        crate::ffi::IFSelect_ContextModif_c_check(self, num)
+    }
+
+    /// Returns the complete CheckList
+    pub fn check_list(&self) -> cxx::UniquePtr<crate::ffi::Interface_CheckIterator> {
+        crate::ffi::IFSelect_ContextModif_check_list(self)
+    }
+}
+
+// ========================
+// From IFSelect_ContextWrite.hxx
+// ========================
+
+/// This class gathers various information used by File Modifiers
+/// apart from the writer object, which is specific of the norm
+/// and of the physical format
+///
+/// These information are controlled by an object AppliedModifiers
+/// (if it is not defined, no modification is allowed on writing)
+///
+/// Furthermore, in return, ContextModif can record Checks, either
+/// one for all, or one for each Entity. It supports trace too.
+pub use crate::ffi::IFSelect_ContextWrite as ContextWrite;
+
+impl ContextWrite {
+    /// Returns the Model
+    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::IFSelect_ContextWrite_model(self)
+    }
+
+    /// Returns the File Name
+    pub fn file_name(&self) -> String {
+        crate::ffi::IFSelect_ContextWrite_file_name(self)
+    }
+
+    /// Returns the object AppliedModifiers
+    pub fn applied_modifiers(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectAppliedModifiers> {
+        crate::ffi::IFSelect_ContextWrite_applied_modifiers(self)
+    }
+
+    /// Returns the currently active File Modifier. Cast to be done
+    /// Null if not properly set : must be test IsNull after casting
+    pub fn file_modifier(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectGeneralModifier> {
+        crate::ffi::IFSelect_ContextWrite_file_modifier(self)
+    }
+
+    /// Returns a Check given an Entity number (in the Model)
+    /// by default a Global Check. Creates it the first time.
+    /// It can then be acknowledged on the spot, in condition that the
+    /// caller works by reference ("Interface_Check& check = ...")
+    pub fn c_check(
+        self: std::pin::Pin<&mut Self>,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceCheck> {
+        crate::ffi::IFSelect_ContextWrite_c_check(self, num)
+    }
+
+    /// Returns the complete CheckList
+    pub fn check_list(&self) -> cxx::UniquePtr<crate::ffi::Interface_CheckIterator> {
+        crate::ffi::IFSelect_ContextWrite_check_list(self)
+    }
+}
+
+// ========================
+// From IFSelect_DispGlobal.hxx
+// ========================
+
+/// A DispGlobal gathers all the input Entities into only one
+/// global Packet
+pub use crate::ffi::IFSelect_DispGlobal as DispGlobal;
+
+impl DispGlobal {
+    /// Creates a DispGlobal
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_DispGlobal_ctor()
+    }
+
+    /// Returns as Label, "One File for all Input"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_DispGlobal_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_DispGlobal_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Dispatch
+    pub fn as_dispatch(&self) -> &Dispatch {
+        crate::ffi::IFSelect_DispGlobal_as_IFSelect_Dispatch(self)
+    }
+
+    /// Upcast to IFSelect_Dispatch (mutable)
+    pub fn as_dispatch_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Dispatch> {
+        crate::ffi::IFSelect_DispGlobal_as_IFSelect_Dispatch_mut(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: SetRootName()
+    pub fn set_root_name(
+        self: std::pin::Pin<&mut Self>,
+        name: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        crate::ffi::IFSelect_DispGlobal_inherited_SetRootName(self, name)
+    }
+
+    /// Inherited from IFSelect_Dispatch: HasRootName()
+    pub fn has_root_name(&self) -> bool {
+        crate::ffi::IFSelect_DispGlobal_inherited_HasRootName(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: RootName()
+    pub fn root_name(&self) -> &crate::ffi::HandleTCollectionHAsciiString {
+        crate::ffi::IFSelect_DispGlobal_inherited_RootName(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: SetFinalSelection()
+    pub fn set_final_selection(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_DispGlobal_inherited_SetFinalSelection(self, sel)
+    }
+
+    /// Inherited from IFSelect_Dispatch: FinalSelection()
+    pub fn final_selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_DispGlobal_inherited_FinalSelection(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: Selections()
+    pub fn selections(&self) -> cxx::UniquePtr<crate::ffi::IFSelect_SelectionIterator> {
+        crate::ffi::IFSelect_DispGlobal_inherited_Selections(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: CanHaveRemainder()
+    pub fn can_have_remainder(&self) -> bool {
+        crate::ffi::IFSelect_DispGlobal_inherited_CanHaveRemainder(self)
+    }
+}
+
+// ========================
+// From IFSelect_DispPerCount.hxx
+// ========================
+
+/// A DispPerCount gathers all the input Entities into one or
+/// several Packets, each containing a defined count of Entity
+/// This count is a Parameter of the DispPerCount, given as an
+/// IntParam, thus allowing external control of its Value
+pub use crate::ffi::IFSelect_DispPerCount as DispPerCount;
+
+impl DispPerCount {
+    /// Creates a DispPerCount with no Count (default value 1)
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_DispPerCount_ctor()
+    }
+
+    /// Returns the Count Parameter used for splitting
+    pub fn count(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_DispPerCount_count(self)
+    }
+
+    /// Returns as Label, "One File per <count> Input Entities"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_DispPerCount_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_DispPerCount_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Dispatch
+    pub fn as_dispatch(&self) -> &Dispatch {
+        crate::ffi::IFSelect_DispPerCount_as_IFSelect_Dispatch(self)
+    }
+
+    /// Upcast to IFSelect_Dispatch (mutable)
+    pub fn as_dispatch_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Dispatch> {
+        crate::ffi::IFSelect_DispPerCount_as_IFSelect_Dispatch_mut(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: SetRootName()
+    pub fn set_root_name(
+        self: std::pin::Pin<&mut Self>,
+        name: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        crate::ffi::IFSelect_DispPerCount_inherited_SetRootName(self, name)
+    }
+
+    /// Inherited from IFSelect_Dispatch: HasRootName()
+    pub fn has_root_name(&self) -> bool {
+        crate::ffi::IFSelect_DispPerCount_inherited_HasRootName(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: RootName()
+    pub fn root_name(&self) -> &crate::ffi::HandleTCollectionHAsciiString {
+        crate::ffi::IFSelect_DispPerCount_inherited_RootName(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: SetFinalSelection()
+    pub fn set_final_selection(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_DispPerCount_inherited_SetFinalSelection(self, sel)
+    }
+
+    /// Inherited from IFSelect_Dispatch: FinalSelection()
+    pub fn final_selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_DispPerCount_inherited_FinalSelection(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: Selections()
+    pub fn selections(&self) -> cxx::UniquePtr<crate::ffi::IFSelect_SelectionIterator> {
+        crate::ffi::IFSelect_DispPerCount_inherited_Selections(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: CanHaveRemainder()
+    pub fn can_have_remainder(&self) -> bool {
+        crate::ffi::IFSelect_DispPerCount_inherited_CanHaveRemainder(self)
+    }
+}
+
+// ========================
+// From IFSelect_DispPerFiles.hxx
+// ========================
+
+/// A DispPerFiles produces a determined count of Packets from the
+/// input Entities. It divides, as equally as possible, the input
+/// list into a count of files. This count is the parameter of the
+/// DispPerFiles. If the input list has less than this count, of
+/// course there will be one packet per input entity.
+/// This count is a Parameter of the DispPerFiles, given as an
+/// IntParam, thus allowing external control of its Value
+pub use crate::ffi::IFSelect_DispPerFiles as DispPerFiles;
+
+impl DispPerFiles {
+    /// Creates a DispPerFiles with no Count (default value 1 file)
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_DispPerFiles_ctor()
+    }
+
+    /// Returns the Count Parameter used for splitting
+    pub fn count(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_DispPerFiles_count(self)
+    }
+
+    /// Returns as Label, "Maximum <count> Files"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_DispPerFiles_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_DispPerFiles_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Dispatch
+    pub fn as_dispatch(&self) -> &Dispatch {
+        crate::ffi::IFSelect_DispPerFiles_as_IFSelect_Dispatch(self)
+    }
+
+    /// Upcast to IFSelect_Dispatch (mutable)
+    pub fn as_dispatch_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Dispatch> {
+        crate::ffi::IFSelect_DispPerFiles_as_IFSelect_Dispatch_mut(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: SetRootName()
+    pub fn set_root_name(
+        self: std::pin::Pin<&mut Self>,
+        name: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        crate::ffi::IFSelect_DispPerFiles_inherited_SetRootName(self, name)
+    }
+
+    /// Inherited from IFSelect_Dispatch: HasRootName()
+    pub fn has_root_name(&self) -> bool {
+        crate::ffi::IFSelect_DispPerFiles_inherited_HasRootName(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: RootName()
+    pub fn root_name(&self) -> &crate::ffi::HandleTCollectionHAsciiString {
+        crate::ffi::IFSelect_DispPerFiles_inherited_RootName(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: SetFinalSelection()
+    pub fn set_final_selection(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_DispPerFiles_inherited_SetFinalSelection(self, sel)
+    }
+
+    /// Inherited from IFSelect_Dispatch: FinalSelection()
+    pub fn final_selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_DispPerFiles_inherited_FinalSelection(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: Selections()
+    pub fn selections(&self) -> cxx::UniquePtr<crate::ffi::IFSelect_SelectionIterator> {
+        crate::ffi::IFSelect_DispPerFiles_inherited_Selections(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: CanHaveRemainder()
+    pub fn can_have_remainder(&self) -> bool {
+        crate::ffi::IFSelect_DispPerFiles_inherited_CanHaveRemainder(self)
+    }
+}
+
+// ========================
+// From IFSelect_DispPerOne.hxx
+// ========================
+
+/// A DispPerOne gathers all the input Entities into as many
+/// Packets as there Root Entities from the Final Selection,
+/// that is, one Packet per Entity
+pub use crate::ffi::IFSelect_DispPerOne as DispPerOne;
+
+impl DispPerOne {
+    /// Creates a DispPerOne
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_DispPerOne_ctor()
+    }
+
+    /// Returns as Label, "One File per Input Entity"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_DispPerOne_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_DispPerOne_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Dispatch
+    pub fn as_dispatch(&self) -> &Dispatch {
+        crate::ffi::IFSelect_DispPerOne_as_IFSelect_Dispatch(self)
+    }
+
+    /// Upcast to IFSelect_Dispatch (mutable)
+    pub fn as_dispatch_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Dispatch> {
+        crate::ffi::IFSelect_DispPerOne_as_IFSelect_Dispatch_mut(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: SetRootName()
+    pub fn set_root_name(
+        self: std::pin::Pin<&mut Self>,
+        name: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        crate::ffi::IFSelect_DispPerOne_inherited_SetRootName(self, name)
+    }
+
+    /// Inherited from IFSelect_Dispatch: HasRootName()
+    pub fn has_root_name(&self) -> bool {
+        crate::ffi::IFSelect_DispPerOne_inherited_HasRootName(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: RootName()
+    pub fn root_name(&self) -> &crate::ffi::HandleTCollectionHAsciiString {
+        crate::ffi::IFSelect_DispPerOne_inherited_RootName(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: SetFinalSelection()
+    pub fn set_final_selection(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_DispPerOne_inherited_SetFinalSelection(self, sel)
+    }
+
+    /// Inherited from IFSelect_Dispatch: FinalSelection()
+    pub fn final_selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_DispPerOne_inherited_FinalSelection(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: Selections()
+    pub fn selections(&self) -> cxx::UniquePtr<crate::ffi::IFSelect_SelectionIterator> {
+        crate::ffi::IFSelect_DispPerOne_inherited_Selections(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: CanHaveRemainder()
+    pub fn can_have_remainder(&self) -> bool {
+        crate::ffi::IFSelect_DispPerOne_inherited_CanHaveRemainder(self)
+    }
+}
+
+// ========================
+// From IFSelect_DispPerSignature.hxx
+// ========================
+
+/// A DispPerSignature sorts input Entities according to a
+/// Signature : it works with a SignCounter to do this.
+pub use crate::ffi::IFSelect_DispPerSignature as DispPerSignature;
+
+impl DispPerSignature {
+    /// Creates a DispPerSignature with no SignCounter (by default,
+    /// produces only one packet)
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_DispPerSignature_ctor()
+    }
+
+    /// Returns the name of the SignCounter, which caracterises the
+    /// sorting criterium for this Dispatch
+    pub fn sign_name(&self) -> String {
+        crate::ffi::IFSelect_DispPerSignature_sign_name(self)
+    }
+
+    /// Returns as Label, "One File per Signature <name>"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_DispPerSignature_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_DispPerSignature_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Dispatch
+    pub fn as_dispatch(&self) -> &Dispatch {
+        crate::ffi::IFSelect_DispPerSignature_as_IFSelect_Dispatch(self)
+    }
+
+    /// Upcast to IFSelect_Dispatch (mutable)
+    pub fn as_dispatch_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Dispatch> {
+        crate::ffi::IFSelect_DispPerSignature_as_IFSelect_Dispatch_mut(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: SetRootName()
+    pub fn set_root_name(
+        self: std::pin::Pin<&mut Self>,
+        name: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        crate::ffi::IFSelect_DispPerSignature_inherited_SetRootName(self, name)
+    }
+
+    /// Inherited from IFSelect_Dispatch: HasRootName()
+    pub fn has_root_name(&self) -> bool {
+        crate::ffi::IFSelect_DispPerSignature_inherited_HasRootName(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: RootName()
+    pub fn root_name(&self) -> &crate::ffi::HandleTCollectionHAsciiString {
+        crate::ffi::IFSelect_DispPerSignature_inherited_RootName(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: SetFinalSelection()
+    pub fn set_final_selection(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_DispPerSignature_inherited_SetFinalSelection(self, sel)
+    }
+
+    /// Inherited from IFSelect_Dispatch: FinalSelection()
+    pub fn final_selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_DispPerSignature_inherited_FinalSelection(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: Selections()
+    pub fn selections(&self) -> cxx::UniquePtr<crate::ffi::IFSelect_SelectionIterator> {
+        crate::ffi::IFSelect_DispPerSignature_inherited_Selections(self)
+    }
+
+    /// Inherited from IFSelect_Dispatch: CanHaveRemainder()
+    pub fn can_have_remainder(&self) -> bool {
+        crate::ffi::IFSelect_DispPerSignature_inherited_CanHaveRemainder(self)
+    }
+}
+
+// ========================
+// From IFSelect_Dispatch.hxx
+// ========================
+
+/// This class allows to describe how a set of Entities has to be
+/// dispatched into resulting Packets : a Packet is a sub-set of
+/// the initial set of entities.
+///
+/// Thus, it can generate zero, one, or more Packets according
+/// input set and criterium of dispatching. And it can let apart
+/// some entities : it is the Remainder, which can be recovered
+/// by a specific Selection (RemainderFromDispatch).
+///
+/// Depending of sub-classes, a Dispatch can potentially generate
+/// a limited or not count of packet, and a remainder or none.
+///
+/// The input set is read from a specified Selection, attached to
+/// the Dispatch : the Final Selection of the Dispatch. The input
+/// is the Unique Root Entities list of the Final Selection
+pub use crate::ffi::IFSelect_Dispatch as Dispatch;
+
+impl Dispatch {
+    /// Returns the Final Selection of a Dispatch
+    /// we 'd like : C++ : return const &
+    pub fn final_selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_Dispatch_final_selection(self)
+    }
+
+    /// Returns the complete list of source Selections (starting
+    /// from FinalSelection)
+    pub fn selections(&self) -> cxx::UniquePtr<crate::ffi::IFSelect_SelectionIterator> {
+        crate::ffi::IFSelect_Dispatch_selections(self)
+    }
+
+    /// Returns a text which defines the way a Dispatch produces
+    /// packets (which will become files) from its Input
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_Dispatch_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_Dispatch_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIFSelectDispatch;
+
+impl HandleIFSelectDispatch {
+    /// Dereference this Handle to access the underlying IFSelect_Dispatch
+    pub fn get(&self) -> &crate::ffi::IFSelect_Dispatch {
+        crate::ffi::HandleIFSelectDispatch_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_Dispatch
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_Dispatch> {
+        crate::ffi::HandleIFSelectDispatch_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_EditForm.hxx
+// ========================
+
+/// An EditForm is the way to apply an Editor on an Entity or on
+/// the Model
+/// It gives read-only or read-write access, with or without undo
+///
+/// It can be complete (all the values of the Editor are present)
+/// or partial (a sub-list of these value are present)
+/// Anyway, all references to Number (argument <num>) refer to
+/// Number of Value for the Editor
+/// While references to Rank are for rank in the EditForm, which
+/// may differ if it is not Complete
+/// Two methods give the correspondence between this Number and
+/// the Rank in the EditForm : RankFromNumber and NumberFromRank
+pub use crate::ffi::IFSelect_EditForm as EditForm;
+
+impl EditForm {
+    /// Creates a complete EditForm from an Editor
+    /// A specific Label can be given
+    pub fn new_handleifselecteditor_bool2_charptr(
+        editor: &crate::ffi::HandleIFSelectEditor,
+        readonly: bool,
+        undoable: bool,
+        label: &str,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_EditForm_ctor_handleifselecteditor_bool2_charptr(
+            editor, readonly, undoable, label,
+        )
+    }
+
+    /// Creates an extracted EditForm from an Editor, limited to
+    /// the values identified in <nums>
+    /// A specific Label can be given
+    pub fn new_handleifselecteditor_sequenceofinteger_bool2_charptr(
+        editor: &crate::ffi::HandleIFSelectEditor,
+        nums: &crate::ffi::TColStd_SequenceOfInteger,
+        readonly: bool,
+        undoable: bool,
+        label: &str,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_EditForm_ctor_handleifselecteditor_sequenceofinteger_bool2_charptr(
+            editor, nums, readonly, undoable, label,
+        )
+    }
+
+    pub fn label(&self) -> String {
+        crate::ffi::IFSelect_EditForm_label(self)
+    }
+
+    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::IFSelect_EditForm_model(self)
+    }
+
+    pub fn editor(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectEditor> {
+        crate::ffi::IFSelect_EditForm_editor(self)
+    }
+
+    /// Returns the Value Number in the Editor for a given Name
+    /// i.e. the true ValueNumber which can be used in various methods
+    /// of EditForm
+    /// If it is not complete, for a recorded (in the Editor) but
+    /// non-loaded name, returns negative value (- number)
+    pub fn name_number(&self, name: &str) -> i32 {
+        crate::ffi::IFSelect_EditForm_name_number(self, name)
+    }
+
+    /// Returns the Rank of Value in the EditForm for a given Name
+    /// i.e. if it is not complete, for a recorded (in the Editor) but
+    /// non-loaded name, returns 0
+    pub fn name_rank(&self, name: &str) -> i32 {
+        crate::ffi::IFSelect_EditForm_name_rank(self, name)
+    }
+
+    /// Returns a ListEditor to edit the parameter <num> of the
+    /// EditForm, if it is a List
+    /// The Editor created it (by ListEditor) then loads it (by
+    /// ListValue)
+    /// For a single parameter, returns a Null Handle ...
+    pub fn list_editor(&self, num: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectListEditor> {
+        crate::ffi::IFSelect_EditForm_list_editor(self, num)
+    }
+
+    /// From an edited value, returns its ... value (original one)
+    /// Null means that this value is not defined
+    /// <num> is for the EditForm, not the Editor
+    /// It is for a single parameter. For a list, gives a Null Handle
+    pub fn original_value(
+        &self,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_EditForm_original_value(self, num)
+    }
+
+    /// Returns an original value, as a list
+    /// <num> is for the EditForm, not the Editor
+    /// For a single parameter, gives a Null Handle
+    pub fn original_list(
+        &self,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_EditForm_original_list(self, num)
+    }
+
+    /// Returns the Edited (i.e. Modified) Value (string for single)
+    /// <num> reports to the EditForm
+    /// If IsModified is False, returns OriginalValue
+    /// Null with IsModified True : means that this value is not
+    /// defined or has been removed
+    /// It is for a single parameter. For a list, gives a Null Handle
+    pub fn edited_value(
+        &self,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_EditForm_edited_value(self, num)
+    }
+
+    /// Returns the Edited Value as a list
+    /// If IsModified is False, returns OriginalValue
+    /// Null with IsModified True : means that this value is not
+    /// defined or has been removed
+    /// For a single parameter, gives a Null Handle
+    pub fn edited_list(
+        &self,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_EditForm_edited_list(self, num)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_EditForm_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectEditForm> {
+        crate::ffi::IFSelect_EditForm_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIFSelectEditForm;
+
+impl HandleIFSelectEditForm {
+    /// Dereference this Handle to access the underlying IFSelect_EditForm
+    pub fn get(&self) -> &crate::ffi::IFSelect_EditForm {
+        crate::ffi::HandleIFSelectEditForm_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_EditForm
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_EditForm> {
+        crate::ffi::HandleIFSelectEditForm_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_Editor.hxx
+// ========================
+
+/// An Editor defines a set of values and a way to edit them, on
+/// an entity or on the model (e.g. on its header)
+///
+/// Each Value is controlled by a TypedValue, with a number (it is
+/// an Integer) and a name under two forms (complete and short)
+/// and an edit mode
+pub use crate::ffi::IFSelect_Editor as Editor;
+
+impl Editor {
+    /// Returns the name of a Value (complete or short) from its ident
+    /// Short Name can be empty
+    pub fn name(&self, num: i32, isshort: bool) -> String {
+        crate::ffi::IFSelect_Editor_name(self, num, isshort)
+    }
+
+    /// Returns the edit mode of a Value
+    pub fn edit_mode(&self, num: i32) -> i32 {
+        crate::ffi::IFSelect_Editor_edit_mode(self, num)
+    }
+
+    /// Returns the number (ident) of a Value, from its name, short or
+    /// complete. If not found, returns 0
+    pub fn name_number(&self, name: &str) -> i32 {
+        crate::ffi::IFSelect_Editor_name_number(self, name)
+    }
+
+    /// Returns the specific label
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_Editor_label(self)
+    }
+
+    /// Builds and Returns an EditForm, empty (no data yet)
+    /// Can be redefined to return a specific type of EditForm
+    pub fn form(
+        &self,
+        readonly: bool,
+        undoable: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectEditForm> {
+        crate::ffi::IFSelect_Editor_form(self, readonly, undoable)
+    }
+
+    /// Returns the value of an EditForm, for a given item
+    /// (if not a list. for a list, a Null String may be returned)
+    pub fn string_value(
+        &self,
+        form: &crate::ffi::HandleIFSelectEditForm,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_Editor_string_value(self, form, num)
+    }
+
+    /// Returns a ListEditor for a parameter which is a List
+    /// Default returns a basic ListEditor for a List, a Null Handle
+    /// if <num> is not for a List. Can be redefined
+    pub fn list_editor(&self, num: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectListEditor> {
+        crate::ffi::IFSelect_Editor_list_editor(self, num)
+    }
+
+    /// Returns the value of an EditForm as a List, for a given item
+    /// If not a list, a Null Handle should be returned
+    /// Default returns a Null Handle, because many Editors have
+    /// no list to edit. To be redefined as required
+    pub fn list_value(
+        &self,
+        form: &crate::ffi::HandleIFSelectEditForm,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_Editor_list_value(self, form, num)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_Editor_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIFSelectEditor;
+
+impl HandleIFSelectEditor {
+    /// Dereference this Handle to access the underlying IFSelect_Editor
+    pub fn get(&self) -> &crate::ffi::IFSelect_Editor {
+        crate::ffi::HandleIFSelectEditor_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_Editor
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_Editor> {
+        crate::ffi::HandleIFSelectEditor_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_Functions.hxx
+// ========================
+
+/// Functions gives access to all the actions which can be
+/// commanded with the resources provided by IFSelect : especially
+/// WorkSession and various types of Selections and Dispatches
+///
+/// It works by adding functions by method Init
+pub use crate::ffi::IFSelect_Functions as Functions;
+
+impl Functions {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_Functions_ctor()
+    }
+
+    /// Same as GetEntity, but returns the number in the model of the
+    /// entity. Returns 0 for null handle
+    pub fn give_entity_number(WS: &crate::ffi::HandleIFSelectWorkSession, name: &str) -> i32 {
+        crate::ffi::IFSelect_Functions_give_entity_number(WS, name)
+    }
+
+    /// Computes a List of entities from a WorkSession and two idents,
+    /// first and second, as follows :
+    /// if <first> is a Number or Label of an entity : this entity
+    /// if <first> is the name of a Selection in <WS>, and <second>
+    /// not defined, the standard result of this Selection
+    /// if <first> is for a Selection and <second> is defined, the
+    /// standard result of this selection from the list computed
+    /// with <second> (an entity or a selection)
+    /// If <second> is erroneous, it is ignored
+    pub fn give_list(
+        WS: &crate::ffi::HandleIFSelectWorkSession,
+        first: &str,
+        second: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        crate::ffi::IFSelect_Functions_give_list(WS, first, second)
+    }
+
+    /// Evaluates and returns a Dispatch, from data of a WorkSession
+    /// if <mode> is False, searches for exact name of Dispatch in WS
+    /// Else (D), allows a parameter between brackets :
+    /// ex.: dispatch_name(parameter)
+    /// The parameter can be: an integer for DispPerCount or DispPerFiles
+    /// or the name of a Signature for DispPerSignature
+    /// Returns Null Handle if not found not well evaluated
+    pub fn give_dispatch(
+        WS: &crate::ffi::HandleIFSelectWorkSession,
+        name: &str,
+        mode: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectDispatch> {
+        crate::ffi::IFSelect_Functions_give_dispatch(WS, name, mode)
+    }
+
+    /// Defines and loads all basic functions (as ActFunc)
+    pub fn init() {
+        crate::ffi::IFSelect_Functions_init()
+    }
+}
+
+// ========================
+// From IFSelect_GeneralModifier.hxx
+// ========================
+
+/// This class gives a frame for Actions which modify the effect
+/// of a Dispatch, i.e. :
+/// By Selections and Dispatches, an original Model can be
+/// split into one or more "target" Models : these Models
+/// contain Entities copied from the original one (that is, a
+/// part of it). Basically, these dispatched Entities are copied
+/// as identical to their original counterparts. Also the copied
+/// Models reproduce the Header of the original one.
+///
+/// Modifiers allow to change this copied content : this is the
+/// way to be used for any kind of alterations, adaptations ...
+/// They are exploited by a ModelCopier, which firstly performs
+/// the copy operation described by Dispatches, then invokes the
+/// Modifiers to work on the result.
+///
+/// Each GeneralModifier can be attached to :
+/// - all the Models produced
+/// - a Dispatch (it will be applied to all the Models obtained
+/// from this Dispatch) designated by its Ident in a ShareOut
+/// - in addition, to a Selection (facultative) : this adds a
+/// criterium, the Modifier is invoked on a produced Model only
+/// if this Model contains an Entity copied from one of the
+/// Entities designated by this Selection.
+/// (for special Modifiers from IFAdapt, while they must work on
+/// definite Entities, this Selection is mandatory to run)
+///
+/// Remark : this class has no action attached, it only provides
+/// a frame to work on criteria. Then, sub-classes will define
+/// their kind of action, which can be applied at a precise step
+/// of the production of a File : see Modifier, and in the
+/// package IFAdapt, EntityModifier and EntityCopier
+pub use crate::ffi::IFSelect_GeneralModifier as GeneralModifier;
+
+impl GeneralModifier {
+    /// Returns the Dispatch to be matched, Null if not set
+    pub fn dispatch(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectDispatch> {
+        crate::ffi::IFSelect_GeneralModifier_dispatch(self)
+    }
+
+    /// Returns the Selection, or a Null Handle if not set
+    pub fn selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_GeneralModifier_selection(self)
+    }
+
+    /// Returns a short text which defines the operation performed
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_GeneralModifier_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_GeneralModifier_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIFSelectGeneralModifier;
+
+impl HandleIFSelectGeneralModifier {
+    /// Dereference this Handle to access the underlying IFSelect_GeneralModifier
+    pub fn get(&self) -> &crate::ffi::IFSelect_GeneralModifier {
+        crate::ffi::HandleIFSelectGeneralModifier_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_GeneralModifier
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_GeneralModifier> {
+        crate::ffi::HandleIFSelectGeneralModifier_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_GraphCounter.hxx
+// ========================
+
+/// A GraphCounter computes values to be sorted with the help of
+/// a Graph. I.E. not from a Signature
+///
+/// The default GraphCounter works with an Applied Selection (a
+/// SelectDeduct), the value is the count of selected entities
+/// from each input entities)
+pub use crate::ffi::IFSelect_GraphCounter as GraphCounter;
+
+impl GraphCounter {
+    /// Creates a GraphCounter, without applied selection
+    pub fn new_bool2(withmap: bool, withlist: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_GraphCounter_ctor_bool2(withmap, withlist)
+    }
+
+    /// Creates a GraphCounter, without applied selection
+    pub fn new_bool(withmap: bool) -> cxx::UniquePtr<Self> {
+        Self::new_bool2(withmap, false)
+    }
+
+    /// Creates a GraphCounter, without applied selection
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool2(true, false)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_GraphCounter_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SignCounter
+    pub fn as_sign_counter(&self) -> &SignCounter {
+        crate::ffi::IFSelect_GraphCounter_as_IFSelect_SignCounter(self)
+    }
+
+    /// Upcast to IFSelect_SignCounter (mutable)
+    pub fn as_sign_counter_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut SignCounter> {
+        crate::ffi::IFSelect_GraphCounter_as_IFSelect_SignCounter_mut(self)
+    }
+
+    /// Upcast to IFSelect_SignatureList
+    pub fn as_signature_list(&self) -> &SignatureList {
+        crate::ffi::IFSelect_GraphCounter_as_IFSelect_SignatureList(self)
+    }
+
+    /// Upcast to IFSelect_SignatureList (mutable)
+    pub fn as_signature_list_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SignatureList> {
+        crate::ffi::IFSelect_GraphCounter_as_IFSelect_SignatureList_mut(self)
+    }
+
+    /// Inherited from IFSelect_SignCounter: SetMap()
+    pub fn set_map(self: std::pin::Pin<&mut Self>, withmap: bool) {
+        crate::ffi::IFSelect_GraphCounter_inherited_SetMap(self, withmap)
+    }
+
+    /// Inherited from IFSelect_SignCounter: AddList()
+    pub fn add_list(
+        self: std::pin::Pin<&mut Self>,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) {
+        crate::ffi::IFSelect_GraphCounter_inherited_AddList(self, list, model)
+    }
+
+    /// Inherited from IFSelect_SignCounter: AddModel()
+    pub fn add_model(
+        self: std::pin::Pin<&mut Self>,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) {
+        crate::ffi::IFSelect_GraphCounter_inherited_AddModel(self, model)
+    }
+
+    /// Inherited from IFSelect_SignCounter: AddFromSelection()
+    pub fn add_from_selection(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+        G: &crate::ffi::Interface_Graph,
+    ) {
+        crate::ffi::IFSelect_GraphCounter_inherited_AddFromSelection(self, sel, G)
+    }
+
+    /// Inherited from IFSelect_SignCounter: SetSelection()
+    pub fn set_selection(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_GraphCounter_inherited_SetSelection(self, sel)
+    }
+
+    /// Inherited from IFSelect_SignCounter: Selection()
+    pub fn selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_GraphCounter_inherited_Selection(self)
+    }
+
+    /// Inherited from IFSelect_SignCounter: SetSelMode()
+    pub fn set_sel_mode(self: std::pin::Pin<&mut Self>, selmode: i32) {
+        crate::ffi::IFSelect_GraphCounter_inherited_SetSelMode(self, selmode)
+    }
+
+    /// Inherited from IFSelect_SignCounter: SelMode()
+    pub fn sel_mode(&self) -> i32 {
+        crate::ffi::IFSelect_GraphCounter_inherited_SelMode(self)
+    }
+
+    /// Inherited from IFSelect_SignCounter: ComputeSelected()
+    pub fn compute_selected(
+        self: std::pin::Pin<&mut Self>,
+        G: &crate::ffi::Interface_Graph,
+        forced: bool,
+    ) -> bool {
+        crate::ffi::IFSelect_GraphCounter_inherited_ComputeSelected(self, G, forced)
+    }
+
+    /// Inherited from IFSelect_SignatureList: SetList()
+    pub fn set_list(self: std::pin::Pin<&mut Self>, withlist: bool) {
+        crate::ffi::IFSelect_GraphCounter_inherited_SetList(self, withlist)
+    }
+
+    /// Inherited from IFSelect_SignatureList: ModeSignOnly()
+    pub fn mode_sign_only(self: std::pin::Pin<&mut Self>) -> &mut bool {
+        crate::ffi::IFSelect_GraphCounter_inherited_ModeSignOnly(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: Clear()
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::IFSelect_GraphCounter_inherited_Clear(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: HasEntities()
+    pub fn has_entities(&self) -> bool {
+        crate::ffi::IFSelect_GraphCounter_inherited_HasEntities(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: NbNulls()
+    pub fn nb_nulls(&self) -> i32 {
+        crate::ffi::IFSelect_GraphCounter_inherited_NbNulls(self)
+    }
+}
+
+// ========================
+// From IFSelect_HSeqOfSelection.hxx
+// ========================
+
+pub use crate::ffi::IFSelect_HSeqOfSelection as HSeqOfSelection;
+
+impl HSeqOfSelection {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_HSeqOfSelection_ctor()
+    }
+
+    pub fn new_tseqofselection(
+        theOther: &crate::ffi::IFSelect_TSeqOfSelection,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_HSeqOfSelection_ctor_tseqofselection(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_HSeqOfSelection_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectHSeqOfSelection> {
+        crate::ffi::IFSelect_HSeqOfSelection_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIFSelectHSeqOfSelection;
+
+impl HandleIFSelectHSeqOfSelection {
+    /// Dereference this Handle to access the underlying IFSelect_HSeqOfSelection
+    pub fn get(&self) -> &crate::ffi::IFSelect_HSeqOfSelection {
+        crate::ffi::HandleIFSelectHSeqOfSelection_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_HSeqOfSelection
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_HSeqOfSelection> {
+        crate::ffi::HandleIFSelectHSeqOfSelection_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_IntParam.hxx
+// ========================
+
+/// This class simply allows to access an Integer value through a
+/// Handle, as a String can be (by using HString).
+/// Hence, this value can be accessed : read and modified, without
+/// passing through the specific object which detains it. Thus,
+/// parameters of a Selection or a Dispatch (according its type)
+/// can be controlled directly from the ShareOut which contains them
+///
+/// Additionally, an IntParam can be bound to a Static.
+/// Remember that for a String, binding is immediate, because the
+/// string value of a Static is a HAsciiString, it then suffices
+/// to get its Handle.
+/// For an Integer, an IntParam can designate (by its name) a
+/// Static : each time its value is required or set, the Static
+/// is acknowledged
+pub use crate::ffi::IFSelect_IntParam as IntParam;
+
+impl IntParam {
+    /// Creates an IntParam. Initial value is set to zer
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_IntParam_ctor()
+    }
+
+    /// Commands this IntParam to be bound to a Static
+    /// Hence, Value will return the value if this Static if it is set
+    /// Else, Value works on the locally stored value
+    /// SetValue also will set the value of the Static
+    /// This works only for a present static of type integer or enum
+    /// Else, it is ignored
+    ///
+    /// If <statname> is empty, disconnects the IntParam from Static
+    pub fn set_static_name(self: std::pin::Pin<&mut Self>, statname: &str) {
+        crate::ffi::IFSelect_IntParam_set_static_name(self, statname)
+    }
+
+    /// Returns the name of static parameter to which this IntParam
+    /// is bound, empty if none
+    pub fn static_name(&self) -> String {
+        crate::ffi::IFSelect_IntParam_static_name(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_IntParam_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_IntParam_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIFSelectIntParam;
+
+impl HandleIFSelectIntParam {
+    /// Dereference this Handle to access the underlying IFSelect_IntParam
+    pub fn get(&self) -> &crate::ffi::IFSelect_IntParam {
+        crate::ffi::HandleIFSelectIntParam_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_IntParam
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_IntParam> {
+        crate::ffi::HandleIFSelectIntParam_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_ListEditor.hxx
+// ========================
+
+/// A ListEditor is an auxiliary operator for Editor/EditForm
+/// I.E. it works on parameter values expressed as strings
+///
+/// For a parameter which is a list, it may not be edited in once
+/// by just setting a new value (as a string)
+///
+/// Firstly, a list can be long (and tedious to be accessed flat)
+/// then requires a better way of accessing
+///
+/// Moreover, not only its VALUES may be changed (SetValue), but
+/// also its LENGTH : items may be added or removed ...
+///
+/// Hence, the way of editing a parameter as a list is :
+/// - edit it separately, with the help of a ListEditor
+/// - it remains possible to prepare a new list of values apart
+/// - then give the new list in once to the EditForm
+///
+/// An EditList is produced by the Editor, with a basic definition
+/// This definition (brought by this class) can be redefined
+/// Hence the Editor may produce a specific ListEditor as needed
+pub use crate::ffi::IFSelect_ListEditor as ListEditor;
+
+impl ListEditor {
+    /// Creates a ListEditor with absolutely no constraint
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ListEditor_ctor()
+    }
+
+    /// Returns the value from which the edition started
+    pub fn original_values(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_ListEditor_original_values(self)
+    }
+
+    /// Returns the result of the edition
+    pub fn edited_values(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_ListEditor_edited_values(self)
+    }
+
+    /// Returns a value given its rank. Edited (D) or Original
+    /// A Null String means the value is cleared but not removed
+    pub fn value(
+        &self,
+        num: i32,
+        edited: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_ListEditor_value(self, num, edited)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_ListEditor_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectListEditor> {
+        crate::ffi::IFSelect_ListEditor_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIFSelectListEditor;
+
+impl HandleIFSelectListEditor {
+    /// Dereference this Handle to access the underlying IFSelect_ListEditor
+    pub fn get(&self) -> &crate::ffi::IFSelect_ListEditor {
+        crate::ffi::HandleIFSelectListEditor_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_ListEditor
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_ListEditor> {
+        crate::ffi::HandleIFSelectListEditor_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_ModelCopier.hxx
+// ========================
+
+/// This class performs the Copy operations involved by the
+/// description of a ShareOut (evaluated by a ShareOutResult)
+/// plus, if there are, the Modifications on the results, with
+/// the help of Modifiers. Each Modifier can work on one or more
+/// resulting packets, according to its criteria : it operates on
+/// a Model once copied and filled with the content of the packet.
+///
+/// Modifiers can be :
+/// - Model Modifiers, inheriting from the specific class Modifier
+/// able to run on the content of a Model (header or entities),
+/// activated by the ModelCopier itself
+/// - File Modifiers, inheriting directly from GeneralModifier,
+/// intended to be activated under the control of a WorkLibrary,
+/// once the Model has been produced (i.e. to act on output
+/// format, or other specific file features)
+///
+/// The Copy operations can be :
+/// - immediately put to files : for each packet, a Model is
+/// created and filled, then the file is output, at that's all
+/// - memorized : for each packet, a Model is created and filled,
+/// it is memorized with the corresponding file name.
+/// it is possible to query the result of memorization (list of
+/// produced Models and their file names)
+/// -> it is also possible to send it into the files :
+/// once files are written, the result is cleared
+///
+/// In addition, a list of really written files is managed :
+/// A first call to BeginSentFiles clears the list and commands,
+/// either to begin a new list, or to stop recording it. A call
+/// to SentFiles returns the list (if recording has been required)
+/// This list allows to globally exploit the set of produced files
+///
+/// Remark : For operations which concern specific Entities, see
+/// also in package IFAdapt : a sub-class of ModelCopier allows
+/// to work with EntityModifier, in addition to Modifier itself
+/// which still applies to a whole copied Model.
+pub use crate::ffi::IFSelect_ModelCopier as ModelCopier;
+
+impl ModelCopier {
+    /// Creates an empty ModelCopier
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ModelCopier_ctor()
+    }
+
+    /// Returns the File Name for a file given its rank
+    /// It is empty after a call to ClearFile on same <num>
+    pub fn file_name(&self, num: i32) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_ModelCopier_file_name(self, num)
+    }
+
+    /// Returns the content of a file before sending, under the form
+    /// of an InterfaceModel, given its rank
+    pub fn file_model(
+        &self,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::IFSelect_ModelCopier_file_model(self, num)
+    }
+
+    /// Returns the list of File Modifiers to be applied on a file
+    /// when it will be sent, as computed by CopiedModel :
+    /// If it is a null handle, no File Modifier has to be applied.
+    pub fn applied_modifiers(
+        &self,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectAppliedModifiers> {
+        crate::ffi::IFSelect_ModelCopier_applied_modifiers(self, num)
+    }
+
+    /// Adds the name of a just sent file, if BeginSentFiles
+    /// has commanded recording; else does nothing
+    /// It is called by methods SendCopied Sending
+    pub fn add_sent_file(self: std::pin::Pin<&mut Self>, filename: &str) {
+        crate::ffi::IFSelect_ModelCopier_add_sent_file(self, filename)
+    }
+
+    /// Returns the list of recorded names of sent files. Can be empty
+    /// (if no file has been sent). Returns a Null Handle if
+    /// BeginSentFiles has stopped recording.
+    pub fn sent_files(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_ModelCopier_sent_files(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_ModelCopier_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectModelCopier> {
+        crate::ffi::IFSelect_ModelCopier_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIFSelectModelCopier;
+
+impl HandleIFSelectModelCopier {
+    /// Dereference this Handle to access the underlying IFSelect_ModelCopier
+    pub fn get(&self) -> &crate::ffi::IFSelect_ModelCopier {
+        crate::ffi::HandleIFSelectModelCopier_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_ModelCopier
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_ModelCopier> {
+        crate::ffi::HandleIFSelectModelCopier_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_ModifEditForm.hxx
+// ========================
+
+/// This modifier applies an EditForm on the entities selected
+pub use crate::ffi::IFSelect_ModifEditForm as ModifEditForm;
+
+impl ModifEditForm {
+    /// Creates a ModifEditForm. It may not change the graph
+    pub fn new_handleifselecteditform(
+        editform: &crate::ffi::HandleIFSelectEditForm,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ModifEditForm_ctor_handleifselecteditform(editform)
+    }
+
+    /// Returns the EditForm
+    pub fn edit_form(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectEditForm> {
+        crate::ffi::IFSelect_ModifEditForm_edit_form(self)
+    }
+
+    /// Returns Label as "Apply EditForm <+ label of EditForm>"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_ModifEditForm_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_ModifEditForm_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_GeneralModifier
+    pub fn as_general_modifier(&self) -> &GeneralModifier {
+        crate::ffi::IFSelect_ModifEditForm_as_IFSelect_GeneralModifier(self)
+    }
+
+    /// Upcast to IFSelect_GeneralModifier (mutable)
+    pub fn as_general_modifier_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut GeneralModifier> {
+        crate::ffi::IFSelect_ModifEditForm_as_IFSelect_GeneralModifier_mut(self)
+    }
+
+    /// Upcast to IFSelect_Modifier
+    pub fn as_modifier(&self) -> &Modifier {
+        crate::ffi::IFSelect_ModifEditForm_as_IFSelect_Modifier(self)
+    }
+
+    /// Upcast to IFSelect_Modifier (mutable)
+    pub fn as_modifier_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Modifier> {
+        crate::ffi::IFSelect_ModifEditForm_as_IFSelect_Modifier_mut(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: MayChangeGraph()
+    pub fn may_change_graph(&self) -> bool {
+        crate::ffi::IFSelect_ModifEditForm_inherited_MayChangeGraph(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: SetDispatch()
+    pub fn set_dispatch(self: std::pin::Pin<&mut Self>, disp: &crate::ffi::HandleIFSelectDispatch) {
+        crate::ffi::IFSelect_ModifEditForm_inherited_SetDispatch(self, disp)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: Dispatch()
+    pub fn dispatch(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectDispatch> {
+        crate::ffi::IFSelect_ModifEditForm_inherited_Dispatch(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: Applies()
+    pub fn applies(&self, disp: &crate::ffi::HandleIFSelectDispatch) -> bool {
+        crate::ffi::IFSelect_ModifEditForm_inherited_Applies(self, disp)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: SetSelection()
+    pub fn set_selection(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_ModifEditForm_inherited_SetSelection(self, sel)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: ResetSelection()
+    pub fn reset_selection(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::IFSelect_ModifEditForm_inherited_ResetSelection(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: HasSelection()
+    pub fn has_selection(&self) -> bool {
+        crate::ffi::IFSelect_ModifEditForm_inherited_HasSelection(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: Selection()
+    pub fn selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_ModifEditForm_inherited_Selection(self)
+    }
+}
+
+// ========================
+// From IFSelect_ModifReorder.hxx
+// ========================
+
+/// This modifier reorders a whole model from its roots, i.e.
+/// according to <rootlast> status, it considers each of its
+/// roots, then it orders all its shared entities at any level,
+/// the result begins by the lower level entities ... ends by
+/// the roots.
+pub use crate::ffi::IFSelect_ModifReorder as ModifReorder;
+
+impl ModifReorder {
+    /// Creates a ModifReorder. It may change the graph (it does !)
+    /// If <rootlast> is True (D), roots are set at the end of packets
+    /// Else, they are set at beginning (as done by AddWithRefs)
+    pub fn new_bool(rootlast: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ModifReorder_ctor_bool(rootlast)
+    }
+
+    /// Creates a ModifReorder. It may change the graph (it does !)
+    /// If <rootlast> is True (D), roots are set at the end of packets
+    /// Else, they are set at beginning (as done by AddWithRefs)
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool(true)
+    }
+
+    /// Returns Label as "Reorder, Roots (last or first)"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_ModifReorder_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_ModifReorder_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_GeneralModifier
+    pub fn as_general_modifier(&self) -> &GeneralModifier {
+        crate::ffi::IFSelect_ModifReorder_as_IFSelect_GeneralModifier(self)
+    }
+
+    /// Upcast to IFSelect_GeneralModifier (mutable)
+    pub fn as_general_modifier_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut GeneralModifier> {
+        crate::ffi::IFSelect_ModifReorder_as_IFSelect_GeneralModifier_mut(self)
+    }
+
+    /// Upcast to IFSelect_Modifier
+    pub fn as_modifier(&self) -> &Modifier {
+        crate::ffi::IFSelect_ModifReorder_as_IFSelect_Modifier(self)
+    }
+
+    /// Upcast to IFSelect_Modifier (mutable)
+    pub fn as_modifier_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Modifier> {
+        crate::ffi::IFSelect_ModifReorder_as_IFSelect_Modifier_mut(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: MayChangeGraph()
+    pub fn may_change_graph(&self) -> bool {
+        crate::ffi::IFSelect_ModifReorder_inherited_MayChangeGraph(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: SetDispatch()
+    pub fn set_dispatch(self: std::pin::Pin<&mut Self>, disp: &crate::ffi::HandleIFSelectDispatch) {
+        crate::ffi::IFSelect_ModifReorder_inherited_SetDispatch(self, disp)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: Dispatch()
+    pub fn dispatch(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectDispatch> {
+        crate::ffi::IFSelect_ModifReorder_inherited_Dispatch(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: Applies()
+    pub fn applies(&self, disp: &crate::ffi::HandleIFSelectDispatch) -> bool {
+        crate::ffi::IFSelect_ModifReorder_inherited_Applies(self, disp)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: SetSelection()
+    pub fn set_selection(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_ModifReorder_inherited_SetSelection(self, sel)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: ResetSelection()
+    pub fn reset_selection(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::IFSelect_ModifReorder_inherited_ResetSelection(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: HasSelection()
+    pub fn has_selection(&self) -> bool {
+        crate::ffi::IFSelect_ModifReorder_inherited_HasSelection(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: Selection()
+    pub fn selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_ModifReorder_inherited_Selection(self)
+    }
+}
+
+// ========================
+// From IFSelect_Modifier.hxx
+// ========================
+
+/// This class gives a frame for Actions which can work globally
+/// on a File once completely defined (i.e. afterwards)
+///
+/// Remark : if no Selection is set as criterium, the Modifier is
+/// set to work and should consider all the content of the Model
+/// produced.
+pub use crate::ffi::IFSelect_Modifier as Modifier;
+
+impl Modifier {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_Modifier_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_GeneralModifier
+    pub fn as_general_modifier(&self) -> &GeneralModifier {
+        crate::ffi::IFSelect_Modifier_as_IFSelect_GeneralModifier(self)
+    }
+
+    /// Upcast to IFSelect_GeneralModifier (mutable)
+    pub fn as_general_modifier_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut GeneralModifier> {
+        crate::ffi::IFSelect_Modifier_as_IFSelect_GeneralModifier_mut(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: MayChangeGraph()
+    pub fn may_change_graph(&self) -> bool {
+        crate::ffi::IFSelect_Modifier_inherited_MayChangeGraph(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: SetDispatch()
+    pub fn set_dispatch(self: std::pin::Pin<&mut Self>, disp: &crate::ffi::HandleIFSelectDispatch) {
+        crate::ffi::IFSelect_Modifier_inherited_SetDispatch(self, disp)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: Dispatch()
+    pub fn dispatch(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectDispatch> {
+        crate::ffi::IFSelect_Modifier_inherited_Dispatch(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: Applies()
+    pub fn applies(&self, disp: &crate::ffi::HandleIFSelectDispatch) -> bool {
+        crate::ffi::IFSelect_Modifier_inherited_Applies(self, disp)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: SetSelection()
+    pub fn set_selection(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_Modifier_inherited_SetSelection(self, sel)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: ResetSelection()
+    pub fn reset_selection(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::IFSelect_Modifier_inherited_ResetSelection(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: HasSelection()
+    pub fn has_selection(&self) -> bool {
+        crate::ffi::IFSelect_Modifier_inherited_HasSelection(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: Selection()
+    pub fn selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_Modifier_inherited_Selection(self)
+    }
+
+    /// Inherited from IFSelect_GeneralModifier: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_Modifier_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_PacketList.hxx
+// ========================
+
+/// This class gives a simple way to return then consult a
+/// list of packets, determined from the content of a Model,
+/// by various criteria.
+///
+/// It allows to describe several lists with entities from a
+/// given model, possibly more than one list knowing every entity,
+/// and to determine the remaining list (entities in no lists) and
+/// the duplications (with their count).
+pub use crate::ffi::IFSelect_PacketList as PacketList;
+
+impl PacketList {
+    /// Creates a PackList, empty, ready to receive entities from a
+    /// given Model
+    pub fn new_handleinterfaceinterfacemodel(
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_PacketList_ctor_handleinterfaceinterfacemodel(model)
+    }
+
+    /// Sets a name to a packet list : this makes easier a general
+    /// routine to print it. Default is "Packets"
+    pub fn set_name(self: std::pin::Pin<&mut Self>, name: &str) {
+        crate::ffi::IFSelect_PacketList_set_name(self, name)
+    }
+
+    /// Returns the recorded name for a packet list
+    pub fn name(&self) -> String {
+        crate::ffi::IFSelect_PacketList_name(self)
+    }
+
+    /// Returns the Model of reference
+    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::IFSelect_PacketList_model(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_PacketList_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectPacketList> {
+        crate::ffi::IFSelect_PacketList_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIFSelectPacketList;
+
+impl HandleIFSelectPacketList {
+    /// Dereference this Handle to access the underlying IFSelect_PacketList
+    pub fn get(&self) -> &crate::ffi::IFSelect_PacketList {
+        crate::ffi::HandleIFSelectPacketList_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_PacketList
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_PacketList> {
+        crate::ffi::HandleIFSelectPacketList_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_ParamEditor.hxx
+// ========================
+
+/// A ParamEditor gives access for edition to a list of TypedValue
+/// (i.e. of Static too)
+/// Its definition is made of the TypedValue to edit themselves,
+/// and can add some constants, which can then be displayed but
+/// not changed (for instance, system name, processor version ...)
+///
+/// I.E. it gives a way of editing or at least displaying
+/// parameters as global
+pub use crate::ffi::IFSelect_ParamEditor as ParamEditor;
+
+impl ParamEditor {
+    /// Creates a ParamEditor, empty, with a maximum count of params
+    /// (default is 100)
+    /// And a label, by default it will be "Param Editor"
+    pub fn new_int_charptr(nbmax: i32, label: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ParamEditor_ctor_int_charptr(nbmax, label)
+    }
+
+    /// Adds a Constant Text, it will be Read Only
+    /// By default, its long name equates its shortname
+    pub fn add_constant_text(
+        self: std::pin::Pin<&mut Self>,
+        val: &str,
+        shortname: &str,
+        completename: &str,
+    ) {
+        crate::ffi::IFSelect_ParamEditor_add_constant_text(self, val, shortname, completename)
+    }
+
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_ParamEditor_label(self)
+    }
+
+    pub fn string_value(
+        &self,
+        form: &crate::ffi::HandleIFSelectEditForm,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_ParamEditor_string_value(self, form, num)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_ParamEditor_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Editor
+    pub fn as_editor(&self) -> &Editor {
+        crate::ffi::IFSelect_ParamEditor_as_IFSelect_Editor(self)
+    }
+
+    /// Upcast to IFSelect_Editor (mutable)
+    pub fn as_editor_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Editor> {
+        crate::ffi::IFSelect_ParamEditor_as_IFSelect_Editor_mut(self)
+    }
+
+    /// Inherited from IFSelect_Editor: SetList()
+    pub fn set_list(self: std::pin::Pin<&mut Self>, num: i32, max: i32) {
+        crate::ffi::IFSelect_ParamEditor_inherited_SetList(self, num, max)
+    }
+
+    /// Inherited from IFSelect_Editor: NbValues()
+    pub fn nb_values(&self) -> i32 {
+        crate::ffi::IFSelect_ParamEditor_inherited_NbValues(self)
+    }
+
+    /// Inherited from IFSelect_Editor: IsList()
+    pub fn is_list(&self, num: i32) -> bool {
+        crate::ffi::IFSelect_ParamEditor_inherited_IsList(self, num)
+    }
+
+    /// Inherited from IFSelect_Editor: MaxList()
+    pub fn max_list(&self, num: i32) -> i32 {
+        crate::ffi::IFSelect_ParamEditor_inherited_MaxList(self, num)
+    }
+
+    /// Inherited from IFSelect_Editor: MaxNameLength()
+    pub fn max_name_length(&self, what: i32) -> i32 {
+        crate::ffi::IFSelect_ParamEditor_inherited_MaxNameLength(self, what)
+    }
+
+    /// Inherited from IFSelect_Editor: Form()
+    pub fn form(
+        &self,
+        readonly: bool,
+        undoable: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectEditForm> {
+        crate::ffi::IFSelect_ParamEditor_inherited_Form(self, readonly, undoable)
+    }
+
+    /// Inherited from IFSelect_Editor: ListEditor()
+    pub fn list_editor(&self, num: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectListEditor> {
+        crate::ffi::IFSelect_ParamEditor_inherited_ListEditor(self, num)
+    }
+
+    /// Inherited from IFSelect_Editor: ListValue()
+    pub fn list_value(
+        &self,
+        form: &crate::ffi::HandleIFSelectEditForm,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_ParamEditor_inherited_ListValue(self, form, num)
+    }
+
+    /// Inherited from IFSelect_Editor: Update()
+    pub fn update(
+        &self,
+        form: &crate::ffi::HandleIFSelectEditForm,
+        num: i32,
+        newval: &crate::ffi::HandleTCollectionHAsciiString,
+        enforce: bool,
+    ) -> bool {
+        crate::ffi::IFSelect_ParamEditor_inherited_Update(self, form, num, newval, enforce)
+    }
+
+    /// Inherited from IFSelect_Editor: UpdateList()
+    pub fn update_list(
+        &self,
+        form: &crate::ffi::HandleIFSelectEditForm,
+        num: i32,
+        newlist: &crate::ffi::HandleTColStdHSequenceOfHAsciiString,
+        enforce: bool,
+    ) -> bool {
+        crate::ffi::IFSelect_ParamEditor_inherited_UpdateList(self, form, num, newlist, enforce)
+    }
+}
+
+// ========================
+// From IFSelect_SelectAnyList.hxx
+// ========================
+
+/// A SelectAnyList kind Selection selects a List of an Entity, as
+/// well as this Entity contains some. A List contains sub-entities
+/// as one per Item, or several (for instance if an Entity binds
+/// couples of sub-entities, each item is one of these couples).
+/// Remark that only Entities are taken into account (neither
+/// Reals, nor Strings, etc...)
+///
+/// To define the list on which to work, SelectAnyList has two
+/// deferred methods : NbItems (which gives the length of the
+/// list), FillResult (which fills an EntityIterator). They are
+/// intended to get a List in an Entity of the required Type (and
+/// consider that list is empty if Entity has not required Type)
+///
+/// In addition, remark that some types of Entity define more than
+/// one list in each instance : a given sub-class of SelectAnyList
+/// must be attached to one list
+///
+/// SelectAnyList keeps or rejects a sub-set of the list,
+/// that is the Items of which rank in the list is in a given
+/// range (for instance form 2nd to 6th, etc...)
+/// Range is defined by two Integer values. In order to allow
+/// external control of them, these values are not directly
+/// defined as fields, but accessed through IntParams, that is,
+/// referenced as Transient (Handle) objects
+///
+/// Warning : the Input can be any kind of Selection, BUT its
+/// RootResult must have zero (empty) or one Entity maximum
+pub use crate::ffi::IFSelect_SelectAnyList as SelectAnyList;
+
+impl SelectAnyList {
+    /// Returns Lower limit (if there is; else, value is senseless)
+    pub fn lower(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_SelectAnyList_lower(self)
+    }
+
+    /// Returns Upper limit (if there is; else, value is senseless)
+    pub fn upper(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_SelectAnyList_upper(self)
+    }
+
+    /// Returns a text defining the criterium : "Components of List "
+    /// then Specific List Label, then, following cases :
+    /// " From .. Until .." or "From .." or "Until .." or "Rank no .."
+    /// Specific type is given by deferred method ListLabel
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectAnyList_label(self)
+    }
+
+    /// Returns the specific label for the list, which is included as
+    /// a part of Label
+    pub fn list_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectAnyList_list_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectAnyList_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectAnyList_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectAnyList_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectAnyList_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectAnyList_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectAnyList_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectAnyList_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectAnyList_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectAnyList_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectAnyList_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectAnyType.hxx
+// ========================
+
+/// A SelectAnyType sorts the Entities of which the Type is Kind
+/// of a given Type : this Type for Match is specific of each
+/// class of SelectAnyType
+pub use crate::ffi::IFSelect_SelectAnyType as SelectAnyType;
+
+impl SelectAnyType {
+    /// Returns the Type which has to be matched for select
+    pub fn type_for_match(&self) -> cxx::UniquePtr<crate::ffi::HandleStandardType> {
+        crate::ffi::IFSelect_SelectAnyType_type_for_match(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectAnyType_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectAnyType_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectAnyType_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectAnyType_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectAnyType_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectAnyType_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectAnyType_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectAnyType_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectAnyType_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectAnyType_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectAnyType_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectAnyType_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectAnyType_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectAnyType_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectAnyType_inherited_Label(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: ExtractLabel()
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectAnyType_inherited_ExtractLabel(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectBase.hxx
+// ========================
+
+/// SelectBase works directly from an InterfaceModel : it is the
+/// first base for other Selections.
+pub use crate::ffi::IFSelect_SelectBase as SelectBase;
+
+impl SelectBase {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectBase_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectBase_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectBase_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_Selection: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectBase_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectCombine.hxx
+// ========================
+
+/// A SelectCombine type Selection defines algebraic operations
+/// between results of several Selections
+/// It is a deferred class : sub-classes will have to define
+/// precise what operator is to be applied
+pub use crate::ffi::IFSelect_SelectCombine as SelectCombine;
+
+impl SelectCombine {
+    /// Returns an Input Selection, given its rank in the list
+    pub fn input(&self, num: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectCombine_input(self, num)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectCombine_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectCombine_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectCombine_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_Selection: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectCombine_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectControl.hxx
+// ========================
+
+/// A SelectControl kind Selection works with two input Selections
+/// in a dissymmetric way : the Main Input which gives an input
+/// list of Entities, to be processed, and the Second Input which
+/// gives another list, to be used to filter the main input.
+///
+/// e.g. : SelectDiff retains the items of the Main Input which
+/// are not in the Control Input (which acts as Diff Input)
+/// or a specific selection which retains Entities from the Main
+/// Input if and only if they are concerned by an entity from
+/// the Control Input (such as Views in IGES, etc...)
+///
+/// The way RootResult and Label are produced are at charge of
+/// each sub-class
+pub use crate::ffi::IFSelect_SelectControl as SelectControl;
+
+impl SelectControl {
+    /// Returns the Main Input Selection
+    pub fn main_input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectControl_main_input(self)
+    }
+
+    /// Returns the Control Input Selection, or a Null Handle
+    pub fn second_input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectControl_second_input(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectControl_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectControl_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectControl_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_Selection: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectControl_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectDeduct.hxx
+// ========================
+
+/// A SelectDeduct determines a list of Entities from an Input
+/// Selection, by a computation : Output list is not obliged to be
+/// a sub-list of Input list
+/// (for more specific, see SelectExtract for filtered sub-lists,
+/// and SelectExplore for recurcive exploration)
+///
+/// A SelectDeduct may use an alternate input for one shot
+/// This allows to use an already existing definition, by
+/// overloading the input selection by an alternate list,
+/// already defined, for one use :
+/// If this alternate list is set, InputResult queries it instead
+/// of calling the input selection, then clears it immediately
+pub use crate::ffi::IFSelect_SelectDeduct as SelectDeduct;
+
+impl SelectDeduct {
+    /// Returns the Input Selection
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectDeduct_input(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectDeduct_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectDeduct_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectDeduct_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_Selection: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectDeduct_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectDiff.hxx
+// ========================
+
+/// A SelectDiff keeps the entities from a Selection, the Main
+/// Input, which are not listed by the Second Input
+pub use crate::ffi::IFSelect_SelectDiff as SelectDiff;
+
+impl SelectDiff {
+    /// Creates an empty SelectDiff
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectDiff_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Difference"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectDiff_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectDiff_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectControl
+    pub fn as_select_control(&self) -> &SelectControl {
+        crate::ffi::IFSelect_SelectDiff_as_IFSelect_SelectControl(self)
+    }
+
+    /// Upcast to IFSelect_SelectControl (mutable)
+    pub fn as_select_control_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectControl> {
+        crate::ffi::IFSelect_SelectDiff_as_IFSelect_SelectControl_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectDiff_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectDiff_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectControl: MainInput()
+    pub fn main_input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectDiff_inherited_MainInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectControl: HasSecondInput()
+    pub fn has_second_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectDiff_inherited_HasSecondInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectControl: SecondInput()
+    pub fn second_input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectDiff_inherited_SecondInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectControl: SetMainInput()
+    pub fn set_main_input(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_SelectDiff_inherited_SetMainInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectControl: SetSecondInput()
+    pub fn set_second_input(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) {
+        crate::ffi::IFSelect_SelectDiff_inherited_SetSecondInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectControl: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectDiff_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectEntityNumber.hxx
+// ========================
+
+/// A SelectEntityNumber gets in an InterfaceModel (through a
+/// Graph), the Entity which has a specified Number (its rank of
+/// adding into the Model) : there can be zero (if none) or one.
+/// The Number is not directly defined as an Integer, but as a
+/// Parameter, which can be externally controlled
+pub use crate::ffi::IFSelect_SelectEntityNumber as SelectEntityNumber;
+
+impl SelectEntityNumber {
+    /// Creates a SelectEntityNumber, initially with no specified Number
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectEntityNumber_ctor()
+    }
+
+    /// Returns specified Number (as a Parameter)
+    pub fn number(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_SelectEntityNumber_number(self)
+    }
+
+    /// Returns a text defining the criterium : "Entity Number ..."
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectEntityNumber_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectEntityNumber_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectBase
+    pub fn as_select_base(&self) -> &SelectBase {
+        crate::ffi::IFSelect_SelectEntityNumber_as_IFSelect_SelectBase(self)
+    }
+
+    /// Upcast to IFSelect_SelectBase (mutable)
+    pub fn as_select_base_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut SelectBase> {
+        crate::ffi::IFSelect_SelectEntityNumber_as_IFSelect_SelectBase_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectEntityNumber_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectEntityNumber_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectBase: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectEntityNumber_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectErrorEntities.hxx
+// ========================
+
+/// A SelectErrorEntities sorts the Entities which are qualified
+/// as "Error" (their Type has not been recognized) during reading
+/// a File. This does not concern Entities which are syntactically
+/// correct, but with incorrect data (for integrity constraints).
+pub use crate::ffi::IFSelect_SelectErrorEntities as SelectErrorEntities;
+
+impl SelectErrorEntities {
+    /// Creates a SelectErrorEntities
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectErrorEntities_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Error Entities"
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectErrorEntities_extract_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectErrorEntities_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectErrorEntities_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectErrorEntities_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectErrorEntities_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectErrorEntities_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectErrorEntities_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectErrorEntities_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectErrorEntities_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectErrorEntities_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectExplore.hxx
+// ========================
+
+/// A SelectExplore determines from an input list of Entities,
+/// a list obtained by a way of exploration. This implies the
+/// possibility of recursive exploration : the output list is
+/// itself reused as input, etc...
+/// Examples : Shared Entities, can be considered at one level
+/// (immediate shared) or more, or max level
+///
+/// Then, for each input entity, if it is not rejected, it can be
+/// either taken itself, or explored : it then produces a list.
+/// According to a level, either the produced lists or taken
+/// entities give the result (level one), or lists are themselves
+/// considered and for each item, is it taken or explored.
+///
+/// Remark that rejection is just a safety : normally, an input
+/// entity is, either taken itself, or explored
+/// A maximum level can be specified. Else, the process continues
+/// until all entities have been either taken or rejected
+pub use crate::ffi::IFSelect_SelectExplore as SelectExplore;
+
+impl SelectExplore {
+    /// Returns a text saying "(Recursive)" or "(Level nn)" plus
+    /// specific criterium returned by ExploreLabel (see below)
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectExplore_label(self)
+    }
+
+    /// Returns a text defining the way of exploration
+    pub fn explore_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectExplore_explore_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectExplore_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectExplore_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectExplore_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectExplore_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectExplore_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectExplore_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectExplore_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectExplore_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectExplore_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectExplore_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectExtract.hxx
+// ========================
+
+/// A SelectExtract determines a list of Entities from an Input
+/// Selection, as a sub-list of the Input Result
+/// It works by applying a sort criterium on each Entity of the
+/// Input. This criterium can be applied Direct to Pick Items
+/// (default case) or Reverse to Remove Item
+///
+/// Basic features (the unique Input) are inherited from SelectDeduct
+pub use crate::ffi::IFSelect_SelectExtract as SelectExtract;
+
+impl SelectExtract {
+    /// Returns a text saying "Picked" or "Removed", plus the
+    /// specific criterium returned by ExtractLabel (see below)
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectExtract_label(self)
+    }
+
+    /// Returns a text defining the criterium for extraction
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectExtract_extract_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectExtract_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectExtract_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectExtract_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectExtract_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectExtract_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectExtract_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectExtract_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectExtract_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectExtract_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectExtract_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectFlag.hxx
+// ========================
+
+/// A SelectFlag queries a flag noted in the bitmap of the Graph.
+/// The Flag is designated by its Name. Flag Names are defined
+/// by Work Session and, as necessary, other functional objects
+///
+/// WorkSession from IFSelect defines flag "Incorrect"
+/// Objects which control application running define some others
+pub use crate::ffi::IFSelect_SelectFlag as SelectFlag;
+
+impl SelectFlag {
+    /// Creates a Select Flag, to query a flag designated by its name
+    pub fn new_charptr(flagname: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectFlag_ctor_charptr(flagname)
+    }
+
+    /// Returns the name of the flag
+    pub fn flag_name(&self) -> String {
+        crate::ffi::IFSelect_SelectFlag_flag_name(self)
+    }
+
+    /// Returns a text defining the criterium, includes the flag name
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectFlag_extract_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectFlag_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectFlag_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectFlag_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectFlag_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectFlag_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectFlag_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectFlag_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectFlag_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectFlag_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectFlag_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectFlag_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectFlag_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectFlag_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectFlag_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectFlag_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectInList.hxx
+// ========================
+
+/// A SelectInList kind Selection selects a List of an Entity,
+/// which is composed of single Entities
+/// To know the list on which to work, SelectInList has two
+/// deferred methods : NbItems (inherited from SelectAnyList) and
+/// ListedEntity (which gives an item as an Entity) which must be
+/// defined to get a List in an Entity of the required Type (and
+/// consider that list is empty if Entity has not required Type)
+///
+/// As for SelectAnyList, if a type of Entity defines several
+/// lists, a given sub-class of SelectInList is attached on one
+pub use crate::ffi::IFSelect_SelectInList as SelectInList;
+
+impl SelectInList {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectInList_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectAnyList
+    pub fn as_select_any_list(&self) -> &SelectAnyList {
+        crate::ffi::IFSelect_SelectInList_as_IFSelect_SelectAnyList(self)
+    }
+
+    /// Upcast to IFSelect_SelectAnyList (mutable)
+    pub fn as_select_any_list_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectAnyList> {
+        crate::ffi::IFSelect_SelectInList_as_IFSelect_SelectAnyList_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectInList_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectInList_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectInList_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectInList_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: SetRange()
+    pub fn set_range(
+        self: std::pin::Pin<&mut Self>,
+        rankfrom: &crate::ffi::HandleIFSelectIntParam,
+        rankto: &crate::ffi::HandleIFSelectIntParam,
+    ) {
+        crate::ffi::IFSelect_SelectInList_inherited_SetRange(self, rankfrom, rankto)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: SetOne()
+    pub fn set_one(self: std::pin::Pin<&mut Self>, rank: &crate::ffi::HandleIFSelectIntParam) {
+        crate::ffi::IFSelect_SelectInList_inherited_SetOne(self, rank)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: SetFrom()
+    pub fn set_from(self: std::pin::Pin<&mut Self>, rankfrom: &crate::ffi::HandleIFSelectIntParam) {
+        crate::ffi::IFSelect_SelectInList_inherited_SetFrom(self, rankfrom)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: SetUntil()
+    pub fn set_until(self: std::pin::Pin<&mut Self>, rankto: &crate::ffi::HandleIFSelectIntParam) {
+        crate::ffi::IFSelect_SelectInList_inherited_SetUntil(self, rankto)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: HasLower()
+    pub fn has_lower(&self) -> bool {
+        crate::ffi::IFSelect_SelectInList_inherited_HasLower(self)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: Lower()
+    pub fn lower(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_SelectInList_inherited_Lower(self)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: LowerValue()
+    pub fn lower_value(&self) -> i32 {
+        crate::ffi::IFSelect_SelectInList_inherited_LowerValue(self)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: HasUpper()
+    pub fn has_upper(&self) -> bool {
+        crate::ffi::IFSelect_SelectInList_inherited_HasUpper(self)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: Upper()
+    pub fn upper(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_SelectInList_inherited_Upper(self)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: UpperValue()
+    pub fn upper_value(&self) -> i32 {
+        crate::ffi::IFSelect_SelectInList_inherited_UpperValue(self)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectInList_inherited_Label(self)
+    }
+
+    /// Inherited from IFSelect_SelectAnyList: ListLabel()
+    pub fn list_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectInList_inherited_ListLabel(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectInList_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectInList_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectInList_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectInList_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectInList_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectIncorrectEntities.hxx
+// ========================
+
+/// A SelectIncorrectEntities sorts the Entities which have been
+/// noted as Incorrect in the Graph of the Session
+/// (flag "Incorrect")
+/// It can find a result only if ComputeCheck has formerly been
+/// called on the WorkSession. Else, its result will be empty.
+pub use crate::ffi::IFSelect_SelectIncorrectEntities as SelectIncorrectEntities;
+
+impl SelectIncorrectEntities {
+    /// Creates a SelectIncorrectEntities
+    /// i.e. a SelectFlag("Incorrect")
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectIncorrectEntities_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectIncorrectEntities_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectFlag
+    pub fn as_select_flag(&self) -> &SelectFlag {
+        crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectFlag(self)
+    }
+
+    /// Upcast to IFSelect_SelectFlag (mutable)
+    pub fn as_select_flag_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut SelectFlag> {
+        crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectFlag_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectIncorrectEntities_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectIncorrectEntities_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectIncorrectEntities_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectIncorrectEntities_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectIncorrectEntities_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectIncorrectEntities_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectIncorrectEntities_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectIncorrectEntities_inherited_Label(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: ExtractLabel()
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectIncorrectEntities_inherited_ExtractLabel(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectIntersection.hxx
+// ========================
+
+/// A SelectIntersection filters the Entities issued from several
+/// other Selections as Intersection of results : "AND" operator
+pub use crate::ffi::IFSelect_SelectIntersection as SelectIntersection;
+
+impl SelectIntersection {
+    /// Creates an empty SelectIntersection
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectIntersection_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Intersection (AND)"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectIntersection_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectIntersection_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectCombine
+    pub fn as_select_combine(&self) -> &SelectCombine {
+        crate::ffi::IFSelect_SelectIntersection_as_IFSelect_SelectCombine(self)
+    }
+
+    /// Upcast to IFSelect_SelectCombine (mutable)
+    pub fn as_select_combine_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectCombine> {
+        crate::ffi::IFSelect_SelectIntersection_as_IFSelect_SelectCombine_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectIntersection_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectIntersection_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: NbInputs()
+    pub fn nb_inputs(&self) -> i32 {
+        crate::ffi::IFSelect_SelectIntersection_inherited_NbInputs(self)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: Input()
+    pub fn input(&self, num: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectIntersection_inherited_Input(self, num)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: InputRank()
+    pub fn input_rank(&self, sel: &crate::ffi::HandleIFSelectSelection) -> i32 {
+        crate::ffi::IFSelect_SelectIntersection_inherited_InputRank(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: Add()
+    pub fn add(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+        atnum: i32,
+    ) {
+        crate::ffi::IFSelect_SelectIntersection_inherited_Add(self, sel, atnum)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: Remove()
+    pub fn remove(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) -> bool {
+        crate::ffi::IFSelect_SelectIntersection_inherited_Remove(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectIntersection_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectModelEntities.hxx
+// ========================
+
+/// A SelectModelEntities gets all the Entities of an
+/// InterfaceModel.
+pub use crate::ffi::IFSelect_SelectModelEntities as SelectModelEntities;
+
+impl SelectModelEntities {
+    /// Creates a SelectModelRoot
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectModelEntities_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Model Entities"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectModelEntities_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectModelEntities_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectBase
+    pub fn as_select_base(&self) -> &SelectBase {
+        crate::ffi::IFSelect_SelectModelEntities_as_IFSelect_SelectBase(self)
+    }
+
+    /// Upcast to IFSelect_SelectBase (mutable)
+    pub fn as_select_base_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut SelectBase> {
+        crate::ffi::IFSelect_SelectModelEntities_as_IFSelect_SelectBase_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectModelEntities_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectModelEntities_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectBase: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectModelEntities_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectModelRoots.hxx
+// ========================
+
+/// A SelectModelRoots gets all the Root Entities of an
+/// InterfaceModel. Remember that a "Root Entity" is defined as
+/// having no Sharing Entity (if there is a Loop between Entities,
+/// none of them can be a "Root").
+pub use crate::ffi::IFSelect_SelectModelRoots as SelectModelRoots;
+
+impl SelectModelRoots {
+    /// Creates a SelectModelRoot
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectModelRoots_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Model Roots"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectModelRoots_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectModelRoots_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectBase
+    pub fn as_select_base(&self) -> &SelectBase {
+        crate::ffi::IFSelect_SelectModelRoots_as_IFSelect_SelectBase(self)
+    }
+
+    /// Upcast to IFSelect_SelectBase (mutable)
+    pub fn as_select_base_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut SelectBase> {
+        crate::ffi::IFSelect_SelectModelRoots_as_IFSelect_SelectBase_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectModelRoots_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectModelRoots_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectBase: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectModelRoots_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectPointed.hxx
+// ========================
+
+/// This type of Selection is intended to describe a direct
+/// selection without an explicit criterium, for instance the
+/// result of picking viewed entities on a graphic screen
+///
+/// It can also be used to provide a list as internal alternate
+/// input : this use implies to clear the list once queried
+pub use crate::ffi::IFSelect_SelectPointed as SelectPointed;
+
+impl SelectPointed {
+    /// Creates a SelectPointed
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectPointed_ctor()
+    }
+
+    /// Returns a text which identifies the type of selection made.
+    /// It is "Pointed Entities"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectPointed_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectPointed_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectBase
+    pub fn as_select_base(&self) -> &SelectBase {
+        crate::ffi::IFSelect_SelectPointed_as_IFSelect_SelectBase(self)
+    }
+
+    /// Upcast to IFSelect_SelectBase (mutable)
+    pub fn as_select_base_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut SelectBase> {
+        crate::ffi::IFSelect_SelectPointed_as_IFSelect_SelectBase_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectPointed_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectPointed_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectBase: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectPointed_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectRange.hxx
+// ========================
+
+/// A SelectRange keeps or rejects a sub-set of the input set,
+/// that is the Entities of which rank in the iteration list
+/// is in a given range (for instance form 2nd to 6th, etc...)
+pub use crate::ffi::IFSelect_SelectRange as SelectRange;
+
+impl SelectRange {
+    /// Creates a SelectRange. Default is Take all the input list
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectRange_ctor()
+    }
+
+    /// Returns Lower limit (if there is; else, value is senseless)
+    pub fn lower(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_SelectRange_lower(self)
+    }
+
+    /// Returns Upper limit (if there is; else, value is senseless)
+    pub fn upper(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_SelectRange_upper(self)
+    }
+
+    /// Returns a text defining the criterium : following cases,
+    /// " From .. Until .." or "From .." or "Until .." or "Rank no .."
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectRange_extract_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectRange_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectRange_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectRange_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectRange_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectRange_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectRange_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectRange_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectRange_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectRange_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectRange_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectRange_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectRange_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectRange_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectRange_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectRange_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectRootComps.hxx
+// ========================
+
+/// A SelectRootComps sorts the Entities which are part of Strong
+/// Components, local roots of a set of Entities : they can be
+/// Single Components (containing one Entity) or Cycles
+/// This class gives a more secure result than SelectRoots (which
+/// considers only Single Components) but is longer to work : it
+/// can be used when there can be or there are cycles in a Model
+/// For each cycle, one Entity is given arbitrarily
+/// Reject works as for SelectRoots : Strong Components defined in
+/// the input list which are not local roots are given
+pub use crate::ffi::IFSelect_SelectRootComps as SelectRootComps;
+
+impl SelectRootComps {
+    /// Creates a SelectRootComps
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectRootComps_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Local Root Components"
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectRootComps_extract_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectRootComps_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectRootComps_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectRootComps_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectRootComps_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectRootComps_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectRootComps_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectRootComps_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectRootComps_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectRootComps_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectRootComps_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectRootComps_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectRootComps_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectRootComps_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectRootComps_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectRootComps_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectRoots.hxx
+// ========================
+
+/// A SelectRoots sorts the Entities which are local roots of a
+/// set of Entities (not shared by other Entities inside this set,
+/// even if they are shared by other Entities outside it)
+pub use crate::ffi::IFSelect_SelectRoots as SelectRoots;
+
+impl SelectRoots {
+    /// Creates a SelectRoots
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectRoots_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Local Root Entities"
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectRoots_extract_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectRoots_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectRoots_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectRoots_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectRoots_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectRoots_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectRoots_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectRoots_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectRoots_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectRoots_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectRoots_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectRoots_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectRoots_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectRoots_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectRoots_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectRoots_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectSent.hxx
+// ========================
+
+/// This class returns entities according sending to a file
+/// Once a model has been loaded, further sendings are recorded
+/// as status in the graph (for each value, a count of sendings)
+///
+/// Hence, it is possible to query entities : sent ones (at least
+/// once), non-sent (i.e. remaining) ones, duplicated ones, etc...
+///
+/// This selection performs this query
+pub use crate::ffi::IFSelect_SelectSent as SelectSent;
+
+impl SelectSent {
+    /// Creates a SelectSent :
+    /// sentcount = 0 -> remaining (non-sent) entities
+    /// sentcount = 1, atleast = True (D) -> sent (at least once)
+    /// sentcount = 2, atleast = True -> duplicated (sent least twice)
+    /// etc...
+    /// sentcount = 1, atleast = False -> sent just once (non-dupl.d)
+    /// sentcount = 2, atleast = False -> sent just twice
+    /// etc...
+    pub fn new_int_bool(sentcount: i32, atleast: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectSent_ctor_int_bool(sentcount, atleast)
+    }
+
+    /// Creates a SelectSent :
+    /// sentcount = 0 -> remaining (non-sent) entities
+    /// sentcount = 1, atleast = True (D) -> sent (at least once)
+    /// sentcount = 2, atleast = True -> duplicated (sent least twice)
+    /// etc...
+    /// sentcount = 1, atleast = False -> sent just once (non-dupl.d)
+    /// sentcount = 2, atleast = False -> sent just twice
+    /// etc...
+    pub fn new_int(sentcount: i32) -> cxx::UniquePtr<Self> {
+        Self::new_int_bool(sentcount, true)
+    }
+
+    /// Creates a SelectSent :
+    /// sentcount = 0 -> remaining (non-sent) entities
+    /// sentcount = 1, atleast = True (D) -> sent (at least once)
+    /// sentcount = 2, atleast = True -> duplicated (sent least twice)
+    /// etc...
+    /// sentcount = 1, atleast = False -> sent just once (non-dupl.d)
+    /// sentcount = 2, atleast = False -> sent just twice
+    /// etc...
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_int_bool(1, true)
+    }
+
+    /// Returns a text defining the criterium : query :
+    /// SentCount = 0 -> "Remaining (non-sent) entities"
+    /// SentCount = 1, AtLeast = True  -> "Sent entities"
+    /// SentCount = 1, AtLeast = False -> "Sent once (no duplicated)"
+    /// SentCount = 2, AtLeast = True  -> "Sent several times entities"
+    /// SentCount = 2, AtLeast = False -> "Sent twice entities"
+    /// SentCount > 2, AtLeast = True  -> "Sent at least <count> times entities"
+    /// SentCount > 2, AtLeast = False -> "Sent <count> times entities"
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectSent_extract_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectSent_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectSent_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectSent_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectSent_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectSent_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectSent_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectSent_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectSent_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectSent_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectSent_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectSent_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectSent_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectSent_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectSent_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectSent_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectShared.hxx
+// ========================
+
+/// A SelectShared selects Entities which are directly Shared
+/// by the Entities of the Input list
+pub use crate::ffi::IFSelect_SelectShared as SelectShared;
+
+impl SelectShared {
+    /// Creates a SelectShared;
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectShared_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Shared (one level)"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectShared_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectShared_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectShared_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectShared_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectShared_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectShared_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectShared_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectShared_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectShared_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectShared_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectShared_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectSharing.hxx
+// ========================
+
+/// A SelectSharing selects Entities which directly Share (Level
+/// One) the Entities of the Input list
+/// Remark : if an Entity of the Input List directly shares
+/// another one, it is of course present in the Result List
+pub use crate::ffi::IFSelect_SelectSharing as SelectSharing;
+
+impl SelectSharing {
+    /// Creates a SelectSharing;
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectSharing_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Sharing (one level)"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectSharing_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectSharing_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectSharing_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectSharing_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectSharing_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectSharing_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectSharing_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectSharing_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectSharing_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectSharing_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectSharing_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectSignature.hxx
+// ========================
+
+/// A SelectSignature sorts the Entities on a Signature Matching.
+/// The signature to match is given at creation time. Also, the
+/// required match is given at creation time : exact (IsEqual) or
+/// contains (the Type's Name must contain the criterium Text)
+///
+/// Remark that no more interpretation is done, it is an
+/// alphanumeric signature : for instance, DynamicType is matched
+/// as such, super-types are not considered
+///
+/// Also, numeric (integer) comparisons are supported : an item
+/// can be <val ou <=val or >val or >=val , val being an Integer
+///
+/// A SelectSignature may also be created from a SignCounter,
+/// which then just gives its LastValue as SignatureValue
+pub use crate::ffi::IFSelect_SelectSignature as SelectSignature;
+
+impl SelectSignature {
+    /// Returns a text defining the criterium.
+    /// (it refers to the text and exact flag to be matched, and is
+    /// qualified by the Name provided by the Signature)
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectSignature_extract_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectSignature_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectSignature_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectSignature_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectSignature_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectSignature_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectSignature_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectSignature_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectSignature_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectSignature_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectSignature_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectSignature_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectSignature_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectSignature_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectSignature_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectSignature_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectSignedShared.hxx
+// ========================
+
+/// In the graph, explore the Shareds of the input entities,
+/// until it encounters some which match a given Signature
+/// (for a limited level, filters the returned list)
+/// By default, fitted for any level
+pub use crate::ffi::IFSelect_SelectSignedShared as SelectSignedShared;
+
+impl SelectSignedShared {
+    /// Returns a text defining the criterium.
+    /// (it refers to the text and exact flag to be matched, and is
+    /// qualified by the Name provided by the Signature)
+    pub fn explore_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectSignedShared_explore_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectSignedShared_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExplore
+    pub fn as_select_explore(&self) -> &SelectExplore {
+        crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_SelectExplore(self)
+    }
+
+    /// Upcast to IFSelect_SelectExplore (mutable)
+    pub fn as_select_explore_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExplore> {
+        crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_SelectExplore_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectSignedShared_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectSignedShared_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectSignedShared_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectSignedShared_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectSignedShared_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExplore: Level()
+    pub fn level(&self) -> i32 {
+        crate::ffi::IFSelect_SelectSignedShared_inherited_Level(self)
+    }
+
+    /// Inherited from IFSelect_SelectExplore: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectSignedShared_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectSignedSharing.hxx
+// ========================
+
+/// In the graph, explore the sharings of the input entities,
+/// until it encounters some which match a given Signature
+/// (for a limited level, filters the returned list)
+/// By default, fitted for any level
+pub use crate::ffi::IFSelect_SelectSignedSharing as SelectSignedSharing;
+
+impl SelectSignedSharing {
+    /// Returns a text defining the criterium.
+    /// (it refers to the text and exact flag to be matched, and is
+    /// qualified by the Name provided by the Signature)
+    pub fn explore_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectSignedSharing_explore_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectSignedSharing_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExplore
+    pub fn as_select_explore(&self) -> &SelectExplore {
+        crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_SelectExplore(self)
+    }
+
+    /// Upcast to IFSelect_SelectExplore (mutable)
+    pub fn as_select_explore_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExplore> {
+        crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_SelectExplore_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectSignedSharing_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectSignedSharing_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectSignedSharing_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectSignedSharing_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectSignedSharing_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExplore: Level()
+    pub fn level(&self) -> i32 {
+        crate::ffi::IFSelect_SelectSignedSharing_inherited_Level(self)
+    }
+
+    /// Inherited from IFSelect_SelectExplore: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectSignedSharing_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectSuite.hxx
+// ========================
+
+/// A SelectSuite can describe a suite of SelectDeduct as a unique
+/// one : in other words, it can be seen as a "macro selection"
+///
+/// It works by applying each of its items (which is a
+/// SelectDeduct) on the result computed by the previous one
+/// (by using Alternate Input)
+///
+/// But each of these Selections used as items may be used
+/// independently, it will then give its own result
+///
+/// Hence, SelectSuite gives a way of defining a new Selection
+/// from existing ones, without having to do copies or saves
+pub use crate::ffi::IFSelect_SelectSuite as SelectSuite;
+
+impl SelectSuite {
+    /// Creates an empty SelectSuite
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectSuite_ctor()
+    }
+
+    /// Sets a value for the Label
+    pub fn set_label(self: std::pin::Pin<&mut Self>, lab: &str) {
+        crate::ffi::IFSelect_SelectSuite_set_label(self, lab)
+    }
+
+    /// Returns the Label
+    /// Either it has been defined by SetLabel, or it will give
+    /// "Suite of nn Selections"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectSuite_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectSuite_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectSuite_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectSuite_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectSuite_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectSuite_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectSuite_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectSuite_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectSuite_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectSuite_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectSuite_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectType.hxx
+// ========================
+
+/// A SelectType keeps or rejects Entities of which the Type
+/// is Kind of a given Cdl Type
+pub use crate::ffi::IFSelect_SelectType as SelectType;
+
+impl SelectType {
+    /// Creates a SelectType. Default is no filter
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectType_ctor()
+    }
+
+    /// Creates a SelectType for a given Type
+    pub fn new_handlestandardtype(atype: &crate::ffi::HandleStandardType) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectType_ctor_handlestandardtype(atype)
+    }
+
+    /// Returns the Type to be matched for select : this is the type
+    /// given at instantiation time
+    pub fn type_for_match(&self) -> cxx::UniquePtr<crate::ffi::HandleStandardType> {
+        crate::ffi::IFSelect_SelectType_type_for_match(self)
+    }
+
+    /// Returns a text defining the criterium.
+    /// (should by gotten from Type of Entity used for instantiation)
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectType_extract_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectType_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectAnyType
+    pub fn as_select_any_type(&self) -> &SelectAnyType {
+        crate::ffi::IFSelect_SelectType_as_IFSelect_SelectAnyType(self)
+    }
+
+    /// Upcast to IFSelect_SelectAnyType (mutable)
+    pub fn as_select_any_type_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectAnyType> {
+        crate::ffi::IFSelect_SelectType_as_IFSelect_SelectAnyType_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectType_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectType_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectType_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectType_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectType_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectType_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectType_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectType_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectType_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectType_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectType_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectType_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectType_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectType_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectUnion.hxx
+// ========================
+
+/// A SelectUnion cumulates the Entities issued from several other
+/// Selections (union of results : "OR" operator)
+pub use crate::ffi::IFSelect_SelectUnion as SelectUnion;
+
+impl SelectUnion {
+    /// Creates an empty SelectUnion
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectUnion_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Union (OR)"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectUnion_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectUnion_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectCombine
+    pub fn as_select_combine(&self) -> &SelectCombine {
+        crate::ffi::IFSelect_SelectUnion_as_IFSelect_SelectCombine(self)
+    }
+
+    /// Upcast to IFSelect_SelectCombine (mutable)
+    pub fn as_select_combine_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectCombine> {
+        crate::ffi::IFSelect_SelectUnion_as_IFSelect_SelectCombine_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectUnion_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectUnion_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: NbInputs()
+    pub fn nb_inputs(&self) -> i32 {
+        crate::ffi::IFSelect_SelectUnion_inherited_NbInputs(self)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: Input()
+    pub fn input(&self, num: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectUnion_inherited_Input(self, num)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: InputRank()
+    pub fn input_rank(&self, sel: &crate::ffi::HandleIFSelectSelection) -> i32 {
+        crate::ffi::IFSelect_SelectUnion_inherited_InputRank(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: Add()
+    pub fn add(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+        atnum: i32,
+    ) {
+        crate::ffi::IFSelect_SelectUnion_inherited_Add(self, sel, atnum)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: Remove()
+    pub fn remove(
+        self: std::pin::Pin<&mut Self>,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) -> bool {
+        crate::ffi::IFSelect_SelectUnion_inherited_Remove(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectCombine: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectUnion_inherited_FillIterator(self, iter)
+    }
+}
+
+// ========================
+// From IFSelect_SelectUnknownEntities.hxx
+// ========================
+
+/// A SelectUnknownEntities sorts the Entities which are qualified
+/// as "Unknown" (their Type has not been recognized)
+pub use crate::ffi::IFSelect_SelectUnknownEntities as SelectUnknownEntities;
+
+impl SelectUnknownEntities {
+    /// Creates a SelectUnknownEntities
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectUnknownEntities_ctor()
+    }
+
+    /// Returns a text defining the criterium : "Recognized Entities"
+    pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectUnknownEntities_extract_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SelectUnknownEntities_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_SelectDeduct(self)
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectDeduct> {
+        crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_SelectDeduct_mut(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_select_extract(&self) -> &SelectExtract {
+        crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_SelectExtract(self)
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_select_extract_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SelectExtract> {
+        crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_SelectExtract_mut(self)
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_selection(&self) -> &Selection {
+        crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_Selection(self)
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_selection_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Selection> {
+        crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_Selection_mut(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    pub fn set_input(self: std::pin::Pin<&mut Self>, sel: &crate::ffi::HandleIFSelectSelection) {
+        crate::ffi::IFSelect_SelectUnknownEntities_inherited_SetInput(self, sel)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: Input()
+    pub fn input(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SelectUnknownEntities_inherited_Input(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    pub fn has_input(&self) -> bool {
+        crate::ffi::IFSelect_SelectUnknownEntities_inherited_HasInput(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    pub fn has_alternate(&self) -> bool {
+        crate::ffi::IFSelect_SelectUnknownEntities_inherited_HasAlternate(self)
+    }
+
+    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    pub fn fill_iterator(&self, iter: std::pin::Pin<&mut crate::ffi::IFSelect_SelectionIterator>) {
+        crate::ffi::IFSelect_SelectUnknownEntities_inherited_FillIterator(self, iter)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    pub fn is_direct(&self) -> bool {
+        crate::ffi::IFSelect_SelectUnknownEntities_inherited_IsDirect(self)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    pub fn set_direct(self: std::pin::Pin<&mut Self>, direct: bool) {
+        crate::ffi::IFSelect_SelectUnknownEntities_inherited_SetDirect(self, direct)
+    }
+
+    /// Inherited from IFSelect_SelectExtract: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SelectUnknownEntities_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_Selection.hxx
+// ========================
+
+/// A Selection allows to define a set of Interface Entities.
+/// Entities to be put on an output file should be identified in
+/// a way as independent from such or such execution as possible.
+/// This permits to handle comprehensive criteria, and to replay
+/// them when a new variant of an input file has to be processed.
+///
+/// Its input can be, either an Interface Model (the very source),
+/// or another-other Selection(s) or any other output.
+/// All list computations start from an input Graph (from IFGraph)
+pub use crate::ffi::IFSelect_Selection as Selection;
+
+impl Selection {
+    /// Returns a text which defines the criterium applied by a
+    /// Selection (can be used to be printed, displayed ...)
+    /// Specific to each class
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_Selection_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_Selection_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelection;
+
+impl HandleIFSelectSelection {
+    /// Dereference this Handle to access the underlying IFSelect_Selection
+    pub fn get(&self) -> &crate::ffi::IFSelect_Selection {
+        crate::ffi::HandleIFSelectSelection_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_Selection
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_Selection> {
+        crate::ffi::HandleIFSelectSelection_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_SelectionIterator.hxx
+// ========================
+
+/// Defines an Iterator on a list of Selections
+pub use crate::ffi::IFSelect_SelectionIterator as SelectionIterator;
+
+impl SelectionIterator {
+    /// Creates an empty iterator, ready to be filled
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectionIterator_ctor()
+    }
+
+    /// Creates an iterator from a Selection : it lists the Selections
+    /// from which <sel> depends (given by its method FillIterator)
+    pub fn new_handleifselectselection(
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SelectionIterator_ctor_handleifselectselection(sel)
+    }
+}
+
+// ========================
+// From IFSelect_SessionDumper.hxx
+// ========================
+
+/// A SessionDumper is called by SessionFile. It takes into
+/// account a set of classes (such as Selections, Dispatches ...).
+/// SessionFile writes the Type (as defined by cdl) of each Item
+/// and its general Parameters. It manages the names of the Items.
+///
+/// A SessionDumper must be able to Write the Parameters which are
+/// own of each Item it takes into account, given its Class, then
+/// to Recognize the Type and Read its Own Parameters to create
+/// an Item of this Type with these own Parameters.
+///
+/// Then, there must be defined one sub-type of SessionDumper per
+/// consistent set of classes (e.g. a package).
+///
+/// By Own Parameters, understand Parameters given at Creation Time
+/// if there are, or specific of a given class, apart from those
+/// defined at superclass levels (e.g. Final Selection for a
+/// Dispatch, Input Selection for a SelectExtract or SelectDeduct,
+/// Direct Status for a SelectExtract, etc...).
+///
+/// The Parameters are those stored in a WorkSession, they can be
+/// of Types : IntParam, HAsciiString (for TextParam), Selection,
+/// Dispatch.
+///
+/// SessionDumpers are organized in a Library which is used by
+/// SessionFile. They are put at Creation Time in this Library.
+pub use crate::ffi::IFSelect_SessionDumper as SessionDumper;
+
+impl SessionDumper {
+    /// Returns the Next SesionDumper in the Library. Returns a Null
+    /// Handle at the End.
+    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSessionDumper> {
+        crate::ffi::IFSelect_SessionDumper_next(self)
+    }
+
+    /// Returns the First item of the Library of Dumper. The Next ones
+    /// are then obtained by Next on the returned items
+    pub fn first() -> cxx::UniquePtr<crate::ffi::HandleIFSelectSessionDumper> {
+        crate::ffi::IFSelect_SessionDumper_first()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SessionDumper_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSessionDumper;
+
+impl HandleIFSelectSessionDumper {
+    /// Dereference this Handle to access the underlying IFSelect_SessionDumper
+    pub fn get(&self) -> &crate::ffi::IFSelect_SessionDumper {
+        crate::ffi::HandleIFSelectSessionDumper_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SessionDumper
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_SessionDumper> {
+        crate::ffi::HandleIFSelectSessionDumper_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_SessionFile.hxx
+// ========================
+
+/// A SessionFile is intended to manage access between a
+/// WorkSession and an Ascii Form, to be considered as a Dump.
+/// It allows to write the File from the WorkSession, and later
+/// read the File to the WorkSession, by keeping required
+/// descriptions (such as dependences).
+///
+/// The produced File is under an Ascii Form, then it may be
+/// easily consulted.
+/// It is possible to cumulate reading of several Files. But in
+/// case of Names conflict, the newer Names are forgottens.
+///
+/// The Dump supports the description of XSTEP functionalities
+/// (Sharing an Interface File, with Selections, Dispatches,
+/// Modifiers ...) but does not refer to the Interface File
+/// which is currently loaded.
+///
+/// SessionFile works with a library of SessionDumper type objects
+///
+/// The File is Produced as follows :
+/// SessionFile produces all general Information (such as Int and
+/// Text Parameters, Types and Inputs of Selections, Dispatches,
+/// Modifiers ...) and calls the SessionDumpers to produce all
+/// the particular Data : creation arguments, parameters to be set
+/// It is Read in the same terms :
+/// SessionFile reads and interprets all general Information,
+/// and calls the SessionDumpers to recognize Types and for a
+/// recognized Type create the corresponding Object with its
+/// particular parameters as they were written.
+/// The best way to work is to have one SessionDumper for each
+/// consistent set of classes (e.g. a package).
+pub use crate::ffi::IFSelect_SessionFile as SessionFile;
+
+impl SessionFile {
+    /// Creates a SessionFile, ready to read Files in order to load
+    /// them into a given WorkSession.
+    /// The following Read Operations must then be called.
+    /// It is also possible to perform a Write, which produces a
+    /// complete File of all the content of the WorkSession.
+    pub fn new_handleifselectworksession(
+        WS: &crate::ffi::HandleIFSelectWorkSession,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SessionFile_ctor_handleifselectworksession(WS)
+    }
+
+    /// Creates a SessionFile which Writes the content of a WorkSession
+    /// to a File (directly calls Write)
+    /// Then, IsDone acknowledges on the result of the Operation.
+    /// But such a SessionFile may not Read a File to a WorkSession.
+    pub fn new_handleifselectworksession_charptr(
+        WS: &crate::ffi::HandleIFSelectWorkSession,
+        filename: &str,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SessionFile_ctor_handleifselectworksession_charptr(WS, filename)
+    }
+
+    /// Adds a line to the list of recorded lines
+    pub fn add_line(self: std::pin::Pin<&mut Self>, line: &str) {
+        crate::ffi::IFSelect_SessionFile_add_line(self, line)
+    }
+
+    /// Writes the recorded lines to a file named <name> then clears
+    /// the list of lines.
+    /// Returns False (with no clearing) if the file could not be
+    /// created
+    pub fn write_file(self: std::pin::Pin<&mut Self>, name: &str) -> bool {
+        crate::ffi::IFSelect_SessionFile_write_file(self, name)
+    }
+
+    /// Reads the recorded lines from a file named <name>, after
+    /// having cleared the list (stops if RecognizeFile fails)
+    /// Returns False (with no clearing) if the file could not be read
+    pub fn read_file(self: std::pin::Pin<&mut Self>, name: &str) -> bool {
+        crate::ffi::IFSelect_SessionFile_read_file(self, name)
+    }
+
+    /// Recognizes the header line. returns True if OK, False else
+    pub fn recognize_file(self: std::pin::Pin<&mut Self>, headerline: &str) -> bool {
+        crate::ffi::IFSelect_SessionFile_recognize_file(self, headerline)
+    }
+
+    /// Performs a Write Operation from a WorkSession to a File
+    /// i.e. calls WriteSession then WriteEnd, and WriteFile
+    /// Returned Value is : 0 for OK, -1 File could not be created,
+    /// >0 Error during Write (see WriteSession)
+    /// IsDone can be called too (will return True for OK)
+    pub fn write(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
+        crate::ffi::IFSelect_SessionFile_write(self, filename)
+    }
+
+    /// Performs a Read Operation from a file to a WorkSession
+    /// i.e. calls ReadFile, then ReadSession and ReadEnd
+    /// Returned Value is : 0 for OK, -1 File could not be opened,
+    /// >0 Error during Read  (see WriteSession)
+    /// IsDone can be called too (will return True for OK)
+    pub fn read(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
+        crate::ffi::IFSelect_SessionFile_read(self, filename)
+    }
+
+    /// Internal routine which processes a line into words
+    /// and prepares its exploration
+    pub fn split_line(self: std::pin::Pin<&mut Self>, line: &str) {
+        crate::ffi::IFSelect_SessionFile_split_line(self, line)
+    }
+
+    /// Returns the WorkSession on which a SessionFile works.
+    /// Remark that it is returned as Immutable.
+    pub fn work_session(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectWorkSession> {
+        crate::ffi::IFSelect_SessionFile_work_session(self)
+    }
+
+    /// During a Write action, commands to send a Text without
+    /// interpretation. It will be sent as well
+    pub fn send_text(self: std::pin::Pin<&mut Self>, text: &str) {
+        crate::ffi::IFSelect_SessionFile_send_text(self, text)
+    }
+
+    /// Returns the content of a Text Parameter (without the quotes).
+    /// Returns an empty string if the Parameter is not a Text.
+    pub fn text_value(&self, num: i32) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SessionFile_text_value(self, num)
+    }
+}
+
+// ========================
+// From IFSelect_SessionPilot.hxx
+// ========================
+
+/// A SessionPilot is intended to make easier the use of a WorkSession.
+/// It receives commands, under alphanumeric form,
+/// then calls a library of Activators to interpret and run them.
+///
+/// Then, WorkSession just records data required to work :
+/// Rules for Selection, Dispatch ... ; File Data (InterfaceModel
+/// and results of Evaluations and Transfer as required).
+/// SessionPilot records and works with alphanumeric commands and
+/// their results (under a very simple form). It calls a list of
+/// Activators to perform the actions.
+///
+/// A Command can have several forms :
+/// - classic execution, to list, evaluate, or enrich the session
+/// - command which creates a new item (a Selection for instance)
+/// such a command should not add it to the session, but make it
+/// recorded by the Pilot (method RecordItem). The Pilot will
+/// add the item in the session, with no name
+/// -> such a command may be called :
+/// - directly, it will add an item with no name
+/// - by command xset, in the following form :
+/// xset name command ...  calls the command and adds the item
+/// to the session under the specified name (if not yet known)
+///
+/// Thus, to a specific Norm or way of working, only Activators
+/// change. A specific Initialisation can be done by starting
+/// with a specific set of commands.
+///
+/// In addition, SessionPilot is a sub-type of Activator, to
+/// recognize some built-in commands : exit/x, help/?, control of
+/// command line, and commands xstep xset ... See method Do
+///
+/// At least, empty lines and comment lines (beginning by '#')
+/// are skipped (comment lines are display if read from file)
+pub use crate::ffi::IFSelect_SessionPilot as SessionPilot;
+
+impl SessionPilot {
+    /// Creates an empty SessionPilot, with a prompt which will be
+    /// displayed on querying commands. If not precised (""), this
+    /// prompt is set to "Test-XSTEP>"
+    pub fn new_charptr(prompt: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SessionPilot_ctor_charptr(prompt)
+    }
+
+    /// Returns the WorkSession which is worked on
+    pub fn session(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectWorkSession> {
+        crate::ffi::IFSelect_SessionPilot_session(self)
+    }
+
+    /// Returns the WorKlibrary (Null if not set). WorkLibrary is used
+    /// to Read and Write Files, according to the Norm
+    pub fn library(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectWorkLibrary> {
+        crate::ffi::IFSelect_SessionPilot_library(self)
+    }
+
+    /// Returns the part of the command line which begins at argument
+    /// <numarg> between 0 and NbWords-1 (by default, all the line)
+    /// Empty string if out of range
+    pub fn command_part(&self, numarg: i32) -> String {
+        crate::ffi::IFSelect_SessionPilot_command_part(self, numarg)
+    }
+
+    /// Returns a word given its rank, as a CString.
+    /// As for Word, begins at 0 (the command name), etc...
+    pub fn arg(&self, num: i32) -> String {
+        crate::ffi::IFSelect_SessionPilot_arg(self, num)
+    }
+
+    /// Reads commands from a Script File, named <file>. By default
+    /// (file = ""), reads from standard input with a prompt
+    /// Else (reading from a file), the read commands are displayed
+    /// onto standard output. Allows nested reads. Reading is stopped
+    /// either by command x or exit, or by reaching end of file
+    /// Return Value follows the rules of Do : RetEnd for normal end,
+    /// RetFail if script could not be opened
+    pub fn read_script(self: std::pin::Pin<&mut Self>, file: &str) -> i32 {
+        crate::ffi::IFSelect_SessionPilot_read_script(self, file)
+    }
+
+    /// Executes the Command, itself (for built-in commands, which
+    /// have priority) or by using the list of Activators.
+    /// The value returned is : RetVoid if nothing done (void command)
+    /// RetDone if execution OK, RetEnd if END OF SESSION, RetError if
+    /// command unknown or incorrect, RetFail if error on execution
+    /// If execution is OK and RecordMode is set, this Command Line is
+    /// recorded to the list (see below).
+    pub fn perform(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::IFSelect_SessionPilot_perform(self)
+    }
+
+    /// Executes the Commands, except that the command name (word 0)
+    /// is aliased. The rest of the command line is unchanged
+    /// If <alias> is empty, Executes with no change
+    ///
+    /// Error status is returned if the alias is unknown as command
+    pub fn execute_alias(
+        self: std::pin::Pin<&mut Self>,
+        aliasname: &crate::ffi::TCollection_AsciiString,
+    ) -> i32 {
+        crate::ffi::IFSelect_SessionPilot_execute_alias(self, aliasname)
+    }
+
+    /// Sets the Command then tries to execute it. Return value :
+    /// same as for Perform
+    pub fn execute(
+        self: std::pin::Pin<&mut Self>,
+        command: &crate::ffi::TCollection_AsciiString,
+    ) -> i32 {
+        crate::ffi::IFSelect_SessionPilot_execute(self, command)
+    }
+
+    /// Interprets a string value as an entity number :
+    /// if it gives an integer, returns its value
+    /// else, considers it as ENtityLabel (preferably case sensitive)
+    /// in case of failure, returns 0
+    pub fn number(&self, val: &str) -> i32 {
+        crate::ffi::IFSelect_SessionPilot_number(self, val)
+    }
+
+    /// Help for specific commands (apart from general command help)
+    pub fn help(&self, number: i32) -> String {
+        crate::ffi::IFSelect_SessionPilot_help(self, number)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SessionPilot_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Activator
+    pub fn as_activator(&self) -> &Activator {
+        crate::ffi::IFSelect_SessionPilot_as_IFSelect_Activator(self)
+    }
+
+    /// Upcast to IFSelect_Activator (mutable)
+    pub fn as_activator_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Activator> {
+        crate::ffi::IFSelect_SessionPilot_as_IFSelect_Activator_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_ShareOut.hxx
+// ========================
+
+/// This class gathers the information required to produce one or
+/// several file(s) from the content of an InterfaceModel (passing
+/// through the creation of intermediate Models).
+///
+/// It can correspond to a complete Divide up of a set of Entities
+/// intended to be exhaustive and to limit duplications. Or to a
+/// simple Extraction of some Entities, in order to work on them.
+///
+/// A ShareOut is composed of a list of Dispatches.
+/// To Each Dispatch in the ShareOut, is bound an Id. Number
+/// This Id. Number allows to identify a Display inside the
+/// ShareOut in a stable way (for instance, to attach file names)
+///
+/// ShareOut can be seen as a "passive" description, activated
+/// through a ShareOutResult, which gives the InterfaceModel on
+/// which to work, as a unique source. Thus it is easy to change
+/// it without coherence problems
+///
+/// Services about it are provided by the class ShareOutResult
+/// which is a service class : simulation (list of files and of
+/// entities per file; "forgotten" entities; duplicated entities),
+/// exploitation (generation of derivated Models, each of them
+/// generating an output file)
+pub use crate::ffi::IFSelect_ShareOut as ShareOut;
+
+impl ShareOut {
+    /// Creates an empty ShareOut
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ShareOut_ctor()
+    }
+
+    /// Returns a Modifier of the list, given its rank :
+    /// Model Modifiers if <formodel> is True, File Modifiers else
+    pub fn general_modifier(
+        &self,
+        formodel: bool,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectGeneralModifier> {
+        crate::ffi::IFSelect_ShareOut_general_modifier(self, formodel, num)
+    }
+
+    /// Returns the Root bound to a Dispatch, given its rank
+    /// Returns a Null Handle if not defined
+    pub fn root_name(&self, num: i32) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_ShareOut_root_name(self, num)
+    }
+
+    /// Returns the general Prefix. Can be empty.
+    pub fn prefix(&self) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_ShareOut_prefix(self)
+    }
+
+    /// Returns the Default Root Name. Can be empty.
+    pub fn default_root_name(&self) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_ShareOut_default_root_name(self)
+    }
+
+    /// Returns the general Extension. Can be empty (not recommended)
+    pub fn extension(&self) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_ShareOut_extension(self)
+    }
+
+    /// Computes the complete file name for a Packet of a Dispatch,
+    /// given Dispatch Number (Rank), Packet Number, and Count of
+    /// Packets generated by this Dispatch (0 if unknown)
+    ///
+    /// File Name is made of following strings, concatenated :
+    /// General Prefix, Root Name for Dispatch, Packet Suffix, and
+    /// General Extension. If no Root Name is specified for a
+    /// Dispatch, DefaultRootName is considered (and pnum is not used,
+    /// but <thenbdefs> is incremented and used
+    /// Error if no Root is defined for this <idnum>
+    pub fn file_name(
+        self: std::pin::Pin<&mut Self>,
+        dnum: i32,
+        pnum: i32,
+        nbpack: i32,
+    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_ShareOut_file_name(self, dnum, pnum, nbpack)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_ShareOut_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectShareOut> {
+        crate::ffi::IFSelect_ShareOut_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIFSelectShareOut;
+
+impl HandleIFSelectShareOut {
+    /// Dereference this Handle to access the underlying IFSelect_ShareOut
+    pub fn get(&self) -> &crate::ffi::IFSelect_ShareOut {
+        crate::ffi::HandleIFSelectShareOut_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_ShareOut
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_ShareOut> {
+        crate::ffi::HandleIFSelectShareOut_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_ShareOutResult.hxx
+// ========================
+
+/// This class gives results computed from a ShareOut : simulation
+/// before transfer, helps to list entities ...
+/// Transfer itself will later be performed, either by a
+/// TransferCopy to simply divide up a file, or a TransferDispatch
+/// which can be parametred with more details
+pub use crate::ffi::IFSelect_ShareOutResult as ShareOutResult;
+
+impl ShareOutResult {
+    /// Creates a ShareOutResult from a ShareOut, to work on a Model
+    /// (without any more precision; uses Active Protocol)
+    pub fn new_handleifselectshareout_handleinterfaceinterfacemodel(
+        sho: &crate::ffi::HandleIFSelectShareOut,
+        mod_: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ShareOutResult_ctor_handleifselectshareout_handleinterfaceinterfacemodel(sho, mod_)
+    }
+
+    /// Creates a ShareOutResult from a ShareOut, to work on a Graph
+    /// already computed, which defines the Input Model and can
+    /// specialize some Entities
+    pub fn new_handleifselectshareout_graph(
+        sho: &crate::ffi::HandleIFSelectShareOut,
+        G: &crate::ffi::Interface_Graph,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ShareOutResult_ctor_handleifselectshareout_graph(sho, G)
+    }
+
+    /// Creates a ShareOutResult from a unique Dispatch, to work on
+    /// a Model. As if it was a ShareOut with only one Dispatch
+    /// (without any more precision; uses Active Protocol)
+    /// Allows to compute the effect of a single Dispatch
+    pub fn new_handleifselectdispatch_handleinterfaceinterfacemodel(
+        disp: &crate::ffi::HandleIFSelectDispatch,
+        mod_: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ShareOutResult_ctor_handleifselectdispatch_handleinterfaceinterfacemodel(disp, mod_)
+    }
+
+    /// Creates a ShareOutResult from a unique Dispatch, to work on
+    /// a Graph. As if it was a ShareOut with only one Dispatch
+    /// Allows to compute the effect of a single Dispatch
+    pub fn new_handleifselectdispatch_graph(
+        disp: &crate::ffi::HandleIFSelectDispatch,
+        G: &crate::ffi::Interface_Graph,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_ShareOutResult_ctor_handleifselectdispatch_graph(disp, G)
+    }
+
+    /// Returns the ShareOut used to create the ShareOutResult
+    /// if creation from a Dispatch, returns a Null Handle
+    pub fn share_out(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectShareOut> {
+        crate::ffi::IFSelect_ShareOutResult_share_out(self)
+    }
+
+    /// Returns the list of recorded Packets, under two modes :
+    /// - <complete> = False, the strict definition of Packets, i.e.
+    /// for each one, the Root Entities, to be explicitly sent
+    /// - <complete> = True (Default), the completely evaluated list,
+    /// i.e. which really gives the destination of each entity :
+    /// this mode allows to evaluate duplications
+    /// Remark that to send packets, iteration remains preferable
+    /// (file names are managed)
+    pub fn packets(
+        self: std::pin::Pin<&mut Self>,
+        complete: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectPacketList> {
+        crate::ffi::IFSelect_ShareOutResult_packets(self, complete)
+    }
+
+    /// Returns the current Dispatch
+    pub fn dispatch(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectDispatch> {
+        crate::ffi::IFSelect_ShareOutResult_dispatch(self)
+    }
+
+    /// Returns the File Name which corresponds to current Packet
+    /// (computed by ShareOut)
+    /// If current Packet has no associated name (see ShareOut),
+    /// the returned value is Null
+    pub fn file_name(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_ShareOutResult_file_name(self)
+    }
+}
+
+// ========================
+// From IFSelect_SignAncestor.hxx
+// ========================
+
+pub use crate::ffi::IFSelect_SignAncestor as SignAncestor;
+
+impl SignAncestor {
+    pub fn new_bool(nopk: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SignAncestor_ctor_bool(nopk)
+    }
+
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool(false)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SignAncestor_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SignType
+    pub fn as_sign_type(&self) -> &SignType {
+        crate::ffi::IFSelect_SignAncestor_as_IFSelect_SignType(self)
+    }
+
+    /// Upcast to IFSelect_SignType (mutable)
+    pub fn as_sign_type_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut SignType> {
+        crate::ffi::IFSelect_SignAncestor_as_IFSelect_SignType_mut(self)
+    }
+
+    /// Upcast to IFSelect_Signature
+    pub fn as_signature(&self) -> &Signature {
+        crate::ffi::IFSelect_SignAncestor_as_IFSelect_Signature(self)
+    }
+
+    /// Upcast to IFSelect_Signature (mutable)
+    pub fn as_signature_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Signature> {
+        crate::ffi::IFSelect_SignAncestor_as_IFSelect_Signature_mut(self)
+    }
+
+    /// Upcast to Interface_SignType
+    pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
+        crate::ffi::IFSelect_SignAncestor_as_Interface_SignType(self)
+    }
+
+    /// Upcast to Interface_SignType (mutable)
+    pub fn as_interface_sign_type_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::interface::SignType> {
+        crate::ffi::IFSelect_SignAncestor_as_Interface_SignType_mut(self)
+    }
+
+    /// Upcast to MoniTool_SignText
+    pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
+        crate::ffi::IFSelect_SignAncestor_as_MoniTool_SignText(self)
+    }
+
+    /// Upcast to MoniTool_SignText (mutable)
+    pub fn as_moni_tool_sign_text_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::moni_tool::SignText> {
+        crate::ffi::IFSelect_SignAncestor_as_MoniTool_SignText_mut(self)
+    }
+
+    /// Inherited from IFSelect_Signature: SetIntCase()
+    pub fn set_int_case(
+        self: std::pin::Pin<&mut Self>,
+        hasmin: bool,
+        valmin: i32,
+        hasmax: bool,
+        valmax: i32,
+    ) {
+        crate::ffi::IFSelect_SignAncestor_inherited_SetIntCase(self, hasmin, valmin, hasmax, valmax)
+    }
+
+    /// Inherited from IFSelect_Signature: IsIntCase()
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        crate::ffi::IFSelect_SignAncestor_inherited_IsIntCase(self, hasmin, valmin, hasmax, valmax)
+    }
+
+    /// Inherited from IFSelect_Signature: CaseList()
+    pub fn case_list(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+        crate::ffi::IFSelect_SignAncestor_inherited_CaseList(self)
+    }
+
+    /// Inherited from IFSelect_Signature: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SignAncestor_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SignCategory.hxx
+// ========================
+
+/// This Signature returns the Category of an entity, as recorded
+/// in the model
+pub use crate::ffi::IFSelect_SignCategory as SignCategory;
+
+impl SignCategory {
+    /// Returns a SignCategory
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SignCategory_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SignCategory_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Signature
+    pub fn as_signature(&self) -> &Signature {
+        crate::ffi::IFSelect_SignCategory_as_IFSelect_Signature(self)
+    }
+
+    /// Upcast to IFSelect_Signature (mutable)
+    pub fn as_signature_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Signature> {
+        crate::ffi::IFSelect_SignCategory_as_IFSelect_Signature_mut(self)
+    }
+
+    /// Upcast to Interface_SignType
+    pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
+        crate::ffi::IFSelect_SignCategory_as_Interface_SignType(self)
+    }
+
+    /// Upcast to Interface_SignType (mutable)
+    pub fn as_interface_sign_type_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::interface::SignType> {
+        crate::ffi::IFSelect_SignCategory_as_Interface_SignType_mut(self)
+    }
+
+    /// Upcast to MoniTool_SignText
+    pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
+        crate::ffi::IFSelect_SignCategory_as_MoniTool_SignText(self)
+    }
+
+    /// Upcast to MoniTool_SignText (mutable)
+    pub fn as_moni_tool_sign_text_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::moni_tool::SignText> {
+        crate::ffi::IFSelect_SignCategory_as_MoniTool_SignText_mut(self)
+    }
+
+    /// Inherited from IFSelect_Signature: SetIntCase()
+    pub fn set_int_case(
+        self: std::pin::Pin<&mut Self>,
+        hasmin: bool,
+        valmin: i32,
+        hasmax: bool,
+        valmax: i32,
+    ) {
+        crate::ffi::IFSelect_SignCategory_inherited_SetIntCase(self, hasmin, valmin, hasmax, valmax)
+    }
+
+    /// Inherited from IFSelect_Signature: IsIntCase()
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        crate::ffi::IFSelect_SignCategory_inherited_IsIntCase(self, hasmin, valmin, hasmax, valmax)
+    }
+
+    /// Inherited from IFSelect_Signature: CaseList()
+    pub fn case_list(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+        crate::ffi::IFSelect_SignCategory_inherited_CaseList(self)
+    }
+
+    /// Inherited from IFSelect_Signature: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SignCategory_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SignCounter.hxx
+// ========================
+
+/// SignCounter gives the frame to count signatures associated
+/// with entities, deducted from them. Ex.: their Dynamic Type.
+///
+/// It can sort a set of Entities according a signature, i.e. :
+/// - list of different values found for this Signature
+/// - for each one, count and list of entities
+/// Results are returned as a SignatureList, which can be queried
+/// on the count (list of strings, count per signature, or list of
+/// entities per signature)
+///
+/// A SignCounter can be filled, either directly from lists, or
+/// from the result of a Selection : hence, its content can be
+/// automatically recomputed as desired
+///
+/// SignCounter works by using a Signature in its method AddSign
+///
+/// Methods can be redefined to, either
+/// - directly compute the value without a Signature
+/// - compute the value in the context of a Graph
+pub use crate::ffi::IFSelect_SignCounter as SignCounter;
+
+impl SignCounter {
+    /// Creates a SignCounter, without proper Signature
+    /// If <withmap> is True (default), added entities are counted
+    /// only if they are not yet recorded in the map
+    /// Map control can be set off if the input guarantees uniqueness of data
+    /// <withlist> is transmitted to SignatureList (option to list
+    /// entities, not only to count them).
+    pub fn new_bool2(withmap: bool, withlist: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SignCounter_ctor_bool2(withmap, withlist)
+    }
+
+    /// Creates a SignCounter, without proper Signature
+    /// If <withmap> is True (default), added entities are counted
+    /// only if they are not yet recorded in the map
+    /// Map control can be set off if the input guarantees uniqueness of data
+    /// <withlist> is transmitted to SignatureList (option to list
+    /// entities, not only to count them).
+    pub fn new_bool(withmap: bool) -> cxx::UniquePtr<Self> {
+        Self::new_bool2(withmap, false)
+    }
+
+    /// Creates a SignCounter, without proper Signature
+    /// If <withmap> is True (default), added entities are counted
+    /// only if they are not yet recorded in the map
+    /// Map control can be set off if the input guarantees uniqueness of data
+    /// <withlist> is transmitted to SignatureList (option to list
+    /// entities, not only to count them).
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool2(true, false)
+    }
+
+    /// Returns the selection, or a null Handle
+    pub fn selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_SignCounter_selection(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SignCounter_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_SignatureList
+    pub fn as_signature_list(&self) -> &SignatureList {
+        crate::ffi::IFSelect_SignCounter_as_IFSelect_SignatureList(self)
+    }
+
+    /// Upcast to IFSelect_SignatureList (mutable)
+    pub fn as_signature_list_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SignatureList> {
+        crate::ffi::IFSelect_SignCounter_as_IFSelect_SignatureList_mut(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: SetList()
+    pub fn set_list(self: std::pin::Pin<&mut Self>, withlist: bool) {
+        crate::ffi::IFSelect_SignCounter_inherited_SetList(self, withlist)
+    }
+
+    /// Inherited from IFSelect_SignatureList: ModeSignOnly()
+    pub fn mode_sign_only(self: std::pin::Pin<&mut Self>) -> &mut bool {
+        crate::ffi::IFSelect_SignCounter_inherited_ModeSignOnly(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: Clear()
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::IFSelect_SignCounter_inherited_Clear(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: HasEntities()
+    pub fn has_entities(&self) -> bool {
+        crate::ffi::IFSelect_SignCounter_inherited_HasEntities(self)
+    }
+
+    /// Inherited from IFSelect_SignatureList: NbNulls()
+    pub fn nb_nulls(&self) -> i32 {
+        crate::ffi::IFSelect_SignCounter_inherited_NbNulls(self)
+    }
+}
+
+// ========================
+// From IFSelect_SignMultiple.hxx
+// ========================
+
+/// Multiple Signature : ordered list of other Signatures
+/// It concatenates on a same line the result of its sub-items
+/// separated by sets of 3 blanks
+/// It is possible to define tabulations between sub-items
+/// Moreover, match rules are specific
+pub use crate::ffi::IFSelect_SignMultiple as SignMultiple;
+
+impl SignMultiple {
+    /// Creates an empty SignMultiple with a Name
+    /// This name should take expected tabulations into account
+    pub fn new_charptr(name: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SignMultiple_ctor_charptr(name)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SignMultiple_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Signature
+    pub fn as_signature(&self) -> &Signature {
+        crate::ffi::IFSelect_SignMultiple_as_IFSelect_Signature(self)
+    }
+
+    /// Upcast to IFSelect_Signature (mutable)
+    pub fn as_signature_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Signature> {
+        crate::ffi::IFSelect_SignMultiple_as_IFSelect_Signature_mut(self)
+    }
+
+    /// Upcast to Interface_SignType
+    pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
+        crate::ffi::IFSelect_SignMultiple_as_Interface_SignType(self)
+    }
+
+    /// Upcast to Interface_SignType (mutable)
+    pub fn as_interface_sign_type_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::interface::SignType> {
+        crate::ffi::IFSelect_SignMultiple_as_Interface_SignType_mut(self)
+    }
+
+    /// Upcast to MoniTool_SignText
+    pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
+        crate::ffi::IFSelect_SignMultiple_as_MoniTool_SignText(self)
+    }
+
+    /// Upcast to MoniTool_SignText (mutable)
+    pub fn as_moni_tool_sign_text_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::moni_tool::SignText> {
+        crate::ffi::IFSelect_SignMultiple_as_MoniTool_SignText_mut(self)
+    }
+
+    /// Inherited from IFSelect_Signature: SetIntCase()
+    pub fn set_int_case(
+        self: std::pin::Pin<&mut Self>,
+        hasmin: bool,
+        valmin: i32,
+        hasmax: bool,
+        valmax: i32,
+    ) {
+        crate::ffi::IFSelect_SignMultiple_inherited_SetIntCase(self, hasmin, valmin, hasmax, valmax)
+    }
+
+    /// Inherited from IFSelect_Signature: IsIntCase()
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        crate::ffi::IFSelect_SignMultiple_inherited_IsIntCase(self, hasmin, valmin, hasmax, valmax)
+    }
+
+    /// Inherited from IFSelect_Signature: CaseList()
+    pub fn case_list(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+        crate::ffi::IFSelect_SignMultiple_inherited_CaseList(self)
+    }
+
+    /// Inherited from IFSelect_Signature: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SignMultiple_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SignType.hxx
+// ========================
+
+/// This Signature returns the cdl Type of an entity, under two
+/// forms :
+/// - complete dynamic type (package and class)
+/// - class type, without package name
+pub use crate::ffi::IFSelect_SignType as SignType;
+
+impl SignType {
+    /// Returns a SignType
+    /// <nopk> false (D) : complete dynamic type (name = Dynamic Type)
+    /// <nopk> true : class type without pk (name = Class Type)
+    pub fn new_bool(nopk: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SignType_ctor_bool(nopk)
+    }
+
+    /// Returns a SignType
+    /// <nopk> false (D) : complete dynamic type (name = Dynamic Type)
+    /// <nopk> true : class type without pk (name = Class Type)
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool(false)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SignType_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Signature
+    pub fn as_signature(&self) -> &Signature {
+        crate::ffi::IFSelect_SignType_as_IFSelect_Signature(self)
+    }
+
+    /// Upcast to IFSelect_Signature (mutable)
+    pub fn as_signature_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Signature> {
+        crate::ffi::IFSelect_SignType_as_IFSelect_Signature_mut(self)
+    }
+
+    /// Upcast to Interface_SignType
+    pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
+        crate::ffi::IFSelect_SignType_as_Interface_SignType(self)
+    }
+
+    /// Upcast to Interface_SignType (mutable)
+    pub fn as_interface_sign_type_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::interface::SignType> {
+        crate::ffi::IFSelect_SignType_as_Interface_SignType_mut(self)
+    }
+
+    /// Upcast to MoniTool_SignText
+    pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
+        crate::ffi::IFSelect_SignType_as_MoniTool_SignText(self)
+    }
+
+    /// Upcast to MoniTool_SignText (mutable)
+    pub fn as_moni_tool_sign_text_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::moni_tool::SignText> {
+        crate::ffi::IFSelect_SignType_as_MoniTool_SignText_mut(self)
+    }
+
+    /// Inherited from IFSelect_Signature: SetIntCase()
+    pub fn set_int_case(
+        self: std::pin::Pin<&mut Self>,
+        hasmin: bool,
+        valmin: i32,
+        hasmax: bool,
+        valmax: i32,
+    ) {
+        crate::ffi::IFSelect_SignType_inherited_SetIntCase(self, hasmin, valmin, hasmax, valmax)
+    }
+
+    /// Inherited from IFSelect_Signature: IsIntCase()
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        crate::ffi::IFSelect_SignType_inherited_IsIntCase(self, hasmin, valmin, hasmax, valmax)
+    }
+
+    /// Inherited from IFSelect_Signature: CaseList()
+    pub fn case_list(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+        crate::ffi::IFSelect_SignType_inherited_CaseList(self)
+    }
+
+    /// Inherited from IFSelect_Signature: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SignType_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_SignValidity.hxx
+// ========================
+
+/// This Signature returns the Validity Status of an entity, as
+/// deducted from data in the model : it can be
+/// "OK" "Unknown" "Unloaded" "Syntactic Fail"(but loaded)
+/// "Syntactic Warning" "Semantic Fail" "Semantic Warning"
+pub use crate::ffi::IFSelect_SignValidity as SignValidity;
+
+impl SignValidity {
+    /// Returns a SignValidity
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SignValidity_ctor()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SignValidity_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Signature
+    pub fn as_signature(&self) -> &Signature {
+        crate::ffi::IFSelect_SignValidity_as_IFSelect_Signature(self)
+    }
+
+    /// Upcast to IFSelect_Signature (mutable)
+    pub fn as_signature_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Signature> {
+        crate::ffi::IFSelect_SignValidity_as_IFSelect_Signature_mut(self)
+    }
+
+    /// Upcast to Interface_SignType
+    pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
+        crate::ffi::IFSelect_SignValidity_as_Interface_SignType(self)
+    }
+
+    /// Upcast to Interface_SignType (mutable)
+    pub fn as_interface_sign_type_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::interface::SignType> {
+        crate::ffi::IFSelect_SignValidity_as_Interface_SignType_mut(self)
+    }
+
+    /// Upcast to MoniTool_SignText
+    pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
+        crate::ffi::IFSelect_SignValidity_as_MoniTool_SignText(self)
+    }
+
+    /// Upcast to MoniTool_SignText (mutable)
+    pub fn as_moni_tool_sign_text_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::moni_tool::SignText> {
+        crate::ffi::IFSelect_SignValidity_as_MoniTool_SignText_mut(self)
+    }
+
+    /// Inherited from IFSelect_Signature: SetIntCase()
+    pub fn set_int_case(
+        self: std::pin::Pin<&mut Self>,
+        hasmin: bool,
+        valmin: i32,
+        hasmax: bool,
+        valmax: i32,
+    ) {
+        crate::ffi::IFSelect_SignValidity_inherited_SetIntCase(self, hasmin, valmin, hasmax, valmax)
+    }
+
+    /// Inherited from IFSelect_Signature: IsIntCase()
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        crate::ffi::IFSelect_SignValidity_inherited_IsIntCase(self, hasmin, valmin, hasmax, valmax)
+    }
+
+    /// Inherited from IFSelect_Signature: CaseList()
+    pub fn case_list(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+        crate::ffi::IFSelect_SignValidity_inherited_CaseList(self)
+    }
+
+    /// Inherited from IFSelect_Signature: Label()
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_SignValidity_inherited_Label(self)
+    }
+}
+
+// ========================
+// From IFSelect_Signature.hxx
+// ========================
+
+/// Signature provides the basic service used by the classes
+/// SelectSignature and Counter (i.e. Name, Value), which is :
+/// - for an entity in a model, give a characteristic string, its
+/// signature
+/// This string has not to be unique in the model, but gives a
+/// value for such or such important feature.
+/// Examples : Dynamic Type; Category; etc
+pub use crate::ffi::IFSelect_Signature as Signature;
+
+impl Signature {
+    /// Adds a possible case
+    /// To be called when creating, IF the list of possible cases for
+    /// Value is known when starting
+    /// For instance, for CDL types, rather do not fill this,
+    /// but for a specific enumeration (such as a status), can be used
+    pub fn add_case(self: std::pin::Pin<&mut Self>, acase: &str) {
+        crate::ffi::IFSelect_Signature_add_case(self, acase)
+    }
+
+    /// Returns the predefined list of possible cases, filled by AddCase
+    /// Null Handle if no predefined list (hence, to be counted)
+    /// Useful to filter on  really possible vase, for instance, or
+    /// for a help
+    pub fn case_list(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+        crate::ffi::IFSelect_Signature_case_list(self)
+    }
+
+    /// Returns an identification of the Signature (a word), given at
+    /// initialization time
+    /// Returns the Signature for a Transient object. It is specific
+    /// of each sub-class of Signature. For a Null Handle, it should
+    /// provide ""
+    /// It can work with the model which contains the entity
+    pub fn name(&self) -> String {
+        crate::ffi::IFSelect_Signature_name(self)
+    }
+
+    /// The label of a Signature uses its name as follow :
+    /// "Signature : <name>"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_Signature_label(self)
+    }
+
+    /// Default procedure to tell if a value <val> matches a text
+    /// with a criterium <exact>. <exact> = True requires equality,
+    /// else only contained (no reg-exp)
+    pub fn match_value(val: &str, text: &crate::ffi::TCollection_AsciiString, exact: bool) -> bool {
+        crate::ffi::IFSelect_Signature_match_value(val, text, exact)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_Signature_get_type_descriptor()
+    }
+
+    /// Upcast to Interface_SignType
+    pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
+        crate::ffi::IFSelect_Signature_as_Interface_SignType(self)
+    }
+
+    /// Upcast to Interface_SignType (mutable)
+    pub fn as_interface_sign_type_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::interface::SignType> {
+        crate::ffi::IFSelect_Signature_as_Interface_SignType_mut(self)
+    }
+
+    /// Upcast to MoniTool_SignText
+    pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
+        crate::ffi::IFSelect_Signature_as_MoniTool_SignText(self)
+    }
+
+    /// Upcast to MoniTool_SignText (mutable)
+    pub fn as_moni_tool_sign_text_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::moni_tool::SignText> {
+        crate::ffi::IFSelect_Signature_as_MoniTool_SignText_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_SignatureList.hxx
+// ========================
+
+/// A SignatureList is given as result from a Counter (any kind)
+/// It gives access to a list of signatures, with counts, and
+/// optionally with list of corresponding entities
+///
+/// It can also be used only to give a signature, through SignOnly
+/// Mode. This can be useful for a specific counter (used in a
+/// Selection), while it remains better to use a Signature
+/// whenever possible
+pub use crate::ffi::IFSelect_SignatureList as SignatureList;
+
+impl SignatureList {
+    /// Creates a SignatureList. If <withlist> is True, entities will
+    /// be not only counted per signature, but also listed.
+    pub fn new_bool(withlist: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_SignatureList_ctor_bool(withlist)
+    }
+
+    /// Creates a SignatureList. If <withlist> is True, entities will
+    /// be not only counted per signature, but also listed.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_bool(false)
+    }
+
+    /// Returns the last value recorded by Add (only if SignMode set)
+    /// Cleared by Clear or Init
+    pub fn last_value(&self) -> String {
+        crate::ffi::IFSelect_SignatureList_last_value(self)
+    }
+
+    /// Returns the list of signatures, as a sequence of strings
+    /// (but without their respective counts). It is ordered.
+    /// By default, for all the signatures.
+    /// If <root> is given non empty, for the signatures which
+    /// begin by <root>
+    pub fn list(
+        &self,
+        root: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_SignatureList_list(self, root)
+    }
+
+    /// Returns the number of times a signature was counted,
+    /// 0 if it has not been recorded at all
+    pub fn nb_times(&self, sign: &str) -> i32 {
+        crate::ffi::IFSelect_SignatureList_nb_times(self, sign)
+    }
+
+    /// Returns the list of entities attached to a signature
+    /// It is empty if <sign> has not been recorded
+    /// It is a Null Handle if the list of entities is not known
+    pub fn entities(
+        &self,
+        sign: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        crate::ffi::IFSelect_SignatureList_entities(self, sign)
+    }
+
+    /// Defines a name for a SignatureList (used to print it)
+    pub fn set_name(self: std::pin::Pin<&mut Self>, name: &str) {
+        crate::ffi::IFSelect_SignatureList_set_name(self, name)
+    }
+
+    /// Returns the recorded Name.
+    /// Remark : default is "..." (no SetName called)
+    pub fn name(&self) -> String {
+        crate::ffi::IFSelect_SignatureList_name(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_SignatureList_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSignatureList> {
+        crate::ffi::IFSelect_SignatureList_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSignatureList;
+
+impl HandleIFSelectSignatureList {
+    /// Dereference this Handle to access the underlying IFSelect_SignatureList
+    pub fn get(&self) -> &crate::ffi::IFSelect_SignatureList {
+        crate::ffi::HandleIFSelectSignatureList_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SignatureList
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_SignatureList> {
+        crate::ffi::HandleIFSelectSignatureList_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_TransformStandard.hxx
+// ========================
+
+/// This class runs transformations made by Modifiers, as
+/// the ModelCopier does when it produces files (the same set
+/// of Modifiers can then be used, as to transform the starting
+/// Model, as at file sending time).
+///
+/// First, considering the resulting model, two options :
+/// - modifications are made directly on the starting model
+/// (OnTheSpot option), or
+/// - data are copied by the standard service Copy, only the
+/// remaining (not yet sent in a file) entities are copied
+/// (StandardCopy option)
+///
+/// If a Selection is set, it forces the list of Entities on which
+/// the Modifiers are applied. Else, each Modifier is considered
+/// its Selection. By default, it is for the whole Model
+///
+/// Then, the Modifiers are sequentially applied
+/// If at least one Modifier "May Change Graph", or if the option
+/// StandardCopy is selected, the graph will be recomputed
+/// (by the WorkSession, see method RunTransformer)
+///
+/// Remark that a TransformStandard with option StandardCopy
+/// and no Modifier at all has the effect of computing the
+/// remaining data (those not yet sent in any output file).
+/// Moreover, the Protocol is not changed
+pub use crate::ffi::IFSelect_TransformStandard as TransformStandard;
+
+impl TransformStandard {
+    /// Creates a TransformStandard, option StandardCopy, no Modifier
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_TransformStandard_ctor()
+    }
+
+    /// Returns the Selection, Null by default
+    pub fn selection(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_TransformStandard_selection(self)
+    }
+
+    /// Returns a text which defines the way a Transformer works :
+    /// "On the spot edition" or "Standard Copy" followed by
+    /// "<nn> Modifiers"
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_TransformStandard_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_TransformStandard_get_type_descriptor()
+    }
+
+    /// Upcast to IFSelect_Transformer
+    pub fn as_transformer(&self) -> &Transformer {
+        crate::ffi::IFSelect_TransformStandard_as_IFSelect_Transformer(self)
+    }
+
+    /// Upcast to IFSelect_Transformer (mutable)
+    pub fn as_transformer_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Transformer> {
+        crate::ffi::IFSelect_TransformStandard_as_IFSelect_Transformer_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_Transformer.hxx
+// ========================
+
+/// A Transformer defines the way an InterfaceModel is transformed
+/// (without sending it to a file).
+/// In order to work, each type of Transformer defines it method
+/// Perform, it can be parametred as needed.
+///
+/// It receives a Model (the data set) as input. It then can :
+/// - edit this Model on the spot
+/// (i.e. alter its content: by editing entities, or adding/replacing some ...)
+/// - produce a copied Model, which detains the needed changes
+/// (typically on the same type, but some or all entities being
+/// rebuilt or converted; or converted from a protocol to another one)
+pub use crate::ffi::IFSelect_Transformer as Transformer;
+
+impl Transformer {
+    /// Returns a text which defines the way a Transformer works
+    /// (to identify the transformation it performs)
+    pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_Transformer_label(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_Transformer_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIFSelectTransformer;
+
+impl HandleIFSelectTransformer {
+    /// Dereference this Handle to access the underlying IFSelect_Transformer
+    pub fn get(&self) -> &crate::ffi::IFSelect_Transformer {
+        crate::ffi::HandleIFSelectTransformer_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_Transformer
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_Transformer> {
+        crate::ffi::HandleIFSelectTransformer_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_WorkLibrary.hxx
+// ========================
+
+/// This class defines the (empty) frame which can be used to
+/// enrich a XSTEP set with new capabilities
+/// In particular, a specific WorkLibrary must give the way for
+/// Reading a File into a Model, and Writing a Model to a File
+/// Thus, it is possible to define several Work Libraries for each
+/// norm, but recommended to define one general class for each one :
+/// this general class will define the Read and Write methods.
+///
+/// Also a Dump service is provided, it can produce, according the
+/// norm, either a parcel of a file for an entity, or any other
+/// kind of information relevant for the norm,
+pub use crate::ffi::IFSelect_WorkLibrary as WorkLibrary;
+
+impl WorkLibrary {
+    /// Records a short line of help for a level (0 - max)
+    pub fn set_dump_help(self: std::pin::Pin<&mut Self>, level: i32, help: &str) {
+        crate::ffi::IFSelect_WorkLibrary_set_dump_help(self, level, help)
+    }
+
+    /// Returns the help line recorded for <level>, or an empty string
+    pub fn dump_help(&self, level: i32) -> String {
+        crate::ffi::IFSelect_WorkLibrary_dump_help(self, level)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_WorkLibrary_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleIFSelectWorkLibrary;
+
+impl HandleIFSelectWorkLibrary {
+    /// Dereference this Handle to access the underlying IFSelect_WorkLibrary
+    pub fn get(&self) -> &crate::ffi::IFSelect_WorkLibrary {
+        crate::ffi::HandleIFSelectWorkLibrary_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_WorkLibrary
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_WorkLibrary> {
+        crate::ffi::HandleIFSelectWorkLibrary_get_mut(self)
+    }
+}
+
+// ========================
+// From IFSelect_WorkSession.hxx
+// ========================
+
+/// This class can be used to simply manage a process such as
+/// splitting a file, extracting a set of Entities ...
+/// It allows to manage different types of Variables : Integer or
+/// Text Parameters, Selections, Dispatches, in addition to a
+/// ShareOut. To each of these variables, a unique Integer
+/// Identifier is attached. A Name can be attached too as desired.
+pub use crate::ffi::IFSelect_WorkSession as WorkSession;
+
+impl WorkSession {
+    /// Creates a Work Session
+    /// It provides default, empty ShareOut and ModelCopier, which can
+    /// be replaced (if required, should be done just after creation).
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_WorkSession_ctor()
+    }
+
+    /// Stores the filename used for read for setting the model
+    /// It is cleared by SetModel and ClearData(1)
+    pub fn set_loaded_file(self: std::pin::Pin<&mut Self>, theFileName: &str) {
+        crate::ffi::IFSelect_WorkSession_set_loaded_file(self, theFileName)
+    }
+
+    /// Returns the filename used to load current model
+    /// empty if unknown
+    pub fn loaded_file(&self) -> String {
+        crate::ffi::IFSelect_WorkSession_loaded_file(self)
+    }
+
+    /// Reads a file with the WorkLibrary (sets Model and LoadedFile)
+    /// Returns a integer status which can be :
+    /// RetDone if OK,  RetVoid if no Protocol not defined,
+    /// RetError for file not found, RetFail if fail during read
+    pub fn read_file(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
+        crate::ffi::IFSelect_WorkSession_read_file(self, filename)
+    }
+
+    /// From a given label in Model, returns the corresponding number
+    /// Starts from first entity by Default, may start after a given
+    /// number : this number may be given negative, its absolute value
+    /// is then considered. Hence a loop on NumberFromLabel may be
+    /// programmed (stop test is : returned value positive or null)
+    ///
+    /// Returns 0 if not found, < 0 if more than one found (first
+    /// found in negative).
+    /// If <val> just gives an integer value, returns it
+    pub fn number_from_label(&self, val: &str, afternum: i32) -> i32 {
+        crate::ffi::IFSelect_WorkSession_number_from_label(self, val, afternum)
+    }
+
+    /// Returns the Check List for the Model currently loaded :
+    /// <complete> = True  : complete (syntactic & semantic messages),
+    /// computed if not yet done
+    /// <complete> = False : only syntactic (check file form)
+    pub fn model_check_list(
+        self: std::pin::Pin<&mut Self>,
+        complete: bool,
+    ) -> cxx::UniquePtr<crate::ffi::Interface_CheckIterator> {
+        crate::ffi::IFSelect_WorkSession_model_check_list(self, complete)
+    }
+
+    /// Returns the Check List produced by the last execution of
+    /// either : EvaluateFile(for Split), SendSplit, SendAll,
+    /// SendSelected, RunTransformer-RunModifier
+    /// Cleared by SetModel or ClearData(1)
+    /// The field is protected, hence a specialized WorkSession may
+    /// fill it
+    pub fn last_run_check_list(&self) -> cxx::UniquePtr<crate::ffi::Interface_CheckIterator> {
+        crate::ffi::IFSelect_WorkSession_last_run_check_list(self)
+    }
+
+    /// Returns the Ident attached to a Name, 0 if name not recorded
+    pub fn name_ident(&self, name: &str) -> i32 {
+        crate::ffi::IFSelect_WorkSession_name_ident(self, name)
+    }
+
+    /// Removes an Item from the Session, given its Name
+    /// Returns True if Done, False else (Name not recorded)
+    /// (Applies only on Item which are Named)
+    pub fn remove_named_item(self: std::pin::Pin<&mut Self>, name: &str) -> bool {
+        crate::ffi::IFSelect_WorkSession_remove_named_item(self, name)
+    }
+
+    /// Removes a Name without removing the Item
+    /// Returns True if Done, False else (Name not recorded)
+    pub fn remove_name(self: std::pin::Pin<&mut Self>, name: &str) -> bool {
+        crate::ffi::IFSelect_WorkSession_remove_name(self, name)
+    }
+
+    /// Returns a Label which illustrates the content of an Item,
+    /// given its Ident. This Label is :
+    /// - for a Text Parameter, "Text:<text value>"
+    /// - for an Integer Parameter, "Integer:<integer value>"
+    /// - for a Selection, a Dispatch or a Modifier, its Label
+    /// (see these classes)
+    /// - for any other kind of Variable, its cdl type
+    pub fn item_label(&self, id: i32) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_WorkSession_item_label(self, id)
+    }
+
+    /// Fills a Sequence with the List of Idents attached to the Items
+    /// of which Type complies with (IsKind) <type> (alphabetic order)
+    /// Remark : <type> = TYPE(Standard_Transient) gives all the
+    /// Idents which are suitable in the WorkSession
+    pub fn item_idents(
+        &self,
+        type_: &crate::ffi::HandleStandardType,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
+        crate::ffi::IFSelect_WorkSession_item_idents(self, type_)
+    }
+
+    /// Fills a Sequence with the list of the Names attached to Items
+    /// of which Type complies with (IsKind) <type> (alphabetic order)
+    /// Remark : <type> = TYPE(Standard_Transient) gives all the Names
+    pub fn item_names(
+        &self,
+        type_: &crate::ffi::HandleStandardType,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_WorkSession_item_names(self, type_)
+    }
+
+    /// Fills a Sequence with the NAMES of the control items, of which
+    /// the label matches <label> (contain it) : see NextIdentForLabel
+    /// Search mode is fixed to "contained"
+    /// If <label> is empty, returns all Names
+    pub fn item_names_for_label(
+        &self,
+        label: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_WorkSession_item_names_for_label(self, label)
+    }
+
+    /// For query by Label with possible iterations
+    /// Searches the Ident of which Item has a Label which matches a
+    /// given one, the search starts from an initial Ident.
+    /// Returns the first found Ident which follows <id>, or ZERO
+    ///
+    /// The search must start with <id> = 0, it returns the next Ident
+    /// which matches. To iterate, call again this method which this
+    /// returned value as <id>. Once an Ident has been returned, the
+    /// Item can be obtained by the method Item
+    ///
+    /// <mode> precises the required matching mode :
+    /// - 0 (Default) : <label> must match exactly with the Item Label
+    /// - 1 : <label> must match the exact beginning (the end is free)
+    /// - 2 : <label> must be at least once wherever in the Item Label
+    /// - other values are ignored
+    pub fn next_ident_for_label(&self, label: &str, id: i32, mode: i32) -> i32 {
+        crate::ffi::IFSelect_WorkSession_next_ident_for_label(self, label, id, mode)
+    }
+
+    /// Returns an IntParam, given its Ident in the Session
+    /// Null result if <id> is not suitable for an IntParam
+    /// (undefined, or defined for another kind of variable)
+    pub fn int_param(&self, id: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_WorkSession_int_param(self, id)
+    }
+
+    /// Creates a new IntParam. A Name can be set (Optional)
+    /// Returns the created IntParam, or a Null Handle in case of
+    /// Failure (see AddItem/AddNamedItem)
+    pub fn new_int_param(
+        self: std::pin::Pin<&mut Self>,
+        name: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectIntParam> {
+        crate::ffi::IFSelect_WorkSession_new_int_param(self, name)
+    }
+
+    /// Returns a TextParam, given its Ident in the Session
+    /// Null result if <id> is not suitable for a TextParam
+    /// (undefined, or defined for another kind of variable)
+    pub fn text_param(&self, id: i32) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_WorkSession_text_param(self, id)
+    }
+
+    /// Returns Text Value of a TextParam (a String)
+    /// or an empty string if <it> is not in the WorkSession
+    pub fn text_value(
+        &self,
+        par: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_WorkSession_text_value(self, par)
+    }
+
+    /// Creates a new (empty) TextParam. A Name can be set (Optional)
+    /// Returns the created TextParam (as an HAsciiString), or a Null
+    /// Handle in case of Failure (see AddItem/AddNamedItem)
+    pub fn new_text_param(
+        self: std::pin::Pin<&mut Self>,
+        name: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_WorkSession_new_text_param(self, name)
+    }
+
+    /// Changes the Text Value of a TextParam (an HAsciiString)
+    /// Returns True if Done, False if <it> is not in the WorkSession
+    pub fn set_text_value(
+        self: std::pin::Pin<&mut Self>,
+        par: &crate::ffi::HandleTCollectionHAsciiString,
+        val: &str,
+    ) -> bool {
+        crate::ffi::IFSelect_WorkSession_set_text_value(self, par, val)
+    }
+
+    /// Returns a Selection, given its Ident in the Session
+    /// Null result if <id> is not suitable for a Selection
+    /// (undefined, or defined for another kind of variable)
+    pub fn selection(&self, id: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_WorkSession_selection(self, id)
+    }
+
+    /// Returns the Selections which are source of Selection, given
+    /// its rank in the List of Selections (see SelectionIterator)
+    /// Returned value is empty if <num> is out of range or if
+    /// <sel> is not in the WorkSession
+    pub fn sources(
+        &self,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) -> cxx::UniquePtr<crate::ffi::IFSelect_SelectionIterator> {
+        crate::ffi::IFSelect_WorkSession_sources(self, sel)
+    }
+
+    /// Returns the result of a Selection, computed by EvalSelection
+    /// (see above) under the form of a HSequence (hence, it can be
+    /// used by a frontal-engine logic). It can be empty
+    /// Returns a Null Handle if <sel> is not in the WorkSession
+    pub fn selection_result(
+        &self,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        crate::ffi::IFSelect_WorkSession_selection_result(self, sel)
+    }
+
+    /// Returns the result of a Selection, by forcing its input with
+    /// a given list <list> (unless <list> is Null).
+    /// RULES :
+    /// <list> applies only for a SelectDeduct kind Selection :
+    /// its Input is considered : if it is a SelectDeduct kind
+    /// Selection, its Input is considered, etc... until an Input
+    /// is not a Deduct/Extract : its result is replaced by <list>
+    /// and all the chain of deductions is applied
+    pub fn selection_result_from_list(
+        &self,
+        sel: &crate::ffi::HandleIFSelectSelection,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        crate::ffi::IFSelect_WorkSession_selection_result_from_list(self, sel, list)
+    }
+
+    /// Returns the ordered list of dispatches stored by the ShareOut
+    pub fn applied_dispatches(
+        &self,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
+        crate::ffi::IFSelect_WorkSession_applied_dispatches(self)
+    }
+
+    /// Returns a Dispatch, given its Ident in the Session
+    /// Null result if <id> is not suitable for a Dispatch
+    /// (undefined, or defined for another kind of variable)
+    pub fn dispatch(&self, id: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectDispatch> {
+        crate::ffi::IFSelect_WorkSession_dispatch(self, id)
+    }
+
+    /// Fills a Sequence with a list of Idents, those attached to
+    /// the Modifiers applied to final sending.
+    /// Model Modifiers if <formodel> is True, File Modifiers else
+    /// This list is given in the order in which they will be applied
+    /// (which takes into account the Changes to Modifier Ranks)
+    pub fn final_modifier_idents(
+        &self,
+        formodel: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
+        crate::ffi::IFSelect_WorkSession_final_modifier_idents(self, formodel)
+    }
+
+    /// Returns a Modifier, given its Ident in the Session
+    /// Null result if <id> is not suitable for a Modifier
+    /// (undefined, or defined for another kind of variable)
+    pub fn general_modifier(
+        &self,
+        id: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectGeneralModifier> {
+        crate::ffi::IFSelect_WorkSession_general_modifier(self, id)
+    }
+
+    /// Returns a Transformer, given its Ident in the Session
+    /// Null result if <id> is not suitable for a Transformer
+    /// (undefined, or defined for another kind of variable)
+    pub fn transformer(&self, id: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectTransformer> {
+        crate::ffi::IFSelect_WorkSession_transformer(self, id)
+    }
+
+    /// Creates and returns a TransformStandard, empty, with its
+    /// Copy Option (True = Copy, False = On the Spot) and an
+    /// optional name.
+    /// To a TransformStandard, the method SetAppliedModifier applies
+    pub fn new_transform_standard(
+        self: std::pin::Pin<&mut Self>,
+        copy: bool,
+        name: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectTransformer> {
+        crate::ffi::IFSelect_WorkSession_new_transform_standard(self, copy, name)
+    }
+
+    /// Returns the defined File Prefix. Null Handle if not defined
+    pub fn file_prefix(&self) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_WorkSession_file_prefix(self)
+    }
+
+    /// Returns the defined Default File Root. It is used for
+    /// Dispatches which have no specific root attached.
+    /// Null Handle if not defined
+    pub fn default_file_root(&self) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_WorkSession_default_file_root(self)
+    }
+
+    /// Returns the defined File Extension. Null Handle if not defined
+    pub fn file_extension(&self) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_WorkSession_file_extension(self)
+    }
+
+    /// Returns the File Root defined for a Dispatch. Null if no
+    /// Root Name is defined for it (hence, no File will be produced)
+    pub fn file_root(
+        &self,
+        disp: &crate::ffi::HandleIFSelectDispatch,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IFSelect_WorkSession_file_root(self, disp)
+    }
+
+    /// Defines a File Prefix
+    pub fn set_file_prefix(self: std::pin::Pin<&mut Self>, name: &str) {
+        crate::ffi::IFSelect_WorkSession_set_file_prefix(self, name)
+    }
+
+    /// Defines a Default File Root Name. Clears it is <name> = ""
+    /// Returns True if OK, False if <name> already set for a Dispatch
+    pub fn set_default_file_root(self: std::pin::Pin<&mut Self>, name: &str) -> bool {
+        crate::ffi::IFSelect_WorkSession_set_default_file_root(self, name)
+    }
+
+    /// Defines a File Extension
+    pub fn set_file_extension(self: std::pin::Pin<&mut Self>, name: &str) {
+        crate::ffi::IFSelect_WorkSession_set_file_extension(self, name)
+    }
+
+    /// Defines a Root for a Dispatch
+    /// If <name> is empty, clears Root Name
+    /// This has as effect to inhibit the production of File by <disp>
+    /// Returns False if <disp> is not in the WorkSession or if a
+    /// root name is already defined for it
+    pub fn set_file_root(
+        self: std::pin::Pin<&mut Self>,
+        disp: &crate::ffi::HandleIFSelectDispatch,
+        name: &str,
+    ) -> bool {
+        crate::ffi::IFSelect_WorkSession_set_file_root(self, disp, name)
+    }
+
+    /// Extracts File Root Name from a given complete file name
+    /// (uses OSD_Path)
+    pub fn give_file_root(&self, file: &str) -> String {
+        crate::ffi::IFSelect_WorkSession_give_file_root(self, file)
+    }
+
+    /// Completes a file name as required, with Prefix and Extension
+    /// (if defined; for a non-defined item, completes nothing)
+    pub fn give_file_complete(&self, file: &str) -> String {
+        crate::ffi::IFSelect_WorkSession_give_file_complete(self, file)
+    }
+
+    /// Returns a Model, given its rank in the Evaluation List
+    pub fn file_model(
+        &self,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        crate::ffi::IFSelect_WorkSession_file_model(self, num)
+    }
+
+    /// Returns the name of a file corresponding to a produced Model,
+    /// given its rank in the Evaluation List
+    pub fn file_name(&self, num: i32) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::IFSelect_WorkSession_file_name(self, num)
+    }
+
+    /// Returns the list of recorded sent files, or a Null Handle is
+    /// recording has not been enabled
+    pub fn sent_files(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::IFSelect_WorkSession_sent_files(self)
+    }
+
+    /// Returns an Evaluation of the whole ShareOut definition : i.e.
+    /// how the entities of the starting model are forecast to be sent
+    /// to various files :  list of packets according the dispatches,
+    /// effective lists of roots for each packet (which determine the
+    /// content of the corresponding file); plus evaluation of which
+    /// entities are : forgotten (sent into no file), duplicated (sent
+    /// into more than one file), sent into a given file.
+    /// See the class PacketList for more details.
+    pub fn eval_split(&self) -> cxx::UniquePtr<crate::ffi::HandleIFSelectPacketList> {
+        crate::ffi::IFSelect_WorkSession_eval_split(self)
+    }
+
+    /// Processes Remaining data (after having sent files), mode :
+    /// Forget  : forget remaining info (i.e. clear all "Sent" status)
+    /// Compute : compute and keep remaining (does nothing if :
+    /// remaining is empty or if no files has been sent)
+    /// Display : display entities recorded as remaining
+    /// Undo    : restore former state of data (after Remaining(1) )
+    /// Returns True if OK, False else (i.e. mode = 2 and Remaining
+    /// List is either empty or takes all the entities, or mode = 3
+    /// and no former computation of remaining data was done)
+    pub fn set_remaining(self: std::pin::Pin<&mut Self>, mode: i32) -> bool {
+        crate::ffi::IFSelect_WorkSession_set_remaining(self, mode)
+    }
+
+    /// Sends the starting Model into one file, without splitting,
+    /// managing remaining data or anything else.
+    /// <computegraph> true commands the Graph to be recomputed before
+    /// sending : required when a Model is filled in several steps
+    ///
+    /// The Model and File Modifiers recorded to be applied on sending
+    /// files are.
+    /// Returns a status of execution :
+    /// Done if OK,
+    /// Void if no data available,
+    /// Error if errors occurred (work library is not defined), errors during translation
+    /// Fail if exception during translation is raised
+    /// Stop if no disk space or disk, file is write protected
+    /// Fills LastRunCheckList
+    pub fn send_all(self: std::pin::Pin<&mut Self>, filename: &str, computegraph: bool) -> i32 {
+        crate::ffi::IFSelect_WorkSession_send_all(self, filename, computegraph)
+    }
+
+    /// Sends a part of the starting Model into one file, without
+    /// splitting. But remaining data are managed.
+    /// <computegraph> true commands the Graph to be recomputed before
+    /// sending : required when a Model is filled in several steps
+    ///
+    /// The Model and File Modifiers recorded to be applied on sending
+    /// files are.
+    /// Returns a status : Done if OK,  Fail if error during send,
+    /// Error : WorkLibrary not defined, Void : selection list empty
+    /// Fills LastRunCheckList
+    pub fn send_selected(
+        self: std::pin::Pin<&mut Self>,
+        filename: &str,
+        sel: &crate::ffi::HandleIFSelectSelection,
+        computegraph: bool,
+    ) -> i32 {
+        crate::ffi::IFSelect_WorkSession_send_selected(self, filename, sel, computegraph)
+    }
+
+    /// Writes the current Interface Model globally to a File, and
+    /// returns a write status which can be :
+    /// Done OK, Fail file could not be written, Error no norm is selected
+    /// Remark  : It is a simple, one-file writing, other operations are
+    /// available (such as splitting ...) which calls SendAll
+    pub fn write_file_charptr(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
+        crate::ffi::IFSelect_WorkSession_write_file_charptr(self, filename)
+    }
+
+    /// Writes a sub-part of the current Interface Model to a File,
+    /// as defined by a Selection <sel>, recomputes the Graph, and
+    /// returns a write status which can be :
+    /// Done OK, Fail file could not be written, Error no norm is selected
+    /// Remark  : It is a simple, one-file writing, other operations are
+    /// available (such as splitting ...) which calls SendSelected
+    pub fn write_file_charptr_handleifselectselection(
+        self: std::pin::Pin<&mut Self>,
+        filename: &str,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) -> i32 {
+        crate::ffi::IFSelect_WorkSession_write_file_charptr_handleifselectselection(
+            self, filename, sel,
+        )
+    }
+
+    /// Returns the <num>th Input Selection of a Selection
+    /// (see NbSources).
+    /// Returns a Null Handle if <sel> is not in the WorkSession or if
+    /// <num> is out of the range <1-NbSources>
+    /// To obtain more details, see the method Sources
+    pub fn source(
+        &self,
+        sel: &crate::ffi::HandleIFSelectSelection,
+        num: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_WorkSession_source(self, sel, num)
+    }
+
+    /// Creates a new Selection, of type SelectPointed, its content
+    /// starts with <list>. A name must be given (can be empty)
+    pub fn new_select_pointed(
+        self: std::pin::Pin<&mut Self>,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        name: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_WorkSession_new_select_pointed(self, list, name)
+    }
+
+    /// Returns a Selection from a Name :
+    /// - the name of a Selection : this Selection
+    /// - the name of a Signature + criteria between (..) : a new
+    /// Selection from this Signature
+    /// - an entity or a list of entities : a new SelectPointed
+    /// Else, returns a Null Handle
+    pub fn give_selection(
+        &self,
+        selname: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
+        crate::ffi::IFSelect_WorkSession_give_selection(self, selname)
+    }
+
+    /// Computes a List of entities from two alphanums,
+    /// first and second, as follows :
+    /// if <first> is a Number or Label of an entity : this entity
+    /// if <first> is a list of Numbers/Labels : the list of entities
+    /// if <first> is the name of a Selection in <WS>, and <second>
+    /// not defined, the standard result of this Selection
+    /// else, let's consider "first second" : this whole phrase is
+    /// split by blanks, as follows (RECURSIVE CALL) :
+    /// - the leftest term is the final selection
+    /// - the other terms define the result of the selection
+    /// - and so on (the "leftest minus one" is a selection, of which
+    /// the input is given by the remaining ...)
+    pub fn give_list(
+        &self,
+        first: &str,
+        second: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        crate::ffi::IFSelect_WorkSession_give_list(self, first, second)
+    }
+
+    /// Combines two lists and returns the result, according to mode :
+    /// <mode> < 0 : entities in <l1> AND NOT in <l2>
+    /// <mode> = 0 : entities in <l1> AND in <l2>
+    /// <mode> > 0 : entities in <l1> OR  in <l2>
+    pub fn give_list_combined(
+        &self,
+        l1: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        l2: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        mode: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        crate::ffi::IFSelect_WorkSession_give_list_combined(self, l1, l2, mode)
+    }
+
+    /// Lists the Labels of all Items of the WorkSession
+    /// If <label> is defined, lists labels which contain it
+    pub fn list_items(&self, label: &str) {
+        crate::ffi::IFSelect_WorkSession_list_items(self, label)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IFSelect_WorkSession_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIFSelectWorkSession> {
+        crate::ffi::IFSelect_WorkSession_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIFSelectWorkSession;
+
+impl HandleIFSelectWorkSession {
+    /// Dereference this Handle to access the underlying IFSelect_WorkSession
+    pub fn get(&self) -> &crate::ffi::IFSelect_WorkSession {
+        crate::ffi::HandleIFSelectWorkSession_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_WorkSession
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IFSelect_WorkSession> {
+        crate::ffi::HandleIFSelectWorkSession_get_mut(self)
+    }
+}
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{IFSelect_ActFunc as ActFunc, IFSelect_TSeqOfSelection as TSeqOfSelection};

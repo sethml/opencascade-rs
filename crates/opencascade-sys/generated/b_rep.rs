@@ -46,7 +46,7 @@ impl Builder {
     }
 
     /// Sets the geometric continuity on the edge.
-    pub fn continuity_edge_handlesurface2_location2_shape(
+    pub fn continuity_edge_handlegeomsurface2_location2_shape(
         &self,
         E: &crate::ffi::TopoDS_Edge,
         S1: &crate::ffi::HandleGeomSurface,
@@ -55,7 +55,7 @@ impl Builder {
         L2: &crate::ffi::TopLoc_Location,
         C: i32,
     ) {
-        crate::ffi::BRep_Builder_continuity_edge_handlesurface2_location2_shape(
+        crate::ffi::BRep_Builder_continuity_edge_handlegeomsurface2_location2_shape(
             self, E, S1, S2, L1, L2, C,
         )
     }
@@ -113,6 +113,2223 @@ impl Builder {
         C: &crate::ffi::TopoDS_Shape,
     ) {
         crate::ffi::BRep_Builder_inherited_Remove(self, S, C)
+    }
+}
+
+// ========================
+// From BRep_Curve3D.hxx
+// ========================
+
+/// Representation of a curve by a 3D curve.
+pub use crate::ffi::BRep_Curve3D as Curve3D;
+
+impl Curve3D {
+    pub fn new_handlegeomcurve_location(
+        C: &crate::ffi::HandleGeomCurve,
+        L: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_Curve3D_ctor_handlegeomcurve_location(C, L)
+    }
+
+    /// Return a copy of this representation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_Curve3D_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_Curve3D_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_CurveRepresentation
+    pub fn as_curve_representation(&self) -> &CurveRepresentation {
+        crate::ffi::BRep_Curve3D_as_BRep_CurveRepresentation(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation (mutable)
+    pub fn as_curve_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveRepresentation> {
+        crate::ffi::BRep_Curve3D_as_BRep_CurveRepresentation_mut(self)
+    }
+
+    /// Upcast to BRep_GCurve
+    pub fn as_g_curve(&self) -> &GCurve {
+        crate::ffi::BRep_Curve3D_as_BRep_GCurve(self)
+    }
+
+    /// Upcast to BRep_GCurve (mutable)
+    pub fn as_g_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GCurve> {
+        crate::ffi::BRep_Curve3D_as_BRep_GCurve_mut(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnSurface()
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_Curve3D_inherited_IsCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsRegularity()
+    pub fn is_regularity(&self) -> bool {
+        crate::ffi::BRep_Curve3D_inherited_IsRegularity(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnClosedSurface()
+    pub fn is_curve_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_Curve3D_inherited_IsCurveOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygon3D()
+    pub fn is_polygon3_d(&self) -> bool {
+        crate::ffi::BRep_Curve3D_inherited_IsPolygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnTriangulation()
+    pub fn is_polygon_on_triangulation(&self) -> bool {
+        crate::ffi::BRep_Curve3D_inherited_IsPolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedTriangulation()
+    pub fn is_polygon_on_closed_triangulation(&self) -> bool {
+        crate::ffi::BRep_Curve3D_inherited_IsPolygonOnClosedTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnSurface()
+    pub fn is_polygon_on_surface(&self) -> bool {
+        crate::ffi::BRep_Curve3D_inherited_IsPolygonOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedSurface()
+    pub fn is_polygon_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_Curve3D_inherited_IsPolygonOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_Curve3D_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_Curve3D_inherited_Surface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_Curve3D_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve2()
+    pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_Curve3D_inherited_PCurve2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon3D()
+    pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
+        crate::ffi::BRep_Curve3D_inherited_Polygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon()
+    pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_Curve3D_inherited_Polygon(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon2()
+    pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_Curve3D_inherited_Polygon2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Triangulation()
+    pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
+        crate::ffi::BRep_Curve3D_inherited_Triangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation()
+    pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_Curve3D_inherited_PolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation2()
+    pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_Curve3D_inherited_PolygonOnTriangulation2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface2()
+    pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_Curve3D_inherited_Surface2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location2()
+    pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_Curve3D_inherited_Location2(self)
+    }
+
+    /// Inherited from BRep_GCurve: SetRange()
+    pub fn set_range(self: std::pin::Pin<&mut Self>, First: f64, Last: f64) {
+        crate::ffi::BRep_Curve3D_inherited_SetRange(self, First, Last)
+    }
+
+    /// Inherited from BRep_GCurve: Range()
+    pub fn range(&self, First: &mut f64, Last: &mut f64) {
+        crate::ffi::BRep_Curve3D_inherited_Range(self, First, Last)
+    }
+
+    /// Inherited from BRep_GCurve: First()
+    pub fn first(&self) -> f64 {
+        crate::ffi::BRep_Curve3D_inherited_First(self)
+    }
+
+    /// Inherited from BRep_GCurve: Last()
+    pub fn last(&self) -> f64 {
+        crate::ffi::BRep_Curve3D_inherited_Last(self)
+    }
+
+    /// Inherited from BRep_GCurve: Update()
+    pub fn update(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRep_Curve3D_inherited_Update(self)
+    }
+}
+
+// ========================
+// From BRep_CurveOn2Surfaces.hxx
+// ========================
+
+/// Defines a continuity between two surfaces.
+pub use crate::ffi::BRep_CurveOn2Surfaces as CurveOn2Surfaces;
+
+impl CurveOn2Surfaces {
+    pub fn new_handlegeomsurface2_location2_shape(
+        S1: &crate::ffi::HandleGeomSurface,
+        S2: &crate::ffi::HandleGeomSurface,
+        L1: &crate::ffi::TopLoc_Location,
+        L2: &crate::ffi::TopLoc_Location,
+        C: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_CurveOn2Surfaces_ctor_handlegeomsurface2_location2_shape(S1, S2, L1, L2, C)
+    }
+
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_CurveOn2Surfaces_continuity(self)
+    }
+
+    pub fn continuity_shape(self: std::pin::Pin<&mut Self>, C: i32) {
+        crate::ffi::BRep_CurveOn2Surfaces_continuity_shape(self, C)
+    }
+
+    /// Return a copy of this representation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_CurveOn2Surfaces_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_CurveOn2Surfaces_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_CurveRepresentation
+    pub fn as_curve_representation(&self) -> &CurveRepresentation {
+        crate::ffi::BRep_CurveOn2Surfaces_as_BRep_CurveRepresentation(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation (mutable)
+    pub fn as_curve_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveRepresentation> {
+        crate::ffi::BRep_CurveOn2Surfaces_as_BRep_CurveRepresentation_mut(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurve3D()
+    pub fn is_curve3_d(&self) -> bool {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_IsCurve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnSurface()
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_IsCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnClosedSurface()
+    pub fn is_curve_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_IsCurveOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygon3D()
+    pub fn is_polygon3_d(&self) -> bool {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_IsPolygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnTriangulation()
+    pub fn is_polygon_on_triangulation(&self) -> bool {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_IsPolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedTriangulation()
+    pub fn is_polygon_on_closed_triangulation(&self) -> bool {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_IsPolygonOnClosedTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnSurface()
+    pub fn is_polygon_on_surface(&self) -> bool {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_IsPolygonOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedSurface()
+    pub fn is_polygon_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_IsPolygonOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Curve3D()
+    pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_Curve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve2()
+    pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_PCurve2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon3D()
+    pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_Polygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon()
+    pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_Polygon(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon2()
+    pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_Polygon2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Triangulation()
+    pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_Triangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation()
+    pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_PolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation2()
+    pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_CurveOn2Surfaces_inherited_PolygonOnTriangulation2(self)
+    }
+}
+
+// ========================
+// From BRep_CurveOnClosedSurface.hxx
+// ========================
+
+/// Representation  of a    curve by two  pcurves   on
+/// a closed surface.
+pub use crate::ffi::BRep_CurveOnClosedSurface as CurveOnClosedSurface;
+
+impl CurveOnClosedSurface {
+    pub fn new_handlegeom2dcurve2_handlegeomsurface_location_shape(
+        PC1: &crate::ffi::HandleGeom2dCurve,
+        PC2: &crate::ffi::HandleGeom2dCurve,
+        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi::TopLoc_Location,
+        C: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_CurveOnClosedSurface_ctor_handlegeom2dcurve2_handlegeomsurface_location_shape(PC1, PC2, S, L, C)
+    }
+
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_CurveOnClosedSurface_continuity(self)
+    }
+
+    pub fn continuity_shape(self: std::pin::Pin<&mut Self>, C: i32) {
+        crate::ffi::BRep_CurveOnClosedSurface_continuity_shape(self, C)
+    }
+
+    /// Return a copy of this representation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_CurveOnClosedSurface_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_CurveOnClosedSurface_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_CurveOnSurface
+    pub fn as_curve_on_surface(&self) -> &CurveOnSurface {
+        crate::ffi::BRep_CurveOnClosedSurface_as_BRep_CurveOnSurface(self)
+    }
+
+    /// Upcast to BRep_CurveOnSurface (mutable)
+    pub fn as_curve_on_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveOnSurface> {
+        crate::ffi::BRep_CurveOnClosedSurface_as_BRep_CurveOnSurface_mut(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation
+    pub fn as_curve_representation(&self) -> &CurveRepresentation {
+        crate::ffi::BRep_CurveOnClosedSurface_as_BRep_CurveRepresentation(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation (mutable)
+    pub fn as_curve_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveRepresentation> {
+        crate::ffi::BRep_CurveOnClosedSurface_as_BRep_CurveRepresentation_mut(self)
+    }
+
+    /// Upcast to BRep_GCurve
+    pub fn as_g_curve(&self) -> &GCurve {
+        crate::ffi::BRep_CurveOnClosedSurface_as_BRep_GCurve(self)
+    }
+
+    /// Upcast to BRep_GCurve (mutable)
+    pub fn as_g_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GCurve> {
+        crate::ffi::BRep_CurveOnClosedSurface_as_BRep_GCurve_mut(self)
+    }
+
+    /// Inherited from BRep_CurveOnSurface: SetUVPoints()
+    pub fn set_uv_points(
+        self: std::pin::Pin<&mut Self>,
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_SetUVPoints(self, P1, P2)
+    }
+
+    /// Inherited from BRep_CurveOnSurface: UVPoints()
+    pub fn uv_points(
+        &self,
+        P1: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        P2: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+    ) {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_UVPoints(self, P1, P2)
+    }
+
+    /// Inherited from BRep_CurveOnSurface: D0()
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_D0(self, U, P)
+    }
+
+    /// Inherited from BRep_CurveOnSurface: IsCurveOnSurface()
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_IsCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveOnSurface: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_Surface(self)
+    }
+
+    /// Inherited from BRep_CurveOnSurface: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurve3D()
+    pub fn is_curve3_d(&self) -> bool {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_IsCurve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygon3D()
+    pub fn is_polygon3_d(&self) -> bool {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_IsPolygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnTriangulation()
+    pub fn is_polygon_on_triangulation(&self) -> bool {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_IsPolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedTriangulation()
+    pub fn is_polygon_on_closed_triangulation(&self) -> bool {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_IsPolygonOnClosedTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnSurface()
+    pub fn is_polygon_on_surface(&self) -> bool {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_IsPolygonOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedSurface()
+    pub fn is_polygon_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_IsPolygonOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Curve3D()
+    pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_Curve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon3D()
+    pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_Polygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon()
+    pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_Polygon(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon2()
+    pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_Polygon2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Triangulation()
+    pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_Triangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation()
+    pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_PolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation2()
+    pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_PolygonOnTriangulation2(self)
+    }
+
+    /// Inherited from BRep_GCurve: SetRange()
+    pub fn set_range(self: std::pin::Pin<&mut Self>, First: f64, Last: f64) {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_SetRange(self, First, Last)
+    }
+
+    /// Inherited from BRep_GCurve: Range()
+    pub fn range(&self, First: &mut f64, Last: &mut f64) {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_Range(self, First, Last)
+    }
+
+    /// Inherited from BRep_GCurve: First()
+    pub fn first(&self) -> f64 {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_First(self)
+    }
+
+    /// Inherited from BRep_GCurve: Last()
+    pub fn last(&self) -> f64 {
+        crate::ffi::BRep_CurveOnClosedSurface_inherited_Last(self)
+    }
+}
+
+// ========================
+// From BRep_CurveOnSurface.hxx
+// ========================
+
+/// Representation  of a  curve   by a   curve  in the
+/// parametric space of a surface.
+pub use crate::ffi::BRep_CurveOnSurface as CurveOnSurface;
+
+impl CurveOnSurface {
+    pub fn new_handlegeom2dcurve_handlegeomsurface_location(
+        PC: &crate::ffi::HandleGeom2dCurve,
+        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_CurveOnSurface_ctor_handlegeom2dcurve_handlegeomsurface_location(PC, S, L)
+    }
+
+    /// Return a copy of this representation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_CurveOnSurface_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_CurveOnSurface_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_CurveRepresentation
+    pub fn as_curve_representation(&self) -> &CurveRepresentation {
+        crate::ffi::BRep_CurveOnSurface_as_BRep_CurveRepresentation(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation (mutable)
+    pub fn as_curve_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveRepresentation> {
+        crate::ffi::BRep_CurveOnSurface_as_BRep_CurveRepresentation_mut(self)
+    }
+
+    /// Upcast to BRep_GCurve
+    pub fn as_g_curve(&self) -> &GCurve {
+        crate::ffi::BRep_CurveOnSurface_as_BRep_GCurve(self)
+    }
+
+    /// Upcast to BRep_GCurve (mutable)
+    pub fn as_g_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GCurve> {
+        crate::ffi::BRep_CurveOnSurface_as_BRep_GCurve_mut(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurve3D()
+    pub fn is_curve3_d(&self) -> bool {
+        crate::ffi::BRep_CurveOnSurface_inherited_IsCurve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsRegularity()
+    pub fn is_regularity(&self) -> bool {
+        crate::ffi::BRep_CurveOnSurface_inherited_IsRegularity(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnClosedSurface()
+    pub fn is_curve_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_CurveOnSurface_inherited_IsCurveOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygon3D()
+    pub fn is_polygon3_d(&self) -> bool {
+        crate::ffi::BRep_CurveOnSurface_inherited_IsPolygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnTriangulation()
+    pub fn is_polygon_on_triangulation(&self) -> bool {
+        crate::ffi::BRep_CurveOnSurface_inherited_IsPolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedTriangulation()
+    pub fn is_polygon_on_closed_triangulation(&self) -> bool {
+        crate::ffi::BRep_CurveOnSurface_inherited_IsPolygonOnClosedTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnSurface()
+    pub fn is_polygon_on_surface(&self) -> bool {
+        crate::ffi::BRep_CurveOnSurface_inherited_IsPolygonOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedSurface()
+    pub fn is_polygon_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_CurveOnSurface_inherited_IsPolygonOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_CurveOnSurface_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Curve3D()
+    pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_CurveOnSurface_inherited_Curve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve2()
+    pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_CurveOnSurface_inherited_PCurve2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon3D()
+    pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
+        crate::ffi::BRep_CurveOnSurface_inherited_Polygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon()
+    pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_CurveOnSurface_inherited_Polygon(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon2()
+    pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_CurveOnSurface_inherited_Polygon2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Triangulation()
+    pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
+        crate::ffi::BRep_CurveOnSurface_inherited_Triangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation()
+    pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_CurveOnSurface_inherited_PolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation2()
+    pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_CurveOnSurface_inherited_PolygonOnTriangulation2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface2()
+    pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_CurveOnSurface_inherited_Surface2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location2()
+    pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_CurveOnSurface_inherited_Location2(self)
+    }
+
+    /// Inherited from BRep_GCurve: SetRange()
+    pub fn set_range(self: std::pin::Pin<&mut Self>, First: f64, Last: f64) {
+        crate::ffi::BRep_CurveOnSurface_inherited_SetRange(self, First, Last)
+    }
+
+    /// Inherited from BRep_GCurve: Range()
+    pub fn range(&self, First: &mut f64, Last: &mut f64) {
+        crate::ffi::BRep_CurveOnSurface_inherited_Range(self, First, Last)
+    }
+
+    /// Inherited from BRep_GCurve: First()
+    pub fn first(&self) -> f64 {
+        crate::ffi::BRep_CurveOnSurface_inherited_First(self)
+    }
+
+    /// Inherited from BRep_GCurve: Last()
+    pub fn last(&self) -> f64 {
+        crate::ffi::BRep_CurveOnSurface_inherited_Last(self)
+    }
+}
+
+// ========================
+// From BRep_CurveRepresentation.hxx
+// ========================
+
+/// Root class for the curve representations. Contains
+/// a location.
+pub use crate::ffi::BRep_CurveRepresentation as CurveRepresentation;
+
+impl CurveRepresentation {
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_CurveRepresentation_continuity(self)
+    }
+
+    pub fn continuity_shape(self: std::pin::Pin<&mut Self>, C: i32) {
+        crate::ffi::BRep_CurveRepresentation_continuity_shape(self, C)
+    }
+
+    /// Return a copy of this representation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_CurveRepresentation_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_CurveRepresentation_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleBRepCurveRepresentation;
+
+impl HandleBRepCurveRepresentation {
+    /// Dereference this Handle to access the underlying BRep_CurveRepresentation
+    pub fn get(&self) -> &crate::ffi::BRep_CurveRepresentation {
+        crate::ffi::HandleBRepCurveRepresentation_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_CurveRepresentation
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRep_CurveRepresentation> {
+        crate::ffi::HandleBRepCurveRepresentation_get_mut(self)
+    }
+}
+
+// ========================
+// From BRep_GCurve.hxx
+// ========================
+
+/// Root   class    for    the    geometric     curves
+/// representation. Contains a range.
+/// Contains a first and a last parameter.
+pub use crate::ffi::BRep_GCurve as GCurve;
+
+impl GCurve {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_GCurve_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_CurveRepresentation
+    pub fn as_curve_representation(&self) -> &CurveRepresentation {
+        crate::ffi::BRep_GCurve_as_BRep_CurveRepresentation(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation (mutable)
+    pub fn as_curve_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveRepresentation> {
+        crate::ffi::BRep_GCurve_as_BRep_CurveRepresentation_mut(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurve3D()
+    pub fn is_curve3_d(&self) -> bool {
+        crate::ffi::BRep_GCurve_inherited_IsCurve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnSurface()
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_GCurve_inherited_IsCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsRegularity()
+    pub fn is_regularity(&self) -> bool {
+        crate::ffi::BRep_GCurve_inherited_IsRegularity(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnClosedSurface()
+    pub fn is_curve_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_GCurve_inherited_IsCurveOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygon3D()
+    pub fn is_polygon3_d(&self) -> bool {
+        crate::ffi::BRep_GCurve_inherited_IsPolygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnTriangulation()
+    pub fn is_polygon_on_triangulation(&self) -> bool {
+        crate::ffi::BRep_GCurve_inherited_IsPolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedTriangulation()
+    pub fn is_polygon_on_closed_triangulation(&self) -> bool {
+        crate::ffi::BRep_GCurve_inherited_IsPolygonOnClosedTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnSurface()
+    pub fn is_polygon_on_surface(&self) -> bool {
+        crate::ffi::BRep_GCurve_inherited_IsPolygonOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedSurface()
+    pub fn is_polygon_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_GCurve_inherited_IsPolygonOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_GCurve_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Curve3D()
+    pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_GCurve_inherited_Curve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_GCurve_inherited_Surface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_GCurve_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve2()
+    pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_GCurve_inherited_PCurve2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon3D()
+    pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
+        crate::ffi::BRep_GCurve_inherited_Polygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon()
+    pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_GCurve_inherited_Polygon(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon2()
+    pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_GCurve_inherited_Polygon2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Triangulation()
+    pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
+        crate::ffi::BRep_GCurve_inherited_Triangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation()
+    pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_GCurve_inherited_PolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation2()
+    pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_GCurve_inherited_PolygonOnTriangulation2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface2()
+    pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_GCurve_inherited_Surface2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location2()
+    pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_GCurve_inherited_Location2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_GCurve_inherited_Copy(self)
+    }
+}
+
+// ========================
+// From BRep_PointOnCurve.hxx
+// ========================
+
+/// Representation by a parameter on a 3D curve.
+pub use crate::ffi::BRep_PointOnCurve as PointOnCurve;
+
+impl PointOnCurve {
+    pub fn new_real_handlegeomcurve_location(
+        P: f64,
+        C: &crate::ffi::HandleGeomCurve,
+        L: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_PointOnCurve_ctor_real_handlegeomcurve_location(P, C, L)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_PointOnCurve_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_PointRepresentation
+    pub fn as_point_representation(&self) -> &PointRepresentation {
+        crate::ffi::BRep_PointOnCurve_as_BRep_PointRepresentation(self)
+    }
+
+    /// Upcast to BRep_PointRepresentation (mutable)
+    pub fn as_point_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut PointRepresentation> {
+        crate::ffi::BRep_PointOnCurve_as_BRep_PointRepresentation_mut(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: IsPointOnCurveOnSurface()
+    pub fn is_point_on_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_PointOnCurve_inherited_IsPointOnCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: IsPointOnSurface()
+    pub fn is_point_on_surface(&self) -> bool {
+        crate::ffi::BRep_PointOnCurve_inherited_IsPointOnSurface(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PointOnCurve_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Parameter()
+    pub fn parameter(&self) -> f64 {
+        crate::ffi::BRep_PointOnCurve_inherited_Parameter(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Parameter2()
+    pub fn parameter2(&self) -> f64 {
+        crate::ffi::BRep_PointOnCurve_inherited_Parameter2(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PointOnCurve_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_PointOnCurve_inherited_Surface(self)
+    }
+}
+
+// ========================
+// From BRep_PointOnCurveOnSurface.hxx
+// ========================
+
+/// Representation by   a parameter on  a curve   on a
+/// surface.
+pub use crate::ffi::BRep_PointOnCurveOnSurface as PointOnCurveOnSurface;
+
+impl PointOnCurveOnSurface {
+    pub fn new_real_handlegeom2dcurve_handlegeomsurface_location(
+        P: f64,
+        C: &crate::ffi::HandleGeom2dCurve,
+        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_PointOnCurveOnSurface_ctor_real_handlegeom2dcurve_handlegeomsurface_location(P, C, S, L)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_PointOnCurveOnSurface_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_PointRepresentation
+    pub fn as_point_representation(&self) -> &PointRepresentation {
+        crate::ffi::BRep_PointOnCurveOnSurface_as_BRep_PointRepresentation(self)
+    }
+
+    /// Upcast to BRep_PointRepresentation (mutable)
+    pub fn as_point_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut PointRepresentation> {
+        crate::ffi::BRep_PointOnCurveOnSurface_as_BRep_PointRepresentation_mut(self)
+    }
+
+    /// Upcast to BRep_PointsOnSurface
+    pub fn as_points_on_surface(&self) -> &PointsOnSurface {
+        crate::ffi::BRep_PointOnCurveOnSurface_as_BRep_PointsOnSurface(self)
+    }
+
+    /// Upcast to BRep_PointsOnSurface (mutable)
+    pub fn as_points_on_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut PointsOnSurface> {
+        crate::ffi::BRep_PointOnCurveOnSurface_as_BRep_PointsOnSurface_mut(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: IsPointOnCurve()
+    pub fn is_point_on_curve(&self) -> bool {
+        crate::ffi::BRep_PointOnCurveOnSurface_inherited_IsPointOnCurve(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: IsPointOnSurface()
+    pub fn is_point_on_surface(&self) -> bool {
+        crate::ffi::BRep_PointOnCurveOnSurface_inherited_IsPointOnSurface(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PointOnCurveOnSurface_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Parameter()
+    pub fn parameter(&self) -> f64 {
+        crate::ffi::BRep_PointOnCurveOnSurface_inherited_Parameter(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Parameter2()
+    pub fn parameter2(&self) -> f64 {
+        crate::ffi::BRep_PointOnCurveOnSurface_inherited_Parameter2(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Curve()
+    pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_PointOnCurveOnSurface_inherited_Curve(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_PointOnCurveOnSurface_inherited_Surface(self)
+    }
+}
+
+// ========================
+// From BRep_PointOnSurface.hxx
+// ========================
+
+/// Representation by two parameters on a surface.
+pub use crate::ffi::BRep_PointOnSurface as PointOnSurface;
+
+impl PointOnSurface {
+    pub fn new_real2_handlegeomsurface_location(
+        P1: f64,
+        P2: f64,
+        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_PointOnSurface_ctor_real2_handlegeomsurface_location(P1, P2, S, L)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_PointOnSurface_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_PointRepresentation
+    pub fn as_point_representation(&self) -> &PointRepresentation {
+        crate::ffi::BRep_PointOnSurface_as_BRep_PointRepresentation(self)
+    }
+
+    /// Upcast to BRep_PointRepresentation (mutable)
+    pub fn as_point_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut PointRepresentation> {
+        crate::ffi::BRep_PointOnSurface_as_BRep_PointRepresentation_mut(self)
+    }
+
+    /// Upcast to BRep_PointsOnSurface
+    pub fn as_points_on_surface(&self) -> &PointsOnSurface {
+        crate::ffi::BRep_PointOnSurface_as_BRep_PointsOnSurface(self)
+    }
+
+    /// Upcast to BRep_PointsOnSurface (mutable)
+    pub fn as_points_on_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut PointsOnSurface> {
+        crate::ffi::BRep_PointOnSurface_as_BRep_PointsOnSurface_mut(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: IsPointOnCurve()
+    pub fn is_point_on_curve(&self) -> bool {
+        crate::ffi::BRep_PointOnSurface_inherited_IsPointOnCurve(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: IsPointOnCurveOnSurface()
+    pub fn is_point_on_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_PointOnSurface_inherited_IsPointOnCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PointOnSurface_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Parameter()
+    pub fn parameter(&self) -> f64 {
+        crate::ffi::BRep_PointOnSurface_inherited_Parameter(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Curve()
+    pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_PointOnSurface_inherited_Curve(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PointOnSurface_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_PointOnSurface_inherited_Surface(self)
+    }
+}
+
+// ========================
+// From BRep_PointRepresentation.hxx
+// ========================
+
+/// Root  class     for   the points  representations.
+/// Contains a location and a parameter.
+pub use crate::ffi::BRep_PointRepresentation as PointRepresentation;
+
+impl PointRepresentation {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_PointRepresentation_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepPointRepresentation> {
+        crate::ffi::BRep_PointRepresentation_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepPointRepresentation;
+
+impl HandleBRepPointRepresentation {
+    /// Dereference this Handle to access the underlying BRep_PointRepresentation
+    pub fn get(&self) -> &crate::ffi::BRep_PointRepresentation {
+        crate::ffi::HandleBRepPointRepresentation_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_PointRepresentation
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRep_PointRepresentation> {
+        crate::ffi::HandleBRepPointRepresentation_get_mut(self)
+    }
+}
+
+// ========================
+// From BRep_PointsOnSurface.hxx
+// ========================
+
+/// Root for points on surface.
+pub use crate::ffi::BRep_PointsOnSurface as PointsOnSurface;
+
+impl PointsOnSurface {
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_PointsOnSurface_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_PointRepresentation
+    pub fn as_point_representation(&self) -> &PointRepresentation {
+        crate::ffi::BRep_PointsOnSurface_as_BRep_PointRepresentation(self)
+    }
+
+    /// Upcast to BRep_PointRepresentation (mutable)
+    pub fn as_point_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut PointRepresentation> {
+        crate::ffi::BRep_PointsOnSurface_as_BRep_PointRepresentation_mut(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: IsPointOnCurve()
+    pub fn is_point_on_curve(&self) -> bool {
+        crate::ffi::BRep_PointsOnSurface_inherited_IsPointOnCurve(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: IsPointOnCurveOnSurface()
+    pub fn is_point_on_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_PointsOnSurface_inherited_IsPointOnCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: IsPointOnSurface()
+    pub fn is_point_on_surface(&self) -> bool {
+        crate::ffi::BRep_PointsOnSurface_inherited_IsPointOnSurface(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PointsOnSurface_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Parameter()
+    pub fn parameter(&self) -> f64 {
+        crate::ffi::BRep_PointsOnSurface_inherited_Parameter(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Parameter2()
+    pub fn parameter2(&self) -> f64 {
+        crate::ffi::BRep_PointsOnSurface_inherited_Parameter2(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: Curve()
+    pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_PointsOnSurface_inherited_Curve(self)
+    }
+
+    /// Inherited from BRep_PointRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PointsOnSurface_inherited_PCurve(self)
+    }
+}
+
+// ========================
+// From BRep_Polygon3D.hxx
+// ========================
+
+/// Representation by a 3D polygon.
+pub use crate::ffi::BRep_Polygon3D as Polygon3D;
+
+impl Polygon3D {
+    pub fn new_handlepolypolygon3d_location(
+        P: &crate::ffi::HandlePolyPolygon3D,
+        L: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_Polygon3D_ctor_handlepolypolygon3d_location(P, L)
+    }
+
+    /// Return a copy of this representation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_Polygon3D_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_Polygon3D_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_CurveRepresentation
+    pub fn as_curve_representation(&self) -> &CurveRepresentation {
+        crate::ffi::BRep_Polygon3D_as_BRep_CurveRepresentation(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation (mutable)
+    pub fn as_curve_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveRepresentation> {
+        crate::ffi::BRep_Polygon3D_as_BRep_CurveRepresentation_mut(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurve3D()
+    pub fn is_curve3_d(&self) -> bool {
+        crate::ffi::BRep_Polygon3D_inherited_IsCurve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnSurface()
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_Polygon3D_inherited_IsCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsRegularity()
+    pub fn is_regularity(&self) -> bool {
+        crate::ffi::BRep_Polygon3D_inherited_IsRegularity(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnClosedSurface()
+    pub fn is_curve_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_Polygon3D_inherited_IsCurveOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnTriangulation()
+    pub fn is_polygon_on_triangulation(&self) -> bool {
+        crate::ffi::BRep_Polygon3D_inherited_IsPolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedTriangulation()
+    pub fn is_polygon_on_closed_triangulation(&self) -> bool {
+        crate::ffi::BRep_Polygon3D_inherited_IsPolygonOnClosedTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnSurface()
+    pub fn is_polygon_on_surface(&self) -> bool {
+        crate::ffi::BRep_Polygon3D_inherited_IsPolygonOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedSurface()
+    pub fn is_polygon_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_Polygon3D_inherited_IsPolygonOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_Polygon3D_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Curve3D()
+    pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_Polygon3D_inherited_Curve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_Polygon3D_inherited_Surface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_Polygon3D_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve2()
+    pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_Polygon3D_inherited_PCurve2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon()
+    pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_Polygon3D_inherited_Polygon(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon2()
+    pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_Polygon3D_inherited_Polygon2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Triangulation()
+    pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
+        crate::ffi::BRep_Polygon3D_inherited_Triangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation()
+    pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_Polygon3D_inherited_PolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation2()
+    pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_Polygon3D_inherited_PolygonOnTriangulation2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface2()
+    pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_Polygon3D_inherited_Surface2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location2()
+    pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_Polygon3D_inherited_Location2(self)
+    }
+}
+
+// ========================
+// From BRep_PolygonOnClosedSurface.hxx
+// ========================
+
+/// Representation by two 2d polygons in the parametric
+/// space of a surface.
+pub use crate::ffi::BRep_PolygonOnClosedSurface as PolygonOnClosedSurface;
+
+impl PolygonOnClosedSurface {
+    pub fn new_handlepolypolygon2d2_handlegeomsurface_location(
+        P1: &crate::ffi::HandlePolyPolygon2D,
+        P2: &crate::ffi::HandlePolyPolygon2D,
+        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_PolygonOnClosedSurface_ctor_handlepolypolygon2d2_handlegeomsurface_location(
+            P1, P2, S, L,
+        )
+    }
+
+    /// Return a copy of this representation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_PolygonOnClosedSurface_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_PolygonOnClosedSurface_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_CurveRepresentation
+    pub fn as_curve_representation(&self) -> &CurveRepresentation {
+        crate::ffi::BRep_PolygonOnClosedSurface_as_BRep_CurveRepresentation(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation (mutable)
+    pub fn as_curve_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveRepresentation> {
+        crate::ffi::BRep_PolygonOnClosedSurface_as_BRep_CurveRepresentation_mut(self)
+    }
+
+    /// Upcast to BRep_PolygonOnSurface
+    pub fn as_polygon_on_surface(&self) -> &PolygonOnSurface {
+        crate::ffi::BRep_PolygonOnClosedSurface_as_BRep_PolygonOnSurface(self)
+    }
+
+    /// Upcast to BRep_PolygonOnSurface (mutable)
+    pub fn as_polygon_on_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut PolygonOnSurface> {
+        crate::ffi::BRep_PolygonOnClosedSurface_as_BRep_PolygonOnSurface_mut(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurve3D()
+    pub fn is_curve3_d(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_IsCurve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnSurface()
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_IsCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsRegularity()
+    pub fn is_regularity(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_IsRegularity(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnClosedSurface()
+    pub fn is_curve_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_IsCurveOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygon3D()
+    pub fn is_polygon3_d(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_IsPolygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnTriangulation()
+    pub fn is_polygon_on_triangulation(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_IsPolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedTriangulation()
+    pub fn is_polygon_on_closed_triangulation(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_IsPolygonOnClosedTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnSurface()
+    pub fn is_polygon_on_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_IsPolygonOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Curve3D()
+    pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_Curve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_Surface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve2()
+    pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_PCurve2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon3D()
+    pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_Polygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon()
+    pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_Polygon(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Triangulation()
+    pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_Triangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation()
+    pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_PolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation2()
+    pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_PolygonOnTriangulation2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface2()
+    pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_Surface2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location2()
+    pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_Location2(self)
+    }
+}
+
+// ========================
+// From BRep_PolygonOnClosedTriangulation.hxx
+// ========================
+
+/// A representation by two arrays of nodes on a
+/// triangulation.
+pub use crate::ffi::BRep_PolygonOnClosedTriangulation as PolygonOnClosedTriangulation;
+
+impl PolygonOnClosedTriangulation {
+    pub fn new_handlepolypolygonontriangulation2_handlepolytriangulation_location(
+        P1: &crate::ffi::HandlePolyPolygonOnTriangulation,
+        P2: &crate::ffi::HandlePolyPolygonOnTriangulation,
+        Tr: &crate::ffi::HandlePolyTriangulation,
+        L: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_ctor_handlepolypolygonontriangulation2_handlepolytriangulation_location(P1, P2, Tr, L)
+    }
+
+    /// Return a copy of this representation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_CurveRepresentation
+    pub fn as_curve_representation(&self) -> &CurveRepresentation {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_as_BRep_CurveRepresentation(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation (mutable)
+    pub fn as_curve_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveRepresentation> {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_as_BRep_CurveRepresentation_mut(self)
+    }
+
+    /// Upcast to BRep_PolygonOnTriangulation
+    pub fn as_polygon_on_triangulation(&self) -> &PolygonOnTriangulation {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_as_BRep_PolygonOnTriangulation(self)
+    }
+
+    /// Upcast to BRep_PolygonOnTriangulation (mutable)
+    pub fn as_polygon_on_triangulation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut PolygonOnTriangulation> {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_as_BRep_PolygonOnTriangulation_mut(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurve3D()
+    pub fn is_curve3_d(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IsCurve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnSurface()
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IsCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsRegularity()
+    pub fn is_regularity(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IsRegularity(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnClosedSurface()
+    pub fn is_curve_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IsCurveOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygon3D()
+    pub fn is_polygon3_d(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IsPolygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnTriangulation()
+    pub fn is_polygon_on_triangulation(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IsPolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnSurface()
+    pub fn is_polygon_on_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IsPolygonOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedSurface()
+    pub fn is_polygon_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_IsPolygonOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Curve3D()
+    pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Curve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Surface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve2()
+    pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_PCurve2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon3D()
+    pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Polygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon()
+    pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Polygon(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon2()
+    pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Polygon2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Triangulation()
+    pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Triangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation()
+    pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_PolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface2()
+    pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Surface2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location2()
+    pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Location2(self)
+    }
+}
+
+// ========================
+// From BRep_PolygonOnSurface.hxx
+// ========================
+
+/// Representation of a 2D polygon in the parametric
+/// space of a surface.
+pub use crate::ffi::BRep_PolygonOnSurface as PolygonOnSurface;
+
+impl PolygonOnSurface {
+    pub fn new_handlepolypolygon2d_handlegeomsurface_location(
+        P: &crate::ffi::HandlePolyPolygon2D,
+        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_PolygonOnSurface_ctor_handlepolypolygon2d_handlegeomsurface_location(
+            P, S, L,
+        )
+    }
+
+    /// Return a copy of this representation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_PolygonOnSurface_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_PolygonOnSurface_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_CurveRepresentation
+    pub fn as_curve_representation(&self) -> &CurveRepresentation {
+        crate::ffi::BRep_PolygonOnSurface_as_BRep_CurveRepresentation(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation (mutable)
+    pub fn as_curve_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveRepresentation> {
+        crate::ffi::BRep_PolygonOnSurface_as_BRep_CurveRepresentation_mut(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurve3D()
+    pub fn is_curve3_d(&self) -> bool {
+        crate::ffi::BRep_PolygonOnSurface_inherited_IsCurve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnSurface()
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnSurface_inherited_IsCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsRegularity()
+    pub fn is_regularity(&self) -> bool {
+        crate::ffi::BRep_PolygonOnSurface_inherited_IsRegularity(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnClosedSurface()
+    pub fn is_curve_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnSurface_inherited_IsCurveOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygon3D()
+    pub fn is_polygon3_d(&self) -> bool {
+        crate::ffi::BRep_PolygonOnSurface_inherited_IsPolygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnTriangulation()
+    pub fn is_polygon_on_triangulation(&self) -> bool {
+        crate::ffi::BRep_PolygonOnSurface_inherited_IsPolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedTriangulation()
+    pub fn is_polygon_on_closed_triangulation(&self) -> bool {
+        crate::ffi::BRep_PolygonOnSurface_inherited_IsPolygonOnClosedTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedSurface()
+    pub fn is_polygon_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnSurface_inherited_IsPolygonOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PolygonOnSurface_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Curve3D()
+    pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_PolygonOnSurface_inherited_Curve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PolygonOnSurface_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve2()
+    pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PolygonOnSurface_inherited_PCurve2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon3D()
+    pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
+        crate::ffi::BRep_PolygonOnSurface_inherited_Polygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon2()
+    pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_PolygonOnSurface_inherited_Polygon2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Triangulation()
+    pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
+        crate::ffi::BRep_PolygonOnSurface_inherited_Triangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation()
+    pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_PolygonOnSurface_inherited_PolygonOnTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation2()
+    pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_PolygonOnSurface_inherited_PolygonOnTriangulation2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface2()
+    pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_PolygonOnSurface_inherited_Surface2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location2()
+    pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PolygonOnSurface_inherited_Location2(self)
+    }
+}
+
+// ========================
+// From BRep_PolygonOnTriangulation.hxx
+// ========================
+
+/// A representation by an array of nodes on a
+/// triangulation.
+pub use crate::ffi::BRep_PolygonOnTriangulation as PolygonOnTriangulation;
+
+impl PolygonOnTriangulation {
+    pub fn new_handlepolypolygonontriangulation_handlepolytriangulation_location(
+        P: &crate::ffi::HandlePolyPolygonOnTriangulation,
+        T: &crate::ffi::HandlePolyTriangulation,
+        L: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_PolygonOnTriangulation_ctor_handlepolypolygonontriangulation_handlepolytriangulation_location(P, T, L)
+    }
+
+    /// Return a copy of this representation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
+        crate::ffi::BRep_PolygonOnTriangulation_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_PolygonOnTriangulation_get_type_descriptor()
+    }
+
+    /// Upcast to BRep_CurveRepresentation
+    pub fn as_curve_representation(&self) -> &CurveRepresentation {
+        crate::ffi::BRep_PolygonOnTriangulation_as_BRep_CurveRepresentation(self)
+    }
+
+    /// Upcast to BRep_CurveRepresentation (mutable)
+    pub fn as_curve_representation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut CurveRepresentation> {
+        crate::ffi::BRep_PolygonOnTriangulation_as_BRep_CurveRepresentation_mut(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurve3D()
+    pub fn is_curve3_d(&self) -> bool {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_IsCurve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnSurface()
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_IsCurveOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsRegularity()
+    pub fn is_regularity(&self) -> bool {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_IsRegularity(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsCurveOnClosedSurface()
+    pub fn is_curve_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_IsCurveOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygon3D()
+    pub fn is_polygon3_d(&self) -> bool {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_IsPolygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedTriangulation()
+    pub fn is_polygon_on_closed_triangulation(&self) -> bool {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_IsPolygonOnClosedTriangulation(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnSurface()
+    pub fn is_polygon_on_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_IsPolygonOnSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: IsPolygonOnClosedSurface()
+    pub fn is_polygon_on_closed_surface(&self) -> bool {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_IsPolygonOnClosedSurface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location()
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_Location(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Curve3D()
+    pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_Curve3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface()
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_Surface(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve()
+    pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_PCurve(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PCurve2()
+    pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_PCurve2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon3D()
+    pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_Polygon3D(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon()
+    pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_Polygon(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Polygon2()
+    pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_Polygon2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: PolygonOnTriangulation2()
+    pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_PolygonOnTriangulation2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Surface2()
+    pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_Surface2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Location2()
+    pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_Location2(self)
+    }
+}
+
+// ========================
+// From BRep_TEdge.hxx
+// ========================
+
+/// The TEdge from BRep is  inherited from  the  TEdge
+/// from TopoDS. It contains the geometric data.
+///
+/// The TEdge contains :
+///
+/// * A tolerance.
+///
+/// * A same parameter flag.
+///
+/// * A same range flag.
+///
+/// * A Degenerated flag.
+///
+/// *  A  list   of curve representation.
+pub use crate::ffi::BRep_TEdge as TEdge;
+
+impl TEdge {
+    /// Creates an empty TEdge.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_TEdge_ctor()
+    }
+
+    /// Returns a copy  of the  TShape  with no sub-shapes.
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::BRep_TEdge_empty_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_TEdge_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TEdge
+    pub fn as_topo_ds_t_edge(&self) -> &crate::topo_ds::TEdge {
+        crate::ffi::BRep_TEdge_as_TopoDS_TEdge(self)
+    }
+
+    /// Upcast to TopoDS_TEdge (mutable)
+    pub fn as_topo_ds_t_edge_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::topo_ds::TEdge> {
+        crate::ffi::BRep_TEdge_as_TopoDS_TEdge_mut(self)
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_topo_ds_t_shape(&self) -> &crate::topo_ds::TShape {
+        crate::ffi::BRep_TEdge_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_topo_ds_t_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::topo_ds::TShape> {
+        crate::ffi::BRep_TEdge_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::BRep_TEdge_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::BRep_TEdge_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::BRep_TEdge_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::BRep_TEdge_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::BRep_TEdge_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::BRep_TEdge_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::BRep_TEdge_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::BRep_TEdge_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::BRep_TEdge_inherited_NbChildren(self)
+    }
+}
+
+// ========================
+// From BRep_TFace.hxx
+// ========================
+
+/// The Tface from BRep  is  based  on the TFace  from
+/// TopoDS. The TFace contains :
+///
+/// * A surface, a tolerance and a Location.
+///
+/// * A NaturalRestriction flag,   when this  flag  is
+/// True the  boundary of the  face is known to be the
+/// parametric space (Umin, UMax, VMin, VMax).
+///
+/// * An optional list of triangulations. If there are any
+/// triangulations the surface can be absent.
+///
+/// The  Location is  used   for the Surface.
+///
+/// The triangulation  is in the same reference system
+/// than the TFace.     A point on mySurface must   be
+/// transformed with myLocation,  but  not a point  on
+/// the triangulation.
+///
+/// The Surface may  be shared by different TFaces but
+/// not the  Triangulation, because the  Triangulation
+/// may be modified by  the edges.
+pub use crate::ffi::BRep_TFace as TFace;
+
+impl TFace {
+    /// Creates an empty TFace.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_TFace_ctor()
+    }
+
+    /// Returns a copy  of the  TShape  with no sub-shapes.
+    /// The new Face has no triangulation.
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::BRep_TFace_empty_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_TFace_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TFace
+    pub fn as_topo_ds_t_face(&self) -> &crate::topo_ds::TFace {
+        crate::ffi::BRep_TFace_as_TopoDS_TFace(self)
+    }
+
+    /// Upcast to TopoDS_TFace (mutable)
+    pub fn as_topo_ds_t_face_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::topo_ds::TFace> {
+        crate::ffi::BRep_TFace_as_TopoDS_TFace_mut(self)
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_topo_ds_t_shape(&self) -> &crate::topo_ds::TShape {
+        crate::ffi::BRep_TFace_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_topo_ds_t_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::topo_ds::TShape> {
+        crate::ffi::BRep_TFace_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::BRep_TFace_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::BRep_TFace_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::BRep_TFace_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::BRep_TFace_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::BRep_TFace_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::BRep_TFace_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::BRep_TFace_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::BRep_TFace_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::BRep_TFace_inherited_NbChildren(self)
+    }
+}
+
+// ========================
+// From BRep_TVertex.hxx
+// ========================
+
+/// The TVertex from  BRep inherits  from  the TVertex
+/// from TopoDS. It contains the geometric data.
+///
+/// The  TVertex contains a 3d point, location and a tolerance.
+pub use crate::ffi::BRep_TVertex as TVertex;
+
+impl TVertex {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRep_TVertex_ctor()
+    }
+
+    /// Returns a copy  of the  TShape  with no sub-shapes.
+    pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
+        crate::ffi::BRep_TVertex_empty_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRep_TVertex_get_type_descriptor()
+    }
+
+    /// Upcast to TopoDS_TShape
+    pub fn as_topo_ds_t_shape(&self) -> &crate::topo_ds::TShape {
+        crate::ffi::BRep_TVertex_as_TopoDS_TShape(self)
+    }
+
+    /// Upcast to TopoDS_TShape (mutable)
+    pub fn as_topo_ds_t_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::topo_ds::TShape> {
+        crate::ffi::BRep_TVertex_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Upcast to TopoDS_TVertex
+    pub fn as_topo_ds_t_vertex(&self) -> &crate::topo_ds::TVertex {
+        crate::ffi::BRep_TVertex_as_TopoDS_TVertex(self)
+    }
+
+    /// Upcast to TopoDS_TVertex (mutable)
+    pub fn as_topo_ds_t_vertex_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::topo_ds::TVertex> {
+        crate::ffi::BRep_TVertex_as_TopoDS_TVertex_mut(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Free()
+    pub fn free(&self) -> bool {
+        crate::ffi::BRep_TVertex_inherited_Free(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Locked()
+    pub fn locked(&self) -> bool {
+        crate::ffi::BRep_TVertex_inherited_Locked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Modified()
+    pub fn modified(&self) -> bool {
+        crate::ffi::BRep_TVertex_inherited_Modified(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Checked()
+    pub fn checked(&self) -> bool {
+        crate::ffi::BRep_TVertex_inherited_Checked(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Orientable()
+    pub fn orientable(&self) -> bool {
+        crate::ffi::BRep_TVertex_inherited_Orientable(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::BRep_TVertex_inherited_Closed(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Infinite()
+    pub fn infinite(&self) -> bool {
+        crate::ffi::BRep_TVertex_inherited_Infinite(self)
+    }
+
+    /// Inherited from TopoDS_TShape: Convex()
+    pub fn convex(&self) -> bool {
+        crate::ffi::BRep_TVertex_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: NbChildren()
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::BRep_TVertex_inherited_NbChildren(self)
     }
 }
 
@@ -243,7 +2460,7 @@ impl Tool {
     /// a location for the edge <E>. <C> and <S>  are null
     /// if the  edge has no curve on  surface.  Returns in
     /// <First> and <Last> the parameter range.
-    pub fn curve_on_surface_edge_handlecurve_handlesurface_location_real2(
+    pub fn curve_on_surface_edge_handlegeom2dcurve_handlegeomsurface_location_real2(
         E: &crate::ffi::TopoDS_Edge,
         C: std::pin::Pin<&mut crate::ffi::HandleGeom2dCurve>,
         S: std::pin::Pin<&mut crate::ffi::HandleGeomSurface>,
@@ -251,16 +2468,14 @@ impl Tool {
         First: &mut f64,
         Last: &mut f64,
     ) {
-        crate::ffi::BRep_Tool_curve_on_surface_edge_handlecurve_handlesurface_location_real2(
-            E, C, S, L, First, Last,
-        )
+        crate::ffi::BRep_Tool_curve_on_surface_edge_handlegeom2dcurve_handlegeomsurface_location_real2(E, C, S, L, First, Last)
     }
 
     /// Returns in <C>, <S>, <L> the 2d curve, the surface
     /// and the location for the edge <E> of rank <Index>.
     /// <C> and <S> are null if the index is out of range.
     /// Returns in <First> and <Last> the parameter range.
-    pub fn curve_on_surface_edge_handlecurve_handlesurface_location_real2_int(
+    pub fn curve_on_surface_edge_handlegeom2dcurve_handlegeomsurface_location_real2_int(
         E: &crate::ffi::TopoDS_Edge,
         C: std::pin::Pin<&mut crate::ffi::HandleGeom2dCurve>,
         S: std::pin::Pin<&mut crate::ffi::HandleGeomSurface>,
@@ -269,9 +2484,7 @@ impl Tool {
         Last: &mut f64,
         Index: i32,
     ) {
-        crate::ffi::BRep_Tool_curve_on_surface_edge_handlecurve_handlesurface_location_real2_int(
-            E, C, S, L, First, Last, Index,
-        )
+        crate::ffi::BRep_Tool_curve_on_surface_edge_handlegeom2dcurve_handlegeomsurface_location_real2_int(E, C, S, L, First, Last, Index)
     }
 
     /// Returns the polygon associated to the  edge in  the
@@ -287,24 +2500,24 @@ impl Tool {
     /// Returns the polygon associated to the  edge in  the
     /// parametric  space of  the surface. Returns   a NULL
     /// handle  if this polygon  does not exist.
-    pub fn polygon_on_surface_edge_handlesurface_location(
+    pub fn polygon_on_surface_edge_handlegeomsurface_location(
         E: &crate::ffi::TopoDS_Edge,
         S: &crate::ffi::HandleGeomSurface,
         L: &crate::ffi::TopLoc_Location,
     ) -> cxx::UniquePtr<crate::ffi::HandlePolyPolygon2D> {
-        crate::ffi::BRep_Tool_polygon_on_surface_edge_handlesurface_location(E, S, L)
+        crate::ffi::BRep_Tool_polygon_on_surface_edge_handlegeomsurface_location(E, S, L)
     }
 
     /// Returns in <C>, <S>, <L> a 2d curve, a surface and
     /// a location for the edge <E>. <C> and <S>  are null
     /// if the  edge has no polygon on  surface.
-    pub fn polygon_on_surface_edge_handlepolygon2d_handlesurface_location(
+    pub fn polygon_on_surface_edge_handlepolypolygon2d_handlegeomsurface_location(
         E: &crate::ffi::TopoDS_Edge,
         C: std::pin::Pin<&mut crate::ffi::HandlePolyPolygon2D>,
         S: std::pin::Pin<&mut crate::ffi::HandleGeomSurface>,
         L: std::pin::Pin<&mut crate::ffi::TopLoc_Location>,
     ) {
-        crate::ffi::BRep_Tool_polygon_on_surface_edge_handlepolygon2d_handlesurface_location(
+        crate::ffi::BRep_Tool_polygon_on_surface_edge_handlepolypolygon2d_handlegeomsurface_location(
             E, C, S, L,
         )
     }
@@ -312,54 +2525,54 @@ impl Tool {
     /// Returns in <C>, <S>, <L> the 2d curve, the surface
     /// and the location for the edge <E> of rank <Index>.
     /// <C> and <S> are null if the index is out of range.
-    pub fn polygon_on_surface_edge_handlepolygon2d_handlesurface_location_int(
+    pub fn polygon_on_surface_edge_handlepolypolygon2d_handlegeomsurface_location_int(
         E: &crate::ffi::TopoDS_Edge,
         C: std::pin::Pin<&mut crate::ffi::HandlePolyPolygon2D>,
         S: std::pin::Pin<&mut crate::ffi::HandleGeomSurface>,
         L: std::pin::Pin<&mut crate::ffi::TopLoc_Location>,
         Index: i32,
     ) {
-        crate::ffi::BRep_Tool_polygon_on_surface_edge_handlepolygon2d_handlesurface_location_int(
-            E, C, S, L, Index,
-        )
+        crate::ffi::BRep_Tool_polygon_on_surface_edge_handlepolypolygon2d_handlegeomsurface_location_int(E, C, S, L, Index)
     }
 
     /// Returns the polygon associated to the  edge in  the
     /// parametric  space of  the  face.  Returns   a NULL
     /// handle  if this polygon  does not exist.
-    pub fn polygon_on_triangulation_edge_handletriangulation_location(
+    pub fn polygon_on_triangulation_edge_handlepolytriangulation_location(
         E: &crate::ffi::TopoDS_Edge,
         T: &crate::ffi::HandlePolyTriangulation,
         L: &crate::ffi::TopLoc_Location,
     ) -> &'static crate::ffi::HandlePolyPolygonOnTriangulation {
-        crate::ffi::BRep_Tool_polygon_on_triangulation_edge_handletriangulation_location(E, T, L)
+        crate::ffi::BRep_Tool_polygon_on_triangulation_edge_handlepolytriangulation_location(
+            E, T, L,
+        )
     }
 
     /// Returns in <P>, <T>, <L> a polygon on triangulation, a
     /// triangulation and a location for the edge <E>.
     /// <P>  and  <T>  are null  if  the  edge has no
     /// polygon on  triangulation.
-    pub fn polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location(
+    pub fn polygon_on_triangulation_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(
         E: &crate::ffi::TopoDS_Edge,
         P: std::pin::Pin<&mut crate::ffi::HandlePolyPolygonOnTriangulation>,
         T: std::pin::Pin<&mut crate::ffi::HandlePolyTriangulation>,
         L: std::pin::Pin<&mut crate::ffi::TopLoc_Location>,
     ) {
-        crate::ffi::BRep_Tool_polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location(E, P, T, L)
+        crate::ffi::BRep_Tool_polygon_on_triangulation_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(E, P, T, L)
     }
 
     /// Returns   in   <P>,  <T>,    <L> a     polygon  on
     /// triangulation,   a triangulation  and a  location for
     /// the edge <E> for the range index.  <C> and <S> are
     /// null if the edge has no polygon on triangulation.
-    pub fn polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location_int(
+    pub fn polygon_on_triangulation_edge_handlepolypolygonontriangulation_handlepolytriangulation_location_int(
         E: &crate::ffi::TopoDS_Edge,
         P: std::pin::Pin<&mut crate::ffi::HandlePolyPolygonOnTriangulation>,
         T: std::pin::Pin<&mut crate::ffi::HandlePolyTriangulation>,
         L: std::pin::Pin<&mut crate::ffi::TopLoc_Location>,
         Index: i32,
     ) {
-        crate::ffi::BRep_Tool_polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location_int(E, P, T, L, Index)
+        crate::ffi::BRep_Tool_polygon_on_triangulation_edge_handlepolypolygonontriangulation_handlepolytriangulation_location_int(E, P, T, L, Index)
     }
 
     /// Returns  True  if  <E>  has  two  PCurves  in  the
@@ -372,22 +2585,22 @@ impl Tool {
     /// Returns  True  if  <E>  has  two  PCurves  in  the
     /// parametric space  of <S>.  i.e.   <S>  is a closed
     /// surface and <E> is on the closing curve.
-    pub fn is_closed_edge_handlesurface_location(
+    pub fn is_closed_edge_handlegeomsurface_location(
         E: &crate::ffi::TopoDS_Edge,
         S: &crate::ffi::HandleGeomSurface,
         L: &crate::ffi::TopLoc_Location,
     ) -> bool {
-        crate::ffi::BRep_Tool_is_closed_edge_handlesurface_location(E, S, L)
+        crate::ffi::BRep_Tool_is_closed_edge_handlegeomsurface_location(E, S, L)
     }
 
     /// Returns  True  if <E> has two arrays of indices in
     /// the triangulation <T>.
-    pub fn is_closed_edge_handletriangulation_location(
+    pub fn is_closed_edge_handlepolytriangulation_location(
         E: &crate::ffi::TopoDS_Edge,
         T: &crate::ffi::HandlePolyTriangulation,
         L: &crate::ffi::TopLoc_Location,
     ) -> bool {
-        crate::ffi::BRep_Tool_is_closed_edge_handletriangulation_location(E, T, L)
+        crate::ffi::BRep_Tool_is_closed_edge_handlepolytriangulation_location(E, T, L)
     }
 
     /// Returns the tolerance for <E>.
@@ -417,14 +2630,14 @@ impl Tool {
 
     /// Gets the range  of the edge  on the pcurve on  the
     /// surface.
-    pub fn range_edge_handlesurface_location_real2(
+    pub fn range_edge_handlegeomsurface_location_real2(
         E: &crate::ffi::TopoDS_Edge,
         S: &crate::ffi::HandleGeomSurface,
         L: &crate::ffi::TopLoc_Location,
         First: &mut f64,
         Last: &mut f64,
     ) {
-        crate::ffi::BRep_Tool_range_edge_handlesurface_location_real2(E, S, L, First, Last)
+        crate::ffi::BRep_Tool_range_edge_handlegeomsurface_location_real2(E, S, L, First, Last)
     }
 
     /// Gets the range of the edge on the pcurve on the face.
@@ -438,14 +2651,16 @@ impl Tool {
     }
 
     /// Gets the UV locations of the extremities of the edge.
-    pub fn uv_points_edge_handlesurface_location_pnt2d2(
+    pub fn uv_points_edge_handlegeomsurface_location_pnt2d2(
         E: &crate::ffi::TopoDS_Edge,
         S: &crate::ffi::HandleGeomSurface,
         L: &crate::ffi::TopLoc_Location,
         PFirst: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
         PLast: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
     ) {
-        crate::ffi::BRep_Tool_uv_points_edge_handlesurface_location_pnt2d2(E, S, L, PFirst, PLast)
+        crate::ffi::BRep_Tool_uv_points_edge_handlegeomsurface_location_pnt2d2(
+            E, S, L, PFirst, PLast,
+        )
     }
 
     /// Gets the UV locations of the extremities of the edge.
@@ -459,14 +2674,14 @@ impl Tool {
     }
 
     /// Sets the UV locations of the extremities of the edge.
-    pub fn set_uv_points_edge_handlesurface_location_pnt2d2(
+    pub fn set_uv_points_edge_handlegeomsurface_location_pnt2d2(
         E: &crate::ffi::TopoDS_Edge,
         S: &crate::ffi::HandleGeomSurface,
         L: &crate::ffi::TopLoc_Location,
         PFirst: &crate::ffi::gp_Pnt2d,
         PLast: &crate::ffi::gp_Pnt2d,
     ) {
-        crate::ffi::BRep_Tool_set_uv_points_edge_handlesurface_location_pnt2d2(
+        crate::ffi::BRep_Tool_set_uv_points_edge_handlegeomsurface_location_pnt2d2(
             E, S, L, PFirst, PLast,
         )
     }
@@ -501,25 +2716,25 @@ impl Tool {
     }
 
     /// Returns True if the edge is on the surfaces.
-    pub fn has_continuity_edge_handlesurface2_location2(
+    pub fn has_continuity_edge_handlegeomsurface2_location2(
         E: &crate::ffi::TopoDS_Edge,
         S1: &crate::ffi::HandleGeomSurface,
         S2: &crate::ffi::HandleGeomSurface,
         L1: &crate::ffi::TopLoc_Location,
         L2: &crate::ffi::TopLoc_Location,
     ) -> bool {
-        crate::ffi::BRep_Tool_has_continuity_edge_handlesurface2_location2(E, S1, S2, L1, L2)
+        crate::ffi::BRep_Tool_has_continuity_edge_handlegeomsurface2_location2(E, S1, S2, L1, L2)
     }
 
     /// Returns the continuity.
-    pub fn continuity_edge_handlesurface2_location2(
+    pub fn continuity_edge_handlegeomsurface2_location2(
         E: &crate::ffi::TopoDS_Edge,
         S1: &crate::ffi::HandleGeomSurface,
         S2: &crate::ffi::HandleGeomSurface,
         L1: &crate::ffi::TopLoc_Location,
         L2: &crate::ffi::TopLoc_Location,
     ) -> i32 {
-        crate::ffi::BRep_Tool_continuity_edge_handlesurface2_location2(E, S1, S2, L1, L2)
+        crate::ffi::BRep_Tool_continuity_edge_handlegeomsurface2_location2(E, S1, S2, L1, L2)
     }
 
     /// Returns True if the edge has regularity on some
@@ -578,13 +2793,13 @@ impl Tool {
 
     /// Returns the  parameters  of   the  vertex   on the
     /// pcurve of the edge on the surface.
-    pub fn parameter_vertex_edge_handlesurface_location(
+    pub fn parameter_vertex_edge_handlegeomsurface_location(
         V: &crate::ffi::TopoDS_Vertex,
         E: &crate::ffi::TopoDS_Edge,
         S: &crate::ffi::HandleGeomSurface,
         L: &crate::ffi::TopLoc_Location,
     ) -> f64 {
-        crate::ffi::BRep_Tool_parameter_vertex_edge_handlesurface_location(V, E, S, L)
+        crate::ffi::BRep_Tool_parameter_vertex_edge_handlegeomsurface_location(V, E, S, L)
     }
 
     /// Returns the parameters of the vertex on the face.
@@ -599,3 +2814,12 @@ impl Tool {
         crate::ffi::BRep_Tool_max_tolerance(theShape, theSubShape)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    BRep_ListOfCurveRepresentation as ListOfCurveRepresentation,
+    BRep_ListOfPointRepresentation as ListOfPointRepresentation,
+};

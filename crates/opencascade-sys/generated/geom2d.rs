@@ -7,6 +7,992 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From Geom2d_AxisPlacement.hxx
+// ========================
+
+/// Describes an axis in 2D space.
+/// An axis is defined by:
+/// - its origin, also termed the "Location point" of the axis,
+/// - its unit vector, termed the "Direction" of the axis.
+/// Note: Geom2d_AxisPlacement axes provide the
+/// same kind of "geometric" services as gp_Ax2d axes
+/// but have more complex data structures. The
+/// geometric objects provided by the Geom2d package
+/// use gp_Ax2d objects to include axes in their data
+/// structures, or to define an axis of symmetry or axis of rotation.
+/// Geom2d_AxisPlacement axes are used in a context
+/// where they can be shared by several objects
+/// contained inside a common data structure.
+pub use crate::ffi::Geom2d_AxisPlacement as AxisPlacement;
+
+impl AxisPlacement {
+    /// Constructs an axis by conversion of the gp_Ax2d axis A.
+    pub fn new_ax2d(A: &crate::ffi::gp_Ax2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_AxisPlacement_ctor_ax2d(A)
+    }
+
+    /// Constructs an axis from a given origin P and unit vector V.
+    pub fn new_pnt2d_dir2d(
+        P: &crate::ffi::gp_Pnt2d,
+        V: &crate::ffi::gp_Dir2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_AxisPlacement_ctor_pnt2d_dir2d(P, V)
+    }
+
+    /// Reverses the unit vector of this axis.
+    /// Note:
+    /// - Reverse assigns the result to this axis, while
+    /// - Reversed creates a new one.
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dAxisPlacement> {
+        crate::ffi::Geom2d_AxisPlacement_reversed(self)
+    }
+
+    /// Converts this axis into a gp_Ax2d axis.
+    pub fn ax2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_AxisPlacement_ax2d(self)
+    }
+
+    /// Returns the "Direction" of <me>.
+    /// -C++: return const&
+    pub fn direction(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir2d> {
+        crate::ffi::Geom2d_AxisPlacement_direction(self)
+    }
+
+    /// Returns the "Location" point (origin) of the axis placement.
+    /// -C++: return const&
+    pub fn location(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_AxisPlacement_location(self)
+    }
+
+    /// Creates a new object which is a copy of this axis.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_AxisPlacement_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_AxisPlacement_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_AxisPlacement_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_AxisPlacement_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dAxisPlacement> {
+        crate::ffi::Geom2d_AxisPlacement_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_AxisPlacement_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_AxisPlacement_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_AxisPlacement_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_AxisPlacement_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_AxisPlacement_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_AxisPlacement_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_AxisPlacement_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_AxisPlacement_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_AxisPlacement_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dAxisPlacement;
+
+impl HandleGeom2dAxisPlacement {
+    /// Dereference this Handle to access the underlying Geom2d_AxisPlacement
+    pub fn get(&self) -> &crate::ffi::Geom2d_AxisPlacement {
+        crate::ffi::HandleGeom2dAxisPlacement_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_AxisPlacement
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_AxisPlacement> {
+        crate::ffi::HandleGeom2dAxisPlacement_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_AxisPlacement> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dAxisPlacement_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
+// From Geom2d_BSplineCurve.hxx
+// ========================
+
+/// Describes a BSpline curve.
+/// A BSpline curve can be:
+/// - uniform or non-uniform,
+/// - rational or non-rational,
+/// - periodic or non-periodic.
+/// A BSpline curve is defined by:
+/// - its degree; the degree for a
+/// Geom2d_BSplineCurve is limited to a value (25)
+/// which is defined and controlled by the system. This
+/// value is returned by the function MaxDegree;
+/// - its periodic or non-periodic nature;
+/// - a table of poles (also called control points), with
+/// their associated weights if the BSpline curve is
+/// rational. The poles of the curve are "control points"
+/// used to deform the curve. If the curve is
+/// non-periodic, the first pole is the start point of the
+/// curve, and the last pole is the end point of the
+/// curve. The segment, which joins the first pole to the
+/// second pole, is the tangent to the curve at its start
+/// point, and the segment, which joins the last pole to
+/// the second-from-last pole, is the tangent to the
+/// curve at its end point. If the curve is periodic, these
+/// geometric properties are not verified. It is more
+/// difficult to give a geometric signification to the
+/// weights but they are useful for providing exact
+/// representations of the arcs of a circle or ellipse.
+/// Moreover, if the weights of all the poles are equal,
+/// the curve has a polynomial equation; it is
+/// therefore a non-rational curve.
+/// - a table of knots with their multiplicities. For a
+/// Geom2d_BSplineCurve, the table of knots is an
+/// increasing sequence of reals without repetition; the
+/// multiplicities define the repetition of the knots. A
+/// BSpline curve is a piecewise polynomial or rational
+/// curve. The knots are the parameters of junction
+/// points between two pieces. The multiplicity
+/// Mult(i) of the knot Knot(i) of the BSpline
+/// curve is related to the degree of continuity of the
+/// curve at the knot Knot(i), which is equal to
+/// Degree - Mult(i) where Degree is the
+/// degree of the BSpline curve.
+/// If the knots are regularly spaced (i.e. the difference
+/// between two consecutive knots is a constant), three
+/// specific and frequently used cases of knot distribution
+/// can be identified:
+/// - "uniform" if all multiplicities are equal to 1,
+/// - "quasi-uniform" if all multiplicities are equal to 1,
+/// except the first and the last knot which have a
+/// multiplicity of Degree + 1, where Degree is
+/// the degree of the BSpline curve,
+/// - "Piecewise Bezier" if all multiplicities are equal to
+/// Degree except the first and last knot which have
+/// a multiplicity of Degree + 1, where Degree is
+/// the degree of the BSpline curve. A curve of this
+/// type is a concatenation of arcs of Bezier curves.
+/// If the BSpline curve is not periodic:
+/// - the bounds of the Poles and Weights tables are 1
+/// and NbPoles, where NbPoles is the number of
+/// poles of the BSpline curve,
+/// - the bounds of the Knots and Multiplicities tables are
+/// 1 and NbKnots, where NbKnots is the number
+/// of knots of the BSpline curve.
+/// If the BSpline curve is periodic, and if there are k
+/// periodic knots and p periodic poles, the period is:
+/// period = Knot(k + 1) - Knot(1)
+/// and the poles and knots tables can be considered as
+/// infinite tables, such that:
+/// - Knot(i+k) = Knot(i) + period
+/// - Pole(i+p) = Pole(i)
+/// Note: data structures of a periodic BSpline curve are
+/// more complex than those of a non-periodic one.
+/// Warnings :
+/// In this class we consider that a weight value is zero if
+/// Weight <= Resolution from package gp.
+/// For two parametric values (or two knot values) U1, U2 we
+/// consider that U1 = U2 if Abs (U2 - U1) <= Epsilon (U1).
+/// For two weights values W1, W2 we consider that W1 = W2 if
+/// Abs (W2 - W1) <= Epsilon (W1).  The method Epsilon is
+/// defined in the class Real from package Standard.
+///
+/// References :
+/// . A survey of curve and surface methods in CADG Wolfgang BOHM
+/// CAGD 1 (1984)
+/// . On de Boor-like algorithms and blossoming Wolfgang BOEHM
+/// cagd 5 (1988)
+/// . Blossoming and knot insertion algorithms for B-spline curves
+/// Ronald N. GOLDMAN
+/// . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA
+/// . Curves and Surfaces for Computer Aided Geometric Design,
+/// a practical guide Gerald Farin
+pub use crate::ffi::Geom2d_BSplineCurve as BSplineCurve;
+
+impl BSplineCurve {
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    /// The following conditions must be verified.
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(
+            Poles,
+            Knots,
+            Multiplicities,
+            Degree,
+            Periodic,
+        )
+    }
+
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    /// The following conditions must be verified.
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+            Periodic,
+        )
+    }
+
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    /// The following conditions must be verified.
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt2d_array1ofreal_array1ofinteger_int(
+        Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(
+            Poles,
+            Knots,
+            Multiplicities,
+            Degree,
+            false,
+        )
+    }
+
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    /// The following conditions must be verified.
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt2d_array1ofreal2_array1ofinteger_int(
+        Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+            false,
+        )
+    }
+
+    /// Returns the global continuity of the curve :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Curve,
+    /// C2 : continuity of the second derivative all along the Curve,
+    /// C3 : continuity of the third derivative all along the Curve,
+    /// CN : the order of continuity is infinite.
+    /// For a B-spline curve of degree d if a knot Ui has a
+    /// multiplicity p the B-spline curve is only Cd-p continuous
+    /// at Ui. So the global continuity of the curve can't be greater
+    /// than Cd-p where p is the maximum multiplicity of the interior
+    /// Knots. In the interior of a knot span the curve is infinitely
+    /// continuously differentiable.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_BSplineCurve_continuity(self)
+    }
+
+    /// For the point of parameter U of this BSpline curve,
+    /// computes the vector corresponding to the Nth derivative.
+    /// Warning
+    /// On a point where the continuity of the curve is not the
+    /// one requested, this function impacts the part defined
+    /// by the parameter with a value greater than U, i.e. the
+    /// part of the curve to the "right" of the singularity.
+    /// Raises  UndefinedDerivative if the continuity of the curve is not CN.
+    /// RangeError if N < 1.
+    /// The following functions computes the point of parameter U
+    /// and the derivatives at this point on the B-spline curve
+    /// arc defined between the knot FromK1 and the knot ToK2.
+    /// U can be out of bounds [Knot (FromK1),  Knot (ToK2)] but
+    /// for the computation we only use the definition of the curve
+    /// between these two knots. This method is useful to compute
+    /// local derivative, if the order of continuity of the whole
+    /// curve is not greater enough.    Inside the parametric
+    /// domain Knot (FromK1), Knot (ToK2) the evaluations are
+    /// the same as if we consider the whole definition of the
+    /// curve. Of course the evaluations are different outside
+    /// this parametric domain.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_BSplineCurve_dn(self, U, N)
+    }
+
+    /// Raised if FromK1 = ToK2.
+    pub fn local_value(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_BSplineCurve_local_value(self, U, FromK1, ToK2)
+    }
+
+    /// Raised if the local continuity of the curve is not CN
+    /// between the knot K1 and the knot K2.
+    /// Raised if FromK1 = ToK2.
+    /// Raised if N < 1.
+    pub fn local_dn(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+        N: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_BSplineCurve_local_dn(self, U, FromK1, ToK2, N)
+    }
+
+    /// Returns the last point of the curve.
+    /// Warnings :
+    /// The last point of the curve is different from the last
+    /// pole of the curve if the multiplicity of the last knot
+    /// is lower than Degree.
+    pub fn end_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_BSplineCurve_end_point(self)
+    }
+
+    /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
+    /// If all the knots differ by a positive constant from the
+    /// preceding knot the BSpline Curve can be :
+    /// - Uniform if all the knots are of multiplicity 1,
+    /// - QuasiUniform if all the knots are of multiplicity 1 except for
+    /// the first and last knot which are of multiplicity Degree + 1,
+    /// - PiecewiseBezier if the first and last knots have multiplicity
+    /// Degree + 1 and if interior knots have multiplicity Degree
+    /// A piecewise Bezier with only two knots is a BezierCurve.
+    /// else the curve is non uniform.
+    /// The tolerance criterion is Epsilon from class Real.
+    pub fn knot_distribution(&self) -> i32 {
+        crate::ffi::Geom2d_BSplineCurve_knot_distribution(self)
+    }
+
+    /// Returns the start point of the curve.
+    /// Warnings :
+    /// This point is different from the first pole of the curve if the
+    /// multiplicity of the first knot is lower than Degree.
+    pub fn start_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_BSplineCurve_start_point(self)
+    }
+
+    /// Creates a new object which is a copy of this BSpline curve.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BSplineCurve_copy(self)
+    }
+
+    /// Returns the value of the maximum degree of the normalized
+    /// B-spline basis functions in this package.
+    pub fn max_degree() -> i32 {
+        crate::ffi::Geom2d_BSplineCurve_max_degree()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_BSplineCurve_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_BoundedCurve
+    pub fn as_bounded_curve(&self) -> &BoundedCurve {
+        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_BoundedCurve(self)
+    }
+
+    /// Upcast to Geom2d_BoundedCurve (mutable)
+    pub fn as_bounded_curve_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BoundedCurve> {
+        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_BoundedCurve_mut(self)
+    }
+
+    /// Upcast to Geom2d_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Curve(self)
+    }
+
+    /// Upcast to Geom2d_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Curve_mut(self)
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        crate::ffi::Geom2d_BSplineCurve_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_BSplineCurve_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom2d_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_BSplineCurve_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Period(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BSplineCurve_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dBSplineCurve;
+
+impl HandleGeom2dBSplineCurve {
+    /// Dereference this Handle to access the underlying Geom2d_BSplineCurve
+    pub fn get(&self) -> &crate::ffi::Geom2d_BSplineCurve {
+        crate::ffi::HandleGeom2dBSplineCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_BSplineCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_BSplineCurve> {
+        crate::ffi::HandleGeom2dBSplineCurve_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Geom2d_BoundedCurve>
+    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBoundedCurve> {
+        crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dBoundedCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
+// From Geom2d_BezierCurve.hxx
+// ========================
+
+/// Describes a rational or non-rational Bezier curve
+/// - a non-rational Bezier curve is defined by a table
+/// of poles (also called control points),
+/// - a rational Bezier curve is defined by a table of
+/// poles with varying weights.
+/// These data are manipulated by two parallel arrays:
+/// - the poles table, which is an array of gp_Pnt2d points, and
+/// - the weights table, which is an array of reals.
+/// The bounds of these arrays are 1 and "the number of poles" of the curve.
+/// The poles of the curve are "control points" used to deform the curve.
+/// The first pole is the start point of the curve, and the
+/// last pole is the end point of the curve. The segment
+/// which joins the first pole to the second pole is the
+/// tangent to the curve at its start point, and the
+/// segment which joins the last pole to the
+/// second-from-last pole is the tangent to the curve
+/// at its end point.
+/// It is more difficult to give a geometric signification
+/// to the weights but they are useful for providing
+/// exact representations of the arcs of a circle or
+/// ellipse. Moreover, if the weights of all the poles are
+/// equal, the curve is polynomial; it is therefore a
+/// non-rational curve. The non-rational curve is a
+/// special and frequently used case. The weights are
+/// defined and used only in case of a rational curve.
+/// The degree of a Bezier curve is equal to the
+/// number of poles, minus 1. It must be greater than or
+/// equal to 1. However, the degree of a
+/// Geom2d_BezierCurve curve is limited to a value
+/// (25) which is defined and controlled by the system.
+/// This value is returned by the function MaxDegree.
+/// The parameter range for a Bezier curve is [ 0, 1 ].
+/// If the first and last control points of the Bezier
+/// curve are the same point then the curve is closed.
+/// For example, to create a closed Bezier curve with
+/// four control points, you have to give a set of control
+/// points P1, P2, P3 and P1.
+/// The continuity of a Bezier curve is infinite.
+/// It is not possible to build a Bezier curve with
+/// negative weights. We consider that a weight value
+/// is zero if it is less than or equal to
+/// gp::Resolution(). We also consider that
+/// two weight values W1 and W2 are equal if:
+/// |W2 - W1| <= gp::Resolution().
+/// Warning
+/// - When considering the continuity of a closed
+/// Bezier curve at the junction point, remember that
+/// a curve of this type is never periodic. This means
+/// that the derivatives for the parameter u = 0
+/// have no reason to be the same as the
+/// derivatives for the parameter u = 1 even if the curve is closed.
+/// - The length of a Bezier curve can be null.
+pub use crate::ffi::Geom2d_BezierCurve as BezierCurve;
+
+impl BezierCurve {
+    /// Creates a non rational Bezier curve with a set of poles :
+    /// CurvePoles.  The weights are defaulted to all being 1.
+    /// Raises ConstructionError if the number of poles is greater than MaxDegree + 1
+    /// or lower than 2.
+    pub fn new_array1ofpnt2d(
+        CurvePoles: &crate::ffi::TColgp_Array1OfPnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_BezierCurve_ctor_array1ofpnt2d(CurvePoles)
+    }
+
+    /// Creates a rational Bezier curve with the set of poles
+    /// CurvePoles and the set of weights  PoleWeights .
+    /// If all the weights are identical the curve is considered
+    /// as non rational.  Raises ConstructionError if
+    /// the number of poles is greater than  MaxDegree + 1 or lower
+    /// than 2 or CurvePoles and CurveWeights have not the same length
+    /// or one weight value is lower or equal to Resolution from
+    /// package gp.
+    pub fn new_array1ofpnt2d_array1ofreal(
+        CurvePoles: &crate::ffi::TColgp_Array1OfPnt2d,
+        PoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_BezierCurve_ctor_array1ofpnt2d_array1ofreal(CurvePoles, PoleWeights)
+    }
+
+    /// Returns GeomAbs_CN, which is the continuity of any Bezier curve.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_BezierCurve_continuity(self)
+    }
+
+    /// For this Bezier curve, computes
+    /// - the point P of parameter U, or
+    /// - the point P and one or more of the following values:
+    /// - V1, the first derivative vector,
+    /// - V2, the second derivative vector,
+    /// - V3, the third derivative vector.
+    /// Note: the parameter U can be outside the bounds of the curve.
+    /// Raises RangeError if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_BezierCurve_dn(self, U, N)
+    }
+
+    /// Returns the end point or start point of this Bezier curve.
+    pub fn end_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_BezierCurve_end_point(self)
+    }
+
+    /// Returns Value (U=1), it is the first control point
+    /// of the curve.
+    pub fn start_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_BezierCurve_start_point(self)
+    }
+
+    /// Creates a new object which is a copy of this Bezier curve.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BezierCurve_copy(self)
+    }
+
+    /// Returns the value of the maximum polynomial degree of a
+    /// BezierCurve. This value is 25.
+    pub fn max_degree() -> i32 {
+        crate::ffi::Geom2d_BezierCurve_max_degree()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_BezierCurve_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_BoundedCurve
+    pub fn as_bounded_curve(&self) -> &BoundedCurve {
+        crate::ffi::Geom2d_BezierCurve_as_Geom2d_BoundedCurve(self)
+    }
+
+    /// Upcast to Geom2d_BoundedCurve (mutable)
+    pub fn as_bounded_curve_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BoundedCurve> {
+        crate::ffi::Geom2d_BezierCurve_as_Geom2d_BoundedCurve_mut(self)
+    }
+
+    /// Upcast to Geom2d_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom2d_BezierCurve_as_Geom2d_Curve(self)
+    }
+
+    /// Upcast to Geom2d_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom2d_BezierCurve_as_Geom2d_Curve_mut(self)
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBezierCurve> {
+        crate::ffi::Geom2d_BezierCurve_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_BezierCurve_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom2d_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_BezierCurve_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_BezierCurve_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_BezierCurve_inherited_Period(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_BezierCurve_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_BezierCurve_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_BezierCurve_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_BezierCurve_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_BezierCurve_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BezierCurve_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BezierCurve_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BezierCurve_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BezierCurve_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_BezierCurve_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dBezierCurve;
+
+impl HandleGeom2dBezierCurve {
+    /// Dereference this Handle to access the underlying Geom2d_BezierCurve
+    pub fn get(&self) -> &crate::ffi::Geom2d_BezierCurve {
+        crate::ffi::HandleGeom2dBezierCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_BezierCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_BezierCurve> {
+        crate::ffi::HandleGeom2dBezierCurve_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_BezierCurve> to Handle<Geom2d_BoundedCurve>
+    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBoundedCurve> {
+        crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dBoundedCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_BezierCurve> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_BezierCurve> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
 // From Geom2d_BoundedCurve.hxx
 // ========================
 
@@ -266,6 +1252,465 @@ impl HandleGeom2dBoundedCurve {
     /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
         crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
+// From Geom2d_CartesianPoint.hxx
+// ========================
+
+/// Describes a point in 2D space. A
+/// Geom2d_CartesianPoint is defined by a gp_Pnt2d
+/// point, with its two Cartesian coordinates X and Y.
+pub use crate::ffi::Geom2d_CartesianPoint as CartesianPoint;
+
+impl CartesianPoint {
+    /// Returns a persistent copy of P.
+    pub fn new_pnt2d(P: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_CartesianPoint_ctor_pnt2d(P)
+    }
+
+    pub fn new_real2(X: f64, Y: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_CartesianPoint_ctor_real2(X, Y)
+    }
+
+    /// Returns a non persistent cartesian point with
+    /// the same coordinates as <me>.
+    /// -C++: return const&
+    pub fn pnt2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_CartesianPoint_pnt2d(self)
+    }
+
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_CartesianPoint_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_CartesianPoint_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom2d_Point
+    pub fn as_point(&self) -> &Point {
+        crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Point(self)
+    }
+
+    /// Upcast to Geom2d_Point (mutable)
+    pub fn as_point_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Point> {
+        crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Point_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCartesianPoint> {
+        crate::ffi::Geom2d_CartesianPoint_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_CartesianPoint_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_CartesianPoint_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_CartesianPoint_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_CartesianPoint_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_CartesianPoint_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_CartesianPoint_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_CartesianPoint_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_CartesianPoint_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_CartesianPoint_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom2d_Point: Distance()
+    pub fn distance(&self, Other: &crate::ffi::HandleGeom2dPoint) -> f64 {
+        crate::ffi::Geom2d_CartesianPoint_inherited_Distance(self, Other)
+    }
+
+    /// Inherited from Geom2d_Point: SquareDistance()
+    pub fn square_distance(&self, Other: &crate::ffi::HandleGeom2dPoint) -> f64 {
+        crate::ffi::Geom2d_CartesianPoint_inherited_SquareDistance(self, Other)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dCartesianPoint;
+
+impl HandleGeom2dCartesianPoint {
+    /// Dereference this Handle to access the underlying Geom2d_CartesianPoint
+    pub fn get(&self) -> &crate::ffi::Geom2d_CartesianPoint {
+        crate::ffi::HandleGeom2dCartesianPoint_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_CartesianPoint
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_CartesianPoint> {
+        crate::ffi::HandleGeom2dCartesianPoint_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_CartesianPoint> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dCartesianPoint_to_HandleGeom2dGeometry(self)
+    }
+
+    /// Upcast Handle<Geom2d_CartesianPoint> to Handle<Geom2d_Point>
+    pub fn to_handle_point(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dPoint> {
+        crate::ffi::HandleGeom2dCartesianPoint_to_HandleGeom2dPoint(self)
+    }
+}
+
+// ========================
+// From Geom2d_Circle.hxx
+// ========================
+
+/// Describes a circle in the plane (2D space).
+/// A circle is defined by its radius and, as with any conic
+/// curve, is positioned in the plane with a coordinate
+/// system (gp_Ax22d object) where the origin is the
+/// center of the circle.
+/// The coordinate system is the local coordinate
+/// system of the circle.
+/// The orientation (direct or indirect) of the local
+/// coordinate system gives an explicit orientation to the
+/// circle, determining the direction in which the
+/// parameter increases along the circle.
+/// The Geom2d_Circle circle is parameterized by an angle:
+/// P(U) = O + R*Cos(U)*XDir + R*Sin(U)*YDir
+/// where:
+/// - P is the point of parameter U,
+/// - O, XDir and YDir are respectively the origin, "X
+/// Direction" and "Y Direction" of its local coordinate system,
+/// - R is the radius of the circle.
+/// The "X Axis" of the local coordinate system therefore
+/// defines the origin of the parameter of the circle. The
+/// parameter is the angle with this "X Direction".
+/// A circle is a closed and periodic curve. The period is
+/// 2.*Pi and the parameter range is [ 0,2.*Pi [.
+/// See Also
+/// GCE2d_MakeCircle which provides functions for
+/// more complex circle constructions
+/// gp_Ax22d and  gp_Circ2d for an equivalent, non-parameterized data structure.
+pub use crate::ffi::Geom2d_Circle as Circle;
+
+impl Circle {
+    /// Constructs a circle by conversion of the gp_Circ2d circle C.
+    pub fn new_circ2d(C: &crate::ffi::gp_Circ2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Circle_ctor_circ2d(C)
+    }
+
+    /// Constructs a circle of radius Radius, whose center is the origin of axis
+    /// A; A is the "X Axis" of the local coordinate system
+    /// of the circle; this coordinate system is direct if
+    /// Sense is true (default value) or indirect if Sense is false.
+    /// Note: It is possible to create a circle where Radius is equal to 0.0.
+    /// Exceptions Standard_ConstructionError if Radius is negative.
+    pub fn new_ax2d_real_bool(
+        A: &crate::ffi::gp_Ax2d,
+        Radius: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Circle_ctor_ax2d_real_bool(A, Radius, Sense)
+    }
+
+    /// Constructs a circle
+    /// of radius Radius, where the coordinate system A
+    /// locates the circle and defines its orientation in the plane such that:
+    /// - the center of the circle is the origin of A,
+    /// - the orientation (direct or indirect) of A gives the
+    /// orientation of the circle.
+    pub fn new_ax22d_real(A: &crate::ffi::gp_Ax22d, Radius: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Circle_ctor_ax22d_real(A, Radius)
+    }
+
+    /// Constructs a circle of radius Radius, whose center is the origin of axis
+    /// A; A is the "X Axis" of the local coordinate system
+    /// of the circle; this coordinate system is direct if
+    /// Sense is true (default value) or indirect if Sense is false.
+    /// Note: It is possible to create a circle where Radius is equal to 0.0.
+    /// Exceptions Standard_ConstructionError if Radius is negative.
+    pub fn new_ax2d_real(A: &crate::ffi::gp_Ax2d, Radius: f64) -> cxx::UniquePtr<Self> {
+        Self::new_ax2d_real_bool(A, Radius, true)
+    }
+
+    /// Returns the non persistent circle from gp with the same
+    /// geometric properties as <me>.
+    pub fn circ2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::Geom2d_Circle_circ2d(self)
+    }
+
+    /// For the point of parameter U of this circle, computes
+    /// the vector corresponding to the Nth derivative.
+    /// Exceptions: Standard_RangeError if N is less than 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_Circle_dn(self, U, N)
+    }
+
+    /// Creates a new object which is a copy of this circle.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Circle_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_Circle_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Conic
+    pub fn as_conic(&self) -> &Conic {
+        crate::ffi::Geom2d_Circle_as_Geom2d_Conic(self)
+    }
+
+    /// Upcast to Geom2d_Conic (mutable)
+    pub fn as_conic_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Conic> {
+        crate::ffi::Geom2d_Circle_as_Geom2d_Conic_mut(self)
+    }
+
+    /// Upcast to Geom2d_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom2d_Circle_as_Geom2d_Curve(self)
+    }
+
+    /// Upcast to Geom2d_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom2d_Circle_as_Geom2d_Curve_mut(self)
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_Circle_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_Circle_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCircle> {
+        crate::ffi::Geom2d_Circle_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Conic: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax22d) {
+        crate::ffi::Geom2d_Circle_inherited_SetAxis(self, theA)
+    }
+
+    /// Inherited from Geom2d_Conic: SetXAxis()
+    pub fn set_x_axis(self: std::pin::Pin<&mut Self>, theAX: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Circle_inherited_SetXAxis(self, theAX)
+    }
+
+    /// Inherited from Geom2d_Conic: SetYAxis()
+    pub fn set_y_axis(self: std::pin::Pin<&mut Self>, theAY: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Circle_inherited_SetYAxis(self, theAY)
+    }
+
+    /// Inherited from Geom2d_Conic: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Circle_inherited_SetLocation(self, theP)
+    }
+
+    /// Inherited from Geom2d_Conic: XAxis()
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Circle_inherited_XAxis(self)
+    }
+
+    /// Inherited from Geom2d_Conic: YAxis()
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Circle_inherited_YAxis(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_Circle_inherited_Location(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax22d {
+        crate::ffi::Geom2d_Circle_inherited_Position(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom2d_Circle_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom2d_Conic: IsCN()
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom2d_Circle_inherited_IsCN(self, N)
+    }
+
+    /// Inherited from Geom2d_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_Circle_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom2d_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_Circle_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_Circle_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_Circle_inherited_Period(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_Circle_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Circle_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Circle_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Circle_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Circle_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Circle_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Circle_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Circle_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Circle_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Circle_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dCircle;
+
+impl HandleGeom2dCircle {
+    /// Dereference this Handle to access the underlying Geom2d_Circle
+    pub fn get(&self) -> &crate::ffi::Geom2d_Circle {
+        crate::ffi::HandleGeom2dCircle_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Circle
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_Circle> {
+        crate::ffi::HandleGeom2dCircle_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_Circle> to Handle<Geom2d_Conic>
+    pub fn to_handle_conic(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dConic> {
+        crate::ffi::HandleGeom2dCircle_to_HandleGeom2dConic(self)
+    }
+
+    /// Upcast Handle<Geom2d_Circle> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dCircle_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_Circle> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dCircle_to_HandleGeom2dGeometry(self)
     }
 }
 
@@ -709,6 +2154,197 @@ impl HandleGeom2dCurve {
     /// Upcast Handle<Geom2d_Curve> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
         crate::ffi::HandleGeom2dCurve_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
+// From Geom2d_Direction.hxx
+// ========================
+
+/// The class Direction specifies a vector that is never null.
+/// It is a unit vector.
+pub use crate::ffi::Geom2d_Direction as Direction;
+
+impl Direction {
+    /// Creates a unit vector with it 2 cartesian coordinates.
+    ///
+    /// Raised if Sqrt( X*X + Y*Y) <= Resolution from gp.
+    pub fn new_real2(X: f64, Y: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Direction_ctor_real2(X, Y)
+    }
+
+    /// Creates a persistent copy of <me>.
+    pub fn new_dir2d(V: &crate::ffi::gp_Dir2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Direction_ctor_dir2d(V)
+    }
+
+    /// Converts this unit vector into a gp_Dir2d unit vector.
+    pub fn dir2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir2d> {
+        crate::ffi::Geom2d_Direction_dir2d(self)
+    }
+
+    /// Creates a new object which is a copy of this unit vector.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Direction_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_Direction_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_Direction_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_Direction_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom2d_Vector
+    pub fn as_vector(&self) -> &Vector {
+        crate::ffi::Geom2d_Direction_as_Geom2d_Vector(self)
+    }
+
+    /// Upcast to Geom2d_Vector (mutable)
+    pub fn as_vector_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Vector> {
+        crate::ffi::Geom2d_Direction_as_Geom2d_Vector_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dDirection> {
+        crate::ffi::Geom2d_Direction_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Direction_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Direction_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Direction_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Direction_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Direction_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Direction_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Direction_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Direction_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Direction_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom2d_Vector: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom2d_Direction_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom2d_Vector: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVector> {
+        crate::ffi::Geom2d_Direction_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Vector: Angle()
+    pub fn angle(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
+        crate::ffi::Geom2d_Direction_inherited_Angle(self, Other)
+    }
+
+    /// Inherited from Geom2d_Vector: Coord()
+    pub fn coord(&self, X: &mut f64, Y: &mut f64) {
+        crate::ffi::Geom2d_Direction_inherited_Coord(self, X, Y)
+    }
+
+    /// Inherited from Geom2d_Vector: X()
+    pub fn x(&self) -> f64 {
+        crate::ffi::Geom2d_Direction_inherited_X(self)
+    }
+
+    /// Inherited from Geom2d_Vector: Y()
+    pub fn y(&self) -> f64 {
+        crate::ffi::Geom2d_Direction_inherited_Y(self)
+    }
+
+    /// Inherited from Geom2d_Vector: Dot()
+    pub fn dot(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
+        crate::ffi::Geom2d_Direction_inherited_Dot(self, Other)
+    }
+
+    /// Inherited from Geom2d_Vector: Vec2d()
+    pub fn vec2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_Direction_inherited_Vec2d(self)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dDirection;
+
+impl HandleGeom2dDirection {
+    /// Dereference this Handle to access the underlying Geom2d_Direction
+    pub fn get(&self) -> &crate::ffi::Geom2d_Direction {
+        crate::ffi::HandleGeom2dDirection_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Direction
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_Direction> {
+        crate::ffi::HandleGeom2dDirection_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_Direction> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dDirection_to_HandleGeom2dGeometry(self)
+    }
+
+    /// Upcast Handle<Geom2d_Direction> to Handle<Geom2d_Vector>
+    pub fn to_handle_vector(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVector> {
+        crate::ffi::HandleGeom2dDirection_to_HandleGeom2dVector(self)
     }
 }
 
@@ -1194,6 +2830,1480 @@ impl HandleGeom2dGeometry {
 }
 
 // ========================
+// From Geom2d_Hyperbola.hxx
+// ========================
+
+/// Describes a branch of a hyperbola in the plane (2D space).
+/// A hyperbola is defined by its major and minor radii
+/// and, as with any conic curve, is positioned in the
+/// plane with a coordinate system (gp_Ax22d object) where:
+/// - the origin is the center of the hyperbola,
+/// - the "X Direction" defines the major axis, and
+/// - the "Y Direction" defines the minor axis.
+/// This coordinate system is the local coordinate
+/// system of the hyperbola.
+/// The branch of the hyperbola described is the one
+/// located on the positive side of the major axis.
+/// The orientation (direct or indirect) of the local
+/// coordinate system gives an explicit orientation to the
+/// hyperbola, determining the direction in which the
+/// parameter increases along the hyperbola.
+/// The Geom2d_Hyperbola hyperbola is parameterized as follows:
+/// P(U) = O + MajRad*Cosh(U)*XDir + MinRad*Sinh(U)*YDir
+/// where:
+/// - P is the point of parameter U,
+/// - O, XDir and YDir are respectively the origin, "X
+/// Direction" and "Y Direction" of its local coordinate system,
+/// - MajRad and MinRad are the major and minor radii of the hyperbola.
+/// The "X Axis" of the local coordinate system therefore
+/// defines the origin of the parameter of the hyperbola.
+/// The parameter range is ] -infinite,+infinite [.
+/// The following diagram illustrates the respective
+/// positions, in the plane of the hyperbola, of the three
+/// branches of hyperbolas constructed using the
+/// functions OtherBranch, ConjugateBranch1 and
+/// ConjugateBranch2:
+/// ^YAxis
+/// |
+/// FirstConjugateBranch
+/// |
+/// Other         |          Main
+/// --------------------- C
+/// --------------------->XAxis
+/// Branch       |
+/// Branch
+/// |
+/// SecondConjugateBranch
+/// |
+/// Warning
+/// The value of the major radius (on the major axis) can
+/// be less than the value of the minor radius (on the minor axis).
+/// See Also
+/// GCE2d_MakeHyperbola which provides functions for
+/// more complex hyperbola constructions
+/// gp_Ax22d
+/// gp_Hypr2d for an equivalent, non-parameterized data structure
+pub use crate::ffi::Geom2d_Hyperbola as Hyperbola;
+
+impl Hyperbola {
+    /// Creates  an Hyperbola from a non persistent one from package gp
+    pub fn new_hypr2d(H: &crate::ffi::gp_Hypr2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Hyperbola_ctor_hypr2d(H)
+    }
+
+    /// MajorAxis is the "XAxis" of the hyperbola.
+    /// The YAxis is in the direct sense if "Sense" is True;
+    /// The major radius of the hyperbola is on this "XAxis" and
+    /// the minor radius is on the "YAxis" of the hyperbola.
+    /// Raised if MajorRadius < 0.0 or if MinorRadius < 0.0
+    pub fn new_ax2d_real2_bool(
+        MajorAxis: &crate::ffi::gp_Ax2d,
+        MajorRadius: f64,
+        MinorRadius: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Hyperbola_ctor_ax2d_real2_bool(
+            MajorAxis,
+            MajorRadius,
+            MinorRadius,
+            Sense,
+        )
+    }
+
+    /// The XDirection of "Axis" is the "XAxis" of the hyperbola and
+    /// the YDirection of "Axis" is the "YAxis".
+    /// The major radius of the hyperbola is on this "XAxis" and
+    /// the minor radius is on the "YAxis" of the hyperbola.
+    /// Raised if MajorRadius < 0.0 or if MinorRadius < 0.0
+    pub fn new_ax22d_real2(
+        Axis: &crate::ffi::gp_Ax22d,
+        MajorRadius: f64,
+        MinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Hyperbola_ctor_ax22d_real2(Axis, MajorRadius, MinorRadius)
+    }
+
+    /// MajorAxis is the "XAxis" of the hyperbola.
+    /// The YAxis is in the direct sense if "Sense" is True;
+    /// The major radius of the hyperbola is on this "XAxis" and
+    /// the minor radius is on the "YAxis" of the hyperbola.
+    /// Raised if MajorRadius < 0.0 or if MinorRadius < 0.0
+    pub fn new_ax2d_real2(
+        MajorAxis: &crate::ffi::gp_Ax2d,
+        MajorRadius: f64,
+        MinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_ax2d_real2_bool(MajorAxis, MajorRadius, MinorRadius, true)
+    }
+
+    /// Converts this hyperbola into a gp_Hypr2d one.
+    pub fn hypr2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::Geom2d_Hyperbola_hypr2d(self)
+    }
+
+    /// In the local coordinate system of the hyperbola the
+    /// equation of the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0
+    /// and the equation of the first asymptote is Y = (B/A)*X
+    /// where A is the major radius of the hyperbola and B is the
+    /// minor radius of the hyperbola.
+    /// Raised if MajorRadius = 0.0
+    pub fn asymptote1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Hyperbola_asymptote1(self)
+    }
+
+    /// In the local coordinate system of the hyperbola the
+    /// equation of the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0
+    /// and the equation of the first asymptote is Y = -(B/A)*X.
+    /// where A is the major radius of the hyperbola and B is the
+    /// minor radius of the hyperbola.
+    /// raised if MajorRadius = 0.0
+    pub fn asymptote2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Hyperbola_asymptote2(self)
+    }
+
+    /// Computes the first conjugate branch relative to this hyperbola.
+    /// Note: The diagram given under the class purpose
+    /// indicates where these two branches of hyperbola are
+    /// positioned in relation to this branch of hyperbola.
+    pub fn conjugate_branch1(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::Geom2d_Hyperbola_conjugate_branch1(self)
+    }
+
+    /// Computes the second conjugate branch relative to this hyperbola.
+    /// Note: The diagram given under the class purpose
+    /// indicates where these two branches of hyperbola are
+    /// positioned in relation to this branch of hyperbola.
+    pub fn conjugate_branch2(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::Geom2d_Hyperbola_conjugate_branch2(self)
+    }
+
+    /// This directrix is the line normal to the XAxis of the hyperbola
+    /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+    /// from the center of the hyperbola, where e is the eccentricity of
+    /// the hyperbola.
+    /// This line is parallel to the "YAxis". The intersection point
+    /// between directrix1 and the "XAxis" is the location point of the
+    /// directrix1. This point is on the positive side of the "XAxis".
+    pub fn directrix1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Hyperbola_directrix1(self)
+    }
+
+    /// This line is obtained by the symmetrical transformation
+    /// of "Directrix1" with respect to the "YAxis" of the hyperbola.
+    pub fn directrix2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Hyperbola_directrix2(self)
+    }
+
+    /// Returns the first focus of the hyperbola. This focus is on the
+    /// positive side of the "XAxis" of the hyperbola.
+    pub fn focus1(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_Hyperbola_focus1(self)
+    }
+
+    /// Returns the second focus of the hyperbola. This focus is on the
+    /// negative side of the "XAxis" of the hyperbola.
+    pub fn focus2(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_Hyperbola_focus2(self)
+    }
+
+    /// Computes the "other" branch of this hyperbola. This
+    /// is a symmetrical branch with respect to the center of this hyperbola.
+    /// Note: The diagram given under the class purpose
+    /// indicates where the "other" branch is positioned in
+    /// relation to this branch of the hyperbola.
+    /// ^ YAxis
+    /// |
+    /// FirstConjugateBranch
+    /// |
+    /// Other   | Main
+    /// ---------------------------- C
+    /// ------------------------------------------&gtXAxis
+    /// Branch |  Branch
+    /// |
+    /// |
+    /// SecondConjugateBranch
+    /// |
+    /// Warning
+    /// The major radius can be less than the minor radius.
+    pub fn other_branch(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::Geom2d_Hyperbola_other_branch(self)
+    }
+
+    /// For the point of parameter U of this hyperbola,
+    /// computes the vector corresponding to the Nth derivative.
+    /// Exceptions Standard_RangeError if N is less than 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_Hyperbola_dn(self, U, N)
+    }
+
+    /// Creates a new object which is a copy of this hyperbola.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Hyperbola_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_Hyperbola_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Conic
+    pub fn as_conic(&self) -> &Conic {
+        crate::ffi::Geom2d_Hyperbola_as_Geom2d_Conic(self)
+    }
+
+    /// Upcast to Geom2d_Conic (mutable)
+    pub fn as_conic_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Conic> {
+        crate::ffi::Geom2d_Hyperbola_as_Geom2d_Conic_mut(self)
+    }
+
+    /// Upcast to Geom2d_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom2d_Hyperbola_as_Geom2d_Curve(self)
+    }
+
+    /// Upcast to Geom2d_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom2d_Hyperbola_as_Geom2d_Curve_mut(self)
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_Hyperbola_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_Hyperbola_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dHyperbola> {
+        crate::ffi::Geom2d_Hyperbola_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Conic: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax22d) {
+        crate::ffi::Geom2d_Hyperbola_inherited_SetAxis(self, theA)
+    }
+
+    /// Inherited from Geom2d_Conic: SetXAxis()
+    pub fn set_x_axis(self: std::pin::Pin<&mut Self>, theAX: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Hyperbola_inherited_SetXAxis(self, theAX)
+    }
+
+    /// Inherited from Geom2d_Conic: SetYAxis()
+    pub fn set_y_axis(self: std::pin::Pin<&mut Self>, theAY: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Hyperbola_inherited_SetYAxis(self, theAY)
+    }
+
+    /// Inherited from Geom2d_Conic: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Hyperbola_inherited_SetLocation(self, theP)
+    }
+
+    /// Inherited from Geom2d_Conic: XAxis()
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Hyperbola_inherited_XAxis(self)
+    }
+
+    /// Inherited from Geom2d_Conic: YAxis()
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Hyperbola_inherited_YAxis(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_Hyperbola_inherited_Location(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax22d {
+        crate::ffi::Geom2d_Hyperbola_inherited_Position(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom2d_Hyperbola_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom2d_Conic: IsCN()
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom2d_Hyperbola_inherited_IsCN(self, N)
+    }
+
+    /// Inherited from Geom2d_Curve: TransformedParameter()
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_Hyperbola_inherited_TransformedParameter(self, U, T)
+    }
+
+    /// Inherited from Geom2d_Curve: ParametricTransformation()
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_Hyperbola_inherited_ParametricTransformation(self, T)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_Hyperbola_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_Hyperbola_inherited_Period(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_Hyperbola_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Hyperbola_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Hyperbola_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Hyperbola_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Hyperbola_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Hyperbola_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Hyperbola_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Hyperbola_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Hyperbola_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Hyperbola_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dHyperbola;
+
+impl HandleGeom2dHyperbola {
+    /// Dereference this Handle to access the underlying Geom2d_Hyperbola
+    pub fn get(&self) -> &crate::ffi::Geom2d_Hyperbola {
+        crate::ffi::HandleGeom2dHyperbola_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Hyperbola
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_Hyperbola> {
+        crate::ffi::HandleGeom2dHyperbola_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_Hyperbola> to Handle<Geom2d_Conic>
+    pub fn to_handle_conic(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dConic> {
+        crate::ffi::HandleGeom2dHyperbola_to_HandleGeom2dConic(self)
+    }
+
+    /// Upcast Handle<Geom2d_Hyperbola> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dHyperbola_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_Hyperbola> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dHyperbola_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
+// From Geom2d_Line.hxx
+// ========================
+
+/// Describes an infinite line in the plane (2D space).
+/// A line is defined and positioned in the plane with an
+/// axis (gp_Ax2d object) which gives it an origin and a unit vector.
+/// The Geom2d_Line line is parameterized as follows:
+/// P (U) = O + U*Dir
+/// where:
+/// - P is the point of parameter U,
+/// - O is the origin and Dir the unit vector of its positioning axis.
+/// The parameter range is ] -infinite, +infinite [.
+/// The orientation of the line is given by the unit vector
+/// of its positioning axis.
+/// See Also
+/// GCE2d_MakeLine which provides functions for more
+/// complex line constructions
+/// gp_Ax2d
+/// gp_Lin2d for an equivalent, non-parameterized data structure.
+pub use crate::ffi::Geom2d_Line as Line;
+
+impl Line {
+    /// Creates a line located in 2D space with the axis placement A.
+    /// The Location of A is the origin of the line.
+    pub fn new_ax2d(A: &crate::ffi::gp_Ax2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Line_ctor_ax2d(A)
+    }
+
+    /// Creates a line by conversion of the gp_Lin2d line L.
+    pub fn new_lin2d(L: &crate::ffi::gp_Lin2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Line_ctor_lin2d(L)
+    }
+
+    /// Constructs a line passing through point P and parallel to
+    /// vector V (P and V are, respectively, the origin
+    /// and the unit vector of the positioning axis of the line).
+    pub fn new_pnt2d_dir2d(
+        P: &crate::ffi::gp_Pnt2d,
+        V: &crate::ffi::gp_Dir2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Line_ctor_pnt2d_dir2d(P, V)
+    }
+
+    /// Returns non persistent line from gp with the same geometric
+    /// properties as <me>
+    pub fn lin2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::Geom2d_Line_lin2d(self)
+    }
+
+    /// Returns GeomAbs_CN, which is the global continuity of any line.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_Line_continuity(self)
+    }
+
+    /// For the point of parameter U of this line, computes
+    /// the vector corresponding to the Nth derivative.
+    /// Note: if N is greater than or equal to 2, the result is a
+    /// vector with null magnitude.
+    /// Exceptions Standard_RangeError if N is less than 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_Line_dn(self, U, N)
+    }
+
+    /// Creates a new object, which is a copy of this line.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Line_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_Line_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom2d_Line_as_Geom2d_Curve(self)
+    }
+
+    /// Upcast to Geom2d_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom2d_Line_as_Geom2d_Curve_mut(self)
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_Line_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_Line_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleGeom2dLine> {
+        crate::ffi::Geom2d_Line_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_Line_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_Line_inherited_Period(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_Line_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Line_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Line_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Line_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Line_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Line_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Line_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Line_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Line_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Line_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dLine;
+
+impl HandleGeom2dLine {
+    /// Dereference this Handle to access the underlying Geom2d_Line
+    pub fn get(&self) -> &crate::ffi::Geom2d_Line {
+        crate::ffi::HandleGeom2dLine_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Line
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom2d_Line> {
+        crate::ffi::HandleGeom2dLine_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_Line> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dLine_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_Line> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dLine_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
+// From Geom2d_OffsetCurve.hxx
+// ========================
+
+/// This class implements the basis services for the creation,
+/// edition, modification and evaluation of planar offset curve.
+/// The offset curve is obtained by offsetting by distance along
+/// the normal to a basis curve defined in 2D space.
+/// The offset curve in this package can be a self intersecting
+/// curve even if the basis curve does not self-intersect.
+/// The self intersecting portions are not deleted at the
+/// construction time.
+/// An offset curve is a curve at constant distance (Offset) from a
+/// basis curve and the offset curve takes its parametrization from
+/// the basis curve. The Offset curve is in the direction of the
+/// normal to the basis curve N.
+/// The distance offset may be positive or negative to indicate the
+/// preferred side of the curve :
+/// . distance offset >0 => the curve is in the direction of N
+/// . distance offset >0 => the curve is in the direction of - N
+/// On the Offset curve :
+/// Value(u) = BasisCurve.Value(U) + (Offset * (T ^ Z)) / ||T ^ Z||
+/// where T is the tangent vector to the basis curve and Z the
+/// direction of the normal vector to the plane of the curve,
+/// N = T ^ Z defines the offset direction and should not have
+/// null length.
+///
+/// Warnings :
+/// In this package we suppose that the continuity of the offset
+/// curve is one degree less than the continuity of the
+/// basis curve and we don't check that at any point ||T^Z|| != 0.0
+///
+/// So to evaluate the curve it is better to check that the offset
+/// curve is well defined at any point because an exception could
+/// be raised. The check is not done in this package at the creation
+/// of the offset curve because the control needs the use of an
+/// algorithm which cannot be implemented in this package.
+/// The OffsetCurve is closed if the first point and the last point
+/// are the same (The distance between these two points is lower or
+/// equal to the Resolution sea package gp) . The OffsetCurve can be
+/// closed even if the basis curve is not closed.
+pub use crate::ffi::Geom2d_OffsetCurve as OffsetCurve;
+
+impl OffsetCurve {
+    /// Constructs a curve offset from the basis curve C,
+    /// where Offset is the distance between the offset
+    /// curve and the basis curve at any point.
+    /// A point on the offset curve is built by measuring the
+    /// offset value along a normal vector at a point on C.
+    /// This normal vector is obtained by rotating the
+    /// vector tangential to C at 90 degrees in the
+    /// anti-trigonometric sense. The side of C on which
+    /// the offset value is measured is indicated by this
+    /// normal vector if Offset is positive, or in the inverse
+    /// sense if Offset is negative.
+    /// If isNotCheckC0 = TRUE checking if basis curve has C0-continuity
+    /// is not made.
+    /// Warnings :
+    /// In this package the entities are not shared. The OffsetCurve is
+    /// built with a copy of the curve C. So when C is modified the
+    /// OffsetCurve is not modified
+    /// Warning!  if isNotCheckC0 = false,
+    /// ConstructionError  raised if the basis curve C is not at least C1.
+    /// No check is done to know if ||V^Z|| != 0.0 at any point.
+    pub fn new_handlegeom2dcurve_real_bool(
+        C: &crate::ffi::HandleGeom2dCurve,
+        Offset: f64,
+        isNotCheckC0: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_OffsetCurve_ctor_handlegeom2dcurve_real_bool(C, Offset, isNotCheckC0)
+    }
+
+    /// Constructs a curve offset from the basis curve C,
+    /// where Offset is the distance between the offset
+    /// curve and the basis curve at any point.
+    /// A point on the offset curve is built by measuring the
+    /// offset value along a normal vector at a point on C.
+    /// This normal vector is obtained by rotating the
+    /// vector tangential to C at 90 degrees in the
+    /// anti-trigonometric sense. The side of C on which
+    /// the offset value is measured is indicated by this
+    /// normal vector if Offset is positive, or in the inverse
+    /// sense if Offset is negative.
+    /// If isNotCheckC0 = TRUE checking if basis curve has C0-continuity
+    /// is not made.
+    /// Warnings :
+    /// In this package the entities are not shared. The OffsetCurve is
+    /// built with a copy of the curve C. So when C is modified the
+    /// OffsetCurve is not modified
+    /// Warning!  if isNotCheckC0 = false,
+    /// ConstructionError  raised if the basis curve C is not at least C1.
+    /// No check is done to know if ||V^Z|| != 0.0 at any point.
+    pub fn new_handlegeom2dcurve_real(
+        C: &crate::ffi::HandleGeom2dCurve,
+        Offset: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_handlegeom2dcurve_real_bool(C, Offset, false)
+    }
+
+    /// Returns the basis curve of this offset curve. The basis curve can be an offset curve.
+    pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_OffsetCurve_basis_curve(self)
+    }
+
+    /// Continuity of the Offset curve :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the Curve,
+    /// C2 : continuity of the second derivative all along the Curve,
+    /// C3 : continuity of the third derivative all along the Curve,
+    /// G1 : tangency continuity all along the Curve,
+    /// G2 : curvature continuity all along the Curve,
+    /// CN : the order of continuity is infinite.
+    /// Warnings :
+    /// Returns the continuity of the basis curve - 1.
+    /// The offset curve must have a unique normal direction defined
+    /// at any point.
+    /// Value and derivatives
+    ///
+    /// Warnings :
+    /// The exception UndefinedValue or UndefinedDerivative is
+    /// raised if it is not possible to compute a unique offset
+    /// direction.
+    /// If T is the first derivative with not null length and
+    /// Z the direction normal to the plane of the curve, the
+    /// relation ||T(U) ^ Z|| != 0  must be satisfied to evaluate
+    /// the offset curve.
+    /// No check is done at the creation time and we suppose
+    /// in this package that the offset curve is well defined.
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_OffsetCurve_continuity(self)
+    }
+
+    /// The returned vector gives the value of the derivative
+    /// for the order of derivation N.
+    /// Warning! this should not be called
+    /// raises  UndefunedDerivative   if the continuity of the basis curve is not CN+1.
+    /// Nevertheless, it's OK to use it  on portion
+    /// where the curve is CN+1
+    /// raises  RangeError if N < 1.
+    /// raises  NotImplemented if N > 3.
+    /// The following functions compute the value and derivatives
+    /// on the offset curve and returns the derivatives on the
+    /// basis curve too.
+    /// The computation of the value and derivatives on the basis
+    /// curve are used to evaluate the offset curve
+    /// Warnings :
+    /// The exception UndefinedValue or UndefinedDerivative is
+    /// raised if it is not possible to compute a unique offset direction.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_OffsetCurve_dn(self, U, N)
+    }
+
+    /// Creates a new object, which is a copy of this offset curve.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_OffsetCurve_copy(self)
+    }
+
+    /// Returns continuity of the basis curve.
+    pub fn get_basis_curve_continuity(&self) -> i32 {
+        crate::ffi::Geom2d_OffsetCurve_get_basis_curve_continuity(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_OffsetCurve_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Curve(self)
+    }
+
+    /// Upcast to Geom2d_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Curve_mut(self)
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dOffsetCurve> {
+        crate::ffi::Geom2d_OffsetCurve_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_OffsetCurve_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dOffsetCurve;
+
+impl HandleGeom2dOffsetCurve {
+    /// Dereference this Handle to access the underlying Geom2d_OffsetCurve
+    pub fn get(&self) -> &crate::ffi::Geom2d_OffsetCurve {
+        crate::ffi::HandleGeom2dOffsetCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_OffsetCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_OffsetCurve> {
+        crate::ffi::HandleGeom2dOffsetCurve_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_OffsetCurve> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dOffsetCurve_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_OffsetCurve> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dOffsetCurve_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
+// From Geom2d_Parabola.hxx
+// ========================
+
+/// Describes a parabola in the plane (2D space).
+/// A parabola is defined by its focal length (i.e. the
+/// distance between its focus and its apex) and is
+/// positioned in the plane with a coordinate system
+/// (gp_Ax22d object) where:
+/// - the origin is the apex of the parabola, and
+/// - the "X Axis" defines the axis of symmetry; the
+/// parabola is on the positive side of this axis.
+/// This coordinate system is the local coordinate
+/// system of the parabola.
+/// The orientation (direct or indirect) of the local
+/// coordinate system gives an explicit orientation to the
+/// parabola, determining the direction in which the
+/// parameter increases along the parabola.
+/// The Geom_Parabola parabola is parameterized as follows:
+/// P(U) = O + U*U/(4.*F)*XDir + U*YDir, where:
+/// - P is the point of parameter U,
+/// - O, XDir and YDir are respectively the origin, "X
+/// Direction" and "Y Direction" of its local coordinate system,
+/// - F is the focal length of the parabola.
+/// The parameter of the parabola is therefore its Y
+/// coordinate in the local coordinate system, with the "X
+/// Axis" of the local coordinate system defining the
+/// origin of the parameter.
+/// The parameter range is ] -infinite,+infinite [.
+pub use crate::ffi::Geom2d_Parabola as Parabola;
+
+impl Parabola {
+    /// Creates a parabola from a non persistent one.
+    pub fn new_parab2d(Prb: &crate::ffi::gp_Parab2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Parabola_ctor_parab2d(Prb)
+    }
+
+    /// Creates a parabola with its "MirrorAxis" and it's focal
+    /// length "Focal".
+    /// MirrorAxis is the axis of symmetry of the curve, it is the
+    /// "XAxis". The "YAxis" is parallel to the directrix of the
+    /// parabola and is in the direct sense if Sense is True.
+    /// The "Location" point of "MirrorAxis" is the vertex of the parabola
+    /// Raised if Focal < 0.0
+    pub fn new_ax2d_real_bool(
+        MirrorAxis: &crate::ffi::gp_Ax2d,
+        Focal: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Parabola_ctor_ax2d_real_bool(MirrorAxis, Focal, Sense)
+    }
+
+    /// Creates a parabola with its Axis and it's focal
+    /// length "Focal".
+    /// The XDirection of Axis is the axis of symmetry of the curve,
+    /// it is the "XAxis". The "YAxis" is parallel to the directrix of the
+    /// parabola. The "Location" point of "Axis" is the vertex
+    /// of the parabola.
+    /// Raised if Focal < 0.0
+    pub fn new_ax22d_real(Axis: &crate::ffi::gp_Ax22d, Focal: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Parabola_ctor_ax22d_real(Axis, Focal)
+    }
+
+    /// D is the directrix of the parabola and F the focus point.
+    /// The symmetry axis "XAxis" of the parabola is normal to the
+    /// directrix and pass through the focus point F, but its
+    /// "Location" point is the vertex of the parabola.
+    /// The "YAxis" of the parabola is parallel to D and its "Location"
+    /// point is the vertex of the parabola.
+    pub fn new_ax2d_pnt2d(
+        D: &crate::ffi::gp_Ax2d,
+        F: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Parabola_ctor_ax2d_pnt2d(D, F)
+    }
+
+    /// Creates a parabola with its "MirrorAxis" and it's focal
+    /// length "Focal".
+    /// MirrorAxis is the axis of symmetry of the curve, it is the
+    /// "XAxis". The "YAxis" is parallel to the directrix of the
+    /// parabola and is in the direct sense if Sense is True.
+    /// The "Location" point of "MirrorAxis" is the vertex of the parabola
+    /// Raised if Focal < 0.0
+    pub fn new_ax2d_real(MirrorAxis: &crate::ffi::gp_Ax2d, Focal: f64) -> cxx::UniquePtr<Self> {
+        Self::new_ax2d_real_bool(MirrorAxis, Focal, true)
+    }
+
+    /// Returns the non persistent parabola from gp with the same
+    /// geometric properties as <me>.
+    pub fn parab2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::Geom2d_Parabola_parab2d(self)
+    }
+
+    /// The directrix is parallel to the "YAxis" of the parabola.
+    /// The "Location" point of the directrix is the intersection
+    /// point between the directrix and the symmetry axis ("XAxis") of the parabola.
+    pub fn directrix(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Parabola_directrix(self)
+    }
+
+    /// Computes the focus of this parabola The focus is on the
+    /// positive side of the "X Axis" of the local coordinate system of the parabola.
+    pub fn focus(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_Parabola_focus(self)
+    }
+
+    /// For the point of parameter U of this parabola,
+    /// computes the vector corresponding to the Nth derivative.
+    /// Exceptions Standard_RangeError if N is less than 1.
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_Parabola_dn(self, U, N)
+    }
+
+    /// Creates a new object, which is a copy of this parabola.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Parabola_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_Parabola_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Conic
+    pub fn as_conic(&self) -> &Conic {
+        crate::ffi::Geom2d_Parabola_as_Geom2d_Conic(self)
+    }
+
+    /// Upcast to Geom2d_Conic (mutable)
+    pub fn as_conic_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Conic> {
+        crate::ffi::Geom2d_Parabola_as_Geom2d_Conic_mut(self)
+    }
+
+    /// Upcast to Geom2d_Curve
+    pub fn as_curve(&self) -> &Curve {
+        crate::ffi::Geom2d_Parabola_as_Geom2d_Curve(self)
+    }
+
+    /// Upcast to Geom2d_Curve (mutable)
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        crate::ffi::Geom2d_Parabola_as_Geom2d_Curve_mut(self)
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_Parabola_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_Parabola_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dParabola> {
+        crate::ffi::Geom2d_Parabola_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Conic: SetAxis()
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax22d) {
+        crate::ffi::Geom2d_Parabola_inherited_SetAxis(self, theA)
+    }
+
+    /// Inherited from Geom2d_Conic: SetXAxis()
+    pub fn set_x_axis(self: std::pin::Pin<&mut Self>, theAX: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Parabola_inherited_SetXAxis(self, theAX)
+    }
+
+    /// Inherited from Geom2d_Conic: SetYAxis()
+    pub fn set_y_axis(self: std::pin::Pin<&mut Self>, theAY: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Parabola_inherited_SetYAxis(self, theAY)
+    }
+
+    /// Inherited from Geom2d_Conic: SetLocation()
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Parabola_inherited_SetLocation(self, theP)
+    }
+
+    /// Inherited from Geom2d_Conic: XAxis()
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Parabola_inherited_XAxis(self)
+    }
+
+    /// Inherited from Geom2d_Conic: YAxis()
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::Geom2d_Parabola_inherited_YAxis(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Location()
+    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_Parabola_inherited_Location(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Position()
+    pub fn position(&self) -> &crate::ffi::gp_Ax22d {
+        crate::ffi::Geom2d_Parabola_inherited_Position(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom2d_Parabola_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom2d_Conic: IsCN()
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom2d_Parabola_inherited_IsCN(self, N)
+    }
+
+    /// Inherited from Geom2d_Curve: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::Geom2d_Parabola_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_Parabola_inherited_Period(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_Parabola_inherited_Value(self, U)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Parabola_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Parabola_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Parabola_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Parabola_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Parabola_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Parabola_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Parabola_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Parabola_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Parabola_inherited_Translated(self, V)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dParabola;
+
+impl HandleGeom2dParabola {
+    /// Dereference this Handle to access the underlying Geom2d_Parabola
+    pub fn get(&self) -> &crate::ffi::Geom2d_Parabola {
+        crate::ffi::HandleGeom2dParabola_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Parabola
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_Parabola> {
+        crate::ffi::HandleGeom2dParabola_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_Parabola> to Handle<Geom2d_Conic>
+    pub fn to_handle_conic(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dConic> {
+        crate::ffi::HandleGeom2dParabola_to_HandleGeom2dConic(self)
+    }
+
+    /// Upcast Handle<Geom2d_Parabola> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dParabola_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_Parabola> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dParabola_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
+// From Geom2d_Point.hxx
+// ========================
+
+/// The abstract class Point describes the common
+/// behavior of geometric points in 2D space.
+/// The Geom2d package also provides the concrete
+/// class Geom2d_CartesianPoint.
+pub use crate::ffi::Geom2d_Point as Point;
+
+impl Point {
+    /// returns a non persistent copy of <me>
+    pub fn pnt2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::Geom2d_Point_pnt2d(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_Point_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_Point_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_Point_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Point_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Point_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Point_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Point_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transform()
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf2d) {
+        crate::ffi::Geom2d_Point_inherited_Transform(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Point_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Point_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Point_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Point_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Point_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Point_inherited_Copy(self)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dPoint;
+
+impl HandleGeom2dPoint {
+    /// Dereference this Handle to access the underlying Geom2d_Point
+    pub fn get(&self) -> &crate::ffi::Geom2d_Point {
+        crate::ffi::HandleGeom2dPoint_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Point
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom2d_Point> {
+        crate::ffi::HandleGeom2dPoint_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_Point> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dPoint_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
+// From Geom2d_Transformation.hxx
+// ========================
+
+/// The class Transformation allows to create Translation,
+/// Rotation, Symmetry, Scaling and complex transformations
+/// obtained by combination of the previous elementary
+/// transformations.
+/// The Transformation class can also be used to
+/// construct complex transformations by combining
+/// these elementary transformations.
+/// However, these transformations can never change
+/// the type of an object. For example, the projection
+/// transformation can change a circle into an ellipse,
+/// and therefore change the real type of the object.
+/// Such a transformation is forbidden in this
+/// environment and cannot be a Geom2d_Transformation.
+/// The transformation can be represented as follow :
+///
+/// V1   V2     T
+/// | a11  a12    a14 |   | x |      | x'|
+/// | a21  a22    a24 |   | y |      | y'|
+/// |  0    0      1  |   | 1 |      | 1 |
+///
+/// where {V1, V2} defines the vectorial part of the
+/// transformation and T defines the translation part of
+/// the transformation.
+/// - Geom2d_Transformation transformations provide
+/// the same kind of "geometric" services as
+/// gp_Trsf2d ones but have more complex data
+/// structures. The geometric objects provided by the
+/// Geom2d package use gp_Trsf2d transformations
+/// in the syntaxes Transform and Transformed.
+/// - Geom2d_Transformation transformations are
+/// used in a context where they can be shared by
+/// several objects contained inside a common data structure.
+pub use crate::ffi::Geom2d_Transformation as Transformation;
+
+impl Transformation {
+    /// Creates an identity transformation.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Transformation_ctor()
+    }
+
+    /// Creates a persistent copy of T.
+    pub fn new_trsf2d(T: &crate::ffi::gp_Trsf2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Transformation_ctor_trsf2d(T)
+    }
+
+    /// Returns the nature of this transformation as a value
+    /// of the gp_TrsfForm enumeration.
+    /// Returns the nature of the transformation. It can be
+    /// Identity, Rotation, Translation, PntMirror, Ax1Mirror,
+    /// Scale, CompoundTrsf
+    pub fn form(&self) -> i32 {
+        crate::ffi::Geom2d_Transformation_form(self)
+    }
+
+    /// Converts this transformation into a gp_Trsf2d transformation.
+    /// Returns a non persistent copy of <me>.
+    /// -C++: return const&
+    pub fn trsf2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Trsf2d> {
+        crate::ffi::Geom2d_Transformation_trsf2d(self)
+    }
+
+    /// Computes the inverse of this transformation and creates a new one.
+    /// Raises ConstructionError  if the transformation is singular. This means that
+    /// the ScaleFactor is lower or equal to Resolution from package gp.
+    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dTransformation> {
+        crate::ffi::Geom2d_Transformation_inverted(self)
+    }
+
+    /// Computes the transformation composed with Other and <me>.
+    /// <me> * Other.
+    /// Returns a new transformation
+    pub fn multiplied(
+        &self,
+        Other: &crate::ffi::HandleGeom2dTransformation,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dTransformation> {
+        crate::ffi::Geom2d_Transformation_multiplied(self, Other)
+    }
+
+    /// Raised if N < 0 and if the transformation is not inversible
+    pub fn powered(&self, N: i32) -> cxx::UniquePtr<crate::ffi::HandleGeom2dTransformation> {
+        crate::ffi::Geom2d_Transformation_powered(self, N)
+    }
+
+    /// Creates a new object, which is a copy of this transformation.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dTransformation> {
+        crate::ffi::Geom2d_Transformation_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_Transformation_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dTransformation> {
+        crate::ffi::Geom2d_Transformation_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dTransformation;
+
+impl HandleGeom2dTransformation {
+    /// Dereference this Handle to access the underlying Geom2d_Transformation
+    pub fn get(&self) -> &crate::ffi::Geom2d_Transformation {
+        crate::ffi::HandleGeom2dTransformation_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Transformation
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_Transformation> {
+        crate::ffi::HandleGeom2dTransformation_get_mut(self)
+    }
+}
+
+// ========================
 // From Geom2d_TrimmedCurve.hxx
 // ========================
 
@@ -1239,14 +4349,14 @@ impl TrimmedCurve {
     /// Raises ConstructionError the C is not periodic and U1 or U2 are out of
     /// the bounds of C.
     /// Raised if U1 = U2.
-    pub fn new_handlecurve_real2_bool2(
+    pub fn new_handlegeom2dcurve_real2_bool2(
         C: &crate::ffi::HandleGeom2dCurve,
         U1: f64,
         U2: f64,
         Sense: bool,
         theAdjustPeriodic: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom2d_TrimmedCurve_ctor_handlecurve_real2_bool2(
+        crate::ffi::Geom2d_TrimmedCurve_ctor_handlegeom2dcurve_real2_bool2(
             C,
             U1,
             U2,
@@ -1287,13 +4397,13 @@ impl TrimmedCurve {
     /// Raises ConstructionError the C is not periodic and U1 or U2 are out of
     /// the bounds of C.
     /// Raised if U1 = U2.
-    pub fn new_handlecurve_real2_bool(
+    pub fn new_handlegeom2dcurve_real2_bool(
         C: &crate::ffi::HandleGeom2dCurve,
         U1: f64,
         U2: f64,
         Sense: bool,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_handlecurve_real2_bool2(C, U1, U2, Sense, true)
+        Self::new_handlegeom2dcurve_real2_bool2(C, U1, U2, Sense, true)
     }
 
     /// Creates a trimmed curve from the basis curve C limited between
@@ -1328,12 +4438,12 @@ impl TrimmedCurve {
     /// Raises ConstructionError the C is not periodic and U1 or U2 are out of
     /// the bounds of C.
     /// Raised if U1 = U2.
-    pub fn new_handlecurve_real2(
+    pub fn new_handlegeom2dcurve_real2(
         C: &crate::ffi::HandleGeom2dCurve,
         U1: f64,
         U2: f64,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_handlecurve_real2_bool2(C, U1, U2, true, true)
+        Self::new_handlegeom2dcurve_real2_bool2(C, U1, U2, true, true)
     }
 
     /// Returns the basis curve.
@@ -1539,9 +4649,424 @@ impl HandleGeom2dTrimmedCurve {
 }
 
 // ========================
-// Additional type re-exports
+// From Geom2d_UndefinedDerivative.hxx
 // ========================
 
-pub use crate::ffi::{
-    Geom2d_BSplineCurve as BSplineCurve, Geom2d_BezierCurve as BezierCurve, Geom2d_Point as Point,
-};
+pub use crate::ffi::Geom2d_UndefinedDerivative as UndefinedDerivative;
+
+impl UndefinedDerivative {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_UndefinedDerivative_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_UndefinedDerivative_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_UndefinedDerivative_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Geom2d_UndefinedDerivative_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_UndefinedDerivative_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Geom2d_UndefinedValue.hxx
+// ========================
+
+pub use crate::ffi::Geom2d_UndefinedValue as UndefinedValue;
+
+impl UndefinedValue {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_UndefinedValue_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_UndefinedValue_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_UndefinedValue_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Geom2d_UndefinedValue_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_UndefinedValue_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Geom2d_Vector.hxx
+// ========================
+
+/// The abstract class Vector describes the common
+/// behavior of vectors in 2D space.
+/// The Geom2d package provides two concrete
+/// classes of vectors: Geom2d_Direction (unit vector)
+/// and Geom2d_VectorWithMagnitude.
+pub use crate::ffi::Geom2d_Vector as Vector;
+
+impl Vector {
+    /// Returns a copy of <me> reversed.
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVector> {
+        crate::ffi::Geom2d_Vector_reversed(self)
+    }
+
+    /// Returns a non persistent copy of <me>.
+    pub fn vec2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_Vector_vec2d(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_Vector_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_Vector_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_Vector_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Vector_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Vector_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Vector_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Vector_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transform()
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf2d) {
+        crate::ffi::Geom2d_Vector_inherited_Transform(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Vector_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Vector_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Vector_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Vector_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Vector_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Copy()
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_Vector_inherited_Copy(self)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dVector;
+
+impl HandleGeom2dVector {
+    /// Dereference this Handle to access the underlying Geom2d_Vector
+    pub fn get(&self) -> &crate::ffi::Geom2d_Vector {
+        crate::ffi::HandleGeom2dVector_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Vector
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_Vector> {
+        crate::ffi::HandleGeom2dVector_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_Vector> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dVector_to_HandleGeom2dGeometry(self)
+    }
+}
+
+// ========================
+// From Geom2d_VectorWithMagnitude.hxx
+// ========================
+
+/// Defines a vector with magnitude.
+/// A vector with magnitude can have a zero length.
+pub use crate::ffi::Geom2d_VectorWithMagnitude as VectorWithMagnitude;
+
+impl VectorWithMagnitude {
+    /// Creates a persistent copy of V.
+    pub fn new_vec2d(V: &crate::ffi::gp_Vec2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_VectorWithMagnitude_ctor_vec2d(V)
+    }
+
+    /// Creates a vector with two cartesian coordinates.
+    pub fn new_real2(X: f64, Y: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_VectorWithMagnitude_ctor_real2(X, Y)
+    }
+
+    /// Creates a vector from the point P1 to the point P2.
+    /// The magnitude of the vector is the distance between P1 and P2
+    pub fn new_pnt2d2(
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_VectorWithMagnitude_ctor_pnt2d2(P1, P2)
+    }
+
+    /// Adds the vector Other to <me>.
+    pub fn added(
+        &self,
+        Other: &crate::ffi::HandleGeom2dVector,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVectorWithMagnitude> {
+        crate::ffi::Geom2d_VectorWithMagnitude_added(self, Other)
+    }
+
+    /// Divides <me> by a scalar. A new vector is returned.
+    pub fn divided(
+        &self,
+        Scalar: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVectorWithMagnitude> {
+        crate::ffi::Geom2d_VectorWithMagnitude_divided(self, Scalar)
+    }
+
+    /// Computes the product of the vector <me> by a scalar.
+    /// A new vector is returned.
+    ///
+    /// -C++: alias operator *
+    /// Collision with same operator defined for the class Vector!
+    pub fn multiplied(
+        &self,
+        Scalar: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVectorWithMagnitude> {
+        crate::ffi::Geom2d_VectorWithMagnitude_multiplied(self, Scalar)
+    }
+
+    /// Returns a copy of <me> Normalized.
+    ///
+    /// Raised if the magnitude of the vector is lower or equal to
+    /// Resolution from package gp.
+    pub fn normalized(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVectorWithMagnitude> {
+        crate::ffi::Geom2d_VectorWithMagnitude_normalized(self)
+    }
+
+    /// Subtracts the vector Other to <me>. A new vector is returned.
+    pub fn subtracted(
+        &self,
+        Other: &crate::ffi::HandleGeom2dVector,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVectorWithMagnitude> {
+        crate::ffi::Geom2d_VectorWithMagnitude_subtracted(self, Other)
+    }
+
+    /// Creates a new object which is a copy of this vector.
+    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_VectorWithMagnitude_copy(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Geom2d_VectorWithMagnitude_get_type_descriptor()
+    }
+
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Geometry(self)
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Geometry_mut(self)
+    }
+
+    /// Upcast to Geom2d_Vector
+    pub fn as_vector(&self) -> &Vector {
+        crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Vector(self)
+    }
+
+    /// Upcast to Geom2d_Vector (mutable)
+    pub fn as_vector_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Vector> {
+        crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Vector_mut(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVectorWithMagnitude> {
+        crate::ffi::Geom2d_VectorWithMagnitude_to_handle(obj)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirror()
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Mirror(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotate()
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Rotate(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scale()
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Scale(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translate()
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Translate(self, V)
+    }
+
+    /// Inherited from Geom2d_Geometry: Mirrored()
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Mirrored(self, P)
+    }
+
+    /// Inherited from Geom2d_Geometry: Rotated()
+    pub fn rotated(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Rotated(self, P, Ang)
+    }
+
+    /// Inherited from Geom2d_Geometry: Scaled()
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt2d,
+        S: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Scaled(self, P, S)
+    }
+
+    /// Inherited from Geom2d_Geometry: Transformed()
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Transformed(self, T)
+    }
+
+    /// Inherited from Geom2d_Geometry: Translated()
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Translated(self, V)
+    }
+
+    /// Inherited from Geom2d_Vector: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom2d_Vector: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVector> {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Reversed(self)
+    }
+
+    /// Inherited from Geom2d_Vector: Angle()
+    pub fn angle(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Angle(self, Other)
+    }
+
+    /// Inherited from Geom2d_Vector: Coord()
+    pub fn coord(&self, X: &mut f64, Y: &mut f64) {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Coord(self, X, Y)
+    }
+
+    /// Inherited from Geom2d_Vector: X()
+    pub fn x(&self) -> f64 {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_X(self)
+    }
+
+    /// Inherited from Geom2d_Vector: Y()
+    pub fn y(&self) -> f64 {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Y(self)
+    }
+
+    /// Inherited from Geom2d_Vector: Dot()
+    pub fn dot(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Dot(self, Other)
+    }
+
+    /// Inherited from Geom2d_Vector: Vec2d()
+    pub fn vec2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::Geom2d_VectorWithMagnitude_inherited_Vec2d(self)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dVectorWithMagnitude;
+
+impl HandleGeom2dVectorWithMagnitude {
+    /// Dereference this Handle to access the underlying Geom2d_VectorWithMagnitude
+    pub fn get(&self) -> &crate::ffi::Geom2d_VectorWithMagnitude {
+        crate::ffi::HandleGeom2dVectorWithMagnitude_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_VectorWithMagnitude
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_VectorWithMagnitude> {
+        crate::ffi::HandleGeom2dVectorWithMagnitude_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_VectorWithMagnitude> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dGeometry(self)
+    }
+
+    /// Upcast Handle<Geom2d_VectorWithMagnitude> to Handle<Geom2d_Vector>
+    pub fn to_handle_vector(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dVector> {
+        crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dVector(self)
+    }
+}

@@ -49,7 +49,7 @@ impl Mesher {
                 b_rep::Tool::triangulation(&face.inner, location.pin_mut(), 0);
 
             let mut triangulation =
-                poly::Triangulation::new_handletriangulation(triangulation_handle);
+                poly::Triangulation::new_handlepolytriangulation(triangulation_handle);
 
             if triangulation.is_null() {
                 return Err(Error::UntriangulatedFace);

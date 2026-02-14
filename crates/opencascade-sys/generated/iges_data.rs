@@ -6,6 +6,104 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Some fields of an IGES entity may be
+/// - Undefined
+/// - Defined as a positive integer
+/// - Defined as a reference to a specialized entity.
+/// A typical example of this kind of variation is color.
+/// This enumeration allows you to identify which of the above is the case.
+/// The semantics of the terms are as follows:
+/// - DefVoid indicates that the item contained in the field is undefined
+/// - DefValue indicates that the item is defined as an immediate
+/// positive integer value (i.e. not a pointer)
+/// - DefReference indicates that the item is defined as an entity
+/// - DefAny indicates the item could not be determined
+/// - ErrorVal indicates that the item is defined as an integer
+/// but its value is incorrect (it could be out of range, for example)
+/// - ErrorRef indicates that the item is defined as an entity but
+/// is not of the required type.
+/// C++ enum: `IGESData_DefType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum DefType {
+    Defvoid = 0,
+    Defvalue = 1,
+    Defreference = 2,
+    Defany = 3,
+    Errorval = 4,
+    Errorref = 5,
+}
+
+impl From<DefType> for i32 {
+    fn from(value: DefType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for DefType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(DefType::Defvoid),
+            1 => Ok(DefType::Defvalue),
+            2 => Ok(DefType::Defreference),
+            3 => Ok(DefType::Defany),
+            4 => Ok(DefType::Errorval),
+            5 => Ok(DefType::Errorref),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Some fields of an IGES entity may be
+/// - Undefined
+/// - Defined as a single item
+/// - Defined as a list of items.
+/// A typical example, which presents this kind of variation,
+/// is a level number.
+/// This enumeration allows you to identify which of the above is the case.
+/// The semantics of the terms is as follows:
+/// - DefNone indicates that the list is empty (there is not
+/// even a single item).
+/// - DefOne indicates that the list contains a single item.
+/// - DefSeveral indicates that the list contains several items.
+/// - ErrorOne indicates that the list contains one item, but
+/// that this item is incorrect
+/// - ErrorSeveral indicates that the list contains several
+/// items, but that at least one of them is incorrect.
+/// C++ enum: `IGESData_DefList`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum DefList {
+    Defnone = 0,
+    Defone = 1,
+    Defseveral = 2,
+    Errorone = 3,
+    Errorseveral = 4,
+}
+
+impl From<DefList> for i32 {
+    fn from(value: DefList) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for DefList {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(DefList::Defnone),
+            1 => Ok(DefList::Defone),
+            2 => Ok(DefList::Defseveral),
+            3 => Ok(DefList::Errorone),
+            4 => Ok(DefList::Errorseveral),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From IGESData_BasicEditor.hxx
 // ========================
@@ -64,6 +162,226 @@ impl BasicEditor {
 }
 
 // ========================
+// From IGESData_DefSwitch.hxx
+// ========================
+
+/// description of a directory component which can be either
+/// undefined (let Void), defined as a Reference to an entity,
+/// or as a Rank, integer value addressing a builtin table
+/// The entity reference is not included here, only reference
+/// status is kept (because entity type must be adapted)
+pub use crate::ffi::IGESData_DefSwitch as DefSwitch;
+
+impl DefSwitch {
+    /// creates a DefSwitch as Void
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESData_DefSwitch_ctor()
+    }
+
+    /// returns DefType status (Void,Reference,Rank)
+    pub fn def_type(&self) -> i32 {
+        crate::ffi::IGESData_DefSwitch_def_type(self)
+    }
+}
+
+// ========================
+// From IGESData_HArray1OfIGESEntity.hxx
+// ========================
+
+pub use crate::ffi::IGESData_HArray1OfIGESEntity as HArray1OfIGESEntity;
+
+impl HArray1OfIGESEntity {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESData_HArray1OfIGESEntity_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESData_HArray1OfIGESEntity_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_array1ofigesentity(
+        theOther: &crate::ffi::IGESData_Array1OfIGESEntity,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESData_HArray1OfIGESEntity_ctor_array1ofigesentity(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IGESData_HArray1OfIGESEntity_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIGESDataHArray1OfIGESEntity> {
+        crate::ffi::IGESData_HArray1OfIGESEntity_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIGESDataHArray1OfIGESEntity;
+
+impl HandleIGESDataHArray1OfIGESEntity {
+    /// Dereference this Handle to access the underlying IGESData_HArray1OfIGESEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_HArray1OfIGESEntity {
+        crate::ffi::HandleIGESDataHArray1OfIGESEntity_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_HArray1OfIGESEntity
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IGESData_HArray1OfIGESEntity> {
+        crate::ffi::HandleIGESDataHArray1OfIGESEntity_get_mut(self)
+    }
+}
+
+// ========================
+// From IGESData_IGESEntity.hxx
+// ========================
+
+/// defines root of IGES Entity definition, including Directory
+/// Part, lists of (optional) Properties and Associativities
+pub use crate::ffi::IGESData_IGESEntity as IGESEntity;
+
+impl IGESEntity {
+    /// Returns the Entity which has been recorded for a given
+    /// Field Number, i.e. without any cast. Maps with :
+    /// 3 : Structure   4 : LineFont     5 : LevelList     6 : View
+    /// 7 : Transf(ormation Matrix)      8 : LabelDisplay
+    /// 13 : Color.  Other values give a null handle
+    /// It can then be of any kind, while specific items have a Type
+    pub fn dir_field_entity(
+        &self,
+        fieldnum: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIGESDataIGESEntity> {
+        crate::ffi::IGESData_IGESEntity_dir_field_entity(self, fieldnum)
+    }
+
+    /// Returns Structure (used by some types of IGES Entities only)
+    /// Returns a Null Handle if Structure is not defined
+    pub fn structure(&self) -> cxx::UniquePtr<crate::ffi::HandleIGESDataIGESEntity> {
+        crate::ffi::IGESData_IGESEntity_structure(self)
+    }
+
+    /// Returns the definition status of LineFont
+    pub fn def_line_font(&self) -> i32 {
+        crate::ffi::IGESData_IGESEntity_def_line_font(self)
+    }
+
+    /// Returns the definition status of Level
+    pub fn def_level(&self) -> i32 {
+        crate::ffi::IGESData_IGESEntity_def_level(self)
+    }
+
+    /// Returns the definition status of
+    /// the view. This can be: none, one or several.
+    pub fn def_view(&self) -> i32 {
+        crate::ffi::IGESData_IGESEntity_def_view(self)
+    }
+
+    /// Returns the definition status of Color.
+    pub fn def_color(&self) -> i32 {
+        crate::ffi::IGESData_IGESEntity_def_color(self)
+    }
+
+    /// returns "reserved" alphanumeric values res1 and res2
+    /// res1 and res2 have to be reserved as Character[9 at least]
+    /// (remark : their content is changed)
+    /// returned values are ended by null character in 9th
+    /// returned Boolean is False if res1 and res2 are blank, true else
+    pub fn c_res_values(&self, res1: &str, res2: &str) -> bool {
+        crate::ffi::IGESData_IGESEntity_c_res_values(self, res1, res2)
+    }
+
+    /// Returns the label value for this IGES entity as a string.
+    /// Warning If the label is blank, this string is null.
+    pub fn short_label(&self) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IGESData_IGESEntity_short_label(self)
+    }
+
+    /// Returns the Unique Parent (in the sense given by HasOneParent)
+    /// Error if there is none or several
+    pub fn unique_parent(&self) -> cxx::UniquePtr<crate::ffi::HandleIGESDataIGESEntity> {
+        crate::ffi::IGESData_IGESEntity_unique_parent(self)
+    }
+
+    /// Returns Location given by Transf in Directory Part (see above)
+    /// It must be considered for local definition : if the Entity is
+    /// set in a "Parent", that one can add its one Location, but this
+    /// is not taken in account here : see CompoundLocation for that.
+    /// If no Transf is defined, returns Identity
+    /// If Transf is itself compound, gives the final result
+    pub fn location(&self) -> cxx::UniquePtr<crate::ffi::gp_GTrsf> {
+        crate::ffi::IGESData_IGESEntity_location(self)
+    }
+
+    /// Returns Location considered for Vectors, i.e. without its
+    /// Translation Part. As Location, it gives local definition.
+    pub fn vector_location(&self) -> cxx::UniquePtr<crate::ffi::gp_GTrsf> {
+        crate::ffi::IGESData_IGESEntity_vector_location(self)
+    }
+
+    /// Returns Location by taking in account a Parent which has its
+    /// own Location : that one will be combined to that of <me>
+    /// The Parent is considered only if HasOneParent is True,
+    /// else it is ignored and CompoundLocation = Location
+    pub fn compound_location(&self) -> cxx::UniquePtr<crate::ffi::gp_GTrsf> {
+        crate::ffi::IGESData_IGESEntity_compound_location(self)
+    }
+
+    /// returns Name value as a String (Property Name or ShortLabel)
+    /// if SubNumber is defined, it is concatenated after ShortLabel
+    /// as follows label(number). Ignored with a Property Name
+    pub fn name_value(&self) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::IGESData_IGESEntity_name_value(self)
+    }
+
+    /// returns the Associativity of a given Type (if only one exists)
+    /// Error if none or more than one
+    pub fn typed_associativity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIGESDataIGESEntity> {
+        crate::ffi::IGESData_IGESEntity_typed_associativity(self, atype)
+    }
+
+    /// returns the Property of a given Type
+    /// Error if none or more than one
+    pub fn typed_property(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        anum: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIGESDataIGESEntity> {
+        crate::ffi::IGESData_IGESEntity_typed_property(self, atype, anum)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::IGESData_IGESEntity_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleIGESDataIGESEntity> {
+        crate::ffi::IGESData_IGESEntity_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleIGESDataIGESEntity;
+
+impl HandleIGESDataIGESEntity {
+    /// Dereference this Handle to access the underlying IGESData_IGESEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_IGESEntity {
+        crate::ffi::HandleIGESDataIGESEntity_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_IGESEntity
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IGESData_IGESEntity> {
+        crate::ffi::HandleIGESDataIGESEntity_get_mut(self)
+    }
+}
+
+// ========================
 // From IGESData_SpecificLib.hxx
 // ========================
 
@@ -82,6 +400,10 @@ impl SpecificLib {
 // ========================
 
 pub use crate::ffi::{
-    IGESData_IGESEntity as IGESEntity, IGESData_IGESModel as IGESModel,
-    IGESData_Protocol as Protocol, IGESData_SpecificModule as SpecificModule,
+    IGESData_Array1OfIGESEntity as Array1OfIGESEntity, IGESData_ColorEntity as ColorEntity,
+    IGESData_IGESModel as IGESModel, IGESData_IGESType as IGESType,
+    IGESData_LabelDisplayEntity as LabelDisplayEntity, IGESData_LevelListEntity as LevelListEntity,
+    IGESData_LineFontEntity as LineFontEntity, IGESData_Protocol as Protocol,
+    IGESData_SpecificModule as SpecificModule, IGESData_TransfEntity as TransfEntity,
+    IGESData_ViewKindEntity as ViewKindEntity,
 };

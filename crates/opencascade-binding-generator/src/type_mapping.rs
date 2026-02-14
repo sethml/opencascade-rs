@@ -150,6 +150,16 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
                 source_module,
             }
         }
+        Type::Class(class_name) if class_name == "char" => {
+            // C++ char resolved from canonical types (e.g., Standard_Character)
+            // CXX supports c_char but not Rust's char (which is 4-byte Unicode)
+            RustTypeMapping {
+                rust_type: "c_char".to_string(),
+                needs_unique_ptr: false,
+                needs_pin: false,
+                source_module: None,
+            }
+        }
         Type::Class(class_name) => {
             let source_module = extract_module_from_class(class_name);
             // Use full C++ name in CXX bridge (will be aliased if cross-module)
@@ -321,6 +331,16 @@ pub fn type_uses_unknown_handle(
 /// Map a type to Rust, using short names for same-module types
 pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
     match ty {
+        Type::Class(class_name) if class_name == "char" => {
+            // C++ char resolved from canonical types (e.g., Standard_Character)
+            // CXX supports c_char but not Rust's char (which is 4-byte Unicode)
+            RustTypeMapping {
+                rust_type: "c_char".to_string(),
+                needs_unique_ptr: false,
+                needs_pin: false,
+                source_module: None,
+            }
+        }
         Type::Class(class_name) => {
             // Enums are passed as i32 at the FFI boundary (integer pass-through)
             if ctx.all_enums.contains(class_name) {

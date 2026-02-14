@@ -46,6 +46,10 @@ fn collect_handle_types(classes: &[&ParsedClass]) -> Vec<(String, String)> {
 
     let mut result: Vec<_> = handles
         .into_iter()
+        .filter(|inner_class| {
+            // Skip namespace-scoped types (e.g., IMeshData::ListOfPnt2d) and pointer types
+            !inner_class.contains("::") && !inner_class.contains('*') && !inner_class.contains('&')
+        })
         .map(|inner_class| {
             // Use full class name to match Rust side (e.g., HandleGeom2dCurve not HandleCurve)
             let handle_name = format!("Handle{}", inner_class.replace("_", ""));
@@ -226,10 +230,17 @@ fn collect_all_required_headers(
     let mut headers = HashSet::new();
 
     for class in classes {
-        // Add header for the class itself
-        let class_header = format!("{}.hxx", class.name);
-        if known_headers.is_empty() || known_headers.contains(&class_header) {
-            headers.insert(class_header);
+        // Add header for the class itself - use the actual source header
+        // (class name doesn't always match header name, e.g. Extrema_GlobOptFuncCCC0 is in Extrema_GlobOptFuncCC.hxx)
+        let source_header = &class.source_header;
+        if known_headers.is_empty() || known_headers.contains(source_header) {
+            headers.insert(source_header.clone());
+        } else {
+            // Fallback: try class_name.hxx 
+            let class_header = format!("{}.hxx", class.name);
+            if known_headers.contains(&class_header) {
+                headers.insert(class_header);
+            }
         }
 
         // Add headers for types used in methods

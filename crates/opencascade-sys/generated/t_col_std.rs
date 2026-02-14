@@ -7,6 +7,74 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From TColStd_HArray1OfAsciiString.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HArray1OfAsciiString as HArray1OfAsciiString;
+
+impl HArray1OfAsciiString {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfAsciiString_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfAsciiString_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_asciistring(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TCollection_AsciiString,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfAsciiString_ctor_int2_asciistring(theLower, theUpper, theValue)
+    }
+
+    pub fn new_asciistring_int2_bool(
+        theBegin: &crate::ffi::TCollection_AsciiString,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfAsciiString_ctor_asciistring_int2_bool(
+            theBegin, theLower, theUpper, arg3,
+        )
+    }
+
+    pub fn new_array1ofasciistring(
+        theOther: &crate::ffi::TColStd_Array1OfAsciiString,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfAsciiString_ctor_array1ofasciistring(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HArray1OfAsciiString_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfAsciiString> {
+        crate::ffi::TColStd_HArray1OfAsciiString_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHArray1OfAsciiString;
+
+impl HandleTColStdHArray1OfAsciiString {
+    /// Dereference this Handle to access the underlying TColStd_HArray1OfAsciiString
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfAsciiString {
+        crate::ffi::HandleTColStdHArray1OfAsciiString_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfAsciiString
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfAsciiString> {
+        crate::ffi::HandleTColStdHArray1OfAsciiString_get_mut(self)
+    }
+}
+
+// ========================
 // From TColStd_HArray1OfBoolean.hxx
 // ========================
 
@@ -69,6 +137,191 @@ impl HandleTColStdHArray1OfBoolean {
 }
 
 // ========================
+// From TColStd_HArray1OfByte.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HArray1OfByte as HArray1OfByte;
+
+impl HArray1OfByte {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfByte_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfByte_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_array1ofbyte(theOther: &crate::ffi::TColStd_Array1OfByte) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfByte_ctor_array1ofbyte(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HArray1OfByte_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfByte> {
+        crate::ffi::TColStd_HArray1OfByte_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHArray1OfByte;
+
+impl HandleTColStdHArray1OfByte {
+    /// Dereference this Handle to access the underlying TColStd_HArray1OfByte
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfByte {
+        crate::ffi::HandleTColStdHArray1OfByte_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfByte
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfByte> {
+        crate::ffi::HandleTColStdHArray1OfByte_get_mut(self)
+    }
+}
+
+// ========================
+// From TColStd_HArray1OfCharacter.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HArray1OfCharacter as HArray1OfCharacter;
+
+impl HArray1OfCharacter {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfCharacter_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfCharacter_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_char(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &std::os::raw::c_char,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfCharacter_ctor_int2_char(theLower, theUpper, theValue)
+    }
+
+    pub fn new_char_int2_bool(
+        theBegin: &std::os::raw::c_char,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfCharacter_ctor_char_int2_bool(
+            theBegin, theLower, theUpper, arg3,
+        )
+    }
+
+    pub fn new_array1ofcharacter(
+        theOther: &crate::ffi::TColStd_Array1OfCharacter,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfCharacter_ctor_array1ofcharacter(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HArray1OfCharacter_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfCharacter> {
+        crate::ffi::TColStd_HArray1OfCharacter_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHArray1OfCharacter;
+
+impl HandleTColStdHArray1OfCharacter {
+    /// Dereference this Handle to access the underlying TColStd_HArray1OfCharacter
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfCharacter {
+        crate::ffi::HandleTColStdHArray1OfCharacter_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfCharacter
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfCharacter> {
+        crate::ffi::HandleTColStdHArray1OfCharacter_get_mut(self)
+    }
+}
+
+// ========================
+// From TColStd_HArray1OfExtendedString.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HArray1OfExtendedString as HArray1OfExtendedString;
+
+impl HArray1OfExtendedString {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfExtendedString_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfExtendedString_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_extendedstring(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TCollection_ExtendedString,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfExtendedString_ctor_int2_extendedstring(
+            theLower, theUpper, theValue,
+        )
+    }
+
+    pub fn new_extendedstring_int2_bool(
+        theBegin: &crate::ffi::TCollection_ExtendedString,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfExtendedString_ctor_extendedstring_int2_bool(
+            theBegin, theLower, theUpper, arg3,
+        )
+    }
+
+    pub fn new_array1ofextendedstring(
+        theOther: &crate::ffi::TColStd_Array1OfExtendedString,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfExtendedString_ctor_array1ofextendedstring(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HArray1OfExtendedString_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfExtendedString> {
+        crate::ffi::TColStd_HArray1OfExtendedString_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHArray1OfExtendedString;
+
+impl HandleTColStdHArray1OfExtendedString {
+    /// Dereference this Handle to access the underlying TColStd_HArray1OfExtendedString
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfExtendedString {
+        crate::ffi::HandleTColStdHArray1OfExtendedString_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfExtendedString
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfExtendedString> {
+        crate::ffi::HandleTColStdHArray1OfExtendedString_get_mut(self)
+    }
+}
+
+// ========================
 // From TColStd_HArray1OfInteger.hxx
 // ========================
 
@@ -127,6 +380,55 @@ impl HandleTColStdHArray1OfInteger {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfInteger> {
         crate::ffi::HandleTColStdHArray1OfInteger_get_mut(self)
+    }
+}
+
+// ========================
+// From TColStd_HArray1OfListOfInteger.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HArray1OfListOfInteger as HArray1OfListOfInteger;
+
+impl HArray1OfListOfInteger {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfListOfInteger_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfListOfInteger_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_array1oflistofinteger(
+        theOther: &crate::ffi::TColStd_Array1OfListOfInteger,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray1OfListOfInteger_ctor_array1oflistofinteger(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HArray1OfListOfInteger_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfListOfInteger> {
+        crate::ffi::TColStd_HArray1OfListOfInteger_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHArray1OfListOfInteger;
+
+impl HandleTColStdHArray1OfListOfInteger {
+    /// Dereference this Handle to access the underlying TColStd_HArray1OfListOfInteger
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfListOfInteger {
+        crate::ffi::HandleTColStdHArray1OfListOfInteger_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfListOfInteger
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfListOfInteger> {
+        crate::ffi::HandleTColStdHArray1OfListOfInteger_get_mut(self)
     }
 }
 
@@ -240,6 +542,192 @@ impl HandleTColStdHArray1OfTransient {
 }
 
 // ========================
+// From TColStd_HArray2OfBoolean.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HArray2OfBoolean as HArray2OfBoolean;
+
+impl HArray2OfBoolean {
+    pub fn new_int4(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfBoolean_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    }
+
+    pub fn new_int4_bool(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfBoolean_ctor_int4_bool(
+            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+        )
+    }
+
+    pub fn new_array2ofboolean(
+        theOther: &crate::ffi::TColStd_Array2OfBoolean,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfBoolean_ctor_array2ofboolean(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HArray2OfBoolean_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray2OfBoolean> {
+        crate::ffi::TColStd_HArray2OfBoolean_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHArray2OfBoolean;
+
+impl HandleTColStdHArray2OfBoolean {
+    /// Dereference this Handle to access the underlying TColStd_HArray2OfBoolean
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray2OfBoolean {
+        crate::ffi::HandleTColStdHArray2OfBoolean_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray2OfBoolean
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray2OfBoolean> {
+        crate::ffi::HandleTColStdHArray2OfBoolean_get_mut(self)
+    }
+}
+
+// ========================
+// From TColStd_HArray2OfCharacter.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HArray2OfCharacter as HArray2OfCharacter;
+
+impl HArray2OfCharacter {
+    pub fn new_int4(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfCharacter_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    }
+
+    pub fn new_int4_char(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &std::os::raw::c_char,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfCharacter_ctor_int4_char(
+            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+        )
+    }
+
+    pub fn new_array2ofcharacter(
+        theOther: &crate::ffi::TColStd_Array2OfCharacter,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfCharacter_ctor_array2ofcharacter(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HArray2OfCharacter_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray2OfCharacter> {
+        crate::ffi::TColStd_HArray2OfCharacter_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHArray2OfCharacter;
+
+impl HandleTColStdHArray2OfCharacter {
+    /// Dereference this Handle to access the underlying TColStd_HArray2OfCharacter
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray2OfCharacter {
+        crate::ffi::HandleTColStdHArray2OfCharacter_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray2OfCharacter
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray2OfCharacter> {
+        crate::ffi::HandleTColStdHArray2OfCharacter_get_mut(self)
+    }
+}
+
+// ========================
+// From TColStd_HArray2OfInteger.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HArray2OfInteger as HArray2OfInteger;
+
+impl HArray2OfInteger {
+    pub fn new_int4(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfInteger_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    }
+
+    pub fn new_int5(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfInteger_ctor_int5(
+            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+        )
+    }
+
+    pub fn new_array2ofinteger(
+        theOther: &crate::ffi::TColStd_Array2OfInteger,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfInteger_ctor_array2ofinteger(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HArray2OfInteger_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray2OfInteger> {
+        crate::ffi::TColStd_HArray2OfInteger_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHArray2OfInteger;
+
+impl HandleTColStdHArray2OfInteger {
+    /// Dereference this Handle to access the underlying TColStd_HArray2OfInteger
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray2OfInteger {
+        crate::ffi::HandleTColStdHArray2OfInteger_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray2OfInteger
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray2OfInteger> {
+        crate::ffi::HandleTColStdHArray2OfInteger_get_mut(self)
+    }
+}
+
+// ========================
 // From TColStd_HArray2OfReal.hxx
 // ========================
 
@@ -296,6 +784,241 @@ impl HandleTColStdHArray2OfReal {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray2OfReal> {
         crate::ffi::HandleTColStdHArray2OfReal_get_mut(self)
+    }
+}
+
+// ========================
+// From TColStd_HArray2OfTransient.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HArray2OfTransient as HArray2OfTransient;
+
+impl HArray2OfTransient {
+    pub fn new_int4(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfTransient_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    }
+
+    pub fn new_array2oftransient(
+        theOther: &crate::ffi::TColStd_Array2OfTransient,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HArray2OfTransient_ctor_array2oftransient(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HArray2OfTransient_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray2OfTransient> {
+        crate::ffi::TColStd_HArray2OfTransient_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHArray2OfTransient;
+
+impl HandleTColStdHArray2OfTransient {
+    /// Dereference this Handle to access the underlying TColStd_HArray2OfTransient
+    pub fn get(&self) -> &crate::ffi::TColStd_HArray2OfTransient {
+        crate::ffi::HandleTColStdHArray2OfTransient_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HArray2OfTransient
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray2OfTransient> {
+        crate::ffi::HandleTColStdHArray2OfTransient_get_mut(self)
+    }
+}
+
+// ========================
+// From TColStd_HPackedMapOfInteger.hxx
+// ========================
+
+/// Extension of TColStd_PackedMapOfInteger class to be manipulated by handle.
+pub use crate::ffi::TColStd_HPackedMapOfInteger as HPackedMapOfInteger;
+
+impl HPackedMapOfInteger {
+    pub fn new_int(NbBuckets: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HPackedMapOfInteger_ctor_int(NbBuckets)
+    }
+
+    pub fn new_packedmapofinteger(
+        theOther: &crate::ffi::TColStd_PackedMapOfInteger,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HPackedMapOfInteger_ctor_packedmapofinteger(theOther)
+    }
+
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_int(1)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HPackedMapOfInteger_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
+        crate::ffi::TColStd_HPackedMapOfInteger_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHPackedMapOfInteger;
+
+impl HandleTColStdHPackedMapOfInteger {
+    /// Dereference this Handle to access the underlying TColStd_HPackedMapOfInteger
+    pub fn get(&self) -> &crate::ffi::TColStd_HPackedMapOfInteger {
+        crate::ffi::HandleTColStdHPackedMapOfInteger_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HPackedMapOfInteger
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HPackedMapOfInteger> {
+        crate::ffi::HandleTColStdHPackedMapOfInteger_get_mut(self)
+    }
+}
+
+// ========================
+// From TColStd_HSequenceOfAsciiString.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HSequenceOfAsciiString as HSequenceOfAsciiString;
+
+impl HSequenceOfAsciiString {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HSequenceOfAsciiString_ctor()
+    }
+
+    pub fn new_sequenceofasciistring(
+        theOther: &crate::ffi::TColStd_SequenceOfAsciiString,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HSequenceOfAsciiString_ctor_sequenceofasciistring(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HSequenceOfAsciiString_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+        crate::ffi::TColStd_HSequenceOfAsciiString_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHSequenceOfAsciiString;
+
+impl HandleTColStdHSequenceOfAsciiString {
+    /// Dereference this Handle to access the underlying TColStd_HSequenceOfAsciiString
+    pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfAsciiString {
+        crate::ffi::HandleTColStdHSequenceOfAsciiString_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfAsciiString
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfAsciiString> {
+        crate::ffi::HandleTColStdHSequenceOfAsciiString_get_mut(self)
+    }
+}
+
+// ========================
+// From TColStd_HSequenceOfExtendedString.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HSequenceOfExtendedString as HSequenceOfExtendedString;
+
+impl HSequenceOfExtendedString {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HSequenceOfExtendedString_ctor()
+    }
+
+    pub fn new_sequenceofextendedstring(
+        theOther: &crate::ffi::TColStd_SequenceOfExtendedString,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HSequenceOfExtendedString_ctor_sequenceofextendedstring(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HSequenceOfExtendedString_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfExtendedString> {
+        crate::ffi::TColStd_HSequenceOfExtendedString_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHSequenceOfExtendedString;
+
+impl HandleTColStdHSequenceOfExtendedString {
+    /// Dereference this Handle to access the underlying TColStd_HSequenceOfExtendedString
+    pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfExtendedString {
+        crate::ffi::HandleTColStdHSequenceOfExtendedString_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfExtendedString
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfExtendedString> {
+        crate::ffi::HandleTColStdHSequenceOfExtendedString_get_mut(self)
+    }
+}
+
+// ========================
+// From TColStd_HSequenceOfHAsciiString.hxx
+// ========================
+
+pub use crate::ffi::TColStd_HSequenceOfHAsciiString as HSequenceOfHAsciiString;
+
+impl HSequenceOfHAsciiString {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HSequenceOfHAsciiString_ctor()
+    }
+
+    pub fn new_sequenceofhasciistring(
+        theOther: &crate::ffi::TColStd_SequenceOfHAsciiString,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_HSequenceOfHAsciiString_ctor_sequenceofhasciistring(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColStd_HSequenceOfHAsciiString_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        crate::ffi::TColStd_HSequenceOfHAsciiString_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColStdHSequenceOfHAsciiString;
+
+impl HandleTColStdHSequenceOfHAsciiString {
+    /// Dereference this Handle to access the underlying TColStd_HSequenceOfHAsciiString
+    pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfHAsciiString {
+        crate::ffi::HandleTColStdHSequenceOfHAsciiString_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfHAsciiString
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfHAsciiString> {
+        crate::ffi::HandleTColStdHSequenceOfHAsciiString_get_mut(self)
     }
 }
 
@@ -511,10 +1234,18 @@ impl PackedMapOfInteger {
 // ========================
 
 pub use crate::ffi::{
-    TColStd_Array1OfBoolean as Array1OfBoolean, TColStd_Array1OfInteger as Array1OfInteger,
-    TColStd_Array1OfReal as Array1OfReal, TColStd_Array1OfTransient as Array1OfTransient,
-    TColStd_Array2OfReal as Array2OfReal, TColStd_HPackedMapOfInteger as HPackedMapOfInteger,
+    TColStd_Array1OfAsciiString as Array1OfAsciiString, TColStd_Array1OfBoolean as Array1OfBoolean,
+    TColStd_Array1OfByte as Array1OfByte, TColStd_Array1OfCharacter as Array1OfCharacter,
+    TColStd_Array1OfExtendedString as Array1OfExtendedString,
+    TColStd_Array1OfInteger as Array1OfInteger,
+    TColStd_Array1OfListOfInteger as Array1OfListOfInteger, TColStd_Array1OfReal as Array1OfReal,
+    TColStd_Array1OfTransient as Array1OfTransient, TColStd_Array2OfBoolean as Array2OfBoolean,
+    TColStd_Array2OfCharacter as Array2OfCharacter, TColStd_Array2OfInteger as Array2OfInteger,
+    TColStd_Array2OfReal as Array2OfReal, TColStd_Array2OfTransient as Array2OfTransient,
+    TColStd_ListOfInteger as ListOfInteger, TColStd_MapOfAsciiString as MapOfAsciiString,
     TColStd_SequenceOfAsciiString as SequenceOfAsciiString,
+    TColStd_SequenceOfExtendedString as SequenceOfExtendedString,
+    TColStd_SequenceOfHAsciiString as SequenceOfHAsciiString,
     TColStd_SequenceOfHExtendedString as SequenceOfHExtendedString,
     TColStd_SequenceOfInteger as SequenceOfInteger, TColStd_SequenceOfReal as SequenceOfReal,
     TColStd_SequenceOfTransient as SequenceOfTransient,

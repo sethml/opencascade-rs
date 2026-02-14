@@ -464,6 +464,105 @@ impl MakeCylinder {
 }
 
 // ========================
+// From BRepPrimAPI_MakeHalfSpace.hxx
+// ========================
+
+/// Describes functions to build half-spaces.
+/// A half-space is an infinite solid, limited by a surface. It
+/// is built from a face or a shell, which bounds it, and with
+/// a reference point, which specifies the side of the
+/// surface where the matter of the half-space is located.
+/// A half-space is a tool commonly used in topological
+/// operations to cut another shape.
+/// A MakeHalfSpace object provides a framework for:
+/// -   defining and implementing the construction of a half-space, and
+/// -   consulting the result.
+pub use crate::ffi::BRepPrimAPI_MakeHalfSpace as MakeHalfSpace;
+
+impl MakeHalfSpace {
+    /// Make a HalfSpace defined with a Face and a Point.
+    pub fn new_face_pnt(
+        Face: &crate::ffi::TopoDS_Face,
+        RefPnt: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_ctor_face_pnt(Face, RefPnt)
+    }
+
+    /// Make a HalfSpace defined with a Shell and a Point.
+    pub fn new_shell_pnt(
+        Shell: &crate::ffi::TopoDS_Shell,
+        RefPnt: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_ctor_shell_pnt(Shell, RefPnt)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_IsDeleted(self, S)
+    }
+}
+
+// ========================
 // From BRepPrimAPI_MakeOneAxis.hxx
 // ========================
 
@@ -901,6 +1000,193 @@ impl MakeRevol {
         S: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         crate::ffi::BRepPrimAPI_MakeRevol_inherited_Modified(self, S)
+    }
+}
+
+// ========================
+// From BRepPrimAPI_MakeRevolution.hxx
+// ========================
+
+/// Describes functions to build revolved shapes.
+/// A MakeRevolution object provides a framework for:
+/// -   defining the construction of a revolved shape,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
+pub use crate::ffi::BRepPrimAPI_MakeRevolution as MakeRevolution;
+
+impl MakeRevolution {
+    /// Make a revolution body by rotating a curve around Z.
+    pub fn new_handlegeomcurve(Meridian: &crate::ffi::HandleGeomCurve) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve(Meridian)
+    }
+
+    /// Make a revolution body by rotating a curve around Z.
+    pub fn new_handlegeomcurve_real(
+        Meridian: &crate::ffi::HandleGeomCurve,
+        angle: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real(Meridian, angle)
+    }
+
+    /// Make a revolution body by rotating a curve around Z.
+    pub fn new_handlegeomcurve_real2(
+        Meridian: &crate::ffi::HandleGeomCurve,
+        VMin: f64,
+        VMax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real2(Meridian, VMin, VMax)
+    }
+
+    /// Make a revolution body by rotating a curve around Z.
+    pub fn new_handlegeomcurve_real3(
+        Meridian: &crate::ffi::HandleGeomCurve,
+        VMin: f64,
+        VMax: f64,
+        angle: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real3(
+            Meridian, VMin, VMax, angle,
+        )
+    }
+
+    /// Make a revolution body by rotating a curve around Z.
+    pub fn new_ax2_handlegeomcurve(
+        Axes: &crate::ffi::gp_Ax2,
+        Meridian: &crate::ffi::HandleGeomCurve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve(Axes, Meridian)
+    }
+
+    /// Make a revolution body by rotating a curve around Z.
+    pub fn new_ax2_handlegeomcurve_real(
+        Axes: &crate::ffi::gp_Ax2,
+        Meridian: &crate::ffi::HandleGeomCurve,
+        angle: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real(Axes, Meridian, angle)
+    }
+
+    /// Make a revolution body by rotating a curve around Z.
+    pub fn new_ax2_handlegeomcurve_real2(
+        Axes: &crate::ffi::gp_Ax2,
+        Meridian: &crate::ffi::HandleGeomCurve,
+        VMin: f64,
+        VMax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real2(
+            Axes, Meridian, VMin, VMax,
+        )
+    }
+
+    /// Make a revolution body by rotating a curve around Z.
+    /// For all algorithms the resulting shape is composed of
+    /// -   a lateral revolved face,
+    /// -   two planar faces in planes parallel to the plane z =
+    /// 0, and passing by the extremities of the revolved
+    /// portion of Meridian, if these points are not on the Z
+    /// axis (in case of a complete revolved shape, these faces are circles),
+    /// -   and in the case of a portion of a revolved shape, two
+    /// planar faces to close the shape (in the planes u = 0 and u = angle).
+    pub fn new_ax2_handlegeomcurve_real3(
+        Axes: &crate::ffi::gp_Ax2,
+        Meridian: &crate::ffi::HandleGeomCurve,
+        VMin: f64,
+        VMax: f64,
+        angle: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real3(
+            Axes, Meridian, VMin, VMax, angle,
+        )
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepPrimAPI_MakeOneAxis
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+        crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepPrimAPI_MakeOneAxis(self)
+    }
+
+    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
+    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
+        crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepPrimAPI_MakeOneAxis_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepPrimAPI_MakeRevolution_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepPrimAPI_MakeRevolution_inherited_IsDeleted(self, S)
+    }
+
+    /// Inherited from BRepPrimAPI_MakeOneAxis: Face()
+    pub fn face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Face(self)
+    }
+
+    /// Inherited from BRepPrimAPI_MakeOneAxis: Shell()
+    pub fn shell(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shell {
+        crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Shell(self)
+    }
+
+    /// Inherited from BRepPrimAPI_MakeOneAxis: Solid()
+    pub fn solid(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Solid {
+        crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Solid(self)
     }
 }
 
@@ -1439,5 +1725,121 @@ impl MakeTorus {
     /// Inherited from BRepPrimAPI_MakeOneAxis: Solid()
     pub fn solid(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Solid {
         crate::ffi::BRepPrimAPI_MakeTorus_inherited_Solid(self)
+    }
+}
+
+// ========================
+// From BRepPrimAPI_MakeWedge.hxx
+// ========================
+
+/// Describes functions to build wedges, i.e. boxes with inclined faces.
+/// A MakeWedge object provides a framework for:
+/// -   defining the construction of a wedge,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
+pub use crate::ffi::BRepPrimAPI_MakeWedge as MakeWedge;
+
+impl MakeWedge {
+    /// Make a STEP right angular wedge. (ltx >= 0)
+    pub fn new_real4(dx: f64, dy: f64, dz: f64, ltx: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeWedge_ctor_real4(dx, dy, dz, ltx)
+    }
+
+    /// Make a STEP right angular wedge. (ltx >= 0)
+    pub fn new_ax2_real4(
+        Axes: &crate::ffi::gp_Ax2,
+        dx: f64,
+        dy: f64,
+        dz: f64,
+        ltx: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeWedge_ctor_ax2_real4(Axes, dx, dy, dz, ltx)
+    }
+
+    /// Make a wedge. The face at dy is xmin,zmin xmax,zmax
+    pub fn new_real7(
+        dx: f64,
+        dy: f64,
+        dz: f64,
+        xmin: f64,
+        zmin: f64,
+        xmax: f64,
+        zmax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeWedge_ctor_real7(dx, dy, dz, xmin, zmin, xmax, zmax)
+    }
+
+    /// Make a wedge. The face at dy is xmin,zmin xmax,zmax
+    pub fn new_ax2_real7(
+        Axes: &crate::ffi::gp_Ax2,
+        dx: f64,
+        dy: f64,
+        dz: f64,
+        xmin: f64,
+        zmin: f64,
+        xmax: f64,
+        zmax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeWedge_ctor_ax2_real7(Axes, dx, dy, dz, xmin, zmin, xmax, zmax)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepPrimAPI_MakeWedge_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepPrimAPI_MakeWedge_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepPrimAPI_MakeWedge_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeWedge_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepPrimAPI_MakeWedge_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepPrimAPI_MakeWedge_inherited_IsDeleted(self, S)
     }
 }

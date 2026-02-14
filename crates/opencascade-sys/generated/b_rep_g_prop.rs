@@ -12,6 +12,163 @@ pub use crate::ffi::{
 };
 
 // ========================
+// From BRepGProp_Cinert.hxx
+// ========================
+
+/// Computes the  global properties of bounded curves
+/// in 3D space. The curve must have at least a continuity C1.
+/// It can be a curve as defined in the template CurveTool from
+/// package GProp. This template gives the minimum of methods
+/// required to evaluate the global properties of a curve 3D with
+/// the algorithms of GProp.
+pub use crate::ffi::BRepGProp_Cinert as Cinert;
+
+impl Cinert {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Cinert_ctor()
+    }
+
+    pub fn new_curve_pnt(
+        C: &crate::ffi::BRepAdaptor_Curve,
+        CLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Cinert_ctor_curve_pnt(C, CLocation)
+    }
+
+    /// Upcast to GProp_GProps
+    pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
+        crate::ffi::BRepGProp_Cinert_as_GProp_GProps(self)
+    }
+
+    /// Upcast to GProp_GProps (mutable)
+    pub fn as_g_prop_g_props_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::g_prop::GProps> {
+        crate::ffi::BRepGProp_Cinert_as_GProp_GProps_mut(self)
+    }
+
+    /// Inherited from GProp_GProps: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::BRepGProp_Cinert_inherited_Add(self, Item, Density)
+    }
+
+    /// Inherited from GProp_GProps: Mass()
+    pub fn mass(&self) -> f64 {
+        crate::ffi::BRepGProp_Cinert_inherited_Mass(self)
+    }
+
+    /// Inherited from GProp_GProps: CentreOfMass()
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepGProp_Cinert_inherited_CentreOfMass(self)
+    }
+
+    /// Inherited from GProp_GProps: MatrixOfInertia()
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::BRepGProp_Cinert_inherited_MatrixOfInertia(self)
+    }
+
+    /// Inherited from GProp_GProps: StaticMoments()
+    pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
+        crate::ffi::BRepGProp_Cinert_inherited_StaticMoments(self, Ix, Iy, Iz)
+    }
+
+    /// Inherited from GProp_GProps: MomentOfInertia()
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_Cinert_inherited_MomentOfInertia(self, A)
+    }
+
+    /// Inherited from GProp_GProps: PrincipalProperties()
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::BRepGProp_Cinert_inherited_PrincipalProperties(self)
+    }
+
+    /// Inherited from GProp_GProps: RadiusOfGyration()
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_Cinert_inherited_RadiusOfGyration(self, A)
+    }
+}
+
+// ========================
+// From BRepGProp_Domain.hxx
+// ========================
+
+/// Arc iterator. Returns only Forward and Reversed edges from
+/// the face in an undigested order.
+pub use crate::ffi::BRepGProp_Domain as Domain;
+
+impl Domain {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Domain_ctor()
+    }
+
+    /// Constructor. Initializes the domain with the face.
+    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Domain_ctor_face(F)
+    }
+}
+
+// ========================
+// From BRepGProp_EdgeTool.hxx
+// ========================
+
+/// Provides  the required  methods    to instantiate
+/// CGProps from GProp with a Curve from BRepAdaptor.
+pub use crate::ffi::BRepGProp_EdgeTool as EdgeTool;
+
+impl EdgeTool {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_EdgeTool_ctor()
+    }
+
+    /// Returns the parametric value of the start point of
+    /// the curve.  The curve is oriented from the start point
+    /// to the end point.
+    pub fn first_parameter(C: &crate::ffi::BRepAdaptor_Curve) -> f64 {
+        crate::ffi::BRepGProp_EdgeTool_first_parameter(C)
+    }
+
+    /// Returns the parametric value of the end point of
+    /// the curve.  The curve is oriented from the start point
+    /// to the end point.
+    pub fn last_parameter(C: &crate::ffi::BRepAdaptor_Curve) -> f64 {
+        crate::ffi::BRepGProp_EdgeTool_last_parameter(C)
+    }
+
+    /// Returns the number of Gauss points required to do
+    /// the integration with a good accuracy using the
+    /// Gauss method.  For a polynomial curve of degree n
+    /// the maxima of accuracy is obtained with an order
+    /// of integration equal to 2*n-1.
+    pub fn integration_order(C: &crate::ffi::BRepAdaptor_Curve) -> i32 {
+        crate::ffi::BRepGProp_EdgeTool_integration_order(C)
+    }
+
+    /// Returns the point of parameter U on the loaded curve.
+    pub fn value(C: &crate::ffi::BRepAdaptor_Curve, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepGProp_EdgeTool_value(C, U)
+    }
+
+    /// Returns the point of parameter U and the first derivative
+    /// at this point.
+    pub fn d1(
+        C: &crate::ffi::BRepAdaptor_Curve,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::BRepGProp_EdgeTool_d1(C, U, P, V1)
+    }
+
+    /// Returns  the number  of  intervals for  continuity
+    /// <S>. May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(C: &crate::ffi::BRepAdaptor_Curve, S: i32) -> i32 {
+        crate::ffi::BRepGProp_EdgeTool_nb_intervals(C, S)
+    }
+}
+
+// ========================
 // From BRepGProp_Face.hxx
 // ========================
 
@@ -68,5 +225,1168 @@ impl Face {
     /// with either top or bottom one.
     pub fn load_bool_isotype(self: std::pin::Pin<&mut Self>, IsFirstParam: bool, theIsoType: i32) {
         crate::ffi::BRepGProp_Face_load(self, IsFirstParam, theIsoType)
+    }
+}
+
+// ========================
+// From BRepGProp_Gauss.hxx
+// ========================
+
+/// Class performs computing of the global inertia properties
+/// of geometric object in 3D space by adaptive and non-adaptive
+/// 2D Gauss integration algorithms.
+pub use crate::ffi::BRepGProp_Gauss as Gauss;
+
+// ========================
+// From BRepGProp_MeshCinert.hxx
+// ========================
+
+/// Computes the  global properties of
+/// of polylines  represented by set of points.
+/// This class is used for computation of global
+/// properties of edge, which has no exact geometry
+/// (3d or 2d curve), but has any of allowed
+/// polygons.
+pub use crate::ffi::BRepGProp_MeshCinert as MeshCinert;
+
+impl MeshCinert {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_MeshCinert_ctor()
+    }
+
+    /// Prepare set of 3d points on base of any available edge polygons:
+    /// 3D polygon, polygon on triangulation, 2d polygon on surface
+    /// If edge has no polygons, array thePolyg is left unchanged
+    pub fn prepare_polygon(
+        theE: &crate::ffi::TopoDS_Edge,
+        thePolyg: std::pin::Pin<&mut crate::ffi::HandleTColgpHArray1OfPnt>,
+    ) {
+        crate::ffi::BRepGProp_MeshCinert_prepare_polygon(theE, thePolyg)
+    }
+
+    /// Upcast to GProp_GProps
+    pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
+        crate::ffi::BRepGProp_MeshCinert_as_GProp_GProps(self)
+    }
+
+    /// Upcast to GProp_GProps (mutable)
+    pub fn as_g_prop_g_props_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::g_prop::GProps> {
+        crate::ffi::BRepGProp_MeshCinert_as_GProp_GProps_mut(self)
+    }
+
+    /// Inherited from GProp_GProps: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::BRepGProp_MeshCinert_inherited_Add(self, Item, Density)
+    }
+
+    /// Inherited from GProp_GProps: Mass()
+    pub fn mass(&self) -> f64 {
+        crate::ffi::BRepGProp_MeshCinert_inherited_Mass(self)
+    }
+
+    /// Inherited from GProp_GProps: CentreOfMass()
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepGProp_MeshCinert_inherited_CentreOfMass(self)
+    }
+
+    /// Inherited from GProp_GProps: MatrixOfInertia()
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::BRepGProp_MeshCinert_inherited_MatrixOfInertia(self)
+    }
+
+    /// Inherited from GProp_GProps: StaticMoments()
+    pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
+        crate::ffi::BRepGProp_MeshCinert_inherited_StaticMoments(self, Ix, Iy, Iz)
+    }
+
+    /// Inherited from GProp_GProps: MomentOfInertia()
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_MeshCinert_inherited_MomentOfInertia(self, A)
+    }
+
+    /// Inherited from GProp_GProps: PrincipalProperties()
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::BRepGProp_MeshCinert_inherited_PrincipalProperties(self)
+    }
+
+    /// Inherited from GProp_GProps: RadiusOfGyration()
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_MeshCinert_inherited_RadiusOfGyration(self, A)
+    }
+}
+
+// ========================
+// From BRepGProp_MeshProps.hxx
+// ========================
+
+/// Computes the global properties of a surface mesh. The mesh can be
+/// interpreted as just a surface or as a piece of volume limited by this surface.
+pub use crate::ffi::BRepGProp_MeshProps as MeshProps;
+
+impl MeshProps {
+    /// Computes the global properties of a surface mesh of 3D space.
+    /// Calculation of surface properties is performed by numerical integration
+    /// over triangle surfaces using Gauss cubature formulas.
+    /// Depending on the mesh object type used in constructor this method can
+    /// calculate the surface or volume properties of the mesh.
+    pub fn perform_handlepolytriangulation_location_orientation(
+        self: std::pin::Pin<&mut Self>,
+        theMesh: &crate::ffi::HandlePolyTriangulation,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theOri: i32,
+    ) {
+        crate::ffi::BRepGProp_MeshProps_perform_handlepolytriangulation_location_orientation(
+            self, theMesh, theLoc, theOri,
+        )
+    }
+
+    pub fn perform_handlepolytriangulation_orientation(
+        self: std::pin::Pin<&mut Self>,
+        theMesh: &crate::ffi::HandlePolyTriangulation,
+        theOri: i32,
+    ) {
+        crate::ffi::BRepGProp_MeshProps_perform_handlepolytriangulation_orientation(
+            self, theMesh, theOri,
+        )
+    }
+
+    /// Upcast to GProp_GProps
+    pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
+        crate::ffi::BRepGProp_MeshProps_as_GProp_GProps(self)
+    }
+
+    /// Upcast to GProp_GProps (mutable)
+    pub fn as_g_prop_g_props_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::g_prop::GProps> {
+        crate::ffi::BRepGProp_MeshProps_as_GProp_GProps_mut(self)
+    }
+
+    /// Inherited from GProp_GProps: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::BRepGProp_MeshProps_inherited_Add(self, Item, Density)
+    }
+
+    /// Inherited from GProp_GProps: Mass()
+    pub fn mass(&self) -> f64 {
+        crate::ffi::BRepGProp_MeshProps_inherited_Mass(self)
+    }
+
+    /// Inherited from GProp_GProps: CentreOfMass()
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepGProp_MeshProps_inherited_CentreOfMass(self)
+    }
+
+    /// Inherited from GProp_GProps: MatrixOfInertia()
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::BRepGProp_MeshProps_inherited_MatrixOfInertia(self)
+    }
+
+    /// Inherited from GProp_GProps: StaticMoments()
+    pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
+        crate::ffi::BRepGProp_MeshProps_inherited_StaticMoments(self, Ix, Iy, Iz)
+    }
+
+    /// Inherited from GProp_GProps: MomentOfInertia()
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_MeshProps_inherited_MomentOfInertia(self, A)
+    }
+
+    /// Inherited from GProp_GProps: PrincipalProperties()
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::BRepGProp_MeshProps_inherited_PrincipalProperties(self)
+    }
+
+    /// Inherited from GProp_GProps: RadiusOfGyration()
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_MeshProps_inherited_RadiusOfGyration(self, A)
+    }
+}
+
+// ========================
+// From BRepGProp_Sinert.hxx
+// ========================
+
+/// Computes the global properties of a face in 3D space.
+/// The face 's requirements to evaluate the global properties
+/// are defined in the template FaceTool from package GProp.
+pub use crate::ffi::BRepGProp_Sinert as Sinert;
+
+impl Sinert {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Sinert_ctor()
+    }
+
+    pub fn new_face_pnt(
+        S: &crate::ffi::BRepGProp_Face,
+        SLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Sinert_ctor_face_pnt(S, SLocation)
+    }
+
+    /// Builds a Sinert to evaluate the global properties of
+    /// the face <S>. If isNaturalRestriction is true the domain of S is defined
+    /// with the natural bounds, else it defined with an iterator
+    /// of Edge from TopoDS (see DomainTool from GProp)
+    pub fn new_face_domain_pnt(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        D: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        SLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Sinert_ctor_face_domain_pnt(S, D, SLocation)
+    }
+
+    pub fn new_face_pnt_real(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        SLocation: &crate::ffi::gp_Pnt,
+        Eps: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Sinert_ctor_face_pnt_real(S, SLocation, Eps)
+    }
+
+    pub fn new_face_domain_pnt_real(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        D: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        SLocation: &crate::ffi::gp_Pnt,
+        Eps: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Sinert_ctor_face_domain_pnt_real(S, D, SLocation, Eps)
+    }
+
+    /// Upcast to GProp_GProps
+    pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
+        crate::ffi::BRepGProp_Sinert_as_GProp_GProps(self)
+    }
+
+    /// Upcast to GProp_GProps (mutable)
+    pub fn as_g_prop_g_props_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::g_prop::GProps> {
+        crate::ffi::BRepGProp_Sinert_as_GProp_GProps_mut(self)
+    }
+
+    /// Inherited from GProp_GProps: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::BRepGProp_Sinert_inherited_Add(self, Item, Density)
+    }
+
+    /// Inherited from GProp_GProps: Mass()
+    pub fn mass(&self) -> f64 {
+        crate::ffi::BRepGProp_Sinert_inherited_Mass(self)
+    }
+
+    /// Inherited from GProp_GProps: CentreOfMass()
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepGProp_Sinert_inherited_CentreOfMass(self)
+    }
+
+    /// Inherited from GProp_GProps: MatrixOfInertia()
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::BRepGProp_Sinert_inherited_MatrixOfInertia(self)
+    }
+
+    /// Inherited from GProp_GProps: StaticMoments()
+    pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
+        crate::ffi::BRepGProp_Sinert_inherited_StaticMoments(self, Ix, Iy, Iz)
+    }
+
+    /// Inherited from GProp_GProps: MomentOfInertia()
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_Sinert_inherited_MomentOfInertia(self, A)
+    }
+
+    /// Inherited from GProp_GProps: PrincipalProperties()
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::BRepGProp_Sinert_inherited_PrincipalProperties(self)
+    }
+
+    /// Inherited from GProp_GProps: RadiusOfGyration()
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_Sinert_inherited_RadiusOfGyration(self, A)
+    }
+}
+
+// ========================
+// From BRepGProp_TFunction.hxx
+// ========================
+
+/// This class represents the integrand function for the outer
+/// integral computation. The returned value represents the
+/// integral of UFunction. It depends on the value type and the
+/// flag IsByPoint.
+pub use crate::ffi::BRepGProp_TFunction as TFunction;
+
+impl TFunction {
+    /// Setting the type of the value to be returned. This
+    /// parameter is directly passed to the UFunction.
+    pub fn set_value_type(self: std::pin::Pin<&mut Self>, aType: i32) {
+        crate::ffi::BRepGProp_TFunction_set_value_type(self, aType)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        crate::ffi::BRepGProp_TFunction_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::Function> {
+        crate::ffi::BRepGProp_TFunction_as_math_Function_mut(self)
+    }
+}
+
+// ========================
+// From BRepGProp_UFunction.hxx
+// ========================
+
+/// This class represents the integrand function for
+/// computation of an inner integral. The returned value
+/// depends on the value type and the flag IsByPoint.
+///
+/// The type of returned value is the one of the following
+/// values:
+/// -  GProp_Mass - volume computation.
+/// -  GProp_CenterMassX, GProp_CenterMassY,
+/// GProp_CenterMassZ - X, Y and Z coordinates of center
+/// of mass computation.
+/// -  GProp_InertiaXX, GProp_InertiaYY, GProp_InertiaZZ,
+/// GProp_InertiaXY, GProp_InertiaXZ, GProp_InertiaYZ
+/// - moments of inertia computation.
+///
+/// If the flag IsByPoint is set to Standard_True, the value is
+/// returned for the region of space that is delimited by a
+/// surface and a point. Otherwise all computations are
+/// performed for the region of space delimited by a surface
+/// and a plane.
+pub use crate::ffi::BRepGProp_UFunction as UFunction;
+
+impl UFunction {
+    /// Setting the type of the value to be returned.
+    pub fn set_value_type(self: std::pin::Pin<&mut Self>, theType: i32) {
+        crate::ffi::BRepGProp_UFunction_set_value_type(self, theType)
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        crate::ffi::BRepGProp_UFunction_as_math_Function(self)
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::math::Function> {
+        crate::ffi::BRepGProp_UFunction_as_math_Function_mut(self)
+    }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::BRepGProp_UFunction_inherited_GetStateNumber(self)
+    }
+}
+
+// ========================
+// From BRepGProp_Vinert.hxx
+// ========================
+
+/// Computes the global properties of a geometric solid
+/// (3D closed region of space) delimited with :
+/// . a surface
+/// . a point and a surface
+/// . a plane and a surface
+///
+/// The surface can be :
+/// . a surface limited with its parametric values U-V,
+/// . a surface limited in U-V space with its curves of restriction,
+///
+/// The surface 's requirements to evaluate the global properties
+/// are defined in the template SurfaceTool from package GProp.
+pub use crate::ffi::BRepGProp_Vinert as Vinert;
+
+impl Vinert {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor()
+    }
+
+    /// Computes the global properties of a region of 3D space
+    /// delimited with the surface <S> and the point VLocation. S can be closed
+    /// The method is quick and its precision is enough for many cases of analytical
+    /// surfaces.
+    /// Non-adaptive 2D Gauss integration with predefined numbers of Gauss points
+    /// is used. Numbers of points depend on types of surfaces and  curves.
+    /// Error of the computation is not calculated.
+    pub fn new_face_pnt(
+        S: &crate::ffi::BRepGProp_Face,
+        VLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_pnt(S, VLocation)
+    }
+
+    /// Computes the global properties of a region of 3D space
+    /// delimited with the surface <S> and the point VLocation. S can be closed
+    /// Adaptive 2D Gauss integration is used.
+    /// Parameter Eps sets maximal relative error of computed mass (volume) for face.
+    /// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+    /// for two successive steps of adaptive integration.
+    pub fn new_face_pnt_real(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        VLocation: &crate::ffi::gp_Pnt,
+        Eps: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_pnt_real(S, VLocation, Eps)
+    }
+
+    /// Computes the global properties of the region of 3D space
+    /// delimited with the surface <S> and the point VLocation.
+    /// The method is quick and its precision is enough for many cases of analytical
+    /// surfaces.
+    /// Non-adaptive 2D Gauss integration with predefined numbers of Gauss points
+    /// is used. Numbers of points depend on types of surfaces and  curves.
+    /// Error of the computation is not calculated.
+    pub fn new_face_pnt2(
+        S: &crate::ffi::BRepGProp_Face,
+        O: &crate::ffi::gp_Pnt,
+        VLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_pnt2(S, O, VLocation)
+    }
+
+    /// Computes the global properties of the region of 3D space
+    /// delimited with the surface <S> and the point VLocation.
+    /// Adaptive 2D Gauss integration is used.
+    /// Parameter Eps sets maximal relative error of computed mass (volume) for face.
+    /// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+    /// for two successive steps of adaptive integration.
+    /// WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+    pub fn new_face_pnt2_real(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        O: &crate::ffi::gp_Pnt,
+        VLocation: &crate::ffi::gp_Pnt,
+        Eps: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_pnt2_real(S, O, VLocation, Eps)
+    }
+
+    /// Computes the global properties of the region of 3D space
+    /// delimited with the surface <S> and the plane Pln.
+    /// The method is quick and its precision is enough for many cases of analytical
+    /// surfaces.
+    /// Non-adaptive 2D Gauss integration with predefined numbers of Gauss points
+    /// is used. Numbers of points depend on types of surfaces and  curves.
+    /// Error of the computation is not calculated.
+    pub fn new_face_pln_pnt(
+        S: &crate::ffi::BRepGProp_Face,
+        Pl: &crate::ffi::gp_Pln,
+        VLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_pln_pnt(S, Pl, VLocation)
+    }
+
+    /// Computes the global properties of the region of 3D space
+    /// delimited with the surface <S> and the plane Pln.
+    /// Adaptive 2D Gauss integration is used.
+    /// Parameter Eps sets maximal relative error of computed mass (volume) for face.
+    /// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+    /// for two successive steps of adaptive integration.
+    /// WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+    pub fn new_face_pln_pnt_real(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        Pl: &crate::ffi::gp_Pln,
+        VLocation: &crate::ffi::gp_Pnt,
+        Eps: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_pln_pnt_real(S, Pl, VLocation, Eps)
+    }
+
+    /// Computes the global properties of a region of 3D space
+    /// delimited with the surface <S> and the point VLocation. S can be closed
+    /// The method is quick and its precision is enough for many cases of analytical
+    /// surfaces.
+    /// Non-adaptive 2D Gauss integration with predefined numbers of Gauss points
+    /// is used. Numbers of points depend on types of surfaces and  curves.
+    /// Error of the computation is not calculated.
+    pub fn new_face_domain_pnt(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        D: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        VLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt(S, D, VLocation)
+    }
+
+    /// Computes the global properties of a region of 3D space
+    /// delimited with the surface <S> and the point VLocation. S can be closed
+    /// Adaptive 2D Gauss integration is used.
+    /// Parameter Eps sets maximal relative error of computed mass (volume) for face.
+    /// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+    /// for two successive steps of adaptive integration.
+    pub fn new_face_domain_pnt_real(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        D: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        VLocation: &crate::ffi::gp_Pnt,
+        Eps: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt_real(S, D, VLocation, Eps)
+    }
+
+    /// Computes the global properties of the region of 3D space
+    /// delimited with the surface <S> and the point VLocation.
+    /// The method is quick and its precision is enough for many cases of analytical
+    /// surfaces.
+    /// Non-adaptive 2D Gauss integration with predefined numbers of Gauss points
+    /// is used. Numbers of points depend on types of surfaces and  curves.
+    /// Error of the computation is not calculated.
+    pub fn new_face_domain_pnt2(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        D: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        O: &crate::ffi::gp_Pnt,
+        VLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt2(S, D, O, VLocation)
+    }
+
+    /// Computes the global properties of the region of 3D space
+    /// delimited with the surface <S> and the point VLocation.
+    /// Adaptive 2D Gauss integration is used.
+    /// Parameter Eps sets maximal relative error of computed mass (volume) for face.
+    /// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+    /// for two successive steps of adaptive integration.
+    /// WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+    pub fn new_face_domain_pnt2_real(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        D: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        O: &crate::ffi::gp_Pnt,
+        VLocation: &crate::ffi::gp_Pnt,
+        Eps: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt2_real(S, D, O, VLocation, Eps)
+    }
+
+    /// Computes the global properties of the region of 3D space
+    /// delimited with the surface <S> and the plane Pln.
+    /// The method is quick and its precision is enough for many cases of analytical
+    /// surfaces.
+    /// Non-adaptive 2D Gauss integration with predefined numbers of Gauss points
+    /// is used. Numbers of points depend on types of surfaces and  curves.
+    /// Error of the computation is not calculated.
+    pub fn new_face_domain_pln_pnt(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        D: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        Pl: &crate::ffi::gp_Pln,
+        VLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_domain_pln_pnt(S, D, Pl, VLocation)
+    }
+
+    /// Computes the global properties of the region of 3D space
+    /// delimited with the surface <S> and the plane Pln.
+    /// Adaptive 2D Gauss integration is used.
+    /// Parameter Eps sets maximal relative error of computed mass (volume) for face.
+    /// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+    /// for two successive steps of adaptive integration.
+    /// WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+    pub fn new_face_domain_pln_pnt_real(
+        S: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        D: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        Pl: &crate::ffi::gp_Pln,
+        VLocation: &crate::ffi::gp_Pnt,
+        Eps: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_Vinert_ctor_face_domain_pln_pnt_real(S, D, Pl, VLocation, Eps)
+    }
+
+    /// Upcast to GProp_GProps
+    pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
+        crate::ffi::BRepGProp_Vinert_as_GProp_GProps(self)
+    }
+
+    /// Upcast to GProp_GProps (mutable)
+    pub fn as_g_prop_g_props_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::g_prop::GProps> {
+        crate::ffi::BRepGProp_Vinert_as_GProp_GProps_mut(self)
+    }
+
+    /// Inherited from GProp_GProps: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::BRepGProp_Vinert_inherited_Add(self, Item, Density)
+    }
+
+    /// Inherited from GProp_GProps: Mass()
+    pub fn mass(&self) -> f64 {
+        crate::ffi::BRepGProp_Vinert_inherited_Mass(self)
+    }
+
+    /// Inherited from GProp_GProps: CentreOfMass()
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepGProp_Vinert_inherited_CentreOfMass(self)
+    }
+
+    /// Inherited from GProp_GProps: MatrixOfInertia()
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::BRepGProp_Vinert_inherited_MatrixOfInertia(self)
+    }
+
+    /// Inherited from GProp_GProps: StaticMoments()
+    pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
+        crate::ffi::BRepGProp_Vinert_inherited_StaticMoments(self, Ix, Iy, Iz)
+    }
+
+    /// Inherited from GProp_GProps: MomentOfInertia()
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_Vinert_inherited_MomentOfInertia(self, A)
+    }
+
+    /// Inherited from GProp_GProps: PrincipalProperties()
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::BRepGProp_Vinert_inherited_PrincipalProperties(self)
+    }
+
+    /// Inherited from GProp_GProps: RadiusOfGyration()
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_Vinert_inherited_RadiusOfGyration(self, A)
+    }
+}
+
+// ========================
+// From BRepGProp_VinertGK.hxx
+// ========================
+
+/// Computes the global properties of a geometric solid
+/// (3D closed region of space) delimited with :
+/// -  a point and a surface
+/// -  a plane and a surface
+///
+/// The surface can be :
+/// -  a surface limited with its parametric values U-V,
+/// (naturally restricted)
+/// -  a surface limited in U-V space with its boundary
+/// curves.
+///
+/// The surface's requirements to evaluate the global
+/// properties are defined in the template FaceTool class from
+/// the package GProp.
+///
+/// The adaptive 2D algorithm of Gauss-Kronrod integration of
+/// double integral is used.
+///
+/// The inner integral is computed along U parameter of
+/// surface. The integrand function is encapsulated in the
+/// support class UFunction that is defined below.
+///
+/// The outer integral is computed along T parameter of a
+/// bounding curve. The integrand function is encapsulated in
+/// the support class TFunction that is defined below.
+pub use crate::ffi::BRepGProp_VinertGK as VinertGK;
+
+impl VinertGK {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_VinertGK_ctor()
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the point VLocation.
+    pub fn new_face_pnt_real_bool2(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+        theIFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_VinertGK_ctor_face_pnt_real_bool2(
+            theSurface,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            theIFlag,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the point VLocation. The inertia is computed with
+    /// respect to thePoint.
+    pub fn new_face_pnt2_real_bool2(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        thePoint: &crate::ffi::gp_Pnt,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+        theIFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_VinertGK_ctor_face_pnt2_real_bool2(
+            theSurface,
+            thePoint,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            theIFlag,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the point VLocation.
+    pub fn new_face_domain_pnt_real_bool2(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+        theIFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_VinertGK_ctor_face_domain_pnt_real_bool2(
+            theSurface,
+            theDomain,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            theIFlag,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the point VLocation. The inertia is computed with
+    /// respect to thePoint.
+    pub fn new_face_domain_pnt2_real_bool2(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        thePoint: &crate::ffi::gp_Pnt,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+        theIFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_VinertGK_ctor_face_domain_pnt2_real_bool2(
+            theSurface,
+            theDomain,
+            thePoint,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            theIFlag,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the plane.
+    pub fn new_face_pln_pnt_real_bool2(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        thePlane: &crate::ffi::gp_Pln,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+        theIFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_VinertGK_ctor_face_pln_pnt_real_bool2(
+            theSurface,
+            thePlane,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            theIFlag,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the plane.
+    pub fn new_face_domain_pln_pnt_real_bool2(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        thePlane: &crate::ffi::gp_Pln,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+        theIFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepGProp_VinertGK_ctor_face_domain_pln_pnt_real_bool2(
+            theSurface,
+            theDomain,
+            thePlane,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            theIFlag,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the point VLocation.
+    pub fn new_face_pnt_real_bool(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_pnt_real_bool2(theSurface, theLocation, theTolerance, theCGFlag, false)
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the point VLocation.
+    pub fn new_face_pnt_real(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_pnt_real_bool2(theSurface, theLocation, theTolerance, false, false)
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the point VLocation.
+    pub fn new_face_pnt(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_pnt_real_bool2(theSurface, theLocation, 0.001, false, false)
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the point VLocation. The inertia is computed with
+    /// respect to thePoint.
+    pub fn new_face_pnt2_real_bool(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        thePoint: &crate::ffi::gp_Pnt,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_pnt2_real_bool2(
+            theSurface,
+            thePoint,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the point VLocation. The inertia is computed with
+    /// respect to thePoint.
+    pub fn new_face_pnt2_real(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        thePoint: &crate::ffi::gp_Pnt,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_pnt2_real_bool2(
+            theSurface,
+            thePoint,
+            theLocation,
+            theTolerance,
+            false,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the point VLocation. The inertia is computed with
+    /// respect to thePoint.
+    pub fn new_face_pnt2(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        thePoint: &crate::ffi::gp_Pnt,
+        theLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_pnt2_real_bool2(theSurface, thePoint, theLocation, 0.001, false, false)
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the point VLocation.
+    pub fn new_face_domain_pnt_real_bool(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_domain_pnt_real_bool2(
+            theSurface,
+            theDomain,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the point VLocation.
+    pub fn new_face_domain_pnt_real(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_domain_pnt_real_bool2(
+            theSurface,
+            theDomain,
+            theLocation,
+            theTolerance,
+            false,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the point VLocation.
+    pub fn new_face_domain_pnt(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        theLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_domain_pnt_real_bool2(
+            theSurface,
+            theDomain,
+            theLocation,
+            0.001,
+            false,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the point VLocation. The inertia is computed with
+    /// respect to thePoint.
+    pub fn new_face_domain_pnt2_real_bool(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        thePoint: &crate::ffi::gp_Pnt,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_domain_pnt2_real_bool2(
+            theSurface,
+            theDomain,
+            thePoint,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the point VLocation. The inertia is computed with
+    /// respect to thePoint.
+    pub fn new_face_domain_pnt2_real(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        thePoint: &crate::ffi::gp_Pnt,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_domain_pnt2_real_bool2(
+            theSurface,
+            theDomain,
+            thePoint,
+            theLocation,
+            theTolerance,
+            false,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the point VLocation. The inertia is computed with
+    /// respect to thePoint.
+    pub fn new_face_domain_pnt2(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        thePoint: &crate::ffi::gp_Pnt,
+        theLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_domain_pnt2_real_bool2(
+            theSurface,
+            theDomain,
+            thePoint,
+            theLocation,
+            0.001,
+            false,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the plane.
+    pub fn new_face_pln_pnt_real_bool(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        thePlane: &crate::ffi::gp_Pln,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_pln_pnt_real_bool2(
+            theSurface,
+            thePlane,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the plane.
+    pub fn new_face_pln_pnt_real(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        thePlane: &crate::ffi::gp_Pln,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_pln_pnt_real_bool2(
+            theSurface,
+            thePlane,
+            theLocation,
+            theTolerance,
+            false,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the naturally restricted surface
+    /// and the plane.
+    pub fn new_face_pln_pnt(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        thePlane: &crate::ffi::gp_Pln,
+        theLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_pln_pnt_real_bool2(theSurface, thePlane, theLocation, 0.001, false, false)
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the plane.
+    pub fn new_face_domain_pln_pnt_real_bool(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        thePlane: &crate::ffi::gp_Pln,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+        theCGFlag: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_domain_pln_pnt_real_bool2(
+            theSurface,
+            theDomain,
+            thePlane,
+            theLocation,
+            theTolerance,
+            theCGFlag,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the plane.
+    pub fn new_face_domain_pln_pnt_real(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        thePlane: &crate::ffi::gp_Pln,
+        theLocation: &crate::ffi::gp_Pnt,
+        theTolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_domain_pln_pnt_real_bool2(
+            theSurface,
+            theDomain,
+            thePlane,
+            theLocation,
+            theTolerance,
+            false,
+            false,
+        )
+    }
+
+    /// Constructor. Computes the global properties of a region of
+    /// 3D space delimited with the surface bounded by the domain
+    /// and the plane.
+    pub fn new_face_domain_pln_pnt(
+        theSurface: std::pin::Pin<&mut crate::ffi::BRepGProp_Face>,
+        theDomain: std::pin::Pin<&mut crate::ffi::BRepGProp_Domain>,
+        thePlane: &crate::ffi::gp_Pln,
+        theLocation: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_domain_pln_pnt_real_bool2(
+            theSurface,
+            theDomain,
+            thePlane,
+            theLocation,
+            0.001,
+            false,
+            false,
+        )
+    }
+
+    /// Upcast to GProp_GProps
+    pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
+        crate::ffi::BRepGProp_VinertGK_as_GProp_GProps(self)
+    }
+
+    /// Upcast to GProp_GProps (mutable)
+    pub fn as_g_prop_g_props_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::g_prop::GProps> {
+        crate::ffi::BRepGProp_VinertGK_as_GProp_GProps_mut(self)
+    }
+
+    /// Inherited from GProp_GProps: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::BRepGProp_VinertGK_inherited_Add(self, Item, Density)
+    }
+
+    /// Inherited from GProp_GProps: Mass()
+    pub fn mass(&self) -> f64 {
+        crate::ffi::BRepGProp_VinertGK_inherited_Mass(self)
+    }
+
+    /// Inherited from GProp_GProps: CentreOfMass()
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepGProp_VinertGK_inherited_CentreOfMass(self)
+    }
+
+    /// Inherited from GProp_GProps: MatrixOfInertia()
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::BRepGProp_VinertGK_inherited_MatrixOfInertia(self)
+    }
+
+    /// Inherited from GProp_GProps: StaticMoments()
+    pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
+        crate::ffi::BRepGProp_VinertGK_inherited_StaticMoments(self, Ix, Iy, Iz)
+    }
+
+    /// Inherited from GProp_GProps: MomentOfInertia()
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_VinertGK_inherited_MomentOfInertia(self, A)
+    }
+
+    /// Inherited from GProp_GProps: PrincipalProperties()
+    pub fn principal_properties(&self) -> cxx::UniquePtr<crate::ffi::GProp_PrincipalProps> {
+        crate::ffi::BRepGProp_VinertGK_inherited_PrincipalProperties(self)
+    }
+
+    /// Inherited from GProp_GProps: RadiusOfGyration()
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::BRepGProp_VinertGK_inherited_RadiusOfGyration(self, A)
     }
 }

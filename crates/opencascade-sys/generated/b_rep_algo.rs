@@ -28,6 +28,49 @@ impl Image {
 }
 
 // ========================
+// From BRepAlgo_NormalProjection.hxx
+// ========================
+
+/// This class makes the projection  of a wire on a
+/// shape.
+pub use crate::ffi::BRepAlgo_NormalProjection as NormalProjection;
+
+impl NormalProjection {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgo_NormalProjection_ctor()
+    }
+
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgo_NormalProjection_ctor_shape(S)
+    }
+
+    /// Set the parameters  used  for computation
+    /// Tol3d is the required  tolerance between the  3d projected
+    /// curve  and its 2d representation
+    /// InternalContinuity  is the order of constraints
+    /// used for  approximation.
+    /// MaxDeg and MaxSeg are the maximum degree and the maximum
+    /// number of segment for BSpline resulting of an approximation.
+    pub fn set_params(
+        self: std::pin::Pin<&mut Self>,
+        Tol3D: f64,
+        Tol2D: f64,
+        InternalContinuity: i32,
+        MaxDegree: i32,
+        MaxSeg: i32,
+    ) {
+        crate::ffi::BRepAlgo_NormalProjection_set_params(
+            self,
+            Tol3D,
+            Tol2D,
+            InternalContinuity,
+            MaxDegree,
+            MaxSeg,
+        )
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 

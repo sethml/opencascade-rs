@@ -110,6 +110,951 @@ impl MakeArcOfCircle {
 }
 
 // ========================
+// From GC_MakeArcOfEllipse.hxx
+// ========================
+
+/// Implements construction algorithms for an arc
+/// of ellipse in 3D space. The result is a Geom_TrimmedCurve curve.
+/// A MakeArcOfEllipse object provides a framework for:
+/// -   defining the construction of the arc of ellipse,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the
+/// Value function returns the constructed arc of ellipse.
+pub use crate::ffi::GC_MakeArcOfEllipse as MakeArcOfEllipse;
+
+impl MakeArcOfEllipse {
+    /// Constructs an arc of Ellipse (TrimmedCurve from Geom) from
+    /// a Ellipse between two parameters Alpha1 and Alpha2.
+    pub fn new_elips_real2_bool(
+        Elips: &crate::ffi::gp_Elips,
+        Alpha1: f64,
+        Alpha2: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeArcOfEllipse_ctor_elips_real2_bool(Elips, Alpha1, Alpha2, Sense)
+    }
+
+    /// Constructs an arc of Ellipse (TrimmedCurve from Geom) from
+    /// a Ellipse between point <P> and the angle Alpha
+    /// given in radians.
+    pub fn new_elips_pnt_real_bool(
+        Elips: &crate::ffi::gp_Elips,
+        P: &crate::ffi::gp_Pnt,
+        Alpha: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeArcOfEllipse_ctor_elips_pnt_real_bool(Elips, P, Alpha, Sense)
+    }
+
+    /// Constructs an arc of Ellipse (TrimmedCurve from Geom) from
+    /// a Ellipse between two points P1 and P2.
+    /// The orientation of the arc of ellipse is:
+    /// -   the sense of Elips if Sense is true, or
+    /// -   the opposite sense if Sense is false.
+    /// Notes:
+    /// -   Alpha1, Alpha2 and Alpha are angle values, given in radians.
+    /// -   IsDone always returns true.
+    pub fn new_elips_pnt2_bool(
+        Elips: &crate::ffi::gp_Elips,
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeArcOfEllipse_ctor_elips_pnt2_bool(Elips, P1, P2, Sense)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeArcOfEllipse_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeArcOfEllipse_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeArcOfEllipse_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeArcOfHyperbola.hxx
+// ========================
+
+/// Implements construction algorithms for an arc
+/// of hyperbola in 3D space. The result is a Geom_TrimmedCurve curve.
+/// A MakeArcOfHyperbola object provides a framework for:
+/// -   defining the construction of the arc of hyperbola,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the
+/// Value function returns the constructed arc of hyperbola.
+pub use crate::ffi::GC_MakeArcOfHyperbola as MakeArcOfHyperbola;
+
+impl MakeArcOfHyperbola {
+    /// Creates an arc of Hyperbola (TrimmedCurve from Geom) from
+    /// a Hyperbola between two parameters Alpha1 and Alpha2
+    /// (given in radians).
+    pub fn new_hypr_real2_bool(
+        Hypr: &crate::ffi::gp_Hypr,
+        Alpha1: f64,
+        Alpha2: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeArcOfHyperbola_ctor_hypr_real2_bool(Hypr, Alpha1, Alpha2, Sense)
+    }
+
+    /// Creates an arc of Hyperbola (TrimmedCurve from Geom) from
+    /// a Hyperbola between point <P> and the parameter
+    /// Alpha (given in radians).
+    pub fn new_hypr_pnt_real_bool(
+        Hypr: &crate::ffi::gp_Hypr,
+        P: &crate::ffi::gp_Pnt,
+        Alpha: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeArcOfHyperbola_ctor_hypr_pnt_real_bool(Hypr, P, Alpha, Sense)
+    }
+
+    /// Creates an arc of Hyperbola (TrimmedCurve from Geom) from
+    /// a Hyperbola between two points P1 and P2.
+    /// The orientation of the arc of hyperbola is:
+    /// -   the sense of Hypr if Sense is true, or
+    /// -   the opposite sense if Sense is false.
+    pub fn new_hypr_pnt2_bool(
+        Hypr: &crate::ffi::gp_Hypr,
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeArcOfHyperbola_ctor_hypr_pnt2_bool(Hypr, P1, P2, Sense)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeArcOfHyperbola_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeArcOfHyperbola_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeArcOfHyperbola_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeArcOfParabola.hxx
+// ========================
+
+/// Implements construction algorithms for an arc
+/// of parabola in 3D space. The result is a Geom_TrimmedCurve curve.
+/// A MakeArcOfParabola object provides a framework for:
+/// -   defining the construction of the arc of parabola,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the
+/// Value function returns the constructed arc of parabola.
+pub use crate::ffi::GC_MakeArcOfParabola as MakeArcOfParabola;
+
+impl MakeArcOfParabola {
+    /// Creates an arc of Parabola (TrimmedCurve from Geom) from
+    /// a Parabola between two parameters Alpha1 and Alpha2
+    /// (given in radians).
+    pub fn new_parab_real2_bool(
+        Parab: &crate::ffi::gp_Parab,
+        Alpha1: f64,
+        Alpha2: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeArcOfParabola_ctor_parab_real2_bool(Parab, Alpha1, Alpha2, Sense)
+    }
+
+    /// Creates an arc of Parabola (TrimmedCurve from Geom) from
+    /// a Parabola between point <P> and the parameter
+    /// Alpha (given in radians).
+    pub fn new_parab_pnt_real_bool(
+        Parab: &crate::ffi::gp_Parab,
+        P: &crate::ffi::gp_Pnt,
+        Alpha: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeArcOfParabola_ctor_parab_pnt_real_bool(Parab, P, Alpha, Sense)
+    }
+
+    /// Creates an arc of Parabola (TrimmedCurve from Geom) from
+    /// a Parabola between two points P1 and P2.
+    pub fn new_parab_pnt2_bool(
+        Parab: &crate::ffi::gp_Parab,
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeArcOfParabola_ctor_parab_pnt2_bool(Parab, P1, P2, Sense)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeArcOfParabola_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeArcOfParabola_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeArcOfParabola_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeCircle.hxx
+// ========================
+
+/// This class implements the following algorithms used
+/// to create Cirlec from Geom.
+///
+/// * Create a Circle parallel to another and passing
+/// though a point.
+/// * Create a Circle parallel to another at the distance
+/// Dist.
+/// * Create a Circle passing through 3 points.
+/// * Create a Circle with its center and the normal of its
+/// plane and its radius.
+/// * Create a Circle with its axis and radius.
+/// The circle's parameter is the angle (Radian).
+/// The parametrization range is [0,2*PI].
+/// The circle is a closed and periodic curve.
+/// The center of the circle is the Location point of its axis
+/// placement. The XDirection of the axis placement defines the
+/// origin of the parametrization.
+pub use crate::ffi::GC_MakeCircle as MakeCircle;
+
+impl MakeCircle {
+    /// creates a circle from a non persistent circle C by its conversion.
+    pub fn new_circ(C: &crate::ffi::gp_Circ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCircle_ctor_circ(C)
+    }
+
+    /// A2 is the local coordinates system of the circle.
+    /// It is not forbidden to create a circle with Radius = 0.0
+    /// Status is "NegativeRadius" if Radius < 0.
+    pub fn new_ax2_real(A2: &crate::ffi::gp_Ax2, Radius: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCircle_ctor_ax2_real(A2, Radius)
+    }
+
+    /// Make a Circle from Geom <TheCirc> parallel to another
+    /// Circ <Circ> with a distance <Dist>.
+    /// If Dist is greater than zero the result is enclosing
+    /// the circle <Circ>, else the result is enclosed by the
+    /// circle <Circ>.
+    pub fn new_circ_real(Circ: &crate::ffi::gp_Circ, Dist: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCircle_ctor_circ_real(Circ, Dist)
+    }
+
+    /// Make a Circle from Geom <TheCirc> parallel to another
+    /// Circ <Circ> and passing through a Pnt <Point>.
+    pub fn new_circ_pnt(
+        Circ: &crate::ffi::gp_Circ,
+        Point: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCircle_ctor_circ_pnt(Circ, Point)
+    }
+
+    /// Make a Circ from gp <TheCirc> passing through 3
+    /// Pnt2d <P1>,<P2>,<P3>.
+    pub fn new_pnt3(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        P3: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCircle_ctor_pnt3(P1, P2, P3)
+    }
+
+    /// Make a Circle from Geom <TheCirc> with its center
+    /// <Center> and the normal of its plane <Norm> and
+    /// its radius <Radius>.
+    pub fn new_pnt_dir_real(
+        Center: &crate::ffi::gp_Pnt,
+        Norm: &crate::ffi::gp_Dir,
+        Radius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCircle_ctor_pnt_dir_real(Center, Norm, Radius)
+    }
+
+    /// Make a Circle from Geom <TheCirc> with its center
+    /// <Center> and the normal of its plane defined by the
+    /// two points <Center> and <PtAxis> and its radius <Radius>.
+    pub fn new_pnt2_real(
+        Center: &crate::ffi::gp_Pnt,
+        PtAxis: &crate::ffi::gp_Pnt,
+        Radius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCircle_ctor_pnt2_real(Center, PtAxis, Radius)
+    }
+
+    /// Make a Circle from Geom <TheCirc> with its center
+    /// <Center> and its radius <Radius>.
+    pub fn new_ax1_real(Axis: &crate::ffi::gp_Ax1, Radius: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCircle_ctor_ax1_real(Axis, Radius)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeCircle_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeCircle_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeCircle_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeConicalSurface.hxx
+// ========================
+
+/// This class implements the following algorithms used
+/// to create a ConicalSurface from Geom.
+/// * Create a ConicalSurface parallel to another and passing
+/// through a point.
+/// * Create a ConicalSurface parallel to another at a distance
+/// <Dist>.
+/// * Create a ConicalSurface by 4 points.
+/// * Create a ConicalSurface by its axis and 2 points.
+/// * Create a ConicalSurface by 2 points and 2 radius.
+/// The local coordinate system of the ConicalSurface is defined
+/// with an axis placement (see class ElementarySurface).
+///
+/// The "ZAxis" is the symmetry axis of the ConicalSurface,
+/// it gives the direction of increasing parametric value V.
+/// The apex of the surface is on the negative side of this axis.
+///
+/// The parametrization range is  :
+/// U [0, 2*PI],  V ]-infinite, + infinite[
+///
+/// The "XAxis" and the "YAxis" define the placement plane of the
+/// surface (Z = 0, and parametric value V = 0)  perpendicular to
+/// the symmetry axis. The "XAxis" defines the origin of the
+/// parameter U = 0.  The trigonometric sense gives the positive
+/// orientation for the parameter U.
+///
+/// When you create a ConicalSurface the U and V directions of
+/// parametrization are such that at each point of the surface the
+/// normal is oriented towards the "outside region".
+pub use crate::ffi::GC_MakeConicalSurface as MakeConicalSurface;
+
+impl MakeConicalSurface {
+    /// A2 defines the local coordinate system of the conical surface.
+    /// Ang is the conical surface semi-angle ]0, PI/2[.
+    /// Radius is the radius of the circle Viso in the placement plane
+    /// of the conical surface defined with "XAxis" and "YAxis".
+    /// The "ZDirection" of A2 defines the direction of the surface's
+    /// axis of symmetry.
+    /// If the location point of A2 is the apex of the surface
+    /// Radius = 0 .
+    /// At the creation the parametrization of the surface is defined
+    /// such that the normal Vector (N = D1U ^ D1V) is oriented towards
+    /// the "outside region" of the surface.
+    /// Status is "NegativeRadius" if Radius < 0.0 or "BadAngle" if
+    /// Ang < Resolution from gp or Ang >= PI/ - Resolution
+    pub fn new_ax2_real2(A2: &crate::ffi::gp_Ax2, Ang: f64, Radius: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeConicalSurface_ctor_ax2_real2(A2, Ang, Radius)
+    }
+
+    /// Creates a ConicalSurface from a non persistent Cone from package gp.
+    pub fn new_cone(C: &crate::ffi::gp_Cone) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeConicalSurface_ctor_cone(C)
+    }
+
+    /// Make a ConicalSurface from Geom <TheCone> passing through 3
+    /// Pnt <P1>,<P2>,<P3>.
+    /// Its axis is <P1P2> and the radius of its base is
+    /// the distance between <P3> and <P1P2>.
+    /// The distance between <P4> and <P1P2> is the radius of
+    /// the section passing through <P4>.
+    /// An error iss raised if <P1>,<P2>,<P3>,<P4> are
+    /// colinear or if <P3P4> is perpendicular to <P1P2> or
+    /// <P3P4> is colinear to <P1P2>.
+    pub fn new_pnt4(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        P3: &crate::ffi::gp_Pnt,
+        P4: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeConicalSurface_ctor_pnt4(P1, P2, P3, P4)
+    }
+
+    /// Make a ConicalSurface with two points and two radius.
+    /// The axis of the solution is the line passing through
+    /// <P1> and <P2>.
+    /// <R1> is the radius of the section passing through <P1>
+    /// and <R2> the radius of the section passing through <P2>.
+    pub fn new_pnt2_real2(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        R1: f64,
+        R2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeConicalSurface_ctor_pnt2_real2(P1, P2, R1, R2)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeConicalSurface_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeConicalSurface_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeConicalSurface_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeCylindricalSurface.hxx
+// ========================
+
+/// This class implements the following algorithms used
+/// to create a CylindricalSurface from Geom.
+/// * Create a CylindricalSurface parallel to another and
+/// passing through a point.
+/// * Create a CylindricalSurface parallel to another at a
+/// distance
+/// <Dist>.
+/// * Create a CylindricalSurface passing through 3 points.
+/// * Create a CylindricalSurface by its axis and radius.
+/// * Create a cylindricalSurface by its circular base.
+/// The local coordinate system of the CylindricalSurface is defined
+/// with an axis placement (see class ElementarySurface).
+///
+/// The "ZAxis" is the symmetry axis of the CylindricalSurface,
+/// it gives the direction of increasing parametric value V.
+///
+/// The parametrization range is :
+/// U [0, 2*PI],  V ]- infinite, + infinite[
+///
+/// The "XAxis" and the "YAxis" define the placement plane of the
+/// surface (Z = 0, and parametric value V = 0)  perpendicular to
+/// the symmetry axis. The "XAxis" defines the origin of the
+/// parameter U = 0.  The trigonometric sense gives the positive
+/// orientation for the parameter U.
+pub use crate::ffi::GC_MakeCylindricalSurface as MakeCylindricalSurface;
+
+impl MakeCylindricalSurface {
+    /// A2 defines the local coordinate system of the cylindrical surface.
+    /// The "ZDirection" of A2 defines the direction of the surface's
+    /// axis of symmetry.
+    /// At the creation the parametrization of the surface is defined
+    /// such that the normal Vector (N = D1U ^ D1V) is oriented towards
+    /// the "outside region" of the surface.
+    /// Warnings :
+    /// It is not forbidden to create a cylindrical surface with
+    /// Radius = 0.0
+    /// Status is "NegativeRadius" if Radius < 0.0
+    pub fn new_ax2_real(A2: &crate::ffi::gp_Ax2, Radius: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCylindricalSurface_ctor_ax2_real(A2, Radius)
+    }
+
+    /// Creates a CylindricalSurface from a non persistent Cylinder
+    /// from package gp.
+    pub fn new_cylinder(C: &crate::ffi::gp_Cylinder) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCylindricalSurface_ctor_cylinder(C)
+    }
+
+    /// Make a CylindricalSurface from Geom <TheCylinder>
+    /// parallel to another
+    /// CylindricalSurface <Cylinder> and passing through a
+    /// Pnt <Point>.
+    pub fn new_cylinder_pnt(
+        Cyl: &crate::ffi::gp_Cylinder,
+        Point: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCylindricalSurface_ctor_cylinder_pnt(Cyl, Point)
+    }
+
+    /// Make a CylindricalSurface from Geom <TheCylinder>
+    /// parallel to another
+    /// CylindricalSurface <Cylinder> at the distance <Dist>
+    /// which can be greater or lower than zero.
+    /// The radius of the result is the absolute value of the
+    /// radius of <Cyl> plus <Dist>
+    pub fn new_cylinder_real(Cyl: &crate::ffi::gp_Cylinder, Dist: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCylindricalSurface_ctor_cylinder_real(Cyl, Dist)
+    }
+
+    /// Make a CylindricalSurface from Geom <TheCylinder>
+    /// passing through 3 Pnt <P1>,<P2>,<P3>.
+    /// Its axis is <P1P2> and its radius is the distance
+    /// between <P3> and <P1P2>
+    pub fn new_pnt3(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        P3: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCylindricalSurface_ctor_pnt3(P1, P2, P3)
+    }
+
+    /// Make a CylindricalSurface by its axis <Axis> and radius
+    /// <Radius>.
+    pub fn new_ax1_real(Axis: &crate::ffi::gp_Ax1, Radius: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCylindricalSurface_ctor_ax1_real(Axis, Radius)
+    }
+
+    /// Make a CylindricalSurface by its circular base.
+    pub fn new_circ(Circ: &crate::ffi::gp_Circ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeCylindricalSurface_ctor_circ(Circ)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeCylindricalSurface_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeCylindricalSurface_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeCylindricalSurface_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeEllipse.hxx
+// ========================
+
+/// This class implements construction algorithms for an ellipse in
+/// 3D space. The result is a Geom_Ellipse ellipse.
+/// A MakeEllipse object provides a framework for:
+/// -   defining the construction of the ellipse,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the Value
+/// function returns the constructed ellipse.
+pub use crate::ffi::GC_MakeEllipse as MakeEllipse;
+
+impl MakeEllipse {
+    /// Creates an ellipse from a non persistent ellipse E from package gp by its conversion.
+    pub fn new_elips(E: &crate::ffi::gp_Elips) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeEllipse_ctor_elips(E)
+    }
+
+    /// Constructs an ellipse with major and minor radii MajorRadius and
+    /// MinorRadius, and located in the plane defined by
+    /// the "X Axis" and "Y Axis" of the coordinate system A2, where:
+    /// -   its center is the origin of A2, and
+    /// -   its major axis is the "X Axis" of A2;
+    /// Warnings :
+    /// The MakeEllipse class does not prevent the
+    /// construction of an ellipse where MajorRadius is equal to MinorRadius.
+    /// If an error occurs (that is, when IsDone returns
+    /// false), the Status function returns:
+    /// -   gce_InvertRadius if MajorRadius is less than MinorRadius;
+    /// -   gce_NegativeRadius if MinorRadius is less than 0.0;
+    /// -   gce_NullAxis if the points S1 and Center are coincident; or
+    /// -   gce_InvertAxis if:
+    /// -   the major radius computed with Center and S1
+    /// is less than the minor radius computed with Center, S1 and S2, or
+    /// -   Center, S1 and S2 are collinear.
+    pub fn new_ax2_real2(
+        A2: &crate::ffi::gp_Ax2,
+        MajorRadius: f64,
+        MinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeEllipse_ctor_ax2_real2(A2, MajorRadius, MinorRadius)
+    }
+
+    /// Constructs an ellipse centered on the point Center, where
+    /// -   the plane of the ellipse is defined by Center, S1 and S2,
+    /// -   its major axis is defined by Center and S1,
+    /// -   its major radius is the distance between Center and S1, and
+    /// -   its minor radius is the distance between S2 and the major axis.
+    pub fn new_pnt3(
+        S1: &crate::ffi::gp_Pnt,
+        S2: &crate::ffi::gp_Pnt,
+        Center: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeEllipse_ctor_pnt3(S1, S2, Center)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeEllipse_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeEllipse_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeEllipse_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeHyperbola.hxx
+// ========================
+
+/// This class implements construction algorithms for a hyperbola in
+/// 3D space. The result is a Geom_Hyperbola hyperbola.
+/// A MakeHyperbola object provides a framework for:
+/// -   defining the construction of the hyperbola,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the Value
+/// function returns the constructed hyperbola.
+/// To define the main branch of an hyperbola.
+/// The parameterization range is ]-infinite,+infinite[
+/// It is possible to get the other branch and the two conjugate
+/// branches of the main branch.
+///
+/// ^YAxis
+/// |
+/// FirstConjugateBranch
+/// |
+/// Other            |                Main
+/// --------------------- C ------------------------------>XAxis
+/// Branch           |                Branch
+/// |
+/// SecondConjugateBranch
+/// |
+///
+/// The major radius is the distance between the Location point
+/// of the hyperbola C and the apex of the Main Branch (or the
+/// Other branch). The major axis is the XAxis.
+/// The minor radius is the distance between the Location point
+/// of the hyperbola C and the apex of the First (or Second)
+/// Conjugate branch. The minor axis is the YAxis.
+/// The major radius can be lower than the minor radius.
+pub use crate::ffi::GC_MakeHyperbola as MakeHyperbola;
+
+impl MakeHyperbola {
+    /// Creates  an Hyperbola from a non persistent hyperbola  from package gp by conversion.
+    pub fn new_hypr(H: &crate::ffi::gp_Hypr) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeHyperbola_ctor_hypr(H)
+    }
+
+    /// Constructs a hyperbola centered on the origin of the coordinate system
+    /// A2, with major and minor radii MajorRadius and MinorRadius, where:
+    /// the plane of the hyperbola is defined by the "X Axis" and "Y Axis" of A2,
+    /// -   its major axis is the "X Axis" of A2.
+    pub fn new_ax2_real2(
+        A2: &crate::ffi::gp_Ax2,
+        MajorRadius: f64,
+        MinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeHyperbola_ctor_ax2_real2(A2, MajorRadius, MinorRadius)
+    }
+
+    /// Constructs a hyperbola centered on the point Center, where
+    /// -   the plane of the hyperbola is defined by Center, S1 and S2,
+    /// -   its major axis is defined by Center and S1,
+    /// -   its major radius is the distance between Center and S1, and
+    /// -   its minor radius is the distance between S2 and the major axis;
+    pub fn new_pnt3(
+        S1: &crate::ffi::gp_Pnt,
+        S2: &crate::ffi::gp_Pnt,
+        Center: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeHyperbola_ctor_pnt3(S1, S2, Center)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeHyperbola_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeHyperbola_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeHyperbola_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeLine.hxx
+// ========================
+
+/// This class implements the following algorithms used
+/// to create a Line from Geom.
+/// * Create a Line parallel to another and passing
+/// through a point.
+/// * Create a Line passing through 2 points.
+/// A MakeLine object provides a framework for:
+/// -   defining the construction of the line,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the Value
+/// function returns the constructed line.
+pub use crate::ffi::GC_MakeLine as MakeLine;
+
+impl MakeLine {
+    /// Creates a line located in 3D space with the axis placement A1.
+    /// The Location of A1 is the origin of the line.
+    pub fn new_ax1(A1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeLine_ctor_ax1(A1)
+    }
+
+    /// Creates a line from a non persistent line from package gp.
+    pub fn new_lin(L: &crate::ffi::gp_Lin) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeLine_ctor_lin(L)
+    }
+
+    /// P is the origin and V is the direction of the line.
+    pub fn new_pnt_dir(P: &crate::ffi::gp_Pnt, V: &crate::ffi::gp_Dir) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeLine_ctor_pnt_dir(P, V)
+    }
+
+    /// Make a Line from Geom <TheLin> parallel to another
+    /// Lin <Lin> and passing through a Pnt <Point>.
+    pub fn new_lin_pnt(
+        Lin: &crate::ffi::gp_Lin,
+        Point: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeLine_ctor_lin_pnt(Lin, Point)
+    }
+
+    /// Make a Line from Geom <TheLin> passing through 2
+    /// Pnt <P1>,<P2>.
+    /// It returns false if <p1> and <P2> are confused.
+    /// Warning
+    /// If the points P1 and P2 are coincident (that is, when
+    /// IsDone returns false), the Status function returns gce_ConfusedPoints.
+    pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeLine_ctor_pnt2(P1, P2)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeLine_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeLine_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeLine_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeMirror.hxx
+// ========================
+
+/// This class implements elementary construction algorithms for a
+/// symmetrical transformation in 3D space about a point,
+/// axis or plane. The result is a Geom_Transformation transformation.
+/// A MakeMirror object provides a framework for:
+/// -   defining the construction of the transformation,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
+pub use crate::ffi::GC_MakeMirror as MakeMirror;
+
+impl MakeMirror {
+    pub fn new_pnt(Point: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeMirror_ctor_pnt(Point)
+    }
+
+    pub fn new_ax1(Axis: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeMirror_ctor_ax1(Axis)
+    }
+
+    pub fn new_lin(Line: &crate::ffi::gp_Lin) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeMirror_ctor_lin(Line)
+    }
+
+    /// Make a symmetry transformation af axis defined by
+    /// <Point> and <Direc>.
+    pub fn new_pnt_dir(
+        Point: &crate::ffi::gp_Pnt,
+        Direc: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeMirror_ctor_pnt_dir(Point, Direc)
+    }
+
+    /// Make a symmetry transformation of plane <Plane>.
+    pub fn new_pln(Plane: &crate::ffi::gp_Pln) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeMirror_ctor_pln(Plane)
+    }
+
+    /// Make a symmetry transformation of plane <Plane>.
+    pub fn new_ax2(Plane: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeMirror_ctor_ax2(Plane)
+    }
+}
+
+// ========================
+// From GC_MakePlane.hxx
+// ========================
+
+/// This class implements the following algorithms used
+/// to create a Plane from gp.
+/// * Create a Plane parallel to another and passing
+/// through a point.
+/// * Create a Plane passing through 3 points.
+/// * Create a Plane by its normal
+/// A MakePlane object provides a framework for:
+/// -   defining the construction of the plane,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the Value
+/// function returns the constructed plane.
+pub use crate::ffi::GC_MakePlane as MakePlane;
+
+impl MakePlane {
+    /// Creates a plane from a non persistent plane from package gp.
+    pub fn new_pln(Pl: &crate::ffi::gp_Pln) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakePlane_ctor_pln(Pl)
+    }
+
+    /// P is the "Location" point or origin of the plane.
+    /// V is the direction normal to the plane.
+    pub fn new_pnt_dir(P: &crate::ffi::gp_Pnt, V: &crate::ffi::gp_Dir) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakePlane_ctor_pnt_dir(P, V)
+    }
+
+    /// Creates a plane from its cartesian equation :
+    /// Ax + By + Cz + D = 0.0
+    /// Status is "BadEquation" if Sqrt (A*A + B*B + C*C)
+    /// <= Resolution from gp
+    pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakePlane_ctor_real4(A, B, C, D)
+    }
+
+    /// Make a Plane from Geom <ThePlane> parallel to another
+    /// Pln <Pln> and passing through a Pnt <Point>.
+    pub fn new_pln_pnt(
+        Pln: &crate::ffi::gp_Pln,
+        Point: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakePlane_ctor_pln_pnt(Pln, Point)
+    }
+
+    /// Make a Plane from Geom <ThePlane> parallel to another
+    /// Pln <Pln> at the distance <Dist> which can be greater
+    /// or lower than zero.
+    /// In the first case the result is at the distance
+    /// <Dist> to the plane <Pln> in the direction of the
+    /// normal to <Pln>.
+    /// Otherwise it is in the opposite direction.
+    pub fn new_pln_real(Pln: &crate::ffi::gp_Pln, Dist: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakePlane_ctor_pln_real(Pln, Dist)
+    }
+
+    /// Make a Plane from Geom <ThePlane> passing through 3
+    /// Pnt <P1>,<P2>,<P3>.
+    /// It returns false if <P1> <P2> <P3> are confused.
+    pub fn new_pnt3(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        P3: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakePlane_ctor_pnt3(P1, P2, P3)
+    }
+
+    /// Make a Plane  passing through the location of <Axis>and
+    /// normal to the Direction of <Axis>.
+    pub fn new_ax1(Axis: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakePlane_ctor_ax1(Axis)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakePlane_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakePlane_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakePlane_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeRotation.hxx
+// ========================
+
+/// This class implements elementary construction algorithms for a
+/// rotation in 3D space. The result is a
+/// Geom_Transformation transformation.
+/// A MakeRotation object provides a framework for:
+/// -   defining the construction of the transformation,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
+pub use crate::ffi::GC_MakeRotation as MakeRotation;
+
+impl MakeRotation {
+    /// Constructs a rotation through angle Angle about the axis defined by the line Line.
+    pub fn new_lin_real(Line: &crate::ffi::gp_Lin, Angle: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeRotation_ctor_lin_real(Line, Angle)
+    }
+
+    /// Constructs a rotation through angle Angle about the axis defined by the axis Axis.
+    pub fn new_ax1_real(Axis: &crate::ffi::gp_Ax1, Angle: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeRotation_ctor_ax1_real(Axis, Angle)
+    }
+
+    /// Constructs a rotation through angle Angle about the axis
+    /// defined by the point Point and the unit vector Direc.
+    pub fn new_pnt_dir_real(
+        Point: &crate::ffi::gp_Pnt,
+        Direc: &crate::ffi::gp_Dir,
+        Angle: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeRotation_ctor_pnt_dir_real(Point, Direc, Angle)
+    }
+}
+
+// ========================
+// From GC_MakeScale.hxx
+// ========================
+
+/// This class implements an elementary construction algorithm for
+/// a scaling transformation in 3D space. The result is a
+/// Geom_Transformation transformation (a scaling transformation with
+/// the center point <Point> and the scaling value <Scale>).
+/// A MakeScale object provides a framework for:
+/// -   defining the construction of the transformation,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
+pub use crate::ffi::GC_MakeScale as MakeScale;
+
+impl MakeScale {
+    /// Constructs a scaling transformation with
+    /// -   Point as the center of the transformation, and
+    /// -   Scale as the scale factor.
+    pub fn new_pnt_real(Point: &crate::ffi::gp_Pnt, Scale: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeScale_ctor_pnt_real(Point, Scale)
+    }
+}
+
+// ========================
 // From GC_MakeSegment.hxx
 // ========================
 
@@ -173,6 +1118,177 @@ impl MakeSegment {
     /// Inherited from GC_Root: IsDone()
     pub fn is_done(&self) -> bool {
         crate::ffi::GC_MakeSegment_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeTranslation.hxx
+// ========================
+
+/// This class implements elementary construction algorithms for a
+/// translation in 3D space. The result is a
+/// Geom_Transformation transformation.
+/// A MakeTranslation object provides a framework for:
+/// -   defining the construction of the transformation,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
+pub use crate::ffi::GC_MakeTranslation as MakeTranslation;
+
+impl MakeTranslation {
+    /// Constructs a translation along the vector " Vect "
+    pub fn new_vec(Vect: &crate::ffi::gp_Vec) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeTranslation_ctor_vec(Vect)
+    }
+
+    /// Constructs a translation along the vector (Point1,Point2)
+    /// defined from the point Point1 to the point Point2.
+    pub fn new_pnt2(
+        Point1: &crate::ffi::gp_Pnt,
+        Point2: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeTranslation_ctor_pnt2(Point1, Point2)
+    }
+}
+
+// ========================
+// From GC_MakeTrimmedCone.hxx
+// ========================
+
+/// Implements construction algorithms for a trimmed
+/// cone limited by two planes orthogonal to its axis. The
+/// result is a Geom_RectangularTrimmedSurface surface.
+/// A MakeTrimmedCone provides a framework for:
+/// -   defining the construction of the trimmed cone,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the Value
+/// function returns the constructed trimmed cone.
+pub use crate::ffi::GC_MakeTrimmedCone as MakeTrimmedCone;
+
+impl MakeTrimmedCone {
+    /// Make a RectangularTrimmedSurface <TheCone> from Geom
+    /// It is trimmed by P3 and P4.
+    /// Its axis is <P1P2> and the radius of its base is
+    /// the distance between <P3> and <P1P2>.
+    /// The distance between <P4> and <P1P2> is the radius of
+    /// the section passing through <P4>.
+    /// An error iss raised if <P1>,<P2>,<P3>,<P4> are
+    /// colinear or if <P3P4> is perpendicular to <P1P2> or
+    /// <P3P4> is colinear to <P1P2>.
+    pub fn new_pnt4(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        P3: &crate::ffi::gp_Pnt,
+        P4: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeTrimmedCone_ctor_pnt4(P1, P2, P3, P4)
+    }
+
+    /// Make a RectangularTrimmedSurface from Geom <TheCone>
+    /// from a cone and trimmed by two points P1 and P2 and
+    /// the two radius <R1> and <R2> of the sections passing
+    /// through <P1> an <P2>.
+    /// Warning
+    /// If an error occurs (that is, when IsDone returns
+    /// false), the Status function returns:
+    /// -   gce_ConfusedPoints if points P1 and P2, or P3 and P4, are coincident;
+    /// -   gce_NullAngle if:
+    /// -   the lines joining P1 to P2 and P3 to P4 are parallel, or
+    /// -   R1 and R2 are equal (i.e. their difference is less than gp::Resolution());
+    /// -   gce_NullRadius if:
+    /// -   the line joining P1 to P2 is perpendicular to the line joining P3 to P4, or
+    /// -   the points P1, P2, P3 and P4 are collinear;
+    /// -   gce_NegativeRadius if R1 or R2 is negative; or
+    /// -   gce_NullAxis if points P1 and P2 are coincident (2nd syntax only).
+    pub fn new_pnt2_real2(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        R1: f64,
+        R2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeTrimmedCone_ctor_pnt2_real2(P1, P2, R1, R2)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeTrimmedCone_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeTrimmedCone_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeTrimmedCone_inherited_IsDone(self)
+    }
+}
+
+// ========================
+// From GC_MakeTrimmedCylinder.hxx
+// ========================
+
+/// Implements construction algorithms for a trimmed
+/// cylinder limited by two planes orthogonal to its axis.
+/// The result is a Geom_RectangularTrimmedSurface surface.
+/// A MakeTrimmedCylinder provides a framework for:
+/// -   defining the construction of the trimmed cylinder,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the Value
+/// function returns the constructed trimmed cylinder.
+pub use crate::ffi::GC_MakeTrimmedCylinder as MakeTrimmedCylinder;
+
+impl MakeTrimmedCylinder {
+    /// Make a cylindricalSurface <Cyl> from Geom
+    /// Its axis is <P1P2> and its radius is the distance
+    /// between <P3> and <P1P2>.
+    /// The height is the distance between P1 and P2.
+    pub fn new_pnt3(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        P3: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeTrimmedCylinder_ctor_pnt3(P1, P2, P3)
+    }
+
+    /// Make a cylindricalSurface <Cyl> from gp by its base <Circ>.
+    /// Its axis is the normal to the plane defined bi <Circ>.
+    /// <Height> can be greater than zero or lower than zero.
+    /// In the first case the V parametric direction of the
+    /// result has the same orientation as the normal to <Circ>.
+    /// In the other case it has the opposite orientation.
+    pub fn new_circ_real(Circ: &crate::ffi::gp_Circ, Height: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeTrimmedCylinder_ctor_circ_real(Circ, Height)
+    }
+
+    /// Make a cylindricalSurface <Cyl> from gp by its
+    /// axis <A1> and its radius <Radius>.
+    /// It returns NullObject if <Radius> is lower than zero.
+    /// <Height> can be greater than zero or lower than zero.
+    /// In the first case the V parametric direction of the
+    /// result has the same orientation as <A1>.
+    /// In the other case it has the opposite orientation.
+    pub fn new_ax1_real2(
+        A1: &crate::ffi::gp_Ax1,
+        Radius: f64,
+        Height: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_MakeTrimmedCylinder_ctor_ax1_real2(A1, Radius, Height)
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        crate::ffi::GC_MakeTrimmedCylinder_as_GC_Root(self)
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        crate::ffi::GC_MakeTrimmedCylinder_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeTrimmedCylinder_inherited_IsDone(self)
     }
 }
 

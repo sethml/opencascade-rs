@@ -6,6 +6,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::dummy;
+
 /// Defined TopTools format version
 /// C++ enum: `TopTools_FormatVersion`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -311,6 +313,121 @@ impl SequenceOfShapeIterator {
 }
 
 // ========================
+// From TopTools_HArray1OfListOfShape.hxx
+// ========================
+
+pub use crate::ffi::TopTools_HArray1OfListOfShape as HArray1OfListOfShape;
+
+impl HArray1OfListOfShape {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_HArray1OfListOfShape_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_HArray1OfListOfShape_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_array1oflistofshape(
+        theOther: &crate::ffi::TopTools_Array1OfListOfShape,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_HArray1OfListOfShape_ctor_array1oflistofshape(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopTools_HArray1OfListOfShape_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHArray1OfListOfShape> {
+        crate::ffi::TopTools_HArray1OfListOfShape_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTopToolsHArray1OfListOfShape;
+
+impl HandleTopToolsHArray1OfListOfShape {
+    /// Dereference this Handle to access the underlying TopTools_HArray1OfListOfShape
+    pub fn get(&self) -> &crate::ffi::TopTools_HArray1OfListOfShape {
+        crate::ffi::HandleTopToolsHArray1OfListOfShape_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopTools_HArray1OfListOfShape
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopTools_HArray1OfListOfShape> {
+        crate::ffi::HandleTopToolsHArray1OfListOfShape_get_mut(self)
+    }
+}
+
+// ========================
+// From TopTools_HArray1OfShape.hxx
+// ========================
+
+pub use crate::ffi::TopTools_HArray1OfShape as HArray1OfShape;
+
+impl HArray1OfShape {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_HArray1OfShape_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_HArray1OfShape_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_shape(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_HArray1OfShape_ctor_int2_shape(theLower, theUpper, theValue)
+    }
+
+    pub fn new_shape_int2_bool(
+        theBegin: &crate::ffi::TopoDS_Shape,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_HArray1OfShape_ctor_shape_int2_bool(theBegin, theLower, theUpper, arg3)
+    }
+
+    pub fn new_array1ofshape(
+        theOther: &crate::ffi::TopTools_Array1OfShape,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_HArray1OfShape_ctor_array1ofshape(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TopTools_HArray1OfShape_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHArray1OfShape> {
+        crate::ffi::TopTools_HArray1OfShape_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTopToolsHArray1OfShape;
+
+impl HandleTopToolsHArray1OfShape {
+    /// Dereference this Handle to access the underlying TopTools_HArray1OfShape
+    pub fn get(&self) -> &crate::ffi::TopTools_HArray1OfShape {
+        crate::ffi::HandleTopToolsHArray1OfShape_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopTools_HArray1OfShape
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopTools_HArray1OfShape> {
+        crate::ffi::HandleTopToolsHArray1OfShape_get_mut(self)
+    }
+}
+
+// ========================
 // From TopTools_HArray2OfShape.hxx
 // ========================
 
@@ -430,13 +547,94 @@ impl HandleTopToolsHSequenceOfShape {
 }
 
 // ========================
+// From TopTools_LocationSet.hxx
+// ========================
+
+/// The class LocationSet stores a set of location in
+/// a relocatable state.
+///
+/// It can be created from Locations.
+///
+/// It can create Locations.
+///
+/// It can be write and read from a stream.
+pub use crate::ffi::TopTools_LocationSet as LocationSet;
+
+impl LocationSet {
+    /// Returns an empty set of locations.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_LocationSet_ctor()
+    }
+}
+
+// ========================
+// From TopTools_MutexForShapeProvider.hxx
+// ========================
+
+/// Class TopTools_MutexForShapeProvider
+/// This class is used to create and store mutexes associated with shapes.
+pub use crate::ffi::TopTools_MutexForShapeProvider as MutexForShapeProvider;
+
+impl MutexForShapeProvider {
+    /// Constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_MutexForShapeProvider_ctor()
+    }
+
+    /// Creates and associates mutexes with each sub-shape of type theType in theShape.
+    pub fn create_mutexes_for_sub_shapes(
+        self: std::pin::Pin<&mut Self>,
+        theShape: &crate::ffi::TopoDS_Shape,
+        theType: i32,
+    ) {
+        crate::ffi::TopTools_MutexForShapeProvider_create_mutexes_for_sub_shapes(
+            self, theShape, theType,
+        )
+    }
+}
+
+// ========================
+// From TopTools_ShapeSet.hxx
+// ========================
+
+/// A ShapeSets    contains  a  Shape    and all   its
+/// sub-shapes and locations.  It  can be dump,  write
+/// and read.
+///
+/// Methods to handle the geometry can be redefined.
+pub use crate::ffi::TopTools_ShapeSet as ShapeSet;
+
+impl ShapeSet {
+    /// Builds an empty ShapeSet.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_ShapeSet_ctor()
+    }
+
+    /// This method is   called after  each  new  completed
+    /// shape. <T> is the  type. <S> is  the shape. In this
+    /// class it does nothing, but it gives the opportunity
+    /// in derived  classes to perform  extra  treatment on
+    /// shapes.
+    pub fn check(
+        self: std::pin::Pin<&mut Self>,
+        T: i32,
+        S: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
+    ) {
+        crate::ffi::TopTools_ShapeSet_check(self, T, S)
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
     DataMapOfShapeShapeIterator, IndexedDataMapOfShapeListOfShapeIterator,
     IndexedMapOfShapeIterator, ListOfShapeIterator, MapOfShapeIterator, SequenceOfShapeIterator,
+    TopTools_Array1OfListOfShape as Array1OfListOfShape, TopTools_Array1OfShape as Array1OfShape,
     TopTools_Array2OfShape as Array2OfShape,
+    TopTools_DataMapOfIntegerListOfShape as DataMapOfIntegerListOfShape,
+    TopTools_DataMapOfIntegerShape as DataMapOfIntegerShape,
     TopTools_DataMapOfShapeListOfShape as DataMapOfShapeListOfShape,
     TopTools_DataMapOfShapeReal as DataMapOfShapeReal,
 };

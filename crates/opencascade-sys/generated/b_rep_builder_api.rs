@@ -6,6 +6,113 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{plane, plane_2, precision, precision_2};
+
+/// Indicates the outcome of the
+/// construction of an edge, i.e. whether it has been successful or
+/// not, as explained below:
+/// -      BRepBuilderAPI_EdgeDone No    error occurred; The edge is
+/// correctly built.
+/// -      BRepBuilderAPI_PointProjectionFailed No parameters were given but
+/// the projection of the 3D points on the curve failed. This
+/// happens when the point distance to the curve is greater than
+/// the precision value.
+/// -      BRepBuilderAPI_ParameterOutOfRange
+/// The given parameters are not in the parametric range
+/// C->FirstParameter(), C->LastParameter()
+/// -      BRepBuilderAPI_DifferentPointsOnClosedCurve
+/// The two vertices or points are the extremities of a closed
+/// curve but have different locations.
+/// -      BRepBuilderAPI_PointWithInfiniteParameter
+/// A finite coordinate point was associated with an infinite
+/// parameter (see the Precision package for a definition of    infinite values).
+/// -      BRepBuilderAPI_DifferentsPointAndParameter
+/// The distance between the 3D point and the point evaluated
+/// on the curve with the parameter is greater than the precision.
+/// -      BRepBuilderAPI_LineThroughIdenticPoints
+/// Two identical points were given to define a line (construction
+/// of an edge without curve); gp::Resolution is used for the    confusion test.
+/// C++ enum: `BRepBuilderAPI_EdgeError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum EdgeError {
+    Edgedone = 0,
+    Pointprojectionfailed = 1,
+    Parameteroutofrange = 2,
+    Differentpointsonclosedcurve = 3,
+    Pointwithinfiniteparameter = 4,
+    Differentspointandparameter = 5,
+    Linethroughidenticpoints = 6,
+}
+
+impl From<EdgeError> for i32 {
+    fn from(value: EdgeError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for EdgeError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(EdgeError::Edgedone),
+            1 => Ok(EdgeError::Pointprojectionfailed),
+            2 => Ok(EdgeError::Parameteroutofrange),
+            3 => Ok(EdgeError::Differentpointsonclosedcurve),
+            4 => Ok(EdgeError::Pointwithinfiniteparameter),
+            5 => Ok(EdgeError::Differentspointandparameter),
+            6 => Ok(EdgeError::Linethroughidenticpoints),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Indicates the outcome of the
+/// construction of a face, i.e. whether it has been successful or
+/// not, as explained below:
+/// -      BRepBuilderAPI_FaceDone No error occurred. The face is
+/// correctly built.
+/// -      BRepBuilderAPI_NoFace No initialization of the
+/// algorithm; only an empty constructor was used.
+/// -      BRepBuilderAPI_NotPlanar
+/// No surface was given and the wire was not planar.
+/// -      BRepBuilderAPI_CurveProjectionFailed
+/// Not used so far.
+/// -      BRepBuilderAPI_ParametersOutOfRange
+/// The parameters given to limit the surface are out of its    bounds.
+/// C++ enum: `BRepBuilderAPI_FaceError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum FaceError {
+    Facedone = 0,
+    Noface = 1,
+    Notplanar = 2,
+    Curveprojectionfailed = 3,
+    Parametersoutofrange = 4,
+}
+
+impl From<FaceError> for i32 {
+    fn from(value: FaceError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for FaceError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(FaceError::Facedone),
+            1 => Ok(FaceError::Noface),
+            2 => Ok(FaceError::Notplanar),
+            3 => Ok(FaceError::Curveprojectionfailed),
+            4 => Ok(FaceError::Parametersoutofrange),
+            _ => Err(value),
+        }
+    }
+}
+
 /// Errors that can occur at (shell)pipe construction.
 /// C++ enum: `BRepBuilderAPI_PipeError`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -32,6 +139,85 @@ impl TryFrom<i32> for PipeError {
             1 => Ok(PipeError::Pipenotdone),
             2 => Ok(PipeError::Planenotintersectguide),
             3 => Ok(PipeError::Impossiblecontact),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Lists the possible types of modification to a shape
+/// following a topological operation: Preserved, Deleted,
+/// Trimmed, Merged or BoundaryModified.
+/// This enumeration enables you to assign a "state" to the
+/// different shapes that are on the list of operands for
+/// each API function. The MakeShape class then uses this
+/// to determine what has happened to the shapes which
+/// constitute the list of operands.
+/// C++ enum: `BRepBuilderAPI_ShapeModification`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ShapeModification {
+    Preserved = 0,
+    Deleted = 1,
+    Trimmed = 2,
+    Merged = 3,
+    Boundarymodified = 4,
+}
+
+impl From<ShapeModification> for i32 {
+    fn from(value: ShapeModification) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ShapeModification {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ShapeModification::Preserved),
+            1 => Ok(ShapeModification::Deleted),
+            2 => Ok(ShapeModification::Trimmed),
+            3 => Ok(ShapeModification::Merged),
+            4 => Ok(ShapeModification::Boundarymodified),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Indicates the outcome of the construction of a face, i.e.
+/// whether it is successful or not, as explained below:
+/// -   BRepBuilderAPI_ShellDone No error occurred.
+/// The shell is correctly built.
+/// -   BRepBuilderAPI_EmptyShell No initialization of
+/// the algorithm: only an empty constructor was used.
+/// -   BRepBuilderAPI_DisconnectedShell not yet used
+/// -   BRepBuilderAPI_ShellParametersOutOfRange
+/// The parameters given to limit the surface are out of its bounds.
+/// C++ enum: `BRepBuilderAPI_ShellError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ShellError {
+    Shelldone = 0,
+    Emptyshell = 1,
+    Disconnectedshell = 2,
+    Shellparametersoutofrange = 3,
+}
+
+impl From<ShellError> for i32 {
+    fn from(value: ShellError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ShellError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ShellError::Shelldone),
+            1 => Ok(ShellError::Emptyshell),
+            2 => Ok(ShellError::Disconnectedshell),
+            3 => Ok(ShellError::Shellparametersoutofrange),
             _ => Err(value),
         }
     }
@@ -106,108 +292,33 @@ impl TryFrom<i32> for WireError {
     }
 }
 
-/// Indicates the outcome of the
-/// construction of a face, i.e. whether it has been successful or
-/// not, as explained below:
-/// -      BRepBuilderAPI_FaceDone No error occurred. The face is
-/// correctly built.
-/// -      BRepBuilderAPI_NoFace No initialization of the
-/// algorithm; only an empty constructor was used.
-/// -      BRepBuilderAPI_NotPlanar
-/// No surface was given and the wire was not planar.
-/// -      BRepBuilderAPI_CurveProjectionFailed
-/// Not used so far.
-/// -      BRepBuilderAPI_ParametersOutOfRange
-/// The parameters given to limit the surface are out of its    bounds.
-/// C++ enum: `BRepBuilderAPI_FaceError`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum FaceError {
-    Facedone = 0,
-    Noface = 1,
-    Notplanar = 2,
-    Curveprojectionfailed = 3,
-    Parametersoutofrange = 4,
-}
+// ========================
+// From BRepBuilderAPI_BndBoxTreeSelector.hxx
+// ========================
 
-impl From<FaceError> for i32 {
-    fn from(value: FaceError) -> Self {
-        value as i32
+/// Class BRepBuilderAPI_BndBoxTreeSelector
+/// derived from UBTree::Selector
+/// This class is used to select overlapping boxes, stored in
+/// NCollection::UBTree; contains methods to maintain the selection
+/// condition and to retrieve selected objects after search.
+pub use crate::ffi::BRepBuilderAPI_BndBoxTreeSelector as BndBoxTreeSelector;
+
+impl BndBoxTreeSelector {
+    /// Constructor; calls the base class constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_ctor()
     }
 }
 
-impl TryFrom<i32> for FaceError {
-    type Error = i32;
+// ========================
+// From BRepBuilderAPI_Collect.hxx
+// ========================
 
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(FaceError::Facedone),
-            1 => Ok(FaceError::Noface),
-            2 => Ok(FaceError::Notplanar),
-            3 => Ok(FaceError::Curveprojectionfailed),
-            4 => Ok(FaceError::Parametersoutofrange),
-            _ => Err(value),
-        }
-    }
-}
+pub use crate::ffi::BRepBuilderAPI_Collect as Collect;
 
-/// Indicates the outcome of the
-/// construction of an edge, i.e. whether it has been successful or
-/// not, as explained below:
-/// -      BRepBuilderAPI_EdgeDone No    error occurred; The edge is
-/// correctly built.
-/// -      BRepBuilderAPI_PointProjectionFailed No parameters were given but
-/// the projection of the 3D points on the curve failed. This
-/// happens when the point distance to the curve is greater than
-/// the precision value.
-/// -      BRepBuilderAPI_ParameterOutOfRange
-/// The given parameters are not in the parametric range
-/// C->FirstParameter(), C->LastParameter()
-/// -      BRepBuilderAPI_DifferentPointsOnClosedCurve
-/// The two vertices or points are the extremities of a closed
-/// curve but have different locations.
-/// -      BRepBuilderAPI_PointWithInfiniteParameter
-/// A finite coordinate point was associated with an infinite
-/// parameter (see the Precision package for a definition of    infinite values).
-/// -      BRepBuilderAPI_DifferentsPointAndParameter
-/// The distance between the 3D point and the point evaluated
-/// on the curve with the parameter is greater than the precision.
-/// -      BRepBuilderAPI_LineThroughIdenticPoints
-/// Two identical points were given to define a line (construction
-/// of an edge without curve); gp::Resolution is used for the    confusion test.
-/// C++ enum: `BRepBuilderAPI_EdgeError`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum EdgeError {
-    Edgedone = 0,
-    Pointprojectionfailed = 1,
-    Parameteroutofrange = 2,
-    Differentpointsonclosedcurve = 3,
-    Pointwithinfiniteparameter = 4,
-    Differentspointandparameter = 5,
-    Linethroughidenticpoints = 6,
-}
-
-impl From<EdgeError> for i32 {
-    fn from(value: EdgeError) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for EdgeError {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(EdgeError::Edgedone),
-            1 => Ok(EdgeError::Pointprojectionfailed),
-            2 => Ok(EdgeError::Parameteroutofrange),
-            3 => Ok(EdgeError::Differentpointsonclosedcurve),
-            4 => Ok(EdgeError::Pointwithinfiniteparameter),
-            5 => Ok(EdgeError::Differentspointandparameter),
-            6 => Ok(EdgeError::Linethroughidenticpoints),
-            _ => Err(value),
-        }
+impl Collect {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_Collect_ctor()
     }
 }
 
@@ -225,6 +336,402 @@ impl TryFrom<i32> for EdgeError {
 ///
 /// * Logging (not implemented).
 pub use crate::ffi::BRepBuilderAPI_Command as Command;
+
+// ========================
+// From BRepBuilderAPI_Copy.hxx
+// ========================
+
+/// Duplication of a shape.
+/// A Copy object provides a framework for:
+/// -   defining the construction of a duplicate shape,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
+pub use crate::ffi::BRepBuilderAPI_Copy as Copy;
+
+impl Copy {
+    /// Constructs an empty copy framework. Use the function
+    /// Perform to copy shapes.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_Copy_ctor()
+    }
+
+    /// Constructs a copy framework and copies the shape S.
+    /// Use the function Shape to access the result.
+    /// If copyMesh is True, triangulation contained in original shape will be
+    /// copied along with geometry (by default, triangulation gets lost).
+    /// If copyGeom is False, only topological objects will be copied, while
+    /// geometry and triangulation will be shared with original shape.
+    /// Note: the constructed framework can be reused to copy
+    /// other shapes: just specify them with the function Perform.
+    pub fn new_shape_bool2(
+        S: &crate::ffi::TopoDS_Shape,
+        copyGeom: bool,
+        copyMesh: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_Copy_ctor_shape_bool2(S, copyGeom, copyMesh)
+    }
+
+    /// Constructs a copy framework and copies the shape S.
+    /// Use the function Shape to access the result.
+    /// If copyMesh is True, triangulation contained in original shape will be
+    /// copied along with geometry (by default, triangulation gets lost).
+    /// If copyGeom is False, only topological objects will be copied, while
+    /// geometry and triangulation will be shared with original shape.
+    /// Note: the constructed framework can be reused to copy
+    /// other shapes: just specify them with the function Perform.
+    pub fn new_shape_bool(S: &crate::ffi::TopoDS_Shape, copyGeom: bool) -> cxx::UniquePtr<Self> {
+        Self::new_shape_bool2(S, copyGeom, false)
+    }
+
+    /// Constructs a copy framework and copies the shape S.
+    /// Use the function Shape to access the result.
+    /// If copyMesh is True, triangulation contained in original shape will be
+    /// copied along with geometry (by default, triangulation gets lost).
+    /// If copyGeom is False, only topological objects will be copied, while
+    /// geometry and triangulation will be shared with original shape.
+    /// Note: the constructed framework can be reused to copy
+    /// other shapes: just specify them with the function Perform.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        Self::new_shape_bool2(S, true, false)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_command(&self) -> &Command {
+        crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_make_shape(&self) -> &MakeShape {
+        crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_ModifyShape
+    pub fn as_modify_shape(&self) -> &ModifyShape {
+        crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_ModifyShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_ModifyShape (mutable)
+    pub fn as_modify_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut ModifyShape> {
+        crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_ModifyShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_Copy_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepBuilderAPI_Copy_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepBuilderAPI_Copy_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_Copy_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_Copy_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_Copy_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_Copy_inherited_IsDeleted(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_ModifyShape: ModifiedShape()
+    pub fn modified_shape(
+        &self,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepBuilderAPI_Copy_inherited_ModifiedShape(self, S)
+    }
+}
+
+// ========================
+// From BRepBuilderAPI_FastSewing.hxx
+// ========================
+
+/// This class performs fast sewing of surfaces (faces). It supposes
+/// that all surfaces are finite and are naturally restricted by their bounds.
+/// Moreover, it supposes that stitched together surfaces have the same parameterization
+/// along common boundaries, therefore it does not perform time-consuming check for
+/// SameParameter property of edges.
+///
+/// For sewing, use this function as following:
+/// - set tolerance value (default tolerance is 1.E-06)
+/// - add all necessary surfaces (faces)
+/// - check status if adding is correctly completed.
+/// - compute -> Perform
+/// - retrieve the error status if any
+/// - retrieve the resulted shape
+pub use crate::ffi::BRepBuilderAPI_FastSewing as FastSewing;
+
+impl FastSewing {
+    /// Creates an object with tolerance of connexity
+    pub fn new_real(theTolerance: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_FastSewing_ctor_real(theTolerance)
+    }
+
+    /// Creates an object with tolerance of connexity
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_real(1.0e-06)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::BRepBuilderAPI_FastSewing_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepBuilderAPIFastSewing> {
+        crate::ffi::BRepBuilderAPI_FastSewing_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleBRepBuilderAPIFastSewing;
+
+impl HandleBRepBuilderAPIFastSewing {
+    /// Dereference this Handle to access the underlying BRepBuilderAPI_FastSewing
+    pub fn get(&self) -> &crate::ffi::BRepBuilderAPI_FastSewing {
+        crate::ffi::HandleBRepBuilderAPIFastSewing_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepBuilderAPI_FastSewing
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepBuilderAPI_FastSewing> {
+        crate::ffi::HandleBRepBuilderAPIFastSewing_get_mut(self)
+    }
+}
+
+// ========================
+// From BRepBuilderAPI_FindPlane.hxx
+// ========================
+
+/// Describes functions to find the plane in which the edges
+/// of a given shape are located.
+/// A FindPlane object provides a framework for:
+/// -   extracting the edges of a given shape,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
+pub use crate::ffi::BRepBuilderAPI_FindPlane as FindPlane;
+
+impl FindPlane {
+    /// Initializes an empty algorithm. The function Init is then used to define the shape.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_FindPlane_ctor()
+    }
+
+    /// Constructs the plane containing the edges of the shape S.
+    /// A plane is built only if all the edges are within a distance
+    /// of less than or equal to tolerance from a planar surface.
+    /// This tolerance value is equal to the larger of the following two values:
+    /// -   Tol, where the default value is negative, or
+    /// -   the largest of the tolerance values assigned to the individual edges of S.
+    /// Use the function Found to verify that a plane is built.
+    /// The resulting plane is then retrieved using the function Plane.
+    pub fn new_shape_real(S: &crate::ffi::TopoDS_Shape, Tol: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_FindPlane_ctor_shape_real(S, Tol)
+    }
+
+    /// Constructs the plane containing the edges of the shape S.
+    /// A plane is built only if all the edges are within a distance
+    /// of less than or equal to tolerance from a planar surface.
+    /// This tolerance value is equal to the larger of the following two values:
+    /// -   Tol, where the default value is negative, or
+    /// -   the largest of the tolerance values assigned to the individual edges of S.
+    /// Use the function Found to verify that a plane is built.
+    /// The resulting plane is then retrieved using the function Plane.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        Self::new_shape_real(S, -1.0)
+    }
+
+    /// Returns the plane containing the edges of the shape.
+    /// Warning
+    /// Use the function Found to verify that the plane is built. If
+    /// a plane is not found, Plane returns a null handle.
+    pub fn plane(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomPlane> {
+        crate::ffi::BRepBuilderAPI_FindPlane_plane(self)
+    }
+}
+
+// ========================
+// From BRepBuilderAPI_GTransform.hxx
+// ========================
+
+/// Geometric transformation on a shape.
+/// The transformation to be applied is defined as a gp_GTrsf
+/// transformation. It may be:
+/// -      a transformation equivalent to a gp_Trsf transformation, the
+/// most common case: you should , however, use a BRepAPI_Transform
+/// object to perform this kind of transformation; or
+/// -      an affinity, or
+/// -      more generally, any type of point transformation which may
+/// be defined by a three row, four column matrix of transformation.
+/// In the last two cases, the underlying geometry of the
+/// following shapes may change:
+/// -      a curve which supports an edge of the shape, or
+/// -      a surface which supports a face of the shape;
+/// For example, a circle may be transformed into an ellipse when
+/// applying an affinity transformation.
+/// The transformation is applied to:
+/// -      all the curves which support edges of the shape, and
+/// -      all the surfaces which support faces of the shape.
+/// A GTransform object provides a framework for:
+/// -      defining the geometric transformation to be applied,
+/// -      implementing the transformation algorithm, and
+/// -      consulting the result.
+pub use crate::ffi::BRepBuilderAPI_GTransform as GTransform;
+
+impl GTransform {
+    /// Constructs a framework for applying the geometric
+    /// transformation T to a shape. Use the function
+    /// Perform to define the shape to transform.
+    pub fn new_gtrsf(T: &crate::ffi::gp_GTrsf) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_GTransform_ctor_gtrsf(T)
+    }
+
+    /// Constructs a framework for applying the geometric
+    /// transformation T to a shape, and applies it to the shape S.
+    /// -   If the transformation T is direct and isometric (i.e. if
+    /// the determinant of the vectorial part of T is equal to
+    /// 1.), and if Copy equals false (default value), the
+    /// resulting shape is the same as the original but with
+    /// a new location assigned to it.
+    /// -   In all other cases, the transformation is applied to
+    /// a duplicate of S.
+    /// Use the function Shape to access the result.
+    /// Note: the constructed framework can be reused to
+    /// apply the same geometric transformation to other
+    /// shapes: just specify them with the function Perform.
+    pub fn new_shape_gtrsf_bool(
+        S: &crate::ffi::TopoDS_Shape,
+        T: &crate::ffi::gp_GTrsf,
+        Copy: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_GTransform_ctor_shape_gtrsf_bool(S, T, Copy)
+    }
+
+    /// Constructs a framework for applying the geometric
+    /// transformation T to a shape, and applies it to the shape S.
+    /// -   If the transformation T is direct and isometric (i.e. if
+    /// the determinant of the vectorial part of T is equal to
+    /// 1.), and if Copy equals false (default value), the
+    /// resulting shape is the same as the original but with
+    /// a new location assigned to it.
+    /// -   In all other cases, the transformation is applied to
+    /// a duplicate of S.
+    /// Use the function Shape to access the result.
+    /// Note: the constructed framework can be reused to
+    /// apply the same geometric transformation to other
+    /// shapes: just specify them with the function Perform.
+    pub fn new_shape_gtrsf(
+        S: &crate::ffi::TopoDS_Shape,
+        T: &crate::ffi::gp_GTrsf,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_shape_gtrsf_bool(S, T, false)
+    }
+
+    /// Returns the modified shape corresponding to <S>.
+    pub fn modified_shape(
+        &self,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepBuilderAPI_GTransform_modified_shape(self, S)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_command(&self) -> &Command {
+        crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_make_shape(&self) -> &MakeShape {
+        crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_ModifyShape
+    pub fn as_modify_shape(&self) -> &ModifyShape {
+        crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_ModifyShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_ModifyShape (mutable)
+    pub fn as_modify_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut ModifyShape> {
+        crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_ModifyShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_GTransform_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepBuilderAPI_GTransform_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepBuilderAPI_GTransform_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_GTransform_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_GTransform_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_GTransform_inherited_IsDeleted(self, S)
+    }
+}
 
 // ========================
 // From BRepBuilderAPI_MakeEdge.hxx
@@ -399,89 +906,95 @@ impl MakeEdge {
         crate::ffi::BRepBuilderAPI_MakeEdge_ctor_parab_vertex2(L, V1, V2)
     }
 
-    pub fn new_handlecurve(L: &crate::ffi::HandleGeomCurve) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve(L)
+    pub fn new_handlegeomcurve(L: &crate::ffi::HandleGeomCurve) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve(L)
     }
 
-    pub fn new_handlecurve_real2(
+    pub fn new_handlegeomcurve_real2(
         L: &crate::ffi::HandleGeomCurve,
         p1: f64,
         p2: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_real2(L, p1, p2)
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_real2(L, p1, p2)
     }
 
-    pub fn new_handlecurve_pnt2(
+    pub fn new_handlegeomcurve_pnt2(
         L: &crate::ffi::HandleGeomCurve,
         P1: &crate::ffi::gp_Pnt,
         P2: &crate::ffi::gp_Pnt,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_pnt2(L, P1, P2)
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_pnt2(L, P1, P2)
     }
 
-    pub fn new_handlecurve_vertex2(
+    pub fn new_handlegeomcurve_vertex2(
         L: &crate::ffi::HandleGeomCurve,
         V1: &crate::ffi::TopoDS_Vertex,
         V2: &crate::ffi::TopoDS_Vertex,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_vertex2(L, V1, V2)
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_vertex2(L, V1, V2)
     }
 
-    pub fn new_handlecurve_pnt2_real2(
+    pub fn new_handlegeomcurve_pnt2_real2(
         L: &crate::ffi::HandleGeomCurve,
         P1: &crate::ffi::gp_Pnt,
         P2: &crate::ffi::gp_Pnt,
         p1: f64,
         p2: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_pnt2_real2(L, P1, P2, p1, p2)
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_pnt2_real2(L, P1, P2, p1, p2)
     }
 
-    pub fn new_handlecurve_vertex2_real2(
+    pub fn new_handlegeomcurve_vertex2_real2(
         L: &crate::ffi::HandleGeomCurve,
         V1: &crate::ffi::TopoDS_Vertex,
         V2: &crate::ffi::TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_vertex2_real2(L, V1, V2, p1, p2)
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_vertex2_real2(L, V1, V2, p1, p2)
     }
 
-    pub fn new_handlecurve_handlesurface(
+    pub fn new_handlegeom2dcurve_handlegeomsurface(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface(L, S)
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(L, S)
     }
 
-    pub fn new_handlecurve_handlesurface_real2(
+    pub fn new_handlegeom2dcurve_handlegeomsurface_real2(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
         p1: f64,
         p2: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_real2(L, S, p1, p2)
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_real2(
+            L, S, p1, p2,
+        )
     }
 
-    pub fn new_handlecurve_handlesurface_pnt2(
+    pub fn new_handlegeom2dcurve_handlegeomsurface_pnt2(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
         P1: &crate::ffi::gp_Pnt,
         P2: &crate::ffi::gp_Pnt,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_pnt2(L, S, P1, P2)
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2(
+            L, S, P1, P2,
+        )
     }
 
-    pub fn new_handlecurve_handlesurface_vertex2(
+    pub fn new_handlegeom2dcurve_handlegeomsurface_vertex2(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
         V1: &crate::ffi::TopoDS_Vertex,
         V2: &crate::ffi::TopoDS_Vertex,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_vertex2(L, S, V1, V2)
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2(
+            L, S, V1, V2,
+        )
     }
 
-    pub fn new_handlecurve_handlesurface_pnt2_real2(
+    pub fn new_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
         P1: &crate::ffi::gp_Pnt,
@@ -489,7 +1002,7 @@ impl MakeEdge {
         p1: f64,
         p2: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_pnt2_real2(
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
             L, S, P1, P2, p1, p2,
         )
     }
@@ -558,7 +1071,7 @@ impl MakeEdge {
     /// parameters of the curve will then be used.
     ///
     /// Auxiliary methods
-    pub fn new_handlecurve_handlesurface_vertex2_real2(
+    pub fn new_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -566,7 +1079,7 @@ impl MakeEdge {
         p1: f64,
         p2: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2(
+        crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
             L, S, V1, V2, p1, p2,
         )
     }
@@ -633,6 +1146,290 @@ impl MakeEdge {
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepBuilderAPI_MakeEdge_inherited_IsDeleted(self, S)
+    }
+}
+
+// ========================
+// From BRepBuilderAPI_MakeEdge2d.hxx
+// ========================
+
+/// Provides methods to build edges.
+///
+/// The   methods have  the  following   syntax, where
+/// TheCurve is one of Lin2d, Circ2d, ...
+///
+/// Create(C : TheCurve)
+///
+/// Makes an edge on  the whole curve.  Add vertices
+/// on finite curves.
+///
+/// Create(C : TheCurve; p1,p2 : Real)
+///
+/// Make an edge  on the curve between parameters p1
+/// and p2. if p2 < p1 the edge will be REVERSED. If
+/// p1  or p2 is infinite the  curve will be open in
+/// that  direction. Vertices are created for finite
+/// values of p1 and p2.
+///
+/// Create(C : TheCurve; P1, P2 : Pnt2d from gp)
+///
+/// Make an edge on the curve  between the points P1
+/// and P2. The  points are projected on   the curve
+/// and the   previous method is  used. An  error is
+/// raised if the points are not on the curve.
+///
+/// Create(C : TheCurve; V1, V2 : Vertex from TopoDS)
+///
+/// Make an edge  on the curve  between the vertices
+/// V1 and V2. Same as the  previous but no vertices
+/// are created. If a vertex is  Null the curve will
+/// be open in this direction.
+pub use crate::ffi::BRepBuilderAPI_MakeEdge2d as MakeEdge2d;
+
+impl MakeEdge2d {
+    pub fn new_vertex2(
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_vertex2(V1, V2)
+    }
+
+    pub fn new_pnt2d2(
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_pnt2d2(P1, P2)
+    }
+
+    pub fn new_lin2d(L: &crate::ffi::gp_Lin2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_lin2d(L)
+    }
+
+    pub fn new_lin2d_real2(L: &crate::ffi::gp_Lin2d, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_lin2d_real2(L, p1, p2)
+    }
+
+    pub fn new_lin2d_pnt2d2(
+        L: &crate::ffi::gp_Lin2d,
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_lin2d_pnt2d2(L, P1, P2)
+    }
+
+    pub fn new_lin2d_vertex2(
+        L: &crate::ffi::gp_Lin2d,
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_lin2d_vertex2(L, V1, V2)
+    }
+
+    pub fn new_circ2d(L: &crate::ffi::gp_Circ2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_circ2d(L)
+    }
+
+    pub fn new_circ2d_real2(L: &crate::ffi::gp_Circ2d, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_circ2d_real2(L, p1, p2)
+    }
+
+    pub fn new_circ2d_pnt2d2(
+        L: &crate::ffi::gp_Circ2d,
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_circ2d_pnt2d2(L, P1, P2)
+    }
+
+    pub fn new_circ2d_vertex2(
+        L: &crate::ffi::gp_Circ2d,
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_circ2d_vertex2(L, V1, V2)
+    }
+
+    pub fn new_elips2d(L: &crate::ffi::gp_Elips2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_elips2d(L)
+    }
+
+    pub fn new_elips2d_real2(L: &crate::ffi::gp_Elips2d, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_elips2d_real2(L, p1, p2)
+    }
+
+    pub fn new_elips2d_pnt2d2(
+        L: &crate::ffi::gp_Elips2d,
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_elips2d_pnt2d2(L, P1, P2)
+    }
+
+    pub fn new_elips2d_vertex2(
+        L: &crate::ffi::gp_Elips2d,
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_elips2d_vertex2(L, V1, V2)
+    }
+
+    pub fn new_hypr2d(L: &crate::ffi::gp_Hypr2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d(L)
+    }
+
+    pub fn new_hypr2d_real2(L: &crate::ffi::gp_Hypr2d, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_real2(L, p1, p2)
+    }
+
+    pub fn new_hypr2d_pnt2d2(
+        L: &crate::ffi::gp_Hypr2d,
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_pnt2d2(L, P1, P2)
+    }
+
+    pub fn new_hypr2d_vertex2(
+        L: &crate::ffi::gp_Hypr2d,
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_vertex2(L, V1, V2)
+    }
+
+    pub fn new_parab2d(L: &crate::ffi::gp_Parab2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_parab2d(L)
+    }
+
+    pub fn new_parab2d_real2(L: &crate::ffi::gp_Parab2d, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_parab2d_real2(L, p1, p2)
+    }
+
+    pub fn new_parab2d_pnt2d2(
+        L: &crate::ffi::gp_Parab2d,
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_parab2d_pnt2d2(L, P1, P2)
+    }
+
+    pub fn new_parab2d_vertex2(
+        L: &crate::ffi::gp_Parab2d,
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_parab2d_vertex2(L, V1, V2)
+    }
+
+    pub fn new_handlegeom2dcurve(L: &crate::ffi::HandleGeom2dCurve) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve(L)
+    }
+
+    pub fn new_handlegeom2dcurve_real2(
+        L: &crate::ffi::HandleGeom2dCurve,
+        p1: f64,
+        p2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_real2(L, p1, p2)
+    }
+
+    pub fn new_handlegeom2dcurve_pnt2d2(
+        L: &crate::ffi::HandleGeom2dCurve,
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2(L, P1, P2)
+    }
+
+    pub fn new_handlegeom2dcurve_vertex2(
+        L: &crate::ffi::HandleGeom2dCurve,
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_vertex2(L, V1, V2)
+    }
+
+    pub fn new_handlegeom2dcurve_pnt2d2_real2(
+        L: &crate::ffi::HandleGeom2dCurve,
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+        p1: f64,
+        p2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2_real2(L, P1, P2, p1, p2)
+    }
+
+    pub fn new_handlegeom2dcurve_vertex2_real2(
+        L: &crate::ffi::HandleGeom2dCurve,
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+        p1: f64,
+        p2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_vertex2_real2(
+            L, V1, V2, p1, p2,
+        )
+    }
+
+    /// Returns the error description when NotDone.
+    pub fn error(&self) -> i32 {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_error(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_command(&self) -> &Command {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_make_shape(&self) -> &MakeShape {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_MakeEdge2d_inherited_IsDeleted(self, S)
     }
 }
 
@@ -705,11 +1502,11 @@ impl MakeFace {
 
     /// Make a face from a Surface. Accepts tolerance value (TolDegen)
     /// for resolution of degenerated edges.
-    pub fn new_handlesurface_real(
+    pub fn new_handlegeomsurface_real(
         S: &crate::ffi::HandleGeomSurface,
         TolDegen: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlesurface_real(S, TolDegen)
+        crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_real(S, TolDegen)
     }
 
     /// Make a face from a plane.
@@ -769,7 +1566,7 @@ impl MakeFace {
 
     /// Make a face from a Surface. Accepts tolerance value (TolDegen)
     /// for resolution of degenerated edges.
-    pub fn new_handlesurface_real5(
+    pub fn new_handlegeomsurface_real5(
         S: &crate::ffi::HandleGeomSurface,
         UMin: f64,
         UMax: f64,
@@ -777,7 +1574,7 @@ impl MakeFace {
         VMax: f64,
         TolDegen: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlesurface_real5(
+        crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_real5(
             S, UMin, UMax, VMin, VMax, TolDegen,
         )
     }
@@ -839,12 +1636,12 @@ impl MakeFace {
     /// If the surface S is not plane,
     /// it must contain pcurves for all edges in W,
     /// otherwise the wrong shape will be created.
-    pub fn new_handlesurface_wire_bool(
+    pub fn new_handlegeomsurface_wire_bool(
         S: &crate::ffi::HandleGeomSurface,
         W: &crate::ffi::TopoDS_Wire,
         Inside: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlesurface_wire_bool(S, W, Inside)
+        crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_wire_bool(S, W, Inside)
     }
 
     /// Adds the wire <W> in the face <F>
@@ -949,11 +1746,11 @@ impl MakeFace {
     /// If the surface S is not plane,
     /// it must contain pcurves for all edges in W,
     /// otherwise the wrong shape will be created.
-    pub fn new_handlesurface_wire(
+    pub fn new_handlegeomsurface_wire(
         S: &crate::ffi::HandleGeomSurface,
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_handlesurface_wire_bool(S, W, true)
+        Self::new_handlegeomsurface_wire_bool(S, W, true)
     }
 
     /// Returns the construction status
@@ -1024,6 +1821,240 @@ impl MakeFace {
 }
 
 // ========================
+// From BRepBuilderAPI_MakePolygon.hxx
+// ========================
+
+/// Describes functions to build polygonal wires. A
+/// polygonal wire can be built from any number of points
+/// or vertices, and consists of a sequence of connected
+/// rectilinear edges.
+/// When a point or vertex is added to the  polygon if
+/// it is identic  to the previous  point no  edge  is
+/// built. The method added can be used to test it.
+/// Construction of a Polygonal Wire
+/// You can construct:
+/// -   a complete polygonal wire by defining all its points
+/// or vertices (limited to four), or
+/// -   an empty polygonal wire and add its points or
+/// vertices in sequence (unlimited number).
+/// A MakePolygon object provides a framework for:
+/// -   initializing the construction of a polygonal wire,
+/// -   adding points or vertices to the polygonal wire under construction, and
+/// -   consulting the result.
+pub use crate::ffi::BRepBuilderAPI_MakePolygon as MakePolygon;
+
+impl MakePolygon {
+    /// Initializes an empty polygonal wire, to which points or
+    /// vertices are added using the Add function.
+    /// As soon as the polygonal wire under construction
+    /// contains vertices, it can be consulted using the Wire function.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakePolygon_ctor()
+    }
+
+    pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakePolygon_ctor_pnt2(P1, P2)
+    }
+
+    pub fn new_pnt3_bool(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        P3: &crate::ffi::gp_Pnt,
+        Close: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakePolygon_ctor_pnt3_bool(P1, P2, P3, Close)
+    }
+
+    /// Constructs a polygonal wire from 2, 3 or 4 points. Vertices are
+    /// automatically created on the given points. The polygonal wire is
+    /// closed if Close is true; otherwise it is open. Further vertices can
+    /// be added using the Add function. The polygonal wire under
+    /// construction can be consulted at any time by using the Wire function.
+    /// Example
+    /// //an open polygon from four points
+    /// TopoDS_Wire W = BRepBuilderAPI_MakePolygon(P1,P2,P3,P4);
+    /// Warning: The process is equivalent to:
+    /// - initializing an empty polygonal wire,
+    /// - and adding the given points in sequence.
+    /// Consequently, be careful when using this function: if the
+    /// sequence of points p1 - p2 - p1 is found among the arguments of the
+    /// constructor, you will create a polygonal wire with two
+    /// consecutive coincident edges.
+    pub fn new_pnt4_bool(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        P3: &crate::ffi::gp_Pnt,
+        P4: &crate::ffi::gp_Pnt,
+        Close: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakePolygon_ctor_pnt4_bool(P1, P2, P3, P4, Close)
+    }
+
+    pub fn new_vertex2(
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakePolygon_ctor_vertex2(V1, V2)
+    }
+
+    pub fn new_vertex3_bool(
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+        V3: &crate::ffi::TopoDS_Vertex,
+        Close: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakePolygon_ctor_vertex3_bool(V1, V2, V3, Close)
+    }
+
+    /// Constructs a polygonal wire from
+    /// 2, 3 or 4 vertices. The polygonal wire is closed if Close is true;
+    /// otherwise it is open (default value). Further vertices can be
+    /// added using the Add function. The polygonal wire under
+    /// construction can be consulted at any time by using the Wire function.
+    /// Example
+    /// //a closed triangle from three vertices
+    /// TopoDS_Wire W = BRepBuilderAPI_MakePolygon(V1,V2,V3,Standard_True);
+    /// Warning
+    /// The process is equivalent to:
+    /// -      initializing an empty polygonal wire,
+    /// -      then adding the given points in sequence.
+    /// So be careful, as when using this function, you could create a
+    /// polygonal wire with two consecutive coincident edges if
+    /// the sequence of vertices v1 - v2 - v1 is found among the
+    /// constructor's arguments.
+    pub fn new_vertex4_bool(
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+        V3: &crate::ffi::TopoDS_Vertex,
+        V4: &crate::ffi::TopoDS_Vertex,
+        Close: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakePolygon_ctor_vertex4_bool(V1, V2, V3, V4, Close)
+    }
+
+    pub fn new_pnt3(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        P3: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_pnt3_bool(P1, P2, P3, false)
+    }
+
+    /// Constructs a polygonal wire from 2, 3 or 4 points. Vertices are
+    /// automatically created on the given points. The polygonal wire is
+    /// closed if Close is true; otherwise it is open. Further vertices can
+    /// be added using the Add function. The polygonal wire under
+    /// construction can be consulted at any time by using the Wire function.
+    /// Example
+    /// //an open polygon from four points
+    /// TopoDS_Wire W = BRepBuilderAPI_MakePolygon(P1,P2,P3,P4);
+    /// Warning: The process is equivalent to:
+    /// - initializing an empty polygonal wire,
+    /// - and adding the given points in sequence.
+    /// Consequently, be careful when using this function: if the
+    /// sequence of points p1 - p2 - p1 is found among the arguments of the
+    /// constructor, you will create a polygonal wire with two
+    /// consecutive coincident edges.
+    pub fn new_pnt4(
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+        P3: &crate::ffi::gp_Pnt,
+        P4: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_pnt4_bool(P1, P2, P3, P4, false)
+    }
+
+    pub fn new_vertex3(
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+        V3: &crate::ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_vertex3_bool(V1, V2, V3, false)
+    }
+
+    /// Constructs a polygonal wire from
+    /// 2, 3 or 4 vertices. The polygonal wire is closed if Close is true;
+    /// otherwise it is open (default value). Further vertices can be
+    /// added using the Add function. The polygonal wire under
+    /// construction can be consulted at any time by using the Wire function.
+    /// Example
+    /// //a closed triangle from three vertices
+    /// TopoDS_Wire W = BRepBuilderAPI_MakePolygon(V1,V2,V3,Standard_True);
+    /// Warning
+    /// The process is equivalent to:
+    /// -      initializing an empty polygonal wire,
+    /// -      then adding the given points in sequence.
+    /// So be careful, as when using this function, you could create a
+    /// polygonal wire with two consecutive coincident edges if
+    /// the sequence of vertices v1 - v2 - v1 is found among the
+    /// constructor's arguments.
+    pub fn new_vertex4(
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+        V3: &crate::ffi::TopoDS_Vertex,
+        V4: &crate::ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_vertex4_bool(V1, V2, V3, V4, false)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_command(&self) -> &Command {
+        crate::ffi::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        crate::ffi::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_make_shape(&self) -> &MakeShape {
+        crate::ffi::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        crate::ffi::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepBuilderAPI_MakePolygon_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepBuilderAPI_MakePolygon_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_MakePolygon_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_MakePolygon_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_MakePolygon_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_MakePolygon_inherited_IsDeleted(self, S)
+    }
+}
+
+// ========================
 // From BRepBuilderAPI_MakeShape.hxx
 // ========================
 
@@ -1053,6 +2084,231 @@ impl MakeShape {
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
         crate::ffi::BRepBuilderAPI_MakeShape_inherited_Check(self)
+    }
+}
+
+// ========================
+// From BRepBuilderAPI_MakeShapeOnMesh.hxx
+// ========================
+
+/// Builds shape on per-facet basis on the input mesh. Resulting shape has shared
+/// edges by construction, but no maximization (unify same domain) is applied.
+/// No generation history is provided.
+pub use crate::ffi::BRepBuilderAPI_MakeShapeOnMesh as MakeShapeOnMesh;
+
+impl MakeShapeOnMesh {
+    /// Ctor. Sets mesh to process.
+    /// @param[in] theMesh  - Mesh to construct shape for.
+    pub fn new_handlepolytriangulation(
+        theMesh: &crate::ffi::HandlePolyTriangulation,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_ctor_handlepolytriangulation(theMesh)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_command(&self) -> &Command {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_make_shape(&self) -> &MakeShape {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_inherited_IsDeleted(self, S)
+    }
+}
+
+// ========================
+// From BRepBuilderAPI_MakeShell.hxx
+// ========================
+
+/// Describes functions to build a
+/// shape corresponding to the skin of a surface.
+/// Note that the term shell in the class name has the same definition
+/// as that of a shell in STEP, in other words the skin of a shape,
+/// and not a solid model defined by surface and thickness. If you want
+/// to build the second sort of shell, you must use
+/// BRepOffsetAPI_MakeOffsetShape. A shell is made of a series of
+/// faces connected by their common edges.
+/// If the underlying surface of a face is not C2 continuous and
+/// the flag Segment is True, MakeShell breaks the surface down into
+/// several faces which are all C2 continuous and which are
+/// connected along the non-regular curves on the surface.
+/// The resulting shell contains all these faces.
+/// Construction of a Shell from a non-C2 continuous Surface
+/// A MakeShell object provides a framework for:
+/// -      defining the construction of a shell,
+/// -      implementing the construction algorithm, and
+/// -      consulting the result.
+/// Warning
+/// The connected C2 faces in the shell resulting from a decomposition of
+/// the surface are not sewn. For a sewn result, you need to use
+/// BRepOffsetAPI_Sewing. For a shell with thickness, you need to use
+/// BRepOffsetAPI_MakeOffsetShape.
+pub use crate::ffi::BRepBuilderAPI_MakeShell as MakeShell;
+
+impl MakeShell {
+    /// Constructs an empty shell framework. The Init
+    /// function is used to define the construction arguments.
+    /// Warning
+    /// The function Error will return
+    /// BRepBuilderAPI_EmptyShell if it is called before the function Init.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeShell_ctor()
+    }
+
+    /// Constructs a shell from the surface S.
+    pub fn new_handlegeomsurface_bool(
+        S: &crate::ffi::HandleGeomSurface,
+        Segment: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeShell_ctor_handlegeomsurface_bool(S, Segment)
+    }
+
+    /// Constructs a shell from the surface S,
+    /// limited in the u parametric direction by the two
+    /// parameter values UMin and UMax, and limited in the v
+    /// parametric direction by the two parameter values VMin and VMax.
+    pub fn new_handlegeomsurface_real4_bool(
+        S: &crate::ffi::HandleGeomSurface,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+        Segment: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeShell_ctor_handlegeomsurface_real4_bool(
+            S, UMin, UMax, VMin, VMax, Segment,
+        )
+    }
+
+    /// Constructs a shell from the surface S.
+    pub fn new_handlegeomsurface(S: &crate::ffi::HandleGeomSurface) -> cxx::UniquePtr<Self> {
+        Self::new_handlegeomsurface_bool(S, false)
+    }
+
+    /// Constructs a shell from the surface S,
+    /// limited in the u parametric direction by the two
+    /// parameter values UMin and UMax, and limited in the v
+    /// parametric direction by the two parameter values VMin and VMax.
+    pub fn new_handlegeomsurface_real4(
+        S: &crate::ffi::HandleGeomSurface,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_handlegeomsurface_real4_bool(S, UMin, UMax, VMin, VMax, false)
+    }
+
+    /// Returns the construction status:
+    /// -   BRepBuilderAPI_ShellDone if the shell is built, or
+    /// -   another value of the BRepBuilderAPI_ShellError
+    /// enumeration indicating why the construction failed.
+    /// This is frequently BRepBuilderAPI_ShellParametersOutOfRange
+    /// indicating that the given parameters are outside the bounds of the surface.
+    pub fn error(&self) -> i32 {
+        crate::ffi::BRepBuilderAPI_MakeShell_error(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_command(&self) -> &Command {
+        crate::ffi::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        crate::ffi::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_make_shape(&self) -> &MakeShape {
+        crate::ffi::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        crate::ffi::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepBuilderAPI_MakeShell_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepBuilderAPI_MakeShell_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_MakeShell_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_MakeShell_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_MakeShell_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_MakeShell_inherited_IsDeleted(self, S)
     }
 }
 
@@ -1552,6 +2808,129 @@ impl ModifyShape {
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
     pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::BRepBuilderAPI_ModifyShape_inherited_IsDeleted(self, S)
+    }
+}
+
+// ========================
+// From BRepBuilderAPI_NurbsConvert.hxx
+// ========================
+
+/// Conversion of the complete geometry of a shape
+/// (all 3D analytical representation of surfaces and curves)
+/// into NURBS geometry (except for Planes). For example,
+/// all curves supporting edges of the basis shape are converted
+/// into BSpline curves, and all surfaces supporting its faces are
+/// converted into BSpline surfaces.
+pub use crate::ffi::BRepBuilderAPI_NurbsConvert as NurbsConvert;
+
+impl NurbsConvert {
+    /// Constructs a framework for converting the geometry of a
+    /// shape into NURBS geometry. Use the function Perform
+    /// to define the shape to convert.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_ctor()
+    }
+
+    /// Builds a new shape by converting the geometry of the
+    /// shape S into NURBS geometry. Specifically, all curves
+    /// supporting edges of S are converted into BSpline
+    /// curves, and all surfaces supporting its faces are
+    /// converted into BSpline surfaces.
+    /// Use the function Shape to access the new shape.
+    /// Note: the constructed framework can be reused to
+    /// convert other shapes. You specify these with the
+    /// function Perform.
+    pub fn new_shape_bool(S: &crate::ffi::TopoDS_Shape, Copy: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_ctor_shape_bool(S, Copy)
+    }
+
+    /// Builds a new shape by converting the geometry of the
+    /// shape S into NURBS geometry. Specifically, all curves
+    /// supporting edges of S are converted into BSpline
+    /// curves, and all surfaces supporting its faces are
+    /// converted into BSpline surfaces.
+    /// Use the function Shape to access the new shape.
+    /// Note: the constructed framework can be reused to
+    /// convert other shapes. You specify these with the
+    /// function Perform.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        Self::new_shape_bool(S, false)
+    }
+
+    /// Returns the modified shape corresponding to <S>.
+    /// S can correspond to the entire initial shape or to its subshape.
+    /// Exceptions
+    /// Standard_NoSuchObject if S is not the initial shape or
+    /// a subshape of the initial shape to which the
+    /// transformation has been applied.
+    pub fn modified_shape(
+        &self,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_modified_shape(self, S)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_command(&self) -> &Command {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_make_shape(&self) -> &MakeShape {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_ModifyShape
+    pub fn as_modify_shape(&self) -> &ModifyShape {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_ModifyShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_ModifyShape (mutable)
+    pub fn as_modify_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut ModifyShape> {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_ModifyShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_IsDeleted(self, S)
     }
 }
 

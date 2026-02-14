@@ -6,6 +6,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{compute_normals, intersect, intersect_tri_line, point_on_triangle};
+
 // ========================
 // From Poly_ArrayOfNodes.hxx
 // ========================
@@ -85,6 +87,494 @@ impl ArrayOfUVNodes {
 }
 
 // ========================
+// From Poly_CoherentLink.hxx
+// ========================
+
+///
+/// Link between two mesh nodes that is created by existing triangle(s).
+/// Keeps reference to the opposite node of each incident triangle.
+/// The referred node with index "0" is always on the left side of the link,
+/// the one with the index "1" is always on the right side.
+/// It is possible to find both incident triangles using the method
+/// Poly_CoherentTriangulation::FindTriangle().
+/// <p>
+/// Any Link can store an arbitrary pointer that is called Attribute.
+pub use crate::ffi::Poly_CoherentLink as CoherentLink;
+
+impl CoherentLink {
+    ///
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_CoherentLink_ctor()
+    }
+
+    ///
+    /// Constructor. Creates a Link that has no reference to 'opposite nodes'.
+    /// This constructor is useful to create temporary object that is not
+    /// inserted into any existing triangulation.
+    pub fn new_int2(iNode0: i32, iNode1: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_CoherentLink_ctor_int2(iNode0, iNode1)
+    }
+
+    ///
+    /// Constructor, takes a triangle and a side. A link is created always such
+    /// that myNode[0] < myNode[1]. Unlike the previous constructor, this one
+    /// assigns the 'opposite node' fields. This constructor is used when a
+    /// link is inserted into a Poly_CoherentTriangulation structure.
+    /// @param theTri
+    /// Triangle containing the link that is created
+    /// @param iSide
+    /// Can be 0, 1 or 2. Index of the node
+    pub fn new_coherenttriangle_int(
+        theTri: &crate::ffi::Poly_CoherentTriangle,
+        iSide: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_CoherentLink_ctor_coherenttriangle_int(theTri, iSide)
+    }
+}
+
+// ========================
+// From Poly_CoherentNode.hxx
+// ========================
+
+///
+/// Node of coherent triangulation. Contains:
+/// <ul>
+/// <li>Coordinates of a 3D point defining the node location</li>
+/// <li>2D point coordinates</li>
+/// <li>List of triangles that use this Node</li>
+/// <li>Integer index, normally the index of the node in the original
+/// triangulation</li>
+/// </ul>
+pub use crate::ffi::Poly_CoherentNode as CoherentNode;
+
+impl CoherentNode {
+    ///
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_CoherentNode_ctor()
+    }
+
+    ///
+    /// Constructor.
+    pub fn new_xyz(thePnt: &crate::ffi::gp_XYZ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_CoherentNode_ctor_xyz(thePnt)
+    }
+
+    ///
+    /// Get the stored normal in the node.
+    pub fn get_normal(&self) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Poly_CoherentNode_get_normal(self)
+    }
+
+    /// Upcast to gp_XYZ
+    pub fn as_gp_xyz(&self) -> &crate::gp::XYZ {
+        crate::ffi::Poly_CoherentNode_as_gp_XYZ(self)
+    }
+
+    /// Upcast to gp_XYZ (mutable)
+    pub fn as_gp_xyz_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::gp::XYZ> {
+        crate::ffi::Poly_CoherentNode_as_gp_XYZ_mut(self)
+    }
+
+    /// Inherited from gp_XYZ: SetCoord()
+    pub fn set_coord(self: std::pin::Pin<&mut Self>, theX: f64, theY: f64, theZ: f64) {
+        crate::ffi::Poly_CoherentNode_inherited_SetCoord(self, theX, theY, theZ)
+    }
+
+    /// Inherited from gp_XYZ: SetX()
+    pub fn set_x(self: std::pin::Pin<&mut Self>, theX: f64) {
+        crate::ffi::Poly_CoherentNode_inherited_SetX(self, theX)
+    }
+
+    /// Inherited from gp_XYZ: SetY()
+    pub fn set_y(self: std::pin::Pin<&mut Self>, theY: f64) {
+        crate::ffi::Poly_CoherentNode_inherited_SetY(self, theY)
+    }
+
+    /// Inherited from gp_XYZ: SetZ()
+    pub fn set_z(self: std::pin::Pin<&mut Self>, theZ: f64) {
+        crate::ffi::Poly_CoherentNode_inherited_SetZ(self, theZ)
+    }
+
+    /// Inherited from gp_XYZ: Coord()
+    pub fn coord(&self, theIndex: i32) -> f64 {
+        crate::ffi::Poly_CoherentNode_inherited_Coord(self, theIndex)
+    }
+
+    /// Inherited from gp_XYZ: ChangeCoord()
+    pub fn change_coord(self: std::pin::Pin<&mut Self>, theIndex: i32) -> &mut f64 {
+        crate::ffi::Poly_CoherentNode_inherited_ChangeCoord(self, theIndex)
+    }
+
+    /// Inherited from gp_XYZ: X()
+    pub fn x(&self) -> f64 {
+        crate::ffi::Poly_CoherentNode_inherited_X(self)
+    }
+
+    /// Inherited from gp_XYZ: Y()
+    pub fn y(&self) -> f64 {
+        crate::ffi::Poly_CoherentNode_inherited_Y(self)
+    }
+
+    /// Inherited from gp_XYZ: Z()
+    pub fn z(&self) -> f64 {
+        crate::ffi::Poly_CoherentNode_inherited_Z(self)
+    }
+
+    /// Inherited from gp_XYZ: Modulus()
+    pub fn modulus(&self) -> f64 {
+        crate::ffi::Poly_CoherentNode_inherited_Modulus(self)
+    }
+
+    /// Inherited from gp_XYZ: SquareModulus()
+    pub fn square_modulus(&self) -> f64 {
+        crate::ffi::Poly_CoherentNode_inherited_SquareModulus(self)
+    }
+
+    /// Inherited from gp_XYZ: IsEqual()
+    pub fn is_equal(&self, theOther: &crate::ffi::gp_XYZ, theTolerance: f64) -> bool {
+        crate::ffi::Poly_CoherentNode_inherited_IsEqual(self, theOther, theTolerance)
+    }
+
+    /// Inherited from gp_XYZ: Add()
+    pub fn add(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_XYZ) {
+        crate::ffi::Poly_CoherentNode_inherited_Add(self, theOther)
+    }
+
+    /// Inherited from gp_XYZ: Added()
+    pub fn added(&self, theOther: &crate::ffi::gp_XYZ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Poly_CoherentNode_inherited_Added(self, theOther)
+    }
+
+    /// Inherited from gp_XYZ: Cross()
+    pub fn cross(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_XYZ) {
+        crate::ffi::Poly_CoherentNode_inherited_Cross(self, theOther)
+    }
+
+    /// Inherited from gp_XYZ: Crossed()
+    pub fn crossed(&self, theOther: &crate::ffi::gp_XYZ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Poly_CoherentNode_inherited_Crossed(self, theOther)
+    }
+
+    /// Inherited from gp_XYZ: CrossMagnitude()
+    pub fn cross_magnitude(&self, theRight: &crate::ffi::gp_XYZ) -> f64 {
+        crate::ffi::Poly_CoherentNode_inherited_CrossMagnitude(self, theRight)
+    }
+
+    /// Inherited from gp_XYZ: CrossSquareMagnitude()
+    pub fn cross_square_magnitude(&self, theRight: &crate::ffi::gp_XYZ) -> f64 {
+        crate::ffi::Poly_CoherentNode_inherited_CrossSquareMagnitude(self, theRight)
+    }
+
+    /// Inherited from gp_XYZ: CrossCross()
+    pub fn cross_cross(
+        self: std::pin::Pin<&mut Self>,
+        theCoord1: &crate::ffi::gp_XYZ,
+        theCoord2: &crate::ffi::gp_XYZ,
+    ) {
+        crate::ffi::Poly_CoherentNode_inherited_CrossCross(self, theCoord1, theCoord2)
+    }
+
+    /// Inherited from gp_XYZ: CrossCrossed()
+    pub fn cross_crossed(
+        &self,
+        theCoord1: &crate::ffi::gp_XYZ,
+        theCoord2: &crate::ffi::gp_XYZ,
+    ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Poly_CoherentNode_inherited_CrossCrossed(self, theCoord1, theCoord2)
+    }
+
+    /// Inherited from gp_XYZ: Divide()
+    pub fn divide(self: std::pin::Pin<&mut Self>, theScalar: f64) {
+        crate::ffi::Poly_CoherentNode_inherited_Divide(self, theScalar)
+    }
+
+    /// Inherited from gp_XYZ: Divided()
+    pub fn divided(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Poly_CoherentNode_inherited_Divided(self, theScalar)
+    }
+
+    /// Inherited from gp_XYZ: Dot()
+    pub fn dot(&self, theOther: &crate::ffi::gp_XYZ) -> f64 {
+        crate::ffi::Poly_CoherentNode_inherited_Dot(self, theOther)
+    }
+
+    /// Inherited from gp_XYZ: DotCross()
+    pub fn dot_cross(&self, theCoord1: &crate::ffi::gp_XYZ, theCoord2: &crate::ffi::gp_XYZ) -> f64 {
+        crate::ffi::Poly_CoherentNode_inherited_DotCross(self, theCoord1, theCoord2)
+    }
+
+    /// Inherited from gp_XYZ: Multiply()
+    pub fn multiply(self: std::pin::Pin<&mut Self>, theScalar: f64) {
+        crate::ffi::Poly_CoherentNode_inherited_Multiply(self, theScalar)
+    }
+
+    /// Inherited from gp_XYZ: Multiplied()
+    pub fn multiplied(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Poly_CoherentNode_inherited_Multiplied(self, theScalar)
+    }
+
+    /// Inherited from gp_XYZ: Normalize()
+    pub fn normalize(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Poly_CoherentNode_inherited_Normalize(self)
+    }
+
+    /// Inherited from gp_XYZ: Normalized()
+    pub fn normalized(&self) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Poly_CoherentNode_inherited_Normalized(self)
+    }
+
+    /// Inherited from gp_XYZ: Reverse()
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Poly_CoherentNode_inherited_Reverse(self)
+    }
+
+    /// Inherited from gp_XYZ: Reversed()
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Poly_CoherentNode_inherited_Reversed(self)
+    }
+
+    /// Inherited from gp_XYZ: Subtract()
+    pub fn subtract(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_XYZ) {
+        crate::ffi::Poly_CoherentNode_inherited_Subtract(self, theOther)
+    }
+
+    /// Inherited from gp_XYZ: Subtracted()
+    pub fn subtracted(&self, theOther: &crate::ffi::gp_XYZ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::Poly_CoherentNode_inherited_Subtracted(self, theOther)
+    }
+
+    /// Inherited from gp_XYZ: SetLinearForm()
+    pub fn set_linear_form(
+        self: std::pin::Pin<&mut Self>,
+        theA1: f64,
+        theXYZ1: &crate::ffi::gp_XYZ,
+        theA2: f64,
+        theXYZ2: &crate::ffi::gp_XYZ,
+        theA3: f64,
+        theXYZ3: &crate::ffi::gp_XYZ,
+        theXYZ4: &crate::ffi::gp_XYZ,
+    ) {
+        crate::ffi::Poly_CoherentNode_inherited_SetLinearForm(
+            self, theA1, theXYZ1, theA2, theXYZ2, theA3, theXYZ3, theXYZ4,
+        )
+    }
+}
+
+// ========================
+// From Poly_CoherentTriangle.hxx
+// ========================
+
+///
+/// Data class used in Poly_CoherentTriangultion.
+/// Implements a triangle with references to its neighbours.
+pub use crate::ffi::Poly_CoherentTriangle as CoherentTriangle;
+
+impl CoherentTriangle {
+    ///
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_CoherentTriangle_ctor()
+    }
+
+    ///
+    /// Constructor.
+    pub fn new_int3(iNode0: i32, iNode1: i32, iNode2: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_CoherentTriangle_ctor_int3(iNode0, iNode1, iNode2)
+    }
+}
+
+// ========================
+// From Poly_CoherentTriangulation.hxx
+// ========================
+
+///
+/// Triangulation structure that allows to:
+/// <ul>
+/// <li>Store the connectivity of each triangle with up to 3 neighbouring ones and with the
+/// corresponding 3rd nodes on them,</li> <li>Store the connectivity of each node with all triangles
+/// that share this node</li> <li>Add nodes and triangles to the structure,</li> <li>Find all
+/// triangles sharing a single or a couple of nodes</li> <li>Remove triangles from structure</li>
+/// <li>Optionally create Links between pairs of nodes according to the current triangulation.</li>
+/// <li>Convert from/to Poly_Triangulation structure.</li>
+/// </ul>
+///
+/// This class is useful for algorithms that need to analyse and/or edit a triangulated mesh -- for
+/// example for mesh refining. The connectivity model follows the idea that all Triangles in a mesh
+/// should have coherent orientation like on a surface of a solid body. Connections between more than
+/// 2 triangles are not supported.
+///
+/// @section Poly_CoherentTriangulation Architecture
+/// The data types used in this structure are:
+/// <ul>
+/// <li><b>Poly_CoherentNode</b>: Inherits go_XYZ therefore provides the full public API of gp_XYZ.
+/// Contains references to all incident triangles. You can add new nodes but you cannot remove
+/// existing ones. However each node that has no referenced triangle is considered as "free" (use the
+/// method IsFreeNode() to check this). Free nodes are not available to further processing,
+/// particularly they are not exported in Poly_Triangulation.
+/// </li>
+/// <li><b>Poly_CoherentTriangle</b>: Main data type. Refers three Nodes, three connected Triangles,
+/// three opposite (connected) Nodes and three Links. If there is boundary then 1, 2 or 3 references
+/// to Triangles/connected Nodes/Links are assigned to NULL (for pointers) or -1 (for integer node
+/// index).
+///
+/// You can find a triangle by one node using its triangle iterator or by
+/// two nodes - creating a temporary Poly_CoherentLink and calling the method FindTriangle().
+///
+/// Triangles can be removed but they are never deleted from the containing array. Removed triangles
+/// have all nodes equal to -1. You can use the method IsEmpty() to check that.
+/// </li>
+/// <li><b>Poly_CoherentLink</b>: Auxiliary data type. Normally the array of Links is empty, because
+/// for many algorithms it is sufficient to define only Triangles. You can explicitly create the
+/// Links at least once, calling the method ComputeLinks(). Each Link is oriented couple of
+/// Poly_CoherentNode (directed to the ascending Node index). It refers two connected triangulated
+/// Nodes - on the left and on the right, therefore a Poly_CoherentLink instance refers the full set
+/// of nodes that constitute a couple of connected Triangles. A boundary Link has either the first
+/// (left) or the second (right) connected node index equal to -1.
+///
+/// When the array of Links is created, all subsequent calls to AddTriangle and RemoveTriangle try to
+/// preserve the connectivity Triangle-Link in addition to the connectivity Triangle-Triangle.
+/// Particularly, new Links are created by method AddTriangle() and existing ones are removed by
+/// method RemoveTriangle(), in each case whenever necessary.
+///
+/// Similarly to Poly_CoherentTriangle, a Link can be removed but not destroyed separately from
+/// others. Removed Link can be recogniosed using the method IsEmpty(). To destroy all Links, call
+/// the method ClearLinks(), this method also nullifies Link references in all Triangles.
+/// </li>
+/// All objects (except for free Nodes and empty Triangles and Links) can be visited by the
+/// corresponding Iterator. Direct access is provided only for Nodes (needed to resolve Node indexed
+/// commonly used as reference). Triangles and Links can be retrieved by their index only internally,
+/// the public API provides only references or pointers to C++ objects. If you need a direct access
+/// to Triangles and Links, you can subclass Poly_CoherentTriangulation and use the protected API for
+/// your needs.
+///
+/// Memory management: All data objects are stored in NCollection_Vector containers that prove to be
+/// efficient for the performance. In addition references to triangles are stored in ring lists, with
+/// an instance of such list per Poly_CoherentNode. These lists are allocated in a memory allocator
+/// that is provided in the constructor of Poly_CoherentTriangulation. By default the standard OCCT
+/// allocator (aka NCollection_BaseAllocator) is used. But if you need to increase the performance
+/// you can use NCollection_IncAllocator instead.
+/// </ul>
+pub use crate::ffi::Poly_CoherentTriangulation as CoherentTriangulation;
+
+impl CoherentTriangulation {
+    ///
+    /// Empty constructor.
+    pub fn new_handlencollectionbaseallocator(
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_CoherentTriangulation_ctor_handlencollectionbaseallocator(theAlloc)
+    }
+
+    ///
+    /// Constructor. It does not create Links, you should call ComputeLinks
+    /// following this constructor if you need these links.
+    pub fn new_handlepolytriangulation_handlencollectionbaseallocator(
+        theTriangulation: &crate::ffi::HandlePolyTriangulation,
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_CoherentTriangulation_ctor_handlepolytriangulation_handlencollectionbaseallocator(theTriangulation, theAlloc)
+    }
+
+    ///
+    /// Create an instance of Poly_Triangulation from this object.
+    pub fn get_triangulation(&self) -> cxx::UniquePtr<crate::ffi::HandlePolyTriangulation> {
+        crate::ffi::Poly_CoherentTriangulation_get_triangulation(self)
+    }
+
+    ///
+    /// Create a copy of this Triangulation, using the given allocator.
+    pub fn clone(
+        &self,
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> cxx::UniquePtr<crate::ffi::HandlePolyCoherentTriangulation> {
+        crate::ffi::Poly_CoherentTriangulation_clone(self, theAlloc)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Poly_CoherentTriangulation_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandlePolyCoherentTriangulation> {
+        crate::ffi::Poly_CoherentTriangulation_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandlePolyCoherentTriangulation;
+
+impl HandlePolyCoherentTriangulation {
+    /// Dereference this Handle to access the underlying Poly_CoherentTriangulation
+    pub fn get(&self) -> &crate::ffi::Poly_CoherentTriangulation {
+        crate::ffi::HandlePolyCoherentTriangulation_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Poly_CoherentTriangulation
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_CoherentTriangulation> {
+        crate::ffi::HandlePolyCoherentTriangulation_get_mut(self)
+    }
+}
+
+// ========================
+// From Poly_Connect.hxx
+// ========================
+
+/// Provides an algorithm to explore, inside a triangulation, the
+/// adjacency data for a node or a triangle.
+/// Adjacency data for a node consists of triangles which
+/// contain the node.
+/// Adjacency data for a triangle consists of:
+/// -   the 3 adjacent triangles which share an edge of the triangle,
+/// -   and the 3 nodes which are the other nodes of these adjacent triangles.
+/// Example
+/// Inside a triangulation, a triangle T
+/// has nodes n1, n2 and n3.
+/// It has adjacent triangles AT1, AT2 and AT3 where:
+/// - AT1 shares the nodes n2 and n3,
+/// - AT2 shares the nodes n3 and n1,
+/// - AT3 shares the nodes n1 and n2.
+/// It has adjacent nodes an1, an2 and an3 where:
+/// - an1 is the third node of AT1,
+/// - an2 is the third node of AT2,
+/// - an3 is the third node of AT3.
+/// So triangle AT1 is composed of nodes n2, n3 and an1.
+/// There are two ways of using this algorithm.
+/// -   From a given node you can look for one triangle that
+/// passes through the node, then look for the triangles
+/// adjacent to this triangle, then the adjacent nodes. You
+/// can thus explore the triangulation step by step (functions
+/// Triangle, Triangles and Nodes).
+/// -   From a given node you can look for all the triangles
+/// that pass through the node (iteration method, using the
+/// functions Initialize, More, Next and Value).
+/// A Connect object can be seen as a tool which analyzes a
+/// triangulation and translates it into a series of triangles. By
+/// doing this, it provides an interface with other tools and
+/// applications working on basic triangles, and which do not
+/// work directly with a Poly_Triangulation.
+pub use crate::ffi::Poly_Connect as Connect;
+
+impl Connect {
+    /// Constructs an uninitialized algorithm.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_Connect_ctor()
+    }
+
+    /// Constructs an algorithm to explore the adjacency data of
+    /// nodes or triangles for the triangulation T.
+    pub fn new_handlepolytriangulation(
+        theTriangulation: &crate::ffi::HandlePolyTriangulation,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_Connect_ctor_handlepolytriangulation(theTriangulation)
+    }
+}
+
+// ========================
 // From Poly_HArray1OfTriangle.hxx
 // ========================
 
@@ -149,6 +639,177 @@ impl HandlePolyHArray1OfTriangle {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::ffi::Poly_HArray1OfTriangle> {
         crate::ffi::HandlePolyHArray1OfTriangle_get_mut(self)
+    }
+}
+
+// ========================
+// From Poly_MakeLoops.hxx
+// ========================
+
+///
+/// Make loops from a set of connected links. A link is represented by
+/// a pair of integer indices of nodes.
+pub use crate::ffi::Poly_MakeLoops as MakeLoops;
+
+pub use crate::ffi::Poly_MakeLoops3D as MakeLoops3D;
+
+impl MakeLoops3D {
+    /// Upcast to Poly_MakeLoops
+    pub fn as_make_loops(&self) -> &MakeLoops {
+        crate::ffi::Poly_MakeLoops3D_as_Poly_MakeLoops(self)
+    }
+
+    /// Upcast to Poly_MakeLoops (mutable)
+    pub fn as_make_loops_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeLoops> {
+        crate::ffi::Poly_MakeLoops3D_as_Poly_MakeLoops_mut(self)
+    }
+
+    /// Inherited from Poly_MakeLoops: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Poly_MakeLoops3D_inherited_Perform(self)
+    }
+
+    /// Inherited from Poly_MakeLoops: GetNbLoops()
+    pub fn get_nb_loops(&self) -> i32 {
+        crate::ffi::Poly_MakeLoops3D_inherited_GetNbLoops(self)
+    }
+
+    /// Inherited from Poly_MakeLoops: GetNbHanging()
+    pub fn get_nb_hanging(&self) -> i32 {
+        crate::ffi::Poly_MakeLoops3D_inherited_GetNbHanging(self)
+    }
+}
+
+pub use crate::ffi::Poly_MakeLoops2D as MakeLoops2D;
+
+impl MakeLoops2D {
+    /// Upcast to Poly_MakeLoops
+    pub fn as_make_loops(&self) -> &MakeLoops {
+        crate::ffi::Poly_MakeLoops2D_as_Poly_MakeLoops(self)
+    }
+
+    /// Upcast to Poly_MakeLoops (mutable)
+    pub fn as_make_loops_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeLoops> {
+        crate::ffi::Poly_MakeLoops2D_as_Poly_MakeLoops_mut(self)
+    }
+
+    /// Inherited from Poly_MakeLoops: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::Poly_MakeLoops2D_inherited_Perform(self)
+    }
+
+    /// Inherited from Poly_MakeLoops: GetNbLoops()
+    pub fn get_nb_loops(&self) -> i32 {
+        crate::ffi::Poly_MakeLoops2D_inherited_GetNbLoops(self)
+    }
+
+    /// Inherited from Poly_MakeLoops: GetNbHanging()
+    pub fn get_nb_hanging(&self) -> i32 {
+        crate::ffi::Poly_MakeLoops2D_inherited_GetNbHanging(self)
+    }
+}
+
+// ========================
+// From Poly_MergeNodesTool.hxx
+// ========================
+
+/// Auxiliary tool for merging triangulation nodes for visualization purposes.
+/// Tool tries to merge all nodes within input triangulation, but split the ones on sharp corners at
+/// specified angle.
+pub use crate::ffi::Poly_MergeNodesTool as MergeNodesTool;
+
+impl MergeNodesTool {
+    /// Constructor
+    /// @param[in] theSmoothAngle smooth angle in radians or 0.0 to disable merging by angle
+    /// @param[in] theMergeTolerance node merging maximum distance
+    /// @param[in] theNbFacets estimated number of facets for map preallocation
+    pub fn new_real2_int(
+        theSmoothAngle: f64,
+        theMergeTolerance: f64,
+        theNbFacets: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_MergeNodesTool_ctor_real2_int(
+            theSmoothAngle,
+            theMergeTolerance,
+            theNbFacets,
+        )
+    }
+
+    /// Constructor
+    /// @param[in] theSmoothAngle smooth angle in radians or 0.0 to disable merging by angle
+    /// @param[in] theMergeTolerance node merging maximum distance
+    /// @param[in] theNbFacets estimated number of facets for map preallocation
+    pub fn new_real2(theSmoothAngle: f64, theMergeTolerance: f64) -> cxx::UniquePtr<Self> {
+        Self::new_real2_int(theSmoothAngle, theMergeTolerance, -1)
+    }
+
+    /// Constructor
+    /// @param[in] theSmoothAngle smooth angle in radians or 0.0 to disable merging by angle
+    /// @param[in] theMergeTolerance node merging maximum distance
+    /// @param[in] theNbFacets estimated number of facets for map preallocation
+    pub fn new_real(theSmoothAngle: f64) -> cxx::UniquePtr<Self> {
+        Self::new_real2_int(theSmoothAngle, 0.0, -1)
+    }
+
+    /// Prepare and return result triangulation (temporary data will be truncated to result size).
+    pub fn result(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandlePolyTriangulation> {
+        crate::ffi::Poly_MergeNodesTool_result(self)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Poly_MergeNodesTool_get_type_descriptor()
+    }
+
+    /// Merge nodes of existing mesh and return the new mesh.
+    /// @param[in] theTris triangulation to add
+    /// @param[in] theTrsf transformation to apply
+    /// @param[in] theToReverse reverse triangle nodes order
+    /// @param[in] theSmoothAngle merge angle in radians
+    /// @param[in] theMergeTolerance linear merge tolerance
+    /// @param[in] theToForce return merged triangulation even if it's statistics is equal to input
+    /// one
+    /// @return merged triangulation or NULL on no result
+    pub fn merge_nodes(
+        theTris: &crate::ffi::HandlePolyTriangulation,
+        theTrsf: &crate::ffi::gp_Trsf,
+        theToReverse: bool,
+        theSmoothAngle: f64,
+        theMergeTolerance: f64,
+        theToForce: bool,
+    ) -> cxx::UniquePtr<crate::ffi::HandlePolyTriangulation> {
+        crate::ffi::Poly_MergeNodesTool_merge_nodes(
+            theTris,
+            theTrsf,
+            theToReverse,
+            theSmoothAngle,
+            theMergeTolerance,
+            theToForce,
+        )
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandlePolyMergeNodesTool> {
+        crate::ffi::Poly_MergeNodesTool_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandlePolyMergeNodesTool;
+
+impl HandlePolyMergeNodesTool {
+    /// Dereference this Handle to access the underlying Poly_MergeNodesTool
+    pub fn get(&self) -> &crate::ffi::Poly_MergeNodesTool {
+        crate::ffi::HandlePolyMergeNodesTool_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Poly_MergeNodesTool
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_MergeNodesTool> {
+        crate::ffi::HandlePolyMergeNodesTool_get_mut(self)
     }
 }
 
@@ -462,10 +1123,10 @@ impl Triangulation {
     }
 
     /// Copy constructor for triangulation.
-    pub fn new_handletriangulation(
+    pub fn new_handlepolytriangulation(
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_Triangulation_ctor_handletriangulation(theTriangulation)
+        crate::ffi::Poly_Triangulation_ctor_handlepolytriangulation(theTriangulation)
     }
 
     /// Constructs a triangulation from a set of triangles.
@@ -567,10 +1228,81 @@ impl HandlePolyTriangulation {
 }
 
 // ========================
+// From Poly_TriangulationParameters.hxx
+// ========================
+
+/// Represents initial set of parameters triangulation is built for.
+pub use crate::ffi::Poly_TriangulationParameters as TriangulationParameters;
+
+impl TriangulationParameters {
+    /// Constructor.
+    /// Initializes object with the given parameters.
+    /// @param theDeflection linear deflection
+    /// @param theAngle angular deflection
+    /// @param theMinSize minimum size
+    pub fn new_real3(theDeflection: f64, theAngle: f64, theMinSize: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_TriangulationParameters_ctor_real3(theDeflection, theAngle, theMinSize)
+    }
+
+    /// Constructor.
+    /// Initializes object with the given parameters.
+    /// @param theDeflection linear deflection
+    /// @param theAngle angular deflection
+    /// @param theMinSize minimum size
+    pub fn new_real2(theDeflection: f64, theAngle: f64) -> cxx::UniquePtr<Self> {
+        Self::new_real3(theDeflection, theAngle, -1.)
+    }
+
+    /// Constructor.
+    /// Initializes object with the given parameters.
+    /// @param theDeflection linear deflection
+    /// @param theAngle angular deflection
+    /// @param theMinSize minimum size
+    pub fn new_real(theDeflection: f64) -> cxx::UniquePtr<Self> {
+        Self::new_real3(theDeflection, -1., -1.)
+    }
+
+    /// Constructor.
+    /// Initializes object with the given parameters.
+    /// @param theDeflection linear deflection
+    /// @param theAngle angular deflection
+    /// @param theMinSize minimum size
+    pub fn new() -> cxx::UniquePtr<Self> {
+        Self::new_real3(-1., -1., -1.)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Poly_TriangulationParameters_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandlePolyTriangulationParameters> {
+        crate::ffi::Poly_TriangulationParameters_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandlePolyTriangulationParameters;
+
+impl HandlePolyTriangulationParameters {
+    /// Dereference this Handle to access the underlying Poly_TriangulationParameters
+    pub fn get(&self) -> &crate::ffi::Poly_TriangulationParameters {
+        crate::ffi::HandlePolyTriangulationParameters_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Poly_TriangulationParameters
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_TriangulationParameters> {
+        crate::ffi::HandlePolyTriangulationParameters_get_mut(self)
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
     Poly_Array1OfTriangle as Array1OfTriangle, Poly_ListOfTriangulation as ListOfTriangulation,
-    Poly_TriangulationParameters as TriangulationParameters,
 };

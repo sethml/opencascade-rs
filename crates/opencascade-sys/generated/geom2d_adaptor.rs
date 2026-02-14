@@ -24,17 +24,17 @@ impl Curve {
         crate::ffi::Geom2dAdaptor_Curve_ctor()
     }
 
-    pub fn new_handlecurve(C: &crate::ffi::HandleGeom2dCurve) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom2dAdaptor_Curve_ctor_handlecurve(C)
+    pub fn new_handlegeom2dcurve(C: &crate::ffi::HandleGeom2dCurve) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2dAdaptor_Curve_ctor_handlegeom2dcurve(C)
     }
 
     /// Standard_ConstructionError is raised if Ufirst>Ulast
-    pub fn new_handlecurve_real2(
+    pub fn new_handlegeom2dcurve_real2(
         C: &crate::ffi::HandleGeom2dCurve,
         UFirst: f64,
         ULast: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom2dAdaptor_Curve_ctor_handlecurve_real2(C, UFirst, ULast)
+        crate::ffi::Geom2dAdaptor_Curve_ctor_handlegeom2dcurve_real2(C, UFirst, ULast)
     }
 
     /// Shallow copy of adaptor
@@ -102,6 +102,14 @@ impl Curve {
 
     pub fn parabola(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
         crate::ffi::Geom2dAdaptor_Curve_parabola(self)
+    }
+
+    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBezierCurve> {
+        crate::ffi::Geom2dAdaptor_Curve_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        crate::ffi::Geom2dAdaptor_Curve_b_spline(self)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

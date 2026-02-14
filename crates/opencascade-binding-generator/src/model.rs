@@ -394,7 +394,7 @@ impl Type {
             Type::F64 => "real".to_string(),
             Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => inner.short_name(),
             Type::ConstPtr(inner) | Type::MutPtr(inner) => format!("{}ptr", inner.short_name()),
-            Type::Handle(name) => format!("handle{}", extract_short_name(name)),
+            Type::Handle(name) => format!("handle{}", name.to_lowercase().replace('_', "")),
             Type::Class(name) => extract_short_name(name),
         }
     }

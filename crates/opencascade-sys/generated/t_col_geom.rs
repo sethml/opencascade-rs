@@ -7,7 +7,105 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From TColGeom_HArray1OfCurve.hxx
+// ========================
+
+pub use crate::ffi::TColGeom_HArray1OfCurve as HArray1OfCurve;
+
+impl HArray1OfCurve {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColGeom_HArray1OfCurve_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColGeom_HArray1OfCurve_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_array1ofcurve(
+        theOther: &crate::ffi::TColGeom_Array1OfCurve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColGeom_HArray1OfCurve_ctor_array1ofcurve(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColGeom_HArray1OfCurve_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColGeomHArray1OfCurve> {
+        crate::ffi::TColGeom_HArray1OfCurve_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColGeomHArray1OfCurve;
+
+impl HandleTColGeomHArray1OfCurve {
+    /// Dereference this Handle to access the underlying TColGeom_HArray1OfCurve
+    pub fn get(&self) -> &crate::ffi::TColGeom_HArray1OfCurve {
+        crate::ffi::HandleTColGeomHArray1OfCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColGeom_HArray1OfCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColGeom_HArray1OfCurve> {
+        crate::ffi::HandleTColGeomHArray1OfCurve_get_mut(self)
+    }
+}
+
+// ========================
+// From TColGeom_HSequenceOfBoundedCurve.hxx
+// ========================
+
+pub use crate::ffi::TColGeom_HSequenceOfBoundedCurve as HSequenceOfBoundedCurve;
+
+impl HSequenceOfBoundedCurve {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColGeom_HSequenceOfBoundedCurve_ctor()
+    }
+
+    pub fn new_sequenceofboundedcurve(
+        theOther: &crate::ffi::TColGeom_SequenceOfBoundedCurve,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColGeom_HSequenceOfBoundedCurve_ctor_sequenceofboundedcurve(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TColGeom_HSequenceOfBoundedCurve_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColGeomHSequenceOfBoundedCurve> {
+        crate::ffi::TColGeom_HSequenceOfBoundedCurve_to_handle(obj)
+    }
+}
+
+pub use crate::ffi::HandleTColGeomHSequenceOfBoundedCurve;
+
+impl HandleTColGeomHSequenceOfBoundedCurve {
+    /// Dereference this Handle to access the underlying TColGeom_HSequenceOfBoundedCurve
+    pub fn get(&self) -> &crate::ffi::TColGeom_HSequenceOfBoundedCurve {
+        crate::ffi::HandleTColGeomHSequenceOfBoundedCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColGeom_HSequenceOfBoundedCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColGeom_HSequenceOfBoundedCurve> {
+        crate::ffi::HandleTColGeomHSequenceOfBoundedCurve_get_mut(self)
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::TColGeom_SequenceOfCurve as SequenceOfCurve;
+pub use crate::ffi::{
+    TColGeom_Array1OfCurve as Array1OfCurve,
+    TColGeom_SequenceOfBoundedCurve as SequenceOfBoundedCurve,
+    TColGeom_SequenceOfCurve as SequenceOfCurve,
+};

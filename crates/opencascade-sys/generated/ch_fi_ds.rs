@@ -304,6 +304,11 @@ impl ElSpine {
     pub fn nb_knots(&self) -> i32 {
         crate::ffi::ChFiDS_ElSpine_inherited_NbKnots(self)
     }
+
+    /// Inherited from Adaptor3d_Curve: OffsetCurve()
+    pub fn offset_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetCurve> {
+        crate::ffi::ChFiDS_ElSpine_inherited_OffsetCurve(self)
+    }
 }
 
 // ========================
