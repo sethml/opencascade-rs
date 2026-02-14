@@ -5,7 +5,6 @@ members = [
     "crates/opencascade",
     "crates/opencascade-binding-generator",
     "crates/opencascade-sys",
-    "crates/opencascade-sys-old",
     "crates/viewer", "crates/wasm-example",
     "examples",
 ]
