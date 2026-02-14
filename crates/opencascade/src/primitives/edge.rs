@@ -80,7 +80,7 @@ impl Edge {
     pub fn bezier(points: impl IntoIterator<Item = DVec3>) -> Self {
         let points: Vec<DVec3> = points.into_iter().collect();
         let n = points.len() as i32;
-        let mut poles = t_colgp::Array1OfPnt::new_with_bounds(1, n);
+        let mut poles = t_colgp::Array1OfPnt::new_int2(1, n);
         for (i, p) in points.iter().enumerate() {
             let pnt = make_point(*p);
             poles.pin_mut().set_value(i as i32 + 1, &pnt);
@@ -109,7 +109,7 @@ impl Edge {
         let n = points.len() as i32;
 
         // Build Array1OfPnt, then wrap in HArray1OfPnt for the interpolator
-        let mut poles = t_colgp::Array1OfPnt::new_with_bounds(1, n);
+        let mut poles = t_colgp::Array1OfPnt::new_int2(1, n);
         for (i, p) in points.iter().enumerate() {
             let pnt = make_point(*p);
             poles.pin_mut().set_value(i as i32 + 1, &pnt);

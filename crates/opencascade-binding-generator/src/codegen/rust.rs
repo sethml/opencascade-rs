@@ -901,6 +901,38 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
         }
     }
 
+    // Add iter() method for non-array collection types
+    match coll.kind {
+        CollectionKind::Array1 | CollectionKind::Array2 => {}
+        _ => {
+            let iter_type = format!("{}Iterator", coll.short_name);
+            out.push_str(&format!(
+                "    /// Create an iterator over the collection\n    pub fn iter(&self) -> cxx::UniquePtr<crate::ffi::{}> {{\n        crate::ffi::{}_iter(self)\n    }}\n\n",
+                iter_type, coll_name
+            ));
+        }
+    }
+
     out.push_str("}\n\n");
+
+    // Add iterator impl block with next() for non-array collection types
+    match coll.kind {
+        CollectionKind::Array1 | CollectionKind::Array2 => {}
+        _ => {
+            let iter_type = format!("{}Iterator", coll.short_name);
+            let next_suffix = match coll.kind {
+                CollectionKind::DataMap | CollectionKind::IndexedDataMap => "_next_key",
+                _ => "_next",
+            };
+            let next_fn = format!("{}{}", iter_type, next_suffix);
+            out.push_str(&format!("impl {} {{\n", iter_type));
+            out.push_str(&format!(
+                "    /// Get next element (returns null UniquePtr when done)\n    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::{}> {{\n        crate::ffi::{}(self)\n    }}\n",
+                elem, next_fn
+            ));
+            out.push_str("}\n\n");
+        }
+    }
+
     out
 }

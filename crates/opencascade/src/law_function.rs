@@ -13,7 +13,7 @@ pub(crate) fn law_function_from_graph(
     let pairs: Vec<(f64, f64)> = pairs.into_iter().collect();
     let n = pairs.len() as i32;
 
-    let mut array = t_colgp::Array1OfPnt2d::new_with_bounds(1, n);
+    let mut array = t_colgp::Array1OfPnt2d::new_int2(1, n);
     for (i, &(param, radius)) in pairs.iter().enumerate() {
         let pnt2d = make_point2d(DVec2::new(param, radius));
         array.pin_mut().set_value(i as i32 + 1, &pnt2d);

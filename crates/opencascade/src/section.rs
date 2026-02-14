@@ -18,16 +18,16 @@ impl Section {
     /// Get the edges of the resulting intersection.
     pub fn section_edges(mut self) -> Vec<Shape> {
         let list = self.inner.pin_mut().section_edges();
+        let mut shapes = Vec::new();
         let mut iter = list.iter();
-        let mut edges = Vec::new();
         loop {
             let shape = iter.pin_mut().next();
             if shape.is_null() {
                 break;
             }
-            edges.push(Shape::from_shape(&shape));
+            shapes.push(Shape::from_shape(&shape));
         }
-        edges
+        shapes
     }
 }
 

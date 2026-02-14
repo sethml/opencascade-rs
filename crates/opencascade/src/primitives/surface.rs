@@ -18,7 +18,7 @@ impl Surface {
         let n_rows = rows.len() as i32;
         let n_cols = rows[0].len() as i32;
 
-        let mut array = t_colgp::Array2OfPnt::new_with_bounds(1, n_rows, 1, n_cols);
+        let mut array = t_colgp::Array2OfPnt::new_int4(1, n_rows, 1, n_cols);
         for (i, row) in rows.iter().enumerate() {
             assert_eq!(
                 row.len() as i32, n_cols,

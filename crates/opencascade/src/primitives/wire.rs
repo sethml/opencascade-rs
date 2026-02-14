@@ -111,7 +111,7 @@ impl Wire {
         let wire_hseq = wires_handle.get();
         let wire_seq = wire_hseq.sequence();
 
-        for i in 1..=wire_seq.len() {
+        for i in 1..=wire_seq.size() {
             let wire_shape = wire_seq.value(i);
             let wire = topo_ds::wire(wire_shape);
             make_wire.pin_mut().add_wire(wire);

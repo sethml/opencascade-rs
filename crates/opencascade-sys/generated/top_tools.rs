@@ -79,6 +79,18 @@ impl DataMapOfShapeShape {
     pub fn contains(&self, key: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::TopTools_DataMapOfShapeShape_contains(self, key)
     }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> cxx::UniquePtr<crate::ffi::DataMapOfShapeShapeIterator> {
+        crate::ffi::TopTools_DataMapOfShapeShape_iter(self)
+    }
+}
+
+impl DataMapOfShapeShapeIterator {
+    /// Get next element (returns null UniquePtr when done)
+    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::DataMapOfShapeShapeIterator_next_key(self)
+    }
 }
 
 impl IndexedDataMapOfShapeListOfShape {
@@ -133,6 +145,18 @@ impl IndexedDataMapOfShapeListOfShape {
     pub fn contains(&self, key: &crate::ffi::TopoDS_Shape) -> bool {
         crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_contains(self, key)
     }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> cxx::UniquePtr<crate::ffi::IndexedDataMapOfShapeListOfShapeIterator> {
+        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_iter(self)
+    }
+}
+
+impl IndexedDataMapOfShapeListOfShapeIterator {
+    /// Get next element (returns null UniquePtr when done)
+    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::IndexedDataMapOfShapeListOfShapeIterator_next_key(self)
+    }
 }
 
 impl IndexedMapOfShape {
@@ -159,6 +183,18 @@ impl IndexedMapOfShape {
     /// Get element at 1-based index
     pub fn find_key(&self, index: i32) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::TopTools_IndexedMapOfShape_find_key(self, index)
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> cxx::UniquePtr<crate::ffi::IndexedMapOfShapeIterator> {
+        crate::ffi::TopTools_IndexedMapOfShape_iter(self)
+    }
+}
+
+impl IndexedMapOfShapeIterator {
+    /// Get next element (returns null UniquePtr when done)
+    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::IndexedMapOfShapeIterator_next(self)
     }
 }
 
@@ -187,6 +223,18 @@ impl ListOfShape {
     pub fn prepend(self: std::pin::Pin<&mut Self>, item: &crate::ffi::TopoDS_Shape) {
         crate::ffi::TopTools_ListOfShape_prepend(self, item)
     }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> cxx::UniquePtr<crate::ffi::ListOfShapeIterator> {
+        crate::ffi::TopTools_ListOfShape_iter(self)
+    }
+}
+
+impl ListOfShapeIterator {
+    /// Get next element (returns null UniquePtr when done)
+    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ListOfShapeIterator_next(self)
+    }
 }
 
 impl MapOfShape {
@@ -208,6 +256,18 @@ impl MapOfShape {
     /// Add an element, returns index
     pub fn add(self: std::pin::Pin<&mut Self>, item: &crate::ffi::TopoDS_Shape) -> i32 {
         crate::ffi::TopTools_MapOfShape_add(self, item)
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> cxx::UniquePtr<crate::ffi::MapOfShapeIterator> {
+        crate::ffi::TopTools_MapOfShape_iter(self)
+    }
+}
+
+impl MapOfShapeIterator {
+    /// Get next element (returns null UniquePtr when done)
+    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::MapOfShapeIterator_next(self)
     }
 }
 
@@ -235,6 +295,18 @@ impl SequenceOfShape {
     /// Get element at 1-based index
     pub fn value(&self, index: i32) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::TopTools_SequenceOfShape_value(self, index)
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> cxx::UniquePtr<crate::ffi::SequenceOfShapeIterator> {
+        crate::ffi::TopTools_SequenceOfShape_iter(self)
+    }
+}
+
+impl SequenceOfShapeIterator {
+    /// Get next element (returns null UniquePtr when done)
+    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::SequenceOfShapeIterator_next(self)
     }
 }
 
