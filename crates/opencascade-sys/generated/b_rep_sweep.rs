@@ -284,6 +284,66 @@ impl Prism {
         crate::ffi::BRepSweep_Prism_ctor_shape_dir_bool3(S, D, Inf, Copy, Canonize)
     }
 
+    /// Builds the prism of base S and vector V. If C is true,
+    /// S is copied. If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_vec_bool(
+        S: &crate::ffi::TopoDS_Shape,
+        V: &crate::ffi::gp_Vec,
+        Copy: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepSweep_Prism_ctor_shape_vec_bool(S, V, Copy)
+    }
+
+    /// Builds the prism of base S and vector V. If C is true,
+    /// S is copied. If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_vec(
+        S: &crate::ffi::TopoDS_Shape,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepSweep_Prism_ctor_shape_vec(S, V)
+    }
+
+    /// Builds a semi-infinite or an infinite prism of base S.
+    /// If Copy is true S is copied.  If Inf is true the prism
+    /// is infinite, if Inf is false the  prism is infinite in
+    /// the direction D. If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_dir_bool2(
+        S: &crate::ffi::TopoDS_Shape,
+        D: &crate::ffi::gp_Dir,
+        Inf: bool,
+        Copy: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepSweep_Prism_ctor_shape_dir_bool2(S, D, Inf, Copy)
+    }
+
+    /// Builds a semi-infinite or an infinite prism of base S.
+    /// If Copy is true S is copied.  If Inf is true the prism
+    /// is infinite, if Inf is false the  prism is infinite in
+    /// the direction D. If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_dir_bool(
+        S: &crate::ffi::TopoDS_Shape,
+        D: &crate::ffi::gp_Dir,
+        Inf: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepSweep_Prism_ctor_shape_dir_bool(S, D, Inf)
+    }
+
+    /// Builds a semi-infinite or an infinite prism of base S.
+    /// If Copy is true S is copied.  If Inf is true the prism
+    /// is infinite, if Inf is false the  prism is infinite in
+    /// the direction D. If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_dir(
+        S: &crate::ffi::TopoDS_Shape,
+        D: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepSweep_Prism_ctor_shape_dir(S, D)
+    }
+
     /// Returns the TopoDS Shape attached to the prism.
     pub fn shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::BRepSweep_Prism_shape(self)
@@ -363,6 +423,25 @@ impl Revol {
         C: bool,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepSweep_Revol_ctor_shape_ax1_bool(S, A, C)
+    }
+
+    /// Builds the Revol of meridian S axis A  and angle D. If
+    /// C is true S is copied.
+    pub fn new_shape_ax1_real(
+        S: &crate::ffi::TopoDS_Shape,
+        A: &crate::ffi::gp_Ax1,
+        D: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepSweep_Revol_ctor_shape_ax1_real(S, A, D)
+    }
+
+    /// Builds the Revol of meridian S  axis A and angle 2*Pi.
+    /// If C is true S is copied.
+    pub fn new_shape_ax1(
+        S: &crate::ffi::TopoDS_Shape,
+        A: &crate::ffi::gp_Ax1,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepSweep_Revol_ctor_shape_ax1(S, A)
     }
 
     /// Returns the TopoDS Shape attached to the Revol.
@@ -700,6 +779,20 @@ impl Translation {
         crate::ffi::BRepSweep_Translation_ctor_shape_numshape_location_vec_bool2(
             S, N, L, V, C, Canonize,
         )
+    }
+
+    /// Creates  a  topology by  translating <S>  with the
+    /// vector  <V>. If  C  is   true S Sucomponents   are
+    /// copied. If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_numshape_location_vec_bool(
+        S: &crate::ffi::TopoDS_Shape,
+        N: &crate::ffi::Sweep_NumShape,
+        L: &crate::ffi::TopLoc_Location,
+        V: &crate::ffi::gp_Vec,
+        C: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepSweep_Translation_ctor_shape_numshape_location_vec_bool(S, N, L, V, C)
     }
 
     /// Builds the vertex addressed by [aGenV,aDirV], with its

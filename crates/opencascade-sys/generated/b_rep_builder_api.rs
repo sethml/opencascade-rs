@@ -897,6 +897,65 @@ impl MakeFace {
         crate::ffi::BRepBuilderAPI_MakeFace_ctor_face_wire(F, W)
     }
 
+    /// Find a surface from the wire and make a face.
+    /// if <OnlyPlane> is true, the computed surface will be
+    /// a plane. If it is not possible to find a plane, the
+    /// flag NotDone will be set.
+    pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeFace_ctor_wire(W)
+    }
+
+    /// Make a face from a plane and a wire.
+    pub fn new_pln_wire(
+        P: &crate::ffi::gp_Pln,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeFace_ctor_pln_wire(P, W)
+    }
+
+    /// Make a face from a cylinder and a wire.
+    pub fn new_cylinder_wire(
+        C: &crate::ffi::gp_Cylinder,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeFace_ctor_cylinder_wire(C, W)
+    }
+
+    /// Make a face from a cone and a wire.
+    pub fn new_cone_wire(
+        C: &crate::ffi::gp_Cone,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeFace_ctor_cone_wire(C, W)
+    }
+
+    /// Make a face from a sphere and a wire.
+    pub fn new_sphere_wire(
+        S: &crate::ffi::gp_Sphere,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeFace_ctor_sphere_wire(S, W)
+    }
+
+    /// Make a face from a torus and a wire.
+    pub fn new_torus_wire(
+        C: &crate::ffi::gp_Torus,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeFace_ctor_torus_wire(C, W)
+    }
+
+    /// Make a face from a Surface and a wire.
+    /// If the surface S is not plane,
+    /// it must contain pcurves for all edges in W,
+    /// otherwise the wrong shape will be created.
+    pub fn new_handlesurface_wire(
+        S: &crate::ffi::HandleGeomSurface,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlesurface_wire(S, W)
+    }
+
     /// Returns the construction status
     /// BRepBuilderAPI_FaceDone if the face is built, or
     /// -   another value of the BRepBuilderAPI_FaceError
@@ -1543,6 +1602,61 @@ impl Sewing {
         )
     }
 
+    /// Creates an object with
+    /// tolerance of connexity
+    /// option for sewing (if false only control)
+    /// option for analysis of degenerated shapes
+    /// option for cutting of free edges.
+    /// option for non manifold processing
+    pub fn new_real_bool3(
+        tolerance: f64,
+        option1: bool,
+        option2: bool,
+        option3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_Sewing_ctor_real_bool3(tolerance, option1, option2, option3)
+    }
+
+    /// Creates an object with
+    /// tolerance of connexity
+    /// option for sewing (if false only control)
+    /// option for analysis of degenerated shapes
+    /// option for cutting of free edges.
+    /// option for non manifold processing
+    pub fn new_real_bool2(tolerance: f64, option1: bool, option2: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_Sewing_ctor_real_bool2(tolerance, option1, option2)
+    }
+
+    /// Creates an object with
+    /// tolerance of connexity
+    /// option for sewing (if false only control)
+    /// option for analysis of degenerated shapes
+    /// option for cutting of free edges.
+    /// option for non manifold processing
+    pub fn new_real_bool(tolerance: f64, option1: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_Sewing_ctor_real_bool(tolerance, option1)
+    }
+
+    /// Creates an object with
+    /// tolerance of connexity
+    /// option for sewing (if false only control)
+    /// option for analysis of degenerated shapes
+    /// option for cutting of free edges.
+    /// option for non manifold processing
+    pub fn new_real(tolerance: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_Sewing_ctor_real(tolerance)
+    }
+
+    /// Creates an object with
+    /// tolerance of connexity
+    /// option for sewing (if false only control)
+    /// option for analysis of degenerated shapes
+    /// option for cutting of free edges.
+    /// option for non manifold processing
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_Sewing_ctor()
+    }
+
     /// Gives a modifieded subshape
     pub fn modified_sub_shape(
         &self,
@@ -1634,6 +1748,39 @@ impl Transform {
             theCopyGeom,
             theCopyMesh,
         )
+    }
+
+    /// Creates a transformation from the gp_Trsf <theTrsf>, and
+    /// applies it to the shape <theShape>. If the transformation
+    /// is  direct   and isometric (determinant  =  1) and
+    /// <theCopyGeom> =  Standard_False,  the resulting shape  is
+    /// <theShape> on   which  a  new  location has    been  set.
+    /// Otherwise,  the   transformation is applied   on a
+    /// duplication of <theShape>.
+    /// If <theCopyMesh> is true, the triangulation will be copied,
+    /// and the copy will be assigned to the result shape.
+    pub fn new_shape_trsf_bool(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theTrsf: &crate::ffi::gp_Trsf,
+        theCopyGeom: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_Transform_ctor_shape_trsf_bool(theShape, theTrsf, theCopyGeom)
+    }
+
+    /// Creates a transformation from the gp_Trsf <theTrsf>, and
+    /// applies it to the shape <theShape>. If the transformation
+    /// is  direct   and isometric (determinant  =  1) and
+    /// <theCopyGeom> =  Standard_False,  the resulting shape  is
+    /// <theShape> on   which  a  new  location has    been  set.
+    /// Otherwise,  the   transformation is applied   on a
+    /// duplication of <theShape>.
+    /// If <theCopyMesh> is true, the triangulation will be copied,
+    /// and the copy will be assigned to the result shape.
+    pub fn new_shape_trsf(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theTrsf: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBuilderAPI_Transform_ctor_shape_trsf(theShape, theTrsf)
     }
 
     /// Returns the modified shape corresponding to <S>.

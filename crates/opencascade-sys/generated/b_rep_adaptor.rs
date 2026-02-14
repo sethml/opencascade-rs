@@ -394,6 +394,14 @@ impl Surface {
         crate::ffi::BRepAdaptor_Surface_ctor_face_bool(F, R)
     }
 
+    /// Creates a surface to  access the geometry  of <F>.
+    /// If  <Restriction> is  true  the parameter range is
+    /// the  parameter  range  in   the  UV space  of  the
+    /// restriction.
+    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAdaptor_Surface_ctor_face(F)
+    }
+
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
         crate::ffi::BRepAdaptor_Surface_shallow_copy(self)

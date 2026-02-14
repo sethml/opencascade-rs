@@ -165,6 +165,294 @@ impl TangentialDeflection {
         )
     }
 
+    /// Constructor for 3D curve.
+    /// @param[in] theC  3d curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve_real2_int_real(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+        theUTol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real2_int_real(
+            theC,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+            theUTol,
+        )
+    }
+
+    /// Constructor for 3D curve.
+    /// @param[in] theC  3d curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve_real2_int(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real2_int(
+            theC,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+        )
+    }
+
+    /// Constructor for 3D curve.
+    /// @param[in] theC  3d curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve_real2(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real2(
+            theC,
+            theAngularDeflection,
+            theCurvatureDeflection,
+        )
+    }
+
+    /// Constructor for 3D curve with restricted range.
+    /// @param[in] theC  3d curve
+    /// @param[in] theFirstParameter  first parameter on curve
+    /// @param[in] theLastParameter   last  parameter on curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param theUTo  l[in]  tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve_real4_int_real(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theFirstParameter: f64,
+        theLastParameter: f64,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+        theUTol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real4_int_real(
+            theC,
+            theFirstParameter,
+            theLastParameter,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+            theUTol,
+        )
+    }
+
+    /// Constructor for 3D curve with restricted range.
+    /// @param[in] theC  3d curve
+    /// @param[in] theFirstParameter  first parameter on curve
+    /// @param[in] theLastParameter   last  parameter on curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param theUTo  l[in]  tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve_real4_int(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theFirstParameter: f64,
+        theLastParameter: f64,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real4_int(
+            theC,
+            theFirstParameter,
+            theLastParameter,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+        )
+    }
+
+    /// Constructor for 3D curve with restricted range.
+    /// @param[in] theC  3d curve
+    /// @param[in] theFirstParameter  first parameter on curve
+    /// @param[in] theLastParameter   last  parameter on curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param theUTo  l[in]  tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve_real4(
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theFirstParameter: f64,
+        theLastParameter: f64,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve_real4(
+            theC,
+            theFirstParameter,
+            theLastParameter,
+            theAngularDeflection,
+            theCurvatureDeflection,
+        )
+    }
+
+    /// Constructor for 2D curve.
+    /// @param[in] theC  2d curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve2d_real2_int_real(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+        theUTol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real2_int_real(
+            theC,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+            theUTol,
+        )
+    }
+
+    /// Constructor for 2D curve.
+    /// @param[in] theC  2d curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve2d_real2_int(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real2_int(
+            theC,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+        )
+    }
+
+    /// Constructor for 2D curve.
+    /// @param[in] theC  2d curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve2d_real2(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real2(
+            theC,
+            theAngularDeflection,
+            theCurvatureDeflection,
+        )
+    }
+
+    /// Constructor for 2D curve with restricted range.
+    /// @param[in] theC  2d curve
+    /// @param[in] theFirstParameter  first parameter on curve
+    /// @param[in] theLastParameter   last  parameter on curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve2d_real4_int_real(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theFirstParameter: f64,
+        theLastParameter: f64,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+        theUTol: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real4_int_real(
+            theC,
+            theFirstParameter,
+            theLastParameter,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+            theUTol,
+        )
+    }
+
+    /// Constructor for 2D curve with restricted range.
+    /// @param[in] theC  2d curve
+    /// @param[in] theFirstParameter  first parameter on curve
+    /// @param[in] theLastParameter   last  parameter on curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve2d_real4_int(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theFirstParameter: f64,
+        theLastParameter: f64,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real4_int(
+            theC,
+            theFirstParameter,
+            theLastParameter,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+        )
+    }
+
+    /// Constructor for 2D curve with restricted range.
+    /// @param[in] theC  2d curve
+    /// @param[in] theFirstParameter  first parameter on curve
+    /// @param[in] theLastParameter   last  parameter on curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn new_curve2d_real4(
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theFirstParameter: f64,
+        theLastParameter: f64,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GCPnts_TangentialDeflection_ctor_curve2d_real4(
+            theC,
+            theFirstParameter,
+            theLastParameter,
+            theAngularDeflection,
+            theCurvatureDeflection,
+        )
+    }
+
     pub fn value(&self, I: i32) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
         crate::ffi::GCPnts_TangentialDeflection_value(self, I)
     }

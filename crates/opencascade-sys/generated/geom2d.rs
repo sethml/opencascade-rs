@@ -803,6 +803,29 @@ impl Ellipse {
         crate::ffi::Geom2d_Ellipse_ctor_ax22d_real2(Axis, MajorRadius, MinorRadius)
     }
 
+    /// Creates an ellipse defined by its major and minor radii,
+    /// MajorRadius and MinorRadius, and positioned
+    /// in the plane by its major axis MajorAxis; the
+    /// center of the ellipse is the origin of MajorAxis
+    /// and the unit vector of MajorAxis is the "X
+    /// Direction" of the local coordinate system of the
+    /// ellipse; this coordinate system is direct if Sense
+    /// is true (default value) or indirect if Sense is false.
+    /// Warnings :
+    /// It is not forbidden to create an ellipse with MajorRadius =
+    /// MinorRadius.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - MajorRadius is less than MinorRadius, or
+    /// - MinorRadius is less than 0.
+    pub fn new_ax2d_real2(
+        MajorAxis: &crate::ffi::gp_Ax2d,
+        MajorRadius: f64,
+        MinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_Ellipse_ctor_ax2d_real2(MajorAxis, MajorRadius, MinorRadius)
+    }
+
     /// Converts this ellipse into a gp_Elips2d ellipse.
     pub fn elips2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
         crate::ffi::Geom2d_Ellipse_elips2d(self)
@@ -1230,6 +1253,87 @@ impl TrimmedCurve {
             Sense,
             theAdjustPeriodic,
         )
+    }
+
+    /// Creates a trimmed curve from the basis curve C limited between
+    /// U1 and U2.
+    ///
+    /// . U1 can be greater or lower than U2.
+    /// . The returned curve is oriented from U1 to U2.
+    /// . If the basis curve C is periodic there is an ambiguity
+    /// because two parts are available. In this case by default
+    /// the trimmed curve has the same orientation as the basis
+    /// curve (Sense = True). If Sense = False then the orientation
+    /// of the trimmed curve is opposite to the orientation of the
+    /// basis curve C.
+    /// If the curve is closed but not periodic it is not possible
+    /// to keep the part of the curve including the junction point
+    /// (except if the junction point is at the beginning or
+    /// at the end of the trimmed curve) because you could lose the
+    /// fundamental characteristics of the basis curve which are
+    /// used for example to compute the derivatives of the trimmed
+    /// curve. So for a closed curve the rules are the same as for
+    /// a open curve.
+    /// Warnings :
+    /// In this package the entities are not shared. The TrimmedCurve is
+    /// built with a copy of the curve C. So when C is modified the
+    /// TrimmedCurve is not modified
+    /// Warnings :
+    /// If <C> is periodic and <theAdjustPeriodic> is True, parametrics
+    /// bounds of the TrimmedCurve, can be different to [<U1>;<U2>},
+    /// if <U1> or <U2> are not in the principal period.
+    /// Include :
+    /// For more explanation see the scheme given with this class.
+    /// Raises ConstructionError the C is not periodic and U1 or U2 are out of
+    /// the bounds of C.
+    /// Raised if U1 = U2.
+    pub fn new_handlecurve_real2_bool(
+        C: &crate::ffi::HandleGeom2dCurve,
+        U1: f64,
+        U2: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_TrimmedCurve_ctor_handlecurve_real2_bool(C, U1, U2, Sense)
+    }
+
+    /// Creates a trimmed curve from the basis curve C limited between
+    /// U1 and U2.
+    ///
+    /// . U1 can be greater or lower than U2.
+    /// . The returned curve is oriented from U1 to U2.
+    /// . If the basis curve C is periodic there is an ambiguity
+    /// because two parts are available. In this case by default
+    /// the trimmed curve has the same orientation as the basis
+    /// curve (Sense = True). If Sense = False then the orientation
+    /// of the trimmed curve is opposite to the orientation of the
+    /// basis curve C.
+    /// If the curve is closed but not periodic it is not possible
+    /// to keep the part of the curve including the junction point
+    /// (except if the junction point is at the beginning or
+    /// at the end of the trimmed curve) because you could lose the
+    /// fundamental characteristics of the basis curve which are
+    /// used for example to compute the derivatives of the trimmed
+    /// curve. So for a closed curve the rules are the same as for
+    /// a open curve.
+    /// Warnings :
+    /// In this package the entities are not shared. The TrimmedCurve is
+    /// built with a copy of the curve C. So when C is modified the
+    /// TrimmedCurve is not modified
+    /// Warnings :
+    /// If <C> is periodic and <theAdjustPeriodic> is True, parametrics
+    /// bounds of the TrimmedCurve, can be different to [<U1>;<U2>},
+    /// if <U1> or <U2> are not in the principal period.
+    /// Include :
+    /// For more explanation see the scheme given with this class.
+    /// Raises ConstructionError the C is not periodic and U1 or U2 are out of
+    /// the bounds of C.
+    /// Raised if U1 = U2.
+    pub fn new_handlecurve_real2(
+        C: &crate::ffi::HandleGeom2dCurve,
+        U1: f64,
+        U2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom2d_TrimmedCurve_ctor_handlecurve_real2(C, U1, U2)
     }
 
     /// Returns the basis curve.

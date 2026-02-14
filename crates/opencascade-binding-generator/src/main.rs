@@ -91,7 +91,14 @@ fn main() -> Result<()> {
     };
 
     println!("Parsing {} headers...", headers_to_process.len());
-    let parsed = parser::parse_headers(&headers_to_process, &args.include_dirs, args.verbose)?;
+    let mut parsed = parser::parse_headers(&headers_to_process, &args.include_dirs, args.verbose)?;
+
+    // Detect "utility namespace classes" — classes with no underscore in the name
+    // (class name == module name), only static methods, and no instance methods/constructors.
+    // These are OCCT's namespace-like patterns (e.g., `gp` with `gp::OX()`, `gp::Origin()`).
+    // Convert their static methods to free functions so they appear as module-level
+    // functions (e.g., `gp::ox()`) instead of awkward `gp::gp::ox()`.
+    convert_utility_classes_to_functions(&mut parsed, args.verbose);
 
     if args.verbose {
         println!("\nParsing complete. Summary:");
@@ -166,6 +173,11 @@ fn main() -> Result<()> {
     let all_enums: Vec<_> = parsed.iter().flat_map(|h| &h.enums).collect();
     let all_functions: Vec<_> = parsed.iter().flat_map(|h| &h.functions).collect();
 
+    // Get collection type names (needed for symbol resolution filtering)
+    let all_collections = codegen::collections::all_known_collections();
+    let collection_type_names: HashSet<String> =
+        all_collections.iter().map(|c| c.typedef_name.clone()).collect();
+
     // Build symbol table (Pass 1 of two-pass architecture)
     // This resolves all symbols and makes binding decisions ONCE
     let ordered_modules = graph.modules_in_order();
@@ -175,6 +187,7 @@ fn main() -> Result<()> {
         &all_classes,
         &all_enums,
         &all_functions,
+        &collection_type_names,
     );
 
     if args.verbose {
@@ -236,6 +249,97 @@ fn main() -> Result<()> {
 
     // Generate unified FFI architecture
     generate_unified(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers)
+}
+
+/// Detect "utility namespace classes" and convert their static methods to free functions.
+///
+/// OCCT has a pattern where some packages use a class with only static methods instead of
+/// a C++ namespace (e.g., `class gp { static const gp_Pnt& Origin(); ... }`). These are
+/// conceptually namespaces, not instantiable types.
+///
+/// Detection criteria:
+/// - Class name has no underscore (name == module, e.g., "gp")
+/// - Has ONLY static methods (no instance methods)
+/// - Has no constructors (or only a default constructor with no params)
+///
+/// Conversion: static methods → ParsedFunction entries in the same header,
+/// and the utility class is removed from the header's class list.
+fn convert_utility_classes_to_functions(
+    parsed: &mut [model::ParsedHeader],
+    verbose: bool,
+) {
+    for header in parsed.iter_mut() {
+        let mut functions_to_add = Vec::new();
+        let mut classes_to_remove = Vec::new();
+
+        for (idx, class) in header.classes.iter().enumerate() {
+            // Must have no underscore in the name (class name == module name pattern)
+            if class.name.contains('_') {
+                continue;
+            }
+
+            // Must have static methods
+            if class.static_methods.is_empty() {
+                continue;
+            }
+
+            // Must have NO instance methods
+            if !class.methods.is_empty() {
+                continue;
+            }
+
+            // Must have no meaningful constructors (allow synthetic/empty default)
+            let has_meaningful_ctors = class.constructors.iter().any(|c| !c.params.is_empty());
+            if has_meaningful_ctors {
+                continue;
+            }
+
+            // This is a utility class — convert static methods to functions
+            if verbose {
+                println!(
+                    "  Detected utility class '{}' with {} static methods → converting to module-level functions",
+                    class.name,
+                    class.static_methods.len()
+                );
+            }
+
+            for sm in &class.static_methods {
+                let mut return_type = sm.return_type.clone();
+
+                // If return type is ConstRef and there are no ref params,
+                // strip the ConstRef wrapper (return by-value copy). CXX can't
+                // express references from free functions with no borrowable
+                // params, so we copy instead.
+                let has_ref_params = sm.params.iter().any(|p| matches!(&p.ty, model::Type::ConstRef(_) | model::Type::MutRef(_)));
+                if !has_ref_params {
+                    if let Some(model::Type::ConstRef(inner)) = &return_type {
+                        return_type = Some(*inner.clone());
+                    }
+                }
+
+                functions_to_add.push(model::ParsedFunction {
+                    name: format!("{}::{}", class.name, sm.name),
+                    namespace: class.name.clone(),
+                    short_name: sm.name.clone(),
+                    module: class.module.clone(),
+                    comment: sm.comment.clone(),
+                    source_header: class.source_header.clone(),
+                    params: sm.params.clone(),
+                    return_type,
+                });
+            }
+
+            classes_to_remove.push(idx);
+        }
+
+        // Remove utility classes (in reverse order to preserve indices)
+        for idx in classes_to_remove.into_iter().rev() {
+            header.classes.remove(idx);
+        }
+
+        // Add converted functions
+        header.functions.extend(functions_to_add);
+    }
 }
 
 /// Dump the symbol table for debugging purposes
@@ -384,7 +488,6 @@ fn generate_unified(
     println!("Generating unified ffi.rs...");
     let ffi_code = codegen::rust::generate_unified_ffi(
         all_classes,
-        all_functions,
         &all_headers_list,
         &all_collections,
         symbol_table,
@@ -400,7 +503,6 @@ fn generate_unified(
     println!("Generating unified wrappers.hxx...");
     let cpp_code = codegen::cpp::generate_unified_wrappers(
         all_classes,
-        all_functions,
         &all_collections,
         known_headers,
         symbol_table,
@@ -540,16 +642,12 @@ fn generate_unified(
             .copied()
             .collect();
 
-        // Get functions for this module
-        let module_functions: Vec<_> = all_functions
-            .iter()
-            .filter(|f| f.module == module.name)
-            .copied()
-            .collect();
+        // Check if this module has any functions in the symbol table
+        let has_module_functions = !symbol_table.included_functions_for_module(&module.rust_name).is_empty();
 
         let has_module_enums = symbol_table.enums_by_module.contains_key(&module.rust_name);
         let has_extra_types = extra_types_by_module.contains_key(&module.name);
-        if module_classes.is_empty() && module_functions.is_empty() && !has_module_enums && !has_extra_types {
+        if module_classes.is_empty() && !has_module_functions && !has_module_enums && !has_extra_types {
             continue;
         }
 
@@ -577,7 +675,6 @@ fn generate_unified(
             &module.name,
             &module.rust_name,
             &module_classes,
-            &module_functions,
             &module_collections,
             symbol_table,
             module_bindings,
@@ -587,13 +684,14 @@ fn generate_unified(
         let module_path = args.output.join(format!("{}.rs", module.rust_name));
         std::fs::write(&module_path, reexport_code)?;
         generated_rs_files.push(module_path.clone());
-        println!("  Wrote: {} ({} types, {} functions, {} extra)",
-            module_path.display(), module_classes.len(), module_functions.len(), module_extra_types.len());
+        println!("  Wrote: {} ({} types, {} extra)",
+            module_path.display(), module_classes.len(), module_extra_types.len());
     }
 
     // Generate module files for extra types whose modules aren't in the graph
     // (e.g., handle types, opaque references from dependency headers)
     let graph_module_names: HashSet<&String> = ordered.iter().map(|m| &m.name).collect();
+    let graph_rust_names: HashSet<String> = ordered.iter().map(|m| m.rust_name.clone()).collect();
     let mut extra_only_modules: Vec<(String, String)> = Vec::new(); // (cpp_name, rust_name)
     for (module_name, types) in &extra_types_by_module {
         if !graph_module_names.contains(module_name) && !types.is_empty() {
@@ -601,7 +699,6 @@ fn generate_unified(
             let reexport_code = codegen::rust::generate_module_reexports(
                 module_name,
                 &rust_name,
-                &[],
                 &[],
                 &[],
                 symbol_table,
@@ -614,6 +711,35 @@ fn generate_unified(
             extra_only_modules.push((module_name.clone(), rust_name.clone()));
             println!("  Wrote: {} (extra types only, {} types)", module_path.display(), types.len());
         }
+    }
+
+    // Generate module files for function-only modules (utility classes converted
+    // to free functions that left no classes behind in the module)
+    let extra_type_modules: HashSet<String> = extra_only_modules.iter().map(|(_, r)| r.clone()).collect();
+    for (rust_module, _) in &symbol_table.functions_by_module {
+        if graph_rust_names.contains(rust_module) || extra_type_modules.contains(rust_module) {
+            continue;
+        }
+        let funcs = symbol_table.included_functions_for_module(rust_module);
+        if funcs.is_empty() {
+            continue;
+        }
+        // Derive the C++ module name from the namespace of the first function
+        let cpp_name = funcs[0].namespace.clone();
+        let reexport_code = codegen::rust::generate_module_reexports(
+            &cpp_name,
+            rust_module,
+            &[],
+            &[],
+            symbol_table,
+            &[],
+            &[],
+        );
+        let module_path = args.output.join(format!("{}.rs", rust_module));
+        std::fs::write(&module_path, &reexport_code)?;
+        generated_rs_files.push(module_path.clone());
+        extra_only_modules.push((cpp_name.clone(), rust_module.clone()));
+        println!("  Wrote: {} (function-only module, {} functions)", module_path.display(), funcs.len());
     }
 
     // 4. Generate lib.rs with module declarations

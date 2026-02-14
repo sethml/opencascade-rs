@@ -184,6 +184,17 @@ impl Writer {
         crate::ffi::IGESControl_Writer_ctor_charptr_int(theUnit, theModecr)
     }
 
+    /// Creates a writer with given
+    /// values for units and for write mode.
+    /// theUnit may be any unit that is accepted by the IGES standard.
+    /// By default, it is the millimeter.
+    /// theModecr defines the write mode and may be:
+    /// - 0: Faces (default)
+    /// - 1: BRep.
+    pub fn new_charptr(theUnit: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::IGESControl_Writer_ctor_charptr(theUnit)
+    }
+
     /// Prepares and writes an IGES model
     /// either to an OStream, S or to a file name,CString.
     /// Returns True if the operation was performed correctly and

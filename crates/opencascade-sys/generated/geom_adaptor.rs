@@ -178,6 +178,33 @@ impl Surface {
         )
     }
 
+    /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
+    pub fn new_handlesurface_real5(
+        theSurf: &crate::ffi::HandleGeomSurface,
+        theUFirst: f64,
+        theULast: f64,
+        theVFirst: f64,
+        theVLast: f64,
+        theTolU: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAdaptor_Surface_ctor_handlesurface_real5(
+            theSurf, theUFirst, theULast, theVFirst, theVLast, theTolU,
+        )
+    }
+
+    /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
+    pub fn new_handlesurface_real4(
+        theSurf: &crate::ffi::HandleGeomSurface,
+        theUFirst: f64,
+        theULast: f64,
+        theVFirst: f64,
+        theVLast: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::GeomAdaptor_Surface_ctor_handlesurface_real4(
+            theSurf, theUFirst, theULast, theVFirst, theVLast,
+        )
+    }
+
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
         crate::ffi::GeomAdaptor_Surface_shallow_copy(self)

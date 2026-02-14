@@ -148,6 +148,9 @@ NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 - [x] Constructors with default enum parameters (e.g., `BRepFilletAPI_MakeFillet`)
 - [x] Collection-aware method filtering (methods returning/taking known collection types no longer filtered)
 - [x] TColgp array constructors (template instantiation typedefs)
+- [x] Utility class detection and free function generation (e.g., `gp::OX()`, `TopoDS::Vertex()`)
+- [x] Default-argument convenience constructors (trailing defaulted params omitted)
+- [x] Unified function naming in resolver.rs (single source of truth for CXX-unique names)
 - [ ] System include path auto-detection (currently passed via `-I`)
 
 ---

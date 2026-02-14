@@ -55,20 +55,13 @@ pub fn main() {
     );
 
     // Complete Profile
-    // TODO: Use gp::OX() once the generator supports standalone package functions
-    // (see TRANSITION_PLAN.md #11)
-    let x_axis = gp::Ax1::new_pnt_dir(
-        &gp::Pnt::new(),
-        &gp::Dir::new_real3(1.0, 0.0, 0.0),
-    );
+    let x_axis = gp::ox();
 
     let mut trsf = gp::Trsf::new();
     trsf.pin_mut().set_mirror_ax1(&x_axis);
 
-    // TODO: Use shorter Transform::new_shape_trsf() once the generator emits
-    // default-argument helper functions (see TRANSITION_PLAN.md #12)
     let mut brep_transform =
-        b_rep_builder_api::Transform::new_shape_trsf_bool2(wire.pin_mut().shape(), &trsf, false, false);
+        b_rep_builder_api::Transform::new_shape_trsf(wire.pin_mut().shape(), &trsf);
     let mirrored_shape = brep_transform.pin_mut().shape();
     let mirrored_wire = topo_ds::wire(mirrored_shape);
 
@@ -106,7 +99,7 @@ pub fn main() {
 
     // Body : Add the Neck
     let neck_location = gp::Pnt::new_real3(0.0, 0.0, height);
-    let neck_axis = gp::Dir::new_real3(0.0, 0.0, 1.0); // gp::DZ()
+    let neck_axis = gp::dz();
     let neck_ax2 = gp::Ax2::new_pnt_dir(&neck_location, &neck_axis);
 
     let neck_radius = thickness / 4.0;
@@ -243,8 +236,8 @@ pub fn main() {
         edge_2_on_surf_2.pin_mut().edge(),
     );
 
-    b_rep_lib::BRepLib::build_curves3d_shape(threading_wire_1.pin_mut().shape());
-    b_rep_lib::BRepLib::build_curves3d_shape(threading_wire_2.pin_mut().shape());
+    b_rep_lib::build_curves3d(threading_wire_1.pin_mut().shape());
+    b_rep_lib::build_curves3d(threading_wire_2.pin_mut().shape());
 
     // Create Threading
     let mut threading_loft = b_rep_offset_api::ThruSections::new_bool2_real(true, false, 1.0e-06);

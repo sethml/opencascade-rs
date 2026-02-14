@@ -6,6 +6,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{
+    build_curves3d, build_p_curve_for_edge_on_plane, build_p_curve_for_edge_on_plane_mut,
+    check_same_range, encode_regularity, encode_regularity_2, encode_regularity_mut,
+    ensure_normal_consistency, extend_face, find_valid_range, find_valid_range_mut,
+    orient_closed_solid, plane, plane_2, precision, precision_2, reverse_sort_faces,
+    same_parameter, same_parameter_3, same_parameter_4, same_parameter_mut, same_range, sort_faces,
+    update_deflection, update_edge_tol, update_edge_tolerance, update_inner_tolerances,
+    update_tolerances, update_tolerances_mut,
+};
+
 /// Errors that can occur at wire construction.
 /// no error
 /// C++ enum: `BRepLib_WireError`
@@ -141,409 +151,6 @@ impl TryFrom<i32> for EdgeError {
             6 => Ok(EdgeError::Linethroughidenticpoints),
             _ => Err(value),
         }
-    }
-}
-
-// ========================
-// From BRepLib.hxx
-// ========================
-
-/// The BRepLib package provides general utilities for
-/// BRep.
-///
-/// * FindSurface : Class to compute a surface through
-/// a set of edges.
-///
-/// * Compute missing 3d curve on an edge.
-pub use crate::ffi::BRepLib;
-
-impl BRepLib {
-    /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_ctor()
-    }
-
-    /// Computes the max distance between edge
-    /// and its 2d representation on the face.
-    /// Sets the default precision.  The current Precision
-    /// is returned.
-    pub fn precision_real(P: f64) {
-        crate::ffi::BRepLib_precision_real(P)
-    }
-
-    /// Returns the default precision.
-    pub fn precision() -> f64 {
-        crate::ffi::BRepLib_precision()
-    }
-
-    /// Sets the current plane to P.
-    pub fn plane_handleplane(P: &crate::ffi::HandleGeomPlane) {
-        crate::ffi::BRepLib_plane_handleplane(P)
-    }
-
-    /// Returns the current plane.
-    pub fn plane() -> &'static crate::ffi::HandleGeomPlane {
-        crate::ffi::BRepLib_plane()
-    }
-
-    /// checks if the Edge is same range IGNORING
-    /// the same range flag of the edge
-    /// Confusion argument is to compare real numbers
-    /// idenpendently of any model space tolerance
-    pub fn check_same_range(E: &crate::ffi::TopoDS_Edge, Confusion: f64) -> bool {
-        crate::ffi::BRepLib_check_same_range(E, Confusion)
-    }
-
-    /// will make all the curve representation have
-    /// the same range domain for the parameters.
-    /// This will IGNORE the same range flag value
-    /// to proceed.
-    /// If there is a 3D curve there it will the
-    /// range of that curve. If not the first curve representation
-    /// encountered in the list will give its range to
-    /// the all the other curves.
-    pub fn same_range(E: &crate::ffi::TopoDS_Edge, Tolerance: f64) {
-        crate::ffi::BRepLib_same_range(E, Tolerance)
-    }
-
-    /// Computes the 3d curve for the edge  <E> if it does
-    /// not exist. Returns True  if the curve was computed
-    /// or  existed. Returns False  if there is no  planar
-    /// pcurve or the computation failed.
-    /// <MaxSegment> >= 30 in approximation
-    pub fn build_curve3d(
-        E: &crate::ffi::TopoDS_Edge,
-        Tolerance: f64,
-        Continuity: i32,
-        MaxDegree: i32,
-        MaxSegment: i32,
-    ) -> bool {
-        crate::ffi::BRepLib_build_curve3d(E, Tolerance, Continuity, MaxDegree, MaxSegment)
-    }
-
-    /// Computes  the 3d curves  for all the  edges of <S>
-    /// return False if one of the computation failed.
-    /// <MaxSegment> >= 30 in approximation
-    pub fn build_curves3d_shape_real_shape_int2(
-        S: &crate::ffi::TopoDS_Shape,
-        Tolerance: f64,
-        Continuity: i32,
-        MaxDegree: i32,
-        MaxSegment: i32,
-    ) -> bool {
-        crate::ffi::BRepLib_build_curves3d_shape_real_shape_int2(
-            S, Tolerance, Continuity, MaxDegree, MaxSegment,
-        )
-    }
-
-    /// Computes  the 3d curves  for all the  edges of <S>
-    /// return False if one of the computation failed.
-    pub fn build_curves3d_shape(S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepLib_build_curves3d_shape(S)
-    }
-
-    /// Builds pcurve of edge on face if the surface is plane, and updates the edge.
-    pub fn build_p_curve_for_edge_on_plane_edge_face(
-        theE: &crate::ffi::TopoDS_Edge,
-        theF: &crate::ffi::TopoDS_Face,
-    ) {
-        crate::ffi::BRepLib_build_p_curve_for_edge_on_plane_edge_face(theE, theF)
-    }
-
-    /// Builds pcurve of edge on face if the surface is plane, but does not update the edge.
-    /// The output are the pcurve and the flag telling that pcurve was built.
-    pub fn build_p_curve_for_edge_on_plane_edge_face_handlecurve_bool(
-        theE: &crate::ffi::TopoDS_Edge,
-        theF: &crate::ffi::TopoDS_Face,
-        aC2D: std::pin::Pin<&mut crate::ffi::HandleGeom2dCurve>,
-        bToUpdate: &mut bool,
-    ) {
-        crate::ffi::BRepLib_build_p_curve_for_edge_on_plane_edge_face_handlecurve_bool(
-            theE, theF, aC2D, bToUpdate,
-        )
-    }
-
-    /// Checks if the edge has a  Tolerance smaller than -- --
-    /// -- -- MaxToleranceToCheck  if  so it will compute  the
-    /// radius    of  -- the   cylindrical  pipe  surface that
-    /// MinToleranceRequest is the minimum tolerance before it
-    /// is useful to start testing.
-    /// Usually it should be around 10e-5
-    /// contains all -- the curve representation of the edge
-    /// returns True if the Edge tolerance had to be updated
-    pub fn update_edge_tol(
-        E: &crate::ffi::TopoDS_Edge,
-        MinToleranceRequest: f64,
-        MaxToleranceToCheck: f64,
-    ) -> bool {
-        crate::ffi::BRepLib_update_edge_tol(E, MinToleranceRequest, MaxToleranceToCheck)
-    }
-
-    /// -- Checks all the edges of the shape whose -- -- --
-    /// Tolerance  is  smaller than  MaxToleranceToCheck --
-    /// Returns True if at  least  one edge was updated --
-    /// MinToleranceRequest is the minimum tolerance before
-    /// --  it -- is  useful to start  testing.
-    /// Usually it should be around -- 10e-5--
-    ///
-    /// Warning :The  method is  very  slow  as it  checks all.
-    /// Use  only  in interfaces or  processing assimilate batch
-    pub fn update_edge_tolerance(
-        S: &crate::ffi::TopoDS_Shape,
-        MinToleranceRequest: f64,
-        MaxToleranceToCheck: f64,
-    ) -> bool {
-        crate::ffi::BRepLib_update_edge_tolerance(S, MinToleranceRequest, MaxToleranceToCheck)
-    }
-
-    /// Computes new 2d curve(s)  for the edge <theEdge> to have
-    /// the same parameter  as  the  3d curve.
-    /// The algorithm is not done if the flag SameParameter
-    /// was True  on the  Edge.
-    pub fn same_parameter_edge_real(theEdge: &crate::ffi::TopoDS_Edge, Tolerance: f64) {
-        crate::ffi::BRepLib_same_parameter_edge_real(theEdge, Tolerance)
-    }
-
-    /// Computes new 2d curve(s)  for the edge <theEdge> to have
-    /// the same parameter  as  the  3d curve.
-    /// The algorithm is not done if the flag SameParameter
-    /// was True  on the  Edge.<br>
-    /// theNewTol is a new tolerance of vertices of the input edge
-    /// (not applied inside the algorithm, but pre-computed).
-    /// If IsUseOldEdge is true then the input edge will be modified,
-    /// otherwise the new copy of input edge will be created.
-    /// Returns the new edge as a result, can be ignored if IsUseOldEdge is true.
-    pub fn same_parameter_edge_real2_bool(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theTolerance: f64,
-        theNewTol: &mut f64,
-        IsUseOldEdge: bool,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
-        crate::ffi::BRepLib_same_parameter_edge_real2_bool(
-            theEdge,
-            theTolerance,
-            theNewTol,
-            IsUseOldEdge,
-        )
-    }
-
-    /// Computes new 2d curve(s) for all the edges of  <S>
-    /// to have the same parameter  as  the  3d curve.
-    /// The algorithm is not done if the flag SameParameter
-    /// was True  on an  Edge.
-    pub fn same_parameter_shape_real_bool(
-        S: &crate::ffi::TopoDS_Shape,
-        Tolerance: f64,
-        forced: bool,
-    ) {
-        crate::ffi::BRepLib_same_parameter_shape_real_bool(S, Tolerance, forced)
-    }
-
-    /// Computes new 2d curve(s) for all the edges of  <S>
-    /// to have the same parameter  as  the  3d curve.
-    /// The algorithm is not done if the flag SameParameter
-    /// was True  on an  Edge.<br>
-    /// theReshaper is used to record the modifications of input shape <S> to prevent any
-    /// modifications on the shape itself.
-    /// Thus the input shape (and its subshapes) will not be modified, instead the reshaper will
-    /// contain a modified empty-copies of original subshapes as substitutions.
-    pub fn same_parameter_shape_reshape_real_bool(
-        S: &crate::ffi::TopoDS_Shape,
-        theReshaper: std::pin::Pin<&mut crate::ffi::BRepTools_ReShape>,
-        Tolerance: f64,
-        forced: bool,
-    ) {
-        crate::ffi::BRepLib_same_parameter_shape_reshape_real_bool(
-            S,
-            theReshaper,
-            Tolerance,
-            forced,
-        )
-    }
-
-    /// Replaces tolerance   of  FACE EDGE VERTEX  by  the
-    /// tolerance Max of their connected handling shapes.
-    /// It is not necessary to use this call after
-    /// SameParameter. (called in)
-    pub fn update_tolerances_shape_bool(S: &crate::ffi::TopoDS_Shape, verifyFaceTolerance: bool) {
-        crate::ffi::BRepLib_update_tolerances_shape_bool(S, verifyFaceTolerance)
-    }
-
-    /// Replaces tolerance   of  FACE EDGE VERTEX  by  the
-    /// tolerance Max of their connected handling shapes.
-    /// It is not necessary to use this call after
-    /// SameParameter. (called in)<br>
-    /// theReshaper is used to record the modifications of input shape <S> to prevent any
-    /// modifications on the shape itself.
-    /// Thus the input shape (and its subshapes) will not be modified, instead the reshaper will
-    /// contain a modified empty-copies of original subshapes as substitutions.
-    pub fn update_tolerances_shape_reshape_bool(
-        S: &crate::ffi::TopoDS_Shape,
-        theReshaper: std::pin::Pin<&mut crate::ffi::BRepTools_ReShape>,
-        verifyFaceTolerance: bool,
-    ) {
-        crate::ffi::BRepLib_update_tolerances_shape_reshape_bool(
-            S,
-            theReshaper,
-            verifyFaceTolerance,
-        )
-    }
-
-    /// Checks tolerances of edges (including inner points) and vertices
-    /// of a shape and updates them to satisfy "SameParameter" condition
-    pub fn update_inner_tolerances(S: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::BRepLib_update_inner_tolerances(S)
-    }
-
-    /// Orients the solid forward  and the  shell with the
-    /// orientation to have  matter in the solid. Returns
-    /// False if the solid is unOrientable (open or incoherent)
-    pub fn orient_closed_solid(solid: std::pin::Pin<&mut crate::ffi::TopoDS_Solid>) -> bool {
-        crate::ffi::BRepLib_orient_closed_solid(solid)
-    }
-
-    /// Returns the order of continuity between two faces
-    /// connected by an edge
-    pub fn continuity_of_faces(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theFace1: &crate::ffi::TopoDS_Face,
-        theFace2: &crate::ffi::TopoDS_Face,
-        theAngleTol: f64,
-    ) -> i32 {
-        crate::ffi::BRepLib_continuity_of_faces(theEdge, theFace1, theFace2, theAngleTol)
-    }
-
-    /// Encodes the Regularity of edges on a Shape.
-    /// Warning: <TolAng> is an angular tolerance, expressed in Rad.
-    /// Warning: If the edges's regularity are coded before, nothing
-    /// is done.
-    pub fn encode_regularity_shape_real(S: &crate::ffi::TopoDS_Shape, TolAng: f64) {
-        crate::ffi::BRepLib_encode_regularity_shape_real(S, TolAng)
-    }
-
-    /// Encodes the Regularity of edges in list <LE> on the shape <S>
-    /// Warning: <TolAng> is an angular tolerance, expressed in Rad.
-    /// Warning: If the edges's regularity are coded before, nothing
-    /// is done.
-    pub fn encode_regularity_shape_listofshape_real(
-        S: &crate::ffi::TopoDS_Shape,
-        LE: &crate::ffi::TopTools_ListOfShape,
-        TolAng: f64,
-    ) {
-        crate::ffi::BRepLib_encode_regularity_shape_listofshape_real(S, LE, TolAng)
-    }
-
-    /// Encodes the Regularity between <F1> and <F2> by <E>
-    /// Warning: <TolAng> is an angular tolerance, expressed in Rad.
-    /// Warning: If the edge's regularity is coded before, nothing
-    /// is done.
-    pub fn encode_regularity_edge_face2_real(
-        E: std::pin::Pin<&mut crate::ffi::TopoDS_Edge>,
-        F1: &crate::ffi::TopoDS_Face,
-        F2: &crate::ffi::TopoDS_Face,
-        TolAng: f64,
-    ) {
-        crate::ffi::BRepLib_encode_regularity_edge_face2_real(E, F1, F2, TolAng)
-    }
-
-    /// Sorts in  LF the Faces of   S on the  complexity of
-    /// their                  surfaces
-    /// (Plane,Cylinder,Cone,Sphere,Torus,other)
-    pub fn sort_faces(
-        S: &crate::ffi::TopoDS_Shape,
-        LF: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
-    ) {
-        crate::ffi::BRepLib_sort_faces(S, LF)
-    }
-
-    /// Sorts in  LF  the   Faces  of S   on the reverse
-    /// complexity       of       their      surfaces
-    /// (other,Torus,Sphere,Cone,Cylinder,Plane)
-    pub fn reverse_sort_faces(
-        S: &crate::ffi::TopoDS_Shape,
-        LF: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
-    ) {
-        crate::ffi::BRepLib_reverse_sort_faces(S, LF)
-    }
-
-    /// Corrects the normals in Poly_Triangulation of faces,
-    /// in such way that normals at nodes lying along smooth
-    /// edges have the same value on both adjacent triangulations.
-    /// Returns TRUE if any correction is done.
-    pub fn ensure_normal_consistency(
-        S: &crate::ffi::TopoDS_Shape,
-        theAngTol: f64,
-        ForceComputeNormals: bool,
-    ) -> bool {
-        crate::ffi::BRepLib_ensure_normal_consistency(S, theAngTol, ForceComputeNormals)
-    }
-
-    /// Updates value of deflection in Poly_Triangulation of faces
-    /// by the maximum deviation measured on existing triangulation.
-    pub fn update_deflection(S: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::BRepLib_update_deflection(S)
-    }
-
-    /// For an edge defined by 3d curve and tolerance and vertices defined by points,
-    /// parameters on curve and tolerances,
-    /// finds a range of curve between vertices not covered by vertices tolerances.
-    /// Returns false if there is no such range. Otherwise, sets theFirst and
-    /// theLast as its bounds.
-    pub fn find_valid_range_curve_real2_pnt_real2_pnt_real3(
-        theCurve: &crate::ffi::Adaptor3d_Curve,
-        theTolE: f64,
-        theParV1: f64,
-        thePntV1: &crate::ffi::gp_Pnt,
-        theTolV1: f64,
-        theParV2: f64,
-        thePntV2: &crate::ffi::gp_Pnt,
-        theTolV2: f64,
-        theFirst: &mut f64,
-        theLast: &mut f64,
-    ) -> bool {
-        crate::ffi::BRepLib_find_valid_range_curve_real2_pnt_real2_pnt_real3(
-            theCurve, theTolE, theParV1, thePntV1, theTolV1, theParV2, thePntV2, theTolV2,
-            theFirst, theLast,
-        )
-    }
-
-    /// Finds a range of 3d curve of the edge not covered by vertices tolerances.
-    /// Returns false if there is no such range. Otherwise, sets theFirst and
-    /// theLast as its bounds.
-    pub fn find_valid_range_edge_real2(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theFirst: &mut f64,
-        theLast: &mut f64,
-    ) -> bool {
-        crate::ffi::BRepLib_find_valid_range_edge_real2(theEdge, theFirst, theLast)
-    }
-
-    /// Enlarges the face on the given value.
-    /// @param[in] theF  The face to extend
-    /// @param[in] theExtVal  The extension value
-    /// @param[in] theExtUMin  Defines whether to extend the face in UMin direction
-    /// @param[in] theExtUMax  Defines whether to extend the face in UMax direction
-    /// @param[in] theExtVMin  Defines whether to extend the face in VMin direction
-    /// @param[in] theExtVMax  Defines whether to extend the face in VMax direction
-    /// @param[in] theFExtended  The extended face
-    pub fn extend_face(
-        theF: &crate::ffi::TopoDS_Face,
-        theExtVal: f64,
-        theExtUMin: bool,
-        theExtUMax: bool,
-        theExtVMin: bool,
-        theExtVMax: bool,
-        theFExtended: std::pin::Pin<&mut crate::ffi::TopoDS_Face>,
-    ) {
-        crate::ffi::BRepLib_extend_face(
-            theF,
-            theExtVal,
-            theExtUMin,
-            theExtUMax,
-            theExtVMin,
-            theExtVMax,
-            theFExtended,
-        )
     }
 }
 
@@ -1131,6 +738,62 @@ impl MakeFace {
         W: &crate::ffi::TopoDS_Wire,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepLib_MakeFace_ctor_face_wire(F, W)
+    }
+
+    /// Find a surface from the wire and make a face.
+    /// if <OnlyPlane> is true, the computed surface will be
+    /// a plane. If it is not possible to find a plane, the
+    /// flag NotDone will be set.
+    pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepLib_MakeFace_ctor_wire(W)
+    }
+
+    /// Make a face from a plane and a wire.
+    pub fn new_pln_wire(
+        P: &crate::ffi::gp_Pln,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepLib_MakeFace_ctor_pln_wire(P, W)
+    }
+
+    /// Make a face from a cylinder and a wire.
+    pub fn new_cylinder_wire(
+        C: &crate::ffi::gp_Cylinder,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepLib_MakeFace_ctor_cylinder_wire(C, W)
+    }
+
+    /// Make a face from a cone and a wire.
+    pub fn new_cone_wire(
+        C: &crate::ffi::gp_Cone,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepLib_MakeFace_ctor_cone_wire(C, W)
+    }
+
+    /// Make a face from a sphere and a wire.
+    pub fn new_sphere_wire(
+        S: &crate::ffi::gp_Sphere,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepLib_MakeFace_ctor_sphere_wire(S, W)
+    }
+
+    /// Make a face from a torus and a wire.
+    pub fn new_torus_wire(
+        C: &crate::ffi::gp_Torus,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepLib_MakeFace_ctor_torus_wire(C, W)
+    }
+
+    /// Make a face from a Surface and a wire.
+    pub fn new_handlesurface_wire(
+        S: &crate::ffi::HandleGeomSurface,
+        W: &crate::ffi::TopoDS_Wire,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepLib_MakeFace_ctor_handlesurface_wire(S, W)
     }
 
     pub fn error(&self) -> i32 {

@@ -137,6 +137,25 @@ impl Cone {
         crate::ffi::BRepPrim_Cone_ctor_ax2_real3(Axes, R1, R2, H)
     }
 
+    /// the STEP definition
+    /// Angle = semi-angle of the cone
+    /// Position : the coordinate system
+    /// Height : height of the cone.
+    /// Radius : radius of truncated face at z = 0
+    ///
+    /// The apex is on z < 0
+    ///
+    /// Errors : Height < Resolution
+    /// Angle < Resolution / Height
+    /// Angle > PI/2 - Resolution / Height
+    pub fn new_real_ax2_real(
+        Angle: f64,
+        Position: &crate::ffi::gp_Ax2,
+        Height: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrim_Cone_ctor_real_ax2_real(Angle, Position, Height)
+    }
+
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {

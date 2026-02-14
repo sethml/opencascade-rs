@@ -82,6 +82,32 @@ impl BrentMinimum {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::math_BrentMinimum_ctor_real2_int_real(TolX, Fbx, NbIterations, ZEPS)
     }
+
+    /// This constructor should be used in a sub-class to initialize
+    /// correctly all the fields of this class.
+    pub fn new_real_int(TolX: f64, NbIterations: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BrentMinimum_ctor_real_int(TolX, NbIterations)
+    }
+
+    /// This constructor should be used in a sub-class to initialize
+    /// correctly all the fields of this class.
+    pub fn new_real(TolX: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BrentMinimum_ctor_real(TolX)
+    }
+
+    /// This constructor should be used in a sub-class to initialize
+    /// correctly all the fields of this class.
+    /// It has to be used if F(Bx) is known.
+    pub fn new_real2_int(TolX: f64, Fbx: f64, NbIterations: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BrentMinimum_ctor_real2_int(TolX, Fbx, NbIterations)
+    }
+
+    /// This constructor should be used in a sub-class to initialize
+    /// correctly all the fields of this class.
+    /// It has to be used if F(Bx) is known.
+    pub fn new_real2(TolX: f64, Fbx: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_BrentMinimum_ctor_real2(TolX, Fbx)
+    }
 }
 
 // ========================
@@ -190,6 +216,17 @@ impl GaussLeastSquare {
     /// is considered as singular.
     pub fn new_matrix_real(A: &crate::ffi::math_Matrix, MinPivot: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::math_GaussLeastSquare_ctor_matrix_real(A, MinPivot)
+    }
+
+    /// Given an input n X m matrix A with n >= m this constructor
+    /// performs the LU decomposition with partial pivoting
+    /// (interchange of rows) of the matrix AA = A.Transposed() * A;
+    /// This LU decomposition is stored internally and may be used
+    /// to do subsequent calculation.
+    /// If the largest pivot found is less than MinPivot the matrix <A>
+    /// is considered as singular.
+    pub fn new_matrix(A: &crate::ffi::math_Matrix) -> cxx::UniquePtr<Self> {
+        crate::ffi::math_GaussLeastSquare_ctor_matrix(A)
     }
 }
 

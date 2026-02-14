@@ -1288,6 +1288,52 @@ fn compute_constructor_bindings(
         }
     }
 
+    // For bindable constructors that have trailing default params, also generate
+    // convenience wrappers with fewer params. Each trimmed version gets its own
+    // C++ wrapper that omits the trailing params, letting C++ fill in defaults.
+    // E.g., BRepBuilderAPI_Transform(S, T, copy=false, copyMesh=false) generates:
+    //   new_shape_trsf_bool2(S, T, copy, copyMesh)  — full version (already included)
+    //   new_shape_trsf_bool(S, T, copy)              — 3-param convenience
+    //   new_shape_trsf(S, T)                         — 2-param convenience
+    let bindable_count = bindable_ctors.len();
+    for i in 0..bindable_count {
+        let ctor = bindable_ctors[i].original;
+        let full_count = bindable_ctors[i].trimmed_param_count;
+
+        // Only process constructors with trailing default params
+        if full_count == 0 {
+            continue;
+        }
+
+        let mut trim_to = full_count;
+        while trim_to > 0 {
+            let last_param = &ctor.params[trim_to - 1];
+            if !last_param.has_default {
+                break; // Can't trim non-default params
+            }
+            trim_to -= 1;
+
+            let trimmed_params = &ctor.params[..trim_to];
+            // Check it's not a duplicate of an existing binding
+            let already_exists = bindable_ctors.iter().any(|existing| {
+                existing.trimmed_param_count == trim_to
+                    && existing
+                        .original
+                        .params
+                        .iter()
+                        .take(trim_to)
+                        .zip(trimmed_params.iter())
+                        .all(|(a, b)| a.ty == b.ty)
+            });
+            if !already_exists {
+                bindable_ctors.push(TrimmedConstructor {
+                    original: ctor,
+                    trimmed_param_count: trim_to,
+                });
+            }
+        }
+    }
+
     let mut ctor_names: HashMap<String, usize> = HashMap::new();
 
     bindable_ctors

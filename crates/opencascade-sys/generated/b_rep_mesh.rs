@@ -210,6 +210,77 @@ impl IncrementalMesh {
         )
     }
 
+    /// Constructor.
+    /// Automatically calls method Perform.
+    /// @param theShape shape to be meshed.
+    /// @param theLinDeflection linear deflection.
+    /// @param isRelative if TRUE deflection used for discretization of
+    /// each edge will be <theLinDeflection> * <size of edge>. Deflection
+    /// used for the faces will be the maximum deflection of their edges.
+    /// @param theAngDeflection angular deflection.
+    /// @param isInParallel if TRUE shape will be meshed in parallel.
+    pub fn new_shape_real_bool_real(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theLinDeflection: f64,
+        isRelative: bool,
+        theAngDeflection: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_real_bool_real(
+            theShape,
+            theLinDeflection,
+            isRelative,
+            theAngDeflection,
+        )
+    }
+
+    /// Constructor.
+    /// Automatically calls method Perform.
+    /// @param theShape shape to be meshed.
+    /// @param theLinDeflection linear deflection.
+    /// @param isRelative if TRUE deflection used for discretization of
+    /// each edge will be <theLinDeflection> * <size of edge>. Deflection
+    /// used for the faces will be the maximum deflection of their edges.
+    /// @param theAngDeflection angular deflection.
+    /// @param isInParallel if TRUE shape will be meshed in parallel.
+    pub fn new_shape_real_bool(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theLinDeflection: f64,
+        isRelative: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_real_bool(
+            theShape,
+            theLinDeflection,
+            isRelative,
+        )
+    }
+
+    /// Constructor.
+    /// Automatically calls method Perform.
+    /// @param theShape shape to be meshed.
+    /// @param theLinDeflection linear deflection.
+    /// @param isRelative if TRUE deflection used for discretization of
+    /// each edge will be <theLinDeflection> * <size of edge>. Deflection
+    /// used for the faces will be the maximum deflection of their edges.
+    /// @param theAngDeflection angular deflection.
+    /// @param isInParallel if TRUE shape will be meshed in parallel.
+    pub fn new_shape_real(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theLinDeflection: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_real(theShape, theLinDeflection)
+    }
+
+    /// Constructor.
+    /// Automatically calls method Perform.
+    /// @param theShape shape to be meshed.
+    /// @param theParameters - parameters of meshing
+    pub fn new_shape_parameters(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theParameters: &crate::ffi::IMeshTools_Parameters,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_parameters(theShape, theParameters)
+    }
+
     /// Returns multi-threading usage flag set by default in
     /// Discret() static method (thus applied only to Mesh Factories).
     pub fn is_parallel_default() -> bool {

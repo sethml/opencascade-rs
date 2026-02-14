@@ -6,6 +6,10 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{
+    dx, dx2d, dy, dy2d, dz, origin, origin2d, ox, ox2d, oy, oy2d, oz, resolution, xoy, yoz, zox,
+};
+
 /// Enumerates all 24 possible variants of generalized
 /// Euler angles, defining general 3d rotation by three
 /// rotations around main axes of coordinate system,
@@ -520,6 +524,25 @@ impl Ax22d {
     /// -   left-handed if theIsSense is false.
     pub fn new_ax2d_bool(theA: &crate::ffi::gp_Ax2d, theIsSense: bool) -> cxx::UniquePtr<Self> {
         crate::ffi::gp_Ax22d_ctor_ax2d_bool(theA, theIsSense)
+    }
+
+    /// Creates -   a coordinate system with origin theP and "X Direction"
+    /// theV, which is:
+    /// -   right-handed if theIsSense is true (default value), or
+    /// -   left-handed if theIsSense is false
+    pub fn new_pnt2d_dir2d(
+        theP: &crate::ffi::gp_Pnt2d,
+        theV: &crate::ffi::gp_Dir2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::gp_Ax22d_ctor_pnt2d_dir2d(theP, theV)
+    }
+
+    /// Creates -   a coordinate system where its origin is the origin of
+    /// theA and its "X Direction" is the unit vector of theA, which   is:
+    /// -   right-handed if theIsSense is true (default value), or
+    /// -   left-handed if theIsSense is false.
+    pub fn new_ax2d(theA: &crate::ffi::gp_Ax2d) -> cxx::UniquePtr<Self> {
+        crate::ffi::gp_Ax22d_ctor_ax2d(theA)
     }
 
     /// Returns an axis, for which
@@ -1099,6 +1122,14 @@ impl Circ2d {
     /// theRadius < 0.0. Raised if theRadius < 0.0.
     pub fn new_ax22d_real(theAxis: &crate::ffi::gp_Ax22d, theRadius: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::gp_Circ2d_ctor_ax22d_real(theAxis, theRadius)
+    }
+
+    /// The location point of theXAxis is the center of the circle.
+    /// Warnings :
+    /// It is not forbidden to create a circle with theRadius = 0.0   Raises ConstructionError if
+    /// theRadius < 0.0. Raised if theRadius < 0.0.
+    pub fn new_ax2d_real(theXAxis: &crate::ffi::gp_Ax2d, theRadius: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::gp_Circ2d_ctor_ax2d_real(theXAxis, theRadius)
     }
 
     /// returns the X axis of the circle.
@@ -1921,6 +1952,22 @@ impl Elips2d {
         crate::ffi::gp_Elips2d_ctor_ax22d_real2(theA, theMajorRadius, theMinorRadius)
     }
 
+    /// Creates an ellipse with the major axis, the major and the
+    /// minor radius. The location of the theMajorAxis is the center
+    /// of the  ellipse.
+    /// The sense of parametrization is given by theIsSense.
+    /// Warnings :
+    /// It is possible to create an ellipse with
+    /// theMajorRadius = theMinorRadius.
+    /// Raises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.0
+    pub fn new_ax2d_real2(
+        theMajorAxis: &crate::ffi::gp_Ax2d,
+        theMajorRadius: f64,
+        theMinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::gp_Elips2d_ctor_ax2d_real2(theMajorAxis, theMajorRadius, theMinorRadius)
+    }
+
     /// This directrix is the line normal to the XAxis of the ellipse
     /// in the local plane (Z = 0) at a distance d = MajorRadius / e
     /// from the center of the ellipse, where e is the eccentricity of
@@ -2605,6 +2652,24 @@ impl Hypr2d {
         theMinorRadius: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::gp_Hypr2d_ctor_ax22d_real2(theA, theMajorRadius, theMinorRadius)
+    }
+
+    /// Creates a hyperbola with radii theMajorRadius and
+    /// theMinorRadius, centered on the origin of theMajorAxis
+    /// and where the unit vector of theMajorAxis is the "X
+    /// Direction" of the local coordinate system of the
+    /// hyperbola. This coordinate system is direct if theIsSense
+    /// is true (the default value), and indirect if theIsSense is false.
+    /// Warnings :
+    /// It is yet  possible to create an Hyperbola with
+    /// theMajorRadius <= theMinorRadius.
+    /// Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0
+    pub fn new_ax2d_real2(
+        theMajorAxis: &crate::ffi::gp_Ax2d,
+        theMajorRadius: f64,
+        theMinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::gp_Hypr2d_ctor_ax2d_real2(theMajorAxis, theMajorRadius, theMinorRadius)
     }
 
     /// In the local coordinate system of the hyperbola the equation of
@@ -3516,6 +3581,39 @@ impl Parab2d {
         theSense: bool,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::gp_Parab2d_ctor_ax2d_pnt2d_bool(theDirectrix, theFocus, theSense)
+    }
+
+    /// Creates a parabola with its vertex point, its axis of symmetry
+    /// ("XAxis") and its focal length.
+    /// The sense of parametrization is given by theSense. If theSense == TRUE
+    /// (by default) then right-handed coordinate system is used,
+    /// otherwise - left-handed.
+    /// Warnings : It is possible to have FocalLength = 0. In this case,
+    /// the parabola looks like a line, which is parallel to the symmetry-axis.
+    /// Raises ConstructionError if FocalLength < 0.0
+    pub fn new_ax2d_real(
+        theMirrorAxis: &crate::ffi::gp_Ax2d,
+        theFocalLength: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::gp_Parab2d_ctor_ax2d_real(theMirrorAxis, theFocalLength)
+    }
+
+    /// Creates a parabola with the directrix and the focus point.
+    /// Y-axis of the parabola (in User Coordinate System - UCS) is
+    /// the direction of theDirectrix. X-axis always directs from theDirectrix
+    /// to theFocus point and always comes through theFocus.
+    /// Apex of the parabola is a middle point between the theFocus and the
+    /// intersection point of theDirectrix and the X-axis.
+    /// Warnings : It is possible to have FocalLength = 0 (when theFocus lies
+    /// in theDirectrix). In this case, X-direction of the parabola is defined
+    /// by theSense parameter. If theSense == TRUE (by default) then right-handed
+    /// coordinate system is used, otherwise - left-handed. Result parabola will look
+    /// like a line, which is perpendicular to the directrix.
+    pub fn new_ax2d_pnt2d(
+        theDirectrix: &crate::ffi::gp_Ax2d,
+        theFocus: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::gp_Parab2d_ctor_ax2d_pnt2d(theDirectrix, theFocus)
     }
 
     /// Computes the directrix of the parabola.

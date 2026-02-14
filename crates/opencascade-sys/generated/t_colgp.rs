@@ -1066,6 +1066,18 @@ impl HArray1OfCirc2d {
         crate::ffi::TColgp_HArray1OfCirc2d_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array1OfCirc2d
+    pub fn as_array1_of_circ2d(&self) -> &Array1OfCirc2d {
+        crate::ffi::TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d(self)
+    }
+
+    /// Upcast to TColgp_Array1OfCirc2d (mutable)
+    pub fn as_array1_of_circ2d_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut Array1OfCirc2d> {
+        crate::ffi::TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -1128,6 +1140,16 @@ impl HArray1OfDir {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfDir_get_type_descriptor()
+    }
+
+    /// Upcast to TColgp_Array1OfDir
+    pub fn as_array1_of_dir(&self) -> &Array1OfDir {
+        crate::ffi::TColgp_HArray1OfDir_as_TColgp_Array1OfDir(self)
+    }
+
+    /// Upcast to TColgp_Array1OfDir (mutable)
+    pub fn as_array1_of_dir_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array1OfDir> {
+        crate::ffi::TColgp_HArray1OfDir_as_TColgp_Array1OfDir_mut(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -1194,6 +1216,18 @@ impl HArray1OfDir2d {
         crate::ffi::TColgp_HArray1OfDir2d_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array1OfDir2d
+    pub fn as_array1_of_dir2d(&self) -> &Array1OfDir2d {
+        crate::ffi::TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d(self)
+    }
+
+    /// Upcast to TColgp_Array1OfDir2d (mutable)
+    pub fn as_array1_of_dir2d_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut Array1OfDir2d> {
+        crate::ffi::TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -1256,6 +1290,18 @@ impl HArray1OfLin2d {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfLin2d_get_type_descriptor()
+    }
+
+    /// Upcast to TColgp_Array1OfLin2d
+    pub fn as_array1_of_lin2d(&self) -> &Array1OfLin2d {
+        crate::ffi::TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d(self)
+    }
+
+    /// Upcast to TColgp_Array1OfLin2d (mutable)
+    pub fn as_array1_of_lin2d_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut Array1OfLin2d> {
+        crate::ffi::TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d_mut(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -1322,6 +1368,16 @@ impl HArray1OfPnt {
         crate::ffi::TColgp_HArray1OfPnt_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array1OfPnt
+    pub fn as_array1_of_pnt(&self) -> &Array1OfPnt {
+        crate::ffi::TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt(self)
+    }
+
+    /// Upcast to TColgp_Array1OfPnt (mutable)
+    pub fn as_array1_of_pnt_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array1OfPnt> {
+        crate::ffi::TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -1384,6 +1440,18 @@ impl HArray1OfPnt2d {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfPnt2d_get_type_descriptor()
+    }
+
+    /// Upcast to TColgp_Array1OfPnt2d
+    pub fn as_array1_of_pnt2d(&self) -> &Array1OfPnt2d {
+        crate::ffi::TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d(self)
+    }
+
+    /// Upcast to TColgp_Array1OfPnt2d (mutable)
+    pub fn as_array1_of_pnt2d_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut Array1OfPnt2d> {
+        crate::ffi::TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d_mut(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -1450,6 +1518,16 @@ impl HArray1OfVec {
         crate::ffi::TColgp_HArray1OfVec_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array1OfVec
+    pub fn as_array1_of_vec(&self) -> &Array1OfVec {
+        crate::ffi::TColgp_HArray1OfVec_as_TColgp_Array1OfVec(self)
+    }
+
+    /// Upcast to TColgp_Array1OfVec (mutable)
+    pub fn as_array1_of_vec_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array1OfVec> {
+        crate::ffi::TColgp_HArray1OfVec_as_TColgp_Array1OfVec_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -1512,6 +1590,18 @@ impl HArray1OfVec2d {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfVec2d_get_type_descriptor()
+    }
+
+    /// Upcast to TColgp_Array1OfVec2d
+    pub fn as_array1_of_vec2d(&self) -> &Array1OfVec2d {
+        crate::ffi::TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d(self)
+    }
+
+    /// Upcast to TColgp_Array1OfVec2d (mutable)
+    pub fn as_array1_of_vec2d_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut Array1OfVec2d> {
+        crate::ffi::TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d_mut(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -1578,6 +1668,16 @@ impl HArray1OfXY {
         crate::ffi::TColgp_HArray1OfXY_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array1OfXY
+    pub fn as_array1_of_xy(&self) -> &Array1OfXY {
+        crate::ffi::TColgp_HArray1OfXY_as_TColgp_Array1OfXY(self)
+    }
+
+    /// Upcast to TColgp_Array1OfXY (mutable)
+    pub fn as_array1_of_xy_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array1OfXY> {
+        crate::ffi::TColgp_HArray1OfXY_as_TColgp_Array1OfXY_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -1642,6 +1742,16 @@ impl HArray1OfXYZ {
         crate::ffi::TColgp_HArray1OfXYZ_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array1OfXYZ
+    pub fn as_array1_of_xyz(&self) -> &Array1OfXYZ {
+        crate::ffi::TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ(self)
+    }
+
+    /// Upcast to TColgp_Array1OfXYZ (mutable)
+    pub fn as_array1_of_xyz_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array1OfXYZ> {
+        crate::ffi::TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -1704,6 +1814,18 @@ impl HArray2OfCirc2d {
         crate::ffi::TColgp_HArray2OfCirc2d_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array2OfCirc2d
+    pub fn as_array2_of_circ2d(&self) -> &Array2OfCirc2d {
+        crate::ffi::TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d(self)
+    }
+
+    /// Upcast to TColgp_Array2OfCirc2d (mutable)
+    pub fn as_array2_of_circ2d_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut Array2OfCirc2d> {
+        crate::ffi::TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -1762,6 +1884,16 @@ impl HArray2OfDir {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfDir_get_type_descriptor()
+    }
+
+    /// Upcast to TColgp_Array2OfDir
+    pub fn as_array2_of_dir(&self) -> &Array2OfDir {
+        crate::ffi::TColgp_HArray2OfDir_as_TColgp_Array2OfDir(self)
+    }
+
+    /// Upcast to TColgp_Array2OfDir (mutable)
+    pub fn as_array2_of_dir_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array2OfDir> {
+        crate::ffi::TColgp_HArray2OfDir_as_TColgp_Array2OfDir_mut(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -1824,6 +1956,18 @@ impl HArray2OfDir2d {
         crate::ffi::TColgp_HArray2OfDir2d_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array2OfDir2d
+    pub fn as_array2_of_dir2d(&self) -> &Array2OfDir2d {
+        crate::ffi::TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d(self)
+    }
+
+    /// Upcast to TColgp_Array2OfDir2d (mutable)
+    pub fn as_array2_of_dir2d_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut Array2OfDir2d> {
+        crate::ffi::TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -1882,6 +2026,18 @@ impl HArray2OfLin2d {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfLin2d_get_type_descriptor()
+    }
+
+    /// Upcast to TColgp_Array2OfLin2d
+    pub fn as_array2_of_lin2d(&self) -> &Array2OfLin2d {
+        crate::ffi::TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d(self)
+    }
+
+    /// Upcast to TColgp_Array2OfLin2d (mutable)
+    pub fn as_array2_of_lin2d_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut Array2OfLin2d> {
+        crate::ffi::TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d_mut(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -1944,6 +2100,16 @@ impl HArray2OfPnt {
         crate::ffi::TColgp_HArray2OfPnt_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array2OfPnt
+    pub fn as_array2_of_pnt(&self) -> &Array2OfPnt {
+        crate::ffi::TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt(self)
+    }
+
+    /// Upcast to TColgp_Array2OfPnt (mutable)
+    pub fn as_array2_of_pnt_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array2OfPnt> {
+        crate::ffi::TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -2002,6 +2168,18 @@ impl HArray2OfPnt2d {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfPnt2d_get_type_descriptor()
+    }
+
+    /// Upcast to TColgp_Array2OfPnt2d
+    pub fn as_array2_of_pnt2d(&self) -> &Array2OfPnt2d {
+        crate::ffi::TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d(self)
+    }
+
+    /// Upcast to TColgp_Array2OfPnt2d (mutable)
+    pub fn as_array2_of_pnt2d_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut Array2OfPnt2d> {
+        crate::ffi::TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d_mut(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -2064,6 +2242,16 @@ impl HArray2OfVec {
         crate::ffi::TColgp_HArray2OfVec_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array2OfVec
+    pub fn as_array2_of_vec(&self) -> &Array2OfVec {
+        crate::ffi::TColgp_HArray2OfVec_as_TColgp_Array2OfVec(self)
+    }
+
+    /// Upcast to TColgp_Array2OfVec (mutable)
+    pub fn as_array2_of_vec_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array2OfVec> {
+        crate::ffi::TColgp_HArray2OfVec_as_TColgp_Array2OfVec_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -2122,6 +2310,18 @@ impl HArray2OfVec2d {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfVec2d_get_type_descriptor()
+    }
+
+    /// Upcast to TColgp_Array2OfVec2d
+    pub fn as_array2_of_vec2d(&self) -> &Array2OfVec2d {
+        crate::ffi::TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d(self)
+    }
+
+    /// Upcast to TColgp_Array2OfVec2d (mutable)
+    pub fn as_array2_of_vec2d_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut Array2OfVec2d> {
+        crate::ffi::TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d_mut(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -2184,6 +2384,16 @@ impl HArray2OfXY {
         crate::ffi::TColgp_HArray2OfXY_get_type_descriptor()
     }
 
+    /// Upcast to TColgp_Array2OfXY
+    pub fn as_array2_of_xy(&self) -> &Array2OfXY {
+        crate::ffi::TColgp_HArray2OfXY_as_TColgp_Array2OfXY(self)
+    }
+
+    /// Upcast to TColgp_Array2OfXY (mutable)
+    pub fn as_array2_of_xy_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array2OfXY> {
+        crate::ffi::TColgp_HArray2OfXY_as_TColgp_Array2OfXY_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -2242,6 +2452,16 @@ impl HArray2OfXYZ {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfXYZ_get_type_descriptor()
+    }
+
+    /// Upcast to TColgp_Array2OfXYZ
+    pub fn as_array2_of_xyz(&self) -> &Array2OfXYZ {
+        crate::ffi::TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ(self)
+    }
+
+    /// Upcast to TColgp_Array2OfXYZ (mutable)
+    pub fn as_array2_of_xyz_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array2OfXYZ> {
+        crate::ffi::TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ_mut(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)

@@ -468,6 +468,22 @@ impl Triangulation {
         crate::ffi::Poly_Triangulation_ctor_handletriangulation(theTriangulation)
     }
 
+    /// Constructs a triangulation from a set of triangles.
+    /// The triangulation is initialized without a triangle or a node,
+    /// but capable of containing specified number of nodes and triangles.
+    /// @param[in] theNbNodes      number of nodes to allocate
+    /// @param[in] theNbTriangles  number of triangles to allocate
+    /// @param[in] theHasUVNodes   indicates whether 2D nodes will be associated with 3D ones,
+    /// (i.e. to enable a 2D representation)
+    /// @param[in] theHasNormals   indicates whether normals will be given and associated with nodes
+    pub fn new_int2_bool(
+        theNbNodes: i32,
+        theNbTriangles: i32,
+        theHasUVNodes: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Poly_Triangulation_ctor_int2_bool(theNbNodes, theNbTriangles, theHasUVNodes)
+    }
+
     /// Creates full copy of current triangulation
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandlePolyTriangulation> {
         crate::ffi::Poly_Triangulation_copy(self)

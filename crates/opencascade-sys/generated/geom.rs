@@ -164,6 +164,110 @@ impl BSplineCurve {
         )
     }
 
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofpnt_array1ofreal_array1ofinteger_int(
+        Poles: &crate::ffi::TColgp_Array1OfPnt,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal_array1ofinteger_int(
+            Poles,
+            Knots,
+            Multiplicities,
+            Degree,
+        )
+    }
+
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    /// Raises ConstructionError subject to the following conditions
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Weights.Length() == Poles.Length()
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt_array1ofreal2_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColgp_Array1OfPnt,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int_bool(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+            Periodic,
+        )
+    }
+
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    /// Raises ConstructionError subject to the following conditions
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Weights.Length() == Poles.Length()
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt_array1ofreal2_array1ofinteger_int(
+        Poles: &crate::ffi::TColgp_Array1OfPnt,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+        )
+    }
+
     /// Returns the global continuity of the curve :
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Curve,
@@ -631,6 +735,160 @@ impl BSplineSurface {
         VPeriodic: bool,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic)
+    }
+
+    /// Creates  a non-rational b-spline surface (weights
+    /// default value is 1.).
+    /// The following conditions must be verified.
+    /// 0 < UDegree <= MaxDegree.
+    /// UKnots.Length() == UMults.Length() >= 2
+    /// UKnots(i) < UKnots(i+1) (Knots are increasing)
+    /// 1 <= UMults(i) <= UDegree
+    /// On a   non  uperiodic   surface    the  first and    last
+    /// umultiplicities  may  be     UDegree+1  (this   is   even
+    /// recommended if you want the curve  to start and finish on
+    /// the first and last pole).
+    /// On a uperiodic     surface  the first    and   the   last
+    /// umultiplicities must be the same.
+    /// on non-uperiodic surfaces
+    /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
+    /// on uperiodic surfaces
+    /// Poles.ColLength() == Sum(UMults(i)) except the first or last
+    /// The previous conditions for U holds  also for V, with the
+    /// RowLength of the poles.
+    pub fn new_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        UKnots: &crate::ffi::TColStd_Array1OfReal,
+        VKnots: &crate::ffi::TColStd_Array1OfReal,
+        UMults: &crate::ffi::TColStd_Array1OfInteger,
+        VMults: &crate::ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        UPeriodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool(
+            Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic,
+        )
+    }
+
+    /// Creates  a non-rational b-spline surface (weights
+    /// default value is 1.).
+    /// The following conditions must be verified.
+    /// 0 < UDegree <= MaxDegree.
+    /// UKnots.Length() == UMults.Length() >= 2
+    /// UKnots(i) < UKnots(i+1) (Knots are increasing)
+    /// 1 <= UMults(i) <= UDegree
+    /// On a   non  uperiodic   surface    the  first and    last
+    /// umultiplicities  may  be     UDegree+1  (this   is   even
+    /// recommended if you want the curve  to start and finish on
+    /// the first and last pole).
+    /// On a uperiodic     surface  the first    and   the   last
+    /// umultiplicities must be the same.
+    /// on non-uperiodic surfaces
+    /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
+    /// on uperiodic surfaces
+    /// Poles.ColLength() == Sum(UMults(i)) except the first or last
+    /// The previous conditions for U holds  also for V, with the
+    /// RowLength of the poles.
+    pub fn new_array2ofpnt_array1ofreal2_array1ofinteger2_int2(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        UKnots: &crate::ffi::TColStd_Array1OfReal,
+        VKnots: &crate::ffi::TColStd_Array1OfReal,
+        UMults: &crate::ffi::TColStd_Array1OfInteger,
+        VMults: &crate::ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2(
+            Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree,
+        )
+    }
+
+    /// Creates  a non-rational b-spline surface (weights
+    /// default value is 1.).
+    ///
+    /// The following conditions must be verified.
+    /// 0 < UDegree <= MaxDegree.
+    ///
+    /// UKnots.Length() == UMults.Length() >= 2
+    ///
+    /// UKnots(i) < UKnots(i+1) (Knots are increasing)
+    /// 1 <= UMults(i) <= UDegree
+    ///
+    /// On a   non  uperiodic   surface    the  first and    last
+    /// umultiplicities  may  be     UDegree+1  (this   is   even
+    /// recommended if you want the curve  to start and finish on
+    /// the first and last pole).
+    ///
+    /// On a uperiodic     surface  the first    and   the   last
+    /// umultiplicities must be the same.
+    ///
+    /// on non-uperiodic surfaces
+    ///
+    /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
+    ///
+    /// on uperiodic surfaces
+    ///
+    /// Poles.ColLength() == Sum(UMults(i)) except the first or
+    /// last
+    ///
+    /// The previous conditions for U holds  also for V, with the
+    /// RowLength of the poles.
+    pub fn new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        Weights: &crate::ffi::TColStd_Array2OfReal,
+        UKnots: &crate::ffi::TColStd_Array1OfReal,
+        VKnots: &crate::ffi::TColStd_Array1OfReal,
+        UMults: &crate::ffi::TColStd_Array1OfInteger,
+        VMults: &crate::ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        UPeriodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic)
+    }
+
+    /// Creates  a non-rational b-spline surface (weights
+    /// default value is 1.).
+    ///
+    /// The following conditions must be verified.
+    /// 0 < UDegree <= MaxDegree.
+    ///
+    /// UKnots.Length() == UMults.Length() >= 2
+    ///
+    /// UKnots(i) < UKnots(i+1) (Knots are increasing)
+    /// 1 <= UMults(i) <= UDegree
+    ///
+    /// On a   non  uperiodic   surface    the  first and    last
+    /// umultiplicities  may  be     UDegree+1  (this   is   even
+    /// recommended if you want the curve  to start and finish on
+    /// the first and last pole).
+    ///
+    /// On a uperiodic     surface  the first    and   the   last
+    /// umultiplicities must be the same.
+    ///
+    /// on non-uperiodic surfaces
+    ///
+    /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
+    ///
+    /// on uperiodic surfaces
+    ///
+    /// Poles.ColLength() == Sum(UMults(i)) except the first or
+    /// last
+    ///
+    /// The previous conditions for U holds  also for V, with the
+    /// RowLength of the poles.
+    pub fn new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        Weights: &crate::ffi::TColStd_Array2OfReal,
+        UKnots: &crate::ffi::TColStd_Array1OfReal,
+        VKnots: &crate::ffi::TColStd_Array1OfReal,
+        UMults: &crate::ffi::TColStd_Array1OfInteger,
+        VMults: &crate::ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree)
     }
 
     /// Returns the continuity of the surface :
@@ -3655,6 +3913,93 @@ impl TrimmedCurve {
             Sense,
             theAdjustPeriodic,
         )
+    }
+
+    /// Constructs a trimmed curve from the basis curve C
+    /// which is limited between parameter values U1 and U2.
+    /// Note: - U1 can be greater or less than U2; in both cases,
+    /// the returned curve is oriented from U1 to U2.
+    /// - If the basis curve C is periodic, there is an
+    /// ambiguity because two parts are available. In this
+    /// case, the trimmed curve has the same orientation
+    /// as the basis curve if Sense is true (default value)
+    /// or the opposite orientation if Sense is false.
+    /// - If the curve is closed but not periodic, it is not
+    /// possible to keep the part of the curve which
+    /// includes the junction point (except if the junction
+    /// point is at the beginning or at the end of the
+    /// trimmed curve). If you tried to do this, you could
+    /// alter the fundamental characteristics of the basis
+    /// curve, which are used, for example, to compute
+    /// the derivatives of the trimmed curve. The rules
+    /// for a closed curve are therefore the same as
+    /// those for an open curve.
+    /// Warning: The trimmed curve is built from a copy of curve C.
+    /// Therefore, when C is modified, the trimmed curve
+    /// is not modified.
+    /// - If the basis curve is periodic and theAdjustPeriodic is True,
+    /// the bounds of the trimmed curve may be different from U1 and U2
+    /// if the parametric origin of the basis curve is within
+    /// the arc of the trimmed curve. In this case, the
+    /// modified parameter will be equal to U1 or U2
+    /// plus or minus the period.
+    /// When theAdjustPeriodic is False, parameters U1 and U2 will be
+    /// the same, without adjustment into the first period.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - C is not periodic and U1 or U2 is outside the
+    /// bounds of C, or
+    /// - U1 is equal to U2.
+    pub fn new_handlecurve_real2_bool(
+        C: &crate::ffi::HandleGeomCurve,
+        U1: f64,
+        U2: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_TrimmedCurve_ctor_handlecurve_real2_bool(C, U1, U2, Sense)
+    }
+
+    /// Constructs a trimmed curve from the basis curve C
+    /// which is limited between parameter values U1 and U2.
+    /// Note: - U1 can be greater or less than U2; in both cases,
+    /// the returned curve is oriented from U1 to U2.
+    /// - If the basis curve C is periodic, there is an
+    /// ambiguity because two parts are available. In this
+    /// case, the trimmed curve has the same orientation
+    /// as the basis curve if Sense is true (default value)
+    /// or the opposite orientation if Sense is false.
+    /// - If the curve is closed but not periodic, it is not
+    /// possible to keep the part of the curve which
+    /// includes the junction point (except if the junction
+    /// point is at the beginning or at the end of the
+    /// trimmed curve). If you tried to do this, you could
+    /// alter the fundamental characteristics of the basis
+    /// curve, which are used, for example, to compute
+    /// the derivatives of the trimmed curve. The rules
+    /// for a closed curve are therefore the same as
+    /// those for an open curve.
+    /// Warning: The trimmed curve is built from a copy of curve C.
+    /// Therefore, when C is modified, the trimmed curve
+    /// is not modified.
+    /// - If the basis curve is periodic and theAdjustPeriodic is True,
+    /// the bounds of the trimmed curve may be different from U1 and U2
+    /// if the parametric origin of the basis curve is within
+    /// the arc of the trimmed curve. In this case, the
+    /// modified parameter will be equal to U1 or U2
+    /// plus or minus the period.
+    /// When theAdjustPeriodic is False, parameters U1 and U2 will be
+    /// the same, without adjustment into the first period.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - C is not periodic and U1 or U2 is outside the
+    /// bounds of C, or
+    /// - U1 is equal to U2.
+    pub fn new_handlecurve_real2(
+        C: &crate::ffi::HandleGeomCurve,
+        U1: f64,
+        U2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Geom_TrimmedCurve_ctor_handlecurve_real2(C, U1, U2)
     }
 
     /// Returns the basis curve.

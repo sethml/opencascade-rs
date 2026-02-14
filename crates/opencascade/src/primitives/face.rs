@@ -230,7 +230,7 @@ impl Face {
     pub fn center_of_mass(&self) -> DVec3 {
         let mut props = g_prop::GProps::new();
         let inner_shape = self.inner.as_shape();
-        b_rep_g_prop::BRepGProp::surface_properties_shape_gprops_bool2(
+        b_rep_g_prop::surface_properties(
             inner_shape,
             props.pin_mut(),
             false, // SkipShared
@@ -333,7 +333,7 @@ impl Face {
     pub fn surface_area(&self) -> f64 {
         let mut props = g_prop::GProps::new();
         let inner_shape = self.inner.as_shape();
-        b_rep_g_prop::BRepGProp::surface_properties_shape_gprops_bool2(
+        b_rep_g_prop::surface_properties(
             inner_shape,
             props.pin_mut(),
             false, // SkipShared
@@ -351,7 +351,7 @@ impl Face {
 
     #[must_use]
     pub fn outer_wire(&self) -> Wire {
-        let inner = b_rep_tools::BRepTools::outer_wire(&self.inner);
+        let inner = b_rep_tools::outer_wire(&self.inner);
         Wire { inner }
     }
 }

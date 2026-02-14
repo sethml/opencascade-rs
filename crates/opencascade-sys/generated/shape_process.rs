@@ -7,29 +7,7 @@
 #![allow(non_snake_case)]
 
 // ========================
-// From ShapeProcess.hxx
-// ========================
-
-/// Shape Processing module
-/// allows to define and apply general Shape Processing as a
-/// customizable sequence of Shape Healing operators. The
-/// customization is implemented via user-editable resource
-/// file which defines sequence of operators to be executed
-/// and their parameters.
-pub use crate::ffi::ShapeProcess;
-
-impl ShapeProcess {
-    /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeProcess_ctor()
-    }
-}
-
-// ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
-    ShapeProcess_Context as Context, ShapeProcess_Operator as Operator,
-    ShapeProcess_ShapeContext as ShapeContext,
-};
+pub use crate::ffi::ShapeProcess_ShapeContext as ShapeContext;

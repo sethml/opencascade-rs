@@ -96,6 +96,92 @@ impl FreeBounds {
         )
     }
 
+    /// Builds forecasting free bounds of the <shape>.
+    /// <shape> should be a compound of faces.
+    /// This constructor is to be used for forecasting free edges
+    /// with help of sewing analyzer BRepAlgo_Sewing which is called
+    /// with tolerance <toler>.
+    /// Free edges are connected into wires only when their ends are
+    /// at distance less than <toler>.
+    /// If <splitclosed> is True extracts closed sub-wires out of
+    /// built closed wires.
+    /// If <splitopen> is True extracts closed sub-wires out of
+    /// built open wires.
+    pub fn new_shape_real_bool(
+        shape: &crate::ffi::TopoDS_Shape,
+        toler: f64,
+        splitclosed: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_real_bool(shape, toler, splitclosed)
+    }
+
+    /// Builds forecasting free bounds of the <shape>.
+    /// <shape> should be a compound of faces.
+    /// This constructor is to be used for forecasting free edges
+    /// with help of sewing analyzer BRepAlgo_Sewing which is called
+    /// with tolerance <toler>.
+    /// Free edges are connected into wires only when their ends are
+    /// at distance less than <toler>.
+    /// If <splitclosed> is True extracts closed sub-wires out of
+    /// built closed wires.
+    /// If <splitopen> is True extracts closed sub-wires out of
+    /// built open wires.
+    pub fn new_shape_real(shape: &crate::ffi::TopoDS_Shape, toler: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_real(shape, toler)
+    }
+
+    /// Builds actual free bounds of the <shape>.
+    /// <shape> should be a compound of shells.
+    /// This constructor is to be used for getting free edges (ones
+    /// referenced by the only face) with help of analyzer
+    /// ShapeAnalysis_Shell.
+    /// Free edges are connected into wires only when they share the
+    /// same vertex.
+    /// If <splitclosed> is True extracts closed sub-wires out of
+    /// built closed wires.
+    /// If <splitopen> is True extracts closed sub-wires out of
+    /// built open wires.
+    pub fn new_shape_bool2(
+        shape: &crate::ffi::TopoDS_Shape,
+        splitclosed: bool,
+        splitopen: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_bool2(shape, splitclosed, splitopen)
+    }
+
+    /// Builds actual free bounds of the <shape>.
+    /// <shape> should be a compound of shells.
+    /// This constructor is to be used for getting free edges (ones
+    /// referenced by the only face) with help of analyzer
+    /// ShapeAnalysis_Shell.
+    /// Free edges are connected into wires only when they share the
+    /// same vertex.
+    /// If <splitclosed> is True extracts closed sub-wires out of
+    /// built closed wires.
+    /// If <splitopen> is True extracts closed sub-wires out of
+    /// built open wires.
+    pub fn new_shape_bool(
+        shape: &crate::ffi::TopoDS_Shape,
+        splitclosed: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_bool(shape, splitclosed)
+    }
+
+    /// Builds actual free bounds of the <shape>.
+    /// <shape> should be a compound of shells.
+    /// This constructor is to be used for getting free edges (ones
+    /// referenced by the only face) with help of analyzer
+    /// ShapeAnalysis_Shell.
+    /// Free edges are connected into wires only when they share the
+    /// same vertex.
+    /// If <splitclosed> is True extracts closed sub-wires out of
+    /// built closed wires.
+    /// If <splitopen> is True extracts closed sub-wires out of
+    /// built open wires.
+    pub fn new_shape(shape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape(shape)
+    }
+
     /// Builds sequence of <wires> out of sequence of not sorted
     /// <edges>.
     /// Tries to build wires of maximum length. Building a wire is

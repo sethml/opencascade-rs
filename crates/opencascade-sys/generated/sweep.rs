@@ -41,6 +41,56 @@ impl NumShape {
         crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool3(Index, Type, Closed, BegInf, EndInf)
     }
 
+    /// Creates a new simple indexed edge.
+    ///
+    /// For an Edge : Index is the  number of vertices (0,
+    /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
+    /// is a  closed edge, BegInf is true  if  the Edge is
+    /// infinite at the  begenning, EndInf is true  if the
+    /// edge is infinite at the end.
+    ///
+    /// For a Vertex : Index is the index of the vertex in
+    /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
+    /// other fields have no meanning.
+    pub fn new_int_shapeenum_bool2(
+        Index: i32,
+        Type: i32,
+        Closed: bool,
+        BegInf: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool2(Index, Type, Closed, BegInf)
+    }
+
+    /// Creates a new simple indexed edge.
+    ///
+    /// For an Edge : Index is the  number of vertices (0,
+    /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
+    /// is a  closed edge, BegInf is true  if  the Edge is
+    /// infinite at the  begenning, EndInf is true  if the
+    /// edge is infinite at the end.
+    ///
+    /// For a Vertex : Index is the index of the vertex in
+    /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
+    /// other fields have no meanning.
+    pub fn new_int_shapeenum_bool(Index: i32, Type: i32, Closed: bool) -> cxx::UniquePtr<Self> {
+        crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool(Index, Type, Closed)
+    }
+
+    /// Creates a new simple indexed edge.
+    ///
+    /// For an Edge : Index is the  number of vertices (0,
+    /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
+    /// is a  closed edge, BegInf is true  if  the Edge is
+    /// infinite at the  begenning, EndInf is true  if the
+    /// edge is infinite at the end.
+    ///
+    /// For a Vertex : Index is the index of the vertex in
+    /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
+    /// other fields have no meanning.
+    pub fn new_int_shapeenum(Index: i32, Type: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Sweep_NumShape_ctor_int_shapeenum(Index, Type)
+    }
+
     /// Reinitialize a simple indexed edge.
     ///
     /// For an Edge : Index is the  number of vertices (0,

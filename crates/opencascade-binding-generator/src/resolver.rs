@@ -72,6 +72,8 @@ pub enum ExclusionReason {
     UnbindableStaticMethod,
     /// Function has unbindable types
     UnbindableFunction,
+    /// Function references Handle types for classes without Handle declarations
+    UnknownHandleType,
 }
 
 /// Binding status for a symbol
@@ -206,12 +208,18 @@ pub struct ResolvedFunction {
     pub id: SymbolId,
     /// C++ fully qualified name (e.g., "TopoDS::Edge")
     pub cpp_name: String,
+    /// C++ short name without namespace (e.g., "Edge")
+    pub short_name: String,
     /// Namespace (e.g., "TopoDS")
     pub namespace: String,
     /// Rust module
     pub rust_module: String,
-    /// Rust function name
+    /// Rust function name (base, before dedup)
     pub rust_name: String,
+    /// Deduplicated Rust FFI function name (unique across the entire CXX bridge)
+    pub rust_ffi_name: String,
+    /// C++ wrapper function name (used in both #[cxx_name] and wrappers.hxx)
+    pub cpp_wrapper_name: String,
     /// Parameters
     pub params: Vec<ResolvedParam>,
     /// Return type
@@ -311,8 +319,10 @@ pub struct SymbolTable {
     pub enums_by_module: HashMap<String, Vec<SymbolId>>,
     /// All enum names (for filtering methods that use enums)
     pub all_enum_names: HashSet<String>,
-    /// All class names
+    /// All class names (including collection typedef names)
     pub all_class_names: HashSet<String>,
+    /// Classes that can have Handle<T> declarations (is_handle_type && !has_protected_destructor)
+    pub handle_able_classes: HashSet<String>,
     /// Cross-module type references by module
     pub cross_module_types: HashMap<String, Vec<CrossModuleType>>,
 }
@@ -340,6 +350,33 @@ impl SymbolTable {
             .get(module)
             .map(|ids| ids.iter().filter_map(|id| self.functions.get(id)).collect())
             .unwrap_or_default()
+    }
+
+    /// Get all included functions for a module
+    pub fn included_functions_for_module(&self, module: &str) -> Vec<&ResolvedFunction> {
+        self.functions_for_module(module)
+            .into_iter()
+            .filter(|f| f.status.is_included())
+            .collect()
+    }
+
+    /// Get all included functions across all modules, in stable order
+    pub fn all_included_functions(&self) -> Vec<&ResolvedFunction> {
+        let mut modules: Vec<&String> = self.functions_by_module.keys().collect();
+        modules.sort();
+        let mut result = Vec::new();
+        for module in modules {
+            if let Some(ids) = self.functions_by_module.get(module.as_str()) {
+                for id in ids {
+                    if let Some(f) = self.functions.get(id) {
+                        if f.status.is_included() {
+                            result.push(f);
+                        }
+                    }
+                }
+            }
+        }
+        result
     }
     
     /// Get all enums for a module
@@ -606,10 +643,20 @@ pub fn build_symbol_table(
     all_classes: &[&ParsedClass],
     all_enums: &[&ParsedEnum],
     all_functions: &[&ParsedFunction],
+    collection_type_names: &HashSet<String>,
 ) -> SymbolTable {
     // Collect all enum and class names first
     let all_enum_names: HashSet<String> = all_enums.iter().map(|e| e.name.clone()).collect();
-    let all_class_names: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();
+    let mut all_class_names: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();
+    // Collection typedefs are known types for filtering purposes
+    all_class_names.extend(collection_type_names.iter().cloned());
+
+    // Compute handle-able classes (inherit from Standard_Transient and no protected destructor)
+    let handle_able_classes: HashSet<String> = all_classes
+        .iter()
+        .filter(|c| c.is_handle_type && !c.has_protected_destructor)
+        .map(|c| c.name.clone())
+        .collect();
     
     let mut table = SymbolTable {
         classes: HashMap::new(),
@@ -623,6 +670,7 @@ pub fn build_symbol_table(
         enums_by_module: HashMap::new(),
         all_enum_names: all_enum_names.clone(),
         all_class_names: all_class_names.clone(),
+        handle_able_classes: handle_able_classes.clone(),
         cross_module_types: HashMap::new(),
     };
     
@@ -684,8 +732,13 @@ pub fn build_symbol_table(
     
     // Resolve all free functions
     for func in all_functions {
-        resolve_function(&mut table, func, &all_enum_names);
+        resolve_function(&mut table, func, &all_enum_names, &all_class_names, &handle_able_classes);
     }
+    
+    // Assign deduplicated names for all included functions.
+    // This must happen after ALL functions are resolved, since CXX requires
+    // unique fn names across the entire bridge module.
+    assign_function_names(&mut table);
     
     table
 }
@@ -942,8 +995,29 @@ fn resolve_function(
     table: &mut SymbolTable,
     func: &ParsedFunction,
     all_enum_names: &HashSet<String>,
+    all_class_names: &HashSet<String>,
+    handle_able_classes: &HashSet<String>,
 ) {
-    let id = SymbolId::new(format!("func::{}", func.name));
+    // Build a unique ID that distinguishes overloads by parameter types
+    let param_sig: String = func.params.iter()
+        .map(|p| format!("{:?}", p.ty))
+        .collect::<Vec<_>>()
+        .join(",");
+    let base_id = format!("func::{}({})", func.name, param_sig);
+    
+    // Handle the (rare) case where even the param signature isn't unique
+    let id = if table.functions.contains_key(&SymbolId::new(base_id.clone())) {
+        let mut counter = 2;
+        loop {
+            let candidate = SymbolId::new(format!("{}#{}", base_id, counter));
+            if !table.functions.contains_key(&candidate) {
+                break candidate;
+            }
+            counter += 1;
+        }
+    } else {
+        SymbolId::new(base_id)
+    };
     let rust_module = crate::module_graph::module_to_rust_name(&func.module);
     
     // Resolve parameters
@@ -958,19 +1032,27 @@ fn resolve_function(
     // Resolve return type
     let return_type = func.return_type.as_ref().map(|t| resolve_type(t, all_enum_names));
     
-    // Determine status
+    // Determine status — check unbindable types AND unknown handle types
     let status = if func.has_unbindable_types() {
         BindingStatus::Excluded(ExclusionReason::UnbindableFunction)
+    } else if function_uses_unknown_handle(func, all_class_names, handle_able_classes) {
+        BindingStatus::Excluded(ExclusionReason::UnknownHandleType)
     } else {
         BindingStatus::Included
     };
     
+    let base_rust_name = func.short_name.to_snake_case();
+    
     let resolved = ResolvedFunction {
         id: id.clone(),
         cpp_name: func.name.clone(),
+        short_name: func.short_name.clone(),
         namespace: func.namespace.clone(),
         rust_module: rust_module.clone(),
-        rust_name: safe_method_name(&func.short_name),
+        rust_name: base_rust_name.clone(),
+        // Placeholder names — will be assigned by assign_function_names()
+        rust_ffi_name: base_rust_name,
+        cpp_wrapper_name: String::new(),
         params,
         return_type,
         status,
@@ -983,6 +1065,90 @@ fn resolve_function(
         .or_default()
         .push(id.clone());
     table.functions.insert(id, resolved);
+}
+
+/// Check if a function references unknown Handle/class types
+fn function_uses_unknown_handle(
+    func: &ParsedFunction,
+    all_class_names: &HashSet<String>,
+    handle_able_classes: &HashSet<String>,
+) -> bool {
+    let check = |ty: &Type| -> bool {
+        crate::type_mapping::type_uses_unknown_handle(ty, all_class_names, handle_able_classes)
+    };
+    if func.params.iter().any(|p| check(&p.ty)) {
+        return true;
+    }
+    if let Some(ref ret) = func.return_type {
+        if check(ret) {
+            return true;
+        }
+    }
+    false
+}
+
+/// Assign deduplicated function names after all functions have been resolved.
+///
+/// CXX requires unique `fn` names across the entire bridge module, so we track
+/// name counters globally. The C++ wrapper name includes the namespace prefix
+/// to avoid ambiguity in C++.
+fn assign_function_names(table: &mut SymbolTable) {
+    // Collect all function IDs in a stable order (by module, then insertion order)
+    let mut all_func_ids: Vec<SymbolId> = Vec::new();
+    let mut modules: Vec<String> = table.functions_by_module.keys().cloned().collect();
+    modules.sort();
+    for module in &modules {
+        if let Some(ids) = table.functions_by_module.get(module) {
+            all_func_ids.extend(ids.iter().cloned());
+        }
+    }
+    
+    let mut seen_names: HashMap<String, usize> = HashMap::new();
+    let mut used_names: HashSet<String> = HashSet::new();
+    
+    for func_id in &all_func_ids {
+        let func = match table.functions.get(func_id) {
+            Some(f) => f,
+            None => continue,
+        };
+        
+        // Skip excluded functions — they won't appear in generated code
+        if !func.status.is_included() {
+            continue;
+        }
+        
+        let base_rust_name = &func.rust_name;
+        let is_mut_version = func.params.iter().any(|p| matches!(&p.ty.original, Type::MutRef(_)));
+        
+        let count = seen_names.entry(base_rust_name.clone()).or_insert(0);
+        *count += 1;
+        
+        let rust_ffi_name = if *count > 1 {
+            let candidate = if is_mut_version {
+                format!("{}_mut", base_rust_name)
+            } else {
+                format!("{}_{}", base_rust_name, count)
+            };
+            if used_names.contains(&candidate) {
+                format!("{}_{}", base_rust_name, count)
+            } else {
+                candidate
+            }
+        } else {
+            base_rust_name.clone()
+        };
+        
+        used_names.insert(rust_ffi_name.clone());
+        
+        let namespace = func.namespace.clone();
+        let cpp_wrapper_name = format!("{}_{}", namespace, rust_ffi_name);
+        
+        // Update the function with its final names
+        if let Some(f) = table.functions.get_mut(func_id) {
+            f.rust_ffi_name = rust_ffi_name;
+            f.cpp_wrapper_name = cpp_wrapper_name;
+        }
+    }
 }
 
 /// Resolve a type to its code generation form

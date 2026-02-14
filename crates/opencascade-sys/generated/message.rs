@@ -6,6 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{
+    default_messenger, default_report, fill_time, send_alarm, send_fail, send_info, send_trace,
+    send_warning,
+};
+
 /// Defines gravity level of messages
 /// - Trace: low-level details on algorithm execution (usually for debug purposes)
 /// - Info: informative message
@@ -550,88 +555,6 @@ impl TryFrom<i32> for StatusType {
 }
 
 // ========================
-// From Message.hxx
-// ========================
-
-/// Defines
-/// - tools to work with messages
-/// - basic tools intended for progress indication
-pub use crate::ffi::Message;
-
-impl Message {
-    /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Message_ctor()
-    }
-
-    /// Defines default messenger for OCCT applications.
-    /// This is global static instance of the messenger.
-    /// By default, it contains single printer directed to std::cout.
-    /// It can be customized according to the application needs.
-    ///
-    /// The following syntax can be used to print messages:
-    /// @code
-    /// Message::DefaultMessenger()->Send ("My Warning", Message_Warning);
-    /// Message::SendWarning ("My Warning"); // short-cut for Message_Warning
-    /// Message::SendWarning() << "My Warning with " << theCounter << " arguments";
-    /// Message::SendFail ("My Failure"); // short-cut for Message_Fail
-    /// @endcode
-    pub fn default_messenger() -> &'static crate::ffi::HandleMessageMessenger {
-        crate::ffi::Message_default_messenger()
-    }
-
-    pub fn send(theMessage: &crate::ffi::TCollection_AsciiString, theGravity: i32) {
-        crate::ffi::Message_send(theMessage, theGravity)
-    }
-
-    pub fn send_fail(theMessage: &crate::ffi::TCollection_AsciiString) {
-        crate::ffi::Message_send_fail(theMessage)
-    }
-
-    pub fn send_alarm(theMessage: &crate::ffi::TCollection_AsciiString) {
-        crate::ffi::Message_send_alarm(theMessage)
-    }
-
-    pub fn send_warning(theMessage: &crate::ffi::TCollection_AsciiString) {
-        crate::ffi::Message_send_warning(theMessage)
-    }
-
-    pub fn send_info(theMessage: &crate::ffi::TCollection_AsciiString) {
-        crate::ffi::Message_send_info(theMessage)
-    }
-
-    pub fn send_trace(theMessage: &crate::ffi::TCollection_AsciiString) {
-        crate::ffi::Message_send_trace(theMessage)
-    }
-
-    /// Returns the string filled with values of hours, minutes and seconds.
-    /// Example:
-    /// 1. (5, 12, 26.3345) returns "05h:12m:26.33s",
-    /// 2. (0,  6, 34.496 ) returns "06m:34.50s",
-    /// 3. (0,  0,  4.5   ) returns "4.50s"
-    pub fn fill_time(
-        Hour: i32,
-        Minute: i32,
-        Second: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
-        crate::ffi::Message_fill_time(Hour, Minute, Second)
-    }
-
-    /// returns the only one instance of Report
-    /// When theToCreate is true - automatically creates message report when not exist.
-    pub fn default_report(theToCreate: bool) -> &'static crate::ffi::HandleMessageReport {
-        crate::ffi::Message_default_report(theToCreate)
-    }
-
-    /// Returns the metric type from the given string identifier.
-    /// @param theString string identifier
-    /// @return metric type or Message_MetricType_None if string identifier is invalid
-    pub fn metric_from_string(theString: &str) -> i32 {
-        crate::ffi::Message_metric_from_string(theString)
-    }
-}
-
-// ========================
 // From Message_Alert.hxx
 // ========================
 
@@ -1063,6 +986,13 @@ impl Level {
     /// The perf meter is not started automatically, it will be done in AddAlert() method
     pub fn new_asciistring(theName: &crate::ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
         crate::ffi::Message_Level_ctor_asciistring(theName)
+    }
+
+    /// Constructor.
+    /// One string key is used for all alert meters.
+    /// The perf meter is not started automatically, it will be done in AddAlert() method
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_Level_ctor()
     }
 
     /// Adds new alert on the level. Stops the last alert metric, appends the alert and starts the
@@ -1613,6 +1543,28 @@ impl ProgressScope {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Message_ProgressScope_ctor_progressrange_asciistring_real_bool(
             theRange, theName, theMax, isInfinite,
+        )
+    }
+
+    /// Creates a new scope taking responsibility of the part of the progress
+    /// scale described by theRange. The new scope has own range from 0 to
+    /// theMax, which is mapped to the given range.
+    ///
+    /// The topmost scope is created and owned by Message_ProgressIndicator
+    /// and its pointer is contained in the Message_ProgressRange returned by the Start() method of
+    /// progress indicator.
+    ///
+    /// @param[in][out] theRange  range to fill (will be disarmed)
+    /// @param[in] theName        new scope name
+    /// @param[in] theMax         number of steps in scope
+    /// @param[in] isInfinite     infinite flag
+    pub fn new_progressrange_asciistring_real(
+        theRange: &crate::ffi::Message_ProgressRange,
+        theName: &crate::ffi::TCollection_AsciiString,
+        theMax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Message_ProgressScope_ctor_progressrange_asciistring_real(
+            theRange, theName, theMax,
         )
     }
 

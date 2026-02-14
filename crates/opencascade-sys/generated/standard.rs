@@ -6,6 +6,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::purge;
+
 /// Kind of key in Json string
 /// C++ enum: `Standard_JsonKey`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -78,28 +80,6 @@ impl TryFrom<i32> for HandlerStatus {
             2 => Ok(HandlerStatus::Handlerprocessed),
             _ => Err(value),
         }
-    }
-}
-
-// ========================
-// From Standard.hxx
-// ========================
-
-/// The package Standard provides global memory allocator and other basic
-/// services used by other OCCT components.
-pub use crate::ffi::Standard;
-
-impl Standard {
-    /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Standard_ctor()
-    }
-
-    /// Deallocates the storage retained on the free list
-    /// and clears the list.
-    /// Returns non-zero if some memory has been actually freed.
-    pub fn purge() -> i32 {
-        crate::ffi::Standard_purge()
     }
 }
 
@@ -653,6 +633,11 @@ impl OutOfMemory {
     /// Constructor is kept public for backward compatibility
     pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
         crate::ffi::Standard_OutOfMemory_ctor_charptr(theMessage)
+    }
+
+    /// Constructor is kept public for backward compatibility
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_OutOfMemory_ctor()
     }
 
     /// Returns error message

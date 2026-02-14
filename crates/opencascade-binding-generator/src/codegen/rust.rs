@@ -3,10 +3,9 @@
 //! Generates a unified #[cxx::bridge] module with all OCCT types,
 //! plus per-module re-export files with short names and impl blocks.
 
-use crate::model::{ParsedClass, ParsedFunction, Type};
+use crate::model::{ParsedClass, Type};
 use crate::type_mapping::{map_return_type_in_context, map_type_in_context, TypeContext};
-use heck::ToSnakeCase;
-use std::collections::{BTreeSet, HashMap, HashSet};
+use std::collections::{BTreeSet, HashSet};
 use std::fmt::Write as _;
 
 /// Rust keywords that need special handling
@@ -150,7 +149,6 @@ pub fn is_primitive_type(name: &str) -> bool {
 /// Returns the generated Rust code as a String.
 pub fn generate_unified_ffi(
     all_classes: &[&ParsedClass],
-    all_functions: &[&ParsedFunction],
     all_headers: &[String],
     collections: &[super::collections::CollectionInfo],
     symbol_table: &crate::resolver::SymbolTable,
@@ -197,8 +195,8 @@ pub fn generate_unified_ffi(
         .map(|b| super::bindings::emit_ffi_class(b))
         .collect();
 
-    // Generate namespace-level free functions
-    let function_items = generate_unified_functions(all_functions, &type_ctx);
+    // Generate namespace-level free functions (using pre-computed names from resolver)
+    let function_items = generate_unified_functions(symbol_table, &type_ctx);
 
     // Generate Handle type declarations
     let handle_decls = generate_unified_handle_declarations(all_classes);
@@ -307,30 +305,18 @@ pub fn generate_unified_ffi(
     out
 }
 
-/// Generate free function declarations for unified mode
-fn generate_unified_functions(functions: &[&ParsedFunction], ctx: &TypeContext) -> String {
+/// Generate free function declarations for unified mode.
+///
+/// Uses pre-computed names and filtering from the resolver's SymbolTable,
+/// ensuring consistency between ffi.rs and wrappers.hxx.
+fn generate_unified_functions(
+    symbol_table: &crate::resolver::SymbolTable,
+    ctx: &TypeContext,
+) -> String {
     let mut out = String::new();
-    let mut seen_names: HashMap<String, usize> = HashMap::new();
 
-    for func in functions {
-        if func.has_unbindable_types() {
-            continue;
-        }
-
-        let base_rust_name = func.short_name.to_snake_case();
-        let is_mut_version = func.params.iter().any(|p| matches!(&p.ty, Type::MutRef(_)));
-
-        let count = seen_names.entry(base_rust_name.clone()).or_insert(0);
-        *count += 1;
-
-        let rust_name = if *count > 1 {
-            let suffix = if is_mut_version { "_mut" } else { &format!("_{}", count) };
-            format!("{}{}", base_rust_name, suffix)
-        } else {
-            base_rust_name
-        };
-
-        generate_unified_function(&mut out, func, &rust_name, ctx);
+    for func in symbol_table.all_included_functions() {
+        generate_unified_function(&mut out, func, ctx);
     }
 
     out
@@ -339,27 +325,18 @@ fn generate_unified_functions(functions: &[&ParsedFunction], ctx: &TypeContext) 
 /// Generate a single free function for unified mode
 fn generate_unified_function(
     out: &mut String,
-    func: &ParsedFunction,
-    rust_name: &str,
+    func: &crate::resolver::ResolvedFunction,
     ctx: &TypeContext,
 ) {
-    let cpp_wrapper_name = format!("{}_{}", func.namespace, rust_name);
-
     let params_str: String = func.params.iter().map(|p| {
         let name = safe_param_name(&p.name);
-        let ty = map_type_in_context(&p.ty, ctx);
+        let ty = map_type_in_context(&p.ty.original, ctx);
         format!("{}: {}", name, ty.rust_type)
     }).collect::<Vec<_>>().join(", ");
 
-    let ret_str = func.return_type.as_ref().map(|ty| {
-        let mapped = map_return_type_in_context(ty, ctx);
-        // Enums map to i32, not UniquePtr — check needs_unique_ptr from the base mapping
-        let base_mapped = map_type_in_context(ty, ctx);
-        if base_mapped.needs_unique_ptr {
-            format!(" -> UniquePtr<{}>", mapped.rust_type)
-        } else {
-            format!(" -> {}", mapped.rust_type)
-        }
+    let ret_str = func.return_type.as_ref().map(|rt| {
+        let mapped = map_return_type_in_context(&rt.original, ctx);
+        format!(" -> {}", mapped.rust_type)
     }).unwrap_or_default();
 
     let source_attr = format_source_attribution(
@@ -368,7 +345,7 @@ fn generate_unified_function(
         &format!("{}::{}", func.namespace, func.short_name),
     );
     writeln!(out, "        /// {}", source_attr).unwrap();
-    if let Some(ref comment) = func.comment {
+    if let Some(ref comment) = func.doc_comment {
         writeln!(out, "        ///").unwrap();
         for line in comment.lines() {
             let trimmed = line.trim();
@@ -379,8 +356,8 @@ fn generate_unified_function(
             }
         }
     }
-    writeln!(out, "        #[cxx_name = \"{}\"]", cpp_wrapper_name).unwrap();
-    writeln!(out, "        fn {}({}){};", rust_name, params_str, ret_str).unwrap();
+    writeln!(out, "        #[cxx_name = \"{}\"]", func.cpp_wrapper_name).unwrap();
+    writeln!(out, "        fn {}({}){};", func.rust_ffi_name, params_str, ret_str).unwrap();
 }
 
 /// Generate Handle type declarations for unified mode
@@ -531,7 +508,6 @@ pub fn generate_module_reexports(
     module_name: &str,
     _rust_module_name: &str,
     _classes: &[&ParsedClass],
-    functions: &[&ParsedFunction],
     collections: &[&super::collections::CollectionInfo],
     symbol_table: &crate::resolver::SymbolTable,
     module_bindings: &[&super::bindings::ClassBindings],
@@ -548,35 +524,19 @@ pub fn generate_module_reexports(
     output.push_str("#![allow(dead_code)]\n");
     output.push_str("#![allow(non_snake_case)]\n\n");
 
-    // Generate re-exports for functions
-    let mut seen_func_names: HashMap<String, usize> = HashMap::new();
-    for func in functions {
-        if func.has_unbindable_types() {
-            continue;
-        }
-
-        let base_rust_name = func.short_name.to_snake_case();
-        let is_mut_version = func.params.iter().any(|p| matches!(&p.ty, Type::MutRef(_)));
-
-        let count = seen_func_names.entry(base_rust_name.clone()).or_insert(0);
-        *count += 1;
-
-        let rust_name = if *count > 1 {
-            let suffix = if is_mut_version { "_mut" } else { &format!("_{}", count) };
-            format!("{}{}", base_rust_name, suffix)
-        } else {
-            base_rust_name
-        };
-
-        output.push_str(&format!("pub use crate::ffi::{};\n", rust_name));
+    // Generate re-exports for functions using pre-computed names from the resolver.
+    // The resolver assigns globally-unique rust_ffi_name values, so we just look them up.
+    let rust_module = crate::module_graph::module_to_rust_name(module_name);
+    let module_functions = symbol_table.included_functions_for_module(&rust_module);
+    for func in &module_functions {
+        output.push_str(&format!("pub use crate::ffi::{};\n", func.rust_ffi_name));
     }
 
-    if !functions.is_empty() {
+    if !module_functions.is_empty() {
         output.push('\n');
     }
 
     // Generate Rust enum definitions for enums in this module
-    let rust_module = crate::module_graph::module_to_rust_name(module_name);
     if let Some(enum_ids) = symbol_table.enums_by_module.get(&rust_module) {
         for enum_id in enum_ids {
             if let Some(resolved_enum) = symbol_table.enums.get(enum_id) {

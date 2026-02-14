@@ -321,6 +321,18 @@ impl HSequenceOfShape {
         crate::ffi::TopTools_HSequenceOfShape_get_type_descriptor()
     }
 
+    /// Upcast to TopTools_SequenceOfShape
+    pub fn as_sequence_of_shape(&self) -> &SequenceOfShape {
+        crate::ffi::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape(self)
+    }
+
+    /// Upcast to TopTools_SequenceOfShape (mutable)
+    pub fn as_sequence_of_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut SequenceOfShape> {
+        crate::ffi::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape_mut(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,

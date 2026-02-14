@@ -6,159 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-// ========================
-// From TopExp.hxx
-// ========================
-
-/// This package   provides  basic tools  to   explore the
-/// topological data structures.
-///
-/// * Explorer : A tool to find all sub-shapes of  a given
-/// type. e.g. all faces of a solid.
-///
-/// * Package methods to map sub-shapes of a shape.
-///
-/// Level : Public
-/// All methods of all  classes will be public.
-pub use crate::ffi::TopExp;
-
-impl TopExp {
-    /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TopExp_ctor()
-    }
-
-    /// Tool to explore a topological data structure.
-    /// Stores in the map <M> all  the sub-shapes of <S>
-    /// of type <T>.
-    ///
-    /// Warning: The map is not cleared at first.
-    pub fn map_shapes_shape_shapeenum_indexedmapofshape(
-        S: &crate::ffi::TopoDS_Shape,
-        T: i32,
-        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedMapOfShape>,
-    ) {
-        crate::ffi::TopExp_map_shapes_shape_shapeenum_indexedmapofshape(S, T, M)
-    }
-
-    /// Stores in the map <M> all  the sub-shapes of <S>.
-    /// - If cumOri is true, the function composes all
-    /// sub-shapes with the orientation of S.
-    /// - If cumLoc is true, the function multiplies all
-    /// sub-shapes by the location of S, i.e. it applies to
-    /// each sub-shape the transformation that is associated with S.
-    pub fn map_shapes_shape_indexedmapofshape_bool2(
-        S: &crate::ffi::TopoDS_Shape,
-        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedMapOfShape>,
-        cumOri: bool,
-        cumLoc: bool,
-    ) {
-        crate::ffi::TopExp_map_shapes_shape_indexedmapofshape_bool2(S, M, cumOri, cumLoc)
-    }
-
-    /// Stores in the map <M> all  the sub-shapes of <S>.
-    /// - If cumOri is true, the function composes all
-    /// sub-shapes with the orientation of S.
-    /// - If cumLoc is true, the function multiplies all
-    /// sub-shapes by the location of S, i.e. it applies to
-    /// each sub-shape the transformation that is associated with S.
-    pub fn map_shapes_shape_mapofshape_bool2(
-        S: &crate::ffi::TopoDS_Shape,
-        M: std::pin::Pin<&mut crate::ffi::TopTools_MapOfShape>,
-        cumOri: bool,
-        cumLoc: bool,
-    ) {
-        crate::ffi::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc)
-    }
-
-    /// Stores in the map <M> all the subshape of <S> of
-    /// type <TS>  for each one append  to  the list all
-    /// the ancestors of type <TA>.  For example map all
-    /// the edges and bind the list of faces.
-    /// Warning: The map is not cleared at first.
-    pub fn map_shapes_and_ancestors(
-        S: &crate::ffi::TopoDS_Shape,
-        TS: i32,
-        TA: i32,
-        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape>,
-    ) {
-        crate::ffi::TopExp_map_shapes_and_ancestors(S, TS, TA, M)
-    }
-
-    /// Stores in the map <M> all the subshape of <S> of
-    /// type <TS> for each one append to the list all
-    /// unique ancestors of type <TA>.  For example map all
-    /// the edges and bind the list of faces.
-    /// useOrientation = True : taking account the ancestor orientation
-    /// Warning: The map is not cleared at first.
-    pub fn map_shapes_and_unique_ancestors(
-        S: &crate::ffi::TopoDS_Shape,
-        TS: i32,
-        TA: i32,
-        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape>,
-        useOrientation: bool,
-    ) {
-        crate::ffi::TopExp_map_shapes_and_unique_ancestors(S, TS, TA, M, useOrientation)
-    }
-
-    /// Returns the Vertex of orientation FORWARD in E. If
-    /// there is none returns a Null Shape.
-    /// CumOri = True : taking account the edge orientation
-    pub fn first_vertex(
-        E: &crate::ffi::TopoDS_Edge,
-        CumOri: bool,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::TopExp_first_vertex(E, CumOri)
-    }
-
-    /// Returns the Vertex of orientation REVERSED in E. If
-    /// there is none returns a Null Shape.
-    /// CumOri = True : taking account the edge orientation
-    pub fn last_vertex(
-        E: &crate::ffi::TopoDS_Edge,
-        CumOri: bool,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::TopExp_last_vertex(E, CumOri)
-    }
-
-    /// Returns in Vfirst, Vlast the  FORWARD and REVERSED
-    /// vertices of the edge <E>. May be null shapes.
-    /// CumOri = True : taking account the edge orientation
-    pub fn vertices_edge_vertex2_bool(
-        E: &crate::ffi::TopoDS_Edge,
-        Vfirst: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
-        Vlast: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
-        CumOri: bool,
-    ) {
-        crate::ffi::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri)
-    }
-
-    /// Returns  in  Vfirst,  Vlast   the first   and last
-    /// vertices of the open wire <W>. May be null shapes.
-    /// if   <W>  is closed Vfirst and Vlast  are a same
-    /// vertex on <W>.
-    /// if <W> is no manifold. VFirst and VLast are null
-    /// shapes.
-    pub fn vertices_wire_vertex2(
-        W: &crate::ffi::TopoDS_Wire,
-        Vfirst: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
-        Vlast: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
-    ) {
-        crate::ffi::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast)
-    }
-
-    /// Finds   the  vertex <V> common   to  the two edges
-    /// <E1,E2>, returns True if this vertex exists.
-    ///
-    /// Warning: <V> has sense only if the value <True> is returned
-    pub fn common_vertex(
-        E1: &crate::ffi::TopoDS_Edge,
-        E2: &crate::ffi::TopoDS_Edge,
-        V: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
-    ) -> bool {
-        crate::ffi::TopExp_common_vertex(E1, E2, V)
-    }
-}
+pub use crate::ffi::{
+    common_vertex, first_vertex, last_vertex, map_shapes, map_shapes_mut, vertices, vertices_mut,
+};
 
 // ========================
 // From TopExp_Explorer.hxx
@@ -244,6 +94,19 @@ impl Explorer {
         ToAvoid: i32,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TopExp_Explorer_ctor_shape_shapeenum2(S, ToFind, ToAvoid)
+    }
+
+    /// Creates an Explorer on the Shape <S>.
+    ///
+    /// <ToFind> is the type of shapes to search.
+    /// TopAbs_VERTEX, TopAbs_EDGE, ...
+    ///
+    /// <ToAvoid>   is the type   of shape to  skip in the
+    /// exploration.   If   <ToAvoid>  is  equal  or  less
+    /// complex than <ToFind> or if  <ToAVoid> is SHAPE it
+    /// has no effect on the exploration.
+    pub fn new_shape_shapeenum(S: &crate::ffi::TopoDS_Shape, ToFind: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopExp_Explorer_ctor_shape_shapeenum(S, ToFind)
     }
 
     /// Resets this explorer on the shape S. It is initialized to

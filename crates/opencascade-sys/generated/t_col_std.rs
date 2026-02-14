@@ -499,6 +499,11 @@ impl PackedMapOfInteger {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_PackedMapOfInteger_ctor_packedmapofinteger(theOther)
     }
+
+    /// Constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColStd_PackedMapOfInteger_ctor()
+    }
 }
 
 // ========================

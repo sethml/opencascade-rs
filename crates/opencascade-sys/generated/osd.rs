@@ -46,6 +46,11 @@ impl MemInfo {
         crate::ffi::OSD_MemInfo_ctor_bool(theImmediateUpdate)
     }
 
+    /// Create and initialize. By default all countes are active
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::OSD_MemInfo_ctor()
+    }
+
     /// Return the string representation for all available counter.
     pub fn to_string(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::OSD_MemInfo_to_string(self)

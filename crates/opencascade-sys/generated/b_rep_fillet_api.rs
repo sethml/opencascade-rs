@@ -219,6 +219,18 @@ impl MakeFillet {
         crate::ffi::BRepFilletAPI_MakeFillet_ctor_shape_filletshape(S, FShape)
     }
 
+    /// Initializes   the computation    of   the  fillets.
+    /// <FShape> sets   the type   of fillet  surface. The
+    /// default value is ChFi3d_Rational (classical  nurbs
+    /// representation of  circles).   ChFi3d_QuasiAngular
+    /// corresponds to  a  nurbs representation of circles
+    /// which   parameterisation matches  the  circle one.
+    /// ChFi3d_Polynomial  corresponds to  a    polynomial
+    /// representation of circles.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFilletAPI_MakeFillet_ctor_shape(S)
+    }
+
     /// Changes     the      parameters     of  continiuity
     /// InternalContinuity to produce fillet'surfaces with
     /// an continuity   Ci (i=0,1 or    2).

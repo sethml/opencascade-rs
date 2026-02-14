@@ -585,6 +585,69 @@ impl MakePrism {
         crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_dir_bool3(S, D, Inf, Copy, Canonize)
     }
 
+    /// Builds the prism of base S and vector V. If C is true,
+    /// S is copied. If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_vec_bool(
+        S: &crate::ffi::TopoDS_Shape,
+        V: &crate::ffi::gp_Vec,
+        Copy: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_vec_bool(S, V, Copy)
+    }
+
+    /// Builds the prism of base S and vector V. If C is true,
+    /// S is copied. If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_vec(
+        S: &crate::ffi::TopoDS_Shape,
+        V: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_vec(S, V)
+    }
+
+    /// Builds a semi-infinite or an infinite prism of base S.
+    /// If Inf is true the prism  is infinite, if Inf is false
+    /// the prism is semi-infinite (in the direction D).  If C
+    /// is true S is copied (for semi-infinite prisms).
+    /// If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_dir_bool2(
+        S: &crate::ffi::TopoDS_Shape,
+        D: &crate::ffi::gp_Dir,
+        Inf: bool,
+        Copy: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_dir_bool2(S, D, Inf, Copy)
+    }
+
+    /// Builds a semi-infinite or an infinite prism of base S.
+    /// If Inf is true the prism  is infinite, if Inf is false
+    /// the prism is semi-infinite (in the direction D).  If C
+    /// is true S is copied (for semi-infinite prisms).
+    /// If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_dir_bool(
+        S: &crate::ffi::TopoDS_Shape,
+        D: &crate::ffi::gp_Dir,
+        Inf: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_dir_bool(S, D, Inf)
+    }
+
+    /// Builds a semi-infinite or an infinite prism of base S.
+    /// If Inf is true the prism  is infinite, if Inf is false
+    /// the prism is semi-infinite (in the direction D).  If C
+    /// is true S is copied (for semi-infinite prisms).
+    /// If Canonize is true then generated surfaces
+    /// are attempted to be canonized in simple types
+    pub fn new_shape_dir(
+        S: &crate::ffi::TopoDS_Shape,
+        D: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_dir(S, D)
+    }
+
     /// Returns the  TopoDS  Shape of the bottom of the prism.
     pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::BRepPrimAPI_MakePrism_first_shape(self)
@@ -733,6 +796,25 @@ impl MakeRevol {
         Copy: bool,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepPrimAPI_MakeRevol_ctor_shape_ax1_bool(S, A, Copy)
+    }
+
+    /// Builds the Revol of base S, axis  A and angle  D. If C
+    /// is true, S is copied.
+    pub fn new_shape_ax1_real(
+        S: &crate::ffi::TopoDS_Shape,
+        A: &crate::ffi::gp_Ax1,
+        D: f64,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeRevol_ctor_shape_ax1_real(S, A, D)
+    }
+
+    /// Builds the Revol of base S, axis  A and angle 2*Pi. If
+    /// C is true, S is copied.
+    pub fn new_shape_ax1(
+        S: &crate::ffi::TopoDS_Shape,
+        A: &crate::ffi::gp_Ax1,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepPrimAPI_MakeRevol_ctor_shape_ax1(S, A)
     }
 
     /// Returns the first shape of the revol  (coinciding with

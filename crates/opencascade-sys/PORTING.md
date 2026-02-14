@@ -231,13 +231,51 @@ C++ static methods become associated functions on the Rust type:
 ```cpp
 // C++
 Handle(Geom_Surface) aSurf = BRep_Tool::Surface(aFace);
-BRepLib::BuildCurves3d(aWire);
 ```
 
 ```rust
 // Rust
 let a_surf = b_rep::Tool::surface_face(a_face);
-b_rep_lib::BRepLib::build_curves3d_shape(a_wire.pin_mut().shape());
+```
+
+## Utility Class Functions
+
+OCCT "utility classes" (classes with only static methods and no instance
+methods) are automatically converted to module-level free functions:
+
+```cpp
+// C++
+BRepLib::BuildCurves3d(aWire);
+BRepBndLib::Add(aShape, aBox, useTriangulation);
+BRepGProp::SurfaceProperties(aShape, props);
+gp_Pnt origin = gp::Origin();
+gp_Ax1 ox = gp::OX();
+```
+
+```rust
+// Rust
+b_rep_lib::build_curves3d(a_wire.pin_mut().as_shape());
+b_rep_bnd_lib::add(a_shape, a_box.pin_mut(), true);
+b_rep_g_prop::surface_properties(a_shape, props.pin_mut(), false, false);
+let origin = gp::origin();
+let ox = gp::ox();
+```
+
+## Default-Argument Convenience Constructors
+
+When a C++ constructor has trailing parameters with default values, convenience
+wrappers are generated that omit those parameters:
+
+```cpp
+// C++ — defaults: Copy=Standard_False, CopyMesh=Standard_False
+BRepBuilderAPI_Transform T(S, trsf);  // uses defaults
+BRepBuilderAPI_Transform T(S, trsf, true, false);  // explicit
+```
+
+```rust
+// Rust
+let t = b_rep_builder_api::Transform::new_shape_trsf(&s, &trsf);    // uses defaults
+let t = b_rep_builder_api::Transform::new_shape_trsf_bool2(&s, &trsf, true, false);  // explicit
 ```
 
 ## Message_ProgressRange
@@ -269,7 +307,7 @@ TopoDS_Shape myBody = mkFuse.Shape();
 // Rust
 let neck_ax2 = gp::Ax2::new_pnt_dir(
     &gp::Pnt::new_real3(0.0, 0.0, height),
-    &gp::Dir::new_real3(0.0, 0.0, 1.0),
+    &gp::dz(),
 );
 let mut mk_cyl = b_rep_prim_api::MakeCylinder::new_ax2_real2(
     &neck_ax2, neck_r, neck_h,
@@ -288,8 +326,4 @@ let my_body = mk_fuse.pin_mut().shape();
   `arbitrary_self_types` feature not being stable yet.
 - **No Handle downcasting** — use unsafe pointer casts after dynamic type
   checks as a workaround.
-- **No standalone package functions** — `gp::OX()`, `gp::DZ()`, etc. must be
-  constructed manually (e.g., `gp::Dir::new_real3(0.0, 0.0, 1.0)` for DZ).
-- **No default-argument shorthand** — all constructor parameters must be
-  specified explicitly, including those with C++ defaults.
 - **Enum parameters are `i32`** — cast Rust enums with `as i32`.

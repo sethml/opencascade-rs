@@ -5,6 +5,7 @@
 #
 
 # gp module - ALL geometric primitives
+gp.hxx
 gp_Ax1.hxx
 gp_Ax2.hxx
 gp_Ax22d.hxx
