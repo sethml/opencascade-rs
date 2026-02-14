@@ -6,11 +6,6 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-// Base handle type re-exports (targets of handle upcasts)
-pub use crate::ffi::{
-    HandleGeom2dBoundedCurve, HandleGeom2dConic, HandleGeom2dCurve, HandleGeom2dGeometry,
-};
-
 // ========================
 // From Geom2d_BoundedCurve.hxx
 // ========================
@@ -248,6 +243,32 @@ impl BoundedCurve {
     }
 }
 
+pub use crate::ffi::HandleGeom2dBoundedCurve;
+
+impl HandleGeom2dBoundedCurve {
+    /// Dereference this Handle to access the underlying Geom2d_BoundedCurve
+    pub fn get(&self) -> &crate::ffi::Geom2d_BoundedCurve {
+        crate::ffi::HandleGeom2dBoundedCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_BoundedCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_BoundedCurve> {
+        crate::ffi::HandleGeom2dBoundedCurve_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(self)
+    }
+}
+
 // ========================
 // From Geom2d_Conic.hxx
 // ========================
@@ -475,6 +496,30 @@ impl Conic {
     }
 }
 
+pub use crate::ffi::HandleGeom2dConic;
+
+impl HandleGeom2dConic {
+    /// Dereference this Handle to access the underlying Geom2d_Conic
+    pub fn get(&self) -> &crate::ffi::Geom2d_Conic {
+        crate::ffi::HandleGeom2dConic_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Conic
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom2d_Conic> {
+        crate::ffi::HandleGeom2dConic_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
+        crate::ffi::HandleGeom2dConic_to_HandleGeom2dCurve(self)
+    }
+
+    /// Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dConic_to_HandleGeom2dGeometry(self)
+    }
+}
+
 // ========================
 // From Geom2d_Curve.hxx
 // ========================
@@ -645,6 +690,25 @@ impl Curve {
     /// Inherited from Geom2d_Geometry: Copy()
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
         crate::ffi::Geom2d_Curve_inherited_Copy(self)
+    }
+}
+
+pub use crate::ffi::HandleGeom2dCurve;
+
+impl HandleGeom2dCurve {
+    /// Dereference this Handle to access the underlying Geom2d_Curve
+    pub fn get(&self) -> &crate::ffi::Geom2d_Curve {
+        crate::ffi::HandleGeom2dCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Curve
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom2d_Curve> {
+        crate::ffi::HandleGeom2dCurve_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom2d_Curve> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
+        crate::ffi::HandleGeom2dCurve_to_HandleGeom2dGeometry(self)
     }
 }
 
@@ -1087,6 +1151,22 @@ impl Geometry {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_Geometry_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleGeom2dGeometry;
+
+impl HandleGeom2dGeometry {
+    /// Dereference this Handle to access the underlying Geom2d_Geometry
+    pub fn get(&self) -> &crate::ffi::Geom2d_Geometry {
+        crate::ffi::HandleGeom2dGeometry_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2d_Geometry
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_Geometry> {
+        crate::ffi::HandleGeom2dGeometry_get_mut(self)
     }
 }
 

@@ -45,6 +45,7 @@ pub mod g_prop;
 pub mod gc;
 pub mod gc_pnts;
 pub mod gce;
+pub mod gce2d;
 pub mod geom;
 pub mod geom2d;
 pub mod geom2d_adaptor;

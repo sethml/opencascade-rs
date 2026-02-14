@@ -70,6 +70,7 @@
 #include <BRepGProp.hxx>
 #include <BRepGProp_Face.hxx>
 #include <BRepIntCurveSurface_Inter.hxx>
+#include <BRepLib.hxx>
 #include <BRepLib_Command.hxx>
 #include <BRepLib_EdgeError.hxx>
 #include <BRepLib_FaceError.hxx>
@@ -206,6 +207,8 @@
 #include <Extrema_POnCurv.hxx>
 #include <Extrema_POnSurf.hxx>
 #include <Extrema_POnSurfParams.hxx>
+#include <GCE2d_MakeSegment.hxx>
+#include <GCE2d_Root.hxx>
 #include <GCPnts_TangentialDeflection.hxx>
 #include <GC_MakeArcOfCircle.hxx>
 #include <GC_MakeSegment.hxx>
@@ -5371,6 +5374,8 @@ inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_copy(co
 inline const opencascade::handle<Standard_Type>& Geom_Geometry_get_type_descriptor() {
     return Geom_Geometry::get_type_descriptor();
 }
+inline const Geom_Geometry& HandleGeomGeometry_get(const HandleGeomGeometry& handle) { return *handle; }
+inline Geom_Geometry& HandleGeomGeometry_get_mut(HandleGeomGeometry& handle) { return *handle; }
 
 // ========================
 // Geom_Curve wrappers
@@ -5393,6 +5398,11 @@ inline const opencascade::handle<Standard_Type>& Geom_Curve_get_type_descriptor(
 }
 inline const Geom_Geometry& Geom_Curve_as_Geom_Geometry(const Geom_Curve& self_) { return static_cast<const Geom_Geometry&>(self_); }
 inline Geom_Geometry& Geom_Curve_as_Geom_Geometry_mut(Geom_Curve& self_) { return static_cast<Geom_Geometry&>(self_); }
+inline const Geom_Curve& HandleGeomCurve_get(const HandleGeomCurve& handle) { return *handle; }
+inline Geom_Curve& HandleGeomCurve_get_mut(HandleGeomCurve& handle) { return *handle; }
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomCurve_to_HandleGeomGeometry(const HandleGeomCurve& self_) {
+    return std::make_unique<HandleGeomGeometry>(self_);
+}
 inline void Geom_Curve_inherited_Mirror(Geom_Curve& self, const gp_Pnt& P) {
     self.Mirror(P);
 }
@@ -5460,6 +5470,11 @@ inline const opencascade::handle<Standard_Type>& Geom_Surface_get_type_descripto
 }
 inline const Geom_Geometry& Geom_Surface_as_Geom_Geometry(const Geom_Surface& self_) { return static_cast<const Geom_Geometry&>(self_); }
 inline Geom_Geometry& Geom_Surface_as_Geom_Geometry_mut(Geom_Surface& self_) { return static_cast<Geom_Geometry&>(self_); }
+inline const Geom_Surface& HandleGeomSurface_get(const HandleGeomSurface& handle) { return *handle; }
+inline Geom_Surface& HandleGeomSurface_get_mut(HandleGeomSurface& handle) { return *handle; }
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomSurface_to_HandleGeomGeometry(const HandleGeomSurface& self_) {
+    return std::make_unique<HandleGeomGeometry>(self_);
+}
 inline void Geom_Surface_inherited_Mirror(Geom_Surface& self, const gp_Pnt& P) {
     self.Mirror(P);
 }
@@ -5511,6 +5526,14 @@ inline const Geom_Curve& Geom_BoundedCurve_as_Geom_Curve(const Geom_BoundedCurve
 inline Geom_Curve& Geom_BoundedCurve_as_Geom_Curve_mut(Geom_BoundedCurve& self_) { return static_cast<Geom_Curve&>(self_); }
 inline const Geom_Geometry& Geom_BoundedCurve_as_Geom_Geometry(const Geom_BoundedCurve& self_) { return static_cast<const Geom_Geometry&>(self_); }
 inline Geom_Geometry& Geom_BoundedCurve_as_Geom_Geometry_mut(Geom_BoundedCurve& self_) { return static_cast<Geom_Geometry&>(self_); }
+inline const Geom_BoundedCurve& HandleGeomBoundedCurve_get(const HandleGeomBoundedCurve& handle) { return *handle; }
+inline Geom_BoundedCurve& HandleGeomBoundedCurve_get_mut(HandleGeomBoundedCurve& handle) { return *handle; }
+inline std::unique_ptr<HandleGeomCurve> HandleGeomBoundedCurve_to_HandleGeomCurve(const HandleGeomBoundedCurve& self_) {
+    return std::make_unique<HandleGeomCurve>(self_);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomBoundedCurve_to_HandleGeomGeometry(const HandleGeomBoundedCurve& self_) {
+    return std::make_unique<HandleGeomGeometry>(self_);
+}
 inline void Geom_BoundedCurve_inherited_Reverse(Geom_BoundedCurve& self) {
     self.Reverse();
 }
@@ -5607,6 +5630,14 @@ inline const Geom_Geometry& Geom_BoundedSurface_as_Geom_Geometry(const Geom_Boun
 inline Geom_Geometry& Geom_BoundedSurface_as_Geom_Geometry_mut(Geom_BoundedSurface& self_) { return static_cast<Geom_Geometry&>(self_); }
 inline const Geom_Surface& Geom_BoundedSurface_as_Geom_Surface(const Geom_BoundedSurface& self_) { return static_cast<const Geom_Surface&>(self_); }
 inline Geom_Surface& Geom_BoundedSurface_as_Geom_Surface_mut(Geom_BoundedSurface& self_) { return static_cast<Geom_Surface&>(self_); }
+inline const Geom_BoundedSurface& HandleGeomBoundedSurface_get(const HandleGeomBoundedSurface& handle) { return *handle; }
+inline Geom_BoundedSurface& HandleGeomBoundedSurface_get_mut(HandleGeomBoundedSurface& handle) { return *handle; }
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomBoundedSurface_to_HandleGeomGeometry(const HandleGeomBoundedSurface& self_) {
+    return std::make_unique<HandleGeomGeometry>(self_);
+}
+inline std::unique_ptr<HandleGeomSurface> HandleGeomBoundedSurface_to_HandleGeomSurface(const HandleGeomBoundedSurface& self_) {
+    return std::make_unique<HandleGeomSurface>(self_);
+}
 inline void Geom_BoundedSurface_inherited_Mirror(Geom_BoundedSurface& self, const gp_Pnt& P) {
     self.Mirror(P);
 }
@@ -5730,6 +5761,14 @@ inline const Geom_Geometry& Geom_ElementarySurface_as_Geom_Geometry(const Geom_E
 inline Geom_Geometry& Geom_ElementarySurface_as_Geom_Geometry_mut(Geom_ElementarySurface& self_) { return static_cast<Geom_Geometry&>(self_); }
 inline const Geom_Surface& Geom_ElementarySurface_as_Geom_Surface(const Geom_ElementarySurface& self_) { return static_cast<const Geom_Surface&>(self_); }
 inline Geom_Surface& Geom_ElementarySurface_as_Geom_Surface_mut(Geom_ElementarySurface& self_) { return static_cast<Geom_Surface&>(self_); }
+inline const Geom_ElementarySurface& HandleGeomElementarySurface_get(const HandleGeomElementarySurface& handle) { return *handle; }
+inline Geom_ElementarySurface& HandleGeomElementarySurface_get_mut(HandleGeomElementarySurface& handle) { return *handle; }
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomElementarySurface_to_HandleGeomGeometry(const HandleGeomElementarySurface& self_) {
+    return std::make_unique<HandleGeomGeometry>(self_);
+}
+inline std::unique_ptr<HandleGeomSurface> HandleGeomElementarySurface_to_HandleGeomSurface(const HandleGeomElementarySurface& self_) {
+    return std::make_unique<HandleGeomSurface>(self_);
+}
 inline void Geom_ElementarySurface_inherited_Mirror(Geom_ElementarySurface& self, const gp_Pnt& P) {
     self.Mirror(P);
 }
@@ -6597,6 +6636,8 @@ inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Geometry_cop
 inline const opencascade::handle<Standard_Type>& Geom2d_Geometry_get_type_descriptor() {
     return Geom2d_Geometry::get_type_descriptor();
 }
+inline const Geom2d_Geometry& HandleGeom2dGeometry_get(const HandleGeom2dGeometry& handle) { return *handle; }
+inline Geom2d_Geometry& HandleGeom2dGeometry_get_mut(HandleGeom2dGeometry& handle) { return *handle; }
 
 // ========================
 // Geom2d_Curve wrappers
@@ -6619,6 +6660,11 @@ inline const opencascade::handle<Standard_Type>& Geom2d_Curve_get_type_descripto
 }
 inline const Geom2d_Geometry& Geom2d_Curve_as_Geom2d_Geometry(const Geom2d_Curve& self_) { return static_cast<const Geom2d_Geometry&>(self_); }
 inline Geom2d_Geometry& Geom2d_Curve_as_Geom2d_Geometry_mut(Geom2d_Curve& self_) { return static_cast<Geom2d_Geometry&>(self_); }
+inline const Geom2d_Curve& HandleGeom2dCurve_get(const HandleGeom2dCurve& handle) { return *handle; }
+inline Geom2d_Curve& HandleGeom2dCurve_get_mut(HandleGeom2dCurve& handle) { return *handle; }
+inline std::unique_ptr<HandleGeom2dGeometry> HandleGeom2dCurve_to_HandleGeom2dGeometry(const HandleGeom2dCurve& self_) {
+    return std::make_unique<HandleGeom2dGeometry>(self_);
+}
 inline void Geom2d_Curve_inherited_Mirror(Geom2d_Curve& self, const gp_Pnt2d& P) {
     self.Mirror(P);
 }
@@ -6670,6 +6716,14 @@ inline const Geom2d_Curve& Geom2d_BoundedCurve_as_Geom2d_Curve(const Geom2d_Boun
 inline Geom2d_Curve& Geom2d_BoundedCurve_as_Geom2d_Curve_mut(Geom2d_BoundedCurve& self_) { return static_cast<Geom2d_Curve&>(self_); }
 inline const Geom2d_Geometry& Geom2d_BoundedCurve_as_Geom2d_Geometry(const Geom2d_BoundedCurve& self_) { return static_cast<const Geom2d_Geometry&>(self_); }
 inline Geom2d_Geometry& Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(Geom2d_BoundedCurve& self_) { return static_cast<Geom2d_Geometry&>(self_); }
+inline const Geom2d_BoundedCurve& HandleGeom2dBoundedCurve_get(const HandleGeom2dBoundedCurve& handle) { return *handle; }
+inline Geom2d_BoundedCurve& HandleGeom2dBoundedCurve_get_mut(HandleGeom2dBoundedCurve& handle) { return *handle; }
+inline std::unique_ptr<HandleGeom2dCurve> HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(const HandleGeom2dBoundedCurve& self_) {
+    return std::make_unique<HandleGeom2dCurve>(self_);
+}
+inline std::unique_ptr<HandleGeom2dGeometry> HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(const HandleGeom2dBoundedCurve& self_) {
+    return std::make_unique<HandleGeom2dGeometry>(self_);
+}
 inline void Geom2d_BoundedCurve_inherited_Reverse(Geom2d_BoundedCurve& self) {
     self.Reverse();
 }
@@ -6775,6 +6829,14 @@ inline const Geom2d_Curve& Geom2d_Conic_as_Geom2d_Curve(const Geom2d_Conic& self
 inline Geom2d_Curve& Geom2d_Conic_as_Geom2d_Curve_mut(Geom2d_Conic& self_) { return static_cast<Geom2d_Curve&>(self_); }
 inline const Geom2d_Geometry& Geom2d_Conic_as_Geom2d_Geometry(const Geom2d_Conic& self_) { return static_cast<const Geom2d_Geometry&>(self_); }
 inline Geom2d_Geometry& Geom2d_Conic_as_Geom2d_Geometry_mut(Geom2d_Conic& self_) { return static_cast<Geom2d_Geometry&>(self_); }
+inline const Geom2d_Conic& HandleGeom2dConic_get(const HandleGeom2dConic& handle) { return *handle; }
+inline Geom2d_Conic& HandleGeom2dConic_get_mut(HandleGeom2dConic& handle) { return *handle; }
+inline std::unique_ptr<HandleGeom2dCurve> HandleGeom2dConic_to_HandleGeom2dCurve(const HandleGeom2dConic& self_) {
+    return std::make_unique<HandleGeom2dCurve>(self_);
+}
+inline std::unique_ptr<HandleGeom2dGeometry> HandleGeom2dConic_to_HandleGeom2dGeometry(const HandleGeom2dConic& self_) {
+    return std::make_unique<HandleGeom2dGeometry>(self_);
+}
 inline Standard_Real Geom2d_Conic_inherited_TransformedParameter(const Geom2d_Conic& self, Standard_Real U, const gp_Trsf2d& T) {
     return self.TransformedParameter(U, T);
 }
@@ -7221,6 +7283,31 @@ inline bool GC_MakeSegment_inherited_IsDone(const GC_MakeSegment& self) {
 }
 
 // ========================
+// GCE2d_MakeSegment wrappers
+// ========================
+
+inline std::unique_ptr<GCE2d_MakeSegment> GCE2d_MakeSegment_ctor_pnt2d2(const gp_Pnt2d& P1, const gp_Pnt2d& P2) {
+    return std::make_unique<GCE2d_MakeSegment>(P1, P2);
+}
+inline std::unique_ptr<GCE2d_MakeSegment> GCE2d_MakeSegment_ctor_pnt2d_dir2d_pnt2d(const gp_Pnt2d& P1, const gp_Dir2d& V, const gp_Pnt2d& P2) {
+    return std::make_unique<GCE2d_MakeSegment>(P1, V, P2);
+}
+inline std::unique_ptr<GCE2d_MakeSegment> GCE2d_MakeSegment_ctor_lin2d_real2(const gp_Lin2d& Line, Standard_Real U1, Standard_Real U2) {
+    return std::make_unique<GCE2d_MakeSegment>(Line, U1, U2);
+}
+inline std::unique_ptr<GCE2d_MakeSegment> GCE2d_MakeSegment_ctor_lin2d_pnt2d_real(const gp_Lin2d& Line, const gp_Pnt2d& Point, Standard_Real Ulast) {
+    return std::make_unique<GCE2d_MakeSegment>(Line, Point, Ulast);
+}
+inline std::unique_ptr<GCE2d_MakeSegment> GCE2d_MakeSegment_ctor_lin2d_pnt2d2(const gp_Lin2d& Line, const gp_Pnt2d& P1, const gp_Pnt2d& P2) {
+    return std::make_unique<GCE2d_MakeSegment>(Line, P1, P2);
+}
+inline const GCE2d_Root& GCE2d_MakeSegment_as_GCE2d_Root(const GCE2d_MakeSegment& self_) { return static_cast<const GCE2d_Root&>(self_); }
+inline GCE2d_Root& GCE2d_MakeSegment_as_GCE2d_Root_mut(GCE2d_MakeSegment& self_) { return static_cast<GCE2d_Root&>(self_); }
+inline bool GCE2d_MakeSegment_inherited_IsDone(const GCE2d_MakeSegment& self) {
+    return self.IsDone();
+}
+
+// ========================
 // GCPnts_TangentialDeflection wrappers
 // ========================
 
@@ -7501,6 +7588,110 @@ inline void BRepBndLib_add_obb(const TopoDS_Shape& theS, Bnd_OBB& theOBB, Standa
 }
 
 // ========================
+// BRepLib wrappers
+// ========================
+
+inline std::unique_ptr<BRepLib> BRepLib_ctor() {
+    return std::make_unique<BRepLib>();
+}
+inline void BRepLib_precision_real(Standard_Real P) {
+    return BRepLib::Precision(P);
+}
+inline Standard_Real BRepLib_precision() {
+    return BRepLib::Precision();
+}
+inline void BRepLib_plane_handleplane(const opencascade::handle<Geom_Plane>& P) {
+    return BRepLib::Plane(P);
+}
+inline const opencascade::handle<Geom_Plane>& BRepLib_plane() {
+    return BRepLib::Plane();
+}
+inline Standard_Boolean BRepLib_check_same_range(const TopoDS_Edge& E, Standard_Real Confusion) {
+    return BRepLib::CheckSameRange(E, Confusion);
+}
+inline void BRepLib_same_range(const TopoDS_Edge& E, Standard_Real Tolerance) {
+    return BRepLib::SameRange(E, Tolerance);
+}
+inline Standard_Boolean BRepLib_build_curve3d(const TopoDS_Edge& E, Standard_Real Tolerance, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) {
+    return BRepLib::BuildCurve3d(E, Tolerance, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment);
+}
+inline Standard_Boolean BRepLib_build_curves3d_shape_real_shape_int2(const TopoDS_Shape& S, Standard_Real Tolerance, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) {
+    return BRepLib::BuildCurves3d(S, Tolerance, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment);
+}
+inline Standard_Boolean BRepLib_build_curves3d_shape(const TopoDS_Shape& S) {
+    return BRepLib::BuildCurves3d(S);
+}
+inline void BRepLib_build_p_curve_for_edge_on_plane_edge_face(const TopoDS_Edge& theE, const TopoDS_Face& theF) {
+    return BRepLib::BuildPCurveForEdgeOnPlane(theE, theF);
+}
+inline void BRepLib_build_p_curve_for_edge_on_plane_edge_face_handlecurve_bool(const TopoDS_Edge& theE, const TopoDS_Face& theF, opencascade::handle<Geom2d_Curve>& aC2D, Standard_Boolean& bToUpdate) {
+    return BRepLib::BuildPCurveForEdgeOnPlane(theE, theF, aC2D, bToUpdate);
+}
+inline Standard_Boolean BRepLib_update_edge_tol(const TopoDS_Edge& E, Standard_Real MinToleranceRequest, Standard_Real MaxToleranceToCheck) {
+    return BRepLib::UpdateEdgeTol(E, MinToleranceRequest, MaxToleranceToCheck);
+}
+inline Standard_Boolean BRepLib_update_edge_tolerance(const TopoDS_Shape& S, Standard_Real MinToleranceRequest, Standard_Real MaxToleranceToCheck) {
+    return BRepLib::UpdateEdgeTolerance(S, MinToleranceRequest, MaxToleranceToCheck);
+}
+inline void BRepLib_same_parameter_edge_real(const TopoDS_Edge& theEdge, Standard_Real Tolerance) {
+    return BRepLib::SameParameter(theEdge, Tolerance);
+}
+inline std::unique_ptr<TopoDS_Edge> BRepLib_same_parameter_edge_real2_bool(const TopoDS_Edge& theEdge, Standard_Real theTolerance, Standard_Real& theNewTol, Standard_Boolean IsUseOldEdge) {
+    return std::make_unique<TopoDS_Edge>(BRepLib::SameParameter(theEdge, theTolerance, theNewTol, IsUseOldEdge));
+}
+inline void BRepLib_same_parameter_shape_real_bool(const TopoDS_Shape& S, Standard_Real Tolerance, Standard_Boolean forced) {
+    return BRepLib::SameParameter(S, Tolerance, forced);
+}
+inline void BRepLib_same_parameter_shape_reshape_real_bool(const TopoDS_Shape& S, BRepTools_ReShape& theReshaper, Standard_Real Tolerance, Standard_Boolean forced) {
+    return BRepLib::SameParameter(S, theReshaper, Tolerance, forced);
+}
+inline void BRepLib_update_tolerances_shape_bool(const TopoDS_Shape& S, Standard_Boolean verifyFaceTolerance) {
+    return BRepLib::UpdateTolerances(S, verifyFaceTolerance);
+}
+inline void BRepLib_update_tolerances_shape_reshape_bool(const TopoDS_Shape& S, BRepTools_ReShape& theReshaper, Standard_Boolean verifyFaceTolerance) {
+    return BRepLib::UpdateTolerances(S, theReshaper, verifyFaceTolerance);
+}
+inline void BRepLib_update_inner_tolerances(const TopoDS_Shape& S) {
+    return BRepLib::UpdateInnerTolerances(S);
+}
+inline Standard_Boolean BRepLib_orient_closed_solid(TopoDS_Solid& solid) {
+    return BRepLib::OrientClosedSolid(solid);
+}
+inline int32_t BRepLib_continuity_of_faces(const TopoDS_Edge& theEdge, const TopoDS_Face& theFace1, const TopoDS_Face& theFace2, Standard_Real theAngleTol) {
+    return static_cast<int32_t>(BRepLib::ContinuityOfFaces(theEdge, theFace1, theFace2, theAngleTol));
+}
+inline void BRepLib_encode_regularity_shape_real(const TopoDS_Shape& S, Standard_Real TolAng) {
+    return BRepLib::EncodeRegularity(S, TolAng);
+}
+inline void BRepLib_encode_regularity_shape_listofshape_real(const TopoDS_Shape& S, const TopTools_ListOfShape& LE, Standard_Real TolAng) {
+    return BRepLib::EncodeRegularity(S, LE, TolAng);
+}
+inline void BRepLib_encode_regularity_edge_face2_real(TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2, Standard_Real TolAng) {
+    return BRepLib::EncodeRegularity(E, F1, F2, TolAng);
+}
+inline void BRepLib_sort_faces(const TopoDS_Shape& S, TopTools_ListOfShape& LF) {
+    return BRepLib::SortFaces(S, LF);
+}
+inline void BRepLib_reverse_sort_faces(const TopoDS_Shape& S, TopTools_ListOfShape& LF) {
+    return BRepLib::ReverseSortFaces(S, LF);
+}
+inline Standard_Boolean BRepLib_ensure_normal_consistency(const TopoDS_Shape& S, Standard_Real theAngTol, Standard_Boolean ForceComputeNormals) {
+    return BRepLib::EnsureNormalConsistency(S, theAngTol, ForceComputeNormals);
+}
+inline void BRepLib_update_deflection(const TopoDS_Shape& S) {
+    return BRepLib::UpdateDeflection(S);
+}
+inline Standard_Boolean BRepLib_find_valid_range_curve_real2_pnt_real2_pnt_real3(const Adaptor3d_Curve& theCurve, Standard_Real theTolE, Standard_Real theParV1, const gp_Pnt& thePntV1, Standard_Real theTolV1, Standard_Real theParV2, const gp_Pnt& thePntV2, Standard_Real theTolV2, Standard_Real& theFirst, Standard_Real& theLast) {
+    return BRepLib::FindValidRange(theCurve, theTolE, theParV1, thePntV1, theTolV1, theParV2, thePntV2, theTolV2, theFirst, theLast);
+}
+inline Standard_Boolean BRepLib_find_valid_range_edge_real2(const TopoDS_Edge& theEdge, Standard_Real& theFirst, Standard_Real& theLast) {
+    return BRepLib::FindValidRange(theEdge, theFirst, theLast);
+}
+inline void BRepLib_extend_face(const TopoDS_Face& theF, Standard_Real theExtVal, Standard_Boolean theExtUMin, Standard_Boolean theExtUMax, Standard_Boolean theExtVMin, Standard_Boolean theExtVMax, TopoDS_Face& theFExtended) {
+    return BRepLib::ExtendFace(theF, theExtVal, theExtUMin, theExtUMax, theExtVMin, theExtVMax, theFExtended);
+}
+
+// ========================
 // BRepAdaptor_Curve wrappers
 // ========================
 
@@ -7692,6 +7883,8 @@ inline Standard_Integer Law_Function_nb_intervals(const Law_Function& self_, int
 inline const opencascade::handle<Standard_Type>& Law_Function_get_type_descriptor() {
     return Law_Function::get_type_descriptor();
 }
+inline const Law_Function& HandleLawFunction_get(const HandleLawFunction& handle) { return *handle; }
+inline Law_Function& HandleLawFunction_get_mut(HandleLawFunction& handle) { return *handle; }
 
 // ========================
 // Law_BSpFunc wrappers
@@ -9928,6 +10121,8 @@ inline void Message_Printer_send_asciistring_gravity(const Message_Printer& self
 inline const opencascade::handle<Standard_Type>& Message_Printer_get_type_descriptor() {
     return Message_Printer::get_type_descriptor();
 }
+inline const Message_Printer& HandleMessagePrinter_get(const HandleMessagePrinter& handle) { return *handle; }
+inline Message_Printer& HandleMessagePrinter_get_mut(HandleMessagePrinter& handle) { return *handle; }
 
 // ========================
 // NCollection_BaseList wrappers
@@ -10194,6 +10389,8 @@ inline const opencascade::handle<Standard_Type>& Message_ProgressIndicator_get_t
 inline std::unique_ptr<Message_ProgressRange> Message_ProgressIndicator_start_handleprogressindicator(const opencascade::handle<Message_ProgressIndicator>& theProgress) {
     return std::make_unique<Message_ProgressRange>(Message_ProgressIndicator::Start(theProgress));
 }
+inline const Message_ProgressIndicator& HandleMessageProgressIndicator_get(const HandleMessageProgressIndicator& handle) { return *handle; }
+inline Message_ProgressIndicator& HandleMessageProgressIndicator_get_mut(HandleMessageProgressIndicator& handle) { return *handle; }
 
 // ========================
 // ShapeProcess wrappers
@@ -10457,6 +10654,8 @@ inline std::unique_ptr<Poly_Triangle> Poly_Triangle_ctor_int3(Standard_Integer t
 inline const opencascade::handle<Standard_Type>& BRepMesh_DiscretRoot_get_type_descriptor() {
     return BRepMesh_DiscretRoot::get_type_descriptor();
 }
+inline const BRepMesh_DiscretRoot& HandleBRepMeshDiscretRoot_get(const HandleBRepMeshDiscretRoot& handle) { return *handle; }
+inline BRepMesh_DiscretRoot& HandleBRepMeshDiscretRoot_get_mut(HandleBRepMeshDiscretRoot& handle) { return *handle; }
 
 // ========================
 // IMeshTools_Context wrappers
@@ -10559,6 +10758,8 @@ inline Standard_Real IMeshTools_Parameters_rel_min_size() {
 inline const opencascade::handle<Standard_Type>& IMeshTools_ModelAlgo_get_type_descriptor() {
     return IMeshTools_ModelAlgo::get_type_descriptor();
 }
+inline const IMeshTools_ModelAlgo& HandleIMeshToolsModelAlgo_get(const HandleIMeshToolsModelAlgo& handle) { return *handle; }
+inline IMeshTools_ModelAlgo& HandleIMeshToolsModelAlgo_get_mut(HandleIMeshToolsModelAlgo& handle) { return *handle; }
 
 // ========================
 // IMeshData_Shape wrappers
@@ -11038,6 +11239,8 @@ inline std::unique_ptr<opencascade::handle<GeomEvaluator_Curve>> GeomEvaluator_C
 inline const opencascade::handle<Standard_Type>& GeomEvaluator_Curve_get_type_descriptor() {
     return GeomEvaluator_Curve::get_type_descriptor();
 }
+inline const GeomEvaluator_Curve& HandleGeomEvaluatorCurve_get(const HandleGeomEvaluatorCurve& handle) { return *handle; }
+inline GeomEvaluator_Curve& HandleGeomEvaluatorCurve_get_mut(HandleGeomEvaluatorCurve& handle) { return *handle; }
 
 // ========================
 // Standard_NullObject wrappers
@@ -11298,6 +11501,8 @@ inline std::unique_ptr<opencascade::handle<Geom2dEvaluator_Curve>> Geom2dEvaluat
 inline const opencascade::handle<Standard_Type>& Geom2dEvaluator_Curve_get_type_descriptor() {
     return Geom2dEvaluator_Curve::get_type_descriptor();
 }
+inline const Geom2dEvaluator_Curve& HandleGeom2dEvaluatorCurve_get(const HandleGeom2dEvaluatorCurve& handle) { return *handle; }
+inline Geom2dEvaluator_Curve& HandleGeom2dEvaluatorCurve_get_mut(HandleGeom2dEvaluatorCurve& handle) { return *handle; }
 
 // ========================
 // GeomAdaptor_Surface wrappers
@@ -11407,6 +11612,8 @@ inline std::unique_ptr<opencascade::handle<GeomEvaluator_Surface>> GeomEvaluator
 inline const opencascade::handle<Standard_Type>& GeomEvaluator_Surface_get_type_descriptor() {
     return GeomEvaluator_Surface::get_type_descriptor();
 }
+inline const GeomEvaluator_Surface& HandleGeomEvaluatorSurface_get(const HandleGeomEvaluatorSurface& handle) { return *handle; }
+inline GeomEvaluator_Surface& HandleGeomEvaluatorSurface_get_mut(HandleGeomEvaluatorSurface& handle) { return *handle; }
 
 // ========================
 // Adaptor3d_CurveOnSurface wrappers
@@ -11537,6 +11744,14 @@ inline std::unique_ptr<HandlePolyPolygonOnTriangulation> Poly_PolygonOnTriangula
 }
 inline const Poly_PolygonOnTriangulation& HandlePolyPolygonOnTriangulation_get(const HandlePolyPolygonOnTriangulation& handle) { return *handle; }
 inline Poly_PolygonOnTriangulation& HandlePolyPolygonOnTriangulation_get_mut(HandlePolyPolygonOnTriangulation& handle) { return *handle; }
+
+// ========================
+// GCE2d_Root wrappers
+// ========================
+
+inline std::unique_ptr<GCE2d_Root> GCE2d_Root_ctor() {
+    return std::make_unique<GCE2d_Root>();
+}
 
 // ========================
 // GC_Root wrappers
@@ -15240,6 +15455,8 @@ inline int32_t TopoDS_TShape_shape_type(const TopoDS_TShape& self_) {
 inline const opencascade::handle<Standard_Type>& TopoDS_TShape_get_type_descriptor() {
     return TopoDS_TShape::get_type_descriptor();
 }
+inline const TopoDS_TShape& HandleTopoDSTShape_get(const HandleTopoDSTShape& handle) { return *handle; }
+inline TopoDS_TShape& HandleTopoDSTShape_get_mut(HandleTopoDSTShape& handle) { return *handle; }
 
 // ========================
 // TopAbs wrappers

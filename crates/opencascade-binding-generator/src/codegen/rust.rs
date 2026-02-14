@@ -296,12 +296,8 @@ pub fn generate_unified_ffi(
     // Close mod ffi
     writeln!(out, "}}").unwrap();
 
-    // Append collection impl blocks
-    if !collections.is_empty() {
-        let coll_impls = super::collections::generate_unified_rust_impl_collections(collections);
-        writeln!(out).unwrap();
-        out.push_str(&coll_impls);
-    }
+    // Collection impl blocks are generated in per-module re-export files,
+    // not here in ffi.rs, to avoid duplicate method definitions.
 
     // Add re-export of all FFI types
     writeln!(out).unwrap();
@@ -603,6 +599,11 @@ pub fn generate_module_reexports(
         output.push('\n');
     }
 
+    // Generate impl blocks for collection types
+    for coll in collections {
+        output.push_str(&emit_collection_impl(coll));
+    }
+
     // Group pre-computed bindings by source header for organized output
     use std::collections::BTreeMap;
     let mut bindings_by_header: BTreeMap<String, Vec<&super::bindings::ClassBindings>> =
@@ -625,7 +626,7 @@ pub fn generate_module_reexports(
         if b.has_protected_destructor {
             continue;
         }
-        if b.has_to_handle {
+        if b.has_to_handle || b.has_handle_get {
             let handle_type_name = format!("Handle{}", b.cpp_name.replace("_", ""));
             directly_exported_handles.insert(handle_type_name);
         }
@@ -667,23 +668,279 @@ pub fn generate_module_reexports(
     }
 
     // Re-export additional types (handles, opaque references, collection iterators)
-    // that appear in ffi.rs but aren't covered by ClassBindings or collections
+    // that appear in ffi.rs but aren't covered by ClassBindings or collections.
+    // Skip types already re-exported by ClassBindings (directly_exported_handles or base_handle_reexports).
     if !extra_types.is_empty() {
-        output.push_str("// ========================\n");
-        output.push_str("// Additional type re-exports\n");
-        output.push_str("// ========================\n\n");
+        let mut extra_lines = Vec::new();
         for (ffi_name, short_name) in extra_types {
+            // Skip handle types that are already re-exported by emit_reexport_class (has_to_handle or has_handle_get)
+            // or by the base handle re-exports section above.
+            if directly_exported_handles.contains(ffi_name.as_str())
+                || base_handle_reexports.contains(ffi_name.as_str())
+            {
+                continue;
+            }
             if ffi_name == short_name {
-                output.push_str(&format!("pub use crate::ffi::{};\n", ffi_name));
+                extra_lines.push(format!("pub use crate::ffi::{};\n", ffi_name));
             } else {
-                output.push_str(&format!(
+                extra_lines.push(format!(
                     "pub use crate::ffi::{} as {};\n",
                     ffi_name, short_name
                 ));
             }
         }
-        output.push('\n');
+        if !extra_lines.is_empty() {
+            output.push_str("// ========================\n");
+            output.push_str("// Additional type re-exports\n");
+            output.push_str("// ========================\n\n");
+            for line in &extra_lines {
+                output.push_str(line);
+            }
+            output.push('\n');
+        }
     }
 
     output
+}
+/// Generate an `impl` block for a collection type, re-exporting its FFI helper functions as methods.
+fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
+    use super::collections::CollectionKind;
+    let mut out = String::new();
+    let coll_name = &coll.typedef_name;
+    let short = &coll.short_name;
+    let elem = &coll.element_type;
+
+    out.push_str(&format!("impl {} {{\n", short));
+
+    match coll.kind {
+        CollectionKind::List | CollectionKind::Sequence => {
+            // new
+            out.push_str(&format!(
+                "    /// Create a new empty {}\n    pub fn new() -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}_new()\n    }}\n\n",
+                short, coll_name
+            ));
+            // size
+            out.push_str(&format!(
+                "    /// Get number of elements\n    pub fn size(&self) -> i32 {{\n        crate::ffi::{}_size(self)\n    }}\n\n",
+                coll_name
+            ));
+            // clear
+            out.push_str(&format!(
+                "    /// Remove all elements\n    pub fn clear(self: std::pin::Pin<&mut Self>) {{\n        crate::ffi::{}_clear(self)\n    }}\n\n",
+                coll_name
+            ));
+            // append
+            out.push_str(&format!(
+                "    /// Append an element\n    pub fn append(self: std::pin::Pin<&mut Self>, item: &crate::ffi::{}) {{\n        crate::ffi::{}_append(self, item)\n    }}\n\n",
+                elem, coll_name
+            ));
+            if coll.kind == CollectionKind::List {
+                // prepend
+                out.push_str(&format!(
+                    "    /// Prepend an element\n    pub fn prepend(self: std::pin::Pin<&mut Self>, item: &crate::ffi::{}) {{\n        crate::ffi::{}_prepend(self, item)\n    }}\n\n",
+                    elem, coll_name
+                ));
+            }
+            if coll.kind == CollectionKind::Sequence {
+                // value (1-based index)
+                out.push_str(&format!(
+                    "    /// Get element at 1-based index\n    pub fn value(&self, index: i32) -> &crate::ffi::{} {{\n        crate::ffi::{}_value(self, index)\n    }}\n\n",
+                    elem, coll_name
+                ));
+            }
+        }
+        CollectionKind::IndexedMap | CollectionKind::Map => {
+            // new
+            out.push_str(&format!(
+                "    /// Create a new empty {}\n    pub fn new() -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}_new()\n    }}\n\n",
+                short, coll_name
+            ));
+            // size
+            out.push_str(&format!(
+                "    /// Get number of elements\n    pub fn size(&self) -> i32 {{\n        crate::ffi::{}_size(self)\n    }}\n\n",
+                coll_name
+            ));
+            // clear
+            out.push_str(&format!(
+                "    /// Remove all elements\n    pub fn clear(self: std::pin::Pin<&mut Self>) {{\n        crate::ffi::{}_clear(self)\n    }}\n\n",
+                coll_name
+            ));
+            // add
+            out.push_str(&format!(
+                "    /// Add an element, returns index\n    pub fn add(self: std::pin::Pin<&mut Self>, item: &crate::ffi::{}) -> i32 {{\n        crate::ffi::{}_add(self, item)\n    }}\n\n",
+                elem, coll_name
+            ));
+            if coll.kind == CollectionKind::IndexedMap {
+                // find_key (1-based)
+                out.push_str(&format!(
+                    "    /// Get element at 1-based index\n    pub fn find_key(&self, index: i32) -> &crate::ffi::{} {{\n        crate::ffi::{}_find_key(self, index)\n    }}\n\n",
+                    elem, coll_name
+                ));
+            }
+        }
+        CollectionKind::DataMap => {
+            if let Some(ref value_type) = coll.value_type {
+                // new
+                out.push_str(&format!(
+                    "    /// Create a new empty {}\n    pub fn new() -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}_new()\n    }}\n\n",
+                    short, coll_name
+                ));
+                // size
+                out.push_str(&format!(
+                    "    /// Get number of elements\n    pub fn size(&self) -> i32 {{\n        crate::ffi::{}_size(self)\n    }}\n\n",
+                    coll_name
+                ));
+                // clear
+                out.push_str(&format!(
+                    "    /// Remove all elements\n    pub fn clear(self: std::pin::Pin<&mut Self>) {{\n        crate::ffi::{}_clear(self)\n    }}\n\n",
+                    coll_name
+                ));
+                // bind
+                out.push_str(&format!(
+                    "    /// Bind a key to a value\n    pub fn bind(self: std::pin::Pin<&mut Self>, key: &crate::ffi::{}, value: &crate::ffi::{}) -> bool {{\n        crate::ffi::{}_bind(self, key, value)\n    }}\n\n",
+                    elem, value_type, coll_name
+                ));
+                // find
+                out.push_str(&format!(
+                    "    /// Find a value by key (returns nullptr if not found)\n    pub fn find(&self, key: &crate::ffi::{}) -> cxx::UniquePtr<crate::ffi::{}> {{\n        crate::ffi::{}_find(self, key)\n    }}\n\n",
+                    elem, value_type, coll_name
+                ));
+                // contains
+                out.push_str(&format!(
+                    "    /// Check if key exists\n    pub fn contains(&self, key: &crate::ffi::{}) -> bool {{\n        crate::ffi::{}_contains(self, key)\n    }}\n\n",
+                    elem, coll_name
+                ));
+            }
+        }
+        CollectionKind::IndexedDataMap => {
+            if let Some(ref value_type) = coll.value_type {
+                // new
+                out.push_str(&format!(
+                    "    /// Create a new empty {}\n    pub fn new() -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}_new()\n    }}\n\n",
+                    short, coll_name
+                ));
+                // size
+                out.push_str(&format!(
+                    "    /// Get number of elements\n    pub fn size(&self) -> i32 {{\n        crate::ffi::{}_size(self)\n    }}\n\n",
+                    coll_name
+                ));
+                // clear
+                out.push_str(&format!(
+                    "    /// Remove all elements\n    pub fn clear(self: std::pin::Pin<&mut Self>) {{\n        crate::ffi::{}_clear(self)\n    }}\n\n",
+                    coll_name
+                ));
+                // add
+                out.push_str(&format!(
+                    "    /// Add a key-value pair, returns index\n    pub fn add(self: std::pin::Pin<&mut Self>, key: &crate::ffi::{}, value: &crate::ffi::{}) -> i32 {{\n        crate::ffi::{}_add(self, key, value)\n    }}\n\n",
+                    elem, value_type, coll_name
+                ));
+                // find_from_key
+                out.push_str(&format!(
+                    "    /// Find value by key\n    pub fn find_from_key<'a>(&'a self, key: &crate::ffi::{}) -> &'a crate::ffi::{} {{\n        crate::ffi::{}_find_from_key(self, key)\n    }}\n\n",
+                    elem, value_type, coll_name
+                ));
+                // find_from_index
+                out.push_str(&format!(
+                    "    /// Find value by 1-based index\n    pub fn find_from_index<'a>(&'a self, index: i32) -> &'a crate::ffi::{} {{\n        crate::ffi::{}_find_from_index(self, index)\n    }}\n\n",
+                    value_type, coll_name
+                ));
+                // find_key
+                out.push_str(&format!(
+                    "    /// Find key by 1-based index\n    pub fn find_key(&self, index: i32) -> cxx::UniquePtr<crate::ffi::{}> {{\n        crate::ffi::{}_find_key(self, index)\n    }}\n\n",
+                    elem, coll_name
+                ));
+                // find_index
+                out.push_str(&format!(
+                    "    /// Find index by key (returns 0 if not found)\n    pub fn find_index(&self, key: &crate::ffi::{}) -> i32 {{\n        crate::ffi::{}_find_index(self, key)\n    }}\n\n",
+                    elem, coll_name
+                ));
+                // contains
+                out.push_str(&format!(
+                    "    /// Check if key exists\n    pub fn contains(&self, key: &crate::ffi::{}) -> bool {{\n        crate::ffi::{}_contains(self, key)\n    }}\n\n",
+                    elem, coll_name
+                ));
+            }
+        }
+        CollectionKind::Array1 => {
+            // new
+            out.push_str(&format!(
+                "    /// Create a new empty {}\n    pub fn new() -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}_new()\n    }}\n\n",
+                short, coll_name
+            ));
+            // ctor with bounds
+            out.push_str(&format!(
+                "    /// Create with lower and upper bounds\n    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}_ctor_int2(lower, upper)\n    }}\n\n",
+                coll_name
+            ));
+            // ctor with bounds and init value
+            out.push_str(&format!(
+                "    /// Create with bounds, all elements initialized\n    pub fn new_int2_value(lower: i32, upper: i32, value: &crate::ffi::{}) -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}_ctor_int2_value(lower, upper, value)\n    }}\n\n",
+                elem, coll_name
+            ));
+            // length
+            out.push_str(&format!(
+                "    /// Get number of elements\n    pub fn length(&self) -> i32 {{\n        crate::ffi::{}_length(self)\n    }}\n\n",
+                coll_name
+            ));
+            // lower
+            out.push_str(&format!(
+                "    /// Get lower bound index\n    pub fn lower(&self) -> i32 {{\n        crate::ffi::{}_lower(self)\n    }}\n\n",
+                coll_name
+            ));
+            // upper
+            out.push_str(&format!(
+                "    /// Get upper bound index\n    pub fn upper(&self) -> i32 {{\n        crate::ffi::{}_upper(self)\n    }}\n\n",
+                coll_name
+            ));
+            // value
+            out.push_str(&format!(
+                "    /// Get element at index\n    pub fn value(&self, index: i32) -> &crate::ffi::{} {{\n        crate::ffi::{}_value(self, index)\n    }}\n\n",
+                elem, coll_name
+            ));
+            // set_value
+            out.push_str(&format!(
+                "    /// Set element at index\n    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::{}) {{\n        crate::ffi::{}_set_value(self, index, item)\n    }}\n\n",
+                elem, coll_name
+            ));
+        }
+        CollectionKind::Array2 => {
+            // new
+            out.push_str(&format!(
+                "    /// Create a new empty {}\n    pub fn new() -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}_new()\n    }}\n\n",
+                short, coll_name
+            ));
+            // ctor with bounds
+            out.push_str(&format!(
+                "    /// Create with row and column bounds\n    pub fn new_int4(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32) -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}_ctor_int4(row_lower, row_upper, col_lower, col_upper)\n    }}\n\n",
+                coll_name
+            ));
+            // ctor with bounds and init value
+            out.push_str(&format!(
+                "    /// Create with bounds, all elements initialized\n    pub fn new_int4_value(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32, value: &crate::ffi::{}) -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)\n    }}\n\n",
+                elem, coll_name
+            ));
+            // nb_rows / nb_columns
+            out.push_str(&format!(
+                "    /// Get number of rows\n    pub fn nb_rows(&self) -> i32 {{\n        crate::ffi::{}_nb_rows(self)\n    }}\n\n",
+                coll_name
+            ));
+            out.push_str(&format!(
+                "    /// Get number of columns\n    pub fn nb_columns(&self) -> i32 {{\n        crate::ffi::{}_nb_columns(self)\n    }}\n\n",
+                coll_name
+            ));
+            // value
+            out.push_str(&format!(
+                "    /// Get element at (row, col)\n    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::{} {{\n        crate::ffi::{}_value(self, row, col)\n    }}\n\n",
+                elem, coll_name
+            ));
+            // set_value
+            out.push_str(&format!(
+                "    /// Set element at (row, col)\n    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &crate::ffi::{}) {{\n        crate::ffi::{}_set_value(self, row, col, item)\n    }}\n\n",
+                elem, coll_name
+            ));
+        }
+    }
+
+    out.push_str("}\n\n");
+    out
 }

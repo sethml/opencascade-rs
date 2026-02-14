@@ -19,6 +19,1011 @@ pub use crate::ffi::{
     TColgp_Array2OfXY as Array2OfXY, TColgp_Array2OfXYZ as Array2OfXYZ,
 };
 
+impl Array1OfCirc2d {
+    /// Create a new empty Array1OfCirc2d
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfCirc2d_new()
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfCirc2d_ctor_int2(lower, upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi::gp_Circ2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfCirc2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfCirc2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfCirc2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfCirc2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi::gp_Circ2d {
+        crate::ffi::TColgp_Array1OfCirc2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Circ2d) {
+        crate::ffi::TColgp_Array1OfCirc2d_set_value(self, index, item)
+    }
+}
+
+impl Array1OfDir {
+    /// Create a new empty Array1OfDir
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfDir_new()
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfDir_ctor_int2(lower, upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfDir_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfDir_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfDir_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfDir_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi::gp_Dir {
+        crate::ffi::TColgp_Array1OfDir_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Dir) {
+        crate::ffi::TColgp_Array1OfDir_set_value(self, index, item)
+    }
+}
+
+impl Array1OfDir2d {
+    /// Create a new empty Array1OfDir2d
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfDir2d_new()
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfDir2d_ctor_int2(lower, upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi::gp_Dir2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfDir2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfDir2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfDir2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfDir2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi::gp_Dir2d {
+        crate::ffi::TColgp_Array1OfDir2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Dir2d) {
+        crate::ffi::TColgp_Array1OfDir2d_set_value(self, index, item)
+    }
+}
+
+impl Array1OfLin2d {
+    /// Create a new empty Array1OfLin2d
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfLin2d_new()
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfLin2d_ctor_int2(lower, upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi::gp_Lin2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfLin2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfLin2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfLin2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfLin2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi::gp_Lin2d {
+        crate::ffi::TColgp_Array1OfLin2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Lin2d) {
+        crate::ffi::TColgp_Array1OfLin2d_set_value(self, index, item)
+    }
+}
+
+impl Array1OfPnt {
+    /// Create a new empty Array1OfPnt
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfPnt_new()
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfPnt_ctor_int2(lower, upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfPnt_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfPnt_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfPnt_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfPnt_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi::gp_Pnt {
+        crate::ffi::TColgp_Array1OfPnt_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Pnt) {
+        crate::ffi::TColgp_Array1OfPnt_set_value(self, index, item)
+    }
+}
+
+impl Array1OfPnt2d {
+    /// Create a new empty Array1OfPnt2d
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfPnt2d_new()
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfPnt2d_ctor_int2(lower, upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfPnt2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfPnt2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfPnt2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfPnt2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi::gp_Pnt2d {
+        crate::ffi::TColgp_Array1OfPnt2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::TColgp_Array1OfPnt2d_set_value(self, index, item)
+    }
+}
+
+impl Array1OfVec {
+    /// Create a new empty Array1OfVec
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfVec_new()
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfVec_ctor_int2(lower, upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfVec_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfVec_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfVec_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfVec_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi::gp_Vec {
+        crate::ffi::TColgp_Array1OfVec_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Vec) {
+        crate::ffi::TColgp_Array1OfVec_set_value(self, index, item)
+    }
+}
+
+impl Array1OfVec2d {
+    /// Create a new empty Array1OfVec2d
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfVec2d_new()
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfVec2d_ctor_int2(lower, upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfVec2d_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfVec2d_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfVec2d_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfVec2d_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi::gp_Vec2d {
+        crate::ffi::TColgp_Array1OfVec2d_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Vec2d) {
+        crate::ffi::TColgp_Array1OfVec2d_set_value(self, index, item)
+    }
+}
+
+impl Array1OfXY {
+    /// Create a new empty Array1OfXY
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfXY_new()
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfXY_ctor_int2(lower, upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi::gp_XY,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfXY_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfXY_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfXY_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfXY_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi::gp_XY {
+        crate::ffi::TColgp_Array1OfXY_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_XY) {
+        crate::ffi::TColgp_Array1OfXY_set_value(self, index, item)
+    }
+}
+
+impl Array1OfXYZ {
+    /// Create a new empty Array1OfXYZ
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfXYZ_new()
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfXYZ_ctor_int2(lower, upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi::gp_XYZ,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array1OfXYZ_ctor_int2_value(lower, upper, value)
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfXYZ_length(self)
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfXYZ_lower(self)
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        crate::ffi::TColgp_Array1OfXYZ_upper(self)
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi::gp_XYZ {
+        crate::ffi::TColgp_Array1OfXYZ_value(self, index)
+    }
+
+    /// Set element at index
+    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_XYZ) {
+        crate::ffi::TColgp_Array1OfXYZ_set_value(self, index, item)
+    }
+}
+
+impl Array2OfCirc2d {
+    /// Create a new empty Array2OfCirc2d
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfCirc2d_new()
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfCirc2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi::gp_Circ2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfCirc2d_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfCirc2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfCirc2d_nb_columns(self)
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Circ2d {
+        crate::ffi::TColgp_Array2OfCirc2d_value(self, row, col)
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(
+        self: std::pin::Pin<&mut Self>,
+        row: i32,
+        col: i32,
+        item: &crate::ffi::gp_Circ2d,
+    ) {
+        crate::ffi::TColgp_Array2OfCirc2d_set_value(self, row, col, item)
+    }
+}
+
+impl Array2OfDir {
+    /// Create a new empty Array2OfDir
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfDir_new()
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfDir_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi::gp_Dir,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfDir_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfDir_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfDir_nb_columns(self)
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Dir {
+        crate::ffi::TColgp_Array2OfDir_value(self, row, col)
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(
+        self: std::pin::Pin<&mut Self>,
+        row: i32,
+        col: i32,
+        item: &crate::ffi::gp_Dir,
+    ) {
+        crate::ffi::TColgp_Array2OfDir_set_value(self, row, col, item)
+    }
+}
+
+impl Array2OfDir2d {
+    /// Create a new empty Array2OfDir2d
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfDir2d_new()
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfDir2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi::gp_Dir2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfDir2d_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfDir2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfDir2d_nb_columns(self)
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Dir2d {
+        crate::ffi::TColgp_Array2OfDir2d_value(self, row, col)
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(
+        self: std::pin::Pin<&mut Self>,
+        row: i32,
+        col: i32,
+        item: &crate::ffi::gp_Dir2d,
+    ) {
+        crate::ffi::TColgp_Array2OfDir2d_set_value(self, row, col, item)
+    }
+}
+
+impl Array2OfLin2d {
+    /// Create a new empty Array2OfLin2d
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfLin2d_new()
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfLin2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi::gp_Lin2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfLin2d_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfLin2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfLin2d_nb_columns(self)
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Lin2d {
+        crate::ffi::TColgp_Array2OfLin2d_value(self, row, col)
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(
+        self: std::pin::Pin<&mut Self>,
+        row: i32,
+        col: i32,
+        item: &crate::ffi::gp_Lin2d,
+    ) {
+        crate::ffi::TColgp_Array2OfLin2d_set_value(self, row, col, item)
+    }
+}
+
+impl Array2OfPnt {
+    /// Create a new empty Array2OfPnt
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfPnt_new()
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfPnt_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfPnt_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfPnt_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfPnt_nb_columns(self)
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Pnt {
+        crate::ffi::TColgp_Array2OfPnt_value(self, row, col)
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(
+        self: std::pin::Pin<&mut Self>,
+        row: i32,
+        col: i32,
+        item: &crate::ffi::gp_Pnt,
+    ) {
+        crate::ffi::TColgp_Array2OfPnt_set_value(self, row, col, item)
+    }
+}
+
+impl Array2OfPnt2d {
+    /// Create a new empty Array2OfPnt2d
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfPnt2d_new()
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfPnt2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfPnt2d_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfPnt2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfPnt2d_nb_columns(self)
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Pnt2d {
+        crate::ffi::TColgp_Array2OfPnt2d_value(self, row, col)
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(
+        self: std::pin::Pin<&mut Self>,
+        row: i32,
+        col: i32,
+        item: &crate::ffi::gp_Pnt2d,
+    ) {
+        crate::ffi::TColgp_Array2OfPnt2d_set_value(self, row, col, item)
+    }
+}
+
+impl Array2OfVec {
+    /// Create a new empty Array2OfVec
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfVec_new()
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfVec_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfVec_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfVec_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfVec_nb_columns(self)
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Vec {
+        crate::ffi::TColgp_Array2OfVec_value(self, row, col)
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(
+        self: std::pin::Pin<&mut Self>,
+        row: i32,
+        col: i32,
+        item: &crate::ffi::gp_Vec,
+    ) {
+        crate::ffi::TColgp_Array2OfVec_set_value(self, row, col, item)
+    }
+}
+
+impl Array2OfVec2d {
+    /// Create a new empty Array2OfVec2d
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfVec2d_new()
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfVec2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfVec2d_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfVec2d_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfVec2d_nb_columns(self)
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Vec2d {
+        crate::ffi::TColgp_Array2OfVec2d_value(self, row, col)
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(
+        self: std::pin::Pin<&mut Self>,
+        row: i32,
+        col: i32,
+        item: &crate::ffi::gp_Vec2d,
+    ) {
+        crate::ffi::TColgp_Array2OfVec2d_set_value(self, row, col, item)
+    }
+}
+
+impl Array2OfXY {
+    /// Create a new empty Array2OfXY
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfXY_new()
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfXY_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi::gp_XY,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfXY_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfXY_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfXY_nb_columns(self)
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_XY {
+        crate::ffi::TColgp_Array2OfXY_value(self, row, col)
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &crate::ffi::gp_XY) {
+        crate::ffi::TColgp_Array2OfXY_set_value(self, row, col, item)
+    }
+}
+
+impl Array2OfXYZ {
+    /// Create a new empty Array2OfXYZ
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfXYZ_new()
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfXYZ_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi::gp_XYZ,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TColgp_Array2OfXYZ_ctor_int4_value(
+            row_lower, row_upper, col_lower, col_upper, value,
+        )
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfXYZ_nb_rows(self)
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        crate::ffi::TColgp_Array2OfXYZ_nb_columns(self)
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_XYZ {
+        crate::ffi::TColgp_Array2OfXYZ_value(self, row, col)
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(
+        self: std::pin::Pin<&mut Self>,
+        row: i32,
+        col: i32,
+        item: &crate::ffi::gp_XYZ,
+    ) {
+        crate::ffi::TColgp_Array2OfXYZ_set_value(self, row, col, item)
+    }
+}
+
 // ========================
 // From TColgp_HArray1OfCirc2d.hxx
 // ========================

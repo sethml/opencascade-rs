@@ -29,6 +29,22 @@ impl Curve {
     }
 }
 
+pub use crate::ffi::HandleGeomEvaluatorCurve;
+
+impl HandleGeomEvaluatorCurve {
+    /// Dereference this Handle to access the underlying GeomEvaluator_Curve
+    pub fn get(&self) -> &crate::ffi::GeomEvaluator_Curve {
+        crate::ffi::HandleGeomEvaluatorCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomEvaluator_Curve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::GeomEvaluator_Curve> {
+        crate::ffi::HandleGeomEvaluatorCurve_get_mut(self)
+    }
+}
+
 // ========================
 // From GeomEvaluator_Surface.hxx
 // ========================
@@ -60,8 +76,18 @@ impl Surface {
     }
 }
 
-// ========================
-// Additional type re-exports
-// ========================
+pub use crate::ffi::HandleGeomEvaluatorSurface;
 
-pub use crate::ffi::{HandleGeomEvaluatorCurve, HandleGeomEvaluatorSurface};
+impl HandleGeomEvaluatorSurface {
+    /// Dereference this Handle to access the underlying GeomEvaluator_Surface
+    pub fn get(&self) -> &crate::ffi::GeomEvaluator_Surface {
+        crate::ffi::HandleGeomEvaluatorSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomEvaluator_Surface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::GeomEvaluator_Surface> {
+        crate::ffi::HandleGeomEvaluatorSurface_get_mut(self)
+    }
+}

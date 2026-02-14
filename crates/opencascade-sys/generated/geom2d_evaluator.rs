@@ -29,8 +29,18 @@ impl Curve {
     }
 }
 
-// ========================
-// Additional type re-exports
-// ========================
-
 pub use crate::ffi::HandleGeom2dEvaluatorCurve;
+
+impl HandleGeom2dEvaluatorCurve {
+    /// Dereference this Handle to access the underlying Geom2dEvaluator_Curve
+    pub fn get(&self) -> &crate::ffi::Geom2dEvaluator_Curve {
+        crate::ffi::HandleGeom2dEvaluatorCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2dEvaluator_Curve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom2dEvaluator_Curve> {
+        crate::ffi::HandleGeom2dEvaluatorCurve_get_mut(self)
+    }
+}

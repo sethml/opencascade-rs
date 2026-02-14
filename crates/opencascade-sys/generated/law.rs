@@ -6,9 +6,6 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-// Base handle type re-exports (targets of handle upcasts)
-pub use crate::ffi::HandleLawFunction;
-
 // ========================
 // From Law_BSpFunc.hxx
 // ========================
@@ -123,6 +120,20 @@ impl Function {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Law_Function_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleLawFunction;
+
+impl HandleLawFunction {
+    /// Dereference this Handle to access the underlying Law_Function
+    pub fn get(&self) -> &crate::ffi::Law_Function {
+        crate::ffi::HandleLawFunction_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Law_Function
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_Function> {
+        crate::ffi::HandleLawFunction_get_mut(self)
     }
 }
 

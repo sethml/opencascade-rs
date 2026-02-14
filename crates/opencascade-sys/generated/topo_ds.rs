@@ -1334,6 +1334,22 @@ impl TShape {
     }
 }
 
+pub use crate::ffi::HandleTopoDSTShape;
+
+impl HandleTopoDSTShape {
+    /// Dereference this Handle to access the underlying TopoDS_TShape
+    pub fn get(&self) -> &crate::ffi::TopoDS_TShape {
+        crate::ffi::HandleTopoDSTShape_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_TShape
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopoDS_TShape> {
+        crate::ffi::HandleTopoDSTShape_get_mut(self)
+    }
+}
+
 // ========================
 // From TopoDS_Vertex.hxx
 // ========================
@@ -1688,9 +1704,3 @@ impl Wire {
         crate::ffi::TopoDS_Wire_inherited_EmptyCopied(self)
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::HandleTopoDSTShape;

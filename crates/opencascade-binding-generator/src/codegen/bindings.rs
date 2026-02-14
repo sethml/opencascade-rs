@@ -45,6 +45,8 @@ pub struct ClassBindings {
     pub upcasts: Vec<UpcastBinding>,
     pub has_to_owned: bool,
     pub has_to_handle: bool,
+    /// Whether Handle_get/get_mut should be generated (true for all handle types, including abstract)
+    pub has_handle_get: bool,
     pub handle_upcasts: Vec<HandleUpcastBinding>,
     pub inherited_methods: Vec<InheritedMethodBinding>,
 }
@@ -1107,8 +1109,11 @@ pub fn compute_class_bindings(
     let has_to_handle =
         class.is_handle_type && !class.has_protected_destructor && !effectively_abstract;
 
+    // ── Handle get/get_mut (works for abstract classes too) ─────────────
+    let has_handle_get = class.is_handle_type && !class.has_protected_destructor;
+
     // ── Handle upcasts ──────────────────────────────────────────────────
-    let handle_upcasts = if has_to_handle {
+    let handle_upcasts = if has_handle_get {
         compute_handle_upcast_bindings(class, symbol_table, handle_able_classes)
     } else {
         Vec::new()
@@ -1135,6 +1140,7 @@ pub fn compute_class_bindings(
         upcasts,
         has_to_owned,
         has_to_handle,
+        has_handle_get,
         handle_upcasts,
         inherited_methods,
     }
@@ -2069,7 +2075,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
     }
 
     // 8b. Handle get (dereference) wrapper
-    if bindings.has_to_handle {
+    if bindings.has_handle_get {
         let handle_type = format!("Handle{}", cn.replace("_", ""));
         writeln!(
             output,
@@ -2394,7 +2400,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
     }
 
     // 7. Handle type re-export, get method, and handle upcast methods
-    if bindings.has_to_handle {
+    if bindings.has_handle_get {
         let handle_type_name = format!("Handle{}", cn.replace("_", ""));
         // Re-export the handle type so external crates can name it
         output.push_str(&format!(
@@ -2585,7 +2591,7 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
     }
 
     // ── Handle get (dereference) ─────────────────────────────────────────
-    if bindings.has_to_handle {
+    if bindings.has_handle_get {
         let handle_type_name = format!("Handle{}", cn.replace('_', ""));
         writeln!(out, "        /// Dereference Handle to get &{}", cn).unwrap();
         writeln!(out, "        fn {}_get(handle: &{}) -> &{};", handle_type_name, handle_type_name, cn).unwrap();

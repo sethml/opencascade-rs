@@ -169,3 +169,11 @@ Previously, types were declared in both `ffi.rs` and module-specific bridge bloc
 ### 10. ~~Wire::from_unordered_edges — Handle type mismatch~~ RESOLVED
 
 The unified FFI architecture (Step 4i) already ensured all Handle types are declared once in `ffi.rs` and re-exported via `pub use`. The type identity issue was already fixed. Additionally, `get()` and `get_mut()` methods were added to all Handle types to allow dereferencing handles back to their contained objects. `Wire::from_unordered_edges` and `KicadPcb::edge_cuts` are now fully implemented.
+
+### 11. Standalone package-level functions not generated
+
+OCCT packages define standalone (non-class) convenience functions such as `gp::OX()`, `gp::DZ()`, `gp::Origin()` that return pre-built geometric primitives. The binding generator currently only processes class constructors, methods, and inherited methods — it does not detect or bind free functions declared at the package/namespace level. Adding support would make the API more natural (e.g., `gp::OX()` instead of `gp::Ax1::new_pnt_dir(&gp::Pnt::new(), &gp::Dir::new_real3(1.0, 0.0, 0.0))`).
+
+### 12. Helper functions for constructors with default arguments
+
+When a C++ constructor has trailing parameters with default values, the generator currently only emits the fully-specified variant (e.g., `Transform::new_shape_trsf_bool2(shape, trsf, copy, copy_mesh)`). It should also generate convenience wrappers in the re-export module that omit trailing defaulted parameters and delegate to the full version with the C++ default values filled in. For example, `BRepBuilderAPI_Transform(S, T)` would become `Transform::new_shape_trsf(shape, trsf)` calling `new_shape_trsf_bool2(shape, trsf, false, false)`. These wrappers are purely Rust-side (no FFI changes needed) and would significantly improve ergonomics.

@@ -78,6 +78,22 @@ impl DiscretRoot {
     }
 }
 
+pub use crate::ffi::HandleBRepMeshDiscretRoot;
+
+impl HandleBRepMeshDiscretRoot {
+    /// Dereference this Handle to access the underlying BRepMesh_DiscretRoot
+    pub fn get(&self) -> &crate::ffi::BRepMesh_DiscretRoot {
+        crate::ffi::HandleBRepMeshDiscretRoot_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepMesh_DiscretRoot
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_DiscretRoot> {
+        crate::ffi::HandleBRepMeshDiscretRoot_get_mut(self)
+    }
+}
+
 // ========================
 // From BRepMesh_Edge.hxx
 // ========================
@@ -358,9 +374,3 @@ impl Vertex {
         crate::ffi::BRepMesh_Vertex_set_movability(self, theMovability)
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::HandleBRepMeshDiscretRoot;

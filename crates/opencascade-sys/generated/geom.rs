@@ -6,12 +6,6 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-// Base handle type re-exports (targets of handle upcasts)
-pub use crate::ffi::{
-    HandleGeomBoundedCurve, HandleGeomBoundedSurface, HandleGeomCurve, HandleGeomElementarySurface,
-    HandleGeomGeometry, HandleGeomSurface,
-};
-
 // ========================
 // From Geom_BSplineCurve.hxx
 // ========================
@@ -1811,6 +1805,32 @@ impl BoundedCurve {
     }
 }
 
+pub use crate::ffi::HandleGeomBoundedCurve;
+
+impl HandleGeomBoundedCurve {
+    /// Dereference this Handle to access the underlying Geom_BoundedCurve
+    pub fn get(&self) -> &crate::ffi::Geom_BoundedCurve {
+        crate::ffi::HandleGeomBoundedCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_BoundedCurve
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_BoundedCurve> {
+        crate::ffi::HandleGeomBoundedCurve_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_BoundedCurve> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
+        crate::ffi::HandleGeomBoundedCurve_to_HandleGeomCurve(self)
+    }
+
+    /// Upcast Handle<Geom_BoundedCurve> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomBoundedCurve_to_HandleGeomGeometry(self)
+    }
+}
+
 // ========================
 // From Geom_BoundedSurface.hxx
 // ========================
@@ -2101,6 +2121,32 @@ impl BoundedSurface {
     }
 }
 
+pub use crate::ffi::HandleGeomBoundedSurface;
+
+impl HandleGeomBoundedSurface {
+    /// Dereference this Handle to access the underlying Geom_BoundedSurface
+    pub fn get(&self) -> &crate::ffi::Geom_BoundedSurface {
+        crate::ffi::HandleGeomBoundedSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_BoundedSurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_BoundedSurface> {
+        crate::ffi::HandleGeomBoundedSurface_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomBoundedSurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomBoundedSurface_to_HandleGeomSurface(self)
+    }
+}
+
 // ========================
 // From Geom_Curve.hxx
 // ========================
@@ -2258,6 +2304,25 @@ impl Curve {
     /// Inherited from Geom_Geometry: Copy()
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
         crate::ffi::Geom_Curve_inherited_Copy(self)
+    }
+}
+
+pub use crate::ffi::HandleGeomCurve;
+
+impl HandleGeomCurve {
+    /// Dereference this Handle to access the underlying Geom_Curve
+    pub fn get(&self) -> &crate::ffi::Geom_Curve {
+        crate::ffi::HandleGeomCurve_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Curve
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom_Curve> {
+        crate::ffi::HandleGeomCurve_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Curve> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomCurve_to_HandleGeomGeometry(self)
     }
 }
 
@@ -2860,6 +2925,32 @@ impl ElementarySurface {
     }
 }
 
+pub use crate::ffi::HandleGeomElementarySurface;
+
+impl HandleGeomElementarySurface {
+    /// Dereference this Handle to access the underlying Geom_ElementarySurface
+    pub fn get(&self) -> &crate::ffi::Geom_ElementarySurface {
+        crate::ffi::HandleGeomElementarySurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_ElementarySurface
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_ElementarySurface> {
+        crate::ffi::HandleGeomElementarySurface_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_ElementarySurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomElementarySurface_to_HandleGeomGeometry(self)
+    }
+
+    /// Upcast Handle<Geom_ElementarySurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::HandleGeomElementarySurface_to_HandleGeomSurface(self)
+    }
+}
+
 // ========================
 // From Geom_Geometry.hxx
 // ========================
@@ -2950,6 +3041,22 @@ impl Geometry {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_Geometry_get_type_descriptor()
+    }
+}
+
+pub use crate::ffi::HandleGeomGeometry;
+
+impl HandleGeomGeometry {
+    /// Dereference this Handle to access the underlying Geom_Geometry
+    pub fn get(&self) -> &crate::ffi::Geom_Geometry {
+        crate::ffi::HandleGeomGeometry_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Geometry
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Geom_Geometry> {
+        crate::ffi::HandleGeomGeometry_get_mut(self)
     }
 }
 
@@ -3462,6 +3569,25 @@ impl Surface {
     /// Inherited from Geom_Geometry: Copy()
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
         crate::ffi::Geom_Surface_inherited_Copy(self)
+    }
+}
+
+pub use crate::ffi::HandleGeomSurface;
+
+impl HandleGeomSurface {
+    /// Dereference this Handle to access the underlying Geom_Surface
+    pub fn get(&self) -> &crate::ffi::Geom_Surface {
+        crate::ffi::HandleGeomSurface_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_Surface
+    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom_Surface> {
+        crate::ffi::HandleGeomSurface_get_mut(self)
+    }
+
+    /// Upcast Handle<Geom_Surface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
+        crate::ffi::HandleGeomSurface_to_HandleGeomGeometry(self)
     }
 }
 

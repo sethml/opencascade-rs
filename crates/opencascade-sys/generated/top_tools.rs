@@ -45,6 +45,199 @@ pub use crate::ffi::{
     TopTools_MapOfShape as MapOfShape, TopTools_SequenceOfShape as SequenceOfShape,
 };
 
+impl DataMapOfShapeShape {
+    /// Create a new empty DataMapOfShapeShape
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_DataMapOfShapeShape_new()
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        crate::ffi::TopTools_DataMapOfShapeShape_size(self)
+    }
+
+    /// Remove all elements
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopTools_DataMapOfShapeShape_clear(self)
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        self: std::pin::Pin<&mut Self>,
+        key: &crate::ffi::TopoDS_Shape,
+        value: &crate::ffi::TopoDS_Shape,
+    ) -> bool {
+        crate::ffi::TopTools_DataMapOfShapeShape_bind(self, key, value)
+    }
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn find(&self, key: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopTools_DataMapOfShapeShape_find(self, key)
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopTools_DataMapOfShapeShape_contains(self, key)
+    }
+}
+
+impl IndexedDataMapOfShapeListOfShape {
+    /// Create a new empty IndexedDataMapOfShapeListOfShape
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_new()
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_size(self)
+    }
+
+    /// Remove all elements
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_clear(self)
+    }
+
+    /// Add a key-value pair, returns index
+    pub fn add(
+        self: std::pin::Pin<&mut Self>,
+        key: &crate::ffi::TopoDS_Shape,
+        value: &crate::ffi::TopTools_ListOfShape,
+    ) -> i32 {
+        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_add(self, key, value)
+    }
+
+    /// Find value by key
+    pub fn find_from_key<'a>(
+        &'a self,
+        key: &crate::ffi::TopoDS_Shape,
+    ) -> &'a crate::ffi::TopTools_ListOfShape {
+        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_find_from_key(self, key)
+    }
+
+    /// Find value by 1-based index
+    pub fn find_from_index<'a>(&'a self, index: i32) -> &'a crate::ffi::TopTools_ListOfShape {
+        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_find_from_index(self, index)
+    }
+
+    /// Find key by 1-based index
+    pub fn find_key(&self, index: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_find_key(self, index)
+    }
+
+    /// Find index by key (returns 0 if not found)
+    pub fn find_index(&self, key: &crate::ffi::TopoDS_Shape) -> i32 {
+        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_find_index(self, key)
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_contains(self, key)
+    }
+}
+
+impl IndexedMapOfShape {
+    /// Create a new empty IndexedMapOfShape
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_IndexedMapOfShape_new()
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        crate::ffi::TopTools_IndexedMapOfShape_size(self)
+    }
+
+    /// Remove all elements
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopTools_IndexedMapOfShape_clear(self)
+    }
+
+    /// Add an element, returns index
+    pub fn add(self: std::pin::Pin<&mut Self>, item: &crate::ffi::TopoDS_Shape) -> i32 {
+        crate::ffi::TopTools_IndexedMapOfShape_add(self, item)
+    }
+
+    /// Get element at 1-based index
+    pub fn find_key(&self, index: i32) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::TopTools_IndexedMapOfShape_find_key(self, index)
+    }
+}
+
+impl ListOfShape {
+    /// Create a new empty ListOfShape
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_ListOfShape_new()
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        crate::ffi::TopTools_ListOfShape_size(self)
+    }
+
+    /// Remove all elements
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopTools_ListOfShape_clear(self)
+    }
+
+    /// Append an element
+    pub fn append(self: std::pin::Pin<&mut Self>, item: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::TopTools_ListOfShape_append(self, item)
+    }
+
+    /// Prepend an element
+    pub fn prepend(self: std::pin::Pin<&mut Self>, item: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::TopTools_ListOfShape_prepend(self, item)
+    }
+}
+
+impl MapOfShape {
+    /// Create a new empty MapOfShape
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_MapOfShape_new()
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        crate::ffi::TopTools_MapOfShape_size(self)
+    }
+
+    /// Remove all elements
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopTools_MapOfShape_clear(self)
+    }
+
+    /// Add an element, returns index
+    pub fn add(self: std::pin::Pin<&mut Self>, item: &crate::ffi::TopoDS_Shape) -> i32 {
+        crate::ffi::TopTools_MapOfShape_add(self, item)
+    }
+}
+
+impl SequenceOfShape {
+    /// Create a new empty SequenceOfShape
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopTools_SequenceOfShape_new()
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        crate::ffi::TopTools_SequenceOfShape_size(self)
+    }
+
+    /// Remove all elements
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopTools_SequenceOfShape_clear(self)
+    }
+
+    /// Append an element
+    pub fn append(self: std::pin::Pin<&mut Self>, item: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::TopTools_SequenceOfShape_append(self, item)
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::TopTools_SequenceOfShape_value(self, index)
+    }
+}
+
 // ========================
 // From TopTools_HArray2OfShape.hxx
 // ========================

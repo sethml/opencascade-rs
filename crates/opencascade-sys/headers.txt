@@ -173,6 +173,9 @@ GeomAbs_SurfaceType.hxx
 GC_MakeArcOfCircle.hxx
 GC_MakeSegment.hxx
 
+# GCE2d module - 2D geometry construction
+GCE2d_MakeSegment.hxx
+
 # GCPnts module - Geometry points
 GCPnts_TangentialDeflection.hxx
 
@@ -186,6 +189,9 @@ BRep_Tool.hxx
 
 # BRepBndLib module - Bounding box utilities
 BRepBndLib.hxx
+
+# BRepLib module - Topology building utilities
+BRepLib.hxx
 
 # BRepAdaptor module - Curve/surface adaptors
 BRepAdaptor_Curve.hxx

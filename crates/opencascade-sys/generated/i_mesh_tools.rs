@@ -93,6 +93,22 @@ impl ModelAlgo {
     }
 }
 
+pub use crate::ffi::HandleIMeshToolsModelAlgo;
+
+impl HandleIMeshToolsModelAlgo {
+    /// Dereference this Handle to access the underlying IMeshTools_ModelAlgo
+    pub fn get(&self) -> &crate::ffi::IMeshTools_ModelAlgo {
+        crate::ffi::HandleIMeshToolsModelAlgo_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshTools_ModelAlgo
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IMeshTools_ModelAlgo> {
+        crate::ffi::HandleIMeshToolsModelAlgo_get_mut(self)
+    }
+}
+
 // ========================
 // From IMeshTools_ModelBuilder.hxx
 // ========================
@@ -180,9 +196,3 @@ impl Parameters {
         crate::ffi::IMeshTools_Parameters_rel_min_size()
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::HandleIMeshToolsModelAlgo;

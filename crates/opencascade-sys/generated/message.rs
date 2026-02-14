@@ -1287,6 +1287,22 @@ impl Printer {
     }
 }
 
+pub use crate::ffi::HandleMessagePrinter;
+
+impl HandleMessagePrinter {
+    /// Dereference this Handle to access the underlying Message_Printer
+    pub fn get(&self) -> &crate::ffi::Message_Printer {
+        crate::ffi::HandleMessagePrinter_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_Printer
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Message_Printer> {
+        crate::ffi::HandleMessagePrinter_get_mut(self)
+    }
+}
+
 // ========================
 // From Message_ProgressIndicator.hxx
 // ========================
@@ -1345,6 +1361,22 @@ impl ProgressIndicator {
         theProgress: &crate::ffi::HandleMessageProgressIndicator,
     ) -> cxx::UniquePtr<crate::ffi::Message_ProgressRange> {
         crate::ffi::Message_ProgressIndicator_start_handleprogressindicator(theProgress)
+    }
+}
+
+pub use crate::ffi::HandleMessageProgressIndicator;
+
+impl HandleMessageProgressIndicator {
+    /// Dereference this Handle to access the underlying Message_ProgressIndicator
+    pub fn get(&self) -> &crate::ffi::Message_ProgressIndicator {
+        crate::ffi::HandleMessageProgressIndicator_get(self)
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_ProgressIndicator
+    pub fn get_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Message_ProgressIndicator> {
+        crate::ffi::HandleMessageProgressIndicator_get_mut(self)
     }
 }
 
@@ -1721,7 +1753,6 @@ impl HandleMessageReport {
 // ========================
 
 pub use crate::ffi::{
-    HandleMessagePrinter, HandleMessageProgressIndicator, Message_Attribute as Attribute,
-    Message_CompositeAlerts as CompositeAlerts, Message_ListOfAlert as ListOfAlert,
-    Message_SequenceOfPrinters as SequenceOfPrinters,
+    Message_Attribute as Attribute, Message_CompositeAlerts as CompositeAlerts,
+    Message_ListOfAlert as ListOfAlert, Message_SequenceOfPrinters as SequenceOfPrinters,
 };
