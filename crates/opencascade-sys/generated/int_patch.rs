@@ -118,8 +118,8 @@ pub use crate::ffi::IntPatch_Line as Line;
 impl Line {
     /// Returns the type of geometry 3d (Line, Circle, Parabola,
     /// Hyperbola, Ellipse, Analytic, Walking, Restriction)
-    pub fn arc_type(&self) -> i32 {
-        crate::ffi::IntPatch_Line_arc_type(self)
+    pub fn arc_type(&self) -> crate::int_patch::IType {
+        crate::int_patch::IType::try_from(crate::ffi::IntPatch_Line_arc_type(self)).unwrap()
     }
 
     /// Returns the type of the transition of the line
@@ -141,31 +141,33 @@ impl Line {
     ///
     /// If one of the transition is TOUCH or UNDECIDED, the other
     /// one has got the same value.
-    pub fn transition_on_s1(&self) -> i32 {
-        crate::ffi::IntPatch_Line_transition_on_s1(self)
+    pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
+        crate::int_surf::TypeTrans::try_from(crate::ffi::IntPatch_Line_transition_on_s1(self))
+            .unwrap()
     }
 
     /// Returns the type of the transition of the line
     /// for the second surface. The transition is "constant"
     /// along the line.
-    pub fn transition_on_s2(&self) -> i32 {
-        crate::ffi::IntPatch_Line_transition_on_s2(self)
+    pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
+        crate::int_surf::TypeTrans::try_from(crate::ffi::IntPatch_Line_transition_on_s2(self))
+            .unwrap()
     }
 
     /// Returns the situation (INSIDE/OUTSIDE/UNKNOWN) of
     /// the first patch compared to the second one, when
     /// TransitionOnS1 or TransitionOnS2 returns TOUCH.
     /// Otherwise, an exception is raised.
-    pub fn situation_s1(&self) -> i32 {
-        crate::ffi::IntPatch_Line_situation_s1(self)
+    pub fn situation_s1(&self) -> crate::int_surf::Situation {
+        crate::int_surf::Situation::try_from(crate::ffi::IntPatch_Line_situation_s1(self)).unwrap()
     }
 
     /// Returns the situation (INSIDE/OUTSIDE/UNKNOWN) of
     /// the second patch compared to the first one, when
     /// TransitionOnS1 or TransitionOnS2 returns TOUCH.
     /// Otherwise, an exception is raised.
-    pub fn situation_s2(&self) -> i32 {
-        crate::ffi::IntPatch_Line_situation_s2(self)
+    pub fn situation_s2(&self) -> crate::int_surf::Situation {
+        crate::int_surf::Situation::try_from(crate::ffi::IntPatch_Line_situation_s2(self)).unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

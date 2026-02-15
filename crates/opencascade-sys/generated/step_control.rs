@@ -148,12 +148,13 @@ impl ActorWrite {
         crate::ffi::STEPControl_ActorWrite_ctor()
     }
 
-    pub fn set_mode(self: std::pin::Pin<&mut Self>, M: i32) {
-        crate::ffi::STEPControl_ActorWrite_set_mode(self, M)
+    pub fn set_mode(self: std::pin::Pin<&mut Self>, M: crate::step_control::StepModelType) {
+        crate::ffi::STEPControl_ActorWrite_set_mode(self, M.into())
     }
 
-    pub fn mode(&self) -> i32 {
-        crate::ffi::STEPControl_ActorWrite_mode(self)
+    pub fn mode(&self) -> crate::step_control::StepModelType {
+        crate::step_control::StepModelType::try_from(crate::ffi::STEPControl_ActorWrite_mode(self))
+            .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -343,8 +344,14 @@ impl Reader {
 
     /// Loads a file and returns the read status
     /// Zero for a Model which compies with the Controller
-    pub fn read_file_charptr(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
-        crate::ffi::STEPControl_Reader_read_file_charptr(self, filename)
+    pub fn read_file_charptr(
+        self: std::pin::Pin<&mut Self>,
+        filename: &str,
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Reader_read_file_charptr(
+            self, filename,
+        ))
+        .unwrap()
     }
 
     /// Loads a file and returns the read status
@@ -353,8 +360,11 @@ impl Reader {
         self: std::pin::Pin<&mut Self>,
         filename: &str,
         theParams: &crate::ffi::DESTEP_Parameters,
-    ) -> i32 {
-        crate::ffi::STEPControl_Reader_read_file_charptr_parameters(self, filename, theParams)
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(
+            crate::ffi::STEPControl_Reader_read_file_charptr_parameters(self, filename, theParams),
+        )
+        .unwrap()
     }
 
     /// Upcast to XSControl_Reader
@@ -430,13 +440,13 @@ impl Reader {
     }
 
     /// Inherited from XSControl_Reader: PrintCheckLoad()
-    pub fn print_check_load(&self, failsonly: bool, mode: i32) {
-        crate::ffi::STEPControl_Reader_inherited_PrintCheckLoad(self, failsonly, mode)
+    pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
+        crate::ffi::STEPControl_Reader_inherited_PrintCheckLoad(self, failsonly, mode.into())
     }
 
     /// Inherited from XSControl_Reader: PrintCheckTransfer()
-    pub fn print_check_transfer(&self, failsonly: bool, mode: i32) {
-        crate::ffi::STEPControl_Reader_inherited_PrintCheckTransfer(self, failsonly, mode)
+    pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
+        crate::ffi::STEPControl_Reader_inherited_PrintCheckTransfer(self, failsonly, mode.into())
     }
 
     /// Inherited from XSControl_Reader: PrintStatsTransfer()
@@ -494,40 +504,43 @@ impl Writer {
     pub fn transfer_shape_stepmodeltype_bool_progressrange(
         self: std::pin::Pin<&mut Self>,
         sh: &crate::ffi::TopoDS_Shape,
-        mode: i32,
+        mode: crate::step_control::StepModelType,
         compgraph: bool,
         theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> i32 {
-        crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_bool_progressrange(
-            self,
-            sh,
-            mode,
-            compgraph,
-            theProgress,
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(
+            crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_bool_progressrange(
+                self,
+                sh,
+                mode.into(),
+                compgraph,
+                theProgress,
+            ),
         )
+        .unwrap()
     }
 
     /// Translates shape sh to a STEP entity
     pub fn transfer_shape_stepmodeltype_parameters_bool_progressrange(
         self: std::pin::Pin<&mut Self>,
         sh: &crate::ffi::TopoDS_Shape,
-        mode: i32,
+        mode: crate::step_control::StepModelType,
         theParams: &crate::ffi::DESTEP_Parameters,
         compgraph: bool,
         theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> i32 {
-        crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(
-            self,
-            sh,
-            mode,
-            theParams,
-            compgraph,
-            theProgress,
-        )
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(self, sh, mode.into(), theParams, compgraph, theProgress)).unwrap()
     }
 
     /// Writes a STEP model in the file identified by filename.
-    pub fn write(self: std::pin::Pin<&mut Self>, theFileName: &str) -> i32 {
-        crate::ffi::STEPControl_Writer_write(self, theFileName)
+    pub fn write(
+        self: std::pin::Pin<&mut Self>,
+        theFileName: &str,
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Writer_write(
+            self,
+            theFileName,
+        ))
+        .unwrap()
     }
 }

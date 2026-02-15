@@ -12,8 +12,8 @@ use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
 use opencascade_sys::{
     b_rep, b_rep_algo_api, b_rep_builder_api, b_rep_feat, b_rep_fillet_api, b_rep_g_prop,
-    b_rep_offset_api, b_rep_prim_api, b_rep_tools, g_prop, geom_api, gp, message, top_abs,
-    top_exp, topo_ds,
+    b_rep_offset_api, b_rep_prim_api, b_rep_tools, extrema, g_prop, geom_api, gp, message,
+    top_abs, top_exp, topo_ds,
 };
 
 pub struct Face {
@@ -221,7 +221,7 @@ impl Face {
     #[must_use]
     pub fn offset(&self, distance: f64, join_type: JoinType) -> Self {
         let mut make_offset =
-            b_rep_offset_api::MakeOffset::new_face_jointype(&self.inner, join_type.to_i32());
+            b_rep_offset_api::MakeOffset::new_face_jointype(&self.inner, join_type.to_geom_abs());
         make_offset.pin_mut().perform(distance, 0.0);
 
         let offset_shape = make_offset.pin_mut().shape();
@@ -278,7 +278,7 @@ impl Face {
     pub fn normal_at(&self, pos: DVec3) -> DVec3 {
         let surface = b_rep::Tool::surface_face(&self.inner);
         let projector =
-            geom_api::ProjectPointOnSurf::new_pnt_handlegeomsurface_extalgo(&make_point(pos), &surface, 0);
+            geom_api::ProjectPointOnSurf::new_pnt_handlegeomsurface_extalgo(&make_point(pos), &surface, extrema::ExtAlgo::ExtalgoGrad);
         let mut u: f64 = 0.0;
         let mut v: f64 = 0.0;
 
@@ -370,7 +370,7 @@ impl Face {
     }
 
     pub fn orientation(&self) -> FaceOrientation {
-        FaceOrientation::from_i32(self.inner.orientation())
+        FaceOrientation::from_orientation(self.inner.orientation())
     }
 
     #[must_use]
@@ -523,13 +523,12 @@ pub enum FaceOrientation {
 }
 
 impl FaceOrientation {
-    pub fn from_i32(value: i32) -> Self {
+    pub fn from_orientation(value: top_abs::Orientation) -> Self {
         match value {
-            0 => Self::Forward,
-            1 => Self::Reversed,
-            2 => Self::Internal,
-            3 => Self::External,
-            _ => panic!("TopAbs_Orientation had an unrepresentable value: {value}"),
+            top_abs::Orientation::Forward => Self::Forward,
+            top_abs::Orientation::Reversed => Self::Reversed,
+            top_abs::Orientation::Internal => Self::Internal,
+            top_abs::Orientation::External => Self::External,
         }
     }
 }

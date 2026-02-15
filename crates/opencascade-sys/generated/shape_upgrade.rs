@@ -187,8 +187,8 @@ impl ClosedFaceDivide {
     }
 
     /// Inherited from ShapeUpgrade_FaceDivide: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Status(self, status.into())
     }
 
     /// Inherited from ShapeUpgrade_FaceDivide: SetSplitSurfaceTool()
@@ -324,8 +324,8 @@ impl ConvertSurfaceToBezierBasis {
     }
 
     /// Inherited from ShapeUpgrade_SplitSurface: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Status(self, status.into())
     }
 }
 
@@ -447,8 +447,8 @@ impl FaceDivide {
     /// DONE3: surface was modified without splitting
     /// FAIL1: some fails encountered during splitting wires
     /// FAIL2: face cannot be split
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_FaceDivide_status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_FaceDivide_status(self, status.into())
     }
 
     /// Returns the tool for splitting surfaces.
@@ -581,8 +581,8 @@ impl FaceDivideArea {
     }
 
     /// Inherited from ShapeUpgrade_FaceDivide: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Status(self, status.into())
     }
 
     /// Inherited from ShapeUpgrade_FaceDivide: SetSplitSurfaceTool()
@@ -691,8 +691,8 @@ impl FixSmallBezierCurves {
     }
 
     /// Inherited from ShapeUpgrade_FixSmallCurves: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Status(self, status.into())
     }
 
     /// Inherited from ShapeUpgrade_Tool: Set()
@@ -752,8 +752,8 @@ impl FixSmallCurves {
     /// DONE1:
     /// DONE2:
     /// FAIL1:
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_FixSmallCurves_status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_status(self, status.into())
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -839,8 +839,8 @@ impl RemoveInternalWires {
     /// :DONE2 - small faces were removed.
     /// :FAIL1 - initial shape is not specified
     /// :FAIL2 - specified sub-shape is not belonged to inotial shape.
-    pub fn status(&self, theStatus: i32) -> bool {
-        crate::ffi::ShapeUpgrade_RemoveInternalWires_status(self, theStatus)
+    pub fn status(&self, theStatus: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_status(self, theStatus.into())
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -919,15 +919,18 @@ impl RemoveLocations {
     /// sets level starting with that location will be removed,
     /// by default TopAbs_SHAPE. In this case locations will be kept for specified shape
     /// and if specified shape is TopAbs_COMPOUND for sub-shapes of first level.
-    pub fn set_remove_level(self: std::pin::Pin<&mut Self>, theLevel: i32) {
-        crate::ffi::ShapeUpgrade_RemoveLocations_set_remove_level(self, theLevel)
+    pub fn set_remove_level(self: std::pin::Pin<&mut Self>, theLevel: crate::top_abs::ShapeEnum) {
+        crate::ffi::ShapeUpgrade_RemoveLocations_set_remove_level(self, theLevel.into())
     }
 
     /// sets level starting with that location will be removed.Value of level can be set to
     /// TopAbs_SHAPE,TopAbs_COMPOUND,TopAbs_SOLID,TopAbs_SHELL,TopAbs_FACE.By default TopAbs_SHAPE.
     /// In this case location will be removed for all shape types for exception of compound.
-    pub fn remove_level(&self) -> i32 {
-        crate::ffi::ShapeUpgrade_RemoveLocations_remove_level(self)
+    pub fn remove_level(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::ShapeUpgrade_RemoveLocations_remove_level(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Returns modified shape obtained from initial shape.
@@ -1033,16 +1036,19 @@ impl ShapeConvertToBezier {
         &self,
         shape: &crate::ffi::TopoDS_Shape,
         message: &crate::ffi::Message_Msg,
-        gravity: i32,
+        gravity: crate::message::Gravity,
     ) {
         crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SendMsg(
-            self, shape, message, gravity,
+            self,
+            shape,
+            message,
+            gravity.into(),
         )
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Status(self, status.into())
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
@@ -1079,9 +1085,9 @@ impl ShapeDivide {
         &self,
         shape: &crate::ffi::TopoDS_Shape,
         message: &crate::ffi::Message_Msg,
-        gravity: i32,
+        gravity: crate::message::Gravity,
     ) {
-        crate::ffi::ShapeUpgrade_ShapeDivide_send_msg(self, shape, message, gravity)
+        crate::ffi::ShapeUpgrade_ShapeDivide_send_msg(self, shape, message, gravity.into())
     }
 
     /// Queries the status of last call to Perform
@@ -1089,8 +1095,8 @@ impl ShapeDivide {
     /// DONE1: some edges were split
     /// DONE2: surface was split
     /// FAIL1: some errors occurred
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_ShapeDivide_status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivide_status(self, status.into())
     }
 }
 
@@ -1165,14 +1171,19 @@ impl ShapeDivideAngle {
         &self,
         shape: &crate::ffi::TopoDS_Shape,
         message: &crate::ffi::Message_Msg,
-        gravity: i32,
+        gravity: crate::message::Gravity,
     ) {
-        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SendMsg(self, shape, message, gravity)
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SendMsg(
+            self,
+            shape,
+            message,
+            gravity.into(),
+        )
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Status(self, status.into())
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
@@ -1248,14 +1259,19 @@ impl ShapeDivideArea {
         &self,
         shape: &crate::ffi::TopoDS_Shape,
         message: &crate::ffi::Message_Msg,
-        gravity: i32,
+        gravity: crate::message::Gravity,
     ) {
-        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SendMsg(self, shape, message, gravity)
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SendMsg(
+            self,
+            shape,
+            message,
+            gravity.into(),
+        )
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Status(self, status.into())
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
@@ -1328,14 +1344,19 @@ impl ShapeDivideClosed {
         &self,
         shape: &crate::ffi::TopoDS_Shape,
         message: &crate::ffi::Message_Msg,
-        gravity: i32,
+        gravity: crate::message::Gravity,
     ) {
-        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SendMsg(self, shape, message, gravity)
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SendMsg(
+            self,
+            shape,
+            message,
+            gravity.into(),
+        )
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Status(self, status.into())
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
@@ -1408,16 +1429,19 @@ impl ShapeDivideClosedEdges {
         &self,
         shape: &crate::ffi::TopoDS_Shape,
         message: &crate::ffi::Message_Msg,
-        gravity: i32,
+        gravity: crate::message::Gravity,
     ) {
         crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SendMsg(
-            self, shape, message, gravity,
+            self,
+            shape,
+            message,
+            gravity.into(),
         )
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Status(self, status.into())
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
@@ -1449,8 +1473,14 @@ impl ShapeDivideContinuity {
     /// The possible values are C0, G1, C1, G2, C2, C3, CN The
     /// default is C1 to respect the Cas.Cade Shape Validity.  G1
     /// and G2 are not authorized.
-    pub fn set_boundary_criterion(self: std::pin::Pin<&mut Self>, Criterion: i32) {
-        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_boundary_criterion(self, Criterion)
+    pub fn set_boundary_criterion(
+        self: std::pin::Pin<&mut Self>,
+        Criterion: crate::geom_abs::Shape,
+    ) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_boundary_criterion(
+            self,
+            Criterion.into(),
+        )
     }
 
     /// Defines a criterion of continuity for the boundary (all the
@@ -1459,8 +1489,11 @@ impl ShapeDivideContinuity {
     /// The possible values are C0, G1, C1, G2, C2, C3, CN The
     /// default is C1 to respect the Cas.Cade Shape Validity.  G1
     /// and G2 are not authorized.
-    pub fn set_p_curve_criterion(self: std::pin::Pin<&mut Self>, Criterion: i32) {
-        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_p_curve_criterion(self, Criterion)
+    pub fn set_p_curve_criterion(
+        self: std::pin::Pin<&mut Self>,
+        Criterion: crate::geom_abs::Shape,
+    ) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_p_curve_criterion(self, Criterion.into())
     }
 
     /// Defines a criterion of continuity for the boundary (all the
@@ -1469,8 +1502,11 @@ impl ShapeDivideContinuity {
     /// The possible values are C0, G1, C1, G2, C2, C3, CN The
     /// default is C1 to respect the Cas.Cade Shape Validity.  G1
     /// and G2 are not authorized.
-    pub fn set_surface_criterion(self: std::pin::Pin<&mut Self>, Criterion: i32) {
-        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_surface_criterion(self, Criterion)
+    pub fn set_surface_criterion(
+        self: std::pin::Pin<&mut Self>,
+        Criterion: crate::geom_abs::Shape,
+    ) {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_surface_criterion(self, Criterion.into())
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide
@@ -1525,16 +1561,19 @@ impl ShapeDivideContinuity {
         &self,
         shape: &crate::ffi::TopoDS_Shape,
         message: &crate::ffi::Message_Msg,
-        gravity: i32,
+        gravity: crate::message::Gravity,
     ) {
         crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SendMsg(
-            self, shape, message, gravity,
+            self,
+            shape,
+            message,
+            gravity.into(),
         )
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Status(self, status.into())
     }
 
     /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
@@ -1593,8 +1632,8 @@ impl SplitCurve {
     /// DONE1 - splitting required and gives more than one segment
     /// DONE2 - splitting is required, but gives only one segment (initial)
     /// DONE3 - geometric form of the curve or parametrisation is modified
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_SplitCurve_status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_SplitCurve_status(self, status.into())
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1676,8 +1715,8 @@ impl SplitCurve2d {
     }
 
     /// Inherited from ShapeUpgrade_SplitCurve: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Status(self, status.into())
     }
 }
 
@@ -1732,8 +1771,8 @@ impl SplitCurve3d {
     }
 
     /// Inherited from ShapeUpgrade_SplitCurve: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Status(self, status.into())
     }
 }
 
@@ -1755,8 +1794,8 @@ impl SplitSurface {
     /// DONE1 - splitting required and gives more than one patch
     /// DONE2 - splitting is required, but gives only single patch (initial)
     /// DONE3 - geometric form of the surface or parametrisation is modified
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_SplitSurface_status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_SplitSurface_status(self, status.into())
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1860,8 +1899,8 @@ impl SplitSurfaceAngle {
     }
 
     /// Inherited from ShapeUpgrade_SplitSurface: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Status(self, status.into())
     }
 }
 
@@ -1937,8 +1976,8 @@ impl SplitSurfaceArea {
     }
 
     /// Inherited from ShapeUpgrade_SplitSurface: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Status(self, status.into())
     }
 }
 
@@ -1960,8 +1999,8 @@ impl SplitSurfaceContinuity {
     }
 
     /// Sets criterion for splitting.
-    pub fn set_criterion(self: std::pin::Pin<&mut Self>, Criterion: i32) {
-        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_set_criterion(self, Criterion)
+    pub fn set_criterion(self: std::pin::Pin<&mut Self>, Criterion: crate::geom_abs::Shape) {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_set_criterion(self, Criterion.into())
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2022,8 +2061,8 @@ impl SplitSurfaceContinuity {
     }
 
     /// Inherited from ShapeUpgrade_SplitSurface: Status()
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Status(self, status.into())
     }
 }
 
@@ -2208,8 +2247,8 @@ impl WireDivide {
     /// DONE1 - some edges were split
     /// FAIL1 - some edges have no 3d curve (skipped)
     /// FAIL2 - some edges have no pcurve (skipped)
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeUpgrade_WireDivide_status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeUpgrade_WireDivide_status(self, status.into())
     }
 
     /// Returns the tool for Transfer of parameters.

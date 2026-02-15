@@ -102,28 +102,44 @@ impl Transition {
     }
 
     /// Create a IN or OUT transition
-    pub fn new_bool_typetrans(Tangent: bool, Type: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntSurf_Transition_ctor_bool_typetrans(Tangent, Type)
+    pub fn new_bool_typetrans(
+        Tangent: bool,
+        Type: crate::int_surf::TypeTrans,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IntSurf_Transition_ctor_bool_typetrans(Tangent, Type.into())
     }
 
     /// Create a TOUCH transition.
-    pub fn new_bool_situation_bool(Tangent: bool, Situ: i32, Oppos: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntSurf_Transition_ctor_bool_situation_bool(Tangent, Situ, Oppos)
+    pub fn new_bool_situation_bool(
+        Tangent: bool,
+        Situ: crate::int_surf::Situation,
+        Oppos: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IntSurf_Transition_ctor_bool_situation_bool(Tangent, Situ.into(), Oppos)
     }
 
     /// Set the values of an IN or OUT transition.
-    pub fn set_value_bool_typetrans(self: std::pin::Pin<&mut Self>, Tangent: bool, Type: i32) {
-        crate::ffi::IntSurf_Transition_set_value_bool_typetrans(self, Tangent, Type)
+    pub fn set_value_bool_typetrans(
+        self: std::pin::Pin<&mut Self>,
+        Tangent: bool,
+        Type: crate::int_surf::TypeTrans,
+    ) {
+        crate::ffi::IntSurf_Transition_set_value_bool_typetrans(self, Tangent, Type.into())
     }
 
     /// Set the values of a TOUCH transition.
     pub fn set_value_bool_situation_bool(
         self: std::pin::Pin<&mut Self>,
         Tangent: bool,
-        Situ: i32,
+        Situ: crate::int_surf::Situation,
         Oppos: bool,
     ) {
-        crate::ffi::IntSurf_Transition_set_value_bool_situation_bool(self, Tangent, Situ, Oppos)
+        crate::ffi::IntSurf_Transition_set_value_bool_situation_bool(
+            self,
+            Tangent,
+            Situ.into(),
+            Oppos,
+        )
     }
 
     /// Returns the type of Transition (in/out/touch/undecided)
@@ -132,8 +148,9 @@ impl Transition {
     /// i-e when the function returns INSIDE for example, it
     /// means that the intersection line goes inside the
     /// part of plane limited by the arc of restriction.
-    pub fn transition_type(&self) -> i32 {
-        crate::ffi::IntSurf_Transition_transition_type(self)
+    pub fn transition_type(&self) -> crate::int_surf::TypeTrans {
+        crate::int_surf::TypeTrans::try_from(crate::ffi::IntSurf_Transition_transition_type(self))
+            .unwrap()
     }
 
     /// Returns a significant value if TransitionType returns
@@ -143,8 +160,9 @@ impl Transition {
     /// UNKNOWN when the calsulus cannot give results.
     /// If TransitionType returns IN, or OUT, or UNDECIDED, a
     /// exception is raised.
-    pub fn situation(&self) -> i32 {
-        crate::ffi::IntSurf_Transition_situation(self)
+    pub fn situation(&self) -> crate::int_surf::Situation {
+        crate::int_surf::Situation::try_from(crate::ffi::IntSurf_Transition_situation(self))
+            .unwrap()
     }
 }
 

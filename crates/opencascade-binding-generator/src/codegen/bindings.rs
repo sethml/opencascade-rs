@@ -218,12 +218,14 @@ pub struct ParamBinding {
     pub rust_name: String,
     /// Type as it appears in ffi.rs (e.g. "f64", "&gp_Pnt", "Pin<&mut gp_Pnt>")
     pub rust_ffi_type: String,
-    /// Type as it appears in re-export impl (e.g. "&crate::ffi::gp_Pnt")
+    /// Type as it appears in re-export impl (e.g. "&crate::ffi::gp_Pnt" or enum type)
     pub rust_reexport_type: String,
     /// C++ type for wrappers.hxx parameter (e.g. "Standard_Real", "const gp_Pnt&")
     pub cpp_type: String,
     /// C++ argument expression when calling OCCT (e.g. param name, or "std::string(x).c_str()")
     pub cpp_arg_expr: String,
+    /// If this is a value enum param, the qualified Rust enum type (e.g. "crate::top_abs::Orientation")
+    pub enum_rust_type: Option<String>,
 }
 
 /// A return type binding with info for all three output targets.
@@ -239,6 +241,8 @@ pub struct ReturnTypeBinding {
     pub needs_unique_ptr: bool,
     /// If this is an enum return, the original C++ enum name (for static_cast)
     pub enum_cpp_name: Option<String>,
+    /// If this is a value enum return, the qualified Rust enum type
+    pub enum_rust_type: Option<String>,
 }
 
 /// A resolved parameter binding (from SymbolTable, for inherited methods).
@@ -248,10 +252,12 @@ pub struct ResolvedParamBinding {
     /// Rust parameter name (keyword-escaped)
     pub rust_name: String,
     pub rust_ffi_type: String,
-    /// Type as it appears in re-export impl (e.g. "&crate::ffi::gp_Pnt")
+    /// Type as it appears in re-export impl (e.g. "&crate::ffi::gp_Pnt" or enum type)
     pub rust_reexport_type: String,
     pub cpp_type: String,
     pub cpp_arg_expr: String,
+    /// If this is a value enum param, the qualified Rust enum type
+    pub enum_rust_type: Option<String>,
 }
 
 /// A resolved return type binding (from SymbolTable, for inherited methods).
@@ -264,6 +270,8 @@ pub struct ResolvedReturnTypeBinding {
     pub needs_unique_ptr: bool,
     /// If this is an enum return, the original C++ enum name (for static_cast)
     pub enum_cpp_name: Option<String>,
+    /// If this is a value enum return, the qualified Rust enum type
+    pub enum_rust_type: Option<String>,
 }
 
 // ── Helper functions ────────────────────────────────────────────────────────
@@ -675,13 +683,19 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
 
     // Check if this parameter is an enum type
     if let Some(enum_cpp_name) = extract_enum_name(ty, ffi_ctx.all_enums) {
+        // Look up the Rust enum type for value enums
+        let enum_rust_type = ffi_ctx.enum_rust_types
+            .and_then(|map| map.get(&enum_cpp_name))
+            .cloned();
+        let reexport_type = enum_rust_type.clone().unwrap_or_else(|| "i32".to_string());
         return ParamBinding {
             cpp_name,
             rust_name,
             rust_ffi_type: "i32".to_string(),
-            rust_reexport_type: "i32".to_string(),
+            rust_reexport_type: reexport_type,
             cpp_type: "int32_t".to_string(),
             cpp_arg_expr: format!("static_cast<{}>({})", enum_cpp_name, name),
+            enum_rust_type,
         };
     }
 
@@ -698,18 +712,24 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
         rust_reexport_type,
         cpp_type,
         cpp_arg_expr,
+        enum_rust_type: None,
     }
 }
 
 fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext) -> ReturnTypeBinding {
     // Check if this return type is an enum
     if let Some(enum_cpp_name) = extract_enum_name(ty, ffi_ctx.all_enums) {
+        let enum_rust_type = ffi_ctx.enum_rust_types
+            .and_then(|map| map.get(&enum_cpp_name))
+            .cloned();
+        let reexport_type = enum_rust_type.clone().unwrap_or_else(|| "i32".to_string());
         return ReturnTypeBinding {
             rust_ffi_type: "i32".to_string(),
-            rust_reexport_type: "i32".to_string(),
+            rust_reexport_type: reexport_type,
             cpp_type: "int32_t".to_string(),
             needs_unique_ptr: false,
             enum_cpp_name: Some(enum_cpp_name),
+            enum_rust_type,
         };
     }
 
@@ -725,6 +745,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext) -> ReturnTypeBind
         cpp_type,
         needs_unique_ptr,
         enum_cpp_name: None,
+        enum_rust_type: None,
     }
 }
 
@@ -1708,21 +1729,34 @@ fn compute_inherited_method_bindings(
                             name: p.name.clone(),
                             rust_name: p.rust_name.clone(),
                             rust_ffi_type: if p.ty.enum_cpp_name.is_some() { "i32".to_string() } else { type_to_ffi_full_name(&p.ty.original) },
-                            rust_reexport_type: if p.ty.enum_cpp_name.is_some() { "i32".to_string() } else { unified_type_to_string(&p.ty.original) },
+                            rust_reexport_type: if let Some(ref enum_name) = p.ty.enum_cpp_name {
+                                symbol_table.enum_rust_types.get(enum_name).cloned().unwrap_or_else(|| "i32".to_string())
+                            } else {
+                                unified_type_to_string(&p.ty.original)
+                            },
                             cpp_type: cpp_param_type,
                             cpp_arg_expr,
+                            enum_rust_type: p.ty.enum_cpp_name.as_ref().and_then(|n| symbol_table.enum_rust_types.get(n)).cloned(),
                         }
                     })
                     .collect();
 
                 let return_type =
                     resolved_method.return_type.as_ref().map(|rt| {
+                        let enum_rust_type = rt.enum_cpp_name.as_ref()
+                            .and_then(|n| symbol_table.enum_rust_types.get(n))
+                            .cloned();
                         ResolvedReturnTypeBinding {
                             rust_ffi_type: if rt.enum_cpp_name.is_some() { "i32".to_string() } else { return_type_to_ffi_full_name(&rt.original) },
-                            rust_reexport_type: if rt.enum_cpp_name.is_some() { "i32".to_string() } else { unified_return_type_to_string(&rt.original) },
+                            rust_reexport_type: if let Some(ref enum_name) = rt.enum_cpp_name {
+                                symbol_table.enum_rust_types.get(enum_name).cloned().unwrap_or_else(|| "i32".to_string())
+                            } else {
+                                unified_return_type_to_string(&rt.original)
+                            },
                             cpp_type: rt.cpp_type.clone(),
                             needs_unique_ptr: rt.needs_unique_ptr,
                             enum_cpp_name: rt.enum_cpp_name.clone(),
+                            enum_rust_type,
                         }
                     });
 
@@ -1772,6 +1806,7 @@ pub fn compute_all_class_bindings(
         all_classes: &all_class_names,
         handle_able_classes: Some(&handle_able_classes),
         type_to_module: Some(&symbol_table.type_to_module),
+        enum_rust_types: Some(&symbol_table.enum_rust_types),
     };
 
     let all_classes_by_name: HashMap<String, &ParsedClass> = all_classes
@@ -2355,6 +2390,35 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 ///
 /// Produces the `pub use crate::ffi::X as ShortName;` line and the `impl ShortName { ... }`
 /// block with constructor, wrapper, static, upcast, to_owned, and to_handle methods.
+/// Convert a param argument for FFI call: add `.into()` if it's a value enum.
+fn enum_convert_arg(p: &ParamBinding) -> String {
+    if p.enum_rust_type.is_some() {
+        format!("{}.into()", p.rust_name)
+    } else {
+        p.rust_name.clone()
+    }
+}
+
+/// Wrap an FFI call expression with enum return conversion if needed (for ParamBinding-style returns).
+fn enum_convert_return(return_type: &Option<ReturnTypeBinding>, call_expr: &str) -> String {
+    if let Some(ref rt) = return_type {
+        if let Some(ref enum_type) = rt.enum_rust_type {
+            return format!("{}::try_from({}).unwrap()", enum_type, call_expr);
+        }
+    }
+    call_expr.to_string()
+}
+
+/// Wrap an FFI call expression with enum return conversion if needed (for ResolvedReturnTypeBinding).
+fn enum_convert_return_resolved(return_type: &Option<ResolvedReturnTypeBinding>, call_expr: &str) -> String {
+    if let Some(ref rt) = return_type {
+        if let Some(ref enum_type) = rt.enum_rust_type {
+            return format!("{}::try_from({}).unwrap()", enum_type, call_expr);
+        }
+    }
+    call_expr.to_string()
+}
+
 pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> String {
     let cn = &bindings.cpp_name;
     let short_name = &bindings.short_name;
@@ -2384,7 +2448,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .iter()
             .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type))
             .collect();
-        let args: Vec<String> = ctor.params.iter().map(|p| p.rust_name.clone()).collect();
+        let args: Vec<String> = ctor.params.iter().map(|p| enum_convert_arg(p)).collect();
 
         let doc = format_reexport_doc(&ctor.doc_comment);
 
@@ -2429,7 +2493,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             )
             .collect();
         let args: Vec<String> = std::iter::once("self".to_string())
-            .chain(wm.params.iter().map(|p| p.rust_name.clone()))
+            .chain(wm.params.iter().map(|p| enum_convert_arg(p)))
             .collect();
 
         let return_type = wm
@@ -2438,15 +2502,17 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .map(|rt| format!(" -> {}", rt.rust_reexport_type))
             .unwrap_or_default();
 
+        let call_expr = format!("crate::ffi::{}({})", wm.ffi_fn_name, args.join(", "));
+        let body = enum_convert_return(&wm.return_type, &call_expr);
+
         let doc = format_reexport_doc(&wm.doc_comment);
         impl_methods.push(format!(
-            "{}    pub fn {}({}){} {{\n        crate::ffi::{}({})\n    }}\n",
+            "{}    pub fn {}({}){} {{\n        {}\n    }}\n",
             doc,
             wm.impl_method_name,
             params.join(", "),
             return_type,
-            wm.ffi_fn_name,
-            args.join(", ")
+            body,
         ));
     }
 
@@ -2457,7 +2523,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .iter()
             .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type))
             .collect();
-        let args: Vec<String> = sm.params.iter().map(|p| p.rust_name.clone()).collect();
+        let args: Vec<String> = sm.params.iter().map(|p| enum_convert_arg(p)).collect();
 
         let return_type = sm
             .return_type
@@ -2475,14 +2541,15 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .unwrap_or_default();
 
         let doc = format_reexport_doc(&sm.doc_comment);
+        let call_expr = format!("crate::ffi::{}({})", sm.ffi_fn_name, args.join(", "));
+        let body = enum_convert_return(&sm.return_type, &call_expr);
         impl_methods.push(format!(
-            "{}    pub fn {}({}){} {{\n        crate::ffi::{}({})\n    }}\n",
+            "{}    pub fn {}({}){} {{\n        {}\n    }}\n",
             doc,
             sm.impl_method_name,
             params.join(", "),
             return_type,
-            sm.ffi_fn_name,
-            args.join(", ")
+            body,
         ));
     }
 
@@ -2541,7 +2608,14 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             )
             .collect();
         let args: Vec<String> = std::iter::once("self".to_string())
-            .chain(im.params.iter().map(|p| safe_param_name(&p.rust_name)))
+            .chain(im.params.iter().map(|p| {
+                let name = safe_param_name(&p.rust_name);
+                if p.enum_rust_type.is_some() {
+                    format!("{}.into()", name)
+                } else {
+                    name
+                }
+            }))
             .collect();
 
         let return_type = im
@@ -2550,13 +2624,15 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .map(|rt| format!(" -> {}", rt.rust_reexport_type))
             .unwrap_or_default();
 
+        let call_expr = format!("crate::ffi::{}({})", im.ffi_fn_name, args.join(", "));
+        let body = enum_convert_return_resolved(&im.return_type, &call_expr);
+
         impl_methods.push(format!(
-            "    /// Inherited from {source}: {method}()\n    pub fn {}({}){} {{\n        crate::ffi::{}({})\n    }}\n",
+            "    /// Inherited from {source}: {method}()\n    pub fn {}({}){} {{\n        {}\n    }}\n",
             im.impl_method_name,
             params.join(", "),
             return_type,
-            im.ffi_fn_name,
-            args.join(", "),
+            body,
             source = im.source_class,
             method = im.cpp_method_name,
         ));
@@ -2925,6 +3001,7 @@ mod tests {
             all_classes: &all_class_names,
             handle_able_classes: Some(&handle_able_classes),
             type_to_module: None,
+            enum_rust_types: None,
         };
 
         // Create a minimal SymbolTable
@@ -2943,6 +3020,7 @@ mod tests {
             handle_able_classes: HashSet::new(),
             cross_module_types: HashMap::new(),
             type_to_module: HashMap::new(),
+            enum_rust_types: HashMap::new(),
         };
 
         let all_classes_by_name: HashMap<String, &ParsedClass> =
@@ -3008,6 +3086,7 @@ mod tests {
             all_classes: &all_class_names,
             handle_able_classes: Some(&handle_able_classes),
             type_to_module: None,
+            enum_rust_types: None,
         };
 
         let symbol_table = SymbolTable {
@@ -3025,6 +3104,7 @@ mod tests {
             handle_able_classes: ["Geom_Curve".to_string()].into(),
             cross_module_types: HashMap::new(),
             type_to_module: HashMap::new(),
+            enum_rust_types: HashMap::new(),
         };
 
         let all_classes_by_name: HashMap<String, &ParsedClass> =

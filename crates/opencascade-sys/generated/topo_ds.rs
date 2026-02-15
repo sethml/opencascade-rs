@@ -164,13 +164,19 @@ impl CompSolid {
     }
 
     /// Inherited from TopoDS_Shape: Orientation()
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::TopoDS_CompSolid_inherited_Orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::TopoDS_CompSolid_inherited_Orientation(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Oriented()
-    pub fn oriented(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_CompSolid_inherited_Oriented(self, theOrient)
+    pub fn oriented(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_CompSolid_inherited_Oriented(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: TShape()
@@ -179,8 +185,9 @@ impl CompSolid {
     }
 
     /// Inherited from TopoDS_Shape: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_CompSolid_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_CompSolid_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Free()
@@ -262,13 +269,16 @@ impl CompSolid {
     }
 
     /// Inherited from TopoDS_Shape: Compose()
-    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: i32) {
-        crate::ffi::TopoDS_CompSolid_inherited_Compose(self, theOrient)
+    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: crate::top_abs::Orientation) {
+        crate::ffi::TopoDS_CompSolid_inherited_Compose(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: Composed()
-    pub fn composed(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_CompSolid_inherited_Composed(self, theOrient)
+    pub fn composed(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_CompSolid_inherited_Composed(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: NbChildren()
@@ -368,13 +378,19 @@ impl Compound {
     }
 
     /// Inherited from TopoDS_Shape: Orientation()
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::TopoDS_Compound_inherited_Orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::TopoDS_Compound_inherited_Orientation(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Oriented()
-    pub fn oriented(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Compound_inherited_Oriented(self, theOrient)
+    pub fn oriented(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Compound_inherited_Oriented(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: TShape()
@@ -383,8 +399,9 @@ impl Compound {
     }
 
     /// Inherited from TopoDS_Shape: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_Compound_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_Compound_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Free()
@@ -466,13 +483,16 @@ impl Compound {
     }
 
     /// Inherited from TopoDS_Shape: Compose()
-    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: i32) {
-        crate::ffi::TopoDS_Compound_inherited_Compose(self, theOrient)
+    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: crate::top_abs::Orientation) {
+        crate::ffi::TopoDS_Compound_inherited_Compose(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: Composed()
-    pub fn composed(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Compound_inherited_Composed(self, theOrient)
+    pub fn composed(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Compound_inherited_Composed(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: NbChildren()
@@ -571,13 +591,17 @@ impl Edge {
     }
 
     /// Inherited from TopoDS_Shape: Orientation()
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::TopoDS_Edge_inherited_Orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::TopoDS_Edge_inherited_Orientation(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Oriented()
-    pub fn oriented(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Edge_inherited_Oriented(self, theOrient)
+    pub fn oriented(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Edge_inherited_Oriented(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: TShape()
@@ -586,8 +610,9 @@ impl Edge {
     }
 
     /// Inherited from TopoDS_Shape: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_Edge_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_Edge_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Free()
@@ -669,13 +694,16 @@ impl Edge {
     }
 
     /// Inherited from TopoDS_Shape: Compose()
-    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: i32) {
-        crate::ffi::TopoDS_Edge_inherited_Compose(self, theOrient)
+    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: crate::top_abs::Orientation) {
+        crate::ffi::TopoDS_Edge_inherited_Compose(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: Composed()
-    pub fn composed(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Edge_inherited_Composed(self, theOrient)
+    pub fn composed(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Edge_inherited_Composed(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: NbChildren()
@@ -773,13 +801,17 @@ impl Face {
     }
 
     /// Inherited from TopoDS_Shape: Orientation()
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::TopoDS_Face_inherited_Orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::TopoDS_Face_inherited_Orientation(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Oriented()
-    pub fn oriented(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Face_inherited_Oriented(self, theOrient)
+    pub fn oriented(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Face_inherited_Oriented(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: TShape()
@@ -788,8 +820,9 @@ impl Face {
     }
 
     /// Inherited from TopoDS_Shape: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_Face_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_Face_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Free()
@@ -871,13 +904,16 @@ impl Face {
     }
 
     /// Inherited from TopoDS_Shape: Compose()
-    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: i32) {
-        crate::ffi::TopoDS_Face_inherited_Compose(self, theOrient)
+    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: crate::top_abs::Orientation) {
+        crate::ffi::TopoDS_Face_inherited_Compose(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: Composed()
-    pub fn composed(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Face_inherited_Composed(self, theOrient)
+    pub fn composed(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Face_inherited_Composed(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: NbChildren()
@@ -1131,19 +1167,25 @@ impl Shape {
     }
 
     /// Returns the shape orientation.
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::TopoDS_Shape_orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::TopoDS_Shape_orientation(self)).unwrap()
     }
 
     /// Sets the shape orientation.
-    pub fn orientation_orientation(self: std::pin::Pin<&mut Self>, theOrient: i32) {
-        crate::ffi::TopoDS_Shape_orientation_orientation(self, theOrient)
+    pub fn orientation_orientation(
+        self: std::pin::Pin<&mut Self>,
+        theOrient: crate::top_abs::Orientation,
+    ) {
+        crate::ffi::TopoDS_Shape_orientation_orientation(self, theOrient.into())
     }
 
     /// Returns  a    shape  similar  to  <me>   with  the
     /// orientation set to <Or>.
-    pub fn oriented(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Shape_oriented(self, theOrient)
+    pub fn oriented(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shape_oriented(self, theOrient.into())
     }
 
     /// Returns the value of the TopAbs_ShapeEnum
@@ -1151,8 +1193,8 @@ impl Shape {
     /// example VERTEX, EDGE, and so on.
     /// Exceptions
     /// Standard_NullObject if this shape is null.
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_Shape_shape_type(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_Shape_shape_type(self)).unwrap()
     }
 
     /// Returns a shape similar to <me> with a location multiplied by thePosition.
@@ -1183,15 +1225,18 @@ impl Shape {
 
     /// Updates the Shape Orientation by composition with theOrient,
     /// using the Compose method from the TopAbs package.
-    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: i32) {
-        crate::ffi::TopoDS_Shape_compose(self, theOrient)
+    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: crate::top_abs::Orientation) {
+        crate::ffi::TopoDS_Shape_compose(self, theOrient.into())
     }
 
     /// Returns  a  shape   similar   to  <me>   with  the
     /// orientation composed with theOrient, using the
     /// Compose method from the TopAbs package.
-    pub fn composed(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Shape_composed(self, theOrient)
+    pub fn composed(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shape_composed(self, theOrient.into())
     }
 
     /// Returns a new Shape with the  same Orientation and
@@ -1266,13 +1311,17 @@ impl Shell {
     }
 
     /// Inherited from TopoDS_Shape: Orientation()
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::TopoDS_Shell_inherited_Orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::TopoDS_Shell_inherited_Orientation(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Oriented()
-    pub fn oriented(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Shell_inherited_Oriented(self, theOrient)
+    pub fn oriented(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shell_inherited_Oriented(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: TShape()
@@ -1281,8 +1330,9 @@ impl Shell {
     }
 
     /// Inherited from TopoDS_Shape: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_Shell_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_Shell_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Free()
@@ -1364,13 +1414,16 @@ impl Shell {
     }
 
     /// Inherited from TopoDS_Shape: Compose()
-    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: i32) {
-        crate::ffi::TopoDS_Shell_inherited_Compose(self, theOrient)
+    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: crate::top_abs::Orientation) {
+        crate::ffi::TopoDS_Shell_inherited_Compose(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: Composed()
-    pub fn composed(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Shell_inherited_Composed(self, theOrient)
+    pub fn composed(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Shell_inherited_Composed(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: NbChildren()
@@ -1469,13 +1522,17 @@ impl Solid {
     }
 
     /// Inherited from TopoDS_Shape: Orientation()
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::TopoDS_Solid_inherited_Orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::TopoDS_Solid_inherited_Orientation(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Oriented()
-    pub fn oriented(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Solid_inherited_Oriented(self, theOrient)
+    pub fn oriented(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Solid_inherited_Oriented(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: TShape()
@@ -1484,8 +1541,9 @@ impl Solid {
     }
 
     /// Inherited from TopoDS_Shape: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_Solid_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_Solid_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Free()
@@ -1567,13 +1625,16 @@ impl Solid {
     }
 
     /// Inherited from TopoDS_Shape: Compose()
-    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: i32) {
-        crate::ffi::TopoDS_Solid_inherited_Compose(self, theOrient)
+    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: crate::top_abs::Orientation) {
+        crate::ffi::TopoDS_Solid_inherited_Compose(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: Composed()
-    pub fn composed(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Solid_inherited_Composed(self, theOrient)
+    pub fn composed(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Solid_inherited_Composed(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: NbChildren()
@@ -1626,8 +1687,8 @@ impl TCompSolid {
     }
 
     /// returns COMPSOLID
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_TCompSolid_shape_type(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TCompSolid_shape_type(self)).unwrap()
     }
 
     /// Returns an empty TCompSolid.
@@ -1714,8 +1775,8 @@ impl TCompound {
     }
 
     /// Returns COMPOUND.
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_TCompound_shape_type(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TCompound_shape_type(self)).unwrap()
     }
 
     /// Returns an empty TCompound.
@@ -1798,8 +1859,8 @@ pub use crate::ffi::TopoDS_TEdge as TEdge;
 
 impl TEdge {
     /// Returns  EDGE.
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_TEdge_shape_type(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TEdge_shape_type(self)).unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1883,8 +1944,8 @@ impl TFace {
     }
 
     /// returns FACE.
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_TFace_shape_type(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TFace_shape_type(self)).unwrap()
     }
 
     /// Returns an empty TFace.
@@ -1991,8 +2052,8 @@ pub use crate::ffi::TopoDS_TShape as TShape;
 impl TShape {
     /// Returns the type as a term of the ShapeEnum enum :
     /// VERTEX, EDGE, WIRE, FACE, ....
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_TShape_shape_type(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TShape_shape_type(self)).unwrap()
     }
 
     /// Returns a copy  of the  TShape  with no sub-shapes.
@@ -2035,8 +2096,8 @@ impl TShell {
     }
 
     /// Returns SHELL.
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_TShell_shape_type(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TShell_shape_type(self)).unwrap()
     }
 
     /// Returns an empty TShell.
@@ -2124,8 +2185,8 @@ impl TSolid {
     }
 
     /// returns SOLID.
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_TSolid_shape_type(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TSolid_shape_type(self)).unwrap()
     }
 
     /// Returns an empty TSolid.
@@ -2208,8 +2269,8 @@ pub use crate::ffi::TopoDS_TVertex as TVertex;
 
 impl TVertex {
     /// Returns VERTEX.
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_TVertex_shape_type(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TVertex_shape_type(self)).unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2291,8 +2352,8 @@ impl TWire {
     }
 
     /// Returns WIRE.
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_TWire_shape_type(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TWire_shape_type(self)).unwrap()
     }
 
     /// Returns an empty TWire.
@@ -2459,13 +2520,17 @@ impl Vertex {
     }
 
     /// Inherited from TopoDS_Shape: Orientation()
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::TopoDS_Vertex_inherited_Orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::TopoDS_Vertex_inherited_Orientation(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Oriented()
-    pub fn oriented(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Vertex_inherited_Oriented(self, theOrient)
+    pub fn oriented(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Vertex_inherited_Oriented(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: TShape()
@@ -2474,8 +2539,9 @@ impl Vertex {
     }
 
     /// Inherited from TopoDS_Shape: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_Vertex_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_Vertex_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Free()
@@ -2557,13 +2623,16 @@ impl Vertex {
     }
 
     /// Inherited from TopoDS_Shape: Compose()
-    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: i32) {
-        crate::ffi::TopoDS_Vertex_inherited_Compose(self, theOrient)
+    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: crate::top_abs::Orientation) {
+        crate::ffi::TopoDS_Vertex_inherited_Compose(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: Composed()
-    pub fn composed(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Vertex_inherited_Composed(self, theOrient)
+    pub fn composed(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Vertex_inherited_Composed(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: NbChildren()
@@ -2661,13 +2730,17 @@ impl Wire {
     }
 
     /// Inherited from TopoDS_Shape: Orientation()
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::TopoDS_Wire_inherited_Orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::TopoDS_Wire_inherited_Orientation(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Oriented()
-    pub fn oriented(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Wire_inherited_Oriented(self, theOrient)
+    pub fn oriented(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Wire_inherited_Oriented(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: TShape()
@@ -2676,8 +2749,9 @@ impl Wire {
     }
 
     /// Inherited from TopoDS_Shape: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::TopoDS_Wire_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_Wire_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_Shape: Free()
@@ -2759,13 +2833,16 @@ impl Wire {
     }
 
     /// Inherited from TopoDS_Shape: Compose()
-    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: i32) {
-        crate::ffi::TopoDS_Wire_inherited_Compose(self, theOrient)
+    pub fn compose(self: std::pin::Pin<&mut Self>, theOrient: crate::top_abs::Orientation) {
+        crate::ffi::TopoDS_Wire_inherited_Compose(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: Composed()
-    pub fn composed(&self, theOrient: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::TopoDS_Wire_inherited_Composed(self, theOrient)
+    pub fn composed(
+        &self,
+        theOrient: crate::top_abs::Orientation,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::TopoDS_Wire_inherited_Composed(self, theOrient.into())
     }
 
     /// Inherited from TopoDS_Shape: NbChildren()

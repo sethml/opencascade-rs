@@ -1788,8 +1788,8 @@ impl NewtonMinimum {
 
     /// Returns the Status of computation.
     /// The exception NotDone is raised if an error has occurred.
-    pub fn get_status(&self) -> i32 {
-        crate::ffi::math_NewtonMinimum_get_status(self)
+    pub fn get_status(&self) -> crate::math::Status {
+        crate::math::Status::try_from(crate::ffi::math_NewtonMinimum_get_status(self)).unwrap()
     }
 }
 

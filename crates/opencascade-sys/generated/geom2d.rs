@@ -449,8 +449,8 @@ impl BSplineCurve {
     /// than Cd-p where p is the maximum multiplicity of the interior
     /// Knots. In the interior of a knot span the curve is infinitely
     /// continuously differentiable.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_BSplineCurve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_BSplineCurve_continuity(self)).unwrap()
     }
 
     /// For the point of parameter U of this BSpline curve,
@@ -522,8 +522,11 @@ impl BSplineCurve {
     /// A piecewise Bezier with only two knots is a BezierCurve.
     /// else the curve is non uniform.
     /// The tolerance criterion is Epsilon from class Real.
-    pub fn knot_distribution(&self) -> i32 {
-        crate::ffi::Geom2d_BSplineCurve_knot_distribution(self)
+    pub fn knot_distribution(&self) -> crate::geom_abs::BSplKnotDistribution {
+        crate::geom_abs::BSplKnotDistribution::try_from(
+            crate::ffi::Geom2d_BSplineCurve_knot_distribution(self),
+        )
+        .unwrap()
     }
 
     /// Returns the start point of the curve.
@@ -792,8 +795,8 @@ impl BezierCurve {
     }
 
     /// Returns GeomAbs_CN, which is the continuity of any Bezier curve.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_BezierCurve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_BezierCurve_continuity(self)).unwrap()
     }
 
     /// For this Bezier curve, computes
@@ -1104,8 +1107,9 @@ impl BoundedCurve {
     }
 
     /// Inherited from Geom2d_Curve: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_BoundedCurve_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom2d_Curve: IsCN()
@@ -1596,8 +1600,9 @@ impl Circle {
     }
 
     /// Inherited from Geom2d_Conic: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_Circle_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_Circle_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom2d_Conic: IsCN()
@@ -1762,8 +1767,8 @@ impl Conic {
     }
 
     /// Returns GeomAbs_CN which is the global continuity of any conic.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_Conic_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_Conic_continuity(self)).unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2029,8 +2034,8 @@ impl Curve {
     /// G1 : tangency continuity all along the Curve,
     /// G2 : curvature continuity all along the Curve,
     /// CN : the order of continuity is infinite.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_Curve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_Curve_continuity(self)).unwrap()
     }
 
     /// For the point of parameter U of this curve, computes
@@ -2609,8 +2614,9 @@ impl Ellipse {
     }
 
     /// Inherited from Geom2d_Conic: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_Ellipse_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_Ellipse_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom2d_Conic: IsCN()
@@ -3143,8 +3149,9 @@ impl Hyperbola {
     }
 
     /// Inherited from Geom2d_Conic: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_Hyperbola_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_Hyperbola_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom2d_Conic: IsCN()
@@ -3322,8 +3329,8 @@ impl Line {
     }
 
     /// Returns GeomAbs_CN, which is the global continuity of any line.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_Line_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_Line_continuity(self)).unwrap()
     }
 
     /// For the point of parameter U of this line, computes
@@ -3599,8 +3606,8 @@ impl OffsetCurve {
     /// the offset curve.
     /// No check is done at the creation time and we suppose
     /// in this package that the offset curve is well defined.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_OffsetCurve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_OffsetCurve_continuity(self)).unwrap()
     }
 
     /// The returned vector gives the value of the derivative
@@ -3629,8 +3636,11 @@ impl OffsetCurve {
     }
 
     /// Returns continuity of the basis curve.
-    pub fn get_basis_curve_continuity(&self) -> i32 {
-        crate::ffi::Geom2d_OffsetCurve_get_basis_curve_continuity(self)
+    pub fn get_basis_curve_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_OffsetCurve_get_basis_curve_continuity(
+            self,
+        ))
+        .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3968,8 +3978,9 @@ impl Parabola {
     }
 
     /// Inherited from Geom2d_Conic: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_Parabola_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_Parabola_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom2d_Conic: IsCN()
@@ -4262,8 +4273,8 @@ impl Transformation {
     /// Returns the nature of the transformation. It can be
     /// Identity, Rotation, Translation, PntMirror, Ax1Mirror,
     /// Scale, CompoundTrsf
-    pub fn form(&self) -> i32 {
-        crate::ffi::Geom2d_Transformation_form(self)
+    pub fn form(&self) -> crate::gp::TrsfForm {
+        crate::gp::TrsfForm::try_from(crate::ffi::Geom2d_Transformation_form(self)).unwrap()
     }
 
     /// Converts this transformation into a gp_Trsf2d transformation.
@@ -4486,8 +4497,8 @@ impl TrimmedCurve {
     /// C2 : continuity of the second derivative all along the Curve,
     /// C3 : continuity of the third derivative all along the Curve,
     /// CN : the order of continuity is infinite.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2d_TrimmedCurve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_TrimmedCurve_continuity(self)).unwrap()
     }
 
     /// Returns the end point of <me>. This point is the

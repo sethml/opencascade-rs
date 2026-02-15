@@ -25,9 +25,9 @@ impl Builder {
         &self,
         aShape1: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
         aShape2: &crate::ffi::TopoDS_Shape,
-        Orient: i32,
+        Orient: crate::top_abs::Orientation,
     ) {
-        crate::ffi::BRepSweep_Builder_add(self, aShape1, aShape2, Orient)
+        crate::ffi::BRepSweep_Builder_add(self, aShape1, aShape2, Orient.into())
     }
 }
 
@@ -128,10 +128,16 @@ impl NumLinearRegularSweep {
         aGenF: &crate::ffi::TopoDS_Shape,
         aGenE: &crate::ffi::TopoDS_Shape,
         aDirV: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_NumLinearRegularSweep_set_p_curve(
-            self, aNewFace, aNewEdge, aGenF, aGenE, aDirV, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenF,
+            aGenE,
+            aDirV,
+            orien.into(),
         )
     }
 
@@ -145,10 +151,16 @@ impl NumLinearRegularSweep {
         aGenE: &crate::ffi::TopoDS_Shape,
         aDirE: &crate::ffi::Sweep_NumShape,
         aDirV: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_NumLinearRegularSweep_set_generating_p_curve(
-            self, aNewFace, aNewEdge, aGenE, aDirE, aDirV, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenE,
+            aDirE,
+            aDirV,
+            orien.into(),
         )
     }
 
@@ -162,10 +174,16 @@ impl NumLinearRegularSweep {
         aGenE: &crate::ffi::TopoDS_Shape,
         aGenV: &crate::ffi::TopoDS_Shape,
         aDirE: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_NumLinearRegularSweep_set_directing_p_curve(
-            self, aNewFace, aNewEdge, aGenE, aGenV, aDirE, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenE,
+            aGenV,
+            aDirE,
+            orien.into(),
         )
     }
 
@@ -177,8 +195,11 @@ impl NumLinearRegularSweep {
         self: std::pin::Pin<&mut Self>,
         aGenS: &crate::ffi::TopoDS_Shape,
         aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> i32 {
-        crate::ffi::BRepSweep_NumLinearRegularSweep_direct_solid(self, aGenS, aDirS)
+    ) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(
+            crate::ffi::BRepSweep_NumLinearRegularSweep_direct_solid(self, aGenS, aDirS),
+        )
+        .unwrap()
     }
 
     /// In  some  particular  cases  the   topology  of  a
@@ -569,10 +590,16 @@ impl Rotation {
         aGenF: &crate::ffi::TopoDS_Shape,
         aGenE: &crate::ffi::TopoDS_Shape,
         aDirV: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_Rotation_set_p_curve(
-            self, aNewFace, aNewEdge, aGenF, aGenE, aDirV, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenF,
+            aGenE,
+            aDirV,
+            orien.into(),
         )
     }
 
@@ -586,10 +613,16 @@ impl Rotation {
         aGenE: &crate::ffi::TopoDS_Shape,
         aDirE: &crate::ffi::Sweep_NumShape,
         aDirV: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_Rotation_set_generating_p_curve(
-            self, aNewFace, aNewEdge, aGenE, aDirE, aDirV, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenE,
+            aDirE,
+            aDirV,
+            orien.into(),
         )
     }
 
@@ -603,10 +636,16 @@ impl Rotation {
         aGenE: &crate::ffi::TopoDS_Shape,
         aGenV: &crate::ffi::TopoDS_Shape,
         aDirE: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_Rotation_set_directing_p_curve(
-            self, aNewFace, aNewEdge, aGenE, aGenV, aDirE, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenE,
+            aGenV,
+            aDirE,
+            orien.into(),
         )
     }
 
@@ -618,8 +657,11 @@ impl Rotation {
         self: std::pin::Pin<&mut Self>,
         aGenS: &crate::ffi::TopoDS_Shape,
         aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> i32 {
-        crate::ffi::BRepSweep_Rotation_direct_solid(self, aGenS, aDirS)
+    ) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::BRepSweep_Rotation_direct_solid(
+            self, aGenS, aDirS,
+        ))
+        .unwrap()
     }
 
     /// In  some  particular  cases  the   topology  of  a
@@ -740,18 +782,23 @@ impl Tool {
     }
 
     /// Returns the type of <aShape>.
-    pub fn type_(&self, aShape: &crate::ffi::TopoDS_Shape) -> i32 {
-        crate::ffi::BRepSweep_Tool_type_(self, aShape)
+    pub fn type_(&self, aShape: &crate::ffi::TopoDS_Shape) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::BRepSweep_Tool_type_(self, aShape)).unwrap()
     }
 
     /// Returns the Orientation of <aShape>.
-    pub fn orientation(&self, aShape: &crate::ffi::TopoDS_Shape) -> i32 {
-        crate::ffi::BRepSweep_Tool_orientation(self, aShape)
+    pub fn orientation(&self, aShape: &crate::ffi::TopoDS_Shape) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::BRepSweep_Tool_orientation(self, aShape))
+            .unwrap()
     }
 
     /// Set the Orientation of <aShape> with Or.
-    pub fn set_orientation(&self, aShape: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>, Or: i32) {
-        crate::ffi::BRepSweep_Tool_set_orientation(self, aShape, Or)
+    pub fn set_orientation(
+        &self,
+        aShape: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
+        Or: crate::top_abs::Orientation,
+    ) {
+        crate::ffi::BRepSweep_Tool_set_orientation(self, aShape, Or.into())
     }
 }
 
@@ -848,10 +895,16 @@ impl Translation {
         aGenF: &crate::ffi::TopoDS_Shape,
         aGenE: &crate::ffi::TopoDS_Shape,
         aDirV: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_Translation_set_p_curve(
-            self, aNewFace, aNewEdge, aGenF, aGenE, aDirV, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenF,
+            aGenE,
+            aDirV,
+            orien.into(),
         )
     }
 
@@ -865,10 +918,16 @@ impl Translation {
         aGenE: &crate::ffi::TopoDS_Shape,
         aDirE: &crate::ffi::Sweep_NumShape,
         aDirV: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_Translation_set_generating_p_curve(
-            self, aNewFace, aNewEdge, aGenE, aDirE, aDirV, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenE,
+            aDirE,
+            aDirV,
+            orien.into(),
         )
     }
 
@@ -882,10 +941,16 @@ impl Translation {
         aGenE: &crate::ffi::TopoDS_Shape,
         aGenV: &crate::ffi::TopoDS_Shape,
         aDirE: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_Translation_set_directing_p_curve(
-            self, aNewFace, aNewEdge, aGenE, aGenV, aDirE, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenE,
+            aGenV,
+            aDirE,
+            orien.into(),
         )
     }
 
@@ -897,8 +962,11 @@ impl Translation {
         self: std::pin::Pin<&mut Self>,
         aGenS: &crate::ffi::TopoDS_Shape,
         aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> i32 {
-        crate::ffi::BRepSweep_Translation_direct_solid(self, aGenS, aDirS)
+    ) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::BRepSweep_Translation_direct_solid(
+            self, aGenS, aDirS,
+        ))
+        .unwrap()
     }
 
     /// Returns the Vector of the Prism,  if it is an infinite
@@ -1068,9 +1136,17 @@ impl Trsf {
         aGenF: &crate::ffi::TopoDS_Shape,
         aGenE: &crate::ffi::TopoDS_Shape,
         aDirV: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
-        crate::ffi::BRepSweep_Trsf_set_p_curve(self, aNewFace, aNewEdge, aGenF, aGenE, aDirV, orien)
+        crate::ffi::BRepSweep_Trsf_set_p_curve(
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenF,
+            aGenE,
+            aDirV,
+            orien.into(),
+        )
     }
 
     /// Sets the PCurve for a new edge on a new face. The
@@ -1083,10 +1159,16 @@ impl Trsf {
         aGenE: &crate::ffi::TopoDS_Shape,
         aDirE: &crate::ffi::Sweep_NumShape,
         aDirV: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_Trsf_set_generating_p_curve(
-            self, aNewFace, aNewEdge, aGenE, aDirE, aDirV, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenE,
+            aDirE,
+            aDirV,
+            orien.into(),
         )
     }
 
@@ -1100,10 +1182,16 @@ impl Trsf {
         aGenE: &crate::ffi::TopoDS_Shape,
         aGenV: &crate::ffi::TopoDS_Shape,
         aDirE: &crate::ffi::Sweep_NumShape,
-        orien: i32,
+        orien: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepSweep_Trsf_set_directing_p_curve(
-            self, aNewFace, aNewEdge, aGenE, aGenV, aDirE, orien,
+            self,
+            aNewFace,
+            aNewEdge,
+            aGenE,
+            aGenV,
+            aDirE,
+            orien.into(),
         )
     }
 
@@ -1124,8 +1212,11 @@ impl Trsf {
         self: std::pin::Pin<&mut Self>,
         aGenS: &crate::ffi::TopoDS_Shape,
         aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> i32 {
-        crate::ffi::BRepSweep_Trsf_inherited_DirectSolid(self, aGenS, aDirS)
+    ) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::BRepSweep_Trsf_inherited_DirectSolid(
+            self, aGenS, aDirS,
+        ))
+        .unwrap()
     }
 
     /// Inherited from BRepSweep_NumLinearRegularSweep: SplitShell()

@@ -585,10 +585,12 @@ impl MutexForShapeProvider {
     pub fn create_mutexes_for_sub_shapes(
         self: std::pin::Pin<&mut Self>,
         theShape: &crate::ffi::TopoDS_Shape,
-        theType: i32,
+        theType: crate::top_abs::ShapeEnum,
     ) {
         crate::ffi::TopTools_MutexForShapeProvider_create_mutexes_for_sub_shapes(
-            self, theShape, theType,
+            self,
+            theShape,
+            theType.into(),
         )
     }
 }
@@ -617,10 +619,10 @@ impl ShapeSet {
     /// shapes.
     pub fn check(
         self: std::pin::Pin<&mut Self>,
-        T: i32,
+        T: crate::top_abs::ShapeEnum,
         S: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
     ) {
-        crate::ffi::TopTools_ShapeSet_check(self, T, S)
+        crate::ffi::TopTools_ShapeSet_check(self, T.into(), S)
     }
 }
 

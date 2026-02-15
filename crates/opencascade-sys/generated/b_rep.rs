@@ -40,9 +40,9 @@ impl Builder {
         E: &crate::ffi::TopoDS_Edge,
         F1: &crate::ffi::TopoDS_Face,
         F2: &crate::ffi::TopoDS_Face,
-        C: i32,
+        C: crate::geom_abs::Shape,
     ) {
-        crate::ffi::BRep_Builder_continuity_edge_face2_shape(self, E, F1, F2, C)
+        crate::ffi::BRep_Builder_continuity_edge_face2_shape(self, E, F1, F2, C.into())
     }
 
     /// Sets the geometric continuity on the edge.
@@ -53,10 +53,16 @@ impl Builder {
         S2: &crate::ffi::HandleGeomSurface,
         L1: &crate::ffi::TopLoc_Location,
         L2: &crate::ffi::TopLoc_Location,
-        C: i32,
+        C: crate::geom_abs::Shape,
     ) {
         crate::ffi::BRep_Builder_continuity_edge_handlegeomsurface2_location2_shape(
-            self, E, S1, S2, L1, L2, C,
+            self,
+            E,
+            S1,
+            S2,
+            L1,
+            L2,
+            C.into(),
         )
     }
 
@@ -263,8 +269,9 @@ impl Curve3D {
     }
 
     /// Inherited from BRep_CurveRepresentation: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_Curve3D_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRep_Curve3D_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from BRep_GCurve: SetRange()
@@ -306,17 +313,24 @@ impl CurveOn2Surfaces {
         S2: &crate::ffi::HandleGeomSurface,
         L1: &crate::ffi::TopLoc_Location,
         L2: &crate::ffi::TopLoc_Location,
-        C: i32,
+        C: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRep_CurveOn2Surfaces_ctor_handlegeomsurface2_location2_shape(S1, S2, L1, L2, C)
+        crate::ffi::BRep_CurveOn2Surfaces_ctor_handlegeomsurface2_location2_shape(
+            S1,
+            S2,
+            L1,
+            L2,
+            C.into(),
+        )
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_CurveOn2Surfaces_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRep_CurveOn2Surfaces_continuity(self))
+            .unwrap()
     }
 
-    pub fn continuity_shape(self: std::pin::Pin<&mut Self>, C: i32) {
-        crate::ffi::BRep_CurveOn2Surfaces_continuity_shape(self, C)
+    pub fn continuity_shape(self: std::pin::Pin<&mut Self>, C: crate::geom_abs::Shape) {
+        crate::ffi::BRep_CurveOn2Surfaces_continuity_shape(self, C.into())
     }
 
     /// Return a copy of this representation.
@@ -445,17 +459,18 @@ impl CurveOnClosedSurface {
         PC2: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
         L: &crate::ffi::TopLoc_Location,
-        C: i32,
+        C: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRep_CurveOnClosedSurface_ctor_handlegeom2dcurve2_handlegeomsurface_location_shape(PC1, PC2, S, L, C)
+        crate::ffi::BRep_CurveOnClosedSurface_ctor_handlegeom2dcurve2_handlegeomsurface_location_shape(PC1, PC2, S, L, C.into())
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_CurveOnClosedSurface_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRep_CurveOnClosedSurface_continuity(self))
+            .unwrap()
     }
 
-    pub fn continuity_shape(self: std::pin::Pin<&mut Self>, C: i32) {
-        crate::ffi::BRep_CurveOnClosedSurface_continuity_shape(self, C)
+    pub fn continuity_shape(self: std::pin::Pin<&mut Self>, C: crate::geom_abs::Shape) {
+        crate::ffi::BRep_CurveOnClosedSurface_continuity_shape(self, C.into())
     }
 
     /// Return a copy of this representation.
@@ -774,8 +789,9 @@ impl CurveOnSurface {
     }
 
     /// Inherited from BRep_CurveRepresentation: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_CurveOnSurface_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRep_CurveOnSurface_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from BRep_GCurve: SetRange()
@@ -808,12 +824,13 @@ impl CurveOnSurface {
 pub use crate::ffi::BRep_CurveRepresentation as CurveRepresentation;
 
 impl CurveRepresentation {
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_CurveRepresentation_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRep_CurveRepresentation_continuity(self))
+            .unwrap()
     }
 
-    pub fn continuity_shape(self: std::pin::Pin<&mut Self>, C: i32) {
-        crate::ffi::BRep_CurveRepresentation_continuity_shape(self, C)
+    pub fn continuity_shape(self: std::pin::Pin<&mut Self>, C: crate::geom_abs::Shape) {
+        crate::ffi::BRep_CurveRepresentation_continuity_shape(self, C.into())
     }
 
     /// Return a copy of this representation.
@@ -979,8 +996,9 @@ impl GCurve {
     }
 
     /// Inherited from BRep_CurveRepresentation: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_GCurve_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRep_GCurve_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from BRep_CurveRepresentation: Copy()
@@ -1459,8 +1477,9 @@ impl Polygon3D {
     }
 
     /// Inherited from BRep_CurveRepresentation: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_Polygon3D_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRep_Polygon3D_inherited_Continuity(self))
+            .unwrap()
     }
 }
 
@@ -1618,8 +1637,11 @@ impl PolygonOnClosedSurface {
     }
 
     /// Inherited from BRep_CurveRepresentation: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_PolygonOnClosedSurface_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(
+            crate::ffi::BRep_PolygonOnClosedSurface_inherited_Continuity(self),
+        )
+        .unwrap()
     }
 }
 
@@ -1775,8 +1797,11 @@ impl PolygonOnClosedTriangulation {
     }
 
     /// Inherited from BRep_CurveRepresentation: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(
+            crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Continuity(self),
+        )
+        .unwrap()
     }
 }
 
@@ -1916,8 +1941,11 @@ impl PolygonOnSurface {
     }
 
     /// Inherited from BRep_CurveRepresentation: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_PolygonOnSurface_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRep_PolygonOnSurface_inherited_Continuity(
+            self,
+        ))
+        .unwrap()
     }
 }
 
@@ -2055,8 +2083,11 @@ impl PolygonOnTriangulation {
     }
 
     /// Inherited from BRep_CurveRepresentation: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRep_PolygonOnTriangulation_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(
+            crate::ffi::BRep_PolygonOnTriangulation_inherited_Continuity(self),
+        )
+        .unwrap()
     }
 }
 
@@ -2120,8 +2151,9 @@ impl TEdge {
     }
 
     /// Inherited from TopoDS_TEdge: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::BRep_TEdge_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::BRep_TEdge_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_TShape: Free()
@@ -2239,8 +2271,9 @@ impl TFace {
     }
 
     /// Inherited from TopoDS_TFace: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::BRep_TFace_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::BRep_TFace_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_TShape: Free()
@@ -2378,8 +2411,9 @@ impl TVertex {
     }
 
     /// Inherited from TopoDS_TShape: ShapeType()
-    pub fn shape_type(&self) -> i32 {
-        crate::ffi::BRep_TVertex_inherited_ShapeType(self)
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::BRep_TVertex_inherited_ShapeType(self))
+            .unwrap()
     }
 
     /// Inherited from TopoDS_TShape: NbChildren()
@@ -2766,8 +2800,9 @@ impl Tool {
         E: &crate::ffi::TopoDS_Edge,
         F1: &crate::ffi::TopoDS_Face,
         F2: &crate::ffi::TopoDS_Face,
-    ) -> i32 {
-        crate::ffi::BRep_Tool_continuity_edge_face2(E, F1, F2)
+    ) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRep_Tool_continuity_edge_face2(E, F1, F2))
+            .unwrap()
     }
 
     /// Returns True if the edge is on the surfaces.
@@ -2788,8 +2823,11 @@ impl Tool {
         S2: &crate::ffi::HandleGeomSurface,
         L1: &crate::ffi::TopLoc_Location,
         L2: &crate::ffi::TopLoc_Location,
-    ) -> i32 {
-        crate::ffi::BRep_Tool_continuity_edge_handlegeomsurface2_location2(E, S1, S2, L1, L2)
+    ) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(
+            crate::ffi::BRep_Tool_continuity_edge_handlegeomsurface2_location2(E, S1, S2, L1, L2),
+        )
+        .unwrap()
     }
 
     /// Returns True if the edge has regularity on some
@@ -2800,8 +2838,8 @@ impl Tool {
 
     /// Returns the max continuity of edge between some surfaces or GeomAbs_C0 if there no such
     /// surfaces.
-    pub fn max_continuity(theEdge: &crate::ffi::TopoDS_Edge) -> i32 {
-        crate::ffi::BRep_Tool_max_continuity(theEdge)
+    pub fn max_continuity(theEdge: &crate::ffi::TopoDS_Edge) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRep_Tool_max_continuity(theEdge)).unwrap()
     }
 
     /// Returns the 3d point.
@@ -2865,8 +2903,11 @@ impl Tool {
         crate::ffi::BRep_Tool_parameters(V, F)
     }
 
-    pub fn max_tolerance(theShape: &crate::ffi::TopoDS_Shape, theSubShape: i32) -> f64 {
-        crate::ffi::BRep_Tool_max_tolerance(theShape, theSubShape)
+    pub fn max_tolerance(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theSubShape: crate::top_abs::ShapeEnum,
+    ) -> f64 {
+        crate::ffi::BRep_Tool_max_tolerance(theShape, theSubShape.into())
     }
 }
 

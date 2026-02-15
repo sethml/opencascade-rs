@@ -316,8 +316,12 @@ impl Reader {
     }
 
     /// Prints Statistics and check list for Transfer
-    pub fn print_transfer_info(&self, failwarn: i32, mode: i32) {
-        crate::ffi::IGESControl_Reader_print_transfer_info(self, failwarn, mode)
+    pub fn print_transfer_info(
+        &self,
+        failwarn: crate::if_select::PrintFail,
+        mode: crate::if_select::PrintCount,
+    ) {
+        crate::ffi::IGESControl_Reader_print_transfer_info(self, failwarn.into(), mode.into())
     }
 
     /// Upcast to XSControl_Reader
@@ -393,13 +397,13 @@ impl Reader {
     }
 
     /// Inherited from XSControl_Reader: PrintCheckLoad()
-    pub fn print_check_load(&self, failsonly: bool, mode: i32) {
-        crate::ffi::IGESControl_Reader_inherited_PrintCheckLoad(self, failsonly, mode)
+    pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
+        crate::ffi::IGESControl_Reader_inherited_PrintCheckLoad(self, failsonly, mode.into())
     }
 
     /// Inherited from XSControl_Reader: PrintCheckTransfer()
-    pub fn print_check_transfer(&self, failsonly: bool, mode: i32) {
-        crate::ffi::IGESControl_Reader_inherited_PrintCheckTransfer(self, failsonly, mode)
+    pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
+        crate::ffi::IGESControl_Reader_inherited_PrintCheckTransfer(self, failsonly, mode.into())
     }
 
     /// Inherited from XSControl_Reader: PrintStatsTransfer()

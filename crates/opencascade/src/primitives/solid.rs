@@ -5,7 +5,7 @@ use crate::{
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
 use opencascade_sys::{
-    b_rep_algo_api, b_rep_fillet_api, b_rep_offset_api, message, topo_ds,
+    b_rep_algo_api, b_rep_fillet_api, b_rep_offset_api, ch_fi3d, message, topo_ds,
 };
 
 pub struct Solid {
@@ -32,7 +32,7 @@ impl Solid {
     pub fn fillet_edge(&self, radius: f64, edge: &Edge) -> Compound {
         let inner_shape = self.inner.as_shape();
 
-        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(inner_shape, 0);
+        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(inner_shape, ch_fi3d::FilletShape::Rational);
         make_fillet.pin_mut().add_real_edge(radius, &edge.inner);
 
         let filleted_shape = make_fillet.pin_mut().shape();

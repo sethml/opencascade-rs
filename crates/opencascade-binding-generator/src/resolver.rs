@@ -251,6 +251,9 @@ pub struct ResolvedEnum {
     pub status: BindingStatus,
     /// Documentation comment
     pub doc_comment: Option<String>,
+    /// Whether this enum is a bitset (values are powers of 2, used as flags)
+    /// Bitset enums stay as i32 at the Rust API level; value enums get typed Rust enums.
+    pub is_bitset: bool,
 }
 
 /// A resolved enum variant
@@ -328,6 +331,9 @@ pub struct SymbolTable {
     /// Authoritative mapping from C++ type name to module name (built from parsed headers)
     /// This is the single source of truth for "which module does type X belong to?"
     pub type_to_module: HashMap<String, String>,
+    /// Mapping from C++ enum name to qualified Rust enum type path (e.g., "crate::top_abs::Orientation")
+    /// Only contains value enums (not bitset enums). These get typed Rust enum params/returns.
+    pub enum_rust_types: HashMap<String, String>,
 }
 
 impl SymbolTable {
@@ -639,6 +645,45 @@ fn static_method_needs_wrapper(method: &StaticMethod) -> bool {
     matches!(&method.return_type, Some(Type::Class(_)) | Some(Type::Handle(_)))
 }
 
+/// Determine if an enum is a bitset (flag-style) enum.
+///
+/// Bitset enums have values that are powers of 2 and are meant to be OR'd together.
+/// These stay as i32 at the Rust API level. Value enums (the common case) get
+/// typed Rust enum params/returns.
+///
+/// Heuristic: an enum is a bitset if:
+/// - Its name contains "Flag", "Flags", or "Mask", OR
+/// - All non-zero variant values are powers of 2, there are at least 3 such
+///   powers, and the maximum value is >= 4 (to avoid false positives like
+///   sequential 0, 1, 2 enums)
+fn is_bitset_enum(parsed: &ParsedEnum) -> bool {
+    let name = &parsed.name;
+    // Check naming convention (covers combination-value flag enums like MaskFlags)
+    if name.contains("Flag") || name.contains("Mask") {
+        return true;
+    }
+
+    // Compute actual values (auto-increment when None)
+    let mut values = Vec::new();
+    let mut next_val: i64 = 0;
+    for v in &parsed.variants {
+        let val = v.value.unwrap_or(next_val);
+        values.push(val);
+        next_val = val + 1;
+    }
+
+    // Check if all non-zero values are powers of 2
+    let nonzero: Vec<i64> = values.iter().copied().filter(|&v| v > 0).collect();
+    if nonzero.len() < 3 {
+        return false;
+    }
+
+    let all_powers_of_2 = nonzero.iter().all(|&v| (v & (v - 1)) == 0);
+    let max_val = nonzero.iter().copied().max().unwrap_or(0);
+
+    all_powers_of_2 && max_val >= 4
+}
+
 /// Build the symbol table from parsed headers and module graph
 pub fn build_symbol_table(
     modules: &[&Module],
@@ -686,6 +731,7 @@ pub fn build_symbol_table(
         handle_able_classes: handle_able_classes.clone(),
         cross_module_types: HashMap::new(),
         type_to_module,
+        enum_rust_types: HashMap::new(),
     };
     
     // Build cross-module types map
@@ -730,6 +776,7 @@ pub fn build_symbol_table(
             // C++ wrappers static_cast between int32_t and the OCCT enum type)
             status: BindingStatus::Included,
             doc_comment: enum_decl.comment.clone(),
+            is_bitset: is_bitset_enum(enum_decl),
         };
         
         table.enums_by_module
@@ -737,6 +784,15 @@ pub fn build_symbol_table(
             .or_default()
             .push(id.clone());
         table.enums.insert(id, resolved);
+    }
+    
+    // Build enum_rust_types map: C++ enum name → qualified Rust type path
+    // Only includes value enums (not bitset enums)
+    for resolved in table.enums.values() {
+        if !resolved.is_bitset && resolved.status.is_included() {
+            let rust_type = format!("crate::{}::{}", resolved.rust_module, resolved.rust_name);
+            table.enum_rust_types.insert(resolved.cpp_name.clone(), rust_type);
+        }
     }
     
     // Resolve all classes

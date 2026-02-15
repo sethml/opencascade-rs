@@ -44,12 +44,15 @@ impl Inter {
     }
 
     /// returns the current state (IN or ON)
-    pub fn state(&self) -> i32 {
-        crate::ffi::BRepIntCurveSurface_Inter_state(self)
+    pub fn state(&self) -> crate::top_abs::State {
+        crate::top_abs::State::try_from(crate::ffi::BRepIntCurveSurface_Inter_state(self)).unwrap()
     }
 
     /// returns the transition of the line on the surface (IN or OUT or UNKNOWN)
-    pub fn transition(&self) -> i32 {
-        crate::ffi::BRepIntCurveSurface_Inter_transition(self)
+    pub fn transition(&self) -> crate::int_curve_surface::TransitionOnCurve {
+        crate::int_curve_surface::TransitionOnCurve::try_from(
+            crate::ffi::BRepIntCurveSurface_Inter_transition(self),
+        )
+        .unwrap()
     }
 }

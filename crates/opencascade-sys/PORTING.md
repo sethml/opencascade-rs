@@ -169,26 +169,49 @@ if name == "Geom_Plane" {
 ## Enums
 
 OCCT uses unscoped C++ enums, which CXX cannot bind directly. The binding
-generator creates Rust enums in the appropriate modules. Since `From<EnumType>
-for i32` is auto-generated, you can use `.into()` or `as i32` when calling FFI
-functions:
+generator creates Rust enums in the appropriate modules with `From<EnumType>
+for i32` and `TryFrom<i32> for EnumType` conversions.
+
+**Most enum parameters now use typed Rust enums directly.** The generated
+wrapper functions handle the `i32` conversion at the FFI boundary, so you
+pass and receive Rust enum values:
 
 ```cpp
 // C++
-TopAbs_ShapeEnum::TopAbs_EDGE
-ChFi3d_Rational
+TopExp_Explorer explorer(shape, TopAbs_EDGE, TopAbs_SHAPE);
+BRepFilletAPI_MakeFillet fillet(shape, ChFi3d_Rational);
 ```
 
 ```rust
-// Rust — prefer .into() for type safety
-top_abs::ShapeEnum::Edge.into()      // returns i32
-ch_fi3d::FilletShape::Rational.into() // returns i32
-
-// as i32 also works
-top_abs::ShapeEnum::Edge as i32
+// Rust — pass enum values directly
+let explorer = top_exp::Explorer::new_shape_shapeenum2(
+    shape,
+    top_abs::ShapeEnum::Edge,
+    top_abs::ShapeEnum::Shape,
+);
+let fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(
+    shape,
+    ch_fi3d::FilletShape::Rational,
+);
 ```
 
-Convert from i32 back to enum with `TryFrom`:
+Return values are also typed enums:
+
+```rust
+let orientation: top_abs::Orientation = shape.orientation();
+let curve_type: geom_abs::CurveType = curve.get_type();
+```
+
+**Bitset enums** (those used as bitmasks, e.g. names containing "Flag" or
+"Mask", or enums whose values are powers of 2) remain as `i32` and still
+require manual conversion:
+
+```rust
+// Bitset enums still use i32
+some_function(my_flags as i32);
+```
+
+Convert from `i32` back to enum with `TryFrom`:
 
 ```rust
 let shape_enum = top_abs::ShapeEnum::try_from(raw_i32)

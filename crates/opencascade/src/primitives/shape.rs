@@ -10,8 +10,9 @@ use cxx::UniquePtr;
 use glam::{dvec3, DVec2, DVec3};
 use opencascade_sys::{
     b_rep, b_rep_algo_api, b_rep_feat, b_rep_fillet_api, b_rep_int_curve_surface, b_rep_mesh,
-    b_rep_offset_api, b_rep_prim_api, gp, iges_control, message, shape_upgrade, step_control,
-    stl_api, t_colgp, top_abs, top_exp, top_loc, top_tools, topo_ds,
+    b_rep_offset, b_rep_offset_api, b_rep_prim_api, ch_fi3d, geom_abs, gp, iges_control,
+    if_select, message, shape_upgrade, step_control, stl_api, t_colgp, top_abs, top_exp,
+    top_loc, top_tools, topo_ds,
 };
 use std::path::Path;
 
@@ -402,8 +403,7 @@ impl Shape {
         edges: impl IntoIterator<Item = T>,
     ) -> Self {
         let progress = message::ProgressRange::new();
-        // ChFi3d_Rational = 0
-        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(&self.inner, 0);
+        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(&self.inner, ch_fi3d::FilletShape::Rational);
         for edge in edges {
             make_fillet.pin_mut().add_real_edge(radius, &edge.as_ref().inner);
         }
@@ -419,8 +419,7 @@ impl Shape {
         edges: impl IntoIterator<Item = T>,
     ) -> Self {
         let progress = message::ProgressRange::new();
-        // ChFi3d_Rational = 0
-        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(&self.inner, 0);
+        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(&self.inner, ch_fi3d::FilletShape::Rational);
 
         let pairs: Vec<(f64, f64)> = radius_values.into_iter().collect();
         let n = pairs.len() as i32;
@@ -494,7 +493,7 @@ impl Shape {
         let mut reader = step_control::Reader::new();
         let path_str = path.as_ref().to_string_lossy();
         let status = reader.pin_mut().read_file_charptr(&path_str);
-        if status != 0 {
+        if status != if_select::ReturnStatus::Retvoid {
             return Err(Error::StepReadFailed);
         }
         let progress = message::ProgressRange::new();
@@ -509,16 +508,16 @@ impl Shape {
         // STEPControl_AsIs = 0
         let status = writer.pin_mut().transfer_shape_stepmodeltype_bool_progressrange(
             &self.inner,
-            step_control::StepModelType::Asis.into(),
+            step_control::StepModelType::Asis,
             true, // compgraph
             &progress,
         );
-        if status != 1 {
+        if status != if_select::ReturnStatus::Retdone {
             return Err(Error::StepWriteFailed);
         }
         let path_str = path.as_ref().to_string_lossy();
         let status = writer.pin_mut().write(&path_str);
-        if status != 1 {
+        if status != if_select::ReturnStatus::Retdone {
             return Err(Error::StepWriteFailed);
         }
         Ok(())
@@ -528,7 +527,7 @@ impl Shape {
         let mut reader = iges_control::Reader::new();
         let path_str = path.as_ref().to_string_lossy();
         let status = reader.pin_mut().as_xs_control_reader_mut().read_file(&path_str);
-        if status != 0 {
+        if status != if_select::ReturnStatus::Retvoid {
             return Err(Error::IgesReadFailed);
         }
         let progress = message::ProgressRange::new();
@@ -730,10 +729,10 @@ impl Shape {
             &faces_list,
             offset,
             0.001, // tolerance
-            0,     // Mode: BRepOffset_Skin
+            b_rep_offset::Mode::Skin,
             false, // Intersection
             false, // SelfInter
-            0,     // Join: GeomAbs_Arc
+            geom_abs::JoinType::Arc,
             false, // RemoveIntEdges
             &progress,
         );

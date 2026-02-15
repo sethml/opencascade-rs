@@ -373,8 +373,8 @@ impl Dump {
     }
 
     /// Returns length value for enum type
-    pub fn json_key_length(theKey: i32) -> i32 {
-        crate::ffi::Standard_Dump_json_key_length(theKey)
+    pub fn json_key_length(theKey: crate::standard::JsonKey) -> i32 {
+        crate::ffi::Standard_Dump_json_key_length(theKey.into())
     }
 
     /// Returns default prefix added for each pointer info string if short presentation of pointer

@@ -152,71 +152,97 @@ impl Transition {
     }
 
     /// Creates an IN or OUT transition.
-    pub fn new_bool_position_typetrans(Tangent: bool, Pos: i32, Type: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntRes2d_Transition_ctor_bool_position_typetrans(Tangent, Pos, Type)
+    pub fn new_bool_position_typetrans(
+        Tangent: bool,
+        Pos: crate::int_res2d::Position,
+        Type: crate::int_res2d::TypeTrans,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IntRes2d_Transition_ctor_bool_position_typetrans(
+            Tangent,
+            Pos.into(),
+            Type.into(),
+        )
     }
 
     /// Creates a TOUCH transition.
     pub fn new_bool_position_situation_bool(
         Tangent: bool,
-        Pos: i32,
-        Situ: i32,
+        Pos: crate::int_res2d::Position,
+        Situ: crate::int_res2d::Situation,
         Oppos: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntRes2d_Transition_ctor_bool_position_situation_bool(Tangent, Pos, Situ, Oppos)
+        crate::ffi::IntRes2d_Transition_ctor_bool_position_situation_bool(
+            Tangent,
+            Pos.into(),
+            Situ.into(),
+            Oppos,
+        )
     }
 
     /// Creates an UNDECIDED transition.
-    pub fn new_position(Pos: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntRes2d_Transition_ctor_position(Pos)
+    pub fn new_position(Pos: crate::int_res2d::Position) -> cxx::UniquePtr<Self> {
+        crate::ffi::IntRes2d_Transition_ctor_position(Pos.into())
     }
 
     /// Sets the values of an IN or OUT transition.
     pub fn set_value_bool_position_typetrans(
         self: std::pin::Pin<&mut Self>,
         Tangent: bool,
-        Pos: i32,
-        Type: i32,
+        Pos: crate::int_res2d::Position,
+        Type: crate::int_res2d::TypeTrans,
     ) {
-        crate::ffi::IntRes2d_Transition_set_value_bool_position_typetrans(self, Tangent, Pos, Type)
+        crate::ffi::IntRes2d_Transition_set_value_bool_position_typetrans(
+            self,
+            Tangent,
+            Pos.into(),
+            Type.into(),
+        )
     }
 
     /// Sets the values of a TOUCH transition.
     pub fn set_value_bool_position_situation_bool(
         self: std::pin::Pin<&mut Self>,
         Tangent: bool,
-        Pos: i32,
-        Situ: i32,
+        Pos: crate::int_res2d::Position,
+        Situ: crate::int_res2d::Situation,
         Oppos: bool,
     ) {
         crate::ffi::IntRes2d_Transition_set_value_bool_position_situation_bool(
-            self, Tangent, Pos, Situ, Oppos,
+            self,
+            Tangent,
+            Pos.into(),
+            Situ.into(),
+            Oppos,
         )
     }
 
     /// Sets the values of an UNDECIDED transition.
-    pub fn set_value_position(self: std::pin::Pin<&mut Self>, Pos: i32) {
-        crate::ffi::IntRes2d_Transition_set_value_position(self, Pos)
+    pub fn set_value_position(self: std::pin::Pin<&mut Self>, Pos: crate::int_res2d::Position) {
+        crate::ffi::IntRes2d_Transition_set_value_position(self, Pos.into())
     }
 
     /// Sets the value of the position.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, Pos: i32) {
-        crate::ffi::IntRes2d_Transition_set_position(self, Pos)
+    pub fn set_position(self: std::pin::Pin<&mut Self>, Pos: crate::int_res2d::Position) {
+        crate::ffi::IntRes2d_Transition_set_position(self, Pos.into())
     }
 
     /// Indicates if the  intersection is at the beginning
     /// (IntRes2d_Head),  at the end (IntRes2d_End), or in
     /// the middle (IntRes2d_Middle) of the curve.
-    pub fn position_on_curve(&self) -> i32 {
-        crate::ffi::IntRes2d_Transition_position_on_curve(self)
+    pub fn position_on_curve(&self) -> crate::int_res2d::Position {
+        crate::int_res2d::Position::try_from(crate::ffi::IntRes2d_Transition_position_on_curve(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Returns the type of transition at the intersection.
     /// It may be IN or OUT or TOUCH, or UNDECIDED if the
     /// two first derivatives are not enough to give
     /// the tangent to one of the two curves.
-    pub fn transition_type(&self) -> i32 {
-        crate::ffi::IntRes2d_Transition_transition_type(self)
+    pub fn transition_type(&self) -> crate::int_res2d::TypeTrans {
+        crate::int_res2d::TypeTrans::try_from(crate::ffi::IntRes2d_Transition_transition_type(self))
+            .unwrap()
     }
 
     /// returns a significant value if TransitionType returns
@@ -227,8 +253,9 @@ impl Transition {
     /// cannot give the result.
     /// If TransitionType returns IN or OUT or UNDECIDED, the
     /// exception DomainError is raised.
-    pub fn situation(&self) -> i32 {
-        crate::ffi::IntRes2d_Transition_situation(self)
+    pub fn situation(&self) -> crate::int_res2d::Situation {
+        crate::int_res2d::Situation::try_from(crate::ffi::IntRes2d_Transition_situation(self))
+            .unwrap()
     }
 }
 

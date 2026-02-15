@@ -297,6 +297,9 @@ pub struct TypeContext<'a> {
     /// Authoritative type→module mapping (from resolver's SymbolTable)
     /// When present, used instead of name-based derivation
     pub type_to_module: Option<&'a std::collections::HashMap<String, String>>,
+    /// Mapping from C++ enum name to qualified Rust enum type path.
+    /// Value enums get typed Rust enums; bitset enums stay as i32.
+    pub enum_rust_types: Option<&'a std::collections::HashMap<String, String>>,
 }
 
 /// Check if a type references an unknown class/handle

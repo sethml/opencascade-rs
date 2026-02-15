@@ -55,8 +55,9 @@ impl DraftAngle {
     /// Otherwise returns Draft_NoError. The method may be
     /// called if AddDone  returns Standard_False, or when
     /// IsDone returns Standard_False.
-    pub fn status(&self) -> i32 {
-        crate::ffi::BRepOffsetAPI_DraftAngle_status(self)
+    pub fn status(&self) -> crate::draft::ErrorStatus {
+        crate::draft::ErrorStatus::try_from(crate::ffi::BRepOffsetAPI_DraftAngle_status(self))
+            .unwrap()
     }
 
     /// Returns the modified shape corresponding to <S>.
@@ -218,8 +219,13 @@ impl MakeDraft {
     /// AngleMax sets the maximum value within which a
     /// RightCorner transition can be performed.
     /// AngleMin and AngleMax are expressed in radians.
-    pub fn set_options(self: std::pin::Pin<&mut Self>, Style: i32, AngleMin: f64, AngleMax: f64) {
-        crate::ffi::BRepOffsetAPI_MakeDraft_set_options(self, Style, AngleMin, AngleMax)
+    pub fn set_options(
+        self: std::pin::Pin<&mut Self>,
+        Style: crate::b_rep_builder_api::TransitionMode,
+        AngleMin: f64,
+        AngleMax: f64,
+    ) {
+        crate::ffi::BRepOffsetAPI_MakeDraft_set_options(self, Style.into(), AngleMin, AngleMax)
     }
 
     /// Returns the shell resulting from performance of the
@@ -349,7 +355,7 @@ impl MakeEvolved {
     pub fn new_shape_wire_jointype_bool3_real_bool2(
         theSpine: &crate::ffi::TopoDS_Shape,
         theProfile: &crate::ffi::TopoDS_Wire,
-        theJoinType: i32,
+        theJoinType: crate::geom_abs::JoinType,
         theIsAxeProf: bool,
         theIsSolid: bool,
         theIsProfOnSpine: bool,
@@ -360,7 +366,7 @@ impl MakeEvolved {
         crate::ffi::BRepOffsetAPI_MakeEvolved_ctor_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType,
+            theJoinType.into(),
             theIsAxeProf,
             theIsSolid,
             theIsProfOnSpine,
@@ -377,7 +383,7 @@ impl MakeEvolved {
     pub fn new_shape_wire_jointype_bool3_real_bool(
         theSpine: &crate::ffi::TopoDS_Shape,
         theProfile: &crate::ffi::TopoDS_Wire,
-        theJoinType: i32,
+        theJoinType: crate::geom_abs::JoinType,
         theIsAxeProf: bool,
         theIsSolid: bool,
         theIsProfOnSpine: bool,
@@ -387,7 +393,7 @@ impl MakeEvolved {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType,
+            theJoinType.into(),
             theIsAxeProf,
             theIsSolid,
             theIsProfOnSpine,
@@ -404,7 +410,7 @@ impl MakeEvolved {
     pub fn new_shape_wire_jointype_bool3_real(
         theSpine: &crate::ffi::TopoDS_Shape,
         theProfile: &crate::ffi::TopoDS_Wire,
-        theJoinType: i32,
+        theJoinType: crate::geom_abs::JoinType,
         theIsAxeProf: bool,
         theIsSolid: bool,
         theIsProfOnSpine: bool,
@@ -413,7 +419,7 @@ impl MakeEvolved {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType,
+            theJoinType.into(),
             theIsAxeProf,
             theIsSolid,
             theIsProfOnSpine,
@@ -430,7 +436,7 @@ impl MakeEvolved {
     pub fn new_shape_wire_jointype_bool3(
         theSpine: &crate::ffi::TopoDS_Shape,
         theProfile: &crate::ffi::TopoDS_Wire,
-        theJoinType: i32,
+        theJoinType: crate::geom_abs::JoinType,
         theIsAxeProf: bool,
         theIsSolid: bool,
         theIsProfOnSpine: bool,
@@ -438,7 +444,7 @@ impl MakeEvolved {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType,
+            theJoinType.into(),
             theIsAxeProf,
             theIsSolid,
             theIsProfOnSpine,
@@ -455,14 +461,14 @@ impl MakeEvolved {
     pub fn new_shape_wire_jointype_bool2(
         theSpine: &crate::ffi::TopoDS_Shape,
         theProfile: &crate::ffi::TopoDS_Wire,
-        theJoinType: i32,
+        theJoinType: crate::geom_abs::JoinType,
         theIsAxeProf: bool,
         theIsSolid: bool,
     ) -> cxx::UniquePtr<Self> {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType,
+            theJoinType.into(),
             theIsAxeProf,
             theIsSolid,
             false,
@@ -479,13 +485,13 @@ impl MakeEvolved {
     pub fn new_shape_wire_jointype_bool(
         theSpine: &crate::ffi::TopoDS_Shape,
         theProfile: &crate::ffi::TopoDS_Wire,
-        theJoinType: i32,
+        theJoinType: crate::geom_abs::JoinType,
         theIsAxeProf: bool,
     ) -> cxx::UniquePtr<Self> {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType,
+            theJoinType.into(),
             theIsAxeProf,
             false,
             false,
@@ -502,12 +508,12 @@ impl MakeEvolved {
     pub fn new_shape_wire_jointype(
         theSpine: &crate::ffi::TopoDS_Shape,
         theProfile: &crate::ffi::TopoDS_Wire,
-        theJoinType: i32,
+        theJoinType: crate::geom_abs::JoinType,
     ) -> cxx::UniquePtr<Self> {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType,
+            theJoinType.into(),
             true,
             false,
             false,
@@ -988,10 +994,15 @@ impl MakeFilling {
     pub fn add_edge_shape_bool(
         self: std::pin::Pin<&mut Self>,
         Constr: &crate::ffi::TopoDS_Edge,
-        Order: i32,
+        Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
-        crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_shape_bool(self, Constr, Order, IsBound)
+        crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_shape_bool(
+            self,
+            Constr,
+            Order.into(),
+            IsBound,
+        )
     }
 
     /// Adds a new constraint which also defines an edge of the wire
@@ -1010,11 +1021,15 @@ impl MakeFilling {
         self: std::pin::Pin<&mut Self>,
         Constr: &crate::ffi::TopoDS_Edge,
         Support: &crate::ffi::TopoDS_Face,
-        Order: i32,
+        Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
         crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_face_shape_bool(
-            self, Constr, Support, Order, IsBound,
+            self,
+            Constr,
+            Support,
+            Order.into(),
+            IsBound,
         )
     }
 
@@ -1023,9 +1038,9 @@ impl MakeFilling {
     pub fn add_face_shape(
         self: std::pin::Pin<&mut Self>,
         Support: &crate::ffi::TopoDS_Face,
-        Order: i32,
+        Order: crate::geom_abs::Shape,
     ) -> i32 {
-        crate::ffi::BRepOffsetAPI_MakeFilling_add_face_shape(self, Support, Order)
+        crate::ffi::BRepOffsetAPI_MakeFilling_add_face_shape(self, Support, Order.into())
     }
 
     /// Adds a punctual constraint.
@@ -1034,9 +1049,15 @@ impl MakeFilling {
         U: f64,
         V: f64,
         Support: &crate::ffi::TopoDS_Face,
-        Order: i32,
+        Order: crate::geom_abs::Shape,
     ) -> i32 {
-        crate::ffi::BRepOffsetAPI_MakeFilling_add_real2_face_shape(self, U, V, Support, Order)
+        crate::ffi::BRepOffsetAPI_MakeFilling_add_real2_face_shape(
+            self,
+            U,
+            V,
+            Support,
+            Order.into(),
+        )
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -1109,28 +1130,42 @@ impl MakeOffset {
     /// to build parallels to the spine Spine
     pub fn new_face_jointype_bool(
         Spine: &crate::ffi::TopoDS_Face,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_face_jointype_bool(Spine, Join, IsOpenResult)
+        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_face_jointype_bool(
+            Spine,
+            Join.into(),
+            IsOpenResult,
+        )
     }
 
     pub fn new_wire_jointype_bool(
         Spine: &crate::ffi::TopoDS_Wire,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_wire_jointype_bool(Spine, Join, IsOpenResult)
+        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_wire_jointype_bool(
+            Spine,
+            Join.into(),
+            IsOpenResult,
+        )
     }
 
     /// Constructs an algorithm for creating an algorithm
     /// to build parallels to the spine Spine
-    pub fn new_face_jointype(Spine: &crate::ffi::TopoDS_Face, Join: i32) -> cxx::UniquePtr<Self> {
-        Self::new_face_jointype_bool(Spine, Join, false)
+    pub fn new_face_jointype(
+        Spine: &crate::ffi::TopoDS_Face,
+        Join: crate::geom_abs::JoinType,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_jointype_bool(Spine, Join.into(), false)
     }
 
-    pub fn new_wire_jointype(Spine: &crate::ffi::TopoDS_Wire, Join: i32) -> cxx::UniquePtr<Self> {
-        Self::new_wire_jointype_bool(Spine, Join, false)
+    pub fn new_wire_jointype(
+        Spine: &crate::ffi::TopoDS_Wire,
+        Join: crate::geom_abs::JoinType,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_wire_jointype_bool(Spine, Join.into(), false)
     }
 
     /// Initializes the algorithm to construct parallels to the spine Spine.
@@ -1144,20 +1179,24 @@ impl MakeOffset {
     pub fn init_face_jointype_bool(
         self: std::pin::Pin<&mut Self>,
         Spine: &crate::ffi::TopoDS_Face,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) {
         crate::ffi::BRepOffsetAPI_MakeOffset_init_face_jointype_bool(
             self,
             Spine,
-            Join,
+            Join.into(),
             IsOpenResult,
         )
     }
 
     /// Initialize the evaluation of Offsetting.
-    pub fn init_jointype_bool(self: std::pin::Pin<&mut Self>, Join: i32, IsOpenResult: bool) {
-        crate::ffi::BRepOffsetAPI_MakeOffset_init_jointype_bool(self, Join, IsOpenResult)
+    pub fn init_jointype_bool(
+        self: std::pin::Pin<&mut Self>,
+        Join: crate::geom_abs::JoinType,
+        IsOpenResult: bool,
+    ) {
+        crate::ffi::BRepOffsetAPI_MakeOffset_init_jointype_bool(self, Join.into(), IsOpenResult)
     }
 
     /// Converts each wire of the face into contour consisting only of
@@ -1300,10 +1339,10 @@ impl MakeOffsetShape {
         S: &crate::ffi::TopoDS_Shape,
         Offset: f64,
         Tol: f64,
-        Mode: i32,
+        Mode: crate::b_rep_offset::Mode,
         Intersection: bool,
         SelfInter: bool,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         RemoveIntEdges: bool,
         theRange: &crate::ffi::Message_ProgressRange,
     ) {
@@ -1312,18 +1351,21 @@ impl MakeOffsetShape {
             S,
             Offset,
             Tol,
-            Mode,
+            Mode.into(),
             Intersection,
             SelfInter,
-            Join,
+            Join.into(),
             RemoveIntEdges,
             theRange,
         )
     }
 
     /// Returns offset join type.
-    pub fn get_join_type(&self) -> i32 {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_get_join_type(self)
+    pub fn get_join_type(&self) -> crate::geom_abs::JoinType {
+        crate::geom_abs::JoinType::try_from(
+            crate::ffi::BRepOffsetAPI_MakeOffsetShape_get_join_type(self),
+        )
+        .unwrap()
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -1409,13 +1451,13 @@ impl MakePipe {
     pub fn new_wire_shape_trihedron_bool(
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
-        aMode: i32,
+        aMode: crate::geom_fill::Trihedron,
         ForceApproxC1: bool,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron_bool(
             Spine,
             Profile,
-            aMode,
+            aMode.into(),
             ForceApproxC1,
         )
     }
@@ -1427,9 +1469,9 @@ impl MakePipe {
     pub fn new_wire_shape_trihedron(
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
-        aMode: i32,
+        aMode: crate::geom_fill::Trihedron,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_wire_shape_trihedron_bool(Spine, Profile, aMode, false)
+        Self::new_wire_shape_trihedron_bool(Spine, Profile, aMode.into(), false)
     }
 
     /// Returns the  TopoDS  Shape of the bottom of the prism.
@@ -1579,13 +1621,13 @@ impl MakePipeShell {
         self: std::pin::Pin<&mut Self>,
         AuxiliarySpine: &crate::ffi::TopoDS_Wire,
         CurvilinearEquivalence: bool,
-        KeepContact: i32,
+        KeepContact: crate::b_rep_fill::TypeOfContact,
     ) {
         crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode(
             self,
             AuxiliarySpine,
             CurvilinearEquivalence,
-            KeepContact,
+            KeepContact.into(),
         )
     }
 
@@ -1594,8 +1636,11 @@ impl MakePipeShell {
     /// BRepBuilderAPI_PipeNotDone,
     /// BRepBuilderAPI_PlaneNotIntersectGuide,
     /// BRepBuilderAPI_ImpossibleContact.
-    pub fn get_status(&self) -> i32 {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_get_status(self)
+    pub fn get_status(&self) -> crate::b_rep_builder_api::PipeError {
+        crate::b_rep_builder_api::PipeError::try_from(
+            crate::ffi::BRepOffsetAPI_MakePipeShell_get_status(self),
+        )
+        .unwrap()
     }
 
     /// Sets the transition mode to manage discontinuities on
@@ -1635,8 +1680,11 @@ impl MakePipeShell {
     /// assuredly provide a good result only if a profile was set
     /// with option WithCorrection = True, i.e. it is strictly
     /// orthogonal to the spine.
-    pub fn set_transition_mode(self: std::pin::Pin<&mut Self>, Mode: i32) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_set_transition_mode(self, Mode)
+    pub fn set_transition_mode(
+        self: std::pin::Pin<&mut Self>,
+        Mode: crate::b_rep_builder_api::TransitionMode,
+    ) {
+        crate::ffi::BRepOffsetAPI_MakePipeShell_set_transition_mode(self, Mode.into())
     }
 
     /// Returns the  TopoDS  Shape of the bottom of the sweep.
@@ -1787,10 +1835,10 @@ impl MakeThickSolid {
         ClosingFaces: &crate::ffi::TopTools_ListOfShape,
         Offset: f64,
         Tol: f64,
-        Mode: i32,
+        Mode: crate::b_rep_offset::Mode,
         Intersection: bool,
         SelfInter: bool,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         RemoveIntEdges: bool,
         theRange: &crate::ffi::Message_ProgressRange,
     ) {
@@ -1800,10 +1848,10 @@ impl MakeThickSolid {
             ClosingFaces,
             Offset,
             Tol,
-            Mode,
+            Mode.into(),
             Intersection,
             SelfInter,
-            Join,
+            Join.into(),
             RemoveIntEdges,
             theRange,
         )
@@ -1892,10 +1940,10 @@ impl MakeThickSolid {
         S: &crate::ffi::TopoDS_Shape,
         Offset: f64,
         Tol: f64,
-        Mode: i32,
+        Mode: crate::b_rep_offset::Mode,
         Intersection: bool,
         SelfInter: bool,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         RemoveIntEdges: bool,
         theRange: &crate::ffi::Message_ProgressRange,
     ) {
@@ -1904,10 +1952,10 @@ impl MakeThickSolid {
             S,
             Offset,
             Tol,
-            Mode,
+            Mode.into(),
             Intersection,
             SelfInter,
-            Join,
+            Join.into(),
             RemoveIntEdges,
             theRange,
         )
@@ -1919,8 +1967,11 @@ impl MakeThickSolid {
     }
 
     /// Inherited from BRepOffsetAPI_MakeOffsetShape: GetJoinType()
-    pub fn get_join_type(&self) -> i32 {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_GetJoinType(self)
+    pub fn get_join_type(&self) -> crate::geom_abs::JoinType {
+        crate::geom_abs::JoinType::try_from(
+            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_GetJoinType(self),
+        )
+        .unwrap()
     }
 }
 
@@ -2042,7 +2093,7 @@ impl NormalProjection {
         self: std::pin::Pin<&mut Self>,
         Tol3D: f64,
         Tol2D: f64,
-        InternalContinuity: i32,
+        InternalContinuity: crate::geom_abs::Shape,
         MaxDegree: i32,
         MaxSeg: i32,
     ) {
@@ -2050,7 +2101,7 @@ impl NormalProjection {
             self,
             Tol3D,
             Tol2D,
-            InternalContinuity,
+            InternalContinuity.into(),
             MaxDegree,
             MaxSeg,
         )
@@ -2180,23 +2231,30 @@ impl ThruSections {
     }
 
     /// Define the type of parametrization   used in the approximation
-    pub fn set_par_type(self: std::pin::Pin<&mut Self>, ParType: i32) {
-        crate::ffi::BRepOffsetAPI_ThruSections_set_par_type(self, ParType)
+    pub fn set_par_type(
+        self: std::pin::Pin<&mut Self>,
+        ParType: crate::approx::ParametrizationType,
+    ) {
+        crate::ffi::BRepOffsetAPI_ThruSections_set_par_type(self, ParType.into())
     }
 
     /// Define the Continuity used in the approximation
-    pub fn set_continuity(self: std::pin::Pin<&mut Self>, C: i32) {
-        crate::ffi::BRepOffsetAPI_ThruSections_set_continuity(self, C)
+    pub fn set_continuity(self: std::pin::Pin<&mut Self>, C: crate::geom_abs::Shape) {
+        crate::ffi::BRepOffsetAPI_ThruSections_set_continuity(self, C.into())
     }
 
     /// returns the type of parametrization used in the approximation
-    pub fn par_type(&self) -> i32 {
-        crate::ffi::BRepOffsetAPI_ThruSections_par_type(self)
+    pub fn par_type(&self) -> crate::approx::ParametrizationType {
+        crate::approx::ParametrizationType::try_from(
+            crate::ffi::BRepOffsetAPI_ThruSections_par_type(self),
+        )
+        .unwrap()
     }
 
     /// returns the Continuity used in the approximation
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::BRepOffsetAPI_ThruSections_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRepOffsetAPI_ThruSections_continuity(self))
+            .unwrap()
     }
 
     /// if Ruled
@@ -2212,8 +2270,11 @@ impl ThruSections {
     }
 
     /// Returns the status of thrusection operation
-    pub fn get_status(&self) -> i32 {
-        crate::ffi::BRepOffsetAPI_ThruSections_get_status(self)
+    pub fn get_status(&self) -> crate::b_rep_fill::ThruSectionErrorStatus {
+        crate::b_rep_fill::ThruSectionErrorStatus::try_from(
+            crate::ffi::BRepOffsetAPI_ThruSections_get_status(self),
+        )
+        .unwrap()
     }
 
     /// Upcast to BRepBuilderAPI_Command

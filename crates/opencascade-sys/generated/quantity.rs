@@ -1138,8 +1138,8 @@ impl Color {
     }
 
     /// Creates the color from enumeration value.
-    pub fn new_nameofcolor(theName: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Quantity_Color_ctor_nameofcolor(theName)
+    pub fn new_nameofcolor(theName: crate::quantity::NameOfColor) -> cxx::UniquePtr<Self> {
+        crate::ffi::Quantity_Color_ctor_nameofcolor(theName.into())
     }
 
     /// Creates a color according to the definition system theType.
@@ -1148,25 +1148,34 @@ impl Color {
         theC1: f64,
         theC2: f64,
         theC3: f64,
-        theType: i32,
+        theType: crate::quantity::TypeOfColor,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Quantity_Color_ctor_real3_typeofcolor(theC1, theC2, theC3, theType)
+        crate::ffi::Quantity_Color_ctor_real3_typeofcolor(theC1, theC2, theC3, theType.into())
     }
 
     /// Returns the name of the nearest color from the Quantity_NameOfColor enumeration.
-    pub fn name(&self) -> i32 {
-        crate::ffi::Quantity_Color_name(self)
+    pub fn name(&self) -> crate::quantity::NameOfColor {
+        crate::quantity::NameOfColor::try_from(crate::ffi::Quantity_Color_name(self)).unwrap()
     }
 
     /// Updates the color from specified named color.
-    pub fn set_values_nameofcolor(self: std::pin::Pin<&mut Self>, theName: i32) {
-        crate::ffi::Quantity_Color_set_values_nameofcolor(self, theName)
+    pub fn set_values_nameofcolor(
+        self: std::pin::Pin<&mut Self>,
+        theName: crate::quantity::NameOfColor,
+    ) {
+        crate::ffi::Quantity_Color_set_values_nameofcolor(self, theName.into())
     }
 
     /// Returns in theC1, theC2 and theC3 the components of this color
     /// according to the color system definition theType.
-    pub fn values(&self, theC1: &mut f64, theC2: &mut f64, theC3: &mut f64, theType: i32) {
-        crate::ffi::Quantity_Color_values(self, theC1, theC2, theC3, theType)
+    pub fn values(
+        &self,
+        theC1: &mut f64,
+        theC2: &mut f64,
+        theC3: &mut f64,
+        theType: crate::quantity::TypeOfColor,
+    ) {
+        crate::ffi::Quantity_Color_values(self, theC1, theC2, theC3, theType.into())
     }
 
     /// Updates a color according to the mode specified by theType.
@@ -1176,14 +1185,23 @@ impl Color {
         theC1: f64,
         theC2: f64,
         theC3: f64,
-        theType: i32,
+        theType: crate::quantity::TypeOfColor,
     ) {
-        crate::ffi::Quantity_Color_set_values_real3_typeofcolor(self, theC1, theC2, theC3, theType)
+        crate::ffi::Quantity_Color_set_values_real3_typeofcolor(
+            self,
+            theC1,
+            theC2,
+            theC3,
+            theType.into(),
+        )
     }
 
     /// Returns the color from Quantity_NameOfColor enumeration nearest to specified RGB values.
-    pub fn name_real3(theR: f64, theG: f64, theB: f64) -> i32 {
-        crate::ffi::Quantity_Color_name_real3(theR, theG, theB)
+    pub fn name_real3(theR: f64, theG: f64, theB: f64) -> crate::quantity::NameOfColor {
+        crate::quantity::NameOfColor::try_from(crate::ffi::Quantity_Color_name_real3(
+            theR, theG, theB,
+        ))
+        .unwrap()
     }
 
     /// Finds color from predefined names.

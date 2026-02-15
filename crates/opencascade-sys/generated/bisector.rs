@@ -49,12 +49,21 @@ impl Bisec {
         V1: &crate::ffi::gp_Vec2d,
         V2: &crate::ffi::gp_Vec2d,
         Sense: f64,
-        ajointype: i32,
+        ajointype: crate::geom_abs::JoinType,
         Tolerance: f64,
         oncurve: bool,
     ) {
         crate::ffi::Bisector_Bisec_perform(
-            self, Cu1, Cu2, P, V1, V2, Sense, ajointype, Tolerance, oncurve,
+            self,
+            Cu1,
+            Cu2,
+            P,
+            V1,
+            V2,
+            Sense,
+            ajointype.into(),
+            Tolerance,
+            oncurve,
         )
     }
 }

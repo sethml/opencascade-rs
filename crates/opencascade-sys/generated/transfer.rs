@@ -333,19 +333,20 @@ impl Binder {
     /// Returns status, which can be Initial (not yet done), Made (a
     /// result is recorded, not yet shared), Used (it is shared and
     /// cannot be modified)
-    pub fn status(&self) -> i32 {
-        crate::ffi::Transfer_Binder_status(self)
+    pub fn status(&self) -> crate::transfer::StatusResult {
+        crate::transfer::StatusResult::try_from(crate::ffi::Transfer_Binder_status(self)).unwrap()
     }
 
     /// Returns execution status
-    pub fn status_exec(&self) -> i32 {
-        crate::ffi::Transfer_Binder_status_exec(self)
+    pub fn status_exec(&self) -> crate::transfer::StatusExec {
+        crate::transfer::StatusExec::try_from(crate::ffi::Transfer_Binder_status_exec(self))
+            .unwrap()
     }
 
     /// Modifies execution status; called by TransferProcess only
     /// (for StatusError, rather use SetError, below)
-    pub fn set_status_exec(self: std::pin::Pin<&mut Self>, stat: i32) {
-        crate::ffi::Transfer_Binder_set_status_exec(self, stat)
+    pub fn set_status_exec(self: std::pin::Pin<&mut Self>, stat: crate::transfer::StatusExec) {
+        crate::ffi::Transfer_Binder_set_status_exec(self, stat.into())
     }
 
     /// Used to declare an individual transfer as being erroneous

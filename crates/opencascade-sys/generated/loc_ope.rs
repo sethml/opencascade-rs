@@ -52,8 +52,8 @@ impl Gluer {
         crate::ffi::LocOpe_Gluer_ctor_shape2(Sbase, Snew)
     }
 
-    pub fn ope_type(&self) -> i32 {
-        crate::ffi::LocOpe_Gluer_ope_type(self)
+    pub fn ope_type(&self) -> crate::loc_ope::Operation {
+        crate::loc_ope::Operation::try_from(crate::ffi::LocOpe_Gluer_ope_type(self)).unwrap()
     }
 }
 

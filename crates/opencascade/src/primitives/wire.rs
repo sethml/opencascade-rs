@@ -187,7 +187,7 @@ impl Wire {
     #[must_use]
     pub fn offset(&self, distance: f64, join_type: JoinType) -> Self {
         let mut make_offset =
-            b_rep_offset_api::MakeOffset::new_wire_jointype(&self.inner, join_type.to_i32());
+            b_rep_offset_api::MakeOffset::new_wire_jointype(&self.inner, join_type.to_geom_abs());
         make_offset.pin_mut().perform(distance, 0.0);
 
         let offset_shape = make_offset.pin_mut().shape();

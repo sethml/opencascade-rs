@@ -42,15 +42,15 @@ impl Curve {
         crate::ffi::Geom2dAdaptor_Curve_shallow_copy(self)
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom2dAdaptor_Curve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom2dAdaptor_Curve_continuity(self)).unwrap()
     }
 
     /// If necessary,  breaks the  curve in  intervals  of
     /// continuity  <S>.    And  returns   the number   of
     /// intervals.
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Geom2dAdaptor_Curve_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Geom2dAdaptor_Curve_nb_intervals(self, S.into())
     }
 
     /// Returns    a  curve equivalent   of  <me>  between
@@ -80,8 +80,9 @@ impl Curve {
         crate::ffi::Geom2dAdaptor_Curve_dn(self, U, N)
     }
 
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::Geom2dAdaptor_Curve_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::ffi::Geom2dAdaptor_Curve_get_type(self))
+            .unwrap()
     }
 
     pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {

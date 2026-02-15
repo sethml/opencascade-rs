@@ -251,8 +251,9 @@ impl Builder {
     }
 
     /// Inherited from BOPAlgo_BOP: Operation()
-    pub fn operation(&self) -> i32 {
-        crate::ffi::BRepFeat_Builder_inherited_Operation(self)
+    pub fn operation(&self) -> crate::bop_algo::Operation {
+        crate::bop_algo::Operation::try_from(crate::ffi::BRepFeat_Builder_inherited_Operation(self))
+            .unwrap()
     }
 
     /// Inherited from BOPAlgo_Builder: AddArgument()
@@ -281,13 +282,14 @@ impl Builder {
     }
 
     /// Inherited from BOPAlgo_Builder: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BRepFeat_Builder_inherited_SetGlue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BRepFeat_Builder_inherited_SetGlue(self, theGlue.into())
     }
 
     /// Inherited from BOPAlgo_Builder: Glue()
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BRepFeat_Builder_inherited_Glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepFeat_Builder_inherited_Glue(self))
+            .unwrap()
     }
 
     /// Inherited from BOPAlgo_Builder: SetCheckInverted()
@@ -494,8 +496,11 @@ impl Form {
         crate::ffi::BRepFeat_Form_baryc_curve(self)
     }
 
-    pub fn current_status_error(&self) -> i32 {
-        crate::ffi::BRepFeat_Form_current_status_error(self)
+    pub fn current_status_error(&self) -> crate::b_rep_feat::StatusError {
+        crate::b_rep_feat::StatusError::try_from(crate::ffi::BRepFeat_Form_current_status_error(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -581,8 +586,8 @@ impl Gluer {
     }
 
     /// Determine which operation type to use glueing or sliding.
-    pub fn ope_type(&self) -> i32 {
-        crate::ffi::BRepFeat_Gluer_ope_type(self)
+    pub fn ope_type(&self) -> crate::loc_ope::Operation {
+        crate::loc_ope::Operation::try_from(crate::ffi::BRepFeat_Gluer_ope_type(self)).unwrap()
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -647,8 +652,9 @@ impl MakeCylindricalHole {
     }
 
     /// Returns the status after a hole is performed.
-    pub fn status(&self) -> i32 {
-        crate::ffi::BRepFeat_MakeCylindricalHole_status(self)
+    pub fn status(&self) -> crate::b_rep_feat::Status {
+        crate::b_rep_feat::Status::try_from(crate::ffi::BRepFeat_MakeCylindricalHole_status(self))
+            .unwrap()
     }
 
     /// Upcast to BOPAlgo_BOP
@@ -727,13 +733,16 @@ impl MakeCylindricalHole {
     }
 
     /// Inherited from BOPAlgo_BOP: SetOperation()
-    pub fn set_operation(self: std::pin::Pin<&mut Self>, theOperation: i32) {
-        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetOperation(self, theOperation)
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theOperation: crate::bop_algo::Operation) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetOperation(self, theOperation.into())
     }
 
     /// Inherited from BOPAlgo_BOP: Operation()
-    pub fn operation(&self) -> i32 {
-        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Operation(self)
+    pub fn operation(&self) -> crate::bop_algo::Operation {
+        crate::bop_algo::Operation::try_from(
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Operation(self),
+        )
+        .unwrap()
     }
 
     /// Inherited from BOPAlgo_Builder: AddArgument()
@@ -762,13 +771,16 @@ impl MakeCylindricalHole {
     }
 
     /// Inherited from BOPAlgo_Builder: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetGlue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetGlue(self, theGlue.into())
     }
 
     /// Inherited from BOPAlgo_Builder: Glue()
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Glue(self),
+        )
+        .unwrap()
     }
 
     /// Inherited from BOPAlgo_Builder: SetCheckInverted()
@@ -1175,8 +1187,11 @@ impl MakeDPrism {
     }
 
     /// Inherited from BRepFeat_Form: CurrentStatusError()
-    pub fn current_status_error(&self) -> i32 {
-        crate::ffi::BRepFeat_MakeDPrism_inherited_CurrentStatusError(self)
+    pub fn current_status_error(&self) -> crate::b_rep_feat::StatusError {
+        crate::b_rep_feat::StatusError::try_from(
+            crate::ffi::BRepFeat_MakeDPrism_inherited_CurrentStatusError(self),
+        )
+        .unwrap()
     }
 }
 
@@ -1329,8 +1344,11 @@ impl MakeLinearForm {
     }
 
     /// Inherited from BRepFeat_RibSlot: CurrentStatusError()
-    pub fn current_status_error(&self) -> i32 {
-        crate::ffi::BRepFeat_MakeLinearForm_inherited_CurrentStatusError(self)
+    pub fn current_status_error(&self) -> crate::b_rep_feat::StatusError {
+        crate::b_rep_feat::StatusError::try_from(
+            crate::ffi::BRepFeat_MakeLinearForm_inherited_CurrentStatusError(self),
+        )
+        .unwrap()
     }
 }
 
@@ -1522,8 +1540,11 @@ impl MakePipe {
     }
 
     /// Inherited from BRepFeat_Form: CurrentStatusError()
-    pub fn current_status_error(&self) -> i32 {
-        crate::ffi::BRepFeat_MakePipe_inherited_CurrentStatusError(self)
+    pub fn current_status_error(&self) -> crate::b_rep_feat::StatusError {
+        crate::b_rep_feat::StatusError::try_from(
+            crate::ffi::BRepFeat_MakePipe_inherited_CurrentStatusError(self),
+        )
+        .unwrap()
     }
 }
 
@@ -1723,8 +1744,11 @@ impl MakePrism {
     }
 
     /// Inherited from BRepFeat_Form: CurrentStatusError()
-    pub fn current_status_error(&self) -> i32 {
-        crate::ffi::BRepFeat_MakePrism_inherited_CurrentStatusError(self)
+    pub fn current_status_error(&self) -> crate::b_rep_feat::StatusError {
+        crate::b_rep_feat::StatusError::try_from(
+            crate::ffi::BRepFeat_MakePrism_inherited_CurrentStatusError(self),
+        )
+        .unwrap()
     }
 }
 
@@ -1900,8 +1924,11 @@ impl MakeRevol {
     }
 
     /// Inherited from BRepFeat_Form: CurrentStatusError()
-    pub fn current_status_error(&self) -> i32 {
-        crate::ffi::BRepFeat_MakeRevol_inherited_CurrentStatusError(self)
+    pub fn current_status_error(&self) -> crate::b_rep_feat::StatusError {
+        crate::b_rep_feat::StatusError::try_from(
+            crate::ffi::BRepFeat_MakeRevol_inherited_CurrentStatusError(self),
+        )
+        .unwrap()
     }
 }
 
@@ -2054,8 +2081,11 @@ impl MakeRevolutionForm {
     }
 
     /// Inherited from BRepFeat_RibSlot: CurrentStatusError()
-    pub fn current_status_error(&self) -> i32 {
-        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_CurrentStatusError(self)
+    pub fn current_status_error(&self) -> crate::b_rep_feat::StatusError {
+        crate::b_rep_feat::StatusError::try_from(
+            crate::ffi::BRepFeat_MakeRevolutionForm_inherited_CurrentStatusError(self),
+        )
+        .unwrap()
     }
 }
 
@@ -2077,8 +2107,11 @@ impl MakeRevolutionForm {
 pub use crate::ffi::BRepFeat_RibSlot as RibSlot;
 
 impl RibSlot {
-    pub fn current_status_error(&self) -> i32 {
-        crate::ffi::BRepFeat_RibSlot_current_status_error(self)
+    pub fn current_status_error(&self) -> crate::b_rep_feat::StatusError {
+        crate::b_rep_feat::StatusError::try_from(crate::ffi::BRepFeat_RibSlot_current_status_error(
+            self,
+        ))
+        .unwrap()
     }
 
     pub fn int_par(C: &crate::ffi::HandleGeomCurve, P: &crate::ffi::gp_Pnt) -> f64 {

@@ -1088,8 +1088,11 @@ impl MakeEdge {
     /// -   BRepBuilderAPI_EdgeDone if the edge is built, or
     /// -   another value of the BRepBuilderAPI_EdgeError
     /// enumeration indicating the reason of construction failure.
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepBuilderAPI_MakeEdge_error(self)
+    pub fn error(&self) -> crate::b_rep_builder_api::EdgeError {
+        crate::b_rep_builder_api::EdgeError::try_from(crate::ffi::BRepBuilderAPI_MakeEdge_error(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -1372,8 +1375,11 @@ impl MakeEdge2d {
     }
 
     /// Returns the error description when NotDone.
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepBuilderAPI_MakeEdge2d_error(self)
+    pub fn error(&self) -> crate::b_rep_builder_api::EdgeError {
+        crate::b_rep_builder_api::EdgeError::try_from(crate::ffi::BRepBuilderAPI_MakeEdge2d_error(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -1759,8 +1765,11 @@ impl MakeFace {
     /// enumeration indicating why the construction failed, in
     /// particular when the given parameters are outside the
     /// bounds of the surface.
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepBuilderAPI_MakeFace_error(self)
+    pub fn error(&self) -> crate::b_rep_builder_api::FaceError {
+        crate::b_rep_builder_api::FaceError::try_from(crate::ffi::BRepBuilderAPI_MakeFace_error(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -2251,8 +2260,11 @@ impl MakeShell {
     /// enumeration indicating why the construction failed.
     /// This is frequently BRepBuilderAPI_ShellParametersOutOfRange
     /// indicating that the given parameters are outside the bounds of the surface.
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepBuilderAPI_MakeShell_error(self)
+    pub fn error(&self) -> crate::b_rep_builder_api::ShellError {
+        crate::b_rep_builder_api::ShellError::try_from(crate::ffi::BRepBuilderAPI_MakeShell_error(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -2659,8 +2671,11 @@ impl MakeWire {
     /// -   BRepBuilderAPI_WireDone if the wire is built, or
     /// -   another value of the BRepBuilderAPI_WireError
     /// enumeration indicating why the construction failed.
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepBuilderAPI_MakeWire_error(self)
+    pub fn error(&self) -> crate::b_rep_builder_api::WireError {
+        crate::b_rep_builder_api::WireError::try_from(crate::ffi::BRepBuilderAPI_MakeWire_error(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Upcast to BRepBuilderAPI_Command

@@ -155,8 +155,14 @@ impl Reader {
 
     /// Loads a file and returns the read status
     /// Zero for a Model which complies with the Controller
-    pub fn read_file(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
-        crate::ffi::XSControl_Reader_read_file(self, filename)
+    pub fn read_file(
+        self: std::pin::Pin<&mut Self>,
+        filename: &str,
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::XSControl_Reader_read_file(
+            self, filename,
+        ))
+        .unwrap()
     }
 
     /// Returns the model. It can then be consulted (header, product)
@@ -222,8 +228,8 @@ impl Reader {
     /// mode = 0 : per entity, prints messages
     /// mode = 1 : per message, just gives count of entities per check
     /// mode = 2 : also gives entity numbers
-    pub fn print_check_load(&self, failsonly: bool, mode: i32) {
-        crate::ffi::XSControl_Reader_print_check_load(self, failsonly, mode)
+    pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
+        crate::ffi::XSControl_Reader_print_check_load(self, failsonly, mode.into())
     }
 
     /// Displays check results for the
@@ -232,8 +238,8 @@ impl Reader {
     /// true. All messages are displayed if failsonly is
     /// false. mode determines the contents and the order of the
     /// messages according to the terms of the IFSelect_PrintCount enumeration.
-    pub fn print_check_transfer(&self, failsonly: bool, mode: i32) {
-        crate::ffi::XSControl_Reader_print_check_transfer(self, failsonly, mode)
+    pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
+        crate::ffi::XSControl_Reader_print_check_transfer(self, failsonly, mode.into())
     }
 }
 

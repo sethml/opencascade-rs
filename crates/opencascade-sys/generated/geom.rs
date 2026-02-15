@@ -841,8 +841,8 @@ impl BSplineCurve {
     /// than Cd-p where p is the maximum multiplicity of the interior
     /// Knots. In the interior of a knot span the curve is infinitely
     /// continuously differentiable.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_BSplineCurve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_BSplineCurve_continuity(self)).unwrap()
     }
 
     /// For the point of parameter U of this BSpline curve,
@@ -915,8 +915,11 @@ impl BSplineCurve {
     /// A piecewise Bezier with only two knots is a BezierCurve.
     /// else the curve is non uniform.
     /// The tolerance criterion is Epsilon from class Real.
-    pub fn knot_distribution(&self) -> i32 {
-        crate::ffi::Geom_BSplineCurve_knot_distribution(self)
+    pub fn knot_distribution(&self) -> crate::geom_abs::BSplKnotDistribution {
+        crate::geom_abs::BSplKnotDistribution::try_from(
+            crate::ffi::Geom_BSplineCurve_knot_distribution(self),
+        )
+        .unwrap()
     }
 
     /// Returns the start point of the curve.
@@ -1469,8 +1472,8 @@ impl BSplineSurface {
     /// Example :
     /// If the surface is C1 in the V direction and C2 in the U
     /// direction this function returns Shape = C1.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_BSplineSurface_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_BSplineSurface_continuity(self)).unwrap()
     }
 
     /// Returns NonUniform or Uniform or QuasiUniform or
@@ -1486,8 +1489,11 @@ impl BSplineSurface {
     /// multiplicity Degree
     /// otherwise the surface is non uniform in the U direction
     /// The tolerance criterion is Resolution from package gp.
-    pub fn u_knot_distribution(&self) -> i32 {
-        crate::ffi::Geom_BSplineSurface_u_knot_distribution(self)
+    pub fn u_knot_distribution(&self) -> crate::geom_abs::BSplKnotDistribution {
+        crate::geom_abs::BSplKnotDistribution::try_from(
+            crate::ffi::Geom_BSplineSurface_u_knot_distribution(self),
+        )
+        .unwrap()
     }
 
     /// Returns NonUniform or Uniform or QuasiUniform or
@@ -1503,8 +1509,11 @@ impl BSplineSurface {
     /// multiplicity Degree
     /// otherwise the surface is non uniform in the V direction.
     /// The tolerance criterion is Resolution from package gp.
-    pub fn v_knot_distribution(&self) -> i32 {
-        crate::ffi::Geom_BSplineSurface_v_knot_distribution(self)
+    pub fn v_knot_distribution(&self) -> crate::geom_abs::BSplKnotDistribution {
+        crate::geom_abs::BSplKnotDistribution::try_from(
+            crate::ffi::Geom_BSplineSurface_v_knot_distribution(self),
+        )
+        .unwrap()
     }
 
     /// Nu is the order of derivation in the U parametric direction and
@@ -1870,8 +1879,8 @@ impl BezierCurve {
     }
 
     /// a Bezier curve is CN
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_BezierCurve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_BezierCurve_continuity(self)).unwrap()
     }
 
     /// For the point of parameter U of this Bezier curve,
@@ -2181,8 +2190,8 @@ impl BezierSurface {
 
     /// Returns the continuity of the surface CN : the order of
     /// continuity is infinite.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_BezierSurface_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_BezierSurface_continuity(self)).unwrap()
     }
 
     /// Computes the derivative of order Nu in the u
@@ -2503,8 +2512,9 @@ impl BoundedCurve {
     }
 
     /// Inherited from Geom_Curve: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_BoundedCurve_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_BoundedCurve_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom_Curve: IsCN()
@@ -2876,8 +2886,9 @@ impl BoundedSurface {
     }
 
     /// Inherited from Geom_Surface: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_BoundedSurface_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_BoundedSurface_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom_Surface: IsCNu()
@@ -3297,8 +3308,9 @@ impl Circle {
     }
 
     /// Inherited from Geom_Conic: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_Circle_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_Circle_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom_Conic: IsCN()
@@ -3469,8 +3481,8 @@ impl Conic {
     }
 
     /// The continuity of the conic is Cn.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_Conic_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_Conic_continuity(self)).unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3901,8 +3913,9 @@ impl ConicalSurface {
     }
 
     /// Inherited from Geom_ElementarySurface: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_ConicalSurface_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_ConicalSurface_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom_ElementarySurface: IsCNu()
@@ -4081,8 +4094,8 @@ impl Curve {
     /// G1 : tangency continuity all along the Curve,
     /// G2 : curvature continuity all along the Curve,
     /// CN : the order of continuity is infinite.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_Curve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_Curve_continuity(self)).unwrap()
     }
 
     /// The returned vector gives the value of the derivative for the
@@ -4407,8 +4420,11 @@ impl CylindricalSurface {
     }
 
     /// Inherited from Geom_ElementarySurface: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_CylindricalSurface_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_CylindricalSurface_inherited_Continuity(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Inherited from Geom_ElementarySurface: IsCNu()
@@ -4824,8 +4840,9 @@ pub use crate::ffi::Geom_ElementarySurface as ElementarySurface;
 
 impl ElementarySurface {
     /// Returns GeomAbs_CN, the global continuity of any elementary surface.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_ElementarySurface_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_ElementarySurface_continuity(self))
+            .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -5288,8 +5305,9 @@ impl Ellipse {
     }
 
     /// Inherited from Geom_Conic: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_Ellipse_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_Ellipse_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom_Conic: IsCN()
@@ -5825,8 +5843,9 @@ impl Hyperbola {
     }
 
     /// Inherited from Geom_Conic: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_Hyperbola_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_Hyperbola_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom_Conic: IsCN()
@@ -5995,8 +6014,8 @@ impl Line {
     }
 
     /// Returns GeomAbs_CN, which is the global continuity of any line.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_Line_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_Line_continuity(self)).unwrap()
     }
 
     /// The returned vector gives the value of the derivative for the
@@ -6263,8 +6282,8 @@ impl OffsetCurve {
     /// Returns the continuity of the basis curve - 1.
     /// The offset curve must have a unique offset direction defined
     /// at any point.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_OffsetCurve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_OffsetCurve_continuity(self)).unwrap()
     }
 
     /// The returned vector gives the value of the derivative
@@ -6291,8 +6310,11 @@ impl OffsetCurve {
     }
 
     /// Returns continuity of the basis curve.
-    pub fn get_basis_curve_continuity(&self) -> i32 {
-        crate::ffi::Geom_OffsetCurve_get_basis_curve_continuity(self)
+    pub fn get_basis_curve_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_OffsetCurve_get_basis_curve_continuity(
+            self,
+        ))
+        .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -6532,8 +6554,8 @@ impl OffsetSurface {
     /// any point this method gives the continuity of the offset
     /// surface otherwise the effective continuity can be lower than
     /// the continuity of the basis surface - 1.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_OffsetSurface_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_OffsetSurface_continuity(self)).unwrap()
     }
 
     /// Computes the U isoparametric curve.
@@ -6608,8 +6630,11 @@ impl OffsetSurface {
     }
 
     /// Returns continuity of the basis surface.
-    pub fn get_basis_surf_continuity(&self) -> i32 {
-        crate::ffi::Geom_OffsetSurface_get_basis_surf_continuity(self)
+    pub fn get_basis_surf_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_OffsetSurface_get_basis_surf_continuity(
+            self,
+        ))
+        .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -6990,8 +7015,9 @@ impl Parabola {
     }
 
     /// Inherited from Geom_Conic: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_Parabola_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_Parabola_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Geom_Conic: IsCN()
@@ -7292,8 +7318,8 @@ impl Plane {
     }
 
     /// Inherited from Geom_ElementarySurface: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_Plane_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_Plane_inherited_Continuity(self)).unwrap()
     }
 
     /// Inherited from Geom_ElementarySurface: IsCNu()
@@ -7730,8 +7756,11 @@ impl RectangularTrimmedSurface {
     /// C2 : continuity of the second derivative all along the Surface,
     /// C3 : continuity of the third derivative all along the Surface,
     /// CN : the order of continuity is infinite.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_RectangularTrimmedSurface_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_RectangularTrimmedSurface_continuity(
+            self,
+        ))
+        .unwrap()
     }
 
     /// computes the U isoparametric curve.
@@ -8131,8 +8160,11 @@ impl SphericalSurface {
     }
 
     /// Inherited from Geom_ElementarySurface: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_SphericalSurface_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_SphericalSurface_inherited_Continuity(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Inherited from Geom_ElementarySurface: IsCNu()
@@ -8369,8 +8401,8 @@ impl Surface {
     /// Example:
     /// If the surface is C1 in the V parametric direction and C2
     /// in the U parametric direction Shape = C1.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_Surface_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_Surface_continuity(self)).unwrap()
     }
 
     /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point
@@ -8731,8 +8763,11 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// Inherited from Geom_Surface: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(
+            crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Continuity(self),
+        )
+        .unwrap()
     }
 
     /// Inherited from Geom_Surface: Value()
@@ -9057,8 +9092,11 @@ impl SurfaceOfRevolution {
     }
 
     /// Inherited from Geom_Surface: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_SurfaceOfRevolution_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_SurfaceOfRevolution_inherited_Continuity(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Inherited from Geom_Surface: Value()
@@ -9128,8 +9166,8 @@ impl SweptSurface {
     /// G1 : tangency continuity all along the surface,
     /// G2 : curvature continuity all along the surface,
     /// CN : the order of continuity is infinite.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_SweptSurface_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_SweptSurface_continuity(self)).unwrap()
     }
 
     /// Returns the referenced curve of the surface.
@@ -9625,8 +9663,11 @@ impl ToroidalSurface {
     }
 
     /// Inherited from Geom_ElementarySurface: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_ToroidalSurface_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_ToroidalSurface_inherited_Continuity(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Inherited from Geom_ElementarySurface: IsCNu()
@@ -9826,8 +9867,8 @@ impl Transformation {
 
     /// Returns the nature of this transformation as a value
     /// of the gp_TrsfForm enumeration.
-    pub fn form(&self) -> i32 {
-        crate::ffi::Geom_Transformation_form(self)
+    pub fn form(&self) -> crate::gp::TrsfForm {
+        crate::gp::TrsfForm::try_from(crate::ffi::Geom_Transformation_form(self)).unwrap()
     }
 
     /// Raised if the transformation is singular. This means that
@@ -10053,8 +10094,8 @@ impl TrimmedCurve {
     /// C2 : continuity of the second derivative all along the Curve,
     /// C3 : continuity of the third derivative all along the Curve,
     /// CN : the order of continuity is infinite.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Geom_TrimmedCurve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Geom_TrimmedCurve_continuity(self)).unwrap()
     }
 
     /// Returns the end point of <me>. This point is the

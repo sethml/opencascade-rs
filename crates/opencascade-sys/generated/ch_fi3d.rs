@@ -55,10 +55,10 @@ pub use crate::ffi::ChFi3d_Builder as Builder;
 impl Builder {
     pub fn set_continuity(
         self: std::pin::Pin<&mut Self>,
-        InternalContinuity: i32,
+        InternalContinuity: crate::geom_abs::Shape,
         AngularTolerance: f64,
     ) {
-        crate::ffi::ChFi3d_Builder_set_continuity(self, InternalContinuity, AngularTolerance)
+        crate::ffi::ChFi3d_Builder_set_continuity(self, InternalContinuity.into(), AngularTolerance)
     }
 
     /// returns the First vertex V of
@@ -101,8 +101,9 @@ impl Builder {
 
     /// for the stripe IC ,indication on the cause
     /// of  failure WalkingFailure,TwistedSurface,Error, Ok
-    pub fn stripe_status(&self, IC: i32) -> i32 {
-        crate::ffi::ChFi3d_Builder_stripe_status(self, IC)
+    pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
+        crate::ch_fi_ds::ErrorStatus::try_from(crate::ffi::ChFi3d_Builder_stripe_status(self, IC))
+            .unwrap()
     }
 }
 
@@ -127,18 +128,19 @@ impl ChBuilder {
     }
 
     /// set the mode of shamfer
-    pub fn set_mode(self: std::pin::Pin<&mut Self>, theMode: i32) {
-        crate::ffi::ChFi3d_ChBuilder_set_mode(self, theMode)
+    pub fn set_mode(self: std::pin::Pin<&mut Self>, theMode: crate::ch_fi_ds::ChamfMode) {
+        crate::ffi::ChFi3d_ChBuilder_set_mode(self, theMode.into())
     }
 
     /// renvoi la methode des chanfreins utilisee
-    pub fn is_chamfer(&self, IC: i32) -> i32 {
-        crate::ffi::ChFi3d_ChBuilder_is_chamfer(self, IC)
+    pub fn is_chamfer(&self, IC: i32) -> crate::ch_fi_ds::ChamfMethod {
+        crate::ch_fi_ds::ChamfMethod::try_from(crate::ffi::ChFi3d_ChBuilder_is_chamfer(self, IC))
+            .unwrap()
     }
 
     /// returns the mode of chamfer used
-    pub fn mode(&self) -> i32 {
-        crate::ffi::ChFi3d_ChBuilder_mode(self)
+    pub fn mode(&self) -> crate::ch_fi_ds::ChamfMode {
+        crate::ch_fi_ds::ChamfMode::try_from(crate::ffi::ChFi3d_ChBuilder_mode(self)).unwrap()
     }
 
     pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<crate::ffi::HandleChFiDSSecHArray1> {
@@ -173,12 +175,12 @@ impl ChBuilder {
     /// Inherited from ChFi3d_Builder: SetContinuity()
     pub fn set_continuity(
         self: std::pin::Pin<&mut Self>,
-        InternalContinuity: i32,
+        InternalContinuity: crate::geom_abs::Shape,
         AngularTolerance: f64,
     ) {
         crate::ffi::ChFi3d_ChBuilder_inherited_SetContinuity(
             self,
-            InternalContinuity,
+            InternalContinuity.into(),
             AngularTolerance,
         )
     }
@@ -301,8 +303,11 @@ impl ChBuilder {
     }
 
     /// Inherited from ChFi3d_Builder: StripeStatus()
-    pub fn stripe_status(&self, IC: i32) -> i32 {
-        crate::ffi::ChFi3d_ChBuilder_inherited_StripeStatus(self, IC)
+    pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
+        crate::ch_fi_ds::ErrorStatus::try_from(crate::ffi::ChFi3d_ChBuilder_inherited_StripeStatus(
+            self, IC,
+        ))
+        .unwrap()
     }
 
     /// Inherited from ChFi3d_Builder: Reset()
@@ -326,27 +331,28 @@ pub use crate::ffi::ChFi3d_FilBuilder as FilBuilder;
 impl FilBuilder {
     pub fn new_shape_filletshape_real(
         S: &crate::ffi::TopoDS_Shape,
-        FShape: i32,
+        FShape: crate::ch_fi3d::FilletShape,
         Ta: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ChFi3d_FilBuilder_ctor_shape_filletshape_real(S, FShape, Ta)
+        crate::ffi::ChFi3d_FilBuilder_ctor_shape_filletshape_real(S, FShape.into(), Ta)
     }
 
     pub fn new_shape_filletshape(
         S: &crate::ffi::TopoDS_Shape,
-        FShape: i32,
+        FShape: crate::ch_fi3d::FilletShape,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_shape_filletshape_real(S, FShape, 1.0e-2)
+        Self::new_shape_filletshape_real(S, FShape.into(), 1.0e-2)
     }
 
     /// Sets the type of fillet surface.
-    pub fn set_fillet_shape(self: std::pin::Pin<&mut Self>, FShape: i32) {
-        crate::ffi::ChFi3d_FilBuilder_set_fillet_shape(self, FShape)
+    pub fn set_fillet_shape(self: std::pin::Pin<&mut Self>, FShape: crate::ch_fi3d::FilletShape) {
+        crate::ffi::ChFi3d_FilBuilder_set_fillet_shape(self, FShape.into())
     }
 
     /// Returns the type of fillet surface.
-    pub fn get_fillet_shape(&self) -> i32 {
-        crate::ffi::ChFi3d_FilBuilder_get_fillet_shape(self)
+    pub fn get_fillet_shape(&self) -> crate::ch_fi3d::FilletShape {
+        crate::ch_fi3d::FilletShape::try_from(crate::ffi::ChFi3d_FilBuilder_get_fillet_shape(self))
+            .unwrap()
     }
 
     /// Returns the rule of  elementary  evolution of  the
@@ -392,12 +398,12 @@ impl FilBuilder {
     /// Inherited from ChFi3d_Builder: SetContinuity()
     pub fn set_continuity(
         self: std::pin::Pin<&mut Self>,
-        InternalContinuity: i32,
+        InternalContinuity: crate::geom_abs::Shape,
         AngularTolerance: f64,
     ) {
         crate::ffi::ChFi3d_FilBuilder_inherited_SetContinuity(
             self,
-            InternalContinuity,
+            InternalContinuity.into(),
             AngularTolerance,
         )
     }
@@ -520,8 +526,11 @@ impl FilBuilder {
     }
 
     /// Inherited from ChFi3d_Builder: StripeStatus()
-    pub fn stripe_status(&self, IC: i32) -> i32 {
-        crate::ffi::ChFi3d_FilBuilder_inherited_StripeStatus(self, IC)
+    pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
+        crate::ch_fi_ds::ErrorStatus::try_from(
+            crate::ffi::ChFi3d_FilBuilder_inherited_StripeStatus(self, IC),
+        )
+        .unwrap()
     }
 
     /// Inherited from ChFi3d_Builder: Reset()

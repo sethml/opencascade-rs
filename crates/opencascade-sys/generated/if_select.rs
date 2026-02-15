@@ -1349,8 +1349,9 @@ impl Editor {
     }
 
     /// Returns the edit mode of a Value
-    pub fn edit_mode(&self, num: i32) -> i32 {
-        crate::ffi::IFSelect_Editor_edit_mode(self, num)
+    pub fn edit_mode(&self, num: i32) -> crate::if_select::EditValue {
+        crate::if_select::EditValue::try_from(crate::ffi::IFSelect_Editor_edit_mode(self, num))
+            .unwrap()
     }
 
     /// Returns the number (ident) of a Value, from its name, short or
@@ -2439,8 +2440,11 @@ impl ParamEditor {
     }
 
     /// Inherited from IFSelect_Editor: EditMode()
-    pub fn edit_mode(&self, num: i32) -> i32 {
-        crate::ffi::IFSelect_ParamEditor_inherited_EditMode(self, num)
+    pub fn edit_mode(&self, num: i32) -> crate::if_select::EditValue {
+        crate::if_select::EditValue::try_from(crate::ffi::IFSelect_ParamEditor_inherited_EditMode(
+            self, num,
+        ))
+        .unwrap()
     }
 
     /// Inherited from IFSelect_Editor: MaxNameLength()
@@ -5484,8 +5488,14 @@ impl SessionPilot {
     /// either by command x or exit, or by reaching end of file
     /// Return Value follows the rules of Do : RetEnd for normal end,
     /// RetFail if script could not be opened
-    pub fn read_script(self: std::pin::Pin<&mut Self>, file: &str) -> i32 {
-        crate::ffi::IFSelect_SessionPilot_read_script(self, file)
+    pub fn read_script(
+        self: std::pin::Pin<&mut Self>,
+        file: &str,
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_SessionPilot_read_script(
+            self, file,
+        ))
+        .unwrap()
     }
 
     /// Executes the Command, itself (for built-in commands, which
@@ -5495,8 +5505,9 @@ impl SessionPilot {
     /// command unknown or incorrect, RetFail if error on execution
     /// If execution is OK and RecordMode is set, this Command Line is
     /// recorded to the list (see below).
-    pub fn perform(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::IFSelect_SessionPilot_perform(self)
+    pub fn perform(self: std::pin::Pin<&mut Self>) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_SessionPilot_perform(self))
+            .unwrap()
     }
 
     /// Executes the Commands, except that the command name (word 0)
@@ -5507,8 +5518,11 @@ impl SessionPilot {
     pub fn execute_alias(
         self: std::pin::Pin<&mut Self>,
         aliasname: &crate::ffi::TCollection_AsciiString,
-    ) -> i32 {
-        crate::ffi::IFSelect_SessionPilot_execute_alias(self, aliasname)
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_SessionPilot_execute_alias(
+            self, aliasname,
+        ))
+        .unwrap()
     }
 
     /// Sets the Command then tries to execute it. Return value :
@@ -5516,8 +5530,11 @@ impl SessionPilot {
     pub fn execute(
         self: std::pin::Pin<&mut Self>,
         command: &crate::ffi::TCollection_AsciiString,
-    ) -> i32 {
-        crate::ffi::IFSelect_SessionPilot_execute(self, command)
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_SessionPilot_execute(
+            self, command,
+        ))
+        .unwrap()
     }
 
     /// Interprets a string value as an entity number :
@@ -6681,8 +6698,14 @@ impl WorkSession {
     /// Returns a integer status which can be :
     /// RetDone if OK,  RetVoid if no Protocol not defined,
     /// RetError for file not found, RetFail if fail during read
-    pub fn read_file(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
-        crate::ffi::IFSelect_WorkSession_read_file(self, filename)
+    pub fn read_file(
+        self: std::pin::Pin<&mut Self>,
+        filename: &str,
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_WorkSession_read_file(
+            self, filename,
+        ))
+        .unwrap()
     }
 
     /// From a given label in Model, returns the corresponding number
@@ -7060,8 +7083,11 @@ impl WorkSession {
     /// Returns True if OK, False else (i.e. mode = 2 and Remaining
     /// List is either empty or takes all the entities, or mode = 3
     /// and no former computation of remaining data was done)
-    pub fn set_remaining(self: std::pin::Pin<&mut Self>, mode: i32) -> bool {
-        crate::ffi::IFSelect_WorkSession_set_remaining(self, mode)
+    pub fn set_remaining(
+        self: std::pin::Pin<&mut Self>,
+        mode: crate::if_select::RemainMode,
+    ) -> bool {
+        crate::ffi::IFSelect_WorkSession_set_remaining(self, mode.into())
     }
 
     /// Sends the starting Model into one file, without splitting,
@@ -7078,8 +7104,17 @@ impl WorkSession {
     /// Fail if exception during translation is raised
     /// Stop if no disk space or disk, file is write protected
     /// Fills LastRunCheckList
-    pub fn send_all(self: std::pin::Pin<&mut Self>, filename: &str, computegraph: bool) -> i32 {
-        crate::ffi::IFSelect_WorkSession_send_all(self, filename, computegraph)
+    pub fn send_all(
+        self: std::pin::Pin<&mut Self>,
+        filename: &str,
+        computegraph: bool,
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_WorkSession_send_all(
+            self,
+            filename,
+            computegraph,
+        ))
+        .unwrap()
     }
 
     /// Sends a part of the starting Model into one file, without
@@ -7097,8 +7132,14 @@ impl WorkSession {
         filename: &str,
         sel: &crate::ffi::HandleIFSelectSelection,
         computegraph: bool,
-    ) -> i32 {
-        crate::ffi::IFSelect_WorkSession_send_selected(self, filename, sel, computegraph)
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_WorkSession_send_selected(
+            self,
+            filename,
+            sel,
+            computegraph,
+        ))
+        .unwrap()
     }
 
     /// Writes the current Interface Model globally to a File, and
@@ -7106,8 +7147,14 @@ impl WorkSession {
     /// Done OK, Fail file could not be written, Error no norm is selected
     /// Remark  : It is a simple, one-file writing, other operations are
     /// available (such as splitting ...) which calls SendAll
-    pub fn write_file_charptr(self: std::pin::Pin<&mut Self>, filename: &str) -> i32 {
-        crate::ffi::IFSelect_WorkSession_write_file_charptr(self, filename)
+    pub fn write_file_charptr(
+        self: std::pin::Pin<&mut Self>,
+        filename: &str,
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(
+            crate::ffi::IFSelect_WorkSession_write_file_charptr(self, filename),
+        )
+        .unwrap()
     }
 
     /// Writes a sub-part of the current Interface Model to a File,
@@ -7120,10 +7167,13 @@ impl WorkSession {
         self: std::pin::Pin<&mut Self>,
         filename: &str,
         sel: &crate::ffi::HandleIFSelectSelection,
-    ) -> i32 {
-        crate::ffi::IFSelect_WorkSession_write_file_charptr_handleifselectselection(
-            self, filename, sel,
+    ) -> crate::if_select::ReturnStatus {
+        crate::if_select::ReturnStatus::try_from(
+            crate::ffi::IFSelect_WorkSession_write_file_charptr_handleifselectselection(
+                self, filename, sel,
+            ),
         )
+        .unwrap()
     }
 
     /// Returns the <num>th Input Selection of a Selection

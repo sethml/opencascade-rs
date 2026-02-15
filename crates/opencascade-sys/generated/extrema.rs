@@ -224,15 +224,15 @@ impl Curve2dTool {
         crate::ffi::Extrema_Curve2dTool_last_parameter(C)
     }
 
-    pub fn continuity(C: &crate::ffi::Adaptor2d_Curve2d) -> i32 {
-        crate::ffi::Extrema_Curve2dTool_continuity(C)
+    pub fn continuity(C: &crate::ffi::Adaptor2d_Curve2d) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Extrema_Curve2dTool_continuity(C)).unwrap()
     }
 
     /// If necessary,   breaks the curve  in  intervals of
     /// continuity <S>.     And   returns  the  number  of
     /// intervals.
-    pub fn nb_intervals(C: &crate::ffi::Adaptor2d_Curve2d, S: i32) -> i32 {
-        crate::ffi::Extrema_Curve2dTool_nb_intervals(C, S)
+    pub fn nb_intervals(C: &crate::ffi::Adaptor2d_Curve2d, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Extrema_Curve2dTool_nb_intervals(C, S.into())
     }
 
     /// Returns the parameters bounding the intervals of subdivision of curve
@@ -327,8 +327,8 @@ impl Curve2dTool {
     /// Returns  the  type of the   curve  in the  current
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(C: &crate::ffi::Adaptor2d_Curve2d) -> i32 {
-        crate::ffi::Extrema_Curve2dTool_get_type(C)
+    pub fn get_type(C: &crate::ffi::Adaptor2d_Curve2d) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::ffi::Extrema_Curve2dTool_get_type(C)).unwrap()
     }
 
     pub fn line(C: &crate::ffi::Adaptor2d_Curve2d) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
@@ -400,14 +400,17 @@ impl CurveTool {
         crate::ffi::Extrema_CurveTool_last_parameter(C)
     }
 
-    pub fn continuity(C: &crate::ffi::Adaptor3d_Curve) -> i32 {
-        crate::ffi::Extrema_CurveTool_continuity(C)
+    pub fn continuity(C: &crate::ffi::Adaptor3d_Curve) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Extrema_CurveTool_continuity(C)).unwrap()
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
-    pub fn nb_intervals(C: std::pin::Pin<&mut crate::ffi::Adaptor3d_Curve>, S: i32) -> i32 {
-        crate::ffi::Extrema_CurveTool_nb_intervals(C, S)
+    pub fn nb_intervals(
+        C: std::pin::Pin<&mut crate::ffi::Adaptor3d_Curve>,
+        S: crate::geom_abs::Shape,
+    ) -> i32 {
+        crate::ffi::Extrema_CurveTool_nb_intervals(C, S.into())
     }
 
     /// Returns the parameters bounding the intervals of subdivision of curve
@@ -430,8 +433,8 @@ impl CurveTool {
         crate::ffi::Extrema_CurveTool_resolution(C, R3d)
     }
 
-    pub fn get_type(C: &crate::ffi::Adaptor3d_Curve) -> i32 {
-        crate::ffi::Extrema_CurveTool_get_type(C)
+    pub fn get_type(C: &crate::ffi::Adaptor3d_Curve) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::ffi::Extrema_CurveTool_get_type(C)).unwrap()
     }
 
     pub fn value(C: &crate::ffi::Adaptor3d_Curve, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
@@ -2084,9 +2087,16 @@ impl ExtPS {
         TolU: f64,
         TolV: f64,
         F: i32,
-        A: i32,
+        A: crate::extrema::ExtAlgo,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real2_extflag_extalgo(P, S, TolU, TolV, F, A)
+        crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real2_extflag_extalgo(
+            P,
+            S,
+            TolU,
+            TolV,
+            F,
+            A.into(),
+        )
     }
 
     /// It calculates all the distances.
@@ -2107,10 +2117,19 @@ impl ExtPS {
         TolU: f64,
         TolV: f64,
         F: i32,
-        A: i32,
+        A: crate::extrema::ExtAlgo,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_ExtPS_ctor_pnt_surface_real6_extflag_extalgo(
-            P, S, Uinf, Usup, Vinf, Vsup, TolU, TolV, F, A,
+            P,
+            S,
+            Uinf,
+            Usup,
+            Vinf,
+            Vsup,
+            TolU,
+            TolV,
+            F,
+            A.into(),
         )
     }
 
@@ -2118,8 +2137,8 @@ impl ExtPS {
         crate::ffi::Extrema_ExtPS_set_flag(self, F)
     }
 
-    pub fn set_algo(self: std::pin::Pin<&mut Self>, A: i32) {
-        crate::ffi::Extrema_ExtPS_set_algo(self, A)
+    pub fn set_algo(self: std::pin::Pin<&mut Self>, A: crate::extrema::ExtAlgo) {
+        crate::ffi::Extrema_ExtPS_set_algo(self, A.into())
     }
 }
 
@@ -2485,10 +2504,17 @@ impl GenExtPS {
         TolU: f64,
         TolV: f64,
         F: i32,
-        A: i32,
+        A: crate::extrema::ExtAlgo,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real2_extflag_extalgo(
-            P, S, NbU, NbV, TolU, TolV, F, A,
+            P,
+            S,
+            NbU,
+            NbV,
+            TolU,
+            TolV,
+            F,
+            A.into(),
         )
     }
 
@@ -2516,10 +2542,21 @@ impl GenExtPS {
         TolU: f64,
         TolV: f64,
         F: i32,
-        A: i32,
+        A: crate::extrema::ExtAlgo,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_GenExtPS_ctor_pnt_surface_int2_real6_extflag_extalgo(
-            P, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV, F, A,
+            P,
+            S,
+            NbU,
+            NbV,
+            Umin,
+            Usup,
+            Vmin,
+            Vsup,
+            TolU,
+            TolV,
+            F,
+            A.into(),
         )
     }
 
@@ -2527,8 +2564,8 @@ impl GenExtPS {
         crate::ffi::Extrema_GenExtPS_set_flag(self, F)
     }
 
-    pub fn set_algo(self: std::pin::Pin<&mut Self>, A: i32) {
-        crate::ffi::Extrema_GenExtPS_set_algo(self, A)
+    pub fn set_algo(self: std::pin::Pin<&mut Self>, A: crate::extrema::ExtAlgo) {
+        crate::ffi::Extrema_GenExtPS_set_algo(self, A.into())
     }
 }
 
@@ -3998,13 +4035,19 @@ impl POnSurfParams {
     }
 
     /// Sets the element type on which this point is situated.
-    pub fn set_element_type(self: std::pin::Pin<&mut Self>, theElementType: i32) {
-        crate::ffi::Extrema_POnSurfParams_set_element_type(self, theElementType)
+    pub fn set_element_type(
+        self: std::pin::Pin<&mut Self>,
+        theElementType: crate::extrema::ElementType,
+    ) {
+        crate::ffi::Extrema_POnSurfParams_set_element_type(self, theElementType.into())
     }
 
     /// Query the element type on which this point is situated.
-    pub fn get_element_type(&self) -> i32 {
-        crate::ffi::Extrema_POnSurfParams_get_element_type(self)
+    pub fn get_element_type(&self) -> crate::extrema::ElementType {
+        crate::extrema::ElementType::try_from(crate::ffi::Extrema_POnSurfParams_get_element_type(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Upcast to Extrema_POnSurf

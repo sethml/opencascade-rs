@@ -163,8 +163,8 @@ impl EdgeTool {
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
-    pub fn nb_intervals(C: &crate::ffi::BRepAdaptor_Curve, S: i32) -> i32 {
-        crate::ffi::BRepGProp_EdgeTool_nb_intervals(C, S)
+    pub fn nb_intervals(C: &crate::ffi::BRepAdaptor_Curve, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::BRepGProp_EdgeTool_nb_intervals(C, S.into())
     }
 }
 
@@ -223,8 +223,12 @@ impl Face {
     /// If theIsoType is equal to GeomAbs_IsoU, the face is
     /// initialized with either left or right bound. Otherwise -
     /// with either top or bottom one.
-    pub fn load_bool_isotype(self: std::pin::Pin<&mut Self>, IsFirstParam: bool, theIsoType: i32) {
-        crate::ffi::BRepGProp_Face_load(self, IsFirstParam, theIsoType)
+    pub fn load_bool_isotype(
+        self: std::pin::Pin<&mut Self>,
+        IsFirstParam: bool,
+        theIsoType: crate::geom_abs::IsoType,
+    ) {
+        crate::ffi::BRepGProp_Face_load(self, IsFirstParam, theIsoType.into())
     }
 }
 
@@ -335,20 +339,25 @@ impl MeshProps {
         self: std::pin::Pin<&mut Self>,
         theMesh: &crate::ffi::HandlePolyTriangulation,
         theLoc: &crate::ffi::TopLoc_Location,
-        theOri: i32,
+        theOri: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepGProp_MeshProps_perform_handlepolytriangulation_location_orientation(
-            self, theMesh, theLoc, theOri,
+            self,
+            theMesh,
+            theLoc,
+            theOri.into(),
         )
     }
 
     pub fn perform_handlepolytriangulation_orientation(
         self: std::pin::Pin<&mut Self>,
         theMesh: &crate::ffi::HandlePolyTriangulation,
-        theOri: i32,
+        theOri: crate::top_abs::Orientation,
     ) {
         crate::ffi::BRepGProp_MeshProps_perform_handlepolytriangulation_orientation(
-            self, theMesh, theOri,
+            self,
+            theMesh,
+            theOri.into(),
         )
     }
 
@@ -521,8 +530,8 @@ pub use crate::ffi::BRepGProp_TFunction as TFunction;
 impl TFunction {
     /// Setting the type of the value to be returned. This
     /// parameter is directly passed to the UFunction.
-    pub fn set_value_type(self: std::pin::Pin<&mut Self>, aType: i32) {
-        crate::ffi::BRepGProp_TFunction_set_value_type(self, aType)
+    pub fn set_value_type(self: std::pin::Pin<&mut Self>, aType: crate::g_prop::ValueType) {
+        crate::ffi::BRepGProp_TFunction_set_value_type(self, aType.into())
     }
 
     /// Upcast to math_Function
@@ -565,8 +574,8 @@ pub use crate::ffi::BRepGProp_UFunction as UFunction;
 
 impl UFunction {
     /// Setting the type of the value to be returned.
-    pub fn set_value_type(self: std::pin::Pin<&mut Self>, theType: i32) {
-        crate::ffi::BRepGProp_UFunction_set_value_type(self, theType)
+    pub fn set_value_type(self: std::pin::Pin<&mut Self>, theType: crate::g_prop::ValueType) {
+        crate::ffi::BRepGProp_UFunction_set_value_type(self, theType.into())
     }
 
     /// Upcast to math_Function

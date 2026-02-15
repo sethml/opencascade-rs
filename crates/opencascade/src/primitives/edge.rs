@@ -19,18 +19,17 @@ pub enum EdgeType {
 }
 
 impl EdgeType {
-    pub fn from_i32(value: i32) -> Self {
-        match geom_abs::CurveType::try_from(value) {
-            Ok(geom_abs::CurveType::Line) => Self::Line,
-            Ok(geom_abs::CurveType::Circle) => Self::Circle,
-            Ok(geom_abs::CurveType::Ellipse) => Self::Ellipse,
-            Ok(geom_abs::CurveType::Hyperbola) => Self::Hyperbola,
-            Ok(geom_abs::CurveType::Parabola) => Self::Parabola,
-            Ok(geom_abs::CurveType::Beziercurve) => Self::BezierCurve,
-            Ok(geom_abs::CurveType::Bsplinecurve) => Self::BSplineCurve,
-            Ok(geom_abs::CurveType::Offsetcurve) => Self::OffsetCurve,
-            Ok(geom_abs::CurveType::Othercurve) => Self::OtherCurve,
-            Err(repr) => panic!("Unexpected curve type: {repr}"),
+    pub fn from_curve_type(value: geom_abs::CurveType) -> Self {
+        match value {
+            geom_abs::CurveType::Line => Self::Line,
+            geom_abs::CurveType::Circle => Self::Circle,
+            geom_abs::CurveType::Ellipse => Self::Ellipse,
+            geom_abs::CurveType::Hyperbola => Self::Hyperbola,
+            geom_abs::CurveType::Parabola => Self::Parabola,
+            geom_abs::CurveType::Beziercurve => Self::BezierCurve,
+            geom_abs::CurveType::Bsplinecurve => Self::BSplineCurve,
+            geom_abs::CurveType::Offsetcurve => Self::OffsetCurve,
+            geom_abs::CurveType::Othercurve => Self::OtherCurve,
         }
     }
 }
@@ -161,7 +160,7 @@ impl Edge {
     pub fn edge_type(&self) -> EdgeType {
         let curve = b_rep_adaptor::Curve::new_edge(&self.inner);
 
-        EdgeType::from_i32(curve.get_type())
+        EdgeType::from_curve_type(curve.get_type())
     }
 }
 

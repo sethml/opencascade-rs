@@ -443,11 +443,15 @@ impl PointsToBSpline {
         Points: &crate::ffi::TColgp_Array1OfPnt,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2_shape_real(
-            Points, DegMin, DegMax, Continuity, Tol3D,
+            Points,
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 
@@ -460,14 +464,19 @@ impl PointsToBSpline {
     /// BSpline will be lower to Tol3D
     pub fn new_array1ofpnt_parametrizationtype_int2_shape_real(
         Points: &crate::ffi::TColgp_Array1OfPnt,
-        ParType: i32,
+        ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int2_shape_real(
-            Points, ParType, DegMin, DegMax, Continuity, Tol3D,
+            Points,
+            ParType.into(),
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 
@@ -485,11 +494,16 @@ impl PointsToBSpline {
         Parameters: &crate::ffi::TColStd_Array1OfReal,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2_shape_real(
-            Points, Parameters, DegMin, DegMax, Continuity, Tol3D,
+            Points,
+            Parameters,
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 
@@ -503,11 +517,17 @@ impl PointsToBSpline {
         Weight2: f64,
         Weight3: f64,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int_shape_real(
-            Points, Weight1, Weight2, Weight3, DegMax, Continuity, Tol3D,
+            Points,
+            Weight1,
+            Weight2,
+            Weight3,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 
@@ -522,9 +542,9 @@ impl PointsToBSpline {
         Points: &crate::ffi::TColgp_Array1OfPnt,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_array1ofpnt_int2_shape_real(Points, DegMin, DegMax, Continuity, 1.0e-3)
+        Self::new_array1ofpnt_int2_shape_real(Points, DegMin, DegMax, Continuity.into(), 1.0e-3)
     }
 
     /// Approximate  a BSpline  Curve passing  through  an
@@ -536,13 +556,18 @@ impl PointsToBSpline {
     /// BSpline will be lower to Tol3D
     pub fn new_array1ofpnt_parametrizationtype_int2_shape(
         Points: &crate::ffi::TColgp_Array1OfPnt,
-        ParType: i32,
+        ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         Self::new_array1ofpnt_parametrizationtype_int2_shape_real(
-            Points, ParType, DegMin, DegMax, Continuity, 1.0e-3,
+            Points,
+            ParType.into(),
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            1.0e-3,
         )
     }
 
@@ -560,10 +585,15 @@ impl PointsToBSpline {
         Parameters: &crate::ffi::TColStd_Array1OfReal,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         Self::new_array1ofpnt_array1ofreal_int2_shape_real(
-            Points, Parameters, DegMin, DegMax, Continuity, 1.0e-3,
+            Points,
+            Parameters,
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            1.0e-3,
         )
     }
 
@@ -577,10 +607,16 @@ impl PointsToBSpline {
         Weight2: f64,
         Weight3: f64,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         Self::new_array1ofpnt_real3_int_shape_real(
-            Points, Weight1, Weight2, Weight3, DegMax, Continuity, 1.0e-3,
+            Points,
+            Weight1,
+            Weight2,
+            Weight3,
+            DegMax,
+            Continuity.into(),
+            1.0e-3,
         )
     }
 
@@ -596,11 +632,16 @@ impl PointsToBSpline {
         Points: &crate::ffi::TColgp_Array1OfPnt,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) {
         crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_int2_shape_real(
-            self, Points, DegMin, DegMax, Continuity, Tol3D,
+            self,
+            Points,
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 
@@ -614,14 +655,20 @@ impl PointsToBSpline {
     pub fn init_array1ofpnt_parametrizationtype_int2_shape_real(
         self: std::pin::Pin<&mut Self>,
         Points: &crate::ffi::TColgp_Array1OfPnt,
-        ParType: i32,
+        ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) {
         crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_parametrizationtype_int2_shape_real(
-            self, Points, ParType, DegMin, DegMax, Continuity, Tol3D,
+            self,
+            Points,
+            ParType.into(),
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 
@@ -636,11 +683,18 @@ impl PointsToBSpline {
         Weight2: f64,
         Weight3: f64,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) {
         crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_real3_int_shape_real(
-            self, Points, Weight1, Weight2, Weight3, DegMax, Continuity, Tol3D,
+            self,
+            Points,
+            Weight1,
+            Weight2,
+            Weight3,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 }
@@ -712,11 +766,15 @@ impl PointsToBSplineSurface {
         Points: &crate::ffi::TColgp_Array2OfPnt,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_int2_shape_real(
-            Points, DegMin, DegMax, Continuity, Tol3D,
+            Points,
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 
@@ -729,13 +787,13 @@ impl PointsToBSplineSurface {
     /// BSpline will be lower to Tol3D.
     pub fn new_array2ofpnt_parametrizationtype_int2_shape_real(
         Points: &crate::ffi::TColgp_Array2OfPnt,
-        ParType: i32,
+        ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_parametrizationtype_int2_shape_real(Points, ParType, DegMin, DegMax, Continuity, Tol3D)
+        crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_parametrizationtype_int2_shape_real(Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol3D)
     }
 
     /// Approximates  a BSpline  Surface passing  through  an
@@ -748,11 +806,17 @@ impl PointsToBSplineSurface {
         Weight2: f64,
         Weight3: f64,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_real3_int_shape_real(
-            Points, Weight1, Weight2, Weight3, DegMax, Continuity, Tol3D,
+            Points,
+            Weight1,
+            Weight2,
+            Weight3,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 
@@ -780,11 +844,19 @@ impl PointsToBSplineSurface {
         dY: f64,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofreal_real4_int2_shape_real(
-            ZPoints, X0, dX, Y0, dY, DegMin, DegMax, Continuity, Tol3D,
+            ZPoints,
+            X0,
+            dX,
+            Y0,
+            dY,
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 
@@ -799,9 +871,9 @@ impl PointsToBSplineSurface {
         Points: &crate::ffi::TColgp_Array2OfPnt,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_array2ofpnt_int2_shape_real(Points, DegMin, DegMax, Continuity, 1.0e-3)
+        Self::new_array2ofpnt_int2_shape_real(Points, DegMin, DegMax, Continuity.into(), 1.0e-3)
     }
 
     /// Approximates  a BSpline  Surface passing  through  an
@@ -813,13 +885,18 @@ impl PointsToBSplineSurface {
     /// BSpline will be lower to Tol3D.
     pub fn new_array2ofpnt_parametrizationtype_int2_shape(
         Points: &crate::ffi::TColgp_Array2OfPnt,
-        ParType: i32,
+        ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         Self::new_array2ofpnt_parametrizationtype_int2_shape_real(
-            Points, ParType, DegMin, DegMax, Continuity, 1.0e-3,
+            Points,
+            ParType.into(),
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            1.0e-3,
         )
     }
 
@@ -833,10 +910,16 @@ impl PointsToBSplineSurface {
         Weight2: f64,
         Weight3: f64,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         Self::new_array2ofpnt_real3_int_shape_real(
-            Points, Weight1, Weight2, Weight3, DegMax, Continuity, 1.0e-3,
+            Points,
+            Weight1,
+            Weight2,
+            Weight3,
+            DegMax,
+            Continuity.into(),
+            1.0e-3,
         )
     }
 
@@ -864,10 +947,18 @@ impl PointsToBSplineSurface {
         dY: f64,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         Self::new_array2ofreal_real4_int2_shape_real(
-            ZPoints, X0, dX, Y0, dY, DegMin, DegMax, Continuity, 1.0e-3,
+            ZPoints,
+            X0,
+            dX,
+            Y0,
+            dY,
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            1.0e-3,
         )
     }
 
@@ -883,11 +974,16 @@ impl PointsToBSplineSurface {
         Points: &crate::ffi::TColgp_Array2OfPnt,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) {
         crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofpnt_int2_shape_real(
-            self, Points, DegMin, DegMax, Continuity, Tol3D,
+            self,
+            Points,
+            DegMin,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 
@@ -899,10 +995,15 @@ impl PointsToBSplineSurface {
     pub fn interpolate_array2ofpnt_parametrizationtype_bool(
         self: std::pin::Pin<&mut Self>,
         Points: &crate::ffi::TColgp_Array2OfPnt,
-        ParType: i32,
+        ParType: crate::approx::ParametrizationType,
         thePeriodic: bool,
     ) {
-        crate::ffi::GeomAPI_PointsToBSplineSurface_interpolate(self, Points, ParType, thePeriodic)
+        crate::ffi::GeomAPI_PointsToBSplineSurface_interpolate(
+            self,
+            Points,
+            ParType.into(),
+            thePeriodic,
+        )
     }
 
     /// Approximates  a BSpline Surface passing  through  an
@@ -915,14 +1016,14 @@ impl PointsToBSplineSurface {
     pub fn init_array2ofpnt_parametrizationtype_int2_shape_real_bool(
         self: std::pin::Pin<&mut Self>,
         Points: &crate::ffi::TColgp_Array2OfPnt,
-        ParType: i32,
+        ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
         thePeriodic: bool,
     ) {
-        crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofpnt_parametrizationtype_int2_shape_real_bool(self, Points, ParType, DegMin, DegMax, Continuity, Tol3D, thePeriodic)
+        crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofpnt_parametrizationtype_int2_shape_real_bool(self, Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol3D, thePeriodic)
     }
 
     /// Approximates  a BSpline Surface passing  through  an
@@ -936,11 +1037,18 @@ impl PointsToBSplineSurface {
         Weight2: f64,
         Weight3: f64,
         DegMax: i32,
-        Continuity: i32,
+        Continuity: crate::geom_abs::Shape,
         Tol3D: f64,
     ) {
         crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofpnt_real3_int_shape_real(
-            self, Points, Weight1, Weight2, Weight3, DegMax, Continuity, Tol3D,
+            self,
+            Points,
+            Weight1,
+            Weight2,
+            Weight3,
+            DegMax,
+            Continuity.into(),
+            Tol3D,
         )
     }
 }
@@ -1017,9 +1125,13 @@ impl ProjectPointOnSurf {
     pub fn new_pnt_handlegeomsurface_extalgo(
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
-        Algo: i32,
+        Algo: crate::extrema::ExtAlgo,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlegeomsurface_extalgo(P, Surface, Algo)
+        crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlegeomsurface_extalgo(
+            P,
+            Surface,
+            Algo.into(),
+        )
     }
 
     /// Create the projection  of a point <P> on a surface
@@ -1031,10 +1143,13 @@ impl ProjectPointOnSurf {
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Tolerance: f64,
-        Algo: i32,
+        Algo: crate::extrema::ExtAlgo,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlegeomsurface_real_extalgo(
-            P, Surface, Tolerance, Algo,
+            P,
+            Surface,
+            Tolerance,
+            Algo.into(),
         )
     }
 
@@ -1046,10 +1161,17 @@ impl ProjectPointOnSurf {
         Vmin: f64,
         Vsup: f64,
         Tolerance: f64,
-        Algo: i32,
+        Algo: crate::extrema::ExtAlgo,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlegeomsurface_real5_extalgo(
-            P, Surface, Umin, Usup, Vmin, Vsup, Tolerance, Algo,
+            P,
+            Surface,
+            Umin,
+            Usup,
+            Vmin,
+            Vsup,
+            Tolerance,
+            Algo.into(),
         )
     }
 
@@ -1062,10 +1184,16 @@ impl ProjectPointOnSurf {
         Usup: f64,
         Vmin: f64,
         Vsup: f64,
-        Algo: i32,
+        Algo: crate::extrema::ExtAlgo,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_ProjectPointOnSurf_ctor_pnt_handlegeomsurface_real4_extalgo(
-            P, Surface, Umin, Usup, Vmin, Vsup, Algo,
+            P,
+            Surface,
+            Umin,
+            Usup,
+            Vmin,
+            Vsup,
+            Algo.into(),
         )
     }
 
@@ -1074,10 +1202,14 @@ impl ProjectPointOnSurf {
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Tolerance: f64,
-        Algo: i32,
+        Algo: crate::extrema::ExtAlgo,
     ) {
         crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_real_extalgo(
-            self, P, Surface, Tolerance, Algo,
+            self,
+            P,
+            Surface,
+            Tolerance,
+            Algo.into(),
         )
     }
 
@@ -1088,10 +1220,13 @@ impl ProjectPointOnSurf {
         self: std::pin::Pin<&mut Self>,
         P: &crate::ffi::gp_Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
-        Algo: i32,
+        Algo: crate::extrema::ExtAlgo,
     ) {
         crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_extalgo(
-            self, P, Surface, Algo,
+            self,
+            P,
+            Surface,
+            Algo.into(),
         )
     }
 
@@ -1104,10 +1239,18 @@ impl ProjectPointOnSurf {
         Vmin: f64,
         Vsup: f64,
         Tolerance: f64,
-        Algo: i32,
+        Algo: crate::extrema::ExtAlgo,
     ) {
         crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_real5_extalgo(
-            self, P, Surface, Umin, Usup, Vmin, Vsup, Tolerance, Algo,
+            self,
+            P,
+            Surface,
+            Umin,
+            Usup,
+            Vmin,
+            Vsup,
+            Tolerance,
+            Algo.into(),
         )
     }
 
@@ -1122,10 +1265,17 @@ impl ProjectPointOnSurf {
         Usup: f64,
         Vmin: f64,
         Vsup: f64,
-        Algo: i32,
+        Algo: crate::extrema::ExtAlgo,
     ) {
         crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_real4_extalgo(
-            self, P, Surface, Umin, Usup, Vmin, Vsup, Algo,
+            self,
+            P,
+            Surface,
+            Umin,
+            Usup,
+            Vmin,
+            Vsup,
+            Algo.into(),
         )
     }
 
@@ -1137,10 +1287,17 @@ impl ProjectPointOnSurf {
         Vmin: f64,
         Vsup: f64,
         Tolerance: f64,
-        Algo: i32,
+        Algo: crate::extrema::ExtAlgo,
     ) {
         crate::ffi::GeomAPI_ProjectPointOnSurf_init_handlegeomsurface_real5_extalgo(
-            self, Surface, Umin, Usup, Vmin, Vsup, Tolerance, Algo,
+            self,
+            Surface,
+            Umin,
+            Usup,
+            Vmin,
+            Vsup,
+            Tolerance,
+            Algo.into(),
         )
     }
 
@@ -1151,17 +1308,23 @@ impl ProjectPointOnSurf {
         Usup: f64,
         Vmin: f64,
         Vsup: f64,
-        Algo: i32,
+        Algo: crate::extrema::ExtAlgo,
     ) {
         crate::ffi::GeomAPI_ProjectPointOnSurf_init_handlegeomsurface_real4_extalgo(
-            self, Surface, Umin, Usup, Vmin, Vsup, Algo,
+            self,
+            Surface,
+            Umin,
+            Usup,
+            Vmin,
+            Vsup,
+            Algo.into(),
         )
     }
 
     /// Sets the Extrema search algorithm - Grad or Tree. <br>
     /// By default the Extrema is initialized with Grad algorithm.
-    pub fn set_extrema_algo(self: std::pin::Pin<&mut Self>, theAlgo: i32) {
-        crate::ffi::GeomAPI_ProjectPointOnSurf_set_extrema_algo(self, theAlgo)
+    pub fn set_extrema_algo(self: std::pin::Pin<&mut Self>, theAlgo: crate::extrema::ExtAlgo) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf_set_extrema_algo(self, theAlgo.into())
     }
 
     /// Sets the Extrema search flag - MIN or MAX or MINMAX.<br>

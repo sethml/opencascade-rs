@@ -22,8 +22,12 @@ impl Image {
     /// Deletes in the images the shape of type <ShapeType>
     /// which are not in <S>.
     /// Warning:  Compact() must be call before.
-    pub fn filter(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape, ShapeType: i32) {
-        crate::ffi::BRepAlgo_Image_filter(self, S, ShapeType)
+    pub fn filter(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+        ShapeType: crate::top_abs::ShapeEnum,
+    ) {
+        crate::ffi::BRepAlgo_Image_filter(self, S, ShapeType.into())
     }
 }
 
@@ -55,7 +59,7 @@ impl NormalProjection {
         self: std::pin::Pin<&mut Self>,
         Tol3D: f64,
         Tol2D: f64,
-        InternalContinuity: i32,
+        InternalContinuity: crate::geom_abs::Shape,
         MaxDegree: i32,
         MaxSeg: i32,
     ) {
@@ -63,7 +67,7 @@ impl NormalProjection {
             self,
             Tol3D,
             Tol2D,
-            InternalContinuity,
+            InternalContinuity.into(),
             MaxDegree,
             MaxSeg,
         )

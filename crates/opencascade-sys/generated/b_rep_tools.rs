@@ -56,8 +56,8 @@ impl CopyModification {
         theNewEdge: &crate::ffi::TopoDS_Edge,
         theNewFace1: &crate::ffi::TopoDS_Face,
         theNewFace2: &crate::ffi::TopoDS_Face,
-    ) -> i32 {
-        crate::ffi::BRepTools_CopyModification_continuity(
+    ) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_CopyModification_continuity(
             self,
             theEdge,
             theFace1,
@@ -65,7 +65,8 @@ impl CopyModification {
             theNewEdge,
             theNewFace1,
             theNewFace2,
-        )
+        ))
+        .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -111,8 +112,11 @@ impl GTrsfModification {
         NewE: &crate::ffi::TopoDS_Edge,
         NewF1: &crate::ffi::TopoDS_Face,
         NewF2: &crate::ffi::TopoDS_Face,
-    ) -> i32 {
-        crate::ffi::BRepTools_GTrsfModification_continuity(self, E, F1, F2, NewE, NewF1, NewF2)
+    ) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_GTrsfModification_continuity(
+            self, E, F1, F2, NewE, NewF1, NewF2,
+        ))
+        .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -261,8 +265,11 @@ impl Modification {
         NewE: &crate::ffi::TopoDS_Edge,
         NewF1: &crate::ffi::TopoDS_Face,
         NewF2: &crate::ffi::TopoDS_Face,
-    ) -> i32 {
-        crate::ffi::BRepTools_Modification_continuity(self, E, F1, F2, NewE, NewF1, NewF2)
+    ) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_Modification_continuity(
+            self, E, F1, F2, NewE, NewF1, NewF2,
+        ))
+        .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -347,10 +354,11 @@ impl NurbsConvertModification {
         NewE: &crate::ffi::TopoDS_Edge,
         NewF1: &crate::ffi::TopoDS_Face,
         NewF2: &crate::ffi::TopoDS_Face,
-    ) -> i32 {
-        crate::ffi::BRepTools_NurbsConvertModification_continuity(
+    ) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_NurbsConvertModification_continuity(
             self, E, F1, F2, NewE, NewF1, NewF2,
-        )
+        ))
+        .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -487,9 +495,9 @@ impl ReShape {
     pub fn apply(
         self: std::pin::Pin<&mut Self>,
         theShape: &crate::ffi::TopoDS_Shape,
-        theUntil: i32,
+        theUntil: crate::top_abs::ShapeEnum,
     ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepTools_ReShape_apply(self, theShape, theUntil)
+        crate::ffi::BRepTools_ReShape_apply(self, theShape, theUntil.into())
     }
 
     pub fn copy_vertex_vertex_real(
@@ -602,10 +610,10 @@ impl ShapeSet {
 
     pub fn check(
         self: std::pin::Pin<&mut Self>,
-        T: i32,
+        T: crate::top_abs::ShapeEnum,
         S: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
     ) {
-        crate::ffi::BRepTools_ShapeSet_check(self, T, S)
+        crate::ffi::BRepTools_ShapeSet_check(self, T.into(), S)
     }
 
     /// Upcast to TopTools_ShapeSet
@@ -718,8 +726,11 @@ impl TrsfModification {
         NewE: &crate::ffi::TopoDS_Edge,
         NewF1: &crate::ffi::TopoDS_Face,
         NewF2: &crate::ffi::TopoDS_Face,
-    ) -> i32 {
-        crate::ffi::BRepTools_TrsfModification_continuity(self, E, F1, F2, NewE, NewF1, NewF2)
+    ) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_TrsfModification_continuity(
+            self, E, F1, F2, NewE, NewF1, NewF2,
+        ))
+        .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -778,7 +789,8 @@ impl WireExplorer {
     }
 
     /// Returns an Orientation for the current edge.
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::BRepTools_WireExplorer_orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::BRepTools_WireExplorer_orientation(self))
+            .unwrap()
     }
 }

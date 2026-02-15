@@ -18,8 +18,8 @@ pub use crate::ffi::{
 pub use crate::ffi::ShapeAnalysis_BoxBndTreeSelector as BoxBndTreeSelector;
 
 impl BoxBndTreeSelector {
-    pub fn last_check_status(&self, theStatus: i32) -> bool {
-        crate::ffi::ShapeAnalysis_BoxBndTreeSelector_last_check_status(self, theStatus)
+    pub fn last_check_status(&self, theStatus: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_BoxBndTreeSelector_last_check_status(self, theStatus.into())
     }
 }
 
@@ -78,36 +78,36 @@ impl CheckSmallFace {
     /// ShapeExtend_FAIL2: cannot fix orientation of wires
     /// ShapeExtend_FAIL3: cannot add missing seam
     /// ShapeExtend_FAIL4: cannot remove small area wire
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status(self, status.into())
     }
 
-    pub fn status_spot(&self, status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_spot(self, status)
+    pub fn status_spot(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_spot(self, status.into())
     }
 
-    pub fn status_strip(&self, status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_strip(self, status)
+    pub fn status_strip(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_strip(self, status.into())
     }
 
-    pub fn status_pin(&self, status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin(self, status)
+    pub fn status_pin(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin(self, status.into())
     }
 
-    pub fn status_twisted(&self, status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_twisted(self, status)
+    pub fn status_twisted(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_twisted(self, status.into())
     }
 
-    pub fn status_split_vert(&self, status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_split_vert(self, status)
+    pub fn status_split_vert(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_split_vert(self, status.into())
     }
 
-    pub fn status_pin_face(&self, status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin_face(self, status)
+    pub fn status_pin_face(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin_face(self, status.into())
     }
 
-    pub fn status_pin_edges(&self, status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin_edges(self, status)
+    pub fn status_pin_edges(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin_edges(self, status.into())
     }
 }
 
@@ -202,8 +202,8 @@ impl Edge {
     }
 
     /// Returns the status (in the form of True/False) of last Check
-    pub fn status(&self, status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Edge_status(self, status)
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Edge_status(self, status.into())
     }
 }
 
@@ -801,9 +801,9 @@ impl ShapeTolerance {
         self: std::pin::Pin<&mut Self>,
         shape: &crate::ffi::TopoDS_Shape,
         mode: i32,
-        type_: i32,
+        type_: crate::top_abs::ShapeEnum,
     ) -> f64 {
-        crate::ffi::ShapeAnalysis_ShapeTolerance_tolerance(self, shape, mode, type_)
+        crate::ffi::ShapeAnalysis_ShapeTolerance_tolerance(self, shape, mode, type_.into())
     }
 
     /// Determines which shapes have a tolerance over the given value
@@ -812,9 +812,9 @@ impl ShapeTolerance {
         &self,
         shape: &crate::ffi::TopoDS_Shape,
         value: f64,
-        type_: i32,
+        type_: crate::top_abs::ShapeEnum,
     ) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
-        crate::ffi::ShapeAnalysis_ShapeTolerance_over_tolerance(self, shape, value, type_)
+        crate::ffi::ShapeAnalysis_ShapeTolerance_over_tolerance(self, shape, value, type_.into())
     }
 
     /// Determines which shapes have a tolerance within a given interval
@@ -824,9 +824,15 @@ impl ShapeTolerance {
         shape: &crate::ffi::TopoDS_Shape,
         valmin: f64,
         valmax: f64,
-        type_: i32,
+        type_: crate::top_abs::ShapeEnum,
     ) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
-        crate::ffi::ShapeAnalysis_ShapeTolerance_in_tolerance(self, shape, valmin, valmax, type_)
+        crate::ffi::ShapeAnalysis_ShapeTolerance_in_tolerance(
+            self,
+            shape,
+            valmin,
+            valmax,
+            type_.into(),
+        )
     }
 
     /// Adds data on new Shape to compute Cumulated Tolerance
@@ -834,9 +840,9 @@ impl ShapeTolerance {
     pub fn add_tolerance(
         self: std::pin::Pin<&mut Self>,
         shape: &crate::ffi::TopoDS_Shape,
-        type_: i32,
+        type_: crate::top_abs::ShapeEnum,
     ) {
-        crate::ffi::ShapeAnalysis_ShapeTolerance_add_tolerance(self, shape, type_)
+        crate::ffi::ShapeAnalysis_ShapeTolerance_add_tolerance(self, shape, type_.into())
     }
 }
 
@@ -1225,57 +1231,57 @@ impl Wire {
         crate::ffi::ShapeAnalysis_Wire_ctor_wire_face_real(wire, face, precision)
     }
 
-    pub fn status_order(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_order(self, Status)
+    pub fn status_order(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_order(self, Status.into())
     }
 
-    pub fn status_connected(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_connected(self, Status)
+    pub fn status_connected(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_connected(self, Status.into())
     }
 
-    pub fn status_edge_curves(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_edge_curves(self, Status)
+    pub fn status_edge_curves(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_edge_curves(self, Status.into())
     }
 
-    pub fn status_degenerated(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_degenerated(self, Status)
+    pub fn status_degenerated(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_degenerated(self, Status.into())
     }
 
-    pub fn status_closed(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_closed(self, Status)
+    pub fn status_closed(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_closed(self, Status.into())
     }
 
-    pub fn status_small(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_small(self, Status)
+    pub fn status_small(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_small(self, Status.into())
     }
 
-    pub fn status_self_intersection(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_self_intersection(self, Status)
+    pub fn status_self_intersection(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_self_intersection(self, Status.into())
     }
 
-    pub fn status_lacking(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_lacking(self, Status)
+    pub fn status_lacking(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_lacking(self, Status.into())
     }
 
-    pub fn status_gaps3d(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_gaps3d(self, Status)
+    pub fn status_gaps3d(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_gaps3d(self, Status.into())
     }
 
-    pub fn status_gaps2d(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_gaps2d(self, Status)
+    pub fn status_gaps2d(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_gaps2d(self, Status.into())
     }
 
-    pub fn status_curve_gaps(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_curve_gaps(self, Status)
+    pub fn status_curve_gaps(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_curve_gaps(self, Status.into())
     }
 
-    pub fn status_loop(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_loop(self, Status)
+    pub fn status_loop(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_status_loop(self, Status.into())
     }
 
     /// Querying the status of the LAST performed 'Advanced' checking procedure
-    pub fn last_check_status(&self, Status: i32) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_last_check_status(self, Status)
+    pub fn last_check_status(&self, Status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeAnalysis_Wire_last_check_status(self, Status.into())
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

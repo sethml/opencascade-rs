@@ -31,14 +31,14 @@ impl BSpFunc {
         crate::ffi::Law_BSpFunc_ctor_handlelawbspline_real2(C, First, Last)
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Law_BSpFunc_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Law_BSpFunc_continuity(self)).unwrap()
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Law_BSpFunc_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Law_BSpFunc_nb_intervals(self, S.into())
     }
 
     /// Returns a  law equivalent of  <me>  between
@@ -244,8 +244,8 @@ impl BSpline {
     /// than Cd-p where p is the maximum multiplicity of the interior
     /// Knots. In the interior of a knot span the curve is infinitely
     /// continuously differentiable.
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Law_BSpline_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Law_BSpline_continuity(self)).unwrap()
     }
 
     /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
@@ -259,8 +259,11 @@ impl BSpline {
     /// A piecewise Bezier with only two knots is a BezierCurve.
     /// else the curve is non uniform.
     /// The tolerance criterion is Epsilon from class Real.
-    pub fn knot_distribution(&self) -> i32 {
-        crate::ffi::Law_BSpline_knot_distribution(self)
+    pub fn knot_distribution(&self) -> crate::geom_abs::BSplKnotDistribution {
+        crate::geom_abs::BSplKnotDistribution::try_from(crate::ffi::Law_BSpline_knot_distribution(
+            self,
+        ))
+        .unwrap()
     }
 
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
@@ -361,14 +364,14 @@ impl Composite {
         crate::ffi::Law_Composite_ctor_real3(First, Last, Tol)
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Law_Composite_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Law_Composite_continuity(self)).unwrap()
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Law_Composite_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Law_Composite_nb_intervals(self, S.into())
     }
 
     /// Returns a  law equivalent of  <me>  between
@@ -440,13 +443,13 @@ impl Constant {
     }
 
     /// Returns GeomAbs_CN
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Law_Constant_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Law_Constant_continuity(self)).unwrap()
     }
 
     /// Returns  1
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Law_Constant_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Law_Constant_nb_intervals(self, S.into())
     }
 
     pub fn trim(
@@ -505,14 +508,14 @@ impl HandleLawConstant {
 pub use crate::ffi::Law_Function as Function;
 
 impl Function {
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Law_Function_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Law_Function_continuity(self)).unwrap()
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Law_Function_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Law_Function_nb_intervals(self, S.into())
     }
 
     /// Returns a  law equivalent of  <me>  between
@@ -594,13 +597,14 @@ impl Interpol {
     }
 
     /// Inherited from Law_BSpFunc: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Law_Interpol_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Law_Interpol_inherited_Continuity(self))
+            .unwrap()
     }
 
     /// Inherited from Law_BSpFunc: NbIntervals()
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Law_Interpol_inherited_NbIntervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Law_Interpol_inherited_NbIntervals(self, S.into())
     }
 
     /// Inherited from Law_BSpFunc: Value()
@@ -733,13 +737,13 @@ impl Linear {
     }
 
     /// Returns GeomAbs_CN
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Law_Linear_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Law_Linear_continuity(self)).unwrap()
     }
 
     /// Returns  1
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Law_Linear_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Law_Linear_nb_intervals(self, S.into())
     }
 
     /// Returns a  law equivalent of  <me>  between
@@ -839,13 +843,13 @@ impl S {
     }
 
     /// Inherited from Law_BSpFunc: Continuity()
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Law_S_inherited_Continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Law_S_inherited_Continuity(self)).unwrap()
     }
 
     /// Inherited from Law_BSpFunc: NbIntervals()
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Law_S_inherited_NbIntervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Law_S_inherited_NbIntervals(self, S.into())
     }
 
     /// Inherited from Law_BSpFunc: Value()

@@ -249,8 +249,9 @@ impl Classifier {
     /// Performs classification of the given point regarding to face internals.
     /// @param thePoint Point in parametric space to be classified.
     /// @return TopAbs_IN if point lies within face boundaries and TopAbs_OUT elsewhere.
-    pub fn perform(&self, thePoint: &crate::ffi::gp_Pnt2d) -> i32 {
-        crate::ffi::BRepMesh_Classifier_perform(self, thePoint)
+    pub fn perform(&self, thePoint: &crate::ffi::gp_Pnt2d) -> crate::top_abs::State {
+        crate::top_abs::State::try_from(crate::ffi::BRepMesh_Classifier_perform(self, thePoint))
+            .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -385,8 +386,10 @@ pub use crate::ffi::BRepMesh_Context as Context;
 
 impl Context {
     /// Constructor.
-    pub fn new_meshalgotype(theMeshType: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Context_ctor_meshalgotype(theMeshType)
+    pub fn new_meshalgotype(
+        theMeshType: crate::i_mesh_tools::MeshAlgoType,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepMesh_Context_ctor_meshalgotype(theMeshType.into())
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -915,10 +918,14 @@ impl DelabellaMeshAlgoFactory {
     /// Creates instance of meshing algorithm for the given type of surface.
     pub fn get_algo(
         &self,
-        theSurfaceType: i32,
+        theSurfaceType: crate::geom_abs::SurfaceType,
         theParameters: &crate::ffi::IMeshTools_Parameters,
     ) -> cxx::UniquePtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_algo(self, theSurfaceType, theParameters)
+        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_algo(
+            self,
+            theSurfaceType.into(),
+            theParameters,
+        )
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1064,24 +1071,28 @@ impl Edge {
     pub fn new_int2_degreeoffreedom(
         theFirstNode: i32,
         theLastNode: i32,
-        theMovability: i32,
+        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_Edge_ctor_int2_degreeoffreedom(
             theFirstNode,
             theLastNode,
-            theMovability,
+            theMovability.into(),
         )
     }
 
     /// Returns movability flag of the Link.
-    pub fn movability(&self) -> i32 {
-        crate::ffi::BRepMesh_Edge_movability(self)
+    pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
+        crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Edge_movability(self))
+            .unwrap()
     }
 
     /// Sets movability flag of the Link.
     /// @param theMovability flag to be set.
-    pub fn set_movability(self: std::pin::Pin<&mut Self>, theMovability: i32) {
-        crate::ffi::BRepMesh_Edge_set_movability(self, theMovability)
+    pub fn set_movability(
+        self: std::pin::Pin<&mut Self>,
+        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
+    ) {
+        crate::ffi::BRepMesh_Edge_set_movability(self, theMovability.into())
     }
 
     /// Upcast to BRepMesh_OrientedEdge
@@ -1545,10 +1556,10 @@ impl MeshAlgoFactory {
     /// Creates instance of meshing algorithm for the given type of surface.
     pub fn get_algo(
         &self,
-        theSurfaceType: i32,
+        theSurfaceType: crate::geom_abs::SurfaceType,
         theParameters: &crate::ffi::IMeshTools_Parameters,
     ) -> cxx::UniquePtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        crate::ffi::BRepMesh_MeshAlgoFactory_get_algo(self, theSurfaceType, theParameters)
+        crate::ffi::BRepMesh_MeshAlgoFactory_get_algo(self, theSurfaceType.into(), theParameters)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1659,8 +1670,8 @@ impl ModelBuilder {
     }
 
     /// Inherited from Message_Algorithm: SetStatus()
-    pub fn set_status(self: std::pin::Pin<&mut Self>, theStat: i32) {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_SetStatus(self, theStat)
+    pub fn set_status(self: std::pin::Pin<&mut Self>, theStat: crate::message::Status) {
+        crate::ffi::BRepMesh_ModelBuilder_inherited_SetStatus(self, theStat.into())
     }
 
     /// Inherited from Message_Algorithm: GetStatus()
@@ -1697,20 +1708,24 @@ impl ModelBuilder {
     pub fn send_status_messages(
         &self,
         theFilter: &crate::ffi::Message_ExecStatus,
-        theTraceLevel: i32,
+        theTraceLevel: crate::message::Gravity,
         theMaxCount: i32,
     ) {
         crate::ffi::BRepMesh_ModelBuilder_inherited_SendStatusMessages(
             self,
             theFilter,
-            theTraceLevel,
+            theTraceLevel.into(),
             theMaxCount,
         )
     }
 
     /// Inherited from Message_Algorithm: SendMessages()
-    pub fn send_messages(&self, theTraceLevel: i32, theMaxCount: i32) {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_SendMessages(self, theTraceLevel, theMaxCount)
+    pub fn send_messages(&self, theTraceLevel: crate::message::Gravity, theMaxCount: i32) {
+        crate::ffi::BRepMesh_ModelBuilder_inherited_SendMessages(
+            self,
+            theTraceLevel.into(),
+            theMaxCount,
+        )
     }
 
     /// Inherited from Message_Algorithm: AddStatus()
@@ -1724,17 +1739,17 @@ impl ModelBuilder {
     /// Inherited from Message_Algorithm: GetMessageNumbers()
     pub fn get_message_numbers(
         &self,
-        theStatus: i32,
+        theStatus: crate::message::Status,
     ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessageNumbers(self, theStatus)
+        crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessageNumbers(self, theStatus.into())
     }
 
     /// Inherited from Message_Algorithm: GetMessageStrings()
     pub fn get_message_strings(
         &self,
-        theStatus: i32,
+        theStatus: crate::message::Status,
     ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessageStrings(self, theStatus)
+        crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessageStrings(self, theStatus.into())
     }
 }
 
@@ -2355,13 +2370,17 @@ impl Triangle {
     }
 
     /// Returns movability of the triangle.
-    pub fn movability(&self) -> i32 {
-        crate::ffi::BRepMesh_Triangle_movability(self)
+    pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
+        crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Triangle_movability(self))
+            .unwrap()
     }
 
     /// Sets movability of the triangle.
-    pub fn set_movability(self: std::pin::Pin<&mut Self>, theMovability: i32) {
-        crate::ffi::BRepMesh_Triangle_set_movability(self, theMovability)
+    pub fn set_movability(
+        self: std::pin::Pin<&mut Self>,
+        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
+    ) {
+        crate::ffi::BRepMesh_Triangle_set_movability(self, theMovability.into())
     }
 }
 
@@ -2529,9 +2548,13 @@ impl Vertex {
     pub fn new_xy_int_degreeoffreedom(
         theUV: &crate::ffi::gp_XY,
         theLocation3d: i32,
-        theMovability: i32,
+        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Vertex_ctor_xy_int_degreeoffreedom(theUV, theLocation3d, theMovability)
+        crate::ffi::BRepMesh_Vertex_ctor_xy_int_degreeoffreedom(
+            theUV,
+            theLocation3d,
+            theMovability.into(),
+        )
     }
 
     /// Creates vertex without association with point in 3d space.
@@ -2541,9 +2564,9 @@ impl Vertex {
     pub fn new_real2_degreeoffreedom(
         theU: f64,
         theV: f64,
-        theMovability: i32,
+        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Vertex_ctor_real2_degreeoffreedom(theU, theV, theMovability)
+        crate::ffi::BRepMesh_Vertex_ctor_real2_degreeoffreedom(theU, theV, theMovability.into())
     }
 
     /// Initializes vertex associated with point in 3d space.
@@ -2554,19 +2577,23 @@ impl Vertex {
         self: std::pin::Pin<&mut Self>,
         theUV: &crate::ffi::gp_XY,
         theLocation3d: i32,
-        theMovability: i32,
+        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) {
-        crate::ffi::BRepMesh_Vertex_initialize(self, theUV, theLocation3d, theMovability)
+        crate::ffi::BRepMesh_Vertex_initialize(self, theUV, theLocation3d, theMovability.into())
     }
 
     /// Returns movability of the vertex.
-    pub fn movability(&self) -> i32 {
-        crate::ffi::BRepMesh_Vertex_movability(self)
+    pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
+        crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Vertex_movability(self))
+            .unwrap()
     }
 
     /// Sets movability of the vertex.
-    pub fn set_movability(self: std::pin::Pin<&mut Self>, theMovability: i32) {
-        crate::ffi::BRepMesh_Vertex_set_movability(self, theMovability)
+    pub fn set_movability(
+        self: std::pin::Pin<&mut Self>,
+        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
+    ) {
+        crate::ffi::BRepMesh_Vertex_set_movability(self, theMovability.into())
     }
 }
 

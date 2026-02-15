@@ -30,8 +30,8 @@ impl Datum3D {
     }
 
     /// Return transformation form.
-    pub fn form(&self) -> i32 {
-        crate::ffi::TopLoc_Datum3D_form(self)
+    pub fn form(&self) -> crate::gp::TrsfForm {
+        crate::gp::TrsfForm::try_from(crate::ffi::TopLoc_Datum3D_form(self)).unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

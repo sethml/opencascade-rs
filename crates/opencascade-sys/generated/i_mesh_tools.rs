@@ -150,10 +150,10 @@ impl MeshAlgoFactory {
     /// Creates instance of meshing algorithm for the given type of surface.
     pub fn get_algo(
         &self,
-        theSurfaceType: i32,
+        theSurfaceType: crate::geom_abs::SurfaceType,
         theParameters: &crate::ffi::IMeshTools_Parameters,
     ) -> cxx::UniquePtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        crate::ffi::IMeshTools_MeshAlgoFactory_get_algo(self, theSurfaceType, theParameters)
+        crate::ffi::IMeshTools_MeshAlgoFactory_get_algo(self, theSurfaceType.into(), theParameters)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -236,8 +236,8 @@ impl ModelBuilder {
     }
 
     /// Inherited from Message_Algorithm: SetStatus()
-    pub fn set_status(self: std::pin::Pin<&mut Self>, theStat: i32) {
-        crate::ffi::IMeshTools_ModelBuilder_inherited_SetStatus(self, theStat)
+    pub fn set_status(self: std::pin::Pin<&mut Self>, theStat: crate::message::Status) {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_SetStatus(self, theStat.into())
     }
 
     /// Inherited from Message_Algorithm: GetStatus()
@@ -274,20 +274,24 @@ impl ModelBuilder {
     pub fn send_status_messages(
         &self,
         theFilter: &crate::ffi::Message_ExecStatus,
-        theTraceLevel: i32,
+        theTraceLevel: crate::message::Gravity,
         theMaxCount: i32,
     ) {
         crate::ffi::IMeshTools_ModelBuilder_inherited_SendStatusMessages(
             self,
             theFilter,
-            theTraceLevel,
+            theTraceLevel.into(),
             theMaxCount,
         )
     }
 
     /// Inherited from Message_Algorithm: SendMessages()
-    pub fn send_messages(&self, theTraceLevel: i32, theMaxCount: i32) {
-        crate::ffi::IMeshTools_ModelBuilder_inherited_SendMessages(self, theTraceLevel, theMaxCount)
+    pub fn send_messages(&self, theTraceLevel: crate::message::Gravity, theMaxCount: i32) {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_SendMessages(
+            self,
+            theTraceLevel.into(),
+            theMaxCount,
+        )
     }
 
     /// Inherited from Message_Algorithm: AddStatus()
@@ -301,17 +305,17 @@ impl ModelBuilder {
     /// Inherited from Message_Algorithm: GetMessageNumbers()
     pub fn get_message_numbers(
         &self,
-        theStatus: i32,
+        theStatus: crate::message::Status,
     ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
-        crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessageNumbers(self, theStatus)
+        crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessageNumbers(self, theStatus.into())
     }
 
     /// Inherited from Message_Algorithm: GetMessageStrings()
     pub fn get_message_strings(
         &self,
-        theStatus: i32,
+        theStatus: crate::message::Status,
     ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
-        crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessageStrings(self, theStatus)
+        crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessageStrings(self, theStatus.into())
     }
 }
 

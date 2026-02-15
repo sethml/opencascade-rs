@@ -196,7 +196,8 @@ impl Builder {
         crate::ffi::ChFi2d_Builder_result(self)
     }
 
-    pub fn status(&self) -> i32 {
-        crate::ffi::ChFi2d_Builder_status(self)
+    pub fn status(&self) -> crate::ch_fi2d::ConstructionError {
+        crate::ch_fi2d::ConstructionError::try_from(crate::ffi::ChFi2d_Builder_status(self))
+            .unwrap()
     }
 }

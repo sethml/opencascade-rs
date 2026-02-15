@@ -42,14 +42,14 @@ impl Curve {
         crate::ffi::GeomAdaptor_Curve_shallow_copy(self)
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::GeomAdaptor_Curve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::GeomAdaptor_Curve_continuity(self)).unwrap()
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::GeomAdaptor_Curve_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::GeomAdaptor_Curve_nb_intervals(self, S.into())
     }
 
     /// Returns    a  curve equivalent   of  <me>  between
@@ -81,8 +81,8 @@ impl Curve {
         crate::ffi::GeomAdaptor_Curve_dn(self, U, N)
     }
 
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::GeomAdaptor_Curve_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::ffi::GeomAdaptor_Curve_get_type(self)).unwrap()
     }
 
     pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
@@ -214,24 +214,26 @@ impl Surface {
         crate::ffi::GeomAdaptor_Surface_shallow_copy(self)
     }
 
-    pub fn u_continuity(&self) -> i32 {
-        crate::ffi::GeomAdaptor_Surface_u_continuity(self)
+    pub fn u_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::GeomAdaptor_Surface_u_continuity(self))
+            .unwrap()
     }
 
-    pub fn v_continuity(&self) -> i32 {
-        crate::ffi::GeomAdaptor_Surface_v_continuity(self)
+    pub fn v_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::GeomAdaptor_Surface_v_continuity(self))
+            .unwrap()
     }
 
     /// Returns the number of U intervals for  continuity
     /// <S>. May be one if UContinuity(me) >= <S>
-    pub fn nb_u_intervals(&self, S: i32) -> i32 {
-        crate::ffi::GeomAdaptor_Surface_nb_u_intervals(self, S)
+    pub fn nb_u_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::GeomAdaptor_Surface_nb_u_intervals(self, S.into())
     }
 
     /// Returns the number of V intervals for  continuity
     /// <S>. May be one if VContinuity(me) >= <S>
-    pub fn nb_v_intervals(&self, S: i32) -> i32 {
-        crate::ffi::GeomAdaptor_Surface_nb_v_intervals(self, S)
+    pub fn nb_v_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::GeomAdaptor_Surface_nb_v_intervals(self, S.into())
     }
 
     /// Returns    a  surface trimmed in the U direction
@@ -282,8 +284,9 @@ impl Surface {
     /// Cone,      Sphere,        Torus,    BezierSurface,
     /// BSplineSurface,               SurfaceOfRevolution,
     /// SurfaceOfExtrusion, OtherSurface
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::GeomAdaptor_Surface_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
+        crate::geom_abs::SurfaceType::try_from(crate::ffi::GeomAdaptor_Surface_get_type(self))
+            .unwrap()
     }
 
     pub fn plane(&self) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
@@ -393,25 +396,31 @@ impl SurfaceOfLinearExtrusion {
         crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_shallow_copy(self)
     }
 
-    pub fn u_continuity(&self) -> i32 {
-        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_u_continuity(self)
+    pub fn u_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_u_continuity(self),
+        )
+        .unwrap()
     }
 
     /// Return CN.
-    pub fn v_continuity(&self) -> i32 {
-        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_v_continuity(self)
+    pub fn v_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_v_continuity(self),
+        )
+        .unwrap()
     }
 
     /// Returns the number of U intervals for  continuity
     /// <S>. May be one if UContinuity(me) >= <S>
-    pub fn nb_u_intervals(&self, S: i32) -> i32 {
-        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_nb_u_intervals(self, S)
+    pub fn nb_u_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_nb_u_intervals(self, S.into())
     }
 
     /// Returns the number of V intervals for  continuity
     /// <S>. May be one if VContinuity(me) >= <S>
-    pub fn nb_v_intervals(&self, S: i32) -> i32 {
-        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_nb_v_intervals(self, S)
+    pub fn nb_v_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_nb_v_intervals(self, S.into())
     }
 
     /// Returns    a  surface trimmed in the U direction
@@ -445,8 +454,11 @@ impl SurfaceOfLinearExtrusion {
     /// Cone,      Sphere,        Torus,    BezierSurface,
     /// BSplineSurface,               SurfaceOfRevolution,
     /// SurfaceOfExtrusion, OtherSurface
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
+        crate::geom_abs::SurfaceType::try_from(
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_get_type(self),
+        )
+        .unwrap()
     }
 
     pub fn plane(&self) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
@@ -665,25 +677,31 @@ impl SurfaceOfRevolution {
         crate::ffi::GeomAdaptor_SurfaceOfRevolution_axe_of_revolution(self)
     }
 
-    pub fn u_continuity(&self) -> i32 {
-        crate::ffi::GeomAdaptor_SurfaceOfRevolution_u_continuity(self)
+    pub fn u_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::GeomAdaptor_SurfaceOfRevolution_u_continuity(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Return CN.
-    pub fn v_continuity(&self) -> i32 {
-        crate::ffi::GeomAdaptor_SurfaceOfRevolution_v_continuity(self)
+    pub fn v_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::GeomAdaptor_SurfaceOfRevolution_v_continuity(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Returns the number of U intervals for  continuity
     /// <S>. May be one if UContinuity(me) >= <S>
-    pub fn nb_u_intervals(&self, S: i32) -> i32 {
-        crate::ffi::GeomAdaptor_SurfaceOfRevolution_nb_u_intervals(self, S)
+    pub fn nb_u_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_nb_u_intervals(self, S.into())
     }
 
     /// Returns the number of V intervals for  continuity
     /// <S>. May be one if VContinuity(me) >= <S>
-    pub fn nb_v_intervals(&self, S: i32) -> i32 {
-        crate::ffi::GeomAdaptor_SurfaceOfRevolution_nb_v_intervals(self, S)
+    pub fn nb_v_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_nb_v_intervals(self, S.into())
     }
 
     /// Returns    a  surface trimmed in the U direction
@@ -717,8 +735,11 @@ impl SurfaceOfRevolution {
     /// Cone,      Sphere,        Torus,    BezierSurface,
     /// BSplineSurface,               SurfaceOfRevolution,
     /// SurfaceOfExtrusion, OtherSurface
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::GeomAdaptor_SurfaceOfRevolution_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
+        crate::geom_abs::SurfaceType::try_from(
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_get_type(self),
+        )
+        .unwrap()
     }
 
     pub fn plane(&self) -> cxx::UniquePtr<crate::ffi::gp_Pln> {

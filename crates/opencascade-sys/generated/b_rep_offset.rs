@@ -185,11 +185,14 @@ impl Analyse {
     pub fn edges_vertex_typeofconcavity_listofshape(
         &self,
         theV: &crate::ffi::TopoDS_Vertex,
-        theType: i32,
+        theType: crate::ch_fi_ds::TypeOfConcavity,
         theL: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
     ) {
         crate::ffi::BRepOffset_Analyse_edges_vertex_typeofconcavity_listofshape(
-            self, theV, theType, theL,
+            self,
+            theV,
+            theType.into(),
+            theL,
         )
     }
 
@@ -198,11 +201,14 @@ impl Analyse {
     pub fn edges_face_typeofconcavity_listofshape(
         &self,
         theF: &crate::ffi::TopoDS_Face,
-        theType: i32,
+        theType: crate::ch_fi_ds::TypeOfConcavity,
         theL: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
     ) {
         crate::ffi::BRepOffset_Analyse_edges_face_typeofconcavity_listofshape(
-            self, theF, theType, theL,
+            self,
+            theF,
+            theType.into(),
+            theL,
         )
     }
 
@@ -211,9 +217,13 @@ impl Analyse {
     pub fn explode_listofshape_typeofconcavity(
         &self,
         theL: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
-        theType: i32,
+        theType: crate::ch_fi_ds::TypeOfConcavity,
     ) {
-        crate::ffi::BRepOffset_Analyse_explode_listofshape_typeofconcavity(self, theL, theType)
+        crate::ffi::BRepOffset_Analyse_explode_listofshape_typeofconcavity(
+            self,
+            theL,
+            theType.into(),
+        )
     }
 
     /// Explode in compounds of faces where
@@ -221,11 +231,14 @@ impl Analyse {
     pub fn explode_listofshape_typeofconcavity2(
         &self,
         theL: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
-        theType1: i32,
-        theType2: i32,
+        theType1: crate::ch_fi_ds::TypeOfConcavity,
+        theType2: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         crate::ffi::BRepOffset_Analyse_explode_listofshape_typeofconcavity2(
-            self, theL, theType1, theType2,
+            self,
+            theL,
+            theType1.into(),
+            theType2.into(),
         )
     }
 
@@ -236,10 +249,14 @@ impl Analyse {
         theFace: &crate::ffi::TopoDS_Face,
         theCo: std::pin::Pin<&mut crate::ffi::TopoDS_Compound>,
         theMap: std::pin::Pin<&mut crate::ffi::TopTools_MapOfShape>,
-        theType: i32,
+        theType: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         crate::ffi::BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity(
-            self, theFace, theCo, theMap, theType,
+            self,
+            theFace,
+            theCo,
+            theMap,
+            theType.into(),
         )
     }
 
@@ -250,11 +267,16 @@ impl Analyse {
         theFace: &crate::ffi::TopoDS_Face,
         theCo: std::pin::Pin<&mut crate::ffi::TopoDS_Compound>,
         theMap: std::pin::Pin<&mut crate::ffi::TopTools_MapOfShape>,
-        theType1: i32,
-        theType2: i32,
+        theType1: crate::ch_fi_ds::TypeOfConcavity,
+        theType2: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         crate::ffi::BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity2(
-            self, theFace, theCo, theMap, theType1, theType2,
+            self,
+            theFace,
+            theCo,
+            theMap,
+            theType1.into(),
+            theType2.into(),
         )
     }
 
@@ -279,16 +301,24 @@ impl Interval {
         crate::ffi::BRepOffset_Interval_ctor()
     }
 
-    pub fn new_real2_typeofconcavity(U1: f64, U2: f64, Type: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffset_Interval_ctor_real2_typeofconcavity(U1, U2, Type)
+    pub fn new_real2_typeofconcavity(
+        U1: f64,
+        U2: f64,
+        Type: crate::ch_fi_ds::TypeOfConcavity,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffset_Interval_ctor_real2_typeofconcavity(U1, U2, Type.into())
     }
 
-    pub fn type_typeofconcavity(self: std::pin::Pin<&mut Self>, T: i32) {
-        crate::ffi::BRepOffset_Interval_type_typeofconcavity(self, T)
+    pub fn type_typeofconcavity(
+        self: std::pin::Pin<&mut Self>,
+        T: crate::ch_fi_ds::TypeOfConcavity,
+    ) {
+        crate::ffi::BRepOffset_Interval_type_typeofconcavity(self, T.into())
     }
 
-    pub fn type_(&self) -> i32 {
-        crate::ffi::BRepOffset_Interval_type_(self)
+    pub fn type_(&self) -> crate::ch_fi_ds::TypeOfConcavity {
+        crate::ch_fi_ds::TypeOfConcavity::try_from(crate::ffi::BRepOffset_Interval_type_(self))
+            .unwrap()
     }
 }
 
@@ -319,10 +349,10 @@ impl MakeOffset {
         S: &crate::ffi::TopoDS_Shape,
         Offset: f64,
         Tol: f64,
-        Mode: i32,
+        Mode: crate::b_rep_offset::Mode,
         Intersection: bool,
         SelfInter: bool,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         Thickening: bool,
         RemoveIntEdges: bool,
         theRange: &crate::ffi::Message_ProgressRange,
@@ -331,10 +361,10 @@ impl MakeOffset {
             S,
             Offset,
             Tol,
-            Mode,
+            Mode.into(),
             Intersection,
             SelfInter,
-            Join,
+            Join.into(),
             Thickening,
             RemoveIntEdges,
             theRange,
@@ -346,10 +376,10 @@ impl MakeOffset {
         S: &crate::ffi::TopoDS_Shape,
         Offset: f64,
         Tol: f64,
-        Mode: i32,
+        Mode: crate::b_rep_offset::Mode,
         Intersection: bool,
         SelfInter: bool,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         Thickening: bool,
         RemoveIntEdges: bool,
     ) {
@@ -358,23 +388,24 @@ impl MakeOffset {
             S,
             Offset,
             Tol,
-            Mode,
+            Mode.into(),
             Intersection,
             SelfInter,
-            Join,
+            Join.into(),
             Thickening,
             RemoveIntEdges,
         )
     }
 
     /// returns information about offset state.
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepOffset_MakeOffset_error(self)
+    pub fn error(&self) -> crate::b_rep_offset::Error {
+        crate::b_rep_offset::Error::try_from(crate::ffi::BRepOffset_MakeOffset_error(self)).unwrap()
     }
 
     /// Returns myJoin.
-    pub fn get_join_type(&self) -> i32 {
-        crate::ffi::BRepOffset_MakeOffset_get_join_type(self)
+    pub fn get_join_type(&self) -> crate::geom_abs::JoinType {
+        crate::geom_abs::JoinType::try_from(crate::ffi::BRepOffset_MakeOffset_get_join_type(self))
+            .unwrap()
     }
 }
 
@@ -414,8 +445,11 @@ impl MakeSimpleOffset {
     }
 
     /// Gets error code.
-    pub fn get_error(&self) -> i32 {
-        crate::ffi::BRepOffset_MakeSimpleOffset_get_error(self)
+    pub fn get_error(&self) -> crate::b_rep_offset::SimpleStatus {
+        crate::b_rep_offset::SimpleStatus::try_from(
+            crate::ffi::BRepOffset_MakeSimpleOffset_get_error(self),
+        )
+        .unwrap()
     }
 
     /// Returns result shape for the given one (if exists).
@@ -455,13 +489,13 @@ impl Offset {
         Face: &crate::ffi::TopoDS_Face,
         Offset: f64,
         OffsetOutside: bool,
-        JoinType: i32,
+        JoinType: crate::geom_abs::JoinType,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepOffset_Offset_ctor_face_real_bool_jointype(
             Face,
             Offset,
             OffsetOutside,
-            JoinType,
+            JoinType.into(),
         )
     }
 
@@ -482,14 +516,14 @@ impl Offset {
         Offset: f64,
         Created: &crate::ffi::TopTools_DataMapOfShapeShape,
         OffsetOutside: bool,
-        JoinType: i32,
+        JoinType: crate::geom_abs::JoinType,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool_jointype(
             Face,
             Offset,
             Created,
             OffsetOutside,
-            JoinType,
+            JoinType.into(),
         )
     }
 
@@ -500,10 +534,16 @@ impl Offset {
         Offset: f64,
         Polynomial: bool,
         Tol: f64,
-        Conti: i32,
+        Conti: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepOffset_Offset_ctor_edge3_real_bool_real_shape(
-            Path, Edge1, Edge2, Offset, Polynomial, Tol, Conti,
+            Path,
+            Edge1,
+            Edge2,
+            Offset,
+            Polynomial,
+            Tol,
+            Conti.into(),
         )
     }
 
@@ -516,10 +556,18 @@ impl Offset {
         LastEdge: &crate::ffi::TopoDS_Edge,
         Polynomial: bool,
         Tol: f64,
-        Conti: i32,
+        Conti: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepOffset_Offset_ctor_edge3_real_edge2_bool_real_shape(
-            Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol, Conti,
+            Path,
+            Edge1,
+            Edge2,
+            Offset,
+            FirstEdge,
+            LastEdge,
+            Polynomial,
+            Tol,
+            Conti.into(),
         )
     }
 
@@ -531,10 +579,15 @@ impl Offset {
         Offset: f64,
         Polynomial: bool,
         Tol: f64,
-        Conti: i32,
+        Conti: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real_shape(
-            Vertex, LEdge, Offset, Polynomial, Tol, Conti,
+            Vertex,
+            LEdge,
+            Offset,
+            Polynomial,
+            Tol,
+            Conti.into(),
         )
     }
 
@@ -543,14 +596,14 @@ impl Offset {
         Face: &crate::ffi::TopoDS_Face,
         Offset: f64,
         OffsetOutside: bool,
-        JoinType: i32,
+        JoinType: crate::geom_abs::JoinType,
     ) {
         crate::ffi::BRepOffset_Offset_init_face_real_bool_jointype(
             self,
             Face,
             Offset,
             OffsetOutside,
-            JoinType,
+            JoinType.into(),
         )
     }
 
@@ -560,7 +613,7 @@ impl Offset {
         Offset: f64,
         Created: &crate::ffi::TopTools_DataMapOfShapeShape,
         OffsetOutside: bool,
-        JoinType: i32,
+        JoinType: crate::geom_abs::JoinType,
     ) {
         crate::ffi::BRepOffset_Offset_init_face_real_datamapofshapeshape_bool_jointype(
             self,
@@ -568,7 +621,7 @@ impl Offset {
             Offset,
             Created,
             OffsetOutside,
-            JoinType,
+            JoinType.into(),
         )
     }
 
@@ -580,10 +633,17 @@ impl Offset {
         Offset: f64,
         Polynomial: bool,
         Tol: f64,
-        Conti: i32,
+        Conti: crate::geom_abs::Shape,
     ) {
         crate::ffi::BRepOffset_Offset_init_edge3_real_bool_real_shape(
-            self, Path, Edge1, Edge2, Offset, Polynomial, Tol, Conti,
+            self,
+            Path,
+            Edge1,
+            Edge2,
+            Offset,
+            Polynomial,
+            Tol,
+            Conti.into(),
         )
     }
 
@@ -597,10 +657,19 @@ impl Offset {
         LastEdge: &crate::ffi::TopoDS_Edge,
         Polynomial: bool,
         Tol: f64,
-        Conti: i32,
+        Conti: crate::geom_abs::Shape,
     ) {
         crate::ffi::BRepOffset_Offset_init_edge3_real_edge2_bool_real_shape(
-            self, Path, Edge1, Edge2, Offset, FirstEdge, LastEdge, Polynomial, Tol, Conti,
+            self,
+            Path,
+            Edge1,
+            Edge2,
+            Offset,
+            FirstEdge,
+            LastEdge,
+            Polynomial,
+            Tol,
+            Conti.into(),
         )
     }
 
@@ -613,10 +682,16 @@ impl Offset {
         Offset: f64,
         Polynomial: bool,
         Tol: f64,
-        Conti: i32,
+        Conti: crate::geom_abs::Shape,
     ) {
         crate::ffi::BRepOffset_Offset_init_vertex_listofshape_real_bool_real_shape(
-            self, Vertex, LEdge, Offset, Polynomial, Tol, Conti,
+            self,
+            Vertex,
+            LEdge,
+            Offset,
+            Polynomial,
+            Tol,
+            Conti.into(),
         )
     }
 
@@ -627,8 +702,8 @@ impl Offset {
         crate::ffi::BRepOffset_Offset_generated(self, Shape)
     }
 
-    pub fn status(&self) -> i32 {
-        crate::ffi::BRepOffset_Offset_status(self)
+    pub fn status(&self) -> crate::b_rep_offset::Status {
+        crate::b_rep_offset::Status::try_from(crate::ffi::BRepOffset_Offset_status(self)).unwrap()
     }
 }
 

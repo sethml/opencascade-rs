@@ -295,14 +295,14 @@ impl Check {
     }
 
     /// Returns the Check Status : OK, Warning or Fail
-    pub fn status(&self) -> i32 {
-        crate::ffi::Interface_Check_status(self)
+    pub fn status(&self) -> crate::interface::CheckStatus {
+        crate::interface::CheckStatus::try_from(crate::ffi::Interface_Check_status(self)).unwrap()
     }
 
     /// Tells if Check Status complies with a given one
     /// (i.e. also status for query)
-    pub fn complies_checkstatus(&self, status: i32) -> bool {
-        crate::ffi::Interface_Check_complies_checkstatus(self, status)
+    pub fn complies_checkstatus(&self, status: crate::interface::CheckStatus) -> bool {
+        crate::ffi::Interface_Check_complies_checkstatus(self, status.into())
     }
 
     /// Tells if a message is brought by a Check, as follows :
@@ -316,10 +316,13 @@ impl Check {
         &self,
         mess: &crate::ffi::HandleTCollectionHAsciiString,
         incl: i32,
-        status: i32,
+        status: crate::interface::CheckStatus,
     ) -> bool {
         crate::ffi::Interface_Check_complies_handletcollectionhasciistring_int_checkstatus(
-            self, mess, incl, status,
+            self,
+            mess,
+            incl,
+            status.into(),
         )
     }
 
@@ -335,9 +338,9 @@ impl Check {
         self: std::pin::Pin<&mut Self>,
         mess: &crate::ffi::HandleTCollectionHAsciiString,
         incl: i32,
-        status: i32,
+        status: crate::interface::CheckStatus,
     ) -> bool {
-        crate::ffi::Interface_Check_remove(self, mess, incl, status)
+        crate::ffi::Interface_Check_remove(self, mess, incl, status.into())
     }
 
     /// Mends messages, according <pref> and <num>
@@ -418,15 +421,16 @@ impl CheckIterator {
     }
 
     /// Returns worst status among : OK, Warning, Fail
-    pub fn status(&self) -> i32 {
-        crate::ffi::Interface_CheckIterator_status(self)
+    pub fn status(&self) -> crate::interface::CheckStatus {
+        crate::interface::CheckStatus::try_from(crate::ffi::Interface_CheckIterator_status(self))
+            .unwrap()
     }
 
     /// Tells if this check list complies with a given status :
     /// OK (i.e. empty),  Warning (at least one Warning, but no Fail),
     /// Fail (at least one), Message (not OK), NoFail, Any
-    pub fn complies(&self, status: i32) -> bool {
-        crate::ffi::Interface_CheckIterator_complies(self, status)
+    pub fn complies(&self, status: crate::interface::CheckStatus) -> bool {
+        crate::ffi::Interface_CheckIterator_complies(self, status.into())
     }
 
     /// Returns a CheckIterator which contains the checks which comply
@@ -434,9 +438,9 @@ impl CheckIterator {
     /// Each check is added completely (no split Warning/Fail)
     pub fn extract_checkstatus(
         &self,
-        status: i32,
+        status: crate::interface::CheckStatus,
     ) -> cxx::UniquePtr<crate::ffi::Interface_CheckIterator> {
-        crate::ffi::Interface_CheckIterator_extract_checkstatus(self, status)
+        crate::ffi::Interface_CheckIterator_extract_checkstatus(self, status.into())
     }
 
     /// Returns a CheckIterator which contains the check which comply
@@ -452,10 +456,13 @@ impl CheckIterator {
         &self,
         mess: &str,
         incl: i32,
-        status: i32,
+        status: crate::interface::CheckStatus,
     ) -> cxx::UniquePtr<crate::ffi::Interface_CheckIterator> {
         crate::ffi::Interface_CheckIterator_extract_charptr_int_checkstatus(
-            self, mess, incl, status,
+            self,
+            mess,
+            incl,
+            status.into(),
         )
     }
 
@@ -467,8 +474,13 @@ impl CheckIterator {
     /// resp. Warning or Check messages. for CheckAny, considers all
     /// other values are ignored (nothing is done)
     /// Returns True if at least one message has been removed, False else
-    pub fn remove(self: std::pin::Pin<&mut Self>, mess: &str, incl: i32, status: i32) -> bool {
-        crate::ffi::Interface_CheckIterator_remove(self, mess, incl, status)
+    pub fn remove(
+        self: std::pin::Pin<&mut Self>,
+        mess: &str,
+        incl: i32,
+        status: crate::interface::CheckStatus,
+    ) -> bool {
+        crate::ffi::Interface_CheckIterator_remove(self, mess, incl, status.into())
     }
 
     /// Returns the list of entities concerned by a Check
@@ -805,8 +817,11 @@ pub use crate::ffi::Interface_InterfaceModel as InterfaceModel;
 
 impl InterfaceModel {
     /// Returns the State of an entity, given its number
-    pub fn entity_state(&self, num: i32) -> i32 {
-        crate::ffi::Interface_InterfaceModel_entity_state(self, num)
+    pub fn entity_state(&self, num: i32) -> crate::interface::DataState {
+        crate::interface::DataState::try_from(crate::ffi::Interface_InterfaceModel_entity_state(
+            self, num,
+        ))
+        .unwrap()
     }
 
     /// Returns a New Empty Model, same type as <me> (whatever its

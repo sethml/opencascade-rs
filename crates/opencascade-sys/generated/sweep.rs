@@ -33,12 +33,18 @@ impl NumShape {
     /// other fields have no meanning.
     pub fn new_int_shapeenum_bool3(
         Index: i32,
-        Type: i32,
+        Type: crate::top_abs::ShapeEnum,
         Closed: bool,
         BegInf: bool,
         EndInf: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool3(Index, Type, Closed, BegInf, EndInf)
+        crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool3(
+            Index,
+            Type.into(),
+            Closed,
+            BegInf,
+            EndInf,
+        )
     }
 
     /// Creates a new simple indexed edge.
@@ -54,11 +60,11 @@ impl NumShape {
     /// other fields have no meanning.
     pub fn new_int_shapeenum_bool2(
         Index: i32,
-        Type: i32,
+        Type: crate::top_abs::ShapeEnum,
         Closed: bool,
         BegInf: bool,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_int_shapeenum_bool3(Index, Type, Closed, BegInf, false)
+        Self::new_int_shapeenum_bool3(Index, Type.into(), Closed, BegInf, false)
     }
 
     /// Creates a new simple indexed edge.
@@ -72,8 +78,12 @@ impl NumShape {
     /// For a Vertex : Index is the index of the vertex in
     /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
     /// other fields have no meanning.
-    pub fn new_int_shapeenum_bool(Index: i32, Type: i32, Closed: bool) -> cxx::UniquePtr<Self> {
-        Self::new_int_shapeenum_bool3(Index, Type, Closed, false, false)
+    pub fn new_int_shapeenum_bool(
+        Index: i32,
+        Type: crate::top_abs::ShapeEnum,
+        Closed: bool,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_int_shapeenum_bool3(Index, Type.into(), Closed, false, false)
     }
 
     /// Creates a new simple indexed edge.
@@ -87,8 +97,8 @@ impl NumShape {
     /// For a Vertex : Index is the index of the vertex in
     /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
     /// other fields have no meanning.
-    pub fn new_int_shapeenum(Index: i32, Type: i32) -> cxx::UniquePtr<Self> {
-        Self::new_int_shapeenum_bool3(Index, Type, false, false, false)
+    pub fn new_int_shapeenum(Index: i32, Type: crate::top_abs::ShapeEnum) -> cxx::UniquePtr<Self> {
+        Self::new_int_shapeenum_bool3(Index, Type.into(), false, false, false)
     }
 
     /// Reinitialize a simple indexed edge.
@@ -106,20 +116,20 @@ impl NumShape {
     pub fn init(
         self: std::pin::Pin<&mut Self>,
         Index: i32,
-        Type: i32,
+        Type: crate::top_abs::ShapeEnum,
         Closed: bool,
         BegInf: bool,
         EndInf: bool,
     ) {
-        crate::ffi::Sweep_NumShape_init(self, Index, Type, Closed, BegInf, EndInf)
+        crate::ffi::Sweep_NumShape_init(self, Index, Type.into(), Closed, BegInf, EndInf)
     }
 
-    pub fn type_(&self) -> i32 {
-        crate::ffi::Sweep_NumShape_type_(self)
+    pub fn type_(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::Sweep_NumShape_type_(self)).unwrap()
     }
 
-    pub fn orientation(&self) -> i32 {
-        crate::ffi::Sweep_NumShape_orientation(self)
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::Sweep_NumShape_orientation(self)).unwrap()
     }
 }
 
@@ -146,13 +156,17 @@ impl NumShapeTool {
     }
 
     /// Returns the type of <aShape>.
-    pub fn type_(&self, aShape: &crate::ffi::Sweep_NumShape) -> i32 {
-        crate::ffi::Sweep_NumShapeTool_type_(self, aShape)
+    pub fn type_(&self, aShape: &crate::ffi::Sweep_NumShape) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::Sweep_NumShapeTool_type_(self, aShape))
+            .unwrap()
     }
 
     /// Returns the orientation of <aShape>.
-    pub fn orientation(&self, aShape: &crate::ffi::Sweep_NumShape) -> i32 {
-        crate::ffi::Sweep_NumShapeTool_orientation(self, aShape)
+    pub fn orientation(&self, aShape: &crate::ffi::Sweep_NumShape) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::Sweep_NumShapeTool_orientation(
+            self, aShape,
+        ))
+        .unwrap()
     }
 
     /// Returns the first vertex.

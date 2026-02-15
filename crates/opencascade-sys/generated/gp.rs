@@ -2144,8 +2144,8 @@ impl GTrsf {
     /// transformation (relative to a point, an axis or a plane), a
     /// scaling transformation, a compound transformation or
     /// some other type of transformation.
-    pub fn form(&self) -> i32 {
-        crate::ffi::gp_GTrsf_form(self)
+    pub fn form(&self) -> crate::gp::TrsfForm {
+        crate::gp::TrsfForm::try_from(crate::ffi::gp_GTrsf_form(self)).unwrap()
     }
 
     /// Computes the reverse transformation.
@@ -2258,8 +2258,8 @@ impl GTrsf2d {
     /// transformation (relative to a point or axis), a scaling
     /// transformation, a compound transformation or some
     /// other type of transformation.
-    pub fn form(&self) -> i32 {
-        crate::ffi::gp_GTrsf2d_form(self)
+    pub fn form(&self) -> crate::gp::TrsfForm {
+        crate::gp::TrsfForm::try_from(crate::ffi::gp_GTrsf2d_form(self)).unwrap()
     }
 
     /// Computes the reverse transformation.
@@ -4116,23 +4116,35 @@ impl Quaternion {
     /// by generalized Euler angles
     pub fn set_euler_angles(
         self: std::pin::Pin<&mut Self>,
-        theOrder: i32,
+        theOrder: crate::gp::EulerSequence,
         theAlpha: f64,
         theBeta: f64,
         theGamma: f64,
     ) {
-        crate::ffi::gp_Quaternion_set_euler_angles(self, theOrder, theAlpha, theBeta, theGamma)
+        crate::ffi::gp_Quaternion_set_euler_angles(
+            self,
+            theOrder.into(),
+            theAlpha,
+            theBeta,
+            theGamma,
+        )
     }
 
     /// Returns Euler angles describing current rotation
     pub fn get_euler_angles(
         &self,
-        theOrder: i32,
+        theOrder: crate::gp::EulerSequence,
         theAlpha: &mut f64,
         theBeta: &mut f64,
         theGamma: &mut f64,
     ) {
-        crate::ffi::gp_Quaternion_get_euler_angles(self, theOrder, theAlpha, theBeta, theGamma)
+        crate::ffi::gp_Quaternion_get_euler_angles(
+            self,
+            theOrder.into(),
+            theAlpha,
+            theBeta,
+            theGamma,
+        )
     }
 
     /// Return rotation with reversed direction (conjugated quaternion)
@@ -4606,16 +4618,16 @@ impl Trsf {
         crate::ffi::gp_Trsf_ctor_trsf2d(theT)
     }
 
-    pub fn set_form(self: std::pin::Pin<&mut Self>, theP: i32) {
-        crate::ffi::gp_Trsf_set_form(self, theP)
+    pub fn set_form(self: std::pin::Pin<&mut Self>, theP: crate::gp::TrsfForm) {
+        crate::ffi::gp_Trsf_set_form(self, theP.into())
     }
 
     /// Returns the nature of the transformation. It can be: an
     /// identity transformation, a rotation, a translation, a mirror
     /// transformation (relative to a point, an axis or a plane), a
     /// scaling transformation, or a compound transformation.
-    pub fn form(&self) -> i32 {
-        crate::ffi::gp_Trsf_form(self)
+    pub fn form(&self) -> crate::gp::TrsfForm {
+        crate::gp::TrsfForm::try_from(crate::ffi::gp_Trsf_form(self)).unwrap()
     }
 
     /// Returns quaternion representing rotational part of the transformation.
@@ -4707,8 +4719,8 @@ impl Trsf2d {
     /// identity transformation, a rotation, a translation, a mirror
     /// (relative to a point or an axis), a scaling transformation,
     /// or a compound transformation.
-    pub fn form(&self) -> i32 {
-        crate::ffi::gp_Trsf2d_form(self)
+    pub fn form(&self) -> crate::gp::TrsfForm {
+        crate::gp::TrsfForm::try_from(crate::ffi::gp_Trsf2d_form(self)).unwrap()
     }
 
     /// Returns the vectorial part of the transformation. It is a

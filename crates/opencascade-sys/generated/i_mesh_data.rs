@@ -324,8 +324,9 @@ pub use crate::ffi::IMeshData_PCurve as PCurve;
 
 impl PCurve {
     /// Returns orientation of the edge associated with current pcurve.
-    pub fn get_orientation(&self) -> i32 {
-        crate::ffi::IMeshData_PCurve_get_orientation(self)
+    pub fn get_orientation(&self) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::IMeshData_PCurve_get_orientation(self))
+            .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -499,8 +500,11 @@ pub use crate::ffi::IMeshData_Wire as Wire;
 
 impl Wire {
     /// Returns True if orientation of discrete edge with the given index is forward.
-    pub fn get_edge_orientation(&self, theIndex: i32) -> i32 {
-        crate::ffi::IMeshData_Wire_get_edge_orientation(self, theIndex)
+    pub fn get_edge_orientation(&self, theIndex: i32) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::IMeshData_Wire_get_edge_orientation(
+            self, theIndex,
+        ))
+        .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

@@ -634,8 +634,8 @@ impl MakeEdge {
     }
 
     /// Returns the error description when NotDone.
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepLib_MakeEdge_error(self)
+    pub fn error(&self) -> crate::b_rep_lib::EdgeError {
+        crate::b_rep_lib::EdgeError::try_from(crate::ffi::BRepLib_MakeEdge_error(self)).unwrap()
     }
 
     /// Upcast to BRepLib_Command
@@ -679,8 +679,11 @@ impl MakeEdge {
     }
 
     /// Inherited from BRepLib_MakeShape: FaceStatus()
-    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
-        crate::ffi::BRepLib_MakeEdge_inherited_FaceStatus(self, F)
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
+        crate::b_rep_lib::ShapeModification::try_from(
+            crate::ffi::BRepLib_MakeEdge_inherited_FaceStatus(self, F),
+        )
+        .unwrap()
     }
 
     /// Inherited from BRepLib_MakeShape: HasDescendants()
@@ -936,8 +939,8 @@ impl MakeEdge2d {
     }
 
     /// Returns the error description when NotDone.
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepLib_MakeEdge2d_error(self)
+    pub fn error(&self) -> crate::b_rep_lib::EdgeError {
+        crate::b_rep_lib::EdgeError::try_from(crate::ffi::BRepLib_MakeEdge2d_error(self)).unwrap()
     }
 
     /// Upcast to BRepLib_Command
@@ -981,8 +984,11 @@ impl MakeEdge2d {
     }
 
     /// Inherited from BRepLib_MakeShape: FaceStatus()
-    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
-        crate::ffi::BRepLib_MakeEdge2d_inherited_FaceStatus(self, F)
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
+        crate::b_rep_lib::ShapeModification::try_from(
+            crate::ffi::BRepLib_MakeEdge2d_inherited_FaceStatus(self, F),
+        )
+        .unwrap()
     }
 
     /// Inherited from BRepLib_MakeShape: HasDescendants()
@@ -1290,8 +1296,8 @@ impl MakeFace {
         Self::new_handlegeomsurface_wire_bool(S, W, true)
     }
 
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepLib_MakeFace_error(self)
+    pub fn error(&self) -> crate::b_rep_lib::FaceError {
+        crate::b_rep_lib::FaceError::try_from(crate::ffi::BRepLib_MakeFace_error(self)).unwrap()
     }
 
     /// Checks the specified curve is degenerated
@@ -1348,8 +1354,11 @@ impl MakeFace {
     }
 
     /// Inherited from BRepLib_MakeShape: FaceStatus()
-    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
-        crate::ffi::BRepLib_MakeFace_inherited_FaceStatus(self, F)
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
+        crate::b_rep_lib::ShapeModification::try_from(
+            crate::ffi::BRepLib_MakeFace_inherited_FaceStatus(self, F),
+        )
+        .unwrap()
     }
 
     /// Inherited from BRepLib_MakeShape: HasDescendants()
@@ -1535,8 +1544,11 @@ impl MakePolygon {
     }
 
     /// Inherited from BRepLib_MakeShape: FaceStatus()
-    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
-        crate::ffi::BRepLib_MakePolygon_inherited_FaceStatus(self, F)
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
+        crate::b_rep_lib::ShapeModification::try_from(
+            crate::ffi::BRepLib_MakePolygon_inherited_FaceStatus(self, F),
+        )
+        .unwrap()
     }
 
     /// Inherited from BRepLib_MakeShape: HasDescendants()
@@ -1585,8 +1597,11 @@ pub use crate::ffi::BRepLib_MakeShape as MakeShape;
 impl MakeShape {
     /// returns the status of the Face after
     /// the shape creation.
-    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
-        crate::ffi::BRepLib_MakeShape_face_status(self, F)
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
+        crate::b_rep_lib::ShapeModification::try_from(crate::ffi::BRepLib_MakeShape_face_status(
+            self, F,
+        ))
+        .unwrap()
     }
 
     /// Upcast to BRepLib_Command
@@ -1661,8 +1676,8 @@ impl MakeShell {
         Self::new_handlegeomsurface_real4_bool(S, UMin, UMax, VMin, VMax, false)
     }
 
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepLib_MakeShell_error(self)
+    pub fn error(&self) -> crate::b_rep_lib::ShellError {
+        crate::b_rep_lib::ShellError::try_from(crate::ffi::BRepLib_MakeShell_error(self)).unwrap()
     }
 
     /// Upcast to BRepLib_Command
@@ -1706,8 +1721,11 @@ impl MakeShell {
     }
 
     /// Inherited from BRepLib_MakeShape: FaceStatus()
-    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
-        crate::ffi::BRepLib_MakeShell_inherited_FaceStatus(self, F)
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
+        crate::b_rep_lib::ShapeModification::try_from(
+            crate::ffi::BRepLib_MakeShell_inherited_FaceStatus(self, F),
+        )
+        .unwrap()
     }
 
     /// Inherited from BRepLib_MakeShape: HasDescendants()
@@ -1797,8 +1815,11 @@ impl MakeSolid {
 
     /// returns the status of the Face after
     /// the shape creation.
-    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
-        crate::ffi::BRepLib_MakeSolid_face_status(self, F)
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
+        crate::b_rep_lib::ShapeModification::try_from(crate::ffi::BRepLib_MakeSolid_face_status(
+            self, F,
+        ))
+        .unwrap()
     }
 
     /// Upcast to BRepLib_Command
@@ -1926,8 +1947,11 @@ impl MakeVertex {
     }
 
     /// Inherited from BRepLib_MakeShape: FaceStatus()
-    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
-        crate::ffi::BRepLib_MakeVertex_inherited_FaceStatus(self, F)
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
+        crate::b_rep_lib::ShapeModification::try_from(
+            crate::ffi::BRepLib_MakeVertex_inherited_FaceStatus(self, F),
+        )
+        .unwrap()
     }
 
     /// Inherited from BRepLib_MakeShape: HasDescendants()
@@ -2061,8 +2085,8 @@ impl MakeWire {
         crate::ffi::BRepLib_MakeWire_ctor_wire_edge(W, E)
     }
 
-    pub fn error(&self) -> i32 {
-        crate::ffi::BRepLib_MakeWire_error(self)
+    pub fn error(&self) -> crate::b_rep_lib::WireError {
+        crate::b_rep_lib::WireError::try_from(crate::ffi::BRepLib_MakeWire_error(self)).unwrap()
     }
 
     /// Upcast to BRepLib_Command
@@ -2106,8 +2130,11 @@ impl MakeWire {
     }
 
     /// Inherited from BRepLib_MakeShape: FaceStatus()
-    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
-        crate::ffi::BRepLib_MakeWire_inherited_FaceStatus(self, F)
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
+        crate::b_rep_lib::ShapeModification::try_from(
+            crate::ffi::BRepLib_MakeWire_inherited_FaceStatus(self, F),
+        )
+        .unwrap()
     }
 
     /// Inherited from BRepLib_MakeShape: HasDescendants()

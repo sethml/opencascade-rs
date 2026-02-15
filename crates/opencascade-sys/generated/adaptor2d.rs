@@ -34,15 +34,15 @@ impl Curve2d {
         crate::ffi::Adaptor2d_Curve2d_shallow_copy(self)
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Adaptor2d_Curve2d_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Adaptor2d_Curve2d_continuity(self)).unwrap()
     }
 
     /// If necessary,  breaks the  curve in  intervals  of
     /// continuity  <S>.    And  returns   the number   of
     /// intervals.
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Adaptor2d_Curve2d_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Adaptor2d_Curve2d_nb_intervals(self, S.into())
     }
 
     /// Returns    a  curve equivalent   of  <me>  between
@@ -75,8 +75,8 @@ impl Curve2d {
     /// Returns  the  type of the   curve  in the  current
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::Adaptor2d_Curve2d_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::ffi::Adaptor2d_Curve2d_get_type(self)).unwrap()
     }
 
     pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
@@ -161,15 +161,15 @@ impl Line2d {
         crate::ffi::Adaptor2d_Line2d_shallow_copy(self)
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Adaptor2d_Line2d_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Adaptor2d_Line2d_continuity(self)).unwrap()
     }
 
     /// If necessary,  breaks the  curve in  intervals  of
     /// continuity  <S>.    And  returns   the number   of
     /// intervals.
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Adaptor2d_Line2d_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Adaptor2d_Line2d_nb_intervals(self, S.into())
     }
 
     /// Returns    a  curve equivalent   of  <me>  between
@@ -193,8 +193,8 @@ impl Line2d {
         crate::ffi::Adaptor2d_Line2d_dn(self, U, N)
     }
 
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::Adaptor2d_Line2d_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::ffi::Adaptor2d_Line2d_get_type(self)).unwrap()
     }
 
     pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
@@ -292,15 +292,16 @@ impl OffsetCurve {
         crate::ffi::Adaptor2d_OffsetCurve_shallow_copy(self)
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Adaptor2d_OffsetCurve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Adaptor2d_OffsetCurve_continuity(self))
+            .unwrap()
     }
 
     /// If necessary,  breaks the  curve in  intervals  of
     /// continuity  <S>.    And  returns   the number   of
     /// intervals.
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Adaptor2d_OffsetCurve_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Adaptor2d_OffsetCurve_nb_intervals(self, S.into())
     }
 
     /// Returns    a  curve equivalent   of  <me>  between
@@ -333,8 +334,9 @@ impl OffsetCurve {
     /// Returns  the  type of the   curve  in the  current
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::Adaptor2d_OffsetCurve_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::ffi::Adaptor2d_OffsetCurve_get_type(self))
+            .unwrap()
     }
 
     pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {

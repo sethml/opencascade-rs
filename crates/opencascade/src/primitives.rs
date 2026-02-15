@@ -260,23 +260,21 @@ pub enum JoinType {
 }
 
 impl JoinType {
-    pub fn to_i32(self) -> i32 {
+    pub fn to_geom_abs(self) -> opencascade_sys::geom_abs::JoinType {
         use opencascade_sys::geom_abs;
         match self {
-            JoinType::Arc => geom_abs::JoinType::Arc as i32,
-            //JoinType::Tangent => geom_abs::JoinType::Tangent as i32,
-            JoinType::Intersection => geom_abs::JoinType::Intersection as i32,
+            JoinType::Arc => geom_abs::JoinType::Arc,
+            //JoinType::Tangent => geom_abs::JoinType::Tangent,
+            JoinType::Intersection => geom_abs::JoinType::Intersection,
         }
     }
 
-    pub fn from_i32(value: i32) -> Self {
+    pub fn from_geom_abs(value: opencascade_sys::geom_abs::JoinType) -> Self {
         use opencascade_sys::geom_abs;
-        match geom_abs::JoinType::try_from(value) {
-            Ok(geom_abs::JoinType::Arc) => Self::Arc,
-            //Ok(geom_abs::JoinType::Tangent) => Self::Tangent,
-            Ok(geom_abs::JoinType::Intersection) => Self::Intersection,
-            Ok(geom_abs::JoinType::Tangent) => panic!("Tangent join type not supported"),
-            Err(repr) => panic!("Unexpected join type: {repr}"),
+        match value {
+            geom_abs::JoinType::Arc => Self::Arc,
+            geom_abs::JoinType::Tangent => panic!("Tangent join type not supported"),
+            geom_abs::JoinType::Intersection => Self::Intersection,
         }
     }
 }

@@ -315,12 +315,12 @@ impl BOP {
         crate::ffi::BOPAlgo_BOP_ctor_handlencollectionbaseallocator(theAllocator)
     }
 
-    pub fn set_operation(self: std::pin::Pin<&mut Self>, theOperation: i32) {
-        crate::ffi::BOPAlgo_BOP_set_operation(self, theOperation)
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theOperation: crate::bop_algo::Operation) {
+        crate::ffi::BOPAlgo_BOP_set_operation(self, theOperation.into())
     }
 
-    pub fn operation(&self) -> i32 {
-        crate::ffi::BOPAlgo_BOP_operation(self)
+    pub fn operation(&self) -> crate::bop_algo::Operation {
+        crate::bop_algo::Operation::try_from(crate::ffi::BOPAlgo_BOP_operation(self)).unwrap()
     }
 
     /// Upcast to BOPAlgo_Builder
@@ -393,13 +393,13 @@ impl BOP {
     }
 
     /// Inherited from BOPAlgo_Builder: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BOPAlgo_BOP_inherited_SetGlue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BOPAlgo_BOP_inherited_SetGlue(self, theGlue.into())
     }
 
     /// Inherited from BOPAlgo_Builder: Glue()
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BOPAlgo_BOP_inherited_Glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_BOP_inherited_Glue(self)).unwrap()
     }
 
     /// Inherited from BOPAlgo_Builder: SetCheckInverted()
@@ -617,13 +617,13 @@ impl Builder {
     }
 
     /// Sets the glue option for the algorithm
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BOPAlgo_Builder_set_glue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BOPAlgo_Builder_set_glue(self, theGlue.into())
     }
 
     /// Returns the glue option of the algorithm
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BOPAlgo_Builder_glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_Builder_glue(self)).unwrap()
     }
 
     /// Upcast to BOPAlgo_BuilderShape
@@ -908,13 +908,19 @@ impl CheckResult {
     }
 
     /// set status of faulty
-    pub fn set_check_status(self: std::pin::Pin<&mut Self>, TheStatus: i32) {
-        crate::ffi::BOPAlgo_CheckResult_set_check_status(self, TheStatus)
+    pub fn set_check_status(
+        self: std::pin::Pin<&mut Self>,
+        TheStatus: crate::bop_algo::CheckStatus,
+    ) {
+        crate::ffi::BOPAlgo_CheckResult_set_check_status(self, TheStatus.into())
     }
 
     /// gets status of faulty
-    pub fn get_check_status(&self) -> i32 {
-        crate::ffi::BOPAlgo_CheckResult_get_check_status(self)
+    pub fn get_check_status(&self) -> crate::bop_algo::CheckStatus {
+        crate::bop_algo::CheckStatus::try_from(crate::ffi::BOPAlgo_CheckResult_get_check_status(
+            self,
+        ))
+        .unwrap()
     }
 }
 
@@ -1325,13 +1331,14 @@ impl ToolsProvider {
     }
 
     /// Inherited from BOPAlgo_Builder: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetGlue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetGlue(self, theGlue.into())
     }
 
     /// Inherited from BOPAlgo_Builder: Glue()
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_Glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_ToolsProvider_inherited_Glue(self))
+            .unwrap()
     }
 
     /// Inherited from BOPAlgo_Builder: SetCheckInverted()

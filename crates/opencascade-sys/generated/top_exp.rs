@@ -90,10 +90,10 @@ impl Explorer {
     /// has no effect on the exploration.
     pub fn new_shape_shapeenum2(
         S: &crate::ffi::TopoDS_Shape,
-        ToFind: i32,
-        ToAvoid: i32,
+        ToFind: crate::top_abs::ShapeEnum,
+        ToAvoid: crate::top_abs::ShapeEnum,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopExp_Explorer_ctor_shape_shapeenum2(S, ToFind, ToAvoid)
+        crate::ffi::TopExp_Explorer_ctor_shape_shapeenum2(S, ToFind.into(), ToAvoid.into())
     }
 
     /// Resets this explorer on the shape S. It is initialized to
@@ -105,9 +105,9 @@ impl Explorer {
     pub fn init(
         self: std::pin::Pin<&mut Self>,
         S: &crate::ffi::TopoDS_Shape,
-        ToFind: i32,
-        ToAvoid: i32,
+        ToFind: crate::top_abs::ShapeEnum,
+        ToAvoid: crate::top_abs::ShapeEnum,
     ) {
-        crate::ffi::TopExp_Explorer_init(self, S, ToFind, ToAvoid)
+        crate::ffi::TopExp_Explorer_init(self, S, ToFind.into(), ToAvoid.into())
     }
 }

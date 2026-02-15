@@ -43,13 +43,17 @@ impl StepModel {
     /// Return the encoding of STEP file for converting names into UNICODE.
     /// Initialized from "read.step.codepage" variable by constructor, which is Resource_UTF8 by
     /// default.
-    pub fn source_code_page(&self) -> i32 {
-        crate::ffi::StepData_StepModel_source_code_page(self)
+    pub fn source_code_page(&self) -> crate::resource::FormatType {
+        crate::resource::FormatType::try_from(crate::ffi::StepData_StepModel_source_code_page(self))
+            .unwrap()
     }
 
     /// Return the encoding of STEP file for converting names into UNICODE.
-    pub fn set_source_code_page(self: std::pin::Pin<&mut Self>, theCode: i32) {
-        crate::ffi::StepData_StepModel_set_source_code_page(self, theCode)
+    pub fn set_source_code_page(
+        self: std::pin::Pin<&mut Self>,
+        theCode: crate::resource::FormatType,
+    ) {
+        crate::ffi::StepData_StepModel_set_source_code_page(self, theCode.into())
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -94,8 +98,11 @@ impl StepModel {
     }
 
     /// Inherited from Interface_InterfaceModel: EntityState()
-    pub fn entity_state(&self, num: i32) -> i32 {
-        crate::ffi::StepData_StepModel_inherited_EntityState(self, num)
+    pub fn entity_state(&self, num: i32) -> crate::interface::DataState {
+        crate::interface::DataState::try_from(crate::ffi::StepData_StepModel_inherited_EntityState(
+            self, num,
+        ))
+        .unwrap()
     }
 
     /// Inherited from Interface_InterfaceModel: IsReportEntity()

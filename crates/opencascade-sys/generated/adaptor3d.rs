@@ -36,14 +36,14 @@ impl Curve {
         crate::ffi::Adaptor3d_Curve_shallow_copy(self)
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Adaptor3d_Curve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Adaptor3d_Curve_continuity(self)).unwrap()
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Adaptor3d_Curve_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Adaptor3d_Curve_nb_intervals(self, S.into())
     }
 
     /// Returns    a  curve equivalent   of  <me>  between
@@ -76,8 +76,8 @@ impl Curve {
     /// Returns  the  type of the   curve  in the  current
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::Adaptor3d_Curve_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::ffi::Adaptor3d_Curve_get_type(self)).unwrap()
     }
 
     pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
@@ -178,14 +178,15 @@ impl CurveOnSurface {
         crate::ffi::Adaptor3d_CurveOnSurface_shallow_copy(self)
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Adaptor3d_CurveOnSurface_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Adaptor3d_CurveOnSurface_continuity(self))
+            .unwrap()
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Adaptor3d_CurveOnSurface_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Adaptor3d_CurveOnSurface_nb_intervals(self, S.into())
     }
 
     /// Returns    a  curve equivalent   of  <me>  between
@@ -218,8 +219,9 @@ impl CurveOnSurface {
     /// Returns  the  type of the   curve  in the  current
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::Adaptor3d_CurveOnSurface_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::ffi::Adaptor3d_CurveOnSurface_get_type(self))
+            .unwrap()
     }
 
     pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
@@ -298,12 +300,18 @@ impl HSurfaceTool {
         crate::ffi::Adaptor3d_HSurfaceTool_last_v_parameter(theSurf)
     }
 
-    pub fn nb_u_intervals(theSurf: &crate::ffi::HandleAdaptor3dSurface, theSh: i32) -> i32 {
-        crate::ffi::Adaptor3d_HSurfaceTool_nb_u_intervals(theSurf, theSh)
+    pub fn nb_u_intervals(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSh: crate::geom_abs::Shape,
+    ) -> i32 {
+        crate::ffi::Adaptor3d_HSurfaceTool_nb_u_intervals(theSurf, theSh.into())
     }
 
-    pub fn nb_v_intervals(theSurf: &crate::ffi::HandleAdaptor3dSurface, theSh: i32) -> i32 {
-        crate::ffi::Adaptor3d_HSurfaceTool_nb_v_intervals(theSurf, theSh)
+    pub fn nb_v_intervals(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSh: crate::geom_abs::Shape,
+    ) -> i32 {
+        crate::ffi::Adaptor3d_HSurfaceTool_nb_v_intervals(theSurf, theSh.into())
     }
 
     /// If <First> >= <Last>
@@ -433,8 +441,9 @@ impl HSurfaceTool {
         crate::ffi::Adaptor3d_HSurfaceTool_v_resolution(theSurf, theR3d)
     }
 
-    pub fn get_type(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> i32 {
-        crate::ffi::Adaptor3d_HSurfaceTool_get_type(theSurf)
+    pub fn get_type(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> crate::geom_abs::SurfaceType {
+        crate::geom_abs::SurfaceType::try_from(crate::ffi::Adaptor3d_HSurfaceTool_get_type(theSurf))
+            .unwrap()
     }
 
     pub fn plane(
@@ -553,18 +562,19 @@ impl HVertex {
 
     pub fn new_pnt2d_orientation_real(
         P: &crate::ffi::gp_Pnt2d,
-        Ori: i32,
+        Ori: crate::top_abs::Orientation,
         Resolution: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Adaptor3d_HVertex_ctor_pnt2d_orientation_real(P, Ori, Resolution)
+        crate::ffi::Adaptor3d_HVertex_ctor_pnt2d_orientation_real(P, Ori.into(), Resolution)
     }
 
     pub fn value(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
         crate::ffi::Adaptor3d_HVertex_value(self)
     }
 
-    pub fn orientation(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::Adaptor3d_HVertex_orientation(self)
+    pub fn orientation(self: std::pin::Pin<&mut Self>) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(crate::ffi::Adaptor3d_HVertex_orientation(self))
+            .unwrap()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -676,10 +686,14 @@ impl IsoCurve {
     /// of the surface.
     pub fn new_handleadaptor3dsurface_isotype_real(
         S: &crate::ffi::HandleAdaptor3dSurface,
-        Iso: i32,
+        Iso: crate::geom_abs::IsoType,
         Param: f64,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface_isotype_real(S, Iso, Param)
+        crate::ffi::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface_isotype_real(
+            S,
+            Iso.into(),
+            Param,
+        )
     }
 
     /// Create an IsoCurve curve.  Iso defines the type
@@ -687,13 +701,17 @@ impl IsoCurve {
     /// iso. WFirst,WLast define the bounds of the iso.
     pub fn new_handleadaptor3dsurface_isotype_real3(
         S: &crate::ffi::HandleAdaptor3dSurface,
-        Iso: i32,
+        Iso: crate::geom_abs::IsoType,
         Param: f64,
         WFirst: f64,
         WLast: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface_isotype_real3(
-            S, Iso, Param, WFirst, WLast,
+            S,
+            Iso.into(),
+            Param,
+            WFirst,
+            WLast,
         )
     }
 
@@ -703,33 +721,37 @@ impl IsoCurve {
     }
 
     /// Changes the iso on the current surface.
-    pub fn load_isotype_real(self: std::pin::Pin<&mut Self>, Iso: i32, Param: f64) {
-        crate::ffi::Adaptor3d_IsoCurve_load_isotype_real(self, Iso, Param)
+    pub fn load_isotype_real(
+        self: std::pin::Pin<&mut Self>,
+        Iso: crate::geom_abs::IsoType,
+        Param: f64,
+    ) {
+        crate::ffi::Adaptor3d_IsoCurve_load_isotype_real(self, Iso.into(), Param)
     }
 
     /// Changes the iso on the current surface.
     pub fn load_isotype_real3(
         self: std::pin::Pin<&mut Self>,
-        Iso: i32,
+        Iso: crate::geom_abs::IsoType,
         Param: f64,
         WFirst: f64,
         WLast: f64,
     ) {
-        crate::ffi::Adaptor3d_IsoCurve_load_isotype_real3(self, Iso, Param, WFirst, WLast)
+        crate::ffi::Adaptor3d_IsoCurve_load_isotype_real3(self, Iso.into(), Param, WFirst, WLast)
     }
 
-    pub fn iso(&self) -> i32 {
-        crate::ffi::Adaptor3d_IsoCurve_iso(self)
+    pub fn iso(&self) -> crate::geom_abs::IsoType {
+        crate::geom_abs::IsoType::try_from(crate::ffi::Adaptor3d_IsoCurve_iso(self)).unwrap()
     }
 
-    pub fn continuity(&self) -> i32 {
-        crate::ffi::Adaptor3d_IsoCurve_continuity(self)
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Adaptor3d_IsoCurve_continuity(self)).unwrap()
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
-    pub fn nb_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Adaptor3d_IsoCurve_nb_intervals(self, S)
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Adaptor3d_IsoCurve_nb_intervals(self, S.into())
     }
 
     /// Returns    a  curve equivalent   of  <me>  between
@@ -762,8 +784,8 @@ impl IsoCurve {
     /// Returns  the  type of the   curve  in the  current
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::Adaptor3d_IsoCurve_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::ffi::Adaptor3d_IsoCurve_get_type(self)).unwrap()
     }
 
     pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
@@ -850,24 +872,24 @@ impl Surface {
         crate::ffi::Adaptor3d_Surface_shallow_copy(self)
     }
 
-    pub fn u_continuity(&self) -> i32 {
-        crate::ffi::Adaptor3d_Surface_u_continuity(self)
+    pub fn u_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Adaptor3d_Surface_u_continuity(self)).unwrap()
     }
 
-    pub fn v_continuity(&self) -> i32 {
-        crate::ffi::Adaptor3d_Surface_v_continuity(self)
+    pub fn v_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::ffi::Adaptor3d_Surface_v_continuity(self)).unwrap()
     }
 
     /// Returns the number of U intervals for  continuity
     /// <S>. May be one if UContinuity(me) >= <S>
-    pub fn nb_u_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Adaptor3d_Surface_nb_u_intervals(self, S)
+    pub fn nb_u_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Adaptor3d_Surface_nb_u_intervals(self, S.into())
     }
 
     /// Returns the number of V intervals for  continuity
     /// <S>. May be one if VContinuity(me) >= <S>
-    pub fn nb_v_intervals(&self, S: i32) -> i32 {
-        crate::ffi::Adaptor3d_Surface_nb_v_intervals(self, S)
+    pub fn nb_v_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        crate::ffi::Adaptor3d_Surface_nb_v_intervals(self, S.into())
     }
 
     /// Returns    a  surface trimmed in the U direction
@@ -916,8 +938,9 @@ impl Surface {
     /// Cone,      Sphere,        Torus,    BezierSurface,
     /// BSplineSurface,               SurfaceOfRevolution,
     /// SurfaceOfExtrusion, OtherSurface
-    pub fn get_type(&self) -> i32 {
-        crate::ffi::Adaptor3d_Surface_get_type(self)
+    pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
+        crate::geom_abs::SurfaceType::try_from(crate::ffi::Adaptor3d_Surface_get_type(self))
+            .unwrap()
     }
 
     pub fn plane(&self) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
@@ -1030,8 +1053,14 @@ impl TopolTool {
         P: &crate::ffi::gp_Pnt2d,
         Tol: f64,
         ReacdreOnPeriodic: bool,
-    ) -> i32 {
-        crate::ffi::Adaptor3d_TopolTool_classify(self, P, Tol, ReacdreOnPeriodic)
+    ) -> crate::top_abs::State {
+        crate::top_abs::State::try_from(crate::ffi::Adaptor3d_TopolTool_classify(
+            self,
+            P,
+            Tol,
+            ReacdreOnPeriodic,
+        ))
+        .unwrap()
     }
 
     /// If the function returns the orientation of the arc.
@@ -1042,8 +1071,11 @@ impl TopolTool {
     pub fn orientation_handleadaptor2dcurve2d(
         self: std::pin::Pin<&mut Self>,
         C: &crate::ffi::HandleAdaptor2dCurve2d,
-    ) -> i32 {
-        crate::ffi::Adaptor3d_TopolTool_orientation_handleadaptor2dcurve2d(self, C)
+    ) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(
+            crate::ffi::Adaptor3d_TopolTool_orientation_handleadaptor2dcurve2d(self, C),
+        )
+        .unwrap()
     }
 
     /// Returns the orientation of the vertex V.
@@ -1053,8 +1085,11 @@ impl TopolTool {
     pub fn orientation_handleadaptor3dhvertex(
         self: std::pin::Pin<&mut Self>,
         V: &crate::ffi::HandleAdaptor3dHVertex,
-    ) -> i32 {
-        crate::ffi::Adaptor3d_TopolTool_orientation_handleadaptor3dhvertex(self, V)
+    ) -> crate::top_abs::Orientation {
+        crate::top_abs::Orientation::try_from(
+            crate::ffi::Adaptor3d_TopolTool_orientation_handleadaptor3dhvertex(self, V),
+        )
+        .unwrap()
     }
 
     /// returns 3d point of the vertex V

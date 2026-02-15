@@ -123,8 +123,13 @@ impl Draft {
         crate::ffi::BRepFill_Draft_ctor_shape_dir_real(Shape, Dir, Angle)
     }
 
-    pub fn set_options(self: std::pin::Pin<&mut Self>, Style: i32, AngleMin: f64, AngleMax: f64) {
-        crate::ffi::BRepFill_Draft_set_options(self, Style, AngleMin, AngleMax)
+    pub fn set_options(
+        self: std::pin::Pin<&mut Self>,
+        Style: crate::b_rep_fill::TransitionStyle,
+        AngleMin: f64,
+        AngleMax: f64,
+    ) {
+        crate::ffi::BRepFill_Draft_set_options(self, Style.into(), AngleMin, AngleMax)
     }
 
     /// Returns the draft surface
@@ -153,9 +158,9 @@ impl EdgeFaceAndOrder {
     pub fn new_edge_face_shape(
         anEdge: &crate::ffi::TopoDS_Edge,
         aFace: &crate::ffi::TopoDS_Face,
-        anOrder: i32,
+        anOrder: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_EdgeFaceAndOrder_ctor_edge_face_shape(anEdge, aFace, anOrder)
+        crate::ffi::BRepFill_EdgeFaceAndOrder_ctor_edge_face_shape(anEdge, aFace, anOrder.into())
     }
 }
 
@@ -182,11 +187,15 @@ impl Evolved {
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Wire,
         AxeProf: &crate::ffi::gp_Ax3,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepFill_Evolved_ctor_wire2_ax3_jointype_bool(
-            Spine, Profile, AxeProf, Join, Solid,
+            Spine,
+            Profile,
+            AxeProf,
+            Join.into(),
+            Solid,
         )
     }
 
@@ -196,11 +205,15 @@ impl Evolved {
         Spine: &crate::ffi::TopoDS_Face,
         Profile: &crate::ffi::TopoDS_Wire,
         AxeProf: &crate::ffi::gp_Ax3,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepFill_Evolved_ctor_face_wire_ax3_jointype_bool(
-            Spine, Profile, AxeProf, Join, Solid,
+            Spine,
+            Profile,
+            AxeProf,
+            Join.into(),
+            Solid,
         )
     }
 
@@ -214,9 +227,9 @@ impl Evolved {
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Wire,
         AxeProf: &crate::ffi::gp_Ax3,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_wire2_ax3_jointype_bool(Spine, Profile, AxeProf, Join, false)
+        Self::new_wire2_ax3_jointype_bool(Spine, Profile, AxeProf, Join.into(), false)
     }
 
     /// Creates an  evolved shape  by sweeping the <Profile>
@@ -225,9 +238,9 @@ impl Evolved {
         Spine: &crate::ffi::TopoDS_Face,
         Profile: &crate::ffi::TopoDS_Wire,
         AxeProf: &crate::ffi::gp_Ax3,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_face_wire_ax3_jointype_bool(Spine, Profile, AxeProf, Join, false)
+        Self::new_face_wire_ax3_jointype_bool(Spine, Profile, AxeProf, Join.into(), false)
     }
 
     /// Performs an  evolved shape  by sweeping the <Profile>
@@ -237,11 +250,16 @@ impl Evolved {
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Wire,
         AxeProf: &crate::ffi::gp_Ax3,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) {
         crate::ffi::BRepFill_Evolved_perform_wire2_ax3_jointype_bool(
-            self, Spine, Profile, AxeProf, Join, Solid,
+            self,
+            Spine,
+            Profile,
+            AxeProf,
+            Join.into(),
+            Solid,
         )
     }
 
@@ -252,16 +270,21 @@ impl Evolved {
         Spine: &crate::ffi::TopoDS_Face,
         Profile: &crate::ffi::TopoDS_Wire,
         AxeProf: &crate::ffi::gp_Ax3,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) {
         crate::ffi::BRepFill_Evolved_perform_face_wire_ax3_jointype_bool(
-            self, Spine, Profile, AxeProf, Join, Solid,
+            self,
+            Spine,
+            Profile,
+            AxeProf,
+            Join.into(),
+            Solid,
         )
     }
 
-    pub fn join_type(&self) -> i32 {
-        crate::ffi::BRepFill_Evolved_join_type(self)
+    pub fn join_type(&self) -> crate::geom_abs::JoinType {
+        crate::geom_abs::JoinType::try_from(crate::ffi::BRepFill_Evolved_join_type(self)).unwrap()
     }
 }
 
@@ -277,8 +300,11 @@ impl FaceAndOrder {
         crate::ffi::BRepFill_FaceAndOrder_ctor()
     }
 
-    pub fn new_face_shape(aFace: &crate::ffi::TopoDS_Face, anOrder: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_FaceAndOrder_ctor_face_shape(aFace, anOrder)
+    pub fn new_face_shape(
+        aFace: &crate::ffi::TopoDS_Face,
+        anOrder: crate::geom_abs::Shape,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepFill_FaceAndOrder_ctor_face_shape(aFace, anOrder.into())
     }
 }
 
@@ -525,10 +551,10 @@ impl Filling {
     pub fn add_edge_shape_bool(
         self: std::pin::Pin<&mut Self>,
         anEdge: &crate::ffi::TopoDS_Edge,
-        Order: i32,
+        Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
-        crate::ffi::BRepFill_Filling_add_edge_shape_bool(self, anEdge, Order, IsBound)
+        crate::ffi::BRepFill_Filling_add_edge_shape_bool(self, anEdge, Order.into(), IsBound)
     }
 
     /// Adds a new constraint which also defines an edge of the wire
@@ -546,10 +572,16 @@ impl Filling {
         self: std::pin::Pin<&mut Self>,
         anEdge: &crate::ffi::TopoDS_Edge,
         Support: &crate::ffi::TopoDS_Face,
-        Order: i32,
+        Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
-        crate::ffi::BRepFill_Filling_add_edge_face_shape_bool(self, anEdge, Support, Order, IsBound)
+        crate::ffi::BRepFill_Filling_add_edge_face_shape_bool(
+            self,
+            anEdge,
+            Support,
+            Order.into(),
+            IsBound,
+        )
     }
 
     /// Adds a free constraint on a face. The corresponding edge has to
@@ -558,9 +590,9 @@ impl Filling {
     pub fn add_face_shape(
         self: std::pin::Pin<&mut Self>,
         Support: &crate::ffi::TopoDS_Face,
-        Order: i32,
+        Order: crate::geom_abs::Shape,
     ) -> i32 {
-        crate::ffi::BRepFill_Filling_add_face_shape(self, Support, Order)
+        crate::ffi::BRepFill_Filling_add_face_shape(self, Support, Order.into())
     }
 
     /// Adds a punctual constraint.
@@ -569,9 +601,9 @@ impl Filling {
         U: f64,
         V: f64,
         Support: &crate::ffi::TopoDS_Face,
-        Order: i32,
+        Order: crate::geom_abs::Shape,
     ) -> i32 {
-        crate::ffi::BRepFill_Filling_add_real2_face_shape(self, U, V, Support, Order)
+        crate::ffi::BRepFill_Filling_add_real2_face_shape(self, U, V, Support, Order.into())
     }
 
     pub fn face(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {
@@ -604,24 +636,27 @@ impl OffsetWire {
 
     pub fn new_face_jointype_bool(
         Spine: &crate::ffi::TopoDS_Face,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_OffsetWire_ctor_face_jointype_bool(Spine, Join, IsOpenResult)
+        crate::ffi::BRepFill_OffsetWire_ctor_face_jointype_bool(Spine, Join.into(), IsOpenResult)
     }
 
-    pub fn new_face_jointype(Spine: &crate::ffi::TopoDS_Face, Join: i32) -> cxx::UniquePtr<Self> {
-        Self::new_face_jointype_bool(Spine, Join, false)
+    pub fn new_face_jointype(
+        Spine: &crate::ffi::TopoDS_Face,
+        Join: crate::geom_abs::JoinType,
+    ) -> cxx::UniquePtr<Self> {
+        Self::new_face_jointype_bool(Spine, Join.into(), false)
     }
 
     /// Initialize the evaluation of Offsetting.
     pub fn init(
         self: std::pin::Pin<&mut Self>,
         Spine: &crate::ffi::TopoDS_Face,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) {
-        crate::ffi::BRepFill_OffsetWire_init(self, Spine, Join, IsOpenResult)
+        crate::ffi::BRepFill_OffsetWire_init(self, Spine, Join.into(), IsOpenResult)
     }
 
     /// Performs an  OffsetWire
@@ -631,16 +666,23 @@ impl OffsetWire {
         Offset: f64,
         Locus: &crate::ffi::BRepMAT2d_BisectingLocus,
         Link: std::pin::Pin<&mut crate::ffi::BRepMAT2d_LinkTopoBilo>,
-        Join: i32,
+        Join: crate::geom_abs::JoinType,
         Alt: f64,
     ) {
         crate::ffi::BRepFill_OffsetWire_perform_with_bi_lo(
-            self, WSP, Offset, Locus, Link, Join, Alt,
+            self,
+            WSP,
+            Offset,
+            Locus,
+            Link,
+            Join.into(),
+            Alt,
         )
     }
 
-    pub fn join_type(&self) -> i32 {
-        crate::ffi::BRepFill_OffsetWire_join_type(self)
+    pub fn join_type(&self) -> crate::geom_abs::JoinType {
+        crate::geom_abs::JoinType::try_from(crate::ffi::BRepFill_OffsetWire_join_type(self))
+            .unwrap()
     }
 }
 
@@ -664,14 +706,14 @@ impl Pipe {
     pub fn new_wire_shape_trihedron_bool2(
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
-        aMode: i32,
+        aMode: crate::geom_fill::Trihedron,
         ForceApproxC1: bool,
         GeneratePartCase: bool,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepFill_Pipe_ctor_wire_shape_trihedron_bool2(
             Spine,
             Profile,
-            aMode,
+            aMode.into(),
             ForceApproxC1,
             GeneratePartCase,
         )
@@ -680,18 +722,18 @@ impl Pipe {
     pub fn new_wire_shape_trihedron_bool(
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
-        aMode: i32,
+        aMode: crate::geom_fill::Trihedron,
         ForceApproxC1: bool,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode, ForceApproxC1, false)
+        Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode.into(), ForceApproxC1, false)
     }
 
     pub fn new_wire_shape_trihedron(
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
-        aMode: i32,
+        aMode: crate::geom_fill::Trihedron,
     ) -> cxx::UniquePtr<Self> {
-        Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode, false, false)
+        Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode.into(), false, false)
     }
 
     /// Returns the face created from an edge of the spine
@@ -777,25 +819,31 @@ impl PipeShell {
         self: std::pin::Pin<&mut Self>,
         AuxiliarySpine: &crate::ffi::TopoDS_Wire,
         CurvilinearEquivalence: bool,
-        KeepContact: i32,
+        KeepContact: crate::b_rep_fill::TypeOfContact,
     ) {
         crate::ffi::BRepFill_PipeShell_set(
             self,
             AuxiliarySpine,
             CurvilinearEquivalence,
-            KeepContact,
+            KeepContact.into(),
         )
     }
 
     /// Get a status, when Simulate or Build failed.
-    pub fn get_status(&self) -> i32 {
-        crate::ffi::BRepFill_PipeShell_get_status(self)
+    pub fn get_status(&self) -> crate::geom_fill::PipeError {
+        crate::geom_fill::PipeError::try_from(crate::ffi::BRepFill_PipeShell_get_status(self))
+            .unwrap()
     }
 
     /// Set the  Transition Mode to manage discontinuities
     /// on the sweep.
-    pub fn set_transition(self: std::pin::Pin<&mut Self>, Mode: i32, Angmin: f64, Angmax: f64) {
-        crate::ffi::BRepFill_PipeShell_set_transition(self, Mode, Angmin, Angmax)
+    pub fn set_transition(
+        self: std::pin::Pin<&mut Self>,
+        Mode: crate::b_rep_fill::TransitionStyle,
+        Angmin: f64,
+        Angmax: f64,
+    ) {
+        crate::ffi::BRepFill_PipeShell_set_transition(self, Mode.into(), Angmin, Angmax)
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

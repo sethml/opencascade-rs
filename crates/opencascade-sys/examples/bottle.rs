@@ -2,6 +2,7 @@ use opencascade_sys::b_rep;
 use opencascade_sys::b_rep_algo_api;
 use opencascade_sys::b_rep_builder_api;
 use opencascade_sys::b_rep_fillet_api;
+use opencascade_sys::b_rep_offset;
 use opencascade_sys::ch_fi3d;
 use opencascade_sys::b_rep_lib;
 use opencascade_sys::b_rep_mesh;
@@ -11,6 +12,7 @@ use opencascade_sys::gc;
 use opencascade_sys::gce2d;
 use opencascade_sys::geom;
 use opencascade_sys::geom2d;
+use opencascade_sys::geom_abs;
 use opencascade_sys::gp;
 use opencascade_sys::message;
 use opencascade_sys::stl_api;
@@ -44,9 +46,9 @@ pub fn main() {
     let arc_curve = arc_of_circle.value().to_handle_curve();
     let segment_2_curve = segment_2.value().to_handle_curve();
 
-    let mut edge_1 = b_rep_builder_api::MakeEdge::new_handlecurve(&segment_1_curve);
-    let mut edge_2 = b_rep_builder_api::MakeEdge::new_handlecurve(&arc_curve);
-    let mut edge_3 = b_rep_builder_api::MakeEdge::new_handlecurve(&segment_2_curve);
+    let mut edge_1 = b_rep_builder_api::MakeEdge::new_handlegeomcurve(&segment_1_curve);
+    let mut edge_2 = b_rep_builder_api::MakeEdge::new_handlegeomcurve(&arc_curve);
+    let mut edge_3 = b_rep_builder_api::MakeEdge::new_handlegeomcurve(&segment_2_curve);
 
     let mut wire = b_rep_builder_api::MakeWire::new_edge3(
         edge_1.pin_mut().edge(),
@@ -81,12 +83,12 @@ pub fn main() {
     let mut make_fillet =
         b_rep_fillet_api::MakeFillet::new_shape_filletshape(
             body.pin_mut().shape(),
-            ch_fi3d::FilletShape::Rational as i32,
+            ch_fi3d::FilletShape::Rational,
         );
     let mut edge_explorer = top_exp::Explorer::new_shape_shapeenum2(
         body.pin_mut().shape(),
-        top_abs::ShapeEnum::Edge as i32,
-        top_abs::ShapeEnum::Shape as i32,
+        top_abs::ShapeEnum::Edge,
+        top_abs::ShapeEnum::Shape,
     );
 
     while edge_explorer.more() {
@@ -116,8 +118,8 @@ pub fn main() {
     // Body : Create a Hollowed Solid
     let mut face_explorer = top_exp::Explorer::new_shape_shapeenum2(
         body_shape,
-        top_abs::ShapeEnum::Face as i32,
-        top_abs::ShapeEnum::Shape as i32,
+        top_abs::ShapeEnum::Face,
+        top_abs::ShapeEnum::Shape,
     );
     let mut z_max = -1.0_f64;
     let mut top_face: Option<cxx::UniquePtr<topo_ds::Face>> = None;
@@ -165,10 +167,10 @@ pub fn main() {
         &faces_to_remove,
         -thickness / 50.0,
         1.0e-3,
-        0,     // BRepOffset_Skin
+        b_rep_offset::Mode::Skin,
         false, // Intersection
         false, // SelfInter
-        0,     // GeomAbs_Arc
+        geom_abs::JoinType::Arc,
         false, // RemoveIntEdges
         &progress,
     );
@@ -199,12 +201,12 @@ pub fn main() {
     let handle_ellipse_2 = geom2d::Ellipse::to_handle(ellipse_2);
     let handle_curve_2 = handle_ellipse_2.to_handle_curve();
 
-    let arc_1 = geom2d::TrimmedCurve::new_handlecurve_real2_bool2(
+    let arc_1 = geom2d::TrimmedCurve::new_handlegeom2dcurve_real2_bool2(
         &handle_curve_1, 0.0, std::f64::consts::PI, true, true,
     );
     let handle_arc_1 = geom2d::TrimmedCurve::to_handle(arc_1);
     let arc_1_handle = handle_arc_1.to_handle_curve();
-    let arc_2 = geom2d::TrimmedCurve::new_handlecurve_real2_bool2(
+    let arc_2 = geom2d::TrimmedCurve::new_handlegeom2dcurve_real2_bool2(
         &handle_curve_2, 0.0, std::f64::consts::PI, true, true,
     );
     let handle_arc_2 = geom2d::TrimmedCurve::to_handle(arc_2);
@@ -219,13 +221,13 @@ pub fn main() {
 
     // Threading : Build Edges and Wires
     let mut edge_1_on_surf_1 =
-        b_rep_builder_api::MakeEdge::new_handlecurve_handlesurface(&arc_1_handle, &handle_surface_1);
+        b_rep_builder_api::MakeEdge::new_handlegeom2dcurve_handlegeomsurface(&arc_1_handle, &handle_surface_1);
     let mut edge_2_on_surf_1 =
-        b_rep_builder_api::MakeEdge::new_handlecurve_handlesurface(&segment_handle, &handle_surface_1);
+        b_rep_builder_api::MakeEdge::new_handlegeom2dcurve_handlegeomsurface(&segment_handle, &handle_surface_1);
     let mut edge_1_on_surf_2 =
-        b_rep_builder_api::MakeEdge::new_handlecurve_handlesurface(&arc_2_handle, &handle_surface_2);
+        b_rep_builder_api::MakeEdge::new_handlegeom2dcurve_handlegeomsurface(&arc_2_handle, &handle_surface_2);
     let mut edge_2_on_surf_2 =
-        b_rep_builder_api::MakeEdge::new_handlecurve_handlesurface(&segment_handle, &handle_surface_2);
+        b_rep_builder_api::MakeEdge::new_handlegeom2dcurve_handlegeomsurface(&segment_handle, &handle_surface_2);
 
     let mut threading_wire_1 = b_rep_builder_api::MakeWire::new_edge2(
         edge_1_on_surf_1.pin_mut().edge(),

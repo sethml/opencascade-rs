@@ -47,10 +47,15 @@ impl ReShape {
     pub fn apply_shape_shapeenum_int(
         self: std::pin::Pin<&mut Self>,
         shape: &crate::ffi::TopoDS_Shape,
-        until: i32,
+        until: crate::top_abs::ShapeEnum,
         buildmode: i32,
     ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum_int(self, shape, until, buildmode)
+        crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum_int(
+            self,
+            shape,
+            until.into(),
+            buildmode,
+        )
     }
 
     /// Applies the substitutions requests to a shape.
@@ -68,9 +73,9 @@ impl ReShape {
     pub fn apply_shape_shapeenum(
         self: std::pin::Pin<&mut Self>,
         shape: &crate::ffi::TopoDS_Shape,
-        until: i32,
+        until: crate::top_abs::ShapeEnum,
     ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum(self, shape, until)
+        crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum(self, shape, until.into())
     }
 
     /// Queries the status of last call to Apply(shape,enum)
@@ -80,8 +85,8 @@ impl ReShape {
     /// DONE3: some subshapes replaced
     /// DONE4: some subshapes removed
     /// FAIL1: some replacements not done because of bad type of subshape
-    pub fn status_status(&self, status: i32) -> bool {
-        crate::ffi::ShapeBuild_ReShape_status(self, status)
+    pub fn status_status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::ffi::ShapeBuild_ReShape_status(self, status.into())
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

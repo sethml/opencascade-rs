@@ -177,6 +177,7 @@ pub fn generate_unified_ffi(
         all_classes: &all_class_names,
         handle_able_classes: Some(&handle_able_classes),
         type_to_module: Some(&symbol_table.type_to_module),
+        enum_rust_types: Some(&symbol_table.enum_rust_types),
     };
 
     // Get all classes with protected destructors
@@ -510,6 +511,78 @@ fn emit_rust_enum(output: &mut String, resolved: &crate::resolver::ResolvedEnum)
     writeln!(output).unwrap();
 }
 
+/// Emit a wrapper function for a free function that uses value enum types.
+/// Instead of `pub use crate::ffi::fn_name;` we generate a function that
+/// converts enum args with `.into()` and enum returns with `try_from().unwrap()`.
+fn emit_free_function_wrapper(
+    output: &mut String,
+    func: &crate::resolver::ResolvedFunction,
+    symbol_table: &crate::resolver::SymbolTable,
+) {
+    use std::fmt::Write;
+
+    // Build parameter list with typed enum params
+    let params: Vec<String> = func.params.iter().map(|p| {
+        let ty = if let Some(ref enum_name) = p.ty.enum_cpp_name {
+            symbol_table.enum_rust_types.get(enum_name)
+                .cloned()
+                .unwrap_or_else(|| "i32".to_string())
+        } else {
+            p.ty.rust_ffi_type.clone()
+        };
+        format!("{}: {}", p.rust_name, ty)
+    }).collect();
+
+    // Build args with .into() for enum params
+    let args: Vec<String> = func.params.iter().map(|p| {
+        if p.ty.enum_cpp_name.as_ref()
+            .map(|n| symbol_table.enum_rust_types.contains_key(n))
+            .unwrap_or(false)
+        {
+            format!("{}.into()", p.rust_name)
+        } else {
+            p.rust_name.clone()
+        }
+    }).collect();
+
+    // Build return type
+    let return_type_str = if let Some(ref rt) = func.return_type {
+        if let Some(ref enum_name) = rt.enum_cpp_name {
+            if let Some(rust_type) = symbol_table.enum_rust_types.get(enum_name) {
+                format!(" -> {}", rust_type)
+            } else {
+                format!(" -> i32")
+            }
+        } else {
+            format!(" -> {}", rt.rust_ffi_type)
+        }
+    } else {
+        String::new()
+    };
+
+    // Build call expression
+    let call_expr = format!("crate::ffi::{}({})", func.rust_ffi_name, args.join(", "));
+
+    // Build body with enum return conversion
+    let body = if let Some(ref rt) = func.return_type {
+        if let Some(ref enum_name) = rt.enum_cpp_name {
+            if let Some(rust_type) = symbol_table.enum_rust_types.get(enum_name) {
+                format!("{}::try_from({}).unwrap()", rust_type, call_expr)
+            } else {
+                call_expr
+            }
+        } else {
+            call_expr
+        }
+    } else {
+        call_expr
+    };
+
+    writeln!(output, "pub fn {}({}){} {{", func.rust_ffi_name, params.join(", "), return_type_str).unwrap();
+    writeln!(output, "    {}", body).unwrap();
+    writeln!(output, "}}").unwrap();
+}
+
 /// Generate a module re-export file for the unified architecture
 ///
 /// This generates a file like `gp.rs` that contains:
@@ -540,7 +613,23 @@ pub fn generate_module_reexports(
     let rust_module = crate::module_graph::module_to_rust_name(module_name);
     let module_functions = symbol_table.included_functions_for_module(&rust_module);
     for func in &module_functions {
-        output.push_str(&format!("pub use crate::ffi::{};\n", func.rust_ffi_name));
+        // Check if this function uses any value enum types (needs a wrapper)
+        let has_enum_params = func.params.iter().any(|p| {
+            p.ty.enum_cpp_name.as_ref()
+                .map(|n| symbol_table.enum_rust_types.contains_key(n))
+                .unwrap_or(false)
+        });
+        let has_enum_return = func.return_type.as_ref()
+            .and_then(|rt| rt.enum_cpp_name.as_ref())
+            .map(|n| symbol_table.enum_rust_types.contains_key(n))
+            .unwrap_or(false);
+
+        if has_enum_params || has_enum_return {
+            // Generate a wrapper function that converts enum types
+            emit_free_function_wrapper(&mut output, func, symbol_table);
+        } else {
+            output.push_str(&format!("pub use crate::ffi::{};\n", func.rust_ffi_name));
+        }
     }
 
     if !module_functions.is_empty() {

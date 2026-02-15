@@ -509,12 +509,12 @@ impl QuasiUniformDeflection {
     pub fn new_curve_real_shape(
         theC: &crate::ffi::Adaptor3d_Curve,
         theDeflection: f64,
-        theContinuity: i32,
+        theContinuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve_real_shape(
             theC,
             theDeflection,
-            theContinuity,
+            theContinuity.into(),
         )
     }
 
@@ -522,12 +522,12 @@ impl QuasiUniformDeflection {
     pub fn new_curve2d_real_shape(
         theC: &crate::ffi::Adaptor2d_Curve2d,
         theDeflection: f64,
-        theContinuity: i32,
+        theContinuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve2d_real_shape(
             theC,
             theDeflection,
-            theContinuity,
+            theContinuity.into(),
         )
     }
 
@@ -537,14 +537,14 @@ impl QuasiUniformDeflection {
         theDeflection: f64,
         theU1: f64,
         theU2: f64,
-        theContinuity: i32,
+        theContinuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve_real3_shape(
             theC,
             theDeflection,
             theU1,
             theU2,
-            theContinuity,
+            theContinuity.into(),
         )
     }
 
@@ -593,14 +593,14 @@ impl QuasiUniformDeflection {
         theDeflection: f64,
         theU1: f64,
         theU2: f64,
-        theContinuity: i32,
+        theContinuity: crate::geom_abs::Shape,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GCPnts_QuasiUniformDeflection_ctor_curve2d_real3_shape(
             theC,
             theDeflection,
             theU1,
             theU2,
-            theContinuity,
+            theContinuity.into(),
         )
     }
 
@@ -609,13 +609,13 @@ impl QuasiUniformDeflection {
         self: std::pin::Pin<&mut Self>,
         theC: &crate::ffi::Adaptor3d_Curve,
         theDeflection: f64,
-        theContinuity: i32,
+        theContinuity: crate::geom_abs::Shape,
     ) {
         crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve_real_shape(
             self,
             theC,
             theDeflection,
-            theContinuity,
+            theContinuity.into(),
         )
     }
 
@@ -624,13 +624,13 @@ impl QuasiUniformDeflection {
         self: std::pin::Pin<&mut Self>,
         theC: &crate::ffi::Adaptor2d_Curve2d,
         theDeflection: f64,
-        theContinuity: i32,
+        theContinuity: crate::geom_abs::Shape,
     ) {
         crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve2d_real_shape(
             self,
             theC,
             theDeflection,
-            theContinuity,
+            theContinuity.into(),
         )
     }
 
@@ -641,7 +641,7 @@ impl QuasiUniformDeflection {
         theDeflection: f64,
         theU1: f64,
         theU2: f64,
-        theContinuity: i32,
+        theContinuity: crate::geom_abs::Shape,
     ) {
         crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve_real3_shape(
             self,
@@ -649,7 +649,7 @@ impl QuasiUniformDeflection {
             theDeflection,
             theU1,
             theU2,
-            theContinuity,
+            theContinuity.into(),
         )
     }
 
@@ -700,7 +700,7 @@ impl QuasiUniformDeflection {
         theDeflection: f64,
         theU1: f64,
         theU2: f64,
-        theContinuity: i32,
+        theContinuity: crate::geom_abs::Shape,
     ) {
         crate::ffi::GCPnts_QuasiUniformDeflection_initialize_curve2d_real3_shape(
             self,
@@ -708,7 +708,7 @@ impl QuasiUniformDeflection {
             theDeflection,
             theU1,
             theU2,
-            theContinuity,
+            theContinuity.into(),
         )
     }
 

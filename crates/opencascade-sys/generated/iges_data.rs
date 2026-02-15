@@ -179,8 +179,8 @@ impl DefSwitch {
     }
 
     /// returns DefType status (Void,Reference,Rank)
-    pub fn def_type(&self) -> i32 {
-        crate::ffi::IGESData_DefSwitch_def_type(self)
+    pub fn def_type(&self) -> crate::iges_data::DefType {
+        crate::iges_data::DefType::try_from(crate::ffi::IGESData_DefSwitch_def_type(self)).unwrap()
     }
 }
 
@@ -262,24 +262,27 @@ impl IGESEntity {
     }
 
     /// Returns the definition status of LineFont
-    pub fn def_line_font(&self) -> i32 {
-        crate::ffi::IGESData_IGESEntity_def_line_font(self)
+    pub fn def_line_font(&self) -> crate::iges_data::DefType {
+        crate::iges_data::DefType::try_from(crate::ffi::IGESData_IGESEntity_def_line_font(self))
+            .unwrap()
     }
 
     /// Returns the definition status of Level
-    pub fn def_level(&self) -> i32 {
-        crate::ffi::IGESData_IGESEntity_def_level(self)
+    pub fn def_level(&self) -> crate::iges_data::DefList {
+        crate::iges_data::DefList::try_from(crate::ffi::IGESData_IGESEntity_def_level(self))
+            .unwrap()
     }
 
     /// Returns the definition status of
     /// the view. This can be: none, one or several.
-    pub fn def_view(&self) -> i32 {
-        crate::ffi::IGESData_IGESEntity_def_view(self)
+    pub fn def_view(&self) -> crate::iges_data::DefList {
+        crate::iges_data::DefList::try_from(crate::ffi::IGESData_IGESEntity_def_view(self)).unwrap()
     }
 
     /// Returns the definition status of Color.
-    pub fn def_color(&self) -> i32 {
-        crate::ffi::IGESData_IGESEntity_def_color(self)
+    pub fn def_color(&self) -> crate::iges_data::DefType {
+        crate::iges_data::DefType::try_from(crate::ffi::IGESData_IGESEntity_def_color(self))
+            .unwrap()
     }
 
     /// returns "reserved" alphanumeric values res1 and res2

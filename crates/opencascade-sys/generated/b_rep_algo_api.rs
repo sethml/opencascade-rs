@@ -48,13 +48,16 @@ impl BooleanOperation {
 
     /// @name Setting/Getting the type of Boolean operation
     /// Sets the type of Boolean operation
-    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: i32) {
-        crate::ffi::BRepAlgoAPI_BooleanOperation_set_operation(self, theBOP)
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: crate::bop_algo::Operation) {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_set_operation(self, theBOP.into())
     }
 
     /// Returns the type of Boolean Operation
-    pub fn operation(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_BooleanOperation_operation(self)
+    pub fn operation(&self) -> crate::bop_algo::Operation {
+        crate::bop_algo::Operation::try_from(crate::ffi::BRepAlgoAPI_BooleanOperation_operation(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo
@@ -117,13 +120,16 @@ impl BooleanOperation {
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetGlue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetGlue(self, theGlue.into())
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(
+            crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Glue(self),
+        )
+        .unwrap()
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
@@ -267,13 +273,13 @@ impl BuilderAlgo {
     /// Sets the glue option for the algorithm,
     /// which allows increasing performance of the intersection
     /// of the input shapes.
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo_set_glue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BRepAlgoAPI_BuilderAlgo_set_glue(self, theGlue.into())
     }
 
     /// Returns the glue option of the algorithm
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo_glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_BuilderAlgo_glue(self)).unwrap()
     }
 
     /// History tool
@@ -387,13 +393,18 @@ impl Check {
     pub fn new_shape2_operation_bool2_progressrange(
         theS1: &crate::ffi::TopoDS_Shape,
         theS2: &crate::ffi::TopoDS_Shape,
-        theOp: i32,
+        theOp: crate::bop_algo::Operation,
         bTestSE: bool,
         bTestSI: bool,
         theRange: &crate::ffi::Message_ProgressRange,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepAlgoAPI_Check_ctor_shape2_operation_bool2_progressrange(
-            theS1, theS2, theOp, bTestSE, bTestSI, theRange,
+            theS1,
+            theS2,
+            theOp.into(),
+            bTestSE,
+            bTestSI,
+            theRange,
         )
     }
 
@@ -414,11 +425,11 @@ impl Check {
         self: std::pin::Pin<&mut Self>,
         theS1: &crate::ffi::TopoDS_Shape,
         theS2: &crate::ffi::TopoDS_Shape,
-        theOp: i32,
+        theOp: crate::bop_algo::Operation,
         bTestSE: bool,
         bTestSI: bool,
     ) {
-        crate::ffi::BRepAlgoAPI_Check_set_data(self, theS1, theS2, theOp, bTestSE, bTestSI)
+        crate::ffi::BRepAlgoAPI_Check_set_data(self, theS1, theS2, theOp.into(), bTestSE, bTestSI)
     }
 
     /// Upcast to BOPAlgo_Options
@@ -634,13 +645,16 @@ impl Common {
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
-    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: i32) {
-        crate::ffi::BRepAlgoAPI_Common_inherited_SetOperation(self, theBOP)
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: crate::bop_algo::Operation) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SetOperation(self, theBOP.into())
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
-    pub fn operation(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_Common_inherited_Operation(self)
+    pub fn operation(&self) -> crate::bop_algo::Operation {
+        crate::bop_algo::Operation::try_from(crate::ffi::BRepAlgoAPI_Common_inherited_Operation(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
@@ -669,13 +683,14 @@ impl Common {
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BRepAlgoAPI_Common_inherited_SetGlue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SetGlue(self, theGlue.into())
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_Common_inherited_Glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_Common_inherited_Glue(self))
+            .unwrap()
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
@@ -893,13 +908,14 @@ impl Cut {
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
-    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: i32) {
-        crate::ffi::BRepAlgoAPI_Cut_inherited_SetOperation(self, theBOP)
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: crate::bop_algo::Operation) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SetOperation(self, theBOP.into())
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
-    pub fn operation(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_Cut_inherited_Operation(self)
+    pub fn operation(&self) -> crate::bop_algo::Operation {
+        crate::bop_algo::Operation::try_from(crate::ffi::BRepAlgoAPI_Cut_inherited_Operation(self))
+            .unwrap()
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
@@ -928,13 +944,14 @@ impl Cut {
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BRepAlgoAPI_Cut_inherited_SetGlue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SetGlue(self, theGlue.into())
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_Cut_inherited_Glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_Cut_inherited_Glue(self))
+            .unwrap()
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
@@ -1283,13 +1300,14 @@ impl Fuse {
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
-    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: i32) {
-        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetOperation(self, theBOP)
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: crate::bop_algo::Operation) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetOperation(self, theBOP.into())
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
-    pub fn operation(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_Fuse_inherited_Operation(self)
+    pub fn operation(&self) -> crate::bop_algo::Operation {
+        crate::bop_algo::Operation::try_from(crate::ffi::BRepAlgoAPI_Fuse_inherited_Operation(self))
+            .unwrap()
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
@@ -1318,13 +1336,14 @@ impl Fuse {
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetGlue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetGlue(self, theGlue.into())
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_Fuse_inherited_Glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_Fuse_inherited_Glue(self))
+            .unwrap()
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
@@ -1682,13 +1701,16 @@ impl Section {
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
-    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: i32) {
-        crate::ffi::BRepAlgoAPI_Section_inherited_SetOperation(self, theBOP)
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: crate::bop_algo::Operation) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SetOperation(self, theBOP.into())
     }
 
     /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
-    pub fn operation(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_Section_inherited_Operation(self)
+    pub fn operation(&self) -> crate::bop_algo::Operation {
+        crate::bop_algo::Operation::try_from(crate::ffi::BRepAlgoAPI_Section_inherited_Operation(
+            self,
+        ))
+        .unwrap()
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
@@ -1712,13 +1734,14 @@ impl Section {
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BRepAlgoAPI_Section_inherited_SetGlue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SetGlue(self, theGlue.into())
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_Section_inherited_Glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_Section_inherited_Glue(self))
+            .unwrap()
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
@@ -1918,13 +1941,14 @@ impl Splitter {
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
-        crate::ffi::BRepAlgoAPI_Splitter_inherited_SetGlue(self, theGlue)
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_SetGlue(self, theGlue.into())
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
-    pub fn glue(&self) -> i32 {
-        crate::ffi::BRepAlgoAPI_Splitter_inherited_Glue(self)
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_Splitter_inherited_Glue(self))
+            .unwrap()
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
