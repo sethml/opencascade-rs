@@ -340,3 +340,218 @@ CXX processes the entire bridge as one compilation unit. This will likely cause 
 ### 17. Windows-only header parse failure (non-blocking)
 
 `OSD_WNT.hxx` includes `<windows.h>` which doesn't exist on macOS/Linux. Clang emits a fatal error but the generator continues. No types are lost. Could suppress the warning by detecting known Windows-only headers.
+
+---
+
+## Optional: Switching from CXX to `extern "C"` FFI
+
+### Motivation
+
+CXX provides safety guarantees at the FFI boundary (lifetime checking, `UniquePtr` ownership, `Pin` for move-prevention), but imposes significant constraints on what can be bound. The current generator already works around many CXX limitations with C++ wrapper functions — 12,108 of 19,552 FFI functions (62%) require a C++ wrapper to satisfy CXX. Only 7,444 (38%) are direct CXX method bindings. The question is whether CXX's safety benefits justify its constraints, given that the binding code is machine-generated and the safety layer could be provided by hand-written Rust wrappers in the `opencascade` crate instead.
+
+### What CXX Provides
+
+**Safety features:**
+- `UniquePtr<T>` — RAII ownership of heap-allocated C++ objects with automatic destructor calls
+- `Pin<&mut T>` — prevents Rust from moving C++ objects (which may have internal pointers)
+- Lifetime checking — prevents returning references with ambiguous lifetimes
+- Type identity — CXX ensures types are declared consistently across the bridge
+- `rust::String`/`rust::Str` — safe bidirectional string conversion
+
+**Convenience features:**
+- Direct method binding with `self: &T` / `self: Pin<&mut T>` — 7,444 methods bound without C++ wrappers
+- `#[cxx_name]` for Rust↔C++ name mapping
+- Automatic destructor generation via `impl UniquePtr<T> {}`
+
+### What CXX Costs
+
+**Excluded functionality (CXX-specific limitations):**
+- Classes with protected destructors — entirely excluded (CXX needs public dtor for `UniquePtr`)
+- Methods returning `&mut T` with reference params — excluded (ambiguous lifetimes)
+- Const methods returning `T&` (non-const result type mismatch) — need `ConstMutReturnFix` wrappers
+- No template types in the bridge — 386 Handle typedefs needed (`HandleGeomCurve` instead of `Handle<Geom_Curve>`)
+- No C++ enum support (only `enum class`) — all enums mapped to `i32` with `static_cast` (2,322 casts in wrappers.hxx)
+- No namespace-scoped types (e.g., `IMeshData::ListOfPnt2d`)
+
+**Structural constraints:**
+- Single monolithic `#[cxx::bridge]` module — all 1,472 types and 19,552 functions in one compilation unit (125K-line ffi.rs, 39K-line wrappers.hxx)
+- CXX cannot reference types across bridge modules — prevents splitting into per-module compilation
+- 5 reserved name collisions (`Vec`, `Box`, `String`, `Result`, `Option`) require renaming
+- `UniquePtr` wrapping forces heap allocation for every C++ object, even small value types like `gp_Pnt` (24 bytes)
+
+**Generated code overhead:**
+- 6,085 `UniquePtr<T>` annotations in ffi.rs
+- 9,042 `Pin<&mut T>` annotations in ffi.rs
+- 1,000 `impl UniquePtr<T> {}` blocks
+- 4,809 `std::make_unique<T>()` calls in wrappers.hxx
+- 1,025 `rust::String` conversions in wrappers.hxx
+- 1,304 `rust::Str` conversions in wrappers.hxx
+
+### What `extern "C"` Would Look Like
+
+#### C++ side (wrappers.hxx → wrappers.cpp)
+
+Every function becomes `extern "C"` with opaque pointer types:
+
+```cpp
+// Current (CXX):
+inline std::unique_ptr<gp_Pnt> gp_Pnt_ctor_real3(
+    Standard_Real theXp, Standard_Real theYp, Standard_Real theZp) {
+    return std::make_unique<gp_Pnt>(theXp, theYp, theZp);
+}
+
+// extern "C" equivalent:
+extern "C" gp_Pnt* gp_Pnt_ctor_real3(double x, double y, double z) {
+    return new gp_Pnt(x, y, z);
+}
+extern "C" void gp_Pnt_destroy(gp_Pnt* self) {
+    delete self;
+}
+
+// Current (CXX direct method — no C++ wrapper):
+// In ffi.rs: fn x(self: &gp_Pnt) -> f64;
+// CXX calls gp_Pnt::X() directly
+
+// extern "C" equivalent (all methods need wrappers):
+extern "C" double gp_Pnt_x(const gp_Pnt* self) {
+    return self->X();
+}
+```
+
+#### Rust side (ffi.rs)
+
+```rust
+// Current (CXX):
+#[cxx::bridge]
+mod ffi {
+    unsafe extern "C++" {
+        type gp_Pnt;
+        fn gp_Pnt_ctor_real3(x: f64, y: f64, z: f64) -> UniquePtr<gp_Pnt>;
+        #[cxx_name = "X"]
+        fn x(self: &gp_Pnt) -> f64;
+    }
+}
+
+// extern "C" equivalent:
+#[repr(C)]
+pub struct gp_Pnt { _opaque: [u8; 0] }
+
+extern "C" {
+    fn gp_Pnt_ctor_real3(x: f64, y: f64, z: f64) -> *mut gp_Pnt;
+    fn gp_Pnt_destroy(self_: *mut gp_Pnt);
+    fn gp_Pnt_x(self_: *const gp_Pnt) -> f64;
+}
+
+// Safe wrapper (in per-module re-export file):
+pub struct Pnt {
+    ptr: *mut crate::ffi::gp_Pnt,
+}
+impl Pnt {
+    pub fn new(x: f64, y: f64, z: f64) -> Self {
+        Self { ptr: unsafe { crate::ffi::gp_Pnt_ctor_real3(x, y, z) } }
+    }
+    pub fn x(&self) -> f64 {
+        unsafe { crate::ffi::gp_Pnt_x(self.ptr) }
+    }
+}
+impl Drop for Pnt {
+    fn drop(&mut self) {
+        unsafe { crate::ffi::gp_Pnt_destroy(self.ptr) }
+    }
+}
+```
+
+### Advantages of `extern "C"`
+
+1. **Per-module compilation** — The module dependency graph is a clean DAG (zero cycles across 123 modules). Each module could be its own compilation unit: separate `.cpp` file compiled independently, separate `extern "C"` block in Rust. This would dramatically improve incremental compile times and enable parallel compilation.
+
+2. **No excluded functionality** — Protected destructors, lifetime-ambiguous methods, const/mut mismatches, and namespace-scoped types all work fine with raw pointers. The only remaining exclusions would be genuinely unbindable patterns (rvalue references, complex templates).
+
+3. **Simpler generated code** — No `UniquePtr`, `Pin`, `#[cxx_name]`, `impl UniquePtr` blocks, `rust::String`/`rust::Str`, `static_cast` for enums. The C++ wrapper is a straightforward `extern "C"` function. The Rust FFI is a straightforward `extern "C"` block.
+
+4. **Smaller dependency footprint** — Remove the `cxx` and `cxx-build` crate dependencies.
+
+5. **Value types** — Small types like `gp_Pnt` (24 bytes) could be `#[repr(C)]` structs passed by value instead of heap-allocated. This requires matching the C++ struct layout, but OCCT's `gp_*` types are simple POD types (just doubles), and the layout could be verified at build time.
+
+6. **Enum support** — Enums could be `#[repr(i32)]` Rust enums used directly in function signatures, eliminating the i32-with-static_cast workaround.
+
+### Disadvantages of `extern "C"`
+
+1. **All 19,552 functions need C++ wrappers** — Currently 7,444 are direct CXX bindings. Switching to extern "C" means every single method, accessor, and mutator needs a C++ wrapper function. The generator already generates 12,108 wrappers, so this is a ~62% increase in C++ wrapper code.
+
+2. **Manual memory management** — Every `new` needs a corresponding `delete` wrapper. The safe wrapper structs handle this, but it's more code to generate:
+   - 1 destructor per non-abstract class (~600 classes)
+   - Safe wrapper struct + `Drop` impl per class
+
+3. **No compiler-enforced safety at FFI boundary** — CXX catches certain misuse at compile time (e.g., using `&T` where `Pin<&mut T>` is needed). With extern "C", the raw pointer layer is all `unsafe` — safety enforcement moves to the generated safe wrapper layer.
+
+4. **Significant generator rewrite** — `codegen/rust.rs`, `codegen/cpp.rs`, `type_mapping.rs`, `resolver.rs`, and `build.rs` all need substantial changes. Estimate: 2,000-3,000 lines of codegen changes.
+
+5. **`opencascade` crate migration** — The crate currently uses `UniquePtr<T>`, `pin_mut()`, etc. extensively (~188 occurrences). All would need to change to use the new safe wrapper types.
+
+6. **Handle reference counting** — OCCT's `Handle<T>` (based on `opencascade::handle<T>`, an intrusive ref-counted smart pointer) would need explicit ref-count management wrappers (`IncrementRefCounter`/`DecrementRefCounter`) rather than relying on CXX's `UniquePtr<HandleT>` RAII.
+
+### Per-Module Compilation Architecture
+
+The key structural benefit of extern "C" is enabling per-module compilation. Here's how it would work:
+
+```
+crates/opencascade-sys/generated/
+├── gp_ffi.rs          # extern "C" { fn gp_Pnt_ctor_real3(...) -> *mut gp_Pnt; ... }
+├── gp_wrappers.cpp    # extern "C" gp_Pnt* gp_Pnt_ctor_real3(...) { ... }
+├── gp.rs              # pub struct Pnt { ptr: *mut gp_ffi::gp_Pnt } + safe wrappers
+├── topo_ds_ffi.rs     # extern "C" { ... }
+├── topo_ds_wrappers.cpp
+├── topo_ds.rs          # safe wrappers, can reference gp::Pnt
+├── ...
+└── lib.rs             # pub mod gp; pub mod topo_ds; ...
+```
+
+**Module dependency feasibility:**
+- 123 modules, zero circular dependencies (verified by module_graph.rs analysis)
+- 72 modules (59%) are leaf modules with no cross-module deps
+- Deepest dependency chain is 3 levels
+- Most-depended-on modules: `geom_abs` (28 deps), `top_abs` (19 deps), `gp` (4 deps)
+
+**Build system changes:**
+- `build.rs` compiles each `*_wrappers.cpp` as a separate translation unit
+- Each `.cpp` file only includes the headers it needs (currently wrappers.hxx includes all 1,027 headers)
+- The cc crate's `Build::files()` handles parallel C++ compilation natively
+- Incremental builds: changing one module only recompiles that module's `.cpp`
+
+**Cross-module type references in Rust:**
+- Each module's `_ffi.rs` declares its own opaque types
+- Cross-module references use Rust's type system: `gp_ffi::gp_Pnt` can be referenced from `topo_ds_ffi.rs` as an opaque pointer
+- The safe wrapper layer handles conversions: `impl From<&gp::Pnt> for *const gp_ffi::gp_Pnt`
+- No C++ cross-module issues since each `.cpp` includes its own OCCT headers directly
+
+### Exploration Needed to Validate
+
+Before committing to this transition, the following should be investigated:
+
+1. **Prototype one module** — Convert `gp` to extern "C" as a proof-of-concept. This is the simplest module (no cross-module deps, well-understood POD types). Verify:
+   - Compile time improvement (currently the monolithic build takes significant time)
+   - That `#[repr(C)]` for simple types like `gp_Pnt` matches C++ layout
+   - That the safe wrapper API is ergonomic enough
+
+2. **Handle<T> reference counting** — Prototype the explicit ref-count pattern for one Handle type. Verify that `IncrementRefCounter`/`DecrementRefCounter` works correctly, especially for Handle upcasting and the `to_handle()` pattern.
+
+3. **Protected destructors** — Verify that classes with protected destructors can be handled (e.g., via a destructor wrapper that's a friend function, or by only allowing Handle-based ownership for those types).
+
+4. **Value types feasibility** — For `gp_*` types (Pnt, Vec, Dir, Trsf, etc.), verify that `#[repr(C)]` structs with known field layout match the C++ ABI. Could use `static_assert(sizeof(gp_Pnt) == 24)` and `offsetof` checks in the generated C++ code.
+
+5. **Compile time measurement** — Measure current monolithic CXX build time vs projected per-module extern "C" build time. The current build compiles 39K lines of C++ as one unit; splitting into ~123 units of ~300 lines each with parallel compilation should be substantially faster.
+
+6. **Incremental migration path** — Determine whether CXX and extern "C" can coexist during a transition period. A module could be migrated one at a time if the extern "C" types can be used alongside CXX `UniquePtr` types. This may require type-erased pointer conversions at the boundary.
+
+### Assessment
+
+**Is it worthwhile?** Probably yes, but not urgently.
+
+The strongest argument for switching is **per-module compilation**. The monolithic 125K-line ffi.rs / 39K-line wrappers.hxx is already the largest compilation bottleneck, and it will grow 6x if we expand to all OCCT headers (future work item #16). CXX's inability to split across bridge modules means this will only get worse. With extern "C", each module compiles independently, enabling both parallel compilation and incremental rebuilds.
+
+The second strongest argument is **removing exclusions**. Protected destructors, lifetime-ambiguous methods, and const/mut mismatches are all CXX-specific limitations that would disappear.
+
+The main cost is **generator rewrite effort** (estimated 2-3K lines) and **opencascade crate migration**. However, the generator is already designed with clean separation between binding computation (resolver.rs, bindings.rs) and code emission (codegen/), so the rewrite would primarily affect the codegen layer. The binding computation layer would be simplified (fewer exclusion reasons).
+
+**Recommendation:** Prototype the `gp` module first (exploration item #1). If it demonstrates clear compile-time benefits and acceptable ergonomics, plan the full transition as a future major step.
