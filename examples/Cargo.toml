@@ -8,6 +8,9 @@ clap = { version = "4", features = ["derive"] }
 opencascade = { version = "0.2", path = "../crates/opencascade", default-features = false }
 glam = { version = "0.24", features = ["bytemuck"] }
 
+[dev-dependencies]
+tempfile = "3"
+
 [features]
 default = ["builtin"]
 builtin = ["opencascade/builtin"]

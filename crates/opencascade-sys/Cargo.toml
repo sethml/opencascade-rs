@@ -19,6 +19,9 @@ occt-sys = { path = "../occt-sys", optional = true }
 default = ["builtin"]
 builtin = ["occt-sys"]
 
+[dev-dependencies]
+tempfile = "3"
+
 [[example]]
 name = "point_info_3d"
 path = "examples/point_info_3d.rs"
