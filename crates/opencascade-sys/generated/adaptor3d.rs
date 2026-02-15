@@ -638,35 +638,6 @@ impl InterFunc {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Adaptor3d_InterFunc_ctor_handleadaptor2dcurve2d_real_int(C, FixVal, Fix)
     }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::Adaptor3d_InterFunc_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::Adaptor3d_InterFunc_as_math_Function_mut(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        crate::ffi::Adaptor3d_InterFunc_as_math_FunctionWithDerivative(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
-        crate::ffi::Adaptor3d_InterFunc_as_math_FunctionWithDerivative_mut(self)
-    }
-
-    /// Inherited from math_Function: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::Adaptor3d_InterFunc_inherited_GetStateNumber(self)
-    }
 }
 
 // ========================

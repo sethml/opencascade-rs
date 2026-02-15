@@ -143,23 +143,6 @@ impl MyGaussFunction {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::CPnts_MyGaussFunction_ctor()
     }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::CPnts_MyGaussFunction_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::CPnts_MyGaussFunction_as_math_Function_mut(self)
-    }
-
-    /// Inherited from math_Function: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::CPnts_MyGaussFunction_inherited_GetStateNumber(self)
-    }
 }
 
 // ========================
@@ -174,35 +157,6 @@ pub use crate::ffi::CPnts_MyRootFunction as MyRootFunction;
 impl MyRootFunction {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::CPnts_MyRootFunction_ctor()
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::CPnts_MyRootFunction_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::CPnts_MyRootFunction_as_math_Function_mut(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        crate::ffi::CPnts_MyRootFunction_as_math_FunctionWithDerivative(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
-        crate::ffi::CPnts_MyRootFunction_as_math_FunctionWithDerivative_mut(self)
-    }
-
-    /// Inherited from math_Function: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::CPnts_MyRootFunction_inherited_GetStateNumber(self)
     }
 }
 

@@ -119,32 +119,6 @@ impl CCLocFOfLocECC {
     ) -> cxx::UniquePtr<Self> {
         Self::new_curve2_real(C1, C2, 1.0e-10)
     }
-
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet(self)
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionSet> {
-        crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet_mut(self)
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives
-    pub fn as_math_function_set_with_derivatives(
-        &self,
-    ) -> &crate::math::FunctionSetWithDerivatives {
-        crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives(self)
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives (mutable)
-    pub fn as_math_function_set_with_derivatives_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionSetWithDerivatives> {
-        crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives_mut(self)
-    }
 }
 
 // ========================
@@ -175,32 +149,6 @@ impl CCLocFOfLocECC2d {
         C2: &crate::ffi::Adaptor2d_Curve2d,
     ) -> cxx::UniquePtr<Self> {
         Self::new_curve2d2_real(C1, C2, 1.0e-10)
-    }
-
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet(self)
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionSet> {
-        crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet_mut(self)
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives
-    pub fn as_math_function_set_with_derivatives(
-        &self,
-    ) -> &crate::math::FunctionSetWithDerivatives {
-        crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives(self)
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives (mutable)
-    pub fn as_math_function_set_with_derivatives_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionSetWithDerivatives> {
-        crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives_mut(self)
     }
 }
 
@@ -2214,32 +2162,6 @@ impl FuncExtCS {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_FuncExtCS_ctor_curve_surface(C, S)
     }
-
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet(self)
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionSet> {
-        crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet_mut(self)
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives
-    pub fn as_math_function_set_with_derivatives(
-        &self,
-    ) -> &crate::math::FunctionSetWithDerivatives {
-        crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives(self)
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives (mutable)
-    pub fn as_math_function_set_with_derivatives_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionSetWithDerivatives> {
-        crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives_mut(self)
-    }
 }
 
 // ========================
@@ -2260,32 +2182,6 @@ impl FuncExtSS {
         S2: &crate::ffi::Adaptor3d_Surface,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_FuncExtSS_ctor_surface2(S1, S2)
-    }
-
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet(self)
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionSet> {
-        crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet_mut(self)
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives
-    pub fn as_math_function_set_with_derivatives(
-        &self,
-    ) -> &crate::math::FunctionSetWithDerivatives {
-        crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives(self)
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives (mutable)
-    pub fn as_math_function_set_with_derivatives_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionSetWithDerivatives> {
-        crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives_mut(self)
     }
 }
 
@@ -2316,37 +2212,6 @@ impl FuncPSDist {
         theP: &crate::ffi::gp_Pnt,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_FuncPSDist_ctor_surface_pnt(theS, theP)
-    }
-
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction(self)
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
-        crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction_mut(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithGradient
-    pub fn as_math_multiple_var_function_with_gradient(
-        &self,
-    ) -> &crate::math::MultipleVarFunctionWithGradient {
-        crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
-    pub fn as_math_multiple_var_function_with_gradient_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithGradient> {
-        crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient_mut(self)
-    }
-
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::Extrema_FuncPSDist_inherited_GetStateNumber(self)
     }
 }
 
@@ -2386,32 +2251,6 @@ impl FuncPSNorm {
         S: &crate::ffi::Adaptor3d_Surface,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_FuncPSNorm_ctor_pnt_surface(P, S)
-    }
-
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet(self)
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionSet> {
-        crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet_mut(self)
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives
-    pub fn as_math_function_set_with_derivatives(
-        &self,
-    ) -> &crate::math::FunctionSetWithDerivatives {
-        crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives(self)
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives (mutable)
-    pub fn as_math_function_set_with_derivatives_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionSetWithDerivatives> {
-        crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives_mut(self)
     }
 }
 
@@ -2759,23 +2598,6 @@ impl GlobOptFuncCCC0 {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_GlobOptFuncCCC0_ctor_curve2d2(C1, C2)
     }
-
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction(self)
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
-        crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction_mut(self)
-    }
-
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::Extrema_GlobOptFuncCCC0_inherited_GetStateNumber(self)
-    }
 }
 
 /// This class implements function which calculate Eucluidean distance
@@ -2795,37 +2617,6 @@ impl GlobOptFuncCCC1 {
         C2: &crate::ffi::Adaptor2d_Curve2d,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_GlobOptFuncCCC1_ctor_curve2d2(C1, C2)
-    }
-
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction(self)
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
-        crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction_mut(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithGradient
-    pub fn as_math_multiple_var_function_with_gradient(
-        &self,
-    ) -> &crate::math::MultipleVarFunctionWithGradient {
-        crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
-    pub fn as_math_multiple_var_function_with_gradient_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithGradient> {
-        crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient_mut(self)
-    }
-
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::Extrema_GlobOptFuncCCC1_inherited_GetStateNumber(self)
     }
 }
 
@@ -2847,51 +2638,6 @@ impl GlobOptFuncCCC2 {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_GlobOptFuncCCC2_ctor_curve2d2(C1, C2)
     }
-
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction(self)
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
-        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction_mut(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithGradient
-    pub fn as_math_multiple_var_function_with_gradient(
-        &self,
-    ) -> &crate::math::MultipleVarFunctionWithGradient {
-        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
-    pub fn as_math_multiple_var_function_with_gradient_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithGradient> {
-        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient_mut(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithHessian
-    pub fn as_math_multiple_var_function_with_hessian(
-        &self,
-    ) -> &crate::math::MultipleVarFunctionWithHessian {
-        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
-    pub fn as_math_multiple_var_function_with_hessian_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithHessian> {
-        crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian_mut(self)
-    }
-
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::Extrema_GlobOptFuncCCC2_inherited_GetStateNumber(self)
-    }
 }
 
 // ========================
@@ -2902,25 +2648,6 @@ impl GlobOptFuncCCC2 {
 /// between point on surface and nearest point on Conic.
 pub use crate::ffi::Extrema_GlobOptFuncCQuadric as GlobOptFuncCQuadric;
 
-impl GlobOptFuncCQuadric {
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction(self)
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
-        crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction_mut(self)
-    }
-
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::Extrema_GlobOptFuncCQuadric_inherited_GetStateNumber(self)
-    }
-}
-
 // ========================
 // From Extrema_GlobOptFuncCS.hxx
 // ========================
@@ -2929,53 +2656,6 @@ impl GlobOptFuncCQuadric {
 /// between point on curve and point on surface in case of continuity is C2.
 pub use crate::ffi::Extrema_GlobOptFuncCS as GlobOptFuncCS;
 
-impl GlobOptFuncCS {
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction(self)
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
-        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction_mut(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithGradient
-    pub fn as_math_multiple_var_function_with_gradient(
-        &self,
-    ) -> &crate::math::MultipleVarFunctionWithGradient {
-        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
-    pub fn as_math_multiple_var_function_with_gradient_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithGradient> {
-        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient_mut(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithHessian
-    pub fn as_math_multiple_var_function_with_hessian(
-        &self,
-    ) -> &crate::math::MultipleVarFunctionWithHessian {
-        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian(self)
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
-    pub fn as_math_multiple_var_function_with_hessian_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunctionWithHessian> {
-        crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian_mut(self)
-    }
-
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::Extrema_GlobOptFuncCS_inherited_GetStateNumber(self)
-    }
-}
-
 // ========================
 // From Extrema_GlobOptFuncConicS.hxx
 // ========================
@@ -2983,25 +2663,6 @@ impl GlobOptFuncCS {
 /// This class implements function which calculate square Eucluidean distance
 /// between point on surface and nearest point on Conic.
 pub use crate::ffi::Extrema_GlobOptFuncConicS as GlobOptFuncConicS;
-
-impl GlobOptFuncConicS {
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction(self)
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
-        crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction_mut(self)
-    }
-
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::Extrema_GlobOptFuncConicS_inherited_GetStateNumber(self)
-    }
-}
 
 // ========================
 // From Extrema_HArray1OfPOnCurv.hxx
@@ -3742,30 +3403,6 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor_pnt_curve(P, C)
     }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function_mut(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
-        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(self)
-    }
 }
 
 // ========================
@@ -3784,30 +3421,6 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
         C: &crate::ffi::Adaptor2d_Curve2d,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C)
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function_mut(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
-        crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(self)
     }
 }
 
@@ -3828,30 +3441,6 @@ impl PCFOfEPCOfExtPC {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_PCFOfEPCOfExtPC_ctor_pnt_curve(P, C)
     }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(self)
-    }
 }
 
 // ========================
@@ -3870,30 +3459,6 @@ impl PCFOfEPCOfExtPC2d {
         C: &crate::ffi::Adaptor2d_Curve2d,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_PCFOfEPCOfExtPC2d_ctor_pnt2d_curve2d(P, C)
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function_mut(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative_mut(self)
     }
 }
 
@@ -3914,30 +3479,6 @@ impl PCLocFOfLocEPCOfLocateExtPC {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor_pnt_curve(P, C)
     }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function_mut(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
-        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(self)
-    }
 }
 
 // ========================
@@ -3956,30 +3497,6 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
         C: &crate::ffi::Adaptor2d_Curve2d,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C)
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function_mut(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
-        crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(self)
     }
 }
 

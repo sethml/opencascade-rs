@@ -41,7 +41,7 @@ impl Bisec {
     /// <Cu1> and <Cu2>.
     /// <oncurve> is True if the point <P> is common to <Cu1>
     /// and <Cu2>.
-    pub fn perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(
+    pub fn perform(
         self: std::pin::Pin<&mut Self>,
         Cu1: &crate::ffi::HandleGeom2dCurve,
         Cu2: &crate::ffi::HandleGeom2dCurve,

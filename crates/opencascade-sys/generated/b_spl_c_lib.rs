@@ -7,10 +7,8 @@
 #![allow(non_snake_case)]
 
 pub use crate::ffi::{
-    anti_boor_scheme, bohm, boor_index, boor_scheme, derivative, eval, factor_banded_matrix,
-    flat_bezier_knots, max_degree, poles_coefficients, poles_coefficients_mut, reverse,
-    reverse_mut, solve_banded_system, solve_banded_system_3, solve_banded_system_4,
-    solve_banded_system_mut,
+    anti_boor_scheme, bohm, boor_index, boor_scheme, derivative, eval, flat_bezier_knots,
+    max_degree, poles_coefficients, poles_coefficients_mut, reverse, reverse_mut,
 };
 
 /// This enumeration describes the repartition of the

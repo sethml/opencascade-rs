@@ -1816,14 +1816,6 @@ impl ModelBuilder {
         crate::ffi::BRepMesh_ModelBuilder_inherited_AddStatus(self, theOther)
     }
 
-    /// Inherited from Message_Algorithm: GetMessageNumbers()
-    pub fn get_message_numbers(
-        &self,
-        theStatus: crate::message::Status,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessageNumbers(self, theStatus.into())
-    }
-
     /// Inherited from Message_Algorithm: GetMessageStrings()
     pub fn get_message_strings(
         &self,

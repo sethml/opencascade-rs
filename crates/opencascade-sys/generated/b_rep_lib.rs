@@ -6,119 +6,33 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{check_same_range, plane_3, plane_4, precision_3, precision_4, same_range};
-pub fn build_curve3d(
-    E: &crate::ffi::TopoDS_Edge,
-    Tolerance: f64,
-    Continuity: crate::geom_abs::Shape,
-    MaxDegree: i32,
-    MaxSegment: i32,
-) -> bool {
-    crate::ffi::build_curve3d(E, Tolerance, Continuity.into(), MaxDegree, MaxSegment)
-}
-pub fn build_curves3d(
-    S: &crate::ffi::TopoDS_Shape,
-    Tolerance: f64,
-    Continuity: crate::geom_abs::Shape,
-    MaxDegree: i32,
-    MaxSegment: i32,
-) -> bool {
-    crate::ffi::build_curves3d(S, Tolerance, Continuity.into(), MaxDegree, MaxSegment)
-}
-pub use crate::ffi::{
-    build_curves3d_2, build_p_curve_for_edge_on_plane, build_p_curve_for_edge_on_plane_mut,
-    orient_closed_solid, same_parameter, same_parameter_3, same_parameter_4, same_parameter_mut,
-    update_edge_tol, update_edge_tolerance, update_inner_tolerances, update_tolerances,
-    update_tolerances_mut,
-};
-pub fn continuity_of_faces(
-    theEdge: &crate::ffi::TopoDS_Edge,
-    theFace1: &crate::ffi::TopoDS_Face,
-    theFace2: &crate::ffi::TopoDS_Face,
-    theAngleTol: f64,
-) -> crate::geom_abs::Shape {
-    crate::geom_abs::Shape::try_from(crate::ffi::continuity_of_faces(
-        theEdge,
-        theFace1,
-        theFace2,
-        theAngleTol,
-    ))
-    .unwrap()
-}
-pub use crate::ffi::{
-    encode_regularity, encode_regularity_2, encode_regularity_mut, ensure_normal_consistency,
-    extend_face, find_valid_range, find_valid_range_mut, reverse_sort_faces, sort_faces,
-    update_deflection,
-};
-
-/// Errors that can occur at edge construction.
+/// Errors that can occur at wire construction.
 /// no error
-/// C++ enum: `BRepLib_EdgeError`
+/// C++ enum: `BRepLib_WireError`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
-pub enum EdgeError {
-    Edgedone = 0,
-    Pointprojectionfailed = 1,
-    Parameteroutofrange = 2,
-    Differentpointsonclosedcurve = 3,
-    Pointwithinfiniteparameter = 4,
-    Differentspointandparameter = 5,
-    Linethroughidenticpoints = 6,
+pub enum WireError {
+    Wiredone = 0,
+    Emptywire = 1,
+    Disconnectedwire = 2,
+    Nonmanifoldwire = 3,
 }
 
-impl From<EdgeError> for i32 {
-    fn from(value: EdgeError) -> Self {
+impl From<WireError> for i32 {
+    fn from(value: WireError) -> Self {
         value as i32
     }
 }
 
-impl TryFrom<i32> for EdgeError {
+impl TryFrom<i32> for WireError {
     type Error = i32;
 
     fn try_from(value: i32) -> Result<Self, i32> {
         match value {
-            0 => Ok(EdgeError::Edgedone),
-            1 => Ok(EdgeError::Pointprojectionfailed),
-            2 => Ok(EdgeError::Parameteroutofrange),
-            3 => Ok(EdgeError::Differentpointsonclosedcurve),
-            4 => Ok(EdgeError::Pointwithinfiniteparameter),
-            5 => Ok(EdgeError::Differentspointandparameter),
-            6 => Ok(EdgeError::Linethroughidenticpoints),
-            _ => Err(value),
-        }
-    }
-}
-
-/// Errors that can occur at face construction.
-/// no error
-/// not initialised
-/// C++ enum: `BRepLib_FaceError`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum FaceError {
-    Facedone = 0,
-    Noface = 1,
-    Notplanar = 2,
-    Curveprojectionfailed = 3,
-    Parametersoutofrange = 4,
-}
-
-impl From<FaceError> for i32 {
-    fn from(value: FaceError) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for FaceError {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(FaceError::Facedone),
-            1 => Ok(FaceError::Noface),
-            2 => Ok(FaceError::Notplanar),
-            3 => Ok(FaceError::Curveprojectionfailed),
-            4 => Ok(FaceError::Parametersoutofrange),
+            0 => Ok(WireError::Wiredone),
+            1 => Ok(WireError::Emptywire),
+            2 => Ok(WireError::Disconnectedwire),
+            3 => Ok(WireError::Nonmanifoldwire),
             _ => Err(value),
         }
     }
@@ -188,58 +102,76 @@ impl TryFrom<i32> for ShellError {
     }
 }
 
-/// Errors that can occur at wire construction.
+/// Errors that can occur at face construction.
 /// no error
-/// C++ enum: `BRepLib_WireError`
+/// not initialised
+/// C++ enum: `BRepLib_FaceError`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
-pub enum WireError {
-    Wiredone = 0,
-    Emptywire = 1,
-    Disconnectedwire = 2,
-    Nonmanifoldwire = 3,
+pub enum FaceError {
+    Facedone = 0,
+    Noface = 1,
+    Notplanar = 2,
+    Curveprojectionfailed = 3,
+    Parametersoutofrange = 4,
 }
 
-impl From<WireError> for i32 {
-    fn from(value: WireError) -> Self {
+impl From<FaceError> for i32 {
+    fn from(value: FaceError) -> Self {
         value as i32
     }
 }
 
-impl TryFrom<i32> for WireError {
+impl TryFrom<i32> for FaceError {
     type Error = i32;
 
     fn try_from(value: i32) -> Result<Self, i32> {
         match value {
-            0 => Ok(WireError::Wiredone),
-            1 => Ok(WireError::Emptywire),
-            2 => Ok(WireError::Disconnectedwire),
-            3 => Ok(WireError::Nonmanifoldwire),
+            0 => Ok(FaceError::Facedone),
+            1 => Ok(FaceError::Noface),
+            2 => Ok(FaceError::Notplanar),
+            3 => Ok(FaceError::Curveprojectionfailed),
+            4 => Ok(FaceError::Parametersoutofrange),
             _ => Err(value),
         }
     }
 }
 
-// ========================
-// From BRepLib_CheckCurveOnSurface.hxx
-// ========================
+/// Errors that can occur at edge construction.
+/// no error
+/// C++ enum: `BRepLib_EdgeError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum EdgeError {
+    Edgedone = 0,
+    Pointprojectionfailed = 1,
+    Parameteroutofrange = 2,
+    Differentpointsonclosedcurve = 3,
+    Pointwithinfiniteparameter = 4,
+    Differentspointandparameter = 5,
+    Linethroughidenticpoints = 6,
+}
 
-/// Computes the max distance between edge and its 2d representation on the face.
-/// This class is not intended to process non-sameparameter edges.
-pub use crate::ffi::BRepLib_CheckCurveOnSurface as CheckCurveOnSurface;
-
-impl CheckCurveOnSurface {
-    /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_CheckCurveOnSurface_ctor()
+impl From<EdgeError> for i32 {
+    fn from(value: EdgeError) -> Self {
+        value as i32
     }
+}
 
-    /// Constructor
-    pub fn new_edge_face(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theFace: &crate::ffi::TopoDS_Face,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_CheckCurveOnSurface_ctor_edge_face(theEdge, theFace)
+impl TryFrom<i32> for EdgeError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(EdgeError::Edgedone),
+            1 => Ok(EdgeError::Pointprojectionfailed),
+            2 => Ok(EdgeError::Parameteroutofrange),
+            3 => Ok(EdgeError::Differentpointsonclosedcurve),
+            4 => Ok(EdgeError::Pointwithinfiniteparameter),
+            5 => Ok(EdgeError::Differentspointandparameter),
+            6 => Ok(EdgeError::Linethroughidenticpoints),
+            _ => Err(value),
+        }
     }
 }
 
@@ -257,135 +189,6 @@ impl CheckCurveOnSurface {
 ///
 /// * Logging (not implemented).
 pub use crate::ffi::BRepLib_Command as Command;
-
-// ========================
-// From BRepLib_FindSurface.hxx
-// ========================
-
-/// Provides an  algorithm to find  a Surface  through a
-/// set of edges.
-///
-/// The edges  of  the  shape  given  as  argument are
-/// explored if they are not coplanar at  the required
-/// tolerance  the method Found returns false.
-///
-/// If a null tolerance is given the max of the  edges
-/// tolerances is used.
-///
-/// The method Tolerance returns the true distance  of
-/// the edges to the Surface.
-///
-/// The method Surface returns the Surface if found.
-///
-/// The method Existed  returns returns  True  if  the
-/// Surface was already attached to some of the edges.
-///
-/// When Existed  returns True  the  Surface  may have a
-/// location given by the Location method.
-pub use crate::ffi::BRepLib_FindSurface as FindSurface;
-
-impl FindSurface {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_FindSurface_ctor()
-    }
-
-    /// Computes the Surface from the edges of  <S> with the
-    /// given tolerance.
-    /// if <OnlyPlane> is true, the computed surface will be
-    /// a plane. If it is not possible to find a plane, the
-    /// flag NotDone will be set.
-    /// If <OnlyClosed> is true,  then  S  should be a wire
-    /// and the existing surface,  on  which wire S is not
-    /// closed in 2D, will be ignored.
-    pub fn new_shape_real_bool2(
-        S: &crate::ffi::TopoDS_Shape,
-        Tol: f64,
-        OnlyPlane: bool,
-        OnlyClosed: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_FindSurface_ctor_shape_real_bool2(S, Tol, OnlyPlane, OnlyClosed)
-    }
-
-    /// Computes the Surface from the edges of  <S> with the
-    /// given tolerance.
-    /// if <OnlyPlane> is true, the computed surface will be
-    /// a plane. If it is not possible to find a plane, the
-    /// flag NotDone will be set.
-    /// If <OnlyClosed> is true,  then  S  should be a wire
-    /// and the existing surface,  on  which wire S is not
-    /// closed in 2D, will be ignored.
-    pub fn new_shape_real_bool(
-        S: &crate::ffi::TopoDS_Shape,
-        Tol: f64,
-        OnlyPlane: bool,
-    ) -> cxx::UniquePtr<Self> {
-        Self::new_shape_real_bool2(S, Tol, OnlyPlane, false)
-    }
-
-    /// Computes the Surface from the edges of  <S> with the
-    /// given tolerance.
-    /// if <OnlyPlane> is true, the computed surface will be
-    /// a plane. If it is not possible to find a plane, the
-    /// flag NotDone will be set.
-    /// If <OnlyClosed> is true,  then  S  should be a wire
-    /// and the existing surface,  on  which wire S is not
-    /// closed in 2D, will be ignored.
-    pub fn new_shape_real(S: &crate::ffi::TopoDS_Shape, Tol: f64) -> cxx::UniquePtr<Self> {
-        Self::new_shape_real_bool2(S, Tol, false, false)
-    }
-
-    /// Computes the Surface from the edges of  <S> with the
-    /// given tolerance.
-    /// if <OnlyPlane> is true, the computed surface will be
-    /// a plane. If it is not possible to find a plane, the
-    /// flag NotDone will be set.
-    /// If <OnlyClosed> is true,  then  S  should be a wire
-    /// and the existing surface,  on  which wire S is not
-    /// closed in 2D, will be ignored.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        Self::new_shape_real_bool2(S, -1.0, false, false)
-    }
-
-    pub fn surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
-        crate::ffi::BRepLib_FindSurface_surface(self)
-    }
-
-    pub fn location(&self) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
-        crate::ffi::BRepLib_FindSurface_location(self)
-    }
-}
-
-// ========================
-// From BRepLib_FuseEdges.hxx
-// ========================
-
-/// This class can detect  vertices in a face that can
-/// be considered useless and then perform the fuse of
-/// the  edges and remove  the  useless vertices.  By
-/// useles vertices,  we mean :
-/// * vertices that  have  exactly two connex edges
-/// * the edges connex to the vertex must have
-/// exactly the same 2 connex faces .
-/// * The edges connex to the vertex must have the
-/// same geometric support.
-pub use crate::ffi::BRepLib_FuseEdges as FuseEdges;
-
-impl FuseEdges {
-    /// Initialise members  and build  construction of map
-    /// of ancestors.
-    pub fn new_shape_bool(
-        theShape: &crate::ffi::TopoDS_Shape,
-        PerformNow: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_FuseEdges_ctor_shape_bool(theShape, PerformNow)
-    }
-
-    /// Initialise members  and build  construction of map
-    /// of ancestors.
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        Self::new_shape_bool(theShape, false)
-    }
-}
 
 // ========================
 // From BRepLib_MakeEdge.hxx
@@ -2203,64 +2006,3 @@ impl MakeWire {
         crate::ffi::BRepLib_MakeWire_inherited_FacesFromEdges(self, E)
     }
 }
-
-// ========================
-// From BRepLib_PointCloudShape.hxx
-// ========================
-
-/// This tool is intended to get points from shape with specified distance from shape along normal.
-/// Can be used to simulation of points obtained in result of laser scan of shape.
-/// There are 2 ways for generation points by shape:
-/// 1. Generation points with specified density
-/// 2. Generation points using triangulation Nodes
-/// Generation of points by density using the GeneratePointsByDensity() function is not thread safe.
-pub use crate::ffi::BRepLib_PointCloudShape as PointCloudShape;
-
-// ========================
-// From BRepLib_ToolTriangulatedShape.hxx
-// ========================
-
-/// Provides methods for calculating normals to Poly_Triangulation of TopoDS_Face.
-pub use crate::ffi::BRepLib_ToolTriangulatedShape as ToolTriangulatedShape;
-
-impl ToolTriangulatedShape {
-    /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepLib_ToolTriangulatedShape_ctor()
-    }
-
-    /// Computes nodal normals for Poly_Triangulation structure using UV coordinates and surface.
-    /// Does nothing if triangulation already defines normals.
-    /// @param[in] theFace the face
-    /// @param[in] theTris the definition of a face triangulation
-    pub fn compute_normals_face_handlepolytriangulation(
-        theFace: &crate::ffi::TopoDS_Face,
-        theTris: &crate::ffi::HandlePolyTriangulation,
-    ) {
-        crate::ffi::BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangulation(
-            theFace, theTris,
-        )
-    }
-
-    /// Computes nodal normals for Poly_Triangulation structure using UV coordinates and surface.
-    /// Does nothing if triangulation already defines normals.
-    /// @param[in] theFace the face
-    /// @param[in] theTris the definition of a face triangulation
-    /// @param[in,out] thePolyConnect optional, initialized tool for exploring triangulation
-    pub fn compute_normals_face_handlepolytriangulation_connect(
-        theFace: &crate::ffi::TopoDS_Face,
-        theTris: &crate::ffi::HandlePolyTriangulation,
-        thePolyConnect: std::pin::Pin<&mut crate::ffi::Poly_Connect>,
-    ) {
-        crate::ffi::BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangulation_connect(theFace, theTris, thePolyConnect)
-    }
-}
-
-// ========================
-// From BRepLib_ValidateEdge.hxx
-// ========================
-
-/// Computes the max distance between 3D-curve and curve on surface.
-/// This class uses 2 methods: approximate using finite
-/// number of points (default) and exact
-pub use crate::ffi::BRepLib_ValidateEdge as ValidateEdge;

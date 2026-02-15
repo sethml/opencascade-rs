@@ -6,8 +6,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{g_transform, same_range_mut, to3d_2};
-pub fn build_curve3d_mut(
+pub use crate::ffi::{g_transform, same_range, to3d_2};
+pub fn build_curve3d(
     Tolerance: f64,
     CurvePtr: std::pin::Pin<&mut crate::ffi::Adaptor3d_CurveOnSurface>,
     FirstParameter: f64,
@@ -19,7 +19,7 @@ pub fn build_curve3d_mut(
     MaxDegree: i32,
     MaxSegment: i32,
 ) {
-    crate::ffi::build_curve3d_mut(
+    crate::ffi::build_curve3d(
         Tolerance,
         CurvePtr,
         FirstParameter,
@@ -37,29 +37,3 @@ pub use crate::ffi::{
     extend_curve_to_point, extend_surf_by_length, inertia, is_b_spl_u_closed, is_b_spl_v_closed,
     is_bz_u_closed, is_bz_v_closed, is_closed, is_iso_line, norm_estim,
 };
-
-// ========================
-// From GeomLib_CheckCurveOnSurface.hxx
-// ========================
-
-/// Computes the max distance between 3D-curve and 2D-curve
-/// in some surface.
-pub use crate::ffi::GeomLib_CheckCurveOnSurface as CheckCurveOnSurface;
-
-impl CheckCurveOnSurface {
-    /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomLib_CheckCurveOnSurface_ctor()
-    }
-
-    /// Constructor
-    pub fn new_handleadaptor3dcurve_real(
-        theCurve: &crate::ffi::HandleAdaptor3dCurve,
-        theTolRange: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomLib_CheckCurveOnSurface_ctor_handleadaptor3dcurve_real(
-            theCurve,
-            theTolRange,
-        )
-    }
-}

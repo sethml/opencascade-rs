@@ -533,18 +533,6 @@ impl TFunction {
     pub fn set_value_type(self: std::pin::Pin<&mut Self>, aType: crate::g_prop::ValueType) {
         crate::ffi::BRepGProp_TFunction_set_value_type(self, aType.into())
     }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::BRepGProp_TFunction_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::BRepGProp_TFunction_as_math_Function_mut(self)
-    }
 }
 
 // ========================
@@ -576,23 +564,6 @@ impl UFunction {
     /// Setting the type of the value to be returned.
     pub fn set_value_type(self: std::pin::Pin<&mut Self>, theType: crate::g_prop::ValueType) {
         crate::ffi::BRepGProp_UFunction_set_value_type(self, theType.into())
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::BRepGProp_UFunction_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::BRepGProp_UFunction_as_math_Function_mut(self)
-    }
-
-    /// Inherited from math_Function: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::BRepGProp_UFunction_inherited_GetStateNumber(self)
     }
 }
 

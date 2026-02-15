@@ -259,23 +259,6 @@ impl DistFunction {
     pub fn new_distfunction(theOther: &crate::ffi::GCPnts_DistFunction) -> cxx::UniquePtr<Self> {
         crate::ffi::GCPnts_DistFunction_ctor_distfunction(theOther)
     }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::GCPnts_DistFunction_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::GCPnts_DistFunction_as_math_Function_mut(self)
-    }
-
-    /// Inherited from math_Function: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::GCPnts_DistFunction_inherited_GetStateNumber(self)
-    }
 }
 
 /// The same as class GCPnts_DistFunction, but it can be used in minimization algorithms that
@@ -287,23 +270,6 @@ impl DistFunctionMV {
         theCurvLinDist: std::pin::Pin<&mut crate::ffi::GCPnts_DistFunction>,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GCPnts_DistFunctionMV_ctor_distfunction(theCurvLinDist)
-    }
-
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        crate::ffi::GCPnts_DistFunctionMV_as_math_MultipleVarFunction(self)
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
-        crate::ffi::GCPnts_DistFunctionMV_as_math_MultipleVarFunction_mut(self)
-    }
-
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::GCPnts_DistFunctionMV_inherited_GetStateNumber(self)
     }
 }
 
@@ -331,23 +297,6 @@ impl DistFunction2d {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GCPnts_DistFunction2d_ctor_distfunction2d(theOther)
     }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::GCPnts_DistFunction2d_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::GCPnts_DistFunction2d_as_math_Function_mut(self)
-    }
-
-    /// Inherited from math_Function: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::GCPnts_DistFunction2d_inherited_GetStateNumber(self)
-    }
 }
 
 /// The same as class GCPnts_DistFunction2d,
@@ -360,23 +309,6 @@ impl DistFunction2dMV {
         theCurvLinDist: std::pin::Pin<&mut crate::ffi::GCPnts_DistFunction2d>,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GCPnts_DistFunction2dMV_ctor_distfunction2d(theCurvLinDist)
-    }
-
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        crate::ffi::GCPnts_DistFunction2dMV_as_math_MultipleVarFunction(self)
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::MultipleVarFunction> {
-        crate::ffi::GCPnts_DistFunction2dMV_as_math_MultipleVarFunction_mut(self)
-    }
-
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::GCPnts_DistFunction2dMV_inherited_GetStateNumber(self)
     }
 }
 

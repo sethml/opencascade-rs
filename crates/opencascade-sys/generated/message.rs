@@ -949,15 +949,6 @@ impl Algorithm {
         crate::ffi::Message_Algorithm_send_messages(self, theTraceLevel.into(), theMaxCount)
     }
 
-    /// Return the numbers associated with the indicated status;
-    /// Null handle if no such status or no numbers associated with it
-    pub fn get_message_numbers(
-        &self,
-        theStatus: crate::message::Status,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
-        crate::ffi::Message_Algorithm_get_message_numbers(self, theStatus.into())
-    }
-
     /// Return the strings associated with the indicated status;
     /// Null handle if no such status or no strings associated with it
     pub fn get_message_strings(
@@ -965,15 +956,6 @@ impl Algorithm {
         theStatus: crate::message::Status,
     ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
         crate::ffi::Message_Algorithm_get_message_strings(self, theStatus.into())
-    }
-
-    /// Prepares a string containing a list of integers contained
-    /// in theError map, but not more than theMaxCount
-    pub fn prepare_report(
-        theError: &crate::ffi::HandleTColStdHPackedMapOfInteger,
-        theMaxCount: i32,
-    ) -> cxx::UniquePtr<crate::ffi::TCollection_ExtendedString> {
-        crate::ffi::Message_Algorithm_prepare_report(theError, theMaxCount)
     }
 
     pub fn get_type_name() -> String {

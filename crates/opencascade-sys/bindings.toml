@@ -11,9 +11,11 @@
 #   in `modules`. Use this for selective inclusion from large modules.
 
 # Include ALL headers from these modules.
+# Trimmed to only modules directly used by the opencascade crate.
+# Transitive dependencies (Standard, NCollection, TCollection, TColStd,
+# Precision, Adaptor2d, Geom2d, math, etc.) are auto-resolved via resolve_deps.
 modules = [
-    "Adaptor2d",           # 2D curve adaptors
-    "Adaptor3d",           # 3D curve/surface adaptors
+    "Adaptor3d",           # 3D curve/surface adaptors (BRepAdaptor upcast target)
     "Bnd",                 # Bounding boxes
     "BRep",                # Boundary representation utilities
     "BRepAdaptor",         # BRep curve/surface adaptors
@@ -24,17 +26,14 @@ modules = [
     "BRepFilletAPI",       # Fillets and chamfers
     "BRepGProp",           # Global properties
     "BRepIntCurveSurface", # Intersection
-    "BRepLib",             # Topology building utilities
     "BRepMesh",            # Meshing
     "BRepOffsetAPI",       # Offsets, sweeps, thick solids, lofts
     "BRepPrimAPI",         # Primitive shapes
     "BRepTools",           # Shape I/O and utilities
     "Extrema",             # Distance calculations
     "GC",                  # Geometry construction
-    "GCE2d",               # 2D geometry construction
     "GCPnts",              # Geometry points
     "Geom",                # 3D geometry
-    "Geom2d",              # 2D geometry
     "GeomAbs",             # Geometry enums
     "GeomAPI",             # Geometry utilities
     "gp",                  # Geometric primitives (Pnt, Vec, Dir, Trsf, etc.)
@@ -42,19 +41,13 @@ modules = [
     "IFSelect",            # Interface select enums
     "IGESControl",         # IGES I/O
     "Law",                 # Functions
-    "math",                # Numerical methods
     "Message",             # Progress reporting
-    "NCollection",         # Essential collections
     "Poly",                # Triangulation
-    "Precision",           # Precision utilities
     "ShapeAnalysis",       # Shape analysis tools
     "ShapeUpgrade",        # Shape healing
-    "Standard",            # Core types
     "STEPControl",         # STEP I/O
     "StlAPI",              # STL I/O
     "TColgp",              # Collections of geometric primitives
-    "TCollection",         # String types
-    "TColStd",             # Typed collections
     "TopAbs",              # Topology enums
     "TopExp",              # Topology exploration
     "TopLoc",              # Locations
