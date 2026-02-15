@@ -7,6 +7,12 @@
 #![allow(non_snake_case)]
 
 pub use crate::ffi::init;
+pub fn encode_status(status: crate::shape_extend::Status) -> i32 {
+    crate::ffi::encode_status(status.into())
+}
+pub fn decode_status(flag: i32, status: crate::shape_extend::Status) -> bool {
+    crate::ffi::decode_status(flag, status.into())
+}
 
 /// This enumeration is used in
 /// ShapeHealing toolkit for representing flags in the

@@ -98,12 +98,12 @@ golden_test!(heater_coil, "heater-coil");
 // structurally reordered B-Rep results — and thus different STEP entity
 // numbering on each run.
 golden_test!(high_level_bottle, "high-level-bottle", ignore = "non-deterministic STEP output");
-golden_test!(keyboard_case, "keyboard-case", ignore = "example crashes with StdFail_NotDone");
-golden_test!(keycap, "keycap", ignore = "example crashes with StdFail_NotDone");
+golden_test!(keyboard_case, "keyboard-case");
+golden_test!(keycap, "keycap");
 golden_test!(letter_a, "letter-a");
 golden_test!(offset2d, "offset2d");
 golden_test!(pentafoil, "pentafoil");
-golden_test!(rounded_chamfer, "rounded-chamfer", ignore = "example crashes with StdFail_NotDone");
+golden_test!(rounded_chamfer, "rounded-chamfer");
 golden_test!(section, "section");
 golden_test!(swept_face, "swept-face");
 golden_test!(swept_face_variable, "swept-face-variable");

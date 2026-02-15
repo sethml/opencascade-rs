@@ -6,10 +6,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::default_messenger;
+pub fn send(theMessage: &crate::ffi::TCollection_AsciiString, theGravity: crate::message::Gravity) {
+    crate::ffi::send(theMessage, theGravity.into())
+}
 pub use crate::ffi::{
-    default_messenger, default_report, fill_time, send_alarm, send_fail, send_info, send_trace,
-    send_warning,
+    default_report, fill_time, send_alarm, send_fail, send_info, send_trace, send_warning,
 };
+pub fn metric_from_string(theString: &str) -> crate::message::MetricType {
+    crate::message::MetricType::try_from(crate::ffi::metric_from_string(theString)).unwrap()
+}
 
 /// Color definition for console/terminal output (limited palette).
 /// C++ enum: `Message_ConsoleColor`

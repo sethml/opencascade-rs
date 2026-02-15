@@ -6,14 +6,49 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{check_same_range, plane_3, plane_4, precision_3, precision_4, same_range};
+pub fn build_curve3d(
+    E: &crate::ffi::TopoDS_Edge,
+    Tolerance: f64,
+    Continuity: crate::geom_abs::Shape,
+    MaxDegree: i32,
+    MaxSegment: i32,
+) -> bool {
+    crate::ffi::build_curve3d(E, Tolerance, Continuity.into(), MaxDegree, MaxSegment)
+}
+pub fn build_curves3d(
+    S: &crate::ffi::TopoDS_Shape,
+    Tolerance: f64,
+    Continuity: crate::geom_abs::Shape,
+    MaxDegree: i32,
+    MaxSegment: i32,
+) -> bool {
+    crate::ffi::build_curves3d(S, Tolerance, Continuity.into(), MaxDegree, MaxSegment)
+}
 pub use crate::ffi::{
-    build_curves3d, build_p_curve_for_edge_on_plane, build_p_curve_for_edge_on_plane_mut,
-    check_same_range, encode_regularity, encode_regularity_2, encode_regularity_mut,
-    ensure_normal_consistency, extend_face, find_valid_range, find_valid_range_mut,
-    orient_closed_solid, plane_3, plane_4, precision_3, precision_4, reverse_sort_faces,
-    same_parameter, same_parameter_3, same_parameter_4, same_parameter_mut, same_range, sort_faces,
-    update_deflection, update_edge_tol, update_edge_tolerance, update_inner_tolerances,
-    update_tolerances, update_tolerances_mut,
+    build_curves3d_2, build_p_curve_for_edge_on_plane, build_p_curve_for_edge_on_plane_mut,
+    orient_closed_solid, same_parameter, same_parameter_3, same_parameter_4, same_parameter_mut,
+    update_edge_tol, update_edge_tolerance, update_inner_tolerances, update_tolerances,
+    update_tolerances_mut,
+};
+pub fn continuity_of_faces(
+    theEdge: &crate::ffi::TopoDS_Edge,
+    theFace1: &crate::ffi::TopoDS_Face,
+    theFace2: &crate::ffi::TopoDS_Face,
+    theAngleTol: f64,
+) -> crate::geom_abs::Shape {
+    crate::geom_abs::Shape::try_from(crate::ffi::continuity_of_faces(
+        theEdge,
+        theFace1,
+        theFace2,
+        theAngleTol,
+    ))
+    .unwrap()
+}
+pub use crate::ffi::{
+    encode_regularity, encode_regularity_2, encode_regularity_mut, ensure_normal_consistency,
+    extend_face, find_valid_range, find_valid_range_mut, reverse_sort_faces, sort_faces,
+    update_deflection,
 };
 
 /// Errors that can occur at edge construction.

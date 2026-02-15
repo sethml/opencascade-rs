@@ -164,6 +164,18 @@ Methods taking or returning known collection types (e.g., `TopTools_ListOfShape`
 
 CXX requires `enum class` but OCCT uses unscoped enums. All methods with enum parameters/returns are skipped. This is a fundamental CXX limitation. Workaround: hand-write enum definitions if needed.
 
+### 7a. ~~Free functions with enum parameters excluded~~ FIXED
+
+Free functions (from utility classes converted to module-level functions) with
+enum parameters were excluded because `function_uses_unknown_handle()` in the
+resolver did not recognize enum types. `Type::Class("TopAbs_ShapeEnum")` was
+checked against `all_class_names` only, not `all_enum_names`, causing functions
+like `TopExp::MapShapes(S, T, M)` (where `T` is `TopAbs_ShapeEnum`) to be
+filtered out as `UnknownHandleType`. Fixed by adding `all_enum_names` to the
+check — enum types by value or const-ref are now recognized as known types.
+This unblocked ~27 functions including `TopExp::MapShapes`,
+`TopExp::MapShapesAndAncestors`, and others across multiple modules.
+
 ### 8. ~~Methods in FFI but not in module re-exports~~ RESOLVED
 
 All 602 types declared in `ffi.rs` are now re-exported in per-module files. This was accomplished by:

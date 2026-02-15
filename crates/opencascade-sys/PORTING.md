@@ -235,6 +235,32 @@ let mut faces = top_tools::ListOfShape::new();
 faces.pin_mut().append(a_face.as_shape());
 ```
 
+`TopTools_IndexedMapOfShape` provides deduplicated, indexed access to shapes.
+Use `top_exp::map_shapes()` to populate it with sub-shapes of a given type:
+
+```cpp
+// C++
+TopTools_IndexedMapOfShape vertexMap;
+TopExp::MapShapes(shape, TopAbs_VERTEX, vertexMap);
+for (int i = 1; i <= vertexMap.Extent(); ++i) {
+    const TopoDS_Vertex& v = TopoDS::Vertex(vertexMap.FindKey(i));
+}
+```
+
+```rust
+// Rust
+let mut vertex_map = top_tools::IndexedMapOfShape::new();
+top_exp::map_shapes(shape, top_abs::ShapeEnum::Vertex, vertex_map.pin_mut());
+for i in 1..=vertex_map.size() {
+    let v = topo_ds::vertex(vertex_map.find_key(i));
+}
+```
+
+Note: prefer `map_shapes` over `TopExp_Explorer` when you need unique shapes.
+`Explorer` may visit the same vertex/edge multiple times (once per adjacent
+element), which can cause issues with operations like `MakeFillet2d::AddFillet`
+that must receive each vertex exactly once.
+
 ## TopoDS Shape Casting
 
 OCCT uses free functions to downcast `TopoDS_Shape` references into specific

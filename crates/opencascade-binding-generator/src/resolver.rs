@@ -1110,10 +1110,14 @@ fn resolve_function(
     // Resolve return type
     let return_type = func.return_type.as_ref().map(|t| resolve_type(t, all_enum_names, type_to_module));
     
-    // Determine status — check unbindable types AND unknown handle types
+    // Determine status — check unbindable types, c_string returns, and unknown handle types.
+    // C string returns (const char*) need C++ wrappers which aren't generated for free functions yet.
+    let has_cstring_return = func.return_type.as_ref().map(|t| t.is_c_string()).unwrap_or(false);
     let status = if func.has_unbindable_types() {
         BindingStatus::Excluded(ExclusionReason::UnbindableFunction)
-    } else if function_uses_unknown_handle(func, all_class_names, handle_able_classes) {
+    } else if has_cstring_return {
+        BindingStatus::Excluded(ExclusionReason::UnbindableFunction)
+    } else if function_uses_unknown_handle(func, all_class_names, all_enum_names, handle_able_classes) {
         BindingStatus::Excluded(ExclusionReason::UnknownHandleType)
     } else {
         BindingStatus::Included
@@ -1145,13 +1149,31 @@ fn resolve_function(
     table.functions.insert(id, resolved);
 }
 
-/// Check if a function references unknown Handle/class types
+/// Check if a function references unknown Handle/class types.
+/// Enum types (Type::Class that are in all_enum_names) are known — they map to i32.
+/// MutRef to enum is NOT skipped here — those are output parameters that
+/// need special handling (local variable + writeback), not supported yet.
 fn function_uses_unknown_handle(
     func: &ParsedFunction,
     all_class_names: &HashSet<String>,
+    all_enum_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
 ) -> bool {
     let check = |ty: &Type| -> bool {
+        // Enum types by value are known (mapped to i32), so skip them.
+        // ConstRef to enum is also fine (maps to const int32_t&).
+        // MutRef to enum is NOT skipped — CXX can't bind int32_t& ↔ EnumType&.
+        match ty {
+            Type::Class(name) if all_enum_names.contains(name) => return false,
+            Type::ConstRef(inner) => {
+                if let Type::Class(name) = inner.as_ref() {
+                    if all_enum_names.contains(name) {
+                        return false;
+                    }
+                }
+            }
+            _ => {}
+        }
         crate::type_mapping::type_uses_unknown_handle(ty, all_class_names, handle_able_classes)
     };
     if func.params.iter().any(|p| check(&p.ty)) {

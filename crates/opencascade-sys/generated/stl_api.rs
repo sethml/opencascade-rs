@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::write_2;
+pub use crate::ffi::write_3;
 
 // ========================
 // From StlAPI_Reader.hxx

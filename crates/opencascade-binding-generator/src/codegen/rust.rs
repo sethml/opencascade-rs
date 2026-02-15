@@ -511,6 +511,45 @@ fn emit_rust_enum(output: &mut String, resolved: &crate::resolver::ResolvedEnum)
     writeln!(output).unwrap();
 }
 
+/// Convert a Type to a fully-qualified Rust type string suitable for module re-export files.
+/// Class types get `crate::ffi::ClassName` prefix so they resolve in any module.
+fn type_to_qualified_rust(ty: &crate::model::Type) -> String {
+    use crate::model::Type;
+    match ty {
+        Type::Void => "()".to_string(),
+        Type::Bool => "bool".to_string(),
+        Type::I32 => "i32".to_string(),
+        Type::U32 => "u32".to_string(),
+        Type::I64 => "i64".to_string(),
+        Type::U64 => "u64".to_string(),
+        Type::Usize => "usize".to_string(),
+        Type::F32 => "f32".to_string(),
+        Type::F64 => "f64".to_string(),
+        Type::Class(name) if name == "char" => "std::ffi::c_char".to_string(),
+        Type::Class(name) => format!("crate::ffi::{}", name),
+        Type::Handle(name) => {
+            let handle_name = format!("Handle{}", name.replace('_', ""));
+            format!("crate::ffi::{}", handle_name)
+        }
+        Type::ConstRef(inner) => format!("&{}", type_to_qualified_rust(inner)),
+        Type::MutRef(inner) => {
+            let inner_str = type_to_qualified_rust(inner);
+            if inner.is_primitive() {
+                format!("&mut {}", inner_str)
+            } else {
+                format!("std::pin::Pin<&mut {}>", inner_str)
+            }
+        }
+        // const char* -> &str (C string input parameter)
+        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
+            "&str".to_string()
+        }
+        Type::ConstPtr(inner) => format!("*const {}", type_to_qualified_rust(inner)),
+        Type::MutPtr(inner) => format!("*mut {}", type_to_qualified_rust(inner)),
+        Type::RValueRef(inner) => format!("&{}", type_to_qualified_rust(inner)),
+    }
+}
+
 /// Emit a wrapper function for a free function that uses value enum types.
 /// Instead of `pub use crate::ffi::fn_name;` we generate a function that
 /// converts enum args with `.into()` and enum returns with `try_from().unwrap()`.
@@ -521,14 +560,16 @@ fn emit_free_function_wrapper(
 ) {
     use std::fmt::Write;
 
-    // Build parameter list with typed enum params
+    // Build parameter list with typed enum params.
+    // Non-enum class types use fully qualified `crate::ffi::ClassName` paths
+    // since this code appears in a module re-export file, not in ffi.rs.
     let params: Vec<String> = func.params.iter().map(|p| {
         let ty = if let Some(ref enum_name) = p.ty.enum_cpp_name {
             symbol_table.enum_rust_types.get(enum_name)
                 .cloned()
                 .unwrap_or_else(|| "i32".to_string())
         } else {
-            p.ty.rust_ffi_type.clone()
+            type_to_qualified_rust(&p.ty.original)
         };
         format!("{}: {}", p.rust_name, ty)
     }).collect();
@@ -545,7 +586,8 @@ fn emit_free_function_wrapper(
         }
     }).collect();
 
-    // Build return type
+    // Build return type.
+    // Class/Handle types returned by value are wrapped in UniquePtr by CXX.
     let return_type_str = if let Some(ref rt) = func.return_type {
         if let Some(ref enum_name) = rt.enum_cpp_name {
             if let Some(rust_type) = symbol_table.enum_rust_types.get(enum_name) {
@@ -553,8 +595,10 @@ fn emit_free_function_wrapper(
             } else {
                 format!(" -> i32")
             }
+        } else if rt.needs_unique_ptr {
+            format!(" -> cxx::UniquePtr<{}>", type_to_qualified_rust(&rt.original))
         } else {
-            format!(" -> {}", rt.rust_ffi_type)
+            format!(" -> {}", type_to_qualified_rust(&rt.original))
         }
     } else {
         String::new()

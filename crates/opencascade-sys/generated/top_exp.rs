@@ -6,9 +6,32 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
-    common_vertex, first_vertex, last_vertex, map_shapes, map_shapes_mut, vertices, vertices_mut,
-};
+pub fn map_shapes(
+    S: &crate::ffi::TopoDS_Shape,
+    T: crate::top_abs::ShapeEnum,
+    M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedMapOfShape>,
+) {
+    crate::ffi::map_shapes(S, T.into(), M)
+}
+pub use crate::ffi::{map_shapes_3, map_shapes_mut};
+pub fn map_shapes_and_ancestors(
+    S: &crate::ffi::TopoDS_Shape,
+    TS: crate::top_abs::ShapeEnum,
+    TA: crate::top_abs::ShapeEnum,
+    M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape>,
+) {
+    crate::ffi::map_shapes_and_ancestors(S, TS.into(), TA.into(), M)
+}
+pub fn map_shapes_and_unique_ancestors(
+    S: &crate::ffi::TopoDS_Shape,
+    TS: crate::top_abs::ShapeEnum,
+    TA: crate::top_abs::ShapeEnum,
+    M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape>,
+    useOrientation: bool,
+) {
+    crate::ffi::map_shapes_and_unique_ancestors(S, TS.into(), TA.into(), M, useOrientation)
+}
+pub use crate::ffi::{common_vertex, first_vertex, last_vertex, vertices, vertices_mut};
 
 // ========================
 // From TopExp_Explorer.hxx

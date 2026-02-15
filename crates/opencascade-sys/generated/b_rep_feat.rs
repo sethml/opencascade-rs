@@ -9,6 +9,13 @@
 pub use crate::ffi::{
     barycenter, face_until, is_inside, parametric_barycenter, parametric_min_max,
 };
+pub fn tool(
+    SRef: &crate::ffi::TopoDS_Shape,
+    Fac: &crate::ffi::TopoDS_Face,
+    Orf: crate::top_abs::Orientation,
+) -> cxx::UniquePtr<crate::ffi::TopoDS_Solid> {
+    crate::ffi::tool(SRef, Fac, Orf.into())
+}
 
 /// To declare the type of selection semantics for local operation Perform methods
 /// -   NoSelection

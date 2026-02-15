@@ -7,13 +7,37 @@
 #![allow(non_snake_case)]
 
 pub use crate::ffi::{
-    activate_triangulation, add_uv_bounds, add_uv_bounds_3, add_uv_bounds_mut, check_locations,
-    clean, clean_geometry, compare, compare_2, detect_closedness, eval_and_update_tol,
-    is_really_closed, map3_d_edges, outer_wire, read, remove_internals, remove_unused_p_curves,
-    triangulation, unload_all_triangulations, unload_triangulation, update, update_2, update_3,
-    update_4, update_5, update_6, update_7, update_8, update_9, update_face_uv_points, uv_bounds,
-    uv_bounds_3, uv_bounds_mut, write,
+    activate_triangulation, add_uv_bounds, add_uv_bounds_3, add_uv_bounds_mut, clean,
+    clean_geometry, compare, compare_2, detect_closedness, is_really_closed, map3_d_edges,
+    outer_wire, remove_unused_p_curves, triangulation, unload_all_triangulations,
+    unload_triangulation, update, update_2, update_3, update_4, update_5, update_6, update_7,
+    update_8, update_9, update_face_uv_points, uv_bounds, uv_bounds_3, uv_bounds_mut, write,
 };
+pub fn write_2(
+    theShape: &crate::ffi::TopoDS_Shape,
+    theFile: &str,
+    theWithTriangles: bool,
+    theWithNormals: bool,
+    theVersion: crate::top_tools::FormatVersion,
+    theProgress: &crate::ffi::Message_ProgressRange,
+) -> bool {
+    crate::ffi::write_2(
+        theShape,
+        theFile,
+        theWithTriangles,
+        theWithNormals,
+        theVersion.into(),
+        theProgress,
+    )
+}
+pub use crate::ffi::{eval_and_update_tol, read};
+pub fn ori_edge_in_face(
+    theEdge: &crate::ffi::TopoDS_Edge,
+    theFace: &crate::ffi::TopoDS_Face,
+) -> crate::top_abs::Orientation {
+    crate::top_abs::Orientation::try_from(crate::ffi::ori_edge_in_face(theEdge, theFace)).unwrap()
+}
+pub use crate::ffi::{check_locations, remove_internals};
 
 // ========================
 // From BRepTools_CopyModification.hxx

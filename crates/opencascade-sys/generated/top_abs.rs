@@ -6,6 +6,28 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub fn compose(
+    Or1: crate::top_abs::Orientation,
+    Or2: crate::top_abs::Orientation,
+) -> crate::top_abs::Orientation {
+    crate::top_abs::Orientation::try_from(crate::ffi::compose(Or1.into(), Or2.into())).unwrap()
+}
+pub fn reverse_4(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientation {
+    crate::top_abs::Orientation::try_from(crate::ffi::reverse_4(Or.into())).unwrap()
+}
+pub fn complement(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientation {
+    crate::top_abs::Orientation::try_from(crate::ffi::complement(Or.into())).unwrap()
+}
+pub fn shape_type_from_string(theTypeString: &str) -> crate::top_abs::ShapeEnum {
+    crate::top_abs::ShapeEnum::try_from(crate::ffi::shape_type_from_string(theTypeString)).unwrap()
+}
+pub fn shape_orientation_from_string(theOrientationString: &str) -> crate::top_abs::Orientation {
+    crate::top_abs::Orientation::try_from(crate::ffi::shape_orientation_from_string(
+        theOrientationString,
+    ))
+    .unwrap()
+}
+
 /// Identifies the orientation of a topological shape.
 /// Orientation can represent a relation between two
 /// entities, or it can apply to a shape in its own right.

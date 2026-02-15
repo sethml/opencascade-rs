@@ -35822,14 +35822,17 @@ inline Standard_Real BRepBuilderAPI_precision_2() { return BRepBuilderAPI::Preci
 #include <BRepFeat.hxx>
 #include <Geom_Curve.hxx>
 #include <Standard_Handle.hxx>
+#include <TopAbs_Orientation.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Shape.hxx>
+#include <TopoDS_Solid.hxx>
 #include <gp_Pnt.hxx>
 inline void BRepFeat_barycenter(const TopoDS_Shape& S, gp_Pnt& Pt) { return BRepFeat::Barycenter(S, Pt); }
 inline Standard_Real BRepFeat_parametric_barycenter(const TopoDS_Shape& S, const opencascade::handle<Geom_Curve>& C) { return BRepFeat::ParametricBarycenter(S, C); }
 inline void BRepFeat_parametric_min_max(const TopoDS_Shape& S, const opencascade::handle<Geom_Curve>& C, Standard_Real& prmin, Standard_Real& prmax, Standard_Real& prbmin, Standard_Real& prbmax, Standard_Boolean& flag, Standard_Boolean Ori) { return BRepFeat::ParametricMinMax(S, C, prmin, prmax, prbmin, prbmax, flag, Ori); }
 inline Standard_Boolean BRepFeat_is_inside(const TopoDS_Face& F1, const TopoDS_Face& F2) { return BRepFeat::IsInside(F1, F2); }
 inline void BRepFeat_face_until(const TopoDS_Shape& S, TopoDS_Face& F) { return BRepFeat::FaceUntil(S, F); }
+inline std::unique_ptr<TopoDS_Solid> BRepFeat_tool(const TopoDS_Shape& SRef, const TopoDS_Face& Fac, int32_t Orf) { return std::make_unique<TopoDS_Solid>(BRepFeat::Tool(SRef, Fac, static_cast<TopAbs_Orientation>(Orf))); }
 
 // ========================
 // BRepGProp namespace functions
@@ -35853,6 +35856,7 @@ inline Standard_Real BRepGProp_volume_properties_gk_mut(const TopoDS_Shape& S, G
 #include <BRepLib.hxx>
 #include <BRepTools_ReShape.hxx>
 #include <Geom2d_Curve.hxx>
+#include <GeomAbs_Shape.hxx>
 #include <Geom_Plane.hxx>
 #include <Standard_Handle.hxx>
 #include <TopTools_ListOfShape.hxx>
@@ -35867,7 +35871,9 @@ inline void BRepLib_plane_3(const opencascade::handle<Geom_Plane>& P) { return B
 inline std::unique_ptr<opencascade::handle<Geom_Plane>> BRepLib_plane_4() { return std::make_unique<opencascade::handle<Geom_Plane>>(BRepLib::Plane()); }
 inline Standard_Boolean BRepLib_check_same_range(const TopoDS_Edge& E, Standard_Real Confusion) { return BRepLib::CheckSameRange(E, Confusion); }
 inline void BRepLib_same_range(const TopoDS_Edge& E, Standard_Real Tolerance) { return BRepLib::SameRange(E, Tolerance); }
-inline Standard_Boolean BRepLib_build_curves3d(const TopoDS_Shape& S) { return BRepLib::BuildCurves3d(S); }
+inline Standard_Boolean BRepLib_build_curve3d(const TopoDS_Edge& E, Standard_Real Tolerance, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) { return BRepLib::BuildCurve3d(E, Tolerance, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment); }
+inline Standard_Boolean BRepLib_build_curves3d(const TopoDS_Shape& S, Standard_Real Tolerance, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) { return BRepLib::BuildCurves3d(S, Tolerance, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment); }
+inline Standard_Boolean BRepLib_build_curves3d_2(const TopoDS_Shape& S) { return BRepLib::BuildCurves3d(S); }
 inline void BRepLib_build_p_curve_for_edge_on_plane(const TopoDS_Edge& theE, const TopoDS_Face& theF) { return BRepLib::BuildPCurveForEdgeOnPlane(theE, theF); }
 inline void BRepLib_build_p_curve_for_edge_on_plane_mut(const TopoDS_Edge& theE, const TopoDS_Face& theF, opencascade::handle<Geom2d_Curve>& aC2D, Standard_Boolean& bToUpdate) { return BRepLib::BuildPCurveForEdgeOnPlane(theE, theF, aC2D, bToUpdate); }
 inline Standard_Boolean BRepLib_update_edge_tol(const TopoDS_Edge& E, Standard_Real MinToleranceRequest, Standard_Real MaxToleranceToCheck) { return BRepLib::UpdateEdgeTol(E, MinToleranceRequest, MaxToleranceToCheck); }
@@ -35880,6 +35886,7 @@ inline void BRepLib_update_tolerances(const TopoDS_Shape& S, Standard_Boolean ve
 inline void BRepLib_update_tolerances_mut(const TopoDS_Shape& S, BRepTools_ReShape& theReshaper, Standard_Boolean verifyFaceTolerance) { return BRepLib::UpdateTolerances(S, theReshaper, verifyFaceTolerance); }
 inline void BRepLib_update_inner_tolerances(const TopoDS_Shape& S) { return BRepLib::UpdateInnerTolerances(S); }
 inline Standard_Boolean BRepLib_orient_closed_solid(TopoDS_Solid& solid) { return BRepLib::OrientClosedSolid(solid); }
+inline int32_t BRepLib_continuity_of_faces(const TopoDS_Edge& theEdge, const TopoDS_Face& theFace1, const TopoDS_Face& theFace2, Standard_Real theAngleTol) { return static_cast<int32_t>(BRepLib::ContinuityOfFaces(theEdge, theFace1, theFace2, theAngleTol)); }
 inline void BRepLib_encode_regularity(const TopoDS_Shape& S, Standard_Real TolAng) { return BRepLib::EncodeRegularity(S, TolAng); }
 inline void BRepLib_encode_regularity_2(const TopoDS_Shape& S, const TopTools_ListOfShape& LE, Standard_Real TolAng) { return BRepLib::EncodeRegularity(S, LE, TolAng); }
 inline void BRepLib_encode_regularity_mut(TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2, Standard_Real TolAng) { return BRepLib::EncodeRegularity(E, F1, F2, TolAng); }
@@ -35902,6 +35909,8 @@ inline void BRepLib_extend_face(const TopoDS_Face& theF, Standard_Real theExtVal
 #include <Geom_Surface.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Standard_Handle.hxx>
+#include <TopAbs_Orientation.hxx>
+#include <TopTools_FormatVersion.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <TopoDS_CompSolid.hxx>
@@ -35943,8 +35952,10 @@ inline void BRepTools_map3_d_edges(const TopoDS_Shape& S, TopTools_IndexedMapOfS
 inline Standard_Boolean BRepTools_is_really_closed(const TopoDS_Edge& E, const TopoDS_Face& F) { return BRepTools::IsReallyClosed(E, F); }
 inline void BRepTools_detect_closedness(const TopoDS_Face& theFace, Standard_Boolean& theUclosed, Standard_Boolean& theVclosed) { return BRepTools::DetectClosedness(theFace, theUclosed, theVclosed); }
 inline Standard_Boolean BRepTools_write(const TopoDS_Shape& theShape, rust::Str theFile, const Message_ProgressRange& theProgress) { return BRepTools::Write(theShape, std::string(theFile).c_str(), theProgress); }
+inline Standard_Boolean BRepTools_write_2(const TopoDS_Shape& theShape, rust::Str theFile, Standard_Boolean theWithTriangles, Standard_Boolean theWithNormals, int32_t theVersion, const Message_ProgressRange& theProgress) { return BRepTools::Write(theShape, std::string(theFile).c_str(), theWithTriangles, theWithNormals, static_cast<TopTools_FormatVersion>(theVersion), theProgress); }
 inline Standard_Boolean BRepTools_read(TopoDS_Shape& Sh, rust::Str File, const BRep_Builder& B, const Message_ProgressRange& theProgress) { return BRepTools::Read(Sh, std::string(File).c_str(), B, theProgress); }
 inline Standard_Real BRepTools_eval_and_update_tol(const TopoDS_Edge& theE, const opencascade::handle<Geom_Curve>& theC3d, const opencascade::handle<Geom2d_Curve>& theC2d, const opencascade::handle<Geom_Surface>& theS, Standard_Real theF, Standard_Real theL) { return BRepTools::EvalAndUpdateTol(theE, theC3d, theC2d, theS, theF, theL); }
+inline int32_t BRepTools_ori_edge_in_face(const TopoDS_Edge& theEdge, const TopoDS_Face& theFace) { return static_cast<int32_t>(BRepTools::OriEdgeInFace(theEdge, theFace)); }
 inline void BRepTools_remove_internals(TopoDS_Shape& theS, Standard_Boolean theForce) { return BRepTools::RemoveInternals(theS, theForce); }
 inline void BRepTools_check_locations(const TopoDS_Shape& theS, TopTools_ListOfShape& theProblemShapes) { return BRepTools::CheckLocations(theS, theProblemShapes); }
 
@@ -36005,8 +36016,10 @@ inline std::unique_ptr<opencascade::handle<Geom_Curve>> GeomAPI_to3d(const openc
 // GeomLib namespace functions
 // ========================
 #include <Adaptor2d_Curve2d.hxx>
+#include <Adaptor3d_CurveOnSurface.hxx>
 #include <Adaptor3d_Surface.hxx>
 #include <Geom2d_Curve.hxx>
+#include <GeomAbs_Shape.hxx>
 #include <GeomLib.hxx>
 #include <Geom_BSplineSurface.hxx>
 #include <Geom_BezierSurface.hxx>
@@ -36025,6 +36038,7 @@ inline std::unique_ptr<opencascade::handle<Geom_Curve>> GeomAPI_to3d(const openc
 inline std::unique_ptr<opencascade::handle<Geom_Curve>> GeomLib_to3d_2(const gp_Ax2& Position, const opencascade::handle<Geom2d_Curve>& Curve2d) { return std::make_unique<opencascade::handle<Geom_Curve>>(GeomLib::To3d(Position, Curve2d)); }
 inline std::unique_ptr<opencascade::handle<Geom2d_Curve>> GeomLib_g_transform(const opencascade::handle<Geom2d_Curve>& Curve, const gp_GTrsf2d& GTrsf) { return std::make_unique<opencascade::handle<Geom2d_Curve>>(GeomLib::GTransform(Curve, GTrsf)); }
 inline void GeomLib_same_range_mut(Standard_Real Tolerance, const opencascade::handle<Geom2d_Curve>& Curve2dPtr, Standard_Real First, Standard_Real Last, Standard_Real RequestedFirst, Standard_Real RequestedLast, opencascade::handle<Geom2d_Curve>& NewCurve2dPtr) { return GeomLib::SameRange(Tolerance, Curve2dPtr, First, Last, RequestedFirst, RequestedLast, NewCurve2dPtr); }
+inline void GeomLib_build_curve3d_mut(Standard_Real Tolerance, Adaptor3d_CurveOnSurface& CurvePtr, Standard_Real FirstParameter, Standard_Real LastParameter, opencascade::handle<Geom_Curve>& NewCurvePtr, Standard_Real& MaxDeviation, Standard_Real& AverageDeviation, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) { return GeomLib::BuildCurve3d(Tolerance, CurvePtr, FirstParameter, LastParameter, NewCurvePtr, MaxDeviation, AverageDeviation, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment); }
 inline void GeomLib_adjust_extremity(opencascade::handle<Geom_BoundedCurve>& Curve, const gp_Pnt& P1, const gp_Pnt& P2, const gp_Vec& T1, const gp_Vec& T2) { return GeomLib::AdjustExtremity(Curve, P1, P2, T1, T2); }
 inline void GeomLib_extend_curve_to_point(opencascade::handle<Geom_BoundedCurve>& Curve, const gp_Pnt& Point, Standard_Integer Cont, Standard_Boolean After) { return GeomLib::ExtendCurveToPoint(Curve, Point, Cont, After); }
 inline void GeomLib_extend_surf_by_length(opencascade::handle<Geom_BoundedSurface>& Surf, Standard_Real Length, Standard_Integer Cont, Standard_Boolean InU, Standard_Boolean After) { return GeomLib::ExtendSurfByLength(Surf, Length, Cont, InU, After); }
@@ -36067,11 +36081,14 @@ inline std::unique_ptr<opencascade::handle<Law_BSpline>> Law_scale_cub(Standard_
 // Message namespace functions
 // ========================
 #include <Message.hxx>
+#include <Message_Gravity.hxx>
 #include <Message_Messenger.hxx>
+#include <Message_MetricType.hxx>
 #include <Message_Report.hxx>
 #include <Standard_Handle.hxx>
 #include <TCollection_AsciiString.hxx>
 inline std::unique_ptr<opencascade::handle<Message_Messenger>> Message_default_messenger() { return std::make_unique<opencascade::handle<Message_Messenger>>(Message::DefaultMessenger()); }
+inline void Message_send(const TCollection_AsciiString& theMessage, int32_t theGravity) { return Message::Send(theMessage, static_cast<Message_Gravity>(theGravity)); }
 inline void Message_send_fail(const TCollection_AsciiString& theMessage) { return Message::SendFail(theMessage); }
 inline void Message_send_alarm(const TCollection_AsciiString& theMessage) { return Message::SendAlarm(theMessage); }
 inline void Message_send_warning(const TCollection_AsciiString& theMessage) { return Message::SendWarning(theMessage); }
@@ -36079,6 +36096,7 @@ inline void Message_send_info(const TCollection_AsciiString& theMessage) { retur
 inline void Message_send_trace(const TCollection_AsciiString& theMessage) { return Message::SendTrace(theMessage); }
 inline std::unique_ptr<TCollection_AsciiString> Message_fill_time(Standard_Integer Hour, Standard_Integer Minute, Standard_Real Second) { return std::make_unique<TCollection_AsciiString>(Message::FillTime(Hour, Minute, Second)); }
 inline std::unique_ptr<opencascade::handle<Message_Report>> Message_default_report(Standard_Boolean theToCreate) { return std::make_unique<opencascade::handle<Message_Report>>(Message::DefaultReport(theToCreate)); }
+inline int32_t Message_metric_from_string(rust::Str theString) { return static_cast<int32_t>(Message::MetricFromString(std::string(theString).c_str())); }
 
 // ========================
 // NCollection_Primes namespace functions
@@ -36145,7 +36163,10 @@ inline void ShapeAnalysis_get_face_uv_bounds(const TopoDS_Face& F, Standard_Real
 // ShapeExtend namespace functions
 // ========================
 #include <ShapeExtend.hxx>
+#include <ShapeExtend_Status.hxx>
 inline void ShapeExtend_init() { return ShapeExtend::Init(); }
+inline Standard_Integer ShapeExtend_encode_status(int32_t status) { return ShapeExtend::EncodeStatus(static_cast<ShapeExtend_Status>(status)); }
+inline Standard_Boolean ShapeExtend_decode_status(Standard_Integer flag, int32_t status) { return ShapeExtend::DecodeStatus(flag, static_cast<ShapeExtend_Status>(status)); }
 
 // ========================
 // ShapeUpgrade namespace functions
@@ -36170,7 +36191,7 @@ inline Standard_Integer Standard_purge() { return Standard::Purge(); }
 // ========================
 #include <StlAPI.hxx>
 #include <TopoDS_Shape.hxx>
-inline Standard_Boolean StlAPI_write_2(const TopoDS_Shape& theShape, rust::Str theFile, Standard_Boolean theAsciiMode) { return StlAPI::Write(theShape, std::string(theFile).c_str(), theAsciiMode); }
+inline Standard_Boolean StlAPI_write_3(const TopoDS_Shape& theShape, rust::Str theFile, Standard_Boolean theAsciiMode) { return StlAPI::Write(theShape, std::string(theFile).c_str(), theAsciiMode); }
 
 // ========================
 // TCollection namespace functions
@@ -36179,17 +36200,34 @@ inline Standard_Boolean StlAPI_write_2(const TopoDS_Shape& theShape, rust::Str t
 inline Standard_Integer TCollection_next_prime_for_map_2(Standard_Integer I) { return TCollection::NextPrimeForMap(I); }
 
 // ========================
+// TopAbs namespace functions
+// ========================
+#include <TopAbs.hxx>
+#include <TopAbs_Orientation.hxx>
+#include <TopAbs_ShapeEnum.hxx>
+inline int32_t TopAbs_compose(int32_t Or1, int32_t Or2) { return static_cast<int32_t>(TopAbs::Compose(static_cast<TopAbs_Orientation>(Or1), static_cast<TopAbs_Orientation>(Or2))); }
+inline int32_t TopAbs_reverse_4(int32_t Or) { return static_cast<int32_t>(TopAbs::Reverse(static_cast<TopAbs_Orientation>(Or))); }
+inline int32_t TopAbs_complement(int32_t Or) { return static_cast<int32_t>(TopAbs::Complement(static_cast<TopAbs_Orientation>(Or))); }
+inline int32_t TopAbs_shape_type_from_string(rust::Str theTypeString) { return static_cast<int32_t>(TopAbs::ShapeTypeFromString(std::string(theTypeString).c_str())); }
+inline int32_t TopAbs_shape_orientation_from_string(rust::Str theOrientationString) { return static_cast<int32_t>(TopAbs::ShapeOrientationFromString(std::string(theOrientationString).c_str())); }
+
+// ========================
 // TopExp namespace functions
 // ========================
+#include <TopAbs_ShapeEnum.hxx>
 #include <TopExp.hxx>
+#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopTools_MapOfShape.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-inline void TopExp_map_shapes(const TopoDS_Shape& S, TopTools_IndexedMapOfShape& M, Standard_Boolean cumOri, Standard_Boolean cumLoc) { return TopExp::MapShapes(S, M, cumOri, cumLoc); }
-inline void TopExp_map_shapes_mut(const TopoDS_Shape& S, TopTools_MapOfShape& M, Standard_Boolean cumOri, Standard_Boolean cumLoc) { return TopExp::MapShapes(S, M, cumOri, cumLoc); }
+inline void TopExp_map_shapes(const TopoDS_Shape& S, int32_t T, TopTools_IndexedMapOfShape& M) { return TopExp::MapShapes(S, static_cast<TopAbs_ShapeEnum>(T), M); }
+inline void TopExp_map_shapes_mut(const TopoDS_Shape& S, TopTools_IndexedMapOfShape& M, Standard_Boolean cumOri, Standard_Boolean cumLoc) { return TopExp::MapShapes(S, M, cumOri, cumLoc); }
+inline void TopExp_map_shapes_3(const TopoDS_Shape& S, TopTools_MapOfShape& M, Standard_Boolean cumOri, Standard_Boolean cumLoc) { return TopExp::MapShapes(S, M, cumOri, cumLoc); }
+inline void TopExp_map_shapes_and_ancestors(const TopoDS_Shape& S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape& M) { return TopExp::MapShapesAndAncestors(S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), M); }
+inline void TopExp_map_shapes_and_unique_ancestors(const TopoDS_Shape& S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape& M, Standard_Boolean useOrientation) { return TopExp::MapShapesAndUniqueAncestors(S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), M, useOrientation); }
 inline std::unique_ptr<TopoDS_Vertex> TopExp_first_vertex(const TopoDS_Edge& E, Standard_Boolean CumOri) { return std::make_unique<TopoDS_Vertex>(TopExp::FirstVertex(E, CumOri)); }
 inline std::unique_ptr<TopoDS_Vertex> TopExp_last_vertex(const TopoDS_Edge& E, Standard_Boolean CumOri) { return std::make_unique<TopoDS_Vertex>(TopExp::LastVertex(E, CumOri)); }
 inline void TopExp_vertices(const TopoDS_Edge& E, TopoDS_Vertex& Vfirst, TopoDS_Vertex& Vlast, Standard_Boolean CumOri) { return TopExp::Vertices(E, Vfirst, Vlast, CumOri); }

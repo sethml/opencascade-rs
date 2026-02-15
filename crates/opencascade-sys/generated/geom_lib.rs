@@ -6,11 +6,36 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub use crate::ffi::{g_transform, same_range_mut, to3d_2};
+pub fn build_curve3d_mut(
+    Tolerance: f64,
+    CurvePtr: std::pin::Pin<&mut crate::ffi::Adaptor3d_CurveOnSurface>,
+    FirstParameter: f64,
+    LastParameter: f64,
+    NewCurvePtr: std::pin::Pin<&mut crate::ffi::HandleGeomCurve>,
+    MaxDeviation: &mut f64,
+    AverageDeviation: &mut f64,
+    Continuity: crate::geom_abs::Shape,
+    MaxDegree: i32,
+    MaxSegment: i32,
+) {
+    crate::ffi::build_curve3d_mut(
+        Tolerance,
+        CurvePtr,
+        FirstParameter,
+        LastParameter,
+        NewCurvePtr,
+        MaxDeviation,
+        AverageDeviation,
+        Continuity.into(),
+        MaxDegree,
+        MaxSegment,
+    )
+}
 pub use crate::ffi::{
     adjust_extremity, axe_of_inertia, build_c3d_on_iso_line, cancel_denominator_derivative,
-    extend_curve_to_point, extend_surf_by_length, g_transform, inertia, is_b_spl_u_closed,
-    is_b_spl_v_closed, is_bz_u_closed, is_bz_v_closed, is_closed, is_iso_line, norm_estim,
-    same_range_mut, to3d_2,
+    extend_curve_to_point, extend_surf_by_length, inertia, is_b_spl_u_closed, is_b_spl_v_closed,
+    is_bz_u_closed, is_bz_v_closed, is_closed, is_iso_line, norm_estim,
 };
 
 // ========================

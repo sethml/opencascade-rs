@@ -13,7 +13,7 @@ use glam::{dvec3, DVec3};
 use opencascade_sys::{
     b_rep, b_rep_algo_api, b_rep_builder_api, b_rep_feat, b_rep_fillet_api, b_rep_g_prop,
     b_rep_offset_api, b_rep_prim_api, b_rep_tools, extrema, g_prop, geom_api, gp, message,
-    top_abs, top_exp, topo_ds,
+    top_abs, top_exp, top_tools, topo_ds,
 };
 
 pub struct Face {
@@ -136,15 +136,15 @@ impl Face {
 
         let face_shape = self.inner.as_shape();
 
-        let mut explorer = top_exp::Explorer::new_shape_shapeenum2(
-            face_shape,
-            top_abs::ShapeEnum::Vertex.into(),
-            top_abs::ShapeEnum::Shape.into(),
-        );
-        while explorer.more() {
-            let vertex = topo_ds::vertex(explorer.current());
-            make_fillet.pin_mut().add_fillet(&vertex, radius);
-            explorer.pin_mut().next();
+        // Use IndexedMapOfShape to deduplicate vertices. TopExp_Explorer visits
+        // each vertex once per adjacent edge, so adding a fillet at the same
+        // vertex twice causes StdFail_NotDone.
+        let mut shape_map = top_tools::IndexedMapOfShape::new();
+        top_exp::map_shapes(face_shape, top_abs::ShapeEnum::Vertex, shape_map.pin_mut());
+
+        for i in 1..=shape_map.size() {
+            let vertex = topo_ds::vertex(shape_map.find_key(i));
+            make_fillet.pin_mut().add_fillet(vertex, radius);
         }
 
         let progress = message::ProgressRange::new();
