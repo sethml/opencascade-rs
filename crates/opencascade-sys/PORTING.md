@@ -344,11 +344,6 @@ let my_body = mk_fuse.pin_mut().shape();
 - **No Handle downcasting** — use unsafe pointer casts after dynamic type
   checks as a workaround.
 - **Enum parameters are `i32`** — use `.into()` for type-safe conversion.
-- **Inherited methods using enum types** — Methods like `orientation()`,
-  `shape_type()`, `oriented()`, `compose()`, and `composed()` are not generated
-  as inherited methods on subtypes, because the binding generator does not yet
-  handle enum type conversions in inherited methods. Use `as_shape()` to access
-  these (see below).
 
 ## Inherited Methods on TopoDS Subtypes
 
@@ -365,21 +360,15 @@ face.pin_mut().reverse()
 face.reversed()
 face.nb_children()
 face.is_same(other_shape)
+face.orientation()           // i32 (TopAbs_Orientation)
+face.shape_type()            // i32 (TopAbs_ShapeEnum)
+face.oriented(0)             // returns UniquePtr<Shape>
+face.pin_mut().compose(0)    // mutating: compose orientation
+face.composed(0)             // returns UniquePtr<Shape>
 // ... and: nullify, located, t_shape, free, locked, modified, checked,
 //          orientable, closed, infinite, convex, moved, complement,
 //          complemented, is_partner, is_equal, is_not_equal, empty_copy,
-//          empty_copied
-```
-
-However, methods that use enum types (`TopAbs_Orientation`,
-`TopAbs_ShapeEnum`) are **not** inherited due to a binding generator
-limitation. For these, use `as_shape()`:
-
-```rust
-// These require as_shape() because they use enum types
-let orient = face.as_shape().orientation();    // i32 (TopAbs_Orientation)
-let stype = edge.as_shape().shape_type();      // i32 (TopAbs_ShapeEnum)
-let oriented = face.as_shape().oriented(0);    // returns UniquePtr<Shape>
+//          empty_copied, orientation_orientation
 ```
 
 ## Where Methods Live: Module Files vs ffi.rs

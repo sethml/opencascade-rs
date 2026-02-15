@@ -1606,7 +1606,7 @@ fn compute_inherited_method_bindings(
     symbol_table: &SymbolTable,
     handle_able_classes: &HashSet<String>,
     all_class_names: &HashSet<String>,
-    all_enum_names: &HashSet<String>,
+    _all_enum_names: &HashSet<String>,
 ) -> Vec<InheritedMethodBinding> {
     if class.has_protected_destructor {
         return Vec::new();
@@ -1654,42 +1654,30 @@ fn compute_inherited_method_bindings(
                     continue;
                 }
 
-                // Skip methods that reference unknown Handle types or unknown classes
+                // Skip methods that reference unknown Handle types or unknown classes.
+                // But skip this check for params/return types that are enums (they have
+                // enum_cpp_name set and are mapped to i32, so they aren't "unknown").
                 let uses_unknown_type = resolved_method.params.iter().any(|p| {
-                    type_mapping::type_uses_unknown_handle(
-                        &p.ty.original,
-                        all_class_names,
-                        handle_able_classes,
-                    )
+                    p.ty.enum_cpp_name.is_none()
+                        && type_mapping::type_uses_unknown_handle(
+                            &p.ty.original,
+                            all_class_names,
+                            handle_able_classes,
+                        )
                 }) || resolved_method
                     .return_type
                     .as_ref()
                     .map(|rt| {
-                        type_mapping::type_uses_unknown_handle(
-                            &rt.original,
-                            all_class_names,
-                            handle_able_classes,
-                        )
+                        rt.enum_cpp_name.is_none()
+                            && type_mapping::type_uses_unknown_handle(
+                                &rt.original,
+                                all_class_names,
+                                handle_able_classes,
+                            )
                     })
                     .unwrap_or(false);
 
                 if uses_unknown_type {
-                    continue;
-                }
-
-                // Skip methods that use enum types (not yet handled for inherited methods)
-                let uses_enum = resolved_method.params.iter().any(|p| {
-                    matches!(&p.ty.original, Type::Class(name) if all_enum_names.contains(name))
-                        || matches!(&p.ty.original, Type::ConstRef(inner) if matches!(inner.as_ref(), Type::Class(name) if all_enum_names.contains(name)))
-                }) || resolved_method
-                    .return_type
-                    .as_ref()
-                    .map(|rt| {
-                        matches!(&rt.original, Type::Class(name) if all_enum_names.contains(name))
-                    })
-                    .unwrap_or(false);
-
-                if uses_enum {
                     continue;
                 }
 
@@ -1719,8 +1707,8 @@ fn compute_inherited_method_bindings(
                         ResolvedParamBinding {
                             name: p.name.clone(),
                             rust_name: p.rust_name.clone(),
-                            rust_ffi_type: type_to_ffi_full_name(&p.ty.original),
-                            rust_reexport_type: unified_type_to_string(&p.ty.original),
+                            rust_ffi_type: if p.ty.enum_cpp_name.is_some() { "i32".to_string() } else { type_to_ffi_full_name(&p.ty.original) },
+                            rust_reexport_type: if p.ty.enum_cpp_name.is_some() { "i32".to_string() } else { unified_type_to_string(&p.ty.original) },
                             cpp_type: cpp_param_type,
                             cpp_arg_expr,
                         }
@@ -1730,8 +1718,8 @@ fn compute_inherited_method_bindings(
                 let return_type =
                     resolved_method.return_type.as_ref().map(|rt| {
                         ResolvedReturnTypeBinding {
-                            rust_ffi_type: return_type_to_ffi_full_name(&rt.original),
-                            rust_reexport_type: unified_return_type_to_string(&rt.original),
+                            rust_ffi_type: if rt.enum_cpp_name.is_some() { "i32".to_string() } else { return_type_to_ffi_full_name(&rt.original) },
+                            rust_reexport_type: if rt.enum_cpp_name.is_some() { "i32".to_string() } else { unified_return_type_to_string(&rt.original) },
                             cpp_type: rt.cpp_type.clone(),
                             needs_unique_ptr: rt.needs_unique_ptr,
                             enum_cpp_name: rt.enum_cpp_name.clone(),

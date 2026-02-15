@@ -116,6 +116,16 @@ impl BooleanOperation {
         crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_NonDestructive(self)
     }
 
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetGlue(self, theGlue)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Glue(self)
+    }
+
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
     pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
         crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(self, theCheck)
@@ -623,6 +633,16 @@ impl Common {
         crate::ffi::BRepAlgoAPI_Common_inherited_Tools(self)
     }
 
+    /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: i32) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SetOperation(self, theBOP)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
+    pub fn operation(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Operation(self)
+    }
+
     /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
     pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
         crate::ffi::BRepAlgoAPI_Common_inherited_Build(self, theRange)
@@ -646,6 +666,16 @@ impl Common {
     /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
     pub fn non_destructive(&self) -> bool {
         crate::ffi::BRepAlgoAPI_Common_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BRepAlgoAPI_Common_inherited_SetGlue(self, theGlue)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_Common_inherited_Glue(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
@@ -862,6 +892,16 @@ impl Cut {
         crate::ffi::BRepAlgoAPI_Cut_inherited_Tools(self)
     }
 
+    /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: i32) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SetOperation(self, theBOP)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
+    pub fn operation(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Operation(self)
+    }
+
     /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
     pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
         crate::ffi::BRepAlgoAPI_Cut_inherited_Build(self, theRange)
@@ -885,6 +925,16 @@ impl Cut {
     /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
     pub fn non_destructive(&self) -> bool {
         crate::ffi::BRepAlgoAPI_Cut_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_SetGlue(self, theGlue)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_Cut_inherited_Glue(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
@@ -1232,6 +1282,16 @@ impl Fuse {
         crate::ffi::BRepAlgoAPI_Fuse_inherited_Tools(self)
     }
 
+    /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: i32) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetOperation(self, theBOP)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
+    pub fn operation(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Operation(self)
+    }
+
     /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
     pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
         crate::ffi::BRepAlgoAPI_Fuse_inherited_Build(self, theRange)
@@ -1255,6 +1315,16 @@ impl Fuse {
     /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
     pub fn non_destructive(&self) -> bool {
         crate::ffi::BRepAlgoAPI_Fuse_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_SetGlue(self, theGlue)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_Fuse_inherited_Glue(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
@@ -1611,6 +1681,16 @@ impl Section {
         crate::ffi::BRepAlgoAPI_Section_inherited_Tools(self)
     }
 
+    /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: i32) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SetOperation(self, theBOP)
+    }
+
+    /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
+    pub fn operation(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_Section_inherited_Operation(self)
+    }
+
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
     pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
         crate::ffi::BRepAlgoAPI_Section_inherited_SetArguments(self, theLS)
@@ -1629,6 +1709,16 @@ impl Section {
     /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
     pub fn non_destructive(&self) -> bool {
         crate::ffi::BRepAlgoAPI_Section_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BRepAlgoAPI_Section_inherited_SetGlue(self, theGlue)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_Section_inherited_Glue(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
@@ -1825,6 +1915,16 @@ impl Splitter {
     /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
     pub fn non_destructive(&self) -> bool {
         crate::ffi::BRepAlgoAPI_Splitter_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_SetGlue(self, theGlue)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BRepAlgoAPI_Splitter_inherited_Glue(self)
     }
 
     /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()

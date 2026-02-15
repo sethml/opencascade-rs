@@ -2438,6 +2438,11 @@ impl ParamEditor {
         crate::ffi::IFSelect_ParamEditor_inherited_MaxList(self, num)
     }
 
+    /// Inherited from IFSelect_Editor: EditMode()
+    pub fn edit_mode(&self, num: i32) -> i32 {
+        crate::ffi::IFSelect_ParamEditor_inherited_EditMode(self, num)
+    }
+
     /// Inherited from IFSelect_Editor: MaxNameLength()
     pub fn max_name_length(&self, what: i32) -> i32 {
         crate::ffi::IFSelect_ParamEditor_inherited_MaxNameLength(self, what)

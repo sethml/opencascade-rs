@@ -678,6 +678,11 @@ impl MakeEdge {
         crate::ffi::BRepLib_MakeEdge_inherited_Shape(self)
     }
 
+    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
+        crate::ffi::BRepLib_MakeEdge_inherited_FaceStatus(self, F)
+    }
+
     /// Inherited from BRepLib_MakeShape: HasDescendants()
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         crate::ffi::BRepLib_MakeEdge_inherited_HasDescendants(self, F)
@@ -973,6 +978,11 @@ impl MakeEdge2d {
     /// Inherited from BRepLib_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepLib_MakeEdge2d_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
+        crate::ffi::BRepLib_MakeEdge2d_inherited_FaceStatus(self, F)
     }
 
     /// Inherited from BRepLib_MakeShape: HasDescendants()
@@ -1337,6 +1347,11 @@ impl MakeFace {
         crate::ffi::BRepLib_MakeFace_inherited_Shape(self)
     }
 
+    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
+        crate::ffi::BRepLib_MakeFace_inherited_FaceStatus(self, F)
+    }
+
     /// Inherited from BRepLib_MakeShape: HasDescendants()
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         crate::ffi::BRepLib_MakeFace_inherited_HasDescendants(self, F)
@@ -1519,6 +1534,11 @@ impl MakePolygon {
         crate::ffi::BRepLib_MakePolygon_inherited_Shape(self)
     }
 
+    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
+        crate::ffi::BRepLib_MakePolygon_inherited_FaceStatus(self, F)
+    }
+
     /// Inherited from BRepLib_MakeShape: HasDescendants()
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         crate::ffi::BRepLib_MakePolygon_inherited_HasDescendants(self, F)
@@ -1683,6 +1703,11 @@ impl MakeShell {
     /// Inherited from BRepLib_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepLib_MakeShell_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
+        crate::ffi::BRepLib_MakeShell_inherited_FaceStatus(self, F)
     }
 
     /// Inherited from BRepLib_MakeShape: HasDescendants()
@@ -1900,6 +1925,11 @@ impl MakeVertex {
         crate::ffi::BRepLib_MakeVertex_inherited_Shape(self)
     }
 
+    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
+        crate::ffi::BRepLib_MakeVertex_inherited_FaceStatus(self, F)
+    }
+
     /// Inherited from BRepLib_MakeShape: HasDescendants()
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         crate::ffi::BRepLib_MakeVertex_inherited_HasDescendants(self, F)
@@ -2073,6 +2103,11 @@ impl MakeWire {
     /// Inherited from BRepLib_MakeShape: Shape()
     pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::BRepLib_MakeWire_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> i32 {
+        crate::ffi::BRepLib_MakeWire_inherited_FaceStatus(self, F)
     }
 
     /// Inherited from BRepLib_MakeShape: HasDescendants()

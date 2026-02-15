@@ -2502,6 +2502,11 @@ impl BoundedCurve {
         crate::ffi::Geom_BoundedCurve_inherited_Period(self)
     }
 
+    /// Inherited from Geom_Curve: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_BoundedCurve_inherited_Continuity(self)
+    }
+
     /// Inherited from Geom_Curve: IsCN()
     pub fn is_cn(&self, N: i32) -> bool {
         crate::ffi::Geom_BoundedCurve_inherited_IsCN(self, N)
@@ -2868,6 +2873,11 @@ impl BoundedSurface {
     /// Inherited from Geom_Surface: VIso()
     pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
         crate::ffi::Geom_BoundedSurface_inherited_VIso(self, V)
+    }
+
+    /// Inherited from Geom_Surface: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_BoundedSurface_inherited_Continuity(self)
     }
 
     /// Inherited from Geom_Surface: IsCNu()
@@ -3284,6 +3294,11 @@ impl Circle {
     /// Inherited from Geom_Conic: Reverse()
     pub fn reverse(self: std::pin::Pin<&mut Self>) {
         crate::ffi::Geom_Circle_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom_Conic: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_Circle_inherited_Continuity(self)
     }
 
     /// Inherited from Geom_Conic: IsCN()
@@ -3885,6 +3900,11 @@ impl ConicalSurface {
         crate::ffi::Geom_ConicalSurface_inherited_UReverse(self)
     }
 
+    /// Inherited from Geom_ElementarySurface: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_ConicalSurface_inherited_Continuity(self)
+    }
+
     /// Inherited from Geom_ElementarySurface: IsCNu()
     pub fn is_c_nu(&self, N: i32) -> bool {
         crate::ffi::Geom_ConicalSurface_inherited_IsCNu(self, N)
@@ -4384,6 +4404,11 @@ impl CylindricalSurface {
     /// Inherited from Geom_ElementarySurface: VReverse()
     pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
         crate::ffi::Geom_CylindricalSurface_inherited_VReverse(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_CylindricalSurface_inherited_Continuity(self)
     }
 
     /// Inherited from Geom_ElementarySurface: IsCNu()
@@ -5262,6 +5287,11 @@ impl Ellipse {
         crate::ffi::Geom_Ellipse_inherited_Reverse(self)
     }
 
+    /// Inherited from Geom_Conic: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_Ellipse_inherited_Continuity(self)
+    }
+
     /// Inherited from Geom_Conic: IsCN()
     pub fn is_cn(&self, N: i32) -> bool {
         crate::ffi::Geom_Ellipse_inherited_IsCN(self, N)
@@ -5792,6 +5822,11 @@ impl Hyperbola {
     /// Inherited from Geom_Conic: Reverse()
     pub fn reverse(self: std::pin::Pin<&mut Self>) {
         crate::ffi::Geom_Hyperbola_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom_Conic: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_Hyperbola_inherited_Continuity(self)
     }
 
     /// Inherited from Geom_Conic: IsCN()
@@ -6954,6 +6989,11 @@ impl Parabola {
         crate::ffi::Geom_Parabola_inherited_Reverse(self)
     }
 
+    /// Inherited from Geom_Conic: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_Parabola_inherited_Continuity(self)
+    }
+
     /// Inherited from Geom_Conic: IsCN()
     pub fn is_cn(&self, N: i32) -> bool {
         crate::ffi::Geom_Parabola_inherited_IsCN(self, N)
@@ -7249,6 +7289,11 @@ impl Plane {
     /// Inherited from Geom_ElementarySurface: Position()
     pub fn position(&self) -> &crate::ffi::gp_Ax3 {
         crate::ffi::Geom_Plane_inherited_Position(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_Plane_inherited_Continuity(self)
     }
 
     /// Inherited from Geom_ElementarySurface: IsCNu()
@@ -8085,6 +8130,11 @@ impl SphericalSurface {
         crate::ffi::Geom_SphericalSurface_inherited_VReverse(self)
     }
 
+    /// Inherited from Geom_ElementarySurface: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_SphericalSurface_inherited_Continuity(self)
+    }
+
     /// Inherited from Geom_ElementarySurface: IsCNu()
     pub fn is_c_nu(&self, N: i32) -> bool {
         crate::ffi::Geom_SphericalSurface_inherited_IsCNu(self, N)
@@ -8680,6 +8730,11 @@ impl SurfaceOfLinearExtrusion {
         crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_VPeriod(self)
     }
 
+    /// Inherited from Geom_Surface: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Continuity(self)
+    }
+
     /// Inherited from Geom_Surface: Value()
     pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
         crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Value(self, U, V)
@@ -8999,6 +9054,11 @@ impl SurfaceOfRevolution {
     /// Inherited from Geom_Surface: VPeriod()
     pub fn v_period(&self) -> f64 {
         crate::ffi::Geom_SurfaceOfRevolution_inherited_VPeriod(self)
+    }
+
+    /// Inherited from Geom_Surface: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_SurfaceOfRevolution_inherited_Continuity(self)
     }
 
     /// Inherited from Geom_Surface: Value()
@@ -9562,6 +9622,11 @@ impl ToroidalSurface {
     /// Inherited from Geom_ElementarySurface: VReverse()
     pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
         crate::ffi::Geom_ToroidalSurface_inherited_VReverse(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom_ToroidalSurface_inherited_Continuity(self)
     }
 
     /// Inherited from Geom_ElementarySurface: IsCNu()

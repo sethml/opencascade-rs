@@ -170,6 +170,19 @@ impl ChBuilder {
         )
     }
 
+    /// Inherited from ChFi3d_Builder: SetContinuity()
+    pub fn set_continuity(
+        self: std::pin::Pin<&mut Self>,
+        InternalContinuity: i32,
+        AngularTolerance: f64,
+    ) {
+        crate::ffi::ChFi3d_ChBuilder_inherited_SetContinuity(
+            self,
+            InternalContinuity,
+            AngularTolerance,
+        )
+    }
+
     /// Inherited from ChFi3d_Builder: Remove()
     pub fn remove(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
         crate::ffi::ChFi3d_ChBuilder_inherited_Remove(self, E)
@@ -287,6 +300,11 @@ impl ChBuilder {
         crate::ffi::ChFi3d_ChBuilder_inherited_BadShape(self)
     }
 
+    /// Inherited from ChFi3d_Builder: StripeStatus()
+    pub fn stripe_status(&self, IC: i32) -> i32 {
+        crate::ffi::ChFi3d_ChBuilder_inherited_StripeStatus(self, IC)
+    }
+
     /// Inherited from ChFi3d_Builder: Reset()
     pub fn reset(self: std::pin::Pin<&mut Self>) {
         crate::ffi::ChFi3d_ChBuilder_inherited_Reset(self)
@@ -368,6 +386,19 @@ impl FilBuilder {
     ) {
         crate::ffi::ChFi3d_FilBuilder_inherited_SetParams(
             self, Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche,
+        )
+    }
+
+    /// Inherited from ChFi3d_Builder: SetContinuity()
+    pub fn set_continuity(
+        self: std::pin::Pin<&mut Self>,
+        InternalContinuity: i32,
+        AngularTolerance: f64,
+    ) {
+        crate::ffi::ChFi3d_FilBuilder_inherited_SetContinuity(
+            self,
+            InternalContinuity,
+            AngularTolerance,
         )
     }
 
@@ -486,6 +517,11 @@ impl FilBuilder {
     /// Inherited from ChFi3d_Builder: BadShape()
     pub fn bad_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::ChFi3d_FilBuilder_inherited_BadShape(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: StripeStatus()
+    pub fn stripe_status(&self, IC: i32) -> i32 {
+        crate::ffi::ChFi3d_FilBuilder_inherited_StripeStatus(self, IC)
     }
 
     /// Inherited from ChFi3d_Builder: Reset()

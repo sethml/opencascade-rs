@@ -250,6 +250,11 @@ impl Builder {
         crate::ffi::BRepFeat_Builder_inherited_Perform(self, theRange)
     }
 
+    /// Inherited from BOPAlgo_BOP: Operation()
+    pub fn operation(&self) -> i32 {
+        crate::ffi::BRepFeat_Builder_inherited_Operation(self)
+    }
+
     /// Inherited from BOPAlgo_Builder: AddArgument()
     pub fn add_argument(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
         crate::ffi::BRepFeat_Builder_inherited_AddArgument(self, theShape)
@@ -273,6 +278,16 @@ impl Builder {
     /// Inherited from BOPAlgo_Builder: NonDestructive()
     pub fn non_destructive(&self) -> bool {
         crate::ffi::BRepFeat_Builder_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetGlue()
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BRepFeat_Builder_inherited_SetGlue(self, theGlue)
+    }
+
+    /// Inherited from BOPAlgo_Builder: Glue()
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BRepFeat_Builder_inherited_Glue(self)
     }
 
     /// Inherited from BOPAlgo_Builder: SetCheckInverted()
@@ -711,6 +726,16 @@ impl MakeCylindricalHole {
         crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Clear(self)
     }
 
+    /// Inherited from BOPAlgo_BOP: SetOperation()
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theOperation: i32) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetOperation(self, theOperation)
+    }
+
+    /// Inherited from BOPAlgo_BOP: Operation()
+    pub fn operation(&self) -> i32 {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Operation(self)
+    }
+
     /// Inherited from BOPAlgo_Builder: AddArgument()
     pub fn add_argument(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
         crate::ffi::BRepFeat_MakeCylindricalHole_inherited_AddArgument(self, theShape)
@@ -734,6 +759,16 @@ impl MakeCylindricalHole {
     /// Inherited from BOPAlgo_Builder: NonDestructive()
     pub fn non_destructive(&self) -> bool {
         crate::ffi::BRepFeat_MakeCylindricalHole_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetGlue()
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetGlue(self, theGlue)
+    }
+
+    /// Inherited from BOPAlgo_Builder: Glue()
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Glue(self)
     }
 
     /// Inherited from BOPAlgo_Builder: SetCheckInverted()
@@ -1138,6 +1173,11 @@ impl MakeDPrism {
     pub fn perf_selection_valid(self: std::pin::Pin<&mut Self>) {
         crate::ffi::BRepFeat_MakeDPrism_inherited_PerfSelectionValid(self)
     }
+
+    /// Inherited from BRepFeat_Form: CurrentStatusError()
+    pub fn current_status_error(&self) -> i32 {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_CurrentStatusError(self)
+    }
 }
 
 // ========================
@@ -1286,6 +1326,11 @@ impl MakeLinearForm {
     /// Inherited from BRepFeat_RibSlot: TgtEdges()
     pub fn tgt_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
         crate::ffi::BRepFeat_MakeLinearForm_inherited_TgtEdges(self)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: CurrentStatusError()
+    pub fn current_status_error(&self) -> i32 {
+        crate::ffi::BRepFeat_MakeLinearForm_inherited_CurrentStatusError(self)
     }
 }
 
@@ -1474,6 +1519,11 @@ impl MakePipe {
     /// Inherited from BRepFeat_Form: PerfSelectionValid()
     pub fn perf_selection_valid(self: std::pin::Pin<&mut Self>) {
         crate::ffi::BRepFeat_MakePipe_inherited_PerfSelectionValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: CurrentStatusError()
+    pub fn current_status_error(&self) -> i32 {
+        crate::ffi::BRepFeat_MakePipe_inherited_CurrentStatusError(self)
     }
 }
 
@@ -1671,6 +1721,11 @@ impl MakePrism {
     pub fn perf_selection_valid(self: std::pin::Pin<&mut Self>) {
         crate::ffi::BRepFeat_MakePrism_inherited_PerfSelectionValid(self)
     }
+
+    /// Inherited from BRepFeat_Form: CurrentStatusError()
+    pub fn current_status_error(&self) -> i32 {
+        crate::ffi::BRepFeat_MakePrism_inherited_CurrentStatusError(self)
+    }
 }
 
 // ========================
@@ -1843,6 +1898,11 @@ impl MakeRevol {
     pub fn perf_selection_valid(self: std::pin::Pin<&mut Self>) {
         crate::ffi::BRepFeat_MakeRevol_inherited_PerfSelectionValid(self)
     }
+
+    /// Inherited from BRepFeat_Form: CurrentStatusError()
+    pub fn current_status_error(&self) -> i32 {
+        crate::ffi::BRepFeat_MakeRevol_inherited_CurrentStatusError(self)
+    }
 }
 
 // ========================
@@ -1991,6 +2051,11 @@ impl MakeRevolutionForm {
     /// Inherited from BRepFeat_RibSlot: TgtEdges()
     pub fn tgt_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
         crate::ffi::BRepFeat_MakeRevolutionForm_inherited_TgtEdges(self)
+    }
+
+    /// Inherited from BRepFeat_RibSlot: CurrentStatusError()
+    pub fn current_status_error(&self) -> i32 {
+        crate::ffi::BRepFeat_MakeRevolutionForm_inherited_CurrentStatusError(self)
     }
 }
 

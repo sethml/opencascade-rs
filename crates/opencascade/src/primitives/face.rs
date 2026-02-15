@@ -370,7 +370,7 @@ impl Face {
     }
 
     pub fn orientation(&self) -> FaceOrientation {
-        FaceOrientation::from_i32(self.inner.as_shape().orientation())
+        FaceOrientation::from_i32(self.inner.orientation())
     }
 
     #[must_use]

@@ -235,6 +235,11 @@ impl ModelBuilder {
         crate::ffi::IMeshTools_ModelBuilder_as_Message_Algorithm_mut(self)
     }
 
+    /// Inherited from Message_Algorithm: SetStatus()
+    pub fn set_status(self: std::pin::Pin<&mut Self>, theStat: i32) {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_SetStatus(self, theStat)
+    }
+
     /// Inherited from Message_Algorithm: GetStatus()
     pub fn get_status(&self) -> &crate::ffi::Message_ExecStatus {
         crate::ffi::IMeshTools_ModelBuilder_inherited_GetStatus(self)
@@ -265,12 +270,48 @@ impl ModelBuilder {
         crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessenger(self)
     }
 
+    /// Inherited from Message_Algorithm: SendStatusMessages()
+    pub fn send_status_messages(
+        &self,
+        theFilter: &crate::ffi::Message_ExecStatus,
+        theTraceLevel: i32,
+        theMaxCount: i32,
+    ) {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_SendStatusMessages(
+            self,
+            theFilter,
+            theTraceLevel,
+            theMaxCount,
+        )
+    }
+
+    /// Inherited from Message_Algorithm: SendMessages()
+    pub fn send_messages(&self, theTraceLevel: i32, theMaxCount: i32) {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_SendMessages(self, theTraceLevel, theMaxCount)
+    }
+
     /// Inherited from Message_Algorithm: AddStatus()
     pub fn add_status(
         self: std::pin::Pin<&mut Self>,
         theOther: &crate::ffi::HandleMessageAlgorithm,
     ) {
         crate::ffi::IMeshTools_ModelBuilder_inherited_AddStatus(self, theOther)
+    }
+
+    /// Inherited from Message_Algorithm: GetMessageNumbers()
+    pub fn get_message_numbers(
+        &self,
+        theStatus: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessageNumbers(self, theStatus)
+    }
+
+    /// Inherited from Message_Algorithm: GetMessageStrings()
+    pub fn get_message_strings(
+        &self,
+        theStatus: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessageStrings(self, theStatus)
     }
 }
 

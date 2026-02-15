@@ -1755,6 +1755,21 @@ impl PrinterOStream {
     pub fn as_printer_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Printer> {
         crate::ffi::Message_PrinterOStream_as_Message_Printer_mut(self)
     }
+
+    /// Inherited from Message_Printer: GetTraceLevel()
+    pub fn get_trace_level(&self) -> i32 {
+        crate::ffi::Message_PrinterOStream_inherited_GetTraceLevel(self)
+    }
+
+    /// Inherited from Message_Printer: SetTraceLevel()
+    pub fn set_trace_level(self: std::pin::Pin<&mut Self>, theTraceLevel: i32) {
+        crate::ffi::Message_PrinterOStream_inherited_SetTraceLevel(self, theTraceLevel)
+    }
+
+    /// Inherited from Message_Printer: Send()
+    pub fn send(&self, theString: &crate::ffi::TCollection_ExtendedString, theGravity: i32) {
+        crate::ffi::Message_PrinterOStream_inherited_Send(self, theString, theGravity)
+    }
 }
 
 // ========================
@@ -1793,6 +1808,21 @@ impl PrinterSystemLog {
     pub fn as_printer_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Printer> {
         crate::ffi::Message_PrinterSystemLog_as_Message_Printer_mut(self)
     }
+
+    /// Inherited from Message_Printer: GetTraceLevel()
+    pub fn get_trace_level(&self) -> i32 {
+        crate::ffi::Message_PrinterSystemLog_inherited_GetTraceLevel(self)
+    }
+
+    /// Inherited from Message_Printer: SetTraceLevel()
+    pub fn set_trace_level(self: std::pin::Pin<&mut Self>, theTraceLevel: i32) {
+        crate::ffi::Message_PrinterSystemLog_inherited_SetTraceLevel(self, theTraceLevel)
+    }
+
+    /// Inherited from Message_Printer: Send()
+    pub fn send(&self, theString: &crate::ffi::TCollection_ExtendedString, theGravity: i32) {
+        crate::ffi::Message_PrinterSystemLog_inherited_Send(self, theString, theGravity)
+    }
 }
 
 // ========================
@@ -1822,6 +1852,21 @@ impl PrinterToReport {
     /// Upcast to Message_Printer (mutable)
     pub fn as_printer_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Printer> {
         crate::ffi::Message_PrinterToReport_as_Message_Printer_mut(self)
+    }
+
+    /// Inherited from Message_Printer: GetTraceLevel()
+    pub fn get_trace_level(&self) -> i32 {
+        crate::ffi::Message_PrinterToReport_inherited_GetTraceLevel(self)
+    }
+
+    /// Inherited from Message_Printer: SetTraceLevel()
+    pub fn set_trace_level(self: std::pin::Pin<&mut Self>, theTraceLevel: i32) {
+        crate::ffi::Message_PrinterToReport_inherited_SetTraceLevel(self, theTraceLevel)
+    }
+
+    /// Inherited from Message_Printer: Send()
+    pub fn send(&self, theString: &crate::ffi::TCollection_ExtendedString, theGravity: i32) {
+        crate::ffi::Message_PrinterToReport_inherited_Send(self, theString, theGravity)
     }
 }
 

@@ -153,6 +153,26 @@ impl Edge {
         crate::ffi::IMeshData_Edge_inherited_GetShape(self)
     }
 
+    /// Inherited from IMeshData_StatusOwner: IsEqual()
+    pub fn is_equal(&self, theValue: i32) -> bool {
+        crate::ffi::IMeshData_Edge_inherited_IsEqual(self, theValue)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: IsSet()
+    pub fn is_set(&self, theValue: i32) -> bool {
+        crate::ffi::IMeshData_Edge_inherited_IsSet(self, theValue)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: SetStatus()
+    pub fn set_status(self: std::pin::Pin<&mut Self>, theValue: i32) {
+        crate::ffi::IMeshData_Edge_inherited_SetStatus(self, theValue)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: UnsetStatus()
+    pub fn unset_status(self: std::pin::Pin<&mut Self>, theValue: i32) {
+        crate::ffi::IMeshData_Edge_inherited_UnsetStatus(self, theValue)
+    }
+
     /// Inherited from IMeshData_StatusOwner: GetStatusMask()
     pub fn get_status_mask(&self) -> i32 {
         crate::ffi::IMeshData_Edge_inherited_GetStatusMask(self)
@@ -223,6 +243,26 @@ impl Face {
     /// Inherited from IMeshData_Shape: GetShape()
     pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::IMeshData_Face_inherited_GetShape(self)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: IsEqual()
+    pub fn is_equal(&self, theValue: i32) -> bool {
+        crate::ffi::IMeshData_Face_inherited_IsEqual(self, theValue)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: IsSet()
+    pub fn is_set(&self, theValue: i32) -> bool {
+        crate::ffi::IMeshData_Face_inherited_IsSet(self, theValue)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: SetStatus()
+    pub fn set_status(self: std::pin::Pin<&mut Self>, theValue: i32) {
+        crate::ffi::IMeshData_Face_inherited_SetStatus(self, theValue)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: UnsetStatus()
+    pub fn unset_status(self: std::pin::Pin<&mut Self>, theValue: i32) {
+        crate::ffi::IMeshData_Face_inherited_UnsetStatus(self, theValue)
     }
 
     /// Inherited from IMeshData_StatusOwner: GetStatusMask()
@@ -507,6 +547,26 @@ impl Wire {
     /// Inherited from IMeshData_Shape: GetShape()
     pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
         crate::ffi::IMeshData_Wire_inherited_GetShape(self)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: IsEqual()
+    pub fn is_equal(&self, theValue: i32) -> bool {
+        crate::ffi::IMeshData_Wire_inherited_IsEqual(self, theValue)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: IsSet()
+    pub fn is_set(&self, theValue: i32) -> bool {
+        crate::ffi::IMeshData_Wire_inherited_IsSet(self, theValue)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: SetStatus()
+    pub fn set_status(self: std::pin::Pin<&mut Self>, theValue: i32) {
+        crate::ffi::IMeshData_Wire_inherited_SetStatus(self, theValue)
+    }
+
+    /// Inherited from IMeshData_StatusOwner: UnsetStatus()
+    pub fn unset_status(self: std::pin::Pin<&mut Self>, theValue: i32) {
+        crate::ffi::IMeshData_Wire_inherited_UnsetStatus(self, theValue)
     }
 
     /// Inherited from IMeshData_StatusOwner: GetStatusMask()

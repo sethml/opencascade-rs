@@ -262,6 +262,11 @@ impl Curve3D {
         crate::ffi::BRep_Curve3D_inherited_Location2(self)
     }
 
+    /// Inherited from BRep_CurveRepresentation: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_Curve3D_inherited_Continuity(self)
+    }
+
     /// Inherited from BRep_GCurve: SetRange()
     pub fn set_range(self: std::pin::Pin<&mut Self>, First: f64, Last: f64) {
         crate::ffi::BRep_Curve3D_inherited_SetRange(self, First, Last)
@@ -768,6 +773,11 @@ impl CurveOnSurface {
         crate::ffi::BRep_CurveOnSurface_inherited_Location2(self)
     }
 
+    /// Inherited from BRep_CurveRepresentation: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_CurveOnSurface_inherited_Continuity(self)
+    }
+
     /// Inherited from BRep_GCurve: SetRange()
     pub fn set_range(self: std::pin::Pin<&mut Self>, First: f64, Last: f64) {
         crate::ffi::BRep_CurveOnSurface_inherited_SetRange(self, First, Last)
@@ -966,6 +976,11 @@ impl GCurve {
     /// Inherited from BRep_CurveRepresentation: Location2()
     pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
         crate::ffi::BRep_GCurve_inherited_Location2(self)
+    }
+
+    /// Inherited from BRep_CurveRepresentation: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_GCurve_inherited_Continuity(self)
     }
 
     /// Inherited from BRep_CurveRepresentation: Copy()
@@ -1442,6 +1457,11 @@ impl Polygon3D {
     pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
         crate::ffi::BRep_Polygon3D_inherited_Location2(self)
     }
+
+    /// Inherited from BRep_CurveRepresentation: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_Polygon3D_inherited_Continuity(self)
+    }
 }
 
 // ========================
@@ -1596,6 +1616,11 @@ impl PolygonOnClosedSurface {
     pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
         crate::ffi::BRep_PolygonOnClosedSurface_inherited_Location2(self)
     }
+
+    /// Inherited from BRep_CurveRepresentation: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_PolygonOnClosedSurface_inherited_Continuity(self)
+    }
 }
 
 // ========================
@@ -1748,6 +1773,11 @@ impl PolygonOnClosedTriangulation {
     pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
         crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Location2(self)
     }
+
+    /// Inherited from BRep_CurveRepresentation: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_inherited_Continuity(self)
+    }
 }
 
 // ========================
@@ -1884,6 +1914,11 @@ impl PolygonOnSurface {
     pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
         crate::ffi::BRep_PolygonOnSurface_inherited_Location2(self)
     }
+
+    /// Inherited from BRep_CurveRepresentation: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_PolygonOnSurface_inherited_Continuity(self)
+    }
 }
 
 // ========================
@@ -2018,6 +2053,11 @@ impl PolygonOnTriangulation {
     pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
         crate::ffi::BRep_PolygonOnTriangulation_inherited_Location2(self)
     }
+
+    /// Inherited from BRep_CurveRepresentation: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRep_PolygonOnTriangulation_inherited_Continuity(self)
+    }
 }
 
 // ========================
@@ -2077,6 +2117,11 @@ impl TEdge {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::topo_ds::TShape> {
         crate::ffi::BRep_TEdge_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Inherited from TopoDS_TEdge: ShapeType()
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::BRep_TEdge_inherited_ShapeType(self)
     }
 
     /// Inherited from TopoDS_TShape: Free()
@@ -2191,6 +2236,11 @@ impl TFace {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::topo_ds::TShape> {
         crate::ffi::BRep_TFace_as_TopoDS_TShape_mut(self)
+    }
+
+    /// Inherited from TopoDS_TFace: ShapeType()
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::BRep_TFace_inherited_ShapeType(self)
     }
 
     /// Inherited from TopoDS_TShape: Free()
@@ -2325,6 +2375,11 @@ impl TVertex {
     /// Inherited from TopoDS_TShape: Convex()
     pub fn convex(&self) -> bool {
         crate::ffi::BRep_TVertex_inherited_Convex(self)
+    }
+
+    /// Inherited from TopoDS_TShape: ShapeType()
+    pub fn shape_type(&self) -> i32 {
+        crate::ffi::BRep_TVertex_inherited_ShapeType(self)
     }
 
     /// Inherited from TopoDS_TShape: NbChildren()

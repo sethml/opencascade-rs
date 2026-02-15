@@ -392,6 +392,16 @@ impl BOP {
         crate::ffi::BOPAlgo_BOP_inherited_NonDestructive(self)
     }
 
+    /// Inherited from BOPAlgo_Builder: SetGlue()
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BOPAlgo_BOP_inherited_SetGlue(self, theGlue)
+    }
+
+    /// Inherited from BOPAlgo_Builder: Glue()
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BOPAlgo_BOP_inherited_Glue(self)
+    }
+
     /// Inherited from BOPAlgo_Builder: SetCheckInverted()
     pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
         crate::ffi::BOPAlgo_BOP_inherited_SetCheckInverted(self, theCheck)
@@ -1312,6 +1322,16 @@ impl ToolsProvider {
     /// Inherited from BOPAlgo_Builder: NonDestructive()
     pub fn non_destructive(&self) -> bool {
         crate::ffi::BOPAlgo_ToolsProvider_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetGlue()
+    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: i32) {
+        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetGlue(self, theGlue)
+    }
+
+    /// Inherited from BOPAlgo_Builder: Glue()
+    pub fn glue(&self) -> i32 {
+        crate::ffi::BOPAlgo_ToolsProvider_inherited_Glue(self)
     }
 
     /// Inherited from BOPAlgo_Builder: SetCheckInverted()

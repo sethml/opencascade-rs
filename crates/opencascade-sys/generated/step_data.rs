@@ -93,6 +93,11 @@ impl StepModel {
         crate::ffi::StepData_StepModel_inherited_NbEntities(self)
     }
 
+    /// Inherited from Interface_InterfaceModel: EntityState()
+    pub fn entity_state(&self, num: i32) -> i32 {
+        crate::ffi::StepData_StepModel_inherited_EntityState(self, num)
+    }
+
     /// Inherited from Interface_InterfaceModel: IsReportEntity()
     pub fn is_report_entity(&self, num: i32, semantic: bool) -> bool {
         crate::ffi::StepData_StepModel_inherited_IsReportEntity(self, num, semantic)

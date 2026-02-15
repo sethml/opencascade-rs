@@ -1962,9 +1962,93 @@ impl Wedge {
         crate::ffi::BRepPrim_Wedge_inherited_GetX2Max(self)
     }
 
+    /// Inherited from BRepPrim_GWedge: Open()
+    pub fn open(self: std::pin::Pin<&mut Self>, d1: i32) {
+        crate::ffi::BRepPrim_Wedge_inherited_Open(self, d1)
+    }
+
+    /// Inherited from BRepPrim_GWedge: Close()
+    pub fn close(self: std::pin::Pin<&mut Self>, d1: i32) {
+        crate::ffi::BRepPrim_Wedge_inherited_Close(self, d1)
+    }
+
+    /// Inherited from BRepPrim_GWedge: IsInfinite()
+    pub fn is_infinite(&self, d1: i32) -> bool {
+        crate::ffi::BRepPrim_Wedge_inherited_IsInfinite(self, d1)
+    }
+
     /// Inherited from BRepPrim_GWedge: Shell()
     pub fn shell(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shell {
         crate::ffi::BRepPrim_Wedge_inherited_Shell(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: HasFace()
+    pub fn has_face(&self, d1: i32) -> bool {
+        crate::ffi::BRepPrim_Wedge_inherited_HasFace(self, d1)
+    }
+
+    /// Inherited from BRepPrim_GWedge: Face()
+    pub fn face(self: std::pin::Pin<&mut Self>, d1: i32) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepPrim_Wedge_inherited_Face(self, d1)
+    }
+
+    /// Inherited from BRepPrim_GWedge: Plane()
+    pub fn plane(self: std::pin::Pin<&mut Self>, d1: i32) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::BRepPrim_Wedge_inherited_Plane(self, d1)
+    }
+
+    /// Inherited from BRepPrim_GWedge: HasWire()
+    pub fn has_wire(&self, d1: i32) -> bool {
+        crate::ffi::BRepPrim_Wedge_inherited_HasWire(self, d1)
+    }
+
+    /// Inherited from BRepPrim_GWedge: Wire()
+    pub fn wire(self: std::pin::Pin<&mut Self>, d1: i32) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepPrim_Wedge_inherited_Wire(self, d1)
+    }
+
+    /// Inherited from BRepPrim_GWedge: HasEdge()
+    pub fn has_edge(&self, d1: i32, d2: i32) -> bool {
+        crate::ffi::BRepPrim_Wedge_inherited_HasEdge(self, d1, d2)
+    }
+
+    /// Inherited from BRepPrim_GWedge: Edge()
+    pub fn edge(self: std::pin::Pin<&mut Self>, d1: i32, d2: i32) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepPrim_Wedge_inherited_Edge(self, d1, d2)
+    }
+
+    /// Inherited from BRepPrim_GWedge: Line()
+    pub fn line(
+        self: std::pin::Pin<&mut Self>,
+        d1: i32,
+        d2: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::BRepPrim_Wedge_inherited_Line(self, d1, d2)
+    }
+
+    /// Inherited from BRepPrim_GWedge: HasVertex()
+    pub fn has_vertex(&self, d1: i32, d2: i32, d3: i32) -> bool {
+        crate::ffi::BRepPrim_Wedge_inherited_HasVertex(self, d1, d2, d3)
+    }
+
+    /// Inherited from BRepPrim_GWedge: Vertex()
+    pub fn vertex(
+        self: std::pin::Pin<&mut Self>,
+        d1: i32,
+        d2: i32,
+        d3: i32,
+    ) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepPrim_Wedge_inherited_Vertex(self, d1, d2, d3)
+    }
+
+    /// Inherited from BRepPrim_GWedge: Point()
+    pub fn point(
+        self: std::pin::Pin<&mut Self>,
+        d1: i32,
+        d2: i32,
+        d3: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::BRepPrim_Wedge_inherited_Point(self, d1, d2, d3)
     }
 
     /// Inherited from BRepPrim_GWedge: IsDegeneratedShape()

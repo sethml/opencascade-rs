@@ -429,6 +429,16 @@ impl Reader {
         crate::ffi::STEPControl_Reader_inherited_OneShape(self)
     }
 
+    /// Inherited from XSControl_Reader: PrintCheckLoad()
+    pub fn print_check_load(&self, failsonly: bool, mode: i32) {
+        crate::ffi::STEPControl_Reader_inherited_PrintCheckLoad(self, failsonly, mode)
+    }
+
+    /// Inherited from XSControl_Reader: PrintCheckTransfer()
+    pub fn print_check_transfer(&self, failsonly: bool, mode: i32) {
+        crate::ffi::STEPControl_Reader_inherited_PrintCheckTransfer(self, failsonly, mode)
+    }
+
     /// Inherited from XSControl_Reader: PrintStatsTransfer()
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
         crate::ffi::STEPControl_Reader_inherited_PrintStatsTransfer(self, what, mode)

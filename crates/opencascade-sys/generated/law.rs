@@ -593,6 +593,16 @@ impl Interpol {
         crate::ffi::Law_Interpol_to_handle(obj)
     }
 
+    /// Inherited from Law_BSpFunc: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Law_Interpol_inherited_Continuity(self)
+    }
+
+    /// Inherited from Law_BSpFunc: NbIntervals()
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Law_Interpol_inherited_NbIntervals(self, S)
+    }
+
     /// Inherited from Law_BSpFunc: Value()
     pub fn value(self: std::pin::Pin<&mut Self>, X: f64) -> f64 {
         crate::ffi::Law_Interpol_inherited_Value(self, X)
@@ -826,6 +836,16 @@ impl S {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawS> {
         crate::ffi::Law_S_to_handle(obj)
+    }
+
+    /// Inherited from Law_BSpFunc: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Law_S_inherited_Continuity(self)
+    }
+
+    /// Inherited from Law_BSpFunc: NbIntervals()
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::Law_S_inherited_NbIntervals(self, S)
     }
 
     /// Inherited from Law_BSpFunc: Value()

@@ -1103,6 +1103,11 @@ impl BoundedCurve {
         crate::ffi::Geom2d_BoundedCurve_inherited_Period(self)
     }
 
+    /// Inherited from Geom2d_Curve: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_BoundedCurve_inherited_Continuity(self)
+    }
+
     /// Inherited from Geom2d_Curve: IsCN()
     pub fn is_cn(&self, N: i32) -> bool {
         crate::ffi::Geom2d_BoundedCurve_inherited_IsCN(self, N)
@@ -1588,6 +1593,11 @@ impl Circle {
     /// Inherited from Geom2d_Conic: Reverse()
     pub fn reverse(self: std::pin::Pin<&mut Self>) {
         crate::ffi::Geom2d_Circle_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_Circle_inherited_Continuity(self)
     }
 
     /// Inherited from Geom2d_Conic: IsCN()
@@ -2598,6 +2608,11 @@ impl Ellipse {
         crate::ffi::Geom2d_Ellipse_inherited_Reverse(self)
     }
 
+    /// Inherited from Geom2d_Conic: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_Ellipse_inherited_Continuity(self)
+    }
+
     /// Inherited from Geom2d_Conic: IsCN()
     pub fn is_cn(&self, N: i32) -> bool {
         crate::ffi::Geom2d_Ellipse_inherited_IsCN(self, N)
@@ -3125,6 +3140,11 @@ impl Hyperbola {
     /// Inherited from Geom2d_Conic: Reverse()
     pub fn reverse(self: std::pin::Pin<&mut Self>) {
         crate::ffi::Geom2d_Hyperbola_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_Hyperbola_inherited_Continuity(self)
     }
 
     /// Inherited from Geom2d_Conic: IsCN()
@@ -3945,6 +3965,11 @@ impl Parabola {
     /// Inherited from Geom2d_Conic: Reverse()
     pub fn reverse(self: std::pin::Pin<&mut Self>) {
         crate::ffi::Geom2d_Parabola_inherited_Reverse(self)
+    }
+
+    /// Inherited from Geom2d_Conic: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::Geom2d_Parabola_inherited_Continuity(self)
     }
 
     /// Inherited from Geom2d_Conic: IsCN()

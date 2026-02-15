@@ -1119,6 +1119,15 @@ impl Trsf {
         crate::ffi::BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep_mut(self)
     }
 
+    /// Inherited from BRepSweep_NumLinearRegularSweep: DirectSolid()
+    pub fn direct_solid(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirS: &crate::ffi::Sweep_NumShape,
+    ) -> i32 {
+        crate::ffi::BRepSweep_Trsf_inherited_DirectSolid(self, aGenS, aDirS)
+    }
+
     /// Inherited from BRepSweep_NumLinearRegularSweep: SplitShell()
     pub fn split_shell(
         &self,

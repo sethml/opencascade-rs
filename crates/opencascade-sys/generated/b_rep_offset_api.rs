@@ -1886,9 +1886,41 @@ impl MakeThickSolid {
         )
     }
 
+    /// Inherited from BRepOffsetAPI_MakeOffsetShape: PerformByJoin()
+    pub fn perform_by_join(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+        Offset: f64,
+        Tol: f64,
+        Mode: i32,
+        Intersection: bool,
+        SelfInter: bool,
+        Join: i32,
+        RemoveIntEdges: bool,
+        theRange: &crate::ffi::Message_ProgressRange,
+    ) {
+        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_PerformByJoin(
+            self,
+            S,
+            Offset,
+            Tol,
+            Mode,
+            Intersection,
+            SelfInter,
+            Join,
+            RemoveIntEdges,
+            theRange,
+        )
+    }
+
     /// Inherited from BRepOffsetAPI_MakeOffsetShape: MakeOffset()
     pub fn make_offset(&self) -> &crate::ffi::BRepOffset_MakeOffset {
         crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(self)
+    }
+
+    /// Inherited from BRepOffsetAPI_MakeOffsetShape: GetJoinType()
+    pub fn get_join_type(&self) -> i32 {
+        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_GetJoinType(self)
     }
 }
 

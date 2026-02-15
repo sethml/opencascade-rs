@@ -369,6 +369,16 @@ impl Curve2d {
         crate::ffi::BRepAdaptor_Curve2d_inherited_LastParameter(self)
     }
 
+    /// Inherited from Adaptor2d_Curve2d: Continuity()
+    pub fn continuity(&self) -> i32 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Continuity(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: NbIntervals()
+    pub fn nb_intervals(&self, S: i32) -> i32 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_NbIntervals(self, S)
+    }
+
     /// Inherited from Adaptor2d_Curve2d: Trim()
     pub fn trim(
         &self,
@@ -445,6 +455,11 @@ impl Curve2d {
     /// Inherited from Adaptor2d_Curve2d: Resolution()
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::ffi::BRepAdaptor_Curve2d_inherited_Resolution(self, R3d)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: GetType()
+    pub fn get_type(&self) -> i32 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_GetType(self)
     }
 
     /// Inherited from Adaptor2d_Curve2d: Line()
