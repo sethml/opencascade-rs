@@ -9,27 +9,29 @@
 pub fn map_shapes(
     S: &crate::ffi::TopoDS_Shape,
     T: crate::top_abs::ShapeEnum,
-    M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedMapOfShape>,
+    M: &mut crate::ffi::TopTools_IndexedMapOfShape,
 ) {
-    crate::ffi::map_shapes(S, T.into(), M)
+    unsafe { crate::ffi::map_shapes(S, T.into(), M) }
 }
 pub use crate::ffi::{map_shapes_3, map_shapes_mut};
 pub fn map_shapes_and_ancestors(
     S: &crate::ffi::TopoDS_Shape,
     TS: crate::top_abs::ShapeEnum,
     TA: crate::top_abs::ShapeEnum,
-    M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape>,
+    M: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
 ) {
-    crate::ffi::map_shapes_and_ancestors(S, TS.into(), TA.into(), M)
+    unsafe { crate::ffi::map_shapes_and_ancestors(S, TS.into(), TA.into(), M) }
 }
 pub fn map_shapes_and_unique_ancestors(
     S: &crate::ffi::TopoDS_Shape,
     TS: crate::top_abs::ShapeEnum,
     TA: crate::top_abs::ShapeEnum,
-    M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape>,
+    M: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
     useOrientation: bool,
 ) {
-    crate::ffi::map_shapes_and_unique_ancestors(S, TS.into(), TA.into(), M, useOrientation)
+    unsafe {
+        crate::ffi::map_shapes_and_unique_ancestors(S, TS.into(), TA.into(), M, useOrientation)
+    }
 }
 pub use crate::ffi::{common_vertex, first_vertex, last_vertex, vertices, vertices_mut};
 
@@ -96,10 +98,16 @@ pub use crate::ffi::{common_vertex, first_vertex, last_vertex, vertices, vertice
 /// not make a difference.
 pub use crate::ffi::TopExp_Explorer as Explorer;
 
+unsafe impl crate::CppDeletable for Explorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopExp_Explorer_destructor(ptr);
+    }
+}
+
 impl Explorer {
     /// Creates an empty explorer, becomes useful after Init.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TopExp_Explorer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopExp_Explorer_ctor()) }
     }
 
     /// Creates an Explorer on the Shape <S>.
@@ -115,8 +123,14 @@ impl Explorer {
         S: &crate::ffi::TopoDS_Shape,
         ToFind: crate::top_abs::ShapeEnum,
         ToAvoid: crate::top_abs::ShapeEnum,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopExp_Explorer_ctor_shape_shapeenum2(S, ToFind.into(), ToAvoid.into())
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopExp_Explorer_ctor_shape_shapeenum2(
+                S,
+                ToFind.into(),
+                ToAvoid.into(),
+            ))
+        }
     }
 
     /// Resets this explorer on the shape S. It is initialized to
@@ -126,11 +140,61 @@ impl Explorer {
     /// if it is the same as, or less complex than, the shape
     /// ToFind it has no effect on the search.
     pub fn init(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         S: &crate::ffi::TopoDS_Shape,
         ToFind: crate::top_abs::ShapeEnum,
         ToAvoid: crate::top_abs::ShapeEnum,
     ) {
-        crate::ffi::TopExp_Explorer_init(self, S, ToFind.into(), ToAvoid.into())
+        unsafe {
+            crate::ffi::TopExp_Explorer_init(self as *mut Self, S, ToFind.into(), ToAvoid.into())
+        }
+    }
+
+    /// Returns True if there are more shapes in the exploration.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopExp_Explorer_more(self as *const Self) }
+    }
+
+    /// Moves to the next Shape in the exploration.
+    /// Exceptions
+    /// Standard_NoMoreObject if there are no more shapes to explore.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopExp_Explorer_next(self as *mut Self) }
+    }
+
+    /// Returns the current shape in the exploration.
+    /// Exceptions
+    /// Standard_NoSuchObject if this explorer has no more shapes to explore.
+    pub fn value(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::TopExp_Explorer_value(self as *const Self)) }
+    }
+
+    /// Returns the current shape in the exploration.
+    /// Exceptions
+    /// Standard_NoSuchObject if this explorer has no more shapes to explore.
+    pub fn current(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::TopExp_Explorer_current(self as *const Self)) }
+    }
+
+    /// Reinitialize the exploration with the original arguments.
+    pub fn re_init(&mut self) {
+        unsafe { crate::ffi::TopExp_Explorer_re_init(self as *mut Self) }
+    }
+
+    /// Return explored shape.
+    pub fn explored_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::TopExp_Explorer_explored_shape(self as *const Self)) }
+    }
+
+    /// Returns the current depth of the exploration. 0 is
+    /// the shape to explore itself.
+    pub fn depth(&self) -> i32 {
+        unsafe { crate::ffi::TopExp_Explorer_depth(self as *const Self) }
+    }
+
+    /// Clears the content of the explorer. It will return
+    /// False on More().
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TopExp_Explorer_clear(self as *mut Self) }
     }
 }

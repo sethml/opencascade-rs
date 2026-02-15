@@ -18,20 +18,26 @@ pub use crate::ffi::write_3;
 /// IMPORTANT: Consider reading STL file to Poly_Triangulation object instead (see class RWStl).
 pub use crate::ffi::StlAPI_Reader as Reader;
 
+unsafe impl crate::CppDeletable for Reader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StlAPI_Reader_destructor(ptr);
+    }
+}
+
 impl Reader {
     /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::StlAPI_Reader_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StlAPI_Reader_ctor()) }
     }
 
     /// Reads STL file to the TopoDS_Shape (each triangle is converted to the face).
     /// @return True if reading is successful
     pub fn read(
-        self: std::pin::Pin<&mut Self>,
-        theShape: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
-        theFileName: &str,
+        &mut self,
+        theShape: &mut crate::ffi::TopoDS_Shape,
+        theFileName: *const std::ffi::c_char,
     ) -> bool {
-        crate::ffi::StlAPI_Reader_read(self, theShape, theFileName)
+        unsafe { crate::ffi::StlAPI_Reader_read(self as *mut Self, theShape, theFileName) }
     }
 }
 
@@ -44,20 +50,36 @@ impl Reader {
 /// new one.
 pub use crate::ffi::StlAPI_Writer as Writer;
 
+unsafe impl crate::CppDeletable for Writer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StlAPI_Writer_destructor(ptr);
+    }
+}
+
 impl Writer {
     /// Creates a writer object with default parameters: ASCIIMode.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::StlAPI_Writer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StlAPI_Writer_ctor()) }
+    }
+
+    /// Returns the address to the flag defining the mode for writing the file.
+    /// This address may be used to either read or change the flag.
+    /// If the mode returns True (default value) the generated file is an ASCII file.
+    /// If the mode returns False, the generated file is a binary file.
+    pub fn ascii_mode(&mut self) -> &mut bool {
+        unsafe { &mut *(crate::ffi::StlAPI_Writer_ascii_mode(self as *mut Self)) }
     }
 
     /// Converts a given shape to STL format and writes it to file with a given filename.
     /// \return the error state.
     pub fn write(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theShape: &crate::ffi::TopoDS_Shape,
-        theFileName: &str,
+        theFileName: *const std::ffi::c_char,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> bool {
-        crate::ffi::StlAPI_Writer_write(self, theShape, theFileName, theProgress)
+        unsafe {
+            crate::ffi::StlAPI_Writer_write(self as *mut Self, theShape, theFileName, theProgress)
+        }
     }
 }

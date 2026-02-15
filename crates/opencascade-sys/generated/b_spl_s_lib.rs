@@ -18,34 +18,132 @@ pub use crate::ffi::{poles_coefficients_3, rational_derivative, reverse_3};
 /// The data should be recalculated in going from span to span.
 pub use crate::ffi::BSplSLib_Cache as Cache;
 
+unsafe impl crate::CppDeletable for Cache {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BSplSLib_Cache_destructor(ptr);
+    }
+}
+
 impl Cache {
-    pub fn get_type_name() -> String {
-        crate::ffi::BSplSLib_Cache_get_type_name()
+    /// Verifies validity of the cache using parameters of the point
+    /// \param theParameterU  first parameter of the point placed in the span
+    /// \param theParameterV  second parameter of the point placed in the span
+    pub fn is_cache_valid(&self, theParameterU: f64, theParameterV: f64) -> bool {
+        unsafe {
+            crate::ffi::BSplSLib_Cache_is_cache_valid(
+                self as *const Self,
+                theParameterU,
+                theParameterV,
+            )
+        }
+    }
+
+    /// Calculates the point on the surface for specified parameters
+    /// \param[in]  theU      first parameter for calculation of the value
+    /// \param[in]  theV      second parameter for calculation of the value
+    /// \param[out] thePoint  the result of calculation (the point on the surface)
+    pub fn d0(&self, theU: &f64, theV: &f64, thePoint: &mut crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::BSplSLib_Cache_d0(self as *const Self, theU, theV, thePoint) }
+    }
+
+    /// Calculates the point on the surface and its first derivative
+    /// \param[in]  theU         first parameter of calculation of the value
+    /// \param[in]  theV         second parameter of calculation of the value
+    /// \param[out] thePoint     the result of calculation (the point on the surface)
+    /// \param[out] theTangentU  tangent vector along U axis in the calculated point
+    /// \param[out] theTangentV  tangent vector along V axis in the calculated point
+    pub fn d1(
+        &self,
+        theU: &f64,
+        theV: &f64,
+        thePoint: &mut crate::ffi::gp_Pnt,
+        theTangentU: &mut crate::ffi::gp_Vec,
+        theTangentV: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::BSplSLib_Cache_d1(
+                self as *const Self,
+                theU,
+                theV,
+                thePoint,
+                theTangentU,
+                theTangentV,
+            )
+        }
+    }
+
+    /// Calculates the point on the surface and derivatives till second order
+    /// \param[in]  theU            first parameter of calculation of the value
+    /// \param[in]  theV            second parameter of calculation of the value
+    /// \param[out] thePoint        the result of calculation (the point on the surface)
+    /// \param[out] theTangentU     tangent vector along U axis in the calculated point
+    /// \param[out] theTangentV     tangent vector along V axis in the calculated point
+    /// \param[out] theCurvatureU   curvature vector (2nd derivative on U) along U axis
+    /// \param[out] theCurvatureV   curvature vector (2nd derivative on V) along V axis
+    /// \param[out] theCurvatureUV  2nd mixed derivative on U anv V
+    pub fn d2(
+        &self,
+        theU: &f64,
+        theV: &f64,
+        thePoint: &mut crate::ffi::gp_Pnt,
+        theTangentU: &mut crate::ffi::gp_Vec,
+        theTangentV: &mut crate::ffi::gp_Vec,
+        theCurvatureU: &mut crate::ffi::gp_Vec,
+        theCurvatureV: &mut crate::ffi::gp_Vec,
+        theCurvatureUV: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::BSplSLib_Cache_d2(
+                self as *const Self,
+                theU,
+                theV,
+                thePoint,
+                theTangentU,
+                theTangentV,
+                theCurvatureU,
+                theCurvatureV,
+                theCurvatureUV,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BSplSLib_Cache_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BSplSLib_Cache_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BSplSLib_Cache_get_type_descriptor()
+        unsafe { &*(crate::ffi::BSplSLib_Cache_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleBSplSLibCache> {
-        crate::ffi::BSplSLib_Cache_to_handle(obj)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBSplSLibCache> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BSplSLib_Cache_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleBSplSLibCache;
 
+unsafe impl crate::CppDeletable for HandleBSplSLibCache {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBSplSLibCache_destructor(ptr);
+    }
+}
+
 impl HandleBSplSLibCache {
     /// Dereference this Handle to access the underlying BSplSLib_Cache
     pub fn get(&self) -> &crate::ffi::BSplSLib_Cache {
-        crate::ffi::HandleBSplSLibCache_get(self)
+        unsafe { &*(crate::ffi::HandleBSplSLibCache_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BSplSLib_Cache
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BSplSLib_Cache> {
-        crate::ffi::HandleBSplSLibCache_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BSplSLib_Cache {
+        unsafe { &mut *(crate::ffi::HandleBSplSLibCache_get_mut(self as *mut Self)) }
     }
 }
 
@@ -54,3 +152,32 @@ impl HandleBSplSLibCache {
 // ========================
 
 pub use crate::ffi::BSplSLib_EvaluatorFunction as EvaluatorFunction;
+
+unsafe impl crate::CppDeletable for EvaluatorFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BSplSLib_EvaluatorFunction_destructor(ptr);
+    }
+}
+
+impl EvaluatorFunction {
+    /// Function evaluation method to be defined by descendant
+    pub fn evaluate(
+        &self,
+        theDerivativeRequest: i32,
+        theUParameter: f64,
+        theVParameter: f64,
+        theResult: &mut f64,
+        theErrorCode: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::BSplSLib_EvaluatorFunction_evaluate(
+                self as *const Self,
+                theDerivativeRequest,
+                theUParameter,
+                theVParameter,
+                theResult,
+                theErrorCode,
+            )
+        }
+    }
+}

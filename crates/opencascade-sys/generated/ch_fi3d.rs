@@ -52,31 +52,165 @@ impl TryFrom<i32> for FilletShape {
 /// a gap on a Shape and the reconstruction of  the   Shape.
 pub use crate::ffi::ChFi3d_Builder as Builder;
 
+unsafe impl crate::CppDeletable for Builder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFi3d_Builder_destructor(ptr);
+    }
+}
+
 impl Builder {
+    pub fn set_params(
+        &mut self,
+        Tang: f64,
+        Tesp: f64,
+        T2d: f64,
+        TApp3d: f64,
+        TolApp2d: f64,
+        Fleche: f64,
+    ) {
+        unsafe {
+            crate::ffi::ChFi3d_Builder_set_params(
+                self as *mut Self,
+                Tang,
+                Tesp,
+                T2d,
+                TApp3d,
+                TolApp2d,
+                Fleche,
+            )
+        }
+    }
+
     pub fn set_continuity(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         InternalContinuity: crate::geom_abs::Shape,
         AngularTolerance: f64,
     ) {
-        crate::ffi::ChFi3d_Builder_set_continuity(self, InternalContinuity.into(), AngularTolerance)
+        unsafe {
+            crate::ffi::ChFi3d_Builder_set_continuity(
+                self as *mut Self,
+                InternalContinuity.into(),
+                AngularTolerance,
+            )
+        }
+    }
+
+    /// extracts from  the list the contour containing edge E.
+    pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFi3d_Builder_remove(self as *mut Self, E) }
+    }
+
+    /// gives the number of  the contour containing E or 0
+    /// if E does  not  belong to  any  contour.
+    pub fn contains_edge(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+        unsafe { crate::ffi::ChFi3d_Builder_contains_edge(self as *const Self, E) }
+    }
+
+    /// gives  the number of  the contour containing E or 0
+    /// if E does  not  belong  to  any  contour.
+    /// Sets in IndexInSpine the index of E in the contour if it's found
+    pub fn contains_edge_int(&self, E: &crate::ffi::TopoDS_Edge, IndexInSpine: &mut i32) -> i32 {
+        unsafe {
+            crate::ffi::ChFi3d_Builder_contains_edge_int(self as *const Self, E, IndexInSpine)
+        }
+    }
+
+    /// gives the number of  disjoint contours on  which
+    /// the  fillets  are  calculated
+    pub fn nb_elements(&self) -> i32 {
+        unsafe { crate::ffi::ChFi3d_Builder_nb_elements(self as *const Self) }
+    }
+
+    /// returns the length of  the contour of index IC.
+    pub fn length(&self, IC: i32) -> f64 {
+        unsafe { crate::ffi::ChFi3d_Builder_length(self as *const Self, IC) }
     }
 
     /// returns the First vertex V of
     /// the contour of index IC.
-    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi3d_Builder_first_vertex(self, IC)
+    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_first_vertex(
+                self as *const Self,
+                IC,
+            ))
+        }
     }
 
     /// returns the Last vertex V of
     /// the contour of index IC.
-    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi3d_Builder_last_vertex(self, IC)
+    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_last_vertex(
+                self as *const Self,
+                IC,
+            ))
+        }
+    }
+
+    /// returns the abscissa of the vertex V on
+    /// the contour of index IC.
+    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+        unsafe { crate::ffi::ChFi3d_Builder_abscissa(self as *const Self, IC, V) }
+    }
+
+    /// returns the relative abscissa([0.,1.]) of the
+    /// vertex V on the contour of index IC.
+    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+        unsafe { crate::ffi::ChFi3d_Builder_relative_abscissa(self as *const Self, IC, V) }
+    }
+
+    /// returns true if the contour of index IC is closed
+    /// an tangent.
+    pub fn closed_and_tangent(&self, IC: i32) -> bool {
+        unsafe { crate::ffi::ChFi3d_Builder_closed_and_tangent(self as *const Self, IC) }
+    }
+
+    /// returns true if the contour of index IC is closed
+    pub fn closed(&self, IC: i32) -> bool {
+        unsafe { crate::ffi::ChFi3d_Builder_closed(self as *const Self, IC) }
+    }
+
+    /// general calculation of geometry on all edges,
+    /// topologic reconstruction.
+    pub fn compute(&mut self) {
+        unsafe { crate::ffi::ChFi3d_Builder_compute(self as *mut Self) }
+    }
+
+    /// returns True if the computation  is  success
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::ChFi3d_Builder_is_done(self as *const Self) }
     }
 
     /// if (Isdone()) makes the result.
     /// if (!Isdone())
-    pub fn shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ChFi3d_Builder_shape(self)
+    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_shape(self as *const Self)) }
+    }
+
+    /// Advanced  function for the history
+    pub fn generated(
+        &mut self,
+        EouV: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::ChFi3d_Builder_generated(self as *mut Self, EouV)) }
+    }
+
+    /// Returns the number of contours on  which the calculation
+    /// has failed.
+    pub fn nb_faulty_contours(&self) -> i32 {
+        unsafe { crate::ffi::ChFi3d_Builder_nb_faulty_contours(self as *const Self) }
+    }
+
+    /// Returns the number of  I'th contour on  which the calculation
+    /// has failed.
+    pub fn faulty_contour(&self, I: i32) -> i32 {
+        unsafe { crate::ffi::ChFi3d_Builder_faulty_contour(self as *const Self, I) }
+    }
+
+    /// Returns the number of  surfaces calculated  on  the contour IC.
+    pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
+        unsafe { crate::ffi::ChFi3d_Builder_nb_computed_surfaces(self as *const Self, IC) }
     }
 
     /// Returns the IS'th surface calculated on  the contour IC.
@@ -84,26 +218,65 @@ impl Builder {
         &self,
         IC: i32,
         IS: i32,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
-        crate::ffi::ChFi3d_Builder_computed_surface(self, IC, IS)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_computed_surface(
+                self as *const Self,
+                IC,
+                IS,
+            ))
+        }
+    }
+
+    /// Returns the number of vertices on  which the calculation
+    /// has failed.
+    pub fn nb_faulty_vertices(&self) -> i32 {
+        unsafe { crate::ffi::ChFi3d_Builder_nb_faulty_vertices(self as *const Self) }
     }
 
     /// Returns the IV'th vertex on  which the calculation has failed.
-    pub fn faulty_vertex(&self, IV: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi3d_Builder_faulty_vertex(self, IV)
+    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_faulty_vertex(
+                self as *const Self,
+                IV,
+            ))
+        }
+    }
+
+    /// returns True if  a partial result has  been  calculated
+    pub fn has_result(&self) -> bool {
+        unsafe { crate::ffi::ChFi3d_Builder_has_result(self as *const Self) }
     }
 
     /// if (HasResult()) returns partial result
     /// if (!HasResult())
-    pub fn bad_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ChFi3d_Builder_bad_shape(self)
+    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_bad_shape(self as *const Self))
+        }
     }
 
     /// for the stripe IC ,indication on the cause
     /// of  failure WalkingFailure,TwistedSurface,Error, Ok
     pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
-        crate::ch_fi_ds::ErrorStatus::try_from(crate::ffi::ChFi3d_Builder_stripe_status(self, IC))
+        unsafe {
+            crate::ch_fi_ds::ErrorStatus::try_from(crate::ffi::ChFi3d_Builder_stripe_status(
+                self as *const Self,
+                IC,
+            ))
             .unwrap()
+        }
+    }
+
+    /// Reset all results of compute and returns the algorithm
+    /// in the state of the last acquisition to enable modification of contours or areas.
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::ChFi3d_Builder_reset(self as *mut Self) }
+    }
+
+    pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
+        unsafe { crate::ffi::ChFi3d_Builder_perform_two_cornerby_inter(self as *mut Self, Index) }
     }
 }
 
@@ -114,52 +287,176 @@ impl Builder {
 /// construction tool for 3D chamfers on edges (on a solid).
 pub use crate::ffi::ChFi3d_ChBuilder as ChBuilder;
 
+unsafe impl crate::CppDeletable for ChBuilder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFi3d_ChBuilder_destructor(ptr);
+    }
+}
+
 impl ChBuilder {
     /// initializes the Builder with the Shape <S> for the
     /// computation of chamfers
-    pub fn new_shape_real(S: &crate::ffi::TopoDS_Shape, Ta: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::ChFi3d_ChBuilder_ctor_shape_real(S, Ta)
+    pub fn new_shape_real(S: &crate::ffi::TopoDS_Shape, Ta: f64) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_ctor_shape_real(S, Ta)) }
     }
 
     /// initializes the Builder with the Shape <S> for the
     /// computation of chamfers
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
         Self::new_shape_real(S, 1.0e-2)
     }
 
+    /// initializes a contour with the edge <E> as first
+    /// (the next are found by propagation ).
+    /// The two distances (parameters of the chamfer) must
+    /// be set after.
+    /// if the edge <E> has more than 2 adjacent faces
+    pub fn add_edge(&mut self, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_add_edge(self as *mut Self, E) }
+    }
+
+    /// initializes a new contour with the edge <E> as first
+    /// (the next are found by propagation ), and  the
+    /// distance <Dis>
+    /// if the edge <E> has more than 2 adjacent faces
+    pub fn add_real_edge(&mut self, Dis: f64, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_add_real_edge(self as *mut Self, Dis, E) }
+    }
+
+    /// set the distance <Dis> of the fillet
+    /// contour of index <IC> in the DS with <Dis> on <F>.
+    /// if the face <F> is not one of common faces
+    /// of an edge of the contour <IC>
+    pub fn set_dist(&mut self, Dis: f64, IC: i32, F: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_set_dist(self as *mut Self, Dis, IC, F) }
+    }
+
+    /// gives the distances <Dis> of the fillet
+    /// contour of index <IC> in the DS
+    pub fn get_dist(&self, IC: i32, Dis: &mut f64) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_get_dist(self as *const Self, IC, Dis) }
+    }
+
+    /// initializes a new contour with the edge <E> as first
+    /// (the next are found by propagation ), and  the
+    /// distance <Dis1> and <Dis2>
+    /// if the edge <E> has more than 2 adjacent faces
+    pub fn add_real2_edge_face(
+        &mut self,
+        Dis1: f64,
+        Dis2: f64,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_add_real2_edge_face(self as *mut Self, Dis1, Dis2, E, F)
+        }
+    }
+
+    /// set the distances <Dis1> and <Dis2> of the fillet
+    /// contour of index <IC> in the DS with <Dis1> on <F>.
+    /// if the face <F> is not one of common faces
+    /// of an edge of the contour <IC>
+    pub fn set_dists(&mut self, Dis1: f64, Dis2: f64, IC: i32, F: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_set_dists(self as *mut Self, Dis1, Dis2, IC, F) }
+    }
+
+    /// gives the distances <Dis1> and <Dis2> of the fillet
+    /// contour of index <IC> in the DS
+    pub fn dists(&self, IC: i32, Dis1: &mut f64, Dis2: &mut f64) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_dists(self as *const Self, IC, Dis1, Dis2) }
+    }
+
+    /// initializes a new contour with the edge <E> as first
+    /// (the next are found by propagation ), and  the
+    /// distance <Dis1> and <Angle>
+    /// if the edge <E> has more than 2 adjacent faces
+    pub fn add_da(
+        &mut self,
+        Dis: f64,
+        Angle: f64,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_add_da(self as *mut Self, Dis, Angle, E, F) }
+    }
+
+    /// set the distance <Dis> and <Angle> of the fillet
+    /// contour of index <IC> in the DS with <Dis> on <F>.
+    /// if the face <F> is not one of common faces
+    /// of an edge of the contour <IC>
+    pub fn set_dist_angle(&mut self, Dis: f64, Angle: f64, IC: i32, F: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_set_dist_angle(self as *mut Self, Dis, Angle, IC, F) }
+    }
+
+    /// gives the distances <Dis> and <Angle> of the fillet
+    /// contour of index <IC> in the DS
+    pub fn get_dist_angle(&self, IC: i32, Dis: &mut f64, Angle: &mut f64) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_get_dist_angle(self as *const Self, IC, Dis, Angle) }
+    }
+
     /// set the mode of shamfer
-    pub fn set_mode(self: std::pin::Pin<&mut Self>, theMode: crate::ch_fi_ds::ChamfMode) {
-        crate::ffi::ChFi3d_ChBuilder_set_mode(self, theMode.into())
+    pub fn set_mode(&mut self, theMode: crate::ch_fi_ds::ChamfMode) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_set_mode(self as *mut Self, theMode.into()) }
     }
 
     /// renvoi la methode des chanfreins utilisee
     pub fn is_chamfer(&self, IC: i32) -> crate::ch_fi_ds::ChamfMethod {
-        crate::ch_fi_ds::ChamfMethod::try_from(crate::ffi::ChFi3d_ChBuilder_is_chamfer(self, IC))
+        unsafe {
+            crate::ch_fi_ds::ChamfMethod::try_from(crate::ffi::ChFi3d_ChBuilder_is_chamfer(
+                self as *const Self,
+                IC,
+            ))
             .unwrap()
+        }
     }
 
     /// returns the mode of chamfer used
     pub fn mode(&self) -> crate::ch_fi_ds::ChamfMode {
-        crate::ch_fi_ds::ChamfMode::try_from(crate::ffi::ChFi3d_ChBuilder_mode(self)).unwrap()
+        unsafe {
+            crate::ch_fi_ds::ChamfMode::try_from(crate::ffi::ChFi3d_ChBuilder_mode(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
-    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<crate::ffi::HandleChFiDSSecHArray1> {
-        crate::ffi::ChFi3d_ChBuilder_sect(self, IC, IS)
+    /// Reset tous rayons du contour IC.
+    pub fn reset_contour(&mut self, IC: i32) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_reset_contour(self as *mut Self, IC) }
+    }
+
+    pub fn simulate(&mut self, IC: i32) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_simulate(self as *mut Self, IC) }
+    }
+
+    pub fn nb_surf(&self, IC: i32) -> i32 {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_nb_surf(self as *const Self, IC) }
+    }
+
+    pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_sect(
+                self as *const Self,
+                IC,
+                IS,
+            ))
+        }
     }
 
     /// Upcast to ChFi3d_Builder
     pub fn as_builder(&self) -> &Builder {
-        crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder(self)
+        unsafe { &*(crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder(self as *const Self)) }
     }
 
     /// Upcast to ChFi3d_Builder (mutable)
-    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
-        crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(self)
+    pub fn as_builder_mut(&mut self) -> &mut Builder {
+        unsafe { &mut *(crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(self as *mut Self)) }
     }
 
     /// Inherited from ChFi3d_Builder: SetParams()
     pub fn set_params(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Tang: f64,
         Tesp: f64,
         T2d: f64,
@@ -167,110 +464,138 @@ impl ChBuilder {
         TolApp2d: f64,
         Fleche: f64,
     ) {
-        crate::ffi::ChFi3d_ChBuilder_inherited_SetParams(
-            self, Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche,
-        )
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_inherited_SetParams(
+                self as *mut Self,
+                Tang,
+                Tesp,
+                T2d,
+                TApp3d,
+                TolApp2d,
+                Fleche,
+            )
+        }
     }
 
     /// Inherited from ChFi3d_Builder: SetContinuity()
     pub fn set_continuity(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         InternalContinuity: crate::geom_abs::Shape,
         AngularTolerance: f64,
     ) {
-        crate::ffi::ChFi3d_ChBuilder_inherited_SetContinuity(
-            self,
-            InternalContinuity.into(),
-            AngularTolerance,
-        )
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_inherited_SetContinuity(
+                self as *mut Self,
+                InternalContinuity.into(),
+                AngularTolerance,
+            )
+        }
     }
 
     /// Inherited from ChFi3d_Builder: Remove()
-    pub fn remove(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
-        crate::ffi::ChFi3d_ChBuilder_inherited_Remove(self, E)
+    pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Remove(self as *mut Self, E) }
     }
 
     /// Inherited from ChFi3d_Builder: Contains()
     pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
-        crate::ffi::ChFi3d_ChBuilder_inherited_Contains(self, E)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Contains(self as *const Self, E) }
     }
 
     /// Inherited from ChFi3d_Builder: NbElements()
     pub fn nb_elements(&self) -> i32 {
-        crate::ffi::ChFi3d_ChBuilder_inherited_NbElements(self)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_NbElements(self as *const Self) }
     }
 
     /// Inherited from ChFi3d_Builder: Length()
     pub fn length(&self, IC: i32) -> f64 {
-        crate::ffi::ChFi3d_ChBuilder_inherited_Length(self, IC)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Length(self as *const Self, IC) }
     }
 
     /// Inherited from ChFi3d_Builder: FirstVertex()
-    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi3d_ChBuilder_inherited_FirstVertex(self, IC)
+    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_FirstVertex(
+                self as *const Self,
+                IC,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: LastVertex()
-    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi3d_ChBuilder_inherited_LastVertex(self, IC)
+    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_LastVertex(
+                self as *const Self,
+                IC,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: Abscissa()
     pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
-        crate::ffi::ChFi3d_ChBuilder_inherited_Abscissa(self, IC, V)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Abscissa(self as *const Self, IC, V) }
     }
 
     /// Inherited from ChFi3d_Builder: RelativeAbscissa()
     pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
-        crate::ffi::ChFi3d_ChBuilder_inherited_RelativeAbscissa(self, IC, V)
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_inherited_RelativeAbscissa(self as *const Self, IC, V)
+        }
     }
 
     /// Inherited from ChFi3d_Builder: ClosedAndTangent()
     pub fn closed_and_tangent(&self, IC: i32) -> bool {
-        crate::ffi::ChFi3d_ChBuilder_inherited_ClosedAndTangent(self, IC)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_ClosedAndTangent(self as *const Self, IC) }
     }
 
     /// Inherited from ChFi3d_Builder: Closed()
     pub fn closed(&self, IC: i32) -> bool {
-        crate::ffi::ChFi3d_ChBuilder_inherited_Closed(self, IC)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Closed(self as *const Self, IC) }
     }
 
     /// Inherited from ChFi3d_Builder: Compute()
-    pub fn compute(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::ChFi3d_ChBuilder_inherited_Compute(self)
+    pub fn compute(&mut self) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Compute(self as *mut Self) }
     }
 
     /// Inherited from ChFi3d_Builder: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::ChFi3d_ChBuilder_inherited_IsDone(self)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from ChFi3d_Builder: Shape()
-    pub fn shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ChFi3d_ChBuilder_inherited_Shape(self)
+    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_Shape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: Generated()
     pub fn generated(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         EouV: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::ChFi3d_ChBuilder_inherited_Generated(self, EouV)
+        unsafe { &*(crate::ffi::ChFi3d_ChBuilder_inherited_Generated(self as *mut Self, EouV)) }
     }
 
     /// Inherited from ChFi3d_Builder: NbFaultyContours()
     pub fn nb_faulty_contours(&self) -> i32 {
-        crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyContours(self)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyContours(self as *const Self) }
     }
 
     /// Inherited from ChFi3d_Builder: FaultyContour()
     pub fn faulty_contour(&self, I: i32) -> i32 {
-        crate::ffi::ChFi3d_ChBuilder_inherited_FaultyContour(self, I)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_FaultyContour(self as *const Self, I) }
     }
 
     /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
     pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
-        crate::ffi::ChFi3d_ChBuilder_inherited_NbComputedSurfaces(self, IC)
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_inherited_NbComputedSurfaces(self as *const Self, IC)
+        }
     }
 
     /// Inherited from ChFi3d_Builder: ComputedSurface()
@@ -278,46 +603,65 @@ impl ChBuilder {
         &self,
         IC: i32,
         IS: i32,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
-        crate::ffi::ChFi3d_ChBuilder_inherited_ComputedSurface(self, IC, IS)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_ComputedSurface(
+                self as *const Self,
+                IC,
+                IS,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: NbFaultyVertices()
     pub fn nb_faulty_vertices(&self) -> i32 {
-        crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyVertices(self)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyVertices(self as *const Self) }
     }
 
     /// Inherited from ChFi3d_Builder: FaultyVertex()
-    pub fn faulty_vertex(&self, IV: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi3d_ChBuilder_inherited_FaultyVertex(self, IV)
+    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_FaultyVertex(
+                self as *const Self,
+                IV,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: HasResult()
     pub fn has_result(&self) -> bool {
-        crate::ffi::ChFi3d_ChBuilder_inherited_HasResult(self)
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_HasResult(self as *const Self) }
     }
 
     /// Inherited from ChFi3d_Builder: BadShape()
-    pub fn bad_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ChFi3d_ChBuilder_inherited_BadShape(self)
+    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_BadShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: StripeStatus()
     pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
-        crate::ch_fi_ds::ErrorStatus::try_from(crate::ffi::ChFi3d_ChBuilder_inherited_StripeStatus(
-            self, IC,
-        ))
-        .unwrap()
+        unsafe {
+            crate::ch_fi_ds::ErrorStatus::try_from(
+                crate::ffi::ChFi3d_ChBuilder_inherited_StripeStatus(self as *const Self, IC),
+            )
+            .unwrap()
+        }
     }
 
     /// Inherited from ChFi3d_Builder: Reset()
-    pub fn reset(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::ChFi3d_ChBuilder_inherited_Reset(self)
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Reset(self as *mut Self) }
     }
 
     /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
-    pub fn perform_two_cornerby_inter(self: std::pin::Pin<&mut Self>, Index: i32) -> bool {
-        crate::ffi::ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(self, Index)
+    pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(self as *mut Self, Index)
+        }
     }
 }
 
@@ -328,61 +672,219 @@ impl ChBuilder {
 /// Tool  of  construction of  fillets 3d on  edges (on a solid).
 pub use crate::ffi::ChFi3d_FilBuilder as FilBuilder;
 
+unsafe impl crate::CppDeletable for FilBuilder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFi3d_FilBuilder_destructor(ptr);
+    }
+}
+
 impl FilBuilder {
     pub fn new_shape_filletshape_real(
         S: &crate::ffi::TopoDS_Shape,
         FShape: crate::ch_fi3d::FilletShape,
         Ta: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ChFi3d_FilBuilder_ctor_shape_filletshape_real(S, FShape.into(), Ta)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_ctor_shape_filletshape_real(
+                S,
+                FShape.into(),
+                Ta,
+            ))
+        }
     }
 
     pub fn new_shape_filletshape(
         S: &crate::ffi::TopoDS_Shape,
         FShape: crate::ch_fi3d::FilletShape,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_filletshape_real(S, FShape.into(), 1.0e-2)
     }
 
     /// Sets the type of fillet surface.
-    pub fn set_fillet_shape(self: std::pin::Pin<&mut Self>, FShape: crate::ch_fi3d::FilletShape) {
-        crate::ffi::ChFi3d_FilBuilder_set_fillet_shape(self, FShape.into())
+    pub fn set_fillet_shape(&mut self, FShape: crate::ch_fi3d::FilletShape) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_set_fillet_shape(self as *mut Self, FShape.into()) }
     }
 
     /// Returns the type of fillet surface.
     pub fn get_fillet_shape(&self) -> crate::ch_fi3d::FilletShape {
-        crate::ch_fi3d::FilletShape::try_from(crate::ffi::ChFi3d_FilBuilder_get_fillet_shape(self))
+        unsafe {
+            crate::ch_fi3d::FilletShape::try_from(crate::ffi::ChFi3d_FilBuilder_get_fillet_shape(
+                self as *const Self,
+            ))
             .unwrap()
+        }
+    }
+
+    /// initialisation of  a contour with the first edge
+    /// (the following are found  by propagation).
+    /// Attention, you  need  to start  with  SetRadius.
+    pub fn add_edge(&mut self, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_add_edge(self as *mut Self, E) }
+    }
+
+    /// initialisation of the constant vector the corresponding  1st  edge.
+    pub fn add_real_edge(&mut self, Radius: f64, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_add_real_edge(self as *mut Self, Radius, E) }
+    }
+
+    /// Set the radius of the contour of index IC.
+    pub fn set_radius_handlelawfunction_int2(
+        &mut self,
+        C: &crate::ffi::HandleLawFunction,
+        IC: i32,
+        IinC: i32,
+    ) {
+        unsafe {
+            crate::ffi::ChFi3d_FilBuilder_set_radius_handlelawfunction_int2(
+                self as *mut Self,
+                C,
+                IC,
+                IinC,
+            )
+        }
+    }
+
+    /// Returns true the contour is flagged as edge constant.
+    pub fn is_constant_int(&mut self, IC: i32) -> bool {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_is_constant_int(self as *mut Self, IC) }
+    }
+
+    /// Returns the vector if the contour is flagged as edge
+    /// constant.
+    pub fn radius_int(&mut self, IC: i32) -> f64 {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_radius_int(self as *mut Self, IC) }
+    }
+
+    /// Reset all vectors of contour IC.
+    pub fn reset_contour(&mut self, IC: i32) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_reset_contour(self as *mut Self, IC) }
+    }
+
+    /// Set a constant on edge E of  the contour of
+    /// index IC. Since  then  E is flagged as constant.
+    pub fn set_radius_real_int_edge(&mut self, Radius: f64, IC: i32, E: &crate::ffi::TopoDS_Edge) {
+        unsafe {
+            crate::ffi::ChFi3d_FilBuilder_set_radius_real_int_edge(self as *mut Self, Radius, IC, E)
+        }
+    }
+
+    /// Extracts the flag constant and the vector of edge E.
+    pub fn un_set_int_edge(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_un_set_int_edge(self as *mut Self, IC, E) }
+    }
+
+    /// Set a vector on vertex  V of  the contour of index IC.
+    pub fn set_radius_real_int_vertex(
+        &mut self,
+        Radius: f64,
+        IC: i32,
+        V: &crate::ffi::TopoDS_Vertex,
+    ) {
+        unsafe {
+            crate::ffi::ChFi3d_FilBuilder_set_radius_real_int_vertex(
+                self as *mut Self,
+                Radius,
+                IC,
+                V,
+            )
+        }
+    }
+
+    /// Extracts the vector of  the vertex V.
+    pub fn un_set_int_vertex(&mut self, IC: i32, V: &crate::ffi::TopoDS_Vertex) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_un_set_int_vertex(self as *mut Self, IC, V) }
+    }
+
+    /// Set  a vertex on the point of parametre U in the edge IinC
+    /// of  the contour of index IC
+    pub fn set_radius_xy_int2(&mut self, UandR: &crate::ffi::gp_XY, IC: i32, IinC: i32) {
+        unsafe {
+            crate::ffi::ChFi3d_FilBuilder_set_radius_xy_int2(self as *mut Self, UandR, IC, IinC)
+        }
+    }
+
+    /// Returns true E is flagged as edge constant.
+    pub fn is_constant_int_edge(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) -> bool {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_is_constant_int_edge(self as *mut Self, IC, E) }
+    }
+
+    /// Returns the vector if E is flagged as edge constant.
+    pub fn radius_int_edge(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) -> f64 {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_radius_int_edge(self as *mut Self, IC, E) }
+    }
+
+    /// Returns in First and Last  les extremities of  the
+    /// part of variable  vector framing E, returns
+    /// False  if  E is flagged as edge constant.
+    pub fn get_bounds(
+        &mut self,
+        IC: i32,
+        E: &crate::ffi::TopoDS_Edge,
+        First: &mut f64,
+        Last: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_get_bounds(self as *mut Self, IC, E, First, Last) }
     }
 
     /// Returns the rule of  elementary  evolution of  the
     /// part to  variable vector framing E, returns a
     /// rule zero if E is flagged as edge constant.
     pub fn get_law(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         IC: i32,
         E: &crate::ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::ChFi3d_FilBuilder_get_law(self, IC, E)
+    ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_get_law(
+                self as *mut Self,
+                IC,
+                E,
+            ))
+        }
     }
 
-    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<crate::ffi::HandleChFiDSSecHArray1> {
-        crate::ffi::ChFi3d_FilBuilder_sect(self, IC, IS)
+    /// Sets the rule of elementary evolution of  the
+    /// part to variable  vector framing E.
+    pub fn set_law(
+        &mut self,
+        IC: i32,
+        E: &crate::ffi::TopoDS_Edge,
+        L: &crate::ffi::HandleLawFunction,
+    ) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_set_law(self as *mut Self, IC, E, L) }
+    }
+
+    pub fn simulate(&mut self, IC: i32) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_simulate(self as *mut Self, IC) }
+    }
+
+    pub fn nb_surf(&self, IC: i32) -> i32 {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_nb_surf(self as *const Self, IC) }
+    }
+
+    pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_sect(
+                self as *const Self,
+                IC,
+                IS,
+            ))
+        }
     }
 
     /// Upcast to ChFi3d_Builder
     pub fn as_builder(&self) -> &Builder {
-        crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder(self)
+        unsafe { &*(crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder(self as *const Self)) }
     }
 
     /// Upcast to ChFi3d_Builder (mutable)
-    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
-        crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(self)
+    pub fn as_builder_mut(&mut self) -> &mut Builder {
+        unsafe { &mut *(crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(self as *mut Self)) }
     }
 
     /// Inherited from ChFi3d_Builder: SetParams()
     pub fn set_params(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Tang: f64,
         Tesp: f64,
         T2d: f64,
@@ -390,110 +892,138 @@ impl FilBuilder {
         TolApp2d: f64,
         Fleche: f64,
     ) {
-        crate::ffi::ChFi3d_FilBuilder_inherited_SetParams(
-            self, Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche,
-        )
+        unsafe {
+            crate::ffi::ChFi3d_FilBuilder_inherited_SetParams(
+                self as *mut Self,
+                Tang,
+                Tesp,
+                T2d,
+                TApp3d,
+                TolApp2d,
+                Fleche,
+            )
+        }
     }
 
     /// Inherited from ChFi3d_Builder: SetContinuity()
     pub fn set_continuity(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         InternalContinuity: crate::geom_abs::Shape,
         AngularTolerance: f64,
     ) {
-        crate::ffi::ChFi3d_FilBuilder_inherited_SetContinuity(
-            self,
-            InternalContinuity.into(),
-            AngularTolerance,
-        )
+        unsafe {
+            crate::ffi::ChFi3d_FilBuilder_inherited_SetContinuity(
+                self as *mut Self,
+                InternalContinuity.into(),
+                AngularTolerance,
+            )
+        }
     }
 
     /// Inherited from ChFi3d_Builder: Remove()
-    pub fn remove(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
-        crate::ffi::ChFi3d_FilBuilder_inherited_Remove(self, E)
+    pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Remove(self as *mut Self, E) }
     }
 
     /// Inherited from ChFi3d_Builder: Contains()
     pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
-        crate::ffi::ChFi3d_FilBuilder_inherited_Contains(self, E)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Contains(self as *const Self, E) }
     }
 
     /// Inherited from ChFi3d_Builder: NbElements()
     pub fn nb_elements(&self) -> i32 {
-        crate::ffi::ChFi3d_FilBuilder_inherited_NbElements(self)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_NbElements(self as *const Self) }
     }
 
     /// Inherited from ChFi3d_Builder: Length()
     pub fn length(&self, IC: i32) -> f64 {
-        crate::ffi::ChFi3d_FilBuilder_inherited_Length(self, IC)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Length(self as *const Self, IC) }
     }
 
     /// Inherited from ChFi3d_Builder: FirstVertex()
-    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi3d_FilBuilder_inherited_FirstVertex(self, IC)
+    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_FirstVertex(
+                self as *const Self,
+                IC,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: LastVertex()
-    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi3d_FilBuilder_inherited_LastVertex(self, IC)
+    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_LastVertex(
+                self as *const Self,
+                IC,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: Abscissa()
     pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
-        crate::ffi::ChFi3d_FilBuilder_inherited_Abscissa(self, IC, V)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Abscissa(self as *const Self, IC, V) }
     }
 
     /// Inherited from ChFi3d_Builder: RelativeAbscissa()
     pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
-        crate::ffi::ChFi3d_FilBuilder_inherited_RelativeAbscissa(self, IC, V)
+        unsafe {
+            crate::ffi::ChFi3d_FilBuilder_inherited_RelativeAbscissa(self as *const Self, IC, V)
+        }
     }
 
     /// Inherited from ChFi3d_Builder: ClosedAndTangent()
     pub fn closed_and_tangent(&self, IC: i32) -> bool {
-        crate::ffi::ChFi3d_FilBuilder_inherited_ClosedAndTangent(self, IC)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_ClosedAndTangent(self as *const Self, IC) }
     }
 
     /// Inherited from ChFi3d_Builder: Closed()
     pub fn closed(&self, IC: i32) -> bool {
-        crate::ffi::ChFi3d_FilBuilder_inherited_Closed(self, IC)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Closed(self as *const Self, IC) }
     }
 
     /// Inherited from ChFi3d_Builder: Compute()
-    pub fn compute(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::ChFi3d_FilBuilder_inherited_Compute(self)
+    pub fn compute(&mut self) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Compute(self as *mut Self) }
     }
 
     /// Inherited from ChFi3d_Builder: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::ChFi3d_FilBuilder_inherited_IsDone(self)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from ChFi3d_Builder: Shape()
-    pub fn shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ChFi3d_FilBuilder_inherited_Shape(self)
+    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_Shape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: Generated()
     pub fn generated(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         EouV: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::ChFi3d_FilBuilder_inherited_Generated(self, EouV)
+        unsafe { &*(crate::ffi::ChFi3d_FilBuilder_inherited_Generated(self as *mut Self, EouV)) }
     }
 
     /// Inherited from ChFi3d_Builder: NbFaultyContours()
     pub fn nb_faulty_contours(&self) -> i32 {
-        crate::ffi::ChFi3d_FilBuilder_inherited_NbFaultyContours(self)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_NbFaultyContours(self as *const Self) }
     }
 
     /// Inherited from ChFi3d_Builder: FaultyContour()
     pub fn faulty_contour(&self, I: i32) -> i32 {
-        crate::ffi::ChFi3d_FilBuilder_inherited_FaultyContour(self, I)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_FaultyContour(self as *const Self, I) }
     }
 
     /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
     pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
-        crate::ffi::ChFi3d_FilBuilder_inherited_NbComputedSurfaces(self, IC)
+        unsafe {
+            crate::ffi::ChFi3d_FilBuilder_inherited_NbComputedSurfaces(self as *const Self, IC)
+        }
     }
 
     /// Inherited from ChFi3d_Builder: ComputedSurface()
@@ -501,45 +1031,67 @@ impl FilBuilder {
         &self,
         IC: i32,
         IS: i32,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
-        crate::ffi::ChFi3d_FilBuilder_inherited_ComputedSurface(self, IC, IS)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_ComputedSurface(
+                self as *const Self,
+                IC,
+                IS,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: NbFaultyVertices()
     pub fn nb_faulty_vertices(&self) -> i32 {
-        crate::ffi::ChFi3d_FilBuilder_inherited_NbFaultyVertices(self)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_NbFaultyVertices(self as *const Self) }
     }
 
     /// Inherited from ChFi3d_Builder: FaultyVertex()
-    pub fn faulty_vertex(&self, IV: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi3d_FilBuilder_inherited_FaultyVertex(self, IV)
+    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_FaultyVertex(
+                self as *const Self,
+                IV,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: HasResult()
     pub fn has_result(&self) -> bool {
-        crate::ffi::ChFi3d_FilBuilder_inherited_HasResult(self)
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_HasResult(self as *const Self) }
     }
 
     /// Inherited from ChFi3d_Builder: BadShape()
-    pub fn bad_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ChFi3d_FilBuilder_inherited_BadShape(self)
+    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_BadShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from ChFi3d_Builder: StripeStatus()
     pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
-        crate::ch_fi_ds::ErrorStatus::try_from(
-            crate::ffi::ChFi3d_FilBuilder_inherited_StripeStatus(self, IC),
-        )
-        .unwrap()
+        unsafe {
+            crate::ch_fi_ds::ErrorStatus::try_from(
+                crate::ffi::ChFi3d_FilBuilder_inherited_StripeStatus(self as *const Self, IC),
+            )
+            .unwrap()
+        }
     }
 
     /// Inherited from ChFi3d_Builder: Reset()
-    pub fn reset(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::ChFi3d_FilBuilder_inherited_Reset(self)
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Reset(self as *mut Self) }
     }
 
     /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
-    pub fn perform_two_cornerby_inter(self: std::pin::Pin<&mut Self>, Index: i32) -> bool {
-        crate::ffi::ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(self, Index)
+    pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
+        unsafe {
+            crate::ffi::ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(
+                self as *mut Self,
+                Index,
+            )
+        }
     }
 }

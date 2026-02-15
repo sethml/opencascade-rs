@@ -17,34 +17,48 @@
 /// is to be identified
 pub use crate::ffi::MoniTool_SignText as SignText;
 
+unsafe impl crate::CppDeletable for SignText {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::MoniTool_SignText_destructor(ptr);
+    }
+}
+
 impl SignText {
     /// Returns an identification of the Signature (a word), given at
     /// initialization time
-    pub fn name(&self) -> String {
-        crate::ffi::MoniTool_SignText_name(self)
+    pub fn name(&self) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::MoniTool_SignText_name(self as *const Self) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::MoniTool_SignText_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::MoniTool_SignText_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::MoniTool_SignText_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::MoniTool_SignText_get_type_descriptor()
+        unsafe { &*(crate::ffi::MoniTool_SignText_get_type_descriptor()) }
     }
 }
 
 pub use crate::ffi::HandleMoniToolSignText;
 
+unsafe impl crate::CppDeletable for HandleMoniToolSignText {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMoniToolSignText_destructor(ptr);
+    }
+}
+
 impl HandleMoniToolSignText {
     /// Dereference this Handle to access the underlying MoniTool_SignText
     pub fn get(&self) -> &crate::ffi::MoniTool_SignText {
-        crate::ffi::HandleMoniToolSignText_get(self)
+        unsafe { &*(crate::ffi::HandleMoniToolSignText_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_SignText
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::MoniTool_SignText> {
-        crate::ffi::HandleMoniToolSignText_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_SignText {
+        unsafe { &mut *(crate::ffi::HandleMoniToolSignText_get_mut(self as *mut Self)) }
     }
 }

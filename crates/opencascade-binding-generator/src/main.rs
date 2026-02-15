@@ -550,8 +550,8 @@ fn generate_unified(
     println!("  Wrote: {} ({} classes, {} functions)",
         ffi_path.display(), all_classes.len(), all_functions.len());
 
-    // 2. Generate unified wrappers.hxx
-    println!("Generating unified wrappers.hxx...");
+    // 2. Generate unified wrappers.cpp
+    println!("Generating unified wrappers.cpp...");
     let cpp_code = codegen::cpp::generate_unified_wrappers(
         all_classes,
         &all_collections,
@@ -559,7 +559,7 @@ fn generate_unified(
         symbol_table,
         &all_bindings,
     );
-    let cpp_path = args.output.join("wrappers.hxx");
+    let cpp_path = args.output.join("wrappers.cpp");
     std::fs::write(&cpp_path, &cpp_code)?;
     println!("  Wrote: {}", cpp_path.display());
 

@@ -161,95 +161,118 @@ impl TryFrom<i32> for CheckStatus {
 /// scope from the range only once.
 pub use crate::ffi::BOPAlgo_ParallelAlgo as ParallelAlgo;
 
+unsafe impl crate::CppDeletable for ParallelAlgo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_ParallelAlgo_destructor(ptr);
+    }
+}
+
 impl ParallelAlgo {
+    /// Sets the range for a single run
+    pub fn set_progress_range(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_set_progress_range(self as *mut Self, theRange) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
-        crate::ffi::BOPAlgo_ParallelAlgo_as_BOPAlgo_Options(self)
+        unsafe { &*(crate::ffi::BOPAlgo_ParallelAlgo_as_BOPAlgo_Options(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_Options (mutable)
-    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
-        crate::ffi::BOPAlgo_ParallelAlgo_as_BOPAlgo_Options_mut(self)
+    pub fn as_options_mut(&mut self) -> &mut Options {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_ParallelAlgo_as_BOPAlgo_Options_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from BOPAlgo_Options: Allocator()
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_Allocator(self)
+        unsafe { &*(crate::ffi::BOPAlgo_ParallelAlgo_inherited_Allocator(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: Clear()
-    pub fn clear(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_Clear(self)
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_Clear(self as *mut Self) }
     }
 
     /// Inherited from BOPAlgo_Options: AddError()
-    pub fn add_error(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_AddError(self, theAlert)
+    pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_AddError(self as *mut Self, theAlert) }
     }
 
     /// Inherited from BOPAlgo_Options: AddWarning()
-    pub fn add_warning(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_AddWarning(self, theAlert)
+    pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe {
+            crate::ffi::BOPAlgo_ParallelAlgo_inherited_AddWarning(self as *mut Self, theAlert)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: HasErrors()
     pub fn has_errors(&self) -> bool {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_HasErrors(self)
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_HasErrors(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasError()
     pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_HasError(self, theType)
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_HasError(self as *const Self, theType) }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarnings()
     pub fn has_warnings(&self) -> bool {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_HasWarnings(self)
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_HasWarnings(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarning()
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_HasWarning(self, theType)
+        unsafe {
+            crate::ffi::BOPAlgo_ParallelAlgo_inherited_HasWarning(self as *const Self, theType)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: GetReport()
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_GetReport(self)
+        unsafe { &*(crate::ffi::BOPAlgo_ParallelAlgo_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: ClearWarnings()
-    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_ClearWarnings(self)
+    pub fn clear_warnings(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_ClearWarnings(self as *mut Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetRunParallel()
-    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_SetRunParallel(self, theFlag)
+    pub fn set_run_parallel(&mut self, theFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_ParallelAlgo_inherited_SetRunParallel(self as *mut Self, theFlag)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: RunParallel()
     pub fn run_parallel(&self) -> bool {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_RunParallel(self)
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_RunParallel(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetFuzzyValue()
-    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_SetFuzzyValue(self, theFuzz)
+    pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
+        unsafe {
+            crate::ffi::BOPAlgo_ParallelAlgo_inherited_SetFuzzyValue(self as *mut Self, theFuzz)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: FuzzyValue()
     pub fn fuzzy_value(&self) -> f64 {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_FuzzyValue(self)
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_FuzzyValue(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetUseOBB()
-    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_SetUseOBB(self, theUseOBB)
+    pub fn set_use_obb(&mut self, theUseOBB: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_ParallelAlgo_inherited_SetUseOBB(self as *mut Self, theUseOBB)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: UseOBB()
     pub fn use_obb(&self) -> bool {
-        crate::ffi::BOPAlgo_ParallelAlgo_inherited_UseOBB(self)
+        unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_UseOBB(self as *const Self) }
     }
 }
 
@@ -257,10 +280,26 @@ impl ParallelAlgo {
 /// the operation to the whole progress
 pub use crate::ffi::BOPAlgo_PISteps as PISteps;
 
+unsafe impl crate::CppDeletable for PISteps {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_PISteps_destructor(ptr);
+    }
+}
+
 impl PISteps {
     /// Constructor
-    pub fn new_int(theNbOp: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_PISteps_ctor_int(theNbOp)
+    pub fn new_int(theNbOp: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_PISteps_ctor_int(theNbOp)) }
+    }
+
+    /// Assign the value theStep to theOperation
+    pub fn set_step(&mut self, theOperation: i32, theStep: f64) {
+        unsafe { crate::ffi::BOPAlgo_PISteps_set_step(self as *mut Self, theOperation, theStep) }
+    }
+
+    /// Returns the step assigned to the operation
+    pub fn get_step(&mut self, theOperation: i32) -> f64 {
+        unsafe { crate::ffi::BOPAlgo_PISteps_get_step(self as *mut Self, theOperation) }
     }
 }
 
@@ -303,118 +342,143 @@ impl PISteps {
 /// produce the Fused solid.
 pub use crate::ffi::BOPAlgo_BOP as BOP;
 
+unsafe impl crate::CppDeletable for BOP {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_BOP_destructor(ptr);
+    }
+}
+
 impl BOP {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_BOP_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_BOP_ctor()) }
     }
 
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_BOP_ctor_handlencollectionbaseallocator(theAllocator)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_BOP_ctor_handlencollectionbaseallocator(
+                theAllocator,
+            ))
+        }
     }
 
-    pub fn set_operation(self: std::pin::Pin<&mut Self>, theOperation: crate::bop_algo::Operation) {
-        crate::ffi::BOPAlgo_BOP_set_operation(self, theOperation.into())
+    /// Clears internal fields and arguments
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_BOP_clear(self as *mut Self) }
+    }
+
+    pub fn set_operation(&mut self, theOperation: crate::bop_algo::Operation) {
+        unsafe { crate::ffi::BOPAlgo_BOP_set_operation(self as *mut Self, theOperation.into()) }
     }
 
     pub fn operation(&self) -> crate::bop_algo::Operation {
-        crate::bop_algo::Operation::try_from(crate::ffi::BOPAlgo_BOP_operation(self)).unwrap()
+        unsafe {
+            crate::bop_algo::Operation::try_from(crate::ffi::BOPAlgo_BOP_operation(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BOPAlgo_BOP_perform(self as *mut Self, theRange) }
     }
 
     /// Upcast to BOPAlgo_Builder
     pub fn as_builder(&self) -> &Builder {
-        crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Builder(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Builder(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_Builder (mutable)
-    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
-        crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Builder_mut(self)
+    pub fn as_builder_mut(&mut self) -> &mut Builder {
+        unsafe { &mut *(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Builder_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_BuilderShape
     pub fn as_builder_shape(&self) -> &BuilderShape {
-        crate::ffi::BOPAlgo_BOP_as_BOPAlgo_BuilderShape(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_BuilderShape(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_BuilderShape (mutable)
-    pub fn as_builder_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BuilderShape> {
-        crate::ffi::BOPAlgo_BOP_as_BOPAlgo_BuilderShape_mut(self)
+    pub fn as_builder_shape_mut(&mut self) -> &mut BuilderShape {
+        unsafe { &mut *(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_BuilderShape_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
-        crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Options(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Options(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_Options (mutable)
-    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
-        crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Options_mut(self)
+    pub fn as_options_mut(&mut self) -> &mut Options {
+        unsafe { &mut *(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_Options_mut(self as *mut Self)) }
     }
 
     /// Upcast to BOPAlgo_ToolsProvider
     pub fn as_tools_provider(&self) -> &ToolsProvider {
-        crate::ffi::BOPAlgo_BOP_as_BOPAlgo_ToolsProvider(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_ToolsProvider(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_ToolsProvider (mutable)
-    pub fn as_tools_provider_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut ToolsProvider> {
-        crate::ffi::BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut(self)
+    pub fn as_tools_provider_mut(&mut self) -> &mut ToolsProvider {
+        unsafe { &mut *(crate::ffi::BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut(self as *mut Self)) }
     }
 
     /// Inherited from BOPAlgo_Builder: AddArgument()
-    pub fn add_argument(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::BOPAlgo_BOP_inherited_AddArgument(self, theShape)
+    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_AddArgument(self as *mut Self, theShape) }
     }
 
     /// Inherited from BOPAlgo_Builder: SetArguments()
-    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
-        crate::ffi::BOPAlgo_BOP_inherited_SetArguments(self, theLS)
+    pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_SetArguments(self as *mut Self, theLS) }
     }
 
     /// Inherited from BOPAlgo_Builder: Arguments()
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_BOP_inherited_Arguments(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Arguments(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Builder: SetNonDestructive()
-    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
-        crate::ffi::BOPAlgo_BOP_inherited_SetNonDestructive(self, theFlag)
+    pub fn set_non_destructive(&mut self, theFlag: bool) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_SetNonDestructive(self as *mut Self, theFlag) }
     }
 
     /// Inherited from BOPAlgo_Builder: NonDestructive()
     pub fn non_destructive(&self) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_NonDestructive(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_NonDestructive(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Builder: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
-        crate::ffi::BOPAlgo_BOP_inherited_SetGlue(self, theGlue.into())
+    pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_SetGlue(self as *mut Self, theGlue.into()) }
     }
 
     /// Inherited from BOPAlgo_Builder: Glue()
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
-        crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_BOP_inherited_Glue(self)).unwrap()
+        unsafe {
+            crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_BOP_inherited_Glue(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Inherited from BOPAlgo_Builder: SetCheckInverted()
-    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
-        crate::ffi::BOPAlgo_BOP_inherited_SetCheckInverted(self, theCheck)
+    pub fn set_check_inverted(&mut self, theCheck: bool) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_SetCheckInverted(self as *mut Self, theCheck) }
     }
 
     /// Inherited from BOPAlgo_Builder: CheckInverted()
     pub fn check_inverted(&self) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_CheckInverted(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_CheckInverted(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Builder: BuildBOP()
     pub fn build_bop(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theObjects: &crate::ffi::TopTools_ListOfShape,
         theObjState: crate::top_abs::State,
         theTools: &crate::ffi::TopTools_ListOfShape,
@@ -422,168 +486,172 @@ impl BOP {
         theRange: &crate::ffi::Message_ProgressRange,
         theReport: &crate::ffi::HandleMessageReport,
     ) {
-        crate::ffi::BOPAlgo_BOP_inherited_BuildBOP(
-            self,
-            theObjects,
-            theObjState.into(),
-            theTools,
-            theToolsState.into(),
-            theRange,
-            theReport,
-        )
+        unsafe {
+            crate::ffi::BOPAlgo_BOP_inherited_BuildBOP(
+                self as *mut Self,
+                theObjects,
+                theObjState.into(),
+                theTools,
+                theToolsState.into(),
+                theRange,
+                theReport,
+            )
+        }
     }
 
     /// Inherited from BOPAlgo_Builder: ShapesSD()
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
-        crate::ffi::BOPAlgo_BOP_inherited_ShapesSD(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_ShapesSD(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Shape()
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BOPAlgo_BOP_inherited_Shape(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Modified()
     pub fn modified(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theS: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_BOP_inherited_Modified(self, theS)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Generated()
     pub fn generated(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theS: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_BOP_inherited_Generated(self, theS)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, theS: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_IsDeleted(self, theS)
+    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasModified()
     pub fn has_modified(&self) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_HasModified(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_HasModified(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
     pub fn has_generated(&self) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_HasGenerated(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_HasGenerated(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
     pub fn has_deleted(&self) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_HasDeleted(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_HasDeleted(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: History()
-    pub fn history(
-        self: std::pin::Pin<&mut Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
-        crate::ffi::BOPAlgo_BOP_inherited_History(self)
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_BOP_inherited_History(self as *mut Self))
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
-    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
-        crate::ffi::BOPAlgo_BOP_inherited_SetToFillHistory(self, theHistFlag)
+    pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_BOP_inherited_SetToFillHistory(self as *mut Self, theHistFlag)
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasHistory()
     pub fn has_history(&self) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_HasHistory(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_HasHistory(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: Allocator()
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
-        crate::ffi::BOPAlgo_BOP_inherited_Allocator(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Allocator(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: AddError()
-    pub fn add_error(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_BOP_inherited_AddError(self, theAlert)
+    pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_AddError(self as *mut Self, theAlert) }
     }
 
     /// Inherited from BOPAlgo_Options: AddWarning()
-    pub fn add_warning(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_BOP_inherited_AddWarning(self, theAlert)
+    pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_AddWarning(self as *mut Self, theAlert) }
     }
 
     /// Inherited from BOPAlgo_Options: HasErrors()
     pub fn has_errors(&self) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_HasErrors(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_HasErrors(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasError()
     pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_HasError(self, theType)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_HasError(self as *const Self, theType) }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarnings()
     pub fn has_warnings(&self) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_HasWarnings(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_HasWarnings(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarning()
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_HasWarning(self, theType)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_HasWarning(self as *const Self, theType) }
     }
 
     /// Inherited from BOPAlgo_Options: GetReport()
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
-        crate::ffi::BOPAlgo_BOP_inherited_GetReport(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: ClearWarnings()
-    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BOPAlgo_BOP_inherited_ClearWarnings(self)
+    pub fn clear_warnings(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_ClearWarnings(self as *mut Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetRunParallel()
-    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
-        crate::ffi::BOPAlgo_BOP_inherited_SetRunParallel(self, theFlag)
+    pub fn set_run_parallel(&mut self, theFlag: bool) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_SetRunParallel(self as *mut Self, theFlag) }
     }
 
     /// Inherited from BOPAlgo_Options: RunParallel()
     pub fn run_parallel(&self) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_RunParallel(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_RunParallel(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetFuzzyValue()
-    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
-        crate::ffi::BOPAlgo_BOP_inherited_SetFuzzyValue(self, theFuzz)
+    pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_SetFuzzyValue(self as *mut Self, theFuzz) }
     }
 
     /// Inherited from BOPAlgo_Options: FuzzyValue()
     pub fn fuzzy_value(&self) -> f64 {
-        crate::ffi::BOPAlgo_BOP_inherited_FuzzyValue(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_FuzzyValue(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetUseOBB()
-    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
-        crate::ffi::BOPAlgo_BOP_inherited_SetUseOBB(self, theUseOBB)
+    pub fn set_use_obb(&mut self, theUseOBB: bool) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_SetUseOBB(self as *mut Self, theUseOBB) }
     }
 
     /// Inherited from BOPAlgo_Options: UseOBB()
     pub fn use_obb(&self) -> bool {
-        crate::ffi::BOPAlgo_BOP_inherited_UseOBB(self)
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_UseOBB(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_ToolsProvider: AddTool()
-    pub fn add_tool(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::BOPAlgo_BOP_inherited_AddTool(self, theShape)
+    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_AddTool(self as *mut Self, theShape) }
     }
 
     /// Inherited from BOPAlgo_ToolsProvider: SetTools()
-    pub fn set_tools(self: std::pin::Pin<&mut Self>, theShapes: &crate::ffi::TopTools_ListOfShape) {
-        crate::ffi::BOPAlgo_BOP_inherited_SetTools(self, theShapes)
+    pub fn set_tools(&mut self, theShapes: &crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BOPAlgo_BOP_inherited_SetTools(self as *mut Self, theShapes) }
     }
 
     /// Inherited from BOPAlgo_ToolsProvider: Tools()
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_BOP_inherited_Tools(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Tools(self as *const Self)) }
     }
 }
 
@@ -625,26 +693,98 @@ impl BOP {
 /// unexpected error.
 pub use crate::ffi::BOPAlgo_Builder as Builder;
 
+unsafe impl crate::CppDeletable for Builder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_Builder_destructor(ptr);
+    }
+}
+
 impl Builder {
     /// Empty constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_Builder_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_Builder_ctor()) }
     }
 
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_Builder_ctor_handlencollectionbaseallocator(theAllocator)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPAlgo_Builder_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// Clears the content of the algorithm.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_Builder_clear(self as *mut Self) }
+    }
+
+    /// @name Arguments
+    /// Adds the argument to the operation.
+    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BOPAlgo_Builder_add_argument(self as *mut Self, theShape) }
+    }
+
+    /// Sets the list of arguments for the operation.
+    pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BOPAlgo_Builder_set_arguments(self as *mut Self, theLS) }
+    }
+
+    /// Returns the list of arguments.
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_arguments(self as *const Self)) }
+    }
+
+    /// @name Options
+    /// Sets the flag that defines the mode of treatment.
+    /// In non-destructive mode the argument shapes are not modified. Instead
+    /// a copy of a sub-shape is created in the result if it is needed to be updated.
+    /// This flag is taken into account if internal PaveFiller is used only.
+    /// In the case of calling PerformWithFiller the corresponding flag of that PaveFiller
+    /// is in force.
+    pub fn set_non_destructive(&mut self, theFlag: bool) {
+        unsafe { crate::ffi::BOPAlgo_Builder_set_non_destructive(self as *mut Self, theFlag) }
+    }
+
+    /// Returns the flag that defines the mode of treatment.
+    /// In non-destructive mode the argument shapes are not modified. Instead
+    /// a copy of a sub-shape is created in the result if it is needed to be updated.
+    pub fn non_destructive(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_Builder_non_destructive(self as *const Self) }
     }
 
     /// Sets the glue option for the algorithm
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
-        crate::ffi::BOPAlgo_Builder_set_glue(self, theGlue.into())
+    pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
+        unsafe { crate::ffi::BOPAlgo_Builder_set_glue(self as *mut Self, theGlue.into()) }
     }
 
     /// Returns the glue option of the algorithm
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
-        crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_Builder_glue(self)).unwrap()
+        unsafe {
+            crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_Builder_glue(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Enables/Disables the check of the input solids for inverted status
+    pub fn set_check_inverted(&mut self, theCheck: bool) {
+        unsafe { crate::ffi::BOPAlgo_Builder_set_check_inverted(self as *mut Self, theCheck) }
+    }
+
+    /// Returns the flag defining whether the check for input solids on inverted status
+    /// should be performed or not.
+    pub fn check_inverted(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_Builder_check_inverted(self as *const Self) }
+    }
+
+    /// @name Performing the operation
+    /// Performs the operation.
+    /// The intersection will be performed also.
+    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BOPAlgo_Builder_perform(self as *mut Self, theRange) }
     }
 
     /// @name BOPs on open solids
@@ -688,7 +828,7 @@ impl Builder {
     /// @param theToolsState  - State for tools faces to pass into result;
     /// @param theReport      - The alternative report to avoid pollution of the main one.
     pub fn build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theObjects: &crate::ffi::TopTools_ListOfShape,
         theObjState: crate::top_abs::State,
         theTools: &crate::ffi::TopTools_ListOfShape,
@@ -696,7 +836,9 @@ impl Builder {
         theRange: &crate::ffi::Message_ProgressRange,
         theReport: &crate::ffi::HandleMessageReport,
     ) {
-        crate::ffi::BOPAlgo_Builder_build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(self, theObjects, theObjState.into(), theTools, theToolsState.into(), theRange, theReport)
+        unsafe {
+            crate::ffi::BOPAlgo_Builder_build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(self as *mut Self, theObjects, theObjState.into(), theTools, theToolsState.into(), theRange, theReport)
+        }
     }
 
     /// Builds the result of Boolean operation of given type
@@ -720,169 +862,181 @@ impl Builder {
     /// @param theRange     - The parameter to progressIndicator
     /// @param theReport    - The alternative report to avoid pollution of the global one.
     pub fn build_bop_listofshape2_operation_progressrange_handlemessagereport(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theObjects: &crate::ffi::TopTools_ListOfShape,
         theTools: &crate::ffi::TopTools_ListOfShape,
         theOperation: crate::bop_algo::Operation,
         theRange: &crate::ffi::Message_ProgressRange,
         theReport: &crate::ffi::HandleMessageReport,
     ) {
-        crate::ffi::BOPAlgo_Builder_build_bop_listofshape2_operation_progressrange_handlemessagereport(self, theObjects, theTools, theOperation.into(), theRange, theReport)
+        unsafe {
+            crate::ffi::BOPAlgo_Builder_build_bop_listofshape2_operation_progressrange_handlemessagereport(self as *mut Self, theObjects, theTools, theOperation.into(), theRange, theReport)
+        }
+    }
+
+    /// Returns the map of Same Domain (SD) shapes - coinciding shapes
+    /// from different arguments.
+    pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_shapes_sd(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_BuilderShape
     pub fn as_builder_shape(&self) -> &BuilderShape {
-        crate::ffi::BOPAlgo_Builder_as_BOPAlgo_BuilderShape(self)
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_as_BOPAlgo_BuilderShape(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_BuilderShape (mutable)
-    pub fn as_builder_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BuilderShape> {
-        crate::ffi::BOPAlgo_Builder_as_BOPAlgo_BuilderShape_mut(self)
+    pub fn as_builder_shape_mut(&mut self) -> &mut BuilderShape {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_Builder_as_BOPAlgo_BuilderShape_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
-        crate::ffi::BOPAlgo_Builder_as_BOPAlgo_Options(self)
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_as_BOPAlgo_Options(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_Options (mutable)
-    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
-        crate::ffi::BOPAlgo_Builder_as_BOPAlgo_Options_mut(self)
+    pub fn as_options_mut(&mut self) -> &mut Options {
+        unsafe { &mut *(crate::ffi::BOPAlgo_Builder_as_BOPAlgo_Options_mut(self as *mut Self)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Shape()
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BOPAlgo_Builder_inherited_Shape(self)
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Modified()
     pub fn modified(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theS: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_Builder_inherited_Modified(self, theS)
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Generated()
     pub fn generated(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theS: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_Builder_inherited_Generated(self, theS)
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, theS: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_IsDeleted(self, theS)
+    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasModified()
     pub fn has_modified(&self) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_HasModified(self)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_HasModified(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
     pub fn has_generated(&self) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_HasGenerated(self)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_HasGenerated(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
     pub fn has_deleted(&self) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_HasDeleted(self)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_HasDeleted(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: History()
-    pub fn history(
-        self: std::pin::Pin<&mut Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
-        crate::ffi::BOPAlgo_Builder_inherited_History(self)
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_Builder_inherited_History(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
-    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
-        crate::ffi::BOPAlgo_Builder_inherited_SetToFillHistory(self, theHistFlag)
+    pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_Builder_inherited_SetToFillHistory(self as *mut Self, theHistFlag)
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasHistory()
     pub fn has_history(&self) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_HasHistory(self)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_HasHistory(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: Allocator()
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
-        crate::ffi::BOPAlgo_Builder_inherited_Allocator(self)
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_Allocator(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: AddError()
-    pub fn add_error(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_Builder_inherited_AddError(self, theAlert)
+    pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_AddError(self as *mut Self, theAlert) }
     }
 
     /// Inherited from BOPAlgo_Options: AddWarning()
-    pub fn add_warning(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_Builder_inherited_AddWarning(self, theAlert)
+    pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_AddWarning(self as *mut Self, theAlert) }
     }
 
     /// Inherited from BOPAlgo_Options: HasErrors()
     pub fn has_errors(&self) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_HasErrors(self)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_HasErrors(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasError()
     pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_HasError(self, theType)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_HasError(self as *const Self, theType) }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarnings()
     pub fn has_warnings(&self) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_HasWarnings(self)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_HasWarnings(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarning()
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_HasWarning(self, theType)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_HasWarning(self as *const Self, theType) }
     }
 
     /// Inherited from BOPAlgo_Options: GetReport()
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
-        crate::ffi::BOPAlgo_Builder_inherited_GetReport(self)
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: ClearWarnings()
-    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BOPAlgo_Builder_inherited_ClearWarnings(self)
+    pub fn clear_warnings(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_ClearWarnings(self as *mut Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetRunParallel()
-    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
-        crate::ffi::BOPAlgo_Builder_inherited_SetRunParallel(self, theFlag)
+    pub fn set_run_parallel(&mut self, theFlag: bool) {
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_SetRunParallel(self as *mut Self, theFlag) }
     }
 
     /// Inherited from BOPAlgo_Options: RunParallel()
     pub fn run_parallel(&self) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_RunParallel(self)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_RunParallel(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetFuzzyValue()
-    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
-        crate::ffi::BOPAlgo_Builder_inherited_SetFuzzyValue(self, theFuzz)
+    pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_SetFuzzyValue(self as *mut Self, theFuzz) }
     }
 
     /// Inherited from BOPAlgo_Options: FuzzyValue()
     pub fn fuzzy_value(&self) -> f64 {
-        crate::ffi::BOPAlgo_Builder_inherited_FuzzyValue(self)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_FuzzyValue(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetUseOBB()
-    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
-        crate::ffi::BOPAlgo_Builder_inherited_SetUseOBB(self, theUseOBB)
+    pub fn set_use_obb(&mut self, theUseOBB: bool) {
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_SetUseOBB(self as *mut Self, theUseOBB) }
     }
 
     /// Inherited from BOPAlgo_Options: UseOBB()
     pub fn use_obb(&self) -> bool {
-        crate::ffi::BOPAlgo_Builder_inherited_UseOBB(self)
+        unsafe { crate::ffi::BOPAlgo_Builder_inherited_UseOBB(self as *const Self) }
     }
 }
 
@@ -898,102 +1052,178 @@ impl Builder {
 /// as a storer for history objects.
 pub use crate::ffi::BOPAlgo_BuilderShape as BuilderShape;
 
+unsafe impl crate::CppDeletable for BuilderShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_BuilderShape_destructor(ptr);
+    }
+}
+
 impl BuilderShape {
+    /// @name Getting the result
+    /// Returns the result of algorithm
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_shape(self as *const Self)) }
+    }
+
+    /// @name History methods
+    /// Returns the list of shapes Modified from the shape theS.
+    pub fn modified(
+        &mut self,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_modified(self as *mut Self, theS)) }
+    }
+
+    /// Returns the list of shapes Generated from the shape theS.
+    pub fn generated(
+        &mut self,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_generated(self as *mut Self, theS)) }
+    }
+
+    /// Returns true if the shape theS has been deleted.
+    /// In this case the shape will have no Modified elements,
+    /// but can have Generated elements.
+    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_is_deleted(self as *mut Self, theS) }
+    }
+
+    /// Returns true if any of the input shapes has been modified during operation.
+    pub fn has_modified(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_has_modified(self as *const Self) }
+    }
+
+    /// Returns true if any of the input shapes has generated shapes during operation.
+    pub fn has_generated(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_has_generated(self as *const Self) }
+    }
+
+    /// Returns true if any of the input shapes has been deleted during operation.
+    pub fn has_deleted(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_has_deleted(self as *const Self) }
+    }
+
     /// History Tool
-    pub fn history(
-        self: std::pin::Pin<&mut Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
-        crate::ffi::BOPAlgo_BuilderShape_history(self)
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_BuilderShape_history(self as *mut Self))
+        }
+    }
+
+    /// @name Enabling/Disabling the history collection.
+    /// Allows disabling the history collection
+    pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_BuilderShape_set_to_fill_history(self as *mut Self, theHistFlag)
+        }
+    }
+
+    /// Returns flag of history availability
+    pub fn has_history(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_has_history(self as *const Self) }
     }
 
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
-        crate::ffi::BOPAlgo_BuilderShape_as_BOPAlgo_Options(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_as_BOPAlgo_Options(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_Options (mutable)
-    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
-        crate::ffi::BOPAlgo_BuilderShape_as_BOPAlgo_Options_mut(self)
+    pub fn as_options_mut(&mut self) -> &mut Options {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_BuilderShape_as_BOPAlgo_Options_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from BOPAlgo_Algo: Perform()
-    pub fn perform(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_Perform(self, theRange)
+    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_Perform(self as *mut Self, theRange) }
     }
 
     /// Inherited from BOPAlgo_Options: Allocator()
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_Allocator(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_inherited_Allocator(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: AddError()
-    pub fn add_error(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_AddError(self, theAlert)
+    pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_AddError(self as *mut Self, theAlert) }
     }
 
     /// Inherited from BOPAlgo_Options: AddWarning()
-    pub fn add_warning(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_AddWarning(self, theAlert)
+    pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe {
+            crate::ffi::BOPAlgo_BuilderShape_inherited_AddWarning(self as *mut Self, theAlert)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: HasErrors()
     pub fn has_errors(&self) -> bool {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_HasErrors(self)
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_HasErrors(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasError()
     pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_HasError(self, theType)
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_HasError(self as *const Self, theType) }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarnings()
     pub fn has_warnings(&self) -> bool {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_HasWarnings(self)
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_HasWarnings(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarning()
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_HasWarning(self, theType)
+        unsafe {
+            crate::ffi::BOPAlgo_BuilderShape_inherited_HasWarning(self as *const Self, theType)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: GetReport()
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_GetReport(self)
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: ClearWarnings()
-    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_ClearWarnings(self)
+    pub fn clear_warnings(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_ClearWarnings(self as *mut Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetRunParallel()
-    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_SetRunParallel(self, theFlag)
+    pub fn set_run_parallel(&mut self, theFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_BuilderShape_inherited_SetRunParallel(self as *mut Self, theFlag)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: RunParallel()
     pub fn run_parallel(&self) -> bool {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_RunParallel(self)
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_RunParallel(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetFuzzyValue()
-    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_SetFuzzyValue(self, theFuzz)
+    pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
+        unsafe {
+            crate::ffi::BOPAlgo_BuilderShape_inherited_SetFuzzyValue(self as *mut Self, theFuzz)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: FuzzyValue()
     pub fn fuzzy_value(&self) -> f64 {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_FuzzyValue(self)
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_FuzzyValue(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetUseOBB()
-    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_SetUseOBB(self, theUseOBB)
+    pub fn set_use_obb(&mut self, theUseOBB: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_BuilderShape_inherited_SetUseOBB(self as *mut Self, theUseOBB)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: UseOBB()
     pub fn use_obb(&self) -> bool {
-        crate::ffi::BOPAlgo_BuilderShape_inherited_UseOBB(self)
+        unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_UseOBB(self as *const Self) }
     }
 }
 
@@ -1005,26 +1235,113 @@ impl BuilderShape {
 /// can't be processed by Boolean Operations
 pub use crate::ffi::BOPAlgo_CheckResult as CheckResult;
 
+unsafe impl crate::CppDeletable for CheckResult {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_CheckResult_destructor(ptr);
+    }
+}
+
 impl CheckResult {
     /// empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_CheckResult_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_CheckResult_ctor()) }
+    }
+
+    /// sets ancestor shape (object) for faulty sub-shapes
+    pub fn set_shape1(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_set_shape1(self as *mut Self, TheShape) }
+    }
+
+    /// adds faulty sub-shapes from object to a list
+    pub fn add_faulty_shape1(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_add_faulty_shape1(self as *mut Self, TheShape) }
+    }
+
+    /// sets ancestor shape (tool) for faulty sub-shapes
+    pub fn set_shape2(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_set_shape2(self as *mut Self, TheShape) }
+    }
+
+    /// adds faulty sub-shapes from tool to a list
+    pub fn add_faulty_shape2(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_add_faulty_shape2(self as *mut Self, TheShape) }
+    }
+
+    /// returns ancestor shape (object) for faulties
+    pub fn get_shape1(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckResult_get_shape1(self as *const Self)) }
+    }
+
+    /// returns ancestor shape (tool) for faulties
+    pub fn get_shape2(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckResult_get_shape2(self as *const Self)) }
+    }
+
+    /// returns list of faulty shapes for object
+    pub fn get_faulty_shapes1(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckResult_get_faulty_shapes1(self as *const Self)) }
+    }
+
+    /// returns list of faulty shapes for tool
+    pub fn get_faulty_shapes2(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckResult_get_faulty_shapes2(self as *const Self)) }
     }
 
     /// set status of faulty
-    pub fn set_check_status(
-        self: std::pin::Pin<&mut Self>,
-        TheStatus: crate::bop_algo::CheckStatus,
-    ) {
-        crate::ffi::BOPAlgo_CheckResult_set_check_status(self, TheStatus.into())
+    pub fn set_check_status(&mut self, TheStatus: crate::bop_algo::CheckStatus) {
+        unsafe {
+            crate::ffi::BOPAlgo_CheckResult_set_check_status(self as *mut Self, TheStatus.into())
+        }
     }
 
     /// gets status of faulty
     pub fn get_check_status(&self) -> crate::bop_algo::CheckStatus {
-        crate::bop_algo::CheckStatus::try_from(crate::ffi::BOPAlgo_CheckResult_get_check_status(
-            self,
-        ))
-        .unwrap()
+        unsafe {
+            crate::bop_algo::CheckStatus::try_from(
+                crate::ffi::BOPAlgo_CheckResult_get_check_status(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Sets max distance for the first shape
+    pub fn set_max_distance1(&mut self, theDist: f64) {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_set_max_distance1(self as *mut Self, theDist) }
+    }
+
+    /// Sets max distance for the second shape
+    pub fn set_max_distance2(&mut self, theDist: f64) {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_set_max_distance2(self as *mut Self, theDist) }
+    }
+
+    /// Sets the parameter for the first shape
+    pub fn set_max_parameter1(&mut self, thePar: f64) {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_set_max_parameter1(self as *mut Self, thePar) }
+    }
+
+    /// Sets the parameter for the second shape
+    pub fn set_max_parameter2(&mut self, thePar: f64) {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_set_max_parameter2(self as *mut Self, thePar) }
+    }
+
+    /// Returns the distance for the first shape
+    pub fn get_max_distance1(&self) -> f64 {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_get_max_distance1(self as *const Self) }
+    }
+
+    /// Returns the distance for the second shape
+    pub fn get_max_distance2(&self) -> f64 {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_get_max_distance2(self as *const Self) }
+    }
+
+    /// Returns the parameter for the fircst shape
+    pub fn get_max_parameter1(&self) -> f64 {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_get_max_parameter1(self as *const Self) }
+    }
+
+    /// Returns the parameter for the second shape
+    pub fn get_max_parameter2(&self) -> f64 {
+        unsafe { crate::ffi::BOPAlgo_CheckResult_get_max_parameter2(self as *const Self) }
     }
 }
 
@@ -1044,27 +1361,120 @@ impl CheckResult {
 /// for filtering the intersections.
 pub use crate::ffi::BOPAlgo_Options as Options;
 
+unsafe impl crate::CppDeletable for Options {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_Options_destructor(ptr);
+    }
+}
+
 impl Options {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_Options_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_Options_ctor()) }
     }
 
     /// Constructor with allocator
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_Options_ctor_handlencollectionbaseallocator(theAllocator)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPAlgo_Options_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// Returns allocator
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        unsafe { &*(crate::ffi::BOPAlgo_Options_allocator(self as *const Self)) }
+    }
+
+    /// Clears all warnings and errors, and any data cached by the algorithm.
+    /// User defined options are not cleared.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_Options_clear(self as *mut Self) }
+    }
+
+    /// Adds the alert as error (fail)
+    pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_Options_add_error(self as *mut Self, theAlert) }
+    }
+
+    /// Adds the alert as warning
+    pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_Options_add_warning(self as *mut Self, theAlert) }
+    }
+
+    /// Returns true if algorithm has failed
+    pub fn has_errors(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_Options_has_errors(self as *const Self) }
+    }
+
+    /// Returns true if algorithm has generated error of specified type
+    pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BOPAlgo_Options_has_error(self as *const Self, theType) }
+    }
+
+    /// Returns true if algorithm has generated some warning alerts
+    pub fn has_warnings(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_Options_has_warnings(self as *const Self) }
+    }
+
+    /// Returns true if algorithm has generated warning of specified type
+    pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BOPAlgo_Options_has_warning(self as *const Self, theType) }
+    }
+
+    /// Returns report collecting all errors and warnings
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_Options_get_report(self as *const Self)) }
+    }
+
+    /// Clears the warnings of the algorithm
+    pub fn clear_warnings(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_Options_clear_warnings(self as *mut Self) }
+    }
+
+    /// Set the flag of parallel processing
+    /// if <theFlag> is true  the parallel processing is switched on
+    /// if <theFlag> is false the parallel processing is switched off
+    pub fn set_run_parallel(&mut self, theFlag: bool) {
+        unsafe { crate::ffi::BOPAlgo_Options_set_run_parallel(self as *mut Self, theFlag) }
+    }
+
+    /// Returns the flag of parallel processing
+    pub fn run_parallel(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_Options_run_parallel(self as *const Self) }
+    }
+
+    /// Sets the additional tolerance
+    pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
+        unsafe { crate::ffi::BOPAlgo_Options_set_fuzzy_value(self as *mut Self, theFuzz) }
+    }
+
+    /// Returns the additional tolerance
+    pub fn fuzzy_value(&self) -> f64 {
+        unsafe { crate::ffi::BOPAlgo_Options_fuzzy_value(self as *const Self) }
+    }
+
+    /// Enables/Disables the usage of OBB
+    pub fn set_use_obb(&mut self, theUseOBB: bool) {
+        unsafe { crate::ffi::BOPAlgo_Options_set_use_obb(self as *mut Self, theUseOBB) }
+    }
+
+    /// Returns the flag defining usage of OBB
+    pub fn use_obb(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_Options_use_obb(self as *const Self) }
     }
 
     /// Gets the global parallel mode
     pub fn get_parallel_mode() -> bool {
-        crate::ffi::BOPAlgo_Options_get_parallel_mode()
+        unsafe { crate::ffi::BOPAlgo_Options_get_parallel_mode() }
     }
 
     /// Sets the global parallel mode
     pub fn set_parallel_mode(theNewMode: bool) {
-        crate::ffi::BOPAlgo_Options_set_parallel_mode(theNewMode)
+        unsafe { crate::ffi::BOPAlgo_Options_set_parallel_mode(theNewMode) }
     }
 }
 
@@ -1190,166 +1600,249 @@ impl Options {
 /// removing extra edges and vertices, created during operation, from the result shape.
 pub use crate::ffi::BOPAlgo_RemoveFeatures as RemoveFeatures;
 
+unsafe impl crate::CppDeletable for RemoveFeatures {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_RemoveFeatures_destructor(ptr);
+    }
+}
+
 impl RemoveFeatures {
     /// @name Constructors
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_RemoveFeatures_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_RemoveFeatures_ctor()) }
+    }
+
+    /// @name Setting input data for the algorithm
+    /// Sets the shape for processing.
+    /// @param[in] theShape  The shape to remove the faces from.
+    /// It should either be the SOLID, COMPSOLID or COMPOUND of Solids.
+    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_set_shape(self as *mut Self, theShape) }
+    }
+
+    /// Returns the input shape
+    pub fn input_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_input_shape(self as *const Self)) }
+    }
+
+    /// Adds the face to remove from the input shape.
+    /// @param[in] theFace  The shape to extract the faces for removal.
+    pub fn add_face_to_remove(&mut self, theFace: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_add_face_to_remove(self as *mut Self, theFace) }
+    }
+
+    /// Adds the faces to remove from the input shape.
+    /// @param[in] theFaces  The list of shapes to extract the faces for removal.
+    pub fn add_faces_to_remove(&mut self, theFaces: &crate::ffi::TopTools_ListOfShape) {
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_add_faces_to_remove(self as *mut Self, theFaces)
+        }
+    }
+
+    /// Returns the list of faces which have been requested for removal
+    /// from the input shape.
+    pub fn faces_to_remove(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_faces_to_remove(self as *const Self)) }
+    }
+
+    /// @name Performing the operation
+    /// Performs the operation
+    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_perform(self as *mut Self, theRange) }
+    }
+
+    /// @name Clearing the contents of the algorithm
+    /// Clears the contents of the algorithm from previous run,
+    /// allowing reusing it for following removals.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_clear(self as *mut Self) }
     }
 
     /// Upcast to BOPAlgo_BuilderShape
     pub fn as_builder_shape(&self) -> &BuilderShape {
-        crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_BuilderShape(self)
+        unsafe {
+            &*(crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_BuilderShape(self as *const Self))
+        }
     }
 
     /// Upcast to BOPAlgo_BuilderShape (mutable)
-    pub fn as_builder_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BuilderShape> {
-        crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_BuilderShape_mut(self)
+    pub fn as_builder_shape_mut(&mut self) -> &mut BuilderShape {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_BuilderShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
-        crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_Options(self)
+        unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_Options(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_Options (mutable)
-    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
-        crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_Options_mut(self)
+    pub fn as_options_mut(&mut self) -> &mut Options {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_RemoveFeatures_as_BOPAlgo_Options_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Shape()
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_Shape(self)
+        unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Modified()
     pub fn modified(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theS: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_Modified(self, theS)
+        unsafe {
+            &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_Modified(self as *mut Self, theS))
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Generated()
     pub fn generated(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theS: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_Generated(self, theS)
+        unsafe {
+            &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_Generated(self as *mut Self, theS))
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, theS: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_IsDeleted(self, theS)
+    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasModified()
     pub fn has_modified(&self) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasModified(self)
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasModified(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
     pub fn has_generated(&self) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasGenerated(self)
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasGenerated(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
     pub fn has_deleted(&self) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasDeleted(self)
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasDeleted(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: History()
-    pub fn history(
-        self: std::pin::Pin<&mut Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_History(self)
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_RemoveFeatures_inherited_History(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
-    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetToFillHistory(self, theHistFlag)
+    pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetToFillHistory(
+                self as *mut Self,
+                theHistFlag,
+            )
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasHistory()
     pub fn has_history(&self) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasHistory(self)
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasHistory(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: Allocator()
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_Allocator(self)
+        unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_Allocator(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: AddError()
-    pub fn add_error(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_AddError(self, theAlert)
+    pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_inherited_AddError(self as *mut Self, theAlert)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: AddWarning()
-    pub fn add_warning(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_AddWarning(self, theAlert)
+    pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_inherited_AddWarning(self as *mut Self, theAlert)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: HasErrors()
     pub fn has_errors(&self) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasErrors(self)
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasErrors(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasError()
     pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasError(self, theType)
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasError(self as *const Self, theType)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarnings()
     pub fn has_warnings(&self) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasWarnings(self)
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasWarnings(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarning()
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasWarning(self, theType)
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_inherited_HasWarning(self as *const Self, theType)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: GetReport()
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_GetReport(self)
+        unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: ClearWarnings()
-    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_ClearWarnings(self)
+    pub fn clear_warnings(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_ClearWarnings(self as *mut Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetRunParallel()
-    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetRunParallel(self, theFlag)
+    pub fn set_run_parallel(&mut self, theFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetRunParallel(self as *mut Self, theFlag)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: RunParallel()
     pub fn run_parallel(&self) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_RunParallel(self)
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_RunParallel(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetFuzzyValue()
-    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetFuzzyValue(self, theFuzz)
+    pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetFuzzyValue(self as *mut Self, theFuzz)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: FuzzyValue()
     pub fn fuzzy_value(&self) -> f64 {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_FuzzyValue(self)
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_FuzzyValue(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetUseOBB()
-    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetUseOBB(self, theUseOBB)
+    pub fn set_use_obb(&mut self, theUseOBB: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_RemoveFeatures_inherited_SetUseOBB(self as *mut Self, theUseOBB)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: UseOBB()
     pub fn use_obb(&self) -> bool {
-        crate::ffi::BOPAlgo_RemoveFeatures_inherited_UseOBB(self)
+        unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_UseOBB(self as *const Self) }
     }
 }
 
@@ -1360,104 +1853,160 @@ impl RemoveFeatures {
 /// Auxiliary class providing API to operate tool arguments.
 pub use crate::ffi::BOPAlgo_ToolsProvider as ToolsProvider;
 
+unsafe impl crate::CppDeletable for ToolsProvider {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_ToolsProvider_destructor(ptr);
+    }
+}
+
 impl ToolsProvider {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_ToolsProvider_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_ToolsProvider_ctor()) }
     }
 
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BOPAlgo_ToolsProvider_ctor_handlencollectionbaseallocator(theAllocator)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPAlgo_ToolsProvider_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// Clears internal fields and arguments
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_clear(self as *mut Self) }
+    }
+
+    /// Adds Tool argument of the operation
+    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_add_tool(self as *mut Self, theShape) }
+    }
+
+    /// Adds the Tool arguments of the operation
+    pub fn set_tools(&mut self, theShapes: &crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_set_tools(self as *mut Self, theShapes) }
+    }
+
+    /// Returns the Tool arguments of the operation
+    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_tools(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_Builder
     pub fn as_builder(&self) -> &Builder {
-        crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Builder(self)
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Builder(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_Builder (mutable)
-    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
-        crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Builder_mut(self)
+    pub fn as_builder_mut(&mut self) -> &mut Builder {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Builder_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to BOPAlgo_BuilderShape
     pub fn as_builder_shape(&self) -> &BuilderShape {
-        crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape(self)
+        unsafe {
+            &*(crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape(self as *const Self))
+        }
     }
 
     /// Upcast to BOPAlgo_BuilderShape (mutable)
-    pub fn as_builder_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BuilderShape> {
-        crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape_mut(self)
+    pub fn as_builder_shape_mut(&mut self) -> &mut BuilderShape {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
-        crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Options(self)
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Options(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_Options (mutable)
-    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
-        crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut(self)
+    pub fn as_options_mut(&mut self) -> &mut Options {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from BOPAlgo_Algo: Perform()
-    pub fn perform(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_Perform(self, theRange)
+    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_Perform(self as *mut Self, theRange) }
     }
 
     /// Inherited from BOPAlgo_Builder: AddArgument()
-    pub fn add_argument(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_AddArgument(self, theShape)
+    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_AddArgument(self as *mut Self, theShape)
+        }
     }
 
     /// Inherited from BOPAlgo_Builder: SetArguments()
-    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetArguments(self, theLS)
+    pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_SetArguments(self as *mut Self, theLS)
+        }
     }
 
     /// Inherited from BOPAlgo_Builder: Arguments()
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_Arguments(self)
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Arguments(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Builder: SetNonDestructive()
-    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetNonDestructive(self, theFlag)
+    pub fn set_non_destructive(&mut self, theFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_SetNonDestructive(
+                self as *mut Self,
+                theFlag,
+            )
+        }
     }
 
     /// Inherited from BOPAlgo_Builder: NonDestructive()
     pub fn non_destructive(&self) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_NonDestructive(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_NonDestructive(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Builder: SetGlue()
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::bop_algo::GlueEnum) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetGlue(self, theGlue.into())
+    pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_SetGlue(self as *mut Self, theGlue.into())
+        }
     }
 
     /// Inherited from BOPAlgo_Builder: Glue()
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
-        crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_ToolsProvider_inherited_Glue(self))
+        unsafe {
+            crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_ToolsProvider_inherited_Glue(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Inherited from BOPAlgo_Builder: SetCheckInverted()
-    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetCheckInverted(self, theCheck)
+    pub fn set_check_inverted(&mut self, theCheck: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_SetCheckInverted(
+                self as *mut Self,
+                theCheck,
+            )
+        }
     }
 
     /// Inherited from BOPAlgo_Builder: CheckInverted()
     pub fn check_inverted(&self) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_CheckInverted(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_CheckInverted(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Builder: BuildBOP()
     pub fn build_bop(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theObjects: &crate::ffi::TopTools_ListOfShape,
         theObjState: crate::top_abs::State,
         theTools: &crate::ffi::TopTools_ListOfShape,
@@ -1465,153 +2014,176 @@ impl ToolsProvider {
         theRange: &crate::ffi::Message_ProgressRange,
         theReport: &crate::ffi::HandleMessageReport,
     ) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_BuildBOP(
-            self,
-            theObjects,
-            theObjState.into(),
-            theTools,
-            theToolsState.into(),
-            theRange,
-            theReport,
-        )
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_BuildBOP(
+                self as *mut Self,
+                theObjects,
+                theObjState.into(),
+                theTools,
+                theToolsState.into(),
+                theRange,
+                theReport,
+            )
+        }
     }
 
     /// Inherited from BOPAlgo_Builder: ShapesSD()
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_ShapesSD(self)
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_ShapesSD(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Shape()
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_Shape(self)
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Modified()
     pub fn modified(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theS: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_Modified(self, theS)
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: Generated()
     pub fn generated(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theS: &crate::ffi::TopoDS_Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_Generated(self, theS)
+        unsafe {
+            &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Generated(self as *mut Self, theS))
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, theS: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_IsDeleted(self, theS)
+    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasModified()
     pub fn has_modified(&self) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_HasModified(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_HasModified(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
     pub fn has_generated(&self) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_HasGenerated(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_HasGenerated(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
     pub fn has_deleted(&self) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_HasDeleted(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_HasDeleted(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: History()
-    pub fn history(
-        self: std::pin::Pin<&mut Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_History(self)
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_ToolsProvider_inherited_History(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
-    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetToFillHistory(self, theHistFlag)
+    pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_SetToFillHistory(
+                self as *mut Self,
+                theHistFlag,
+            )
+        }
     }
 
     /// Inherited from BOPAlgo_BuilderShape: HasHistory()
     pub fn has_history(&self) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_HasHistory(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_HasHistory(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: Allocator()
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_Allocator(self)
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Allocator(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: AddError()
-    pub fn add_error(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_AddError(self, theAlert)
+    pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_AddError(self as *mut Self, theAlert) }
     }
 
     /// Inherited from BOPAlgo_Options: AddWarning()
-    pub fn add_warning(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_AddWarning(self, theAlert)
+    pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_AddWarning(self as *mut Self, theAlert)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: HasErrors()
     pub fn has_errors(&self) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_HasErrors(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_HasErrors(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasError()
     pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_HasError(self, theType)
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_HasError(self as *const Self, theType)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarnings()
     pub fn has_warnings(&self) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_HasWarnings(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_HasWarnings(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: HasWarning()
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_HasWarning(self, theType)
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_HasWarning(self as *const Self, theType)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: GetReport()
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_GetReport(self)
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited from BOPAlgo_Options: ClearWarnings()
-    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_ClearWarnings(self)
+    pub fn clear_warnings(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_ClearWarnings(self as *mut Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetRunParallel()
-    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetRunParallel(self, theFlag)
+    pub fn set_run_parallel(&mut self, theFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_SetRunParallel(self as *mut Self, theFlag)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: RunParallel()
     pub fn run_parallel(&self) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_RunParallel(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_RunParallel(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetFuzzyValue()
-    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetFuzzyValue(self, theFuzz)
+    pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_SetFuzzyValue(self as *mut Self, theFuzz)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: FuzzyValue()
     pub fn fuzzy_value(&self) -> f64 {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_FuzzyValue(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_FuzzyValue(self as *const Self) }
     }
 
     /// Inherited from BOPAlgo_Options: SetUseOBB()
-    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_SetUseOBB(self, theUseOBB)
+    pub fn set_use_obb(&mut self, theUseOBB: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_SetUseOBB(self as *mut Self, theUseOBB)
+        }
     }
 
     /// Inherited from BOPAlgo_Options: UseOBB()
     pub fn use_obb(&self) -> bool {
-        crate::ffi::BOPAlgo_ToolsProvider_inherited_UseOBB(self)
+        unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_UseOBB(self as *const Self) }
     }
 }
 

@@ -5,7 +5,6 @@ use crate::{
     primitives::{make_dir, make_point, make_vec, Edge, Face, JoinType, Shape, Shell},
     Error,
 };
-use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
 use opencascade_sys::{
     b_rep_builder_api, b_rep_offset_api, gp, shape_analysis, top_loc, top_tools,
@@ -13,7 +12,7 @@ use opencascade_sys::{
 };
 
 pub struct Wire {
-    pub(crate) inner: UniquePtr<topo_ds::Wire>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<topo_ds::Wire>,
 }
 
 impl AsRef<Wire> for Wire {
@@ -44,8 +43,8 @@ impl Wire {
         Self { inner }
     }
 
-    fn from_make_wire(mut make_wire: UniquePtr<b_rep_builder_api::MakeWire>) -> Self {
-        Self::from_wire(make_wire.pin_mut().wire())
+    fn from_make_wire(mut make_wire: opencascade_sys::OwnedPtr<b_rep_builder_api::MakeWire>) -> Self {
+        Self::from_wire(make_wire.wire())
     }
 
     pub fn from_ordered_points(points: impl IntoIterator<Item = DVec3>) -> Result<Self, Error> {
@@ -58,11 +57,11 @@ impl Wire {
         let mut make_wire = b_rep_builder_api::MakeWire::new();
 
         if points.len() == 2 {
-            make_wire.pin_mut().add_edge(&Edge::segment(*first, *last).inner);
+            make_wire.add_edge(&Edge::segment(*first, *last).inner);
         } else {
             for window in points.windows(2).chain(once([*last, *first].as_slice())) {
                 let edge = Edge::segment(window[0], window[1]);
-                make_wire.pin_mut().add_edge(&edge.inner);
+                make_wire.add_edge(&edge.inner);
             }
         }
 
@@ -73,7 +72,7 @@ impl Wire {
         let mut make_wire = b_rep_builder_api::MakeWire::new();
 
         for edge in edges.into_iter() {
-            make_wire.pin_mut().add_edge(&edge.inner);
+            make_wire.add_edge(&edge.inner);
         }
 
         Self::from_make_wire(make_wire)
@@ -86,7 +85,7 @@ impl Wire {
         let mut edges_seq = top_tools::HSequenceOfShape::new();
 
         for edge in unordered_edges {
-            edges_seq.pin_mut().append_shape(edge.as_ref().inner.as_shape());
+            edges_seq.append_shape(edge.as_ref().inner.as_shape());
         }
 
         let mut edges_handle = top_tools::HSequenceOfShape::to_handle(edges_seq);
@@ -99,7 +98,7 @@ impl Wire {
         };
 
         shape_analysis::FreeBounds::connect_edges_to_wires(
-            edges_handle.pin_mut(), tolerance, shared, wires_handle.pin_mut(),
+            &mut edges_handle, tolerance, shared, &mut wires_handle,
         );
 
         let mut make_wire = b_rep_builder_api::MakeWire::new();
@@ -110,9 +109,9 @@ impl Wire {
 
         for index in 1..=wire_len {
             let wire_shape = wire_seq.value(index);
-            let wire = topo_ds::wire(wire_shape);
+            let wire = unsafe { &*topo_ds::wire(wire_shape) };
 
-            make_wire.pin_mut().add_wire(wire);
+            make_wire.add_wire(wire);
         }
 
         Self::from_make_wire(make_wire)
@@ -122,7 +121,7 @@ impl Wire {
         let mut make_wire = b_rep_builder_api::MakeWire::new();
 
         for wire in wires.into_iter() {
-            make_wire.pin_mut().add_wire(&wire.inner);
+            make_wire.add_wire(&wire.inner);
         }
 
         Self::from_make_wire(make_wire)
@@ -135,15 +134,15 @@ impl Wire {
 
         let mut transform = gp::Trsf::new();
 
-        transform.pin_mut().set_mirror_ax1(&axis);
+        transform.set_mirror_ax1(&axis);
 
         let wire_shape = self.inner.as_shape();
 
         let mut brep_transform =
             b_rep_builder_api::Transform::new_shape_trsf_bool2(wire_shape, &transform, false, false);
 
-        let mirrored_shape = brep_transform.pin_mut().shape();
-        let mirrored_wire = topo_ds::wire(mirrored_shape);
+        let mirrored_shape = brep_transform.shape();
+        let mirrored_wire = unsafe { &*topo_ds::wire(mirrored_shape) };
 
         Self::from_wire(mirrored_wire)
     }
@@ -169,7 +168,7 @@ impl Wire {
     pub fn fillet(&self, radius: f64) -> Wire {
         // Create a face from this wire
         let face = Face::from_wire(self).fillet(radius);
-        let inner = opencascade_sys::b_rep_tools::outer_wire(&face.inner);
+        let inner = unsafe { opencascade_sys::OwnedPtr::from_raw(opencascade_sys::b_rep_tools::outer_wire(face.inner.as_ptr())) };
 
         Self { inner }
     }
@@ -178,7 +177,7 @@ impl Wire {
     #[must_use]
     pub fn chamfer(&self, distance_1: f64) -> Wire {
         let face = Face::from_wire(self).chamfer(distance_1);
-        let inner = opencascade_sys::b_rep_tools::outer_wire(&face.inner);
+        let inner = unsafe { opencascade_sys::OwnedPtr::from_raw(opencascade_sys::b_rep_tools::outer_wire(face.inner.as_ptr())) };
 
         Self { inner }
     }
@@ -188,10 +187,10 @@ impl Wire {
     pub fn offset(&self, distance: f64, join_type: JoinType) -> Self {
         let mut make_offset =
             b_rep_offset_api::MakeOffset::new_wire_jointype(&self.inner, join_type.to_geom_abs());
-        make_offset.pin_mut().perform(distance, 0.0);
+        make_offset.perform(distance, 0.0);
 
-        let offset_shape = make_offset.pin_mut().shape();
-        let result_wire = topo_ds::wire(offset_shape);
+        let offset_shape = make_offset.shape();
+        let result_wire = unsafe { &*topo_ds::wire(offset_shape) };
 
         Self::from_wire(result_wire)
     }
@@ -202,8 +201,8 @@ impl Wire {
         let profile_shape = self.inner.as_shape();
         let mut make_pipe = b_rep_offset_api::MakePipe::new_wire_shape(&path.inner, profile_shape);
 
-        let pipe_shape = make_pipe.pin_mut().shape();
-        let result_shell = topo_ds::shell(pipe_shape);
+        let pipe_shape = make_pipe.shape();
+        let result_shell = unsafe { &*topo_ds::shell(pipe_shape) };
 
         Shell::from_shell(result_shell)
     }
@@ -230,17 +229,17 @@ impl Wire {
             gp::Ax1::new_pnt_dir(&make_point(DVec3::ZERO), &make_dir(rotation_axis));
         let translation_vec = make_vec(translation);
 
-        transform.pin_mut().set_rotation_ax1_real(&rotation_axis_vec, angle.radians());
-        transform.pin_mut().set_translation_vec(&translation_vec);
+        transform.set_rotation_ax1_real(&rotation_axis_vec, angle.radians());
+        transform.set_translation_vec(&translation_vec);
         let location = top_loc::Location::new_trsf(&transform);
 
         let wire_shape = self.inner.as_shape();
         let mut wire_shape = Shape::from_shape(wire_shape).inner;
 
         let raise_exception = false;
-        wire_shape.pin_mut().move_(&location, raise_exception);
+        wire_shape.move_(&location, raise_exception);
 
-        let translated_wire = topo_ds::wire(&wire_shape);
+        let translated_wire = unsafe { &*topo_ds::wire(wire_shape.as_ptr()) };
 
         Self::from_wire(translated_wire)
     }
@@ -257,7 +256,7 @@ impl Wire {
 }
 
 pub struct WireBuilder {
-    inner: UniquePtr<b_rep_builder_api::MakeWire>,
+    inner: opencascade_sys::OwnedPtr<b_rep_builder_api::MakeWire>,
 }
 
 impl Default for WireBuilder {
@@ -274,7 +273,7 @@ impl WireBuilder {
     }
 
     pub fn add_edge(&mut self, edge: &Edge) {
-        self.inner.pin_mut().add_edge(&edge.inner);
+        self.inner.add_edge(&edge.inner);
     }
 
     pub fn build(self) -> Wire {

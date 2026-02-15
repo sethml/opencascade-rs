@@ -17,55 +17,86 @@
 /// origin is (0,0,0), and its axes are (1,0,0) (0,1,0) (0,0,1).
 pub use crate::ffi::TopLoc_Datum3D as Datum3D;
 
+unsafe impl crate::CppDeletable for Datum3D {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopLoc_Datum3D_destructor(ptr);
+    }
+}
+
 impl Datum3D {
     /// Constructs a default Datum3D.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_Datum3D_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Datum3D_ctor()) }
     }
 
     /// Constructs a Datum3D form a Trsf from gp. An error is
     /// raised if the Trsf is not a rigid transformation.
-    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_Datum3D_ctor_trsf(T)
+    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Datum3D_ctor_trsf(T)) }
+    }
+
+    /// Returns a gp_Trsf which, when applied to this datum, produces the default datum.
+    pub fn transformation(&self) -> &crate::ffi::gp_Trsf {
+        unsafe { &*(crate::ffi::TopLoc_Datum3D_transformation(self as *const Self)) }
+    }
+
+    /// Returns a gp_Trsf which, when applied to this datum, produces the default datum.
+    pub fn trsf(&self) -> &crate::ffi::gp_Trsf {
+        unsafe { &*(crate::ffi::TopLoc_Datum3D_trsf(self as *const Self)) }
     }
 
     /// Return transformation form.
     pub fn form(&self) -> crate::gp::TrsfForm {
-        crate::gp::TrsfForm::try_from(crate::ffi::TopLoc_Datum3D_form(self)).unwrap()
+        unsafe {
+            crate::gp::TrsfForm::try_from(crate::ffi::TopLoc_Datum3D_form(self as *const Self))
+                .unwrap()
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TopLoc_Datum3D_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopLoc_Datum3D_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TopLoc_Datum3D_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TopLoc_Datum3D_get_type_descriptor()
+        unsafe { &*(crate::ffi::TopLoc_Datum3D_get_type_descriptor()) }
     }
 
-    /// Clone into a new UniquePtr via copy constructor
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_Datum3D_to_owned(self)
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Datum3D_to_owned(self as *const Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleTopLocDatum3D> {
-        crate::ffi::TopLoc_Datum3D_to_handle(obj)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopLocDatum3D> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Datum3D_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleTopLocDatum3D;
 
+unsafe impl crate::CppDeletable for HandleTopLocDatum3D {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopLocDatum3D_destructor(ptr);
+    }
+}
+
 impl HandleTopLocDatum3D {
     /// Dereference this Handle to access the underlying TopLoc_Datum3D
     pub fn get(&self) -> &crate::ffi::TopLoc_Datum3D {
-        crate::ffi::HandleTopLocDatum3D_get(self)
+        unsafe { &*(crate::ffi::HandleTopLocDatum3D_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TopLoc_Datum3D
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TopLoc_Datum3D> {
-        crate::ffi::HandleTopLocDatum3D_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopLoc_Datum3D {
+        unsafe { &mut *(crate::ffi::HandleTopLocDatum3D_get_mut(self as *mut Self)) }
     }
 }
 
@@ -85,19 +116,31 @@ impl HandleTopLocDatum3D {
 /// * The transformation associated to the composition.
 pub use crate::ffi::TopLoc_ItemLocation as ItemLocation;
 
+unsafe impl crate::CppDeletable for ItemLocation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopLoc_ItemLocation_destructor(ptr);
+    }
+}
+
 impl ItemLocation {
     /// Sets the elementary Datum to <D>
     /// Sets the exponent to <P>
     pub fn new_handletoplocdatum3d_int(
         D: &crate::ffi::HandleTopLocDatum3D,
         P: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_ItemLocation_ctor_handletoplocdatum3d_int(D, P)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_ItemLocation_ctor_handletoplocdatum3d_int(
+                D, P,
+            ))
+        }
     }
 
-    /// Clone into a new UniquePtr via copy constructor
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_ItemLocation_to_owned(self)
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_ItemLocation_to_owned(self as *const Self))
+        }
     }
 }
 
@@ -111,32 +154,85 @@ impl ItemLocation {
 /// which these objects are raised.
 pub use crate::ffi::TopLoc_Location as Location;
 
+unsafe impl crate::CppDeletable for Location {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopLoc_Location_destructor(ptr);
+    }
+}
+
 impl Location {
     /// Constructs an empty local coordinate system object.
     /// Note: A Location constructed from a default datum is said to be "empty".
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_Location_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_ctor()) }
     }
 
     /// Constructs the local coordinate system object defined
     /// by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
-    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_Location_ctor_trsf(T)
+    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_ctor_trsf(T)) }
     }
 
     /// Constructs the local coordinate system object defined by the 3D datum D.
     /// Exceptions
     /// Standard_ConstructionError if the transformation
     /// T does not represent a 3D coordinate system.
-    pub fn new_handletoplocdatum3d(D: &crate::ffi::HandleTopLocDatum3D) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_Location_ctor_handletoplocdatum3d(D)
+    pub fn new_handletoplocdatum3d(D: &crate::ffi::HandleTopLocDatum3D) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_ctor_handletoplocdatum3d(D))
+        }
+    }
+
+    /// Returns true if this location is equal to the Identity transformation.
+    pub fn is_identity(&self) -> bool {
+        unsafe { crate::ffi::TopLoc_Location_is_identity(self as *const Self) }
+    }
+
+    /// Resets this location to the Identity transformation.
+    pub fn identity(&mut self) {
+        unsafe { crate::ffi::TopLoc_Location_identity(self as *mut Self) }
+    }
+
+    /// Returns    the  first   elementary  datum  of  the
+    /// Location.  Use the NextLocation function recursively to access
+    /// the other data comprising this location.
+    /// Exceptions
+    /// Standard_NoSuchObject if this location is empty.
+    pub fn first_datum(&self) -> &crate::ffi::HandleTopLocDatum3D {
+        unsafe { &*(crate::ffi::TopLoc_Location_first_datum(self as *const Self)) }
+    }
+
+    /// Returns   the  power  elevation  of    the   first
+    /// elementary datum.
+    /// Exceptions
+    /// Standard_NoSuchObject if this location is empty.
+    pub fn first_power(&self) -> i32 {
+        unsafe { crate::ffi::TopLoc_Location_first_power(self as *const Self) }
+    }
+
+    /// Returns  a Location representing  <me> without the
+    /// first datum. We have the relation :
+    ///
+    /// <me> = NextLocation() * FirstDatum() ^ FirstPower()
+    /// Exceptions
+    /// Standard_NoSuchObject if this location is empty.
+    pub fn next_location(&self) -> &crate::ffi::TopLoc_Location {
+        unsafe { &*(crate::ffi::TopLoc_Location_next_location(self as *const Self)) }
+    }
+
+    /// Returns  the transformation    associated  to  the
+    /// coordinate system.
+    pub fn transformation(&self) -> &crate::ffi::gp_Trsf {
+        unsafe { &*(crate::ffi::TopLoc_Location_transformation(self as *const Self)) }
     }
 
     /// Returns the inverse of <me>.
     ///
     /// <me> * Inverted() is an Identity.
-    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
-        crate::ffi::TopLoc_Location_inverted(self)
+    pub fn inverted(&self) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_inverted(self as *const Self))
+        }
     }
 
     /// Returns <me> * <Other>, the  elementary datums are
@@ -144,40 +240,87 @@ impl Location {
     pub fn multiplied(
         &self,
         Other: &crate::ffi::TopLoc_Location,
-    ) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
-        crate::ffi::TopLoc_Location_multiplied(self, Other)
+    ) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_multiplied(
+                self as *const Self,
+                Other,
+            ))
+        }
     }
 
     /// Returns  <me> / <Other>.
     pub fn divided(
         &self,
         Other: &crate::ffi::TopLoc_Location,
-    ) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
-        crate::ffi::TopLoc_Location_divided(self, Other)
+    ) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_divided(
+                self as *const Self,
+                Other,
+            ))
+        }
     }
 
     /// Returns <Other>.Inverted() * <me>.
     pub fn predivided(
         &self,
         Other: &crate::ffi::TopLoc_Location,
-    ) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
-        crate::ffi::TopLoc_Location_predivided(self, Other)
+    ) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_predivided(
+                self as *const Self,
+                Other,
+            ))
+        }
     }
 
     /// Returns me at the power <pwr>.   If <pwr>  is zero
     /// returns  Identity.  <pwr> can  be lower  than zero
     /// (usual meaning for powers).
-    pub fn powered(&self, pwr: i32) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
-        crate::ffi::TopLoc_Location_powered(self, pwr)
+    pub fn powered(&self, pwr: i32) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_powered(self as *const Self, pwr))
+        }
+    }
+
+    /// Returns a hashed value for this local coordinate system. This value is used, with map tables,
+    /// to store and retrieve the object easily
+    /// @return a computed hash code
+    pub fn hash_code(&self) -> usize {
+        unsafe { crate::ffi::TopLoc_Location_hash_code(self as *const Self) }
+    }
+
+    /// Returns true if this location and the location Other
+    /// have the same elementary data, i.e. contain the same
+    /// series of TopLoc_Datum3D and respective powers.
+    /// This method is an alias for operator ==.
+    pub fn is_equal(&self, Other: &crate::ffi::TopLoc_Location) -> bool {
+        unsafe { crate::ffi::TopLoc_Location_is_equal(self as *const Self, Other) }
+    }
+
+    /// Returns true if this location and the location Other do
+    /// not have the same elementary data, i.e. do not
+    /// contain the same series of TopLoc_Datum3D and respective powers.
+    /// This method is an alias for operator !=.
+    pub fn is_different(&self, Other: &crate::ffi::TopLoc_Location) -> bool {
+        unsafe { crate::ffi::TopLoc_Location_is_different(self as *const Self, Other) }
+    }
+
+    /// Clear myItems
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TopLoc_Location_clear(self as *mut Self) }
     }
 
     pub fn scale_prec() -> f64 {
-        crate::ffi::TopLoc_Location_scale_prec()
+        unsafe { crate::ffi::TopLoc_Location_scale_prec() }
     }
 
-    /// Clone into a new UniquePtr via copy constructor
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_Location_to_owned(self)
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_to_owned(self as *const Self))
+        }
     }
 }
 
@@ -187,60 +330,86 @@ impl Location {
 
 pub use crate::ffi::TopLoc_SListNodeOfItemLocation as SListNodeOfItemLocation;
 
+unsafe impl crate::CppDeletable for SListNodeOfItemLocation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopLoc_SListNodeOfItemLocation_destructor(ptr);
+    }
+}
+
 impl SListNodeOfItemLocation {
     pub fn new_itemlocation_slistofitemlocation(
         I: &crate::ffi::TopLoc_ItemLocation,
         aTail: &crate::ffi::TopLoc_SListOfItemLocation,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_SListNodeOfItemLocation_ctor_itemlocation_slistofitemlocation(I, aTail)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopLoc_SListNodeOfItemLocation_ctor_itemlocation_slistofitemlocation(
+                    I, aTail,
+                ),
+            )
+        }
     }
 
-    pub fn tail(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TopLoc_SListOfItemLocation> {
-        crate::ffi::TopLoc_SListNodeOfItemLocation_tail(self)
+    pub fn tail(&mut self) -> &mut crate::ffi::TopLoc_SListOfItemLocation {
+        unsafe { &mut *(crate::ffi::TopLoc_SListNodeOfItemLocation_tail(self as *mut Self)) }
     }
 
-    pub fn value(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TopLoc_ItemLocation> {
-        crate::ffi::TopLoc_SListNodeOfItemLocation_value(self)
+    pub fn value(&mut self) -> &mut crate::ffi::TopLoc_ItemLocation {
+        unsafe { &mut *(crate::ffi::TopLoc_SListNodeOfItemLocation_value(self as *mut Self)) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopLoc_SListNodeOfItemLocation_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_descriptor()
+        unsafe { &*(crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_descriptor()) }
     }
 
-    /// Clone into a new UniquePtr via copy constructor
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_SListNodeOfItemLocation_to_owned(self)
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_SListNodeOfItemLocation_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTopLocSListNodeOfItemLocation> {
-        crate::ffi::TopLoc_SListNodeOfItemLocation_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopLocSListNodeOfItemLocation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_SListNodeOfItemLocation_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTopLocSListNodeOfItemLocation;
 
+unsafe impl crate::CppDeletable for HandleTopLocSListNodeOfItemLocation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopLocSListNodeOfItemLocation_destructor(ptr);
+    }
+}
+
 impl HandleTopLocSListNodeOfItemLocation {
     /// Dereference this Handle to access the underlying TopLoc_SListNodeOfItemLocation
     pub fn get(&self) -> &crate::ffi::TopLoc_SListNodeOfItemLocation {
-        crate::ffi::HandleTopLocSListNodeOfItemLocation_get(self)
+        unsafe { &*(crate::ffi::HandleTopLocSListNodeOfItemLocation_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TopLoc_SListNodeOfItemLocation
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TopLoc_SListNodeOfItemLocation> {
-        crate::ffi::HandleTopLocSListNodeOfItemLocation_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopLoc_SListNodeOfItemLocation {
+        unsafe {
+            &mut *(crate::ffi::HandleTopLocSListNodeOfItemLocation_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -265,29 +434,94 @@ impl HandleTopLocSListNodeOfItemLocation {
 /// X = Iterator.Value();
 pub use crate::ffi::TopLoc_SListOfItemLocation as SListOfItemLocation;
 
+unsafe impl crate::CppDeletable for SListOfItemLocation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopLoc_SListOfItemLocation_destructor(ptr);
+    }
+}
+
 impl SListOfItemLocation {
     /// Creates an empty List.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_SListOfItemLocation_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopLoc_SListOfItemLocation_ctor()) }
     }
 
     /// Creates a List with <anItem> as value  and <aTail> as tail.
     pub fn new_itemlocation_slistofitemlocation(
         anItem: &crate::ffi::TopLoc_ItemLocation,
         aTail: &crate::ffi::TopLoc_SListOfItemLocation,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_SListOfItemLocation_ctor_itemlocation_slistofitemlocation(anItem, aTail)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopLoc_SListOfItemLocation_ctor_itemlocation_slistofitemlocation(
+                    anItem, aTail,
+                ),
+            )
+        }
     }
 
     /// Creates a list from an other one. The lists  are shared.
     pub fn new_slistofitemlocation(
         Other: &crate::ffi::TopLoc_SListOfItemLocation,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_SListOfItemLocation_ctor_slistofitemlocation(Other)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopLoc_SListOfItemLocation_ctor_slistofitemlocation(Other),
+            )
+        }
     }
 
-    /// Clone into a new UniquePtr via copy constructor
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopLoc_SListOfItemLocation_to_owned(self)
+    /// Return true if this list is empty
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::TopLoc_SListOfItemLocation_is_empty(self as *const Self) }
+    }
+
+    /// Sets the list to be empty.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TopLoc_SListOfItemLocation_clear(self as *mut Self) }
+    }
+
+    /// Returns the current value of the list. An error is
+    /// raised  if the list is empty.
+    pub fn value(&self) -> &crate::ffi::TopLoc_ItemLocation {
+        unsafe { &*(crate::ffi::TopLoc_SListOfItemLocation_value(self as *const Self)) }
+    }
+
+    /// Returns the current tail of  the list. On an empty
+    /// list the tail is the list itself.
+    pub fn tail(&self) -> &crate::ffi::TopLoc_SListOfItemLocation {
+        unsafe { &*(crate::ffi::TopLoc_SListOfItemLocation_tail(self as *const Self)) }
+    }
+
+    /// Replaces the list by a list with <anItem> as Value
+    /// and the  list <me> as  tail.
+    pub fn construct(&mut self, anItem: &crate::ffi::TopLoc_ItemLocation) {
+        unsafe { crate::ffi::TopLoc_SListOfItemLocation_construct(self as *mut Self, anItem) }
+    }
+
+    /// Replaces the list <me> by its tail.
+    pub fn to_tail(&mut self) {
+        unsafe { crate::ffi::TopLoc_SListOfItemLocation_to_tail(self as *mut Self) }
+    }
+
+    /// Returns True if the iterator  has a current value.
+    /// This is !IsEmpty()
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TopLoc_SListOfItemLocation_more(self as *const Self) }
+    }
+
+    /// Moves the iterator to the next object in the list.
+    /// If the iterator is empty it will  stay empty. This is ToTail()
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TopLoc_SListOfItemLocation_next(self as *mut Self) }
+    }
+
+    /// Clone into a new OwnedPtr via copy constructor
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopLoc_SListOfItemLocation_to_owned(
+                self as *const Self,
+            ))
+        }
     }
 }

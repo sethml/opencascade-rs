@@ -91,34 +91,197 @@ impl TryFrom<i32> for MultDistribution {
 /// The data should be recalculated in going from span to span.
 pub use crate::ffi::BSplCLib_Cache as Cache;
 
+unsafe impl crate::CppDeletable for Cache {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BSplCLib_Cache_destructor(ptr);
+    }
+}
+
 impl Cache {
-    pub fn get_type_name() -> String {
-        crate::ffi::BSplCLib_Cache_get_type_name()
+    /// Verifies validity of the cache using flat parameter of the point
+    /// \param theParameter parameter of the point placed in the span
+    pub fn is_cache_valid(&self, theParameter: f64) -> bool {
+        unsafe { crate::ffi::BSplCLib_Cache_is_cache_valid(self as *const Self, theParameter) }
+    }
+
+    /// Calculates the point on the curve in the specified parameter
+    /// \param[in]  theParameter parameter of calculation of the value
+    /// \param[out] thePoint     the result of calculation (the point on the curve)
+    pub fn d0_real_pnt2d(&self, theParameter: &f64, thePoint: &mut crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::BSplCLib_Cache_d0_real_pnt2d(self as *const Self, theParameter, thePoint)
+        }
+    }
+
+    pub fn d0_real_pnt(&self, theParameter: &f64, thePoint: &mut crate::ffi::gp_Pnt) {
+        unsafe {
+            crate::ffi::BSplCLib_Cache_d0_real_pnt(self as *const Self, theParameter, thePoint)
+        }
+    }
+
+    /// Calculates the point on the curve and its first derivative in the specified parameter
+    /// \param[in]  theParameter parameter of calculation of the value
+    /// \param[out] thePoint     the result of calculation (the point on the curve)
+    /// \param[out] theTangent   tangent vector (first derivatives) for the curve in the calculated
+    /// point
+    pub fn d1_real_pnt2d_vec2d(
+        &self,
+        theParameter: &f64,
+        thePoint: &mut crate::ffi::gp_Pnt2d,
+        theTangent: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::BSplCLib_Cache_d1_real_pnt2d_vec2d(
+                self as *const Self,
+                theParameter,
+                thePoint,
+                theTangent,
+            )
+        }
+    }
+
+    pub fn d1_real_pnt_vec(
+        &self,
+        theParameter: &f64,
+        thePoint: &mut crate::ffi::gp_Pnt,
+        theTangent: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::BSplCLib_Cache_d1_real_pnt_vec(
+                self as *const Self,
+                theParameter,
+                thePoint,
+                theTangent,
+            )
+        }
+    }
+
+    /// Calculates the point on the curve and two derivatives in the specified parameter
+    /// \param[in]  theParameter parameter of calculation of the value
+    /// \param[out] thePoint     the result of calculation (the point on the curve)
+    /// \param[out] theTangent   tangent vector (1st derivatives) for the curve in the calculated
+    /// point \param[out] theCurvature curvature vector (2nd derivatives) for the curve in the
+    /// calculated point
+    pub fn d2_real_pnt2d_vec2d2(
+        &self,
+        theParameter: &f64,
+        thePoint: &mut crate::ffi::gp_Pnt2d,
+        theTangent: &mut crate::ffi::gp_Vec2d,
+        theCurvature: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::BSplCLib_Cache_d2_real_pnt2d_vec2d2(
+                self as *const Self,
+                theParameter,
+                thePoint,
+                theTangent,
+                theCurvature,
+            )
+        }
+    }
+
+    pub fn d2_real_pnt_vec2(
+        &self,
+        theParameter: &f64,
+        thePoint: &mut crate::ffi::gp_Pnt,
+        theTangent: &mut crate::ffi::gp_Vec,
+        theCurvature: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::BSplCLib_Cache_d2_real_pnt_vec2(
+                self as *const Self,
+                theParameter,
+                thePoint,
+                theTangent,
+                theCurvature,
+            )
+        }
+    }
+
+    /// Calculates the point on the curve and three derivatives in the specified parameter
+    /// \param[in]  theParameter parameter of calculation of the value
+    /// \param[out] thePoint     the result of calculation (the point on the curve)
+    /// \param[out] theTangent   tangent vector (1st derivatives) for the curve in the calculated
+    /// point \param[out] theCurvature curvature vector (2nd derivatives) for the curve in the
+    /// calculated point \param[out] theTorsion   second curvature vector (3rd derivatives) for the
+    /// curve in the calculated point
+    pub fn d3_real_pnt2d_vec2d3(
+        &self,
+        theParameter: &f64,
+        thePoint: &mut crate::ffi::gp_Pnt2d,
+        theTangent: &mut crate::ffi::gp_Vec2d,
+        theCurvature: &mut crate::ffi::gp_Vec2d,
+        theTorsion: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::BSplCLib_Cache_d3_real_pnt2d_vec2d3(
+                self as *const Self,
+                theParameter,
+                thePoint,
+                theTangent,
+                theCurvature,
+                theTorsion,
+            )
+        }
+    }
+
+    pub fn d3_real_pnt_vec3(
+        &self,
+        theParameter: &f64,
+        thePoint: &mut crate::ffi::gp_Pnt,
+        theTangent: &mut crate::ffi::gp_Vec,
+        theCurvature: &mut crate::ffi::gp_Vec,
+        theTorsion: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::BSplCLib_Cache_d3_real_pnt_vec3(
+                self as *const Self,
+                theParameter,
+                thePoint,
+                theTangent,
+                theCurvature,
+                theTorsion,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BSplCLib_Cache_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BSplCLib_Cache_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BSplCLib_Cache_get_type_descriptor()
+        unsafe { &*(crate::ffi::BSplCLib_Cache_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleBSplCLibCache> {
-        crate::ffi::BSplCLib_Cache_to_handle(obj)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBSplCLibCache> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BSplCLib_Cache_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleBSplCLibCache;
 
+unsafe impl crate::CppDeletable for HandleBSplCLibCache {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBSplCLibCache_destructor(ptr);
+    }
+}
+
 impl HandleBSplCLibCache {
     /// Dereference this Handle to access the underlying BSplCLib_Cache
     pub fn get(&self) -> &crate::ffi::BSplCLib_Cache {
-        crate::ffi::HandleBSplCLibCache_get(self)
+        unsafe { &*(crate::ffi::HandleBSplCLibCache_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BSplCLib_Cache
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BSplCLib_Cache> {
-        crate::ffi::HandleBSplCLibCache_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BSplCLib_Cache {
+        unsafe { &mut *(crate::ffi::HandleBSplCLibCache_get_mut(self as *mut Self)) }
     }
 }
 
@@ -131,6 +294,12 @@ impl HandleBSplCLibCache {
 /// and data of the current span for its caching
 pub use crate::ffi::BSplCLib_CacheParams as CacheParams;
 
+unsafe impl crate::CppDeletable for CacheParams {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BSplCLib_CacheParams_destructor(ptr);
+    }
+}
+
 impl CacheParams {
     /// Constructor, prepares data structures for caching.
     /// \param theDegree     degree of the B-spline (or Bezier)
@@ -140,12 +309,33 @@ impl CacheParams {
         theDegree: i32,
         thePeriodic: bool,
         theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BSplCLib_CacheParams_ctor_int_bool_array1ofreal(
-            theDegree,
-            thePeriodic,
-            theFlatKnots,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BSplCLib_CacheParams_ctor_int_bool_array1ofreal(
+                theDegree,
+                thePeriodic,
+                theFlatKnots,
+            ))
+        }
+    }
+
+    /// Normalizes the parameter for periodic B-splines
+    /// \param theParameter the value to be normalized into the knots array
+    pub fn periodic_normalization(&self, theParameter: f64) -> f64 {
+        unsafe {
+            crate::ffi::BSplCLib_CacheParams_periodic_normalization(
+                self as *const Self,
+                theParameter,
+            )
+        }
+    }
+
+    /// Verifies validity of the cache using flat parameter of the point
+    /// \param theParameter parameter of the point placed in the span
+    pub fn is_cache_valid(&self, theParameter: f64) -> bool {
+        unsafe {
+            crate::ffi::BSplCLib_CacheParams_is_cache_valid(self as *const Self, theParameter)
+        }
     }
 }
 
@@ -154,3 +344,9 @@ impl CacheParams {
 // ========================
 
 pub use crate::ffi::BSplCLib_EvaluatorFunction as EvaluatorFunction;
+
+unsafe impl crate::CppDeletable for EvaluatorFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BSplCLib_EvaluatorFunction_destructor(ptr);
+    }
+}

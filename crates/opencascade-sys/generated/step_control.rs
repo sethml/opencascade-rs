@@ -67,75 +67,115 @@ impl TryFrom<i32> for StepModelType {
 /// then returns the Binder which contains the Result
 pub use crate::ffi::STEPControl_ActorRead as ActorRead;
 
+unsafe impl crate::CppDeletable for ActorRead {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPControl_ActorRead_destructor(ptr);
+    }
+}
+
 impl ActorRead {
     pub fn new_handleinterfaceinterfacemodel(
         theModel: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::STEPControl_ActorRead_ctor_handleinterfaceinterfacemodel(theModel)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPControl_ActorRead_ctor_handleinterfaceinterfacemodel(theModel),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::STEPControl_ActorRead_get_type_name()
+    /// Set model
+    pub fn set_model(&mut self, theModel: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe { crate::ffi::STEPControl_ActorRead_set_model(self as *mut Self, theModel) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::STEPControl_ActorRead_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::STEPControl_ActorRead_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::STEPControl_ActorRead_get_type_descriptor()
+        unsafe { &*(crate::ffi::STEPControl_ActorRead_get_type_descriptor()) }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient
     pub fn as_transfer_actor_of_process_for_transient(
         &self,
     ) -> &crate::transfer::ActorOfProcessForTransient {
-        crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient(self)
+        unsafe {
+            &*(crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient (mutable)
     pub fn as_transfer_actor_of_process_for_transient_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::transfer::ActorOfProcessForTransient> {
-        crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient_mut(self)
+        &mut self,
+    ) -> &mut crate::transfer::ActorOfProcessForTransient {
+        unsafe {
+            &mut *(crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfTransientProcess
     pub fn as_transfer_actor_of_transient_process(
         &self,
     ) -> &crate::transfer::ActorOfTransientProcess {
-        crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess(self)
+        unsafe {
+            &*(crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfTransientProcess (mutable)
     pub fn as_transfer_actor_of_transient_process_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::transfer::ActorOfTransientProcess> {
-        crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess_mut(self)
+        &mut self,
+    ) -> &mut crate::transfer::ActorOfTransientProcess {
+        unsafe {
+            &mut *(crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForTransient: NullResult()
-    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
-        crate::ffi::STEPControl_ActorRead_inherited_NullResult(self)
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorRead_inherited_NullResult(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForTransient: SetLast()
-    pub fn set_last(self: std::pin::Pin<&mut Self>, mode: bool) {
-        crate::ffi::STEPControl_ActorRead_inherited_SetLast(self, mode)
+    pub fn set_last(&mut self, mode: bool) {
+        unsafe { crate::ffi::STEPControl_ActorRead_inherited_SetLast(self as *mut Self, mode) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForTransient: IsLast()
     pub fn is_last(&self) -> bool {
-        crate::ffi::STEPControl_ActorRead_inherited_IsLast(self)
+        unsafe { crate::ffi::STEPControl_ActorRead_inherited_IsLast(self as *const Self) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForTransient: SetNext()
-    pub fn set_next(
-        self: std::pin::Pin<&mut Self>,
-        next: &crate::ffi::HandleTransferActorOfProcessForTransient,
-    ) {
-        crate::ffi::STEPControl_ActorRead_inherited_SetNext(self, next)
+    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+        unsafe { crate::ffi::STEPControl_ActorRead_inherited_SetNext(self as *mut Self, next) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForTransient: Next()
-    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
-        crate::ffi::STEPControl_ActorRead_inherited_Next(self)
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorRead_inherited_Next(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -147,85 +187,132 @@ impl ActorRead {
 /// to AP203 or AP214 (CD2 or DIS)
 pub use crate::ffi::STEPControl_ActorWrite as ActorWrite;
 
+unsafe impl crate::CppDeletable for ActorWrite {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPControl_ActorWrite_destructor(ptr);
+    }
+}
+
 impl ActorWrite {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::STEPControl_ActorWrite_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_ctor()) }
     }
 
-    pub fn set_mode(self: std::pin::Pin<&mut Self>, M: crate::step_control::StepModelType) {
-        crate::ffi::STEPControl_ActorWrite_set_mode(self, M.into())
+    pub fn set_mode(&mut self, M: crate::step_control::StepModelType) {
+        unsafe { crate::ffi::STEPControl_ActorWrite_set_mode(self as *mut Self, M.into()) }
     }
 
     pub fn mode(&self) -> crate::step_control::StepModelType {
-        crate::step_control::StepModelType::try_from(crate::ffi::STEPControl_ActorWrite_mode(self))
+        unsafe {
+            crate::step_control::StepModelType::try_from(crate::ffi::STEPControl_ActorWrite_mode(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::STEPControl_ActorWrite_get_type_name()
+    pub fn set_group_mode(&mut self, mode: i32) {
+        unsafe { crate::ffi::STEPControl_ActorWrite_set_group_mode(self as *mut Self, mode) }
+    }
+
+    pub fn group_mode(&self) -> i32 {
+        unsafe { crate::ffi::STEPControl_ActorWrite_group_mode(self as *const Self) }
+    }
+
+    pub fn set_tolerance(&mut self, Tol: f64) {
+        unsafe { crate::ffi::STEPControl_ActorWrite_set_tolerance(self as *mut Self, Tol) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::STEPControl_ActorWrite_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::STEPControl_ActorWrite_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::STEPControl_ActorWrite_get_type_descriptor()
+        unsafe { &*(crate::ffi::STEPControl_ActorWrite_get_type_descriptor()) }
     }
 
     /// Upcast to Transfer_ActorOfFinderProcess
     pub fn as_transfer_actor_of_finder_process(&self) -> &crate::transfer::ActorOfFinderProcess {
-        crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess(self)
+        unsafe {
+            &*(crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfFinderProcess (mutable)
     pub fn as_transfer_actor_of_finder_process_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::transfer::ActorOfFinderProcess> {
-        crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(self)
+        &mut self,
+    ) -> &mut crate::transfer::ActorOfFinderProcess {
+        unsafe {
+            &mut *(crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfProcessForFinder
     pub fn as_transfer_actor_of_process_for_finder(
         &self,
     ) -> &crate::transfer::ActorOfProcessForFinder {
-        crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(self)
+        unsafe {
+            &*(crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfProcessForFinder (mutable)
     pub fn as_transfer_actor_of_process_for_finder_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::transfer::ActorOfProcessForFinder> {
-        crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(self)
+        &mut self,
+    ) -> &mut crate::transfer::ActorOfProcessForFinder {
+        unsafe {
+            &mut *(crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from Transfer_ActorOfFinderProcess: ModeTrans()
-    pub fn mode_trans(self: std::pin::Pin<&mut Self>) -> &mut i32 {
-        crate::ffi::STEPControl_ActorWrite_inherited_ModeTrans(self)
+    pub fn mode_trans(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::STEPControl_ActorWrite_inherited_ModeTrans(self as *mut Self)) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: NullResult()
-    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
-        crate::ffi::STEPControl_ActorWrite_inherited_NullResult(self)
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_inherited_NullResult(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: SetLast()
-    pub fn set_last(self: std::pin::Pin<&mut Self>, mode: bool) {
-        crate::ffi::STEPControl_ActorWrite_inherited_SetLast(self, mode)
+    pub fn set_last(&mut self, mode: bool) {
+        unsafe { crate::ffi::STEPControl_ActorWrite_inherited_SetLast(self as *mut Self, mode) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: IsLast()
     pub fn is_last(&self) -> bool {
-        crate::ffi::STEPControl_ActorWrite_inherited_IsLast(self)
+        unsafe { crate::ffi::STEPControl_ActorWrite_inherited_IsLast(self as *const Self) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: SetNext()
-    pub fn set_next(
-        self: std::pin::Pin<&mut Self>,
-        next: &crate::ffi::HandleTransferActorOfProcessForFinder,
-    ) {
-        crate::ffi::STEPControl_ActorWrite_inherited_SetNext(self, next)
+    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
+        unsafe { crate::ffi::STEPControl_ActorWrite_inherited_SetNext(self as *mut Self, next) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: Next()
-    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        crate::ffi::STEPControl_ActorWrite_inherited_Next(self)
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_inherited_Next(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -236,74 +323,118 @@ impl ActorWrite {
 /// defines basic controller for STEP processor
 pub use crate::ffi::STEPControl_Controller as Controller;
 
+unsafe impl crate::CppDeletable for Controller {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPControl_Controller_destructor(ptr);
+    }
+}
+
 impl Controller {
     /// Initializes the use of STEP Norm (the first time) and
     /// returns a Controller
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::STEPControl_Controller_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Controller_ctor()) }
     }
 
     /// Creates a new empty Model ready to receive data of the Norm.
     /// It is taken from STEP Template Model
-    pub fn new_model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::STEPControl_Controller_new_model(self)
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Controller_new_model(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::STEPControl_Controller_dynamic_type(self as *const Self)) }
     }
 
     /// Standard Initialisation. It creates a Controller for STEP
     /// and records it to various names, available to select it later
     /// Returns True when done, False if could not be done
     pub fn init() -> bool {
-        crate::ffi::STEPControl_Controller_init()
+        unsafe { crate::ffi::STEPControl_Controller_init() }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::STEPControl_Controller_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::STEPControl_Controller_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::STEPControl_Controller_get_type_descriptor()
+        unsafe { &*(crate::ffi::STEPControl_Controller_get_type_descriptor()) }
     }
 
     /// Upcast to XSControl_Controller
     pub fn as_xs_control_controller(&self) -> &crate::xs_control::Controller {
-        crate::ffi::STEPControl_Controller_as_XSControl_Controller(self)
+        unsafe {
+            &*(crate::ffi::STEPControl_Controller_as_XSControl_Controller(self as *const Self))
+        }
     }
 
     /// Upcast to XSControl_Controller (mutable)
-    pub fn as_xs_control_controller_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::xs_control::Controller> {
-        crate::ffi::STEPControl_Controller_as_XSControl_Controller_mut(self)
+    pub fn as_xs_control_controller_mut(&mut self) -> &mut crate::xs_control::Controller {
+        unsafe {
+            &mut *(crate::ffi::STEPControl_Controller_as_XSControl_Controller_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from XSControl_Controller: AutoRecord()
     pub fn auto_record(&self) {
-        crate::ffi::STEPControl_Controller_inherited_AutoRecord(self)
+        unsafe { crate::ffi::STEPControl_Controller_inherited_AutoRecord(self as *const Self) }
     }
 
     /// Inherited from XSControl_Controller: WorkLibrary()
     pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
-        crate::ffi::STEPControl_Controller_inherited_WorkLibrary(self)
+        unsafe { &*(crate::ffi::STEPControl_Controller_inherited_WorkLibrary(self as *const Self)) }
     }
 
     /// Inherited from XSControl_Controller: SetModeWrite()
-    pub fn set_mode_write(self: std::pin::Pin<&mut Self>, modemin: i32, modemax: i32, shape: bool) {
-        crate::ffi::STEPControl_Controller_inherited_SetModeWrite(self, modemin, modemax, shape)
+    pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
+        unsafe {
+            crate::ffi::STEPControl_Controller_inherited_SetModeWrite(
+                self as *mut Self,
+                modemin,
+                modemax,
+                shape,
+            )
+        }
     }
 
     /// Inherited from XSControl_Controller: ModeWriteBounds()
     pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
-        crate::ffi::STEPControl_Controller_inherited_ModeWriteBounds(self, modemin, modemax, shape)
+        unsafe {
+            crate::ffi::STEPControl_Controller_inherited_ModeWriteBounds(
+                self as *const Self,
+                modemin,
+                modemax,
+                shape,
+            )
+        }
     }
 
     /// Inherited from XSControl_Controller: IsModeWrite()
     pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
-        crate::ffi::STEPControl_Controller_inherited_IsModeWrite(self, modetrans, shape)
+        unsafe {
+            crate::ffi::STEPControl_Controller_inherited_IsModeWrite(
+                self as *const Self,
+                modetrans,
+                shape,
+            )
+        }
     }
 
     /// Inherited from XSControl_Controller: RecognizeWriteShape()
     pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
-        crate::ffi::STEPControl_Controller_inherited_RecognizeWriteShape(self, shape, modetrans)
+        unsafe {
+            crate::ffi::STEPControl_Controller_inherited_RecognizeWriteShape(
+                self as *const Self,
+                shape,
+                modetrans,
+            )
+        }
     }
 }
 
@@ -348,122 +479,214 @@ impl Controller {
 /// TopoDS_Shape shape = WS->TransferReader()->ShapeResult(ent);
 pub use crate::ffi::STEPControl_Reader as Reader;
 
+unsafe impl crate::CppDeletable for Reader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPControl_Reader_destructor(ptr);
+    }
+}
+
 impl Reader {
     /// Creates a reader object with an empty STEP model.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::STEPControl_Reader_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_ctor()) }
     }
 
     /// Loads a file and returns the read status
     /// Zero for a Model which compies with the Controller
     pub fn read_file_charptr(
-        self: std::pin::Pin<&mut Self>,
-        filename: &str,
+        &mut self,
+        filename: *const std::ffi::c_char,
     ) -> crate::if_select::ReturnStatus {
-        crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Reader_read_file_charptr(
-            self, filename,
-        ))
-        .unwrap()
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPControl_Reader_read_file_charptr(self as *mut Self, filename),
+            )
+            .unwrap()
+        }
     }
 
     /// Loads a file and returns the read status
     /// Zero for a Model which compies with the Controller
     pub fn read_file_charptr_parameters(
-        self: std::pin::Pin<&mut Self>,
-        filename: &str,
+        &mut self,
+        filename: *const std::ffi::c_char,
         theParams: &crate::ffi::DESTEP_Parameters,
     ) -> crate::if_select::ReturnStatus {
-        crate::if_select::ReturnStatus::try_from(
-            crate::ffi::STEPControl_Reader_read_file_charptr_parameters(self, filename, theParams),
-        )
-        .unwrap()
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPControl_Reader_read_file_charptr_parameters(
+                    self as *mut Self,
+                    filename,
+                    theParams,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Transfers a root given its rank in the list of candidate roots
+    /// Default is the first one
+    /// Returns True if a shape has resulted, false else
+    /// Same as inherited TransferOneRoot, kept for compatibility
+    pub fn transfer_root(
+        &mut self,
+        num: i32,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::STEPControl_Reader_transfer_root(self as *mut Self, num, theProgress) }
+    }
+
+    /// Determines the list of root entities from Model which are candidate for
+    /// a transfer to a Shape (type of entities is PRODUCT)
+    pub fn nb_roots_for_transfer(&mut self) -> i32 {
+        unsafe { crate::ffi::STEPControl_Reader_nb_roots_for_transfer(self as *mut Self) }
+    }
+
+    /// Sets system length unit used by transfer process.
+    /// Performs only if a model is not NULL
+    pub fn set_system_length_unit(&mut self, theLengthUnit: f64) {
+        unsafe {
+            crate::ffi::STEPControl_Reader_set_system_length_unit(self as *mut Self, theLengthUnit)
+        }
+    }
+
+    /// Returns system length unit used by transfer process.
+    /// Performs only if a model is not NULL
+    pub fn system_length_unit(&self) -> f64 {
+        unsafe { crate::ffi::STEPControl_Reader_system_length_unit(self as *const Self) }
     }
 
     /// Upcast to XSControl_Reader
     pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
-        crate::ffi::STEPControl_Reader_as_XSControl_Reader(self)
+        unsafe { &*(crate::ffi::STEPControl_Reader_as_XSControl_Reader(self as *const Self)) }
     }
 
     /// Upcast to XSControl_Reader (mutable)
-    pub fn as_xs_control_reader_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
-        crate::ffi::STEPControl_Reader_as_XSControl_Reader_mut(self)
+    pub fn as_xs_control_reader_mut(&mut self) -> &mut crate::xs_control::Reader {
+        unsafe { &mut *(crate::ffi::STEPControl_Reader_as_XSControl_Reader_mut(self as *mut Self)) }
     }
 
     /// Inherited from XSControl_Reader: Model()
-    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::STEPControl_Reader_inherited_Model(self)
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_Model(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from XSControl_Reader: TransferOneRoot()
     pub fn transfer_one_root(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         num: i32,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> bool {
-        crate::ffi::STEPControl_Reader_inherited_TransferOneRoot(self, num, theProgress)
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_TransferOneRoot(
+                self as *mut Self,
+                num,
+                theProgress,
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: TransferOne()
     pub fn transfer_one(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         num: i32,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> bool {
-        crate::ffi::STEPControl_Reader_inherited_TransferOne(self, num, theProgress)
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_TransferOne(
+                self as *mut Self,
+                num,
+                theProgress,
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: TransferList()
     pub fn transfer_list(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> i32 {
-        crate::ffi::STEPControl_Reader_inherited_TransferList(self, list, theProgress)
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_TransferList(
+                self as *mut Self,
+                list,
+                theProgress,
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: TransferRoots()
-    pub fn transfer_roots(
-        self: std::pin::Pin<&mut Self>,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> i32 {
-        crate::ffi::STEPControl_Reader_inherited_TransferRoots(self, theProgress)
+    pub fn transfer_roots(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> i32 {
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_TransferRoots(self as *mut Self, theProgress)
+        }
     }
 
     /// Inherited from XSControl_Reader: ClearShapes()
-    pub fn clear_shapes(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::STEPControl_Reader_inherited_ClearShapes(self)
+    pub fn clear_shapes(&mut self) {
+        unsafe { crate::ffi::STEPControl_Reader_inherited_ClearShapes(self as *mut Self) }
     }
 
     /// Inherited from XSControl_Reader: NbShapes()
     pub fn nb_shapes(&self) -> i32 {
-        crate::ffi::STEPControl_Reader_inherited_NbShapes(self)
+        unsafe { crate::ffi::STEPControl_Reader_inherited_NbShapes(self as *const Self) }
     }
 
     /// Inherited from XSControl_Reader: Shape()
-    pub fn shape(&self, num: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::STEPControl_Reader_inherited_Shape(self, num)
+    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_Shape(
+                self as *const Self,
+                num,
+            ))
+        }
     }
 
     /// Inherited from XSControl_Reader: OneShape()
-    pub fn one_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::STEPControl_Reader_inherited_OneShape(self)
+    pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_OneShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from XSControl_Reader: PrintCheckLoad()
     pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
-        crate::ffi::STEPControl_Reader_inherited_PrintCheckLoad(self, failsonly, mode.into())
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_PrintCheckLoad(
+                self as *const Self,
+                failsonly,
+                mode.into(),
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: PrintCheckTransfer()
     pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
-        crate::ffi::STEPControl_Reader_inherited_PrintCheckTransfer(self, failsonly, mode.into())
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_PrintCheckTransfer(
+                self as *const Self,
+                failsonly,
+                mode.into(),
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: PrintStatsTransfer()
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
-        crate::ffi::STEPControl_Reader_inherited_PrintStatsTransfer(self, what, mode)
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_PrintStatsTransfer(
+                self as *const Self,
+                what,
+                mode,
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: GetStatsTransfer()
@@ -474,13 +697,15 @@ impl Reader {
         nbWithResult: &mut i32,
         nbWithFail: &mut i32,
     ) {
-        crate::ffi::STEPControl_Reader_inherited_GetStatsTransfer(
-            self,
-            list,
-            nbMapped,
-            nbWithResult,
-            nbWithFail,
-        )
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_GetStatsTransfer(
+                self as *const Self,
+                list,
+                nbMapped,
+                nbWithResult,
+                nbWithFail,
+            )
+        }
     }
 }
 
@@ -495,10 +720,28 @@ impl Reader {
 /// translation operation outputs a distinct root entity in the STEP file.
 pub use crate::ffi::STEPControl_Writer as Writer;
 
+unsafe impl crate::CppDeletable for Writer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPControl_Writer_destructor(ptr);
+    }
+}
+
 impl Writer {
     /// Creates a Writer from scratch
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::STEPControl_Writer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Writer_ctor()) }
+    }
+
+    /// Sets a length-measure value that
+    /// will be written to uncertainty-measure-with-unit
+    /// when the next shape is translated.
+    pub fn set_tolerance(&mut self, Tol: f64) {
+        unsafe { crate::ffi::STEPControl_Writer_set_tolerance(self as *mut Self, Tol) }
+    }
+
+    /// Unsets the tolerance formerly forced by SetTolerance
+    pub fn unset_tolerance(&mut self) {
+        unsafe { crate::ffi::STEPControl_Writer_unset_tolerance(self as *mut Self) }
     }
 
     /// Translates shape sh to a STEP
@@ -514,45 +757,77 @@ impl Writer {
     /// - STEPControlStd_GeometricCurveSet translates a shape into a STEP
     /// geometric_curve_set entity.
     pub fn transfer_shape_stepmodeltype_bool_progressrange(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         sh: &crate::ffi::TopoDS_Shape,
         mode: crate::step_control::StepModelType,
         compgraph: bool,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> crate::if_select::ReturnStatus {
-        crate::if_select::ReturnStatus::try_from(
-            crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_bool_progressrange(
-                self,
-                sh,
-                mode.into(),
-                compgraph,
-                theProgress,
-            ),
-        )
-        .unwrap()
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_bool_progressrange(
+                    self as *mut Self,
+                    sh,
+                    mode.into(),
+                    compgraph,
+                    theProgress,
+                ),
+            )
+            .unwrap()
+        }
     }
 
     /// Translates shape sh to a STEP entity
     pub fn transfer_shape_stepmodeltype_parameters_bool_progressrange(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         sh: &crate::ffi::TopoDS_Shape,
         mode: crate::step_control::StepModelType,
         theParams: &crate::ffi::DESTEP_Parameters,
         compgraph: bool,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> crate::if_select::ReturnStatus {
-        crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(self, sh, mode.into(), theParams, compgraph, theProgress)).unwrap()
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(self as *mut Self, sh, mode.into(), theParams, compgraph, theProgress)).unwrap()
+        }
     }
 
     /// Writes a STEP model in the file identified by filename.
     pub fn write(
-        self: std::pin::Pin<&mut Self>,
-        theFileName: &str,
+        &mut self,
+        theFileName: *const std::ffi::c_char,
     ) -> crate::if_select::ReturnStatus {
-        crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Writer_write(
-            self,
-            theFileName,
-        ))
-        .unwrap()
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Writer_write(
+                self as *mut Self,
+                theFileName,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Displays the statistics for the
+    /// last translation. what defines the kind of statistics that are displayed:
+    /// - 0 gives general statistics   (number of translated roots,
+    /// number of warnings, number of   fail messages),
+    /// - 1 gives root results,
+    /// - 2 gives statistics for all checked entities,
+    /// - 3 gives the list of translated entities,
+    /// - 4 gives warning and fail messages,
+    /// - 5 gives fail messages only.
+    /// mode is used according to the use of what. If what is 0, mode is
+    /// ignored. If what is 1, 2 or 3, mode defines the following:
+    /// - 0 lists the numbers of STEP entities in a STEP model,
+    /// - 1 gives the number, identifier, type and result type for each
+    /// STEP entity and/or its status (fail, warning, etc.),
+    /// - 2 gives maximum information for each STEP entity (i.e. checks),
+    /// - 3 gives the number of entities by the type of a STEP entity,
+    /// - 4 gives the number of of STEP entities per result type and/or status,
+    /// - 5 gives the number of pairs (STEP or result type and status),
+    /// - 6 gives the number of pairs (STEP or result type and status)
+    /// AND the list of entity numbers in the STEP model.
+    pub fn print_stats_transfer(&self, what: i32, mode: i32) {
+        unsafe {
+            crate::ffi::STEPControl_Writer_print_stats_transfer(self as *const Self, what, mode)
+        }
     }
 }

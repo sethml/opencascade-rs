@@ -12,23 +12,37 @@
 
 pub use crate::ffi::Plate_HArray1OfPinpointConstraint as HArray1OfPinpointConstraint;
 
+unsafe impl crate::CppDeletable for HArray1OfPinpointConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Plate_HArray1OfPinpointConstraint_destructor(ptr);
+    }
+}
+
 impl HArray1OfPinpointConstraint {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_HArray1OfPinpointConstraint_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_HArray1OfPinpointConstraint_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
     pub fn new_int2_pinpointconstraint(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::Plate_PinpointConstraint,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2_pinpointconstraint(
-            theLower, theUpper, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2_pinpointconstraint(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
     }
 
     pub fn new_pinpointconstraint_int2_bool(
@@ -36,47 +50,73 @@ impl HArray1OfPinpointConstraint {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_pinpointconstraint_int2_bool(
-            theBegin, theLower, theUpper, arg3,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_pinpointconstraint_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
     }
 
     pub fn new_array1ofpinpointconstraint(
         theOther: &crate::ffi::Plate_Array1OfPinpointConstraint,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_array1ofpinpointconstraint(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_array1ofpinpointconstraint(
+                    theOther,
+                ),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::Plate_HArray1OfPinpointConstraint_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_descriptor()
+        unsafe { &*(crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandlePlateHArray1OfPinpointConstraint> {
-        crate::ffi::Plate_HArray1OfPinpointConstraint_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePlateHArray1OfPinpointConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_HArray1OfPinpointConstraint_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandlePlateHArray1OfPinpointConstraint;
 
+unsafe impl crate::CppDeletable for HandlePlateHArray1OfPinpointConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandlePlateHArray1OfPinpointConstraint_destructor(ptr);
+    }
+}
+
 impl HandlePlateHArray1OfPinpointConstraint {
     /// Dereference this Handle to access the underlying Plate_HArray1OfPinpointConstraint
     pub fn get(&self) -> &crate::ffi::Plate_HArray1OfPinpointConstraint {
-        crate::ffi::HandlePlateHArray1OfPinpointConstraint_get(self)
+        unsafe { &*(crate::ffi::HandlePlateHArray1OfPinpointConstraint_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Plate_HArray1OfPinpointConstraint
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Plate_HArray1OfPinpointConstraint> {
-        crate::ffi::HandlePlateHArray1OfPinpointConstraint_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Plate_HArray1OfPinpointConstraint {
+        unsafe {
+            &mut *(crate::ffi::HandlePlateHArray1OfPinpointConstraint_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -88,38 +128,74 @@ impl HandlePlateHArray1OfPinpointConstraint {
 /// the X,Y and Z components of a set of PinPointConstraint
 pub use crate::ffi::Plate_LinearScalarConstraint as LinearScalarConstraint;
 
+unsafe impl crate::CppDeletable for LinearScalarConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Plate_LinearScalarConstraint_destructor(ptr);
+    }
+}
+
 impl LinearScalarConstraint {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_LinearScalarConstraint_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearScalarConstraint_ctor()) }
     }
 
     pub fn new_pinpointconstraint_xyz(
         thePPC1: &crate::ffi::Plate_PinpointConstraint,
         theCoeff: &crate::ffi::gp_XYZ,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_LinearScalarConstraint_ctor_pinpointconstraint_xyz(thePPC1, theCoeff)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Plate_LinearScalarConstraint_ctor_pinpointconstraint_xyz(
+                    thePPC1, theCoeff,
+                ),
+            )
+        }
     }
 
     pub fn new_array1ofpinpointconstraint_array1ofxyz(
         thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
         theCoeff: &crate::ffi::TColgp_Array1OfXYZ,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array1ofxyz(
-            thePPC, theCoeff,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array1ofxyz(thePPC, theCoeff))
+        }
     }
 
     pub fn new_array1ofpinpointconstraint_array2ofxyz(
         thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
         theCoeff: &crate::ffi::TColgp_Array2OfXYZ,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array2ofxyz(
-            thePPC, theCoeff,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array2ofxyz(thePPC, theCoeff))
+        }
     }
 
-    pub fn new_int2(ColLen: i32, RowLen: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_LinearScalarConstraint_ctor_int2(ColLen, RowLen)
+    pub fn new_int2(ColLen: i32, RowLen: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearScalarConstraint_ctor_int2(
+                ColLen, RowLen,
+            ))
+        }
+    }
+
+    pub fn coeff(&self) -> &crate::ffi::TColgp_Array2OfXYZ {
+        unsafe { &*(crate::ffi::Plate_LinearScalarConstraint_coeff(self as *const Self)) }
+    }
+
+    /// Sets   the PinPointConstraint of   index Index to
+    /// Value raise if Index is greater than the length of
+    /// PPC or the Row length of coeff or lower  than 1
+    pub fn set_ppc(&mut self, Index: i32, Value: &crate::ffi::Plate_PinpointConstraint) {
+        unsafe { crate::ffi::Plate_LinearScalarConstraint_set_ppc(self as *mut Self, Index, Value) }
+    }
+
+    /// Sets the coeff  of index (Row,Col)  to Value
+    /// raise if  Row (respectively Col)  is greater than the
+    /// Row (respectively Column) length of coeff
+    pub fn set_coeff(&mut self, Row: i32, Col: i32, Value: &crate::ffi::gp_XYZ) {
+        unsafe {
+            crate::ffi::Plate_LinearScalarConstraint_set_coeff(self as *mut Self, Row, Col, Value)
+        }
     }
 }
 
@@ -132,31 +208,65 @@ impl LinearScalarConstraint {
 /// of this kind of constraint preserve the X,Y and Z uncoupling.
 pub use crate::ffi::Plate_LinearXYZConstraint as LinearXYZConstraint;
 
+unsafe impl crate::CppDeletable for LinearXYZConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Plate_LinearXYZConstraint_destructor(ptr);
+    }
+}
+
 impl LinearXYZConstraint {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_LinearXYZConstraint_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearXYZConstraint_ctor()) }
     }
 
     pub fn new_array1ofpinpointconstraint_array1ofreal(
         thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
         theCoeff: &crate::ffi::TColStd_Array1OfReal,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array1ofreal(
-            thePPC, theCoeff,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array1ofreal(
+                    thePPC, theCoeff,
+                ),
+            )
+        }
     }
 
     pub fn new_array1ofpinpointconstraint_array2ofreal(
         thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
         theCoeff: &crate::ffi::TColStd_Array2OfReal,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array2ofreal(
-            thePPC, theCoeff,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array2ofreal(
+                    thePPC, theCoeff,
+                ),
+            )
+        }
     }
 
-    pub fn new_int2(ColLen: i32, RowLen: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_LinearXYZConstraint_ctor_int2(ColLen, RowLen)
+    pub fn new_int2(ColLen: i32, RowLen: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearXYZConstraint_ctor_int2(
+                ColLen, RowLen,
+            ))
+        }
+    }
+
+    /// Sets   the PinPointConstraint of   index Index to
+    /// Value raise if Index is greater than the length of
+    /// PPC or the Row length of coeff or lower  than 1
+    pub fn set_ppc(&mut self, Index: i32, Value: &crate::ffi::Plate_PinpointConstraint) {
+        unsafe { crate::ffi::Plate_LinearXYZConstraint_set_ppc(self as *mut Self, Index, Value) }
+    }
+
+    /// Sets the coeff  of index (Row,Col)  to Value
+    /// raise if  Row (respectively Col)  is greater than the
+    /// Row (respectively Column) length of coeff
+    pub fn set_coeff(&mut self, Row: i32, Col: i32, Value: f64) {
+        unsafe {
+            crate::ffi::Plate_LinearXYZConstraint_set_coeff(self as *mut Self, Row, Col, Value)
+        }
     }
 }
 
@@ -167,9 +277,15 @@ impl LinearXYZConstraint {
 /// define a constraint on the Plate
 pub use crate::ffi::Plate_PinpointConstraint as PinpointConstraint;
 
+unsafe impl crate::CppDeletable for PinpointConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Plate_PinpointConstraint_destructor(ptr);
+    }
+}
+
 impl PinpointConstraint {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_PinpointConstraint_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_PinpointConstraint_ctor()) }
     }
 
     pub fn new_xy_xyz_int2(
@@ -177,23 +293,46 @@ impl PinpointConstraint {
         ImposedValue: &crate::ffi::gp_XYZ,
         iu: i32,
         iv: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_PinpointConstraint_ctor_xy_xyz_int2(point2d, ImposedValue, iu, iv)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_PinpointConstraint_ctor_xy_xyz_int2(
+                point2d,
+                ImposedValue,
+                iu,
+                iv,
+            ))
+        }
     }
 
     pub fn new_xy_xyz_int(
         point2d: &crate::ffi::gp_XY,
         ImposedValue: &crate::ffi::gp_XYZ,
         iu: i32,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_xy_xyz_int2(point2d, ImposedValue, iu, 0)
     }
 
     pub fn new_xy_xyz(
         point2d: &crate::ffi::gp_XY,
         ImposedValue: &crate::ffi::gp_XYZ,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_xy_xyz_int2(point2d, ImposedValue, 0, 0)
+    }
+
+    pub fn pnt2d(&self) -> &crate::ffi::gp_XY {
+        unsafe { &*(crate::ffi::Plate_PinpointConstraint_pnt2d(self as *const Self)) }
+    }
+
+    pub fn idu(&self) -> &i32 {
+        unsafe { &*(crate::ffi::Plate_PinpointConstraint_idu(self as *const Self)) }
+    }
+
+    pub fn idv(&self) -> &i32 {
+        unsafe { &*(crate::ffi::Plate_PinpointConstraint_idv(self as *const Self)) }
+    }
+
+    pub fn value(&self) -> &crate::ffi::gp_XYZ {
+        unsafe { &*(crate::ffi::Plate_PinpointConstraint_value(self as *const Self)) }
     }
 }
 
@@ -206,17 +345,71 @@ impl PinpointConstraint {
 /// and minimizing an energy like criterion.
 pub use crate::ffi::Plate_Plate as Plate;
 
+unsafe impl crate::CppDeletable for Plate {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Plate_Plate_destructor(ptr);
+    }
+}
+
 impl Plate {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_Plate_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_ctor()) }
     }
 
-    pub fn new_plate(Ref: &crate::ffi::Plate_Plate) -> cxx::UniquePtr<Self> {
-        crate::ffi::Plate_Plate_ctor_plate(Ref)
+    pub fn new_plate(Ref: &crate::ffi::Plate_Plate) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_ctor_plate(Ref)) }
     }
 
-    pub fn evaluate(&self, point2d: &crate::ffi::gp_XY) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
-        crate::ffi::Plate_Plate_evaluate(self, point2d)
+    pub fn load_pinpointconstraint(&mut self, PConst: &crate::ffi::Plate_PinpointConstraint) {
+        unsafe { crate::ffi::Plate_Plate_load_pinpointconstraint(self as *mut Self, PConst) }
+    }
+
+    pub fn load_linearxyzconstraint(&mut self, LXYZConst: &crate::ffi::Plate_LinearXYZConstraint) {
+        unsafe { crate::ffi::Plate_Plate_load_linearxyzconstraint(self as *mut Self, LXYZConst) }
+    }
+
+    pub fn load_linearscalarconstraint(
+        &mut self,
+        LScalarConst: &crate::ffi::Plate_LinearScalarConstraint,
+    ) {
+        unsafe {
+            crate::ffi::Plate_Plate_load_linearscalarconstraint(self as *mut Self, LScalarConst)
+        }
+    }
+
+    pub fn solve_ti(
+        &mut self,
+        ord: i32,
+        anisotropie: f64,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::Plate_Plate_solve_ti(self as *mut Self, ord, anisotropie, theProgress)
+        }
+    }
+
+    /// returns True if all has been correctly done.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::Plate_Plate_is_done(self as *const Self) }
+    }
+
+    pub fn destroy(&mut self) {
+        unsafe { crate::ffi::Plate_Plate_destroy(self as *mut Self) }
+    }
+
+    /// reset the Plate in the initial state
+    /// ( same as after Create())
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::Plate_Plate_init(self as *mut Self) }
+    }
+
+    pub fn evaluate(&self, point2d: &crate::ffi::gp_XY) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_evaluate(
+                self as *const Self,
+                point2d,
+            ))
+        }
     }
 
     pub fn evaluate_derivative(
@@ -224,8 +417,31 @@ impl Plate {
         point2d: &crate::ffi::gp_XY,
         iu: i32,
         iv: i32,
-    ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
-        crate::ffi::Plate_Plate_evaluate_derivative(self, point2d, iu, iv)
+    ) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_evaluate_derivative(
+                self as *const Self,
+                point2d,
+                iu,
+                iv,
+            ))
+        }
+    }
+
+    pub fn coef_pol(&self, Coefs: &mut crate::ffi::HandleTColgpHArray2OfXYZ) {
+        unsafe { crate::ffi::Plate_Plate_coef_pol(self as *const Self, Coefs) }
+    }
+
+    pub fn set_polynomial_part_only(&mut self, PPOnly: bool) {
+        unsafe { crate::ffi::Plate_Plate_set_polynomial_part_only(self as *mut Self, PPOnly) }
+    }
+
+    pub fn continuity(&self) -> i32 {
+        unsafe { crate::ffi::Plate_Plate_continuity(self as *const Self) }
+    }
+
+    pub fn uv_box(&self, UMin: &mut f64, UMax: &mut f64, VMin: &mut f64, VMax: &mut f64) {
+        unsafe { crate::ffi::Plate_Plate_uv_box(self as *const Self, UMin, UMax, VMin, VMax) }
     }
 }
 

@@ -12,17 +12,31 @@
 
 pub use crate::ffi::TColStd_HArray1OfBoolean as HArray1OfBoolean;
 
+unsafe impl crate::CppDeletable for HArray1OfBoolean {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HArray1OfBoolean_destructor(ptr);
+    }
+}
+
 impl HArray1OfBoolean {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfBoolean_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfBoolean_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
-    pub fn new_int2_bool(theLower: i32, theUpper: i32, theValue: &bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfBoolean_ctor_int2_bool(theLower, theUpper, theValue)
+    pub fn new_int2_bool(theLower: i32, theUpper: i32, theValue: &bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_int2_bool(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_bool_int2_bool(
@@ -30,45 +44,65 @@ impl HArray1OfBoolean {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfBoolean_ctor_bool_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_bool_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
     pub fn new_array1ofboolean(
         theOther: &crate::ffi::TColStd_Array1OfBoolean,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfBoolean_ctor_array1ofboolean(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_array1ofboolean(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HArray1OfBoolean_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HArray1OfBoolean_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HArray1OfBoolean_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HArray1OfBoolean_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HArray1OfBoolean_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfBoolean> {
-        crate::ffi::TColStd_HArray1OfBoolean_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfBoolean> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHArray1OfBoolean;
 
+unsafe impl crate::CppDeletable for HandleTColStdHArray1OfBoolean {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHArray1OfBoolean_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHArray1OfBoolean {
     /// Dereference this Handle to access the underlying TColStd_HArray1OfBoolean
     pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfBoolean {
-        crate::ffi::HandleTColStdHArray1OfBoolean_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHArray1OfBoolean_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfBoolean
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfBoolean> {
-        crate::ffi::HandleTColStdHArray1OfBoolean_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HArray1OfBoolean {
+        unsafe { &mut *(crate::ffi::HandleTColStdHArray1OfBoolean_get_mut(self as *mut Self)) }
     }
 }
 
@@ -78,17 +112,31 @@ impl HandleTColStdHArray1OfBoolean {
 
 pub use crate::ffi::TColStd_HArray1OfInteger as HArray1OfInteger;
 
+unsafe impl crate::CppDeletable for HArray1OfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HArray1OfInteger_destructor(ptr);
+    }
+}
+
 impl HArray1OfInteger {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfInteger_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfInteger_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
-    pub fn new_int3(theLower: i32, theUpper: i32, theValue: &i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfInteger_ctor_int3(theLower, theUpper, theValue)
+    pub fn new_int3(theLower: i32, theUpper: i32, theValue: &i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_int3(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_int3_bool(
@@ -96,45 +144,65 @@ impl HArray1OfInteger {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfInteger_ctor_int3_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_int3_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
     pub fn new_array1ofinteger(
         theOther: &crate::ffi::TColStd_Array1OfInteger,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfInteger_ctor_array1ofinteger(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_array1ofinteger(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HArray1OfInteger_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HArray1OfInteger_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HArray1OfInteger_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HArray1OfInteger_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HArray1OfInteger_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfInteger> {
-        crate::ffi::TColStd_HArray1OfInteger_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHArray1OfInteger;
 
+unsafe impl crate::CppDeletable for HandleTColStdHArray1OfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHArray1OfInteger_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHArray1OfInteger {
     /// Dereference this Handle to access the underlying TColStd_HArray1OfInteger
     pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfInteger {
-        crate::ffi::HandleTColStdHArray1OfInteger_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHArray1OfInteger_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfInteger
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfInteger> {
-        crate::ffi::HandleTColStdHArray1OfInteger_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HArray1OfInteger {
+        unsafe { &mut *(crate::ffi::HandleTColStdHArray1OfInteger_get_mut(self as *mut Self)) }
     }
 }
 
@@ -144,50 +212,78 @@ impl HandleTColStdHArray1OfInteger {
 
 pub use crate::ffi::TColStd_HArray1OfListOfInteger as HArray1OfListOfInteger;
 
+unsafe impl crate::CppDeletable for HArray1OfListOfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HArray1OfListOfInteger_destructor(ptr);
+    }
+}
+
 impl HArray1OfListOfInteger {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfListOfInteger_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfListOfInteger_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfListOfInteger_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfListOfInteger_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
     pub fn new_array1oflistofinteger(
         theOther: &crate::ffi::TColStd_Array1OfListOfInteger,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfListOfInteger_ctor_array1oflistofinteger(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColStd_HArray1OfListOfInteger_ctor_array1oflistofinteger(theOther),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HArray1OfListOfInteger_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HArray1OfListOfInteger_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HArray1OfListOfInteger_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HArray1OfListOfInteger_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HArray1OfListOfInteger_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfListOfInteger> {
-        crate::ffi::TColStd_HArray1OfListOfInteger_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfListOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfListOfInteger_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHArray1OfListOfInteger;
 
+unsafe impl crate::CppDeletable for HandleTColStdHArray1OfListOfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHArray1OfListOfInteger_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHArray1OfListOfInteger {
     /// Dereference this Handle to access the underlying TColStd_HArray1OfListOfInteger
     pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfListOfInteger {
-        crate::ffi::HandleTColStdHArray1OfListOfInteger_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHArray1OfListOfInteger_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfListOfInteger
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfListOfInteger> {
-        crate::ffi::HandleTColStdHArray1OfListOfInteger_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HArray1OfListOfInteger {
+        unsafe {
+            &mut *(crate::ffi::HandleTColStdHArray1OfListOfInteger_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -197,17 +293,31 @@ impl HandleTColStdHArray1OfListOfInteger {
 
 pub use crate::ffi::TColStd_HArray1OfReal as HArray1OfReal;
 
+unsafe impl crate::CppDeletable for HArray1OfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HArray1OfReal_destructor(ptr);
+    }
+}
+
 impl HArray1OfReal {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfReal_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfReal_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
-    pub fn new_int2_real(theLower: i32, theUpper: i32, theValue: &f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfReal_ctor_int2_real(theLower, theUpper, theValue)
+    pub fn new_int2_real(theLower: i32, theUpper: i32, theValue: &f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_int2_real(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_real_int2_bool(
@@ -215,43 +325,59 @@ impl HArray1OfReal {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfReal_ctor_real_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_real_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
-    pub fn new_array1ofreal(theOther: &crate::ffi::TColStd_Array1OfReal) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfReal_ctor_array1ofreal(theOther)
+    pub fn new_array1ofreal(theOther: &crate::ffi::TColStd_Array1OfReal) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_array1ofreal(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HArray1OfReal_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HArray1OfReal_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HArray1OfReal_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HArray1OfReal_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HArray1OfReal_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfReal> {
-        crate::ffi::TColStd_HArray1OfReal_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHArray1OfReal;
 
+unsafe impl crate::CppDeletable for HandleTColStdHArray1OfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHArray1OfReal_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHArray1OfReal {
     /// Dereference this Handle to access the underlying TColStd_HArray1OfReal
     pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfReal {
-        crate::ffi::HandleTColStdHArray1OfReal_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHArray1OfReal_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfReal
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfReal> {
-        crate::ffi::HandleTColStdHArray1OfReal_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HArray1OfReal {
+        unsafe { &mut *(crate::ffi::HandleTColStdHArray1OfReal_get_mut(self as *mut Self)) }
     }
 }
 
@@ -261,50 +387,76 @@ impl HandleTColStdHArray1OfReal {
 
 pub use crate::ffi::TColStd_HArray1OfTransient as HArray1OfTransient;
 
+unsafe impl crate::CppDeletable for HArray1OfTransient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HArray1OfTransient_destructor(ptr);
+    }
+}
+
 impl HArray1OfTransient {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfTransient_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfTransient_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfTransient_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfTransient_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
     pub fn new_array1oftransient(
         theOther: &crate::ffi::TColStd_Array1OfTransient,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfTransient_ctor_array1oftransient(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColStd_HArray1OfTransient_ctor_array1oftransient(theOther),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HArray1OfTransient_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HArray1OfTransient_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HArray1OfTransient_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HArray1OfTransient_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HArray1OfTransient_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfTransient> {
-        crate::ffi::TColStd_HArray1OfTransient_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfTransient_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHArray1OfTransient;
 
+unsafe impl crate::CppDeletable for HandleTColStdHArray1OfTransient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHArray1OfTransient_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHArray1OfTransient {
     /// Dereference this Handle to access the underlying TColStd_HArray1OfTransient
     pub fn get(&self) -> &crate::ffi::TColStd_HArray1OfTransient {
-        crate::ffi::HandleTColStdHArray1OfTransient_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHArray1OfTransient_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HArray1OfTransient
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray1OfTransient> {
-        crate::ffi::HandleTColStdHArray1OfTransient_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HArray1OfTransient {
+        unsafe { &mut *(crate::ffi::HandleTColStdHArray1OfTransient_get_mut(self as *mut Self)) }
     }
 }
 
@@ -314,14 +466,24 @@ impl HandleTColStdHArray1OfTransient {
 
 pub use crate::ffi::TColStd_HArray2OfReal as HArray2OfReal;
 
+unsafe impl crate::CppDeletable for HArray2OfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HArray2OfReal_destructor(ptr);
+    }
+}
+
 impl HArray2OfReal {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray2OfReal_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_real(
@@ -330,45 +492,59 @@ impl HArray2OfReal {
         theColLow: i32,
         theColUpp: i32,
         theValue: &f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray2OfReal_ctor_int4_real(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_ctor_int4_real(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
-    pub fn new_array2ofreal(theOther: &crate::ffi::TColStd_Array2OfReal) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray2OfReal_ctor_array2ofreal(theOther)
+    pub fn new_array2ofreal(theOther: &crate::ffi::TColStd_Array2OfReal) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_ctor_array2ofreal(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HArray2OfReal_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HArray2OfReal_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HArray2OfReal_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HArray2OfReal_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HArray2OfReal_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray2OfReal> {
-        crate::ffi::TColStd_HArray2OfReal_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHArray2OfReal;
 
+unsafe impl crate::CppDeletable for HandleTColStdHArray2OfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHArray2OfReal_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHArray2OfReal {
     /// Dereference this Handle to access the underlying TColStd_HArray2OfReal
     pub fn get(&self) -> &crate::ffi::TColStd_HArray2OfReal {
-        crate::ffi::HandleTColStdHArray2OfReal_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHArray2OfReal_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HArray2OfReal
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HArray2OfReal> {
-        crate::ffi::HandleTColStdHArray2OfReal_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HArray2OfReal {
+        unsafe { &mut *(crate::ffi::HandleTColStdHArray2OfReal_get_mut(self as *mut Self)) }
     }
 }
 
@@ -378,46 +554,74 @@ impl HandleTColStdHArray2OfReal {
 
 pub use crate::ffi::TColStd_HSequenceOfAsciiString as HSequenceOfAsciiString;
 
+unsafe impl crate::CppDeletable for HSequenceOfAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HSequenceOfAsciiString_destructor(ptr);
+    }
+}
+
 impl HSequenceOfAsciiString {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfAsciiString_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfAsciiString_ctor()) }
     }
 
     pub fn new_sequenceofasciistring(
         theOther: &crate::ffi::TColStd_SequenceOfAsciiString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfAsciiString_ctor_sequenceofasciistring(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColStd_HSequenceOfAsciiString_ctor_sequenceofasciistring(theOther),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HSequenceOfAsciiString_get_type_name()
+    pub fn append(&mut self, theItem: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::TColStd_HSequenceOfAsciiString_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfAsciiString_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HSequenceOfAsciiString_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HSequenceOfAsciiString_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfAsciiString_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
-        crate::ffi::TColStd_HSequenceOfAsciiString_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfAsciiString_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHSequenceOfAsciiString;
 
+unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHSequenceOfAsciiString_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHSequenceOfAsciiString {
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfAsciiString
     pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfAsciiString {
-        crate::ffi::HandleTColStdHSequenceOfAsciiString_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHSequenceOfAsciiString_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfAsciiString
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfAsciiString> {
-        crate::ffi::HandleTColStdHSequenceOfAsciiString_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HSequenceOfAsciiString {
+        unsafe {
+            &mut *(crate::ffi::HandleTColStdHSequenceOfAsciiString_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -427,46 +631,70 @@ impl HandleTColStdHSequenceOfAsciiString {
 
 pub use crate::ffi::TColStd_HSequenceOfHAsciiString as HSequenceOfHAsciiString;
 
+unsafe impl crate::CppDeletable for HSequenceOfHAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HSequenceOfHAsciiString_destructor(ptr);
+    }
+}
+
 impl HSequenceOfHAsciiString {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfHAsciiString_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfHAsciiString_ctor()) }
     }
 
     pub fn new_sequenceofhasciistring(
         theOther: &crate::ffi::TColStd_SequenceOfHAsciiString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfHAsciiString_ctor_sequenceofhasciistring(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColStd_HSequenceOfHAsciiString_ctor_sequenceofhasciistring(theOther),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HSequenceOfHAsciiString_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfHAsciiString_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HSequenceOfHAsciiString_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HSequenceOfHAsciiString_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfHAsciiString_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
-        crate::ffi::TColStd_HSequenceOfHAsciiString_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfHAsciiString_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHSequenceOfHAsciiString;
 
+unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfHAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHSequenceOfHAsciiString_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHSequenceOfHAsciiString {
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfHAsciiString
     pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfHAsciiString {
-        crate::ffi::HandleTColStdHSequenceOfHAsciiString_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHSequenceOfHAsciiString_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfHAsciiString
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfHAsciiString> {
-        crate::ffi::HandleTColStdHSequenceOfHAsciiString_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HSequenceOfHAsciiString {
+        unsafe {
+            &mut *(crate::ffi::HandleTColStdHSequenceOfHAsciiString_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -476,46 +704,74 @@ impl HandleTColStdHSequenceOfHAsciiString {
 
 pub use crate::ffi::TColStd_HSequenceOfHExtendedString as HSequenceOfHExtendedString;
 
+unsafe impl crate::CppDeletable for HSequenceOfHExtendedString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HSequenceOfHExtendedString_destructor(ptr);
+    }
+}
+
 impl HSequenceOfHExtendedString {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfHExtendedString_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfHExtendedString_ctor()) }
     }
 
     pub fn new_sequenceofhextendedstring(
         theOther: &crate::ffi::TColStd_SequenceOfHExtendedString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColStd_HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(
+                    theOther,
+                ),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HSequenceOfHExtendedString_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TColStd_HSequenceOfHExtendedString_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HSequenceOfHExtendedString_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HSequenceOfHExtendedString_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfHExtendedString_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
-        crate::ffi::TColStd_HSequenceOfHExtendedString_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfHExtendedString_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHSequenceOfHExtendedString;
 
+unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfHExtendedString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHSequenceOfHExtendedString_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHSequenceOfHExtendedString {
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfHExtendedString
     pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfHExtendedString {
-        crate::ffi::HandleTColStdHSequenceOfHExtendedString_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHSequenceOfHExtendedString_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfHExtendedString
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfHExtendedString> {
-        crate::ffi::HandleTColStdHSequenceOfHExtendedString_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HSequenceOfHExtendedString {
+        unsafe {
+            &mut *(crate::ffi::HandleTColStdHSequenceOfHExtendedString_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -525,46 +781,72 @@ impl HandleTColStdHSequenceOfHExtendedString {
 
 pub use crate::ffi::TColStd_HSequenceOfInteger as HSequenceOfInteger;
 
+unsafe impl crate::CppDeletable for HSequenceOfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HSequenceOfInteger_destructor(ptr);
+    }
+}
+
 impl HSequenceOfInteger {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfInteger_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfInteger_ctor()) }
     }
 
     pub fn new_sequenceofinteger(
         theOther: &crate::ffi::TColStd_SequenceOfInteger,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfInteger_ctor_sequenceofinteger(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColStd_HSequenceOfInteger_ctor_sequenceofinteger(theOther),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HSequenceOfInteger_get_type_name()
+    pub fn append(&mut self, theItem: &i32) {
+        unsafe { crate::ffi::TColStd_HSequenceOfInteger_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfInteger_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HSequenceOfInteger_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HSequenceOfInteger_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfInteger_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
-        crate::ffi::TColStd_HSequenceOfInteger_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfInteger_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHSequenceOfInteger;
 
+unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHSequenceOfInteger_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHSequenceOfInteger {
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfInteger
     pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfInteger {
-        crate::ffi::HandleTColStdHSequenceOfInteger_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHSequenceOfInteger_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfInteger
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfInteger> {
-        crate::ffi::HandleTColStdHSequenceOfInteger_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HSequenceOfInteger {
+        unsafe { &mut *(crate::ffi::HandleTColStdHSequenceOfInteger_get_mut(self as *mut Self)) }
     }
 }
 
@@ -574,46 +856,70 @@ impl HandleTColStdHSequenceOfInteger {
 
 pub use crate::ffi::TColStd_HSequenceOfReal as HSequenceOfReal;
 
+unsafe impl crate::CppDeletable for HSequenceOfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HSequenceOfReal_destructor(ptr);
+    }
+}
+
 impl HSequenceOfReal {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfReal_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfReal_ctor()) }
     }
 
     pub fn new_sequenceofreal(
         theOther: &crate::ffi::TColStd_SequenceOfReal,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfReal_ctor_sequenceofreal(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfReal_ctor_sequenceofreal(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HSequenceOfReal_get_type_name()
+    pub fn append(&mut self, theItem: &f64) {
+        unsafe { crate::ffi::TColStd_HSequenceOfReal_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfReal_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HSequenceOfReal_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HSequenceOfReal_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfReal_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
-        crate::ffi::TColStd_HSequenceOfReal_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfReal_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHSequenceOfReal;
 
+unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHSequenceOfReal_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHSequenceOfReal {
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfReal
     pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfReal {
-        crate::ffi::HandleTColStdHSequenceOfReal_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHSequenceOfReal_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfReal
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfReal> {
-        crate::ffi::HandleTColStdHSequenceOfReal_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HSequenceOfReal {
+        unsafe { &mut *(crate::ffi::HandleTColStdHSequenceOfReal_get_mut(self as *mut Self)) }
     }
 }
 
@@ -623,46 +929,68 @@ impl HandleTColStdHSequenceOfReal {
 
 pub use crate::ffi::TColStd_HSequenceOfTransient as HSequenceOfTransient;
 
+unsafe impl crate::CppDeletable for HSequenceOfTransient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_HSequenceOfTransient_destructor(ptr);
+    }
+}
+
 impl HSequenceOfTransient {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfTransient_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfTransient_ctor()) }
     }
 
     pub fn new_sequenceoftransient(
         theOther: &crate::ffi::TColStd_SequenceOfTransient,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfTransient_ctor_sequenceoftransient(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColStd_HSequenceOfTransient_ctor_sequenceoftransient(theOther),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColStd_HSequenceOfTransient_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfTransient_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColStd_HSequenceOfTransient_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColStd_HSequenceOfTransient_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColStd_HSequenceOfTransient_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        crate::ffi::TColStd_HSequenceOfTransient_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfTransient_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColStdHSequenceOfTransient;
 
+unsafe impl crate::CppDeletable for HandleTColStdHSequenceOfTransient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColStdHSequenceOfTransient_destructor(ptr);
+    }
+}
+
 impl HandleTColStdHSequenceOfTransient {
     /// Dereference this Handle to access the underlying TColStd_HSequenceOfTransient
     pub fn get(&self) -> &crate::ffi::TColStd_HSequenceOfTransient {
-        crate::ffi::HandleTColStdHSequenceOfTransient_get(self)
+        unsafe { &*(crate::ffi::HandleTColStdHSequenceOfTransient_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColStd_HSequenceOfTransient
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColStd_HSequenceOfTransient> {
-        crate::ffi::HandleTColStdHSequenceOfTransient_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColStd_HSequenceOfTransient {
+        unsafe { &mut *(crate::ffi::HandleTColStdHSequenceOfTransient_get_mut(self as *mut Self)) }
     }
 }
 
@@ -674,22 +1002,199 @@ impl HandleTColStdHSequenceOfTransient {
 /// Optimized Map of integer values. Each block of 32 integers is stored in 8 bytes in memory.
 pub use crate::ffi::TColStd_PackedMapOfInteger as PackedMapOfInteger;
 
+unsafe impl crate::CppDeletable for PackedMapOfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_PackedMapOfInteger_destructor(ptr);
+    }
+}
+
 impl PackedMapOfInteger {
     /// Constructor
-    pub fn new_int(theNbBuckets: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_PackedMapOfInteger_ctor_int(theNbBuckets)
+    pub fn new_int(theNbBuckets: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_PackedMapOfInteger_ctor_int(theNbBuckets))
+        }
     }
 
     /// Copy constructor
     pub fn new_packedmapofinteger(
         theOther: &crate::ffi::TColStd_PackedMapOfInteger,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_PackedMapOfInteger_ctor_packedmapofinteger(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColStd_PackedMapOfInteger_ctor_packedmapofinteger(theOther),
+            )
+        }
     }
 
     /// Constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
+    pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(1)
+    }
+
+    pub fn re_size(&mut self, NbBuckets: i32) {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_re_size(self as *mut Self, NbBuckets) }
+    }
+
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_clear(self as *mut Self) }
+    }
+
+    pub fn add(&mut self, aKey: i32) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_add(self as *mut Self, aKey) }
+    }
+
+    pub fn contains(&self, aKey: i32) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_contains(self as *const Self, aKey) }
+    }
+
+    pub fn remove(&mut self, aKey: i32) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_remove(self as *mut Self, aKey) }
+    }
+
+    /// Returns the number of map buckets (not that since integers are packed in this map, the number
+    /// is smaller than extent).
+    pub fn nb_buckets(&self) -> i32 {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_nb_buckets(self as *const Self) }
+    }
+
+    /// Returns map extent.
+    pub fn extent(&self) -> i32 {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_extent(self as *const Self) }
+    }
+
+    /// Returns TRUE if map is empty.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_is_empty(self as *const Self) }
+    }
+
+    ///
+    /// Query the minimal contained key value.
+    pub fn get_minimal_mapped(&self) -> i32 {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_get_minimal_mapped(self as *const Self) }
+    }
+
+    ///
+    /// Query the maximal contained key value.
+    pub fn get_maximal_mapped(&self) -> i32 {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_get_maximal_mapped(self as *const Self) }
+    }
+
+    ///
+    /// Sets this Map to be the result of union (aka addition, fuse, merge, boolean OR) operation
+    /// between two given Maps. The new Map contains the values that are contained either in the first
+    /// map or in the second map or in both. All previous contents of this Map is cleared. This map
+    /// (result of the boolean operation) can also be passed as one of operands.
+    pub fn union(
+        &mut self,
+        arg0: &crate::ffi::TColStd_PackedMapOfInteger,
+        arg1: &crate::ffi::TColStd_PackedMapOfInteger,
+    ) {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_union(self as *mut Self, arg0, arg1) }
+    }
+
+    ///
+    /// Apply to this Map the boolean operation union (aka addition, fuse, merge, boolean OR) with
+    /// another (given) Map. The result contains the values that were previously contained in this map
+    /// or contained in the given (operand) map. This algorithm is similar to method Union().
+    /// @return True if content of this map is changed
+    pub fn unite(&mut self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_unite(self as *mut Self, arg0) }
+    }
+
+    ///
+    /// Sets this Map to be the result of intersection (aka multiplication, common, boolean AND)
+    /// operation between two given Maps. The new Map contains only the values that are contained in
+    /// both map operands. All previous contents of this Map is cleared. This same map (result of the
+    /// boolean operation) can also be used as one of operands. The order of operands makes no
+    /// difference; the method minimizes internally the number of iterations using the smallest map for
+    /// the loop.
+    pub fn intersection(
+        &mut self,
+        arg0: &crate::ffi::TColStd_PackedMapOfInteger,
+        arg1: &crate::ffi::TColStd_PackedMapOfInteger,
+    ) {
+        unsafe {
+            crate::ffi::TColStd_PackedMapOfInteger_intersection(self as *mut Self, arg0, arg1)
+        }
+    }
+
+    ///
+    /// Apply to this Map the intersection operation (aka multiplication, common,  boolean AND) with
+    /// another (given) Map. The result contains only the values that are contained in both this and
+    /// the given maps. This algorithm is similar to method Intersection().
+    /// @return True if content of this map is changed
+    pub fn intersect(&mut self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_intersect(self as *mut Self, arg0) }
+    }
+
+    ///
+    /// Sets this Map to be the result of subtraction
+    /// (aka set-theoretic difference, relative complement, exclude, cut, boolean NOT) operation
+    /// between two given Maps. The new Map contains only the values that are contained in the first
+    /// map operands and not contained in the second one. All previous contents of this Map is cleared.
+    /// This map (result of the boolean operation) can also be used as the first operand.
+    pub fn subtraction(
+        &mut self,
+        arg0: &crate::ffi::TColStd_PackedMapOfInteger,
+        arg1: &crate::ffi::TColStd_PackedMapOfInteger,
+    ) {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_subtraction(self as *mut Self, arg0, arg1) }
+    }
+
+    ///
+    /// Apply to this Map the subtraction (aka set-theoretic difference, relative complement, exclude,
+    /// cut, boolean NOT) operation with another (given) Map. The result contains only the values that
+    /// were previously contained in this map and not contained in this map. This algorithm is similar
+    /// to method Subtract() with two operands.
+    /// @return True if contents of this map is changed
+    pub fn subtract(&mut self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_subtract(self as *mut Self, arg0) }
+    }
+
+    ///
+    /// Sets this Map to be the result of symmetric difference (aka exclusive disjunction, boolean XOR)
+    /// operation between two given Maps. The new Map contains the values that are contained only in
+    /// the first or the second operand maps but not in both. All previous contents of this Map is
+    /// cleared. This map (result of the boolean operation) can also be used as one of operands.
+    pub fn difference(
+        &mut self,
+        arg0: &crate::ffi::TColStd_PackedMapOfInteger,
+        arg1: &crate::ffi::TColStd_PackedMapOfInteger,
+    ) {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_difference(self as *mut Self, arg0, arg1) }
+    }
+
+    ///
+    /// Apply to this Map the symmetric difference (aka exclusive disjunction, boolean XOR) operation
+    /// with another (given) Map. The result contains the values that are contained only in this or the
+    /// operand map, but not in both. This algorithm is similar to method Difference().
+    /// @return True if contents of this map is changed
+    pub fn differ(&mut self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_differ(self as *mut Self, arg0) }
+    }
+
+    ///
+    /// Returns True if this map is equal to the given one, i.e. they contain the
+    /// same sets of elements
+    pub fn is_equal(&self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_is_equal(self as *const Self, arg0) }
+    }
+
+    ///
+    /// Returns True if this map is subset of the given one, i.e. all elements
+    /// contained in this map is contained also in the operand map.
+    /// if this map is empty that this method returns true for any operand map.
+    pub fn is_subset(&self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_is_subset(self as *const Self, arg0) }
+    }
+
+    ///
+    /// Returns True if this map has common items with the given one.
+    pub fn has_intersection(&self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+        unsafe {
+            crate::ffi::TColStd_PackedMapOfInteger_has_intersection(self as *const Self, arg0)
+        }
     }
 }
 

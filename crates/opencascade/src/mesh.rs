@@ -2,7 +2,6 @@ use crate::{
     primitives::{FaceOrientation, Shape},
     Error,
 };
-use cxx::UniquePtr;
 use glam::{dvec2, dvec3, DVec2, DVec3};
 use opencascade_sys::{b_rep, b_rep_mesh, poly, top_loc};
 
@@ -15,7 +14,7 @@ pub struct Mesh {
 }
 
 pub struct Mesher {
-    pub(crate) inner: UniquePtr<b_rep_mesh::IncrementalMesh>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<b_rep_mesh::IncrementalMesh>,
 }
 
 impl Mesher {
@@ -46,7 +45,7 @@ impl Mesher {
             let mut location = top_loc::Location::new();
 
             let triangulation_handle =
-                b_rep::Tool::triangulation(&face.inner, location.pin_mut(), 0);
+                b_rep::Tool::triangulation(&face.inner, &mut location, 0);
 
             let mut triangulation =
                 poly::Triangulation::new_handlepolytriangulation(triangulation_handle);
@@ -93,7 +92,7 @@ impl Mesher {
             }
 
             // Compute normals on the triangulation.
-            triangulation.pin_mut().compute_normals();
+            triangulation.compute_normals();
 
             for i in 1..=face_point_count {
                 let normal = triangulation.normal(i);

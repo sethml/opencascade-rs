@@ -57,45 +57,65 @@ impl TryFrom<i32> for TransitionOnCurve {
 
 pub use crate::ffi::IntCurveSurface_HInter as HInter;
 
+unsafe impl crate::CppDeletable for HInter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntCurveSurface_HInter_destructor(ptr);
+    }
+}
+
 impl HInter {
     /// Empty Constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IntCurveSurface_HInter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_HInter_ctor()) }
+    }
+
+    /// Compute the Intersection between the curve and the
+    /// surface
+    pub fn perform(
+        &mut self,
+        Curve: &crate::ffi::HandleAdaptor3dCurve,
+        Surface: &crate::ffi::HandleAdaptor3dSurface,
+    ) {
+        unsafe { crate::ffi::IntCurveSurface_HInter_perform(self as *mut Self, Curve, Surface) }
     }
 
     /// Inherited from IntCurveSurface_Intersection: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::IntCurveSurface_HInter_inherited_IsDone(self)
+        unsafe { crate::ffi::IntCurveSurface_HInter_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from IntCurveSurface_Intersection: NbPoints()
     pub fn nb_points(&self) -> i32 {
-        crate::ffi::IntCurveSurface_HInter_inherited_NbPoints(self)
+        unsafe { crate::ffi::IntCurveSurface_HInter_inherited_NbPoints(self as *const Self) }
     }
 
     /// Inherited from IntCurveSurface_Intersection: Point()
     pub fn point(&self, Index: i32) -> &crate::ffi::IntCurveSurface_IntersectionPoint {
-        crate::ffi::IntCurveSurface_HInter_inherited_Point(self, Index)
+        unsafe {
+            &*(crate::ffi::IntCurveSurface_HInter_inherited_Point(self as *const Self, Index))
+        }
     }
 
     /// Inherited from IntCurveSurface_Intersection: NbSegments()
     pub fn nb_segments(&self) -> i32 {
-        crate::ffi::IntCurveSurface_HInter_inherited_NbSegments(self)
+        unsafe { crate::ffi::IntCurveSurface_HInter_inherited_NbSegments(self as *const Self) }
     }
 
     /// Inherited from IntCurveSurface_Intersection: Segment()
     pub fn segment(&self, Index: i32) -> &crate::ffi::IntCurveSurface_IntersectionSegment {
-        crate::ffi::IntCurveSurface_HInter_inherited_Segment(self, Index)
+        unsafe {
+            &*(crate::ffi::IntCurveSurface_HInter_inherited_Segment(self as *const Self, Index))
+        }
     }
 
     /// Inherited from IntCurveSurface_Intersection: IsParallel()
     pub fn is_parallel(&self) -> bool {
-        crate::ffi::IntCurveSurface_HInter_inherited_IsParallel(self)
+        unsafe { crate::ffi::IntCurveSurface_HInter_inherited_IsParallel(self as *const Self) }
     }
 
     /// Inherited from IntCurveSurface_Intersection: Dump()
     pub fn dump(&self) {
-        crate::ffi::IntCurveSurface_HInter_inherited_Dump(self)
+        unsafe { crate::ffi::IntCurveSurface_HInter_inherited_Dump(self as *const Self) }
     }
 }
 
@@ -107,10 +127,16 @@ impl HInter {
 /// curve and a surface.
 pub use crate::ffi::IntCurveSurface_IntersectionPoint as IntersectionPoint;
 
+unsafe impl crate::CppDeletable for IntersectionPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntCurveSurface_IntersectionPoint_destructor(ptr);
+    }
+}
+
 impl IntersectionPoint {
     /// Empty Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IntCurveSurface_IntersectionPoint_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_IntersectionPoint_ctor()) }
     }
 
     /// Create an IntersectionPoint.
@@ -120,53 +146,95 @@ impl IntersectionPoint {
         VSurf: f64,
         UCurv: f64,
         TrCurv: crate::int_curve_surface::TransitionOnCurve,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntCurveSurface_IntersectionPoint_ctor_pnt_real3_transitiononcurve(
-            P,
-            USurf,
-            VSurf,
-            UCurv,
-            TrCurv.into(),
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntCurveSurface_IntersectionPoint_ctor_pnt_real3_transitiononcurve(
+                    P,
+                    USurf,
+                    VSurf,
+                    UCurv,
+                    TrCurv.into(),
+                ),
+            )
+        }
     }
 
     /// Set the fields of the current IntersectionPoint.
     pub fn set_values(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         P: &crate::ffi::gp_Pnt,
         USurf: f64,
         VSurf: f64,
         UCurv: f64,
         TrCurv: crate::int_curve_surface::TransitionOnCurve,
     ) {
-        crate::ffi::IntCurveSurface_IntersectionPoint_set_values(
-            self,
-            P,
-            USurf,
-            VSurf,
-            UCurv,
-            TrCurv.into(),
-        )
+        unsafe {
+            crate::ffi::IntCurveSurface_IntersectionPoint_set_values(
+                self as *mut Self,
+                P,
+                USurf,
+                VSurf,
+                UCurv,
+                TrCurv.into(),
+            )
+        }
     }
 
     /// Get the fields of the current IntersectionPoint.
     pub fn values(
         &self,
-        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        P: &mut crate::ffi::gp_Pnt,
         USurf: &mut f64,
         VSurf: &mut f64,
         UCurv: &mut f64,
         TrCurv: &mut i32,
     ) {
-        crate::ffi::IntCurveSurface_IntersectionPoint_values(self, P, USurf, VSurf, UCurv, TrCurv)
+        unsafe {
+            crate::ffi::IntCurveSurface_IntersectionPoint_values(
+                self as *const Self,
+                P,
+                USurf,
+                VSurf,
+                UCurv,
+                TrCurv,
+            )
+        }
+    }
+
+    /// returns the geometric point.
+    pub fn pnt(&self) -> &crate::ffi::gp_Pnt {
+        unsafe { &*(crate::ffi::IntCurveSurface_IntersectionPoint_pnt(self as *const Self)) }
+    }
+
+    /// returns the U parameter on the surface.
+    pub fn u(&self) -> f64 {
+        unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_u(self as *const Self) }
+    }
+
+    /// returns the V parameter on the surface.
+    pub fn v(&self) -> f64 {
+        unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_v(self as *const Self) }
+    }
+
+    /// returns the parameter on the curve.
+    pub fn w(&self) -> f64 {
+        unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_w(self as *const Self) }
     }
 
     /// returns the Transition of the point.
     pub fn transition(&self) -> crate::int_curve_surface::TransitionOnCurve {
-        crate::int_curve_surface::TransitionOnCurve::try_from(
-            crate::ffi::IntCurveSurface_IntersectionPoint_transition(self),
-        )
-        .unwrap()
+        unsafe {
+            crate::int_curve_surface::TransitionOnCurve::try_from(
+                crate::ffi::IntCurveSurface_IntersectionPoint_transition(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Dump all the fields.
+    pub fn dump(&self) {
+        unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_dump(self as *const Self) }
     }
 }
 
@@ -179,16 +247,86 @@ impl IntersectionPoint {
 /// given tolerances.
 pub use crate::ffi::IntCurveSurface_IntersectionSegment as IntersectionSegment;
 
+unsafe impl crate::CppDeletable for IntersectionSegment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntCurveSurface_IntersectionSegment_destructor(ptr);
+    }
+}
+
 impl IntersectionSegment {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IntCurveSurface_IntersectionSegment_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_IntersectionSegment_ctor()) }
     }
 
     pub fn new_intersectionpoint2(
         P1: &crate::ffi::IntCurveSurface_IntersectionPoint,
         P2: &crate::ffi::IntCurveSurface_IntersectionPoint,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntCurveSurface_IntersectionSegment_ctor_intersectionpoint2(P1, P2)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntCurveSurface_IntersectionSegment_ctor_intersectionpoint2(P1, P2),
+            )
+        }
+    }
+
+    pub fn set_values(
+        &mut self,
+        P1: &crate::ffi::IntCurveSurface_IntersectionPoint,
+        P2: &crate::ffi::IntCurveSurface_IntersectionPoint,
+    ) {
+        unsafe {
+            crate::ffi::IntCurveSurface_IntersectionSegment_set_values(self as *mut Self, P1, P2)
+        }
+    }
+
+    pub fn values(
+        &self,
+        P1: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
+        P2: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
+    ) {
+        unsafe {
+            crate::ffi::IntCurveSurface_IntersectionSegment_values(self as *const Self, P1, P2)
+        }
+    }
+
+    pub fn first_point_intersectionpoint(
+        &self,
+        P1: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
+    ) {
+        unsafe {
+            crate::ffi::IntCurveSurface_IntersectionSegment_first_point_intersectionpoint(
+                self as *const Self,
+                P1,
+            )
+        }
+    }
+
+    pub fn second_point_intersectionpoint(
+        &self,
+        P2: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
+    ) {
+        unsafe {
+            crate::ffi::IntCurveSurface_IntersectionSegment_second_point_intersectionpoint(
+                self as *const Self,
+                P2,
+            )
+        }
+    }
+
+    pub fn first_point(&self) -> &crate::ffi::IntCurveSurface_IntersectionPoint {
+        unsafe {
+            &*(crate::ffi::IntCurveSurface_IntersectionSegment_first_point(self as *const Self))
+        }
+    }
+
+    pub fn second_point(&self) -> &crate::ffi::IntCurveSurface_IntersectionPoint {
+        unsafe {
+            &*(crate::ffi::IntCurveSurface_IntersectionSegment_second_point(self as *const Self))
+        }
+    }
+
+    pub fn dump(&self) {
+        unsafe { crate::ffi::IntCurveSurface_IntersectionSegment_dump(self as *const Self) }
     }
 }
 

@@ -1,5 +1,4 @@
 use crate::primitives::{make_axis_2, make_point};
-use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
 use opencascade_sys::{b_rep_adaptor, b_rep_builder_api, gc, gc_pnts, geom, geom_abs, geom_api, gp, t_colgp, topo_ds};
 
@@ -35,7 +34,7 @@ impl EdgeType {
 }
 
 pub struct Edge {
-    pub(crate) inner: UniquePtr<topo_ds::Edge>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<topo_ds::Edge>,
 }
 
 impl AsRef<Edge> for Edge {
@@ -50,8 +49,8 @@ impl Edge {
         Self { inner }
     }
 
-    fn from_make_edge(mut make_edge: UniquePtr<b_rep_builder_api::MakeEdge>) -> Self {
-        Self::from_edge(make_edge.pin_mut().edge())
+    fn from_make_edge(mut make_edge: opencascade_sys::OwnedPtr<b_rep_builder_api::MakeEdge>) -> Self {
+        Self::from_edge(make_edge.edge())
     }
 
     pub fn segment(p1: DVec3, p2: DVec3) -> Self {
@@ -65,7 +64,7 @@ impl Edge {
         let points: Vec<_> = points.into_iter().collect();
         let mut array = t_colgp::Array1OfPnt::new_int2(1, points.len() as i32);
         for (index, point) in points.into_iter().enumerate() {
-            array.pin_mut().set_value(index as i32 + 1, &make_point(point));
+            array.set_value(index as i32 + 1, &make_point(point));
         }
 
         let bezier = geom::BezierCurve::new_array1ofpnt(&array);
@@ -94,7 +93,7 @@ impl Edge {
         let points: Vec<_> = points.into_iter().collect();
         let mut array = t_colgp::HArray1OfPnt::new_int2(1, points.len() as i32);
         for (index, point) in points.into_iter().enumerate() {
-            array.pin_mut().as_array1_of_pnt_mut().set_value(index as i32 + 1, &make_point(point));
+            array.as_array1_of_pnt_mut().set_value(index as i32 + 1, &make_point(point));
         }
         let array_handle = t_colgp::HArray1OfPnt::to_handle(array);
 
@@ -104,10 +103,10 @@ impl Edge {
             &array_handle, periodic, tolerance,
         );
         if let Some((t_start, t_end)) = tangents {
-            interpolate.pin_mut().load_vec2_bool(&make_vec(t_start), &make_vec(t_end), true);
+            interpolate.load_vec2_bool(&make_vec(t_start), &make_vec(t_end), true);
         }
 
-        interpolate.pin_mut().perform();
+        interpolate.perform();
         let bspline_handle = interpolate.curve();
         let curve_handle = bspline_handle.to_handle_curve();
 
@@ -166,7 +165,7 @@ impl Edge {
 
 pub struct ApproximationSegmentIterator {
     count: usize,
-    approximator: UniquePtr<gc_pnts::TangentialDeflection>,
+    approximator: opencascade_sys::OwnedPtr<gc_pnts::TangentialDeflection>,
 }
 
 impl Iterator for ApproximationSegmentIterator {

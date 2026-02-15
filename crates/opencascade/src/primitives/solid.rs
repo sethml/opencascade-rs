@@ -2,14 +2,13 @@ use crate::{
     primitives::{BooleanShape, Compound, Edge, Face, Shape, Wire},
     Error,
 };
-use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
 use opencascade_sys::{
     b_rep_algo_api, b_rep_fillet_api, b_rep_offset_api, ch_fi3d, message, topo_ds,
 };
 
 pub struct Solid {
-    pub(crate) inner: UniquePtr<topo_ds::Solid>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<topo_ds::Solid>,
 }
 
 impl AsRef<Solid> for Solid {
@@ -33,10 +32,10 @@ impl Solid {
         let inner_shape = self.inner.as_shape();
 
         let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(inner_shape, ch_fi3d::FilletShape::Rational);
-        make_fillet.pin_mut().add_real_edge(radius, &edge.inner);
+        make_fillet.add_real_edge(radius, &edge.inner);
 
-        let filleted_shape = make_fillet.pin_mut().shape();
-        let compound = topo_ds::compound(filleted_shape);
+        let filleted_shape = make_fillet.shape();
+        let compound = unsafe { &*topo_ds::compound(filleted_shape) };
 
         Compound::from_compound(compound)
     }
@@ -46,14 +45,14 @@ impl Solid {
         let mut make_loft = b_rep_offset_api::ThruSections::new_bool(is_solid);
 
         for wire in wires.into_iter() {
-            make_loft.pin_mut().add_wire(&wire.as_ref().inner);
+            make_loft.add_wire(&wire.as_ref().inner);
         }
 
         // Set to CheckCompatibility to `true` to avoid twisted results.
-        make_loft.pin_mut().check_compatibility(true);
+        make_loft.check_compatibility(true);
 
-        let shape = make_loft.pin_mut().shape();
-        let solid = topo_ds::solid(shape);
+        let shape = make_loft.shape();
+        let solid = unsafe { &*topo_ds::solid(shape) };
 
         Self::from_solid(solid)
     }
@@ -67,8 +66,8 @@ impl Solid {
         let mut cut_operation =
             b_rep_algo_api::Cut::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        let new_edges = collect_section_edges(cut_operation.pin_mut().section_edges());
-        let shape = Shape::from_shape(cut_operation.pin_mut().shape());
+        let new_edges = collect_section_edges(cut_operation.section_edges());
+        let shape = Shape::from_shape(cut_operation.shape());
 
         BooleanShape { shape, new_edges }
     }
@@ -82,8 +81,8 @@ impl Solid {
         let mut fuse_operation =
             b_rep_algo_api::Fuse::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        let new_edges = collect_section_edges(fuse_operation.pin_mut().section_edges());
-        let shape = Shape::from_shape(fuse_operation.pin_mut().shape());
+        let new_edges = collect_section_edges(fuse_operation.section_edges());
+        let shape = Shape::from_shape(fuse_operation.shape());
 
         BooleanShape { shape, new_edges }
     }
@@ -97,8 +96,8 @@ impl Solid {
         let mut common_operation =
             b_rep_algo_api::Common::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        let new_edges = collect_section_edges(common_operation.pin_mut().section_edges());
-        let shape = Shape::from_shape(common_operation.pin_mut().shape());
+        let new_edges = collect_section_edges(common_operation.section_edges());
+        let shape = Shape::from_shape(common_operation.shape());
 
         BooleanShape { shape, new_edges }
     }
@@ -119,11 +118,11 @@ fn collect_section_edges(edge_list: &opencascade_sys::top_tools::ListOfShape) ->
     let mut new_edges = vec![];
     let mut iter = edge_list.iter();
     loop {
-        let shape = iter.pin_mut().next();
+        let shape = iter.next();
         if shape.is_null() {
             break;
         }
-        let edge = topo_ds::edge(&shape);
+        let edge = unsafe { &*topo_ds::edge(shape.as_ptr()) };
         new_edges.push(Edge::from_edge(edge));
     }
     new_edges

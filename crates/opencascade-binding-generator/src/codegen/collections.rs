@@ -7,6 +7,7 @@
 //! and generates the appropriate C++ and Rust wrapper code.
 
 use std::collections::HashMap;
+use std::fmt::Write;
 
 /// Information about a collection typedef
 #[derive(Debug, Clone)]
@@ -289,11 +290,18 @@ pub fn generate_cpp_collection(info: &CollectionInfo) -> String {
     
     // Constructor
     output.push_str(&format!(
-        "inline std::unique_ptr<{typedef_name}> {typedef_name}_new() {{\n"
+        "extern \"C\" {typedef_name}* {typedef_name}_new() {{\n"
     ));
     output.push_str(&format!(
-        "    return std::make_unique<{typedef_name}>();\n"
+        "    return new {typedef_name}();\n"
     ));
+    output.push_str("}\n\n");
+    
+    // Destructor
+    output.push_str(&format!(
+        "extern \"C\" void {typedef_name}_destructor({typedef_name}* self_) {{\n"
+    ));
+    output.push_str("    delete self_;\n");
     output.push_str("}\n\n");
     
     // Iterator struct and functions based on collection kind
@@ -345,72 +353,79 @@ fn generate_cpp_const_iterator_collection(
     ));
     output.push_str("};\n\n");
     
+    // Iterator destructor
+    output.push_str(&format!(
+        "extern \"C\" void {iterator_name}_destructor({iterator_name}* self_) {{\n"
+    ));
+    output.push_str("    delete self_;\n");
+    output.push_str("}\n\n");
+    
     // Create iterator function
     output.push_str(&format!(
-        "inline std::unique_ptr<{iterator_name}> {typedef_name}_iter(const {typedef_name}& coll) {{\n"
+        "extern \"C\" {iterator_name}* {typedef_name}_iter(const {typedef_name}* coll) {{\n"
     ));
     output.push_str(&format!(
-        "    auto iter = std::make_unique<{iterator_name}>();\n"
+        "    auto iter = new {iterator_name}();\n"
     ));
-    output.push_str("    iter->current = coll.cbegin();\n");
-    output.push_str("    iter->end = coll.cend();\n");
+    output.push_str("    iter->current = coll->cbegin();\n");
+    output.push_str("    iter->end = coll->cend();\n");
     output.push_str("    return iter;\n");
     output.push_str("}\n\n");
     
     // Iterator next function
     output.push_str(&format!(
-        "inline std::unique_ptr<{element_type}> {iterator_name}_next({iterator_name}& iter) {{\n"
+        "extern \"C\" {element_type}* {iterator_name}_next({iterator_name}* iter) {{\n"
     ));
-    output.push_str("    if (iter.current == iter.end) {\n");
+    output.push_str("    if (iter->current == iter->end) {\n");
     output.push_str("        return nullptr;\n");
     output.push_str("    }\n");
     output.push_str(&format!(
-        "    auto result = std::make_unique<{element_type}>(*iter.current);\n"
+        "    auto result = new {element_type}(*iter->current);\n"
     ));
-    output.push_str("    ++iter.current;\n");
+    output.push_str("    ++iter->current;\n");
     output.push_str("    return result;\n");
     output.push_str("}\n\n");
 
     // Size function
     output.push_str(&format!(
-        "inline int {typedef_name}_size(const {typedef_name}& coll) {{\n"
+        "extern \"C\" int {typedef_name}_size(const {typedef_name}* coll) {{\n"
     ));
-    output.push_str("    return coll.Size();\n");
+    output.push_str("    return coll->Size();\n");
     output.push_str("}\n\n");
 
     // Clear function
     output.push_str(&format!(
-        "inline void {typedef_name}_clear({typedef_name}& coll) {{\n"
+        "extern \"C\" void {typedef_name}_clear({typedef_name}* coll) {{\n"
     ));
-    output.push_str("    coll.Clear();\n");
+    output.push_str("    coll->Clear();\n");
     output.push_str("}\n\n");
 
     // Add element function
     match kind {
         CollectionKind::List => {
             output.push_str(&format!(
-                "inline void {typedef_name}_append({typedef_name}& coll, const {element_type}& item) {{\n"
+                "extern \"C\" void {typedef_name}_append({typedef_name}* coll, const {element_type}* item) {{\n"
             ));
-            output.push_str("    coll.Append(item);\n");
+            output.push_str("    coll->Append(*item);\n");
             output.push_str("}\n\n");
 
             output.push_str(&format!(
-                "inline void {typedef_name}_prepend({typedef_name}& coll, const {element_type}& item) {{\n"
+                "extern \"C\" void {typedef_name}_prepend({typedef_name}* coll, const {element_type}* item) {{\n"
             ));
-            output.push_str("    coll.Prepend(item);\n");
+            output.push_str("    coll->Prepend(*item);\n");
             output.push_str("}\n\n");
         }
         CollectionKind::Map => {
             output.push_str(&format!(
-                "inline int {typedef_name}_add({typedef_name}& coll, const {element_type}& item) {{\n"
+                "extern \"C\" int {typedef_name}_add({typedef_name}* coll, const {element_type}* item) {{\n"
             ));
-            output.push_str("    return coll.Add(item);\n");
+            output.push_str("    return coll->Add(*item);\n");
             output.push_str("}\n\n");
 
             output.push_str(&format!(
-                "inline bool {typedef_name}_contains(const {typedef_name}& coll, const {element_type}& item) {{\n"
+                "extern \"C\" bool {typedef_name}_contains(const {typedef_name}* coll, const {element_type}* item) {{\n"
             ));
-            output.push_str("    return coll.Contains(item);\n");
+            output.push_str("    return coll->Contains(*item);\n");
             output.push_str("}\n\n");
         }
         _ => {}
@@ -438,6 +453,13 @@ fn generate_cpp_indexed_collection(
     output.push_str("    int extent;\n");
     output.push_str("};\n\n");
     
+    // Iterator destructor
+    output.push_str(&format!(
+        "extern \"C\" void {iterator_name}_destructor({iterator_name}* self_) {{\n"
+    ));
+    output.push_str("    delete self_;\n");
+    output.push_str("}\n\n");
+    
     // Create iterator function
     let extent_method = match kind {
         CollectionKind::Sequence => "Length",
@@ -446,15 +468,15 @@ fn generate_cpp_indexed_collection(
     };
     
     output.push_str(&format!(
-        "inline std::unique_ptr<{iterator_name}> {typedef_name}_iter(const {typedef_name}& coll) {{\n"
+        "extern \"C\" {iterator_name}* {typedef_name}_iter(const {typedef_name}* coll) {{\n"
     ));
     output.push_str(&format!(
-        "    auto iter = std::make_unique<{iterator_name}>();\n"
+        "    auto iter = new {iterator_name}();\n"
     ));
-    output.push_str("    iter->coll = &coll;\n");
+    output.push_str("    iter->coll = coll;\n");
     output.push_str("    iter->index = 1;\n");
     output.push_str(&format!(
-        "    iter->extent = coll.{extent_method}();\n"
+        "    iter->extent = coll->{extent_method}();\n"
     ));
     output.push_str("    return iter;\n");
     output.push_str("}\n\n");
@@ -467,15 +489,15 @@ fn generate_cpp_indexed_collection(
     };
     
     output.push_str(&format!(
-        "inline std::unique_ptr<{element_type}> {iterator_name}_next({iterator_name}& iter) {{\n"
+        "extern \"C\" {element_type}* {iterator_name}_next({iterator_name}* iter) {{\n"
     ));
-    output.push_str("    if (iter.index > iter.extent) {\n");
+    output.push_str("    if (iter->index > iter->extent) {\n");
     output.push_str("        return nullptr;\n");
     output.push_str("    }\n");
     output.push_str(&format!(
-        "    auto result = std::make_unique<{element_type}>(iter.coll->{access_method}(iter.index));\n"
+        "    auto result = new {element_type}(iter->coll->{access_method}(iter->index));\n"
     ));
-    output.push_str("    ++iter.index;\n");
+    output.push_str("    ++iter->index;\n");
     output.push_str("    return result;\n");
     output.push_str("}\n\n");
 
@@ -487,52 +509,52 @@ fn generate_cpp_indexed_collection(
     };
 
     output.push_str(&format!(
-        "inline int {typedef_name}_size(const {typedef_name}& coll) {{\n"
+        "extern \"C\" int {typedef_name}_size(const {typedef_name}* coll) {{\n"
     ));
     output.push_str(&format!(
-        "    return coll.{size_method}();\n"
+        "    return coll->{size_method}();\n"
     ));
     output.push_str("}\n\n");
 
     // Clear function
     output.push_str(&format!(
-        "inline void {typedef_name}_clear({typedef_name}& coll) {{\n"
+        "extern \"C\" void {typedef_name}_clear({typedef_name}* coll) {{\n"
     ));
-    output.push_str("    coll.Clear();\n");
+    output.push_str("    coll->Clear();\n");
     output.push_str("}\n\n");
 
     // Add element function
     match kind {
         CollectionKind::Sequence => {
             output.push_str(&format!(
-                "inline void {typedef_name}_append({typedef_name}& coll, const {element_type}& item) {{\n"
+                "extern \"C\" void {typedef_name}_append({typedef_name}* coll, const {element_type}* item) {{\n"
             ));
-            output.push_str("    coll.Append(item);\n");
+            output.push_str("    coll->Append(*item);\n");
             output.push_str("}\n\n");
 
             output.push_str(&format!(
-                "inline const {element_type}& {typedef_name}_value(const {typedef_name}& coll, int index) {{\n"
+                "extern \"C\" const {element_type}* {typedef_name}_value(const {typedef_name}* coll, int index) {{\n"
             ));
-            output.push_str("    return coll.Value(index);\n");
+            output.push_str("    return &coll->Value(index);\n");
             output.push_str("}\n\n");
         }
         CollectionKind::IndexedMap => {
             output.push_str(&format!(
-                "inline int {typedef_name}_add({typedef_name}& coll, const {element_type}& item) {{\n"
+                "extern \"C\" int {typedef_name}_add({typedef_name}* coll, const {element_type}* item) {{\n"
             ));
-            output.push_str("    return coll.Add(item);\n");
+            output.push_str("    return coll->Add(*item);\n");
             output.push_str("}\n\n");
 
             output.push_str(&format!(
-                "inline const {element_type}& {typedef_name}_find_key(const {typedef_name}& coll, int index) {{\n"
+                "extern \"C\" const {element_type}* {typedef_name}_find_key(const {typedef_name}* coll, int index) {{\n"
             ));
-            output.push_str("    return coll.FindKey(index);\n");
+            output.push_str("    return &coll->FindKey(index);\n");
             output.push_str("}\n\n");
 
             output.push_str(&format!(
-                "inline int {typedef_name}_find_index(const {typedef_name}& coll, const {element_type}& item) {{\n"
+                "extern \"C\" int {typedef_name}_find_index(const {typedef_name}* coll, const {element_type}* item) {{\n"
             ));
-            output.push_str("    return coll.FindIndex(item);\n");
+            output.push_str("    return coll->FindIndex(*item);\n");
             output.push_str("}\n\n");
         }
         _ => {}
@@ -558,70 +580,77 @@ fn generate_cpp_data_map_collection(
     ));
     output.push_str("};\n\n");
     
+    // Iterator destructor
+    output.push_str(&format!(
+        "extern \"C\" void {iterator_name}_destructor({iterator_name}* self_) {{\n"
+    ));
+    output.push_str("    delete self_;\n");
+    output.push_str("}\n\n");
+    
     // Create iterator function
     output.push_str(&format!(
-        "inline std::unique_ptr<{iterator_name}> {typedef_name}_iter(const {typedef_name}& coll) {{\n"
+        "extern \"C\" {iterator_name}* {typedef_name}_iter(const {typedef_name}* coll) {{\n"
     ));
     output.push_str(&format!(
-        "    auto iter = std::make_unique<{iterator_name}>();\n"
+        "    auto iter = new {iterator_name}();\n"
     ));
-    output.push_str("    iter->inner.Initialize(coll);\n");
+    output.push_str("    iter->inner.Initialize(*coll);\n");
     output.push_str("    return iter;\n");
     output.push_str("}\n\n");
     
     // Iterator next function - returns key
     output.push_str(&format!(
-        "inline std::unique_ptr<{key_type}> {iterator_name}_next_key({iterator_name}& iter) {{\n"
+        "extern \"C\" {key_type}* {iterator_name}_next_key({iterator_name}* iter) {{\n"
     ));
-    output.push_str("    if (!iter.inner.More()) {\n");
+    output.push_str("    if (!iter->inner.More()) {\n");
     output.push_str("        return nullptr;\n");
     output.push_str("    }\n");
     output.push_str(&format!(
-        "    auto result = std::make_unique<{key_type}>(iter.inner.Key());\n"
+        "    auto result = new {key_type}(iter->inner.Key());\n"
     ));
-    output.push_str("    iter.inner.Next();\n");
+    output.push_str("    iter->inner.Next();\n");
     output.push_str("    return result;\n");
     output.push_str("}\n\n");
     
     // Find function - lookup value by key
     output.push_str(&format!(
-        "inline std::unique_ptr<{value_type}> {typedef_name}_find(const {typedef_name}& coll, const {key_type}& key) {{\n"
+        "extern \"C\" {value_type}* {typedef_name}_find(const {typedef_name}* coll, const {key_type}* key) {{\n"
     ));
-    output.push_str("    const auto* found = coll.Seek(key);\n");
+    output.push_str("    const auto* found = coll->Seek(*key);\n");
     output.push_str("    if (found == nullptr) {\n");
     output.push_str("        return nullptr;\n");
     output.push_str("    }\n");
     output.push_str(&format!(
-        "    return std::make_unique<{value_type}>(*found);\n"
+        "    return new {value_type}(*found);\n"
     ));
     output.push_str("}\n\n");
     
     // Contains function
     output.push_str(&format!(
-        "inline bool {typedef_name}_contains(const {typedef_name}& coll, const {key_type}& key) {{\n"
+        "extern \"C\" bool {typedef_name}_contains(const {typedef_name}* coll, const {key_type}* key) {{\n"
     ));
-    output.push_str("    return coll.IsBound(key);\n");
+    output.push_str("    return coll->IsBound(*key);\n");
     output.push_str("}\n\n");
     
     // Bind function - add key-value pair
     output.push_str(&format!(
-        "inline bool {typedef_name}_bind({typedef_name}& coll, const {key_type}& key, const {value_type}& value) {{\n"
+        "extern \"C\" bool {typedef_name}_bind({typedef_name}* coll, const {key_type}* key, const {value_type}* value) {{\n"
     ));
-    output.push_str("    return coll.Bind(key, value);\n");
+    output.push_str("    return coll->Bind(*key, *value);\n");
     output.push_str("}\n\n");
 
     // Size function
     output.push_str(&format!(
-        "inline int {typedef_name}_size(const {typedef_name}& coll) {{\n"
+        "extern \"C\" int {typedef_name}_size(const {typedef_name}* coll) {{\n"
     ));
-    output.push_str("    return coll.Extent();\n");
+    output.push_str("    return coll->Extent();\n");
     output.push_str("}\n\n");
 
     // Clear function
     output.push_str(&format!(
-        "inline void {typedef_name}_clear({typedef_name}& coll) {{\n"
+        "extern \"C\" void {typedef_name}_clear({typedef_name}* coll) {{\n"
     ));
-    output.push_str("    coll.Clear();\n");
+    output.push_str("    coll->Clear();\n");
     output.push_str("}\n\n");
 }
 
@@ -646,89 +675,96 @@ fn generate_cpp_indexed_data_map_collection(
     output.push_str("    int extent;\n");
     output.push_str("};\n\n");
     
+    // Iterator destructor
+    output.push_str(&format!(
+        "extern \"C\" void {iterator_name}_destructor({iterator_name}* self_) {{\n"
+    ));
+    output.push_str("    delete self_;\n");
+    output.push_str("}\n\n");
+    
     // Create iterator function (iterates over keys)
     output.push_str(&format!(
-        "inline std::unique_ptr<{iterator_name}> {typedef_name}_iter(const {typedef_name}& coll) {{\n"
+        "extern \"C\" {iterator_name}* {typedef_name}_iter(const {typedef_name}* coll) {{\n"
     ));
     output.push_str(&format!(
-        "    auto iter = std::make_unique<{iterator_name}>();\n"
+        "    auto iter = new {iterator_name}();\n"
     ));
-    output.push_str("    iter->coll = &coll;\n");
+    output.push_str("    iter->coll = coll;\n");
     output.push_str("    iter->index = 1;\n");
-    output.push_str("    iter->extent = coll.Extent();\n");
+    output.push_str("    iter->extent = coll->Extent();\n");
     output.push_str("    return iter;\n");
     output.push_str("}\n\n");
     
     // Iterator next function - returns key
     output.push_str(&format!(
-        "inline std::unique_ptr<{key_type}> {iterator_name}_next_key({iterator_name}& iter) {{\n"
+        "extern \"C\" {key_type}* {iterator_name}_next_key({iterator_name}* iter) {{\n"
     ));
-    output.push_str("    if (iter.index > iter.extent) {\n");
+    output.push_str("    if (iter->index > iter->extent) {\n");
     output.push_str("        return nullptr;\n");
     output.push_str("    }\n");
     output.push_str(&format!(
-        "    auto result = std::make_unique<{key_type}>(iter.coll->FindKey(iter.index));\n"
+        "    auto result = new {key_type}(iter->coll->FindKey(iter->index));\n"
     ));
-    output.push_str("    ++iter.index;\n");
+    output.push_str("    ++iter->index;\n");
     output.push_str("    return result;\n");
     output.push_str("}\n\n");
     
     // FindFromKey - lookup value by key
     output.push_str(&format!(
-        "inline const {value_type}& {typedef_name}_find_from_key(const {typedef_name}& coll, const {key_type}& key) {{\n"
+        "extern \"C\" const {value_type}* {typedef_name}_find_from_key(const {typedef_name}* coll, const {key_type}* key) {{\n"
     ));
-    output.push_str("    return coll.FindFromKey(key);\n");
+    output.push_str("    return &coll->FindFromKey(*key);\n");
     output.push_str("}\n\n");
     
     // FindFromIndex - lookup value by index (1-indexed)
     output.push_str(&format!(
-        "inline const {value_type}& {typedef_name}_find_from_index(const {typedef_name}& coll, int index) {{\n"
+        "extern \"C\" const {value_type}* {typedef_name}_find_from_index(const {typedef_name}* coll, int index) {{\n"
     ));
-    output.push_str("    return coll.FindFromIndex(index);\n");
+    output.push_str("    return &coll->FindFromIndex(index);\n");
     output.push_str("}\n\n");
     
     // FindKey - get key by index (1-indexed)
     output.push_str(&format!(
-        "inline std::unique_ptr<{key_type}> {typedef_name}_find_key(const {typedef_name}& coll, int index) {{\n"
+        "extern \"C\" {key_type}* {typedef_name}_find_key(const {typedef_name}* coll, int index) {{\n"
     ));
     output.push_str(&format!(
-        "    return std::make_unique<{key_type}>(coll.FindKey(index));\n"
+        "    return new {key_type}(coll->FindKey(index));\n"
     ));
     output.push_str("}\n\n");
     
     // FindIndex - get index for a key (returns 0 if not found)
     output.push_str(&format!(
-        "inline int {typedef_name}_find_index(const {typedef_name}& coll, const {key_type}& key) {{\n"
+        "extern \"C\" int {typedef_name}_find_index(const {typedef_name}* coll, const {key_type}* key) {{\n"
     ));
-    output.push_str("    return coll.FindIndex(key);\n");
+    output.push_str("    return coll->FindIndex(*key);\n");
     output.push_str("}\n\n");
     
     // Contains - check if key exists
     output.push_str(&format!(
-        "inline bool {typedef_name}_contains(const {typedef_name}& coll, const {key_type}& key) {{\n"
+        "extern \"C\" bool {typedef_name}_contains(const {typedef_name}* coll, const {key_type}* key) {{\n"
     ));
-    output.push_str("    return coll.Contains(key);\n");
+    output.push_str("    return coll->Contains(*key);\n");
     output.push_str("}\n\n");
     
     // Add - add key-value pair, returns index
     output.push_str(&format!(
-        "inline int {typedef_name}_add({typedef_name}& coll, const {key_type}& key, const {value_type}& value) {{\n"
+        "extern \"C\" int {typedef_name}_add({typedef_name}* coll, const {key_type}* key, const {value_type}* value) {{\n"
     ));
-    output.push_str("    return coll.Add(key, value);\n");
+    output.push_str("    return coll->Add(*key, *value);\n");
     output.push_str("}\n\n");
 
     // Size function
     output.push_str(&format!(
-        "inline int {typedef_name}_size(const {typedef_name}& coll) {{\n"
+        "extern \"C\" int {typedef_name}_size(const {typedef_name}* coll) {{\n"
     ));
-    output.push_str("    return coll.Extent();\n");
+    output.push_str("    return coll->Extent();\n");
     output.push_str("}\n\n");
 
     // Clear function
     output.push_str(&format!(
-        "inline void {typedef_name}_clear({typedef_name}& coll) {{\n"
+        "extern \"C\" void {typedef_name}_clear({typedef_name}* coll) {{\n"
     ));
-    output.push_str("    coll.Clear();\n");
+    output.push_str("    coll->Clear();\n");
     output.push_str("}\n\n");
 }
 
@@ -740,64 +776,64 @@ fn generate_cpp_array1_collection(
 ) {
     // Constructor with bounds
     output.push_str(&format!(
-        "inline std::unique_ptr<{typedef_name}> {typedef_name}_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {{\n"
+        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {{\n"
     ));
     output.push_str(&format!(
-        "    return std::make_unique<{typedef_name}>(theLower, theUpper);\n"
+        "    return new {typedef_name}(theLower, theUpper);\n"
     ));
     output.push_str("}\n\n");
 
     // Constructor with bounds and init value
     output.push_str(&format!(
-        "inline std::unique_ptr<{typedef_name}> {typedef_name}_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const {element_type}& theValue) {{\n"
+        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const {element_type}* theValue) {{\n"
     ));
     output.push_str(&format!(
-        "    auto arr = std::make_unique<{typedef_name}>(theLower, theUpper);\n"
+        "    auto arr = new {typedef_name}(theLower, theUpper);\n"
     ));
-    output.push_str("    arr->Init(theValue);\n");
+    output.push_str("    arr->Init(*theValue);\n");
     output.push_str("    return arr;\n");
     output.push_str("}\n\n");
 
     // Length
     output.push_str(&format!(
-        "inline Standard_Integer {typedef_name}_length(const {typedef_name}& arr) {{\n"
+        "extern \"C\" Standard_Integer {typedef_name}_length(const {typedef_name}* arr) {{\n"
     ));
-    output.push_str("    return arr.Length();\n");
+    output.push_str("    return arr->Length();\n");
     output.push_str("}\n\n");
 
     // Lower bound
     output.push_str(&format!(
-        "inline Standard_Integer {typedef_name}_lower(const {typedef_name}& arr) {{\n"
+        "extern \"C\" Standard_Integer {typedef_name}_lower(const {typedef_name}* arr) {{\n"
     ));
-    output.push_str("    return arr.Lower();\n");
+    output.push_str("    return arr->Lower();\n");
     output.push_str("}\n\n");
 
     // Upper bound
     output.push_str(&format!(
-        "inline Standard_Integer {typedef_name}_upper(const {typedef_name}& arr) {{\n"
+        "extern \"C\" Standard_Integer {typedef_name}_upper(const {typedef_name}* arr) {{\n"
     ));
-    output.push_str("    return arr.Upper();\n");
+    output.push_str("    return arr->Upper();\n");
     output.push_str("}\n\n");
 
-    // Value (const reference)
+    // Value (const pointer return)
     output.push_str(&format!(
-        "inline const {element_type}& {typedef_name}_value(const {typedef_name}& arr, Standard_Integer theIndex) {{\n"
+        "extern \"C\" const {element_type}* {typedef_name}_value(const {typedef_name}* arr, Standard_Integer theIndex) {{\n"
     ));
-    output.push_str("    return arr.Value(theIndex);\n");
+    output.push_str("    return &arr->Value(theIndex);\n");
     output.push_str("}\n\n");
 
     // SetValue
     output.push_str(&format!(
-        "inline void {typedef_name}_set_value({typedef_name}& arr, Standard_Integer theIndex, const {element_type}& theItem) {{\n"
+        "extern \"C\" void {typedef_name}_set_value({typedef_name}* arr, Standard_Integer theIndex, const {element_type}* theItem) {{\n"
     ));
-    output.push_str("    arr.SetValue(theIndex, theItem);\n");
+    output.push_str("    arr->SetValue(theIndex, *theItem);\n");
     output.push_str("}\n\n");
 
     // Init (fill all elements with a value)
     output.push_str(&format!(
-        "inline void {typedef_name}_init({typedef_name}& arr, const {element_type}& theValue) {{\n"
+        "extern \"C\" void {typedef_name}_init({typedef_name}* arr, const {element_type}* theValue) {{\n"
     ));
-    output.push_str("    arr.Init(theValue);\n");
+    output.push_str("    arr->Init(*theValue);\n");
     output.push_str("}\n\n");
 }
 
@@ -809,92 +845,92 @@ fn generate_cpp_array2_collection(
 ) {
     // Constructor with row/col bounds
     output.push_str(&format!(
-        "inline std::unique_ptr<{typedef_name}> {typedef_name}_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {{\n"
+        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {{\n"
     ));
     output.push_str(&format!(
-        "    return std::make_unique<{typedef_name}>(theRowLower, theRowUpper, theColLower, theColUpper);\n"
+        "    return new {typedef_name}(theRowLower, theRowUpper, theColLower, theColUpper);\n"
     ));
     output.push_str("}\n\n");
 
     // Constructor with row/col bounds and init value
     output.push_str(&format!(
-        "inline std::unique_ptr<{typedef_name}> {typedef_name}_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const {element_type}& theValue) {{\n"
+        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const {element_type}* theValue) {{\n"
     ));
     output.push_str(&format!(
-        "    auto arr = std::make_unique<{typedef_name}>(theRowLower, theRowUpper, theColLower, theColUpper);\n"
+        "    auto arr = new {typedef_name}(theRowLower, theRowUpper, theColLower, theColUpper);\n"
     ));
-    output.push_str("    arr->Init(theValue);\n");
+    output.push_str("    arr->Init(*theValue);\n");
     output.push_str("    return arr;\n");
     output.push_str("}\n\n");
 
     // NbRows
     output.push_str(&format!(
-        "inline Standard_Integer {typedef_name}_nb_rows(const {typedef_name}& arr) {{\n"
+        "extern \"C\" Standard_Integer {typedef_name}_nb_rows(const {typedef_name}* arr) {{\n"
     ));
-    output.push_str("    return arr.NbRows();\n");
+    output.push_str("    return arr->NbRows();\n");
     output.push_str("}\n\n");
 
     // NbColumns
     output.push_str(&format!(
-        "inline Standard_Integer {typedef_name}_nb_columns(const {typedef_name}& arr) {{\n"
+        "extern \"C\" Standard_Integer {typedef_name}_nb_columns(const {typedef_name}* arr) {{\n"
     ));
-    output.push_str("    return arr.NbColumns();\n");
+    output.push_str("    return arr->NbColumns();\n");
     output.push_str("}\n\n");
 
     // LowerRow
     output.push_str(&format!(
-        "inline Standard_Integer {typedef_name}_lower_row(const {typedef_name}& arr) {{\n"
+        "extern \"C\" Standard_Integer {typedef_name}_lower_row(const {typedef_name}* arr) {{\n"
     ));
-    output.push_str("    return arr.LowerRow();\n");
+    output.push_str("    return arr->LowerRow();\n");
     output.push_str("}\n\n");
 
     // UpperRow
     output.push_str(&format!(
-        "inline Standard_Integer {typedef_name}_upper_row(const {typedef_name}& arr) {{\n"
+        "extern \"C\" Standard_Integer {typedef_name}_upper_row(const {typedef_name}* arr) {{\n"
     ));
-    output.push_str("    return arr.UpperRow();\n");
+    output.push_str("    return arr->UpperRow();\n");
     output.push_str("}\n\n");
 
     // LowerCol
     output.push_str(&format!(
-        "inline Standard_Integer {typedef_name}_lower_col(const {typedef_name}& arr) {{\n"
+        "extern \"C\" Standard_Integer {typedef_name}_lower_col(const {typedef_name}* arr) {{\n"
     ));
-    output.push_str("    return arr.LowerCol();\n");
+    output.push_str("    return arr->LowerCol();\n");
     output.push_str("}\n\n");
 
     // UpperCol
     output.push_str(&format!(
-        "inline Standard_Integer {typedef_name}_upper_col(const {typedef_name}& arr) {{\n"
+        "extern \"C\" Standard_Integer {typedef_name}_upper_col(const {typedef_name}* arr) {{\n"
     ));
-    output.push_str("    return arr.UpperCol();\n");
+    output.push_str("    return arr->UpperCol();\n");
     output.push_str("}\n\n");
 
     // Length (total elements)
     output.push_str(&format!(
-        "inline Standard_Integer {typedef_name}_length(const {typedef_name}& arr) {{\n"
+        "extern \"C\" Standard_Integer {typedef_name}_length(const {typedef_name}* arr) {{\n"
     ));
-    output.push_str("    return arr.Length();\n");
+    output.push_str("    return arr->Length();\n");
     output.push_str("}\n\n");
 
-    // Value (const reference, row/col indexed)
+    // Value (const pointer return, row/col indexed)
     output.push_str(&format!(
-        "inline const {element_type}& {typedef_name}_value(const {typedef_name}& arr, Standard_Integer theRow, Standard_Integer theCol) {{\n"
+        "extern \"C\" const {element_type}* {typedef_name}_value(const {typedef_name}* arr, Standard_Integer theRow, Standard_Integer theCol) {{\n"
     ));
-    output.push_str("    return arr.Value(theRow, theCol);\n");
+    output.push_str("    return &arr->Value(theRow, theCol);\n");
     output.push_str("}\n\n");
 
     // SetValue
     output.push_str(&format!(
-        "inline void {typedef_name}_set_value({typedef_name}& arr, Standard_Integer theRow, Standard_Integer theCol, const {element_type}& theItem) {{\n"
+        "extern \"C\" void {typedef_name}_set_value({typedef_name}* arr, Standard_Integer theRow, Standard_Integer theCol, const {element_type}* theItem) {{\n"
     ));
-    output.push_str("    arr.SetValue(theRow, theCol, theItem);\n");
+    output.push_str("    arr->SetValue(theRow, theCol, *theItem);\n");
     output.push_str("}\n\n");
 
     // Init (fill all elements with a value)
     output.push_str(&format!(
-        "inline void {typedef_name}_init({typedef_name}& arr, const {element_type}& theValue) {{\n"
+        "extern \"C\" void {typedef_name}_init({typedef_name}* arr, const {element_type}* theValue) {{\n"
     ));
-    output.push_str("    arr.Init(theValue);\n");
+    output.push_str("    arr->Init(*theValue);\n");
     output.push_str("}\n\n");
 }
 
@@ -912,17 +948,32 @@ pub fn generate_unified_rust_ffi_collections(collections: &[CollectionInfo]) -> 
         return (String::new(), String::new());
     }
     
+    // Generate opaque struct declarations (outside extern "C" block)
+    let mut type_decls = String::new();
+    type_decls.push_str("// ========================\n");
+    type_decls.push_str("// Collection types (opaque)\n");
+    type_decls.push_str("// ========================\n\n");
+    for info in collections {
+        writeln!(type_decls, "#[repr(C)]").unwrap();
+        writeln!(type_decls, "pub struct {} {{ _opaque: [u8; 0] }}", info.typedef_name).unwrap();
+        // Iterator type
+        let iter_name = format!("{}Iterator", info.short_name);
+        writeln!(type_decls, "#[repr(C)]").unwrap();
+        writeln!(type_decls, "pub struct {} {{ _opaque: [u8; 0] }}", iter_name).unwrap();
+    }
+    type_decls.push('\n');
+    
     let mut ffi_decls = String::new();
     
-    ffi_decls.push_str("                // ========================\n");
-    ffi_decls.push_str("                // Collection type wrappers\n");
-    ffi_decls.push_str("                // ========================\n\n");
+    ffi_decls.push_str("    // ========================\n");
+    ffi_decls.push_str("    // Collection type wrappers\n");
+    ffi_decls.push_str("    // ========================\n\n");
     
     for info in collections {
         ffi_decls.push_str(&generate_unified_rust_ffi_collection(info));
     }
     
-    (String::new(), ffi_decls)
+    (type_decls, ffi_decls)
 }
 
 /// Generate Rust FFI declarations for a single collection in unified mode
@@ -938,81 +989,68 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
     let coll_name = &info.typedef_name;
     let iter_name = format!("{}Iterator", info.short_name);
     
-    // Type declaration for collection
-    output.push_str(&format!("                /// {}\n", info.kind.description()));
-    output.push_str(&format!("                type {};\n\n", coll_name));
-    
-    // Iterator type
-    output.push_str(&format!("                /// Iterator for {}\n", coll_name));
-    output.push_str(&format!("                type {};\n\n", iter_name));
-    
     // Constructor
-    output.push_str(&format!("                /// Create a new empty {}\n", coll_name));
-    output.push_str(&format!("                fn {}_new() -> UniquePtr<{}>;\n\n", coll_name, coll_name));
+    output.push_str(&format!("    /// Create a new empty {}\n", coll_name));
+    output.push_str(&format!("    pub fn {}_new() -> *mut {};\n\n", coll_name, coll_name));
+    
+    // Destructor
+    output.push_str(&format!("    /// Destroy a {}\n", coll_name));
+    output.push_str(&format!("    pub fn {}_destructor(self_: *mut {});\n\n", coll_name, coll_name));
     
     // Size method
-    output.push_str(&format!("                /// Get number of elements in {}\n", coll_name));
-    output.push_str(&format!("                fn {}_size(coll: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str(&format!("    /// Get number of elements in {}\n", coll_name));
+    output.push_str(&format!("    pub fn {}_size(coll: *const {}) -> i32;\n\n", coll_name, coll_name));
     
-    // Clear method (for mutable collections)
-    output.push_str(&format!("                /// Remove all elements from {}\n", coll_name));
-    output.push_str(&format!("                fn {}_clear(coll: Pin<&mut {}>);\n\n", coll_name, coll_name));
+    // Clear method
+    output.push_str(&format!("    /// Remove all elements from {}\n", coll_name));
+    output.push_str(&format!("    pub fn {}_clear(coll: *mut {});\n\n", coll_name, coll_name));
     
     // Add/append method based on collection kind
     match info.kind {
         CollectionKind::List => {
-            output.push_str("                /// Append an element to the list\n");
-            output.push_str(&format!("                fn {}_append(coll: Pin<&mut {}>, item: &{});\n\n", coll_name, coll_name, info.element_type));
-            output.push_str("                /// Prepend an element to the list\n");
-            output.push_str(&format!("                fn {}_prepend(coll: Pin<&mut {}>, item: &{});\n\n", coll_name, coll_name, info.element_type));
+            output.push_str("    /// Append an element to the list\n");
+            output.push_str(&format!("    pub fn {}_append(coll: *mut {}, item: *const {});\n\n", coll_name, coll_name, info.element_type));
+            output.push_str("    /// Prepend an element to the list\n");
+            output.push_str(&format!("    pub fn {}_prepend(coll: *mut {}, item: *const {});\n\n", coll_name, coll_name, info.element_type));
         }
         CollectionKind::Sequence => {
-            output.push_str("                /// Append an element to the sequence\n");
-            output.push_str(&format!("                fn {}_append(coll: Pin<&mut {}>, item: &{});\n\n", coll_name, coll_name, info.element_type));
-            output.push_str("                /// Get element at 1-based index\n");
-            output.push_str(&format!("                fn {}_value(coll: &{}, index: i32) -> &{};\n\n", coll_name, coll_name, info.element_type));
+            output.push_str("    /// Append an element to the sequence\n");
+            output.push_str(&format!("    pub fn {}_append(coll: *mut {}, item: *const {});\n\n", coll_name, coll_name, info.element_type));
+            output.push_str("    /// Get element at 1-based index\n");
+            output.push_str(&format!("    pub fn {}_value(coll: *const {}, index: i32) -> *const {};\n\n", coll_name, coll_name, info.element_type));
         }
         CollectionKind::IndexedMap | CollectionKind::Map => {
-            output.push_str("                /// Add an element to the map/set\n");
-            output.push_str(&format!("                fn {}_add(coll: Pin<&mut {}>, item: &{}) -> i32;\n\n", coll_name, coll_name, info.element_type));
+            output.push_str("    /// Add an element to the map/set\n");
+            output.push_str(&format!("    pub fn {}_add(coll: *mut {}, item: *const {}) -> i32;\n\n", coll_name, coll_name, info.element_type));
             if info.kind == CollectionKind::IndexedMap {
-                output.push_str("                /// Get element at 1-based index\n");
-                output.push_str(&format!("                fn {}_find_key(coll: &{}, index: i32) -> &{};\n\n", coll_name, coll_name, info.element_type));
+                output.push_str("    /// Get element at 1-based index\n");
+                output.push_str(&format!("    pub fn {}_find_key(coll: *const {}, index: i32) -> *const {};\n\n", coll_name, coll_name, info.element_type));
             }
         }
         CollectionKind::DataMap => {
             if let Some(ref value_type) = info.value_type {
-                output.push_str("                /// Bind a key to a value\n");
-                output.push_str(&format!("                #[cxx_name = \"{}_bind\"]\n", coll_name));
-                output.push_str(&format!("                fn {}_bind(coll: Pin<&mut {}>, key: &{}, value: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type, value_type));
-                output.push_str("                /// Find a value by key (returns nullptr if not found)\n");
-                output.push_str(&format!("                #[cxx_name = \"{}_find\"]\n", coll_name));
-                output.push_str(&format!("                fn {}_find(coll: &{}, key: &{}) -> UniquePtr<{}>;\n\n", coll_name, coll_name, info.element_type, value_type));
-                output.push_str("                /// Check if key exists\n");
-                output.push_str(&format!("                #[cxx_name = \"{}_contains\"]\n", coll_name));
-                output.push_str(&format!("                fn {}_contains(coll: &{}, key: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type));
+                output.push_str("    /// Bind a key to a value\n");
+                output.push_str(&format!("    pub fn {}_bind(coll: *mut {}, key: *const {}, value: *const {}) -> bool;\n\n", coll_name, coll_name, info.element_type, value_type));
+                output.push_str("    /// Find a value by key (returns nullptr if not found)\n");
+                output.push_str(&format!("    pub fn {}_find(coll: *const {}, key: *const {}) -> *mut {};\n\n", coll_name, coll_name, info.element_type, value_type));
+                output.push_str("    /// Check if key exists\n");
+                output.push_str(&format!("    pub fn {}_contains(coll: *const {}, key: *const {}) -> bool;\n\n", coll_name, coll_name, info.element_type));
             }
         }
         CollectionKind::IndexedDataMap => {
             if let Some(ref value_type) = info.value_type {
-                output.push_str("                /// Add a key-value pair, returns index (existing or new)\n");
-                output.push_str(&format!("                #[cxx_name = \"{}_add\"]\n", coll_name));
-                output.push_str(&format!("                fn {}_add(coll: Pin<&mut {}>, key: &{}, value: &{}) -> i32;\n\n", coll_name, coll_name, info.element_type, value_type));
-                output.push_str("                /// Find value by key (returns reference)\n");
-                output.push_str(&format!("                #[cxx_name = \"{}_find_from_key\"]\n", coll_name));
-                output.push_str(&format!("                fn {}_find_from_key<'a>(coll: &'a {}, key: &{}) -> &'a {};\n\n", coll_name, coll_name, info.element_type, value_type));
-                output.push_str("                /// Find value by 1-based index (returns reference)\n");
-                output.push_str(&format!("                #[cxx_name = \"{}_find_from_index\"]\n", coll_name));
-                output.push_str(&format!("                fn {}_find_from_index<'a>(coll: &'a {}, index: i32) -> &'a {};\n\n", coll_name, coll_name, value_type));
-                output.push_str("                /// Find key by 1-based index\n");
-                output.push_str(&format!("                #[cxx_name = \"{}_find_key\"]\n", coll_name));
-                output.push_str(&format!("                fn {}_find_key(coll: &{}, index: i32) -> UniquePtr<{}>;\n\n", coll_name, coll_name, info.element_type));
-                output.push_str("                /// Find index by key (returns 0 if not found)\n");
-                output.push_str(&format!("                #[cxx_name = \"{}_find_index\"]\n", coll_name));
-                output.push_str(&format!("                fn {}_find_index(coll: &{}, key: &{}) -> i32;\n\n", coll_name, coll_name, info.element_type));
-                output.push_str("                /// Check if key exists\n");
-                output.push_str(&format!("                #[cxx_name = \"{}_contains\"]\n", coll_name));
-                output.push_str(&format!("                fn {}_contains(coll: &{}, key: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type));
+                output.push_str("    /// Add a key-value pair, returns index (existing or new)\n");
+                output.push_str(&format!("    pub fn {}_add(coll: *mut {}, key: *const {}, value: *const {}) -> i32;\n\n", coll_name, coll_name, info.element_type, value_type));
+                output.push_str("    /// Find value by key (returns reference)\n");
+                output.push_str(&format!("    pub fn {}_find_from_key(coll: *const {}, key: *const {}) -> *const {};\n\n", coll_name, coll_name, info.element_type, value_type));
+                output.push_str("    /// Find value by 1-based index (returns reference)\n");
+                output.push_str(&format!("    pub fn {}_find_from_index(coll: *const {}, index: i32) -> *const {};\n\n", coll_name, coll_name, value_type));
+                output.push_str("    /// Find key by 1-based index\n");
+                output.push_str(&format!("    pub fn {}_find_key(coll: *const {}, index: i32) -> *mut {};\n\n", coll_name, coll_name, info.element_type));
+                output.push_str("    /// Find index by key (returns 0 if not found)\n");
+                output.push_str(&format!("    pub fn {}_find_index(coll: *const {}, key: *const {}) -> i32;\n\n", coll_name, coll_name, info.element_type));
+                output.push_str("    /// Check if key exists\n");
+                output.push_str(&format!("    pub fn {}_contains(coll: *const {}, key: *const {}) -> bool;\n\n", coll_name, coll_name, info.element_type));
             }
         }
         CollectionKind::Array1 | CollectionKind::Array2 => {
@@ -1021,8 +1059,8 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
     }
     
     // Iterator creation
-    output.push_str("                /// Create an iterator over the collection\n");
-    output.push_str(&format!("                fn {}_iter(coll: &{}) -> UniquePtr<{}>;\n\n", coll_name, coll_name, iter_name));
+    output.push_str("    /// Create an iterator over the collection\n");
+    output.push_str(&format!("    pub fn {}_iter(coll: *const {}) -> *mut {};\n\n", coll_name, coll_name, iter_name));
 
     // Iterator next - DataMaps iterate over keys, others iterate over elements
     let next_suffix = match info.kind {
@@ -1030,9 +1068,12 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
         _ => "_next",
     };
     let next_fn_name = format!("{}{}", iter_name, next_suffix);
-    output.push_str("                /// Advance iterator and get next element (nullptr when done)\n");
-    output.push_str(&format!("                #[cxx_name = \"{}\"]\n", next_fn_name));
-    output.push_str(&format!("                fn {}(iter: Pin<&mut {}>) -> UniquePtr<{}>;\n\n", next_fn_name, iter_name, info.element_type));
+    output.push_str("    /// Advance iterator and get next element (nullptr when done)\n");
+    output.push_str(&format!("    pub fn {}(iter: *mut {}) -> *mut {};\n\n", next_fn_name, iter_name, info.element_type));
+    
+    // Iterator destructor
+    output.push_str(&format!("    /// Destroy a {}\n", iter_name));
+    output.push_str(&format!("    pub fn {}_destructor(self_: *mut {});\n\n", iter_name, iter_name));
     
     output
 }
@@ -1043,44 +1084,45 @@ fn generate_unified_rust_ffi_array1(info: &CollectionInfo) -> String {
     let coll_name = &info.typedef_name;
     let elem = &info.element_type;
 
-    output.push_str(&format!("                /// {}\n", info.kind.description()));
-    output.push_str(&format!("                type {};\n\n", coll_name));
-
     // Default constructor
-    output.push_str(&format!("                /// Create a new empty {}\n", coll_name));
-    output.push_str(&format!("                fn {}_new() -> UniquePtr<{}>;\n\n", coll_name, coll_name));
+    output.push_str(&format!("    /// Create a new empty {}\n", coll_name));
+    output.push_str(&format!("    pub fn {}_new() -> *mut {};\n\n", coll_name, coll_name));
+
+    // Destructor
+    output.push_str(&format!("    /// Destroy a {}\n", coll_name));
+    output.push_str(&format!("    pub fn {}_destructor(self_: *mut {});\n\n", coll_name, coll_name));
 
     // Constructor with bounds
-    output.push_str(&format!("                /// Create {} with lower and upper bounds\n", coll_name));
-    output.push_str(&format!("                fn {}_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<{}>;\n\n", coll_name, coll_name));
+    output.push_str(&format!("    /// Create {} with lower and upper bounds\n", coll_name));
+    output.push_str(&format!("    pub fn {}_ctor_int2(theLower: i32, theUpper: i32) -> *mut {};\n\n", coll_name, coll_name));
 
     // Constructor with bounds and init value
-    output.push_str(&format!("                /// Create {} with bounds, all elements initialized to theValue\n", coll_name));
-    output.push_str(&format!("                fn {}_ctor_int2_value(theLower: i32, theUpper: i32, theValue: &{}) -> UniquePtr<{}>;\n\n", coll_name, elem, coll_name));
+    output.push_str(&format!("    /// Create {} with bounds, all elements initialized to theValue\n", coll_name));
+    output.push_str(&format!("    pub fn {}_ctor_int2_value(theLower: i32, theUpper: i32, theValue: *const {}) -> *mut {};\n\n", coll_name, elem, coll_name));
 
     // Length
-    output.push_str(&format!("                /// Get number of elements\n"));
-    output.push_str(&format!("                fn {}_length(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str("    /// Get number of elements\n");
+    output.push_str(&format!("    pub fn {}_length(arr: *const {}) -> i32;\n\n", coll_name, coll_name));
 
     // Lower
-    output.push_str(&format!("                /// Get lower bound index\n"));
-    output.push_str(&format!("                fn {}_lower(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str("    /// Get lower bound index\n");
+    output.push_str(&format!("    pub fn {}_lower(arr: *const {}) -> i32;\n\n", coll_name, coll_name));
 
     // Upper
-    output.push_str(&format!("                /// Get upper bound index\n"));
-    output.push_str(&format!("                fn {}_upper(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str("    /// Get upper bound index\n");
+    output.push_str(&format!("    pub fn {}_upper(arr: *const {}) -> i32;\n\n", coll_name, coll_name));
 
     // Value
-    output.push_str(&format!("                /// Get element at index (bounds-checked)\n"));
-    output.push_str(&format!("                fn {}_value(arr: &{}, theIndex: i32) -> &{};\n\n", coll_name, coll_name, elem));
+    output.push_str("    /// Get element at index (bounds-checked)\n");
+    output.push_str(&format!("    pub fn {}_value(arr: *const {}, theIndex: i32) -> *const {};\n\n", coll_name, coll_name, elem));
 
     // SetValue
-    output.push_str(&format!("                /// Set element at index (bounds-checked)\n"));
-    output.push_str(&format!("                fn {}_set_value(arr: Pin<&mut {}>, theIndex: i32, theItem: &{});\n\n", coll_name, coll_name, elem));
+    output.push_str("    /// Set element at index (bounds-checked)\n");
+    output.push_str(&format!("    pub fn {}_set_value(arr: *mut {}, theIndex: i32, theItem: *const {});\n\n", coll_name, coll_name, elem));
 
     // Init
-    output.push_str(&format!("                /// Set all elements to the same value\n"));
-    output.push_str(&format!("                fn {}_init(arr: Pin<&mut {}>, theValue: &{});\n\n", coll_name, coll_name, elem));
+    output.push_str("    /// Set all elements to the same value\n");
+    output.push_str(&format!("    pub fn {}_init(arr: *mut {}, theValue: *const {});\n\n", coll_name, coll_name, elem));
 
     output
 }
@@ -1091,60 +1133,61 @@ fn generate_unified_rust_ffi_array2(info: &CollectionInfo) -> String {
     let coll_name = &info.typedef_name;
     let elem = &info.element_type;
 
-    output.push_str(&format!("                /// {}\n", info.kind.description()));
-    output.push_str(&format!("                type {};\n\n", coll_name));
-
     // Default constructor
-    output.push_str(&format!("                /// Create a new empty {}\n", coll_name));
-    output.push_str(&format!("                fn {}_new() -> UniquePtr<{}>;\n\n", coll_name, coll_name));
+    output.push_str(&format!("    /// Create a new empty {}\n", coll_name));
+    output.push_str(&format!("    pub fn {}_new() -> *mut {};\n\n", coll_name, coll_name));
+
+    // Destructor
+    output.push_str(&format!("    /// Destroy a {}\n", coll_name));
+    output.push_str(&format!("    pub fn {}_destructor(self_: *mut {});\n\n", coll_name, coll_name));
 
     // Constructor with row/col bounds
-    output.push_str(&format!("                /// Create {} with row and column bounds\n", coll_name));
-    output.push_str(&format!("                fn {}_ctor_int4(theRowLower: i32, theRowUpper: i32, theColLower: i32, theColUpper: i32) -> UniquePtr<{}>;\n\n", coll_name, coll_name));
+    output.push_str(&format!("    /// Create {} with row and column bounds\n", coll_name));
+    output.push_str(&format!("    pub fn {}_ctor_int4(theRowLower: i32, theRowUpper: i32, theColLower: i32, theColUpper: i32) -> *mut {};\n\n", coll_name, coll_name));
 
     // Constructor with row/col bounds and init value
-    output.push_str(&format!("                /// Create {} with bounds, all elements initialized to theValue\n", coll_name));
-    output.push_str(&format!("                fn {}_ctor_int4_value(theRowLower: i32, theRowUpper: i32, theColLower: i32, theColUpper: i32, theValue: &{}) -> UniquePtr<{}>;\n\n", coll_name, elem, coll_name));
+    output.push_str(&format!("    /// Create {} with bounds, all elements initialized to theValue\n", coll_name));
+    output.push_str(&format!("    pub fn {}_ctor_int4_value(theRowLower: i32, theRowUpper: i32, theColLower: i32, theColUpper: i32, theValue: *const {}) -> *mut {};\n\n", coll_name, elem, coll_name));
 
     // NbRows
-    output.push_str(&format!("                /// Get number of rows\n"));
-    output.push_str(&format!("                fn {}_nb_rows(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str("    /// Get number of rows\n");
+    output.push_str(&format!("    pub fn {}_nb_rows(arr: *const {}) -> i32;\n\n", coll_name, coll_name));
 
     // NbColumns
-    output.push_str(&format!("                /// Get number of columns\n"));
-    output.push_str(&format!("                fn {}_nb_columns(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str("    /// Get number of columns\n");
+    output.push_str(&format!("    pub fn {}_nb_columns(arr: *const {}) -> i32;\n\n", coll_name, coll_name));
 
     // LowerRow
-    output.push_str(&format!("                /// Get lower row bound\n"));
-    output.push_str(&format!("                fn {}_lower_row(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str("    /// Get lower row bound\n");
+    output.push_str(&format!("    pub fn {}_lower_row(arr: *const {}) -> i32;\n\n", coll_name, coll_name));
 
     // UpperRow
-    output.push_str(&format!("                /// Get upper row bound\n"));
-    output.push_str(&format!("                fn {}_upper_row(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str("    /// Get upper row bound\n");
+    output.push_str(&format!("    pub fn {}_upper_row(arr: *const {}) -> i32;\n\n", coll_name, coll_name));
 
     // LowerCol
-    output.push_str(&format!("                /// Get lower column bound\n"));
-    output.push_str(&format!("                fn {}_lower_col(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str("    /// Get lower column bound\n");
+    output.push_str(&format!("    pub fn {}_lower_col(arr: *const {}) -> i32;\n\n", coll_name, coll_name));
 
     // UpperCol
-    output.push_str(&format!("                /// Get upper column bound\n"));
-    output.push_str(&format!("                fn {}_upper_col(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str("    /// Get upper column bound\n");
+    output.push_str(&format!("    pub fn {}_upper_col(arr: *const {}) -> i32;\n\n", coll_name, coll_name));
 
     // Length
-    output.push_str(&format!("                /// Get total number of elements\n"));
-    output.push_str(&format!("                fn {}_length(arr: &{}) -> i32;\n\n", coll_name, coll_name));
+    output.push_str("    /// Get total number of elements\n");
+    output.push_str(&format!("    pub fn {}_length(arr: *const {}) -> i32;\n\n", coll_name, coll_name));
 
     // Value
-    output.push_str(&format!("                /// Get element at row/col (bounds-checked)\n"));
-    output.push_str(&format!("                fn {}_value(arr: &{}, theRow: i32, theCol: i32) -> &{};\n\n", coll_name, coll_name, elem));
+    output.push_str("    /// Get element at row/col (bounds-checked)\n");
+    output.push_str(&format!("    pub fn {}_value(arr: *const {}, theRow: i32, theCol: i32) -> *const {};\n\n", coll_name, coll_name, elem));
 
     // SetValue
-    output.push_str(&format!("                /// Set element at row/col (bounds-checked)\n"));
-    output.push_str(&format!("                fn {}_set_value(arr: Pin<&mut {}>, theRow: i32, theCol: i32, theItem: &{});\n\n", coll_name, coll_name, elem));
+    output.push_str("    /// Set element at row/col (bounds-checked)\n");
+    output.push_str(&format!("    pub fn {}_set_value(arr: *mut {}, theRow: i32, theCol: i32, theItem: *const {});\n\n", coll_name, coll_name, elem));
 
     // Init
-    output.push_str(&format!("                /// Set all elements to the same value\n"));
-    output.push_str(&format!("                fn {}_init(arr: Pin<&mut {}>, theValue: &{});\n\n", coll_name, coll_name, elem));
+    output.push_str("    /// Set all elements to the same value\n");
+    output.push_str(&format!("    pub fn {}_init(arr: *mut {}, theValue: *const {});\n\n", coll_name, coll_name, elem));
 
     output
 }
@@ -1165,6 +1208,11 @@ pub fn generate_unified_rust_impl_collections(collections: &[CollectionInfo]) ->
     output
 }
 
+/// Generate Rust impl block for a single collection in unified mode (public API for re-export modules)
+pub fn generate_unified_rust_impl_collection_single(info: &CollectionInfo) -> String {
+    generate_unified_rust_impl_collection(info)
+}
+
 /// Generate Rust impl block for a single collection in unified mode
 fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
     match info.kind {
@@ -1181,13 +1229,13 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
     output.push_str(&format!("impl ffi::{} {{\n", coll_name));
     
     output.push_str("    /// Create a new empty collection\n");
-    output.push_str("    pub fn new() -> cxx::UniquePtr<Self> {\n");
-    output.push_str(&format!("        ffi::{}_new()\n", coll_name));
+    output.push_str("    pub fn new() -> crate::OwnedPtr<Self> {\n");
+    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_new()) }}\n", coll_name));
     output.push_str("    }\n\n");
     
     output.push_str("    /// Get number of elements\n");
     output.push_str("    pub fn len(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_size(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_size(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
     
     output.push_str("    /// Check if empty\n");
@@ -1196,95 +1244,95 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
     output.push_str("    }\n\n");
     
     output.push_str("    /// Remove all elements\n");
-    output.push_str("    pub fn clear(self: std::pin::Pin<&mut Self>) {\n");
-    output.push_str(&format!("        ffi::{}_clear(self)\n", coll_name));
+    output.push_str("    pub fn clear(&mut self) {\n");
+    output.push_str(&format!("        unsafe {{ ffi::{}_clear(self as *mut Self) }}\n", coll_name));
     output.push_str("    }\n\n");
     
     // Kind-specific methods
     match info.kind {
         CollectionKind::List => {
             output.push_str("    /// Append an element to the list\n");
-            output.push_str(&format!("    pub fn append(self: std::pin::Pin<&mut Self>, item: &ffi::{}) {{\n", info.element_type));
-            output.push_str(&format!("        ffi::{}_append(self, item)\n", coll_name));
+            output.push_str(&format!("    pub fn append(&mut self, item: &ffi::{}) {{\n", info.element_type));
+            output.push_str(&format!("        unsafe {{ ffi::{}_append(self as *mut Self, item as *const ffi::{}) }}\n", coll_name, info.element_type));
             output.push_str("    }\n\n");
             
             output.push_str("    /// Prepend an element to the list\n");
-            output.push_str(&format!("    pub fn prepend(self: std::pin::Pin<&mut Self>, item: &ffi::{}) {{\n", info.element_type));
-            output.push_str(&format!("        ffi::{}_prepend(self, item)\n", coll_name));
+            output.push_str(&format!("    pub fn prepend(&mut self, item: &ffi::{}) {{\n", info.element_type));
+            output.push_str(&format!("        unsafe {{ ffi::{}_prepend(self as *mut Self, item as *const ffi::{}) }}\n", coll_name, info.element_type));
             output.push_str("    }\n\n");
         }
         CollectionKind::Sequence => {
             output.push_str("    /// Append an element to the sequence\n");
-            output.push_str(&format!("    pub fn append(self: std::pin::Pin<&mut Self>, item: &ffi::{}) {{\n", info.element_type));
-            output.push_str(&format!("        ffi::{}_append(self, item)\n", coll_name));
+            output.push_str(&format!("    pub fn append(&mut self, item: &ffi::{}) {{\n", info.element_type));
+            output.push_str(&format!("        unsafe {{ ffi::{}_append(self as *mut Self, item as *const ffi::{}) }}\n", coll_name, info.element_type));
             output.push_str("    }\n\n");
             
             output.push_str("    /// Get element at 1-based index\n");
             output.push_str(&format!("    pub fn value(&self, index: i32) -> &ffi::{} {{\n", info.element_type));
-            output.push_str(&format!("        ffi::{}_value(self, index)\n", coll_name));
+            output.push_str(&format!("        unsafe {{ &*ffi::{}_value(self as *const Self, index) }}\n", coll_name));
             output.push_str("    }\n\n");
         }
         CollectionKind::IndexedMap | CollectionKind::Map => {
             output.push_str("    /// Add an element to the map/set\n");
-            output.push_str(&format!("    pub fn add(self: std::pin::Pin<&mut Self>, item: &ffi::{}) -> i32 {{\n", info.element_type));
-            output.push_str(&format!("        ffi::{}_add(self, item)\n", coll_name));
+            output.push_str(&format!("    pub fn add(&mut self, item: &ffi::{}) -> i32 {{\n", info.element_type));
+            output.push_str(&format!("        unsafe {{ ffi::{}_add(self as *mut Self, item as *const ffi::{}) }}\n", coll_name, info.element_type));
             output.push_str("    }\n\n");
             
             if info.kind == CollectionKind::IndexedMap {
                 output.push_str("    /// Get element at 1-based index\n");
                 output.push_str(&format!("    pub fn find_key(&self, index: i32) -> &ffi::{} {{\n", info.element_type));
-                output.push_str(&format!("        ffi::{}_find_key(self, index)\n", coll_name));
+                output.push_str(&format!("        unsafe {{ &*ffi::{}_find_key(self as *const Self, index) }}\n", coll_name));
                 output.push_str("    }\n\n");
             }
         }
         CollectionKind::DataMap => {
             if let Some(ref value_type) = info.value_type {
                 output.push_str("    /// Bind a key to a value\n");
-                output.push_str(&format!("    pub fn bind(self: std::pin::Pin<&mut Self>, key: &ffi::{}, value: &ffi::{}) -> bool {{\n", info.element_type, value_type));
-                output.push_str(&format!("        ffi::{}_bind(self, key, value)\n", coll_name));
+                output.push_str(&format!("    pub fn bind(&mut self, key: &ffi::{}, value: &ffi::{}) -> bool {{\n", info.element_type, value_type));
+                output.push_str(&format!("        unsafe {{ ffi::{}_bind(self as *mut Self, key as *const ffi::{}, value as *const ffi::{}) }}\n", coll_name, info.element_type, value_type));
                 output.push_str("    }\n\n");
 
                 output.push_str("    /// Find a value by key (returns nullptr if not found)\n");
-                output.push_str(&format!("    pub fn find(&self, key: &ffi::{}) -> cxx::UniquePtr<ffi::{}> {{\n", info.element_type, value_type));
-                output.push_str(&format!("        ffi::{}_find(self, key)\n", coll_name));
+                output.push_str(&format!("    pub fn find(&self, key: &ffi::{}) -> crate::OwnedPtr<ffi::{}> {{\n", info.element_type, value_type));
+                output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_find(self as *const Self, key as *const ffi::{})) }}\n", coll_name, info.element_type));
                 output.push_str("    }\n\n");
 
                 output.push_str("    /// Check if key exists\n");
                 output.push_str(&format!("    pub fn contains(&self, key: &ffi::{}) -> bool {{\n", info.element_type));
-                output.push_str(&format!("        ffi::{}_contains(self, key)\n", coll_name));
+                output.push_str(&format!("        unsafe {{ ffi::{}_contains(self as *const Self, key as *const ffi::{}) }}\n", coll_name, info.element_type));
                 output.push_str("    }\n\n");
             }
         }
         CollectionKind::IndexedDataMap => {
             if let Some(ref value_type) = info.value_type {
                 output.push_str("    /// Add a key-value pair, returns index (existing or new)\n");
-                output.push_str(&format!("    pub fn add(self: std::pin::Pin<&mut Self>, key: &ffi::{}, value: &ffi::{}) -> i32 {{\n", info.element_type, value_type));
-                output.push_str(&format!("        ffi::{}_add(self, key, value)\n", coll_name));
+                output.push_str(&format!("    pub fn add(&mut self, key: &ffi::{}, value: &ffi::{}) -> i32 {{\n", info.element_type, value_type));
+                output.push_str(&format!("        unsafe {{ ffi::{}_add(self as *mut Self, key as *const ffi::{}, value as *const ffi::{}) }}\n", coll_name, info.element_type, value_type));
                 output.push_str("    }\n\n");
 
                 output.push_str("    /// Find value by key\n");
                 output.push_str(&format!("    pub fn find_from_key(&self, key: &ffi::{}) -> &ffi::{} {{\n", info.element_type, value_type));
-                output.push_str(&format!("        ffi::{}_find_from_key(self, key)\n", coll_name));
+                output.push_str(&format!("        unsafe {{ &*ffi::{}_find_from_key(self as *const Self, key as *const ffi::{}) }}\n", coll_name, info.element_type));
                 output.push_str("    }\n\n");
 
                 output.push_str("    /// Find value by 1-based index\n");
                 output.push_str(&format!("    pub fn find_from_index(&self, index: i32) -> &ffi::{} {{\n", value_type));
-                output.push_str(&format!("        ffi::{}_find_from_index(self, index)\n", coll_name));
+                output.push_str(&format!("        unsafe {{ &*ffi::{}_find_from_index(self as *const Self, index) }}\n", coll_name));
                 output.push_str("    }\n\n");
 
                 output.push_str("    /// Find key by 1-based index\n");
-                output.push_str(&format!("    pub fn find_key(&self, index: i32) -> cxx::UniquePtr<ffi::{}> {{\n", info.element_type));
-                output.push_str(&format!("        ffi::{}_find_key(self, index)\n", coll_name));
+                output.push_str(&format!("    pub fn find_key(&self, index: i32) -> crate::OwnedPtr<ffi::{}> {{\n", info.element_type));
+                output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_find_key(self as *const Self, index)) }}\n", coll_name));
                 output.push_str("    }\n\n");
 
                 output.push_str("    /// Find index by key (returns 0 if not found)\n");
                 output.push_str(&format!("    pub fn find_index(&self, key: &ffi::{}) -> i32 {{\n", info.element_type));
-                output.push_str(&format!("        ffi::{}_find_index(self, key)\n", coll_name));
+                output.push_str(&format!("        unsafe {{ ffi::{}_find_index(self as *const Self, key as *const ffi::{}) }}\n", coll_name, info.element_type));
                 output.push_str("    }\n\n");
 
                 output.push_str("    /// Check if key exists\n");
                 output.push_str(&format!("    pub fn contains(&self, key: &ffi::{}) -> bool {{\n", info.element_type));
-                output.push_str(&format!("        ffi::{}_contains(self, key)\n", coll_name));
+                output.push_str(&format!("        unsafe {{ ffi::{}_contains(self as *const Self, key as *const ffi::{}) }}\n", coll_name, info.element_type));
                 output.push_str("    }\n\n");
             }
         }
@@ -1295,8 +1343,8 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
     
     // Iterator
     output.push_str("    /// Create an iterator over the collection\n");
-    output.push_str(&format!("    pub fn iter(&self) -> cxx::UniquePtr<ffi::{}> {{\n", iter_name));
-    output.push_str(&format!("        ffi::{}_iter(self)\n", coll_name));
+    output.push_str(&format!("    pub fn iter(&self) -> crate::OwnedPtr<ffi::{}> {{\n", iter_name));
+    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_iter(self as *const Self)) }}\n", coll_name));
     output.push_str("    }\n");
     
     output.push_str("}\n\n");
@@ -1309,8 +1357,22 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
     let next_fn_name = format!("{}{}", iter_name, next_suffix);
     output.push_str(&format!("impl ffi::{} {{\n", iter_name));
     output.push_str("    /// Get next element (nullptr when done)\n");
-    output.push_str(&format!("    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::{}> {{\n", info.element_type));
-    output.push_str(&format!("        ffi::{}(self)\n", next_fn_name));
+    output.push_str(&format!("    pub fn next(&mut self) -> crate::OwnedPtr<ffi::{}> {{\n", info.element_type));
+    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}(self as *mut Self)) }}\n", next_fn_name));
+    output.push_str("    }\n");
+    output.push_str("}\n\n");
+    
+    // CppDeletable for collection
+    output.push_str(&format!("unsafe impl crate::CppDeletable for ffi::{} {{\n", coll_name));
+    output.push_str("    unsafe fn cpp_delete(ptr: *mut Self) {\n");
+    output.push_str(&format!("        ffi::{}_destructor(ptr);\n", coll_name));
+    output.push_str("    }\n");
+    output.push_str("}\n\n");
+    
+    // CppDeletable for iterator
+    output.push_str(&format!("unsafe impl crate::CppDeletable for ffi::{} {{\n", iter_name));
+    output.push_str("    unsafe fn cpp_delete(ptr: *mut Self) {\n");
+    output.push_str(&format!("        ffi::{}_destructor(ptr);\n", iter_name));
     output.push_str("    }\n");
     output.push_str("}\n");
     
@@ -1326,50 +1388,57 @@ fn generate_unified_rust_impl_array1(info: &CollectionInfo) -> String {
     output.push_str(&format!("impl ffi::{} {{\n", coll_name));
 
     output.push_str("    /// Create a new empty array\n");
-    output.push_str("    pub fn new() -> cxx::UniquePtr<Self> {\n");
-    output.push_str(&format!("        ffi::{}_new()\n", coll_name));
+    output.push_str("    pub fn new() -> crate::OwnedPtr<Self> {\n");
+    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_new()) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Create array with lower and upper bounds\n");
-    output.push_str("    pub fn new_with_bounds(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {\n");
-    output.push_str(&format!("        ffi::{}_ctor_int2(lower, upper)\n", coll_name));
+    output.push_str("    pub fn new_with_bounds(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {\n");
+    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_ctor_int2(lower, upper)) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Create array with bounds, all elements initialized to value\n");
-    output.push_str(&format!("    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::{}) -> cxx::UniquePtr<Self> {{\n", elem));
-    output.push_str(&format!("        ffi::{}_ctor_int2_value(lower, upper, value)\n", coll_name));
+    output.push_str(&format!("    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::{}) -> crate::OwnedPtr<Self> {{\n", elem));
+    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_ctor_int2_value(lower, upper, value as *const ffi::{})) }}\n", coll_name, elem));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get number of elements\n");
     output.push_str("    pub fn length(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_length(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_length(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get lower bound index\n");
     output.push_str("    pub fn lower(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_lower(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_lower(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get upper bound index\n");
     output.push_str("    pub fn upper(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_upper(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_upper(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get element at index\n");
     output.push_str(&format!("    pub fn value(&self, index: i32) -> &ffi::{} {{\n", elem));
-    output.push_str(&format!("        ffi::{}_value(self, index)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ &*ffi::{}_value(self as *const Self, index) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Set element at index\n");
-    output.push_str(&format!("    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &ffi::{}) {{\n", elem));
-    output.push_str(&format!("        ffi::{}_set_value(self, index, item)\n", coll_name));
+    output.push_str(&format!("    pub fn set_value(&mut self, index: i32, item: &ffi::{}) {{\n", elem));
+    output.push_str(&format!("        unsafe {{ ffi::{}_set_value(self as *mut Self, index, item as *const ffi::{}) }}\n", coll_name, elem));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Set all elements to the same value\n");
-    output.push_str(&format!("    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::{}) {{\n", elem));
-    output.push_str(&format!("        ffi::{}_init(self, value)\n", coll_name));
+    output.push_str(&format!("    pub fn init(&mut self, value: &ffi::{}) {{\n", elem));
+    output.push_str(&format!("        unsafe {{ ffi::{}_init(self as *mut Self, value as *const ffi::{}) }}\n", coll_name, elem));
     output.push_str("    }\n");
 
+    output.push_str("}\n\n");
+
+    // CppDeletable for array
+    output.push_str(&format!("unsafe impl crate::CppDeletable for ffi::{} {{\n", coll_name));
+    output.push_str("    unsafe fn cpp_delete(ptr: *mut Self) {\n");
+    output.push_str(&format!("        ffi::{}_destructor(ptr);\n", coll_name));
+    output.push_str("    }\n");
     output.push_str("}\n");
 
     output
@@ -1384,70 +1453,77 @@ fn generate_unified_rust_impl_array2(info: &CollectionInfo) -> String {
     output.push_str(&format!("impl ffi::{} {{\n", coll_name));
 
     output.push_str("    /// Create a new empty array\n");
-    output.push_str("    pub fn new() -> cxx::UniquePtr<Self> {\n");
-    output.push_str(&format!("        ffi::{}_new()\n", coll_name));
+    output.push_str("    pub fn new() -> crate::OwnedPtr<Self> {\n");
+    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_new()) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Create array with row and column bounds\n");
-    output.push_str("    pub fn new_with_bounds(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32) -> cxx::UniquePtr<Self> {\n");
-    output.push_str(&format!("        ffi::{}_ctor_int4(row_lower, row_upper, col_lower, col_upper)\n", coll_name));
+    output.push_str("    pub fn new_with_bounds(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32) -> crate::OwnedPtr<Self> {\n");
+    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_ctor_int4(row_lower, row_upper, col_lower, col_upper)) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Create array with bounds, all elements initialized to value\n");
-    output.push_str(&format!("    pub fn new_with_value(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32, value: &ffi::{}) -> cxx::UniquePtr<Self> {{\n", elem));
-    output.push_str(&format!("        ffi::{}_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value)\n", coll_name));
+    output.push_str(&format!("    pub fn new_with_value(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32, value: &ffi::{}) -> crate::OwnedPtr<Self> {{\n", elem));
+    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value as *const ffi::{})) }}\n", coll_name, elem));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get number of rows\n");
     output.push_str("    pub fn nb_rows(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_nb_rows(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_nb_rows(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get number of columns\n");
     output.push_str("    pub fn nb_columns(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_nb_columns(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_nb_columns(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get lower row bound\n");
     output.push_str("    pub fn lower_row(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_lower_row(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_lower_row(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get upper row bound\n");
     output.push_str("    pub fn upper_row(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_upper_row(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_upper_row(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get lower column bound\n");
     output.push_str("    pub fn lower_col(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_lower_col(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_lower_col(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get upper column bound\n");
     output.push_str("    pub fn upper_col(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_upper_col(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_upper_col(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get total number of elements\n");
     output.push_str("    pub fn length(&self) -> i32 {\n");
-    output.push_str(&format!("        ffi::{}_length(self)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ ffi::{}_length(self as *const Self) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Get element at row/col\n");
     output.push_str(&format!("    pub fn value(&self, row: i32, col: i32) -> &ffi::{} {{\n", elem));
-    output.push_str(&format!("        ffi::{}_value(self, row, col)\n", coll_name));
+    output.push_str(&format!("        unsafe {{ &*ffi::{}_value(self as *const Self, row, col) }}\n", coll_name));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Set element at row/col\n");
-    output.push_str(&format!("    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &ffi::{}) {{\n", elem));
-    output.push_str(&format!("        ffi::{}_set_value(self, row, col, item)\n", coll_name));
+    output.push_str(&format!("    pub fn set_value(&mut self, row: i32, col: i32, item: &ffi::{}) {{\n", elem));
+    output.push_str(&format!("        unsafe {{ ffi::{}_set_value(self as *mut Self, row, col, item as *const ffi::{}) }}\n", coll_name, elem));
     output.push_str("    }\n\n");
 
     output.push_str("    /// Set all elements to the same value\n");
-    output.push_str(&format!("    pub fn init(self: std::pin::Pin<&mut Self>, value: &ffi::{}) {{\n", elem));
-    output.push_str(&format!("        ffi::{}_init(self, value)\n", coll_name));
+    output.push_str(&format!("    pub fn init(&mut self, value: &ffi::{}) {{\n", elem));
+    output.push_str(&format!("        unsafe {{ ffi::{}_init(self as *mut Self, value as *const ffi::{}) }}\n", coll_name, elem));
     output.push_str("    }\n");
 
+    output.push_str("}\n\n");
+
+    // CppDeletable for array
+    output.push_str(&format!("unsafe impl crate::CppDeletable for ffi::{} {{\n", coll_name));
+    output.push_str("    unsafe fn cpp_delete(ptr: *mut Self) {\n");
+    output.push_str(&format!("        ffi::{}_destructor(ptr);\n", coll_name));
+    output.push_str("    }\n");
     output.push_str("}\n");
 
     output
@@ -1490,4 +1566,3 @@ pub fn generate_unified_cpp_collections(collections: &[CollectionInfo]) -> Strin
     
     output
 }
-

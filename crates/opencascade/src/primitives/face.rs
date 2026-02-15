@@ -8,7 +8,7 @@ use crate::{
     },
     workplane::Workplane,
 };
-use cxx::UniquePtr;
+
 use glam::{dvec3, DVec3};
 use opencascade_sys::{
     b_rep, b_rep_algo_api, b_rep_builder_api, b_rep_feat, b_rep_fillet_api, b_rep_g_prop,
@@ -17,7 +17,7 @@ use opencascade_sys::{
 };
 
 pub struct Face {
-    pub(crate) inner: UniquePtr<topo_ds::Face>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<topo_ds::Face>,
 }
 
 impl AsRef<Face> for Face {
@@ -32,7 +32,7 @@ impl Face {
         Self { inner }
     }
 
-    fn from_make_face(make_face: UniquePtr<b_rep_builder_api::MakeFace>) -> Self {
+    fn from_make_face(make_face: opencascade_sys::OwnedPtr<b_rep_builder_api::MakeFace>) -> Self {
         Self::from_face(make_face.face())
     }
 
@@ -62,8 +62,8 @@ impl Face {
         let inner_shape = self.inner.as_shape();
         let mut make_solid =
             b_rep_prim_api::MakePrism::new_shape_vec_bool2(inner_shape, &prism_vec, copy, canonize);
-        let extruded_shape = make_solid.pin_mut().shape();
-        let solid = topo_ds::solid(extruded_shape);
+        let extruded_shape = make_solid.shape();
+        let solid = unsafe { &*topo_ds::solid(extruded_shape) };
 
         Solid::from_solid(solid)
     }
@@ -86,9 +86,9 @@ impl Face {
         );
 
         let until_face = face.inner.as_shape();
-        make_prism.pin_mut().perform_shape(until_face);
+        make_prism.perform_shape(until_face);
 
-        Shape::from_shape(make_prism.pin_mut().shape())
+        Shape::from_shape(make_prism.shape())
     }
 
     #[must_use]
@@ -108,9 +108,9 @@ impl Face {
             modify,
         );
 
-        make_prism.pin_mut().perform_real(height);
+        make_prism.perform_real(height);
 
-        Shape::from_shape(make_prism.pin_mut().shape())
+        Shape::from_shape(make_prism.shape())
     }
 
     #[must_use]
@@ -123,8 +123,8 @@ impl Face {
         let inner_shape = self.inner.as_shape();
         let mut make_solid =
             b_rep_prim_api::MakeRevol::new_shape_ax1_real_bool(inner_shape, &revol_vec, angle, copy);
-        let revolved_shape = make_solid.pin_mut().shape();
-        let solid = topo_ds::solid(revolved_shape);
+        let revolved_shape = make_solid.shape();
+        let solid = unsafe { &*topo_ds::solid(revolved_shape) };
 
         Solid::from_solid(solid)
     }
@@ -140,18 +140,18 @@ impl Face {
         // each vertex once per adjacent edge, so adding a fillet at the same
         // vertex twice causes StdFail_NotDone.
         let mut shape_map = top_tools::IndexedMapOfShape::new();
-        top_exp::map_shapes(face_shape, top_abs::ShapeEnum::Vertex, shape_map.pin_mut());
+        top_exp::map_shapes(face_shape, top_abs::ShapeEnum::Vertex, &mut *shape_map);
 
         for i in 1..=shape_map.size() {
-            let vertex = topo_ds::vertex(shape_map.find_key(i));
-            make_fillet.pin_mut().add_fillet(vertex, radius);
+            let vertex = unsafe { &*topo_ds::vertex(shape_map.find_key(i)) };
+            make_fillet.add_fillet(vertex, radius);
         }
 
         let progress = message::ProgressRange::new();
-        make_fillet.pin_mut().build(&progress);
+        make_fillet.build(&progress);
 
-        let result_shape = make_fillet.pin_mut().shape();
-        let result_face = topo_ds::face(result_shape);
+        let result_shape = make_fillet.shape();
+        let result_face = unsafe { &*topo_ds::face(result_shape) };
 
         Self::from_face(result_face)
     }
@@ -168,26 +168,26 @@ impl Face {
         // Build vertex→edges mapping manually since map_shapes_and_ancestors
         // is not available in the current bindings.
         // Collect all edges and their endpoint vertex positions.
-        let mut edges: Vec<UniquePtr<topo_ds::Edge>> = Vec::new();
+        let mut edges: Vec<opencascade_sys::OwnedPtr<topo_ds::Edge>> = Vec::new();
         let mut edge_explorer = top_exp::Explorer::new_shape_shapeenum2(
             face_shape,
             top_abs::ShapeEnum::Edge.into(),
             top_abs::ShapeEnum::Shape.into(),
         );
         while edge_explorer.more() {
-            let edge = topo_ds::edge(edge_explorer.current());
+            let edge = unsafe { &*topo_ds::edge(edge_explorer.current()) };
             edges.push(edge.to_owned());
-            edge_explorer.pin_mut().next();
+            edge_explorer.next();
         }
 
         // Map vertex positions to edge indices
         let mut vertex_edges: HashMap<[i64; 3], Vec<usize>> = HashMap::new();
         for (i, edge) in edges.iter().enumerate() {
-            let first = top_exp::first_vertex(edge, false);
-            let last = top_exp::last_vertex(edge, false);
+            let first = unsafe { &*top_exp::first_vertex(edge.as_ptr(), false) };
+            let last = unsafe { &*top_exp::last_vertex(edge.as_ptr(), false) };
 
-            let first_pnt = b_rep::Tool::pnt(&first);
-            let last_pnt = b_rep::Tool::pnt(&last);
+            let first_pnt = b_rep::Tool::pnt(first);
+            let last_pnt = b_rep::Tool::pnt(last);
 
             let first_key = pos_key(&first_pnt);
             let last_key = pos_key(&last_pnt);
@@ -199,7 +199,7 @@ impl Face {
         // Chamfer at each vertex that connects exactly two edges.
         for edge_indices in vertex_edges.values() {
             if edge_indices.len() >= 2 {
-                make_fillet.pin_mut().add_chamfer_edge2_real2(
+                make_fillet.add_chamfer_edge2_real2(
                     &edges[edge_indices[0]],
                     &edges[edge_indices[1]],
                     distance_1,
@@ -209,10 +209,10 @@ impl Face {
         }
 
         let progress = message::ProgressRange::new();
-        make_fillet.pin_mut().build(&progress);
+        make_fillet.build(&progress);
 
-        let filleted_shape = make_fillet.pin_mut().shape();
-        let result_face = topo_ds::face(filleted_shape);
+        let filleted_shape = make_fillet.shape();
+        let result_face = unsafe { &*topo_ds::face(filleted_shape) };
 
         Self::from_face(result_face)
     }
@@ -222,10 +222,10 @@ impl Face {
     pub fn offset(&self, distance: f64, join_type: JoinType) -> Self {
         let mut make_offset =
             b_rep_offset_api::MakeOffset::new_face_jointype(&self.inner, join_type.to_geom_abs());
-        make_offset.pin_mut().perform(distance, 0.0);
+        make_offset.perform(distance, 0.0);
 
-        let offset_shape = make_offset.pin_mut().shape();
-        let result_wire = topo_ds::wire(offset_shape);
+        let offset_shape = make_offset.shape();
+        let result_wire = unsafe { &*topo_ds::wire(offset_shape) };
         let wire = Wire::from_wire(result_wire);
 
         wire.to_face()
@@ -237,8 +237,8 @@ impl Face {
         let profile_shape = self.inner.as_shape();
         let mut make_pipe = b_rep_offset_api::MakePipe::new_wire_shape(&path.inner, profile_shape);
 
-        let pipe_shape = make_pipe.pin_mut().shape();
-        let result_solid = topo_ds::solid(pipe_shape);
+        let pipe_shape = make_pipe.shape();
+        let result_solid = unsafe { &*topo_ds::solid(pipe_shape) };
 
         Solid::from_solid(result_solid)
     }
@@ -268,7 +268,7 @@ impl Face {
         let mut props = g_prop::GProps::new();
 
         let inner_shape = self.inner.as_shape();
-        b_rep_g_prop::surface_properties(inner_shape, props.pin_mut(), false, false);
+        unsafe { b_rep_g_prop::surface_properties(inner_shape, &mut *props, false, false) };
 
         let center = props.centre_of_mass();
 
@@ -288,7 +288,7 @@ impl Face {
         let mut normal = gp::Vec::new();
 
         let face = b_rep_g_prop::Face::new_face_bool(&self.inner, false);
-        face.normal(u, v, p.pin_mut(), normal.pin_mut());
+        face.normal(u, v, &mut p, &mut normal);
 
         dvec3(normal.x(), normal.y(), normal.z())
     }
@@ -324,8 +324,8 @@ impl Face {
         let mut fuse_operation =
             b_rep_algo_api::Fuse::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        let fuse_shape = fuse_operation.pin_mut().shape();
-        let compound = topo_ds::compound(fuse_shape);
+        let fuse_shape = fuse_operation.shape();
+        let compound = unsafe { &*topo_ds::compound(fuse_shape) };
 
         CompoundFace::from_compound(compound)
     }
@@ -339,8 +339,8 @@ impl Face {
         let mut common_operation =
             b_rep_algo_api::Common::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        let common_shape = common_operation.pin_mut().shape();
-        let compound = topo_ds::compound(common_shape);
+        let common_shape = common_operation.shape();
+        let compound = unsafe { &*topo_ds::compound(common_shape) };
 
         CompoundFace::from_compound(compound)
     }
@@ -353,8 +353,8 @@ impl Face {
         let mut cut_operation =
             b_rep_algo_api::Cut::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        let cut_shape = cut_operation.pin_mut().shape();
-        let compound = topo_ds::compound(cut_shape);
+        let cut_shape = cut_operation.shape();
+        let compound = unsafe { &*topo_ds::compound(cut_shape) };
 
         CompoundFace::from_compound(compound)
     }
@@ -363,7 +363,7 @@ impl Face {
         let mut props = g_prop::GProps::new();
 
         let inner_shape = self.inner.as_shape();
-        b_rep_g_prop::surface_properties(inner_shape, props.pin_mut(), false, false);
+        unsafe { b_rep_g_prop::surface_properties(inner_shape, &mut *props, false, false) };
 
         // Returns surface area, obviously.
         props.mass()
@@ -375,7 +375,7 @@ impl Face {
 
     #[must_use]
     pub fn outer_wire(&self) -> Wire {
-        let inner = b_rep_tools::outer_wire(&self.inner);
+        let inner = unsafe { opencascade_sys::OwnedPtr::from_raw(b_rep_tools::outer_wire(self.inner.as_ptr())) };
 
         Wire { inner }
     }
@@ -391,7 +391,7 @@ fn pos_key(pnt: &gp::Pnt) -> [i64; 3] {
 }
 
 pub struct CompoundFace {
-    inner: UniquePtr<topo_ds::Compound>,
+    inner: opencascade_sys::OwnedPtr<topo_ds::Compound>,
 }
 
 impl AsRef<CompoundFace> for CompoundFace {
@@ -404,8 +404,8 @@ impl From<Face> for CompoundFace {
     fn from(face: Face) -> Self {
         let mut compound = topo_ds::Compound::new();
         let builder = b_rep::Builder::new();
-        builder.make_compound(compound.pin_mut());
-        builder.add(compound.pin_mut().as_shape_mut(), face.inner.as_shape());
+        builder.make_compound(&mut compound);
+        builder.add(compound.as_shape_mut(), face.inner.as_shape());
         Self::from_compound(&compound)
     }
 }
@@ -421,7 +421,7 @@ impl CompoundFace {
         let shape = self.inner.as_shape();
         let shape = Shape::from_shape(shape).clean();
 
-        let compound = topo_ds::compound(&shape.inner);
+        let compound = unsafe { &*topo_ds::compound(shape.inner.as_ptr()) };
 
         Self::from_compound(compound)
     }
@@ -437,7 +437,7 @@ impl CompoundFace {
 
         let mut make_solid =
             b_rep_prim_api::MakePrism::new_shape_vec_bool2(inner_shape, &prism_vec, copy, canonize);
-        let extruded_shape = make_solid.pin_mut().shape();
+        let extruded_shape = make_solid.shape();
 
         Shape::from_shape(extruded_shape)
     }
@@ -453,7 +453,7 @@ impl CompoundFace {
 
         let mut make_solid =
             b_rep_prim_api::MakeRevol::new_shape_ax1_real_bool(inner_shape, &revol_axis, angle, copy);
-        let revolved_shape = make_solid.pin_mut().shape();
+        let revolved_shape = make_solid.shape();
 
         Shape::from_shape(revolved_shape)
     }
@@ -467,8 +467,8 @@ impl CompoundFace {
         let mut fuse_operation =
             b_rep_algo_api::Fuse::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        let fuse_shape = fuse_operation.pin_mut().shape();
-        let compound = topo_ds::compound(fuse_shape);
+        let fuse_shape = fuse_operation.shape();
+        let compound = unsafe { &*topo_ds::compound(fuse_shape) };
 
         CompoundFace::from_compound(compound)
     }
@@ -482,8 +482,8 @@ impl CompoundFace {
         let mut common_operation =
             b_rep_algo_api::Common::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        let common_shape = common_operation.pin_mut().shape();
-        let compound = topo_ds::compound(common_shape);
+        let common_shape = common_operation.shape();
+        let compound = unsafe { &*topo_ds::compound(common_shape) };
 
         CompoundFace::from_compound(compound)
     }
@@ -497,8 +497,8 @@ impl CompoundFace {
         let mut cut_operation =
             b_rep_algo_api::Cut::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        let cut_shape = cut_operation.pin_mut().shape();
-        let compound = topo_ds::compound(cut_shape);
+        let cut_shape = cut_operation.shape();
+        let compound = unsafe { &*topo_ds::compound(cut_shape) };
 
         CompoundFace::from_compound(compound)
     }
@@ -509,7 +509,7 @@ impl CompoundFace {
 
         shape.set_global_translation(translation);
 
-        let compound = topo_ds::compound(&shape.inner);
+        let compound = unsafe { &*topo_ds::compound(shape.inner.as_ptr()) };
         *self = Self::from_compound(compound);
     }
 }

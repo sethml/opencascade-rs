@@ -1,10 +1,9 @@
 use crate::primitives::make_point;
-use cxx::UniquePtr;
 use glam::DVec3;
 use opencascade_sys::{geom, t_colgp};
 
 pub struct Surface {
-    pub(crate) inner: UniquePtr<geom::HandleGeomSurface>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<geom::HandleGeomSurface>,
 }
 
 impl Surface {
@@ -22,7 +21,7 @@ impl Surface {
         for (row, poles) in poles.iter().enumerate() {
             for (column, pole) in poles.iter().enumerate() {
                 let pole = &make_point(*pole);
-                pole_array.pin_mut().set_value(row as i32, column as i32, pole);
+                pole_array.set_value(row as i32, column as i32, pole);
             }
         }
 

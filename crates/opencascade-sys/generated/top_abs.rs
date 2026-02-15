@@ -10,28 +10,39 @@ pub fn compose(
     Or1: crate::top_abs::Orientation,
     Or2: crate::top_abs::Orientation,
 ) -> crate::top_abs::Orientation {
-    crate::top_abs::Orientation::try_from(crate::ffi::compose(Or1.into(), Or2.into())).unwrap()
+    unsafe {
+        crate::top_abs::Orientation::try_from(crate::ffi::compose(Or1.into(), Or2.into())).unwrap()
+    }
 }
 pub fn reverse_4(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientation {
-    crate::top_abs::Orientation::try_from(crate::ffi::reverse_4(Or.into())).unwrap()
+    unsafe { crate::top_abs::Orientation::try_from(crate::ffi::reverse_4(Or.into())).unwrap() }
 }
 pub fn complement(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientation {
-    crate::top_abs::Orientation::try_from(crate::ffi::complement(Or.into())).unwrap()
+    unsafe { crate::top_abs::Orientation::try_from(crate::ffi::complement(Or.into())).unwrap() }
 }
-pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> String {
-    crate::ffi::shape_type_to_string(theType.into())
+pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> *const std::ffi::c_char {
+    unsafe { crate::ffi::shape_type_to_string(theType.into()) }
 }
-pub fn shape_type_from_string(theTypeString: &str) -> crate::top_abs::ShapeEnum {
-    crate::top_abs::ShapeEnum::try_from(crate::ffi::shape_type_from_string(theTypeString)).unwrap()
+pub fn shape_type_from_string(theTypeString: *const std::ffi::c_char) -> crate::top_abs::ShapeEnum {
+    unsafe {
+        crate::top_abs::ShapeEnum::try_from(crate::ffi::shape_type_from_string(theTypeString))
+            .unwrap()
+    }
 }
-pub fn shape_orientation_to_string(theOrientation: crate::top_abs::Orientation) -> String {
-    crate::ffi::shape_orientation_to_string(theOrientation.into())
+pub fn shape_orientation_to_string(
+    theOrientation: crate::top_abs::Orientation,
+) -> *const std::ffi::c_char {
+    unsafe { crate::ffi::shape_orientation_to_string(theOrientation.into()) }
 }
-pub fn shape_orientation_from_string(theOrientationString: &str) -> crate::top_abs::Orientation {
-    crate::top_abs::Orientation::try_from(crate::ffi::shape_orientation_from_string(
-        theOrientationString,
-    ))
-    .unwrap()
+pub fn shape_orientation_from_string(
+    theOrientationString: *const std::ffi::c_char,
+) -> crate::top_abs::Orientation {
+    unsafe {
+        crate::top_abs::Orientation::try_from(crate::ffi::shape_orientation_from_string(
+            theOrientationString,
+        ))
+        .unwrap()
+    }
 }
 
 /// Identifies the orientation of a topological shape.

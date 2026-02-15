@@ -52,9 +52,15 @@ impl TryFrom<i32> for IType {
 /// 2 surfaces.
 pub use crate::ffi::IntPatch_Intersection as Intersection;
 
+unsafe impl crate::CppDeletable for Intersection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_Intersection_destructor(ptr);
+    }
+}
+
 impl Intersection {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IntPatch_Intersection_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_Intersection_ctor()) }
     }
 
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
@@ -64,8 +70,10 @@ impl Intersection {
         D2: &crate::ffi::HandleAdaptor3dTopolTool,
         TolArc: f64,
         TolTang: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntPatch_Intersection_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(S1, D1, S2, D2, TolArc, TolTang)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_Intersection_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(S1, D1, S2, D2, TolArc, TolTang))
+        }
     }
 
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
@@ -73,10 +81,161 @@ impl Intersection {
         D1: &crate::ffi::HandleAdaptor3dTopolTool,
         TolArc: f64,
         TolTang: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntPatch_Intersection_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
-            S1, D1, TolArc, TolTang,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_Intersection_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(S1, D1, TolArc, TolTang))
+        }
+    }
+
+    /// Set the tolerances used by the algorithms:
+    /// --- Implicit   - Parametric
+    /// --- Parametric - Parametric
+    /// --- Implicit   - Implicit
+    ///
+    /// TolArc   is  used  to   compute  the intersections
+    /// between the restrictions   of  a  surface   and  a
+    /// walking line.
+    ///
+    /// TolTang is used to compute the points on a walking
+    /// line, and in geometric algorithms.
+    ///
+    /// Fleche  is  a  parameter   used in    the  walking
+    /// algorithms to provide small curvatures on a line.
+    ///
+    /// UVMaxStep is  a  parameter   used in  the  walking
+    /// algorithms  to    compute the  distance between to
+    /// points in their respective parametric spaces.
+    pub fn set_tolerances(&mut self, TolArc: f64, TolTang: f64, UVMaxStep: f64, Fleche: f64) {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_set_tolerances(
+                self as *mut Self,
+                TolArc,
+                TolTang,
+                UVMaxStep,
+                Fleche,
+            )
+        }
+    }
+
+    /// Flag theIsReqToKeepRLine has been entered only for
+    /// compatibility with TopOpeBRep package. It shall be deleted
+    /// after deleting TopOpeBRep.
+    /// When intersection result returns IntPatch_RLine and another
+    /// IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==TRUE)
+    /// will always keep both lines even if they are coincided.
+    /// Flag theIsReqToPostWLProc has been entered only for
+    /// compatibility with TopOpeBRep package. It shall be deleted
+    /// after deleting TopOpeBRep.
+    /// If theIsReqToPostWLProc == FALSE, then we will work with Walking-line
+    /// obtained after intersection algorithm directly (without any post-processing).
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_bool3(
+        &mut self,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+        isGeomInt: bool,
+        theIsReqToKeepRLine: bool,
+        theIsReqToPostWLProc: bool,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_bool3(self as *mut Self, S1, D1, S2, D2, TolArc, TolTang, isGeomInt, theIsReqToKeepRLine, theIsReqToPostWLProc)
+        }
+    }
+
+    /// Perform with start point
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real6(
+        &mut self,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        U1: f64,
+        V1: f64,
+        U2: f64,
+        V2: f64,
+        TolArc: f64,
+        TolTang: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real6(self as *mut Self, S1, D1, S2, D2, U1, V1, U2, V2, TolArc, TolTang)
+        }
+    }
+
+    /// Uses for finding self-intersected surfaces.
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
+        &mut self,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(self as *mut Self, S1, D1, TolArc, TolTang)
+        }
+    }
+
+    /// Returns True if the calculus was successful.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Intersection_is_done(self as *const Self) }
+    }
+
+    /// Returns true if the is no intersection.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Intersection_is_empty(self as *const Self) }
+    }
+
+    /// Returns True if the two patches are considered as
+    /// entirely tangent, i-e every restriction arc of one
+    /// patch is inside the geometric base of the other patch.
+    pub fn tangent_faces(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Intersection_tangent_faces(self as *const Self) }
+    }
+
+    /// Returns True when the TangentFaces returns True and the
+    /// normal vectors evaluated at a point on the first and the
+    /// second surface are opposite.
+    /// The exception DomainError is raised if TangentFaces
+    /// returns False.
+    pub fn opposite_faces(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Intersection_opposite_faces(self as *const Self) }
+    }
+
+    /// Returns the number of "single" points.
+    pub fn nb_pnts(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_Intersection_nb_pnts(self as *const Self) }
+    }
+
+    /// Returns the point of range Index.
+    /// An exception is raised if Index<=0 or Index>NbPnt.
+    pub fn point(&self, Index: i32) -> &crate::ffi::IntPatch_Point {
+        unsafe { &*(crate::ffi::IntPatch_Intersection_point(self as *const Self, Index)) }
+    }
+
+    /// Returns the number of intersection lines.
+    pub fn nb_lines(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_Intersection_nb_lines(self as *const Self) }
+    }
+
+    /// Returns the line of range Index.
+    /// An exception is raised if Index<=0 or Index>NbLine.
+    pub fn line(&self, Index: i32) -> &crate::ffi::HandleIntPatchLine {
+        unsafe { &*(crate::ffi::IntPatch_Intersection_line(self as *const Self, Index)) }
+    }
+
+    /// Dump of each result line.
+    /// Mode for more accurate dumps.
+    pub fn dump(
+        &self,
+        Mode: i32,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+    ) {
+        unsafe { crate::ffi::IntPatch_Intersection_dump(self as *const Self, Mode, S1, D1, S2, D2) }
     }
 
     /// Checks if surface theS1 has degenerated boundary (dS/du or dS/dv = 0) and
@@ -88,7 +247,9 @@ impl Intersection {
         theS2: &crate::ffi::HandleAdaptor3dSurface,
         theDist: &mut f64,
     ) -> bool {
-        crate::ffi::IntPatch_Intersection_check_singular_points(theS1, theD1, theS2, theDist)
+        unsafe {
+            crate::ffi::IntPatch_Intersection_check_singular_points(theS1, theD1, theS2, theDist)
+        }
     }
 
     /// Calculates recommended value for myUVMaxStep depending on surfaces and their domains
@@ -98,7 +259,7 @@ impl Intersection {
         theS2: &crate::ffi::HandleAdaptor3dSurface,
         theD2: &crate::ffi::HandleAdaptor3dTopolTool,
     ) -> f64 {
-        crate::ffi::IntPatch_Intersection_define_uv_max_step(theS1, theD1, theS2, theD2)
+        unsafe { crate::ffi::IntPatch_Intersection_define_uv_max_step(theS1, theD1, theS2, theD2) }
     }
 }
 
@@ -115,11 +276,36 @@ impl Intersection {
 /// defined in the class WLine.
 pub use crate::ffi::IntPatch_Line as Line;
 
+unsafe impl crate::CppDeletable for Line {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_Line_destructor(ptr);
+    }
+}
+
 impl Line {
+    /// To set the values returned by IsUIsoS1,....
+    /// The default values are False.
+    pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
+        unsafe {
+            crate::ffi::IntPatch_Line_set_value(self as *mut Self, Uiso1, Viso1, Uiso2, Viso2)
+        }
+    }
+
     /// Returns the type of geometry 3d (Line, Circle, Parabola,
     /// Hyperbola, Ellipse, Analytic, Walking, Restriction)
     pub fn arc_type(&self) -> crate::int_patch::IType {
-        crate::int_patch::IType::try_from(crate::ffi::IntPatch_Line_arc_type(self)).unwrap()
+        unsafe {
+            crate::int_patch::IType::try_from(crate::ffi::IntPatch_Line_arc_type(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Returns TRUE if the intersection is a line of tangency
+    /// between the 2 patches.
+    pub fn is_tangent(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Line_is_tangent(self as *const Self) }
     }
 
     /// Returns the type of the transition of the line
@@ -142,16 +328,24 @@ impl Line {
     /// If one of the transition is TOUCH or UNDECIDED, the other
     /// one has got the same value.
     pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
-        crate::int_surf::TypeTrans::try_from(crate::ffi::IntPatch_Line_transition_on_s1(self))
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(crate::ffi::IntPatch_Line_transition_on_s1(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Returns the type of the transition of the line
     /// for the second surface. The transition is "constant"
     /// along the line.
     pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
-        crate::int_surf::TypeTrans::try_from(crate::ffi::IntPatch_Line_transition_on_s2(self))
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(crate::ffi::IntPatch_Line_transition_on_s2(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Returns the situation (INSIDE/OUTSIDE/UNKNOWN) of
@@ -159,7 +353,12 @@ impl Line {
     /// TransitionOnS1 or TransitionOnS2 returns TOUCH.
     /// Otherwise, an exception is raised.
     pub fn situation_s1(&self) -> crate::int_surf::Situation {
-        crate::int_surf::Situation::try_from(crate::ffi::IntPatch_Line_situation_s1(self)).unwrap()
+        unsafe {
+            crate::int_surf::Situation::try_from(crate::ffi::IntPatch_Line_situation_s1(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Returns the situation (INSIDE/OUTSIDE/UNKNOWN) of
@@ -167,36 +366,75 @@ impl Line {
     /// TransitionOnS1 or TransitionOnS2 returns TOUCH.
     /// Otherwise, an exception is raised.
     pub fn situation_s2(&self) -> crate::int_surf::Situation {
-        crate::int_surf::Situation::try_from(crate::ffi::IntPatch_Line_situation_s2(self)).unwrap()
+        unsafe {
+            crate::int_surf::Situation::try_from(crate::ffi::IntPatch_Line_situation_s2(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::IntPatch_Line_get_type_name()
+    /// Returns TRUE if the intersection is a U isoparametric curve
+    /// on the first patch.
+    pub fn is_u_iso_on_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Line_is_u_iso_on_s1(self as *const Self) }
+    }
+
+    /// Returns TRUE if the intersection is a V isoparametric curve
+    /// on the first patch.
+    pub fn is_v_iso_on_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Line_is_v_iso_on_s1(self as *const Self) }
+    }
+
+    /// Returns TRUE if the intersection is a U isoparametric curve
+    /// on the second patch.
+    pub fn is_u_iso_on_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Line_is_u_iso_on_s2(self as *const Self) }
+    }
+
+    /// Returns TRUE if the intersection is a V isoparametric curve
+    /// on the second patch.
+    pub fn is_v_iso_on_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Line_is_v_iso_on_s2(self as *const Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntPatch_Line_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::IntPatch_Line_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::IntPatch_Line_get_type_descriptor()
+        unsafe { &*(crate::ffi::IntPatch_Line_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleIntPatchLine> {
-        crate::ffi::IntPatch_Line_to_handle(obj)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIntPatchLine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_Line_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleIntPatchLine;
 
+unsafe impl crate::CppDeletable for HandleIntPatchLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIntPatchLine_destructor(ptr);
+    }
+}
+
 impl HandleIntPatchLine {
     /// Dereference this Handle to access the underlying IntPatch_Line
     pub fn get(&self) -> &crate::ffi::IntPatch_Line {
-        crate::ffi::HandleIntPatchLine_get(self)
+        unsafe { &*(crate::ffi::HandleIntPatchLine_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying IntPatch_Line
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::IntPatch_Line> {
-        crate::ffi::HandleIntPatchLine_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IntPatch_Line {
+        unsafe { &mut *(crate::ffi::HandleIntPatchLine_get_mut(self as *mut Self)) }
     }
 }
 
@@ -209,10 +447,252 @@ impl HandleIntPatchLine {
 /// the Value method) and logical information.
 pub use crate::ffi::IntPatch_Point as Point;
 
+unsafe impl crate::CppDeletable for Point {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_Point_destructor(ptr);
+    }
+}
+
 impl Point {
     /// Empty constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IntPatch_Point_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_Point_ctor()) }
+    }
+
+    /// Sets the values of a point which is on no domain,
+    /// when both surfaces are implicit ones.
+    /// If Tangent is True, the point is a point of tangency
+    /// between the surfaces.
+    pub fn set_value_pnt_real_bool(&mut self, Pt: &crate::ffi::gp_Pnt, Tol: f64, Tangent: bool) {
+        unsafe {
+            crate::ffi::IntPatch_Point_set_value_pnt_real_bool(self as *mut Self, Pt, Tol, Tangent)
+        }
+    }
+
+    pub fn set_value_pnt(&mut self, Pt: &crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::IntPatch_Point_set_value_pnt(self as *mut Self, Pt) }
+    }
+
+    /// Sets the value of <pt> member
+    pub fn set_value_pnton2s(&mut self, thePOn2S: &crate::ffi::IntSurf_PntOn2S) {
+        unsafe { crate::ffi::IntPatch_Point_set_value_pnton2s(self as *mut Self, thePOn2S) }
+    }
+
+    pub fn set_tolerance(&mut self, Tol: f64) {
+        unsafe { crate::ffi::IntPatch_Point_set_tolerance(self as *mut Self, Tol) }
+    }
+
+    /// Sets the values of the parameters of the point
+    /// on each surface.
+    pub fn set_parameters(&mut self, U1: f64, V1: f64, U2: f64, V2: f64) {
+        unsafe { crate::ffi::IntPatch_Point_set_parameters(self as *mut Self, U1, V1, U2, V2) }
+    }
+
+    /// Set the value of the parameter on the intersection line.
+    pub fn set_parameter(&mut self, Para: f64) {
+        unsafe { crate::ffi::IntPatch_Point_set_parameter(self as *mut Self, Para) }
+    }
+
+    /// Sets the values of a point which is a vertex on
+    /// the initial facet of restriction of one
+    /// of the surface.
+    /// If OnFirst is True, the point is on the domain of the
+    /// first patch, otherwise the point is on the domain of the
+    /// second surface.
+    pub fn set_vertex(&mut self, OnFirst: bool, V: &crate::ffi::HandleAdaptor3dHVertex) {
+        unsafe { crate::ffi::IntPatch_Point_set_vertex(self as *mut Self, OnFirst, V) }
+    }
+
+    /// Sets the values of a point which is on one of the domain,
+    /// when both surfaces are implicit ones.
+    /// If OnFirst is True, the point is on the domain of the
+    /// first patch, otherwise the point is on the domain of the
+    /// second surface.
+    pub fn set_arc(
+        &mut self,
+        OnFirst: bool,
+        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        Param: f64,
+        TLine: &crate::ffi::IntSurf_Transition,
+        TArc: &crate::ffi::IntSurf_Transition,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Point_set_arc(self as *mut Self, OnFirst, A, Param, TLine, TArc)
+        }
+    }
+
+    /// Sets (or unsets) the point as a point on several
+    /// intersection line.
+    pub fn set_multiple(&mut self, IsMult: bool) {
+        unsafe { crate::ffi::IntPatch_Point_set_multiple(self as *mut Self, IsMult) }
+    }
+
+    /// Returns the intersection point (geometric information).
+    pub fn value(&self) -> &crate::ffi::gp_Pnt {
+        unsafe { &*(crate::ffi::IntPatch_Point_value(self as *const Self)) }
+    }
+
+    /// This method returns the parameter of the point
+    /// on the intersection line.
+    /// If the points does not belong to an intersection line,
+    /// the value returned does not have any sens.
+    pub fn parameter_on_line(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_Point_parameter_on_line(self as *const Self) }
+    }
+
+    /// This method returns the fuzziness on the point.
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_Point_tolerance(self as *const Self) }
+    }
+
+    /// Returns True if the Point is a tangency point between
+    /// the surfaces.
+    /// If the Point is on one of the domain (IsOnDomS1 returns
+    /// True or IsOnDomS2 returns True), an exception is raised.
+    pub fn is_tangency_point(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Point_is_tangency_point(self as *const Self) }
+    }
+
+    /// Returns the parameters on the first surface of the point.
+    pub fn parameters_on_s1(&self, U1: &mut f64, V1: &mut f64) {
+        unsafe { crate::ffi::IntPatch_Point_parameters_on_s1(self as *const Self, U1, V1) }
+    }
+
+    /// Returns the parameters on the second surface of the point.
+    pub fn parameters_on_s2(&self, U2: &mut f64, V2: &mut f64) {
+        unsafe { crate::ffi::IntPatch_Point_parameters_on_s2(self as *const Self, U2, V2) }
+    }
+
+    /// Returns True if the point belongs to several intersection
+    /// lines.
+    pub fn is_multiple(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Point_is_multiple(self as *const Self) }
+    }
+
+    /// Returns TRUE if the point is on a boundary of the domain
+    /// of the first patch.
+    pub fn is_on_dom_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Point_is_on_dom_s1(self as *const Self) }
+    }
+
+    /// Returns TRUE if the point is a vertex on the initial
+    /// restriction facet of the first surface.
+    pub fn is_vertex_on_s1(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Point_is_vertex_on_s1(self as *const Self) }
+    }
+
+    /// Returns the information about the point when it is
+    /// on the domain of the first patch, i-e when the function
+    /// IsVertexOnS1 returns True.
+    /// Otherwise, an exception is raised.
+    pub fn vertex_on_s1(&self) -> &crate::ffi::HandleAdaptor3dHVertex {
+        unsafe { &*(crate::ffi::IntPatch_Point_vertex_on_s1(self as *const Self)) }
+    }
+
+    /// Returns the arc of restriction containing the
+    /// vertex.
+    /// The exception DomainError is raised if
+    /// IsOnDomS1 returns False.
+    pub fn arc_on_s1(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+        unsafe { &*(crate::ffi::IntPatch_Point_arc_on_s1(self as *const Self)) }
+    }
+
+    /// Returns the transition of the point on the
+    /// intersection line with the arc on S1.
+    /// The exception DomainError is raised if IsOnDomS1
+    /// returns False.
+    pub fn transition_line_arc1(&self) -> &crate::ffi::IntSurf_Transition {
+        unsafe { &*(crate::ffi::IntPatch_Point_transition_line_arc1(self as *const Self)) }
+    }
+
+    /// Returns the transition between the intersection line
+    /// returned by the method Line and the arc on S1 returned
+    /// by ArcOnS1().
+    /// The exception DomainError is raised if
+    /// IsOnDomS1 returns False.
+    pub fn transition_on_s1(&self) -> &crate::ffi::IntSurf_Transition {
+        unsafe { &*(crate::ffi::IntPatch_Point_transition_on_s1(self as *const Self)) }
+    }
+
+    /// Returns the parameter of the point on the
+    /// arc returned by the method ArcOnS2.
+    /// The exception DomainError is raised if
+    /// IsOnDomS1 returns False.
+    pub fn parameter_on_arc1(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_Point_parameter_on_arc1(self as *const Self) }
+    }
+
+    /// Returns TRUE if the point is on a boundary of the domain
+    /// of the second patch.
+    pub fn is_on_dom_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Point_is_on_dom_s2(self as *const Self) }
+    }
+
+    /// Returns TRUE if the point is a vertex on the initial
+    /// restriction facet of the first surface.
+    pub fn is_vertex_on_s2(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Point_is_vertex_on_s2(self as *const Self) }
+    }
+
+    /// Returns the information about the point when it is
+    /// on the domain of the second patch, i-e when the function
+    /// IsVertexOnS2 returns True.
+    /// Otherwise, an exception is raised.
+    pub fn vertex_on_s2(&self) -> &crate::ffi::HandleAdaptor3dHVertex {
+        unsafe { &*(crate::ffi::IntPatch_Point_vertex_on_s2(self as *const Self)) }
+    }
+
+    /// Returns the arc of restriction containing the
+    /// vertex.
+    /// The exception DomainError is raised if
+    /// IsOnDomS2 returns False.
+    pub fn arc_on_s2(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+        unsafe { &*(crate::ffi::IntPatch_Point_arc_on_s2(self as *const Self)) }
+    }
+
+    /// Returns the transition of the point on the
+    /// intersection line with the arc on S2.
+    /// The exception DomainError is raised if IsOnDomS2
+    /// returns False.
+    pub fn transition_line_arc2(&self) -> &crate::ffi::IntSurf_Transition {
+        unsafe { &*(crate::ffi::IntPatch_Point_transition_line_arc2(self as *const Self)) }
+    }
+
+    /// Returns the transition between the intersection line
+    /// returned by the method Line and the arc on S2 returned
+    /// by ArcOnS2.
+    /// The exception DomainError is raised if
+    /// IsOnDomS2 returns False.
+    pub fn transition_on_s2(&self) -> &crate::ffi::IntSurf_Transition {
+        unsafe { &*(crate::ffi::IntPatch_Point_transition_on_s2(self as *const Self)) }
+    }
+
+    /// Returns the parameter of the point on the
+    /// arc returned by the method ArcOnS2.
+    /// The exception DomainError is raised if
+    /// IsOnDomS2 returns False.
+    pub fn parameter_on_arc2(&self) -> f64 {
+        unsafe { crate::ffi::IntPatch_Point_parameter_on_arc2(self as *const Self) }
+    }
+
+    /// Returns the PntOn2S
+    /// (geometric Point and the parameters)
+    pub fn pnt_on2_s(&self) -> &crate::ffi::IntSurf_PntOn2S {
+        unsafe { &*(crate::ffi::IntPatch_Point_pnt_on2_s(self as *const Self)) }
+    }
+
+    /// Returns the parameters on the first and on the
+    /// second surface of the point.
+    pub fn parameters(&self, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64) {
+        unsafe { crate::ffi::IntPatch_Point_parameters(self as *const Self, U1, V1, U2, V2) }
+    }
+
+    pub fn reverse_transition(&mut self) {
+        unsafe { crate::ffi::IntPatch_Point_reverse_transition(self as *mut Self) }
+    }
+
+    pub fn dump(&self) {
+        unsafe { crate::ffi::IntPatch_Point_dump(self as *const Self) }
     }
 }
 

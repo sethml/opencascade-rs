@@ -2,7 +2,7 @@
 //!
 //! This script:
 //! 1. Uses pre-generated code from the `generated/` directory
-//! 2. Builds with cxx_build
+//! 2. Compiles wrappers.cpp with cc
 //!
 //! To regenerate the bindings, run:
 //!   DYLD_LIBRARY_PATH=/Library/Developer/CommandLineTools/usr/lib cargo run -p opencascade-binding-generator -- \
@@ -43,7 +43,6 @@ const OCCT_LIBS: &[&str] = &[
 fn main() {
     let manifest_dir = PathBuf::from(std::env::var("CARGO_MANIFEST_DIR").expect("CARGO_MANIFEST_DIR not set"));
     let gen_dir = manifest_dir.join("generated");
-    let src_dir = manifest_dir.join("src");
 
     let target = std::env::var("TARGET").expect("No TARGET environment variable defined");
     let is_windows = target.to_lowercase().contains("windows");
@@ -63,34 +62,15 @@ fn main() {
         println!("cargo:rustc-link-lib=dylib=user32");
     }
 
-    // Find all generated .rs files in generated/ directory
-    // In unified mode, only ffi.rs contains the CXX bridge
-    let ffi_rs_path = gen_dir.join("ffi.rs");
-    let rust_files: Vec<PathBuf> = if ffi_rs_path.exists() {
-        // Unified mode: only ffi.rs has the CXX bridge
-        vec![ffi_rs_path]
-    } else {
-        // Legacy per-module mode: all .rs files have CXX bridges
-        std::fs::read_dir(&gen_dir)
-            .expect("Failed to read generated directory")
-            .filter_map(|entry| {
-                let entry = entry.ok()?;
-                let path = entry.path();
-                if path.extension()? == "rs" && path.file_name()? != "lib.rs" {
-                    Some(path)
-                } else {
-                    None
-                }
-            })
-            .collect()
-    };
-
-    if rust_files.is_empty() {
-        panic!("No generated .rs files found in {}. Run the binding generator first.", gen_dir.display());
+    // Find the generated wrappers.cpp file
+    let wrappers_cpp = gen_dir.join("wrappers.cpp");
+    if !wrappers_cpp.exists() {
+        panic!("Generated wrappers.cpp not found at {}. Run the binding generator first.", wrappers_cpp.display());
     }
 
-    // Build with CXX
-    let mut build = cxx_build::bridges(&rust_files);
+    // Build with cc
+    let mut build = cc::Build::new();
+    build.file(&wrappers_cpp);
 
     if is_windows_gnu {
         build.define("OCC_CONVERT_SIGNALS", "TRUE");
@@ -102,7 +82,6 @@ fn main() {
         .define("_USE_MATH_DEFINES", "TRUE")
         .include(&occt_config.include_dir)
         .include(&gen_dir)
-        .include(&src_dir)
         .debug(false)
         .compile("opencascade_sys_wrapper");
 
@@ -110,11 +89,7 @@ fn main() {
 
     // Rerun if generated files change
     println!("cargo:rerun-if-changed=generated");
-    for rs_file in &rust_files {
-        println!("cargo:rerun-if-changed={}", rs_file.display());
-    }
-    // Rerun if common.hxx changes
-    println!("cargo:rerun-if-changed={}", src_dir.join("common.hxx").display());
+    println!("cargo:rerun-if-changed={}", wrappers_cpp.display());
 }
 
 struct OcctConfig {

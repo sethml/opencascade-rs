@@ -77,15 +77,33 @@ impl TryFrom<i32> for ConstructionError {
 /// fillet on planar wire.
 pub use crate::ffi::ChFi2d_Builder as Builder;
 
+unsafe impl crate::CppDeletable for Builder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFi2d_Builder_destructor(ptr);
+    }
+}
+
 impl Builder {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ChFi2d_Builder_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_ctor()) }
     }
 
     /// The face  <F> can be build  on a closed or an open
     /// wire.
-    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
-        crate::ffi::ChFi2d_Builder_ctor_face(F)
+    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_ctor_face(F)) }
+    }
+
+    pub fn init_face(&mut self, F: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::ChFi2d_Builder_init_face(self as *mut Self, F) }
+    }
+
+    pub fn init_face2(
+        &mut self,
+        RefFace: &crate::ffi::TopoDS_Face,
+        ModFace: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe { crate::ffi::ChFi2d_Builder_init_face2(self as *mut Self, RefFace, ModFace) }
     }
 
     /// Add  a fillet  of   radius  <Radius> on  the  wire
@@ -94,31 +112,48 @@ impl Builder {
     /// edge has  sense only   if the status   <status> is
     /// <IsDone>
     pub fn add_fillet(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         V: &crate::ffi::TopoDS_Vertex,
         Radius: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
-        crate::ffi::ChFi2d_Builder_add_fillet(self, V, Radius)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_add_fillet(
+                self as *mut Self,
+                V,
+                Radius,
+            ))
+        }
     }
 
     /// modify the fillet radius and return the new fillet
     /// edge. this    edge has sense  only if   the status
     /// <status> is <IsDone>.
     pub fn modify_fillet(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Fillet: &crate::ffi::TopoDS_Edge,
         Radius: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
-        crate::ffi::ChFi2d_Builder_modify_fillet(self, Fillet, Radius)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_modify_fillet(
+                self as *mut Self,
+                Fillet,
+                Radius,
+            ))
+        }
     }
 
     /// removes the fillet <Fillet> and returns the vertex
     /// connecting the two adjacent edges to  this fillet.
     pub fn remove_fillet(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Fillet: &crate::ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi2d_Builder_remove_fillet(self, Fillet)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_remove_fillet(
+                self as *mut Self,
+                Fillet,
+            ))
+        }
     }
 
     /// Add a chamfer on  the  wire between the two  edges
@@ -126,13 +161,21 @@ impl Builder {
     /// chamfer  edge. This  edge  has  sense only if  the
     /// status <status> is <IsDone>.
     pub fn add_chamfer_edge2_real2(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         E1: &crate::ffi::TopoDS_Edge,
         E2: &crate::ffi::TopoDS_Edge,
         D1: f64,
         D2: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
-        crate::ffi::ChFi2d_Builder_add_chamfer_edge2_real2(self, E1, E2, D1, D2)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_add_chamfer_edge2_real2(
+                self as *mut Self,
+                E1,
+                E2,
+                D1,
+                D2,
+            ))
+        }
     }
 
     /// Add  a chamfer on the   wire between the two edges
@@ -143,13 +186,21 @@ impl Builder {
     /// <status> is <IsDone>.
     /// Warning: The value of <Ang> must be expressed in Radian.
     pub fn add_chamfer_edge_vertex_real2(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         E: &crate::ffi::TopoDS_Edge,
         V: &crate::ffi::TopoDS_Vertex,
         D: f64,
         Ang: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
-        crate::ffi::ChFi2d_Builder_add_chamfer_edge_vertex_real2(self, E, V, D, Ang)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_add_chamfer_edge_vertex_real2(
+                self as *mut Self,
+                E,
+                V,
+                D,
+                Ang,
+            ))
+        }
     }
 
     /// modify the chamfer <Chamfer>  and returns  the new
@@ -157,14 +208,23 @@ impl Builder {
     /// This edge as sense only  if the status <status> is
     /// <IsDone>.
     pub fn modify_chamfer_edge3_real2(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Chamfer: &crate::ffi::TopoDS_Edge,
         E1: &crate::ffi::TopoDS_Edge,
         E2: &crate::ffi::TopoDS_Edge,
         D1: f64,
         D2: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
-        crate::ffi::ChFi2d_Builder_modify_chamfer_edge3_real2(self, Chamfer, E1, E2, D1, D2)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_modify_chamfer_edge3_real2(
+                self as *mut Self,
+                Chamfer,
+                E1,
+                E2,
+                D1,
+                D2,
+            ))
+        }
     }
 
     /// modify the  chamfer <Chamfer>  and returns the new
@@ -172,32 +232,88 @@ impl Builder {
     /// status <status>   is  <IsDone>.
     /// Warning: The value of <Ang> must be expressed in Radian.
     pub fn modify_chamfer_edge2_real2(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Chamfer: &crate::ffi::TopoDS_Edge,
         E: &crate::ffi::TopoDS_Edge,
         D: f64,
         Ang: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
-        crate::ffi::ChFi2d_Builder_modify_chamfer_edge2_real2(self, Chamfer, E, D, Ang)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_modify_chamfer_edge2_real2(
+                self as *mut Self,
+                Chamfer,
+                E,
+                D,
+                Ang,
+            ))
+        }
     }
 
     /// removes   the chamfer  <Chamfer>   and returns the
     /// vertex connecting  the two adjacent  edges to this
     /// chamfer.
     pub fn remove_chamfer(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Chamfer: &crate::ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ChFi2d_Builder_remove_chamfer(self, Chamfer)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_remove_chamfer(
+                self as *mut Self,
+                Chamfer,
+            ))
+        }
     }
 
     /// returns the modified face
-    pub fn result(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {
-        crate::ffi::ChFi2d_Builder_result(self)
+    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_result(self as *const Self)) }
+    }
+
+    pub fn is_modified(&self, E: &crate::ffi::TopoDS_Edge) -> bool {
+        unsafe { crate::ffi::ChFi2d_Builder_is_modified(self as *const Self, E) }
+    }
+
+    /// returns the list of new edges
+    pub fn fillet_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
+        unsafe { &*(crate::ffi::ChFi2d_Builder_fillet_edges(self as *const Self)) }
+    }
+
+    pub fn nb_fillet(&self) -> i32 {
+        unsafe { crate::ffi::ChFi2d_Builder_nb_fillet(self as *const Self) }
+    }
+
+    /// returns the list of new edges
+    pub fn chamfer_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
+        unsafe { &*(crate::ffi::ChFi2d_Builder_chamfer_edges(self as *const Self)) }
+    }
+
+    pub fn nb_chamfer(&self) -> i32 {
+        unsafe { crate::ffi::ChFi2d_Builder_nb_chamfer(self as *const Self) }
+    }
+
+    pub fn has_descendant(&self, E: &crate::ffi::TopoDS_Edge) -> bool {
+        unsafe { crate::ffi::ChFi2d_Builder_has_descendant(self as *const Self, E) }
+    }
+
+    /// returns the modified edge if <E> has descendant or
+    /// <E> in the other case.
+    pub fn descendant_edge(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Edge {
+        unsafe { &*(crate::ffi::ChFi2d_Builder_descendant_edge(self as *const Self, E)) }
+    }
+
+    /// Returns the parent edge of  <E>
+    /// Warning: If <E>is a basis edge,  the returned edge would be
+    /// equal to <E>
+    pub fn basis_edge(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Edge {
+        unsafe { &*(crate::ffi::ChFi2d_Builder_basis_edge(self as *const Self, E)) }
     }
 
     pub fn status(&self) -> crate::ch_fi2d::ConstructionError {
-        crate::ch_fi2d::ConstructionError::try_from(crate::ffi::ChFi2d_Builder_status(self))
+        unsafe {
+            crate::ch_fi2d::ConstructionError::try_from(crate::ffi::ChFi2d_Builder_status(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 }

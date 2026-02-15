@@ -14,16 +14,130 @@
 /// reading from STEP.
 pub use crate::ffi::StepToTopoDS_NMTool as NMTool;
 
+unsafe impl crate::CppDeletable for NMTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepToTopoDS_NMTool_destructor(ptr);
+    }
+}
+
 impl NMTool {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::StepToTopoDS_NMTool_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_NMTool_ctor()) }
     }
 
     pub fn new_datamapofri_datamapofrinames(
         MapOfRI: &crate::ffi::StepToTopoDS_DataMapOfRI,
         MapOfRINames: &crate::ffi::StepToTopoDS_DataMapOfRINames,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::StepToTopoDS_NMTool_ctor_datamapofri_datamapofrinames(MapOfRI, MapOfRINames)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepToTopoDS_NMTool_ctor_datamapofri_datamapofrinames(
+                    MapOfRI,
+                    MapOfRINames,
+                ),
+            )
+        }
+    }
+
+    pub fn set_active(&mut self, isActive: bool) {
+        unsafe { crate::ffi::StepToTopoDS_NMTool_set_active(self as *mut Self, isActive) }
+    }
+
+    pub fn is_active(&mut self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_NMTool_is_active(self as *mut Self) }
+    }
+
+    pub fn clean_up(&mut self) {
+        unsafe { crate::ffi::StepToTopoDS_NMTool_clean_up(self as *mut Self) }
+    }
+
+    pub fn is_bound_handlestepreprrepresentationitem(
+        &mut self,
+        RI: &crate::ffi::HandleStepReprRepresentationItem,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_NMTool_is_bound_handlestepreprrepresentationitem(
+                self as *mut Self,
+                RI,
+            )
+        }
+    }
+
+    pub fn is_bound_asciistring(&mut self, RIName: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_NMTool_is_bound_asciistring(self as *mut Self, RIName) }
+    }
+
+    pub fn bind_handlestepreprrepresentationitem_shape(
+        &mut self,
+        RI: &crate::ffi::HandleStepReprRepresentationItem,
+        S: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_NMTool_bind_handlestepreprrepresentationitem_shape(
+                self as *mut Self,
+                RI,
+                S,
+            )
+        }
+    }
+
+    pub fn bind_asciistring_shape(
+        &mut self,
+        RIName: &crate::ffi::TCollection_AsciiString,
+        S: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::StepToTopoDS_NMTool_bind_asciistring_shape(self as *mut Self, RIName, S)
+        }
+    }
+
+    pub fn find_handlestepreprrepresentationitem(
+        &mut self,
+        RI: &crate::ffi::HandleStepReprRepresentationItem,
+    ) -> &crate::ffi::TopoDS_Shape {
+        unsafe {
+            &*(crate::ffi::StepToTopoDS_NMTool_find_handlestepreprrepresentationitem(
+                self as *mut Self,
+                RI,
+            ))
+        }
+    }
+
+    pub fn find_asciistring(
+        &mut self,
+        RIName: &crate::ffi::TCollection_AsciiString,
+    ) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::StepToTopoDS_NMTool_find_asciistring(self as *mut Self, RIName)) }
+    }
+
+    pub fn register_nm_edge(&mut self, Edge: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::StepToTopoDS_NMTool_register_nm_edge(self as *mut Self, Edge) }
+    }
+
+    pub fn is_suspected_as_closing(
+        &mut self,
+        BaseShell: &crate::ffi::TopoDS_Shape,
+        SuspectedShell: &crate::ffi::TopoDS_Shape,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepToTopoDS_NMTool_is_suspected_as_closing(
+                self as *mut Self,
+                BaseShell,
+                SuspectedShell,
+            )
+        }
+    }
+
+    pub fn is_pure_nm_shell(&mut self, Shell: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_NMTool_is_pure_nm_shell(self as *mut Self, Shell) }
+    }
+
+    pub fn set_ideas_case(&mut self, IDEASCase: bool) {
+        unsafe { crate::ffi::StepToTopoDS_NMTool_set_ideas_case(self as *mut Self, IDEASCase) }
+    }
+
+    pub fn is_ideas_case(&mut self) -> bool {
+        unsafe { crate::ffi::StepToTopoDS_NMTool_is_ideas_case(self as *mut Self) }
     }
 }
 

@@ -1,10 +1,9 @@
 use crate::primitives::Shape;
-use cxx::UniquePtr;
 use opencascade_sys::b_rep_algo_api;
 
 /// A wrapper around the `BRepAlgoAPI_Section` class.
 pub struct Section {
-    pub(crate) inner: UniquePtr<b_rep_algo_api::Section>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<b_rep_algo_api::Section>,
 }
 impl Section {
     /// Create a new `Section` to intersect `target` by `tool`.
@@ -21,11 +20,11 @@ impl Section {
 
     /// Get the edges of the resulting intersection.
     pub fn section_edges(mut self) -> Vec<Shape> {
-        let list = self.inner.pin_mut().section_edges();
+        let list = self.inner.section_edges();
         let mut shapes = Vec::new();
         let mut iter = list.iter();
         loop {
-            let shape = iter.pin_mut().next();
+            let shape = iter.next();
             if shape.is_null() {
                 break;
             }

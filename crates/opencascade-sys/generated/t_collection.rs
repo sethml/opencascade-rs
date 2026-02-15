@@ -27,25 +27,39 @@
 /// assignment. You may use HAsciiString objects to get handles to strings.
 pub use crate::ffi::TCollection_AsciiString as AsciiString;
 
+unsafe impl crate::CppDeletable for AsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TCollection_AsciiString_destructor(ptr);
+    }
+}
+
 impl AsciiString {
     /// Initializes a AsciiString to an empty AsciiString.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor()) }
     }
 
     /// Initializes a AsciiString with a CString.
-    pub fn new_charptr(message: &str) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_charptr(message)
+    pub fn new_charptr(message: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_charptr(message))
+        }
     }
 
     /// Initializes a AsciiString with a CString.
-    pub fn new_charptr_int(message: &str, aLen: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_charptr_int(message, aLen)
+    pub fn new_charptr_int(message: *const std::ffi::c_char, aLen: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_charptr_int(
+                message, aLen,
+            ))
+        }
     }
 
     /// Initializes a AsciiString with a single character.
-    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_character(aChar)
+    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_character(aChar))
+        }
     }
 
     /// Initializes an AsciiString with <length> space allocated.
@@ -53,23 +67,29 @@ impl AsciiString {
     pub fn new_int_character(
         length: i32,
         filler: &crate::ffi::Standard_Character,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_int_character(length, filler)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_int_character(
+                length, filler,
+            ))
+        }
     }
 
     /// Initializes an AsciiString with an integer value
-    pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_int(value)
+    pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_int(value)) }
     }
 
     /// Initializes an AsciiString with a real value
-    pub fn new_real(value: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_real(value)
+    pub fn new_real(value: f64) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_real(value)) }
     }
 
     /// Initializes a AsciiString with another AsciiString.
-    pub fn new_asciistring(astring: &crate::ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_asciistring(astring)
+    pub fn new_asciistring(astring: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_asciistring(astring))
+        }
     }
 
     /// Initializes a AsciiString with copy of another AsciiString
@@ -77,17 +97,25 @@ impl AsciiString {
     pub fn new_asciistring_character(
         astring: &crate::ffi::TCollection_AsciiString,
         message: &crate::ffi::Standard_Character,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_asciistring_character(astring, message)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TCollection_AsciiString_ctor_asciistring_character(astring, message),
+            )
+        }
     }
 
     /// Initializes a AsciiString with copy of another AsciiString
     /// concatenated with the message string.
     pub fn new_asciistring_charptr(
         astring: &crate::ffi::TCollection_AsciiString,
-        message: &str,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_asciistring_charptr(astring, message)
+        message: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_asciistring_charptr(
+                astring, message,
+            ))
+        }
     }
 
     /// Initializes a AsciiString with copy of another AsciiString
@@ -95,8 +123,12 @@ impl AsciiString {
     pub fn new_asciistring2(
         astring: &crate::ffi::TCollection_AsciiString,
         message: &crate::ffi::TCollection_AsciiString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_asciistring2(astring, message)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_asciistring2(
+                astring, message,
+            ))
+        }
     }
 
     /// Creation by converting an extended string to an ascii string.
@@ -106,8 +138,25 @@ impl AsciiString {
     pub fn new_extendedstring_character(
         astring: &crate::ffi::TCollection_ExtendedString,
         replaceNonAscii: &crate::ffi::Standard_Character,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_extendedstring_character(astring, replaceNonAscii)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TCollection_AsciiString_ctor_extendedstring_character(
+                    astring,
+                    replaceNonAscii,
+                ),
+            )
+        }
+    }
+
+    /// Appends <other>  to me. This is an unary operator.
+    pub fn assign_cat_int(&mut self, other: i32) {
+        unsafe { crate::ffi::TCollection_AsciiString_assign_cat_int(self as *mut Self, other) }
+    }
+
+    /// Appends <other>  to me. This is an unary operator.
+    pub fn assign_cat_real(&mut self, other: f64) {
+        unsafe { crate::ffi::TCollection_AsciiString_assign_cat_real(self as *mut Self, other) }
     }
 
     /// Appends <other>  to me. This is an unary operator.
@@ -116,8 +165,26 @@ impl AsciiString {
     /// AsciiString before.
     /// Example: aString += "Hello " + "Dolly"  IS NOT VALID !
     /// But astring += anotherString + "Hello " + "Dolly" is valid.
-    pub fn assign_cat_charptr(self: std::pin::Pin<&mut Self>, other: &str) {
-        crate::ffi::TCollection_AsciiString_assign_cat(self, other)
+    pub fn assign_cat_charptr(&mut self, other: *const std::ffi::c_char) {
+        unsafe { crate::ffi::TCollection_AsciiString_assign_cat_charptr(self as *mut Self, other) }
+    }
+
+    /// Appends <other> to me. This is an unary operator.
+    /// Example: aString += anotherString
+    pub fn assign_cat_asciistring(&mut self, other: &crate::ffi::TCollection_AsciiString) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_assign_cat_asciistring(self as *mut Self, other)
+        }
+    }
+
+    /// Converts the first character into its corresponding
+    /// upper-case character and the other characters into lowercase
+    /// Example: before
+    /// me = "hellO "
+    /// after
+    /// me = "Hello "
+    pub fn capitalize(&mut self) {
+        unsafe { crate::ffi::TCollection_AsciiString_capitalize(self as *mut Self) }
     }
 
     /// Appends <other>  to me.
@@ -129,8 +196,13 @@ impl AsciiString {
     /// So the following example is WRONG !
     /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
     /// This rule is applicable to AssignCat (operator +=) too.
-    pub fn cat_int(&self, other: i32) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
-        crate::ffi::TCollection_AsciiString_cat_int(self, other)
+    pub fn cat_int(&self, other: i32) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_cat_int(
+                self as *const Self,
+                other,
+            ))
+        }
     }
 
     /// Appends <other>  to me.
@@ -142,8 +214,13 @@ impl AsciiString {
     /// So the following example is WRONG !
     /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
     /// This rule is applicable to AssignCat (operator +=) too.
-    pub fn cat_real(&self, other: f64) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
-        crate::ffi::TCollection_AsciiString_cat_real(self, other)
+    pub fn cat_real(&self, other: f64) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_cat_real(
+                self as *const Self,
+                other,
+            ))
+        }
     }
 
     /// Appends <other>  to me.
@@ -156,8 +233,16 @@ impl AsciiString {
     /// So the following example is WRONG !
     /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
     /// This rule is applicable to AssignCat (operator +=) too.
-    pub fn cat_charptr(&self, other: &str) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
-        crate::ffi::TCollection_AsciiString_cat_charptr(self, other)
+    pub fn cat_charptr(
+        &self,
+        other: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_cat_charptr(
+                self as *const Self,
+                other,
+            ))
+        }
     }
 
     /// Appends <other> to me.
@@ -165,47 +250,349 @@ impl AsciiString {
     pub fn cat_asciistring(
         &self,
         other: &crate::ffi::TCollection_AsciiString,
-    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
-        crate::ffi::TCollection_AsciiString_cat_asciistring(self, other)
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_cat_asciistring(
+                self as *const Self,
+                other,
+            ))
+        }
+    }
+
+    /// Removes all characters contained in <me>.
+    /// This produces an empty AsciiString.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TCollection_AsciiString_clear(self as *mut Self) }
     }
 
     /// Copy <fromwhere> to <me>.
     /// Used as operator =
     /// Example: aString = anotherCString;
-    pub fn copy_charptr(self: std::pin::Pin<&mut Self>, fromwhere: &str) {
-        crate::ffi::TCollection_AsciiString_copy(self, fromwhere)
+    pub fn copy_charptr(&mut self, fromwhere: *const std::ffi::c_char) {
+        unsafe { crate::ffi::TCollection_AsciiString_copy_charptr(self as *mut Self, fromwhere) }
+    }
+
+    /// Copy <fromwhere> to <me>.
+    /// Used as operator =
+    /// Example: aString = anotherString;
+    pub fn copy_asciistring(&mut self, fromwhere: &crate::ffi::TCollection_AsciiString) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_copy_asciistring(self as *mut Self, fromwhere)
+        }
+    }
+
+    /// Exchange the data of two strings (without reallocating memory).
+    pub fn swap(&mut self, theOther: &mut crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::TCollection_AsciiString_swap(self as *mut Self, theOther) }
+    }
+
+    /// Returns the index of the first character of <me> that is
+    /// present in <Set>.
+    /// The search begins to the index FromIndex and ends to the
+    /// the index ToIndex.
+    /// Returns zero if failure.
+    /// Raises an exception if FromIndex or ToIndex is out of range.
+    /// Example: before
+    /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
+    /// after
+    /// me = "aabAcAa"
+    /// returns
+    /// 1
+    pub fn first_location_in_set(
+        &self,
+        Set: &crate::ffi::TCollection_AsciiString,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_first_location_in_set(
+                self as *const Self,
+                Set,
+                FromIndex,
+                ToIndex,
+            )
+        }
+    }
+
+    /// Returns the index of the first character of <me>
+    /// that is not present in the set <Set>.
+    /// The search begins to the index FromIndex and ends to the
+    /// the index ToIndex in <me>.
+    /// Returns zero if failure.
+    /// Raises an exception if FromIndex or ToIndex is out of range.
+    /// Example: before
+    /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
+    /// after
+    /// me = "aabAcAa"
+    /// returns
+    /// 3
+    pub fn first_location_not_in_set(
+        &self,
+        Set: &crate::ffi::TCollection_AsciiString,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_first_location_not_in_set(
+                self as *const Self,
+                Set,
+                FromIndex,
+                ToIndex,
+            )
+        }
     }
 
     /// Inserts a CString at position <where>.
     /// Example:
     /// aString contains "O more"
     /// aString.Insert(2,"nce");  gives "Once more"
-    pub fn insert_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) {
-        crate::ffi::TCollection_AsciiString_insert(self, where_, what)
+    pub fn insert_int_charptr(&mut self, where_: i32, what: *const std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_insert_int_charptr(self as *mut Self, where_, what)
+        }
+    }
+
+    /// Inserts a AsciiString at position <where>.
+    pub fn insert_int_asciistring(
+        &mut self,
+        where_: i32,
+        what: &crate::ffi::TCollection_AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_insert_int_asciistring(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
+    }
+
+    /// Pushing a string after a specific index in the string <me>.
+    /// Raises an exception if Index is out of bounds.
+    /// -   less than 0 (InsertAfter), or less than 1 (InsertBefore), or
+    /// -   greater than the number of characters in this ASCII string.
+    /// Example:
+    /// before
+    /// me = "cde" , Index = 0 , other = "ab"
+    /// after
+    /// me = "abcde" , other = "ab"
+    pub fn insert_after(&mut self, Index: i32, other: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::TCollection_AsciiString_insert_after(self as *mut Self, Index, other) }
+    }
+
+    /// Pushing a string before a specific index in the string <me>.
+    /// Raises an exception if Index is out of bounds.
+    /// -   less than 0 (InsertAfter), or less than 1 (InsertBefore), or
+    /// -   greater than the number of characters in this ASCII string.
+    /// Example:
+    /// before
+    /// me = "cde" , Index = 1 , other = "ab"
+    /// after
+    /// me = "abcde" , other = "ab"
+    pub fn insert_before(&mut self, Index: i32, other: &crate::ffi::TCollection_AsciiString) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_insert_before(self as *mut Self, Index, other)
+        }
+    }
+
+    /// Returns True if the string <me> contains zero character.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::TCollection_AsciiString_is_empty(self as *const Self) }
     }
 
     /// Returns true if the characters in this ASCII string
     /// are identical to the characters in ASCII string other.
     /// Note that this method is an alias of operator ==.
-    pub fn is_equal_charptr(&self, other: &str) -> bool {
-        crate::ffi::TCollection_AsciiString_is_equal(self, other)
+    pub fn is_equal_charptr(&self, other: *const std::ffi::c_char) -> bool {
+        unsafe { crate::ffi::TCollection_AsciiString_is_equal_charptr(self as *const Self, other) }
+    }
+
+    /// Returns true if the characters in this ASCII string
+    /// are identical to the characters in ASCII string other.
+    /// Note that this method is an alias of operator ==.
+    pub fn is_equal_asciistring(&self, other: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_equal_asciistring(self as *const Self, other)
+        }
     }
 
     /// Returns true if there are differences between the
     /// characters in this ASCII string and ASCII string other.
     /// Note that this method is an alias of operator !=
-    pub fn is_different_charptr(&self, other: &str) -> bool {
-        crate::ffi::TCollection_AsciiString_is_different(self, other)
+    pub fn is_different_charptr(&self, other: *const std::ffi::c_char) -> bool {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_different_charptr(self as *const Self, other)
+        }
+    }
+
+    /// Returns true if there are differences between the
+    /// characters in this ASCII string and ASCII string other.
+    /// Note that this method is an alias of operator !=
+    pub fn is_different_asciistring(&self, other: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_different_asciistring(self as *const Self, other)
+        }
     }
 
     /// Returns TRUE if <me> is 'ASCII' less than <other>.
-    pub fn is_less_charptr(&self, other: &str) -> bool {
-        crate::ffi::TCollection_AsciiString_is_less(self, other)
+    pub fn is_less_charptr(&self, other: *const std::ffi::c_char) -> bool {
+        unsafe { crate::ffi::TCollection_AsciiString_is_less_charptr(self as *const Self, other) }
+    }
+
+    /// Returns TRUE if <me> is 'ASCII' less than <other>.
+    pub fn is_less_asciistring(&self, other: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_less_asciistring(self as *const Self, other)
+        }
     }
 
     /// Returns TRUE if <me> is 'ASCII' greater than <other>.
-    pub fn is_greater_charptr(&self, other: &str) -> bool {
-        crate::ffi::TCollection_AsciiString_is_greater(self, other)
+    pub fn is_greater_charptr(&self, other: *const std::ffi::c_char) -> bool {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_greater_charptr(self as *const Self, other)
+        }
+    }
+
+    /// Returns TRUE if <me> is 'ASCII' greater than <other>.
+    pub fn is_greater_asciistring(&self, other: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_greater_asciistring(self as *const Self, other)
+        }
+    }
+
+    /// Determines whether the beginning of this string instance matches the specified string.
+    pub fn starts_with(&self, theStartString: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_starts_with(self as *const Self, theStartString)
+        }
+    }
+
+    /// Determines whether the end of this string instance matches the specified string.
+    pub fn ends_with(&self, theEndString: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe { crate::ffi::TCollection_AsciiString_ends_with(self as *const Self, theEndString) }
+    }
+
+    /// Converts a AsciiString containing a numeric expression to
+    /// an Integer.
+    /// Example: "215" returns 215.
+    pub fn integer_value(&self) -> i32 {
+        unsafe { crate::ffi::TCollection_AsciiString_integer_value(self as *const Self) }
+    }
+
+    /// Returns True if the AsciiString contains an integer value.
+    /// Note: an integer value is considered to be a real value as well.
+    pub fn is_integer_value(&self) -> bool {
+        unsafe { crate::ffi::TCollection_AsciiString_is_integer_value(self as *const Self) }
+    }
+
+    /// Returns True if the AsciiString starts with some characters that can be interpreted as integer
+    /// or real value.
+    /// @param[in] theToCheckFull  when TRUE, checks if entire string defines a real value;
+    /// otherwise checks if string starts with a real value
+    /// Note: an integer value is considered to be a real value as well.
+    pub fn is_real_value(&self, theToCheckFull: bool) -> bool {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_real_value(self as *const Self, theToCheckFull)
+        }
+    }
+
+    /// Returns True if the AsciiString contains only ASCII characters
+    /// between ' ' and '~'.
+    /// This means no control character and no extended ASCII code.
+    pub fn is_ascii(&self) -> bool {
+        unsafe { crate::ffi::TCollection_AsciiString_is_ascii(self as *const Self) }
+    }
+
+    /// Removes all space characters in the beginning of the string.
+    pub fn left_adjust(&mut self) {
+        unsafe { crate::ffi::TCollection_AsciiString_left_adjust(self as *mut Self) }
+    }
+
+    /// Returns number of characters in <me>.
+    /// This is the same functionality as 'strlen' in C.
+    /// Example
+    /// TCollection_AsciiString myAlphabet("abcdef");
+    /// assert ( myAlphabet.Length() == 6 );
+    /// -   1 is the position of the first character in this string.
+    /// -   The length of this string gives the position of its last character.
+    /// -   Positions less than or equal to zero, or
+    /// greater than the length of this string are
+    /// invalid in functions which identify a character
+    /// of this string by its position.
+    pub fn length(&self) -> i32 {
+        unsafe { crate::ffi::TCollection_AsciiString_length(self as *const Self) }
+    }
+
+    /// Returns an index in the string <me> of the first occurrence
+    /// of the string S in the string <me> from the starting index
+    /// FromIndex to the ending index ToIndex
+    /// returns zero if failure
+    /// Raises an exception if FromIndex or ToIndex is out of range.
+    /// Example:
+    /// before
+    /// me = "aabAaAa", S = "Aa", FromIndex = 1, ToIndex = 7
+    /// after
+    /// me = "aabAaAa"
+    /// returns
+    /// 4
+    pub fn location(
+        &self,
+        other: &crate::ffi::TCollection_AsciiString,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_location(
+                self as *const Self,
+                other,
+                FromIndex,
+                ToIndex,
+            )
+        }
+    }
+
+    /// Converts <me> to its lower-case equivalent.
+    /// Example
+    /// TCollection_AsciiString myString("Hello Dolly");
+    /// myString.UpperCase();
+    /// assert ( myString == "HELLO DOLLY" );
+    /// myString.LowerCase();
+    /// assert ( myString == "hello dolly" );
+    pub fn lower_case(&mut self) {
+        unsafe { crate::ffi::TCollection_AsciiString_lower_case(self as *mut Self) }
+    }
+
+    /// Inserts the string other at the beginning of this ASCII string.
+    /// Example
+    /// TCollection_AsciiString myAlphabet("cde");
+    /// TCollection_AsciiString myBegin("ab");
+    /// myAlphabet.Prepend(myBegin);
+    /// assert ( myAlphabet == "abcde" );
+    pub fn prepend(&mut self, other: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::TCollection_AsciiString_prepend(self as *mut Self, other) }
+    }
+
+    /// Converts an AsciiString containing a numeric expression.
+    /// to a Real.
+    /// Example: ex: "215" returns 215.0.
+    /// ex: "3.14159267" returns 3.14159267.
+    pub fn real_value(&self) -> f64 {
+        unsafe { crate::ffi::TCollection_AsciiString_real_value(self as *const Self) }
+    }
+
+    /// Erases <ahowmany> characters from position <where>,
+    /// <where> included.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Remove(2,2) erases 2 characters from position 2
+    /// This gives "Hlo".
+    pub fn remove(&mut self, where_: i32, ahowmany: i32) {
+        unsafe { crate::ffi::TCollection_AsciiString_remove(self as *mut Self, where_, ahowmany) }
+    }
+
+    /// Removes all space characters at the end of the string.
+    pub fn right_adjust(&mut self) {
+        unsafe { crate::ffi::TCollection_AsciiString_right_adjust(self as *mut Self) }
     }
 
     /// Searches a CString in <me> from the beginning
@@ -214,8 +601,15 @@ impl AsciiString {
     /// Example:
     /// aString contains "Sample single test"
     /// aString.Search("le") returns 5
-    pub fn search_charptr(&self, what: &str) -> i32 {
-        crate::ffi::TCollection_AsciiString_search(self, what)
+    pub fn search_charptr(&self, what: *const std::ffi::c_char) -> i32 {
+        unsafe { crate::ffi::TCollection_AsciiString_search_charptr(self as *const Self, what) }
+    }
+
+    /// Searches an AsciiString in <me> from the beginning
+    /// and returns position of first item <what> matching.
+    /// It returns -1 if not found.
+    pub fn search_asciistring(&self, what: &crate::ffi::TCollection_AsciiString) -> i32 {
+        unsafe { crate::ffi::TCollection_AsciiString_search_asciistring(self as *const Self, what) }
     }
 
     /// Searches a CString in a AsciiString from the end
@@ -224,8 +618,22 @@ impl AsciiString {
     /// Example:
     /// aString contains "Sample single test"
     /// aString.SearchFromEnd("le") returns 12
-    pub fn search_from_end_charptr(&self, what: &str) -> i32 {
-        crate::ffi::TCollection_AsciiString_search_from_end(self, what)
+    pub fn search_from_end_charptr(&self, what: *const std::ffi::c_char) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_search_from_end_charptr(self as *const Self, what)
+        }
+    }
+
+    /// Searches a AsciiString in another AsciiString from the end
+    /// and returns position of first item <what> matching.
+    /// It returns -1 if not found.
+    pub fn search_from_end_asciistring(&self, what: &crate::ffi::TCollection_AsciiString) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_search_from_end_asciistring(
+                self as *const Self,
+                what,
+            )
+        }
     }
 
     /// Replaces a part of <me> by a CString.
@@ -234,19 +642,42 @@ impl AsciiString {
     /// Example:
     /// aString contains "abcde"
     /// aString.SetValue(4,"1234567") gives <me> = "abc1234567"
-    pub fn set_value_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) {
-        crate::ffi::TCollection_AsciiString_set_value(self, where_, what)
+    pub fn set_value_int_charptr(&mut self, where_: i32, what: *const std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_set_value_int_charptr(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
+    }
+
+    /// Replaces a part of <me> by another AsciiString.
+    pub fn set_value_int_asciistring(
+        &mut self,
+        where_: i32,
+        what: &crate::ffi::TCollection_AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TCollection_AsciiString_set_value_int_asciistring(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
     }
 
     /// Splits a AsciiString into two sub-strings.
     /// Example:
     /// aString contains "abcdefg"
     /// aString.Split(3) gives <me> = "abc" and returns "defg"
-    pub fn split(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
-        crate::ffi::TCollection_AsciiString_split(self, where_)
+    pub fn split(&mut self, where_: i32) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_split(
+                self as *mut Self,
+                where_,
+            ))
+        }
     }
 
     /// Creation of a sub-string of the string <me>.
@@ -264,15 +695,21 @@ impl AsciiString {
         &self,
         FromIndex: i32,
         ToIndex: i32,
-    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
-        crate::ffi::TCollection_AsciiString_sub_string(self, FromIndex, ToIndex)
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_sub_string(
+                self as *const Self,
+                FromIndex,
+                ToIndex,
+            ))
+        }
     }
 
     /// Returns pointer to AsciiString (char *).
     /// This is useful for some casual manipulations.
     /// Warning: Because this "char *" is 'const', you can't modify its contents.
-    pub fn to_c_string(&self) -> String {
-        crate::ffi::TCollection_AsciiString_to_c_string(self)
+    pub fn to_c_string(&self) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TCollection_AsciiString_to_c_string(self as *const Self) }
     }
 
     /// Extracts <whichone> token from <me>.
@@ -292,10 +729,40 @@ impl AsciiString {
     /// aString.Token("; :,",2) returns "test"
     pub fn token(
         &self,
-        separators: &str,
+        separators: *const std::ffi::c_char,
         whichone: i32,
-    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
-        crate::ffi::TCollection_AsciiString_token(self, separators, whichone)
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_token(
+                self as *const Self,
+                separators,
+                whichone,
+            ))
+        }
+    }
+
+    /// Truncates <me> to <ahowmany> characters.
+    /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
+    pub fn trunc(&mut self, ahowmany: i32) {
+        unsafe { crate::ffi::TCollection_AsciiString_trunc(self as *mut Self, ahowmany) }
+    }
+
+    /// Converts <me> to its upper-case equivalent.
+    pub fn upper_case(&mut self) {
+        unsafe { crate::ffi::TCollection_AsciiString_upper_case(self as *mut Self) }
+    }
+
+    /// Length of the string ignoring all spaces (' ') and the
+    /// control character at the end.
+    pub fn usefull_length(&self) -> i32 {
+        unsafe { crate::ffi::TCollection_AsciiString_usefull_length(self as *const Self) }
+    }
+
+    /// Computes a hash code for the given ASCII string
+    /// Returns the same integer value as the hash function for TCollection_ExtendedString
+    /// @return a computed hash code
+    pub fn hash_code(&self) -> usize {
+        unsafe { crate::ffi::TCollection_AsciiString_hash_code(self as *const Self) }
     }
 
     /// Returns True  when the two  strings are the same.
@@ -304,16 +771,18 @@ impl AsciiString {
         string1: &crate::ffi::TCollection_AsciiString,
         string2: &crate::ffi::TCollection_AsciiString,
     ) -> bool {
-        crate::ffi::TCollection_AsciiString_is_equal_asciistring2(string1, string2)
+        unsafe { crate::ffi::TCollection_AsciiString_is_equal_asciistring2(string1, string2) }
     }
 
     /// Returns True  when the two  strings are the same.
     /// (Just for HashCode for AsciiString)
     pub fn is_equal_asciistring_charptr(
         string1: &crate::ffi::TCollection_AsciiString,
-        string2: &str,
+        string2: *const std::ffi::c_char,
     ) -> bool {
-        crate::ffi::TCollection_AsciiString_is_equal_asciistring_charptr(string1, string2)
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_equal_asciistring_charptr(string1, string2)
+        }
     }
 
     /// Returns True if the strings contain same characters.
@@ -322,11 +791,13 @@ impl AsciiString {
         theString2: &crate::ffi::TCollection_AsciiString,
         theIsCaseSensitive: bool,
     ) -> bool {
-        crate::ffi::TCollection_AsciiString_is_same_string(
-            theString1,
-            theString2,
-            theIsCaseSensitive,
-        )
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_same_string(
+                theString1,
+                theString2,
+                theIsCaseSensitive,
+            )
+        }
     }
 }
 
@@ -351,10 +822,16 @@ impl AsciiString {
 /// for iterating through Unicode string (UTF-32 code unit will be returned for each position).
 pub use crate::ffi::TCollection_ExtendedString as ExtendedString;
 
+unsafe impl crate::CppDeletable for ExtendedString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TCollection_ExtendedString_destructor(ptr);
+    }
+}
+
 impl ExtendedString {
     /// Initializes a ExtendedString to an empty ExtendedString.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor()) }
     }
 
     /// Creation by converting a CString to an extended
@@ -362,23 +839,41 @@ impl ExtendedString {
     /// treated as having UTF-8 coding.  If it is not a UTF-8
     /// then <isMultiByte> is ignored and each character is
     /// copied to ExtCharacter.
-    pub fn new_charptr_bool(astring: &str, isMultiByte: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_charptr_bool(astring, isMultiByte)
+    pub fn new_charptr_bool(
+        astring: *const std::ffi::c_char,
+        isMultiByte: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_charptr_bool(
+                astring,
+                isMultiByte,
+            ))
+        }
     }
 
     /// Creation by converting an ExtString to an extended string.
-    pub fn new_extstring(astring: &crate::ffi::Standard_ExtString) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_extstring(astring)
+    pub fn new_extstring(astring: &crate::ffi::Standard_ExtString) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_extstring(
+                astring,
+            ))
+        }
     }
 
     /// Initializes a AsciiString with a single character.
-    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_character(aChar)
+    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_character(aChar))
+        }
     }
 
     /// Initializes a ExtendedString with a single character.
-    pub fn new_extcharacter(aChar: &crate::ffi::Standard_ExtCharacter) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_extcharacter(aChar)
+    pub fn new_extcharacter(aChar: &crate::ffi::Standard_ExtCharacter) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_extcharacter(
+                aChar,
+            ))
+        }
     }
 
     /// Initializes a ExtendedString with <length> space allocated.
@@ -386,25 +881,35 @@ impl ExtendedString {
     pub fn new_int_extcharacter(
         length: i32,
         filler: &crate::ffi::Standard_ExtCharacter,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_int_extcharacter(length, filler)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_int_extcharacter(
+                length, filler,
+            ))
+        }
     }
 
     /// Initializes an ExtendedString with an integer value
-    pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_int(value)
+    pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_int(value)) }
     }
 
     /// Initializes an ExtendedString with a real value
-    pub fn new_real(value: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_real(value)
+    pub fn new_real(value: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_real(value))
+        }
     }
 
     /// Initializes a ExtendedString with another ExtendedString.
     pub fn new_extendedstring(
         astring: &crate::ffi::TCollection_ExtendedString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_extendedstring(astring)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_extendedstring(
+                astring,
+            ))
+        }
     }
 
     /// Creation by converting an Ascii string to an extended
@@ -414,8 +919,13 @@ impl ExtendedString {
     pub fn new_asciistring_bool(
         astring: &crate::ffi::TCollection_AsciiString,
         isMultiByte: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_ExtendedString_ctor_asciistring_bool(astring, isMultiByte)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_asciistring_bool(
+                astring,
+                isMultiByte,
+            ))
+        }
     }
 
     /// Creation by converting a CString to an extended
@@ -423,7 +933,7 @@ impl ExtendedString {
     /// treated as having UTF-8 coding.  If it is not a UTF-8
     /// then <isMultiByte> is ignored and each character is
     /// copied to ExtCharacter.
-    pub fn new_charptr(astring: &str) -> cxx::UniquePtr<Self> {
+    pub fn new_charptr(astring: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         Self::new_charptr_bool(astring, false)
     }
 
@@ -431,16 +941,131 @@ impl ExtendedString {
     /// string. The string is treated as having UTF-8 coding.
     /// If it is not a UTF-8 or multi byte then
     /// each character is copied to ExtCharacter.
-    pub fn new_asciistring(astring: &crate::ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
+    pub fn new_asciistring(astring: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
         Self::new_asciistring_bool(astring, true)
+    }
+
+    /// Appends the other extended string to this extended string.
+    /// Note that this method is an alias of operator +=.
+    /// Example: aString += anotherString
+    pub fn assign_cat(&mut self, other: &crate::ffi::TCollection_ExtendedString) {
+        unsafe { crate::ffi::TCollection_ExtendedString_assign_cat(self as *mut Self, other) }
     }
 
     /// Appends <other> to me.
     pub fn cat(
         &self,
         other: &crate::ffi::TCollection_ExtendedString,
-    ) -> cxx::UniquePtr<crate::ffi::TCollection_ExtendedString> {
-        crate::ffi::TCollection_ExtendedString_cat(self, other)
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_cat(
+                self as *const Self,
+                other,
+            ))
+        }
+    }
+
+    /// Removes all characters contained in <me>.
+    /// This produces an empty ExtendedString.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TCollection_ExtendedString_clear(self as *mut Self) }
+    }
+
+    /// Copy <fromwhere> to <me>.
+    /// Used as operator =
+    pub fn copy(&mut self, fromwhere: &crate::ffi::TCollection_ExtendedString) {
+        unsafe { crate::ffi::TCollection_ExtendedString_copy(self as *mut Self, fromwhere) }
+    }
+
+    /// Exchange the data of two strings (without reallocating memory).
+    pub fn swap(&mut self, theOther: &mut crate::ffi::TCollection_ExtendedString) {
+        unsafe { crate::ffi::TCollection_ExtendedString_swap(self as *mut Self, theOther) }
+    }
+
+    /// Insert a ExtendedString at position <where>.
+    pub fn insert(&mut self, where_: i32, what: &crate::ffi::TCollection_ExtendedString) {
+        unsafe { crate::ffi::TCollection_ExtendedString_insert(self as *mut Self, where_, what) }
+    }
+
+    /// Returns True if this string contains no characters.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::TCollection_ExtendedString_is_empty(self as *const Self) }
+    }
+
+    /// Returns true if the characters in this extended
+    /// string are identical to the characters in the other extended string.
+    /// Note that this method is an alias of operator ==
+    pub fn is_equal(&self, other: &crate::ffi::TCollection_ExtendedString) -> bool {
+        unsafe { crate::ffi::TCollection_ExtendedString_is_equal(self as *const Self, other) }
+    }
+
+    /// Returns true if there are differences between the
+    /// characters in this extended string and the other extended string.
+    /// Note that this method is an alias of operator !=.
+    pub fn is_different(&self, other: &crate::ffi::TCollection_ExtendedString) -> bool {
+        unsafe { crate::ffi::TCollection_ExtendedString_is_different(self as *const Self, other) }
+    }
+
+    /// Returns TRUE if <me> is less than <other>.
+    pub fn is_less(&self, other: &crate::ffi::TCollection_ExtendedString) -> bool {
+        unsafe { crate::ffi::TCollection_ExtendedString_is_less(self as *const Self, other) }
+    }
+
+    /// Returns TRUE if <me> is greater than <other>.
+    pub fn is_greater(&self, other: &crate::ffi::TCollection_ExtendedString) -> bool {
+        unsafe { crate::ffi::TCollection_ExtendedString_is_greater(self as *const Self, other) }
+    }
+
+    /// Determines whether the beginning of this string instance matches the specified string.
+    pub fn starts_with(&self, theStartString: &crate::ffi::TCollection_ExtendedString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_starts_with(self as *const Self, theStartString)
+        }
+    }
+
+    /// Determines whether the end of this string instance matches the specified string.
+    pub fn ends_with(&self, theEndString: &crate::ffi::TCollection_ExtendedString) -> bool {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_ends_with(self as *const Self, theEndString)
+        }
+    }
+
+    /// Returns True if the ExtendedString contains only
+    /// "Ascii Range" characters .
+    pub fn is_ascii(&self) -> bool {
+        unsafe { crate::ffi::TCollection_ExtendedString_is_ascii(self as *const Self) }
+    }
+
+    /// Returns the number of 16-bit code units
+    /// (might be greater than number of Unicode symbols if string contains surrogate pairs).
+    pub fn length(&self) -> i32 {
+        unsafe { crate::ffi::TCollection_ExtendedString_length(self as *const Self) }
+    }
+
+    /// Erases <ahowmany> characters from position <where>,<where> included.
+    pub fn remove(&mut self, where_: i32, ahowmany: i32) {
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_remove(self as *mut Self, where_, ahowmany)
+        }
+    }
+
+    /// Searches a ExtendedString in <me> from the beginning
+    /// and returns position of first item <what> matching.
+    /// it returns -1 if not found.
+    pub fn search(&self, what: &crate::ffi::TCollection_ExtendedString) -> i32 {
+        unsafe { crate::ffi::TCollection_ExtendedString_search(self as *const Self, what) }
+    }
+
+    /// Searches a ExtendedString in another ExtendedString from the
+    /// end and returns position of first item <what> matching.
+    /// it returns -1 if not found.
+    pub fn search_from_end(&self, what: &crate::ffi::TCollection_ExtendedString) -> i32 {
+        unsafe { crate::ffi::TCollection_ExtendedString_search_from_end(self as *const Self, what) }
+    }
+
+    /// Replaces a part of <me> by another ExtendedString see above.
+    pub fn set_value(&mut self, where_: i32, what: &crate::ffi::TCollection_ExtendedString) {
+        unsafe { crate::ffi::TCollection_ExtendedString_set_value(self as *mut Self, where_, what) }
     }
 
     /// Splits this extended string into two sub-strings at position where.
@@ -454,10 +1079,40 @@ impl ExtendedString {
     /// aString contains "abcdefg"
     /// aString.Split(3) gives <me> = "abc" and returns "defg"
     pub fn split(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         where_: i32,
-    ) -> cxx::UniquePtr<crate::ffi::TCollection_ExtendedString> {
-        crate::ffi::TCollection_ExtendedString_split(self, where_)
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_split(
+                self as *mut Self,
+                where_,
+            ))
+        }
+    }
+
+    /// Truncates <me> to <ahowmany> characters.
+    /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
+    /// Exceptions
+    /// Standard_OutOfRange if ahowmany is greater
+    /// than the length of this string.
+    pub fn trunc(&mut self, ahowmany: i32) {
+        unsafe { crate::ffi::TCollection_ExtendedString_trunc(self as *mut Self, ahowmany) }
+    }
+
+    /// Returns a hashed value for the extended string.
+    /// Note: if string is ASCII, the computed value is the same as the value computed with the
+    /// HashCode function on a TCollection_AsciiString string composed with equivalent ASCII
+    /// characters.
+    /// @return a computed hash code
+    pub fn hash_code(&self) -> usize {
+        unsafe { crate::ffi::TCollection_ExtendedString_hash_code(self as *const Self) }
+    }
+
+    /// Returns expected CString length in UTF8 coding.
+    /// It can be used for  memory  calculation  before converting
+    /// to CString containing symbols in UTF8 coding.
+    pub fn length_of_c_string(&self) -> i32 {
+        unsafe { crate::ffi::TCollection_ExtendedString_length_of_c_string(self as *const Self) }
     }
 
     /// Returns true if the characters in this extended
@@ -467,7 +1122,9 @@ impl ExtendedString {
         theString1: &crate::ffi::TCollection_ExtendedString,
         theString2: &crate::ffi::TCollection_ExtendedString,
     ) -> bool {
-        crate::ffi::TCollection_ExtendedString_is_equal(theString1, theString2)
+        unsafe {
+            crate::ffi::TCollection_ExtendedString_is_equal_extendedstring2(theString1, theString2)
+        }
     }
 }
 
@@ -485,20 +1142,30 @@ impl ExtendedString {
 /// Note: HAsciiString objects use an AsciiString string as a field.
 pub use crate::ffi::TCollection_HAsciiString as HAsciiString;
 
+unsafe impl crate::CppDeletable for HAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TCollection_HAsciiString_destructor(ptr);
+    }
+}
+
 impl HAsciiString {
     /// Initializes a HAsciiString to an empty AsciiString.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HAsciiString_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor()) }
     }
 
     /// Initializes a HAsciiString with a CString.
-    pub fn new_charptr(message: &str) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HAsciiString_ctor_charptr(message)
+    pub fn new_charptr(message: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_charptr(message))
+        }
     }
 
     /// Initializes a HAsciiString with a single character.
-    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HAsciiString_ctor_character(aChar)
+    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_character(aChar))
+        }
     }
 
     /// Initializes a HAsciiString with <length> space allocated.
@@ -506,30 +1173,42 @@ impl HAsciiString {
     pub fn new_int_character(
         length: i32,
         filler: &crate::ffi::Standard_Character,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HAsciiString_ctor_int_character(length, filler)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_int_character(
+                length, filler,
+            ))
+        }
     }
 
     /// Initializes a HAsciiString with an integer value
-    pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HAsciiString_ctor_int(value)
+    pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_int(value)) }
     }
 
     /// Initializes a HAsciiString with a real value
-    pub fn new_real(value: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HAsciiString_ctor_real(value)
+    pub fn new_real(value: f64) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_real(value)) }
     }
 
     /// Initializes a HAsciiString with a AsciiString.
-    pub fn new_asciistring(aString: &crate::ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HAsciiString_ctor_asciistring(aString)
+    pub fn new_asciistring(aString: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_asciistring(
+                aString,
+            ))
+        }
     }
 
     /// Initializes a HAsciiString with a HAsciiString.
     pub fn new_handletcollectionhasciistring(
         aString: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhasciistring(aString)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhasciistring(aString),
+            )
+        }
     }
 
     /// Initializes a HAsciiString with a HExtendedString.
@@ -539,16 +1218,40 @@ impl HAsciiString {
     pub fn new_handletcollectionhextendedstring_character(
         aString: &crate::ffi::HandleTCollectionHExtendedString,
         replaceNonAscii: &crate::ffi::Standard_Character,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhextendedstring_character(
-            aString,
-            replaceNonAscii,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhextendedstring_character(aString, replaceNonAscii))
+        }
     }
 
     /// Appends <other>  to me.
-    pub fn assign_cat_charptr(self: std::pin::Pin<&mut Self>, other: &str) {
-        crate::ffi::TCollection_HAsciiString_assign_cat(self, other)
+    pub fn assign_cat_charptr(&mut self, other: *const std::ffi::c_char) {
+        unsafe { crate::ffi::TCollection_HAsciiString_assign_cat_charptr(self as *mut Self, other) }
+    }
+
+    /// Appends <other>  to me.
+    /// Example:  aString = aString + anotherString
+    pub fn assign_cat_handletcollectionhasciistring(
+        &mut self,
+        other: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_assign_cat_handletcollectionhasciistring(
+                self as *mut Self,
+                other,
+            )
+        }
+    }
+
+    /// Converts the first character into its corresponding
+    /// upper-case character and the other characters into lowercase.
+    /// Example:
+    /// before
+    /// me = "hellO "
+    /// after
+    /// me = "Hello "
+    pub fn capitalize(&mut self) {
+        unsafe { crate::ffi::TCollection_HAsciiString_capitalize(self as *mut Self) }
     }
 
     /// Creates a new string by concatenation of this
@@ -565,9 +1268,14 @@ impl HAsciiString {
     /// This rule is applicable to AssignCat (operator +=) too.
     pub fn cat_charptr(
         &self,
-        other: &str,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::TCollection_HAsciiString_cat_charptr(self, other)
+        other: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_cat_charptr(
+                self as *const Self,
+                other,
+            ))
+        }
     }
 
     /// Creates a new string by concatenation of this
@@ -576,13 +1284,278 @@ impl HAsciiString {
     pub fn cat_handletcollectionhasciistring(
         &self,
         other: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::TCollection_HAsciiString_cat_handletcollectionhasciistring(self, other)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TCollection_HAsciiString_cat_handletcollectionhasciistring(
+                    self as *const Self,
+                    other,
+                ),
+            )
+        }
+    }
+
+    /// Removes all characters contained in <me>.
+    /// This produces an empty HAsciiString.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TCollection_HAsciiString_clear(self as *mut Self) }
+    }
+
+    /// Returns the index of the first character of <me> that is
+    /// present in <Set>.
+    /// The search begins to the index FromIndex and ends to the
+    /// the index ToIndex.
+    /// Returns zero if failure.
+    /// Raises an exception if FromIndex or ToIndex is out of range
+    /// Example:
+    /// before
+    /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
+    /// after
+    /// me = "aabAcAa"
+    /// returns
+    /// 1
+    pub fn first_location_in_set(
+        &self,
+        Set: &crate::ffi::HandleTCollectionHAsciiString,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_first_location_in_set(
+                self as *const Self,
+                Set,
+                FromIndex,
+                ToIndex,
+            )
+        }
+    }
+
+    /// Returns the index of the first character of <me>
+    /// that is not present in the set <Set>.
+    /// The search begins to the index FromIndex and ends to the
+    /// the index ToIndex in <me>.
+    /// Returns zero if failure.
+    /// Raises an exception if FromIndex or ToIndex is out of range.
+    /// Example:
+    /// before
+    /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
+    /// after
+    /// me = "aabAcAa"
+    /// returns
+    /// 3
+    pub fn first_location_not_in_set(
+        &self,
+        Set: &crate::ffi::HandleTCollectionHAsciiString,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_first_location_not_in_set(
+                self as *const Self,
+                Set,
+                FromIndex,
+                ToIndex,
+            )
+        }
     }
 
     /// Insert a HAsciiString at position <where>.
-    pub fn insert_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) {
-        crate::ffi::TCollection_HAsciiString_insert(self, where_, what)
+    pub fn insert_int_charptr(&mut self, where_: i32, what: *const std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_insert_int_charptr(self as *mut Self, where_, what)
+        }
+    }
+
+    /// Insert a HAsciiString at position <where>.
+    pub fn insert_int_handletcollectionhasciistring(
+        &mut self,
+        where_: i32,
+        what: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_insert_int_handletcollectionhasciistring(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
+    }
+
+    /// Inserts the other ASCII string a after a specific index in the string <me>
+    /// Example:
+    /// before
+    /// me = "cde" , Index = 0 , other = "ab"
+    /// after
+    /// me = "abcde" , other = "ab"
+    pub fn insert_after(&mut self, Index: i32, other: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_insert_after(self as *mut Self, Index, other)
+        }
+    }
+
+    /// Inserts the other ASCII string a before a specific index in the string <me>
+    /// Raises an exception if Index is out of bounds
+    /// Example:
+    /// before
+    /// me = "cde" , Index = 1 , other = "ab"
+    /// after
+    /// me = "abcde" , other = "ab"
+    pub fn insert_before(&mut self, Index: i32, other: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_insert_before(self as *mut Self, Index, other)
+        }
+    }
+
+    /// Returns True if the string <me> contains zero character
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::TCollection_HAsciiString_is_empty(self as *const Self) }
+    }
+
+    /// Returns TRUE if <me> is 'ASCII' less than <other>.
+    pub fn is_less(&self, other: &crate::ffi::HandleTCollectionHAsciiString) -> bool {
+        unsafe { crate::ffi::TCollection_HAsciiString_is_less(self as *const Self, other) }
+    }
+
+    /// Returns TRUE if <me> is 'ASCII' greater than <other>.
+    pub fn is_greater(&self, other: &crate::ffi::HandleTCollectionHAsciiString) -> bool {
+        unsafe { crate::ffi::TCollection_HAsciiString_is_greater(self as *const Self, other) }
+    }
+
+    /// Converts a HAsciiString containing a numeric expression to
+    /// an Integer.
+    /// Example: "215" returns 215.
+    pub fn integer_value(&self) -> i32 {
+        unsafe { crate::ffi::TCollection_HAsciiString_integer_value(self as *const Self) }
+    }
+
+    /// Returns True if the string contains an integer value.
+    pub fn is_integer_value(&self) -> bool {
+        unsafe { crate::ffi::TCollection_HAsciiString_is_integer_value(self as *const Self) }
+    }
+
+    /// Returns True if the string contains a real value.
+    pub fn is_real_value(&self) -> bool {
+        unsafe { crate::ffi::TCollection_HAsciiString_is_real_value(self as *const Self) }
+    }
+
+    /// Returns True if the string contains only ASCII characters
+    /// between ' ' and '~'.
+    /// This means no control character and no extended ASCII code.
+    pub fn is_ascii(&self) -> bool {
+        unsafe { crate::ffi::TCollection_HAsciiString_is_ascii(self as *const Self) }
+    }
+
+    /// Returns True if the string S not contains same characters than
+    /// the string <me>.
+    pub fn is_different(&self, S: &crate::ffi::HandleTCollectionHAsciiString) -> bool {
+        unsafe { crate::ffi::TCollection_HAsciiString_is_different(self as *const Self, S) }
+    }
+
+    /// Returns True if the string S contains same characters than the
+    /// string <me>.
+    pub fn is_same_string_handletcollectionhasciistring(
+        &self,
+        S: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_is_same_string_handletcollectionhasciistring(
+                self as *const Self,
+                S,
+            )
+        }
+    }
+
+    /// Returns True if the string S contains same characters than the
+    /// string <me>.
+    pub fn is_same_string_handletcollectionhasciistring_bool(
+        &self,
+        S: &crate::ffi::HandleTCollectionHAsciiString,
+        CaseSensitive: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_is_same_string_handletcollectionhasciistring_bool(
+                self as *const Self,
+                S,
+                CaseSensitive,
+            )
+        }
+    }
+
+    /// Removes all space characters in the beginning of the string
+    pub fn left_adjust(&mut self) {
+        unsafe { crate::ffi::TCollection_HAsciiString_left_adjust(self as *mut Self) }
+    }
+
+    /// Returns number of characters in <me>.
+    /// This is the same functionality as 'strlen' in C.
+    pub fn length(&self) -> i32 {
+        unsafe { crate::ffi::TCollection_HAsciiString_length(self as *const Self) }
+    }
+
+    /// returns an index in the string <me> of the first occurrence
+    /// of the string S in the string <me> from the starting index
+    /// FromIndex to the ending index ToIndex
+    /// returns zero if failure
+    /// Raises an exception if FromIndex or ToIndex is out of range.
+    /// Example:
+    /// before
+    /// me = "aabAaAa", S = "Aa", FromIndex = 1, ToIndex = 7
+    /// after
+    /// me = "aabAaAa"
+    /// returns
+    /// 4
+    pub fn location(
+        &self,
+        other: &crate::ffi::HandleTCollectionHAsciiString,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_location(
+                self as *const Self,
+                other,
+                FromIndex,
+                ToIndex,
+            )
+        }
+    }
+
+    /// Converts <me> to its lower-case equivalent.
+    pub fn lower_case(&mut self) {
+        unsafe { crate::ffi::TCollection_HAsciiString_lower_case(self as *mut Self) }
+    }
+
+    /// Inserts the other string at the beginning of the string <me>
+    /// Example:
+    /// before
+    /// me = "cde" , S = "ab"
+    /// after
+    /// me = "abcde" , S = "ab"
+    pub fn prepend(&mut self, other: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::TCollection_HAsciiString_prepend(self as *mut Self, other) }
+    }
+
+    /// Converts a string containing a numeric expression to a Real.
+    /// Example:
+    /// "215" returns 215.0.
+    /// "3.14159267" returns 3.14159267.
+    pub fn real_value(&self) -> f64 {
+        unsafe { crate::ffi::TCollection_HAsciiString_real_value(self as *const Self) }
+    }
+
+    /// Erases <ahowmany> characters from position <where>,
+    /// <where> included.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Erase(2,2) erases 2 characters from position 1
+    /// This gives "Hlo".
+    pub fn remove(&mut self, where_: i32, ahowmany: i32) {
+        unsafe { crate::ffi::TCollection_HAsciiString_remove(self as *mut Self, where_, ahowmany) }
+    }
+
+    /// Removes all space characters at the end of the string.
+    pub fn right_adjust(&mut self) {
+        unsafe { crate::ffi::TCollection_HAsciiString_right_adjust(self as *mut Self) }
     }
 
     /// Searches a CString in <me> from the beginning
@@ -591,8 +1564,23 @@ impl HAsciiString {
     /// Example:
     /// aString contains "Sample single test"
     /// aString.Search("le") returns 5
-    pub fn search_charptr(&self, what: &str) -> i32 {
-        crate::ffi::TCollection_HAsciiString_search(self, what)
+    pub fn search_charptr(&self, what: *const std::ffi::c_char) -> i32 {
+        unsafe { crate::ffi::TCollection_HAsciiString_search_charptr(self as *const Self, what) }
+    }
+
+    /// Searches a String in <me> from the beginning
+    /// and returns position of first item <what> matching.
+    /// it returns -1 if not found.
+    pub fn search_handletcollectionhasciistring(
+        &self,
+        what: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_search_handletcollectionhasciistring(
+                self as *const Self,
+                what,
+            )
+        }
     }
 
     /// Searches a CString in a String from the end
@@ -601,8 +1589,25 @@ impl HAsciiString {
     /// Example:
     /// aString contains "Sample single test"
     /// aString.SearchFromEnd("le") returns 12
-    pub fn search_from_end_charptr(&self, what: &str) -> i32 {
-        crate::ffi::TCollection_HAsciiString_search_from_end(self, what)
+    pub fn search_from_end_charptr(&self, what: *const std::ffi::c_char) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_search_from_end_charptr(self as *const Self, what)
+        }
+    }
+
+    /// Searches a HAsciiString in another HAsciiString from the end
+    /// and returns position of first item <what> matching.
+    /// It returns -1 if not found.
+    pub fn search_from_end_handletcollectionhasciistring(
+        &self,
+        what: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_search_from_end_handletcollectionhasciistring(
+                self as *const Self,
+                what,
+            )
+        }
     }
 
     /// Replaces a part of <me> in the string at position <where>.
@@ -611,8 +1616,29 @@ impl HAsciiString {
     /// Example:
     /// aString contains "Garbake"
     /// astring.Replace(6,'g')  gives <me> = "Garbage"
-    pub fn set_value_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) {
-        crate::ffi::TCollection_HAsciiString_set_value(self, where_, what)
+    pub fn set_value_int_charptr(&mut self, where_: i32, what: *const std::ffi::c_char) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_set_value_int_charptr(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
+    }
+
+    /// Replaces a part of <me> by another string.
+    pub fn set_value_int_handletcollectionhasciistring(
+        &mut self,
+        where_: i32,
+        what: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_set_value_int_handletcollectionhasciistring(
+                self as *mut Self,
+                where_,
+                what,
+            )
+        }
     }
 
     /// Splits a HAsciiString into two sub-strings.
@@ -620,10 +1646,15 @@ impl HAsciiString {
     /// aString contains "abcdefg"
     /// aString.Split(3) gives <me> = "abc" and returns "defg"
     pub fn split(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         where_: i32,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::TCollection_HAsciiString_split(self, where_)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_split(
+                self as *mut Self,
+                where_,
+            ))
+        }
     }
 
     /// Creation of a sub-string of the string <me>.
@@ -642,15 +1673,21 @@ impl HAsciiString {
         &self,
         FromIndex: i32,
         ToIndex: i32,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::TCollection_HAsciiString_sub_string(self, FromIndex, ToIndex)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_sub_string(
+                self as *const Self,
+                FromIndex,
+                ToIndex,
+            ))
+        }
     }
 
     /// Returns pointer to string (char *)
     /// This is useful for some casual manipulations
     /// Because this "char *" is 'const', you can't modify its contents.
-    pub fn to_c_string(&self) -> String {
-        crate::ffi::TCollection_HAsciiString_to_c_string(self)
+    pub fn to_c_string(&self) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TCollection_HAsciiString_to_c_string(self as *const Self) }
     }
 
     /// Extracts <whichone> token from <me>.
@@ -670,41 +1707,85 @@ impl HAsciiString {
     /// aString.Token("; :,",2) returns "test"
     pub fn token(
         &self,
-        separators: &str,
+        separators: *const std::ffi::c_char,
         whichone: i32,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::TCollection_HAsciiString_token(self, separators, whichone)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_token(
+                self as *const Self,
+                separators,
+                whichone,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TCollection_HAsciiString_get_type_name()
+    /// Truncates <me> to <ahowmany> characters.
+    /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
+    pub fn trunc(&mut self, ahowmany: i32) {
+        unsafe { crate::ffi::TCollection_HAsciiString_trunc(self as *mut Self, ahowmany) }
+    }
+
+    /// Converts <me> to its upper-case equivalent.
+    pub fn upper_case(&mut self) {
+        unsafe { crate::ffi::TCollection_HAsciiString_upper_case(self as *mut Self) }
+    }
+
+    /// Length of the string ignoring all spaces (' ') and the
+    /// control character at the end.
+    pub fn usefull_length(&self) -> i32 {
+        unsafe { crate::ffi::TCollection_HAsciiString_usefull_length(self as *const Self) }
+    }
+
+    /// Returns the field myString.
+    pub fn string(&self) -> &crate::ffi::TCollection_AsciiString {
+        unsafe { &*(crate::ffi::TCollection_HAsciiString_string(self as *const Self)) }
+    }
+
+    pub fn is_same_state(&self, other: &crate::ffi::HandleTCollectionHAsciiString) -> bool {
+        unsafe { crate::ffi::TCollection_HAsciiString_is_same_state(self as *const Self, other) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TCollection_HAsciiString_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TCollection_HAsciiString_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TCollection_HAsciiString_get_type_descriptor()
+        unsafe { &*(crate::ffi::TCollection_HAsciiString_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::TCollection_HAsciiString_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTCollectionHAsciiString;
 
+unsafe impl crate::CppDeletable for HandleTCollectionHAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTCollectionHAsciiString_destructor(ptr);
+    }
+}
+
 impl HandleTCollectionHAsciiString {
     /// Dereference this Handle to access the underlying TCollection_HAsciiString
     pub fn get(&self) -> &crate::ffi::TCollection_HAsciiString {
-        crate::ffi::HandleTCollectionHAsciiString_get(self)
+        unsafe { &*(crate::ffi::HandleTCollectionHAsciiString_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TCollection_HAsciiString
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TCollection_HAsciiString> {
-        crate::ffi::HandleTCollectionHAsciiString_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TCollection_HAsciiString {
+        unsafe { &mut *(crate::ffi::HandleTCollectionHAsciiString_get_mut(self as *mut Self)) }
     }
 }
 
@@ -725,25 +1806,41 @@ impl HandleTCollectionHAsciiString {
 /// ExtendedString string as a field.
 pub use crate::ffi::TCollection_HExtendedString as HExtendedString;
 
+unsafe impl crate::CppDeletable for HExtendedString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TCollection_HExtendedString_destructor(ptr);
+    }
+}
+
 impl HExtendedString {
     /// Initializes a HExtendedString to an empty ExtendedString.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HExtendedString_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor()) }
     }
 
     /// Initializes a HExtendedString with a CString.
-    pub fn new_charptr(message: &str) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HExtendedString_ctor_charptr(message)
+    pub fn new_charptr(message: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_charptr(message))
+        }
     }
 
     /// Initializes a HExtendedString with an ExtString.
-    pub fn new_extstring(message: &crate::ffi::Standard_ExtString) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HExtendedString_ctor_extstring(message)
+    pub fn new_extstring(message: &crate::ffi::Standard_ExtString) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_extstring(
+                message,
+            ))
+        }
     }
 
     /// Initializes a HExtendedString with a single character.
-    pub fn new_extcharacter(aChar: &crate::ffi::Standard_ExtCharacter) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HExtendedString_ctor_extcharacter(aChar)
+    pub fn new_extcharacter(aChar: &crate::ffi::Standard_ExtCharacter) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_extcharacter(
+                aChar,
+            ))
+        }
     }
 
     /// Initializes a HExtendedString with <length> space allocated.
@@ -751,37 +1848,121 @@ impl HExtendedString {
     pub fn new_int_extcharacter(
         length: i32,
         filler: &crate::ffi::Standard_ExtCharacter,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HExtendedString_ctor_int_extcharacter(length, filler)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TCollection_HExtendedString_ctor_int_extcharacter(length, filler),
+            )
+        }
     }
 
     /// Initializes a HExtendedString with a ExtendedString.
     pub fn new_extendedstring(
         aString: &crate::ffi::TCollection_ExtendedString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HExtendedString_ctor_extendedstring(aString)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_extendedstring(
+                aString,
+            ))
+        }
     }
 
     /// Initializes a HExtendedString with an HAsciiString.
     pub fn new_handletcollectionhasciistring(
         aString: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HExtendedString_ctor_handletcollectionhasciistring(aString)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TCollection_HExtendedString_ctor_handletcollectionhasciistring(aString),
+            )
+        }
     }
 
     /// Initializes a HExtendedString with a HExtendedString.
     pub fn new_handletcollectionhextendedstring(
         aString: &crate::ffi::HandleTCollectionHExtendedString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_HExtendedString_ctor_handletcollectionhextendedstring(aString)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TCollection_HExtendedString_ctor_handletcollectionhextendedstring(
+                    aString,
+                ),
+            )
+        }
+    }
+
+    /// Appends <other>  to me.
+    pub fn assign_cat(&mut self, other: &crate::ffi::HandleTCollectionHExtendedString) {
+        unsafe { crate::ffi::TCollection_HExtendedString_assign_cat(self as *mut Self, other) }
     }
 
     /// Returns a string appending <other>  to me.
     pub fn cat(
         &self,
         other: &crate::ffi::HandleTCollectionHExtendedString,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHExtendedString> {
-        crate::ffi::TCollection_HExtendedString_cat(self, other)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_cat(
+                self as *const Self,
+                other,
+            ))
+        }
+    }
+
+    /// Removes all characters contained in <me>.
+    /// This produces an empty ExtendedString.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TCollection_HExtendedString_clear(self as *mut Self) }
+    }
+
+    /// Returns True if the string <me> contains zero character
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::TCollection_HExtendedString_is_empty(self as *const Self) }
+    }
+
+    /// Insert a HExtendedString at position <where>.
+    pub fn insert(&mut self, where_: i32, what: &crate::ffi::HandleTCollectionHExtendedString) {
+        unsafe { crate::ffi::TCollection_HExtendedString_insert(self as *mut Self, where_, what) }
+    }
+
+    /// Returns TRUE if <me> is less than <other>.
+    pub fn is_less(&self, other: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
+        unsafe { crate::ffi::TCollection_HExtendedString_is_less(self as *const Self, other) }
+    }
+
+    /// Returns TRUE if <me> is greater than <other>.
+    pub fn is_greater(&self, other: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
+        unsafe { crate::ffi::TCollection_HExtendedString_is_greater(self as *const Self, other) }
+    }
+
+    /// Returns True if the string contains only "Ascii Range"  characters
+    pub fn is_ascii(&self) -> bool {
+        unsafe { crate::ffi::TCollection_HExtendedString_is_ascii(self as *const Self) }
+    }
+
+    /// Returns number of characters in <me>.
+    /// This is the same functionality as 'strlen' in C.
+    pub fn length(&self) -> i32 {
+        unsafe { crate::ffi::TCollection_HExtendedString_length(self as *const Self) }
+    }
+
+    /// Erases <ahowmany> characters from position <where>,
+    /// <where> included.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Erase(2,2) erases 2 characters from position 1
+    /// This gives "Hlo".
+    pub fn remove(&mut self, where_: i32, ahowmany: i32) {
+        unsafe {
+            crate::ffi::TCollection_HExtendedString_remove(self as *mut Self, where_, ahowmany)
+        }
+    }
+
+    /// Replaces a part of <me> by another string.
+    pub fn set_value(&mut self, where_: i32, what: &crate::ffi::HandleTCollectionHExtendedString) {
+        unsafe {
+            crate::ffi::TCollection_HExtendedString_set_value(self as *mut Self, where_, what)
+        }
     }
 
     /// Splits a ExtendedString into two sub-strings.
@@ -789,40 +1970,88 @@ impl HExtendedString {
     /// aString contains "abcdefg"
     /// aString.Split(3) gives <me> = "abc" and returns "defg"
     pub fn split(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         where_: i32,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHExtendedString> {
-        crate::ffi::TCollection_HExtendedString_split(self, where_)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_split(
+                self as *mut Self,
+                where_,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TCollection_HExtendedString_get_type_name()
+    /// Searches a String in <me> from the beginning
+    /// and returns position of first item <what> matching.
+    /// It returns -1 if not found.
+    pub fn search(&self, what: &crate::ffi::HandleTCollectionHExtendedString) -> i32 {
+        unsafe { crate::ffi::TCollection_HExtendedString_search(self as *const Self, what) }
+    }
+
+    /// Searches a ExtendedString in another ExtendedString from the end
+    /// and returns position of first item <what> matching.
+    /// It returns -1 if not found.
+    pub fn search_from_end(&self, what: &crate::ffi::HandleTCollectionHExtendedString) -> i32 {
+        unsafe {
+            crate::ffi::TCollection_HExtendedString_search_from_end(self as *const Self, what)
+        }
+    }
+
+    /// Truncates <me> to <ahowmany> characters.
+    /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
+    pub fn trunc(&mut self, ahowmany: i32) {
+        unsafe { crate::ffi::TCollection_HExtendedString_trunc(self as *mut Self, ahowmany) }
+    }
+
+    /// Returns the field myString
+    pub fn string(&self) -> &crate::ffi::TCollection_ExtendedString {
+        unsafe { &*(crate::ffi::TCollection_HExtendedString_string(self as *const Self)) }
+    }
+
+    pub fn is_same_state(&self, other: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
+        unsafe { crate::ffi::TCollection_HExtendedString_is_same_state(self as *const Self, other) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TCollection_HExtendedString_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TCollection_HExtendedString_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TCollection_HExtendedString_get_type_descriptor()
+        unsafe { &*(crate::ffi::TCollection_HExtendedString_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHExtendedString> {
-        crate::ffi::TCollection_HExtendedString_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTCollectionHExtendedString;
 
+unsafe impl crate::CppDeletable for HandleTCollectionHExtendedString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTCollectionHExtendedString_destructor(ptr);
+    }
+}
+
 impl HandleTCollectionHExtendedString {
     /// Dereference this Handle to access the underlying TCollection_HExtendedString
     pub fn get(&self) -> &crate::ffi::TCollection_HExtendedString {
-        crate::ffi::HandleTCollectionHExtendedString_get(self)
+        unsafe { &*(crate::ffi::HandleTCollectionHExtendedString_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TCollection_HExtendedString
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TCollection_HExtendedString> {
-        crate::ffi::HandleTCollectionHExtendedString_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TCollection_HExtendedString {
+        unsafe { &mut *(crate::ffi::HandleTCollectionHExtendedString_get_mut(self as *mut Self)) }
     }
 }

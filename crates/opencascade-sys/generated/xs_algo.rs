@@ -14,13 +14,23 @@
 /// Allows to define and apply general Shape Processing as a customizable sequence of operators.
 pub use crate::ffi::XSAlgo_ShapeProcessor as ShapeProcessor;
 
+unsafe impl crate::CppDeletable for ShapeProcessor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSAlgo_ShapeProcessor_destructor(ptr);
+    }
+}
+
 impl ShapeProcessor {
     /// Constructor.
     /// @param theParameters Parameters to be used in the processing.
     pub fn new_shapefixparameters(
         theParameters: &crate::ffi::DE_ShapeFixParameters,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::XSAlgo_ShapeProcessor_ctor_shapefixparameters(theParameters)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSAlgo_ShapeProcessor_ctor_shapefixparameters(
+                theParameters,
+            ))
+        }
     }
 
     /// Check quality of pcurve of the edge on the given face, and correct it if necessary.
@@ -35,13 +45,20 @@ impl ShapeProcessor {
         thePrecision: f64,
         theIsSeam: bool,
     ) -> bool {
-        crate::ffi::XSAlgo_ShapeProcessor_check_p_curve(theEdge, theFace, thePrecision, theIsSeam)
+        unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_check_p_curve(
+                theEdge,
+                theFace,
+                thePrecision,
+                theIsSeam,
+            )
+        }
     }
 
     /// The function is designed to set the length unit for the application before performing a
     /// transfer operation. It ensures that the length unit is correctly configured based on the
     /// value associated with the key "xstep.cascade.unit".
     pub fn prepare_for_transfer() {
-        crate::ffi::XSAlgo_ShapeProcessor_prepare_for_transfer()
+        unsafe { crate::ffi::XSAlgo_ShapeProcessor_prepare_for_transfer() }
     }
 }

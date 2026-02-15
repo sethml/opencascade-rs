@@ -13,20 +13,19 @@ pub(crate) fn make_pipe_shell_with_law_function(
     let law_handle = law_function_from_graph(radius_values);
 
     let mut pipe = b_rep_offset_api::MakePipeShell::new_wire(&spine.inner);
-    pipe.pin_mut().set_mode_bool(false);
+    pipe.set_mode_bool(false);
 
     let profile_shape = profile.inner.as_shape();
     let with_contact = false;
     let with_correction = true;
-    pipe.pin_mut()
-        .set_law_shape_handlelawfunction_bool2(profile_shape, &law_handle, with_contact, with_correction);
+    pipe.set_law_shape_handlelawfunction_bool2(profile_shape, &law_handle, with_contact, with_correction);
 
     let progress = message::ProgressRange::new();
-    pipe.pin_mut().build(&progress);
-    pipe.pin_mut().make_solid();
+    pipe.build(&progress);
+    pipe.make_solid();
 
-    let result_shape = pipe.pin_mut().shape();
-    let solid = topo_ds::solid(result_shape);
+    let result_shape = pipe.shape();
+    let solid = unsafe { &*topo_ds::solid(result_shape) };
     Solid::from_solid(solid)
 }
 
@@ -41,18 +40,17 @@ pub(crate) fn make_pipe_shell_with_law_function_shell(
     let law_handle = law_function_from_graph(radius_values);
 
     let mut pipe = b_rep_offset_api::MakePipeShell::new_wire(&spine.inner);
-    pipe.pin_mut().set_mode_bool(false);
+    pipe.set_mode_bool(false);
 
     let profile_shape = profile.inner.as_shape();
     let with_contact = false;
     let with_correction = true;
-    pipe.pin_mut()
-        .set_law_shape_handlelawfunction_bool2(profile_shape, &law_handle, with_contact, with_correction);
+    pipe.set_law_shape_handlelawfunction_bool2(profile_shape, &law_handle, with_contact, with_correction);
 
     let progress = message::ProgressRange::new();
-    pipe.pin_mut().build(&progress);
+    pipe.build(&progress);
 
-    let result_shape = pipe.pin_mut().shape();
-    let shell = topo_ds::shell(result_shape);
+    let result_shape = pipe.shape();
+    let shell = unsafe { &*topo_ds::shell(result_shape) };
     crate::primitives::Shell::from_shell(shell)
 }

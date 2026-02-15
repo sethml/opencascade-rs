@@ -27,77 +27,173 @@
 /// link between the norm and the application
 pub use crate::ffi::XSControl_Controller as Controller;
 
+unsafe impl crate::CppDeletable for Controller {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSControl_Controller_destructor(ptr);
+    }
+}
+
 impl Controller {
     /// Changes names
     /// if a name is empty, the formerly set one remains
     /// Remark : Does not call Record or AutoRecord
-    pub fn set_names(self: std::pin::Pin<&mut Self>, theLongName: &str, theShortName: &str) {
-        crate::ffi::XSControl_Controller_set_names(self, theLongName, theShortName)
+    pub fn set_names(
+        &mut self,
+        theLongName: *const std::ffi::c_char,
+        theShortName: *const std::ffi::c_char,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_Controller_set_names(self as *mut Self, theLongName, theShortName)
+        }
+    }
+
+    /// Records <me> is a general dictionary under Short and Long
+    /// Names (see method Name)
+    pub fn auto_record(&self) {
+        unsafe { crate::ffi::XSControl_Controller_auto_record(self as *const Self) }
     }
 
     /// Records <me> in a general dictionary under a name
     /// Error if <name> already used for another one
-    pub fn record(&self, name: &str) {
-        crate::ffi::XSControl_Controller_record(self, name)
+    pub fn record(&self, name: *const std::ffi::c_char) {
+        unsafe { crate::ffi::XSControl_Controller_record(self as *const Self, name) }
     }
 
     /// Returns a name, as given when initializing :
     /// rsc = False (D) : True Name attached to the Norm (long name)
     /// rsc = True : Name of the resource set (i.e. short name)
-    pub fn name(&self, rsc: bool) -> String {
-        crate::ffi::XSControl_Controller_name(self, rsc)
+    pub fn name(&self, rsc: bool) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::XSControl_Controller_name(self as *const Self, rsc) }
+    }
+
+    /// Returns the WorkLibrary attached to the Norm. Remark that it
+    /// has to be in phase with the Protocol  (read from field)
+    pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
+        unsafe { &*(crate::ffi::XSControl_Controller_work_library(self as *const Self)) }
     }
 
     /// Creates a new empty Model ready to receive data of the Norm
     /// Used to write data from Imagine to an interface file
-    pub fn new_model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::XSControl_Controller_new_model(self)
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Controller_new_model(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Sets minimum and maximum values for modetrans (write)
+    /// Erases formerly recorded bounds and values
+    /// Actually only for shape
+    /// Then, for each value a little help can be attached
+    pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
+        unsafe {
+            crate::ffi::XSControl_Controller_set_mode_write(
+                self as *mut Self,
+                modemin,
+                modemax,
+                shape,
+            )
+        }
     }
 
     /// Attaches a short line of help to a value of modetrans (write)
     pub fn set_mode_write_help(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         modetrans: i32,
-        help: &str,
+        help: *const std::ffi::c_char,
         shape: bool,
     ) {
-        crate::ffi::XSControl_Controller_set_mode_write_help(self, modetrans, help, shape)
+        unsafe {
+            crate::ffi::XSControl_Controller_set_mode_write_help(
+                self as *mut Self,
+                modetrans,
+                help,
+                shape,
+            )
+        }
+    }
+
+    /// Returns recorded min and max values for modetrans (write)
+    /// Actually only for shapes
+    /// Returns True if bounds are set, False else (then, free value)
+    pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
+        unsafe {
+            crate::ffi::XSControl_Controller_mode_write_bounds(
+                self as *const Self,
+                modemin,
+                modemax,
+                shape,
+            )
+        }
+    }
+
+    /// Tells if a value of <modetrans> is a good value(within bounds)
+    /// Actually only for shapes
+    pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
+        unsafe {
+            crate::ffi::XSControl_Controller_is_mode_write(self as *const Self, modetrans, shape)
+        }
     }
 
     /// Returns the help line recorded for a value of modetrans
     /// empty if help not defined or not within bounds or if values are free
-    pub fn mode_write_help(&self, modetrans: i32, shape: bool) -> String {
-        crate::ffi::XSControl_Controller_mode_write_help(self, modetrans, shape)
+    pub fn mode_write_help(&self, modetrans: i32, shape: bool) -> *const std::ffi::c_char {
+        unsafe {
+            crate::ffi::XSControl_Controller_mode_write_help(self as *const Self, modetrans, shape)
+        }
+    }
+
+    /// Tells if a shape is valid for a transfer to a model
+    /// Asks the ActorWrite (through a ShapeMapper)
+    pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
+        unsafe {
+            crate::ffi::XSControl_Controller_recognize_write_shape(
+                self as *const Self,
+                shape,
+                modetrans,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSControl_Controller_dynamic_type(self as *const Self)) }
     }
 
     /// Returns the Controller attached to a given name
     /// Returns a Null Handle if <name> is unknown
-    pub fn recorded(name: &str) -> cxx::UniquePtr<crate::ffi::HandleXSControlController> {
-        crate::ffi::XSControl_Controller_recorded(name)
+    pub fn recorded(
+        name: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Controller_recorded(name)) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::XSControl_Controller_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::XSControl_Controller_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::XSControl_Controller_get_type_descriptor()
+        unsafe { &*(crate::ffi::XSControl_Controller_get_type_descriptor()) }
     }
 }
 
 pub use crate::ffi::HandleXSControlController;
 
+unsafe impl crate::CppDeletable for HandleXSControlController {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXSControlController_destructor(ptr);
+    }
+}
+
 impl HandleXSControlController {
     /// Dereference this Handle to access the underlying XSControl_Controller
     pub fn get(&self) -> &crate::ffi::XSControl_Controller {
-        crate::ffi::HandleXSControlController_get(self)
+        unsafe { &*(crate::ffi::HandleXSControlController_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_Controller
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::XSControl_Controller> {
-        crate::ffi::HandleXSControlController_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_Controller {
+        unsafe { &mut *(crate::ffi::HandleXSControlController_get_mut(self as *mut Self)) }
     }
 }
 
@@ -138,40 +234,51 @@ impl HandleXSControlController {
 /// - TransferRoots which restarts the list of shapes from scratch.
 pub use crate::ffi::XSControl_Reader as Reader;
 
+unsafe impl crate::CppDeletable for Reader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSControl_Reader_destructor(ptr);
+    }
+}
+
 impl Reader {
     /// Creates a Reader from scratch (creates an empty WorkSession)
     /// A WorkSession or a Controller must be provided before running
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::XSControl_Reader_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_ctor()) }
     }
 
     /// Creates a Reader from scratch, with a norm name which
     /// identifies a Controller
-    pub fn new_charptr(norm: &str) -> cxx::UniquePtr<Self> {
-        crate::ffi::XSControl_Reader_ctor_charptr(norm)
+    pub fn new_charptr(norm: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_ctor_charptr(norm)) }
     }
 
     /// Sets a specific norm to <me>
     /// Returns True if done, False if <norm> is not available
-    pub fn set_norm(self: std::pin::Pin<&mut Self>, norm: &str) -> bool {
-        crate::ffi::XSControl_Reader_set_norm(self, norm)
+    pub fn set_norm(&mut self, norm: *const std::ffi::c_char) -> bool {
+        unsafe { crate::ffi::XSControl_Reader_set_norm(self as *mut Self, norm) }
     }
 
     /// Loads a file and returns the read status
     /// Zero for a Model which complies with the Controller
     pub fn read_file(
-        self: std::pin::Pin<&mut Self>,
-        filename: &str,
+        &mut self,
+        filename: *const std::ffi::c_char,
     ) -> crate::if_select::ReturnStatus {
-        crate::if_select::ReturnStatus::try_from(crate::ffi::XSControl_Reader_read_file(
-            self, filename,
-        ))
-        .unwrap()
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::XSControl_Reader_read_file(
+                self as *mut Self,
+                filename,
+            ))
+            .unwrap()
+        }
     }
 
     /// Returns the model. It can then be consulted (header, product)
-    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::XSControl_Reader_model(self)
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_model(self as *const Self))
+        }
     }
 
     /// Returns a list of entities from the IGES or STEP file
@@ -202,19 +309,87 @@ impl Reader {
     /// Warning
     /// If the value given to second is incorrect, it will simply be ignored.
     pub fn give_list(
-        self: std::pin::Pin<&mut Self>,
-        first: &str,
-        second: &str,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        crate::ffi::XSControl_Reader_give_list(self, first, second)
+        &mut self,
+        first: *const std::ffi::c_char,
+        second: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_give_list(
+                self as *mut Self,
+                first,
+                second,
+            ))
+        }
+    }
+
+    /// Determines the list of root entities which are candidate for
+    /// a transfer to a Shape, and returns the number
+    /// of entities in the list
+    pub fn nb_roots_for_transfer(&mut self) -> i32 {
+        unsafe { crate::ffi::XSControl_Reader_nb_roots_for_transfer(self as *mut Self) }
+    }
+
+    /// Translates a root identified by the rank num in the model.
+    /// false is returned if no shape is produced.
+    pub fn transfer_one_root(
+        &mut self,
+        num: i32,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XSControl_Reader_transfer_one_root(self as *mut Self, num, theProgress)
+        }
+    }
+
+    /// Translates an IGES or STEP
+    /// entity identified by the rank num in the model.
+    /// false is returned if no shape is produced.
+    pub fn transfer_one(
+        &mut self,
+        num: i32,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::XSControl_Reader_transfer_one(self as *mut Self, num, theProgress) }
+    }
+
+    /// Translates a list of entities.
+    /// Returns the number of IGES or STEP entities that were
+    /// successfully translated. The list can be produced with GiveList.
+    /// Warning - This function does not clear the existing output shapes.
+    pub fn transfer_list(
+        &mut self,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> i32 {
+        unsafe { crate::ffi::XSControl_Reader_transfer_list(self as *mut Self, list, theProgress) }
+    }
+
+    /// Translates all translatable
+    /// roots and returns the number of successful translations.
+    /// Warning - This function clears existing output shapes first.
+    pub fn transfer_roots(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> i32 {
+        unsafe { crate::ffi::XSControl_Reader_transfer_roots(self as *mut Self, theProgress) }
+    }
+
+    /// Clears the list of shapes that
+    /// may have accumulated in calls to TransferOne or TransferRoot.C
+    pub fn clear_shapes(&mut self) {
+        unsafe { crate::ffi::XSControl_Reader_clear_shapes(self as *mut Self) }
+    }
+
+    /// Returns the number of shapes produced by translation.
+    pub fn nb_shapes(&self) -> i32 {
+        unsafe { crate::ffi::XSControl_Reader_nb_shapes(self as *const Self) }
     }
 
     /// Returns the shape resulting
     /// from a translation and identified by the rank num.
     /// num equals 1 by default. In other words, the first shape
     /// resulting from the translation is returned.
-    pub fn shape(&self, num: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::XSControl_Reader_shape(self, num)
+    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_shape(self as *const Self, num))
+        }
     }
 
     /// Returns all of the results in
@@ -222,8 +397,10 @@ impl Reader {
     /// - a null shape if there are no results,
     /// - a shape if there is one result,
     /// - a compound containing the resulting shapes if there are more than one.
-    pub fn one_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::XSControl_Reader_one_shape(self)
+    pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_one_shape(self as *const Self))
+        }
     }
 
     /// Prints the check list attached to loaded data, on the Standard
@@ -233,7 +410,13 @@ impl Reader {
     /// mode = 1 : per message, just gives count of entities per check
     /// mode = 2 : also gives entity numbers
     pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
-        crate::ffi::XSControl_Reader_print_check_load(self, failsonly, mode.into())
+        unsafe {
+            crate::ffi::XSControl_Reader_print_check_load(
+                self as *const Self,
+                failsonly,
+                mode.into(),
+            )
+        }
     }
 
     /// Displays check results for the
@@ -243,7 +426,65 @@ impl Reader {
     /// false. mode determines the contents and the order of the
     /// messages according to the terms of the IFSelect_PrintCount enumeration.
     pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
-        crate::ffi::XSControl_Reader_print_check_transfer(self, failsonly, mode.into())
+        unsafe {
+            crate::ffi::XSControl_Reader_print_check_transfer(
+                self as *const Self,
+                failsonly,
+                mode.into(),
+            )
+        }
+    }
+
+    /// Displays the statistics for
+    /// the last translation. what defines the kind of
+    /// statistics that are displayed as follows:
+    /// - 0 gives general statistics (number of translated roots,
+    /// number of warnings, number of fail messages),
+    /// - 1 gives root results,
+    /// - 2 gives statistics for all checked entities,
+    /// - 3 gives the list of translated entities,
+    /// - 4 gives warning and fail messages,
+    /// - 5 gives fail messages only.
+    /// The use of mode depends on the value of what. If what is 0,
+    /// mode is ignored. If what is 1, 2 or 3, mode defines the following:
+    /// - 0 lists the numbers of IGES or STEP entities in the respective model
+    /// - 1 gives the number, identifier, type and result
+    /// type for each IGES or STEP entity and/or its status
+    /// (fail, warning, etc.)
+    /// - 2 gives maximum information for each IGES or STEP entity (i.e. checks)
+    /// - 3 gives the number of entities per type of IGES or STEP entity
+    /// - 4 gives the number of IGES or STEP entities per result type and/or status
+    /// - 5 gives the number of pairs (IGES or STEP or result type and status)
+    /// - 6 gives the number of pairs (IGES or STEP or result type
+    /// and status) AND the list of entity numbers in the IGES or STEP model.
+    /// If what is 4 or 5, mode defines the warning and fail
+    /// messages as follows:
+    /// - if mode is 0 all warnings and checks per entity are returned
+    /// - if mode is 2 the list of entities per warning is returned.
+    /// If mode is not set, only the list of all entities per warning is given.
+    pub fn print_stats_transfer(&self, what: i32, mode: i32) {
+        unsafe {
+            crate::ffi::XSControl_Reader_print_stats_transfer(self as *const Self, what, mode)
+        }
+    }
+
+    /// Gives statistics about Transfer
+    pub fn get_stats_transfer(
+        &self,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        nbMapped: &mut i32,
+        nbWithResult: &mut i32,
+        nbWithFail: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_Reader_get_stats_transfer(
+                self as *const Self,
+                list,
+                nbMapped,
+                nbWithResult,
+                nbWithFail,
+            )
+        }
     }
 }
 

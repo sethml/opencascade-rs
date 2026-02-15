@@ -102,6 +102,12 @@
 /// a practical guide Gerald Farin
 pub use crate::ffi::Geom2d_BSplineCurve as BSplineCurve;
 
+unsafe impl crate::CppDeletable for BSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Geom2d_BSplineCurve_destructor(ptr);
+    }
+}
+
 impl BSplineCurve {
     /// Creates a  non-rational B_spline curve   on  the
     /// basis <Knots, Multiplicities> of degree <Degree>.
@@ -134,14 +140,10 @@ impl BSplineCurve {
         Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
         Degree: i32,
         Periodic: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(
-            Poles,
-            Knots,
-            Multiplicities,
-            Degree,
-            Periodic,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(Poles, Knots, Multiplicities, Degree, Periodic))
+        }
     }
 
     /// Creates  a rational B_spline  curve  on the basis
@@ -176,15 +178,10 @@ impl BSplineCurve {
         Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
         Degree: i32,
         Periodic: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(
-            Poles,
-            Weights,
-            Knots,
-            Multiplicities,
-            Degree,
-            Periodic,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(Poles, Weights, Knots, Multiplicities, Degree, Periodic))
+        }
     }
 
     /// Creates a  non-rational B_spline curve   on  the
@@ -217,7 +214,7 @@ impl BSplineCurve {
         Knots: &crate::ffi::TColStd_Array1OfReal,
         Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
         Degree: i32,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(
             Poles,
             Knots,
@@ -258,7 +255,7 @@ impl BSplineCurve {
         Knots: &crate::ffi::TColStd_Array1OfReal,
         Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
         Degree: i32,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(
             Poles,
             Weights,
@@ -267,6 +264,445 @@ impl BSplineCurve {
             Degree,
             false,
         )
+    }
+
+    /// Increases the degree of this BSpline curve to
+    /// Degree. As a result, the poles, weights and
+    /// multiplicities tables are modified; the knots table is
+    /// not changed. Nothing is done if Degree is less than
+    /// or equal to the current degree.
+    /// Exceptions
+    /// Standard_ConstructionError if Degree is greater than
+    /// Geom2d_BSplineCurve::MaxDegree().
+    pub fn increase_degree(&mut self, Degree: i32) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_increase_degree(self as *mut Self, Degree) }
+    }
+
+    /// Increases the multiplicity  of the knot <Index> to
+    /// <M>.
+    ///
+    /// If   <M>   is   lower   or  equal   to  the current
+    /// multiplicity nothing is done. If <M> is higher than
+    /// the degree the degree is used.
+    /// If <Index> is not in [FirstUKnotIndex, LastUKnotIndex]
+    pub fn increase_multiplicity_int2(&mut self, Index: i32, M: i32) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_increase_multiplicity_int2(self as *mut Self, Index, M)
+        }
+    }
+
+    /// Increases  the  multiplicities   of  the knots  in
+    /// [I1,I2] to <M>.
+    ///
+    /// For each knot if  <M>  is  lower  or equal  to  the
+    /// current multiplicity  nothing  is  done. If <M>  is
+    /// higher than the degree the degree is used.
+    /// As a result, the poles and weights tables of this curve are modified.
+    /// Warning
+    /// It is forbidden to modify the multiplicity of the first or
+    /// last knot of a non-periodic curve. Be careful as
+    /// Geom2d does not protect against this.
+    /// Exceptions
+    /// Standard_OutOfRange if either Index, I1 or I2 is
+    /// outside the bounds of the knots table.
+    pub fn increase_multiplicity_int3(&mut self, I1: i32, I2: i32, M: i32) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_increase_multiplicity_int3(self as *mut Self, I1, I2, M)
+        }
+    }
+
+    /// Increases by M the multiplicity of the knots of indexes
+    /// I1 to I2 in the knots table of this BSpline curve. For
+    /// each knot, the resulting multiplicity is limited to the
+    /// degree of this curve. If M is negative, nothing is done.
+    /// As a result, the poles and weights tables of this
+    /// BSpline curve are modified.
+    /// Warning
+    /// It is forbidden to modify the multiplicity of the first or
+    /// last knot of a non-periodic curve. Be careful as
+    /// Geom2d does not protect against this.
+    /// Exceptions
+    /// Standard_OutOfRange if I1 or I2 is outside the
+    /// bounds of the knots table.
+    pub fn increment_multiplicity(&mut self, I1: i32, I2: i32, M: i32) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_increment_multiplicity(self as *mut Self, I1, I2, M)
+        }
+    }
+
+    /// Inserts a knot value in the sequence of knots.  If
+    /// <U>  is an  existing knot     the multiplicity  is
+    /// increased by <M>.
+    ///
+    /// If U  is  not  on the parameter  range  nothing is
+    /// done.
+    ///
+    /// If the multiplicity is negative or null nothing is
+    /// done. The  new   multiplicity  is limited  to  the
+    /// degree.
+    ///
+    /// The  tolerance criterion  for  knots  equality  is
+    /// the max of Epsilon(U) and ParametricTolerance.
+    /// Warning
+    /// - If U is less than the first parameter or greater than
+    /// the last parameter of this BSpline curve, nothing is done.
+    /// - If M is negative or null, nothing is done.
+    /// - The multiplicity of a knot is limited to the degree of
+    /// this BSpline curve.
+    pub fn insert_knot(&mut self, U: f64, M: i32, ParametricTolerance: f64) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_insert_knot(
+                self as *mut Self,
+                U,
+                M,
+                ParametricTolerance,
+            )
+        }
+    }
+
+    /// Reduces the multiplicity of the knot of index Index
+    /// to M. If M is equal to 0, the knot is removed.
+    /// With a modification of this type, the array of poles is also modified.
+    /// Two different algorithms are systematically used to
+    /// compute the new poles of the curve. If, for each
+    /// pole, the distance between the pole calculated
+    /// using the first algorithm and the same pole
+    /// calculated using the second algorithm, is less than
+    /// Tolerance, this ensures that the curve is not
+    /// modified by more than Tolerance. Under these
+    /// conditions, true is returned; otherwise, false is returned.
+    /// A low tolerance is used to prevent modification of
+    /// the curve. A high tolerance is used to "smooth" the curve.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is outside the
+    /// bounds of the knots table.
+    pub fn remove_knot(&mut self, Index: i32, M: i32, Tolerance: f64) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_remove_knot(self as *mut Self, Index, M, Tolerance)
+        }
+    }
+
+    /// The new pole is inserted after the pole of range Index.
+    /// If the curve was non rational it can become rational.
+    ///
+    /// Raised if the B-spline is NonUniform or PiecewiseBezier or if
+    /// Weight <= 0.0
+    /// Raised if Index is not in the range [1, Number of Poles]
+    pub fn insert_pole_after(&mut self, Index: i32, P: &crate::ffi::gp_Pnt2d, Weight: f64) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_insert_pole_after(self as *mut Self, Index, P, Weight)
+        }
+    }
+
+    /// The new pole is inserted before the pole of range Index.
+    /// If the curve was non rational it can become rational.
+    ///
+    /// Raised if the B-spline is NonUniform or PiecewiseBezier or if
+    /// Weight <= 0.0
+    /// Raised if Index is not in the range [1, Number of Poles]
+    pub fn insert_pole_before(&mut self, Index: i32, P: &crate::ffi::gp_Pnt2d, Weight: f64) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_insert_pole_before(self as *mut Self, Index, P, Weight)
+        }
+    }
+
+    /// Removes the pole of range Index
+    /// If the curve was rational it can become non rational.
+    ///
+    /// Raised if the B-spline is NonUniform or PiecewiseBezier.
+    /// Raised if the number of poles of the B-spline curve is lower or
+    /// equal to 2 before removing.
+    /// Raised if Index is not in the range [1, Number of Poles]
+    pub fn remove_pole(&mut self, Index: i32) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_remove_pole(self as *mut Self, Index) }
+    }
+
+    /// Reverses the orientation of this BSpline curve. As a result
+    /// - the knots and poles tables are modified;
+    /// - the start point of the initial curve becomes the end
+    /// point of the reversed curve;
+    /// - the end point of the initial curve becomes the start
+    /// point of the reversed curve.
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_reverse(self as *mut Self) }
+    }
+
+    /// Computes the parameter on the reversed curve for
+    /// the point of parameter U on this BSpline curve.
+    /// The returned value is: UFirst + ULast - U,
+    /// where UFirst and ULast are the values of the
+    /// first and last parameters of this BSpline curve.
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_reversed_parameter(self as *const Self, U) }
+    }
+
+    /// Modifies this BSpline curve by segmenting it
+    /// between U1 and U2. Either of these values can be
+    /// outside the bounds of the curve, but U2 must be greater than U1.
+    /// All data structure tables of this BSpline curve are
+    /// modified, but the knots located between U1 and U2
+    /// are retained. The degree of the curve is not modified.
+    ///
+    /// Parameter theTolerance defines the possible proximity of the segment
+    /// boundaries and B-spline knots to treat them as equal.
+    ///
+    /// Warnings :
+    /// Even if <me> is not closed it can become closed after the
+    /// segmentation for example if U1 or U2 are out of the bounds
+    /// of the curve <me> or if the curve makes loop.
+    /// After the segmentation the length of a curve can be null.
+    /// - The segmentation of a periodic curve over an
+    /// interval corresponding to its period generates a
+    /// non-periodic curve with equivalent geometry.
+    /// Exceptions
+    /// Standard_DomainError if U2 is less than U1.
+    /// raises if U2 < U1.
+    /// Standard_DomainError if U2 - U1 exceeds the period for periodic curves.
+    /// i.e. ((U2 - U1) - Period) > Precision::PConfusion().
+    pub fn segment(&mut self, U1: f64, U2: f64, theTolerance: f64) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_segment(self as *mut Self, U1, U2, theTolerance) }
+    }
+
+    /// Modifies this BSpline curve by assigning the value K
+    /// to the knot of index Index in the knots table. This is a
+    /// relatively local modification because K must be such that:
+    /// Knots(Index - 1) < K < Knots(Index + 1)
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - K is not such that:
+    /// Knots(Index - 1) < K < Knots(Index + 1)
+    /// - M is greater than the degree of this BSpline curve
+    /// or lower than the previous multiplicity of knot of
+    /// index Index in the knots table.
+    /// Standard_OutOfRange if Index is outside the bounds of the knots table.
+    pub fn set_knot_int_real(&mut self, Index: i32, K: f64) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_set_knot_int_real(self as *mut Self, Index, K) }
+    }
+
+    /// Modifies this BSpline curve by assigning the value K
+    /// to the knot of index Index in the knots table. This is a
+    /// relatively local modification because K must be such that:
+    /// Knots(Index - 1) < K < Knots(Index + 1)
+    /// The second syntax allows you also to increase the
+    /// multiplicity of the knot to M (but it is not possible to
+    /// decrease the multiplicity of the knot with this function).
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - K is not such that:
+    /// Knots(Index - 1) < K < Knots(Index + 1)
+    /// - M is greater than the degree of this BSpline curve
+    /// or lower than the previous multiplicity of knot of
+    /// index Index in the knots table.
+    /// Standard_OutOfRange if Index is outside the bounds of the knots table.
+    pub fn set_knot_int_real_int(&mut self, Index: i32, K: f64, M: i32) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_set_knot_int_real_int(self as *mut Self, Index, K, M)
+        }
+    }
+
+    /// Computes the parameter normalized within the
+    /// "first" period of this BSpline curve, if it is periodic:
+    /// the returned value is in the range Param1 and
+    /// Param1 + Period, where:
+    /// - Param1 is the "first parameter", and
+    /// - Period the period of this BSpline curve.
+    /// Note: If this curve is not periodic, U is not modified.
+    pub fn periodic_normalization(&self, U: &mut f64) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_periodic_normalization(self as *const Self, U) }
+    }
+
+    /// Changes this BSpline curve into a periodic curve.
+    /// To become periodic, the curve must first be closed.
+    /// Next, the knot sequence must be periodic. For this,
+    /// FirstUKnotIndex and LastUKnotIndex are used to
+    /// compute I1 and I2, the indexes in the knots array
+    /// of the knots corresponding to the first and last
+    /// parameters of this BSpline curve.
+    /// The period is therefore Knot(I2) - Knot(I1).
+    /// Consequently, the knots and poles tables are modified.
+    /// Exceptions
+    /// Standard_ConstructionError if this BSpline curve is not closed.
+    pub fn set_periodic(&mut self) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_set_periodic(self as *mut Self) }
+    }
+
+    /// Assigns the knot of index Index in the knots table as
+    /// the origin of this periodic BSpline curve. As a
+    /// consequence, the knots and poles tables are modified.
+    /// Exceptions
+    /// Standard_NoSuchObject if this curve is not periodic.
+    /// Standard_DomainError if Index is outside the
+    /// bounds of the knots table.
+    pub fn set_origin(&mut self, Index: i32) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_set_origin(self as *mut Self, Index) }
+    }
+
+    /// Changes this BSpline curve into a non-periodic
+    /// curve. If this curve is already non-periodic, it is not modified.
+    /// Note that the poles and knots tables are modified.
+    /// Warning
+    /// If this curve is periodic, as the multiplicity of the first
+    /// and last knots is not modified, and is not equal to
+    /// Degree + 1, where Degree is the degree of
+    /// this BSpline curve, the start and end points of the
+    /// curve are not its first and last poles.
+    pub fn set_not_periodic(&mut self) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_set_not_periodic(self as *mut Self) }
+    }
+
+    /// Modifies this BSpline curve by assigning P to the
+    /// pole of index Index in the poles table.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is outside the
+    /// bounds of the poles table.
+    /// Standard_ConstructionError if Weight is negative or null.
+    pub fn set_pole_int_pnt2d(&mut self, Index: i32, P: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_set_pole_int_pnt2d(self as *mut Self, Index, P) }
+    }
+
+    /// Modifies this BSpline curve by assigning P to the
+    /// pole of index Index in the poles table.
+    /// The second syntax also allows you to modify the
+    /// weight of the modified pole, which becomes Weight.
+    /// In this case, if this BSpline curve is non-rational, it
+    /// can become rational and vice versa.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is outside the
+    /// bounds of the poles table.
+    /// Standard_ConstructionError if Weight is negative or null.
+    pub fn set_pole_int_pnt2d_real(&mut self, Index: i32, P: &crate::ffi::gp_Pnt2d, Weight: f64) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_set_pole_int_pnt2d_real(
+                self as *mut Self,
+                Index,
+                P,
+                Weight,
+            )
+        }
+    }
+
+    /// Assigns the weight Weight to the pole of index Index of the poles table.
+    /// If the curve was non rational it can become rational.
+    /// If the curve was rational it can become non rational.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is outside the
+    /// bounds of the poles table.
+    /// Standard_ConstructionError if Weight is negative or null.
+    pub fn set_weight(&mut self, Index: i32, Weight: f64) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_set_weight(self as *mut Self, Index, Weight) }
+    }
+
+    /// Moves the point of parameter U of this BSpline
+    /// curve to P. Index1 and Index2 are the indexes in the
+    /// table of poles of this BSpline curve of the first and
+    /// last poles designated to be moved.
+    /// FirstModifiedPole and LastModifiedPole are the
+    /// indexes of the first and last poles, which are
+    /// effectively modified.
+    /// In the event of incompatibility between Index1,
+    /// Index2 and the value U:
+    /// - no change is made to this BSpline curve, and
+    /// - the FirstModifiedPole and LastModifiedPole are returned null.
+    /// Exceptions
+    /// Standard_OutOfRange if:
+    /// - Index1 is greater than or equal to Index2, or
+    /// - Index1 or Index2 is less than 1 or greater than the
+    /// number of poles of this BSpline curve.
+    pub fn move_point(
+        &mut self,
+        U: f64,
+        P: &crate::ffi::gp_Pnt2d,
+        Index1: i32,
+        Index2: i32,
+        FirstModifiedPole: &mut i32,
+        LastModifiedPole: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_move_point(
+                self as *mut Self,
+                U,
+                P,
+                Index1,
+                Index2,
+                FirstModifiedPole,
+                LastModifiedPole,
+            )
+        }
+    }
+
+    /// Move a point with parameter U to P.
+    /// and makes it tangent at U be Tangent.
+    /// StartingCondition = -1 means first can move
+    /// EndingCondition   = -1 means last point can move
+    /// StartingCondition = 0 means the first point cannot move
+    /// EndingCondition   = 0 means the last point cannot move
+    /// StartingCondition = 1 means the first point and tangent cannot move
+    /// EndingCondition   = 1 means the last point and tangent cannot move
+    /// and so forth
+    /// ErrorStatus != 0 means that there are not enough degree of freedom
+    /// with the constrain to deform the curve accordingly
+    pub fn move_point_and_tangent(
+        &mut self,
+        U: f64,
+        P: &crate::ffi::gp_Pnt2d,
+        Tangent: &crate::ffi::gp_Vec2d,
+        Tolerance: f64,
+        StartingCondition: i32,
+        EndingCondition: i32,
+        ErrorStatus: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_move_point_and_tangent(
+                self as *mut Self,
+                U,
+                P,
+                Tangent,
+                Tolerance,
+                StartingCondition,
+                EndingCondition,
+                ErrorStatus,
+            )
+        }
+    }
+
+    /// Returns true if the degree of continuity of this
+    /// BSpline curve is at least N. A BSpline curve is at least GeomAbs_C0.
+    /// Exceptions Standard_RangeError if N is negative.
+    pub fn is_cn(&self, N: i32) -> bool {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_is_cn(self as *const Self, N) }
+    }
+
+    /// Check if curve has at least G1 continuity in interval [theTf, theTl]
+    /// Returns true if IsCN(1)
+    /// or
+    /// angle between "left" and "right" first derivatives at
+    /// knots with C0 continuity is less then theAngTol
+    /// only knots in interval [theTf, theTl] is checked
+    pub fn is_g1(&self, theTf: f64, theTl: f64, theAngTol: f64) -> bool {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_is_g1(self as *const Self, theTf, theTl, theAngTol)
+        }
+    }
+
+    /// Returns true if the distance between the first point and the
+    /// last point of the curve is lower or equal to Resolution
+    /// from package gp.
+    /// Warnings :
+    /// The first and the last point can be different from the first
+    /// pole and the last pole of the curve.
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_is_closed(self as *const Self) }
+    }
+
+    /// Returns True if the curve is periodic.
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_is_periodic(self as *const Self) }
+    }
+
+    /// Returns True if the weights are not identical.
+    /// The tolerance criterion is Epsilon of the class Real.
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_is_rational(self as *const Self) }
     }
 
     /// Returns the global continuity of the curve :
@@ -282,7 +718,63 @@ impl BSplineCurve {
     /// Knots. In the interior of a knot span the curve is infinitely
     /// continuously differentiable.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_BSplineCurve_continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_BSplineCurve_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Returns the degree of this BSpline curve.
+    /// In this class the degree of the basis normalized B-spline
+    /// functions cannot be greater than "MaxDegree"
+    /// Computation of value and derivatives
+    pub fn degree(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_degree(self as *const Self) }
+    }
+
+    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_d0(self as *const Self, U, P) }
+    }
+
+    /// Raised if the continuity of the curve is not C1.
+    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_d1(self as *const Self, U, P, V1) }
+    }
+
+    /// Raised if the continuity of the curve is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_d2(self as *const Self, U, P, V1, V2) }
+    }
+
+    /// For this BSpline curve, computes
+    /// - the point P of parameter U, or
+    /// - the point P and one or more of the following values:
+    /// - V1, the first derivative vector,
+    /// - V2, the second derivative vector,
+    /// - V3, the third derivative vector.
+    /// Warning
+    /// On a point where the continuity of the curve is not the
+    /// one requested, these functions impact the part
+    /// defined by the parameter with a value greater than U,
+    /// i.e. the part of the curve to the "right" of the singularity.
+    /// Raises UndefinedDerivative if the continuity of the curve is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+        V3: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
     /// For the point of parameter U of this BSpline curve,
@@ -306,8 +798,10 @@ impl BSplineCurve {
     /// the same as if we consider the whole definition of the
     /// curve. Of course the evaluations are different outside
     /// this parametric domain.
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
-        crate::ffi::Geom2d_BSplineCurve_dn(self, U, N)
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_dn(self as *const Self, U, N))
+        }
     }
 
     /// Raised if FromK1 = ToK2.
@@ -316,8 +810,88 @@ impl BSplineCurve {
         U: f64,
         FromK1: i32,
         ToK2: i32,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_BSplineCurve_local_value(self, U, FromK1, ToK2)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_local_value(
+                self as *const Self,
+                U,
+                FromK1,
+                ToK2,
+            ))
+        }
+    }
+
+    /// Raised if FromK1 = ToK2.
+    pub fn local_d0(&self, U: f64, FromK1: i32, ToK2: i32, P: &mut crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_local_d0(self as *const Self, U, FromK1, ToK2, P) }
+    }
+
+    /// Raised if the local continuity of the curve is not C1
+    /// between the knot K1 and the knot K2.
+    /// Raised if FromK1 = ToK2.
+    pub fn local_d1(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_local_d1(self as *const Self, U, FromK1, ToK2, P, V1)
+        }
+    }
+
+    /// Raised if the local continuity of the curve is not C2
+    /// between the knot K1 and the knot K2.
+    /// Raised if FromK1 = ToK2.
+    pub fn local_d2(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_local_d2(
+                self as *const Self,
+                U,
+                FromK1,
+                ToK2,
+                P,
+                V1,
+                V2,
+            )
+        }
+    }
+
+    /// Raised if the local continuity of the curve is not C3
+    /// between the knot K1 and the knot K2.
+    /// Raised if FromK1 = ToK2.
+    pub fn local_d3(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+        V3: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_local_d3(
+                self as *const Self,
+                U,
+                FromK1,
+                ToK2,
+                P,
+                V1,
+                V2,
+                V3,
+            )
+        }
     }
 
     /// Raised if the local continuity of the curve is not CN
@@ -330,8 +904,16 @@ impl BSplineCurve {
         FromK1: i32,
         ToK2: i32,
         N: i32,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
-        crate::ffi::Geom2d_BSplineCurve_local_dn(self, U, FromK1, ToK2, N)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_local_dn(
+                self as *const Self,
+                U,
+                FromK1,
+                ToK2,
+                N,
+            ))
+        }
     }
 
     /// Returns the last point of the curve.
@@ -339,8 +921,36 @@ impl BSplineCurve {
     /// The last point of the curve is different from the last
     /// pole of the curve if the multiplicity of the last knot
     /// is lower than Degree.
-    pub fn end_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_BSplineCurve_end_point(self)
+    pub fn end_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_end_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// For a B-spline curve the first parameter (which gives the start
+    /// point of the curve) is a knot value but if the multiplicity of
+    /// the first knot index is lower than Degree + 1 it is not the
+    /// first knot of the curve. This method computes the index of the
+    /// knot corresponding to the first parameter.
+    pub fn first_u_knot_index(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_first_u_knot_index(self as *const Self) }
+    }
+
+    /// Computes the parametric value of the start point of the curve.
+    /// It is a knot value.
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_first_parameter(self as *const Self) }
+    }
+
+    /// Returns the knot of range Index. When there is a knot
+    /// with a multiplicity greater than 1 the knot is not repeated.
+    /// The method Multiplicity can be used to get the multiplicity
+    /// of the Knot.
+    /// Raised if Index < 1 or Index > NbKnots
+    pub fn knot(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_knot(self as *const Self, Index) }
     }
 
     /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
@@ -355,129 +965,273 @@ impl BSplineCurve {
     /// else the curve is non uniform.
     /// The tolerance criterion is Epsilon from class Real.
     pub fn knot_distribution(&self) -> crate::geom_abs::BSplKnotDistribution {
-        crate::geom_abs::BSplKnotDistribution::try_from(
-            crate::ffi::Geom2d_BSplineCurve_knot_distribution(self),
-        )
-        .unwrap()
+        unsafe {
+            crate::geom_abs::BSplKnotDistribution::try_from(
+                crate::ffi::Geom2d_BSplineCurve_knot_distribution(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// For a BSpline curve the last parameter (which gives the
+    /// end point of the curve) is a knot value but if the
+    /// multiplicity of the last knot index is lower than
+    /// Degree + 1 it is not the last knot of the curve. This
+    /// method computes the index of the knot corresponding to
+    /// the last parameter.
+    pub fn last_u_knot_index(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_last_u_knot_index(self as *const Self) }
+    }
+
+    /// Computes the parametric value of the end point of the curve.
+    /// It is a knot value.
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_last_parameter(self as *const Self) }
+    }
+
+    /// Locates the parametric value U in the sequence of knots.
+    /// If "WithKnotRepetition" is True we consider the knot's
+    /// representation with repetition of multiple knot value,
+    /// otherwise  we consider the knot's representation with
+    /// no repetition of multiple knot values.
+    /// Knots (I1) <= U <= Knots (I2)
+    /// . if I1 = I2  U is a knot value (the tolerance criterion
+    /// ParametricTolerance is used).
+    /// . if I1 < 1  => U < Knots (1) - Abs(ParametricTolerance)
+    /// . if I2 > NbKnots => U > Knots (NbKnots) + Abs(ParametricTolerance)
+    pub fn locate_u(
+        &self,
+        U: f64,
+        ParametricTolerance: f64,
+        I1: &mut i32,
+        I2: &mut i32,
+        WithKnotRepetition: bool,
+    ) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_locate_u(
+                self as *const Self,
+                U,
+                ParametricTolerance,
+                I1,
+                I2,
+                WithKnotRepetition,
+            )
+        }
+    }
+
+    /// Returns the multiplicity of the knots of range Index.
+    /// Raised if Index < 1 or Index > NbKnots
+    pub fn multiplicity(&self, Index: i32) -> i32 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_multiplicity(self as *const Self, Index) }
+    }
+
+    /// Returns the number of knots. This method returns the number of
+    /// knot without repetition of multiple knots.
+    pub fn nb_knots(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_nb_knots(self as *const Self) }
+    }
+
+    /// Returns the number of poles
+    pub fn nb_poles(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_nb_poles(self as *const Self) }
+    }
+
+    /// Returns the pole of range Index.
+    /// Raised if Index < 1 or Index > NbPoles.
+    pub fn pole(&self, Index: i32) -> &crate::ffi::gp_Pnt2d {
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_pole(self as *const Self, Index)) }
+    }
+
+    /// Returns the poles of the B-spline curve;
+    ///
+    /// Raised if the length of P is not equal to the number of poles.
+    pub fn poles_array1ofpnt2d(&self, P: &mut crate::ffi::TColgp_Array1OfPnt2d) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_poles_array1ofpnt2d(self as *const Self, P) }
+    }
+
+    /// Returns the poles of the B-spline curve;
+    pub fn poles(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_poles(self as *const Self)) }
     }
 
     /// Returns the start point of the curve.
     /// Warnings :
     /// This point is different from the first pole of the curve if the
     /// multiplicity of the first knot is lower than Degree.
-    pub fn start_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_BSplineCurve_start_point(self)
+    pub fn start_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_start_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Returns the weight of the pole of range Index .
+    /// Raised if Index < 1 or Index > NbPoles.
+    pub fn weight(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_weight(self as *const Self, Index) }
+    }
+
+    /// Applies the transformation T to this BSpline curve.
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_transform(self as *mut Self, T) }
+    }
+
+    /// Computes for this BSpline curve the parametric
+    /// tolerance UTolerance for a given tolerance
+    /// Tolerance3D (relative to dimensions in the plane).
+    /// If f(t) is the equation of this BSpline curve,
+    /// UTolerance ensures that:
+    /// | t1 - t0| < Utolerance ===>
+    /// |f(t1) - f(t0)| < ToleranceUV
+    pub fn resolution(&mut self, ToleranceUV: f64, UTolerance: &mut f64) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_resolution(self as *mut Self, ToleranceUV, UTolerance)
+        }
     }
 
     /// Creates a new object which is a copy of this BSpline curve.
-    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BSplineCurve_copy(self)
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_copy(self as *const Self))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_dynamic_type(self as *const Self)) }
     }
 
     /// Returns the value of the maximum degree of the normalized
     /// B-spline basis functions in this package.
     pub fn max_degree() -> i32 {
-        crate::ffi::Geom2d_BSplineCurve_max_degree()
+        unsafe { crate::ffi::Geom2d_BSplineCurve_max_degree() }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Geom2d_BSplineCurve_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Geom2d_BSplineCurve_get_type_descriptor()
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_get_type_descriptor()) }
     }
 
     /// Upcast to Geom2d_BoundedCurve
     pub fn as_bounded_curve(&self) -> &BoundedCurve {
-        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_BoundedCurve(self)
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_as_Geom2d_BoundedCurve(self as *const Self)) }
     }
 
     /// Upcast to Geom2d_BoundedCurve (mutable)
-    pub fn as_bounded_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BoundedCurve> {
-        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_BoundedCurve_mut(self)
+    pub fn as_bounded_curve_mut(&mut self) -> &mut BoundedCurve {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_BSplineCurve_as_Geom2d_BoundedCurve_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Curve(self)
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Curve(self as *const Self)) }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Curve_mut(self)
+    pub fn as_curve_mut(&mut self) -> &mut Curve {
+        unsafe { &mut *(crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Curve_mut(self as *mut Self)) }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry(self)
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry(self as *const Self)) }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry_mut(self)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        crate::ffi::Geom2d_BSplineCurve_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited from Geom2d_Curve: TransformedParameter()
     pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
-        crate::ffi::Geom2d_BSplineCurve_inherited_TransformedParameter(self, U, T)
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_inherited_TransformedParameter(
+                self as *const Self,
+                U,
+                T,
+            )
+        }
     }
 
     /// Inherited from Geom2d_Curve: ParametricTransformation()
     pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
-        crate::ffi::Geom2d_BSplineCurve_inherited_ParametricTransformation(self, T)
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_inherited_ParametricTransformation(
+                self as *const Self,
+                T,
+            )
+        }
     }
 
     /// Inherited from Geom2d_Curve: Reversed()
-    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Reversed(self)
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_inherited_Reversed(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Curve: Period()
     pub fn period(&self) -> f64 {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Period(self)
+        unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Period(self as *const Self) }
     }
 
     /// Inherited from Geom2d_Curve: Value()
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Value(self, U)
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_inherited_Value(
+                self as *const Self,
+                U,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Mirror()
-    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Mirror(self, P)
+    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Mirror(self as *mut Self, P) }
     }
 
     /// Inherited from Geom2d_Geometry: Rotate()
-    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Rotate(self, P, Ang)
+    pub fn rotate(&mut self, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Rotate(self as *mut Self, P, Ang) }
     }
 
     /// Inherited from Geom2d_Geometry: Scale()
-    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Scale(self, P, S)
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Scale(self as *mut Self, P, S) }
     }
 
     /// Inherited from Geom2d_Geometry: Translate()
-    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Translate(self, V)
+    pub fn translate(&mut self, V: &crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Translate(self as *mut Self, V) }
     }
 
     /// Inherited from Geom2d_Geometry: Mirrored()
     pub fn mirrored(
         &self,
         P: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Mirrored(self, P)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_inherited_Mirrored(
+                self as *const Self,
+                P,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Rotated()
@@ -485,8 +1239,14 @@ impl BSplineCurve {
         &self,
         P: &crate::ffi::gp_Pnt2d,
         Ang: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Rotated(self, P, Ang)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_inherited_Rotated(
+                self as *const Self,
+                P,
+                Ang,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Scaled()
@@ -494,55 +1254,89 @@ impl BSplineCurve {
         &self,
         P: &crate::ffi::gp_Pnt2d,
         S: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Scaled(self, P, S)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_inherited_Scaled(
+                self as *const Self,
+                P,
+                S,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Transformed()
     pub fn transformed(
         &self,
         T: &crate::ffi::gp_Trsf2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Transformed(self, T)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_inherited_Transformed(
+                self as *const Self,
+                T,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Translated()
     pub fn translated(
         &self,
         V: &crate::ffi::gp_Vec2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BSplineCurve_inherited_Translated(self, V)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_inherited_Translated(
+                self as *const Self,
+                V,
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleGeom2dBSplineCurve;
 
+unsafe impl crate::CppDeletable for HandleGeom2dBSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeom2dBSplineCurve_destructor(ptr);
+    }
+}
+
 impl HandleGeom2dBSplineCurve {
     /// Dereference this Handle to access the underlying Geom2d_BSplineCurve
     pub fn get(&self) -> &crate::ffi::Geom2d_BSplineCurve {
-        crate::ffi::HandleGeom2dBSplineCurve_get(self)
+        unsafe { &*(crate::ffi::HandleGeom2dBSplineCurve_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_BSplineCurve
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_BSplineCurve> {
-        crate::ffi::HandleGeom2dBSplineCurve_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_BSplineCurve {
+        unsafe { &mut *(crate::ffi::HandleGeom2dBSplineCurve_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Geom2d_BoundedCurve>
-    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBoundedCurve> {
-        crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dBoundedCurve(self)
+    pub fn to_handle_bounded_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBoundedCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dBoundedCurve(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Geom2d_Curve>
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
-        crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dCurve(self)
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dCurve(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dGeometry(self)
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -604,6 +1398,12 @@ impl HandleGeom2dBSplineCurve {
 /// - The length of a Bezier curve can be null.
 pub use crate::ffi::Geom2d_BezierCurve as BezierCurve;
 
+unsafe impl crate::CppDeletable for BezierCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Geom2d_BezierCurve_destructor(ptr);
+    }
+}
+
 impl BezierCurve {
     /// Creates a non rational Bezier curve with a set of poles :
     /// CurvePoles.  The weights are defaulted to all being 1.
@@ -611,8 +1411,10 @@ impl BezierCurve {
     /// or lower than 2.
     pub fn new_array1ofpnt2d(
         CurvePoles: &crate::ffi::TColgp_Array1OfPnt2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom2d_BezierCurve_ctor_array1ofpnt2d(CurvePoles)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_ctor_array1ofpnt2d(CurvePoles))
+        }
     }
 
     /// Creates a rational Bezier curve with the set of poles
@@ -626,13 +1428,192 @@ impl BezierCurve {
     pub fn new_array1ofpnt2d_array1ofreal(
         CurvePoles: &crate::ffi::TColgp_Array1OfPnt2d,
         PoleWeights: &crate::ffi::TColStd_Array1OfReal,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Geom2d_BezierCurve_ctor_array1ofpnt2d_array1ofreal(CurvePoles, PoleWeights)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom2d_BezierCurve_ctor_array1ofpnt2d_array1ofreal(
+                    CurvePoles,
+                    PoleWeights,
+                ),
+            )
+        }
+    }
+
+    /// Increases the degree of a bezier curve. Degree is the new
+    /// degree of <me>.
+    /// raises ConstructionError if Degree is greater than MaxDegree or lower than 2
+    /// or lower than the initial degree of <me>.
+    pub fn increase(&mut self, Degree: i32) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_increase(self as *mut Self, Degree) }
+    }
+
+    /// Inserts a pole with its weight in the set of poles after the
+    /// pole of range Index. If the curve was non rational it can
+    /// become rational if all the weights are not identical.
+    /// Raised if Index is not in the range [0, NbPoles]
+    ///
+    /// Raised if the resulting number of poles is greater than
+    /// MaxDegree + 1.
+    pub fn insert_pole_after(&mut self, Index: i32, P: &crate::ffi::gp_Pnt2d, Weight: f64) {
+        unsafe {
+            crate::ffi::Geom2d_BezierCurve_insert_pole_after(self as *mut Self, Index, P, Weight)
+        }
+    }
+
+    /// Inserts a pole with its weight in the set of poles after
+    /// the pole of range Index. If the curve was non rational it
+    /// can become rational if all the weights are not identical.
+    /// Raised if Index is not in the range [1, NbPoles+1]
+    ///
+    /// Raised if the resulting number of poles is greater than
+    /// MaxDegree + 1.
+    pub fn insert_pole_before(&mut self, Index: i32, P: &crate::ffi::gp_Pnt2d, Weight: f64) {
+        unsafe {
+            crate::ffi::Geom2d_BezierCurve_insert_pole_before(self as *mut Self, Index, P, Weight)
+        }
+    }
+
+    /// Removes the pole of range Index.
+    /// If the curve was rational it can become non rational.
+    /// Raised if Index is not in the range [1, NbPoles]
+    pub fn remove_pole(&mut self, Index: i32) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_remove_pole(self as *mut Self, Index) }
+    }
+
+    /// Reverses the direction of parametrization of <me>
+    /// Value (NewU) =  Value (1 - OldU)
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_reverse(self as *mut Self) }
+    }
+
+    /// Returns the  parameter on the  reversed  curve for
+    /// the point of parameter U on <me>.
+    ///
+    /// returns 1-U
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        unsafe { crate::ffi::Geom2d_BezierCurve_reversed_parameter(self as *const Self, U) }
+    }
+
+    /// Segments the curve between U1 and U2 which can be out
+    /// of the bounds of the curve. The curve is oriented from U1
+    /// to U2.
+    /// The control points are modified, the first and the last point
+    /// are not the same but the parametrization range is [0, 1]
+    /// else it could not be a Bezier curve.
+    /// Warnings :
+    /// Even if <me> is not closed it can become closed after the
+    /// segmentation for example if U1 or U2 are out of the bounds
+    /// of the curve <me> or if the curve makes loop.
+    /// After the segmentation the length of a curve can be null.
+    pub fn segment(&mut self, U1: f64, U2: f64) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_segment(self as *mut Self, U1, U2) }
+    }
+
+    /// Substitutes the pole of range index with P.
+    /// If the curve <me> is rational the weight of range Index
+    /// is not modified.
+    /// raiseD if Index is not in the range [1, NbPoles]
+    pub fn set_pole_int_pnt2d(&mut self, Index: i32, P: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_set_pole_int_pnt2d(self as *mut Self, Index, P) }
+    }
+
+    /// Substitutes the pole and the weights of range Index.
+    /// If the curve <me> is not rational it can become rational
+    /// if all the weights are not identical.
+    /// If the curve was rational it can become non rational if
+    /// all the weights are identical.
+    /// Raised if Index is not in the range [1, NbPoles]
+    /// Raised if Weight <= Resolution from package gp
+    pub fn set_pole_int_pnt2d_real(&mut self, Index: i32, P: &crate::ffi::gp_Pnt2d, Weight: f64) {
+        unsafe {
+            crate::ffi::Geom2d_BezierCurve_set_pole_int_pnt2d_real(
+                self as *mut Self,
+                Index,
+                P,
+                Weight,
+            )
+        }
+    }
+
+    /// Changes the weight of the pole of range Index.
+    /// If the curve <me> is not rational it can become rational
+    /// if all the weights are not identical.
+    /// If the curve was rational it can become non rational if
+    /// all the weights are identical.
+    /// Raised if Index is not in the range [1, NbPoles]
+    /// Raised if Weight <= Resolution from package gp
+    pub fn set_weight(&mut self, Index: i32, Weight: f64) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_set_weight(self as *mut Self, Index, Weight) }
+    }
+
+    /// Returns True if the distance between the first point
+    /// and the last point of the curve is lower or equal to
+    /// the Resolution from package gp.
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::Geom2d_BezierCurve_is_closed(self as *const Self) }
+    }
+
+    /// Continuity of the curve, returns True.
+    pub fn is_cn(&self, N: i32) -> bool {
+        unsafe { crate::ffi::Geom2d_BezierCurve_is_cn(self as *const Self, N) }
+    }
+
+    /// Returns False. A BezierCurve cannot be periodic in this
+    /// package
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::Geom2d_BezierCurve_is_periodic(self as *const Self) }
+    }
+
+    /// Returns false if all the weights are identical. The tolerance
+    /// criterion is Resolution from package gp.
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::Geom2d_BezierCurve_is_rational(self as *const Self) }
     }
 
     /// Returns GeomAbs_CN, which is the continuity of any Bezier curve.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_BezierCurve_continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_BezierCurve_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Returns the polynomial degree of the curve. It is the number
+    /// of poles less one.  In this package the Degree of a Bezier
+    /// curve cannot be greater than "MaxDegree".
+    pub fn degree(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BezierCurve_degree(self as *const Self) }
+    }
+
+    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_d0(self as *const Self, U, P) }
+    }
+
+    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_d1(self as *const Self, U, P, V1) }
+    }
+
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_d2(self as *const Self, U, P, V1, V2) }
+    }
+
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+        V3: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
     /// For this Bezier curve, computes
@@ -643,130 +1624,226 @@ impl BezierCurve {
     /// - V3, the third derivative vector.
     /// Note: the parameter U can be outside the bounds of the curve.
     /// Raises RangeError if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
-        crate::ffi::Geom2d_BezierCurve_dn(self, U, N)
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_dn(self as *const Self, U, N))
+        }
     }
 
     /// Returns the end point or start point of this Bezier curve.
-    pub fn end_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_BezierCurve_end_point(self)
+    pub fn end_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_end_point(self as *const Self))
+        }
+    }
+
+    /// Returns the value of the first  parameter of this
+    /// Bezier curve. This is  0.0, which gives the start point of this Bezier curve.
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_BezierCurve_first_parameter(self as *const Self) }
+    }
+
+    /// Returns the value of the last  parameter of this
+    /// Bezier curve. This is  1.0, which gives the end point of this Bezier curve.
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_BezierCurve_last_parameter(self as *const Self) }
+    }
+
+    /// Returns the number of poles for this Bezier curve.
+    pub fn nb_poles(&self) -> i32 {
+        unsafe { crate::ffi::Geom2d_BezierCurve_nb_poles(self as *const Self) }
+    }
+
+    /// Returns the pole of range Index.
+    /// Raised if Index is not in the range [1, NbPoles]
+    pub fn pole(&self, Index: i32) -> &crate::ffi::gp_Pnt2d {
+        unsafe { &*(crate::ffi::Geom2d_BezierCurve_pole(self as *const Self, Index)) }
+    }
+
+    /// Returns all the poles of the curve.
+    ///
+    /// Raised if the length of P is not equal to the number of poles.
+    pub fn poles_array1ofpnt2d(&self, P: &mut crate::ffi::TColgp_Array1OfPnt2d) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_poles_array1ofpnt2d(self as *const Self, P) }
+    }
+
+    /// Returns all the poles of the curve.
+    pub fn poles(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
+        unsafe { &*(crate::ffi::Geom2d_BezierCurve_poles(self as *const Self)) }
     }
 
     /// Returns Value (U=1), it is the first control point
     /// of the curve.
-    pub fn start_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_BezierCurve_start_point(self)
+    pub fn start_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_start_point(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Returns the weight of range Index.
+    /// Raised if Index is not in the range [1, NbPoles]
+    pub fn weight(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::Geom2d_BezierCurve_weight(self as *const Self, Index) }
+    }
+
+    /// Applies the transformation T to this Bezier curve.
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_transform(self as *mut Self, T) }
+    }
+
+    /// Computes for this Bezier curve the parametric
+    /// tolerance UTolerance for a given tolerance
+    /// Tolerance3D (relative to dimensions in the plane).
+    /// If f(t) is the equation of this Bezier curve,
+    /// UTolerance ensures that
+    /// | t1 - t0| < Utolerance ===>
+    /// |f(t1) - f(t0)| < ToleranceUV
+    pub fn resolution(&mut self, ToleranceUV: f64, UTolerance: &mut f64) {
+        unsafe {
+            crate::ffi::Geom2d_BezierCurve_resolution(self as *mut Self, ToleranceUV, UTolerance)
+        }
     }
 
     /// Creates a new object which is a copy of this Bezier curve.
-    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BezierCurve_copy(self)
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_copy(self as *const Self))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Geom2d_BezierCurve_dynamic_type(self as *const Self)) }
     }
 
     /// Returns the value of the maximum polynomial degree of a
     /// BezierCurve. This value is 25.
     pub fn max_degree() -> i32 {
-        crate::ffi::Geom2d_BezierCurve_max_degree()
+        unsafe { crate::ffi::Geom2d_BezierCurve_max_degree() }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Geom2d_BezierCurve_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Geom2d_BezierCurve_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Geom2d_BezierCurve_get_type_descriptor()
+        unsafe { &*(crate::ffi::Geom2d_BezierCurve_get_type_descriptor()) }
     }
 
     /// Upcast to Geom2d_BoundedCurve
     pub fn as_bounded_curve(&self) -> &BoundedCurve {
-        crate::ffi::Geom2d_BezierCurve_as_Geom2d_BoundedCurve(self)
+        unsafe { &*(crate::ffi::Geom2d_BezierCurve_as_Geom2d_BoundedCurve(self as *const Self)) }
     }
 
     /// Upcast to Geom2d_BoundedCurve (mutable)
-    pub fn as_bounded_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BoundedCurve> {
-        crate::ffi::Geom2d_BezierCurve_as_Geom2d_BoundedCurve_mut(self)
+    pub fn as_bounded_curve_mut(&mut self) -> &mut BoundedCurve {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_BezierCurve_as_Geom2d_BoundedCurve_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        crate::ffi::Geom2d_BezierCurve_as_Geom2d_Curve(self)
+        unsafe { &*(crate::ffi::Geom2d_BezierCurve_as_Geom2d_Curve(self as *const Self)) }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        crate::ffi::Geom2d_BezierCurve_as_Geom2d_Curve_mut(self)
+    pub fn as_curve_mut(&mut self) -> &mut Curve {
+        unsafe { &mut *(crate::ffi::Geom2d_BezierCurve_as_Geom2d_Curve_mut(self as *mut Self)) }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry(self)
+        unsafe { &*(crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry(self as *const Self)) }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry_mut(self)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBezierCurve> {
-        crate::ffi::Geom2d_BezierCurve_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited from Geom2d_Curve: TransformedParameter()
     pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
-        crate::ffi::Geom2d_BezierCurve_inherited_TransformedParameter(self, U, T)
+        unsafe {
+            crate::ffi::Geom2d_BezierCurve_inherited_TransformedParameter(self as *const Self, U, T)
+        }
     }
 
     /// Inherited from Geom2d_Curve: ParametricTransformation()
     pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
-        crate::ffi::Geom2d_BezierCurve_inherited_ParametricTransformation(self, T)
+        unsafe {
+            crate::ffi::Geom2d_BezierCurve_inherited_ParametricTransformation(
+                self as *const Self,
+                T,
+            )
+        }
     }
 
     /// Inherited from Geom2d_Curve: Reversed()
-    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
-        crate::ffi::Geom2d_BezierCurve_inherited_Reversed(self)
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_inherited_Reversed(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Curve: Period()
     pub fn period(&self) -> f64 {
-        crate::ffi::Geom2d_BezierCurve_inherited_Period(self)
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Period(self as *const Self) }
     }
 
     /// Inherited from Geom2d_Curve: Value()
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_BezierCurve_inherited_Value(self, U)
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_inherited_Value(
+                self as *const Self,
+                U,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Mirror()
-    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::Geom2d_BezierCurve_inherited_Mirror(self, P)
+    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Mirror(self as *mut Self, P) }
     }
 
     /// Inherited from Geom2d_Geometry: Rotate()
-    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
-        crate::ffi::Geom2d_BezierCurve_inherited_Rotate(self, P, Ang)
+    pub fn rotate(&mut self, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Rotate(self as *mut Self, P, Ang) }
     }
 
     /// Inherited from Geom2d_Geometry: Scale()
-    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
-        crate::ffi::Geom2d_BezierCurve_inherited_Scale(self, P, S)
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Scale(self as *mut Self, P, S) }
     }
 
     /// Inherited from Geom2d_Geometry: Translate()
-    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
-        crate::ffi::Geom2d_BezierCurve_inherited_Translate(self, V)
+    pub fn translate(&mut self, V: &crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Translate(self as *mut Self, V) }
     }
 
     /// Inherited from Geom2d_Geometry: Mirrored()
     pub fn mirrored(
         &self,
         P: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BezierCurve_inherited_Mirrored(self, P)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_inherited_Mirrored(
+                self as *const Self,
+                P,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Rotated()
@@ -774,8 +1851,14 @@ impl BezierCurve {
         &self,
         P: &crate::ffi::gp_Pnt2d,
         Ang: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BezierCurve_inherited_Rotated(self, P, Ang)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_inherited_Rotated(
+                self as *const Self,
+                P,
+                Ang,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Scaled()
@@ -783,55 +1866,89 @@ impl BezierCurve {
         &self,
         P: &crate::ffi::gp_Pnt2d,
         S: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BezierCurve_inherited_Scaled(self, P, S)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_inherited_Scaled(
+                self as *const Self,
+                P,
+                S,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Transformed()
     pub fn transformed(
         &self,
         T: &crate::ffi::gp_Trsf2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BezierCurve_inherited_Transformed(self, T)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_inherited_Transformed(
+                self as *const Self,
+                T,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Translated()
     pub fn translated(
         &self,
         V: &crate::ffi::gp_Vec2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BezierCurve_inherited_Translated(self, V)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BezierCurve_inherited_Translated(
+                self as *const Self,
+                V,
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleGeom2dBezierCurve;
 
+unsafe impl crate::CppDeletable for HandleGeom2dBezierCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeom2dBezierCurve_destructor(ptr);
+    }
+}
+
 impl HandleGeom2dBezierCurve {
     /// Dereference this Handle to access the underlying Geom2d_BezierCurve
     pub fn get(&self) -> &crate::ffi::Geom2d_BezierCurve {
-        crate::ffi::HandleGeom2dBezierCurve_get(self)
+        unsafe { &*(crate::ffi::HandleGeom2dBezierCurve_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_BezierCurve
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_BezierCurve> {
-        crate::ffi::HandleGeom2dBezierCurve_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_BezierCurve {
+        unsafe { &mut *(crate::ffi::HandleGeom2dBezierCurve_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Geom2d_BezierCurve> to Handle<Geom2d_BoundedCurve>
-    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBoundedCurve> {
-        crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dBoundedCurve(self)
+    pub fn to_handle_bounded_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBoundedCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dBoundedCurve(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Upcast Handle<Geom2d_BezierCurve> to Handle<Geom2d_Curve>
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
-        crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dCurve(self)
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dCurve(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast Handle<Geom2d_BezierCurve> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dGeometry(self)
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -857,189 +1974,241 @@ impl HandleGeom2dBezierCurve {
 /// the parameter of the basis curve.
 pub use crate::ffi::Geom2d_BoundedCurve as BoundedCurve;
 
+unsafe impl crate::CppDeletable for BoundedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Geom2d_BoundedCurve_destructor(ptr);
+    }
+}
+
 impl BoundedCurve {
     /// Returns the end point of the curve.
     /// The end point is the value of the curve for the
     /// "LastParameter" of the curve.
-    pub fn end_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_BoundedCurve_end_point(self)
+    pub fn end_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_end_point(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Returns the start point of the curve.
     /// The start point is the value of the curve for the
     /// "FirstParameter" of the curve.
-    pub fn start_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_BoundedCurve_start_point(self)
+    pub fn start_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_start_point(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Geom2d_BoundedCurve_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Geom2d_BoundedCurve_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Geom2d_BoundedCurve_get_type_descriptor()
+        unsafe { &*(crate::ffi::Geom2d_BoundedCurve_get_type_descriptor()) }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Curve(self)
+        unsafe { &*(crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Curve(self as *const Self)) }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Curve_mut(self)
+    pub fn as_curve_mut(&mut self) -> &mut Curve {
+        unsafe { &mut *(crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Curve_mut(self as *mut Self)) }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Geometry(self)
+        unsafe { &*(crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Geometry(self as *const Self)) }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(self)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
     /// Inherited from Geom2d_Curve: Reverse()
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Reverse(self)
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Reverse(self as *mut Self) }
     }
 
     /// Inherited from Geom2d_Curve: ReversedParameter()
     pub fn reversed_parameter(&self, U: f64) -> f64 {
-        crate::ffi::Geom2d_BoundedCurve_inherited_ReversedParameter(self, U)
+        unsafe {
+            crate::ffi::Geom2d_BoundedCurve_inherited_ReversedParameter(self as *const Self, U)
+        }
     }
 
     /// Inherited from Geom2d_Curve: TransformedParameter()
     pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
-        crate::ffi::Geom2d_BoundedCurve_inherited_TransformedParameter(self, U, T)
+        unsafe {
+            crate::ffi::Geom2d_BoundedCurve_inherited_TransformedParameter(
+                self as *const Self,
+                U,
+                T,
+            )
+        }
     }
 
     /// Inherited from Geom2d_Curve: ParametricTransformation()
     pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
-        crate::ffi::Geom2d_BoundedCurve_inherited_ParametricTransformation(self, T)
+        unsafe {
+            crate::ffi::Geom2d_BoundedCurve_inherited_ParametricTransformation(
+                self as *const Self,
+                T,
+            )
+        }
     }
 
     /// Inherited from Geom2d_Curve: Reversed()
-    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Reversed(self)
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_inherited_Reversed(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Curve: FirstParameter()
     pub fn first_parameter(&self) -> f64 {
-        crate::ffi::Geom2d_BoundedCurve_inherited_FirstParameter(self)
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_FirstParameter(self as *const Self) }
     }
 
     /// Inherited from Geom2d_Curve: LastParameter()
     pub fn last_parameter(&self) -> f64 {
-        crate::ffi::Geom2d_BoundedCurve_inherited_LastParameter(self)
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_LastParameter(self as *const Self) }
     }
 
     /// Inherited from Geom2d_Curve: IsClosed()
     pub fn is_closed(&self) -> bool {
-        crate::ffi::Geom2d_BoundedCurve_inherited_IsClosed(self)
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_IsClosed(self as *const Self) }
     }
 
     /// Inherited from Geom2d_Curve: IsPeriodic()
     pub fn is_periodic(&self) -> bool {
-        crate::ffi::Geom2d_BoundedCurve_inherited_IsPeriodic(self)
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_IsPeriodic(self as *const Self) }
     }
 
     /// Inherited from Geom2d_Curve: Period()
     pub fn period(&self) -> f64 {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Period(self)
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Period(self as *const Self) }
     }
 
     /// Inherited from Geom2d_Curve: Continuity()
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_BoundedCurve_inherited_Continuity(self))
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_BoundedCurve_inherited_Continuity(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Inherited from Geom2d_Curve: IsCN()
     pub fn is_cn(&self, N: i32) -> bool {
-        crate::ffi::Geom2d_BoundedCurve_inherited_IsCN(self, N)
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_IsCN(self as *const Self, N) }
     }
 
     /// Inherited from Geom2d_Curve: D0()
-    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>) {
-        crate::ffi::Geom2d_BoundedCurve_inherited_D0(self, U, P)
+    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_D0(self as *const Self, U, P) }
     }
 
     /// Inherited from Geom2d_Curve: D1()
-    pub fn d1(
-        &self,
-        U: f64,
-        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
-        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
-    ) {
-        crate::ffi::Geom2d_BoundedCurve_inherited_D1(self, U, P, V1)
+    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_D1(self as *const Self, U, P, V1) }
     }
 
     /// Inherited from Geom2d_Curve: D2()
     pub fn d2(
         &self,
         U: f64,
-        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
-        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
-        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
     ) {
-        crate::ffi::Geom2d_BoundedCurve_inherited_D2(self, U, P, V1, V2)
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_D2(self as *const Self, U, P, V1, V2) }
     }
 
     /// Inherited from Geom2d_Curve: D3()
     pub fn d3(
         &self,
         U: f64,
-        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
-        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
-        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
-        V3: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+        V3: &mut crate::ffi::gp_Vec2d,
     ) {
-        crate::ffi::Geom2d_BoundedCurve_inherited_D3(self, U, P, V1, V2, V3)
+        unsafe {
+            crate::ffi::Geom2d_BoundedCurve_inherited_D3(self as *const Self, U, P, V1, V2, V3)
+        }
     }
 
     /// Inherited from Geom2d_Curve: DN()
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
-        crate::ffi::Geom2d_BoundedCurve_inherited_DN(self, U, N)
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_inherited_DN(
+                self as *const Self,
+                U,
+                N,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Curve: Value()
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Value(self, U)
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_inherited_Value(
+                self as *const Self,
+                U,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Mirror()
-    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Mirror(self, P)
+    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Mirror(self as *mut Self, P) }
     }
 
     /// Inherited from Geom2d_Geometry: Rotate()
-    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Rotate(self, P, Ang)
+    pub fn rotate(&mut self, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Rotate(self as *mut Self, P, Ang) }
     }
 
     /// Inherited from Geom2d_Geometry: Scale()
-    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Scale(self, P, S)
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Scale(self as *mut Self, P, S) }
     }
 
     /// Inherited from Geom2d_Geometry: Translate()
-    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Translate(self, V)
+    pub fn translate(&mut self, V: &crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Translate(self as *mut Self, V) }
     }
 
     /// Inherited from Geom2d_Geometry: Transform()
-    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Transform(self, T)
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
+        unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Transform(self as *mut Self, T) }
     }
 
     /// Inherited from Geom2d_Geometry: Mirrored()
     pub fn mirrored(
         &self,
         P: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Mirrored(self, P)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_inherited_Mirrored(
+                self as *const Self,
+                P,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Rotated()
@@ -1047,8 +2216,14 @@ impl BoundedCurve {
         &self,
         P: &crate::ffi::gp_Pnt2d,
         Ang: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Rotated(self, P, Ang)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_inherited_Rotated(
+                self as *const Self,
+                P,
+                Ang,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Scaled()
@@ -1056,55 +2231,87 @@ impl BoundedCurve {
         &self,
         P: &crate::ffi::gp_Pnt2d,
         S: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Scaled(self, P, S)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_inherited_Scaled(
+                self as *const Self,
+                P,
+                S,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Transformed()
     pub fn transformed(
         &self,
         T: &crate::ffi::gp_Trsf2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Transformed(self, T)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_inherited_Transformed(
+                self as *const Self,
+                T,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Translated()
     pub fn translated(
         &self,
         V: &crate::ffi::gp_Vec2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Translated(self, V)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_inherited_Translated(
+                self as *const Self,
+                V,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Copy()
-    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_BoundedCurve_inherited_Copy(self)
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BoundedCurve_inherited_Copy(
+                self as *const Self,
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleGeom2dBoundedCurve;
 
+unsafe impl crate::CppDeletable for HandleGeom2dBoundedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeom2dBoundedCurve_destructor(ptr);
+    }
+}
+
 impl HandleGeom2dBoundedCurve {
     /// Dereference this Handle to access the underlying Geom2d_BoundedCurve
     pub fn get(&self) -> &crate::ffi::Geom2d_BoundedCurve {
-        crate::ffi::HandleGeom2dBoundedCurve_get(self)
+        unsafe { &*(crate::ffi::HandleGeom2dBoundedCurve_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_BoundedCurve
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_BoundedCurve> {
-        crate::ffi::HandleGeom2dBoundedCurve_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_BoundedCurve {
+        unsafe { &mut *(crate::ffi::HandleGeom2dBoundedCurve_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Curve>
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
-        crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(self)
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(self)
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1140,7 +2347,52 @@ impl HandleGeom2dBoundedCurve {
 /// self-intersect.
 pub use crate::ffi::Geom2d_Curve as Curve;
 
+unsafe impl crate::CppDeletable for Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Geom2d_Curve_destructor(ptr);
+    }
+}
+
 impl Curve {
+    /// Changes the direction of parametrization of <me>.
+    /// The "FirstParameter" and the "LastParameter" are not changed
+    /// but the orientation  of the curve is modified. If the curve
+    /// is bounded the StartPoint of the initial curve becomes the
+    /// EndPoint of the reversed curve  and the EndPoint of the initial
+    /// curve becomes the StartPoint of the reversed curve.
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::Geom2d_Curve_reverse(self as *mut Self) }
+    }
+
+    /// Computes the parameter on the reversed curve for
+    /// the point of parameter U on this curve.
+    /// Note: The point of parameter U on this curve is
+    /// identical to the point of parameter
+    /// ReversedParameter(U) on the reversed curve.
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        unsafe { crate::ffi::Geom2d_Curve_reversed_parameter(self as *const Self, U) }
+    }
+
+    /// Computes the parameter on the curve transformed by
+    /// T for the point of parameter U on this curve.
+    /// Note: this function generally returns U but it can be
+    /// redefined (for example, on a line).
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        unsafe { crate::ffi::Geom2d_Curve_transformed_parameter(self as *const Self, U, T) }
+    }
+
+    /// Returns the coefficient required to compute the
+    /// parametric transformation of this curve when
+    /// transformation T is applied. This coefficient is the
+    /// ratio between the parameter of a point on this curve
+    /// and the parameter of the transformed point on the
+    /// new curve transformed by T.
+    /// Note: this function generally returns 1. but it can be
+    /// redefined (for example, on a line).
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        unsafe { crate::ffi::Geom2d_Curve_parametric_transformation(self as *const Self, T) }
+    }
+
     /// Creates a reversed duplicate Changes the orientation of this curve. The first and
     /// last parameters are not changed, but the parametric
     /// direction of the curve is reversed.
@@ -1150,8 +2402,62 @@ impl Curve {
     /// - the end point of the initial curve becomes the start
     /// point of the reversed curve.
     /// - Reversed creates a new curve.
-    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dCurve> {
-        crate::ffi::Geom2d_Curve_reversed(self)
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_reversed(self as *const Self)) }
+    }
+
+    /// Returns the value of the first parameter.
+    /// Warnings :
+    /// It can be RealFirst or RealLast from package Standard
+    /// if the curve is infinite
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_Curve_first_parameter(self as *const Self) }
+    }
+
+    /// Value of the last parameter.
+    /// Warnings :
+    /// It can be RealFirst or RealLast from package Standard
+    /// if the curve is infinite
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_Curve_last_parameter(self as *const Self) }
+    }
+
+    /// Returns true if the curve is closed.
+    /// Examples :
+    /// Some curves such as circle are always closed, others such as line
+    /// are never closed (by definition).
+    /// Some Curves such as OffsetCurve can be closed or not. These curves
+    /// are considered as closed if the distance between the first point
+    /// and the last point of the curve is lower or equal to the Resolution
+    /// from package gp which is a fixed criterion independent of the
+    /// application.
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::Geom2d_Curve_is_closed(self as *const Self) }
+    }
+
+    /// Returns true if the parameter of the curve is periodic.
+    /// It is possible only if the curve is closed and if the
+    /// following relation is satisfied :
+    /// for each parametric value U the distance between the point
+    /// P(u) and the point P (u + T) is lower or equal to Resolution
+    /// from package gp, T is the period and must be a constant.
+    /// There are three possibilities :
+    /// . the curve is never periodic by definition (SegmentLine)
+    /// . the curve is always periodic by definition (Circle)
+    /// . the curve can be defined as periodic (BSpline). In this case
+    /// a function SetPeriodic allows you to give the shape of the
+    /// curve.  The general rule for this case is : if a curve can be
+    /// periodic or not the default periodicity set is non periodic
+    /// and you have to turn (explicitly) the curve into a periodic
+    /// curve  if you want the curve to be periodic.
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::Geom2d_Curve_is_periodic(self as *const Self) }
+    }
+
+    /// Returns the period of this curve.
+    /// raises if the curve is not periodic
+    pub fn period(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_Curve_period(self as *const Self) }
     }
 
     /// It is the global continuity of the curve :
@@ -1163,7 +2469,64 @@ impl Curve {
     /// G2 : curvature continuity all along the Curve,
     /// CN : the order of continuity is infinite.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_Curve_continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_Curve_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Returns true if the degree of continuity of this curve is at least N.
+    /// Exceptions Standard_RangeError if N is less than 0.
+    pub fn is_cn(&self, N: i32) -> bool {
+        unsafe { crate::ffi::Geom2d_Curve_is_cn(self as *const Self, N) }
+    }
+
+    /// Returns in P the point of parameter U.
+    /// If the curve is periodic  then the returned point is P(U) with
+    /// U = Ustart + (U - Uend)  where Ustart and Uend are the
+    /// parametric bounds of the curve.
+    ///
+    /// Raised only for the "OffsetCurve" if it is not possible to
+    /// compute the current point. For example when the first
+    /// derivative on the basis curve and the offset direction
+    /// are parallel.
+    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_Curve_d0(self as *const Self, U, P) }
+    }
+
+    /// Returns the point P of parameter U and the first derivative V1.
+    /// Raised if the continuity of the curve is not C1.
+    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::Geom2d_Curve_d1(self as *const Self, U, P, V1) }
+    }
+
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the curve is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe { crate::ffi::Geom2d_Curve_d2(self as *const Self, U, P, V1, V2) }
+    }
+
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the curve is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+        V3: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe { crate::ffi::Geom2d_Curve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
     /// For the point of parameter U of this curve, computes
@@ -1175,8 +2538,8 @@ impl Curve {
     /// this is the case with specific types of curve (for
     /// example, a rational BSpline curve where N is greater than 3).
     /// Standard_RangeError if N is less than 1.
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
-        crate::ffi::Geom2d_Curve_dn(self, U, N)
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_dn(self as *const Self, U, N)) }
     }
 
     /// Computes the point of parameter U on <me>.
@@ -1190,59 +2553,68 @@ impl Curve {
     /// compute the current point. For example when the first
     /// derivative on the basis curve and the offset direction
     /// are parallel.
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::Geom2d_Curve_value(self, U)
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_value(self as *const Self, U)) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Geom2d_Curve_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Geom2d_Curve_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Geom2d_Curve_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Geom2d_Curve_get_type_descriptor()
+        unsafe { &*(crate::ffi::Geom2d_Curve_get_type_descriptor()) }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        crate::ffi::Geom2d_Curve_as_Geom2d_Geometry(self)
+        unsafe { &*(crate::ffi::Geom2d_Curve_as_Geom2d_Geometry(self as *const Self)) }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        crate::ffi::Geom2d_Curve_as_Geom2d_Geometry_mut(self)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom2d_Curve_as_Geom2d_Geometry_mut(self as *mut Self)) }
     }
 
     /// Inherited from Geom2d_Geometry: Mirror()
-    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::Geom2d_Curve_inherited_Mirror(self, P)
+    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_Mirror(self as *mut Self, P) }
     }
 
     /// Inherited from Geom2d_Geometry: Rotate()
-    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
-        crate::ffi::Geom2d_Curve_inherited_Rotate(self, P, Ang)
+    pub fn rotate(&mut self, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_Rotate(self as *mut Self, P, Ang) }
     }
 
     /// Inherited from Geom2d_Geometry: Scale()
-    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
-        crate::ffi::Geom2d_Curve_inherited_Scale(self, P, S)
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_Scale(self as *mut Self, P, S) }
     }
 
     /// Inherited from Geom2d_Geometry: Translate()
-    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
-        crate::ffi::Geom2d_Curve_inherited_Translate(self, V)
+    pub fn translate(&mut self, V: &crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_Translate(self as *mut Self, V) }
     }
 
     /// Inherited from Geom2d_Geometry: Transform()
-    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::Geom2d_Curve_inherited_Transform(self, T)
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
+        unsafe { crate::ffi::Geom2d_Curve_inherited_Transform(self as *mut Self, T) }
     }
 
     /// Inherited from Geom2d_Geometry: Mirrored()
     pub fn mirrored(
         &self,
         P: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Curve_inherited_Mirrored(self, P)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_inherited_Mirrored(
+                self as *const Self,
+                P,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Rotated()
@@ -1250,8 +2622,14 @@ impl Curve {
         &self,
         P: &crate::ffi::gp_Pnt2d,
         Ang: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Curve_inherited_Rotated(self, P, Ang)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_inherited_Rotated(
+                self as *const Self,
+                P,
+                Ang,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Scaled()
@@ -1259,48 +2637,76 @@ impl Curve {
         &self,
         P: &crate::ffi::gp_Pnt2d,
         S: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Curve_inherited_Scaled(self, P, S)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_inherited_Scaled(
+                self as *const Self,
+                P,
+                S,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Transformed()
     pub fn transformed(
         &self,
         T: &crate::ffi::gp_Trsf2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Curve_inherited_Transformed(self, T)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_inherited_Transformed(
+                self as *const Self,
+                T,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Translated()
     pub fn translated(
         &self,
         V: &crate::ffi::gp_Vec2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Curve_inherited_Translated(self, V)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_inherited_Translated(
+                self as *const Self,
+                V,
+            ))
+        }
     }
 
     /// Inherited from Geom2d_Geometry: Copy()
-    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Curve_inherited_Copy(self)
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_inherited_Copy(self as *const Self))
+        }
     }
 }
 
 pub use crate::ffi::HandleGeom2dCurve;
 
+unsafe impl crate::CppDeletable for HandleGeom2dCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeom2dCurve_destructor(ptr);
+    }
+}
+
 impl HandleGeom2dCurve {
     /// Dereference this Handle to access the underlying Geom2d_Curve
     pub fn get(&self) -> &crate::ffi::Geom2d_Curve {
-        crate::ffi::HandleGeom2dCurve_get(self)
+        unsafe { &*(crate::ffi::HandleGeom2dCurve_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Curve
-    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Geom2d_Curve> {
-        crate::ffi::HandleGeom2dCurve_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Curve {
+        unsafe { &mut *(crate::ffi::HandleGeom2dCurve_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Geom2d_Curve> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::HandleGeom2dCurve_to_HandleGeom2dGeometry(self)
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dCurve_to_HandleGeom2dGeometry(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1333,85 +2739,179 @@ impl HandleGeom2dCurve {
 /// transformations are implemented using the Transform method.
 pub use crate::ffi::Geom2d_Geometry as Geometry;
 
+unsafe impl crate::CppDeletable for Geometry {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Geom2d_Geometry_destructor(ptr);
+    }
+}
+
 impl Geometry {
+    /// Performs the symmetrical transformation of a Geometry
+    /// with respect to the point P which is the center of the
+    /// symmetry and assigns the result to this geometric object.
+    pub fn mirror_pnt2d(&mut self, P: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_Geometry_mirror_pnt2d(self as *mut Self, P) }
+    }
+
+    /// Performs the symmetrical transformation of a Geometry
+    /// with respect to an axis placement which is the axis of the symmetry.
+    pub fn mirror_ax2d(&mut self, A: &crate::ffi::gp_Ax2d) {
+        unsafe { crate::ffi::Geom2d_Geometry_mirror_ax2d(self as *mut Self, A) }
+    }
+
+    /// Rotates a Geometry. P is the center of the rotation.
+    /// Ang is the angular value of the rotation in radians.
+    pub fn rotate(&mut self, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        unsafe { crate::ffi::Geom2d_Geometry_rotate(self as *mut Self, P, Ang) }
+    }
+
+    /// Scales a Geometry. S is the scaling value.
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        unsafe { crate::ffi::Geom2d_Geometry_scale(self as *mut Self, P, S) }
+    }
+
+    /// Translates a Geometry.  V is the vector of the translation.
+    pub fn translate_vec2d(&mut self, V: &crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::Geom2d_Geometry_translate_vec2d(self as *mut Self, V) }
+    }
+
+    /// Translates a Geometry from the point P1 to the point P2.
+    pub fn translate_pnt2d2(&mut self, P1: &crate::ffi::gp_Pnt2d, P2: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2d_Geometry_translate_pnt2d2(self as *mut Self, P1, P2) }
+    }
+
+    /// Transformation of a geometric object. This transformation
+    /// can be a translation, a rotation, a symmetry, a scaling
+    /// or a complex transformation obtained by combination of
+    /// the previous elementaries transformations.
+    /// (see class Transformation of the package Geom2d).
+    /// The following transformations have the same properties
+    /// as the previous ones but they don't modified the object
+    /// itself. A copy of the object is returned.
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
+        unsafe { crate::ffi::Geom2d_Geometry_transform(self as *mut Self, T) }
+    }
+
     pub fn mirrored_pnt2d(
         &self,
         P: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Geometry_mirrored_pnt2d(self, P)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Geometry_mirrored_pnt2d(
+                self as *const Self,
+                P,
+            ))
+        }
     }
 
     pub fn mirrored_ax2d(
         &self,
         A: &crate::ffi::gp_Ax2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Geometry_mirrored_ax2d(self, A)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Geometry_mirrored_ax2d(
+                self as *const Self,
+                A,
+            ))
+        }
     }
 
     pub fn rotated(
         &self,
         P: &crate::ffi::gp_Pnt2d,
         Ang: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Geometry_rotated(self, P, Ang)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Geometry_rotated(
+                self as *const Self,
+                P,
+                Ang,
+            ))
+        }
     }
 
     pub fn scaled(
         &self,
         P: &crate::ffi::gp_Pnt2d,
         S: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Geometry_scaled(self, P, S)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Geometry_scaled(self as *const Self, P, S))
+        }
     }
 
     pub fn transformed(
         &self,
         T: &crate::ffi::gp_Trsf2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Geometry_transformed(self, T)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Geometry_transformed(
+                self as *const Self,
+                T,
+            ))
+        }
     }
 
     pub fn translated_vec2d(
         &self,
         V: &crate::ffi::gp_Vec2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Geometry_translated_vec2d(self, V)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Geometry_translated_vec2d(
+                self as *const Self,
+                V,
+            ))
+        }
     }
 
     pub fn translated_pnt2d2(
         &self,
         P1: &crate::ffi::gp_Pnt2d,
         P2: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Geometry_translated_pnt2d2(self, P1, P2)
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Geometry_translated_pnt2d2(
+                self as *const Self,
+                P1,
+                P2,
+            ))
+        }
     }
 
-    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
-        crate::ffi::Geom2d_Geometry_copy(self)
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Geometry_copy(self as *const Self)) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Geom2d_Geometry_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Geom2d_Geometry_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Geom2d_Geometry_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Geom2d_Geometry_get_type_descriptor()
+        unsafe { &*(crate::ffi::Geom2d_Geometry_get_type_descriptor()) }
     }
 }
 
 pub use crate::ffi::HandleGeom2dGeometry;
 
+unsafe impl crate::CppDeletable for HandleGeom2dGeometry {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeom2dGeometry_destructor(ptr);
+    }
+}
+
 impl HandleGeom2dGeometry {
     /// Dereference this Handle to access the underlying Geom2d_Geometry
     pub fn get(&self) -> &crate::ffi::Geom2d_Geometry {
-        crate::ffi::HandleGeom2dGeometry_get(self)
+        unsafe { &*(crate::ffi::HandleGeom2dGeometry_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Geometry
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Geom2d_Geometry> {
-        crate::ffi::HandleGeom2dGeometry_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Geometry {
+        unsafe { &mut *(crate::ffi::HandleGeom2dGeometry_get_mut(self as *mut Self)) }
     }
 }
 

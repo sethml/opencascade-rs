@@ -40,25 +40,47 @@
 /// memory management by application itself.
 pub use crate::ffi::OSD_MemInfo as MemInfo;
 
+unsafe impl crate::CppDeletable for MemInfo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_MemInfo_destructor(ptr);
+    }
+}
+
 impl MemInfo {
     /// Create and initialize. By default all countes are active
-    pub fn new_bool(theImmediateUpdate: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::OSD_MemInfo_ctor_bool(theImmediateUpdate)
+    pub fn new_bool(theImmediateUpdate: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MemInfo_ctor_bool(theImmediateUpdate)) }
     }
 
     /// Create and initialize. By default all countes are active
-    pub fn new() -> cxx::UniquePtr<Self> {
+    pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool(true)
     }
 
-    /// Return the string representation for all available counter.
-    pub fn to_string(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
-        crate::ffi::OSD_MemInfo_to_string(self)
+    /// Set all counters active. The information is collected for active counters.
+    /// @param theActive state for counters
+    pub fn set_active(&mut self, theActive: bool) {
+        unsafe { crate::ffi::OSD_MemInfo_set_active(self as *mut Self, theActive) }
+    }
+
+    /// Clear counters
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::OSD_MemInfo_clear(self as *mut Self) }
+    }
+
+    /// Update counters
+    pub fn update(&mut self) {
+        unsafe { crate::ffi::OSD_MemInfo_update(self as *mut Self) }
     }
 
     /// Return the string representation for all available counter.
-    pub fn print_info() -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
-        crate::ffi::OSD_MemInfo_print_info()
+    pub fn to_string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MemInfo_to_string(self as *const Self)) }
+    }
+
+    /// Return the string representation for all available counter.
+    pub fn print_info() -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MemInfo_print_info()) }
     }
 }
 

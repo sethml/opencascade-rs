@@ -32,9 +32,15 @@
 /// to the great axe of the ellipse.
 pub use crate::ffi::Bisector_Bisec as Bisec;
 
+unsafe impl crate::CppDeletable for Bisec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Bisector_Bisec_destructor(ptr);
+    }
+}
+
 impl Bisec {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Bisector_Bisec_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bisector_Bisec_ctor()) }
     }
 
     /// Performs  the bisecting line  between the  curves
@@ -42,7 +48,7 @@ impl Bisec {
     /// <oncurve> is True if the point <P> is common to <Cu1>
     /// and <Cu2>.
     pub fn perform(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Cu1: &crate::ffi::HandleGeom2dCurve,
         Cu2: &crate::ffi::HandleGeom2dCurve,
         P: &crate::ffi::gp_Pnt2d,
@@ -53,17 +59,19 @@ impl Bisec {
         Tolerance: f64,
         oncurve: bool,
     ) {
-        crate::ffi::Bisector_Bisec_perform(
-            self,
-            Cu1,
-            Cu2,
-            P,
-            V1,
-            V2,
-            Sense,
-            ajointype.into(),
-            Tolerance,
-            oncurve,
-        )
+        unsafe {
+            crate::ffi::Bisector_Bisec_perform(
+                self as *mut Self,
+                Cu1,
+                Cu2,
+                P,
+                V1,
+                V2,
+                Sense,
+                ajointype.into(),
+                Tolerance,
+                oncurve,
+            )
+        }
     }
 }

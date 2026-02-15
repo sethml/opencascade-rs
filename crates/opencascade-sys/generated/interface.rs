@@ -143,18 +143,26 @@ impl TryFrom<i32> for CheckStatus {
 /// (flag n0 0 has no name)
 pub use crate::ffi::Interface_BitMap as BitMap;
 
+unsafe impl crate::CppDeletable for BitMap {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_BitMap_destructor(ptr);
+    }
+}
+
 impl BitMap {
     /// Creates a empty BitMap
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_BitMap_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_BitMap_ctor()) }
     }
 
     /// Creates a BitMap for <nbitems> items
     /// One flag is defined, n0 0
     /// <resflags> prepares allocation for <resflags> more flags
     /// Flags values start at false
-    pub fn new_int2(nbitems: i32, resflags: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_BitMap_ctor_int2(nbitems, resflags)
+    pub fn new_int2(nbitems: i32, resflags: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_BitMap_ctor_int2(nbitems, resflags))
+        }
     }
 
     /// Creates a BitMap from another one
@@ -163,48 +171,146 @@ impl BitMap {
     pub fn new_bitmap_bool(
         other: &crate::ffi::Interface_BitMap,
         copied: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_BitMap_ctor_bitmap_bool(other, copied)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_BitMap_ctor_bitmap_bool(other, copied))
+        }
     }
 
     /// Creates a BitMap for <nbitems> items
     /// One flag is defined, n0 0
     /// <resflags> prepares allocation for <resflags> more flags
     /// Flags values start at false
-    pub fn new_int(nbitems: i32) -> cxx::UniquePtr<Self> {
+    pub fn new_int(nbitems: i32) -> crate::OwnedPtr<Self> {
         Self::new_int2(nbitems, 0)
     }
 
     /// Creates a BitMap from another one
     /// if <copied> is True, copies data
     /// else, data are not copied, only the header object is
-    pub fn new_bitmap(other: &crate::ffi::Interface_BitMap) -> cxx::UniquePtr<Self> {
+    pub fn new_bitmap(other: &crate::ffi::Interface_BitMap) -> crate::OwnedPtr<Self> {
         Self::new_bitmap_bool(other, false)
+    }
+
+    /// Initialize empty bit by <nbitems> items
+    /// One flag is defined, n0 0
+    /// <resflags> prepares allocation for <resflags> more flags
+    /// Flags values start at false
+    pub fn initialize_int2(&mut self, nbitems: i32, resflags: i32) {
+        unsafe {
+            crate::ffi::Interface_BitMap_initialize_int2(self as *mut Self, nbitems, resflags)
+        }
+    }
+
+    /// Initialize a BitMap from another one
+    pub fn initialize_bitmap_bool(&mut self, other: &crate::ffi::Interface_BitMap, copied: bool) {
+        unsafe {
+            crate::ffi::Interface_BitMap_initialize_bitmap_bool(self as *mut Self, other, copied)
+        }
+    }
+
+    /// Reservates for a count of more flags
+    pub fn reservate(&mut self, moreflags: i32) {
+        unsafe { crate::ffi::Interface_BitMap_reservate(self as *mut Self, moreflags) }
+    }
+
+    /// Sets for a new count of items, which can be either less or
+    /// greater than the former one
+    /// For new items, their flags start at false
+    pub fn set_length(&mut self, nbitems: i32) {
+        unsafe { crate::ffi::Interface_BitMap_set_length(self as *mut Self, nbitems) }
     }
 
     /// Adds a flag, a name can be attached to it
     /// Returns its flag number
     /// Makes required reservation
-    pub fn add_flag(self: std::pin::Pin<&mut Self>, name: &str) -> i32 {
-        crate::ffi::Interface_BitMap_add_flag(self, name)
+    pub fn add_flag(&mut self, name: *const std::ffi::c_char) -> i32 {
+        unsafe { crate::ffi::Interface_BitMap_add_flag(self as *mut Self, name) }
+    }
+
+    /// Adds several flags (<more>) with no name
+    /// Returns the number of last added flag
+    pub fn add_some_flags(&mut self, more: i32) -> i32 {
+        unsafe { crate::ffi::Interface_BitMap_add_some_flags(self as *mut Self, more) }
+    }
+
+    /// Removes a flag given its number.
+    /// Returns True if done, false if num is out of range
+    pub fn remove_flag(&mut self, num: i32) -> bool {
+        unsafe { crate::ffi::Interface_BitMap_remove_flag(self as *mut Self, num) }
     }
 
     /// Sets a name for a flag, given its number
     /// name can be empty (to erase the name of a flag)
     /// Returns True if done, false if : num is out of range, or
     /// name non-empty already set to another flag
-    pub fn set_flag_name(self: std::pin::Pin<&mut Self>, num: i32, name: &str) -> bool {
-        crate::ffi::Interface_BitMap_set_flag_name(self, num, name)
+    pub fn set_flag_name(&mut self, num: i32, name: *const std::ffi::c_char) -> bool {
+        unsafe { crate::ffi::Interface_BitMap_set_flag_name(self as *mut Self, num, name) }
+    }
+
+    /// Returns the count of flags (flag 0 not included)
+    pub fn nb_flags(&self) -> i32 {
+        unsafe { crate::ffi::Interface_BitMap_nb_flags(self as *const Self) }
+    }
+
+    /// Returns the count of items (i.e. the length of the bitmap)
+    pub fn length(&self) -> i32 {
+        unsafe { crate::ffi::Interface_BitMap_length(self as *const Self) }
     }
 
     /// Returns the name recorded for a flag, or an empty string
-    pub fn flag_name(&self, num: i32) -> String {
-        crate::ffi::Interface_BitMap_flag_name(self, num)
+    pub fn flag_name(&self, num: i32) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_BitMap_flag_name(self as *const Self, num) }
     }
 
     /// Returns the number or a flag given its name, or zero
-    pub fn flag_number(&self, name: &str) -> i32 {
-        crate::ffi::Interface_BitMap_flag_number(self, name)
+    pub fn flag_number(&self, name: *const std::ffi::c_char) -> i32 {
+        unsafe { crate::ffi::Interface_BitMap_flag_number(self as *const Self, name) }
+    }
+
+    /// Returns the value (true/false) of a flag, from :
+    /// - the number of the item
+    /// - the flag number, by default 0
+    pub fn value(&self, item: i32, flag: i32) -> bool {
+        unsafe { crate::ffi::Interface_BitMap_value(self as *const Self, item, flag) }
+    }
+
+    /// Sets a new value for a flag
+    pub fn set_value(&self, item: i32, val: bool, flag: i32) {
+        unsafe { crate::ffi::Interface_BitMap_set_value(self as *const Self, item, val, flag) }
+    }
+
+    /// Sets a flag to True
+    pub fn set_true(&self, item: i32, flag: i32) {
+        unsafe { crate::ffi::Interface_BitMap_set_true(self as *const Self, item, flag) }
+    }
+
+    /// Sets a flag to False
+    pub fn set_false(&self, item: i32, flag: i32) {
+        unsafe { crate::ffi::Interface_BitMap_set_false(self as *const Self, item, flag) }
+    }
+
+    /// Returns the former value for a flag and sets it to True
+    /// (before : value returned; after : True)
+    pub fn c_true(&self, item: i32, flag: i32) -> bool {
+        unsafe { crate::ffi::Interface_BitMap_c_true(self as *const Self, item, flag) }
+    }
+
+    /// Returns the former value for a flag and sets it to False
+    /// (before : value returned; after : False)
+    pub fn c_false(&self, item: i32, flag: i32) -> bool {
+        unsafe { crate::ffi::Interface_BitMap_c_false(self as *const Self, item, flag) }
+    }
+
+    /// Initialises all the values of Flag Number <flag> to a given
+    /// value <val>
+    pub fn init(&self, val: bool, flag: i32) {
+        unsafe { crate::ffi::Interface_BitMap_init(self as *const Self, val, flag) }
+    }
+
+    /// Clear all field of bit map
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Interface_BitMap_clear(self as *mut Self) }
     }
 }
 
@@ -225,24 +331,88 @@ impl BitMap {
 /// such as counting messages
 pub use crate::ffi::Interface_Check as Check;
 
+unsafe impl crate::CppDeletable for Check {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_Check_destructor(ptr);
+    }
+}
+
 impl Check {
     /// Allows definition of a Sequence. Used also for Global Check
     /// of an InterfaceModel (which stores global messages for file)
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_Check_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_Check_ctor()) }
+    }
+
+    /// New name for AddFail (Msg)
+    pub fn send_fail(&mut self, amsg: &crate::ffi::Message_Msg) {
+        unsafe { crate::ffi::Interface_Check_send_fail(self as *mut Self, amsg) }
+    }
+
+    /// Records a new Fail message
+    pub fn add_fail_handletcollectionhasciistring(
+        &mut self,
+        amess: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::Interface_Check_add_fail_handletcollectionhasciistring(
+                self as *mut Self,
+                amess,
+            )
+        }
+    }
+
+    /// Records a new Fail message under two forms : final,original
+    pub fn add_fail_handletcollectionhasciistring2(
+        &mut self,
+        amess: &crate::ffi::HandleTCollectionHAsciiString,
+        orig: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::Interface_Check_add_fail_handletcollectionhasciistring2(
+                self as *mut Self,
+                amess,
+                orig,
+            )
+        }
     }
 
     /// Records a new Fail message given as "error text" directly
     /// If <orig> is given, a distinct original form is recorded
     /// else (D), the original form equates <amess>
-    pub fn add_fail_charptr2(self: std::pin::Pin<&mut Self>, amess: &str, orig: &str) {
-        crate::ffi::Interface_Check_add_fail(self, amess, orig)
+    pub fn add_fail_charptr2(
+        &mut self,
+        amess: *const std::ffi::c_char,
+        orig: *const std::ffi::c_char,
+    ) {
+        unsafe { crate::ffi::Interface_Check_add_fail_charptr2(self as *mut Self, amess, orig) }
+    }
+
+    /// Records a new Fail from the definition of a Msg (Original+Value)
+    pub fn add_fail_msg(&mut self, amsg: &crate::ffi::Message_Msg) {
+        unsafe { crate::ffi::Interface_Check_add_fail_msg(self as *mut Self, amsg) }
+    }
+
+    /// Returns True if Check brings at least one Fail Message
+    pub fn has_failed(&self) -> bool {
+        unsafe { crate::ffi::Interface_Check_has_failed(self as *const Self) }
+    }
+
+    /// Returns count of recorded Fails
+    pub fn nb_fails(&self) -> i32 {
+        unsafe { crate::ffi::Interface_Check_nb_fails(self as *const Self) }
+    }
+
+    /// Returns Fail Message as a String
+    /// Final form by default, Original form if <final> is False
+    pub fn fail(&self, num: i32, final_: bool) -> &crate::ffi::HandleTCollectionHAsciiString {
+        unsafe { &*(crate::ffi::Interface_Check_fail(self as *const Self, num, final_)) }
     }
 
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
-    pub fn c_fail(&self, num: i32, final_: bool) -> String {
-        crate::ffi::Interface_Check_c_fail(self, num, final_)
+    pub fn c_fail(&self, num: i32, final_: bool) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_Check_c_fail(self as *const Self, num, final_) }
     }
 
     /// Returns the list of Fails, for a frontal-engine logic
@@ -251,21 +421,84 @@ impl Check {
     pub fn fails(
         &self,
         final_: bool,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
-        crate::ffi::Interface_Check_fails(self, final_)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_Check_fails(
+                self as *const Self,
+                final_,
+            ))
+        }
+    }
+
+    /// New name for AddWarning
+    pub fn send_warning(&mut self, amsg: &crate::ffi::Message_Msg) {
+        unsafe { crate::ffi::Interface_Check_send_warning(self as *mut Self, amsg) }
+    }
+
+    /// Records a new Warning message
+    pub fn add_warning_handletcollectionhasciistring(
+        &mut self,
+        amess: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::Interface_Check_add_warning_handletcollectionhasciistring(
+                self as *mut Self,
+                amess,
+            )
+        }
+    }
+
+    /// Records a new Warning message under two forms : final,original
+    pub fn add_warning_handletcollectionhasciistring2(
+        &mut self,
+        amess: &crate::ffi::HandleTCollectionHAsciiString,
+        orig: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::Interface_Check_add_warning_handletcollectionhasciistring2(
+                self as *mut Self,
+                amess,
+                orig,
+            )
+        }
     }
 
     /// Records a Warning message given as "warning message" directly
     /// If <orig> is given, a distinct original form is recorded
     /// else (D), the original form equates <amess>
-    pub fn add_warning_charptr2(self: std::pin::Pin<&mut Self>, amess: &str, orig: &str) {
-        crate::ffi::Interface_Check_add_warning(self, amess, orig)
+    pub fn add_warning_charptr2(
+        &mut self,
+        amess: *const std::ffi::c_char,
+        orig: *const std::ffi::c_char,
+    ) {
+        unsafe { crate::ffi::Interface_Check_add_warning_charptr2(self as *mut Self, amess, orig) }
+    }
+
+    /// Records a new Warning from the definition of a Msg (Original+Value)
+    pub fn add_warning_msg(&mut self, amsg: &crate::ffi::Message_Msg) {
+        unsafe { crate::ffi::Interface_Check_add_warning_msg(self as *mut Self, amsg) }
+    }
+
+    /// Returns True if Check brings at least one Warning Message
+    pub fn has_warnings(&self) -> bool {
+        unsafe { crate::ffi::Interface_Check_has_warnings(self as *const Self) }
+    }
+
+    /// Returns count of recorded Warning messages
+    pub fn nb_warnings(&self) -> i32 {
+        unsafe { crate::ffi::Interface_Check_nb_warnings(self as *const Self) }
+    }
+
+    /// Returns Warning message as a String
+    /// Final form by default, Original form if <final> is False
+    pub fn warning(&self, num: i32, final_: bool) -> &crate::ffi::HandleTCollectionHAsciiString {
+        unsafe { &*(crate::ffi::Interface_Check_warning(self as *const Self, num, final_)) }
     }
 
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
-    pub fn c_warning(&self, num: i32, final_: bool) -> String {
-        crate::ffi::Interface_Check_c_warning(self, num, final_)
+    pub fn c_warning(&self, num: i32, final_: bool) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_Check_c_warning(self as *const Self, num, final_) }
     }
 
     /// Returns the list of Warnings, for a frontal-engine logic
@@ -274,14 +507,35 @@ impl Check {
     pub fn warnings(
         &self,
         final_: bool,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
-        crate::ffi::Interface_Check_warnings(self, final_)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_Check_warnings(
+                self as *const Self,
+                final_,
+            ))
+        }
+    }
+
+    /// Records an information message
+    /// This does not change the status of the Check
+    pub fn send_msg(&mut self, amsg: &crate::ffi::Message_Msg) {
+        unsafe { crate::ffi::Interface_Check_send_msg(self as *mut Self, amsg) }
+    }
+
+    /// Returns the count of recorded information messages
+    pub fn nb_info_msgs(&self) -> i32 {
+        unsafe { crate::ffi::Interface_Check_nb_info_msgs(self as *const Self) }
+    }
+
+    /// Returns information message as a String
+    pub fn info_msg(&self, num: i32, final_: bool) -> &crate::ffi::HandleTCollectionHAsciiString {
+        unsafe { &*(crate::ffi::Interface_Check_info_msg(self as *const Self, num, final_)) }
     }
 
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
-    pub fn c_info_msg(&self, num: i32, final_: bool) -> String {
-        crate::ffi::Interface_Check_c_info_msg(self, num, final_)
+    pub fn c_info_msg(&self, num: i32, final_: bool) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_Check_c_info_msg(self as *const Self, num, final_) }
     }
 
     /// Returns the list of Info Msg, for a frontal-engine logic
@@ -290,19 +544,31 @@ impl Check {
     pub fn info_msgs(
         &self,
         final_: bool,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
-        crate::ffi::Interface_Check_info_msgs(self, final_)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_Check_info_msgs(
+                self as *const Self,
+                final_,
+            ))
+        }
     }
 
     /// Returns the Check Status : OK, Warning or Fail
     pub fn status(&self) -> crate::interface::CheckStatus {
-        crate::interface::CheckStatus::try_from(crate::ffi::Interface_Check_status(self)).unwrap()
+        unsafe {
+            crate::interface::CheckStatus::try_from(crate::ffi::Interface_Check_status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Tells if Check Status complies with a given one
     /// (i.e. also status for query)
     pub fn complies_checkstatus(&self, status: crate::interface::CheckStatus) -> bool {
-        crate::ffi::Interface_Check_complies_checkstatus(self, status.into())
+        unsafe {
+            crate::ffi::Interface_Check_complies_checkstatus(self as *const Self, status.into())
+        }
     }
 
     /// Tells if a message is brought by a Check, as follows :
@@ -318,12 +584,41 @@ impl Check {
         incl: i32,
         status: crate::interface::CheckStatus,
     ) -> bool {
-        crate::ffi::Interface_Check_complies_handletcollectionhasciistring_int_checkstatus(
-            self,
-            mess,
-            incl,
-            status.into(),
-        )
+        unsafe {
+            crate::ffi::Interface_Check_complies_handletcollectionhasciistring_int_checkstatus(
+                self as *const Self,
+                mess,
+                incl,
+                status.into(),
+            )
+        }
+    }
+
+    /// Returns True if a Check is devoted to an entity; else, it is
+    /// global (for InterfaceModel's storing of global error messages)
+    pub fn has_entity(&self) -> bool {
+        unsafe { crate::ffi::Interface_Check_has_entity(self as *const Self) }
+    }
+
+    /// Clears a check, in order to receive information from transfer
+    /// (Messages and Entity)
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Interface_Check_clear(self as *mut Self) }
+    }
+
+    /// Clears the Fail Messages (for instance to keep only Warnings)
+    pub fn clear_fails(&mut self) {
+        unsafe { crate::ffi::Interface_Check_clear_fails(self as *mut Self) }
+    }
+
+    /// Clears the Warning Messages (for instance to keep only Fails)
+    pub fn clear_warnings(&mut self) {
+        unsafe { crate::ffi::Interface_Check_clear_warnings(self as *mut Self) }
+    }
+
+    /// Clears the Info Messages
+    pub fn clear_info_msgs(&mut self) {
+        unsafe { crate::ffi::Interface_Check_clear_info_msgs(self as *mut Self) }
     }
 
     /// Removes the messages which comply with <mess>, as follows :
@@ -335,12 +630,12 @@ impl Check {
     /// other values are ignored (nothing is done)
     /// Returns True if at least one message has been removed, False else
     pub fn remove(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         mess: &crate::ffi::HandleTCollectionHAsciiString,
         incl: i32,
         status: crate::interface::CheckStatus,
     ) -> bool {
-        crate::ffi::Interface_Check_remove(self, mess, incl, status.into())
+        unsafe { crate::ffi::Interface_Check_remove(self as *mut Self, mess, incl, status.into()) }
     }
 
     /// Mends messages, according <pref> and <num>
@@ -354,39 +649,68 @@ impl Check {
     /// "CF" : clears Fail(s)
     /// "CW" : clears Warning(s) : here, <num> refers to Warning list
     /// "CA" : clears all messages : here, <num> is ignored
-    pub fn mend(self: std::pin::Pin<&mut Self>, pref: &str, num: i32) -> bool {
-        crate::ffi::Interface_Check_mend(self, pref, num)
+    pub fn mend(&mut self, pref: *const std::ffi::c_char, num: i32) -> bool {
+        unsafe { crate::ffi::Interface_Check_mend(self as *mut Self, pref, num) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Interface_Check_get_type_name()
+    /// Copies messages stored in another Check, cumulating
+    /// Does not regard other's Entity. Used to cumulate messages
+    pub fn get_messages(&mut self, other: &crate::ffi::HandleInterfaceCheck) {
+        unsafe { crate::ffi::Interface_Check_get_messages(self as *mut Self, other) }
+    }
+
+    /// Copies messages converted into Warning messages
+    /// If failsonly is true, only Fails are taken, and converted
+    /// else, Warnings are taken too. Does not regard Entity
+    /// Used to keep Fail messages as Warning, after a recovery
+    pub fn get_as_warning(&mut self, other: &crate::ffi::HandleInterfaceCheck, failsonly: bool) {
+        unsafe { crate::ffi::Interface_Check_get_as_warning(self as *mut Self, other, failsonly) }
+    }
+
+    /// Prints the messages of the check to the default trace file
+    /// By default, according to the default standard level
+    /// Else, according level (see method Print)
+    pub fn trace(&self, level: i32, final_: i32) {
+        unsafe { crate::ffi::Interface_Check_trace(self as *const Self, level, final_) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Interface_Check_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_Check_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Interface_Check_get_type_descriptor()
+        unsafe { &*(crate::ffi::Interface_Check_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceCheck> {
-        crate::ffi::Interface_Check_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_Check_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleInterfaceCheck;
 
+unsafe impl crate::CppDeletable for HandleInterfaceCheck {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleInterfaceCheck_destructor(ptr);
+    }
+}
+
 impl HandleInterfaceCheck {
     /// Dereference this Handle to access the underlying Interface_Check
     pub fn get(&self) -> &crate::ffi::Interface_Check {
-        crate::ffi::HandleInterfaceCheck_get(self)
+        unsafe { &*(crate::ffi::HandleInterfaceCheck_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Interface_Check
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Interface_Check> {
-        crate::ffi::HandleInterfaceCheck_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Interface_Check {
+        unsafe { &mut *(crate::ffi::HandleInterfaceCheck_get_mut(self as *mut Self)) }
     }
 }
 
@@ -397,44 +721,107 @@ impl HandleInterfaceCheck {
 /// Result of a Check operation (especially from InterfaceModel)
 pub use crate::ffi::Interface_CheckIterator as CheckIterator;
 
+unsafe impl crate::CppDeletable for CheckIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_CheckIterator_destructor(ptr);
+    }
+}
+
 impl CheckIterator {
     /// Creates an empty CheckIterator
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_CheckIterator_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_CheckIterator_ctor()) }
     }
 
     /// Creates a CheckIterator with a name (displayed by Print as a
     /// title)
-    pub fn new_charptr(name: &str) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_CheckIterator_ctor_charptr(name)
+    pub fn new_charptr(name: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_CheckIterator_ctor_charptr(name)) }
     }
 
     /// Sets / Changes the name
-    pub fn set_name(self: std::pin::Pin<&mut Self>, name: &str) {
-        crate::ffi::Interface_CheckIterator_set_name(self, name)
+    pub fn set_name(&mut self, name: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Interface_CheckIterator_set_name(self as *mut Self, name) }
     }
 
     /// Returns the recorded name (can be empty)
-    pub fn name(&self) -> String {
-        crate::ffi::Interface_CheckIterator_name(self)
+    pub fn name(&self) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_CheckIterator_name(self as *const Self) }
+    }
+
+    /// Defines a Model, used to locate entities (not required, if it
+    /// is absent, entities are simply less documented)
+    pub fn set_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe { crate::ffi::Interface_CheckIterator_set_model(self as *mut Self, model) }
     }
 
     /// Returns the stored model (can be a null handle)
-    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::Interface_CheckIterator_model(self)
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_CheckIterator_model(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Clears the list of checks
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Interface_CheckIterator_clear(self as *mut Self) }
+    }
+
+    /// Merges another CheckIterator into <me>, i.e. adds each of its
+    /// Checks. Content of <other> remains unchanged.
+    /// Takes also the Model but not the Name
+    pub fn merge(&mut self, other: &mut crate::ffi::Interface_CheckIterator) {
+        unsafe { crate::ffi::Interface_CheckIterator_merge(self as *mut Self, other) }
+    }
+
+    /// Adds a Check to the list to be iterated
+    /// This Check is Accompanied by Entity Number in the Model
+    /// (0 for Global Check or Entity unknown in the Model), if 0 and
+    /// Model is recorded in <me>, it is computed
+    pub fn add(&mut self, ach: &crate::ffi::HandleInterfaceCheck, num: i32) {
+        unsafe { crate::ffi::Interface_CheckIterator_add(self as *mut Self, ach, num) }
+    }
+
+    /// Returns the Check which was attached to an Entity given its
+    /// Number in the Model. <num>=0 is for the Global Check.
+    /// If no Check was recorded for this Number, returns an empty
+    /// Check.
+    /// Remark : Works apart from the iteration methods (no interference)
+    pub fn check(&self, num: i32) -> &crate::ffi::HandleInterfaceCheck {
+        unsafe { &*(crate::ffi::Interface_CheckIterator_check(self as *const Self, num)) }
+    }
+
+    /// Returns the Check bound to an Entity Number (0 : Global)
+    /// in order to be consulted or completed on the spot
+    /// I.e. returns the Check if is already exists, or adds it then
+    /// returns the new empty Check
+    pub fn c_check(&mut self, num: i32) -> &mut crate::ffi::HandleInterfaceCheck {
+        unsafe { &mut *(crate::ffi::Interface_CheckIterator_c_check(self as *mut Self, num)) }
+    }
+
+    /// Returns True if : no Fail has been recorded if <failsonly> is
+    /// True, no Check at all if <failsonly> is False
+    pub fn is_empty(&self, failsonly: bool) -> bool {
+        unsafe { crate::ffi::Interface_CheckIterator_is_empty(self as *const Self, failsonly) }
     }
 
     /// Returns worst status among : OK, Warning, Fail
     pub fn status(&self) -> crate::interface::CheckStatus {
-        crate::interface::CheckStatus::try_from(crate::ffi::Interface_CheckIterator_status(self))
+        unsafe {
+            crate::interface::CheckStatus::try_from(crate::ffi::Interface_CheckIterator_status(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Tells if this check list complies with a given status :
     /// OK (i.e. empty),  Warning (at least one Warning, but no Fail),
     /// Fail (at least one), Message (not OK), NoFail, Any
     pub fn complies(&self, status: crate::interface::CheckStatus) -> bool {
-        crate::ffi::Interface_CheckIterator_complies(self, status.into())
+        unsafe { crate::ffi::Interface_CheckIterator_complies(self as *const Self, status.into()) }
     }
 
     /// Returns a CheckIterator which contains the checks which comply
@@ -443,8 +830,13 @@ impl CheckIterator {
     pub fn extract_checkstatus(
         &self,
         status: crate::interface::CheckStatus,
-    ) -> cxx::UniquePtr<crate::ffi::Interface_CheckIterator> {
-        crate::ffi::Interface_CheckIterator_extract_checkstatus(self, status.into())
+    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_CheckIterator_extract_checkstatus(
+                self as *const Self,
+                status.into(),
+            ))
+        }
     }
 
     /// Returns a CheckIterator which contains the check which comply
@@ -458,16 +850,20 @@ impl CheckIterator {
     /// Each Check which complies is entirely taken
     pub fn extract_charptr_int_checkstatus(
         &self,
-        mess: &str,
+        mess: *const std::ffi::c_char,
         incl: i32,
         status: crate::interface::CheckStatus,
-    ) -> cxx::UniquePtr<crate::ffi::Interface_CheckIterator> {
-        crate::ffi::Interface_CheckIterator_extract_charptr_int_checkstatus(
-            self,
-            mess,
-            incl,
-            status.into(),
-        )
+    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Interface_CheckIterator_extract_charptr_int_checkstatus(
+                    self as *const Self,
+                    mess,
+                    incl,
+                    status.into(),
+                ),
+            )
+        }
     }
 
     /// Removes the messages of all Checks, under these conditions :
@@ -479,12 +875,14 @@ impl CheckIterator {
     /// other values are ignored (nothing is done)
     /// Returns True if at least one message has been removed, False else
     pub fn remove(
-        self: std::pin::Pin<&mut Self>,
-        mess: &str,
+        &mut self,
+        mess: *const std::ffi::c_char,
         incl: i32,
         status: crate::interface::CheckStatus,
     ) -> bool {
-        crate::ffi::Interface_CheckIterator_remove(self, mess, incl, status.into())
+        unsafe {
+            crate::ffi::Interface_CheckIterator_remove(self as *mut Self, mess, incl, status.into())
+        }
     }
 
     /// Returns the list of entities concerned by a Check
@@ -495,8 +893,50 @@ impl CheckIterator {
         &self,
         failsonly: bool,
         global: bool,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        crate::ffi::Interface_CheckIterator_checkeds(self, failsonly, global)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_CheckIterator_checkeds(
+                self as *const Self,
+                failsonly,
+                global,
+            ))
+        }
+    }
+
+    /// Starts Iteration. Thus, it is possible to restart it
+    /// Remark : an iteration may be done with a const Iterator
+    /// While its content is modified (through a pointer), this allows
+    /// to give it as a const argument to a function
+    pub fn start(&self) {
+        unsafe { crate::ffi::Interface_CheckIterator_start(self as *const Self) }
+    }
+
+    /// Returns True if there are more Checks to get
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::Interface_CheckIterator_more(self as *const Self) }
+    }
+
+    /// Sets Iteration to next Item
+    pub fn next(&self) {
+        unsafe { crate::ffi::Interface_CheckIterator_next(self as *const Self) }
+    }
+
+    /// Returns Check currently Iterated
+    /// It brings all other information (status, messages, ...)
+    /// The Number of the Entity in the Model is given by Number below
+    pub fn value(&self) -> &crate::ffi::HandleInterfaceCheck {
+        unsafe { &*(crate::ffi::Interface_CheckIterator_value(self as *const Self)) }
+    }
+
+    /// Returns Number of Entity for the Check currently iterated
+    /// or 0 for GlobalCheck
+    pub fn number(&self) -> i32 {
+        unsafe { crate::ffi::Interface_CheckIterator_number(self as *const Self) }
+    }
+
+    /// Clears data of iteration
+    pub fn destroy(&mut self) {
+        unsafe { crate::ffi::Interface_CheckIterator_destroy(self as *mut Self) }
     }
 }
 
@@ -523,10 +963,41 @@ impl CheckIterator {
 /// criterium used for "End of List"
 pub use crate::ffi::Interface_EntityList as EntityList;
 
+unsafe impl crate::CppDeletable for EntityList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_EntityList_destructor(ptr);
+    }
+}
+
 impl EntityList {
     /// Creates a List as being empty
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_EntityList_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_EntityList_ctor()) }
+    }
+
+    /// Clears the List
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Interface_EntityList_clear(self as *mut Self) }
+    }
+
+    /// Removes an Entity from the list, given its rank
+    pub fn remove(&mut self, num: i32) {
+        unsafe { crate::ffi::Interface_EntityList_remove(self as *mut Self, num) }
+    }
+
+    /// Returns True if the list is empty
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::Interface_EntityList_is_empty(self as *const Self) }
+    }
+
+    /// Returns count of recorded Entities
+    pub fn nb_entities(&self) -> i32 {
+        unsafe { crate::ffi::Interface_EntityList_nb_entities(self as *const Self) }
+    }
+
+    /// Returns count of Entities of a given Type (0 : none)
+    pub fn nb_typed_entities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+        unsafe { crate::ffi::Interface_EntityList_nb_typed_entities(self as *const Self, atype) }
     }
 }
 
@@ -536,11 +1007,46 @@ impl EntityList {
 
 pub use crate::ffi::Interface_GeneralLib as GeneralLib;
 
+unsafe impl crate::CppDeletable for GeneralLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_GeneralLib_destructor(ptr);
+    }
+}
+
 impl GeneralLib {
     /// Creates an empty Library : it will later by filled by method
     /// AddProtocol
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_GeneralLib_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_GeneralLib_ctor()) }
+    }
+
+    /// Clears the list of Modules of a library (can be used to
+    /// redefine the order of Modules before action : Clear then
+    /// refill the Library by calls to AddProtocol)
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Interface_GeneralLib_clear(self as *mut Self) }
+    }
+
+    /// Sets a library to be defined with the complete Global list
+    /// (all the couples Protocol/Modules recorded in it)
+    pub fn set_complete(&mut self) {
+        unsafe { crate::ffi::Interface_GeneralLib_set_complete(self as *mut Self) }
+    }
+
+    /// Starts Iteration on the Modules (sets it on the first one)
+    pub fn start(&mut self) {
+        unsafe { crate::ffi::Interface_GeneralLib_start(self as *mut Self) }
+    }
+
+    /// Returns True if there are more Modules to iterate on
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::Interface_GeneralLib_more(self as *const Self) }
+    }
+
+    /// Iterates by getting the next Module in the list
+    /// If there is none, the exception will be raised by Value
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::Interface_GeneralLib_next(self as *mut Self) }
     }
 }
 
@@ -569,6 +1075,12 @@ impl GeneralLib {
 /// be changed or reset (i.e. to come back to standard answer)
 pub use crate::ffi::Interface_Graph as Graph;
 
+unsafe impl crate::CppDeletable for Graph {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_Graph_destructor(ptr);
+    }
+}
+
 impl Graph {
     /// Creates an empty graph, ready to receive Entities from amodel
     /// Note that this way of Creation allows <me> to verify that
@@ -579,20 +1091,31 @@ impl Graph {
         amodel: &crate::ffi::HandleInterfaceInterfaceModel,
         lib: &crate::ffi::Interface_GeneralLib,
         theModeStats: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_Graph_ctor_handleinterfaceinterfacemodel_generallib_bool(
-            amodel,
-            lib,
-            theModeStats,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Interface_Graph_ctor_handleinterfaceinterfacemodel_generallib_bool(
+                    amodel,
+                    lib,
+                    theModeStats,
+                ),
+            )
+        }
     }
 
     /// Same a above but works with the Protocol recorded in the Model
     pub fn new_handleinterfaceinterfacemodel_bool(
         amodel: &crate::ffi::HandleInterfaceInterfaceModel,
         theModeStats: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_Graph_ctor_handleinterfaceinterfacemodel_bool(amodel, theModeStats)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Interface_Graph_ctor_handleinterfaceinterfacemodel_bool(
+                    amodel,
+                    theModeStats,
+                ),
+            )
+        }
     }
 
     /// Creates a Graph from another one, getting all its data
@@ -601,8 +1124,10 @@ impl Graph {
     pub fn new_graph_bool(
         agraph: &crate::ffi::Interface_Graph,
         copied: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_Graph_ctor_graph_bool(agraph, copied)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_Graph_ctor_graph_bool(agraph, copied))
+        }
     }
 
     /// Creates an empty graph, ready to receive Entities from amodel
@@ -613,22 +1138,119 @@ impl Graph {
     pub fn new_handleinterfaceinterfacemodel_generallib(
         amodel: &crate::ffi::HandleInterfaceInterfaceModel,
         lib: &crate::ffi::Interface_GeneralLib,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_generallib_bool(amodel, lib, true)
     }
 
     /// Same a above but works with the Protocol recorded in the Model
     pub fn new_handleinterfaceinterfacemodel(
         amodel: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_bool(amodel, true)
     }
 
     /// Creates a Graph from another one, getting all its data
     /// Remark that status are copied from <agraph>, but the other
     /// lists (sharing/shared) are copied only if <copied> = True
-    pub fn new_graph(agraph: &crate::ffi::Interface_Graph) -> cxx::UniquePtr<Self> {
+    pub fn new_graph(agraph: &crate::ffi::Interface_Graph) -> crate::OwnedPtr<Self> {
         Self::new_graph_bool(agraph, false)
+    }
+
+    /// Erases data, making graph ready to rebegin from void
+    /// (also resets Shared lists redefinitions)
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::Interface_Graph_reset(self as *mut Self) }
+    }
+
+    /// Erases Status (Values and Flags of Presence), making graph
+    /// ready to rebegin from void. Does not concerns Shared lists
+    pub fn reset_status(&mut self) {
+        unsafe { crate::ffi::Interface_Graph_reset_status(self as *mut Self) }
+    }
+
+    /// Returns size (max nb of entities, i.e. Model's nb of entities)
+    pub fn size(&self) -> i32 {
+        unsafe { crate::ffi::Interface_Graph_size(self as *const Self) }
+    }
+
+    /// Returns size of array of statuses
+    pub fn nb_statuses(&self) -> i32 {
+        unsafe { crate::ffi::Interface_Graph_nb_statuses(self as *const Self) }
+    }
+
+    /// Returns True if an Entity is noted as present in the graph
+    /// (See methods Get... which determine this status)
+    /// Returns False if <num> is out of range too
+    pub fn is_present(&self, num: i32) -> bool {
+        unsafe { crate::ffi::Interface_Graph_is_present(self as *const Self, num) }
+    }
+
+    /// Returns Status associated to a numero (only to read it)
+    pub fn status(&self, num: i32) -> i32 {
+        unsafe { crate::ffi::Interface_Graph_status(self as *const Self, num) }
+    }
+
+    /// Modifies Status associated to a numero
+    pub fn set_status(&mut self, num: i32, stat: i32) {
+        unsafe { crate::ffi::Interface_Graph_set_status(self as *mut Self, num, stat) }
+    }
+
+    /// Clears Entity and sets Status to 0, for a numero
+    pub fn remove_item(&mut self, num: i32) {
+        unsafe { crate::ffi::Interface_Graph_remove_item(self as *mut Self, num) }
+    }
+
+    /// Changes all status which value is oldstat to new value newstat
+    pub fn change_status(&mut self, oldstat: i32, newstat: i32) {
+        unsafe { crate::ffi::Interface_Graph_change_status(self as *mut Self, oldstat, newstat) }
+    }
+
+    /// Removes all items of which status has a given value stat
+    pub fn remove_status(&mut self, stat: i32) {
+        unsafe { crate::ffi::Interface_Graph_remove_status(self as *mut Self, stat) }
+    }
+
+    /// Returns the Bit Map in order to read or edit flag values
+    pub fn bit_map(&self) -> &crate::ffi::Interface_BitMap {
+        unsafe { &*(crate::ffi::Interface_Graph_bit_map(self as *const Self)) }
+    }
+
+    /// Returns the Bit Map in order to edit it (add new flags)
+    pub fn c_bit_map(&mut self) -> &mut crate::ffi::Interface_BitMap {
+        unsafe { &mut *(crate::ffi::Interface_Graph_c_bit_map(self as *mut Self)) }
+    }
+
+    /// Returns the Model with which this Graph was created
+    pub fn model(&self) -> &crate::ffi::HandleInterfaceInterfaceModel {
+        unsafe { &*(crate::ffi::Interface_Graph_model(self as *const Self)) }
+    }
+
+    /// Loads Graph with all Entities contained in the Model
+    pub fn get_from_model(&mut self) {
+        unsafe { crate::ffi::Interface_Graph_get_from_model(self as *mut Self) }
+    }
+
+    /// Gets all present items from another graph
+    pub fn get_from_graph_graph(&mut self, agraph: &crate::ffi::Interface_Graph) {
+        unsafe { crate::ffi::Interface_Graph_get_from_graph_graph(self as *mut Self, agraph) }
+    }
+
+    /// Gets items from another graph which have a specific Status
+    pub fn get_from_graph_graph_int(&mut self, agraph: &crate::ffi::Interface_Graph, stat: i32) {
+        unsafe {
+            crate::ffi::Interface_Graph_get_from_graph_graph_int(self as *mut Self, agraph, stat)
+        }
+    }
+
+    /// Returns the Table of Sharing lists. Used to Create
+    /// another Graph from <me>
+    pub fn sharing_table(&self) -> &crate::ffi::HandleTColStdHArray1OfListOfInteger {
+        unsafe { &*(crate::ffi::Interface_Graph_sharing_table(self as *const Self)) }
+    }
+
+    /// Returns mode responsible for computation of statuses;
+    pub fn mode_stat(&self) -> bool {
+        unsafe { crate::ffi::Interface_Graph_mode_stat(self as *const Self) }
     }
 }
 
@@ -638,50 +1260,78 @@ impl Graph {
 
 pub use crate::ffi::Interface_HArray1OfHAsciiString as HArray1OfHAsciiString;
 
+unsafe impl crate::CppDeletable for HArray1OfHAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_HArray1OfHAsciiString_destructor(ptr);
+    }
+}
+
 impl HArray1OfHAsciiString {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_HArray1OfHAsciiString_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_HArray1OfHAsciiString_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_HArray1OfHAsciiString_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_HArray1OfHAsciiString_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
     pub fn new_array1ofhasciistring(
         theOther: &crate::ffi::Interface_Array1OfHAsciiString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_HArray1OfHAsciiString_ctor_array1ofhasciistring(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Interface_HArray1OfHAsciiString_ctor_array1ofhasciistring(theOther),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Interface_HArray1OfHAsciiString_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Interface_HArray1OfHAsciiString_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_HArray1OfHAsciiString_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Interface_HArray1OfHAsciiString_get_type_descriptor()
+        unsafe { &*(crate::ffi::Interface_HArray1OfHAsciiString_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
-        crate::ffi::Interface_HArray1OfHAsciiString_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_HArray1OfHAsciiString_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleInterfaceHArray1OfHAsciiString;
 
+unsafe impl crate::CppDeletable for HandleInterfaceHArray1OfHAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleInterfaceHArray1OfHAsciiString_destructor(ptr);
+    }
+}
+
 impl HandleInterfaceHArray1OfHAsciiString {
     /// Dereference this Handle to access the underlying Interface_HArray1OfHAsciiString
     pub fn get(&self) -> &crate::ffi::Interface_HArray1OfHAsciiString {
-        crate::ffi::HandleInterfaceHArray1OfHAsciiString_get(self)
+        unsafe { &*(crate::ffi::HandleInterfaceHArray1OfHAsciiString_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Interface_HArray1OfHAsciiString
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Interface_HArray1OfHAsciiString> {
-        crate::ffi::HandleInterfaceHArray1OfHAsciiString_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Interface_HArray1OfHAsciiString {
+        unsafe {
+            &mut *(crate::ffi::HandleInterfaceHArray1OfHAsciiString_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -691,46 +1341,68 @@ impl HandleInterfaceHArray1OfHAsciiString {
 
 pub use crate::ffi::Interface_HSequenceOfCheck as HSequenceOfCheck;
 
+unsafe impl crate::CppDeletable for HSequenceOfCheck {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_HSequenceOfCheck_destructor(ptr);
+    }
+}
+
 impl HSequenceOfCheck {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_HSequenceOfCheck_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_HSequenceOfCheck_ctor()) }
     }
 
     pub fn new_sequenceofcheck(
         theOther: &crate::ffi::Interface_SequenceOfCheck,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_HSequenceOfCheck_ctor_sequenceofcheck(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_HSequenceOfCheck_ctor_sequenceofcheck(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Interface_HSequenceOfCheck_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Interface_HSequenceOfCheck_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_HSequenceOfCheck_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Interface_HSequenceOfCheck_get_type_descriptor()
+        unsafe { &*(crate::ffi::Interface_HSequenceOfCheck_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceHSequenceOfCheck> {
-        crate::ffi::Interface_HSequenceOfCheck_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHSequenceOfCheck> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_HSequenceOfCheck_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleInterfaceHSequenceOfCheck;
 
+unsafe impl crate::CppDeletable for HandleInterfaceHSequenceOfCheck {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleInterfaceHSequenceOfCheck_destructor(ptr);
+    }
+}
+
 impl HandleInterfaceHSequenceOfCheck {
     /// Dereference this Handle to access the underlying Interface_HSequenceOfCheck
     pub fn get(&self) -> &crate::ffi::Interface_HSequenceOfCheck {
-        crate::ffi::HandleInterfaceHSequenceOfCheck_get(self)
+        unsafe { &*(crate::ffi::HandleInterfaceHSequenceOfCheck_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Interface_HSequenceOfCheck
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Interface_HSequenceOfCheck> {
-        crate::ffi::HandleInterfaceHSequenceOfCheck_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Interface_HSequenceOfCheck {
+        unsafe { &mut *(crate::ffi::HandleInterfaceHSequenceOfCheck_get_mut(self as *mut Self)) }
     }
 }
 
@@ -765,15 +1437,21 @@ impl HandleInterfaceHSequenceOfCheck {
 /// edited
 pub use crate::ffi::Interface_IntList as IntList;
 
+unsafe impl crate::CppDeletable for IntList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_IntList_destructor(ptr);
+    }
+}
+
 impl IntList {
     /// Creates empty IntList.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_IntList_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_IntList_ctor()) }
     }
 
     /// Creates an IntList for <nbe> entities
-    pub fn new_int(nbe: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_IntList_ctor_int(nbe)
+    pub fn new_int(nbe: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_IntList_ctor_int(nbe)) }
     }
 
     /// Creates an IntList from another one.
@@ -782,16 +1460,121 @@ impl IntList {
     pub fn new_intlist_bool(
         other: &crate::ffi::Interface_IntList,
         copied: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Interface_IntList_ctor_intlist_bool(other, copied)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_IntList_ctor_intlist_bool(
+                other, copied,
+            ))
+        }
+    }
+
+    /// Initialize IntList by number of entities.
+    pub fn initialize(&mut self, nbe: i32) {
+        unsafe { crate::ffi::Interface_IntList_initialize(self as *mut Self, nbe) }
+    }
+
+    /// Returns internal values, used for copying
+    pub fn internals(
+        &self,
+        nbrefs: &mut i32,
+        ents: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+        refs: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+    ) {
+        unsafe { crate::ffi::Interface_IntList_internals(self as *const Self, nbrefs, ents, refs) }
+    }
+
+    /// Returns count of entities to be acknowledged
+    pub fn nb_entities(&self) -> i32 {
+        unsafe { crate::ffi::Interface_IntList_nb_entities(self as *const Self) }
+    }
+
+    /// Changes the count of entities (ignored if decreased)
+    pub fn set_nb_entities(&mut self, nbe: i32) {
+        unsafe { crate::ffi::Interface_IntList_set_nb_entities(self as *mut Self, nbe) }
+    }
+
+    /// Sets an entity number as current (for read and fill)
+    pub fn set_number(&mut self, number: i32) {
+        unsafe { crate::ffi::Interface_IntList_set_number(self as *mut Self, number) }
+    }
+
+    /// Returns the current entity number
+    pub fn number(&self) -> i32 {
+        unsafe { crate::ffi::Interface_IntList_number(self as *const Self) }
     }
 
     /// Returns an IntList, identical to <me> but set to a specified
     /// entity Number
     /// By default, not copied (in order to be read)
     /// Specified <copied> to produce another list and edit it
-    pub fn list(&self, number: i32, copied: bool) -> cxx::UniquePtr<crate::ffi::Interface_IntList> {
-        crate::ffi::Interface_IntList_list(self, number, copied)
+    pub fn list(
+        &self,
+        number: i32,
+        copied: bool,
+    ) -> crate::OwnedPtr<crate::ffi::Interface_IntList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_IntList_list(
+                self as *const Self,
+                number,
+                copied,
+            ))
+        }
+    }
+
+    /// Sets current entity list to be redefined or not
+    /// This is used in a Graph for redefinition list : it can be
+    /// disable (no redefinition, i.e. list is cleared), or enabled
+    /// (starts as empty). The original list has not to be "redefined"
+    pub fn set_redefined(&mut self, mode: bool) {
+        unsafe { crate::ffi::Interface_IntList_set_redefined(self as *mut Self, mode) }
+    }
+
+    /// Makes a reservation for <count> references to be later
+    /// attached to the current entity. If required, it increases
+    /// the size of array used to store refs. Remark that if count is
+    /// less than two, it does nothing (because immediate storing)
+    pub fn reservate(&mut self, count: i32) {
+        unsafe { crate::ffi::Interface_IntList_reservate(self as *mut Self, count) }
+    }
+
+    /// Adds a reference (as an integer value, an entity number) to
+    /// the current entity number. Zero is ignored
+    pub fn add(&mut self, ref_: i32) {
+        unsafe { crate::ffi::Interface_IntList_add(self as *mut Self, ref_) }
+    }
+
+    /// Returns the count of refs attached to current entity number
+    pub fn length(&self) -> i32 {
+        unsafe { crate::ffi::Interface_IntList_length(self as *const Self) }
+    }
+
+    /// Returns True if the list for a number
+    /// (default is taken as current) is "redefined" (useful for empty list)
+    pub fn is_redefined(&self, num: i32) -> bool {
+        unsafe { crate::ffi::Interface_IntList_is_redefined(self as *const Self, num) }
+    }
+
+    /// Returns a reference number in the list for current number,
+    /// according to its rank
+    pub fn value(&self, num: i32) -> i32 {
+        unsafe { crate::ffi::Interface_IntList_value(self as *const Self, num) }
+    }
+
+    /// Removes an item in the list for current number, given its rank
+    /// Returns True if done, False else
+    pub fn remove(&mut self, num: i32) -> bool {
+        unsafe { crate::ffi::Interface_IntList_remove(self as *mut Self, num) }
+    }
+
+    /// Clears all data, hence each entity number has an empty list
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Interface_IntList_clear(self as *mut Self) }
+    }
+
+    /// Resizes lists to exact sizes. For list of refs, a positive
+    /// margin can be added.
+    pub fn adjust_size(&mut self, margin: i32) {
+        unsafe { crate::ffi::Interface_IntList_adjust_size(self as *mut Self, margin) }
     }
 }
 
@@ -827,21 +1610,235 @@ impl IntList {
 /// See also Graph, ShareTool, CheckTool for more
 pub use crate::ffi::Interface_InterfaceModel as InterfaceModel;
 
+unsafe impl crate::CppDeletable for InterfaceModel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_InterfaceModel_destructor(ptr);
+    }
+}
+
 impl InterfaceModel {
+    /// Clears the list of entities (service WhenDelete)
+    pub fn destroy(&mut self) {
+        unsafe { crate::ffi::Interface_InterfaceModel_destroy(self as *mut Self) }
+    }
+
+    /// Returns the Dispatch Status, either for get or set
+    /// A Model which is produced from Dispatch may share entities
+    /// with the original (according to the Protocol), hence these
+    /// non-copied entities should not be deleted
+    pub fn dispatch_status(&mut self) -> &mut bool {
+        unsafe { &mut *(crate::ffi::Interface_InterfaceModel_dispatch_status(self as *mut Self)) }
+    }
+
+    /// Erases contained data; used when a Model is copied to others :
+    /// the new copied ones begin from clear
+    /// Clear calls specific method ClearHeader (see below)
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Interface_InterfaceModel_clear(self as *mut Self) }
+    }
+
+    /// Clears the entities; uses the general service WhenDelete, in
+    /// addition to the standard Memory Manager; can be redefined
+    pub fn clear_entities(&mut self) {
+        unsafe { crate::ffi::Interface_InterfaceModel_clear_entities(self as *mut Self) }
+    }
+
+    /// Erases information about labels, if any : specific to each
+    /// norm
+    pub fn clear_labels(&mut self) {
+        unsafe { crate::ffi::Interface_InterfaceModel_clear_labels(self as *mut Self) }
+    }
+
+    /// Clears Model's header : specific to each norm
+    pub fn clear_header(&mut self) {
+        unsafe { crate::ffi::Interface_InterfaceModel_clear_header(self as *mut Self) }
+    }
+
+    /// Returns count of contained Entities
+    pub fn nb_entities(&self) -> i32 {
+        unsafe { crate::ffi::Interface_InterfaceModel_nb_entities(self as *const Self) }
+    }
+
     /// Returns the State of an entity, given its number
     pub fn entity_state(&self, num: i32) -> crate::interface::DataState {
-        crate::interface::DataState::try_from(crate::ffi::Interface_InterfaceModel_entity_state(
-            self, num,
-        ))
-        .unwrap()
+        unsafe {
+            crate::interface::DataState::try_from(
+                crate::ffi::Interface_InterfaceModel_entity_state(self as *const Self, num),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Returns True if <num> identifies a ReportEntity in the Model
+    /// Hence, ReportEntity can be called.
+    ///
+    /// By default, queries main report, if <semantic> is True, it
+    /// queries report for semantic check
+    ///
+    /// Remember that a Report Entity can be defined for an Unknown
+    /// Entity, or a Corrected or Erroneous (at read time) Entity.
+    /// The ReportEntity is defined before call to method AddEntity.
+    pub fn is_report_entity(&self, num: i32, semantic: bool) -> bool {
+        unsafe {
+            crate::ffi::Interface_InterfaceModel_is_report_entity(
+                self as *const Self,
+                num,
+                semantic,
+            )
+        }
+    }
+
+    /// Returns True if <num> identifies an Error Entity : in this
+    /// case, a ReportEntity brings Fail Messages and possibly an
+    /// "undefined" Content, see IsRedefinedEntity
+    pub fn is_error_entity(&self, num: i32) -> bool {
+        unsafe { crate::ffi::Interface_InterfaceModel_is_error_entity(self as *const Self, num) }
+    }
+
+    /// Returns True if <num> identifies an Entity which content is
+    /// redefined through a ReportEntity (i.e. with literal data only)
+    /// This happens when an entity is syntactically erroneous in the
+    /// way that its basic content remains empty.
+    /// For more details (such as content itself), see ReportEntity
+    pub fn is_redefined_content(&self, num: i32) -> bool {
+        unsafe {
+            crate::ffi::Interface_InterfaceModel_is_redefined_content(self as *const Self, num)
+        }
+    }
+
+    /// Removes the ReportEntity attached to Entity <num>. Returns
+    /// True if done, False if no ReportEntity was attached to <num>.
+    /// Warning : the caller must assume that this clearing is meaningful
+    pub fn clear_report_entity(&mut self, num: i32) -> bool {
+        unsafe { crate::ffi::Interface_InterfaceModel_clear_report_entity(self as *mut Self, num) }
+    }
+
+    /// Returns True if <num> identifies an Unknown Entity : in this
+    /// case, a ReportEntity with no Check Messages designates it.
+    pub fn is_unknown_entity(&self, num: i32) -> bool {
+        unsafe { crate::ffi::Interface_InterfaceModel_is_unknown_entity(self as *const Self, num) }
+    }
+
+    /// Fills the list of semantic checks.
+    /// This list is computed (by CheckTool). Hence, it can be stored
+    /// in the model for later queries
+    /// <clear> True (D) : new list replaces
+    /// <clear> False    : new list is cumulated
+    pub fn fill_semantic_checks(
+        &mut self,
+        checks: &crate::ffi::Interface_CheckIterator,
+        clear: bool,
+    ) {
+        unsafe {
+            crate::ffi::Interface_InterfaceModel_fill_semantic_checks(
+                self as *mut Self,
+                checks,
+                clear,
+            )
+        }
+    }
+
+    /// Returns True if semantic checks have been filled
+    pub fn has_semantic_checks(&self) -> bool {
+        unsafe { crate::ffi::Interface_InterfaceModel_has_semantic_checks(self as *const Self) }
+    }
+
+    /// Returns the check attached to an entity, designated by its
+    /// Number. 0 for global check
+    /// <semantic> True  : recorded semantic check
+    /// <semantic> False : recorded syntactic check (see ReportEntity)
+    /// If no check is recorded for <num>, returns an empty Check
+    pub fn check(&self, num: i32, syntactic: bool) -> &crate::ffi::HandleInterfaceCheck {
+        unsafe {
+            &*(crate::ffi::Interface_InterfaceModel_check(self as *const Self, num, syntactic))
+        }
+    }
+
+    /// Does a reservation for the List of Entities (for optimized
+    /// storage management). If it is not called, storage management
+    /// can be less efficient. <nbent> is the expected count of
+    /// Entities to store
+    pub fn reservate(&mut self, nbent: i32) {
+        unsafe { crate::ffi::Interface_InterfaceModel_reservate(self as *mut Self, nbent) }
+    }
+
+    /// Reverses the Numbers of the Entities, between <after> and the
+    /// total count of Entities. Thus, the entities :
+    /// 1,2 ... after, after+1 ... nb-1, nb  become numbered as :
+    /// 1,2 ... after, nb, nb-1 ... after+1
+    /// By default (after = 0) the whole list of Entities is reversed
+    pub fn reverse_orders(&mut self, after: i32) {
+        unsafe { crate::ffi::Interface_InterfaceModel_reverse_orders(self as *mut Self, after) }
+    }
+
+    /// Changes the Numbers of some Entities : <oldnum> is moved to
+    /// <newnum>, same for <count> entities. Thus :
+    /// 1,2 ... newnum-1 newnum ... oldnum .. oldnum+count oldnum+count+1 .. gives
+    /// 1,2 ... newnum-1 oldnum .. oldnum+count newnum ... oldnum+count+1
+    /// (can be seen as a circular permutation)
+    pub fn change_order(&mut self, oldnum: i32, newnum: i32, count: i32) {
+        unsafe {
+            crate::ffi::Interface_InterfaceModel_change_order(
+                self as *mut Self,
+                oldnum,
+                newnum,
+                count,
+            )
+        }
+    }
+
+    /// Gets header (data specific of a defined Interface) from
+    /// another InterfaceModel; called from TransferCopy
+    pub fn get_from_another(&mut self, other: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe { crate::ffi::Interface_InterfaceModel_get_from_another(self as *mut Self, other) }
     }
 
     /// Returns a New Empty Model, same type as <me> (whatever its
     /// Type); called to Copy parts a Model into other ones, then
     /// followed by a call to GetFromAnother (Header) then filling
     /// with specified Entities, themselves copied
-    pub fn new_empty_model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::Interface_InterfaceModel_new_empty_model(self)
+    pub fn new_empty_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_InterfaceModel_new_empty_model(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Records a category number for an entity number
+    /// Returns True when done, False if <num> is out of range
+    pub fn set_category_number(&mut self, num: i32, val: i32) -> bool {
+        unsafe {
+            crate::ffi::Interface_InterfaceModel_set_category_number(self as *mut Self, num, val)
+        }
+    }
+
+    /// Returns the recorded category number for a given entity number
+    /// 0 if none was defined for this entity
+    pub fn category_number(&self, num: i32) -> i32 {
+        unsafe { crate::ffi::Interface_InterfaceModel_category_number(self as *const Self, num) }
+    }
+
+    /// Returns the GlobalCheck, which memorizes messages global to
+    /// the file (not specific to an Entity), especially Header
+    pub fn global_check(&self, syntactic: bool) -> &crate::ffi::HandleInterfaceCheck {
+        unsafe {
+            &*(crate::ffi::Interface_InterfaceModel_global_check(self as *const Self, syntactic))
+        }
+    }
+
+    /// Allows to modify GlobalCheck, after getting then completing it
+    /// Remark : it is SYNTACTIC check. Semantics, see FillChecks
+    pub fn set_global_check(&mut self, ach: &crate::ffi::HandleInterfaceCheck) {
+        unsafe { crate::ffi::Interface_InterfaceModel_set_global_check(self as *mut Self, ach) }
+    }
+
+    /// Minimum Semantic Global Check on data in model (header)
+    /// Can only check basic Data. See also GlobalCheck from Protocol
+    /// for a check which takes the Graph into account
+    /// Default does nothing, can be redefined
+    pub fn verify_check(&self, ach: &mut crate::ffi::HandleInterfaceCheck) {
+        unsafe { crate::ffi::Interface_InterfaceModel_verify_check(self as *const Self, ach) }
     }
 
     /// Searches a label which matches with one entity.
@@ -854,61 +1851,86 @@ impl InterfaceModel {
     ///
     /// This method is virtual, hence it can be redefined for a more
     /// efficient search (if exact is true).
-    pub fn next_number_for_label(&self, label: &str, lastnum: i32, exact: bool) -> i32 {
-        crate::ffi::Interface_InterfaceModel_next_number_for_label(self, label, lastnum, exact)
+    pub fn next_number_for_label(
+        &self,
+        label: *const std::ffi::c_char,
+        lastnum: i32,
+        exact: bool,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::Interface_InterfaceModel_next_number_for_label(
+                self as *const Self,
+                label,
+                lastnum,
+                exact,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Interface_InterfaceModel_dynamic_type(self as *const Self)) }
     }
 
     /// From a CDL Type Name, returns the Class part (package dropped)
     /// WARNING : buffered, to be immediately copied or printed
-    pub fn class_name(typnam: &str) -> String {
-        crate::ffi::Interface_InterfaceModel_class_name(typnam)
+    pub fn class_name(typnam: *const std::ffi::c_char) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_InterfaceModel_class_name(typnam) }
     }
 
     /// Returns true if a template is attached to a given name
-    pub fn has_template(name: &str) -> bool {
-        crate::ffi::Interface_InterfaceModel_has_template(name)
+    pub fn has_template(name: *const std::ffi::c_char) -> bool {
+        unsafe { crate::ffi::Interface_InterfaceModel_has_template(name) }
     }
 
     /// Returns the template model attached to a name, or a Null Handle
-    pub fn template(name: &str) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::Interface_InterfaceModel_template(name)
+    pub fn template(
+        name: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_InterfaceModel_template(name)) }
     }
 
     /// Records a new template model with a name. If the name was
     /// already recorded, the corresponding template is replaced by
     /// the new one. Then, WARNING : test HasTemplate to avoid
     /// surprises
-    pub fn set_template(name: &str, model: &crate::ffi::HandleInterfaceInterfaceModel) -> bool {
-        crate::ffi::Interface_InterfaceModel_set_template(name, model)
+    pub fn set_template(
+        name: *const std::ffi::c_char,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::Interface_InterfaceModel_set_template(name, model) }
     }
 
     /// Returns the complete list of names attached to template models
-    pub fn list_templates() -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
-        crate::ffi::Interface_InterfaceModel_list_templates()
+    pub fn list_templates() -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_InterfaceModel_list_templates()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Interface_InterfaceModel_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_InterfaceModel_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Interface_InterfaceModel_get_type_descriptor()
+        unsafe { &*(crate::ffi::Interface_InterfaceModel_get_type_descriptor()) }
     }
 }
 
 pub use crate::ffi::HandleInterfaceInterfaceModel;
 
+unsafe impl crate::CppDeletable for HandleInterfaceInterfaceModel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleInterfaceInterfaceModel_destructor(ptr);
+    }
+}
+
 impl HandleInterfaceInterfaceModel {
     /// Dereference this Handle to access the underlying Interface_InterfaceModel
     pub fn get(&self) -> &crate::ffi::Interface_InterfaceModel {
-        crate::ffi::HandleInterfaceInterfaceModel_get(self)
+        unsafe { &*(crate::ffi::HandleInterfaceInterfaceModel_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Interface_InterfaceModel
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Interface_InterfaceModel> {
-        crate::ffi::HandleInterfaceInterfaceModel_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Interface_InterfaceModel {
+        unsafe { &mut *(crate::ffi::HandleInterfaceInterfaceModel_get_mut(self as *mut Self)) }
     }
 }
 
@@ -921,31 +1943,41 @@ impl HandleInterfaceInterfaceModel {
 /// It can be used for other classes (general signatures ...)
 pub use crate::ffi::Interface_SignType as SignType;
 
+unsafe impl crate::CppDeletable for SignType {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_SignType_destructor(ptr);
+    }
+}
+
 impl SignType {
-    /// From a CDL Type Name, returns the Class part (package dropped)
-    /// WARNING : buffered, to be immediately copied or printed
-    pub fn class_name(typnam: &str) -> String {
-        crate::ffi::Interface_SignType_class_name(typnam)
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Interface_SignType_dynamic_type(self as *const Self)) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Interface_SignType_get_type_name()
+    /// From a CDL Type Name, returns the Class part (package dropped)
+    /// WARNING : buffered, to be immediately copied or printed
+    pub fn class_name(typnam: *const std::ffi::c_char) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_SignType_class_name(typnam) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Interface_SignType_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Interface_SignType_get_type_descriptor()
+        unsafe { &*(crate::ffi::Interface_SignType_get_type_descriptor()) }
     }
 
     /// Upcast to MoniTool_SignText
     pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
-        crate::ffi::Interface_SignType_as_MoniTool_SignText(self)
+        unsafe { &*(crate::ffi::Interface_SignType_as_MoniTool_SignText(self as *const Self)) }
     }
 
     /// Upcast to MoniTool_SignText (mutable)
-    pub fn as_moni_tool_sign_text_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::moni_tool::SignText> {
-        crate::ffi::Interface_SignType_as_MoniTool_SignText_mut(self)
+    pub fn as_moni_tool_sign_text_mut(&mut self) -> &mut crate::moni_tool::SignText {
+        unsafe {
+            &mut *(crate::ffi::Interface_SignType_as_MoniTool_SignText_mut(self as *mut Self))
+        }
     }
 }
 

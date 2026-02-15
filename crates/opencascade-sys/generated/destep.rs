@@ -12,8 +12,24 @@
 
 pub use crate::ffi::DESTEP_Parameters as Parameters;
 
+unsafe impl crate::CppDeletable for Parameters {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DESTEP_Parameters_destructor(ptr);
+    }
+}
+
 impl Parameters {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::DESTEP_Parameters_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Parameters_ctor()) }
+    }
+
+    /// Initialize parameters
+    pub fn init_from_static(&mut self) {
+        unsafe { crate::ffi::DESTEP_Parameters_init_from_static(self as *mut Self) }
+    }
+
+    /// Reset used parameters
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::DESTEP_Parameters_reset(self as *mut Self) }
     }
 }

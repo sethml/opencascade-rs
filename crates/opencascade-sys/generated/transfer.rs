@@ -78,57 +78,85 @@ impl TryFrom<i32> for StatusExec {
 /// a user. To be interpreted for each norm
 pub use crate::ffi::Transfer_ActorOfFinderProcess as ActorOfFinderProcess;
 
+unsafe impl crate::CppDeletable for ActorOfFinderProcess {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Transfer_ActorOfFinderProcess_destructor(ptr);
+    }
+}
+
 impl ActorOfFinderProcess {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Transfer_ActorOfFinderProcess_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Transfer_ActorOfFinderProcess_get_type_name()
+    /// Returns the Transfer Mode, modifiable
+    pub fn mode_trans(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::Transfer_ActorOfFinderProcess_mode_trans(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Transfer_ActorOfFinderProcess_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Transfer_ActorOfFinderProcess_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Transfer_ActorOfFinderProcess_get_type_descriptor()
+        unsafe { &*(crate::ffi::Transfer_ActorOfFinderProcess_get_type_descriptor()) }
     }
 
     /// Upcast to Transfer_ActorOfProcessForFinder
     pub fn as_actor_of_process_for_finder(&self) -> &ActorOfProcessForFinder {
-        crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder(self)
+        unsafe {
+            &*(crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfProcessForFinder (mutable)
-    pub fn as_actor_of_process_for_finder_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut ActorOfProcessForFinder> {
-        crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder_mut(self)
+    pub fn as_actor_of_process_for_finder_mut(&mut self) -> &mut ActorOfProcessForFinder {
+        unsafe {
+            &mut *(crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: NullResult()
-    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
-        crate::ffi::Transfer_ActorOfFinderProcess_inherited_NullResult(self)
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Transfer_ActorOfFinderProcess_inherited_NullResult(self as *const Self),
+            )
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: SetLast()
-    pub fn set_last(self: std::pin::Pin<&mut Self>, mode: bool) {
-        crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetLast(self, mode)
+    pub fn set_last(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetLast(self as *mut Self, mode)
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: IsLast()
     pub fn is_last(&self) -> bool {
-        crate::ffi::Transfer_ActorOfFinderProcess_inherited_IsLast(self)
+        unsafe { crate::ffi::Transfer_ActorOfFinderProcess_inherited_IsLast(self as *const Self) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: SetNext()
-    pub fn set_next(
-        self: std::pin::Pin<&mut Self>,
-        next: &crate::ffi::HandleTransferActorOfProcessForFinder,
-    ) {
-        crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetNext(self, next)
+    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
+        unsafe {
+            crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetNext(self as *mut Self, next)
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: Next()
-    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        crate::ffi::Transfer_ActorOfFinderProcess_inherited_Next(self)
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_inherited_Next(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -138,50 +166,103 @@ impl ActorOfFinderProcess {
 
 pub use crate::ffi::Transfer_ActorOfProcessForFinder as ActorOfProcessForFinder;
 
+unsafe impl crate::CppDeletable for ActorOfProcessForFinder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Transfer_ActorOfProcessForFinder_destructor(ptr);
+    }
+}
+
 impl ActorOfProcessForFinder {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Transfer_ActorOfProcessForFinder_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_ctor()) }
     }
 
     /// Returns a Binder for No Result, i.e. a Null Handle
-    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
-        crate::ffi::Transfer_ActorOfProcessForFinder_null_result(self)
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_null_result(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// If <mode> is True, commands an Actor to be set at the
+    /// end of the list of Actors (see SetNext)
+    /// If it is False (creation default), each add Actor is
+    /// set at the beginning of the list
+    /// This allows to define default Actors (which are Last)
+    pub fn set_last(&mut self, mode: bool) {
+        unsafe { crate::ffi::Transfer_ActorOfProcessForFinder_set_last(self as *mut Self, mode) }
+    }
+
+    /// Returns the Last status (see SetLast).
+    pub fn is_last(&self) -> bool {
+        unsafe { crate::ffi::Transfer_ActorOfProcessForFinder_is_last(self as *const Self) }
+    }
+
+    /// Defines a Next Actor : it can then be asked to work if
+    /// <me> produces no result for a given type of Object.
+    /// If Next is already set and is not "Last", calls
+    /// SetNext on it. If Next defined and "Last", the new
+    /// actor is added before it in the list
+    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
+        unsafe { crate::ffi::Transfer_ActorOfProcessForFinder_set_next(self as *mut Self, next) }
     }
 
     /// Returns the Actor defined as Next, or a Null Handle
-    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        crate::ffi::Transfer_ActorOfProcessForFinder_next(self)
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_next(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Transfer_ActorOfProcessForFinder_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::Transfer_ActorOfProcessForFinder_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Transfer_ActorOfProcessForFinder_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Transfer_ActorOfProcessForFinder_get_type_descriptor()
+        unsafe { &*(crate::ffi::Transfer_ActorOfProcessForFinder_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        crate::ffi::Transfer_ActorOfProcessForFinder_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTransferActorOfProcessForFinder;
 
+unsafe impl crate::CppDeletable for HandleTransferActorOfProcessForFinder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTransferActorOfProcessForFinder_destructor(ptr);
+    }
+}
+
 impl HandleTransferActorOfProcessForFinder {
     /// Dereference this Handle to access the underlying Transfer_ActorOfProcessForFinder
     pub fn get(&self) -> &crate::ffi::Transfer_ActorOfProcessForFinder {
-        crate::ffi::HandleTransferActorOfProcessForFinder_get(self)
+        unsafe { &*(crate::ffi::HandleTransferActorOfProcessForFinder_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ActorOfProcessForFinder
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Transfer_ActorOfProcessForFinder> {
-        crate::ffi::HandleTransferActorOfProcessForFinder_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorOfProcessForFinder {
+        unsafe {
+            &mut *(crate::ffi::HandleTransferActorOfProcessForFinder_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -191,50 +272,103 @@ impl HandleTransferActorOfProcessForFinder {
 
 pub use crate::ffi::Transfer_ActorOfProcessForTransient as ActorOfProcessForTransient;
 
+unsafe impl crate::CppDeletable for ActorOfProcessForTransient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Transfer_ActorOfProcessForTransient_destructor(ptr);
+    }
+}
+
 impl ActorOfProcessForTransient {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Transfer_ActorOfProcessForTransient_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForTransient_ctor()) }
     }
 
     /// Returns a Binder for No Result, i.e. a Null Handle
-    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
-        crate::ffi::Transfer_ActorOfProcessForTransient_null_result(self)
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForTransient_null_result(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// If <mode> is True, commands an Actor to be set at the
+    /// end of the list of Actors (see SetNext)
+    /// If it is False (creation default), each add Actor is
+    /// set at the beginning of the list
+    /// This allows to define default Actors (which are Last)
+    pub fn set_last(&mut self, mode: bool) {
+        unsafe { crate::ffi::Transfer_ActorOfProcessForTransient_set_last(self as *mut Self, mode) }
+    }
+
+    /// Returns the Last status (see SetLast).
+    pub fn is_last(&self) -> bool {
+        unsafe { crate::ffi::Transfer_ActorOfProcessForTransient_is_last(self as *const Self) }
+    }
+
+    /// Defines a Next Actor : it can then be asked to work if
+    /// <me> produces no result for a given type of Object.
+    /// If Next is already set and is not "Last", calls
+    /// SetNext on it. If Next defined and "Last", the new
+    /// actor is added before it in the list
+    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+        unsafe { crate::ffi::Transfer_ActorOfProcessForTransient_set_next(self as *mut Self, next) }
     }
 
     /// Returns the Actor defined as Next, or a Null Handle
-    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
-        crate::ffi::Transfer_ActorOfProcessForTransient_next(self)
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForTransient_next(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Transfer_ActorOfProcessForTransient_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::Transfer_ActorOfProcessForTransient_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Transfer_ActorOfProcessForTransient_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Transfer_ActorOfProcessForTransient_get_type_descriptor()
+        unsafe { &*(crate::ffi::Transfer_ActorOfProcessForTransient_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
-        crate::ffi::Transfer_ActorOfProcessForTransient_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForTransient_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTransferActorOfProcessForTransient;
 
+unsafe impl crate::CppDeletable for HandleTransferActorOfProcessForTransient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTransferActorOfProcessForTransient_destructor(ptr);
+    }
+}
+
 impl HandleTransferActorOfProcessForTransient {
     /// Dereference this Handle to access the underlying Transfer_ActorOfProcessForTransient
     pub fn get(&self) -> &crate::ffi::Transfer_ActorOfProcessForTransient {
-        crate::ffi::HandleTransferActorOfProcessForTransient_get(self)
+        unsafe { &*(crate::ffi::HandleTransferActorOfProcessForTransient_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ActorOfProcessForTransient
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Transfer_ActorOfProcessForTransient> {
-        crate::ffi::HandleTransferActorOfProcessForTransient_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorOfProcessForTransient {
+        unsafe {
+            &mut *(crate::ffi::HandleTransferActorOfProcessForTransient_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -245,59 +379,86 @@ impl HandleTransferActorOfProcessForTransient {
 /// The original class was renamed. Compatibility only
 pub use crate::ffi::Transfer_ActorOfTransientProcess as ActorOfTransientProcess;
 
+unsafe impl crate::CppDeletable for ActorOfTransientProcess {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Transfer_ActorOfTransientProcess_destructor(ptr);
+    }
+}
+
 impl ActorOfTransientProcess {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Transfer_ActorOfTransientProcess_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfTransientProcess_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Transfer_ActorOfTransientProcess_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::Transfer_ActorOfTransientProcess_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Transfer_ActorOfTransientProcess_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Transfer_ActorOfTransientProcess_get_type_descriptor()
+        unsafe { &*(crate::ffi::Transfer_ActorOfTransientProcess_get_type_descriptor()) }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient
     pub fn as_actor_of_process_for_transient(&self) -> &ActorOfProcessForTransient {
-        crate::ffi::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient(self)
+        unsafe {
+            &*(crate::ffi::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient (mutable)
-    pub fn as_actor_of_process_for_transient_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut ActorOfProcessForTransient> {
-        crate::ffi::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient_mut(
-            self,
-        )
+    pub fn as_actor_of_process_for_transient_mut(&mut self) -> &mut ActorOfProcessForTransient {
+        unsafe {
+            &mut *(crate::ffi::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForTransient: NullResult()
-    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
-        crate::ffi::Transfer_ActorOfTransientProcess_inherited_NullResult(self)
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Transfer_ActorOfTransientProcess_inherited_NullResult(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForTransient: SetLast()
-    pub fn set_last(self: std::pin::Pin<&mut Self>, mode: bool) {
-        crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetLast(self, mode)
+    pub fn set_last(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetLast(self as *mut Self, mode)
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForTransient: IsLast()
     pub fn is_last(&self) -> bool {
-        crate::ffi::Transfer_ActorOfTransientProcess_inherited_IsLast(self)
+        unsafe {
+            crate::ffi::Transfer_ActorOfTransientProcess_inherited_IsLast(self as *const Self)
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForTransient: SetNext()
-    pub fn set_next(
-        self: std::pin::Pin<&mut Self>,
-        next: &crate::ffi::HandleTransferActorOfProcessForTransient,
-    ) {
-        crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetNext(self, next)
+    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+        unsafe {
+            crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetNext(self as *mut Self, next)
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForTransient: Next()
-    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
-        crate::ffi::Transfer_ActorOfTransientProcess_inherited_Next(self)
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfTransientProcess_inherited_Next(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -329,40 +490,94 @@ impl ActorOfTransientProcess {
 /// Attributes, which are additional data, each of them has a name
 pub use crate::ffi::Transfer_Binder as Binder;
 
+unsafe impl crate::CppDeletable for Binder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Transfer_Binder_destructor(ptr);
+    }
+}
+
 impl Binder {
+    /// Merges basic data (Check, ExecStatus) from another Binder but
+    /// keeps its result. Used when a binder is replaced by another
+    /// one, this allows to keep messages
+    pub fn merge(&mut self, other: &crate::ffi::HandleTransferBinder) {
+        unsafe { crate::ffi::Transfer_Binder_merge(self as *mut Self, other) }
+    }
+
+    /// Returns True if a Binder has several results, either by itself
+    /// or because it has next results
+    /// Can be defined by sub-classes.
+    pub fn is_multiple(&self) -> bool {
+        unsafe { crate::ffi::Transfer_Binder_is_multiple(self as *const Self) }
+    }
+
     /// Returns the Type which characterizes the Result (if known)
-    pub fn result_type(&self) -> cxx::UniquePtr<crate::ffi::HandleStandardType> {
-        crate::ffi::Transfer_Binder_result_type(self)
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_Binder_result_type(self as *const Self))
+        }
     }
 
     /// Returns the Name of the Type which characterizes the Result
     /// Can be returned even if ResultType itself is unknown
-    pub fn result_type_name(&self) -> String {
-        crate::ffi::Transfer_Binder_result_type_name(self)
+    pub fn result_type_name(&self) -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Transfer_Binder_result_type_name(self as *const Self) }
+    }
+
+    /// Adds a next result (at the end of the list)
+    /// Remark : this information is not processed by Merge
+    pub fn add_result(&mut self, next: &crate::ffi::HandleTransferBinder) {
+        unsafe { crate::ffi::Transfer_Binder_add_result(self as *mut Self, next) }
     }
 
     /// Returns the next result, Null if none
-    pub fn next_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
-        crate::ffi::Transfer_Binder_next_result(self)
+    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_Binder_next_result(self as *const Self))
+        }
+    }
+
+    /// Returns True if a Result is available (StatusResult = Defined)
+    /// A Unique Result will be gotten by Result (which must be
+    /// defined in each sub-class according to result type)
+    /// For a Multiple Result, see class MultipleBinder
+    /// For other case, specific access has to be forecast
+    pub fn has_result(&self) -> bool {
+        unsafe { crate::ffi::Transfer_Binder_has_result(self as *const Self) }
+    }
+
+    /// Declares that result is now used by another one, it means that
+    /// it cannot be modified (by Rebind)
+    pub fn set_already_used(&mut self) {
+        unsafe { crate::ffi::Transfer_Binder_set_already_used(self as *mut Self) }
     }
 
     /// Returns status, which can be Initial (not yet done), Made (a
     /// result is recorded, not yet shared), Used (it is shared and
     /// cannot be modified)
     pub fn status(&self) -> crate::transfer::StatusResult {
-        crate::transfer::StatusResult::try_from(crate::ffi::Transfer_Binder_status(self)).unwrap()
+        unsafe {
+            crate::transfer::StatusResult::try_from(crate::ffi::Transfer_Binder_status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Returns execution status
     pub fn status_exec(&self) -> crate::transfer::StatusExec {
-        crate::transfer::StatusExec::try_from(crate::ffi::Transfer_Binder_status_exec(self))
+        unsafe {
+            crate::transfer::StatusExec::try_from(crate::ffi::Transfer_Binder_status_exec(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Modifies execution status; called by TransferProcess only
     /// (for StatusError, rather use SetError, below)
-    pub fn set_status_exec(self: std::pin::Pin<&mut Self>, stat: crate::transfer::StatusExec) {
-        crate::ffi::Transfer_Binder_set_status_exec(self, stat.into())
+    pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
+        unsafe { crate::ffi::Transfer_Binder_set_status_exec(self as *mut Self, stat.into()) }
     }
 
     /// Used to declare an individual transfer as being erroneous
@@ -373,52 +588,58 @@ impl Binder {
     /// It has same effect for TransferProcess as raising an exception
     /// during the operation of Transfer, except the Transfer tries to
     /// continue (as if ErrorHandle had been set)
-    pub fn add_fail(self: std::pin::Pin<&mut Self>, mess: &str, orig: &str) {
-        crate::ffi::Transfer_Binder_add_fail(self, mess, orig)
+    pub fn add_fail(&mut self, mess: *const std::ffi::c_char, orig: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Transfer_Binder_add_fail(self as *mut Self, mess, orig) }
     }
 
     /// Used to attach a Warning Message to an individual Transfer
     /// It has no effect on the Status
-    pub fn add_warning(self: std::pin::Pin<&mut Self>, mess: &str, orig: &str) {
-        crate::ffi::Transfer_Binder_add_warning(self, mess, orig)
+    pub fn add_warning(&mut self, mess: *const std::ffi::c_char, orig: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Transfer_Binder_add_warning(self as *mut Self, mess, orig) }
     }
 
     /// Returns Check which stores Fail messages
     /// Note that no Entity is associated in this Check
-    pub fn check(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceCheck> {
-        crate::ffi::Transfer_Binder_check(self)
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_Binder_check(self as *const Self)) }
     }
 
     /// Returns Check which stores Fail messages, in order to modify
     /// it (adding messages, or replacing it)
-    pub fn c_check(
-        self: std::pin::Pin<&mut Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceCheck> {
-        crate::ffi::Transfer_Binder_c_check(self)
+    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_Binder_c_check(self as *mut Self)) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Transfer_Binder_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Transfer_Binder_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Transfer_Binder_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Transfer_Binder_get_type_descriptor()
+        unsafe { &*(crate::ffi::Transfer_Binder_get_type_descriptor()) }
     }
 }
 
 pub use crate::ffi::HandleTransferBinder;
 
+unsafe impl crate::CppDeletable for HandleTransferBinder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTransferBinder_destructor(ptr);
+    }
+}
+
 impl HandleTransferBinder {
     /// Dereference this Handle to access the underlying Transfer_Binder
     pub fn get(&self) -> &crate::ffi::Transfer_Binder {
-        crate::ffi::HandleTransferBinder_get(self)
+        unsafe { &*(crate::ffi::HandleTransferBinder_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_Binder
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Transfer_Binder> {
-        crate::ffi::HandleTransferBinder_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_Binder {
+        unsafe { &mut *(crate::ffi::HandleTransferBinder_get_mut(self as *mut Self)) }
     }
 }
 

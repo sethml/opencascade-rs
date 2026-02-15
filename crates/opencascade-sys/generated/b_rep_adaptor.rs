@@ -22,17 +22,28 @@
 /// connected to each other to make a chain.
 pub use crate::ffi::BRepAdaptor_CompCurve as CompCurve;
 
+unsafe impl crate::CppDeletable for CompCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAdaptor_CompCurve_destructor(ptr);
+    }
+}
+
 impl CompCurve {
     /// Creates an undefined Curve with no Wire loaded.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_CompCurve_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_ctor()) }
     }
 
     pub fn new_wire_bool(
         W: &crate::ffi::TopoDS_Wire,
         KnotByCurvilinearAbcissa: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_CompCurve_ctor_wire_bool(W, KnotByCurvilinearAbcissa)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_ctor_wire_bool(
+                W,
+                KnotByCurvilinearAbcissa,
+            ))
+        }
     }
 
     /// Creates a Curve  to  access the geometry of edge
@@ -43,34 +54,103 @@ impl CompCurve {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_CompCurve_ctor_wire_bool_real3(
-            W,
-            KnotByCurvilinearAbcissa,
-            First,
-            Last,
-            Tol,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_ctor_wire_bool_real3(
+                W,
+                KnotByCurvilinearAbcissa,
+                First,
+                Last,
+                Tol,
+            ))
+        }
     }
 
-    pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
+    pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
         Self::new_wire_bool(W, false)
     }
 
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepAdaptor_CompCurve_dynamic_type(self as *const Self)) }
+    }
+
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
-        crate::ffi::BRepAdaptor_CompCurve_shallow_copy(self)
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_shallow_copy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Sets the  wire <W>.
+    pub fn initialize_wire_bool(
+        &mut self,
+        W: &crate::ffi::TopoDS_Wire,
+        KnotByCurvilinearAbcissa: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_initialize_wire_bool(
+                self as *mut Self,
+                W,
+                KnotByCurvilinearAbcissa,
+            )
+        }
+    }
+
+    /// Sets wire <W> and trimmed  parameter.
+    pub fn initialize_wire_bool_real3(
+        &mut self,
+        W: &crate::ffi::TopoDS_Wire,
+        KnotByCurvilinearAbcissa: bool,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepAdaptor_CompCurve_initialize_wire_bool_real3(
+                self as *mut Self,
+                W,
+                KnotByCurvilinearAbcissa,
+                First,
+                Last,
+                Tol,
+            )
+        }
+    }
+
+    /// Returns the wire.
+    pub fn wire(&self) -> &crate::ffi::TopoDS_Wire {
+        unsafe { &*(crate::ffi::BRepAdaptor_CompCurve_wire(self as *const Self)) }
+    }
+
+    /// returns an  edge  and   one  parameter on them
+    /// corresponding to the parameter U.
+    pub fn edge(&self, U: f64, E: &mut crate::ffi::TopoDS_Edge, UonE: &mut f64) {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_edge(self as *const Self, U, E, UonE) }
+    }
+
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_first_parameter(self as *const Self) }
+    }
+
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_last_parameter(self as *const Self) }
     }
 
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_CompCurve_continuity(self))
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_CompCurve_continuity(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::BRepAdaptor_CompCurve_nb_intervals(self, S.into())
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_nb_intervals(self as *const Self, S.into()) }
     }
 
     /// Returns    a  curve equivalent   of  <me>  between
@@ -82,13 +162,79 @@ impl CompCurve {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
-        crate::ffi::BRepAdaptor_CompCurve_trim(self, First, Last, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            ))
+        }
+    }
+
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_is_closed(self as *const Self) }
+    }
+
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_is_periodic(self as *const Self) }
+    }
+
+    pub fn period(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_period(self as *const Self) }
     }
 
     /// Computes the point of parameter U on the curve
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepAdaptor_CompCurve_value(self, U)
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_value(
+                self as *const Self,
+                U,
+            ))
+        }
+    }
+
+    /// Computes the point of parameter U.
+    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_d0(self as *const Self, U, P) }
+    }
+
+    /// Computes the point of parameter U on the curve
+    /// with its first derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C1.
+    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_d1(self as *const Self, U, P, V) }
+    }
+
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the current interval
+    /// is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        V1: &mut crate::ffi::gp_Vec,
+        V2: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_d2(self as *const Self, U, P, V1, V2) }
+    }
+
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        V1: &mut crate::ffi::gp_Vec,
+        V2: &mut crate::ffi::gp_Vec,
+        V3: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
     /// The returned vector gives the value of the derivative for the
@@ -96,66 +242,123 @@ impl CompCurve {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
-        crate::ffi::BRepAdaptor_CompCurve_dn(self, U, N)
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_dn(
+                self as *const Self,
+                U,
+                N,
+            ))
+        }
+    }
+
+    /// returns the parametric resolution
+    pub fn resolution(&self, R3d: f64) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_resolution(self as *const Self, R3d) }
     }
 
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        crate::geom_abs::CurveType::try_from(crate::ffi::BRepAdaptor_CompCurve_get_type(self))
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::BRepAdaptor_CompCurve_get_type(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
-    pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
-        crate::ffi::BRepAdaptor_CompCurve_line(self)
+    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_line(self as *const Self))
+        }
     }
 
-    pub fn circle(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
-        crate::ffi::BRepAdaptor_CompCurve_circle(self)
+    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_circle(self as *const Self))
+        }
     }
 
-    pub fn ellipse(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
-        crate::ffi::BRepAdaptor_CompCurve_ellipse(self)
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_ellipse(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn hyperbola(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
-        crate::ffi::BRepAdaptor_CompCurve_hyperbola(self)
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_hyperbola(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn parabola(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
-        crate::ffi::BRepAdaptor_CompCurve_parabola(self)
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_parabola(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierCurve> {
-        crate::ffi::BRepAdaptor_CompCurve_bezier(self)
+    pub fn degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_degree(self as *const Self) }
     }
 
-    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineCurve> {
-        crate::ffi::BRepAdaptor_CompCurve_b_spline(self)
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_is_rational(self as *const Self) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepAdaptor_CompCurve_get_type_name()
+    pub fn nb_poles(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_nb_poles(self as *const Self) }
+    }
+
+    pub fn nb_knots(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_nb_knots(self as *const Self) }
+    }
+
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_bezier(self as *const Self))
+        }
+    }
+
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_b_spline(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepAdaptor_CompCurve_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepAdaptor_CompCurve_get_type_descriptor()) }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        crate::ffi::BRepAdaptor_CompCurve_as_Adaptor3d_Curve(self)
+        unsafe { &*(crate::ffi::BRepAdaptor_CompCurve_as_Adaptor3d_Curve(self as *const Self)) }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
-    pub fn as_adaptor3d_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::adaptor3d::Curve> {
-        crate::ffi::BRepAdaptor_CompCurve_as_Adaptor3d_Curve_mut(self)
+    pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
+        unsafe {
+            &mut *(crate::ffi::BRepAdaptor_CompCurve_as_Adaptor3d_Curve_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from Adaptor3d_Curve: OffsetCurve()
-    pub fn offset_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetCurve> {
-        crate::ffi::BRepAdaptor_CompCurve_inherited_OffsetCurve(self)
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_inherited_OffsetCurve(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -177,16 +380,22 @@ impl CompCurve {
 /// an Edge and a Face.
 pub use crate::ffi::BRepAdaptor_Curve as Curve;
 
+unsafe impl crate::CppDeletable for Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAdaptor_Curve_destructor(ptr);
+    }
+}
+
 impl Curve {
     /// Creates an undefined Curve with no Edge loaded.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Curve_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_ctor()) }
     }
 
     /// Creates a Curve  to  access the geometry of edge
     /// <E>.
-    pub fn new_edge(E: &crate::ffi::TopoDS_Edge) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Curve_ctor_edge(E)
+    pub fn new_edge(E: &crate::ffi::TopoDS_Edge) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_ctor_edge(E)) }
     }
 
     /// Creates a Curve to access  the geometry  of edge
@@ -197,23 +406,105 @@ impl Curve {
     pub fn new_edge_face(
         E: &crate::ffi::TopoDS_Edge,
         F: &crate::ffi::TopoDS_Face,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Curve_ctor_edge_face(E, F)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_ctor_edge_face(E, F)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve_dynamic_type(self as *const Self)) }
     }
 
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
-        crate::ffi::BRepAdaptor_Curve_shallow_copy(self)
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_shallow_copy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Reset currently loaded curve (undone Load()).
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::BRepAdaptor_Curve_reset(self as *mut Self) }
+    }
+
+    /// Sets  the Curve <me>  to access the  geometry of
+    /// edge <E>.
+    pub fn initialize_edge(&mut self, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::BRepAdaptor_Curve_initialize_edge(self as *mut Self, E) }
+    }
+
+    /// Sets the Curve <me>  to access  the  geometry of
+    /// edge <E>.  The geometry will be computed using the
+    /// parametric curve of <E>  on the face <F>. An Error
+    /// is raised if the edge  does not  have a pcurve  on
+    /// the face.
+    pub fn initialize_edge_face(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe { crate::ffi::BRepAdaptor_Curve_initialize_edge_face(self as *mut Self, E, F) }
+    }
+
+    /// Returns the coordinate system of the curve.
+    pub fn trsf(&self) -> &crate::ffi::gp_Trsf {
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve_trsf(self as *const Self)) }
+    }
+
+    /// Returns True if the edge geometry is computed from
+    /// a 3D curve.
+    pub fn is3_d_curve(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Curve_is3_d_curve(self as *const Self) }
+    }
+
+    /// Returns True if the edge geometry is computed from
+    /// a pcurve on a surface.
+    pub fn is_curve_on_surface(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Curve_is_curve_on_surface(self as *const Self) }
+    }
+
+    /// Returns the Curve of  the  edge.
+    pub fn curve(&self) -> &crate::ffi::GeomAdaptor_Curve {
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve_curve(self as *const Self)) }
+    }
+
+    /// Returns the CurveOnSurface of the edge.
+    pub fn curve_on_surface(&self) -> &crate::ffi::Adaptor3d_CurveOnSurface {
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve_curve_on_surface(self as *const Self)) }
+    }
+
+    /// Returns the edge.
+    pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve_edge(self as *const Self)) }
+    }
+
+    /// Returns the edge tolerance.
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Curve_tolerance(self as *const Self) }
+    }
+
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Curve_first_parameter(self as *const Self) }
+    }
+
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Curve_last_parameter(self as *const Self) }
     }
 
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_Curve_continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_Curve_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::BRepAdaptor_Curve_nb_intervals(self, S.into())
+        unsafe { crate::ffi::BRepAdaptor_Curve_nb_intervals(self as *const Self, S.into()) }
     }
 
     /// Returns    a  curve equivalent   of  <me>  between
@@ -225,13 +516,76 @@ impl Curve {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
-        crate::ffi::BRepAdaptor_Curve_trim(self, First, Last, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            ))
+        }
+    }
+
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Curve_is_closed(self as *const Self) }
+    }
+
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Curve_is_periodic(self as *const Self) }
+    }
+
+    pub fn period(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Curve_period(self as *const Self) }
     }
 
     /// Computes the point of parameter U on the curve
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepAdaptor_Curve_value(self, U)
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_value(self as *const Self, U))
+        }
+    }
+
+    /// Computes the point of parameter U.
+    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::BRepAdaptor_Curve_d0(self as *const Self, U, P) }
+    }
+
+    /// Computes the point of parameter U on the curve
+    /// with its first derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C1.
+    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+        unsafe { crate::ffi::BRepAdaptor_Curve_d1(self as *const Self, U, P, V) }
+    }
+
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the current interval
+    /// is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        V1: &mut crate::ffi::gp_Vec,
+        V2: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::BRepAdaptor_Curve_d2(self as *const Self, U, P, V1, V2) }
+    }
+
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        V1: &mut crate::ffi::gp_Vec,
+        V2: &mut crate::ffi::gp_Vec,
+        V3: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::BRepAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
     /// The returned vector gives the value of the derivative for the
@@ -239,70 +593,114 @@ impl Curve {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
-        crate::ffi::BRepAdaptor_Curve_dn(self, U, N)
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_dn(self as *const Self, U, N))
+        }
+    }
+
+    /// returns the parametric resolution
+    pub fn resolution(&self, R3d: f64) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Curve_resolution(self as *const Self, R3d) }
     }
 
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        crate::geom_abs::CurveType::try_from(crate::ffi::BRepAdaptor_Curve_get_type(self)).unwrap()
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::BRepAdaptor_Curve_get_type(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
-    pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
-        crate::ffi::BRepAdaptor_Curve_line(self)
+    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_line(self as *const Self))
+        }
     }
 
-    pub fn circle(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
-        crate::ffi::BRepAdaptor_Curve_circle(self)
+    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_circle(self as *const Self))
+        }
     }
 
-    pub fn ellipse(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
-        crate::ffi::BRepAdaptor_Curve_ellipse(self)
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_ellipse(self as *const Self))
+        }
     }
 
-    pub fn hyperbola(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
-        crate::ffi::BRepAdaptor_Curve_hyperbola(self)
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_hyperbola(self as *const Self))
+        }
     }
 
-    pub fn parabola(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
-        crate::ffi::BRepAdaptor_Curve_parabola(self)
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_parabola(self as *const Self))
+        }
+    }
+
+    pub fn degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Curve_degree(self as *const Self) }
+    }
+
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Curve_is_rational(self as *const Self) }
+    }
+
+    pub fn nb_poles(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Curve_nb_poles(self as *const Self) }
+    }
+
+    pub fn nb_knots(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Curve_nb_knots(self as *const Self) }
     }
 
     /// Warning:
     /// This will make a copy of the Bezier Curve since it applies to it myTsrf.
     /// Be careful when using this method.
-    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierCurve> {
-        crate::ffi::BRepAdaptor_Curve_bezier(self)
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_bezier(self as *const Self))
+        }
     }
 
     /// Warning:
     /// This will make a copy of the BSpline Curve since it applies to it myTsrf.
     /// Be careful when using this method.
-    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineCurve> {
-        crate::ffi::BRepAdaptor_Curve_b_spline(self)
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_b_spline(self as *const Self))
+        }
     }
 
-    pub fn offset_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomOffsetCurve> {
-        crate::ffi::BRepAdaptor_Curve_offset_curve(self)
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_offset_curve(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepAdaptor_Curve_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepAdaptor_Curve_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepAdaptor_Curve_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve_get_type_descriptor()) }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve(self)
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve(self as *const Self)) }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
-    pub fn as_adaptor3d_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::adaptor3d::Curve> {
-        crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve_mut(self)
+    pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
+        unsafe { &mut *(crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve_mut(self as *mut Self)) }
     }
 }
 
@@ -322,76 +720,111 @@ impl Curve {
 /// Geom2dAdaptor.
 pub use crate::ffi::BRepAdaptor_Curve2d as Curve2d;
 
+unsafe impl crate::CppDeletable for Curve2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAdaptor_Curve2d_destructor(ptr);
+    }
+}
+
 impl Curve2d {
     /// Creates an uninitialized curve2d.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Curve2d_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_ctor()) }
     }
 
     /// Creates with the pcurve of <E> on <F>.
     pub fn new_edge_face(
         E: &crate::ffi::TopoDS_Edge,
         F: &crate::ffi::TopoDS_Face,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Curve2d_ctor_edge_face(E, F)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_ctor_edge_face(E, F)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_dynamic_type(self as *const Self)) }
     }
 
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        crate::ffi::BRepAdaptor_Curve2d_shallow_copy(self)
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_shallow_copy(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepAdaptor_Curve2d_get_type_name()
+    /// Initialize with the pcurve of <E> on <F>.
+    pub fn initialize(&mut self, E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_initialize(self as *mut Self, E, F) }
+    }
+
+    /// Returns the Edge.
+    pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_edge(self as *const Self)) }
+    }
+
+    /// Returns the Face.
+    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_face(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepAdaptor_Curve2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_get_type_descriptor()) }
     }
 
     /// Upcast to Adaptor2d_Curve2d
     pub fn as_adaptor2d_curve2d(&self) -> &crate::adaptor2d::Curve2d {
-        crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(self)
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(self as *const Self)) }
     }
 
     /// Upcast to Adaptor2d_Curve2d (mutable)
-    pub fn as_adaptor2d_curve2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::adaptor2d::Curve2d> {
-        crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(self)
+    pub fn as_adaptor2d_curve2d_mut(&mut self) -> &mut crate::adaptor2d::Curve2d {
+        unsafe {
+            &mut *(crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to Geom2dAdaptor_Curve
     pub fn as_geom2d_adaptor_curve(&self) -> &crate::geom2d_adaptor::Curve {
-        crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(self)
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(self as *const Self)) }
     }
 
     /// Upcast to Geom2dAdaptor_Curve (mutable)
-    pub fn as_geom2d_adaptor_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::geom2d_adaptor::Curve> {
-        crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(self)
+    pub fn as_geom2d_adaptor_curve_mut(&mut self) -> &mut crate::geom2d_adaptor::Curve {
+        unsafe {
+            &mut *(crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: FirstParameter()
     pub fn first_parameter(&self) -> f64 {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_FirstParameter(self)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_FirstParameter(self as *const Self) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: LastParameter()
     pub fn last_parameter(&self) -> f64 {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_LastParameter(self)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_LastParameter(self as *const Self) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Continuity()
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_Curve2d_inherited_Continuity(self))
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_Curve2d_inherited_Continuity(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: NbIntervals()
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_NbIntervals(self, S.into())
+        unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_NbIntervals(self as *const Self, S.into())
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Trim()
@@ -400,159 +833,204 @@ impl Curve2d {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Trim(self, First, Last, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            ))
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: IsClosed()
     pub fn is_closed(&self) -> bool {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_IsClosed(self)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_IsClosed(self as *const Self) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: IsPeriodic()
     pub fn is_periodic(&self) -> bool {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_IsPeriodic(self)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_IsPeriodic(self as *const Self) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Period()
     pub fn period(&self) -> f64 {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Period(self)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Period(self as *const Self) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Value()
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Value(self, U)
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Value(
+                self as *const Self,
+                U,
+            ))
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: D0()
-    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>) {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_D0(self, U, P)
+    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_D0(self as *const Self, U, P) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: D1()
-    pub fn d1(
-        &self,
-        U: f64,
-        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
-        V: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
-    ) {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_D1(self, U, P, V)
+    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V: &mut crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_D1(self as *const Self, U, P, V) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: D2()
     pub fn d2(
         &self,
         U: f64,
-        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
-        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
-        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
     ) {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_D2(self, U, P, V1, V2)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_D2(self as *const Self, U, P, V1, V2) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: D3()
     pub fn d3(
         &self,
         U: f64,
-        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
-        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
-        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
-        V3: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+        V3: &mut crate::ffi::gp_Vec2d,
     ) {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_D3(self, U, P, V1, V2, V3)
+        unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_D3(self as *const Self, U, P, V1, V2, V3)
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: DN()
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_DN(self, U, N)
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_DN(
+                self as *const Self,
+                U,
+                N,
+            ))
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Resolution()
     pub fn resolution(&self, R3d: f64) -> f64 {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Resolution(self, R3d)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Resolution(self as *const Self, R3d) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: GetType()
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        crate::geom_abs::CurveType::try_from(crate::ffi::BRepAdaptor_Curve2d_inherited_GetType(
-            self,
-        ))
-        .unwrap()
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::BRepAdaptor_Curve2d_inherited_GetType(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Line()
-    pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Line(self)
+    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Line(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Circle()
-    pub fn circle(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Circle(self)
+    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Circle(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Ellipse()
-    pub fn ellipse(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Ellipse(self)
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Ellipse(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Hyperbola()
-    pub fn hyperbola(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Hyperbola(self)
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Hyperbola(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Parabola()
-    pub fn parabola(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Parabola(self)
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Parabola(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Degree()
     pub fn degree(&self) -> i32 {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Degree(self)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Degree(self as *const Self) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: IsRational()
     pub fn is_rational(&self) -> bool {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_IsRational(self)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_IsRational(self as *const Self) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: NbPoles()
     pub fn nb_poles(&self) -> i32 {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_NbPoles(self)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbPoles(self as *const Self) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: NbKnots()
     pub fn nb_knots(&self) -> i32 {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_NbKnots(self)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbKnots(self as *const Self) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: NbSamples()
     pub fn nb_samples(&self) -> i32 {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_NbSamples(self)
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbSamples(self as *const Self) }
     }
 
     /// Inherited from Adaptor2d_Curve2d: Bezier()
-    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBezierCurve> {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Bezier(self)
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Bezier(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Adaptor2d_Curve2d: BSpline()
-    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_BSpline(self)
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_BSpline(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Geom2dAdaptor_Curve: Reset()
-    pub fn reset(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Reset(self)
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Reset(self as *mut Self) }
     }
 
     /// Inherited from Geom2dAdaptor_Curve: Load()
-    pub fn load(self: std::pin::Pin<&mut Self>, theCurve: &crate::ffi::HandleGeom2dCurve) {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Load(self, theCurve)
+    pub fn load(&mut self, theCurve: &crate::ffi::HandleGeom2dCurve) {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Load(self as *mut Self, theCurve) }
     }
 
     /// Inherited from Geom2dAdaptor_Curve: Curve()
     pub fn curve(&self) -> &crate::ffi::HandleGeom2dCurve {
-        crate::ffi::BRepAdaptor_Curve2d_inherited_Curve(self)
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_inherited_Curve(self as *const Self)) }
     }
 }
 
@@ -562,21 +1040,35 @@ impl Curve2d {
 
 pub use crate::ffi::BRepAdaptor_HArray1OfCurve as HArray1OfCurve;
 
+unsafe impl crate::CppDeletable for HArray1OfCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAdaptor_HArray1OfCurve_destructor(ptr);
+    }
+}
+
 impl HArray1OfCurve {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_HArray1OfCurve_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
     pub fn new_int2_curve(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::BRepAdaptor_Curve,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2_curve(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2_curve(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_curve_int2_bool(
@@ -584,47 +1076,65 @@ impl HArray1OfCurve {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_curve_int2_bool(
-            theBegin, theLower, theUpper, arg3,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_curve_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
     pub fn new_array1ofcurve(
         theOther: &crate::ffi::BRepAdaptor_Array1OfCurve,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_array1ofcurve(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_array1ofcurve(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepAdaptor_HArray1OfCurve_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepAdaptorHArray1OfCurve> {
-        crate::ffi::BRepAdaptor_HArray1OfCurve_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorHArray1OfCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepAdaptorHArray1OfCurve;
 
+unsafe impl crate::CppDeletable for HandleBRepAdaptorHArray1OfCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepAdaptorHArray1OfCurve_destructor(ptr);
+    }
+}
+
 impl HandleBRepAdaptorHArray1OfCurve {
     /// Dereference this Handle to access the underlying BRepAdaptor_HArray1OfCurve
     pub fn get(&self) -> &crate::ffi::BRepAdaptor_HArray1OfCurve {
-        crate::ffi::HandleBRepAdaptorHArray1OfCurve_get(self)
+        unsafe { &*(crate::ffi::HandleBRepAdaptorHArray1OfCurve_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepAdaptor_HArray1OfCurve
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepAdaptor_HArray1OfCurve> {
-        crate::ffi::HandleBRepAdaptorHArray1OfCurve_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_HArray1OfCurve {
+        unsafe { &mut *(crate::ffi::HandleBRepAdaptorHArray1OfCurve_get_mut(self as *mut Self)) }
     }
 }
 
@@ -646,55 +1156,123 @@ impl HandleBRepAdaptorHArray1OfCurve {
 /// set to false.
 pub use crate::ffi::BRepAdaptor_Surface as Surface;
 
+unsafe impl crate::CppDeletable for Surface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAdaptor_Surface_destructor(ptr);
+    }
+}
+
 impl Surface {
     /// Creates an undefined surface with no face loaded.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Surface_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_ctor()) }
     }
 
     /// Creates a surface to  access the geometry  of <F>.
     /// If  <Restriction> is  true  the parameter range is
     /// the  parameter  range  in   the  UV space  of  the
     /// restriction.
-    pub fn new_face_bool(F: &crate::ffi::TopoDS_Face, R: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Surface_ctor_face_bool(F, R)
+    pub fn new_face_bool(F: &crate::ffi::TopoDS_Face, R: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_ctor_face_bool(F, R)) }
     }
 
     /// Creates a surface to  access the geometry  of <F>.
     /// If  <Restriction> is  true  the parameter range is
     /// the  parameter  range  in   the  UV space  of  the
     /// restriction.
-    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
+    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
         Self::new_face_bool(F, true)
     }
 
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepAdaptor_Surface_dynamic_type(self as *const Self)) }
+    }
+
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
-        crate::ffi::BRepAdaptor_Surface_shallow_copy(self)
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_shallow_copy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Sets the surface to the geometry of <F>.
+    pub fn initialize(&mut self, F: &crate::ffi::TopoDS_Face, Restriction: bool) {
+        unsafe { crate::ffi::BRepAdaptor_Surface_initialize(self as *mut Self, F, Restriction) }
+    }
+
+    /// Returns the surface.
+    pub fn surface(&self) -> &crate::ffi::GeomAdaptor_Surface {
+        unsafe { &*(crate::ffi::BRepAdaptor_Surface_surface(self as *const Self)) }
+    }
+
+    /// Returns the surface.
+    pub fn change_surface(&mut self) -> &mut crate::ffi::GeomAdaptor_Surface {
+        unsafe { &mut *(crate::ffi::BRepAdaptor_Surface_change_surface(self as *mut Self)) }
+    }
+
+    /// Returns the surface coordinate system.
+    pub fn trsf(&self) -> &crate::ffi::gp_Trsf {
+        unsafe { &*(crate::ffi::BRepAdaptor_Surface_trsf(self as *const Self)) }
+    }
+
+    /// Returns the face.
+    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+        unsafe { &*(crate::ffi::BRepAdaptor_Surface_face(self as *const Self)) }
+    }
+
+    /// Returns the face tolerance.
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_tolerance(self as *const Self) }
+    }
+
+    pub fn first_u_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_first_u_parameter(self as *const Self) }
+    }
+
+    pub fn last_u_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_last_u_parameter(self as *const Self) }
+    }
+
+    pub fn first_v_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_first_v_parameter(self as *const Self) }
+    }
+
+    pub fn last_v_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_last_v_parameter(self as *const Self) }
     }
 
     pub fn u_continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_Surface_u_continuity(self))
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_Surface_u_continuity(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     pub fn v_continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_Surface_v_continuity(self))
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_Surface_v_continuity(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// If necessary, breaks the surface in U intervals of
     /// continuity    <S>.  And   returns  the  number  of
     /// intervals.
     pub fn nb_u_intervals(&self, theSh: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::BRepAdaptor_Surface_nb_u_intervals(self, theSh.into())
+        unsafe { crate::ffi::BRepAdaptor_Surface_nb_u_intervals(self as *const Self, theSh.into()) }
     }
 
     /// If necessary, breaks the surface in V intervals of
     /// continuity    <S>.  And   returns  the  number  of
     /// intervals.
     pub fn nb_v_intervals(&self, theSh: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::BRepAdaptor_Surface_nb_v_intervals(self, theSh.into())
+        unsafe { crate::ffi::BRepAdaptor_Surface_nb_v_intervals(self as *const Self, theSh.into()) }
     }
 
     /// Returns    a  surface trimmed in the U direction
@@ -707,8 +1285,15 @@ impl Surface {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
-        crate::ffi::BRepAdaptor_Surface_u_trim(self, First, Last, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_u_trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            ))
+        }
     }
 
     /// Returns    a  surface trimmed in the V direction  between
@@ -720,14 +1305,139 @@ impl Surface {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
-        crate::ffi::BRepAdaptor_Surface_v_trim(self, First, Last, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_v_trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            ))
+        }
+    }
+
+    pub fn is_u_closed(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Surface_is_u_closed(self as *const Self) }
+    }
+
+    pub fn is_v_closed(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Surface_is_v_closed(self as *const Self) }
+    }
+
+    pub fn is_u_periodic(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Surface_is_u_periodic(self as *const Self) }
+    }
+
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_u_period(self as *const Self) }
+    }
+
+    pub fn is_v_periodic(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Surface_is_v_periodic(self as *const Self) }
+    }
+
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_v_period(self as *const Self) }
     }
 
     /// Computes the point of parameters U,V on the surface.
     /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
-    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepAdaptor_Surface_value(self, U, V)
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_value(
+                self as *const Self,
+                U,
+                V,
+            ))
+        }
+    }
+
+    /// Computes the point of parameters U,V on the surface.
+    pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::BRepAdaptor_Surface_d0(self as *const Self, U, V, P) }
+    }
+
+    /// Computes the point  and the first derivatives on the surface.
+    /// Raised if the continuity of the current intervals is not C1.
+    ///
+    /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        D1U: &mut crate::ffi::gp_Vec,
+        D1V: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::BRepAdaptor_Surface_d1(self as *const Self, U, V, P, D1U, D1V) }
+    }
+
+    /// Computes   the point,  the  first  and  second
+    /// derivatives on the surface.
+    /// Raised  if   the   continuity   of the current
+    /// intervals is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        D1U: &mut crate::ffi::gp_Vec,
+        D1V: &mut crate::ffi::gp_Vec,
+        D2U: &mut crate::ffi::gp_Vec,
+        D2V: &mut crate::ffi::gp_Vec,
+        D2UV: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::BRepAdaptor_Surface_d2(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+            )
+        }
+    }
+
+    /// Computes the point,  the first, second and third
+    /// derivatives on the surface.
+    /// Raised  if   the   continuity   of the current
+    /// intervals is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        D1U: &mut crate::ffi::gp_Vec,
+        D1V: &mut crate::ffi::gp_Vec,
+        D2U: &mut crate::ffi::gp_Vec,
+        D2V: &mut crate::ffi::gp_Vec,
+        D2UV: &mut crate::ffi::gp_Vec,
+        D3U: &mut crate::ffi::gp_Vec,
+        D3V: &mut crate::ffi::gp_Vec,
+        D3UUV: &mut crate::ffi::gp_Vec,
+        D3UVV: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::BRepAdaptor_Surface_d3(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+                D3U,
+                D3V,
+                D3UUV,
+                D3UVV,
+            )
+        }
     }
 
     /// Computes the derivative of order Nu in the direction
@@ -735,8 +1445,28 @@ impl Surface {
     /// Raised if the current U  interval is not not CNu
     /// and the current V interval is not CNv.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
-        crate::ffi::BRepAdaptor_Surface_dn(self, U, V, Nu, Nv)
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_dn(
+                self as *const Self,
+                U,
+                V,
+                Nu,
+                Nv,
+            ))
+        }
+    }
+
+    /// Returns the parametric U  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn u_resolution(&self, theR3d: f64) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_u_resolution(self as *const Self, theR3d) }
+    }
+
+    /// Returns the parametric V  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn v_resolution(&self, theR3d: f64) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_v_resolution(self as *const Self, theR3d) }
     }
 
     /// Returns the type of the surface : Plane, Cylinder,
@@ -744,80 +1474,150 @@ impl Surface {
     /// BSplineSurface,               SurfaceOfRevolution,
     /// SurfaceOfExtrusion, OtherSurface
     pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
-        crate::geom_abs::SurfaceType::try_from(crate::ffi::BRepAdaptor_Surface_get_type(self))
+        unsafe {
+            crate::geom_abs::SurfaceType::try_from(crate::ffi::BRepAdaptor_Surface_get_type(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
-    pub fn plane(&self) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
-        crate::ffi::BRepAdaptor_Surface_plane(self)
+    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi::gp_Pln> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_plane(self as *const Self))
+        }
     }
 
-    pub fn cylinder(&self) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
-        crate::ffi::BRepAdaptor_Surface_cylinder(self)
+    pub fn cylinder(&self) -> crate::OwnedPtr<crate::ffi::gp_Cylinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_cylinder(self as *const Self))
+        }
     }
 
-    pub fn cone(&self) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
-        crate::ffi::BRepAdaptor_Surface_cone(self)
+    pub fn cone(&self) -> crate::OwnedPtr<crate::ffi::gp_Cone> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_cone(self as *const Self))
+        }
     }
 
-    pub fn sphere(&self) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
-        crate::ffi::BRepAdaptor_Surface_sphere(self)
+    pub fn sphere(&self) -> crate::OwnedPtr<crate::ffi::gp_Sphere> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_sphere(self as *const Self))
+        }
     }
 
-    pub fn torus(&self) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
-        crate::ffi::BRepAdaptor_Surface_torus(self)
+    pub fn torus(&self) -> crate::OwnedPtr<crate::ffi::gp_Torus> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_torus(self as *const Self))
+        }
     }
 
-    pub fn bezier(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBezierSurface> {
-        crate::ffi::BRepAdaptor_Surface_bezier(self)
+    pub fn u_degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_u_degree(self as *const Self) }
+    }
+
+    pub fn nb_u_poles(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_nb_u_poles(self as *const Self) }
+    }
+
+    pub fn v_degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_v_degree(self as *const Self) }
+    }
+
+    pub fn nb_v_poles(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_nb_v_poles(self as *const Self) }
+    }
+
+    pub fn nb_u_knots(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_nb_u_knots(self as *const Self) }
+    }
+
+    pub fn nb_v_knots(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_nb_v_knots(self as *const Self) }
+    }
+
+    pub fn is_u_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Surface_is_u_rational(self as *const Self) }
+    }
+
+    pub fn is_v_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Surface_is_v_rational(self as *const Self) }
+    }
+
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_bezier(self as *const Self))
+        }
     }
 
     /// Warning : this will make a copy of the
     /// BSpline Surface since it applies
     /// to it the myTsrf transformation
     /// Be Careful when using this method
-    pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineSurface> {
-        crate::ffi::BRepAdaptor_Surface_b_spline(self)
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_b_spline(self as *const Self))
+        }
     }
 
-    pub fn axe_of_revolution(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
-        crate::ffi::BRepAdaptor_Surface_axe_of_revolution(self)
+    pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_axe_of_revolution(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn direction(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
-        crate::ffi::BRepAdaptor_Surface_direction(self)
+    pub fn direction(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_direction(
+                self as *const Self,
+            ))
+        }
     }
 
     /// only for SurfaceOfExtrusion and SurfaceOfRevolution
     /// Warning: this will make a copy of the underlying curve
     /// since it applies to it the transformation
     /// myTrsf. Be careful when using this method.
-    pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
-        crate::ffi::BRepAdaptor_Surface_basis_curve(self)
+    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_basis_curve(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn basis_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
-        crate::ffi::BRepAdaptor_Surface_basis_surface(self)
+    pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_basis_surface(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepAdaptor_Surface_get_type_name()
+    pub fn offset_value(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Surface_offset_value(self as *const Self) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepAdaptor_Surface_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepAdaptor_Surface_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepAdaptor_Surface_get_type_descriptor()) }
     }
 
     /// Upcast to Adaptor3d_Surface
     pub fn as_adaptor3d_surface(&self) -> &crate::adaptor3d::Surface {
-        crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface(self)
+        unsafe { &*(crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface(self as *const Self)) }
     }
 
     /// Upcast to Adaptor3d_Surface (mutable)
-    pub fn as_adaptor3d_surface_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::adaptor3d::Surface> {
-        crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface_mut(self)
+    pub fn as_adaptor3d_surface_mut(&mut self) -> &mut crate::adaptor3d::Surface {
+        unsafe {
+            &mut *(crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface_mut(self as *mut Self))
+        }
     }
 }
 

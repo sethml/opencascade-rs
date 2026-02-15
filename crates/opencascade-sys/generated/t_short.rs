@@ -12,17 +12,31 @@
 
 pub use crate::ffi::TShort_HArray1OfShortReal as HArray1OfShortReal;
 
+unsafe impl crate::CppDeletable for HArray1OfShortReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TShort_HArray1OfShortReal_destructor(ptr);
+    }
+}
+
 impl HArray1OfShortReal {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TShort_HArray1OfShortReal_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TShort_HArray1OfShortReal_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
-    pub fn new_int2_float(theLower: i32, theUpper: i32, theValue: &f32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TShort_HArray1OfShortReal_ctor_int2_float(theLower, theUpper, theValue)
+    pub fn new_int2_float(theLower: i32, theUpper: i32, theValue: &f32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor_int2_float(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_float_int2_bool(
@@ -30,47 +44,65 @@ impl HArray1OfShortReal {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TShort_HArray1OfShortReal_ctor_float_int2_bool(
-            theBegin, theLower, theUpper, arg3,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor_float_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
     pub fn new_array1ofshortreal(
         theOther: &crate::ffi::TShort_Array1OfShortReal,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TShort_HArray1OfShortReal_ctor_array1ofshortreal(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor_array1ofshortreal(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TShort_HArray1OfShortReal_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TShort_HArray1OfShortReal_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TShort_HArray1OfShortReal_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TShort_HArray1OfShortReal_get_type_descriptor()
+        unsafe { &*(crate::ffi::TShort_HArray1OfShortReal_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTShortHArray1OfShortReal> {
-        crate::ffi::TShort_HArray1OfShortReal_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTShortHArray1OfShortReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleTShortHArray1OfShortReal;
 
+unsafe impl crate::CppDeletable for HandleTShortHArray1OfShortReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTShortHArray1OfShortReal_destructor(ptr);
+    }
+}
+
 impl HandleTShortHArray1OfShortReal {
     /// Dereference this Handle to access the underlying TShort_HArray1OfShortReal
     pub fn get(&self) -> &crate::ffi::TShort_HArray1OfShortReal {
-        crate::ffi::HandleTShortHArray1OfShortReal_get(self)
+        unsafe { &*(crate::ffi::HandleTShortHArray1OfShortReal_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TShort_HArray1OfShortReal
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TShort_HArray1OfShortReal> {
-        crate::ffi::HandleTShortHArray1OfShortReal_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TShort_HArray1OfShortReal {
+        unsafe { &mut *(crate::ffi::HandleTShortHArray1OfShortReal_get_mut(self as *mut Self)) }
     }
 }
 

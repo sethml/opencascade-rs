@@ -21,13 +21,15 @@ pub use crate::ffi::{
 
 impl Array1OfCirc2d {
     /// Create a new empty Array1OfCirc2d
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfCirc2d_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfCirc2d_new()) }
     }
 
     /// Create with lower and upper bounds
-    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfCirc2d_ctor_int2(lower, upper)
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfCirc2d_ctor_int2(lower, upper))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -35,45 +37,63 @@ impl Array1OfCirc2d {
         lower: i32,
         upper: i32,
         value: &crate::ffi::gp_Circ2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfCirc2d_ctor_int2_value(lower, upper, value)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfCirc2d_ctor_int2_value(
+                lower,
+                upper,
+                value as *const crate::ffi::gp_Circ2d,
+            ))
+        }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfCirc2d_length(self)
+        unsafe { crate::ffi::TColgp_Array1OfCirc2d_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfCirc2d_lower(self)
+        unsafe { crate::ffi::TColgp_Array1OfCirc2d_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfCirc2d_upper(self)
+        unsafe { crate::ffi::TColgp_Array1OfCirc2d_upper(self as *const Self) }
     }
 
     /// Get element at index
     pub fn value(&self, index: i32) -> &crate::ffi::gp_Circ2d {
-        crate::ffi::TColgp_Array1OfCirc2d_value(self, index)
+        unsafe { &*crate::ffi::TColgp_Array1OfCirc2d_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Circ2d) {
-        crate::ffi::TColgp_Array1OfCirc2d_set_value(self, index, item)
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Circ2d) {
+        unsafe {
+            crate::ffi::TColgp_Array1OfCirc2d_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi::gp_Circ2d,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfCirc2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array1OfCirc2d_destructor(ptr);
     }
 }
 
 impl Array1OfDir {
     /// Create a new empty Array1OfDir
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfDir_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir_new()) }
     }
 
     /// Create with lower and upper bounds
-    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfDir_ctor_int2(lower, upper)
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir_ctor_int2(lower, upper)) }
     }
 
     /// Create with bounds, all elements initialized
@@ -81,45 +101,65 @@ impl Array1OfDir {
         lower: i32,
         upper: i32,
         value: &crate::ffi::gp_Dir,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfDir_ctor_int2_value(lower, upper, value)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir_ctor_int2_value(
+                lower,
+                upper,
+                value as *const crate::ffi::gp_Dir,
+            ))
+        }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfDir_length(self)
+        unsafe { crate::ffi::TColgp_Array1OfDir_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfDir_lower(self)
+        unsafe { crate::ffi::TColgp_Array1OfDir_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfDir_upper(self)
+        unsafe { crate::ffi::TColgp_Array1OfDir_upper(self as *const Self) }
     }
 
     /// Get element at index
     pub fn value(&self, index: i32) -> &crate::ffi::gp_Dir {
-        crate::ffi::TColgp_Array1OfDir_value(self, index)
+        unsafe { &*crate::ffi::TColgp_Array1OfDir_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Dir) {
-        crate::ffi::TColgp_Array1OfDir_set_value(self, index, item)
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Dir) {
+        unsafe {
+            crate::ffi::TColgp_Array1OfDir_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi::gp_Dir,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array1OfDir_destructor(ptr);
     }
 }
 
 impl Array1OfDir2d {
     /// Create a new empty Array1OfDir2d
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfDir2d_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir2d_new()) }
     }
 
     /// Create with lower and upper bounds
-    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfDir2d_ctor_int2(lower, upper)
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir2d_ctor_int2(lower, upper))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -127,45 +167,65 @@ impl Array1OfDir2d {
         lower: i32,
         upper: i32,
         value: &crate::ffi::gp_Dir2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfDir2d_ctor_int2_value(lower, upper, value)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir2d_ctor_int2_value(
+                lower,
+                upper,
+                value as *const crate::ffi::gp_Dir2d,
+            ))
+        }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfDir2d_length(self)
+        unsafe { crate::ffi::TColgp_Array1OfDir2d_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfDir2d_lower(self)
+        unsafe { crate::ffi::TColgp_Array1OfDir2d_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfDir2d_upper(self)
+        unsafe { crate::ffi::TColgp_Array1OfDir2d_upper(self as *const Self) }
     }
 
     /// Get element at index
     pub fn value(&self, index: i32) -> &crate::ffi::gp_Dir2d {
-        crate::ffi::TColgp_Array1OfDir2d_value(self, index)
+        unsafe { &*crate::ffi::TColgp_Array1OfDir2d_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Dir2d) {
-        crate::ffi::TColgp_Array1OfDir2d_set_value(self, index, item)
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Dir2d) {
+        unsafe {
+            crate::ffi::TColgp_Array1OfDir2d_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi::gp_Dir2d,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array1OfDir2d_destructor(ptr);
     }
 }
 
 impl Array1OfLin2d {
     /// Create a new empty Array1OfLin2d
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfLin2d_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfLin2d_new()) }
     }
 
     /// Create with lower and upper bounds
-    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfLin2d_ctor_int2(lower, upper)
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfLin2d_ctor_int2(lower, upper))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -173,45 +233,63 @@ impl Array1OfLin2d {
         lower: i32,
         upper: i32,
         value: &crate::ffi::gp_Lin2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfLin2d_ctor_int2_value(lower, upper, value)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfLin2d_ctor_int2_value(
+                lower,
+                upper,
+                value as *const crate::ffi::gp_Lin2d,
+            ))
+        }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfLin2d_length(self)
+        unsafe { crate::ffi::TColgp_Array1OfLin2d_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfLin2d_lower(self)
+        unsafe { crate::ffi::TColgp_Array1OfLin2d_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfLin2d_upper(self)
+        unsafe { crate::ffi::TColgp_Array1OfLin2d_upper(self as *const Self) }
     }
 
     /// Get element at index
     pub fn value(&self, index: i32) -> &crate::ffi::gp_Lin2d {
-        crate::ffi::TColgp_Array1OfLin2d_value(self, index)
+        unsafe { &*crate::ffi::TColgp_Array1OfLin2d_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Lin2d) {
-        crate::ffi::TColgp_Array1OfLin2d_set_value(self, index, item)
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Lin2d) {
+        unsafe {
+            crate::ffi::TColgp_Array1OfLin2d_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi::gp_Lin2d,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfLin2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array1OfLin2d_destructor(ptr);
     }
 }
 
 impl Array1OfPnt {
     /// Create a new empty Array1OfPnt
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfPnt_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt_new()) }
     }
 
     /// Create with lower and upper bounds
-    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfPnt_ctor_int2(lower, upper)
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt_ctor_int2(lower, upper)) }
     }
 
     /// Create with bounds, all elements initialized
@@ -219,45 +297,65 @@ impl Array1OfPnt {
         lower: i32,
         upper: i32,
         value: &crate::ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfPnt_ctor_int2_value(lower, upper, value)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt_ctor_int2_value(
+                lower,
+                upper,
+                value as *const crate::ffi::gp_Pnt,
+            ))
+        }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfPnt_length(self)
+        unsafe { crate::ffi::TColgp_Array1OfPnt_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfPnt_lower(self)
+        unsafe { crate::ffi::TColgp_Array1OfPnt_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfPnt_upper(self)
+        unsafe { crate::ffi::TColgp_Array1OfPnt_upper(self as *const Self) }
     }
 
     /// Get element at index
     pub fn value(&self, index: i32) -> &crate::ffi::gp_Pnt {
-        crate::ffi::TColgp_Array1OfPnt_value(self, index)
+        unsafe { &*crate::ffi::TColgp_Array1OfPnt_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Pnt) {
-        crate::ffi::TColgp_Array1OfPnt_set_value(self, index, item)
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Pnt) {
+        unsafe {
+            crate::ffi::TColgp_Array1OfPnt_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi::gp_Pnt,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array1OfPnt_destructor(ptr);
     }
 }
 
 impl Array1OfPnt2d {
     /// Create a new empty Array1OfPnt2d
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfPnt2d_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt2d_new()) }
     }
 
     /// Create with lower and upper bounds
-    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfPnt2d_ctor_int2(lower, upper)
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt2d_ctor_int2(lower, upper))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -265,45 +363,63 @@ impl Array1OfPnt2d {
         lower: i32,
         upper: i32,
         value: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfPnt2d_ctor_int2_value(lower, upper, value)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt2d_ctor_int2_value(
+                lower,
+                upper,
+                value as *const crate::ffi::gp_Pnt2d,
+            ))
+        }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfPnt2d_length(self)
+        unsafe { crate::ffi::TColgp_Array1OfPnt2d_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfPnt2d_lower(self)
+        unsafe { crate::ffi::TColgp_Array1OfPnt2d_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfPnt2d_upper(self)
+        unsafe { crate::ffi::TColgp_Array1OfPnt2d_upper(self as *const Self) }
     }
 
     /// Get element at index
     pub fn value(&self, index: i32) -> &crate::ffi::gp_Pnt2d {
-        crate::ffi::TColgp_Array1OfPnt2d_value(self, index)
+        unsafe { &*crate::ffi::TColgp_Array1OfPnt2d_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::TColgp_Array1OfPnt2d_set_value(self, index, item)
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::TColgp_Array1OfPnt2d_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi::gp_Pnt2d,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array1OfPnt2d_destructor(ptr);
     }
 }
 
 impl Array1OfVec {
     /// Create a new empty Array1OfVec
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfVec_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec_new()) }
     }
 
     /// Create with lower and upper bounds
-    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfVec_ctor_int2(lower, upper)
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec_ctor_int2(lower, upper)) }
     }
 
     /// Create with bounds, all elements initialized
@@ -311,45 +427,65 @@ impl Array1OfVec {
         lower: i32,
         upper: i32,
         value: &crate::ffi::gp_Vec,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfVec_ctor_int2_value(lower, upper, value)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec_ctor_int2_value(
+                lower,
+                upper,
+                value as *const crate::ffi::gp_Vec,
+            ))
+        }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfVec_length(self)
+        unsafe { crate::ffi::TColgp_Array1OfVec_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfVec_lower(self)
+        unsafe { crate::ffi::TColgp_Array1OfVec_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfVec_upper(self)
+        unsafe { crate::ffi::TColgp_Array1OfVec_upper(self as *const Self) }
     }
 
     /// Get element at index
     pub fn value(&self, index: i32) -> &crate::ffi::gp_Vec {
-        crate::ffi::TColgp_Array1OfVec_value(self, index)
+        unsafe { &*crate::ffi::TColgp_Array1OfVec_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Vec) {
-        crate::ffi::TColgp_Array1OfVec_set_value(self, index, item)
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Vec) {
+        unsafe {
+            crate::ffi::TColgp_Array1OfVec_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi::gp_Vec,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array1OfVec_destructor(ptr);
     }
 }
 
 impl Array1OfVec2d {
     /// Create a new empty Array1OfVec2d
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfVec2d_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec2d_new()) }
     }
 
     /// Create with lower and upper bounds
-    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfVec2d_ctor_int2(lower, upper)
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec2d_ctor_int2(lower, upper))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -357,45 +493,63 @@ impl Array1OfVec2d {
         lower: i32,
         upper: i32,
         value: &crate::ffi::gp_Vec2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfVec2d_ctor_int2_value(lower, upper, value)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec2d_ctor_int2_value(
+                lower,
+                upper,
+                value as *const crate::ffi::gp_Vec2d,
+            ))
+        }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfVec2d_length(self)
+        unsafe { crate::ffi::TColgp_Array1OfVec2d_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfVec2d_lower(self)
+        unsafe { crate::ffi::TColgp_Array1OfVec2d_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfVec2d_upper(self)
+        unsafe { crate::ffi::TColgp_Array1OfVec2d_upper(self as *const Self) }
     }
 
     /// Get element at index
     pub fn value(&self, index: i32) -> &crate::ffi::gp_Vec2d {
-        crate::ffi::TColgp_Array1OfVec2d_value(self, index)
+        unsafe { &*crate::ffi::TColgp_Array1OfVec2d_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_Vec2d) {
-        crate::ffi::TColgp_Array1OfVec2d_set_value(self, index, item)
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Vec2d) {
+        unsafe {
+            crate::ffi::TColgp_Array1OfVec2d_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi::gp_Vec2d,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array1OfVec2d_destructor(ptr);
     }
 }
 
 impl Array1OfXY {
     /// Create a new empty Array1OfXY
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfXY_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXY_new()) }
     }
 
     /// Create with lower and upper bounds
-    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfXY_ctor_int2(lower, upper)
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXY_ctor_int2(lower, upper)) }
     }
 
     /// Create with bounds, all elements initialized
@@ -403,45 +557,63 @@ impl Array1OfXY {
         lower: i32,
         upper: i32,
         value: &crate::ffi::gp_XY,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfXY_ctor_int2_value(lower, upper, value)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXY_ctor_int2_value(
+                lower,
+                upper,
+                value as *const crate::ffi::gp_XY,
+            ))
+        }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfXY_length(self)
+        unsafe { crate::ffi::TColgp_Array1OfXY_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfXY_lower(self)
+        unsafe { crate::ffi::TColgp_Array1OfXY_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfXY_upper(self)
+        unsafe { crate::ffi::TColgp_Array1OfXY_upper(self as *const Self) }
     }
 
     /// Get element at index
     pub fn value(&self, index: i32) -> &crate::ffi::gp_XY {
-        crate::ffi::TColgp_Array1OfXY_value(self, index)
+        unsafe { &*crate::ffi::TColgp_Array1OfXY_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_XY) {
-        crate::ffi::TColgp_Array1OfXY_set_value(self, index, item)
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_XY) {
+        unsafe {
+            crate::ffi::TColgp_Array1OfXY_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi::gp_XY,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array1OfXY_destructor(ptr);
     }
 }
 
 impl Array1OfXYZ {
     /// Create a new empty Array1OfXYZ
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfXYZ_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXYZ_new()) }
     }
 
     /// Create with lower and upper bounds
-    pub fn new_int2(lower: i32, upper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfXYZ_ctor_int2(lower, upper)
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXYZ_ctor_int2(lower, upper)) }
     }
 
     /// Create with bounds, all elements initialized
@@ -449,40 +621,58 @@ impl Array1OfXYZ {
         lower: i32,
         upper: i32,
         value: &crate::ffi::gp_XYZ,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array1OfXYZ_ctor_int2_value(lower, upper, value)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXYZ_ctor_int2_value(
+                lower,
+                upper,
+                value as *const crate::ffi::gp_XYZ,
+            ))
+        }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfXYZ_length(self)
+        unsafe { crate::ffi::TColgp_Array1OfXYZ_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfXYZ_lower(self)
+        unsafe { crate::ffi::TColgp_Array1OfXYZ_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        crate::ffi::TColgp_Array1OfXYZ_upper(self)
+        unsafe { crate::ffi::TColgp_Array1OfXYZ_upper(self as *const Self) }
     }
 
     /// Get element at index
     pub fn value(&self, index: i32) -> &crate::ffi::gp_XYZ {
-        crate::ffi::TColgp_Array1OfXYZ_value(self, index)
+        unsafe { &*crate::ffi::TColgp_Array1OfXYZ_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(self: std::pin::Pin<&mut Self>, index: i32, item: &crate::ffi::gp_XYZ) {
-        crate::ffi::TColgp_Array1OfXYZ_set_value(self, index, item)
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_XYZ) {
+        unsafe {
+            crate::ffi::TColgp_Array1OfXYZ_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi::gp_XYZ,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1OfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array1OfXYZ_destructor(ptr);
     }
 }
 
 impl Array2OfCirc2d {
     /// Create a new empty Array2OfCirc2d
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfCirc2d_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfCirc2d_new()) }
     }
 
     /// Create with row and column bounds
@@ -491,8 +681,12 @@ impl Array2OfCirc2d {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfCirc2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfCirc2d_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -502,42 +696,56 @@ impl Array2OfCirc2d {
         col_lower: i32,
         col_upper: i32,
         value: &crate::ffi::gp_Circ2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfCirc2d_ctor_int4_value(
-            row_lower, row_upper, col_lower, col_upper, value,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfCirc2d_ctor_int4_value(
+                row_lower,
+                row_upper,
+                col_lower,
+                col_upper,
+                value as *const crate::ffi::gp_Circ2d,
+            ))
+        }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfCirc2d_nb_rows(self)
+        unsafe { crate::ffi::TColgp_Array2OfCirc2d_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfCirc2d_nb_columns(self)
+        unsafe { crate::ffi::TColgp_Array2OfCirc2d_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
     pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Circ2d {
-        crate::ffi::TColgp_Array2OfCirc2d_value(self, row, col)
+        unsafe { &*crate::ffi::TColgp_Array2OfCirc2d_value(self as *const Self, row, col) }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        row: i32,
-        col: i32,
-        item: &crate::ffi::gp_Circ2d,
-    ) {
-        crate::ffi::TColgp_Array2OfCirc2d_set_value(self, row, col, item)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Circ2d) {
+        unsafe {
+            crate::ffi::TColgp_Array2OfCirc2d_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi::gp_Circ2d,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfCirc2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array2OfCirc2d_destructor(ptr);
     }
 }
 
 impl Array2OfDir {
     /// Create a new empty Array2OfDir
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfDir_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir_new()) }
     }
 
     /// Create with row and column bounds
@@ -546,8 +754,12 @@ impl Array2OfDir {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfDir_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -557,42 +769,56 @@ impl Array2OfDir {
         col_lower: i32,
         col_upper: i32,
         value: &crate::ffi::gp_Dir,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfDir_ctor_int4_value(
-            row_lower, row_upper, col_lower, col_upper, value,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir_ctor_int4_value(
+                row_lower,
+                row_upper,
+                col_lower,
+                col_upper,
+                value as *const crate::ffi::gp_Dir,
+            ))
+        }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfDir_nb_rows(self)
+        unsafe { crate::ffi::TColgp_Array2OfDir_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfDir_nb_columns(self)
+        unsafe { crate::ffi::TColgp_Array2OfDir_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
     pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Dir {
-        crate::ffi::TColgp_Array2OfDir_value(self, row, col)
+        unsafe { &*crate::ffi::TColgp_Array2OfDir_value(self as *const Self, row, col) }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        row: i32,
-        col: i32,
-        item: &crate::ffi::gp_Dir,
-    ) {
-        crate::ffi::TColgp_Array2OfDir_set_value(self, row, col, item)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Dir) {
+        unsafe {
+            crate::ffi::TColgp_Array2OfDir_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi::gp_Dir,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array2OfDir_destructor(ptr);
     }
 }
 
 impl Array2OfDir2d {
     /// Create a new empty Array2OfDir2d
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfDir2d_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir2d_new()) }
     }
 
     /// Create with row and column bounds
@@ -601,8 +827,12 @@ impl Array2OfDir2d {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfDir2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir2d_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -612,42 +842,56 @@ impl Array2OfDir2d {
         col_lower: i32,
         col_upper: i32,
         value: &crate::ffi::gp_Dir2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfDir2d_ctor_int4_value(
-            row_lower, row_upper, col_lower, col_upper, value,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir2d_ctor_int4_value(
+                row_lower,
+                row_upper,
+                col_lower,
+                col_upper,
+                value as *const crate::ffi::gp_Dir2d,
+            ))
+        }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfDir2d_nb_rows(self)
+        unsafe { crate::ffi::TColgp_Array2OfDir2d_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfDir2d_nb_columns(self)
+        unsafe { crate::ffi::TColgp_Array2OfDir2d_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
     pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Dir2d {
-        crate::ffi::TColgp_Array2OfDir2d_value(self, row, col)
+        unsafe { &*crate::ffi::TColgp_Array2OfDir2d_value(self as *const Self, row, col) }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        row: i32,
-        col: i32,
-        item: &crate::ffi::gp_Dir2d,
-    ) {
-        crate::ffi::TColgp_Array2OfDir2d_set_value(self, row, col, item)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Dir2d) {
+        unsafe {
+            crate::ffi::TColgp_Array2OfDir2d_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi::gp_Dir2d,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array2OfDir2d_destructor(ptr);
     }
 }
 
 impl Array2OfLin2d {
     /// Create a new empty Array2OfLin2d
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfLin2d_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfLin2d_new()) }
     }
 
     /// Create with row and column bounds
@@ -656,8 +900,12 @@ impl Array2OfLin2d {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfLin2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfLin2d_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -667,42 +915,56 @@ impl Array2OfLin2d {
         col_lower: i32,
         col_upper: i32,
         value: &crate::ffi::gp_Lin2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfLin2d_ctor_int4_value(
-            row_lower, row_upper, col_lower, col_upper, value,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfLin2d_ctor_int4_value(
+                row_lower,
+                row_upper,
+                col_lower,
+                col_upper,
+                value as *const crate::ffi::gp_Lin2d,
+            ))
+        }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfLin2d_nb_rows(self)
+        unsafe { crate::ffi::TColgp_Array2OfLin2d_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfLin2d_nb_columns(self)
+        unsafe { crate::ffi::TColgp_Array2OfLin2d_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
     pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Lin2d {
-        crate::ffi::TColgp_Array2OfLin2d_value(self, row, col)
+        unsafe { &*crate::ffi::TColgp_Array2OfLin2d_value(self as *const Self, row, col) }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        row: i32,
-        col: i32,
-        item: &crate::ffi::gp_Lin2d,
-    ) {
-        crate::ffi::TColgp_Array2OfLin2d_set_value(self, row, col, item)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Lin2d) {
+        unsafe {
+            crate::ffi::TColgp_Array2OfLin2d_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi::gp_Lin2d,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfLin2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array2OfLin2d_destructor(ptr);
     }
 }
 
 impl Array2OfPnt {
     /// Create a new empty Array2OfPnt
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfPnt_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt_new()) }
     }
 
     /// Create with row and column bounds
@@ -711,8 +973,12 @@ impl Array2OfPnt {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfPnt_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -722,42 +988,56 @@ impl Array2OfPnt {
         col_lower: i32,
         col_upper: i32,
         value: &crate::ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfPnt_ctor_int4_value(
-            row_lower, row_upper, col_lower, col_upper, value,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt_ctor_int4_value(
+                row_lower,
+                row_upper,
+                col_lower,
+                col_upper,
+                value as *const crate::ffi::gp_Pnt,
+            ))
+        }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfPnt_nb_rows(self)
+        unsafe { crate::ffi::TColgp_Array2OfPnt_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfPnt_nb_columns(self)
+        unsafe { crate::ffi::TColgp_Array2OfPnt_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
     pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Pnt {
-        crate::ffi::TColgp_Array2OfPnt_value(self, row, col)
+        unsafe { &*crate::ffi::TColgp_Array2OfPnt_value(self as *const Self, row, col) }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        row: i32,
-        col: i32,
-        item: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::TColgp_Array2OfPnt_set_value(self, row, col, item)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Pnt) {
+        unsafe {
+            crate::ffi::TColgp_Array2OfPnt_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi::gp_Pnt,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array2OfPnt_destructor(ptr);
     }
 }
 
 impl Array2OfPnt2d {
     /// Create a new empty Array2OfPnt2d
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfPnt2d_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt2d_new()) }
     }
 
     /// Create with row and column bounds
@@ -766,8 +1046,12 @@ impl Array2OfPnt2d {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfPnt2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt2d_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -777,42 +1061,56 @@ impl Array2OfPnt2d {
         col_lower: i32,
         col_upper: i32,
         value: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfPnt2d_ctor_int4_value(
-            row_lower, row_upper, col_lower, col_upper, value,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt2d_ctor_int4_value(
+                row_lower,
+                row_upper,
+                col_lower,
+                col_upper,
+                value as *const crate::ffi::gp_Pnt2d,
+            ))
+        }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfPnt2d_nb_rows(self)
+        unsafe { crate::ffi::TColgp_Array2OfPnt2d_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfPnt2d_nb_columns(self)
+        unsafe { crate::ffi::TColgp_Array2OfPnt2d_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
     pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Pnt2d {
-        crate::ffi::TColgp_Array2OfPnt2d_value(self, row, col)
+        unsafe { &*crate::ffi::TColgp_Array2OfPnt2d_value(self as *const Self, row, col) }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        row: i32,
-        col: i32,
-        item: &crate::ffi::gp_Pnt2d,
-    ) {
-        crate::ffi::TColgp_Array2OfPnt2d_set_value(self, row, col, item)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::TColgp_Array2OfPnt2d_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi::gp_Pnt2d,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array2OfPnt2d_destructor(ptr);
     }
 }
 
 impl Array2OfVec {
     /// Create a new empty Array2OfVec
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfVec_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec_new()) }
     }
 
     /// Create with row and column bounds
@@ -821,8 +1119,12 @@ impl Array2OfVec {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfVec_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -832,42 +1134,56 @@ impl Array2OfVec {
         col_lower: i32,
         col_upper: i32,
         value: &crate::ffi::gp_Vec,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfVec_ctor_int4_value(
-            row_lower, row_upper, col_lower, col_upper, value,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec_ctor_int4_value(
+                row_lower,
+                row_upper,
+                col_lower,
+                col_upper,
+                value as *const crate::ffi::gp_Vec,
+            ))
+        }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfVec_nb_rows(self)
+        unsafe { crate::ffi::TColgp_Array2OfVec_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfVec_nb_columns(self)
+        unsafe { crate::ffi::TColgp_Array2OfVec_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
     pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Vec {
-        crate::ffi::TColgp_Array2OfVec_value(self, row, col)
+        unsafe { &*crate::ffi::TColgp_Array2OfVec_value(self as *const Self, row, col) }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        row: i32,
-        col: i32,
-        item: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::TColgp_Array2OfVec_set_value(self, row, col, item)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Vec) {
+        unsafe {
+            crate::ffi::TColgp_Array2OfVec_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi::gp_Vec,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array2OfVec_destructor(ptr);
     }
 }
 
 impl Array2OfVec2d {
     /// Create a new empty Array2OfVec2d
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfVec2d_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec2d_new()) }
     }
 
     /// Create with row and column bounds
@@ -876,8 +1192,12 @@ impl Array2OfVec2d {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfVec2d_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec2d_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -887,42 +1207,56 @@ impl Array2OfVec2d {
         col_lower: i32,
         col_upper: i32,
         value: &crate::ffi::gp_Vec2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfVec2d_ctor_int4_value(
-            row_lower, row_upper, col_lower, col_upper, value,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec2d_ctor_int4_value(
+                row_lower,
+                row_upper,
+                col_lower,
+                col_upper,
+                value as *const crate::ffi::gp_Vec2d,
+            ))
+        }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfVec2d_nb_rows(self)
+        unsafe { crate::ffi::TColgp_Array2OfVec2d_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfVec2d_nb_columns(self)
+        unsafe { crate::ffi::TColgp_Array2OfVec2d_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
     pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Vec2d {
-        crate::ffi::TColgp_Array2OfVec2d_value(self, row, col)
+        unsafe { &*crate::ffi::TColgp_Array2OfVec2d_value(self as *const Self, row, col) }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        row: i32,
-        col: i32,
-        item: &crate::ffi::gp_Vec2d,
-    ) {
-        crate::ffi::TColgp_Array2OfVec2d_set_value(self, row, col, item)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Vec2d) {
+        unsafe {
+            crate::ffi::TColgp_Array2OfVec2d_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi::gp_Vec2d,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array2OfVec2d_destructor(ptr);
     }
 }
 
 impl Array2OfXY {
     /// Create a new empty Array2OfXY
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfXY_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXY_new()) }
     }
 
     /// Create with row and column bounds
@@ -931,8 +1265,12 @@ impl Array2OfXY {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfXY_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXY_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -942,37 +1280,56 @@ impl Array2OfXY {
         col_lower: i32,
         col_upper: i32,
         value: &crate::ffi::gp_XY,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfXY_ctor_int4_value(
-            row_lower, row_upper, col_lower, col_upper, value,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXY_ctor_int4_value(
+                row_lower,
+                row_upper,
+                col_lower,
+                col_upper,
+                value as *const crate::ffi::gp_XY,
+            ))
+        }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfXY_nb_rows(self)
+        unsafe { crate::ffi::TColgp_Array2OfXY_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfXY_nb_columns(self)
+        unsafe { crate::ffi::TColgp_Array2OfXY_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
     pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_XY {
-        crate::ffi::TColgp_Array2OfXY_value(self, row, col)
+        unsafe { &*crate::ffi::TColgp_Array2OfXY_value(self as *const Self, row, col) }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(self: std::pin::Pin<&mut Self>, row: i32, col: i32, item: &crate::ffi::gp_XY) {
-        crate::ffi::TColgp_Array2OfXY_set_value(self, row, col, item)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_XY) {
+        unsafe {
+            crate::ffi::TColgp_Array2OfXY_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi::gp_XY,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array2OfXY_destructor(ptr);
     }
 }
 
 impl Array2OfXYZ {
     /// Create a new empty Array2OfXYZ
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfXYZ_new()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXYZ_new()) }
     }
 
     /// Create with row and column bounds
@@ -981,8 +1338,12 @@ impl Array2OfXYZ {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfXYZ_ctor_int4(row_lower, row_upper, col_lower, col_upper)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXYZ_ctor_int4(
+                row_lower, row_upper, col_lower, col_upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
@@ -992,35 +1353,49 @@ impl Array2OfXYZ {
         col_lower: i32,
         col_upper: i32,
         value: &crate::ffi::gp_XYZ,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_Array2OfXYZ_ctor_int4_value(
-            row_lower, row_upper, col_lower, col_upper, value,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXYZ_ctor_int4_value(
+                row_lower,
+                row_upper,
+                col_lower,
+                col_upper,
+                value as *const crate::ffi::gp_XYZ,
+            ))
+        }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfXYZ_nb_rows(self)
+        unsafe { crate::ffi::TColgp_Array2OfXYZ_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        crate::ffi::TColgp_Array2OfXYZ_nb_columns(self)
+        unsafe { crate::ffi::TColgp_Array2OfXYZ_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
     pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_XYZ {
-        crate::ffi::TColgp_Array2OfXYZ_value(self, row, col)
+        unsafe { &*crate::ffi::TColgp_Array2OfXYZ_value(self as *const Self, row, col) }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        row: i32,
-        col: i32,
-        item: &crate::ffi::gp_XYZ,
-    ) {
-        crate::ffi::TColgp_Array2OfXYZ_set_value(self, row, col, item)
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_XYZ) {
+        unsafe {
+            crate::ffi::TColgp_Array2OfXYZ_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi::gp_XYZ,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2OfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_Array2OfXYZ_destructor(ptr);
     }
 }
 
@@ -1030,21 +1405,35 @@ impl Array2OfXYZ {
 
 pub use crate::ffi::TColgp_HArray1OfCirc2d as HArray1OfCirc2d;
 
+unsafe impl crate::CppDeletable for HArray1OfCirc2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfCirc2d_destructor(ptr);
+    }
+}
+
 impl HArray1OfCirc2d {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfCirc2d_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfCirc2d_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfCirc2d_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfCirc2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
     pub fn new_int2_circ2d(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::gp_Circ2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfCirc2d_ctor_int2_circ2d(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfCirc2d_ctor_int2_circ2d(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_circ2d_int2_bool(
@@ -1052,57 +1441,87 @@ impl HArray1OfCirc2d {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfCirc2d_ctor_circ2d_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfCirc2d_ctor_circ2d_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
     pub fn new_array1ofcirc2d(
         theOther: &crate::ffi::TColgp_Array1OfCirc2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray1OfCirc2d_get_type_name()
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfCirc2d {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfCirc2d_array1(self as *const Self)) }
+    }
+
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfCirc2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfCirc2d_change_array1(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfCirc2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray1OfCirc2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray1OfCirc2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray1OfCirc2d_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array1OfCirc2d
     pub fn as_array1_of_circ2d(&self) -> &Array1OfCirc2d {
-        crate::ffi::TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d(self)
+        unsafe {
+            &*(crate::ffi::TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d(self as *const Self))
+        }
     }
 
     /// Upcast to TColgp_Array1OfCirc2d (mutable)
-    pub fn as_array1_of_circ2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut Array1OfCirc2d> {
-        crate::ffi::TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d_mut(self)
+    pub fn as_array1_of_circ2d_mut(&mut self) -> &mut Array1OfCirc2d {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray1OfCirc2d> {
-        crate::ffi::TColgp_HArray1OfCirc2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfCirc2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfCirc2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfCirc2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfCirc2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfCirc2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray1OfCirc2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfCirc2d
     pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfCirc2d {
-        crate::ffi::HandleTColgpHArray1OfCirc2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfCirc2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfCirc2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfCirc2d> {
-        crate::ffi::HandleTColgpHArray1OfCirc2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfCirc2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfCirc2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1112,21 +1531,33 @@ impl HandleTColgpHArray1OfCirc2d {
 
 pub use crate::ffi::TColgp_HArray1OfDir as HArray1OfDir;
 
+unsafe impl crate::CppDeletable for HArray1OfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfDir_destructor(ptr);
+    }
+}
+
 impl HArray1OfDir {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfDir_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfDir_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir_ctor_int2(theLower, theUpper))
+        }
     }
 
     pub fn new_int2_dir(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::gp_Dir,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfDir_ctor_int2_dir(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir_ctor_int2_dir(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_dir_int2_bool(
@@ -1134,53 +1565,79 @@ impl HArray1OfDir {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfDir_ctor_dir_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir_ctor_dir_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
-    pub fn new_array1ofdir(theOther: &crate::ffi::TColgp_Array1OfDir) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfDir_ctor_array1ofdir(theOther)
+    pub fn new_array1ofdir(theOther: &crate::ffi::TColgp_Array1OfDir) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir_ctor_array1ofdir(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray1OfDir_get_type_name()
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfDir {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir_array1(self as *const Self)) }
+    }
+
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfDir {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfDir_change_array1(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray1OfDir_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray1OfDir_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array1OfDir
     pub fn as_array1_of_dir(&self) -> &Array1OfDir {
-        crate::ffi::TColgp_HArray1OfDir_as_TColgp_Array1OfDir(self)
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir_as_TColgp_Array1OfDir(self as *const Self)) }
     }
 
     /// Upcast to TColgp_Array1OfDir (mutable)
-    pub fn as_array1_of_dir_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array1OfDir> {
-        crate::ffi::TColgp_HArray1OfDir_as_TColgp_Array1OfDir_mut(self)
+    pub fn as_array1_of_dir_mut(&mut self) -> &mut Array1OfDir {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray1OfDir_as_TColgp_Array1OfDir_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray1OfDir> {
-        crate::ffi::TColgp_HArray1OfDir_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfDir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfDir;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfDir_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray1OfDir {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfDir
     pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfDir {
-        crate::ffi::HandleTColgpHArray1OfDir_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfDir_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfDir
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfDir> {
-        crate::ffi::HandleTColgpHArray1OfDir_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfDir {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfDir_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1190,21 +1647,35 @@ impl HandleTColgpHArray1OfDir {
 
 pub use crate::ffi::TColgp_HArray1OfDir2d as HArray1OfDir2d;
 
+unsafe impl crate::CppDeletable for HArray1OfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfDir2d_destructor(ptr);
+    }
+}
+
 impl HArray1OfDir2d {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfDir2d_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir2d_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfDir2d_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
     pub fn new_int2_dir2d(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::gp_Dir2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfDir2d_ctor_int2_dir2d(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir2d_ctor_int2_dir2d(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_dir2d_int2_bool(
@@ -1212,55 +1683,83 @@ impl HArray1OfDir2d {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfDir2d_ctor_dir2d_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir2d_ctor_dir2d_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
-    pub fn new_array1ofdir2d(theOther: &crate::ffi::TColgp_Array1OfDir2d) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfDir2d_ctor_array1ofdir2d(theOther)
+    pub fn new_array1ofdir2d(theOther: &crate::ffi::TColgp_Array1OfDir2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir2d_ctor_array1ofdir2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray1OfDir2d_get_type_name()
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfDir2d {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir2d_array1(self as *const Self)) }
+    }
+
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfDir2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfDir2d_change_array1(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray1OfDir2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray1OfDir2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir2d_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array1OfDir2d
     pub fn as_array1_of_dir2d(&self) -> &Array1OfDir2d {
-        crate::ffi::TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d(self)
+        unsafe {
+            &*(crate::ffi::TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d(self as *const Self))
+        }
     }
 
     /// Upcast to TColgp_Array1OfDir2d (mutable)
-    pub fn as_array1_of_dir2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut Array1OfDir2d> {
-        crate::ffi::TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d_mut(self)
+    pub fn as_array1_of_dir2d_mut(&mut self) -> &mut Array1OfDir2d {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray1OfDir2d> {
-        crate::ffi::TColgp_HArray1OfDir2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfDir2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfDir2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfDir2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray1OfDir2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfDir2d
     pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfDir2d {
-        crate::ffi::HandleTColgpHArray1OfDir2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfDir2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfDir2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfDir2d> {
-        crate::ffi::HandleTColgpHArray1OfDir2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfDir2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfDir2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1270,21 +1769,35 @@ impl HandleTColgpHArray1OfDir2d {
 
 pub use crate::ffi::TColgp_HArray1OfLin2d as HArray1OfLin2d;
 
+unsafe impl crate::CppDeletable for HArray1OfLin2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfLin2d_destructor(ptr);
+    }
+}
+
 impl HArray1OfLin2d {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfLin2d_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfLin2d_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfLin2d_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfLin2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
     pub fn new_int2_lin2d(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::gp_Lin2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfLin2d_ctor_int2_lin2d(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfLin2d_ctor_int2_lin2d(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_lin2d_int2_bool(
@@ -1292,55 +1805,83 @@ impl HArray1OfLin2d {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfLin2d_ctor_lin2d_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfLin2d_ctor_lin2d_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
-    pub fn new_array1oflin2d(theOther: &crate::ffi::TColgp_Array1OfLin2d) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfLin2d_ctor_array1oflin2d(theOther)
+    pub fn new_array1oflin2d(theOther: &crate::ffi::TColgp_Array1OfLin2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfLin2d_ctor_array1oflin2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray1OfLin2d_get_type_name()
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfLin2d {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfLin2d_array1(self as *const Self)) }
+    }
+
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfLin2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfLin2d_change_array1(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfLin2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray1OfLin2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray1OfLin2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray1OfLin2d_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array1OfLin2d
     pub fn as_array1_of_lin2d(&self) -> &Array1OfLin2d {
-        crate::ffi::TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d(self)
+        unsafe {
+            &*(crate::ffi::TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d(self as *const Self))
+        }
     }
 
     /// Upcast to TColgp_Array1OfLin2d (mutable)
-    pub fn as_array1_of_lin2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut Array1OfLin2d> {
-        crate::ffi::TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d_mut(self)
+    pub fn as_array1_of_lin2d_mut(&mut self) -> &mut Array1OfLin2d {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray1OfLin2d> {
-        crate::ffi::TColgp_HArray1OfLin2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfLin2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfLin2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfLin2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfLin2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfLin2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray1OfLin2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfLin2d
     pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfLin2d {
-        crate::ffi::HandleTColgpHArray1OfLin2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfLin2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfLin2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfLin2d> {
-        crate::ffi::HandleTColgpHArray1OfLin2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfLin2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfLin2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1350,21 +1891,33 @@ impl HandleTColgpHArray1OfLin2d {
 
 pub use crate::ffi::TColgp_HArray1OfPnt as HArray1OfPnt;
 
+unsafe impl crate::CppDeletable for HArray1OfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfPnt_destructor(ptr);
+    }
+}
+
 impl HArray1OfPnt {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfPnt_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfPnt_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt_ctor_int2(theLower, theUpper))
+        }
     }
 
     pub fn new_int2_pnt(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfPnt_ctor_int2_pnt(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt_ctor_int2_pnt(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_pnt_int2_bool(
@@ -1372,53 +1925,79 @@ impl HArray1OfPnt {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfPnt_ctor_pnt_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt_ctor_pnt_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
-    pub fn new_array1ofpnt(theOther: &crate::ffi::TColgp_Array1OfPnt) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfPnt_ctor_array1ofpnt(theOther)
+    pub fn new_array1ofpnt(theOther: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt_ctor_array1ofpnt(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray1OfPnt_get_type_name()
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfPnt {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt_array1(self as *const Self)) }
+    }
+
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfPnt {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfPnt_change_array1(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray1OfPnt_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray1OfPnt_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array1OfPnt
     pub fn as_array1_of_pnt(&self) -> &Array1OfPnt {
-        crate::ffi::TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt(self)
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt(self as *const Self)) }
     }
 
     /// Upcast to TColgp_Array1OfPnt (mutable)
-    pub fn as_array1_of_pnt_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array1OfPnt> {
-        crate::ffi::TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt_mut(self)
+    pub fn as_array1_of_pnt_mut(&mut self) -> &mut Array1OfPnt {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray1OfPnt> {
-        crate::ffi::TColgp_HArray1OfPnt_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfPnt;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfPnt_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray1OfPnt {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt
     pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfPnt {
-        crate::ffi::HandleTColgpHArray1OfPnt_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfPnt_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfPnt
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfPnt> {
-        crate::ffi::HandleTColgpHArray1OfPnt_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfPnt {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfPnt_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1428,21 +2007,35 @@ impl HandleTColgpHArray1OfPnt {
 
 pub use crate::ffi::TColgp_HArray1OfPnt2d as HArray1OfPnt2d;
 
+unsafe impl crate::CppDeletable for HArray1OfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfPnt2d_destructor(ptr);
+    }
+}
+
 impl HArray1OfPnt2d {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfPnt2d_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt2d_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfPnt2d_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
     pub fn new_int2_pnt2d(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfPnt2d_ctor_int2_pnt2d(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt2d_ctor_int2_pnt2d(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_pnt2d_int2_bool(
@@ -1450,55 +2043,83 @@ impl HArray1OfPnt2d {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfPnt2d_ctor_pnt2d_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt2d_ctor_pnt2d_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
-    pub fn new_array1ofpnt2d(theOther: &crate::ffi::TColgp_Array1OfPnt2d) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(theOther)
+    pub fn new_array1ofpnt2d(theOther: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray1OfPnt2d_get_type_name()
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt2d_array1(self as *const Self)) }
+    }
+
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfPnt2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfPnt2d_change_array1(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray1OfPnt2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray1OfPnt2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt2d_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array1OfPnt2d
     pub fn as_array1_of_pnt2d(&self) -> &Array1OfPnt2d {
-        crate::ffi::TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d(self)
+        unsafe {
+            &*(crate::ffi::TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d(self as *const Self))
+        }
     }
 
     /// Upcast to TColgp_Array1OfPnt2d (mutable)
-    pub fn as_array1_of_pnt2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut Array1OfPnt2d> {
-        crate::ffi::TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d_mut(self)
+    pub fn as_array1_of_pnt2d_mut(&mut self) -> &mut Array1OfPnt2d {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
-        crate::ffi::TColgp_HArray1OfPnt2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfPnt2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfPnt2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray1OfPnt2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt2d
     pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfPnt2d {
-        crate::ffi::HandleTColgpHArray1OfPnt2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfPnt2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfPnt2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfPnt2d> {
-        crate::ffi::HandleTColgpHArray1OfPnt2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfPnt2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfPnt2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1508,21 +2129,33 @@ impl HandleTColgpHArray1OfPnt2d {
 
 pub use crate::ffi::TColgp_HArray1OfVec as HArray1OfVec;
 
+unsafe impl crate::CppDeletable for HArray1OfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfVec_destructor(ptr);
+    }
+}
+
 impl HArray1OfVec {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfVec_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfVec_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec_ctor_int2(theLower, theUpper))
+        }
     }
 
     pub fn new_int2_vec(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::gp_Vec,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfVec_ctor_int2_vec(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec_ctor_int2_vec(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_vec_int2_bool(
@@ -1530,53 +2163,79 @@ impl HArray1OfVec {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfVec_ctor_vec_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec_ctor_vec_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
-    pub fn new_array1ofvec(theOther: &crate::ffi::TColgp_Array1OfVec) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfVec_ctor_array1ofvec(theOther)
+    pub fn new_array1ofvec(theOther: &crate::ffi::TColgp_Array1OfVec) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec_ctor_array1ofvec(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray1OfVec_get_type_name()
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfVec {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec_array1(self as *const Self)) }
+    }
+
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfVec {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfVec_change_array1(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray1OfVec_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray1OfVec_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array1OfVec
     pub fn as_array1_of_vec(&self) -> &Array1OfVec {
-        crate::ffi::TColgp_HArray1OfVec_as_TColgp_Array1OfVec(self)
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec_as_TColgp_Array1OfVec(self as *const Self)) }
     }
 
     /// Upcast to TColgp_Array1OfVec (mutable)
-    pub fn as_array1_of_vec_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array1OfVec> {
-        crate::ffi::TColgp_HArray1OfVec_as_TColgp_Array1OfVec_mut(self)
+    pub fn as_array1_of_vec_mut(&mut self) -> &mut Array1OfVec {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray1OfVec_as_TColgp_Array1OfVec_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray1OfVec> {
-        crate::ffi::TColgp_HArray1OfVec_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfVec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfVec;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfVec_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray1OfVec {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfVec
     pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfVec {
-        crate::ffi::HandleTColgpHArray1OfVec_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfVec_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfVec
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfVec> {
-        crate::ffi::HandleTColgpHArray1OfVec_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfVec {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfVec_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1586,21 +2245,35 @@ impl HandleTColgpHArray1OfVec {
 
 pub use crate::ffi::TColgp_HArray1OfVec2d as HArray1OfVec2d;
 
+unsafe impl crate::CppDeletable for HArray1OfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfVec2d_destructor(ptr);
+    }
+}
+
 impl HArray1OfVec2d {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfVec2d_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec2d_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfVec2d_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
     }
 
     pub fn new_int2_vec2d(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::gp_Vec2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfVec2d_ctor_int2_vec2d(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec2d_ctor_int2_vec2d(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_vec2d_int2_bool(
@@ -1608,55 +2281,83 @@ impl HArray1OfVec2d {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfVec2d_ctor_vec2d_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec2d_ctor_vec2d_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
-    pub fn new_array1ofvec2d(theOther: &crate::ffi::TColgp_Array1OfVec2d) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfVec2d_ctor_array1ofvec2d(theOther)
+    pub fn new_array1ofvec2d(theOther: &crate::ffi::TColgp_Array1OfVec2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec2d_ctor_array1ofvec2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray1OfVec2d_get_type_name()
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfVec2d {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec2d_array1(self as *const Self)) }
+    }
+
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfVec2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfVec2d_change_array1(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray1OfVec2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray1OfVec2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec2d_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array1OfVec2d
     pub fn as_array1_of_vec2d(&self) -> &Array1OfVec2d {
-        crate::ffi::TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d(self)
+        unsafe {
+            &*(crate::ffi::TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d(self as *const Self))
+        }
     }
 
     /// Upcast to TColgp_Array1OfVec2d (mutable)
-    pub fn as_array1_of_vec2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut Array1OfVec2d> {
-        crate::ffi::TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d_mut(self)
+    pub fn as_array1_of_vec2d_mut(&mut self) -> &mut Array1OfVec2d {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray1OfVec2d> {
-        crate::ffi::TColgp_HArray1OfVec2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfVec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfVec2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfVec2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray1OfVec2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfVec2d
     pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfVec2d {
-        crate::ffi::HandleTColgpHArray1OfVec2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfVec2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfVec2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfVec2d> {
-        crate::ffi::HandleTColgpHArray1OfVec2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfVec2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfVec2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1666,21 +2367,33 @@ impl HandleTColgpHArray1OfVec2d {
 
 pub use crate::ffi::TColgp_HArray1OfXY as HArray1OfXY;
 
+unsafe impl crate::CppDeletable for HArray1OfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfXY_destructor(ptr);
+    }
+}
+
 impl HArray1OfXY {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfXY_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXY_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfXY_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXY_ctor_int2(theLower, theUpper))
+        }
     }
 
     pub fn new_int2_xy(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::gp_XY,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfXY_ctor_int2_xy(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXY_ctor_int2_xy(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_xy_int2_bool(
@@ -1688,53 +2401,79 @@ impl HArray1OfXY {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfXY_ctor_xy_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXY_ctor_xy_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
-    pub fn new_array1ofxy(theOther: &crate::ffi::TColgp_Array1OfXY) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfXY_ctor_array1ofxy(theOther)
+    pub fn new_array1ofxy(theOther: &crate::ffi::TColgp_Array1OfXY) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXY_ctor_array1ofxy(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray1OfXY_get_type_name()
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfXY {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXY_array1(self as *const Self)) }
+    }
+
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfXY {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfXY_change_array1(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXY_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray1OfXY_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray1OfXY_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXY_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array1OfXY
     pub fn as_array1_of_xy(&self) -> &Array1OfXY {
-        crate::ffi::TColgp_HArray1OfXY_as_TColgp_Array1OfXY(self)
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXY_as_TColgp_Array1OfXY(self as *const Self)) }
     }
 
     /// Upcast to TColgp_Array1OfXY (mutable)
-    pub fn as_array1_of_xy_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array1OfXY> {
-        crate::ffi::TColgp_HArray1OfXY_as_TColgp_Array1OfXY_mut(self)
+    pub fn as_array1_of_xy_mut(&mut self) -> &mut Array1OfXY {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray1OfXY_as_TColgp_Array1OfXY_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray1OfXY> {
-        crate::ffi::TColgp_HArray1OfXY_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfXY> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXY_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfXY;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfXY_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray1OfXY {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfXY
     pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfXY {
-        crate::ffi::HandleTColgpHArray1OfXY_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfXY_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfXY
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfXY> {
-        crate::ffi::HandleTColgpHArray1OfXY_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfXY {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfXY_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1744,21 +2483,33 @@ impl HandleTColgpHArray1OfXY {
 
 pub use crate::ffi::TColgp_HArray1OfXYZ as HArray1OfXYZ;
 
+unsafe impl crate::CppDeletable for HArray1OfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfXYZ_destructor(ptr);
+    }
+}
+
 impl HArray1OfXYZ {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfXYZ_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXYZ_ctor()) }
     }
 
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfXYZ_ctor_int2(theLower, theUpper)
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXYZ_ctor_int2(theLower, theUpper))
+        }
     }
 
     pub fn new_int2_xyz(
         theLower: i32,
         theUpper: i32,
         theValue: &crate::ffi::gp_XYZ,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfXYZ_ctor_int2_xyz(theLower, theUpper, theValue)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXYZ_ctor_int2_xyz(
+                theLower, theUpper, theValue,
+            ))
+        }
     }
 
     pub fn new_xyz_int2_bool(
@@ -1766,53 +2517,79 @@ impl HArray1OfXYZ {
         theLower: i32,
         theUpper: i32,
         arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfXYZ_ctor_xyz_int2_bool(theBegin, theLower, theUpper, arg3)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXYZ_ctor_xyz_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
     }
 
-    pub fn new_array1ofxyz(theOther: &crate::ffi::TColgp_Array1OfXYZ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray1OfXYZ_ctor_array1ofxyz(theOther)
+    pub fn new_array1ofxyz(theOther: &crate::ffi::TColgp_Array1OfXYZ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXYZ_ctor_array1ofxyz(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray1OfXYZ_get_type_name()
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfXYZ {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXYZ_array1(self as *const Self)) }
+    }
+
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfXYZ {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfXYZ_change_array1(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXYZ_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray1OfXYZ_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray1OfXYZ_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXYZ_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array1OfXYZ
     pub fn as_array1_of_xyz(&self) -> &Array1OfXYZ {
-        crate::ffi::TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ(self)
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ(self as *const Self)) }
     }
 
     /// Upcast to TColgp_Array1OfXYZ (mutable)
-    pub fn as_array1_of_xyz_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array1OfXYZ> {
-        crate::ffi::TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ_mut(self)
+    pub fn as_array1_of_xyz_mut(&mut self) -> &mut Array1OfXYZ {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray1OfXYZ> {
-        crate::ffi::TColgp_HArray1OfXYZ_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfXYZ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXYZ_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray1OfXYZ;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfXYZ_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray1OfXYZ {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfXYZ
     pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfXYZ {
-        crate::ffi::HandleTColgpHArray1OfXYZ_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfXYZ_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfXYZ
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray1OfXYZ> {
-        crate::ffi::HandleTColgpHArray1OfXYZ_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfXYZ {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfXYZ_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1822,14 +2599,24 @@ impl HandleTColgpHArray1OfXYZ {
 
 pub use crate::ffi::TColgp_HArray2OfCirc2d as HArray2OfCirc2d;
 
+unsafe impl crate::CppDeletable for HArray2OfCirc2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfCirc2d_destructor(ptr);
+    }
+}
+
 impl HArray2OfCirc2d {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfCirc2d_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfCirc2d_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_circ2d(
@@ -1838,59 +2625,87 @@ impl HArray2OfCirc2d {
         theColLow: i32,
         theColUpp: i32,
         theValue: &crate::ffi::gp_Circ2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfCirc2d_ctor_int4_circ2d(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfCirc2d_ctor_int4_circ2d(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
     pub fn new_array2ofcirc2d(
         theOther: &crate::ffi::TColgp_Array2OfCirc2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray2OfCirc2d_get_type_name()
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfCirc2d {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfCirc2d_array2(self as *const Self)) }
+    }
+
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfCirc2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfCirc2d_change_array2(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfCirc2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray2OfCirc2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray2OfCirc2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray2OfCirc2d_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array2OfCirc2d
     pub fn as_array2_of_circ2d(&self) -> &Array2OfCirc2d {
-        crate::ffi::TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d(self)
+        unsafe {
+            &*(crate::ffi::TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d(self as *const Self))
+        }
     }
 
     /// Upcast to TColgp_Array2OfCirc2d (mutable)
-    pub fn as_array2_of_circ2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut Array2OfCirc2d> {
-        crate::ffi::TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d_mut(self)
+    pub fn as_array2_of_circ2d_mut(&mut self) -> &mut Array2OfCirc2d {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray2OfCirc2d> {
-        crate::ffi::TColgp_HArray2OfCirc2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfCirc2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfCirc2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfCirc2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfCirc2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfCirc2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray2OfCirc2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfCirc2d
     pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfCirc2d {
-        crate::ffi::HandleTColgpHArray2OfCirc2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfCirc2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfCirc2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfCirc2d> {
-        crate::ffi::HandleTColgpHArray2OfCirc2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfCirc2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfCirc2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1900,14 +2715,24 @@ impl HandleTColgpHArray2OfCirc2d {
 
 pub use crate::ffi::TColgp_HArray2OfDir as HArray2OfDir;
 
+unsafe impl crate::CppDeletable for HArray2OfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfDir_destructor(ptr);
+    }
+}
+
 impl HArray2OfDir {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfDir_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_dir(
@@ -1916,55 +2741,79 @@ impl HArray2OfDir {
         theColLow: i32,
         theColUpp: i32,
         theValue: &crate::ffi::gp_Dir,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfDir_ctor_int4_dir(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir_ctor_int4_dir(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
-    pub fn new_array2ofdir(theOther: &crate::ffi::TColgp_Array2OfDir) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfDir_ctor_array2ofdir(theOther)
+    pub fn new_array2ofdir(theOther: &crate::ffi::TColgp_Array2OfDir) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir_ctor_array2ofdir(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray2OfDir_get_type_name()
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfDir {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir_array2(self as *const Self)) }
+    }
+
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfDir {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfDir_change_array2(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray2OfDir_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray2OfDir_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array2OfDir
     pub fn as_array2_of_dir(&self) -> &Array2OfDir {
-        crate::ffi::TColgp_HArray2OfDir_as_TColgp_Array2OfDir(self)
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir_as_TColgp_Array2OfDir(self as *const Self)) }
     }
 
     /// Upcast to TColgp_Array2OfDir (mutable)
-    pub fn as_array2_of_dir_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array2OfDir> {
-        crate::ffi::TColgp_HArray2OfDir_as_TColgp_Array2OfDir_mut(self)
+    pub fn as_array2_of_dir_mut(&mut self) -> &mut Array2OfDir {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray2OfDir_as_TColgp_Array2OfDir_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray2OfDir> {
-        crate::ffi::TColgp_HArray2OfDir_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfDir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfDir;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfDir_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray2OfDir {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfDir
     pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfDir {
-        crate::ffi::HandleTColgpHArray2OfDir_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfDir_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfDir
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfDir> {
-        crate::ffi::HandleTColgpHArray2OfDir_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfDir {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfDir_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1974,14 +2823,24 @@ impl HandleTColgpHArray2OfDir {
 
 pub use crate::ffi::TColgp_HArray2OfDir2d as HArray2OfDir2d;
 
+unsafe impl crate::CppDeletable for HArray2OfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfDir2d_destructor(ptr);
+    }
+}
+
 impl HArray2OfDir2d {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfDir2d_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir2d_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_dir2d(
@@ -1990,57 +2849,83 @@ impl HArray2OfDir2d {
         theColLow: i32,
         theColUpp: i32,
         theValue: &crate::ffi::gp_Dir2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfDir2d_ctor_int4_dir2d(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir2d_ctor_int4_dir2d(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
-    pub fn new_array2ofdir2d(theOther: &crate::ffi::TColgp_Array2OfDir2d) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfDir2d_ctor_array2ofdir2d(theOther)
+    pub fn new_array2ofdir2d(theOther: &crate::ffi::TColgp_Array2OfDir2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir2d_ctor_array2ofdir2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray2OfDir2d_get_type_name()
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfDir2d {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir2d_array2(self as *const Self)) }
+    }
+
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfDir2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfDir2d_change_array2(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray2OfDir2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray2OfDir2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir2d_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array2OfDir2d
     pub fn as_array2_of_dir2d(&self) -> &Array2OfDir2d {
-        crate::ffi::TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d(self)
+        unsafe {
+            &*(crate::ffi::TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d(self as *const Self))
+        }
     }
 
     /// Upcast to TColgp_Array2OfDir2d (mutable)
-    pub fn as_array2_of_dir2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut Array2OfDir2d> {
-        crate::ffi::TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d_mut(self)
+    pub fn as_array2_of_dir2d_mut(&mut self) -> &mut Array2OfDir2d {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray2OfDir2d> {
-        crate::ffi::TColgp_HArray2OfDir2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfDir2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfDir2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfDir2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray2OfDir2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfDir2d
     pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfDir2d {
-        crate::ffi::HandleTColgpHArray2OfDir2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfDir2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfDir2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfDir2d> {
-        crate::ffi::HandleTColgpHArray2OfDir2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfDir2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfDir2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2050,14 +2935,24 @@ impl HandleTColgpHArray2OfDir2d {
 
 pub use crate::ffi::TColgp_HArray2OfLin2d as HArray2OfLin2d;
 
+unsafe impl crate::CppDeletable for HArray2OfLin2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfLin2d_destructor(ptr);
+    }
+}
+
 impl HArray2OfLin2d {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfLin2d_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfLin2d_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_lin2d(
@@ -2066,57 +2961,83 @@ impl HArray2OfLin2d {
         theColLow: i32,
         theColUpp: i32,
         theValue: &crate::ffi::gp_Lin2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfLin2d_ctor_int4_lin2d(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfLin2d_ctor_int4_lin2d(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
-    pub fn new_array2oflin2d(theOther: &crate::ffi::TColgp_Array2OfLin2d) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfLin2d_ctor_array2oflin2d(theOther)
+    pub fn new_array2oflin2d(theOther: &crate::ffi::TColgp_Array2OfLin2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfLin2d_ctor_array2oflin2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray2OfLin2d_get_type_name()
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfLin2d {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfLin2d_array2(self as *const Self)) }
+    }
+
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfLin2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfLin2d_change_array2(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfLin2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray2OfLin2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray2OfLin2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray2OfLin2d_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array2OfLin2d
     pub fn as_array2_of_lin2d(&self) -> &Array2OfLin2d {
-        crate::ffi::TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d(self)
+        unsafe {
+            &*(crate::ffi::TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d(self as *const Self))
+        }
     }
 
     /// Upcast to TColgp_Array2OfLin2d (mutable)
-    pub fn as_array2_of_lin2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut Array2OfLin2d> {
-        crate::ffi::TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d_mut(self)
+    pub fn as_array2_of_lin2d_mut(&mut self) -> &mut Array2OfLin2d {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray2OfLin2d> {
-        crate::ffi::TColgp_HArray2OfLin2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfLin2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfLin2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfLin2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfLin2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfLin2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray2OfLin2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfLin2d
     pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfLin2d {
-        crate::ffi::HandleTColgpHArray2OfLin2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfLin2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfLin2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfLin2d> {
-        crate::ffi::HandleTColgpHArray2OfLin2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfLin2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfLin2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2126,14 +3047,24 @@ impl HandleTColgpHArray2OfLin2d {
 
 pub use crate::ffi::TColgp_HArray2OfPnt as HArray2OfPnt;
 
+unsafe impl crate::CppDeletable for HArray2OfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfPnt_destructor(ptr);
+    }
+}
+
 impl HArray2OfPnt {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfPnt_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_pnt(
@@ -2142,55 +3073,79 @@ impl HArray2OfPnt {
         theColLow: i32,
         theColUpp: i32,
         theValue: &crate::ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfPnt_ctor_int4_pnt(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt_ctor_int4_pnt(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
-    pub fn new_array2ofpnt(theOther: &crate::ffi::TColgp_Array2OfPnt) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfPnt_ctor_array2ofpnt(theOther)
+    pub fn new_array2ofpnt(theOther: &crate::ffi::TColgp_Array2OfPnt) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt_ctor_array2ofpnt(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray2OfPnt_get_type_name()
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt_array2(self as *const Self)) }
+    }
+
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfPnt {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfPnt_change_array2(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray2OfPnt_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray2OfPnt_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array2OfPnt
     pub fn as_array2_of_pnt(&self) -> &Array2OfPnt {
-        crate::ffi::TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt(self)
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt(self as *const Self)) }
     }
 
     /// Upcast to TColgp_Array2OfPnt (mutable)
-    pub fn as_array2_of_pnt_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array2OfPnt> {
-        crate::ffi::TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt_mut(self)
+    pub fn as_array2_of_pnt_mut(&mut self) -> &mut Array2OfPnt {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray2OfPnt> {
-        crate::ffi::TColgp_HArray2OfPnt_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfPnt;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfPnt_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray2OfPnt {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt
     pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfPnt {
-        crate::ffi::HandleTColgpHArray2OfPnt_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfPnt_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfPnt
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfPnt> {
-        crate::ffi::HandleTColgpHArray2OfPnt_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfPnt {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfPnt_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2200,14 +3155,24 @@ impl HandleTColgpHArray2OfPnt {
 
 pub use crate::ffi::TColgp_HArray2OfPnt2d as HArray2OfPnt2d;
 
+unsafe impl crate::CppDeletable for HArray2OfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfPnt2d_destructor(ptr);
+    }
+}
+
 impl HArray2OfPnt2d {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfPnt2d_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt2d_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_pnt2d(
@@ -2216,57 +3181,83 @@ impl HArray2OfPnt2d {
         theColLow: i32,
         theColUpp: i32,
         theValue: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfPnt2d_ctor_int4_pnt2d(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt2d_ctor_int4_pnt2d(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
-    pub fn new_array2ofpnt2d(theOther: &crate::ffi::TColgp_Array2OfPnt2d) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(theOther)
+    pub fn new_array2ofpnt2d(theOther: &crate::ffi::TColgp_Array2OfPnt2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray2OfPnt2d_get_type_name()
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfPnt2d {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt2d_array2(self as *const Self)) }
+    }
+
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfPnt2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfPnt2d_change_array2(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray2OfPnt2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray2OfPnt2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt2d_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array2OfPnt2d
     pub fn as_array2_of_pnt2d(&self) -> &Array2OfPnt2d {
-        crate::ffi::TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d(self)
+        unsafe {
+            &*(crate::ffi::TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d(self as *const Self))
+        }
     }
 
     /// Upcast to TColgp_Array2OfPnt2d (mutable)
-    pub fn as_array2_of_pnt2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut Array2OfPnt2d> {
-        crate::ffi::TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d_mut(self)
+    pub fn as_array2_of_pnt2d_mut(&mut self) -> &mut Array2OfPnt2d {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray2OfPnt2d> {
-        crate::ffi::TColgp_HArray2OfPnt2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfPnt2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfPnt2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray2OfPnt2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt2d
     pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfPnt2d {
-        crate::ffi::HandleTColgpHArray2OfPnt2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfPnt2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfPnt2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfPnt2d> {
-        crate::ffi::HandleTColgpHArray2OfPnt2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfPnt2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfPnt2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2276,14 +3267,24 @@ impl HandleTColgpHArray2OfPnt2d {
 
 pub use crate::ffi::TColgp_HArray2OfVec as HArray2OfVec;
 
+unsafe impl crate::CppDeletable for HArray2OfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfVec_destructor(ptr);
+    }
+}
+
 impl HArray2OfVec {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfVec_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_vec(
@@ -2292,55 +3293,79 @@ impl HArray2OfVec {
         theColLow: i32,
         theColUpp: i32,
         theValue: &crate::ffi::gp_Vec,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfVec_ctor_int4_vec(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec_ctor_int4_vec(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
-    pub fn new_array2ofvec(theOther: &crate::ffi::TColgp_Array2OfVec) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfVec_ctor_array2ofvec(theOther)
+    pub fn new_array2ofvec(theOther: &crate::ffi::TColgp_Array2OfVec) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec_ctor_array2ofvec(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray2OfVec_get_type_name()
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfVec {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec_array2(self as *const Self)) }
+    }
+
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfVec {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfVec_change_array2(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray2OfVec_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray2OfVec_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array2OfVec
     pub fn as_array2_of_vec(&self) -> &Array2OfVec {
-        crate::ffi::TColgp_HArray2OfVec_as_TColgp_Array2OfVec(self)
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec_as_TColgp_Array2OfVec(self as *const Self)) }
     }
 
     /// Upcast to TColgp_Array2OfVec (mutable)
-    pub fn as_array2_of_vec_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array2OfVec> {
-        crate::ffi::TColgp_HArray2OfVec_as_TColgp_Array2OfVec_mut(self)
+    pub fn as_array2_of_vec_mut(&mut self) -> &mut Array2OfVec {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray2OfVec_as_TColgp_Array2OfVec_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray2OfVec> {
-        crate::ffi::TColgp_HArray2OfVec_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfVec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfVec;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfVec_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray2OfVec {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfVec
     pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfVec {
-        crate::ffi::HandleTColgpHArray2OfVec_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfVec_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfVec
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfVec> {
-        crate::ffi::HandleTColgpHArray2OfVec_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfVec {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfVec_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2350,14 +3375,24 @@ impl HandleTColgpHArray2OfVec {
 
 pub use crate::ffi::TColgp_HArray2OfVec2d as HArray2OfVec2d;
 
+unsafe impl crate::CppDeletable for HArray2OfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfVec2d_destructor(ptr);
+    }
+}
+
 impl HArray2OfVec2d {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfVec2d_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec2d_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_vec2d(
@@ -2366,57 +3401,83 @@ impl HArray2OfVec2d {
         theColLow: i32,
         theColUpp: i32,
         theValue: &crate::ffi::gp_Vec2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfVec2d_ctor_int4_vec2d(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec2d_ctor_int4_vec2d(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
-    pub fn new_array2ofvec2d(theOther: &crate::ffi::TColgp_Array2OfVec2d) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfVec2d_ctor_array2ofvec2d(theOther)
+    pub fn new_array2ofvec2d(theOther: &crate::ffi::TColgp_Array2OfVec2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec2d_ctor_array2ofvec2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray2OfVec2d_get_type_name()
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfVec2d {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec2d_array2(self as *const Self)) }
+    }
+
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfVec2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfVec2d_change_array2(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray2OfVec2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray2OfVec2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec2d_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array2OfVec2d
     pub fn as_array2_of_vec2d(&self) -> &Array2OfVec2d {
-        crate::ffi::TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d(self)
+        unsafe {
+            &*(crate::ffi::TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d(self as *const Self))
+        }
     }
 
     /// Upcast to TColgp_Array2OfVec2d (mutable)
-    pub fn as_array2_of_vec2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut Array2OfVec2d> {
-        crate::ffi::TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d_mut(self)
+    pub fn as_array2_of_vec2d_mut(&mut self) -> &mut Array2OfVec2d {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray2OfVec2d> {
-        crate::ffi::TColgp_HArray2OfVec2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfVec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfVec2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfVec2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray2OfVec2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfVec2d
     pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfVec2d {
-        crate::ffi::HandleTColgpHArray2OfVec2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfVec2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfVec2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfVec2d> {
-        crate::ffi::HandleTColgpHArray2OfVec2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfVec2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfVec2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2426,14 +3487,24 @@ impl HandleTColgpHArray2OfVec2d {
 
 pub use crate::ffi::TColgp_HArray2OfXY as HArray2OfXY;
 
+unsafe impl crate::CppDeletable for HArray2OfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfXY_destructor(ptr);
+    }
+}
+
 impl HArray2OfXY {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfXY_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXY_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_xy(
@@ -2442,55 +3513,79 @@ impl HArray2OfXY {
         theColLow: i32,
         theColUpp: i32,
         theValue: &crate::ffi::gp_XY,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfXY_ctor_int4_xy(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXY_ctor_int4_xy(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
-    pub fn new_array2ofxy(theOther: &crate::ffi::TColgp_Array2OfXY) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfXY_ctor_array2ofxy(theOther)
+    pub fn new_array2ofxy(theOther: &crate::ffi::TColgp_Array2OfXY) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXY_ctor_array2ofxy(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray2OfXY_get_type_name()
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfXY {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXY_array2(self as *const Self)) }
+    }
+
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfXY {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfXY_change_array2(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXY_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray2OfXY_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray2OfXY_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXY_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array2OfXY
     pub fn as_array2_of_xy(&self) -> &Array2OfXY {
-        crate::ffi::TColgp_HArray2OfXY_as_TColgp_Array2OfXY(self)
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXY_as_TColgp_Array2OfXY(self as *const Self)) }
     }
 
     /// Upcast to TColgp_Array2OfXY (mutable)
-    pub fn as_array2_of_xy_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array2OfXY> {
-        crate::ffi::TColgp_HArray2OfXY_as_TColgp_Array2OfXY_mut(self)
+    pub fn as_array2_of_xy_mut(&mut self) -> &mut Array2OfXY {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray2OfXY_as_TColgp_Array2OfXY_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray2OfXY> {
-        crate::ffi::TColgp_HArray2OfXY_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfXY> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXY_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfXY;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfXY_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray2OfXY {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfXY
     pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfXY {
-        crate::ffi::HandleTColgpHArray2OfXY_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfXY_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfXY
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfXY> {
-        crate::ffi::HandleTColgpHArray2OfXY_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfXY {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfXY_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2500,14 +3595,24 @@ impl HandleTColgpHArray2OfXY {
 
 pub use crate::ffi::TColgp_HArray2OfXYZ as HArray2OfXYZ;
 
+unsafe impl crate::CppDeletable for HArray2OfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfXYZ_destructor(ptr);
+    }
+}
+
 impl HArray2OfXYZ {
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfXYZ_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXYZ_ctor_int4(
+                theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
     }
 
     pub fn new_int4_xyz(
@@ -2516,55 +3621,79 @@ impl HArray2OfXYZ {
         theColLow: i32,
         theColUpp: i32,
         theValue: &crate::ffi::gp_XYZ,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfXYZ_ctor_int4_xyz(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXYZ_ctor_int4_xyz(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
     }
 
-    pub fn new_array2ofxyz(theOther: &crate::ffi::TColgp_Array2OfXYZ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HArray2OfXYZ_ctor_array2ofxyz(theOther)
+    pub fn new_array2ofxyz(theOther: &crate::ffi::TColgp_Array2OfXYZ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXYZ_ctor_array2ofxyz(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HArray2OfXYZ_get_type_name()
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfXYZ {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXYZ_array2(self as *const Self)) }
+    }
+
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfXYZ {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfXYZ_change_array2(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXYZ_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HArray2OfXYZ_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HArray2OfXYZ_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXYZ_get_type_descriptor()) }
     }
 
     /// Upcast to TColgp_Array2OfXYZ
     pub fn as_array2_of_xyz(&self) -> &Array2OfXYZ {
-        crate::ffi::TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ(self)
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ(self as *const Self)) }
     }
 
     /// Upcast to TColgp_Array2OfXYZ (mutable)
-    pub fn as_array2_of_xyz_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Array2OfXYZ> {
-        crate::ffi::TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ_mut(self)
+    pub fn as_array2_of_xyz_mut(&mut self) -> &mut Array2OfXYZ {
+        unsafe {
+            &mut *(crate::ffi::TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ_mut(self as *mut Self))
+        }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHArray2OfXYZ> {
-        crate::ffi::TColgp_HArray2OfXYZ_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfXYZ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXYZ_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHArray2OfXYZ;
 
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfXYZ_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHArray2OfXYZ {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfXYZ
     pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfXYZ {
-        crate::ffi::HandleTColgpHArray2OfXYZ_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfXYZ_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfXYZ
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HArray2OfXYZ> {
-        crate::ffi::HandleTColgpHArray2OfXYZ_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfXYZ {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfXYZ_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2574,44 +3703,68 @@ impl HandleTColgpHArray2OfXYZ {
 
 pub use crate::ffi::TColgp_HSequenceOfDir as HSequenceOfDir;
 
+unsafe impl crate::CppDeletable for HSequenceOfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfDir_destructor(ptr);
+    }
+}
+
 impl HSequenceOfDir {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfDir_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir_ctor()) }
     }
 
-    pub fn new_sequenceofdir(theOther: &crate::ffi::TColgp_SequenceOfDir) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfDir_ctor_sequenceofdir(theOther)
+    pub fn new_sequenceofdir(theOther: &crate::ffi::TColgp_SequenceOfDir) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir_ctor_sequenceofdir(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HSequenceOfDir_get_type_name()
+    pub fn append(&mut self, theItem: &crate::ffi::gp_Dir) {
+        unsafe { crate::ffi::TColgp_HSequenceOfDir_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfDir_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HSequenceOfDir_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HSequenceOfDir_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfDir_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHSequenceOfDir> {
-        crate::ffi::TColgp_HSequenceOfDir_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfDir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfDir;
 
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfDir_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHSequenceOfDir {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir
     pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfDir {
-        crate::ffi::HandleTColgpHSequenceOfDir_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfDir_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfDir
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfDir> {
-        crate::ffi::HandleTColgpHSequenceOfDir_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfDir {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfDir_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2621,46 +3774,70 @@ impl HandleTColgpHSequenceOfDir {
 
 pub use crate::ffi::TColgp_HSequenceOfDir2d as HSequenceOfDir2d;
 
+unsafe impl crate::CppDeletable for HSequenceOfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfDir2d_destructor(ptr);
+    }
+}
+
 impl HSequenceOfDir2d {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfDir2d_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir2d_ctor()) }
     }
 
     pub fn new_sequenceofdir2d(
         theOther: &crate::ffi::TColgp_SequenceOfDir2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfDir2d_ctor_sequenceofdir2d(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir2d_ctor_sequenceofdir2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HSequenceOfDir2d_get_type_name()
+    pub fn append(&mut self, theItem: &crate::ffi::gp_Dir2d) {
+        unsafe { crate::ffi::TColgp_HSequenceOfDir2d_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfDir2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HSequenceOfDir2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HSequenceOfDir2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfDir2d_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHSequenceOfDir2d> {
-        crate::ffi::TColgp_HSequenceOfDir2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfDir2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfDir2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfDir2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHSequenceOfDir2d {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir2d
     pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfDir2d {
-        crate::ffi::HandleTColgpHSequenceOfDir2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfDir2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfDir2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfDir2d> {
-        crate::ffi::HandleTColgpHSequenceOfDir2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfDir2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfDir2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2670,44 +3847,68 @@ impl HandleTColgpHSequenceOfDir2d {
 
 pub use crate::ffi::TColgp_HSequenceOfPnt as HSequenceOfPnt;
 
+unsafe impl crate::CppDeletable for HSequenceOfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfPnt_destructor(ptr);
+    }
+}
+
 impl HSequenceOfPnt {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfPnt_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt_ctor()) }
     }
 
-    pub fn new_sequenceofpnt(theOther: &crate::ffi::TColgp_SequenceOfPnt) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfPnt_ctor_sequenceofpnt(theOther)
+    pub fn new_sequenceofpnt(theOther: &crate::ffi::TColgp_SequenceOfPnt) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt_ctor_sequenceofpnt(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HSequenceOfPnt_get_type_name()
+    pub fn append(&mut self, theItem: &crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::TColgp_HSequenceOfPnt_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HSequenceOfPnt_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HSequenceOfPnt_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHSequenceOfPnt> {
-        crate::ffi::TColgp_HSequenceOfPnt_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfPnt;
 
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfPnt_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHSequenceOfPnt {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt
     pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfPnt {
-        crate::ffi::HandleTColgpHSequenceOfPnt_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfPnt_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfPnt
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfPnt> {
-        crate::ffi::HandleTColgpHSequenceOfPnt_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfPnt {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfPnt_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2717,46 +3918,70 @@ impl HandleTColgpHSequenceOfPnt {
 
 pub use crate::ffi::TColgp_HSequenceOfPnt2d as HSequenceOfPnt2d;
 
+unsafe impl crate::CppDeletable for HSequenceOfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfPnt2d_destructor(ptr);
+    }
+}
+
 impl HSequenceOfPnt2d {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfPnt2d_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt2d_ctor()) }
     }
 
     pub fn new_sequenceofpnt2d(
         theOther: &crate::ffi::TColgp_SequenceOfPnt2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfPnt2d_ctor_sequenceofpnt2d(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt2d_ctor_sequenceofpnt2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HSequenceOfPnt2d_get_type_name()
+    pub fn append(&mut self, theItem: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::TColgp_HSequenceOfPnt2d_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HSequenceOfPnt2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HSequenceOfPnt2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt2d_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHSequenceOfPnt2d> {
-        crate::ffi::TColgp_HSequenceOfPnt2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfPnt2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfPnt2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHSequenceOfPnt2d {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt2d
     pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfPnt2d {
-        crate::ffi::HandleTColgpHSequenceOfPnt2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfPnt2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfPnt2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfPnt2d> {
-        crate::ffi::HandleTColgpHSequenceOfPnt2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfPnt2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfPnt2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2766,44 +3991,68 @@ impl HandleTColgpHSequenceOfPnt2d {
 
 pub use crate::ffi::TColgp_HSequenceOfVec as HSequenceOfVec;
 
+unsafe impl crate::CppDeletable for HSequenceOfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfVec_destructor(ptr);
+    }
+}
+
 impl HSequenceOfVec {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfVec_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec_ctor()) }
     }
 
-    pub fn new_sequenceofvec(theOther: &crate::ffi::TColgp_SequenceOfVec) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfVec_ctor_sequenceofvec(theOther)
+    pub fn new_sequenceofvec(theOther: &crate::ffi::TColgp_SequenceOfVec) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec_ctor_sequenceofvec(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HSequenceOfVec_get_type_name()
+    pub fn append(&mut self, theItem: &crate::ffi::gp_Vec) {
+        unsafe { crate::ffi::TColgp_HSequenceOfVec_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfVec_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HSequenceOfVec_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HSequenceOfVec_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfVec_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHSequenceOfVec> {
-        crate::ffi::TColgp_HSequenceOfVec_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfVec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfVec;
 
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfVec_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHSequenceOfVec {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec
     pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfVec {
-        crate::ffi::HandleTColgpHSequenceOfVec_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfVec_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfVec
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfVec> {
-        crate::ffi::HandleTColgpHSequenceOfVec_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfVec {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfVec_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2813,46 +4062,70 @@ impl HandleTColgpHSequenceOfVec {
 
 pub use crate::ffi::TColgp_HSequenceOfVec2d as HSequenceOfVec2d;
 
+unsafe impl crate::CppDeletable for HSequenceOfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfVec2d_destructor(ptr);
+    }
+}
+
 impl HSequenceOfVec2d {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfVec2d_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec2d_ctor()) }
     }
 
     pub fn new_sequenceofvec2d(
         theOther: &crate::ffi::TColgp_SequenceOfVec2d,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfVec2d_ctor_sequenceofvec2d(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec2d_ctor_sequenceofvec2d(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HSequenceOfVec2d_get_type_name()
+    pub fn append(&mut self, theItem: &crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::TColgp_HSequenceOfVec2d_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfVec2d_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HSequenceOfVec2d_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HSequenceOfVec2d_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfVec2d_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHSequenceOfVec2d> {
-        crate::ffi::TColgp_HSequenceOfVec2d_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfVec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec2d_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfVec2d;
 
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfVec2d_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHSequenceOfVec2d {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec2d
     pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfVec2d {
-        crate::ffi::HandleTColgpHSequenceOfVec2d_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfVec2d_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfVec2d
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfVec2d> {
-        crate::ffi::HandleTColgpHSequenceOfVec2d_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfVec2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfVec2d_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2862,44 +4135,66 @@ impl HandleTColgpHSequenceOfVec2d {
 
 pub use crate::ffi::TColgp_HSequenceOfXY as HSequenceOfXY;
 
+unsafe impl crate::CppDeletable for HSequenceOfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfXY_destructor(ptr);
+    }
+}
+
 impl HSequenceOfXY {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfXY_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXY_ctor()) }
     }
 
-    pub fn new_sequenceofxy(theOther: &crate::ffi::TColgp_SequenceOfXY) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfXY_ctor_sequenceofxy(theOther)
+    pub fn new_sequenceofxy(theOther: &crate::ffi::TColgp_SequenceOfXY) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXY_ctor_sequenceofxy(theOther))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HSequenceOfXY_get_type_name()
+    pub fn append(&mut self, theItem: &crate::ffi::gp_XY) {
+        unsafe { crate::ffi::TColgp_HSequenceOfXY_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfXY_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HSequenceOfXY_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HSequenceOfXY_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfXY_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHSequenceOfXY> {
-        crate::ffi::TColgp_HSequenceOfXY_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfXY> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXY_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfXY;
 
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfXY_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHSequenceOfXY {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfXY
     pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfXY {
-        crate::ffi::HandleTColgpHSequenceOfXY_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfXY_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfXY
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfXY> {
-        crate::ffi::HandleTColgpHSequenceOfXY_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfXY {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfXY_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2909,44 +4204,68 @@ impl HandleTColgpHSequenceOfXY {
 
 pub use crate::ffi::TColgp_HSequenceOfXYZ as HSequenceOfXYZ;
 
+unsafe impl crate::CppDeletable for HSequenceOfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfXYZ_destructor(ptr);
+    }
+}
+
 impl HSequenceOfXYZ {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfXYZ_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXYZ_ctor()) }
     }
 
-    pub fn new_sequenceofxyz(theOther: &crate::ffi::TColgp_SequenceOfXYZ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColgp_HSequenceOfXYZ_ctor_sequenceofxyz(theOther)
+    pub fn new_sequenceofxyz(theOther: &crate::ffi::TColgp_SequenceOfXYZ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXYZ_ctor_sequenceofxyz(
+                theOther,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::TColgp_HSequenceOfXYZ_get_type_name()
+    pub fn append(&mut self, theItem: &crate::ffi::gp_XYZ) {
+        unsafe { crate::ffi::TColgp_HSequenceOfXYZ_append(self as *mut Self, theItem) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfXYZ_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::TColgp_HSequenceOfXYZ_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::TColgp_HSequenceOfXYZ_get_type_descriptor()
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfXYZ_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColgpHSequenceOfXYZ> {
-        crate::ffi::TColgp_HSequenceOfXYZ_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfXYZ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXYZ_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfXYZ;
 
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfXYZ_destructor(ptr);
+    }
+}
+
 impl HandleTColgpHSequenceOfXYZ {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfXYZ
     pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfXYZ {
-        crate::ffi::HandleTColgpHSequenceOfXYZ_get(self)
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfXYZ_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfXYZ
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TColgp_HSequenceOfXYZ> {
-        crate::ffi::HandleTColgpHSequenceOfXYZ_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfXYZ {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfXYZ_get_mut(self as *mut Self)) }
     }
 }
 

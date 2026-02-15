@@ -12,9 +12,15 @@
 
 pub use crate::ffi::GeomInt_IntSS as IntSS;
 
+unsafe impl crate::CppDeletable for IntSS {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_IntSS_destructor(ptr);
+    }
+}
+
 impl IntSS {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomInt_IntSS_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_ctor()) }
     }
 
     /// performs general intersection of two surfaces just now
@@ -25,10 +31,12 @@ impl IntSS {
         Approx: bool,
         ApproxS1: bool,
         ApproxS2: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomInt_IntSS_ctor_handlegeomsurface2_real_bool3(
-            S1, S2, Tol, Approx, ApproxS1, ApproxS2,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_ctor_handlegeomsurface2_real_bool3(
+                S1, S2, Tol, Approx, ApproxS1, ApproxS2,
+            ))
+        }
     }
 
     /// performs general intersection of two surfaces just now
@@ -38,7 +46,7 @@ impl IntSS {
         Tol: f64,
         Approx: bool,
         ApproxS1: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface2_real_bool3(S1, S2, Tol, Approx, ApproxS1, false)
     }
 
@@ -48,7 +56,7 @@ impl IntSS {
         S2: &crate::ffi::HandleGeomSurface,
         Tol: f64,
         Approx: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface2_real_bool3(S1, S2, Tol, Approx, false, false)
     }
 
@@ -57,16 +65,142 @@ impl IntSS {
         S1: &crate::ffi::HandleGeomSurface,
         S2: &crate::ffi::HandleGeomSurface,
         Tol: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface2_real_bool3(S1, S2, Tol, true, false, false)
     }
 
-    pub fn point(&self, Index: i32) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::GeomInt_IntSS_point(self, Index)
+    /// general intersection of two surfaces
+    pub fn perform_handlegeomsurface2_real_bool3(
+        &mut self,
+        S1: &crate::ffi::HandleGeomSurface,
+        S2: &crate::ffi::HandleGeomSurface,
+        Tol: f64,
+        Approx: bool,
+        ApproxS1: bool,
+        ApproxS2: bool,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_IntSS_perform_handlegeomsurface2_real_bool3(
+                self as *mut Self,
+                S1,
+                S2,
+                Tol,
+                Approx,
+                ApproxS1,
+                ApproxS2,
+            )
+        }
     }
 
-    pub fn pnt2d(&self, Index: i32, OnFirst: bool) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::GeomInt_IntSS_pnt2d(self, Index, OnFirst)
+    /// general intersection using a starting point
+    pub fn perform_handlegeomsurface2_real5_bool3(
+        &mut self,
+        S1: &crate::ffi::HandleGeomSurface,
+        S2: &crate::ffi::HandleGeomSurface,
+        Tol: f64,
+        U1: f64,
+        V1: f64,
+        U2: f64,
+        V2: f64,
+        Approx: bool,
+        ApproxS1: bool,
+        ApproxS2: bool,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_IntSS_perform_handlegeomsurface2_real5_bool3(
+                self as *mut Self,
+                S1,
+                S2,
+                Tol,
+                U1,
+                V1,
+                U2,
+                V2,
+                Approx,
+                ApproxS1,
+                ApproxS2,
+            )
+        }
+    }
+
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::GeomInt_IntSS_is_done(self as *const Self) }
+    }
+
+    pub fn tol_reached3d(&self) -> f64 {
+        unsafe { crate::ffi::GeomInt_IntSS_tol_reached3d(self as *const Self) }
+    }
+
+    pub fn tol_reached2d(&self) -> f64 {
+        unsafe { crate::ffi::GeomInt_IntSS_tol_reached2d(self as *const Self) }
+    }
+
+    pub fn nb_lines(&self) -> i32 {
+        unsafe { crate::ffi::GeomInt_IntSS_nb_lines(self as *const Self) }
+    }
+
+    pub fn line(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
+        unsafe { &*(crate::ffi::GeomInt_IntSS_line(self as *const Self, Index)) }
+    }
+
+    pub fn has_line_on_s1(&self, Index: i32) -> bool {
+        unsafe { crate::ffi::GeomInt_IntSS_has_line_on_s1(self as *const Self, Index) }
+    }
+
+    pub fn line_on_s1(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
+        unsafe { &*(crate::ffi::GeomInt_IntSS_line_on_s1(self as *const Self, Index)) }
+    }
+
+    pub fn has_line_on_s2(&self, Index: i32) -> bool {
+        unsafe { crate::ffi::GeomInt_IntSS_has_line_on_s2(self as *const Self, Index) }
+    }
+
+    pub fn line_on_s2(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
+        unsafe { &*(crate::ffi::GeomInt_IntSS_line_on_s2(self as *const Self, Index)) }
+    }
+
+    pub fn nb_boundaries(&self) -> i32 {
+        unsafe { crate::ffi::GeomInt_IntSS_nb_boundaries(self as *const Self) }
+    }
+
+    pub fn boundary(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
+        unsafe { &*(crate::ffi::GeomInt_IntSS_boundary(self as *const Self, Index)) }
+    }
+
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::GeomInt_IntSS_nb_points(self as *const Self) }
+    }
+
+    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_point(self as *const Self, Index))
+        }
+    }
+
+    pub fn pnt2d(&self, Index: i32, OnFirst: bool) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_pnt2d(
+                self as *const Self,
+                Index,
+                OnFirst,
+            ))
+        }
+    }
+
+    pub fn set_tol_fix_tangents(&mut self, aTolCheck: f64, aTolAngCheck: f64) {
+        unsafe {
+            crate::ffi::GeomInt_IntSS_set_tol_fix_tangents(
+                self as *mut Self,
+                aTolCheck,
+                aTolAngCheck,
+            )
+        }
+    }
+
+    pub fn tol_fix_tangents(&mut self, aTolCheck: &mut f64, aTolAngCheck: &mut f64) {
+        unsafe {
+            crate::ffi::GeomInt_IntSS_tol_fix_tangents(self as *mut Self, aTolCheck, aTolAngCheck)
+        }
     }
 
     /// creates 2D-curve on given surface from given 3D-curve
@@ -80,9 +214,11 @@ impl IntSS {
         theTol: &mut f64,
         theSurface: &crate::ffi::HandleGeomSurface,
         theCurve: &crate::ffi::HandleGeomCurve,
-        theCurve2d: std::pin::Pin<&mut crate::ffi::HandleGeom2dCurve>,
+        theCurve2d: &mut crate::ffi::HandleGeom2dCurve,
     ) {
-        crate::ffi::GeomInt_IntSS_build_p_curves_real7_handlegeomsurface_handlegeomcurve_handlegeom2dcurve(theFirst, theLast, theUmin, theUmax, theVmin, theVmax, theTol, theSurface, theCurve, theCurve2d)
+        unsafe {
+            crate::ffi::GeomInt_IntSS_build_p_curves_real7_handlegeomsurface_handlegeomcurve_handlegeom2dcurve(theFirst, theLast, theUmin, theUmax, theVmin, theVmax, theTol, theSurface, theCurve, theCurve2d)
+        }
     }
 
     /// creates 2D-curve on given surface from given 3D-curve
@@ -92,9 +228,11 @@ impl IntSS {
         Tol: &mut f64,
         S: &crate::ffi::HandleGeomSurface,
         C: &crate::ffi::HandleGeomCurve,
-        C2d: std::pin::Pin<&mut crate::ffi::HandleGeom2dCurve>,
+        C2d: &mut crate::ffi::HandleGeom2dCurve,
     ) {
-        crate::ffi::GeomInt_IntSS_build_p_curves_real3_handlegeomsurface_handlegeomcurve_handlegeom2dcurve(f, l, Tol, S, C, C2d)
+        unsafe {
+            crate::ffi::GeomInt_IntSS_build_p_curves_real3_handlegeomsurface_handlegeomcurve_handlegeom2dcurve(f, l, Tol, S, C, C2d)
+        }
     }
 }
 
@@ -105,10 +243,37 @@ impl IntSS {
 /// Splits given Line.
 pub use crate::ffi::GeomInt_LineConstructor as LineConstructor;
 
+unsafe impl crate::CppDeletable for LineConstructor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomInt_LineConstructor_destructor(ptr);
+    }
+}
+
 impl LineConstructor {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::GeomInt_LineConstructor_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomInt_LineConstructor_ctor()) }
+    }
+
+    /// Splits line
+    pub fn perform(&mut self, L: &crate::ffi::HandleIntPatchLine) {
+        unsafe { crate::ffi::GeomInt_LineConstructor_perform(self as *mut Self, L) }
+    }
+
+    /// Returns True if splitting was successful
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::GeomInt_LineConstructor_is_done(self as *const Self) }
+    }
+
+    /// Returns number of splits
+    pub fn nb_parts(&self) -> i32 {
+        unsafe { crate::ffi::GeomInt_LineConstructor_nb_parts(self as *const Self) }
+    }
+
+    /// Return first and last parameters
+    /// for given index of split
+    pub fn part(&self, I: i32, WFirst: &mut f64, WLast: &mut f64) {
+        unsafe { crate::ffi::GeomInt_LineConstructor_part(self as *const Self, I, WFirst, WLast) }
     }
 }
 

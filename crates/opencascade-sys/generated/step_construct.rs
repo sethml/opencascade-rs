@@ -17,10 +17,42 @@
 /// tool for creating management entities around specific part (SDR).
 pub use crate::ffi::STEPConstruct_AP203Context as AP203Context;
 
+unsafe impl crate::CppDeletable for AP203Context {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPConstruct_AP203Context_destructor(ptr);
+    }
+}
+
 impl AP203Context {
     /// Creates tool and fills constant fields
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::STEPConstruct_AP203Context_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_AP203Context_ctor()) }
+    }
+
+    /// Clears all fields describing entities specific to each part
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_AP203Context_clear(self as *mut Self) }
+    }
+
+    /// Initializes constant fields (shared entities)
+    pub fn init_roles(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_AP203Context_init_roles(self as *mut Self) }
+    }
+
+    /// Initializes ClassificationOfficer and ClassificationDate
+    /// entities according to Security entity
+    pub fn init_security_requisites(&mut self) {
+        unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_security_requisites(self as *mut Self)
+        }
+    }
+
+    /// Initializes Approver and ApprovalDateTime
+    /// entities according to Approval entity
+    pub fn init_approval_requisites(&mut self) {
+        unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_approval_requisites(self as *mut Self)
+        }
     }
 }
 
@@ -37,33 +69,142 @@ impl AP203Context {
 /// by Actor
 pub use crate::ffi::STEPConstruct_ContextTool as ContextTool;
 
+unsafe impl crate::CppDeletable for ContextTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPConstruct_ContextTool_destructor(ptr);
+    }
+}
+
 impl ContextTool {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::STEPConstruct_ContextTool_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_ctor()) }
     }
 
-    pub fn get_a_cstatus(
-        self: std::pin::Pin<&mut Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::STEPConstruct_ContextTool_get_a_cstatus(self)
+    pub fn set_global_factor(&mut self, theGlobalFactor: &crate::ffi::StepData_Factors) {
+        unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_global_factor(
+                self as *mut Self,
+                theGlobalFactor,
+            )
+        }
+    }
+
+    pub fn add_apd(&mut self, enforce: bool) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_add_apd(self as *mut Self, enforce) }
+    }
+
+    /// Returns True if APD.schema_name is config_control_design
+    pub fn is_ap203(&self) -> bool {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap203(self as *const Self) }
+    }
+
+    /// Returns True if APD.schema_name is automotive_design
+    pub fn is_ap214(&self) -> bool {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap214(self as *const Self) }
+    }
+
+    /// Returns True if APD.schema_name is ap242_managed_model_based_3d_engineering
+    pub fn is_ap242(&self) -> bool {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap242(self as *const Self) }
+    }
+
+    pub fn get_a_cstatus(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_get_a_cstatus(
+                self as *mut Self,
+            ))
+        }
     }
 
     pub fn get_a_cschema_name(
-        self: std::pin::Pin<&mut Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::STEPConstruct_ContextTool_get_a_cschema_name(self)
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_get_a_cschema_name(
+                self as *mut Self,
+            ))
+        }
     }
 
-    pub fn get_a_cname(
-        self: std::pin::Pin<&mut Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::STEPConstruct_ContextTool_get_a_cname(self)
+    pub fn get_a_cyear(&mut self) -> i32 {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_get_a_cyear(self as *mut Self) }
+    }
+
+    pub fn get_a_cname(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_get_a_cname(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    pub fn set_a_cstatus(&mut self, status: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_a_cstatus(self as *mut Self, status) }
+    }
+
+    pub fn set_a_cschema_name(&mut self, schemaName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_a_cschema_name(self as *mut Self, schemaName)
+        }
+    }
+
+    pub fn set_a_cyear(&mut self, year: i32) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_a_cyear(self as *mut Self, year) }
+    }
+
+    pub fn set_a_cname(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_a_cname(self as *mut Self, name) }
+    }
+
+    /// Returns tool which maintains context specific for AP203
+    pub fn ap203_context(&mut self) -> &mut crate::ffi::STEPConstruct_AP203Context {
+        unsafe { &mut *(crate::ffi::STEPConstruct_ContextTool_ap203_context(self as *mut Self)) }
+    }
+
+    /// Returns current assembly level
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_level(self as *const Self) }
+    }
+
+    pub fn next_level(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_next_level(self as *mut Self) }
+    }
+
+    pub fn prev_level(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_prev_level(self as *mut Self) }
+    }
+
+    /// Changes current assembly level
+    pub fn set_level(&mut self, lev: i32) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_level(self as *mut Self, lev) }
+    }
+
+    /// Returns current index of assembly component on current level
+    pub fn index(&self) -> i32 {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_index(self as *const Self) }
+    }
+
+    pub fn next_index(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_next_index(self as *mut Self) }
+    }
+
+    pub fn prev_index(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_prev_index(self as *mut Self) }
+    }
+
+    /// Changes current index of assembly component on current level
+    pub fn set_index(&mut self, ind: i32) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_index(self as *mut Self, ind) }
     }
 
     /// Generates a product name basing on write.step.product.name
     /// parameter and current position in the assembly structure
-    pub fn get_product_name(&self) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::STEPConstruct_ContextTool_get_product_name(self)
+    pub fn get_product_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_get_product_name(
+                self as *const Self,
+            ))
+        }
     }
 }
 

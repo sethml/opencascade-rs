@@ -18,27 +18,54 @@ pub use crate::ffi::{mix_bnd, reparametrize, scale, scale_cub};
 /// constraints.
 pub use crate::ffi::Law_BSpFunc as BSpFunc;
 
+unsafe impl crate::CppDeletable for BSpFunc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Law_BSpFunc_destructor(ptr);
+    }
+}
+
 impl BSpFunc {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_BSpFunc_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_BSpFunc_ctor()) }
     }
 
     pub fn new_handlelawbspline_real2(
         C: &crate::ffi::HandleLawBSpline,
         First: f64,
         Last: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_BSpFunc_ctor_handlelawbspline_real2(C, First, Last)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Law_BSpFunc_ctor_handlelawbspline_real2(
+                C, First, Last,
+            ))
+        }
     }
 
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Law_BSpFunc_continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Law_BSpFunc_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::Law_BSpFunc_nb_intervals(self, S.into())
+        unsafe { crate::ffi::Law_BSpFunc_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    pub fn value(&mut self, X: f64) -> f64 {
+        unsafe { crate::ffi::Law_BSpFunc_value(self as *mut Self, X) }
+    }
+
+    pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
+        unsafe { crate::ffi::Law_BSpFunc_d1(self as *mut Self, X, F, D) }
+    }
+
+    pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
+        unsafe { crate::ffi::Law_BSpFunc_d2(self as *mut Self, X, F, D, D2) }
     }
 
     /// Returns a  law equivalent of  <me>  between
@@ -52,54 +79,83 @@ impl BSpFunc {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::Law_BSpFunc_trim(self, PFirst, PLast, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Law_BSpFunc_trim(
+                self as *const Self,
+                PFirst,
+                PLast,
+                Tol,
+            ))
+        }
     }
 
-    pub fn curve(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
-        crate::ffi::Law_BSpFunc_curve(self)
+    pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
+        unsafe { crate::ffi::Law_BSpFunc_bounds(self as *mut Self, PFirst, PLast) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Law_BSpFunc_get_type_name()
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_BSpFunc_curve(self as *const Self)) }
+    }
+
+    pub fn set_curve(&mut self, C: &crate::ffi::HandleLawBSpline) {
+        unsafe { crate::ffi::Law_BSpFunc_set_curve(self as *mut Self, C) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Law_BSpFunc_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Law_BSpFunc_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Law_BSpFunc_get_type_descriptor()
+        unsafe { &*(crate::ffi::Law_BSpFunc_get_type_descriptor()) }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        crate::ffi::Law_BSpFunc_as_Law_Function(self)
+        unsafe { &*(crate::ffi::Law_BSpFunc_as_Law_Function(self as *const Self)) }
     }
 
     /// Upcast to Law_Function (mutable)
-    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
-        crate::ffi::Law_BSpFunc_as_Law_Function_mut(self)
+    pub fn as_function_mut(&mut self) -> &mut Function {
+        unsafe { &mut *(crate::ffi::Law_BSpFunc_as_Law_Function_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawBSpFunc> {
-        crate::ffi::Law_BSpFunc_to_handle(obj)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawBSpFunc> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_BSpFunc_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleLawBSpFunc;
 
+unsafe impl crate::CppDeletable for HandleLawBSpFunc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLawBSpFunc_destructor(ptr);
+    }
+}
+
 impl HandleLawBSpFunc {
     /// Dereference this Handle to access the underlying Law_BSpFunc
     pub fn get(&self) -> &crate::ffi::Law_BSpFunc {
-        crate::ffi::HandleLawBSpFunc_get(self)
+        unsafe { &*(crate::ffi::HandleLawBSpFunc_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_BSpFunc
-    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_BSpFunc> {
-        crate::ffi::HandleLawBSpFunc_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Law_BSpFunc {
+        unsafe { &mut *(crate::ffi::HandleLawBSpFunc_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Law_BSpFunc> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::HandleLawBSpFunc_to_HandleLawFunction(self)
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawBSpFunc_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -161,6 +217,12 @@ impl HandleLawBSpFunc {
 /// a practical guide Gerald Farin
 pub use crate::ffi::Law_BSpline as BSpline;
 
+unsafe impl crate::CppDeletable for BSpline {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Law_BSpline_destructor(ptr);
+    }
+}
+
 impl BSpline {
     /// Creates a  non-rational B_spline curve   on  the
     /// basis <Knots, Multiplicities> of degree <Degree>.
@@ -170,14 +232,18 @@ impl BSpline {
         Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
         Degree: i32,
         Periodic: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_BSpline_ctor_array1ofreal2_array1ofinteger_int_bool(
-            Poles,
-            Knots,
-            Multiplicities,
-            Degree,
-            Periodic,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Law_BSpline_ctor_array1ofreal2_array1ofinteger_int_bool(
+                    Poles,
+                    Knots,
+                    Multiplicities,
+                    Degree,
+                    Periodic,
+                ),
+            )
+        }
     }
 
     /// Creates  a rational B_spline  curve  on the basis
@@ -189,15 +255,19 @@ impl BSpline {
         Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
         Degree: i32,
         Periodic: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_BSpline_ctor_array1ofreal3_array1ofinteger_int_bool(
-            Poles,
-            Weights,
-            Knots,
-            Multiplicities,
-            Degree,
-            Periodic,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Law_BSpline_ctor_array1ofreal3_array1ofinteger_int_bool(
+                    Poles,
+                    Weights,
+                    Knots,
+                    Multiplicities,
+                    Degree,
+                    Periodic,
+                ),
+            )
+        }
     }
 
     /// Creates a  non-rational B_spline curve   on  the
@@ -207,7 +277,7 @@ impl BSpline {
         Knots: &crate::ffi::TColStd_Array1OfReal,
         Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
         Degree: i32,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_array1ofreal2_array1ofinteger_int_bool(
             Poles,
             Knots,
@@ -225,7 +295,7 @@ impl BSpline {
         Knots: &crate::ffi::TColStd_Array1OfReal,
         Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
         Degree: i32,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_array1ofreal3_array1ofinteger_int_bool(
             Poles,
             Weights,
@@ -234,6 +304,228 @@ impl BSpline {
             Degree,
             false,
         )
+    }
+
+    /// Increase the degree to  <Degree>. Nothing is  done
+    /// if  <Degree>   is lower or  equal  to the  current
+    /// degree.
+    pub fn increase_degree(&mut self, Degree: i32) {
+        unsafe { crate::ffi::Law_BSpline_increase_degree(self as *mut Self, Degree) }
+    }
+
+    /// Increases the multiplicity  of the knot <Index> to
+    /// <M>.
+    ///
+    /// If   <M>   is   lower   or  equal   to  the current
+    /// multiplicity nothing is done. If <M> is higher than
+    /// the degree the degree is used.
+    /// If <Index> is not in [FirstUKnotIndex, LastUKnotIndex]
+    pub fn increase_multiplicity_int2(&mut self, Index: i32, M: i32) {
+        unsafe { crate::ffi::Law_BSpline_increase_multiplicity_int2(self as *mut Self, Index, M) }
+    }
+
+    /// Increases  the  multiplicities   of  the knots  in
+    /// [I1,I2] to <M>.
+    ///
+    /// For each knot if  <M>  is  lower  or equal  to  the
+    /// current multiplicity  nothing  is  done. If <M>  is
+    /// higher than the degree the degree is used.
+    /// If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex]
+    pub fn increase_multiplicity_int3(&mut self, I1: i32, I2: i32, M: i32) {
+        unsafe { crate::ffi::Law_BSpline_increase_multiplicity_int3(self as *mut Self, I1, I2, M) }
+    }
+
+    /// Increment  the  multiplicities   of  the knots  in
+    /// [I1,I2] by <M>.
+    ///
+    /// If <M> is not positive nithing is done.
+    ///
+    /// For   each  knot   the resulting   multiplicity  is
+    /// limited to the Degree.
+    /// If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex]
+    pub fn increment_multiplicity(&mut self, I1: i32, I2: i32, M: i32) {
+        unsafe { crate::ffi::Law_BSpline_increment_multiplicity(self as *mut Self, I1, I2, M) }
+    }
+
+    /// Inserts a knot value in the sequence of knots.  If
+    /// <U>  is an  existing knot     the multiplicity  is
+    /// increased by <M>.
+    ///
+    /// If U  is  not  on the parameter  range  nothing is
+    /// done.
+    ///
+    /// If the multiplicity is negative or null nothing is
+    /// done. The  new   multiplicity  is limited  to  the
+    /// degree.
+    ///
+    /// The  tolerance criterion  for  knots  equality  is
+    /// the max of Epsilon(U) and ParametricTolerance.
+    pub fn insert_knot(&mut self, U: f64, M: i32, ParametricTolerance: f64, Add: bool) {
+        unsafe {
+            crate::ffi::Law_BSpline_insert_knot(self as *mut Self, U, M, ParametricTolerance, Add)
+        }
+    }
+
+    /// Decrement the knots multiplicity to <M>. If  M is
+    /// 0 the knot   is  removed. The  Poles  sequence   is
+    /// modified.
+    ///
+    /// As there are two ways to  compute the new poles the
+    /// average is  computed if  the distance is lower than
+    /// the <Tolerance>, else False is returned.
+    ///
+    /// A low tolerance is used to prevent the modification
+    /// of the curve.
+    ///
+    /// A high tolerance is used to "smooth" the curve.
+    ///
+    /// Raised if Index is not in the range
+    /// [FirstUKnotIndex, LastUKnotIndex]
+    /// pole insertion and pole removing
+    /// this operation is limited to the Uniform or QuasiUniform
+    /// BSplineCurve. The knot values are modified . If the BSpline is
+    /// NonUniform or Piecewise Bezier an exception Construction error
+    /// is raised.
+    pub fn remove_knot(&mut self, Index: i32, M: i32, Tolerance: f64) -> bool {
+        unsafe { crate::ffi::Law_BSpline_remove_knot(self as *mut Self, Index, M, Tolerance) }
+    }
+
+    /// Changes the direction of parametrization of <me>. The Knot
+    /// sequence is modified, the FirstParameter and the
+    /// LastParameter are not modified. The StartPoint of the
+    /// initial curve becomes the EndPoint of the reversed curve
+    /// and the EndPoint of the initial curve becomes the StartPoint
+    /// of the reversed curve.
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::Law_BSpline_reverse(self as *mut Self) }
+    }
+
+    /// Returns the  parameter on the  reversed  curve for
+    /// the point of parameter U on <me>.
+    ///
+    /// returns UFirst + ULast - U
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_reversed_parameter(self as *const Self, U) }
+    }
+
+    /// Segments the curve between U1 and U2.
+    /// The control points are modified, the first and the last point
+    /// are not the same.
+    /// Warnings :
+    /// Even if <me> is not closed it can become closed after the
+    /// segmentation for example if U1 or U2 are out of the bounds
+    /// of the curve <me> or if the curve makes loop.
+    /// After the segmentation the length of a curve can be null.
+    /// raises if U2 < U1.
+    pub fn segment(&mut self, U1: f64, U2: f64) {
+        unsafe { crate::ffi::Law_BSpline_segment(self as *mut Self, U1, U2) }
+    }
+
+    /// Changes the knot of range Index.
+    /// The multiplicity of the knot is not modified.
+    /// Raised if K >= Knots(Index+1) or K <= Knots(Index-1).
+    /// Raised if Index < 1 || Index > NbKnots
+    pub fn set_knot_int_real(&mut self, Index: i32, K: f64) {
+        unsafe { crate::ffi::Law_BSpline_set_knot_int_real(self as *mut Self, Index, K) }
+    }
+
+    /// Changes the knot of range Index with its multiplicity.
+    /// You can increase the multiplicity of a knot but it is
+    /// not allowed to decrease the multiplicity of an existing knot.
+    ///
+    /// Raised if K >= Knots(Index+1) or K <= Knots(Index-1).
+    /// Raised if M is greater than Degree or lower than the previous
+    /// multiplicity of knot of range Index.
+    /// Raised if Index < 1 || Index > NbKnots
+    pub fn set_knot_int_real_int(&mut self, Index: i32, K: f64, M: i32) {
+        unsafe { crate::ffi::Law_BSpline_set_knot_int_real_int(self as *mut Self, Index, K, M) }
+    }
+
+    /// returns the parameter normalized within
+    /// the period if the curve is periodic : otherwise
+    /// does not do anything
+    pub fn periodic_normalization(&self, U: &mut f64) {
+        unsafe { crate::ffi::Law_BSpline_periodic_normalization(self as *const Self, U) }
+    }
+
+    /// Makes a closed B-spline into a periodic curve. The curve is
+    /// periodic if the knot sequence is periodic and if the curve is
+    /// closed (The tolerance criterion is Resolution from gp).
+    /// The period T is equal to Knot(LastUKnotIndex) -
+    /// Knot(FirstUKnotIndex). A periodic B-spline can be uniform
+    /// or not.
+    /// Raised if the curve is not closed.
+    pub fn set_periodic(&mut self) {
+        unsafe { crate::ffi::Law_BSpline_set_periodic(self as *mut Self) }
+    }
+
+    /// Set the origin of a periodic curve at Knot(index)
+    /// KnotVector and poles are modified.
+    /// Raised if the curve is not periodic
+    /// Raised if index not in the range
+    /// [FirstUKnotIndex , LastUKnotIndex]
+    pub fn set_origin(&mut self, Index: i32) {
+        unsafe { crate::ffi::Law_BSpline_set_origin(self as *mut Self, Index) }
+    }
+
+    /// Makes a non periodic curve. If the curve was non periodic
+    /// the curve is not modified.
+    pub fn set_not_periodic(&mut self) {
+        unsafe { crate::ffi::Law_BSpline_set_not_periodic(self as *mut Self) }
+    }
+
+    /// Substitutes the Pole of range Index with P.
+    ///
+    /// Raised if Index < 1 || Index > NbPoles
+    pub fn set_pole_int_real(&mut self, Index: i32, P: f64) {
+        unsafe { crate::ffi::Law_BSpline_set_pole_int_real(self as *mut Self, Index, P) }
+    }
+
+    /// Substitutes the pole and the weight of range Index.
+    /// If the curve <me> is not rational it can become rational
+    /// If the curve was rational it can become non rational
+    ///
+    /// Raised if Index < 1 || Index > NbPoles
+    /// Raised if Weight <= 0.0
+    pub fn set_pole_int_real2(&mut self, Index: i32, P: f64, Weight: f64) {
+        unsafe { crate::ffi::Law_BSpline_set_pole_int_real2(self as *mut Self, Index, P, Weight) }
+    }
+
+    /// Changes the weight for the pole of range Index.
+    /// If the curve was non rational it can become rational.
+    /// If the curve was rational it can become non rational.
+    ///
+    /// Raised if Index < 1 || Index > NbPoles
+    /// Raised if Weight <= 0.0
+    pub fn set_weight(&mut self, Index: i32, Weight: f64) {
+        unsafe { crate::ffi::Law_BSpline_set_weight(self as *mut Self, Index, Weight) }
+    }
+
+    /// Returns the continuity of the curve, the curve is at least C0.
+    /// Raised if N < 0.
+    pub fn is_cn(&self, N: i32) -> bool {
+        unsafe { crate::ffi::Law_BSpline_is_cn(self as *const Self, N) }
+    }
+
+    /// Returns true if the distance between the first point and the
+    /// last point of the curve is lower or equal to Resolution
+    /// from package gp.
+    /// Warnings :
+    /// The first and the last point can be different from the first
+    /// pole and the last pole of the curve.
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::Law_BSpline_is_closed(self as *const Self) }
+    }
+
+    /// Returns True if the curve is periodic.
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::Law_BSpline_is_periodic(self as *const Self) }
+    }
+
+    /// Returns True if the weights are not identical.
+    /// The tolerance criterion is Epsilon of the class Real.
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::Law_BSpline_is_rational(self as *const Self) }
     }
 
     /// Returns the global continuity of the curve :
@@ -249,7 +541,128 @@ impl BSpline {
     /// Knots. In the interior of a knot span the curve is infinitely
     /// continuously differentiable.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Law_BSpline_continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Law_BSpline_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Computation of value and derivatives
+    pub fn degree(&self) -> i32 {
+        unsafe { crate::ffi::Law_BSpline_degree(self as *const Self) }
+    }
+
+    pub fn value(&self, U: f64) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_value(self as *const Self, U) }
+    }
+
+    pub fn d0(&self, U: f64, P: &mut f64) {
+        unsafe { crate::ffi::Law_BSpline_d0(self as *const Self, U, P) }
+    }
+
+    pub fn d1(&self, U: f64, P: &mut f64, V1: &mut f64) {
+        unsafe { crate::ffi::Law_BSpline_d1(self as *const Self, U, P, V1) }
+    }
+
+    pub fn d2(&self, U: f64, P: &mut f64, V1: &mut f64, V2: &mut f64) {
+        unsafe { crate::ffi::Law_BSpline_d2(self as *const Self, U, P, V1, V2) }
+    }
+
+    pub fn d3(&self, U: f64, P: &mut f64, V1: &mut f64, V2: &mut f64, V3: &mut f64) {
+        unsafe { crate::ffi::Law_BSpline_d3(self as *const Self, U, P, V1, V2, V3) }
+    }
+
+    /// The following functions computes the point  of parameter U and
+    /// the  derivatives at   this  point on  the  B-spline curve  arc
+    /// defined between the knot FromK1  and the knot  ToK2.  U can be
+    /// out of bounds   [Knot  (FromK1), Knot   (ToK2)] but   for  the
+    /// computation we only  use  the definition of the  curve between
+    /// these  two  knots. This  method is  useful  to  compute  local
+    /// derivative,  if the order of  continuity of the whole curve is
+    /// not   greater  enough.   Inside   the parametric   domain Knot
+    /// (FromK1), Knot (ToK2)  the evaluations are the  same as if  we
+    /// consider  the whole  definition of the  curve.   Of course the
+    /// evaluations are different outside this parametric domain.
+    pub fn dn(&self, U: f64, N: i32) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_dn(self as *const Self, U, N) }
+    }
+
+    pub fn local_value(&self, U: f64, FromK1: i32, ToK2: i32) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_local_value(self as *const Self, U, FromK1, ToK2) }
+    }
+
+    pub fn local_d0(&self, U: f64, FromK1: i32, ToK2: i32, P: &mut f64) {
+        unsafe { crate::ffi::Law_BSpline_local_d0(self as *const Self, U, FromK1, ToK2, P) }
+    }
+
+    pub fn local_d1(&self, U: f64, FromK1: i32, ToK2: i32, P: &mut f64, V1: &mut f64) {
+        unsafe { crate::ffi::Law_BSpline_local_d1(self as *const Self, U, FromK1, ToK2, P, V1) }
+    }
+
+    pub fn local_d2(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+        P: &mut f64,
+        V1: &mut f64,
+        V2: &mut f64,
+    ) {
+        unsafe { crate::ffi::Law_BSpline_local_d2(self as *const Self, U, FromK1, ToK2, P, V1, V2) }
+    }
+
+    pub fn local_d3(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+        P: &mut f64,
+        V1: &mut f64,
+        V2: &mut f64,
+        V3: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::Law_BSpline_local_d3(self as *const Self, U, FromK1, ToK2, P, V1, V2, V3)
+        }
+    }
+
+    pub fn local_dn(&self, U: f64, FromK1: i32, ToK2: i32, N: i32) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_local_dn(self as *const Self, U, FromK1, ToK2, N) }
+    }
+
+    /// Returns the last point of the curve.
+    /// Warnings :
+    /// The last point of the curve is different from the last
+    /// pole of the curve if the multiplicity of the last knot
+    /// is lower than Degree.
+    pub fn end_point(&self) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_end_point(self as *const Self) }
+    }
+
+    /// For a B-spline curve the first parameter (which gives the start
+    /// point of the curve) is a knot value but if the multiplicity of
+    /// the first knot index is lower than Degree + 1 it is not the
+    /// first knot of the curve. This method computes the index of the
+    /// knot corresponding to the first parameter.
+    pub fn first_u_knot_index(&self) -> i32 {
+        unsafe { crate::ffi::Law_BSpline_first_u_knot_index(self as *const Self) }
+    }
+
+    /// Computes the parametric value of the start point of the curve.
+    /// It is a knot value.
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_first_parameter(self as *const Self) }
+    }
+
+    /// Returns the knot of range Index. When there is a knot
+    /// with a multiplicity greater than 1 the knot is not repeated.
+    /// The method Multiplicity can be used to get the multiplicity
+    /// of the Knot.
+    /// Raised if Index < 1 or Index > NbKnots
+    pub fn knot(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_knot(self as *const Self, Index) }
     }
 
     /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
@@ -264,47 +677,185 @@ impl BSpline {
     /// else the curve is non uniform.
     /// The tolerance criterion is Epsilon from class Real.
     pub fn knot_distribution(&self) -> crate::geom_abs::BSplKnotDistribution {
-        crate::geom_abs::BSplKnotDistribution::try_from(crate::ffi::Law_BSpline_knot_distribution(
-            self,
-        ))
-        .unwrap()
+        unsafe {
+            crate::geom_abs::BSplKnotDistribution::try_from(
+                crate::ffi::Law_BSpline_knot_distribution(self as *const Self),
+            )
+            .unwrap()
+        }
     }
 
-    pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
-        crate::ffi::Law_BSpline_copy(self)
+    /// For a BSpline curve the last parameter (which gives the
+    /// end point of the curve) is a knot value but if the
+    /// multiplicity of the last knot index is lower than
+    /// Degree + 1 it is not the last knot of the curve. This
+    /// method computes the index of the knot corresponding to
+    /// the last parameter.
+    pub fn last_u_knot_index(&self) -> i32 {
+        unsafe { crate::ffi::Law_BSpline_last_u_knot_index(self as *const Self) }
+    }
+
+    /// Computes the parametric value of the end point of the curve.
+    /// It is a knot value.
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_last_parameter(self as *const Self) }
+    }
+
+    /// Locates the parametric value U in the sequence of knots.
+    /// If "WithKnotRepetition" is True we consider the knot's
+    /// representation with repetition of multiple knot value,
+    /// otherwise  we consider the knot's representation with
+    /// no repetition of multiple knot values.
+    /// Knots (I1) <= U <= Knots (I2)
+    /// . if I1 = I2  U is a knot value (the tolerance criterion
+    /// ParametricTolerance is used).
+    /// . if I1 < 1  => U < Knots (1) - Abs(ParametricTolerance)
+    /// . if I2 > NbKnots => U > Knots (NbKnots) + Abs(ParametricTolerance)
+    pub fn locate_u(
+        &self,
+        U: f64,
+        ParametricTolerance: f64,
+        I1: &mut i32,
+        I2: &mut i32,
+        WithKnotRepetition: bool,
+    ) {
+        unsafe {
+            crate::ffi::Law_BSpline_locate_u(
+                self as *const Self,
+                U,
+                ParametricTolerance,
+                I1,
+                I2,
+                WithKnotRepetition,
+            )
+        }
+    }
+
+    /// Returns the multiplicity of the knots of range Index.
+    /// Raised if Index < 1 or Index > NbKnots
+    pub fn multiplicity(&self, Index: i32) -> i32 {
+        unsafe { crate::ffi::Law_BSpline_multiplicity(self as *const Self, Index) }
+    }
+
+    /// Returns the number of knots. This method returns the number of
+    /// knot without repetition of multiple knots.
+    pub fn nb_knots(&self) -> i32 {
+        unsafe { crate::ffi::Law_BSpline_nb_knots(self as *const Self) }
+    }
+
+    /// Returns the number of poles
+    pub fn nb_poles(&self) -> i32 {
+        unsafe { crate::ffi::Law_BSpline_nb_poles(self as *const Self) }
+    }
+
+    /// Returns the pole of range Index.
+    /// Raised if Index < 1 or Index > NbPoles.
+    pub fn pole(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_pole(self as *const Self, Index) }
+    }
+
+    /// Returns the start point of the curve.
+    /// Warnings :
+    /// This point is different from the first pole of the curve if the
+    /// multiplicity of the first knot is lower than Degree.
+    pub fn start_point(&self) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_start_point(self as *const Self) }
+    }
+
+    /// Returns the weight of the pole of range Index .
+    /// Raised if Index < 1 or Index > NbPoles.
+    pub fn weight(&self, Index: i32) -> f64 {
+        unsafe { crate::ffi::Law_BSpline_weight(self as *const Self, Index) }
+    }
+
+    /// Changes the value of the Law at parameter U to NewValue.
+    /// and makes its derivative at U be derivative.
+    /// StartingCondition = -1 means first can move
+    /// EndingCondition   = -1 means last point can move
+    /// StartingCondition = 0 means the first point cannot move
+    /// EndingCondition   = 0 means the last point cannot move
+    /// StartingCondition = 1 means the first point and tangent cannot move
+    /// EndingCondition   = 1 means the last point and tangent cannot move
+    /// and so forth
+    /// ErrorStatus != 0 means that there are not enough degree of freedom
+    /// with the constrain to deform the curve accordingly
+    pub fn move_point_and_tangent(
+        &mut self,
+        U: f64,
+        NewValue: f64,
+        Derivative: f64,
+        Tolerance: f64,
+        StartingCondition: i32,
+        EndingCondition: i32,
+        ErrorStatus: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Law_BSpline_move_point_and_tangent(
+                self as *mut Self,
+                U,
+                NewValue,
+                Derivative,
+                Tolerance,
+                StartingCondition,
+                EndingCondition,
+                ErrorStatus,
+            )
+        }
+    }
+
+    /// given Tolerance3D returns UTolerance
+    /// such that if f(t) is the curve we have
+    /// | t1 - t0| < Utolerance ===>
+    /// |f(t1) - f(t0)| < Tolerance3D
+    pub fn resolution(&self, Tolerance3D: f64, UTolerance: &mut f64) {
+        unsafe { crate::ffi::Law_BSpline_resolution(self as *const Self, Tolerance3D, UTolerance) }
+    }
+
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_BSpline_copy(self as *const Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Law_BSpline_dynamic_type(self as *const Self)) }
     }
 
     /// Returns the value of the maximum degree of the normalized
     /// B-spline basis functions in this package.
     pub fn max_degree() -> i32 {
-        crate::ffi::Law_BSpline_max_degree()
+        unsafe { crate::ffi::Law_BSpline_max_degree() }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Law_BSpline_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Law_BSpline_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Law_BSpline_get_type_descriptor()
+        unsafe { &*(crate::ffi::Law_BSpline_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
-        crate::ffi::Law_BSpline_to_handle(obj)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_BSpline_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleLawBSpline;
 
+unsafe impl crate::CppDeletable for HandleLawBSpline {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLawBSpline_destructor(ptr);
+    }
+}
+
 impl HandleLawBSpline {
     /// Dereference this Handle to access the underlying Law_BSpline
     pub fn get(&self) -> &crate::ffi::Law_BSpline {
-        crate::ffi::HandleLawBSpline_get(self)
+        unsafe { &*(crate::ffi::HandleLawBSpline_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_BSpline
-    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_BSpline> {
-        crate::ffi::HandleLawBSpline_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Law_BSpline {
+        unsafe { &mut *(crate::ffi::HandleLawBSpline_get_mut(self as *mut Self)) }
     }
 }
 
@@ -333,6 +884,12 @@ impl HandleLawBSpline {
 /// BSplineCurve.
 pub use crate::ffi::Law_BSplineKnotSplitting as BSplineKnotSplitting;
 
+unsafe impl crate::CppDeletable for BSplineKnotSplitting {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Law_BSplineKnotSplitting_destructor(ptr);
+    }
+}
+
 impl BSplineKnotSplitting {
     /// Locates the knot values which correspond to the segmentation of
     /// the curve into arcs with a continuity equal to ContinuityRange.
@@ -341,8 +898,28 @@ impl BSplineKnotSplitting {
     pub fn new_handlelawbspline_int(
         BasisLaw: &crate::ffi::HandleLawBSpline,
         ContinuityRange: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_BSplineKnotSplitting_ctor_handlelawbspline_int(BasisLaw, ContinuityRange)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Law_BSplineKnotSplitting_ctor_handlelawbspline_int(
+                    BasisLaw,
+                    ContinuityRange,
+                ),
+            )
+        }
+    }
+
+    /// Returns the number of knots corresponding to the splitting.
+    pub fn nb_splits(&self) -> i32 {
+        unsafe { crate::ffi::Law_BSplineKnotSplitting_nb_splits(self as *const Self) }
+    }
+
+    /// Returns the index of the knot corresponding to the splitting
+    /// of range Index.
+    ///
+    /// Raised if Index < 1 or Index > NbSplits
+    pub fn split_value(&self, Index: i32) -> i32 {
+        unsafe { crate::ffi::Law_BSplineKnotSplitting_split_value(self as *const Self, Index) }
     }
 }
 
@@ -361,25 +938,52 @@ impl BSplineKnotSplitting {
 /// SPECIFIQUE AUX CONGES!!!
 pub use crate::ffi::Law_Composite as Composite;
 
+unsafe impl crate::CppDeletable for Composite {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Law_Composite_destructor(ptr);
+    }
+}
+
 impl Composite {
     /// Construct an empty Law
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_Composite_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Composite_ctor()) }
     }
 
     /// Construct an empty, trimmed Law
-    pub fn new_real3(First: f64, Last: f64, Tol: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_Composite_ctor_real3(First, Last, Tol)
+    pub fn new_real3(First: f64, Last: f64, Tol: f64) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Composite_ctor_real3(First, Last, Tol)) }
     }
 
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Law_Composite_continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Law_Composite_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::Law_Composite_nb_intervals(self, S.into())
+        unsafe { crate::ffi::Law_Composite_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// Returns the value at parameter X.
+    pub fn value(&mut self, X: f64) -> f64 {
+        unsafe { crate::ffi::Law_Composite_value(self as *mut Self, X) }
+    }
+
+    /// Returns the value and the first derivative at parameter X.
+    pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
+        unsafe { crate::ffi::Law_Composite_d1(self as *mut Self, X, F, D) }
+    }
+
+    /// Returns the value, first and second derivatives
+    /// at parameter X.
+    pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
+        unsafe { crate::ffi::Law_Composite_d2(self as *mut Self, X, F, D, D2) }
     }
 
     /// Returns a  law equivalent of  <me>  between
@@ -393,52 +997,92 @@ impl Composite {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::Law_Composite_trim(self, PFirst, PLast, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Law_Composite_trim(
+                self as *const Self,
+                PFirst,
+                PLast,
+                Tol,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Law_Composite_get_type_name()
+    /// Returns the parametric bounds of the function.
+    pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
+        unsafe { crate::ffi::Law_Composite_bounds(self as *mut Self, PFirst, PLast) }
+    }
+
+    /// Returns the elementary  function of the composite used
+    /// to compute at parameter W.
+    pub fn change_elementary_law(&mut self, W: f64) -> &mut crate::ffi::HandleLawFunction {
+        unsafe { &mut *(crate::ffi::Law_Composite_change_elementary_law(self as *mut Self, W)) }
+    }
+
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::Law_Composite_is_periodic(self as *const Self) }
+    }
+
+    pub fn set_periodic(&mut self) {
+        unsafe { crate::ffi::Law_Composite_set_periodic(self as *mut Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Law_Composite_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Law_Composite_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Law_Composite_get_type_descriptor()
+        unsafe { &*(crate::ffi::Law_Composite_get_type_descriptor()) }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        crate::ffi::Law_Composite_as_Law_Function(self)
+        unsafe { &*(crate::ffi::Law_Composite_as_Law_Function(self as *const Self)) }
     }
 
     /// Upcast to Law_Function (mutable)
-    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
-        crate::ffi::Law_Composite_as_Law_Function_mut(self)
+    pub fn as_function_mut(&mut self) -> &mut Function {
+        unsafe { &mut *(crate::ffi::Law_Composite_as_Law_Function_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawComposite> {
-        crate::ffi::Law_Composite_to_handle(obj)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleLawComposite> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Composite_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleLawComposite;
 
+unsafe impl crate::CppDeletable for HandleLawComposite {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLawComposite_destructor(ptr);
+    }
+}
+
 impl HandleLawComposite {
     /// Dereference this Handle to access the underlying Law_Composite
     pub fn get(&self) -> &crate::ffi::Law_Composite {
-        crate::ffi::HandleLawComposite_get(self)
+        unsafe { &*(crate::ffi::HandleLawComposite_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_Composite
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Law_Composite> {
-        crate::ffi::HandleLawComposite_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Composite {
+        unsafe { &mut *(crate::ffi::HandleLawComposite_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Law_Composite> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::HandleLawComposite_to_HandleLawFunction(self)
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawComposite_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -449,19 +1093,51 @@ impl HandleLawComposite {
 /// Loi constante
 pub use crate::ffi::Law_Constant as Constant;
 
+unsafe impl crate::CppDeletable for Constant {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Law_Constant_destructor(ptr);
+    }
+}
+
 impl Constant {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_Constant_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Constant_ctor()) }
+    }
+
+    /// Set the radius and the range of the constant Law.
+    pub fn set(&mut self, Radius: f64, PFirst: f64, PLast: f64) {
+        unsafe { crate::ffi::Law_Constant_set(self as *mut Self, Radius, PFirst, PLast) }
     }
 
     /// Returns GeomAbs_CN
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Law_Constant_continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Law_Constant_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Returns  1
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::Law_Constant_nb_intervals(self, S.into())
+        unsafe { crate::ffi::Law_Constant_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// Returns the value at parameter X.
+    pub fn value(&mut self, X: f64) -> f64 {
+        unsafe { crate::ffi::Law_Constant_value(self as *mut Self, X) }
+    }
+
+    /// Returns the value and the first derivative at parameter X.
+    pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
+        unsafe { crate::ffi::Law_Constant_d1(self as *mut Self, X, F, D) }
+    }
+
+    /// Returns the value, first and second derivatives
+    /// at parameter X.
+    pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
+        unsafe { crate::ffi::Law_Constant_d2(self as *mut Self, X, F, D, D2) }
     }
 
     pub fn trim(
@@ -469,50 +1145,76 @@ impl Constant {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::Law_Constant_trim(self, PFirst, PLast, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Law_Constant_trim(
+                self as *const Self,
+                PFirst,
+                PLast,
+                Tol,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Law_Constant_get_type_name()
+    /// Returns the parametric bounds of the function.
+    pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
+        unsafe { crate::ffi::Law_Constant_bounds(self as *mut Self, PFirst, PLast) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Law_Constant_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Law_Constant_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Law_Constant_get_type_descriptor()
+        unsafe { &*(crate::ffi::Law_Constant_get_type_descriptor()) }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        crate::ffi::Law_Constant_as_Law_Function(self)
+        unsafe { &*(crate::ffi::Law_Constant_as_Law_Function(self as *const Self)) }
     }
 
     /// Upcast to Law_Function (mutable)
-    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
-        crate::ffi::Law_Constant_as_Law_Function_mut(self)
+    pub fn as_function_mut(&mut self) -> &mut Function {
+        unsafe { &mut *(crate::ffi::Law_Constant_as_Law_Function_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawConstant> {
-        crate::ffi::Law_Constant_to_handle(obj)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawConstant> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Constant_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleLawConstant;
 
+unsafe impl crate::CppDeletable for HandleLawConstant {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLawConstant_destructor(ptr);
+    }
+}
+
 impl HandleLawConstant {
     /// Dereference this Handle to access the underlying Law_Constant
     pub fn get(&self) -> &crate::ffi::Law_Constant {
-        crate::ffi::HandleLawConstant_get(self)
+        unsafe { &*(crate::ffi::HandleLawConstant_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_Constant
-    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_Constant> {
-        crate::ffi::HandleLawConstant_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Constant {
+        unsafe { &mut *(crate::ffi::HandleLawConstant_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Law_Constant> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::HandleLawConstant_to_HandleLawFunction(self)
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawConstant_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -523,15 +1225,43 @@ impl HandleLawConstant {
 /// Root class for evolution laws.
 pub use crate::ffi::Law_Function as Function;
 
+unsafe impl crate::CppDeletable for Function {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Law_Function_destructor(ptr);
+    }
+}
+
 impl Function {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Law_Function_continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Law_Function_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::Law_Function_nb_intervals(self, S.into())
+        unsafe { crate::ffi::Law_Function_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// Returns the value of the function at the point of parameter X.
+    pub fn value(&mut self, X: f64) -> f64 {
+        unsafe { crate::ffi::Law_Function_value(self as *mut Self, X) }
+    }
+
+    /// Returns the value F and the first derivative D of the
+    /// function at the point of parameter X.
+    pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
+        unsafe { crate::ffi::Law_Function_d1(self as *mut Self, X, F, D) }
+    }
+
+    /// Returns the value, first and seconde derivatives
+    /// at parameter X.
+    pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
+        unsafe { crate::ffi::Law_Function_d2(self as *mut Self, X, F, D, D2) }
     }
 
     /// Returns a  law equivalent of  <me>  between
@@ -545,30 +1275,52 @@ impl Function {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::Law_Function_trim(self, PFirst, PLast, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Law_Function_trim(
+                self as *const Self,
+                PFirst,
+                PLast,
+                Tol,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Law_Function_get_type_name()
+    /// Returns the parametric bounds of the function.
+    pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
+        unsafe { crate::ffi::Law_Function_bounds(self as *mut Self, PFirst, PLast) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Law_Function_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Law_Function_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Law_Function_get_type_descriptor()
+        unsafe { &*(crate::ffi::Law_Function_get_type_descriptor()) }
     }
 }
 
 pub use crate::ffi::HandleLawFunction;
 
+unsafe impl crate::CppDeletable for HandleLawFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLawFunction_destructor(ptr);
+    }
+}
+
 impl HandleLawFunction {
     /// Dereference this Handle to access the underlying Law_Function
     pub fn get(&self) -> &crate::ffi::Law_Function {
-        crate::ffi::HandleLawFunction_get(self)
+        unsafe { &*(crate::ffi::HandleLawFunction_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_Function
-    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_Function> {
-        crate::ffi::HandleLawFunction_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Function {
+        unsafe { &mut *(crate::ffi::HandleLawFunction_get_mut(self as *mut Self)) }
     }
 }
 
@@ -580,70 +1332,180 @@ impl HandleLawFunction {
 /// of parameter and value pairs (wi, radi)
 pub use crate::ffi::Law_Interpol as Interpol;
 
+unsafe impl crate::CppDeletable for Interpol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Law_Interpol_destructor(ptr);
+    }
+}
+
 impl Interpol {
     /// Constructs an empty interpolative evolution law.
     /// The function Set is used to define the law.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_Interpol_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Interpol_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Law_Interpol_get_type_name()
+    /// Defines this evolution law by interpolating the set of 2D
+    /// points ParAndRad. The Y coordinate of a point of
+    /// ParAndRad is the value of the function at the parameter
+    /// point given by its X coordinate.
+    /// If Periodic is true, this function is assumed to be periodic.
+    /// Warning
+    /// -   The X coordinates of points in the table ParAndRad
+    /// must be given in ascendant order.
+    /// -   If Periodic is true, the first and last Y coordinates of
+    /// points in the table ParAndRad are assumed to be
+    /// equal. In addition, with the second syntax, Dd and Df
+    /// are also assumed to be equal. If this is not the case,
+    /// Set uses the first value(s) as last value(s).
+    pub fn set_array1ofpnt2d_bool(
+        &mut self,
+        ParAndRad: &crate::ffi::TColgp_Array1OfPnt2d,
+        Periodic: bool,
+    ) {
+        unsafe {
+            crate::ffi::Law_Interpol_set_array1ofpnt2d_bool(self as *mut Self, ParAndRad, Periodic)
+        }
+    }
+
+    pub fn set_in_relative_array1ofpnt2d_real2_bool(
+        &mut self,
+        ParAndRad: &crate::ffi::TColgp_Array1OfPnt2d,
+        Ud: f64,
+        Uf: f64,
+        Periodic: bool,
+    ) {
+        unsafe {
+            crate::ffi::Law_Interpol_set_in_relative_array1ofpnt2d_real2_bool(
+                self as *mut Self,
+                ParAndRad,
+                Ud,
+                Uf,
+                Periodic,
+            )
+        }
+    }
+
+    /// Defines this evolution law by interpolating the set of 2D
+    /// points ParAndRad. The Y coordinate of a point of
+    /// ParAndRad is the value of the function at the parameter
+    /// point given by its X coordinate.
+    /// If Periodic is true, this function is assumed to be periodic.
+    /// In the second syntax, Dd and Df define the values of
+    /// the first derivative of the function at its first and last points.
+    /// Warning
+    /// -   The X coordinates of points in the table ParAndRad
+    /// must be given in ascendant order.
+    /// -   If Periodic is true, the first and last Y coordinates of
+    /// points in the table ParAndRad are assumed to be
+    /// equal. In addition, with the second syntax, Dd and Df
+    /// are also assumed to be equal. If this is not the case,
+    /// Set uses the first value(s) as last value(s).
+    pub fn set_array1ofpnt2d_real2_bool(
+        &mut self,
+        ParAndRad: &crate::ffi::TColgp_Array1OfPnt2d,
+        Dd: f64,
+        Df: f64,
+        Periodic: bool,
+    ) {
+        unsafe {
+            crate::ffi::Law_Interpol_set_array1ofpnt2d_real2_bool(
+                self as *mut Self,
+                ParAndRad,
+                Dd,
+                Df,
+                Periodic,
+            )
+        }
+    }
+
+    pub fn set_in_relative_array1ofpnt2d_real4_bool(
+        &mut self,
+        ParAndRad: &crate::ffi::TColgp_Array1OfPnt2d,
+        Ud: f64,
+        Uf: f64,
+        Dd: f64,
+        Df: f64,
+        Periodic: bool,
+    ) {
+        unsafe {
+            crate::ffi::Law_Interpol_set_in_relative_array1ofpnt2d_real4_bool(
+                self as *mut Self,
+                ParAndRad,
+                Ud,
+                Uf,
+                Dd,
+                Df,
+                Periodic,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Law_Interpol_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Law_Interpol_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Law_Interpol_get_type_descriptor()
+        unsafe { &*(crate::ffi::Law_Interpol_get_type_descriptor()) }
     }
 
     /// Upcast to Law_BSpFunc
     pub fn as_b_sp_func(&self) -> &BSpFunc {
-        crate::ffi::Law_Interpol_as_Law_BSpFunc(self)
+        unsafe { &*(crate::ffi::Law_Interpol_as_Law_BSpFunc(self as *const Self)) }
     }
 
     /// Upcast to Law_BSpFunc (mutable)
-    pub fn as_b_sp_func_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BSpFunc> {
-        crate::ffi::Law_Interpol_as_Law_BSpFunc_mut(self)
+    pub fn as_b_sp_func_mut(&mut self) -> &mut BSpFunc {
+        unsafe { &mut *(crate::ffi::Law_Interpol_as_Law_BSpFunc_mut(self as *mut Self)) }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        crate::ffi::Law_Interpol_as_Law_Function(self)
+        unsafe { &*(crate::ffi::Law_Interpol_as_Law_Function(self as *const Self)) }
     }
 
     /// Upcast to Law_Function (mutable)
-    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
-        crate::ffi::Law_Interpol_as_Law_Function_mut(self)
+    pub fn as_function_mut(&mut self) -> &mut Function {
+        unsafe { &mut *(crate::ffi::Law_Interpol_as_Law_Function_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawInterpol> {
-        crate::ffi::Law_Interpol_to_handle(obj)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawInterpol> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Interpol_to_handle(obj.into_raw())) }
     }
 
     /// Inherited from Law_BSpFunc: Continuity()
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Law_Interpol_inherited_Continuity(self))
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Law_Interpol_inherited_Continuity(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Inherited from Law_BSpFunc: NbIntervals()
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::Law_Interpol_inherited_NbIntervals(self, S.into())
+        unsafe { crate::ffi::Law_Interpol_inherited_NbIntervals(self as *const Self, S.into()) }
     }
 
     /// Inherited from Law_BSpFunc: Value()
-    pub fn value(self: std::pin::Pin<&mut Self>, X: f64) -> f64 {
-        crate::ffi::Law_Interpol_inherited_Value(self, X)
+    pub fn value(&mut self, X: f64) -> f64 {
+        unsafe { crate::ffi::Law_Interpol_inherited_Value(self as *mut Self, X) }
     }
 
     /// Inherited from Law_BSpFunc: D1()
-    pub fn d1(self: std::pin::Pin<&mut Self>, X: f64, F: &mut f64, D: &mut f64) {
-        crate::ffi::Law_Interpol_inherited_D1(self, X, F, D)
+    pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
+        unsafe { crate::ffi::Law_Interpol_inherited_D1(self as *mut Self, X, F, D) }
     }
 
     /// Inherited from Law_BSpFunc: D2()
-    pub fn d2(self: std::pin::Pin<&mut Self>, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
-        crate::ffi::Law_Interpol_inherited_D2(self, X, F, D, D2)
+    pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
+        unsafe { crate::ffi::Law_Interpol_inherited_D2(self as *mut Self, X, F, D, D2) }
     }
 
     /// Inherited from Law_BSpFunc: Trim()
@@ -652,47 +1514,70 @@ impl Interpol {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::Law_Interpol_inherited_Trim(self, PFirst, PLast, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Law_Interpol_inherited_Trim(
+                self as *const Self,
+                PFirst,
+                PLast,
+                Tol,
+            ))
+        }
     }
 
     /// Inherited from Law_BSpFunc: Bounds()
-    pub fn bounds(self: std::pin::Pin<&mut Self>, PFirst: &mut f64, PLast: &mut f64) {
-        crate::ffi::Law_Interpol_inherited_Bounds(self, PFirst, PLast)
+    pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
+        unsafe { crate::ffi::Law_Interpol_inherited_Bounds(self as *mut Self, PFirst, PLast) }
     }
 
     /// Inherited from Law_BSpFunc: Curve()
-    pub fn curve(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
-        crate::ffi::Law_Interpol_inherited_Curve(self)
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Law_Interpol_inherited_Curve(self as *const Self))
+        }
     }
 
     /// Inherited from Law_BSpFunc: SetCurve()
-    pub fn set_curve(self: std::pin::Pin<&mut Self>, C: &crate::ffi::HandleLawBSpline) {
-        crate::ffi::Law_Interpol_inherited_SetCurve(self, C)
+    pub fn set_curve(&mut self, C: &crate::ffi::HandleLawBSpline) {
+        unsafe { crate::ffi::Law_Interpol_inherited_SetCurve(self as *mut Self, C) }
     }
 }
 
 pub use crate::ffi::HandleLawInterpol;
 
+unsafe impl crate::CppDeletable for HandleLawInterpol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLawInterpol_destructor(ptr);
+    }
+}
+
 impl HandleLawInterpol {
     /// Dereference this Handle to access the underlying Law_Interpol
     pub fn get(&self) -> &crate::ffi::Law_Interpol {
-        crate::ffi::HandleLawInterpol_get(self)
+        unsafe { &*(crate::ffi::HandleLawInterpol_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_Interpol
-    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_Interpol> {
-        crate::ffi::HandleLawInterpol_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Interpol {
+        unsafe { &mut *(crate::ffi::HandleLawInterpol_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Law_Interpol> to Handle<Law_BSpFunc>
-    pub fn to_handle_b_sp_func(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpFunc> {
-        crate::ffi::HandleLawInterpol_to_HandleLawBSpFunc(self)
+    pub fn to_handle_b_sp_func(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpFunc> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawInterpol_to_HandleLawBSpFunc(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast Handle<Law_Interpol> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::HandleLawInterpol_to_HandleLawFunction(self)
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawInterpol_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -709,6 +1594,12 @@ impl HandleLawInterpol {
 /// given. The curve will than be only C1
 pub use crate::ffi::Law_Interpolate as Interpolate;
 
+unsafe impl crate::CppDeletable for Interpolate {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Law_Interpolate_destructor(ptr);
+    }
+}
+
 impl Interpolate {
     /// Tolerance is to check if  the points are not too close
     /// to one an  other.  It is  also  used to check   if the
@@ -719,12 +1610,16 @@ impl Interpolate {
         Points: &crate::ffi::HandleTColStdHArray1OfReal,
         PeriodicFlag: bool,
         Tolerance: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_Interpolate_ctor_handletcolstdharray1ofreal_bool_real(
-            Points,
-            PeriodicFlag,
-            Tolerance,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Law_Interpolate_ctor_handletcolstdharray1ofreal_bool_real(
+                    Points,
+                    PeriodicFlag,
+                    Tolerance,
+                ),
+            )
+        }
     }
 
     /// Tolerance is to check if  the points are not too close
@@ -737,13 +1632,40 @@ impl Interpolate {
         Parameters: &crate::ffi::HandleTColStdHArray1OfReal,
         PeriodicFlag: bool,
         Tolerance: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_Interpolate_ctor_handletcolstdharray1ofreal2_bool_real(
-            Points,
-            Parameters,
-            PeriodicFlag,
-            Tolerance,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Law_Interpolate_ctor_handletcolstdharray1ofreal2_bool_real(
+                    Points,
+                    Parameters,
+                    PeriodicFlag,
+                    Tolerance,
+                ),
+            )
+        }
+    }
+
+    /// loads initial and final tangents if any.
+    pub fn load(&mut self, InitialTangent: f64, FinalTangent: f64) {
+        unsafe { crate::ffi::Law_Interpolate_load(self as *mut Self, InitialTangent, FinalTangent) }
+    }
+
+    /// Clears the tangents if any
+    pub fn clear_tangents(&mut self) {
+        unsafe { crate::ffi::Law_Interpolate_clear_tangents(self as *mut Self) }
+    }
+
+    /// Makes the interpolation
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::Law_Interpolate_perform(self as *mut Self) }
+    }
+
+    pub fn curve(&self) -> &crate::ffi::HandleLawBSpline {
+        unsafe { &*(crate::ffi::Law_Interpolate_curve(self as *const Self)) }
+    }
+
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::Law_Interpolate_is_done(self as *const Self) }
     }
 }
 
@@ -754,20 +1676,54 @@ impl Interpolate {
 /// Describes an linear evolution law.
 pub use crate::ffi::Law_Linear as Linear;
 
+unsafe impl crate::CppDeletable for Linear {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Law_Linear_destructor(ptr);
+    }
+}
+
 impl Linear {
     /// Constructs an empty linear evolution law.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_Linear_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Linear_ctor()) }
+    }
+
+    /// Defines this linear evolution law by assigning both:
+    /// -   the bounds Pdeb and Pfin of the parameter, and
+    /// -   the values Valdeb and Valfin of the function at these
+    /// two parametric bounds.
+    pub fn set(&mut self, Pdeb: f64, Valdeb: f64, Pfin: f64, Valfin: f64) {
+        unsafe { crate::ffi::Law_Linear_set(self as *mut Self, Pdeb, Valdeb, Pfin, Valfin) }
     }
 
     /// Returns GeomAbs_CN
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Law_Linear_continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Law_Linear_continuity(self as *const Self))
+                .unwrap()
+        }
     }
 
     /// Returns  1
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::Law_Linear_nb_intervals(self, S.into())
+        unsafe { crate::ffi::Law_Linear_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// Returns the value of this function at the point of parameter X.
+    pub fn value(&mut self, X: f64) -> f64 {
+        unsafe { crate::ffi::Law_Linear_value(self as *mut Self, X) }
+    }
+
+    /// Returns the value F and the first derivative D of this
+    /// function at the point of parameter X.
+    pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
+        unsafe { crate::ffi::Law_Linear_d1(self as *mut Self, X, F, D) }
+    }
+
+    /// Returns the value, first and second derivatives
+    /// at parameter X.
+    pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
+        unsafe { crate::ffi::Law_Linear_d2(self as *mut Self, X, F, D, D2) }
     }
 
     /// Returns a  law equivalent of  <me>  between
@@ -781,50 +1737,76 @@ impl Linear {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::Law_Linear_trim(self, PFirst, PLast, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Law_Linear_trim(
+                self as *const Self,
+                PFirst,
+                PLast,
+                Tol,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Law_Linear_get_type_name()
+    /// Returns the parametric bounds of the function.
+    pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
+        unsafe { crate::ffi::Law_Linear_bounds(self as *mut Self, PFirst, PLast) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Law_Linear_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Law_Linear_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Law_Linear_get_type_descriptor()
+        unsafe { &*(crate::ffi::Law_Linear_get_type_descriptor()) }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        crate::ffi::Law_Linear_as_Law_Function(self)
+        unsafe { &*(crate::ffi::Law_Linear_as_Law_Function(self as *const Self)) }
     }
 
     /// Upcast to Law_Function (mutable)
-    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
-        crate::ffi::Law_Linear_as_Law_Function_mut(self)
+    pub fn as_function_mut(&mut self) -> &mut Function {
+        unsafe { &mut *(crate::ffi::Law_Linear_as_Law_Function_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawLinear> {
-        crate::ffi::Law_Linear_to_handle(obj)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawLinear> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Linear_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleLawLinear;
 
+unsafe impl crate::CppDeletable for HandleLawLinear {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLawLinear_destructor(ptr);
+    }
+}
+
 impl HandleLawLinear {
     /// Dereference this Handle to access the underlying Law_Linear
     pub fn get(&self) -> &crate::ffi::Law_Linear {
-        crate::ffi::HandleLawLinear_get(self)
+        unsafe { &*(crate::ffi::HandleLawLinear_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_Linear
-    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_Linear> {
-        crate::ffi::HandleLawLinear_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Linear {
+        unsafe { &mut *(crate::ffi::HandleLawLinear_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Law_Linear> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::HandleLawLinear_to_HandleLawFunction(self)
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawLinear_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -835,68 +1817,113 @@ impl HandleLawLinear {
 /// Describes an "S" evolution law.
 pub use crate::ffi::Law_S as S;
 
+unsafe impl crate::CppDeletable for S {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Law_S_destructor(ptr);
+    }
+}
+
 impl S {
     /// Constructs an empty "S" evolution law.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Law_S_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_S_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Law_S_get_type_name()
+    /// Defines this S evolution law by assigning both:
+    /// -   the bounds Pdeb and Pfin of the parameter, and
+    /// -   the values Valdeb and Valfin of the function at these
+    /// two parametric bounds.
+    /// The function is assumed to have the first derivatives
+    /// equal to 0 at the two parameter points Pdeb and Pfin.
+    pub fn set_real4(&mut self, Pdeb: f64, Valdeb: f64, Pfin: f64, Valfin: f64) {
+        unsafe { crate::ffi::Law_S_set_real4(self as *mut Self, Pdeb, Valdeb, Pfin, Valfin) }
+    }
+
+    /// Defines this S evolution law by assigning
+    /// -   the bounds Pdeb and Pfin of the parameter,
+    /// -   the values Valdeb and Valfin of the function at these
+    /// two parametric bounds, and
+    /// -   the values Ddeb and Dfin of the first derivative of the
+    /// function at these two parametric bounds.
+    pub fn set_real6(
+        &mut self,
+        Pdeb: f64,
+        Valdeb: f64,
+        Ddeb: f64,
+        Pfin: f64,
+        Valfin: f64,
+        Dfin: f64,
+    ) {
+        unsafe {
+            crate::ffi::Law_S_set_real6(self as *mut Self, Pdeb, Valdeb, Ddeb, Pfin, Valfin, Dfin)
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Law_S_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Law_S_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Law_S_get_type_descriptor()
+        unsafe { &*(crate::ffi::Law_S_get_type_descriptor()) }
     }
 
     /// Upcast to Law_BSpFunc
     pub fn as_b_sp_func(&self) -> &BSpFunc {
-        crate::ffi::Law_S_as_Law_BSpFunc(self)
+        unsafe { &*(crate::ffi::Law_S_as_Law_BSpFunc(self as *const Self)) }
     }
 
     /// Upcast to Law_BSpFunc (mutable)
-    pub fn as_b_sp_func_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BSpFunc> {
-        crate::ffi::Law_S_as_Law_BSpFunc_mut(self)
+    pub fn as_b_sp_func_mut(&mut self) -> &mut BSpFunc {
+        unsafe { &mut *(crate::ffi::Law_S_as_Law_BSpFunc_mut(self as *mut Self)) }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        crate::ffi::Law_S_as_Law_Function(self)
+        unsafe { &*(crate::ffi::Law_S_as_Law_Function(self as *const Self)) }
     }
 
     /// Upcast to Law_Function (mutable)
-    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
-        crate::ffi::Law_S_as_Law_Function_mut(self)
+    pub fn as_function_mut(&mut self) -> &mut Function {
+        unsafe { &mut *(crate::ffi::Law_S_as_Law_Function_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawS> {
-        crate::ffi::Law_S_to_handle(obj)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawS> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_S_to_handle(obj.into_raw())) }
     }
 
     /// Inherited from Law_BSpFunc: Continuity()
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::Law_S_inherited_Continuity(self)).unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Law_S_inherited_Continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
     /// Inherited from Law_BSpFunc: NbIntervals()
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        crate::ffi::Law_S_inherited_NbIntervals(self, S.into())
+        unsafe { crate::ffi::Law_S_inherited_NbIntervals(self as *const Self, S.into()) }
     }
 
     /// Inherited from Law_BSpFunc: Value()
-    pub fn value(self: std::pin::Pin<&mut Self>, X: f64) -> f64 {
-        crate::ffi::Law_S_inherited_Value(self, X)
+    pub fn value(&mut self, X: f64) -> f64 {
+        unsafe { crate::ffi::Law_S_inherited_Value(self as *mut Self, X) }
     }
 
     /// Inherited from Law_BSpFunc: D1()
-    pub fn d1(self: std::pin::Pin<&mut Self>, X: f64, F: &mut f64, D: &mut f64) {
-        crate::ffi::Law_S_inherited_D1(self, X, F, D)
+    pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
+        unsafe { crate::ffi::Law_S_inherited_D1(self as *mut Self, X, F, D) }
     }
 
     /// Inherited from Law_BSpFunc: D2()
-    pub fn d2(self: std::pin::Pin<&mut Self>, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
-        crate::ffi::Law_S_inherited_D2(self, X, F, D, D2)
+    pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
+        unsafe { crate::ffi::Law_S_inherited_D2(self as *mut Self, X, F, D, D2) }
     }
 
     /// Inherited from Law_BSpFunc: Trim()
@@ -905,47 +1932,68 @@ impl S {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::Law_S_inherited_Trim(self, PFirst, PLast, Tol)
+    ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Law_S_inherited_Trim(
+                self as *const Self,
+                PFirst,
+                PLast,
+                Tol,
+            ))
+        }
     }
 
     /// Inherited from Law_BSpFunc: Bounds()
-    pub fn bounds(self: std::pin::Pin<&mut Self>, PFirst: &mut f64, PLast: &mut f64) {
-        crate::ffi::Law_S_inherited_Bounds(self, PFirst, PLast)
+    pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
+        unsafe { crate::ffi::Law_S_inherited_Bounds(self as *mut Self, PFirst, PLast) }
     }
 
     /// Inherited from Law_BSpFunc: Curve()
-    pub fn curve(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpline> {
-        crate::ffi::Law_S_inherited_Curve(self)
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_S_inherited_Curve(self as *const Self)) }
     }
 
     /// Inherited from Law_BSpFunc: SetCurve()
-    pub fn set_curve(self: std::pin::Pin<&mut Self>, C: &crate::ffi::HandleLawBSpline) {
-        crate::ffi::Law_S_inherited_SetCurve(self, C)
+    pub fn set_curve(&mut self, C: &crate::ffi::HandleLawBSpline) {
+        unsafe { crate::ffi::Law_S_inherited_SetCurve(self as *mut Self, C) }
     }
 }
 
 pub use crate::ffi::HandleLawS;
 
+unsafe impl crate::CppDeletable for HandleLawS {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLawS_destructor(ptr);
+    }
+}
+
 impl HandleLawS {
     /// Dereference this Handle to access the underlying Law_S
     pub fn get(&self) -> &crate::ffi::Law_S {
-        crate::ffi::HandleLawS_get(self)
+        unsafe { &*(crate::ffi::HandleLawS_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_S
-    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::Law_S> {
-        crate::ffi::HandleLawS_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Law_S {
+        unsafe { &mut *(crate::ffi::HandleLawS_get_mut(self as *mut Self)) }
     }
 
     /// Upcast Handle<Law_S> to Handle<Law_BSpFunc>
-    pub fn to_handle_b_sp_func(&self) -> cxx::UniquePtr<crate::ffi::HandleLawBSpFunc> {
-        crate::ffi::HandleLawS_to_HandleLawBSpFunc(self)
+    pub fn to_handle_b_sp_func(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpFunc> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawS_to_HandleLawBSpFunc(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast Handle<Law_S> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
-        crate::ffi::HandleLawS_to_HandleLawFunction(self)
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleLawS_to_HandleLawFunction(
+                self as *const Self,
+            ))
+        }
     }
 }
 

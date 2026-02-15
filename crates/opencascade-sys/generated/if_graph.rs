@@ -23,6 +23,12 @@
 /// then, analyse to set those entities into sub-parts
 pub use crate::ffi::IFGraph_SubPartsIterator as SubPartsIterator;
 
+unsafe impl crate::CppDeletable for SubPartsIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IFGraph_SubPartsIterator_destructor(ptr);
+    }
+}
+
 impl SubPartsIterator {
     /// Creates with a Graph, whole or parts of it
     /// whole True  : works on the entire Model
@@ -31,26 +37,113 @@ impl SubPartsIterator {
     pub fn new_graph_bool(
         agraph: &crate::ffi::Interface_Graph,
         whole: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IFGraph_SubPartsIterator_ctor_graph_bool(agraph, whole)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_ctor_graph_bool(
+                agraph, whole,
+            ))
+        }
     }
 
     /// Creates a SubPartIterator from another one and gets its Data
     /// Note that only non-empty sub-parts are taken into account
     /// PartNum is set to the last one
     pub fn new_subpartsiterator(
-        other: std::pin::Pin<&mut crate::ffi::IFGraph_SubPartsIterator>,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IFGraph_SubPartsIterator_ctor_subpartsiterator(other)
+        other: &mut crate::ffi::IFGraph_SubPartsIterator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_ctor_subpartsiterator(
+                other,
+            ))
+        }
+    }
+
+    /// Gets Parts from another SubPartsIterator (in addition to the
+    /// ones already recorded)
+    /// Error if both SubPartsIterators are not based on the same Model
+    pub fn get_parts(&mut self, other: &mut crate::ffi::IFGraph_SubPartsIterator) {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_get_parts(self as *mut Self, other) }
     }
 
     /// Returns the Model with which this Iterator was created
-    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::IFGraph_SubPartsIterator_model(self)
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_model(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Adds an empty part and sets it to receive entities
+    pub fn add_part(&mut self) {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_add_part(self as *mut Self) }
+    }
+
+    /// Returns count of registered parts
+    pub fn nb_parts(&self) -> i32 {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_nb_parts(self as *const Self) }
+    }
+
+    /// Returns numero of part which currently receives entities
+    /// (0 at load time)
+    pub fn part_num(&self) -> i32 {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_part_num(self as *const Self) }
+    }
+
+    /// Sets SubPartIterator to get Entities (by GetFromEntity &
+    /// GetFromIter) into load status, to be analysed later
+    pub fn set_load(&mut self) {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_set_load(self as *mut Self) }
+    }
+
+    /// Sets numero of receiving part to a new value
+    /// Error if not in range (1-NbParts)
+    pub fn set_part_num(&mut self, num: i32) {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_set_part_num(self as *mut Self, num) }
+    }
+
+    /// Erases data (parts, entities) : "me" becomes empty and in
+    /// load status
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_reset(self as *mut Self) }
+    }
+
+    /// Called by Clear, this method allows evaluation just before
+    /// iteration; its default is doing nothing, it is designed to
+    /// be redefined
+    pub fn evaluate(&mut self) {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_evaluate(self as *mut Self) }
     }
 
     /// Same as above, but under the form of a Graph
-    pub fn loaded_graph(&self) -> cxx::UniquePtr<crate::ffi::Interface_Graph> {
-        crate::ffi::IFGraph_SubPartsIterator_loaded_graph(self)
+    pub fn loaded_graph(&self) -> crate::OwnedPtr<crate::ffi::Interface_Graph> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_loaded_graph(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Sets iteration to its beginning; calls Evaluate
+    pub fn start(&mut self) {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_start(self as *mut Self) }
+    }
+
+    /// Returns True if there are more sub-parts to iterate on
+    /// Note : an empty sub-part is not taken in account by Iteration
+    pub fn more(&mut self) -> bool {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_more(self as *mut Self) }
+    }
+
+    /// Sets iteration to the next sub-part
+    /// if there is not, IsSingle-Entities will raises an exception
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_next(self as *mut Self) }
+    }
+
+    /// Returns True if current sub-part is single (has only one Entity)
+    /// Error if there is no sub-part to iterate now
+    pub fn is_single(&self) -> bool {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_is_single(self as *const Self) }
     }
 }

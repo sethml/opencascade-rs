@@ -14,37 +14,110 @@
 /// Works both with adaptors and curves.
 pub use crate::ffi::Geom2dEvaluator_Curve as Curve;
 
+unsafe impl crate::CppDeletable for Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Geom2dEvaluator_Curve_destructor(ptr);
+    }
+}
+
 impl Curve {
+    /// Value of 2D curve
+    pub fn d0(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2dEvaluator_Curve_d0(self as *const Self, theU, theValue) }
+    }
+
+    /// Value and first derivatives of curve
+    pub fn d1(
+        &self,
+        theU: f64,
+        theValue: &mut crate::ffi::gp_Pnt2d,
+        theD1: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe { crate::ffi::Geom2dEvaluator_Curve_d1(self as *const Self, theU, theValue, theD1) }
+    }
+
+    /// Value, first and second derivatives of curve
+    pub fn d2(
+        &self,
+        theU: f64,
+        theValue: &mut crate::ffi::gp_Pnt2d,
+        theD1: &mut crate::ffi::gp_Vec2d,
+        theD2: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_d2(self as *const Self, theU, theValue, theD1, theD2)
+        }
+    }
+
+    /// Value, first, second and third derivatives of curve
+    pub fn d3(
+        &self,
+        theU: f64,
+        theValue: &mut crate::ffi::gp_Pnt2d,
+        theD1: &mut crate::ffi::gp_Vec2d,
+        theD2: &mut crate::ffi::gp_Vec2d,
+        theD3: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2dEvaluator_Curve_d3(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+                theD2,
+                theD3,
+            )
+        }
+    }
+
     /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
-    pub fn dn(&self, theU: f64, theDerU: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
-        crate::ffi::Geom2dEvaluator_Curve_dn(self, theU, theDerU)
+    pub fn dn(&self, theU: f64, theDerU: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dEvaluator_Curve_dn(
+                self as *const Self,
+                theU,
+                theDerU,
+            ))
+        }
     }
 
-    pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
-        crate::ffi::Geom2dEvaluator_Curve_shallow_copy(self)
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dEvaluator_Curve_shallow_copy(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::Geom2dEvaluator_Curve_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Geom2dEvaluator_Curve_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Geom2dEvaluator_Curve_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::Geom2dEvaluator_Curve_get_type_descriptor()
+        unsafe { &*(crate::ffi::Geom2dEvaluator_Curve_get_type_descriptor()) }
     }
 }
 
 pub use crate::ffi::HandleGeom2dEvaluatorCurve;
 
+unsafe impl crate::CppDeletable for HandleGeom2dEvaluatorCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeom2dEvaluatorCurve_destructor(ptr);
+    }
+}
+
 impl HandleGeom2dEvaluatorCurve {
     /// Dereference this Handle to access the underlying Geom2dEvaluator_Curve
     pub fn get(&self) -> &crate::ffi::Geom2dEvaluator_Curve {
-        crate::ffi::HandleGeom2dEvaluatorCurve_get(self)
+        unsafe { &*(crate::ffi::HandleGeom2dEvaluatorCurve_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2dEvaluator_Curve
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Geom2dEvaluator_Curve> {
-        crate::ffi::HandleGeom2dEvaluatorCurve_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dEvaluator_Curve {
+        unsafe { &mut *(crate::ffi::HandleGeom2dEvaluatorCurve_get_mut(self as *mut Self)) }
     }
 }

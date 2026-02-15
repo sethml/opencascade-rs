@@ -15,27 +15,32 @@ pub use crate::ffi::{
 };
 pub fn write_2(
     theShape: &crate::ffi::TopoDS_Shape,
-    theFile: &str,
+    theFile: *const std::ffi::c_char,
     theWithTriangles: bool,
     theWithNormals: bool,
     theVersion: crate::top_tools::FormatVersion,
     theProgress: &crate::ffi::Message_ProgressRange,
 ) -> bool {
-    crate::ffi::write_2(
-        theShape,
-        theFile,
-        theWithTriangles,
-        theWithNormals,
-        theVersion.into(),
-        theProgress,
-    )
+    unsafe {
+        crate::ffi::write_2(
+            theShape,
+            theFile,
+            theWithTriangles,
+            theWithNormals,
+            theVersion.into(),
+            theProgress,
+        )
+    }
 }
 pub use crate::ffi::{eval_and_update_tol, read};
 pub fn ori_edge_in_face(
     theEdge: &crate::ffi::TopoDS_Edge,
     theFace: &crate::ffi::TopoDS_Face,
 ) -> crate::top_abs::Orientation {
-    crate::top_abs::Orientation::try_from(crate::ffi::ori_edge_in_face(theEdge, theFace)).unwrap()
+    unsafe {
+        crate::top_abs::Orientation::try_from(crate::ffi::ori_edge_in_face(theEdge, theFace))
+            .unwrap()
+    }
 }
 pub use crate::ffi::{check_locations, remove_internals};
 
@@ -46,26 +51,164 @@ pub use crate::ffi::{check_locations, remove_internals};
 /// Tool class implementing necessary functionality for copying geometry and triangulation.
 pub use crate::ffi::BRepTools_CopyModification as CopyModification;
 
+unsafe impl crate::CppDeletable for CopyModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_CopyModification_destructor(ptr);
+    }
+}
+
 impl CopyModification {
     /// Constructor.
     /// \param[in] theCopyGeom  indicates that the geometry (surfaces and curves) should be copied
     /// \param[in] theCopyMesh  indicates that the triangulation should be copied
-    pub fn new_bool2(theCopyGeom: bool, theCopyMesh: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_CopyModification_ctor_bool2(theCopyGeom, theCopyMesh)
+    pub fn new_bool2(theCopyGeom: bool, theCopyMesh: bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_CopyModification_ctor_bool2(
+                theCopyGeom,
+                theCopyMesh,
+            ))
+        }
     }
 
     /// Constructor.
     /// \param[in] theCopyGeom  indicates that the geometry (surfaces and curves) should be copied
     /// \param[in] theCopyMesh  indicates that the triangulation should be copied
-    pub fn new_bool(theCopyGeom: bool) -> cxx::UniquePtr<Self> {
+    pub fn new_bool(theCopyGeom: bool) -> crate::OwnedPtr<Self> {
         Self::new_bool2(theCopyGeom, true)
     }
 
     /// Constructor.
     /// \param[in] theCopyGeom  indicates that the geometry (surfaces and curves) should be copied
     /// \param[in] theCopyMesh  indicates that the triangulation should be copied
-    pub fn new() -> cxx::UniquePtr<Self> {
+    pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool2(true, true)
+    }
+
+    /// Returns true if theFace has been modified.
+    /// If the face has been modified:
+    /// - theSurf is the new geometry of the face,
+    /// - theLoc is its new location, and
+    /// - theTol is the new tolerance.
+    /// theRevWires, theRevFace are always set to false, because the orientation is not changed.
+    pub fn new_surface(
+        &mut self,
+        theFace: &crate::ffi::TopoDS_Face,
+        theSurf: &mut crate::ffi::HandleGeomSurface,
+        theLoc: &mut crate::ffi::TopLoc_Location,
+        theTol: &mut f64,
+        theRevWires: &mut bool,
+        theRevFace: &mut bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_CopyModification_new_surface(
+                self as *mut Self,
+                theFace,
+                theSurf,
+                theLoc,
+                theTol,
+                theRevWires,
+                theRevFace,
+            )
+        }
+    }
+
+    /// Returns true if theEdge has been modified.
+    /// If the edge has been modified:
+    /// - theCurve is the new geometric support of the edge,
+    /// - theLoc is the new location, and
+    /// - theTol is the new tolerance.
+    /// If the edge has not been modified, this function
+    /// returns false, and the values of theCurve, theLoc and theTol are not significant.
+    pub fn new_curve(
+        &mut self,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theCurve: &mut crate::ffi::HandleGeomCurve,
+        theLoc: &mut crate::ffi::TopLoc_Location,
+        theTol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_CopyModification_new_curve(
+                self as *mut Self,
+                theEdge,
+                theCurve,
+                theLoc,
+                theTol,
+            )
+        }
+    }
+
+    /// Returns true if theVertex has been modified.
+    /// If the vertex has been modified:
+    /// - thePnt is the new geometry of the vertex, and
+    /// - theTol is the new tolerance.
+    /// If the vertex has not been modified this function
+    /// returns false, and the values of thePnt and theTol are not significant.
+    pub fn new_point(
+        &mut self,
+        theVertex: &crate::ffi::TopoDS_Vertex,
+        thePnt: &mut crate::ffi::gp_Pnt,
+        theTol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_CopyModification_new_point(
+                self as *mut Self,
+                theVertex,
+                thePnt,
+                theTol,
+            )
+        }
+    }
+
+    /// Returns true if theEdge has a new curve on surface on theFace.
+    /// If a new curve exists:
+    /// - theCurve is the new geometric support of the edge,
+    /// - theTol the new tolerance.
+    /// If no new curve exists, this function returns false, and
+    /// the values of theCurve and theTol are not significant.
+    pub fn new_curve2d(
+        &mut self,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+        theNewEdge: &crate::ffi::TopoDS_Edge,
+        theNewFace: &crate::ffi::TopoDS_Face,
+        theCurve: &mut crate::ffi::HandleGeom2dCurve,
+        theTol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_CopyModification_new_curve2d(
+                self as *mut Self,
+                theEdge,
+                theFace,
+                theNewEdge,
+                theNewFace,
+                theCurve,
+                theTol,
+            )
+        }
+    }
+
+    /// Returns true if theVertex has a new parameter on theEdge.
+    /// If a new parameter exists:
+    /// - thePnt is the parameter, and
+    /// - theTol is the new tolerance.
+    /// If no new parameter exists, this function returns false,
+    /// and the values of thePnt and theTol are not significant.
+    pub fn new_parameter(
+        &mut self,
+        theVertex: &crate::ffi::TopoDS_Vertex,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        thePnt: &mut f64,
+        theTol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_CopyModification_new_parameter(
+                self as *mut Self,
+                theVertex,
+                theEdge,
+                thePnt,
+                theTol,
+            )
+        }
     }
 
     /// Returns the continuity of theNewEdge between theNewFace1 and theNewFace2.
@@ -73,7 +216,7 @@ impl CopyModification {
     /// theNewEdge is the new edge created from theEdge.  theNewFace1
     /// (resp. theNewFace2) is the new face created from theFace1 (resp. theFace2).
     pub fn continuity(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theEdge: &crate::ffi::TopoDS_Edge,
         theFace1: &crate::ffi::TopoDS_Face,
         theFace2: &crate::ffi::TopoDS_Face,
@@ -81,34 +224,97 @@ impl CopyModification {
         theNewFace1: &crate::ffi::TopoDS_Face,
         theNewFace2: &crate::ffi::TopoDS_Face,
     ) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_CopyModification_continuity(
-            self,
-            theEdge,
-            theFace1,
-            theFace2,
-            theNewEdge,
-            theNewFace1,
-            theNewFace2,
-        ))
-        .unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_CopyModification_continuity(
+                self as *mut Self,
+                theEdge,
+                theFace1,
+                theFace2,
+                theNewEdge,
+                theNewFace1,
+                theNewFace2,
+            ))
+            .unwrap()
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepTools_CopyModification_get_type_name()
+    /// Returns true if the face has been modified according to changed triangulation.
+    /// If the face has been modified:
+    /// - theTri is a new triangulation on the face
+    pub fn new_triangulation(
+        &mut self,
+        theFace: &crate::ffi::TopoDS_Face,
+        theTri: &mut crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_CopyModification_new_triangulation(
+                self as *mut Self,
+                theFace,
+                theTri,
+            )
+        }
+    }
+
+    /// Returns true if the edge has been modified according to changed polygon.
+    /// If the edge has been modified:
+    /// - thePoly is a new polygon
+    pub fn new_polygon(
+        &mut self,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        thePoly: &mut crate::ffi::HandlePolyPolygon3D,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_CopyModification_new_polygon(self as *mut Self, theEdge, thePoly)
+        }
+    }
+
+    /// Returns true if the edge has been modified according to changed polygon on triangulation.
+    /// If the edge has been modified:
+    /// - thePoly is a new polygon on triangulation
+    pub fn new_polygon_on_triangulation(
+        &mut self,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+        thePoly: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_CopyModification_new_polygon_on_triangulation(
+                self as *mut Self,
+                theEdge,
+                theFace,
+                thePoly,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepTools_CopyModification_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepTools_CopyModification_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepTools_CopyModification_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepTools_CopyModification_get_type_descriptor()) }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_modification(&self) -> &Modification {
-        crate::ffi::BRepTools_CopyModification_as_BRepTools_Modification(self)
+        unsafe {
+            &*(crate::ffi::BRepTools_CopyModification_as_BRepTools_Modification(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
-    pub fn as_modification_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Modification> {
-        crate::ffi::BRepTools_CopyModification_as_BRepTools_Modification_mut(self)
+    pub fn as_modification_mut(&mut self) -> &mut Modification {
+        unsafe {
+            &mut *(crate::ffi::BRepTools_CopyModification_as_BRepTools_Modification_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -121,9 +327,130 @@ impl CopyModification {
 /// geometry.
 pub use crate::ffi::BRepTools_GTrsfModification as GTrsfModification;
 
+unsafe impl crate::CppDeletable for GTrsfModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_GTrsfModification_destructor(ptr);
+    }
+}
+
 impl GTrsfModification {
-    pub fn new_gtrsf(T: &crate::ffi::gp_GTrsf) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_GTrsfModification_ctor_gtrsf(T)
+    pub fn new_gtrsf(T: &crate::ffi::gp_GTrsf) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_GTrsfModification_ctor_gtrsf(T)) }
+    }
+
+    /// Gives an access on the GTrsf.
+    pub fn g_trsf(&mut self) -> &mut crate::ffi::gp_GTrsf {
+        unsafe { &mut *(crate::ffi::BRepTools_GTrsfModification_g_trsf(self as *mut Self)) }
+    }
+
+    /// Returns Standard_True  if  the face  <F> has  been
+    /// modified.  In this  case, <S> is the new geometric
+    /// support of  the  face, <L> the  new location,<Tol>
+    /// the new  tolerance.<RevWires> has  to  be set   to
+    /// Standard_True   when the modification reverses the
+    /// normal of  the   surface.(the wires   have  to  be
+    /// reversed).   <RevFace>   has   to   be   set    to
+    /// Standard_True if  the orientation  of the modified
+    /// face changes in the  shells which contain  it.  --
+    /// Here, <RevFace>  will  return Standard_True if the
+    /// -- gp_Trsf is negative.
+    pub fn new_surface(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        S: &mut crate::ffi::HandleGeomSurface,
+        L: &mut crate::ffi::TopLoc_Location,
+        Tol: &mut f64,
+        RevWires: &mut bool,
+        RevFace: &mut bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_surface(
+                self as *mut Self,
+                F,
+                S,
+                L,
+                Tol,
+                RevWires,
+                RevFace,
+            )
+        }
+    }
+
+    /// Returns Standard_True  if  the edge  <E> has  been
+    /// modified.  In this case,  <C> is the new geometric
+    /// support of the  edge, <L> the  new location, <Tol>
+    /// the         new    tolerance.   Otherwise, returns
+    /// Standard_False,    and  <C>,  <L>,   <Tol> are not
+    /// significant.
+    pub fn new_curve(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        C: &mut crate::ffi::HandleGeomCurve,
+        L: &mut crate::ffi::TopLoc_Location,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_curve(self as *mut Self, E, C, L, Tol)
+        }
+    }
+
+    /// Returns  Standard_True if the  vertex <V> has been
+    /// modified.  In this  case, <P> is the new geometric
+    /// support of the vertex,   <Tol> the new  tolerance.
+    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// are not significant.
+    pub fn new_point(
+        &mut self,
+        V: &crate::ffi::TopoDS_Vertex,
+        P: &mut crate::ffi::gp_Pnt,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::BRepTools_GTrsfModification_new_point(self as *mut Self, V, P, Tol) }
+    }
+
+    /// Returns Standard_True if  the edge  <E> has a  new
+    /// curve on surface on the face <F>.In this case, <C>
+    /// is the new geometric support of  the edge, <L> the
+    /// new location, <Tol> the new tolerance.
+    /// Otherwise, returns  Standard_False, and <C>,  <L>,
+    /// <Tol> are not significant.
+    pub fn new_curve2d(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        NewE: &crate::ffi::TopoDS_Edge,
+        NewF: &crate::ffi::TopoDS_Face,
+        C: &mut crate::ffi::HandleGeom2dCurve,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_curve2d(
+                self as *mut Self,
+                E,
+                F,
+                NewE,
+                NewF,
+                C,
+                Tol,
+            )
+        }
+    }
+
+    /// Returns Standard_True if the Vertex  <V> has a new
+    /// parameter on the  edge <E>. In  this case,  <P> is
+    /// the parameter,    <Tol>  the     new    tolerance.
+    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// are not significant.
+    pub fn new_parameter(
+        &mut self,
+        V: &crate::ffi::TopoDS_Vertex,
+        E: &crate::ffi::TopoDS_Edge,
+        P: &mut f64,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_parameter(self as *mut Self, V, E, P, Tol)
+        }
     }
 
     /// Returns the  continuity of  <NewE> between <NewF1>
@@ -133,7 +460,7 @@ impl GTrsfModification {
     /// (resp. <NewF2>) is the new  face created from <F1>
     /// (resp. <F2>).
     pub fn continuity(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         E: &crate::ffi::TopoDS_Edge,
         F1: &crate::ffi::TopoDS_Face,
         F2: &crate::ffi::TopoDS_Face,
@@ -141,28 +468,97 @@ impl GTrsfModification {
         NewF1: &crate::ffi::TopoDS_Face,
         NewF2: &crate::ffi::TopoDS_Face,
     ) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_GTrsfModification_continuity(
-            self, E, F1, F2, NewE, NewF1, NewF2,
-        ))
-        .unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_GTrsfModification_continuity(
+                self as *mut Self,
+                E,
+                F1,
+                F2,
+                NewE,
+                NewF1,
+                NewF2,
+            ))
+            .unwrap()
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepTools_GTrsfModification_get_type_name()
+    /// Returns true if the face has been modified according to changed triangulation.
+    /// If the face has been modified:
+    /// - theTri is a new triangulation on the face
+    pub fn new_triangulation(
+        &mut self,
+        theFace: &crate::ffi::TopoDS_Face,
+        theTri: &mut crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_triangulation(
+                self as *mut Self,
+                theFace,
+                theTri,
+            )
+        }
+    }
+
+    /// Returns true if the edge has been modified according to changed polygon.
+    /// If the edge has been modified:
+    /// - thePoly is a new polygon
+    pub fn new_polygon(
+        &mut self,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        thePoly: &mut crate::ffi::HandlePolyPolygon3D,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_polygon(self as *mut Self, theEdge, thePoly)
+        }
+    }
+
+    /// Returns true if the edge has been modified according to changed polygon on triangulation.
+    /// If the edge has been modified:
+    /// - thePoly is a new polygon on triangulation
+    pub fn new_polygon_on_triangulation(
+        &mut self,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+        thePoly: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_GTrsfModification_new_polygon_on_triangulation(
+                self as *mut Self,
+                theEdge,
+                theFace,
+                thePoly,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepTools_GTrsfModification_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepTools_GTrsfModification_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepTools_GTrsfModification_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepTools_GTrsfModification_get_type_descriptor()) }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_modification(&self) -> &Modification {
-        crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification(self)
+        unsafe {
+            &*(crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
-    pub fn as_modification_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Modification> {
-        crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification_mut(self)
+    pub fn as_modification_mut(&mut self) -> &mut Modification {
+        unsafe {
+            &mut *(crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -234,49 +630,185 @@ impl GTrsfModification {
 /// Tj <= M12(Si), Qk <= M23(Tj) ==> Qk <= M13(Si);
 pub use crate::ffi::BRepTools_History as History;
 
+unsafe impl crate::CppDeletable for History {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_History_destructor(ptr);
+    }
+}
+
 impl History {
     /// @name Constructors for History creation
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_History_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_History_ctor()) }
+    }
+
+    /// Methods to set the history.
+    /// Set the second shape as generated one from the first shape.
+    pub fn add_generated(
+        &mut self,
+        theInitial: &crate::ffi::TopoDS_Shape,
+        theGenerated: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_History_add_generated(self as *mut Self, theInitial, theGenerated)
+        }
+    }
+
+    /// Set the second shape as modified one from the first shape.
+    pub fn add_modified(
+        &mut self,
+        theInitial: &crate::ffi::TopoDS_Shape,
+        theModified: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_History_add_modified(self as *mut Self, theInitial, theModified)
+        }
+    }
+
+    /// Set the shape as removed one.
+    pub fn remove(&mut self, theRemoved: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepTools_History_remove(self as *mut Self, theRemoved) }
+    }
+
+    /// Set the second shape as the only generated one from the first one.
+    pub fn replace_generated(
+        &mut self,
+        theInitial: &crate::ffi::TopoDS_Shape,
+        theGenerated: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_History_replace_generated(
+                self as *mut Self,
+                theInitial,
+                theGenerated,
+            )
+        }
+    }
+
+    /// Set the second shape as the only modified one from the first one.
+    pub fn replace_modified(
+        &mut self,
+        theInitial: &crate::ffi::TopoDS_Shape,
+        theModified: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_History_replace_modified(
+                self as *mut Self,
+                theInitial,
+                theModified,
+            )
+        }
+    }
+
+    /// Clears the history.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepTools_History_clear(self as *mut Self) }
+    }
+
+    /// Methods to read the history.
+    /// Returns all shapes generated from the shape.
+    pub fn generated(
+        &self,
+        theInitial: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepTools_History_generated(self as *const Self, theInitial)) }
+    }
+
+    /// Returns all shapes modified from the shape.
+    pub fn modified(
+        &self,
+        theInitial: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepTools_History_modified(self as *const Self, theInitial)) }
+    }
+
+    /// Returns 'true' if the shape is removed.
+    pub fn is_removed(&self, theInitial: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepTools_History_is_removed(self as *const Self, theInitial) }
+    }
+
+    /// Returns 'true' if there any shapes with Generated elements present
+    pub fn has_generated(&self) -> bool {
+        unsafe { crate::ffi::BRepTools_History_has_generated(self as *const Self) }
+    }
+
+    /// Returns 'true' if there any Modified shapes present
+    pub fn has_modified(&self) -> bool {
+        unsafe { crate::ffi::BRepTools_History_has_modified(self as *const Self) }
+    }
+
+    /// Returns 'true' if there any removed shapes present
+    pub fn has_removed(&self) -> bool {
+        unsafe { crate::ffi::BRepTools_History_has_removed(self as *const Self) }
+    }
+
+    /// A method to merge a next history to this history.
+    /// Merges the next history to this history.
+    pub fn merge_handlebreptoolshistory(
+        &mut self,
+        theHistory23: &crate::ffi::HandleBRepToolsHistory,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_History_merge_handlebreptoolshistory(
+                self as *mut Self,
+                theHistory23,
+            )
+        }
+    }
+
+    /// Merges the next history to this history.
+    pub fn merge_history(&mut self, theHistory23: &crate::ffi::BRepTools_History) {
+        unsafe { crate::ffi::BRepTools_History_merge_history(self as *mut Self, theHistory23) }
+    }
+
+    /// Define the OCCT RTTI for the type.
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepTools_History_dynamic_type(self as *const Self)) }
     }
 
     /// Returns 'true' if the type of the shape is supported by the history.
     pub fn is_supported_type(theShape: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepTools_History_is_supported_type(theShape)
+        unsafe { crate::ffi::BRepTools_History_is_supported_type(theShape) }
     }
 
     /// Define the OCCT RTTI for the type.
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepTools_History_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepTools_History_get_type_name() }
     }
 
     /// Define the OCCT RTTI for the type.
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepTools_History_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepTools_History_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
-        crate::ffi::BRepTools_History_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_History_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepToolsHistory;
 
+unsafe impl crate::CppDeletable for HandleBRepToolsHistory {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepToolsHistory_destructor(ptr);
+    }
+}
+
 impl HandleBRepToolsHistory {
     /// Dereference this Handle to access the underlying BRepTools_History
     pub fn get(&self) -> &crate::ffi::BRepTools_History {
-        crate::ffi::HandleBRepToolsHistory_get(self)
+        unsafe { &*(crate::ffi::HandleBRepToolsHistory_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTools_History
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepTools_History> {
-        crate::ffi::HandleBRepToolsHistory_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_History {
+        unsafe { &mut *(crate::ffi::HandleBRepToolsHistory_get_mut(self as *mut Self)) }
     }
 }
 
@@ -288,14 +820,176 @@ impl HandleBRepToolsHistory {
 /// changes to faces, edges and vertices.
 pub use crate::ffi::BRepTools_Modification as Modification;
 
+unsafe impl crate::CppDeletable for Modification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_Modification_destructor(ptr);
+    }
+}
+
 impl Modification {
+    /// Returns true if the face, F, has been modified.
+    /// If the face has been modified:
+    /// - S is the new geometry of the face,
+    /// - L is its new location, and
+    /// - Tol is the new tolerance.
+    /// The flag, RevWires, is set to true when the
+    /// modification reverses the normal of the surface, (i.e.
+    /// the wires have to be reversed).
+    /// The flag, RevFace, is set to true if the orientation of
+    /// the modified face changes in the shells which contain it.
+    /// If the face has not been modified this function returns
+    /// false, and the values of S, L, Tol, RevWires and
+    /// RevFace are not significant.
+    pub fn new_surface(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        S: &mut crate::ffi::HandleGeomSurface,
+        L: &mut crate::ffi::TopLoc_Location,
+        Tol: &mut f64,
+        RevWires: &mut bool,
+        RevFace: &mut bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_Modification_new_surface(
+                self as *mut Self,
+                F,
+                S,
+                L,
+                Tol,
+                RevWires,
+                RevFace,
+            )
+        }
+    }
+
+    /// Returns true if the face has been modified according to changed triangulation.
+    /// If the face has been modified:
+    /// - T is a new triangulation on the face
+    pub fn new_triangulation(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        T: &mut crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe { crate::ffi::BRepTools_Modification_new_triangulation(self as *mut Self, F, T) }
+    }
+
+    /// Returns true if the edge, E, has been modified.
+    /// If the edge has been modified:
+    /// - C is the new geometry associated with the edge,
+    /// - L is its new location, and
+    /// - Tol is the new tolerance.
+    /// If the edge has not been modified, this function
+    /// returns false, and the values of C, L and Tol are not significant.
+    pub fn new_curve(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        C: &mut crate::ffi::HandleGeomCurve,
+        L: &mut crate::ffi::TopLoc_Location,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::BRepTools_Modification_new_curve(self as *mut Self, E, C, L, Tol) }
+    }
+
+    /// Returns true if the edge has been modified according to changed polygon.
+    /// If the edge has been modified:
+    /// - P is a new polygon
+    pub fn new_polygon(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        P: &mut crate::ffi::HandlePolyPolygon3D,
+    ) -> bool {
+        unsafe { crate::ffi::BRepTools_Modification_new_polygon(self as *mut Self, E, P) }
+    }
+
+    /// Returns true if the edge has been modified according to changed polygon on triangulation.
+    /// If the edge has been modified:
+    /// - P is a new polygon on triangulation
+    pub fn new_polygon_on_triangulation(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_Modification_new_polygon_on_triangulation(
+                self as *mut Self,
+                E,
+                F,
+                P,
+            )
+        }
+    }
+
+    /// Returns true if the vertex V has been modified.
+    /// If V has been modified:
+    /// - P is the new geometry of the vertex, and
+    /// - Tol is the new tolerance.
+    /// If the vertex has not been modified this function
+    /// returns false, and the values of P and Tol are not significant.
+    pub fn new_point(
+        &mut self,
+        V: &crate::ffi::TopoDS_Vertex,
+        P: &mut crate::ffi::gp_Pnt,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::BRepTools_Modification_new_point(self as *mut Self, V, P, Tol) }
+    }
+
+    /// Returns true if the edge, E, has a new curve on
+    /// surface on the face, F.
+    /// If a new curve exists:
+    /// - C is the new geometry of the edge,
+    /// - L is the new location, and
+    /// - Tol is the new tolerance.
+    /// NewE is the new edge created from E, and NewF is
+    /// the new face created from F.
+    /// If there is no new curve on the face, this function
+    /// returns false, and the values of C, L and Tol are not significant.
+    pub fn new_curve2d(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        NewE: &crate::ffi::TopoDS_Edge,
+        NewF: &crate::ffi::TopoDS_Face,
+        C: &mut crate::ffi::HandleGeom2dCurve,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_Modification_new_curve2d(
+                self as *mut Self,
+                E,
+                F,
+                NewE,
+                NewF,
+                C,
+                Tol,
+            )
+        }
+    }
+
+    /// Returns true if the vertex V has a new parameter on the edge E.
+    /// If a new parameter exists:
+    /// - P is the parameter, and
+    /// - Tol is the new tolerance.
+    /// If there is no new parameter this function returns
+    /// false, and the values of P and Tol are not significant.
+    pub fn new_parameter(
+        &mut self,
+        V: &crate::ffi::TopoDS_Vertex,
+        E: &crate::ffi::TopoDS_Edge,
+        P: &mut f64,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::BRepTools_Modification_new_parameter(self as *mut Self, V, E, P, Tol) }
+    }
+
     /// Returns the  continuity of  <NewE> between <NewF1>
     /// and <NewF2>.
     /// <NewE> is the new  edge created from <E>.  <NewF1>
     /// (resp. <NewF2>) is the new  face created from <F1>
     /// (resp. <F2>).
     pub fn continuity(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         E: &crate::ffi::TopoDS_Edge,
         F1: &crate::ffi::TopoDS_Face,
         F2: &crate::ffi::TopoDS_Face,
@@ -303,34 +997,50 @@ impl Modification {
         NewF1: &crate::ffi::TopoDS_Face,
         NewF2: &crate::ffi::TopoDS_Face,
     ) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_Modification_continuity(
-            self, E, F1, F2, NewE, NewF1, NewF2,
-        ))
-        .unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_Modification_continuity(
+                self as *mut Self,
+                E,
+                F1,
+                F2,
+                NewE,
+                NewF1,
+                NewF2,
+            ))
+            .unwrap()
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepTools_Modification_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepTools_Modification_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepTools_Modification_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepTools_Modification_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepTools_Modification_get_type_descriptor()) }
     }
 }
 
 pub use crate::ffi::HandleBRepToolsModification;
 
+unsafe impl crate::CppDeletable for HandleBRepToolsModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepToolsModification_destructor(ptr);
+    }
+}
+
 impl HandleBRepToolsModification {
     /// Dereference this Handle to access the underlying BRepTools_Modification
     pub fn get(&self) -> &crate::ffi::BRepTools_Modification {
-        crate::ffi::HandleBRepToolsModification_get(self)
+        unsafe { &*(crate::ffi::HandleBRepToolsModification_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTools_Modification
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepTools_Modification> {
-        crate::ffi::HandleBRepToolsModification_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_Modification {
+        unsafe { &mut *(crate::ffi::HandleBRepToolsModification_get_mut(self as *mut Self)) }
     }
 }
 
@@ -341,15 +1051,23 @@ impl HandleBRepToolsModification {
 /// Performs geometric modifications on a shape.
 pub use crate::ffi::BRepTools_Modifier as Modifier;
 
+unsafe impl crate::CppDeletable for Modifier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_Modifier_destructor(ptr);
+    }
+}
+
 impl Modifier {
     /// Creates an empty Modifier.
-    pub fn new_bool(theMutableInput: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_Modifier_ctor_bool(theMutableInput)
+    pub fn new_bool(theMutableInput: bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_Modifier_ctor_bool(theMutableInput))
+        }
     }
 
     /// Creates a modifier on the shape <S>.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_Modifier_ctor_shape(S)
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_Modifier_ctor_shape(S)) }
     }
 
     /// Creates a modifier on  the shape <S>, and performs
@@ -357,13 +1075,56 @@ impl Modifier {
     pub fn new_shape_handlebreptoolsmodification(
         S: &crate::ffi::TopoDS_Shape,
         M: &crate::ffi::HandleBRepToolsModification,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_Modifier_ctor_shape_handlebreptoolsmodification(S, M)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepTools_Modifier_ctor_shape_handlebreptoolsmodification(S, M),
+            )
+        }
     }
 
     /// Creates an empty Modifier.
-    pub fn new() -> cxx::UniquePtr<Self> {
+    pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool(false)
+    }
+
+    /// Initializes the modifier with the shape <S>.
+    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepTools_Modifier_init(self as *mut Self, S) }
+    }
+
+    /// Performs the modifications described by <M>.
+    pub fn perform(
+        &mut self,
+        M: &crate::ffi::HandleBRepToolsModification,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) {
+        unsafe { crate::ffi::BRepTools_Modifier_perform(self as *mut Self, M, theProgress) }
+    }
+
+    /// Returns Standard_True if the modification has
+    /// been computed successfully.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepTools_Modifier_is_done(self as *const Self) }
+    }
+
+    /// Returns the current mutable input state
+    pub fn is_mutable_input(&self) -> bool {
+        unsafe { crate::ffi::BRepTools_Modifier_is_mutable_input(self as *const Self) }
+    }
+
+    /// Sets the mutable input state
+    /// If true then the input (original) shape can be modified
+    /// during modification process
+    pub fn set_mutable_input(&mut self, theMutableInput: bool) {
+        unsafe {
+            crate::ffi::BRepTools_Modifier_set_mutable_input(self as *mut Self, theMutableInput)
+        }
+    }
+
+    /// Returns the modified shape corresponding to <S>.
+    pub fn modified_shape(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepTools_Modifier_modified_shape(self as *const Self, S)) }
     }
 }
 
@@ -376,9 +1137,139 @@ impl Modifier {
 /// geometry.
 pub use crate::ffi::BRepTools_NurbsConvertModification as NurbsConvertModification;
 
+unsafe impl crate::CppDeletable for NurbsConvertModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_NurbsConvertModification_destructor(ptr);
+    }
+}
+
 impl NurbsConvertModification {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_NurbsConvertModification_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_NurbsConvertModification_ctor()) }
+    }
+
+    /// Returns Standard_True  if  the face  <F> has  been
+    /// modified.  In this  case, <S> is the new geometric
+    /// support of  the  face, <L> the  new location,<Tol>
+    /// the new  tolerance.<RevWires> has  to  be set   to
+    /// Standard_True   when the modification reverses the
+    /// normal of  the   surface.(the wires   have  to  be
+    /// reversed).   <RevFace>   has   to   be   set    to
+    /// Standard_True if  the orientation  of the modified
+    /// face changes in the  shells which contain  it.  --
+    /// Here, <RevFace>  will  return Standard_True if the
+    /// -- gp_Trsf is negative.
+    pub fn new_surface(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        S: &mut crate::ffi::HandleGeomSurface,
+        L: &mut crate::ffi::TopLoc_Location,
+        Tol: &mut f64,
+        RevWires: &mut bool,
+        RevFace: &mut bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_surface(
+                self as *mut Self,
+                F,
+                S,
+                L,
+                Tol,
+                RevWires,
+                RevFace,
+            )
+        }
+    }
+
+    /// Returns Standard_True  if  the edge  <E> has  been
+    /// modified.  In this case,  <C> is the new geometric
+    /// support of the  edge, <L> the  new location, <Tol>
+    /// the         new    tolerance.   Otherwise, returns
+    /// Standard_False,    and  <C>,  <L>,   <Tol> are not
+    /// significant.
+    pub fn new_curve(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        C: &mut crate::ffi::HandleGeomCurve,
+        L: &mut crate::ffi::TopLoc_Location,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_curve(
+                self as *mut Self,
+                E,
+                C,
+                L,
+                Tol,
+            )
+        }
+    }
+
+    /// Returns  Standard_True if the  vertex <V> has been
+    /// modified.  In this  case, <P> is the new geometric
+    /// support of the vertex,   <Tol> the new  tolerance.
+    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// are not significant.
+    pub fn new_point(
+        &mut self,
+        V: &crate::ffi::TopoDS_Vertex,
+        P: &mut crate::ffi::gp_Pnt,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_point(self as *mut Self, V, P, Tol)
+        }
+    }
+
+    /// Returns Standard_True if  the edge  <E> has a  new
+    /// curve on surface on the face <F>.In this case, <C>
+    /// is the new geometric support of  the edge, <L> the
+    /// new location, <Tol> the new tolerance.
+    /// Otherwise, returns  Standard_False, and <C>,  <L>,
+    /// <Tol> are not significant.
+    pub fn new_curve2d(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        NewE: &crate::ffi::TopoDS_Edge,
+        NewF: &crate::ffi::TopoDS_Face,
+        C: &mut crate::ffi::HandleGeom2dCurve,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_curve2d(
+                self as *mut Self,
+                E,
+                F,
+                NewE,
+                NewF,
+                C,
+                Tol,
+            )
+        }
+    }
+
+    /// Returns Standard_True if the Vertex  <V> has a new
+    /// parameter on the  edge <E>. In  this case,  <P> is
+    /// the parameter,    <Tol>  the     new    tolerance.
+    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// are not significant.
+    pub fn new_parameter(
+        &mut self,
+        V: &crate::ffi::TopoDS_Vertex,
+        E: &crate::ffi::TopoDS_Edge,
+        P: &mut f64,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_parameter(
+                self as *mut Self,
+                V,
+                E,
+                P,
+                Tol,
+            )
+        }
     }
 
     /// Returns the  continuity of  <NewE> between <NewF1>
@@ -388,7 +1279,7 @@ impl NurbsConvertModification {
     /// (resp. <NewF2>) is the new  face created from <F1>
     /// (resp. <F2>).
     pub fn continuity(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         E: &crate::ffi::TopoDS_Edge,
         F1: &crate::ffi::TopoDS_Face,
         F2: &crate::ffi::TopoDS_Face,
@@ -396,40 +1287,131 @@ impl NurbsConvertModification {
         NewF1: &crate::ffi::TopoDS_Face,
         NewF2: &crate::ffi::TopoDS_Face,
     ) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_NurbsConvertModification_continuity(
-            self, E, F1, F2, NewE, NewF1, NewF2,
-        ))
-        .unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(
+                crate::ffi::BRepTools_NurbsConvertModification_continuity(
+                    self as *mut Self,
+                    E,
+                    F1,
+                    F2,
+                    NewE,
+                    NewF1,
+                    NewF2,
+                ),
+            )
+            .unwrap()
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepTools_NurbsConvertModification_get_type_name()
+    /// Returns true if the face has been modified according to changed triangulation.
+    /// If the face has been modified:
+    /// - theTri is a new triangulation on the face
+    pub fn new_triangulation(
+        &mut self,
+        theFace: &crate::ffi::TopoDS_Face,
+        theTri: &mut crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_triangulation(
+                self as *mut Self,
+                theFace,
+                theTri,
+            )
+        }
+    }
+
+    /// Returns true if the edge has been modified according to changed polygon.
+    /// If the edge has been modified:
+    /// - thePoly is a new polygon
+    pub fn new_polygon(
+        &mut self,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        thePoly: &mut crate::ffi::HandlePolyPolygon3D,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_polygon(
+                self as *mut Self,
+                theEdge,
+                thePoly,
+            )
+        }
+    }
+
+    /// Returns true if the edge has been modified according to changed polygon on triangulation.
+    /// If the edge has been modified:
+    /// - thePoly is a new polygon on triangulation
+    pub fn new_polygon_on_triangulation(
+        &mut self,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+        thePoly: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_NurbsConvertModification_new_polygon_on_triangulation(
+                self as *mut Self,
+                theEdge,
+                theFace,
+                thePoly,
+            )
+        }
+    }
+
+    pub fn get_updated_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepTools_NurbsConvertModification_get_updated_edges(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::BRepTools_NurbsConvertModification_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepTools_NurbsConvertModification_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepTools_NurbsConvertModification_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepTools_NurbsConvertModification_get_type_descriptor()) }
     }
 
     /// Upcast to BRepTools_CopyModification
     pub fn as_copy_modification(&self) -> &CopyModification {
-        crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_CopyModification(self)
+        unsafe {
+            &*(crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_CopyModification(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepTools_CopyModification (mutable)
-    pub fn as_copy_modification_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut CopyModification> {
-        crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_CopyModification_mut(self)
+    pub fn as_copy_modification_mut(&mut self) -> &mut CopyModification {
+        unsafe {
+            &mut *(crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_CopyModification_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_modification(&self) -> &Modification {
-        crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_Modification(self)
+        unsafe {
+            &*(crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_Modification(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
-    pub fn as_modification_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Modification> {
-        crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_Modification_mut(self)
+    pub fn as_modification_mut(&mut self) -> &mut Modification {
+        unsafe {
+            &mut *(crate::ffi::BRepTools_NurbsConvertModification_as_BRepTools_Modification_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -442,17 +1424,42 @@ impl NurbsConvertModification {
 /// from all locations of shape and its subshapes
 pub use crate::ffi::BRepTools_PurgeLocations as PurgeLocations;
 
+unsafe impl crate::CppDeletable for PurgeLocations {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_PurgeLocations_destructor(ptr);
+    }
+}
+
 impl PurgeLocations {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_PurgeLocations_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_PurgeLocations_ctor()) }
+    }
+
+    /// Removes all locations correspondingly to criterium from theShape.
+    pub fn perform(&mut self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepTools_PurgeLocations_perform(self as *mut Self, theShape) }
+    }
+
+    /// Returns shape with removed locations.
+    pub fn get_result(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepTools_PurgeLocations_get_result(self as *const Self)) }
+    }
+
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepTools_PurgeLocations_is_done(self as *const Self) }
     }
 
     /// Returns modified shape obtained from initial shape.
     pub fn modified_shape(
         &self,
         theInitShape: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepTools_PurgeLocations_modified_shape(self, theInitShape)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_PurgeLocations_modified_shape(
+                self as *const Self,
+                theInitShape,
+            ))
+        }
     }
 }
 
@@ -477,16 +1484,73 @@ impl PurgeLocations {
 /// edges.
 pub use crate::ffi::BRepTools_Quilt as Quilt;
 
+unsafe impl crate::CppDeletable for Quilt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_Quilt_destructor(ptr);
+    }
+}
+
 impl Quilt {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_Quilt_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_Quilt_ctor()) }
+    }
+
+    /// Binds <Enew> to   be  the  new edge  instead   of
+    /// <Eold>.
+    ///
+    /// The faces  of  the added  shape containing  <Eold>
+    /// will be copied to substitute <Eold> by <Enew>.
+    ///
+    /// The vertices  of   <Eold> will   be bound to   the
+    /// vertices of <Enew> with the same orientation.
+    ///
+    /// If <Eold>  and <Enew>  have different orientations
+    /// the curves are considered  to be opposite  and the
+    /// pcurves of <Eold>  will be copied  and reversed in
+    /// the new faces.
+    ///
+    /// <Eold> must belong to the next added shape, <Enew> must belong
+    /// to a Shape added before.
+    pub fn bind_edge2(&mut self, Eold: &crate::ffi::TopoDS_Edge, Enew: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::BRepTools_Quilt_bind_edge2(self as *mut Self, Eold, Enew) }
+    }
+
+    /// Binds <VNew> to be a new vertex instead of <Vold>.
+    ///
+    /// The faces  of  the added  shape containing  <Vold>
+    /// will be copied to substitute <Vold> by <Vnew>.
+    pub fn bind_vertex2(
+        &mut self,
+        Vold: &crate::ffi::TopoDS_Vertex,
+        Vnew: &crate::ffi::TopoDS_Vertex,
+    ) {
+        unsafe { crate::ffi::BRepTools_Quilt_bind_vertex2(self as *mut Self, Vold, Vnew) }
+    }
+
+    /// Add   the faces of  <S>  to  the Quilt,  the faces
+    /// containing bounded edges are copied.
+    pub fn add(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepTools_Quilt_add(self as *mut Self, S) }
+    }
+
+    /// Returns   True if <S> has   been  copied (<S> is a
+    /// vertex, an edge or a face)
+    pub fn is_copied(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepTools_Quilt_is_copied(self as *const Self, S) }
+    }
+
+    /// Returns the shape substituted to <S> in the Quilt.
+    pub fn copy(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepTools_Quilt_copy(self as *const Self, S)) }
     }
 
     /// Returns a Compound of shells made from the current
     /// set of faces. The shells will be flagged as closed
     /// or not closed.
-    pub fn shells(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepTools_Quilt_shells(self)
+    pub fn shells(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_Quilt_shells(self as *const Self))
+        }
     }
 }
 
@@ -510,10 +1574,40 @@ impl Quilt {
 /// Supports the 'BRepTools_History' history by method 'History'.
 pub use crate::ffi::BRepTools_ReShape as ReShape;
 
+unsafe impl crate::CppDeletable for ReShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_ReShape_destructor(ptr);
+    }
+}
+
 impl ReShape {
     /// Returns an empty Reshape
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_ReShape_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_ReShape_ctor()) }
+    }
+
+    /// Clears all substitutions requests
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepTools_ReShape_clear(self as *mut Self) }
+    }
+
+    /// Sets a request to Remove a Shape whatever the orientation
+    pub fn remove(&mut self, shape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepTools_ReShape_remove(self as *mut Self, shape) }
+    }
+
+    /// Sets a request to Replace a Shape by a new one.
+    pub fn replace(
+        &mut self,
+        shape: &crate::ffi::TopoDS_Shape,
+        newshape: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe { crate::ffi::BRepTools_ReShape_replace(self as *mut Self, shape, newshape) }
+    }
+
+    /// Tells if a shape is recorded for Replace/Remove
+    pub fn is_recorded(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepTools_ReShape_is_recorded(self as *const Self, shape) }
     }
 
     /// Returns the new value for an individual shape
@@ -523,8 +1617,29 @@ impl ReShape {
     pub fn value(
         &self,
         shape: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepTools_ReShape_value(self, shape)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_ReShape_value(
+                self as *const Self,
+                shape,
+            ))
+        }
+    }
+
+    /// Returns a complete substitution status for a shape
+    /// 0  : not recorded,   <newsh> = original <shape>
+    /// < 0: to be removed,  <newsh> is NULL
+    /// > 0: to be replaced, <newsh> is a new item
+    /// If <last> is False, returns status and new shape recorded in
+    /// the map directly for the shape, if True and status > 0 then
+    /// recursively searches for the last status and new shape.
+    pub fn status(
+        &mut self,
+        shape: &crate::ffi::TopoDS_Shape,
+        newsh: &mut crate::ffi::TopoDS_Shape,
+        last: bool,
+    ) -> i32 {
+        unsafe { crate::ffi::BRepTools_ReShape_status(self as *mut Self, shape, newsh, last) }
     }
 
     /// Applies the substitutions requests to a shape.
@@ -538,64 +1653,105 @@ impl ReShape {
     /// TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges).
     /// If incompatible shape type is encountered, it is ignored and flag FAIL1 is set in Status.
     pub fn apply(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theShape: &crate::ffi::TopoDS_Shape,
         theUntil: crate::top_abs::ShapeEnum,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepTools_ReShape_apply(self, theShape, theUntil.into())
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_ReShape_apply(
+                self as *mut Self,
+                theShape,
+                theUntil.into(),
+            ))
+        }
+    }
+
+    /// Returns (modifiable) the flag which defines whether Location of shape take into account
+    /// during replacing shapes.
+    pub fn mode_consider_location(&mut self) -> &mut bool {
+        unsafe { &mut *(crate::ffi::BRepTools_ReShape_mode_consider_location(self as *mut Self)) }
     }
 
     pub fn copy_vertex_vertex_real(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theV: &crate::ffi::TopoDS_Vertex,
         theTol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::BRepTools_ReShape_copy_vertex_vertex_real(self, theV, theTol)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_ReShape_copy_vertex_vertex_real(
+                self as *mut Self,
+                theV,
+                theTol,
+            ))
+        }
     }
 
     pub fn copy_vertex_vertex_pnt_real(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theV: &crate::ffi::TopoDS_Vertex,
         theNewPos: &crate::ffi::gp_Pnt,
         aTol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::BRepTools_ReShape_copy_vertex_vertex_pnt_real(self, theV, theNewPos, aTol)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_ReShape_copy_vertex_vertex_pnt_real(
+                self as *mut Self,
+                theV,
+                theNewPos,
+                aTol,
+            ))
+        }
+    }
+
+    pub fn is_new_shape(&self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepTools_ReShape_is_new_shape(self as *const Self, theShape) }
     }
 
     /// Returns the history of the substituted shapes.
-    pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
-        crate::ffi::BRepTools_ReShape_history(self)
+    pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_ReShape_history(self as *const Self))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepTools_ReShape_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepTools_ReShape_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepTools_ReShape_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepTools_ReShape_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepTools_ReShape_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsReShape> {
-        crate::ffi::BRepTools_ReShape_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_ReShape_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepToolsReShape;
 
+unsafe impl crate::CppDeletable for HandleBRepToolsReShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepToolsReShape_destructor(ptr);
+    }
+}
+
 impl HandleBRepToolsReShape {
     /// Dereference this Handle to access the underlying BRepTools_ReShape
     pub fn get(&self) -> &crate::ffi::BRepTools_ReShape {
-        crate::ffi::HandleBRepToolsReShape_get(self)
+        unsafe { &*(crate::ffi::HandleBRepToolsReShape_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTools_ReShape
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepTools_ReShape> {
-        crate::ffi::HandleBRepToolsReShape_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_ReShape {
+        unsafe { &mut *(crate::ffi::HandleBRepToolsReShape_get_mut(self as *mut Self)) }
     }
 }
 
@@ -609,11 +1765,22 @@ impl HandleBRepToolsReShape {
 /// The topology is inherited from TopTools.
 pub use crate::ffi::BRepTools_ShapeSet as ShapeSet;
 
+unsafe impl crate::CppDeletable for ShapeSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_ShapeSet_destructor(ptr);
+    }
+}
+
 impl ShapeSet {
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
-    pub fn new_bool2(theWithTriangles: bool, theWithNormals: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_ShapeSet_ctor_bool2(theWithTriangles, theWithNormals)
+    pub fn new_bool2(theWithTriangles: bool, theWithNormals: bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_ShapeSet_ctor_bool2(
+                theWithTriangles,
+                theWithNormals,
+            ))
+        }
     }
 
     /// Builds an empty ShapeSet.
@@ -622,23 +1789,25 @@ impl ShapeSet {
         theBuilder: &crate::ffi::BRep_Builder,
         theWithTriangles: bool,
         theWithNormals: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_ShapeSet_ctor_builder_bool2(
-            theBuilder,
-            theWithTriangles,
-            theWithNormals,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_ShapeSet_ctor_builder_bool2(
+                theBuilder,
+                theWithTriangles,
+                theWithNormals,
+            ))
+        }
     }
 
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
-    pub fn new_bool(theWithTriangles: bool) -> cxx::UniquePtr<Self> {
+    pub fn new_bool(theWithTriangles: bool) -> crate::OwnedPtr<Self> {
         Self::new_bool2(theWithTriangles, false)
     }
 
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
-    pub fn new() -> cxx::UniquePtr<Self> {
+    pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool2(true, false)
     }
 
@@ -647,81 +1816,122 @@ impl ShapeSet {
     pub fn new_builder_bool(
         theBuilder: &crate::ffi::BRep_Builder,
         theWithTriangles: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_builder_bool2(theBuilder, theWithTriangles, false)
     }
 
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
-    pub fn new_builder(theBuilder: &crate::ffi::BRep_Builder) -> cxx::UniquePtr<Self> {
+    pub fn new_builder(theBuilder: &crate::ffi::BRep_Builder) -> crate::OwnedPtr<Self> {
         Self::new_builder_bool2(theBuilder, true, false)
     }
 
-    pub fn check(
-        self: std::pin::Pin<&mut Self>,
-        T: crate::top_abs::ShapeEnum,
-        S: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
-    ) {
-        crate::ffi::BRepTools_ShapeSet_check(self, T.into(), S)
+    /// Return true if shape should be stored with triangles.
+    pub fn is_with_triangles(&self) -> bool {
+        unsafe { crate::ffi::BRepTools_ShapeSet_is_with_triangles(self as *const Self) }
+    }
+
+    /// Return true if shape should be stored triangulation with normals.
+    pub fn is_with_normals(&self) -> bool {
+        unsafe { crate::ffi::BRepTools_ShapeSet_is_with_normals(self as *const Self) }
+    }
+
+    /// Define if shape will be stored with triangles.
+    /// Ignored (always written) if face defines only triangulation (no surface).
+    pub fn set_with_triangles(&mut self, theWithTriangles: bool) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_set_with_triangles(self as *mut Self, theWithTriangles)
+        }
+    }
+
+    /// Define if shape will be stored triangulation with normals.
+    /// Ignored (always written) if face defines only triangulation (no surface).
+    pub fn set_with_normals(&mut self, theWithNormals: bool) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_set_with_normals(self as *mut Self, theWithNormals)
+        }
+    }
+
+    /// Clears the content of the set.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepTools_ShapeSet_clear(self as *mut Self) }
+    }
+
+    /// Stores the geometry of <S>.
+    pub fn add_geometry(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepTools_ShapeSet_add_geometry(self as *mut Self, S) }
+    }
+
+    /// Inserts  the shape <S2> in  the  shape <S1>.  This
+    /// method must be   redefined  to  use   the  correct
+    /// builder.
+    pub fn add_shapes(&mut self, S1: &mut crate::ffi::TopoDS_Shape, S2: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepTools_ShapeSet_add_shapes(self as *mut Self, S1, S2) }
+    }
+
+    pub fn check(&mut self, T: crate::top_abs::ShapeEnum, S: &mut crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepTools_ShapeSet_check(self as *mut Self, T.into(), S) }
     }
 
     /// Upcast to TopTools_ShapeSet
     pub fn as_top_tools_shape_set(&self) -> &crate::top_tools::ShapeSet {
-        crate::ffi::BRepTools_ShapeSet_as_TopTools_ShapeSet(self)
+        unsafe { &*(crate::ffi::BRepTools_ShapeSet_as_TopTools_ShapeSet(self as *const Self)) }
     }
 
     /// Upcast to TopTools_ShapeSet (mutable)
-    pub fn as_top_tools_shape_set_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::top_tools::ShapeSet> {
-        crate::ffi::BRepTools_ShapeSet_as_TopTools_ShapeSet_mut(self)
+    pub fn as_top_tools_shape_set_mut(&mut self) -> &mut crate::top_tools::ShapeSet {
+        unsafe {
+            &mut *(crate::ffi::BRepTools_ShapeSet_as_TopTools_ShapeSet_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from TopTools_ShapeSet: SetFormatNb()
-    pub fn set_format_nb(self: std::pin::Pin<&mut Self>, theFormatNb: i32) {
-        crate::ffi::BRepTools_ShapeSet_inherited_SetFormatNb(self, theFormatNb)
+    pub fn set_format_nb(&mut self, theFormatNb: i32) {
+        unsafe {
+            crate::ffi::BRepTools_ShapeSet_inherited_SetFormatNb(self as *mut Self, theFormatNb)
+        }
     }
 
     /// Inherited from TopTools_ShapeSet: FormatNb()
     pub fn format_nb(&self) -> i32 {
-        crate::ffi::BRepTools_ShapeSet_inherited_FormatNb(self)
+        unsafe { crate::ffi::BRepTools_ShapeSet_inherited_FormatNb(self as *const Self) }
     }
 
     /// Inherited from TopTools_ShapeSet: Add()
-    pub fn add(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> i32 {
-        crate::ffi::BRepTools_ShapeSet_inherited_Add(self, S)
+    pub fn add(&mut self, S: &crate::ffi::TopoDS_Shape) -> i32 {
+        unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Add(self as *mut Self, S) }
     }
 
     /// Inherited from TopTools_ShapeSet: Shape()
     pub fn shape(&self, I: i32) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepTools_ShapeSet_inherited_Shape(self, I)
+        unsafe { &*(crate::ffi::BRepTools_ShapeSet_inherited_Shape(self as *const Self, I)) }
     }
 
     /// Inherited from TopTools_ShapeSet: Index()
     pub fn index(&self, S: &crate::ffi::TopoDS_Shape) -> i32 {
-        crate::ffi::BRepTools_ShapeSet_inherited_Index(self, S)
+        unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Index(self as *const Self, S) }
     }
 
     /// Inherited from TopTools_ShapeSet: Locations()
     pub fn locations(&self) -> &crate::ffi::TopTools_LocationSet {
-        crate::ffi::BRepTools_ShapeSet_inherited_Locations(self)
+        unsafe { &*(crate::ffi::BRepTools_ShapeSet_inherited_Locations(self as *const Self)) }
     }
 
     /// Inherited from TopTools_ShapeSet: ChangeLocations()
-    pub fn change_locations(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::TopTools_LocationSet> {
-        crate::ffi::BRepTools_ShapeSet_inherited_ChangeLocations(self)
+    pub fn change_locations(&mut self) -> &mut crate::ffi::TopTools_LocationSet {
+        unsafe {
+            &mut *(crate::ffi::BRepTools_ShapeSet_inherited_ChangeLocations(self as *mut Self))
+        }
     }
 
     /// Inherited from TopTools_ShapeSet: DumpExtent()
-    pub fn dump_extent(&self, S: std::pin::Pin<&mut crate::ffi::TCollection_AsciiString>) {
-        crate::ffi::BRepTools_ShapeSet_inherited_DumpExtent(self, S)
+    pub fn dump_extent(&self, S: &mut crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::BRepTools_ShapeSet_inherited_DumpExtent(self as *const Self, S) }
     }
 
     /// Inherited from TopTools_ShapeSet: NbShapes()
     pub fn nb_shapes(&self) -> i32 {
-        crate::ffi::BRepTools_ShapeSet_inherited_NbShapes(self)
+        unsafe { crate::ffi::BRepTools_ShapeSet_inherited_NbShapes(self as *const Self) }
     }
 }
 
@@ -741,9 +1951,56 @@ impl ShapeSet {
 /// registered.
 pub use crate::ffi::BRepTools_Substitution as Substitution;
 
+unsafe impl crate::CppDeletable for Substitution {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_Substitution_destructor(ptr);
+    }
+}
+
 impl Substitution {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_Substitution_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_Substitution_ctor()) }
+    }
+
+    /// Reset all the fields.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepTools_Substitution_clear(self as *mut Self) }
+    }
+
+    /// <Oldshape> will be replaced by <NewShapes>.
+    ///
+    /// <NewShapes> can be empty , in this case <OldShape>
+    /// will disparate from its ancestors.
+    ///
+    /// if an item of <NewShapes> is oriented FORWARD.
+    /// it will be oriented as <OldShape> in its ancestors.
+    /// else it will be reversed.
+    pub fn substitute(
+        &mut self,
+        OldShape: &crate::ffi::TopoDS_Shape,
+        NewShapes: &crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_Substitution_substitute(self as *mut Self, OldShape, NewShapes)
+        }
+    }
+
+    /// Build NewShape from <S> if its subshapes has modified.
+    ///
+    /// The methods <IsCopied> and <Copy> allows you to keep
+    /// the resul of <Build>
+    pub fn build(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepTools_Substitution_build(self as *mut Self, S) }
+    }
+
+    /// Returns   True if <S> has   been  replaced .
+    pub fn is_copied(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepTools_Substitution_is_copied(self as *const Self, S) }
+    }
+
+    /// Returns the set of shapes substituted to <S>.
+    pub fn copy(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepTools_Substitution_copy(self as *const Self, S)) }
     }
 }
 
@@ -756,9 +2013,176 @@ impl Substitution {
 /// true and transform the geometry of the shape.
 pub use crate::ffi::BRepTools_TrsfModification as TrsfModification;
 
+unsafe impl crate::CppDeletable for TrsfModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_TrsfModification_destructor(ptr);
+    }
+}
+
 impl TrsfModification {
-    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_TrsfModification_ctor_trsf(T)
+    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_TrsfModification_ctor_trsf(T)) }
+    }
+
+    /// Provides access to the gp_Trsf associated with this
+    /// modification. The transformation can be changed.
+    pub fn trsf(&mut self) -> &mut crate::ffi::gp_Trsf {
+        unsafe { &mut *(crate::ffi::BRepTools_TrsfModification_trsf(self as *mut Self)) }
+    }
+
+    /// Sets a flag to indicate the need to copy mesh.
+    pub fn is_copy_mesh(&mut self) -> &mut bool {
+        unsafe { &mut *(crate::ffi::BRepTools_TrsfModification_is_copy_mesh(self as *mut Self)) }
+    }
+
+    /// Returns true if the face F has been modified.
+    /// If the face has been modified:
+    /// - S is the new geometry of the face,
+    /// - L is its new location, and
+    /// - Tol is the new tolerance.
+    /// RevWires is set to true when the modification
+    /// reverses the normal of the surface (the wires have to be reversed).
+    /// RevFace is set to true if the orientation of the
+    /// modified face changes in the shells which contain it.
+    /// For this class, RevFace returns true if the gp_Trsf
+    /// associated with this modification is negative.
+    pub fn new_surface(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        S: &mut crate::ffi::HandleGeomSurface,
+        L: &mut crate::ffi::TopLoc_Location,
+        Tol: &mut f64,
+        RevWires: &mut bool,
+        RevFace: &mut bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_surface(
+                self as *mut Self,
+                F,
+                S,
+                L,
+                Tol,
+                RevWires,
+                RevFace,
+            )
+        }
+    }
+
+    /// Returns true if the face has been modified according to changed triangulation.
+    /// If the face has been modified:
+    /// - T is a new triangulation on the face
+    pub fn new_triangulation(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        T: &mut crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe { crate::ffi::BRepTools_TrsfModification_new_triangulation(self as *mut Self, F, T) }
+    }
+
+    /// Returns true if the edge has been modified according to changed polygon.
+    /// If the edge has been modified:
+    /// - P is a new polygon
+    pub fn new_polygon(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        P: &mut crate::ffi::HandlePolyPolygon3D,
+    ) -> bool {
+        unsafe { crate::ffi::BRepTools_TrsfModification_new_polygon(self as *mut Self, E, P) }
+    }
+
+    /// Returns true if the edge has been modified according to changed polygon on triangulation.
+    /// If the edge has been modified:
+    /// - P is a new polygon on triangulation
+    pub fn new_polygon_on_triangulation(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_polygon_on_triangulation(
+                self as *mut Self,
+                E,
+                F,
+                P,
+            )
+        }
+    }
+
+    /// Always returns true indicating that the edge E is always modified.
+    /// - C is the new geometric support of the edge,
+    /// - L is the new location, and
+    /// - Tol is the new tolerance.
+    pub fn new_curve(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        C: &mut crate::ffi::HandleGeomCurve,
+        L: &mut crate::ffi::TopLoc_Location,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::BRepTools_TrsfModification_new_curve(self as *mut Self, E, C, L, Tol) }
+    }
+
+    /// Returns true if the vertex V has been modified.
+    /// If the vertex has been modified:
+    /// - P is the new geometry of the vertex, and
+    /// - Tol is the new tolerance.
+    /// If the vertex has not been modified this function
+    /// returns false, and the values of P and Tol are not significant.
+    pub fn new_point(
+        &mut self,
+        V: &crate::ffi::TopoDS_Vertex,
+        P: &mut crate::ffi::gp_Pnt,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe { crate::ffi::BRepTools_TrsfModification_new_point(self as *mut Self, V, P, Tol) }
+    }
+
+    /// Returns true if the edge E has a new curve on surface on the face F.
+    /// If a new curve exists:
+    /// - C is the new geometric support of the edge,
+    /// - L is the new location, and
+    /// - Tol the new tolerance.
+    /// If no new curve exists, this function returns false, and
+    /// the values of C, L and Tol are not significant.
+    pub fn new_curve2d(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        NewE: &crate::ffi::TopoDS_Edge,
+        NewF: &crate::ffi::TopoDS_Face,
+        C: &mut crate::ffi::HandleGeom2dCurve,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_curve2d(
+                self as *mut Self,
+                E,
+                F,
+                NewE,
+                NewF,
+                C,
+                Tol,
+            )
+        }
+    }
+
+    /// Returns true if the Vertex V has a new parameter on the edge E.
+    /// If a new parameter exists:
+    /// - P is the parameter, and
+    /// - Tol is the new tolerance.
+    /// If no new parameter exists, this function returns false,
+    /// and the values of P and Tol are not significant.
+    pub fn new_parameter(
+        &mut self,
+        V: &crate::ffi::TopoDS_Vertex,
+        E: &crate::ffi::TopoDS_Edge,
+        P: &mut f64,
+        Tol: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepTools_TrsfModification_new_parameter(self as *mut Self, V, E, P, Tol)
+        }
     }
 
     /// Returns the  continuity of  <NewE> between <NewF1>
@@ -768,7 +2192,7 @@ impl TrsfModification {
     /// (resp. <NewF2>) is the new  face created from <F1>
     /// (resp. <F2>).
     pub fn continuity(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         E: &crate::ffi::TopoDS_Edge,
         F1: &crate::ffi::TopoDS_Face,
         F2: &crate::ffi::TopoDS_Face,
@@ -776,28 +2200,48 @@ impl TrsfModification {
         NewF1: &crate::ffi::TopoDS_Face,
         NewF2: &crate::ffi::TopoDS_Face,
     ) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_TrsfModification_continuity(
-            self, E, F1, F2, NewE, NewF1, NewF2,
-        ))
-        .unwrap()
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepTools_TrsfModification_continuity(
+                self as *mut Self,
+                E,
+                F1,
+                F2,
+                NewE,
+                NewF1,
+                NewF2,
+            ))
+            .unwrap()
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepTools_TrsfModification_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepTools_TrsfModification_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepTools_TrsfModification_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepTools_TrsfModification_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepTools_TrsfModification_get_type_descriptor()) }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_modification(&self) -> &Modification {
-        crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification(self)
+        unsafe {
+            &*(crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
-    pub fn as_modification_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Modification> {
-        crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification_mut(self)
+    pub fn as_modification_mut(&mut self) -> &mut Modification {
+        unsafe {
+            &mut *(crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -820,15 +2264,21 @@ impl TrsfModification {
 /// edges in a wire. it depends on type of defect and position of starting edge.
 pub use crate::ffi::BRepTools_WireExplorer as WireExplorer;
 
+unsafe impl crate::CppDeletable for WireExplorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepTools_WireExplorer_destructor(ptr);
+    }
+}
+
 impl WireExplorer {
     /// Constructs an empty explorer (which can be initialized using Init)
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_WireExplorer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_WireExplorer_ctor()) }
     }
 
     /// IInitializes an exploration  of the wire <W>.
-    pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_WireExplorer_ctor_wire(W)
+    pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_WireExplorer_ctor_wire(W)) }
     }
 
     /// Initializes an exploration  of the wire <W>.
@@ -837,13 +2287,83 @@ impl WireExplorer {
     pub fn new_wire_face(
         W: &crate::ffi::TopoDS_Wire,
         F: &crate::ffi::TopoDS_Face,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_WireExplorer_ctor_wire_face(W, F)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_WireExplorer_ctor_wire_face(W, F))
+        }
+    }
+
+    /// Initializes an exploration of the wire <W>.
+    pub fn init_wire(&mut self, W: &crate::ffi::TopoDS_Wire) {
+        unsafe { crate::ffi::BRepTools_WireExplorer_init_wire(self as *mut Self, W) }
+    }
+
+    /// Initializes an exploration of the wire <W>.
+    /// F is used to select the edge connected to the
+    /// previous in the parametric representation of <F>.
+    pub fn init_wire_face(&mut self, W: &crate::ffi::TopoDS_Wire, F: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::BRepTools_WireExplorer_init_wire_face(self as *mut Self, W, F) }
+    }
+
+    /// Initializes an exploration of the wire <W>.
+    /// F is used to select the edge connected to the
+    /// previous in the parametric representation of <F>.
+    /// <UMIn>, <UMax>, <VMin>, <VMax> - the UV bounds of the face <F>.
+    pub fn init_wire_face_real4(
+        &mut self,
+        W: &crate::ffi::TopoDS_Wire,
+        F: &crate::ffi::TopoDS_Face,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepTools_WireExplorer_init_wire_face_real4(
+                self as *mut Self,
+                W,
+                F,
+                UMin,
+                UMax,
+                VMin,
+                VMax,
+            )
+        }
+    }
+
+    /// Returns True if there  is a current  edge.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::BRepTools_WireExplorer_more(self as *const Self) }
+    }
+
+    /// Proceeds to the next edge.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::BRepTools_WireExplorer_next(self as *mut Self) }
+    }
+
+    /// Returns the current edge.
+    pub fn current(&self) -> &crate::ffi::TopoDS_Edge {
+        unsafe { &*(crate::ffi::BRepTools_WireExplorer_current(self as *const Self)) }
     }
 
     /// Returns an Orientation for the current edge.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
-        crate::top_abs::Orientation::try_from(crate::ffi::BRepTools_WireExplorer_orientation(self))
+        unsafe {
+            crate::top_abs::Orientation::try_from(crate::ffi::BRepTools_WireExplorer_orientation(
+                self as *const Self,
+            ))
             .unwrap()
+        }
+    }
+
+    /// Returns the vertex connecting the current  edge to
+    /// the previous one.
+    pub fn current_vertex(&self) -> &crate::ffi::TopoDS_Vertex {
+        unsafe { &*(crate::ffi::BRepTools_WireExplorer_current_vertex(self as *const Self)) }
+    }
+
+    /// Clears the content of the explorer.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepTools_WireExplorer_clear(self as *mut Self) }
     }
 }

@@ -12,45 +12,75 @@
 
 pub use crate::ffi::StepRepr_RepresentationItem as RepresentationItem;
 
+unsafe impl crate::CppDeletable for RepresentationItem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepRepr_RepresentationItem_destructor(ptr);
+    }
+}
+
 impl RepresentationItem {
     /// Returns a RepresentationItem
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::StepRepr_RepresentationItem_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepRepr_RepresentationItem_ctor()) }
     }
 
-    pub fn name(&self) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
-        crate::ffi::StepRepr_RepresentationItem_name(self)
+    pub fn init(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepRepr_RepresentationItem_init(self as *mut Self, aName) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::StepRepr_RepresentationItem_get_type_name()
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepRepr_RepresentationItem_set_name(self as *mut Self, aName) }
+    }
+
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_RepresentationItem_name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepRepr_RepresentationItem_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::StepRepr_RepresentationItem_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::StepRepr_RepresentationItem_get_type_descriptor()
+        unsafe { &*(crate::ffi::StepRepr_RepresentationItem_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleStepReprRepresentationItem> {
-        crate::ffi::StepRepr_RepresentationItem_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_RepresentationItem_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleStepReprRepresentationItem;
 
+unsafe impl crate::CppDeletable for HandleStepReprRepresentationItem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepReprRepresentationItem_destructor(ptr);
+    }
+}
+
 impl HandleStepReprRepresentationItem {
     /// Dereference this Handle to access the underlying StepRepr_RepresentationItem
     pub fn get(&self) -> &crate::ffi::StepRepr_RepresentationItem {
-        crate::ffi::HandleStepReprRepresentationItem_get(self)
+        unsafe { &*(crate::ffi::HandleStepReprRepresentationItem_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying StepRepr_RepresentationItem
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::StepRepr_RepresentationItem> {
-        crate::ffi::HandleStepReprRepresentationItem_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepRepr_RepresentationItem {
+        unsafe { &mut *(crate::ffi::HandleStepReprRepresentationItem_get_mut(self as *mut Self)) }
     }
 }
 

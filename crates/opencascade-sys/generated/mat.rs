@@ -41,37 +41,71 @@ impl TryFrom<i32> for Side {
 /// constituent of  the figure.
 pub use crate::ffi::MAT_BasicElt as BasicElt;
 
+unsafe impl crate::CppDeletable for BasicElt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::MAT_BasicElt_destructor(ptr);
+    }
+}
+
 impl BasicElt {
     /// Constructor, <anInteger> is the <index> of <me>.
-    pub fn new_int(anInteger: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::MAT_BasicElt_ctor_int(anInteger)
+    pub fn new_int(anInteger: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::MAT_BasicElt_ctor_int(anInteger)) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::MAT_BasicElt_get_type_name()
+    /// Return the <index> of <me> in Graph.TheBasicElts.
+    pub fn index(&self) -> i32 {
+        unsafe { crate::ffi::MAT_BasicElt_index(self as *const Self) }
+    }
+
+    /// Return the <GeomIndex> of <me>.
+    pub fn geom_index(&self) -> i32 {
+        unsafe { crate::ffi::MAT_BasicElt_geom_index(self as *const Self) }
+    }
+
+    pub fn set_index(&mut self, anInteger: i32) {
+        unsafe { crate::ffi::MAT_BasicElt_set_index(self as *mut Self, anInteger) }
+    }
+
+    pub fn set_geom_index(&mut self, anInteger: i32) {
+        unsafe { crate::ffi::MAT_BasicElt_set_geom_index(self as *mut Self, anInteger) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::MAT_BasicElt_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::MAT_BasicElt_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::MAT_BasicElt_get_type_descriptor()
+        unsafe { &*(crate::ffi::MAT_BasicElt_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleMATBasicElt> {
-        crate::ffi::MAT_BasicElt_to_handle(obj)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMATBasicElt> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::MAT_BasicElt_to_handle(obj.into_raw())) }
     }
 }
 
 pub use crate::ffi::HandleMATBasicElt;
 
+unsafe impl crate::CppDeletable for HandleMATBasicElt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMATBasicElt_destructor(ptr);
+    }
+}
+
 impl HandleMATBasicElt {
     /// Dereference this Handle to access the underlying MAT_BasicElt
     pub fn get(&self) -> &crate::ffi::MAT_BasicElt {
-        crate::ffi::HandleMATBasicElt_get(self)
+        unsafe { &*(crate::ffi::HandleMATBasicElt_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_BasicElt
-    pub fn get_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::MAT_BasicElt> {
-        crate::ffi::HandleMATBasicElt_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_BasicElt {
+        unsafe { &mut *(crate::ffi::HandleMATBasicElt_get_mut(self as *mut Self)) }
     }
 }
 

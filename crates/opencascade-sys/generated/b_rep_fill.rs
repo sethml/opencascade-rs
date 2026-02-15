@@ -114,33 +114,88 @@ impl TryFrom<i32> for TransitionStyle {
 
 pub use crate::ffi::BRepFill_Draft as Draft;
 
+unsafe impl crate::CppDeletable for Draft {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepFill_Draft_destructor(ptr);
+    }
+}
+
 impl Draft {
     pub fn new_shape_dir_real(
         Shape: &crate::ffi::TopoDS_Shape,
         Dir: &crate::ffi::gp_Dir,
         Angle: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Draft_ctor_shape_dir_real(Shape, Dir, Angle)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Draft_ctor_shape_dir_real(
+                Shape, Dir, Angle,
+            ))
+        }
     }
 
     pub fn set_options(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Style: crate::b_rep_fill::TransitionStyle,
         AngleMin: f64,
         AngleMax: f64,
     ) {
-        crate::ffi::BRepFill_Draft_set_options(self, Style.into(), AngleMin, AngleMax)
+        unsafe {
+            crate::ffi::BRepFill_Draft_set_options(
+                self as *mut Self,
+                Style.into(),
+                AngleMin,
+                AngleMax,
+            )
+        }
+    }
+
+    pub fn set_draft(&mut self, IsInternal: bool) {
+        unsafe { crate::ffi::BRepFill_Draft_set_draft(self as *mut Self, IsInternal) }
+    }
+
+    pub fn perform_real(&mut self, LengthMax: f64) {
+        unsafe { crate::ffi::BRepFill_Draft_perform_real(self as *mut Self, LengthMax) }
+    }
+
+    pub fn perform_handlegeomsurface_bool(
+        &mut self,
+        Surface: &crate::ffi::HandleGeomSurface,
+        KeepInsideSurface: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_Draft_perform_handlegeomsurface_bool(
+                self as *mut Self,
+                Surface,
+                KeepInsideSurface,
+            )
+        }
+    }
+
+    pub fn perform_shape_bool(&mut self, StopShape: &crate::ffi::TopoDS_Shape, KeepOutSide: bool) {
+        unsafe {
+            crate::ffi::BRepFill_Draft_perform_shape_bool(self as *mut Self, StopShape, KeepOutSide)
+        }
+    }
+
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFill_Draft_is_done(self as *const Self) }
     }
 
     /// Returns the draft surface
     /// To have the complete shape
     /// you have to use the Shape() methode.
-    pub fn shell(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shell> {
-        crate::ffi::BRepFill_Draft_shell(self)
+    pub fn shell(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shell> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Draft_shell(self as *const Self)) }
     }
 
-    pub fn shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepFill_Draft_shape(self)
+    /// Returns the  list   of shapes generated   from the
+    /// shape <S>.
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepFill_Draft_generated(self as *mut Self, S)) }
+    }
+
+    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Draft_shape(self as *const Self)) }
     }
 }
 
@@ -150,17 +205,29 @@ impl Draft {
 
 pub use crate::ffi::BRepFill_EdgeFaceAndOrder as EdgeFaceAndOrder;
 
+unsafe impl crate::CppDeletable for EdgeFaceAndOrder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepFill_EdgeFaceAndOrder_destructor(ptr);
+    }
+}
+
 impl EdgeFaceAndOrder {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_EdgeFaceAndOrder_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_EdgeFaceAndOrder_ctor()) }
     }
 
     pub fn new_edge_face_shape(
         anEdge: &crate::ffi::TopoDS_Edge,
         aFace: &crate::ffi::TopoDS_Face,
         anOrder: crate::geom_abs::Shape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_EdgeFaceAndOrder_ctor_edge_face_shape(anEdge, aFace, anOrder.into())
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_EdgeFaceAndOrder_ctor_edge_face_shape(
+                anEdge,
+                aFace,
+                anOrder.into(),
+            ))
+        }
     }
 }
 
@@ -172,9 +239,15 @@ impl EdgeFaceAndOrder {
 /// and  a profile ( wire).
 pub use crate::ffi::BRepFill_Evolved as Evolved;
 
+unsafe impl crate::CppDeletable for Evolved {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepFill_Evolved_destructor(ptr);
+    }
+}
+
 impl Evolved {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Evolved_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Evolved_ctor()) }
     }
 
     /// Creates an evolved shape by sweeping the <Profile>
@@ -189,14 +262,16 @@ impl Evolved {
         AxeProf: &crate::ffi::gp_Ax3,
         Join: crate::geom_abs::JoinType,
         Solid: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Evolved_ctor_wire2_ax3_jointype_bool(
-            Spine,
-            Profile,
-            AxeProf,
-            Join.into(),
-            Solid,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Evolved_ctor_wire2_ax3_jointype_bool(
+                Spine,
+                Profile,
+                AxeProf,
+                Join.into(),
+                Solid,
+            ))
+        }
     }
 
     /// Creates an  evolved shape  by sweeping the <Profile>
@@ -207,14 +282,18 @@ impl Evolved {
         AxeProf: &crate::ffi::gp_Ax3,
         Join: crate::geom_abs::JoinType,
         Solid: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Evolved_ctor_face_wire_ax3_jointype_bool(
-            Spine,
-            Profile,
-            AxeProf,
-            Join.into(),
-            Solid,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepFill_Evolved_ctor_face_wire_ax3_jointype_bool(
+                    Spine,
+                    Profile,
+                    AxeProf,
+                    Join.into(),
+                    Solid,
+                ),
+            )
+        }
     }
 
     /// Creates an evolved shape by sweeping the <Profile>
@@ -228,7 +307,7 @@ impl Evolved {
         Profile: &crate::ffi::TopoDS_Wire,
         AxeProf: &crate::ffi::gp_Ax3,
         Join: crate::geom_abs::JoinType,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_wire2_ax3_jointype_bool(Spine, Profile, AxeProf, Join.into(), false)
     }
 
@@ -239,52 +318,97 @@ impl Evolved {
         Profile: &crate::ffi::TopoDS_Wire,
         AxeProf: &crate::ffi::gp_Ax3,
         Join: crate::geom_abs::JoinType,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_face_wire_ax3_jointype_bool(Spine, Profile, AxeProf, Join.into(), false)
     }
 
     /// Performs an  evolved shape  by sweeping the <Profile>
     /// along the <Spine>
     pub fn perform_wire2_ax3_jointype_bool(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Wire,
         AxeProf: &crate::ffi::gp_Ax3,
         Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) {
-        crate::ffi::BRepFill_Evolved_perform_wire2_ax3_jointype_bool(
-            self,
-            Spine,
-            Profile,
-            AxeProf,
-            Join.into(),
-            Solid,
-        )
+        unsafe {
+            crate::ffi::BRepFill_Evolved_perform_wire2_ax3_jointype_bool(
+                self as *mut Self,
+                Spine,
+                Profile,
+                AxeProf,
+                Join.into(),
+                Solid,
+            )
+        }
     }
 
     /// Performs an  evolved shape  by sweeping the <Profile>
     /// along the <Spine>
     pub fn perform_face_wire_ax3_jointype_bool(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Spine: &crate::ffi::TopoDS_Face,
         Profile: &crate::ffi::TopoDS_Wire,
         AxeProf: &crate::ffi::gp_Ax3,
         Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) {
-        crate::ffi::BRepFill_Evolved_perform_face_wire_ax3_jointype_bool(
-            self,
-            Spine,
-            Profile,
-            AxeProf,
-            Join.into(),
-            Solid,
-        )
+        unsafe {
+            crate::ffi::BRepFill_Evolved_perform_face_wire_ax3_jointype_bool(
+                self as *mut Self,
+                Spine,
+                Profile,
+                AxeProf,
+                Join.into(),
+                Solid,
+            )
+        }
+    }
+
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFill_Evolved_is_done(self as *const Self) }
+    }
+
+    /// returns the generated shape.
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_Evolved_shape(self as *const Self)) }
+    }
+
+    /// Returns   the  shapes  created  from   a  subshape
+    /// <SpineShape>  of     the  spine   and   a subshape
+    /// <ProfShape> on the profile.
+    pub fn generated_shapes(
+        &self,
+        SpineShape: &crate::ffi::TopoDS_Shape,
+        ProfShape: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepFill_Evolved_generated_shapes(
+                self as *const Self,
+                SpineShape,
+                ProfShape,
+            ))
+        }
     }
 
     pub fn join_type(&self) -> crate::geom_abs::JoinType {
-        crate::geom_abs::JoinType::try_from(crate::ffi::BRepFill_Evolved_join_type(self)).unwrap()
+        unsafe {
+            crate::geom_abs::JoinType::try_from(crate::ffi::BRepFill_Evolved_join_type(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Return the face Top if <Solid> is True in the constructor.
+    pub fn top(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_Evolved_top(self as *const Self)) }
+    }
+
+    /// Return the face Bottom  if <Solid> is True in the constructor.
+    pub fn bottom(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_Evolved_bottom(self as *const Self)) }
     }
 }
 
@@ -295,16 +419,27 @@ impl Evolved {
 /// A structure containing Face and Order of constraint
 pub use crate::ffi::BRepFill_FaceAndOrder as FaceAndOrder;
 
+unsafe impl crate::CppDeletable for FaceAndOrder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepFill_FaceAndOrder_destructor(ptr);
+    }
+}
+
 impl FaceAndOrder {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_FaceAndOrder_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_FaceAndOrder_ctor()) }
     }
 
     pub fn new_face_shape(
         aFace: &crate::ffi::TopoDS_Face,
         anOrder: crate::geom_abs::Shape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_FaceAndOrder_ctor_face_shape(aFace, anOrder.into())
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_FaceAndOrder_ctor_face_shape(
+                aFace,
+                anOrder.into(),
+            ))
+        }
     }
 }
 
@@ -344,6 +479,12 @@ impl FaceAndOrder {
 /// connected faces
 pub use crate::ffi::BRepFill_Filling as Filling;
 
+unsafe impl crate::CppDeletable for Filling {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepFill_Filling_destructor(ptr);
+    }
+}
+
 impl Filling {
     /// Constructor
     pub fn new_int3_bool_real4_int2(
@@ -357,19 +498,21 @@ impl Filling {
         TolCurv: f64,
         MaxDeg: i32,
         MaxSegments: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Filling_ctor_int3_bool_real4_int2(
-            Degree,
-            NbPtsOnCur,
-            NbIter,
-            Anisotropie,
-            Tol2d,
-            Tol3d,
-            TolAng,
-            TolCurv,
-            MaxDeg,
-            MaxSegments,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Filling_ctor_int3_bool_real4_int2(
+                Degree,
+                NbPtsOnCur,
+                NbIter,
+                Anisotropie,
+                Tol2d,
+                Tol3d,
+                TolAng,
+                TolCurv,
+                MaxDeg,
+                MaxSegments,
+            ))
+        }
     }
 
     /// Constructor
@@ -383,7 +526,7 @@ impl Filling {
         TolAng: f64,
         TolCurv: f64,
         MaxDeg: i32,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -408,7 +551,7 @@ impl Filling {
         Tol3d: f64,
         TolAng: f64,
         TolCurv: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -432,7 +575,7 @@ impl Filling {
         Tol2d: f64,
         Tol3d: f64,
         TolAng: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -455,7 +598,7 @@ impl Filling {
         Anisotropie: bool,
         Tol2d: f64,
         Tol3d: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -477,7 +620,7 @@ impl Filling {
         NbIter: i32,
         Anisotropie: bool,
         Tol2d: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -498,7 +641,7 @@ impl Filling {
         NbPtsOnCur: i32,
         NbIter: i32,
         Anisotropie: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -514,27 +657,96 @@ impl Filling {
     }
 
     /// Constructor
-    pub fn new_int3(Degree: i32, NbPtsOnCur: i32, NbIter: i32) -> cxx::UniquePtr<Self> {
+    pub fn new_int3(Degree: i32, NbPtsOnCur: i32, NbIter: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree, NbPtsOnCur, NbIter, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9,
         )
     }
 
     /// Constructor
-    pub fn new_int2(Degree: i32, NbPtsOnCur: i32) -> cxx::UniquePtr<Self> {
+    pub fn new_int2(Degree: i32, NbPtsOnCur: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree, NbPtsOnCur, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9,
         )
     }
 
     /// Constructor
-    pub fn new_int(Degree: i32) -> cxx::UniquePtr<Self> {
+    pub fn new_int(Degree: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(Degree, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
     }
 
     /// Constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
+    pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(3, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
+    }
+
+    /// Sets the values of Tolerances used to control the constraint.
+    /// Tol2d:
+    /// Tol3d:   it is the maximum distance allowed between the support surface
+    /// and the constraints
+    /// TolAng:  it is the maximum angle allowed between the normal of the surface
+    /// and the constraints
+    /// TolCurv: it is the maximum difference of curvature allowed between
+    /// the surface and the constraint
+    pub fn set_constr_param(&mut self, Tol2d: f64, Tol3d: f64, TolAng: f64, TolCurv: f64) {
+        unsafe {
+            crate::ffi::BRepFill_Filling_set_constr_param(
+                self as *mut Self,
+                Tol2d,
+                Tol3d,
+                TolAng,
+                TolCurv,
+            )
+        }
+    }
+
+    /// Sets the parameters used for resolution.
+    /// The default values of these parameters have been chosen for a good
+    /// ratio quality/performance.
+    /// Degree:      it is the order of energy criterion to minimize for computing
+    /// the deformation of the surface.
+    /// The default value is 3
+    /// The recommended value is i+2 where i is the maximum order of the
+    /// constraints.
+    /// NbPtsOnCur:  it is the average number of points for discretisation
+    /// of the edges.
+    /// NbIter:      it is the maximum number of iterations of the process.
+    /// For each iteration the number of discretisation points is
+    /// increased.
+    /// Anisotropie:
+    pub fn set_resol_param(
+        &mut self,
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_Filling_set_resol_param(
+                self as *mut Self,
+                Degree,
+                NbPtsOnCur,
+                NbIter,
+                Anisotropie,
+            )
+        }
+    }
+
+    /// Sets the parameters used for approximation of the surface
+    pub fn set_approx_param(&mut self, MaxDeg: i32, MaxSegments: i32) {
+        unsafe {
+            crate::ffi::BRepFill_Filling_set_approx_param(self as *mut Self, MaxDeg, MaxSegments)
+        }
+    }
+
+    /// Loads the initial Surface
+    /// The initial surface must have orthogonal local coordinates,
+    /// i.e. partial derivatives dS/du and dS/dv must be orthogonal
+    /// at each point of surface.
+    /// If this condition breaks, distortions of resulting surface
+    /// are possible.
+    pub fn load_init_surface(&mut self, aFace: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::BRepFill_Filling_load_init_surface(self as *mut Self, aFace) }
     }
 
     /// Adds a new constraint which also defines an edge of the wire
@@ -549,12 +761,19 @@ impl Filling {
     /// of the edge and to respect tangency and curvature
     /// with the first face of the edge.
     pub fn add_edge_shape_bool(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         anEdge: &crate::ffi::TopoDS_Edge,
         Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
-        crate::ffi::BRepFill_Filling_add_edge_shape_bool(self, anEdge, Order.into(), IsBound)
+        unsafe {
+            crate::ffi::BRepFill_Filling_add_edge_shape_bool(
+                self as *mut Self,
+                anEdge,
+                Order.into(),
+                IsBound,
+            )
+        }
     }
 
     /// Adds a new constraint which also defines an edge of the wire
@@ -569,45 +788,101 @@ impl Filling {
     /// of the edge and to respect tangency and curvature
     /// with the given face.
     pub fn add_edge_face_shape_bool(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         anEdge: &crate::ffi::TopoDS_Edge,
         Support: &crate::ffi::TopoDS_Face,
         Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
-        crate::ffi::BRepFill_Filling_add_edge_face_shape_bool(
-            self,
-            anEdge,
-            Support,
-            Order.into(),
-            IsBound,
-        )
+        unsafe {
+            crate::ffi::BRepFill_Filling_add_edge_face_shape_bool(
+                self as *mut Self,
+                anEdge,
+                Support,
+                Order.into(),
+                IsBound,
+            )
+        }
     }
 
     /// Adds a free constraint on a face. The corresponding edge has to
     /// be automatically recomputed.
     /// It is always a bound.
     pub fn add_face_shape(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Support: &crate::ffi::TopoDS_Face,
         Order: crate::geom_abs::Shape,
     ) -> i32 {
-        crate::ffi::BRepFill_Filling_add_face_shape(self, Support, Order.into())
+        unsafe {
+            crate::ffi::BRepFill_Filling_add_face_shape(self as *mut Self, Support, Order.into())
+        }
+    }
+
+    /// Adds a punctual constraint
+    pub fn add_pnt(&mut self, Point: &crate::ffi::gp_Pnt) -> i32 {
+        unsafe { crate::ffi::BRepFill_Filling_add_pnt(self as *mut Self, Point) }
     }
 
     /// Adds a punctual constraint.
     pub fn add_real2_face_shape(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         U: f64,
         V: f64,
         Support: &crate::ffi::TopoDS_Face,
         Order: crate::geom_abs::Shape,
     ) -> i32 {
-        crate::ffi::BRepFill_Filling_add_real2_face_shape(self, U, V, Support, Order.into())
+        unsafe {
+            crate::ffi::BRepFill_Filling_add_real2_face_shape(
+                self as *mut Self,
+                U,
+                V,
+                Support,
+                Order.into(),
+            )
+        }
     }
 
-    pub fn face(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {
-        crate::ffi::BRepFill_Filling_face(self)
+    /// Builds the resulting faces
+    pub fn build(&mut self) {
+        unsafe { crate::ffi::BRepFill_Filling_build(self as *mut Self) }
+    }
+
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFill_Filling_is_done(self as *const Self) }
+    }
+
+    pub fn face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Filling_face(self as *const Self)) }
+    }
+
+    /// Returns the list of shapes generated from the
+    /// shape <S>.
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepFill_Filling_generated(self as *mut Self, S)) }
+    }
+
+    pub fn g0_error(&self) -> f64 {
+        unsafe { crate::ffi::BRepFill_Filling_g0_error(self as *const Self) }
+    }
+
+    pub fn g1_error(&self) -> f64 {
+        unsafe { crate::ffi::BRepFill_Filling_g1_error(self as *const Self) }
+    }
+
+    pub fn g2_error(&self) -> f64 {
+        unsafe { crate::ffi::BRepFill_Filling_g2_error(self as *const Self) }
+    }
+
+    pub fn g0_error_int(&mut self, Index: i32) -> f64 {
+        unsafe { crate::ffi::BRepFill_Filling_g0_error_int(self as *mut Self, Index) }
+    }
+
+    pub fn g1_error_int(&mut self, Index: i32) -> f64 {
+        unsafe { crate::ffi::BRepFill_Filling_g1_error_int(self as *mut Self, Index) }
+    }
+
+    pub fn g2_error_int(&mut self, Index: i32) -> f64 {
+        unsafe { crate::ffi::BRepFill_Filling_g2_error_int(self as *mut Self, Index) }
     }
 }
 
@@ -629,60 +904,117 @@ impl Filling {
 /// The Wire or the Face must be planar and oriented correctly.
 pub use crate::ffi::BRepFill_OffsetWire as OffsetWire;
 
+unsafe impl crate::CppDeletable for OffsetWire {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepFill_OffsetWire_destructor(ptr);
+    }
+}
+
 impl OffsetWire {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_OffsetWire_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_OffsetWire_ctor()) }
     }
 
     pub fn new_face_jointype_bool(
         Spine: &crate::ffi::TopoDS_Face,
         Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_OffsetWire_ctor_face_jointype_bool(Spine, Join.into(), IsOpenResult)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_OffsetWire_ctor_face_jointype_bool(
+                Spine,
+                Join.into(),
+                IsOpenResult,
+            ))
+        }
     }
 
     pub fn new_face_jointype(
         Spine: &crate::ffi::TopoDS_Face,
         Join: crate::geom_abs::JoinType,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_face_jointype_bool(Spine, Join.into(), false)
     }
 
     /// Initialize the evaluation of Offsetting.
     pub fn init(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Spine: &crate::ffi::TopoDS_Face,
         Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) {
-        crate::ffi::BRepFill_OffsetWire_init(self, Spine, Join.into(), IsOpenResult)
+        unsafe {
+            crate::ffi::BRepFill_OffsetWire_init(
+                self as *mut Self,
+                Spine,
+                Join.into(),
+                IsOpenResult,
+            )
+        }
+    }
+
+    /// Performs  an OffsetWire at  an altitude <Alt> from
+    /// the  face ( According  to  the orientation of  the
+    /// face)
+    pub fn perform(&mut self, Offset: f64, Alt: f64) {
+        unsafe { crate::ffi::BRepFill_OffsetWire_perform(self as *mut Self, Offset, Alt) }
     }
 
     /// Performs an  OffsetWire
     pub fn perform_with_bi_lo(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         WSP: &crate::ffi::TopoDS_Face,
         Offset: f64,
         Locus: &crate::ffi::BRepMAT2d_BisectingLocus,
-        Link: std::pin::Pin<&mut crate::ffi::BRepMAT2d_LinkTopoBilo>,
+        Link: &mut crate::ffi::BRepMAT2d_LinkTopoBilo,
         Join: crate::geom_abs::JoinType,
         Alt: f64,
     ) {
-        crate::ffi::BRepFill_OffsetWire_perform_with_bi_lo(
-            self,
-            WSP,
-            Offset,
-            Locus,
-            Link,
-            Join.into(),
-            Alt,
-        )
+        unsafe {
+            crate::ffi::BRepFill_OffsetWire_perform_with_bi_lo(
+                self as *mut Self,
+                WSP,
+                Offset,
+                Locus,
+                Link,
+                Join.into(),
+                Alt,
+            )
+        }
+    }
+
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFill_OffsetWire_is_done(self as *const Self) }
+    }
+
+    pub fn spine(&self) -> &crate::ffi::TopoDS_Face {
+        unsafe { &*(crate::ffi::BRepFill_OffsetWire_spine(self as *const Self)) }
+    }
+
+    /// returns the generated shape.
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_OffsetWire_shape(self as *const Self)) }
+    }
+
+    /// Returns   the  shapes  created  from   a  subshape
+    /// <SpineShape> of the spine.
+    /// Returns the last computed Offset.
+    pub fn generated_shapes(
+        &mut self,
+        SpineShape: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepFill_OffsetWire_generated_shapes(self as *mut Self, SpineShape))
+        }
     }
 
     pub fn join_type(&self) -> crate::geom_abs::JoinType {
-        crate::geom_abs::JoinType::try_from(crate::ffi::BRepFill_OffsetWire_join_type(self))
+        unsafe {
+            crate::geom_abs::JoinType::try_from(crate::ffi::BRepFill_OffsetWire_join_type(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 }
 
@@ -698,9 +1030,15 @@ impl OffsetWire {
 /// of the profile.
 pub use crate::ffi::BRepFill_Pipe as Pipe;
 
+unsafe impl crate::CppDeletable for Pipe {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepFill_Pipe_destructor(ptr);
+    }
+}
+
 impl Pipe {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Pipe_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_ctor()) }
     }
 
     pub fn new_wire_shape_trihedron_bool2(
@@ -709,14 +1047,16 @@ impl Pipe {
         aMode: crate::geom_fill::Trihedron,
         ForceApproxC1: bool,
         GeneratePartCase: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Pipe_ctor_wire_shape_trihedron_bool2(
-            Spine,
-            Profile,
-            aMode.into(),
-            ForceApproxC1,
-            GeneratePartCase,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_ctor_wire_shape_trihedron_bool2(
+                Spine,
+                Profile,
+                aMode.into(),
+                ForceApproxC1,
+                GeneratePartCase,
+            ))
+        }
     }
 
     pub fn new_wire_shape_trihedron_bool(
@@ -724,7 +1064,7 @@ impl Pipe {
         Profile: &crate::ffi::TopoDS_Shape,
         aMode: crate::geom_fill::Trihedron,
         ForceApproxC1: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode.into(), ForceApproxC1, false)
     }
 
@@ -732,19 +1072,70 @@ impl Pipe {
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
         aMode: crate::geom_fill::Trihedron,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode.into(), false, false)
+    }
+
+    pub fn perform(
+        &mut self,
+        Spine: &crate::ffi::TopoDS_Wire,
+        Profile: &crate::ffi::TopoDS_Shape,
+        GeneratePartCase: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_Pipe_perform(self as *mut Self, Spine, Profile, GeneratePartCase)
+        }
+    }
+
+    pub fn spine(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_Pipe_spine(self as *const Self)) }
+    }
+
+    pub fn profile(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_Pipe_profile(self as *const Self)) }
+    }
+
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_Pipe_shape(self as *const Self)) }
+    }
+
+    pub fn error_on_surface(&self) -> f64 {
+        unsafe { crate::ffi::BRepFill_Pipe_error_on_surface(self as *const Self) }
+    }
+
+    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_Pipe_first_shape(self as *const Self)) }
+    }
+
+    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_Pipe_last_shape(self as *const Self)) }
+    }
+
+    /// Returns the  list   of shapes generated   from the
+    /// shape <S>.
+    pub fn generated(
+        &mut self,
+        S: &crate::ffi::TopoDS_Shape,
+        L: &mut crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe { crate::ffi::BRepFill_Pipe_generated(self as *mut Self, S, L) }
     }
 
     /// Returns the face created from an edge of the spine
     /// and an edge of the profile.
     /// if the edges are not in the spine or the profile
     pub fn face(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         ESpine: &crate::ffi::TopoDS_Edge,
         EProfile: &crate::ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {
-        crate::ffi::BRepFill_Pipe_face(self, ESpine, EProfile)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_face(
+                self as *mut Self,
+                ESpine,
+                EProfile,
+            ))
+        }
     }
 
     /// Returns the edge created from an edge of the spine
@@ -752,11 +1143,17 @@ impl Pipe {
     /// if the edge or the vertex are not in  the spine or
     /// the profile.
     pub fn edge(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         ESpine: &crate::ffi::TopoDS_Edge,
         VProfile: &crate::ffi::TopoDS_Vertex,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
-        crate::ffi::BRepFill_Pipe_edge(self, ESpine, VProfile)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_edge(
+                self as *mut Self,
+                ESpine,
+                VProfile,
+            ))
+        }
     }
 
     /// Returns  the shape created from the profile at the
@@ -765,17 +1162,24 @@ impl Pipe {
     pub fn section(
         &self,
         VSpine: &crate::ffi::TopoDS_Vertex,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepFill_Pipe_section(self, VSpine)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_section(
+                self as *const Self,
+                VSpine,
+            ))
+        }
     }
 
     /// Create a Wire by sweeping the Point along the <spine>
     /// if the <Spine> is undefined
     pub fn pipe_line(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Point: &crate::ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Wire> {
-        crate::ffi::BRepFill_Pipe_pipe_line(self, Point)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_pipe_line(self as *mut Self, Point))
+        }
     }
 }
 
@@ -788,11 +1192,49 @@ impl Pipe {
 /// Perform general sweeping construction
 pub use crate::ffi::BRepFill_PipeShell as PipeShell;
 
+unsafe impl crate::CppDeletable for PipeShell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepFill_PipeShell_destructor(ptr);
+    }
+}
+
 impl PipeShell {
     /// Set an sweep's mode
     /// If no mode are set, the mode used in MakePipe is used
-    pub fn new_wire(Spine: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_PipeShell_ctor_wire(Spine)
+    pub fn new_wire(Spine: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_PipeShell_ctor_wire(Spine)) }
+    }
+
+    /// Set an Frenet or an CorrectedFrenet trihedron
+    /// to  perform  the  sweeping
+    pub fn set_bool(&mut self, Frenet: bool) {
+        unsafe { crate::ffi::BRepFill_PipeShell_set_bool(self as *mut Self, Frenet) }
+    }
+
+    /// Set a Discrete trihedron
+    /// to  perform  the  sweeping
+    pub fn set_discrete(&mut self) {
+        unsafe { crate::ffi::BRepFill_PipeShell_set_discrete(self as *mut Self) }
+    }
+
+    /// Set  an  fixed  trihedron  to  perform  the  sweeping
+    /// all sections will be parallel.
+    pub fn set_ax2(&mut self, Axe: &crate::ffi::gp_Ax2) {
+        unsafe { crate::ffi::BRepFill_PipeShell_set_ax2(self as *mut Self, Axe) }
+    }
+
+    /// Set an fixed  BiNormal  direction to  perform
+    /// the sweeping
+    pub fn set_dir(&mut self, BiNormal: &crate::ffi::gp_Dir) {
+        unsafe { crate::ffi::BRepFill_PipeShell_set_dir(self as *mut Self, BiNormal) }
+    }
+
+    /// Set support to the spine to define the BiNormal
+    /// at   the spine, like    the  normal the surfaces.
+    /// Warning: To  be  effective,  Each  edge  of  the  <spine>  must
+    /// have an  representation  on   one   face  of<SpineSupport>
+    pub fn set_shape(&mut self, SpineSupport: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepFill_PipeShell_set_shape(self as *mut Self, SpineSupport) }
     }
 
     /// Set  an  auxiliary  spine  to  define  the Normal
@@ -816,65 +1258,279 @@ impl PipeShell {
     /// becomes a boundary of the swept surface and the width of section varies
     /// along the path.
     pub fn set_wire_bool_typeofcontact(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         AuxiliarySpine: &crate::ffi::TopoDS_Wire,
         CurvilinearEquivalence: bool,
         KeepContact: crate::b_rep_fill::TypeOfContact,
     ) {
-        crate::ffi::BRepFill_PipeShell_set(
-            self,
-            AuxiliarySpine,
-            CurvilinearEquivalence,
-            KeepContact.into(),
-        )
+        unsafe {
+            crate::ffi::BRepFill_PipeShell_set_wire_bool_typeofcontact(
+                self as *mut Self,
+                AuxiliarySpine,
+                CurvilinearEquivalence,
+                KeepContact.into(),
+            )
+        }
+    }
+
+    /// Define the maximum V degree of resulting surface
+    pub fn set_max_degree(&mut self, NewMaxDegree: i32) {
+        unsafe { crate::ffi::BRepFill_PipeShell_set_max_degree(self as *mut Self, NewMaxDegree) }
+    }
+
+    /// Define the maximum number of spans in V-direction
+    /// on resulting surface
+    pub fn set_max_segments(&mut self, NewMaxSegments: i32) {
+        unsafe {
+            crate::ffi::BRepFill_PipeShell_set_max_segments(self as *mut Self, NewMaxSegments)
+        }
+    }
+
+    /// Set the flag that indicates attempt to approximate
+    /// a C1-continuous surface if a swept surface proved
+    /// to be C0.
+    /// Give section to sweep.
+    /// Possibilities are :
+    /// - Give one or several profile
+    /// - Give one profile and an homotetic law.
+    /// - Automatic compute of correspondence between profile, and section on the sweeped shape
+    /// - correspondence between profile, and section on the sweeped shape defined by a vertex of the
+    /// spine
+    pub fn set_force_approx_c1(&mut self, ForceApproxC1: bool) {
+        unsafe {
+            crate::ffi::BRepFill_PipeShell_set_force_approx_c1(self as *mut Self, ForceApproxC1)
+        }
+    }
+
+    /// Set an section. The correspondence with the spine, will be automatically performed.
+    pub fn add_shape_bool2(
+        &mut self,
+        Profile: &crate::ffi::TopoDS_Shape,
+        WithContact: bool,
+        WithCorrection: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_PipeShell_add_shape_bool2(
+                self as *mut Self,
+                Profile,
+                WithContact,
+                WithCorrection,
+            )
+        }
+    }
+
+    /// Set an section. The correspondence with the spine, is given by Location.
+    pub fn add_shape_vertex_bool2(
+        &mut self,
+        Profile: &crate::ffi::TopoDS_Shape,
+        Location: &crate::ffi::TopoDS_Vertex,
+        WithContact: bool,
+        WithCorrection: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_PipeShell_add_shape_vertex_bool2(
+                self as *mut Self,
+                Profile,
+                Location,
+                WithContact,
+                WithCorrection,
+            )
+        }
+    }
+
+    /// Set  an    section  and  an   homotetic    law.
+    /// The  homotetie's  centers  is  given  by  point  on  the  <Spine>.
+    pub fn set_law_shape_handlelawfunction_bool2(
+        &mut self,
+        Profile: &crate::ffi::TopoDS_Shape,
+        L: &crate::ffi::HandleLawFunction,
+        WithContact: bool,
+        WithCorrection: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_PipeShell_set_law_shape_handlelawfunction_bool2(
+                self as *mut Self,
+                Profile,
+                L,
+                WithContact,
+                WithCorrection,
+            )
+        }
+    }
+
+    /// Set  an    section  and  an   homotetic    law.
+    /// The  homotetie  center  is  given  by  point  on  the  <Spine>
+    pub fn set_law_shape_handlelawfunction_vertex_bool2(
+        &mut self,
+        Profile: &crate::ffi::TopoDS_Shape,
+        L: &crate::ffi::HandleLawFunction,
+        Location: &crate::ffi::TopoDS_Vertex,
+        WithContact: bool,
+        WithCorrection: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_PipeShell_set_law_shape_handlelawfunction_vertex_bool2(
+                self as *mut Self,
+                Profile,
+                L,
+                Location,
+                WithContact,
+                WithCorrection,
+            )
+        }
+    }
+
+    /// Delete an section.
+    pub fn delete_profile(&mut self, Profile: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepFill_PipeShell_delete_profile(self as *mut Self, Profile) }
+    }
+
+    /// Say if <me> is ready to build the shape
+    /// return False if <me> do not have section definition
+    pub fn is_ready(&self) -> bool {
+        unsafe { crate::ffi::BRepFill_PipeShell_is_ready(self as *const Self) }
     }
 
     /// Get a status, when Simulate or Build failed.
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
-        crate::geom_fill::PipeError::try_from(crate::ffi::BRepFill_PipeShell_get_status(self))
+        unsafe {
+            crate::geom_fill::PipeError::try_from(crate::ffi::BRepFill_PipeShell_get_status(
+                self as *const Self,
+            ))
             .unwrap()
+        }
+    }
+
+    pub fn set_tolerance(&mut self, Tol3d: f64, BoundTol: f64, TolAngular: f64) {
+        unsafe {
+            crate::ffi::BRepFill_PipeShell_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                BoundTol,
+                TolAngular,
+            )
+        }
     }
 
     /// Set the  Transition Mode to manage discontinuities
     /// on the sweep.
     pub fn set_transition(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Mode: crate::b_rep_fill::TransitionStyle,
         Angmin: f64,
         Angmax: f64,
     ) {
-        crate::ffi::BRepFill_PipeShell_set_transition(self, Mode.into(), Angmin, Angmax)
+        unsafe {
+            crate::ffi::BRepFill_PipeShell_set_transition(
+                self as *mut Self,
+                Mode.into(),
+                Angmin,
+                Angmax,
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepFill_PipeShell_get_type_name()
+    /// Perform simulation of the sweep :
+    /// Some Section are returned.
+    pub fn simulate(
+        &mut self,
+        NumberOfSection: i32,
+        Sections: &mut crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_PipeShell_simulate(self as *mut Self, NumberOfSection, Sections)
+        }
+    }
+
+    /// Builds the resulting shape (redefined from MakeShape).
+    pub fn build(&mut self) -> bool {
+        unsafe { crate::ffi::BRepFill_PipeShell_build(self as *mut Self) }
+    }
+
+    /// Transform the sweeping Shell in Solid.
+    /// If the section are not closed returns False
+    pub fn make_solid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepFill_PipeShell_make_solid(self as *mut Self) }
+    }
+
+    /// Returns the result Shape.
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_PipeShell_shape(self as *const Self)) }
+    }
+
+    pub fn error_on_surface(&self) -> f64 {
+        unsafe { crate::ffi::BRepFill_PipeShell_error_on_surface(self as *const Self) }
+    }
+
+    /// Returns the  TopoDS  Shape of the bottom of the sweep.
+    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_PipeShell_first_shape(self as *const Self)) }
+    }
+
+    /// Returns the TopoDS Shape of the top of the sweep.
+    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_PipeShell_last_shape(self as *const Self)) }
+    }
+
+    /// Returns the list of original profiles
+    pub fn profiles(&mut self, theProfiles: &mut crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BRepFill_PipeShell_profiles(self as *mut Self, theProfiles) }
+    }
+
+    /// Returns the spine
+    pub fn spine(&mut self) -> &crate::ffi::TopoDS_Wire {
+        unsafe { &*(crate::ffi::BRepFill_PipeShell_spine(self as *mut Self)) }
+    }
+
+    /// Returns the  list   of shapes generated   from the
+    /// shape <S>.
+    pub fn generated(
+        &mut self,
+        S: &crate::ffi::TopoDS_Shape,
+        L: &mut crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe { crate::ffi::BRepFill_PipeShell_generated(self as *mut Self, S, L) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepFill_PipeShell_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepFill_PipeShell_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepFill_PipeShell_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepFill_PipeShell_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepFillPipeShell> {
-        crate::ffi::BRepFill_PipeShell_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillPipeShell> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_PipeShell_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepFillPipeShell;
 
+unsafe impl crate::CppDeletable for HandleBRepFillPipeShell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepFillPipeShell_destructor(ptr);
+    }
+}
+
 impl HandleBRepFillPipeShell {
     /// Dereference this Handle to access the underlying BRepFill_PipeShell
     pub fn get(&self) -> &crate::ffi::BRepFill_PipeShell {
-        crate::ffi::HandleBRepFillPipeShell_get(self)
+        unsafe { &*(crate::ffi::HandleBRepFillPipeShell_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepFill_PipeShell
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepFill_PipeShell> {
-        crate::ffi::HandleBRepFillPipeShell_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_PipeShell {
+        unsafe { &mut *(crate::ffi::HandleBRepFillPipeShell_get_mut(self as *mut Self)) }
     }
 }
 
@@ -885,9 +1541,15 @@ impl HandleBRepFillPipeShell {
 /// To store section definition
 pub use crate::ffi::BRepFill_Section as Section;
 
+unsafe impl crate::CppDeletable for Section {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepFill_Section_destructor(ptr);
+    }
+}
+
 impl Section {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Section_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Section_ctor()) }
     }
 
     pub fn new_shape_vertex_bool2(
@@ -895,19 +1557,58 @@ impl Section {
         V: &crate::ffi::TopoDS_Vertex,
         WithContact: bool,
         WithCorrection: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFill_Section_ctor_shape_vertex_bool2(
-            Profile,
-            V,
-            WithContact,
-            WithCorrection,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Section_ctor_shape_vertex_bool2(
+                Profile,
+                V,
+                WithContact,
+                WithCorrection,
+            ))
+        }
+    }
+
+    pub fn set(&mut self, IsLaw: bool) {
+        unsafe { crate::ffi::BRepFill_Section_set(self as *mut Self, IsLaw) }
+    }
+
+    pub fn original_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_Section_original_shape(self as *const Self)) }
+    }
+
+    pub fn wire(&self) -> &crate::ffi::TopoDS_Wire {
+        unsafe { &*(crate::ffi::BRepFill_Section_wire(self as *const Self)) }
+    }
+
+    pub fn vertex(&self) -> &crate::ffi::TopoDS_Vertex {
+        unsafe { &*(crate::ffi::BRepFill_Section_vertex(self as *const Self)) }
     }
 
     pub fn modified_shape(
         &self,
         theShape: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepFill_Section_modified_shape(self, theShape)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Section_modified_shape(
+                self as *const Self,
+                theShape,
+            ))
+        }
+    }
+
+    pub fn is_law(&self) -> bool {
+        unsafe { crate::ffi::BRepFill_Section_is_law(self as *const Self) }
+    }
+
+    pub fn is_punctual(&self) -> bool {
+        unsafe { crate::ffi::BRepFill_Section_is_punctual(self as *const Self) }
+    }
+
+    pub fn with_contact(&self) -> bool {
+        unsafe { crate::ffi::BRepFill_Section_with_contact(self as *const Self) }
+    }
+
+    pub fn with_correction(&self) -> bool {
+        unsafe { crate::ffi::BRepFill_Section_with_correction(self as *const Self) }
     }
 }

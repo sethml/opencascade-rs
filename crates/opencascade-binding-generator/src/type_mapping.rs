@@ -1,6 +1,6 @@
 //! Type mapping between C++ and Rust types
 //!
-//! Maps OCCT C++ types to their Rust equivalents for CXX bridge generation.
+//! Maps OCCT C++ types to their Rust equivalents for extern "C" FFI generation.
 
 #![allow(dead_code)] // Some functions are reserved for future use
 
@@ -10,17 +10,17 @@ use crate::module_graph::module_to_rust_name;
 /// Result of mapping a C++ type to Rust
 #[derive(Debug, Clone)]
 pub struct RustTypeMapping {
-    /// The Rust type string for use in CXX bridge
+    /// The Rust type string for use in extern "C" FFI declarations
     pub rust_type: String,
-    /// Whether this type needs to be behind UniquePtr in return position
+    /// Whether this type is returned as an owned pointer (*mut T) that the caller must free
     pub needs_unique_ptr: bool,
-    /// Whether this type needs Pin<&mut T> for mutable self
+    /// Whether this type needs Pin<&mut T> for mutable self (unused in extern C mode)
     pub needs_pin: bool,
     /// The module this type comes from (if cross-module reference)
     pub source_module: Option<String>,
 }
 
-/// Map a parsed Type to its Rust representation for CXX
+/// Map a parsed Type to its Rust representation for extern "C" FFI
 pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
     match ty {
         Type::Void => RustTypeMapping {
@@ -80,7 +80,7 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
         Type::ConstRef(inner) => {
             let inner_mapping = map_type_to_rust(inner);
             RustTypeMapping {
-                rust_type: format!("&{}", inner_mapping.rust_type),
+                rust_type: format!("*const {}", inner_mapping.rust_type),
                 needs_unique_ptr: false,
                 needs_pin: false,
                 source_module: inner_mapping.source_module,
@@ -88,18 +88,16 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
         }
         Type::MutRef(inner) => {
             let inner_mapping = map_type_to_rust(inner);
-            // Mutable references to C++ types need Pin
-            let needs_pin = !inner.is_primitive();
-            if needs_pin {
+            if inner.is_primitive() {
                 RustTypeMapping {
-                    rust_type: format!("Pin<&mut {}>", inner_mapping.rust_type),
+                    rust_type: format!("*mut {}", inner_mapping.rust_type),
                     needs_unique_ptr: false,
-                    needs_pin: true,
+                    needs_pin: false,
                     source_module: inner_mapping.source_module,
                 }
             } else {
                 RustTypeMapping {
-                    rust_type: format!("&mut {}", inner_mapping.rust_type),
+                    rust_type: format!("*mut {}", inner_mapping.rust_type),
                     needs_unique_ptr: false,
                     needs_pin: false,
                     source_module: inner_mapping.source_module,
@@ -111,16 +109,7 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
             panic!("RValueRef types should not be mapped to Rust types - they are unbindable")
         }
         Type::ConstPtr(inner) => {
-            // Special case: const char* -> &str for parameters (C string input)
-            // Note: For return types, use map_c_string_return_type() instead, which returns String
-            if matches!(inner.as_ref(), Type::Class(name) if name == "char") {
-                return RustTypeMapping {
-                    rust_type: "&str".to_string(),
-                    needs_unique_ptr: false,
-                    needs_pin: false,
-                    source_module: None,
-                };
-            }
+            // const char* stays as *const c_char for extern "C"
             let inner_mapping = map_type_to_rust(inner);
             RustTypeMapping {
                 rust_type: format!("*const {}", inner_mapping.rust_type),
@@ -140,12 +129,10 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
         }
         Type::Handle(class_name) => {
             let source_module = extract_module_from_class(class_name);
-            // Handles are typedef'd in the bridge
-            // Use full class name to avoid collisions (e.g., Geom_Curve vs Geom2d_Curve)
             let handle_type = format!("Handle{}", class_name.replace("_", ""));
             RustTypeMapping {
                 rust_type: handle_type,
-                needs_unique_ptr: true, // CXX requires UniquePtr for any opaque C++ type returned by value
+                needs_unique_ptr: true, // Returned as *mut T, caller must free
                 needs_pin: false,
                 source_module,
             }
@@ -154,7 +141,7 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
             // C++ char resolved from canonical types (e.g., Standard_Character)
             // CXX supports c_char but not Rust's char (which is 4-byte Unicode)
             RustTypeMapping {
-                rust_type: "c_char".to_string(),
+                rust_type: "std::ffi::c_char".to_string(),
                 needs_unique_ptr: false,
                 needs_pin: false,
                 source_module: None,
@@ -162,10 +149,9 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
         }
         Type::Class(class_name) => {
             let source_module = extract_module_from_class(class_name);
-            // Use full C++ name in CXX bridge (will be aliased if cross-module)
             RustTypeMapping {
                 rust_type: class_name.clone(),
-                needs_unique_ptr: true, // C++ classes need UniquePtr in return position
+                needs_unique_ptr: true, // C++ classes returned as *mut T, caller must free
                 needs_pin: false,
                 source_module,
             }
@@ -173,13 +159,13 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
     }
 }
 
-/// Map a type for use in return position (wraps in UniquePtr if needed)
+/// Map a type for use in return position (returns *mut T for owned objects)
 pub fn map_return_type(ty: &Type) -> RustTypeMapping {
     let mut mapping = map_type_to_rust(ty);
 
-    // Return-by-value C++ types need to be wrapped in UniquePtr
+    // Return-by-value C++ types are returned as *mut T (heap-allocated)
     if mapping.needs_unique_ptr {
-        mapping.rust_type = format!("UniquePtr<{}>", mapping.rust_type);
+        mapping.rust_type = format!("*mut {}", mapping.rust_type);
     }
 
     mapping
@@ -191,25 +177,25 @@ pub fn map_self_type(ty: &Type, is_const: bool) -> RustTypeMapping {
 
     if is_const {
         RustTypeMapping {
-            rust_type: format!("&{}", inner_mapping.rust_type),
+            rust_type: format!("*const {}", inner_mapping.rust_type),
             needs_unique_ptr: false,
             needs_pin: false,
             source_module: inner_mapping.source_module,
         }
     } else {
         RustTypeMapping {
-            rust_type: format!("Pin<&mut {}>", inner_mapping.rust_type),
+            rust_type: format!("*mut {}", inner_mapping.rust_type),
             needs_unique_ptr: false,
-            needs_pin: true,
+            needs_pin: false,
             source_module: inner_mapping.source_module,
         }
     }
 }
 
-/// CXX reserved names that can't be used as type names
+/// Reserved names that can't be used as type names
 const CXX_RESERVED_NAMES: &[&str] = &["Vec", "Box", "String", "Result", "Option"];
 
-/// Check if a short name is reserved in CXX and needs escaping
+/// Check if a short name is reserved and needs escaping
 pub fn is_reserved_name(name: &str) -> bool {
     CXX_RESERVED_NAMES.contains(&name)
 }
@@ -336,9 +322,8 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
     match ty {
         Type::Class(class_name) if class_name == "char" => {
             // C++ char resolved from canonical types (e.g., Standard_Character)
-            // CXX supports c_char but not Rust's char (which is 4-byte Unicode)
             RustTypeMapping {
-                rust_type: "c_char".to_string(),
+                rust_type: "std::ffi::c_char".to_string(),
                 needs_unique_ptr: false,
                 needs_pin: false,
                 source_module: None,
@@ -383,7 +368,7 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
         Type::ConstRef(inner) => {
             let inner_mapping = map_type_in_context(inner, ctx);
             RustTypeMapping {
-                rust_type: format!("&{}", inner_mapping.rust_type),
+                rust_type: format!("*const {}", inner_mapping.rust_type),
                 needs_unique_ptr: false,
                 needs_pin: false,
                 source_module: inner_mapping.source_module,
@@ -391,30 +376,19 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
         }
         Type::MutRef(inner) => {
             let inner_mapping = map_type_in_context(inner, ctx);
-            let needs_pin = !inner.is_primitive();
-            if needs_pin {
-                RustTypeMapping {
-                    rust_type: format!("Pin<&mut {}>", inner_mapping.rust_type),
-                    needs_unique_ptr: false,
-                    needs_pin: true,
-                    source_module: inner_mapping.source_module,
-                }
-            } else {
-                RustTypeMapping {
-                    rust_type: format!("&mut {}", inner_mapping.rust_type),
-                    needs_unique_ptr: false,
-                    needs_pin: false,
-                    source_module: inner_mapping.source_module,
-                }
+            RustTypeMapping {
+                rust_type: format!("*mut {}", inner_mapping.rust_type),
+                needs_unique_ptr: false,
+                needs_pin: false,
+                source_module: inner_mapping.source_module,
             }
         }
         Type::Handle(class_name) => {
             let source_module = lookup_module_for_type(class_name, ctx.type_to_module);
-            // Use full class name to avoid collisions (e.g., Geom_Curve vs Geom2d_Curve)
             let handle_type = format!("Handle{}", class_name.replace("_", ""));
             RustTypeMapping {
                 rust_type: handle_type,
-                needs_unique_ptr: true, // CXX requires UniquePtr for any opaque C++ type returned by value
+                needs_unique_ptr: true,
                 needs_pin: false,
                 source_module,
             }
@@ -425,12 +399,12 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
 }
 
 /// Map a return type in context
-/// For const char* return types, maps to String (owned) rather than &str (borrowed)
+/// For const char* return types, maps to *const c_char
 pub fn map_return_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
-    // Special case: const char* return -> String (CXX supports rust::String as return type)
+    // const char* returns stay as *const c_char
     if ty.is_c_string() {
         return RustTypeMapping {
-            rust_type: "String".to_string(),
+            rust_type: "*const std::ffi::c_char".to_string(),
             needs_unique_ptr: false,
             needs_pin: false,
             source_module: None,
@@ -440,7 +414,7 @@ pub fn map_return_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMappi
     let mut mapping = map_type_in_context(ty, ctx);
 
     if mapping.needs_unique_ptr {
-        mapping.rust_type = format!("UniquePtr<{}>", mapping.rust_type);
+        mapping.rust_type = format!("*mut {}", mapping.rust_type);
     }
 
     mapping
@@ -468,7 +442,7 @@ pub fn map_cpp_type_string(cpp_type: &str) -> RustTypeMapping {
         let inner = cpp_type[6..cpp_type.len() - 1].trim();
         let inner_mapping = map_cpp_type_string(inner);
         return RustTypeMapping {
-            rust_type: format!("&{}", inner_mapping.rust_type),
+            rust_type: format!("*const {}", inner_mapping.rust_type),
             needs_unique_ptr: false,
             needs_pin: false,
             source_module: inner_mapping.source_module,
@@ -480,9 +454,9 @@ pub fn map_cpp_type_string(cpp_type: &str) -> RustTypeMapping {
         let inner = inner.trim();
         let inner_mapping = map_cpp_type_string(inner);
         return RustTypeMapping {
-            rust_type: format!("Pin<&mut {}>", inner_mapping.rust_type),
+            rust_type: format!("*mut {}", inner_mapping.rust_type),
             needs_unique_ptr: false,
-            needs_pin: true,
+            needs_pin: false,
             source_module: inner_mapping.source_module,
         };
     }
@@ -516,7 +490,7 @@ mod tests {
     #[test]
     fn test_map_const_ref() {
         let ty = Type::ConstRef(Box::new(Type::Class("gp_Pnt".to_string())));
-        assert_eq!(map_type_to_rust(&ty).rust_type, "&gp_Pnt");
+        assert_eq!(map_type_to_rust(&ty).rust_type, "*const gp_Pnt");
     }
 
     #[test]
@@ -531,6 +505,6 @@ mod tests {
     fn test_map_return_type() {
         let ty = Type::Class("TopoDS_Shape".to_string());
         let mapping = map_return_type(&ty);
-        assert_eq!(mapping.rust_type, "UniquePtr<TopoDS_Shape>");
+        assert_eq!(mapping.rust_type, "*mut TopoDS_Shape");
     }
 }

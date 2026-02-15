@@ -9,28 +9,30 @@
 pub use crate::ffi::{g_transform, same_range, to3d_2};
 pub fn build_curve3d(
     Tolerance: f64,
-    CurvePtr: std::pin::Pin<&mut crate::ffi::Adaptor3d_CurveOnSurface>,
+    CurvePtr: &mut crate::ffi::Adaptor3d_CurveOnSurface,
     FirstParameter: f64,
     LastParameter: f64,
-    NewCurvePtr: std::pin::Pin<&mut crate::ffi::HandleGeomCurve>,
+    NewCurvePtr: &mut crate::ffi::HandleGeomCurve,
     MaxDeviation: &mut f64,
     AverageDeviation: &mut f64,
     Continuity: crate::geom_abs::Shape,
     MaxDegree: i32,
     MaxSegment: i32,
 ) {
-    crate::ffi::build_curve3d(
-        Tolerance,
-        CurvePtr,
-        FirstParameter,
-        LastParameter,
-        NewCurvePtr,
-        MaxDeviation,
-        AverageDeviation,
-        Continuity.into(),
-        MaxDegree,
-        MaxSegment,
-    )
+    unsafe {
+        crate::ffi::build_curve3d(
+            Tolerance,
+            CurvePtr,
+            FirstParameter,
+            LastParameter,
+            NewCurvePtr,
+            MaxDeviation,
+            AverageDeviation,
+            Continuity.into(),
+            MaxDegree,
+            MaxSegment,
+        )
+    }
 }
 pub use crate::ffi::{
     adjust_extremity, axe_of_inertia, build_c3d_on_iso_line, cancel_denominator_derivative,

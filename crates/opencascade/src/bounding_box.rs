@@ -1,4 +1,3 @@
-use cxx::UniquePtr;
 use glam::DVec3;
 use opencascade_sys::{b_rep_bnd_lib, bnd};
 
@@ -9,7 +8,7 @@ use crate::primitives::Shape;
 /// means that the point values of a `BoundingBox` will often be slightly larger
 /// or smaller than expected of the geometry of known shapes.
 pub struct BoundingBox {
-    pub(crate) inner: UniquePtr<bnd::Box>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<bnd::Box>,
 }
 impl BoundingBox {
     /// Create a new void box. A void box in OCC is defined as a box that contains no points.
@@ -45,11 +44,9 @@ impl BoundingBox {
 /// package.
 pub fn aabb(shape: &Shape) -> BoundingBox {
     let mut bb = BoundingBox::void();
-    b_rep_bnd_lib::add(
-        shape.inner.as_ref().expect("Input shape ref was null"),
-        bb.inner.pin_mut(),
-        true,
-    );
+    unsafe {
+        b_rep_bnd_lib::add(&*shape.inner, &mut *bb.inner, true);
+    }
     bb
 }
 

@@ -1,10 +1,9 @@
-use cxx::UniquePtr;
 use opencascade_sys::{b_rep_offset_api, topo_ds};
 
 use crate::primitives::Wire;
 
 pub struct Shell {
-    pub(crate) inner: UniquePtr<topo_ds::Shell>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<topo_ds::Shell>,
 }
 
 impl AsRef<Shell> for Shell {
@@ -24,14 +23,14 @@ impl Shell {
         let mut make_loft = b_rep_offset_api::ThruSections::new_bool(is_solid);
 
         for wire in wires.into_iter() {
-            make_loft.pin_mut().add_wire(&wire.as_ref().inner);
+            make_loft.add_wire(&wire.as_ref().inner);
         }
 
         // Set CheckCompatibility to `true` to avoid twisted results.
-        make_loft.pin_mut().check_compatibility(true);
+        make_loft.check_compatibility(true);
 
-        let shape = make_loft.pin_mut().shape();
-        let shell = topo_ds::shell(shape);
+        let shape = make_loft.shape();
+        let shell = unsafe { &*topo_ds::shell(shape) };
 
         Self::from_shell(shell)
     }

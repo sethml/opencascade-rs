@@ -13,10 +13,73 @@
 /// Class for using units variables
 pub use crate::ffi::StepData_Factors as Factors;
 
+unsafe impl crate::CppDeletable for Factors {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepData_Factors_destructor(ptr);
+    }
+}
+
 impl Factors {
     /// Constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::StepData_Factors_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepData_Factors_ctor()) }
+    }
+
+    /// Initializes the 3 factors for the conversion of units
+    pub fn initialize_factors(
+        &mut self,
+        theLengthFactor: f64,
+        thePlaneAngleFactor: f64,
+        theSolidAngleFactor: f64,
+    ) {
+        unsafe {
+            crate::ffi::StepData_Factors_initialize_factors(
+                self as *mut Self,
+                theLengthFactor,
+                thePlaneAngleFactor,
+                theSolidAngleFactor,
+            )
+        }
+    }
+
+    /// Sets length unit for current transfer process
+    pub fn set_cascade_unit(&mut self, theUnit: f64) {
+        unsafe { crate::ffi::StepData_Factors_set_cascade_unit(self as *mut Self, theUnit) }
+    }
+
+    /// Returns length unit for current transfer process (mm by default)
+    pub fn cascade_unit(&self) -> f64 {
+        unsafe { crate::ffi::StepData_Factors_cascade_unit(self as *const Self) }
+    }
+
+    /// Returns transient length factor for scaling of shapes
+    /// at one stage of transfer process
+    pub fn length_factor(&self) -> f64 {
+        unsafe { crate::ffi::StepData_Factors_length_factor(self as *const Self) }
+    }
+
+    /// Returns transient plane angle factor for conversion of angles
+    /// at one stage of transfer process
+    pub fn plane_angle_factor(&self) -> f64 {
+        unsafe { crate::ffi::StepData_Factors_plane_angle_factor(self as *const Self) }
+    }
+
+    /// Returns transient solid angle factor for conversion of angles
+    /// at one stage of transfer process
+    pub fn solid_angle_factor(&self) -> f64 {
+        unsafe { crate::ffi::StepData_Factors_solid_angle_factor(self as *const Self) }
+    }
+
+    /// Returns transient factor radian degree for conversion of angles
+    /// at one stage of transfer process
+    pub fn factor_radian_degree(&self) -> f64 {
+        unsafe { crate::ffi::StepData_Factors_factor_radian_degree(self as *const Self) }
+    }
+
+    /// Returns transient factor degree radian for conversion of angles
+    /// at one stage of transfer process
+    pub fn factor_degree_radian(&self) -> f64 {
+        unsafe { crate::ffi::StepData_Factors_factor_degree_radian(self as *const Self) }
     }
 }
 
@@ -29,165 +92,270 @@ impl Factors {
 /// - the STEP file header.
 pub use crate::ffi::StepData_StepModel as StepModel;
 
+unsafe impl crate::CppDeletable for StepModel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepData_StepModel_destructor(ptr);
+    }
+}
+
 impl StepModel {
     /// Creates an empty STEP model with an empty header.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::StepData_StepModel_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_ctor()) }
+    }
+
+    /// gets header from another Model (uses Header Protocol)
+    pub fn get_from_another(&mut self, other: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe { crate::ffi::StepData_StepModel_get_from_another(self as *mut Self, other) }
     }
 
     /// Returns a New Empty Model, same type as <me>, i.e. StepModel
-    pub fn new_empty_model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::StepData_StepModel_new_empty_model(self)
+    pub fn new_empty_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_new_empty_model(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// says if a Header entity has a specified type
+    pub fn has_header_entity(&self, atype: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::StepData_StepModel_has_header_entity(self as *const Self, atype) }
+    }
+
+    /// Clears the Header
+    pub fn clear_header(&mut self) {
+        unsafe { crate::ffi::StepData_StepModel_clear_header(self as *mut Self) }
+    }
+
+    /// Specific Check, checks Header Items with HeaderProtocol
+    pub fn verify_check(&self, ach: &mut crate::ffi::HandleInterfaceCheck) {
+        unsafe { crate::ffi::StepData_StepModel_verify_check(self as *const Self, ach) }
+    }
+
+    /// erases specific labels, i.e. clears the map (entity-ident)
+    pub fn clear_labels(&mut self) {
+        unsafe { crate::ffi::StepData_StepModel_clear_labels(self as *mut Self) }
     }
 
     /// Return the encoding of STEP file for converting names into UNICODE.
     /// Initialized from "read.step.codepage" variable by constructor, which is Resource_UTF8 by
     /// default.
     pub fn source_code_page(&self) -> crate::resource::FormatType {
-        crate::resource::FormatType::try_from(crate::ffi::StepData_StepModel_source_code_page(self))
+        unsafe {
+            crate::resource::FormatType::try_from(crate::ffi::StepData_StepModel_source_code_page(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Return the encoding of STEP file for converting names into UNICODE.
-    pub fn set_source_code_page(
-        self: std::pin::Pin<&mut Self>,
-        theCode: crate::resource::FormatType,
-    ) {
-        crate::ffi::StepData_StepModel_set_source_code_page(self, theCode.into())
+    pub fn set_source_code_page(&mut self, theCode: crate::resource::FormatType) {
+        unsafe {
+            crate::ffi::StepData_StepModel_set_source_code_page(self as *mut Self, theCode.into())
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::StepData_StepModel_get_type_name()
+    /// Sets local length unit using for transfer process
+    pub fn set_local_length_unit(&mut self, theUnit: f64) {
+        unsafe { crate::ffi::StepData_StepModel_set_local_length_unit(self as *mut Self, theUnit) }
+    }
+
+    /// Returns local length unit using for transfer process (1 by default)
+    pub fn local_length_unit(&self) -> f64 {
+        unsafe { crate::ffi::StepData_StepModel_local_length_unit(self as *const Self) }
+    }
+
+    /// Sets length unit using for writing process
+    pub fn set_write_length_unit(&mut self, theUnit: f64) {
+        unsafe { crate::ffi::StepData_StepModel_set_write_length_unit(self as *mut Self, theUnit) }
+    }
+
+    /// Returns length unit using for writing process (1 by default)
+    pub fn write_length_unit(&self) -> f64 {
+        unsafe { crate::ffi::StepData_StepModel_write_length_unit(self as *const Self) }
+    }
+
+    /// Returns the unit initialization flag
+    /// True - the unit was initialized
+    /// False - the unit value was not initialized, the default value is used
+    pub fn is_initialized_unit(&self) -> bool {
+        unsafe { crate::ffi::StepData_StepModel_is_initialized_unit(self as *const Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepData_StepModel_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::StepData_StepModel_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::StepData_StepModel_get_type_descriptor()
+        unsafe { &*(crate::ffi::StepData_StepModel_get_type_descriptor()) }
     }
 
     /// Upcast to Interface_InterfaceModel
     pub fn as_interface_interface_model(&self) -> &crate::interface::InterfaceModel {
-        crate::ffi::StepData_StepModel_as_Interface_InterfaceModel(self)
+        unsafe {
+            &*(crate::ffi::StepData_StepModel_as_Interface_InterfaceModel(self as *const Self))
+        }
     }
 
     /// Upcast to Interface_InterfaceModel (mutable)
-    pub fn as_interface_interface_model_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::interface::InterfaceModel> {
-        crate::ffi::StepData_StepModel_as_Interface_InterfaceModel_mut(self)
+    pub fn as_interface_interface_model_mut(&mut self) -> &mut crate::interface::InterfaceModel {
+        unsafe {
+            &mut *(crate::ffi::StepData_StepModel_as_Interface_InterfaceModel_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: Destroy()
-    pub fn destroy(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::StepData_StepModel_inherited_Destroy(self)
+    pub fn destroy(&mut self) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_Destroy(self as *mut Self) }
     }
 
     /// Inherited from Interface_InterfaceModel: DispatchStatus()
-    pub fn dispatch_status(self: std::pin::Pin<&mut Self>) -> &mut bool {
-        crate::ffi::StepData_StepModel_inherited_DispatchStatus(self)
+    pub fn dispatch_status(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::StepData_StepModel_inherited_DispatchStatus(self as *mut Self))
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: Clear()
-    pub fn clear(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::StepData_StepModel_inherited_Clear(self)
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_Clear(self as *mut Self) }
     }
 
     /// Inherited from Interface_InterfaceModel: ClearEntities()
-    pub fn clear_entities(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::StepData_StepModel_inherited_ClearEntities(self)
+    pub fn clear_entities(&mut self) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_ClearEntities(self as *mut Self) }
     }
 
     /// Inherited from Interface_InterfaceModel: NbEntities()
     pub fn nb_entities(&self) -> i32 {
-        crate::ffi::StepData_StepModel_inherited_NbEntities(self)
+        unsafe { crate::ffi::StepData_StepModel_inherited_NbEntities(self as *const Self) }
     }
 
     /// Inherited from Interface_InterfaceModel: EntityState()
     pub fn entity_state(&self, num: i32) -> crate::interface::DataState {
-        crate::interface::DataState::try_from(crate::ffi::StepData_StepModel_inherited_EntityState(
-            self, num,
-        ))
-        .unwrap()
+        unsafe {
+            crate::interface::DataState::try_from(
+                crate::ffi::StepData_StepModel_inherited_EntityState(self as *const Self, num),
+            )
+            .unwrap()
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: IsReportEntity()
     pub fn is_report_entity(&self, num: i32, semantic: bool) -> bool {
-        crate::ffi::StepData_StepModel_inherited_IsReportEntity(self, num, semantic)
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_IsReportEntity(
+                self as *const Self,
+                num,
+                semantic,
+            )
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: IsErrorEntity()
     pub fn is_error_entity(&self, num: i32) -> bool {
-        crate::ffi::StepData_StepModel_inherited_IsErrorEntity(self, num)
+        unsafe { crate::ffi::StepData_StepModel_inherited_IsErrorEntity(self as *const Self, num) }
     }
 
     /// Inherited from Interface_InterfaceModel: IsRedefinedContent()
     pub fn is_redefined_content(&self, num: i32) -> bool {
-        crate::ffi::StepData_StepModel_inherited_IsRedefinedContent(self, num)
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_IsRedefinedContent(self as *const Self, num)
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: ClearReportEntity()
-    pub fn clear_report_entity(self: std::pin::Pin<&mut Self>, num: i32) -> bool {
-        crate::ffi::StepData_StepModel_inherited_ClearReportEntity(self, num)
+    pub fn clear_report_entity(&mut self, num: i32) -> bool {
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_ClearReportEntity(self as *mut Self, num)
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: IsUnknownEntity()
     pub fn is_unknown_entity(&self, num: i32) -> bool {
-        crate::ffi::StepData_StepModel_inherited_IsUnknownEntity(self, num)
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_IsUnknownEntity(self as *const Self, num)
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: FillSemanticChecks()
     pub fn fill_semantic_checks(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         checks: &crate::ffi::Interface_CheckIterator,
         clear: bool,
     ) {
-        crate::ffi::StepData_StepModel_inherited_FillSemanticChecks(self, checks, clear)
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_FillSemanticChecks(
+                self as *mut Self,
+                checks,
+                clear,
+            )
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: HasSemanticChecks()
     pub fn has_semantic_checks(&self) -> bool {
-        crate::ffi::StepData_StepModel_inherited_HasSemanticChecks(self)
+        unsafe { crate::ffi::StepData_StepModel_inherited_HasSemanticChecks(self as *const Self) }
     }
 
     /// Inherited from Interface_InterfaceModel: Check()
     pub fn check(&self, num: i32, syntactic: bool) -> &crate::ffi::HandleInterfaceCheck {
-        crate::ffi::StepData_StepModel_inherited_Check(self, num, syntactic)
+        unsafe {
+            &*(crate::ffi::StepData_StepModel_inherited_Check(self as *const Self, num, syntactic))
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: Reservate()
-    pub fn reservate(self: std::pin::Pin<&mut Self>, nbent: i32) {
-        crate::ffi::StepData_StepModel_inherited_Reservate(self, nbent)
+    pub fn reservate(&mut self, nbent: i32) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_Reservate(self as *mut Self, nbent) }
     }
 
     /// Inherited from Interface_InterfaceModel: ReverseOrders()
-    pub fn reverse_orders(self: std::pin::Pin<&mut Self>, after: i32) {
-        crate::ffi::StepData_StepModel_inherited_ReverseOrders(self, after)
+    pub fn reverse_orders(&mut self, after: i32) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_ReverseOrders(self as *mut Self, after) }
     }
 
     /// Inherited from Interface_InterfaceModel: ChangeOrder()
-    pub fn change_order(self: std::pin::Pin<&mut Self>, oldnum: i32, newnum: i32, count: i32) {
-        crate::ffi::StepData_StepModel_inherited_ChangeOrder(self, oldnum, newnum, count)
+    pub fn change_order(&mut self, oldnum: i32, newnum: i32, count: i32) {
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_ChangeOrder(
+                self as *mut Self,
+                oldnum,
+                newnum,
+                count,
+            )
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: SetCategoryNumber()
-    pub fn set_category_number(self: std::pin::Pin<&mut Self>, num: i32, val: i32) -> bool {
-        crate::ffi::StepData_StepModel_inherited_SetCategoryNumber(self, num, val)
+    pub fn set_category_number(&mut self, num: i32, val: i32) -> bool {
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_SetCategoryNumber(self as *mut Self, num, val)
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: CategoryNumber()
     pub fn category_number(&self, num: i32) -> i32 {
-        crate::ffi::StepData_StepModel_inherited_CategoryNumber(self, num)
+        unsafe { crate::ffi::StepData_StepModel_inherited_CategoryNumber(self as *const Self, num) }
     }
 
     /// Inherited from Interface_InterfaceModel: GlobalCheck()
     pub fn global_check(&self, syntactic: bool) -> &crate::ffi::HandleInterfaceCheck {
-        crate::ffi::StepData_StepModel_inherited_GlobalCheck(self, syntactic)
+        unsafe {
+            &*(crate::ffi::StepData_StepModel_inherited_GlobalCheck(self as *const Self, syntactic))
+        }
     }
 
     /// Inherited from Interface_InterfaceModel: SetGlobalCheck()
-    pub fn set_global_check(
-        self: std::pin::Pin<&mut Self>,
-        ach: &crate::ffi::HandleInterfaceCheck,
-    ) {
-        crate::ffi::StepData_StepModel_inherited_SetGlobalCheck(self, ach)
+    pub fn set_global_check(&mut self, ach: &crate::ffi::HandleInterfaceCheck) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_SetGlobalCheck(self as *mut Self, ach) }
     }
 }

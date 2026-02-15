@@ -1,9 +1,8 @@
 use crate::primitives::Shape;
-use cxx::UniquePtr;
 use opencascade_sys::{b_rep, topo_ds};
 
 pub struct Compound {
-    pub(crate) inner: UniquePtr<topo_ds::Compound>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<topo_ds::Compound>,
 }
 
 impl AsRef<Compound> for Compound {
@@ -27,10 +26,10 @@ impl Compound {
     pub fn from_shapes<T: AsRef<Shape>>(shapes: impl IntoIterator<Item = T>) -> Self {
         let mut compound = topo_ds::Compound::new();
         let builder = b_rep::Builder::new();
-        builder.make_compound(compound.pin_mut());
+        builder.make_compound(&mut compound);
 
         for shape in shapes.into_iter() {
-            builder.add(compound.pin_mut().as_shape_mut(), &shape.as_ref().inner);
+            builder.add(compound.as_shape_mut(), &shape.as_ref().inner);
         }
 
         Self::from_compound(&compound)

@@ -13,76 +13,107 @@
 /// Actor to write Shape to IGES
 pub use crate::ffi::IGESControl_ActorWrite as ActorWrite;
 
+unsafe impl crate::CppDeletable for ActorWrite {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESControl_ActorWrite_destructor(ptr);
+    }
+}
+
 impl ActorWrite {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESControl_ActorWrite_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ActorWrite_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::IGESControl_ActorWrite_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESControl_ActorWrite_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::IGESControl_ActorWrite_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::IGESControl_ActorWrite_get_type_descriptor()
+        unsafe { &*(crate::ffi::IGESControl_ActorWrite_get_type_descriptor()) }
     }
 
     /// Upcast to Transfer_ActorOfFinderProcess
     pub fn as_transfer_actor_of_finder_process(&self) -> &crate::transfer::ActorOfFinderProcess {
-        crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfFinderProcess(self)
+        unsafe {
+            &*(crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfFinderProcess(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfFinderProcess (mutable)
     pub fn as_transfer_actor_of_finder_process_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::transfer::ActorOfFinderProcess> {
-        crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(self)
+        &mut self,
+    ) -> &mut crate::transfer::ActorOfFinderProcess {
+        unsafe {
+            &mut *(crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfProcessForFinder
     pub fn as_transfer_actor_of_process_for_finder(
         &self,
     ) -> &crate::transfer::ActorOfProcessForFinder {
-        crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(self)
+        unsafe {
+            &*(crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfProcessForFinder (mutable)
     pub fn as_transfer_actor_of_process_for_finder_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::transfer::ActorOfProcessForFinder> {
-        crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(self)
+        &mut self,
+    ) -> &mut crate::transfer::ActorOfProcessForFinder {
+        unsafe {
+            &mut *(crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from Transfer_ActorOfFinderProcess: ModeTrans()
-    pub fn mode_trans(self: std::pin::Pin<&mut Self>) -> &mut i32 {
-        crate::ffi::IGESControl_ActorWrite_inherited_ModeTrans(self)
+    pub fn mode_trans(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::IGESControl_ActorWrite_inherited_ModeTrans(self as *mut Self)) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: NullResult()
-    pub fn null_result(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferBinder> {
-        crate::ffi::IGESControl_ActorWrite_inherited_NullResult(self)
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ActorWrite_inherited_NullResult(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: SetLast()
-    pub fn set_last(self: std::pin::Pin<&mut Self>, mode: bool) {
-        crate::ffi::IGESControl_ActorWrite_inherited_SetLast(self, mode)
+    pub fn set_last(&mut self, mode: bool) {
+        unsafe { crate::ffi::IGESControl_ActorWrite_inherited_SetLast(self as *mut Self, mode) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: IsLast()
     pub fn is_last(&self) -> bool {
-        crate::ffi::IGESControl_ActorWrite_inherited_IsLast(self)
+        unsafe { crate::ffi::IGESControl_ActorWrite_inherited_IsLast(self as *const Self) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: SetNext()
-    pub fn set_next(
-        self: std::pin::Pin<&mut Self>,
-        next: &crate::ffi::HandleTransferActorOfProcessForFinder,
-    ) {
-        crate::ffi::IGESControl_ActorWrite_inherited_SetNext(self, next)
+    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
+        unsafe { crate::ffi::IGESControl_ActorWrite_inherited_SetNext(self as *mut Self, next) }
     }
 
     /// Inherited from Transfer_ActorOfProcessForFinder: Next()
-    pub fn next(&self) -> cxx::UniquePtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        crate::ffi::IGESControl_ActorWrite_inherited_Next(self)
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ActorWrite_inherited_Next(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -92,43 +123,64 @@ impl ActorWrite {
 
 pub use crate::ffi::IGESControl_AlgoContainer as AlgoContainer;
 
+unsafe impl crate::CppDeletable for AlgoContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESControl_AlgoContainer_destructor(ptr);
+    }
+}
+
 impl AlgoContainer {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESControl_AlgoContainer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_AlgoContainer_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::IGESControl_AlgoContainer_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESControl_AlgoContainer_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::IGESControl_AlgoContainer_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::IGESControl_AlgoContainer_get_type_descriptor()
+        unsafe { &*(crate::ffi::IGESControl_AlgoContainer_get_type_descriptor()) }
     }
 
     /// Upcast to IGESToBRep_AlgoContainer
     pub fn as_iges_to_b_rep_algo_container(&self) -> &crate::iges_to_b_rep::AlgoContainer {
-        crate::ffi::IGESControl_AlgoContainer_as_IGESToBRep_AlgoContainer(self)
+        unsafe {
+            &*(crate::ffi::IGESControl_AlgoContainer_as_IGESToBRep_AlgoContainer(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to IGESToBRep_AlgoContainer (mutable)
     pub fn as_iges_to_b_rep_algo_container_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::iges_to_b_rep::AlgoContainer> {
-        crate::ffi::IGESControl_AlgoContainer_as_IGESToBRep_AlgoContainer_mut(self)
+        &mut self,
+    ) -> &mut crate::iges_to_b_rep::AlgoContainer {
+        unsafe {
+            &mut *(crate::ffi::IGESControl_AlgoContainer_as_IGESToBRep_AlgoContainer_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from IGESToBRep_AlgoContainer: SetToolContainer()
-    pub fn set_tool_container(
-        self: std::pin::Pin<&mut Self>,
-        TC: &crate::ffi::HandleIGESToBRepToolContainer,
-    ) {
-        crate::ffi::IGESControl_AlgoContainer_inherited_SetToolContainer(self, TC)
+    pub fn set_tool_container(&mut self, TC: &crate::ffi::HandleIGESToBRepToolContainer) {
+        unsafe {
+            crate::ffi::IGESControl_AlgoContainer_inherited_SetToolContainer(self as *mut Self, TC)
+        }
     }
 
     /// Inherited from IGESToBRep_AlgoContainer: ToolContainer()
-    pub fn tool_container(&self) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepToolContainer> {
-        crate::ffi::IGESControl_AlgoContainer_inherited_ToolContainer(self)
+    pub fn tool_container(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepToolContainer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESControl_AlgoContainer_inherited_ToolContainer(self as *const Self),
+            )
+        }
     }
 }
 
@@ -139,25 +191,39 @@ impl AlgoContainer {
 /// Controller for IGES-5.1
 pub use crate::ffi::IGESControl_Controller as Controller;
 
+unsafe impl crate::CppDeletable for Controller {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESControl_Controller_destructor(ptr);
+    }
+}
+
 impl Controller {
     /// Initializes the use of IGES Norm (the first time) and returns
     /// a Controller for IGES-5.1
     /// If <modefnes> is True, sets it to internal FNES format
-    pub fn new_bool(modefnes: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESControl_Controller_ctor_bool(modefnes)
+    pub fn new_bool(modefnes: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Controller_ctor_bool(modefnes)) }
     }
 
     /// Initializes the use of IGES Norm (the first time) and returns
     /// a Controller for IGES-5.1
     /// If <modefnes> is True, sets it to internal FNES format
-    pub fn new() -> cxx::UniquePtr<Self> {
+    pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool(false)
     }
 
     /// Creates a new empty Model ready to receive data of the Norm.
     /// It is taken from IGES Template Model
-    pub fn new_model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::IGESControl_Controller_new_model(self)
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Controller_new_model(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESControl_Controller_dynamic_type(self as *const Self)) }
     }
 
     /// Standard Initialisation. It creates a Controller for IGES and
@@ -165,57 +231,87 @@ impl Controller {
     /// Returns True when done, False if could not be done
     /// Also, it creates and records an Adaptor for FNES
     pub fn init() -> bool {
-        crate::ffi::IGESControl_Controller_init()
+        unsafe { crate::ffi::IGESControl_Controller_init() }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::IGESControl_Controller_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::IGESControl_Controller_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::IGESControl_Controller_get_type_descriptor()
+        unsafe { &*(crate::ffi::IGESControl_Controller_get_type_descriptor()) }
     }
 
     /// Upcast to XSControl_Controller
     pub fn as_xs_control_controller(&self) -> &crate::xs_control::Controller {
-        crate::ffi::IGESControl_Controller_as_XSControl_Controller(self)
+        unsafe {
+            &*(crate::ffi::IGESControl_Controller_as_XSControl_Controller(self as *const Self))
+        }
     }
 
     /// Upcast to XSControl_Controller (mutable)
-    pub fn as_xs_control_controller_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::xs_control::Controller> {
-        crate::ffi::IGESControl_Controller_as_XSControl_Controller_mut(self)
+    pub fn as_xs_control_controller_mut(&mut self) -> &mut crate::xs_control::Controller {
+        unsafe {
+            &mut *(crate::ffi::IGESControl_Controller_as_XSControl_Controller_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from XSControl_Controller: AutoRecord()
     pub fn auto_record(&self) {
-        crate::ffi::IGESControl_Controller_inherited_AutoRecord(self)
+        unsafe { crate::ffi::IGESControl_Controller_inherited_AutoRecord(self as *const Self) }
     }
 
     /// Inherited from XSControl_Controller: WorkLibrary()
     pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
-        crate::ffi::IGESControl_Controller_inherited_WorkLibrary(self)
+        unsafe { &*(crate::ffi::IGESControl_Controller_inherited_WorkLibrary(self as *const Self)) }
     }
 
     /// Inherited from XSControl_Controller: SetModeWrite()
-    pub fn set_mode_write(self: std::pin::Pin<&mut Self>, modemin: i32, modemax: i32, shape: bool) {
-        crate::ffi::IGESControl_Controller_inherited_SetModeWrite(self, modemin, modemax, shape)
+    pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
+        unsafe {
+            crate::ffi::IGESControl_Controller_inherited_SetModeWrite(
+                self as *mut Self,
+                modemin,
+                modemax,
+                shape,
+            )
+        }
     }
 
     /// Inherited from XSControl_Controller: ModeWriteBounds()
     pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
-        crate::ffi::IGESControl_Controller_inherited_ModeWriteBounds(self, modemin, modemax, shape)
+        unsafe {
+            crate::ffi::IGESControl_Controller_inherited_ModeWriteBounds(
+                self as *const Self,
+                modemin,
+                modemax,
+                shape,
+            )
+        }
     }
 
     /// Inherited from XSControl_Controller: IsModeWrite()
     pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
-        crate::ffi::IGESControl_Controller_inherited_IsModeWrite(self, modetrans, shape)
+        unsafe {
+            crate::ffi::IGESControl_Controller_inherited_IsModeWrite(
+                self as *const Self,
+                modetrans,
+                shape,
+            )
+        }
     }
 
     /// Inherited from XSControl_Controller: RecognizeWriteShape()
     pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
-        crate::ffi::IGESControl_Controller_inherited_RecognizeWriteShape(self, shape, modetrans)
+        unsafe {
+            crate::ffi::IGESControl_Controller_inherited_RecognizeWriteShape(
+                self as *const Self,
+                shape,
+                modetrans,
+            )
+        }
     }
 }
 
@@ -229,42 +325,79 @@ impl Controller {
 /// open class IGESToBRep_IGESBoundary.
 pub use crate::ffi::IGESControl_IGESBoundary as IGESBoundary;
 
+unsafe impl crate::CppDeletable for IGESBoundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESControl_IGESBoundary_destructor(ptr);
+    }
+}
+
 impl IGESBoundary {
     /// Creates an object and calls inherited constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESControl_IGESBoundary_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_IGESBoundary_ctor()) }
     }
 
     /// Creates an object and calls inherited constructor.
     pub fn new_curveandsurface(
         CS: &crate::ffi::IGESToBRep_CurveAndSurface,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESControl_IGESBoundary_ctor_curveandsurface(CS)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_IGESBoundary_ctor_curveandsurface(CS))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::IGESControl_IGESBoundary_get_type_name()
+    /// Checks result of translation of IGES boundary entities
+    /// (types 141, 142 or 508).
+    /// Checks consistency of 2D and 3D representations and keeps
+    /// only one if they are inconsistent.
+    /// Checks the closure of resulting wire and if it is not closed,
+    /// checks 2D and 3D representation and updates the resulting
+    /// wire to contain only closed representation.
+    pub fn check(&mut self, result: bool, checkclosure: bool, okCurve3d: bool, okCurve2d: bool) {
+        unsafe {
+            crate::ffi::IGESControl_IGESBoundary_check(
+                self as *mut Self,
+                result,
+                checkclosure,
+                okCurve3d,
+                okCurve2d,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESControl_IGESBoundary_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::IGESControl_IGESBoundary_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::IGESControl_IGESBoundary_get_type_descriptor()
+        unsafe { &*(crate::ffi::IGESControl_IGESBoundary_get_type_descriptor()) }
     }
 
     /// Upcast to IGESToBRep_IGESBoundary
     pub fn as_iges_to_b_rep_iges_boundary(&self) -> &crate::iges_to_b_rep::IGESBoundary {
-        crate::ffi::IGESControl_IGESBoundary_as_IGESToBRep_IGESBoundary(self)
+        unsafe {
+            &*(crate::ffi::IGESControl_IGESBoundary_as_IGESToBRep_IGESBoundary(self as *const Self))
+        }
     }
 
     /// Upcast to IGESToBRep_IGESBoundary (mutable)
     pub fn as_iges_to_b_rep_iges_boundary_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::iges_to_b_rep::IGESBoundary> {
-        crate::ffi::IGESControl_IGESBoundary_as_IGESToBRep_IGESBoundary_mut(self)
+        &mut self,
+    ) -> &mut crate::iges_to_b_rep::IGESBoundary {
+        unsafe {
+            &mut *(crate::ffi::IGESControl_IGESBoundary_as_IGESToBRep_IGESBoundary_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from IGESToBRep_IGESBoundary: Init()
     pub fn init(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         CS: &crate::ffi::IGESToBRep_CurveAndSurface,
         entity: &crate::ffi::HandleIGESDataIGESEntity,
         face: &crate::ffi::TopoDS_Face,
@@ -272,15 +405,17 @@ impl IGESBoundary {
         uFact: f64,
         filepreference: i32,
     ) {
-        crate::ffi::IGESControl_IGESBoundary_inherited_Init(
-            self,
-            CS,
-            entity,
-            face,
-            trans,
-            uFact,
-            filepreference,
-        )
+        unsafe {
+            crate::ffi::IGESControl_IGESBoundary_inherited_Init(
+                self as *mut Self,
+                CS,
+                entity,
+                face,
+                trans,
+                uFact,
+                filepreference,
+            )
+        }
     }
 }
 
@@ -325,10 +460,33 @@ impl IGESBoundary {
 /// TransferBRep::ShapeResult(reader.TransientProcess(),ent);
 pub use crate::ffi::IGESControl_Reader as Reader;
 
+unsafe impl crate::CppDeletable for Reader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESControl_Reader_destructor(ptr);
+    }
+}
+
 impl Reader {
     /// Creates a Reader from scratch
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESControl_Reader_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_ctor()) }
+    }
+
+    /// Set the transion of ALL Roots (if theReadOnlyVisible is False)
+    /// or of Visible Roots (if theReadOnlyVisible is True)
+    pub fn set_read_visible(&mut self, ReadRoot: bool) {
+        unsafe { crate::ffi::IGESControl_Reader_set_read_visible(self as *mut Self, ReadRoot) }
+    }
+
+    pub fn get_read_visible(&self) -> bool {
+        unsafe { crate::ffi::IGESControl_Reader_get_read_visible(self as *const Self) }
+    }
+
+    /// Determines the list of root entities from Model which are candidate for
+    /// a transfer to a Shape (type of entities is PRODUCT)
+    /// <theReadOnlyVisible> is taken into account to define roots
+    pub fn nb_roots_for_transfer(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESControl_Reader_nb_roots_for_transfer(self as *mut Self) }
     }
 
     /// Prints Statistics and check list for Transfer
@@ -337,94 +495,146 @@ impl Reader {
         failwarn: crate::if_select::PrintFail,
         mode: crate::if_select::PrintCount,
     ) {
-        crate::ffi::IGESControl_Reader_print_transfer_info(self, failwarn.into(), mode.into())
+        unsafe {
+            crate::ffi::IGESControl_Reader_print_transfer_info(
+                self as *const Self,
+                failwarn.into(),
+                mode.into(),
+            )
+        }
     }
 
     /// Upcast to XSControl_Reader
     pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
-        crate::ffi::IGESControl_Reader_as_XSControl_Reader(self)
+        unsafe { &*(crate::ffi::IGESControl_Reader_as_XSControl_Reader(self as *const Self)) }
     }
 
     /// Upcast to XSControl_Reader (mutable)
-    pub fn as_xs_control_reader_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
-        crate::ffi::IGESControl_Reader_as_XSControl_Reader_mut(self)
+    pub fn as_xs_control_reader_mut(&mut self) -> &mut crate::xs_control::Reader {
+        unsafe { &mut *(crate::ffi::IGESControl_Reader_as_XSControl_Reader_mut(self as *mut Self)) }
     }
 
     /// Inherited from XSControl_Reader: Model()
-    pub fn model(&self) -> cxx::UniquePtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        crate::ffi::IGESControl_Reader_inherited_Model(self)
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_inherited_Model(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from XSControl_Reader: TransferOneRoot()
     pub fn transfer_one_root(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         num: i32,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> bool {
-        crate::ffi::IGESControl_Reader_inherited_TransferOneRoot(self, num, theProgress)
+        unsafe {
+            crate::ffi::IGESControl_Reader_inherited_TransferOneRoot(
+                self as *mut Self,
+                num,
+                theProgress,
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: TransferOne()
     pub fn transfer_one(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         num: i32,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> bool {
-        crate::ffi::IGESControl_Reader_inherited_TransferOne(self, num, theProgress)
+        unsafe {
+            crate::ffi::IGESControl_Reader_inherited_TransferOne(
+                self as *mut Self,
+                num,
+                theProgress,
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: TransferList()
     pub fn transfer_list(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> i32 {
-        crate::ffi::IGESControl_Reader_inherited_TransferList(self, list, theProgress)
+        unsafe {
+            crate::ffi::IGESControl_Reader_inherited_TransferList(
+                self as *mut Self,
+                list,
+                theProgress,
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: TransferRoots()
-    pub fn transfer_roots(
-        self: std::pin::Pin<&mut Self>,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> i32 {
-        crate::ffi::IGESControl_Reader_inherited_TransferRoots(self, theProgress)
+    pub fn transfer_roots(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> i32 {
+        unsafe {
+            crate::ffi::IGESControl_Reader_inherited_TransferRoots(self as *mut Self, theProgress)
+        }
     }
 
     /// Inherited from XSControl_Reader: ClearShapes()
-    pub fn clear_shapes(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::IGESControl_Reader_inherited_ClearShapes(self)
+    pub fn clear_shapes(&mut self) {
+        unsafe { crate::ffi::IGESControl_Reader_inherited_ClearShapes(self as *mut Self) }
     }
 
     /// Inherited from XSControl_Reader: NbShapes()
     pub fn nb_shapes(&self) -> i32 {
-        crate::ffi::IGESControl_Reader_inherited_NbShapes(self)
+        unsafe { crate::ffi::IGESControl_Reader_inherited_NbShapes(self as *const Self) }
     }
 
     /// Inherited from XSControl_Reader: Shape()
-    pub fn shape(&self, num: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::IGESControl_Reader_inherited_Shape(self, num)
+    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_inherited_Shape(
+                self as *const Self,
+                num,
+            ))
+        }
     }
 
     /// Inherited from XSControl_Reader: OneShape()
-    pub fn one_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::IGESControl_Reader_inherited_OneShape(self)
+    pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_inherited_OneShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from XSControl_Reader: PrintCheckLoad()
     pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
-        crate::ffi::IGESControl_Reader_inherited_PrintCheckLoad(self, failsonly, mode.into())
+        unsafe {
+            crate::ffi::IGESControl_Reader_inherited_PrintCheckLoad(
+                self as *const Self,
+                failsonly,
+                mode.into(),
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: PrintCheckTransfer()
     pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
-        crate::ffi::IGESControl_Reader_inherited_PrintCheckTransfer(self, failsonly, mode.into())
+        unsafe {
+            crate::ffi::IGESControl_Reader_inherited_PrintCheckTransfer(
+                self as *const Self,
+                failsonly,
+                mode.into(),
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: PrintStatsTransfer()
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
-        crate::ffi::IGESControl_Reader_inherited_PrintStatsTransfer(self, what, mode)
+        unsafe {
+            crate::ffi::IGESControl_Reader_inherited_PrintStatsTransfer(
+                self as *const Self,
+                what,
+                mode,
+            )
+        }
     }
 
     /// Inherited from XSControl_Reader: GetStatsTransfer()
@@ -435,13 +645,15 @@ impl Reader {
         nbWithResult: &mut i32,
         nbWithFail: &mut i32,
     ) {
-        crate::ffi::IGESControl_Reader_inherited_GetStatsTransfer(
-            self,
-            list,
-            nbMapped,
-            nbWithResult,
-            nbWithFail,
-        )
+        unsafe {
+            crate::ffi::IGESControl_Reader_inherited_GetStatsTransfer(
+                self as *const Self,
+                list,
+                nbMapped,
+                nbWithResult,
+                nbWithFail,
+            )
+        }
     }
 }
 
@@ -451,35 +663,57 @@ impl Reader {
 
 pub use crate::ffi::IGESControl_ToolContainer as ToolContainer;
 
+unsafe impl crate::CppDeletable for ToolContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESControl_ToolContainer_destructor(ptr);
+    }
+}
+
 impl ToolContainer {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESControl_ToolContainer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ToolContainer_ctor()) }
     }
 
     /// Returns IGESControl_IGESBoundary
-    pub fn iges_boundary(&self) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
-        crate::ffi::IGESControl_ToolContainer_iges_boundary(self)
+    pub fn iges_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ToolContainer_iges_boundary(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::IGESControl_ToolContainer_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESControl_ToolContainer_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::IGESControl_ToolContainer_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::IGESControl_ToolContainer_get_type_descriptor()
+        unsafe { &*(crate::ffi::IGESControl_ToolContainer_get_type_descriptor()) }
     }
 
     /// Upcast to IGESToBRep_ToolContainer
     pub fn as_iges_to_b_rep_tool_container(&self) -> &crate::iges_to_b_rep::ToolContainer {
-        crate::ffi::IGESControl_ToolContainer_as_IGESToBRep_ToolContainer(self)
+        unsafe {
+            &*(crate::ffi::IGESControl_ToolContainer_as_IGESToBRep_ToolContainer(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to IGESToBRep_ToolContainer (mutable)
     pub fn as_iges_to_b_rep_tool_container_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::iges_to_b_rep::ToolContainer> {
-        crate::ffi::IGESControl_ToolContainer_as_IGESToBRep_ToolContainer_mut(self)
+        &mut self,
+    ) -> &mut crate::iges_to_b_rep::ToolContainer {
+        unsafe {
+            &mut *(crate::ffi::IGESControl_ToolContainer_as_IGESToBRep_ToolContainer_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -499,13 +733,19 @@ impl ToolContainer {
 /// IGESParameters and GeneralParameters).
 pub use crate::ffi::IGESControl_Writer as Writer;
 
+unsafe impl crate::CppDeletable for Writer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESControl_Writer_destructor(ptr);
+    }
+}
+
 impl Writer {
     /// Creates a writer object with the
     /// default unit (millimeters) and write mode (Face).
     /// IGESControl_Writer (const Standard_CString unit,
     /// const Standard_Integer modecr = 0);
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESControl_Writer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Writer_ctor()) }
     }
 
     /// Creates a writer with given
@@ -515,8 +755,15 @@ impl Writer {
     /// theModecr defines the write mode and may be:
     /// - 0: Faces (default)
     /// - 1: BRep.
-    pub fn new_charptr_int(theUnit: &str, theModecr: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESControl_Writer_ctor_charptr_int(theUnit, theModecr)
+    pub fn new_charptr_int(
+        theUnit: *const std::ffi::c_char,
+        theModecr: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Writer_ctor_charptr_int(
+                theUnit, theModecr,
+            ))
+        }
     }
 
     /// Creates a writer with given
@@ -526,8 +773,30 @@ impl Writer {
     /// theModecr defines the write mode and may be:
     /// - 0: Faces (default)
     /// - 1: BRep.
-    pub fn new_charptr(theUnit: &str) -> cxx::UniquePtr<Self> {
+    pub fn new_charptr(theUnit: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         Self::new_charptr_int(theUnit, 0)
+    }
+
+    /// Translates a Shape to IGES Entities and adds them to the model
+    /// Returns True if done, False if Shape not suitable for IGES or null
+    pub fn add_shape(
+        &mut self,
+        sh: &crate::ffi::TopoDS_Shape,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::IGESControl_Writer_add_shape(self as *mut Self, sh, theProgress) }
+    }
+
+    /// Adds an IGES entity (and the ones it references) to the model
+    pub fn add_entity(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe { crate::ffi::IGESControl_Writer_add_entity(self as *mut Self, ent) }
+    }
+
+    /// Computes the entities found in
+    /// the model, which is ready to be written.
+    /// This contrasts with the default computation of headers only.
+    pub fn compute_model(&mut self) {
+        unsafe { crate::ffi::IGESControl_Writer_compute_model(self as *mut Self) }
     }
 
     /// Prepares and writes an IGES model
@@ -535,7 +804,7 @@ impl Writer {
     /// Returns True if the operation was performed correctly and
     /// False if an error occurred (for instance,
     /// if the processor could not create the file).
-    pub fn write(self: std::pin::Pin<&mut Self>, file: &str, fnes: bool) -> bool {
-        crate::ffi::IGESControl_Writer_write(self, file, fnes)
+    pub fn write(&mut self, file: *const std::ffi::c_char, fnes: bool) -> bool {
+        unsafe { crate::ffi::IGESControl_Writer_write(self as *mut Self, file, fnes) }
     }
 }

@@ -24,10 +24,16 @@
 /// contain one or more of these individual shapes
 pub use crate::ffi::ShapeBuild_ReShape as ReShape;
 
+unsafe impl crate::CppDeletable for ReShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeBuild_ReShape_destructor(ptr);
+    }
+}
+
 impl ReShape {
     /// Returns an empty Reshape
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeBuild_ReShape_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_ctor()) }
     }
 
     /// Applies the substitutions requests to a shape
@@ -45,17 +51,19 @@ impl ReShape {
     /// If Replace/Remove are ignored or absent, the result as same
     /// type as the starting shape
     pub fn apply_shape_shapeenum_int(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         shape: &crate::ffi::TopoDS_Shape,
         until: crate::top_abs::ShapeEnum,
         buildmode: i32,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum_int(
-            self,
-            shape,
-            until.into(),
-            buildmode,
-        )
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum_int(
+                self as *mut Self,
+                shape,
+                until.into(),
+                buildmode,
+            ))
+        }
     }
 
     /// Applies the substitutions requests to a shape.
@@ -71,11 +79,35 @@ impl ReShape {
     /// If incompatible shape type is encountered, it is ignored
     /// and flag FAIL1 is set in Status.
     pub fn apply_shape_shapeenum(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         shape: &crate::ffi::TopoDS_Shape,
         until: crate::top_abs::ShapeEnum,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum(self, shape, until.into())
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum(
+                self as *mut Self,
+                shape,
+                until.into(),
+            ))
+        }
+    }
+
+    /// Returns a complete substitution status for a shape
+    /// 0  : not recorded,   <newsh> = original <shape>
+    /// < 0: to be removed,  <newsh> is NULL
+    /// > 0: to be replaced, <newsh> is a new item
+    /// If <last> is False, returns status and new shape recorded in
+    /// the map directly for the shape, if True and status > 0 then
+    /// recursively searches for the last status and new shape.
+    pub fn status_shape2_bool(
+        &mut self,
+        shape: &crate::ffi::TopoDS_Shape,
+        newsh: &mut crate::ffi::TopoDS_Shape,
+        last: bool,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::ShapeBuild_ReShape_status_shape2_bool(self as *mut Self, shape, newsh, last)
+        }
     }
 
     /// Queries the status of last call to Apply(shape,enum)
@@ -86,82 +118,107 @@ impl ReShape {
     /// DONE4: some subshapes removed
     /// FAIL1: some replacements not done because of bad type of subshape
     pub fn status_status(&self, status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeBuild_ReShape_status(self, status.into())
+        unsafe { crate::ffi::ShapeBuild_ReShape_status_status(self as *const Self, status.into()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::ShapeBuild_ReShape_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeBuild_ReShape_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::ShapeBuild_ReShape_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::ShapeBuild_ReShape_get_type_descriptor()
+        unsafe { &*(crate::ffi::ShapeBuild_ReShape_get_type_descriptor()) }
     }
 
     /// Upcast to BRepTools_ReShape
     pub fn as_b_rep_tools_re_shape(&self) -> &crate::b_rep_tools::ReShape {
-        crate::ffi::ShapeBuild_ReShape_as_BRepTools_ReShape(self)
+        unsafe { &*(crate::ffi::ShapeBuild_ReShape_as_BRepTools_ReShape(self as *const Self)) }
     }
 
     /// Upcast to BRepTools_ReShape (mutable)
-    pub fn as_b_rep_tools_re_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_tools::ReShape> {
-        crate::ffi::ShapeBuild_ReShape_as_BRepTools_ReShape_mut(self)
+    pub fn as_b_rep_tools_re_shape_mut(&mut self) -> &mut crate::b_rep_tools::ReShape {
+        unsafe {
+            &mut *(crate::ffi::ShapeBuild_ReShape_as_BRepTools_ReShape_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from BRepTools_ReShape: Clear()
-    pub fn clear(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::ShapeBuild_ReShape_inherited_Clear(self)
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::ShapeBuild_ReShape_inherited_Clear(self as *mut Self) }
     }
 
     /// Inherited from BRepTools_ReShape: Remove()
-    pub fn remove(self: std::pin::Pin<&mut Self>, shape: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::ShapeBuild_ReShape_inherited_Remove(self, shape)
+    pub fn remove(&mut self, shape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::ShapeBuild_ReShape_inherited_Remove(self as *mut Self, shape) }
     }
 
     /// Inherited from BRepTools_ReShape: Replace()
     pub fn replace(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         shape: &crate::ffi::TopoDS_Shape,
         newshape: &crate::ffi::TopoDS_Shape,
     ) {
-        crate::ffi::ShapeBuild_ReShape_inherited_Replace(self, shape, newshape)
+        unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_Replace(self as *mut Self, shape, newshape)
+        }
     }
 
     /// Inherited from BRepTools_ReShape: IsRecorded()
     pub fn is_recorded(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::ShapeBuild_ReShape_inherited_IsRecorded(self, shape)
+        unsafe { crate::ffi::ShapeBuild_ReShape_inherited_IsRecorded(self as *const Self, shape) }
     }
 
     /// Inherited from BRepTools_ReShape: Value()
     pub fn value(
         &self,
         shape: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ShapeBuild_ReShape_inherited_Value(self, shape)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_inherited_Value(
+                self as *const Self,
+                shape,
+            ))
+        }
     }
 
     /// Inherited from BRepTools_ReShape: ModeConsiderLocation()
-    pub fn mode_consider_location(self: std::pin::Pin<&mut Self>) -> &mut bool {
-        crate::ffi::ShapeBuild_ReShape_inherited_ModeConsiderLocation(self)
+    pub fn mode_consider_location(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::ShapeBuild_ReShape_inherited_ModeConsiderLocation(self as *mut Self))
+        }
     }
 
     /// Inherited from BRepTools_ReShape: CopyVertex()
     pub fn copy_vertex(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theV: &crate::ffi::TopoDS_Vertex,
         theTol: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ShapeBuild_ReShape_inherited_CopyVertex(self, theV, theTol)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_inherited_CopyVertex(
+                self as *mut Self,
+                theV,
+                theTol,
+            ))
+        }
     }
 
     /// Inherited from BRepTools_ReShape: IsNewShape()
     pub fn is_new_shape(&self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::ShapeBuild_ReShape_inherited_IsNewShape(self, theShape)
+        unsafe {
+            crate::ffi::ShapeBuild_ReShape_inherited_IsNewShape(self as *const Self, theShape)
+        }
     }
 
     /// Inherited from BRepTools_ReShape: History()
-    pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
-        crate::ffi::ShapeBuild_ReShape_inherited_History(self)
+    pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_inherited_History(
+                self as *const Self,
+            ))
+        }
     }
 }

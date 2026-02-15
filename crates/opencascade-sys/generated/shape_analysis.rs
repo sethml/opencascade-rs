@@ -17,26 +17,101 @@ pub use crate::ffi::{
 
 pub use crate::ffi::ShapeAnalysis_BoxBndTreeSelector as BoxBndTreeSelector;
 
+unsafe impl crate::CppDeletable for BoxBndTreeSelector {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_BoxBndTreeSelector_destructor(ptr);
+    }
+}
+
 impl BoxBndTreeSelector {
     pub fn new_handletoptoolsharray1ofshape_bool(
         theSeq: &crate::ffi::HandleTopToolsHArray1OfShape,
         theShared: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_BoxBndTreeSelector_ctor_handletoptoolsharray1ofshape_bool(
-            theSeq, theShared,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_BoxBndTreeSelector_ctor_handletoptoolsharray1ofshape_bool(
+                    theSeq, theShared,
+                ),
+            )
+        }
+    }
+
+    pub fn define_boxes(&mut self, theFBox: &crate::ffi::Bnd_Box, theLBox: &crate::ffi::Bnd_Box) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_BoxBndTreeSelector_define_boxes(
+                self as *mut Self,
+                theFBox,
+                theLBox,
+            )
+        }
     }
 
     pub fn define_vertexes(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theVf: &crate::ffi::TopoDS_Vertex,
         theVl: &crate::ffi::TopoDS_Vertex,
     ) {
-        crate::ffi::ShapeAnalysis_BoxBndTreeSelector_define_vertexes(self, theVf, theVl)
+        unsafe {
+            crate::ffi::ShapeAnalysis_BoxBndTreeSelector_define_vertexes(
+                self as *mut Self,
+                theVf,
+                theVl,
+            )
+        }
+    }
+
+    pub fn define_pnt(&mut self, theFPnt: &crate::ffi::gp_Pnt, theLPnt: &crate::ffi::gp_Pnt) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_BoxBndTreeSelector_define_pnt(
+                self as *mut Self,
+                theFPnt,
+                theLPnt,
+            )
+        }
+    }
+
+    pub fn get_nb(&mut self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_BoxBndTreeSelector_get_nb(self as *mut Self) }
+    }
+
+    pub fn set_nb(&mut self, theNb: i32) {
+        unsafe { crate::ffi::ShapeAnalysis_BoxBndTreeSelector_set_nb(self as *mut Self, theNb) }
+    }
+
+    pub fn load_list(&mut self, elem: i32) {
+        unsafe { crate::ffi::ShapeAnalysis_BoxBndTreeSelector_load_list(self as *mut Self, elem) }
+    }
+
+    pub fn set_stop(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_BoxBndTreeSelector_set_stop(self as *mut Self) }
+    }
+
+    pub fn set_tolerance(&mut self, theTol: f64) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_BoxBndTreeSelector_set_tolerance(self as *mut Self, theTol)
+        }
+    }
+
+    pub fn cont_wire(&mut self, nbWire: i32) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_BoxBndTreeSelector_cont_wire(self as *mut Self, nbWire) }
     }
 
     pub fn last_check_status(&self, theStatus: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_BoxBndTreeSelector_last_check_status(self, theStatus.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_BoxBndTreeSelector_last_check_status(
+                self as *const Self,
+                theStatus.into(),
+            )
+        }
+    }
+
+    pub fn reject(&self, theBnd: &crate::ffi::Bnd_Box) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_BoxBndTreeSelector_reject(self as *const Self, theBnd) }
+    }
+
+    pub fn accept(&mut self, arg0: &i32) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_BoxBndTreeSelector_accept(self as *mut Self, arg0) }
     }
 }
 
@@ -49,15 +124,144 @@ impl BoxBndTreeSelector {
 /// existing complex (for example, BSpline) geometry objects with given tolerance.
 pub use crate::ffi::ShapeAnalysis_CanonicalRecognition as CanonicalRecognition;
 
+unsafe impl crate::CppDeletable for CanonicalRecognition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_CanonicalRecognition_destructor(ptr);
+    }
+}
+
 impl CanonicalRecognition {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_CanonicalRecognition_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_CanonicalRecognition_ctor()) }
     }
 
     /// constructor with shape initialisation
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_CanonicalRecognition_ctor_shape(theShape)
+    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_CanonicalRecognition_ctor_shape(
+                theShape,
+            ))
+        }
+    }
+
+    /// Sets shape
+    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CanonicalRecognition_set_shape(self as *mut Self, theShape)
+        }
+    }
+
+    /// Returns input shape
+    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::ShapeAnalysis_CanonicalRecognition_get_shape(self as *const Self)) }
+    }
+
+    /// Returns deviation between input geometry entity and analytical entity
+    pub fn get_gap(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_CanonicalRecognition_get_gap(self as *const Self) }
+    }
+
+    /// Returns status of operation.
+    /// Current meaning of possible values of status:
+    /// -1 - algorithm is not initalazed by shape
+    /// 0 - no errors
+    /// 1 - error during any operation (usually - because of wrong input data)
+    /// Any operation (calling any methods like IsPlane(...), ...) can be performed
+    /// when current staue is equal 0.
+    /// If after any operation status != 0, it is necessary to set it 0 by method ClearStatus()
+    /// before calling other operation.
+    pub fn get_status(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_CanonicalRecognition_get_status(self as *const Self) }
+    }
+
+    /// Returns status to be equal 0.
+    pub fn clear_status(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_CanonicalRecognition_clear_status(self as *mut Self) }
+    }
+
+    /// Returns true if the underlined surface can be represent by plane with tolerance theTol
+    /// and sets in thePln the result plane.
+    pub fn is_plane(&mut self, theTol: f64, thePln: &mut crate::ffi::gp_Pln) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CanonicalRecognition_is_plane(
+                self as *mut Self,
+                theTol,
+                thePln,
+            )
+        }
+    }
+
+    /// Returns true if the underlined surface can be represent by cylindrical one with tolerance
+    /// theTol and sets in theCyl the result cylinrical surface.
+    pub fn is_cylinder(&mut self, theTol: f64, theCyl: &mut crate::ffi::gp_Cylinder) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CanonicalRecognition_is_cylinder(
+                self as *mut Self,
+                theTol,
+                theCyl,
+            )
+        }
+    }
+
+    /// Returns true if the underlined surface can be represent by conical one with tolerance theTol
+    /// and sets in theCone the result conical surface.
+    pub fn is_cone(&mut self, theTol: f64, theCone: &mut crate::ffi::gp_Cone) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CanonicalRecognition_is_cone(
+                self as *mut Self,
+                theTol,
+                theCone,
+            )
+        }
+    }
+
+    /// Returns true if the underlined surface can be represent by spherical one with tolerance theTol
+    /// and sets in theSphere the result spherical surface.
+    pub fn is_sphere(&mut self, theTol: f64, theSphere: &mut crate::ffi::gp_Sphere) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CanonicalRecognition_is_sphere(
+                self as *mut Self,
+                theTol,
+                theSphere,
+            )
+        }
+    }
+
+    /// Returns true if the underlined curve can be represent by line with tolerance theTol
+    /// and sets in theLin the result line.
+    pub fn is_line(&mut self, theTol: f64, theLin: &mut crate::ffi::gp_Lin) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CanonicalRecognition_is_line(
+                self as *mut Self,
+                theTol,
+                theLin,
+            )
+        }
+    }
+
+    /// Returns true if the underlined curve can be represent by circle with tolerance theTol
+    /// and sets in theCirc the result circle.
+    pub fn is_circle(&mut self, theTol: f64, theCirc: &mut crate::ffi::gp_Circ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CanonicalRecognition_is_circle(
+                self as *mut Self,
+                theTol,
+                theCirc,
+            )
+        }
+    }
+
+    /// Returns true if the underlined curve can be represent by ellipse with tolerance theTol
+    /// and sets in theCirc the result ellipse.
+    pub fn is_ellipse(&mut self, theTol: f64, theElips: &mut crate::ffi::gp_Elips) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CanonicalRecognition_is_ellipse(
+                self as *mut Self,
+                theTol,
+                theElips,
+            )
+        }
     }
 }
 
@@ -67,6 +271,12 @@ impl CanonicalRecognition {
 
 /// Analysis of the face size
 pub use crate::ffi::ShapeAnalysis_CheckSmallFace as CheckSmallFace;
+
+unsafe impl crate::CppDeletable for CheckSmallFace {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_CheckSmallFace_destructor(ptr);
+    }
+}
 
 impl CheckSmallFace {
     /// Creates an empty tool
@@ -80,8 +290,222 @@ impl CheckSmallFace {
     /// the small faces or parts of faces
     /// Enchains various checks on a face
     /// inshell : to compute more information, relevant to topology
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_CheckSmallFace_ctor()) }
+    }
+
+    /// Checks if a Face is as a Spot
+    /// Returns 0 if not, 1 if yes, 2 if yes and all vertices are the
+    /// same
+    /// By default, considers the tolerance zone of its vertices
+    /// A given value <tol> may be given to check a spot of this size
+    /// If a Face is a Spot, its location is returned in <spot>, and
+    /// <spotol> returns an equivalent tolerance, which is computed as
+    /// half of max dimension of min-max box of the face
+    pub fn is_spot_face(
+        &self,
+        F: &crate::ffi::TopoDS_Face,
+        spot: &mut crate::ffi::gp_Pnt,
+        spotol: &mut f64,
+        tol: f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_is_spot_face(
+                self as *const Self,
+                F,
+                spot,
+                spotol,
+                tol,
+            )
+        }
+    }
+
+    /// Acts as IsSpotFace, but records in <infos> a diagnostic
+    /// "SpotFace" with the Pnt as value (data "Location")
+    pub fn check_spot_face(&mut self, F: &crate::ffi::TopoDS_Face, tol: f64) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_check_spot_face(self as *mut Self, F, tol)
+        }
+    }
+
+    /// Checks if a Face lies on a Surface which is a strip
+    /// So the Face is a strip. But a Face may be a strip elsewhere ..
+    ///
+    /// A given value <tol> may be given to check max width
+    /// By default, considers the tolerance zone of its edges
+    /// Returns 0 if not a strip support, 1 strip in U, 2 strip in V
+    pub fn is_strip_support(&mut self, F: &crate::ffi::TopoDS_Face, tol: f64) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_is_strip_support(self as *mut Self, F, tol)
+        }
+    }
+
+    /// Checks if two edges define a strip, i.e. distance maxi below
+    /// tolerance, given or some of those of E1 and E2
+    pub fn check_strip_edges(
+        &self,
+        E1: &crate::ffi::TopoDS_Edge,
+        E2: &crate::ffi::TopoDS_Edge,
+        tol: f64,
+        dmax: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_check_strip_edges(
+                self as *const Self,
+                E1,
+                E2,
+                tol,
+                dmax,
+            )
+        }
+    }
+
+    /// Searches for two and only two edges up tolerance
+    /// Returns True if OK, false if not 2 edges
+    /// If True, returns the two edges and their maximum distance
+    pub fn find_strip_edges(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        E1: &mut crate::ffi::TopoDS_Edge,
+        E2: &mut crate::ffi::TopoDS_Edge,
+        tol: f64,
+        dmax: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_find_strip_edges(
+                self as *mut Self,
+                F,
+                E1,
+                E2,
+                tol,
+                dmax,
+            )
+        }
+    }
+
+    /// Checks if a Face is a single strip, i.e. brings two great
+    /// edges which are confused on their whole length, possible other
+    /// edges are small or null length
+    ///
+    /// Returns 0 if not a strip support, 1 strip in U, 2 strip in V
+    /// Records diagnostic in info if it is a single strip
+    pub fn check_single_strip(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        E1: &mut crate::ffi::TopoDS_Edge,
+        E2: &mut crate::ffi::TopoDS_Edge,
+        tol: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_check_single_strip(
+                self as *mut Self,
+                F,
+                E1,
+                E2,
+                tol,
+            )
+        }
+    }
+
+    /// Checks if a Face is as a Strip
+    /// Returns 0 if not or non determined, 1 if in U, 2 if in V
+    /// By default, considers the tolerance zone of its edges
+    /// A given value <tol> may be given to check a strip of max this width
+    ///
+    /// If a Face is determined as a Strip, it is delinited by two
+    /// lists of edges. These lists are recorded in diagnostic
+    /// Diagnostic "StripFace" brings data "Direction" (U or V),
+    /// "List1" , "List2" (if they could be computed)
+    pub fn check_strip_face(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        E1: &mut crate::ffi::TopoDS_Edge,
+        E2: &mut crate::ffi::TopoDS_Edge,
+        tol: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_check_strip_face(
+                self as *mut Self,
+                F,
+                E1,
+                E2,
+                tol,
+            )
+        }
+    }
+
+    /// Checks if a Face has a pin, which can be edited
+    /// No singularity : no pin, returns 0
+    /// If there is a pin, checked topics, with returned value :
+    /// - 0 : nothing to do more
+    /// - 1 : "smooth", i.e. not a really sharp pin
+    /// -> diagnostic "SmoothPin"
+    /// - 2 : stretched pin, i.e. is possible to relimit the face by
+    /// another vertex, so that this vertex still gives a pin
+    /// -> diagnostic "StretchedPin" with location of vertex (Pnt)
+    pub fn check_pin(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        whatrow: &mut i32,
+        sence: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_check_pin(self as *mut Self, F, whatrow, sence)
+        }
+    }
+
+    /// Checks if a Face is twisted (apart from checking Pin, i.e. it
+    /// does not give information on pin, only "it is twisted")
+    pub fn check_twisted(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        paramu: &mut f64,
+        paramv: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_check_twisted(
+                self as *mut Self,
+                F,
+                paramu,
+                paramv,
+            )
+        }
+    }
+
+    pub fn check_pin_face(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        mapEdges: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+        toler: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_check_pin_face(
+                self as *mut Self,
+                F,
+                mapEdges,
+                toler,
+            )
+        }
+    }
+
+    pub fn check_pin_edges(
+        &self,
+        theFirstEdge: &crate::ffi::TopoDS_Edge,
+        theSecondEdge: &crate::ffi::TopoDS_Edge,
+        coef1: f64,
+        coef2: f64,
+        toler: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_check_pin_edges(
+                self as *const Self,
+                theFirstEdge,
+                theSecondEdge,
+                coef1,
+                coef2,
+                toler,
+            )
+        }
     }
 
     /// Returns the status of last call to Perform()
@@ -96,35 +520,83 @@ impl CheckSmallFace {
     /// ShapeExtend_FAIL3: cannot add missing seam
     /// ShapeExtend_FAIL4: cannot remove small area wire
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status(self, status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_status(self as *const Self, status.into())
+        }
+    }
+
+    /// Sets a fixed Tolerance to check small face
+    /// By default, local tolerance zone is considered
+    /// Sets a fixed MaxTolerance to check small face
+    /// Sets a fixed Tolerance to check small face
+    /// By default, local tolerance zone is considered
+    /// Unset fixed tolerance, comes back to local tolerance zones
+    /// Unset fixed tolerance, comes back to local tolerance zones
+    pub fn set_tolerance(&mut self, tol: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_CheckSmallFace_set_tolerance(self as *mut Self, tol) }
+    }
+
+    /// Returns the tolerance to check small faces, negative value if
+    /// local tolerances zones are to be considered
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_CheckSmallFace_tolerance(self as *const Self) }
     }
 
     pub fn status_spot(&self, status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_spot(self, status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_status_spot(self as *const Self, status.into())
+        }
     }
 
     pub fn status_strip(&self, status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_strip(self, status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_status_strip(
+                self as *const Self,
+                status.into(),
+            )
+        }
     }
 
     pub fn status_pin(&self, status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin(self, status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin(self as *const Self, status.into())
+        }
     }
 
     pub fn status_twisted(&self, status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_twisted(self, status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_status_twisted(
+                self as *const Self,
+                status.into(),
+            )
+        }
     }
 
     pub fn status_split_vert(&self, status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_split_vert(self, status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_status_split_vert(
+                self as *const Self,
+                status.into(),
+            )
+        }
     }
 
     pub fn status_pin_face(&self, status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin_face(self, status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin_face(
+                self as *const Self,
+                status.into(),
+            )
+        }
     }
 
     pub fn status_pin_edges(&self, status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin_edges(self, status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_status_pin_edges(
+                self as *const Self,
+                status.into(),
+            )
+        }
     }
 }
 
@@ -136,36 +608,270 @@ impl CheckSmallFace {
 /// Computes parameters of projected point onto a curve.
 pub use crate::ffi::ShapeAnalysis_Curve as Curve;
 
+unsafe impl crate::CppDeletable for Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_Curve_destructor(ptr);
+    }
+}
+
 impl Curve {
     /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_Curve_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Curve_ctor()) }
+    }
+
+    /// Projects a Point on a Curve.
+    /// Computes the projected point and its parameter on the curve.
+    /// <preci> is used as 3d precision (hence, 0 will produce
+    /// reject unless exact confusion).
+    /// The number of iterations is limited.
+    /// If AdjustToEnds is True, point will be adjusted to the end
+    /// of the curve if distance is less than <preci>
+    ///
+    /// Returned value is the distance between the given point and
+    /// computed one.
+    pub fn project_handlegeomcurve_pnt_real_pnt_real_bool(
+        &self,
+        C3D: &crate::ffi::HandleGeomCurve,
+        P3D: &crate::ffi::gp_Pnt,
+        preci: f64,
+        proj: &mut crate::ffi::gp_Pnt,
+        param: &mut f64,
+        AdjustToEnds: bool,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Curve_project_handlegeomcurve_pnt_real_pnt_real_bool(
+                self as *const Self,
+                C3D,
+                P3D,
+                preci,
+                proj,
+                param,
+                AdjustToEnds,
+            )
+        }
+    }
+
+    /// Projects a Point on a Curve.
+    /// Computes the projected point and its parameter on the curve.
+    /// <preci> is used as 3d precision (hence, 0 will produce
+    /// reject unless exact confusion).
+    /// The number of iterations is limited.
+    ///
+    /// Returned value is the distance between the given point and
+    /// computed one.
+    pub fn project_curve_pnt_real_pnt_real_bool(
+        &self,
+        C3D: &crate::ffi::Adaptor3d_Curve,
+        P3D: &crate::ffi::gp_Pnt,
+        preci: f64,
+        proj: &mut crate::ffi::gp_Pnt,
+        param: &mut f64,
+        AdjustToEnds: bool,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Curve_project_curve_pnt_real_pnt_real_bool(
+                self as *const Self,
+                C3D,
+                P3D,
+                preci,
+                proj,
+                param,
+                AdjustToEnds,
+            )
+        }
+    }
+
+    /// Projects a Point on a Curve, but parameters are limited
+    /// between <cf> and <cl>.
+    /// The range [cf, cl] is extended with help of Adaptor3d on the
+    /// basis of 3d precision <preci>.
+    /// If AdjustToEnds is True, point will be adjusted to the end
+    /// of the curve if distance is less than <preci>
+    pub fn project_handlegeomcurve_pnt_real_pnt_real3_bool(
+        &self,
+        C3D: &crate::ffi::HandleGeomCurve,
+        P3D: &crate::ffi::gp_Pnt,
+        preci: f64,
+        proj: &mut crate::ffi::gp_Pnt,
+        param: &mut f64,
+        cf: f64,
+        cl: f64,
+        AdjustToEnds: bool,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Curve_project_handlegeomcurve_pnt_real_pnt_real3_bool(
+                self as *const Self,
+                C3D,
+                P3D,
+                preci,
+                proj,
+                param,
+                cf,
+                cl,
+                AdjustToEnds,
+            )
+        }
+    }
+
+    pub fn project_act(
+        &self,
+        C3D: &crate::ffi::Adaptor3d_Curve,
+        P3D: &crate::ffi::gp_Pnt,
+        preci: f64,
+        proj: &mut crate::ffi::gp_Pnt,
+        param: &mut f64,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Curve_project_act(
+                self as *const Self,
+                C3D,
+                P3D,
+                preci,
+                proj,
+                param,
+            )
+        }
+    }
+
+    /// Projects a Point on a Curve using Newton method.
+    /// <paramPrev> is taken as the first approximation of solution.
+    /// If Newton algorithm fails the method Project() is used.
+    /// If AdjustToEnds is True, point will be adjusted to the end
+    /// of the curve if distance is less than <preci>
+    pub fn next_project_real_handlegeomcurve_pnt_real_pnt_real3_bool(
+        &self,
+        paramPrev: f64,
+        C3D: &crate::ffi::HandleGeomCurve,
+        P3D: &crate::ffi::gp_Pnt,
+        preci: f64,
+        proj: &mut crate::ffi::gp_Pnt,
+        param: &mut f64,
+        cf: f64,
+        cl: f64,
+        AdjustToEnds: bool,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Curve_next_project_real_handlegeomcurve_pnt_real_pnt_real3_bool(self as *const Self, paramPrev, C3D, P3D, preci, proj, param, cf, cl, AdjustToEnds)
+        }
+    }
+
+    /// Projects a Point on a Curve using Newton method.
+    /// <paramPrev> is taken as the first approximation of solution.
+    /// If Newton algorithm fails the method Project() is used.
+    pub fn next_project_real_curve_pnt_real_pnt_real(
+        &self,
+        paramPrev: f64,
+        C3D: &crate::ffi::Adaptor3d_Curve,
+        P3D: &crate::ffi::gp_Pnt,
+        preci: f64,
+        proj: &mut crate::ffi::gp_Pnt,
+        param: &mut f64,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Curve_next_project_real_curve_pnt_real_pnt_real(
+                self as *const Self,
+                paramPrev,
+                C3D,
+                P3D,
+                preci,
+                proj,
+                param,
+            )
+        }
+    }
+
+    /// Validate parameters First and Last for the given curve
+    /// in order to make them valid for creation of edge.
+    /// This includes:
+    /// - limiting range [First,Last] by range of curve
+    /// - adjusting range [First,Last] for periodic (or closed)
+    /// curve if Last < First
+    /// Returns True if parameters are OK or are successfully
+    /// corrected, or False if parameters cannot be corrected.
+    /// In the latter case, parameters are reset to range of curve.
+    pub fn validate_range(
+        &self,
+        Crv: &crate::ffi::HandleGeomCurve,
+        First: &mut f64,
+        Last: &mut f64,
+        prec: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Curve_validate_range(
+                self as *const Self,
+                Crv,
+                First,
+                Last,
+                prec,
+            )
+        }
+    }
+
+    /// Computes a boundary box on segment of curve C2d from First
+    /// to Last. This is done by taking NPoints points from the
+    /// curve and, if Exact is True, by searching for exact
+    /// extrema. All these points are added to Box.
+    pub fn fill_bnd_box(
+        &self,
+        C2d: &crate::ffi::HandleGeom2dCurve,
+        First: f64,
+        Last: f64,
+        NPoints: i32,
+        Exact: bool,
+        Box: &mut crate::ffi::Bnd_Box2d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Curve_fill_bnd_box(
+                self as *const Self,
+                C2d,
+                First,
+                Last,
+                NPoints,
+                Exact,
+                Box,
+            )
+        }
+    }
+
+    /// Defines which pcurve (C1 or C2) should be chosen for FORWARD
+    /// seam edge.
+    pub fn select_forward_seam(
+        &self,
+        C1: &crate::ffi::HandleGeom2dCurve,
+        C2: &crate::ffi::HandleGeom2dCurve,
+    ) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_Curve_select_forward_seam(self as *const Self, C1, C2) }
     }
 
     /// Checks if points are planar with given preci. If Normal has not zero
     /// modulus, checks with given normal
     pub fn is_planar_array1ofpnt_xyz_real(
         pnts: &crate::ffi::TColgp_Array1OfPnt,
-        Normal: std::pin::Pin<&mut crate::ffi::gp_XYZ>,
+        Normal: &mut crate::ffi::gp_XYZ,
         preci: f64,
     ) -> bool {
-        crate::ffi::ShapeAnalysis_Curve_is_planar_array1ofpnt_xyz_real(pnts, Normal, preci)
+        unsafe {
+            crate::ffi::ShapeAnalysis_Curve_is_planar_array1ofpnt_xyz_real(pnts, Normal, preci)
+        }
     }
 
     /// Checks if curve is planar with given preci. If Normal has not zero
     /// modulus, checks with given normal
     pub fn is_planar_handlegeomcurve_xyz_real(
         curve: &crate::ffi::HandleGeomCurve,
-        Normal: std::pin::Pin<&mut crate::ffi::gp_XYZ>,
+        Normal: &mut crate::ffi::gp_XYZ,
         preci: f64,
     ) -> bool {
-        crate::ffi::ShapeAnalysis_Curve_is_planar_handlegeomcurve_xyz_real(curve, Normal, preci)
+        unsafe {
+            crate::ffi::ShapeAnalysis_Curve_is_planar_handlegeomcurve_xyz_real(curve, Normal, preci)
+        }
     }
 
     /// Tells if the Curve is closed with given precision.
     /// If <preci> < 0 then Precision::Confusion is used.
     pub fn is_closed(curve: &crate::ffi::HandleGeomCurve, preci: f64) -> bool {
-        crate::ffi::ShapeAnalysis_Curve_is_closed(curve, preci)
+        unsafe { crate::ffi::ShapeAnalysis_Curve_is_closed(curve, preci) }
     }
 
     /// This method was implemented as fix for changes in trimmed curve
@@ -173,12 +879,12 @@ impl Curve {
     /// So it is necessary to adapt all Data exchange tools for this behaviour.
     /// Current implementation takes into account that curve may be offset.
     pub fn is_periodic_handlegeomcurve(curve: &crate::ffi::HandleGeomCurve) -> bool {
-        crate::ffi::ShapeAnalysis_Curve_is_periodic_handlegeomcurve(curve)
+        unsafe { crate::ffi::ShapeAnalysis_Curve_is_periodic_handlegeomcurve(curve) }
     }
 
     /// The same as for Curve3d.
     pub fn is_periodic_handlegeom2dcurve(curve: &crate::ffi::HandleGeom2dCurve) -> bool {
-        crate::ffi::ShapeAnalysis_Curve_is_periodic_handlegeom2dcurve(curve)
+        unsafe { crate::ffi::ShapeAnalysis_Curve_is_periodic_handlegeom2dcurve(curve) }
     }
 }
 
@@ -194,10 +900,179 @@ impl Curve {
 /// (3d and pcurve(s) consistency, their adjacency to the vertices).
 pub use crate::ffi::ShapeAnalysis_Edge as Edge;
 
+unsafe impl crate::CppDeletable for Edge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_Edge_destructor(ptr);
+    }
+}
+
 impl Edge {
     /// Empty constructor; initialises Status to OK
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_Edge_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Edge_ctor()) }
+    }
+
+    /// Tells if the edge has a 3d curve
+    pub fn has_curve3d(&self, edge: &crate::ffi::TopoDS_Edge) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Edge_has_curve3d(self as *const Self, edge) }
+    }
+
+    /// Returns the 3d curve and bounding parameters for the edge
+    /// Returns False if no 3d curve.
+    /// If <orient> is True (default), takes orientation into account:
+    /// if the edge is reversed, cf and cl are toggled
+    pub fn curve3d(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        C3d: &mut crate::ffi::HandleGeomCurve,
+        cf: &mut f64,
+        cl: &mut f64,
+        orient: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_curve3d(self as *const Self, edge, C3d, cf, cl, orient)
+        }
+    }
+
+    /// Gives True if the edge has a 3d curve, this curve is closed,
+    /// and the edge has the same vertex at start and end
+    pub fn is_closed3d(&self, edge: &crate::ffi::TopoDS_Edge) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Edge_is_closed3d(self as *const Self, edge) }
+    }
+
+    /// Tells if the Edge has a pcurve on the face.
+    pub fn has_p_curve_edge_face(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        face: &crate::ffi::TopoDS_Face,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_has_p_curve_edge_face(self as *const Self, edge, face)
+        }
+    }
+
+    /// Tells if the edge has a pcurve on the surface (with location).
+    pub fn has_p_curve_edge_handlegeomsurface_location(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        surface: &crate::ffi::HandleGeomSurface,
+        location: &crate::ffi::TopLoc_Location,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_has_p_curve_edge_handlegeomsurface_location(
+                self as *const Self,
+                edge,
+                surface,
+                location,
+            )
+        }
+    }
+
+    pub fn p_curve_edge_face_handlegeom2dcurve_real2_bool(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        face: &crate::ffi::TopoDS_Face,
+        C2d: &mut crate::ffi::HandleGeom2dCurve,
+        cf: &mut f64,
+        cl: &mut f64,
+        orient: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_p_curve_edge_face_handlegeom2dcurve_real2_bool(
+                self as *const Self,
+                edge,
+                face,
+                C2d,
+                cf,
+                cl,
+                orient,
+            )
+        }
+    }
+
+    /// Returns the pcurve and bounding parameters for the edge
+    /// lying on the surface.
+    /// Returns False if the edge has no pcurve on this surface.
+    /// If <orient> is True (default), takes orientation into account:
+    /// if the edge is reversed, cf and cl are toggled
+    pub fn p_curve_edge_handlegeomsurface_location_handlegeom2dcurve_real2_bool(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        surface: &crate::ffi::HandleGeomSurface,
+        location: &crate::ffi::TopLoc_Location,
+        C2d: &mut crate::ffi::HandleGeom2dCurve,
+        cf: &mut f64,
+        cl: &mut f64,
+        orient: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_p_curve_edge_handlegeomsurface_location_handlegeom2dcurve_real2_bool(self as *const Self, edge, surface, location, C2d, cf, cl, orient)
+        }
+    }
+
+    pub fn bound_uv_edge_face_pnt2d2(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        face: &crate::ffi::TopoDS_Face,
+        first: &mut crate::ffi::gp_Pnt2d,
+        last: &mut crate::ffi::gp_Pnt2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_bound_uv_edge_face_pnt2d2(
+                self as *const Self,
+                edge,
+                face,
+                first,
+                last,
+            )
+        }
+    }
+
+    /// Returns the ends of pcurve
+    /// Calls method PCurve with <orient> equal to True
+    pub fn bound_uv_edge_handlegeomsurface_location_pnt2d2(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        surface: &crate::ffi::HandleGeomSurface,
+        location: &crate::ffi::TopLoc_Location,
+        first: &mut crate::ffi::gp_Pnt2d,
+        last: &mut crate::ffi::gp_Pnt2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_bound_uv_edge_handlegeomsurface_location_pnt2d2(
+                self as *const Self,
+                edge,
+                surface,
+                location,
+                first,
+                last,
+            )
+        }
+    }
+
+    pub fn is_seam_edge_face(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        face: &crate::ffi::TopoDS_Face,
+    ) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Edge_is_seam_edge_face(self as *const Self, edge, face) }
+    }
+
+    /// Returns True if the edge has two pcurves on one surface
+    pub fn is_seam_edge_handlegeomsurface_location(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        surface: &crate::ffi::HandleGeomSurface,
+        location: &crate::ffi::TopLoc_Location,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_is_seam_edge_handlegeomsurface_location(
+                self as *const Self,
+                edge,
+                surface,
+                location,
+            )
+        }
     }
 
     /// Returns start vertex of the edge (taking edge orientation
@@ -205,8 +1080,13 @@ impl Edge {
     pub fn first_vertex(
         &self,
         edge: &crate::ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ShapeAnalysis_Edge_first_vertex(self, edge)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Edge_first_vertex(
+                self as *const Self,
+                edge,
+            ))
+        }
     }
 
     /// Returns end vertex of the edge (taking edge orientation
@@ -214,13 +1094,276 @@ impl Edge {
     pub fn last_vertex(
         &self,
         edge: &crate::ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ShapeAnalysis_Edge_last_vertex(self, edge)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Edge_last_vertex(
+                self as *const Self,
+                edge,
+            ))
+        }
+    }
+
+    pub fn get_end_tangent2d_edge_face_bool_pnt2d_vec2d_real(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        face: &crate::ffi::TopoDS_Face,
+        atEnd: bool,
+        pos: &mut crate::ffi::gp_Pnt2d,
+        tang: &mut crate::ffi::gp_Vec2d,
+        dparam: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_get_end_tangent2d_edge_face_bool_pnt2d_vec2d_real(
+                self as *const Self,
+                edge,
+                face,
+                atEnd,
+                pos,
+                tang,
+                dparam,
+            )
+        }
+    }
+
+    /// Returns tangent of the edge pcurve at its start (if atEnd is
+    /// False) or end (if True), regarding the orientation of edge.
+    /// If edge is REVERSED, tangent is reversed before return.
+    /// Returns True if pcurve is available and tangent is computed
+    /// and is not null, else False.
+    pub fn get_end_tangent2d_edge_handlegeomsurface_location_bool_pnt2d_vec2d_real(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        surface: &crate::ffi::HandleGeomSurface,
+        location: &crate::ffi::TopLoc_Location,
+        atEnd: bool,
+        pos: &mut crate::ffi::gp_Pnt2d,
+        tang: &mut crate::ffi::gp_Vec2d,
+        dparam: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_get_end_tangent2d_edge_handlegeomsurface_location_bool_pnt2d_vec2d_real(self as *const Self, edge, surface, location, atEnd, pos, tang, dparam)
+        }
+    }
+
+    /// Checks the start and/or end vertex of the edge for matching
+    /// with 3d curve with the given precision.
+    /// <vtx> = 1 : start vertex only
+    /// <vtx> = 2 : end vertex only
+    /// <vtx> = 0 : both (default)
+    /// If preci < 0 the vertices are considered with their own
+    /// tolerances, else with the given <preci>.
+    pub fn check_vertices_with_curve3d(
+        &mut self,
+        edge: &crate::ffi::TopoDS_Edge,
+        preci: f64,
+        vtx: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_vertices_with_curve3d(
+                self as *mut Self,
+                edge,
+                preci,
+                vtx,
+            )
+        }
+    }
+
+    pub fn check_vertices_with_p_curve_edge_face_real_int(
+        &mut self,
+        edge: &crate::ffi::TopoDS_Edge,
+        face: &crate::ffi::TopoDS_Face,
+        preci: f64,
+        vtx: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_vertices_with_p_curve_edge_face_real_int(
+                self as *mut Self,
+                edge,
+                face,
+                preci,
+                vtx,
+            )
+        }
+    }
+
+    /// Checks the start and/or end vertex of the edge for matching
+    /// with pcurve with the given precision.
+    /// <vtx> = 1 : start vertex
+    /// <vtx> = 2 : end vertex
+    /// <vtx> = 0 : both
+    /// If preci < 0 the vertices are considered with their own
+    /// tolerances, else with the given <preci>.
+    pub fn check_vertices_with_p_curve_edge_handlegeomsurface_location_real_int(
+        &mut self,
+        edge: &crate::ffi::TopoDS_Edge,
+        surface: &crate::ffi::HandleGeomSurface,
+        location: &crate::ffi::TopLoc_Location,
+        preci: f64,
+        vtx: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_vertices_with_p_curve_edge_handlegeomsurface_location_real_int(self as *mut Self, edge, surface, location, preci, vtx)
+        }
+    }
+
+    pub fn check_vertex_tolerance_edge_face_real2(
+        &mut self,
+        edge: &crate::ffi::TopoDS_Edge,
+        face: &crate::ffi::TopoDS_Face,
+        toler1: &mut f64,
+        toler2: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_vertex_tolerance_edge_face_real2(
+                self as *mut Self,
+                edge,
+                face,
+                toler1,
+                toler2,
+            )
+        }
+    }
+
+    /// Checks if it is necessary to increase tolerances of the edge
+    /// vertices to comprise the ends of 3d curve and pcurve on
+    /// the given face (first method) or all pcurves stored in an edge
+    /// (second one)
+    /// toler1 returns necessary tolerance for first vertex,
+    /// toler2 returns necessary tolerance for last vertex.
+    pub fn check_vertex_tolerance_edge_real2(
+        &mut self,
+        edge: &crate::ffi::TopoDS_Edge,
+        toler1: &mut f64,
+        toler2: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_vertex_tolerance_edge_real2(
+                self as *mut Self,
+                edge,
+                toler1,
+                toler2,
+            )
+        }
+    }
+
+    pub fn check_curve3d_with_p_curve_edge_face(
+        &mut self,
+        edge: &crate::ffi::TopoDS_Edge,
+        face: &crate::ffi::TopoDS_Face,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_curve3d_with_p_curve_edge_face(
+                self as *mut Self,
+                edge,
+                face,
+            )
+        }
+    }
+
+    /// Checks mutual orientation of 3d curve and pcurve on the
+    /// analysis of curves bounding points
+    pub fn check_curve3d_with_p_curve_edge_handlegeomsurface_location(
+        &mut self,
+        edge: &crate::ffi::TopoDS_Edge,
+        surface: &crate::ffi::HandleGeomSurface,
+        location: &crate::ffi::TopLoc_Location,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_curve3d_with_p_curve_edge_handlegeomsurface_location(self as *mut Self, edge, surface, location)
+        }
     }
 
     /// Returns the status (in the form of True/False) of last Check
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Edge_status(self, status.into())
+        unsafe { crate::ffi::ShapeAnalysis_Edge_status(self as *const Self, status.into()) }
+    }
+
+    /// Checks the edge to be SameParameter.
+    /// Calculates the maximal deviation between 3d curve and each
+    /// pcurve of the edge on <NbControl> equidistant points (the same
+    /// algorithm as in BRepCheck; default value is 23 as in BRepCheck).
+    /// This deviation is returned in <maxdev> parameter.
+    /// If deviation is greater than tolerance of the edge (i.e.
+    /// incorrect flag) returns False, else returns True.
+    pub fn check_same_parameter_edge_real_int(
+        &mut self,
+        edge: &crate::ffi::TopoDS_Edge,
+        maxdev: &mut f64,
+        NbControl: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_same_parameter_edge_real_int(
+                self as *mut Self,
+                edge,
+                maxdev,
+                NbControl,
+            )
+        }
+    }
+
+    /// Checks the edge to be SameParameter.
+    /// Calculates the maximal deviation between 3d curve and each
+    /// pcurve of the edge on <NbControl> equidistant points (the same
+    /// algorithm as in BRepCheck; default value is 23 as in BRepCheck).
+    /// This deviation is returned in <maxdev> parameter.
+    /// If deviation is greater than tolerance of the edge (i.e.
+    /// incorrect flag) returns False, else returns True.
+    pub fn check_same_parameter_edge_face_real_int(
+        &mut self,
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+        theMaxdev: &mut f64,
+        theNbControl: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_same_parameter_edge_face_real_int(
+                self as *mut Self,
+                theEdge,
+                theFace,
+                theMaxdev,
+                theNbControl,
+            )
+        }
+    }
+
+    /// Checks possibility for pcurve thePC to have range [theFirst, theLast] (edge range)
+    /// having respect to real first, last parameters of thePC
+    pub fn check_p_curve_range(
+        &mut self,
+        theFirst: f64,
+        theLast: f64,
+        thePC: &crate::ffi::HandleGeom2dCurve,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_p_curve_range(
+                self as *mut Self,
+                theFirst,
+                theLast,
+                thePC,
+            )
+        }
+    }
+
+    /// Checks the first edge is overlapped with second edge.
+    /// If distance between two edges is less then theTolOverlap
+    /// edges are overlapped.
+    /// theDomainDis - length of part of edges on which edges are overlapped.
+    pub fn check_overlapping(
+        &mut self,
+        theEdge1: &crate::ffi::TopoDS_Edge,
+        theEdge2: &crate::ffi::TopoDS_Edge,
+        theTolOverlap: &mut f64,
+        theDomainDist: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Edge_check_overlapping(
+                self as *mut Self,
+                theEdge1,
+                theEdge2,
+                theTolOverlap,
+                theDomainDist,
+            )
+        }
     }
 }
 
@@ -246,61 +1389,177 @@ impl Edge {
 /// only.
 pub use crate::ffi::ShapeAnalysis_FreeBoundData as FreeBoundData;
 
+unsafe impl crate::CppDeletable for FreeBoundData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_FreeBoundData_destructor(ptr);
+    }
+}
+
 impl FreeBoundData {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBoundData_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBoundData_ctor()) }
     }
 
     /// Creates object with contour given in the form of TopoDS_Wire
-    pub fn new_wire(freebound: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBoundData_ctor_wire(freebound)
+    pub fn new_wire(freebound: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBoundData_ctor_wire(freebound))
+        }
+    }
+
+    /// Clears all properties of the contour.
+    /// Contour bound itself is not cleared.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_clear(self as *mut Self) }
+    }
+
+    /// Sets contour
+    pub fn set_free_bound(&mut self, freebound: &crate::ffi::TopoDS_Wire) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundData_set_free_bound(self as *mut Self, freebound)
+        }
+    }
+
+    /// Sets area of the contour
+    pub fn set_area(&mut self, area: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_set_area(self as *mut Self, area) }
+    }
+
+    /// Sets perimeter of the contour
+    pub fn set_perimeter(&mut self, perimeter: f64) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundData_set_perimeter(self as *mut Self, perimeter)
+        }
+    }
+
+    /// Sets ratio of average length to average width of the contour
+    pub fn set_ratio(&mut self, ratio: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_set_ratio(self as *mut Self, ratio) }
+    }
+
+    /// Sets average width of the contour
+    pub fn set_width(&mut self, width: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_set_width(self as *mut Self, width) }
+    }
+
+    /// Adds notch on the contour with its maximum width
+    pub fn add_notch(&mut self, notch: &crate::ffi::TopoDS_Wire, width: f64) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundData_add_notch(self as *mut Self, notch, width)
+        }
     }
 
     /// Returns contour
-    pub fn free_bound(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Wire> {
-        crate::ffi::ShapeAnalysis_FreeBoundData_free_bound(self)
+    pub fn free_bound(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBoundData_free_bound(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Returns area of the contour
+    pub fn area(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_area(self as *const Self) }
+    }
+
+    /// Returns perimeter of the contour
+    pub fn perimeter(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_perimeter(self as *const Self) }
+    }
+
+    /// Returns ratio of average length to average width of the contour
+    pub fn ratio(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_ratio(self as *const Self) }
+    }
+
+    /// Returns average width of the contour
+    pub fn width(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_width(self as *const Self) }
+    }
+
+    /// Returns number of notches on the contour
+    pub fn nb_notches(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_nb_notches(self as *const Self) }
     }
 
     /// Returns sequence of notches on the contour
-    pub fn notches(&self) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
-        crate::ffi::ShapeAnalysis_FreeBoundData_notches(self)
+    pub fn notches(&self) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBoundData_notches(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Returns notch on the contour
-    pub fn notch(&self, index: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Wire> {
-        crate::ffi::ShapeAnalysis_FreeBoundData_notch(self, index)
+    pub fn notch(&self, index: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBoundData_notch(
+                self as *const Self,
+                index,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::ShapeAnalysis_FreeBoundData_get_type_name()
+    /// Returns maximum width of notch specified by its rank number
+    /// on the contour
+    pub fn notch_width_int(&self, index: i32) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundData_notch_width_int(self as *const Self, index)
+        }
+    }
+
+    /// Returns maximum width of notch specified as TopoDS_Wire
+    /// on the contour
+    pub fn notch_width_wire(&self, notch: &crate::ffi::TopoDS_Wire) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundData_notch_width_wire(self as *const Self, notch)
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeAnalysis_FreeBoundData_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::ShapeAnalysis_FreeBoundData_get_type_descriptor()
+        unsafe { &*(crate::ffi::ShapeAnalysis_FreeBoundData_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisFreeBoundData> {
-        crate::ffi::ShapeAnalysis_FreeBoundData_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisFreeBoundData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBoundData_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleShapeAnalysisFreeBoundData;
 
+unsafe impl crate::CppDeletable for HandleShapeAnalysisFreeBoundData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeAnalysisFreeBoundData_destructor(ptr);
+    }
+}
+
 impl HandleShapeAnalysisFreeBoundData {
     /// Dereference this Handle to access the underlying ShapeAnalysis_FreeBoundData
     pub fn get(&self) -> &crate::ffi::ShapeAnalysis_FreeBoundData {
-        crate::ffi::HandleShapeAnalysisFreeBoundData_get(self)
+        unsafe { &*(crate::ffi::HandleShapeAnalysisFreeBoundData_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeAnalysis_FreeBoundData
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::ShapeAnalysis_FreeBoundData> {
-        crate::ffi::HandleShapeAnalysisFreeBoundData_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_FreeBoundData {
+        unsafe { &mut *(crate::ffi::HandleShapeAnalysisFreeBoundData_get_mut(self as *mut Self)) }
     }
 }
 
@@ -338,10 +1597,16 @@ impl HandleShapeAnalysisFreeBoundData {
 /// NOTE. Ends of the edge or wire mean hereafter their end vertices.
 pub use crate::ffi::ShapeAnalysis_FreeBounds as FreeBounds;
 
+unsafe impl crate::CppDeletable for FreeBounds {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_FreeBounds_destructor(ptr);
+    }
+}
+
 impl FreeBounds {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBounds_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBounds_ctor()) }
     }
 
     /// Builds forecasting free bounds of the <shape>.
@@ -360,13 +1625,15 @@ impl FreeBounds {
         toler: f64,
         splitclosed: bool,
         splitopen: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_real_bool2(
-            shape,
-            toler,
-            splitclosed,
-            splitopen,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_real_bool2(
+                shape,
+                toler,
+                splitclosed,
+                splitopen,
+            ))
+        }
     }
 
     /// Builds actual free bounds of the <shape>.
@@ -385,13 +1652,15 @@ impl FreeBounds {
         splitclosed: bool,
         splitopen: bool,
         checkinternaledges: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_bool3(
-            shape,
-            splitclosed,
-            splitopen,
-            checkinternaledges,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBounds_ctor_shape_bool3(
+                shape,
+                splitclosed,
+                splitopen,
+                checkinternaledges,
+            ))
+        }
     }
 
     /// Builds forecasting free bounds of the <shape>.
@@ -409,7 +1678,7 @@ impl FreeBounds {
         shape: &crate::ffi::TopoDS_Shape,
         toler: f64,
         splitclosed: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_real_bool2(shape, toler, splitclosed, true)
     }
 
@@ -424,7 +1693,7 @@ impl FreeBounds {
     /// built closed wires.
     /// If <splitopen> is True extracts closed sub-wires out of
     /// built open wires.
-    pub fn new_shape_real(shape: &crate::ffi::TopoDS_Shape, toler: f64) -> cxx::UniquePtr<Self> {
+    pub fn new_shape_real(shape: &crate::ffi::TopoDS_Shape, toler: f64) -> crate::OwnedPtr<Self> {
         Self::new_shape_real_bool2(shape, toler, false, true)
     }
 
@@ -443,7 +1712,7 @@ impl FreeBounds {
         shape: &crate::ffi::TopoDS_Shape,
         splitclosed: bool,
         splitopen: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_bool3(shape, splitclosed, splitopen, false)
     }
 
@@ -461,7 +1730,7 @@ impl FreeBounds {
     pub fn new_shape_bool(
         shape: &crate::ffi::TopoDS_Shape,
         splitclosed: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_bool3(shape, splitclosed, true, false)
     }
 
@@ -476,8 +1745,18 @@ impl FreeBounds {
     /// built closed wires.
     /// If <splitopen> is True extracts closed sub-wires out of
     /// built open wires.
-    pub fn new_shape(shape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+    pub fn new_shape(shape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
         Self::new_shape_bool3(shape, false, true, false)
+    }
+
+    /// Returns compound of closed wires out of free edges.
+    pub fn get_closed_wires(&self) -> &crate::ffi::TopoDS_Compound {
+        unsafe { &*(crate::ffi::ShapeAnalysis_FreeBounds_get_closed_wires(self as *const Self)) }
+    }
+
+    /// Returns compound of open wires out of free edges.
+    pub fn get_open_wires(&self) -> &crate::ffi::TopoDS_Compound {
+        unsafe { &*(crate::ffi::ShapeAnalysis_FreeBounds_get_open_wires(self as *const Self)) }
     }
 
     /// Builds sequence of <wires> out of sequence of not sorted
@@ -492,21 +1771,25 @@ impl FreeBounds {
     /// If <shared> is False connection is performed only when
     /// ends of adjacent edges are at distance less than <toler>.
     pub fn connect_edges_to_wires(
-        edges: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        edges: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
         toler: f64,
         shared: bool,
-        wires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        wires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
     ) {
-        crate::ffi::ShapeAnalysis_FreeBounds_connect_edges_to_wires(edges, toler, shared, wires)
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBounds_connect_edges_to_wires(edges, toler, shared, wires)
+        }
     }
 
     pub fn connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape(
-        iwires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        iwires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
         toler: f64,
         shared: bool,
-        owires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        owires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
     ) {
-        crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape(iwires, toler, shared, owires)
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape(iwires, toler, shared, owires)
+        }
     }
 
     /// Builds sequence of <owires> out of sequence of not sorted
@@ -523,13 +1806,15 @@ impl FreeBounds {
     /// Map <vertices> stores the correspondence between original
     /// end vertices of the wires and new connecting vertices.
     pub fn connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape_datamapofshapeshape(
-        iwires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        iwires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
         toler: f64,
         shared: bool,
-        owires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
-        vertices: std::pin::Pin<&mut crate::ffi::TopTools_DataMapOfShapeShape>,
+        owires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        vertices: &mut crate::ffi::TopTools_DataMapOfShapeShape,
     ) {
-        crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape_datamapofshapeshape(iwires, toler, shared, owires, vertices)
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape_datamapofshapeshape(iwires, toler, shared, owires, vertices)
+        }
     }
 
     /// Extracts closed sub-wires out of <wires> and adds them
@@ -543,10 +1828,12 @@ impl FreeBounds {
         wires: &crate::ffi::HandleTopToolsHSequenceOfShape,
         toler: f64,
         shared: bool,
-        closed: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
-        open: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        closed: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        open: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
     ) {
-        crate::ffi::ShapeAnalysis_FreeBounds_split_wires(wires, toler, shared, closed, open)
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBounds_split_wires(wires, toler, shared, closed, open)
+        }
     }
 
     /// Dispatches sequence of <wires> into two compounds
@@ -554,10 +1841,10 @@ impl FreeBounds {
     /// If a compound is not empty wires are added into it.
     pub fn dispatch_wires(
         wires: &crate::ffi::HandleTopToolsHSequenceOfShape,
-        closed: std::pin::Pin<&mut crate::ffi::TopoDS_Compound>,
-        open: std::pin::Pin<&mut crate::ffi::TopoDS_Compound>,
+        closed: &mut crate::ffi::TopoDS_Compound,
+        open: &mut crate::ffi::TopoDS_Compound,
     ) {
-        crate::ffi::ShapeAnalysis_FreeBounds_dispatch_wires(wires, closed, open)
+        unsafe { crate::ffi::ShapeAnalysis_FreeBounds_dispatch_wires(wires, closed, open) }
     }
 }
 
@@ -586,10 +1873,16 @@ impl FreeBounds {
 /// ShapeAnalysis_FreeBoundData.
 pub use crate::ffi::ShapeAnalysis_FreeBoundsProperties as FreeBoundsProperties;
 
+unsafe impl crate::CppDeletable for FreeBoundsProperties {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_FreeBoundsProperties_destructor(ptr);
+    }
+}
+
 impl FreeBoundsProperties {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBoundsProperties_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBoundsProperties_ctor()) }
     }
 
     /// Creates the object and calls corresponding Init.
@@ -599,13 +1892,17 @@ impl FreeBoundsProperties {
         tolerance: f64,
         splitclosed: bool,
         splitopen: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBoundsProperties_ctor_shape_real_bool2(
-            shape,
-            tolerance,
-            splitclosed,
-            splitopen,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_FreeBoundsProperties_ctor_shape_real_bool2(
+                    shape,
+                    tolerance,
+                    splitclosed,
+                    splitopen,
+                ),
+            )
+        }
     }
 
     /// Creates the object and calls corresponding Init.
@@ -614,12 +1911,16 @@ impl FreeBoundsProperties {
         shape: &crate::ffi::TopoDS_Shape,
         splitclosed: bool,
         splitopen: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_FreeBoundsProperties_ctor_shape_bool2(
-            shape,
-            splitclosed,
-            splitopen,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_FreeBoundsProperties_ctor_shape_bool2(
+                    shape,
+                    splitclosed,
+                    splitopen,
+                ),
+            )
+        }
     }
 
     /// Creates the object and calls corresponding Init.
@@ -628,7 +1929,7 @@ impl FreeBoundsProperties {
         shape: &crate::ffi::TopoDS_Shape,
         tolerance: f64,
         splitclosed: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_real_bool2(shape, tolerance, splitclosed, false)
     }
 
@@ -637,7 +1938,7 @@ impl FreeBoundsProperties {
     pub fn new_shape_real(
         shape: &crate::ffi::TopoDS_Shape,
         tolerance: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_real_bool2(shape, tolerance, false, false)
     }
 
@@ -646,33 +1947,134 @@ impl FreeBoundsProperties {
     pub fn new_shape_bool(
         shape: &crate::ffi::TopoDS_Shape,
         splitclosed: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_bool2(shape, splitclosed, false)
     }
 
     /// Creates the object and calls corresponding Init.
     /// <shape> should be a compound of shells.
-    pub fn new_shape(shape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+    pub fn new_shape(shape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
         Self::new_shape_bool2(shape, false, false)
     }
 
+    /// Initializes the object with given parameters.
+    /// <shape> should be a compound of faces.
+    pub fn init_shape_real_bool2(
+        &mut self,
+        shape: &crate::ffi::TopoDS_Shape,
+        tolerance: f64,
+        splitclosed: bool,
+        splitopen: bool,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundsProperties_init_shape_real_bool2(
+                self as *mut Self,
+                shape,
+                tolerance,
+                splitclosed,
+                splitopen,
+            )
+        }
+    }
+
+    /// Initializes the object with given parameters.
+    /// <shape> should be a compound of shells.
+    pub fn init_shape_bool2(
+        &mut self,
+        shape: &crate::ffi::TopoDS_Shape,
+        splitclosed: bool,
+        splitopen: bool,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundsProperties_init_shape_bool2(
+                self as *mut Self,
+                shape,
+                splitclosed,
+                splitopen,
+            )
+        }
+    }
+
+    /// Builds and analyzes free bounds of the shape.
+    /// First calls ShapeAnalysis_FreeBounds for building free
+    /// bounds.
+    /// Then on each free bound computes its properties:
+    /// - area of the contour,
+    /// - perimeter of the contour,
+    /// - ratio of average length to average width of the contour,
+    /// - average width of contour,
+    /// - notches on the contour and for each notch
+    /// - maximum width of the notch.
+    pub fn perform(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundsProperties_perform(self as *mut Self) }
+    }
+
+    /// Returns True if shape is loaded
+    pub fn is_loaded(&self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundsProperties_is_loaded(self as *const Self) }
+    }
+
     /// Returns shape
-    pub fn shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ShapeAnalysis_FreeBoundsProperties_shape(self)
+    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBoundsProperties_shape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Returns tolerance
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundsProperties_tolerance(self as *const Self) }
+    }
+
+    /// Returns number of free bounds
+    pub fn nb_free_bounds(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundsProperties_nb_free_bounds(self as *const Self)
+        }
+    }
+
+    /// Returns number of closed free bounds
+    pub fn nb_closed_free_bounds(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundsProperties_nb_closed_free_bounds(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Returns number of open free bounds
+    pub fn nb_open_free_bounds(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundsProperties_nb_open_free_bounds(self as *const Self)
+        }
     }
 
     /// Returns all closed free bounds
     pub fn closed_free_bounds(
         &self,
-    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
-        crate::ffi::ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(self)
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Returns all open free bounds
     pub fn open_free_bounds(
         &self,
-    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
-        crate::ffi::ShapeAnalysis_FreeBoundsProperties_open_free_bounds(self)
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_FreeBoundsProperties_open_free_bounds(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Returns properties of closed free bound specified by its rank
@@ -680,8 +2082,15 @@ impl FreeBoundsProperties {
     pub fn closed_free_bound(
         &self,
         index: i32,
-    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisFreeBoundData> {
-        crate::ffi::ShapeAnalysis_FreeBoundsProperties_closed_free_bound(self, index)
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisFreeBoundData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_FreeBoundsProperties_closed_free_bound(
+                    self as *const Self,
+                    index,
+                ),
+            )
+        }
     }
 
     /// Returns properties of open free bound specified by its rank
@@ -689,8 +2098,78 @@ impl FreeBoundsProperties {
     pub fn open_free_bound(
         &self,
         index: i32,
-    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisFreeBoundData> {
-        crate::ffi::ShapeAnalysis_FreeBoundsProperties_open_free_bound(self, index)
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisFreeBoundData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_FreeBoundsProperties_open_free_bound(
+                    self as *const Self,
+                    index,
+                ),
+            )
+        }
+    }
+
+    pub fn dispatch_bounds(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_FreeBoundsProperties_dispatch_bounds(self as *mut Self) }
+    }
+
+    pub fn check_contours(&mut self, prec: f64) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundsProperties_check_contours(self as *mut Self, prec)
+        }
+    }
+
+    pub fn check_notches_real(&mut self, prec: f64) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundsProperties_check_notches_real(
+                self as *mut Self,
+                prec,
+            )
+        }
+    }
+
+    pub fn check_notches_handleshapeanalysisfreebounddata_real(
+        &mut self,
+        fbData: &mut crate::ffi::HandleShapeAnalysisFreeBoundData,
+        prec: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundsProperties_check_notches_handleshapeanalysisfreebounddata_real(self as *mut Self, fbData, prec)
+        }
+    }
+
+    pub fn check_notches_wire_int_wire_real2(
+        &mut self,
+        freebound: &crate::ffi::TopoDS_Wire,
+        num: i32,
+        notch: &mut crate::ffi::TopoDS_Wire,
+        distMax: &mut f64,
+        prec: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundsProperties_check_notches_wire_int_wire_real2(
+                self as *mut Self,
+                freebound,
+                num,
+                notch,
+                distMax,
+                prec,
+            )
+        }
+    }
+
+    pub fn fill_properties(
+        &mut self,
+        fbData: &mut crate::ffi::HandleShapeAnalysisFreeBoundData,
+        prec: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_FreeBoundsProperties_fill_properties(
+                self as *mut Self,
+                fbData,
+                prec,
+            )
+        }
     }
 }
 
@@ -701,10 +2180,16 @@ impl FreeBoundsProperties {
 /// Analyzing tool aimed to work on primitive geometrical objects
 pub use crate::ffi::ShapeAnalysis_Geom as Geom;
 
+unsafe impl crate::CppDeletable for Geom {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_Geom_destructor(ptr);
+    }
+}
+
 impl Geom {
     /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_Geom_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Geom_ctor()) }
     }
 
     /// Builds a plane out of a set of points in array
@@ -712,10 +2197,10 @@ impl Geom {
     /// plane and given points
     pub fn nearest_plane(
         Pnts: &crate::ffi::TColgp_Array1OfPnt,
-        aPln: std::pin::Pin<&mut crate::ffi::gp_Pln>,
+        aPln: &mut crate::ffi::gp_Pln,
         Dmax: &mut f64,
     ) -> bool {
-        crate::ffi::ShapeAnalysis_Geom_nearest_plane(Pnts, aPln, Dmax)
+        unsafe { crate::ffi::ShapeAnalysis_Geom_nearest_plane(Pnts, aPln, Dmax) }
     }
 
     /// Builds transformation object out of matrix.
@@ -723,11 +2208,11 @@ impl Geom {
     /// Unit is used as multiplier.
     pub fn position_trsf(
         coefs: &crate::ffi::HandleTColStdHArray2OfReal,
-        trsf: std::pin::Pin<&mut crate::ffi::gp_Trsf>,
+        trsf: &mut crate::ffi::gp_Trsf,
         unit: f64,
         prec: f64,
     ) -> bool {
-        crate::ffi::ShapeAnalysis_Geom_position_trsf(coefs, trsf, unit, prec)
+        unsafe { crate::ffi::ShapeAnalysis_Geom_position_trsf(coefs, trsf, unit, prec) }
     }
 }
 
@@ -737,46 +2222,72 @@ impl Geom {
 
 pub use crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds as HSequenceOfFreeBounds;
 
+unsafe impl crate::CppDeletable for HSequenceOfFreeBounds {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_destructor(ptr);
+    }
+}
+
 impl HSequenceOfFreeBounds {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_ctor()) }
     }
 
     pub fn new_sequenceoffreebounds(
         theOther: &crate::ffi::ShapeAnalysis_SequenceOfFreeBounds,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_ctor_sequenceoffreebounds(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_ctor_sequenceoffreebounds(theOther),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_descriptor()
+        unsafe { &*(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
-        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds;
 
+unsafe impl crate::CppDeletable for HandleShapeAnalysisHSequenceOfFreeBounds {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_destructor(ptr);
+    }
+}
+
 impl HandleShapeAnalysisHSequenceOfFreeBounds {
     /// Dereference this Handle to access the underlying ShapeAnalysis_HSequenceOfFreeBounds
     pub fn get(&self) -> &crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds {
-        crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_get(self)
+        unsafe { &*(crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeAnalysis_HSequenceOfFreeBounds
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds> {
-        crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -787,10 +2298,246 @@ impl HandleShapeAnalysisHSequenceOfFreeBounds {
 /// Dumps shape contents
 pub use crate::ffi::ShapeAnalysis_ShapeContents as ShapeContents;
 
+unsafe impl crate::CppDeletable for ShapeContents {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_ShapeContents_destructor(ptr);
+    }
+}
+
 impl ShapeContents {
     /// Initialize fields and call ClearFlags()
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_ShapeContents_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_ShapeContents_ctor()) }
+    }
+
+    /// Clears all accumulated statistics
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_clear(self as *mut Self) }
+    }
+
+    /// Clears all flags
+    pub fn clear_flags(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_clear_flags(self as *mut Self) }
+    }
+
+    /// Counts quantities of sun-shapes in shape and
+    /// stores sub-shapes according to flags
+    pub fn perform(&mut self, shape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_perform(self as *mut Self, shape) }
+    }
+
+    /// Returns (modifiable) the flag which defines whether to store faces
+    /// with edges if its 3D curves has more than 8192 poles.
+    pub fn modify_big_spline_mode(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_ShapeContents_modify_big_spline_mode(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Returns (modifiable) the flag which defines whether to store faces on indirect surfaces.
+    pub fn modify_indirect_mode(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_ShapeContents_modify_indirect_mode(self as *mut Self))
+        }
+    }
+
+    /// Returns (modifiable) the flag which defines whether to store faces on offset surfaces.
+    pub fn modify_offset_surface_mode(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_ShapeContents_modify_offset_surface_mode(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Returns (modifiable) the flag which defines whether to store faces
+    /// with edges if its 3D curves are trimmed curves
+    pub fn modify_trimmed3d_mode(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_ShapeContents_modify_trimmed3d_mode(self as *mut Self))
+        }
+    }
+
+    /// Returns (modifiable) the flag which defines whether to store faces
+    /// with edges if its 3D curves and pcurves are offset curves
+    pub fn modify_offset_curve_mode(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_ShapeContents_modify_offset_curve_mode(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Returns (modifiable) the flag which defines whether to store faces
+    /// with edges if its  pcurves are trimmed curves
+    pub fn modify_trimmed2d_mode(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_ShapeContents_modify_trimmed2d_mode(self as *mut Self))
+        }
+    }
+
+    pub fn nb_solids(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_solids(self as *const Self) }
+    }
+
+    pub fn nb_shells(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_shells(self as *const Self) }
+    }
+
+    pub fn nb_faces(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_faces(self as *const Self) }
+    }
+
+    pub fn nb_wires(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_wires(self as *const Self) }
+    }
+
+    pub fn nb_edges(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_edges(self as *const Self) }
+    }
+
+    pub fn nb_vertices(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_vertices(self as *const Self) }
+    }
+
+    pub fn nb_solids_with_voids(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_solids_with_voids(self as *const Self) }
+    }
+
+    pub fn nb_big_splines(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_big_splines(self as *const Self) }
+    }
+
+    pub fn nb_c0_surfaces(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_c0_surfaces(self as *const Self) }
+    }
+
+    pub fn nb_c0_curves(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_c0_curves(self as *const Self) }
+    }
+
+    pub fn nb_offset_surf(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_offset_surf(self as *const Self) }
+    }
+
+    pub fn nb_indirect_surf(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_indirect_surf(self as *const Self) }
+    }
+
+    pub fn nb_offset_curves(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_offset_curves(self as *const Self) }
+    }
+
+    pub fn nb_trimmed_curve2d(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_trimmed_curve2d(self as *const Self) }
+    }
+
+    pub fn nb_trimmed_curve3d(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_trimmed_curve3d(self as *const Self) }
+    }
+
+    pub fn nb_b_splibe_surf(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_b_splibe_surf(self as *const Self) }
+    }
+
+    pub fn nb_bezier_surf(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_bezier_surf(self as *const Self) }
+    }
+
+    pub fn nb_trim_surf(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_trim_surf(self as *const Self) }
+    }
+
+    pub fn nb_wire_witn_seam(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_wire_witn_seam(self as *const Self) }
+    }
+
+    pub fn nb_wire_with_sev_seams(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_ShapeContents_nb_wire_with_sev_seams(self as *const Self)
+        }
+    }
+
+    pub fn nb_face_with_sev_wires(&self) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_ShapeContents_nb_face_with_sev_wires(self as *const Self)
+        }
+    }
+
+    pub fn nb_no_p_curve(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_no_p_curve(self as *const Self) }
+    }
+
+    pub fn nb_free_faces(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_free_faces(self as *const Self) }
+    }
+
+    pub fn nb_free_wires(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_free_wires(self as *const Self) }
+    }
+
+    pub fn nb_free_edges(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_free_edges(self as *const Self) }
+    }
+
+    pub fn nb_shared_solids(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_shared_solids(self as *const Self) }
+    }
+
+    pub fn nb_shared_shells(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_shared_shells(self as *const Self) }
+    }
+
+    pub fn nb_shared_faces(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_shared_faces(self as *const Self) }
+    }
+
+    pub fn nb_shared_wires(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_shared_wires(self as *const Self) }
+    }
+
+    pub fn nb_shared_free_wires(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_shared_free_wires(self as *const Self) }
+    }
+
+    pub fn nb_shared_free_edges(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_shared_free_edges(self as *const Self) }
+    }
+
+    pub fn nb_shared_edges(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_shared_edges(self as *const Self) }
+    }
+
+    pub fn nb_shared_vertices(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_shared_vertices(self as *const Self) }
+    }
+
+    pub fn big_spline_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
+        unsafe { &*(crate::ffi::ShapeAnalysis_ShapeContents_big_spline_sec(self as *const Self)) }
+    }
+
+    pub fn indirect_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
+        unsafe { &*(crate::ffi::ShapeAnalysis_ShapeContents_indirect_sec(self as *const Self)) }
+    }
+
+    pub fn offset_surface_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
+        unsafe {
+            &*(crate::ffi::ShapeAnalysis_ShapeContents_offset_surface_sec(self as *const Self))
+        }
+    }
+
+    pub fn trimmed3d_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
+        unsafe { &*(crate::ffi::ShapeAnalysis_ShapeContents_trimmed3d_sec(self as *const Self)) }
+    }
+
+    pub fn offset_curve_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
+        unsafe { &*(crate::ffi::ShapeAnalysis_ShapeContents_offset_curve_sec(self as *const Self)) }
+    }
+
+    pub fn trimmed2d_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
+        unsafe { &*(crate::ffi::ShapeAnalysis_ShapeContents_trimmed2d_sec(self as *const Self)) }
     }
 }
 
@@ -803,10 +2550,16 @@ impl ShapeContents {
 /// setting or limitating tolerances.
 pub use crate::ffi::ShapeAnalysis_ShapeTolerance as ShapeTolerance;
 
+unsafe impl crate::CppDeletable for ShapeTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_ShapeTolerance_destructor(ptr);
+    }
+}
+
 impl ShapeTolerance {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_ShapeTolerance_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_ShapeTolerance_ctor()) }
     }
 
     /// Determines a tolerance from the ones stored in a shape
@@ -823,12 +2576,19 @@ impl ShapeTolerance {
     /// SHELL  : combined SHELL + FACE, for each face (and containing
     /// shell), also checks EDGE and VERTEX
     pub fn tolerance(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         shape: &crate::ffi::TopoDS_Shape,
         mode: i32,
         type_: crate::top_abs::ShapeEnum,
     ) -> f64 {
-        crate::ffi::ShapeAnalysis_ShapeTolerance_tolerance(self, shape, mode, type_.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_ShapeTolerance_tolerance(
+                self as *mut Self,
+                shape,
+                mode,
+                type_.into(),
+            )
+        }
     }
 
     /// Determines which shapes have a tolerance over the given value
@@ -838,8 +2598,15 @@ impl ShapeTolerance {
         shape: &crate::ffi::TopoDS_Shape,
         value: f64,
         type_: crate::top_abs::ShapeEnum,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
-        crate::ffi::ShapeAnalysis_ShapeTolerance_over_tolerance(self, shape, value, type_.into())
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_ShapeTolerance_over_tolerance(
+                self as *const Self,
+                shape,
+                value,
+                type_.into(),
+            ))
+        }
     }
 
     /// Determines which shapes have a tolerance within a given interval
@@ -850,24 +2617,47 @@ impl ShapeTolerance {
         valmin: f64,
         valmax: f64,
         type_: crate::top_abs::ShapeEnum,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
-        crate::ffi::ShapeAnalysis_ShapeTolerance_in_tolerance(
-            self,
-            shape,
-            valmin,
-            valmax,
-            type_.into(),
-        )
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_ShapeTolerance_in_tolerance(
+                self as *const Self,
+                shape,
+                valmin,
+                valmax,
+                type_.into(),
+            ))
+        }
+    }
+
+    /// Initializes computation of cumulated tolerance
+    pub fn init_tolerance(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_ShapeTolerance_init_tolerance(self as *mut Self) }
     }
 
     /// Adds data on new Shape to compute Cumulated Tolerance
     /// (prepares three computations : maximal, average, minimal)
     pub fn add_tolerance(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         shape: &crate::ffi::TopoDS_Shape,
         type_: crate::top_abs::ShapeEnum,
     ) {
-        crate::ffi::ShapeAnalysis_ShapeTolerance_add_tolerance(self, shape, type_.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_ShapeTolerance_add_tolerance(
+                self as *mut Self,
+                shape,
+                type_.into(),
+            )
+        }
+    }
+
+    /// Returns the computed tolerance according to the <mode>
+    /// <mode> = 0 : average
+    /// <mode> > 0 : maximal
+    /// <mode> < 0 : minimal
+    pub fn global_tolerance(&self, mode: i32) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_ShapeTolerance_global_tolerance(self as *const Self, mode)
+        }
     }
 }
 
@@ -879,28 +2669,105 @@ impl ShapeTolerance {
 /// in the shell.
 pub use crate::ffi::ShapeAnalysis_Shell as Shell;
 
+unsafe impl crate::CppDeletable for Shell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_Shell_destructor(ptr);
+    }
+}
+
 impl Shell {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_Shell_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Shell_ctor()) }
+    }
+
+    /// Clears data about loaded shells and performed checks
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_Shell_clear(self as *mut Self) }
+    }
+
+    /// Adds shells contained in the <shape> to the list of loaded shells
+    pub fn load_shells(&mut self, shape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::ShapeAnalysis_Shell_load_shells(self as *mut Self, shape) }
+    }
+
+    /// Checks if shells fulfill orientation condition, i.e. if each
+    /// edge is, either present once (free edge) or twice (connected
+    /// edge) but with different orientations (FORWARD/REVERSED)
+    /// Edges which do not fulfill these conditions are bad
+    ///
+    /// If <alsofree> is True free edges are considered.
+    /// Free edges can be queried but are not bad
+    pub fn check_oriented_shells(
+        &mut self,
+        shape: &crate::ffi::TopoDS_Shape,
+        alsofree: bool,
+        checkinternaledges: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Shell_check_oriented_shells(
+                self as *mut Self,
+                shape,
+                alsofree,
+                checkinternaledges,
+            )
+        }
+    }
+
+    /// Tells if a shape is loaded (only shells are checked)
+    pub fn is_loaded(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Shell_is_loaded(self as *const Self, shape) }
+    }
+
+    /// Returns the actual number of loaded shapes (i.e. shells)
+    pub fn nb_loaded(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_Shell_nb_loaded(self as *const Self) }
     }
 
     /// Returns a loaded shape specified by its rank number.
     /// Returns null shape if <num> is out of range
-    pub fn loaded(&self, num: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::ShapeAnalysis_Shell_loaded(self, num)
+    pub fn loaded(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Shell_loaded(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// Tells if at least one edge is recorded as bad
+    pub fn has_bad_edges(&self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Shell_has_bad_edges(self as *const Self) }
     }
 
     /// Returns the list of bad edges as a Compound
     /// It is empty (not null) if no edge are recorded as bad
-    pub fn bad_edges(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Compound> {
-        crate::ffi::ShapeAnalysis_Shell_bad_edges(self)
+    pub fn bad_edges(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Compound> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Shell_bad_edges(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Tells if at least one edge is recorded as free (not connected)
+    pub fn has_free_edges(&self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Shell_has_free_edges(self as *const Self) }
     }
 
     /// Returns the list of free (not connected) edges as a Compound
     /// It is empty (not null) if no edge are recorded as free
-    pub fn free_edges(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Compound> {
-        crate::ffi::ShapeAnalysis_Shell_free_edges(self)
+    pub fn free_edges(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Compound> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Shell_free_edges(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Tells if at least one edge is connected (shared twice or more)
+    pub fn has_connected_edges(&self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Shell_has_connected_edges(self as *const Self) }
     }
 }
 
@@ -935,47 +2802,313 @@ impl Shell {
 /// This tool is optimised: computes most information only once
 pub use crate::ffi::ShapeAnalysis_Surface as Surface;
 
+unsafe impl crate::CppDeletable for Surface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_Surface_destructor(ptr);
+    }
+}
+
 impl Surface {
     /// Creates an analyzer object on the basis of existing surface
-    pub fn new_handlegeomsurface(S: &crate::ffi::HandleGeomSurface) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_Surface_ctor_handlegeomsurface(S)
+    pub fn new_handlegeomsurface(S: &crate::ffi::HandleGeomSurface) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Surface_ctor_handlegeomsurface(S))
+        }
+    }
+
+    /// Loads existing surface
+    pub fn init_handlegeomsurface(&mut self, S: &crate::ffi::HandleGeomSurface) {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_init_handlegeomsurface(self as *mut Self, S) }
+    }
+
+    /// Reads all the data from another Surface, without recomputing
+    pub fn init_handleshapeanalysissurface(
+        &mut self,
+        other: &crate::ffi::HandleShapeAnalysisSurface,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_init_handleshapeanalysissurface(
+                self as *mut Self,
+                other,
+            )
+        }
+    }
+
+    pub fn set_domain(&mut self, U1: f64, U2: f64, V1: f64, V2: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_set_domain(self as *mut Self, U1, U2, V1, V2) }
+    }
+
+    /// Returns a surface being analyzed
+    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Surface_surface(self as *const Self)) }
+    }
+
+    /// Returns 3D distance found by one of the following methods.
+    /// IsDegenerated, DegeneratedValues, ProjectDegenerated
+    /// (distance between 3D point and found or last (if not found)
+    /// singularity),
+    /// IsUClosed, IsVClosed (minimum value of precision to consider
+    /// the surface to be closed),
+    /// ValueOfUV (distance between 3D point and found solution).
+    pub fn gap(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_gap(self as *const Self) }
     }
 
     /// Returns a 3D point specified by parameters in surface
     /// parametrical space
-    pub fn value_real2(
-        self: std::pin::Pin<&mut Self>,
-        u: f64,
-        v: f64,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::ShapeAnalysis_Surface_value_real2(self, u, v)
+    pub fn value_real2(&mut self, u: f64, v: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Surface_value_real2(
+                self as *mut Self,
+                u,
+                v,
+            ))
+        }
     }
 
     /// Returns a 3d point specified by a point in surface
     /// parametrical space
     pub fn value_pnt2d(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         p2d: &crate::ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::ShapeAnalysis_Surface_value_pnt2d(self, p2d)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Surface_value_pnt2d(
+                self as *mut Self,
+                p2d,
+            ))
+        }
+    }
+
+    /// Returns True if the surface has singularities for the given
+    /// precision (i.e. if there are surface singularities with sizes
+    /// not greater than precision).
+    pub fn has_singularities(&mut self, preci: f64) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_has_singularities(self as *mut Self, preci) }
+    }
+
+    /// Returns the number of singularities for the given precision
+    /// (i.e. number of surface singularities with sizes not greater
+    /// than precision).
+    pub fn nb_singularities(&mut self, preci: f64) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_nb_singularities(self as *mut Self, preci) }
+    }
+
+    /// Returns the characteristics of the singularity specified by
+    /// its rank number <num>.
+    /// That means, that it is not necessary for <num> to be in the
+    /// range [1, NbSingularities] but must be not greater than
+    /// possible (see ComputeSingularities).
+    /// The returned characteristics are:
+    /// preci: the smallest precision with which the iso-line is
+    /// considered as degenerated,
+    /// P3d: 3D point of singularity (middle point of the surface
+    /// iso-line),
+    /// firstP2d and lastP2d: first and last 2D points of the
+    /// iso-line in parametrical surface,
+    /// firstpar and lastpar: first and last parameters of the
+    /// iso-line in parametrical surface,
+    /// uisodeg: if the degenerated iso-line is U-iso (True) or
+    /// V-iso (False).
+    /// Returns False if <num> is out of range, else returns True.
+    pub fn singularity(
+        &mut self,
+        num: i32,
+        preci: &mut f64,
+        P3d: &mut crate::ffi::gp_Pnt,
+        firstP2d: &mut crate::ffi::gp_Pnt2d,
+        lastP2d: &mut crate::ffi::gp_Pnt2d,
+        firstpar: &mut f64,
+        lastpar: &mut f64,
+        uisodeg: &mut bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_singularity(
+                self as *mut Self,
+                num,
+                preci,
+                P3d,
+                firstP2d,
+                lastP2d,
+                firstpar,
+                lastpar,
+                uisodeg,
+            )
+        }
+    }
+
+    /// Returns True if there is at least one surface boundary which
+    /// is considered as degenerated with <preci> and distance
+    /// between P3d and corresponding singular point is less than
+    /// <preci>
+    pub fn is_degenerated_pnt_real(&mut self, P3d: &crate::ffi::gp_Pnt, preci: f64) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_is_degenerated_pnt_real(self as *mut Self, P3d, preci)
+        }
+    }
+
+    /// Returns True if there is at least one surface iso-line which
+    /// is considered as degenerated with <preci> and distance
+    /// between P3d and corresponding singular point is less than
+    /// <preci> (like IsDegenerated).
+    /// Returns characteristics of the first found boundary matching
+    /// those criteria.
+    pub fn degenerated_values(
+        &mut self,
+        P3d: &crate::ffi::gp_Pnt,
+        preci: f64,
+        firstP2d: &mut crate::ffi::gp_Pnt2d,
+        lastP2d: &mut crate::ffi::gp_Pnt2d,
+        firstpar: &mut f64,
+        lastpar: &mut f64,
+        forward: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_degenerated_values(
+                self as *mut Self,
+                P3d,
+                preci,
+                firstP2d,
+                lastP2d,
+                firstpar,
+                lastpar,
+                forward,
+            )
+        }
+    }
+
+    /// Projects a point <P3d> on a singularity by computing
+    /// one of the coordinates of preliminary computed <result>.
+    ///
+    /// Finds the iso-line which is considered as degenerated with
+    /// <preci> and
+    /// a. distance between P3d and corresponding singular point is
+    /// less than <preci> (like IsDegenerated) or
+    /// b. difference between already computed <result>'s coordinate
+    /// and iso-coordinate of the boundary is less than 2D
+    /// resolution (computed from <preci> by Geom_Adaptor).
+    /// Then sets not yet computed <result>'s coordinate taking it
+    /// from <neighbour> and returns True.
+    pub fn project_degenerated(
+        &mut self,
+        P3d: &crate::ffi::gp_Pnt,
+        preci: f64,
+        neighbour: &crate::ffi::gp_Pnt2d,
+        result: &mut crate::ffi::gp_Pnt2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_project_degenerated(
+                self as *mut Self,
+                P3d,
+                preci,
+                neighbour,
+                result,
+            )
+        }
+    }
+
+    /// Returns True if straight pcurve going from point p2d1 to p2d2
+    /// is degenerate, i.e. lies in the singularity of the surface.
+    /// NOTE: it uses another method of detecting singularity than
+    /// used by ComputeSingularities() et al.!
+    /// For that, maximums of distances between points p2d1, p2d2
+    /// and 0.5*(p2d1+p2d2) and between corresponding 3d points are
+    /// computed.
+    /// The pcurve (p2d1, p2d2) is considered as degenerate if:
+    /// - max distance in 3d is less than <tol>
+    /// - max distance in 2d is at least <ratio> times greater than
+    /// the Resolution computed from max distance in 3d
+    /// (max3d < tol && max2d > ratio * Resolution(max3d))
+    /// NOTE: <ratio> should be >1 (e.g. 10)
+    pub fn is_degenerated_pnt2d2_real2(
+        &mut self,
+        p2d1: &crate::ffi::gp_Pnt2d,
+        p2d2: &crate::ffi::gp_Pnt2d,
+        tol: f64,
+        ratio: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_is_degenerated_pnt2d2_real2(
+                self as *mut Self,
+                p2d1,
+                p2d2,
+                tol,
+                ratio,
+            )
+        }
+    }
+
+    /// Returns the bounds of the surface
+    /// (from Bounds from Surface, but buffered)
+    pub fn bounds(&self, ufirst: &mut f64, ulast: &mut f64, vfirst: &mut f64, vlast: &mut f64) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_bounds(
+                self as *const Self,
+                ufirst,
+                ulast,
+                vfirst,
+                vlast,
+            )
+        }
+    }
+
+    /// Computes bound isos (protected against exceptions)
+    pub fn compute_bound_isos(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_compute_bound_isos(self as *mut Self) }
     }
 
     /// Returns a U-Iso. Null if not possible or failed
     /// Remark : bound isos are buffered
-    pub fn u_iso(
-        self: std::pin::Pin<&mut Self>,
-        U: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
-        crate::ffi::ShapeAnalysis_Surface_u_iso(self, U)
+    pub fn u_iso(&mut self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Surface_u_iso(self as *mut Self, U))
+        }
     }
 
     /// Returns a V-Iso. Null if not possible or failed
     /// Remark : bound isos are buffered
-    pub fn v_iso(
-        self: std::pin::Pin<&mut Self>,
-        V: f64,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
-        crate::ffi::ShapeAnalysis_Surface_v_iso(self, V)
+    pub fn v_iso(&mut self, V: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Surface_v_iso(self as *mut Self, V))
+        }
+    }
+
+    /// Tells if the Surface is spatially closed in U with given
+    /// precision. If <preci> < 0 then Precision::Confusion is used.
+    /// If Geom_Surface says that the surface is U-closed, this method
+    /// also says this. Otherwise additional analysis is performed,
+    /// comparing given precision with the following distances:
+    /// - periodic B-Splines are closed,
+    /// - polynomial B-Spline with boundary multiplicities degree+1
+    /// and Bezier - maximum distance between poles,
+    /// - rational B-Spline or one with boundary multiplicities not
+    /// degree+1 - maximum distance computed at knots and their
+    /// middles,
+    /// - surface of extrusion - distance between ends of basis
+    /// curve,
+    /// - other (RectangularTrimmed and Offset) - maximum distance
+    /// computed at 100 equi-distanted points.
+    pub fn is_u_closed(&mut self, preci: f64) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_is_u_closed(self as *mut Self, preci) }
+    }
+
+    /// Tells if the Surface is spatially closed in V with given
+    /// precision. If <preci> < 0 then Precision::Confusion is used.
+    /// If Geom_Surface says that the surface is V-closed, this method
+    /// also says this. Otherwise additional analysis is performed,
+    /// comparing given precision with the following distances:
+    /// - periodic B-Splines are closed,
+    /// - polynomial B-Spline with boundary multiplicities degree+1
+    /// and Bezier - maximum distance between poles,
+    /// - rational B-Spline or one with boundary multiplicities not
+    /// degree+1 - maximum distance computed at knots and their
+    /// middles,
+    /// - surface of revolution - distance between ends of basis
+    /// curve,
+    /// - other (RectangularTrimmed and Offset) - maximum distance
+    /// computed at 100 equi-distanted points.
+    pub fn is_v_closed(&mut self, preci: f64) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_is_v_closed(self as *mut Self, preci) }
     }
 
     /// Computes the parameters in the surface parametrical space of
@@ -987,11 +3120,17 @@ impl Surface {
     /// the projected point is near to the surface boundaries and
     /// when this standard tool fails.
     pub fn value_of_uv(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         P3D: &crate::ffi::gp_Pnt,
         preci: f64,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::ShapeAnalysis_Surface_value_of_uv(self, P3D, preci)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Surface_value_of_uv(
+                self as *mut Self,
+                P3D,
+                preci,
+            ))
+        }
     }
 
     /// Projects a point P3D on the surface.
@@ -1003,44 +3142,109 @@ impl Surface {
     /// as bad, and ValueOfUV() is used.
     /// If not succeeded, calls ValueOfUV()
     pub fn next_value_of_uv(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         p2dPrev: &crate::ffi::gp_Pnt2d,
         P3D: &crate::ffi::gp_Pnt,
         preci: f64,
         maxpreci: f64,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::ShapeAnalysis_Surface_next_value_of_uv(self, p2dPrev, P3D, preci, maxpreci)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Surface_next_value_of_uv(
+                self as *mut Self,
+                p2dPrev,
+                P3D,
+                preci,
+                maxpreci,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::ShapeAnalysis_Surface_get_type_name()
+    /// Tries a refinement of an already computed couple (U,V) by
+    /// using projecting 3D point on iso-lines:
+    /// 1. boundaries of the surface,
+    /// 2. iso-lines passing through (U,V)
+    /// 3. iteratively received iso-lines passing through new U and
+    /// new V (number of iterations is limited by 5 in each
+    /// direction)
+    /// Returns the best resulting distance between P3D and Value(U,V)
+    /// in the case of success. Else, returns a very great value
+    pub fn uv_from_iso(
+        &mut self,
+        P3D: &crate::ffi::gp_Pnt,
+        preci: f64,
+        U: &mut f64,
+        V: &mut f64,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Surface_uv_from_iso(self as *mut Self, P3D, preci, U, V)
+        }
+    }
+
+    /// Returns minimum value to consider the surface as U-closed
+    pub fn u_close_val(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_u_close_val(self as *const Self) }
+    }
+
+    /// Returns minimum value to consider the surface as V-closed
+    pub fn v_close_val(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_v_close_val(self as *const Self) }
+    }
+
+    pub fn get_box_uf(&mut self) -> &crate::ffi::Bnd_Box {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Surface_get_box_uf(self as *mut Self)) }
+    }
+
+    pub fn get_box_ul(&mut self) -> &crate::ffi::Bnd_Box {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Surface_get_box_ul(self as *mut Self)) }
+    }
+
+    pub fn get_box_vf(&mut self) -> &crate::ffi::Bnd_Box {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Surface_get_box_vf(self as *mut Self)) }
+    }
+
+    pub fn get_box_vl(&mut self) -> &crate::ffi::Bnd_Box {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Surface_get_box_vl(self as *mut Self)) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Surface_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::ShapeAnalysis_Surface_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::ShapeAnalysis_Surface_get_type_descriptor()
+        unsafe { &*(crate::ffi::ShapeAnalysis_Surface_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisSurface> {
-        crate::ffi::ShapeAnalysis_Surface_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Surface_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleShapeAnalysisSurface;
 
+unsafe impl crate::CppDeletable for HandleShapeAnalysisSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeAnalysisSurface_destructor(ptr);
+    }
+}
+
 impl HandleShapeAnalysisSurface {
     /// Dereference this Handle to access the underlying ShapeAnalysis_Surface
     pub fn get(&self) -> &crate::ffi::ShapeAnalysis_Surface {
-        crate::ffi::HandleShapeAnalysisSurface_get(self)
+        unsafe { &*(crate::ffi::HandleShapeAnalysisSurface_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeAnalysis_Surface
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::ShapeAnalysis_Surface> {
-        crate::ffi::HandleShapeAnalysisSurface_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_Surface {
+        unsafe { &mut *(crate::ffi::HandleShapeAnalysisSurface_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1065,59 +3269,141 @@ impl HandleShapeAnalysisSurface {
 /// using projection.
 pub use crate::ffi::ShapeAnalysis_TransferParameters as TransferParameters;
 
+unsafe impl crate::CppDeletable for TransferParameters {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_TransferParameters_destructor(ptr);
+    }
+}
+
 impl TransferParameters {
     /// Creates empty tool with myShift = 0 and myScale = 1
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_TransferParameters_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_TransferParameters_ctor()) }
     }
 
     /// Creates a tool and initializes it with edge and face
     pub fn new_edge_face(
         E: &crate::ffi::TopoDS_Edge,
         F: &crate::ffi::TopoDS_Face,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_TransferParameters_ctor_edge_face(E, F)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_TransferParameters_ctor_edge_face(
+                E, F,
+            ))
+        }
+    }
+
+    /// Initialize a tool with edge and face
+    pub fn init(&mut self, E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::ShapeAnalysis_TransferParameters_init(self as *mut Self, E, F) }
+    }
+
+    /// Sets maximal tolerance to use linear recomputation of
+    /// parameters.
+    pub fn set_max_tolerance(&mut self, maxtol: f64) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParameters_set_max_tolerance(
+                self as *mut Self,
+                maxtol,
+            )
+        }
     }
 
     /// Transfers parameters given by sequence Params from 3d curve
     /// to pcurve (if To2d is True) or back (if To2d is False)
     pub fn perform_handletcolstdhsequenceofreal_bool(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Params: &crate::ffi::HandleTColStdHSequenceOfReal,
         To2d: bool,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
-        crate::ffi::ShapeAnalysis_TransferParameters_perform(self, Params, To2d)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_TransferParameters_perform_handletcolstdhsequenceofreal_bool(self as *mut Self, Params, To2d))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::ShapeAnalysis_TransferParameters_get_type_name()
+    /// Transfers parameter given by sequence Params from 3d curve
+    /// to pcurve (if To2d is True) or back (if To2d is False)
+    pub fn perform_real_bool(&mut self, Param: f64, To2d: bool) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParameters_perform_real_bool(
+                self as *mut Self,
+                Param,
+                To2d,
+            )
+        }
+    }
+
+    /// Recomputes range of curves from NewEdge.
+    /// If Is2d equals True parameters are recomputed by curve2d else by curve3d.
+    pub fn transfer_range(
+        &mut self,
+        newEdge: &mut crate::ffi::TopoDS_Edge,
+        prevPar: f64,
+        currPar: f64,
+        To2d: bool,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParameters_transfer_range(
+                self as *mut Self,
+                newEdge,
+                prevPar,
+                currPar,
+                To2d,
+            )
+        }
+    }
+
+    /// Returns True if 3d curve of edge and pcurve are SameRange
+    /// (in default implementation, if myScale == 1 and myShift == 0)
+    pub fn is_same_range(&self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_TransferParameters_is_same_range(self as *const Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::ShapeAnalysis_TransferParameters_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::ShapeAnalysis_TransferParameters_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::ShapeAnalysis_TransferParameters_get_type_descriptor()
+        unsafe { &*(crate::ffi::ShapeAnalysis_TransferParameters_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisTransferParameters> {
-        crate::ffi::ShapeAnalysis_TransferParameters_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisTransferParameters> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_TransferParameters_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleShapeAnalysisTransferParameters;
 
+unsafe impl crate::CppDeletable for HandleShapeAnalysisTransferParameters {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeAnalysisTransferParameters_destructor(ptr);
+    }
+}
+
 impl HandleShapeAnalysisTransferParameters {
     /// Dereference this Handle to access the underlying ShapeAnalysis_TransferParameters
     pub fn get(&self) -> &crate::ffi::ShapeAnalysis_TransferParameters {
-        crate::ffi::HandleShapeAnalysisTransferParameters_get(self)
+        unsafe { &*(crate::ffi::HandleShapeAnalysisTransferParameters_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeAnalysis_TransferParameters
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::ShapeAnalysis_TransferParameters> {
-        crate::ffi::HandleShapeAnalysisTransferParameters_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_TransferParameters {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeAnalysisTransferParameters_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -1132,27 +3418,102 @@ impl HandleShapeAnalysisTransferParameters {
 /// vice versa
 pub use crate::ffi::ShapeAnalysis_TransferParametersProj as TransferParametersProj;
 
+unsafe impl crate::CppDeletable for TransferParametersProj {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_destructor(ptr);
+    }
+}
+
 impl TransferParametersProj {
     /// Creates empty constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_TransferParametersProj_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_TransferParametersProj_ctor())
+        }
     }
 
     pub fn new_edge_face(
         E: &crate::ffi::TopoDS_Edge,
         F: &crate::ffi::TopoDS_Face,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_TransferParametersProj_ctor_edge_face(E, F)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_TransferParametersProj_ctor_edge_face(E, F),
+            )
+        }
+    }
+
+    pub fn init(&mut self, E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::ShapeAnalysis_TransferParametersProj_init(self as *mut Self, E, F) }
     }
 
     /// Transfers parameters given by sequence Params from 3d curve
     /// to pcurve (if To2d is True) or back (if To2d is False)
     pub fn perform_handletcolstdhsequenceofreal_bool(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Papams: &crate::ffi::HandleTColStdHSequenceOfReal,
         To2d: bool,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
-        crate::ffi::ShapeAnalysis_TransferParametersProj_perform(self, Papams, To2d)
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_TransferParametersProj_perform_handletcolstdhsequenceofreal_bool(self as *mut Self, Papams, To2d))
+        }
+    }
+
+    /// Transfers parameter given by  Param from 3d curve
+    /// to pcurve (if To2d is True) or back (if To2d is False)
+    pub fn perform_real_bool(&mut self, Param: f64, To2d: bool) -> f64 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParametersProj_perform_real_bool(
+                self as *mut Self,
+                Param,
+                To2d,
+            )
+        }
+    }
+
+    /// Returns modifiable flag forcing projection
+    /// If it is False (default), projection is done only
+    /// if edge is not SameParameter or if tolerance of edge
+    /// is greater than MaxTolerance()
+    pub fn force_projection(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_TransferParametersProj_force_projection(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Recomputes range of curves from NewEdge.
+    /// If Is2d equals True parameters are recomputed by curve2d else by curve3d.
+    pub fn transfer_range(
+        &mut self,
+        newEdge: &mut crate::ffi::TopoDS_Edge,
+        prevPar: f64,
+        currPar: f64,
+        Is2d: bool,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParametersProj_transfer_range(
+                self as *mut Self,
+                newEdge,
+                prevPar,
+                currPar,
+                Is2d,
+            )
+        }
+    }
+
+    /// Returns False;
+    pub fn is_same_range(&self) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParametersProj_is_same_range(self as *const Self)
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::ShapeAnalysis_TransferParametersProj_dynamic_type(self as *const Self))
+        }
     }
 
     /// Make a copy of non-manifold vertex theVert
@@ -1162,10 +3523,14 @@ impl TransferParametersProj {
         theVert: &crate::ffi::TopoDS_Vertex,
         toedge: &crate::ffi::TopoDS_Edge,
         fromedge: &crate::ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ShapeAnalysis_TransferParametersProj_copy_nm_vertex_vertex_edge2(
-            theVert, toedge, fromedge,
-        )
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_TransferParametersProj_copy_nm_vertex_vertex_edge2(
+                    theVert, toedge, fromedge,
+                ),
+            )
+        }
     }
 
     /// Make a copy of non-manifold vertex theVert
@@ -1175,37 +3540,48 @@ impl TransferParametersProj {
         theVert: &crate::ffi::TopoDS_Vertex,
         toFace: &crate::ffi::TopoDS_Face,
         fromFace: &crate::ffi::TopoDS_Face,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
-        crate::ffi::ShapeAnalysis_TransferParametersProj_copy_nm_vertex_vertex_face2(
-            theVert, toFace, fromFace,
-        )
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_TransferParametersProj_copy_nm_vertex_vertex_face2(
+                    theVert, toFace, fromFace,
+                ),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::ShapeAnalysis_TransferParametersProj_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::ShapeAnalysis_TransferParametersProj_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::ShapeAnalysis_TransferParametersProj_get_type_descriptor()
+        unsafe { &*(crate::ffi::ShapeAnalysis_TransferParametersProj_get_type_descriptor()) }
     }
 
     /// Upcast to ShapeAnalysis_TransferParameters
     pub fn as_transfer_parameters(&self) -> &TransferParameters {
-        crate::ffi::ShapeAnalysis_TransferParametersProj_as_ShapeAnalysis_TransferParameters(self)
+        unsafe {
+            &*(crate::ffi::ShapeAnalysis_TransferParametersProj_as_ShapeAnalysis_TransferParameters(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to ShapeAnalysis_TransferParameters (mutable)
-    pub fn as_transfer_parameters_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut TransferParameters> {
-        crate::ffi::ShapeAnalysis_TransferParametersProj_as_ShapeAnalysis_TransferParameters_mut(
-            self,
-        )
+    pub fn as_transfer_parameters_mut(&mut self) -> &mut TransferParameters {
+        unsafe {
+            &mut *(crate::ffi::ShapeAnalysis_TransferParametersProj_as_ShapeAnalysis_TransferParameters_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from ShapeAnalysis_TransferParameters: SetMaxTolerance()
-    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, maxtol: f64) {
-        crate::ffi::ShapeAnalysis_TransferParametersProj_inherited_SetMaxTolerance(self, maxtol)
+    pub fn set_max_tolerance(&mut self, maxtol: f64) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_TransferParametersProj_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
+        }
     }
 }
 
@@ -1252,10 +3628,16 @@ impl TransferParametersProj {
 /// set face and precision.
 pub use crate::ffi::ShapeAnalysis_Wire as Wire;
 
+unsafe impl crate::CppDeletable for Wire {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_Wire_destructor(ptr);
+    }
+}
+
 impl Wire {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_Wire_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Wire_ctor()) }
     }
 
     /// Creates object with standard TopoDS_Wire, face
@@ -1264,92 +3646,719 @@ impl Wire {
         wire: &crate::ffi::TopoDS_Wire,
         face: &crate::ffi::TopoDS_Face,
         precision: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_Wire_ctor_wire_face_real(wire, face, precision)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Wire_ctor_wire_face_real(
+                wire, face, precision,
+            ))
+        }
+    }
+
+    /// Initializes the object with standard TopoDS_Wire, face
+    /// and precision
+    pub fn init(
+        &mut self,
+        wire: &crate::ffi::TopoDS_Wire,
+        face: &crate::ffi::TopoDS_Face,
+        precision: f64,
+    ) {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_init(self as *mut Self, wire, face, precision) }
+    }
+
+    /// Loads the object with standard TopoDS_Wire
+    pub fn load(&mut self, wire: &crate::ffi::TopoDS_Wire) {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_load(self as *mut Self, wire) }
+    }
+
+    /// Loads the face the wire lies on
+    pub fn set_face(&mut self, face: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_set_face(self as *mut Self, face) }
+    }
+
+    /// Loads the surface the wire lies on
+    pub fn set_surface_handlegeomsurface(&mut self, surface: &crate::ffi::HandleGeomSurface) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_set_surface_handlegeomsurface(self as *mut Self, surface)
+        }
+    }
+
+    /// Loads the surface the wire lies on
+    pub fn set_surface_handlegeomsurface_location(
+        &mut self,
+        surface: &crate::ffi::HandleGeomSurface,
+        location: &crate::ffi::TopLoc_Location,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_set_surface_handlegeomsurface_location(
+                self as *mut Self,
+                surface,
+                location,
+            )
+        }
+    }
+
+    pub fn set_precision(&mut self, precision: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_set_precision(self as *mut Self, precision) }
+    }
+
+    /// Unsets all the status and distance fields
+    /// wire, face and precision are not cleared
+    pub fn clear_statuses(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_clear_statuses(self as *mut Self) }
+    }
+
+    /// Returns True if wire is loaded and has number of edges >0
+    pub fn is_loaded(&self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_is_loaded(self as *const Self) }
+    }
+
+    /// Returns True if IsLoaded and underlying face is not null
+    pub fn is_ready(&self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_is_ready(self as *const Self) }
+    }
+
+    /// Returns the value of precision
+    pub fn precision(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_precision(self as *const Self) }
+    }
+
+    /// Returns the number of edges in the wire, or 0 if it is not loaded
+    pub fn nb_edges(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_nb_edges(self as *const Self) }
+    }
+
+    /// Returns the working face
+    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Wire_face(self as *const Self)) }
+    }
+
+    /// Returns the working surface
+    pub fn surface(&self) -> &crate::ffi::HandleShapeAnalysisSurface {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Wire_surface(self as *const Self)) }
+    }
+
+    /// Performs all the checks in the following order :
+    /// CheckOrder, CheckSmall, CheckConnected, CheckEdgeCurves,
+    /// CheckDegenerated, CheckSelfIntersection, CheckLacking,
+    /// CheckClosed
+    /// Returns: True if at least one method returned True;
+    /// For deeper analysis use Status...(status) methods
+    pub fn perform(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_perform(self as *mut Self) }
+    }
+
+    /// Calls CheckOrder and returns False if wire is already
+    /// ordered (tail-to-head), True otherwise
+    /// Flag <isClosed> defines if the wire is closed or not
+    /// Flag <mode3d> defines which mode is used (3d or 2d)
+    pub fn check_order_bool2(&mut self, isClosed: bool, mode3d: bool) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_order_bool2(self as *mut Self, isClosed, mode3d)
+        }
+    }
+
+    /// Calls to CheckConnected for each edge
+    /// Returns: True if at least one pair of disconnected edges (not sharing the
+    /// same vertex) was detected
+    pub fn check_connected_real(&mut self, prec: f64) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_connected_real(self as *mut Self, prec) }
+    }
+
+    /// Calls to CheckSmall for each edge
+    /// Returns: True if at least one small edge was detected
+    pub fn check_small_real(&mut self, precsmall: f64) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_small_real(self as *mut Self, precsmall) }
+    }
+
+    /// Checks edges geometry (consistency of 2d and 3d senses, adjasment
+    /// of curves to the vertices, etc.).
+    /// The order of the checks :
+    /// Call ShapeAnalysis_Wire to check:
+    /// ShapeAnalysis_Edge::CheckCurve3dWithPCurve  (1),
+    /// ShapeAnalysis_Edge::CheckVertcesWithPCurve  (2),
+    /// ShapeAnalysis_Edge::CheckVertcesWithCurve3d (3),
+    /// CheckSeam                                   (4)
+    /// Additional:
+    /// CheckGap3d                                  (5),
+    /// CheckGap2d                                  (6),
+    /// ShapeAnalysis_Edge::CheckSameParameter      (7)
+    /// Returns: True if at least one check returned True
+    /// Remark:  The numbers in brackets show with what DONEi or FAILi
+    /// the status can be queried
+    pub fn check_edge_curves(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_edge_curves(self as *mut Self) }
+    }
+
+    /// Calls to CheckDegenerated for each edge
+    /// Returns: True if at least one incorrect degenerated edge was detected
+    pub fn check_degenerated(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_degenerated(self as *mut Self) }
+    }
+
+    /// Checks if wire is closed, performs CheckConnected,
+    /// CheckDegenerated and CheckLacking for the first and the last edges
+    /// Returns: True if at least one check returned True
+    /// Status:
+    /// FAIL1 or DONE1: see CheckConnected
+    /// FAIL2 or DONE2: see CheckDegenerated
+    pub fn check_closed(&mut self, prec: f64) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_closed(self as *mut Self, prec) }
+    }
+
+    /// Checks self-intersection of the wire (considering pcurves)
+    /// Looks for self-intersecting edges and each pair of intersecting
+    /// edges.
+    /// Warning: It does not check each edge with any other one (only each two
+    /// adjacent edges)
+    /// The order of the checks :
+    /// CheckSelfIntersectingEdge, CheckIntersectingEdges
+    /// Returns: True if at least one check returned True
+    /// Status:  FAIL1 or DONE1 - see CheckSelfIntersectingEdge
+    /// FAIL2 or DONE2 - see CheckIntersectingEdges
+    pub fn check_self_intersection(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_self_intersection(self as *mut Self) }
+    }
+
+    /// Calls to CheckLacking for each edge
+    /// Returns: True if at least one lacking edge was detected
+    pub fn check_lacking(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_lacking(self as *mut Self) }
+    }
+
+    pub fn check_gaps3d(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_gaps3d(self as *mut Self) }
+    }
+
+    pub fn check_gaps2d(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_gaps2d(self as *mut Self) }
+    }
+
+    pub fn check_curve_gaps(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_curve_gaps(self as *mut Self) }
+    }
+
+    /// Analyzes the order of the edges in the wire,
+    /// uses class WireOrder for that purpose.
+    /// Flag <isClosed> defines if the wire is closed or not
+    /// Flag <theMode3D> defines 3D or 2d mode.
+    /// Flag <theModeBoth> defines miscible mode and the flag <theMode3D> is ignored.
+    /// Returns False if wire is already ordered (tail-to-head),
+    /// True otherwise.
+    /// Use returned WireOrder object for deeper analysis.
+    /// Status:
+    /// OK   : the same edges orientation, the same edges sequence
+    /// DONE1: the same edges orientation, not the same edges sequence
+    /// DONE2: as DONE1 and gaps more than myPrecision
+    /// DONE3: not the same edges orientation (some need to be reversed)
+    /// DONE4: as DONE3 and gaps more than myPrecision
+    /// FAIL : algorithm failed (could not detect order)
+    pub fn check_order_wireorder_bool3(
+        &mut self,
+        sawo: &mut crate::ffi::ShapeAnalysis_WireOrder,
+        isClosed: bool,
+        theMode3D: bool,
+        theModeBoth: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_order_wireorder_bool3(
+                self as *mut Self,
+                sawo,
+                isClosed,
+                theMode3D,
+                theModeBoth,
+            )
+        }
+    }
+
+    /// Checks connected edges (num-th and preceding).
+    /// Tests with starting preci from <SBWD> or  with <prec> if
+    /// it is greater.
+    /// Considers Vertices.
+    /// Returns: False if edges are connected by the common vertex, else True
+    /// Status  :
+    /// OK    : Vertices (end of num-1 th edge and start on num-th one)
+    /// are already the same
+    /// DONE1 : Absolutely confused (gp::Resolution)
+    /// DONE2 : Confused at starting <preci> from <SBWD>
+    /// DONE3 : Confused at <prec> but not <preci>
+    /// FAIL1 : Not confused
+    /// FAIL2 : Not confused but confused with <preci> if reverse num-th edge
+    pub fn check_connected_int_real(&mut self, num: i32, prec: f64) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_connected_int_real(self as *mut Self, num, prec)
+        }
+    }
+
+    /// Checks if an edge has a length not greater than myPreci or
+    /// precsmall (if it is smaller)
+    /// Returns: False if its length is greater than precision
+    /// Status:
+    /// OK   : edge is not small or degenerated
+    /// DONE1: edge is small, vertices are the same
+    /// DONE2: edge is small, vertices are not the same
+    /// FAIL : no 3d curve and pcurve
+    pub fn check_small_int_real(&mut self, num: i32, precsmall: f64) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_small_int_real(self as *mut Self, num, precsmall)
+        }
+    }
+
+    /// Checks if a seam pcurves are correct oriented
+    /// Returns: False (status OK) if given edge is not a seam or if it is OK
+    /// C1 - current pcurve for FORWARD edge,
+    /// C2 - current pcurve for REVERSED edge (if returns True they
+    /// should be swapped for the seam),
+    /// cf, cl - first and last parameters on curves
+    /// Status:
+    /// OK   : Pcurves are correct or edge is not seam
+    /// DONE : Seam pcurves should be swapped
+    pub fn check_seam_int_handlegeom2dcurve2_real2(
+        &mut self,
+        num: i32,
+        C1: &mut crate::ffi::HandleGeom2dCurve,
+        C2: &mut crate::ffi::HandleGeom2dCurve,
+        cf: &mut f64,
+        cl: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_seam_int_handlegeom2dcurve2_real2(
+                self as *mut Self,
+                num,
+                C1,
+                C2,
+                cf,
+                cl,
+            )
+        }
+    }
+
+    /// Checks if a seam pcurves are correct oriented
+    /// See previous functions for details
+    pub fn check_seam_int(&mut self, num: i32) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_seam_int(self as *mut Self, num) }
+    }
+
+    /// Checks for degenerated edge between two adjacent ones.
+    /// Fills parameters dgnr1 and dgnr2 with points in parametric
+    /// space that correspond to the singularity (either gap that
+    /// needs to be filled by degenerated edge or that already filled)
+    /// Returns: False if no singularity or edge is already degenerated,
+    /// otherwise True
+    /// Status:
+    /// OK   : No surface singularity, or edge is already degenerated
+    /// DONE1: Degenerated edge should be inserted (gap in 2D)
+    /// DONE2: Edge <num> should be made degenerated (recompute pcurve
+    /// and set the flag)
+    /// FAIL1: One of edges neighbouring to degenerated one has
+    /// no pcurve
+    /// FAIL2: Edge marked as degenerated and has no pcurve
+    /// but singularity is not detected
+    pub fn check_degenerated_int_pnt2d2(
+        &mut self,
+        num: i32,
+        dgnr1: &mut crate::ffi::gp_Pnt2d,
+        dgnr2: &mut crate::ffi::gp_Pnt2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_degenerated_int_pnt2d2(
+                self as *mut Self,
+                num,
+                dgnr1,
+                dgnr2,
+            )
+        }
+    }
+
+    /// Checks for degenerated edge between two adjacent ones.
+    /// Remark : Calls previous function
+    /// Status : See the function above for details
+    pub fn check_degenerated_int(&mut self, num: i32) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_degenerated_int(self as *mut Self, num) }
+    }
+
+    /// Checks gap between edges in 3D (3d curves).
+    /// Checks the distance between ends of 3d curves of the num-th
+    /// and preceding edge.
+    /// The distance can be queried by MinDistance3d.
+    ///
+    /// Returns: True if status is DONE
+    /// Status:
+    /// OK   : Gap is less than myPrecision
+    /// DONE : Gap is greater than myPrecision
+    /// FAIL : No 3d curve(s) on the edge(s)
+    pub fn check_gap3d(&mut self, num: i32) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_gap3d(self as *mut Self, num) }
+    }
+
+    /// Checks gap between edges in 2D (pcurves).
+    /// Checks the distance between ends of pcurves of the num-th
+    /// and preceding edge.
+    /// The distance can be queried by MinDistance2d.
+    ///
+    /// Returns: True if status is DONE
+    /// Status:
+    /// OK   : Gap is less than parametric precision out of myPrecision
+    /// DONE : Gap is greater than parametric precision out of myPrecision
+    /// FAIL : No pcurve(s) on the edge(s)
+    pub fn check_gap2d(&mut self, num: i32) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_gap2d(self as *mut Self, num) }
+    }
+
+    /// Checks gap between points on 3D curve and points on surface
+    /// generated by pcurve of the num-th edge.
+    /// The distance can be queried by MinDistance3d.
+    ///
+    /// Returns: True if status is DONE
+    /// Status:
+    /// OK   : Gap is less than myPrecision
+    /// DONE : Gap is greater than myPrecision
+    /// FAIL : No 3d curve(s) on the edge(s)
+    pub fn check_curve_gap(&mut self, num: i32) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_curve_gap(self as *mut Self, num) }
+    }
+
+    pub fn check_self_intersecting_edge(&mut self, num: i32) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_self_intersecting_edge(self as *mut Self, num)
+        }
+    }
+
+    /// Checks two adjacent edges for intersecting.
+    /// Remark : Calls the previous method
+    /// Status : See the function above for details
+    pub fn check_intersecting_edges_int(&mut self, num: i32) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_intersecting_edges_int(self as *mut Self, num)
+        }
+    }
+
+    /// Checks i-th and j-th edges for intersecting.
+    /// Remark : Calls  previous method.
+    /// Status : See the function above for details
+    pub fn check_intersecting_edges_int2(&mut self, num1: i32, num2: i32) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_intersecting_edges_int2(
+                self as *mut Self,
+                num1,
+                num2,
+            )
+        }
+    }
+
+    /// Checks if there is a gap in 2d between edges, not comprised by
+    /// the tolerance of their common vertex.
+    /// If <Tolerance> is greater than 0. and less than tolerance of
+    /// the vertex, then this value is used for check.
+    /// Returns: True if not closed gap was detected
+    /// p2d1 and p2d2 are the endpoint of <num-1>th edge and start of
+    /// the <num>th edge in 2d.
+    /// Status:
+    /// OK: No edge is lacking (3d and 2d connection)
+    /// FAIL1: edges have no vertices (at least one of them)
+    /// FAIL2: edges are neither connected by common vertex, nor have
+    /// coincided vertices
+    /// FAIL1: edges have no pcurves
+    /// DONE1: the gap is detected which cannot be closed by the tolerance
+    /// of the common vertex (or with value of <Tolerance>)
+    /// DONE2: is set (together with DONE1) if gap is detected and the
+    /// vector (p2d2 - p2d1) goes in direction opposite to the pcurves
+    /// of the edges (if angle is more than 0.9*PI).
+    pub fn check_lacking_int_real_pnt2d2(
+        &mut self,
+        num: i32,
+        Tolerance: f64,
+        p2d1: &mut crate::ffi::gp_Pnt2d,
+        p2d2: &mut crate::ffi::gp_Pnt2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_lacking_int_real_pnt2d2(
+                self as *mut Self,
+                num,
+                Tolerance,
+                p2d1,
+                p2d2,
+            )
+        }
+    }
+
+    /// Checks if there is a gap in 2D between edges and not comprised by vertex tolerance
+    /// The value of SBWD.thepreci is used.
+    /// Returns: False if no edge should be inserted
+    /// Status:
+    /// OK    : No edge is lacking (3d and 2d connection)
+    /// DONE1 : The vertex tolerance should be increased only (2d gap is
+    /// small)
+    /// DONE2 : Edge can be inserted (3d and 2d gaps are large enough)
+    pub fn check_lacking_int_real(&mut self, num: i32, Tolerance: f64) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_lacking_int_real(self as *mut Self, num, Tolerance)
+        }
+    }
+
+    /// Checks if wire defines an outer bound on the face
+    /// Uses ShapeAnalysis::IsOuterBound for analysis
+    /// If <APIMake> is True uses BRepAPI_MakeWire to build the
+    /// wire, if False (to be used only when edges share common
+    /// vertices) uses BRep_Builder to build the wire
+    pub fn check_outer_bound(&mut self, APIMake: bool) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_outer_bound(self as *mut Self, APIMake) }
+    }
+
+    /// Detects a notch
+    pub fn check_notched_edges(
+        &mut self,
+        num: i32,
+        shortNum: &mut i32,
+        param: &mut f64,
+        Tolerance: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_notched_edges(
+                self as *mut Self,
+                num,
+                shortNum,
+                param,
+                Tolerance,
+            )
+        }
+    }
+
+    /// Checks if wire has parametric area less than precision.
+    pub fn check_small_area(&mut self, theWire: &crate::ffi::TopoDS_Wire) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_check_small_area(self as *mut Self, theWire) }
+    }
+
+    /// Checks with what orientation <shape> (wire or edge) can be
+    /// connected to the wire.
+    /// Tests distances with starting <preci> from <SBWD> (close confusion),
+    /// but if given <prec> is greater, tests with <prec> (coarse confusion).
+    /// The smallest found distance can be returned by MinDistance3d
+    ///
+    /// Returns: False if status is FAIL (see below)
+    /// Status:
+    /// DONE1 : If <shape> follows <SBWD>, direct sense (normal)
+    /// DONE2 : If <shape> follows <SBWD>, but if reversed
+    /// DONE3 : If <shape> precedes <SBWD>, direct sense
+    /// DONE4 : If <shape> precedes <SBWD>, but if reversed
+    /// FAIL1 : If <shape> is neither an edge nor a wire
+    /// FAIL2 : If <shape> cannot be connected to <SBWD>
+    ///
+    /// DONE5 : To the tail of <SBWD> the <shape> is closer with
+    /// direct sense
+    /// DONE6 : To the head of <SBWD> the <shape> is closer with
+    /// direct sense
+    ///
+    /// Remark:   Statuses DONE1 - DONE4, FAIL1 - FAIL2 are basic and
+    /// describe the nearest connection of the <shape> to <SBWD>.
+    /// Statuses DONE5 and DONE6 are advanced and are to be used when
+    /// analyzing with what sense (direct or reversed) the <shape>
+    /// should be connected to <SBWD>:
+    /// For tail of <SBWD> if DONE4 is True <shape> should be direct,
+    /// otherwise reversed.
+    /// For head of <SBWD> if DONE5 is True <shape> should be direct,
+    /// otherwise reversed.
+    pub fn check_shape_connect_shape_real(
+        &mut self,
+        shape: &crate::ffi::TopoDS_Shape,
+        prec: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_shape_connect_shape_real(
+                self as *mut Self,
+                shape,
+                prec,
+            )
+        }
+    }
+
+    /// The same as previous CheckShapeConnect but is more advanced.
+    /// It returns the distances between each end of <sbwd> and each
+    /// end of <shape>. For example, <tailhead> stores distance
+    /// between tail of <sbwd> and head of <shape>
+    /// Remark:  First method CheckShapeConnect calls this one
+    pub fn check_shape_connect_real4_shape_real(
+        &mut self,
+        tailhead: &mut f64,
+        tailtail: &mut f64,
+        headtail: &mut f64,
+        headhead: &mut f64,
+        shape: &crate::ffi::TopoDS_Shape,
+        prec: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_shape_connect_real4_shape_real(
+                self as *mut Self,
+                tailhead,
+                tailtail,
+                headtail,
+                headhead,
+                shape,
+                prec,
+            )
+        }
+    }
+
+    pub fn check_tail(
+        &mut self,
+        theEdge1: &crate::ffi::TopoDS_Edge,
+        theEdge2: &crate::ffi::TopoDS_Edge,
+        theMaxSine: f64,
+        theMaxWidth: f64,
+        theMaxTolerance: f64,
+        theEdge11: &mut crate::ffi::TopoDS_Edge,
+        theEdge12: &mut crate::ffi::TopoDS_Edge,
+        theEdge21: &mut crate::ffi::TopoDS_Edge,
+        theEdge22: &mut crate::ffi::TopoDS_Edge,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_tail(
+                self as *mut Self,
+                theEdge1,
+                theEdge2,
+                theMaxSine,
+                theMaxWidth,
+                theMaxTolerance,
+                theEdge11,
+                theEdge12,
+                theEdge21,
+                theEdge22,
+            )
+        }
     }
 
     pub fn status_order(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_order(self, Status.into())
+        unsafe { crate::ffi::ShapeAnalysis_Wire_status_order(self as *const Self, Status.into()) }
     }
 
     pub fn status_connected(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_connected(self, Status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_status_connected(self as *const Self, Status.into())
+        }
     }
 
     pub fn status_edge_curves(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_edge_curves(self, Status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_status_edge_curves(self as *const Self, Status.into())
+        }
     }
 
     pub fn status_degenerated(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_degenerated(self, Status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_status_degenerated(self as *const Self, Status.into())
+        }
     }
 
     pub fn status_closed(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_closed(self, Status.into())
+        unsafe { crate::ffi::ShapeAnalysis_Wire_status_closed(self as *const Self, Status.into()) }
     }
 
     pub fn status_small(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_small(self, Status.into())
+        unsafe { crate::ffi::ShapeAnalysis_Wire_status_small(self as *const Self, Status.into()) }
     }
 
     pub fn status_self_intersection(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_self_intersection(self, Status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_status_self_intersection(
+                self as *const Self,
+                Status.into(),
+            )
+        }
     }
 
     pub fn status_lacking(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_lacking(self, Status.into())
+        unsafe { crate::ffi::ShapeAnalysis_Wire_status_lacking(self as *const Self, Status.into()) }
     }
 
     pub fn status_gaps3d(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_gaps3d(self, Status.into())
+        unsafe { crate::ffi::ShapeAnalysis_Wire_status_gaps3d(self as *const Self, Status.into()) }
     }
 
     pub fn status_gaps2d(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_gaps2d(self, Status.into())
+        unsafe { crate::ffi::ShapeAnalysis_Wire_status_gaps2d(self as *const Self, Status.into()) }
     }
 
     pub fn status_curve_gaps(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_curve_gaps(self, Status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_status_curve_gaps(self as *const Self, Status.into())
+        }
     }
 
     pub fn status_loop(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_status_loop(self, Status.into())
+        unsafe { crate::ffi::ShapeAnalysis_Wire_status_loop(self as *const Self, Status.into()) }
     }
 
     /// Querying the status of the LAST performed 'Advanced' checking procedure
     pub fn last_check_status(&self, Status: crate::shape_extend::Status) -> bool {
-        crate::ffi::ShapeAnalysis_Wire_last_check_status(self, Status.into())
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_last_check_status(self as *const Self, Status.into())
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::ShapeAnalysis_Wire_get_type_name()
+    /// Returns the last lowest distance in 3D computed by
+    /// CheckOrientation, CheckConnected, CheckContinuity3d,
+    /// CheckVertex, CheckNewVertex
+    pub fn min_distance3d(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_min_distance3d(self as *const Self) }
+    }
+
+    /// Returns the last lowest distance in 2D-UV computed by
+    /// CheckContinuity2d
+    pub fn min_distance2d(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_min_distance2d(self as *const Self) }
+    }
+
+    /// Returns the last maximal distance in 3D computed by
+    /// CheckOrientation, CheckConnected, CheckContinuity3d,
+    /// CheckVertex, CheckNewVertex, CheckSameParameter
+    pub fn max_distance3d(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_max_distance3d(self as *const Self) }
+    }
+
+    /// Returns the last maximal distance in 2D-UV computed by
+    /// CheckContinuity2d
+    pub fn max_distance2d(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_max_distance2d(self as *const Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Wire_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::ShapeAnalysis_Wire_get_type_descriptor()
+        unsafe { &*(crate::ffi::ShapeAnalysis_Wire_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisWire> {
-        crate::ffi::ShapeAnalysis_Wire_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisWire> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_Wire_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleShapeAnalysisWire;
 
+unsafe impl crate::CppDeletable for HandleShapeAnalysisWire {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeAnalysisWire_destructor(ptr);
+    }
+}
+
 impl HandleShapeAnalysisWire {
     /// Dereference this Handle to access the underlying ShapeAnalysis_Wire
     pub fn get(&self) -> &crate::ffi::ShapeAnalysis_Wire {
-        crate::ffi::HandleShapeAnalysisWire_get(self)
+        unsafe { &*(crate::ffi::HandleShapeAnalysisWire_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeAnalysis_Wire
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::ShapeAnalysis_Wire> {
-        crate::ffi::HandleShapeAnalysisWire_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_Wire {
+        unsafe { &mut *(crate::ffi::HandleShapeAnalysisWire_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1371,10 +4380,16 @@ impl HandleShapeAnalysisWire {
 /// secondly perform then get the result
 pub use crate::ffi::ShapeAnalysis_WireOrder as WireOrder;
 
+unsafe impl crate::CppDeletable for WireOrder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_WireOrder_destructor(ptr);
+    }
+}
+
 impl WireOrder {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_WireOrder_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_WireOrder_ctor()) }
     }
 
     /// Creates a WireOrder.
@@ -1385,20 +4400,200 @@ impl WireOrder {
         theMode3D: bool,
         theTolerance: f64,
         theModeBoth: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_WireOrder_ctor_bool_real_bool(
-            theMode3D,
-            theTolerance,
-            theModeBoth,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_WireOrder_ctor_bool_real_bool(
+                theMode3D,
+                theTolerance,
+                theModeBoth,
+            ))
+        }
     }
 
     /// Creates a WireOrder.
     /// Flag <theMode3D> defines 3D or 2d mode.
     /// Flag <theModeBoth> defines miscible mode and the flag <theMode3D> is ignored.
     /// Warning: Parameter <theTolerance> is not used in algorithm.
-    pub fn new_bool_real(theMode3D: bool, theTolerance: f64) -> cxx::UniquePtr<Self> {
+    pub fn new_bool_real(theMode3D: bool, theTolerance: f64) -> crate::OwnedPtr<Self> {
         Self::new_bool_real_bool(theMode3D, theTolerance, false)
+    }
+
+    /// Sets new values.
+    /// Clears the edge list if the mode (<theMode3D> or <theModeBoth> ) changes.
+    /// Clears the connexion list.
+    /// Warning: Parameter <theTolerance> is not used in algorithm.
+    pub fn set_mode(&mut self, theMode3D: bool, theTolerance: f64, theModeBoth: bool) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireOrder_set_mode(
+                self as *mut Self,
+                theMode3D,
+                theTolerance,
+                theModeBoth,
+            )
+        }
+    }
+
+    /// Returns the working tolerance
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_tolerance(self as *const Self) }
+    }
+
+    /// Clears the list of edges, but not mode and tol
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_clear(self as *mut Self) }
+    }
+
+    /// Adds a couple of points 3D (start, end)
+    pub fn add_xyz2(&mut self, theStart3d: &crate::ffi::gp_XYZ, theEnd3d: &crate::ffi::gp_XYZ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireOrder_add_xyz2(self as *mut Self, theStart3d, theEnd3d)
+        }
+    }
+
+    /// Adds a couple of points 2D (start, end)
+    pub fn add_xy2(&mut self, theStart2d: &crate::ffi::gp_XY, theEnd2d: &crate::ffi::gp_XY) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireOrder_add_xy2(self as *mut Self, theStart2d, theEnd2d)
+        }
+    }
+
+    /// Adds a couple of points 3D and 2D (start, end)
+    pub fn add_xyz2_xy2(
+        &mut self,
+        theStart3d: &crate::ffi::gp_XYZ,
+        theEnd3d: &crate::ffi::gp_XYZ,
+        theStart2d: &crate::ffi::gp_XY,
+        theEnd2d: &crate::ffi::gp_XY,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireOrder_add_xyz2_xy2(
+                self as *mut Self,
+                theStart3d,
+                theEnd3d,
+                theStart2d,
+                theEnd2d,
+            )
+        }
+    }
+
+    /// Returns the count of added couples of points (one per edges)
+    pub fn nb_edges(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_nb_edges(self as *const Self) }
+    }
+
+    /// If this mode is True method perform does not sort edges of
+    /// different loops. The resulting order is first loop, second
+    /// one etc...
+    pub fn keep_loops_mode(&mut self) -> &mut bool {
+        unsafe { &mut *(crate::ffi::ShapeAnalysis_WireOrder_keep_loops_mode(self as *mut Self)) }
+    }
+
+    /// Computes the better order
+    /// Optimised if the couples were already in order
+    /// The criterium is : two couples in order if distance between
+    /// end-prec and start-cur is less then starting tolerance <tol>
+    /// Else, the smallest distance is reached
+    /// Warning: Parameter <closed> not used
+    pub fn perform(&mut self, closed: bool) {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_perform(self as *mut Self, closed) }
+    }
+
+    /// Tells if Perform has been done
+    /// Else, the following methods returns original values
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_is_done(self as *const Self) }
+    }
+
+    /// Returns the status of the order (0 if not done) :
+    /// 0 : all edges are direct and in sequence
+    /// 1 : all edges are direct but some are not in sequence
+    /// -1 : some edges are reversed, but no gap remain
+    /// 3 : edges in sequence are just shifted in forward or reverse manner
+    pub fn status(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_status(self as *const Self) }
+    }
+
+    /// Returns the number of original edge which correspond to the
+    /// newly ordered number <n>
+    /// Warning : the returned value is NEGATIVE if edge should be reversed
+    pub fn ordered(&self, theIdx: i32) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_ordered(self as *const Self, theIdx) }
+    }
+
+    /// Returns the values of the couple <num>, as 3D values
+    pub fn xyz(
+        &self,
+        theIdx: i32,
+        theStart3D: &mut crate::ffi::gp_XYZ,
+        theEnd3D: &mut crate::ffi::gp_XYZ,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireOrder_xyz(
+                self as *const Self,
+                theIdx,
+                theStart3D,
+                theEnd3D,
+            )
+        }
+    }
+
+    /// Returns the values of the couple <num>, as 2D values
+    pub fn xy(
+        &self,
+        theIdx: i32,
+        theStart2D: &mut crate::ffi::gp_XY,
+        theEnd2D: &mut crate::ffi::gp_XY,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireOrder_xy(
+                self as *const Self,
+                theIdx,
+                theStart2D,
+                theEnd2D,
+            )
+        }
+    }
+
+    /// Returns the gap between a couple and its preceding
+    /// <num> is considered ordered
+    /// If <num> = 0 (D), returns the greatest gap found
+    pub fn gap(&self, num: i32) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_gap(self as *const Self, num) }
+    }
+
+    /// Determines the chains inside which successive edges have a gap
+    /// less than a given value. Queried by NbChains and Chain
+    pub fn set_chains(&mut self, gap: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_set_chains(self as *mut Self, gap) }
+    }
+
+    /// Returns the count of computed chains
+    pub fn nb_chains(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_nb_chains(self as *const Self) }
+    }
+
+    /// Returns, for the chain n0 num, starting and ending numbers of
+    /// edges. In the list of ordered edges (see Ordered for originals)
+    pub fn chain(&self, num: i32, n1: &mut i32, n2: &mut i32) {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_chain(self as *const Self, num, n1, n2) }
+    }
+
+    /// Determines the couples of edges for which end and start fit
+    /// inside a given gap. Queried by NbCouples and Couple
+    /// Warning: function isn't implemented
+    pub fn set_couples(&mut self, gap: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_set_couples(self as *mut Self, gap) }
+    }
+
+    /// Returns the count of computed couples
+    pub fn nb_couples(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_nb_couples(self as *const Self) }
+    }
+
+    /// Returns, for the couple n0 num, the two implied edges
+    /// In the list of ordered edges
+    pub fn couple(&self, num: i32, n1: &mut i32, n2: &mut i32) {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_couple(self as *const Self, num, n1, n2) }
     }
 }
 
@@ -1414,14 +4609,164 @@ impl WireOrder {
 /// Then, these information can be used to fix problems
 pub use crate::ffi::ShapeAnalysis_WireVertex as WireVertex;
 
+unsafe impl crate::CppDeletable for WireVertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeAnalysis_WireVertex_destructor(ptr);
+    }
+}
+
 impl WireVertex {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::ShapeAnalysis_WireVertex_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_WireVertex_ctor()) }
     }
 
-    pub fn position(&self, num: i32) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
-        crate::ffi::ShapeAnalysis_WireVertex_position(self, num)
+    pub fn init(&mut self, wire: &crate::ffi::TopoDS_Wire, preci: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_init(self as *mut Self, wire, preci) }
+    }
+
+    pub fn load(&mut self, wire: &crate::ffi::TopoDS_Wire) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_load(self as *mut Self, wire) }
+    }
+
+    /// Sets the precision for work
+    /// Analysing: for each Vertex, comparison between the end of the
+    /// preceding edge and the start of the following edge
+    /// Each Vertex rank corresponds to the End Vertex of the Edge of
+    /// same rank, in the ShapeExtend_WireData. I.E. for Vertex <num>,
+    /// Edge <num> is the preceding one, <num+1> is the following one
+    pub fn set_precision(&mut self, preci: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_set_precision(self as *mut Self, preci) }
+    }
+
+    pub fn analyze(&mut self) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_analyze(self as *mut Self) }
+    }
+
+    /// Records status "Same Vertex" (logically) on Vertex <num>
+    pub fn set_same_vertex(&mut self, num: i32) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_set_same_vertex(self as *mut Self, num) }
+    }
+
+    /// Records status "Same Coords" (at the Vertices Tolerances)
+    pub fn set_same_coords(&mut self, num: i32) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_set_same_coords(self as *mut Self, num) }
+    }
+
+    /// Records status "Close Coords" (at the Precision of <me>)
+    pub fn set_close(&mut self, num: i32) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_set_close(self as *mut Self, num) }
+    }
+
+    /// <num> is the End of preceding Edge, and its projection on the
+    /// following one lies on it at the Precision of <me>
+    /// <ufol> gives the parameter on the following edge
+    pub fn set_end(&mut self, num: i32, pos: &crate::ffi::gp_XYZ, ufol: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_set_end(self as *mut Self, num, pos, ufol) }
+    }
+
+    /// <num> is the Start of following Edge, its projection on the
+    /// preceding one lies on it at the Precision of <me>
+    /// <upre> gives the parameter on the preceding edge
+    pub fn set_start(&mut self, num: i32, pos: &crate::ffi::gp_XYZ, upre: f64) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_set_start(self as *mut Self, num, pos, upre) }
+    }
+
+    /// <num> is the Intersection of both Edges
+    /// <upre> is the parameter on preceding edge, <ufol> on
+    /// following edge
+    pub fn set_inters(&mut self, num: i32, pos: &crate::ffi::gp_XYZ, upre: f64, ufol: f64) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireVertex_set_inters(self as *mut Self, num, pos, upre, ufol)
+        }
+    }
+
+    /// <num> cannot be said as same vertex
+    pub fn set_disjoined(&mut self, num: i32) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_set_disjoined(self as *mut Self, num) }
+    }
+
+    /// Returns True if analysis was performed, else returns False
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_is_done(self as *const Self) }
+    }
+
+    /// Returns precision value used in analysis
+    pub fn precision(&self) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_precision(self as *const Self) }
+    }
+
+    /// Returns the number of edges in analyzed wire (i.e. the
+    /// length of all arrays)
+    pub fn nb_edges(&self) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_nb_edges(self as *const Self) }
+    }
+
+    /// Returns the recorded status for a vertex
+    /// More detail by method Data
+    pub fn status(&self, num: i32) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_status(self as *const Self, num) }
+    }
+
+    pub fn position(&self, num: i32) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_WireVertex_position(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    pub fn u_previous(&self, num: i32) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_u_previous(self as *const Self, num) }
+    }
+
+    pub fn u_following(&self, num: i32) -> f64 {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_u_following(self as *const Self, num) }
+    }
+
+    /// Returns the recorded status for a vertex
+    /// With its recorded position and parameters on both edges
+    /// These values are relevant regarding the status:
+    /// Status  Meaning    Position  Preceding   Following
+    /// 0       Same       no        no          no
+    /// 1       SameCoord  no        no          no
+    /// 2       Close      no        no          no
+    /// 3       End        yes       no          yes
+    /// 4       Start      yes       yes         no
+    /// 5       Inters     yes       yes         yes
+    /// -1      Disjoined  no        no          no
+    pub fn data(
+        &self,
+        num: i32,
+        pos: &mut crate::ffi::gp_XYZ,
+        upre: &mut f64,
+        ufol: &mut f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireVertex_data(self as *const Self, num, pos, upre, ufol)
+        }
+    }
+
+    /// For a given status, returns the rank of the vertex which
+    /// follows <num> and has the same status. 0 if no more
+    /// Acts as an iterator, starts on the first one
+    pub fn next_status(&self, stat: i32, num: i32) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_next_status(self as *const Self, stat, num) }
+    }
+
+    /// For a given criter, returns the rank of the vertex which
+    /// follows <num> and has the same status. 0 if no more
+    /// Acts as an iterator, starts on the first one
+    /// Criters are:
+    /// 0: same vertex (status 0)
+    /// 1: a solution exists (status >= 0)
+    /// 2: same coords (i.e. same params) (status 0 1 2)
+    /// 3: same coods but not same vertex (status 1 2)
+    /// 4: redefined coords (status 3 4 5)
+    /// -1: no solution (status -1)
+    pub fn next_criter(&self, crit: i32, num: i32) -> i32 {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_next_criter(self as *const Self, crit, num) }
     }
 }
 

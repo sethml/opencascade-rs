@@ -12,46 +12,73 @@
 
 pub use crate::ffi::IGESToBRep_AlgoContainer as AlgoContainer;
 
+unsafe impl crate::CppDeletable for AlgoContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_AlgoContainer_destructor(ptr);
+    }
+}
+
 impl AlgoContainer {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESToBRep_AlgoContainer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_AlgoContainer_ctor()) }
+    }
+
+    /// Sets ToolContainer
+    pub fn set_tool_container(&mut self, TC: &crate::ffi::HandleIGESToBRepToolContainer) {
+        unsafe { crate::ffi::IGESToBRep_AlgoContainer_set_tool_container(self as *mut Self, TC) }
     }
 
     /// Returns ToolContainer
-    pub fn tool_container(&self) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepToolContainer> {
-        crate::ffi::IGESToBRep_AlgoContainer_tool_container(self)
+    pub fn tool_container(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepToolContainer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_AlgoContainer_tool_container(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::IGESToBRep_AlgoContainer_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESToBRep_AlgoContainer_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::IGESToBRep_AlgoContainer_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::IGESToBRep_AlgoContainer_get_type_descriptor()
+        unsafe { &*(crate::ffi::IGESToBRep_AlgoContainer_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepAlgoContainer> {
-        crate::ffi::IGESToBRep_AlgoContainer_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepAlgoContainer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_AlgoContainer_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleIGESToBRepAlgoContainer;
 
+unsafe impl crate::CppDeletable for HandleIGESToBRepAlgoContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESToBRepAlgoContainer_destructor(ptr);
+    }
+}
+
 impl HandleIGESToBRepAlgoContainer {
     /// Dereference this Handle to access the underlying IGESToBRep_AlgoContainer
     pub fn get(&self) -> &crate::ffi::IGESToBRep_AlgoContainer {
-        crate::ffi::HandleIGESToBRepAlgoContainer_get(self)
+        unsafe { &*(crate::ffi::HandleIGESToBRepAlgoContainer_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESToBRep_AlgoContainer
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::IGESToBRep_AlgoContainer> {
-        crate::ffi::HandleIGESToBRepAlgoContainer_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_AlgoContainer {
+        unsafe { &mut *(crate::ffi::HandleIGESToBRepAlgoContainer_get_mut(self as *mut Self)) }
     }
 }
 
@@ -62,12 +89,18 @@ impl HandleIGESToBRepAlgoContainer {
 /// Provides methods to transfer CurveAndSurface from IGES to CASCADE.
 pub use crate::ffi::IGESToBRep_CurveAndSurface as CurveAndSurface;
 
+unsafe impl crate::CppDeletable for CurveAndSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_CurveAndSurface_destructor(ptr);
+    }
+}
+
 impl CurveAndSurface {
     /// Creates  a tool CurveAndSurface  ready  to  run, with
     /// epsilons  set  to  1.E-04,  myModeTopo  to  True,  the
     /// optimization of  the continuity to False.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESToBRep_CurveAndSurface_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_ctor()) }
     }
 
     /// Creates a tool CurveAndSurface ready to run.
@@ -78,32 +111,215 @@ impl CurveAndSurface {
         mode: bool,
         modeapprox: bool,
         optimized: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESToBRep_CurveAndSurface_ctor_real3_bool3(
-            eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_ctor_real3_bool3(
+                eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
+            ))
+        }
+    }
+
+    /// Initializes the field of the tool CurveAndSurface with
+    /// default creating values.
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_init(self as *mut Self) }
+    }
+
+    /// Changes the value of "myEps"
+    pub fn set_epsilon(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_epsilon(self as *mut Self, eps) }
+    }
+
+    /// Returns the value of "myEps"
+    pub fn get_epsilon(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_epsilon(self as *const Self) }
+    }
+
+    /// Changes the value of "myEpsCoeff"
+    pub fn set_eps_coeff(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_eps_coeff(self as *mut Self, eps) }
+    }
+
+    /// Returns the value of "myEpsCoeff"
+    pub fn get_eps_coeff(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_eps_coeff(self as *const Self) }
+    }
+
+    /// Changes the value of "myEpsGeom"
+    pub fn set_eps_geom(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_eps_geom(self as *mut Self, eps) }
+    }
+
+    /// Returns the value of "myEpsGeom"
+    pub fn get_eps_geom(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_eps_geom(self as *const Self) }
+    }
+
+    /// Changes the value of "myMinTol"
+    pub fn set_min_tol(&mut self, mintol: f64) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_min_tol(self as *mut Self, mintol) }
+    }
+
+    /// Changes the value of "myMaxTol"
+    pub fn set_max_tol(&mut self, maxtol: f64) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_max_tol(self as *mut Self, maxtol) }
+    }
+
+    /// Sets values of "myMinTol" and "myMaxTol" as follows
+    /// myMaxTol = Max ("read.maxprecision.val", myEpsGeom * myUnitFactor)
+    /// myMinTol = Precision::Confusion()
+    /// Remark: This method is automatically invoked each time the values
+    /// of "myEpsGeom" or "myUnitFactor" are changed
+    pub fn update_min_max_tol(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_update_min_max_tol(self as *mut Self) }
+    }
+
+    /// Returns the value of "myMinTol"
+    pub fn get_min_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_min_tol(self as *const Self) }
+    }
+
+    /// Returns the value of "myMaxTol"
+    pub fn get_max_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_max_tol(self as *const Self) }
+    }
+
+    /// Changes the value of "myModeApprox"
+    pub fn set_mode_approx(&mut self, mode: bool) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_mode_approx(self as *mut Self, mode) }
+    }
+
+    /// Returns the value of "myModeApprox"
+    pub fn get_mode_approx(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_mode_approx(self as *const Self) }
+    }
+
+    /// Changes the value of "myModeIsTopo"
+    pub fn set_mode_transfer(&mut self, mode: bool) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_mode_transfer(self as *mut Self, mode) }
+    }
+
+    /// Returns the value of "myModeIsTopo"
+    pub fn get_mode_transfer(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_mode_transfer(self as *const Self) }
+    }
+
+    /// Changes the value of "myContIsOpti"
+    pub fn set_optimized(&mut self, optimized: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_optimized(self as *mut Self, optimized)
+        }
+    }
+
+    /// Returns the value of "myContIsOpti"
+    pub fn get_optimized(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_optimized(self as *const Self) }
+    }
+
+    /// Returns the value of " myUnitFactor"
+    pub fn get_unit_factor(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_unit_factor(self as *const Self) }
+    }
+
+    /// Changes the value of "mySurfaceCurve"
+    pub fn set_surface_curve(&mut self, ival: i32) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_surface_curve(self as *mut Self, ival) }
+    }
+
+    /// Returns the value of "mySurfaceCurve" 0 = value in
+    /// file, 2 = keep 2d and compute 3d, 3 = keep 3d and
+    /// compute 2d
+    pub fn get_surface_curve(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_surface_curve(self as *const Self) }
+    }
+
+    /// Changes the value of "myContinuity"
+    /// if continuity = 0 do nothing else
+    /// if continuity = 1 try C1
+    /// if continuity = 2 try C2
+    pub fn set_continuity(&mut self, continuity: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_continuity(self as *mut Self, continuity)
+        }
+    }
+
+    /// Returns the value of "myContinuity"
+    pub fn get_continuity(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_continuity(self as *const Self) }
     }
 
     /// Returns the result of the transfert of any IGES Curve
     /// or Surface Entity.  If  the transfer has  failed,  this
     /// member return a NullEntity.
     pub fn transfer_curve_and_surface(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::IGESToBRep_CurveAndSurface_transfer_curve_and_surface(self, start, theProgress)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_CurveAndSurface_transfer_curve_and_surface(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                ),
+            )
+        }
     }
 
     /// Returns the result of the transfert the geometry of
     /// any IGESEntity.  If  the transfer has  failed,  this
     /// member return a NullEntity.
     pub fn transfer_geometry(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
         theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::IGESToBRep_CurveAndSurface_transfer_geometry(self, start, theProgress)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_transfer_geometry(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
+    /// Records a new Fail message
+    pub fn send_fail(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_send_fail(self as *mut Self, start, amsg) }
+    }
+
+    /// Records a new Warning message
+    pub fn send_warning(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_send_warning(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Records a new Information message from the definition
+    /// of a Msg (Original+Value)
+    pub fn send_msg(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_send_msg(self as *mut Self, start, amsg) }
+    }
+
+    /// Returns True if start was already treated and has a result in "myMap"
+    /// else returns False.
+    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_has_shape_result(self as *const Self, start)
+        }
     }
 
     /// Returns the result of the transfer of the IGESEntity "start" contained
@@ -111,10 +327,38 @@ impl CurveAndSurface {
     pub fn get_shape_result_handleigesdataigesentity(
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity(
-            self, start,
-        )
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity(
+                    self as *const Self,
+                    start,
+                ),
+            )
+        }
+    }
+
+    /// set in "myMap" the result of the transfer of the IGESEntity "start".
+    pub fn set_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_shape_result(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Returns the number of shapes results contained in "myMap" for the
+    /// IGESEntity start ( type VertexList or EdgeList).
+    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+        unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_nb_shape_result(self as *const Self, start)
+        }
     }
 
     /// Returns the numth result of the IGESEntity start (type VertexList or
@@ -123,14 +367,42 @@ impl CurveAndSurface {
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
         num: i32,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity_int(
-            self, start, num,
-        )
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity_int(self as *const Self, start, num))
+        }
     }
 
-    pub fn surface(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
-        crate::ffi::IGESToBRep_CurveAndSurface_surface(self)
+    /// set in "myMap" the result of the transfer of the entity of the
+    /// IGESEntity start ( type VertexList or EdgeList).
+    pub fn add_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_add_shape_result(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_surface(self as *mut Self, theSurface) }
+    }
+
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn get_uv_resolution(&mut self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_uv_resolution(self as *mut Self) }
     }
 }
 
@@ -145,48 +417,153 @@ impl CurveAndSurface {
 /// account advanced parameters.
 pub use crate::ffi::IGESToBRep_IGESBoundary as IGESBoundary;
 
+unsafe impl crate::CppDeletable for IGESBoundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_IGESBoundary_destructor(ptr);
+    }
+}
+
 impl IGESBoundary {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESToBRep_IGESBoundary_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_IGESBoundary_ctor()) }
     }
 
     /// Empty constructor
     pub fn new_curveandsurface(
         CS: &crate::ffi::IGESToBRep_CurveAndSurface,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESToBRep_IGESBoundary_ctor_curveandsurface(CS)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_IGESBoundary_ctor_curveandsurface(CS))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::IGESToBRep_IGESBoundary_get_type_name()
+    /// Inits the object with parameters common for all
+    /// types of IGES boundaries.
+    /// <CS>: object to be used for retrieving translation parameters
+    /// and sending messages,
+    /// <entity>: boundary entity to be processed,
+    /// <face>, <trans>, <uFact>: as for IGESToBRep_TopoCurve
+    /// <filepreference>: preferred representation (2 or 3) given
+    /// in the IGES file
+    pub fn init(
+        &mut self,
+        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+        entity: &crate::ffi::HandleIGESDataIGESEntity,
+        face: &crate::ffi::TopoDS_Face,
+        trans: &crate::ffi::gp_Trsf2d,
+        uFact: f64,
+        filepreference: i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_init(
+                self as *mut Self,
+                CS,
+                entity,
+                face,
+                trans,
+                uFact,
+                filepreference,
+            )
+        }
+    }
+
+    /// Translates 141 and 142 entities.
+    /// Returns True if the curve has been successfully translated,
+    /// otherwise returns False.
+    /// <okCurve..>: flags that indicate whether corresponding
+    /// representation has been successfully translated
+    /// (must be set to True before first call),
+    /// <curve3d>: model space curve for 142 and current model space
+    /// curve for 141,
+    /// <toreverse3d>: False for 142 and current orientation flag
+    /// for 141,
+    /// <curves2d>: 1 parameter space curve for 142 or list of
+    /// them for current model space curves for 141,
+    /// <number>: 1 for 142 and rank number of model space curve for 141.
+    pub fn transfer(
+        &mut self,
+        okCurve: &mut bool,
+        okCurve3d: &mut bool,
+        okCurve2d: &mut bool,
+        curve3d: &crate::ffi::HandleIGESDataIGESEntity,
+        toreverse3d: bool,
+        curves2d: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        number: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_transfer(
+                self as *mut Self,
+                okCurve,
+                okCurve3d,
+                okCurve2d,
+                curve3d,
+                toreverse3d,
+                curves2d,
+                number,
+            )
+        }
+    }
+
+    /// Checks result of translation of IGES boundary entities
+    /// (types 141, 142 or 508).
+    /// Checks consistency of 2D and 3D representations and keeps
+    /// only one if they are inconsistent.
+    /// <result>: result of translation (returned by Transfer),
+    /// <checkclosure>: False for 142 without parent 144 entity,
+    /// otherwise True,
+    /// <okCurve3d>, <okCurve2d>: those returned by Transfer.
+    pub fn check(&mut self, result: bool, checkclosure: bool, okCurve3d: bool, okCurve2d: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_check(
+                self as *mut Self,
+                result,
+                checkclosure,
+                okCurve3d,
+                okCurve2d,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESToBRep_IGESBoundary_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::IGESToBRep_IGESBoundary_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::IGESToBRep_IGESBoundary_get_type_descriptor()
+        unsafe { &*(crate::ffi::IGESToBRep_IGESBoundary_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
-        crate::ffi::IGESToBRep_IGESBoundary_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_IGESBoundary_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleIGESToBRepIGESBoundary;
 
+unsafe impl crate::CppDeletable for HandleIGESToBRepIGESBoundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESToBRepIGESBoundary_destructor(ptr);
+    }
+}
+
 impl HandleIGESToBRepIGESBoundary {
     /// Dereference this Handle to access the underlying IGESToBRep_IGESBoundary
     pub fn get(&self) -> &crate::ffi::IGESToBRep_IGESBoundary {
-        crate::ffi::HandleIGESToBRepIGESBoundary_get(self)
+        unsafe { &*(crate::ffi::HandleIGESToBRepIGESBoundary_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESToBRep_IGESBoundary
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::IGESToBRep_IGESBoundary> {
-        crate::ffi::HandleIGESToBRepIGESBoundary_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_IGESBoundary {
+        unsafe { &mut *(crate::ffi::HandleIGESToBRepIGESBoundary_get_mut(self as *mut Self)) }
     }
 }
 
@@ -196,45 +573,67 @@ impl HandleIGESToBRepIGESBoundary {
 
 pub use crate::ffi::IGESToBRep_ToolContainer as ToolContainer;
 
+unsafe impl crate::CppDeletable for ToolContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_ToolContainer_destructor(ptr);
+    }
+}
+
 impl ToolContainer {
     /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IGESToBRep_ToolContainer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_ToolContainer_ctor()) }
     }
 
     /// Returns IGESToBRep_IGESBoundary
-    pub fn iges_boundary(&self) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
-        crate::ffi::IGESToBRep_ToolContainer_iges_boundary(self)
+    pub fn iges_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_ToolContainer_iges_boundary(
+                self as *const Self,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::IGESToBRep_ToolContainer_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESToBRep_ToolContainer_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::IGESToBRep_ToolContainer_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::IGESToBRep_ToolContainer_get_type_descriptor()
+        unsafe { &*(crate::ffi::IGESToBRep_ToolContainer_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepToolContainer> {
-        crate::ffi::IGESToBRep_ToolContainer_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepToolContainer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_ToolContainer_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleIGESToBRepToolContainer;
 
+unsafe impl crate::CppDeletable for HandleIGESToBRepToolContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESToBRepToolContainer_destructor(ptr);
+    }
+}
+
 impl HandleIGESToBRepToolContainer {
     /// Dereference this Handle to access the underlying IGESToBRep_ToolContainer
     pub fn get(&self) -> &crate::ffi::IGESToBRep_ToolContainer {
-        crate::ffi::HandleIGESToBRepToolContainer_get(self)
+        unsafe { &*(crate::ffi::HandleIGESToBRepToolContainer_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESToBRep_ToolContainer
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::IGESToBRep_ToolContainer> {
-        crate::ffi::HandleIGESToBRepToolContainer_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_ToolContainer {
+        unsafe { &mut *(crate::ffi::HandleIGESToBRepToolContainer_get_mut(self as *mut Self)) }
     }
 }

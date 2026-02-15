@@ -20,9 +20,15 @@
 /// Curve2d from Adaptor2d, Pnt2d from gp, Vec2d from gp
 pub use crate::ffi::CPnts_AbscissaPoint as AbscissaPoint;
 
+unsafe impl crate::CppDeletable for AbscissaPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::CPnts_AbscissaPoint_destructor(ptr);
+    }
+}
+
 impl AbscissaPoint {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::CPnts_AbscissaPoint_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::CPnts_AbscissaPoint_ctor()) }
     }
 
     /// the algorithm computes a point on a curve <Curve> at the
@@ -34,8 +40,12 @@ impl AbscissaPoint {
         Abscissa: f64,
         U0: f64,
         Resolution: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::CPnts_AbscissaPoint_ctor_curve_real3(C, Abscissa, U0, Resolution)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CPnts_AbscissaPoint_ctor_curve_real3(
+                C, Abscissa, U0, Resolution,
+            ))
+        }
     }
 
     /// the algorithm computes a point on a curve <Curve> at the
@@ -47,8 +57,12 @@ impl AbscissaPoint {
         Abscissa: f64,
         U0: f64,
         Resolution: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::CPnts_AbscissaPoint_ctor_curve2d_real3(C, Abscissa, U0, Resolution)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CPnts_AbscissaPoint_ctor_curve2d_real3(
+                C, Abscissa, U0, Resolution,
+            ))
+        }
     }
 
     /// the algorithm computes a point on a curve <Curve> at the
@@ -64,8 +78,12 @@ impl AbscissaPoint {
         U0: f64,
         Ui: f64,
         Resolution: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::CPnts_AbscissaPoint_ctor_curve_real4(C, Abscissa, U0, Ui, Resolution)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CPnts_AbscissaPoint_ctor_curve_real4(
+                C, Abscissa, U0, Ui, Resolution,
+            ))
+        }
     }
 
     /// the algorithm computes a point on a curve <Curve> at the
@@ -81,43 +99,174 @@ impl AbscissaPoint {
         U0: f64,
         Ui: f64,
         Resolution: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::CPnts_AbscissaPoint_ctor_curve2d_real4(C, Abscissa, U0, Ui, Resolution)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CPnts_AbscissaPoint_ctor_curve2d_real4(
+                C, Abscissa, U0, Ui, Resolution,
+            ))
+        }
+    }
+
+    /// Initializes the resolution function with <C>.
+    pub fn init_curve(&mut self, C: &crate::ffi::Adaptor3d_Curve) {
+        unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve(self as *mut Self, C) }
+    }
+
+    /// Initializes the resolution function with <C>.
+    pub fn init_curve2d(&mut self, C: &crate::ffi::Adaptor2d_Curve2d) {
+        unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve2d(self as *mut Self, C) }
+    }
+
+    /// Initializes the resolution function with <C>.
+    pub fn init_curve_real(&mut self, C: &crate::ffi::Adaptor3d_Curve, Tol: f64) {
+        unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve_real(self as *mut Self, C, Tol) }
+    }
+
+    /// Initializes the resolution function with <C>.
+    pub fn init_curve2d_real(&mut self, C: &crate::ffi::Adaptor2d_Curve2d, Tol: f64) {
+        unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve2d_real(self as *mut Self, C, Tol) }
+    }
+
+    /// Initializes the resolution function with <C>
+    /// between U1 and U2.
+    pub fn init_curve_real2(&mut self, C: &crate::ffi::Adaptor3d_Curve, U1: f64, U2: f64) {
+        unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve_real2(self as *mut Self, C, U1, U2) }
+    }
+
+    /// Initializes the resolution function with <C>
+    /// between U1 and U2.
+    pub fn init_curve2d_real2(&mut self, C: &crate::ffi::Adaptor2d_Curve2d, U1: f64, U2: f64) {
+        unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve2d_real2(self as *mut Self, C, U1, U2) }
+    }
+
+    /// Initializes the resolution function with <C>
+    /// between U1 and U2.
+    pub fn init_curve_real3(
+        &mut self,
+        C: &crate::ffi::Adaptor3d_Curve,
+        U1: f64,
+        U2: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::CPnts_AbscissaPoint_init_curve_real3(self as *mut Self, C, U1, U2, Tol)
+        }
+    }
+
+    /// Initializes the resolution function with <C>
+    /// between U1 and U2.
+    pub fn init_curve2d_real3(
+        &mut self,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        U1: f64,
+        U2: f64,
+        Tol: f64,
+    ) {
+        unsafe {
+            crate::ffi::CPnts_AbscissaPoint_init_curve2d_real3(self as *mut Self, C, U1, U2, Tol)
+        }
+    }
+
+    /// Computes the point at the distance <Abscissa> of
+    /// the curve.
+    /// U0 is the parameter of the point from which the distance
+    /// is measured.
+    pub fn perform_real3(&mut self, Abscissa: f64, U0: f64, Resolution: f64) {
+        unsafe {
+            crate::ffi::CPnts_AbscissaPoint_perform_real3(
+                self as *mut Self,
+                Abscissa,
+                U0,
+                Resolution,
+            )
+        }
+    }
+
+    /// Computes the point at the distance <Abscissa> of
+    /// the curve.
+    /// U0 is the parameter of the point from which the distance
+    /// is measured and Ui is the starting value for the iterative
+    /// process (should be close to the final solution).
+    pub fn perform_real4(&mut self, Abscissa: f64, U0: f64, Ui: f64, Resolution: f64) {
+        unsafe {
+            crate::ffi::CPnts_AbscissaPoint_perform_real4(
+                self as *mut Self,
+                Abscissa,
+                U0,
+                Ui,
+                Resolution,
+            )
+        }
+    }
+
+    /// Computes the point at the distance <Abscissa> of
+    /// the curve; performs more appropriate tolerance management;
+    /// to use this method in right way it is necessary to call
+    /// empty constructor. then call method Init with
+    /// Tolerance = Resolution, then call AdvPermorm.
+    /// U0 is the parameter of the point from which the distance
+    /// is measured and Ui is the starting value for the iterative
+    /// process (should be close to the final solution).
+    pub fn adv_perform(&mut self, Abscissa: f64, U0: f64, Ui: f64, Resolution: f64) {
+        unsafe {
+            crate::ffi::CPnts_AbscissaPoint_adv_perform(
+                self as *mut Self,
+                Abscissa,
+                U0,
+                Ui,
+                Resolution,
+            )
+        }
+    }
+
+    /// True if the computation was successful, False otherwise.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::CPnts_AbscissaPoint_is_done(self as *const Self) }
+    }
+
+    /// Returns the parameter of the solution.
+    pub fn parameter(&self) -> f64 {
+        unsafe { crate::ffi::CPnts_AbscissaPoint_parameter(self as *const Self) }
+    }
+
+    /// Enforce the solution, used by GCPnts.
+    pub fn set_parameter(&mut self, P: f64) {
+        unsafe { crate::ffi::CPnts_AbscissaPoint_set_parameter(self as *mut Self, P) }
     }
 
     /// Computes the length of the Curve <C>.
     pub fn length_curve(C: &crate::ffi::Adaptor3d_Curve) -> f64 {
-        crate::ffi::CPnts_AbscissaPoint_length_curve(C)
+        unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve(C) }
     }
 
     /// Computes the length of the Curve <C>.
     pub fn length_curve2d(C: &crate::ffi::Adaptor2d_Curve2d) -> f64 {
-        crate::ffi::CPnts_AbscissaPoint_length_curve2d(C)
+        unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d(C) }
     }
 
     /// Computes the length of the Curve <C> with the given tolerance.
     pub fn length_curve_real(C: &crate::ffi::Adaptor3d_Curve, Tol: f64) -> f64 {
-        crate::ffi::CPnts_AbscissaPoint_length_curve_real(C, Tol)
+        unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve_real(C, Tol) }
     }
 
     /// Computes the length of the Curve <C> with the given tolerance.
     pub fn length_curve2d_real(C: &crate::ffi::Adaptor2d_Curve2d, Tol: f64) -> f64 {
-        crate::ffi::CPnts_AbscissaPoint_length_curve2d_real(C, Tol)
+        unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d_real(C, Tol) }
     }
 
     /// Computes the length of the Curve <C> between <U1> and <U2>.
     pub fn length_curve_real2(C: &crate::ffi::Adaptor3d_Curve, U1: f64, U2: f64) -> f64 {
-        crate::ffi::CPnts_AbscissaPoint_length_curve_real2(C, U1, U2)
+        unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve_real2(C, U1, U2) }
     }
 
     /// Computes the length of the Curve <C> between <U1> and <U2>.
     pub fn length_curve2d_real2(C: &crate::ffi::Adaptor2d_Curve2d, U1: f64, U2: f64) -> f64 {
-        crate::ffi::CPnts_AbscissaPoint_length_curve2d_real2(C, U1, U2)
+        unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d_real2(C, U1, U2) }
     }
 
     /// Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
     pub fn length_curve_real3(C: &crate::ffi::Adaptor3d_Curve, U1: f64, U2: f64, Tol: f64) -> f64 {
-        crate::ffi::CPnts_AbscissaPoint_length_curve_real3(C, U1, U2, Tol)
+        unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve_real3(C, U1, U2, Tol) }
     }
 
     /// Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
@@ -128,7 +277,7 @@ impl AbscissaPoint {
         U2: f64,
         Tol: f64,
     ) -> f64 {
-        crate::ffi::CPnts_AbscissaPoint_length_curve2d_real3(C, U1, U2, Tol)
+        unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d_real3(C, U1, U2, Tol) }
     }
 }
 
@@ -139,9 +288,19 @@ impl AbscissaPoint {
 /// for implementation, compute values for Gauss
 pub use crate::ffi::CPnts_MyGaussFunction as MyGaussFunction;
 
+unsafe impl crate::CppDeletable for MyGaussFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::CPnts_MyGaussFunction_destructor(ptr);
+    }
+}
+
 impl MyGaussFunction {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::CPnts_MyGaussFunction_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::CPnts_MyGaussFunction_ctor()) }
+    }
+
+    pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
+        unsafe { crate::ffi::CPnts_MyGaussFunction_value(self as *mut Self, X, F) }
     }
 }
 
@@ -154,9 +313,40 @@ impl MyGaussFunction {
 /// (compute Length  and Derivative of the curve for Newton)
 pub use crate::ffi::CPnts_MyRootFunction as MyRootFunction;
 
+unsafe impl crate::CppDeletable for MyRootFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::CPnts_MyRootFunction_destructor(ptr);
+    }
+}
+
 impl MyRootFunction {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::CPnts_MyRootFunction_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::CPnts_MyRootFunction_ctor()) }
+    }
+
+    /// We want to solve Integral(X0,X,F(X,D)) = L
+    pub fn init_real2(&mut self, X0: f64, L: f64) {
+        unsafe { crate::ffi::CPnts_MyRootFunction_init_real2(self as *mut Self, X0, L) }
+    }
+
+    /// We want to solve Integral(X0,X,F(X,D)) = L
+    /// with given tolerance
+    pub fn init_real3(&mut self, X0: f64, L: f64, Tol: f64) {
+        unsafe { crate::ffi::CPnts_MyRootFunction_init_real3(self as *mut Self, X0, L, Tol) }
+    }
+
+    /// This is Integral(X0,X,F(X,D)) - L
+    pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
+        unsafe { crate::ffi::CPnts_MyRootFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// This is F(X,D)
+    pub fn derivative(&mut self, X: f64, Df: &mut f64) -> bool {
+        unsafe { crate::ffi::CPnts_MyRootFunction_derivative(self as *mut Self, X, Df) }
+    }
+
+    pub fn values(&mut self, X: f64, F: &mut f64, Df: &mut f64) -> bool {
+        unsafe { crate::ffi::CPnts_MyRootFunction_values(self as *mut Self, X, F, Df) }
     }
 }
 

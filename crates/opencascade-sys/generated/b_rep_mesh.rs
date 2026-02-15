@@ -80,25 +80,35 @@ impl TryFrom<i32> for FactoryError {
 /// Performs initialization of BRepMesh_DataStructureOfDelaun and nodes map structures.
 pub use crate::ffi::BRepMesh_BaseMeshAlgo as BaseMeshAlgo;
 
+unsafe impl crate::CppDeletable for BaseMeshAlgo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_BaseMeshAlgo_destructor(ptr);
+    }
+}
+
 impl BaseMeshAlgo {
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_BaseMeshAlgo_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_BaseMeshAlgo_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_BaseMeshAlgo_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_BaseMeshAlgo_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_MeshAlgo
     pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
-        crate::ffi::BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo(self)
+        unsafe { &*(crate::ffi::BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo(self as *const Self)) }
     }
 
     /// Upcast to IMeshTools_MeshAlgo (mutable)
-    pub fn as_i_mesh_tools_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgo> {
-        crate::ffi::BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self)
+    pub fn as_i_mesh_tools_mesh_algo_mut(&mut self) -> &mut crate::i_mesh_tools::MeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self as *mut Self))
+        }
     }
 }
 
@@ -110,56 +120,89 @@ impl BaseMeshAlgo {
 /// internal nodes for NURBS surface.
 pub use crate::ffi::BRepMesh_BoundaryParamsRangeSplitter as BoundaryParamsRangeSplitter;
 
+unsafe impl crate::CppDeletable for BoundaryParamsRangeSplitter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_destructor(ptr);
+    }
+}
+
 impl BoundaryParamsRangeSplitter {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_ctor())
+        }
+    }
+
+    /// Registers border point.
+    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_add_point(self as *mut Self, thePoint)
+        }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter
     pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_NURBSRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_NURBSRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter (mutable)
-    pub fn as_nurbs_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut NURBSRangeSplitter> {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(self)
+    pub fn as_nurbs_range_splitter_mut(&mut self) -> &mut NURBSRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_UVParamRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
-    pub fn as_uv_param_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut UVParamRangeSplitter> {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self)
+    pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
-    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_AdjustRange(self)
+    pub fn adjust_range(&mut self) {
+        unsafe {
+            crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_AdjustRange(
+                self as *mut Self,
+            )
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
-    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_IsValid(self)
+    pub fn is_valid(&mut self) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_IsValid(self as *mut Self)
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
@@ -167,17 +210,28 @@ impl BoundaryParamsRangeSplitter {
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
         isToFaceBasis: bool,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Scale(
-            self,
-            thePoint,
-            isToFaceBasis,
-        )
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Scale(
+                    self as *const Self,
+                    thePoint,
+                    isToFaceBasis,
+                ),
+            )
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Point(self, thePoint2d)
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Point(
+                    self as *const Self,
+                    thePoint2d,
+                ),
+            )
+        }
     }
 }
 
@@ -189,17 +243,50 @@ impl BoundaryParamsRangeSplitter {
 /// numbers instead of gp who needs 7 Standard_Real numbers.
 pub use crate::ffi::BRepMesh_Circle as Circle;
 
+unsafe impl crate::CppDeletable for Circle {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_Circle_destructor(ptr);
+    }
+}
+
 impl Circle {
     /// Default constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Circle_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Circle_ctor()) }
     }
 
     /// Constructor.
     /// @param theLocation location of a circle.
     /// @param theRadius radius of a circle.
-    pub fn new_xy_real(theLocation: &crate::ffi::gp_XY, theRadius: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Circle_ctor_xy_real(theLocation, theRadius)
+    pub fn new_xy_real(theLocation: &crate::ffi::gp_XY, theRadius: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Circle_ctor_xy_real(
+                theLocation,
+                theRadius,
+            ))
+        }
+    }
+
+    /// Sets location of a circle.
+    /// @param theLocation location of a circle.
+    pub fn set_location(&mut self, theLocation: &crate::ffi::gp_XY) {
+        unsafe { crate::ffi::BRepMesh_Circle_set_location(self as *mut Self, theLocation) }
+    }
+
+    /// Sets radius of a circle.
+    /// @param theRadius radius of a circle.
+    pub fn set_radius(&mut self, theRadius: f64) {
+        unsafe { crate::ffi::BRepMesh_Circle_set_radius(self as *mut Self, theRadius) }
+    }
+
+    /// Returns location of a circle.
+    pub fn location(&self) -> &crate::ffi::gp_XY {
+        unsafe { &*(crate::ffi::BRepMesh_Circle_location(self as *const Self)) }
+    }
+
+    /// Returns radius of a circle.
+    pub fn radius(&self) -> &f64 {
+        unsafe { &*(crate::ffi::BRepMesh_Circle_radius(self as *const Self)) }
     }
 }
 
@@ -210,7 +297,98 @@ impl Circle {
 /// Create sort and destroy the circles used in triangulation. <br>
 pub use crate::ffi::BRepMesh_CircleTool as CircleTool;
 
+unsafe impl crate::CppDeletable for CircleTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_CircleTool_destructor(ptr);
+    }
+}
+
 impl CircleTool {
+    /// Initializes the tool.
+    /// @param theReservedSize size to be reserved for vector of circles.
+    pub fn init(&mut self, arg0: i32) {
+        unsafe { crate::ffi::BRepMesh_CircleTool_init(self as *mut Self, arg0) }
+    }
+
+    /// Sets new size for cell filter.
+    /// @param theSize cell size to be set for X and Y dimensions.
+    pub fn set_cell_size_real(&mut self, theSize: f64) {
+        unsafe { crate::ffi::BRepMesh_CircleTool_set_cell_size_real(self as *mut Self, theSize) }
+    }
+
+    /// Sets new size for cell filter.
+    /// @param theSizeX cell size to be set for X dimension.
+    /// @param theSizeY cell size to be set for Y dimension.
+    pub fn set_cell_size_real2(&mut self, theSizeX: f64, theSizeY: f64) {
+        unsafe {
+            crate::ffi::BRepMesh_CircleTool_set_cell_size_real2(
+                self as *mut Self,
+                theSizeX,
+                theSizeY,
+            )
+        }
+    }
+
+    /// Sets limits of inspection area.
+    /// @param theMin bottom left corner of inspection area.
+    /// @param theMax top right corner of inspection area.
+    pub fn set_min_max_size(&mut self, theMin: &crate::ffi::gp_XY, theMax: &crate::ffi::gp_XY) {
+        unsafe {
+            crate::ffi::BRepMesh_CircleTool_set_min_max_size(self as *mut Self, theMin, theMax)
+        }
+    }
+
+    /// Returns true if cell filter contains no circle.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::BRepMesh_CircleTool_is_empty(self as *const Self) }
+    }
+
+    /// Binds the circle to the tool.
+    /// @param theIndex index a circle should be bound with.
+    /// @param theCircle circle to be bound.
+    pub fn bind_int_circ2d(&mut self, theIndex: i32, theCircle: &crate::ffi::gp_Circ2d) {
+        unsafe {
+            crate::ffi::BRepMesh_CircleTool_bind_int_circ2d(self as *mut Self, theIndex, theCircle)
+        }
+    }
+
+    /// Computes circle on three points and bind it to the tool.
+    /// @param theIndex index a circle should be bound with.
+    /// @param thePoint1 first point.
+    /// @param thePoint2 second point.
+    /// @param thePoint3 third point.
+    /// @return FALSE in case of impossibility to build a circle
+    /// on the given points, TRUE elsewhere.
+    pub fn bind_int_xy3(
+        &mut self,
+        theIndex: i32,
+        thePoint1: &crate::ffi::gp_XY,
+        thePoint2: &crate::ffi::gp_XY,
+        thePoint3: &crate::ffi::gp_XY,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_CircleTool_bind_int_xy3(
+                self as *mut Self,
+                theIndex,
+                thePoint1,
+                thePoint2,
+                thePoint3,
+            )
+        }
+    }
+
+    /// Binds implicit zero circle.
+    /// @param theIndex index a zero circle should be bound with.
+    pub fn moc_bind(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BRepMesh_CircleTool_moc_bind(self as *mut Self, theIndex) }
+    }
+
+    /// Deletes a circle from the tool.
+    /// @param theIndex index of a circle to be removed.
+    pub fn delete(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BRepMesh_CircleTool_delete(self as *mut Self, theIndex) }
+    }
+
     /// Computes circle on three points.
     /// @param thePoint1 first point.
     /// @param thePoint2 second point.
@@ -223,16 +401,18 @@ impl CircleTool {
         thePoint1: &crate::ffi::gp_XY,
         thePoint2: &crate::ffi::gp_XY,
         thePoint3: &crate::ffi::gp_XY,
-        theLocation: std::pin::Pin<&mut crate::ffi::gp_XY>,
+        theLocation: &mut crate::ffi::gp_XY,
         theRadius: &mut f64,
     ) -> bool {
-        crate::ffi::BRepMesh_CircleTool_make_circle(
-            thePoint1,
-            thePoint2,
-            thePoint3,
-            theLocation,
-            theRadius,
-        )
+        unsafe {
+            crate::ffi::BRepMesh_CircleTool_make_circle(
+                thePoint1,
+                thePoint2,
+                thePoint3,
+                theLocation,
+                theRadius,
+            )
+        }
     }
 }
 
@@ -244,49 +424,70 @@ impl CircleTool {
 /// regarding internals of discrete face.
 pub use crate::ffi::BRepMesh_Classifier as Classifier;
 
+unsafe impl crate::CppDeletable for Classifier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_Classifier_destructor(ptr);
+    }
+}
+
 impl Classifier {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Classifier_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Classifier_ctor()) }
     }
 
     /// Performs classification of the given point regarding to face internals.
     /// @param thePoint Point in parametric space to be classified.
     /// @return TopAbs_IN if point lies within face boundaries and TopAbs_OUT elsewhere.
     pub fn perform(&self, thePoint: &crate::ffi::gp_Pnt2d) -> crate::top_abs::State {
-        crate::top_abs::State::try_from(crate::ffi::BRepMesh_Classifier_perform(self, thePoint))
+        unsafe {
+            crate::top_abs::State::try_from(crate::ffi::BRepMesh_Classifier_perform(
+                self as *const Self,
+                thePoint,
+            ))
             .unwrap()
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_Classifier_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_Classifier_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_Classifier_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_Classifier_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_Classifier_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshClassifier> {
-        crate::ffi::BRepMesh_Classifier_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshClassifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Classifier_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepMeshClassifier;
 
+unsafe impl crate::CppDeletable for HandleBRepMeshClassifier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepMeshClassifier_destructor(ptr);
+    }
+}
+
 impl HandleBRepMeshClassifier {
     /// Dereference this Handle to access the underlying BRepMesh_Classifier
     pub fn get(&self) -> &crate::ffi::BRepMesh_Classifier {
-        crate::ffi::HandleBRepMeshClassifier_get(self)
+        unsafe { &*(crate::ffi::HandleBRepMeshClassifier_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_Classifier
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_Classifier> {
-        crate::ffi::HandleBRepMeshClassifier_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_Classifier {
+        unsafe { &mut *(crate::ffi::HandleBRepMeshClassifier_get_mut(self as *mut Self)) }
     }
 }
 
@@ -298,37 +499,51 @@ impl HandleBRepMeshClassifier {
 /// order to generate internal nodes for conical surface.
 pub use crate::ffi::BRepMesh_ConeRangeSplitter as ConeRangeSplitter;
 
+unsafe impl crate::CppDeletable for ConeRangeSplitter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_ConeRangeSplitter_destructor(ptr);
+    }
+}
+
 impl ConeRangeSplitter {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_ConeRangeSplitter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_ctor()) }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        crate::ffi::BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
-        crate::ffi::BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
-    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AddPoint(self, thePoint)
+    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
-    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AdjustRange(self)
+    pub fn adjust_range(&mut self) {
+        unsafe { crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AdjustRange(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
-    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_ConeRangeSplitter_inherited_IsValid(self)
+    pub fn is_valid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_ConeRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
@@ -336,13 +551,24 @@ impl ConeRangeSplitter {
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
         isToFaceBasis: bool,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Scale(
+                self as *const Self,
+                thePoint,
+                isToFaceBasis,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Point(self, thePoint2d)
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Point(
+                self as *const Self,
+                thePoint2d,
+            ))
+        }
     }
 }
 
@@ -354,37 +580,61 @@ impl ConeRangeSplitter {
 /// Performs generation of mesh using raw data from model.
 pub use crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo as ConstrainedBaseMeshAlgo;
 
+unsafe impl crate::CppDeletable for ConstrainedBaseMeshAlgo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_destructor(ptr);
+    }
+}
+
 impl ConstrainedBaseMeshAlgo {
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_descriptor()) }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo
     pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
-        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
-    pub fn as_base_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BaseMeshAlgo> {
-        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(self)
+    pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgo
     pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
-        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgo (mutable)
-    pub fn as_i_mesh_tools_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgo> {
-        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self)
+    pub fn as_i_mesh_tools_mesh_algo_mut(&mut self) -> &mut crate::i_mesh_tools::MeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -396,169 +646,179 @@ impl ConstrainedBaseMeshAlgo {
 /// Initializes context by default algorithms.
 pub use crate::ffi::BRepMesh_Context as Context;
 
+unsafe impl crate::CppDeletable for Context {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_Context_destructor(ptr);
+    }
+}
+
 impl Context {
     /// Constructor.
     pub fn new_meshalgotype(
         theMeshType: crate::i_mesh_tools::MeshAlgoType,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Context_ctor_meshalgotype(theMeshType.into())
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Context_ctor_meshalgotype(
+                theMeshType.into(),
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_Context_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_Context_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_Context_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_Context_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_Context_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshData_Shape
     pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
-        crate::ffi::BRepMesh_Context_as_IMeshData_Shape(self)
+        unsafe { &*(crate::ffi::BRepMesh_Context_as_IMeshData_Shape(self as *const Self)) }
     }
 
     /// Upcast to IMeshData_Shape (mutable)
-    pub fn as_i_mesh_data_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_data::Shape> {
-        crate::ffi::BRepMesh_Context_as_IMeshData_Shape_mut(self)
+    pub fn as_i_mesh_data_shape_mut(&mut self) -> &mut crate::i_mesh_data::Shape {
+        unsafe { &mut *(crate::ffi::BRepMesh_Context_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
     /// Upcast to IMeshTools_Context
     pub fn as_i_mesh_tools_context(&self) -> &crate::i_mesh_tools::Context {
-        crate::ffi::BRepMesh_Context_as_IMeshTools_Context(self)
+        unsafe { &*(crate::ffi::BRepMesh_Context_as_IMeshTools_Context(self as *const Self)) }
     }
 
     /// Upcast to IMeshTools_Context (mutable)
-    pub fn as_i_mesh_tools_context_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::Context> {
-        crate::ffi::BRepMesh_Context_as_IMeshTools_Context_mut(self)
+    pub fn as_i_mesh_tools_context_mut(&mut self) -> &mut crate::i_mesh_tools::Context {
+        unsafe { &mut *(crate::ffi::BRepMesh_Context_as_IMeshTools_Context_mut(self as *mut Self)) }
     }
 
     /// Inherited from IMeshData_Shape: SetShape()
-    pub fn set_shape(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::BRepMesh_Context_inherited_SetShape(self, theShape)
+    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepMesh_Context_inherited_SetShape(self as *mut Self, theShape) }
     }
 
     /// Inherited from IMeshData_Shape: GetShape()
     pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepMesh_Context_inherited_GetShape(self)
+        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetShape(self as *const Self)) }
     }
 
     /// Inherited from IMeshTools_Context: BuildModel()
-    pub fn build_model(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_Context_inherited_BuildModel(self)
+    pub fn build_model(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_Context_inherited_BuildModel(self as *mut Self) }
     }
 
     /// Inherited from IMeshTools_Context: DiscretizeEdges()
-    pub fn discretize_edges(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_Context_inherited_DiscretizeEdges(self)
+    pub fn discretize_edges(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_Context_inherited_DiscretizeEdges(self as *mut Self) }
     }
 
     /// Inherited from IMeshTools_Context: HealModel()
-    pub fn heal_model(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_Context_inherited_HealModel(self)
+    pub fn heal_model(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_Context_inherited_HealModel(self as *mut Self) }
     }
 
     /// Inherited from IMeshTools_Context: PreProcessModel()
-    pub fn pre_process_model(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_Context_inherited_PreProcessModel(self)
+    pub fn pre_process_model(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_Context_inherited_PreProcessModel(self as *mut Self) }
     }
 
     /// Inherited from IMeshTools_Context: DiscretizeFaces()
-    pub fn discretize_faces(
-        self: std::pin::Pin<&mut Self>,
-        theRange: &crate::ffi::Message_ProgressRange,
-    ) -> bool {
-        crate::ffi::BRepMesh_Context_inherited_DiscretizeFaces(self, theRange)
+    pub fn discretize_faces(&mut self, theRange: &crate::ffi::Message_ProgressRange) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_Context_inherited_DiscretizeFaces(self as *mut Self, theRange)
+        }
     }
 
     /// Inherited from IMeshTools_Context: PostProcessModel()
-    pub fn post_process_model(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_Context_inherited_PostProcessModel(self)
+    pub fn post_process_model(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_Context_inherited_PostProcessModel(self as *mut Self) }
     }
 
     /// Inherited from IMeshTools_Context: Clean()
-    pub fn clean(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepMesh_Context_inherited_Clean(self)
+    pub fn clean(&mut self) {
+        unsafe { crate::ffi::BRepMesh_Context_inherited_Clean(self as *mut Self) }
     }
 
     /// Inherited from IMeshTools_Context: GetEdgeDiscret()
     pub fn get_edge_discret(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
-        crate::ffi::BRepMesh_Context_inherited_GetEdgeDiscret(self)
+        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetEdgeDiscret(self as *const Self)) }
     }
 
     /// Inherited from IMeshTools_Context: SetEdgeDiscret()
-    pub fn set_edge_discret(
-        self: std::pin::Pin<&mut Self>,
-        theEdgeDiscret: &crate::ffi::HandleIMeshToolsModelAlgo,
-    ) {
-        crate::ffi::BRepMesh_Context_inherited_SetEdgeDiscret(self, theEdgeDiscret)
+    pub fn set_edge_discret(&mut self, theEdgeDiscret: &crate::ffi::HandleIMeshToolsModelAlgo) {
+        unsafe {
+            crate::ffi::BRepMesh_Context_inherited_SetEdgeDiscret(self as *mut Self, theEdgeDiscret)
+        }
     }
 
     /// Inherited from IMeshTools_Context: GetModelHealer()
     pub fn get_model_healer(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
-        crate::ffi::BRepMesh_Context_inherited_GetModelHealer(self)
+        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetModelHealer(self as *const Self)) }
     }
 
     /// Inherited from IMeshTools_Context: SetModelHealer()
-    pub fn set_model_healer(
-        self: std::pin::Pin<&mut Self>,
-        theModelHealer: &crate::ffi::HandleIMeshToolsModelAlgo,
-    ) {
-        crate::ffi::BRepMesh_Context_inherited_SetModelHealer(self, theModelHealer)
+    pub fn set_model_healer(&mut self, theModelHealer: &crate::ffi::HandleIMeshToolsModelAlgo) {
+        unsafe {
+            crate::ffi::BRepMesh_Context_inherited_SetModelHealer(self as *mut Self, theModelHealer)
+        }
     }
 
     /// Inherited from IMeshTools_Context: GetPreProcessor()
     pub fn get_pre_processor(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
-        crate::ffi::BRepMesh_Context_inherited_GetPreProcessor(self)
+        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetPreProcessor(self as *const Self)) }
     }
 
     /// Inherited from IMeshTools_Context: SetPreProcessor()
-    pub fn set_pre_processor(
-        self: std::pin::Pin<&mut Self>,
-        thePreProcessor: &crate::ffi::HandleIMeshToolsModelAlgo,
-    ) {
-        crate::ffi::BRepMesh_Context_inherited_SetPreProcessor(self, thePreProcessor)
+    pub fn set_pre_processor(&mut self, thePreProcessor: &crate::ffi::HandleIMeshToolsModelAlgo) {
+        unsafe {
+            crate::ffi::BRepMesh_Context_inherited_SetPreProcessor(
+                self as *mut Self,
+                thePreProcessor,
+            )
+        }
     }
 
     /// Inherited from IMeshTools_Context: GetFaceDiscret()
     pub fn get_face_discret(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
-        crate::ffi::BRepMesh_Context_inherited_GetFaceDiscret(self)
+        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetFaceDiscret(self as *const Self)) }
     }
 
     /// Inherited from IMeshTools_Context: SetFaceDiscret()
-    pub fn set_face_discret(
-        self: std::pin::Pin<&mut Self>,
-        theFaceDiscret: &crate::ffi::HandleIMeshToolsModelAlgo,
-    ) {
-        crate::ffi::BRepMesh_Context_inherited_SetFaceDiscret(self, theFaceDiscret)
+    pub fn set_face_discret(&mut self, theFaceDiscret: &crate::ffi::HandleIMeshToolsModelAlgo) {
+        unsafe {
+            crate::ffi::BRepMesh_Context_inherited_SetFaceDiscret(self as *mut Self, theFaceDiscret)
+        }
     }
 
     /// Inherited from IMeshTools_Context: GetPostProcessor()
     pub fn get_post_processor(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
-        crate::ffi::BRepMesh_Context_inherited_GetPostProcessor(self)
+        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetPostProcessor(self as *const Self)) }
     }
 
     /// Inherited from IMeshTools_Context: SetPostProcessor()
-    pub fn set_post_processor(
-        self: std::pin::Pin<&mut Self>,
-        thePostProcessor: &crate::ffi::HandleIMeshToolsModelAlgo,
-    ) {
-        crate::ffi::BRepMesh_Context_inherited_SetPostProcessor(self, thePostProcessor)
+    pub fn set_post_processor(&mut self, thePostProcessor: &crate::ffi::HandleIMeshToolsModelAlgo) {
+        unsafe {
+            crate::ffi::BRepMesh_Context_inherited_SetPostProcessor(
+                self as *mut Self,
+                thePostProcessor,
+            )
+        }
     }
 
     /// Inherited from IMeshTools_Context: GetParameters()
     pub fn get_parameters(&self) -> &crate::ffi::IMeshTools_Parameters {
-        crate::ffi::BRepMesh_Context_inherited_GetParameters(self)
+        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetParameters(self as *const Self)) }
     }
 
     /// Inherited from IMeshTools_Context: ChangeParameters()
-    pub fn change_parameters(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::IMeshTools_Parameters> {
-        crate::ffi::BRepMesh_Context_inherited_ChangeParameters(self)
+    pub fn change_parameters(&mut self) -> &mut crate::ffi::IMeshTools_Parameters {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_Context_inherited_ChangeParameters(self as *mut Self))
+        }
     }
 }
 
@@ -569,25 +829,69 @@ impl Context {
 /// Auxiliary class performing tessellation of passed edge according to specified parameters.
 pub use crate::ffi::BRepMesh_CurveTessellator as CurveTessellator;
 
+unsafe impl crate::CppDeletable for CurveTessellator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_CurveTessellator_destructor(ptr);
+    }
+}
+
 impl CurveTessellator {
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_CurveTessellator_get_type_name()
+    /// Returns number of tessellation points.
+    pub fn points_nb(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_CurveTessellator_points_nb(self as *const Self) }
+    }
+
+    /// Returns parameters of solution with the given index.
+    /// @param theIndex index of tessellation point.
+    /// @param theParameter parameters on PCurve corresponded to the solution.
+    /// @param thePoint tessellation point.
+    /// @return True in case of valid result, false elewhere.
+    pub fn value(
+        &self,
+        theIndex: i32,
+        thePoint: &mut crate::ffi::gp_Pnt,
+        theParameter: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_CurveTessellator_value(
+                self as *const Self,
+                theIndex,
+                thePoint,
+                theParameter,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_CurveTessellator_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_CurveTessellator_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_CurveTessellator_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_CurveTessellator_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_CurveTessellator
     pub fn as_i_mesh_tools_curve_tessellator(&self) -> &crate::i_mesh_tools::CurveTessellator {
-        crate::ffi::BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to IMeshTools_CurveTessellator (mutable)
     pub fn as_i_mesh_tools_curve_tessellator_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::CurveTessellator> {
-        crate::ffi::BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator_mut(self)
+        &mut self,
+    ) -> &mut crate::i_mesh_tools::CurveTessellator {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -599,49 +903,75 @@ impl CurveTessellator {
 /// algorithm. Performs generation of mesh using raw data from model.
 pub use crate::ffi::BRepMesh_CustomBaseMeshAlgo as CustomBaseMeshAlgo;
 
+unsafe impl crate::CppDeletable for CustomBaseMeshAlgo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_CustomBaseMeshAlgo_destructor(ptr);
+    }
+}
+
 impl CustomBaseMeshAlgo {
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_descriptor()) }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo
     pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
-        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
-    pub fn as_base_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BaseMeshAlgo> {
-        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(self)
+    pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
     pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
-        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
-    pub fn as_constrained_base_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut ConstrainedBaseMeshAlgo> {
-        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self)
+    pub fn as_constrained_base_mesh_algo_mut(&mut self) -> &mut ConstrainedBaseMeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgo
     pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
-        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo(self as *const Self))
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgo (mutable)
-    pub fn as_i_mesh_tools_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgo> {
-        crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self)
+    pub fn as_i_mesh_tools_mesh_algo_mut(&mut self) -> &mut crate::i_mesh_tools::MeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -653,37 +983,56 @@ impl CustomBaseMeshAlgo {
 /// order to generate internal nodes for cylindrical surface.
 pub use crate::ffi::BRepMesh_CylinderRangeSplitter as CylinderRangeSplitter;
 
+unsafe impl crate::CppDeletable for CylinderRangeSplitter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_CylinderRangeSplitter_destructor(ptr);
+    }
+}
+
 impl CylinderRangeSplitter {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_CylinderRangeSplitter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_ctor()) }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        crate::ffi::BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
-        crate::ffi::BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
-    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AddPoint(self, thePoint)
+    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AddPoint(
+                self as *mut Self,
+                thePoint,
+            )
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
-    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AdjustRange(self)
+    pub fn adjust_range(&mut self) {
+        unsafe {
+            crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
-    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_IsValid(self)
+    pub fn is_valid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
@@ -691,13 +1040,24 @@ impl CylinderRangeSplitter {
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
         isToFaceBasis: bool,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Scale(
+                self as *const Self,
+                thePoint,
+                isToFaceBasis,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Point(self, thePoint2d)
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Point(
+                self as *const Self,
+                thePoint2d,
+            ))
+        }
     }
 }
 
@@ -709,40 +1069,276 @@ impl CylinderRangeSplitter {
 /// two dimensions plane or on surface by meshing in UV space.
 pub use crate::ffi::BRepMesh_DataStructureOfDelaun as DataStructureOfDelaun;
 
+unsafe impl crate::CppDeletable for DataStructureOfDelaun {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_DataStructureOfDelaun_destructor(ptr);
+    }
+}
+
 impl DataStructureOfDelaun {
-    pub fn dump(self: std::pin::Pin<&mut Self>, theFileNameStr: &str) {
-        crate::ffi::BRepMesh_DataStructureOfDelaun_dump(self, theFileNameStr)
+    /// @name API for accessing mesh nodes.
+    /// Returns number of nodes.
+    pub fn nb_nodes(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_nodes(self as *const Self) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_name()
+    /// Adds node to the mesh if it is not already in the mesh.
+    /// @param theNode node to be added to the mesh.
+    /// @param isForceAdd adds the given node to structure without
+    /// checking on coincidence with other nodes.
+    /// @return index of the node in the structure.
+    pub fn add_node(&mut self, theNode: &crate::ffi::BRepMesh_Vertex, isForceAdd: bool) -> i32 {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_add_node(
+                self as *mut Self,
+                theNode,
+                isForceAdd,
+            )
+        }
+    }
+
+    /// Finds the index of the given node.
+    /// @param theNode node to find.
+    /// @return index of the given element of zero if node is not in the mesh.
+    pub fn index_of_vertex(&mut self, theNode: &crate::ffi::BRepMesh_Vertex) -> i32 {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_index_of_vertex(self as *mut Self, theNode)
+        }
+    }
+
+    /// Get node by the index.
+    /// @param theIndex index of a node.
+    /// @return node with the given index.
+    pub fn get_node(&mut self, theIndex: i32) -> &crate::ffi::BRepMesh_Vertex {
+        unsafe {
+            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_node(self as *mut Self, theIndex))
+        }
+    }
+
+    /// Substitutes the node with the given index by new one.
+    /// @param theIndex index of node to be substituted.
+    /// @param theNewNode substituting node.
+    /// @return FALSE in case if new node is already in the structure, TRUE elsewhere.
+    pub fn substitute_node(
+        &mut self,
+        theIndex: i32,
+        theNewNode: &crate::ffi::BRepMesh_Vertex,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_node(
+                self as *mut Self,
+                theIndex,
+                theNewNode,
+            )
+        }
+    }
+
+    /// Removes node from the mesh in case if it has no connected links
+    /// and its type is Free.
+    /// @param theIndex index of node to be removed.
+    /// @param isForce if TRUE node will be removed even if movability
+    /// is not Free.
+    pub fn remove_node(&mut self, theIndex: i32, isForce: bool) {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_remove_node(
+                self as *mut Self,
+                theIndex,
+                isForce,
+            )
+        }
+    }
+
+    /// @name API for accessing mesh links.
+    /// Returns number of links.
+    pub fn nb_links(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_links(self as *const Self) }
+    }
+
+    /// Adds link to the mesh if it is not already in the mesh.
+    /// @param theLink link to be added to the mesh.
+    /// @return index of the link in the structure.
+    pub fn add_link(&mut self, theLink: &crate::ffi::BRepMesh_Edge) -> i32 {
+        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_add_link(self as *mut Self, theLink) }
+    }
+
+    /// Finds the index of the given link.
+    /// @param theLink link to find.
+    /// @return index of the given element of zero if link is not in the mesh.
+    pub fn index_of_edge(&self, theLink: &crate::ffi::BRepMesh_Edge) -> i32 {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_index_of_edge(self as *const Self, theLink)
+        }
+    }
+
+    /// Get link by the index.
+    /// @param theIndex index of a link.
+    /// @return link with the given index.
+    pub fn get_link(&mut self, theIndex: i32) -> &crate::ffi::BRepMesh_Edge {
+        unsafe {
+            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_link(self as *mut Self, theIndex))
+        }
+    }
+
+    /// Substitutes the link with the given index by new one.
+    /// @param theIndex index of link to be substituted.
+    /// @param theNewLink substituting link.
+    /// @return FALSE in case if new link is already in the structure, TRUE elsewhere.
+    pub fn substitute_link(
+        &mut self,
+        theIndex: i32,
+        theNewLink: &crate::ffi::BRepMesh_Edge,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_link(
+                self as *mut Self,
+                theIndex,
+                theNewLink,
+            )
+        }
+    }
+
+    /// Removes link from the mesh in case if it has no connected elements
+    /// and its type is Free.
+    /// @param theIndex index of link to be removed.
+    /// @param isForce if TRUE link will be removed even if movability
+    /// is not Free.
+    pub fn remove_link(&mut self, theIndex: i32, isForce: bool) {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_remove_link(
+                self as *mut Self,
+                theIndex,
+                isForce,
+            )
+        }
+    }
+
+    /// Returns indices of elements connected to the link with the given index.
+    /// @param theLinkIndex index of link whose data should be retrieved.
+    /// @return indices of elements connected to the link.
+    pub fn elements_connected_to(&self, theLinkIndex: i32) -> &crate::ffi::BRepMesh_PairOfIndex {
+        unsafe {
+            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_elements_connected_to(
+                self as *const Self,
+                theLinkIndex,
+            ))
+        }
+    }
+
+    /// @name API for accessing mesh elements.
+    /// Returns number of links.
+    pub fn nb_elements(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_elements(self as *const Self) }
+    }
+
+    /// Adds element to the mesh if it is not already in the mesh.
+    /// @param theElement element to be added to the mesh.
+    /// @return index of the element in the structure.
+    pub fn add_element(&mut self, theElement: &crate::ffi::BRepMesh_Triangle) -> i32 {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_add_element(self as *mut Self, theElement)
+        }
+    }
+
+    /// Get element by the index.
+    /// @param theIndex index of an element.
+    /// @return element with the given index.
+    pub fn get_element(&mut self, theIndex: i32) -> &crate::ffi::BRepMesh_Triangle {
+        unsafe {
+            &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_element(self as *mut Self, theIndex))
+        }
+    }
+
+    /// Substitutes the element with the given index by new one.
+    /// @param theIndex index of element to be substituted.
+    /// @param theNewLink substituting element.
+    /// @return FALSE in case if new element is already in the structure, TRUE elsewhere.
+    pub fn substitute_element(
+        &mut self,
+        theIndex: i32,
+        theNewElement: &crate::ffi::BRepMesh_Triangle,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_element(
+                self as *mut Self,
+                theIndex,
+                theNewElement,
+            )
+        }
+    }
+
+    /// Removes element from the mesh.
+    /// @param theIndex index of element to be removed.
+    pub fn remove_element(&mut self, theIndex: i32) {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_remove_element(self as *mut Self, theIndex)
+        }
+    }
+
+    pub fn dump(&mut self, theFileNameStr: *const std::ffi::c_char) {
+        unsafe {
+            crate::ffi::BRepMesh_DataStructureOfDelaun_dump(self as *mut Self, theFileNameStr)
+        }
+    }
+
+    /// Gives the data structure for initialization of cell size and tolerance.
+    pub fn data(&mut self) -> &crate::ffi::HandleBRepMeshVertexTool {
+        unsafe { &*(crate::ffi::BRepMesh_DataStructureOfDelaun_data(self as *mut Self)) }
+    }
+
+    /// Removes all elements.
+    pub fn clear_domain(&mut self) {
+        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_clear_domain(self as *mut Self) }
+    }
+
+    /// Substitutes deleted items by the last one from corresponding map
+    /// to have only non-deleted elements, links or nodes in the structure.
+    pub fn clear_deleted(&mut self) {
+        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_clear_deleted(self as *mut Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_DataStructureOfDelaun_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshDataStructureOfDelaun> {
-        crate::ffi::BRepMesh_DataStructureOfDelaun_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshDataStructureOfDelaun> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DataStructureOfDelaun_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepMeshDataStructureOfDelaun;
 
+unsafe impl crate::CppDeletable for HandleBRepMeshDataStructureOfDelaun {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepMeshDataStructureOfDelaun_destructor(ptr);
+    }
+}
+
 impl HandleBRepMeshDataStructureOfDelaun {
     /// Dereference this Handle to access the underlying BRepMesh_DataStructureOfDelaun
     pub fn get(&self) -> &crate::ffi::BRepMesh_DataStructureOfDelaun {
-        crate::ffi::HandleBRepMeshDataStructureOfDelaun_get(self)
+        unsafe { &*(crate::ffi::HandleBRepMeshDataStructureOfDelaun_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_DataStructureOfDelaun
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_DataStructureOfDelaun> {
-        crate::ffi::HandleBRepMeshDataStructureOfDelaun_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_DataStructureOfDelaun {
+        unsafe {
+            &mut *(crate::ffi::HandleBRepMeshDataStructureOfDelaun_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -754,10 +1350,31 @@ impl HandleBRepMeshDataStructureOfDelaun {
 /// obtain grid points distributed within this range.
 pub use crate::ffi::BRepMesh_DefaultRangeSplitter as DefaultRangeSplitter;
 
+unsafe impl crate::CppDeletable for DefaultRangeSplitter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_DefaultRangeSplitter_destructor(ptr);
+    }
+}
+
 impl DefaultRangeSplitter {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_DefaultRangeSplitter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DefaultRangeSplitter_ctor()) }
+    }
+
+    /// Registers border point.
+    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_add_point(self as *mut Self, thePoint) }
+    }
+
+    /// Updates discrete range of surface according to its geometric range.
+    pub fn adjust_range(&mut self) {
+        unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_adjust_range(self as *mut Self) }
+    }
+
+    /// Returns True if computed range is valid.
+    pub fn is_valid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_is_valid(self as *mut Self) }
     }
 
     /// Scales the given point from real parametric space
@@ -770,14 +1387,25 @@ impl DefaultRangeSplitter {
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
         isToFaceBasis: bool,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepMesh_DefaultRangeSplitter_scale(self, thePoint, isToFaceBasis)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DefaultRangeSplitter_scale(
+                self as *const Self,
+                thePoint,
+                isToFaceBasis,
+            ))
+        }
     }
 
     /// Returns point in 3d space corresponded to the given
     /// point defined in parametric space of surface.
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_DefaultRangeSplitter_point(self, thePoint2d)
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DefaultRangeSplitter_point(
+                self as *const Self,
+                thePoint2d,
+            ))
+        }
     }
 }
 
@@ -788,10 +1416,20 @@ impl DefaultRangeSplitter {
 /// Auxiliary tool encompassing methods to compute deflection of shapes.
 pub use crate::ffi::BRepMesh_Deflection as Deflection;
 
+unsafe impl crate::CppDeletable for Deflection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_Deflection_destructor(ptr);
+    }
+}
+
 impl Deflection {
     /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Deflection_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Deflection_ctor()) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_Deflection_dynamic_type(self as *const Self)) }
     }
 
     /// Returns absolute deflection for theShape with respect to the
@@ -805,11 +1443,13 @@ impl Deflection {
         theRelativeDeflection: f64,
         theMaxShapeSize: f64,
     ) -> f64 {
-        crate::ffi::BRepMesh_Deflection_compute_absolute_deflection(
-            theShape,
-            theRelativeDeflection,
-            theMaxShapeSize,
-        )
+        unsafe {
+            crate::ffi::BRepMesh_Deflection_compute_absolute_deflection(
+                theShape,
+                theRelativeDeflection,
+                theMaxShapeSize,
+            )
+        }
     }
 
     /// Checks if the deflection of current polygonal representation
@@ -826,43 +1466,51 @@ impl Deflection {
         theAllowDecrease: bool,
         theRatio: f64,
     ) -> bool {
-        crate::ffi::BRepMesh_Deflection_is_consistent(
-            theCurrent,
-            theRequired,
-            theAllowDecrease,
-            theRatio,
-        )
+        unsafe {
+            crate::ffi::BRepMesh_Deflection_is_consistent(
+                theCurrent,
+                theRequired,
+                theAllowDecrease,
+                theRatio,
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_Deflection_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_Deflection_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_Deflection_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_Deflection_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshDeflection> {
-        crate::ffi::BRepMesh_Deflection_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshDeflection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Deflection_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepMeshDeflection;
 
+unsafe impl crate::CppDeletable for HandleBRepMeshDeflection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepMeshDeflection_destructor(ptr);
+    }
+}
+
 impl HandleBRepMeshDeflection {
     /// Dereference this Handle to access the underlying BRepMesh_Deflection
     pub fn get(&self) -> &crate::ffi::BRepMesh_Deflection {
-        crate::ffi::HandleBRepMeshDeflection_get(self)
+        unsafe { &*(crate::ffi::HandleBRepMeshDeflection_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_Deflection
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_Deflection> {
-        crate::ffi::HandleBRepMeshDeflection_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_Deflection {
+        unsafe { &mut *(crate::ffi::HandleBRepMeshDeflection_get_mut(self as *mut Self)) }
     }
 }
 
@@ -874,66 +1522,98 @@ impl HandleBRepMeshDeflection {
 /// Performs generation of mesh using raw data from model.
 pub use crate::ffi::BRepMesh_DelabellaBaseMeshAlgo as DelabellaBaseMeshAlgo;
 
+unsafe impl crate::CppDeletable for DelabellaBaseMeshAlgo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_destructor(ptr);
+    }
+}
+
 impl DelabellaBaseMeshAlgo {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_descriptor()) }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo
     pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
-    pub fn as_base_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BaseMeshAlgo> {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(self)
+    pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
     pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
-    pub fn as_constrained_base_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut ConstrainedBaseMeshAlgo> {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self)
+    pub fn as_constrained_base_mesh_algo_mut(&mut self) -> &mut ConstrainedBaseMeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to BRepMesh_CustomBaseMeshAlgo
     pub fn as_custom_base_mesh_algo(&self) -> &CustomBaseMeshAlgo {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_CustomBaseMeshAlgo (mutable)
-    pub fn as_custom_base_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut CustomBaseMeshAlgo> {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo_mut(self)
+    pub fn as_custom_base_mesh_algo_mut(&mut self) -> &mut CustomBaseMeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgo
     pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgo (mutable)
-    pub fn as_i_mesh_tools_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgo> {
-        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self)
+    pub fn as_i_mesh_tools_mesh_algo_mut(&mut self) -> &mut crate::i_mesh_tools::MeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -945,10 +1625,16 @@ impl DelabellaBaseMeshAlgo {
 /// algorithms of different complexity depending on type of target surface.
 pub use crate::ffi::BRepMesh_DelabellaMeshAlgoFactory as DelabellaMeshAlgoFactory;
 
+unsafe impl crate::CppDeletable for DelabellaMeshAlgoFactory {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_destructor(ptr);
+    }
+}
+
 impl DelabellaMeshAlgoFactory {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_ctor()) }
     }
 
     /// Creates instance of meshing algorithm for the given type of surface.
@@ -956,32 +1642,48 @@ impl DelabellaMeshAlgoFactory {
         &self,
         theSurfaceType: crate::geom_abs::SurfaceType,
         theParameters: &crate::ffi::IMeshTools_Parameters,
-    ) -> cxx::UniquePtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_algo(
-            self,
-            theSurfaceType.into(),
-            theParameters,
-        )
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_algo(
+                self as *const Self,
+                theSurfaceType.into(),
+                theParameters,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_MeshAlgoFactory
     pub fn as_i_mesh_tools_mesh_algo_factory(&self) -> &crate::i_mesh_tools::MeshAlgoFactory {
-        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgoFactory (mutable)
     pub fn as_i_mesh_tools_mesh_algo_factory_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgoFactory> {
-        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(self)
+        &mut self,
+    ) -> &mut crate::i_mesh_tools::MeshAlgoFactory {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -992,6 +1694,12 @@ impl DelabellaMeshAlgoFactory {
 /// Compute the Delaunay's triangulation with the algorithm of Watson.
 pub use crate::ffi::BRepMesh_Delaun as Delaun;
 
+unsafe impl crate::CppDeletable for Delaun {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_Delaun_destructor(ptr);
+    }
+}
+
 impl Delaun {
     /// Creates instance of triangulator, but do not run the algorithm automatically.
     pub fn new_handlebrepmeshdatastructureofdelaun_int2_bool(
@@ -999,13 +1707,98 @@ impl Delaun {
         theCellsCountU: i32,
         theCellsCountV: i32,
         isFillCircles: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_int2_bool(
-            theOldMesh,
-            theCellsCountU,
-            theCellsCountV,
-            isFillCircles,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_int2_bool(
+                    theOldMesh,
+                    theCellsCountU,
+                    theCellsCountV,
+                    isFillCircles,
+                ),
+            )
+        }
+    }
+
+    /// Forces initialization of circles cell filter using working structure.
+    pub fn init_circles_tool(&mut self, theCellsCountU: i32, theCellsCountV: i32) {
+        unsafe {
+            crate::ffi::BRepMesh_Delaun_init_circles_tool(
+                self as *mut Self,
+                theCellsCountU,
+                theCellsCountV,
+            )
+        }
+    }
+
+    /// Removes a vertex from the triangulation.
+    pub fn remove_vertex(&mut self, theVertex: &crate::ffi::BRepMesh_Vertex) {
+        unsafe { crate::ffi::BRepMesh_Delaun_remove_vertex(self as *mut Self, theVertex) }
+    }
+
+    /// Modify mesh to use the edge.
+    /// @return True if done
+    pub fn use_edge(&mut self, theEdge: i32) -> bool {
+        unsafe { crate::ffi::BRepMesh_Delaun_use_edge(self as *mut Self, theEdge) }
+    }
+
+    /// Gives the Mesh data structure.
+    pub fn result(&self) -> &crate::ffi::HandleBRepMeshDataStructureOfDelaun {
+        unsafe { &*(crate::ffi::BRepMesh_Delaun_result(self as *const Self)) }
+    }
+
+    /// Forces insertion of constraint edges into the base triangulation.
+    pub fn process_constraints(&mut self) {
+        unsafe { crate::ffi::BRepMesh_Delaun_process_constraints(self as *mut Self) }
+    }
+
+    /// Gives vertex with the given index
+    pub fn get_vertex(&self, theIndex: i32) -> &crate::ffi::BRepMesh_Vertex {
+        unsafe { &*(crate::ffi::BRepMesh_Delaun_get_vertex(self as *const Self, theIndex)) }
+    }
+
+    /// Gives edge with the given index
+    pub fn get_edge(&self, theIndex: i32) -> &crate::ffi::BRepMesh_Edge {
+        unsafe { &*(crate::ffi::BRepMesh_Delaun_get_edge(self as *const Self, theIndex)) }
+    }
+
+    /// Gives triangle with the given index
+    pub fn get_triangle(&self, theIndex: i32) -> &crate::ffi::BRepMesh_Triangle {
+        unsafe { &*(crate::ffi::BRepMesh_Delaun_get_triangle(self as *const Self, theIndex)) }
+    }
+
+    /// Returns tool used to build mesh consistent to Delaunay criteria.
+    pub fn circles(&self) -> &crate::ffi::BRepMesh_CircleTool {
+        unsafe { &*(crate::ffi::BRepMesh_Delaun_circles(self as *const Self)) }
+    }
+
+    /// Test is the given triangle contains the given vertex.
+    /// @param theSqTolerance square tolerance to check closeness to some edge
+    /// @param theEdgeOn If it is != 0 the vertex lies onto the edge index
+    /// returned through this parameter.
+    pub fn contains(
+        &self,
+        theTriangleId: i32,
+        theVertex: &crate::ffi::BRepMesh_Vertex,
+        theSqTolerance: f64,
+        theEdgeOn: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_Delaun_contains(
+                self as *const Self,
+                theTriangleId,
+                theVertex,
+                theSqTolerance,
+                theEdgeOn,
+            )
+        }
+    }
+
+    /// Destruction of auxiliary triangles containing the given vertices.
+    /// Removes auxiliary vertices also.
+    /// @param theAuxVertices auxiliary vertices to be cleaned up.
+    pub fn remove_aux_elements(&mut self) {
+        unsafe { crate::ffi::BRepMesh_Delaun_remove_aux_elements(self as *mut Self) }
     }
 }
 
@@ -1017,54 +1810,80 @@ impl Delaun {
 /// Performs generation of mesh using raw data from model.
 pub use crate::ffi::BRepMesh_DelaunayBaseMeshAlgo as DelaunayBaseMeshAlgo;
 
+unsafe impl crate::CppDeletable for DelaunayBaseMeshAlgo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_destructor(ptr);
+    }
+}
+
 impl DelaunayBaseMeshAlgo {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_descriptor()) }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo
     pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
-        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
-    pub fn as_base_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BaseMeshAlgo> {
-        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(self)
+    pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
     pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
-        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
-    pub fn as_constrained_base_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut ConstrainedBaseMeshAlgo> {
-        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self)
+    pub fn as_constrained_base_mesh_algo_mut(&mut self) -> &mut ConstrainedBaseMeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgo
     pub fn as_i_mesh_tools_mesh_algo(&self) -> &crate::i_mesh_tools::MeshAlgo {
-        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgo (mutable)
-    pub fn as_i_mesh_tools_mesh_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgo> {
-        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(self)
+    pub fn as_i_mesh_tools_mesh_algo_mut(&mut self) -> &mut crate::i_mesh_tools::MeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -1076,29 +1895,62 @@ impl DelaunayBaseMeshAlgo {
 /// instantiated by Mesh Factory and implemented by plugins.
 pub use crate::ffi::BRepMesh_DiscretRoot as DiscretRoot;
 
+unsafe impl crate::CppDeletable for DiscretRoot {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_DiscretRoot_destructor(ptr);
+    }
+}
+
 impl DiscretRoot {
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_DiscretRoot_get_type_name()
+    /// Set the shape to triangulate.
+    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepMesh_DiscretRoot_set_shape(self as *mut Self, theShape) }
+    }
+
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_shape(self as *const Self)) }
+    }
+
+    /// Returns true if triangualtion was performed and has success.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepMesh_DiscretRoot_is_done(self as *const Self) }
+    }
+
+    /// Compute triangulation for set shape.
+    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepMesh_DiscretRoot_perform(self as *mut Self, theRange) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_DiscretRoot_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_DiscretRoot_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_get_type_descriptor()) }
     }
 }
 
 pub use crate::ffi::HandleBRepMeshDiscretRoot;
 
+unsafe impl crate::CppDeletable for HandleBRepMeshDiscretRoot {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepMeshDiscretRoot_destructor(ptr);
+    }
+}
+
 impl HandleBRepMeshDiscretRoot {
     /// Dereference this Handle to access the underlying BRepMesh_DiscretRoot
     pub fn get(&self) -> &crate::ffi::BRepMesh_DiscretRoot {
-        crate::ffi::HandleBRepMeshDiscretRoot_get(self)
+        unsafe { &*(crate::ffi::HandleBRepMeshDiscretRoot_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_DiscretRoot
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_DiscretRoot> {
-        crate::ffi::HandleBRepMeshDiscretRoot_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_DiscretRoot {
+        unsafe { &mut *(crate::ffi::HandleBRepMeshDiscretRoot_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1109,10 +1961,16 @@ impl HandleBRepMeshDiscretRoot {
 /// Light weighted structure representing link of the mesh.
 pub use crate::ffi::BRepMesh_Edge as Edge;
 
+unsafe impl crate::CppDeletable for Edge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_Edge_destructor(ptr);
+    }
+}
+
 impl Edge {
     /// Default constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Edge_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Edge_ctor()) }
     }
 
     /// Constructs a link between two vertices.
@@ -1120,49 +1978,64 @@ impl Edge {
         theFirstNode: i32,
         theLastNode: i32,
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Edge_ctor_int2_degreeoffreedom(
-            theFirstNode,
-            theLastNode,
-            theMovability.into(),
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Edge_ctor_int2_degreeoffreedom(
+                theFirstNode,
+                theLastNode,
+                theMovability.into(),
+            ))
+        }
     }
 
     /// Returns movability flag of the Link.
     pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
-        crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Edge_movability(self))
+        unsafe {
+            crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Edge_movability(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Sets movability flag of the Link.
     /// @param theMovability flag to be set.
-    pub fn set_movability(
-        self: std::pin::Pin<&mut Self>,
-        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
-    ) {
-        crate::ffi::BRepMesh_Edge_set_movability(self, theMovability.into())
+    pub fn set_movability(&mut self, theMovability: crate::b_rep_mesh::DegreeOfFreedom) {
+        unsafe { crate::ffi::BRepMesh_Edge_set_movability(self as *mut Self, theMovability.into()) }
+    }
+
+    /// Checks if the given edge and this one have the same orientation.
+    /// @param theOther edge to be checked against this one.
+    /// \return TRUE if edges have the same orientation, FALSE if not.
+    pub fn is_same_orientation(&self, theOther: &crate::ffi::BRepMesh_Edge) -> bool {
+        unsafe { crate::ffi::BRepMesh_Edge_is_same_orientation(self as *const Self, theOther) }
+    }
+
+    /// Checks for equality with another edge.
+    /// @param theOther edge to be checked against this one.
+    /// @return TRUE if equal, FALSE if not.
+    pub fn is_equal(&self, theOther: &crate::ffi::BRepMesh_Edge) -> bool {
+        unsafe { crate::ffi::BRepMesh_Edge_is_equal(self as *const Self, theOther) }
     }
 
     /// Upcast to BRepMesh_OrientedEdge
     pub fn as_oriented_edge(&self) -> &OrientedEdge {
-        crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge(self)
+        unsafe { &*(crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge(self as *const Self)) }
     }
 
     /// Upcast to BRepMesh_OrientedEdge (mutable)
-    pub fn as_oriented_edge_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut OrientedEdge> {
-        crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(self)
+    pub fn as_oriented_edge_mut(&mut self) -> &mut OrientedEdge {
+        unsafe { &mut *(crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(self as *mut Self)) }
     }
 
     /// Inherited from BRepMesh_OrientedEdge: FirstNode()
     pub fn first_node(&self) -> i32 {
-        crate::ffi::BRepMesh_Edge_inherited_FirstNode(self)
+        unsafe { crate::ffi::BRepMesh_Edge_inherited_FirstNode(self as *const Self) }
     }
 
     /// Inherited from BRepMesh_OrientedEdge: LastNode()
     pub fn last_node(&self) -> i32 {
-        crate::ffi::BRepMesh_Edge_inherited_LastNode(self)
+        unsafe { crate::ffi::BRepMesh_Edge_inherited_LastNode(self as *const Self) }
     }
 }
 
@@ -1176,30 +2049,40 @@ impl Edge {
 /// it, else clears edges from outdated data.
 pub use crate::ffi::BRepMesh_EdgeDiscret as EdgeDiscret;
 
+unsafe impl crate::CppDeletable for EdgeDiscret {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_EdgeDiscret_destructor(ptr);
+    }
+}
+
 impl EdgeDiscret {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_EdgeDiscret_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeDiscret_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_EdgeDiscret_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_EdgeDiscret_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_EdgeDiscret_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_EdgeDiscret_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_EdgeDiscret_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_ModelAlgo
     pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
-        crate::ffi::BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo(self)
+        unsafe { &*(crate::ffi::BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo(self as *const Self)) }
     }
 
     /// Upcast to IMeshTools_ModelAlgo (mutable)
-    pub fn as_i_mesh_tools_model_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelAlgo> {
-        crate::ffi::BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo_mut(self)
+    pub fn as_i_mesh_tools_model_algo_mut(&mut self) -> &mut crate::i_mesh_tools::ModelAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo_mut(self as *mut Self))
+        }
     }
 }
 
@@ -1211,25 +2094,69 @@ impl EdgeDiscret {
 /// representation of an edge stored in polygon.
 pub use crate::ffi::BRepMesh_EdgeTessellationExtractor as EdgeTessellationExtractor;
 
+unsafe impl crate::CppDeletable for EdgeTessellationExtractor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_EdgeTessellationExtractor_destructor(ptr);
+    }
+}
+
 impl EdgeTessellationExtractor {
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_name()
+    /// Returns number of tessellation points.
+    pub fn points_nb(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_EdgeTessellationExtractor_points_nb(self as *const Self) }
+    }
+
+    /// Returns parameters of solution with the given index.
+    /// @param theIndex index of tessellation point.
+    /// @param theParameter parameters on PCurve corresponded to the solution.
+    /// @param thePoint tessellation point.
+    /// @return True in case of valid result, false elewhere.
+    pub fn value(
+        &self,
+        theIndex: i32,
+        thePoint: &mut crate::ffi::gp_Pnt,
+        theParameter: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_EdgeTessellationExtractor_value(
+                self as *const Self,
+                theIndex,
+                thePoint,
+                theParameter,
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::BRepMesh_EdgeTessellationExtractor_dynamic_type(self as *const Self))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_CurveTessellator
     pub fn as_i_mesh_tools_curve_tessellator(&self) -> &crate::i_mesh_tools::CurveTessellator {
-        crate::ffi::BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to IMeshTools_CurveTessellator (mutable)
     pub fn as_i_mesh_tools_curve_tessellator_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::CurveTessellator> {
-        crate::ffi::BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator_mut(self)
+        &mut self,
+    ) -> &mut crate::i_mesh_tools::CurveTessellator {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator_mut(self as *mut Self))
+        }
     }
 }
 
@@ -1240,61 +2167,92 @@ impl EdgeTessellationExtractor {
 /// Auxiliary class analysing extrusion surface in order to generate internal nodes.
 pub use crate::ffi::BRepMesh_ExtrusionRangeSplitter as ExtrusionRangeSplitter;
 
+unsafe impl crate::CppDeletable for ExtrusionRangeSplitter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_ExtrusionRangeSplitter_destructor(ptr);
+    }
+}
+
 impl ExtrusionRangeSplitter {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_ctor()) }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter
     pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_NURBSRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_NURBSRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter (mutable)
-    pub fn as_nurbs_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut NURBSRangeSplitter> {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(self)
+    pub fn as_nurbs_range_splitter_mut(&mut self) -> &mut NURBSRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_UVParamRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
-    pub fn as_uv_param_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut UVParamRangeSplitter> {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self)
+    pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
-    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AddPoint(self, thePoint)
+    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AddPoint(
+                self as *mut Self,
+                thePoint,
+            )
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
-    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AdjustRange(self)
+    pub fn adjust_range(&mut self) {
+        unsafe {
+            crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
-    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_IsValid(self)
+    pub fn is_valid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
@@ -1302,13 +2260,24 @@ impl ExtrusionRangeSplitter {
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
         isToFaceBasis: bool,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Scale(
+                self as *const Self,
+                thePoint,
+                isToFaceBasis,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Point(self, thePoint2d)
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Point(
+                self as *const Self,
+                thePoint2d,
+            ))
+        }
     }
 }
 
@@ -1322,36 +2291,58 @@ impl ExtrusionRangeSplitter {
 /// other ones. All collisions are registered and returned as result of check.
 pub use crate::ffi::BRepMesh_FaceChecker as FaceChecker;
 
+unsafe impl crate::CppDeletable for FaceChecker {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_FaceChecker_destructor(ptr);
+    }
+}
+
 impl FaceChecker {
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_FaceChecker_get_type_name()
+    /// Performs check wires of the face for intersections.
+    /// @return True if there is no intersection, False elsewhere.
+    pub fn perform(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_FaceChecker_perform(self as *mut Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_FaceChecker_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_FaceChecker_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_FaceChecker_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_FaceChecker_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshFaceChecker> {
-        crate::ffi::BRepMesh_FaceChecker_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshFaceChecker> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_FaceChecker_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepMeshFaceChecker;
 
+unsafe impl crate::CppDeletable for HandleBRepMeshFaceChecker {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepMeshFaceChecker_destructor(ptr);
+    }
+}
+
 impl HandleBRepMeshFaceChecker {
     /// Dereference this Handle to access the underlying BRepMesh_FaceChecker
     pub fn get(&self) -> &crate::ffi::BRepMesh_FaceChecker {
-        crate::ffi::HandleBRepMeshFaceChecker_get(self)
+        unsafe { &*(crate::ffi::HandleBRepMeshFaceChecker_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_FaceChecker
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_FaceChecker> {
-        crate::ffi::HandleBRepMeshFaceChecker_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_FaceChecker {
+        unsafe { &mut *(crate::ffi::HandleBRepMeshFaceChecker_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1365,32 +2356,48 @@ impl HandleBRepMeshFaceChecker {
 /// algorithm according to type of surface of target face.
 pub use crate::ffi::BRepMesh_FaceDiscret as FaceDiscret;
 
+unsafe impl crate::CppDeletable for FaceDiscret {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_FaceDiscret_destructor(ptr);
+    }
+}
+
 impl FaceDiscret {
     /// Constructor.
     pub fn new_handleimeshtoolsmeshalgofactory(
         theAlgoFactory: &crate::ffi::HandleIMeshToolsMeshAlgoFactory,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_FaceDiscret_ctor_handleimeshtoolsmeshalgofactory(theAlgoFactory)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_FaceDiscret_ctor_handleimeshtoolsmeshalgofactory(
+                    theAlgoFactory,
+                ),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_FaceDiscret_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_FaceDiscret_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_FaceDiscret_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_FaceDiscret_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_FaceDiscret_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_ModelAlgo
     pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
-        crate::ffi::BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo(self)
+        unsafe { &*(crate::ffi::BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo(self as *const Self)) }
     }
 
     /// Upcast to IMeshTools_ModelAlgo (mutable)
-    pub fn as_i_mesh_tools_model_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelAlgo> {
-        crate::ffi::BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo_mut(self)
+    pub fn as_i_mesh_tools_model_algo_mut(&mut self) -> &mut crate::i_mesh_tools::ModelAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo_mut(self as *mut Self))
+        }
     }
 }
 
@@ -1404,6 +2411,12 @@ impl FaceDiscret {
 /// General aim is to calculate discretization points for the given
 /// curve or iso curve of surface according to the specified parameters.
 pub use crate::ffi::BRepMesh_GeomTool as GeomTool;
+
+unsafe impl crate::CppDeletable for GeomTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_GeomTool_destructor(ptr);
+    }
+}
 
 impl GeomTool {
     /// Constructor.
@@ -1422,16 +2435,73 @@ impl GeomTool {
         theAngDeflection: f64,
         theMinPointsNb: i32,
         theMinSize: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_GeomTool_ctor_curve_real4_int_real(
-            theCurve,
-            theFirstParam,
-            theLastParam,
-            theLinDeflection,
-            theAngDeflection,
-            theMinPointsNb,
-            theMinSize,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_GeomTool_ctor_curve_real4_int_real(
+                theCurve,
+                theFirstParam,
+                theLastParam,
+                theLinDeflection,
+                theAngDeflection,
+                theMinPointsNb,
+                theMinSize,
+            ))
+        }
+    }
+
+    /// Adds point to already calculated points (or replaces existing).
+    /// @param thePoint point to be added.
+    /// @param theParam parameter on the curve corresponding to the given point.
+    /// @param theIsReplace if TRUE replaces existing point lying within
+    /// parameteric tolerance of the given point.
+    /// @return index of new added point or found with parametric tolerance
+    pub fn add_point(
+        &mut self,
+        thePoint: &crate::ffi::gp_Pnt,
+        theParam: f64,
+        theIsReplace: bool,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::BRepMesh_GeomTool_add_point(
+                self as *mut Self,
+                thePoint,
+                theParam,
+                theIsReplace,
+            )
+        }
+    }
+
+    /// Returns number of discretization points.
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_GeomTool_nb_points(self as *const Self) }
+    }
+
+    /// Gets parameters of discretization point with the given index.
+    /// @param theIndex index of discretization point.
+    /// @param theIsoParam parameter on surface to be used as second coordinate
+    /// of resulting 2d point.
+    /// @param[out] theParam parameter of the point on the iso curve.
+    /// @param[out] thePoint discretization point.
+    /// @param[out] theUV discretization point in parametric space of the surface.
+    /// @return TRUE on success, FALSE elsewhere.
+    pub fn value(
+        &self,
+        theIndex: i32,
+        theIsoParam: f64,
+        theParam: &mut f64,
+        thePoint: &mut crate::ffi::gp_Pnt,
+        theUV: &mut crate::ffi::gp_Pnt2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_GeomTool_value(
+                self as *const Self,
+                theIndex,
+                theIsoParam,
+                theParam,
+                thePoint,
+                theUV,
+            )
+        }
     }
 
     /// Compute deflection of the given segment.
@@ -1440,11 +2510,13 @@ impl GeomTool {
         theLastPoint: &crate::ffi::gp_Pnt,
         theMidPoint: &crate::ffi::gp_Pnt,
     ) -> f64 {
-        crate::ffi::BRepMesh_GeomTool_square_deflection_of_segment(
-            theFirstPoint,
-            theLastPoint,
-            theMidPoint,
-        )
+        unsafe {
+            crate::ffi::BRepMesh_GeomTool_square_deflection_of_segment(
+                theFirstPoint,
+                theLastPoint,
+                theMidPoint,
+            )
+        }
     }
 }
 
@@ -1456,11 +2528,17 @@ impl GeomTool {
 /// correctly triangulated parts
 pub use crate::ffi::BRepMesh_IncrementalMesh as IncrementalMesh;
 
+unsafe impl crate::CppDeletable for IncrementalMesh {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_IncrementalMesh_destructor(ptr);
+    }
+}
+
 impl IncrementalMesh {
     /// @name mesher API
     /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_IncrementalMesh_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_IncrementalMesh_ctor()) }
     }
 
     /// Constructor.
@@ -1478,14 +2556,18 @@ impl IncrementalMesh {
         isRelative: bool,
         theAngDeflection: f64,
         isInParallel: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_real_bool_real_bool(
-            theShape,
-            theLinDeflection,
-            isRelative,
-            theAngDeflection,
-            isInParallel,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_real_bool_real_bool(
+                    theShape,
+                    theLinDeflection,
+                    isRelative,
+                    theAngDeflection,
+                    isInParallel,
+                ),
+            )
+        }
     }
 
     /// Constructor.
@@ -1496,12 +2578,16 @@ impl IncrementalMesh {
         theShape: &crate::ffi::TopoDS_Shape,
         theParameters: &crate::ffi::IMeshTools_Parameters,
         theRange: &crate::ffi::Message_ProgressRange,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_parameters_progressrange(
-            theShape,
-            theParameters,
-            theRange,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_IncrementalMesh_ctor_shape_parameters_progressrange(
+                    theShape,
+                    theParameters,
+                    theRange,
+                ),
+            )
+        }
     }
 
     /// Constructor.
@@ -1518,7 +2604,7 @@ impl IncrementalMesh {
         theLinDeflection: f64,
         isRelative: bool,
         theAngDeflection: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_real_bool_real_bool(
             theShape,
             theLinDeflection,
@@ -1541,7 +2627,7 @@ impl IncrementalMesh {
         theShape: &crate::ffi::TopoDS_Shape,
         theLinDeflection: f64,
         isRelative: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_real_bool_real_bool(theShape, theLinDeflection, isRelative, 0.5, false)
     }
 
@@ -1557,53 +2643,91 @@ impl IncrementalMesh {
     pub fn new_shape_real(
         theShape: &crate::ffi::TopoDS_Shape,
         theLinDeflection: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_real_bool_real_bool(theShape, theLinDeflection, false, 0.5, false)
+    }
+
+    /// Performs meshing of the shape.
+    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepMesh_IncrementalMesh_perform(self as *mut Self, theRange) }
+    }
+
+    /// @name accessing to parameters.
+    /// Returns meshing parameters
+    pub fn parameters(&self) -> &crate::ffi::IMeshTools_Parameters {
+        unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_parameters(self as *const Self)) }
+    }
+
+    /// Returns modifiable meshing parameters
+    pub fn change_parameters(&mut self) -> &mut crate::ffi::IMeshTools_Parameters {
+        unsafe { &mut *(crate::ffi::BRepMesh_IncrementalMesh_change_parameters(self as *mut Self)) }
+    }
+
+    /// Returns modified flag.
+    pub fn is_modified(&self) -> bool {
+        unsafe { crate::ffi::BRepMesh_IncrementalMesh_is_modified(self as *const Self) }
+    }
+
+    /// Returns accumulated status flags faced during meshing.
+    pub fn get_status_flags(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_IncrementalMesh_get_status_flags(self as *const Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_dynamic_type(self as *const Self)) }
     }
 
     /// Returns multi-threading usage flag set by default in
     /// Discret() static method (thus applied only to Mesh Factories).
     pub fn is_parallel_default() -> bool {
-        crate::ffi::BRepMesh_IncrementalMesh_is_parallel_default()
+        unsafe { crate::ffi::BRepMesh_IncrementalMesh_is_parallel_default() }
     }
 
     /// Setup multi-threading usage flag set by default in
     /// Discret() static method (thus applied only to Mesh Factories).
     pub fn set_parallel_default(isInParallel: bool) {
-        crate::ffi::BRepMesh_IncrementalMesh_set_parallel_default(isInParallel)
+        unsafe { crate::ffi::BRepMesh_IncrementalMesh_set_parallel_default(isInParallel) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_IncrementalMesh_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_IncrementalMesh_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_IncrementalMesh_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_get_type_descriptor()) }
     }
 
     /// Upcast to BRepMesh_DiscretRoot
     pub fn as_discret_root(&self) -> &DiscretRoot {
-        crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot(self as *const Self))
+        }
     }
 
     /// Upcast to BRepMesh_DiscretRoot (mutable)
-    pub fn as_discret_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut DiscretRoot> {
-        crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut(self)
+    pub fn as_discret_root_mut(&mut self) -> &mut DiscretRoot {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DiscretRoot: SetShape()
-    pub fn set_shape(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::BRepMesh_IncrementalMesh_inherited_SetShape(self, theShape)
+    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe {
+            crate::ffi::BRepMesh_IncrementalMesh_inherited_SetShape(self as *mut Self, theShape)
+        }
     }
 
     /// Inherited from BRepMesh_DiscretRoot: Shape()
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepMesh_IncrementalMesh_inherited_Shape(self)
+        unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited from BRepMesh_DiscretRoot: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepMesh_IncrementalMesh_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepMesh_IncrementalMesh_inherited_IsDone(self as *const Self) }
     }
 }
 
@@ -1615,10 +2739,16 @@ impl IncrementalMesh {
 /// of different complexity depending on type of target surface.
 pub use crate::ffi::BRepMesh_MeshAlgoFactory as MeshAlgoFactory;
 
+unsafe impl crate::CppDeletable for MeshAlgoFactory {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_MeshAlgoFactory_destructor(ptr);
+    }
+}
+
 impl MeshAlgoFactory {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_MeshAlgoFactory_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshAlgoFactory_ctor()) }
     }
 
     /// Creates instance of meshing algorithm for the given type of surface.
@@ -1626,28 +2756,46 @@ impl MeshAlgoFactory {
         &self,
         theSurfaceType: crate::geom_abs::SurfaceType,
         theParameters: &crate::ffi::IMeshTools_Parameters,
-    ) -> cxx::UniquePtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
-        crate::ffi::BRepMesh_MeshAlgoFactory_get_algo(self, theSurfaceType.into(), theParameters)
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshAlgoFactory_get_algo(
+                self as *const Self,
+                theSurfaceType.into(),
+                theParameters,
+            ))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_MeshAlgoFactory_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_MeshAlgoFactory_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_MeshAlgoFactory_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_MeshAlgoFactory_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_MeshAlgoFactory
     pub fn as_i_mesh_tools_mesh_algo_factory(&self) -> &crate::i_mesh_tools::MeshAlgoFactory {
-        crate::ffi::BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to IMeshTools_MeshAlgoFactory (mutable)
     pub fn as_i_mesh_tools_mesh_algo_factory_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::MeshAlgoFactory> {
-        crate::ffi::BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(self)
+        &mut self,
+    ) -> &mut crate::i_mesh_tools::MeshAlgoFactory {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -1658,44 +2806,127 @@ impl MeshAlgoFactory {
 /// Auxiliary tool providing API for manipulation with BRepMesh_DataStructureOfDelaun.
 pub use crate::ffi::BRepMesh_MeshTool as MeshTool;
 
+unsafe impl crate::CppDeletable for MeshTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_MeshTool_destructor(ptr);
+    }
+}
+
 impl MeshTool {
     /// Constructor.
     /// Initializes tool by the given data structure.
     pub fn new_handlebrepmeshdatastructureofdelaun(
         theStructure: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_MeshTool_ctor_handlebrepmeshdatastructureofdelaun(theStructure)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_MeshTool_ctor_handlebrepmeshdatastructureofdelaun(
+                    theStructure,
+                ),
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_MeshTool_get_type_name()
+    /// Returns data structure manipulated by this tool.
+    pub fn get_structure(&self) -> &crate::ffi::HandleBRepMeshDataStructureOfDelaun {
+        unsafe { &*(crate::ffi::BRepMesh_MeshTool_get_structure(self as *const Self)) }
+    }
+
+    /// Adds new triangle with specified nodes to mesh.
+    /// Legalizes triangle in case if it violates circle criteria.
+    pub fn add_and_legalize_triangle(&mut self, thePoint1: i32, thePoint2: i32, thePoint3: i32) {
+        unsafe {
+            crate::ffi::BRepMesh_MeshTool_add_and_legalize_triangle(
+                self as *mut Self,
+                thePoint1,
+                thePoint2,
+                thePoint3,
+            )
+        }
+    }
+
+    /// Adds new link to mesh.
+    /// Updates link index and link orientation parameters.
+    pub fn add_link(
+        &mut self,
+        theFirstNode: i32,
+        theLastNode: i32,
+        theLinkIndex: &mut i32,
+        theLinkOri: &mut bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_MeshTool_add_link(
+                self as *mut Self,
+                theFirstNode,
+                theLastNode,
+                theLinkIndex,
+                theLinkOri,
+            )
+        }
+    }
+
+    /// Performs legalization of triangles connected to the specified link.
+    pub fn legalize(&mut self, theLinkIndex: i32) {
+        unsafe { crate::ffi::BRepMesh_MeshTool_legalize(self as *mut Self, theLinkIndex) }
+    }
+
+    /// Erases all elements connected to the specified artificial node.
+    /// In addition, erases the artificial node itself.
+    pub fn erase_items_connected_to(&mut self, theNodeIndex: i32) {
+        unsafe {
+            crate::ffi::BRepMesh_MeshTool_erase_items_connected_to(self as *mut Self, theNodeIndex)
+        }
+    }
+
+    /// Cleans frontier links from triangles to the right.
+    pub fn clean_frontier_links(&mut self) {
+        unsafe { crate::ffi::BRepMesh_MeshTool_clean_frontier_links(self as *mut Self) }
+    }
+
+    /// Erases all links that have no elements connected to them.
+    pub fn erase_free_links(&mut self) {
+        unsafe { crate::ffi::BRepMesh_MeshTool_erase_free_links(self as *mut Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_MeshTool_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_MeshTool_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_MeshTool_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_MeshTool_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshMeshTool> {
-        crate::ffi::BRepMesh_MeshTool_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshMeshTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshTool_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepMeshMeshTool;
 
+unsafe impl crate::CppDeletable for HandleBRepMeshMeshTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepMeshMeshTool_destructor(ptr);
+    }
+}
+
 impl HandleBRepMeshMeshTool {
     /// Dereference this Handle to access the underlying BRepMesh_MeshTool
     pub fn get(&self) -> &crate::ffi::BRepMesh_MeshTool {
-        crate::ffi::HandleBRepMeshMeshTool_get(self)
+        unsafe { &*(crate::ffi::HandleBRepMeshMeshTool_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_MeshTool
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_MeshTool> {
-        crate::ffi::HandleBRepMeshMeshTool_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_MeshTool {
+        unsafe { &mut *(crate::ffi::HandleBRepMeshMeshTool_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1711,77 +2942,96 @@ impl HandleBRepMeshMeshTool {
 /// Message_Fail2 - model has not been build due to unexpected reason.
 pub use crate::ffi::BRepMesh_ModelBuilder as ModelBuilder;
 
+unsafe impl crate::CppDeletable for ModelBuilder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_ModelBuilder_destructor(ptr);
+    }
+}
+
 impl ModelBuilder {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_ModelBuilder_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelBuilder_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_ModelBuilder_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_ModelBuilder_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_ModelBuilder_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_ModelBuilder
     pub fn as_i_mesh_tools_model_builder(&self) -> &crate::i_mesh_tools::ModelBuilder {
-        crate::ffi::BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder(self as *const Self))
+        }
     }
 
     /// Upcast to IMeshTools_ModelBuilder (mutable)
-    pub fn as_i_mesh_tools_model_builder_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelBuilder> {
-        crate::ffi::BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder_mut(self)
+    pub fn as_i_mesh_tools_model_builder_mut(&mut self) -> &mut crate::i_mesh_tools::ModelBuilder {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to Message_Algorithm
     pub fn as_message_algorithm(&self) -> &crate::message::Algorithm {
-        crate::ffi::BRepMesh_ModelBuilder_as_Message_Algorithm(self)
+        unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_as_Message_Algorithm(self as *const Self)) }
     }
 
     /// Upcast to Message_Algorithm (mutable)
-    pub fn as_message_algorithm_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::message::Algorithm> {
-        crate::ffi::BRepMesh_ModelBuilder_as_Message_Algorithm_mut(self)
+    pub fn as_message_algorithm_mut(&mut self) -> &mut crate::message::Algorithm {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ModelBuilder_as_Message_Algorithm_mut(self as *mut Self))
+        }
     }
 
     /// Inherited from Message_Algorithm: SetStatus()
-    pub fn set_status(self: std::pin::Pin<&mut Self>, theStat: crate::message::Status) {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_SetStatus(self, theStat.into())
+    pub fn set_status(&mut self, theStat: crate::message::Status) {
+        unsafe {
+            crate::ffi::BRepMesh_ModelBuilder_inherited_SetStatus(self as *mut Self, theStat.into())
+        }
     }
 
     /// Inherited from Message_Algorithm: GetStatus()
     pub fn get_status(&self) -> &crate::ffi::Message_ExecStatus {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_GetStatus(self)
+        unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_inherited_GetStatus(self as *const Self)) }
     }
 
     /// Inherited from Message_Algorithm: ChangeStatus()
-    pub fn change_status(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::Message_ExecStatus> {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_ChangeStatus(self)
+    pub fn change_status(&mut self) -> &mut crate::ffi::Message_ExecStatus {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ModelBuilder_inherited_ChangeStatus(self as *mut Self))
+        }
     }
 
     /// Inherited from Message_Algorithm: ClearStatus()
-    pub fn clear_status(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_ClearStatus(self)
+    pub fn clear_status(&mut self) {
+        unsafe { crate::ffi::BRepMesh_ModelBuilder_inherited_ClearStatus(self as *mut Self) }
     }
 
     /// Inherited from Message_Algorithm: SetMessenger()
-    pub fn set_messenger(
-        self: std::pin::Pin<&mut Self>,
-        theMsgr: &crate::ffi::HandleMessageMessenger,
-    ) {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_SetMessenger(self, theMsgr)
+    pub fn set_messenger(&mut self, theMsgr: &crate::ffi::HandleMessageMessenger) {
+        unsafe {
+            crate::ffi::BRepMesh_ModelBuilder_inherited_SetMessenger(self as *mut Self, theMsgr)
+        }
     }
 
     /// Inherited from Message_Algorithm: GetMessenger()
-    pub fn get_messenger(&self) -> cxx::UniquePtr<crate::ffi::HandleMessageMessenger> {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessenger(self)
+    pub fn get_messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessenger(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited from Message_Algorithm: SendStatusMessages()
@@ -1791,37 +3041,47 @@ impl ModelBuilder {
         theTraceLevel: crate::message::Gravity,
         theMaxCount: i32,
     ) {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_SendStatusMessages(
-            self,
-            theFilter,
-            theTraceLevel.into(),
-            theMaxCount,
-        )
+        unsafe {
+            crate::ffi::BRepMesh_ModelBuilder_inherited_SendStatusMessages(
+                self as *const Self,
+                theFilter,
+                theTraceLevel.into(),
+                theMaxCount,
+            )
+        }
     }
 
     /// Inherited from Message_Algorithm: SendMessages()
     pub fn send_messages(&self, theTraceLevel: crate::message::Gravity, theMaxCount: i32) {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_SendMessages(
-            self,
-            theTraceLevel.into(),
-            theMaxCount,
-        )
+        unsafe {
+            crate::ffi::BRepMesh_ModelBuilder_inherited_SendMessages(
+                self as *const Self,
+                theTraceLevel.into(),
+                theMaxCount,
+            )
+        }
     }
 
     /// Inherited from Message_Algorithm: AddStatus()
-    pub fn add_status(
-        self: std::pin::Pin<&mut Self>,
-        theOther: &crate::ffi::HandleMessageAlgorithm,
-    ) {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_AddStatus(self, theOther)
+    pub fn add_status(&mut self, theOther: &crate::ffi::HandleMessageAlgorithm) {
+        unsafe {
+            crate::ffi::BRepMesh_ModelBuilder_inherited_AddStatus(self as *mut Self, theOther)
+        }
     }
 
     /// Inherited from Message_Algorithm: GetMessageStrings()
     pub fn get_message_strings(
         &self,
         theStatus: crate::message::Status,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
-        crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessageStrings(self, theStatus.into())
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessageStrings(
+                    self as *const Self,
+                    theStatus.into(),
+                ),
+            )
+        }
     }
 }
 
@@ -1843,30 +3103,40 @@ impl ModelBuilder {
 /// Checks can be performed in parallel mode.
 pub use crate::ffi::BRepMesh_ModelHealer as ModelHealer;
 
+unsafe impl crate::CppDeletable for ModelHealer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_ModelHealer_destructor(ptr);
+    }
+}
+
 impl ModelHealer {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_ModelHealer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelHealer_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_ModelHealer_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_ModelHealer_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_ModelHealer_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_ModelHealer_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_ModelHealer_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_ModelAlgo
     pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
-        crate::ffi::BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo(self)
+        unsafe { &*(crate::ffi::BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo(self as *const Self)) }
     }
 
     /// Upcast to IMeshTools_ModelAlgo (mutable)
-    pub fn as_i_mesh_tools_model_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelAlgo> {
-        crate::ffi::BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo_mut(self)
+    pub fn as_i_mesh_tools_model_algo_mut(&mut self) -> &mut crate::i_mesh_tools::ModelAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo_mut(self as *mut Self))
+        }
     }
 }
 
@@ -1878,30 +3148,44 @@ impl ModelHealer {
 /// Stores polygons on triangulations to TopoDS_Edge.
 pub use crate::ffi::BRepMesh_ModelPostProcessor as ModelPostProcessor;
 
+unsafe impl crate::CppDeletable for ModelPostProcessor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_ModelPostProcessor_destructor(ptr);
+    }
+}
+
 impl ModelPostProcessor {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_ModelPostProcessor_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelPostProcessor_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_ModelPostProcessor_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_ModelPostProcessor_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_ModelPostProcessor_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_ModelPostProcessor_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_ModelPostProcessor_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_ModelAlgo
     pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
-        crate::ffi::BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo(self as *const Self))
+        }
     }
 
     /// Upcast to IMeshTools_ModelAlgo (mutable)
-    pub fn as_i_mesh_tools_model_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelAlgo> {
-        crate::ffi::BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo_mut(self)
+    pub fn as_i_mesh_tools_model_algo_mut(&mut self) -> &mut crate::i_mesh_tools::ModelAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -1914,30 +3198,44 @@ impl ModelPostProcessor {
 /// have IMeshData_Outdated status.
 pub use crate::ffi::BRepMesh_ModelPreProcessor as ModelPreProcessor;
 
+unsafe impl crate::CppDeletable for ModelPreProcessor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_ModelPreProcessor_destructor(ptr);
+    }
+}
+
 impl ModelPreProcessor {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_ModelPreProcessor_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelPreProcessor_ctor()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_ModelPreProcessor_get_type_name()
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_ModelPreProcessor_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_ModelPreProcessor_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_ModelPreProcessor_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_ModelPreProcessor_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_ModelAlgo
     pub fn as_i_mesh_tools_model_algo(&self) -> &crate::i_mesh_tools::ModelAlgo {
-        crate::ffi::BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo(self as *const Self))
+        }
     }
 
     /// Upcast to IMeshTools_ModelAlgo (mutable)
-    pub fn as_i_mesh_tools_model_algo_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ModelAlgo> {
-        crate::ffi::BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo_mut(self)
+    pub fn as_i_mesh_tools_model_algo_mut(&mut self) -> &mut crate::i_mesh_tools::ModelAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -1949,44 +3247,69 @@ impl ModelPreProcessor {
 /// internal nodes for NURBS surface.
 pub use crate::ffi::BRepMesh_NURBSRangeSplitter as NURBSRangeSplitter;
 
+unsafe impl crate::CppDeletable for NURBSRangeSplitter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_NURBSRangeSplitter_destructor(ptr);
+    }
+}
+
 impl NURBSRangeSplitter {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_NURBSRangeSplitter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_NURBSRangeSplitter_ctor()) }
+    }
+
+    /// Updates discrete range of surface according to its geometric range.
+    pub fn adjust_range(&mut self) {
+        unsafe { crate::ffi::BRepMesh_NURBSRangeSplitter_adjust_range(self as *mut Self) }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
-        crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
-        crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
-    pub fn as_uv_param_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut UVParamRangeSplitter> {
-        crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self)
+    pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
-    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_AddPoint(self, thePoint)
+    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
-    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_IsValid(self)
+    pub fn is_valid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
@@ -1994,13 +3317,24 @@ impl NURBSRangeSplitter {
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
         isToFaceBasis: bool,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Scale(
+                self as *const Self,
+                thePoint,
+                isToFaceBasis,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Point(self, thePoint2d)
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Point(
+                self as *const Self,
+                thePoint2d,
+            ))
+        }
     }
 }
 
@@ -2011,15 +3345,43 @@ impl NURBSRangeSplitter {
 /// Light weighted structure representing simple link.
 pub use crate::ffi::BRepMesh_OrientedEdge as OrientedEdge;
 
+unsafe impl crate::CppDeletable for OrientedEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_OrientedEdge_destructor(ptr);
+    }
+}
+
 impl OrientedEdge {
     /// Default constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_OrientedEdge_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_OrientedEdge_ctor()) }
     }
 
     /// Constructs a link between two vertices.
-    pub fn new_int2(theFirstNode: i32, theLastNode: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_OrientedEdge_ctor_int2(theFirstNode, theLastNode)
+    pub fn new_int2(theFirstNode: i32, theLastNode: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_OrientedEdge_ctor_int2(
+                theFirstNode,
+                theLastNode,
+            ))
+        }
+    }
+
+    /// Returns index of first node of the Link.
+    pub fn first_node(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_OrientedEdge_first_node(self as *const Self) }
+    }
+
+    /// Returns index of last node of the Link.
+    pub fn last_node(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_OrientedEdge_last_node(self as *const Self) }
+    }
+
+    /// Checks this and other edge for equality.
+    /// @param theOther edge to be checked against this one.
+    /// @return TRUE if edges have the same orientation, FALSE if not.
+    pub fn is_equal(&self, theOther: &crate::ffi::BRepMesh_OrientedEdge) -> bool {
+        unsafe { crate::ffi::BRepMesh_OrientedEdge_is_equal(self as *const Self, theOther) }
     }
 }
 
@@ -2032,10 +3394,72 @@ impl OrientedEdge {
 /// store more than two indices in it.
 pub use crate::ffi::BRepMesh_PairOfIndex as PairOfIndex;
 
+unsafe impl crate::CppDeletable for PairOfIndex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_PairOfIndex_destructor(ptr);
+    }
+}
+
 impl PairOfIndex {
     /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_PairOfIndex_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_PairOfIndex_ctor()) }
+    }
+
+    /// Clears indices.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepMesh_PairOfIndex_clear(self as *mut Self) }
+    }
+
+    /// Appends index to the pair.
+    pub fn append(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BRepMesh_PairOfIndex_append(self as *mut Self, theIndex) }
+    }
+
+    /// Prepends index to the pair.
+    pub fn prepend(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BRepMesh_PairOfIndex_prepend(self as *mut Self, theIndex) }
+    }
+
+    /// Returns is pair is empty.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::BRepMesh_PairOfIndex_is_empty(self as *const Self) }
+    }
+
+    /// Returns number of initialized indices.
+    pub fn extent(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_PairOfIndex_extent(self as *const Self) }
+    }
+
+    /// Returns first index of pair.
+    pub fn first_index(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_PairOfIndex_first_index(self as *const Self) }
+    }
+
+    /// Returns last index of pair
+    pub fn last_index(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_PairOfIndex_last_index(self as *const Self) }
+    }
+
+    /// Returns index corresponding to the given position in the pair.
+    /// @param thePairPos position of index in the pair (1 or 2).
+    pub fn index(&self, thePairPos: i32) -> i32 {
+        unsafe { crate::ffi::BRepMesh_PairOfIndex_index(self as *const Self, thePairPos) }
+    }
+
+    /// Sets index corresponding to the given position in the pair.
+    /// @param thePairPos position of index in the pair (1 or 2).
+    /// @param theIndex index to be stored.
+    pub fn set_index(&mut self, thePairPos: i32, theIndex: i32) {
+        unsafe {
+            crate::ffi::BRepMesh_PairOfIndex_set_index(self as *mut Self, thePairPos, theIndex)
+        }
+    }
+
+    /// Remove index from the given position.
+    /// @param thePairPos position of index in the pair (1 or 2).
+    pub fn remove_index(&mut self, thePairPos: i32) {
+        unsafe { crate::ffi::BRepMesh_PairOfIndex_remove_index(self as *mut Self, thePairPos) }
     }
 }
 
@@ -2047,49 +3471,178 @@ impl PairOfIndex {
 /// selector of components of a mesh.
 pub use crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun as SelectorOfDataStructureOfDelaun;
 
+unsafe impl crate::CppDeletable for SelectorOfDataStructureOfDelaun {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_destructor(ptr);
+    }
+}
+
 impl SelectorOfDataStructureOfDelaun {
     /// Default constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor())
+        }
     }
 
     /// Constructor.
     /// Initializes selector by the mesh.
     pub fn new_handlebrepmeshdatastructureofdelaun(
         theMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor_handlebrepmeshdatastructureofdelaun(theMesh)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor_handlebrepmeshdatastructureofdelaun(theMesh))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name()
+    /// Initializes selector by the mesh.
+    pub fn initialize(&mut self, theMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun) {
+        unsafe {
+            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_initialize(
+                self as *mut Self,
+                theMesh,
+            )
+        }
+    }
+
+    /// Selects all neighboring elements of the given node.
+    pub fn neighbours_of_vertex(&mut self, theNode: &crate::ffi::BRepMesh_Vertex) {
+        unsafe {
+            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_vertex(
+                self as *mut Self,
+                theNode,
+            )
+        }
+    }
+
+    /// Selects all neighboring elements of node with the given index.
+    pub fn neighbours_of_node(&mut self, theNodeIndex: i32) {
+        unsafe {
+            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_node(
+                self as *mut Self,
+                theNodeIndex,
+            )
+        }
+    }
+
+    /// Selects all neighboring elements of the given link.
+    pub fn neighbours_of_edge(&mut self, theLink: &crate::ffi::BRepMesh_Edge) {
+        unsafe {
+            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_edge(
+                self as *mut Self,
+                theLink,
+            )
+        }
+    }
+
+    /// Selects all neighboring elements of link with the given index.
+    pub fn neighbours_of_link(&mut self, theLinkIndex: i32) {
+        unsafe {
+            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_link(
+                self as *mut Self,
+                theLinkIndex,
+            )
+        }
+    }
+
+    /// Selects all neighboring elements of the given element.
+    pub fn neighbours_of_triangle(&mut self, theElement: &crate::ffi::BRepMesh_Triangle) {
+        unsafe {
+            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_triangle(
+                self as *mut Self,
+                theElement,
+            )
+        }
+    }
+
+    /// Selects all neighboring elements by nodes of the given element.
+    pub fn neighbours_of_element(&mut self, theElementIndex: i32) {
+        unsafe {
+            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_element(
+                self as *mut Self,
+                theElementIndex,
+            )
+        }
+    }
+
+    /// Selects all neighboring elements by links of the given element.
+    pub fn neighbours_by_edge_of(&mut self, theElement: &crate::ffi::BRepMesh_Triangle) {
+        unsafe {
+            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_by_edge_of(
+                self as *mut Self,
+                theElement,
+            )
+        }
+    }
+
+    /// Adds a level of neighbours by edge to the selector.
+    pub fn neighbours_of_selectorofdatastructureofdelaun(
+        &mut self,
+        arg0: &crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_selectorofdatastructureofdelaun(self as *mut Self, arg0)
+        }
+    }
+
+    /// Adds a level of neighbours by edge the selector.
+    pub fn add_neighbours(&mut self) {
+        unsafe {
+            crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_add_neighbours(self as *mut Self)
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun> {
-        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_to_handle(obj.into_raw()),
+            )
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun;
 
+unsafe impl crate::CppDeletable for HandleBRepMeshSelectorOfDataStructureOfDelaun {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_destructor(ptr);
+    }
+}
+
 impl HandleBRepMeshSelectorOfDataStructureOfDelaun {
     /// Dereference this Handle to access the underlying BRepMesh_SelectorOfDataStructureOfDelaun
     pub fn get(&self) -> &crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun {
-        crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_get(self)
+        unsafe {
+            &*(crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_get(self as *const Self))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_SelectorOfDataStructureOfDelaun
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun> {
-        crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun {
+        unsafe {
+            &mut *(crate::ffi::HandleBRepMeshSelectorOfDataStructureOfDelaun_get_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -2101,16 +3654,26 @@ impl HandleBRepMeshSelectorOfDataStructureOfDelaun {
 /// retrieve and store data to TopoDS and model shape.
 pub use crate::ffi::BRepMesh_ShapeTool as ShapeTool;
 
+unsafe impl crate::CppDeletable for ShapeTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_ShapeTool_destructor(ptr);
+    }
+}
+
 impl ShapeTool {
     /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_ShapeTool_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ShapeTool_ctor()) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_ShapeTool_dynamic_type(self as *const Self)) }
     }
 
     /// Returns maximum tolerance of the given face.
     /// Considers tolerances of edges and vertices contained in the given face.
     pub fn max_face_tolerance(theFace: &crate::ffi::TopoDS_Face) -> f64 {
-        crate::ffi::BRepMesh_ShapeTool_max_face_tolerance(theFace)
+        unsafe { crate::ffi::BRepMesh_ShapeTool_max_face_tolerance(theFace) }
     }
 
     /// Gets the maximum dimension of the given bounding box.
@@ -2118,7 +3681,7 @@ impl ShapeTool {
     /// @param theBox bounding box to be processed.
     /// @param theMaxDimension maximum dimension of the given box.
     pub fn box_max_dimension(theBox: &crate::ffi::Bnd_Box, theMaxDimension: &mut f64) {
-        crate::ffi::BRepMesh_ShapeTool_box_max_dimension(theBox, theMaxDimension)
+        unsafe { crate::ffi::BRepMesh_ShapeTool_box_max_dimension(theBox, theMaxDimension) }
     }
 
     /// Stores the given triangulation into the given face.
@@ -2126,15 +3689,15 @@ impl ShapeTool {
     /// @param theTriangulation triangulation to be stored into the face.
     pub fn add_in_face(
         theFace: &crate::ffi::TopoDS_Face,
-        theTriangulation: std::pin::Pin<&mut crate::ffi::HandlePolyTriangulation>,
+        theTriangulation: &mut crate::ffi::HandlePolyTriangulation,
     ) {
-        crate::ffi::BRepMesh_ShapeTool_add_in_face(theFace, theTriangulation)
+        unsafe { crate::ffi::BRepMesh_ShapeTool_add_in_face(theFace, theTriangulation) }
     }
 
     /// Nullifies triangulation stored in the face.
     /// @param theFace face to be updated by null triangulation.
     pub fn nullify_face(theFace: &crate::ffi::TopoDS_Face) {
-        crate::ffi::BRepMesh_ShapeTool_nullify_face(theFace)
+        unsafe { crate::ffi::BRepMesh_ShapeTool_nullify_face(theFace) }
     }
 
     /// Nullifies polygon on triangulation stored in the edge.
@@ -2146,11 +3709,13 @@ impl ShapeTool {
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
         theLocation: &crate::ffi::TopLoc_Location,
     ) {
-        crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_handlepolytriangulation_location(
-            theEdge,
-            theTriangulation,
-            theLocation,
-        )
+        unsafe {
+            crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_handlepolytriangulation_location(
+                theEdge,
+                theTriangulation,
+                theLocation,
+            )
+        }
     }
 
     /// Nullifies 3d polygon stored in the edge.
@@ -2160,7 +3725,7 @@ impl ShapeTool {
         theEdge: &crate::ffi::TopoDS_Edge,
         theLocation: &crate::ffi::TopLoc_Location,
     ) {
-        crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_location(theEdge, theLocation)
+        unsafe { crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_location(theEdge, theLocation) }
     }
 
     /// Updates the given edge by the given tessellated representation.
@@ -2174,7 +3739,9 @@ impl ShapeTool {
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
         theLocation: &crate::ffi::TopLoc_Location,
     ) {
-        crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(theEdge, thePolygon, theTriangulation, theLocation)
+        unsafe {
+            crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(theEdge, thePolygon, theTriangulation, theLocation)
+        }
     }
 
     /// Updates the given edge by the given tessellated representation.
@@ -2184,7 +3751,9 @@ impl ShapeTool {
         theEdge: &crate::ffi::TopoDS_Edge,
         thePolygon: &crate::ffi::HandlePolyPolygon3D,
     ) {
-        crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygon3d(theEdge, thePolygon)
+        unsafe {
+            crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygon3d(theEdge, thePolygon)
+        }
     }
 
     /// Updates the given seam edge by the given tessellated representations.
@@ -2202,7 +3771,9 @@ impl ShapeTool {
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
         theLocation: &crate::ffi::TopLoc_Location,
     ) {
-        crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation_location(theEdge, thePolygon1, thePolygon2, theTriangulation, theLocation)
+        unsafe {
+            crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation_location(theEdge, thePolygon1, thePolygon2, theTriangulation, theLocation)
+        }
     }
 
     /// Applies location to the given point and return result.
@@ -2211,92 +3782,106 @@ impl ShapeTool {
     pub fn use_location(
         thePnt: &crate::ffi::gp_Pnt,
         theLoc: &crate::ffi::TopLoc_Location,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_ShapeTool_use_location(thePnt, theLoc)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ShapeTool_use_location(thePnt, theLoc))
+        }
     }
 
     /// Gets the strict UV locations of the extremities of the edge using pcurve.
     pub fn uv_points(
         theEdge: &crate::ffi::TopoDS_Edge,
         theFace: &crate::ffi::TopoDS_Face,
-        theFirstPoint2d: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
-        theLastPoint2d: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        theFirstPoint2d: &mut crate::ffi::gp_Pnt2d,
+        theLastPoint2d: &mut crate::ffi::gp_Pnt2d,
         isConsiderOrientation: bool,
     ) -> bool {
-        crate::ffi::BRepMesh_ShapeTool_uv_points(
-            theEdge,
-            theFace,
-            theFirstPoint2d,
-            theLastPoint2d,
-            isConsiderOrientation,
-        )
+        unsafe {
+            crate::ffi::BRepMesh_ShapeTool_uv_points(
+                theEdge,
+                theFace,
+                theFirstPoint2d,
+                theLastPoint2d,
+                isConsiderOrientation,
+            )
+        }
     }
 
     /// Gets the parametric range of the given edge on the given face.
     pub fn range_edge_face_handlegeom2dcurve_real2_bool(
         theEdge: &crate::ffi::TopoDS_Edge,
         theFace: &crate::ffi::TopoDS_Face,
-        thePCurve: std::pin::Pin<&mut crate::ffi::HandleGeom2dCurve>,
+        thePCurve: &mut crate::ffi::HandleGeom2dCurve,
         theFirstParam: &mut f64,
         theLastParam: &mut f64,
         isConsiderOrientation: bool,
     ) -> bool {
-        crate::ffi::BRepMesh_ShapeTool_range_edge_face_handlegeom2dcurve_real2_bool(
-            theEdge,
-            theFace,
-            thePCurve,
-            theFirstParam,
-            theLastParam,
-            isConsiderOrientation,
-        )
+        unsafe {
+            crate::ffi::BRepMesh_ShapeTool_range_edge_face_handlegeom2dcurve_real2_bool(
+                theEdge,
+                theFace,
+                thePCurve,
+                theFirstParam,
+                theLastParam,
+                isConsiderOrientation,
+            )
+        }
     }
 
     /// Gets the 3d range of the given edge.
     pub fn range_edge_handlegeomcurve_real2_bool(
         theEdge: &crate::ffi::TopoDS_Edge,
-        theCurve: std::pin::Pin<&mut crate::ffi::HandleGeomCurve>,
+        theCurve: &mut crate::ffi::HandleGeomCurve,
         theFirstParam: &mut f64,
         theLastParam: &mut f64,
         isConsiderOrientation: bool,
     ) -> bool {
-        crate::ffi::BRepMesh_ShapeTool_range_edge_handlegeomcurve_real2_bool(
-            theEdge,
-            theCurve,
-            theFirstParam,
-            theLastParam,
-            isConsiderOrientation,
-        )
+        unsafe {
+            crate::ffi::BRepMesh_ShapeTool_range_edge_handlegeomcurve_real2_bool(
+                theEdge,
+                theCurve,
+                theFirstParam,
+                theLastParam,
+                isConsiderOrientation,
+            )
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_ShapeTool_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_ShapeTool_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_ShapeTool_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_ShapeTool_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshShapeTool> {
-        crate::ffi::BRepMesh_ShapeTool_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshShapeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ShapeTool_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepMeshShapeTool;
 
+unsafe impl crate::CppDeletable for HandleBRepMeshShapeTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepMeshShapeTool_destructor(ptr);
+    }
+}
+
 impl HandleBRepMeshShapeTool {
     /// Dereference this Handle to access the underlying BRepMesh_ShapeTool
     pub fn get(&self) -> &crate::ffi::BRepMesh_ShapeTool {
-        crate::ffi::HandleBRepMeshShapeTool_get(self)
+        unsafe { &*(crate::ffi::HandleBRepMeshShapeTool_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_ShapeTool
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_ShapeTool> {
-        crate::ffi::HandleBRepMeshShapeTool_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_ShapeTool {
+        unsafe { &mut *(crate::ffi::HandleBRepMeshShapeTool_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2310,25 +3895,49 @@ impl HandleBRepMeshShapeTool {
 /// outdated info.
 pub use crate::ffi::BRepMesh_ShapeVisitor as ShapeVisitor;
 
+unsafe impl crate::CppDeletable for ShapeVisitor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_ShapeVisitor_destructor(ptr);
+    }
+}
+
 impl ShapeVisitor {
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_ShapeVisitor_get_type_name()
+    /// Handles TopoDS_Face object.
+    pub fn visit_face(&mut self, theFace: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::BRepMesh_ShapeVisitor_visit_face(self as *mut Self, theFace) }
+    }
+
+    /// Handles TopoDS_Edge object.
+    pub fn visit_edge(&mut self, theEdge: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::BRepMesh_ShapeVisitor_visit_edge(self as *mut Self, theEdge) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_ShapeVisitor_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_ShapeVisitor_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_ShapeVisitor_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_ShapeVisitor_get_type_descriptor()) }
     }
 
     /// Upcast to IMeshTools_ShapeVisitor
     pub fn as_i_mesh_tools_shape_visitor(&self) -> &crate::i_mesh_tools::ShapeVisitor {
-        crate::ffi::BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor(self as *const Self))
+        }
     }
 
     /// Upcast to IMeshTools_ShapeVisitor (mutable)
-    pub fn as_i_mesh_tools_shape_visitor_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_tools::ShapeVisitor> {
-        crate::ffi::BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor_mut(self)
+    pub fn as_i_mesh_tools_shape_visitor_mut(&mut self) -> &mut crate::i_mesh_tools::ShapeVisitor {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -2340,37 +3949,51 @@ impl ShapeVisitor {
 /// order to generate internal nodes for spherical surface.
 pub use crate::ffi::BRepMesh_SphereRangeSplitter as SphereRangeSplitter;
 
+unsafe impl crate::CppDeletable for SphereRangeSplitter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_SphereRangeSplitter_destructor(ptr);
+    }
+}
+
 impl SphereRangeSplitter {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_SphereRangeSplitter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_ctor()) }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        crate::ffi::BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
-        crate::ffi::BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
-    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AddPoint(self, thePoint)
+    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
-    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AdjustRange(self)
+    pub fn adjust_range(&mut self) {
+        unsafe { crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AdjustRange(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
-    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_SphereRangeSplitter_inherited_IsValid(self)
+    pub fn is_valid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_SphereRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
@@ -2378,13 +4001,24 @@ impl SphereRangeSplitter {
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
         isToFaceBasis: bool,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Scale(
+                self as *const Self,
+                thePoint,
+                isToFaceBasis,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Point(self, thePoint2d)
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Point(
+                self as *const Self,
+                thePoint2d,
+            ))
+        }
     }
 }
 
@@ -2396,44 +4030,67 @@ impl SphereRangeSplitter {
 /// internal nodes for NURBS surface.
 pub use crate::ffi::BRepMesh_TorusRangeSplitter as TorusRangeSplitter;
 
+unsafe impl crate::CppDeletable for TorusRangeSplitter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_TorusRangeSplitter_destructor(ptr);
+    }
+}
+
 impl TorusRangeSplitter {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_TorusRangeSplitter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_ctor()) }
+    }
+
+    /// Registers border point.
+    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_add_point(self as *mut Self, thePoint) }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
-        crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
-        crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
-    pub fn as_uv_param_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut UVParamRangeSplitter> {
-        crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self)
+    pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
-    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepMesh_TorusRangeSplitter_inherited_AdjustRange(self)
+    pub fn adjust_range(&mut self) {
+        unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_inherited_AdjustRange(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
-    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_TorusRangeSplitter_inherited_IsValid(self)
+    pub fn is_valid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
@@ -2441,13 +4098,24 @@ impl TorusRangeSplitter {
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
         isToFaceBasis: bool,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Scale(
+                self as *const Self,
+                thePoint,
+                isToFaceBasis,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Point(self, thePoint2d)
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Point(
+                self as *const Self,
+                thePoint2d,
+            ))
+        }
     }
 }
 
@@ -2459,24 +4127,40 @@ impl TorusRangeSplitter {
 /// of mesh consisting of oriented links.
 pub use crate::ffi::BRepMesh_Triangle as Triangle;
 
+unsafe impl crate::CppDeletable for Triangle {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_Triangle_destructor(ptr);
+    }
+}
+
 impl Triangle {
     /// Default constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Triangle_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Triangle_ctor()) }
     }
 
     /// Returns movability of the triangle.
     pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
-        crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Triangle_movability(self))
+        unsafe {
+            crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Triangle_movability(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Sets movability of the triangle.
-    pub fn set_movability(
-        self: std::pin::Pin<&mut Self>,
-        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
-    ) {
-        crate::ffi::BRepMesh_Triangle_set_movability(self, theMovability.into())
+    pub fn set_movability(&mut self, theMovability: crate::b_rep_mesh::DegreeOfFreedom) {
+        unsafe {
+            crate::ffi::BRepMesh_Triangle_set_movability(self as *mut Self, theMovability.into())
+        }
+    }
+
+    /// Checks for equality with another triangle.
+    /// @param theOther triangle to be checked against this one.
+    /// @return TRUE if equal, FALSE if not.
+    pub fn is_equal(&self, theOther: &crate::ffi::BRepMesh_Triangle) -> bool {
+        unsafe { crate::ffi::BRepMesh_Triangle_is_equal(self as *const Self, theOther) }
     }
 }
 
@@ -2487,6 +4171,20 @@ impl Triangle {
 /// Auxiliary tool to generate triangulation
 pub use crate::ffi::BRepMesh_Triangulator as Triangulator;
 
+unsafe impl crate::CppDeletable for Triangulator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_Triangulator_destructor(ptr);
+    }
+}
+
+impl Triangulator {
+    /// Set messenger for output information
+    /// without this Message::DefaultMessenger() will be used
+    pub fn set_messenger(&mut self, theMess: &crate::ffi::HandleMessageMessenger) {
+        unsafe { crate::ffi::BRepMesh_Triangulator_set_messenger(self as *mut Self, theMess) }
+    }
+}
+
 // ========================
 // From BRepMesh_UVParamRangeSplitter.hxx
 // ========================
@@ -2494,37 +4192,56 @@ pub use crate::ffi::BRepMesh_Triangulator as Triangulator;
 /// Intended to generate internal mesh nodes using UV parameters of boundary discrete points.
 pub use crate::ffi::BRepMesh_UVParamRangeSplitter as UVParamRangeSplitter;
 
+unsafe impl crate::CppDeletable for UVParamRangeSplitter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_UVParamRangeSplitter_destructor(ptr);
+    }
+}
+
 impl UVParamRangeSplitter {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_UVParamRangeSplitter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_ctor()) }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        crate::ffi::BRepMesh_UVParamRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_UVParamRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
-        crate::ffi::BRepMesh_UVParamRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_UVParamRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
-    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AddPoint(self, thePoint)
+    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AddPoint(
+                self as *mut Self,
+                thePoint,
+            )
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
-    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AdjustRange(self)
+    pub fn adjust_range(&mut self) {
+        unsafe {
+            crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
-    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_IsValid(self)
+    pub fn is_valid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
@@ -2532,13 +4249,24 @@ impl UVParamRangeSplitter {
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
         isToFaceBasis: bool,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Scale(
+                self as *const Self,
+                thePoint,
+                isToFaceBasis,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Point(self, thePoint2d)
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Point(
+                self as *const Self,
+                thePoint2d,
+            ))
+        }
     }
 }
 
@@ -2550,61 +4278,92 @@ impl UVParamRangeSplitter {
 /// but has no poles or other characteristics.
 pub use crate::ffi::BRepMesh_UndefinedRangeSplitter as UndefinedRangeSplitter;
 
+unsafe impl crate::CppDeletable for UndefinedRangeSplitter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_UndefinedRangeSplitter_destructor(ptr);
+    }
+}
+
 impl UndefinedRangeSplitter {
     /// Constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_ctor()) }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter
     pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut DefaultRangeSplitter> {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter
     pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_NURBSRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_NURBSRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_NURBSRangeSplitter (mutable)
-    pub fn as_nurbs_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut NURBSRangeSplitter> {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(self)
+    pub fn as_nurbs_range_splitter_mut(&mut self) -> &mut NURBSRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_NURBSRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_UVParamRangeSplitter(self)
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepMesh_UVParamRangeSplitter (mutable)
-    pub fn as_uv_param_range_splitter_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut UVParamRangeSplitter> {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(self)
+    pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
-    pub fn add_point(self: std::pin::Pin<&mut Self>, thePoint: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AddPoint(self, thePoint)
+    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe {
+            crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AddPoint(
+                self as *mut Self,
+                thePoint,
+            )
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
-    pub fn adjust_range(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AdjustRange(self)
+    pub fn adjust_range(&mut self) {
+        unsafe {
+            crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
-    pub fn is_valid(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_IsValid(self)
+    pub fn is_valid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
@@ -2612,13 +4371,24 @@ impl UndefinedRangeSplitter {
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
         isToFaceBasis: bool,
-    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Scale(self, thePoint, isToFaceBasis)
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Scale(
+                self as *const Self,
+                thePoint,
+                isToFaceBasis,
+            ))
+        }
     }
 
     /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Point(self, thePoint2d)
+    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Point(
+                self as *const Self,
+                thePoint2d,
+            ))
+        }
     }
 }
 
@@ -2631,10 +4401,16 @@ impl UndefinedRangeSplitter {
 /// associated with 3d point stored in external map.
 pub use crate::ffi::BRepMesh_Vertex as Vertex;
 
+unsafe impl crate::CppDeletable for Vertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_Vertex_destructor(ptr);
+    }
+}
+
 impl Vertex {
     /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Vertex_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Vertex_ctor()) }
     }
 
     /// Creates vertex associated with point in 3d space.
@@ -2645,12 +4421,14 @@ impl Vertex {
         theUV: &crate::ffi::gp_XY,
         theLocation3d: i32,
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Vertex_ctor_xy_int_degreeoffreedom(
-            theUV,
-            theLocation3d,
-            theMovability.into(),
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Vertex_ctor_xy_int_degreeoffreedom(
+                theUV,
+                theLocation3d,
+                theMovability.into(),
+            ))
+        }
     }
 
     /// Creates vertex without association with point in 3d space.
@@ -2661,8 +4439,14 @@ impl Vertex {
         theU: f64,
         theV: f64,
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Vertex_ctor_real2_degreeoffreedom(theU, theV, theMovability.into())
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Vertex_ctor_real2_degreeoffreedom(
+                theU,
+                theV,
+                theMovability.into(),
+            ))
+        }
     }
 
     /// Initializes vertex associated with point in 3d space.
@@ -2670,26 +4454,58 @@ impl Vertex {
     /// @param theLocation3d index of 3d point to be associated with vertex.
     /// @param theMovability movability of the vertex.
     pub fn initialize(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         theUV: &crate::ffi::gp_XY,
         theLocation3d: i32,
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) {
-        crate::ffi::BRepMesh_Vertex_initialize(self, theUV, theLocation3d, theMovability.into())
+        unsafe {
+            crate::ffi::BRepMesh_Vertex_initialize(
+                self as *mut Self,
+                theUV,
+                theLocation3d,
+                theMovability.into(),
+            )
+        }
+    }
+
+    /// Returns position of the vertex in parametric space.
+    pub fn coord(&self) -> &crate::ffi::gp_XY {
+        unsafe { &*(crate::ffi::BRepMesh_Vertex_coord(self as *const Self)) }
+    }
+
+    /// Returns position of the vertex in parametric space for modification.
+    pub fn change_coord(&mut self) -> &mut crate::ffi::gp_XY {
+        unsafe { &mut *(crate::ffi::BRepMesh_Vertex_change_coord(self as *mut Self)) }
+    }
+
+    /// Returns index of 3d point associated with the vertex.
+    pub fn location3d(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_Vertex_location3d(self as *const Self) }
     }
 
     /// Returns movability of the vertex.
     pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
-        crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Vertex_movability(self))
+        unsafe {
+            crate::b_rep_mesh::DegreeOfFreedom::try_from(crate::ffi::BRepMesh_Vertex_movability(
+                self as *const Self,
+            ))
             .unwrap()
+        }
     }
 
     /// Sets movability of the vertex.
-    pub fn set_movability(
-        self: std::pin::Pin<&mut Self>,
-        theMovability: crate::b_rep_mesh::DegreeOfFreedom,
-    ) {
-        crate::ffi::BRepMesh_Vertex_set_movability(self, theMovability.into())
+    pub fn set_movability(&mut self, theMovability: crate::b_rep_mesh::DegreeOfFreedom) {
+        unsafe {
+            crate::ffi::BRepMesh_Vertex_set_movability(self as *mut Self, theMovability.into())
+        }
+    }
+
+    /// Checks for equality with another vertex.
+    /// @param theOther vertex to be checked against this one.
+    /// @return TRUE if equal, FALSE if not.
+    pub fn is_equal(&self, theOther: &crate::ffi::BRepMesh_Vertex) -> bool {
+        unsafe { crate::ffi::BRepMesh_Vertex_is_equal(self as *const Self, theOther) }
     }
 }
 
@@ -2702,35 +4518,153 @@ impl Vertex {
 /// providing their uniqueness regarding their position.
 pub use crate::ffi::BRepMesh_VertexTool as VertexTool;
 
+unsafe impl crate::CppDeletable for VertexTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_VertexTool_destructor(ptr);
+    }
+}
+
 impl VertexTool {
-    pub fn get_type_name() -> String {
-        crate::ffi::BRepMesh_VertexTool_get_type_name()
+    /// Sets new size of cell for cellfilter equal in both directions.
+    pub fn set_cell_size_real(&mut self, theSize: f64) {
+        unsafe { crate::ffi::BRepMesh_VertexTool_set_cell_size_real(self as *mut Self, theSize) }
+    }
+
+    /// Sets new size of cell for cellfilter.
+    /// @param theSizeX size for X dimension.
+    /// @param theSizeY size for Y dimension.
+    pub fn set_cell_size_real2(&mut self, theSizeX: f64, theSizeY: f64) {
+        unsafe {
+            crate::ffi::BRepMesh_VertexTool_set_cell_size_real2(
+                self as *mut Self,
+                theSizeX,
+                theSizeY,
+            )
+        }
+    }
+
+    /// Sets the tolerance to be used for identification of
+    /// coincident vertices equal for both dimensions.
+    pub fn set_tolerance_real(&mut self, theTolerance: f64) {
+        unsafe {
+            crate::ffi::BRepMesh_VertexTool_set_tolerance_real(self as *mut Self, theTolerance)
+        }
+    }
+
+    /// Sets the tolerance to be used for identification of
+    /// coincident vertices.
+    /// @param theToleranceX tolerance for X dimension.
+    /// @param theToleranceY tolerance for Y dimension.
+    pub fn set_tolerance_real2(&mut self, theToleranceX: f64, theToleranceY: f64) {
+        unsafe {
+            crate::ffi::BRepMesh_VertexTool_set_tolerance_real2(
+                self as *mut Self,
+                theToleranceX,
+                theToleranceY,
+            )
+        }
+    }
+
+    /// Gets the tolerance to be used for identification of
+    /// coincident vertices.
+    /// @param theToleranceX tolerance for X dimension.
+    /// @param theToleranceY tolerance for Y dimension.
+    pub fn get_tolerance(&mut self, theToleranceX: &mut f64, theToleranceY: &mut f64) {
+        unsafe {
+            crate::ffi::BRepMesh_VertexTool_get_tolerance(
+                self as *mut Self,
+                theToleranceX,
+                theToleranceY,
+            )
+        }
+    }
+
+    /// Adds vertex with empty data to the tool.
+    /// @param theVertex node to be added to the mesh.
+    /// @param isForceAdd adds the given node to structure without
+    /// checking on coincidence with other nodes.
+    /// @return index of the node in the structure.
+    pub fn add(&mut self, theVertex: &crate::ffi::BRepMesh_Vertex, isForceAdd: bool) -> i32 {
+        unsafe { crate::ffi::BRepMesh_VertexTool_add(self as *mut Self, theVertex, isForceAdd) }
+    }
+
+    /// Deletes vertex with the given index from the tool.
+    pub fn delete_vertex(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BRepMesh_VertexTool_delete_vertex(self as *mut Self, theIndex) }
+    }
+
+    /// Returns vertex by the given index.
+    pub fn find_key(&mut self, theIndex: i32) -> &crate::ffi::BRepMesh_Vertex {
+        unsafe { &*(crate::ffi::BRepMesh_VertexTool_find_key(self as *mut Self, theIndex)) }
+    }
+
+    /// Returns index of the given vertex.
+    pub fn find_index(&mut self, theVertex: &crate::ffi::BRepMesh_Vertex) -> i32 {
+        unsafe { crate::ffi::BRepMesh_VertexTool_find_index(self as *mut Self, theVertex) }
+    }
+
+    /// Returns a number of vertices.
+    pub fn extent(&self) -> i32 {
+        unsafe { crate::ffi::BRepMesh_VertexTool_extent(self as *const Self) }
+    }
+
+    /// Returns True when the map contains no keys. <br>
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::BRepMesh_VertexTool_is_empty(self as *const Self) }
+    }
+
+    /// Substitutes vertex with the given by the given vertex with attributes.
+    /// @param theIndex index of vertex to be substituted.
+    /// @param theVertex replacement vertex.
+    pub fn substitute(&mut self, theIndex: i32, theVertex: &crate::ffi::BRepMesh_Vertex) {
+        unsafe {
+            crate::ffi::BRepMesh_VertexTool_substitute(self as *mut Self, theIndex, theVertex)
+        }
+    }
+
+    /// Remove last node from the structure.
+    pub fn remove_last(&mut self) {
+        unsafe { crate::ffi::BRepMesh_VertexTool_remove_last(self as *mut Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepMesh_VertexTool_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::BRepMesh_VertexTool_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::BRepMesh_VertexTool_get_type_descriptor()
+        unsafe { &*(crate::ffi::BRepMesh_VertexTool_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepMeshVertexTool> {
-        crate::ffi::BRepMesh_VertexTool_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepMeshVertexTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_VertexTool_to_handle(obj.into_raw()))
+        }
     }
 }
 
 pub use crate::ffi::HandleBRepMeshVertexTool;
 
+unsafe impl crate::CppDeletable for HandleBRepMeshVertexTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepMeshVertexTool_destructor(ptr);
+    }
+}
+
 impl HandleBRepMeshVertexTool {
     /// Dereference this Handle to access the underlying BRepMesh_VertexTool
     pub fn get(&self) -> &crate::ffi::BRepMesh_VertexTool {
-        crate::ffi::HandleBRepMeshVertexTool_get(self)
+        unsafe { &*(crate::ffi::HandleBRepMeshVertexTool_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepMesh_VertexTool
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepMesh_VertexTool> {
-        crate::ffi::HandleBRepMeshVertexTool_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_VertexTool {
+        unsafe { &mut *(crate::ffi::HandleBRepMeshVertexTool_get_mut(self as *mut Self)) }
     }
 }

@@ -14,10 +14,16 @@
 /// Directing Edge topology.
 pub use crate::ffi::Sweep_NumShape as NumShape;
 
+unsafe impl crate::CppDeletable for NumShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Sweep_NumShape_destructor(ptr);
+    }
+}
+
 impl NumShape {
     /// Creates a dummy indexed edge.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Sweep_NumShape_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Sweep_NumShape_ctor()) }
     }
 
     /// Creates a new simple indexed edge.
@@ -37,14 +43,16 @@ impl NumShape {
         Closed: bool,
         BegInf: bool,
         EndInf: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool3(
-            Index,
-            Type.into(),
-            Closed,
-            BegInf,
-            EndInf,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool3(
+                Index,
+                Type.into(),
+                Closed,
+                BegInf,
+                EndInf,
+            ))
+        }
     }
 
     /// Creates a new simple indexed edge.
@@ -63,7 +71,7 @@ impl NumShape {
         Type: crate::top_abs::ShapeEnum,
         Closed: bool,
         BegInf: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int_shapeenum_bool3(Index, Type.into(), Closed, BegInf, false)
     }
 
@@ -82,7 +90,7 @@ impl NumShape {
         Index: i32,
         Type: crate::top_abs::ShapeEnum,
         Closed: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int_shapeenum_bool3(Index, Type.into(), Closed, false, false)
     }
 
@@ -97,7 +105,7 @@ impl NumShape {
     /// For a Vertex : Index is the index of the vertex in
     /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
     /// other fields have no meanning.
-    pub fn new_int_shapeenum(Index: i32, Type: crate::top_abs::ShapeEnum) -> cxx::UniquePtr<Self> {
+    pub fn new_int_shapeenum(Index: i32, Type: crate::top_abs::ShapeEnum) -> crate::OwnedPtr<Self> {
         Self::new_int_shapeenum_bool3(Index, Type.into(), false, false, false)
     }
 
@@ -114,22 +122,57 @@ impl NumShape {
     /// true if it is the vertex of a closed edge, all the
     /// other fields have no meanning.
     pub fn init(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Index: i32,
         Type: crate::top_abs::ShapeEnum,
         Closed: bool,
         BegInf: bool,
         EndInf: bool,
     ) {
-        crate::ffi::Sweep_NumShape_init(self, Index, Type.into(), Closed, BegInf, EndInf)
+        unsafe {
+            crate::ffi::Sweep_NumShape_init(
+                self as *mut Self,
+                Index,
+                Type.into(),
+                Closed,
+                BegInf,
+                EndInf,
+            )
+        }
+    }
+
+    pub fn index(&self) -> i32 {
+        unsafe { crate::ffi::Sweep_NumShape_index(self as *const Self) }
     }
 
     pub fn type_(&self) -> crate::top_abs::ShapeEnum {
-        crate::top_abs::ShapeEnum::try_from(crate::ffi::Sweep_NumShape_type_(self)).unwrap()
+        unsafe {
+            crate::top_abs::ShapeEnum::try_from(crate::ffi::Sweep_NumShape_type_(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    pub fn closed(&self) -> bool {
+        unsafe { crate::ffi::Sweep_NumShape_closed(self as *const Self) }
+    }
+
+    pub fn beg_infinite(&self) -> bool {
+        unsafe { crate::ffi::Sweep_NumShape_beg_infinite(self as *const Self) }
+    }
+
+    pub fn end_infinite(&self) -> bool {
+        unsafe { crate::ffi::Sweep_NumShape_end_infinite(self as *const Self) }
     }
 
     pub fn orientation(&self) -> crate::top_abs::Orientation {
-        crate::top_abs::Orientation::try_from(crate::ffi::Sweep_NumShape_orientation(self)).unwrap()
+        unsafe {
+            crate::top_abs::Orientation::try_from(crate::ffi::Sweep_NumShape_orientation(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -142,40 +185,87 @@ impl NumShape {
 /// Swept Primitives.
 pub use crate::ffi::Sweep_NumShapeTool as NumShapeTool;
 
+unsafe impl crate::CppDeletable for NumShapeTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Sweep_NumShapeTool_destructor(ptr);
+    }
+}
+
 impl NumShapeTool {
     /// Create a new NumShapeTool with <aShape>.  The Tool
     /// must prepare an indexation  for  all the subshapes
     /// of this shape.
-    pub fn new_numshape(aShape: &crate::ffi::Sweep_NumShape) -> cxx::UniquePtr<Self> {
-        crate::ffi::Sweep_NumShapeTool_ctor_numshape(aShape)
+    pub fn new_numshape(aShape: &crate::ffi::Sweep_NumShape) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Sweep_NumShapeTool_ctor_numshape(aShape)) }
+    }
+
+    /// Returns the number of subshapes in the shape.
+    pub fn nb_shapes(&self) -> i32 {
+        unsafe { crate::ffi::Sweep_NumShapeTool_nb_shapes(self as *const Self) }
+    }
+
+    /// Returns the index of <aShape>.
+    pub fn index(&self, aShape: &crate::ffi::Sweep_NumShape) -> i32 {
+        unsafe { crate::ffi::Sweep_NumShapeTool_index(self as *const Self, aShape) }
     }
 
     /// Returns the Shape at index anIndex
-    pub fn shape(&self, anIndex: i32) -> cxx::UniquePtr<crate::ffi::Sweep_NumShape> {
-        crate::ffi::Sweep_NumShapeTool_shape(self, anIndex)
+    pub fn shape(&self, anIndex: i32) -> crate::OwnedPtr<crate::ffi::Sweep_NumShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Sweep_NumShapeTool_shape(
+                self as *const Self,
+                anIndex,
+            ))
+        }
     }
 
     /// Returns the type of <aShape>.
     pub fn type_(&self, aShape: &crate::ffi::Sweep_NumShape) -> crate::top_abs::ShapeEnum {
-        crate::top_abs::ShapeEnum::try_from(crate::ffi::Sweep_NumShapeTool_type_(self, aShape))
+        unsafe {
+            crate::top_abs::ShapeEnum::try_from(crate::ffi::Sweep_NumShapeTool_type_(
+                self as *const Self,
+                aShape,
+            ))
             .unwrap()
+        }
     }
 
     /// Returns the orientation of <aShape>.
     pub fn orientation(&self, aShape: &crate::ffi::Sweep_NumShape) -> crate::top_abs::Orientation {
-        crate::top_abs::Orientation::try_from(crate::ffi::Sweep_NumShapeTool_orientation(
-            self, aShape,
-        ))
-        .unwrap()
+        unsafe {
+            crate::top_abs::Orientation::try_from(crate::ffi::Sweep_NumShapeTool_orientation(
+                self as *const Self,
+                aShape,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Returns true if there is a First Vertex in the Shape.
+    pub fn has_first_vertex(&self) -> bool {
+        unsafe { crate::ffi::Sweep_NumShapeTool_has_first_vertex(self as *const Self) }
+    }
+
+    /// Returns true if there is a Last Vertex in the Shape.
+    pub fn has_last_vertex(&self) -> bool {
+        unsafe { crate::ffi::Sweep_NumShapeTool_has_last_vertex(self as *const Self) }
     }
 
     /// Returns the first vertex.
-    pub fn first_vertex(&self) -> cxx::UniquePtr<crate::ffi::Sweep_NumShape> {
-        crate::ffi::Sweep_NumShapeTool_first_vertex(self)
+    pub fn first_vertex(&self) -> crate::OwnedPtr<crate::ffi::Sweep_NumShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Sweep_NumShapeTool_first_vertex(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Returns the last vertex.
-    pub fn last_vertex(&self) -> cxx::UniquePtr<crate::ffi::Sweep_NumShape> {
-        crate::ffi::Sweep_NumShapeTool_last_vertex(self)
+    pub fn last_vertex(&self) -> crate::OwnedPtr<crate::ffi::Sweep_NumShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Sweep_NumShapeTool_last_vertex(
+                self as *const Self,
+            ))
+        }
     }
 }

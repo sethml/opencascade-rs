@@ -14,20 +14,126 @@
 /// obtained from <S>. <NewS> is an image of <S>.
 pub use crate::ffi::BRepAlgo_Image as Image;
 
+unsafe impl crate::CppDeletable for Image {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAlgo_Image_destructor(ptr);
+    }
+}
+
 impl Image {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgo_Image_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_Image_ctor()) }
+    }
+
+    pub fn set_root(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepAlgo_Image_set_root(self as *mut Self, S) }
+    }
+
+    /// Links <NewS> as image of <OldS>.
+    pub fn bind_shape2(
+        &mut self,
+        OldS: &crate::ffi::TopoDS_Shape,
+        NewS: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe { crate::ffi::BRepAlgo_Image_bind_shape2(self as *mut Self, OldS, NewS) }
+    }
+
+    /// Links <NewS> as image of <OldS>.
+    pub fn bind_shape_listofshape(
+        &mut self,
+        OldS: &crate::ffi::TopoDS_Shape,
+        NewS: &crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe { crate::ffi::BRepAlgo_Image_bind_shape_listofshape(self as *mut Self, OldS, NewS) }
+    }
+
+    /// Add <NewS> to the image of <OldS>.
+    pub fn add_shape2(&mut self, OldS: &crate::ffi::TopoDS_Shape, NewS: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepAlgo_Image_add_shape2(self as *mut Self, OldS, NewS) }
+    }
+
+    /// Add <NewS> to the image of <OldS>.
+    pub fn add_shape_listofshape(
+        &mut self,
+        OldS: &crate::ffi::TopoDS_Shape,
+        NewS: &crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe { crate::ffi::BRepAlgo_Image_add_shape_listofshape(self as *mut Self, OldS, NewS) }
+    }
+
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_Image_clear(self as *mut Self) }
+    }
+
+    /// Remove <S> to set of images.
+    pub fn remove(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepAlgo_Image_remove(self as *mut Self, S) }
+    }
+
+    /// Removes the root <theRoot> from the list of roots and up and down maps.
+    pub fn remove_root(&mut self, Root: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepAlgo_Image_remove_root(self as *mut Self, Root) }
+    }
+
+    /// Replaces the <OldRoot> with the <NewRoot>, so all images
+    /// of the <OldRoot> become the images of the <NewRoot>.
+    /// The <OldRoot> is removed.
+    pub fn replace_root(
+        &mut self,
+        OldRoot: &crate::ffi::TopoDS_Shape,
+        NewRoot: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe { crate::ffi::BRepAlgo_Image_replace_root(self as *mut Self, OldRoot, NewRoot) }
+    }
+
+    pub fn roots(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepAlgo_Image_roots(self as *const Self)) }
+    }
+
+    pub fn is_image(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepAlgo_Image_is_image(self as *const Self, S) }
+    }
+
+    /// Returns the generator of <S>
+    pub fn image_from(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepAlgo_Image_image_from(self as *const Self, S)) }
+    }
+
+    /// Returns the upper generator of <S>
+    pub fn root(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepAlgo_Image_root(self as *const Self, S)) }
+    }
+
+    pub fn has_image(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepAlgo_Image_has_image(self as *const Self, S) }
+    }
+
+    /// Returns the Image of <S>.
+    /// Returns <S> in the list if HasImage(S) is false.
+    pub fn image(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepAlgo_Image_image(self as *const Self, S)) }
+    }
+
+    /// Stores in <L> the images of images of...images of <S>.
+    /// <L> contains only <S> if  HasImage(S) is false.
+    pub fn last_image(
+        &self,
+        S: &crate::ffi::TopoDS_Shape,
+        L: &mut crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe { crate::ffi::BRepAlgo_Image_last_image(self as *const Self, S, L) }
+    }
+
+    /// Keeps only the link between roots and lastimage.
+    pub fn compact(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_Image_compact(self as *mut Self) }
     }
 
     /// Deletes in the images the shape of type <ShapeType>
     /// which are not in <S>.
     /// Warning:  Compact() must be call before.
-    pub fn filter(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-        ShapeType: crate::top_abs::ShapeEnum,
-    ) {
-        crate::ffi::BRepAlgo_Image_filter(self, S, ShapeType.into())
+    pub fn filter(&mut self, S: &crate::ffi::TopoDS_Shape, ShapeType: crate::top_abs::ShapeEnum) {
+        unsafe { crate::ffi::BRepAlgo_Image_filter(self as *mut Self, S, ShapeType.into()) }
     }
 }
 
@@ -39,13 +145,28 @@ impl Image {
 /// shape.
 pub use crate::ffi::BRepAlgo_NormalProjection as NormalProjection;
 
+unsafe impl crate::CppDeletable for NormalProjection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAlgo_NormalProjection_destructor(ptr);
+    }
+}
+
 impl NormalProjection {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgo_NormalProjection_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_NormalProjection_ctor()) }
     }
 
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAlgo_NormalProjection_ctor_shape(S)
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_NormalProjection_ctor_shape(S)) }
+    }
+
+    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepAlgo_NormalProjection_init(self as *mut Self, S) }
+    }
+
+    /// Add an edge or a wire to the list of shape to project
+    pub fn add(&mut self, ToProj: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepAlgo_NormalProjection_add(self as *mut Self, ToProj) }
     }
 
     /// Set the parameters  used  for computation
@@ -56,21 +177,92 @@ impl NormalProjection {
     /// MaxDeg and MaxSeg are the maximum degree and the maximum
     /// number of segment for BSpline resulting of an approximation.
     pub fn set_params(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Tol3D: f64,
         Tol2D: f64,
         InternalContinuity: crate::geom_abs::Shape,
         MaxDegree: i32,
         MaxSeg: i32,
     ) {
-        crate::ffi::BRepAlgo_NormalProjection_set_params(
-            self,
-            Tol3D,
-            Tol2D,
-            InternalContinuity.into(),
-            MaxDegree,
-            MaxSeg,
-        )
+        unsafe {
+            crate::ffi::BRepAlgo_NormalProjection_set_params(
+                self as *mut Self,
+                Tol3D,
+                Tol2D,
+                InternalContinuity.into(),
+                MaxDegree,
+                MaxSeg,
+            )
+        }
+    }
+
+    /// Set the parameters  used  for computation
+    /// in their default values
+    pub fn set_default_params(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_NormalProjection_set_default_params(self as *mut Self) }
+    }
+
+    /// Sets the maximum distance between target shape and
+    /// shape to project. If this condition is not satisfied then
+    /// corresponding part of solution is discarded.
+    /// if MaxDist < 0 then this method does not affect the algorithm
+    pub fn set_max_distance(&mut self, MaxDist: f64) {
+        unsafe {
+            crate::ffi::BRepAlgo_NormalProjection_set_max_distance(self as *mut Self, MaxDist)
+        }
+    }
+
+    /// if  With3d = Standard_False the 3dcurve is not computed
+    /// the  initial 3dcurve is kept  to  build the  resulting edges.
+    pub fn compute3d(&mut self, With3d: bool) {
+        unsafe { crate::ffi::BRepAlgo_NormalProjection_compute3d(self as *mut Self, With3d) }
+    }
+
+    /// Manage  limitation  of  projected  edges.
+    pub fn set_limit(&mut self, FaceBoundaries: bool) {
+        unsafe {
+            crate::ffi::BRepAlgo_NormalProjection_set_limit(self as *mut Self, FaceBoundaries)
+        }
+    }
+
+    /// Builds the result as a  compound.
+    pub fn build(&mut self) {
+        unsafe { crate::ffi::BRepAlgo_NormalProjection_build(self as *mut Self) }
+    }
+
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepAlgo_NormalProjection_is_done(self as *const Self) }
+    }
+
+    /// returns the result
+    pub fn projection(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_projection(self as *const Self)) }
+    }
+
+    /// For a resulting edge, returns the corresponding initial edge.
+    pub fn ancestor(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_ancestor(self as *const Self, E)) }
+    }
+
+    /// For a projected edge, returns the corresponding initial face.
+    pub fn couple(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_couple(self as *const Self, E)) }
+    }
+
+    /// Returns the  list   of shapes generated   from the
+    /// shape <S>.
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_generated(self as *mut Self, S)) }
+    }
+
+    pub fn is_elementary(&self, C: &crate::ffi::Adaptor3d_Curve) -> bool {
+        unsafe { crate::ffi::BRepAlgo_NormalProjection_is_elementary(self as *const Self, C) }
+    }
+
+    /// build the result as a list of wire if possible in --
+    /// a first returns a wire only if there is only a wire.
+    pub fn build_wire(&self, Liste: &mut crate::ffi::TopTools_ListOfShape) -> bool {
+        unsafe { crate::ffi::BRepAlgo_NormalProjection_build_wire(self as *const Self, Liste) }
     }
 }
 

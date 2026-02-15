@@ -35,19 +35,134 @@
 /// connected faces must also respect the above criteria.
 pub use crate::ffi::BRepOffsetAPI_DraftAngle as DraftAngle;
 
+unsafe impl crate::CppDeletable for DraftAngle {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_DraftAngle_destructor(ptr);
+    }
+}
+
 impl DraftAngle {
     /// Constructs an empty algorithm to perform
     /// taper-adding transformations on faces of a shape.
     /// Use the Init function to define the shape to be tapered.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_DraftAngle_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_DraftAngle_ctor()) }
     }
 
     /// Initializes an algorithm to perform taper-adding
     /// transformations on faces of the shape S.
     /// S will be referred to as the initial shape of the algorithm.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_DraftAngle_ctor_shape(S)
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_DraftAngle_ctor_shape(S)) }
+    }
+
+    /// Cancels the results of all taper-adding transformations
+    /// performed by this algorithm on the initial shape. These
+    /// results will have been defined by successive calls to the function Add.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepOffsetAPI_DraftAngle_clear(self as *mut Self) }
+    }
+
+    /// Initializes, or reinitializes this taper-adding algorithm with the shape S.
+    /// S will be referred to as the initial shape of this algorithm.
+    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepOffsetAPI_DraftAngle_init(self as *mut Self, S) }
+    }
+
+    /// Adds the face F, the direction
+    /// Direction, the angle Angle, the plane NeutralPlane, and the flag
+    /// Flag to the framework created at construction time, and with this
+    /// data, defines the taper-adding transformation.
+    /// F is a face, which belongs to the initial shape of this algorithm or
+    /// to the shape loaded by the function Init.
+    /// Only planar, cylindrical or conical faces can be tapered:
+    /// - If the face F is planar, it is tapered by inclining it
+    /// through the angle Angle about the line of intersection between the
+    /// plane NeutralPlane and F.
+    /// Direction indicates the side of NeutralPlane from which matter is
+    /// removed if Angle is positive or added if Angle is negative.
+    /// - If F is cylindrical or conical, it is transformed in the
+    /// same way on a single face, resulting in a conical face if F
+    /// is cylindrical, and a conical or cylindrical face if it is already conical.
+    /// The taper-adding transformation is propagated from the face F along
+    /// the series of planar, cylindrical or conical faces containing F,
+    /// which are tangential to one another.
+    /// Use the function AddDone to check if this taper-adding transformation is successful.
+    /// Warning
+    /// Nothing is done if:
+    /// - the face F does not belong to the initial shape of this algorithm, or
+    /// - the face F is not planar, cylindrical or conical.
+    /// Exceptions
+    /// - Standard_NullObject if the initial shape is not
+    /// defined, i.e. if this algorithm has not been initialized
+    /// with the non-empty constructor or the Init function.
+    /// - Standard_ConstructionError if the previous call to
+    /// Add has failed. The function AddDone ought to have
+    /// been used to check for this, and the function Remove
+    /// to cancel the results of the unsuccessful taper-adding
+    /// transformation and to retrieve the previous shape.
+    pub fn add(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        Direction: &crate::ffi::gp_Dir,
+        Angle: f64,
+        NeutralPlane: &crate::ffi::gp_Pln,
+        Flag: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_DraftAngle_add(
+                self as *mut Self,
+                F,
+                Direction,
+                Angle,
+                NeutralPlane,
+                Flag,
+            )
+        }
+    }
+
+    /// Returns true if the previous taper-adding
+    /// transformation performed by this algorithm in the last
+    /// call to Add, was successful.
+    /// If AddDone returns false:
+    /// - the function ProblematicShape returns the face
+    /// on which the error occurred,
+    /// - the function Remove has to be used to cancel the
+    /// results of the unsuccessful taper-adding
+    /// transformation and to retrieve the previous shape.
+    /// Exceptions
+    /// Standard_NullObject if the initial shape has not
+    /// been defined, i.e. if this algorithm has not been
+    /// initialized with the non-empty constructor or the .Init function.
+    pub fn add_done(&self) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_DraftAngle_add_done(self as *const Self) }
+    }
+
+    /// Cancels the taper-adding transformation previously
+    /// performed by this algorithm on the face F and the
+    /// series of tangential faces which contain F, and retrieves
+    /// the shape before the last taper-adding transformation.
+    /// Warning
+    /// You will have to use this function if the previous call to
+    /// Add fails. Use the function AddDone to check it.
+    /// Exceptions
+    /// - Standard_NullObject if the initial shape has not
+    /// been defined, i.e. if this algorithm has not been
+    /// initialized with the non-empty constructor or the Init function.
+    /// - Standard_NoSuchObject if F has not been added
+    /// or has already been removed.
+    pub fn remove(&mut self, F: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::BRepOffsetAPI_DraftAngle_remove(self as *mut Self, F) }
+    }
+
+    /// Returns the shape on which an error occurred after an
+    /// unsuccessful call to Add or when IsDone returns false.
+    /// Exceptions
+    /// Standard_NullObject if the initial shape has not been
+    /// defined, i.e. if this algorithm has not been initialized with
+    /// the non-empty constructor or the Init function.
+    pub fn problematic_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_DraftAngle_problematic_shape(self as *const Self)) }
     }
 
     /// Returns an error  status when an error has occurred
@@ -56,8 +171,48 @@ impl DraftAngle {
     /// called if AddDone  returns Standard_False, or when
     /// IsDone returns Standard_False.
     pub fn status(&self) -> crate::draft::ErrorStatus {
-        crate::draft::ErrorStatus::try_from(crate::ffi::BRepOffsetAPI_DraftAngle_status(self))
+        unsafe {
+            crate::draft::ErrorStatus::try_from(crate::ffi::BRepOffsetAPI_DraftAngle_status(
+                self as *const Self,
+            ))
             .unwrap()
+        }
+    }
+
+    /// Returns all  the  faces   which  have been   added
+    /// together with the face <F>.
+    pub fn connected_faces(
+        &self,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_DraftAngle_connected_faces(self as *const Self, F)) }
+    }
+
+    /// Returns all the faces  on which a modification has
+    /// been given.
+    pub fn modified_faces(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_DraftAngle_modified_faces(self as *const Self)) }
+    }
+
+    /// Builds the resulting shape (redefined from MakeShape).
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_DraftAngle_build(self as *mut Self, theRange) }
+    }
+
+    pub fn correct_wires(&mut self) {
+        unsafe { crate::ffi::BRepOffsetAPI_DraftAngle_correct_wires(self as *mut Self) }
+    }
+
+    /// Returns the  list   of shapes generated   from the
+    /// shape <S>.
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_DraftAngle_generated(self as *mut Self, S)) }
+    }
+
+    /// Returns the list  of shapes modified from the shape
+    /// <S>.
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_DraftAngle_modified(self as *mut Self, S)) }
     }
 
     /// Returns the modified shape corresponding to <S>.
@@ -69,64 +224,89 @@ impl DraftAngle {
     pub fn modified_shape(
         &self,
         S: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepOffsetAPI_DraftAngle_modified_shape(self, S)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_DraftAngle_modified_shape(
+                self as *const Self,
+                S,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_ModifyShape
     pub fn as_b_rep_builder_api_modify_shape(&self) -> &crate::b_rep_builder_api::ModifyShape {
-        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_ModifyShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_ModifyShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_ModifyShape (mutable)
     pub fn as_b_rep_builder_api_modify_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::ModifyShape> {
-        crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_ModifyShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::ModifyShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_ModifyShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_DraftAngle_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepOffsetAPI_DraftAngle_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_DraftAngle_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_DraftAngle_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_DraftAngle_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_DraftAngle_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_DraftAngle_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_DraftAngle_inherited_IsDeleted(self as *mut Self, S) }
     }
 }
 
@@ -148,6 +328,12 @@ impl DraftAngle {
 /// - output the problems if any
 pub use crate::ffi::BRepOffsetAPI_FindContigousEdges as FindContigousEdges;
 
+unsafe impl crate::CppDeletable for FindContigousEdges {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_FindContigousEdges_destructor(ptr);
+    }
+}
+
 impl FindContigousEdges {
     /// Initializes an algorithm for identifying contiguous edges
     /// on shapes with tolerance as the tolerance of contiguity
@@ -157,8 +343,12 @@ impl FindContigousEdges {
     /// Set option to false. This argument (defaulted to true) will
     /// serve in subsequent software releases for performing an
     /// analysis of degenerated shapes.
-    pub fn new_real_bool(tolerance: f64, option: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_FindContigousEdges_ctor_real_bool(tolerance, option)
+    pub fn new_real_bool(tolerance: f64, option: bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_FindContigousEdges_ctor_real_bool(
+                tolerance, option,
+            ))
+        }
     }
 
     /// Initializes an algorithm for identifying contiguous edges
@@ -169,7 +359,7 @@ impl FindContigousEdges {
     /// Set option to false. This argument (defaulted to true) will
     /// serve in subsequent software releases for performing an
     /// analysis of degenerated shapes.
-    pub fn new_real(tolerance: f64) -> cxx::UniquePtr<Self> {
+    pub fn new_real(tolerance: f64) -> crate::OwnedPtr<Self> {
         Self::new_real_bool(tolerance, true)
     }
 
@@ -181,8 +371,165 @@ impl FindContigousEdges {
     /// Set option to false. This argument (defaulted to true) will
     /// serve in subsequent software releases for performing an
     /// analysis of degenerated shapes.
-    pub fn new() -> cxx::UniquePtr<Self> {
+    pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_real_bool(1.0e-06, true)
+    }
+
+    /// Initializes this algorithm for identifying contiguous edges
+    /// on shapes using the tolerance of contiguity tolerance.
+    /// This tolerance value is used to determine whether two
+    /// edges or sections of edges are coincident.
+    /// Use the function Add to define the shapes to be checked.
+    /// Sets <option> to false.
+    pub fn init(&mut self, tolerance: f64, option: bool) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_FindContigousEdges_init(self as *mut Self, tolerance, option)
+        }
+    }
+
+    /// Adds the shape shape to the list of shapes to be
+    /// checked by this algorithm.
+    /// Once all the shapes to be checked have been added,
+    /// use the function Perform to find the contiguous edges
+    /// and the function ContigousEdge to return these edges.
+    pub fn add(&mut self, shape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepOffsetAPI_FindContigousEdges_add(self as *mut Self, shape) }
+    }
+
+    /// Finds coincident parts of edges of two or more shapes
+    /// added to this algorithm and breaks down these edges
+    /// into contiguous and non-contiguous sections on copies
+    /// of the initial shapes.
+    /// The function ContigousEdge returns contiguous
+    /// edges. The function Modified can be used to return
+    /// modified copies of the initial shapes where one or more
+    /// edges were broken down into contiguous and non-contiguous sections.
+    /// Warning
+    /// This function must be used once all the shapes to be
+    /// checked have been added. It is not possible to add
+    /// further shapes subsequently and then to repeat the call to Perform.
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::BRepOffsetAPI_FindContigousEdges_perform(self as *mut Self) }
+    }
+
+    /// Gives the number of edges (free edges + contiguous edges + multiple edge)
+    pub fn nb_edges(&self) -> i32 {
+        unsafe { crate::ffi::BRepOffsetAPI_FindContigousEdges_nb_edges(self as *const Self) }
+    }
+
+    /// Returns the number of contiguous edges found by the
+    /// function Perform on the shapes added to this algorithm.
+    pub fn nb_contigous_edges(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_FindContigousEdges_nb_contigous_edges(self as *const Self)
+        }
+    }
+
+    /// Returns the contiguous edge of index index found by
+    /// the function Perform on the shapes added to this algorithm.
+    /// Exceptions
+    /// Standard_OutOfRange if:
+    /// - index is less than 1, or
+    /// - index is greater than the number of contiguous
+    /// edges found by the function Perform on the shapes added to this algorithm.
+    pub fn contigous_edge(&self, index: i32) -> &crate::ffi::TopoDS_Edge {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_FindContigousEdges_contigous_edge(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
+    /// Returns a list of edges coincident with the contiguous
+    /// edge of index index found by the function Perform.
+    /// There are as many edges in the list as there are faces
+    /// adjacent to this contiguous edge.
+    /// Exceptions
+    /// Standard_OutOfRange if:
+    /// - index is less than 1, or
+    /// - index is greater than the number of contiguous edges
+    /// found by the function Perform on the shapes added to this algorithm.
+    pub fn contigous_edge_couple(&self, index: i32) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_FindContigousEdges_contigous_edge_couple(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
+    /// Returns the edge on the initial shape, of which the
+    /// modified copy contains the edge section.
+    /// section is coincident with a contiguous edge found by
+    /// the function Perform. Use the function
+    /// ContigousEdgeCouple to obtain a valid section.
+    /// This information is useful for verification purposes, since
+    /// it provides a means of determining the surface to which
+    /// the contiguous edge belongs.
+    /// Exceptions
+    /// Standard_NoSuchObject if section is not coincident
+    /// with a contiguous edge. Use the function
+    /// ContigousEdgeCouple to obtain a valid section.
+    pub fn section_to_boundary(
+        &self,
+        section: &crate::ffi::TopoDS_Edge,
+    ) -> &crate::ffi::TopoDS_Edge {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_FindContigousEdges_section_to_boundary(
+                self as *const Self,
+                section,
+            ))
+        }
+    }
+
+    /// Gives the number of degenerated shapes
+    pub fn nb_degenerated_shapes(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_FindContigousEdges_nb_degenerated_shapes(self as *const Self)
+        }
+    }
+
+    /// Gives a degenerated shape
+    pub fn degenerated_shape(&self, index: i32) -> &crate::ffi::TopoDS_Shape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_FindContigousEdges_degenerated_shape(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
+    /// Indicates if a input shape is degenerated
+    pub fn is_degenerated(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_FindContigousEdges_is_degenerated(self as *const Self, shape)
+        }
+    }
+
+    /// Returns true if the copy of the initial shape shape was
+    /// modified by the function Perform (i.e. if one or more of
+    /// its edges was broken down into contiguous and non-contiguous sections).
+    /// Warning
+    /// Returns false if shape is not one of the initial shapes
+    /// added to this algorithm.
+    pub fn is_modified(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_FindContigousEdges_is_modified(self as *const Self, shape)
+        }
+    }
+
+    /// Gives a modifieded shape
+    /// Raises   NoSuchObject if shape has not been modified
+    pub fn modified(&self, shape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_FindContigousEdges_modified(self as *const Self, shape))
+        }
+    }
+
+    /// Dump properties of resulting shape.
+    pub fn dump(&self) {
+        unsafe { crate::ffi::BRepOffsetAPI_FindContigousEdges_dump(self as *const Self) }
     }
 }
 
@@ -192,6 +539,12 @@ impl FindContigousEdges {
 
 /// Build a draft surface along a wire
 pub use crate::ffi::BRepOffsetAPI_MakeDraft as MakeDraft;
+
+unsafe impl crate::CppDeletable for MakeDraft {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_MakeDraft_destructor(ptr);
+    }
+}
 
 impl MakeDraft {
     /// Constructs the draft surface object defined by the shape
@@ -205,8 +558,12 @@ impl MakeDraft {
         Shape: &crate::ffi::TopoDS_Shape,
         Dir: &crate::ffi::gp_Dir,
         Angle: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeDraft_ctor_shape_dir_real(Shape, Dir, Angle)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakeDraft_ctor_shape_dir_real(
+                Shape, Dir, Angle,
+            ))
+        }
     }
 
     /// Sets the options of this draft tool.
@@ -220,75 +577,142 @@ impl MakeDraft {
     /// RightCorner transition can be performed.
     /// AngleMin and AngleMax are expressed in radians.
     pub fn set_options(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Style: crate::b_rep_builder_api::TransitionMode,
         AngleMin: f64,
         AngleMax: f64,
     ) {
-        crate::ffi::BRepOffsetAPI_MakeDraft_set_options(self, Style.into(), AngleMin, AngleMax)
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeDraft_set_options(
+                self as *mut Self,
+                Style.into(),
+                AngleMin,
+                AngleMax,
+            )
+        }
+    }
+
+    /// Sets the direction of the draft for this object.
+    /// If IsInternal is true, the draft is internal to the argument
+    /// Shape used in the constructor.
+    pub fn set_draft(&mut self, IsInternal: bool) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeDraft_set_draft(self as *mut Self, IsInternal) }
+    }
+
+    /// Performs the draft using the length LengthMax as the
+    /// maximum length for the corner edge between two draft faces.
+    pub fn perform_real(&mut self, LengthMax: f64) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeDraft_perform_real(self as *mut Self, LengthMax) }
+    }
+
+    /// Performs the draft up to the surface Surface.
+    /// If KeepInsideSurface is true, the part of Surface inside
+    /// the draft is kept in the result.
+    pub fn perform_handlegeomsurface_bool(
+        &mut self,
+        Surface: &crate::ffi::HandleGeomSurface,
+        KeepInsideSurface: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeDraft_perform_handlegeomsurface_bool(
+                self as *mut Self,
+                Surface,
+                KeepInsideSurface,
+            )
+        }
+    }
+
+    /// Performs the draft up to the shape StopShape.
+    /// If KeepOutSide is true, the part of StopShape which is
+    /// outside the Draft is kept in the result.
+    pub fn perform_shape_bool(&mut self, StopShape: &crate::ffi::TopoDS_Shape, KeepOutSide: bool) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeDraft_perform_shape_bool(
+                self as *mut Self,
+                StopShape,
+                KeepOutSide,
+            )
+        }
     }
 
     /// Returns the shell resulting from performance of the
     /// draft along the wire.
-    pub fn shell(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shell> {
-        crate::ffi::BRepOffsetAPI_MakeDraft_shell(self)
+    pub fn shell(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shell> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakeDraft_shell(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Returns the  list   of shapes generated   from the
+    /// shape <S>.
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeDraft_generated(self as *mut Self, S)) }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape(self as *const Self))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeDraft_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Build()
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Build(self, theRange)
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Build(self as *mut Self, theRange) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Modified()
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Modified(self, S)
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Modified(self as *mut Self, S)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_MakeDraft_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeDraft_inherited_IsDeleted(self as *mut Self, S) }
     }
 }
 
@@ -343,9 +767,15 @@ impl MakeDraft {
 /// "theJoinType", "theIsAxeProf", "theIsProfOnSpine" are not used.
 pub use crate::ffi::BRepOffsetAPI_MakeEvolved as MakeEvolved;
 
+unsafe impl crate::CppDeletable for MakeEvolved {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_MakeEvolved_destructor(ptr);
+    }
+}
+
 impl MakeEvolved {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakeEvolved_ctor()) }
     }
 
     /// Constructs an evolved shape by sweeping the profile
@@ -362,18 +792,22 @@ impl MakeEvolved {
         theTol: f64,
         theIsVolume: bool,
         theRunInParallel: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_ctor_shape_wire_jointype_bool3_real_bool2(
-            theSpine,
-            theProfile,
-            theJoinType.into(),
-            theIsAxeProf,
-            theIsSolid,
-            theIsProfOnSpine,
-            theTol,
-            theIsVolume,
-            theRunInParallel,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepOffsetAPI_MakeEvolved_ctor_shape_wire_jointype_bool3_real_bool2(
+                    theSpine,
+                    theProfile,
+                    theJoinType.into(),
+                    theIsAxeProf,
+                    theIsSolid,
+                    theIsProfOnSpine,
+                    theTol,
+                    theIsVolume,
+                    theRunInParallel,
+                ),
+            )
+        }
     }
 
     /// Constructs an evolved shape by sweeping the profile
@@ -389,7 +823,7 @@ impl MakeEvolved {
         theIsProfOnSpine: bool,
         theTol: f64,
         theIsVolume: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
@@ -415,7 +849,7 @@ impl MakeEvolved {
         theIsSolid: bool,
         theIsProfOnSpine: bool,
         theTol: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
@@ -440,7 +874,7 @@ impl MakeEvolved {
         theIsAxeProf: bool,
         theIsSolid: bool,
         theIsProfOnSpine: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
@@ -464,7 +898,7 @@ impl MakeEvolved {
         theJoinType: crate::geom_abs::JoinType,
         theIsAxeProf: bool,
         theIsSolid: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
@@ -487,7 +921,7 @@ impl MakeEvolved {
         theProfile: &crate::ffi::TopoDS_Wire,
         theJoinType: crate::geom_abs::JoinType,
         theIsAxeProf: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
@@ -509,7 +943,7 @@ impl MakeEvolved {
         theSpine: &crate::ffi::TopoDS_Shape,
         theProfile: &crate::ffi::TopoDS_Wire,
         theJoinType: crate::geom_abs::JoinType,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
@@ -523,64 +957,110 @@ impl MakeEvolved {
         )
     }
 
+    pub fn evolved(&self) -> &crate::ffi::BRepFill_Evolved {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeEvolved_evolved(self as *const Self)) }
+    }
+
+    /// Builds the resulting shape (redefined from MakeShape).
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeEvolved_build(self as *mut Self, theRange) }
+    }
+
+    /// Returns   the  shapes  created  from   a  subshape
+    /// <SpineShape>  of     the  spine   and   a subshape
+    /// <ProfShape> on the profile.
+    pub fn generated_shapes(
+        &self,
+        SpineShape: &crate::ffi::TopoDS_Shape,
+        ProfShape: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeEvolved_generated_shapes(
+                self as *const Self,
+                SpineShape,
+                ProfShape,
+            ))
+        }
+    }
+
+    /// Return the face Top if <Solid> is True in the constructor.
+    pub fn top(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeEvolved_top(self as *const Self)) }
+    }
+
+    /// Return the face Bottom  if <Solid> is True in the constructor.
+    pub fn bottom(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeEvolved_bottom(self as *const Self)) }
+    }
+
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Generated()
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Generated(self, S)
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Generated(self as *mut Self, S))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Modified()
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Modified(self, S)
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Modified(self as *mut Self, S))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_IsDeleted(self as *mut Self, S) }
     }
 }
 
@@ -620,6 +1100,12 @@ impl MakeEvolved {
 /// connected faces
 pub use crate::ffi::BRepOffsetAPI_MakeFilling as MakeFilling;
 
+unsafe impl crate::CppDeletable for MakeFilling {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_MakeFilling_destructor(ptr);
+    }
+}
+
 impl MakeFilling {
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
@@ -648,19 +1134,23 @@ impl MakeFilling {
         TolCurv: f64,
         MaxDeg: i32,
         MaxSegments: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeFilling_ctor_int3_bool_real4_int2(
-            Degree,
-            NbPtsOnCur,
-            NbIter,
-            Anisotropie,
-            Tol2d,
-            Tol3d,
-            TolAng,
-            TolCurv,
-            MaxDeg,
-            MaxSegments,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepOffsetAPI_MakeFilling_ctor_int3_bool_real4_int2(
+                    Degree,
+                    NbPtsOnCur,
+                    NbIter,
+                    Anisotropie,
+                    Tol2d,
+                    Tol3d,
+                    TolAng,
+                    TolCurv,
+                    MaxDeg,
+                    MaxSegments,
+                ),
+            )
+        }
     }
 
     /// Constructs a wire filling object defined by
@@ -689,7 +1179,7 @@ impl MakeFilling {
         TolAng: f64,
         TolCurv: f64,
         MaxDeg: i32,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -729,7 +1219,7 @@ impl MakeFilling {
         Tol3d: f64,
         TolAng: f64,
         TolCurv: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -768,7 +1258,7 @@ impl MakeFilling {
         Tol2d: f64,
         Tol3d: f64,
         TolAng: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -806,7 +1296,7 @@ impl MakeFilling {
         Anisotropie: bool,
         Tol2d: f64,
         Tol3d: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -843,7 +1333,7 @@ impl MakeFilling {
         NbIter: i32,
         Anisotropie: bool,
         Tol2d: f64,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -879,7 +1369,7 @@ impl MakeFilling {
         NbPtsOnCur: i32,
         NbIter: i32,
         Anisotropie: bool,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree,
             NbPtsOnCur,
@@ -910,7 +1400,7 @@ impl MakeFilling {
     /// length U and the length V indicate a great difference
     /// between the two. In other words, when the surface is, for
     /// example, extremely long.
-    pub fn new_int3(Degree: i32, NbPtsOnCur: i32, NbIter: i32) -> cxx::UniquePtr<Self> {
+    pub fn new_int3(Degree: i32, NbPtsOnCur: i32, NbIter: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree, NbPtsOnCur, NbIter, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9,
         )
@@ -932,7 +1422,7 @@ impl MakeFilling {
     /// length U and the length V indicate a great difference
     /// between the two. In other words, when the surface is, for
     /// example, extremely long.
-    pub fn new_int2(Degree: i32, NbPtsOnCur: i32) -> cxx::UniquePtr<Self> {
+    pub fn new_int2(Degree: i32, NbPtsOnCur: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
             Degree, NbPtsOnCur, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9,
         )
@@ -954,7 +1444,7 @@ impl MakeFilling {
     /// length U and the length V indicate a great difference
     /// between the two. In other words, when the surface is, for
     /// example, extremely long.
-    pub fn new_int(Degree: i32) -> cxx::UniquePtr<Self> {
+    pub fn new_int(Degree: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(Degree, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
     }
 
@@ -974,8 +1464,95 @@ impl MakeFilling {
     /// length U and the length V indicate a great difference
     /// between the two. In other words, when the surface is, for
     /// example, extremely long.
-    pub fn new() -> cxx::UniquePtr<Self> {
+    pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(3, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
+    }
+
+    /// Sets the values of Tolerances used to control the constraint.
+    /// Tol2d:
+    /// Tol3d:   it is the maximum distance allowed between the support surface
+    /// and the constraints
+    /// TolAng:  it is the maximum angle allowed between the normal of the surface
+    /// and the constraints
+    /// TolCurv: it is the maximum difference of curvature allowed between
+    /// the surface and the constraint
+    pub fn set_constr_param(&mut self, Tol2d: f64, Tol3d: f64, TolAng: f64, TolCurv: f64) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeFilling_set_constr_param(
+                self as *mut Self,
+                Tol2d,
+                Tol3d,
+                TolAng,
+                TolCurv,
+            )
+        }
+    }
+
+    /// Sets the parameters used for resolution.
+    /// The default values of these parameters have been chosen for a good
+    /// ratio quality/performance.
+    /// Degree:      it is the order of energy criterion to minimize for computing
+    /// the deformation of the surface.
+    /// The default value is 3
+    /// The recommended value is i+2 where i is the maximum order of the
+    /// constraints.
+    /// NbPtsOnCur:  it is the average number of points for discretisation
+    /// of the edges.
+    /// NbIter:      it is the maximum number of iterations of the process.
+    /// For each iteration the number of discretisation points is
+    /// increased.
+    /// Anisotropie:
+    pub fn set_resol_param(
+        &mut self,
+        Degree: i32,
+        NbPtsOnCur: i32,
+        NbIter: i32,
+        Anisotropie: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeFilling_set_resol_param(
+                self as *mut Self,
+                Degree,
+                NbPtsOnCur,
+                NbIter,
+                Anisotropie,
+            )
+        }
+    }
+
+    /// Sets the parameters used to approximate the filling
+    /// surface. These include:
+    /// - MaxDeg - the highest degree which the polynomial
+    /// defining the filling surface can have
+    /// - MaxSegments - the greatest number of segments
+    /// which the filling surface can have.
+    pub fn set_approx_param(&mut self, MaxDeg: i32, MaxSegments: i32) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeFilling_set_approx_param(
+                self as *mut Self,
+                MaxDeg,
+                MaxSegments,
+            )
+        }
+    }
+
+    /// Loads the initial surface Surf to
+    /// begin the construction of the surface.
+    /// This optional function is useful if the surface resulting from
+    /// construction for the algorithm is likely to be complex.
+    /// The support surface of the face under construction is computed by a
+    /// deformation of Surf which satisfies the given constraints.
+    /// The set of bounding edges defines the wire of the face.
+    /// If no initial surface is given, the algorithm computes it
+    /// automatically. If the set of edges is not connected (Free constraint),
+    /// missing edges are automatically computed.
+    /// Important: the initial surface must have orthogonal local coordinates,
+    /// i.e. partial derivatives dS/du and dS/dv must be orthogonal
+    /// at each point of surface.
+    /// If this condition breaks, distortions of resulting surface
+    /// are possible.
+    pub fn load_init_surface(&mut self, Surf: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_load_init_surface(self as *mut Self, Surf) }
     }
 
     /// Adds a new constraint which also defines an edge of the wire
@@ -992,17 +1569,19 @@ impl MakeFilling {
     /// Raises ConstructionError if the edge has no representation on a face and Order is
     /// GeomAbs_G1 or GeomAbs_G2.
     pub fn add_edge_shape_bool(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Constr: &crate::ffi::TopoDS_Edge,
         Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
-        crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_shape_bool(
-            self,
-            Constr,
-            Order.into(),
-            IsBound,
-        )
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_shape_bool(
+                self as *mut Self,
+                Constr,
+                Order.into(),
+                IsBound,
+            )
+        }
     }
 
     /// Adds a new constraint which also defines an edge of the wire
@@ -1018,93 +1597,171 @@ impl MakeFilling {
     /// with the given face.
     /// Raises ConstructionError if the edge has no 2d representation on the given face
     pub fn add_edge_face_shape_bool(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Constr: &crate::ffi::TopoDS_Edge,
         Support: &crate::ffi::TopoDS_Face,
         Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
-        crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_face_shape_bool(
-            self,
-            Constr,
-            Support,
-            Order.into(),
-            IsBound,
-        )
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_face_shape_bool(
+                self as *mut Self,
+                Constr,
+                Support,
+                Order.into(),
+                IsBound,
+            )
+        }
     }
 
     /// Adds a free constraint on a face. The corresponding edge has to
     /// be automatically recomputed. It is always a bound.
     pub fn add_face_shape(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Support: &crate::ffi::TopoDS_Face,
         Order: crate::geom_abs::Shape,
     ) -> i32 {
-        crate::ffi::BRepOffsetAPI_MakeFilling_add_face_shape(self, Support, Order.into())
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeFilling_add_face_shape(
+                self as *mut Self,
+                Support,
+                Order.into(),
+            )
+        }
+    }
+
+    /// Adds a punctual constraint.
+    pub fn add_pnt(&mut self, Point: &crate::ffi::gp_Pnt) -> i32 {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_add_pnt(self as *mut Self, Point) }
     }
 
     /// Adds a punctual constraint.
     pub fn add_real2_face_shape(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         U: f64,
         V: f64,
         Support: &crate::ffi::TopoDS_Face,
         Order: crate::geom_abs::Shape,
     ) -> i32 {
-        crate::ffi::BRepOffsetAPI_MakeFilling_add_real2_face_shape(
-            self,
-            U,
-            V,
-            Support,
-            Order.into(),
-        )
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeFilling_add_real2_face_shape(
+                self as *mut Self,
+                U,
+                V,
+                Support,
+                Order.into(),
+            )
+        }
+    }
+
+    /// Builds the resulting faces
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_build(self as *mut Self, theRange) }
+    }
+
+    /// Tests whether computation of the filling plate has been completed.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_is_done(self as *const Self) }
+    }
+
+    /// Returns the list of shapes generated from the
+    /// shape <S>.
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeFilling_generated(self as *mut Self, S)) }
+    }
+
+    /// Returns the maximum distance between the result and
+    /// the constraints. This is set at construction time.
+    pub fn g0_error(&self) -> f64 {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_g0_error(self as *const Self) }
+    }
+
+    /// Returns the maximum angle between the result and the
+    /// constraints. This is set at construction time.
+    pub fn g1_error(&self) -> f64 {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_g1_error(self as *const Self) }
+    }
+
+    /// Returns the maximum angle between the result and the
+    /// constraints. This is set at construction time.
+    pub fn g2_error(&self) -> f64 {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_g2_error(self as *const Self) }
+    }
+
+    /// Returns the maximum distance attained between the
+    /// result and the constraint Index. This is set at construction time.
+    pub fn g0_error_int(&mut self, Index: i32) -> f64 {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_g0_error_int(self as *mut Self, Index) }
+    }
+
+    /// Returns the maximum angle between the result and the
+    /// constraints. This is set at construction time.
+    pub fn g1_error_int(&mut self, Index: i32) -> f64 {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_g1_error_int(self as *mut Self, Index) }
+    }
+
+    /// Returns the greatest difference in curvature found
+    /// between the result and the constraint Index.
+    pub fn g2_error_int(&mut self, Index: i32) -> f64 {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_g2_error_int(self as *mut Self, Index) }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Modified()
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Modified(self, S)
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Modified(self as *mut Self, S))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_MakeFilling_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeFilling_inherited_IsDeleted(self as *mut Self, S) }
     }
 }
 
@@ -1120,10 +1777,16 @@ impl MakeFilling {
 /// - consulting the result.
 pub use crate::ffi::BRepOffsetAPI_MakeOffset as MakeOffset;
 
+unsafe impl crate::CppDeletable for MakeOffset {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_MakeOffset_destructor(ptr);
+    }
+}
+
 impl MakeOffset {
     /// Constructs an algorithm for creating an empty offset
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakeOffset_ctor()) }
     }
 
     /// Constructs an algorithm for creating an algorithm
@@ -1132,24 +1795,28 @@ impl MakeOffset {
         Spine: &crate::ffi::TopoDS_Face,
         Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_face_jointype_bool(
-            Spine,
-            Join.into(),
-            IsOpenResult,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakeOffset_ctor_face_jointype_bool(
+                Spine,
+                Join.into(),
+                IsOpenResult,
+            ))
+        }
     }
 
     pub fn new_wire_jointype_bool(
         Spine: &crate::ffi::TopoDS_Wire,
         Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_ctor_wire_jointype_bool(
-            Spine,
-            Join.into(),
-            IsOpenResult,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakeOffset_ctor_wire_jointype_bool(
+                Spine,
+                Join.into(),
+                IsOpenResult,
+            ))
+        }
     }
 
     /// Constructs an algorithm for creating an algorithm
@@ -1157,14 +1824,14 @@ impl MakeOffset {
     pub fn new_face_jointype(
         Spine: &crate::ffi::TopoDS_Face,
         Join: crate::geom_abs::JoinType,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_face_jointype_bool(Spine, Join.into(), false)
     }
 
     pub fn new_wire_jointype(
         Spine: &crate::ffi::TopoDS_Wire,
         Join: crate::geom_abs::JoinType,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_wire_jointype_bool(Spine, Join.into(), false)
     }
 
@@ -1177,26 +1844,61 @@ impl MakeOffset {
     /// intersect in a salient vertex generate the edges
     /// prolonged until intersection.
     pub fn init_face_jointype_bool(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Spine: &crate::ffi::TopoDS_Face,
         Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) {
-        crate::ffi::BRepOffsetAPI_MakeOffset_init_face_jointype_bool(
-            self,
-            Spine,
-            Join.into(),
-            IsOpenResult,
-        )
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeOffset_init_face_jointype_bool(
+                self as *mut Self,
+                Spine,
+                Join.into(),
+                IsOpenResult,
+            )
+        }
     }
 
     /// Initialize the evaluation of Offsetting.
-    pub fn init_jointype_bool(
-        self: std::pin::Pin<&mut Self>,
-        Join: crate::geom_abs::JoinType,
-        IsOpenResult: bool,
-    ) {
-        crate::ffi::BRepOffsetAPI_MakeOffset_init_jointype_bool(self, Join.into(), IsOpenResult)
+    pub fn init_jointype_bool(&mut self, Join: crate::geom_abs::JoinType, IsOpenResult: bool) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeOffset_init_jointype_bool(
+                self as *mut Self,
+                Join.into(),
+                IsOpenResult,
+            )
+        }
+    }
+
+    /// Set approximation flag
+    /// for conversion input contours into ones consisting of
+    /// 2D circular arcs and 2D linear segments only.
+    pub fn set_approx(&mut self, ToApprox: bool) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffset_set_approx(self as *mut Self, ToApprox) }
+    }
+
+    /// Initializes the algorithm to construct parallels to the wire Spine.
+    pub fn add_wire(&mut self, Spine: &crate::ffi::TopoDS_Wire) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffset_add_wire(self as *mut Self, Spine) }
+    }
+
+    /// Computes a parallel to the spine at distance Offset and
+    /// at an altitude Alt from the plane of the spine in relation
+    /// to the normal to the spine.
+    /// Exceptions: StdFail_NotDone if the offset is not built.
+    pub fn perform(&mut self, Offset: f64, Alt: f64) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffset_perform(self as *mut Self, Offset, Alt) }
+    }
+
+    /// Builds the resulting shape (redefined from MakeShape).
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffset_build(self as *mut Self, theRange) }
+    }
+
+    /// returns a list of the created shapes
+    /// from the shape <S>.
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffset_generated(self as *mut Self, S)) }
     }
 
     /// Converts each wire of the face into contour consisting only of
@@ -1204,60 +1906,74 @@ impl MakeOffset {
     pub fn convert_face(
         theFace: &crate::ffi::TopoDS_Face,
         theAngleTolerance: f64,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_convert_face(theFace, theAngleTolerance)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakeOffset_convert_face(
+                theFace,
+                theAngleTolerance,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_MakeOffset_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffset_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Modified()
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Modified(self, S)
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Modified(self as *mut Self, S)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_MakeOffset_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffset_inherited_IsDeleted(self as *mut Self, S) }
     }
 }
 
@@ -1273,10 +1989,28 @@ impl MakeOffset {
 /// - consulting the result.
 pub use crate::ffi::BRepOffsetAPI_MakeOffsetShape as MakeOffsetShape;
 
+unsafe impl crate::CppDeletable for MakeOffsetShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_MakeOffsetShape_destructor(ptr);
+    }
+}
+
 impl MakeOffsetShape {
     /// Constructor does nothing.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakeOffsetShape_ctor()) }
+    }
+
+    /// Constructs offset shape for the given one using simple algorithm without intersections
+    /// computation.
+    pub fn perform_by_simple(&mut self, theS: &crate::ffi::TopoDS_Shape, theOffsetValue: f64) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeOffsetShape_perform_by_simple(
+                self as *mut Self,
+                theS,
+                theOffsetValue,
+            )
+        }
     }
 
     /// Constructs a shape parallel to the shape S, where
@@ -1335,7 +2069,7 @@ impl MakeOffsetShape {
     /// Geom_UndefinedDerivative if the underlying
     /// geometry of S is BSpline with continuity C0.
     pub fn perform_by_join(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         S: &crate::ffi::TopoDS_Shape,
         Offset: f64,
         Tol: f64,
@@ -1346,65 +2080,108 @@ impl MakeOffsetShape {
         RemoveIntEdges: bool,
         theRange: &crate::ffi::Message_ProgressRange,
     ) {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_perform_by_join(
-            self,
-            S,
-            Offset,
-            Tol,
-            Mode.into(),
-            Intersection,
-            SelfInter,
-            Join.into(),
-            RemoveIntEdges,
-            theRange,
-        )
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeOffsetShape_perform_by_join(
+                self as *mut Self,
+                S,
+                Offset,
+                Tol,
+                Mode.into(),
+                Intersection,
+                SelfInter,
+                Join.into(),
+                RemoveIntEdges,
+                theRange,
+            )
+        }
+    }
+
+    /// Returns instance of the underlying intersection / arc algorithm.
+    pub fn make_offset(&self) -> &crate::ffi::BRepOffset_MakeOffset {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffsetShape_make_offset(self as *const Self)) }
+    }
+
+    /// Does nothing.
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffsetShape_build(self as *mut Self, theRange) }
+    }
+
+    /// Returns the list of shapes generated from the shape <S>.
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffsetShape_generated(self as *mut Self, S)) }
+    }
+
+    /// Returns the list of shapes Modified from the shape <S>.
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffsetShape_modified(self as *mut Self, S)) }
+    }
+
+    /// Returns true if the shape has been removed from the result.
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffsetShape_is_deleted(self as *mut Self, S) }
     }
 
     /// Returns offset join type.
     pub fn get_join_type(&self) -> crate::geom_abs::JoinType {
-        crate::geom_abs::JoinType::try_from(
-            crate::ffi::BRepOffsetAPI_MakeOffsetShape_get_join_type(self),
-        )
-        .unwrap()
+        unsafe {
+            crate::geom_abs::JoinType::try_from(
+                crate::ffi::BRepOffsetAPI_MakeOffsetShape_get_join_type(self as *const Self),
+            )
+            .unwrap()
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffsetShape_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeOffsetShape_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeOffsetShape_inherited_Shape(self as *mut Self)) }
     }
 }
 
@@ -1425,6 +2202,12 @@ impl MakeOffsetShape {
 /// with G1 continuous spines only.
 pub use crate::ffi::BRepOffsetAPI_MakePipe as MakePipe;
 
+unsafe impl crate::CppDeletable for MakePipe {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_MakePipe_destructor(ptr);
+    }
+}
+
 impl MakePipe {
     /// Constructs a pipe by sweeping the shape Profile along
     /// the wire Spine.The angle made by the spine with the profile is
@@ -1440,8 +2223,12 @@ impl MakePipe {
     pub fn new_wire_shape(
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakePipe_ctor_wire_shape(Spine, Profile)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakePipe_ctor_wire_shape(
+                Spine, Profile,
+            ))
+        }
     }
 
     /// the same as previous but with setting of
@@ -1453,13 +2240,17 @@ impl MakePipe {
         Profile: &crate::ffi::TopoDS_Shape,
         aMode: crate::geom_fill::Trihedron,
         ForceApproxC1: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron_bool(
-            Spine,
-            Profile,
-            aMode.into(),
-            ForceApproxC1,
-        )
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron_bool(
+                    Spine,
+                    Profile,
+                    aMode.into(),
+                    ForceApproxC1,
+                ),
+            )
+        }
     }
 
     /// the same as previous but with setting of
@@ -1470,90 +2261,135 @@ impl MakePipe {
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
         aMode: crate::geom_fill::Trihedron,
-    ) -> cxx::UniquePtr<Self> {
+    ) -> crate::OwnedPtr<Self> {
         Self::new_wire_shape_trihedron_bool(Spine, Profile, aMode.into(), false)
     }
 
+    pub fn pipe(&self) -> &crate::ffi::BRepFill_Pipe {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipe_pipe(self as *const Self)) }
+    }
+
+    /// Builds the resulting shape (redefined from MakeShape).
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipe_build(self as *mut Self, theRange) }
+    }
+
     /// Returns the  TopoDS  Shape of the bottom of the prism.
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepOffsetAPI_MakePipe_first_shape(self)
+    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakePipe_first_shape(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Returns the TopoDS Shape of the top of the prism.
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepOffsetAPI_MakePipe_last_shape(self)
+    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakePipe_last_shape(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    pub fn generated_shape(
+        &mut self,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipe_generated_shape(self as *mut Self, S)) }
     }
 
     pub fn generated_shape2(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         SSpine: &crate::ffi::TopoDS_Shape,
         SProfile: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepOffsetAPI_MakePipe_generated(self, SSpine, SProfile)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakePipe_generated_shape2(
+                self as *mut Self,
+                SSpine,
+                SProfile,
+            ))
+        }
+    }
+
+    pub fn error_on_surface(&self) -> f64 {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipe_error_on_surface(self as *const Self) }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape(self as *const Self))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepPrimAPI_MakeSweep
     pub fn as_b_rep_prim_api_make_sweep(&self) -> &crate::b_rep_prim_api::MakeSweep {
-        crate::ffi::BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep(self as *const Self))
+        }
     }
 
     /// Upcast to BRepPrimAPI_MakeSweep (mutable)
-    pub fn as_b_rep_prim_api_make_sweep_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_prim_api::MakeSweep> {
-        crate::ffi::BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep_mut(self)
+    pub fn as_b_rep_prim_api_make_sweep_mut(&mut self) -> &mut crate::b_rep_prim_api::MakeSweep {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_MakePipe_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipe_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_MakePipe_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipe_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakePipe_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipe_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Modified()
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakePipe_inherited_Modified(self, S)
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipe_inherited_Modified(self as *mut Self, S)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_MakePipe_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipe_inherited_IsDeleted(self as *mut Self, S) }
     }
 }
 
@@ -1581,12 +2417,58 @@ impl MakePipe {
 /// -- Mode with auxiliary spine and keep contact produce only CO surface.
 pub use crate::ffi::BRepOffsetAPI_MakePipeShell as MakePipeShell;
 
+unsafe impl crate::CppDeletable for MakePipeShell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_MakePipeShell_destructor(ptr);
+    }
+}
+
 impl MakePipeShell {
     /// Constructs the shell-generating framework defined by the wire Spine.
     /// Sets an sweep's mode
     /// If no mode are set, the mode use in MakePipe is used
-    pub fn new_wire(Spine: &crate::ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_ctor_wire(Spine)
+    pub fn new_wire(Spine: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakePipeShell_ctor_wire(Spine))
+        }
+    }
+
+    /// Sets a Frenet or a CorrectedFrenet trihedron
+    /// to  perform  the  sweeping
+    /// If IsFrenet is false, a corrected Frenet trihedron is used.
+    pub fn set_mode_bool(&mut self, IsFrenet: bool) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode_bool(self as *mut Self, IsFrenet)
+        }
+    }
+
+    /// Sets a Discrete trihedron
+    /// to  perform  the  sweeping
+    pub fn set_discrete_mode(&mut self) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_set_discrete_mode(self as *mut Self) }
+    }
+
+    /// Sets  a  fixed  trihedron  to  perform  the  sweeping
+    /// all sections will be parallel.
+    pub fn set_mode_ax2(&mut self, Axe: &crate::ffi::gp_Ax2) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode_ax2(self as *mut Self, Axe) }
+    }
+
+    /// Sets a fixed BiNormal  direction to perform the --
+    /// sweeping.   Angular   relations   between  the
+    /// section(s) and <BiNormal> will be constant
+    pub fn set_mode_dir(&mut self, BiNormal: &crate::ffi::gp_Dir) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode_dir(self as *mut Self, BiNormal) }
+    }
+
+    /// Sets support to the spine to define the BiNormal of
+    /// the trihedron, like the normal  to the surfaces.
+    /// Warning:  To be effective, Each  edge of the <spine> must
+    /// have a representation on one face of<SpineSupport>
+    pub fn set_mode_shape(&mut self, SpineSupport: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode_shape(self as *mut Self, SpineSupport)
+        }
     }
 
     /// Sets  an  auxiliary  spine  to  define  the Normal
@@ -1618,17 +2500,128 @@ impl MakePipeShell {
     /// - correspondence between spine, and section on the sweeped shape
     /// defined by a vertex of the spine
     pub fn set_mode_wire_bool_typeofcontact(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         AuxiliarySpine: &crate::ffi::TopoDS_Wire,
         CurvilinearEquivalence: bool,
         KeepContact: crate::b_rep_fill::TypeOfContact,
     ) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode(
-            self,
-            AuxiliarySpine,
-            CurvilinearEquivalence,
-            KeepContact.into(),
-        )
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode_wire_bool_typeofcontact(
+                self as *mut Self,
+                AuxiliarySpine,
+                CurvilinearEquivalence,
+                KeepContact.into(),
+            )
+        }
+    }
+
+    /// Adds the section Profile to this framework. First and last
+    /// sections may be punctual, so the shape Profile may be
+    /// both wire and vertex. Correspondent point on spine is
+    /// computed automatically.
+    /// If WithContact is true, the section is translated to be in
+    /// contact with the spine.
+    /// If WithCorrection is true, the section is rotated to be
+    /// orthogonal to the spine?s tangent in the correspondent
+    /// point. This option has no sense if the section is punctual
+    /// (Profile is of type TopoDS_Vertex).
+    pub fn add_shape_bool2(
+        &mut self,
+        Profile: &crate::ffi::TopoDS_Shape,
+        WithContact: bool,
+        WithCorrection: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_add_shape_bool2(
+                self as *mut Self,
+                Profile,
+                WithContact,
+                WithCorrection,
+            )
+        }
+    }
+
+    /// Adds the section Profile to this framework.
+    /// Correspondent point on the spine is given by Location.
+    /// Warning:
+    /// To be effective, it is not recommended to combine methods Add and SetLaw.
+    pub fn add_shape_vertex_bool2(
+        &mut self,
+        Profile: &crate::ffi::TopoDS_Shape,
+        Location: &crate::ffi::TopoDS_Vertex,
+        WithContact: bool,
+        WithCorrection: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_add_shape_vertex_bool2(
+                self as *mut Self,
+                Profile,
+                Location,
+                WithContact,
+                WithCorrection,
+            )
+        }
+    }
+
+    /// Sets the evolution law defined by the wire Profile with
+    /// its position (Location, WithContact, WithCorrection
+    /// are the same options as in methods Add) and a
+    /// homotetic law defined by the function L.
+    /// Warning:
+    /// To be effective, it is not recommended to combine methods Add and SetLaw.
+    pub fn set_law_shape_handlelawfunction_bool2(
+        &mut self,
+        Profile: &crate::ffi::TopoDS_Shape,
+        L: &crate::ffi::HandleLawFunction,
+        WithContact: bool,
+        WithCorrection: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_set_law_shape_handlelawfunction_bool2(
+                self as *mut Self,
+                Profile,
+                L,
+                WithContact,
+                WithCorrection,
+            )
+        }
+    }
+
+    /// Sets the evolution law defined by the wire Profile with
+    /// its position (Location, WithContact, WithCorrection
+    /// are the same options as in methods Add) and a
+    /// homotetic law defined by the function L.
+    /// Warning:
+    /// To be effective, it is not recommended to combine methods Add and SetLaw.
+    pub fn set_law_shape_handlelawfunction_vertex_bool2(
+        &mut self,
+        Profile: &crate::ffi::TopoDS_Shape,
+        L: &crate::ffi::HandleLawFunction,
+        Location: &crate::ffi::TopoDS_Vertex,
+        WithContact: bool,
+        WithCorrection: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_set_law_shape_handlelawfunction_vertex_bool2(
+                self as *mut Self,
+                Profile,
+                L,
+                Location,
+                WithContact,
+                WithCorrection,
+            )
+        }
+    }
+
+    /// Removes the section Profile from this framework.
+    pub fn delete(&mut self, Profile: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_delete(self as *mut Self, Profile) }
+    }
+
+    /// Returns true if this tool object is ready to build the
+    /// shape, i.e. has a definition for the wire section Profile.
+    pub fn is_ready(&self) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_is_ready(self as *const Self) }
     }
 
     /// Get a status, when Simulate or Build failed.       It can be
@@ -1637,10 +2630,57 @@ impl MakePipeShell {
     /// BRepBuilderAPI_PlaneNotIntersectGuide,
     /// BRepBuilderAPI_ImpossibleContact.
     pub fn get_status(&self) -> crate::b_rep_builder_api::PipeError {
-        crate::b_rep_builder_api::PipeError::try_from(
-            crate::ffi::BRepOffsetAPI_MakePipeShell_get_status(self),
-        )
-        .unwrap()
+        unsafe {
+            crate::b_rep_builder_api::PipeError::try_from(
+                crate::ffi::BRepOffsetAPI_MakePipeShell_get_status(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Sets the following tolerance values
+    /// - 3D tolerance Tol3d
+    /// - boundary tolerance BoundTol
+    /// - angular tolerance TolAngular.
+    pub fn set_tolerance(&mut self, Tol3d: f64, BoundTol: f64, TolAngular: f64) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                BoundTol,
+                TolAngular,
+            )
+        }
+    }
+
+    /// Define the maximum V degree of resulting surface
+    pub fn set_max_degree(&mut self, NewMaxDegree: i32) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_set_max_degree(self as *mut Self, NewMaxDegree)
+        }
+    }
+
+    /// Define the maximum number of spans in V-direction
+    /// on resulting surface
+    pub fn set_max_segments(&mut self, NewMaxSegments: i32) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_set_max_segments(
+                self as *mut Self,
+                NewMaxSegments,
+            )
+        }
+    }
+
+    /// Set the flag that indicates attempt to approximate
+    /// a C1-continuous surface if a swept surface proved
+    /// to be C0.
+    pub fn set_force_approx_c1(&mut self, ForceApproxC1: bool) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_set_force_approx_c1(
+                self as *mut Self,
+                ForceApproxC1,
+            )
+        }
     }
 
     /// Sets the transition mode to manage discontinuities on
@@ -1680,85 +2720,170 @@ impl MakePipeShell {
     /// assuredly provide a good result only if a profile was set
     /// with option WithCorrection = True, i.e. it is strictly
     /// orthogonal to the spine.
-    pub fn set_transition_mode(
-        self: std::pin::Pin<&mut Self>,
-        Mode: crate::b_rep_builder_api::TransitionMode,
+    pub fn set_transition_mode(&mut self, Mode: crate::b_rep_builder_api::TransitionMode) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_set_transition_mode(
+                self as *mut Self,
+                Mode.into(),
+            )
+        }
+    }
+
+    /// Simulates the resulting shape by calculating its
+    /// cross-sections. The spine is divided by this
+    /// cross-sections into (NumberOfSection - 1) equal
+    /// parts, the number of cross-sections is
+    /// NumberOfSection. The cross-sections are wires and
+    /// they are returned in the list Result.
+    /// This gives a rapid preview of the resulting shape,
+    /// which will be obtained using the settings you have provided.
+    /// Raises  NotDone if  <me> it is not Ready
+    pub fn simulate(
+        &mut self,
+        NumberOfSection: i32,
+        Result: &mut crate::ffi::TopTools_ListOfShape,
     ) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_set_transition_mode(self, Mode.into())
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakePipeShell_simulate(
+                self as *mut Self,
+                NumberOfSection,
+                Result,
+            )
+        }
+    }
+
+    /// Builds the resulting shape (redefined from MakeShape).
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_build(self as *mut Self, theRange) }
+    }
+
+    /// Transforms the sweeping Shell in Solid.
+    /// If a propfile is not closed returns False
+    pub fn make_solid(&mut self) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_make_solid(self as *mut Self) }
     }
 
     /// Returns the  TopoDS  Shape of the bottom of the sweep.
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_first_shape(self)
+    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakePipeShell_first_shape(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Returns the TopoDS Shape of the top of the sweep.
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_last_shape(self)
+    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakePipeShell_last_shape(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Returns a list of new shapes generated from the shape
+    /// S by the shell-generating algorithm.
+    /// This function is redefined from BRepOffsetAPI_MakeShape::Generated.
+    /// S can be an edge or a vertex of a given Profile (see methods Add).
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipeShell_generated(self as *mut Self, S)) }
+    }
+
+    pub fn error_on_surface(&self) -> f64 {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_error_on_surface(self as *const Self) }
+    }
+
+    /// Returns the list of original profiles
+    pub fn profiles(&mut self, theProfiles: &mut crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_profiles(self as *mut Self, theProfiles) }
+    }
+
+    /// Returns the spine
+    pub fn spine(&mut self) -> &crate::ffi::TopoDS_Wire {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipeShell_spine(self as *mut Self)) }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepPrimAPI_MakeSweep
     pub fn as_b_rep_prim_api_make_sweep(&self) -> &crate::b_rep_prim_api::MakeSweep {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepPrimAPI_MakeSweep (mutable)
-    pub fn as_b_rep_prim_api_make_sweep_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_prim_api::MakeSweep> {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep_mut(self)
+    pub fn as_b_rep_prim_api_make_sweep_mut(&mut self) -> &mut crate::b_rep_prim_api::MakeSweep {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Modified()
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Modified(self, S)
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Modified(self as *mut Self, S))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_IsDeleted(self as *mut Self, S) }
     }
 }
 
@@ -1783,10 +2908,35 @@ impl MakePipeShell {
 /// - consulting the result.
 pub use crate::ffi::BRepOffsetAPI_MakeThickSolid as MakeThickSolid;
 
+unsafe impl crate::CppDeletable for MakeThickSolid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_MakeThickSolid_destructor(ptr);
+    }
+}
+
 impl MakeThickSolid {
     /// Constructor does nothing.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MakeThickSolid_ctor()) }
+    }
+
+    /// Constructs solid using simple algorithm.
+    /// According to its nature it is not possible to set list of the closing faces.
+    /// This algorithm does not support faces removing. It is caused by fact that
+    /// intersections are not computed during offset creation.
+    /// Non-closed shell or face is expected as input.
+    pub fn make_thick_solid_by_simple(
+        &mut self,
+        theS: &crate::ffi::TopoDS_Shape,
+        theOffsetValue: f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_simple(
+                self as *mut Self,
+                theS,
+                theOffsetValue,
+            )
+        }
     }
 
     /// Constructs a hollowed solid from
@@ -1830,7 +2980,7 @@ impl MakeThickSolid {
     /// MakeOffsetShape algorithm, the warnings are the same as for
     /// MakeOffsetShape.
     pub fn make_thick_solid_by_join(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         S: &crate::ffi::TopoDS_Shape,
         ClosingFaces: &crate::ffi::TopTools_ListOfShape,
         Offset: f64,
@@ -1842,101 +2992,132 @@ impl MakeThickSolid {
         RemoveIntEdges: bool,
         theRange: &crate::ffi::Message_ProgressRange,
     ) {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_join(
-            self,
-            S,
-            ClosingFaces,
-            Offset,
-            Tol,
-            Mode.into(),
-            Intersection,
-            SelfInter,
-            Join.into(),
-            RemoveIntEdges,
-            theRange,
-        )
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_join(
+                self as *mut Self,
+                S,
+                ClosingFaces,
+                Offset,
+                Tol,
+                Mode.into(),
+                Intersection,
+                SelfInter,
+                Join.into(),
+                RemoveIntEdges,
+                theRange,
+            )
+        }
+    }
+
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_MakeThickSolid_build(self as *mut Self, theRange) }
+    }
+
+    /// Returns the list  of shapes modified from the shape
+    /// <S>.
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeThickSolid_modified(self as *mut Self, S)) }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepOffsetAPI_MakeOffsetShape
     pub fn as_make_offset_shape(&self) -> &MakeOffsetShape {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepOffsetAPI_MakeOffsetShape (mutable)
-    pub fn as_make_offset_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut MakeOffsetShape> {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut(self)
+    pub fn as_make_offset_shape_mut(&mut self) -> &mut MakeOffsetShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Generated()
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Generated(self, S)
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Generated(self as *mut Self, S))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(self as *mut Self, S)
+        }
     }
 
     /// Inherited from BRepOffsetAPI_MakeOffsetShape: PerformBySimple()
-    pub fn perform_by_simple(
-        self: std::pin::Pin<&mut Self>,
-        theS: &crate::ffi::TopoDS_Shape,
-        theOffsetValue: f64,
-    ) {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_PerformBySimple(
-            self,
-            theS,
-            theOffsetValue,
-        )
+    pub fn perform_by_simple(&mut self, theS: &crate::ffi::TopoDS_Shape, theOffsetValue: f64) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_PerformBySimple(
+                self as *mut Self,
+                theS,
+                theOffsetValue,
+            )
+        }
     }
 
     /// Inherited from BRepOffsetAPI_MakeOffsetShape: PerformByJoin()
     pub fn perform_by_join(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         S: &crate::ffi::TopoDS_Shape,
         Offset: f64,
         Tol: f64,
@@ -1947,31 +3128,37 @@ impl MakeThickSolid {
         RemoveIntEdges: bool,
         theRange: &crate::ffi::Message_ProgressRange,
     ) {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_PerformByJoin(
-            self,
-            S,
-            Offset,
-            Tol,
-            Mode.into(),
-            Intersection,
-            SelfInter,
-            Join.into(),
-            RemoveIntEdges,
-            theRange,
-        )
+        unsafe {
+            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_PerformByJoin(
+                self as *mut Self,
+                S,
+                Offset,
+                Tol,
+                Mode.into(),
+                Intersection,
+                SelfInter,
+                Join.into(),
+                RemoveIntEdges,
+                theRange,
+            )
+        }
     }
 
     /// Inherited from BRepOffsetAPI_MakeOffsetShape: MakeOffset()
     pub fn make_offset(&self) -> &crate::ffi::BRepOffset_MakeOffset {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(self as *const Self))
+        }
     }
 
     /// Inherited from BRepOffsetAPI_MakeOffsetShape: GetJoinType()
     pub fn get_join_type(&self) -> crate::geom_abs::JoinType {
-        crate::geom_abs::JoinType::try_from(
-            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_GetJoinType(self),
-        )
-        .unwrap()
+        unsafe {
+            crate::geom_abs::JoinType::try_from(
+                crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_GetJoinType(self as *const Self),
+            )
+            .unwrap()
+        }
     }
 }
 
@@ -1983,6 +3170,12 @@ impl MakeThickSolid {
 /// pipe-like shape
 pub use crate::ffi::BRepOffsetAPI_MiddlePath as MiddlePath;
 
+unsafe impl crate::CppDeletable for MiddlePath {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_MiddlePath_destructor(ptr);
+    }
+}
+
 impl MiddlePath {
     /// General constructor.
     /// StartShape and EndShape may be
@@ -1991,68 +3184,84 @@ impl MiddlePath {
         aShape: &crate::ffi::TopoDS_Shape,
         StartShape: &crate::ffi::TopoDS_Shape,
         EndShape: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_MiddlePath_ctor_shape3(aShape, StartShape, EndShape)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_MiddlePath_ctor_shape3(
+                aShape, StartShape, EndShape,
+            ))
+        }
+    }
+
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_MiddlePath_build(self as *mut Self, theRange) }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MiddlePath_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Generated()
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Generated(self, S)
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Generated(self as *mut Self, S))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Modified()
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Modified(self, S)
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Modified(self as *mut Self, S)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_MiddlePath_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_MiddlePath_inherited_IsDeleted(self as *mut Self, S) }
     }
 }
 
@@ -2065,12 +3274,18 @@ impl MiddlePath {
 /// The target shape is a face, and the source shape is an edge or a wire.
 pub use crate::ffi::BRepOffsetAPI_NormalProjection as NormalProjection;
 
+unsafe impl crate::CppDeletable for NormalProjection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_NormalProjection_destructor(ptr);
+    }
+}
+
 impl NormalProjection {
     /// Constructs an empty framework to define projection on
     /// a shape according to the normal from each point to be
     /// projected to the shape.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_NormalProjection_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_NormalProjection_ctor()) }
     }
 
     /// Constructs a framework to define projection onto the
@@ -2078,8 +3293,24 @@ impl NormalProjection {
     /// to be projected from the shape added to this framework by Add.
     /// Default parameters of the algorithm: Tol3D = 1.e-04, Tol2D =sqr(tol3d)
     /// , InternalContinuity = GeomAbs_C2, MaxDegree = 14, MaxSeg = 16.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_NormalProjection_ctor_shape(S)
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_NormalProjection_ctor_shape(S))
+        }
+    }
+
+    /// Initializes the empty constructor framework with the shape S.
+    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepOffsetAPI_NormalProjection_init(self as *mut Self, S) }
+    }
+
+    /// Adds the shape ToProj to the framework for calculation
+    /// of the projection by Compute3d.
+    /// ToProj is an edge or a wire and will be projected onto the basis shape.
+    /// Exceptions
+    /// Standard_ConstructionError if ToProj is not added.
+    pub fn add(&mut self, ToProj: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepOffsetAPI_NormalProjection_add(self as *mut Self, ToProj) }
     }
 
     /// Sets the parameters  used  for computation
@@ -2090,68 +3321,164 @@ impl NormalProjection {
     /// MaxDeg and MaxSeg are the maximum degree and the maximum
     /// number of segment for BSpline resulting of an approximation.
     pub fn set_params(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Tol3D: f64,
         Tol2D: f64,
         InternalContinuity: crate::geom_abs::Shape,
         MaxDegree: i32,
         MaxSeg: i32,
     ) {
-        crate::ffi::BRepOffsetAPI_NormalProjection_set_params(
-            self,
-            Tol3D,
-            Tol2D,
-            InternalContinuity.into(),
-            MaxDegree,
-            MaxSeg,
-        )
+        unsafe {
+            crate::ffi::BRepOffsetAPI_NormalProjection_set_params(
+                self as *mut Self,
+                Tol3D,
+                Tol2D,
+                InternalContinuity.into(),
+                MaxDegree,
+                MaxSeg,
+            )
+        }
+    }
+
+    /// Sets the maximum distance between target shape and
+    /// shape to project. If this condition is not satisfied then corresponding
+    /// part of solution is discarded.
+    /// if MaxDist < 0 then this method does not affect the algorithm
+    pub fn set_max_distance(&mut self, MaxDist: f64) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_NormalProjection_set_max_distance(self as *mut Self, MaxDist)
+        }
+    }
+
+    /// Manage  limitation  of  projected  edges.
+    pub fn set_limit(&mut self, FaceBoundaries: bool) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_NormalProjection_set_limit(self as *mut Self, FaceBoundaries)
+        }
+    }
+
+    /// Returns true if a 3D curve is computed. If not, false is
+    /// returned and an initial 3D curve is kept to build the resulting edges.
+    pub fn compute3d(&mut self, With3d: bool) {
+        unsafe { crate::ffi::BRepOffsetAPI_NormalProjection_compute3d(self as *mut Self, With3d) }
+    }
+
+    /// Builds the result of the projection as a compound of
+    /// wires. Tries to build oriented wires.
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_NormalProjection_build(self as *mut Self, theRange) }
+    }
+
+    /// Returns true if the object was correctly built by the shape
+    /// construction algorithm.
+    /// If at the construction time of the shape, the algorithm
+    /// cannot be completed, or the original data is corrupted,
+    /// IsDone returns false and therefore protects the use of
+    /// functions to access the result of the construction
+    /// (typically the Shape function).
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_NormalProjection_is_done(self as *const Self) }
+    }
+
+    /// Performs the projection.
+    /// The construction of the result is performed by Build.
+    /// Exceptions
+    /// StdFail_NotDone if the projection was not performed.
+    pub fn projection(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_NormalProjection_projection(self as *const Self)) }
+    }
+
+    /// Returns the initial face corresponding to the projected edge E.
+    /// Exceptions
+    /// StdFail_NotDone if no face was found.
+    /// Standard_NoSuchObject if a face corresponding to
+    /// E has already been found.
+    pub fn couple(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_NormalProjection_couple(self as *const Self, E)) }
+    }
+
+    /// Returns the  list   of shapes generated   from the
+    /// shape <S>.
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_NormalProjection_generated(self as *mut Self, S)) }
+    }
+
+    /// Returns the initial edge corresponding to the edge E
+    /// resulting from the computation of the projection.
+    /// Exceptions
+    /// StdFail_NotDone if no edge was found.
+    /// Standard_NoSuchObject if an edge corresponding to
+    /// E has already been found.
+    pub fn ancestor(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_NormalProjection_ancestor(self as *const Self, E)) }
+    }
+
+    /// build the result as a list of wire if possible in --
+    /// a first returns a wire only if there is only a wire.
+    pub fn build_wire(&self, Liste: &mut crate::ffi::TopTools_ListOfShape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_NormalProjection_build_wire(self as *const Self, Liste) }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_Command(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Modified()
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Modified(self, S)
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Modified(self as *mut Self, S))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_NormalProjection_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_NormalProjection_inherited_IsDeleted(self as *mut Self, S)
+        }
     }
 }
 
@@ -2164,6 +3491,12 @@ impl NormalProjection {
 /// sequence. Usually sections are wires, but the first and
 /// the last sections may be vertices (punctual sections).
 pub use crate::ffi::BRepOffsetAPI_ThruSections as ThruSections;
+
+unsafe impl crate::CppDeletable for ThruSections {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepOffsetAPI_ThruSections_destructor(ptr);
+    }
+}
 
 impl ThruSections {
     /// Initializes an algorithm for building a shell or a solid
@@ -2178,8 +3511,12 @@ impl ThruSections {
     /// approximation algorithm; the default value is 1.0e-6.
     /// Use AddWire and AddVertex to define the
     /// successive sections of the shell or solid to be built.
-    pub fn new_bool2_real(isSolid: bool, ruled: bool, pres3d: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepOffsetAPI_ThruSections_ctor_bool2_real(isSolid, ruled, pres3d)
+    pub fn new_bool2_real(isSolid: bool, ruled: bool, pres3d: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_ThruSections_ctor_bool2_real(
+                isSolid, ruled, pres3d,
+            ))
+        }
     }
 
     /// Initializes an algorithm for building a shell or a solid
@@ -2194,7 +3531,7 @@ impl ThruSections {
     /// approximation algorithm; the default value is 1.0e-6.
     /// Use AddWire and AddVertex to define the
     /// successive sections of the shell or solid to be built.
-    pub fn new_bool2(isSolid: bool, ruled: bool) -> cxx::UniquePtr<Self> {
+    pub fn new_bool2(isSolid: bool, ruled: bool) -> crate::OwnedPtr<Self> {
         Self::new_bool2_real(isSolid, ruled, 1.0e-06)
     }
 
@@ -2210,7 +3547,7 @@ impl ThruSections {
     /// approximation algorithm; the default value is 1.0e-6.
     /// Use AddWire and AddVertex to define the
     /// successive sections of the shell or solid to be built.
-    pub fn new_bool(isSolid: bool) -> cxx::UniquePtr<Self> {
+    pub fn new_bool(isSolid: bool) -> crate::OwnedPtr<Self> {
         Self::new_bool2_real(isSolid, false, 1.0e-06)
     }
 
@@ -2226,35 +3563,144 @@ impl ThruSections {
     /// approximation algorithm; the default value is 1.0e-6.
     /// Use AddWire and AddVertex to define the
     /// successive sections of the shell or solid to be built.
-    pub fn new() -> cxx::UniquePtr<Self> {
+    pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool2_real(false, false, 1.0e-06)
     }
 
+    /// Initializes this algorithm for building a shell or a solid
+    /// passing through a set of sections, where:
+    /// - isSolid is set to true if this construction algorithm is
+    /// required to build a solid or to false if it is required to
+    /// build a shell. false is the default value;
+    /// - ruled is set to true if the faces generated between the
+    /// edges of two consecutive wires are ruled surfaces or
+    /// to false (the default value) if they are smoothed out by approximation,
+    /// - pres3d defines the precision criterion used by the
+    /// approximation algorithm; the default value is 1.0e-6.
+    /// Use AddWire and AddVertex to define the successive
+    /// sections of the shell or solid to be built.
+    pub fn init(&mut self, isSolid: bool, ruled: bool, pres3d: f64) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_ThruSections_init(self as *mut Self, isSolid, ruled, pres3d)
+        }
+    }
+
+    /// Adds the wire wire to the set of
+    /// sections through which the shell or solid is built.
+    /// Use the Build function to construct the shape.
+    pub fn add_wire(&mut self, wire: &crate::ffi::TopoDS_Wire) {
+        unsafe { crate::ffi::BRepOffsetAPI_ThruSections_add_wire(self as *mut Self, wire) }
+    }
+
+    /// Adds the vertex Vertex (punctual section) to the set of sections
+    /// through which the shell or solid is built. A vertex may be added to the
+    /// set of sections only as first or last section. At least one wire
+    /// must be added to the set of sections by the method AddWire.
+    /// Use the Build function to construct the shape.
+    pub fn add_vertex(&mut self, aVertex: &crate::ffi::TopoDS_Vertex) {
+        unsafe { crate::ffi::BRepOffsetAPI_ThruSections_add_vertex(self as *mut Self, aVertex) }
+    }
+
+    /// Sets/unsets the option to
+    /// compute origin and orientation on wires to avoid twisted results
+    /// and update wires to have same number of edges.
+    pub fn check_compatibility(&mut self, check: bool) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_ThruSections_check_compatibility(self as *mut Self, check)
+        }
+    }
+
+    /// Define the approximation algorithm
+    pub fn set_smoothing(&mut self, UseSmoothing: bool) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_ThruSections_set_smoothing(self as *mut Self, UseSmoothing)
+        }
+    }
+
     /// Define the type of parametrization   used in the approximation
-    pub fn set_par_type(
-        self: std::pin::Pin<&mut Self>,
-        ParType: crate::approx::ParametrizationType,
-    ) {
-        crate::ffi::BRepOffsetAPI_ThruSections_set_par_type(self, ParType.into())
+    pub fn set_par_type(&mut self, ParType: crate::approx::ParametrizationType) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_ThruSections_set_par_type(self as *mut Self, ParType.into())
+        }
     }
 
     /// Define the Continuity used in the approximation
-    pub fn set_continuity(self: std::pin::Pin<&mut Self>, C: crate::geom_abs::Shape) {
-        crate::ffi::BRepOffsetAPI_ThruSections_set_continuity(self, C.into())
+    pub fn set_continuity(&mut self, C: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_ThruSections_set_continuity(self as *mut Self, C.into())
+        }
+    }
+
+    /// define the Weights  associed to the criterium used in
+    /// the  optimization.
+    ///
+    /// if Wi <= 0
+    pub fn set_criterium_weight(&mut self, W1: f64, W2: f64, W3: f64) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_ThruSections_set_criterium_weight(
+                self as *mut Self,
+                W1,
+                W2,
+                W3,
+            )
+        }
+    }
+
+    /// Define the maximal U degree of result surface
+    pub fn set_max_degree(&mut self, MaxDeg: i32) {
+        unsafe { crate::ffi::BRepOffsetAPI_ThruSections_set_max_degree(self as *mut Self, MaxDeg) }
     }
 
     /// returns the type of parametrization used in the approximation
     pub fn par_type(&self) -> crate::approx::ParametrizationType {
-        crate::approx::ParametrizationType::try_from(
-            crate::ffi::BRepOffsetAPI_ThruSections_par_type(self),
-        )
-        .unwrap()
+        unsafe {
+            crate::approx::ParametrizationType::try_from(
+                crate::ffi::BRepOffsetAPI_ThruSections_par_type(self as *const Self),
+            )
+            .unwrap()
+        }
     }
 
     /// returns the Continuity used in the approximation
     pub fn continuity(&self) -> crate::geom_abs::Shape {
-        crate::geom_abs::Shape::try_from(crate::ffi::BRepOffsetAPI_ThruSections_continuity(self))
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepOffsetAPI_ThruSections_continuity(
+                self as *const Self,
+            ))
             .unwrap()
+        }
+    }
+
+    /// returns the maximal U degree of result surface
+    pub fn max_degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepOffsetAPI_ThruSections_max_degree(self as *const Self) }
+    }
+
+    /// Define the approximation algorithm
+    pub fn use_smoothing(&self) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_ThruSections_use_smoothing(self as *const Self) }
+    }
+
+    /// returns the Weights associed  to the criterium used in
+    /// the  optimization.
+    pub fn criterium_weight(&self, W1: &mut f64, W2: &mut f64, W3: &mut f64) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_ThruSections_criterium_weight(self as *const Self, W1, W2, W3)
+        }
+    }
+
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepOffsetAPI_ThruSections_build(self as *mut Self, theRange) }
+    }
+
+    /// Returns the TopoDS Shape of the bottom of the loft if solid
+    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_ThruSections_first_shape(self as *const Self)) }
+    }
+
+    /// Returns the TopoDS Shape of the top of the loft if solid
+    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_ThruSections_last_shape(self as *const Self)) }
     }
 
     /// if Ruled
@@ -2265,67 +3711,117 @@ impl ThruSections {
     pub fn generated_face(
         &self,
         Edge: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
-        crate::ffi::BRepOffsetAPI_ThruSections_generated_face(self, Edge)
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffsetAPI_ThruSections_generated_face(
+                self as *const Self,
+                Edge,
+            ))
+        }
+    }
+
+    /// Sets the mutable input state.
+    /// If true then the input profile can be modified inside
+    /// the thrusection operation. Default value is true.
+    pub fn set_mutable_input(&mut self, theIsMutableInput: bool) {
+        unsafe {
+            crate::ffi::BRepOffsetAPI_ThruSections_set_mutable_input(
+                self as *mut Self,
+                theIsMutableInput,
+            )
+        }
+    }
+
+    /// Returns a list of new shapes generated from the shape
+    /// S by the shell-generating algorithm.
+    /// This function is redefined from BRepBuilderAPI_MakeShape::Generated.
+    /// S can be an edge or a vertex of a given Profile (see methods AddWire and AddVertex).
+    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_ThruSections_generated(self as *mut Self, S)) }
+    }
+
+    /// Returns the list of original wires
+    pub fn wires(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_ThruSections_wires(self as *const Self)) }
+    }
+
+    /// Returns the current mutable input state
+    pub fn is_mutable_input(&self) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_ThruSections_is_mutable_input(self as *const Self) }
     }
 
     /// Returns the status of thrusection operation
     pub fn get_status(&self) -> crate::b_rep_fill::ThruSectionErrorStatus {
-        crate::b_rep_fill::ThruSectionErrorStatus::try_from(
-            crate::ffi::BRepOffsetAPI_ThruSections_get_status(self),
-        )
-        .unwrap()
+        unsafe {
+            crate::b_rep_fill::ThruSectionErrorStatus::try_from(
+                crate::ffi::BRepOffsetAPI_ThruSections_get_status(self as *const Self),
+            )
+            .unwrap()
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command_mut(self)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape(self)
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape_mut(self)
+        &mut self,
+    ) -> &mut crate::b_rep_builder_api::MakeShape {
+        unsafe {
+            &mut *(crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_Command: IsDone()
     pub fn is_done(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_ThruSections_inherited_IsDone(self)
+        unsafe { crate::ffi::BRepOffsetAPI_ThruSections_inherited_IsDone(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_Command: Check()
     pub fn check(&self) {
-        crate::ffi::BRepOffsetAPI_ThruSections_inherited_Check(self)
+        unsafe { crate::ffi::BRepOffsetAPI_ThruSections_inherited_Check(self as *const Self) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Shape()
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_ThruSections_inherited_Shape(self)
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepOffsetAPI_ThruSections_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: Modified()
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_ThruSections_inherited_Modified(self, S)
+    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepOffsetAPI_ThruSections_inherited_Modified(self as *mut Self, S))
+        }
     }
 
     /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepOffsetAPI_ThruSections_inherited_IsDeleted(self, S)
+    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepOffsetAPI_ThruSections_inherited_IsDeleted(self as *mut Self, S) }
     }
 }

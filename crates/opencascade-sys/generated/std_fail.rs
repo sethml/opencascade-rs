@@ -12,28 +12,46 @@
 
 pub use crate::ffi::StdFail_NotDone as NotDone;
 
+unsafe impl crate::CppDeletable for NotDone {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StdFail_NotDone_destructor(ptr);
+    }
+}
+
 impl NotDone {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::StdFail_NotDone_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdFail_NotDone_ctor()) }
     }
 
-    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
-        crate::ffi::StdFail_NotDone_ctor_charptr(theMessage)
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdFail_NotDone_ctor_charptr(theMessage)) }
     }
 
-    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
-        crate::ffi::StdFail_NotDone_ctor_charptr2(theMessage, theStackTrace)
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_NotDone_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
     }
 
-    pub fn raise(theMessage: &str) {
-        crate::ffi::StdFail_NotDone_raise(theMessage)
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StdFail_NotDone_dynamic_type(self as *const Self)) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::StdFail_NotDone_get_type_name()
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::StdFail_NotDone_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::StdFail_NotDone_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::StdFail_NotDone_get_type_descriptor()
+        unsafe { &*(crate::ffi::StdFail_NotDone_get_type_descriptor()) }
     }
 }

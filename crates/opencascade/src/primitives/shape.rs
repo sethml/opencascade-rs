@@ -6,7 +6,6 @@ use crate::{
     },
     Error,
 };
-use cxx::UniquePtr;
 use glam::{dvec3, DVec2, DVec3};
 use opencascade_sys::{
     b_rep, b_rep_algo_api, b_rep_feat, b_rep_fillet_api, b_rep_int_curve_surface, b_rep_mesh,
@@ -14,10 +13,11 @@ use opencascade_sys::{
     if_select, message, shape_upgrade, step_control, stl_api, t_colgp, top_abs, top_exp,
     top_loc, top_tools, topo_ds,
 };
+use std::ffi::CString;
 use std::path::Path;
 
 pub struct Shape {
-    pub(crate) inner: UniquePtr<topo_ds::Shape>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<topo_ds::Shape>,
 }
 
 impl AsRef<Shape> for Shape {
@@ -127,7 +127,7 @@ impl SphereBuilder {
         let axis = make_axis_2(self.center, DVec3::Z);
         let mut make_sphere =
             b_rep_prim_api::MakeSphere::new_ax2_real2(&axis, self.radius, self.z_angle);
-        let make_shape = make_sphere.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let make_shape = make_sphere.as_b_rep_builder_api_make_shape_mut();
         Shape::from_shape(make_shape.shape())
     }
 
@@ -160,7 +160,7 @@ impl ConeBuilder {
             self.height,
             self.z_angle,
         );
-        let make_shape = make_cone.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let make_shape = make_cone.as_b_rep_builder_api_make_shape_mut();
         Shape::from_shape(make_shape.shape())
     }
 
@@ -211,7 +211,7 @@ impl TorusBuilder {
             self.angle_2,
             self.z_angle,
         );
-        let make_shape = make_torus.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let make_shape = make_torus.as_b_rep_builder_api_make_shape_mut();
         Shape::from_shape(make_shape.shape())
     }
 
@@ -265,7 +265,7 @@ impl Shape {
         // Construct an empty compound
         let mut compound = topo_ds::Compound::new();
         let builder = b_rep::Builder::new();
-        builder.make_compound(compound.pin_mut());
+        builder.make_compound(&mut compound);
         let inner = compound.as_shape().to_owned();
         Self { inner }
     }
@@ -280,7 +280,7 @@ impl Shape {
         let diff = max_corner - min_corner;
         let mut make_box =
             b_rep_prim_api::MakeBox::new_pnt_real3(&point, diff.x, diff.y, diff.z);
-        let make_shape = make_box.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let make_shape = make_box.as_b_rep_builder_api_make_shape_mut();
         Self::from_shape(make_shape.shape())
     }
 
@@ -320,7 +320,7 @@ impl Shape {
     pub fn cylinder(p: DVec3, r: f64, dir: DVec3, h: f64) -> Self {
         let axis = make_axis_2(p, dir);
         let mut make_cylinder = b_rep_prim_api::MakeCylinder::new_ax2_real2(&axis, r, h);
-        let make_shape = make_cylinder.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let make_shape = make_cylinder.as_b_rep_builder_api_make_shape_mut();
         Self::from_shape(make_shape.shape())
     }
 
@@ -405,10 +405,10 @@ impl Shape {
         let progress = message::ProgressRange::new();
         let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(&self.inner, ch_fi3d::FilletShape::Rational);
         for edge in edges {
-            make_fillet.pin_mut().add_real_edge(radius, &edge.as_ref().inner);
+            make_fillet.add_real_edge(radius, &edge.as_ref().inner);
         }
-        make_fillet.pin_mut().build(&progress);
-        let shape = make_fillet.pin_mut().shape();
+        make_fillet.build(&progress);
+        let shape = make_fillet.shape();
         Self::from_shape(shape)
     }
 
@@ -426,17 +426,16 @@ impl Shape {
         let mut array = t_colgp::Array1OfPnt2d::new_int2(1, n);
         for (i, &(param, radius)) in pairs.iter().enumerate() {
             let pnt2d = make_point2d(DVec2::new(param, radius));
-            array.pin_mut().set_value(i as i32 + 1, &pnt2d);
+            array.set_value(i as i32 + 1, &pnt2d);
         }
 
         for edge in edges {
             make_fillet
-                .pin_mut()
                 .add_array1ofpnt2d_edge(&array, &edge.as_ref().inner);
         }
 
-        make_fillet.pin_mut().build(&progress);
-        let shape = make_fillet.pin_mut().shape();
+        make_fillet.build(&progress);
+        let shape = make_fillet.shape();
         Self::from_shape(shape)
     }
 
@@ -449,10 +448,10 @@ impl Shape {
         let progress = message::ProgressRange::new();
         let mut make_chamfer = b_rep_fillet_api::MakeChamfer::new_shape(&self.inner);
         for edge in edges {
-            make_chamfer.pin_mut().add_real_edge(distance, &edge.as_ref().inner);
+            make_chamfer.add_real_edge(distance, &edge.as_ref().inner);
         }
-        make_chamfer.pin_mut().build(&progress);
-        let shape = make_chamfer.pin_mut().shape();
+        make_chamfer.build(&progress);
+        let shape = make_chamfer.shape();
         Self::from_shape(shape)
     }
 
@@ -480,11 +479,11 @@ impl Shape {
             &progress,
         );
 
-        let make_shape = cut.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let make_shape = cut.as_b_rep_builder_api_make_shape_mut();
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
 
-        let new_edges = list_of_shape_to_edges(cut.pin_mut().section_edges());
+        let new_edges = list_of_shape_to_edges(cut.section_edges());
 
         BooleanShape { shape, new_edges }
     }
@@ -492,12 +491,13 @@ impl Shape {
     pub fn read_step(path: impl AsRef<Path>) -> Result<Self, Error> {
         let mut reader = step_control::Reader::new();
         let path_str = path.as_ref().to_string_lossy();
-        let status = reader.pin_mut().read_file_charptr(&path_str);
+        let c_path = CString::new(path_str.as_ref()).map_err(|_| Error::StepReadFailed)?;
+        let status = reader.read_file_charptr(c_path.as_ptr());
         if status != if_select::ReturnStatus::Retvoid {
             return Err(Error::StepReadFailed);
         }
         let progress = message::ProgressRange::new();
-        reader.pin_mut().transfer_roots(&progress);
+        reader.transfer_roots(&progress);
         let inner = reader.one_shape();
         Ok(Self { inner })
     }
@@ -506,7 +506,7 @@ impl Shape {
         let mut writer = step_control::Writer::new();
         let progress = message::ProgressRange::new();
         // STEPControl_AsIs = 0
-        let status = writer.pin_mut().transfer_shape_stepmodeltype_bool_progressrange(
+        let status = writer.transfer_shape_stepmodeltype_bool_progressrange(
             &self.inner,
             step_control::StepModelType::Asis,
             true, // compgraph
@@ -516,7 +516,8 @@ impl Shape {
             return Err(Error::StepWriteFailed);
         }
         let path_str = path.as_ref().to_string_lossy();
-        let status = writer.pin_mut().write(&path_str);
+        let c_path = CString::new(path_str.as_ref()).map_err(|_| Error::StepWriteFailed)?;
+        let status = writer.write(c_path.as_ptr());
         if status != if_select::ReturnStatus::Retdone {
             return Err(Error::StepWriteFailed);
         }
@@ -526,12 +527,13 @@ impl Shape {
     pub fn read_iges(path: impl AsRef<Path>) -> Result<Self, Error> {
         let mut reader = iges_control::Reader::new();
         let path_str = path.as_ref().to_string_lossy();
-        let status = reader.pin_mut().as_xs_control_reader_mut().read_file(&path_str);
+        let c_path = CString::new(path_str.as_ref()).map_err(|_| Error::IgesReadFailed)?;
+        let status = reader.as_xs_control_reader_mut().read_file(c_path.as_ptr());
         if status != if_select::ReturnStatus::Retvoid {
             return Err(Error::IgesReadFailed);
         }
         let progress = message::ProgressRange::new();
-        reader.pin_mut().transfer_roots(&progress);
+        reader.transfer_roots(&progress);
         let inner = reader.one_shape();
         Ok(Self { inner })
     }
@@ -539,14 +541,15 @@ impl Shape {
     pub fn write_iges(&self, path: impl AsRef<Path>) -> Result<(), Error> {
         let mut writer = iges_control::Writer::new();
         let progress = message::ProgressRange::new();
-        let success = writer.pin_mut().add_shape(&self.inner, &progress);
+        let success = writer.add_shape(&self.inner, &progress);
         if !success {
             return Err(Error::IgesWriteFailed);
         }
-        writer.pin_mut().compute_model();
+        writer.compute_model();
         let path_str = path.as_ref().to_string_lossy();
+        let c_path = CString::new(path_str.as_ref()).map_err(|_| Error::IgesWriteFailed)?;
         let fnes = true;
-        let success = writer.pin_mut().write(&path_str, fnes);
+        let success = writer.write(c_path.as_ptr(), fnes);
         if success {
             Ok(())
         } else {
@@ -564,11 +567,11 @@ impl Shape {
             &progress,
         );
 
-        let make_shape = fuse.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let make_shape = fuse.as_b_rep_builder_api_make_shape_mut();
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
 
-        let new_edges = list_of_shape_to_edges(fuse.pin_mut().section_edges());
+        let new_edges = list_of_shape_to_edges(fuse.section_edges());
 
         BooleanShape { shape, new_edges }
     }
@@ -584,11 +587,11 @@ impl Shape {
             &progress,
         );
 
-        let make_shape = common.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let make_shape = common.as_b_rep_builder_api_make_shape_mut();
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
 
-        let new_edges = list_of_shape_to_edges(common.pin_mut().section_edges());
+        let new_edges = list_of_shape_to_edges(common.section_edges());
 
         BooleanShape { shape, new_edges }
     }
@@ -614,11 +617,12 @@ impl Shape {
             angle_deflection,
             in_parallel,
         );
-        mesher.pin_mut().perform(&progress);
+        mesher.perform(&progress);
 
         let mut writer = stl_api::Writer::new();
         let path_str = path.as_ref().to_string_lossy();
-        let success = writer.pin_mut().write(&self.inner, &path_str, &progress);
+        let c_path = CString::new(path_str.as_ref()).map_err(|_| Error::StlWriteFailed)?;
+        let success = writer.write(&self.inner, c_path.as_ptr(), &progress);
 
         if success {
             Ok(())
@@ -635,8 +639,8 @@ impl Shape {
             true,  // UnifyFaces
             false, // ConcatBSplines
         );
-        unifier.pin_mut().allow_internal_edges(false);
-        unifier.pin_mut().build();
+        unifier.allow_internal_edges(false);
+        unifier.build();
         let result = unifier.shape();
         Self::from_shape(result)
     }
@@ -644,10 +648,10 @@ impl Shape {
     pub fn set_global_translation(&mut self, translation: DVec3) {
         let mut transform = gp::Trsf::new();
         let translation_vec = make_vec(translation);
-        transform.pin_mut().set_translation_vec(&translation_vec);
+        transform.set_translation_vec(&translation_vec);
         let location = top_loc::Location::new_trsf(&transform);
         let raise_exception = false;
-        self.inner.pin_mut().move_(&location, raise_exception);
+        self.inner.move_(&location, raise_exception);
     }
 
     pub fn mesh(&self) -> Result<Mesh, Error> {
@@ -686,7 +690,6 @@ impl Shape {
         let mut intersector = b_rep_int_curve_surface::Inter::new();
         let tolerance = 0.001;
         intersector
-            .pin_mut()
             .init_shape_lin_real(&self.inner, &line, tolerance);
 
         let mut results = Vec::new();
@@ -705,7 +708,7 @@ impl Shape {
                 point: dvec3(pnt.x(), pnt.y(), pnt.z()),
             });
 
-            intersector.pin_mut().next();
+            intersector.next();
         }
 
         results
@@ -719,12 +722,12 @@ impl Shape {
     ) -> Self {
         let mut faces_list = top_tools::ListOfShape::new();
         for face in faces_to_remove.into_iter() {
-            faces_list.pin_mut().append(face.as_ref().inner.as_shape());
+            faces_list.append(face.as_ref().inner.as_shape());
         }
         let progress = message::ProgressRange::new();
         let mut solid_maker = b_rep_offset_api::MakeThickSolid::new();
         // BRepOffset_Skin = 0, GeomAbs_Arc = 0
-        solid_maker.pin_mut().make_thick_solid_by_join(
+        solid_maker.make_thick_solid_by_join(
             &self.inner,
             &faces_list,
             offset,
@@ -737,7 +740,6 @@ impl Shape {
             &progress,
         );
         let make_shape = solid_maker
-            .pin_mut()
             .as_b_rep_builder_api_make_shape_mut();
         Self::from_shape(make_shape.shape())
     }
@@ -754,8 +756,8 @@ impl Shape {
     pub fn drill_hole(&self, p: DVec3, dir: DVec3, radius: f64) -> Self {
         let axis = make_axis_1(p, dir);
         let mut hole_maker = b_rep_feat::MakeCylindricalHole::new();
-        hole_maker.pin_mut().init_shape_ax1(&self.inner, &axis);
-        hole_maker.pin_mut().perform_real(radius);
+        hole_maker.init_shape_ax1(&self.inner, &axis);
+        hole_maker.perform_real(radius);
         let result = hole_maker.shape();
         Self::from_shape(result)
     }
@@ -766,11 +768,11 @@ pub(crate) fn list_of_shape_to_edges(list: &top_tools::ListOfShape) -> Vec<Edge>
     let mut iter = list.iter();
     let mut edges = Vec::new();
     loop {
-        let shape = iter.pin_mut().next();
+        let shape = iter.next();
         if shape.is_null() {
             break;
         }
-        let edge = topo_ds::edge(&shape);
+        let edge = unsafe { &*topo_ds::edge(shape.as_ptr()) };
         edges.push(Edge::from_edge(edge));
     }
     edges
@@ -791,7 +793,7 @@ pub struct LineFaceHitPoint {
 }
 
 pub struct ChamferMaker {
-    inner: UniquePtr<b_rep_fillet_api::MakeChamfer>,
+    inner: opencascade_sys::OwnedPtr<b_rep_fillet_api::MakeChamfer>,
 }
 
 impl ChamferMaker {
@@ -801,13 +803,13 @@ impl ChamferMaker {
     }
 
     pub fn add_edge(&mut self, distance: f64, edge: &Edge) {
-        self.inner.pin_mut().add_real_edge(distance, &edge.inner);
+        self.inner.add_real_edge(distance, &edge.inner);
     }
 
     pub fn build(mut self) -> Shape {
         let progress = message::ProgressRange::new();
-        self.inner.pin_mut().build(&progress);
-        let shape = self.inner.pin_mut().shape();
+        self.inner.build(&progress);
+        let shape = self.inner.shape();
         Shape::from_shape(shape)
     }
 }

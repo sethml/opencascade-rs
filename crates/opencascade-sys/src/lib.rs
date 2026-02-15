@@ -17,6 +17,10 @@
 //! ./scripts/regenerate-bindings.sh
 //! ```
 
+// Support types for extern "C" FFI
+mod owned_ptr;
+pub use owned_ptr::*;
+
 // Include the generated modules (including collections)
 #[path = "../generated/lib.rs"]
 mod generated;

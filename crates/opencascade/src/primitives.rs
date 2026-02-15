@@ -1,4 +1,3 @@
-use cxx::UniquePtr;
 use glam::{DVec2, DVec3};
 use opencascade_sys::{gp, top_abs, top_exp, topo_ds};
 
@@ -103,32 +102,32 @@ impl<T: Into<Shape>> IntoShape for T {
     }
 }
 
-pub fn make_point(p: DVec3) -> UniquePtr<gp::Pnt> {
+pub fn make_point(p: DVec3) -> opencascade_sys::OwnedPtr<gp::Pnt> {
     gp::Pnt::new_real3(p.x, p.y, p.z)
 }
 
-pub fn make_point2d(p: DVec2) -> UniquePtr<gp::Pnt2d> {
+pub fn make_point2d(p: DVec2) -> opencascade_sys::OwnedPtr<gp::Pnt2d> {
     gp::Pnt2d::new_real2(p.x, p.y)
 }
 
-fn make_dir(p: DVec3) -> UniquePtr<gp::Dir> {
+fn make_dir(p: DVec3) -> opencascade_sys::OwnedPtr<gp::Dir> {
     gp::Dir::new_real3(p.x, p.y, p.z)
 }
 
-fn make_vec(vec: DVec3) -> UniquePtr<gp::Vec> {
+fn make_vec(vec: DVec3) -> opencascade_sys::OwnedPtr<gp::Vec> {
     gp::Vec::new_real3(vec.x, vec.y, vec.z)
 }
 
-fn make_axis_1(origin: DVec3, dir: DVec3) -> UniquePtr<gp::Ax1> {
+fn make_axis_1(origin: DVec3, dir: DVec3) -> opencascade_sys::OwnedPtr<gp::Ax1> {
     gp::Ax1::new_pnt_dir(&make_point(origin), &make_dir(dir))
 }
 
-pub fn make_axis_2(origin: DVec3, dir: DVec3) -> UniquePtr<gp::Ax2> {
+pub fn make_axis_2(origin: DVec3, dir: DVec3) -> opencascade_sys::OwnedPtr<gp::Ax2> {
     gp::Ax2::new_pnt_dir(&make_point(origin), &make_dir(dir))
 }
 
 pub struct EdgeIterator {
-    explorer: UniquePtr<top_exp::Explorer>,
+    explorer: opencascade_sys::OwnedPtr<top_exp::Explorer>,
 }
 
 impl Iterator for EdgeIterator {
@@ -136,10 +135,10 @@ impl Iterator for EdgeIterator {
 
     fn next(&mut self) -> Option<Self::Item> {
         if self.explorer.more() {
-            let edge = topo_ds::edge(self.explorer.current());
+            let edge = unsafe { &*topo_ds::edge(self.explorer.current()) };
             let edge = Edge::from_edge(edge);
 
-            self.explorer.pin_mut().next();
+            self.explorer.next();
 
             Some(edge)
         } else {
@@ -165,7 +164,7 @@ impl EdgeIterator {
 }
 
 pub struct FaceIterator {
-    explorer: UniquePtr<top_exp::Explorer>,
+    explorer: opencascade_sys::OwnedPtr<top_exp::Explorer>,
 }
 
 #[derive(Debug, Copy, Clone)]
@@ -216,10 +215,10 @@ impl Iterator for FaceIterator {
 
     fn next(&mut self) -> Option<Self::Item> {
         if self.explorer.more() {
-            let face = topo_ds::face(self.explorer.current());
+            let face = unsafe { &*topo_ds::face(self.explorer.current()) };
             let face = Face::from_face(face);
 
-            self.explorer.pin_mut().next();
+            self.explorer.next();
 
             Some(face)
         } else {

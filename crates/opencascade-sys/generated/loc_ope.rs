@@ -40,20 +40,78 @@ impl TryFrom<i32> for Operation {
 
 pub use crate::ffi::LocOpe_Gluer as Gluer;
 
+unsafe impl crate::CppDeletable for Gluer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::LocOpe_Gluer_destructor(ptr);
+    }
+}
+
 impl Gluer {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::LocOpe_Gluer_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Gluer_ctor()) }
     }
 
     pub fn new_shape2(
         Sbase: &crate::ffi::TopoDS_Shape,
         Snew: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::LocOpe_Gluer_ctor_shape2(Sbase, Snew)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Gluer_ctor_shape2(Sbase, Snew)) }
+    }
+
+    pub fn init(&mut self, Sbase: &crate::ffi::TopoDS_Shape, Snew: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::LocOpe_Gluer_init(self as *mut Self, Sbase, Snew) }
+    }
+
+    pub fn bind_face2(&mut self, Fnew: &crate::ffi::TopoDS_Face, Fbase: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::LocOpe_Gluer_bind_face2(self as *mut Self, Fnew, Fbase) }
+    }
+
+    pub fn bind_edge2(&mut self, Enew: &crate::ffi::TopoDS_Edge, Ebase: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::LocOpe_Gluer_bind_edge2(self as *mut Self, Enew, Ebase) }
     }
 
     pub fn ope_type(&self) -> crate::loc_ope::Operation {
-        crate::loc_ope::Operation::try_from(crate::ffi::LocOpe_Gluer_ope_type(self)).unwrap()
+        unsafe {
+            crate::loc_ope::Operation::try_from(crate::ffi::LocOpe_Gluer_ope_type(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::LocOpe_Gluer_perform(self as *mut Self) }
+    }
+
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::LocOpe_Gluer_is_done(self as *const Self) }
+    }
+
+    pub fn resulting_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::LocOpe_Gluer_resulting_shape(self as *const Self)) }
+    }
+
+    pub fn descendant_faces(
+        &self,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::LocOpe_Gluer_descendant_faces(self as *const Self, F)) }
+    }
+
+    pub fn basis_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::LocOpe_Gluer_basis_shape(self as *const Self)) }
+    }
+
+    pub fn glued_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::LocOpe_Gluer_glued_shape(self as *const Self)) }
+    }
+
+    pub fn edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::LocOpe_Gluer_edges(self as *const Self)) }
+    }
+
+    pub fn tgt_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::LocOpe_Gluer_tgt_edges(self as *const Self)) }
     }
 }
 
@@ -63,15 +121,61 @@ impl Gluer {
 
 pub use crate::ffi::LocOpe_Spliter as Spliter;
 
+unsafe impl crate::CppDeletable for Spliter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::LocOpe_Spliter_destructor(ptr);
+    }
+}
+
 impl Spliter {
     /// Empty constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::LocOpe_Spliter_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Spliter_ctor()) }
     }
 
     /// Creates the algorithm on the shape <S>.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::LocOpe_Spliter_ctor_shape(S)
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Spliter_ctor_shape(S)) }
+    }
+
+    /// Initializes the algorithm on the shape <S>.
+    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::LocOpe_Spliter_init(self as *mut Self, S) }
+    }
+
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::LocOpe_Spliter_is_done(self as *const Self) }
+    }
+
+    /// Returns the new shape
+    pub fn resulting_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::LocOpe_Spliter_resulting_shape(self as *const Self)) }
+    }
+
+    /// Returns the initial shape
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::LocOpe_Spliter_shape(self as *const Self)) }
+    }
+
+    /// Returns  the faces   which  are the  left of   the
+    /// projected wires and which are
+    pub fn direct_left(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::LocOpe_Spliter_direct_left(self as *const Self)) }
+    }
+
+    /// Returns the faces of the "left" part on the shape.
+    /// (It  is build   from  DirectLeft,  with  the faces
+    /// connected to this set, and so on...).
+    pub fn left(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::LocOpe_Spliter_left(self as *const Self)) }
+    }
+
+    /// Returns the list of descendant shapes of <S>.
+    pub fn descendant_shapes(
+        &mut self,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::LocOpe_Spliter_descendant_shapes(self as *mut Self, S)) }
     }
 }
 

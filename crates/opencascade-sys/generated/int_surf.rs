@@ -74,15 +74,127 @@ impl TryFrom<i32> for Situation {
 /// parametric coordinates.
 pub use crate::ffi::IntSurf_PntOn2S as PntOn2S;
 
+unsafe impl crate::CppDeletable for PntOn2S {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntSurf_PntOn2S_destructor(ptr);
+    }
+}
+
 impl PntOn2S {
     /// Empty constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IntSurf_PntOn2S_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PntOn2S_ctor()) }
+    }
+
+    /// Sets the value of the point in 3d space.
+    pub fn set_value_pnt(&mut self, Pt: &crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::IntSurf_PntOn2S_set_value_pnt(self as *mut Self, Pt) }
+    }
+
+    /// Sets the values of the point in 3d space, and
+    /// in the parametric space of one of the surface.
+    pub fn set_value_pnt_bool_real2(
+        &mut self,
+        Pt: &crate::ffi::gp_Pnt,
+        OnFirst: bool,
+        U: f64,
+        V: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntSurf_PntOn2S_set_value_pnt_bool_real2(
+                self as *mut Self,
+                Pt,
+                OnFirst,
+                U,
+                V,
+            )
+        }
+    }
+
+    /// Sets the values of the point in 3d space, and
+    /// in the parametric space of each surface.
+    pub fn set_value_pnt_real4(
+        &mut self,
+        Pt: &crate::ffi::gp_Pnt,
+        U1: f64,
+        V1: f64,
+        U2: f64,
+        V2: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntSurf_PntOn2S_set_value_pnt_real4(self as *mut Self, Pt, U1, V1, U2, V2)
+        }
+    }
+
+    /// Set the values of the point in the parametric
+    /// space of one of the surface.
+    pub fn set_value_bool_real2(&mut self, OnFirst: bool, U: f64, V: f64) {
+        unsafe {
+            crate::ffi::IntSurf_PntOn2S_set_value_bool_real2(self as *mut Self, OnFirst, U, V)
+        }
+    }
+
+    /// Set the values of the point in the parametric
+    /// space of one of the surface.
+    pub fn set_value_real4(&mut self, U1: f64, V1: f64, U2: f64, V2: f64) {
+        unsafe { crate::ffi::IntSurf_PntOn2S_set_value_real4(self as *mut Self, U1, V1, U2, V2) }
+    }
+
+    /// Returns the point in 3d space.
+    pub fn value(&self) -> &crate::ffi::gp_Pnt {
+        unsafe { &*(crate::ffi::IntSurf_PntOn2S_value(self as *const Self)) }
     }
 
     /// Returns the point in 2d space of one of the surfaces.
-    pub fn value_on_surface(&self, OnFirst: bool) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
-        crate::ffi::IntSurf_PntOn2S_value_on_surface(self, OnFirst)
+    pub fn value_on_surface(&self, OnFirst: bool) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PntOn2S_value_on_surface(
+                self as *const Self,
+                OnFirst,
+            ))
+        }
+    }
+
+    /// Returns the parameters of the point on the first surface.
+    pub fn parameters_on_s1(&self, U1: &mut f64, V1: &mut f64) {
+        unsafe { crate::ffi::IntSurf_PntOn2S_parameters_on_s1(self as *const Self, U1, V1) }
+    }
+
+    /// Returns the parameters of the point on the second surface.
+    pub fn parameters_on_s2(&self, U2: &mut f64, V2: &mut f64) {
+        unsafe { crate::ffi::IntSurf_PntOn2S_parameters_on_s2(self as *const Self, U2, V2) }
+    }
+
+    /// Returns the parameters of the point in the
+    /// parametric space of one of the surface.
+    pub fn parameters_on_surface(&self, OnFirst: bool, U: &mut f64, V: &mut f64) {
+        unsafe {
+            crate::ffi::IntSurf_PntOn2S_parameters_on_surface(self as *const Self, OnFirst, U, V)
+        }
+    }
+
+    /// Returns the parameters of the point on both surfaces.
+    pub fn parameters(&self, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64) {
+        unsafe { crate::ffi::IntSurf_PntOn2S_parameters(self as *const Self, U1, V1, U2, V2) }
+    }
+
+    /// Returns TRUE if 2D- and 3D-coordinates of theOterPoint are equal to
+    /// corresponding coordinates of me (with given tolerance).
+    /// If theTol2D < 0.0 we will compare 3D-points only.
+    pub fn is_same(
+        &self,
+        theOtherPoint: &crate::ffi::IntSurf_PntOn2S,
+        theTol3D: f64,
+        theTol2D: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IntSurf_PntOn2S_is_same(
+                self as *const Self,
+                theOtherPoint,
+                theTol3D,
+                theTol2D,
+            )
+        }
     }
 }
 
@@ -95,18 +207,29 @@ impl PntOn2S {
 /// on a surface.
 pub use crate::ffi::IntSurf_Transition as Transition;
 
+unsafe impl crate::CppDeletable for Transition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntSurf_Transition_destructor(ptr);
+    }
+}
+
 impl Transition {
     /// Empty constructor. Creates an UNDECIDED transition.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::IntSurf_Transition_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Transition_ctor()) }
     }
 
     /// Create a IN or OUT transition
     pub fn new_bool_typetrans(
         Tangent: bool,
         Type: crate::int_surf::TypeTrans,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntSurf_Transition_ctor_bool_typetrans(Tangent, Type.into())
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Transition_ctor_bool_typetrans(
+                Tangent,
+                Type.into(),
+            ))
+        }
     }
 
     /// Create a TOUCH transition.
@@ -114,32 +237,47 @@ impl Transition {
         Tangent: bool,
         Situ: crate::int_surf::Situation,
         Oppos: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::IntSurf_Transition_ctor_bool_situation_bool(Tangent, Situ.into(), Oppos)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Transition_ctor_bool_situation_bool(
+                Tangent,
+                Situ.into(),
+                Oppos,
+            ))
+        }
     }
 
     /// Set the values of an IN or OUT transition.
-    pub fn set_value_bool_typetrans(
-        self: std::pin::Pin<&mut Self>,
-        Tangent: bool,
-        Type: crate::int_surf::TypeTrans,
-    ) {
-        crate::ffi::IntSurf_Transition_set_value_bool_typetrans(self, Tangent, Type.into())
+    pub fn set_value_bool_typetrans(&mut self, Tangent: bool, Type: crate::int_surf::TypeTrans) {
+        unsafe {
+            crate::ffi::IntSurf_Transition_set_value_bool_typetrans(
+                self as *mut Self,
+                Tangent,
+                Type.into(),
+            )
+        }
     }
 
     /// Set the values of a TOUCH transition.
     pub fn set_value_bool_situation_bool(
-        self: std::pin::Pin<&mut Self>,
+        &mut self,
         Tangent: bool,
         Situ: crate::int_surf::Situation,
         Oppos: bool,
     ) {
-        crate::ffi::IntSurf_Transition_set_value_bool_situation_bool(
-            self,
-            Tangent,
-            Situ.into(),
-            Oppos,
-        )
+        unsafe {
+            crate::ffi::IntSurf_Transition_set_value_bool_situation_bool(
+                self as *mut Self,
+                Tangent,
+                Situ.into(),
+                Oppos,
+            )
+        }
+    }
+
+    /// Set the values of an UNDECIDED transition.
+    pub fn set_value(&mut self) {
+        unsafe { crate::ffi::IntSurf_Transition_set_value(self as *mut Self) }
     }
 
     /// Returns the type of Transition (in/out/touch/undecided)
@@ -149,8 +287,19 @@ impl Transition {
     /// means that the intersection line goes inside the
     /// part of plane limited by the arc of restriction.
     pub fn transition_type(&self) -> crate::int_surf::TypeTrans {
-        crate::int_surf::TypeTrans::try_from(crate::ffi::IntSurf_Transition_transition_type(self))
+        unsafe {
+            crate::int_surf::TypeTrans::try_from(crate::ffi::IntSurf_Transition_transition_type(
+                self as *const Self,
+            ))
             .unwrap()
+        }
+    }
+
+    /// Returns TRUE if the point is tangent to the arc
+    /// given by Value.
+    /// An exception is raised if TransitionType returns UNDECIDED.
+    pub fn is_tangent(&self) -> bool {
+        unsafe { crate::ffi::IntSurf_Transition_is_tangent(self as *const Self) }
     }
 
     /// Returns a significant value if TransitionType returns
@@ -161,8 +310,23 @@ impl Transition {
     /// If TransitionType returns IN, or OUT, or UNDECIDED, a
     /// exception is raised.
     pub fn situation(&self) -> crate::int_surf::Situation {
-        crate::int_surf::Situation::try_from(crate::ffi::IntSurf_Transition_situation(self))
+        unsafe {
+            crate::int_surf::Situation::try_from(crate::ffi::IntSurf_Transition_situation(
+                self as *const Self,
+            ))
             .unwrap()
+        }
+    }
+
+    /// returns a significant value if TransitionType returns
+    /// TOUCH.
+    /// In this case, the function returns true when
+    /// the 2 curves locally define two different parts of the
+    /// space.
+    /// If TransitionType returns IN or OUT or UNDECIDED, an
+    /// exception is raised.
+    pub fn is_opposite(&self) -> bool {
+        unsafe { crate::ffi::IntSurf_Transition_is_opposite(self as *const Self) }
     }
 }
 

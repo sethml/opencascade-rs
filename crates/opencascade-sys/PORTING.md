@@ -37,9 +37,9 @@ BRepBuilderAPI_MakeWire aWire(edge1, edge2, edge3);
 let a_pnt = gp::Pnt::new_real3(1.0, 2.0, 3.0);
 let a_segment = gc::MakeSegment::new_pnt2(&a_pnt1, &a_pnt2);
 let mut a_wire = b_rep_builder_api::MakeWire::new_edge3(
-    edge1.pin_mut().edge(),
-    edge2.pin_mut().edge(),
-    edge3.pin_mut().edge(),
+    edge1.edge(),
+    edge2.edge(),
+    edge3.edge(),
 );
 ```
 
@@ -63,45 +63,46 @@ BRepBuilderAPI_Transform aBRepTrsf(aShape, aTrsf);
 ```rust
 // Rust: convenience wrapper fills in defaults
 let mut brep_transform = b_rep_builder_api::Transform::new_shape_trsf(
-    wire.pin_mut().shape(), &trsf,
+    wire.shape(), &trsf,
 );
 
 // Or explicitly pass all args
 let mut brep_transform = b_rep_builder_api::Transform::new_shape_trsf_bool2(
-    wire.pin_mut().shape(), &trsf, false, false,
+    wire.shape(), &trsf, false, false,
 );
 ```
 
-## Ownership and Pinning
+## Ownership
 
-All OCCT objects are returned as `cxx::UniquePtr<T>`. Calling methods that
-mutate the object requires `pin_mut()`:
+All OCCT objects are returned as `OwnedPtr<T>`. This type implements
+`Deref<Target=T>` and `DerefMut<Target=T>`, so methods on `T` can be called
+directly without any special pinning:
 
 ```rust
 let mut trsf = gp::Trsf::new();
-trsf.pin_mut().set_mirror_ax1(&x_axis);  // mutating method needs pin_mut()
+trsf.set_mirror_ax1(&x_axis);  // DerefMut provides &mut Self
 
-let name = type_obj.name();  // non-mutating method works on &self
+let name = type_obj.name();  // Deref provides &Self
 ```
 
 Methods that return references to internal state (like `.shape()`, `.wire()`,
-`.edge()`, `.face()`) are CXX auto-methods that work through `pin_mut()`:
+`.edge()`, `.face()`) work through auto-deref:
 
 ```rust
-let shape = body.pin_mut().shape();     // returns &TopoDS_Shape
-let wire = make_wire.pin_mut().wire();  // returns &TopoDS_Wire
+let shape = body.shape();     // returns &TopoDS_Shape
+let wire = make_wire.wire();  // returns &TopoDS_Wire
 ```
 
 ## Handle Types (Reference-Counted Smart Pointers)
 
-OCCT's `Handle(T)` maps to `UniquePtr<HandleT>` in Rust (e.g.,
-`Handle(Geom_Curve)` → `UniquePtr<HandleGeomCurve>`).
+OCCT's `Handle(T)` maps to `OwnedPtr<HandleT>` in Rust (e.g.,
+`Handle(Geom_Curve)` → `OwnedPtr<HandleGeomCurve>`).
 
 ### Creating Handles
 
-`to_handle()` is an associated function (not a method) that consumes a
-`UniquePtr<T>` and returns `UniquePtr<HandleT>`. This is because
-`self: UniquePtr<Self>` receivers require Rust's unstable `arbitrary_self_types`
+`to_handle()` is an associated function (not a method) that consumes an
+`OwnedPtr<T>` and returns `OwnedPtr<HandleT>`. This is because
+`self: OwnedPtr<Self>` receivers require Rust's unstable `arbitrary_self_types`
 feature.
 
 ```cpp
@@ -232,7 +233,7 @@ aList.Append(aFace);
 ```rust
 // Rust
 let mut faces = top_tools::ListOfShape::new();
-faces.pin_mut().append(a_face.as_shape());
+faces.append(a_face.as_shape());
 ```
 
 `TopTools_IndexedMapOfShape` provides deduplicated, indexed access to shapes.
@@ -250,9 +251,9 @@ for (int i = 1; i <= vertexMap.Extent(); ++i) {
 ```rust
 // Rust
 let mut vertex_map = top_tools::IndexedMapOfShape::new();
-top_exp::map_shapes(shape, top_abs::ShapeEnum::Vertex, vertex_map.pin_mut());
+top_exp::map_shapes(shape, top_abs::ShapeEnum::Vertex, &mut *vertex_map);
 for i in 1..=vertex_map.size() {
-    let v = topo_ds::vertex(vertex_map.find_key(i));
+    let v = unsafe { &*topo_ds::vertex(vertex_map.find_key(i)) };
 }
 ```
 
@@ -264,7 +265,8 @@ that must receive each vertex exactly once.
 ## TopoDS Shape Casting
 
 OCCT uses free functions to downcast `TopoDS_Shape` references into specific
-subtypes. These are available as module-level functions:
+subtypes. These are available as module-level functions in `topo_ds`. They are
+`unsafe extern "C"` functions that take/return raw pointers:
 
 ```cpp
 // C++
@@ -274,10 +276,25 @@ const TopoDS_Face& aFace = TopoDS::Face(aShape);
 ```
 
 ```rust
-// Rust
-let an_edge = topo_ds::edge(a_shape);         // returns &TopoDS_Edge
-let a_wire = topo_ds::wire(a_shape);           // returns &TopoDS_Wire
-let a_face = topo_ds::face(a_shape);           // returns &TopoDS_Face
+// Rust — requires unsafe, returns raw pointer that must be dereferenced
+let an_edge = unsafe { &*topo_ds::edge(a_shape) };     // &TopoDS_Edge
+let a_wire = unsafe { &*topo_ds::wire(a_shape) };       // &TopoDS_Wire
+let a_face = unsafe { &*topo_ds::face(a_shape) };       // &TopoDS_Face
+```
+
+When passing an `OwnedPtr<T>` to these functions, use `.as_ptr()` since
+`&OwnedPtr<T>` does NOT auto-coerce to `*const T`:
+
+```rust
+let shape: OwnedPtr<topo_ds::Shape> = /* ... */;
+let solid = unsafe { &*topo_ds::solid(shape.as_ptr()) };  // .as_ptr() needed
+```
+
+When passing `&Shape` (a regular reference from a method return), it auto-coerces:
+
+```rust
+let shape_ref: &topo_ds::Shape = make_solid.shape();
+let solid = unsafe { &*topo_ds::solid(shape_ref) };       // &T → *const T works
 ```
 
 ## Shape Inheritance (as_shape / as_shape_mut)
@@ -287,7 +304,7 @@ TopoDS subtypes (Edge, Wire, Face, Solid, Compound, etc.) inherit from
 
 ```rust
 let shape_ref: &topo_ds::Shape = compound.as_shape();
-let shape_mut: Pin<&mut topo_ds::Shape> = compound.pin_mut().as_shape_mut();
+let shape_mut: &mut topo_ds::Shape = compound.as_shape_mut();
 ```
 
 ## Static Methods
@@ -320,12 +337,17 @@ gp_Ax1 ox = gp::OX();
 
 ```rust
 // Rust
-b_rep_lib::build_curves3d(a_wire.pin_mut().as_shape());
-b_rep_bnd_lib::add(a_shape, a_box.pin_mut(), true);
-b_rep_g_prop::surface_properties(a_shape, props.pin_mut(), false, false);
+b_rep_lib::build_curves3d(a_wire.as_shape());
+unsafe { b_rep_bnd_lib::add(a_shape, &mut *a_box, true) };
+unsafe { b_rep_g_prop::surface_properties(a_shape, &mut *props, false, false) };
 let origin = gp::origin();
 let ox = gp::ox();
 ```
+
+Note: Raw re-exported free functions from `ffi.rs` (like `b_rep_bnd_lib::add`,
+`b_rep_g_prop::surface_properties`) are `unsafe extern "C"`. When passing
+`OwnedPtr<T>` to `*mut T` parameters, use `&mut *owned_ptr` to get `&mut T`
+which then auto-coerces to `*mut T`.
 
 ## Default-Argument Convenience Constructors
 
@@ -380,9 +402,9 @@ let mut mk_cyl = b_rep_prim_api::MakeCylinder::new_ax2_real2(
 );
 let progress = message::ProgressRange::new();
 let mut mk_fuse = b_rep_algo_api::Fuse::new_shape2_progressrange(
-    my_body, mk_cyl.pin_mut().shape(), &progress,
+    my_body, mk_cyl.shape(), &progress,
 );
-let my_body = mk_fuse.pin_mut().shape();
+let my_body = mk_fuse.shape();
 ```
 
 ## Known Limitations
@@ -390,6 +412,11 @@ let my_body = mk_fuse.pin_mut().shape();
 - **`to_handle()` is a static function**, not a method — use
   `Type::to_handle(obj)` instead of `obj.to_handle()`. This is due to Rust's
   `arbitrary_self_types` feature not being stable yet.
+- **`OwnedPtr<T>` vs `*const T` coercion** — `&OwnedPtr<T>` does NOT
+  auto-coerce to `*const T`. When calling raw FFI free functions that take
+  `*const T`, use `owned_ptr.as_ptr()` to get `*const T`, or `&*owned_ptr`
+  to get `&T` (which then auto-coerces). For `*mut T`, use
+  `owned_ptr.as_mut_ptr()` or `&mut *owned_ptr`.
 - **No Handle downcasting** — use unsafe pointer casts after dynamic type
   checks as a workaround (see Handle Downcasting section above). The
   `get_type_name()` method is available on all `Standard_Transient`-derived
@@ -425,16 +452,16 @@ needed:
 // These work directly on Face, Edge, etc.
 face.is_null()
 face.location()
-face.pin_mut().move_(&location, false)
-face.pin_mut().reverse()
+face.move_(&location, false)
+face.reverse()
 face.reversed()
 face.nb_children()
 face.is_same(other_shape)
-face.orientation()           // i32 (TopAbs_Orientation)
-face.shape_type()            // i32 (TopAbs_ShapeEnum)
-face.oriented(0)             // returns UniquePtr<Shape>
-face.pin_mut().compose(0)    // mutating: compose orientation
-face.composed(0)             // returns UniquePtr<Shape>
+face.orientation()           // top_abs::Orientation
+face.shape_type()            // top_abs::ShapeEnum
+face.oriented(0)             // returns OwnedPtr<Shape>
+face.compose(0)              // mutating: compose orientation
+face.composed(0)             // returns OwnedPtr<Shape>
 // ... and: nullify, located, t_shape, free, locked, modified, checked,
 //          orientable, closed, infinite, convex, moved, complement,
 //          complemented, is_partner, is_equal, is_not_equal, empty_copy,
@@ -465,7 +492,7 @@ Some OCCT patterns require chaining through multiple handle conversions:
 ```rust
 // Create a Law_Interpol, convert to Handle(Law_Interpol), then to Handle(Law_Function)
 let mut interpol = law::Interpol::new();
-interpol.pin_mut().set_array1ofpnt2d_bool(&array, false);
+interpol.set_array1ofpnt2d_bool(&array, false);
 let handle = law::Interpol::to_handle(interpol);  // Handle(Law_Interpol)
 let law_handle = handle.to_handle_function();       // Handle(Law_Function)
 ```

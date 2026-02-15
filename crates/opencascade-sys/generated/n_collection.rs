@@ -52,44 +52,62 @@ impl TryFrom<i32> for CellFilterAction {
 /// Note that this object is managed by Handle.
 pub use crate::ffi::NCollection_BaseAllocator as BaseAllocator;
 
+unsafe impl crate::CppDeletable for BaseAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_BaseAllocator_destructor(ptr);
+    }
+}
+
 impl BaseAllocator {
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_BaseAllocator_dynamic_type(self as *const Self)) }
+    }
+
     /// CommonBaseAllocator
     /// This method is designed to have the only one BaseAllocator (to avoid
     /// useless copying of collections). However one can use operator new to
     /// create more BaseAllocators, but it is injurious.
     pub fn common_base_allocator() -> &'static crate::ffi::HandleNCollectionBaseAllocator {
-        crate::ffi::NCollection_BaseAllocator_common_base_allocator()
+        unsafe { &*(crate::ffi::NCollection_BaseAllocator_common_base_allocator()) }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::NCollection_BaseAllocator_get_type_name()
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::NCollection_BaseAllocator_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::NCollection_BaseAllocator_get_type_descriptor()
+        unsafe { &*(crate::ffi::NCollection_BaseAllocator_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleNCollectionBaseAllocator> {
-        crate::ffi::NCollection_BaseAllocator_to_handle(obj)
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_BaseAllocator_to_handle(
+                obj.into_raw(),
+            ))
+        }
     }
 }
 
 pub use crate::ffi::HandleNCollectionBaseAllocator;
 
+unsafe impl crate::CppDeletable for HandleNCollectionBaseAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNCollectionBaseAllocator_destructor(ptr);
+    }
+}
+
 impl HandleNCollectionBaseAllocator {
     /// Dereference this Handle to access the underlying NCollection_BaseAllocator
     pub fn get(&self) -> &crate::ffi::NCollection_BaseAllocator {
-        crate::ffi::HandleNCollectionBaseAllocator_get(self)
+        unsafe { &*(crate::ffi::HandleNCollectionBaseAllocator_get(self as *const Self)) }
     }
 
     /// Dereference this Handle to mutably access the underlying NCollection_BaseAllocator
-    pub fn get_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::NCollection_BaseAllocator> {
-        crate::ffi::HandleNCollectionBaseAllocator_get_mut(self)
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_BaseAllocator {
+        unsafe { &mut *(crate::ffi::HandleNCollectionBaseAllocator_get_mut(self as *mut Self)) }
     }
 }
 
@@ -98,6 +116,27 @@ impl HandleNCollectionBaseAllocator {
 // ========================
 
 pub use crate::ffi::NCollection_BaseList as BaseList;
+
+unsafe impl crate::CppDeletable for BaseList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_BaseList_destructor(ptr);
+    }
+}
+
+impl BaseList {
+    pub fn extent(&self) -> i32 {
+        unsafe { crate::ffi::NCollection_BaseList_extent(self as *const Self) }
+    }
+
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::NCollection_BaseList_is_empty(self as *const Self) }
+    }
+
+    /// Returns attached allocator
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        unsafe { &*(crate::ffi::NCollection_BaseList_allocator(self as *const Self)) }
+    }
+}
 
 // ========================
 // From NCollection_BasePointerVector.hxx
@@ -112,17 +151,54 @@ pub use crate::ffi::NCollection_BaseList as BaseList;
 /// Especially, copy operation should post-process elements of pointers to make deep copy.
 pub use crate::ffi::NCollection_BasePointerVector as BasePointerVector;
 
+unsafe impl crate::CppDeletable for BasePointerVector {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_BasePointerVector_destructor(ptr);
+    }
+}
+
 impl BasePointerVector {
     /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::NCollection_BasePointerVector_ctor()
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::NCollection_BasePointerVector_ctor()) }
     }
 
     /// Copy data from another vector
     pub fn new_basepointervector(
         theOther: &crate::ffi::NCollection_BasePointerVector,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::NCollection_BasePointerVector_ctor_basepointervector(theOther)
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::NCollection_BasePointerVector_ctor_basepointervector(theOther),
+            )
+        }
+    }
+
+    /// Checks for an empty status
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::NCollection_BasePointerVector_is_empty(self as *const Self) }
+    }
+
+    /// Gets used size
+    pub fn size(&self) -> usize {
+        unsafe { crate::ffi::NCollection_BasePointerVector_size(self as *const Self) }
+    }
+
+    /// Gets available capacity
+    pub fn capacity(&self) -> usize {
+        unsafe { crate::ffi::NCollection_BasePointerVector_capacity(self as *const Self) }
+    }
+
+    /// Erases last element, decrements size.
+    pub fn remove_last(&mut self) {
+        unsafe { crate::ffi::NCollection_BasePointerVector_remove_last(self as *mut Self) }
+    }
+
+    /// Resets the size
+    pub fn clear(&mut self, theReleaseMemory: bool) {
+        unsafe {
+            crate::ffi::NCollection_BasePointerVector_clear(self as *mut Self, theReleaseMemory)
+        }
     }
 }
 
@@ -155,6 +231,12 @@ impl BasePointerVector {
 /// and thread-safety of allocations is DISABLED by default (see SetThreadSafe()).
 pub use crate::ffi::NCollection_IncAllocator as IncAllocator;
 
+unsafe impl crate::CppDeletable for IncAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_IncAllocator_destructor(ptr);
+    }
+}
+
 impl IncAllocator {
     /// Constructor.
     /// Note that this constructor does NOT setup mutex for using allocator concurrently from
@@ -165,15 +247,39 @@ impl IncAllocator {
     /// platform for the repeated operations (and thus multiple allocations)
     /// because Low Fragmentation Heap is not going to be used for these allocations,
     /// leading to memory fragmentation and eventual performance slow down.
-    pub fn new_size(theBlockSize: usize) -> cxx::UniquePtr<Self> {
-        crate::ffi::NCollection_IncAllocator_ctor_size(theBlockSize)
+    pub fn new_size(theBlockSize: usize) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_IncAllocator_ctor_size(theBlockSize))
+        }
     }
 
-    pub fn get_type_name() -> String {
-        crate::ffi::NCollection_IncAllocator_get_type_name()
+    /// Setup mutex for thread-safe allocations.
+    pub fn set_thread_safe(&mut self, theIsThreadSafe: bool) {
+        unsafe {
+            crate::ffi::NCollection_IncAllocator_set_thread_safe(self as *mut Self, theIsThreadSafe)
+        }
+    }
+
+    /// Re-initialize the allocator so that the next Allocate call should
+    /// start allocating in the very beginning as though the allocator is just
+    /// constructed. Warning: make sure that all previously allocated data are
+    /// no more used in your code!
+    /// @param theReleaseMemory
+    /// True - release all previously allocated memory, False - preserve it
+    /// for future allocations.
+    pub fn reset(&mut self, theReleaseMemory: bool) {
+        unsafe { crate::ffi::NCollection_IncAllocator_reset(self as *mut Self, theReleaseMemory) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_IncAllocator_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::NCollection_IncAllocator_get_type_name() }
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        crate::ffi::NCollection_IncAllocator_get_type_descriptor()
+        unsafe { &*(crate::ffi::NCollection_IncAllocator_get_type_descriptor()) }
     }
 }
