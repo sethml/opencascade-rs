@@ -16,22 +16,25 @@ impl AsRef<Shell> for Shell {
 impl Shell {
     pub(crate) fn from_shell(shell: &topo_ds::Shell) -> Self {
         let inner = shell.to_owned();
+
         Self { inner }
     }
 
-    pub fn loft<T: AsRef<Wire>>(wires: impl IntoIterator<Item = T>) -> Self {
+    pub fn loft<T: AsRef<Wire>>(_wires: impl IntoIterator<Item = T>) -> Self {
         let is_solid = false;
-        let mut make_loft = b_rep_offset_api::ThruSections::new_bool(is_solid);
+        let ruled = false;
+        let precision = 1.0e-6;
+        let mut make_loft = b_rep_offset_api::ThruSections::new_bool2_real(is_solid, ruled, precision);
 
-        for wire in wires.into_iter() {
+        for wire in _wires.into_iter() {
             make_loft.pin_mut().add_wire(&wire.as_ref().inner);
         }
 
-        // Set CheckCompatibility to `true` to avoid twisted results.
         make_loft.pin_mut().check_compatibility(true);
 
-        let shape = make_loft.pin_mut().shape();
-        let shell = topo_ds::shell(shape);
+        let make_shape = make_loft.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let shell_shape = make_shape.shape();
+        let shell = topo_ds::shell(shell_shape);
 
         Self::from_shell(shell)
     }

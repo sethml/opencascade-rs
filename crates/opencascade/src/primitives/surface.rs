@@ -1,43 +1,35 @@
 use crate::primitives::make_point;
 use cxx::UniquePtr;
 use glam::DVec3;
-use opencascade_sys::geom;
-use opencascade_sys::t_colgp;
+use opencascade_sys::{geom, t_colgp};
 
 pub struct Surface {
     pub(crate) inner: UniquePtr<geom::HandleGeomSurface>,
 }
 
 impl Surface {
-    /// Create a Bezier surface from a 2D grid of control points (poles).
-    ///
-    /// The outer iterator yields rows (u-direction), each row yields columns (v-direction).
-    /// All rows must have the same number of points.
     pub fn bezier(poles: impl IntoIterator<Item = impl IntoIterator<Item = DVec3>>) -> Self {
-        let rows: Vec<Vec<DVec3>> = poles.into_iter().map(|r| r.into_iter().collect()).collect();
-        let n_rows = rows.len() as i32;
-        let n_cols = rows[0].len() as i32;
+        let poles: Vec<Vec<_>> =
+            poles.into_iter().map(|poles| poles.into_iter().collect()).collect();
 
-        let mut array = t_colgp::Array2OfPnt::new_int4(1, n_rows, 1, n_cols);
-        for (i, row) in rows.iter().enumerate() {
-            assert_eq!(
-                row.len() as i32, n_cols,
-                "All rows must have the same number of control points"
-            );
-            for (j, p) in row.iter().enumerate() {
-                let pnt = make_point(*p);
-                array
-                    .pin_mut()
-                    .set_value(i as i32 + 1, j as i32 + 1, &pnt);
+        let mut pole_array = t_colgp::Array2OfPnt::new_int4(
+            0,
+            poles.len() as i32 - 1,
+            0,
+            poles.first().map(|first| first.len()).unwrap_or(0) as i32 - 1,
+        );
+
+        for (row, poles) in poles.iter().enumerate() {
+            for (column, pole) in poles.iter().enumerate() {
+                let pole = &make_point(*pole);
+                pole_array.pin_mut().set_value(row as i32, column as i32, pole);
             }
         }
 
-        let surface = geom::BezierSurface::new_array2ofpnt(&array);
-        let handle = geom::BezierSurface::to_handle(surface);
-        let handle_surface = handle.to_handle_surface();
+        let bezier = geom::BezierSurface::new_array2ofpnt(&pole_array);
+        let handle = geom::BezierSurface::to_handle(bezier);
+        let inner = handle.to_handle_surface();
 
-        Self {
-            inner: handle_surface,
-        }
+        Self { inner }
     }
 }

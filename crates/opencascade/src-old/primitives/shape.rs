@@ -1,18 +1,14 @@
 use crate::{
     mesh::{Mesh, Mesher},
     primitives::{
-        make_axis_1, make_axis_2, make_point, make_point2d, make_vec, BooleanShape,
-        Compound, Edge, Face, Shell, Solid, Vertex, Wire,
+        make_axis_1, make_axis_2, make_point, make_point2d, make_vec,
+        BooleanShape, Compound, Edge, Face, Shell, Solid, Vertex, Wire,
     },
     Error,
 };
 use cxx::UniquePtr;
 use glam::{dvec3, DVec2, DVec3};
-use opencascade_sys::{
-    b_rep, b_rep_algo_api, b_rep_feat, b_rep_fillet_api, b_rep_int_curve_surface, b_rep_mesh,
-    b_rep_offset_api, b_rep_prim_api, gp, iges_control, message, shape_upgrade, step_control,
-    stl_api, t_colgp, top_abs, top_exp, top_loc, top_tools, topo_ds,
-};
+use opencascade_sys::{b_rep, b_rep_algo_api, b_rep_feat, b_rep_fillet_api, b_rep_int_curve_surface, b_rep_mesh, b_rep_offset_api, b_rep_prim_api, gp, iges_control, message, shape_upgrade, step_control, stl_api, t_colgp, top_abs, top_exp, top_loc, top_tools, topo_ds};
 use std::path::Path;
 
 pub struct Shape {
@@ -256,12 +252,7 @@ impl Shape {
         Self { inner }
     }
 
-    /// Make a shape that models empty space.
     pub fn empty() -> Self {
-        // NOTE: It may seem like using `TopoDS_Shape()` directly should work,
-        //       but shape operations such as union fail on actual "null shapes".
-
-        // Construct an empty compound
         let mut compound = topo_ds::Compound::new();
         let builder = b_rep::Builder::new();
         builder.make_compound(compound.pin_mut());
@@ -371,8 +362,8 @@ impl Shape {
 
     pub fn shape_type(&self) -> super::ShapeType {
         let raw = self.inner.shape_type();
-        let shape_enum =
-            top_abs::ShapeEnum::try_from(raw).expect("Invalid ShapeEnum value from OCCT");
+        let shape_enum = top_abs::ShapeEnum::try_from(raw)
+            .expect("Invalid ShapeEnum value from OCCT");
         shape_enum.into()
     }
 
@@ -431,9 +422,7 @@ impl Shape {
         }
 
         for edge in edges {
-            make_fillet
-                .pin_mut()
-                .add_array1ofpnt2d_edge(&array, &edge.as_ref().inner);
+            make_fillet.pin_mut().add_array1ofpnt2d_edge(&array, &edge.as_ref().inner);
         }
 
         make_fillet.pin_mut().build(&progress);
@@ -457,14 +446,12 @@ impl Shape {
         Self::from_shape(shape)
     }
 
-    /// Performs fillet of `radius` on all edges of the shape
     #[must_use]
     pub fn fillet(&self, radius: f64) -> Self {
         let edges: Vec<Edge> = self.edges().collect();
         self.fillet_edges(radius, &edges)
     }
 
-    /// Performs chamfer of `distance` on all edges of the shape
     #[must_use]
     pub fn chamfer(&self, distance: f64) -> Self {
         let edges: Vec<Edge> = self.edges().collect();
@@ -481,6 +468,7 @@ impl Shape {
             &progress,
         );
 
+        // Get the resulting shape
         let make_shape = cut.pin_mut().as_b_rep_builder_api_make_shape_mut();
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
@@ -493,13 +481,14 @@ impl Shape {
     pub fn read_step(path: impl AsRef<Path>) -> Result<Self, Error> {
         let mut reader = step_control::Reader::new();
         let path_str = path.as_ref().to_string_lossy();
+        // IFSelect_ReturnStatus: 0 = RetDone (success)
         let status = reader.pin_mut().read_file_charptr(&path_str);
         if status != 0 {
             return Err(Error::StepReadFailed);
         }
         let progress = message::ProgressRange::new();
         reader.pin_mut().transfer_roots(&progress);
-        let inner = reader.one_shape();
+        let inner = reader.pin_mut().one_shape();
         Ok(Self { inner })
     }
 
@@ -513,12 +502,12 @@ impl Shape {
             true, // compgraph
             &progress,
         );
-        if status != 1 {
+        if status != 1 { // IFSelect_RetDone = 1 for transfer
             return Err(Error::StepWriteFailed);
         }
         let path_str = path.as_ref().to_string_lossy();
         let status = writer.pin_mut().write(&path_str);
-        if status != 1 {
+        if status != 1 { // IFSelect_RetDone = 1
             return Err(Error::StepWriteFailed);
         }
         Ok(())
@@ -527,6 +516,7 @@ impl Shape {
     pub fn read_iges(path: impl AsRef<Path>) -> Result<Self, Error> {
         let mut reader = iges_control::Reader::new();
         let path_str = path.as_ref().to_string_lossy();
+        // IFSelect_ReturnStatus: 0 = RetDone (success)
         let status = reader.pin_mut().as_xs_control_reader_mut().read_file(&path_str);
         if status != 0 {
             return Err(Error::IgesReadFailed);
@@ -546,13 +536,12 @@ impl Shape {
         }
         writer.pin_mut().compute_model();
         let path_str = path.as_ref().to_string_lossy();
-        let fnes = true;
+        let fnes = true; // FNES mode
         let success = writer.pin_mut().write(&path_str, fnes);
-        if success {
-            Ok(())
-        } else {
-            Err(Error::IgesWriteFailed)
+        if !success {
+            return Err(Error::IgesWriteFailed);
         }
+        Ok(())
     }
 
     /// Boolean union: returns a new shape combining `self` and `other`.
@@ -565,6 +554,7 @@ impl Shape {
             &progress,
         );
 
+        // Get the resulting shape
         let make_shape = fuse.pin_mut().as_b_rep_builder_api_make_shape_mut();
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
@@ -574,7 +564,7 @@ impl Shape {
         BooleanShape { shape, new_edges }
     }
 
-    /// Boolean intersection: returns a new shape containing only the volume
+    /// Boolean intersection: returns a new shape containing only the volume 
     /// common to both `self` and `other`.
     #[must_use]
     pub fn intersect(&self, other: &Shape) -> BooleanShape {
@@ -585,6 +575,7 @@ impl Shape {
             &progress,
         );
 
+        // Get the resulting shape
         let make_shape = common.pin_mut().as_b_rep_builder_api_make_shape_mut();
         let result_shape = make_shape.shape();
         let shape = Shape::from_shape(result_shape);
@@ -594,20 +585,30 @@ impl Shape {
         BooleanShape { shape, new_edges }
     }
 
+    /// Writes the shape to an STL file at the given path.
+    /// 
+    /// Note: This will automatically mesh the shape if it isn't already meshed.
+    /// Uses a default linear deflection tolerance of 0.1.
     pub fn write_stl<P: AsRef<Path>>(&self, path: P) -> Result<(), Error> {
-        self.write_stl_with_tolerance(path, 0.001)
+        self.write_stl_with_tolerance(path, 0.1)
     }
 
+    /// Writes the shape to an STL file with custom meshing tolerance.
+    /// 
+    /// The `triangulation_tolerance` parameter controls the linear deflection 
+    /// (maximum deviation between the mesh and the original surface).
+    /// Smaller values create finer meshes but larger files.
     pub fn write_stl_with_tolerance<P: AsRef<Path>>(
         &self,
         path: P,
         triangulation_tolerance: f64,
     ) -> Result<(), Error> {
+        // Mesh the shape first
         let progress = message::ProgressRange::new();
         let is_relative = false;
-        let angle_deflection = 0.5;
+        let angle_deflection = 0.5; // radians, ~30 degrees
         let in_parallel = true;
-
+        
         let mut mesher = b_rep_mesh::IncrementalMesh::new_shape_real_bool_real_bool(
             &self.inner,
             triangulation_tolerance,
@@ -617,10 +618,13 @@ impl Shape {
         );
         mesher.pin_mut().perform(&progress);
 
+        // Write to STL
         let mut writer = stl_api::Writer::new();
-        let path_str = path.as_ref().to_string_lossy();
-        let success = writer.pin_mut().write(&self.inner, &path_str, &progress);
-
+        let path_str = path.as_ref().to_str()
+            .ok_or_else(|| Error::PathContainsNonUtf8Characters)?;
+        
+        let success = writer.pin_mut().write(&self.inner, path_str, &progress);
+        
         if success {
             Ok(())
         } else {
@@ -652,7 +656,7 @@ impl Shape {
     }
 
     pub fn mesh(&self) -> Result<Mesh, Error> {
-        self.mesh_with_tolerance(0.01)
+        self.mesh_with_tolerance(0.1)
     }
 
     pub fn mesh_with_tolerance(&self, triangulation_tolerance: f64) -> Result<Mesh, Error> {
@@ -678,7 +682,6 @@ impl Shape {
         super::FaceIterator { explorer }
     }
 
-    // TODO(bschwind) - Convert the return type to an iterator.
     pub fn faces_along_line(&self, line_origin: DVec3, line_dir: DVec3) -> Vec<LineFaceHitPoint> {
         let origin = make_point(line_origin);
         let dir = gp::Dir::new_real3(line_dir.x, line_dir.y, line_dir.z);
@@ -686,9 +689,7 @@ impl Shape {
 
         let mut intersector = b_rep_int_curve_surface::Inter::new();
         let tolerance = 0.001;
-        intersector
-            .pin_mut()
-            .init_shape_lin_real(&self.inner, &line, tolerance);
+        intersector.pin_mut().init_shape_lin_real(&self.inner, &line, tolerance);
 
         let mut results = Vec::new();
         while intersector.more() {
@@ -737,9 +738,7 @@ impl Shape {
             false, // RemoveIntEdges
             &progress,
         );
-        let make_shape = solid_maker
-            .pin_mut()
-            .as_b_rep_builder_api_make_shape_mut();
+        let make_shape = solid_maker.pin_mut().as_b_rep_builder_api_make_shape_mut();
         Self::from_shape(make_shape.shape())
     }
 
@@ -749,8 +748,6 @@ impl Shape {
         self.hollow(offset, faces_to_remove)
     }
 
-    /// Drill a cylindrical hole along the line defined by point `p`
-    /// and direction `dir`, with `radius`.
     #[must_use]
     pub fn drill_hole(&self, p: DVec3, dir: DVec3, radius: f64) -> Self {
         let axis = make_axis_1(p, dir);

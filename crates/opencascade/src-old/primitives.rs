@@ -1,6 +1,6 @@
 use cxx::UniquePtr;
 use glam::{DVec2, DVec3};
-use opencascade_sys::{gp, top_abs, top_exp, topo_ds};
+use opencascade_sys::{geom_abs, gp, top_abs, top_exp, topo_ds};
 
 mod boolean_shape;
 mod compound;
@@ -60,35 +60,34 @@ pub enum ShapeType {
     Compound,
 }
 
-impl ShapeType {
-    pub fn from_i32(value: i32) -> Self {
-        match top_abs::ShapeEnum::try_from(value) {
-            Ok(top_abs::ShapeEnum::Shape) => ShapeType::Shape,
-            Ok(top_abs::ShapeEnum::Vertex) => ShapeType::Vertex,
-            Ok(top_abs::ShapeEnum::Edge) => ShapeType::Edge,
-            Ok(top_abs::ShapeEnum::Wire) => ShapeType::Wire,
-            Ok(top_abs::ShapeEnum::Face) => ShapeType::Face,
-            Ok(top_abs::ShapeEnum::Shell) => ShapeType::Shell,
-            Ok(top_abs::ShapeEnum::Solid) => ShapeType::Solid,
-            Ok(top_abs::ShapeEnum::Compsolid) => ShapeType::CompoundSolid,
-            Ok(top_abs::ShapeEnum::Compound) => ShapeType::Compound,
-            Err(repr) => panic!("Unexpected shape type: {repr}"),
+impl From<top_abs::ShapeEnum> for ShapeType {
+    fn from(value: top_abs::ShapeEnum) -> Self {
+        match value {
+            top_abs::ShapeEnum::Compound => ShapeType::Compound,
+            top_abs::ShapeEnum::Compsolid => ShapeType::CompoundSolid,
+            top_abs::ShapeEnum::Solid => ShapeType::Solid,
+            top_abs::ShapeEnum::Shell => ShapeType::Shell,
+            top_abs::ShapeEnum::Face => ShapeType::Face,
+            top_abs::ShapeEnum::Wire => ShapeType::Wire,
+            top_abs::ShapeEnum::Edge => ShapeType::Edge,
+            top_abs::ShapeEnum::Vertex => ShapeType::Vertex,
+            top_abs::ShapeEnum::Shape => ShapeType::Shape,
         }
     }
 }
 
-impl From<top_abs::ShapeEnum> for ShapeType {
-    fn from(value: top_abs::ShapeEnum) -> Self {
+impl From<ShapeType> for top_abs::ShapeEnum {
+    fn from(value: ShapeType) -> Self {
         match value {
-            top_abs::ShapeEnum::Shape => ShapeType::Shape,
-            top_abs::ShapeEnum::Vertex => ShapeType::Vertex,
-            top_abs::ShapeEnum::Edge => ShapeType::Edge,
-            top_abs::ShapeEnum::Wire => ShapeType::Wire,
-            top_abs::ShapeEnum::Face => ShapeType::Face,
-            top_abs::ShapeEnum::Shell => ShapeType::Shell,
-            top_abs::ShapeEnum::Solid => ShapeType::Solid,
-            top_abs::ShapeEnum::Compsolid => ShapeType::CompoundSolid,
-            top_abs::ShapeEnum::Compound => ShapeType::Compound,
+            ShapeType::Compound => top_abs::ShapeEnum::Compound,
+            ShapeType::CompoundSolid => top_abs::ShapeEnum::Compsolid,
+            ShapeType::Solid => top_abs::ShapeEnum::Solid,
+            ShapeType::Shell => top_abs::ShapeEnum::Shell,
+            ShapeType::Face => top_abs::ShapeEnum::Face,
+            ShapeType::Wire => top_abs::ShapeEnum::Wire,
+            ShapeType::Edge => top_abs::ShapeEnum::Edge,
+            ShapeType::Vertex => top_abs::ShapeEnum::Vertex,
+            ShapeType::Shape => top_abs::ShapeEnum::Shape,
         }
     }
 }
@@ -115,7 +114,7 @@ fn make_dir(p: DVec3) -> UniquePtr<gp::Dir> {
     gp::Dir::new_real3(p.x, p.y, p.z)
 }
 
-fn make_vec(vec: DVec3) -> UniquePtr<gp::Vec> {
+pub(crate) fn make_vec(vec: DVec3) -> UniquePtr<gp::Vec> {
     gp::Vec::new_real3(vec.x, vec.y, vec.z)
 }
 
@@ -136,7 +135,8 @@ impl Iterator for EdgeIterator {
 
     fn next(&mut self) -> Option<Self::Item> {
         if self.explorer.more() {
-            let edge = topo_ds::edge(self.explorer.current());
+            let shape = self.explorer.current();
+            let edge = topo_ds::edge(shape);
             let edge = Edge::from_edge(edge);
 
             self.explorer.pin_mut().next();
@@ -216,7 +216,8 @@ impl Iterator for FaceIterator {
 
     fn next(&mut self) -> Option<Self::Item> {
         if self.explorer.more() {
-            let face = topo_ds::face(self.explorer.current());
+            let shape = self.explorer.current();
+            let face = topo_ds::face(shape);
             let face = Face::from_face(face);
 
             self.explorer.pin_mut().next();
@@ -259,24 +260,21 @@ pub enum JoinType {
     Intersection,
 }
 
-impl JoinType {
-    pub fn to_i32(self) -> i32 {
-        use opencascade_sys::geom_abs;
-        match self {
-            JoinType::Arc => geom_abs::JoinType::Arc as i32,
-            //JoinType::Tangent => geom_abs::JoinType::Tangent as i32,
-            JoinType::Intersection => geom_abs::JoinType::Intersection as i32,
+impl From<geom_abs::JoinType> for JoinType {
+    fn from(value: geom_abs::JoinType) -> Self {
+        match value {
+            geom_abs::JoinType::Arc => JoinType::Arc,
+            geom_abs::JoinType::Intersection => JoinType::Intersection,
+            geom_abs::JoinType::Tangent => JoinType::Intersection, // Map unsupported Tangent to Intersection
         }
     }
+}
 
-    pub fn from_i32(value: i32) -> Self {
-        use opencascade_sys::geom_abs;
-        match geom_abs::JoinType::try_from(value) {
-            Ok(geom_abs::JoinType::Arc) => Self::Arc,
-            //Ok(geom_abs::JoinType::Tangent) => Self::Tangent,
-            Ok(geom_abs::JoinType::Intersection) => Self::Intersection,
-            Ok(geom_abs::JoinType::Tangent) => panic!("Tangent join type not supported"),
-            Err(repr) => panic!("Unexpected join type: {repr}"),
+impl From<JoinType> for geom_abs::JoinType {
+    fn from(value: JoinType) -> Self {
+        match value {
+            JoinType::Arc => geom_abs::JoinType::Arc,
+            JoinType::Intersection => geom_abs::JoinType::Intersection,
         }
     }
 }

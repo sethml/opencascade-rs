@@ -31,4 +31,6 @@ pub enum Error {
     UntriangulatedFace,
     #[error("at least 2 points are required for creating a wire")]
     NotEnoughPoints,
+    #[error("path contains non-UTF8 characters")]
+    PathContainsNonUtf8Characters,
 }

@@ -2,14 +2,13 @@ use std::iter::once;
 
 use crate::{
     angle::{Angle, ToAngle},
-    primitives::{make_dir, make_point, make_vec, Edge, Face, JoinType, Shape, Shell},
+    primitives::{make_dir, make_point, make_vec, Edge, Face, Shape},
     Error,
 };
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
 use opencascade_sys::{
-    b_rep_builder_api, b_rep_offset_api, gp, shape_analysis, top_loc, top_tools,
-    topo_ds,
+    b_rep_builder_api, b_rep_tools, gp, shape_analysis, top_loc, top_tools, topo_ds,
 };
 
 pub struct Wire {
@@ -41,6 +40,7 @@ impl Default for EdgeConnection {
 impl Wire {
     pub(crate) fn from_wire(wire: &topo_ds::Wire) -> Self {
         let inner = wire.to_owned();
+
         Self { inner }
     }
 
@@ -83,15 +83,16 @@ impl Wire {
         unordered_edges: impl IntoIterator<Item = T>,
         edge_connection: EdgeConnection,
     ) -> Self {
-        let mut edges_seq = top_tools::HSequenceOfShape::new();
+        let mut edge_seq = top_tools::HSequenceOfShape::new();
 
         for edge in unordered_edges {
-            edges_seq.pin_mut().append_shape(edge.as_ref().inner.as_shape());
+            let edge_shape = edge.as_ref().inner.as_shape();
+            edge_seq.pin_mut().append_shape(edge_shape);
         }
 
-        let mut edges_handle = top_tools::HSequenceOfShape::to_handle(edges_seq);
-        let wires_seq = top_tools::HSequenceOfShape::new();
-        let mut wires_handle = top_tools::HSequenceOfShape::to_handle(wires_seq);
+        let mut edges_handle = top_tools::HSequenceOfShape::to_handle(edge_seq);
+        let wire_seq = top_tools::HSequenceOfShape::new();
+        let mut wires_handle = top_tools::HSequenceOfShape::to_handle(wire_seq);
 
         let (tolerance, shared) = match edge_connection {
             EdgeConnection::Exact => (0.0, true),
@@ -99,19 +100,20 @@ impl Wire {
         };
 
         shape_analysis::FreeBounds::connect_edges_to_wires(
-            edges_handle.pin_mut(), tolerance, shared, wires_handle.pin_mut(),
+            edges_handle.pin_mut(),
+            tolerance,
+            shared,
+            wires_handle.pin_mut(),
         );
 
         let mut make_wire = b_rep_builder_api::MakeWire::new();
 
-        let wires_obj = wires_handle.get();
-        let wire_seq = wires_obj.as_sequence_of_shape();
-        let wire_len = wire_seq.size();
+        let wire_hseq = wires_handle.get();
+        let wire_seq = wire_hseq.sequence();
 
-        for index in 1..=wire_len {
-            let wire_shape = wire_seq.value(index);
+        for i in 1..=wire_seq.size() {
+            let wire_shape = wire_seq.value(i);
             let wire = topo_ds::wire(wire_shape);
-
             make_wire.pin_mut().add_wire(wire);
         }
 
@@ -139,11 +141,11 @@ impl Wire {
 
         let wire_shape = self.inner.as_shape();
 
-        let mut brep_transform =
+        let brep_transform =
             b_rep_builder_api::Transform::new_shape_trsf_bool2(wire_shape, &transform, false, false);
 
-        let mirrored_shape = brep_transform.pin_mut().shape();
-        let mirrored_wire = topo_ds::wire(mirrored_shape);
+        let mirrored_shape = brep_transform.modified_shape(wire_shape);
+        let mirrored_wire = topo_ds::wire(&mirrored_shape);
 
         Self::from_wire(mirrored_wire)
     }
@@ -169,7 +171,7 @@ impl Wire {
     pub fn fillet(&self, radius: f64) -> Wire {
         // Create a face from this wire
         let face = Face::from_wire(self).fillet(radius);
-        let inner = opencascade_sys::b_rep_tools::outer_wire(&face.inner);
+        let inner = b_rep_tools::outer_wire(&face.inner);
 
         Self { inner }
     }
@@ -178,43 +180,43 @@ impl Wire {
     #[must_use]
     pub fn chamfer(&self, distance_1: f64) -> Wire {
         let face = Face::from_wire(self).chamfer(distance_1);
-        let inner = opencascade_sys::b_rep_tools::outer_wire(&face.inner);
+        let inner = b_rep_tools::outer_wire(&face.inner);
 
         Self { inner }
     }
 
-    /// Offset the wire by a given distance and join settings
     #[must_use]
-    pub fn offset(&self, distance: f64, join_type: JoinType) -> Self {
-        let mut make_offset =
-            b_rep_offset_api::MakeOffset::new_wire_jointype(&self.inner, join_type.to_i32());
+    pub fn offset(&self, distance: f64, join_type: crate::primitives::JoinType) -> Self {
+        use opencascade_sys::{b_rep_offset_api, geom_abs};
+        let join: geom_abs::JoinType = join_type.into();
+        let mut make_offset = b_rep_offset_api::MakeOffset::new_wire_jointype_bool(
+            &self.inner,
+            join.into(),
+            false, // IsOpenResult
+        );
         make_offset.pin_mut().perform(distance, 0.0);
-
-        let offset_shape = make_offset.pin_mut().shape();
-        let result_wire = topo_ds::wire(offset_shape);
-
-        Self::from_wire(result_wire)
+        let shape = make_offset.pin_mut().shape();
+        let wire = topo_ds::wire(shape);
+        Self { inner: wire.to_owned() }
     }
 
-    /// Sweep the wire along a path to produce a shell
     #[must_use]
-    pub fn sweep_along(&self, path: &Wire) -> Shell {
+    pub fn sweep_along(&self, path: &Wire) -> crate::primitives::Shell {
+        use opencascade_sys::b_rep_offset_api;
         let profile_shape = self.inner.as_shape();
         let mut make_pipe = b_rep_offset_api::MakePipe::new_wire_shape(&path.inner, profile_shape);
-
-        let pipe_shape = make_pipe.pin_mut().shape();
-        let result_shell = topo_ds::shell(pipe_shape);
-
-        Shell::from_shell(result_shell)
+        let make_shape = make_pipe.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let pipe_shape = make_shape.shape();
+        let shell = topo_ds::shell(pipe_shape);
+        crate::primitives::Shell::from_shell(shell)
     }
 
-    /// Sweep the wire along a path, modulated by a function, to produce a shell
     #[must_use]
     pub fn sweep_along_with_radius_values(
         &self,
         path: &Wire,
         radius_values: impl IntoIterator<Item = (f64, f64)>,
-    ) -> Shell {
+    ) -> crate::primitives::Shell {
         crate::make_pipe_shell::make_pipe_shell_with_law_function_shell(path, self, radius_values)
     }
 

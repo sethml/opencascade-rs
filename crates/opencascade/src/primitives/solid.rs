@@ -1,12 +1,12 @@
 use crate::{
-    primitives::{
-        shape::list_of_shape_to_edges, BooleanShape, Compound, Edge, Face, Shape, Wire,
-    },
+    primitives::{BooleanShape, Compound, Edge, Face, Shape, Wire},
     Error,
 };
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep_algo_api, b_rep_fillet_api, b_rep_offset_api, message, topo_ds};
+use opencascade_sys::{
+    b_rep_algo_api, b_rep_fillet_api, b_rep_offset_api, message, topo_ds,
+};
 
 pub struct Solid {
     pub(crate) inner: UniquePtr<topo_ds::Solid>,
@@ -24,97 +24,81 @@ impl Solid {
         Self { inner }
     }
 
+    // TODO(bschwind) - Do some cool stuff from this link:
+    // https://neweopencascade.wordpress.com/2018/10/17/lets-talk-about-fillets/
+    // Key takeaway: Use the `SectionEdges` function to retrieve edges that were
+    // the result of combining two shapes.
     #[must_use]
     pub fn fillet_edge(&self, radius: f64, edge: &Edge) -> Compound {
-        let progress = message::ProgressRange::new();
-        // ChFi3d_Rational = 0
-        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(
-            self.inner.as_shape(),
-            0,
-        );
+        let inner_shape = self.inner.as_shape();
+
+        let mut make_fillet = b_rep_fillet_api::MakeFillet::new_shape_filletshape(inner_shape, 0);
         make_fillet.pin_mut().add_real_edge(radius, &edge.inner);
-        make_fillet.pin_mut().build(&progress);
-        let shape = make_fillet.pin_mut().shape();
-        let compound = topo_ds::compound(shape);
+
+        let filleted_shape = make_fillet.pin_mut().shape();
+        let compound = topo_ds::compound(filleted_shape);
+
         Compound::from_compound(compound)
     }
 
     pub fn loft<T: AsRef<Wire>>(wires: impl IntoIterator<Item = T>) -> Self {
         let is_solid = true;
-        let ruled = false;
-        let precision = 1.0e-6;
-        let mut make_loft = b_rep_offset_api::ThruSections::new_bool2_real(is_solid, ruled, precision);
+        let mut make_loft = b_rep_offset_api::ThruSections::new_bool(is_solid);
 
         for wire in wires.into_iter() {
             make_loft.pin_mut().add_wire(&wire.as_ref().inner);
         }
 
+        // Set to CheckCompatibility to `true` to avoid twisted results.
         make_loft.pin_mut().check_compatibility(true);
 
-        let make_shape = make_loft.pin_mut().as_b_rep_builder_api_make_shape_mut();
-        let solid_shape = make_shape.shape();
-        let solid = topo_ds::solid(solid_shape);
+        let shape = make_loft.pin_mut().shape();
+        let solid = topo_ds::solid(shape);
 
-        Solid::from_solid(solid)
+        Self::from_solid(solid)
     }
 
-    /// Boolean subtraction: returns a new shape with `other` removed from `self`.
     #[must_use]
     pub fn subtract(&self, other: &Solid) -> BooleanShape {
+        let inner_shape = self.inner.as_shape();
+        let other_inner_shape = other.inner.as_shape();
+
         let progress = message::ProgressRange::new();
-        let mut cut = b_rep_algo_api::Cut::new_shape2_progressrange(
-            self.inner.as_shape(),
-            other.inner.as_shape(),
-            &progress,
-        );
+        let mut cut_operation =
+            b_rep_algo_api::Cut::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        // Get the resulting shape
-        let make_shape = cut.pin_mut().as_b_rep_builder_api_make_shape_mut();
-        let result_shape = make_shape.shape();
-        let shape = Shape::from_shape(result_shape);
-
-        let new_edges = list_of_shape_to_edges(cut.pin_mut().section_edges());
+        let new_edges = collect_section_edges(cut_operation.pin_mut().section_edges());
+        let shape = Shape::from_shape(cut_operation.pin_mut().shape());
 
         BooleanShape { shape, new_edges }
     }
 
-    /// Boolean union: returns a new shape combining `self` and `other`.
     #[must_use]
     pub fn union(&self, other: &Solid) -> BooleanShape {
+        let inner_shape = self.inner.as_shape();
+        let other_inner_shape = other.inner.as_shape();
+
         let progress = message::ProgressRange::new();
-        let mut fuse = b_rep_algo_api::Fuse::new_shape2_progressrange(
-            self.inner.as_shape(),
-            other.inner.as_shape(),
-            &progress,
-        );
+        let mut fuse_operation =
+            b_rep_algo_api::Fuse::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        // Get the resulting shape
-        let make_shape = fuse.pin_mut().as_b_rep_builder_api_make_shape_mut();
-        let result_shape = make_shape.shape();
-        let shape = Shape::from_shape(result_shape);
-
-        let new_edges = list_of_shape_to_edges(fuse.pin_mut().section_edges());
+        let new_edges = collect_section_edges(fuse_operation.pin_mut().section_edges());
+        let shape = Shape::from_shape(fuse_operation.pin_mut().shape());
 
         BooleanShape { shape, new_edges }
     }
 
-    /// Boolean intersection: returns a new shape containing only the volume 
-    /// common to both `self` and `other`.
     #[must_use]
     pub fn intersect(&self, other: &Solid) -> BooleanShape {
+        let inner_shape = self.inner.as_shape();
+        let other_inner_shape = other.inner.as_shape();
+
         let progress = message::ProgressRange::new();
-        let mut common = b_rep_algo_api::Common::new_shape2_progressrange(
-            self.inner.as_shape(),
-            other.inner.as_shape(),
-            &progress,
-        );
+        let mut common_operation =
+            b_rep_algo_api::Common::new_shape2_progressrange(inner_shape, other_inner_shape, &progress);
 
-        // Get the resulting shape
-        let make_shape = common.pin_mut().as_b_rep_builder_api_make_shape_mut();
-        let result_shape = make_shape.shape();
-        let shape = Shape::from_shape(result_shape);
-
-        let new_edges = list_of_shape_to_edges(common.pin_mut().section_edges());
+        let new_edges = collect_section_edges(common_operation.pin_mut().section_edges());
+        let shape = Shape::from_shape(common_operation.pin_mut().shape());
 
         BooleanShape { shape, new_edges }
     }
@@ -129,4 +113,18 @@ impl Solid {
         let wire = Wire::from_ordered_points(points)?;
         Ok(Face::from_wire(&wire).extrude(dvec3(0.0, 0.0, h)))
     }
+}
+
+fn collect_section_edges(edge_list: &opencascade_sys::top_tools::ListOfShape) -> Vec<Edge> {
+    let mut new_edges = vec![];
+    let mut iter = edge_list.iter();
+    loop {
+        let shape = iter.pin_mut().next();
+        if shape.is_null() {
+            break;
+        }
+        let edge = topo_ds::edge(&shape);
+        new_edges.push(Edge::from_edge(edge));
+    }
+    new_edges
 }
