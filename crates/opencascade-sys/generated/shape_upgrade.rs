@@ -22,6 +22,10 @@ impl ClosedEdgeDivide {
         crate::ffi::ShapeUpgrade_ClosedEdgeDivide_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeUpgrade_ClosedEdgeDivide_get_type_descriptor()
     }
@@ -135,6 +139,10 @@ impl ClosedFaceDivide {
     /// Initialize by a Face.
     pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
         crate::ffi::ShapeUpgrade_ClosedFaceDivide_ctor_face(F)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_ClosedFaceDivide_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -267,6 +275,10 @@ impl ConvertSurfaceToBezierBasis {
         crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_descriptor()
     }
@@ -347,6 +359,10 @@ impl EdgeDivide {
 
     pub fn knots3d(&self) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
         crate::ffi::ShapeUpgrade_EdgeDivide_knots3d(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_EdgeDivide_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -459,6 +475,10 @@ impl FaceDivide {
         crate::ffi::ShapeUpgrade_FaceDivide_get_split_surface_tool(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_FaceDivide_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeUpgrade_FaceDivide_get_type_descriptor()
     }
@@ -529,6 +549,10 @@ impl FaceDivideArea {
 
     pub fn new_face(F: &crate::ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
         crate::ffi::ShapeUpgrade_FaceDivideArea_ctor_face(F)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_FaceDivideArea_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -655,6 +679,10 @@ impl FixSmallBezierCurves {
         crate::ffi::ShapeUpgrade_FixSmallBezierCurves_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeUpgrade_FixSmallBezierCurves_get_type_descriptor()
     }
@@ -756,6 +784,10 @@ impl FixSmallCurves {
         crate::ffi::ShapeUpgrade_FixSmallCurves_status(self, status.into())
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_FixSmallCurves_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeUpgrade_FixSmallCurves_get_type_descriptor()
     }
@@ -841,6 +873,10 @@ impl RemoveInternalWires {
     /// :FAIL2 - specified sub-shape is not belonged to inotial shape.
     pub fn status(&self, theStatus: crate::shape_extend::Status) -> bool {
         crate::ffi::ShapeUpgrade_RemoveInternalWires_status(self, theStatus.into())
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_RemoveInternalWires_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -939,6 +975,10 @@ impl RemoveLocations {
         theInitShape: &crate::ffi::TopoDS_Shape,
     ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
         crate::ffi::ShapeUpgrade_RemoveLocations_modified_shape(self, theInitShape)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_RemoveLocations_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1636,6 +1676,10 @@ impl SplitCurve {
         crate::ffi::ShapeUpgrade_SplitCurve_status(self, status.into())
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_SplitCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeUpgrade_SplitCurve_get_type_descriptor()
     }
@@ -1675,6 +1719,10 @@ impl SplitCurve2d {
     /// Empty constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::ShapeUpgrade_SplitCurve2d_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_SplitCurve2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1731,6 +1779,10 @@ impl SplitCurve3d {
     /// Empty constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::ShapeUpgrade_SplitCurve3d_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_SplitCurve3d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1798,6 +1850,10 @@ impl SplitSurface {
         crate::ffi::ShapeUpgrade_SplitSurface_status(self, status.into())
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_SplitSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeUpgrade_SplitSurface_get_type_descriptor()
     }
@@ -1839,6 +1895,10 @@ impl SplitSurfaceAngle {
     /// Empty constructor.
     pub fn new_real(MaxAngle: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::ShapeUpgrade_SplitSurfaceAngle_ctor_real(MaxAngle)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1916,6 +1976,10 @@ impl SplitSurfaceArea {
     /// Empty constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::ShapeUpgrade_SplitSurfaceArea_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_SplitSurfaceArea_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2003,6 +2067,10 @@ impl SplitSurfaceContinuity {
         crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_set_criterion(self, Criterion.into())
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_get_type_descriptor()
     }
@@ -2080,6 +2148,10 @@ impl Tool {
     /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::ShapeUpgrade_Tool_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_Tool_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2191,6 +2263,10 @@ impl UnifySameDomain {
         Self::new_shape_bool3(aShape, true, true, false)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_UnifySameDomain_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeUpgrade_UnifySameDomain_get_type_descriptor()
     }
@@ -2256,6 +2332,10 @@ impl WireDivide {
         self: std::pin::Pin<&mut Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleShapeAnalysisTransferParameters> {
         crate::ffi::ShapeUpgrade_WireDivide_get_transfer_param_tool(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeUpgrade_WireDivide_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

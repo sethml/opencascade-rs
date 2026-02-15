@@ -142,6 +142,10 @@ impl Curve3D {
         crate::ffi::BRep_Curve3D_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_Curve3D_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_Curve3D_get_type_descriptor()
     }
@@ -338,6 +342,10 @@ impl CurveOn2Surfaces {
         crate::ffi::BRep_CurveOn2Surfaces_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_CurveOn2Surfaces_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_CurveOn2Surfaces_get_type_descriptor()
     }
@@ -476,6 +484,10 @@ impl CurveOnClosedSurface {
     /// Return a copy of this representation.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
         crate::ffi::BRep_CurveOnClosedSurface_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_CurveOnClosedSurface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -667,6 +679,10 @@ impl CurveOnSurface {
         crate::ffi::BRep_CurveOnSurface_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_CurveOnSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_CurveOnSurface_get_type_descriptor()
     }
@@ -838,6 +854,10 @@ impl CurveRepresentation {
         crate::ffi::BRep_CurveRepresentation_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_CurveRepresentation_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_CurveRepresentation_get_type_descriptor()
     }
@@ -869,6 +889,10 @@ impl HandleBRepCurveRepresentation {
 pub use crate::ffi::BRep_GCurve as GCurve;
 
 impl GCurve {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_GCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_GCurve_get_type_descriptor()
     }
@@ -1023,6 +1047,10 @@ impl PointOnCurve {
         crate::ffi::BRep_PointOnCurve_ctor_real_handlegeomcurve_location(P, C, L)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_PointOnCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_PointOnCurve_get_type_descriptor()
     }
@@ -1091,6 +1119,10 @@ impl PointOnCurveOnSurface {
         L: &crate::ffi::TopLoc_Location,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRep_PointOnCurveOnSurface_ctor_real_handlegeom2dcurve_handlegeomsurface_location(P, C, S, L)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_PointOnCurveOnSurface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1174,6 +1206,10 @@ impl PointOnSurface {
         crate::ffi::BRep_PointOnSurface_ctor_real2_handlegeomsurface_location(P1, P2, S, L)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_PointOnSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_PointOnSurface_get_type_descriptor()
     }
@@ -1247,6 +1283,10 @@ impl PointOnSurface {
 pub use crate::ffi::BRep_PointRepresentation as PointRepresentation;
 
 impl PointRepresentation {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_PointRepresentation_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_PointRepresentation_get_type_descriptor()
     }
@@ -1283,6 +1323,10 @@ impl HandleBRepPointRepresentation {
 pub use crate::ffi::BRep_PointsOnSurface as PointsOnSurface;
 
 impl PointsOnSurface {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_PointsOnSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_PointsOnSurface_get_type_descriptor()
     }
@@ -1358,6 +1402,10 @@ impl Polygon3D {
     /// Return a copy of this representation.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
         crate::ffi::BRep_Polygon3D_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_Polygon3D_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1506,6 +1554,10 @@ impl PolygonOnClosedSurface {
     /// Return a copy of this representation.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
         crate::ffi::BRep_PolygonOnClosedSurface_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_PolygonOnClosedSurface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1666,6 +1718,10 @@ impl PolygonOnClosedTriangulation {
     /// Return a copy of this representation.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
         crate::ffi::BRep_PolygonOnClosedTriangulation_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_PolygonOnClosedTriangulation_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1829,6 +1885,10 @@ impl PolygonOnSurface {
         crate::ffi::BRep_PolygonOnSurface_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_PolygonOnSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_PolygonOnSurface_get_type_descriptor()
     }
@@ -1969,6 +2029,10 @@ impl PolygonOnTriangulation {
     /// Return a copy of this representation.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepCurveRepresentation> {
         crate::ffi::BRep_PolygonOnTriangulation_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_PolygonOnTriangulation_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2122,6 +2186,10 @@ impl TEdge {
         crate::ffi::BRep_TEdge_empty_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_TEdge_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_TEdge_get_type_descriptor()
     }
@@ -2242,6 +2310,10 @@ impl TFace {
         crate::ffi::BRep_TFace_empty_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_TFace_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRep_TFace_get_type_descriptor()
     }
@@ -2340,6 +2412,10 @@ impl TVertex {
     /// Returns a copy  of the  TShape  with no sub-shapes.
     pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
         crate::ffi::BRep_TVertex_empty_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRep_TVertex_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

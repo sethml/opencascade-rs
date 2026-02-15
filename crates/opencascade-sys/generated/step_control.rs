@@ -74,6 +74,10 @@ impl ActorRead {
         crate::ffi::STEPControl_ActorRead_ctor_handleinterfaceinterfacemodel(theModel)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::STEPControl_ActorRead_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::STEPControl_ActorRead_get_type_descriptor()
     }
@@ -155,6 +159,10 @@ impl ActorWrite {
     pub fn mode(&self) -> crate::step_control::StepModelType {
         crate::step_control::StepModelType::try_from(crate::ffi::STEPControl_ActorWrite_mode(self))
             .unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::STEPControl_ActorWrite_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -246,6 +254,10 @@ impl Controller {
     /// Returns True when done, False if could not be done
     pub fn init() -> bool {
         crate::ffi::STEPControl_Controller_init()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::STEPControl_Controller_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

@@ -332,7 +332,18 @@ fn generate_unified_function(
 ) {
     let params_str: String = func.params.iter().map(|p| {
         let name = safe_param_name(&p.name);
-        let ty = map_type_in_context(&p.ty.original, ctx);
+        // By-value class/handle params need to be &T at the Rust FFI boundary
+        // (matching the const T& on the C++ wrapper side)
+        let effective_ty = match &p.ty.original {
+            Type::Class(cname) if cname != "char" && !ctx.all_enums.contains(cname) => {
+                Type::ConstRef(Box::new(p.ty.original.clone()))
+            }
+            Type::Handle(_) => {
+                Type::ConstRef(Box::new(p.ty.original.clone()))
+            }
+            _ => p.ty.original.clone(),
+        };
+        let ty = map_type_in_context(&effective_ty, ctx);
         format!("{}: {}", name, ty.rust_type)
     }).collect::<Vec<_>>().join(", ");
 
@@ -563,13 +574,24 @@ fn emit_free_function_wrapper(
     // Build parameter list with typed enum params.
     // Non-enum class types use fully qualified `crate::ffi::ClassName` paths
     // since this code appears in a module re-export file, not in ffi.rs.
+    // By-value class/handle params are converted to &T to match the FFI signature.
     let params: Vec<String> = func.params.iter().map(|p| {
         let ty = if let Some(ref enum_name) = p.ty.enum_cpp_name {
             symbol_table.enum_rust_types.get(enum_name)
                 .cloned()
                 .unwrap_or_else(|| "i32".to_string())
         } else {
-            type_to_qualified_rust(&p.ty.original)
+            // Convert by-value class/handle params to const-ref to match FFI
+            let effective_ty = match &p.ty.original {
+                Type::Class(name) if name != "char" && !symbol_table.all_enum_names.contains(name) => {
+                    Type::ConstRef(Box::new(p.ty.original.clone()))
+                }
+                Type::Handle(_) => {
+                    Type::ConstRef(Box::new(p.ty.original.clone()))
+                }
+                _ => p.ty.original.clone(),
+            };
+            type_to_qualified_rust(&effective_ty)
         };
         format!("{}: {}", p.rust_name, ty)
     }).collect();
@@ -588,8 +610,14 @@ fn emit_free_function_wrapper(
 
     // Build return type.
     // Class/Handle types returned by value are wrapped in UniquePtr by CXX.
+    // C-string (const char*) returns are wrapped as rust::String on the C++ side → String on Rust side.
+    let returns_c_string = func.return_type.as_ref()
+        .map(|rt| rt.original.is_c_string())
+        .unwrap_or(false);
     let return_type_str = if let Some(ref rt) = func.return_type {
-        if let Some(ref enum_name) = rt.enum_cpp_name {
+        if returns_c_string {
+            " -> String".to_string()
+        } else if let Some(ref enum_name) = rt.enum_cpp_name {
             if let Some(rust_type) = symbol_table.enum_rust_types.get(enum_name) {
                 format!(" -> {}", rust_type)
             } else {

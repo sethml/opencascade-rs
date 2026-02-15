@@ -1204,15 +1204,27 @@ impl Color {
         .unwrap()
     }
 
+    /// Returns the name of the color identified by the given Quantity_NameOfColor enumeration value.
+    pub fn string_name(theColor: crate::quantity::NameOfColor) -> String {
+        crate::ffi::Quantity_Color_string_name(theColor.into())
+    }
+
+    /// Finds color from predefined names.
+    /// For example, the name of the color which corresponds to "BLACK" is Quantity_NOC_BLACK.
+    /// Returns FALSE if name is unknown.
+    pub fn color_from_name_charptr_nameofcolor(theName: &str, theColor: &mut i32) -> bool {
+        crate::ffi::Quantity_Color_color_from_name_charptr_nameofcolor(theName, theColor)
+    }
+
     /// Finds color from predefined names.
     /// @param theColorNameString the color name
     /// @param theColor a found color
     /// @return false if the color name is unknown, or true if the search by color name was successful
-    pub fn color_from_name(
+    pub fn color_from_name_charptr_color(
         theColorNameString: &str,
         theColor: std::pin::Pin<&mut crate::ffi::Quantity_Color>,
     ) -> bool {
-        crate::ffi::Quantity_Color_color_from_name(theColorNameString, theColor)
+        crate::ffi::Quantity_Color_color_from_name_charptr_color(theColorNameString, theColor)
     }
 
     /// Parses the string as a hex color (like "#FF0" for short sRGB color, or "#FFFF00" for sRGB

@@ -34,6 +34,10 @@ impl Datum3D {
         crate::gp::TrsfForm::try_from(crate::ffi::TopLoc_Datum3D_form(self)).unwrap()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopLoc_Datum3D_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopLoc_Datum3D_get_type_descriptor()
     }
@@ -189,6 +193,22 @@ impl SListNodeOfItemLocation {
         aTail: &crate::ffi::TopLoc_SListOfItemLocation,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TopLoc_SListNodeOfItemLocation_ctor_itemlocation_slistofitemlocation(I, aTail)
+    }
+
+    pub fn tail(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopLoc_SListOfItemLocation> {
+        crate::ffi::TopLoc_SListNodeOfItemLocation_tail(self)
+    }
+
+    pub fn value(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopLoc_ItemLocation> {
+        crate::ffi::TopLoc_SListNodeOfItemLocation_value(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

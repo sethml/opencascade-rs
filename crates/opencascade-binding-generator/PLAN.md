@@ -92,15 +92,15 @@ The following patterns cause methods to be intentionally skipped during binding 
 
 3. **Abstract class constructors** -- Abstract classes cannot be instantiated, so constructor wrappers and `to_handle()` functions are not generated. Abstract detection walks the full inheritance hierarchy to catch classes that inherit unimplemented pure virtual methods from ancestors.
 
-4. **Methods with by-value Handle parameters** -- CXX cannot pass `Handle<T>` by value across the FFI boundary. Methods taking `Handle<T>` parameters (not `const Handle<T>&`) are skipped.
+4. ~~**Methods with by-value Handle parameters**~~ RESOLVED -- CXX cannot pass `Handle<T>` by value, but the generator now emits C++ wrapper functions that accept `const Handle<T>&` and forward to the original method. No methods are skipped for this reason.
 
-5. **Methods with by-value class parameters** -- Similar to Handles, methods taking class types by value (not by reference) are skipped.
+5. ~~**Methods with by-value class parameters**~~ RESOLVED -- Similar to Handles, the generator now emits C++ wrapper functions that accept `const T&` and forward to the original method.
 
 6. **Classes with protected destructors** -- Excluded from CXX type declarations entirely since CXX auto-generates destructor code.
 
 7. **Inherited methods with signature mismatches** -- When a method pointer's declaring class differs from the binding class, C++ compilation fails. Inherited methods use C++ wrapper functions instead.
 
-8. **Const/mut return mismatches** -- Methods returning `const T&` when the method is non-const are problematic for CXX's ownership model and are skipped.
+8. ~~**Const/mut return mismatches**~~ RESOLVED -- The generator now emits `ConstMutReturnFix` wrapper functions that call the non-const method (via `Pin<&mut Self>` receiver) and cast the return to `const T&`, satisfying CXX's ownership model.
 
 ### Filter Consistency
 
@@ -124,6 +124,11 @@ CXX can't directly bind certain C++ patterns. The generator creates C++ wrapper 
 | Inherited method | Method pointer type mismatch | Free function calling `self.Method()` |
 | Upcast (const) | CXX sees types as unrelated | `Derived_as_Base(self) -> &Base` |
 | Upcast (mut) | CXX sees types as unrelated | `Derived_as_Base_mut(self) -> Pin<&mut Base>` |
+| By-value Handle param | CXX can't pass `Handle<T>` by value | Wrapper accepts `const Handle<T>&` |
+| By-value class param | CXX can't pass class by value | Wrapper accepts `const T&` |
+| Const/mut return fix | Non-const method returns `const T&` | `ConstMutReturnFix`: cast via `Pin<&mut Self>` |
+| `&mut` enum out-param | CXX can't pass `&mut EnumType` | `MutRefEnumParam`: local `i32` var + writeback |
+| `const char*` return (free/static) | Free/static funcs returning C strings | Wrapper returns `rust::String` |
 
 ### Handle Support
 

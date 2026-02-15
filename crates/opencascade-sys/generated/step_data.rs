@@ -56,6 +56,10 @@ impl StepModel {
         crate::ffi::StepData_StepModel_set_source_code_page(self, theCode.into())
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::StepData_StepModel_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::StepData_StepModel_get_type_descriptor()
     }

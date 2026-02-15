@@ -106,6 +106,10 @@ impl AbortiveTransaction {
         crate::ffi::Standard_AbortiveTransaction_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_AbortiveTransaction_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_AbortiveTransaction_get_type_descriptor()
     }
@@ -221,6 +225,10 @@ impl ConstructionError {
         crate::ffi::Standard_ConstructionError_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_ConstructionError_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_ConstructionError_get_type_descriptor()
     }
@@ -247,6 +255,10 @@ impl DimensionError {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::Standard_DimensionError_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_DimensionError_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -277,6 +289,10 @@ impl DimensionMismatch {
         crate::ffi::Standard_DimensionMismatch_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_DimensionMismatch_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_DimensionMismatch_get_type_descriptor()
     }
@@ -305,6 +321,10 @@ impl DivideByZero {
         crate::ffi::Standard_DivideByZero_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_DivideByZero_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_DivideByZero_get_type_descriptor()
     }
@@ -331,6 +351,10 @@ impl DomainError {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::Standard_DomainError_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_DomainError_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -370,6 +394,11 @@ impl Dump {
     /// Returns true if the value has bracket key
     pub fn has_child_key(theSourceValue: &crate::ffi::TCollection_AsciiString) -> bool {
         crate::ffi::Standard_Dump_has_child_key(theSourceValue)
+    }
+
+    /// Returns key value for enum type
+    pub fn json_key_to_string(theKey: crate::standard::JsonKey) -> String {
+        crate::ffi::Standard_Dump_json_key_to_string(theKey.into())
     }
 
     /// Returns length value for enum type
@@ -567,6 +596,10 @@ impl Failure {
         crate::ffi::Standard_Failure_set_default_stack_trace_length(theNbStackTraces)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_Failure_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_Failure_get_type_descriptor()
     }
@@ -614,6 +647,31 @@ impl GUID {
         crate::ffi::Standard_GUID_ctor_charptr(aGuid)
     }
 
+    /// build a GUID from an unicode string with the
+    /// following format:
+    ///
+    /// "00000000-0000-0000-0000-000000000000"
+    pub fn new_extstring(aGuid: &crate::ffi::Standard_ExtString) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_GUID_ctor_extstring(aGuid)
+    }
+
+    pub fn new_int_extcharacter3_byte6(
+        a32b: i32,
+        a16b1: &crate::ffi::Standard_ExtCharacter,
+        a16b2: &crate::ffi::Standard_ExtCharacter,
+        a16b3: &crate::ffi::Standard_ExtCharacter,
+        a8b1: &crate::ffi::Standard_Byte,
+        a8b2: &crate::ffi::Standard_Byte,
+        a8b3: &crate::ffi::Standard_Byte,
+        a8b4: &crate::ffi::Standard_Byte,
+        a8b5: &crate::ffi::Standard_Byte,
+        a8b6: &crate::ffi::Standard_Byte,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_GUID_ctor_int_extcharacter3_byte6(
+            a32b, a16b1, a16b2, a16b3, a8b1, a8b2, a8b3, a8b4, a8b5, a8b6,
+        )
+    }
+
     pub fn new_uuid(aGuid: &crate::ffi::Standard_UUID) -> cxx::UniquePtr<Self> {
         crate::ffi::Standard_GUID_ctor_uuid(aGuid)
     }
@@ -652,6 +710,10 @@ impl ImmutableObject {
         crate::ffi::Standard_ImmutableObject_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_ImmutableObject_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_ImmutableObject_get_type_descriptor()
     }
@@ -680,6 +742,10 @@ impl LicenseError {
         crate::ffi::Standard_LicenseError_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_LicenseError_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_LicenseError_get_type_descriptor()
     }
@@ -706,6 +772,10 @@ impl LicenseNotFound {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::Standard_LicenseNotFound_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_LicenseNotFound_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -847,6 +917,10 @@ impl MultiplyDefined {
         crate::ffi::Standard_MultiplyDefined_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_MultiplyDefined_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_MultiplyDefined_get_type_descriptor()
     }
@@ -921,6 +995,10 @@ impl NegativeValue {
         crate::ffi::Standard_NegativeValue_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_NegativeValue_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_NegativeValue_get_type_descriptor()
     }
@@ -947,6 +1025,10 @@ impl NoMoreObject {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::Standard_NoMoreObject_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_NoMoreObject_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -977,6 +1059,10 @@ impl NoSuchObject {
         crate::ffi::Standard_NoSuchObject_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_NoSuchObject_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_NoSuchObject_get_type_descriptor()
     }
@@ -1003,6 +1089,10 @@ impl NotImplemented {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::Standard_NotImplemented_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_NotImplemented_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1033,6 +1123,10 @@ impl NullObject {
         crate::ffi::Standard_NullObject_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_NullObject_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_NullObject_get_type_descriptor()
     }
@@ -1061,6 +1155,10 @@ impl NullValue {
         crate::ffi::Standard_NullValue_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_NullValue_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_NullValue_get_type_descriptor()
     }
@@ -1087,6 +1185,10 @@ impl NumericError {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::Standard_NumericError_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_NumericError_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1134,6 +1236,10 @@ impl OutOfMemory {
         crate::ffi::Standard_OutOfMemory_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_OutOfMemory_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_OutOfMemory_get_type_descriptor()
     }
@@ -1160,6 +1266,10 @@ impl OutOfRange {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::Standard_OutOfRange_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_OutOfRange_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1190,6 +1300,10 @@ impl Overflow {
         crate::ffi::Standard_Overflow_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_Overflow_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_Overflow_get_type_descriptor()
     }
@@ -1206,6 +1320,10 @@ pub use crate::ffi::Standard_Persistent as Persistent;
 impl Persistent {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Standard_Persistent_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_Persistent_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1259,6 +1377,10 @@ impl ProgramError {
         crate::ffi::Standard_ProgramError_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_ProgramError_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_ProgramError_get_type_descriptor()
     }
@@ -1285,6 +1407,10 @@ impl RangeError {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::Standard_RangeError_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_RangeError_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1338,6 +1464,10 @@ impl Transient {
         crate::ffi::Standard_Transient_is_kind(self, theTypeName)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_Transient_get_type_name()
+    }
+
     /// Returns type descriptor of Standard_Transient class
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_Transient_get_type_descriptor()
@@ -1389,6 +1519,10 @@ impl Type {
         crate::ffi::Standard_Type_sub_type(self, theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_Type_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_Type_get_type_descriptor()
     }
@@ -1438,6 +1572,10 @@ impl TypeMismatch {
         crate::ffi::Standard_TypeMismatch_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_TypeMismatch_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Standard_TypeMismatch_get_type_descriptor()
     }
@@ -1464,6 +1602,10 @@ impl Underflow {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::Standard_Underflow_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Standard_Underflow_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

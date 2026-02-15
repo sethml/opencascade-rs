@@ -391,8 +391,29 @@ let my_body = mk_fuse.pin_mut().shape();
   `Type::to_handle(obj)` instead of `obj.to_handle()`. This is due to Rust's
   `arbitrary_self_types` feature not being stable yet.
 - **No Handle downcasting** — use unsafe pointer casts after dynamic type
-  checks as a workaround.
-- **Enum parameters are `i32`** — use `.into()` for type-safe conversion.
+  checks as a workaround (see Handle Downcasting section above). The
+  `get_type_name()` method is available on all `Standard_Transient`-derived
+  classes for RTTI type identification.
+- **Bitset/flag enums remain `i32`** — most enum parameters now use typed Rust
+  enums, but enums used as bitmasks (names containing "Flag" or "Mask", or
+  values that are powers of 2) are still `i32`.
+- **Some methods with `&mut` enum out-params use `&mut i32`** — when a method
+  has an enum output parameter (e.g., `TopAbs_State& state`), the Rust
+  signature uses `&mut i32`. Convert back with `TryFrom`.
+
+## RTTI Type Identification
+
+All classes inheriting from `Standard_Transient` have a `get_type_name()`
+method that returns the C++ class name as a `String`. This is useful for
+Handle downcasting type checks and debugging:
+
+```rust
+let surface_handle = b_rep::Tool::surface_face(face);
+let type_name = surface_handle.get().get_type_name();
+if type_name == "Geom_Plane" {
+    // Safe to downcast
+}
+```
 
 ## Inherited Methods on TopoDS Subtypes
 

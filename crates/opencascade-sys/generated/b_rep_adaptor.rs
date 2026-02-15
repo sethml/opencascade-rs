@@ -133,6 +133,10 @@ impl CompCurve {
         crate::ffi::BRepAdaptor_CompCurve_b_spline(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepAdaptor_CompCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepAdaptor_CompCurve_get_type_descriptor()
     }
@@ -281,6 +285,10 @@ impl Curve {
         crate::ffi::BRepAdaptor_Curve_offset_curve(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepAdaptor_Curve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepAdaptor_Curve_get_type_descriptor()
     }
@@ -331,6 +339,10 @@ impl Curve2d {
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor2dCurve2d> {
         crate::ffi::BRepAdaptor_Curve2d_shallow_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepAdaptor_Curve2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -584,6 +596,10 @@ impl HArray1OfCurve {
         crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_array1ofcurve(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_descriptor()
     }
@@ -782,6 +798,10 @@ impl Surface {
 
     pub fn basis_surface(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
         crate::ffi::BRepAdaptor_Surface_basis_surface(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepAdaptor_Surface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

@@ -149,6 +149,18 @@ impl IntersectionPoint {
         )
     }
 
+    /// Get the fields of the current IntersectionPoint.
+    pub fn values(
+        &self,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        USurf: &mut f64,
+        VSurf: &mut f64,
+        UCurv: &mut f64,
+        TrCurv: &mut i32,
+    ) {
+        crate::ffi::IntCurveSurface_IntersectionPoint_values(self, P, USurf, VSurf, UCurv, TrCurv)
+    }
+
     /// returns the Transition of the point.
     pub fn transition(&self) -> crate::int_curve_surface::TransitionOnCurve {
         crate::int_curve_surface::TransitionOnCurve::try_from(

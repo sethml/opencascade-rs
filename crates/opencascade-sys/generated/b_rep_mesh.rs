@@ -81,6 +81,10 @@ impl TryFrom<i32> for FactoryError {
 pub use crate::ffi::BRepMesh_BaseMeshAlgo as BaseMeshAlgo;
 
 impl BaseMeshAlgo {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_BaseMeshAlgo_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_BaseMeshAlgo_get_type_descriptor()
     }
@@ -254,6 +258,10 @@ impl Classifier {
             .unwrap()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_Classifier_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_Classifier_get_type_descriptor()
     }
@@ -347,6 +355,10 @@ impl ConeRangeSplitter {
 pub use crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo as ConstrainedBaseMeshAlgo;
 
 impl ConstrainedBaseMeshAlgo {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_descriptor()
     }
@@ -390,6 +402,10 @@ impl Context {
         theMeshType: crate::i_mesh_tools::MeshAlgoType,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_Context_ctor_meshalgotype(theMeshType.into())
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_Context_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -554,6 +570,10 @@ impl Context {
 pub use crate::ffi::BRepMesh_CurveTessellator as CurveTessellator;
 
 impl CurveTessellator {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_CurveTessellator_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_CurveTessellator_get_type_descriptor()
     }
@@ -580,6 +600,10 @@ impl CurveTessellator {
 pub use crate::ffi::BRepMesh_CustomBaseMeshAlgo as CustomBaseMeshAlgo;
 
 impl CustomBaseMeshAlgo {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_descriptor()
     }
@@ -688,6 +712,10 @@ pub use crate::ffi::BRepMesh_DataStructureOfDelaun as DataStructureOfDelaun;
 impl DataStructureOfDelaun {
     pub fn dump(self: std::pin::Pin<&mut Self>, theFileNameStr: &str) {
         crate::ffi::BRepMesh_DataStructureOfDelaun_dump(self, theFileNameStr)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -806,6 +834,10 @@ impl Deflection {
         )
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_Deflection_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_Deflection_get_type_descriptor()
     }
@@ -846,6 +878,10 @@ impl DelabellaBaseMeshAlgo {
     /// Constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -928,6 +964,10 @@ impl DelabellaMeshAlgoFactory {
         )
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_descriptor()
     }
@@ -983,6 +1023,10 @@ impl DelaunayBaseMeshAlgo {
         crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_descriptor()
     }
@@ -1033,6 +1077,10 @@ impl DelaunayBaseMeshAlgo {
 pub use crate::ffi::BRepMesh_DiscretRoot as DiscretRoot;
 
 impl DiscretRoot {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_DiscretRoot_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_DiscretRoot_get_type_descriptor()
     }
@@ -1134,6 +1182,10 @@ impl EdgeDiscret {
         crate::ffi::BRepMesh_EdgeDiscret_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_EdgeDiscret_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_EdgeDiscret_get_type_descriptor()
     }
@@ -1160,6 +1212,10 @@ impl EdgeDiscret {
 pub use crate::ffi::BRepMesh_EdgeTessellationExtractor as EdgeTessellationExtractor;
 
 impl EdgeTessellationExtractor {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_descriptor()
     }
@@ -1267,6 +1323,10 @@ impl ExtrusionRangeSplitter {
 pub use crate::ffi::BRepMesh_FaceChecker as FaceChecker;
 
 impl FaceChecker {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_FaceChecker_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_FaceChecker_get_type_descriptor()
     }
@@ -1311,6 +1371,10 @@ impl FaceDiscret {
         theAlgoFactory: &crate::ffi::HandleIMeshToolsMeshAlgoFactory,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_FaceDiscret_ctor_handleimeshtoolsmeshalgofactory(theAlgoFactory)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_FaceDiscret_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1509,6 +1573,10 @@ impl IncrementalMesh {
         crate::ffi::BRepMesh_IncrementalMesh_set_parallel_default(isInParallel)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_IncrementalMesh_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_IncrementalMesh_get_type_descriptor()
     }
@@ -1562,6 +1630,10 @@ impl MeshAlgoFactory {
         crate::ffi::BRepMesh_MeshAlgoFactory_get_algo(self, theSurfaceType.into(), theParameters)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_MeshAlgoFactory_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_MeshAlgoFactory_get_type_descriptor()
     }
@@ -1593,6 +1665,10 @@ impl MeshTool {
         theStructure: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_MeshTool_ctor_handlebrepmeshdatastructureofdelaun(theStructure)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_MeshTool_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1639,6 +1715,10 @@ impl ModelBuilder {
     /// Constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_ModelBuilder_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_ModelBuilder_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1777,6 +1857,10 @@ impl ModelHealer {
         crate::ffi::BRepMesh_ModelHealer_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_ModelHealer_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_ModelHealer_get_type_descriptor()
     }
@@ -1806,6 +1890,10 @@ impl ModelPostProcessor {
     /// Constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_ModelPostProcessor_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_ModelPostProcessor_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1838,6 +1926,10 @@ impl ModelPreProcessor {
     /// Constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_ModelPreProcessor_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_ModelPreProcessor_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1975,6 +2067,10 @@ impl SelectorOfDataStructureOfDelaun {
         theMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_ctor_handlebrepmeshdatastructureofdelaun(theMesh)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2180,6 +2276,10 @@ impl ShapeTool {
         )
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_ShapeTool_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_ShapeTool_get_type_descriptor()
     }
@@ -2219,6 +2319,10 @@ impl HandleBRepMeshShapeTool {
 pub use crate::ffi::BRepMesh_ShapeVisitor as ShapeVisitor;
 
 impl ShapeVisitor {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_ShapeVisitor_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_ShapeVisitor_get_type_descriptor()
     }
@@ -2607,6 +2711,10 @@ impl Vertex {
 pub use crate::ffi::BRepMesh_VertexTool as VertexTool;
 
 impl VertexTool {
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepMesh_VertexTool_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepMesh_VertexTool_get_type_descriptor()
     }

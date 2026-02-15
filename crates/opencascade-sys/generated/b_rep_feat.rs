@@ -309,6 +309,27 @@ impl Builder {
         crate::ffi::BRepFeat_Builder_inherited_CheckInverted(self)
     }
 
+    /// Inherited from BOPAlgo_Builder: BuildBOP()
+    pub fn build_bop(
+        self: std::pin::Pin<&mut Self>,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::ffi::Message_ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        crate::ffi::BRepFeat_Builder_inherited_BuildBOP(
+            self,
+            theObjects,
+            theObjState.into(),
+            theTools,
+            theToolsState.into(),
+            theRange,
+            theReport,
+        )
+    }
+
     /// Inherited from BOPAlgo_Builder: ShapesSD()
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
         crate::ffi::BRepFeat_Builder_inherited_ShapesSD(self)
@@ -798,6 +819,27 @@ impl MakeCylindricalHole {
     /// Inherited from BOPAlgo_Builder: CheckInverted()
     pub fn check_inverted(&self) -> bool {
         crate::ffi::BRepFeat_MakeCylindricalHole_inherited_CheckInverted(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: BuildBOP()
+    pub fn build_bop(
+        self: std::pin::Pin<&mut Self>,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::ffi::Message_ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_BuildBOP(
+            self,
+            theObjects,
+            theObjState.into(),
+            theTools,
+            theToolsState.into(),
+            theRange,
+            theReport,
+        )
     }
 
     /// Inherited from BOPAlgo_Builder: ShapesSD()

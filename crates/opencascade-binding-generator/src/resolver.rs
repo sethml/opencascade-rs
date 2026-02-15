@@ -567,52 +567,21 @@ pub fn has_const_mut_return_mismatch(method: &Method) -> bool {
 
 /// Check if a method has unsupported by-value parameters.
 /// By-value enums (Type::Class) are supported (mapped to i32).
+/// By-value classes and Handles are now supported (C++ wrappers accept const T&).
 /// MutRef to enums are NOT supported (output params need local variable + writeback).
-pub fn method_has_unsupported_by_value_params(method: &Method, all_enum_names: &HashSet<String>) -> Option<(String, String)> {
-    for param in &method.params {
-        match &param.ty {
-            Type::Class(name) if !all_enum_names.contains(name) => {
-                return Some((param.name.clone(), name.clone()));
-            }
-            // MutRef to enum = output parameter, can't bind static_cast temporary to non-const &
-            Type::MutRef(inner) => {
-                if let Type::Class(name) = inner.as_ref() {
-                    if all_enum_names.contains(name) {
-                        return Some((param.name.clone(), format!("&mut {}", name)));
-                    }
-                }
-            }
-            Type::Handle(name) => {
-                return Some((param.name.clone(), format!("Handle<{}>", name)));
-            }
-            _ => {}
-        }
-    }
+pub fn method_has_unsupported_by_value_params(_method: &Method, _all_enum_names: &HashSet<String>) -> Option<(String, String)> {
+    // MutRef to enum params are now handled via C++ wrapper with local variable + writeback.
+    // No remaining unsupported param types.
     None
 }
 
 /// Check if a static method has unsupported by-value parameters.
 /// By-value enums (Type::Class) are supported (mapped to i32).
-/// MutRef to enums are NOT supported (output params need local variable + writeback).
-pub fn static_method_has_unsupported_by_value_params(method: &StaticMethod, all_enum_names: &HashSet<String>) -> Option<(String, String)> {
-    for param in &method.params {
-        match &param.ty {
-            Type::Class(name) if !all_enum_names.contains(name) => {
-                return Some((param.name.clone(), name.clone()));
-            }
-            Type::MutRef(inner) => {
-                if let Type::Class(name) = inner.as_ref() {
-                    if all_enum_names.contains(name) {
-                        return Some((param.name.clone(), format!("&mut {}", name)));
-                    }
-                }
-            }
-            Type::Handle(name) => {
-                return Some((param.name.clone(), format!("Handle<{}>", name)));
-            }
-            _ => {}
-        }
-    }
+/// By-value classes and Handles are now supported (C++ wrappers accept const T&).
+/// MutRef to enums are now supported (C++ wrappers with local variable + writeback).
+pub fn static_method_has_unsupported_by_value_params(_method: &StaticMethod, _all_enum_names: &HashSet<String>) -> Option<(String, String)> {
+    // MutRef to enum params are now handled via C++ wrapper with local variable + writeback.
+    // No remaining unsupported param types.
     None
 }
 
@@ -1110,12 +1079,9 @@ fn resolve_function(
     // Resolve return type
     let return_type = func.return_type.as_ref().map(|t| resolve_type(t, all_enum_names, type_to_module));
     
-    // Determine status — check unbindable types, c_string returns, and unknown handle types.
-    // C string returns (const char*) need C++ wrappers which aren't generated for free functions yet.
-    let has_cstring_return = func.return_type.as_ref().map(|t| t.is_c_string()).unwrap_or(false);
+    // Determine status — check unbindable types and unknown handle types.
+    // C string returns (const char*) are handled by C++ wrappers that convert to rust::String.
     let status = if func.has_unbindable_types() {
-        BindingStatus::Excluded(ExclusionReason::UnbindableFunction)
-    } else if has_cstring_return {
         BindingStatus::Excluded(ExclusionReason::UnbindableFunction)
     } else if function_uses_unknown_handle(func, all_class_names, all_enum_names, handle_able_classes) {
         BindingStatus::Excluded(ExclusionReason::UnknownHandleType)

@@ -29,6 +29,10 @@ impl NotDone {
         crate::ffi::StdFail_NotDone_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::StdFail_NotDone_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::StdFail_NotDone_get_type_descriptor()
     }

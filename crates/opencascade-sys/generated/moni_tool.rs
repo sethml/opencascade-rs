@@ -24,6 +24,10 @@ impl SignText {
         crate::ffi::MoniTool_SignText_name(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::MoniTool_SignText_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::MoniTool_SignText_get_type_descriptor()
     }

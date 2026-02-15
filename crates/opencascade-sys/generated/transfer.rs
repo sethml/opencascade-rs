@@ -83,6 +83,10 @@ impl ActorOfFinderProcess {
         crate::ffi::Transfer_ActorOfFinderProcess_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Transfer_ActorOfFinderProcess_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Transfer_ActorOfFinderProcess_get_type_descriptor()
     }
@@ -149,6 +153,10 @@ impl ActorOfProcessForFinder {
         crate::ffi::Transfer_ActorOfProcessForFinder_next(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Transfer_ActorOfProcessForFinder_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Transfer_ActorOfProcessForFinder_get_type_descriptor()
     }
@@ -198,6 +206,10 @@ impl ActorOfProcessForTransient {
         crate::ffi::Transfer_ActorOfProcessForTransient_next(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Transfer_ActorOfProcessForTransient_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Transfer_ActorOfProcessForTransient_get_type_descriptor()
     }
@@ -236,6 +248,10 @@ pub use crate::ffi::Transfer_ActorOfTransientProcess as ActorOfTransientProcess;
 impl ActorOfTransientProcess {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Transfer_ActorOfTransientProcess_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Transfer_ActorOfTransientProcess_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -379,6 +395,10 @@ impl Binder {
         self: std::pin::Pin<&mut Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleInterfaceCheck> {
         crate::ffi::Transfer_Binder_c_check(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Transfer_Binder_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

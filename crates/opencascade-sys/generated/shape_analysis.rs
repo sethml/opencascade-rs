@@ -18,6 +18,23 @@ pub use crate::ffi::{
 pub use crate::ffi::ShapeAnalysis_BoxBndTreeSelector as BoxBndTreeSelector;
 
 impl BoxBndTreeSelector {
+    pub fn new_handletoptoolsharray1ofshape_bool(
+        theSeq: &crate::ffi::HandleTopToolsHArray1OfShape,
+        theShared: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::ShapeAnalysis_BoxBndTreeSelector_ctor_handletoptoolsharray1ofshape_bool(
+            theSeq, theShared,
+        )
+    }
+
+    pub fn define_vertexes(
+        self: std::pin::Pin<&mut Self>,
+        theVf: &crate::ffi::TopoDS_Vertex,
+        theVl: &crate::ffi::TopoDS_Vertex,
+    ) {
+        crate::ffi::ShapeAnalysis_BoxBndTreeSelector_define_vertexes(self, theVf, theVl)
+    }
+
     pub fn last_check_status(&self, theStatus: crate::shape_extend::Status) -> bool {
         crate::ffi::ShapeAnalysis_BoxBndTreeSelector_last_check_status(self, theStatus.into())
     }
@@ -253,6 +270,10 @@ impl FreeBoundData {
     /// Returns notch on the contour
     pub fn notch(&self, index: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Wire> {
         crate::ffi::ShapeAnalysis_FreeBoundData_notch(self, index)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeAnalysis_FreeBoundData_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -727,6 +748,10 @@ impl HSequenceOfFreeBounds {
         crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_ctor_sequenceoffreebounds(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_descriptor()
     }
@@ -987,6 +1012,10 @@ impl Surface {
         crate::ffi::ShapeAnalysis_Surface_next_value_of_uv(self, p2dPrev, P3D, preci, maxpreci)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeAnalysis_Surface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeAnalysis_Surface_get_type_descriptor()
     }
@@ -1058,6 +1087,10 @@ impl TransferParameters {
         To2d: bool,
     ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
         crate::ffi::ShapeAnalysis_TransferParameters_perform(self, Params, To2d)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeAnalysis_TransferParameters_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1146,6 +1179,10 @@ impl TransferParametersProj {
         crate::ffi::ShapeAnalysis_TransferParametersProj_copy_nm_vertex_vertex_face2(
             theVert, toFace, fromFace,
         )
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeAnalysis_TransferParametersProj_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1282,6 +1319,10 @@ impl Wire {
     /// Querying the status of the LAST performed 'Advanced' checking procedure
     pub fn last_check_status(&self, Status: crate::shape_extend::Status) -> bool {
         crate::ffi::ShapeAnalysis_Wire_last_check_status(self, Status.into())
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeAnalysis_Wire_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

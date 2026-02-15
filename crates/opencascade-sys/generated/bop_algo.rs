@@ -412,6 +412,27 @@ impl BOP {
         crate::ffi::BOPAlgo_BOP_inherited_CheckInverted(self)
     }
 
+    /// Inherited from BOPAlgo_Builder: BuildBOP()
+    pub fn build_bop(
+        self: std::pin::Pin<&mut Self>,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::ffi::Message_ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        crate::ffi::BOPAlgo_BOP_inherited_BuildBOP(
+            self,
+            theObjects,
+            theObjState.into(),
+            theTools,
+            theToolsState.into(),
+            theRange,
+            theReport,
+        )
+    }
+
     /// Inherited from BOPAlgo_Builder: ShapesSD()
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
         crate::ffi::BOPAlgo_BOP_inherited_ShapesSD(self)
@@ -624,6 +645,89 @@ impl Builder {
     /// Returns the glue option of the algorithm
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_Builder_glue(self)).unwrap()
+    }
+
+    /// @name BOPs on open solids
+    /// Builds the result shape according to the given states for the objects
+    /// and tools. These states can be unambiguously converted into the Boolean operation type.
+    /// Thus, it performs the Boolean operation on the given groups of shapes.
+    ///
+    /// The result is built basing on the result of Builder operation (GF or any other).
+    /// The only condition for the Builder is that the splits of faces should be created
+    /// and classified relatively solids.
+    ///
+    /// The method uses classification approach for choosing the faces which will
+    /// participate in building the result shape:
+    /// - All faces from each group having the given state for the opposite group
+    /// will be taken into result.
+    ///
+    /// Such approach shows better results (in comparison with BOPAlgo_BuilderSolid approach)
+    /// when working with open solids. However, the result may not be always
+    /// correct on such data (at least, not as expected) as the correct classification
+    /// of the faces relatively open solids is not always possible and may vary
+    /// depending on the chosen classification point on the face.
+    ///
+    /// History is not created for the solids in this method.
+    ///
+    /// To avoid pollution of the report of Builder algorithm, there is a possibility to pass
+    /// the different report to collect the alerts of the method only. But, if the new report
+    /// is not given, the Builder report will be used.
+    /// So, even if Builder passed without any errors, but some error has been stored into its report
+    /// in this method, for the following calls the Builder report must be cleared.
+    ///
+    /// The method may set the following errors:
+    /// - BOPAlgo_AlertBuilderFailed - Building operation has not been performed yet or failed;
+    /// - BOPAlgo_AlertBOPNotSet - invalid BOP type is given (COMMON/FUSE/CUT/CUT21 are supported);
+    /// - BOPAlgo_AlertTooFewArguments - arguments are not given;
+    /// - BOPAlgo_AlertUnknownShape - the shape is unknown for the operation.
+    ///
+    /// Parameters:
+    /// @param theObjects     - The group of Objects for BOP;
+    /// @param theObjState    - State for objects faces to pass into result;
+    /// @param theTools       - The group of Tools for BOP;
+    /// @param theToolsState  - State for tools faces to pass into result;
+    /// @param theReport      - The alternative report to avoid pollution of the main one.
+    pub fn build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(
+        self: std::pin::Pin<&mut Self>,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::ffi::Message_ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        crate::ffi::BOPAlgo_Builder_build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(self, theObjects, theObjState.into(), theTools, theToolsState.into(), theRange, theReport)
+    }
+
+    /// Builds the result of Boolean operation of given type
+    /// basing on the result of Builder operation (GF or any other).
+    ///
+    /// The method converts the given type of operation into the states
+    /// for the objects and tools required for their face to pass into result
+    /// and performs the call to the same method, but with states instead
+    /// of operation type.
+    ///
+    /// The conversion looks as follows:
+    /// - COMMON is built from the faces of objects located IN any of the tools
+    /// and vice versa.
+    /// - FUSE   is built from the faces OUT of all given shapes;
+    /// - CUT    is built from the faces of the objects OUT of the tools and
+    /// faces of the tools located IN solids of the objects.
+    ///
+    /// @param theObjects   - The group of Objects for BOP;
+    /// @param theTools     - The group of Tools for BOP;
+    /// @param theOperation - The BOP type;
+    /// @param theRange     - The parameter to progressIndicator
+    /// @param theReport    - The alternative report to avoid pollution of the global one.
+    pub fn build_bop_listofshape2_operation_progressrange_handlemessagereport(
+        self: std::pin::Pin<&mut Self>,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theOperation: crate::bop_algo::Operation,
+        theRange: &crate::ffi::Message_ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        crate::ffi::BOPAlgo_Builder_build_bop_listofshape2_operation_progressrange_handlemessagereport(self, theObjects, theTools, theOperation.into(), theRange, theReport)
     }
 
     /// Upcast to BOPAlgo_BuilderShape
@@ -1349,6 +1453,27 @@ impl ToolsProvider {
     /// Inherited from BOPAlgo_Builder: CheckInverted()
     pub fn check_inverted(&self) -> bool {
         crate::ffi::BOPAlgo_ToolsProvider_inherited_CheckInverted(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: BuildBOP()
+    pub fn build_bop(
+        self: std::pin::Pin<&mut Self>,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::ffi::Message_ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        crate::ffi::BOPAlgo_ToolsProvider_inherited_BuildBOP(
+            self,
+            theObjects,
+            theObjState.into(),
+            theTools,
+            theToolsState.into(),
+            theRange,
+            theReport,
+        )
     }
 
     /// Inherited from BOPAlgo_Builder: ShapesSD()

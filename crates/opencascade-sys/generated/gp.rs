@@ -5042,6 +5042,10 @@ impl VectorWithNullMagnitude {
         crate::ffi::gp_VectorWithNullMagnitude_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::gp_VectorWithNullMagnitude_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::gp_VectorWithNullMagnitude_get_type_descriptor()
     }

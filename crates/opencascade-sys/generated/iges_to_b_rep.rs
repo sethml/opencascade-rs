@@ -23,6 +23,10 @@ impl AlgoContainer {
         crate::ffi::IGESToBRep_AlgoContainer_tool_container(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IGESToBRep_AlgoContainer_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IGESToBRep_AlgoContainer_get_type_descriptor()
     }
@@ -154,6 +158,10 @@ impl IGESBoundary {
         crate::ffi::IGESToBRep_IGESBoundary_ctor_curveandsurface(CS)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IGESToBRep_IGESBoundary_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IGESToBRep_IGESBoundary_get_type_descriptor()
     }
@@ -197,6 +205,10 @@ impl ToolContainer {
     /// Returns IGESToBRep_IGESBoundary
     pub fn iges_boundary(&self) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
         crate::ffi::IGESToBRep_ToolContainer_iges_boundary(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IGESToBRep_ToolContainer_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

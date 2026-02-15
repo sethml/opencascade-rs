@@ -1989,6 +1989,10 @@ impl ExtPExtS {
         crate::ffi::Extrema_ExtPExtS_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Extrema_ExtPExtS_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Extrema_ExtPExtS_get_type_descriptor()
     }
@@ -2029,6 +2033,10 @@ pub use crate::ffi::Extrema_ExtPRevS as ExtPRevS;
 impl ExtPRevS {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_ExtPRevS_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Extrema_ExtPRevS_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3035,6 +3043,10 @@ impl HArray1OfPOnCurv {
         crate::ffi::Extrema_HArray1OfPOnCurv_ctor_array1ofponcurv(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Extrema_HArray1OfPOnCurv_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Extrema_HArray1OfPOnCurv_get_type_descriptor()
     }
@@ -3101,6 +3113,10 @@ impl HArray1OfPOnCurv2d {
         theOther: &crate::ffi::Extrema_Array1OfPOnCurv2d,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_array1ofponcurv2d(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Extrema_HArray1OfPOnCurv2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3171,6 +3187,10 @@ impl HArray1OfPOnSurf {
         crate::ffi::Extrema_HArray1OfPOnSurf_ctor_array1ofponsurf(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Extrema_HArray1OfPOnSurf_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Extrema_HArray1OfPOnSurf_get_type_descriptor()
     }
@@ -3231,6 +3251,10 @@ impl HArray2OfPOnCurv {
         theOther: &crate::ffi::Extrema_Array2OfPOnCurv,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_HArray2OfPOnCurv_ctor_array2ofponcurv(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Extrema_HArray2OfPOnCurv_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3295,6 +3319,10 @@ impl HArray2OfPOnCurv2d {
         crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_array2ofponcurv2d(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Extrema_HArray2OfPOnCurv2d_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Extrema_HArray2OfPOnCurv2d_get_type_descriptor()
     }
@@ -3355,6 +3383,10 @@ impl HArray2OfPOnSurf {
         theOther: &crate::ffi::Extrema_Array2OfPOnSurf,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_HArray2OfPOnSurf_ctor_array2ofponsurf(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Extrema_HArray2OfPOnSurf_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

@@ -48,6 +48,10 @@ impl HArray1OfPinpointConstraint {
         crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_array1ofpinpointconstraint(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_descriptor()
     }

@@ -18,6 +18,10 @@ impl ActorWrite {
         crate::ffi::IGESControl_ActorWrite_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IGESControl_ActorWrite_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IGESControl_ActorWrite_get_type_descriptor()
     }
@@ -94,6 +98,10 @@ impl AlgoContainer {
         crate::ffi::IGESControl_AlgoContainer_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IGESControl_AlgoContainer_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IGESControl_AlgoContainer_get_type_descriptor()
     }
@@ -158,6 +166,10 @@ impl Controller {
     /// Also, it creates and records an Adaptor for FNES
     pub fn init() -> bool {
         crate::ffi::IGESControl_Controller_init()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IGESControl_Controller_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -228,6 +240,10 @@ impl IGESBoundary {
         CS: &crate::ffi::IGESToBRep_CurveAndSurface,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::IGESControl_IGESBoundary_ctor_curveandsurface(CS)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IGESControl_IGESBoundary_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -444,6 +460,10 @@ impl ToolContainer {
     /// Returns IGESControl_IGESBoundary
     pub fn iges_boundary(&self) -> cxx::UniquePtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
         crate::ffi::IGESControl_ToolContainer_iges_boundary(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IGESControl_ToolContainer_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

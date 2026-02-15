@@ -333,6 +333,10 @@ impl HArray1OfListOfShape {
         crate::ffi::TopTools_HArray1OfListOfShape_ctor_array1oflistofshape(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopTools_HArray1OfListOfShape_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopTools_HArray1OfListOfShape_get_type_descriptor()
     }
@@ -399,6 +403,10 @@ impl HArray1OfShape {
         crate::ffi::TopTools_HArray1OfShape_ctor_array1ofshape(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopTools_HArray1OfShape_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopTools_HArray1OfShape_get_type_descriptor()
     }
@@ -461,6 +469,10 @@ impl HArray2OfShape {
         crate::ffi::TopTools_HArray2OfShape_ctor_array2ofshape(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopTools_HArray2OfShape_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopTools_HArray2OfShape_get_type_descriptor()
     }
@@ -504,6 +516,10 @@ impl HSequenceOfShape {
         theOther: &crate::ffi::TopTools_SequenceOfShape,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TopTools_HSequenceOfShape_ctor_sequenceofshape(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TopTools_HSequenceOfShape_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

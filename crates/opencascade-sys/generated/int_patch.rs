@@ -170,6 +170,10 @@ impl Line {
         crate::int_surf::Situation::try_from(crate::ffi::IntPatch_Line_situation_s2(self)).unwrap()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IntPatch_Line_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IntPatch_Line_get_type_descriptor()
     }

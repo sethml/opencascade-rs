@@ -13,6 +13,9 @@ pub fn send(theMessage: &crate::ffi::TCollection_AsciiString, theGravity: crate:
 pub use crate::ffi::{
     default_report, fill_time, send_alarm, send_fail, send_info, send_trace, send_warning,
 };
+pub fn metric_to_string(theType: crate::message::MetricType) -> String {
+    crate::ffi::metric_to_string(theType.into())
+}
 pub fn metric_from_string(theString: &str) -> crate::message::MetricType {
     crate::message::MetricType::try_from(crate::ffi::metric_from_string(theString)).unwrap()
 }
@@ -642,6 +645,10 @@ impl Alert {
         crate::ffi::Message_Alert_get_message_key(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_Alert_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Message_Alert_get_type_descriptor()
     }
@@ -713,6 +720,10 @@ impl AlertExtended {
         theGravity: crate::message::Gravity,
     ) -> cxx::UniquePtr<crate::ffi::HandleMessageAlert> {
         crate::ffi::Message_AlertExtended_add_alert(theReport, theAttribute, theGravity.into())
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_AlertExtended_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -965,6 +976,10 @@ impl Algorithm {
         crate::ffi::Message_Algorithm_prepare_report(theError, theMaxCount)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_Algorithm_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Message_Algorithm_get_type_descriptor()
     }
@@ -1012,6 +1027,10 @@ impl Attribute {
     /// Base implementation returns dynamic type name of the instance.
     pub fn get_message_key(&self) -> String {
         crate::ffi::Message_Attribute_get_message_key(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_Attribute_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1110,6 +1129,10 @@ impl AttributeMeter {
         crate::ffi::Message_AttributeMeter_undefined_metric_value()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_AttributeMeter_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Message_AttributeMeter_get_type_descriptor()
     }
@@ -1143,6 +1166,10 @@ impl AttributeMeter {
 pub use crate::ffi::Message_AttributeObject as AttributeObject;
 
 impl AttributeObject {
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_AttributeObject_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Message_AttributeObject_get_type_descriptor()
     }
@@ -1182,6 +1209,10 @@ impl AttributeStream {
         theName: &crate::ffi::TCollection_AsciiString,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Message_AttributeStream_ctor_sstream_asciistring(theStream, theName)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_AttributeStream_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1262,6 +1293,10 @@ impl CompositeAlerts {
     /// @param theGravity an alert gravity
     pub fn clear_gravity(self: std::pin::Pin<&mut Self>, theGravity: crate::message::Gravity) {
         crate::ffi::Message_CompositeAlerts_clear(self, theGravity.into())
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_CompositeAlerts_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1473,6 +1508,10 @@ impl Messenger {
             theString,
             theGravity.into(),
         )
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_Messenger_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1714,6 +1753,10 @@ impl Printer {
         crate::ffi::Message_Printer_send_asciistring_gravity(self, theString, theGravity.into())
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_Printer_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Message_Printer_get_type_descriptor()
     }
@@ -1764,6 +1807,10 @@ impl PrinterOStream {
             theDoAppend,
             theTraceLevel.into(),
         )
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_PrinterOStream_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1826,6 +1873,10 @@ impl PrinterSystemLog {
         )
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_PrinterSystemLog_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Message_PrinterSystemLog_get_type_descriptor()
     }
@@ -1876,6 +1927,10 @@ impl PrinterToReport {
     /// Create printer for redirecting messages into report.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Message_PrinterToReport_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_PrinterToReport_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1960,6 +2015,10 @@ impl ProgressIndicator {
         self: std::pin::Pin<&mut Self>,
     ) -> cxx::UniquePtr<crate::ffi::Message_ProgressRange> {
         crate::ffi::Message_ProgressIndicator_start(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_ProgressIndicator_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2115,6 +2174,10 @@ impl Report {
         theGravity: crate::message::Gravity,
     ) {
         crate::ffi::Message_Report_merge(self, theOther, theGravity.into())
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Message_Report_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

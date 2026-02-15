@@ -262,6 +262,10 @@ impl ElSpine {
         crate::ffi::ChFiDS_ElSpine_b_spline(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ChFiDS_ElSpine_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ChFiDS_ElSpine_get_type_descriptor()
     }
@@ -369,6 +373,10 @@ impl HData {
         crate::ffi::ChFiDS_HData_ctor_sequenceofsurfdata(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ChFiDS_HData_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ChFiDS_HData_get_type_descriptor()
     }
@@ -465,6 +473,10 @@ impl SecHArray1 {
 
     pub fn new_secarray1(theOther: &crate::ffi::ChFiDS_SecArray1) -> cxx::UniquePtr<Self> {
         crate::ffi::ChFiDS_SecHArray1_ctor_secarray1(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ChFiDS_SecHArray1_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -587,6 +599,10 @@ impl Stripe {
         crate::ffi::ChFiDS_Stripe_set_orientation_orientation_bool(self, Or.into(), First)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ChFiDS_Stripe_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ChFiDS_Stripe_get_type_descriptor()
     }
@@ -650,6 +666,10 @@ impl SurfData {
         OnS: i32,
     ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
         crate::ffi::ChFiDS_SurfData_get2d_points(self, First, OnS)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::ChFiDS_SurfData_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

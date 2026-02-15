@@ -505,6 +505,10 @@ impl FastSewing {
         Self::new_real(1.0e-06)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepBuilderAPI_FastSewing_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepBuilderAPI_FastSewing_get_type_descriptor()
     }
@@ -3066,6 +3070,10 @@ impl Sewing {
         index: i32,
     ) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {
         crate::ffi::BRepBuilderAPI_Sewing_which_face(self, theEdg, index)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepBuilderAPI_Sewing_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

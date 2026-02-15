@@ -450,6 +450,10 @@ impl DoubleTab {
     pub fn new_doubletab(Other: &crate::ffi::math_DoubleTab) -> cxx::UniquePtr<Self> {
         crate::ffi::math_DoubleTab_ctor_doubletab(Other)
     }
+
+    pub fn value(self: std::pin::Pin<&mut Self>, RowIndex: i32, ColIndex: i32) -> &mut f64 {
+        crate::ffi::math_DoubleTab_value(self, RowIndex, ColIndex)
+    }
 }
 
 // ========================
@@ -1425,6 +1429,14 @@ impl Matrix {
         crate::ffi::math_Matrix_t_multiply(self, Right)
     }
 
+    /// Accesses (in read or write mode) the value of index <Row>
+    /// and <Col> of a matrix.
+    /// An exception is raised if <Row> and <Col> are not
+    /// in the correct range.
+    pub fn value(self: std::pin::Pin<&mut Self>, Row: i32, Col: i32) -> &mut f64 {
+        crate::ffi::math_Matrix_value(self, Row, Col)
+    }
+
     /// Returns the product of 2 matrices.
     /// An exception is raised if the dimensions are different.
     pub fn multiplied_matrix(
@@ -1816,6 +1828,10 @@ impl NotSquare {
         crate::ffi::math_NotSquare_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::math_NotSquare_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::math_NotSquare_get_type_descriptor()
     }
@@ -1967,6 +1983,10 @@ impl SingularMatrix {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::math_SingularMatrix_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::math_SingularMatrix_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

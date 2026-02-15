@@ -1062,6 +1062,10 @@ impl HArray1OfCirc2d {
         crate::ffi::TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray1OfCirc2d_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfCirc2d_get_type_descriptor()
     }
@@ -1138,6 +1142,10 @@ impl HArray1OfDir {
         crate::ffi::TColgp_HArray1OfDir_ctor_array1ofdir(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray1OfDir_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfDir_get_type_descriptor()
     }
@@ -1210,6 +1218,10 @@ impl HArray1OfDir2d {
 
     pub fn new_array1ofdir2d(theOther: &crate::ffi::TColgp_Array1OfDir2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray1OfDir2d_ctor_array1ofdir2d(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray1OfDir2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1288,6 +1300,10 @@ impl HArray1OfLin2d {
         crate::ffi::TColgp_HArray1OfLin2d_ctor_array1oflin2d(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray1OfLin2d_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfLin2d_get_type_descriptor()
     }
@@ -1364,6 +1380,10 @@ impl HArray1OfPnt {
         crate::ffi::TColgp_HArray1OfPnt_ctor_array1ofpnt(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray1OfPnt_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfPnt_get_type_descriptor()
     }
@@ -1436,6 +1456,10 @@ impl HArray1OfPnt2d {
 
     pub fn new_array1ofpnt2d(theOther: &crate::ffi::TColgp_Array1OfPnt2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray1OfPnt2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1514,6 +1538,10 @@ impl HArray1OfVec {
         crate::ffi::TColgp_HArray1OfVec_ctor_array1ofvec(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray1OfVec_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfVec_get_type_descriptor()
     }
@@ -1586,6 +1614,10 @@ impl HArray1OfVec2d {
 
     pub fn new_array1ofvec2d(theOther: &crate::ffi::TColgp_Array1OfVec2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray1OfVec2d_ctor_array1ofvec2d(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray1OfVec2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1664,6 +1696,10 @@ impl HArray1OfXY {
         crate::ffi::TColgp_HArray1OfXY_ctor_array1ofxy(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray1OfXY_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfXY_get_type_descriptor()
     }
@@ -1738,6 +1774,10 @@ impl HArray1OfXYZ {
         crate::ffi::TColgp_HArray1OfXYZ_ctor_array1ofxyz(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray1OfXYZ_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray1OfXYZ_get_type_descriptor()
     }
@@ -1808,6 +1848,10 @@ impl HArray2OfCirc2d {
         theOther: &crate::ffi::TColgp_Array2OfCirc2d,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray2OfCirc2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1882,6 +1926,10 @@ impl HArray2OfDir {
         crate::ffi::TColgp_HArray2OfDir_ctor_array2ofdir(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray2OfDir_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfDir_get_type_descriptor()
     }
@@ -1950,6 +1998,10 @@ impl HArray2OfDir2d {
 
     pub fn new_array2ofdir2d(theOther: &crate::ffi::TColgp_Array2OfDir2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray2OfDir2d_ctor_array2ofdir2d(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray2OfDir2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2024,6 +2076,10 @@ impl HArray2OfLin2d {
         crate::ffi::TColgp_HArray2OfLin2d_ctor_array2oflin2d(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray2OfLin2d_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfLin2d_get_type_descriptor()
     }
@@ -2096,6 +2152,10 @@ impl HArray2OfPnt {
         crate::ffi::TColgp_HArray2OfPnt_ctor_array2ofpnt(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray2OfPnt_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfPnt_get_type_descriptor()
     }
@@ -2164,6 +2224,10 @@ impl HArray2OfPnt2d {
 
     pub fn new_array2ofpnt2d(theOther: &crate::ffi::TColgp_Array2OfPnt2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray2OfPnt2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2238,6 +2302,10 @@ impl HArray2OfVec {
         crate::ffi::TColgp_HArray2OfVec_ctor_array2ofvec(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray2OfVec_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfVec_get_type_descriptor()
     }
@@ -2306,6 +2374,10 @@ impl HArray2OfVec2d {
 
     pub fn new_array2ofvec2d(theOther: &crate::ffi::TColgp_Array2OfVec2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray2OfVec2d_ctor_array2ofvec2d(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray2OfVec2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2380,6 +2452,10 @@ impl HArray2OfXY {
         crate::ffi::TColgp_HArray2OfXY_ctor_array2ofxy(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray2OfXY_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfXY_get_type_descriptor()
     }
@@ -2450,6 +2526,10 @@ impl HArray2OfXYZ {
         crate::ffi::TColgp_HArray2OfXYZ_ctor_array2ofxyz(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HArray2OfXYZ_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HArray2OfXYZ_get_type_descriptor()
     }
@@ -2503,6 +2583,10 @@ impl HSequenceOfDir {
         crate::ffi::TColgp_HSequenceOfDir_ctor_sequenceofdir(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HSequenceOfDir_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HSequenceOfDir_get_type_descriptor()
     }
@@ -2548,6 +2632,10 @@ impl HSequenceOfDir2d {
         crate::ffi::TColgp_HSequenceOfDir2d_ctor_sequenceofdir2d(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HSequenceOfDir2d_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HSequenceOfDir2d_get_type_descriptor()
     }
@@ -2589,6 +2677,10 @@ impl HSequenceOfPnt {
 
     pub fn new_sequenceofpnt(theOther: &crate::ffi::TColgp_SequenceOfPnt) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HSequenceOfPnt_ctor_sequenceofpnt(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HSequenceOfPnt_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2636,6 +2728,10 @@ impl HSequenceOfPnt2d {
         crate::ffi::TColgp_HSequenceOfPnt2d_ctor_sequenceofpnt2d(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HSequenceOfPnt2d_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HSequenceOfPnt2d_get_type_descriptor()
     }
@@ -2677,6 +2773,10 @@ impl HSequenceOfVec {
 
     pub fn new_sequenceofvec(theOther: &crate::ffi::TColgp_SequenceOfVec) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HSequenceOfVec_ctor_sequenceofvec(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HSequenceOfVec_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2724,6 +2824,10 @@ impl HSequenceOfVec2d {
         crate::ffi::TColgp_HSequenceOfVec2d_ctor_sequenceofvec2d(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HSequenceOfVec2d_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HSequenceOfVec2d_get_type_descriptor()
     }
@@ -2767,6 +2871,10 @@ impl HSequenceOfXY {
         crate::ffi::TColgp_HSequenceOfXY_ctor_sequenceofxy(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HSequenceOfXY_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColgp_HSequenceOfXY_get_type_descriptor()
     }
@@ -2808,6 +2916,10 @@ impl HSequenceOfXYZ {
 
     pub fn new_sequenceofxyz(theOther: &crate::ffi::TColgp_SequenceOfXYZ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HSequenceOfXYZ_ctor_sequenceofxyz(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColgp_HSequenceOfXYZ_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

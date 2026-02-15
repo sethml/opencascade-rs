@@ -47,6 +47,10 @@ impl Axis1Placement {
         crate::ffi::Geom_Axis1Placement_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Axis1Placement_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_Axis1Placement_get_type_descriptor()
     }
@@ -260,6 +264,10 @@ impl Axis2Placement {
         crate::ffi::Geom_Axis2Placement_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Axis2Placement_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_Axis2Placement_get_type_descriptor()
     }
@@ -453,6 +461,10 @@ impl AxisPlacement {
     /// Returns the Location point (origin) of the axis placement.
     pub fn location(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
         crate::ffi::Geom_AxisPlacement_location(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_AxisPlacement_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -939,6 +951,10 @@ impl BSplineCurve {
     /// B-spline basis functions in this package.
     pub fn max_degree() -> i32 {
         crate::ffi::Geom_BSplineCurve_max_degree()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_BSplineCurve_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1623,6 +1639,10 @@ impl BSplineSurface {
         crate::ffi::Geom_BSplineSurface_max_degree()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_BSplineSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_BSplineSurface_get_type_descriptor()
     }
@@ -1910,6 +1930,10 @@ impl BezierCurve {
     /// of any Geom_BezierCurve curve. This value is 25.
     pub fn max_degree() -> i32 {
         crate::ffi::Geom_BezierCurve_max_degree()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_BezierCurve_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2228,6 +2252,10 @@ impl BezierSurface {
         crate::ffi::Geom_BezierSurface_max_degree()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_BezierSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_BezierSurface_get_type_descriptor()
     }
@@ -2435,6 +2463,10 @@ impl BoundedCurve {
     /// Returns the start point of the curve.
     pub fn start_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
         crate::ffi::Geom_BoundedCurve_start_point(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_BoundedCurve_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2701,6 +2733,10 @@ impl HandleGeomBoundedCurve {
 pub use crate::ffi::Geom_BoundedSurface as BoundedSurface;
 
 impl BoundedSurface {
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_BoundedSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_BoundedSurface_get_type_descriptor()
     }
@@ -3022,6 +3058,10 @@ impl CartesianPoint {
         crate::ffi::Geom_CartesianPoint_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_CartesianPoint_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_CartesianPoint_get_type_descriptor()
     }
@@ -3221,6 +3261,10 @@ impl Circle {
     /// Creates a new object which is a copy of this circle.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
         crate::ffi::Geom_Circle_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Circle_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3483,6 +3527,10 @@ impl Conic {
     /// The continuity of the conic is Cn.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::ffi::Geom_Conic_continuity(self)).unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Conic_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3834,6 +3882,10 @@ impl ConicalSurface {
         crate::ffi::Geom_ConicalSurface_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_ConicalSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_ConicalSurface_get_type_descriptor()
     }
@@ -4122,6 +4174,10 @@ impl Curve {
         crate::ffi::Geom_Curve_value(self, U)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Curve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_Curve_get_type_descriptor()
     }
@@ -4334,6 +4390,10 @@ impl CylindricalSurface {
     /// Creates a new object which is a copy of this cylinder.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
         crate::ffi::Geom_CylindricalSurface_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_CylindricalSurface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -4614,6 +4674,10 @@ impl Direction {
         crate::ffi::Geom_Direction_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Direction_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_Direction_get_type_descriptor()
     }
@@ -4843,6 +4907,10 @@ impl ElementarySurface {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::ffi::Geom_ElementarySurface_continuity(self))
             .unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_ElementarySurface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -5220,6 +5288,10 @@ impl Ellipse {
         crate::ffi::Geom_Ellipse_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Ellipse_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_Ellipse_get_type_descriptor()
     }
@@ -5520,6 +5592,10 @@ impl Geometry {
         crate::ffi::Geom_Geometry_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Geometry_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_Geometry_get_type_descriptor()
     }
@@ -5556,6 +5632,10 @@ impl HSequenceOfBSplineSurface {
         theOther: &crate::ffi::Geom_SequenceOfBSplineSurface,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Geom_HSequenceOfBSplineSurface_ctor_sequenceofbsplinesurface(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_HSequenceOfBSplineSurface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -5756,6 +5836,10 @@ impl Hyperbola {
     /// Creates a new object which is a copy of this hyperbola.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
         crate::ffi::Geom_Hyperbola_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Hyperbola_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -6028,6 +6112,10 @@ impl Line {
     /// Creates a new object which is a copy of this line.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
         crate::ffi::Geom_Line_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Line_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -6315,6 +6403,10 @@ impl OffsetCurve {
             self,
         ))
         .unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_OffsetCurve_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -6637,6 +6729,10 @@ impl OffsetSurface {
         .unwrap()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_OffsetSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_OffsetSurface_get_type_descriptor()
     }
@@ -6798,6 +6894,10 @@ impl OsculatingSurface {
         crate::ffi::Geom_OsculatingSurface_basis_surface(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_OsculatingSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_OsculatingSurface_get_type_descriptor()
     }
@@ -6928,6 +7028,10 @@ impl Parabola {
     /// Creates a new object which is a copy of this parabola.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
         crate::ffi::Geom_Parabola_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Parabola_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -7246,6 +7350,10 @@ impl Plane {
         crate::ffi::Geom_Plane_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Plane_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_Plane_get_type_descriptor()
     }
@@ -7465,6 +7573,10 @@ impl Point {
     /// returns a non transient copy of <me>
     pub fn pnt(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
         crate::ffi::Geom_Point_pnt(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Point_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -7810,6 +7922,10 @@ impl RectangularTrimmedSurface {
         crate::ffi::Geom_RectangularTrimmedSurface_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_RectangularTrimmedSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_RectangularTrimmedSurface_get_type_descriptor()
     }
@@ -8074,6 +8190,10 @@ impl SphericalSurface {
     /// Creates a new object which is a copy of this sphere.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
         crate::ffi::Geom_SphericalSurface_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_SphericalSurface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -8424,6 +8544,10 @@ impl Surface {
         crate::ffi::Geom_Surface_value(self, U, V)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Surface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_Surface_get_type_descriptor()
     }
@@ -8635,6 +8759,10 @@ impl SurfaceOfLinearExtrusion {
     /// Creates a new object which is a copy of this surface of linear extrusion.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
         crate::ffi::Geom_SurfaceOfLinearExtrusion_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_SurfaceOfLinearExtrusion_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -8966,6 +9094,10 @@ impl SurfaceOfRevolution {
         crate::ffi::Geom_SurfaceOfRevolution_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_SurfaceOfRevolution_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_SurfaceOfRevolution_get_type_descriptor()
     }
@@ -9175,6 +9307,10 @@ impl SweptSurface {
     /// for a surface of linear extrusion it is the extruded curve.
     pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomCurve> {
         crate::ffi::Geom_SweptSurface_basis_curve(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_SweptSurface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -9579,6 +9715,10 @@ impl ToroidalSurface {
         crate::ffi::Geom_ToroidalSurface_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_ToroidalSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_ToroidalSurface_get_type_descriptor()
     }
@@ -9898,6 +10038,10 @@ impl Transformation {
         crate::ffi::Geom_Transformation_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Transformation_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_Transformation_get_type_descriptor()
     }
@@ -10129,6 +10273,10 @@ impl TrimmedCurve {
         crate::ffi::Geom_TrimmedCurve_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_TrimmedCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_TrimmedCurve_get_type_descriptor()
     }
@@ -10299,6 +10447,10 @@ impl UndefinedDerivative {
         crate::ffi::Geom_UndefinedDerivative_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_UndefinedDerivative_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom_UndefinedDerivative_get_type_descriptor()
     }
@@ -10325,6 +10477,10 @@ impl UndefinedValue {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::Geom_UndefinedValue_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_UndefinedValue_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -10371,6 +10527,10 @@ impl Vector {
         V2: &crate::ffi::HandleGeomVector,
     ) -> cxx::UniquePtr<crate::ffi::HandleGeomVector> {
         crate::ffi::Geom_Vector_cross_crossed(self, V1, V2)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_Vector_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -10567,6 +10727,10 @@ impl VectorWithMagnitude {
     /// Creates a new object which is a copy of this vector.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomGeometry> {
         crate::ffi::Geom_VectorWithMagnitude_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom_VectorWithMagnitude_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

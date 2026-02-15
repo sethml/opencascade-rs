@@ -94,6 +94,10 @@ impl TryFrom<i32> for MultDistribution {
 pub use crate::ffi::BSplCLib_Cache as Cache;
 
 impl Cache {
+    pub fn get_type_name() -> String {
+        crate::ffi::BSplCLib_Cache_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BSplCLib_Cache_get_type_descriptor()
     }

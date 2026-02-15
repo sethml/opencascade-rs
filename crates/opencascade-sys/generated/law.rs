@@ -60,6 +60,10 @@ impl BSpFunc {
         crate::ffi::Law_BSpFunc_curve(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Law_BSpFunc_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Law_BSpFunc_get_type_descriptor()
     }
@@ -276,6 +280,10 @@ impl BSpline {
         crate::ffi::Law_BSpline_max_degree()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Law_BSpline_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Law_BSpline_get_type_descriptor()
     }
@@ -389,6 +397,10 @@ impl Composite {
         crate::ffi::Law_Composite_trim(self, PFirst, PLast, Tol)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Law_Composite_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Law_Composite_get_type_descriptor()
     }
@@ -459,6 +471,10 @@ impl Constant {
         Tol: f64,
     ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
         crate::ffi::Law_Constant_trim(self, PFirst, PLast, Tol)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Law_Constant_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -533,6 +549,10 @@ impl Function {
         crate::ffi::Law_Function_trim(self, PFirst, PLast, Tol)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Law_Function_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Law_Function_get_type_descriptor()
     }
@@ -565,6 +585,10 @@ impl Interpol {
     /// The function Set is used to define the law.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Law_Interpol_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Law_Interpol_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -761,6 +785,10 @@ impl Linear {
         crate::ffi::Law_Linear_trim(self, PFirst, PLast, Tol)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Law_Linear_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Law_Linear_get_type_descriptor()
     }
@@ -811,6 +839,10 @@ impl S {
     /// Constructs an empty "S" evolution law.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Law_S_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Law_S_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

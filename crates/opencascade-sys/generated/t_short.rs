@@ -42,6 +42,10 @@ impl HArray1OfShortReal {
         crate::ffi::TShort_HArray1OfShortReal_ctor_array1ofshortreal(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TShort_HArray1OfShortReal_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TShort_HArray1OfShortReal_get_type_descriptor()
     }

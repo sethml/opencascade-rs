@@ -45,6 +45,20 @@ impl AsciiString {
         crate::ffi::TCollection_AsciiString_ctor_charptr_int(message, aLen)
     }
 
+    /// Initializes a AsciiString with a single character.
+    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_AsciiString_ctor_character(aChar)
+    }
+
+    /// Initializes an AsciiString with <length> space allocated.
+    /// and filled with <filler>. This is useful for buffers.
+    pub fn new_int_character(
+        length: i32,
+        filler: &crate::ffi::Standard_Character,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_AsciiString_ctor_int_character(length, filler)
+    }
+
     /// Initializes an AsciiString with an integer value
     pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
         crate::ffi::TCollection_AsciiString_ctor_int(value)
@@ -58,6 +72,15 @@ impl AsciiString {
     /// Initializes a AsciiString with another AsciiString.
     pub fn new_asciistring(astring: &crate::ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
         crate::ffi::TCollection_AsciiString_ctor_asciistring(astring)
+    }
+
+    /// Initializes a AsciiString with copy of another AsciiString
+    /// concatenated with the message character.
+    pub fn new_asciistring_character(
+        astring: &crate::ffi::TCollection_AsciiString,
+        message: &crate::ffi::Standard_Character,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_AsciiString_ctor_asciistring_character(astring, message)
     }
 
     /// Initializes a AsciiString with copy of another AsciiString
@@ -82,10 +105,11 @@ impl AsciiString {
     /// If replaceNonAscii is non-null character, it will be used
     /// in place of any non-ascii character found in the source string.
     /// Otherwise, creates UTF-8 unicode string.
-    pub fn new_extendedstring(
+    pub fn new_extendedstring_character(
         astring: &crate::ffi::TCollection_ExtendedString,
+        replaceNonAscii: &crate::ffi::Standard_Character,
     ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TCollection_AsciiString_ctor_extendedstring(astring)
+        crate::ffi::TCollection_AsciiString_ctor_extendedstring_character(astring, replaceNonAscii)
     }
 
     /// Appends <other>  to me. This is an unary operator.
@@ -344,6 +368,30 @@ impl ExtendedString {
         crate::ffi::TCollection_ExtendedString_ctor_charptr_bool(astring, isMultiByte)
     }
 
+    /// Creation by converting an ExtString to an extended string.
+    pub fn new_extstring(astring: &crate::ffi::Standard_ExtString) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_ExtendedString_ctor_extstring(astring)
+    }
+
+    /// Initializes a AsciiString with a single character.
+    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_ExtendedString_ctor_character(aChar)
+    }
+
+    /// Initializes a ExtendedString with a single character.
+    pub fn new_extcharacter(aChar: &crate::ffi::Standard_ExtCharacter) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_ExtendedString_ctor_extcharacter(aChar)
+    }
+
+    /// Initializes a ExtendedString with <length> space allocated.
+    /// and filled with <filler>.This is useful for buffers.
+    pub fn new_int_extcharacter(
+        length: i32,
+        filler: &crate::ffi::Standard_ExtCharacter,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_ExtendedString_ctor_int_extcharacter(length, filler)
+    }
+
     /// Initializes an ExtendedString with an integer value
     pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
         crate::ffi::TCollection_ExtendedString_ctor_int(value)
@@ -450,6 +498,20 @@ impl HAsciiString {
         crate::ffi::TCollection_HAsciiString_ctor_charptr(message)
     }
 
+    /// Initializes a HAsciiString with a single character.
+    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_HAsciiString_ctor_character(aChar)
+    }
+
+    /// Initializes a HAsciiString with <length> space allocated.
+    /// and filled with <filler>.This is useful for buffers.
+    pub fn new_int_character(
+        length: i32,
+        filler: &crate::ffi::Standard_Character,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_HAsciiString_ctor_int_character(length, filler)
+    }
+
     /// Initializes a HAsciiString with an integer value
     pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
         crate::ffi::TCollection_HAsciiString_ctor_int(value)
@@ -470,6 +532,20 @@ impl HAsciiString {
         aString: &crate::ffi::HandleTCollectionHAsciiString,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhasciistring(aString)
+    }
+
+    /// Initializes a HAsciiString with a HExtendedString.
+    /// If replaceNonAscii is non-null character, it will be used
+    /// in place of any non-ascii character found in the source string.
+    /// Otherwise, creates UTF-8 unicode string.
+    pub fn new_handletcollectionhextendedstring_character(
+        aString: &crate::ffi::HandleTCollectionHExtendedString,
+        replaceNonAscii: &crate::ffi::Standard_Character,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhextendedstring_character(
+            aString,
+            replaceNonAscii,
+        )
     }
 
     /// Appends <other>  to me.
@@ -602,6 +678,10 @@ impl HAsciiString {
         crate::ffi::TCollection_HAsciiString_token(self, separators, whichone)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TCollection_HAsciiString_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TCollection_HAsciiString_get_type_descriptor()
     }
@@ -658,6 +738,25 @@ impl HExtendedString {
         crate::ffi::TCollection_HExtendedString_ctor_charptr(message)
     }
 
+    /// Initializes a HExtendedString with an ExtString.
+    pub fn new_extstring(message: &crate::ffi::Standard_ExtString) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_HExtendedString_ctor_extstring(message)
+    }
+
+    /// Initializes a HExtendedString with a single character.
+    pub fn new_extcharacter(aChar: &crate::ffi::Standard_ExtCharacter) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_HExtendedString_ctor_extcharacter(aChar)
+    }
+
+    /// Initializes a HExtendedString with <length> space allocated.
+    /// and filled with <filler>. This is useful for buffers.
+    pub fn new_int_extcharacter(
+        length: i32,
+        filler: &crate::ffi::Standard_ExtCharacter,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TCollection_HExtendedString_ctor_int_extcharacter(length, filler)
+    }
+
     /// Initializes a HExtendedString with a ExtendedString.
     pub fn new_extendedstring(
         aString: &crate::ffi::TCollection_ExtendedString,
@@ -696,6 +795,10 @@ impl HExtendedString {
         where_: i32,
     ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHExtendedString> {
         crate::ffi::TCollection_HExtendedString_split(self, where_)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TCollection_HExtendedString_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

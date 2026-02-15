@@ -492,6 +492,10 @@ impl CoherentTriangulation {
         crate::ffi::Poly_CoherentTriangulation_clone(self, theAlloc)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Poly_CoherentTriangulation_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Poly_CoherentTriangulation_get_type_descriptor()
     }
@@ -612,6 +616,10 @@ impl HArray1OfTriangle {
         theOther: &crate::ffi::Poly_Array1OfTriangle,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Poly_HArray1OfTriangle_ctor_array1oftriangle(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Poly_HArray1OfTriangle_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -758,6 +766,10 @@ impl MergeNodesTool {
         crate::ffi::Poly_MergeNodesTool_result(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Poly_MergeNodesTool_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Poly_MergeNodesTool_get_type_descriptor()
     }
@@ -836,6 +848,10 @@ impl Polygon2D {
         crate::ffi::Poly_Polygon2D_ctor_array1ofpnt2d(Nodes)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Poly_Polygon2D_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Poly_Polygon2D_get_type_descriptor()
     }
@@ -902,6 +918,10 @@ impl Polygon3D {
     /// Creates a copy of current polygon
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandlePolyPolygon3D> {
         crate::ffi::Poly_Polygon3D_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Poly_Polygon3D_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -983,6 +1003,10 @@ impl PolygonOnTriangulation {
     /// Creates a copy of current polygon
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandlePolyPolygonOnTriangulation> {
         crate::ffi::Poly_PolygonOnTriangulation_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Poly_PolygonOnTriangulation_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1199,6 +1223,10 @@ impl Triangulation {
         crate::ffi::Poly_Triangulation_map_normal_array(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Poly_Triangulation_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Poly_Triangulation_get_type_descriptor()
     }
@@ -1269,6 +1297,10 @@ impl TriangulationParameters {
     /// @param theMinSize minimum size
     pub fn new() -> cxx::UniquePtr<Self> {
         Self::new_real3(-1., -1., -1.)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Poly_TriangulationParameters_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

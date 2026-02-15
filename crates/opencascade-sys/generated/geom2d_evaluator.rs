@@ -24,6 +24,10 @@ impl Curve {
         crate::ffi::Geom2dEvaluator_Curve_shallow_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2dEvaluator_Curve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2dEvaluator_Curve_get_type_descriptor()
     }
@@ -68,6 +72,10 @@ impl OffsetCurve {
 
     pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
         crate::ffi::Geom2dEvaluator_OffsetCurve_shallow_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

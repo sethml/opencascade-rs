@@ -751,6 +751,10 @@ impl UndefinedAxis {
         crate::ffi::GProp_UndefinedAxis_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::GProp_UndefinedAxis_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GProp_UndefinedAxis_get_type_descriptor()
     }

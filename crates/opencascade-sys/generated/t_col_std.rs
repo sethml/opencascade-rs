@@ -46,6 +46,10 @@ impl HArray1OfAsciiString {
         crate::ffi::TColStd_HArray1OfAsciiString_ctor_array1ofasciistring(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray1OfAsciiString_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HArray1OfAsciiString_get_type_descriptor()
     }
@@ -108,6 +112,10 @@ impl HArray1OfBoolean {
         crate::ffi::TColStd_HArray1OfBoolean_ctor_array1ofboolean(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray1OfBoolean_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HArray1OfBoolean_get_type_descriptor()
     }
@@ -153,6 +161,10 @@ impl HArray1OfByte {
 
     pub fn new_array1ofbyte(theOther: &crate::ffi::TColStd_Array1OfByte) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HArray1OfByte_ctor_array1ofbyte(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray1OfByte_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -221,6 +233,10 @@ impl HArray1OfCharacter {
         theOther: &crate::ffi::TColStd_Array1OfCharacter,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HArray1OfCharacter_ctor_array1ofcharacter(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray1OfCharacter_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -293,6 +309,10 @@ impl HArray1OfExtendedString {
         crate::ffi::TColStd_HArray1OfExtendedString_ctor_array1ofextendedstring(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray1OfExtendedString_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HArray1OfExtendedString_get_type_descriptor()
     }
@@ -355,6 +375,10 @@ impl HArray1OfInteger {
         crate::ffi::TColStd_HArray1OfInteger_ctor_array1ofinteger(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray1OfInteger_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HArray1OfInteger_get_type_descriptor()
     }
@@ -402,6 +426,10 @@ impl HArray1OfListOfInteger {
         theOther: &crate::ffi::TColStd_Array1OfListOfInteger,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HArray1OfListOfInteger_ctor_array1oflistofinteger(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray1OfListOfInteger_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -464,6 +492,10 @@ impl HArray1OfReal {
         crate::ffi::TColStd_HArray1OfReal_ctor_array1ofreal(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray1OfReal_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HArray1OfReal_get_type_descriptor()
     }
@@ -511,6 +543,10 @@ impl HArray1OfTransient {
         theOther: &crate::ffi::TColStd_Array1OfTransient,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HArray1OfTransient_ctor_array1oftransient(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray1OfTransient_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -575,6 +611,10 @@ impl HArray2OfBoolean {
         crate::ffi::TColStd_HArray2OfBoolean_ctor_array2ofboolean(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray2OfBoolean_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HArray2OfBoolean_get_type_descriptor()
     }
@@ -635,6 +675,10 @@ impl HArray2OfCharacter {
         theOther: &crate::ffi::TColStd_Array2OfCharacter,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HArray2OfCharacter_ctor_array2ofcharacter(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray2OfCharacter_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -699,6 +743,10 @@ impl HArray2OfInteger {
         crate::ffi::TColStd_HArray2OfInteger_ctor_array2ofinteger(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray2OfInteger_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HArray2OfInteger_get_type_descriptor()
     }
@@ -759,6 +807,10 @@ impl HArray2OfReal {
         crate::ffi::TColStd_HArray2OfReal_ctor_array2ofreal(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray2OfReal_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HArray2OfReal_get_type_descriptor()
     }
@@ -807,6 +859,10 @@ impl HArray2OfTransient {
         theOther: &crate::ffi::TColStd_Array2OfTransient,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HArray2OfTransient_ctor_array2oftransient(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HArray2OfTransient_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -859,6 +915,10 @@ impl HPackedMapOfInteger {
         Self::new_int(1)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HPackedMapOfInteger_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HPackedMapOfInteger_get_type_descriptor()
     }
@@ -902,6 +962,10 @@ impl HSequenceOfAsciiString {
         theOther: &crate::ffi::TColStd_SequenceOfAsciiString,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HSequenceOfAsciiString_ctor_sequenceofasciistring(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HSequenceOfAsciiString_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -949,6 +1013,10 @@ impl HSequenceOfExtendedString {
         crate::ffi::TColStd_HSequenceOfExtendedString_ctor_sequenceofextendedstring(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HSequenceOfExtendedString_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HSequenceOfExtendedString_get_type_descriptor()
     }
@@ -992,6 +1060,10 @@ impl HSequenceOfHAsciiString {
         theOther: &crate::ffi::TColStd_SequenceOfHAsciiString,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HSequenceOfHAsciiString_ctor_sequenceofhasciistring(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HSequenceOfHAsciiString_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1039,6 +1111,10 @@ impl HSequenceOfHExtendedString {
         crate::ffi::TColStd_HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HSequenceOfHExtendedString_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HSequenceOfHExtendedString_get_type_descriptor()
     }
@@ -1082,6 +1158,10 @@ impl HSequenceOfInteger {
         theOther: &crate::ffi::TColStd_SequenceOfInteger,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HSequenceOfInteger_ctor_sequenceofinteger(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HSequenceOfInteger_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1129,6 +1209,10 @@ impl HSequenceOfReal {
         crate::ffi::TColStd_HSequenceOfReal_ctor_sequenceofreal(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HSequenceOfReal_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColStd_HSequenceOfReal_get_type_descriptor()
     }
@@ -1172,6 +1256,10 @@ impl HSequenceOfTransient {
         theOther: &crate::ffi::TColStd_SequenceOfTransient,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HSequenceOfTransient_ctor_sequenceoftransient(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColStd_HSequenceOfTransient_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

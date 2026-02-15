@@ -846,6 +846,10 @@ impl PipeShell {
         crate::ffi::BRepFill_PipeShell_set_transition(self, Mode.into(), Angmin, Angmax)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepFill_PipeShell_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepFill_PipeShell_get_type_descriptor()
     }

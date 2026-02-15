@@ -770,6 +770,10 @@ impl CurveConstraint {
         crate::ffi::GeomPlate_CurveConstraint_projected_curve(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomPlate_CurveConstraint_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GeomPlate_CurveConstraint_get_type_descriptor()
     }
@@ -817,6 +821,10 @@ impl HArray1OfHCurve {
         theOther: &crate::ffi::GeomPlate_Array1OfHCurve,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomPlate_HArray1OfHCurve_ctor_array1ofhcurve(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomPlate_HArray1OfHCurve_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -868,6 +876,10 @@ impl HArray1OfSequenceOfReal {
         crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_array1ofsequenceofreal(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_descriptor()
     }
@@ -913,6 +925,10 @@ impl HSequenceOfCurveConstraint {
         crate::ffi::GeomPlate_HSequenceOfCurveConstraint_ctor_sequenceofcurveconstraint(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_descriptor()
     }
@@ -956,6 +972,10 @@ impl HSequenceOfPointConstraint {
         theOther: &crate::ffi::GeomPlate_SequenceOfPointConstraint,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GeomPlate_HSequenceOfPointConstraint_ctor_sequenceofpointconstraint(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1146,6 +1166,10 @@ impl PointConstraint {
 
     pub fn pnt2d_on_surf(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
         crate::ffi::GeomPlate_PointConstraint_pnt2d_on_surf(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomPlate_PointConstraint_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

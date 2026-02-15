@@ -27,6 +27,10 @@ impl HArray1OfCurve {
         crate::ffi::TColGeom2d_HArray1OfCurve_ctor_array1ofcurve(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TColGeom2d_HArray1OfCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TColGeom2d_HArray1OfCurve_get_type_descriptor()
     }
@@ -70,6 +74,10 @@ impl HSequenceOfBoundedCurve {
         theOther: &crate::ffi::TColGeom2d_SequenceOfBoundedCurve,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_ctor_sequenceofboundedcurve(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

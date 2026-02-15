@@ -24,6 +24,10 @@ impl AlertWithShape {
         crate::ffi::TopoDS_AlertWithShape_ctor_shape(theShape)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_AlertWithShape_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopoDS_AlertWithShape_get_type_descriptor()
     }
@@ -977,6 +981,10 @@ impl FrozenShape {
         crate::ffi::TopoDS_FrozenShape_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_FrozenShape_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopoDS_FrozenShape_get_type_descriptor()
     }
@@ -1003,6 +1011,10 @@ impl HShape {
     /// Constructs a shape object defined by the shape aShape.
     pub fn new_shape(aShape: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_HShape_ctor_shape(aShape)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_HShape_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1119,6 +1131,10 @@ impl LockedShape {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::TopoDS_LockedShape_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_LockedShape_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1696,6 +1712,10 @@ impl TCompSolid {
         crate::ffi::TopoDS_TCompSolid_empty_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_TCompSolid_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopoDS_TCompSolid_get_type_descriptor()
     }
@@ -1784,6 +1804,10 @@ impl TCompound {
         crate::ffi::TopoDS_TCompound_empty_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_TCompound_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopoDS_TCompound_get_type_descriptor()
     }
@@ -1861,6 +1885,10 @@ impl TEdge {
     /// Returns  EDGE.
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TEdge_shape_type(self)).unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_TEdge_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1951,6 +1979,10 @@ impl TFace {
     /// Returns an empty TFace.
     pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
         crate::ffi::TopoDS_TFace_empty_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_TFace_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2061,6 +2093,10 @@ impl TShape {
         crate::ffi::TopoDS_TShape_empty_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_TShape_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopoDS_TShape_get_type_descriptor()
     }
@@ -2103,6 +2139,10 @@ impl TShell {
     /// Returns an empty TShell.
     pub fn empty_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleTopoDSTShape> {
         crate::ffi::TopoDS_TShell_empty_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_TShell_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2194,6 +2234,10 @@ impl TSolid {
         crate::ffi::TopoDS_TSolid_empty_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_TSolid_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopoDS_TSolid_get_type_descriptor()
     }
@@ -2271,6 +2315,10 @@ impl TVertex {
     /// Returns VERTEX.
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::ffi::TopoDS_TVertex_shape_type(self)).unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_TVertex_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2361,6 +2409,10 @@ impl TWire {
         crate::ffi::TopoDS_TWire_empty_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_TWire_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::TopoDS_TWire_get_type_descriptor()
     }
@@ -2448,6 +2500,10 @@ impl UnCompatibleShapes {
 
     pub fn raise(theMessage: &str) {
         crate::ffi::TopoDS_UnCompatibleShapes_raise(theMessage)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::TopoDS_UnCompatibleShapes_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

@@ -53,6 +53,10 @@ impl Context {
         crate::ffi::IMeshTools_Context_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshTools_Context_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshTools_Context_get_type_descriptor()
     }
@@ -88,6 +92,10 @@ impl Context {
 pub use crate::ffi::IMeshTools_CurveTessellator as CurveTessellator;
 
 impl CurveTessellator {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshTools_CurveTessellator_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshTools_CurveTessellator_get_type_descriptor()
     }
@@ -117,6 +125,10 @@ impl HandleIMeshToolsCurveTessellator {
 pub use crate::ffi::IMeshTools_MeshAlgo as MeshAlgo;
 
 impl MeshAlgo {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshTools_MeshAlgo_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshTools_MeshAlgo_get_type_descriptor()
     }
@@ -156,6 +168,10 @@ impl MeshAlgoFactory {
         crate::ffi::IMeshTools_MeshAlgoFactory_get_algo(self, theSurfaceType.into(), theParameters)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshTools_MeshAlgoFactory_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshTools_MeshAlgoFactory_get_type_descriptor()
     }
@@ -185,6 +201,10 @@ impl HandleIMeshToolsMeshAlgoFactory {
 pub use crate::ffi::IMeshTools_ModelAlgo as ModelAlgo;
 
 impl ModelAlgo {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshTools_ModelAlgo_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshTools_ModelAlgo_get_type_descriptor()
     }
@@ -219,6 +239,10 @@ impl HandleIMeshToolsModelAlgo {
 pub use crate::ffi::IMeshTools_ModelBuilder as ModelBuilder;
 
 impl ModelBuilder {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshTools_ModelBuilder_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshTools_ModelBuilder_get_type_descriptor()
     }
@@ -347,6 +371,10 @@ impl Parameters {
 pub use crate::ffi::IMeshTools_ShapeVisitor as ShapeVisitor;
 
 impl ShapeVisitor {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshTools_ShapeVisitor_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshTools_ShapeVisitor_get_type_descriptor()
     }

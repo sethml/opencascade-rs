@@ -65,6 +65,10 @@ impl AccAllocator {
         crate::ffi::NCollection_AccAllocator_ctor_size(theBlockSize)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::NCollection_AccAllocator_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::NCollection_AccAllocator_get_type_descriptor()
     }
@@ -83,6 +87,10 @@ impl AlignedAllocator {
     /// 32 bytes for AVX instructions
     pub fn new_size(theAlignment: usize) -> cxx::UniquePtr<Self> {
         crate::ffi::NCollection_AlignedAllocator_ctor_size(theAlignment)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::NCollection_AlignedAllocator_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -114,6 +122,10 @@ impl BaseAllocator {
     /// create more BaseAllocators, but it is injurious.
     pub fn common_base_allocator() -> &'static crate::ffi::HandleNCollectionBaseAllocator {
         crate::ffi::NCollection_BaseAllocator_common_base_allocator()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::NCollection_BaseAllocator_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -185,6 +197,10 @@ impl BasePointerVector {
 pub use crate::ffi::NCollection_Buffer as Buffer;
 
 impl Buffer {
+    pub fn get_type_name() -> String {
+        crate::ffi::NCollection_Buffer_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::NCollection_Buffer_get_type_descriptor()
     }
@@ -222,6 +238,10 @@ impl HandleNCollectionBuffer {
 pub use crate::ffi::NCollection_HeapAllocator as HeapAllocator;
 
 impl HeapAllocator {
+    pub fn get_type_name() -> String {
+        crate::ffi::NCollection_HeapAllocator_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::NCollection_HeapAllocator_get_type_descriptor()
     }
@@ -270,6 +290,10 @@ impl IncAllocator {
         crate::ffi::NCollection_IncAllocator_ctor_size(theBlockSize)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::NCollection_IncAllocator_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::NCollection_IncAllocator_get_type_descriptor()
     }
@@ -298,6 +322,10 @@ impl WinHeapAllocator {
     /// Main constructor
     pub fn new_size(theInitSizeBytes: usize) -> cxx::UniquePtr<Self> {
         crate::ffi::NCollection_WinHeapAllocator_ctor_size(theInitSizeBytes)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::NCollection_WinHeapAllocator_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

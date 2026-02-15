@@ -19,6 +19,10 @@ pub use crate::ffi::{poles_coefficients_3, rational_derivative, reverse_3};
 pub use crate::ffi::BSplSLib_Cache as Cache;
 
 impl Cache {
+    pub fn get_type_name() -> String {
+        crate::ffi::BSplSLib_Cache_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BSplSLib_Cache_get_type_descriptor()
     }

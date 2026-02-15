@@ -93,6 +93,10 @@ impl CopyModification {
         .unwrap()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepTools_CopyModification_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepTools_CopyModification_get_type_descriptor()
     }
@@ -141,6 +145,10 @@ impl GTrsfModification {
             self, E, F1, F2, NewE, NewF1, NewF2,
         ))
         .unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepTools_GTrsfModification_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -239,6 +247,11 @@ impl History {
     }
 
     /// Define the OCCT RTTI for the type.
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepTools_History_get_type_name()
+    }
+
+    /// Define the OCCT RTTI for the type.
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::BRepTools_History_get_type_descriptor()
     }
@@ -294,6 +307,10 @@ impl Modification {
             self, E, F1, F2, NewE, NewF1, NewF2,
         ))
         .unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepTools_Modification_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -383,6 +400,10 @@ impl NurbsConvertModification {
             self, E, F1, F2, NewE, NewF1, NewF2,
         ))
         .unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepTools_NurbsConvertModification_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -544,6 +565,10 @@ impl ReShape {
     /// Returns the history of the substituted shapes.
     pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
         crate::ffi::BRepTools_ReShape_history(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepTools_ReShape_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -755,6 +780,10 @@ impl TrsfModification {
             self, E, F1, F2, NewE, NewF1, NewF2,
         ))
         .unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::BRepTools_TrsfModification_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

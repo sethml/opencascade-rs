@@ -211,6 +211,78 @@ When a C++ constructor has trailing parameters with default values, the generato
 
 These convenience wrappers are purely Rust-side (no ffi.rs or wrappers.hxx entries generated). Default values are extracted from the C++ AST via `IntegerLiteral`, `FloatingLiteral`, `BoolLiteralExpr`, and `NullPtrLiteralExpr` cursor kinds, with a fallback that tokenizes the parent `ParmDecl` for macro-expanded defaults like `Standard_False`. The `adapt_default_for_rust_type()` function ensures default values are properly cast for Rust (e.g., C++ integer `0` becomes `0.0` for `f64` parameters). Convenience wrappers are only generated when all trimmed parameters have extractable defaults that can be expressed as valid Rust literals.
 
+### 13. ~~By-value Handle and class parameters~~ RESOLVED
+
+Methods taking `Handle<T>` or class types by value (not by reference) previously caused the method to be skipped entirely. The generator now emits C++ wrapper functions that accept `const Handle<T>&` or `const T&` respectively, converting by-value parameters to const-reference parameters. The wrapper body forwards to the original C++ method, which copies from the const reference — this matches C++ copy semantics. ~25 new methods unblocked across various modules.
+
+### 14. ~~C-string returns for free functions and static methods~~ RESOLVED
+
+Free functions (from utility classes) and static methods returning `const char*` were previously excluded. The generator now emits wrapper functions that convert the C string to `rust::String` and return it. This added 473 new FFI function declarations, including 462 `get_type_name()` RTTI methods on `Standard_Transient`-derived classes (useful for Handle downcasting type checks) plus 11 other string-returning functions.
+
+### 15. ~~Const/mut return mismatches~~ RESOLVED
+
+Methods returning `const T&` where the method is non-const were skipped because CXX's ownership model couldn't reconcile them. The generator now emits `ConstMutReturnFix` wrapper functions that take `Pin<&mut Self>` as the receiver, call the non-const C++ method, and cast the result to `const T&`. This unblocked 4 methods: `math_DoubleTab::Value`, `math_Matrix::Value`, `TopLoc_SListNodeOfItemLocation::Tail`, and `TopLoc_SListNodeOfItemLocation::Value`.
+
+### 16. ~~`&mut` enum output parameters~~ RESOLVED
+
+Methods with `&mut EnumType` output parameters (e.g., `IntCurveSurface_IntersectionPoint::Values` which has a `TopAbs_State& state` out-param) were excluded because CXX can't pass `&mut EnumType` across FFI. The generator now emits `MutRefEnumParam` wrapper functions that use a local `Standard_Integer` variable, call the method, and write back through the enum pointer. On the Rust side, the parameter is `&mut i32`. This unblocked 2 methods.
+
+### 17. Raw pointer investigation — NOT WORTH GENERAL SUPPORT
+
+190 methods are excluded because they have raw pointer parameters (`T*`, `const T*`). Investigation showed this is not worth implementing general support for:
+
+- **87% concentrated in 2 classes**: BSplCLib (116 methods) and BSplSLib (49 methods) — internal B-spline evaluation routines not typically called from user code
+- **Top pointed-to types**: `TColStd_Array1OfReal*` (104 occurrences), `TColStd_Array1OfInteger*` (40), `TColStd_Array2OfReal*` (34), `void*` (23)
+- **NCollection allocators**: 6 classes × 3 methods each use `void*` memory allocator internals
+- **Only 2-3 commonly useful cases** (see below)
+
+#### Useful raw pointer cases (handle individually if needed)
+
+| Method | Pointer Usage | Pattern |
+|--------|--------------|---------|
+| `BRep_Tool::CurveOnSurface` (2 overloads) | `bool* isStored` out-param | Nullable boolean output — caller passes null or `&mut bool` |
+| `gp_XYZ::GetData()` / `ChangeData()` | Returns `const f64*` / `f64*` | Array access — returns pointer to 3 doubles |
+| `BRepMesh_IncrementalMesh::Discret` | Static method with complex signature | Rarely needed from user code |
+
+**Recommendation**: Handle the 2-3 useful cases with handwritten wrappers if/when needed, rather than building general raw pointer support in the generator.
+
+### 18. Nullable pointer parameters (optional, low priority)
+
+Some C++ methods have `T* param = NULL` parameters where NULL means "don't care about this output." The most notable example is `BRep_Tool::CurveOnSurface` with its `Standard_Boolean* theIsStored = NULL` parameter. CXX has no nullable pointer type, but a general pattern can handle these:
+
+**FFI layer** (C++ wrapper + ffi.rs): Split into `(want: bool, out: &mut T)` — the C++ wrapper passes `want ? &out : NULL` to the original method.
+
+**Public API** (module re-export): Wrap as `Option<&mut T>` — the impl method maps `Some(p) => (true, p)` and `None => (false, &mut dummy)`.
+
+```cpp
+// C++ wrapper
+HandleGeom2dCurve BRep_Tool_CurveOnSurface_edge_face_real2_bool(
+    const TopoDS_Edge& E, const TopoDS_Face& F,
+    Standard_Real& First, Standard_Real& Last,
+    bool wantIsStored, bool& isStoredOut) {
+    Standard_Boolean stored = Standard_False;
+    auto result = BRep_Tool::CurveOnSurface(
+        E, F, First, Last, wantIsStored ? &stored : NULL);
+    isStoredOut = stored;
+    return result;
+}
+```
+
+```rust
+// Public API in module file
+pub fn curve_on_surface(e: &Edge, f: &Face, first: &mut f64, last: &mut f64,
+                        is_stored: Option<&mut bool>) -> UniquePtr<HandleGeom2dCurve> {
+    let mut dummy = false;
+    let (want, out) = match is_stored {
+        Some(p) => (true, p),
+        None => (false, &mut dummy),
+    };
+    crate::ffi::BRep_Tool_CurveOnSurface_edge_face_real2_bool(e, f, first, last, want, out)
+}
+```
+
+This pattern could be automated in the generator for `T* param = NULL` trailing parameters, or applied manually for the 2-3 cases that matter. The generator would need to detect `Type::Ptr` parameters with default value `NULL`/`nullptr` and emit the split wrapper.
+
 ---
 
 ## Future Work: Expanding to All OCCT Headers

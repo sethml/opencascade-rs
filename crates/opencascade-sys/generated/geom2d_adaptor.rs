@@ -113,6 +113,10 @@ impl Curve {
         crate::ffi::Geom2dAdaptor_Curve_b_spline(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2dAdaptor_Curve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2dAdaptor_Curve_get_type_descriptor()
     }

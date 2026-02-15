@@ -112,6 +112,10 @@ impl Curve {
         crate::ffi::Adaptor3d_Curve_offset_curve(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Adaptor3d_Curve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Adaptor3d_Curve_get_type_descriptor()
     }
@@ -250,6 +254,10 @@ impl CurveOnSurface {
 
     pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomBSplineCurve> {
         crate::ffi::Adaptor3d_CurveOnSurface_b_spline(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Adaptor3d_CurveOnSurface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -577,6 +585,10 @@ impl HVertex {
             .unwrap()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Adaptor3d_HVertex_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Adaptor3d_HVertex_get_type_descriptor()
     }
@@ -816,6 +828,10 @@ impl IsoCurve {
         crate::ffi::Adaptor3d_IsoCurve_b_spline(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Adaptor3d_IsoCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Adaptor3d_IsoCurve_get_type_descriptor()
     }
@@ -987,6 +1003,10 @@ impl Surface {
         crate::ffi::Adaptor3d_Surface_basis_surface(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Adaptor3d_Surface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Adaptor3d_Surface_get_type_descriptor()
     }
@@ -1106,6 +1126,10 @@ impl TopolTool {
     /// @param[in] theV V parameter of cone's apex
     pub fn get_cone_apex_param(theC: &crate::ffi::gp_Cone, theU: &mut f64, theV: &mut f64) {
         crate::ffi::Adaptor3d_TopolTool_get_cone_apex_param(theC, theU, theV)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Adaptor3d_TopolTool_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

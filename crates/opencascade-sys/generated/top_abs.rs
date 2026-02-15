@@ -18,8 +18,14 @@ pub fn reverse_4(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientation
 pub fn complement(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientation {
     crate::top_abs::Orientation::try_from(crate::ffi::complement(Or.into())).unwrap()
 }
+pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> String {
+    crate::ffi::shape_type_to_string(theType.into())
+}
 pub fn shape_type_from_string(theTypeString: &str) -> crate::top_abs::ShapeEnum {
     crate::top_abs::ShapeEnum::try_from(crate::ffi::shape_type_from_string(theTypeString)).unwrap()
+}
+pub fn shape_orientation_to_string(theOrientation: crate::top_abs::Orientation) -> String {
+    crate::ffi::shape_orientation_to_string(theOrientation.into())
 }
 pub fn shape_orientation_from_string(theOrientationString: &str) -> crate::top_abs::Orientation {
     crate::top_abs::Orientation::try_from(crate::ffi::shape_orientation_from_string(

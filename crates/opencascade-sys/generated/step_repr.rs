@@ -22,6 +22,10 @@ impl RepresentationItem {
         crate::ffi::StepRepr_RepresentationItem_name(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::StepRepr_RepresentationItem_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::StepRepr_RepresentationItem_get_type_descriptor()
     }

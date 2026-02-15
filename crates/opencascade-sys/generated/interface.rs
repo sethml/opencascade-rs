@@ -358,6 +358,10 @@ impl Check {
         crate::ffi::Interface_Check_mend(self, pref, num)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Interface_Check_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Interface_Check_get_type_descriptor()
     }
@@ -649,6 +653,10 @@ impl HArray1OfHAsciiString {
         crate::ffi::Interface_HArray1OfHAsciiString_ctor_array1ofhasciistring(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Interface_HArray1OfHAsciiString_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Interface_HArray1OfHAsciiString_get_type_descriptor()
     }
@@ -692,6 +700,10 @@ impl HSequenceOfCheck {
         theOther: &crate::ffi::Interface_SequenceOfCheck,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Interface_HSequenceOfCheck_ctor_sequenceofcheck(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Interface_HSequenceOfCheck_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -846,6 +858,12 @@ impl InterfaceModel {
         crate::ffi::Interface_InterfaceModel_next_number_for_label(self, label, lastnum, exact)
     }
 
+    /// From a CDL Type Name, returns the Class part (package dropped)
+    /// WARNING : buffered, to be immediately copied or printed
+    pub fn class_name(typnam: &str) -> String {
+        crate::ffi::Interface_InterfaceModel_class_name(typnam)
+    }
+
     /// Returns true if a template is attached to a given name
     pub fn has_template(name: &str) -> bool {
         crate::ffi::Interface_InterfaceModel_has_template(name)
@@ -867,6 +885,10 @@ impl InterfaceModel {
     /// Returns the complete list of names attached to template models
     pub fn list_templates() -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
         crate::ffi::Interface_InterfaceModel_list_templates()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Interface_InterfaceModel_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -900,6 +922,16 @@ impl HandleInterfaceInterfaceModel {
 pub use crate::ffi::Interface_SignType as SignType;
 
 impl SignType {
+    /// From a CDL Type Name, returns the Class part (package dropped)
+    /// WARNING : buffered, to be immediately copied or printed
+    pub fn class_name(typnam: &str) -> String {
+        crate::ffi::Interface_SignType_class_name(typnam)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Interface_SignType_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Interface_SignType_get_type_descriptor()
     }

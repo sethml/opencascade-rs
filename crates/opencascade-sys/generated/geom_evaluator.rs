@@ -24,6 +24,10 @@ impl Curve {
         crate::ffi::GeomEvaluator_Curve_shallow_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomEvaluator_Curve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GeomEvaluator_Curve_get_type_descriptor()
     }
@@ -75,6 +79,10 @@ impl OffsetCurve {
         crate::ffi::GeomEvaluator_OffsetCurve_shallow_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomEvaluator_OffsetCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GeomEvaluator_OffsetCurve_get_type_descriptor()
     }
@@ -124,6 +132,10 @@ impl OffsetSurface {
         crate::ffi::GeomEvaluator_OffsetSurface_shallow_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomEvaluator_OffsetSurface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GeomEvaluator_OffsetSurface_get_type_descriptor()
     }
@@ -163,6 +175,10 @@ impl Surface {
 
     pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomEvaluatorSurface> {
         crate::ffi::GeomEvaluator_Surface_shallow_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomEvaluator_Surface_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -233,6 +249,10 @@ impl SurfaceOfExtrusion {
         crate::ffi::GeomEvaluator_SurfaceOfExtrusion_shallow_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomEvaluator_SurfaceOfExtrusion_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GeomEvaluator_SurfaceOfExtrusion_get_type_descriptor()
     }
@@ -297,6 +317,10 @@ impl SurfaceOfRevolution {
 
     pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeomEvaluatorSurface> {
         crate::ffi::GeomEvaluator_SurfaceOfRevolution_shallow_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomEvaluator_SurfaceOfRevolution_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

@@ -1731,6 +1731,9 @@ inline Standard_Integer Adaptor2d_Curve2d_nb_intervals(const Adaptor2d_Curve2d& 
 inline int32_t Adaptor2d_Curve2d_get_type(const Adaptor2d_Curve2d& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String Adaptor2d_Curve2d_get_type_name() {
+    return rust::String(Adaptor2d_Curve2d::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Adaptor2d_Curve2d_get_type_descriptor() {
     return Adaptor2d_Curve2d::get_type_descriptor();
 }
@@ -1791,6 +1794,9 @@ inline Standard_Integer Adaptor2d_Line2d_nb_intervals(const Adaptor2d_Line2d& se
 }
 inline int32_t Adaptor2d_Line2d_get_type(const Adaptor2d_Line2d& self_) {
     return static_cast<int32_t>(self_.GetType());
+}
+inline rust::String Adaptor2d_Line2d_get_type_name() {
+    return rust::String(Adaptor2d_Line2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Adaptor2d_Line2d_get_type_descriptor() {
     return Adaptor2d_Line2d::get_type_descriptor();
@@ -1859,6 +1865,9 @@ inline Standard_Integer Adaptor2d_OffsetCurve_nb_intervals(const Adaptor2d_Offse
 inline int32_t Adaptor2d_OffsetCurve_get_type(const Adaptor2d_OffsetCurve& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String Adaptor2d_OffsetCurve_get_type_name() {
+    return rust::String(Adaptor2d_OffsetCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Adaptor2d_OffsetCurve_get_type_descriptor() {
     return Adaptor2d_OffsetCurve::get_type_descriptor();
 }
@@ -1916,6 +1925,9 @@ inline Standard_Integer Adaptor3d_Curve_nb_intervals(const Adaptor3d_Curve& self
 }
 inline int32_t Adaptor3d_Curve_get_type(const Adaptor3d_Curve& self_) {
     return static_cast<int32_t>(self_.GetType());
+}
+inline rust::String Adaptor3d_Curve_get_type_name() {
+    return rust::String(Adaptor3d_Curve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Adaptor3d_Curve_get_type_descriptor() {
     return Adaptor3d_Curve::get_type_descriptor();
@@ -1980,6 +1992,9 @@ inline Standard_Integer Adaptor3d_CurveOnSurface_nb_intervals(const Adaptor3d_Cu
 }
 inline int32_t Adaptor3d_CurveOnSurface_get_type(const Adaptor3d_CurveOnSurface& self_) {
     return static_cast<int32_t>(self_.GetType());
+}
+inline rust::String Adaptor3d_CurveOnSurface_get_type_name() {
+    return rust::String(Adaptor3d_CurveOnSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Adaptor3d_CurveOnSurface_get_type_descriptor() {
     return Adaptor3d_CurveOnSurface::get_type_descriptor();
@@ -2134,6 +2149,9 @@ inline std::unique_ptr<gp_Pnt2d> Adaptor3d_HVertex_value(Adaptor3d_HVertex& self
 inline int32_t Adaptor3d_HVertex_orientation(Adaptor3d_HVertex& self_) {
     return static_cast<int32_t>(self_.Orientation());
 }
+inline rust::String Adaptor3d_HVertex_get_type_name() {
+    return rust::String(Adaptor3d_HVertex::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Adaptor3d_HVertex_get_type_descriptor() {
     return Adaptor3d_HVertex::get_type_descriptor();
 }
@@ -2225,6 +2243,9 @@ inline Standard_Integer Adaptor3d_IsoCurve_nb_intervals(const Adaptor3d_IsoCurve
 inline int32_t Adaptor3d_IsoCurve_get_type(const Adaptor3d_IsoCurve& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String Adaptor3d_IsoCurve_get_type_name() {
+    return rust::String(Adaptor3d_IsoCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Adaptor3d_IsoCurve_get_type_descriptor() {
     return Adaptor3d_IsoCurve::get_type_descriptor();
 }
@@ -2304,6 +2325,9 @@ inline Standard_Integer Adaptor3d_Surface_nb_v_intervals(const Adaptor3d_Surface
 inline int32_t Adaptor3d_Surface_get_type(const Adaptor3d_Surface& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String Adaptor3d_Surface_get_type_name() {
+    return rust::String(Adaptor3d_Surface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Adaptor3d_Surface_get_type_descriptor() {
     return Adaptor3d_Surface::get_type_descriptor();
 }
@@ -2343,6 +2367,9 @@ inline int32_t Adaptor3d_TopolTool_orientation_handleadaptor3dhvertex(Adaptor3d_
 }
 inline void Adaptor3d_TopolTool_get_cone_apex_param(const gp_Cone& theC, Standard_Real& theU, Standard_Real& theV) {
     return Adaptor3d_TopolTool::GetConeApexParam(theC, theU, theV);
+}
+inline rust::String Adaptor3d_TopolTool_get_type_name() {
+    return rust::String(Adaptor3d_TopolTool::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Adaptor3d_TopolTool_get_type_descriptor() {
     return Adaptor3d_TopolTool::get_type_descriptor();
@@ -2501,6 +2528,9 @@ inline std::unique_ptr<Bnd_HArray1OfBox> Bnd_HArray1OfBox_ctor_box_int2_bool(con
 inline std::unique_ptr<Bnd_HArray1OfBox> Bnd_HArray1OfBox_ctor_array1ofbox(const Bnd_Array1OfBox& theOther) {
     return std::make_unique<Bnd_HArray1OfBox>(theOther);
 }
+inline rust::String Bnd_HArray1OfBox_get_type_name() {
+    return rust::String(Bnd_HArray1OfBox::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Bnd_HArray1OfBox_get_type_descriptor() {
     return Bnd_HArray1OfBox::get_type_descriptor();
 }
@@ -2530,6 +2560,9 @@ inline std::unique_ptr<Bnd_HArray1OfBox2d> Bnd_HArray1OfBox2d_ctor_box2d_int2_bo
 inline std::unique_ptr<Bnd_HArray1OfBox2d> Bnd_HArray1OfBox2d_ctor_array1ofbox2d(const Bnd_Array1OfBox2d& theOther) {
     return std::make_unique<Bnd_HArray1OfBox2d>(theOther);
 }
+inline rust::String Bnd_HArray1OfBox2d_get_type_name() {
+    return rust::String(Bnd_HArray1OfBox2d::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Bnd_HArray1OfBox2d_get_type_descriptor() {
     return Bnd_HArray1OfBox2d::get_type_descriptor();
 }
@@ -2558,6 +2591,9 @@ inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_sphere_int2
 }
 inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_array1ofsphere(const Bnd_Array1OfSphere& theOther) {
     return std::make_unique<Bnd_HArray1OfSphere>(theOther);
+}
+inline rust::String Bnd_HArray1OfSphere_get_type_name() {
+    return rust::String(Bnd_HArray1OfSphere::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Bnd_HArray1OfSphere_get_type_descriptor() {
     return Bnd_HArray1OfSphere::get_type_descriptor();
@@ -2670,6 +2706,9 @@ inline std::unique_ptr<BRep_Curve3D> BRep_Curve3D_ctor_handlegeomcurve_location(
 inline std::unique_ptr<opencascade::handle<BRep_CurveRepresentation>> BRep_Curve3D_copy(const BRep_Curve3D& self_) {
     return std::make_unique<opencascade::handle<BRep_CurveRepresentation>>(self_.Copy());
 }
+inline rust::String BRep_Curve3D_get_type_name() {
+    return rust::String(BRep_Curve3D::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_Curve3D_get_type_descriptor() {
     return BRep_Curve3D::get_type_descriptor();
 }
@@ -2772,6 +2811,9 @@ inline int32_t BRep_CurveOn2Surfaces_continuity(const BRep_CurveOn2Surfaces& sel
 inline void BRep_CurveOn2Surfaces_continuity_shape(BRep_CurveOn2Surfaces& self_, int32_t C) {
     self_.Continuity(static_cast<GeomAbs_Shape>(C));
 }
+inline rust::String BRep_CurveOn2Surfaces_get_type_name() {
+    return rust::String(BRep_CurveOn2Surfaces::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_CurveOn2Surfaces_get_type_descriptor() {
     return BRep_CurveOn2Surfaces::get_type_descriptor();
 }
@@ -2847,6 +2889,9 @@ inline int32_t BRep_CurveOnClosedSurface_continuity(const BRep_CurveOnClosedSurf
 }
 inline void BRep_CurveOnClosedSurface_continuity_shape(BRep_CurveOnClosedSurface& self_, int32_t C) {
     self_.Continuity(static_cast<GeomAbs_Shape>(C));
+}
+inline rust::String BRep_CurveOnClosedSurface_get_type_name() {
+    return rust::String(BRep_CurveOnClosedSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRep_CurveOnClosedSurface_get_type_descriptor() {
     return BRep_CurveOnClosedSurface::get_type_descriptor();
@@ -2939,6 +2984,9 @@ inline std::unique_ptr<BRep_CurveOnSurface> BRep_CurveOnSurface_ctor_handlegeom2
 }
 inline std::unique_ptr<opencascade::handle<BRep_CurveRepresentation>> BRep_CurveOnSurface_copy(const BRep_CurveOnSurface& self_) {
     return std::make_unique<opencascade::handle<BRep_CurveRepresentation>>(self_.Copy());
+}
+inline rust::String BRep_CurveOnSurface_get_type_name() {
+    return rust::String(BRep_CurveOnSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRep_CurveOnSurface_get_type_descriptor() {
     return BRep_CurveOnSurface::get_type_descriptor();
@@ -3033,6 +3081,9 @@ inline int32_t BRep_CurveRepresentation_continuity(const BRep_CurveRepresentatio
 inline void BRep_CurveRepresentation_continuity_shape(BRep_CurveRepresentation& self_, int32_t C) {
     self_.Continuity(static_cast<GeomAbs_Shape>(C));
 }
+inline rust::String BRep_CurveRepresentation_get_type_name() {
+    return rust::String(BRep_CurveRepresentation::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_CurveRepresentation_get_type_descriptor() {
     return BRep_CurveRepresentation::get_type_descriptor();
 }
@@ -3043,6 +3094,9 @@ inline BRep_CurveRepresentation& HandleBRepCurveRepresentation_get_mut(HandleBRe
 // BRep_GCurve wrappers
 // ========================
 
+inline rust::String BRep_GCurve_get_type_name() {
+    return rust::String(BRep_GCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_GCurve_get_type_descriptor() {
     return BRep_GCurve::get_type_descriptor();
 }
@@ -3128,6 +3182,9 @@ inline std::unique_ptr<Handle(BRep_CurveRepresentation)> BRep_GCurve_inherited_C
 inline std::unique_ptr<BRep_PointOnCurve> BRep_PointOnCurve_ctor_real_handlegeomcurve_location(Standard_Real P, const opencascade::handle<Geom_Curve>& C, const TopLoc_Location& L) {
     return std::make_unique<BRep_PointOnCurve>(P, C, L);
 }
+inline rust::String BRep_PointOnCurve_get_type_name() {
+    return rust::String(BRep_PointOnCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_PointOnCurve_get_type_descriptor() {
     return BRep_PointOnCurve::get_type_descriptor();
 }
@@ -3161,6 +3218,9 @@ inline const Handle(Geom_Surface)& BRep_PointOnCurve_inherited_Surface(const BRe
 
 inline std::unique_ptr<BRep_PointOnCurveOnSurface> BRep_PointOnCurveOnSurface_ctor_real_handlegeom2dcurve_handlegeomsurface_location(Standard_Real P, const opencascade::handle<Geom2d_Curve>& C, const opencascade::handle<Geom_Surface>& S, const TopLoc_Location& L) {
     return std::make_unique<BRep_PointOnCurveOnSurface>(P, C, S, L);
+}
+inline rust::String BRep_PointOnCurveOnSurface_get_type_name() {
+    return rust::String(BRep_PointOnCurveOnSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRep_PointOnCurveOnSurface_get_type_descriptor() {
     return BRep_PointOnCurveOnSurface::get_type_descriptor();
@@ -3198,6 +3258,9 @@ inline const Handle(Geom_Surface)& BRep_PointOnCurveOnSurface_inherited_Surface(
 inline std::unique_ptr<BRep_PointOnSurface> BRep_PointOnSurface_ctor_real2_handlegeomsurface_location(Standard_Real P1, Standard_Real P2, const opencascade::handle<Geom_Surface>& S, const TopLoc_Location& L) {
     return std::make_unique<BRep_PointOnSurface>(P1, P2, S, L);
 }
+inline rust::String BRep_PointOnSurface_get_type_name() {
+    return rust::String(BRep_PointOnSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_PointOnSurface_get_type_descriptor() {
     return BRep_PointOnSurface::get_type_descriptor();
 }
@@ -3231,6 +3294,9 @@ inline const Handle(Geom_Surface)& BRep_PointOnSurface_inherited_Surface(const B
 // BRep_PointRepresentation wrappers
 // ========================
 
+inline rust::String BRep_PointRepresentation_get_type_name() {
+    return rust::String(BRep_PointRepresentation::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_PointRepresentation_get_type_descriptor() {
     return BRep_PointRepresentation::get_type_descriptor();
 }
@@ -3244,6 +3310,9 @@ inline BRep_PointRepresentation& HandleBRepPointRepresentation_get_mut(HandleBRe
 // BRep_PointsOnSurface wrappers
 // ========================
 
+inline rust::String BRep_PointsOnSurface_get_type_name() {
+    return rust::String(BRep_PointsOnSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_PointsOnSurface_get_type_descriptor() {
     return BRep_PointsOnSurface::get_type_descriptor();
 }
@@ -3283,6 +3352,9 @@ inline std::unique_ptr<BRep_Polygon3D> BRep_Polygon3D_ctor_handlepolypolygon3d_l
 }
 inline std::unique_ptr<opencascade::handle<BRep_CurveRepresentation>> BRep_Polygon3D_copy(const BRep_Polygon3D& self_) {
     return std::make_unique<opencascade::handle<BRep_CurveRepresentation>>(self_.Copy());
+}
+inline rust::String BRep_Polygon3D_get_type_name() {
+    return rust::String(BRep_Polygon3D::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRep_Polygon3D_get_type_descriptor() {
     return BRep_Polygon3D::get_type_descriptor();
@@ -3362,6 +3434,9 @@ inline std::unique_ptr<BRep_PolygonOnClosedSurface> BRep_PolygonOnClosedSurface_
 }
 inline std::unique_ptr<opencascade::handle<BRep_CurveRepresentation>> BRep_PolygonOnClosedSurface_copy(const BRep_PolygonOnClosedSurface& self_) {
     return std::make_unique<opencascade::handle<BRep_CurveRepresentation>>(self_.Copy());
+}
+inline rust::String BRep_PolygonOnClosedSurface_get_type_name() {
+    return rust::String(BRep_PolygonOnClosedSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRep_PolygonOnClosedSurface_get_type_descriptor() {
     return BRep_PolygonOnClosedSurface::get_type_descriptor();
@@ -3444,6 +3519,9 @@ inline std::unique_ptr<BRep_PolygonOnClosedTriangulation> BRep_PolygonOnClosedTr
 inline std::unique_ptr<opencascade::handle<BRep_CurveRepresentation>> BRep_PolygonOnClosedTriangulation_copy(const BRep_PolygonOnClosedTriangulation& self_) {
     return std::make_unique<opencascade::handle<BRep_CurveRepresentation>>(self_.Copy());
 }
+inline rust::String BRep_PolygonOnClosedTriangulation_get_type_name() {
+    return rust::String(BRep_PolygonOnClosedTriangulation::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_PolygonOnClosedTriangulation_get_type_descriptor() {
     return BRep_PolygonOnClosedTriangulation::get_type_descriptor();
 }
@@ -3525,6 +3603,9 @@ inline std::unique_ptr<BRep_PolygonOnSurface> BRep_PolygonOnSurface_ctor_handlep
 inline std::unique_ptr<opencascade::handle<BRep_CurveRepresentation>> BRep_PolygonOnSurface_copy(const BRep_PolygonOnSurface& self_) {
     return std::make_unique<opencascade::handle<BRep_CurveRepresentation>>(self_.Copy());
 }
+inline rust::String BRep_PolygonOnSurface_get_type_name() {
+    return rust::String(BRep_PolygonOnSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_PolygonOnSurface_get_type_descriptor() {
     return BRep_PolygonOnSurface::get_type_descriptor();
 }
@@ -3600,6 +3681,9 @@ inline std::unique_ptr<BRep_PolygonOnTriangulation> BRep_PolygonOnTriangulation_
 }
 inline std::unique_ptr<opencascade::handle<BRep_CurveRepresentation>> BRep_PolygonOnTriangulation_copy(const BRep_PolygonOnTriangulation& self_) {
     return std::make_unique<opencascade::handle<BRep_CurveRepresentation>>(self_.Copy());
+}
+inline rust::String BRep_PolygonOnTriangulation_get_type_name() {
+    return rust::String(BRep_PolygonOnTriangulation::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRep_PolygonOnTriangulation_get_type_descriptor() {
     return BRep_PolygonOnTriangulation::get_type_descriptor();
@@ -3677,6 +3761,9 @@ inline std::unique_ptr<BRep_TEdge> BRep_TEdge_ctor() {
 inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> BRep_TEdge_empty_copy(const BRep_TEdge& self_) {
     return std::make_unique<opencascade::handle<TopoDS_TShape>>(self_.EmptyCopy());
 }
+inline rust::String BRep_TEdge_get_type_name() {
+    return rust::String(BRep_TEdge::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_TEdge_get_type_descriptor() {
     return BRep_TEdge::get_type_descriptor();
 }
@@ -3725,6 +3812,9 @@ inline std::unique_ptr<BRep_TFace> BRep_TFace_ctor() {
 inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> BRep_TFace_empty_copy(const BRep_TFace& self_) {
     return std::make_unique<opencascade::handle<TopoDS_TShape>>(self_.EmptyCopy());
 }
+inline rust::String BRep_TFace_get_type_name() {
+    return rust::String(BRep_TFace::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRep_TFace_get_type_descriptor() {
     return BRep_TFace::get_type_descriptor();
 }
@@ -3772,6 +3862,9 @@ inline std::unique_ptr<BRep_TVertex> BRep_TVertex_ctor() {
 }
 inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> BRep_TVertex_empty_copy(const BRep_TVertex& self_) {
     return std::make_unique<opencascade::handle<TopoDS_TShape>>(self_.EmptyCopy());
+}
+inline rust::String BRep_TVertex_get_type_name() {
+    return rust::String(BRep_TVertex::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRep_TVertex_get_type_descriptor() {
     return BRep_TVertex::get_type_descriptor();
@@ -4021,6 +4114,9 @@ inline Standard_Integer BRepAdaptor_CompCurve_nb_intervals(const BRepAdaptor_Com
 inline int32_t BRepAdaptor_CompCurve_get_type(const BRepAdaptor_CompCurve& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String BRepAdaptor_CompCurve_get_type_name() {
+    return rust::String(BRepAdaptor_CompCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepAdaptor_CompCurve_get_type_descriptor() {
     return BRepAdaptor_CompCurve::get_type_descriptor();
 }
@@ -4088,6 +4184,9 @@ inline Standard_Integer BRepAdaptor_Curve_nb_intervals(const BRepAdaptor_Curve& 
 inline int32_t BRepAdaptor_Curve_get_type(const BRepAdaptor_Curve& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String BRepAdaptor_Curve_get_type_name() {
+    return rust::String(BRepAdaptor_Curve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepAdaptor_Curve_get_type_descriptor() {
     return BRepAdaptor_Curve::get_type_descriptor();
 }
@@ -4106,6 +4205,9 @@ inline std::unique_ptr<BRepAdaptor_Curve2d> BRepAdaptor_Curve2d_ctor_edge_face(c
 }
 inline std::unique_ptr<opencascade::handle<Adaptor2d_Curve2d>> BRepAdaptor_Curve2d_shallow_copy(const BRepAdaptor_Curve2d& self_) {
     return std::make_unique<opencascade::handle<Adaptor2d_Curve2d>>(self_.ShallowCopy());
+}
+inline rust::String BRepAdaptor_Curve2d_get_type_name() {
+    return rust::String(BRepAdaptor_Curve2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepAdaptor_Curve2d_get_type_descriptor() {
     return BRepAdaptor_Curve2d::get_type_descriptor();
@@ -4201,7 +4303,7 @@ inline std::unique_ptr<Handle(Geom2d_BSplineCurve)> BRepAdaptor_Curve2d_inherite
 inline void BRepAdaptor_Curve2d_inherited_Reset(BRepAdaptor_Curve2d& self) {
     self.Reset();
 }
-inline void BRepAdaptor_Curve2d_inherited_Load(BRepAdaptor_Curve2d& self, const Handle(Geom2d_Curve)& theCurve) {
+inline void BRepAdaptor_Curve2d_inherited_Load(BRepAdaptor_Curve2d& self, const opencascade::handle<Geom2d_Curve>& theCurve) {
     self.Load(theCurve);
 }
 inline const Handle(Geom2d_Curve)& BRepAdaptor_Curve2d_inherited_Curve(const BRepAdaptor_Curve2d& self) {
@@ -4226,6 +4328,9 @@ inline std::unique_ptr<BRepAdaptor_HArray1OfCurve> BRepAdaptor_HArray1OfCurve_ct
 }
 inline std::unique_ptr<BRepAdaptor_HArray1OfCurve> BRepAdaptor_HArray1OfCurve_ctor_array1ofcurve(const BRepAdaptor_Array1OfCurve& theOther) {
     return std::make_unique<BRepAdaptor_HArray1OfCurve>(theOther);
+}
+inline rust::String BRepAdaptor_HArray1OfCurve_get_type_name() {
+    return rust::String(BRepAdaptor_HArray1OfCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepAdaptor_HArray1OfCurve_get_type_descriptor() {
     return BRepAdaptor_HArray1OfCurve::get_type_descriptor();
@@ -4309,6 +4414,9 @@ inline Standard_Integer BRepAdaptor_Surface_nb_v_intervals(const BRepAdaptor_Sur
 inline int32_t BRepAdaptor_Surface_get_type(const BRepAdaptor_Surface& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String BRepAdaptor_Surface_get_type_name() {
+    return rust::String(BRepAdaptor_Surface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepAdaptor_Surface_get_type_descriptor() {
     return BRepAdaptor_Surface::get_type_descriptor();
 }
@@ -4346,7 +4454,7 @@ inline void BRepAlgoAPI_BooleanOperation_inherited_SetArguments(BRepAlgoAPI_Bool
 inline const TopTools_ListOfShape& BRepAlgoAPI_BooleanOperation_inherited_Arguments(const BRepAlgoAPI_BooleanOperation& self) {
     return self.Arguments();
 }
-inline void BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(BRepAlgoAPI_BooleanOperation& self, bool theFlag) {
+inline void BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(BRepAlgoAPI_BooleanOperation& self, Standard_Boolean theFlag) {
     self.SetNonDestructive(theFlag);
 }
 inline bool BRepAlgoAPI_BooleanOperation_inherited_NonDestructive(const BRepAlgoAPI_BooleanOperation& self) {
@@ -4358,13 +4466,13 @@ inline void BRepAlgoAPI_BooleanOperation_inherited_SetGlue(BRepAlgoAPI_BooleanOp
 inline int32_t BRepAlgoAPI_BooleanOperation_inherited_Glue(const BRepAlgoAPI_BooleanOperation& self) {
     return static_cast<int32_t>(self.Glue());
 }
-inline void BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(BRepAlgoAPI_BooleanOperation& self, bool theCheck) {
+inline void BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(BRepAlgoAPI_BooleanOperation& self, Standard_Boolean theCheck) {
     self.SetCheckInverted(theCheck);
 }
 inline bool BRepAlgoAPI_BooleanOperation_inherited_CheckInverted(const BRepAlgoAPI_BooleanOperation& self) {
     return self.CheckInverted();
 }
-inline void BRepAlgoAPI_BooleanOperation_inherited_SimplifyResult(BRepAlgoAPI_BooleanOperation& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+inline void BRepAlgoAPI_BooleanOperation_inherited_SimplifyResult(BRepAlgoAPI_BooleanOperation& self, Standard_Boolean theUnifyEdges, Standard_Boolean theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
 }
 inline const TopTools_ListOfShape& BRepAlgoAPI_BooleanOperation_inherited_Modified(BRepAlgoAPI_BooleanOperation& self, const TopoDS_Shape& theS) {
@@ -4385,7 +4493,7 @@ inline bool BRepAlgoAPI_BooleanOperation_inherited_HasGenerated(const BRepAlgoAP
 inline bool BRepAlgoAPI_BooleanOperation_inherited_HasDeleted(const BRepAlgoAPI_BooleanOperation& self) {
     return self.HasDeleted();
 }
-inline void BRepAlgoAPI_BooleanOperation_inherited_SetToFillHistory(BRepAlgoAPI_BooleanOperation& self, bool theHistFlag) {
+inline void BRepAlgoAPI_BooleanOperation_inherited_SetToFillHistory(BRepAlgoAPI_BooleanOperation& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BRepAlgoAPI_BooleanOperation_inherited_HasHistory(const BRepAlgoAPI_BooleanOperation& self) {
@@ -4461,22 +4569,22 @@ inline const Handle(NCollection_BaseAllocator)& BRepAlgoAPI_Check_inherited_Allo
 inline void BRepAlgoAPI_Check_inherited_Clear(BRepAlgoAPI_Check& self) {
     self.Clear();
 }
-inline void BRepAlgoAPI_Check_inherited_AddError(BRepAlgoAPI_Check& self, const Handle(Message_Alert)& theAlert) {
+inline void BRepAlgoAPI_Check_inherited_AddError(BRepAlgoAPI_Check& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddError(theAlert);
 }
-inline void BRepAlgoAPI_Check_inherited_AddWarning(BRepAlgoAPI_Check& self, const Handle(Message_Alert)& theAlert) {
+inline void BRepAlgoAPI_Check_inherited_AddWarning(BRepAlgoAPI_Check& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddWarning(theAlert);
 }
 inline bool BRepAlgoAPI_Check_inherited_HasErrors(const BRepAlgoAPI_Check& self) {
     return self.HasErrors();
 }
-inline bool BRepAlgoAPI_Check_inherited_HasError(const BRepAlgoAPI_Check& self, const Handle(Standard_Type)& theType) {
+inline bool BRepAlgoAPI_Check_inherited_HasError(const BRepAlgoAPI_Check& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasError(theType);
 }
 inline bool BRepAlgoAPI_Check_inherited_HasWarnings(const BRepAlgoAPI_Check& self) {
     return self.HasWarnings();
 }
-inline bool BRepAlgoAPI_Check_inherited_HasWarning(const BRepAlgoAPI_Check& self, const Handle(Standard_Type)& theType) {
+inline bool BRepAlgoAPI_Check_inherited_HasWarning(const BRepAlgoAPI_Check& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasWarning(theType);
 }
 inline const Handle(Message_Report)& BRepAlgoAPI_Check_inherited_GetReport(const BRepAlgoAPI_Check& self) {
@@ -4485,7 +4593,7 @@ inline const Handle(Message_Report)& BRepAlgoAPI_Check_inherited_GetReport(const
 inline void BRepAlgoAPI_Check_inherited_ClearWarnings(BRepAlgoAPI_Check& self) {
     self.ClearWarnings();
 }
-inline void BRepAlgoAPI_Check_inherited_SetRunParallel(BRepAlgoAPI_Check& self, bool theFlag) {
+inline void BRepAlgoAPI_Check_inherited_SetRunParallel(BRepAlgoAPI_Check& self, Standard_Boolean theFlag) {
     self.SetRunParallel(theFlag);
 }
 inline bool BRepAlgoAPI_Check_inherited_RunParallel(const BRepAlgoAPI_Check& self) {
@@ -4497,7 +4605,7 @@ inline void BRepAlgoAPI_Check_inherited_SetFuzzyValue(BRepAlgoAPI_Check& self, S
 inline Standard_Real BRepAlgoAPI_Check_inherited_FuzzyValue(const BRepAlgoAPI_Check& self) {
     return self.FuzzyValue();
 }
-inline void BRepAlgoAPI_Check_inherited_SetUseOBB(BRepAlgoAPI_Check& self, bool theUseOBB) {
+inline void BRepAlgoAPI_Check_inherited_SetUseOBB(BRepAlgoAPI_Check& self, Standard_Boolean theUseOBB) {
     self.SetUseOBB(theUseOBB);
 }
 inline bool BRepAlgoAPI_Check_inherited_UseOBB(const BRepAlgoAPI_Check& self) {
@@ -4558,7 +4666,7 @@ inline void BRepAlgoAPI_Common_inherited_SetArguments(BRepAlgoAPI_Common& self, 
 inline const TopTools_ListOfShape& BRepAlgoAPI_Common_inherited_Arguments(const BRepAlgoAPI_Common& self) {
     return self.Arguments();
 }
-inline void BRepAlgoAPI_Common_inherited_SetNonDestructive(BRepAlgoAPI_Common& self, bool theFlag) {
+inline void BRepAlgoAPI_Common_inherited_SetNonDestructive(BRepAlgoAPI_Common& self, Standard_Boolean theFlag) {
     self.SetNonDestructive(theFlag);
 }
 inline bool BRepAlgoAPI_Common_inherited_NonDestructive(const BRepAlgoAPI_Common& self) {
@@ -4570,13 +4678,13 @@ inline void BRepAlgoAPI_Common_inherited_SetGlue(BRepAlgoAPI_Common& self, int32
 inline int32_t BRepAlgoAPI_Common_inherited_Glue(const BRepAlgoAPI_Common& self) {
     return static_cast<int32_t>(self.Glue());
 }
-inline void BRepAlgoAPI_Common_inherited_SetCheckInverted(BRepAlgoAPI_Common& self, bool theCheck) {
+inline void BRepAlgoAPI_Common_inherited_SetCheckInverted(BRepAlgoAPI_Common& self, Standard_Boolean theCheck) {
     self.SetCheckInverted(theCheck);
 }
 inline bool BRepAlgoAPI_Common_inherited_CheckInverted(const BRepAlgoAPI_Common& self) {
     return self.CheckInverted();
 }
-inline void BRepAlgoAPI_Common_inherited_SimplifyResult(BRepAlgoAPI_Common& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+inline void BRepAlgoAPI_Common_inherited_SimplifyResult(BRepAlgoAPI_Common& self, Standard_Boolean theUnifyEdges, Standard_Boolean theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
 }
 inline const TopTools_ListOfShape& BRepAlgoAPI_Common_inherited_Modified(BRepAlgoAPI_Common& self, const TopoDS_Shape& theS) {
@@ -4597,7 +4705,7 @@ inline bool BRepAlgoAPI_Common_inherited_HasGenerated(const BRepAlgoAPI_Common& 
 inline bool BRepAlgoAPI_Common_inherited_HasDeleted(const BRepAlgoAPI_Common& self) {
     return self.HasDeleted();
 }
-inline void BRepAlgoAPI_Common_inherited_SetToFillHistory(BRepAlgoAPI_Common& self, bool theHistFlag) {
+inline void BRepAlgoAPI_Common_inherited_SetToFillHistory(BRepAlgoAPI_Common& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BRepAlgoAPI_Common_inherited_HasHistory(const BRepAlgoAPI_Common& self) {
@@ -4670,7 +4778,7 @@ inline void BRepAlgoAPI_Cut_inherited_SetArguments(BRepAlgoAPI_Cut& self, const 
 inline const TopTools_ListOfShape& BRepAlgoAPI_Cut_inherited_Arguments(const BRepAlgoAPI_Cut& self) {
     return self.Arguments();
 }
-inline void BRepAlgoAPI_Cut_inherited_SetNonDestructive(BRepAlgoAPI_Cut& self, bool theFlag) {
+inline void BRepAlgoAPI_Cut_inherited_SetNonDestructive(BRepAlgoAPI_Cut& self, Standard_Boolean theFlag) {
     self.SetNonDestructive(theFlag);
 }
 inline bool BRepAlgoAPI_Cut_inherited_NonDestructive(const BRepAlgoAPI_Cut& self) {
@@ -4682,13 +4790,13 @@ inline void BRepAlgoAPI_Cut_inherited_SetGlue(BRepAlgoAPI_Cut& self, int32_t the
 inline int32_t BRepAlgoAPI_Cut_inherited_Glue(const BRepAlgoAPI_Cut& self) {
     return static_cast<int32_t>(self.Glue());
 }
-inline void BRepAlgoAPI_Cut_inherited_SetCheckInverted(BRepAlgoAPI_Cut& self, bool theCheck) {
+inline void BRepAlgoAPI_Cut_inherited_SetCheckInverted(BRepAlgoAPI_Cut& self, Standard_Boolean theCheck) {
     self.SetCheckInverted(theCheck);
 }
 inline bool BRepAlgoAPI_Cut_inherited_CheckInverted(const BRepAlgoAPI_Cut& self) {
     return self.CheckInverted();
 }
-inline void BRepAlgoAPI_Cut_inherited_SimplifyResult(BRepAlgoAPI_Cut& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+inline void BRepAlgoAPI_Cut_inherited_SimplifyResult(BRepAlgoAPI_Cut& self, Standard_Boolean theUnifyEdges, Standard_Boolean theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
 }
 inline const TopTools_ListOfShape& BRepAlgoAPI_Cut_inherited_Modified(BRepAlgoAPI_Cut& self, const TopoDS_Shape& theS) {
@@ -4709,7 +4817,7 @@ inline bool BRepAlgoAPI_Cut_inherited_HasGenerated(const BRepAlgoAPI_Cut& self) 
 inline bool BRepAlgoAPI_Cut_inherited_HasDeleted(const BRepAlgoAPI_Cut& self) {
     return self.HasDeleted();
 }
-inline void BRepAlgoAPI_Cut_inherited_SetToFillHistory(BRepAlgoAPI_Cut& self, bool theHistFlag) {
+inline void BRepAlgoAPI_Cut_inherited_SetToFillHistory(BRepAlgoAPI_Cut& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BRepAlgoAPI_Cut_inherited_HasHistory(const BRepAlgoAPI_Cut& self) {
@@ -4806,7 +4914,7 @@ inline void BRepAlgoAPI_Fuse_inherited_SetArguments(BRepAlgoAPI_Fuse& self, cons
 inline const TopTools_ListOfShape& BRepAlgoAPI_Fuse_inherited_Arguments(const BRepAlgoAPI_Fuse& self) {
     return self.Arguments();
 }
-inline void BRepAlgoAPI_Fuse_inherited_SetNonDestructive(BRepAlgoAPI_Fuse& self, bool theFlag) {
+inline void BRepAlgoAPI_Fuse_inherited_SetNonDestructive(BRepAlgoAPI_Fuse& self, Standard_Boolean theFlag) {
     self.SetNonDestructive(theFlag);
 }
 inline bool BRepAlgoAPI_Fuse_inherited_NonDestructive(const BRepAlgoAPI_Fuse& self) {
@@ -4818,13 +4926,13 @@ inline void BRepAlgoAPI_Fuse_inherited_SetGlue(BRepAlgoAPI_Fuse& self, int32_t t
 inline int32_t BRepAlgoAPI_Fuse_inherited_Glue(const BRepAlgoAPI_Fuse& self) {
     return static_cast<int32_t>(self.Glue());
 }
-inline void BRepAlgoAPI_Fuse_inherited_SetCheckInverted(BRepAlgoAPI_Fuse& self, bool theCheck) {
+inline void BRepAlgoAPI_Fuse_inherited_SetCheckInverted(BRepAlgoAPI_Fuse& self, Standard_Boolean theCheck) {
     self.SetCheckInverted(theCheck);
 }
 inline bool BRepAlgoAPI_Fuse_inherited_CheckInverted(const BRepAlgoAPI_Fuse& self) {
     return self.CheckInverted();
 }
-inline void BRepAlgoAPI_Fuse_inherited_SimplifyResult(BRepAlgoAPI_Fuse& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+inline void BRepAlgoAPI_Fuse_inherited_SimplifyResult(BRepAlgoAPI_Fuse& self, Standard_Boolean theUnifyEdges, Standard_Boolean theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
 }
 inline const TopTools_ListOfShape& BRepAlgoAPI_Fuse_inherited_Modified(BRepAlgoAPI_Fuse& self, const TopoDS_Shape& theS) {
@@ -4845,7 +4953,7 @@ inline bool BRepAlgoAPI_Fuse_inherited_HasGenerated(const BRepAlgoAPI_Fuse& self
 inline bool BRepAlgoAPI_Fuse_inherited_HasDeleted(const BRepAlgoAPI_Fuse& self) {
     return self.HasDeleted();
 }
-inline void BRepAlgoAPI_Fuse_inherited_SetToFillHistory(BRepAlgoAPI_Fuse& self, bool theHistFlag) {
+inline void BRepAlgoAPI_Fuse_inherited_SetToFillHistory(BRepAlgoAPI_Fuse& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BRepAlgoAPI_Fuse_inherited_HasHistory(const BRepAlgoAPI_Fuse& self) {
@@ -4927,7 +5035,7 @@ inline void BRepAlgoAPI_Section_inherited_SetArguments(BRepAlgoAPI_Section& self
 inline const TopTools_ListOfShape& BRepAlgoAPI_Section_inherited_Arguments(const BRepAlgoAPI_Section& self) {
     return self.Arguments();
 }
-inline void BRepAlgoAPI_Section_inherited_SetNonDestructive(BRepAlgoAPI_Section& self, bool theFlag) {
+inline void BRepAlgoAPI_Section_inherited_SetNonDestructive(BRepAlgoAPI_Section& self, Standard_Boolean theFlag) {
     self.SetNonDestructive(theFlag);
 }
 inline bool BRepAlgoAPI_Section_inherited_NonDestructive(const BRepAlgoAPI_Section& self) {
@@ -4939,13 +5047,13 @@ inline void BRepAlgoAPI_Section_inherited_SetGlue(BRepAlgoAPI_Section& self, int
 inline int32_t BRepAlgoAPI_Section_inherited_Glue(const BRepAlgoAPI_Section& self) {
     return static_cast<int32_t>(self.Glue());
 }
-inline void BRepAlgoAPI_Section_inherited_SetCheckInverted(BRepAlgoAPI_Section& self, bool theCheck) {
+inline void BRepAlgoAPI_Section_inherited_SetCheckInverted(BRepAlgoAPI_Section& self, Standard_Boolean theCheck) {
     self.SetCheckInverted(theCheck);
 }
 inline bool BRepAlgoAPI_Section_inherited_CheckInverted(const BRepAlgoAPI_Section& self) {
     return self.CheckInverted();
 }
-inline void BRepAlgoAPI_Section_inherited_SimplifyResult(BRepAlgoAPI_Section& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+inline void BRepAlgoAPI_Section_inherited_SimplifyResult(BRepAlgoAPI_Section& self, Standard_Boolean theUnifyEdges, Standard_Boolean theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
 }
 inline const TopTools_ListOfShape& BRepAlgoAPI_Section_inherited_Modified(BRepAlgoAPI_Section& self, const TopoDS_Shape& theS) {
@@ -4966,7 +5074,7 @@ inline bool BRepAlgoAPI_Section_inherited_HasGenerated(const BRepAlgoAPI_Section
 inline bool BRepAlgoAPI_Section_inherited_HasDeleted(const BRepAlgoAPI_Section& self) {
     return self.HasDeleted();
 }
-inline void BRepAlgoAPI_Section_inherited_SetToFillHistory(BRepAlgoAPI_Section& self, bool theHistFlag) {
+inline void BRepAlgoAPI_Section_inherited_SetToFillHistory(BRepAlgoAPI_Section& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BRepAlgoAPI_Section_inherited_HasHistory(const BRepAlgoAPI_Section& self) {
@@ -5010,7 +5118,7 @@ inline void BRepAlgoAPI_Splitter_inherited_SetArguments(BRepAlgoAPI_Splitter& se
 inline const TopTools_ListOfShape& BRepAlgoAPI_Splitter_inherited_Arguments(const BRepAlgoAPI_Splitter& self) {
     return self.Arguments();
 }
-inline void BRepAlgoAPI_Splitter_inherited_SetNonDestructive(BRepAlgoAPI_Splitter& self, bool theFlag) {
+inline void BRepAlgoAPI_Splitter_inherited_SetNonDestructive(BRepAlgoAPI_Splitter& self, Standard_Boolean theFlag) {
     self.SetNonDestructive(theFlag);
 }
 inline bool BRepAlgoAPI_Splitter_inherited_NonDestructive(const BRepAlgoAPI_Splitter& self) {
@@ -5022,13 +5130,13 @@ inline void BRepAlgoAPI_Splitter_inherited_SetGlue(BRepAlgoAPI_Splitter& self, i
 inline int32_t BRepAlgoAPI_Splitter_inherited_Glue(const BRepAlgoAPI_Splitter& self) {
     return static_cast<int32_t>(self.Glue());
 }
-inline void BRepAlgoAPI_Splitter_inherited_SetCheckInverted(BRepAlgoAPI_Splitter& self, bool theCheck) {
+inline void BRepAlgoAPI_Splitter_inherited_SetCheckInverted(BRepAlgoAPI_Splitter& self, Standard_Boolean theCheck) {
     self.SetCheckInverted(theCheck);
 }
 inline bool BRepAlgoAPI_Splitter_inherited_CheckInverted(const BRepAlgoAPI_Splitter& self) {
     return self.CheckInverted();
 }
-inline void BRepAlgoAPI_Splitter_inherited_SimplifyResult(BRepAlgoAPI_Splitter& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+inline void BRepAlgoAPI_Splitter_inherited_SimplifyResult(BRepAlgoAPI_Splitter& self, Standard_Boolean theUnifyEdges, Standard_Boolean theUnifyFaces, Standard_Real theAngularTol) {
     self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
 }
 inline const TopTools_ListOfShape& BRepAlgoAPI_Splitter_inherited_Modified(BRepAlgoAPI_Splitter& self, const TopoDS_Shape& theS) {
@@ -5049,7 +5157,7 @@ inline bool BRepAlgoAPI_Splitter_inherited_HasGenerated(const BRepAlgoAPI_Splitt
 inline bool BRepAlgoAPI_Splitter_inherited_HasDeleted(const BRepAlgoAPI_Splitter& self) {
     return self.HasDeleted();
 }
-inline void BRepAlgoAPI_Splitter_inherited_SetToFillHistory(BRepAlgoAPI_Splitter& self, bool theHistFlag) {
+inline void BRepAlgoAPI_Splitter_inherited_SetToFillHistory(BRepAlgoAPI_Splitter& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BRepAlgoAPI_Splitter_inherited_HasHistory(const BRepAlgoAPI_Splitter& self) {
@@ -5136,6 +5244,9 @@ inline std::unique_ptr<TopoDS_Shape> BRepBuilderAPI_Copy_inherited_ModifiedShape
 
 inline std::unique_ptr<BRepBuilderAPI_FastSewing> BRepBuilderAPI_FastSewing_ctor_real(Standard_Real theTolerance) {
     return std::make_unique<BRepBuilderAPI_FastSewing>(theTolerance);
+}
+inline rust::String BRepBuilderAPI_FastSewing_get_type_name() {
+    return rust::String(BRepBuilderAPI_FastSewing::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepBuilderAPI_FastSewing_get_type_descriptor() {
     return BRepBuilderAPI_FastSewing::get_type_descriptor();
@@ -5883,6 +5994,9 @@ inline std::unique_ptr<TopoDS_Shape> BRepBuilderAPI_Sewing_modified_sub_shape(co
 inline std::unique_ptr<TopoDS_Face> BRepBuilderAPI_Sewing_which_face(const BRepBuilderAPI_Sewing& self_, const TopoDS_Edge& theEdg, Standard_Integer index) {
     return std::make_unique<TopoDS_Face>(self_.WhichFace(theEdg, index));
 }
+inline rust::String BRepBuilderAPI_Sewing_get_type_name() {
+    return rust::String(BRepBuilderAPI_Sewing::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepBuilderAPI_Sewing_get_type_descriptor() {
     return BRepBuilderAPI_Sewing::get_type_descriptor();
 }
@@ -5962,7 +6076,7 @@ inline void BRepFeat_Builder_inherited_SetArguments(BRepFeat_Builder& self, cons
 inline const TopTools_ListOfShape& BRepFeat_Builder_inherited_Arguments(const BRepFeat_Builder& self) {
     return self.Arguments();
 }
-inline void BRepFeat_Builder_inherited_SetNonDestructive(BRepFeat_Builder& self, bool theFlag) {
+inline void BRepFeat_Builder_inherited_SetNonDestructive(BRepFeat_Builder& self, Standard_Boolean theFlag) {
     self.SetNonDestructive(theFlag);
 }
 inline bool BRepFeat_Builder_inherited_NonDestructive(const BRepFeat_Builder& self) {
@@ -5974,11 +6088,14 @@ inline void BRepFeat_Builder_inherited_SetGlue(BRepFeat_Builder& self, int32_t t
 inline int32_t BRepFeat_Builder_inherited_Glue(const BRepFeat_Builder& self) {
     return static_cast<int32_t>(self.Glue());
 }
-inline void BRepFeat_Builder_inherited_SetCheckInverted(BRepFeat_Builder& self, bool theCheck) {
+inline void BRepFeat_Builder_inherited_SetCheckInverted(BRepFeat_Builder& self, Standard_Boolean theCheck) {
     self.SetCheckInverted(theCheck);
 }
 inline bool BRepFeat_Builder_inherited_CheckInverted(const BRepFeat_Builder& self) {
     return self.CheckInverted();
+}
+inline void BRepFeat_Builder_inherited_BuildBOP(BRepFeat_Builder& self, const TopTools_ListOfShape& theObjects, int32_t theObjState, const TopTools_ListOfShape& theTools, int32_t theToolsState, const Message_ProgressRange& theRange, const opencascade::handle<Message_Report>& theReport) {
+    self.BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport);
 }
 inline const TopTools_DataMapOfShapeShape& BRepFeat_Builder_inherited_ShapesSD(const BRepFeat_Builder& self) {
     return self.ShapesSD();
@@ -6007,7 +6124,7 @@ inline bool BRepFeat_Builder_inherited_HasDeleted(const BRepFeat_Builder& self) 
 inline std::unique_ptr<Handle(BRepTools_History)> BRepFeat_Builder_inherited_History(BRepFeat_Builder& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
 }
-inline void BRepFeat_Builder_inherited_SetToFillHistory(BRepFeat_Builder& self, bool theHistFlag) {
+inline void BRepFeat_Builder_inherited_SetToFillHistory(BRepFeat_Builder& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BRepFeat_Builder_inherited_HasHistory(const BRepFeat_Builder& self) {
@@ -6016,22 +6133,22 @@ inline bool BRepFeat_Builder_inherited_HasHistory(const BRepFeat_Builder& self) 
 inline const Handle(NCollection_BaseAllocator)& BRepFeat_Builder_inherited_Allocator(const BRepFeat_Builder& self) {
     return self.Allocator();
 }
-inline void BRepFeat_Builder_inherited_AddError(BRepFeat_Builder& self, const Handle(Message_Alert)& theAlert) {
+inline void BRepFeat_Builder_inherited_AddError(BRepFeat_Builder& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddError(theAlert);
 }
-inline void BRepFeat_Builder_inherited_AddWarning(BRepFeat_Builder& self, const Handle(Message_Alert)& theAlert) {
+inline void BRepFeat_Builder_inherited_AddWarning(BRepFeat_Builder& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddWarning(theAlert);
 }
 inline bool BRepFeat_Builder_inherited_HasErrors(const BRepFeat_Builder& self) {
     return self.HasErrors();
 }
-inline bool BRepFeat_Builder_inherited_HasError(const BRepFeat_Builder& self, const Handle(Standard_Type)& theType) {
+inline bool BRepFeat_Builder_inherited_HasError(const BRepFeat_Builder& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasError(theType);
 }
 inline bool BRepFeat_Builder_inherited_HasWarnings(const BRepFeat_Builder& self) {
     return self.HasWarnings();
 }
-inline bool BRepFeat_Builder_inherited_HasWarning(const BRepFeat_Builder& self, const Handle(Standard_Type)& theType) {
+inline bool BRepFeat_Builder_inherited_HasWarning(const BRepFeat_Builder& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasWarning(theType);
 }
 inline const Handle(Message_Report)& BRepFeat_Builder_inherited_GetReport(const BRepFeat_Builder& self) {
@@ -6040,7 +6157,7 @@ inline const Handle(Message_Report)& BRepFeat_Builder_inherited_GetReport(const 
 inline void BRepFeat_Builder_inherited_ClearWarnings(BRepFeat_Builder& self) {
     self.ClearWarnings();
 }
-inline void BRepFeat_Builder_inherited_SetRunParallel(BRepFeat_Builder& self, bool theFlag) {
+inline void BRepFeat_Builder_inherited_SetRunParallel(BRepFeat_Builder& self, Standard_Boolean theFlag) {
     self.SetRunParallel(theFlag);
 }
 inline bool BRepFeat_Builder_inherited_RunParallel(const BRepFeat_Builder& self) {
@@ -6052,7 +6169,7 @@ inline void BRepFeat_Builder_inherited_SetFuzzyValue(BRepFeat_Builder& self, Sta
 inline Standard_Real BRepFeat_Builder_inherited_FuzzyValue(const BRepFeat_Builder& self) {
     return self.FuzzyValue();
 }
-inline void BRepFeat_Builder_inherited_SetUseOBB(BRepFeat_Builder& self, bool theUseOBB) {
+inline void BRepFeat_Builder_inherited_SetUseOBB(BRepFeat_Builder& self, Standard_Boolean theUseOBB) {
     self.SetUseOBB(theUseOBB);
 }
 inline bool BRepFeat_Builder_inherited_UseOBB(const BRepFeat_Builder& self) {
@@ -6165,7 +6282,7 @@ inline void BRepFeat_MakeCylindricalHole_inherited_SetArguments(BRepFeat_MakeCyl
 inline const TopTools_ListOfShape& BRepFeat_MakeCylindricalHole_inherited_Arguments(const BRepFeat_MakeCylindricalHole& self) {
     return self.Arguments();
 }
-inline void BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive(BRepFeat_MakeCylindricalHole& self, bool theFlag) {
+inline void BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive(BRepFeat_MakeCylindricalHole& self, Standard_Boolean theFlag) {
     self.SetNonDestructive(theFlag);
 }
 inline bool BRepFeat_MakeCylindricalHole_inherited_NonDestructive(const BRepFeat_MakeCylindricalHole& self) {
@@ -6177,11 +6294,14 @@ inline void BRepFeat_MakeCylindricalHole_inherited_SetGlue(BRepFeat_MakeCylindri
 inline int32_t BRepFeat_MakeCylindricalHole_inherited_Glue(const BRepFeat_MakeCylindricalHole& self) {
     return static_cast<int32_t>(self.Glue());
 }
-inline void BRepFeat_MakeCylindricalHole_inherited_SetCheckInverted(BRepFeat_MakeCylindricalHole& self, bool theCheck) {
+inline void BRepFeat_MakeCylindricalHole_inherited_SetCheckInverted(BRepFeat_MakeCylindricalHole& self, Standard_Boolean theCheck) {
     self.SetCheckInverted(theCheck);
 }
 inline bool BRepFeat_MakeCylindricalHole_inherited_CheckInverted(const BRepFeat_MakeCylindricalHole& self) {
     return self.CheckInverted();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_BuildBOP(BRepFeat_MakeCylindricalHole& self, const TopTools_ListOfShape& theObjects, int32_t theObjState, const TopTools_ListOfShape& theTools, int32_t theToolsState, const Message_ProgressRange& theRange, const opencascade::handle<Message_Report>& theReport) {
+    self.BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport);
 }
 inline const TopTools_DataMapOfShapeShape& BRepFeat_MakeCylindricalHole_inherited_ShapesSD(const BRepFeat_MakeCylindricalHole& self) {
     return self.ShapesSD();
@@ -6210,7 +6330,7 @@ inline bool BRepFeat_MakeCylindricalHole_inherited_HasDeleted(const BRepFeat_Mak
 inline std::unique_ptr<Handle(BRepTools_History)> BRepFeat_MakeCylindricalHole_inherited_History(BRepFeat_MakeCylindricalHole& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
 }
-inline void BRepFeat_MakeCylindricalHole_inherited_SetToFillHistory(BRepFeat_MakeCylindricalHole& self, bool theHistFlag) {
+inline void BRepFeat_MakeCylindricalHole_inherited_SetToFillHistory(BRepFeat_MakeCylindricalHole& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BRepFeat_MakeCylindricalHole_inherited_HasHistory(const BRepFeat_MakeCylindricalHole& self) {
@@ -6219,22 +6339,22 @@ inline bool BRepFeat_MakeCylindricalHole_inherited_HasHistory(const BRepFeat_Mak
 inline const Handle(NCollection_BaseAllocator)& BRepFeat_MakeCylindricalHole_inherited_Allocator(const BRepFeat_MakeCylindricalHole& self) {
     return self.Allocator();
 }
-inline void BRepFeat_MakeCylindricalHole_inherited_AddError(BRepFeat_MakeCylindricalHole& self, const Handle(Message_Alert)& theAlert) {
+inline void BRepFeat_MakeCylindricalHole_inherited_AddError(BRepFeat_MakeCylindricalHole& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddError(theAlert);
 }
-inline void BRepFeat_MakeCylindricalHole_inherited_AddWarning(BRepFeat_MakeCylindricalHole& self, const Handle(Message_Alert)& theAlert) {
+inline void BRepFeat_MakeCylindricalHole_inherited_AddWarning(BRepFeat_MakeCylindricalHole& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddWarning(theAlert);
 }
 inline bool BRepFeat_MakeCylindricalHole_inherited_HasErrors(const BRepFeat_MakeCylindricalHole& self) {
     return self.HasErrors();
 }
-inline bool BRepFeat_MakeCylindricalHole_inherited_HasError(const BRepFeat_MakeCylindricalHole& self, const Handle(Standard_Type)& theType) {
+inline bool BRepFeat_MakeCylindricalHole_inherited_HasError(const BRepFeat_MakeCylindricalHole& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasError(theType);
 }
 inline bool BRepFeat_MakeCylindricalHole_inherited_HasWarnings(const BRepFeat_MakeCylindricalHole& self) {
     return self.HasWarnings();
 }
-inline bool BRepFeat_MakeCylindricalHole_inherited_HasWarning(const BRepFeat_MakeCylindricalHole& self, const Handle(Standard_Type)& theType) {
+inline bool BRepFeat_MakeCylindricalHole_inherited_HasWarning(const BRepFeat_MakeCylindricalHole& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasWarning(theType);
 }
 inline const Handle(Message_Report)& BRepFeat_MakeCylindricalHole_inherited_GetReport(const BRepFeat_MakeCylindricalHole& self) {
@@ -6243,7 +6363,7 @@ inline const Handle(Message_Report)& BRepFeat_MakeCylindricalHole_inherited_GetR
 inline void BRepFeat_MakeCylindricalHole_inherited_ClearWarnings(BRepFeat_MakeCylindricalHole& self) {
     self.ClearWarnings();
 }
-inline void BRepFeat_MakeCylindricalHole_inherited_SetRunParallel(BRepFeat_MakeCylindricalHole& self, bool theFlag) {
+inline void BRepFeat_MakeCylindricalHole_inherited_SetRunParallel(BRepFeat_MakeCylindricalHole& self, Standard_Boolean theFlag) {
     self.SetRunParallel(theFlag);
 }
 inline bool BRepFeat_MakeCylindricalHole_inherited_RunParallel(const BRepFeat_MakeCylindricalHole& self) {
@@ -6255,7 +6375,7 @@ inline void BRepFeat_MakeCylindricalHole_inherited_SetFuzzyValue(BRepFeat_MakeCy
 inline Standard_Real BRepFeat_MakeCylindricalHole_inherited_FuzzyValue(const BRepFeat_MakeCylindricalHole& self) {
     return self.FuzzyValue();
 }
-inline void BRepFeat_MakeCylindricalHole_inherited_SetUseOBB(BRepFeat_MakeCylindricalHole& self, bool theUseOBB) {
+inline void BRepFeat_MakeCylindricalHole_inherited_SetUseOBB(BRepFeat_MakeCylindricalHole& self, Standard_Boolean theUseOBB) {
     self.SetUseOBB(theUseOBB);
 }
 inline bool BRepFeat_MakeCylindricalHole_inherited_UseOBB(const BRepFeat_MakeCylindricalHole& self) {
@@ -8082,6 +8202,9 @@ inline void BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangu
 // BRepMesh_BaseMeshAlgo wrappers
 // ========================
 
+inline rust::String BRepMesh_BaseMeshAlgo_get_type_name() {
+    return rust::String(BRepMesh_BaseMeshAlgo::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_BaseMeshAlgo_get_type_descriptor() {
     return BRepMesh_BaseMeshAlgo::get_type_descriptor();
 }
@@ -8107,7 +8230,7 @@ inline void BRepMesh_BoundaryParamsRangeSplitter_inherited_AdjustRange(BRepMesh_
 inline bool BRepMesh_BoundaryParamsRangeSplitter_inherited_IsValid(BRepMesh_BoundaryParamsRangeSplitter& self) {
     return self.IsValid();
 }
-inline std::unique_ptr<gp_Pnt2d> BRepMesh_BoundaryParamsRangeSplitter_inherited_Scale(const BRepMesh_BoundaryParamsRangeSplitter& self, const gp_Pnt2d& thePoint, bool isToFaceBasis) {
+inline std::unique_ptr<gp_Pnt2d> BRepMesh_BoundaryParamsRangeSplitter_inherited_Scale(const BRepMesh_BoundaryParamsRangeSplitter& self, const gp_Pnt2d& thePoint, Standard_Boolean isToFaceBasis) {
     return std::make_unique<gp_Pnt2d>(self.Scale(thePoint, isToFaceBasis));
 }
 inline std::unique_ptr<gp_Pnt> BRepMesh_BoundaryParamsRangeSplitter_inherited_Point(const BRepMesh_BoundaryParamsRangeSplitter& self, const gp_Pnt2d& thePoint2d) {
@@ -8143,6 +8266,9 @@ inline std::unique_ptr<BRepMesh_Classifier> BRepMesh_Classifier_ctor() {
 inline int32_t BRepMesh_Classifier_perform(const BRepMesh_Classifier& self_, const gp_Pnt2d& thePoint) {
     return static_cast<int32_t>(self_.Perform(thePoint));
 }
+inline rust::String BRepMesh_Classifier_get_type_name() {
+    return rust::String(BRepMesh_Classifier::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_Classifier_get_type_descriptor() {
     return BRepMesh_Classifier::get_type_descriptor();
 }
@@ -8170,7 +8296,7 @@ inline void BRepMesh_ConeRangeSplitter_inherited_AdjustRange(BRepMesh_ConeRangeS
 inline bool BRepMesh_ConeRangeSplitter_inherited_IsValid(BRepMesh_ConeRangeSplitter& self) {
     return self.IsValid();
 }
-inline std::unique_ptr<gp_Pnt2d> BRepMesh_ConeRangeSplitter_inherited_Scale(const BRepMesh_ConeRangeSplitter& self, const gp_Pnt2d& thePoint, bool isToFaceBasis) {
+inline std::unique_ptr<gp_Pnt2d> BRepMesh_ConeRangeSplitter_inherited_Scale(const BRepMesh_ConeRangeSplitter& self, const gp_Pnt2d& thePoint, Standard_Boolean isToFaceBasis) {
     return std::make_unique<gp_Pnt2d>(self.Scale(thePoint, isToFaceBasis));
 }
 inline std::unique_ptr<gp_Pnt> BRepMesh_ConeRangeSplitter_inherited_Point(const BRepMesh_ConeRangeSplitter& self, const gp_Pnt2d& thePoint2d) {
@@ -8181,6 +8307,9 @@ inline std::unique_ptr<gp_Pnt> BRepMesh_ConeRangeSplitter_inherited_Point(const 
 // BRepMesh_ConstrainedBaseMeshAlgo wrappers
 // ========================
 
+inline rust::String BRepMesh_ConstrainedBaseMeshAlgo_get_type_name() {
+    return rust::String(BRepMesh_ConstrainedBaseMeshAlgo::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_ConstrainedBaseMeshAlgo_get_type_descriptor() {
     return BRepMesh_ConstrainedBaseMeshAlgo::get_type_descriptor();
 }
@@ -8195,6 +8324,9 @@ inline IMeshTools_MeshAlgo& BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshA
 
 inline std::unique_ptr<BRepMesh_Context> BRepMesh_Context_ctor_meshalgotype(int32_t theMeshType) {
     return std::make_unique<BRepMesh_Context>(static_cast<IMeshTools_MeshAlgoType>(theMeshType));
+}
+inline rust::String BRepMesh_Context_get_type_name() {
+    return rust::String(BRepMesh_Context::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepMesh_Context_get_type_descriptor() {
     return BRepMesh_Context::get_type_descriptor();
@@ -8233,31 +8365,31 @@ inline void BRepMesh_Context_inherited_Clean(BRepMesh_Context& self) {
 inline const Handle(IMeshTools_ModelAlgo)& BRepMesh_Context_inherited_GetEdgeDiscret(const BRepMesh_Context& self) {
     return self.GetEdgeDiscret();
 }
-inline void BRepMesh_Context_inherited_SetEdgeDiscret(BRepMesh_Context& self, const Handle(IMeshTools_ModelAlgo)& theEdgeDiscret) {
+inline void BRepMesh_Context_inherited_SetEdgeDiscret(BRepMesh_Context& self, const opencascade::handle<IMeshTools_ModelAlgo>& theEdgeDiscret) {
     self.SetEdgeDiscret(theEdgeDiscret);
 }
 inline const Handle(IMeshTools_ModelAlgo)& BRepMesh_Context_inherited_GetModelHealer(const BRepMesh_Context& self) {
     return self.GetModelHealer();
 }
-inline void BRepMesh_Context_inherited_SetModelHealer(BRepMesh_Context& self, const Handle(IMeshTools_ModelAlgo)& theModelHealer) {
+inline void BRepMesh_Context_inherited_SetModelHealer(BRepMesh_Context& self, const opencascade::handle<IMeshTools_ModelAlgo>& theModelHealer) {
     self.SetModelHealer(theModelHealer);
 }
 inline const Handle(IMeshTools_ModelAlgo)& BRepMesh_Context_inherited_GetPreProcessor(const BRepMesh_Context& self) {
     return self.GetPreProcessor();
 }
-inline void BRepMesh_Context_inherited_SetPreProcessor(BRepMesh_Context& self, const Handle(IMeshTools_ModelAlgo)& thePreProcessor) {
+inline void BRepMesh_Context_inherited_SetPreProcessor(BRepMesh_Context& self, const opencascade::handle<IMeshTools_ModelAlgo>& thePreProcessor) {
     self.SetPreProcessor(thePreProcessor);
 }
 inline const Handle(IMeshTools_ModelAlgo)& BRepMesh_Context_inherited_GetFaceDiscret(const BRepMesh_Context& self) {
     return self.GetFaceDiscret();
 }
-inline void BRepMesh_Context_inherited_SetFaceDiscret(BRepMesh_Context& self, const Handle(IMeshTools_ModelAlgo)& theFaceDiscret) {
+inline void BRepMesh_Context_inherited_SetFaceDiscret(BRepMesh_Context& self, const opencascade::handle<IMeshTools_ModelAlgo>& theFaceDiscret) {
     self.SetFaceDiscret(theFaceDiscret);
 }
 inline const Handle(IMeshTools_ModelAlgo)& BRepMesh_Context_inherited_GetPostProcessor(const BRepMesh_Context& self) {
     return self.GetPostProcessor();
 }
-inline void BRepMesh_Context_inherited_SetPostProcessor(BRepMesh_Context& self, const Handle(IMeshTools_ModelAlgo)& thePostProcessor) {
+inline void BRepMesh_Context_inherited_SetPostProcessor(BRepMesh_Context& self, const opencascade::handle<IMeshTools_ModelAlgo>& thePostProcessor) {
     self.SetPostProcessor(thePostProcessor);
 }
 inline const IMeshTools_Parameters& BRepMesh_Context_inherited_GetParameters(const BRepMesh_Context& self) {
@@ -8271,6 +8403,9 @@ inline IMeshTools_Parameters& BRepMesh_Context_inherited_ChangeParameters(BRepMe
 // BRepMesh_CurveTessellator wrappers
 // ========================
 
+inline rust::String BRepMesh_CurveTessellator_get_type_name() {
+    return rust::String(BRepMesh_CurveTessellator::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_CurveTessellator_get_type_descriptor() {
     return BRepMesh_CurveTessellator::get_type_descriptor();
 }
@@ -8281,6 +8416,9 @@ inline IMeshTools_CurveTessellator& BRepMesh_CurveTessellator_as_IMeshTools_Curv
 // BRepMesh_CustomBaseMeshAlgo wrappers
 // ========================
 
+inline rust::String BRepMesh_CustomBaseMeshAlgo_get_type_name() {
+    return rust::String(BRepMesh_CustomBaseMeshAlgo::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_CustomBaseMeshAlgo_get_type_descriptor() {
     return BRepMesh_CustomBaseMeshAlgo::get_type_descriptor();
 }
@@ -8309,7 +8447,7 @@ inline void BRepMesh_CylinderRangeSplitter_inherited_AdjustRange(BRepMesh_Cylind
 inline bool BRepMesh_CylinderRangeSplitter_inherited_IsValid(BRepMesh_CylinderRangeSplitter& self) {
     return self.IsValid();
 }
-inline std::unique_ptr<gp_Pnt2d> BRepMesh_CylinderRangeSplitter_inherited_Scale(const BRepMesh_CylinderRangeSplitter& self, const gp_Pnt2d& thePoint, bool isToFaceBasis) {
+inline std::unique_ptr<gp_Pnt2d> BRepMesh_CylinderRangeSplitter_inherited_Scale(const BRepMesh_CylinderRangeSplitter& self, const gp_Pnt2d& thePoint, Standard_Boolean isToFaceBasis) {
     return std::make_unique<gp_Pnt2d>(self.Scale(thePoint, isToFaceBasis));
 }
 inline std::unique_ptr<gp_Pnt> BRepMesh_CylinderRangeSplitter_inherited_Point(const BRepMesh_CylinderRangeSplitter& self, const gp_Pnt2d& thePoint2d) {
@@ -8322,6 +8460,9 @@ inline std::unique_ptr<gp_Pnt> BRepMesh_CylinderRangeSplitter_inherited_Point(co
 
 inline void BRepMesh_DataStructureOfDelaun_dump(BRepMesh_DataStructureOfDelaun& self, rust::Str theFileNameStr) {
     self.Dump(std::string(theFileNameStr).c_str());
+}
+inline rust::String BRepMesh_DataStructureOfDelaun_get_type_name() {
+    return rust::String(BRepMesh_DataStructureOfDelaun::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepMesh_DataStructureOfDelaun_get_type_descriptor() {
     return BRepMesh_DataStructureOfDelaun::get_type_descriptor();
@@ -8359,6 +8500,9 @@ inline Standard_Real BRepMesh_Deflection_compute_absolute_deflection(const TopoD
 inline Standard_Boolean BRepMesh_Deflection_is_consistent(Standard_Real theCurrent, Standard_Real theRequired, Standard_Boolean theAllowDecrease, Standard_Real theRatio) {
     return BRepMesh_Deflection::IsConsistent(theCurrent, theRequired, theAllowDecrease, theRatio);
 }
+inline rust::String BRepMesh_Deflection_get_type_name() {
+    return rust::String(BRepMesh_Deflection::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_Deflection_get_type_descriptor() {
     return BRepMesh_Deflection::get_type_descriptor();
 }
@@ -8374,6 +8518,9 @@ inline BRepMesh_Deflection& HandleBRepMeshDeflection_get_mut(HandleBRepMeshDefle
 
 inline std::unique_ptr<BRepMesh_DelabellaBaseMeshAlgo> BRepMesh_DelabellaBaseMeshAlgo_ctor() {
     return std::make_unique<BRepMesh_DelabellaBaseMeshAlgo>();
+}
+inline rust::String BRepMesh_DelabellaBaseMeshAlgo_get_type_name() {
+    return rust::String(BRepMesh_DelabellaBaseMeshAlgo::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepMesh_DelabellaBaseMeshAlgo_get_type_descriptor() {
     return BRepMesh_DelabellaBaseMeshAlgo::get_type_descriptor();
@@ -8397,6 +8544,9 @@ inline std::unique_ptr<BRepMesh_DelabellaMeshAlgoFactory> BRepMesh_DelabellaMesh
 inline std::unique_ptr<opencascade::handle<IMeshTools_MeshAlgo>> BRepMesh_DelabellaMeshAlgoFactory_get_algo(const BRepMesh_DelabellaMeshAlgoFactory& self_, int32_t theSurfaceType, const IMeshTools_Parameters& theParameters) {
     return std::make_unique<opencascade::handle<IMeshTools_MeshAlgo>>(self_.GetAlgo(static_cast<GeomAbs_SurfaceType>(theSurfaceType), theParameters));
 }
+inline rust::String BRepMesh_DelabellaMeshAlgoFactory_get_type_name() {
+    return rust::String(BRepMesh_DelabellaMeshAlgoFactory::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_DelabellaMeshAlgoFactory_get_type_descriptor() {
     return BRepMesh_DelabellaMeshAlgoFactory::get_type_descriptor();
 }
@@ -8418,6 +8568,9 @@ inline std::unique_ptr<BRepMesh_Delaun> BRepMesh_Delaun_ctor_handlebrepmeshdatas
 inline std::unique_ptr<BRepMesh_DelaunayBaseMeshAlgo> BRepMesh_DelaunayBaseMeshAlgo_ctor() {
     return std::make_unique<BRepMesh_DelaunayBaseMeshAlgo>();
 }
+inline rust::String BRepMesh_DelaunayBaseMeshAlgo_get_type_name() {
+    return rust::String(BRepMesh_DelaunayBaseMeshAlgo::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_DelaunayBaseMeshAlgo_get_type_descriptor() {
     return BRepMesh_DelaunayBaseMeshAlgo::get_type_descriptor();
 }
@@ -8432,6 +8585,9 @@ inline IMeshTools_MeshAlgo& BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo
 // BRepMesh_DiscretRoot wrappers
 // ========================
 
+inline rust::String BRepMesh_DiscretRoot_get_type_name() {
+    return rust::String(BRepMesh_DiscretRoot::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_DiscretRoot_get_type_descriptor() {
     return BRepMesh_DiscretRoot::get_type_descriptor();
 }
@@ -8470,6 +8626,9 @@ inline Standard_Integer BRepMesh_Edge_inherited_LastNode(const BRepMesh_Edge& se
 inline std::unique_ptr<BRepMesh_EdgeDiscret> BRepMesh_EdgeDiscret_ctor() {
     return std::make_unique<BRepMesh_EdgeDiscret>();
 }
+inline rust::String BRepMesh_EdgeDiscret_get_type_name() {
+    return rust::String(BRepMesh_EdgeDiscret::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_EdgeDiscret_get_type_descriptor() {
     return BRepMesh_EdgeDiscret::get_type_descriptor();
 }
@@ -8480,6 +8639,9 @@ inline IMeshTools_ModelAlgo& BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo_mut(BR
 // BRepMesh_EdgeTessellationExtractor wrappers
 // ========================
 
+inline rust::String BRepMesh_EdgeTessellationExtractor_get_type_name() {
+    return rust::String(BRepMesh_EdgeTessellationExtractor::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_EdgeTessellationExtractor_get_type_descriptor() {
     return BRepMesh_EdgeTessellationExtractor::get_type_descriptor();
 }
@@ -8508,7 +8670,7 @@ inline void BRepMesh_ExtrusionRangeSplitter_inherited_AdjustRange(BRepMesh_Extru
 inline bool BRepMesh_ExtrusionRangeSplitter_inherited_IsValid(BRepMesh_ExtrusionRangeSplitter& self) {
     return self.IsValid();
 }
-inline std::unique_ptr<gp_Pnt2d> BRepMesh_ExtrusionRangeSplitter_inherited_Scale(const BRepMesh_ExtrusionRangeSplitter& self, const gp_Pnt2d& thePoint, bool isToFaceBasis) {
+inline std::unique_ptr<gp_Pnt2d> BRepMesh_ExtrusionRangeSplitter_inherited_Scale(const BRepMesh_ExtrusionRangeSplitter& self, const gp_Pnt2d& thePoint, Standard_Boolean isToFaceBasis) {
     return std::make_unique<gp_Pnt2d>(self.Scale(thePoint, isToFaceBasis));
 }
 inline std::unique_ptr<gp_Pnt> BRepMesh_ExtrusionRangeSplitter_inherited_Point(const BRepMesh_ExtrusionRangeSplitter& self, const gp_Pnt2d& thePoint2d) {
@@ -8519,6 +8681,9 @@ inline std::unique_ptr<gp_Pnt> BRepMesh_ExtrusionRangeSplitter_inherited_Point(c
 // BRepMesh_FaceChecker wrappers
 // ========================
 
+inline rust::String BRepMesh_FaceChecker_get_type_name() {
+    return rust::String(BRepMesh_FaceChecker::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_FaceChecker_get_type_descriptor() {
     return BRepMesh_FaceChecker::get_type_descriptor();
 }
@@ -8534,6 +8699,9 @@ inline BRepMesh_FaceChecker& HandleBRepMeshFaceChecker_get_mut(HandleBRepMeshFac
 
 inline std::unique_ptr<BRepMesh_FaceDiscret> BRepMesh_FaceDiscret_ctor_handleimeshtoolsmeshalgofactory(const opencascade::handle<IMeshTools_MeshAlgoFactory>& theAlgoFactory) {
     return std::make_unique<BRepMesh_FaceDiscret>(theAlgoFactory);
+}
+inline rust::String BRepMesh_FaceDiscret_get_type_name() {
+    return rust::String(BRepMesh_FaceDiscret::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepMesh_FaceDiscret_get_type_descriptor() {
     return BRepMesh_FaceDiscret::get_type_descriptor();
@@ -8571,6 +8739,9 @@ inline Standard_Boolean BRepMesh_IncrementalMesh_is_parallel_default() {
 inline void BRepMesh_IncrementalMesh_set_parallel_default(Standard_Boolean isInParallel) {
     return BRepMesh_IncrementalMesh::SetParallelDefault(isInParallel);
 }
+inline rust::String BRepMesh_IncrementalMesh_get_type_name() {
+    return rust::String(BRepMesh_IncrementalMesh::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_IncrementalMesh_get_type_descriptor() {
     return BRepMesh_IncrementalMesh::get_type_descriptor();
 }
@@ -8596,6 +8767,9 @@ inline std::unique_ptr<BRepMesh_MeshAlgoFactory> BRepMesh_MeshAlgoFactory_ctor()
 inline std::unique_ptr<opencascade::handle<IMeshTools_MeshAlgo>> BRepMesh_MeshAlgoFactory_get_algo(const BRepMesh_MeshAlgoFactory& self_, int32_t theSurfaceType, const IMeshTools_Parameters& theParameters) {
     return std::make_unique<opencascade::handle<IMeshTools_MeshAlgo>>(self_.GetAlgo(static_cast<GeomAbs_SurfaceType>(theSurfaceType), theParameters));
 }
+inline rust::String BRepMesh_MeshAlgoFactory_get_type_name() {
+    return rust::String(BRepMesh_MeshAlgoFactory::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_MeshAlgoFactory_get_type_descriptor() {
     return BRepMesh_MeshAlgoFactory::get_type_descriptor();
 }
@@ -8608,6 +8782,9 @@ inline IMeshTools_MeshAlgoFactory& BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAl
 
 inline std::unique_ptr<BRepMesh_MeshTool> BRepMesh_MeshTool_ctor_handlebrepmeshdatastructureofdelaun(const opencascade::handle<BRepMesh_DataStructureOfDelaun>& theStructure) {
     return std::make_unique<BRepMesh_MeshTool>(theStructure);
+}
+inline rust::String BRepMesh_MeshTool_get_type_name() {
+    return rust::String(BRepMesh_MeshTool::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepMesh_MeshTool_get_type_descriptor() {
     return BRepMesh_MeshTool::get_type_descriptor();
@@ -8624,6 +8801,9 @@ inline BRepMesh_MeshTool& HandleBRepMeshMeshTool_get_mut(HandleBRepMeshMeshTool&
 
 inline std::unique_ptr<BRepMesh_ModelBuilder> BRepMesh_ModelBuilder_ctor() {
     return std::make_unique<BRepMesh_ModelBuilder>();
+}
+inline rust::String BRepMesh_ModelBuilder_get_type_name() {
+    return rust::String(BRepMesh_ModelBuilder::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepMesh_ModelBuilder_get_type_descriptor() {
     return BRepMesh_ModelBuilder::get_type_descriptor();
@@ -8644,7 +8824,7 @@ inline Message_ExecStatus& BRepMesh_ModelBuilder_inherited_ChangeStatus(BRepMesh
 inline void BRepMesh_ModelBuilder_inherited_ClearStatus(BRepMesh_ModelBuilder& self) {
     self.ClearStatus();
 }
-inline void BRepMesh_ModelBuilder_inherited_SetMessenger(BRepMesh_ModelBuilder& self, const Handle(Message_Messenger)& theMsgr) {
+inline void BRepMesh_ModelBuilder_inherited_SetMessenger(BRepMesh_ModelBuilder& self, const opencascade::handle<Message_Messenger>& theMsgr) {
     self.SetMessenger(theMsgr);
 }
 inline std::unique_ptr<Handle(Message_Messenger)> BRepMesh_ModelBuilder_inherited_GetMessenger(const BRepMesh_ModelBuilder& self) {
@@ -8656,7 +8836,7 @@ inline void BRepMesh_ModelBuilder_inherited_SendStatusMessages(const BRepMesh_Mo
 inline void BRepMesh_ModelBuilder_inherited_SendMessages(const BRepMesh_ModelBuilder& self, int32_t theTraceLevel, Standard_Integer theMaxCount) {
     self.SendMessages(static_cast<Message_Gravity>(theTraceLevel), theMaxCount);
 }
-inline void BRepMesh_ModelBuilder_inherited_AddStatus(BRepMesh_ModelBuilder& self, const Handle(Message_Algorithm)& theOther) {
+inline void BRepMesh_ModelBuilder_inherited_AddStatus(BRepMesh_ModelBuilder& self, const opencascade::handle<Message_Algorithm>& theOther) {
     self.AddStatus(theOther);
 }
 inline std::unique_ptr<Handle(TColStd_HPackedMapOfInteger)> BRepMesh_ModelBuilder_inherited_GetMessageNumbers(const BRepMesh_ModelBuilder& self, int32_t theStatus) {
@@ -8673,6 +8853,9 @@ inline std::unique_ptr<Handle(TColStd_HSequenceOfHExtendedString)> BRepMesh_Mode
 inline std::unique_ptr<BRepMesh_ModelHealer> BRepMesh_ModelHealer_ctor() {
     return std::make_unique<BRepMesh_ModelHealer>();
 }
+inline rust::String BRepMesh_ModelHealer_get_type_name() {
+    return rust::String(BRepMesh_ModelHealer::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_ModelHealer_get_type_descriptor() {
     return BRepMesh_ModelHealer::get_type_descriptor();
 }
@@ -8686,6 +8869,9 @@ inline IMeshTools_ModelAlgo& BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo_mut(BR
 inline std::unique_ptr<BRepMesh_ModelPostProcessor> BRepMesh_ModelPostProcessor_ctor() {
     return std::make_unique<BRepMesh_ModelPostProcessor>();
 }
+inline rust::String BRepMesh_ModelPostProcessor_get_type_name() {
+    return rust::String(BRepMesh_ModelPostProcessor::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_ModelPostProcessor_get_type_descriptor() {
     return BRepMesh_ModelPostProcessor::get_type_descriptor();
 }
@@ -8698,6 +8884,9 @@ inline IMeshTools_ModelAlgo& BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo
 
 inline std::unique_ptr<BRepMesh_ModelPreProcessor> BRepMesh_ModelPreProcessor_ctor() {
     return std::make_unique<BRepMesh_ModelPreProcessor>();
+}
+inline rust::String BRepMesh_ModelPreProcessor_get_type_name() {
+    return rust::String(BRepMesh_ModelPreProcessor::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepMesh_ModelPreProcessor_get_type_descriptor() {
     return BRepMesh_ModelPreProcessor::get_type_descriptor();
@@ -8722,7 +8911,7 @@ inline void BRepMesh_NURBSRangeSplitter_inherited_AddPoint(BRepMesh_NURBSRangeSp
 inline bool BRepMesh_NURBSRangeSplitter_inherited_IsValid(BRepMesh_NURBSRangeSplitter& self) {
     return self.IsValid();
 }
-inline std::unique_ptr<gp_Pnt2d> BRepMesh_NURBSRangeSplitter_inherited_Scale(const BRepMesh_NURBSRangeSplitter& self, const gp_Pnt2d& thePoint, bool isToFaceBasis) {
+inline std::unique_ptr<gp_Pnt2d> BRepMesh_NURBSRangeSplitter_inherited_Scale(const BRepMesh_NURBSRangeSplitter& self, const gp_Pnt2d& thePoint, Standard_Boolean isToFaceBasis) {
     return std::make_unique<gp_Pnt2d>(self.Scale(thePoint, isToFaceBasis));
 }
 inline std::unique_ptr<gp_Pnt> BRepMesh_NURBSRangeSplitter_inherited_Point(const BRepMesh_NURBSRangeSplitter& self, const gp_Pnt2d& thePoint2d) {
@@ -8757,6 +8946,9 @@ inline std::unique_ptr<BRepMesh_SelectorOfDataStructureOfDelaun> BRepMesh_Select
 }
 inline std::unique_ptr<BRepMesh_SelectorOfDataStructureOfDelaun> BRepMesh_SelectorOfDataStructureOfDelaun_ctor_handlebrepmeshdatastructureofdelaun(const opencascade::handle<BRepMesh_DataStructureOfDelaun>& theMesh) {
     return std::make_unique<BRepMesh_SelectorOfDataStructureOfDelaun>(theMesh);
+}
+inline rust::String BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name() {
+    return rust::String(BRepMesh_SelectorOfDataStructureOfDelaun::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepMesh_SelectorOfDataStructureOfDelaun_get_type_descriptor() {
     return BRepMesh_SelectorOfDataStructureOfDelaun::get_type_descriptor();
@@ -8813,6 +9005,9 @@ inline Standard_Boolean BRepMesh_ShapeTool_range_edge_face_handlegeom2dcurve_rea
 inline Standard_Boolean BRepMesh_ShapeTool_range_edge_handlegeomcurve_real2_bool(const TopoDS_Edge& theEdge, opencascade::handle<Geom_Curve>& theCurve, Standard_Real& theFirstParam, Standard_Real& theLastParam, Standard_Boolean isConsiderOrientation) {
     return BRepMesh_ShapeTool::Range(theEdge, theCurve, theFirstParam, theLastParam, isConsiderOrientation);
 }
+inline rust::String BRepMesh_ShapeTool_get_type_name() {
+    return rust::String(BRepMesh_ShapeTool::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_ShapeTool_get_type_descriptor() {
     return BRepMesh_ShapeTool::get_type_descriptor();
 }
@@ -8826,6 +9021,9 @@ inline BRepMesh_ShapeTool& HandleBRepMeshShapeTool_get_mut(HandleBRepMeshShapeTo
 // BRepMesh_ShapeVisitor wrappers
 // ========================
 
+inline rust::String BRepMesh_ShapeVisitor_get_type_name() {
+    return rust::String(BRepMesh_ShapeVisitor::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_ShapeVisitor_get_type_descriptor() {
     return BRepMesh_ShapeVisitor::get_type_descriptor();
 }
@@ -8850,7 +9048,7 @@ inline void BRepMesh_SphereRangeSplitter_inherited_AdjustRange(BRepMesh_SphereRa
 inline bool BRepMesh_SphereRangeSplitter_inherited_IsValid(BRepMesh_SphereRangeSplitter& self) {
     return self.IsValid();
 }
-inline std::unique_ptr<gp_Pnt2d> BRepMesh_SphereRangeSplitter_inherited_Scale(const BRepMesh_SphereRangeSplitter& self, const gp_Pnt2d& thePoint, bool isToFaceBasis) {
+inline std::unique_ptr<gp_Pnt2d> BRepMesh_SphereRangeSplitter_inherited_Scale(const BRepMesh_SphereRangeSplitter& self, const gp_Pnt2d& thePoint, Standard_Boolean isToFaceBasis) {
     return std::make_unique<gp_Pnt2d>(self.Scale(thePoint, isToFaceBasis));
 }
 inline std::unique_ptr<gp_Pnt> BRepMesh_SphereRangeSplitter_inherited_Point(const BRepMesh_SphereRangeSplitter& self, const gp_Pnt2d& thePoint2d) {
@@ -8874,7 +9072,7 @@ inline void BRepMesh_TorusRangeSplitter_inherited_AdjustRange(BRepMesh_TorusRang
 inline bool BRepMesh_TorusRangeSplitter_inherited_IsValid(BRepMesh_TorusRangeSplitter& self) {
     return self.IsValid();
 }
-inline std::unique_ptr<gp_Pnt2d> BRepMesh_TorusRangeSplitter_inherited_Scale(const BRepMesh_TorusRangeSplitter& self, const gp_Pnt2d& thePoint, bool isToFaceBasis) {
+inline std::unique_ptr<gp_Pnt2d> BRepMesh_TorusRangeSplitter_inherited_Scale(const BRepMesh_TorusRangeSplitter& self, const gp_Pnt2d& thePoint, Standard_Boolean isToFaceBasis) {
     return std::make_unique<gp_Pnt2d>(self.Scale(thePoint, isToFaceBasis));
 }
 inline std::unique_ptr<gp_Pnt> BRepMesh_TorusRangeSplitter_inherited_Point(const BRepMesh_TorusRangeSplitter& self, const gp_Pnt2d& thePoint2d) {
@@ -8918,7 +9116,7 @@ inline void BRepMesh_UVParamRangeSplitter_inherited_AdjustRange(BRepMesh_UVParam
 inline bool BRepMesh_UVParamRangeSplitter_inherited_IsValid(BRepMesh_UVParamRangeSplitter& self) {
     return self.IsValid();
 }
-inline std::unique_ptr<gp_Pnt2d> BRepMesh_UVParamRangeSplitter_inherited_Scale(const BRepMesh_UVParamRangeSplitter& self, const gp_Pnt2d& thePoint, bool isToFaceBasis) {
+inline std::unique_ptr<gp_Pnt2d> BRepMesh_UVParamRangeSplitter_inherited_Scale(const BRepMesh_UVParamRangeSplitter& self, const gp_Pnt2d& thePoint, Standard_Boolean isToFaceBasis) {
     return std::make_unique<gp_Pnt2d>(self.Scale(thePoint, isToFaceBasis));
 }
 inline std::unique_ptr<gp_Pnt> BRepMesh_UVParamRangeSplitter_inherited_Point(const BRepMesh_UVParamRangeSplitter& self, const gp_Pnt2d& thePoint2d) {
@@ -8947,7 +9145,7 @@ inline void BRepMesh_UndefinedRangeSplitter_inherited_AdjustRange(BRepMesh_Undef
 inline bool BRepMesh_UndefinedRangeSplitter_inherited_IsValid(BRepMesh_UndefinedRangeSplitter& self) {
     return self.IsValid();
 }
-inline std::unique_ptr<gp_Pnt2d> BRepMesh_UndefinedRangeSplitter_inherited_Scale(const BRepMesh_UndefinedRangeSplitter& self, const gp_Pnt2d& thePoint, bool isToFaceBasis) {
+inline std::unique_ptr<gp_Pnt2d> BRepMesh_UndefinedRangeSplitter_inherited_Scale(const BRepMesh_UndefinedRangeSplitter& self, const gp_Pnt2d& thePoint, Standard_Boolean isToFaceBasis) {
     return std::make_unique<gp_Pnt2d>(self.Scale(thePoint, isToFaceBasis));
 }
 inline std::unique_ptr<gp_Pnt> BRepMesh_UndefinedRangeSplitter_inherited_Point(const BRepMesh_UndefinedRangeSplitter& self, const gp_Pnt2d& thePoint2d) {
@@ -8981,6 +9179,9 @@ inline void BRepMesh_Vertex_set_movability(BRepMesh_Vertex& self_, int32_t theMo
 // BRepMesh_VertexTool wrappers
 // ========================
 
+inline rust::String BRepMesh_VertexTool_get_type_name() {
+    return rust::String(BRepMesh_VertexTool::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepMesh_VertexTool_get_type_descriptor() {
     return BRepMesh_VertexTool::get_type_descriptor();
 }
@@ -9326,7 +9527,7 @@ inline bool BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(BRepOffsetAPI_MakeT
 inline void BRepOffsetAPI_MakeThickSolid_inherited_PerformBySimple(BRepOffsetAPI_MakeThickSolid& self, const TopoDS_Shape& theS, Standard_Real theOffsetValue) {
     self.PerformBySimple(theS, theOffsetValue);
 }
-inline void BRepOffsetAPI_MakeThickSolid_inherited_PerformByJoin(BRepOffsetAPI_MakeThickSolid& self, const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, bool Intersection, bool SelfInter, int32_t Join, bool RemoveIntEdges, const Message_ProgressRange& theRange) {
+inline void BRepOffsetAPI_MakeThickSolid_inherited_PerformByJoin(BRepOffsetAPI_MakeThickSolid& self, const TopoDS_Shape& S, Standard_Real Offset, Standard_Real Tol, int32_t Mode, Standard_Boolean Intersection, Standard_Boolean SelfInter, int32_t Join, Standard_Boolean RemoveIntEdges, const Message_ProgressRange& theRange) {
     self.PerformByJoin(S, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join), RemoveIntEdges, theRange);
 }
 inline const BRepOffset_MakeOffset& BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(const BRepOffsetAPI_MakeThickSolid& self) {
@@ -10026,6 +10227,9 @@ inline std::unique_ptr<BRepTools_CopyModification> BRepTools_CopyModification_ct
 inline int32_t BRepTools_CopyModification_continuity(BRepTools_CopyModification& self_, const TopoDS_Edge& theEdge, const TopoDS_Face& theFace1, const TopoDS_Face& theFace2, const TopoDS_Edge& theNewEdge, const TopoDS_Face& theNewFace1, const TopoDS_Face& theNewFace2) {
     return static_cast<int32_t>(self_.Continuity(theEdge, theFace1, theFace2, theNewEdge, theNewFace1, theNewFace2));
 }
+inline rust::String BRepTools_CopyModification_get_type_name() {
+    return rust::String(BRepTools_CopyModification::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepTools_CopyModification_get_type_descriptor() {
     return BRepTools_CopyModification::get_type_descriptor();
 }
@@ -10041,6 +10245,9 @@ inline std::unique_ptr<BRepTools_GTrsfModification> BRepTools_GTrsfModification_
 }
 inline int32_t BRepTools_GTrsfModification_continuity(BRepTools_GTrsfModification& self_, const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2, const TopoDS_Edge& NewE, const TopoDS_Face& NewF1, const TopoDS_Face& NewF2) {
     return static_cast<int32_t>(self_.Continuity(E, F1, F2, NewE, NewF1, NewF2));
+}
+inline rust::String BRepTools_GTrsfModification_get_type_name() {
+    return rust::String(BRepTools_GTrsfModification::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepTools_GTrsfModification_get_type_descriptor() {
     return BRepTools_GTrsfModification::get_type_descriptor();
@@ -10058,6 +10265,9 @@ inline std::unique_ptr<BRepTools_History> BRepTools_History_ctor() {
 inline Standard_Boolean BRepTools_History_is_supported_type(const TopoDS_Shape& theShape) {
     return BRepTools_History::IsSupportedType(theShape);
 }
+inline rust::String BRepTools_History_get_type_name() {
+    return rust::String(BRepTools_History::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepTools_History_get_type_descriptor() {
     return BRepTools_History::get_type_descriptor();
 }
@@ -10073,6 +10283,9 @@ inline BRepTools_History& HandleBRepToolsHistory_get_mut(HandleBRepToolsHistory&
 
 inline int32_t BRepTools_Modification_continuity(BRepTools_Modification& self_, const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2, const TopoDS_Edge& NewE, const TopoDS_Face& NewF1, const TopoDS_Face& NewF2) {
     return static_cast<int32_t>(self_.Continuity(E, F1, F2, NewE, NewF1, NewF2));
+}
+inline rust::String BRepTools_Modification_get_type_name() {
+    return rust::String(BRepTools_Modification::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepTools_Modification_get_type_descriptor() {
     return BRepTools_Modification::get_type_descriptor();
@@ -10103,6 +10316,9 @@ inline std::unique_ptr<BRepTools_NurbsConvertModification> BRepTools_NurbsConver
 }
 inline int32_t BRepTools_NurbsConvertModification_continuity(BRepTools_NurbsConvertModification& self_, const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2, const TopoDS_Edge& NewE, const TopoDS_Face& NewF1, const TopoDS_Face& NewF2) {
     return static_cast<int32_t>(self_.Continuity(E, F1, F2, NewE, NewF1, NewF2));
+}
+inline rust::String BRepTools_NurbsConvertModification_get_type_name() {
+    return rust::String(BRepTools_NurbsConvertModification::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepTools_NurbsConvertModification_get_type_descriptor() {
     return BRepTools_NurbsConvertModification::get_type_descriptor();
@@ -10155,6 +10371,9 @@ inline std::unique_ptr<TopoDS_Vertex> BRepTools_ReShape_copy_vertex_vertex_pnt_r
 }
 inline std::unique_ptr<opencascade::handle<BRepTools_History>> BRepTools_ReShape_history(const BRepTools_ReShape& self_) {
     return std::make_unique<opencascade::handle<BRepTools_History>>(self_.History());
+}
+inline rust::String BRepTools_ReShape_get_type_name() {
+    return rust::String(BRepTools_ReShape::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepTools_ReShape_get_type_descriptor() {
     return BRepTools_ReShape::get_type_descriptor();
@@ -10225,6 +10444,9 @@ inline std::unique_ptr<BRepTools_TrsfModification> BRepTools_TrsfModification_ct
 }
 inline int32_t BRepTools_TrsfModification_continuity(BRepTools_TrsfModification& self_, const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2, const TopoDS_Edge& NewE, const TopoDS_Face& NewF1, const TopoDS_Face& NewF2) {
     return static_cast<int32_t>(self_.Continuity(E, F1, F2, NewE, NewF1, NewF2));
+}
+inline rust::String BRepTools_TrsfModification_get_type_name() {
+    return rust::String(BRepTools_TrsfModification::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& BRepTools_TrsfModification_get_type_descriptor() {
     return BRepTools_TrsfModification::get_type_descriptor();
@@ -10840,6 +11062,9 @@ inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_sphere_real(con
 inline std::unique_ptr<Extrema_ExtPExtS> Extrema_ExtPExtS_ctor() {
     return std::make_unique<Extrema_ExtPExtS>();
 }
+inline rust::String Extrema_ExtPExtS_get_type_name() {
+    return rust::String(Extrema_ExtPExtS::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Extrema_ExtPExtS_get_type_descriptor() {
     return Extrema_ExtPExtS::get_type_descriptor();
 }
@@ -10855,6 +11080,9 @@ inline Extrema_ExtPExtS& HandleExtremaExtPExtS_get_mut(HandleExtremaExtPExtS& ha
 
 inline std::unique_ptr<Extrema_ExtPRevS> Extrema_ExtPRevS_ctor() {
     return std::make_unique<Extrema_ExtPRevS>();
+}
+inline rust::String Extrema_ExtPRevS_get_type_name() {
+    return rust::String(Extrema_ExtPRevS::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Extrema_ExtPRevS_get_type_descriptor() {
     return Extrema_ExtPRevS::get_type_descriptor();
@@ -11147,6 +11375,9 @@ inline std::unique_ptr<Extrema_HArray1OfPOnCurv> Extrema_HArray1OfPOnCurv_ctor_p
 inline std::unique_ptr<Extrema_HArray1OfPOnCurv> Extrema_HArray1OfPOnCurv_ctor_array1ofponcurv(const Extrema_Array1OfPOnCurv& theOther) {
     return std::make_unique<Extrema_HArray1OfPOnCurv>(theOther);
 }
+inline rust::String Extrema_HArray1OfPOnCurv_get_type_name() {
+    return rust::String(Extrema_HArray1OfPOnCurv::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Extrema_HArray1OfPOnCurv_get_type_descriptor() {
     return Extrema_HArray1OfPOnCurv::get_type_descriptor();
 }
@@ -11174,6 +11405,9 @@ inline std::unique_ptr<Extrema_HArray1OfPOnCurv2d> Extrema_HArray1OfPOnCurv2d_ct
 }
 inline std::unique_ptr<Extrema_HArray1OfPOnCurv2d> Extrema_HArray1OfPOnCurv2d_ctor_array1ofponcurv2d(const Extrema_Array1OfPOnCurv2d& theOther) {
     return std::make_unique<Extrema_HArray1OfPOnCurv2d>(theOther);
+}
+inline rust::String Extrema_HArray1OfPOnCurv2d_get_type_name() {
+    return rust::String(Extrema_HArray1OfPOnCurv2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Extrema_HArray1OfPOnCurv2d_get_type_descriptor() {
     return Extrema_HArray1OfPOnCurv2d::get_type_descriptor();
@@ -11203,6 +11437,9 @@ inline std::unique_ptr<Extrema_HArray1OfPOnSurf> Extrema_HArray1OfPOnSurf_ctor_p
 inline std::unique_ptr<Extrema_HArray1OfPOnSurf> Extrema_HArray1OfPOnSurf_ctor_array1ofponsurf(const Extrema_Array1OfPOnSurf& theOther) {
     return std::make_unique<Extrema_HArray1OfPOnSurf>(theOther);
 }
+inline rust::String Extrema_HArray1OfPOnSurf_get_type_name() {
+    return rust::String(Extrema_HArray1OfPOnSurf::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Extrema_HArray1OfPOnSurf_get_type_descriptor() {
     return Extrema_HArray1OfPOnSurf::get_type_descriptor();
 }
@@ -11224,6 +11461,9 @@ inline std::unique_ptr<Extrema_HArray2OfPOnCurv> Extrema_HArray2OfPOnCurv_ctor_i
 }
 inline std::unique_ptr<Extrema_HArray2OfPOnCurv> Extrema_HArray2OfPOnCurv_ctor_array2ofponcurv(const Extrema_Array2OfPOnCurv& theOther) {
     return std::make_unique<Extrema_HArray2OfPOnCurv>(theOther);
+}
+inline rust::String Extrema_HArray2OfPOnCurv_get_type_name() {
+    return rust::String(Extrema_HArray2OfPOnCurv::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Extrema_HArray2OfPOnCurv_get_type_descriptor() {
     return Extrema_HArray2OfPOnCurv::get_type_descriptor();
@@ -11247,6 +11487,9 @@ inline std::unique_ptr<Extrema_HArray2OfPOnCurv2d> Extrema_HArray2OfPOnCurv2d_ct
 inline std::unique_ptr<Extrema_HArray2OfPOnCurv2d> Extrema_HArray2OfPOnCurv2d_ctor_array2ofponcurv2d(const Extrema_Array2OfPOnCurv2d& theOther) {
     return std::make_unique<Extrema_HArray2OfPOnCurv2d>(theOther);
 }
+inline rust::String Extrema_HArray2OfPOnCurv2d_get_type_name() {
+    return rust::String(Extrema_HArray2OfPOnCurv2d::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Extrema_HArray2OfPOnCurv2d_get_type_descriptor() {
     return Extrema_HArray2OfPOnCurv2d::get_type_descriptor();
 }
@@ -11268,6 +11511,9 @@ inline std::unique_ptr<Extrema_HArray2OfPOnSurf> Extrema_HArray2OfPOnSurf_ctor_i
 }
 inline std::unique_ptr<Extrema_HArray2OfPOnSurf> Extrema_HArray2OfPOnSurf_ctor_array2ofponsurf(const Extrema_Array2OfPOnSurf& theOther) {
     return std::make_unique<Extrema_HArray2OfPOnSurf>(theOther);
+}
+inline rust::String Extrema_HArray2OfPOnSurf_get_type_name() {
+    return rust::String(Extrema_HArray2OfPOnSurf::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Extrema_HArray2OfPOnSurf_get_type_descriptor() {
     return Extrema_HArray2OfPOnSurf::get_type_descriptor();
@@ -12457,6 +12703,9 @@ inline std::unique_ptr<opencascade::handle<Geom_Axis1Placement>> Geom_Axis1Place
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Axis1Placement_copy(const Geom_Axis1Placement& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_Axis1Placement_get_type_name() {
+    return rust::String(Geom_Axis1Placement::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Axis1Placement_get_type_descriptor() {
     return Geom_Axis1Placement::get_type_descriptor();
 }
@@ -12481,7 +12730,7 @@ inline void Geom_Axis1Placement_inherited_SetAxis(Geom_Axis1Placement& self, con
 inline void Geom_Axis1Placement_inherited_SetLocation(Geom_Axis1Placement& self, const gp_Pnt& P) {
     self.SetLocation(P);
 }
-inline Standard_Real Geom_Axis1Placement_inherited_Angle(const Geom_Axis1Placement& self, const Handle(Geom_AxisPlacement)& Other) {
+inline Standard_Real Geom_Axis1Placement_inherited_Angle(const Geom_Axis1Placement& self, const opencascade::handle<Geom_AxisPlacement>& Other) {
     return self.Angle(Other);
 }
 inline const gp_Ax1& Geom_Axis1Placement_inherited_Axis(const Geom_Axis1Placement& self) {
@@ -12537,6 +12786,9 @@ inline std::unique_ptr<gp_Ax2> Geom_Axis2Placement_ax2(const Geom_Axis2Placement
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Axis2Placement_copy(const Geom_Axis2Placement& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_Axis2Placement_get_type_name() {
+    return rust::String(Geom_Axis2Placement::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Axis2Placement_get_type_descriptor() {
     return Geom_Axis2Placement::get_type_descriptor();
 }
@@ -12561,7 +12813,7 @@ inline void Geom_Axis2Placement_inherited_SetAxis(Geom_Axis2Placement& self, con
 inline void Geom_Axis2Placement_inherited_SetLocation(Geom_Axis2Placement& self, const gp_Pnt& P) {
     self.SetLocation(P);
 }
-inline Standard_Real Geom_Axis2Placement_inherited_Angle(const Geom_Axis2Placement& self, const Handle(Geom_AxisPlacement)& Other) {
+inline Standard_Real Geom_Axis2Placement_inherited_Angle(const Geom_Axis2Placement& self, const opencascade::handle<Geom_AxisPlacement>& Other) {
     return self.Angle(Other);
 }
 inline const gp_Ax1& Geom_Axis2Placement_inherited_Axis(const Geom_Axis2Placement& self) {
@@ -12610,6 +12862,9 @@ inline std::unique_ptr<gp_Dir> Geom_AxisPlacement_direction(const Geom_AxisPlace
 }
 inline std::unique_ptr<gp_Pnt> Geom_AxisPlacement_location(const Geom_AxisPlacement& self_) {
     return std::make_unique<gp_Pnt>(self_.Location());
+}
+inline rust::String Geom_AxisPlacement_get_type_name() {
+    return rust::String(Geom_AxisPlacement::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_AxisPlacement_get_type_descriptor() {
     return Geom_AxisPlacement::get_type_descriptor();
@@ -12691,6 +12946,9 @@ inline int32_t Geom_BSplineCurve_knot_distribution(const Geom_BSplineCurve& self
 }
 inline Standard_Integer Geom_BSplineCurve_max_degree() {
     return Geom_BSplineCurve::MaxDegree();
+}
+inline rust::String Geom_BSplineCurve_get_type_name() {
+    return rust::String(Geom_BSplineCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_BSplineCurve_get_type_descriptor() {
     return Geom_BSplineCurve::get_type_descriptor();
@@ -12804,6 +13062,9 @@ inline int32_t Geom_BSplineSurface_v_knot_distribution(const Geom_BSplineSurface
 inline Standard_Integer Geom_BSplineSurface_max_degree() {
     return Geom_BSplineSurface::MaxDegree();
 }
+inline rust::String Geom_BSplineSurface_get_type_name() {
+    return rust::String(Geom_BSplineSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_BSplineSurface_get_type_descriptor() {
     return Geom_BSplineSurface::get_type_descriptor();
 }
@@ -12904,6 +13165,9 @@ inline int32_t Geom_BezierCurve_continuity(const Geom_BezierCurve& self_) {
 inline Standard_Integer Geom_BezierCurve_max_degree() {
     return Geom_BezierCurve::MaxDegree();
 }
+inline rust::String Geom_BezierCurve_get_type_name() {
+    return rust::String(Geom_BezierCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_BezierCurve_get_type_descriptor() {
     return Geom_BezierCurve::get_type_descriptor();
 }
@@ -12998,6 +13262,9 @@ inline int32_t Geom_BezierSurface_continuity(const Geom_BezierSurface& self_) {
 inline Standard_Integer Geom_BezierSurface_max_degree() {
     return Geom_BezierSurface::MaxDegree();
 }
+inline rust::String Geom_BezierSurface_get_type_name() {
+    return rust::String(Geom_BezierSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_BezierSurface_get_type_descriptor() {
     return Geom_BezierSurface::get_type_descriptor();
 }
@@ -13079,6 +13346,9 @@ inline std::unique_ptr<gp_Pnt> Geom_BoundedCurve_end_point(const Geom_BoundedCur
 }
 inline std::unique_ptr<gp_Pnt> Geom_BoundedCurve_start_point(const Geom_BoundedCurve& self_) {
     return std::make_unique<gp_Pnt>(self_.StartPoint());
+}
+inline rust::String Geom_BoundedCurve_get_type_name() {
+    return rust::String(Geom_BoundedCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_BoundedCurve_get_type_descriptor() {
     return Geom_BoundedCurve::get_type_descriptor();
@@ -13187,6 +13457,9 @@ inline std::unique_ptr<Handle(Geom_Geometry)> Geom_BoundedCurve_inherited_Copy(c
 // Geom_BoundedSurface wrappers
 // ========================
 
+inline rust::String Geom_BoundedSurface_get_type_name() {
+    return rust::String(Geom_BoundedSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_BoundedSurface_get_type_descriptor() {
     return Geom_BoundedSurface::get_type_descriptor();
 }
@@ -13330,6 +13603,9 @@ inline std::unique_ptr<gp_Pnt> Geom_CartesianPoint_pnt(const Geom_CartesianPoint
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_CartesianPoint_copy(const Geom_CartesianPoint& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_CartesianPoint_get_type_name() {
+    return rust::String(Geom_CartesianPoint::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_CartesianPoint_get_type_descriptor() {
     return Geom_CartesianPoint::get_type_descriptor();
 }
@@ -13375,10 +13651,10 @@ inline std::unique_ptr<Handle(Geom_Geometry)> Geom_CartesianPoint_inherited_Tran
 inline std::unique_ptr<Handle(Geom_Geometry)> Geom_CartesianPoint_inherited_Translated(const Geom_CartesianPoint& self, const gp_Vec& V) {
     return std::make_unique<Handle(Geom_Geometry)>(self.Translated(V));
 }
-inline Standard_Real Geom_CartesianPoint_inherited_Distance(const Geom_CartesianPoint& self, const Handle(Geom_Point)& Other) {
+inline Standard_Real Geom_CartesianPoint_inherited_Distance(const Geom_CartesianPoint& self, const opencascade::handle<Geom_Point>& Other) {
     return self.Distance(Other);
 }
-inline Standard_Real Geom_CartesianPoint_inherited_SquareDistance(const Geom_CartesianPoint& self, const Handle(Geom_Point)& Other) {
+inline Standard_Real Geom_CartesianPoint_inherited_SquareDistance(const Geom_CartesianPoint& self, const opencascade::handle<Geom_Point>& Other) {
     return self.SquareDistance(Other);
 }
 
@@ -13400,6 +13676,9 @@ inline std::unique_ptr<gp_Vec> Geom_Circle_dn(const Geom_Circle& self_, Standard
 }
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Circle_copy(const Geom_Circle& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
+}
+inline rust::String Geom_Circle_get_type_name() {
+    return rust::String(Geom_Circle::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_Circle_get_type_descriptor() {
     return Geom_Circle::get_type_descriptor();
@@ -13512,6 +13791,9 @@ inline std::unique_ptr<gp_Ax1> Geom_Conic_y_axis(const Geom_Conic& self_) {
 }
 inline int32_t Geom_Conic_continuity(const Geom_Conic& self_) {
     return static_cast<int32_t>(self_.Continuity());
+}
+inline rust::String Geom_Conic_get_type_name() {
+    return rust::String(Geom_Conic::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_Conic_get_type_descriptor() {
     return Geom_Conic::get_type_descriptor();
@@ -13635,6 +13917,9 @@ inline std::unique_ptr<gp_Vec> Geom_ConicalSurface_dn(const Geom_ConicalSurface&
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_ConicalSurface_copy(const Geom_ConicalSurface& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_ConicalSurface_get_type_name() {
+    return rust::String(Geom_ConicalSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_ConicalSurface_get_type_descriptor() {
     return Geom_ConicalSurface::get_type_descriptor();
 }
@@ -13747,6 +14032,9 @@ inline std::unique_ptr<gp_Pnt> Geom_Curve_value(const Geom_Curve& self_, Standar
 inline int32_t Geom_Curve_continuity(const Geom_Curve& self_) {
     return static_cast<int32_t>(self_.Continuity());
 }
+inline rust::String Geom_Curve_get_type_name() {
+    return rust::String(Geom_Curve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Curve_get_type_descriptor() {
     return Geom_Curve::get_type_descriptor();
 }
@@ -13818,6 +14106,9 @@ inline std::unique_ptr<gp_Vec> Geom_CylindricalSurface_dn(const Geom_Cylindrical
 }
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_CylindricalSurface_copy(const Geom_CylindricalSurface& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
+}
+inline rust::String Geom_CylindricalSurface_get_type_name() {
+    return rust::String(Geom_CylindricalSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_CylindricalSurface_get_type_descriptor() {
     return Geom_CylindricalSurface::get_type_descriptor();
@@ -13940,6 +14231,9 @@ inline std::unique_ptr<opencascade::handle<Geom_Vector>> Geom_Direction_cross_cr
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Direction_copy(const Geom_Direction& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_Direction_get_type_name() {
+    return rust::String(Geom_Direction::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Direction_get_type_descriptor() {
     return Geom_Direction::get_type_descriptor();
 }
@@ -13991,10 +14285,10 @@ inline void Geom_Direction_inherited_Reverse(Geom_Direction& self) {
 inline std::unique_ptr<Handle(Geom_Vector)> Geom_Direction_inherited_Reversed(const Geom_Direction& self) {
     return std::make_unique<Handle(Geom_Vector)>(self.Reversed());
 }
-inline Standard_Real Geom_Direction_inherited_Angle(const Geom_Direction& self, const Handle(Geom_Vector)& Other) {
+inline Standard_Real Geom_Direction_inherited_Angle(const Geom_Direction& self, const opencascade::handle<Geom_Vector>& Other) {
     return self.Angle(Other);
 }
-inline Standard_Real Geom_Direction_inherited_AngleWithRef(const Geom_Direction& self, const Handle(Geom_Vector)& Other, const Handle(Geom_Vector)& VRef) {
+inline Standard_Real Geom_Direction_inherited_AngleWithRef(const Geom_Direction& self, const opencascade::handle<Geom_Vector>& Other, const opencascade::handle<Geom_Vector>& VRef) {
     return self.AngleWithRef(Other, VRef);
 }
 inline void Geom_Direction_inherited_Coord(const Geom_Direction& self, Standard_Real& X, Standard_Real& Y, Standard_Real& Z) {
@@ -14009,10 +14303,10 @@ inline Standard_Real Geom_Direction_inherited_Y(const Geom_Direction& self) {
 inline Standard_Real Geom_Direction_inherited_Z(const Geom_Direction& self) {
     return self.Z();
 }
-inline Standard_Real Geom_Direction_inherited_Dot(const Geom_Direction& self, const Handle(Geom_Vector)& Other) {
+inline Standard_Real Geom_Direction_inherited_Dot(const Geom_Direction& self, const opencascade::handle<Geom_Vector>& Other) {
     return self.Dot(Other);
 }
-inline Standard_Real Geom_Direction_inherited_DotCross(const Geom_Direction& self, const Handle(Geom_Vector)& V1, const Handle(Geom_Vector)& V2) {
+inline Standard_Real Geom_Direction_inherited_DotCross(const Geom_Direction& self, const opencascade::handle<Geom_Vector>& V1, const opencascade::handle<Geom_Vector>& V2) {
     return self.DotCross(V1, V2);
 }
 inline const gp_Vec& Geom_Direction_inherited_Vec(const Geom_Direction& self) {
@@ -14025,6 +14319,9 @@ inline const gp_Vec& Geom_Direction_inherited_Vec(const Geom_Direction& self) {
 
 inline int32_t Geom_ElementarySurface_continuity(const Geom_ElementarySurface& self_) {
     return static_cast<int32_t>(self_.Continuity());
+}
+inline rust::String Geom_ElementarySurface_get_type_name() {
+    return rust::String(Geom_ElementarySurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_ElementarySurface_get_type_descriptor() {
     return Geom_ElementarySurface::get_type_descriptor();
@@ -14163,6 +14460,9 @@ inline std::unique_ptr<gp_Vec> Geom_Ellipse_dn(const Geom_Ellipse& self_, Standa
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Ellipse_copy(const Geom_Ellipse& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_Ellipse_get_type_name() {
+    return rust::String(Geom_Ellipse::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Ellipse_get_type_descriptor() {
     return Geom_Ellipse::get_type_descriptor();
 }
@@ -14293,6 +14593,9 @@ inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_transla
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_copy(const Geom_Geometry& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_Geometry_get_type_name() {
+    return rust::String(Geom_Geometry::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Geometry_get_type_descriptor() {
     return Geom_Geometry::get_type_descriptor();
 }
@@ -14308,6 +14611,9 @@ inline std::unique_ptr<Geom_HSequenceOfBSplineSurface> Geom_HSequenceOfBSplineSu
 }
 inline std::unique_ptr<Geom_HSequenceOfBSplineSurface> Geom_HSequenceOfBSplineSurface_ctor_sequenceofbsplinesurface(const Geom_SequenceOfBSplineSurface& theOther) {
     return std::make_unique<Geom_HSequenceOfBSplineSurface>(theOther);
+}
+inline rust::String Geom_HSequenceOfBSplineSurface_get_type_name() {
+    return rust::String(Geom_HSequenceOfBSplineSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_HSequenceOfBSplineSurface_get_type_descriptor() {
     return Geom_HSequenceOfBSplineSurface::get_type_descriptor();
@@ -14363,6 +14669,9 @@ inline std::unique_ptr<gp_Vec> Geom_Hyperbola_dn(const Geom_Hyperbola& self_, St
 }
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Hyperbola_copy(const Geom_Hyperbola& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
+}
+inline rust::String Geom_Hyperbola_get_type_name() {
+    return rust::String(Geom_Hyperbola::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_Hyperbola_get_type_descriptor() {
     return Geom_Hyperbola::get_type_descriptor();
@@ -14488,6 +14797,9 @@ inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Line_copy(const 
 inline int32_t Geom_Line_continuity(const Geom_Line& self_) {
     return static_cast<int32_t>(self_.Continuity());
 }
+inline rust::String Geom_Line_get_type_name() {
+    return rust::String(Geom_Line::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Line_get_type_descriptor() {
     return Geom_Line::get_type_descriptor();
 }
@@ -14564,6 +14876,9 @@ inline int32_t Geom_OffsetCurve_continuity(const Geom_OffsetCurve& self_) {
 }
 inline int32_t Geom_OffsetCurve_get_basis_curve_continuity(const Geom_OffsetCurve& self_) {
     return static_cast<int32_t>(self_.GetBasisCurveContinuity());
+}
+inline rust::String Geom_OffsetCurve_get_type_name() {
+    return rust::String(Geom_OffsetCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_OffsetCurve_get_type_descriptor() {
     return Geom_OffsetCurve::get_type_descriptor();
@@ -14648,6 +14963,9 @@ inline int32_t Geom_OffsetSurface_continuity(const Geom_OffsetSurface& self_) {
 inline int32_t Geom_OffsetSurface_get_basis_surf_continuity(const Geom_OffsetSurface& self_) {
     return static_cast<int32_t>(self_.GetBasisSurfContinuity());
 }
+inline rust::String Geom_OffsetSurface_get_type_name() {
+    return rust::String(Geom_OffsetSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_OffsetSurface_get_type_descriptor() {
     return Geom_OffsetSurface::get_type_descriptor();
 }
@@ -14716,6 +15034,9 @@ inline std::unique_ptr<Geom_OsculatingSurface> Geom_OsculatingSurface_ctor_handl
 inline std::unique_ptr<opencascade::handle<Geom_Surface>> Geom_OsculatingSurface_basis_surface(const Geom_OsculatingSurface& self_) {
     return std::make_unique<opencascade::handle<Geom_Surface>>(self_.BasisSurface());
 }
+inline rust::String Geom_OsculatingSurface_get_type_name() {
+    return rust::String(Geom_OsculatingSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_OsculatingSurface_get_type_descriptor() {
     return Geom_OsculatingSurface::get_type_descriptor();
 }
@@ -14752,6 +15073,9 @@ inline std::unique_ptr<gp_Vec> Geom_Parabola_dn(const Geom_Parabola& self_, Stan
 }
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Parabola_copy(const Geom_Parabola& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
+}
+inline rust::String Geom_Parabola_get_type_name() {
+    return rust::String(Geom_Parabola::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_Parabola_get_type_descriptor() {
     return Geom_Parabola::get_type_descriptor();
@@ -14880,6 +15204,9 @@ inline std::unique_ptr<gp_Vec> Geom_Plane_dn(const Geom_Plane& self_, Standard_R
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Plane_copy(const Geom_Plane& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_Plane_get_type_name() {
+    return rust::String(Geom_Plane::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Plane_get_type_descriptor() {
     return Geom_Plane::get_type_descriptor();
 }
@@ -14980,6 +15307,9 @@ inline std::unique_ptr<gp_Pnt> Geom_Plane_inherited_Value(const Geom_Plane& self
 inline std::unique_ptr<gp_Pnt> Geom_Point_pnt(const Geom_Point& self_) {
     return std::make_unique<gp_Pnt>(self_.Pnt());
 }
+inline rust::String Geom_Point_get_type_name() {
+    return rust::String(Geom_Point::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Point_get_type_descriptor() {
     return Geom_Point::get_type_descriptor();
 }
@@ -15054,6 +15384,9 @@ inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_RectangularTrimm
 }
 inline int32_t Geom_RectangularTrimmedSurface_continuity(const Geom_RectangularTrimmedSurface& self_) {
     return static_cast<int32_t>(self_.Continuity());
+}
+inline rust::String Geom_RectangularTrimmedSurface_get_type_name() {
+    return rust::String(Geom_RectangularTrimmedSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_RectangularTrimmedSurface_get_type_descriptor() {
     return Geom_RectangularTrimmedSurface::get_type_descriptor();
@@ -15139,6 +15472,9 @@ inline std::unique_ptr<gp_Vec> Geom_SphericalSurface_dn(const Geom_SphericalSurf
 }
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_SphericalSurface_copy(const Geom_SphericalSurface& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
+}
+inline rust::String Geom_SphericalSurface_get_type_name() {
+    return rust::String(Geom_SphericalSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_SphericalSurface_get_type_descriptor() {
     return Geom_SphericalSurface::get_type_descriptor();
@@ -15273,6 +15609,9 @@ inline std::unique_ptr<gp_Pnt> Geom_Surface_value(const Geom_Surface& self_, Sta
 inline int32_t Geom_Surface_continuity(const Geom_Surface& self_) {
     return static_cast<int32_t>(self_.Continuity());
 }
+inline rust::String Geom_Surface_get_type_name() {
+    return rust::String(Geom_Surface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Surface_get_type_descriptor() {
     return Geom_Surface::get_type_descriptor();
 }
@@ -15338,6 +15677,9 @@ inline std::unique_ptr<gp_GTrsf2d> Geom_SurfaceOfLinearExtrusion_parametric_tran
 }
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_SurfaceOfLinearExtrusion_copy(const Geom_SurfaceOfLinearExtrusion& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
+}
+inline rust::String Geom_SurfaceOfLinearExtrusion_get_type_name() {
+    return rust::String(Geom_SurfaceOfLinearExtrusion::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_SurfaceOfLinearExtrusion_get_type_descriptor() {
     return Geom_SurfaceOfLinearExtrusion::get_type_descriptor();
@@ -15442,6 +15784,9 @@ inline std::unique_ptr<gp_Vec> Geom_SurfaceOfRevolution_dn(const Geom_SurfaceOfR
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_SurfaceOfRevolution_copy(const Geom_SurfaceOfRevolution& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_SurfaceOfRevolution_get_type_name() {
+    return rust::String(Geom_SurfaceOfRevolution::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_SurfaceOfRevolution_get_type_descriptor() {
     return Geom_SurfaceOfRevolution::get_type_descriptor();
 }
@@ -15526,6 +15871,9 @@ inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_SweptSurface_basis_
 }
 inline int32_t Geom_SweptSurface_continuity(const Geom_SweptSurface& self_) {
     return static_cast<int32_t>(self_.Continuity());
+}
+inline rust::String Geom_SweptSurface_get_type_name() {
+    return rust::String(Geom_SweptSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_SweptSurface_get_type_descriptor() {
     return Geom_SweptSurface::get_type_descriptor();
@@ -15676,6 +16024,9 @@ inline std::unique_ptr<gp_Vec> Geom_ToroidalSurface_dn(const Geom_ToroidalSurfac
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_ToroidalSurface_copy(const Geom_ToroidalSurface& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_ToroidalSurface_get_type_name() {
+    return rust::String(Geom_ToroidalSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_ToroidalSurface_get_type_descriptor() {
     return Geom_ToroidalSurface::get_type_descriptor();
 }
@@ -15806,6 +16157,9 @@ inline std::unique_ptr<opencascade::handle<Geom_Transformation>> Geom_Transforma
 inline int32_t Geom_Transformation_form(const Geom_Transformation& self_) {
     return static_cast<int32_t>(self_.Form());
 }
+inline rust::String Geom_Transformation_get_type_name() {
+    return rust::String(Geom_Transformation::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_Transformation_get_type_descriptor() {
     return Geom_Transformation::get_type_descriptor();
 }
@@ -15839,6 +16193,9 @@ inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_TrimmedCurve_cop
 }
 inline int32_t Geom_TrimmedCurve_continuity(const Geom_TrimmedCurve& self_) {
     return static_cast<int32_t>(self_.Continuity());
+}
+inline rust::String Geom_TrimmedCurve_get_type_name() {
+    return rust::String(Geom_TrimmedCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_TrimmedCurve_get_type_descriptor() {
     return Geom_TrimmedCurve::get_type_descriptor();
@@ -15913,6 +16270,9 @@ inline std::unique_ptr<Geom_UndefinedDerivative> Geom_UndefinedDerivative_ctor_c
 inline void Geom_UndefinedDerivative_raise(rust::Str theMessage) {
     return Geom_UndefinedDerivative::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Geom_UndefinedDerivative_get_type_name() {
+    return rust::String(Geom_UndefinedDerivative::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_UndefinedDerivative_get_type_descriptor() {
     return Geom_UndefinedDerivative::get_type_descriptor();
 }
@@ -15933,6 +16293,9 @@ inline std::unique_ptr<Geom_UndefinedValue> Geom_UndefinedValue_ctor_charptr2(ru
 inline void Geom_UndefinedValue_raise(rust::Str theMessage) {
     return Geom_UndefinedValue::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Geom_UndefinedValue_get_type_name() {
+    return rust::String(Geom_UndefinedValue::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_UndefinedValue_get_type_descriptor() {
     return Geom_UndefinedValue::get_type_descriptor();
 }
@@ -15949,6 +16312,9 @@ inline std::unique_ptr<opencascade::handle<Geom_Vector>> Geom_Vector_crossed(con
 }
 inline std::unique_ptr<opencascade::handle<Geom_Vector>> Geom_Vector_cross_crossed(const Geom_Vector& self_, const opencascade::handle<Geom_Vector>& V1, const opencascade::handle<Geom_Vector>& V2) {
     return std::make_unique<opencascade::handle<Geom_Vector>>(self_.CrossCrossed(V1, V2));
+}
+inline rust::String Geom_Vector_get_type_name() {
+    return rust::String(Geom_Vector::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom_Vector_get_type_descriptor() {
     return Geom_Vector::get_type_descriptor();
@@ -16031,6 +16397,9 @@ inline std::unique_ptr<opencascade::handle<Geom_VectorWithMagnitude>> Geom_Vecto
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_VectorWithMagnitude_copy(const Geom_VectorWithMagnitude& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
+inline rust::String Geom_VectorWithMagnitude_get_type_name() {
+    return rust::String(Geom_VectorWithMagnitude::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom_VectorWithMagnitude_get_type_descriptor() {
     return Geom_VectorWithMagnitude::get_type_descriptor();
 }
@@ -16082,10 +16451,10 @@ inline void Geom_VectorWithMagnitude_inherited_Reverse(Geom_VectorWithMagnitude&
 inline std::unique_ptr<Handle(Geom_Vector)> Geom_VectorWithMagnitude_inherited_Reversed(const Geom_VectorWithMagnitude& self) {
     return std::make_unique<Handle(Geom_Vector)>(self.Reversed());
 }
-inline Standard_Real Geom_VectorWithMagnitude_inherited_Angle(const Geom_VectorWithMagnitude& self, const Handle(Geom_Vector)& Other) {
+inline Standard_Real Geom_VectorWithMagnitude_inherited_Angle(const Geom_VectorWithMagnitude& self, const opencascade::handle<Geom_Vector>& Other) {
     return self.Angle(Other);
 }
-inline Standard_Real Geom_VectorWithMagnitude_inherited_AngleWithRef(const Geom_VectorWithMagnitude& self, const Handle(Geom_Vector)& Other, const Handle(Geom_Vector)& VRef) {
+inline Standard_Real Geom_VectorWithMagnitude_inherited_AngleWithRef(const Geom_VectorWithMagnitude& self, const opencascade::handle<Geom_Vector>& Other, const opencascade::handle<Geom_Vector>& VRef) {
     return self.AngleWithRef(Other, VRef);
 }
 inline void Geom_VectorWithMagnitude_inherited_Coord(const Geom_VectorWithMagnitude& self, Standard_Real& X, Standard_Real& Y, Standard_Real& Z) {
@@ -16100,10 +16469,10 @@ inline Standard_Real Geom_VectorWithMagnitude_inherited_Y(const Geom_VectorWithM
 inline Standard_Real Geom_VectorWithMagnitude_inherited_Z(const Geom_VectorWithMagnitude& self) {
     return self.Z();
 }
-inline Standard_Real Geom_VectorWithMagnitude_inherited_Dot(const Geom_VectorWithMagnitude& self, const Handle(Geom_Vector)& Other) {
+inline Standard_Real Geom_VectorWithMagnitude_inherited_Dot(const Geom_VectorWithMagnitude& self, const opencascade::handle<Geom_Vector>& Other) {
     return self.Dot(Other);
 }
-inline Standard_Real Geom_VectorWithMagnitude_inherited_DotCross(const Geom_VectorWithMagnitude& self, const Handle(Geom_Vector)& V1, const Handle(Geom_Vector)& V2) {
+inline Standard_Real Geom_VectorWithMagnitude_inherited_DotCross(const Geom_VectorWithMagnitude& self, const opencascade::handle<Geom_Vector>& V1, const opencascade::handle<Geom_Vector>& V2) {
     return self.DotCross(V1, V2);
 }
 inline const gp_Vec& Geom_VectorWithMagnitude_inherited_Vec(const Geom_VectorWithMagnitude& self) {
@@ -16134,6 +16503,9 @@ inline std::unique_ptr<gp_Pnt2d> Geom2d_AxisPlacement_location(const Geom2d_Axis
 }
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_AxisPlacement_copy(const Geom2d_AxisPlacement& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
+}
+inline rust::String Geom2d_AxisPlacement_get_type_name() {
+    return rust::String(Geom2d_AxisPlacement::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_AxisPlacement_get_type_descriptor() {
     return Geom2d_AxisPlacement::get_type_descriptor();
@@ -16212,6 +16584,9 @@ inline int32_t Geom2d_BSplineCurve_knot_distribution(const Geom2d_BSplineCurve& 
 }
 inline Standard_Integer Geom2d_BSplineCurve_max_degree() {
     return Geom2d_BSplineCurve::MaxDegree();
+}
+inline rust::String Geom2d_BSplineCurve_get_type_name() {
+    return rust::String(Geom2d_BSplineCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_BSplineCurve_get_type_descriptor() {
     return Geom2d_BSplineCurve::get_type_descriptor();
@@ -16307,6 +16682,9 @@ inline int32_t Geom2d_BezierCurve_continuity(const Geom2d_BezierCurve& self_) {
 inline Standard_Integer Geom2d_BezierCurve_max_degree() {
     return Geom2d_BezierCurve::MaxDegree();
 }
+inline rust::String Geom2d_BezierCurve_get_type_name() {
+    return rust::String(Geom2d_BezierCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_BezierCurve_get_type_descriptor() {
     return Geom2d_BezierCurve::get_type_descriptor();
 }
@@ -16382,6 +16760,9 @@ inline std::unique_ptr<gp_Pnt2d> Geom2d_BoundedCurve_end_point(const Geom2d_Boun
 }
 inline std::unique_ptr<gp_Pnt2d> Geom2d_BoundedCurve_start_point(const Geom2d_BoundedCurve& self_) {
     return std::make_unique<gp_Pnt2d>(self_.StartPoint());
+}
+inline rust::String Geom2d_BoundedCurve_get_type_name() {
+    return rust::String(Geom2d_BoundedCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_BoundedCurve_get_type_descriptor() {
     return Geom2d_BoundedCurve::get_type_descriptor();
@@ -16502,6 +16883,9 @@ inline std::unique_ptr<gp_Pnt2d> Geom2d_CartesianPoint_pnt2d(const Geom2d_Cartes
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_CartesianPoint_copy(const Geom2d_CartesianPoint& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
 }
+inline rust::String Geom2d_CartesianPoint_get_type_name() {
+    return rust::String(Geom2d_CartesianPoint::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_CartesianPoint_get_type_descriptor() {
     return Geom2d_CartesianPoint::get_type_descriptor();
 }
@@ -16547,10 +16931,10 @@ inline std::unique_ptr<Handle(Geom2d_Geometry)> Geom2d_CartesianPoint_inherited_
 inline std::unique_ptr<Handle(Geom2d_Geometry)> Geom2d_CartesianPoint_inherited_Translated(const Geom2d_CartesianPoint& self, const gp_Vec2d& V) {
     return std::make_unique<Handle(Geom2d_Geometry)>(self.Translated(V));
 }
-inline Standard_Real Geom2d_CartesianPoint_inherited_Distance(const Geom2d_CartesianPoint& self, const Handle(Geom2d_Point)& Other) {
+inline Standard_Real Geom2d_CartesianPoint_inherited_Distance(const Geom2d_CartesianPoint& self, const opencascade::handle<Geom2d_Point>& Other) {
     return self.Distance(Other);
 }
-inline Standard_Real Geom2d_CartesianPoint_inherited_SquareDistance(const Geom2d_CartesianPoint& self, const Handle(Geom2d_Point)& Other) {
+inline Standard_Real Geom2d_CartesianPoint_inherited_SquareDistance(const Geom2d_CartesianPoint& self, const opencascade::handle<Geom2d_Point>& Other) {
     return self.SquareDistance(Other);
 }
 
@@ -16575,6 +16959,9 @@ inline std::unique_ptr<gp_Vec2d> Geom2d_Circle_dn(const Geom2d_Circle& self_, St
 }
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Circle_copy(const Geom2d_Circle& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
+}
+inline rust::String Geom2d_Circle_get_type_name() {
+    return rust::String(Geom2d_Circle::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_Circle_get_type_descriptor() {
     return Geom2d_Circle::get_type_descriptor();
@@ -16688,6 +17075,9 @@ inline std::unique_ptr<gp_Ax2d> Geom2d_Conic_y_axis(const Geom2d_Conic& self_) {
 inline int32_t Geom2d_Conic_continuity(const Geom2d_Conic& self_) {
     return static_cast<int32_t>(self_.Continuity());
 }
+inline rust::String Geom2d_Conic_get_type_name() {
+    return rust::String(Geom2d_Conic::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_Conic_get_type_descriptor() {
     return Geom2d_Conic::get_type_descriptor();
 }
@@ -16795,6 +17185,9 @@ inline std::unique_ptr<gp_Pnt2d> Geom2d_Curve_value(const Geom2d_Curve& self_, S
 inline int32_t Geom2d_Curve_continuity(const Geom2d_Curve& self_) {
     return static_cast<int32_t>(self_.Continuity());
 }
+inline rust::String Geom2d_Curve_get_type_name() {
+    return rust::String(Geom2d_Curve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_Curve_get_type_descriptor() {
     return Geom2d_Curve::get_type_descriptor();
 }
@@ -16855,6 +17248,9 @@ inline std::unique_ptr<gp_Dir2d> Geom2d_Direction_dir2d(const Geom2d_Direction& 
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Direction_copy(const Geom2d_Direction& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
 }
+inline rust::String Geom2d_Direction_get_type_name() {
+    return rust::String(Geom2d_Direction::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_Direction_get_type_descriptor() {
     return Geom2d_Direction::get_type_descriptor();
 }
@@ -16906,7 +17302,7 @@ inline void Geom2d_Direction_inherited_Reverse(Geom2d_Direction& self) {
 inline std::unique_ptr<Handle(Geom2d_Vector)> Geom2d_Direction_inherited_Reversed(const Geom2d_Direction& self) {
     return std::make_unique<Handle(Geom2d_Vector)>(self.Reversed());
 }
-inline Standard_Real Geom2d_Direction_inherited_Angle(const Geom2d_Direction& self, const Handle(Geom2d_Vector)& Other) {
+inline Standard_Real Geom2d_Direction_inherited_Angle(const Geom2d_Direction& self, const opencascade::handle<Geom2d_Vector>& Other) {
     return self.Angle(Other);
 }
 inline void Geom2d_Direction_inherited_Coord(const Geom2d_Direction& self, Standard_Real& X, Standard_Real& Y) {
@@ -16918,7 +17314,7 @@ inline Standard_Real Geom2d_Direction_inherited_X(const Geom2d_Direction& self) 
 inline Standard_Real Geom2d_Direction_inherited_Y(const Geom2d_Direction& self) {
     return self.Y();
 }
-inline Standard_Real Geom2d_Direction_inherited_Dot(const Geom2d_Direction& self, const Handle(Geom2d_Vector)& Other) {
+inline Standard_Real Geom2d_Direction_inherited_Dot(const Geom2d_Direction& self, const opencascade::handle<Geom2d_Vector>& Other) {
     return self.Dot(Other);
 }
 inline std::unique_ptr<gp_Vec2d> Geom2d_Direction_inherited_Vec2d(const Geom2d_Direction& self) {
@@ -16958,6 +17354,9 @@ inline std::unique_ptr<gp_Vec2d> Geom2d_Ellipse_dn(const Geom2d_Ellipse& self_, 
 }
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Ellipse_copy(const Geom2d_Ellipse& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
+}
+inline rust::String Geom2d_Ellipse_get_type_name() {
+    return rust::String(Geom2d_Ellipse::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_Ellipse_get_type_descriptor() {
     return Geom2d_Ellipse::get_type_descriptor();
@@ -17086,6 +17485,9 @@ inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Geometry_tra
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Geometry_copy(const Geom2d_Geometry& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
 }
+inline rust::String Geom2d_Geometry_get_type_name() {
+    return rust::String(Geom2d_Geometry::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_Geometry_get_type_descriptor() {
     return Geom2d_Geometry::get_type_descriptor();
 }
@@ -17140,6 +17542,9 @@ inline std::unique_ptr<gp_Vec2d> Geom2d_Hyperbola_dn(const Geom2d_Hyperbola& sel
 }
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Hyperbola_copy(const Geom2d_Hyperbola& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
+}
+inline rust::String Geom2d_Hyperbola_get_type_name() {
+    return rust::String(Geom2d_Hyperbola::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_Hyperbola_get_type_descriptor() {
     return Geom2d_Hyperbola::get_type_descriptor();
@@ -17265,6 +17670,9 @@ inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Line_copy(co
 inline int32_t Geom2d_Line_continuity(const Geom2d_Line& self_) {
     return static_cast<int32_t>(self_.Continuity());
 }
+inline rust::String Geom2d_Line_get_type_name() {
+    return rust::String(Geom2d_Line::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_Line_get_type_descriptor() {
     return Geom2d_Line::get_type_descriptor();
 }
@@ -17341,6 +17749,9 @@ inline int32_t Geom2d_OffsetCurve_continuity(const Geom2d_OffsetCurve& self_) {
 }
 inline int32_t Geom2d_OffsetCurve_get_basis_curve_continuity(const Geom2d_OffsetCurve& self_) {
     return static_cast<int32_t>(self_.GetBasisCurveContinuity());
+}
+inline rust::String Geom2d_OffsetCurve_get_type_name() {
+    return rust::String(Geom2d_OffsetCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_OffsetCurve_get_type_descriptor() {
     return Geom2d_OffsetCurve::get_type_descriptor();
@@ -17424,6 +17835,9 @@ inline std::unique_ptr<gp_Vec2d> Geom2d_Parabola_dn(const Geom2d_Parabola& self_
 }
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Parabola_copy(const Geom2d_Parabola& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
+}
+inline rust::String Geom2d_Parabola_get_type_name() {
+    return rust::String(Geom2d_Parabola::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_Parabola_get_type_descriptor() {
     return Geom2d_Parabola::get_type_descriptor();
@@ -17525,6 +17939,9 @@ inline std::unique_ptr<Handle(Geom2d_Geometry)> Geom2d_Parabola_inherited_Transl
 inline std::unique_ptr<gp_Pnt2d> Geom2d_Point_pnt2d(const Geom2d_Point& self_) {
     return std::make_unique<gp_Pnt2d>(self_.Pnt2d());
 }
+inline rust::String Geom2d_Point_get_type_name() {
+    return rust::String(Geom2d_Point::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_Point_get_type_descriptor() {
     return Geom2d_Point::get_type_descriptor();
 }
@@ -17597,6 +18014,9 @@ inline std::unique_ptr<opencascade::handle<Geom2d_Transformation>> Geom2d_Transf
 inline int32_t Geom2d_Transformation_form(const Geom2d_Transformation& self_) {
     return static_cast<int32_t>(self_.Form());
 }
+inline rust::String Geom2d_Transformation_get_type_name() {
+    return rust::String(Geom2d_Transformation::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_Transformation_get_type_descriptor() {
     return Geom2d_Transformation::get_type_descriptor();
 }
@@ -17630,6 +18050,9 @@ inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_TrimmedCurve
 }
 inline int32_t Geom2d_TrimmedCurve_continuity(const Geom2d_TrimmedCurve& self_) {
     return static_cast<int32_t>(self_.Continuity());
+}
+inline rust::String Geom2d_TrimmedCurve_get_type_name() {
+    return rust::String(Geom2d_TrimmedCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_TrimmedCurve_get_type_descriptor() {
     return Geom2d_TrimmedCurve::get_type_descriptor();
@@ -17704,6 +18127,9 @@ inline std::unique_ptr<Geom2d_UndefinedDerivative> Geom2d_UndefinedDerivative_ct
 inline void Geom2d_UndefinedDerivative_raise(rust::Str theMessage) {
     return Geom2d_UndefinedDerivative::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Geom2d_UndefinedDerivative_get_type_name() {
+    return rust::String(Geom2d_UndefinedDerivative::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_UndefinedDerivative_get_type_descriptor() {
     return Geom2d_UndefinedDerivative::get_type_descriptor();
 }
@@ -17724,6 +18150,9 @@ inline std::unique_ptr<Geom2d_UndefinedValue> Geom2d_UndefinedValue_ctor_charptr
 inline void Geom2d_UndefinedValue_raise(rust::Str theMessage) {
     return Geom2d_UndefinedValue::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Geom2d_UndefinedValue_get_type_name() {
+    return rust::String(Geom2d_UndefinedValue::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_UndefinedValue_get_type_descriptor() {
     return Geom2d_UndefinedValue::get_type_descriptor();
 }
@@ -17737,6 +18166,9 @@ inline std::unique_ptr<opencascade::handle<Geom2d_Vector>> Geom2d_Vector_reverse
 }
 inline std::unique_ptr<gp_Vec2d> Geom2d_Vector_vec2d(const Geom2d_Vector& self_) {
     return std::make_unique<gp_Vec2d>(self_.Vec2d());
+}
+inline rust::String Geom2d_Vector_get_type_name() {
+    return rust::String(Geom2d_Vector::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2d_Vector_get_type_descriptor() {
     return Geom2d_Vector::get_type_descriptor();
@@ -17813,6 +18245,9 @@ inline std::unique_ptr<opencascade::handle<Geom2d_VectorWithMagnitude>> Geom2d_V
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_VectorWithMagnitude_copy(const Geom2d_VectorWithMagnitude& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
 }
+inline rust::String Geom2d_VectorWithMagnitude_get_type_name() {
+    return rust::String(Geom2d_VectorWithMagnitude::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2d_VectorWithMagnitude_get_type_descriptor() {
     return Geom2d_VectorWithMagnitude::get_type_descriptor();
 }
@@ -17864,7 +18299,7 @@ inline void Geom2d_VectorWithMagnitude_inherited_Reverse(Geom2d_VectorWithMagnit
 inline std::unique_ptr<Handle(Geom2d_Vector)> Geom2d_VectorWithMagnitude_inherited_Reversed(const Geom2d_VectorWithMagnitude& self) {
     return std::make_unique<Handle(Geom2d_Vector)>(self.Reversed());
 }
-inline Standard_Real Geom2d_VectorWithMagnitude_inherited_Angle(const Geom2d_VectorWithMagnitude& self, const Handle(Geom2d_Vector)& Other) {
+inline Standard_Real Geom2d_VectorWithMagnitude_inherited_Angle(const Geom2d_VectorWithMagnitude& self, const opencascade::handle<Geom2d_Vector>& Other) {
     return self.Angle(Other);
 }
 inline void Geom2d_VectorWithMagnitude_inherited_Coord(const Geom2d_VectorWithMagnitude& self, Standard_Real& X, Standard_Real& Y) {
@@ -17876,7 +18311,7 @@ inline Standard_Real Geom2d_VectorWithMagnitude_inherited_X(const Geom2d_VectorW
 inline Standard_Real Geom2d_VectorWithMagnitude_inherited_Y(const Geom2d_VectorWithMagnitude& self) {
     return self.Y();
 }
-inline Standard_Real Geom2d_VectorWithMagnitude_inherited_Dot(const Geom2d_VectorWithMagnitude& self, const Handle(Geom2d_Vector)& Other) {
+inline Standard_Real Geom2d_VectorWithMagnitude_inherited_Dot(const Geom2d_VectorWithMagnitude& self, const opencascade::handle<Geom2d_Vector>& Other) {
     return self.Dot(Other);
 }
 inline std::unique_ptr<gp_Vec2d> Geom2d_VectorWithMagnitude_inherited_Vec2d(const Geom2d_VectorWithMagnitude& self) {
@@ -19644,6 +20079,9 @@ inline std::unique_ptr<gp_VectorWithNullMagnitude> gp_VectorWithNullMagnitude_ct
 inline void gp_VectorWithNullMagnitude_raise(rust::Str theMessage) {
     return gp_VectorWithNullMagnitude::Raise(std::string(theMessage).c_str());
 }
+inline rust::String gp_VectorWithNullMagnitude_get_type_name() {
+    return rust::String(gp_VectorWithNullMagnitude::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& gp_VectorWithNullMagnitude_get_type_descriptor() {
     return gp_VectorWithNullMagnitude::get_type_descriptor();
 }
@@ -19935,6 +20373,9 @@ inline std::unique_ptr<GProp_UndefinedAxis> GProp_UndefinedAxis_ctor_charptr2(ru
 inline void GProp_UndefinedAxis_raise(rust::Str theMessage) {
     return GProp_UndefinedAxis::Raise(std::string(theMessage).c_str());
 }
+inline rust::String GProp_UndefinedAxis_get_type_name() {
+    return rust::String(GProp_UndefinedAxis::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& GProp_UndefinedAxis_get_type_descriptor() {
     return GProp_UndefinedAxis::get_type_descriptor();
 }
@@ -19991,11 +20432,17 @@ inline Standard_Real GProp_VelGProps_inherited_RadiusOfGyration(const GProp_VelG
 // IFSelect_Act wrappers
 // ========================
 
+inline std::unique_ptr<IFSelect_Act> IFSelect_Act_ctor_charptr2_actfunc(rust::Str name, rust::Str help, const IFSelect_ActFunc& func) {
+    return std::make_unique<IFSelect_Act>(std::string(name).c_str(), std::string(help).c_str(), func);
+}
 inline rust::String IFSelect_Act_help(const IFSelect_Act& self, Standard_Integer number) {
     return rust::String(self.Help(number));
 }
 inline void IFSelect_Act_set_group(rust::Str group, rust::Str file) {
     return IFSelect_Act::SetGroup(std::string(group).c_str(), std::string(file).c_str());
+}
+inline rust::String IFSelect_Act_get_type_name() {
+    return rust::String(IFSelect_Act::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_Act_get_type_descriptor() {
     return IFSelect_Act::get_type_descriptor();
@@ -20040,6 +20487,9 @@ inline Standard_Integer IFSelect_Activator_mode(rust::Str command) {
 inline std::unique_ptr<opencascade::handle<TColStd_HSequenceOfAsciiString>> IFSelect_Activator_commands(Standard_Integer mode, rust::Str command) {
     return std::make_unique<opencascade::handle<TColStd_HSequenceOfAsciiString>>(IFSelect_Activator::Commands(mode, std::string(command).c_str()));
 }
+inline rust::String IFSelect_Activator_get_type_name() {
+    return rust::String(IFSelect_Activator::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_Activator_get_type_descriptor() {
     return IFSelect_Activator::get_type_descriptor();
 }
@@ -20056,6 +20506,9 @@ inline std::unique_ptr<IFSelect_AppliedModifiers> IFSelect_AppliedModifiers_ctor
 inline std::unique_ptr<opencascade::handle<TColStd_HSequenceOfInteger>> IFSelect_AppliedModifiers_item_list(const IFSelect_AppliedModifiers& self_) {
     return std::make_unique<opencascade::handle<TColStd_HSequenceOfInteger>>(self_.ItemList());
 }
+inline rust::String IFSelect_AppliedModifiers_get_type_name() {
+    return rust::String(IFSelect_AppliedModifiers::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_AppliedModifiers_get_type_descriptor() {
     return IFSelect_AppliedModifiers::get_type_descriptor();
 }
@@ -20071,6 +20524,9 @@ inline IFSelect_AppliedModifiers& HandleIFSelectAppliedModifiers_get_mut(HandleI
 
 inline std::unique_ptr<IFSelect_BasicDumper> IFSelect_BasicDumper_ctor() {
     return std::make_unique<IFSelect_BasicDumper>();
+}
+inline rust::String IFSelect_BasicDumper_get_type_name() {
+    return rust::String(IFSelect_BasicDumper::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_BasicDumper_get_type_descriptor() {
     return IFSelect_BasicDumper::get_type_descriptor();
@@ -20091,12 +20547,15 @@ inline std::unique_ptr<IFSelect_CheckCounter> IFSelect_CheckCounter_ctor_bool(St
 inline std::unique_ptr<opencascade::handle<MoniTool_SignText>> IFSelect_CheckCounter_signature(const IFSelect_CheckCounter& self_) {
     return std::make_unique<opencascade::handle<MoniTool_SignText>>(self_.Signature());
 }
+inline rust::String IFSelect_CheckCounter_get_type_name() {
+    return rust::String(IFSelect_CheckCounter::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_CheckCounter_get_type_descriptor() {
     return IFSelect_CheckCounter::get_type_descriptor();
 }
 inline const IFSelect_SignatureList& IFSelect_CheckCounter_as_IFSelect_SignatureList(const IFSelect_CheckCounter& self_) { return static_cast<const IFSelect_SignatureList&>(self_); }
 inline IFSelect_SignatureList& IFSelect_CheckCounter_as_IFSelect_SignatureList_mut(IFSelect_CheckCounter& self_) { return static_cast<IFSelect_SignatureList&>(self_); }
-inline void IFSelect_CheckCounter_inherited_SetList(IFSelect_CheckCounter& self, bool withlist) {
+inline void IFSelect_CheckCounter_inherited_SetList(IFSelect_CheckCounter& self, Standard_Boolean withlist) {
     self.SetList(withlist);
 }
 inline bool& IFSelect_CheckCounter_inherited_ModeSignOnly(IFSelect_CheckCounter& self) {
@@ -20171,12 +20630,15 @@ inline std::unique_ptr<IFSelect_DispGlobal> IFSelect_DispGlobal_ctor() {
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_DispGlobal_label(const IFSelect_DispGlobal& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_DispGlobal_get_type_name() {
+    return rust::String(IFSelect_DispGlobal::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_DispGlobal_get_type_descriptor() {
     return IFSelect_DispGlobal::get_type_descriptor();
 }
 inline const IFSelect_Dispatch& IFSelect_DispGlobal_as_IFSelect_Dispatch(const IFSelect_DispGlobal& self_) { return static_cast<const IFSelect_Dispatch&>(self_); }
 inline IFSelect_Dispatch& IFSelect_DispGlobal_as_IFSelect_Dispatch_mut(IFSelect_DispGlobal& self_) { return static_cast<IFSelect_Dispatch&>(self_); }
-inline void IFSelect_DispGlobal_inherited_SetRootName(IFSelect_DispGlobal& self, const Handle(TCollection_HAsciiString)& name) {
+inline void IFSelect_DispGlobal_inherited_SetRootName(IFSelect_DispGlobal& self, const opencascade::handle<TCollection_HAsciiString>& name) {
     self.SetRootName(name);
 }
 inline bool IFSelect_DispGlobal_inherited_HasRootName(const IFSelect_DispGlobal& self) {
@@ -20185,7 +20647,7 @@ inline bool IFSelect_DispGlobal_inherited_HasRootName(const IFSelect_DispGlobal&
 inline const Handle(TCollection_HAsciiString)& IFSelect_DispGlobal_inherited_RootName(const IFSelect_DispGlobal& self) {
     return self.RootName();
 }
-inline void IFSelect_DispGlobal_inherited_SetFinalSelection(IFSelect_DispGlobal& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_DispGlobal_inherited_SetFinalSelection(IFSelect_DispGlobal& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetFinalSelection(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_DispGlobal_inherited_FinalSelection(const IFSelect_DispGlobal& self) {
@@ -20211,12 +20673,15 @@ inline std::unique_ptr<opencascade::handle<IFSelect_IntParam>> IFSelect_DispPerC
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_DispPerCount_label(const IFSelect_DispPerCount& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_DispPerCount_get_type_name() {
+    return rust::String(IFSelect_DispPerCount::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_DispPerCount_get_type_descriptor() {
     return IFSelect_DispPerCount::get_type_descriptor();
 }
 inline const IFSelect_Dispatch& IFSelect_DispPerCount_as_IFSelect_Dispatch(const IFSelect_DispPerCount& self_) { return static_cast<const IFSelect_Dispatch&>(self_); }
 inline IFSelect_Dispatch& IFSelect_DispPerCount_as_IFSelect_Dispatch_mut(IFSelect_DispPerCount& self_) { return static_cast<IFSelect_Dispatch&>(self_); }
-inline void IFSelect_DispPerCount_inherited_SetRootName(IFSelect_DispPerCount& self, const Handle(TCollection_HAsciiString)& name) {
+inline void IFSelect_DispPerCount_inherited_SetRootName(IFSelect_DispPerCount& self, const opencascade::handle<TCollection_HAsciiString>& name) {
     self.SetRootName(name);
 }
 inline bool IFSelect_DispPerCount_inherited_HasRootName(const IFSelect_DispPerCount& self) {
@@ -20225,7 +20690,7 @@ inline bool IFSelect_DispPerCount_inherited_HasRootName(const IFSelect_DispPerCo
 inline const Handle(TCollection_HAsciiString)& IFSelect_DispPerCount_inherited_RootName(const IFSelect_DispPerCount& self) {
     return self.RootName();
 }
-inline void IFSelect_DispPerCount_inherited_SetFinalSelection(IFSelect_DispPerCount& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_DispPerCount_inherited_SetFinalSelection(IFSelect_DispPerCount& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetFinalSelection(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_DispPerCount_inherited_FinalSelection(const IFSelect_DispPerCount& self) {
@@ -20251,12 +20716,15 @@ inline std::unique_ptr<opencascade::handle<IFSelect_IntParam>> IFSelect_DispPerF
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_DispPerFiles_label(const IFSelect_DispPerFiles& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_DispPerFiles_get_type_name() {
+    return rust::String(IFSelect_DispPerFiles::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_DispPerFiles_get_type_descriptor() {
     return IFSelect_DispPerFiles::get_type_descriptor();
 }
 inline const IFSelect_Dispatch& IFSelect_DispPerFiles_as_IFSelect_Dispatch(const IFSelect_DispPerFiles& self_) { return static_cast<const IFSelect_Dispatch&>(self_); }
 inline IFSelect_Dispatch& IFSelect_DispPerFiles_as_IFSelect_Dispatch_mut(IFSelect_DispPerFiles& self_) { return static_cast<IFSelect_Dispatch&>(self_); }
-inline void IFSelect_DispPerFiles_inherited_SetRootName(IFSelect_DispPerFiles& self, const Handle(TCollection_HAsciiString)& name) {
+inline void IFSelect_DispPerFiles_inherited_SetRootName(IFSelect_DispPerFiles& self, const opencascade::handle<TCollection_HAsciiString>& name) {
     self.SetRootName(name);
 }
 inline bool IFSelect_DispPerFiles_inherited_HasRootName(const IFSelect_DispPerFiles& self) {
@@ -20265,7 +20733,7 @@ inline bool IFSelect_DispPerFiles_inherited_HasRootName(const IFSelect_DispPerFi
 inline const Handle(TCollection_HAsciiString)& IFSelect_DispPerFiles_inherited_RootName(const IFSelect_DispPerFiles& self) {
     return self.RootName();
 }
-inline void IFSelect_DispPerFiles_inherited_SetFinalSelection(IFSelect_DispPerFiles& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_DispPerFiles_inherited_SetFinalSelection(IFSelect_DispPerFiles& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetFinalSelection(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_DispPerFiles_inherited_FinalSelection(const IFSelect_DispPerFiles& self) {
@@ -20288,12 +20756,15 @@ inline std::unique_ptr<IFSelect_DispPerOne> IFSelect_DispPerOne_ctor() {
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_DispPerOne_label(const IFSelect_DispPerOne& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_DispPerOne_get_type_name() {
+    return rust::String(IFSelect_DispPerOne::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_DispPerOne_get_type_descriptor() {
     return IFSelect_DispPerOne::get_type_descriptor();
 }
 inline const IFSelect_Dispatch& IFSelect_DispPerOne_as_IFSelect_Dispatch(const IFSelect_DispPerOne& self_) { return static_cast<const IFSelect_Dispatch&>(self_); }
 inline IFSelect_Dispatch& IFSelect_DispPerOne_as_IFSelect_Dispatch_mut(IFSelect_DispPerOne& self_) { return static_cast<IFSelect_Dispatch&>(self_); }
-inline void IFSelect_DispPerOne_inherited_SetRootName(IFSelect_DispPerOne& self, const Handle(TCollection_HAsciiString)& name) {
+inline void IFSelect_DispPerOne_inherited_SetRootName(IFSelect_DispPerOne& self, const opencascade::handle<TCollection_HAsciiString>& name) {
     self.SetRootName(name);
 }
 inline bool IFSelect_DispPerOne_inherited_HasRootName(const IFSelect_DispPerOne& self) {
@@ -20302,7 +20773,7 @@ inline bool IFSelect_DispPerOne_inherited_HasRootName(const IFSelect_DispPerOne&
 inline const Handle(TCollection_HAsciiString)& IFSelect_DispPerOne_inherited_RootName(const IFSelect_DispPerOne& self) {
     return self.RootName();
 }
-inline void IFSelect_DispPerOne_inherited_SetFinalSelection(IFSelect_DispPerOne& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_DispPerOne_inherited_SetFinalSelection(IFSelect_DispPerOne& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetFinalSelection(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_DispPerOne_inherited_FinalSelection(const IFSelect_DispPerOne& self) {
@@ -20328,12 +20799,15 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_DispPerSignature_label(
 inline rust::String IFSelect_DispPerSignature_sign_name(const IFSelect_DispPerSignature& self) {
     return rust::String(self.SignName());
 }
+inline rust::String IFSelect_DispPerSignature_get_type_name() {
+    return rust::String(IFSelect_DispPerSignature::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_DispPerSignature_get_type_descriptor() {
     return IFSelect_DispPerSignature::get_type_descriptor();
 }
 inline const IFSelect_Dispatch& IFSelect_DispPerSignature_as_IFSelect_Dispatch(const IFSelect_DispPerSignature& self_) { return static_cast<const IFSelect_Dispatch&>(self_); }
 inline IFSelect_Dispatch& IFSelect_DispPerSignature_as_IFSelect_Dispatch_mut(IFSelect_DispPerSignature& self_) { return static_cast<IFSelect_Dispatch&>(self_); }
-inline void IFSelect_DispPerSignature_inherited_SetRootName(IFSelect_DispPerSignature& self, const Handle(TCollection_HAsciiString)& name) {
+inline void IFSelect_DispPerSignature_inherited_SetRootName(IFSelect_DispPerSignature& self, const opencascade::handle<TCollection_HAsciiString>& name) {
     self.SetRootName(name);
 }
 inline bool IFSelect_DispPerSignature_inherited_HasRootName(const IFSelect_DispPerSignature& self) {
@@ -20342,7 +20816,7 @@ inline bool IFSelect_DispPerSignature_inherited_HasRootName(const IFSelect_DispP
 inline const Handle(TCollection_HAsciiString)& IFSelect_DispPerSignature_inherited_RootName(const IFSelect_DispPerSignature& self) {
     return self.RootName();
 }
-inline void IFSelect_DispPerSignature_inherited_SetFinalSelection(IFSelect_DispPerSignature& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_DispPerSignature_inherited_SetFinalSelection(IFSelect_DispPerSignature& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetFinalSelection(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_DispPerSignature_inherited_FinalSelection(const IFSelect_DispPerSignature& self) {
@@ -20367,6 +20841,9 @@ inline std::unique_ptr<IFSelect_SelectionIterator> IFSelect_Dispatch_selections(
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_Dispatch_label(const IFSelect_Dispatch& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
+}
+inline rust::String IFSelect_Dispatch_get_type_name() {
+    return rust::String(IFSelect_Dispatch::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_Dispatch_get_type_descriptor() {
     return IFSelect_Dispatch::get_type_descriptor();
@@ -20414,6 +20891,9 @@ inline Standard_Integer IFSelect_EditForm_name_rank(const IFSelect_EditForm& sel
 inline rust::String IFSelect_EditForm_label(const IFSelect_EditForm& self) {
     return rust::String(self.Label());
 }
+inline rust::String IFSelect_EditForm_get_type_name() {
+    return rust::String(IFSelect_EditForm::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_EditForm_get_type_descriptor() {
     return IFSelect_EditForm::get_type_descriptor();
 }
@@ -20450,6 +20930,9 @@ inline rust::String IFSelect_Editor_name(const IFSelect_Editor& self, Standard_I
 }
 inline int32_t IFSelect_Editor_edit_mode(const IFSelect_Editor& self_, Standard_Integer num) {
     return static_cast<int32_t>(self_.EditMode(num));
+}
+inline rust::String IFSelect_Editor_get_type_name() {
+    return rust::String(IFSelect_Editor::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_Editor_get_type_descriptor() {
     return IFSelect_Editor::get_type_descriptor();
@@ -20490,6 +20973,9 @@ inline std::unique_ptr<opencascade::handle<IFSelect_Selection>> IFSelect_General
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_GeneralModifier_label(const IFSelect_GeneralModifier& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_GeneralModifier_get_type_name() {
+    return rust::String(IFSelect_GeneralModifier::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_GeneralModifier_get_type_descriptor() {
     return IFSelect_GeneralModifier::get_type_descriptor();
 }
@@ -20503,6 +20989,9 @@ inline IFSelect_GeneralModifier& HandleIFSelectGeneralModifier_get_mut(HandleIFS
 inline std::unique_ptr<IFSelect_GraphCounter> IFSelect_GraphCounter_ctor_bool2(Standard_Boolean withmap, Standard_Boolean withlist) {
     return std::make_unique<IFSelect_GraphCounter>(withmap, withlist);
 }
+inline rust::String IFSelect_GraphCounter_get_type_name() {
+    return rust::String(IFSelect_GraphCounter::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_GraphCounter_get_type_descriptor() {
     return IFSelect_GraphCounter::get_type_descriptor();
 }
@@ -20510,19 +20999,19 @@ inline const IFSelect_SignCounter& IFSelect_GraphCounter_as_IFSelect_SignCounter
 inline IFSelect_SignCounter& IFSelect_GraphCounter_as_IFSelect_SignCounter_mut(IFSelect_GraphCounter& self_) { return static_cast<IFSelect_SignCounter&>(self_); }
 inline const IFSelect_SignatureList& IFSelect_GraphCounter_as_IFSelect_SignatureList(const IFSelect_GraphCounter& self_) { return static_cast<const IFSelect_SignatureList&>(self_); }
 inline IFSelect_SignatureList& IFSelect_GraphCounter_as_IFSelect_SignatureList_mut(IFSelect_GraphCounter& self_) { return static_cast<IFSelect_SignatureList&>(self_); }
-inline void IFSelect_GraphCounter_inherited_SetMap(IFSelect_GraphCounter& self, bool withmap) {
+inline void IFSelect_GraphCounter_inherited_SetMap(IFSelect_GraphCounter& self, Standard_Boolean withmap) {
     self.SetMap(withmap);
 }
-inline void IFSelect_GraphCounter_inherited_AddList(IFSelect_GraphCounter& self, const Handle(TColStd_HSequenceOfTransient)& list, const Handle(Interface_InterfaceModel)& model) {
+inline void IFSelect_GraphCounter_inherited_AddList(IFSelect_GraphCounter& self, const opencascade::handle<TColStd_HSequenceOfTransient>& list, const opencascade::handle<Interface_InterfaceModel>& model) {
     self.AddList(list, model);
 }
-inline void IFSelect_GraphCounter_inherited_AddModel(IFSelect_GraphCounter& self, const Handle(Interface_InterfaceModel)& model) {
+inline void IFSelect_GraphCounter_inherited_AddModel(IFSelect_GraphCounter& self, const opencascade::handle<Interface_InterfaceModel>& model) {
     self.AddModel(model);
 }
-inline void IFSelect_GraphCounter_inherited_AddFromSelection(IFSelect_GraphCounter& self, const Handle(IFSelect_Selection)& sel, const Interface_Graph& G) {
+inline void IFSelect_GraphCounter_inherited_AddFromSelection(IFSelect_GraphCounter& self, const opencascade::handle<IFSelect_Selection>& sel, const Interface_Graph& G) {
     self.AddFromSelection(sel, G);
 }
-inline void IFSelect_GraphCounter_inherited_SetSelection(IFSelect_GraphCounter& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_GraphCounter_inherited_SetSelection(IFSelect_GraphCounter& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetSelection(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_GraphCounter_inherited_Selection(const IFSelect_GraphCounter& self) {
@@ -20534,10 +21023,10 @@ inline void IFSelect_GraphCounter_inherited_SetSelMode(IFSelect_GraphCounter& se
 inline Standard_Integer IFSelect_GraphCounter_inherited_SelMode(const IFSelect_GraphCounter& self) {
     return self.SelMode();
 }
-inline bool IFSelect_GraphCounter_inherited_ComputeSelected(IFSelect_GraphCounter& self, const Interface_Graph& G, bool forced) {
+inline bool IFSelect_GraphCounter_inherited_ComputeSelected(IFSelect_GraphCounter& self, const Interface_Graph& G, Standard_Boolean forced) {
     return self.ComputeSelected(G, forced);
 }
-inline void IFSelect_GraphCounter_inherited_SetList(IFSelect_GraphCounter& self, bool withlist) {
+inline void IFSelect_GraphCounter_inherited_SetList(IFSelect_GraphCounter& self, Standard_Boolean withlist) {
     self.SetList(withlist);
 }
 inline bool& IFSelect_GraphCounter_inherited_ModeSignOnly(IFSelect_GraphCounter& self) {
@@ -20563,6 +21052,9 @@ inline std::unique_ptr<IFSelect_HSeqOfSelection> IFSelect_HSeqOfSelection_ctor()
 inline std::unique_ptr<IFSelect_HSeqOfSelection> IFSelect_HSeqOfSelection_ctor_tseqofselection(const IFSelect_TSeqOfSelection& theOther) {
     return std::make_unique<IFSelect_HSeqOfSelection>(theOther);
 }
+inline rust::String IFSelect_HSeqOfSelection_get_type_name() {
+    return rust::String(IFSelect_HSeqOfSelection::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_HSeqOfSelection_get_type_descriptor() {
     return IFSelect_HSeqOfSelection::get_type_descriptor();
 }
@@ -20584,6 +21076,9 @@ inline void IFSelect_IntParam_set_static_name(IFSelect_IntParam& self, rust::Str
 }
 inline rust::String IFSelect_IntParam_static_name(const IFSelect_IntParam& self) {
     return rust::String(self.StaticName());
+}
+inline rust::String IFSelect_IntParam_get_type_name() {
+    return rust::String(IFSelect_IntParam::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_IntParam_get_type_descriptor() {
     return IFSelect_IntParam::get_type_descriptor();
@@ -20609,6 +21104,9 @@ inline std::unique_ptr<opencascade::handle<TColStd_HSequenceOfHAsciiString>> IFS
 }
 inline std::unique_ptr<opencascade::handle<TCollection_HAsciiString>> IFSelect_ListEditor_value(const IFSelect_ListEditor& self_, Standard_Integer num, Standard_Boolean edited) {
     return std::make_unique<opencascade::handle<TCollection_HAsciiString>>(self_.Value(num, edited));
+}
+inline rust::String IFSelect_ListEditor_get_type_name() {
+    return rust::String(IFSelect_ListEditor::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_ListEditor_get_type_descriptor() {
     return IFSelect_ListEditor::get_type_descriptor();
@@ -20641,6 +21139,9 @@ inline std::unique_ptr<opencascade::handle<TColStd_HSequenceOfHAsciiString>> IFS
 inline void IFSelect_ModelCopier_add_sent_file(IFSelect_ModelCopier& self, rust::Str filename) {
     self.AddSentFile(std::string(filename).c_str());
 }
+inline rust::String IFSelect_ModelCopier_get_type_name() {
+    return rust::String(IFSelect_ModelCopier::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_ModelCopier_get_type_descriptor() {
     return IFSelect_ModelCopier::get_type_descriptor();
 }
@@ -20663,6 +21164,9 @@ inline std::unique_ptr<opencascade::handle<IFSelect_EditForm>> IFSelect_ModifEdi
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_ModifEditForm_label(const IFSelect_ModifEditForm& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_ModifEditForm_get_type_name() {
+    return rust::String(IFSelect_ModifEditForm::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_ModifEditForm_get_type_descriptor() {
     return IFSelect_ModifEditForm::get_type_descriptor();
 }
@@ -20673,16 +21177,16 @@ inline IFSelect_Modifier& IFSelect_ModifEditForm_as_IFSelect_Modifier_mut(IFSele
 inline bool IFSelect_ModifEditForm_inherited_MayChangeGraph(const IFSelect_ModifEditForm& self) {
     return self.MayChangeGraph();
 }
-inline void IFSelect_ModifEditForm_inherited_SetDispatch(IFSelect_ModifEditForm& self, const Handle(IFSelect_Dispatch)& disp) {
+inline void IFSelect_ModifEditForm_inherited_SetDispatch(IFSelect_ModifEditForm& self, const opencascade::handle<IFSelect_Dispatch>& disp) {
     self.SetDispatch(disp);
 }
 inline std::unique_ptr<Handle(IFSelect_Dispatch)> IFSelect_ModifEditForm_inherited_Dispatch(const IFSelect_ModifEditForm& self) {
     return std::make_unique<Handle(IFSelect_Dispatch)>(self.Dispatch());
 }
-inline bool IFSelect_ModifEditForm_inherited_Applies(const IFSelect_ModifEditForm& self, const Handle(IFSelect_Dispatch)& disp) {
+inline bool IFSelect_ModifEditForm_inherited_Applies(const IFSelect_ModifEditForm& self, const opencascade::handle<IFSelect_Dispatch>& disp) {
     return self.Applies(disp);
 }
-inline void IFSelect_ModifEditForm_inherited_SetSelection(IFSelect_ModifEditForm& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_ModifEditForm_inherited_SetSelection(IFSelect_ModifEditForm& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetSelection(sel);
 }
 inline void IFSelect_ModifEditForm_inherited_ResetSelection(IFSelect_ModifEditForm& self) {
@@ -20705,6 +21209,9 @@ inline std::unique_ptr<IFSelect_ModifReorder> IFSelect_ModifReorder_ctor_bool(St
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_ModifReorder_label(const IFSelect_ModifReorder& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_ModifReorder_get_type_name() {
+    return rust::String(IFSelect_ModifReorder::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_ModifReorder_get_type_descriptor() {
     return IFSelect_ModifReorder::get_type_descriptor();
 }
@@ -20715,16 +21222,16 @@ inline IFSelect_Modifier& IFSelect_ModifReorder_as_IFSelect_Modifier_mut(IFSelec
 inline bool IFSelect_ModifReorder_inherited_MayChangeGraph(const IFSelect_ModifReorder& self) {
     return self.MayChangeGraph();
 }
-inline void IFSelect_ModifReorder_inherited_SetDispatch(IFSelect_ModifReorder& self, const Handle(IFSelect_Dispatch)& disp) {
+inline void IFSelect_ModifReorder_inherited_SetDispatch(IFSelect_ModifReorder& self, const opencascade::handle<IFSelect_Dispatch>& disp) {
     self.SetDispatch(disp);
 }
 inline std::unique_ptr<Handle(IFSelect_Dispatch)> IFSelect_ModifReorder_inherited_Dispatch(const IFSelect_ModifReorder& self) {
     return std::make_unique<Handle(IFSelect_Dispatch)>(self.Dispatch());
 }
-inline bool IFSelect_ModifReorder_inherited_Applies(const IFSelect_ModifReorder& self, const Handle(IFSelect_Dispatch)& disp) {
+inline bool IFSelect_ModifReorder_inherited_Applies(const IFSelect_ModifReorder& self, const opencascade::handle<IFSelect_Dispatch>& disp) {
     return self.Applies(disp);
 }
-inline void IFSelect_ModifReorder_inherited_SetSelection(IFSelect_ModifReorder& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_ModifReorder_inherited_SetSelection(IFSelect_ModifReorder& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetSelection(sel);
 }
 inline void IFSelect_ModifReorder_inherited_ResetSelection(IFSelect_ModifReorder& self) {
@@ -20741,6 +21248,9 @@ inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_ModifReorder_inherit
 // IFSelect_Modifier wrappers
 // ========================
 
+inline rust::String IFSelect_Modifier_get_type_name() {
+    return rust::String(IFSelect_Modifier::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_Modifier_get_type_descriptor() {
     return IFSelect_Modifier::get_type_descriptor();
 }
@@ -20749,16 +21259,16 @@ inline IFSelect_GeneralModifier& IFSelect_Modifier_as_IFSelect_GeneralModifier_m
 inline bool IFSelect_Modifier_inherited_MayChangeGraph(const IFSelect_Modifier& self) {
     return self.MayChangeGraph();
 }
-inline void IFSelect_Modifier_inherited_SetDispatch(IFSelect_Modifier& self, const Handle(IFSelect_Dispatch)& disp) {
+inline void IFSelect_Modifier_inherited_SetDispatch(IFSelect_Modifier& self, const opencascade::handle<IFSelect_Dispatch>& disp) {
     self.SetDispatch(disp);
 }
 inline std::unique_ptr<Handle(IFSelect_Dispatch)> IFSelect_Modifier_inherited_Dispatch(const IFSelect_Modifier& self) {
     return std::make_unique<Handle(IFSelect_Dispatch)>(self.Dispatch());
 }
-inline bool IFSelect_Modifier_inherited_Applies(const IFSelect_Modifier& self, const Handle(IFSelect_Dispatch)& disp) {
+inline bool IFSelect_Modifier_inherited_Applies(const IFSelect_Modifier& self, const opencascade::handle<IFSelect_Dispatch>& disp) {
     return self.Applies(disp);
 }
-inline void IFSelect_Modifier_inherited_SetSelection(IFSelect_Modifier& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_Modifier_inherited_SetSelection(IFSelect_Modifier& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetSelection(sel);
 }
 inline void IFSelect_Modifier_inherited_ResetSelection(IFSelect_Modifier& self) {
@@ -20790,6 +21300,9 @@ inline void IFSelect_PacketList_set_name(IFSelect_PacketList& self, rust::Str na
 inline rust::String IFSelect_PacketList_name(const IFSelect_PacketList& self) {
     return rust::String(self.Name());
 }
+inline rust::String IFSelect_PacketList_get_type_name() {
+    return rust::String(IFSelect_PacketList::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_PacketList_get_type_descriptor() {
     return IFSelect_PacketList::get_type_descriptor();
 }
@@ -20815,6 +21328,9 @@ inline std::unique_ptr<opencascade::handle<TCollection_HAsciiString>> IFSelect_P
 inline void IFSelect_ParamEditor_add_constant_text(IFSelect_ParamEditor& self, rust::Str val, rust::Str shortname, rust::Str completename) {
     self.AddConstantText(std::string(val).c_str(), std::string(shortname).c_str(), std::string(completename).c_str());
 }
+inline rust::String IFSelect_ParamEditor_get_type_name() {
+    return rust::String(IFSelect_ParamEditor::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_ParamEditor_get_type_descriptor() {
     return IFSelect_ParamEditor::get_type_descriptor();
 }
@@ -20838,19 +21354,19 @@ inline int32_t IFSelect_ParamEditor_inherited_EditMode(const IFSelect_ParamEdito
 inline Standard_Integer IFSelect_ParamEditor_inherited_MaxNameLength(const IFSelect_ParamEditor& self, Standard_Integer what) {
     return self.MaxNameLength(what);
 }
-inline std::unique_ptr<Handle(IFSelect_EditForm)> IFSelect_ParamEditor_inherited_Form(const IFSelect_ParamEditor& self, bool readonly, bool undoable) {
+inline std::unique_ptr<Handle(IFSelect_EditForm)> IFSelect_ParamEditor_inherited_Form(const IFSelect_ParamEditor& self, Standard_Boolean readonly, Standard_Boolean undoable) {
     return std::make_unique<Handle(IFSelect_EditForm)>(self.Form(readonly, undoable));
 }
 inline std::unique_ptr<Handle(IFSelect_ListEditor)> IFSelect_ParamEditor_inherited_ListEditor(const IFSelect_ParamEditor& self, Standard_Integer num) {
     return std::make_unique<Handle(IFSelect_ListEditor)>(self.ListEditor(num));
 }
-inline std::unique_ptr<Handle(TColStd_HSequenceOfHAsciiString)> IFSelect_ParamEditor_inherited_ListValue(const IFSelect_ParamEditor& self, const Handle(IFSelect_EditForm)& form, Standard_Integer num) {
+inline std::unique_ptr<Handle(TColStd_HSequenceOfHAsciiString)> IFSelect_ParamEditor_inherited_ListValue(const IFSelect_ParamEditor& self, const opencascade::handle<IFSelect_EditForm>& form, Standard_Integer num) {
     return std::make_unique<Handle(TColStd_HSequenceOfHAsciiString)>(self.ListValue(form, num));
 }
-inline bool IFSelect_ParamEditor_inherited_Update(const IFSelect_ParamEditor& self, const Handle(IFSelect_EditForm)& form, Standard_Integer num, const Handle(TCollection_HAsciiString)& newval, bool enforce) {
+inline bool IFSelect_ParamEditor_inherited_Update(const IFSelect_ParamEditor& self, const opencascade::handle<IFSelect_EditForm>& form, Standard_Integer num, const opencascade::handle<TCollection_HAsciiString>& newval, Standard_Boolean enforce) {
     return self.Update(form, num, newval, enforce);
 }
-inline bool IFSelect_ParamEditor_inherited_UpdateList(const IFSelect_ParamEditor& self, const Handle(IFSelect_EditForm)& form, Standard_Integer num, const Handle(TColStd_HSequenceOfHAsciiString)& newlist, bool enforce) {
+inline bool IFSelect_ParamEditor_inherited_UpdateList(const IFSelect_ParamEditor& self, const opencascade::handle<IFSelect_EditForm>& form, Standard_Integer num, const opencascade::handle<TColStd_HSequenceOfHAsciiString>& newlist, Standard_Boolean enforce) {
     return self.UpdateList(form, num, newlist, enforce);
 }
 
@@ -20870,6 +21386,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectAnyList_label(con
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectAnyList_list_label(const IFSelect_SelectAnyList& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ListLabel());
 }
+inline rust::String IFSelect_SelectAnyList_get_type_name() {
+    return rust::String(IFSelect_SelectAnyList::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectAnyList_get_type_descriptor() {
     return IFSelect_SelectAnyList::get_type_descriptor();
 }
@@ -20877,7 +21396,7 @@ inline const IFSelect_SelectDeduct& IFSelect_SelectAnyList_as_IFSelect_SelectDed
 inline IFSelect_SelectDeduct& IFSelect_SelectAnyList_as_IFSelect_SelectDeduct_mut(IFSelect_SelectAnyList& self_) { return static_cast<IFSelect_SelectDeduct&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectAnyList_as_IFSelect_Selection(const IFSelect_SelectAnyList& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectAnyList_as_IFSelect_Selection_mut(IFSelect_SelectAnyList& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectAnyList_inherited_SetInput(IFSelect_SelectAnyList& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectAnyList_inherited_SetInput(IFSelect_SelectAnyList& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectAnyList_inherited_Input(const IFSelect_SelectAnyList& self) {
@@ -20900,6 +21419,9 @@ inline void IFSelect_SelectAnyList_inherited_FillIterator(const IFSelect_SelectA
 inline std::unique_ptr<opencascade::handle<Standard_Type>> IFSelect_SelectAnyType_type_for_match(const IFSelect_SelectAnyType& self_) {
     return std::make_unique<opencascade::handle<Standard_Type>>(self_.TypeForMatch());
 }
+inline rust::String IFSelect_SelectAnyType_get_type_name() {
+    return rust::String(IFSelect_SelectAnyType::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectAnyType_get_type_descriptor() {
     return IFSelect_SelectAnyType::get_type_descriptor();
 }
@@ -20909,7 +21431,7 @@ inline const IFSelect_SelectExtract& IFSelect_SelectAnyType_as_IFSelect_SelectEx
 inline IFSelect_SelectExtract& IFSelect_SelectAnyType_as_IFSelect_SelectExtract_mut(IFSelect_SelectAnyType& self_) { return static_cast<IFSelect_SelectExtract&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectAnyType_as_IFSelect_Selection(const IFSelect_SelectAnyType& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectAnyType_as_IFSelect_Selection_mut(IFSelect_SelectAnyType& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectAnyType_inherited_SetInput(IFSelect_SelectAnyType& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectAnyType_inherited_SetInput(IFSelect_SelectAnyType& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectAnyType_inherited_Input(const IFSelect_SelectAnyType& self) {
@@ -20927,7 +21449,7 @@ inline void IFSelect_SelectAnyType_inherited_FillIterator(const IFSelect_SelectA
 inline bool IFSelect_SelectAnyType_inherited_IsDirect(const IFSelect_SelectAnyType& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectAnyType_inherited_SetDirect(IFSelect_SelectAnyType& self, bool direct) {
+inline void IFSelect_SelectAnyType_inherited_SetDirect(IFSelect_SelectAnyType& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectAnyType_inherited_Label(const IFSelect_SelectAnyType& self) {
@@ -20941,6 +21463,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectAnyType_inherited
 // IFSelect_SelectBase wrappers
 // ========================
 
+inline rust::String IFSelect_SelectBase_get_type_name() {
+    return rust::String(IFSelect_SelectBase::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectBase_get_type_descriptor() {
     return IFSelect_SelectBase::get_type_descriptor();
 }
@@ -20956,6 +21481,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectBase_inherited_La
 
 inline std::unique_ptr<opencascade::handle<IFSelect_Selection>> IFSelect_SelectCombine_input(const IFSelect_SelectCombine& self_, Standard_Integer num) {
     return std::make_unique<opencascade::handle<IFSelect_Selection>>(self_.Input(num));
+}
+inline rust::String IFSelect_SelectCombine_get_type_name() {
+    return rust::String(IFSelect_SelectCombine::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectCombine_get_type_descriptor() {
     return IFSelect_SelectCombine::get_type_descriptor();
@@ -20976,6 +21504,9 @@ inline std::unique_ptr<opencascade::handle<IFSelect_Selection>> IFSelect_SelectC
 inline std::unique_ptr<opencascade::handle<IFSelect_Selection>> IFSelect_SelectControl_second_input(const IFSelect_SelectControl& self_) {
     return std::make_unique<opencascade::handle<IFSelect_Selection>>(self_.SecondInput());
 }
+inline rust::String IFSelect_SelectControl_get_type_name() {
+    return rust::String(IFSelect_SelectControl::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectControl_get_type_descriptor() {
     return IFSelect_SelectControl::get_type_descriptor();
 }
@@ -20991,6 +21522,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectControl_inherited
 
 inline std::unique_ptr<opencascade::handle<IFSelect_Selection>> IFSelect_SelectDeduct_input(const IFSelect_SelectDeduct& self_) {
     return std::make_unique<opencascade::handle<IFSelect_Selection>>(self_.Input());
+}
+inline rust::String IFSelect_SelectDeduct_get_type_name() {
+    return rust::String(IFSelect_SelectDeduct::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectDeduct_get_type_descriptor() {
     return IFSelect_SelectDeduct::get_type_descriptor();
@@ -21011,6 +21545,9 @@ inline std::unique_ptr<IFSelect_SelectDiff> IFSelect_SelectDiff_ctor() {
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectDiff_label(const IFSelect_SelectDiff& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_SelectDiff_get_type_name() {
+    return rust::String(IFSelect_SelectDiff::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectDiff_get_type_descriptor() {
     return IFSelect_SelectDiff::get_type_descriptor();
 }
@@ -21027,10 +21564,10 @@ inline bool IFSelect_SelectDiff_inherited_HasSecondInput(const IFSelect_SelectDi
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectDiff_inherited_SecondInput(const IFSelect_SelectDiff& self) {
     return std::make_unique<Handle(IFSelect_Selection)>(self.SecondInput());
 }
-inline void IFSelect_SelectDiff_inherited_SetMainInput(IFSelect_SelectDiff& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectDiff_inherited_SetMainInput(IFSelect_SelectDiff& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetMainInput(sel);
 }
-inline void IFSelect_SelectDiff_inherited_SetSecondInput(IFSelect_SelectDiff& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectDiff_inherited_SetSecondInput(IFSelect_SelectDiff& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetSecondInput(sel);
 }
 inline void IFSelect_SelectDiff_inherited_FillIterator(const IFSelect_SelectDiff& self, IFSelect_SelectionIterator& iter) {
@@ -21049,6 +21586,9 @@ inline std::unique_ptr<opencascade::handle<IFSelect_IntParam>> IFSelect_SelectEn
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectEntityNumber_label(const IFSelect_SelectEntityNumber& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
+}
+inline rust::String IFSelect_SelectEntityNumber_get_type_name() {
+    return rust::String(IFSelect_SelectEntityNumber::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectEntityNumber_get_type_descriptor() {
     return IFSelect_SelectEntityNumber::get_type_descriptor();
@@ -21071,6 +21611,9 @@ inline std::unique_ptr<IFSelect_SelectErrorEntities> IFSelect_SelectErrorEntitie
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectErrorEntities_extract_label(const IFSelect_SelectErrorEntities& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExtractLabel());
 }
+inline rust::String IFSelect_SelectErrorEntities_get_type_name() {
+    return rust::String(IFSelect_SelectErrorEntities::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectErrorEntities_get_type_descriptor() {
     return IFSelect_SelectErrorEntities::get_type_descriptor();
 }
@@ -21080,7 +21623,7 @@ inline const IFSelect_SelectExtract& IFSelect_SelectErrorEntities_as_IFSelect_Se
 inline IFSelect_SelectExtract& IFSelect_SelectErrorEntities_as_IFSelect_SelectExtract_mut(IFSelect_SelectErrorEntities& self_) { return static_cast<IFSelect_SelectExtract&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectErrorEntities_as_IFSelect_Selection(const IFSelect_SelectErrorEntities& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectErrorEntities_as_IFSelect_Selection_mut(IFSelect_SelectErrorEntities& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectErrorEntities_inherited_SetInput(IFSelect_SelectErrorEntities& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectErrorEntities_inherited_SetInput(IFSelect_SelectErrorEntities& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectErrorEntities_inherited_Input(const IFSelect_SelectErrorEntities& self) {
@@ -21098,7 +21641,7 @@ inline void IFSelect_SelectErrorEntities_inherited_FillIterator(const IFSelect_S
 inline bool IFSelect_SelectErrorEntities_inherited_IsDirect(const IFSelect_SelectErrorEntities& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectErrorEntities_inherited_SetDirect(IFSelect_SelectErrorEntities& self, bool direct) {
+inline void IFSelect_SelectErrorEntities_inherited_SetDirect(IFSelect_SelectErrorEntities& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectErrorEntities_inherited_Label(const IFSelect_SelectErrorEntities& self) {
@@ -21115,6 +21658,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectExplore_label(con
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectExplore_explore_label(const IFSelect_SelectExplore& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExploreLabel());
 }
+inline rust::String IFSelect_SelectExplore_get_type_name() {
+    return rust::String(IFSelect_SelectExplore::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectExplore_get_type_descriptor() {
     return IFSelect_SelectExplore::get_type_descriptor();
 }
@@ -21122,7 +21668,7 @@ inline const IFSelect_SelectDeduct& IFSelect_SelectExplore_as_IFSelect_SelectDed
 inline IFSelect_SelectDeduct& IFSelect_SelectExplore_as_IFSelect_SelectDeduct_mut(IFSelect_SelectExplore& self_) { return static_cast<IFSelect_SelectDeduct&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectExplore_as_IFSelect_Selection(const IFSelect_SelectExplore& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectExplore_as_IFSelect_Selection_mut(IFSelect_SelectExplore& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectExplore_inherited_SetInput(IFSelect_SelectExplore& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectExplore_inherited_SetInput(IFSelect_SelectExplore& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectExplore_inherited_Input(const IFSelect_SelectExplore& self) {
@@ -21148,6 +21694,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectExtract_label(con
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectExtract_extract_label(const IFSelect_SelectExtract& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExtractLabel());
 }
+inline rust::String IFSelect_SelectExtract_get_type_name() {
+    return rust::String(IFSelect_SelectExtract::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectExtract_get_type_descriptor() {
     return IFSelect_SelectExtract::get_type_descriptor();
 }
@@ -21155,7 +21704,7 @@ inline const IFSelect_SelectDeduct& IFSelect_SelectExtract_as_IFSelect_SelectDed
 inline IFSelect_SelectDeduct& IFSelect_SelectExtract_as_IFSelect_SelectDeduct_mut(IFSelect_SelectExtract& self_) { return static_cast<IFSelect_SelectDeduct&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectExtract_as_IFSelect_Selection(const IFSelect_SelectExtract& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectExtract_as_IFSelect_Selection_mut(IFSelect_SelectExtract& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectExtract_inherited_SetInput(IFSelect_SelectExtract& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectExtract_inherited_SetInput(IFSelect_SelectExtract& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectExtract_inherited_Input(const IFSelect_SelectExtract& self) {
@@ -21184,6 +21733,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectFlag_extract_labe
 inline rust::String IFSelect_SelectFlag_flag_name(const IFSelect_SelectFlag& self) {
     return rust::String(self.FlagName());
 }
+inline rust::String IFSelect_SelectFlag_get_type_name() {
+    return rust::String(IFSelect_SelectFlag::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectFlag_get_type_descriptor() {
     return IFSelect_SelectFlag::get_type_descriptor();
 }
@@ -21193,7 +21745,7 @@ inline const IFSelect_SelectExtract& IFSelect_SelectFlag_as_IFSelect_SelectExtra
 inline IFSelect_SelectExtract& IFSelect_SelectFlag_as_IFSelect_SelectExtract_mut(IFSelect_SelectFlag& self_) { return static_cast<IFSelect_SelectExtract&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectFlag_as_IFSelect_Selection(const IFSelect_SelectFlag& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectFlag_as_IFSelect_Selection_mut(IFSelect_SelectFlag& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectFlag_inherited_SetInput(IFSelect_SelectFlag& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectFlag_inherited_SetInput(IFSelect_SelectFlag& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectFlag_inherited_Input(const IFSelect_SelectFlag& self) {
@@ -21211,7 +21763,7 @@ inline void IFSelect_SelectFlag_inherited_FillIterator(const IFSelect_SelectFlag
 inline bool IFSelect_SelectFlag_inherited_IsDirect(const IFSelect_SelectFlag& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectFlag_inherited_SetDirect(IFSelect_SelectFlag& self, bool direct) {
+inline void IFSelect_SelectFlag_inherited_SetDirect(IFSelect_SelectFlag& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectFlag_inherited_Label(const IFSelect_SelectFlag& self) {
@@ -21222,6 +21774,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectFlag_inherited_La
 // IFSelect_SelectInList wrappers
 // ========================
 
+inline rust::String IFSelect_SelectInList_get_type_name() {
+    return rust::String(IFSelect_SelectInList::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectInList_get_type_descriptor() {
     return IFSelect_SelectInList::get_type_descriptor();
 }
@@ -21231,16 +21786,16 @@ inline const IFSelect_SelectDeduct& IFSelect_SelectInList_as_IFSelect_SelectDedu
 inline IFSelect_SelectDeduct& IFSelect_SelectInList_as_IFSelect_SelectDeduct_mut(IFSelect_SelectInList& self_) { return static_cast<IFSelect_SelectDeduct&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectInList_as_IFSelect_Selection(const IFSelect_SelectInList& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectInList_as_IFSelect_Selection_mut(IFSelect_SelectInList& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectInList_inherited_SetRange(IFSelect_SelectInList& self, const Handle(IFSelect_IntParam)& rankfrom, const Handle(IFSelect_IntParam)& rankto) {
+inline void IFSelect_SelectInList_inherited_SetRange(IFSelect_SelectInList& self, const opencascade::handle<IFSelect_IntParam>& rankfrom, const opencascade::handle<IFSelect_IntParam>& rankto) {
     self.SetRange(rankfrom, rankto);
 }
-inline void IFSelect_SelectInList_inherited_SetOne(IFSelect_SelectInList& self, const Handle(IFSelect_IntParam)& rank) {
+inline void IFSelect_SelectInList_inherited_SetOne(IFSelect_SelectInList& self, const opencascade::handle<IFSelect_IntParam>& rank) {
     self.SetOne(rank);
 }
-inline void IFSelect_SelectInList_inherited_SetFrom(IFSelect_SelectInList& self, const Handle(IFSelect_IntParam)& rankfrom) {
+inline void IFSelect_SelectInList_inherited_SetFrom(IFSelect_SelectInList& self, const opencascade::handle<IFSelect_IntParam>& rankfrom) {
     self.SetFrom(rankfrom);
 }
-inline void IFSelect_SelectInList_inherited_SetUntil(IFSelect_SelectInList& self, const Handle(IFSelect_IntParam)& rankto) {
+inline void IFSelect_SelectInList_inherited_SetUntil(IFSelect_SelectInList& self, const opencascade::handle<IFSelect_IntParam>& rankto) {
     self.SetUntil(rankto);
 }
 inline bool IFSelect_SelectInList_inherited_HasLower(const IFSelect_SelectInList& self) {
@@ -21267,7 +21822,7 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectInList_inherited_
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectInList_inherited_ListLabel(const IFSelect_SelectInList& self) {
     return std::make_unique<TCollection_AsciiString>(self.ListLabel());
 }
-inline void IFSelect_SelectInList_inherited_SetInput(IFSelect_SelectInList& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectInList_inherited_SetInput(IFSelect_SelectInList& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectInList_inherited_Input(const IFSelect_SelectInList& self) {
@@ -21290,6 +21845,9 @@ inline void IFSelect_SelectInList_inherited_FillIterator(const IFSelect_SelectIn
 inline std::unique_ptr<IFSelect_SelectIncorrectEntities> IFSelect_SelectIncorrectEntities_ctor() {
     return std::make_unique<IFSelect_SelectIncorrectEntities>();
 }
+inline rust::String IFSelect_SelectIncorrectEntities_get_type_name() {
+    return rust::String(IFSelect_SelectIncorrectEntities::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectIncorrectEntities_get_type_descriptor() {
     return IFSelect_SelectIncorrectEntities::get_type_descriptor();
 }
@@ -21301,7 +21859,7 @@ inline const IFSelect_SelectFlag& IFSelect_SelectIncorrectEntities_as_IFSelect_S
 inline IFSelect_SelectFlag& IFSelect_SelectIncorrectEntities_as_IFSelect_SelectFlag_mut(IFSelect_SelectIncorrectEntities& self_) { return static_cast<IFSelect_SelectFlag&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectIncorrectEntities_as_IFSelect_Selection(const IFSelect_SelectIncorrectEntities& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectIncorrectEntities_as_IFSelect_Selection_mut(IFSelect_SelectIncorrectEntities& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectIncorrectEntities_inherited_SetInput(IFSelect_SelectIncorrectEntities& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectIncorrectEntities_inherited_SetInput(IFSelect_SelectIncorrectEntities& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectIncorrectEntities_inherited_Input(const IFSelect_SelectIncorrectEntities& self) {
@@ -21319,7 +21877,7 @@ inline void IFSelect_SelectIncorrectEntities_inherited_FillIterator(const IFSele
 inline bool IFSelect_SelectIncorrectEntities_inherited_IsDirect(const IFSelect_SelectIncorrectEntities& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectIncorrectEntities_inherited_SetDirect(IFSelect_SelectIncorrectEntities& self, bool direct) {
+inline void IFSelect_SelectIncorrectEntities_inherited_SetDirect(IFSelect_SelectIncorrectEntities& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectIncorrectEntities_inherited_Label(const IFSelect_SelectIncorrectEntities& self) {
@@ -21339,6 +21897,9 @@ inline std::unique_ptr<IFSelect_SelectIntersection> IFSelect_SelectIntersection_
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectIntersection_label(const IFSelect_SelectIntersection& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_SelectIntersection_get_type_name() {
+    return rust::String(IFSelect_SelectIntersection::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectIntersection_get_type_descriptor() {
     return IFSelect_SelectIntersection::get_type_descriptor();
 }
@@ -21352,13 +21913,13 @@ inline Standard_Integer IFSelect_SelectIntersection_inherited_NbInputs(const IFS
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectIntersection_inherited_Input(const IFSelect_SelectIntersection& self, Standard_Integer num) {
     return std::make_unique<Handle(IFSelect_Selection)>(self.Input(num));
 }
-inline Standard_Integer IFSelect_SelectIntersection_inherited_InputRank(const IFSelect_SelectIntersection& self, const Handle(IFSelect_Selection)& sel) {
+inline Standard_Integer IFSelect_SelectIntersection_inherited_InputRank(const IFSelect_SelectIntersection& self, const opencascade::handle<IFSelect_Selection>& sel) {
     return self.InputRank(sel);
 }
-inline void IFSelect_SelectIntersection_inherited_Add(IFSelect_SelectIntersection& self, const Handle(IFSelect_Selection)& sel, Standard_Integer atnum) {
+inline void IFSelect_SelectIntersection_inherited_Add(IFSelect_SelectIntersection& self, const opencascade::handle<IFSelect_Selection>& sel, Standard_Integer atnum) {
     self.Add(sel, atnum);
 }
-inline bool IFSelect_SelectIntersection_inherited_Remove(IFSelect_SelectIntersection& self, const Handle(IFSelect_Selection)& sel) {
+inline bool IFSelect_SelectIntersection_inherited_Remove(IFSelect_SelectIntersection& self, const opencascade::handle<IFSelect_Selection>& sel) {
     return self.Remove(sel);
 }
 inline void IFSelect_SelectIntersection_inherited_FillIterator(const IFSelect_SelectIntersection& self, IFSelect_SelectionIterator& iter) {
@@ -21374,6 +21935,9 @@ inline std::unique_ptr<IFSelect_SelectModelEntities> IFSelect_SelectModelEntitie
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectModelEntities_label(const IFSelect_SelectModelEntities& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
+}
+inline rust::String IFSelect_SelectModelEntities_get_type_name() {
+    return rust::String(IFSelect_SelectModelEntities::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectModelEntities_get_type_descriptor() {
     return IFSelect_SelectModelEntities::get_type_descriptor();
@@ -21396,6 +21960,9 @@ inline std::unique_ptr<IFSelect_SelectModelRoots> IFSelect_SelectModelRoots_ctor
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectModelRoots_label(const IFSelect_SelectModelRoots& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_SelectModelRoots_get_type_name() {
+    return rust::String(IFSelect_SelectModelRoots::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectModelRoots_get_type_descriptor() {
     return IFSelect_SelectModelRoots::get_type_descriptor();
 }
@@ -21416,6 +21983,9 @@ inline std::unique_ptr<IFSelect_SelectPointed> IFSelect_SelectPointed_ctor() {
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectPointed_label(const IFSelect_SelectPointed& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
+}
+inline rust::String IFSelect_SelectPointed_get_type_name() {
+    return rust::String(IFSelect_SelectPointed::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectPointed_get_type_descriptor() {
     return IFSelect_SelectPointed::get_type_descriptor();
@@ -21444,6 +22014,9 @@ inline std::unique_ptr<opencascade::handle<IFSelect_IntParam>> IFSelect_SelectRa
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectRange_extract_label(const IFSelect_SelectRange& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExtractLabel());
 }
+inline rust::String IFSelect_SelectRange_get_type_name() {
+    return rust::String(IFSelect_SelectRange::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectRange_get_type_descriptor() {
     return IFSelect_SelectRange::get_type_descriptor();
 }
@@ -21453,7 +22026,7 @@ inline const IFSelect_SelectExtract& IFSelect_SelectRange_as_IFSelect_SelectExtr
 inline IFSelect_SelectExtract& IFSelect_SelectRange_as_IFSelect_SelectExtract_mut(IFSelect_SelectRange& self_) { return static_cast<IFSelect_SelectExtract&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectRange_as_IFSelect_Selection(const IFSelect_SelectRange& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectRange_as_IFSelect_Selection_mut(IFSelect_SelectRange& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectRange_inherited_SetInput(IFSelect_SelectRange& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectRange_inherited_SetInput(IFSelect_SelectRange& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectRange_inherited_Input(const IFSelect_SelectRange& self) {
@@ -21471,7 +22044,7 @@ inline void IFSelect_SelectRange_inherited_FillIterator(const IFSelect_SelectRan
 inline bool IFSelect_SelectRange_inherited_IsDirect(const IFSelect_SelectRange& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectRange_inherited_SetDirect(IFSelect_SelectRange& self, bool direct) {
+inline void IFSelect_SelectRange_inherited_SetDirect(IFSelect_SelectRange& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectRange_inherited_Label(const IFSelect_SelectRange& self) {
@@ -21488,6 +22061,9 @@ inline std::unique_ptr<IFSelect_SelectRootComps> IFSelect_SelectRootComps_ctor()
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectRootComps_extract_label(const IFSelect_SelectRootComps& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExtractLabel());
 }
+inline rust::String IFSelect_SelectRootComps_get_type_name() {
+    return rust::String(IFSelect_SelectRootComps::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectRootComps_get_type_descriptor() {
     return IFSelect_SelectRootComps::get_type_descriptor();
 }
@@ -21497,7 +22073,7 @@ inline const IFSelect_SelectExtract& IFSelect_SelectRootComps_as_IFSelect_Select
 inline IFSelect_SelectExtract& IFSelect_SelectRootComps_as_IFSelect_SelectExtract_mut(IFSelect_SelectRootComps& self_) { return static_cast<IFSelect_SelectExtract&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectRootComps_as_IFSelect_Selection(const IFSelect_SelectRootComps& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectRootComps_as_IFSelect_Selection_mut(IFSelect_SelectRootComps& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectRootComps_inherited_SetInput(IFSelect_SelectRootComps& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectRootComps_inherited_SetInput(IFSelect_SelectRootComps& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectRootComps_inherited_Input(const IFSelect_SelectRootComps& self) {
@@ -21515,7 +22091,7 @@ inline void IFSelect_SelectRootComps_inherited_FillIterator(const IFSelect_Selec
 inline bool IFSelect_SelectRootComps_inherited_IsDirect(const IFSelect_SelectRootComps& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectRootComps_inherited_SetDirect(IFSelect_SelectRootComps& self, bool direct) {
+inline void IFSelect_SelectRootComps_inherited_SetDirect(IFSelect_SelectRootComps& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectRootComps_inherited_Label(const IFSelect_SelectRootComps& self) {
@@ -21532,6 +22108,9 @@ inline std::unique_ptr<IFSelect_SelectRoots> IFSelect_SelectRoots_ctor() {
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectRoots_extract_label(const IFSelect_SelectRoots& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExtractLabel());
 }
+inline rust::String IFSelect_SelectRoots_get_type_name() {
+    return rust::String(IFSelect_SelectRoots::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectRoots_get_type_descriptor() {
     return IFSelect_SelectRoots::get_type_descriptor();
 }
@@ -21541,7 +22120,7 @@ inline const IFSelect_SelectExtract& IFSelect_SelectRoots_as_IFSelect_SelectExtr
 inline IFSelect_SelectExtract& IFSelect_SelectRoots_as_IFSelect_SelectExtract_mut(IFSelect_SelectRoots& self_) { return static_cast<IFSelect_SelectExtract&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectRoots_as_IFSelect_Selection(const IFSelect_SelectRoots& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectRoots_as_IFSelect_Selection_mut(IFSelect_SelectRoots& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectRoots_inherited_SetInput(IFSelect_SelectRoots& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectRoots_inherited_SetInput(IFSelect_SelectRoots& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectRoots_inherited_Input(const IFSelect_SelectRoots& self) {
@@ -21559,7 +22138,7 @@ inline void IFSelect_SelectRoots_inherited_FillIterator(const IFSelect_SelectRoo
 inline bool IFSelect_SelectRoots_inherited_IsDirect(const IFSelect_SelectRoots& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectRoots_inherited_SetDirect(IFSelect_SelectRoots& self, bool direct) {
+inline void IFSelect_SelectRoots_inherited_SetDirect(IFSelect_SelectRoots& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectRoots_inherited_Label(const IFSelect_SelectRoots& self) {
@@ -21576,6 +22155,9 @@ inline std::unique_ptr<IFSelect_SelectSent> IFSelect_SelectSent_ctor_int_bool(St
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectSent_extract_label(const IFSelect_SelectSent& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExtractLabel());
 }
+inline rust::String IFSelect_SelectSent_get_type_name() {
+    return rust::String(IFSelect_SelectSent::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectSent_get_type_descriptor() {
     return IFSelect_SelectSent::get_type_descriptor();
 }
@@ -21585,7 +22167,7 @@ inline const IFSelect_SelectExtract& IFSelect_SelectSent_as_IFSelect_SelectExtra
 inline IFSelect_SelectExtract& IFSelect_SelectSent_as_IFSelect_SelectExtract_mut(IFSelect_SelectSent& self_) { return static_cast<IFSelect_SelectExtract&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectSent_as_IFSelect_Selection(const IFSelect_SelectSent& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectSent_as_IFSelect_Selection_mut(IFSelect_SelectSent& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectSent_inherited_SetInput(IFSelect_SelectSent& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectSent_inherited_SetInput(IFSelect_SelectSent& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectSent_inherited_Input(const IFSelect_SelectSent& self) {
@@ -21603,7 +22185,7 @@ inline void IFSelect_SelectSent_inherited_FillIterator(const IFSelect_SelectSent
 inline bool IFSelect_SelectSent_inherited_IsDirect(const IFSelect_SelectSent& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectSent_inherited_SetDirect(IFSelect_SelectSent& self, bool direct) {
+inline void IFSelect_SelectSent_inherited_SetDirect(IFSelect_SelectSent& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectSent_inherited_Label(const IFSelect_SelectSent& self) {
@@ -21620,6 +22202,9 @@ inline std::unique_ptr<IFSelect_SelectShared> IFSelect_SelectShared_ctor() {
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectShared_label(const IFSelect_SelectShared& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_SelectShared_get_type_name() {
+    return rust::String(IFSelect_SelectShared::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectShared_get_type_descriptor() {
     return IFSelect_SelectShared::get_type_descriptor();
 }
@@ -21627,7 +22212,7 @@ inline const IFSelect_SelectDeduct& IFSelect_SelectShared_as_IFSelect_SelectDedu
 inline IFSelect_SelectDeduct& IFSelect_SelectShared_as_IFSelect_SelectDeduct_mut(IFSelect_SelectShared& self_) { return static_cast<IFSelect_SelectDeduct&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectShared_as_IFSelect_Selection(const IFSelect_SelectShared& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectShared_as_IFSelect_Selection_mut(IFSelect_SelectShared& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectShared_inherited_SetInput(IFSelect_SelectShared& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectShared_inherited_SetInput(IFSelect_SelectShared& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectShared_inherited_Input(const IFSelect_SelectShared& self) {
@@ -21653,6 +22238,9 @@ inline std::unique_ptr<IFSelect_SelectSharing> IFSelect_SelectSharing_ctor() {
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectSharing_label(const IFSelect_SelectSharing& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_SelectSharing_get_type_name() {
+    return rust::String(IFSelect_SelectSharing::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectSharing_get_type_descriptor() {
     return IFSelect_SelectSharing::get_type_descriptor();
 }
@@ -21660,7 +22248,7 @@ inline const IFSelect_SelectDeduct& IFSelect_SelectSharing_as_IFSelect_SelectDed
 inline IFSelect_SelectDeduct& IFSelect_SelectSharing_as_IFSelect_SelectDeduct_mut(IFSelect_SelectSharing& self_) { return static_cast<IFSelect_SelectDeduct&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectSharing_as_IFSelect_Selection(const IFSelect_SelectSharing& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectSharing_as_IFSelect_Selection_mut(IFSelect_SelectSharing& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectSharing_inherited_SetInput(IFSelect_SelectSharing& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectSharing_inherited_SetInput(IFSelect_SelectSharing& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectSharing_inherited_Input(const IFSelect_SelectSharing& self) {
@@ -21683,6 +22271,9 @@ inline void IFSelect_SelectSharing_inherited_FillIterator(const IFSelect_SelectS
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectSignature_extract_label(const IFSelect_SelectSignature& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExtractLabel());
 }
+inline rust::String IFSelect_SelectSignature_get_type_name() {
+    return rust::String(IFSelect_SelectSignature::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectSignature_get_type_descriptor() {
     return IFSelect_SelectSignature::get_type_descriptor();
 }
@@ -21692,7 +22283,7 @@ inline const IFSelect_SelectExtract& IFSelect_SelectSignature_as_IFSelect_Select
 inline IFSelect_SelectExtract& IFSelect_SelectSignature_as_IFSelect_SelectExtract_mut(IFSelect_SelectSignature& self_) { return static_cast<IFSelect_SelectExtract&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectSignature_as_IFSelect_Selection(const IFSelect_SelectSignature& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectSignature_as_IFSelect_Selection_mut(IFSelect_SelectSignature& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectSignature_inherited_SetInput(IFSelect_SelectSignature& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectSignature_inherited_SetInput(IFSelect_SelectSignature& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectSignature_inherited_Input(const IFSelect_SelectSignature& self) {
@@ -21710,7 +22301,7 @@ inline void IFSelect_SelectSignature_inherited_FillIterator(const IFSelect_Selec
 inline bool IFSelect_SelectSignature_inherited_IsDirect(const IFSelect_SelectSignature& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectSignature_inherited_SetDirect(IFSelect_SelectSignature& self, bool direct) {
+inline void IFSelect_SelectSignature_inherited_SetDirect(IFSelect_SelectSignature& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectSignature_inherited_Label(const IFSelect_SelectSignature& self) {
@@ -21724,6 +22315,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectSignature_inherit
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectSignedShared_explore_label(const IFSelect_SelectSignedShared& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExploreLabel());
 }
+inline rust::String IFSelect_SelectSignedShared_get_type_name() {
+    return rust::String(IFSelect_SelectSignedShared::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectSignedShared_get_type_descriptor() {
     return IFSelect_SelectSignedShared::get_type_descriptor();
 }
@@ -21733,7 +22327,7 @@ inline const IFSelect_SelectExplore& IFSelect_SelectSignedShared_as_IFSelect_Sel
 inline IFSelect_SelectExplore& IFSelect_SelectSignedShared_as_IFSelect_SelectExplore_mut(IFSelect_SelectSignedShared& self_) { return static_cast<IFSelect_SelectExplore&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectSignedShared_as_IFSelect_Selection(const IFSelect_SelectSignedShared& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectSignedShared_as_IFSelect_Selection_mut(IFSelect_SelectSignedShared& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectSignedShared_inherited_SetInput(IFSelect_SelectSignedShared& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectSignedShared_inherited_SetInput(IFSelect_SelectSignedShared& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectSignedShared_inherited_Input(const IFSelect_SelectSignedShared& self) {
@@ -21762,6 +22356,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectSignedShared_inhe
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectSignedSharing_explore_label(const IFSelect_SelectSignedSharing& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExploreLabel());
 }
+inline rust::String IFSelect_SelectSignedSharing_get_type_name() {
+    return rust::String(IFSelect_SelectSignedSharing::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectSignedSharing_get_type_descriptor() {
     return IFSelect_SelectSignedSharing::get_type_descriptor();
 }
@@ -21771,7 +22368,7 @@ inline const IFSelect_SelectExplore& IFSelect_SelectSignedSharing_as_IFSelect_Se
 inline IFSelect_SelectExplore& IFSelect_SelectSignedSharing_as_IFSelect_SelectExplore_mut(IFSelect_SelectSignedSharing& self_) { return static_cast<IFSelect_SelectExplore&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectSignedSharing_as_IFSelect_Selection(const IFSelect_SelectSignedSharing& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectSignedSharing_as_IFSelect_Selection_mut(IFSelect_SelectSignedSharing& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectSignedSharing_inherited_SetInput(IFSelect_SelectSignedSharing& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectSignedSharing_inherited_SetInput(IFSelect_SelectSignedSharing& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectSignedSharing_inherited_Input(const IFSelect_SelectSignedSharing& self) {
@@ -21806,6 +22403,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectSuite_label(const
 inline void IFSelect_SelectSuite_set_label(IFSelect_SelectSuite& self, rust::Str lab) {
     self.SetLabel(std::string(lab).c_str());
 }
+inline rust::String IFSelect_SelectSuite_get_type_name() {
+    return rust::String(IFSelect_SelectSuite::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectSuite_get_type_descriptor() {
     return IFSelect_SelectSuite::get_type_descriptor();
 }
@@ -21813,7 +22413,7 @@ inline const IFSelect_SelectDeduct& IFSelect_SelectSuite_as_IFSelect_SelectDeduc
 inline IFSelect_SelectDeduct& IFSelect_SelectSuite_as_IFSelect_SelectDeduct_mut(IFSelect_SelectSuite& self_) { return static_cast<IFSelect_SelectDeduct&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectSuite_as_IFSelect_Selection(const IFSelect_SelectSuite& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectSuite_as_IFSelect_Selection_mut(IFSelect_SelectSuite& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectSuite_inherited_SetInput(IFSelect_SelectSuite& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectSuite_inherited_SetInput(IFSelect_SelectSuite& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectSuite_inherited_Input(const IFSelect_SelectSuite& self) {
@@ -21845,6 +22445,9 @@ inline std::unique_ptr<opencascade::handle<Standard_Type>> IFSelect_SelectType_t
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectType_extract_label(const IFSelect_SelectType& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExtractLabel());
 }
+inline rust::String IFSelect_SelectType_get_type_name() {
+    return rust::String(IFSelect_SelectType::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectType_get_type_descriptor() {
     return IFSelect_SelectType::get_type_descriptor();
 }
@@ -21856,7 +22459,7 @@ inline const IFSelect_SelectExtract& IFSelect_SelectType_as_IFSelect_SelectExtra
 inline IFSelect_SelectExtract& IFSelect_SelectType_as_IFSelect_SelectExtract_mut(IFSelect_SelectType& self_) { return static_cast<IFSelect_SelectExtract&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectType_as_IFSelect_Selection(const IFSelect_SelectType& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectType_as_IFSelect_Selection_mut(IFSelect_SelectType& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectType_inherited_SetInput(IFSelect_SelectType& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectType_inherited_SetInput(IFSelect_SelectType& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectType_inherited_Input(const IFSelect_SelectType& self) {
@@ -21874,7 +22477,7 @@ inline void IFSelect_SelectType_inherited_FillIterator(const IFSelect_SelectType
 inline bool IFSelect_SelectType_inherited_IsDirect(const IFSelect_SelectType& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectType_inherited_SetDirect(IFSelect_SelectType& self, bool direct) {
+inline void IFSelect_SelectType_inherited_SetDirect(IFSelect_SelectType& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectType_inherited_Label(const IFSelect_SelectType& self) {
@@ -21891,6 +22494,9 @@ inline std::unique_ptr<IFSelect_SelectUnion> IFSelect_SelectUnion_ctor() {
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectUnion_label(const IFSelect_SelectUnion& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_SelectUnion_get_type_name() {
+    return rust::String(IFSelect_SelectUnion::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectUnion_get_type_descriptor() {
     return IFSelect_SelectUnion::get_type_descriptor();
 }
@@ -21904,13 +22510,13 @@ inline Standard_Integer IFSelect_SelectUnion_inherited_NbInputs(const IFSelect_S
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectUnion_inherited_Input(const IFSelect_SelectUnion& self, Standard_Integer num) {
     return std::make_unique<Handle(IFSelect_Selection)>(self.Input(num));
 }
-inline Standard_Integer IFSelect_SelectUnion_inherited_InputRank(const IFSelect_SelectUnion& self, const Handle(IFSelect_Selection)& sel) {
+inline Standard_Integer IFSelect_SelectUnion_inherited_InputRank(const IFSelect_SelectUnion& self, const opencascade::handle<IFSelect_Selection>& sel) {
     return self.InputRank(sel);
 }
-inline void IFSelect_SelectUnion_inherited_Add(IFSelect_SelectUnion& self, const Handle(IFSelect_Selection)& sel, Standard_Integer atnum) {
+inline void IFSelect_SelectUnion_inherited_Add(IFSelect_SelectUnion& self, const opencascade::handle<IFSelect_Selection>& sel, Standard_Integer atnum) {
     self.Add(sel, atnum);
 }
-inline bool IFSelect_SelectUnion_inherited_Remove(IFSelect_SelectUnion& self, const Handle(IFSelect_Selection)& sel) {
+inline bool IFSelect_SelectUnion_inherited_Remove(IFSelect_SelectUnion& self, const opencascade::handle<IFSelect_Selection>& sel) {
     return self.Remove(sel);
 }
 inline void IFSelect_SelectUnion_inherited_FillIterator(const IFSelect_SelectUnion& self, IFSelect_SelectionIterator& iter) {
@@ -21927,6 +22533,9 @@ inline std::unique_ptr<IFSelect_SelectUnknownEntities> IFSelect_SelectUnknownEnt
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectUnknownEntities_extract_label(const IFSelect_SelectUnknownEntities& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.ExtractLabel());
 }
+inline rust::String IFSelect_SelectUnknownEntities_get_type_name() {
+    return rust::String(IFSelect_SelectUnknownEntities::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SelectUnknownEntities_get_type_descriptor() {
     return IFSelect_SelectUnknownEntities::get_type_descriptor();
 }
@@ -21936,7 +22545,7 @@ inline const IFSelect_SelectExtract& IFSelect_SelectUnknownEntities_as_IFSelect_
 inline IFSelect_SelectExtract& IFSelect_SelectUnknownEntities_as_IFSelect_SelectExtract_mut(IFSelect_SelectUnknownEntities& self_) { return static_cast<IFSelect_SelectExtract&>(self_); }
 inline const IFSelect_Selection& IFSelect_SelectUnknownEntities_as_IFSelect_Selection(const IFSelect_SelectUnknownEntities& self_) { return static_cast<const IFSelect_Selection&>(self_); }
 inline IFSelect_Selection& IFSelect_SelectUnknownEntities_as_IFSelect_Selection_mut(IFSelect_SelectUnknownEntities& self_) { return static_cast<IFSelect_Selection&>(self_); }
-inline void IFSelect_SelectUnknownEntities_inherited_SetInput(IFSelect_SelectUnknownEntities& self, const Handle(IFSelect_Selection)& sel) {
+inline void IFSelect_SelectUnknownEntities_inherited_SetInput(IFSelect_SelectUnknownEntities& self, const opencascade::handle<IFSelect_Selection>& sel) {
     self.SetInput(sel);
 }
 inline std::unique_ptr<Handle(IFSelect_Selection)> IFSelect_SelectUnknownEntities_inherited_Input(const IFSelect_SelectUnknownEntities& self) {
@@ -21954,7 +22563,7 @@ inline void IFSelect_SelectUnknownEntities_inherited_FillIterator(const IFSelect
 inline bool IFSelect_SelectUnknownEntities_inherited_IsDirect(const IFSelect_SelectUnknownEntities& self) {
     return self.IsDirect();
 }
-inline void IFSelect_SelectUnknownEntities_inherited_SetDirect(IFSelect_SelectUnknownEntities& self, bool direct) {
+inline void IFSelect_SelectUnknownEntities_inherited_SetDirect(IFSelect_SelectUnknownEntities& self, Standard_Boolean direct) {
     self.SetDirect(direct);
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectUnknownEntities_inherited_Label(const IFSelect_SelectUnknownEntities& self) {
@@ -21967,6 +22576,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SelectUnknownEntities_i
 
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_Selection_label(const IFSelect_Selection& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
+}
+inline rust::String IFSelect_Selection_get_type_name() {
+    return rust::String(IFSelect_Selection::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_Selection_get_type_descriptor() {
     return IFSelect_Selection::get_type_descriptor();
@@ -21994,6 +22606,9 @@ inline std::unique_ptr<opencascade::handle<IFSelect_SessionDumper>> IFSelect_Ses
 }
 inline std::unique_ptr<opencascade::handle<IFSelect_SessionDumper>> IFSelect_SessionDumper_first() {
     return std::make_unique<opencascade::handle<IFSelect_SessionDumper>>(IFSelect_SessionDumper::First());
+}
+inline rust::String IFSelect_SessionDumper_get_type_name() {
+    return rust::String(IFSelect_SessionDumper::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_SessionDumper_get_type_descriptor() {
     return IFSelect_SessionDumper::get_type_descriptor();
@@ -22079,6 +22694,9 @@ inline int32_t IFSelect_SessionPilot_execute_alias(IFSelect_SessionPilot& self_,
 inline int32_t IFSelect_SessionPilot_execute(IFSelect_SessionPilot& self_, const TCollection_AsciiString& command) {
     return static_cast<int32_t>(self_.Execute(command));
 }
+inline rust::String IFSelect_SessionPilot_get_type_name() {
+    return rust::String(IFSelect_SessionPilot::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SessionPilot_get_type_descriptor() {
     return IFSelect_SessionPilot::get_type_descriptor();
 }
@@ -22109,6 +22727,9 @@ inline std::unique_ptr<opencascade::handle<TCollection_HAsciiString>> IFSelect_S
 }
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_ShareOut_file_name(IFSelect_ShareOut& self_, Standard_Integer dnum, Standard_Integer pnum, Standard_Integer nbpack) {
     return std::make_unique<TCollection_AsciiString>(self_.FileName(dnum, pnum, nbpack));
+}
+inline rust::String IFSelect_ShareOut_get_type_name() {
+    return rust::String(IFSelect_ShareOut::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_ShareOut_get_type_descriptor() {
     return IFSelect_ShareOut::get_type_descriptor();
@@ -22155,6 +22776,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_ShareOutResult_file_nam
 inline std::unique_ptr<IFSelect_SignAncestor> IFSelect_SignAncestor_ctor_bool(Standard_Boolean nopk) {
     return std::make_unique<IFSelect_SignAncestor>(nopk);
 }
+inline rust::String IFSelect_SignAncestor_get_type_name() {
+    return rust::String(IFSelect_SignAncestor::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SignAncestor_get_type_descriptor() {
     return IFSelect_SignAncestor::get_type_descriptor();
 }
@@ -22166,10 +22790,10 @@ inline const Interface_SignType& IFSelect_SignAncestor_as_Interface_SignType(con
 inline Interface_SignType& IFSelect_SignAncestor_as_Interface_SignType_mut(IFSelect_SignAncestor& self_) { return static_cast<Interface_SignType&>(self_); }
 inline const MoniTool_SignText& IFSelect_SignAncestor_as_MoniTool_SignText(const IFSelect_SignAncestor& self_) { return static_cast<const MoniTool_SignText&>(self_); }
 inline MoniTool_SignText& IFSelect_SignAncestor_as_MoniTool_SignText_mut(IFSelect_SignAncestor& self_) { return static_cast<MoniTool_SignText&>(self_); }
-inline void IFSelect_SignAncestor_inherited_SetIntCase(IFSelect_SignAncestor& self, bool hasmin, Standard_Integer valmin, bool hasmax, Standard_Integer valmax) {
+inline void IFSelect_SignAncestor_inherited_SetIntCase(IFSelect_SignAncestor& self, Standard_Boolean hasmin, Standard_Integer valmin, Standard_Boolean hasmax, Standard_Integer valmax) {
     self.SetIntCase(hasmin, valmin, hasmax, valmax);
 }
-inline bool IFSelect_SignAncestor_inherited_IsIntCase(const IFSelect_SignAncestor& self, bool& hasmin, Standard_Integer& valmin, bool& hasmax, Standard_Integer& valmax) {
+inline bool IFSelect_SignAncestor_inherited_IsIntCase(const IFSelect_SignAncestor& self, Standard_Boolean& hasmin, Standard_Integer& valmin, Standard_Boolean& hasmax, Standard_Integer& valmax) {
     return self.IsIntCase(hasmin, valmin, hasmax, valmax);
 }
 inline std::unique_ptr<Handle(TColStd_HSequenceOfAsciiString)> IFSelect_SignAncestor_inherited_CaseList(const IFSelect_SignAncestor& self) {
@@ -22186,6 +22810,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SignAncestor_inherited_
 inline std::unique_ptr<IFSelect_SignCategory> IFSelect_SignCategory_ctor() {
     return std::make_unique<IFSelect_SignCategory>();
 }
+inline rust::String IFSelect_SignCategory_get_type_name() {
+    return rust::String(IFSelect_SignCategory::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SignCategory_get_type_descriptor() {
     return IFSelect_SignCategory::get_type_descriptor();
 }
@@ -22195,10 +22822,10 @@ inline const Interface_SignType& IFSelect_SignCategory_as_Interface_SignType(con
 inline Interface_SignType& IFSelect_SignCategory_as_Interface_SignType_mut(IFSelect_SignCategory& self_) { return static_cast<Interface_SignType&>(self_); }
 inline const MoniTool_SignText& IFSelect_SignCategory_as_MoniTool_SignText(const IFSelect_SignCategory& self_) { return static_cast<const MoniTool_SignText&>(self_); }
 inline MoniTool_SignText& IFSelect_SignCategory_as_MoniTool_SignText_mut(IFSelect_SignCategory& self_) { return static_cast<MoniTool_SignText&>(self_); }
-inline void IFSelect_SignCategory_inherited_SetIntCase(IFSelect_SignCategory& self, bool hasmin, Standard_Integer valmin, bool hasmax, Standard_Integer valmax) {
+inline void IFSelect_SignCategory_inherited_SetIntCase(IFSelect_SignCategory& self, Standard_Boolean hasmin, Standard_Integer valmin, Standard_Boolean hasmax, Standard_Integer valmax) {
     self.SetIntCase(hasmin, valmin, hasmax, valmax);
 }
-inline bool IFSelect_SignCategory_inherited_IsIntCase(const IFSelect_SignCategory& self, bool& hasmin, Standard_Integer& valmin, bool& hasmax, Standard_Integer& valmax) {
+inline bool IFSelect_SignCategory_inherited_IsIntCase(const IFSelect_SignCategory& self, Standard_Boolean& hasmin, Standard_Integer& valmin, Standard_Boolean& hasmax, Standard_Integer& valmax) {
     return self.IsIntCase(hasmin, valmin, hasmax, valmax);
 }
 inline std::unique_ptr<Handle(TColStd_HSequenceOfAsciiString)> IFSelect_SignCategory_inherited_CaseList(const IFSelect_SignCategory& self) {
@@ -22218,12 +22845,15 @@ inline std::unique_ptr<IFSelect_SignCounter> IFSelect_SignCounter_ctor_bool2(Sta
 inline std::unique_ptr<opencascade::handle<IFSelect_Selection>> IFSelect_SignCounter_selection(const IFSelect_SignCounter& self_) {
     return std::make_unique<opencascade::handle<IFSelect_Selection>>(self_.Selection());
 }
+inline rust::String IFSelect_SignCounter_get_type_name() {
+    return rust::String(IFSelect_SignCounter::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SignCounter_get_type_descriptor() {
     return IFSelect_SignCounter::get_type_descriptor();
 }
 inline const IFSelect_SignatureList& IFSelect_SignCounter_as_IFSelect_SignatureList(const IFSelect_SignCounter& self_) { return static_cast<const IFSelect_SignatureList&>(self_); }
 inline IFSelect_SignatureList& IFSelect_SignCounter_as_IFSelect_SignatureList_mut(IFSelect_SignCounter& self_) { return static_cast<IFSelect_SignatureList&>(self_); }
-inline void IFSelect_SignCounter_inherited_SetList(IFSelect_SignCounter& self, bool withlist) {
+inline void IFSelect_SignCounter_inherited_SetList(IFSelect_SignCounter& self, Standard_Boolean withlist) {
     self.SetList(withlist);
 }
 inline bool& IFSelect_SignCounter_inherited_ModeSignOnly(IFSelect_SignCounter& self) {
@@ -22246,6 +22876,9 @@ inline Standard_Integer IFSelect_SignCounter_inherited_NbNulls(const IFSelect_Si
 inline std::unique_ptr<IFSelect_SignMultiple> IFSelect_SignMultiple_ctor_charptr(rust::Str name) {
     return std::make_unique<IFSelect_SignMultiple>(std::string(name).c_str());
 }
+inline rust::String IFSelect_SignMultiple_get_type_name() {
+    return rust::String(IFSelect_SignMultiple::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SignMultiple_get_type_descriptor() {
     return IFSelect_SignMultiple::get_type_descriptor();
 }
@@ -22255,10 +22888,10 @@ inline const Interface_SignType& IFSelect_SignMultiple_as_Interface_SignType(con
 inline Interface_SignType& IFSelect_SignMultiple_as_Interface_SignType_mut(IFSelect_SignMultiple& self_) { return static_cast<Interface_SignType&>(self_); }
 inline const MoniTool_SignText& IFSelect_SignMultiple_as_MoniTool_SignText(const IFSelect_SignMultiple& self_) { return static_cast<const MoniTool_SignText&>(self_); }
 inline MoniTool_SignText& IFSelect_SignMultiple_as_MoniTool_SignText_mut(IFSelect_SignMultiple& self_) { return static_cast<MoniTool_SignText&>(self_); }
-inline void IFSelect_SignMultiple_inherited_SetIntCase(IFSelect_SignMultiple& self, bool hasmin, Standard_Integer valmin, bool hasmax, Standard_Integer valmax) {
+inline void IFSelect_SignMultiple_inherited_SetIntCase(IFSelect_SignMultiple& self, Standard_Boolean hasmin, Standard_Integer valmin, Standard_Boolean hasmax, Standard_Integer valmax) {
     self.SetIntCase(hasmin, valmin, hasmax, valmax);
 }
-inline bool IFSelect_SignMultiple_inherited_IsIntCase(const IFSelect_SignMultiple& self, bool& hasmin, Standard_Integer& valmin, bool& hasmax, Standard_Integer& valmax) {
+inline bool IFSelect_SignMultiple_inherited_IsIntCase(const IFSelect_SignMultiple& self, Standard_Boolean& hasmin, Standard_Integer& valmin, Standard_Boolean& hasmax, Standard_Integer& valmax) {
     return self.IsIntCase(hasmin, valmin, hasmax, valmax);
 }
 inline std::unique_ptr<Handle(TColStd_HSequenceOfAsciiString)> IFSelect_SignMultiple_inherited_CaseList(const IFSelect_SignMultiple& self) {
@@ -22275,6 +22908,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SignMultiple_inherited_
 inline std::unique_ptr<IFSelect_SignType> IFSelect_SignType_ctor_bool(Standard_Boolean nopk) {
     return std::make_unique<IFSelect_SignType>(nopk);
 }
+inline rust::String IFSelect_SignType_get_type_name() {
+    return rust::String(IFSelect_SignType::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SignType_get_type_descriptor() {
     return IFSelect_SignType::get_type_descriptor();
 }
@@ -22284,10 +22920,10 @@ inline const Interface_SignType& IFSelect_SignType_as_Interface_SignType(const I
 inline Interface_SignType& IFSelect_SignType_as_Interface_SignType_mut(IFSelect_SignType& self_) { return static_cast<Interface_SignType&>(self_); }
 inline const MoniTool_SignText& IFSelect_SignType_as_MoniTool_SignText(const IFSelect_SignType& self_) { return static_cast<const MoniTool_SignText&>(self_); }
 inline MoniTool_SignText& IFSelect_SignType_as_MoniTool_SignText_mut(IFSelect_SignType& self_) { return static_cast<MoniTool_SignText&>(self_); }
-inline void IFSelect_SignType_inherited_SetIntCase(IFSelect_SignType& self, bool hasmin, Standard_Integer valmin, bool hasmax, Standard_Integer valmax) {
+inline void IFSelect_SignType_inherited_SetIntCase(IFSelect_SignType& self, Standard_Boolean hasmin, Standard_Integer valmin, Standard_Boolean hasmax, Standard_Integer valmax) {
     self.SetIntCase(hasmin, valmin, hasmax, valmax);
 }
-inline bool IFSelect_SignType_inherited_IsIntCase(const IFSelect_SignType& self, bool& hasmin, Standard_Integer& valmin, bool& hasmax, Standard_Integer& valmax) {
+inline bool IFSelect_SignType_inherited_IsIntCase(const IFSelect_SignType& self, Standard_Boolean& hasmin, Standard_Integer& valmin, Standard_Boolean& hasmax, Standard_Integer& valmax) {
     return self.IsIntCase(hasmin, valmin, hasmax, valmax);
 }
 inline std::unique_ptr<Handle(TColStd_HSequenceOfAsciiString)> IFSelect_SignType_inherited_CaseList(const IFSelect_SignType& self) {
@@ -22304,6 +22940,9 @@ inline std::unique_ptr<TCollection_AsciiString> IFSelect_SignType_inherited_Labe
 inline std::unique_ptr<IFSelect_SignValidity> IFSelect_SignValidity_ctor() {
     return std::make_unique<IFSelect_SignValidity>();
 }
+inline rust::String IFSelect_SignValidity_get_type_name() {
+    return rust::String(IFSelect_SignValidity::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SignValidity_get_type_descriptor() {
     return IFSelect_SignValidity::get_type_descriptor();
 }
@@ -22313,10 +22952,10 @@ inline const Interface_SignType& IFSelect_SignValidity_as_Interface_SignType(con
 inline Interface_SignType& IFSelect_SignValidity_as_Interface_SignType_mut(IFSelect_SignValidity& self_) { return static_cast<Interface_SignType&>(self_); }
 inline const MoniTool_SignText& IFSelect_SignValidity_as_MoniTool_SignText(const IFSelect_SignValidity& self_) { return static_cast<const MoniTool_SignText&>(self_); }
 inline MoniTool_SignText& IFSelect_SignValidity_as_MoniTool_SignText_mut(IFSelect_SignValidity& self_) { return static_cast<MoniTool_SignText&>(self_); }
-inline void IFSelect_SignValidity_inherited_SetIntCase(IFSelect_SignValidity& self, bool hasmin, Standard_Integer valmin, bool hasmax, Standard_Integer valmax) {
+inline void IFSelect_SignValidity_inherited_SetIntCase(IFSelect_SignValidity& self, Standard_Boolean hasmin, Standard_Integer valmin, Standard_Boolean hasmax, Standard_Integer valmax) {
     self.SetIntCase(hasmin, valmin, hasmax, valmax);
 }
-inline bool IFSelect_SignValidity_inherited_IsIntCase(const IFSelect_SignValidity& self, bool& hasmin, Standard_Integer& valmin, bool& hasmax, Standard_Integer& valmax) {
+inline bool IFSelect_SignValidity_inherited_IsIntCase(const IFSelect_SignValidity& self, Standard_Boolean& hasmin, Standard_Integer& valmin, Standard_Boolean& hasmax, Standard_Integer& valmax) {
     return self.IsIntCase(hasmin, valmin, hasmax, valmax);
 }
 inline std::unique_ptr<Handle(TColStd_HSequenceOfAsciiString)> IFSelect_SignValidity_inherited_CaseList(const IFSelect_SignValidity& self) {
@@ -22344,6 +22983,12 @@ inline rust::String IFSelect_Signature_name(const IFSelect_Signature& self) {
 }
 inline Standard_Boolean IFSelect_Signature_match_value(rust::Str val, const TCollection_AsciiString& text, Standard_Boolean exact) {
     return IFSelect_Signature::MatchValue(std::string(val).c_str(), text, exact);
+}
+inline rust::String IFSelect_Signature_int_value(Standard_Integer val) {
+    return rust::String(IFSelect_Signature::IntValue(val));
+}
+inline rust::String IFSelect_Signature_get_type_name() {
+    return rust::String(IFSelect_Signature::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_Signature_get_type_descriptor() {
     return IFSelect_Signature::get_type_descriptor();
@@ -22378,6 +23023,9 @@ inline rust::String IFSelect_SignatureList_last_value(const IFSelect_SignatureLi
 inline rust::String IFSelect_SignatureList_name(const IFSelect_SignatureList& self) {
     return rust::String(self.Name());
 }
+inline rust::String IFSelect_SignatureList_get_type_name() {
+    return rust::String(IFSelect_SignatureList::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_SignatureList_get_type_descriptor() {
     return IFSelect_SignatureList::get_type_descriptor();
 }
@@ -22400,6 +23048,9 @@ inline std::unique_ptr<opencascade::handle<IFSelect_Selection>> IFSelect_Transfo
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_TransformStandard_label(const IFSelect_TransformStandard& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
 }
+inline rust::String IFSelect_TransformStandard_get_type_name() {
+    return rust::String(IFSelect_TransformStandard::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_TransformStandard_get_type_descriptor() {
     return IFSelect_TransformStandard::get_type_descriptor();
 }
@@ -22412,6 +23063,9 @@ inline IFSelect_Transformer& IFSelect_TransformStandard_as_IFSelect_Transformer_
 
 inline std::unique_ptr<TCollection_AsciiString> IFSelect_Transformer_label(const IFSelect_Transformer& self_) {
     return std::make_unique<TCollection_AsciiString>(self_.Label());
+}
+inline rust::String IFSelect_Transformer_get_type_name() {
+    return rust::String(IFSelect_Transformer::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_Transformer_get_type_descriptor() {
     return IFSelect_Transformer::get_type_descriptor();
@@ -22428,6 +23082,9 @@ inline void IFSelect_WorkLibrary_set_dump_help(IFSelect_WorkLibrary& self, Stand
 }
 inline rust::String IFSelect_WorkLibrary_dump_help(const IFSelect_WorkLibrary& self, Standard_Integer level) {
     return rust::String(self.DumpHelp(level));
+}
+inline rust::String IFSelect_WorkLibrary_get_type_name() {
+    return rust::String(IFSelect_WorkLibrary::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IFSelect_WorkLibrary_get_type_descriptor() {
     return IFSelect_WorkLibrary::get_type_descriptor();
@@ -22607,6 +23264,9 @@ inline rust::String IFSelect_WorkSession_loaded_file(const IFSelect_WorkSession&
 inline Standard_Boolean IFSelect_WorkSession_set_remaining(IFSelect_WorkSession& self_, int32_t mode) {
     return self_.SetRemaining(static_cast<IFSelect_RemainMode>(mode));
 }
+inline rust::String IFSelect_WorkSession_get_type_name() {
+    return rust::String(IFSelect_WorkSession::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IFSelect_WorkSession_get_type_descriptor() {
     return IFSelect_WorkSession::get_type_descriptor();
 }
@@ -22623,6 +23283,9 @@ inline IFSelect_WorkSession& HandleIFSelectWorkSession_get_mut(HandleIFSelectWor
 inline std::unique_ptr<IGESControl_ActorWrite> IGESControl_ActorWrite_ctor() {
     return std::make_unique<IGESControl_ActorWrite>();
 }
+inline rust::String IGESControl_ActorWrite_get_type_name() {
+    return rust::String(IGESControl_ActorWrite::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IGESControl_ActorWrite_get_type_descriptor() {
     return IGESControl_ActorWrite::get_type_descriptor();
 }
@@ -22636,13 +23299,13 @@ inline Standard_Integer& IGESControl_ActorWrite_inherited_ModeTrans(IGESControl_
 inline std::unique_ptr<Handle(Transfer_Binder)> IGESControl_ActorWrite_inherited_NullResult(const IGESControl_ActorWrite& self) {
     return std::make_unique<Handle(Transfer_Binder)>(self.NullResult());
 }
-inline void IGESControl_ActorWrite_inherited_SetLast(IGESControl_ActorWrite& self, bool mode) {
+inline void IGESControl_ActorWrite_inherited_SetLast(IGESControl_ActorWrite& self, Standard_Boolean mode) {
     self.SetLast(mode);
 }
 inline bool IGESControl_ActorWrite_inherited_IsLast(const IGESControl_ActorWrite& self) {
     return self.IsLast();
 }
-inline void IGESControl_ActorWrite_inherited_SetNext(IGESControl_ActorWrite& self, const Handle(Transfer_ActorOfProcessForFinder)& next) {
+inline void IGESControl_ActorWrite_inherited_SetNext(IGESControl_ActorWrite& self, const opencascade::handle<Transfer_ActorOfProcessForFinder>& next) {
     self.SetNext(next);
 }
 inline std::unique_ptr<Handle(Transfer_ActorOfProcessForFinder)> IGESControl_ActorWrite_inherited_Next(const IGESControl_ActorWrite& self) {
@@ -22656,12 +23319,15 @@ inline std::unique_ptr<Handle(Transfer_ActorOfProcessForFinder)> IGESControl_Act
 inline std::unique_ptr<IGESControl_AlgoContainer> IGESControl_AlgoContainer_ctor() {
     return std::make_unique<IGESControl_AlgoContainer>();
 }
+inline rust::String IGESControl_AlgoContainer_get_type_name() {
+    return rust::String(IGESControl_AlgoContainer::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IGESControl_AlgoContainer_get_type_descriptor() {
     return IGESControl_AlgoContainer::get_type_descriptor();
 }
 inline const IGESToBRep_AlgoContainer& IGESControl_AlgoContainer_as_IGESToBRep_AlgoContainer(const IGESControl_AlgoContainer& self_) { return static_cast<const IGESToBRep_AlgoContainer&>(self_); }
 inline IGESToBRep_AlgoContainer& IGESControl_AlgoContainer_as_IGESToBRep_AlgoContainer_mut(IGESControl_AlgoContainer& self_) { return static_cast<IGESToBRep_AlgoContainer&>(self_); }
-inline void IGESControl_AlgoContainer_inherited_SetToolContainer(IGESControl_AlgoContainer& self, const Handle(IGESToBRep_ToolContainer)& TC) {
+inline void IGESControl_AlgoContainer_inherited_SetToolContainer(IGESControl_AlgoContainer& self, const opencascade::handle<IGESToBRep_ToolContainer>& TC) {
     self.SetToolContainer(TC);
 }
 inline std::unique_ptr<Handle(IGESToBRep_ToolContainer)> IGESControl_AlgoContainer_inherited_ToolContainer(const IGESControl_AlgoContainer& self) {
@@ -22681,6 +23347,9 @@ inline std::unique_ptr<opencascade::handle<Interface_InterfaceModel>> IGESContro
 inline Standard_Boolean IGESControl_Controller_init() {
     return IGESControl_Controller::Init();
 }
+inline rust::String IGESControl_Controller_get_type_name() {
+    return rust::String(IGESControl_Controller::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IGESControl_Controller_get_type_descriptor() {
     return IGESControl_Controller::get_type_descriptor();
 }
@@ -22692,13 +23361,13 @@ inline void IGESControl_Controller_inherited_AutoRecord(const IGESControl_Contro
 inline const Handle(IFSelect_WorkLibrary)& IGESControl_Controller_inherited_WorkLibrary(const IGESControl_Controller& self) {
     return self.WorkLibrary();
 }
-inline void IGESControl_Controller_inherited_SetModeWrite(IGESControl_Controller& self, Standard_Integer modemin, Standard_Integer modemax, bool shape) {
+inline void IGESControl_Controller_inherited_SetModeWrite(IGESControl_Controller& self, Standard_Integer modemin, Standard_Integer modemax, Standard_Boolean shape) {
     self.SetModeWrite(modemin, modemax, shape);
 }
-inline bool IGESControl_Controller_inherited_ModeWriteBounds(const IGESControl_Controller& self, Standard_Integer& modemin, Standard_Integer& modemax, bool shape) {
+inline bool IGESControl_Controller_inherited_ModeWriteBounds(const IGESControl_Controller& self, Standard_Integer& modemin, Standard_Integer& modemax, Standard_Boolean shape) {
     return self.ModeWriteBounds(modemin, modemax, shape);
 }
-inline bool IGESControl_Controller_inherited_IsModeWrite(const IGESControl_Controller& self, Standard_Integer modetrans, bool shape) {
+inline bool IGESControl_Controller_inherited_IsModeWrite(const IGESControl_Controller& self, Standard_Integer modetrans, Standard_Boolean shape) {
     return self.IsModeWrite(modetrans, shape);
 }
 inline bool IGESControl_Controller_inherited_RecognizeWriteShape(const IGESControl_Controller& self, const TopoDS_Shape& shape, Standard_Integer modetrans) {
@@ -22715,12 +23384,15 @@ inline std::unique_ptr<IGESControl_IGESBoundary> IGESControl_IGESBoundary_ctor()
 inline std::unique_ptr<IGESControl_IGESBoundary> IGESControl_IGESBoundary_ctor_curveandsurface(const IGESToBRep_CurveAndSurface& CS) {
     return std::make_unique<IGESControl_IGESBoundary>(CS);
 }
+inline rust::String IGESControl_IGESBoundary_get_type_name() {
+    return rust::String(IGESControl_IGESBoundary::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IGESControl_IGESBoundary_get_type_descriptor() {
     return IGESControl_IGESBoundary::get_type_descriptor();
 }
 inline const IGESToBRep_IGESBoundary& IGESControl_IGESBoundary_as_IGESToBRep_IGESBoundary(const IGESControl_IGESBoundary& self_) { return static_cast<const IGESToBRep_IGESBoundary&>(self_); }
 inline IGESToBRep_IGESBoundary& IGESControl_IGESBoundary_as_IGESToBRep_IGESBoundary_mut(IGESControl_IGESBoundary& self_) { return static_cast<IGESToBRep_IGESBoundary&>(self_); }
-inline void IGESControl_IGESBoundary_inherited_Init(IGESControl_IGESBoundary& self, const IGESToBRep_CurveAndSurface& CS, const Handle(IGESData_IGESEntity)& entity, const TopoDS_Face& face, const gp_Trsf2d& trans, Standard_Real uFact, Standard_Integer filepreference) {
+inline void IGESControl_IGESBoundary_inherited_Init(IGESControl_IGESBoundary& self, const IGESToBRep_CurveAndSurface& CS, const opencascade::handle<IGESData_IGESEntity>& entity, const TopoDS_Face& face, const gp_Trsf2d& trans, Standard_Real uFact, Standard_Integer filepreference) {
     self.Init(CS, entity, face, trans, uFact, filepreference);
 }
 
@@ -22745,7 +23417,7 @@ inline bool IGESControl_Reader_inherited_TransferOneRoot(IGESControl_Reader& sel
 inline bool IGESControl_Reader_inherited_TransferOne(IGESControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
     return self.TransferOne(num, theProgress);
 }
-inline Standard_Integer IGESControl_Reader_inherited_TransferList(IGESControl_Reader& self, const Handle(TColStd_HSequenceOfTransient)& list, const Message_ProgressRange& theProgress) {
+inline Standard_Integer IGESControl_Reader_inherited_TransferList(IGESControl_Reader& self, const opencascade::handle<TColStd_HSequenceOfTransient>& list, const Message_ProgressRange& theProgress) {
     return self.TransferList(list, theProgress);
 }
 inline Standard_Integer IGESControl_Reader_inherited_TransferRoots(IGESControl_Reader& self, const Message_ProgressRange& theProgress) {
@@ -22763,16 +23435,16 @@ inline std::unique_ptr<TopoDS_Shape> IGESControl_Reader_inherited_Shape(const IG
 inline std::unique_ptr<TopoDS_Shape> IGESControl_Reader_inherited_OneShape(const IGESControl_Reader& self) {
     return std::make_unique<TopoDS_Shape>(self.OneShape());
 }
-inline void IGESControl_Reader_inherited_PrintCheckLoad(const IGESControl_Reader& self, bool failsonly, int32_t mode) {
+inline void IGESControl_Reader_inherited_PrintCheckLoad(const IGESControl_Reader& self, Standard_Boolean failsonly, int32_t mode) {
     self.PrintCheckLoad(failsonly, static_cast<IFSelect_PrintCount>(mode));
 }
-inline void IGESControl_Reader_inherited_PrintCheckTransfer(const IGESControl_Reader& self, bool failsonly, int32_t mode) {
+inline void IGESControl_Reader_inherited_PrintCheckTransfer(const IGESControl_Reader& self, Standard_Boolean failsonly, int32_t mode) {
     self.PrintCheckTransfer(failsonly, static_cast<IFSelect_PrintCount>(mode));
 }
 inline void IGESControl_Reader_inherited_PrintStatsTransfer(const IGESControl_Reader& self, Standard_Integer what, Standard_Integer mode) {
     self.PrintStatsTransfer(what, mode);
 }
-inline void IGESControl_Reader_inherited_GetStatsTransfer(const IGESControl_Reader& self, const Handle(TColStd_HSequenceOfTransient)& list, Standard_Integer& nbMapped, Standard_Integer& nbWithResult, Standard_Integer& nbWithFail) {
+inline void IGESControl_Reader_inherited_GetStatsTransfer(const IGESControl_Reader& self, const opencascade::handle<TColStd_HSequenceOfTransient>& list, Standard_Integer& nbMapped, Standard_Integer& nbWithResult, Standard_Integer& nbWithFail) {
     self.GetStatsTransfer(list, nbMapped, nbWithResult, nbWithFail);
 }
 
@@ -22785,6 +23457,9 @@ inline std::unique_ptr<IGESControl_ToolContainer> IGESControl_ToolContainer_ctor
 }
 inline std::unique_ptr<opencascade::handle<IGESToBRep_IGESBoundary>> IGESControl_ToolContainer_iges_boundary(const IGESControl_ToolContainer& self_) {
     return std::make_unique<opencascade::handle<IGESToBRep_IGESBoundary>>(self_.IGESBoundary());
+}
+inline rust::String IGESControl_ToolContainer_get_type_name() {
+    return rust::String(IGESControl_ToolContainer::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IGESControl_ToolContainer_get_type_descriptor() {
     return IGESControl_ToolContainer::get_type_descriptor();
@@ -22828,6 +23503,9 @@ inline int32_t Law_BSpFunc_continuity(const Law_BSpFunc& self_) {
 inline Standard_Integer Law_BSpFunc_nb_intervals(const Law_BSpFunc& self_, int32_t S) {
     return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
 }
+inline rust::String Law_BSpFunc_get_type_name() {
+    return rust::String(Law_BSpFunc::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Law_BSpFunc_get_type_descriptor() {
     return Law_BSpFunc::get_type_descriptor();
 }
@@ -22863,6 +23541,9 @@ inline int32_t Law_BSpline_knot_distribution(const Law_BSpline& self_) {
 }
 inline Standard_Integer Law_BSpline_max_degree() {
     return Law_BSpline::MaxDegree();
+}
+inline rust::String Law_BSpline_get_type_name() {
+    return rust::String(Law_BSpline::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Law_BSpline_get_type_descriptor() {
     return Law_BSpline::get_type_descriptor();
@@ -22900,6 +23581,9 @@ inline int32_t Law_Composite_continuity(const Law_Composite& self_) {
 inline Standard_Integer Law_Composite_nb_intervals(const Law_Composite& self_, int32_t S) {
     return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
 }
+inline rust::String Law_Composite_get_type_name() {
+    return rust::String(Law_Composite::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Law_Composite_get_type_descriptor() {
     return Law_Composite::get_type_descriptor();
 }
@@ -22930,6 +23614,9 @@ inline int32_t Law_Constant_continuity(const Law_Constant& self_) {
 inline Standard_Integer Law_Constant_nb_intervals(const Law_Constant& self_, int32_t S) {
     return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
 }
+inline rust::String Law_Constant_get_type_name() {
+    return rust::String(Law_Constant::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Law_Constant_get_type_descriptor() {
     return Law_Constant::get_type_descriptor();
 }
@@ -22957,6 +23644,9 @@ inline int32_t Law_Function_continuity(const Law_Function& self_) {
 inline Standard_Integer Law_Function_nb_intervals(const Law_Function& self_, int32_t S) {
     return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
 }
+inline rust::String Law_Function_get_type_name() {
+    return rust::String(Law_Function::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Law_Function_get_type_descriptor() {
     return Law_Function::get_type_descriptor();
 }
@@ -22969,6 +23659,9 @@ inline Law_Function& HandleLawFunction_get_mut(HandleLawFunction& handle) { retu
 
 inline std::unique_ptr<Law_Interpol> Law_Interpol_ctor() {
     return std::make_unique<Law_Interpol>();
+}
+inline rust::String Law_Interpol_get_type_name() {
+    return rust::String(Law_Interpol::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Law_Interpol_get_type_descriptor() {
     return Law_Interpol::get_type_descriptor();
@@ -23012,7 +23705,7 @@ inline void Law_Interpol_inherited_Bounds(Law_Interpol& self, Standard_Real& PFi
 inline std::unique_ptr<Handle(Law_BSpline)> Law_Interpol_inherited_Curve(const Law_Interpol& self) {
     return std::make_unique<Handle(Law_BSpline)>(self.Curve());
 }
-inline void Law_Interpol_inherited_SetCurve(Law_Interpol& self, const Handle(Law_BSpline)& C) {
+inline void Law_Interpol_inherited_SetCurve(Law_Interpol& self, const opencascade::handle<Law_BSpline>& C) {
     self.SetCurve(C);
 }
 
@@ -23043,6 +23736,9 @@ inline int32_t Law_Linear_continuity(const Law_Linear& self_) {
 inline Standard_Integer Law_Linear_nb_intervals(const Law_Linear& self_, int32_t S) {
     return self_.NbIntervals(static_cast<GeomAbs_Shape>(S));
 }
+inline rust::String Law_Linear_get_type_name() {
+    return rust::String(Law_Linear::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Law_Linear_get_type_descriptor() {
     return Law_Linear::get_type_descriptor();
 }
@@ -23063,6 +23759,9 @@ inline std::unique_ptr<HandleLawFunction> HandleLawLinear_to_HandleLawFunction(c
 
 inline std::unique_ptr<Law_S> Law_S_ctor() {
     return std::make_unique<Law_S>();
+}
+inline rust::String Law_S_get_type_name() {
+    return rust::String(Law_S::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Law_S_get_type_descriptor() {
     return Law_S::get_type_descriptor();
@@ -23106,7 +23805,7 @@ inline void Law_S_inherited_Bounds(Law_S& self, Standard_Real& PFirst, Standard_
 inline std::unique_ptr<Handle(Law_BSpline)> Law_S_inherited_Curve(const Law_S& self) {
     return std::make_unique<Handle(Law_BSpline)>(self.Curve());
 }
-inline void Law_S_inherited_SetCurve(Law_S& self, const Handle(Law_BSpline)& C) {
+inline void Law_S_inherited_SetCurve(Law_S& self, const opencascade::handle<Law_BSpline>& C) {
     self.SetCurve(C);
 }
 
@@ -23220,6 +23919,9 @@ inline std::unique_ptr<math_DoubleTab> math_DoubleTab_ctor_int4(Standard_Integer
 }
 inline std::unique_ptr<math_DoubleTab> math_DoubleTab_ctor_doubletab(const math_DoubleTab& Other) {
     return std::make_unique<math_DoubleTab>(Other);
+}
+inline Standard_Real& math_DoubleTab_value(math_DoubleTab& self_, Standard_Integer RowIndex, Standard_Integer ColIndex) {
+    return self_.Value(RowIndex, ColIndex);
 }
 
 // ========================
@@ -23444,6 +24146,9 @@ inline std::unique_ptr<math_Matrix> math_Matrix_multiplied_matrix(const math_Mat
 inline std::unique_ptr<math_Matrix> math_Matrix_opposite(math_Matrix& self_) {
     return std::make_unique<math_Matrix>(self_.Opposite());
 }
+inline Standard_Real& math_Matrix_value(math_Matrix& self_, Standard_Integer Row, Standard_Integer Col) {
+    return self_.Value(Row, Col);
+}
 
 // ========================
 // math_MultipleVarFunction wrappers
@@ -23524,6 +24229,9 @@ inline std::unique_ptr<math_NotSquare> math_NotSquare_ctor_charptr2(rust::Str th
 inline void math_NotSquare_raise(rust::Str theMessage) {
     return math_NotSquare::Raise(std::string(theMessage).c_str());
 }
+inline rust::String math_NotSquare_get_type_name() {
+    return rust::String(math_NotSquare::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& math_NotSquare_get_type_descriptor() {
     return math_NotSquare::get_type_descriptor();
 }
@@ -23580,6 +24288,9 @@ inline std::unique_ptr<math_SingularMatrix> math_SingularMatrix_ctor_charptr2(ru
 }
 inline void math_SingularMatrix_raise(rust::Str theMessage) {
     return math_SingularMatrix::Raise(std::string(theMessage).c_str());
+}
+inline rust::String math_SingularMatrix_get_type_name() {
+    return rust::String(math_SingularMatrix::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& math_SingularMatrix_get_type_descriptor() {
     return math_SingularMatrix::get_type_descriptor();
@@ -23646,6 +24357,9 @@ inline std::unique_ptr<Message_Alert> Message_Alert_ctor() {
 inline rust::String Message_Alert_get_message_key(const Message_Alert& self) {
     return rust::String(self.GetMessageKey());
 }
+inline rust::String Message_Alert_get_type_name() {
+    return rust::String(Message_Alert::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Message_Alert_get_type_descriptor() {
     return Message_Alert::get_type_descriptor();
 }
@@ -23670,6 +24384,9 @@ inline rust::String Message_AlertExtended_get_message_key(const Message_AlertExt
 }
 inline std::unique_ptr<opencascade::handle<Message_Alert>> Message_AlertExtended_add_alert(const opencascade::handle<Message_Report>& theReport, const opencascade::handle<Message_Attribute>& theAttribute, int32_t theGravity) {
     return std::make_unique<opencascade::handle<Message_Alert>>(Message_AlertExtended::AddAlert(theReport, theAttribute, static_cast<Message_Gravity>(theGravity)));
+}
+inline rust::String Message_AlertExtended_get_type_name() {
+    return rust::String(Message_AlertExtended::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Message_AlertExtended_get_type_descriptor() {
     return Message_AlertExtended::get_type_descriptor();
@@ -23726,6 +24443,9 @@ inline void Message_Algorithm_send_messages(const Message_Algorithm& self_, int3
 inline std::unique_ptr<TCollection_ExtendedString> Message_Algorithm_prepare_report(const opencascade::handle<TColStd_HPackedMapOfInteger>& theError, Standard_Integer theMaxCount) {
     return std::make_unique<TCollection_ExtendedString>(Message_Algorithm::PrepareReport(theError, theMaxCount));
 }
+inline rust::String Message_Algorithm_get_type_name() {
+    return rust::String(Message_Algorithm::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Message_Algorithm_get_type_descriptor() {
     return Message_Algorithm::get_type_descriptor();
 }
@@ -23744,6 +24464,9 @@ inline std::unique_ptr<Message_Attribute> Message_Attribute_ctor_asciistring(con
 }
 inline rust::String Message_Attribute_get_message_key(const Message_Attribute& self) {
     return rust::String(self.GetMessageKey());
+}
+inline rust::String Message_Attribute_get_type_name() {
+    return rust::String(Message_Attribute::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Message_Attribute_get_type_descriptor() {
     return Message_Attribute::get_type_descriptor();
@@ -23782,6 +24505,9 @@ inline void Message_AttributeMeter_set_stop_value(Message_AttributeMeter& self_,
 inline Standard_Real Message_AttributeMeter_undefined_metric_value() {
     return Message_AttributeMeter::UndefinedMetricValue();
 }
+inline rust::String Message_AttributeMeter_get_type_name() {
+    return rust::String(Message_AttributeMeter::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Message_AttributeMeter_get_type_descriptor() {
     return Message_AttributeMeter::get_type_descriptor();
 }
@@ -23798,6 +24524,9 @@ inline void Message_AttributeMeter_inherited_SetName(Message_AttributeMeter& sel
 // Message_AttributeObject wrappers
 // ========================
 
+inline rust::String Message_AttributeObject_get_type_name() {
+    return rust::String(Message_AttributeObject::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Message_AttributeObject_get_type_descriptor() {
     return Message_AttributeObject::get_type_descriptor();
 }
@@ -23816,6 +24545,9 @@ inline void Message_AttributeObject_inherited_SetName(Message_AttributeObject& s
 
 inline std::unique_ptr<Message_AttributeStream> Message_AttributeStream_ctor_sstream_asciistring(const Standard_SStream& theStream, const TCollection_AsciiString& theName) {
     return std::make_unique<Message_AttributeStream>(theStream, theName);
+}
+inline rust::String Message_AttributeStream_get_type_name() {
+    return rust::String(Message_AttributeStream::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Message_AttributeStream_get_type_descriptor() {
     return Message_AttributeStream::get_type_descriptor();
@@ -23847,6 +24579,9 @@ inline Standard_Boolean Message_CompositeAlerts_has_alert(Message_CompositeAlert
 }
 inline void Message_CompositeAlerts_clear(Message_CompositeAlerts& self_, int32_t theGravity) {
     self_.Clear(static_cast<Message_Gravity>(theGravity));
+}
+inline rust::String Message_CompositeAlerts_get_type_name() {
+    return rust::String(Message_CompositeAlerts::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Message_CompositeAlerts_get_type_descriptor() {
     return Message_CompositeAlerts::get_type_descriptor();
@@ -23918,6 +24653,9 @@ inline void Message_Messenger_send_asciistring_gravity(const Message_Messenger& 
 }
 inline void Message_Messenger_send_extendedstring_gravity(const Message_Messenger& self_, const TCollection_ExtendedString& theString, int32_t theGravity) {
     self_.Send(theString, static_cast<Message_Gravity>(theGravity));
+}
+inline rust::String Message_Messenger_get_type_name() {
+    return rust::String(Message_Messenger::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Message_Messenger_get_type_descriptor() {
     return Message_Messenger::get_type_descriptor();
@@ -23999,6 +24737,9 @@ inline void Message_Printer_send_extendedstring_gravity(const Message_Printer& s
 inline void Message_Printer_send_asciistring_gravity(const Message_Printer& self_, const TCollection_AsciiString& theString, int32_t theGravity) {
     self_.Send(theString, static_cast<Message_Gravity>(theGravity));
 }
+inline rust::String Message_Printer_get_type_name() {
+    return rust::String(Message_Printer::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Message_Printer_get_type_descriptor() {
     return Message_Printer::get_type_descriptor();
 }
@@ -24014,6 +24755,9 @@ inline std::unique_ptr<Message_PrinterOStream> Message_PrinterOStream_ctor_gravi
 }
 inline std::unique_ptr<Message_PrinterOStream> Message_PrinterOStream_ctor_charptr_bool_gravity(rust::Str theFileName, Standard_Boolean theDoAppend, int32_t theTraceLevel) {
     return std::make_unique<Message_PrinterOStream>(std::string(theFileName).c_str(), theDoAppend, static_cast<Message_Gravity>(theTraceLevel));
+}
+inline rust::String Message_PrinterOStream_get_type_name() {
+    return rust::String(Message_PrinterOStream::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Message_PrinterOStream_get_type_descriptor() {
     return Message_PrinterOStream::get_type_descriptor();
@@ -24037,6 +24781,9 @@ inline void Message_PrinterOStream_inherited_Send(const Message_PrinterOStream& 
 inline std::unique_ptr<Message_PrinterSystemLog> Message_PrinterSystemLog_ctor_asciistring_gravity(const TCollection_AsciiString& theEventSourceName, int32_t theTraceLevel) {
     return std::make_unique<Message_PrinterSystemLog>(theEventSourceName, static_cast<Message_Gravity>(theTraceLevel));
 }
+inline rust::String Message_PrinterSystemLog_get_type_name() {
+    return rust::String(Message_PrinterSystemLog::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Message_PrinterSystemLog_get_type_descriptor() {
     return Message_PrinterSystemLog::get_type_descriptor();
 }
@@ -24059,6 +24806,9 @@ inline void Message_PrinterSystemLog_inherited_Send(const Message_PrinterSystemL
 inline std::unique_ptr<Message_PrinterToReport> Message_PrinterToReport_ctor() {
     return std::make_unique<Message_PrinterToReport>();
 }
+inline rust::String Message_PrinterToReport_get_type_name() {
+    return rust::String(Message_PrinterToReport::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Message_PrinterToReport_get_type_descriptor() {
     return Message_PrinterToReport::get_type_descriptor();
 }
@@ -24080,6 +24830,9 @@ inline void Message_PrinterToReport_inherited_Send(const Message_PrinterToReport
 
 inline std::unique_ptr<Message_ProgressRange> Message_ProgressIndicator_start(Message_ProgressIndicator& self_) {
     return std::make_unique<Message_ProgressRange>(self_.Start());
+}
+inline rust::String Message_ProgressIndicator_get_type_name() {
+    return rust::String(Message_ProgressIndicator::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Message_ProgressIndicator_get_type_descriptor() {
     return Message_ProgressIndicator::get_type_descriptor();
@@ -24126,6 +24879,9 @@ inline void Message_Report_send_messages(Message_Report& self_, const opencascad
 inline void Message_Report_merge(Message_Report& self_, const opencascade::handle<Message_Report>& theOther, int32_t theGravity) {
     self_.Merge(theOther, static_cast<Message_Gravity>(theGravity));
 }
+inline rust::String Message_Report_get_type_name() {
+    return rust::String(Message_Report::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Message_Report_get_type_descriptor() {
     return Message_Report::get_type_descriptor();
 }
@@ -24142,6 +24898,9 @@ inline Message_Report& HandleMessageReport_get_mut(HandleMessageReport& handle) 
 inline std::unique_ptr<NCollection_AccAllocator> NCollection_AccAllocator_ctor_size(size_t theBlockSize) {
     return std::make_unique<NCollection_AccAllocator>(theBlockSize);
 }
+inline rust::String NCollection_AccAllocator_get_type_name() {
+    return rust::String(NCollection_AccAllocator::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& NCollection_AccAllocator_get_type_descriptor() {
     return NCollection_AccAllocator::get_type_descriptor();
 }
@@ -24153,6 +24912,9 @@ inline const opencascade::handle<Standard_Type>& NCollection_AccAllocator_get_ty
 inline std::unique_ptr<NCollection_AlignedAllocator> NCollection_AlignedAllocator_ctor_size(size_t theAlignment) {
     return std::make_unique<NCollection_AlignedAllocator>(theAlignment);
 }
+inline rust::String NCollection_AlignedAllocator_get_type_name() {
+    return rust::String(NCollection_AlignedAllocator::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& NCollection_AlignedAllocator_get_type_descriptor() {
     return NCollection_AlignedAllocator::get_type_descriptor();
 }
@@ -24163,6 +24925,9 @@ inline const opencascade::handle<Standard_Type>& NCollection_AlignedAllocator_ge
 
 inline const opencascade::handle<NCollection_BaseAllocator>& NCollection_BaseAllocator_common_base_allocator() {
     return NCollection_BaseAllocator::CommonBaseAllocator();
+}
+inline rust::String NCollection_BaseAllocator_get_type_name() {
+    return rust::String(NCollection_BaseAllocator::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& NCollection_BaseAllocator_get_type_descriptor() {
     return NCollection_BaseAllocator::get_type_descriptor();
@@ -24193,6 +24958,9 @@ inline std::unique_ptr<NCollection_BasePointerVector> NCollection_BasePointerVec
 // NCollection_Buffer wrappers
 // ========================
 
+inline rust::String NCollection_Buffer_get_type_name() {
+    return rust::String(NCollection_Buffer::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& NCollection_Buffer_get_type_descriptor() {
     return NCollection_Buffer::get_type_descriptor();
 }
@@ -24206,6 +24974,9 @@ inline NCollection_Buffer& HandleNCollectionBuffer_get_mut(HandleNCollectionBuff
 // NCollection_HeapAllocator wrappers
 // ========================
 
+inline rust::String NCollection_HeapAllocator_get_type_name() {
+    return rust::String(NCollection_HeapAllocator::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& NCollection_HeapAllocator_get_type_descriptor() {
     return NCollection_HeapAllocator::get_type_descriptor();
 }
@@ -24217,6 +24988,9 @@ inline const opencascade::handle<Standard_Type>& NCollection_HeapAllocator_get_t
 inline std::unique_ptr<NCollection_IncAllocator> NCollection_IncAllocator_ctor_size(size_t theBlockSize) {
     return std::make_unique<NCollection_IncAllocator>(theBlockSize);
 }
+inline rust::String NCollection_IncAllocator_get_type_name() {
+    return rust::String(NCollection_IncAllocator::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& NCollection_IncAllocator_get_type_descriptor() {
     return NCollection_IncAllocator::get_type_descriptor();
 }
@@ -24227,6 +25001,9 @@ inline const opencascade::handle<Standard_Type>& NCollection_IncAllocator_get_ty
 
 inline std::unique_ptr<NCollection_WinHeapAllocator> NCollection_WinHeapAllocator_ctor_size(size_t theInitSizeBytes) {
     return std::make_unique<NCollection_WinHeapAllocator>(theInitSizeBytes);
+}
+inline rust::String NCollection_WinHeapAllocator_get_type_name() {
+    return rust::String(NCollection_WinHeapAllocator::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& NCollection_WinHeapAllocator_get_type_descriptor() {
     return NCollection_WinHeapAllocator::get_type_descriptor();
@@ -24434,6 +25211,9 @@ inline std::unique_ptr<opencascade::handle<Poly_Triangulation>> Poly_CoherentTri
 inline std::unique_ptr<opencascade::handle<Poly_CoherentTriangulation>> Poly_CoherentTriangulation_clone(const Poly_CoherentTriangulation& self_, const opencascade::handle<NCollection_BaseAllocator>& theAlloc) {
     return std::make_unique<opencascade::handle<Poly_CoherentTriangulation>>(self_.Clone(theAlloc));
 }
+inline rust::String Poly_CoherentTriangulation_get_type_name() {
+    return rust::String(Poly_CoherentTriangulation::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Poly_CoherentTriangulation_get_type_descriptor() {
     return Poly_CoherentTriangulation::get_type_descriptor();
 }
@@ -24472,6 +25252,9 @@ inline std::unique_ptr<Poly_HArray1OfTriangle> Poly_HArray1OfTriangle_ctor_trian
 }
 inline std::unique_ptr<Poly_HArray1OfTriangle> Poly_HArray1OfTriangle_ctor_array1oftriangle(const Poly_Array1OfTriangle& theOther) {
     return std::make_unique<Poly_HArray1OfTriangle>(theOther);
+}
+inline rust::String Poly_HArray1OfTriangle_get_type_name() {
+    return rust::String(Poly_HArray1OfTriangle::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Poly_HArray1OfTriangle_get_type_descriptor() {
     return Poly_HArray1OfTriangle::get_type_descriptor();
@@ -24529,6 +25312,9 @@ inline std::unique_ptr<Poly_MergeNodesTool> Poly_MergeNodesTool_ctor_real2_int(S
 inline std::unique_ptr<opencascade::handle<Poly_Triangulation>> Poly_MergeNodesTool_result(Poly_MergeNodesTool& self_) {
     return std::make_unique<opencascade::handle<Poly_Triangulation>>(self_.Result());
 }
+inline rust::String Poly_MergeNodesTool_get_type_name() {
+    return rust::String(Poly_MergeNodesTool::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Poly_MergeNodesTool_get_type_descriptor() {
     return Poly_MergeNodesTool::get_type_descriptor();
 }
@@ -24550,6 +25336,9 @@ inline std::unique_ptr<Poly_Polygon2D> Poly_Polygon2D_ctor_int(Standard_Integer 
 }
 inline std::unique_ptr<Poly_Polygon2D> Poly_Polygon2D_ctor_array1ofpnt2d(const TColgp_Array1OfPnt2d& Nodes) {
     return std::make_unique<Poly_Polygon2D>(Nodes);
+}
+inline rust::String Poly_Polygon2D_get_type_name() {
+    return rust::String(Poly_Polygon2D::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Poly_Polygon2D_get_type_descriptor() {
     return Poly_Polygon2D::get_type_descriptor();
@@ -24576,6 +25365,9 @@ inline std::unique_ptr<Poly_Polygon3D> Poly_Polygon3D_ctor_array1ofpnt_array1ofr
 inline std::unique_ptr<opencascade::handle<Poly_Polygon3D>> Poly_Polygon3D_copy(const Poly_Polygon3D& self_) {
     return std::make_unique<opencascade::handle<Poly_Polygon3D>>(self_.Copy());
 }
+inline rust::String Poly_Polygon3D_get_type_name() {
+    return rust::String(Poly_Polygon3D::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Poly_Polygon3D_get_type_descriptor() {
     return Poly_Polygon3D::get_type_descriptor();
 }
@@ -24600,6 +25392,9 @@ inline std::unique_ptr<Poly_PolygonOnTriangulation> Poly_PolygonOnTriangulation_
 }
 inline std::unique_ptr<opencascade::handle<Poly_PolygonOnTriangulation>> Poly_PolygonOnTriangulation_copy(const Poly_PolygonOnTriangulation& self_) {
     return std::make_unique<opencascade::handle<Poly_PolygonOnTriangulation>>(self_.Copy());
+}
+inline rust::String Poly_PolygonOnTriangulation_get_type_name() {
+    return rust::String(Poly_PolygonOnTriangulation::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Poly_PolygonOnTriangulation_get_type_descriptor() {
     return Poly_PolygonOnTriangulation::get_type_descriptor();
@@ -24664,6 +25459,9 @@ inline std::unique_ptr<opencascade::handle<TColgp_HArray1OfPnt2d>> Poly_Triangul
 inline std::unique_ptr<opencascade::handle<TShort_HArray1OfShortReal>> Poly_Triangulation_map_normal_array(const Poly_Triangulation& self_) {
     return std::make_unique<opencascade::handle<TShort_HArray1OfShortReal>>(self_.MapNormalArray());
 }
+inline rust::String Poly_Triangulation_get_type_name() {
+    return rust::String(Poly_Triangulation::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Poly_Triangulation_get_type_descriptor() {
     return Poly_Triangulation::get_type_descriptor();
 }
@@ -24680,6 +25478,9 @@ inline Poly_Triangulation& HandlePolyTriangulation_get_mut(HandlePolyTriangulati
 inline std::unique_ptr<Poly_TriangulationParameters> Poly_TriangulationParameters_ctor_real3(Standard_Real theDeflection, Standard_Real theAngle, Standard_Real theMinSize) {
     return std::make_unique<Poly_TriangulationParameters>(theDeflection, theAngle, theMinSize);
 }
+inline rust::String Poly_TriangulationParameters_get_type_name() {
+    return rust::String(Poly_TriangulationParameters::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Poly_TriangulationParameters_get_type_descriptor() {
     return Poly_TriangulationParameters::get_type_descriptor();
 }
@@ -24693,8 +25494,14 @@ inline Poly_TriangulationParameters& HandlePolyTriangulationParameters_get_mut(H
 // ShapeAnalysis_BoxBndTreeSelector wrappers
 // ========================
 
+inline std::unique_ptr<ShapeAnalysis_BoxBndTreeSelector> ShapeAnalysis_BoxBndTreeSelector_ctor_handletoptoolsharray1ofshape_bool(const opencascade::handle<TopTools_HArray1OfShape>& theSeq, Standard_Boolean theShared) {
+    return std::make_unique<ShapeAnalysis_BoxBndTreeSelector>(theSeq, theShared);
+}
 inline Standard_Boolean ShapeAnalysis_BoxBndTreeSelector_last_check_status(const ShapeAnalysis_BoxBndTreeSelector& self_, int32_t theStatus) {
     return self_.LastCheckStatus(static_cast<ShapeExtend_Status>(theStatus));
+}
+inline void ShapeAnalysis_BoxBndTreeSelector_define_vertexes(ShapeAnalysis_BoxBndTreeSelector& self_, const TopoDS_Vertex& theVf, const TopoDS_Vertex& theVl) {
+    self_.DefineVertexes(theVf, theVl);
 }
 
 // ========================
@@ -24799,6 +25606,9 @@ inline std::unique_ptr<opencascade::handle<TopTools_HSequenceOfShape>> ShapeAnal
 inline std::unique_ptr<TopoDS_Wire> ShapeAnalysis_FreeBoundData_notch(const ShapeAnalysis_FreeBoundData& self_, Standard_Integer index) {
     return std::make_unique<TopoDS_Wire>(self_.Notch(index));
 }
+inline rust::String ShapeAnalysis_FreeBoundData_get_type_name() {
+    return rust::String(ShapeAnalysis_FreeBoundData::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeAnalysis_FreeBoundData_get_type_descriptor() {
     return ShapeAnalysis_FreeBoundData::get_type_descriptor();
 }
@@ -24890,6 +25700,9 @@ inline std::unique_ptr<ShapeAnalysis_HSequenceOfFreeBounds> ShapeAnalysis_HSeque
 inline std::unique_ptr<ShapeAnalysis_HSequenceOfFreeBounds> ShapeAnalysis_HSequenceOfFreeBounds_ctor_sequenceoffreebounds(const ShapeAnalysis_SequenceOfFreeBounds& theOther) {
     return std::make_unique<ShapeAnalysis_HSequenceOfFreeBounds>(theOther);
 }
+inline rust::String ShapeAnalysis_HSequenceOfFreeBounds_get_type_name() {
+    return rust::String(ShapeAnalysis_HSequenceOfFreeBounds::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeAnalysis_HSequenceOfFreeBounds_get_type_descriptor() {
     return ShapeAnalysis_HSequenceOfFreeBounds::get_type_descriptor();
 }
@@ -24969,6 +25782,9 @@ inline std::unique_ptr<gp_Pnt2d> ShapeAnalysis_Surface_value_of_uv(ShapeAnalysis
 inline std::unique_ptr<gp_Pnt2d> ShapeAnalysis_Surface_next_value_of_uv(ShapeAnalysis_Surface& self_, const gp_Pnt2d& p2dPrev, const gp_Pnt& P3D, Standard_Real preci, Standard_Real maxpreci) {
     return std::make_unique<gp_Pnt2d>(self_.NextValueOfUV(p2dPrev, P3D, preci, maxpreci));
 }
+inline rust::String ShapeAnalysis_Surface_get_type_name() {
+    return rust::String(ShapeAnalysis_Surface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeAnalysis_Surface_get_type_descriptor() {
     return ShapeAnalysis_Surface::get_type_descriptor();
 }
@@ -24990,6 +25806,9 @@ inline std::unique_ptr<ShapeAnalysis_TransferParameters> ShapeAnalysis_TransferP
 }
 inline std::unique_ptr<opencascade::handle<TColStd_HSequenceOfReal>> ShapeAnalysis_TransferParameters_perform(ShapeAnalysis_TransferParameters& self_, const opencascade::handle<TColStd_HSequenceOfReal>& Params, Standard_Boolean To2d) {
     return std::make_unique<opencascade::handle<TColStd_HSequenceOfReal>>(self_.Perform(Params, To2d));
+}
+inline rust::String ShapeAnalysis_TransferParameters_get_type_name() {
+    return rust::String(ShapeAnalysis_TransferParameters::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& ShapeAnalysis_TransferParameters_get_type_descriptor() {
     return ShapeAnalysis_TransferParameters::get_type_descriptor();
@@ -25018,6 +25837,9 @@ inline std::unique_ptr<TopoDS_Vertex> ShapeAnalysis_TransferParametersProj_copy_
 }
 inline std::unique_ptr<TopoDS_Vertex> ShapeAnalysis_TransferParametersProj_copy_nm_vertex_vertex_face2(const TopoDS_Vertex& theVert, const TopoDS_Face& toFace, const TopoDS_Face& fromFace) {
     return std::make_unique<TopoDS_Vertex>(ShapeAnalysis_TransferParametersProj::CopyNMVertex(theVert, toFace, fromFace));
+}
+inline rust::String ShapeAnalysis_TransferParametersProj_get_type_name() {
+    return rust::String(ShapeAnalysis_TransferParametersProj::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& ShapeAnalysis_TransferParametersProj_get_type_descriptor() {
     return ShapeAnalysis_TransferParametersProj::get_type_descriptor();
@@ -25077,6 +25899,9 @@ inline Standard_Boolean ShapeAnalysis_Wire_status_loop(const ShapeAnalysis_Wire&
 inline Standard_Boolean ShapeAnalysis_Wire_last_check_status(const ShapeAnalysis_Wire& self_, int32_t Status) {
     return self_.LastCheckStatus(static_cast<ShapeExtend_Status>(Status));
 }
+inline rust::String ShapeAnalysis_Wire_get_type_name() {
+    return rust::String(ShapeAnalysis_Wire::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeAnalysis_Wire_get_type_descriptor() {
     return ShapeAnalysis_Wire::get_type_descriptor();
 }
@@ -25115,6 +25940,9 @@ inline std::unique_ptr<gp_XYZ> ShapeAnalysis_WireVertex_position(const ShapeAnal
 inline std::unique_ptr<ShapeUpgrade_ClosedEdgeDivide> ShapeUpgrade_ClosedEdgeDivide_ctor() {
     return std::make_unique<ShapeUpgrade_ClosedEdgeDivide>();
 }
+inline rust::String ShapeUpgrade_ClosedEdgeDivide_get_type_name() {
+    return rust::String(ShapeUpgrade_ClosedEdgeDivide::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_ClosedEdgeDivide_get_type_descriptor() {
     return ShapeUpgrade_ClosedEdgeDivide::get_type_descriptor();
 }
@@ -25140,7 +25968,7 @@ inline std::unique_ptr<Handle(TColStd_HSequenceOfReal)> ShapeUpgrade_ClosedEdgeD
 inline std::unique_ptr<Handle(TColStd_HSequenceOfReal)> ShapeUpgrade_ClosedEdgeDivide_inherited_Knots3d(const ShapeUpgrade_ClosedEdgeDivide& self) {
     return std::make_unique<Handle(TColStd_HSequenceOfReal)>(self.Knots3d());
 }
-inline void ShapeUpgrade_ClosedEdgeDivide_inherited_Set(ShapeUpgrade_ClosedEdgeDivide& self, const Handle(ShapeUpgrade_Tool)& tool) {
+inline void ShapeUpgrade_ClosedEdgeDivide_inherited_Set(ShapeUpgrade_ClosedEdgeDivide& self, const opencascade::handle<ShapeUpgrade_Tool>& tool) {
     self.Set(tool);
 }
 inline void ShapeUpgrade_ClosedEdgeDivide_inherited_SetPrecision(ShapeUpgrade_ClosedEdgeDivide& self, Standard_Real preci) {
@@ -25175,6 +26003,9 @@ inline std::unique_ptr<ShapeUpgrade_ClosedFaceDivide> ShapeUpgrade_ClosedFaceDiv
 inline std::unique_ptr<ShapeUpgrade_ClosedFaceDivide> ShapeUpgrade_ClosedFaceDivide_ctor_face(const TopoDS_Face& F) {
     return std::make_unique<ShapeUpgrade_ClosedFaceDivide>(F);
 }
+inline rust::String ShapeUpgrade_ClosedFaceDivide_get_type_name() {
+    return rust::String(ShapeUpgrade_ClosedFaceDivide::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_ClosedFaceDivide_get_type_descriptor() {
     return ShapeUpgrade_ClosedFaceDivide::get_type_descriptor();
 }
@@ -25185,7 +26016,7 @@ inline ShapeUpgrade_Tool& ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool_mut
 inline void ShapeUpgrade_ClosedFaceDivide_inherited_Init(ShapeUpgrade_ClosedFaceDivide& self, const TopoDS_Face& F) {
     self.Init(F);
 }
-inline void ShapeUpgrade_ClosedFaceDivide_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ClosedFaceDivide& self, bool Segment) {
+inline void ShapeUpgrade_ClosedFaceDivide_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ClosedFaceDivide& self, Standard_Boolean Segment) {
     self.SetSurfaceSegmentMode(Segment);
 }
 inline bool ShapeUpgrade_ClosedFaceDivide_inherited_Perform(ShapeUpgrade_ClosedFaceDivide& self, Standard_Real theArea) {
@@ -25200,13 +26031,13 @@ inline std::unique_ptr<TopoDS_Shape> ShapeUpgrade_ClosedFaceDivide_inherited_Res
 inline bool ShapeUpgrade_ClosedFaceDivide_inherited_Status(const ShapeUpgrade_ClosedFaceDivide& self, int32_t status) {
     return self.Status(static_cast<ShapeExtend_Status>(status));
 }
-inline void ShapeUpgrade_ClosedFaceDivide_inherited_SetSplitSurfaceTool(ShapeUpgrade_ClosedFaceDivide& self, const Handle(ShapeUpgrade_SplitSurface)& splitSurfaceTool) {
+inline void ShapeUpgrade_ClosedFaceDivide_inherited_SetSplitSurfaceTool(ShapeUpgrade_ClosedFaceDivide& self, const opencascade::handle<ShapeUpgrade_SplitSurface>& splitSurfaceTool) {
     self.SetSplitSurfaceTool(splitSurfaceTool);
 }
 inline std::unique_ptr<Handle(ShapeUpgrade_SplitSurface)> ShapeUpgrade_ClosedFaceDivide_inherited_GetSplitSurfaceTool(const ShapeUpgrade_ClosedFaceDivide& self) {
     return std::make_unique<Handle(ShapeUpgrade_SplitSurface)>(self.GetSplitSurfaceTool());
 }
-inline void ShapeUpgrade_ClosedFaceDivide_inherited_Set(ShapeUpgrade_ClosedFaceDivide& self, const Handle(ShapeUpgrade_Tool)& tool) {
+inline void ShapeUpgrade_ClosedFaceDivide_inherited_Set(ShapeUpgrade_ClosedFaceDivide& self, const opencascade::handle<ShapeUpgrade_Tool>& tool) {
     self.Set(tool);
 }
 inline void ShapeUpgrade_ClosedFaceDivide_inherited_SetPrecision(ShapeUpgrade_ClosedFaceDivide& self, Standard_Real preci) {
@@ -25238,21 +26069,24 @@ inline Standard_Real ShapeUpgrade_ClosedFaceDivide_inherited_LimitTolerance(cons
 inline std::unique_ptr<ShapeUpgrade_ConvertSurfaceToBezierBasis> ShapeUpgrade_ConvertSurfaceToBezierBasis_ctor() {
     return std::make_unique<ShapeUpgrade_ConvertSurfaceToBezierBasis>();
 }
+inline rust::String ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_name() {
+    return rust::String(ShapeUpgrade_ConvertSurfaceToBezierBasis::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_descriptor() {
     return ShapeUpgrade_ConvertSurfaceToBezierBasis::get_type_descriptor();
 }
 inline const ShapeUpgrade_SplitSurface& ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface(const ShapeUpgrade_ConvertSurfaceToBezierBasis& self_) { return static_cast<const ShapeUpgrade_SplitSurface&>(self_); }
 inline ShapeUpgrade_SplitSurface& ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface_mut(ShapeUpgrade_ConvertSurfaceToBezierBasis& self_) { return static_cast<ShapeUpgrade_SplitSurface&>(self_); }
-inline void ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Init(ShapeUpgrade_ConvertSurfaceToBezierBasis& self, const Handle(Geom_Surface)& S) {
+inline void ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Init(ShapeUpgrade_ConvertSurfaceToBezierBasis& self, const opencascade::handle<Geom_Surface>& S) {
     self.Init(S);
 }
-inline void ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetUSplitValues(ShapeUpgrade_ConvertSurfaceToBezierBasis& self, const Handle(TColStd_HSequenceOfReal)& UValues) {
+inline void ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetUSplitValues(ShapeUpgrade_ConvertSurfaceToBezierBasis& self, const opencascade::handle<TColStd_HSequenceOfReal>& UValues) {
     self.SetUSplitValues(UValues);
 }
-inline void ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetVSplitValues(ShapeUpgrade_ConvertSurfaceToBezierBasis& self, const Handle(TColStd_HSequenceOfReal)& VValues) {
+inline void ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetVSplitValues(ShapeUpgrade_ConvertSurfaceToBezierBasis& self, const opencascade::handle<TColStd_HSequenceOfReal>& VValues) {
     self.SetVSplitValues(VValues);
 }
-inline void ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Perform(ShapeUpgrade_ConvertSurfaceToBezierBasis& self, bool Segment) {
+inline void ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Perform(ShapeUpgrade_ConvertSurfaceToBezierBasis& self, Standard_Boolean Segment) {
     self.Perform(Segment);
 }
 inline const Handle(TColStd_HSequenceOfReal)& ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_USplitValues(const ShapeUpgrade_ConvertSurfaceToBezierBasis& self) {
@@ -25278,12 +26112,15 @@ inline std::unique_ptr<opencascade::handle<TColStd_HSequenceOfReal>> ShapeUpgrad
 inline std::unique_ptr<opencascade::handle<TColStd_HSequenceOfReal>> ShapeUpgrade_EdgeDivide_knots3d(const ShapeUpgrade_EdgeDivide& self_) {
     return std::make_unique<opencascade::handle<TColStd_HSequenceOfReal>>(self_.Knots3d());
 }
+inline rust::String ShapeUpgrade_EdgeDivide_get_type_name() {
+    return rust::String(ShapeUpgrade_EdgeDivide::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_EdgeDivide_get_type_descriptor() {
     return ShapeUpgrade_EdgeDivide::get_type_descriptor();
 }
 inline const ShapeUpgrade_Tool& ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool(const ShapeUpgrade_EdgeDivide& self_) { return static_cast<const ShapeUpgrade_Tool&>(self_); }
 inline ShapeUpgrade_Tool& ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_EdgeDivide& self_) { return static_cast<ShapeUpgrade_Tool&>(self_); }
-inline void ShapeUpgrade_EdgeDivide_inherited_Set(ShapeUpgrade_EdgeDivide& self, const Handle(ShapeUpgrade_Tool)& tool) {
+inline void ShapeUpgrade_EdgeDivide_inherited_Set(ShapeUpgrade_EdgeDivide& self, const opencascade::handle<ShapeUpgrade_Tool>& tool) {
     self.Set(tool);
 }
 inline void ShapeUpgrade_EdgeDivide_inherited_SetPrecision(ShapeUpgrade_EdgeDivide& self, Standard_Real preci) {
@@ -25327,12 +26164,15 @@ inline std::unique_ptr<opencascade::handle<ShapeUpgrade_SplitSurface>> ShapeUpgr
 inline Standard_Boolean ShapeUpgrade_FaceDivide_status(const ShapeUpgrade_FaceDivide& self_, int32_t status) {
     return self_.Status(static_cast<ShapeExtend_Status>(status));
 }
+inline rust::String ShapeUpgrade_FaceDivide_get_type_name() {
+    return rust::String(ShapeUpgrade_FaceDivide::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_FaceDivide_get_type_descriptor() {
     return ShapeUpgrade_FaceDivide::get_type_descriptor();
 }
 inline const ShapeUpgrade_Tool& ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool(const ShapeUpgrade_FaceDivide& self_) { return static_cast<const ShapeUpgrade_Tool&>(self_); }
 inline ShapeUpgrade_Tool& ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_FaceDivide& self_) { return static_cast<ShapeUpgrade_Tool&>(self_); }
-inline void ShapeUpgrade_FaceDivide_inherited_Set(ShapeUpgrade_FaceDivide& self, const Handle(ShapeUpgrade_Tool)& tool) {
+inline void ShapeUpgrade_FaceDivide_inherited_Set(ShapeUpgrade_FaceDivide& self, const opencascade::handle<ShapeUpgrade_Tool>& tool) {
     self.Set(tool);
 }
 inline void ShapeUpgrade_FaceDivide_inherited_SetPrecision(ShapeUpgrade_FaceDivide& self, Standard_Real preci) {
@@ -25367,6 +26207,9 @@ inline std::unique_ptr<ShapeUpgrade_FaceDivideArea> ShapeUpgrade_FaceDivideArea_
 inline std::unique_ptr<ShapeUpgrade_FaceDivideArea> ShapeUpgrade_FaceDivideArea_ctor_face(const TopoDS_Face& F) {
     return std::make_unique<ShapeUpgrade_FaceDivideArea>(F);
 }
+inline rust::String ShapeUpgrade_FaceDivideArea_get_type_name() {
+    return rust::String(ShapeUpgrade_FaceDivideArea::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_FaceDivideArea_get_type_descriptor() {
     return ShapeUpgrade_FaceDivideArea::get_type_descriptor();
 }
@@ -25377,7 +26220,7 @@ inline ShapeUpgrade_Tool& ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool_mut(S
 inline void ShapeUpgrade_FaceDivideArea_inherited_Init(ShapeUpgrade_FaceDivideArea& self, const TopoDS_Face& F) {
     self.Init(F);
 }
-inline void ShapeUpgrade_FaceDivideArea_inherited_SetSurfaceSegmentMode(ShapeUpgrade_FaceDivideArea& self, bool Segment) {
+inline void ShapeUpgrade_FaceDivideArea_inherited_SetSurfaceSegmentMode(ShapeUpgrade_FaceDivideArea& self, Standard_Boolean Segment) {
     self.SetSurfaceSegmentMode(Segment);
 }
 inline bool ShapeUpgrade_FaceDivideArea_inherited_SplitSurface(ShapeUpgrade_FaceDivideArea& self, Standard_Real theArea) {
@@ -25392,13 +26235,13 @@ inline std::unique_ptr<TopoDS_Shape> ShapeUpgrade_FaceDivideArea_inherited_Resul
 inline bool ShapeUpgrade_FaceDivideArea_inherited_Status(const ShapeUpgrade_FaceDivideArea& self, int32_t status) {
     return self.Status(static_cast<ShapeExtend_Status>(status));
 }
-inline void ShapeUpgrade_FaceDivideArea_inherited_SetSplitSurfaceTool(ShapeUpgrade_FaceDivideArea& self, const Handle(ShapeUpgrade_SplitSurface)& splitSurfaceTool) {
+inline void ShapeUpgrade_FaceDivideArea_inherited_SetSplitSurfaceTool(ShapeUpgrade_FaceDivideArea& self, const opencascade::handle<ShapeUpgrade_SplitSurface>& splitSurfaceTool) {
     self.SetSplitSurfaceTool(splitSurfaceTool);
 }
 inline std::unique_ptr<Handle(ShapeUpgrade_SplitSurface)> ShapeUpgrade_FaceDivideArea_inherited_GetSplitSurfaceTool(const ShapeUpgrade_FaceDivideArea& self) {
     return std::make_unique<Handle(ShapeUpgrade_SplitSurface)>(self.GetSplitSurfaceTool());
 }
-inline void ShapeUpgrade_FaceDivideArea_inherited_Set(ShapeUpgrade_FaceDivideArea& self, const Handle(ShapeUpgrade_Tool)& tool) {
+inline void ShapeUpgrade_FaceDivideArea_inherited_Set(ShapeUpgrade_FaceDivideArea& self, const opencascade::handle<ShapeUpgrade_Tool>& tool) {
     self.Set(tool);
 }
 inline void ShapeUpgrade_FaceDivideArea_inherited_SetPrecision(ShapeUpgrade_FaceDivideArea& self, Standard_Real preci) {
@@ -25430,6 +26273,9 @@ inline Standard_Real ShapeUpgrade_FaceDivideArea_inherited_LimitTolerance(const 
 inline std::unique_ptr<ShapeUpgrade_FixSmallBezierCurves> ShapeUpgrade_FixSmallBezierCurves_ctor() {
     return std::make_unique<ShapeUpgrade_FixSmallBezierCurves>();
 }
+inline rust::String ShapeUpgrade_FixSmallBezierCurves_get_type_name() {
+    return rust::String(ShapeUpgrade_FixSmallBezierCurves::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_FixSmallBezierCurves_get_type_descriptor() {
     return ShapeUpgrade_FixSmallBezierCurves::get_type_descriptor();
 }
@@ -25443,7 +26289,7 @@ inline void ShapeUpgrade_FixSmallBezierCurves_inherited_Init(ShapeUpgrade_FixSma
 inline bool ShapeUpgrade_FixSmallBezierCurves_inherited_Status(const ShapeUpgrade_FixSmallBezierCurves& self, int32_t status) {
     return self.Status(static_cast<ShapeExtend_Status>(status));
 }
-inline void ShapeUpgrade_FixSmallBezierCurves_inherited_Set(ShapeUpgrade_FixSmallBezierCurves& self, const Handle(ShapeUpgrade_Tool)& tool) {
+inline void ShapeUpgrade_FixSmallBezierCurves_inherited_Set(ShapeUpgrade_FixSmallBezierCurves& self, const opencascade::handle<ShapeUpgrade_Tool>& tool) {
     self.Set(tool);
 }
 inline void ShapeUpgrade_FixSmallBezierCurves_inherited_SetPrecision(ShapeUpgrade_FixSmallBezierCurves& self, Standard_Real preci) {
@@ -25478,12 +26324,15 @@ inline std::unique_ptr<ShapeUpgrade_FixSmallCurves> ShapeUpgrade_FixSmallCurves_
 inline Standard_Boolean ShapeUpgrade_FixSmallCurves_status(const ShapeUpgrade_FixSmallCurves& self_, int32_t status) {
     return self_.Status(static_cast<ShapeExtend_Status>(status));
 }
+inline rust::String ShapeUpgrade_FixSmallCurves_get_type_name() {
+    return rust::String(ShapeUpgrade_FixSmallCurves::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_FixSmallCurves_get_type_descriptor() {
     return ShapeUpgrade_FixSmallCurves::get_type_descriptor();
 }
 inline const ShapeUpgrade_Tool& ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool(const ShapeUpgrade_FixSmallCurves& self_) { return static_cast<const ShapeUpgrade_Tool&>(self_); }
 inline ShapeUpgrade_Tool& ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_FixSmallCurves& self_) { return static_cast<ShapeUpgrade_Tool&>(self_); }
-inline void ShapeUpgrade_FixSmallCurves_inherited_Set(ShapeUpgrade_FixSmallCurves& self, const Handle(ShapeUpgrade_Tool)& tool) {
+inline void ShapeUpgrade_FixSmallCurves_inherited_Set(ShapeUpgrade_FixSmallCurves& self, const opencascade::handle<ShapeUpgrade_Tool>& tool) {
     self.Set(tool);
 }
 inline void ShapeUpgrade_FixSmallCurves_inherited_SetPrecision(ShapeUpgrade_FixSmallCurves& self, Standard_Real preci) {
@@ -25524,12 +26373,15 @@ inline std::unique_ptr<TopoDS_Shape> ShapeUpgrade_RemoveInternalWires_get_result
 inline Standard_Boolean ShapeUpgrade_RemoveInternalWires_status(const ShapeUpgrade_RemoveInternalWires& self_, int32_t theStatus) {
     return self_.Status(static_cast<ShapeExtend_Status>(theStatus));
 }
+inline rust::String ShapeUpgrade_RemoveInternalWires_get_type_name() {
+    return rust::String(ShapeUpgrade_RemoveInternalWires::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_RemoveInternalWires_get_type_descriptor() {
     return ShapeUpgrade_RemoveInternalWires::get_type_descriptor();
 }
 inline const ShapeUpgrade_Tool& ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool(const ShapeUpgrade_RemoveInternalWires& self_) { return static_cast<const ShapeUpgrade_Tool&>(self_); }
 inline ShapeUpgrade_Tool& ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_RemoveInternalWires& self_) { return static_cast<ShapeUpgrade_Tool&>(self_); }
-inline void ShapeUpgrade_RemoveInternalWires_inherited_Set(ShapeUpgrade_RemoveInternalWires& self, const Handle(ShapeUpgrade_Tool)& tool) {
+inline void ShapeUpgrade_RemoveInternalWires_inherited_Set(ShapeUpgrade_RemoveInternalWires& self, const opencascade::handle<ShapeUpgrade_Tool>& tool) {
     self.Set(tool);
 }
 inline void ShapeUpgrade_RemoveInternalWires_inherited_SetPrecision(ShapeUpgrade_RemoveInternalWires& self, Standard_Real preci) {
@@ -25573,6 +26425,9 @@ inline void ShapeUpgrade_RemoveLocations_set_remove_level(ShapeUpgrade_RemoveLoc
 inline int32_t ShapeUpgrade_RemoveLocations_remove_level(const ShapeUpgrade_RemoveLocations& self_) {
     return static_cast<int32_t>(self_.RemoveLevel());
 }
+inline rust::String ShapeUpgrade_RemoveLocations_get_type_name() {
+    return rust::String(ShapeUpgrade_RemoveLocations::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_RemoveLocations_get_type_descriptor() {
     return ShapeUpgrade_RemoveLocations::get_type_descriptor();
 }
@@ -25606,7 +26461,7 @@ inline void ShapeUpgrade_ShapeConvertToBezier_inherited_SetMaxTolerance(ShapeUpg
 inline void ShapeUpgrade_ShapeConvertToBezier_inherited_SetMinTolerance(ShapeUpgrade_ShapeConvertToBezier& self, Standard_Real mintol) {
     self.SetMinTolerance(mintol);
 }
-inline void ShapeUpgrade_ShapeConvertToBezier_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeConvertToBezier& self, bool Segment) {
+inline void ShapeUpgrade_ShapeConvertToBezier_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeConvertToBezier& self, Standard_Boolean Segment) {
     self.SetSurfaceSegmentMode(Segment);
 }
 inline std::unique_ptr<TopoDS_Shape> ShapeUpgrade_ShapeConvertToBezier_inherited_Result(const ShapeUpgrade_ShapeConvertToBezier& self) {
@@ -25666,10 +26521,10 @@ inline void ShapeUpgrade_ShapeDivideAngle_inherited_SetMaxTolerance(ShapeUpgrade
 inline void ShapeUpgrade_ShapeDivideAngle_inherited_SetMinTolerance(ShapeUpgrade_ShapeDivideAngle& self, Standard_Real mintol) {
     self.SetMinTolerance(mintol);
 }
-inline void ShapeUpgrade_ShapeDivideAngle_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeDivideAngle& self, bool Segment) {
+inline void ShapeUpgrade_ShapeDivideAngle_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeDivideAngle& self, Standard_Boolean Segment) {
     self.SetSurfaceSegmentMode(Segment);
 }
-inline bool ShapeUpgrade_ShapeDivideAngle_inherited_Perform(ShapeUpgrade_ShapeDivideAngle& self, bool newContext) {
+inline bool ShapeUpgrade_ShapeDivideAngle_inherited_Perform(ShapeUpgrade_ShapeDivideAngle& self, Standard_Boolean newContext) {
     return self.Perform(newContext);
 }
 inline std::unique_ptr<TopoDS_Shape> ShapeUpgrade_ShapeDivideAngle_inherited_Result(const ShapeUpgrade_ShapeDivideAngle& self) {
@@ -25709,10 +26564,10 @@ inline void ShapeUpgrade_ShapeDivideArea_inherited_SetMaxTolerance(ShapeUpgrade_
 inline void ShapeUpgrade_ShapeDivideArea_inherited_SetMinTolerance(ShapeUpgrade_ShapeDivideArea& self, Standard_Real mintol) {
     self.SetMinTolerance(mintol);
 }
-inline void ShapeUpgrade_ShapeDivideArea_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeDivideArea& self, bool Segment) {
+inline void ShapeUpgrade_ShapeDivideArea_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeDivideArea& self, Standard_Boolean Segment) {
     self.SetSurfaceSegmentMode(Segment);
 }
-inline bool ShapeUpgrade_ShapeDivideArea_inherited_Perform(ShapeUpgrade_ShapeDivideArea& self, bool newContext) {
+inline bool ShapeUpgrade_ShapeDivideArea_inherited_Perform(ShapeUpgrade_ShapeDivideArea& self, Standard_Boolean newContext) {
     return self.Perform(newContext);
 }
 inline std::unique_ptr<TopoDS_Shape> ShapeUpgrade_ShapeDivideArea_inherited_Result(const ShapeUpgrade_ShapeDivideArea& self) {
@@ -25749,10 +26604,10 @@ inline void ShapeUpgrade_ShapeDivideClosed_inherited_SetMaxTolerance(ShapeUpgrad
 inline void ShapeUpgrade_ShapeDivideClosed_inherited_SetMinTolerance(ShapeUpgrade_ShapeDivideClosed& self, Standard_Real mintol) {
     self.SetMinTolerance(mintol);
 }
-inline void ShapeUpgrade_ShapeDivideClosed_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeDivideClosed& self, bool Segment) {
+inline void ShapeUpgrade_ShapeDivideClosed_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeDivideClosed& self, Standard_Boolean Segment) {
     self.SetSurfaceSegmentMode(Segment);
 }
-inline bool ShapeUpgrade_ShapeDivideClosed_inherited_Perform(ShapeUpgrade_ShapeDivideClosed& self, bool newContext) {
+inline bool ShapeUpgrade_ShapeDivideClosed_inherited_Perform(ShapeUpgrade_ShapeDivideClosed& self, Standard_Boolean newContext) {
     return self.Perform(newContext);
 }
 inline std::unique_ptr<TopoDS_Shape> ShapeUpgrade_ShapeDivideClosed_inherited_Result(const ShapeUpgrade_ShapeDivideClosed& self) {
@@ -25789,10 +26644,10 @@ inline void ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMaxTolerance(ShapeU
 inline void ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMinTolerance(ShapeUpgrade_ShapeDivideClosedEdges& self, Standard_Real mintol) {
     self.SetMinTolerance(mintol);
 }
-inline void ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeDivideClosedEdges& self, bool Segment) {
+inline void ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeDivideClosedEdges& self, Standard_Boolean Segment) {
     self.SetSurfaceSegmentMode(Segment);
 }
-inline bool ShapeUpgrade_ShapeDivideClosedEdges_inherited_Perform(ShapeUpgrade_ShapeDivideClosedEdges& self, bool newContext) {
+inline bool ShapeUpgrade_ShapeDivideClosedEdges_inherited_Perform(ShapeUpgrade_ShapeDivideClosedEdges& self, Standard_Boolean newContext) {
     return self.Perform(newContext);
 }
 inline std::unique_ptr<TopoDS_Shape> ShapeUpgrade_ShapeDivideClosedEdges_inherited_Result(const ShapeUpgrade_ShapeDivideClosedEdges& self) {
@@ -25841,10 +26696,10 @@ inline void ShapeUpgrade_ShapeDivideContinuity_inherited_SetMaxTolerance(ShapeUp
 inline void ShapeUpgrade_ShapeDivideContinuity_inherited_SetMinTolerance(ShapeUpgrade_ShapeDivideContinuity& self, Standard_Real mintol) {
     self.SetMinTolerance(mintol);
 }
-inline void ShapeUpgrade_ShapeDivideContinuity_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeDivideContinuity& self, bool Segment) {
+inline void ShapeUpgrade_ShapeDivideContinuity_inherited_SetSurfaceSegmentMode(ShapeUpgrade_ShapeDivideContinuity& self, Standard_Boolean Segment) {
     self.SetSurfaceSegmentMode(Segment);
 }
-inline bool ShapeUpgrade_ShapeDivideContinuity_inherited_Perform(ShapeUpgrade_ShapeDivideContinuity& self, bool newContext) {
+inline bool ShapeUpgrade_ShapeDivideContinuity_inherited_Perform(ShapeUpgrade_ShapeDivideContinuity& self, Standard_Boolean newContext) {
     return self.Perform(newContext);
 }
 inline std::unique_ptr<TopoDS_Shape> ShapeUpgrade_ShapeDivideContinuity_inherited_Result(const ShapeUpgrade_ShapeDivideContinuity& self) {
@@ -25881,6 +26736,9 @@ inline std::unique_ptr<ShapeUpgrade_SplitCurve> ShapeUpgrade_SplitCurve_ctor() {
 inline Standard_Boolean ShapeUpgrade_SplitCurve_status(const ShapeUpgrade_SplitCurve& self_, int32_t status) {
     return self_.Status(static_cast<ShapeExtend_Status>(status));
 }
+inline rust::String ShapeUpgrade_SplitCurve_get_type_name() {
+    return rust::String(ShapeUpgrade_SplitCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_SplitCurve_get_type_descriptor() {
     return ShapeUpgrade_SplitCurve::get_type_descriptor();
 }
@@ -25897,12 +26755,15 @@ inline ShapeUpgrade_SplitCurve& HandleShapeUpgradeSplitCurve_get_mut(HandleShape
 inline std::unique_ptr<ShapeUpgrade_SplitCurve2d> ShapeUpgrade_SplitCurve2d_ctor() {
     return std::make_unique<ShapeUpgrade_SplitCurve2d>();
 }
+inline rust::String ShapeUpgrade_SplitCurve2d_get_type_name() {
+    return rust::String(ShapeUpgrade_SplitCurve2d::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_SplitCurve2d_get_type_descriptor() {
     return ShapeUpgrade_SplitCurve2d::get_type_descriptor();
 }
 inline const ShapeUpgrade_SplitCurve& ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve(const ShapeUpgrade_SplitCurve2d& self_) { return static_cast<const ShapeUpgrade_SplitCurve&>(self_); }
 inline ShapeUpgrade_SplitCurve& ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve_mut(ShapeUpgrade_SplitCurve2d& self_) { return static_cast<ShapeUpgrade_SplitCurve&>(self_); }
-inline void ShapeUpgrade_SplitCurve2d_inherited_SetSplitValues(ShapeUpgrade_SplitCurve2d& self, const Handle(TColStd_HSequenceOfReal)& SplitValues) {
+inline void ShapeUpgrade_SplitCurve2d_inherited_SetSplitValues(ShapeUpgrade_SplitCurve2d& self, const opencascade::handle<TColStd_HSequenceOfReal>& SplitValues) {
     self.SetSplitValues(SplitValues);
 }
 inline const Handle(TColStd_HSequenceOfReal)& ShapeUpgrade_SplitCurve2d_inherited_SplitValues(const ShapeUpgrade_SplitCurve2d& self) {
@@ -25911,7 +26772,7 @@ inline const Handle(TColStd_HSequenceOfReal)& ShapeUpgrade_SplitCurve2d_inherite
 inline void ShapeUpgrade_SplitCurve2d_inherited_Compute(ShapeUpgrade_SplitCurve2d& self) {
     self.Compute();
 }
-inline void ShapeUpgrade_SplitCurve2d_inherited_Perform(ShapeUpgrade_SplitCurve2d& self, bool Segment) {
+inline void ShapeUpgrade_SplitCurve2d_inherited_Perform(ShapeUpgrade_SplitCurve2d& self, Standard_Boolean Segment) {
     self.Perform(Segment);
 }
 inline bool ShapeUpgrade_SplitCurve2d_inherited_Status(const ShapeUpgrade_SplitCurve2d& self, int32_t status) {
@@ -25925,12 +26786,15 @@ inline bool ShapeUpgrade_SplitCurve2d_inherited_Status(const ShapeUpgrade_SplitC
 inline std::unique_ptr<ShapeUpgrade_SplitCurve3d> ShapeUpgrade_SplitCurve3d_ctor() {
     return std::make_unique<ShapeUpgrade_SplitCurve3d>();
 }
+inline rust::String ShapeUpgrade_SplitCurve3d_get_type_name() {
+    return rust::String(ShapeUpgrade_SplitCurve3d::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_SplitCurve3d_get_type_descriptor() {
     return ShapeUpgrade_SplitCurve3d::get_type_descriptor();
 }
 inline const ShapeUpgrade_SplitCurve& ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve(const ShapeUpgrade_SplitCurve3d& self_) { return static_cast<const ShapeUpgrade_SplitCurve&>(self_); }
 inline ShapeUpgrade_SplitCurve& ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve_mut(ShapeUpgrade_SplitCurve3d& self_) { return static_cast<ShapeUpgrade_SplitCurve&>(self_); }
-inline void ShapeUpgrade_SplitCurve3d_inherited_SetSplitValues(ShapeUpgrade_SplitCurve3d& self, const Handle(TColStd_HSequenceOfReal)& SplitValues) {
+inline void ShapeUpgrade_SplitCurve3d_inherited_SetSplitValues(ShapeUpgrade_SplitCurve3d& self, const opencascade::handle<TColStd_HSequenceOfReal>& SplitValues) {
     self.SetSplitValues(SplitValues);
 }
 inline const Handle(TColStd_HSequenceOfReal)& ShapeUpgrade_SplitCurve3d_inherited_SplitValues(const ShapeUpgrade_SplitCurve3d& self) {
@@ -25939,7 +26803,7 @@ inline const Handle(TColStd_HSequenceOfReal)& ShapeUpgrade_SplitCurve3d_inherite
 inline void ShapeUpgrade_SplitCurve3d_inherited_Compute(ShapeUpgrade_SplitCurve3d& self) {
     self.Compute();
 }
-inline void ShapeUpgrade_SplitCurve3d_inherited_Perform(ShapeUpgrade_SplitCurve3d& self, bool Segment) {
+inline void ShapeUpgrade_SplitCurve3d_inherited_Perform(ShapeUpgrade_SplitCurve3d& self, Standard_Boolean Segment) {
     self.Perform(Segment);
 }
 inline bool ShapeUpgrade_SplitCurve3d_inherited_Status(const ShapeUpgrade_SplitCurve3d& self, int32_t status) {
@@ -25955,6 +26819,9 @@ inline std::unique_ptr<ShapeUpgrade_SplitSurface> ShapeUpgrade_SplitSurface_ctor
 }
 inline Standard_Boolean ShapeUpgrade_SplitSurface_status(const ShapeUpgrade_SplitSurface& self_, int32_t status) {
     return self_.Status(static_cast<ShapeExtend_Status>(status));
+}
+inline rust::String ShapeUpgrade_SplitSurface_get_type_name() {
+    return rust::String(ShapeUpgrade_SplitSurface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_SplitSurface_get_type_descriptor() {
     return ShapeUpgrade_SplitSurface::get_type_descriptor();
@@ -25972,24 +26839,27 @@ inline ShapeUpgrade_SplitSurface& HandleShapeUpgradeSplitSurface_get_mut(HandleS
 inline std::unique_ptr<ShapeUpgrade_SplitSurfaceAngle> ShapeUpgrade_SplitSurfaceAngle_ctor_real(Standard_Real MaxAngle) {
     return std::make_unique<ShapeUpgrade_SplitSurfaceAngle>(MaxAngle);
 }
+inline rust::String ShapeUpgrade_SplitSurfaceAngle_get_type_name() {
+    return rust::String(ShapeUpgrade_SplitSurfaceAngle::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_SplitSurfaceAngle_get_type_descriptor() {
     return ShapeUpgrade_SplitSurfaceAngle::get_type_descriptor();
 }
 inline const ShapeUpgrade_SplitSurface& ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface(const ShapeUpgrade_SplitSurfaceAngle& self_) { return static_cast<const ShapeUpgrade_SplitSurface&>(self_); }
 inline ShapeUpgrade_SplitSurface& ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface_mut(ShapeUpgrade_SplitSurfaceAngle& self_) { return static_cast<ShapeUpgrade_SplitSurface&>(self_); }
-inline void ShapeUpgrade_SplitSurfaceAngle_inherited_Init(ShapeUpgrade_SplitSurfaceAngle& self, const Handle(Geom_Surface)& S) {
+inline void ShapeUpgrade_SplitSurfaceAngle_inherited_Init(ShapeUpgrade_SplitSurfaceAngle& self, const opencascade::handle<Geom_Surface>& S) {
     self.Init(S);
 }
-inline void ShapeUpgrade_SplitSurfaceAngle_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceAngle& self, const Handle(TColStd_HSequenceOfReal)& UValues) {
+inline void ShapeUpgrade_SplitSurfaceAngle_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceAngle& self, const opencascade::handle<TColStd_HSequenceOfReal>& UValues) {
     self.SetUSplitValues(UValues);
 }
-inline void ShapeUpgrade_SplitSurfaceAngle_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceAngle& self, const Handle(TColStd_HSequenceOfReal)& VValues) {
+inline void ShapeUpgrade_SplitSurfaceAngle_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceAngle& self, const opencascade::handle<TColStd_HSequenceOfReal>& VValues) {
     self.SetVSplitValues(VValues);
 }
-inline void ShapeUpgrade_SplitSurfaceAngle_inherited_Build(ShapeUpgrade_SplitSurfaceAngle& self, bool Segment) {
+inline void ShapeUpgrade_SplitSurfaceAngle_inherited_Build(ShapeUpgrade_SplitSurfaceAngle& self, Standard_Boolean Segment) {
     self.Build(Segment);
 }
-inline void ShapeUpgrade_SplitSurfaceAngle_inherited_Perform(ShapeUpgrade_SplitSurfaceAngle& self, bool Segment) {
+inline void ShapeUpgrade_SplitSurfaceAngle_inherited_Perform(ShapeUpgrade_SplitSurfaceAngle& self, Standard_Boolean Segment) {
     self.Perform(Segment);
 }
 inline const Handle(TColStd_HSequenceOfReal)& ShapeUpgrade_SplitSurfaceAngle_inherited_USplitValues(const ShapeUpgrade_SplitSurfaceAngle& self) {
@@ -26009,24 +26879,27 @@ inline bool ShapeUpgrade_SplitSurfaceAngle_inherited_Status(const ShapeUpgrade_S
 inline std::unique_ptr<ShapeUpgrade_SplitSurfaceArea> ShapeUpgrade_SplitSurfaceArea_ctor() {
     return std::make_unique<ShapeUpgrade_SplitSurfaceArea>();
 }
+inline rust::String ShapeUpgrade_SplitSurfaceArea_get_type_name() {
+    return rust::String(ShapeUpgrade_SplitSurfaceArea::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_SplitSurfaceArea_get_type_descriptor() {
     return ShapeUpgrade_SplitSurfaceArea::get_type_descriptor();
 }
 inline const ShapeUpgrade_SplitSurface& ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface(const ShapeUpgrade_SplitSurfaceArea& self_) { return static_cast<const ShapeUpgrade_SplitSurface&>(self_); }
 inline ShapeUpgrade_SplitSurface& ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface_mut(ShapeUpgrade_SplitSurfaceArea& self_) { return static_cast<ShapeUpgrade_SplitSurface&>(self_); }
-inline void ShapeUpgrade_SplitSurfaceArea_inherited_Init(ShapeUpgrade_SplitSurfaceArea& self, const Handle(Geom_Surface)& S) {
+inline void ShapeUpgrade_SplitSurfaceArea_inherited_Init(ShapeUpgrade_SplitSurfaceArea& self, const opencascade::handle<Geom_Surface>& S) {
     self.Init(S);
 }
-inline void ShapeUpgrade_SplitSurfaceArea_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceArea& self, const Handle(TColStd_HSequenceOfReal)& UValues) {
+inline void ShapeUpgrade_SplitSurfaceArea_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceArea& self, const opencascade::handle<TColStd_HSequenceOfReal>& UValues) {
     self.SetUSplitValues(UValues);
 }
-inline void ShapeUpgrade_SplitSurfaceArea_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceArea& self, const Handle(TColStd_HSequenceOfReal)& VValues) {
+inline void ShapeUpgrade_SplitSurfaceArea_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceArea& self, const opencascade::handle<TColStd_HSequenceOfReal>& VValues) {
     self.SetVSplitValues(VValues);
 }
-inline void ShapeUpgrade_SplitSurfaceArea_inherited_Build(ShapeUpgrade_SplitSurfaceArea& self, bool Segment) {
+inline void ShapeUpgrade_SplitSurfaceArea_inherited_Build(ShapeUpgrade_SplitSurfaceArea& self, Standard_Boolean Segment) {
     self.Build(Segment);
 }
-inline void ShapeUpgrade_SplitSurfaceArea_inherited_Perform(ShapeUpgrade_SplitSurfaceArea& self, bool Segment) {
+inline void ShapeUpgrade_SplitSurfaceArea_inherited_Perform(ShapeUpgrade_SplitSurfaceArea& self, Standard_Boolean Segment) {
     self.Perform(Segment);
 }
 inline const Handle(TColStd_HSequenceOfReal)& ShapeUpgrade_SplitSurfaceArea_inherited_USplitValues(const ShapeUpgrade_SplitSurfaceArea& self) {
@@ -26049,24 +26922,27 @@ inline std::unique_ptr<ShapeUpgrade_SplitSurfaceContinuity> ShapeUpgrade_SplitSu
 inline void ShapeUpgrade_SplitSurfaceContinuity_set_criterion(ShapeUpgrade_SplitSurfaceContinuity& self_, int32_t Criterion) {
     self_.SetCriterion(static_cast<GeomAbs_Shape>(Criterion));
 }
+inline rust::String ShapeUpgrade_SplitSurfaceContinuity_get_type_name() {
+    return rust::String(ShapeUpgrade_SplitSurfaceContinuity::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_SplitSurfaceContinuity_get_type_descriptor() {
     return ShapeUpgrade_SplitSurfaceContinuity::get_type_descriptor();
 }
 inline const ShapeUpgrade_SplitSurface& ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface(const ShapeUpgrade_SplitSurfaceContinuity& self_) { return static_cast<const ShapeUpgrade_SplitSurface&>(self_); }
 inline ShapeUpgrade_SplitSurface& ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface_mut(ShapeUpgrade_SplitSurfaceContinuity& self_) { return static_cast<ShapeUpgrade_SplitSurface&>(self_); }
-inline void ShapeUpgrade_SplitSurfaceContinuity_inherited_Init(ShapeUpgrade_SplitSurfaceContinuity& self, const Handle(Geom_Surface)& S) {
+inline void ShapeUpgrade_SplitSurfaceContinuity_inherited_Init(ShapeUpgrade_SplitSurfaceContinuity& self, const opencascade::handle<Geom_Surface>& S) {
     self.Init(S);
 }
-inline void ShapeUpgrade_SplitSurfaceContinuity_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceContinuity& self, const Handle(TColStd_HSequenceOfReal)& UValues) {
+inline void ShapeUpgrade_SplitSurfaceContinuity_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceContinuity& self, const opencascade::handle<TColStd_HSequenceOfReal>& UValues) {
     self.SetUSplitValues(UValues);
 }
-inline void ShapeUpgrade_SplitSurfaceContinuity_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceContinuity& self, const Handle(TColStd_HSequenceOfReal)& VValues) {
+inline void ShapeUpgrade_SplitSurfaceContinuity_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceContinuity& self, const opencascade::handle<TColStd_HSequenceOfReal>& VValues) {
     self.SetVSplitValues(VValues);
 }
-inline void ShapeUpgrade_SplitSurfaceContinuity_inherited_Build(ShapeUpgrade_SplitSurfaceContinuity& self, bool Segment) {
+inline void ShapeUpgrade_SplitSurfaceContinuity_inherited_Build(ShapeUpgrade_SplitSurfaceContinuity& self, Standard_Boolean Segment) {
     self.Build(Segment);
 }
-inline void ShapeUpgrade_SplitSurfaceContinuity_inherited_Perform(ShapeUpgrade_SplitSurfaceContinuity& self, bool Segment) {
+inline void ShapeUpgrade_SplitSurfaceContinuity_inherited_Perform(ShapeUpgrade_SplitSurfaceContinuity& self, Standard_Boolean Segment) {
     self.Perform(Segment);
 }
 inline const Handle(TColStd_HSequenceOfReal)& ShapeUpgrade_SplitSurfaceContinuity_inherited_USplitValues(const ShapeUpgrade_SplitSurfaceContinuity& self) {
@@ -26086,6 +26962,9 @@ inline bool ShapeUpgrade_SplitSurfaceContinuity_inherited_Status(const ShapeUpgr
 inline std::unique_ptr<ShapeUpgrade_Tool> ShapeUpgrade_Tool_ctor() {
     return std::make_unique<ShapeUpgrade_Tool>();
 }
+inline rust::String ShapeUpgrade_Tool_get_type_name() {
+    return rust::String(ShapeUpgrade_Tool::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_Tool_get_type_descriptor() {
     return ShapeUpgrade_Tool::get_type_descriptor();
 }
@@ -26104,6 +26983,9 @@ inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomai
 }
 inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomain_ctor_shape_bool3(const TopoDS_Shape& aShape, Standard_Boolean UnifyEdges, Standard_Boolean UnifyFaces, Standard_Boolean ConcatBSplines) {
     return std::make_unique<ShapeUpgrade_UnifySameDomain>(aShape, UnifyEdges, UnifyFaces, ConcatBSplines);
+}
+inline rust::String ShapeUpgrade_UnifySameDomain_get_type_name() {
+    return rust::String(ShapeUpgrade_UnifySameDomain::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_UnifySameDomain_get_type_descriptor() {
     return ShapeUpgrade_UnifySameDomain::get_type_descriptor();
@@ -26127,12 +27009,15 @@ inline std::unique_ptr<opencascade::handle<ShapeAnalysis_TransferParameters>> Sh
 inline Standard_Boolean ShapeUpgrade_WireDivide_status(const ShapeUpgrade_WireDivide& self_, int32_t status) {
     return self_.Status(static_cast<ShapeExtend_Status>(status));
 }
+inline rust::String ShapeUpgrade_WireDivide_get_type_name() {
+    return rust::String(ShapeUpgrade_WireDivide::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ShapeUpgrade_WireDivide_get_type_descriptor() {
     return ShapeUpgrade_WireDivide::get_type_descriptor();
 }
 inline const ShapeUpgrade_Tool& ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool(const ShapeUpgrade_WireDivide& self_) { return static_cast<const ShapeUpgrade_Tool&>(self_); }
 inline ShapeUpgrade_Tool& ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_WireDivide& self_) { return static_cast<ShapeUpgrade_Tool&>(self_); }
-inline void ShapeUpgrade_WireDivide_inherited_Set(ShapeUpgrade_WireDivide& self, const Handle(ShapeUpgrade_Tool)& tool) {
+inline void ShapeUpgrade_WireDivide_inherited_Set(ShapeUpgrade_WireDivide& self, const opencascade::handle<ShapeUpgrade_Tool>& tool) {
     self.Set(tool);
 }
 inline void ShapeUpgrade_WireDivide_inherited_SetPrecision(ShapeUpgrade_WireDivide& self, Standard_Real preci) {
@@ -26172,6 +27057,9 @@ inline std::unique_ptr<Standard_AbortiveTransaction> Standard_AbortiveTransactio
 }
 inline void Standard_AbortiveTransaction_raise(rust::Str theMessage) {
     return Standard_AbortiveTransaction::Raise(std::string(theMessage).c_str());
+}
+inline rust::String Standard_AbortiveTransaction_get_type_name() {
+    return rust::String(Standard_AbortiveTransaction::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_AbortiveTransaction_get_type_descriptor() {
     return Standard_AbortiveTransaction::get_type_descriptor();
@@ -26220,6 +27108,9 @@ inline std::unique_ptr<Standard_ConstructionError> Standard_ConstructionError_ct
 inline void Standard_ConstructionError_raise(rust::Str theMessage) {
     return Standard_ConstructionError::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_ConstructionError_get_type_name() {
+    return rust::String(Standard_ConstructionError::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_ConstructionError_get_type_descriptor() {
     return Standard_ConstructionError::get_type_descriptor();
 }
@@ -26239,6 +27130,9 @@ inline std::unique_ptr<Standard_DimensionError> Standard_DimensionError_ctor_cha
 }
 inline void Standard_DimensionError_raise(rust::Str theMessage) {
     return Standard_DimensionError::Raise(std::string(theMessage).c_str());
+}
+inline rust::String Standard_DimensionError_get_type_name() {
+    return rust::String(Standard_DimensionError::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_DimensionError_get_type_descriptor() {
     return Standard_DimensionError::get_type_descriptor();
@@ -26260,6 +27154,9 @@ inline std::unique_ptr<Standard_DimensionMismatch> Standard_DimensionMismatch_ct
 inline void Standard_DimensionMismatch_raise(rust::Str theMessage) {
     return Standard_DimensionMismatch::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_DimensionMismatch_get_type_name() {
+    return rust::String(Standard_DimensionMismatch::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_DimensionMismatch_get_type_descriptor() {
     return Standard_DimensionMismatch::get_type_descriptor();
 }
@@ -26280,6 +27177,9 @@ inline std::unique_ptr<Standard_DivideByZero> Standard_DivideByZero_ctor_charptr
 inline void Standard_DivideByZero_raise(rust::Str theMessage) {
     return Standard_DivideByZero::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_DivideByZero_get_type_name() {
+    return rust::String(Standard_DivideByZero::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_DivideByZero_get_type_descriptor() {
     return Standard_DivideByZero::get_type_descriptor();
 }
@@ -26299,6 +27199,9 @@ inline std::unique_ptr<Standard_DomainError> Standard_DomainError_ctor_charptr2(
 }
 inline void Standard_DomainError_raise(rust::Str theMessage) {
     return Standard_DomainError::Raise(std::string(theMessage).c_str());
+}
+inline rust::String Standard_DomainError_get_type_name() {
+    return rust::String(Standard_DomainError::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_DomainError_get_type_descriptor() {
     return Standard_DomainError::get_type_descriptor();
@@ -26324,6 +27227,9 @@ inline std::unique_ptr<Standard_Dump> Standard_Dump_ctor() {
 }
 inline Standard_Boolean Standard_Dump_has_child_key(const TCollection_AsciiString& theSourceValue) {
     return Standard_Dump::HasChildKey(theSourceValue);
+}
+inline rust::String Standard_Dump_json_key_to_string(int32_t theKey) {
+    return rust::String(Standard_Dump::JsonKeyToString(static_cast<Standard_JsonKey>(theKey)));
 }
 inline Standard_Integer Standard_Dump_json_key_length(int32_t theKey) {
     return Standard_Dump::JsonKeyLength(static_cast<Standard_JsonKey>(theKey));
@@ -26410,6 +27316,9 @@ inline Standard_Integer Standard_Failure_default_stack_trace_length() {
 inline void Standard_Failure_set_default_stack_trace_length(Standard_Integer theNbStackTraces) {
     return Standard_Failure::SetDefaultStackTraceLength(theNbStackTraces);
 }
+inline rust::String Standard_Failure_get_type_name() {
+    return rust::String(Standard_Failure::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_Failure_get_type_descriptor() {
     return Standard_Failure::get_type_descriptor();
 }
@@ -26428,6 +27337,12 @@ inline std::unique_ptr<Standard_GUID> Standard_GUID_ctor() {
 }
 inline std::unique_ptr<Standard_GUID> Standard_GUID_ctor_charptr(rust::Str aGuid) {
     return std::make_unique<Standard_GUID>(std::string(aGuid).c_str());
+}
+inline std::unique_ptr<Standard_GUID> Standard_GUID_ctor_extstring(const Standard_ExtString& aGuid) {
+    return std::make_unique<Standard_GUID>(aGuid);
+}
+inline std::unique_ptr<Standard_GUID> Standard_GUID_ctor_int_extcharacter3_byte6(Standard_Integer a32b, const Standard_ExtCharacter& a16b1, const Standard_ExtCharacter& a16b2, const Standard_ExtCharacter& a16b3, const Standard_Byte& a8b1, const Standard_Byte& a8b2, const Standard_Byte& a8b3, const Standard_Byte& a8b4, const Standard_Byte& a8b5, const Standard_Byte& a8b6) {
+    return std::make_unique<Standard_GUID>(a32b, a16b1, a16b2, a16b3, a8b1, a8b2, a8b3, a8b4, a8b5, a8b6);
 }
 inline std::unique_ptr<Standard_GUID> Standard_GUID_ctor_uuid(const Standard_UUID& aGuid) {
     return std::make_unique<Standard_GUID>(aGuid);
@@ -26455,6 +27370,9 @@ inline std::unique_ptr<Standard_ImmutableObject> Standard_ImmutableObject_ctor_c
 inline void Standard_ImmutableObject_raise(rust::Str theMessage) {
     return Standard_ImmutableObject::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_ImmutableObject_get_type_name() {
+    return rust::String(Standard_ImmutableObject::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_ImmutableObject_get_type_descriptor() {
     return Standard_ImmutableObject::get_type_descriptor();
 }
@@ -26475,6 +27393,9 @@ inline std::unique_ptr<Standard_LicenseError> Standard_LicenseError_ctor_charptr
 inline void Standard_LicenseError_raise(rust::Str theMessage) {
     return Standard_LicenseError::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_LicenseError_get_type_name() {
+    return rust::String(Standard_LicenseError::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_LicenseError_get_type_descriptor() {
     return Standard_LicenseError::get_type_descriptor();
 }
@@ -26494,6 +27415,9 @@ inline std::unique_ptr<Standard_LicenseNotFound> Standard_LicenseNotFound_ctor_c
 }
 inline void Standard_LicenseNotFound_raise(rust::Str theMessage) {
     return Standard_LicenseNotFound::Raise(std::string(theMessage).c_str());
+}
+inline rust::String Standard_LicenseNotFound_get_type_name() {
+    return rust::String(Standard_LicenseNotFound::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_LicenseNotFound_get_type_descriptor() {
     return Standard_LicenseNotFound::get_type_descriptor();
@@ -26528,6 +27452,9 @@ inline std::unique_ptr<Standard_MultiplyDefined> Standard_MultiplyDefined_ctor_c
 inline void Standard_MultiplyDefined_raise(rust::Str theMessage) {
     return Standard_MultiplyDefined::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_MultiplyDefined_get_type_name() {
+    return rust::String(Standard_MultiplyDefined::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_MultiplyDefined_get_type_descriptor() {
     return Standard_MultiplyDefined::get_type_descriptor();
 }
@@ -26556,6 +27483,9 @@ inline std::unique_ptr<Standard_NegativeValue> Standard_NegativeValue_ctor_charp
 inline void Standard_NegativeValue_raise(rust::Str theMessage) {
     return Standard_NegativeValue::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_NegativeValue_get_type_name() {
+    return rust::String(Standard_NegativeValue::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_NegativeValue_get_type_descriptor() {
     return Standard_NegativeValue::get_type_descriptor();
 }
@@ -26575,6 +27505,9 @@ inline std::unique_ptr<Standard_NoMoreObject> Standard_NoMoreObject_ctor_charptr
 }
 inline void Standard_NoMoreObject_raise(rust::Str theMessage) {
     return Standard_NoMoreObject::Raise(std::string(theMessage).c_str());
+}
+inline rust::String Standard_NoMoreObject_get_type_name() {
+    return rust::String(Standard_NoMoreObject::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_NoMoreObject_get_type_descriptor() {
     return Standard_NoMoreObject::get_type_descriptor();
@@ -26596,6 +27529,9 @@ inline std::unique_ptr<Standard_NoSuchObject> Standard_NoSuchObject_ctor_charptr
 inline void Standard_NoSuchObject_raise(rust::Str theMessage) {
     return Standard_NoSuchObject::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_NoSuchObject_get_type_name() {
+    return rust::String(Standard_NoSuchObject::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_NoSuchObject_get_type_descriptor() {
     return Standard_NoSuchObject::get_type_descriptor();
 }
@@ -26615,6 +27551,9 @@ inline std::unique_ptr<Standard_NotImplemented> Standard_NotImplemented_ctor_cha
 }
 inline void Standard_NotImplemented_raise(rust::Str theMessage) {
     return Standard_NotImplemented::Raise(std::string(theMessage).c_str());
+}
+inline rust::String Standard_NotImplemented_get_type_name() {
+    return rust::String(Standard_NotImplemented::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_NotImplemented_get_type_descriptor() {
     return Standard_NotImplemented::get_type_descriptor();
@@ -26636,6 +27575,9 @@ inline std::unique_ptr<Standard_NullObject> Standard_NullObject_ctor_charptr2(ru
 inline void Standard_NullObject_raise(rust::Str theMessage) {
     return Standard_NullObject::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_NullObject_get_type_name() {
+    return rust::String(Standard_NullObject::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_NullObject_get_type_descriptor() {
     return Standard_NullObject::get_type_descriptor();
 }
@@ -26655,6 +27597,9 @@ inline std::unique_ptr<Standard_NullValue> Standard_NullValue_ctor_charptr2(rust
 }
 inline void Standard_NullValue_raise(rust::Str theMessage) {
     return Standard_NullValue::Raise(std::string(theMessage).c_str());
+}
+inline rust::String Standard_NullValue_get_type_name() {
+    return rust::String(Standard_NullValue::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_NullValue_get_type_descriptor() {
     return Standard_NullValue::get_type_descriptor();
@@ -26676,6 +27621,9 @@ inline std::unique_ptr<Standard_NumericError> Standard_NumericError_ctor_charptr
 inline void Standard_NumericError_raise(rust::Str theMessage) {
     return Standard_NumericError::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_NumericError_get_type_name() {
+    return rust::String(Standard_NumericError::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_NumericError_get_type_descriptor() {
     return Standard_NumericError::get_type_descriptor();
 }
@@ -26695,6 +27643,9 @@ inline rust::String Standard_OutOfMemory_get_message_string(const Standard_OutOf
 }
 inline void Standard_OutOfMemory_raise(rust::Str theMessage) {
     return Standard_OutOfMemory::Raise(std::string(theMessage).c_str());
+}
+inline rust::String Standard_OutOfMemory_get_type_name() {
+    return rust::String(Standard_OutOfMemory::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_OutOfMemory_get_type_descriptor() {
     return Standard_OutOfMemory::get_type_descriptor();
@@ -26716,6 +27667,9 @@ inline std::unique_ptr<Standard_OutOfRange> Standard_OutOfRange_ctor_charptr2(ru
 inline void Standard_OutOfRange_raise(rust::Str theMessage) {
     return Standard_OutOfRange::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_OutOfRange_get_type_name() {
+    return rust::String(Standard_OutOfRange::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_OutOfRange_get_type_descriptor() {
     return Standard_OutOfRange::get_type_descriptor();
 }
@@ -26736,6 +27690,9 @@ inline std::unique_ptr<Standard_Overflow> Standard_Overflow_ctor_charptr2(rust::
 inline void Standard_Overflow_raise(rust::Str theMessage) {
     return Standard_Overflow::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_Overflow_get_type_name() {
+    return rust::String(Standard_Overflow::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_Overflow_get_type_descriptor() {
     return Standard_Overflow::get_type_descriptor();
 }
@@ -26746,6 +27703,9 @@ inline const opencascade::handle<Standard_Type>& Standard_Overflow_get_type_desc
 
 inline std::unique_ptr<Standard_Persistent> Standard_Persistent_ctor() {
     return std::make_unique<Standard_Persistent>();
+}
+inline rust::String Standard_Persistent_get_type_name() {
+    return rust::String(Standard_Persistent::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_Persistent_get_type_descriptor() {
     return Standard_Persistent::get_type_descriptor();
@@ -26772,6 +27732,9 @@ inline std::unique_ptr<Standard_ProgramError> Standard_ProgramError_ctor_charptr
 inline void Standard_ProgramError_raise(rust::Str theMessage) {
     return Standard_ProgramError::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_ProgramError_get_type_name() {
+    return rust::String(Standard_ProgramError::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_ProgramError_get_type_descriptor() {
     return Standard_ProgramError::get_type_descriptor();
 }
@@ -26791,6 +27754,9 @@ inline std::unique_ptr<Standard_RangeError> Standard_RangeError_ctor_charptr2(ru
 }
 inline void Standard_RangeError_raise(rust::Str theMessage) {
     return Standard_RangeError::Raise(std::string(theMessage).c_str());
+}
+inline rust::String Standard_RangeError_get_type_name() {
+    return rust::String(Standard_RangeError::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_RangeError_get_type_descriptor() {
     return Standard_RangeError::get_type_descriptor();
@@ -26820,6 +27786,9 @@ inline Standard_Boolean Standard_Transient_is_instance(const Standard_Transient&
 inline Standard_Boolean Standard_Transient_is_kind(const Standard_Transient& self, rust::Str theTypeName) {
     return self.IsKind(std::string(theTypeName).c_str());
 }
+inline rust::String Standard_Transient_get_type_name() {
+    return rust::String(Standard_Transient::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_Transient_get_type_descriptor() {
     return Standard_Transient::get_type_descriptor();
 }
@@ -26836,6 +27805,9 @@ inline rust::String Standard_Type_system_name(const Standard_Type& self) {
 }
 inline rust::String Standard_Type_name(const Standard_Type& self) {
     return rust::String(self.Name());
+}
+inline rust::String Standard_Type_get_type_name() {
+    return rust::String(Standard_Type::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Standard_Type_get_type_descriptor() {
     return Standard_Type::get_type_descriptor();
@@ -26862,6 +27834,9 @@ inline std::unique_ptr<Standard_TypeMismatch> Standard_TypeMismatch_ctor_charptr
 inline void Standard_TypeMismatch_raise(rust::Str theMessage) {
     return Standard_TypeMismatch::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_TypeMismatch_get_type_name() {
+    return rust::String(Standard_TypeMismatch::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_TypeMismatch_get_type_descriptor() {
     return Standard_TypeMismatch::get_type_descriptor();
 }
@@ -26882,6 +27857,9 @@ inline std::unique_ptr<Standard_Underflow> Standard_Underflow_ctor_charptr2(rust
 inline void Standard_Underflow_raise(rust::Str theMessage) {
     return Standard_Underflow::Raise(std::string(theMessage).c_str());
 }
+inline rust::String Standard_Underflow_get_type_name() {
+    return rust::String(Standard_Underflow::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Standard_Underflow_get_type_descriptor() {
     return Standard_Underflow::get_type_descriptor();
 }
@@ -26893,6 +27871,9 @@ inline const opencascade::handle<Standard_Type>& Standard_Underflow_get_type_des
 inline std::unique_ptr<STEPControl_ActorRead> STEPControl_ActorRead_ctor_handleinterfaceinterfacemodel(const opencascade::handle<Interface_InterfaceModel>& theModel) {
     return std::make_unique<STEPControl_ActorRead>(theModel);
 }
+inline rust::String STEPControl_ActorRead_get_type_name() {
+    return rust::String(STEPControl_ActorRead::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& STEPControl_ActorRead_get_type_descriptor() {
     return STEPControl_ActorRead::get_type_descriptor();
 }
@@ -26903,13 +27884,13 @@ inline Transfer_ActorOfTransientProcess& STEPControl_ActorRead_as_Transfer_Actor
 inline std::unique_ptr<Handle(Transfer_Binder)> STEPControl_ActorRead_inherited_NullResult(const STEPControl_ActorRead& self) {
     return std::make_unique<Handle(Transfer_Binder)>(self.NullResult());
 }
-inline void STEPControl_ActorRead_inherited_SetLast(STEPControl_ActorRead& self, bool mode) {
+inline void STEPControl_ActorRead_inherited_SetLast(STEPControl_ActorRead& self, Standard_Boolean mode) {
     self.SetLast(mode);
 }
 inline bool STEPControl_ActorRead_inherited_IsLast(const STEPControl_ActorRead& self) {
     return self.IsLast();
 }
-inline void STEPControl_ActorRead_inherited_SetNext(STEPControl_ActorRead& self, const Handle(Transfer_ActorOfProcessForTransient)& next) {
+inline void STEPControl_ActorRead_inherited_SetNext(STEPControl_ActorRead& self, const opencascade::handle<Transfer_ActorOfProcessForTransient>& next) {
     self.SetNext(next);
 }
 inline std::unique_ptr<Handle(Transfer_ActorOfProcessForTransient)> STEPControl_ActorRead_inherited_Next(const STEPControl_ActorRead& self) {
@@ -26929,6 +27910,9 @@ inline void STEPControl_ActorWrite_set_mode(STEPControl_ActorWrite& self_, int32
 inline int32_t STEPControl_ActorWrite_mode(const STEPControl_ActorWrite& self_) {
     return static_cast<int32_t>(self_.Mode());
 }
+inline rust::String STEPControl_ActorWrite_get_type_name() {
+    return rust::String(STEPControl_ActorWrite::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& STEPControl_ActorWrite_get_type_descriptor() {
     return STEPControl_ActorWrite::get_type_descriptor();
 }
@@ -26942,13 +27926,13 @@ inline Standard_Integer& STEPControl_ActorWrite_inherited_ModeTrans(STEPControl_
 inline std::unique_ptr<Handle(Transfer_Binder)> STEPControl_ActorWrite_inherited_NullResult(const STEPControl_ActorWrite& self) {
     return std::make_unique<Handle(Transfer_Binder)>(self.NullResult());
 }
-inline void STEPControl_ActorWrite_inherited_SetLast(STEPControl_ActorWrite& self, bool mode) {
+inline void STEPControl_ActorWrite_inherited_SetLast(STEPControl_ActorWrite& self, Standard_Boolean mode) {
     self.SetLast(mode);
 }
 inline bool STEPControl_ActorWrite_inherited_IsLast(const STEPControl_ActorWrite& self) {
     return self.IsLast();
 }
-inline void STEPControl_ActorWrite_inherited_SetNext(STEPControl_ActorWrite& self, const Handle(Transfer_ActorOfProcessForFinder)& next) {
+inline void STEPControl_ActorWrite_inherited_SetNext(STEPControl_ActorWrite& self, const opencascade::handle<Transfer_ActorOfProcessForFinder>& next) {
     self.SetNext(next);
 }
 inline std::unique_ptr<Handle(Transfer_ActorOfProcessForFinder)> STEPControl_ActorWrite_inherited_Next(const STEPControl_ActorWrite& self) {
@@ -26968,6 +27952,9 @@ inline std::unique_ptr<opencascade::handle<Interface_InterfaceModel>> STEPContro
 inline Standard_Boolean STEPControl_Controller_init() {
     return STEPControl_Controller::Init();
 }
+inline rust::String STEPControl_Controller_get_type_name() {
+    return rust::String(STEPControl_Controller::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& STEPControl_Controller_get_type_descriptor() {
     return STEPControl_Controller::get_type_descriptor();
 }
@@ -26979,13 +27966,13 @@ inline void STEPControl_Controller_inherited_AutoRecord(const STEPControl_Contro
 inline const Handle(IFSelect_WorkLibrary)& STEPControl_Controller_inherited_WorkLibrary(const STEPControl_Controller& self) {
     return self.WorkLibrary();
 }
-inline void STEPControl_Controller_inherited_SetModeWrite(STEPControl_Controller& self, Standard_Integer modemin, Standard_Integer modemax, bool shape) {
+inline void STEPControl_Controller_inherited_SetModeWrite(STEPControl_Controller& self, Standard_Integer modemin, Standard_Integer modemax, Standard_Boolean shape) {
     self.SetModeWrite(modemin, modemax, shape);
 }
-inline bool STEPControl_Controller_inherited_ModeWriteBounds(const STEPControl_Controller& self, Standard_Integer& modemin, Standard_Integer& modemax, bool shape) {
+inline bool STEPControl_Controller_inherited_ModeWriteBounds(const STEPControl_Controller& self, Standard_Integer& modemin, Standard_Integer& modemax, Standard_Boolean shape) {
     return self.ModeWriteBounds(modemin, modemax, shape);
 }
-inline bool STEPControl_Controller_inherited_IsModeWrite(const STEPControl_Controller& self, Standard_Integer modetrans, bool shape) {
+inline bool STEPControl_Controller_inherited_IsModeWrite(const STEPControl_Controller& self, Standard_Integer modetrans, Standard_Boolean shape) {
     return self.IsModeWrite(modetrans, shape);
 }
 inline bool STEPControl_Controller_inherited_RecognizeWriteShape(const STEPControl_Controller& self, const TopoDS_Shape& shape, Standard_Integer modetrans) {
@@ -27016,7 +28003,7 @@ inline bool STEPControl_Reader_inherited_TransferOneRoot(STEPControl_Reader& sel
 inline bool STEPControl_Reader_inherited_TransferOne(STEPControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
     return self.TransferOne(num, theProgress);
 }
-inline Standard_Integer STEPControl_Reader_inherited_TransferList(STEPControl_Reader& self, const Handle(TColStd_HSequenceOfTransient)& list, const Message_ProgressRange& theProgress) {
+inline Standard_Integer STEPControl_Reader_inherited_TransferList(STEPControl_Reader& self, const opencascade::handle<TColStd_HSequenceOfTransient>& list, const Message_ProgressRange& theProgress) {
     return self.TransferList(list, theProgress);
 }
 inline Standard_Integer STEPControl_Reader_inherited_TransferRoots(STEPControl_Reader& self, const Message_ProgressRange& theProgress) {
@@ -27034,16 +28021,16 @@ inline std::unique_ptr<TopoDS_Shape> STEPControl_Reader_inherited_Shape(const ST
 inline std::unique_ptr<TopoDS_Shape> STEPControl_Reader_inherited_OneShape(const STEPControl_Reader& self) {
     return std::make_unique<TopoDS_Shape>(self.OneShape());
 }
-inline void STEPControl_Reader_inherited_PrintCheckLoad(const STEPControl_Reader& self, bool failsonly, int32_t mode) {
+inline void STEPControl_Reader_inherited_PrintCheckLoad(const STEPControl_Reader& self, Standard_Boolean failsonly, int32_t mode) {
     self.PrintCheckLoad(failsonly, static_cast<IFSelect_PrintCount>(mode));
 }
-inline void STEPControl_Reader_inherited_PrintCheckTransfer(const STEPControl_Reader& self, bool failsonly, int32_t mode) {
+inline void STEPControl_Reader_inherited_PrintCheckTransfer(const STEPControl_Reader& self, Standard_Boolean failsonly, int32_t mode) {
     self.PrintCheckTransfer(failsonly, static_cast<IFSelect_PrintCount>(mode));
 }
 inline void STEPControl_Reader_inherited_PrintStatsTransfer(const STEPControl_Reader& self, Standard_Integer what, Standard_Integer mode) {
     self.PrintStatsTransfer(what, mode);
 }
-inline void STEPControl_Reader_inherited_GetStatsTransfer(const STEPControl_Reader& self, const Handle(TColStd_HSequenceOfTransient)& list, Standard_Integer& nbMapped, Standard_Integer& nbWithResult, Standard_Integer& nbWithFail) {
+inline void STEPControl_Reader_inherited_GetStatsTransfer(const STEPControl_Reader& self, const opencascade::handle<TColStd_HSequenceOfTransient>& list, Standard_Integer& nbMapped, Standard_Integer& nbWithResult, Standard_Integer& nbWithFail) {
     self.GetStatsTransfer(list, nbMapped, nbWithResult, nbWithFail);
 }
 
@@ -27105,6 +28092,9 @@ inline std::unique_ptr<TColgp_HArray1OfCirc2d> TColgp_HArray1OfCirc2d_ctor_circ2
 inline std::unique_ptr<TColgp_HArray1OfCirc2d> TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(const TColgp_Array1OfCirc2d& theOther) {
     return std::make_unique<TColgp_HArray1OfCirc2d>(theOther);
 }
+inline rust::String TColgp_HArray1OfCirc2d_get_type_name() {
+    return rust::String(TColgp_HArray1OfCirc2d::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfCirc2d_get_type_descriptor() {
     return TColgp_HArray1OfCirc2d::get_type_descriptor();
 }
@@ -27134,6 +28124,9 @@ inline std::unique_ptr<TColgp_HArray1OfDir> TColgp_HArray1OfDir_ctor_dir_int2_bo
 }
 inline std::unique_ptr<TColgp_HArray1OfDir> TColgp_HArray1OfDir_ctor_array1ofdir(const TColgp_Array1OfDir& theOther) {
     return std::make_unique<TColgp_HArray1OfDir>(theOther);
+}
+inline rust::String TColgp_HArray1OfDir_get_type_name() {
+    return rust::String(TColgp_HArray1OfDir::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfDir_get_type_descriptor() {
     return TColgp_HArray1OfDir::get_type_descriptor();
@@ -27165,6 +28158,9 @@ inline std::unique_ptr<TColgp_HArray1OfDir2d> TColgp_HArray1OfDir2d_ctor_dir2d_i
 inline std::unique_ptr<TColgp_HArray1OfDir2d> TColgp_HArray1OfDir2d_ctor_array1ofdir2d(const TColgp_Array1OfDir2d& theOther) {
     return std::make_unique<TColgp_HArray1OfDir2d>(theOther);
 }
+inline rust::String TColgp_HArray1OfDir2d_get_type_name() {
+    return rust::String(TColgp_HArray1OfDir2d::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfDir2d_get_type_descriptor() {
     return TColgp_HArray1OfDir2d::get_type_descriptor();
 }
@@ -27194,6 +28190,9 @@ inline std::unique_ptr<TColgp_HArray1OfLin2d> TColgp_HArray1OfLin2d_ctor_lin2d_i
 }
 inline std::unique_ptr<TColgp_HArray1OfLin2d> TColgp_HArray1OfLin2d_ctor_array1oflin2d(const TColgp_Array1OfLin2d& theOther) {
     return std::make_unique<TColgp_HArray1OfLin2d>(theOther);
+}
+inline rust::String TColgp_HArray1OfLin2d_get_type_name() {
+    return rust::String(TColgp_HArray1OfLin2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfLin2d_get_type_descriptor() {
     return TColgp_HArray1OfLin2d::get_type_descriptor();
@@ -27225,6 +28224,9 @@ inline std::unique_ptr<TColgp_HArray1OfPnt> TColgp_HArray1OfPnt_ctor_pnt_int2_bo
 inline std::unique_ptr<TColgp_HArray1OfPnt> TColgp_HArray1OfPnt_ctor_array1ofpnt(const TColgp_Array1OfPnt& theOther) {
     return std::make_unique<TColgp_HArray1OfPnt>(theOther);
 }
+inline rust::String TColgp_HArray1OfPnt_get_type_name() {
+    return rust::String(TColgp_HArray1OfPnt::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfPnt_get_type_descriptor() {
     return TColgp_HArray1OfPnt::get_type_descriptor();
 }
@@ -27254,6 +28256,9 @@ inline std::unique_ptr<TColgp_HArray1OfPnt2d> TColgp_HArray1OfPnt2d_ctor_pnt2d_i
 }
 inline std::unique_ptr<TColgp_HArray1OfPnt2d> TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(const TColgp_Array1OfPnt2d& theOther) {
     return std::make_unique<TColgp_HArray1OfPnt2d>(theOther);
+}
+inline rust::String TColgp_HArray1OfPnt2d_get_type_name() {
+    return rust::String(TColgp_HArray1OfPnt2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfPnt2d_get_type_descriptor() {
     return TColgp_HArray1OfPnt2d::get_type_descriptor();
@@ -27285,6 +28290,9 @@ inline std::unique_ptr<TColgp_HArray1OfVec> TColgp_HArray1OfVec_ctor_vec_int2_bo
 inline std::unique_ptr<TColgp_HArray1OfVec> TColgp_HArray1OfVec_ctor_array1ofvec(const TColgp_Array1OfVec& theOther) {
     return std::make_unique<TColgp_HArray1OfVec>(theOther);
 }
+inline rust::String TColgp_HArray1OfVec_get_type_name() {
+    return rust::String(TColgp_HArray1OfVec::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfVec_get_type_descriptor() {
     return TColgp_HArray1OfVec::get_type_descriptor();
 }
@@ -27314,6 +28322,9 @@ inline std::unique_ptr<TColgp_HArray1OfVec2d> TColgp_HArray1OfVec2d_ctor_vec2d_i
 }
 inline std::unique_ptr<TColgp_HArray1OfVec2d> TColgp_HArray1OfVec2d_ctor_array1ofvec2d(const TColgp_Array1OfVec2d& theOther) {
     return std::make_unique<TColgp_HArray1OfVec2d>(theOther);
+}
+inline rust::String TColgp_HArray1OfVec2d_get_type_name() {
+    return rust::String(TColgp_HArray1OfVec2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfVec2d_get_type_descriptor() {
     return TColgp_HArray1OfVec2d::get_type_descriptor();
@@ -27345,6 +28356,9 @@ inline std::unique_ptr<TColgp_HArray1OfXY> TColgp_HArray1OfXY_ctor_xy_int2_bool(
 inline std::unique_ptr<TColgp_HArray1OfXY> TColgp_HArray1OfXY_ctor_array1ofxy(const TColgp_Array1OfXY& theOther) {
     return std::make_unique<TColgp_HArray1OfXY>(theOther);
 }
+inline rust::String TColgp_HArray1OfXY_get_type_name() {
+    return rust::String(TColgp_HArray1OfXY::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfXY_get_type_descriptor() {
     return TColgp_HArray1OfXY::get_type_descriptor();
 }
@@ -27375,6 +28389,9 @@ inline std::unique_ptr<TColgp_HArray1OfXYZ> TColgp_HArray1OfXYZ_ctor_xyz_int2_bo
 inline std::unique_ptr<TColgp_HArray1OfXYZ> TColgp_HArray1OfXYZ_ctor_array1ofxyz(const TColgp_Array1OfXYZ& theOther) {
     return std::make_unique<TColgp_HArray1OfXYZ>(theOther);
 }
+inline rust::String TColgp_HArray1OfXYZ_get_type_name() {
+    return rust::String(TColgp_HArray1OfXYZ::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfXYZ_get_type_descriptor() {
     return TColgp_HArray1OfXYZ::get_type_descriptor();
 }
@@ -27398,6 +28415,9 @@ inline std::unique_ptr<TColgp_HArray2OfCirc2d> TColgp_HArray2OfCirc2d_ctor_int4_
 }
 inline std::unique_ptr<TColgp_HArray2OfCirc2d> TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(const TColgp_Array2OfCirc2d& theOther) {
     return std::make_unique<TColgp_HArray2OfCirc2d>(theOther);
+}
+inline rust::String TColgp_HArray2OfCirc2d_get_type_name() {
+    return rust::String(TColgp_HArray2OfCirc2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfCirc2d_get_type_descriptor() {
     return TColgp_HArray2OfCirc2d::get_type_descriptor();
@@ -27423,6 +28443,9 @@ inline std::unique_ptr<TColgp_HArray2OfDir> TColgp_HArray2OfDir_ctor_int4_dir(St
 inline std::unique_ptr<TColgp_HArray2OfDir> TColgp_HArray2OfDir_ctor_array2ofdir(const TColgp_Array2OfDir& theOther) {
     return std::make_unique<TColgp_HArray2OfDir>(theOther);
 }
+inline rust::String TColgp_HArray2OfDir_get_type_name() {
+    return rust::String(TColgp_HArray2OfDir::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfDir_get_type_descriptor() {
     return TColgp_HArray2OfDir::get_type_descriptor();
 }
@@ -27446,6 +28469,9 @@ inline std::unique_ptr<TColgp_HArray2OfDir2d> TColgp_HArray2OfDir2d_ctor_int4_di
 }
 inline std::unique_ptr<TColgp_HArray2OfDir2d> TColgp_HArray2OfDir2d_ctor_array2ofdir2d(const TColgp_Array2OfDir2d& theOther) {
     return std::make_unique<TColgp_HArray2OfDir2d>(theOther);
+}
+inline rust::String TColgp_HArray2OfDir2d_get_type_name() {
+    return rust::String(TColgp_HArray2OfDir2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfDir2d_get_type_descriptor() {
     return TColgp_HArray2OfDir2d::get_type_descriptor();
@@ -27471,6 +28497,9 @@ inline std::unique_ptr<TColgp_HArray2OfLin2d> TColgp_HArray2OfLin2d_ctor_int4_li
 inline std::unique_ptr<TColgp_HArray2OfLin2d> TColgp_HArray2OfLin2d_ctor_array2oflin2d(const TColgp_Array2OfLin2d& theOther) {
     return std::make_unique<TColgp_HArray2OfLin2d>(theOther);
 }
+inline rust::String TColgp_HArray2OfLin2d_get_type_name() {
+    return rust::String(TColgp_HArray2OfLin2d::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfLin2d_get_type_descriptor() {
     return TColgp_HArray2OfLin2d::get_type_descriptor();
 }
@@ -27494,6 +28523,9 @@ inline std::unique_ptr<TColgp_HArray2OfPnt> TColgp_HArray2OfPnt_ctor_int4_pnt(St
 }
 inline std::unique_ptr<TColgp_HArray2OfPnt> TColgp_HArray2OfPnt_ctor_array2ofpnt(const TColgp_Array2OfPnt& theOther) {
     return std::make_unique<TColgp_HArray2OfPnt>(theOther);
+}
+inline rust::String TColgp_HArray2OfPnt_get_type_name() {
+    return rust::String(TColgp_HArray2OfPnt::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfPnt_get_type_descriptor() {
     return TColgp_HArray2OfPnt::get_type_descriptor();
@@ -27519,6 +28551,9 @@ inline std::unique_ptr<TColgp_HArray2OfPnt2d> TColgp_HArray2OfPnt2d_ctor_int4_pn
 inline std::unique_ptr<TColgp_HArray2OfPnt2d> TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(const TColgp_Array2OfPnt2d& theOther) {
     return std::make_unique<TColgp_HArray2OfPnt2d>(theOther);
 }
+inline rust::String TColgp_HArray2OfPnt2d_get_type_name() {
+    return rust::String(TColgp_HArray2OfPnt2d::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfPnt2d_get_type_descriptor() {
     return TColgp_HArray2OfPnt2d::get_type_descriptor();
 }
@@ -27542,6 +28577,9 @@ inline std::unique_ptr<TColgp_HArray2OfVec> TColgp_HArray2OfVec_ctor_int4_vec(St
 }
 inline std::unique_ptr<TColgp_HArray2OfVec> TColgp_HArray2OfVec_ctor_array2ofvec(const TColgp_Array2OfVec& theOther) {
     return std::make_unique<TColgp_HArray2OfVec>(theOther);
+}
+inline rust::String TColgp_HArray2OfVec_get_type_name() {
+    return rust::String(TColgp_HArray2OfVec::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfVec_get_type_descriptor() {
     return TColgp_HArray2OfVec::get_type_descriptor();
@@ -27567,6 +28605,9 @@ inline std::unique_ptr<TColgp_HArray2OfVec2d> TColgp_HArray2OfVec2d_ctor_int4_ve
 inline std::unique_ptr<TColgp_HArray2OfVec2d> TColgp_HArray2OfVec2d_ctor_array2ofvec2d(const TColgp_Array2OfVec2d& theOther) {
     return std::make_unique<TColgp_HArray2OfVec2d>(theOther);
 }
+inline rust::String TColgp_HArray2OfVec2d_get_type_name() {
+    return rust::String(TColgp_HArray2OfVec2d::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfVec2d_get_type_descriptor() {
     return TColgp_HArray2OfVec2d::get_type_descriptor();
 }
@@ -27590,6 +28631,9 @@ inline std::unique_ptr<TColgp_HArray2OfXY> TColgp_HArray2OfXY_ctor_int4_xy(Stand
 }
 inline std::unique_ptr<TColgp_HArray2OfXY> TColgp_HArray2OfXY_ctor_array2ofxy(const TColgp_Array2OfXY& theOther) {
     return std::make_unique<TColgp_HArray2OfXY>(theOther);
+}
+inline rust::String TColgp_HArray2OfXY_get_type_name() {
+    return rust::String(TColgp_HArray2OfXY::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfXY_get_type_descriptor() {
     return TColgp_HArray2OfXY::get_type_descriptor();
@@ -27615,6 +28659,9 @@ inline std::unique_ptr<TColgp_HArray2OfXYZ> TColgp_HArray2OfXYZ_ctor_int4_xyz(St
 inline std::unique_ptr<TColgp_HArray2OfXYZ> TColgp_HArray2OfXYZ_ctor_array2ofxyz(const TColgp_Array2OfXYZ& theOther) {
     return std::make_unique<TColgp_HArray2OfXYZ>(theOther);
 }
+inline rust::String TColgp_HArray2OfXYZ_get_type_name() {
+    return rust::String(TColgp_HArray2OfXYZ::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfXYZ_get_type_descriptor() {
     return TColgp_HArray2OfXYZ::get_type_descriptor();
 }
@@ -27636,6 +28683,9 @@ inline std::unique_ptr<TColgp_HSequenceOfDir> TColgp_HSequenceOfDir_ctor() {
 inline std::unique_ptr<TColgp_HSequenceOfDir> TColgp_HSequenceOfDir_ctor_sequenceofdir(const TColgp_SequenceOfDir& theOther) {
     return std::make_unique<TColgp_HSequenceOfDir>(theOther);
 }
+inline rust::String TColgp_HSequenceOfDir_get_type_name() {
+    return rust::String(TColgp_HSequenceOfDir::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfDir_get_type_descriptor() {
     return TColgp_HSequenceOfDir::get_type_descriptor();
 }
@@ -27654,6 +28704,9 @@ inline std::unique_ptr<TColgp_HSequenceOfDir2d> TColgp_HSequenceOfDir2d_ctor() {
 }
 inline std::unique_ptr<TColgp_HSequenceOfDir2d> TColgp_HSequenceOfDir2d_ctor_sequenceofdir2d(const TColgp_SequenceOfDir2d& theOther) {
     return std::make_unique<TColgp_HSequenceOfDir2d>(theOther);
+}
+inline rust::String TColgp_HSequenceOfDir2d_get_type_name() {
+    return rust::String(TColgp_HSequenceOfDir2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfDir2d_get_type_descriptor() {
     return TColgp_HSequenceOfDir2d::get_type_descriptor();
@@ -27674,6 +28727,9 @@ inline std::unique_ptr<TColgp_HSequenceOfPnt> TColgp_HSequenceOfPnt_ctor() {
 inline std::unique_ptr<TColgp_HSequenceOfPnt> TColgp_HSequenceOfPnt_ctor_sequenceofpnt(const TColgp_SequenceOfPnt& theOther) {
     return std::make_unique<TColgp_HSequenceOfPnt>(theOther);
 }
+inline rust::String TColgp_HSequenceOfPnt_get_type_name() {
+    return rust::String(TColgp_HSequenceOfPnt::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfPnt_get_type_descriptor() {
     return TColgp_HSequenceOfPnt::get_type_descriptor();
 }
@@ -27692,6 +28748,9 @@ inline std::unique_ptr<TColgp_HSequenceOfPnt2d> TColgp_HSequenceOfPnt2d_ctor() {
 }
 inline std::unique_ptr<TColgp_HSequenceOfPnt2d> TColgp_HSequenceOfPnt2d_ctor_sequenceofpnt2d(const TColgp_SequenceOfPnt2d& theOther) {
     return std::make_unique<TColgp_HSequenceOfPnt2d>(theOther);
+}
+inline rust::String TColgp_HSequenceOfPnt2d_get_type_name() {
+    return rust::String(TColgp_HSequenceOfPnt2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfPnt2d_get_type_descriptor() {
     return TColgp_HSequenceOfPnt2d::get_type_descriptor();
@@ -27712,6 +28771,9 @@ inline std::unique_ptr<TColgp_HSequenceOfVec> TColgp_HSequenceOfVec_ctor() {
 inline std::unique_ptr<TColgp_HSequenceOfVec> TColgp_HSequenceOfVec_ctor_sequenceofvec(const TColgp_SequenceOfVec& theOther) {
     return std::make_unique<TColgp_HSequenceOfVec>(theOther);
 }
+inline rust::String TColgp_HSequenceOfVec_get_type_name() {
+    return rust::String(TColgp_HSequenceOfVec::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfVec_get_type_descriptor() {
     return TColgp_HSequenceOfVec::get_type_descriptor();
 }
@@ -27730,6 +28792,9 @@ inline std::unique_ptr<TColgp_HSequenceOfVec2d> TColgp_HSequenceOfVec2d_ctor() {
 }
 inline std::unique_ptr<TColgp_HSequenceOfVec2d> TColgp_HSequenceOfVec2d_ctor_sequenceofvec2d(const TColgp_SequenceOfVec2d& theOther) {
     return std::make_unique<TColgp_HSequenceOfVec2d>(theOther);
+}
+inline rust::String TColgp_HSequenceOfVec2d_get_type_name() {
+    return rust::String(TColgp_HSequenceOfVec2d::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfVec2d_get_type_descriptor() {
     return TColgp_HSequenceOfVec2d::get_type_descriptor();
@@ -27750,6 +28815,9 @@ inline std::unique_ptr<TColgp_HSequenceOfXY> TColgp_HSequenceOfXY_ctor() {
 inline std::unique_ptr<TColgp_HSequenceOfXY> TColgp_HSequenceOfXY_ctor_sequenceofxy(const TColgp_SequenceOfXY& theOther) {
     return std::make_unique<TColgp_HSequenceOfXY>(theOther);
 }
+inline rust::String TColgp_HSequenceOfXY_get_type_name() {
+    return rust::String(TColgp_HSequenceOfXY::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfXY_get_type_descriptor() {
     return TColgp_HSequenceOfXY::get_type_descriptor();
 }
@@ -27768,6 +28836,9 @@ inline std::unique_ptr<TColgp_HSequenceOfXYZ> TColgp_HSequenceOfXYZ_ctor() {
 }
 inline std::unique_ptr<TColgp_HSequenceOfXYZ> TColgp_HSequenceOfXYZ_ctor_sequenceofxyz(const TColgp_SequenceOfXYZ& theOther) {
     return std::make_unique<TColgp_HSequenceOfXYZ>(theOther);
+}
+inline rust::String TColgp_HSequenceOfXYZ_get_type_name() {
+    return rust::String(TColgp_HSequenceOfXYZ::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfXYZ_get_type_descriptor() {
     return TColgp_HSequenceOfXYZ::get_type_descriptor();
@@ -27791,6 +28862,12 @@ inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_cha
 inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_charptr_int(rust::Str message, Standard_Integer aLen) {
     return std::make_unique<TCollection_AsciiString>(std::string(message).c_str(), aLen);
 }
+inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_character(const Standard_Character& aChar) {
+    return std::make_unique<TCollection_AsciiString>(aChar);
+}
+inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_int_character(Standard_Integer length, const Standard_Character& filler) {
+    return std::make_unique<TCollection_AsciiString>(length, filler);
+}
 inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_int(Standard_Integer value) {
     return std::make_unique<TCollection_AsciiString>(value);
 }
@@ -27800,14 +28877,17 @@ inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_rea
 inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_asciistring(const TCollection_AsciiString& astring) {
     return std::make_unique<TCollection_AsciiString>(astring);
 }
+inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_asciistring_character(const TCollection_AsciiString& astring, const Standard_Character& message) {
+    return std::make_unique<TCollection_AsciiString>(astring, message);
+}
 inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_asciistring_charptr(const TCollection_AsciiString& astring, rust::Str message) {
     return std::make_unique<TCollection_AsciiString>(astring, std::string(message).c_str());
 }
 inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_asciistring2(const TCollection_AsciiString& astring, const TCollection_AsciiString& message) {
     return std::make_unique<TCollection_AsciiString>(astring, message);
 }
-inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_extendedstring(const TCollection_ExtendedString& astring) {
-    return std::make_unique<TCollection_AsciiString>(astring);
+inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_ctor_extendedstring_character(const TCollection_ExtendedString& astring, const Standard_Character& replaceNonAscii) {
+    return std::make_unique<TCollection_AsciiString>(astring, replaceNonAscii);
 }
 inline std::unique_ptr<TCollection_AsciiString> TCollection_AsciiString_cat_int(const TCollection_AsciiString& self_, Standard_Integer other) {
     return std::make_unique<TCollection_AsciiString>(self_.Cat(other));
@@ -27883,6 +28963,18 @@ inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ct
 inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_charptr_bool(rust::Str astring, Standard_Boolean isMultiByte) {
     return std::make_unique<TCollection_ExtendedString>(std::string(astring).c_str(), isMultiByte);
 }
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_extstring(const Standard_ExtString& astring) {
+    return std::make_unique<TCollection_ExtendedString>(astring);
+}
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_character(const Standard_Character& aChar) {
+    return std::make_unique<TCollection_ExtendedString>(aChar);
+}
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_extcharacter(const Standard_ExtCharacter& aChar) {
+    return std::make_unique<TCollection_ExtendedString>(aChar);
+}
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_int_extcharacter(Standard_Integer length, const Standard_ExtCharacter& filler) {
+    return std::make_unique<TCollection_ExtendedString>(length, filler);
+}
 inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_int(Standard_Integer value) {
     return std::make_unique<TCollection_ExtendedString>(value);
 }
@@ -27915,6 +29007,12 @@ inline std::unique_ptr<TCollection_HAsciiString> TCollection_HAsciiString_ctor()
 inline std::unique_ptr<TCollection_HAsciiString> TCollection_HAsciiString_ctor_charptr(rust::Str message) {
     return std::make_unique<TCollection_HAsciiString>(std::string(message).c_str());
 }
+inline std::unique_ptr<TCollection_HAsciiString> TCollection_HAsciiString_ctor_character(const Standard_Character& aChar) {
+    return std::make_unique<TCollection_HAsciiString>(aChar);
+}
+inline std::unique_ptr<TCollection_HAsciiString> TCollection_HAsciiString_ctor_int_character(Standard_Integer length, const Standard_Character& filler) {
+    return std::make_unique<TCollection_HAsciiString>(length, filler);
+}
 inline std::unique_ptr<TCollection_HAsciiString> TCollection_HAsciiString_ctor_int(Standard_Integer value) {
     return std::make_unique<TCollection_HAsciiString>(value);
 }
@@ -27926,6 +29024,9 @@ inline std::unique_ptr<TCollection_HAsciiString> TCollection_HAsciiString_ctor_a
 }
 inline std::unique_ptr<TCollection_HAsciiString> TCollection_HAsciiString_ctor_handletcollectionhasciistring(const opencascade::handle<TCollection_HAsciiString>& aString) {
     return std::make_unique<TCollection_HAsciiString>(aString);
+}
+inline std::unique_ptr<TCollection_HAsciiString> TCollection_HAsciiString_ctor_handletcollectionhextendedstring_character(const opencascade::handle<TCollection_HExtendedString>& aString, const Standard_Character& replaceNonAscii) {
+    return std::make_unique<TCollection_HAsciiString>(aString, replaceNonAscii);
 }
 inline std::unique_ptr<opencascade::handle<TCollection_HAsciiString>> TCollection_HAsciiString_cat_charptr(const TCollection_HAsciiString& self_, rust::Str other) {
     return std::make_unique<opencascade::handle<TCollection_HAsciiString>>(self_.Cat(std::string(other).c_str()));
@@ -27960,6 +29061,9 @@ inline void TCollection_HAsciiString_set_value(TCollection_HAsciiString& self, S
 inline rust::String TCollection_HAsciiString_to_c_string(const TCollection_HAsciiString& self) {
     return rust::String(self.ToCString());
 }
+inline rust::String TCollection_HAsciiString_get_type_name() {
+    return rust::String(TCollection_HAsciiString::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TCollection_HAsciiString_get_type_descriptor() {
     return TCollection_HAsciiString::get_type_descriptor();
 }
@@ -27979,6 +29083,15 @@ inline std::unique_ptr<TCollection_HExtendedString> TCollection_HExtendedString_
 inline std::unique_ptr<TCollection_HExtendedString> TCollection_HExtendedString_ctor_charptr(rust::Str message) {
     return std::make_unique<TCollection_HExtendedString>(std::string(message).c_str());
 }
+inline std::unique_ptr<TCollection_HExtendedString> TCollection_HExtendedString_ctor_extstring(const Standard_ExtString& message) {
+    return std::make_unique<TCollection_HExtendedString>(message);
+}
+inline std::unique_ptr<TCollection_HExtendedString> TCollection_HExtendedString_ctor_extcharacter(const Standard_ExtCharacter& aChar) {
+    return std::make_unique<TCollection_HExtendedString>(aChar);
+}
+inline std::unique_ptr<TCollection_HExtendedString> TCollection_HExtendedString_ctor_int_extcharacter(Standard_Integer length, const Standard_ExtCharacter& filler) {
+    return std::make_unique<TCollection_HExtendedString>(length, filler);
+}
 inline std::unique_ptr<TCollection_HExtendedString> TCollection_HExtendedString_ctor_extendedstring(const TCollection_ExtendedString& aString) {
     return std::make_unique<TCollection_HExtendedString>(aString);
 }
@@ -27993,6 +29106,9 @@ inline std::unique_ptr<opencascade::handle<TCollection_HExtendedString>> TCollec
 }
 inline std::unique_ptr<opencascade::handle<TCollection_HExtendedString>> TCollection_HExtendedString_split(TCollection_HExtendedString& self_, Standard_Integer where) {
     return std::make_unique<opencascade::handle<TCollection_HExtendedString>>(self_.Split(where));
+}
+inline rust::String TCollection_HExtendedString_get_type_name() {
+    return rust::String(TCollection_HExtendedString::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TCollection_HExtendedString_get_type_descriptor() {
     return TCollection_HExtendedString::get_type_descriptor();
@@ -28022,6 +29138,9 @@ inline std::unique_ptr<TColStd_HArray1OfAsciiString> TColStd_HArray1OfAsciiStrin
 inline std::unique_ptr<TColStd_HArray1OfAsciiString> TColStd_HArray1OfAsciiString_ctor_array1ofasciistring(const TColStd_Array1OfAsciiString& theOther) {
     return std::make_unique<TColStd_HArray1OfAsciiString>(theOther);
 }
+inline rust::String TColStd_HArray1OfAsciiString_get_type_name() {
+    return rust::String(TColStd_HArray1OfAsciiString::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfAsciiString_get_type_descriptor() {
     return TColStd_HArray1OfAsciiString::get_type_descriptor();
 }
@@ -28050,6 +29169,9 @@ inline std::unique_ptr<TColStd_HArray1OfBoolean> TColStd_HArray1OfBoolean_ctor_b
 inline std::unique_ptr<TColStd_HArray1OfBoolean> TColStd_HArray1OfBoolean_ctor_array1ofboolean(const TColStd_Array1OfBoolean& theOther) {
     return std::make_unique<TColStd_HArray1OfBoolean>(theOther);
 }
+inline rust::String TColStd_HArray1OfBoolean_get_type_name() {
+    return rust::String(TColStd_HArray1OfBoolean::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfBoolean_get_type_descriptor() {
     return TColStd_HArray1OfBoolean::get_type_descriptor();
 }
@@ -28071,6 +29193,9 @@ inline std::unique_ptr<TColStd_HArray1OfByte> TColStd_HArray1OfByte_ctor_int2(St
 }
 inline std::unique_ptr<TColStd_HArray1OfByte> TColStd_HArray1OfByte_ctor_array1ofbyte(const TColStd_Array1OfByte& theOther) {
     return std::make_unique<TColStd_HArray1OfByte>(theOther);
+}
+inline rust::String TColStd_HArray1OfByte_get_type_name() {
+    return rust::String(TColStd_HArray1OfByte::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfByte_get_type_descriptor() {
     return TColStd_HArray1OfByte::get_type_descriptor();
@@ -28100,6 +29225,9 @@ inline std::unique_ptr<TColStd_HArray1OfCharacter> TColStd_HArray1OfCharacter_ct
 inline std::unique_ptr<TColStd_HArray1OfCharacter> TColStd_HArray1OfCharacter_ctor_array1ofcharacter(const TColStd_Array1OfCharacter& theOther) {
     return std::make_unique<TColStd_HArray1OfCharacter>(theOther);
 }
+inline rust::String TColStd_HArray1OfCharacter_get_type_name() {
+    return rust::String(TColStd_HArray1OfCharacter::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfCharacter_get_type_descriptor() {
     return TColStd_HArray1OfCharacter::get_type_descriptor();
 }
@@ -28127,6 +29255,9 @@ inline std::unique_ptr<TColStd_HArray1OfExtendedString> TColStd_HArray1OfExtende
 }
 inline std::unique_ptr<TColStd_HArray1OfExtendedString> TColStd_HArray1OfExtendedString_ctor_array1ofextendedstring(const TColStd_Array1OfExtendedString& theOther) {
     return std::make_unique<TColStd_HArray1OfExtendedString>(theOther);
+}
+inline rust::String TColStd_HArray1OfExtendedString_get_type_name() {
+    return rust::String(TColStd_HArray1OfExtendedString::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfExtendedString_get_type_descriptor() {
     return TColStd_HArray1OfExtendedString::get_type_descriptor();
@@ -28156,6 +29287,9 @@ inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_i
 inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_array1ofinteger(const TColStd_Array1OfInteger& theOther) {
     return std::make_unique<TColStd_HArray1OfInteger>(theOther);
 }
+inline rust::String TColStd_HArray1OfInteger_get_type_name() {
+    return rust::String(TColStd_HArray1OfInteger::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfInteger_get_type_descriptor() {
     return TColStd_HArray1OfInteger::get_type_descriptor();
 }
@@ -28177,6 +29311,9 @@ inline std::unique_ptr<TColStd_HArray1OfListOfInteger> TColStd_HArray1OfListOfIn
 }
 inline std::unique_ptr<TColStd_HArray1OfListOfInteger> TColStd_HArray1OfListOfInteger_ctor_array1oflistofinteger(const TColStd_Array1OfListOfInteger& theOther) {
     return std::make_unique<TColStd_HArray1OfListOfInteger>(theOther);
+}
+inline rust::String TColStd_HArray1OfListOfInteger_get_type_name() {
+    return rust::String(TColStd_HArray1OfListOfInteger::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfListOfInteger_get_type_descriptor() {
     return TColStd_HArray1OfListOfInteger::get_type_descriptor();
@@ -28206,6 +29343,9 @@ inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_real_in
 inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_array1ofreal(const TColStd_Array1OfReal& theOther) {
     return std::make_unique<TColStd_HArray1OfReal>(theOther);
 }
+inline rust::String TColStd_HArray1OfReal_get_type_name() {
+    return rust::String(TColStd_HArray1OfReal::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfReal_get_type_descriptor() {
     return TColStd_HArray1OfReal::get_type_descriptor();
 }
@@ -28227,6 +29367,9 @@ inline std::unique_ptr<TColStd_HArray1OfTransient> TColStd_HArray1OfTransient_ct
 }
 inline std::unique_ptr<TColStd_HArray1OfTransient> TColStd_HArray1OfTransient_ctor_array1oftransient(const TColStd_Array1OfTransient& theOther) {
     return std::make_unique<TColStd_HArray1OfTransient>(theOther);
+}
+inline rust::String TColStd_HArray1OfTransient_get_type_name() {
+    return rust::String(TColStd_HArray1OfTransient::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfTransient_get_type_descriptor() {
     return TColStd_HArray1OfTransient::get_type_descriptor();
@@ -28250,6 +29393,9 @@ inline std::unique_ptr<TColStd_HArray2OfBoolean> TColStd_HArray2OfBoolean_ctor_i
 inline std::unique_ptr<TColStd_HArray2OfBoolean> TColStd_HArray2OfBoolean_ctor_array2ofboolean(const TColStd_Array2OfBoolean& theOther) {
     return std::make_unique<TColStd_HArray2OfBoolean>(theOther);
 }
+inline rust::String TColStd_HArray2OfBoolean_get_type_name() {
+    return rust::String(TColStd_HArray2OfBoolean::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HArray2OfBoolean_get_type_descriptor() {
     return TColStd_HArray2OfBoolean::get_type_descriptor();
 }
@@ -28271,6 +29417,9 @@ inline std::unique_ptr<TColStd_HArray2OfCharacter> TColStd_HArray2OfCharacter_ct
 }
 inline std::unique_ptr<TColStd_HArray2OfCharacter> TColStd_HArray2OfCharacter_ctor_array2ofcharacter(const TColStd_Array2OfCharacter& theOther) {
     return std::make_unique<TColStd_HArray2OfCharacter>(theOther);
+}
+inline rust::String TColStd_HArray2OfCharacter_get_type_name() {
+    return rust::String(TColStd_HArray2OfCharacter::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColStd_HArray2OfCharacter_get_type_descriptor() {
     return TColStd_HArray2OfCharacter::get_type_descriptor();
@@ -28294,6 +29443,9 @@ inline std::unique_ptr<TColStd_HArray2OfInteger> TColStd_HArray2OfInteger_ctor_i
 inline std::unique_ptr<TColStd_HArray2OfInteger> TColStd_HArray2OfInteger_ctor_array2ofinteger(const TColStd_Array2OfInteger& theOther) {
     return std::make_unique<TColStd_HArray2OfInteger>(theOther);
 }
+inline rust::String TColStd_HArray2OfInteger_get_type_name() {
+    return rust::String(TColStd_HArray2OfInteger::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HArray2OfInteger_get_type_descriptor() {
     return TColStd_HArray2OfInteger::get_type_descriptor();
 }
@@ -28316,6 +29468,9 @@ inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4_re
 inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_array2ofreal(const TColStd_Array2OfReal& theOther) {
     return std::make_unique<TColStd_HArray2OfReal>(theOther);
 }
+inline rust::String TColStd_HArray2OfReal_get_type_name() {
+    return rust::String(TColStd_HArray2OfReal::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HArray2OfReal_get_type_descriptor() {
     return TColStd_HArray2OfReal::get_type_descriptor();
 }
@@ -28334,6 +29489,9 @@ inline std::unique_ptr<TColStd_HArray2OfTransient> TColStd_HArray2OfTransient_ct
 }
 inline std::unique_ptr<TColStd_HArray2OfTransient> TColStd_HArray2OfTransient_ctor_array2oftransient(const TColStd_Array2OfTransient& theOther) {
     return std::make_unique<TColStd_HArray2OfTransient>(theOther);
+}
+inline rust::String TColStd_HArray2OfTransient_get_type_name() {
+    return rust::String(TColStd_HArray2OfTransient::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColStd_HArray2OfTransient_get_type_descriptor() {
     return TColStd_HArray2OfTransient::get_type_descriptor();
@@ -28354,6 +29512,9 @@ inline std::unique_ptr<TColStd_HPackedMapOfInteger> TColStd_HPackedMapOfInteger_
 inline std::unique_ptr<TColStd_HPackedMapOfInteger> TColStd_HPackedMapOfInteger_ctor_packedmapofinteger(const TColStd_PackedMapOfInteger& theOther) {
     return std::make_unique<TColStd_HPackedMapOfInteger>(theOther);
 }
+inline rust::String TColStd_HPackedMapOfInteger_get_type_name() {
+    return rust::String(TColStd_HPackedMapOfInteger::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HPackedMapOfInteger_get_type_descriptor() {
     return TColStd_HPackedMapOfInteger::get_type_descriptor();
 }
@@ -28372,6 +29533,9 @@ inline std::unique_ptr<TColStd_HSequenceOfAsciiString> TColStd_HSequenceOfAsciiS
 }
 inline std::unique_ptr<TColStd_HSequenceOfAsciiString> TColStd_HSequenceOfAsciiString_ctor_sequenceofasciistring(const TColStd_SequenceOfAsciiString& theOther) {
     return std::make_unique<TColStd_HSequenceOfAsciiString>(theOther);
+}
+inline rust::String TColStd_HSequenceOfAsciiString_get_type_name() {
+    return rust::String(TColStd_HSequenceOfAsciiString::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfAsciiString_get_type_descriptor() {
     return TColStd_HSequenceOfAsciiString::get_type_descriptor();
@@ -28392,6 +29556,9 @@ inline std::unique_ptr<TColStd_HSequenceOfExtendedString> TColStd_HSequenceOfExt
 inline std::unique_ptr<TColStd_HSequenceOfExtendedString> TColStd_HSequenceOfExtendedString_ctor_sequenceofextendedstring(const TColStd_SequenceOfExtendedString& theOther) {
     return std::make_unique<TColStd_HSequenceOfExtendedString>(theOther);
 }
+inline rust::String TColStd_HSequenceOfExtendedString_get_type_name() {
+    return rust::String(TColStd_HSequenceOfExtendedString::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfExtendedString_get_type_descriptor() {
     return TColStd_HSequenceOfExtendedString::get_type_descriptor();
 }
@@ -28410,6 +29577,9 @@ inline std::unique_ptr<TColStd_HSequenceOfHAsciiString> TColStd_HSequenceOfHAsci
 }
 inline std::unique_ptr<TColStd_HSequenceOfHAsciiString> TColStd_HSequenceOfHAsciiString_ctor_sequenceofhasciistring(const TColStd_SequenceOfHAsciiString& theOther) {
     return std::make_unique<TColStd_HSequenceOfHAsciiString>(theOther);
+}
+inline rust::String TColStd_HSequenceOfHAsciiString_get_type_name() {
+    return rust::String(TColStd_HSequenceOfHAsciiString::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHAsciiString_get_type_descriptor() {
     return TColStd_HSequenceOfHAsciiString::get_type_descriptor();
@@ -28430,6 +29600,9 @@ inline std::unique_ptr<TColStd_HSequenceOfHExtendedString> TColStd_HSequenceOfHE
 inline std::unique_ptr<TColStd_HSequenceOfHExtendedString> TColStd_HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(const TColStd_SequenceOfHExtendedString& theOther) {
     return std::make_unique<TColStd_HSequenceOfHExtendedString>(theOther);
 }
+inline rust::String TColStd_HSequenceOfHExtendedString_get_type_name() {
+    return rust::String(TColStd_HSequenceOfHExtendedString::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHExtendedString_get_type_descriptor() {
     return TColStd_HSequenceOfHExtendedString::get_type_descriptor();
 }
@@ -28448,6 +29621,9 @@ inline std::unique_ptr<TColStd_HSequenceOfInteger> TColStd_HSequenceOfInteger_ct
 }
 inline std::unique_ptr<TColStd_HSequenceOfInteger> TColStd_HSequenceOfInteger_ctor_sequenceofinteger(const TColStd_SequenceOfInteger& theOther) {
     return std::make_unique<TColStd_HSequenceOfInteger>(theOther);
+}
+inline rust::String TColStd_HSequenceOfInteger_get_type_name() {
+    return rust::String(TColStd_HSequenceOfInteger::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfInteger_get_type_descriptor() {
     return TColStd_HSequenceOfInteger::get_type_descriptor();
@@ -28468,6 +29644,9 @@ inline std::unique_ptr<TColStd_HSequenceOfReal> TColStd_HSequenceOfReal_ctor() {
 inline std::unique_ptr<TColStd_HSequenceOfReal> TColStd_HSequenceOfReal_ctor_sequenceofreal(const TColStd_SequenceOfReal& theOther) {
     return std::make_unique<TColStd_HSequenceOfReal>(theOther);
 }
+inline rust::String TColStd_HSequenceOfReal_get_type_name() {
+    return rust::String(TColStd_HSequenceOfReal::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfReal_get_type_descriptor() {
     return TColStd_HSequenceOfReal::get_type_descriptor();
 }
@@ -28486,6 +29665,9 @@ inline std::unique_ptr<TColStd_HSequenceOfTransient> TColStd_HSequenceOfTransien
 }
 inline std::unique_ptr<TColStd_HSequenceOfTransient> TColStd_HSequenceOfTransient_ctor_sequenceoftransient(const TColStd_SequenceOfTransient& theOther) {
     return std::make_unique<TColStd_HSequenceOfTransient>(theOther);
+}
+inline rust::String TColStd_HSequenceOfTransient_get_type_name() {
+    return rust::String(TColStd_HSequenceOfTransient::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfTransient_get_type_descriptor() {
     return TColStd_HSequenceOfTransient::get_type_descriptor();
@@ -28533,6 +29715,9 @@ inline std::unique_ptr<TopLoc_Datum3D> TopLoc_Datum3D_ctor_trsf(const gp_Trsf& T
 }
 inline int32_t TopLoc_Datum3D_form(const TopLoc_Datum3D& self_) {
     return static_cast<int32_t>(self_.Form());
+}
+inline rust::String TopLoc_Datum3D_get_type_name() {
+    return rust::String(TopLoc_Datum3D::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TopLoc_Datum3D_get_type_descriptor() {
     return TopLoc_Datum3D::get_type_descriptor();
@@ -28593,6 +29778,15 @@ inline std::unique_ptr<TopLoc_Location> TopLoc_Location_to_owned(const TopLoc_Lo
 inline std::unique_ptr<TopLoc_SListNodeOfItemLocation> TopLoc_SListNodeOfItemLocation_ctor_itemlocation_slistofitemlocation(const TopLoc_ItemLocation& I, const TopLoc_SListOfItemLocation& aTail) {
     return std::make_unique<TopLoc_SListNodeOfItemLocation>(I, aTail);
 }
+inline TopLoc_SListOfItemLocation& TopLoc_SListNodeOfItemLocation_tail(TopLoc_SListNodeOfItemLocation& self_) {
+    return self_.Tail();
+}
+inline TopLoc_ItemLocation& TopLoc_SListNodeOfItemLocation_value(TopLoc_SListNodeOfItemLocation& self_) {
+    return self_.Value();
+}
+inline rust::String TopLoc_SListNodeOfItemLocation_get_type_name() {
+    return rust::String(TopLoc_SListNodeOfItemLocation::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopLoc_SListNodeOfItemLocation_get_type_descriptor() {
     return TopLoc_SListNodeOfItemLocation::get_type_descriptor();
 }
@@ -28624,6 +29818,9 @@ inline std::unique_ptr<TopLoc_SListOfItemLocation> TopLoc_SListOfItemLocation_to
 
 inline std::unique_ptr<TopoDS_AlertWithShape> TopoDS_AlertWithShape_ctor_shape(const TopoDS_Shape& theShape) {
     return std::make_unique<TopoDS_AlertWithShape>(theShape);
+}
+inline rust::String TopoDS_AlertWithShape_get_type_name() {
+    return rust::String(TopoDS_AlertWithShape::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TopoDS_AlertWithShape_get_type_descriptor() {
     return TopoDS_AlertWithShape::get_type_descriptor();
@@ -28660,7 +29857,7 @@ inline void TopoDS_CompSolid_inherited_Nullify(TopoDS_CompSolid& self) {
 inline const TopLoc_Location& TopoDS_CompSolid_inherited_Location(const TopoDS_CompSolid& self) {
     return self.Location();
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_CompSolid_inherited_Located(const TopoDS_CompSolid& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_CompSolid_inherited_Located(const TopoDS_CompSolid& self, const TopLoc_Location& theLoc, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
 inline int32_t TopoDS_CompSolid_inherited_Orientation(const TopoDS_CompSolid& self) {
@@ -28699,10 +29896,10 @@ inline bool TopoDS_CompSolid_inherited_Infinite(const TopoDS_CompSolid& self) {
 inline bool TopoDS_CompSolid_inherited_Convex(const TopoDS_CompSolid& self) {
     return self.Convex();
 }
-inline void TopoDS_CompSolid_inherited_Move(TopoDS_CompSolid& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline void TopoDS_CompSolid_inherited_Move(TopoDS_CompSolid& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     self.Move(thePosition, theRaiseExc);
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_CompSolid_inherited_Moved(const TopoDS_CompSolid& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_CompSolid_inherited_Moved(const TopoDS_CompSolid& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Moved(thePosition, theRaiseExc));
 }
 inline void TopoDS_CompSolid_inherited_Reverse(TopoDS_CompSolid& self) {
@@ -28764,7 +29961,7 @@ inline void TopoDS_Compound_inherited_Nullify(TopoDS_Compound& self) {
 inline const TopLoc_Location& TopoDS_Compound_inherited_Location(const TopoDS_Compound& self) {
     return self.Location();
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Compound_inherited_Located(const TopoDS_Compound& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Compound_inherited_Located(const TopoDS_Compound& self, const TopLoc_Location& theLoc, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
 inline int32_t TopoDS_Compound_inherited_Orientation(const TopoDS_Compound& self) {
@@ -28803,10 +30000,10 @@ inline bool TopoDS_Compound_inherited_Infinite(const TopoDS_Compound& self) {
 inline bool TopoDS_Compound_inherited_Convex(const TopoDS_Compound& self) {
     return self.Convex();
 }
-inline void TopoDS_Compound_inherited_Move(TopoDS_Compound& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline void TopoDS_Compound_inherited_Move(TopoDS_Compound& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     self.Move(thePosition, theRaiseExc);
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Compound_inherited_Moved(const TopoDS_Compound& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Compound_inherited_Moved(const TopoDS_Compound& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Moved(thePosition, theRaiseExc));
 }
 inline void TopoDS_Compound_inherited_Reverse(TopoDS_Compound& self) {
@@ -28868,7 +30065,7 @@ inline void TopoDS_Edge_inherited_Nullify(TopoDS_Edge& self) {
 inline const TopLoc_Location& TopoDS_Edge_inherited_Location(const TopoDS_Edge& self) {
     return self.Location();
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Edge_inherited_Located(const TopoDS_Edge& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Edge_inherited_Located(const TopoDS_Edge& self, const TopLoc_Location& theLoc, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
 inline int32_t TopoDS_Edge_inherited_Orientation(const TopoDS_Edge& self) {
@@ -28907,10 +30104,10 @@ inline bool TopoDS_Edge_inherited_Infinite(const TopoDS_Edge& self) {
 inline bool TopoDS_Edge_inherited_Convex(const TopoDS_Edge& self) {
     return self.Convex();
 }
-inline void TopoDS_Edge_inherited_Move(TopoDS_Edge& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline void TopoDS_Edge_inherited_Move(TopoDS_Edge& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     self.Move(thePosition, theRaiseExc);
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Edge_inherited_Moved(const TopoDS_Edge& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Edge_inherited_Moved(const TopoDS_Edge& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Moved(thePosition, theRaiseExc));
 }
 inline void TopoDS_Edge_inherited_Reverse(TopoDS_Edge& self) {
@@ -28972,7 +30169,7 @@ inline void TopoDS_Face_inherited_Nullify(TopoDS_Face& self) {
 inline const TopLoc_Location& TopoDS_Face_inherited_Location(const TopoDS_Face& self) {
     return self.Location();
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Face_inherited_Located(const TopoDS_Face& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Face_inherited_Located(const TopoDS_Face& self, const TopLoc_Location& theLoc, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
 inline int32_t TopoDS_Face_inherited_Orientation(const TopoDS_Face& self) {
@@ -29011,10 +30208,10 @@ inline bool TopoDS_Face_inherited_Infinite(const TopoDS_Face& self) {
 inline bool TopoDS_Face_inherited_Convex(const TopoDS_Face& self) {
     return self.Convex();
 }
-inline void TopoDS_Face_inherited_Move(TopoDS_Face& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline void TopoDS_Face_inherited_Move(TopoDS_Face& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     self.Move(thePosition, theRaiseExc);
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Face_inherited_Moved(const TopoDS_Face& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Face_inherited_Moved(const TopoDS_Face& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Moved(thePosition, theRaiseExc));
 }
 inline void TopoDS_Face_inherited_Reverse(TopoDS_Face& self) {
@@ -29073,6 +30270,9 @@ inline std::unique_ptr<TopoDS_FrozenShape> TopoDS_FrozenShape_ctor_charptr2(rust
 inline void TopoDS_FrozenShape_raise(rust::Str theMessage) {
     return TopoDS_FrozenShape::Raise(std::string(theMessage).c_str());
 }
+inline rust::String TopoDS_FrozenShape_get_type_name() {
+    return rust::String(TopoDS_FrozenShape::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopoDS_FrozenShape_get_type_descriptor() {
     return TopoDS_FrozenShape::get_type_descriptor();
 }
@@ -29087,6 +30287,9 @@ inline std::unique_ptr<TopoDS_HShape> TopoDS_HShape_ctor() {
 }
 inline std::unique_ptr<TopoDS_HShape> TopoDS_HShape_ctor_shape(const TopoDS_Shape& aShape) {
     return std::make_unique<TopoDS_HShape>(aShape);
+}
+inline rust::String TopoDS_HShape_get_type_name() {
+    return rust::String(TopoDS_HShape::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TopoDS_HShape_get_type_descriptor() {
     return TopoDS_HShape::get_type_descriptor();
@@ -29125,6 +30328,9 @@ inline std::unique_ptr<TopoDS_LockedShape> TopoDS_LockedShape_ctor_charptr2(rust
 }
 inline void TopoDS_LockedShape_raise(rust::Str theMessage) {
     return TopoDS_LockedShape::Raise(std::string(theMessage).c_str());
+}
+inline rust::String TopoDS_LockedShape_get_type_name() {
+    return rust::String(TopoDS_LockedShape::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TopoDS_LockedShape_get_type_descriptor() {
     return TopoDS_LockedShape::get_type_descriptor();
@@ -29192,7 +30398,7 @@ inline void TopoDS_Shell_inherited_Nullify(TopoDS_Shell& self) {
 inline const TopLoc_Location& TopoDS_Shell_inherited_Location(const TopoDS_Shell& self) {
     return self.Location();
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Shell_inherited_Located(const TopoDS_Shell& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Shell_inherited_Located(const TopoDS_Shell& self, const TopLoc_Location& theLoc, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
 inline int32_t TopoDS_Shell_inherited_Orientation(const TopoDS_Shell& self) {
@@ -29231,10 +30437,10 @@ inline bool TopoDS_Shell_inherited_Infinite(const TopoDS_Shell& self) {
 inline bool TopoDS_Shell_inherited_Convex(const TopoDS_Shell& self) {
     return self.Convex();
 }
-inline void TopoDS_Shell_inherited_Move(TopoDS_Shell& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline void TopoDS_Shell_inherited_Move(TopoDS_Shell& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     self.Move(thePosition, theRaiseExc);
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Shell_inherited_Moved(const TopoDS_Shell& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Shell_inherited_Moved(const TopoDS_Shell& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Moved(thePosition, theRaiseExc));
 }
 inline void TopoDS_Shell_inherited_Reverse(TopoDS_Shell& self) {
@@ -29296,7 +30502,7 @@ inline void TopoDS_Solid_inherited_Nullify(TopoDS_Solid& self) {
 inline const TopLoc_Location& TopoDS_Solid_inherited_Location(const TopoDS_Solid& self) {
     return self.Location();
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Solid_inherited_Located(const TopoDS_Solid& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Solid_inherited_Located(const TopoDS_Solid& self, const TopLoc_Location& theLoc, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
 inline int32_t TopoDS_Solid_inherited_Orientation(const TopoDS_Solid& self) {
@@ -29335,10 +30541,10 @@ inline bool TopoDS_Solid_inherited_Infinite(const TopoDS_Solid& self) {
 inline bool TopoDS_Solid_inherited_Convex(const TopoDS_Solid& self) {
     return self.Convex();
 }
-inline void TopoDS_Solid_inherited_Move(TopoDS_Solid& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline void TopoDS_Solid_inherited_Move(TopoDS_Solid& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     self.Move(thePosition, theRaiseExc);
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Solid_inherited_Moved(const TopoDS_Solid& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Solid_inherited_Moved(const TopoDS_Solid& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Moved(thePosition, theRaiseExc));
 }
 inline void TopoDS_Solid_inherited_Reverse(TopoDS_Solid& self) {
@@ -29394,6 +30600,9 @@ inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> TopoDS_TCompSolid_emp
 inline int32_t TopoDS_TCompSolid_shape_type(const TopoDS_TCompSolid& self_) {
     return static_cast<int32_t>(self_.ShapeType());
 }
+inline rust::String TopoDS_TCompSolid_get_type_name() {
+    return rust::String(TopoDS_TCompSolid::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopoDS_TCompSolid_get_type_descriptor() {
     return TopoDS_TCompSolid::get_type_descriptor();
 }
@@ -29441,6 +30650,9 @@ inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> TopoDS_TCompound_empt
 inline int32_t TopoDS_TCompound_shape_type(const TopoDS_TCompound& self_) {
     return static_cast<int32_t>(self_.ShapeType());
 }
+inline rust::String TopoDS_TCompound_get_type_name() {
+    return rust::String(TopoDS_TCompound::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopoDS_TCompound_get_type_descriptor() {
     return TopoDS_TCompound::get_type_descriptor();
 }
@@ -29481,6 +30693,9 @@ inline Standard_Integer TopoDS_TCompound_inherited_NbChildren(const TopoDS_TComp
 
 inline int32_t TopoDS_TEdge_shape_type(const TopoDS_TEdge& self_) {
     return static_cast<int32_t>(self_.ShapeType());
+}
+inline rust::String TopoDS_TEdge_get_type_name() {
+    return rust::String(TopoDS_TEdge::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TopoDS_TEdge_get_type_descriptor() {
     return TopoDS_TEdge::get_type_descriptor();
@@ -29531,6 +30746,9 @@ inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> TopoDS_TFace_empty_co
 inline int32_t TopoDS_TFace_shape_type(const TopoDS_TFace& self_) {
     return static_cast<int32_t>(self_.ShapeType());
 }
+inline rust::String TopoDS_TFace_get_type_name() {
+    return rust::String(TopoDS_TFace::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopoDS_TFace_get_type_descriptor() {
     return TopoDS_TFace::get_type_descriptor();
 }
@@ -29575,6 +30793,9 @@ inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> TopoDS_TShape_empty_c
 inline int32_t TopoDS_TShape_shape_type(const TopoDS_TShape& self_) {
     return static_cast<int32_t>(self_.ShapeType());
 }
+inline rust::String TopoDS_TShape_get_type_name() {
+    return rust::String(TopoDS_TShape::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopoDS_TShape_get_type_descriptor() {
     return TopoDS_TShape::get_type_descriptor();
 }
@@ -29593,6 +30814,9 @@ inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> TopoDS_TShell_empty_c
 }
 inline int32_t TopoDS_TShell_shape_type(const TopoDS_TShell& self_) {
     return static_cast<int32_t>(self_.ShapeType());
+}
+inline rust::String TopoDS_TShell_get_type_name() {
+    return rust::String(TopoDS_TShell::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TopoDS_TShell_get_type_descriptor() {
     return TopoDS_TShell::get_type_descriptor();
@@ -29641,6 +30865,9 @@ inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> TopoDS_TSolid_empty_c
 inline int32_t TopoDS_TSolid_shape_type(const TopoDS_TSolid& self_) {
     return static_cast<int32_t>(self_.ShapeType());
 }
+inline rust::String TopoDS_TSolid_get_type_name() {
+    return rust::String(TopoDS_TSolid::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopoDS_TSolid_get_type_descriptor() {
     return TopoDS_TSolid::get_type_descriptor();
 }
@@ -29681,6 +30908,9 @@ inline Standard_Integer TopoDS_TSolid_inherited_NbChildren(const TopoDS_TSolid& 
 
 inline int32_t TopoDS_TVertex_shape_type(const TopoDS_TVertex& self_) {
     return static_cast<int32_t>(self_.ShapeType());
+}
+inline rust::String TopoDS_TVertex_get_type_name() {
+    return rust::String(TopoDS_TVertex::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TopoDS_TVertex_get_type_descriptor() {
     return TopoDS_TVertex::get_type_descriptor();
@@ -29730,6 +30960,9 @@ inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> TopoDS_TWire_empty_co
 }
 inline int32_t TopoDS_TWire_shape_type(const TopoDS_TWire& self_) {
     return static_cast<int32_t>(self_.ShapeType());
+}
+inline rust::String TopoDS_TWire_get_type_name() {
+    return rust::String(TopoDS_TWire::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TopoDS_TWire_get_type_descriptor() {
     return TopoDS_TWire::get_type_descriptor();
@@ -29781,6 +31014,9 @@ inline std::unique_ptr<TopoDS_UnCompatibleShapes> TopoDS_UnCompatibleShapes_ctor
 inline void TopoDS_UnCompatibleShapes_raise(rust::Str theMessage) {
     return TopoDS_UnCompatibleShapes::Raise(std::string(theMessage).c_str());
 }
+inline rust::String TopoDS_UnCompatibleShapes_get_type_name() {
+    return rust::String(TopoDS_UnCompatibleShapes::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopoDS_UnCompatibleShapes_get_type_descriptor() {
     return TopoDS_UnCompatibleShapes::get_type_descriptor();
 }
@@ -29805,7 +31041,7 @@ inline void TopoDS_Vertex_inherited_Nullify(TopoDS_Vertex& self) {
 inline const TopLoc_Location& TopoDS_Vertex_inherited_Location(const TopoDS_Vertex& self) {
     return self.Location();
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Vertex_inherited_Located(const TopoDS_Vertex& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Vertex_inherited_Located(const TopoDS_Vertex& self, const TopLoc_Location& theLoc, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
 inline int32_t TopoDS_Vertex_inherited_Orientation(const TopoDS_Vertex& self) {
@@ -29844,10 +31080,10 @@ inline bool TopoDS_Vertex_inherited_Infinite(const TopoDS_Vertex& self) {
 inline bool TopoDS_Vertex_inherited_Convex(const TopoDS_Vertex& self) {
     return self.Convex();
 }
-inline void TopoDS_Vertex_inherited_Move(TopoDS_Vertex& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline void TopoDS_Vertex_inherited_Move(TopoDS_Vertex& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     self.Move(thePosition, theRaiseExc);
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Vertex_inherited_Moved(const TopoDS_Vertex& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Vertex_inherited_Moved(const TopoDS_Vertex& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Moved(thePosition, theRaiseExc));
 }
 inline void TopoDS_Vertex_inherited_Reverse(TopoDS_Vertex& self) {
@@ -29909,7 +31145,7 @@ inline void TopoDS_Wire_inherited_Nullify(TopoDS_Wire& self) {
 inline const TopLoc_Location& TopoDS_Wire_inherited_Location(const TopoDS_Wire& self) {
     return self.Location();
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Wire_inherited_Located(const TopoDS_Wire& self, const TopLoc_Location& theLoc, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Wire_inherited_Located(const TopoDS_Wire& self, const TopLoc_Location& theLoc, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
 }
 inline int32_t TopoDS_Wire_inherited_Orientation(const TopoDS_Wire& self) {
@@ -29948,10 +31184,10 @@ inline bool TopoDS_Wire_inherited_Infinite(const TopoDS_Wire& self) {
 inline bool TopoDS_Wire_inherited_Convex(const TopoDS_Wire& self) {
     return self.Convex();
 }
-inline void TopoDS_Wire_inherited_Move(TopoDS_Wire& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline void TopoDS_Wire_inherited_Move(TopoDS_Wire& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     self.Move(thePosition, theRaiseExc);
 }
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Wire_inherited_Moved(const TopoDS_Wire& self, const TopLoc_Location& thePosition, bool theRaiseExc) {
+inline std::unique_ptr<TopoDS_Shape> TopoDS_Wire_inherited_Moved(const TopoDS_Wire& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Moved(thePosition, theRaiseExc));
 }
 inline void TopoDS_Wire_inherited_Reverse(TopoDS_Wire& self) {
@@ -30007,6 +31243,9 @@ inline std::unique_ptr<TopTools_HArray1OfListOfShape> TopTools_HArray1OfListOfSh
 inline std::unique_ptr<TopTools_HArray1OfListOfShape> TopTools_HArray1OfListOfShape_ctor_array1oflistofshape(const TopTools_Array1OfListOfShape& theOther) {
     return std::make_unique<TopTools_HArray1OfListOfShape>(theOther);
 }
+inline rust::String TopTools_HArray1OfListOfShape_get_type_name() {
+    return rust::String(TopTools_HArray1OfListOfShape::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopTools_HArray1OfListOfShape_get_type_descriptor() {
     return TopTools_HArray1OfListOfShape::get_type_descriptor();
 }
@@ -30035,6 +31274,9 @@ inline std::unique_ptr<TopTools_HArray1OfShape> TopTools_HArray1OfShape_ctor_sha
 inline std::unique_ptr<TopTools_HArray1OfShape> TopTools_HArray1OfShape_ctor_array1ofshape(const TopTools_Array1OfShape& theOther) {
     return std::make_unique<TopTools_HArray1OfShape>(theOther);
 }
+inline rust::String TopTools_HArray1OfShape_get_type_name() {
+    return rust::String(TopTools_HArray1OfShape::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopTools_HArray1OfShape_get_type_descriptor() {
     return TopTools_HArray1OfShape::get_type_descriptor();
 }
@@ -30057,6 +31299,9 @@ inline std::unique_ptr<TopTools_HArray2OfShape> TopTools_HArray2OfShape_ctor_int
 inline std::unique_ptr<TopTools_HArray2OfShape> TopTools_HArray2OfShape_ctor_array2ofshape(const TopTools_Array2OfShape& theOther) {
     return std::make_unique<TopTools_HArray2OfShape>(theOther);
 }
+inline rust::String TopTools_HArray2OfShape_get_type_name() {
+    return rust::String(TopTools_HArray2OfShape::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TopTools_HArray2OfShape_get_type_descriptor() {
     return TopTools_HArray2OfShape::get_type_descriptor();
 }
@@ -30075,6 +31320,9 @@ inline std::unique_ptr<TopTools_HSequenceOfShape> TopTools_HSequenceOfShape_ctor
 }
 inline std::unique_ptr<TopTools_HSequenceOfShape> TopTools_HSequenceOfShape_ctor_sequenceofshape(const TopTools_SequenceOfShape& theOther) {
     return std::make_unique<TopTools_HSequenceOfShape>(theOther);
+}
+inline rust::String TopTools_HSequenceOfShape_get_type_name() {
+    return rust::String(TopTools_HSequenceOfShape::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TopTools_HSequenceOfShape_get_type_descriptor() {
     return TopTools_HSequenceOfShape::get_type_descriptor();
@@ -30199,6 +31447,9 @@ inline rust::String XSControl_Controller_mode_write_help(const XSControl_Control
 inline std::unique_ptr<opencascade::handle<XSControl_Controller>> XSControl_Controller_recorded(rust::Str name) {
     return std::make_unique<opencascade::handle<XSControl_Controller>>(XSControl_Controller::Recorded(std::string(name).c_str()));
 }
+inline rust::String XSControl_Controller_get_type_name() {
+    return rust::String(XSControl_Controller::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& XSControl_Controller_get_type_descriptor() {
     return XSControl_Controller::get_type_descriptor();
 }
@@ -30217,6 +31468,9 @@ inline std::unique_ptr<Interface_HArray1OfHAsciiString> Interface_HArray1OfHAsci
 }
 inline std::unique_ptr<Interface_HArray1OfHAsciiString> Interface_HArray1OfHAsciiString_ctor_array1ofhasciistring(const Interface_Array1OfHAsciiString& theOther) {
     return std::make_unique<Interface_HArray1OfHAsciiString>(theOther);
+}
+inline rust::String Interface_HArray1OfHAsciiString_get_type_name() {
+    return rust::String(Interface_HArray1OfHAsciiString::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Interface_HArray1OfHAsciiString_get_type_descriptor() {
     return Interface_HArray1OfHAsciiString::get_type_descriptor();
@@ -30254,6 +31508,9 @@ inline std::unique_ptr<opencascade::handle<TCollection_HAsciiString>> STEPConstr
 inline std::unique_ptr<Transfer_ActorOfFinderProcess> Transfer_ActorOfFinderProcess_ctor() {
     return std::make_unique<Transfer_ActorOfFinderProcess>();
 }
+inline rust::String Transfer_ActorOfFinderProcess_get_type_name() {
+    return rust::String(Transfer_ActorOfFinderProcess::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Transfer_ActorOfFinderProcess_get_type_descriptor() {
     return Transfer_ActorOfFinderProcess::get_type_descriptor();
 }
@@ -30262,13 +31519,13 @@ inline Transfer_ActorOfProcessForFinder& Transfer_ActorOfFinderProcess_as_Transf
 inline std::unique_ptr<Handle(Transfer_Binder)> Transfer_ActorOfFinderProcess_inherited_NullResult(const Transfer_ActorOfFinderProcess& self) {
     return std::make_unique<Handle(Transfer_Binder)>(self.NullResult());
 }
-inline void Transfer_ActorOfFinderProcess_inherited_SetLast(Transfer_ActorOfFinderProcess& self, bool mode) {
+inline void Transfer_ActorOfFinderProcess_inherited_SetLast(Transfer_ActorOfFinderProcess& self, Standard_Boolean mode) {
     self.SetLast(mode);
 }
 inline bool Transfer_ActorOfFinderProcess_inherited_IsLast(const Transfer_ActorOfFinderProcess& self) {
     return self.IsLast();
 }
-inline void Transfer_ActorOfFinderProcess_inherited_SetNext(Transfer_ActorOfFinderProcess& self, const Handle(Transfer_ActorOfProcessForFinder)& next) {
+inline void Transfer_ActorOfFinderProcess_inherited_SetNext(Transfer_ActorOfFinderProcess& self, const opencascade::handle<Transfer_ActorOfProcessForFinder>& next) {
     self.SetNext(next);
 }
 inline std::unique_ptr<Handle(Transfer_ActorOfProcessForFinder)> Transfer_ActorOfFinderProcess_inherited_Next(const Transfer_ActorOfFinderProcess& self) {
@@ -30287,6 +31544,9 @@ inline std::unique_ptr<opencascade::handle<Transfer_Binder>> Transfer_ActorOfPro
 }
 inline std::unique_ptr<opencascade::handle<Transfer_ActorOfProcessForFinder>> Transfer_ActorOfProcessForFinder_next(const Transfer_ActorOfProcessForFinder& self_) {
     return std::make_unique<opencascade::handle<Transfer_ActorOfProcessForFinder>>(self_.Next());
+}
+inline rust::String Transfer_ActorOfProcessForFinder_get_type_name() {
+    return rust::String(Transfer_ActorOfProcessForFinder::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Transfer_ActorOfProcessForFinder_get_type_descriptor() {
     return Transfer_ActorOfProcessForFinder::get_type_descriptor();
@@ -30331,6 +31591,9 @@ inline int32_t Transfer_Binder_status_exec(const Transfer_Binder& self_) {
 inline void Transfer_Binder_set_status_exec(Transfer_Binder& self_, int32_t stat) {
     self_.SetStatusExec(static_cast<Transfer_StatusExec>(stat));
 }
+inline rust::String Transfer_Binder_get_type_name() {
+    return rust::String(Transfer_Binder::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Transfer_Binder_get_type_descriptor() {
     return Transfer_Binder::get_type_descriptor();
 }
@@ -30369,6 +31632,9 @@ inline int32_t StepData_StepModel_source_code_page(const StepData_StepModel& sel
 inline void StepData_StepModel_set_source_code_page(StepData_StepModel& self_, int32_t theCode) {
     self_.SetSourceCodePage(static_cast<Resource_FormatType>(theCode));
 }
+inline rust::String StepData_StepModel_get_type_name() {
+    return rust::String(StepData_StepModel::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& StepData_StepModel_get_type_descriptor() {
     return StepData_StepModel::get_type_descriptor();
 }
@@ -30392,7 +31658,7 @@ inline Standard_Integer StepData_StepModel_inherited_NbEntities(const StepData_S
 inline int32_t StepData_StepModel_inherited_EntityState(const StepData_StepModel& self, Standard_Integer num) {
     return static_cast<int32_t>(self.EntityState(num));
 }
-inline bool StepData_StepModel_inherited_IsReportEntity(const StepData_StepModel& self, Standard_Integer num, bool semantic) {
+inline bool StepData_StepModel_inherited_IsReportEntity(const StepData_StepModel& self, Standard_Integer num, Standard_Boolean semantic) {
     return self.IsReportEntity(num, semantic);
 }
 inline bool StepData_StepModel_inherited_IsErrorEntity(const StepData_StepModel& self, Standard_Integer num) {
@@ -30407,13 +31673,13 @@ inline bool StepData_StepModel_inherited_ClearReportEntity(StepData_StepModel& s
 inline bool StepData_StepModel_inherited_IsUnknownEntity(const StepData_StepModel& self, Standard_Integer num) {
     return self.IsUnknownEntity(num);
 }
-inline void StepData_StepModel_inherited_FillSemanticChecks(StepData_StepModel& self, const Interface_CheckIterator& checks, bool clear) {
+inline void StepData_StepModel_inherited_FillSemanticChecks(StepData_StepModel& self, const Interface_CheckIterator& checks, Standard_Boolean clear) {
     self.FillSemanticChecks(checks, clear);
 }
 inline bool StepData_StepModel_inherited_HasSemanticChecks(const StepData_StepModel& self) {
     return self.HasSemanticChecks();
 }
-inline const Handle(Interface_Check)& StepData_StepModel_inherited_Check(const StepData_StepModel& self, Standard_Integer num, bool syntactic) {
+inline const Handle(Interface_Check)& StepData_StepModel_inherited_Check(const StepData_StepModel& self, Standard_Integer num, Standard_Boolean syntactic) {
     return self.Check(num, syntactic);
 }
 inline void StepData_StepModel_inherited_Reservate(StepData_StepModel& self, Standard_Integer nbent) {
@@ -30431,10 +31697,10 @@ inline bool StepData_StepModel_inherited_SetCategoryNumber(StepData_StepModel& s
 inline Standard_Integer StepData_StepModel_inherited_CategoryNumber(const StepData_StepModel& self, Standard_Integer num) {
     return self.CategoryNumber(num);
 }
-inline const Handle(Interface_Check)& StepData_StepModel_inherited_GlobalCheck(const StepData_StepModel& self, bool syntactic) {
+inline const Handle(Interface_Check)& StepData_StepModel_inherited_GlobalCheck(const StepData_StepModel& self, Standard_Boolean syntactic) {
     return self.GlobalCheck(syntactic);
 }
-inline void StepData_StepModel_inherited_SetGlobalCheck(StepData_StepModel& self, const Handle(Interface_Check)& ach) {
+inline void StepData_StepModel_inherited_SetGlobalCheck(StepData_StepModel& self, const opencascade::handle<Interface_Check>& ach) {
     self.SetGlobalCheck(ach);
 }
 
@@ -30459,6 +31725,9 @@ inline Standard_Integer Interface_InterfaceModel_next_number_for_label(const Int
 inline int32_t Interface_InterfaceModel_entity_state(const Interface_InterfaceModel& self_, Standard_Integer num) {
     return static_cast<int32_t>(self_.EntityState(num));
 }
+inline rust::String Interface_InterfaceModel_class_name(rust::Str typnam) {
+    return rust::String(Interface_InterfaceModel::ClassName(std::string(typnam).c_str()));
+}
 inline Standard_Boolean Interface_InterfaceModel_has_template(rust::Str name) {
     return Interface_InterfaceModel::HasTemplate(std::string(name).c_str());
 }
@@ -30470,6 +31739,9 @@ inline Standard_Boolean Interface_InterfaceModel_set_template(rust::Str name, co
 }
 inline std::unique_ptr<opencascade::handle<TColStd_HSequenceOfHAsciiString>> Interface_InterfaceModel_list_templates() {
     return std::make_unique<opencascade::handle<TColStd_HSequenceOfHAsciiString>>(Interface_InterfaceModel::ListTemplates());
+}
+inline rust::String Interface_InterfaceModel_get_type_name() {
+    return rust::String(Interface_InterfaceModel::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Interface_InterfaceModel_get_type_descriptor() {
     return Interface_InterfaceModel::get_type_descriptor();
@@ -30495,6 +31767,9 @@ inline std::unique_ptr<StepToTopoDS_NMTool> StepToTopoDS_NMTool_ctor_datamapofri
 inline std::unique_ptr<Transfer_ActorOfTransientProcess> Transfer_ActorOfTransientProcess_ctor() {
     return std::make_unique<Transfer_ActorOfTransientProcess>();
 }
+inline rust::String Transfer_ActorOfTransientProcess_get_type_name() {
+    return rust::String(Transfer_ActorOfTransientProcess::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Transfer_ActorOfTransientProcess_get_type_descriptor() {
     return Transfer_ActorOfTransientProcess::get_type_descriptor();
 }
@@ -30503,13 +31778,13 @@ inline Transfer_ActorOfProcessForTransient& Transfer_ActorOfTransientProcess_as_
 inline std::unique_ptr<Handle(Transfer_Binder)> Transfer_ActorOfTransientProcess_inherited_NullResult(const Transfer_ActorOfTransientProcess& self) {
     return std::make_unique<Handle(Transfer_Binder)>(self.NullResult());
 }
-inline void Transfer_ActorOfTransientProcess_inherited_SetLast(Transfer_ActorOfTransientProcess& self, bool mode) {
+inline void Transfer_ActorOfTransientProcess_inherited_SetLast(Transfer_ActorOfTransientProcess& self, Standard_Boolean mode) {
     self.SetLast(mode);
 }
 inline bool Transfer_ActorOfTransientProcess_inherited_IsLast(const Transfer_ActorOfTransientProcess& self) {
     return self.IsLast();
 }
-inline void Transfer_ActorOfTransientProcess_inherited_SetNext(Transfer_ActorOfTransientProcess& self, const Handle(Transfer_ActorOfProcessForTransient)& next) {
+inline void Transfer_ActorOfTransientProcess_inherited_SetNext(Transfer_ActorOfTransientProcess& self, const opencascade::handle<Transfer_ActorOfProcessForTransient>& next) {
     self.SetNext(next);
 }
 inline std::unique_ptr<Handle(Transfer_ActorOfProcessForTransient)> Transfer_ActorOfTransientProcess_inherited_Next(const Transfer_ActorOfTransientProcess& self) {
@@ -30529,6 +31804,9 @@ inline std::unique_ptr<opencascade::handle<Transfer_Binder>> Transfer_ActorOfPro
 inline std::unique_ptr<opencascade::handle<Transfer_ActorOfProcessForTransient>> Transfer_ActorOfProcessForTransient_next(const Transfer_ActorOfProcessForTransient& self_) {
     return std::make_unique<opencascade::handle<Transfer_ActorOfProcessForTransient>>(self_.Next());
 }
+inline rust::String Transfer_ActorOfProcessForTransient_get_type_name() {
+    return rust::String(Transfer_ActorOfProcessForTransient::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Transfer_ActorOfProcessForTransient_get_type_descriptor() {
     return Transfer_ActorOfProcessForTransient::get_type_descriptor();
 }
@@ -30547,6 +31825,9 @@ inline std::unique_ptr<StepRepr_RepresentationItem> StepRepr_RepresentationItem_
 }
 inline std::unique_ptr<opencascade::handle<TCollection_HAsciiString>> StepRepr_RepresentationItem_name(const StepRepr_RepresentationItem& self_) {
     return std::make_unique<opencascade::handle<TCollection_HAsciiString>>(self_.Name());
+}
+inline rust::String StepRepr_RepresentationItem_get_type_name() {
+    return rust::String(StepRepr_RepresentationItem::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& StepRepr_RepresentationItem_get_type_descriptor() {
     return StepRepr_RepresentationItem::get_type_descriptor();
@@ -30570,6 +31851,9 @@ inline std::unique_ptr<TColGeom_HArray1OfCurve> TColGeom_HArray1OfCurve_ctor_int
 inline std::unique_ptr<TColGeom_HArray1OfCurve> TColGeom_HArray1OfCurve_ctor_array1ofcurve(const TColGeom_Array1OfCurve& theOther) {
     return std::make_unique<TColGeom_HArray1OfCurve>(theOther);
 }
+inline rust::String TColGeom_HArray1OfCurve_get_type_name() {
+    return rust::String(TColGeom_HArray1OfCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColGeom_HArray1OfCurve_get_type_descriptor() {
     return TColGeom_HArray1OfCurve::get_type_descriptor();
 }
@@ -30592,6 +31876,9 @@ inline std::unique_ptr<TColGeom2d_HArray1OfCurve> TColGeom2d_HArray1OfCurve_ctor
 inline std::unique_ptr<TColGeom2d_HArray1OfCurve> TColGeom2d_HArray1OfCurve_ctor_array1ofcurve(const TColGeom2d_Array1OfCurve& theOther) {
     return std::make_unique<TColGeom2d_HArray1OfCurve>(theOther);
 }
+inline rust::String TColGeom2d_HArray1OfCurve_get_type_name() {
+    return rust::String(TColGeom2d_HArray1OfCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColGeom2d_HArray1OfCurve_get_type_descriptor() {
     return TColGeom2d_HArray1OfCurve::get_type_descriptor();
 }
@@ -30611,6 +31898,9 @@ inline std::unique_ptr<TColGeom_HSequenceOfBoundedCurve> TColGeom_HSequenceOfBou
 inline std::unique_ptr<TColGeom_HSequenceOfBoundedCurve> TColGeom_HSequenceOfBoundedCurve_ctor_sequenceofboundedcurve(const TColGeom_SequenceOfBoundedCurve& theOther) {
     return std::make_unique<TColGeom_HSequenceOfBoundedCurve>(theOther);
 }
+inline rust::String TColGeom_HSequenceOfBoundedCurve_get_type_name() {
+    return rust::String(TColGeom_HSequenceOfBoundedCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TColGeom_HSequenceOfBoundedCurve_get_type_descriptor() {
     return TColGeom_HSequenceOfBoundedCurve::get_type_descriptor();
 }
@@ -30629,6 +31919,9 @@ inline std::unique_ptr<TColGeom2d_HSequenceOfBoundedCurve> TColGeom2d_HSequenceO
 }
 inline std::unique_ptr<TColGeom2d_HSequenceOfBoundedCurve> TColGeom2d_HSequenceOfBoundedCurve_ctor_sequenceofboundedcurve(const TColGeom2d_SequenceOfBoundedCurve& theOther) {
     return std::make_unique<TColGeom2d_HSequenceOfBoundedCurve>(theOther);
+}
+inline rust::String TColGeom2d_HSequenceOfBoundedCurve_get_type_name() {
+    return rust::String(TColGeom2d_HSequenceOfBoundedCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& TColGeom2d_HSequenceOfBoundedCurve_get_type_descriptor() {
     return TColGeom2d_HSequenceOfBoundedCurve::get_type_descriptor();
@@ -30764,6 +32057,9 @@ inline Standard_Integer GeomAdaptor_Surface_nb_v_intervals(const GeomAdaptor_Sur
 inline int32_t GeomAdaptor_Surface_get_type(const GeomAdaptor_Surface& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String GeomAdaptor_Surface_get_type_name() {
+    return rust::String(GeomAdaptor_Surface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& GeomAdaptor_Surface_get_type_descriptor() {
     return GeomAdaptor_Surface::get_type_descriptor();
 }
@@ -30774,6 +32070,9 @@ inline Adaptor3d_Surface& GeomAdaptor_Surface_as_Adaptor3d_Surface_mut(GeomAdapt
 // BSplSLib_Cache wrappers
 // ========================
 
+inline rust::String BSplSLib_Cache_get_type_name() {
+    return rust::String(BSplSLib_Cache::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BSplSLib_Cache_get_type_descriptor() {
     return BSplSLib_Cache::get_type_descriptor();
 }
@@ -30792,6 +32091,9 @@ inline std::unique_ptr<gp_Vec> GeomEvaluator_Surface_dn(const GeomEvaluator_Surf
 }
 inline std::unique_ptr<opencascade::handle<GeomEvaluator_Surface>> GeomEvaluator_Surface_shallow_copy(const GeomEvaluator_Surface& self_) {
     return std::make_unique<opencascade::handle<GeomEvaluator_Surface>>(self_.ShallowCopy());
+}
+inline rust::String GeomEvaluator_Surface_get_type_name() {
+    return rust::String(GeomEvaluator_Surface::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& GeomEvaluator_Surface_get_type_descriptor() {
     return GeomEvaluator_Surface::get_type_descriptor();
@@ -30831,6 +32133,9 @@ inline std::unique_ptr<TShort_HArray1OfShortReal> TShort_HArray1OfShortReal_ctor
 inline std::unique_ptr<TShort_HArray1OfShortReal> TShort_HArray1OfShortReal_ctor_array1ofshortreal(const TShort_Array1OfShortReal& theOther) {
     return std::make_unique<TShort_HArray1OfShortReal>(theOther);
 }
+inline rust::String TShort_HArray1OfShortReal_get_type_name() {
+    return rust::String(TShort_HArray1OfShortReal::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& TShort_HArray1OfShortReal_get_type_descriptor() {
     return TShort_HArray1OfShortReal::get_type_descriptor();
 }
@@ -30855,6 +32160,9 @@ inline std::unique_ptr<StdFail_NotDone> StdFail_NotDone_ctor_charptr2(rust::Str 
 }
 inline void StdFail_NotDone_raise(rust::Str theMessage) {
     return StdFail_NotDone::Raise(std::string(theMessage).c_str());
+}
+inline rust::String StdFail_NotDone_get_type_name() {
+    return rust::String(StdFail_NotDone::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& StdFail_NotDone_get_type_descriptor() {
     return StdFail_NotDone::get_type_descriptor();
@@ -30890,8 +32198,17 @@ inline Standard_Integer IGESData_BasicEditor_unit_name_flag(rust::Str name) {
 inline Standard_Real IGESData_BasicEditor_unit_flag_value(Standard_Integer flag) {
     return IGESData_BasicEditor::UnitFlagValue(flag);
 }
+inline rust::String IGESData_BasicEditor_unit_flag_name(Standard_Integer flag) {
+    return rust::String(IGESData_BasicEditor::UnitFlagName(flag));
+}
+inline rust::String IGESData_BasicEditor_iges_version_name(Standard_Integer flag) {
+    return rust::String(IGESData_BasicEditor::IGESVersionName(flag));
+}
 inline Standard_Integer IGESData_BasicEditor_iges_version_max() {
     return IGESData_BasicEditor::IGESVersionMax();
+}
+inline rust::String IGESData_BasicEditor_drafting_name(Standard_Integer flag) {
+    return rust::String(IGESData_BasicEditor::DraftingName(flag));
 }
 inline Standard_Integer IGESData_BasicEditor_drafting_max() {
     return IGESData_BasicEditor::DraftingMax();
@@ -30926,6 +32243,9 @@ inline std::unique_ptr<IGESToBRep_ToolContainer> IGESToBRep_ToolContainer_ctor()
 inline std::unique_ptr<opencascade::handle<IGESToBRep_IGESBoundary>> IGESToBRep_ToolContainer_iges_boundary(const IGESToBRep_ToolContainer& self_) {
     return std::make_unique<opencascade::handle<IGESToBRep_IGESBoundary>>(self_.IGESBoundary());
 }
+inline rust::String IGESToBRep_ToolContainer_get_type_name() {
+    return rust::String(IGESToBRep_ToolContainer::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IGESToBRep_ToolContainer_get_type_descriptor() {
     return IGESToBRep_ToolContainer::get_type_descriptor();
 }
@@ -30944,6 +32264,9 @@ inline std::unique_ptr<IGESToBRep_IGESBoundary> IGESToBRep_IGESBoundary_ctor() {
 }
 inline std::unique_ptr<IGESToBRep_IGESBoundary> IGESToBRep_IGESBoundary_ctor_curveandsurface(const IGESToBRep_CurveAndSurface& CS) {
     return std::make_unique<IGESToBRep_IGESBoundary>(CS);
+}
+inline rust::String IGESToBRep_IGESBoundary_get_type_name() {
+    return rust::String(IGESToBRep_IGESBoundary::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IGESToBRep_IGESBoundary_get_type_descriptor() {
     return IGESToBRep_IGESBoundary::get_type_descriptor();
@@ -30966,6 +32289,9 @@ inline std::unique_ptr<IGESData_HArray1OfIGESEntity> IGESData_HArray1OfIGESEntit
 }
 inline std::unique_ptr<IGESData_HArray1OfIGESEntity> IGESData_HArray1OfIGESEntity_ctor_array1ofigesentity(const IGESData_Array1OfIGESEntity& theOther) {
     return std::make_unique<IGESData_HArray1OfIGESEntity>(theOther);
+}
+inline rust::String IGESData_HArray1OfIGESEntity_get_type_name() {
+    return rust::String(IGESData_HArray1OfIGESEntity::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IGESData_HArray1OfIGESEntity_get_type_descriptor() {
     return IGESData_HArray1OfIGESEntity::get_type_descriptor();
@@ -31025,6 +32351,9 @@ inline int32_t IGESData_IGESEntity_def_view(const IGESData_IGESEntity& self_) {
 inline int32_t IGESData_IGESEntity_def_color(const IGESData_IGESEntity& self_) {
     return static_cast<int32_t>(self_.DefColor());
 }
+inline rust::String IGESData_IGESEntity_get_type_name() {
+    return rust::String(IGESData_IGESEntity::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IGESData_IGESEntity_get_type_descriptor() {
     return IGESData_IGESEntity::get_type_descriptor();
 }
@@ -31080,6 +32409,9 @@ inline std::unique_ptr<IGESToBRep_AlgoContainer> IGESToBRep_AlgoContainer_ctor()
 }
 inline std::unique_ptr<opencascade::handle<IGESToBRep_ToolContainer>> IGESToBRep_AlgoContainer_tool_container(const IGESToBRep_AlgoContainer& self_) {
     return std::make_unique<opencascade::handle<IGESToBRep_ToolContainer>>(self_.ToolContainer());
+}
+inline rust::String IGESToBRep_AlgoContainer_get_type_name() {
+    return rust::String(IGESToBRep_AlgoContainer::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IGESToBRep_AlgoContainer_get_type_descriptor() {
     return IGESToBRep_AlgoContainer::get_type_descriptor();
@@ -31138,6 +32470,9 @@ inline std::unique_ptr<Interface_HSequenceOfCheck> Interface_HSequenceOfCheck_ct
 inline std::unique_ptr<Interface_HSequenceOfCheck> Interface_HSequenceOfCheck_ctor_sequenceofcheck(const Interface_SequenceOfCheck& theOther) {
     return std::make_unique<Interface_HSequenceOfCheck>(theOther);
 }
+inline rust::String Interface_HSequenceOfCheck_get_type_name() {
+    return rust::String(Interface_HSequenceOfCheck::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Interface_HSequenceOfCheck_get_type_descriptor() {
     return Interface_HSequenceOfCheck::get_type_descriptor();
 }
@@ -31193,6 +32528,9 @@ inline Standard_Boolean Interface_Check_complies_handletcollectionhasciistring_i
 inline Standard_Boolean Interface_Check_remove(Interface_Check& self_, const opencascade::handle<TCollection_HAsciiString>& mess, Standard_Integer incl, int32_t status) {
     return self_.Remove(mess, incl, static_cast<Interface_CheckStatus>(status));
 }
+inline rust::String Interface_Check_get_type_name() {
+    return rust::String(Interface_Check::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Interface_Check_get_type_descriptor() {
     return Interface_Check::get_type_descriptor();
 }
@@ -31206,6 +32544,12 @@ inline Interface_Check& HandleInterfaceCheck_get_mut(HandleInterfaceCheck& handl
 // Interface_SignType wrappers
 // ========================
 
+inline rust::String Interface_SignType_class_name(rust::Str typnam) {
+    return rust::String(Interface_SignType::ClassName(std::string(typnam).c_str()));
+}
+inline rust::String Interface_SignType_get_type_name() {
+    return rust::String(Interface_SignType::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Interface_SignType_get_type_descriptor() {
     return Interface_SignType::get_type_descriptor();
 }
@@ -31218,6 +32562,9 @@ inline MoniTool_SignText& Interface_SignType_as_MoniTool_SignText_mut(Interface_
 
 inline rust::String MoniTool_SignText_name(const MoniTool_SignText& self) {
     return rust::String(self.Name());
+}
+inline rust::String MoniTool_SignText_get_type_name() {
+    return rust::String(MoniTool_SignText::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& MoniTool_SignText_get_type_descriptor() {
     return MoniTool_SignText::get_type_descriptor();
@@ -31357,6 +32704,9 @@ inline Standard_Integer GeomAdaptor_Curve_nb_intervals(const GeomAdaptor_Curve& 
 inline int32_t GeomAdaptor_Curve_get_type(const GeomAdaptor_Curve& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String GeomAdaptor_Curve_get_type_name() {
+    return rust::String(GeomAdaptor_Curve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& GeomAdaptor_Curve_get_type_descriptor() {
     return GeomAdaptor_Curve::get_type_descriptor();
 }
@@ -31367,6 +32717,9 @@ inline Adaptor3d_Curve& GeomAdaptor_Curve_as_Adaptor3d_Curve_mut(GeomAdaptor_Cur
 // BSplCLib_Cache wrappers
 // ========================
 
+inline rust::String BSplCLib_Cache_get_type_name() {
+    return rust::String(BSplCLib_Cache::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BSplCLib_Cache_get_type_descriptor() {
     return BSplCLib_Cache::get_type_descriptor();
 }
@@ -31385,6 +32738,9 @@ inline std::unique_ptr<gp_Vec> GeomEvaluator_Curve_dn(const GeomEvaluator_Curve&
 }
 inline std::unique_ptr<opencascade::handle<GeomEvaluator_Curve>> GeomEvaluator_Curve_shallow_copy(const GeomEvaluator_Curve& self_) {
     return std::make_unique<opencascade::handle<GeomEvaluator_Curve>>(self_.ShallowCopy());
+}
+inline rust::String GeomEvaluator_Curve_get_type_name() {
+    return rust::String(GeomEvaluator_Curve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& GeomEvaluator_Curve_get_type_descriptor() {
     return GeomEvaluator_Curve::get_type_descriptor();
@@ -31472,6 +32828,9 @@ inline int32_t IntPatch_Line_situation_s1(const IntPatch_Line& self_) {
 }
 inline int32_t IntPatch_Line_situation_s2(const IntPatch_Line& self_) {
     return static_cast<int32_t>(self_.SituationS2());
+}
+inline rust::String IntPatch_Line_get_type_name() {
+    return rust::String(IntPatch_Line::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IntPatch_Line_get_type_descriptor() {
     return IntPatch_Line::get_type_descriptor();
@@ -31572,6 +32931,11 @@ inline void IntCurveSurface_IntersectionPoint_set_values(IntCurveSurface_Interse
 inline int32_t IntCurveSurface_IntersectionPoint_transition(const IntCurveSurface_IntersectionPoint& self_) {
     return static_cast<int32_t>(self_.Transition());
 }
+inline void IntCurveSurface_IntersectionPoint_values(const IntCurveSurface_IntersectionPoint& self_, gp_Pnt& P, Standard_Real& USurf, Standard_Real& VSurf, Standard_Real& UCurv, int32_t& TrCurv) {
+    auto TrCurv_enum_ = static_cast<IntCurveSurface_TransitionOnCurve>(TrCurv);
+    self_.Values(P, USurf, VSurf, UCurv, TrCurv_enum_);
+    TrCurv = static_cast<int32_t>(TrCurv_enum_);
+}
 
 // ========================
 // Geom2dEvaluator_OffsetCurve wrappers
@@ -31585,6 +32949,9 @@ inline std::unique_ptr<gp_Vec2d> Geom2dEvaluator_OffsetCurve_dn(const Geom2dEval
 }
 inline std::unique_ptr<opencascade::handle<Geom2dEvaluator_Curve>> Geom2dEvaluator_OffsetCurve_shallow_copy(const Geom2dEvaluator_OffsetCurve& self_) {
     return std::make_unique<opencascade::handle<Geom2dEvaluator_Curve>>(self_.ShallowCopy());
+}
+inline rust::String Geom2dEvaluator_OffsetCurve_get_type_name() {
+    return rust::String(Geom2dEvaluator_OffsetCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2dEvaluator_OffsetCurve_get_type_descriptor() {
     return Geom2dEvaluator_OffsetCurve::get_type_descriptor();
@@ -31647,6 +33014,9 @@ inline Standard_Integer Geom2dAdaptor_Curve_nb_intervals(const Geom2dAdaptor_Cur
 inline int32_t Geom2dAdaptor_Curve_get_type(const Geom2dAdaptor_Curve& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String Geom2dAdaptor_Curve_get_type_name() {
+    return rust::String(Geom2dAdaptor_Curve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& Geom2dAdaptor_Curve_get_type_descriptor() {
     return Geom2dAdaptor_Curve::get_type_descriptor();
 }
@@ -31662,6 +33032,9 @@ inline std::unique_ptr<gp_Vec2d> Geom2dEvaluator_Curve_dn(const Geom2dEvaluator_
 }
 inline std::unique_ptr<opencascade::handle<Geom2dEvaluator_Curve>> Geom2dEvaluator_Curve_shallow_copy(const Geom2dEvaluator_Curve& self_) {
     return std::make_unique<opencascade::handle<Geom2dEvaluator_Curve>>(self_.ShallowCopy());
+}
+inline rust::String Geom2dEvaluator_Curve_get_type_name() {
+    return rust::String(Geom2dEvaluator_Curve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Geom2dEvaluator_Curve_get_type_descriptor() {
     return Geom2dEvaluator_Curve::get_type_descriptor();
@@ -31685,6 +33058,9 @@ inline std::unique_ptr<gp_Vec> GeomEvaluator_SurfaceOfRevolution_dn(const GeomEv
 inline std::unique_ptr<opencascade::handle<GeomEvaluator_Surface>> GeomEvaluator_SurfaceOfRevolution_shallow_copy(const GeomEvaluator_SurfaceOfRevolution& self_) {
     return std::make_unique<opencascade::handle<GeomEvaluator_Surface>>(self_.ShallowCopy());
 }
+inline rust::String GeomEvaluator_SurfaceOfRevolution_get_type_name() {
+    return rust::String(GeomEvaluator_SurfaceOfRevolution::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& GeomEvaluator_SurfaceOfRevolution_get_type_descriptor() {
     return GeomEvaluator_SurfaceOfRevolution::get_type_descriptor();
 }
@@ -31707,6 +33083,9 @@ inline std::unique_ptr<gp_Vec> GeomEvaluator_SurfaceOfExtrusion_dn(const GeomEva
 inline std::unique_ptr<opencascade::handle<GeomEvaluator_Surface>> GeomEvaluator_SurfaceOfExtrusion_shallow_copy(const GeomEvaluator_SurfaceOfExtrusion& self_) {
     return std::make_unique<opencascade::handle<GeomEvaluator_Surface>>(self_.ShallowCopy());
 }
+inline rust::String GeomEvaluator_SurfaceOfExtrusion_get_type_name() {
+    return rust::String(GeomEvaluator_SurfaceOfExtrusion::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& GeomEvaluator_SurfaceOfExtrusion_get_type_descriptor() {
     return GeomEvaluator_SurfaceOfExtrusion::get_type_descriptor();
 }
@@ -31726,6 +33105,9 @@ inline std::unique_ptr<gp_Vec> GeomEvaluator_OffsetSurface_dn(const GeomEvaluato
 inline std::unique_ptr<opencascade::handle<GeomEvaluator_Surface>> GeomEvaluator_OffsetSurface_shallow_copy(const GeomEvaluator_OffsetSurface& self_) {
     return std::make_unique<opencascade::handle<GeomEvaluator_Surface>>(self_.ShallowCopy());
 }
+inline rust::String GeomEvaluator_OffsetSurface_get_type_name() {
+    return rust::String(GeomEvaluator_OffsetSurface::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& GeomEvaluator_OffsetSurface_get_type_descriptor() {
     return GeomEvaluator_OffsetSurface::get_type_descriptor();
 }
@@ -31744,6 +33126,9 @@ inline std::unique_ptr<gp_Vec> GeomEvaluator_OffsetCurve_dn(const GeomEvaluator_
 }
 inline std::unique_ptr<opencascade::handle<GeomEvaluator_Curve>> GeomEvaluator_OffsetCurve_shallow_copy(const GeomEvaluator_OffsetCurve& self_) {
     return std::make_unique<opencascade::handle<GeomEvaluator_Curve>>(self_.ShallowCopy());
+}
+inline rust::String GeomEvaluator_OffsetCurve_get_type_name() {
+    return rust::String(GeomEvaluator_OffsetCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& GeomEvaluator_OffsetCurve_get_type_descriptor() {
     return GeomEvaluator_OffsetCurve::get_type_descriptor();
@@ -31892,6 +33277,9 @@ inline Standard_Integer GeomAdaptor_SurfaceOfRevolution_nb_v_intervals(const Geo
 inline int32_t GeomAdaptor_SurfaceOfRevolution_get_type(const GeomAdaptor_SurfaceOfRevolution& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String GeomAdaptor_SurfaceOfRevolution_get_type_name() {
+    return rust::String(GeomAdaptor_SurfaceOfRevolution::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& GeomAdaptor_SurfaceOfRevolution_get_type_descriptor() {
     return GeomAdaptor_SurfaceOfRevolution::get_type_descriptor();
 }
@@ -32005,6 +33393,9 @@ inline Standard_Integer GeomAdaptor_SurfaceOfLinearExtrusion_nb_v_intervals(cons
 }
 inline int32_t GeomAdaptor_SurfaceOfLinearExtrusion_get_type(const GeomAdaptor_SurfaceOfLinearExtrusion& self_) {
     return static_cast<int32_t>(self_.GetType());
+}
+inline rust::String GeomAdaptor_SurfaceOfLinearExtrusion_get_type_name() {
+    return rust::String(GeomAdaptor_SurfaceOfLinearExtrusion::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& GeomAdaptor_SurfaceOfLinearExtrusion_get_type_descriptor() {
     return GeomAdaptor_SurfaceOfLinearExtrusion::get_type_descriptor();
@@ -33474,6 +34865,9 @@ inline int32_t BRepFill_PipeShell_get_status(const BRepFill_PipeShell& self_) {
 inline void BRepFill_PipeShell_set_transition(BRepFill_PipeShell& self_, int32_t Mode, Standard_Real Angmin, Standard_Real Angmax) {
     self_.SetTransition(static_cast<BRepFill_TransitionStyle>(Mode), Angmin, Angmax);
 }
+inline rust::String BRepFill_PipeShell_get_type_name() {
+    return rust::String(BRepFill_PipeShell::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& BRepFill_PipeShell_get_type_descriptor() {
     return BRepFill_PipeShell::get_type_descriptor();
 }
@@ -33578,6 +34972,9 @@ inline std::unique_ptr<TopoDS_Shape> ShapeBuild_ReShape_apply_shape_shapeenum(Sh
 }
 inline Standard_Boolean ShapeBuild_ReShape_status(const ShapeBuild_ReShape& self_, int32_t status) {
     return self_.Status(static_cast<ShapeExtend_Status>(status));
+}
+inline rust::String ShapeBuild_ReShape_get_type_name() {
+    return rust::String(ShapeBuild_ReShape::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& ShapeBuild_ReShape_get_type_descriptor() {
     return ShapeBuild_ReShape::get_type_descriptor();
@@ -33782,6 +35179,9 @@ inline std::unique_ptr<TopoDS_Shape> BRepMAT2d_LinkTopoBilo_generating_shape(con
 inline std::unique_ptr<MAT_BasicElt> MAT_BasicElt_ctor_int(Standard_Integer anInteger) {
     return std::make_unique<MAT_BasicElt>(anInteger);
 }
+inline rust::String MAT_BasicElt_get_type_name() {
+    return rust::String(MAT_BasicElt::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& MAT_BasicElt_get_type_descriptor() {
     return MAT_BasicElt::get_type_descriptor();
 }
@@ -33895,6 +35295,9 @@ inline std::unique_ptr<GeomPlate_PointConstraint> GeomPlate_PointConstraint_ctor
 inline std::unique_ptr<gp_Pnt2d> GeomPlate_PointConstraint_pnt2d_on_surf(const GeomPlate_PointConstraint& self_) {
     return std::make_unique<gp_Pnt2d>(self_.Pnt2dOnSurf());
 }
+inline rust::String GeomPlate_PointConstraint_get_type_name() {
+    return rust::String(GeomPlate_PointConstraint::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& GeomPlate_PointConstraint_get_type_descriptor() {
     return GeomPlate_PointConstraint::get_type_descriptor();
 }
@@ -33928,6 +35331,9 @@ inline std::unique_ptr<GeomPlate_HSequenceOfCurveConstraint> GeomPlate_HSequence
 inline std::unique_ptr<GeomPlate_HSequenceOfCurveConstraint> GeomPlate_HSequenceOfCurveConstraint_ctor_sequenceofcurveconstraint(const GeomPlate_SequenceOfCurveConstraint& theOther) {
     return std::make_unique<GeomPlate_HSequenceOfCurveConstraint>(theOther);
 }
+inline rust::String GeomPlate_HSequenceOfCurveConstraint_get_type_name() {
+    return rust::String(GeomPlate_HSequenceOfCurveConstraint::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& GeomPlate_HSequenceOfCurveConstraint_get_type_descriptor() {
     return GeomPlate_HSequenceOfCurveConstraint::get_type_descriptor();
 }
@@ -33950,6 +35356,9 @@ inline std::unique_ptr<GeomPlate_HArray1OfSequenceOfReal> GeomPlate_HArray1OfSeq
 inline std::unique_ptr<GeomPlate_HArray1OfSequenceOfReal> GeomPlate_HArray1OfSequenceOfReal_ctor_array1ofsequenceofreal(const GeomPlate_Array1OfSequenceOfReal& theOther) {
     return std::make_unique<GeomPlate_HArray1OfSequenceOfReal>(theOther);
 }
+inline rust::String GeomPlate_HArray1OfSequenceOfReal_get_type_name() {
+    return rust::String(GeomPlate_HArray1OfSequenceOfReal::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& GeomPlate_HArray1OfSequenceOfReal_get_type_descriptor() {
     return GeomPlate_HArray1OfSequenceOfReal::get_type_descriptor();
 }
@@ -33968,6 +35377,9 @@ inline std::unique_ptr<GeomPlate_HSequenceOfPointConstraint> GeomPlate_HSequence
 }
 inline std::unique_ptr<GeomPlate_HSequenceOfPointConstraint> GeomPlate_HSequenceOfPointConstraint_ctor_sequenceofpointconstraint(const GeomPlate_SequenceOfPointConstraint& theOther) {
     return std::make_unique<GeomPlate_HSequenceOfPointConstraint>(theOther);
+}
+inline rust::String GeomPlate_HSequenceOfPointConstraint_get_type_name() {
+    return rust::String(GeomPlate_HSequenceOfPointConstraint::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& GeomPlate_HSequenceOfPointConstraint_get_type_descriptor() {
     return GeomPlate_HSequenceOfPointConstraint::get_type_descriptor();
@@ -34007,6 +35419,9 @@ inline std::unique_ptr<GeomPlate_HArray1OfHCurve> GeomPlate_HArray1OfHCurve_ctor
 }
 inline std::unique_ptr<GeomPlate_HArray1OfHCurve> GeomPlate_HArray1OfHCurve_ctor_array1ofhcurve(const GeomPlate_Array1OfHCurve& theOther) {
     return std::make_unique<GeomPlate_HArray1OfHCurve>(theOther);
+}
+inline rust::String GeomPlate_HArray1OfHCurve_get_type_name() {
+    return rust::String(GeomPlate_HArray1OfHCurve::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& GeomPlate_HArray1OfHCurve_get_type_descriptor() {
     return GeomPlate_HArray1OfHCurve::get_type_descriptor();
@@ -34055,6 +35470,9 @@ inline std::unique_ptr<Plate_HArray1OfPinpointConstraint> Plate_HArray1OfPinpoin
 }
 inline std::unique_ptr<Plate_HArray1OfPinpointConstraint> Plate_HArray1OfPinpointConstraint_ctor_array1ofpinpointconstraint(const Plate_Array1OfPinpointConstraint& theOther) {
     return std::make_unique<Plate_HArray1OfPinpointConstraint>(theOther);
+}
+inline rust::String Plate_HArray1OfPinpointConstraint_get_type_name() {
+    return rust::String(Plate_HArray1OfPinpointConstraint::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& Plate_HArray1OfPinpointConstraint_get_type_descriptor() {
     return Plate_HArray1OfPinpointConstraint::get_type_descriptor();
@@ -34111,6 +35529,9 @@ inline std::unique_ptr<opencascade::handle<Geom2d_Curve>> GeomPlate_CurveConstra
 }
 inline std::unique_ptr<opencascade::handle<Adaptor2d_Curve2d>> GeomPlate_CurveConstraint_projected_curve(const GeomPlate_CurveConstraint& self_) {
     return std::make_unique<opencascade::handle<Adaptor2d_Curve2d>>(self_.ProjectedCurve());
+}
+inline rust::String GeomPlate_CurveConstraint_get_type_name() {
+    return rust::String(GeomPlate_CurveConstraint::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& GeomPlate_CurveConstraint_get_type_descriptor() {
     return GeomPlate_CurveConstraint::get_type_descriptor();
@@ -34198,6 +35619,9 @@ inline Standard_Real IMeshTools_Parameters_rel_min_size() {
 // IMeshTools_ShapeVisitor wrappers
 // ========================
 
+inline rust::String IMeshTools_ShapeVisitor_get_type_name() {
+    return rust::String(IMeshTools_ShapeVisitor::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshTools_ShapeVisitor_get_type_descriptor() {
     return IMeshTools_ShapeVisitor::get_type_descriptor();
 }
@@ -34208,6 +35632,9 @@ inline IMeshTools_ShapeVisitor& HandleIMeshToolsShapeVisitor_get_mut(HandleIMesh
 // IMeshData_Model wrappers
 // ========================
 
+inline rust::String IMeshData_Model_get_type_name() {
+    return rust::String(IMeshData_Model::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshData_Model_get_type_descriptor() {
     return IMeshData_Model::get_type_descriptor();
 }
@@ -34224,6 +35651,9 @@ inline const TopoDS_Shape& IMeshData_Model_inherited_GetShape(const IMeshData_Mo
 // IMeshData_Shape wrappers
 // ========================
 
+inline rust::String IMeshData_Shape_get_type_name() {
+    return rust::String(IMeshData_Shape::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshData_Shape_get_type_descriptor() {
     return IMeshData_Shape::get_type_descriptor();
 }
@@ -34239,6 +35669,9 @@ inline IMeshData_Shape& HandleIMeshDataShape_get_mut(HandleIMeshDataShape& handl
 
 inline int32_t IMeshData_Wire_get_edge_orientation(const IMeshData_Wire& self_, Standard_Integer theIndex) {
     return static_cast<int32_t>(self_.GetEdgeOrientation(theIndex));
+}
+inline rust::String IMeshData_Wire_get_type_name() {
+    return rust::String(IMeshData_Wire::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IMeshData_Wire_get_type_descriptor() {
     return IMeshData_Wire::get_type_descriptor();
@@ -34281,6 +35714,9 @@ inline void IMeshData_Wire_inherited_SetDeflection(IMeshData_Wire& self, Standar
 // IMeshData_Edge wrappers
 // ========================
 
+inline rust::String IMeshData_Edge_get_type_name() {
+    return rust::String(IMeshData_Edge::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshData_Edge_get_type_descriptor() {
     return IMeshData_Edge::get_type_descriptor();
 }
@@ -34325,6 +35761,9 @@ inline void IMeshData_Edge_inherited_SetDeflection(IMeshData_Edge& self, Standar
 inline int32_t IMeshData_PCurve_get_orientation(const IMeshData_PCurve& self_) {
     return static_cast<int32_t>(self_.GetOrientation());
 }
+inline rust::String IMeshData_PCurve_get_type_name() {
+    return rust::String(IMeshData_PCurve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshData_PCurve_get_type_descriptor() {
     return IMeshData_PCurve::get_type_descriptor();
 }
@@ -34336,7 +35775,7 @@ inline Standard_Real& IMeshData_PCurve_inherited_GetParameter(IMeshData_PCurve& 
 inline Standard_Integer IMeshData_PCurve_inherited_ParametersNb(const IMeshData_PCurve& self) {
     return self.ParametersNb();
 }
-inline void IMeshData_PCurve_inherited_Clear(IMeshData_PCurve& self, bool isKeepEndPoints) {
+inline void IMeshData_PCurve_inherited_Clear(IMeshData_PCurve& self, Standard_Boolean isKeepEndPoints) {
     self.Clear(isKeepEndPoints);
 }
 
@@ -34344,6 +35783,9 @@ inline void IMeshData_PCurve_inherited_Clear(IMeshData_PCurve& self, bool isKeep
 // IMeshData_ParametersList wrappers
 // ========================
 
+inline rust::String IMeshData_ParametersList_get_type_name() {
+    return rust::String(IMeshData_ParametersList::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshData_ParametersList_get_type_descriptor() {
     return IMeshData_ParametersList::get_type_descriptor();
 }
@@ -34354,6 +35796,9 @@ inline IMeshData_ParametersList& HandleIMeshDataParametersList_get_mut(HandleIMe
 // IMeshData_Face wrappers
 // ========================
 
+inline rust::String IMeshData_Face_get_type_name() {
+    return rust::String(IMeshData_Face::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshData_Face_get_type_descriptor() {
     return IMeshData_Face::get_type_descriptor();
 }
@@ -34395,6 +35840,9 @@ inline void IMeshData_Face_inherited_SetDeflection(IMeshData_Face& self, Standar
 // IMeshData_TessellatedShape wrappers
 // ========================
 
+inline rust::String IMeshData_TessellatedShape_get_type_name() {
+    return rust::String(IMeshData_TessellatedShape::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshData_TessellatedShape_get_type_descriptor() {
     return IMeshData_TessellatedShape::get_type_descriptor();
 }
@@ -34428,6 +35876,9 @@ inline void IMeshData_StatusOwner_unset_status(IMeshData_StatusOwner& self_, int
 // IMeshData_Curve wrappers
 // ========================
 
+inline rust::String IMeshData_Curve_get_type_name() {
+    return rust::String(IMeshData_Curve::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshData_Curve_get_type_descriptor() {
     return IMeshData_Curve::get_type_descriptor();
 }
@@ -34439,7 +35890,7 @@ inline Standard_Real& IMeshData_Curve_inherited_GetParameter(IMeshData_Curve& se
 inline Standard_Integer IMeshData_Curve_inherited_ParametersNb(const IMeshData_Curve& self) {
     return self.ParametersNb();
 }
-inline void IMeshData_Curve_inherited_Clear(IMeshData_Curve& self, bool isKeepEndPoints) {
+inline void IMeshData_Curve_inherited_Clear(IMeshData_Curve& self, Standard_Boolean isKeepEndPoints) {
     self.Clear(isKeepEndPoints);
 }
 
@@ -34447,6 +35898,9 @@ inline void IMeshData_Curve_inherited_Clear(IMeshData_Curve& self, bool isKeepEn
 // IMeshTools_ModelAlgo wrappers
 // ========================
 
+inline rust::String IMeshTools_ModelAlgo_get_type_name() {
+    return rust::String(IMeshTools_ModelAlgo::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshTools_ModelAlgo_get_type_descriptor() {
     return IMeshTools_ModelAlgo::get_type_descriptor();
 }
@@ -34457,6 +35911,9 @@ inline IMeshTools_ModelAlgo& HandleIMeshToolsModelAlgo_get_mut(HandleIMeshToolsM
 // IMeshTools_ModelBuilder wrappers
 // ========================
 
+inline rust::String IMeshTools_ModelBuilder_get_type_name() {
+    return rust::String(IMeshTools_ModelBuilder::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshTools_ModelBuilder_get_type_descriptor() {
     return IMeshTools_ModelBuilder::get_type_descriptor();
 }
@@ -34474,7 +35931,7 @@ inline Message_ExecStatus& IMeshTools_ModelBuilder_inherited_ChangeStatus(IMeshT
 inline void IMeshTools_ModelBuilder_inherited_ClearStatus(IMeshTools_ModelBuilder& self) {
     self.ClearStatus();
 }
-inline void IMeshTools_ModelBuilder_inherited_SetMessenger(IMeshTools_ModelBuilder& self, const Handle(Message_Messenger)& theMsgr) {
+inline void IMeshTools_ModelBuilder_inherited_SetMessenger(IMeshTools_ModelBuilder& self, const opencascade::handle<Message_Messenger>& theMsgr) {
     self.SetMessenger(theMsgr);
 }
 inline std::unique_ptr<Handle(Message_Messenger)> IMeshTools_ModelBuilder_inherited_GetMessenger(const IMeshTools_ModelBuilder& self) {
@@ -34486,7 +35943,7 @@ inline void IMeshTools_ModelBuilder_inherited_SendStatusMessages(const IMeshTool
 inline void IMeshTools_ModelBuilder_inherited_SendMessages(const IMeshTools_ModelBuilder& self, int32_t theTraceLevel, Standard_Integer theMaxCount) {
     self.SendMessages(static_cast<Message_Gravity>(theTraceLevel), theMaxCount);
 }
-inline void IMeshTools_ModelBuilder_inherited_AddStatus(IMeshTools_ModelBuilder& self, const Handle(Message_Algorithm)& theOther) {
+inline void IMeshTools_ModelBuilder_inherited_AddStatus(IMeshTools_ModelBuilder& self, const opencascade::handle<Message_Algorithm>& theOther) {
     self.AddStatus(theOther);
 }
 inline std::unique_ptr<Handle(TColStd_HPackedMapOfInteger)> IMeshTools_ModelBuilder_inherited_GetMessageNumbers(const IMeshTools_ModelBuilder& self, int32_t theStatus) {
@@ -34503,6 +35960,9 @@ inline std::unique_ptr<Handle(TColStd_HSequenceOfHExtendedString)> IMeshTools_Mo
 inline std::unique_ptr<opencascade::handle<IMeshTools_MeshAlgo>> IMeshTools_MeshAlgoFactory_get_algo(const IMeshTools_MeshAlgoFactory& self_, int32_t theSurfaceType, const IMeshTools_Parameters& theParameters) {
     return std::make_unique<opencascade::handle<IMeshTools_MeshAlgo>>(self_.GetAlgo(static_cast<GeomAbs_SurfaceType>(theSurfaceType), theParameters));
 }
+inline rust::String IMeshTools_MeshAlgoFactory_get_type_name() {
+    return rust::String(IMeshTools_MeshAlgoFactory::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshTools_MeshAlgoFactory_get_type_descriptor() {
     return IMeshTools_MeshAlgoFactory::get_type_descriptor();
 }
@@ -34513,6 +35973,9 @@ inline IMeshTools_MeshAlgoFactory& HandleIMeshToolsMeshAlgoFactory_get_mut(Handl
 // IMeshTools_MeshAlgo wrappers
 // ========================
 
+inline rust::String IMeshTools_MeshAlgo_get_type_name() {
+    return rust::String(IMeshTools_MeshAlgo::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshTools_MeshAlgo_get_type_descriptor() {
     return IMeshTools_MeshAlgo::get_type_descriptor();
 }
@@ -34525,6 +35988,9 @@ inline IMeshTools_MeshAlgo& HandleIMeshToolsMeshAlgo_get_mut(HandleIMeshToolsMes
 
 inline std::unique_ptr<IMeshTools_Context> IMeshTools_Context_ctor() {
     return std::make_unique<IMeshTools_Context>();
+}
+inline rust::String IMeshTools_Context_get_type_name() {
+    return rust::String(IMeshTools_Context::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& IMeshTools_Context_get_type_descriptor() {
     return IMeshTools_Context::get_type_descriptor();
@@ -34542,6 +36008,9 @@ inline const TopoDS_Shape& IMeshTools_Context_inherited_GetShape(const IMeshTool
 // IMeshTools_CurveTessellator wrappers
 // ========================
 
+inline rust::String IMeshTools_CurveTessellator_get_type_name() {
+    return rust::String(IMeshTools_CurveTessellator::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& IMeshTools_CurveTessellator_get_type_descriptor() {
     return IMeshTools_CurveTessellator::get_type_descriptor();
 }
@@ -34576,7 +36045,16 @@ inline void Quantity_Color_set_values_real3_typeofcolor(Quantity_Color& self_, S
 inline int32_t Quantity_Color_name_real3(Standard_Real theR, Standard_Real theG, Standard_Real theB) {
     return static_cast<int32_t>(Quantity_Color::Name(theR, theG, theB));
 }
-inline Standard_Boolean Quantity_Color_color_from_name(rust::Str theColorNameString, Quantity_Color& theColor) {
+inline rust::String Quantity_Color_string_name(int32_t theColor) {
+    return rust::String(Quantity_Color::StringName(static_cast<Quantity_NameOfColor>(theColor)));
+}
+inline Standard_Boolean Quantity_Color_color_from_name_charptr_nameofcolor(rust::Str theName, int32_t& theColor) {
+    auto theColor_enum_ = static_cast<Quantity_NameOfColor>(theColor);
+    auto result_ = Quantity_Color::ColorFromName(std::string(theName).c_str(), theColor_enum_);
+    theColor = static_cast<int32_t>(theColor_enum_);
+    return result_;
+}
+inline Standard_Boolean Quantity_Color_color_from_name_charptr_color(rust::Str theColorNameString, Quantity_Color& theColor) {
     return Quantity_Color::ColorFromName(std::string(theColorNameString).c_str(), theColor);
 }
 inline Standard_Boolean Quantity_Color_color_from_hex(rust::Str theHexColorString, Quantity_Color& theColor) {
@@ -34796,6 +36274,9 @@ inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_circsection_int
 inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_secarray1(const ChFiDS_SecArray1& theOther) {
     return std::make_unique<ChFiDS_SecHArray1>(theOther);
 }
+inline rust::String ChFiDS_SecHArray1_get_type_name() {
+    return rust::String(ChFiDS_SecHArray1::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ChFiDS_SecHArray1_get_type_descriptor() {
     return ChFiDS_SecHArray1::get_type_descriptor();
 }
@@ -34888,6 +36369,9 @@ inline Standard_Integer ChFiDS_ElSpine_nb_intervals(const ChFiDS_ElSpine& self_,
 inline int32_t ChFiDS_ElSpine_get_type(const ChFiDS_ElSpine& self_) {
     return static_cast<int32_t>(self_.GetType());
 }
+inline rust::String ChFiDS_ElSpine_get_type_name() {
+    return rust::String(ChFiDS_ElSpine::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ChFiDS_ElSpine_get_type_descriptor() {
     return ChFiDS_ElSpine::get_type_descriptor();
 }
@@ -34927,6 +36411,9 @@ inline std::unique_ptr<gp_Pnt2d> ChFiDS_SurfData_get2d_points(const ChFiDS_SurfD
 }
 inline int32_t ChFiDS_SurfData_orientation(const ChFiDS_SurfData& self_) {
     return static_cast<int32_t>(self_.Orientation());
+}
+inline rust::String ChFiDS_SurfData_get_type_name() {
+    return rust::String(ChFiDS_SurfData::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& ChFiDS_SurfData_get_type_descriptor() {
     return ChFiDS_SurfData::get_type_descriptor();
@@ -35011,6 +36498,9 @@ inline int32_t ChFiDS_Stripe_orientation_bool(const ChFiDS_Stripe& self_, Standa
 inline void ChFiDS_Stripe_set_orientation_orientation_bool(ChFiDS_Stripe& self_, int32_t Or, Standard_Boolean First) {
     self_.SetOrientation(static_cast<TopAbs_Orientation>(Or), First);
 }
+inline rust::String ChFiDS_Stripe_get_type_name() {
+    return rust::String(ChFiDS_Stripe::get_type_name());
+}
 inline const opencascade::handle<Standard_Type>& ChFiDS_Stripe_get_type_descriptor() {
     return ChFiDS_Stripe::get_type_descriptor();
 }
@@ -35029,6 +36519,9 @@ inline std::unique_ptr<ChFiDS_HData> ChFiDS_HData_ctor() {
 }
 inline std::unique_ptr<ChFiDS_HData> ChFiDS_HData_ctor_sequenceofsurfdata(const ChFiDS_SequenceOfSurfData& theOther) {
     return std::make_unique<ChFiDS_HData>(theOther);
+}
+inline rust::String ChFiDS_HData_get_type_name() {
+    return rust::String(ChFiDS_HData::get_type_name());
 }
 inline const opencascade::handle<Standard_Type>& ChFiDS_HData_get_type_descriptor() {
     return ChFiDS_HData::get_type_descriptor();
@@ -35227,7 +36720,7 @@ inline void BOPAlgo_BOP_inherited_SetArguments(BOPAlgo_BOP& self, const TopTools
 inline const TopTools_ListOfShape& BOPAlgo_BOP_inherited_Arguments(const BOPAlgo_BOP& self) {
     return self.Arguments();
 }
-inline void BOPAlgo_BOP_inherited_SetNonDestructive(BOPAlgo_BOP& self, bool theFlag) {
+inline void BOPAlgo_BOP_inherited_SetNonDestructive(BOPAlgo_BOP& self, Standard_Boolean theFlag) {
     self.SetNonDestructive(theFlag);
 }
 inline bool BOPAlgo_BOP_inherited_NonDestructive(const BOPAlgo_BOP& self) {
@@ -35239,11 +36732,14 @@ inline void BOPAlgo_BOP_inherited_SetGlue(BOPAlgo_BOP& self, int32_t theGlue) {
 inline int32_t BOPAlgo_BOP_inherited_Glue(const BOPAlgo_BOP& self) {
     return static_cast<int32_t>(self.Glue());
 }
-inline void BOPAlgo_BOP_inherited_SetCheckInverted(BOPAlgo_BOP& self, bool theCheck) {
+inline void BOPAlgo_BOP_inherited_SetCheckInverted(BOPAlgo_BOP& self, Standard_Boolean theCheck) {
     self.SetCheckInverted(theCheck);
 }
 inline bool BOPAlgo_BOP_inherited_CheckInverted(const BOPAlgo_BOP& self) {
     return self.CheckInverted();
+}
+inline void BOPAlgo_BOP_inherited_BuildBOP(BOPAlgo_BOP& self, const TopTools_ListOfShape& theObjects, int32_t theObjState, const TopTools_ListOfShape& theTools, int32_t theToolsState, const Message_ProgressRange& theRange, const opencascade::handle<Message_Report>& theReport) {
+    self.BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport);
 }
 inline const TopTools_DataMapOfShapeShape& BOPAlgo_BOP_inherited_ShapesSD(const BOPAlgo_BOP& self) {
     return self.ShapesSD();
@@ -35272,7 +36768,7 @@ inline bool BOPAlgo_BOP_inherited_HasDeleted(const BOPAlgo_BOP& self) {
 inline std::unique_ptr<Handle(BRepTools_History)> BOPAlgo_BOP_inherited_History(BOPAlgo_BOP& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
 }
-inline void BOPAlgo_BOP_inherited_SetToFillHistory(BOPAlgo_BOP& self, bool theHistFlag) {
+inline void BOPAlgo_BOP_inherited_SetToFillHistory(BOPAlgo_BOP& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BOPAlgo_BOP_inherited_HasHistory(const BOPAlgo_BOP& self) {
@@ -35281,22 +36777,22 @@ inline bool BOPAlgo_BOP_inherited_HasHistory(const BOPAlgo_BOP& self) {
 inline const Handle(NCollection_BaseAllocator)& BOPAlgo_BOP_inherited_Allocator(const BOPAlgo_BOP& self) {
     return self.Allocator();
 }
-inline void BOPAlgo_BOP_inherited_AddError(BOPAlgo_BOP& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_BOP_inherited_AddError(BOPAlgo_BOP& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddError(theAlert);
 }
-inline void BOPAlgo_BOP_inherited_AddWarning(BOPAlgo_BOP& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_BOP_inherited_AddWarning(BOPAlgo_BOP& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddWarning(theAlert);
 }
 inline bool BOPAlgo_BOP_inherited_HasErrors(const BOPAlgo_BOP& self) {
     return self.HasErrors();
 }
-inline bool BOPAlgo_BOP_inherited_HasError(const BOPAlgo_BOP& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_BOP_inherited_HasError(const BOPAlgo_BOP& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasError(theType);
 }
 inline bool BOPAlgo_BOP_inherited_HasWarnings(const BOPAlgo_BOP& self) {
     return self.HasWarnings();
 }
-inline bool BOPAlgo_BOP_inherited_HasWarning(const BOPAlgo_BOP& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_BOP_inherited_HasWarning(const BOPAlgo_BOP& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasWarning(theType);
 }
 inline const Handle(Message_Report)& BOPAlgo_BOP_inherited_GetReport(const BOPAlgo_BOP& self) {
@@ -35305,7 +36801,7 @@ inline const Handle(Message_Report)& BOPAlgo_BOP_inherited_GetReport(const BOPAl
 inline void BOPAlgo_BOP_inherited_ClearWarnings(BOPAlgo_BOP& self) {
     self.ClearWarnings();
 }
-inline void BOPAlgo_BOP_inherited_SetRunParallel(BOPAlgo_BOP& self, bool theFlag) {
+inline void BOPAlgo_BOP_inherited_SetRunParallel(BOPAlgo_BOP& self, Standard_Boolean theFlag) {
     self.SetRunParallel(theFlag);
 }
 inline bool BOPAlgo_BOP_inherited_RunParallel(const BOPAlgo_BOP& self) {
@@ -35317,7 +36813,7 @@ inline void BOPAlgo_BOP_inherited_SetFuzzyValue(BOPAlgo_BOP& self, Standard_Real
 inline Standard_Real BOPAlgo_BOP_inherited_FuzzyValue(const BOPAlgo_BOP& self) {
     return self.FuzzyValue();
 }
-inline void BOPAlgo_BOP_inherited_SetUseOBB(BOPAlgo_BOP& self, bool theUseOBB) {
+inline void BOPAlgo_BOP_inherited_SetUseOBB(BOPAlgo_BOP& self, Standard_Boolean theUseOBB) {
     self.SetUseOBB(theUseOBB);
 }
 inline bool BOPAlgo_BOP_inherited_UseOBB(const BOPAlgo_BOP& self) {
@@ -35361,7 +36857,7 @@ inline void BOPAlgo_ToolsProvider_inherited_SetArguments(BOPAlgo_ToolsProvider& 
 inline const TopTools_ListOfShape& BOPAlgo_ToolsProvider_inherited_Arguments(const BOPAlgo_ToolsProvider& self) {
     return self.Arguments();
 }
-inline void BOPAlgo_ToolsProvider_inherited_SetNonDestructive(BOPAlgo_ToolsProvider& self, bool theFlag) {
+inline void BOPAlgo_ToolsProvider_inherited_SetNonDestructive(BOPAlgo_ToolsProvider& self, Standard_Boolean theFlag) {
     self.SetNonDestructive(theFlag);
 }
 inline bool BOPAlgo_ToolsProvider_inherited_NonDestructive(const BOPAlgo_ToolsProvider& self) {
@@ -35373,11 +36869,14 @@ inline void BOPAlgo_ToolsProvider_inherited_SetGlue(BOPAlgo_ToolsProvider& self,
 inline int32_t BOPAlgo_ToolsProvider_inherited_Glue(const BOPAlgo_ToolsProvider& self) {
     return static_cast<int32_t>(self.Glue());
 }
-inline void BOPAlgo_ToolsProvider_inherited_SetCheckInverted(BOPAlgo_ToolsProvider& self, bool theCheck) {
+inline void BOPAlgo_ToolsProvider_inherited_SetCheckInverted(BOPAlgo_ToolsProvider& self, Standard_Boolean theCheck) {
     self.SetCheckInverted(theCheck);
 }
 inline bool BOPAlgo_ToolsProvider_inherited_CheckInverted(const BOPAlgo_ToolsProvider& self) {
     return self.CheckInverted();
+}
+inline void BOPAlgo_ToolsProvider_inherited_BuildBOP(BOPAlgo_ToolsProvider& self, const TopTools_ListOfShape& theObjects, int32_t theObjState, const TopTools_ListOfShape& theTools, int32_t theToolsState, const Message_ProgressRange& theRange, const opencascade::handle<Message_Report>& theReport) {
+    self.BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport);
 }
 inline const TopTools_DataMapOfShapeShape& BOPAlgo_ToolsProvider_inherited_ShapesSD(const BOPAlgo_ToolsProvider& self) {
     return self.ShapesSD();
@@ -35406,7 +36905,7 @@ inline bool BOPAlgo_ToolsProvider_inherited_HasDeleted(const BOPAlgo_ToolsProvid
 inline std::unique_ptr<Handle(BRepTools_History)> BOPAlgo_ToolsProvider_inherited_History(BOPAlgo_ToolsProvider& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
 }
-inline void BOPAlgo_ToolsProvider_inherited_SetToFillHistory(BOPAlgo_ToolsProvider& self, bool theHistFlag) {
+inline void BOPAlgo_ToolsProvider_inherited_SetToFillHistory(BOPAlgo_ToolsProvider& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BOPAlgo_ToolsProvider_inherited_HasHistory(const BOPAlgo_ToolsProvider& self) {
@@ -35415,22 +36914,22 @@ inline bool BOPAlgo_ToolsProvider_inherited_HasHistory(const BOPAlgo_ToolsProvid
 inline const Handle(NCollection_BaseAllocator)& BOPAlgo_ToolsProvider_inherited_Allocator(const BOPAlgo_ToolsProvider& self) {
     return self.Allocator();
 }
-inline void BOPAlgo_ToolsProvider_inherited_AddError(BOPAlgo_ToolsProvider& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_ToolsProvider_inherited_AddError(BOPAlgo_ToolsProvider& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddError(theAlert);
 }
-inline void BOPAlgo_ToolsProvider_inherited_AddWarning(BOPAlgo_ToolsProvider& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_ToolsProvider_inherited_AddWarning(BOPAlgo_ToolsProvider& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddWarning(theAlert);
 }
 inline bool BOPAlgo_ToolsProvider_inherited_HasErrors(const BOPAlgo_ToolsProvider& self) {
     return self.HasErrors();
 }
-inline bool BOPAlgo_ToolsProvider_inherited_HasError(const BOPAlgo_ToolsProvider& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_ToolsProvider_inherited_HasError(const BOPAlgo_ToolsProvider& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasError(theType);
 }
 inline bool BOPAlgo_ToolsProvider_inherited_HasWarnings(const BOPAlgo_ToolsProvider& self) {
     return self.HasWarnings();
 }
-inline bool BOPAlgo_ToolsProvider_inherited_HasWarning(const BOPAlgo_ToolsProvider& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_ToolsProvider_inherited_HasWarning(const BOPAlgo_ToolsProvider& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasWarning(theType);
 }
 inline const Handle(Message_Report)& BOPAlgo_ToolsProvider_inherited_GetReport(const BOPAlgo_ToolsProvider& self) {
@@ -35439,7 +36938,7 @@ inline const Handle(Message_Report)& BOPAlgo_ToolsProvider_inherited_GetReport(c
 inline void BOPAlgo_ToolsProvider_inherited_ClearWarnings(BOPAlgo_ToolsProvider& self) {
     self.ClearWarnings();
 }
-inline void BOPAlgo_ToolsProvider_inherited_SetRunParallel(BOPAlgo_ToolsProvider& self, bool theFlag) {
+inline void BOPAlgo_ToolsProvider_inherited_SetRunParallel(BOPAlgo_ToolsProvider& self, Standard_Boolean theFlag) {
     self.SetRunParallel(theFlag);
 }
 inline bool BOPAlgo_ToolsProvider_inherited_RunParallel(const BOPAlgo_ToolsProvider& self) {
@@ -35451,7 +36950,7 @@ inline void BOPAlgo_ToolsProvider_inherited_SetFuzzyValue(BOPAlgo_ToolsProvider&
 inline Standard_Real BOPAlgo_ToolsProvider_inherited_FuzzyValue(const BOPAlgo_ToolsProvider& self) {
     return self.FuzzyValue();
 }
-inline void BOPAlgo_ToolsProvider_inherited_SetUseOBB(BOPAlgo_ToolsProvider& self, bool theUseOBB) {
+inline void BOPAlgo_ToolsProvider_inherited_SetUseOBB(BOPAlgo_ToolsProvider& self, Standard_Boolean theUseOBB) {
     self.SetUseOBB(theUseOBB);
 }
 inline bool BOPAlgo_ToolsProvider_inherited_UseOBB(const BOPAlgo_ToolsProvider& self) {
@@ -35473,6 +36972,12 @@ inline void BOPAlgo_Builder_set_glue(BOPAlgo_Builder& self_, int32_t theGlue) {
 }
 inline int32_t BOPAlgo_Builder_glue(const BOPAlgo_Builder& self_) {
     return static_cast<int32_t>(self_.Glue());
+}
+inline void BOPAlgo_Builder_build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(BOPAlgo_Builder& self_, const TopTools_ListOfShape& theObjects, int32_t theObjState, const TopTools_ListOfShape& theTools, int32_t theToolsState, const Message_ProgressRange& theRange, const opencascade::handle<Message_Report>& theReport) {
+    self_.BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport);
+}
+inline void BOPAlgo_Builder_build_bop_listofshape2_operation_progressrange_handlemessagereport(BOPAlgo_Builder& self_, const TopTools_ListOfShape& theObjects, const TopTools_ListOfShape& theTools, int32_t theOperation, const Message_ProgressRange& theRange, const opencascade::handle<Message_Report>& theReport) {
+    self_.BuildBOP(theObjects, theTools, static_cast<BOPAlgo_Operation>(theOperation), theRange, theReport);
 }
 inline const BOPAlgo_BuilderShape& BOPAlgo_Builder_as_BOPAlgo_BuilderShape(const BOPAlgo_Builder& self_) { return static_cast<const BOPAlgo_BuilderShape&>(self_); }
 inline BOPAlgo_BuilderShape& BOPAlgo_Builder_as_BOPAlgo_BuilderShape_mut(BOPAlgo_Builder& self_) { return static_cast<BOPAlgo_BuilderShape&>(self_); }
@@ -35502,7 +37007,7 @@ inline bool BOPAlgo_Builder_inherited_HasDeleted(const BOPAlgo_Builder& self) {
 inline std::unique_ptr<Handle(BRepTools_History)> BOPAlgo_Builder_inherited_History(BOPAlgo_Builder& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
 }
-inline void BOPAlgo_Builder_inherited_SetToFillHistory(BOPAlgo_Builder& self, bool theHistFlag) {
+inline void BOPAlgo_Builder_inherited_SetToFillHistory(BOPAlgo_Builder& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BOPAlgo_Builder_inherited_HasHistory(const BOPAlgo_Builder& self) {
@@ -35511,22 +37016,22 @@ inline bool BOPAlgo_Builder_inherited_HasHistory(const BOPAlgo_Builder& self) {
 inline const Handle(NCollection_BaseAllocator)& BOPAlgo_Builder_inherited_Allocator(const BOPAlgo_Builder& self) {
     return self.Allocator();
 }
-inline void BOPAlgo_Builder_inherited_AddError(BOPAlgo_Builder& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_Builder_inherited_AddError(BOPAlgo_Builder& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddError(theAlert);
 }
-inline void BOPAlgo_Builder_inherited_AddWarning(BOPAlgo_Builder& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_Builder_inherited_AddWarning(BOPAlgo_Builder& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddWarning(theAlert);
 }
 inline bool BOPAlgo_Builder_inherited_HasErrors(const BOPAlgo_Builder& self) {
     return self.HasErrors();
 }
-inline bool BOPAlgo_Builder_inherited_HasError(const BOPAlgo_Builder& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_Builder_inherited_HasError(const BOPAlgo_Builder& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasError(theType);
 }
 inline bool BOPAlgo_Builder_inherited_HasWarnings(const BOPAlgo_Builder& self) {
     return self.HasWarnings();
 }
-inline bool BOPAlgo_Builder_inherited_HasWarning(const BOPAlgo_Builder& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_Builder_inherited_HasWarning(const BOPAlgo_Builder& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasWarning(theType);
 }
 inline const Handle(Message_Report)& BOPAlgo_Builder_inherited_GetReport(const BOPAlgo_Builder& self) {
@@ -35535,7 +37040,7 @@ inline const Handle(Message_Report)& BOPAlgo_Builder_inherited_GetReport(const B
 inline void BOPAlgo_Builder_inherited_ClearWarnings(BOPAlgo_Builder& self) {
     self.ClearWarnings();
 }
-inline void BOPAlgo_Builder_inherited_SetRunParallel(BOPAlgo_Builder& self, bool theFlag) {
+inline void BOPAlgo_Builder_inherited_SetRunParallel(BOPAlgo_Builder& self, Standard_Boolean theFlag) {
     self.SetRunParallel(theFlag);
 }
 inline bool BOPAlgo_Builder_inherited_RunParallel(const BOPAlgo_Builder& self) {
@@ -35547,7 +37052,7 @@ inline void BOPAlgo_Builder_inherited_SetFuzzyValue(BOPAlgo_Builder& self, Stand
 inline Standard_Real BOPAlgo_Builder_inherited_FuzzyValue(const BOPAlgo_Builder& self) {
     return self.FuzzyValue();
 }
-inline void BOPAlgo_Builder_inherited_SetUseOBB(BOPAlgo_Builder& self, bool theUseOBB) {
+inline void BOPAlgo_Builder_inherited_SetUseOBB(BOPAlgo_Builder& self, Standard_Boolean theUseOBB) {
     self.SetUseOBB(theUseOBB);
 }
 inline bool BOPAlgo_Builder_inherited_UseOBB(const BOPAlgo_Builder& self) {
@@ -35569,22 +37074,22 @@ inline void BOPAlgo_BuilderShape_inherited_Perform(BOPAlgo_BuilderShape& self, c
 inline const Handle(NCollection_BaseAllocator)& BOPAlgo_BuilderShape_inherited_Allocator(const BOPAlgo_BuilderShape& self) {
     return self.Allocator();
 }
-inline void BOPAlgo_BuilderShape_inherited_AddError(BOPAlgo_BuilderShape& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_BuilderShape_inherited_AddError(BOPAlgo_BuilderShape& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddError(theAlert);
 }
-inline void BOPAlgo_BuilderShape_inherited_AddWarning(BOPAlgo_BuilderShape& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_BuilderShape_inherited_AddWarning(BOPAlgo_BuilderShape& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddWarning(theAlert);
 }
 inline bool BOPAlgo_BuilderShape_inherited_HasErrors(const BOPAlgo_BuilderShape& self) {
     return self.HasErrors();
 }
-inline bool BOPAlgo_BuilderShape_inherited_HasError(const BOPAlgo_BuilderShape& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_BuilderShape_inherited_HasError(const BOPAlgo_BuilderShape& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasError(theType);
 }
 inline bool BOPAlgo_BuilderShape_inherited_HasWarnings(const BOPAlgo_BuilderShape& self) {
     return self.HasWarnings();
 }
-inline bool BOPAlgo_BuilderShape_inherited_HasWarning(const BOPAlgo_BuilderShape& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_BuilderShape_inherited_HasWarning(const BOPAlgo_BuilderShape& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasWarning(theType);
 }
 inline const Handle(Message_Report)& BOPAlgo_BuilderShape_inherited_GetReport(const BOPAlgo_BuilderShape& self) {
@@ -35593,7 +37098,7 @@ inline const Handle(Message_Report)& BOPAlgo_BuilderShape_inherited_GetReport(co
 inline void BOPAlgo_BuilderShape_inherited_ClearWarnings(BOPAlgo_BuilderShape& self) {
     self.ClearWarnings();
 }
-inline void BOPAlgo_BuilderShape_inherited_SetRunParallel(BOPAlgo_BuilderShape& self, bool theFlag) {
+inline void BOPAlgo_BuilderShape_inherited_SetRunParallel(BOPAlgo_BuilderShape& self, Standard_Boolean theFlag) {
     self.SetRunParallel(theFlag);
 }
 inline bool BOPAlgo_BuilderShape_inherited_RunParallel(const BOPAlgo_BuilderShape& self) {
@@ -35605,7 +37110,7 @@ inline void BOPAlgo_BuilderShape_inherited_SetFuzzyValue(BOPAlgo_BuilderShape& s
 inline Standard_Real BOPAlgo_BuilderShape_inherited_FuzzyValue(const BOPAlgo_BuilderShape& self) {
     return self.FuzzyValue();
 }
-inline void BOPAlgo_BuilderShape_inherited_SetUseOBB(BOPAlgo_BuilderShape& self, bool theUseOBB) {
+inline void BOPAlgo_BuilderShape_inherited_SetUseOBB(BOPAlgo_BuilderShape& self, Standard_Boolean theUseOBB) {
     self.SetUseOBB(theUseOBB);
 }
 inline bool BOPAlgo_BuilderShape_inherited_UseOBB(const BOPAlgo_BuilderShape& self) {
@@ -35624,22 +37129,22 @@ inline const Handle(NCollection_BaseAllocator)& BOPAlgo_ParallelAlgo_inherited_A
 inline void BOPAlgo_ParallelAlgo_inherited_Clear(BOPAlgo_ParallelAlgo& self) {
     self.Clear();
 }
-inline void BOPAlgo_ParallelAlgo_inherited_AddError(BOPAlgo_ParallelAlgo& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_ParallelAlgo_inherited_AddError(BOPAlgo_ParallelAlgo& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddError(theAlert);
 }
-inline void BOPAlgo_ParallelAlgo_inherited_AddWarning(BOPAlgo_ParallelAlgo& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_ParallelAlgo_inherited_AddWarning(BOPAlgo_ParallelAlgo& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddWarning(theAlert);
 }
 inline bool BOPAlgo_ParallelAlgo_inherited_HasErrors(const BOPAlgo_ParallelAlgo& self) {
     return self.HasErrors();
 }
-inline bool BOPAlgo_ParallelAlgo_inherited_HasError(const BOPAlgo_ParallelAlgo& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_ParallelAlgo_inherited_HasError(const BOPAlgo_ParallelAlgo& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasError(theType);
 }
 inline bool BOPAlgo_ParallelAlgo_inherited_HasWarnings(const BOPAlgo_ParallelAlgo& self) {
     return self.HasWarnings();
 }
-inline bool BOPAlgo_ParallelAlgo_inherited_HasWarning(const BOPAlgo_ParallelAlgo& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_ParallelAlgo_inherited_HasWarning(const BOPAlgo_ParallelAlgo& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasWarning(theType);
 }
 inline const Handle(Message_Report)& BOPAlgo_ParallelAlgo_inherited_GetReport(const BOPAlgo_ParallelAlgo& self) {
@@ -35648,7 +37153,7 @@ inline const Handle(Message_Report)& BOPAlgo_ParallelAlgo_inherited_GetReport(co
 inline void BOPAlgo_ParallelAlgo_inherited_ClearWarnings(BOPAlgo_ParallelAlgo& self) {
     self.ClearWarnings();
 }
-inline void BOPAlgo_ParallelAlgo_inherited_SetRunParallel(BOPAlgo_ParallelAlgo& self, bool theFlag) {
+inline void BOPAlgo_ParallelAlgo_inherited_SetRunParallel(BOPAlgo_ParallelAlgo& self, Standard_Boolean theFlag) {
     self.SetRunParallel(theFlag);
 }
 inline bool BOPAlgo_ParallelAlgo_inherited_RunParallel(const BOPAlgo_ParallelAlgo& self) {
@@ -35660,7 +37165,7 @@ inline void BOPAlgo_ParallelAlgo_inherited_SetFuzzyValue(BOPAlgo_ParallelAlgo& s
 inline Standard_Real BOPAlgo_ParallelAlgo_inherited_FuzzyValue(const BOPAlgo_ParallelAlgo& self) {
     return self.FuzzyValue();
 }
-inline void BOPAlgo_ParallelAlgo_inherited_SetUseOBB(BOPAlgo_ParallelAlgo& self, bool theUseOBB) {
+inline void BOPAlgo_ParallelAlgo_inherited_SetUseOBB(BOPAlgo_ParallelAlgo& self, Standard_Boolean theUseOBB) {
     self.SetUseOBB(theUseOBB);
 }
 inline bool BOPAlgo_ParallelAlgo_inherited_UseOBB(const BOPAlgo_ParallelAlgo& self) {
@@ -35727,7 +37232,7 @@ inline bool BOPAlgo_RemoveFeatures_inherited_HasDeleted(const BOPAlgo_RemoveFeat
 inline std::unique_ptr<Handle(BRepTools_History)> BOPAlgo_RemoveFeatures_inherited_History(BOPAlgo_RemoveFeatures& self) {
     return std::make_unique<Handle(BRepTools_History)>(self.History());
 }
-inline void BOPAlgo_RemoveFeatures_inherited_SetToFillHistory(BOPAlgo_RemoveFeatures& self, bool theHistFlag) {
+inline void BOPAlgo_RemoveFeatures_inherited_SetToFillHistory(BOPAlgo_RemoveFeatures& self, Standard_Boolean theHistFlag) {
     self.SetToFillHistory(theHistFlag);
 }
 inline bool BOPAlgo_RemoveFeatures_inherited_HasHistory(const BOPAlgo_RemoveFeatures& self) {
@@ -35736,22 +37241,22 @@ inline bool BOPAlgo_RemoveFeatures_inherited_HasHistory(const BOPAlgo_RemoveFeat
 inline const Handle(NCollection_BaseAllocator)& BOPAlgo_RemoveFeatures_inherited_Allocator(const BOPAlgo_RemoveFeatures& self) {
     return self.Allocator();
 }
-inline void BOPAlgo_RemoveFeatures_inherited_AddError(BOPAlgo_RemoveFeatures& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_RemoveFeatures_inherited_AddError(BOPAlgo_RemoveFeatures& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddError(theAlert);
 }
-inline void BOPAlgo_RemoveFeatures_inherited_AddWarning(BOPAlgo_RemoveFeatures& self, const Handle(Message_Alert)& theAlert) {
+inline void BOPAlgo_RemoveFeatures_inherited_AddWarning(BOPAlgo_RemoveFeatures& self, const opencascade::handle<Message_Alert>& theAlert) {
     self.AddWarning(theAlert);
 }
 inline bool BOPAlgo_RemoveFeatures_inherited_HasErrors(const BOPAlgo_RemoveFeatures& self) {
     return self.HasErrors();
 }
-inline bool BOPAlgo_RemoveFeatures_inherited_HasError(const BOPAlgo_RemoveFeatures& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_RemoveFeatures_inherited_HasError(const BOPAlgo_RemoveFeatures& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasError(theType);
 }
 inline bool BOPAlgo_RemoveFeatures_inherited_HasWarnings(const BOPAlgo_RemoveFeatures& self) {
     return self.HasWarnings();
 }
-inline bool BOPAlgo_RemoveFeatures_inherited_HasWarning(const BOPAlgo_RemoveFeatures& self, const Handle(Standard_Type)& theType) {
+inline bool BOPAlgo_RemoveFeatures_inherited_HasWarning(const BOPAlgo_RemoveFeatures& self, const opencascade::handle<Standard_Type>& theType) {
     return self.HasWarning(theType);
 }
 inline const Handle(Message_Report)& BOPAlgo_RemoveFeatures_inherited_GetReport(const BOPAlgo_RemoveFeatures& self) {
@@ -35760,7 +37265,7 @@ inline const Handle(Message_Report)& BOPAlgo_RemoveFeatures_inherited_GetReport(
 inline void BOPAlgo_RemoveFeatures_inherited_ClearWarnings(BOPAlgo_RemoveFeatures& self) {
     self.ClearWarnings();
 }
-inline void BOPAlgo_RemoveFeatures_inherited_SetRunParallel(BOPAlgo_RemoveFeatures& self, bool theFlag) {
+inline void BOPAlgo_RemoveFeatures_inherited_SetRunParallel(BOPAlgo_RemoveFeatures& self, Standard_Boolean theFlag) {
     self.SetRunParallel(theFlag);
 }
 inline bool BOPAlgo_RemoveFeatures_inherited_RunParallel(const BOPAlgo_RemoveFeatures& self) {
@@ -35772,7 +37277,7 @@ inline void BOPAlgo_RemoveFeatures_inherited_SetFuzzyValue(BOPAlgo_RemoveFeature
 inline Standard_Real BOPAlgo_RemoveFeatures_inherited_FuzzyValue(const BOPAlgo_RemoveFeatures& self) {
     return self.FuzzyValue();
 }
-inline void BOPAlgo_RemoveFeatures_inherited_SetUseOBB(BOPAlgo_RemoveFeatures& self, bool theUseOBB) {
+inline void BOPAlgo_RemoveFeatures_inherited_SetUseOBB(BOPAlgo_RemoveFeatures& self, Standard_Boolean theUseOBB) {
     self.SetUseOBB(theUseOBB);
 }
 inline bool BOPAlgo_RemoveFeatures_inherited_UseOBB(const BOPAlgo_RemoveFeatures& self) {
@@ -36096,6 +37601,7 @@ inline void Message_send_info(const TCollection_AsciiString& theMessage) { retur
 inline void Message_send_trace(const TCollection_AsciiString& theMessage) { return Message::SendTrace(theMessage); }
 inline std::unique_ptr<TCollection_AsciiString> Message_fill_time(Standard_Integer Hour, Standard_Integer Minute, Standard_Real Second) { return std::make_unique<TCollection_AsciiString>(Message::FillTime(Hour, Minute, Second)); }
 inline std::unique_ptr<opencascade::handle<Message_Report>> Message_default_report(Standard_Boolean theToCreate) { return std::make_unique<opencascade::handle<Message_Report>>(Message::DefaultReport(theToCreate)); }
+inline rust::String Message_metric_to_string(int32_t theType) { return rust::String(Message::MetricToString(static_cast<Message_MetricType>(theType))); }
 inline int32_t Message_metric_from_string(rust::Str theString) { return static_cast<int32_t>(Message::MetricFromString(std::string(theString).c_str())); }
 
 // ========================
@@ -36208,7 +37714,9 @@ inline Standard_Integer TCollection_next_prime_for_map_2(Standard_Integer I) { r
 inline int32_t TopAbs_compose(int32_t Or1, int32_t Or2) { return static_cast<int32_t>(TopAbs::Compose(static_cast<TopAbs_Orientation>(Or1), static_cast<TopAbs_Orientation>(Or2))); }
 inline int32_t TopAbs_reverse_4(int32_t Or) { return static_cast<int32_t>(TopAbs::Reverse(static_cast<TopAbs_Orientation>(Or))); }
 inline int32_t TopAbs_complement(int32_t Or) { return static_cast<int32_t>(TopAbs::Complement(static_cast<TopAbs_Orientation>(Or))); }
+inline rust::String TopAbs_shape_type_to_string(int32_t theType) { return rust::String(TopAbs::ShapeTypeToString(static_cast<TopAbs_ShapeEnum>(theType))); }
 inline int32_t TopAbs_shape_type_from_string(rust::Str theTypeString) { return static_cast<int32_t>(TopAbs::ShapeTypeFromString(std::string(theTypeString).c_str())); }
+inline rust::String TopAbs_shape_orientation_to_string(int32_t theOrientation) { return rust::String(TopAbs::ShapeOrientationToString(static_cast<TopAbs_Orientation>(theOrientation))); }
 inline int32_t TopAbs_shape_orientation_from_string(rust::Str theOrientationString) { return static_cast<int32_t>(TopAbs::ShapeOrientationFromString(std::string(theOrientationString).c_str())); }
 
 // ========================

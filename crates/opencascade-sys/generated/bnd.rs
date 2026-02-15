@@ -403,6 +403,10 @@ impl HArray1OfBox {
         crate::ffi::Bnd_HArray1OfBox_ctor_array1ofbox(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Bnd_HArray1OfBox_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Bnd_HArray1OfBox_get_type_descriptor()
     }
@@ -472,6 +476,10 @@ impl HArray1OfBox2d {
         crate::ffi::Bnd_HArray1OfBox2d_ctor_array1ofbox2d(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Bnd_HArray1OfBox2d_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Bnd_HArray1OfBox2d_get_type_descriptor()
     }
@@ -539,6 +547,10 @@ impl HArray1OfSphere {
 
     pub fn new_array1ofsphere(theOther: &crate::ffi::Bnd_Array1OfSphere) -> cxx::UniquePtr<Self> {
         crate::ffi::Bnd_HArray1OfSphere_ctor_array1ofsphere(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Bnd_HArray1OfSphere_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

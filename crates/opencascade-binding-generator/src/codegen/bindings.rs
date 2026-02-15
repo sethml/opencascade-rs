@@ -114,6 +114,12 @@ pub enum WrapperKind {
     CStringReturn,
     /// Uses enum types (params and/or return) → int32_t/static_cast wrapper
     EnumConversion,
+    /// Has by-value class/handle parameters → const T& conversion wrapper
+    ByValueParam,
+    /// Const method returns &mut T — wrapper takes non-const self to satisfy CXX
+    ConstMutReturnFix,
+    /// Has &mut enum output parameters → local variable + writeback wrapper
+    MutRefEnumParam,
 }
 
 /// A method that needs a C++ wrapper function.
@@ -226,6 +232,8 @@ pub struct ParamBinding {
     pub cpp_arg_expr: String,
     /// If this is a value enum param, the qualified Rust enum type (e.g. "crate::top_abs::Orientation")
     pub enum_rust_type: Option<String>,
+    /// If this is a &mut enum output param, the C++ enum name for local var + writeback pattern
+    pub mut_ref_enum_cpp_name: Option<String>,
 }
 
 /// A return type binding with info for all three output targets.
@@ -351,15 +359,6 @@ fn safe_param_name(name: &str) -> String {
     }
 }
 
-/// Check if a type is or contains `const char*`
-fn type_is_cstring(ty: &Type) -> bool {
-    match ty {
-        Type::ConstPtr(inner) => matches!(inner.as_ref(), Type::Class(name) if name == "char"),
-        Type::ConstRef(inner) | Type::MutRef(inner) => type_is_cstring(inner),
-        _ => false,
-    }
-}
-
 /// Check if a parameter type uses an unknown Handle
 fn param_uses_unknown_handle(ty: &Type, handle_able_classes: &HashSet<String>) -> bool {
     match ty {
@@ -393,6 +392,28 @@ fn type_uses_unknown_type(ty: &Type, ctx: &TypeContext) -> bool {
     }
 }
 
+/// Check if a method has by-value class or handle parameters (not enums).
+/// These need C++ wrappers that accept const T& instead.
+fn has_by_value_class_or_handle_params(params: &[Param], all_enums: &HashSet<String>) -> bool {
+    params.iter().any(|p| match &p.ty {
+        Type::Class(name) => !all_enums.contains(name) && name != "char",
+        Type::Handle(_) => true,
+        _ => false,
+    })
+}
+
+/// Check if params contain any &mut enum output parameters.
+fn has_mut_ref_enum_params(params: &[Param], all_enums: &HashSet<String>) -> bool {
+    params.iter().any(|p| {
+        if let Type::MutRef(inner) = &p.ty {
+            if let Type::Class(name) = inner.as_ref() {
+                return all_enums.contains(name);
+            }
+        }
+        false
+    })
+}
+
 /// Determine if a method needs a C++ wrapper function
 fn needs_wrapper_function(method: &Method, all_enums: &HashSet<String>) -> bool {
     if method.params.iter().any(|p| p.ty.is_c_string()) {
@@ -408,6 +429,18 @@ fn needs_wrapper_function(method: &Method, all_enums: &HashSet<String>) -> bool 
     }
     // Methods using enum types need wrappers for int32_t <-> enum static_cast
     if resolver::method_uses_enum(method, all_enums) {
+        return true;
+    }
+    // Methods with by-value class/handle params need const T& conversion wrappers
+    if has_by_value_class_or_handle_params(&method.params, all_enums) {
+        return true;
+    }
+    // Const methods returning &mut need a wrapper that takes non-const self
+    if resolver::has_const_mut_return_mismatch(method) {
+        return true;
+    }
+    // &mut enum output params need local variable + writeback wrappers
+    if has_mut_ref_enum_params(&method.params, all_enums) {
         return true;
     }
     method
@@ -447,8 +480,14 @@ fn classify_wrapper_kind(method: &Method, all_enums: &HashSet<String>) -> Wrappe
         WrapperKind::CStringParam
     } else if returns_cstring {
         WrapperKind::CStringReturn
+    } else if resolver::has_const_mut_return_mismatch(method) {
+        WrapperKind::ConstMutReturnFix
+    } else if has_mut_ref_enum_params(&method.params, all_enums) {
+        WrapperKind::MutRefEnumParam
     } else if resolver::method_uses_enum(method, all_enums) {
         WrapperKind::EnumConversion
+    } else if has_by_value_class_or_handle_params(&method.params, all_enums) {
+        WrapperKind::ByValueParam
     } else {
         // Shouldn't happen if needs_wrapper_function returned true, but default
         WrapperKind::CStringReturn
@@ -566,12 +605,8 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext) -> bool {
     if method.has_unbindable_types() {
         return false;
     }
-    if resolver::method_has_unsupported_by_value_params(method, ctx.all_enums).is_some() {
-        return false;
-    }
-    if resolver::has_const_mut_return_mismatch(method) {
-        return false;
-    }
+    // Const/mut return mismatch is now handled via C++ wrappers (ConstMutReturnFix).
+    // &mut enum output params are now handled via C++ wrappers (MutRefEnumParam).
     if resolver::method_needs_explicit_lifetimes(method) {
         return false;
     }
@@ -597,17 +632,11 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext) -> bool {
 /// Filter for constructors
 fn is_constructor_bindable(
     ctor: &Constructor,
-    all_enum_names: &HashSet<String>,
+    _all_enum_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
 ) -> bool {
-    // Reject by-value class/handle params, but allow enums (they're mapped to i32)
-    if ctor.params.iter().any(|p| match &p.ty {
-        Type::Class(name) => !all_enum_names.contains(name),
-        Type::Handle(_) => true,
-        _ => false,
-    }) {
-        return false;
-    }
+    // By-value class/handle params are now supported: C++ wrappers accept const T&
+    // and the C++ compiler handles the copy.
     if ctor.has_unbindable_types() {
         return false;
     }
@@ -626,9 +655,7 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
     if method.has_unbindable_types() {
         return false;
     }
-    if resolver::static_method_has_unsupported_by_value_params(method, ctx.all_enums).is_some() {
-        return false;
-    }
+    // &mut enum output params are now handled via C++ wrappers.
     if method
         .params
         .iter()
@@ -640,9 +667,7 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
         if type_uses_unknown_type(ret, ctx) {
             return false;
         }
-        if type_is_cstring(ret) {
-            return false;
-        }
+        // C-string returns (const char*) are handled via C++ wrappers returning rust::String.
         // MutRef to enum return type can't be bound — CXX expects int32_t& but C++ has EnumType&
         if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
             return false;
@@ -681,7 +706,27 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
     let cpp_name = name.to_string();
     let rust_name = safe_param_name(name);
 
-    // Check if this parameter is an enum type
+    // Check for &mut enum output params — these need special local var + writeback handling
+    if let Type::MutRef(inner) = ty {
+        if let Type::Class(enum_name) = inner.as_ref() {
+            if ffi_ctx.all_enums.contains(enum_name) {
+                return ParamBinding {
+                    cpp_name,
+                    rust_name,
+                    rust_ffi_type: "&mut i32".to_string(),
+                    rust_reexport_type: "&mut i32".to_string(),
+                    cpp_type: "int32_t&".to_string(),
+                    // The arg expression uses the local variable name (preamble creates it)
+                    cpp_arg_expr: format!("{}_enum_", name),
+                    // No enum conversion at Rust level — C++ wrapper handles int32_t ↔ enum
+                    enum_rust_type: None,
+                    mut_ref_enum_cpp_name: Some(enum_name.clone()),
+                };
+            }
+        }
+    }
+
+    // Check if this parameter is an enum type (by value or const ref)
     if let Some(enum_cpp_name) = extract_enum_name(ty, ffi_ctx.all_enums) {
         // Look up the Rust enum type for value enums
         let enum_rust_type = ffi_ctx.enum_rust_types
@@ -696,14 +741,29 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
             cpp_type: "int32_t".to_string(),
             cpp_arg_expr: format!("static_cast<{}>({})", enum_cpp_name, name),
             enum_rust_type,
+            mut_ref_enum_cpp_name: None,
         };
     }
 
-    let mapped = map_type_in_context(ty, ffi_ctx);
+    // By-value class/handle params can't cross CXX directly — opaque types
+    // must be passed by reference. We convert them to const T& at the FFI
+    // boundary; the C++ wrapper passes the reference to the original method
+    // which accepts by value (C++ handles the implicit copy).
+    let effective_ty = match ty {
+        Type::Class(name) if name != "char" && !ffi_ctx.all_enums.contains(name) => {
+            Type::ConstRef(Box::new(ty.clone()))
+        }
+        Type::Handle(_) => {
+            Type::ConstRef(Box::new(ty.clone()))
+        }
+        _ => ty.clone(),
+    };
+
+    let mapped = map_type_in_context(&effective_ty, ffi_ctx);
     let rust_ffi_type = mapped.rust_type;
-    let rust_reexport_type = unified_type_to_string(ty);
-    let cpp_type = type_to_cpp_param(ty);
-    let cpp_arg_expr = param_to_cpp_arg(name, ty);
+    let rust_reexport_type = unified_type_to_string(&effective_ty);
+    let cpp_type = type_to_cpp_param(&effective_ty);
+    let cpp_arg_expr = param_to_cpp_arg(name, &effective_ty);
 
     ParamBinding {
         cpp_name,
@@ -713,6 +773,7 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
         cpp_type,
         cpp_arg_expr,
         enum_rust_type: None,
+        mut_ref_enum_cpp_name: None,
     }
 }
 
@@ -1071,10 +1132,19 @@ pub fn compute_class_bindings(
                 .map(|ty| build_return_type_binding(ty, ffi_ctx));
             let wrapper_kind = classify_wrapper_kind(method, all_enum_names);
 
+            // For ConstMutReturnFix, the wrapper takes non-const self even though
+            // the C++ method is const. This satisfies CXX's requirement that methods
+            // returning &mut use Pin<&mut Self>.
+            let effective_is_const = if wrapper_kind == WrapperKind::ConstMutReturnFix {
+                false
+            } else {
+                method.is_const
+            };
+
             WrapperMethodBinding {
                 ffi_fn_name,
                 impl_method_name,
-                is_const: method.is_const,
+                is_const: effective_is_const,
                 params,
                 return_type,
                 wrapper_kind,
@@ -1249,17 +1319,10 @@ struct TrimmedConstructor<'a> {
 /// Check if a slice of params passes all bindability filters.
 fn is_params_bindable(
     params: &[Param],
-    all_enum_names: &HashSet<String>,
+    _all_enum_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
 ) -> bool {
-    // Reject by-value class/handle params, but allow enums (they're mapped to i32)
-    if params.iter().any(|p| match &p.ty {
-        Type::Class(name) => !all_enum_names.contains(name),
-        Type::Handle(_) => true,
-        _ => false,
-    }) {
-        return false;
-    }
+    // By-value class/handle params are now supported via C++ wrappers (const T& conversion).
     if params.iter().any(|p| p.ty.is_unbindable()) {
         return false;
     }
@@ -1713,6 +1776,16 @@ fn compute_inherited_method_bindings(
                     .params
                     .iter()
                     .map(|p| {
+                        // Convert by-value class/handle params to const ref (same as build_param_binding)
+                        let effective_ty = match &p.ty.original {
+                            Type::Class(name) if name != "char" && p.ty.enum_cpp_name.is_none() => {
+                                Type::ConstRef(Box::new(p.ty.original.clone()))
+                            }
+                            Type::Handle(_) => {
+                                Type::ConstRef(Box::new(p.ty.original.clone()))
+                            }
+                            _ => p.ty.original.clone(),
+                        };
                         let cpp_arg_expr = if p.ty.cpp_type == "const char*" {
                             format!("std::string({}).c_str()", p.name)
                         } else if let Some(ref enum_name) = p.ty.enum_cpp_name {
@@ -1722,17 +1795,21 @@ fn compute_inherited_method_bindings(
                         };
                         let cpp_param_type = if p.ty.cpp_type == "const char*" {
                             "rust::Str".to_string()
+                        } else if p.ty.enum_cpp_name.is_some() {
+                            // Enum params are passed as int32_t at the CXX boundary;
+                            // the static_cast in cpp_arg_expr converts to the actual enum type.
+                            "int32_t".to_string()
                         } else {
-                            p.ty.cpp_type.clone()
+                            type_to_cpp(&effective_ty)
                         };
                         ResolvedParamBinding {
                             name: p.name.clone(),
                             rust_name: p.rust_name.clone(),
-                            rust_ffi_type: if p.ty.enum_cpp_name.is_some() { "i32".to_string() } else { type_to_ffi_full_name(&p.ty.original) },
+                            rust_ffi_type: if p.ty.enum_cpp_name.is_some() { "i32".to_string() } else { type_to_ffi_full_name(&effective_ty) },
                             rust_reexport_type: if let Some(ref enum_name) = p.ty.enum_cpp_name {
                                 symbol_table.enum_rust_types.get(enum_name).cloned().unwrap_or_else(|| "i32".to_string())
                             } else {
-                                unified_type_to_string(&p.ty.original)
+                                unified_type_to_string(&effective_ty)
                             },
                             cpp_type: cpp_param_type,
                             cpp_arg_expr,
@@ -2149,6 +2226,252 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(output, "}}").unwrap();
     }
 
+    // 4c. ByValueParam wrapper methods
+    // These take const T& at the FFI boundary; the C++ method receives by value (implicit copy).
+    for wm in bindings
+        .wrapper_methods
+        .iter()
+        .filter(|m| m.wrapper_kind == WrapperKind::ByValueParam)
+    {
+        let self_param = if wm.is_const {
+            format!("const {cn}& self_")
+        } else {
+            format!("{cn}& self_")
+        };
+
+        let other_params = wm
+            .params
+            .iter()
+            .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
+            .collect::<Vec<_>>()
+            .join(", ");
+        let params = if other_params.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, other_params)
+        };
+        let args_str = wm
+            .params
+            .iter()
+            .map(|p| p.cpp_arg_expr.as_str())
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        if let Some(ref rt) = wm.return_type {
+            writeln!(
+                output,
+                "inline {} {fn_name}({params}) {{",
+                rt.cpp_type,
+                fn_name = wm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return self_.{method}({args_str});",
+                method = wm.cpp_method_name
+            )
+            .unwrap();
+        } else {
+            writeln!(
+                output,
+                "inline void {fn_name}({params}) {{",
+                fn_name = wm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    self_.{method}({args_str});",
+                method = wm.cpp_method_name
+            )
+            .unwrap();
+        }
+        writeln!(output, "}}").unwrap();
+    }
+
+    // 4d. ConstMutReturnFix wrapper methods
+    // These are const methods returning &mut T — the wrapper takes non-const self
+    // to satisfy CXX (which requires Pin<&mut Self> when returning Pin<&mut T>).
+    for wm in bindings
+        .wrapper_methods
+        .iter()
+        .filter(|m| m.wrapper_kind == WrapperKind::ConstMutReturnFix)
+    {
+        // Always non-const self (that's the fix)
+        let self_param = format!("{cn}& self_");
+
+        let other_params = wm
+            .params
+            .iter()
+            .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
+            .collect::<Vec<_>>()
+            .join(", ");
+        let params = if other_params.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, other_params)
+        };
+        let args_str = wm
+            .params
+            .iter()
+            .map(|p| p.cpp_arg_expr.as_str())
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        if let Some(ref rt) = wm.return_type {
+            writeln!(
+                output,
+                "inline {} {fn_name}({params}) {{",
+                rt.cpp_type,
+                fn_name = wm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return self_.{method}({args_str});",
+                method = wm.cpp_method_name
+            )
+            .unwrap();
+        } else {
+            writeln!(
+                output,
+                "inline void {fn_name}({params}) {{",
+                fn_name = wm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    self_.{method}({args_str});",
+                method = wm.cpp_method_name
+            )
+            .unwrap();
+        }
+        writeln!(output, "}}").unwrap();
+    }
+
+    // 4e. MutRefEnumParam wrapper methods
+    // These have &mut enum output parameters. The wrapper:
+    // 1. Takes int32_t& at the FFI boundary
+    // 2. Creates local enum variables from the int32_t values
+    // 3. Calls the original method
+    // 4. Writes back the enum values as int32_t
+    for wm in bindings
+        .wrapper_methods
+        .iter()
+        .filter(|m| m.wrapper_kind == WrapperKind::MutRefEnumParam)
+    {
+        let self_param = if wm.is_const {
+            format!("const {cn}& self_")
+        } else {
+            format!("{cn}& self_")
+        };
+
+        let other_params = wm
+            .params
+            .iter()
+            .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
+            .collect::<Vec<_>>()
+            .join(", ");
+        let params = if other_params.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, other_params)
+        };
+
+        // Determine return type
+        let ret_type_cpp = match &wm.return_type {
+            Some(rt) if rt.needs_unique_ptr => format!("std::unique_ptr<{}>", rt.cpp_type),
+            Some(rt) if rt.enum_cpp_name.is_some() => "int32_t".to_string(),
+            Some(rt) => rt.cpp_type.clone(),
+            None => "void".to_string(),
+        };
+
+        writeln!(
+            output,
+            "inline {} {fn_name}({params}) {{",
+            ret_type_cpp,
+            fn_name = wm.ffi_fn_name
+        )
+        .unwrap();
+
+        // Emit preamble: create local enum variables from int32_t input values
+        for p in &wm.params {
+            if let Some(ref enum_name) = p.mut_ref_enum_cpp_name {
+                writeln!(
+                    output,
+                    "    auto {local} = static_cast<{enum_name}>({param});",
+                    local = p.cpp_arg_expr,
+                    param = p.cpp_name,
+                )
+                .unwrap();
+            }
+        }
+
+        // Emit the call
+        let args_str = wm
+            .params
+            .iter()
+            .map(|p| p.cpp_arg_expr.as_str())
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        let has_enum_return = wm.return_type.as_ref()
+            .and_then(|rt| rt.enum_cpp_name.as_ref())
+            .is_some();
+
+        if let Some(ref rt) = wm.return_type {
+            if rt.needs_unique_ptr {
+                writeln!(
+                    output,
+                    "    auto result_ = std::make_unique<{cpp_type}>(self_.{method}({args_str}));",
+                    cpp_type = rt.cpp_type,
+                    method = wm.cpp_method_name,
+                )
+                .unwrap();
+            } else if has_enum_return {
+                writeln!(
+                    output,
+                    "    auto result_ = static_cast<int32_t>(self_.{method}({args_str}));",
+                    method = wm.cpp_method_name,
+                )
+                .unwrap();
+            } else {
+                writeln!(
+                    output,
+                    "    auto result_ = self_.{method}({args_str});",
+                    method = wm.cpp_method_name,
+                )
+                .unwrap();
+            }
+        } else {
+            writeln!(
+                output,
+                "    self_.{method}({args_str});",
+                method = wm.cpp_method_name,
+            )
+            .unwrap();
+        }
+
+        // Emit postamble: write back enum values to int32_t& output params
+        for p in &wm.params {
+            if let Some(ref _enum_name) = p.mut_ref_enum_cpp_name {
+                writeln!(
+                    output,
+                    "    {param} = static_cast<int32_t>({local});",
+                    param = p.cpp_name,
+                    local = p.cpp_arg_expr,
+                )
+                .unwrap();
+            }
+        }
+
+        // Emit return
+        if wm.return_type.is_some() {
+            writeln!(output, "    return result_;").unwrap();
+        }
+
+        writeln!(output, "}}").unwrap();
+    }
+
     // 5. Static method wrappers
     for sm in &bindings.static_methods {
         let params_str = sm
@@ -2175,7 +2498,109 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             .and_then(|rt| rt.enum_cpp_name.as_ref())
             .is_some();
 
-        if needs_up {
+        let has_mut_ref_enum = sm.params.iter().any(|p| p.mut_ref_enum_cpp_name.is_some());
+
+        // Check for c_string return (const char* -> rust::String)
+        let returns_cstring = sm.return_type.as_ref()
+            .map(|rt| rt.cpp_type == "const char*")
+            .unwrap_or(false);
+
+        if has_mut_ref_enum {
+            // Static methods with &mut enum output params need preamble/postamble
+            let ret_type_cpp = if needs_up {
+                format!("std::unique_ptr<{}>", ret_type)
+            } else if has_enum_return {
+                "int32_t".to_string()
+            } else {
+                ret_type.clone()
+            };
+
+            writeln!(
+                output,
+                "inline {} {fn_name}({params_str}) {{",
+                ret_type_cpp,
+                fn_name = sm.ffi_fn_name
+            )
+            .unwrap();
+
+            // Preamble: create local enum vars
+            for p in &sm.params {
+                if let Some(ref enum_name) = p.mut_ref_enum_cpp_name {
+                    writeln!(
+                        output,
+                        "    auto {local} = static_cast<{enum_name}>({param});",
+                        local = p.cpp_arg_expr,
+                        param = p.cpp_name,
+                    )
+                    .unwrap();
+                }
+            }
+
+            // Call
+            if let Some(ref rt) = sm.return_type {
+                if rt.needs_unique_ptr {
+                    writeln!(
+                        output,
+                        "    auto result_ = std::make_unique<{cpp_type}>({cn}::{method}({args_str}));",
+                        cpp_type = rt.cpp_type,
+                        method = sm.cpp_method_name,
+                    )
+                    .unwrap();
+                } else if has_enum_return {
+                    writeln!(
+                        output,
+                        "    auto result_ = static_cast<int32_t>({cn}::{method}({args_str}));",
+                        method = sm.cpp_method_name,
+                    )
+                    .unwrap();
+                } else {
+                    writeln!(
+                        output,
+                        "    auto result_ = {cn}::{method}({args_str});",
+                        method = sm.cpp_method_name,
+                    )
+                    .unwrap();
+                }
+            } else {
+                writeln!(
+                    output,
+                    "    {cn}::{method}({args_str});",
+                    method = sm.cpp_method_name,
+                )
+                .unwrap();
+            }
+
+            // Postamble: write back enum values
+            for p in &sm.params {
+                if let Some(ref _enum_name) = p.mut_ref_enum_cpp_name {
+                    writeln!(
+                        output,
+                        "    {param} = static_cast<int32_t>({local});",
+                        param = p.cpp_name,
+                        local = p.cpp_arg_expr,
+                    )
+                    .unwrap();
+                }
+            }
+
+            // Return
+            if sm.return_type.is_some() {
+                writeln!(output, "    return result_;").unwrap();
+            }
+        } else if returns_cstring {
+            writeln!(
+                output,
+                "inline rust::String {fn_name}({params_str}) {{",
+                fn_name = sm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return rust::String({cn}::{method}({args_str}));",
+                method = sm.cpp_method_name
+            )
+            .unwrap();
+        } else if needs_up {
             writeln!(
                 output,
                 "inline std::unique_ptr<{ret_type}> {fn_name}({params_str}) {{",

@@ -127,6 +127,15 @@ fn type_to_cpp_param(ty: &Type) -> String {
         Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
             "rust::Str".to_string()
         }
+        // By-value class params (non-char): accept const T& at the FFI boundary.
+        // The C++ compiler will implicitly copy when calling the actual function.
+        Type::Class(name) if name != "char" => {
+            format!("const {}&", name)
+        }
+        // By-value Handle params: accept const handle<T>& at the FFI boundary.
+        Type::Handle(name) => {
+            format!("const opencascade::handle<{}>&", name)
+        }
         _ => type_to_cpp(ty),
     }
 }
@@ -370,7 +379,19 @@ fn generate_unified_function_wrappers(
                 None => false,
             };
 
-            if return_is_enum {
+            // Check if return type is const char* (c_string)
+            let returns_c_string = func.return_type.as_ref()
+                .map(|ty| ty.original.is_c_string())
+                .unwrap_or(false);
+
+            if returns_c_string {
+                writeln!(
+                    output,
+                    "inline rust::String {}({}) {{ return rust::String({}); }}",
+                    wrapper_name, params_str, call
+                )
+                .unwrap();
+            } else if return_is_enum {
                 writeln!(
                     output,
                     "inline {} {}({}) {{ return static_cast<int32_t>({}); }}",

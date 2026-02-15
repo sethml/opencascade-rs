@@ -127,6 +127,10 @@ impl Curve {
         crate::ffi::GeomAdaptor_Curve_offset_curve(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomAdaptor_Curve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GeomAdaptor_Curve_get_type_descriptor()
     }
@@ -343,6 +347,10 @@ impl Surface {
         crate::ffi::GeomAdaptor_Surface_basis_surface(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomAdaptor_Surface_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::GeomAdaptor_Surface_get_type_descriptor()
     }
@@ -499,6 +507,10 @@ impl SurfaceOfLinearExtrusion {
 
     pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
         crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_basis_curve(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -774,6 +786,10 @@ impl SurfaceOfRevolution {
 
     pub fn basis_curve(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
         crate::ffi::GeomAdaptor_SurfaceOfRevolution_basis_curve(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::GeomAdaptor_SurfaceOfRevolution_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

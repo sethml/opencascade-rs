@@ -89,6 +89,10 @@ impl ReShape {
         crate::ffi::ShapeBuild_ReShape_status(self, status.into())
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::ShapeBuild_ReShape_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::ShapeBuild_ReShape_get_type_descriptor()
     }

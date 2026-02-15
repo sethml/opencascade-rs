@@ -243,6 +243,16 @@ impl TryFrom<i32> for ReturnStatus {
 pub use crate::ffi::IFSelect_Act as Act;
 
 impl Act {
+    /// Creates an Act with a name, help and a function
+    /// mode (Add or AddSet) is given when recording
+    pub fn new_charptr2_actfunc(
+        name: &str,
+        help: &str,
+        func: &crate::ffi::IFSelect_ActFunc,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::IFSelect_Act_ctor_charptr2_actfunc(name, help, func)
+    }
+
     /// Short Help for commands : returns the help given to create
     pub fn help(&self, number: i32) -> String {
         crate::ffi::IFSelect_Act_help(self, number)
@@ -253,6 +263,10 @@ impl Act {
     /// Also a file name can be precised (to query by getsource)
     pub fn set_group(group: &str, file: &str) {
         crate::ffi::IFSelect_Act_set_group(group, file)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_Act_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -378,6 +392,10 @@ impl Activator {
         crate::ffi::IFSelect_Activator_commands(mode, command)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_Activator_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_Activator_get_type_descriptor()
     }
@@ -435,6 +453,10 @@ impl AppliedModifiers {
         crate::ffi::IFSelect_AppliedModifiers_item_list(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_AppliedModifiers_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_AppliedModifiers_get_type_descriptor()
     }
@@ -476,6 +498,10 @@ impl BasicDumper {
     /// Creates a BasicDumper and puts it into the Library of Dumper
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::IFSelect_BasicDumper_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_BasicDumper_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -524,6 +550,10 @@ impl CheckCounter {
     /// Returns the Signature;
     pub fn signature(&self) -> cxx::UniquePtr<crate::ffi::HandleMoniToolSignText> {
         crate::ffi::IFSelect_CheckCounter_signature(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_CheckCounter_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -729,6 +759,10 @@ impl DispGlobal {
         crate::ffi::IFSelect_DispGlobal_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_DispGlobal_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_DispGlobal_get_type_descriptor()
     }
@@ -809,6 +843,10 @@ impl DispPerCount {
     /// Returns as Label, "One File per <count> Input Entities"
     pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_DispPerCount_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_DispPerCount_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -896,6 +934,10 @@ impl DispPerFiles {
         crate::ffi::IFSelect_DispPerFiles_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_DispPerFiles_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_DispPerFiles_get_type_descriptor()
     }
@@ -970,6 +1012,10 @@ impl DispPerOne {
     /// Returns as Label, "One File per Input Entity"
     pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_DispPerOne_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_DispPerOne_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1052,6 +1098,10 @@ impl DispPerSignature {
     /// Returns as Label, "One File per Signature <name>"
     pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_DispPerSignature_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_DispPerSignature_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1148,6 +1198,10 @@ impl Dispatch {
     /// packets (which will become files) from its Input
     pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_Dispatch_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_Dispatch_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1301,6 +1355,10 @@ impl EditForm {
         crate::ffi::IFSelect_EditForm_edited_list(self, num)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_EditForm_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_EditForm_get_type_descriptor()
     }
@@ -1402,6 +1460,10 @@ impl Editor {
         num: i32,
     ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
         crate::ffi::IFSelect_Editor_list_value(self, form, num)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_Editor_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1539,6 +1601,10 @@ impl GeneralModifier {
         crate::ffi::IFSelect_GeneralModifier_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_GeneralModifier_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_GeneralModifier_get_type_descriptor()
     }
@@ -1586,6 +1652,10 @@ impl GraphCounter {
     /// Creates a GraphCounter, without applied selection
     pub fn new() -> cxx::UniquePtr<Self> {
         Self::new_bool2(true, false)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_GraphCounter_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1720,6 +1790,10 @@ impl HSeqOfSelection {
         crate::ffi::IFSelect_HSeqOfSelection_ctor_tseqofselection(theOther)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_HSeqOfSelection_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_HSeqOfSelection_get_type_descriptor()
     }
@@ -1790,6 +1864,10 @@ impl IntParam {
     /// is bound, empty if none
     pub fn static_name(&self) -> String {
         crate::ffi::IFSelect_IntParam_static_name(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_IntParam_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1874,6 +1952,10 @@ impl ListEditor {
         edited: bool,
     ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
         crate::ffi::IFSelect_ListEditor_value(self, num, edited)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_ListEditor_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1991,6 +2073,10 @@ impl ModelCopier {
         crate::ffi::IFSelect_ModelCopier_sent_files(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_ModelCopier_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_ModelCopier_get_type_descriptor()
     }
@@ -2042,6 +2128,10 @@ impl ModifEditForm {
     /// Returns Label as "Apply EditForm <+ label of EditForm>"
     pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_ModifEditForm_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_ModifEditForm_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2145,6 +2235,10 @@ impl ModifReorder {
         crate::ffi::IFSelect_ModifReorder_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_ModifReorder_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_ModifReorder_get_type_descriptor()
     }
@@ -2228,6 +2322,10 @@ impl ModifReorder {
 pub use crate::ffi::IFSelect_Modifier as Modifier;
 
 impl Modifier {
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_Modifier_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_Modifier_get_type_descriptor()
     }
@@ -2332,6 +2430,10 @@ impl PacketList {
         crate::ffi::IFSelect_PacketList_model(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_PacketList_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_PacketList_get_type_descriptor()
     }
@@ -2403,6 +2505,10 @@ impl ParamEditor {
         num: i32,
     ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
         crate::ffi::IFSelect_ParamEditor_string_value(self, form, num)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_ParamEditor_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2556,6 +2662,10 @@ impl SelectAnyList {
         crate::ffi::IFSelect_SelectAnyList_list_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectAnyList_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectAnyList_get_type_descriptor()
     }
@@ -2621,6 +2731,10 @@ impl SelectAnyType {
     /// Returns the Type which has to be matched for select
     pub fn type_for_match(&self) -> cxx::UniquePtr<crate::ffi::HandleStandardType> {
         crate::ffi::IFSelect_SelectAnyType_type_for_match(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectAnyType_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2716,6 +2830,10 @@ impl SelectAnyType {
 pub use crate::ffi::IFSelect_SelectBase as SelectBase;
 
 impl SelectBase {
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectBase_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectBase_get_type_descriptor()
     }
@@ -2750,6 +2868,10 @@ impl SelectCombine {
     /// Returns an Input Selection, given its rank in the list
     pub fn input(&self, num: i32) -> cxx::UniquePtr<crate::ffi::HandleIFSelectSelection> {
         crate::ffi::IFSelect_SelectCombine_input(self, num)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectCombine_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2802,6 +2924,10 @@ impl SelectControl {
         crate::ffi::IFSelect_SelectControl_second_input(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectControl_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectControl_get_type_descriptor()
     }
@@ -2846,6 +2972,10 @@ impl SelectDeduct {
         crate::ffi::IFSelect_SelectDeduct_input(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectDeduct_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectDeduct_get_type_descriptor()
     }
@@ -2883,6 +3013,10 @@ impl SelectDiff {
     /// Returns a text defining the criterium : "Difference"
     pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectDiff_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectDiff_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2975,6 +3109,10 @@ impl SelectEntityNumber {
         crate::ffi::IFSelect_SelectEntityNumber_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectEntityNumber_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectEntityNumber_get_type_descriptor()
     }
@@ -3024,6 +3162,10 @@ impl SelectErrorEntities {
     /// Returns a text defining the criterium : "Error Entities"
     pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectErrorEntities_extract_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectErrorEntities_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3140,6 +3282,10 @@ impl SelectExplore {
         crate::ffi::IFSelect_SelectExplore_explore_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectExplore_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectExplore_get_type_descriptor()
     }
@@ -3215,6 +3361,10 @@ impl SelectExtract {
     /// Returns a text defining the criterium for extraction
     pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectExtract_extract_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectExtract_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3295,6 +3445,10 @@ impl SelectFlag {
     /// Returns a text defining the criterium, includes the flag name
     pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectFlag_extract_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectFlag_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3393,6 +3547,10 @@ impl SelectFlag {
 pub use crate::ffi::IFSelect_SelectInList as SelectInList;
 
 impl SelectInList {
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectInList_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectInList_get_type_descriptor()
     }
@@ -3539,6 +3697,10 @@ impl SelectIncorrectEntities {
         crate::ffi::IFSelect_SelectIncorrectEntities_ctor()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectIncorrectEntities_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectIncorrectEntities_get_type_descriptor()
     }
@@ -3652,6 +3814,10 @@ impl SelectIntersection {
         crate::ffi::IFSelect_SelectIntersection_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectIntersection_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectIntersection_get_type_descriptor()
     }
@@ -3735,6 +3901,10 @@ impl SelectModelEntities {
         crate::ffi::IFSelect_SelectModelEntities_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectModelEntities_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectModelEntities_get_type_descriptor()
     }
@@ -3784,6 +3954,10 @@ impl SelectModelRoots {
     /// Returns a text defining the criterium : "Model Roots"
     pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectModelRoots_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectModelRoots_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3838,6 +4012,10 @@ impl SelectPointed {
     /// It is "Pointed Entities"
     pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectPointed_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectPointed_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3899,6 +4077,10 @@ impl SelectRange {
     /// " From .. Until .." or "From .." or "Until .." or "Rank no .."
     pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectRange_extract_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectRange_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -4006,6 +4188,10 @@ impl SelectRootComps {
         crate::ffi::IFSelect_SelectRootComps_extract_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectRootComps_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectRootComps_get_type_descriptor()
     }
@@ -4103,6 +4289,10 @@ impl SelectRoots {
     /// Returns a text defining the criterium : "Local Root Entities"
     pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectRoots_extract_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectRoots_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -4247,6 +4437,10 @@ impl SelectSent {
         crate::ffi::IFSelect_SelectSent_extract_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectSent_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectSent_get_type_descriptor()
     }
@@ -4345,6 +4539,10 @@ impl SelectShared {
         crate::ffi::IFSelect_SelectShared_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectShared_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectShared_get_type_descriptor()
     }
@@ -4416,6 +4614,10 @@ impl SelectSharing {
     /// Returns a text defining the criterium : "Sharing (one level)"
     pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectSharing_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectSharing_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -4496,6 +4698,10 @@ impl SelectSignature {
     /// qualified by the Name provided by the Signature)
     pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectSignature_extract_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectSignature_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -4595,6 +4801,10 @@ impl SelectSignedShared {
         crate::ffi::IFSelect_SelectSignedShared_explore_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectSignedShared_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectSignedShared_get_type_descriptor()
     }
@@ -4685,6 +4895,10 @@ impl SelectSignedSharing {
     /// qualified by the Name provided by the Signature)
     pub fn explore_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectSignedSharing_explore_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectSignedSharing_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -4797,6 +5011,10 @@ impl SelectSuite {
         crate::ffi::IFSelect_SelectSuite_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectSuite_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectSuite_get_type_descriptor()
     }
@@ -4878,6 +5096,10 @@ impl SelectType {
     /// (should by gotten from Type of Entity used for instantiation)
     pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectType_extract_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectType_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -4990,6 +5212,10 @@ impl SelectUnion {
         crate::ffi::IFSelect_SelectUnion_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectUnion_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SelectUnion_get_type_descriptor()
     }
@@ -5071,6 +5297,10 @@ impl SelectUnknownEntities {
     /// Returns a text defining the criterium : "Recognized Entities"
     pub fn extract_label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_SelectUnknownEntities_extract_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SelectUnknownEntities_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -5175,6 +5405,10 @@ impl Selection {
         crate::ffi::IFSelect_Selection_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_Selection_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_Selection_get_type_descriptor()
     }
@@ -5260,6 +5494,10 @@ impl SessionDumper {
     /// are then obtained by Next on the returned items
     pub fn first() -> cxx::UniquePtr<crate::ffi::HandleIFSelectSessionDumper> {
         crate::ffi::IFSelect_SessionDumper_first()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SessionDumper_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -5550,6 +5788,10 @@ impl SessionPilot {
         crate::ffi::IFSelect_SessionPilot_help(self, number)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SessionPilot_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SessionPilot_get_type_descriptor()
     }
@@ -5648,6 +5890,10 @@ impl ShareOut {
         nbpack: i32,
     ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_ShareOut_file_name(self, dnum, pnum, nbpack)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_ShareOut_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -5780,6 +6026,10 @@ impl SignAncestor {
         Self::new_bool(false)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SignAncestor_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SignAncestor_get_type_descriptor()
     }
@@ -5873,6 +6123,10 @@ impl SignCategory {
     /// Returns a SignCategory
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::IFSelect_SignCategory_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SignCategory_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -6007,6 +6261,10 @@ impl SignCounter {
         crate::ffi::IFSelect_SignCounter_selection(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SignCounter_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SignCounter_get_type_descriptor()
     }
@@ -6065,6 +6323,10 @@ impl SignMultiple {
     /// This name should take expected tabulations into account
     pub fn new_charptr(name: &str) -> cxx::UniquePtr<Self> {
         crate::ffi::IFSelect_SignMultiple_ctor_charptr(name)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SignMultiple_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -6163,6 +6425,10 @@ impl SignType {
         Self::new_bool(false)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SignType_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SignType_get_type_descriptor()
     }
@@ -6248,6 +6514,10 @@ impl SignValidity {
     /// Returns a SignValidity
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::IFSelect_SignValidity_ctor()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SignValidity_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -6375,6 +6645,18 @@ impl Signature {
         crate::ffi::IFSelect_Signature_match_value(val, text, exact)
     }
 
+    /// This procedure converts an Integer to a CString
+    /// It is a convenient way when the value of a signature has the
+    /// form of a simple integer value
+    /// The value is to be used immediately (one buffer only, no copy)
+    pub fn int_value(val: i32) -> String {
+        crate::ffi::IFSelect_Signature_int_value(val)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_Signature_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_Signature_get_type_descriptor()
     }
@@ -6476,6 +6758,10 @@ impl SignatureList {
         crate::ffi::IFSelect_SignatureList_name(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_SignatureList_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_SignatureList_get_type_descriptor()
     }
@@ -6553,6 +6839,10 @@ impl TransformStandard {
         crate::ffi::IFSelect_TransformStandard_label(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_TransformStandard_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IFSelect_TransformStandard_get_type_descriptor()
     }
@@ -6590,6 +6880,10 @@ impl Transformer {
     /// (to identify the transformation it performs)
     pub fn label(&self) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
         crate::ffi::IFSelect_Transformer_label(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_Transformer_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -6639,6 +6933,10 @@ impl WorkLibrary {
     /// Returns the help line recorded for <level>, or an empty string
     pub fn dump_help(&self, level: i32) -> String {
         crate::ffi::IFSelect_WorkLibrary_dump_help(self, level)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_WorkLibrary_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -7249,6 +7547,10 @@ impl WorkSession {
     /// If <label> is defined, lists labels which contain it
     pub fn list_items(&self, label: &str) {
         crate::ffi::IFSelect_WorkSession_list_items(self, label)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IFSelect_WorkSession_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

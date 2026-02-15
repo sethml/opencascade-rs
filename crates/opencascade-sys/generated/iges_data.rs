@@ -144,9 +144,24 @@ impl BasicEditor {
         crate::ffi::IGESData_BasicEditor_unit_flag_value(flag)
     }
 
+    /// From the flag of unit, determines its name, "" if incorrect
+    pub fn unit_flag_name(flag: i32) -> String {
+        crate::ffi::IGESData_BasicEditor_unit_flag_name(flag)
+    }
+
+    /// From the flag of IGES version, returns name, "" if incorrect
+    pub fn iges_version_name(flag: i32) -> String {
+        crate::ffi::IGESData_BasicEditor_iges_version_name(flag)
+    }
+
     /// Returns the maximum allowed value for IGESVersion Flag
     pub fn iges_version_max() -> i32 {
         crate::ffi::IGESData_BasicEditor_iges_version_max()
+    }
+
+    /// From the flag of drafting standard, returns name, "" if incorrect
+    pub fn drafting_name(flag: i32) -> String {
+        crate::ffi::IGESData_BasicEditor_drafting_name(flag)
     }
 
     /// Returns the maximum allowed value for Drafting Flag
@@ -203,6 +218,10 @@ impl HArray1OfIGESEntity {
         theOther: &crate::ffi::IGESData_Array1OfIGESEntity,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::IGESData_HArray1OfIGESEntity_ctor_array1ofigesentity(theOther)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IGESData_HArray1OfIGESEntity_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -354,6 +373,10 @@ impl IGESEntity {
         anum: i32,
     ) -> cxx::UniquePtr<crate::ffi::HandleIGESDataIGESEntity> {
         crate::ffi::IGESData_IGESEntity_typed_property(self, atype, anum)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IGESData_IGESEntity_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

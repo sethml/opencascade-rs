@@ -47,6 +47,10 @@ impl BasicElt {
         crate::ffi::MAT_BasicElt_ctor_int(anInteger)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::MAT_BasicElt_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::MAT_BasicElt_get_type_descriptor()
     }

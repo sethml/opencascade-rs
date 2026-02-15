@@ -107,6 +107,10 @@ impl Curve2d {
         crate::ffi::Adaptor2d_Curve2d_b_spline(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Adaptor2d_Curve2d_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Adaptor2d_Curve2d_get_type_descriptor()
     }
@@ -223,6 +227,10 @@ impl Line2d {
 
     pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
         crate::ffi::Adaptor2d_Line2d_b_spline(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Adaptor2d_Line2d_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -365,6 +373,10 @@ impl OffsetCurve {
 
     pub fn b_spline(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dBSplineCurve> {
         crate::ffi::Adaptor2d_OffsetCurve_b_spline(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Adaptor2d_OffsetCurve_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

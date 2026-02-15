@@ -67,6 +67,10 @@ impl TryFrom<i32> for Status {
 pub use crate::ffi::IMeshData_Curve as Curve;
 
 impl Curve {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshData_Curve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshData_Curve_get_type_descriptor()
     }
@@ -107,6 +111,10 @@ impl Curve {
 pub use crate::ffi::IMeshData_Edge as Edge;
 
 impl Edge {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshData_Edge_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshData_Edge_get_type_descriptor()
     }
@@ -199,6 +207,10 @@ impl Edge {
 pub use crate::ffi::IMeshData_Face as Face;
 
 impl Face {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshData_Face_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshData_Face_get_type_descriptor()
     }
@@ -289,6 +301,10 @@ impl Face {
 pub use crate::ffi::IMeshData_Model as Model;
 
 impl Model {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshData_Model_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshData_Model_get_type_descriptor()
     }
@@ -327,6 +343,10 @@ impl PCurve {
     pub fn get_orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::ffi::IMeshData_PCurve_get_orientation(self))
             .unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshData_PCurve_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -369,6 +389,10 @@ impl PCurve {
 pub use crate::ffi::IMeshData_ParametersList as ParametersList;
 
 impl ParametersList {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshData_ParametersList_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshData_ParametersList_get_type_descriptor()
     }
@@ -400,6 +424,10 @@ impl HandleIMeshDataParametersList {
 pub use crate::ffi::IMeshData_Shape as Shape;
 
 impl Shape {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshData_Shape_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshData_Shape_get_type_descriptor()
     }
@@ -465,6 +493,10 @@ impl StatusOwner {
 pub use crate::ffi::IMeshData_TessellatedShape as TessellatedShape;
 
 impl TessellatedShape {
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshData_TessellatedShape_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::IMeshData_TessellatedShape_get_type_descriptor()
     }
@@ -505,6 +537,10 @@ impl Wire {
             self, theIndex,
         ))
         .unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::IMeshData_Wire_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {

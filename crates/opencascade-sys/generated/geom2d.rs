@@ -69,6 +69,10 @@ impl AxisPlacement {
         crate::ffi::Geom2d_AxisPlacement_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_AxisPlacement_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_AxisPlacement_get_type_descriptor()
     }
@@ -548,6 +552,10 @@ impl BSplineCurve {
         crate::ffi::Geom2d_BSplineCurve_max_degree()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_BSplineCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_BSplineCurve_get_type_descriptor()
     }
@@ -833,6 +841,10 @@ impl BezierCurve {
         crate::ffi::Geom2d_BezierCurve_max_degree()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_BezierCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_BezierCurve_get_type_descriptor()
     }
@@ -1030,6 +1042,10 @@ impl BoundedCurve {
     /// "FirstParameter" of the curve.
     pub fn start_point(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
         crate::ffi::Geom2d_BoundedCurve_start_point(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_BoundedCurve_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1294,6 +1310,10 @@ impl CartesianPoint {
         crate::ffi::Geom2d_CartesianPoint_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_CartesianPoint_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_CartesianPoint_get_type_descriptor()
     }
@@ -1513,6 +1533,10 @@ impl Circle {
     /// Creates a new object which is a copy of this circle.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
         crate::ffi::Geom2d_Circle_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Circle_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -1769,6 +1793,10 @@ impl Conic {
     /// Returns GeomAbs_CN which is the global continuity of any conic.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::ffi::Geom2d_Conic_continuity(self)).unwrap()
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Conic_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2066,6 +2094,10 @@ impl Curve {
         crate::ffi::Geom2d_Curve_value(self, U)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Curve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_Curve_get_type_descriptor()
     }
@@ -2201,6 +2233,10 @@ impl Direction {
     /// Creates a new object which is a copy of this unit vector.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
         crate::ffi::Geom2d_Direction_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Direction_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -2529,6 +2565,10 @@ impl Ellipse {
         crate::ffi::Geom2d_Ellipse_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Ellipse_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_Ellipse_get_type_descriptor()
     }
@@ -2829,6 +2869,10 @@ impl Geometry {
         crate::ffi::Geom2d_Geometry_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Geometry_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_Geometry_get_type_descriptor()
     }
@@ -3060,6 +3104,10 @@ impl Hyperbola {
     /// Creates a new object which is a copy of this hyperbola.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
         crate::ffi::Geom2d_Hyperbola_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Hyperbola_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3345,6 +3393,10 @@ impl Line {
     /// Creates a new object, which is a copy of this line.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
         crate::ffi::Geom2d_Line_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Line_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -3643,6 +3695,10 @@ impl OffsetCurve {
         .unwrap()
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_OffsetCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_OffsetCurve_get_type_descriptor()
     }
@@ -3891,6 +3947,10 @@ impl Parabola {
         crate::ffi::Geom2d_Parabola_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Parabola_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_Parabola_get_type_descriptor()
     }
@@ -4113,6 +4173,10 @@ impl Point {
         crate::ffi::Geom2d_Point_pnt2d(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Point_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_Point_get_type_descriptor()
     }
@@ -4309,6 +4373,10 @@ impl Transformation {
     /// Creates a new object, which is a copy of this transformation.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dTransformation> {
         crate::ffi::Geom2d_Transformation_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Transformation_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -4537,6 +4605,10 @@ impl TrimmedCurve {
         crate::ffi::Geom2d_TrimmedCurve_copy(self)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_TrimmedCurve_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_TrimmedCurve_get_type_descriptor()
     }
@@ -4707,6 +4779,10 @@ impl UndefinedDerivative {
         crate::ffi::Geom2d_UndefinedDerivative_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_UndefinedDerivative_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_UndefinedDerivative_get_type_descriptor()
     }
@@ -4735,6 +4811,10 @@ impl UndefinedValue {
         crate::ffi::Geom2d_UndefinedValue_raise(theMessage)
     }
 
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_UndefinedValue_get_type_name()
+    }
+
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         crate::ffi::Geom2d_UndefinedValue_get_type_descriptor()
     }
@@ -4760,6 +4840,10 @@ impl Vector {
     /// Returns a non persistent copy of <me>.
     pub fn vec2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
         crate::ffi::Geom2d_Vector_vec2d(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_Vector_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
@@ -4945,6 +5029,10 @@ impl VectorWithMagnitude {
     /// Creates a new object which is a copy of this vector.
     pub fn copy(&self) -> cxx::UniquePtr<crate::ffi::HandleGeom2dGeometry> {
         crate::ffi::Geom2d_VectorWithMagnitude_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        crate::ffi::Geom2d_VectorWithMagnitude_get_type_name()
     }
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
