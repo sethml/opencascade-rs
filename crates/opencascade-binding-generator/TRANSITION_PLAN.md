@@ -314,13 +314,13 @@ Option (b) is probably best since these types have no methods and aren't useful 
 
 **Problem:** `BVH_Tree` is a C++ template with `template <class T, int N>` — the `int N` is a non-type template parameter. The generator emits `type BVH_Tree<Standard_Real, 3>;` which is invalid Rust/CXX syntax (CXX generics only support type parameters, not value parameters).
 
-**Fix:** In `generate_unified_opaque_declarations()` (codegen/rust.rs) or `is_unbindable()` (model.rs), filter out type names containing `<..., numeric_literal>`. The existing `is_nested_type()` checks for `<` but this type bypasses it because it enters as an opaque reference collected from function signatures. Add a regex check for numeric template arguments.
+**Fix:** In `generate_opaque_declarations()` (codegen/rust.rs) or `is_unbindable()` (model.rs), filter out type names containing `<..., numeric_literal>`. The existing `is_nested_type()` checks for `<` but this type bypasses it because it enters as an opaque reference collected from function signatures. Add a regex check for numeric template arguments.
 
 ### 15. Raw pointer syntax leaking into type names (2 instances)
 
 **Problem:** `IMeshData_Edge *const` and `IMeshData_Face *const` appear as `type IMeshData_Edge *const;` in ffi.rs. The C++ pointer syntax leaked into the class name string instead of being parsed as `Type::ConstPtr(Type::Class("IMeshData_Edge"))`.
 
-**Fix:** Either fix the parser to properly decompose these pointer types, or add validation in `generate_unified_opaque_declarations()` to reject type name strings containing `*`.
+**Fix:** Either fix the parser to properly decompose these pointer types, or add validation in `generate_opaque_declarations()` to reject type name strings containing `*`.
 
 ### 16. Scale concerns for all-headers build
 

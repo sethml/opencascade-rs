@@ -1,7 +1,7 @@
 //! OCCT Binding Generator Library
 //!
 //! This library parses OCCT C++ headers and generates CXX bridge code
-//! with a unified FFI module and per-module re-exports.
+//! Generates FFI bindings with a single ffi.rs module and per-module re-exports.
 
 pub mod codegen;
 pub mod config;

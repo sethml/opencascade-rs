@@ -1,7 +1,7 @@
 //! OCCT Binding Generator CLI
 //!
 //! A tool using libclang to parse OCCT C++ headers and generate CXX bridge code
-//! with a unified FFI module and per-module re-exports.
+//! Generates FFI bindings with a single ffi.rs module and per-module re-exports.
 
 use opencascade_binding_generator::{codegen, config, header_deps, model, module_graph, parser, resolver};
 
@@ -298,8 +298,8 @@ fn main() -> Result<()> {
         println!("  Found {} known OCCT headers", known_headers.len());
     }
 
-    // Generate unified FFI architecture
-    generate_unified(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers)
+    // Generate FFI output
+    generate_output(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers)
 }
 
 /// Detect "utility namespace classes" and convert their static methods to free functions.
@@ -494,14 +494,14 @@ fn dump_symbol_table(table: &resolver::SymbolTable) {
     println!("===== END SYMBOL TABLE DUMP =====");
 }
 
-/// Generate unified FFI module architecture
+/// Generate FFI module output files
 ///
 /// This generates:
 /// - ffi.rs: Single CXX bridge with ALL types using full C++ names
 /// - wrappers.hxx: Single C++ header with all wrappers
 /// - MODULE.rs: Per-module re-exports with impl blocks
 /// - lib.rs: Module declarations
-fn generate_unified(
+fn generate_output(
     args: &Args,
     all_classes: &[&model::ParsedClass],
     all_functions: &[&model::ParsedFunction],
@@ -511,7 +511,7 @@ fn generate_unified(
 ) -> Result<()> {
     use model::ParsedClass;
 
-    println!("\n=== Generating unified FFI architecture ===\n");
+    println!("\n=== Generating FFI output ===\n");
 
     // Collect all headers
     let mut all_headers: HashSet<String> = HashSet::new();
@@ -540,9 +540,9 @@ fn generate_unified(
     // Track generated files for formatting
     let mut generated_rs_files: Vec<PathBuf> = Vec::new();
 
-    // 1. Generate unified ffi.rs
-    println!("Generating unified ffi.rs...");
-    let ffi_code = codegen::rust::generate_unified_ffi(
+    // 1. Generate ffi.rs
+    println!("Generating ffi.rs...");
+    let ffi_code = codegen::rust::generate_ffi(
         all_classes,
         &all_headers_list,
         &all_collections,
@@ -556,9 +556,9 @@ fn generate_unified(
     println!("  Wrote: {} ({} classes, {} functions)",
         ffi_path.display(), all_classes.len(), all_functions.len());
 
-    // 2. Generate unified wrappers.cpp
-    println!("Generating unified wrappers.cpp...");
-    let cpp_code = codegen::cpp::generate_unified_wrappers(
+    // 2. Generate wrappers.cpp
+    println!("Generating wrappers.cpp...");
+    let cpp_code = codegen::cpp::generate_wrappers(
         all_classes,
         &all_collections,
         known_headers,
@@ -857,7 +857,7 @@ fn generate_unified(
 /// Generate lib.rs with module declarations
 fn generate_lib_rs(modules: &[&module_graph::Module], extra_modules: &[(String, String)]) -> String {
     let mut output = String::new();
-    output.push_str("// Generated OCCT bindings (unified architecture)\n\n");
+    output.push_str("// Generated OCCT bindings\n\n");
     output.push_str("// Core FFI module with all types (pub(crate) to prevent direct access, use module re-exports instead)\n");
     output.push_str("pub(crate) mod ffi;\n\n");
     output.push_str("// Per-module re-exports\n");

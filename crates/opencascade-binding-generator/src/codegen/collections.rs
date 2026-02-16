@@ -943,7 +943,7 @@ fn collection_kind_description(kind: CollectionKind) -> &'static str {
 // =============================================================================
 
 /// Generate Rust FFI code for a collection type
-pub fn generate_unified_rust_ffi_collections(collections: &[CollectionInfo]) -> (String, String) {
+pub fn generate_rust_ffi_collections(collections: &[CollectionInfo]) -> (String, String) {
     if collections.is_empty() {
         return (String::new(), String::new());
     }
@@ -970,18 +970,18 @@ pub fn generate_unified_rust_ffi_collections(collections: &[CollectionInfo]) -> 
     ffi_decls.push_str("    // ========================\n\n");
     
     for info in collections {
-        ffi_decls.push_str(&generate_unified_rust_ffi_collection(info));
+        ffi_decls.push_str(&generate_rust_ffi_collection(info));
     }
     
     (type_decls, ffi_decls)
 }
 
-/// Generate Rust FFI declarations for a single collection in unified mode
+/// Generate Rust FFI declarations for a single collection
 /// Uses full C++ type names (e.g., TopoDS_Shape, TopTools_ListOfShape)
-fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
+fn generate_rust_ffi_collection(info: &CollectionInfo) -> String {
     match info.kind {
-        CollectionKind::Array1 => return generate_unified_rust_ffi_array1(info),
-        CollectionKind::Array2 => return generate_unified_rust_ffi_array2(info),
+        CollectionKind::Array1 => return generate_rust_ffi_array1(info),
+        CollectionKind::Array2 => return generate_rust_ffi_array2(info),
         _ => {}
     }
 
@@ -1079,7 +1079,7 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
 }
 
 /// Generate Rust FFI declarations for an Array1 collection
-fn generate_unified_rust_ffi_array1(info: &CollectionInfo) -> String {
+fn generate_rust_ffi_array1(info: &CollectionInfo) -> String {
     let mut output = String::new();
     let coll_name = &info.typedef_name;
     let elem = &info.element_type;
@@ -1128,7 +1128,7 @@ fn generate_unified_rust_ffi_array1(info: &CollectionInfo) -> String {
 }
 
 /// Generate Rust FFI declarations for an Array2 collection
-fn generate_unified_rust_ffi_array2(info: &CollectionInfo) -> String {
+fn generate_rust_ffi_array2(info: &CollectionInfo) -> String {
     let mut output = String::new();
     let coll_name = &info.typedef_name;
     let elem = &info.element_type;
@@ -1192,350 +1192,10 @@ fn generate_unified_rust_ffi_array2(info: &CollectionInfo) -> String {
     output
 }
 
-/// Generate Rust impl blocks for collections in unified mode
-pub fn generate_unified_rust_impl_collections(collections: &[CollectionInfo]) -> String {
-    if collections.is_empty() {
-        return String::new();
-    }
-    
-    let mut output = String::new();
-    
-    for info in collections {
-        output.push_str(&generate_unified_rust_impl_collection(info));
-        output.push('\n');
-    }
-    
-    output
-}
 
-/// Generate Rust impl block for a single collection in unified mode (public API for re-export modules)
-pub fn generate_unified_rust_impl_collection_single(info: &CollectionInfo) -> String {
-    generate_unified_rust_impl_collection(info)
-}
 
-/// Generate Rust impl block for a single collection in unified mode
-fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
-    match info.kind {
-        CollectionKind::Array1 => return generate_unified_rust_impl_array1(info),
-        CollectionKind::Array2 => return generate_unified_rust_impl_array2(info),
-        _ => {}
-    }
-
-    let mut output = String::new();
-    let coll_name = &info.typedef_name;
-    let iter_name = format!("{}Iterator", info.short_name);
-    
-    // Collection impl block
-    output.push_str(&format!("impl ffi::{} {{\n", coll_name));
-    
-    output.push_str("    /// Create a new empty collection\n");
-    output.push_str("    pub fn new() -> crate::OwnedPtr<Self> {\n");
-    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_new()) }}\n", coll_name));
-    output.push_str("    }\n\n");
-    
-    output.push_str("    /// Get number of elements\n");
-    output.push_str("    pub fn len(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_size(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-    
-    output.push_str("    /// Check if empty\n");
-    output.push_str("    pub fn is_empty(&self) -> bool {\n");
-    output.push_str("        self.len() == 0\n");
-    output.push_str("    }\n\n");
-    
-    output.push_str("    /// Remove all elements\n");
-    output.push_str("    pub fn clear(&mut self) {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_clear(self as *mut Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-    
-    // Kind-specific methods
-    match info.kind {
-        CollectionKind::List => {
-            output.push_str("    /// Append an element to the list\n");
-            output.push_str(&format!("    pub fn append(&mut self, item: &ffi::{}) {{\n", info.element_type));
-            output.push_str(&format!("        unsafe {{ ffi::{}_append(self as *mut Self, item as *const ffi::{}) }}\n", coll_name, info.element_type));
-            output.push_str("    }\n\n");
-            
-            output.push_str("    /// Prepend an element to the list\n");
-            output.push_str(&format!("    pub fn prepend(&mut self, item: &ffi::{}) {{\n", info.element_type));
-            output.push_str(&format!("        unsafe {{ ffi::{}_prepend(self as *mut Self, item as *const ffi::{}) }}\n", coll_name, info.element_type));
-            output.push_str("    }\n\n");
-        }
-        CollectionKind::Sequence => {
-            output.push_str("    /// Append an element to the sequence\n");
-            output.push_str(&format!("    pub fn append(&mut self, item: &ffi::{}) {{\n", info.element_type));
-            output.push_str(&format!("        unsafe {{ ffi::{}_append(self as *mut Self, item as *const ffi::{}) }}\n", coll_name, info.element_type));
-            output.push_str("    }\n\n");
-            
-            output.push_str("    /// Get element at 1-based index\n");
-            output.push_str(&format!("    pub fn value(&self, index: i32) -> &ffi::{} {{\n", info.element_type));
-            output.push_str(&format!("        unsafe {{ &*ffi::{}_value(self as *const Self, index) }}\n", coll_name));
-            output.push_str("    }\n\n");
-        }
-        CollectionKind::IndexedMap | CollectionKind::Map => {
-            output.push_str("    /// Add an element to the map/set\n");
-            output.push_str(&format!("    pub fn add(&mut self, item: &ffi::{}) -> i32 {{\n", info.element_type));
-            output.push_str(&format!("        unsafe {{ ffi::{}_add(self as *mut Self, item as *const ffi::{}) }}\n", coll_name, info.element_type));
-            output.push_str("    }\n\n");
-            
-            if info.kind == CollectionKind::IndexedMap {
-                output.push_str("    /// Get element at 1-based index\n");
-                output.push_str(&format!("    pub fn find_key(&self, index: i32) -> &ffi::{} {{\n", info.element_type));
-                output.push_str(&format!("        unsafe {{ &*ffi::{}_find_key(self as *const Self, index) }}\n", coll_name));
-                output.push_str("    }\n\n");
-            }
-        }
-        CollectionKind::DataMap => {
-            if let Some(ref value_type) = info.value_type {
-                output.push_str("    /// Bind a key to a value\n");
-                output.push_str(&format!("    pub fn bind(&mut self, key: &ffi::{}, value: &ffi::{}) -> bool {{\n", info.element_type, value_type));
-                output.push_str(&format!("        unsafe {{ ffi::{}_bind(self as *mut Self, key as *const ffi::{}, value as *const ffi::{}) }}\n", coll_name, info.element_type, value_type));
-                output.push_str("    }\n\n");
-
-                output.push_str("    /// Find a value by key (returns nullptr if not found)\n");
-                output.push_str(&format!("    pub fn find(&self, key: &ffi::{}) -> crate::OwnedPtr<ffi::{}> {{\n", info.element_type, value_type));
-                output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_find(self as *const Self, key as *const ffi::{})) }}\n", coll_name, info.element_type));
-                output.push_str("    }\n\n");
-
-                output.push_str("    /// Check if key exists\n");
-                output.push_str(&format!("    pub fn contains(&self, key: &ffi::{}) -> bool {{\n", info.element_type));
-                output.push_str(&format!("        unsafe {{ ffi::{}_contains(self as *const Self, key as *const ffi::{}) }}\n", coll_name, info.element_type));
-                output.push_str("    }\n\n");
-            }
-        }
-        CollectionKind::IndexedDataMap => {
-            if let Some(ref value_type) = info.value_type {
-                output.push_str("    /// Add a key-value pair, returns index (existing or new)\n");
-                output.push_str(&format!("    pub fn add(&mut self, key: &ffi::{}, value: &ffi::{}) -> i32 {{\n", info.element_type, value_type));
-                output.push_str(&format!("        unsafe {{ ffi::{}_add(self as *mut Self, key as *const ffi::{}, value as *const ffi::{}) }}\n", coll_name, info.element_type, value_type));
-                output.push_str("    }\n\n");
-
-                output.push_str("    /// Find value by key\n");
-                output.push_str(&format!("    pub fn find_from_key(&self, key: &ffi::{}) -> &ffi::{} {{\n", info.element_type, value_type));
-                output.push_str(&format!("        unsafe {{ &*ffi::{}_find_from_key(self as *const Self, key as *const ffi::{}) }}\n", coll_name, info.element_type));
-                output.push_str("    }\n\n");
-
-                output.push_str("    /// Find value by 1-based index\n");
-                output.push_str(&format!("    pub fn find_from_index(&self, index: i32) -> &ffi::{} {{\n", value_type));
-                output.push_str(&format!("        unsafe {{ &*ffi::{}_find_from_index(self as *const Self, index) }}\n", coll_name));
-                output.push_str("    }\n\n");
-
-                output.push_str("    /// Find key by 1-based index\n");
-                output.push_str(&format!("    pub fn find_key(&self, index: i32) -> crate::OwnedPtr<ffi::{}> {{\n", info.element_type));
-                output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_find_key(self as *const Self, index)) }}\n", coll_name));
-                output.push_str("    }\n\n");
-
-                output.push_str("    /// Find index by key (returns 0 if not found)\n");
-                output.push_str(&format!("    pub fn find_index(&self, key: &ffi::{}) -> i32 {{\n", info.element_type));
-                output.push_str(&format!("        unsafe {{ ffi::{}_find_index(self as *const Self, key as *const ffi::{}) }}\n", coll_name, info.element_type));
-                output.push_str("    }\n\n");
-
-                output.push_str("    /// Check if key exists\n");
-                output.push_str(&format!("    pub fn contains(&self, key: &ffi::{}) -> bool {{\n", info.element_type));
-                output.push_str(&format!("        unsafe {{ ffi::{}_contains(self as *const Self, key as *const ffi::{}) }}\n", coll_name, info.element_type));
-                output.push_str("    }\n\n");
-            }
-        }
-        CollectionKind::Array1 | CollectionKind::Array2 => {
-            unreachable!("Array types handled by dedicated functions")
-        }
-    }
-    
-    // Iterator
-    output.push_str("    /// Create an iterator over the collection\n");
-    output.push_str(&format!("    pub fn iter(&self) -> crate::OwnedPtr<ffi::{}> {{\n", iter_name));
-    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_iter(self as *const Self)) }}\n", coll_name));
-    output.push_str("    }\n");
-    
-    output.push_str("}\n\n");
-    
-    // Iterator impl block
-    let next_suffix = match info.kind {
-        CollectionKind::DataMap | CollectionKind::IndexedDataMap => "_next_key",
-        _ => "_next",
-    };
-    let next_fn_name = format!("{}{}", iter_name, next_suffix);
-    output.push_str(&format!("impl ffi::{} {{\n", iter_name));
-    output.push_str("    /// Get next element (returns None when done)\n");
-    output.push_str(&format!("    pub fn next(&mut self) -> Option<crate::OwnedPtr<ffi::{}>> {{\n", info.element_type));
-    output.push_str(&format!("        let ptr = unsafe {{ ffi::{}(self as *mut Self) }};\n", next_fn_name));
-    output.push_str("        if ptr.is_null() {\n");
-    output.push_str("            None\n");
-    output.push_str("        } else {\n");
-    output.push_str("            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })\n");
-    output.push_str("        }\n");
-    output.push_str("    }\n");
-    output.push_str("}\n\n");
-    
-    // CppDeletable for collection
-    output.push_str(&format!("unsafe impl crate::CppDeletable for ffi::{} {{\n", coll_name));
-    output.push_str("    unsafe fn cpp_delete(ptr: *mut Self) {\n");
-    output.push_str(&format!("        ffi::{}_destructor(ptr);\n", coll_name));
-    output.push_str("    }\n");
-    output.push_str("}\n\n");
-    
-    // CppDeletable for iterator
-    output.push_str(&format!("unsafe impl crate::CppDeletable for ffi::{} {{\n", iter_name));
-    output.push_str("    unsafe fn cpp_delete(ptr: *mut Self) {\n");
-    output.push_str(&format!("        ffi::{}_destructor(ptr);\n", iter_name));
-    output.push_str("    }\n");
-    output.push_str("}\n");
-    
-    output
-}
-
-/// Generate Rust impl block for an Array1 collection
-fn generate_unified_rust_impl_array1(info: &CollectionInfo) -> String {
-    let mut output = String::new();
-    let coll_name = &info.typedef_name;
-    let elem = &info.element_type;
-
-    output.push_str(&format!("impl ffi::{} {{\n", coll_name));
-
-    output.push_str("    /// Create a new empty array\n");
-    output.push_str("    pub fn new() -> crate::OwnedPtr<Self> {\n");
-    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_new()) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Create array with lower and upper bounds\n");
-    output.push_str("    pub fn new_with_bounds(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {\n");
-    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_ctor_int2(lower, upper)) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Create array with bounds, all elements initialized to value\n");
-    output.push_str(&format!("    pub fn new_with_value(lower: i32, upper: i32, value: &ffi::{}) -> crate::OwnedPtr<Self> {{\n", elem));
-    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_ctor_int2_value(lower, upper, value as *const ffi::{})) }}\n", coll_name, elem));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get number of elements\n");
-    output.push_str("    pub fn length(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_length(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get lower bound index\n");
-    output.push_str("    pub fn lower(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_lower(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get upper bound index\n");
-    output.push_str("    pub fn upper(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_upper(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get element at index\n");
-    output.push_str(&format!("    pub fn value(&self, index: i32) -> &ffi::{} {{\n", elem));
-    output.push_str(&format!("        unsafe {{ &*ffi::{}_value(self as *const Self, index) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Set element at index\n");
-    output.push_str(&format!("    pub fn set_value(&mut self, index: i32, item: &ffi::{}) {{\n", elem));
-    output.push_str(&format!("        unsafe {{ ffi::{}_set_value(self as *mut Self, index, item as *const ffi::{}) }}\n", coll_name, elem));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Set all elements to the same value\n");
-    output.push_str(&format!("    pub fn init(&mut self, value: &ffi::{}) {{\n", elem));
-    output.push_str(&format!("        unsafe {{ ffi::{}_init(self as *mut Self, value as *const ffi::{}) }}\n", coll_name, elem));
-    output.push_str("    }\n");
-
-    output.push_str("}\n\n");
-
-    // CppDeletable for array
-    output.push_str(&format!("unsafe impl crate::CppDeletable for ffi::{} {{\n", coll_name));
-    output.push_str("    unsafe fn cpp_delete(ptr: *mut Self) {\n");
-    output.push_str(&format!("        ffi::{}_destructor(ptr);\n", coll_name));
-    output.push_str("    }\n");
-    output.push_str("}\n");
-
-    output
-}
-
-/// Generate Rust impl block for an Array2 collection
-fn generate_unified_rust_impl_array2(info: &CollectionInfo) -> String {
-    let mut output = String::new();
-    let coll_name = &info.typedef_name;
-    let elem = &info.element_type;
-
-    output.push_str(&format!("impl ffi::{} {{\n", coll_name));
-
-    output.push_str("    /// Create a new empty array\n");
-    output.push_str("    pub fn new() -> crate::OwnedPtr<Self> {\n");
-    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_new()) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Create array with row and column bounds\n");
-    output.push_str("    pub fn new_with_bounds(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32) -> crate::OwnedPtr<Self> {\n");
-    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_ctor_int4(row_lower, row_upper, col_lower, col_upper)) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Create array with bounds, all elements initialized to value\n");
-    output.push_str(&format!("    pub fn new_with_value(row_lower: i32, row_upper: i32, col_lower: i32, col_upper: i32, value: &ffi::{}) -> crate::OwnedPtr<Self> {{\n", elem));
-    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value as *const ffi::{})) }}\n", coll_name, elem));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get number of rows\n");
-    output.push_str("    pub fn nb_rows(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_nb_rows(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get number of columns\n");
-    output.push_str("    pub fn nb_columns(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_nb_columns(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get lower row bound\n");
-    output.push_str("    pub fn lower_row(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_lower_row(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get upper row bound\n");
-    output.push_str("    pub fn upper_row(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_upper_row(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get lower column bound\n");
-    output.push_str("    pub fn lower_col(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_lower_col(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get upper column bound\n");
-    output.push_str("    pub fn upper_col(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_upper_col(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get total number of elements\n");
-    output.push_str("    pub fn length(&self) -> i32 {\n");
-    output.push_str(&format!("        unsafe {{ ffi::{}_length(self as *const Self) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Get element at row/col\n");
-    output.push_str(&format!("    pub fn value(&self, row: i32, col: i32) -> &ffi::{} {{\n", elem));
-    output.push_str(&format!("        unsafe {{ &*ffi::{}_value(self as *const Self, row, col) }}\n", coll_name));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Set element at row/col\n");
-    output.push_str(&format!("    pub fn set_value(&mut self, row: i32, col: i32, item: &ffi::{}) {{\n", elem));
-    output.push_str(&format!("        unsafe {{ ffi::{}_set_value(self as *mut Self, row, col, item as *const ffi::{}) }}\n", coll_name, elem));
-    output.push_str("    }\n\n");
-
-    output.push_str("    /// Set all elements to the same value\n");
-    output.push_str(&format!("    pub fn init(&mut self, value: &ffi::{}) {{\n", elem));
-    output.push_str(&format!("        unsafe {{ ffi::{}_init(self as *mut Self, value as *const ffi::{}) }}\n", coll_name, elem));
-    output.push_str("    }\n");
-
-    output.push_str("}\n\n");
-
-    // CppDeletable for array
-    output.push_str(&format!("unsafe impl crate::CppDeletable for ffi::{} {{\n", coll_name));
-    output.push_str("    unsafe fn cpp_delete(ptr: *mut Self) {\n");
-    output.push_str(&format!("        ffi::{}_destructor(ptr);\n", coll_name));
-    output.push_str("    }\n");
-    output.push_str("}\n");
-
-    output
-}
-
-/// Generate unified C++ wrappers header for all collections
-pub fn generate_unified_cpp_collections(collections: &[CollectionInfo]) -> String {
+/// Generate C++ wrappers header for all collections
+pub fn generate_cpp_collections(collections: &[CollectionInfo]) -> String {
     if collections.is_empty() {
         return String::new();
     }

@@ -517,25 +517,6 @@ fn type_to_cpp(ty: &Type) -> String {
     }
 }
 
-/// Convert a Type to C++ parameter type (const char* → rust::Str)
-fn type_to_cpp_param(ty: &Type) -> String {
-    match ty {
-        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
-            "const char*".to_string()
-        }
-        _ => type_to_cpp(ty),
-    }
-}
-
-/// Convert a parameter to C++ argument expression for wrapper functions
-fn param_to_cpp_arg(param_name: &str, ty: &Type) -> String {
-    match ty {
-        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
-            param_name.to_string()
-        }
-        _ => param_name.to_string(),
-    }
-}
 
 /// Convert a Type to C++ parameter type for extern "C" wrapper functions (pointers instead of references)
 fn type_to_cpp_extern_c_param(ty: &Type) -> String {
@@ -559,7 +540,7 @@ fn param_to_cpp_extern_c_arg(param_name: &str, ty: &Type) -> String {
 }
 
 /// Convert a Type to Rust type string for re-export files
-fn unified_type_to_string(ty: &Type) -> String {
+fn type_to_rust_string(ty: &Type) -> String {
     match ty {
         Type::Void => "()".to_string(),
         Type::Bool => "bool".to_string(),
@@ -578,24 +559,24 @@ fn unified_type_to_string(ty: &Type) -> String {
             }
         }
         Type::Handle(name) => format!("crate::ffi::Handle{}", name.replace("_", "")),
-        Type::ConstRef(inner) => format!("&{}", unified_type_to_string(inner)),
+        Type::ConstRef(inner) => format!("&{}", type_to_rust_string(inner)),
         Type::MutRef(inner) => {
-            format!("&mut {}", unified_type_to_string(inner))
+            format!("&mut {}", type_to_rust_string(inner))
         }
         Type::RValueRef(_) => "()".to_string(),
         Type::ConstPtr(inner) => {
             if matches!(inner.as_ref(), Type::Class(name) if name == "char") {
                 "&str".to_string()
             } else {
-                format!("*const {}", unified_type_to_string(inner))
+                format!("*const {}", type_to_rust_string(inner))
             }
         }
-        Type::MutPtr(inner) => format!("*mut {}", unified_type_to_string(inner)),
+        Type::MutPtr(inner) => format!("*mut {}", type_to_rust_string(inner)),
     }
 }
 
 /// Convert a return Type to Rust type string for re-export files
-fn unified_return_type_to_string(ty: &Type) -> String {
+fn return_type_to_rust_string(ty: &Type) -> String {
     match ty {
         Type::Class(name) if name != "char" => {
             format!("crate::OwnedPtr<crate::ffi::{}>", name)
@@ -609,7 +590,7 @@ fn unified_return_type_to_string(ty: &Type) -> String {
         Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
             "String".to_string()
         }
-        _ => unified_type_to_string(ty),
+        _ => type_to_rust_string(ty),
     }
 }
 
@@ -787,7 +768,7 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
 
     let mapped = map_type_in_context(&effective_ty, ffi_ctx);
     let rust_ffi_type = mapped.rust_type;
-    let rust_reexport_type = unified_type_to_string(&effective_ty);
+    let rust_reexport_type = type_to_rust_string(&effective_ty);
     let cpp_type = type_to_cpp_extern_c_param(&effective_ty);
     let cpp_arg_expr = param_to_cpp_extern_c_arg(name, &effective_ty);
 
@@ -822,7 +803,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext) -> ReturnTypeBind
 
     let mapped = map_return_type_in_context(ty, ffi_ctx);
     let rust_ffi_type = mapped.rust_type;
-    let rust_reexport_type = unified_return_type_to_string(ty);
+    let rust_reexport_type = return_type_to_rust_string(ty);
     let cpp_type = type_to_cpp(ty);
     let needs_unique_ptr = ty.is_class() || ty.is_handle();
 
@@ -1906,7 +1887,7 @@ fn compute_inherited_method_bindings(
                             rust_reexport_type: if let Some(ref enum_name) = p.ty.enum_cpp_name {
                                 symbol_table.enum_rust_types.get(enum_name).cloned().unwrap_or_else(|| "i32".to_string())
                             } else {
-                                unified_type_to_string(&effective_ty)
+                                type_to_rust_string(&effective_ty)
                             },
                             cpp_type: cpp_param_type,
                             cpp_arg_expr,
@@ -1925,7 +1906,7 @@ fn compute_inherited_method_bindings(
                             rust_reexport_type: if let Some(ref enum_name) = rt.enum_cpp_name {
                                 symbol_table.enum_rust_types.get(enum_name).cloned().unwrap_or_else(|| "i32".to_string())
                             } else {
-                                unified_return_type_to_string(&rt.original)
+                                return_type_to_rust_string(&rt.original)
                             },
                             cpp_type: rt.cpp_type.clone(),
                             needs_unique_ptr: rt.needs_unique_ptr,
@@ -1974,7 +1955,7 @@ pub fn compute_all_class_bindings(
         .collect();
 
     let ffi_ctx = TypeContext {
-        current_module: "unified",
+        current_module: "ffi",
         module_classes: &all_class_names,
         all_enums: all_enum_names,
         all_classes: &all_class_names,
@@ -2062,7 +2043,7 @@ pub fn compute_all_function_bindings(
         .collect();
 
     let ffi_ctx = TypeContext {
-        current_module: "unified",
+        current_module: "ffi",
         module_classes: &all_class_names,
         all_enums: all_enum_names,
         all_classes: &all_class_names,
@@ -2216,7 +2197,7 @@ pub fn compute_all_function_bindings(
 
 /// Emit C++ wrapper code for a single class from pre-computed ClassBindings.
 ///
-/// Produces the same output as the old generate_unified_class_wrappers()
+/// Produces C++ wrapper code for a class
 /// and its 10+ sub-functions, but consumes the pre-computed IR instead
 /// of re-deriving decisions.
 pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
@@ -2300,9 +2281,9 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 
     // 3. Static method wrappers
     // Note: In the old code, static methods were emitted between by-value and cstring wrappers
-    // when you look at the call order in generate_unified_class_wrappers. Actually, the order is:
+    // when you look at the call order in generate_class_wrappers. Actually, the order is:
     // by-value → cstring-param → cstring-return → static. Let me re-check...
-    // The actual call order in generate_unified_class_wrappers is:
+    // The actual call order in generate_class_wrappers is:
     //   1. constructor
     //   2. return_by_value
     //   3. c_string_param
@@ -3262,25 +3243,6 @@ fn cstr_prelude_resolved(params: &[ResolvedParamBinding], names: &[String]) -> S
         .collect()
 }
 
-/// Wrap an FFI call expression with enum return conversion if needed (for ParamBinding-style returns).
-fn enum_convert_return(return_type: &Option<ReturnTypeBinding>, call_expr: &str) -> String {
-    if let Some(ref rt) = return_type {
-        if let Some(ref enum_type) = rt.enum_rust_type {
-            return format!("{}::try_from({}).unwrap()", enum_type, call_expr);
-        }
-    }
-    call_expr.to_string()
-}
-
-/// Wrap an FFI call expression with enum return conversion if needed (for ResolvedReturnTypeBinding).
-fn enum_convert_return_resolved(return_type: &Option<ResolvedReturnTypeBinding>, call_expr: &str) -> String {
-    if let Some(ref rt) = return_type {
-        if let Some(ref enum_type) = rt.enum_rust_type {
-            return format!("{}::try_from({}).unwrap()", enum_type, call_expr);
-        }
-    }
-    call_expr.to_string()
-}
 
 /// Build the body expression for a re-export method call.
 /// Handles the conversion from FFI raw pointer returns to Rust references/OwnedPtr.
@@ -3932,62 +3894,6 @@ fn format_return_type(rt: &Option<ReturnTypeBinding>) -> String {
     }
 }
 
-/// Check whether a free-function-style FFI declaration needs explicit lifetime
-/// annotations. This is needed when:
-/// - The return type is a reference (`&` or `Pin<&...>`)
-/// - There are other reference parameters besides self_
-///
-/// In this case, Rust's lifetime elision cannot determine which input lifetime
-/// the return borrows from. We tie the return lifetime to self_.
-fn needs_lifetime_annotation(
-    return_ffi_type: Option<&str>,
-    param_ffi_types: &[&str],
-) -> bool {
-    let returns_ref = return_ffi_type
-        .map(|t| t.starts_with('&') || t.starts_with("Pin<&"))
-        .unwrap_or(false);
-    let has_ref_params = param_ffi_types
-        .iter()
-        .any(|t| t.starts_with('&') || t.starts_with("Pin<&"));
-    returns_ref && has_ref_params
-}
-
-/// Format a self_ parameter, optionally with a lifetime annotation.
-fn format_self_param(class_name: &str, is_const: bool, needs_lifetime: bool) -> String {
-    match (is_const, needs_lifetime) {
-        (true, true) => format!("self_: &'a {}", class_name),
-        (true, false) => format!("self_: &{}", class_name),
-        (false, true) => format!("self_: Pin<&'a mut {}>", class_name),
-        (false, false) => format!("self_: Pin<&mut {}>", class_name),
-    }
-}
-
-/// Format a return type, inserting `'a` lifetime if needed.
-fn format_return_type_with_lifetime(ffi_type: Option<&str>, needs_lifetime: bool) -> String {
-    match ffi_type {
-        Some(t) if needs_lifetime => {
-            let annotated = if t.starts_with("Pin<&mut ") {
-                t.replacen("Pin<&mut ", "Pin<&'a mut ", 1)
-            } else if t.starts_with("Pin<&") {
-                t.replacen("Pin<&", "Pin<&'a ", 1)
-            } else if t.starts_with("&mut ") {
-                t.replacen("&mut ", "&'a mut ", 1)
-            } else if t.starts_with('&') {
-                t.replacen('&', "&'a ", 1)
-            } else {
-                t.to_string()
-            };
-            format!(" -> {}", annotated)
-        }
-        Some(t) => format!(" -> {}", t),
-        None => String::new(),
-    }
-}
-
-/// Emit source attribution only for ffi.rs (indented 8 spaces, no doc comments).
-fn emit_ffi_doc(out: &mut String, source: &str, _comment: &Option<String>) {
-    writeln!(out, "        /// {}", source).unwrap();
-}
 
 /// Emit source attribution only for ffi.rs (indented 4 spaces, no doc comments).
 fn emit_ffi_doc_4(out: &mut String, source: &str, _comment: &Option<String>) {
@@ -4024,7 +3930,7 @@ mod tests {
         let handle_able_classes: HashSet<String> = HashSet::new();
 
         let ffi_ctx = TypeContext {
-            current_module: "unified",
+            current_module: "ffi",
             module_classes: &all_class_names,
             all_enums: &all_enum_names,
             all_classes: &all_class_names,
@@ -4109,7 +4015,7 @@ mod tests {
             ["Geom_Curve".to_string()].into();
 
         let ffi_ctx = TypeContext {
-            current_module: "unified",
+            current_module: "ffi",
             module_classes: &all_class_names,
             all_enums: &all_enum_names,
             all_classes: &all_class_names,

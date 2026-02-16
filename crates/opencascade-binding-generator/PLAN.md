@@ -1,10 +1,10 @@
 # OCCT Binding Generator
 
-A Rust tool using libclang to parse OCCT headers and generate CXX bridge code with a unified FFI module and per-module re-exports.
+A Rust tool using libclang to parse OCCT headers and generate extern "C" FFI bindings with a single ffi.rs module and per-module re-exports.
 
 ## Status
 
-The binding generator is functional and deployed. It reads `bindings.toml` to determine which OCCT modules and headers to process, then parses them (with automatic dependency resolution) to generate a unified `ffi.rs` plus per-module re-export files.
+The binding generator is functional and deployed. It reads `bindings.toml` to determine which OCCT modules and headers to process, then parses them (with automatic dependency resolution) to generate `ffi.rs` plus per-module re-export files.
 
 The `opencascade` high-level crate compiles against the generated bindings. Some methods are stubbed due to generator limitations documented below.
 
@@ -12,7 +12,7 @@ See **[TRANSITION_PLAN.md](./TRANSITION_PLAN.md)** for remaining work on the `op
 
 ## Architecture
 
-### Unified FFI Architecture
+### FFI Architecture
 
 All types and functions are in a single `#[cxx::bridge]` module (`ffi.rs`), with per-module re-export files providing ergonomic short names:
 
@@ -26,7 +26,7 @@ crates/opencascade-sys/generated/
 └── lib.rs             # `pub(crate) mod ffi;` + `pub mod gp;` etc.
 ```
 
-Users write `use opencascade_sys::gp::Pnt;` -- the unified ffi module is `pub(crate)`.
+Users write `use opencascade_sys::gp::Pnt;` -- the ffi module is `pub(crate)`.
 
 ### Generator Source
 
@@ -161,16 +161,16 @@ NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 - [x] TColgp array constructors (template instantiation typedefs)
 - [x] Utility class detection and free function generation (e.g., `gp::OX()`, `TopoDS::Vertex()`)
 - [x] Default-argument convenience constructors (trailing defaulted params omitted)
-- [x] Unified function naming in resolver.rs (single source of truth for CXX-unique names)
+- [x] Consistent function naming in resolver.rs (single source of truth for CXX-unique names)
 - [ ] System include path auto-detection (currently passed via `-I`)
 
 ---
 
 ## Completed Steps
 
-### Step A: Remove Non-Unified Code Path ✓
+### Step A: Remove Per-Module Code Path ✓
 
-Removed the old per-module code generation path. The unified architecture is now the only path.
+Removed the old per-module code generation path. The single-ffi-module architecture is now the only path.
 
 **What was removed (~4,600 lines):**
 - `main.rs`: Removed `--unified` CLI flag, old per-module code path, `generate_lib_rs()`
