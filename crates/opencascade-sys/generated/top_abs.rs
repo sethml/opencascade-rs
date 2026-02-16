@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `TopAbs.hxx` - `TopAbs::Compose`
+/// **Source:** `TopAbs.hxx`:69 - `TopAbs::Compose`
 /// Compose  the Orientation    <Or1>  and  <Or2>.    This
 /// composition is not symmetric (if  you switch <Or1> and
 /// <Or2> the result  is different). It assumes that <Or1>
@@ -34,7 +34,7 @@ pub fn compose(
             .unwrap()
     }
 }
-/// **Source:** `TopAbs.hxx` - `TopAbs::Reverse`
+/// **Source:** `TopAbs.hxx`:82 - `TopAbs::Reverse`
 /// xchanges the interior/exterior status of the two
 /// sides. This is what happens when the sense of
 /// direction is reversed. The following rules apply:
@@ -51,7 +51,7 @@ pub fn reverse_orientation(Or: crate::top_abs::Orientation) -> crate::top_abs::O
             .unwrap()
     }
 }
-/// **Source:** `TopAbs.hxx` - `TopAbs::Complement`
+/// **Source:** `TopAbs.hxx`:97 - `TopAbs::Complement`
 /// Reverses the interior/exterior status of each side of
 /// the object. So, to take the complement of an object
 /// means to reverse the interior/exterior status of its
@@ -70,7 +70,7 @@ pub fn complement(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientatio
         crate::top_abs::Orientation::try_from(crate::ffi::TopAbs_complement(Or.into())).unwrap()
     }
 }
-/// **Source:** `TopAbs.hxx` - `TopAbs::ShapeTypeToString`
+/// **Source:** `TopAbs.hxx`:120 - `TopAbs::ShapeTypeToString`
 /// Returns the string name for a given shape type.
 /// @param theType shape type
 /// @return string identifier from the list COMPOUND, COMPSOLID, SOLID, SHELL, FACE, WIRE, EDGE,
@@ -82,7 +82,7 @@ pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> String {
             .into_owned()
     }
 }
-/// **Source:** `TopAbs.hxx` - `TopAbs::ShapeTypeFromString`
+/// **Source:** `TopAbs.hxx`:125 - `TopAbs::ShapeTypeFromString`
 /// Returns the shape type from the given string identifier (using case-insensitive comparison).
 /// @param theTypeString string identifier
 /// @return shape type or TopAbs_SHAPE if string identifier is invalid
@@ -95,7 +95,7 @@ pub fn shape_type_from_string(theTypeString: &str) -> crate::top_abs::ShapeEnum 
         .unwrap()
     }
 }
-/// **Source:** `TopAbs.hxx` - `TopAbs::ShapeOrientationToString`
+/// **Source:** `TopAbs.hxx`:143 - `TopAbs::ShapeOrientationToString`
 /// Returns the string name for a given shape orientation.
 /// @param theOrientation shape orientation
 /// @return string identifier from the list FORWARD, REVERSED, INTERNAL, EXTERNAL
@@ -108,7 +108,7 @@ pub fn shape_orientation_to_string(theOrientation: crate::top_abs::Orientation) 
         .into_owned()
     }
 }
-/// **Source:** `TopAbs.hxx` - `TopAbs::ShapeOrientationFromString`
+/// **Source:** `TopAbs.hxx`:150 - `TopAbs::ShapeOrientationFromString`
 /// Returns the shape orientation from the given string identifier (using case-insensitive
 /// comparison).
 /// @param theOrientationString string identifier

@@ -503,7 +503,7 @@ impl ChBuilder {
         unsafe { &mut *(crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(self as *mut Self)) }
     }
 
-    /// Inherited from ChFi3d_Builder: SetParams()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
     pub fn set_params(
         &mut self,
         Tang: f64,
@@ -526,7 +526,7 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: SetContinuity()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
     pub fn set_continuity(
         &mut self,
         InternalContinuity: crate::geom_abs::Shape,
@@ -541,27 +541,27 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: Remove()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
     pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Remove(self as *mut Self, E) }
     }
 
-    /// Inherited from ChFi3d_Builder: Contains()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
     pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Contains(self as *const Self, E) }
     }
 
-    /// Inherited from ChFi3d_Builder: NbElements()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
     pub fn nb_elements(&self) -> i32 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_NbElements(self as *const Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: Length()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
     pub fn length(&self, IC: i32) -> f64 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Length(self as *const Self, IC) }
     }
 
-    /// Inherited from ChFi3d_Builder: FirstVertex()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
     pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_FirstVertex(
@@ -571,7 +571,7 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: LastVertex()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
     pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_LastVertex(
@@ -581,39 +581,39 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: Abscissa()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
     pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Abscissa(self as *const Self, IC, V) }
     }
 
-    /// Inherited from ChFi3d_Builder: RelativeAbscissa()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
     pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
         unsafe {
             crate::ffi::ChFi3d_ChBuilder_inherited_RelativeAbscissa(self as *const Self, IC, V)
         }
     }
 
-    /// Inherited from ChFi3d_Builder: ClosedAndTangent()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:124 - `ChFi3d_Builder::ClosedAndTangent()`
     pub fn closed_and_tangent(&self, IC: i32) -> bool {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_ClosedAndTangent(self as *const Self, IC) }
     }
 
-    /// Inherited from ChFi3d_Builder: Closed()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:127 - `ChFi3d_Builder::Closed()`
     pub fn closed(&self, IC: i32) -> bool {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Closed(self as *const Self, IC) }
     }
 
-    /// Inherited from ChFi3d_Builder: Compute()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:131 - `ChFi3d_Builder::Compute()`
     pub fn compute(&mut self) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Compute(self as *mut Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: IsDone()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:134 - `ChFi3d_Builder::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: Shape()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:138 - `ChFi3d_Builder::Shape()`
     pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_Shape(
@@ -622,7 +622,7 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: Generated()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
     pub fn generated(
         &mut self,
         EouV: &crate::ffi::TopoDS_Shape,
@@ -630,24 +630,24 @@ impl ChBuilder {
         unsafe { &*(crate::ffi::ChFi3d_ChBuilder_inherited_Generated(self as *mut Self, EouV)) }
     }
 
-    /// Inherited from ChFi3d_Builder: NbFaultyContours()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
     pub fn nb_faulty_contours(&self) -> i32 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyContours(self as *const Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: FaultyContour()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:149 - `ChFi3d_Builder::FaultyContour()`
     pub fn faulty_contour(&self, I: i32) -> i32 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_FaultyContour(self as *const Self, I) }
     }
 
-    /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:152 - `ChFi3d_Builder::NbComputedSurfaces()`
     pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
         unsafe {
             crate::ffi::ChFi3d_ChBuilder_inherited_NbComputedSurfaces(self as *const Self, IC)
         }
     }
 
-    /// Inherited from ChFi3d_Builder: ComputedSurface()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:155 - `ChFi3d_Builder::ComputedSurface()`
     pub fn computed_surface(
         &self,
         IC: i32,
@@ -662,12 +662,12 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: NbFaultyVertices()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
     pub fn nb_faulty_vertices(&self) -> i32 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyVertices(self as *const Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: FaultyVertex()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
     pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_FaultyVertex(
@@ -677,12 +677,12 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: HasResult()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
     pub fn has_result(&self) -> bool {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_HasResult(self as *const Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: BadShape()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
     pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_BadShape(
@@ -691,7 +691,7 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: StripeStatus()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
     pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
         unsafe {
             crate::ch_fi_ds::ErrorStatus::try_from(
@@ -701,12 +701,12 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: Reset()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Reset(self as *mut Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
         unsafe {
             crate::ffi::ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(self as *mut Self, Index)
@@ -955,7 +955,7 @@ impl FilBuilder {
         unsafe { &mut *(crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(self as *mut Self)) }
     }
 
-    /// Inherited from ChFi3d_Builder: SetParams()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
     pub fn set_params(
         &mut self,
         Tang: f64,
@@ -978,7 +978,7 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: SetContinuity()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
     pub fn set_continuity(
         &mut self,
         InternalContinuity: crate::geom_abs::Shape,
@@ -993,27 +993,27 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: Remove()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
     pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Remove(self as *mut Self, E) }
     }
 
-    /// Inherited from ChFi3d_Builder: Contains()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
     pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Contains(self as *const Self, E) }
     }
 
-    /// Inherited from ChFi3d_Builder: NbElements()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
     pub fn nb_elements(&self) -> i32 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_NbElements(self as *const Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: Length()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
     pub fn length(&self, IC: i32) -> f64 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Length(self as *const Self, IC) }
     }
 
-    /// Inherited from ChFi3d_Builder: FirstVertex()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
     pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_FirstVertex(
@@ -1023,7 +1023,7 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: LastVertex()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
     pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_LastVertex(
@@ -1033,39 +1033,39 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: Abscissa()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
     pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Abscissa(self as *const Self, IC, V) }
     }
 
-    /// Inherited from ChFi3d_Builder: RelativeAbscissa()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
     pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
         unsafe {
             crate::ffi::ChFi3d_FilBuilder_inherited_RelativeAbscissa(self as *const Self, IC, V)
         }
     }
 
-    /// Inherited from ChFi3d_Builder: ClosedAndTangent()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:124 - `ChFi3d_Builder::ClosedAndTangent()`
     pub fn closed_and_tangent(&self, IC: i32) -> bool {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_ClosedAndTangent(self as *const Self, IC) }
     }
 
-    /// Inherited from ChFi3d_Builder: Closed()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:127 - `ChFi3d_Builder::Closed()`
     pub fn closed(&self, IC: i32) -> bool {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Closed(self as *const Self, IC) }
     }
 
-    /// Inherited from ChFi3d_Builder: Compute()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:131 - `ChFi3d_Builder::Compute()`
     pub fn compute(&mut self) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Compute(self as *mut Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: IsDone()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:134 - `ChFi3d_Builder::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: Shape()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:138 - `ChFi3d_Builder::Shape()`
     pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_Shape(
@@ -1074,7 +1074,7 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: Generated()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
     pub fn generated(
         &mut self,
         EouV: &crate::ffi::TopoDS_Shape,
@@ -1082,24 +1082,24 @@ impl FilBuilder {
         unsafe { &*(crate::ffi::ChFi3d_FilBuilder_inherited_Generated(self as *mut Self, EouV)) }
     }
 
-    /// Inherited from ChFi3d_Builder: NbFaultyContours()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
     pub fn nb_faulty_contours(&self) -> i32 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_NbFaultyContours(self as *const Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: FaultyContour()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:149 - `ChFi3d_Builder::FaultyContour()`
     pub fn faulty_contour(&self, I: i32) -> i32 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_FaultyContour(self as *const Self, I) }
     }
 
-    /// Inherited from ChFi3d_Builder: NbComputedSurfaces()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:152 - `ChFi3d_Builder::NbComputedSurfaces()`
     pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
         unsafe {
             crate::ffi::ChFi3d_FilBuilder_inherited_NbComputedSurfaces(self as *const Self, IC)
         }
     }
 
-    /// Inherited from ChFi3d_Builder: ComputedSurface()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:155 - `ChFi3d_Builder::ComputedSurface()`
     pub fn computed_surface(
         &self,
         IC: i32,
@@ -1114,12 +1114,12 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: NbFaultyVertices()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
     pub fn nb_faulty_vertices(&self) -> i32 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_NbFaultyVertices(self as *const Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: FaultyVertex()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
     pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_FaultyVertex(
@@ -1129,12 +1129,12 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: HasResult()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
     pub fn has_result(&self) -> bool {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_HasResult(self as *const Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: BadShape()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
     pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_BadShape(
@@ -1143,7 +1143,7 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: StripeStatus()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
     pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
         unsafe {
             crate::ch_fi_ds::ErrorStatus::try_from(
@@ -1153,12 +1153,12 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited from ChFi3d_Builder: Reset()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Reset(self as *mut Self) }
     }
 
-    /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter()
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
         unsafe {
             crate::ffi::ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(

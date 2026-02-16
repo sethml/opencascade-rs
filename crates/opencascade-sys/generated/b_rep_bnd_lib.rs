@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `BRepBndLib.hxx` - `BRepBndLib::Add`
+/// **Source:** `BRepBndLib.hxx`:52 - `BRepBndLib::Add`
 /// Adds the shape S to the bounding box B.
 /// More precisely are successively added to B:
 /// -   each face of S; the triangulation of the face is used if it exists,
@@ -27,7 +27,7 @@
 pub fn add(S: &crate::ffi::TopoDS_Shape, B: &mut crate::ffi::Bnd_Box, useTriangulation: bool) {
     unsafe { crate::ffi::BRepBndLib_add(S, B, useTriangulation) }
 }
-/// **Source:** `BRepBndLib.hxx` - `BRepBndLib::AddClose`
+/// **Source:** `BRepBndLib.hxx`:67 - `BRepBndLib::AddClose`
 /// Adds the shape S to the bounding box B.
 /// This is a quick algorithm but only works if the shape S is
 /// composed of polygonal planar faces, as is the case if S is
@@ -42,7 +42,7 @@ pub fn add(S: &crate::ffi::TopoDS_Shape, B: &mut crate::ffi::Bnd_Box, useTriangu
 pub fn add_close(S: &crate::ffi::TopoDS_Shape, B: &mut crate::ffi::Bnd_Box) {
     unsafe { crate::ffi::BRepBndLib_add_close(S, B) }
 }
-/// **Source:** `BRepBndLib.hxx` - `BRepBndLib::AddOptimal`
+/// **Source:** `BRepBndLib.hxx`:78 - `BRepBndLib::AddOptimal`
 /// Adds the shape S to the bounding box B.
 /// This algorithm builds precise bounding box,
 /// which differs from exact geometry boundaries of shape only on shape entities tolerances
@@ -60,7 +60,7 @@ pub fn add_optimal(
 ) {
     unsafe { crate::ffi::BRepBndLib_add_optimal(S, B, useTriangulation, useShapeTolerance) }
 }
-/// **Source:** `BRepBndLib.hxx` - `BRepBndLib::AddOBB`
+/// **Source:** `BRepBndLib.hxx`:95 - `BRepBndLib::AddOBB`
 /// Computes the Oriented Bounding box for the shape <theS>.
 /// Two independent methods of computation are implemented:
 /// first method based on set of points (so, it demands the

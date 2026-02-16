@@ -169,12 +169,12 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetArguments(
@@ -184,14 +184,14 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Arguments(self as *const Self))
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(
@@ -201,14 +201,14 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_NonDestructive(self as *const Self)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetGlue(
@@ -218,7 +218,7 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         unsafe {
             crate::bop_algo::GlueEnum::try_from(
@@ -228,7 +228,7 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(
@@ -238,14 +238,14 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_CheckInverted(self as *const Self)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn simplify_result(
         &mut self,
         theUnifyEdges: bool,
@@ -262,7 +262,7 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
     pub fn modified(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -272,7 +272,7 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
     pub fn generated(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -285,35 +285,35 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn is_deleted(&mut self, aS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_IsDeleted(self as *mut Self, aS)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn has_modified(&self) -> bool {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasModified(self as *const Self)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasGenerated(self as *const Self)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasDeleted(self as *const Self)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetToFillHistory(
@@ -323,21 +323,21 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn has_history(&self) -> bool {
         unsafe {
             crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasHistory(self as *const Self)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn section_edges(&mut self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SectionEdges(self as *mut Self))
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_History(
@@ -346,12 +346,12 @@ impl BooleanOperation {
         }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Check(self as *const Self) }
     }
@@ -649,17 +649,17 @@ impl BuilderAlgo {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_Check(self as *const Self) }
     }
@@ -845,84 +845,84 @@ impl Check {
         unsafe { &mut *(crate::ffi::BRepAlgoAPI_Check_as_BOPAlgo_Options_mut(self as *mut Self)) }
     }
 
-    /// Inherited from BOPAlgo_Options: Allocator()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Check_inherited_Allocator(self as *const Self)) }
     }
 
-    /// Inherited from BOPAlgo_Options: Clear()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_Clear(self as *mut Self) }
     }
 
-    /// Inherited from BOPAlgo_Options: AddError()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_AddError(self as *mut Self, theAlert) }
     }
 
-    /// Inherited from BOPAlgo_Options: AddWarning()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_AddWarning(self as *mut Self, theAlert) }
     }
 
-    /// Inherited from BOPAlgo_Options: HasErrors()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn has_errors(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_HasErrors(self as *const Self) }
     }
 
-    /// Inherited from BOPAlgo_Options: HasError()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_HasError(self as *const Self, theType) }
     }
 
-    /// Inherited from BOPAlgo_Options: HasWarnings()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn has_warnings(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_HasWarnings(self as *const Self) }
     }
 
-    /// Inherited from BOPAlgo_Options: HasWarning()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_HasWarning(self as *const Self, theType) }
     }
 
-    /// Inherited from BOPAlgo_Options: GetReport()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Check_inherited_GetReport(self as *const Self)) }
     }
 
-    /// Inherited from BOPAlgo_Options: ClearWarnings()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_ClearWarnings(self as *mut Self) }
     }
 
-    /// Inherited from BOPAlgo_Options: SetRunParallel()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:114 - `BOPAlgo_Options::SetRunParallel()`
     pub fn set_run_parallel(&mut self, theFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Check_inherited_SetRunParallel(self as *mut Self, theFlag)
         }
     }
 
-    /// Inherited from BOPAlgo_Options: RunParallel()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:117 - `BOPAlgo_Options::RunParallel()`
     pub fn run_parallel(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_RunParallel(self as *const Self) }
     }
 
-    /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:123 - `BOPAlgo_Options::SetFuzzyValue()`
     pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_SetFuzzyValue(self as *mut Self, theFuzz) }
     }
 
-    /// Inherited from BOPAlgo_Options: FuzzyValue()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:126 - `BOPAlgo_Options::FuzzyValue()`
     pub fn fuzzy_value(&self) -> f64 {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_FuzzyValue(self as *const Self) }
     }
 
-    /// Inherited from BOPAlgo_Options: SetUseOBB()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:132 - `BOPAlgo_Options::SetUseOBB()`
     pub fn set_use_obb(&mut self, theUseOBB: bool) {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_SetUseOBB(self as *mut Self, theUseOBB) }
     }
 
-    /// Inherited from BOPAlgo_Options: UseOBB()
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:135 - `BOPAlgo_Options::UseOBB()`
     pub fn use_obb(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_UseOBB(self as *const Self) }
     }
@@ -1057,39 +1057,39 @@ impl Common {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Common_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:66 - `BRepAlgoAPI_BooleanOperation::Shape1()`
     pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Common_inherited_Shape1(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:70 - `BRepAlgoAPI_BooleanOperation::Shape2()`
     pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Common_inherited_Shape2(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_SetTools(self as *mut Self, theLS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Common_inherited_Tools(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn set_operation(&mut self, theBOP: crate::bop_algo::Operation) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Common_inherited_SetOperation(self as *mut Self, theBOP.into())
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:83 - `BRepAlgoAPI_BooleanOperation::Operation()`
     pub fn operation(&self) -> crate::bop_algo::Operation {
         unsafe {
             crate::bop_algo::Operation::try_from(
@@ -1099,41 +1099,41 @@ impl Common {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:87 - `BRepAlgoAPI_BooleanOperation::Build()`
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Build(self as *mut Self, theRange) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_SetArguments(self as *mut Self, theLS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Common_inherited_Arguments(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Common_inherited_SetNonDestructive(self as *mut Self, theFlag)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_NonDestructive(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Common_inherited_SetGlue(self as *mut Self, theGlue.into())
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         unsafe {
             crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_Common_inherited_Glue(
@@ -1143,19 +1143,19 @@ impl Common {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Common_inherited_SetCheckInverted(self as *mut Self, theCheck)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_CheckInverted(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn simplify_result(
         &mut self,
         theUnifyEdges: bool,
@@ -1172,7 +1172,7 @@ impl Common {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
     pub fn modified(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -1180,7 +1180,7 @@ impl Common {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Common_inherited_Modified(self as *mut Self, theS)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
     pub fn generated(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -1188,27 +1188,27 @@ impl Common {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Common_inherited_Generated(self as *mut Self, theS)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn is_deleted(&mut self, aS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_IsDeleted(self as *mut Self, aS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn has_modified(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_HasModified(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_HasGenerated(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_HasDeleted(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Common_inherited_SetToFillHistory(
@@ -1218,17 +1218,17 @@ impl Common {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn has_history(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_HasHistory(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn section_edges(&mut self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Common_inherited_SectionEdges(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Common_inherited_History(
@@ -1237,12 +1237,12 @@ impl Common {
         }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Check(self as *const Self) }
     }
@@ -1372,39 +1372,39 @@ impl Cut {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:66 - `BRepAlgoAPI_BooleanOperation::Shape1()`
     pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_inherited_Shape1(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:70 - `BRepAlgoAPI_BooleanOperation::Shape2()`
     pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_inherited_Shape2(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_SetTools(self as *mut Self, theLS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_inherited_Tools(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn set_operation(&mut self, theBOP: crate::bop_algo::Operation) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Cut_inherited_SetOperation(self as *mut Self, theBOP.into())
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:83 - `BRepAlgoAPI_BooleanOperation::Operation()`
     pub fn operation(&self) -> crate::bop_algo::Operation {
         unsafe {
             crate::bop_algo::Operation::try_from(crate::ffi::BRepAlgoAPI_Cut_inherited_Operation(
@@ -1414,39 +1414,39 @@ impl Cut {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:87 - `BRepAlgoAPI_BooleanOperation::Build()`
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Build(self as *mut Self, theRange) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_SetArguments(self as *mut Self, theLS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_inherited_Arguments(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Cut_inherited_SetNonDestructive(self as *mut Self, theFlag)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_NonDestructive(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_SetGlue(self as *mut Self, theGlue.into()) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         unsafe {
             crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_Cut_inherited_Glue(
@@ -1456,19 +1456,19 @@ impl Cut {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Cut_inherited_SetCheckInverted(self as *mut Self, theCheck)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_CheckInverted(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn simplify_result(
         &mut self,
         theUnifyEdges: bool,
@@ -1485,7 +1485,7 @@ impl Cut {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
     pub fn modified(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -1493,7 +1493,7 @@ impl Cut {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_inherited_Modified(self as *mut Self, theS)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
     pub fn generated(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -1501,44 +1501,44 @@ impl Cut {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_inherited_Generated(self as *mut Self, theS)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn is_deleted(&mut self, aS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_IsDeleted(self as *mut Self, aS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn has_modified(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_HasModified(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_HasGenerated(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_HasDeleted(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Cut_inherited_SetToFillHistory(self as *mut Self, theHistFlag)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn has_history(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_HasHistory(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn section_edges(&mut self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Cut_inherited_SectionEdges(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Cut_inherited_History(
@@ -1547,12 +1547,12 @@ impl Cut {
         }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Check(self as *const Self) }
     }
@@ -1803,17 +1803,17 @@ impl Defeaturing {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Defeaturing_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_inherited_Check(self as *const Self) }
     }
@@ -1942,39 +1942,39 @@ impl Fuse {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:66 - `BRepAlgoAPI_BooleanOperation::Shape1()`
     pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_inherited_Shape1(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:70 - `BRepAlgoAPI_BooleanOperation::Shape2()`
     pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_inherited_Shape2(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_SetTools(self as *mut Self, theLS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_inherited_Tools(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn set_operation(&mut self, theBOP: crate::bop_algo::Operation) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Fuse_inherited_SetOperation(self as *mut Self, theBOP.into())
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:83 - `BRepAlgoAPI_BooleanOperation::Operation()`
     pub fn operation(&self) -> crate::bop_algo::Operation {
         unsafe {
             crate::bop_algo::Operation::try_from(crate::ffi::BRepAlgoAPI_Fuse_inherited_Operation(
@@ -1984,39 +1984,39 @@ impl Fuse {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Build()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:87 - `BRepAlgoAPI_BooleanOperation::Build()`
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Build(self as *mut Self, theRange) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_SetArguments(self as *mut Self, theLS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_inherited_Arguments(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Fuse_inherited_SetNonDestructive(self as *mut Self, theFlag)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_NonDestructive(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_SetGlue(self as *mut Self, theGlue.into()) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         unsafe {
             crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_Fuse_inherited_Glue(
@@ -2026,19 +2026,19 @@ impl Fuse {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Fuse_inherited_SetCheckInverted(self as *mut Self, theCheck)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_CheckInverted(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn simplify_result(
         &mut self,
         theUnifyEdges: bool,
@@ -2055,7 +2055,7 @@ impl Fuse {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
     pub fn modified(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -2063,7 +2063,7 @@ impl Fuse {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_inherited_Modified(self as *mut Self, theS)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
     pub fn generated(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -2071,44 +2071,44 @@ impl Fuse {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_inherited_Generated(self as *mut Self, theS)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn is_deleted(&mut self, aS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_IsDeleted(self as *mut Self, aS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn has_modified(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_HasModified(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_HasGenerated(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_HasDeleted(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Fuse_inherited_SetToFillHistory(self as *mut Self, theHistFlag)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn has_history(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_HasHistory(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn section_edges(&mut self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Fuse_inherited_SectionEdges(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Fuse_inherited_History(
@@ -2117,12 +2117,12 @@ impl Fuse {
         }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Check(self as *const Self) }
     }
@@ -2564,39 +2564,39 @@ impl Section {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Section_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape1()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:66 - `BRepAlgoAPI_BooleanOperation::Shape1()`
     pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Section_inherited_Shape1(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Shape2()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:70 - `BRepAlgoAPI_BooleanOperation::Shape2()`
     pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Section_inherited_Shape2(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: SetTools()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_SetTools(self as *mut Self, theLS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Tools()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Section_inherited_Tools(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: SetOperation()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn set_operation(&mut self, theBOP: crate::bop_algo::Operation) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Section_inherited_SetOperation(self as *mut Self, theBOP.into())
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BooleanOperation: Operation()
+    /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:83 - `BRepAlgoAPI_BooleanOperation::Operation()`
     pub fn operation(&self) -> crate::bop_algo::Operation {
         unsafe {
             crate::bop_algo::Operation::try_from(
@@ -2606,36 +2606,36 @@ impl Section {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_SetArguments(self as *mut Self, theLS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Section_inherited_Arguments(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Section_inherited_SetNonDestructive(self as *mut Self, theFlag)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_NonDestructive(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Section_inherited_SetGlue(self as *mut Self, theGlue.into())
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         unsafe {
             crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_Section_inherited_Glue(
@@ -2645,19 +2645,19 @@ impl Section {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Section_inherited_SetCheckInverted(self as *mut Self, theCheck)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_CheckInverted(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn simplify_result(
         &mut self,
         theUnifyEdges: bool,
@@ -2674,7 +2674,7 @@ impl Section {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
     pub fn modified(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -2682,7 +2682,7 @@ impl Section {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Section_inherited_Modified(self as *mut Self, theS)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
     pub fn generated(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -2690,27 +2690,27 @@ impl Section {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Section_inherited_Generated(self as *mut Self, theS)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn is_deleted(&mut self, aS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_IsDeleted(self as *mut Self, aS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn has_modified(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_HasModified(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_HasGenerated(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_HasDeleted(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Section_inherited_SetToFillHistory(
@@ -2720,17 +2720,17 @@ impl Section {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn has_history(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_HasHistory(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn section_edges(&mut self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Section_inherited_SectionEdges(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Section_inherited_History(
@@ -2739,12 +2739,12 @@ impl Section {
         }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_Check(self as *const Self) }
     }
@@ -2878,41 +2878,41 @@ impl Splitter {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_Algo: Shape()
+    /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Splitter_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetArguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_SetArguments(self as *mut Self, theLS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Arguments()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Splitter_inherited_Arguments(self as *const Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Splitter_inherited_SetNonDestructive(self as *mut Self, theFlag)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_NonDestructive(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetGlue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Splitter_inherited_SetGlue(self as *mut Self, theGlue.into())
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Glue()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         unsafe {
             crate::bop_algo::GlueEnum::try_from(crate::ffi::BRepAlgoAPI_Splitter_inherited_Glue(
@@ -2922,19 +2922,19 @@ impl Splitter {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Splitter_inherited_SetCheckInverted(self as *mut Self, theCheck)
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_CheckInverted(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn simplify_result(
         &mut self,
         theUnifyEdges: bool,
@@ -2951,7 +2951,7 @@ impl Splitter {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Modified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
     pub fn modified(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -2959,7 +2959,7 @@ impl Splitter {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Splitter_inherited_Modified(self as *mut Self, theS)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: Generated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
     pub fn generated(
         &mut self,
         theS: &crate::ffi::TopoDS_Shape,
@@ -2967,27 +2967,27 @@ impl Splitter {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Splitter_inherited_Generated(self as *mut Self, theS)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: IsDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn is_deleted(&mut self, aS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_IsDeleted(self as *mut Self, aS) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn has_modified(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_HasModified(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_HasGenerated(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_HasDeleted(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         unsafe {
             crate::ffi::BRepAlgoAPI_Splitter_inherited_SetToFillHistory(
@@ -2997,17 +2997,17 @@ impl Splitter {
         }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn has_history(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_HasHistory(self as *const Self) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: SectionEdges()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn section_edges(&mut self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Splitter_inherited_SectionEdges(self as *mut Self)) }
     }
 
-    /// Inherited from BRepAlgoAPI_BuilderAlgo: History()
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Splitter_inherited_History(
@@ -3016,12 +3016,12 @@ impl Splitter {
         }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_Check(self as *const Self) }
     }

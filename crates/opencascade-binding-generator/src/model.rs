@@ -36,6 +36,8 @@ pub struct ParsedFunction {
     pub comment: Option<String>,
     /// Source header file name (e.g., "TopoDS.hxx")
     pub source_header: String,
+    /// Source line number in the header file
+    pub source_line: Option<u32>,
     /// Parameters
     pub params: Vec<Param>,
     /// Return type (None for void)

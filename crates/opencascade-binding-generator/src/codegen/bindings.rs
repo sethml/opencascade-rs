@@ -230,6 +230,10 @@ pub struct InheritedMethodBinding {
     pub cpp_method_name: String,
     /// Which ancestor class this came from
     pub source_class: String,
+    /// Source header file for the ancestor method
+    pub source_header: String,
+    /// Source line number in the header file
+    pub source_line: Option<u32>,
 }
 
 /// A parameter binding with info for all three output targets.
@@ -320,6 +324,8 @@ pub struct FunctionBinding {
     pub return_type: Option<ReturnTypeBinding>,
     /// Source header file (e.g. "BRepBuilderAPI.hxx")
     pub source_header: String,
+    /// Source line number in the header file
+    pub source_line: Option<u32>,
     /// Documentation comment
     pub doc_comment: Option<String>,
     /// C++ headers needed for this function's parameter and return types
@@ -1923,6 +1929,8 @@ fn compute_inherited_method_bindings(
                     return_type,
                     cpp_method_name: resolved_method.cpp_name.clone(),
                     source_class: ancestor_name.clone(),
+                    source_header: ancestor_class.source_header.clone(),
+                    source_line: resolved_method.source_line,
                 });
             }
         }
@@ -2185,6 +2193,7 @@ pub fn compute_all_function_bindings(
             params,
             return_type,
             source_header: func.source_header.clone(),
+            source_line: func.source_line,
             doc_comment: func.doc_comment.clone(),
             cpp_headers,
         });
@@ -3603,7 +3612,11 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         impl_methods.push(format!(
             "{}    pub fn {}({}){} {{\n{}        {}\n    }}\n",
             format_reexport_doc(
-                &format!("Inherited from {}: {}()", im.source_class, im.cpp_method_name),
+                &format!("Inherited: {}", format_source_attribution(
+                    &im.source_header,
+                    im.source_line,
+                    &format!("{}::{}()", im.source_class, im.cpp_method_name),
+                )),
                 &no_doc,
             ),
             im.impl_method_name,
@@ -3850,7 +3863,12 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
 
     // ── Inherited methods (free functions with self_ parameter) ─────────
     for im in &bindings.inherited_methods {
-        writeln!(out, "    /// Inherited from {}: {}()", im.source_class, im.cpp_method_name).unwrap();
+        let source = format_source_attribution(
+            &im.source_header,
+            im.source_line,
+            &format!("{}::{}()", im.source_class, im.cpp_method_name),
+        );
+        writeln!(out, "    /// Inherited: {}", source).unwrap();
 
         let self_param = if im.is_const {
             format!("self_: *const {}", cn)

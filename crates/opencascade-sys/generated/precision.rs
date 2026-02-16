@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `Precision.hxx` - `Precision::Angular`
+/// **Source:** `Precision.hxx`:123 - `Precision::Angular`
 /// Returns the recommended precision value
 /// when checking the equality of two angles (given in radians).
 /// Standard_Real Angle1 = ... , Angle2 = ... ;
@@ -29,7 +29,7 @@
 pub fn angular() -> f64 {
     unsafe { crate::ffi::Precision_angular() }
 }
-/// **Source:** `Precision.hxx` - `Precision::Confusion`
+/// **Source:** `Precision.hxx`:165 - `Precision::Confusion`
 /// Returns the recommended precision value when
 /// checking coincidence of two points in real space.
 /// The tolerance of confusion is used for testing a 3D
@@ -73,13 +73,13 @@ pub fn angular() -> f64 {
 pub fn confusion() -> f64 {
     unsafe { crate::ffi::Precision_confusion() }
 }
-/// **Source:** `Precision.hxx` - `Precision::SquareConfusion`
+/// **Source:** `Precision.hxx`:169 - `Precision::SquareConfusion`
 /// Returns square of Confusion.
 /// Created for speed and convenience.
 pub fn square_confusion() -> f64 {
     unsafe { crate::ffi::Precision_square_confusion() }
 }
-/// **Source:** `Precision.hxx` - `Precision::Intersection`
+/// **Source:** `Precision.hxx`:193 - `Precision::Intersection`
 /// Returns the precision value in real space, frequently
 /// used by intersection algorithms to decide that a solution is reached.
 /// This function provides an acceptable level of precision
@@ -105,7 +105,7 @@ pub fn square_confusion() -> f64 {
 pub fn intersection() -> f64 {
     unsafe { crate::ffi::Precision_intersection() }
 }
-/// **Source:** `Precision.hxx` - `Precision::Approximation`
+/// **Source:** `Precision.hxx`:208 - `Precision::Approximation`
 /// Returns the precision value in real space, frequently used
 /// by approximation algorithms.
 /// This function provides an acceptable level of precision for
@@ -122,7 +122,7 @@ pub fn intersection() -> f64 {
 pub fn approximation() -> f64 {
     unsafe { crate::ffi::Precision_approximation() }
 }
-/// **Source:** `Precision.hxx` - `Precision::Parametric`
+/// **Source:** `Precision.hxx`:215 - `Precision::Parametric`
 /// Convert a real  space precision  to  a  parametric
 /// space precision.   <T>  is the mean  value  of the
 /// length of the tangent of the curve or the surface.
@@ -131,7 +131,7 @@ pub fn approximation() -> f64 {
 pub fn parametric_real2(P: f64, T: f64) -> f64 {
     unsafe { crate::ffi::Precision_parametric_real2(P, T) }
 }
-/// **Source:** `Precision.hxx` - `Precision::PConfusion`
+/// **Source:** `Precision.hxx`:264 - `Precision::PConfusion`
 /// Returns a precision value in parametric space, which may be used :
 /// -   to test the coincidence of two points in the real space,
 /// by using parameter values, or
@@ -179,13 +179,13 @@ pub fn parametric_real2(P: f64, T: f64) -> f64 {
 pub fn p_confusion_real(T: f64) -> f64 {
     unsafe { crate::ffi::Precision_p_confusion_real(T) }
 }
-/// **Source:** `Precision.hxx` - `Precision::SquarePConfusion`
+/// **Source:** `Precision.hxx`:271 - `Precision::SquarePConfusion`
 /// Returns square of PConfusion.
 /// Created for speed and convenience.
 pub fn square_p_confusion() -> f64 {
     unsafe { crate::ffi::Precision_square_p_confusion() }
 }
-/// **Source:** `Precision.hxx` - `Precision::PIntersection`
+/// **Source:** `Precision.hxx`:286 - `Precision::PIntersection`
 /// Returns a precision value in parametric space, which
 /// may be used by intersection algorithms, to decide that
 /// a solution is reached. The purpose of this function is to
@@ -202,7 +202,7 @@ pub fn square_p_confusion() -> f64 {
 pub fn p_intersection_real(T: f64) -> f64 {
     unsafe { crate::ffi::Precision_p_intersection_real(T) }
 }
-/// **Source:** `Precision.hxx` - `Precision::PApproximation`
+/// **Source:** `Precision.hxx`:304 - `Precision::PApproximation`
 /// Returns a precision value in parametric space, which may
 /// be used by approximation algorithms. The purpose of this
 /// function is to provide an acceptable level of precision in
@@ -219,7 +219,7 @@ pub fn p_intersection_real(T: f64) -> f64 {
 pub fn p_approximation_real(T: f64) -> f64 {
     unsafe { crate::ffi::Precision_p_approximation_real(T) }
 }
-/// **Source:** `Precision.hxx` - `Precision::Parametric`
+/// **Source:** `Precision.hxx`:313 - `Precision::Parametric`
 /// Convert a real  space precision  to  a  parametric
 /// space precision on a default curve.
 ///
@@ -227,7 +227,7 @@ pub fn p_approximation_real(T: f64) -> f64 {
 pub fn parametric_real(P: f64) -> f64 {
     unsafe { crate::ffi::Precision_parametric_real(P) }
 }
-/// **Source:** `Precision.hxx` - `Precision::PConfusion`
+/// **Source:** `Precision.hxx`:319 - `Precision::PConfusion`
 /// Used  to test distances  in parametric  space on a
 /// default curve.
 ///
@@ -235,7 +235,7 @@ pub fn parametric_real(P: f64) -> f64 {
 pub fn p_confusion() -> f64 {
     unsafe { crate::ffi::Precision_p_confusion() }
 }
-/// **Source:** `Precision.hxx` - `Precision::PIntersection`
+/// **Source:** `Precision.hxx`:325 - `Precision::PIntersection`
 /// Used for Intersections  in parametric  space  on a
 /// default curve.
 ///
@@ -243,7 +243,7 @@ pub fn p_confusion() -> f64 {
 pub fn p_intersection() -> f64 {
     unsafe { crate::ffi::Precision_p_intersection() }
 }
-/// **Source:** `Precision.hxx` - `Precision::PApproximation`
+/// **Source:** `Precision.hxx`:331 - `Precision::PApproximation`
 /// Used for  Approximations  in parametric space on a
 /// default curve.
 ///
@@ -251,25 +251,25 @@ pub fn p_intersection() -> f64 {
 pub fn p_approximation() -> f64 {
     unsafe { crate::ffi::Precision_p_approximation() }
 }
-/// **Source:** `Precision.hxx` - `Precision::IsInfinite`
+/// **Source:** `Precision.hxx`:335 - `Precision::IsInfinite`
 /// Returns True if R may be considered as an infinite
 /// number. Currently Abs(R) > 1e100
 pub fn is_infinite(R: f64) -> bool {
     unsafe { crate::ffi::Precision_is_infinite(R) }
 }
-/// **Source:** `Precision.hxx` - `Precision::IsPositiveInfinite`
+/// **Source:** `Precision.hxx`:342 - `Precision::IsPositiveInfinite`
 /// Returns True if R may be considered as  a positive
 /// infinite number. Currently R > 1e100
 pub fn is_positive_infinite(R: f64) -> bool {
     unsafe { crate::ffi::Precision_is_positive_infinite(R) }
 }
-/// **Source:** `Precision.hxx` - `Precision::IsNegativeInfinite`
+/// **Source:** `Precision.hxx`:349 - `Precision::IsNegativeInfinite`
 /// Returns True if R may  be considered as a negative
 /// infinite number. Currently R < -1e100
 pub fn is_negative_infinite(R: f64) -> bool {
     unsafe { crate::ffi::Precision_is_negative_infinite(R) }
 }
-/// **Source:** `Precision.hxx` - `Precision::Infinite`
+/// **Source:** `Precision.hxx`:356 - `Precision::Infinite`
 /// Returns a  big number that  can  be  considered as
 /// infinite. Use -Infinite() for a negative big number.
 pub fn infinite() -> f64 {

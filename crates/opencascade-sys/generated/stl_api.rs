@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `StlAPI.hxx` - `StlAPI::Write`
+/// **Source:** `StlAPI.hxx`:35 - `StlAPI::Write`
 /// Convert and write shape to STL format.
 /// File is written in binary if aAsciiMode is False otherwise it is written in Ascii (by
 /// default).

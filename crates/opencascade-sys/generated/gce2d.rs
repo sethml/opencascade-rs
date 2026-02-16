@@ -163,9 +163,19 @@ impl MakeArcOfCircle {
         unsafe { &mut *(crate::ffi::GCE2d_MakeArcOfCircle_as_GCE2d_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GCE2d_Root: IsDone()
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_MakeArcOfCircle_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_MakeArcOfCircle_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -303,9 +313,19 @@ impl MakeArcOfEllipse {
         unsafe { &mut *(crate::ffi::GCE2d_MakeArcOfEllipse_as_GCE2d_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GCE2d_Root: IsDone()
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_MakeArcOfEllipse_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_MakeArcOfEllipse_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -441,9 +461,19 @@ impl MakeArcOfHyperbola {
         unsafe { &mut *(crate::ffi::GCE2d_MakeArcOfHyperbola_as_GCE2d_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GCE2d_Root: IsDone()
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_MakeArcOfHyperbola_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_MakeArcOfHyperbola_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -579,9 +609,19 @@ impl MakeArcOfParabola {
         unsafe { &mut *(crate::ffi::GCE2d_MakeArcOfParabola_as_GCE2d_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GCE2d_Root: IsDone()
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_MakeArcOfParabola_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_MakeArcOfParabola_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -770,9 +810,19 @@ impl MakeCircle {
         unsafe { &mut *(crate::ffi::GCE2d_MakeCircle_as_GCE2d_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GCE2d_Root: IsDone()
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_MakeCircle_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_MakeCircle_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -906,9 +956,19 @@ impl MakeEllipse {
         unsafe { &mut *(crate::ffi::GCE2d_MakeEllipse_as_GCE2d_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GCE2d_Root: IsDone()
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_MakeEllipse_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_MakeEllipse_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1045,9 +1105,19 @@ impl MakeHyperbola {
         unsafe { &mut *(crate::ffi::GCE2d_MakeHyperbola_as_GCE2d_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GCE2d_Root: IsDone()
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_MakeHyperbola_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_MakeHyperbola_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1142,9 +1212,19 @@ impl MakeLine {
         unsafe { &mut *(crate::ffi::GCE2d_MakeLine_as_GCE2d_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GCE2d_Root: IsDone()
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_MakeLine_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_MakeLine_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1342,9 +1422,19 @@ impl MakeParabola {
         unsafe { &mut *(crate::ffi::GCE2d_MakeParabola_as_GCE2d_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GCE2d_Root: IsDone()
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_MakeParabola_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_MakeParabola_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1534,9 +1624,19 @@ impl MakeSegment {
         unsafe { &mut *(crate::ffi::GCE2d_MakeSegment_as_GCE2d_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GCE2d_Root: IsDone()
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_MakeSegment_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_MakeSegment_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1612,5 +1712,17 @@ impl Root {
     /// Returns true if the construction is successful.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_Root_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `GCE2d_Root.hxx`:44 - `GCE2d_Root::Status()`
+    /// Returns the status of the construction
+    /// -   gce_Done, if the construction is successful, or
+    /// -   another value of the gce_ErrorType enumeration
+    /// indicating why the construction failed.
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GCE2d_Root_status(self as *const Self))
+                .unwrap()
+        }
     }
 }

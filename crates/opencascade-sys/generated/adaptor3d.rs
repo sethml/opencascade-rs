@@ -696,7 +696,7 @@ impl CurveOnSurface {
         }
     }
 
-    /// Inherited from Adaptor3d_Curve: OffsetCurve()
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Adaptor3d_CurveOnSurface_inherited_OffsetCurve(
@@ -1271,7 +1271,7 @@ impl InterFunc {
         }
     }
 
-    /// Inherited from math_Function: GetStateNumber()
+    /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::Adaptor3d_InterFunc_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -1668,7 +1668,7 @@ impl IsoCurve {
         unsafe { &mut *(crate::ffi::Adaptor3d_IsoCurve_as_Adaptor3d_Curve_mut(self as *mut Self)) }
     }
 
-    /// Inherited from Adaptor3d_Curve: OffsetCurve()
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Adaptor3d_IsoCurve_inherited_OffsetCurve(

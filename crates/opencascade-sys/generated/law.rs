@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `Law.hxx` - `Law::MixBnd`
+/// **Source:** `Law.hxx`:47 - `Law::MixBnd`
 /// This algorithm searches the knot values corresponding to the
 /// splitting of a given B-spline law into  several arcs with
 /// the same continuity. The continuity order is given at the
@@ -16,7 +16,7 @@
 pub fn mix_bnd(Lin: &crate::ffi::HandleLawLinear) -> crate::OwnedPtr<crate::ffi::HandleLawBSpFunc> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_mix_bnd(Lin)) }
 }
-/// **Source:** `Law.hxx` - `Law::Reparametrize`
+/// **Source:** `Law.hxx`:74 - `Law::Reparametrize`
 /// Computes a 1 d curve to  reparametrize a curve. Its an
 /// interpolation of NbPoints  points calculated  at quasi
 /// constant abscissa.
@@ -37,7 +37,7 @@ pub fn reparametrize(
         ))
     }
 }
-/// **Source:** `Law.hxx` - `Law::Scale`
+/// **Source:** `Law.hxx`:96 - `Law::Scale`
 /// Computes a 1  d curve to  scale  a field of  tangency.
 /// Value is 1. for t = (First+Last)/2 .
 /// If HasFirst value for t = First is VFirst (null derivative).
@@ -62,7 +62,7 @@ pub fn scale(
         crate::OwnedPtr::from_raw(crate::ffi::Law_scale(First, Last, HasF, HasL, VFirst, VLast))
     }
 }
-/// **Source:** `Law.hxx` - `Law::ScaleCub`
+/// **Source:** `Law.hxx`:103 - `Law::ScaleCub`
 pub fn scale_cub(
     First: f64,
     Last: f64,
@@ -1810,7 +1810,7 @@ impl Interpol {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_Interpol_to_handle(obj.into_raw())) }
     }
 
-    /// Inherited from Law_BSpFunc: Continuity()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:46 - `Law_BSpFunc::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::Law_Interpol_inherited_Continuity(
@@ -1820,27 +1820,27 @@ impl Interpol {
         }
     }
 
-    /// Inherited from Law_BSpFunc: NbIntervals()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:50 - `Law_BSpFunc::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Law_Interpol_inherited_NbIntervals(self as *const Self, S.into()) }
     }
 
-    /// Inherited from Law_BSpFunc: Value()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:58 - `Law_BSpFunc::Value()`
     pub fn value(&mut self, X: f64) -> f64 {
         unsafe { crate::ffi::Law_Interpol_inherited_Value(self as *mut Self, X) }
     }
 
-    /// Inherited from Law_BSpFunc: D1()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:60 - `Law_BSpFunc::D1()`
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         unsafe { crate::ffi::Law_Interpol_inherited_D1(self as *mut Self, X, F, D) }
     }
 
-    /// Inherited from Law_BSpFunc: D2()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:64 - `Law_BSpFunc::D2()`
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         unsafe { crate::ffi::Law_Interpol_inherited_D2(self as *mut Self, X, F, D, D2) }
     }
 
-    /// Inherited from Law_BSpFunc: Trim()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:75 - `Law_BSpFunc::Trim()`
     pub fn trim(
         &self,
         PFirst: f64,
@@ -1857,19 +1857,19 @@ impl Interpol {
         }
     }
 
-    /// Inherited from Law_BSpFunc: Bounds()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:79 - `Law_BSpFunc::Bounds()`
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         unsafe { crate::ffi::Law_Interpol_inherited_Bounds(self as *mut Self, PFirst, PLast) }
     }
 
-    /// Inherited from Law_BSpFunc: Curve()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:81 - `Law_BSpFunc::Curve()`
     pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Law_Interpol_inherited_Curve(self as *const Self))
         }
     }
 
-    /// Inherited from Law_BSpFunc: SetCurve()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:83 - `Law_BSpFunc::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleLawBSpline) {
         unsafe { crate::ffi::Law_Interpol_inherited_SetCurve(self as *mut Self, C) }
     }
@@ -2264,7 +2264,7 @@ impl S {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_S_to_handle(obj.into_raw())) }
     }
 
-    /// Inherited from Law_BSpFunc: Continuity()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:46 - `Law_BSpFunc::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::Law_S_inherited_Continuity(
@@ -2274,27 +2274,27 @@ impl S {
         }
     }
 
-    /// Inherited from Law_BSpFunc: NbIntervals()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:50 - `Law_BSpFunc::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Law_S_inherited_NbIntervals(self as *const Self, S.into()) }
     }
 
-    /// Inherited from Law_BSpFunc: Value()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:58 - `Law_BSpFunc::Value()`
     pub fn value(&mut self, X: f64) -> f64 {
         unsafe { crate::ffi::Law_S_inherited_Value(self as *mut Self, X) }
     }
 
-    /// Inherited from Law_BSpFunc: D1()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:60 - `Law_BSpFunc::D1()`
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         unsafe { crate::ffi::Law_S_inherited_D1(self as *mut Self, X, F, D) }
     }
 
-    /// Inherited from Law_BSpFunc: D2()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:64 - `Law_BSpFunc::D2()`
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         unsafe { crate::ffi::Law_S_inherited_D2(self as *mut Self, X, F, D, D2) }
     }
 
-    /// Inherited from Law_BSpFunc: Trim()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:75 - `Law_BSpFunc::Trim()`
     pub fn trim(
         &self,
         PFirst: f64,
@@ -2311,17 +2311,17 @@ impl S {
         }
     }
 
-    /// Inherited from Law_BSpFunc: Bounds()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:79 - `Law_BSpFunc::Bounds()`
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         unsafe { crate::ffi::Law_S_inherited_Bounds(self as *mut Self, PFirst, PLast) }
     }
 
-    /// Inherited from Law_BSpFunc: Curve()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:81 - `Law_BSpFunc::Curve()`
     pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_S_inherited_Curve(self as *const Self)) }
     }
 
-    /// Inherited from Law_BSpFunc: SetCurve()
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:83 - `Law_BSpFunc::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleLawBSpline) {
         unsafe { crate::ffi::Law_S_inherited_SetCurve(self as *mut Self, C) }
     }

@@ -5294,7 +5294,7 @@ impl FuncPSDist {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::Extrema_FuncPSDist_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -6332,7 +6332,7 @@ impl GlobOptFuncCCC0 {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -6413,7 +6413,7 @@ impl GlobOptFuncCCC1 {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -6516,7 +6516,7 @@ impl GlobOptFuncCCC2 {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -6561,7 +6561,7 @@ impl GlobOptFuncCQuadric {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe {
             crate::ffi::Extrema_GlobOptFuncCQuadric_inherited_GetStateNumber(self as *mut Self)
@@ -6650,7 +6650,7 @@ impl GlobOptFuncCS {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCS_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -6695,7 +6695,7 @@ impl GlobOptFuncConicS {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncConicS_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -9242,12 +9242,12 @@ impl POnSurfParams {
         }
     }
 
-    /// Inherited from Extrema_POnSurf: Value()
+    /// Inherited: **Source:** `Extrema_POnSurf.hxx`:40 - `Extrema_POnSurf::Value()`
     pub fn value(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::Extrema_POnSurfParams_inherited_Value(self as *const Self)) }
     }
 
-    /// Inherited from Extrema_POnSurf: SetParameters()
+    /// Inherited: **Source:** `Extrema_POnSurf.hxx`:44 - `Extrema_POnSurf::SetParameters()`
     pub fn set_parameters(&mut self, theU: f64, theV: f64, thePnt: &crate::ffi::gp_Pnt) {
         unsafe {
             crate::ffi::Extrema_POnSurfParams_inherited_SetParameters(
@@ -9259,7 +9259,7 @@ impl POnSurfParams {
         }
     }
 
-    /// Inherited from Extrema_POnSurf: Parameter()
+    /// Inherited: **Source:** `Extrema_POnSurf.hxx`:47 - `Extrema_POnSurf::Parameter()`
     pub fn parameter(&self, U: &mut f64, V: &mut f64) {
         unsafe { crate::ffi::Extrema_POnSurfParams_inherited_Parameter(self as *const Self, U, V) }
     }

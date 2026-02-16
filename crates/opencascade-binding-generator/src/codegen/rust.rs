@@ -301,7 +301,7 @@ fn generate_functions_from_bindings(
 
         let source_attr = format_source_attribution(
             &func.source_header,
-            None,
+            func.source_line,
             &format!("{}::{}", func.namespace, func.short_name),
         );
         writeln!(out, "    /// {}", source_attr).unwrap();
@@ -465,7 +465,7 @@ fn emit_free_function_wrapper(
     // Source attribution + doc comment
     let source_attr = format_source_attribution(
         &func.source_header,
-        None,
+        func.source_line,
         &format!("{}::{}", func.namespace, func.short_name),
     );
     writeln!(output, "/// {}", source_attr).unwrap();

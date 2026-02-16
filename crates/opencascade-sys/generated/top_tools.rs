@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `TopTools.hxx` - `TopTools::Dummy`
+/// **Source:** `TopTools.hxx`:81 - `TopTools::Dummy`
 /// This is to bypass an extraction bug. It will force
 /// the  inclusion    of  Standard_Integer.hxx  itself
 /// including Standard_OStream.hxx  at   the   correct

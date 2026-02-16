@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `BRepLib.hxx` - `BRepLib::Precision`
+/// **Source:** `BRepLib.hxx`:57 - `BRepLib::Precision`
 /// Computes the max distance between edge
 /// and its 2d representation on the face.
 /// Sets the default precision.  The current Precision
@@ -14,22 +14,22 @@
 pub fn precision_real_2(P: f64) {
     unsafe { crate::ffi::BRepLib_precision_real_2(P) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::Precision`
+/// **Source:** `BRepLib.hxx`:60 - `BRepLib::Precision`
 /// Returns the default precision.
 pub fn precision_2() -> f64 {
     unsafe { crate::ffi::BRepLib_precision_2() }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::Plane`
+/// **Source:** `BRepLib.hxx`:63 - `BRepLib::Plane`
 /// Sets the current plane to P.
 pub fn plane_handlegeomplane_2(P: &crate::ffi::HandleGeomPlane) {
     unsafe { crate::ffi::BRepLib_plane_handlegeomplane_2(P) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::Plane`
+/// **Source:** `BRepLib.hxx`:66 - `BRepLib::Plane`
 /// Returns the current plane.
 pub fn plane_2() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_plane_2()) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::CheckSameRange`
+/// **Source:** `BRepLib.hxx`:72 - `BRepLib::CheckSameRange`
 /// checks if the Edge is same range IGNORING
 /// the same range flag of the edge
 /// Confusion argument is to compare real numbers
@@ -37,7 +37,7 @@ pub fn plane_2() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
 pub fn check_same_range(E: &crate::ffi::TopoDS_Edge, Confusion: f64) -> bool {
     unsafe { crate::ffi::BRepLib_check_same_range(E, Confusion) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::SameRange`
+/// **Source:** `BRepLib.hxx`:83 - `BRepLib::SameRange`
 /// will make all the curve representation have
 /// the same range domain for the parameters.
 /// This will IGNORE the same range flag value
@@ -49,7 +49,7 @@ pub fn check_same_range(E: &crate::ffi::TopoDS_Edge, Confusion: f64) -> bool {
 pub fn same_range_edge_real(E: &crate::ffi::TopoDS_Edge, Tolerance: f64) {
     unsafe { crate::ffi::BRepLib_same_range_edge_real(E, Tolerance) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::BuildCurve3d`
+/// **Source:** `BRepLib.hxx`:91 - `BRepLib::BuildCurve3d`
 /// Computes the 3d curve for the edge  <E> if it does
 /// not exist. Returns True  if the curve was computed
 /// or  existed. Returns False  if there is no  planar
@@ -72,7 +72,7 @@ pub fn build_curve3d_edge_real_shape_int2(
         )
     }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::BuildCurves3d`
+/// **Source:** `BRepLib.hxx`:100 - `BRepLib::BuildCurves3d`
 /// Computes  the 3d curves  for all the  edges of <S>
 /// return False if one of the computation failed.
 /// <MaxSegment> >= 30 in approximation
@@ -93,13 +93,13 @@ pub fn build_curves3d_shape_real_shape_int2(
         )
     }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::BuildCurves3d`
+/// **Source:** `BRepLib.hxx`:108 - `BRepLib::BuildCurves3d`
 /// Computes  the 3d curves  for all the  edges of <S>
 /// return False if one of the computation failed.
 pub fn build_curves3d_shape(S: &crate::ffi::TopoDS_Shape) -> bool {
     unsafe { crate::ffi::BRepLib_build_curves3d_shape(S) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::BuildPCurveForEdgeOnPlane`
+/// **Source:** `BRepLib.hxx`:111 - `BRepLib::BuildPCurveForEdgeOnPlane`
 /// Builds pcurve of edge on face if the surface is plane, and updates the edge.
 pub fn build_p_curve_for_edge_on_plane_edge_face(
     theE: &crate::ffi::TopoDS_Edge,
@@ -107,7 +107,7 @@ pub fn build_p_curve_for_edge_on_plane_edge_face(
 ) {
     unsafe { crate::ffi::BRepLib_build_p_curve_for_edge_on_plane_edge_face(theE, theF) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::BuildPCurveForEdgeOnPlane`
+/// **Source:** `BRepLib.hxx`:116 - `BRepLib::BuildPCurveForEdgeOnPlane`
 /// Builds pcurve of edge on face if the surface is plane, but does not update the edge.
 /// The output are the pcurve and the flag telling that pcurve was built.
 pub fn build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool(
@@ -122,7 +122,7 @@ pub fn build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool(
         )
     }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateEdgeTol`
+/// **Source:** `BRepLib.hxx`:141 - `BRepLib::UpdateEdgeTol`
 /// Checks if the edge has a  Tolerance smaller than -- --
 /// -- -- MaxToleranceToCheck  if  so it will compute  the
 /// radius    of  -- the   cylindrical  pipe  surface that
@@ -138,7 +138,7 @@ pub fn update_edge_tol(
 ) -> bool {
     unsafe { crate::ffi::BRepLib_update_edge_tol(E, MinToleranceRequest, MaxToleranceToCheck) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateEdgeTolerance`
+/// **Source:** `BRepLib.hxx`:154 - `BRepLib::UpdateEdgeTolerance`
 /// -- Checks all the edges of the shape whose -- -- --
 /// Tolerance  is  smaller than  MaxToleranceToCheck --
 /// Returns True if at  least  one edge was updated --
@@ -157,7 +157,7 @@ pub fn update_edge_tolerance(
         crate::ffi::BRepLib_update_edge_tolerance(S, MinToleranceRequest, MaxToleranceToCheck)
     }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::SameParameter`
+/// **Source:** `BRepLib.hxx`:163 - `BRepLib::SameParameter`
 /// Computes new 2d curve(s)  for the edge <theEdge> to have
 /// the same parameter  as  the  3d curve.
 /// The algorithm is not done if the flag SameParameter
@@ -165,7 +165,7 @@ pub fn update_edge_tolerance(
 pub fn same_parameter_edge_real(theEdge: &crate::ffi::TopoDS_Edge, Tolerance: f64) {
     unsafe { crate::ffi::BRepLib_same_parameter_edge_real(theEdge, Tolerance) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::SameParameter`
+/// **Source:** `BRepLib.hxx`:175 - `BRepLib::SameParameter`
 /// Computes new 2d curve(s)  for the edge <theEdge> to have
 /// the same parameter  as  the  3d curve.
 /// The algorithm is not done if the flag SameParameter
@@ -190,7 +190,7 @@ pub fn same_parameter_edge_real2_bool(
         ))
     }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::SameParameter`
+/// **Source:** `BRepLib.hxx`:184 - `BRepLib::SameParameter`
 /// Computes new 2d curve(s) for all the edges of  <S>
 /// to have the same parameter  as  the  3d curve.
 /// The algorithm is not done if the flag SameParameter
@@ -198,7 +198,7 @@ pub fn same_parameter_edge_real2_bool(
 pub fn same_parameter_shape_real_bool(S: &crate::ffi::TopoDS_Shape, Tolerance: f64, forced: bool) {
     unsafe { crate::ffi::BRepLib_same_parameter_shape_real_bool(S, Tolerance, forced) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::SameParameter`
+/// **Source:** `BRepLib.hxx`:196 - `BRepLib::SameParameter`
 /// Computes new 2d curve(s) for all the edges of  <S>
 /// to have the same parameter  as  the  3d curve.
 /// The algorithm is not done if the flag SameParameter
@@ -222,7 +222,7 @@ pub fn same_parameter_shape_reshape_real_bool(
         )
     }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateTolerances`
+/// **Source:** `BRepLib.hxx`:205 - `BRepLib::UpdateTolerances`
 /// Replaces tolerance   of  FACE EDGE VERTEX  by  the
 /// tolerance Max of their connected handling shapes.
 /// It is not necessary to use this call after
@@ -230,7 +230,7 @@ pub fn same_parameter_shape_reshape_real_bool(
 pub fn update_tolerances_shape_bool(S: &crate::ffi::TopoDS_Shape, verifyFaceTolerance: bool) {
     unsafe { crate::ffi::BRepLib_update_tolerances_shape_bool(S, verifyFaceTolerance) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateTolerances`
+/// **Source:** `BRepLib.hxx`:217 - `BRepLib::UpdateTolerances`
 /// Replaces tolerance   of  FACE EDGE VERTEX  by  the
 /// tolerance Max of their connected handling shapes.
 /// It is not necessary to use this call after
@@ -252,20 +252,20 @@ pub fn update_tolerances_shape_reshape_bool(
         )
     }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateInnerTolerances`
+/// **Source:** `BRepLib.hxx`:224 - `BRepLib::UpdateInnerTolerances`
 /// Checks tolerances of edges (including inner points) and vertices
 /// of a shape and updates them to satisfy "SameParameter" condition
 pub fn update_inner_tolerances(S: &crate::ffi::TopoDS_Shape) {
     unsafe { crate::ffi::BRepLib_update_inner_tolerances(S) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::OrientClosedSolid`
+/// **Source:** `BRepLib.hxx`:229 - `BRepLib::OrientClosedSolid`
 /// Orients the solid forward  and the  shell with the
 /// orientation to have  matter in the solid. Returns
 /// False if the solid is unOrientable (open or incoherent)
 pub fn orient_closed_solid(solid: &mut crate::ffi::TopoDS_Solid) -> bool {
     unsafe { crate::ffi::BRepLib_orient_closed_solid(solid) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::ContinuityOfFaces`
+/// **Source:** `BRepLib.hxx`:233 - `BRepLib::ContinuityOfFaces`
 /// Returns the order of continuity between two faces
 /// connected by an edge
 pub fn continuity_of_faces(
@@ -284,7 +284,7 @@ pub fn continuity_of_faces(
         .unwrap()
     }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::EncodeRegularity`
+/// **Source:** `BRepLib.hxx`:242 - `BRepLib::EncodeRegularity`
 /// Encodes the Regularity of edges on a Shape.
 /// Warning: <TolAng> is an angular tolerance, expressed in Rad.
 /// Warning: If the edges's regularity are coded before, nothing
@@ -292,7 +292,7 @@ pub fn continuity_of_faces(
 pub fn encode_regularity_shape_real(S: &crate::ffi::TopoDS_Shape, TolAng: f64) {
     unsafe { crate::ffi::BRepLib_encode_regularity_shape_real(S, TolAng) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::EncodeRegularity`
+/// **Source:** `BRepLib.hxx`:249 - `BRepLib::EncodeRegularity`
 /// Encodes the Regularity of edges in list <LE> on the shape <S>
 /// Warning: <TolAng> is an angular tolerance, expressed in Rad.
 /// Warning: If the edges's regularity are coded before, nothing
@@ -304,7 +304,7 @@ pub fn encode_regularity_shape_listofshape_real(
 ) {
     unsafe { crate::ffi::BRepLib_encode_regularity_shape_listofshape_real(S, LE, TolAng) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::EncodeRegularity`
+/// **Source:** `BRepLib.hxx`:257 - `BRepLib::EncodeRegularity`
 /// Encodes the Regularity between <F1> and <F2> by <E>
 /// Warning: <TolAng> is an angular tolerance, expressed in Rad.
 /// Warning: If the edge's regularity is coded before, nothing
@@ -317,21 +317,21 @@ pub fn encode_regularity_edge_face2_real(
 ) {
     unsafe { crate::ffi::BRepLib_encode_regularity_edge_face2_real(E, F1, F2, TolAng) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::SortFaces`
+/// **Source:** `BRepLib.hxx`:265 - `BRepLib::SortFaces`
 /// Sorts in  LF the Faces of   S on the  complexity of
 /// their                  surfaces
 /// (Plane,Cylinder,Cone,Sphere,Torus,other)
 pub fn sort_faces(S: &crate::ffi::TopoDS_Shape, LF: &mut crate::ffi::TopTools_ListOfShape) {
     unsafe { crate::ffi::BRepLib_sort_faces(S, LF) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::ReverseSortFaces`
+/// **Source:** `BRepLib.hxx`:270 - `BRepLib::ReverseSortFaces`
 /// Sorts in  LF  the   Faces  of S   on the reverse
 /// complexity       of       their      surfaces
 /// (other,Torus,Sphere,Cone,Cylinder,Plane)
 pub fn reverse_sort_faces(S: &crate::ffi::TopoDS_Shape, LF: &mut crate::ffi::TopTools_ListOfShape) {
     unsafe { crate::ffi::BRepLib_reverse_sort_faces(S, LF) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::EnsureNormalConsistency`
+/// **Source:** `BRepLib.hxx`:276 - `BRepLib::EnsureNormalConsistency`
 /// Corrects the normals in Poly_Triangulation of faces,
 /// in such way that normals at nodes lying along smooth
 /// edges have the same value on both adjacent triangulations.
@@ -343,13 +343,13 @@ pub fn ensure_normal_consistency(
 ) -> bool {
     unsafe { crate::ffi::BRepLib_ensure_normal_consistency(S, theAngTol, ForceComputeNormals) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateDeflection`
+/// **Source:** `BRepLib.hxx`:283 - `BRepLib::UpdateDeflection`
 /// Updates value of deflection in Poly_Triangulation of faces
 /// by the maximum deviation measured on existing triangulation.
 pub fn update_deflection(S: &crate::ffi::TopoDS_Shape) {
     unsafe { crate::ffi::BRepLib_update_deflection(S) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::FindValidRange`
+/// **Source:** `BRepLib.hxx`:298 - `BRepLib::FindValidRange`
 /// For an edge defined by 3d curve and tolerance and vertices defined by points,
 /// parameters on curve and tolerances,
 /// finds a range of curve between vertices not covered by vertices tolerances.
@@ -374,7 +374,7 @@ pub fn find_valid_range_curve_real2_pnt_real2_pnt_real3(
         )
     }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::FindValidRange`
+/// **Source:** `BRepLib.hxx`:312 - `BRepLib::FindValidRange`
 /// Finds a range of 3d curve of the edge not covered by vertices tolerances.
 /// Returns false if there is no such range. Otherwise, sets theFirst and
 /// theLast as its bounds.
@@ -385,7 +385,7 @@ pub fn find_valid_range_edge_real2(
 ) -> bool {
     unsafe { crate::ffi::BRepLib_find_valid_range_edge_real2(theEdge, theFirst, theLast) }
 }
-/// **Source:** `BRepLib.hxx` - `BRepLib::ExtendFace`
+/// **Source:** `BRepLib.hxx`:324 - `BRepLib::ExtendFace`
 /// Enlarges the face on the given value.
 /// @param[in] theF  The face to extend
 /// @param[in] theExtVal  The extension value
@@ -1600,27 +1600,27 @@ impl MakeEdge {
         unsafe { &mut *(crate::ffi::BRepLib_MakeEdge_as_BRepLib_MakeShape_mut(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_Command: IsDone()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_MakeEdge_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_Command: Check()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_MakeEdge_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Build()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         unsafe { crate::ffi::BRepLib_MakeEdge_inherited_Build(self as *mut Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:45 - `BRepLib_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:50 - `BRepLib_MakeShape::FaceStatus()`
     pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
         unsafe {
             crate::b_rep_lib::ShapeModification::try_from(
@@ -1630,12 +1630,12 @@ impl MakeEdge {
         }
     }
 
-    /// Inherited from BRepLib_MakeShape: HasDescendants()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:53 - `BRepLib_MakeShape::HasDescendants()`
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRepLib_MakeEdge_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
     pub fn descendant_faces(
         &mut self,
         F: &crate::ffi::TopoDS_Face,
@@ -1643,17 +1643,17 @@ impl MakeEdge {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge_inherited_DescendantFaces(self as *mut Self, F)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NbSurfaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeEdge_inherited_NbSurfaces(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NewFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge_inherited_NewFaces(self as *mut Self, I)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
     pub fn faces_from_edges(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,
@@ -2133,27 +2133,27 @@ impl MakeEdge2d {
         }
     }
 
-    /// Inherited from BRepLib_Command: IsDone()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_Command: Check()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Build()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_Build(self as *mut Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:45 - `BRepLib_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge2d_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:50 - `BRepLib_MakeShape::FaceStatus()`
     pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
         unsafe {
             crate::b_rep_lib::ShapeModification::try_from(
@@ -2163,12 +2163,12 @@ impl MakeEdge2d {
         }
     }
 
-    /// Inherited from BRepLib_MakeShape: HasDescendants()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:53 - `BRepLib_MakeShape::HasDescendants()`
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
     pub fn descendant_faces(
         &mut self,
         F: &crate::ffi::TopoDS_Face,
@@ -2178,17 +2178,17 @@ impl MakeEdge2d {
         }
     }
 
-    /// Inherited from BRepLib_MakeShape: NbSurfaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_NbSurfaces(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NewFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge2d_inherited_NewFaces(self as *mut Self, I)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
     pub fn faces_from_edges(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,
@@ -2665,27 +2665,27 @@ impl MakeFace {
         unsafe { &mut *(crate::ffi::BRepLib_MakeFace_as_BRepLib_MakeShape_mut(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_Command: IsDone()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_MakeFace_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_Command: Check()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_MakeFace_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Build()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         unsafe { crate::ffi::BRepLib_MakeFace_inherited_Build(self as *mut Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:45 - `BRepLib_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepLib_MakeFace_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:50 - `BRepLib_MakeShape::FaceStatus()`
     pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
         unsafe {
             crate::b_rep_lib::ShapeModification::try_from(
@@ -2695,12 +2695,12 @@ impl MakeFace {
         }
     }
 
-    /// Inherited from BRepLib_MakeShape: HasDescendants()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:53 - `BRepLib_MakeShape::HasDescendants()`
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRepLib_MakeFace_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
     pub fn descendant_faces(
         &mut self,
         F: &crate::ffi::TopoDS_Face,
@@ -2708,17 +2708,17 @@ impl MakeFace {
         unsafe { &*(crate::ffi::BRepLib_MakeFace_inherited_DescendantFaces(self as *mut Self, F)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NbSurfaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeFace_inherited_NbSurfaces(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NewFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeFace_inherited_NewFaces(self as *mut Self, I)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
     pub fn faces_from_edges(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,
@@ -2936,27 +2936,27 @@ impl MakePolygon {
         }
     }
 
-    /// Inherited from BRepLib_Command: IsDone()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_MakePolygon_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_Command: Check()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_MakePolygon_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Build()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         unsafe { crate::ffi::BRepLib_MakePolygon_inherited_Build(self as *mut Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:45 - `BRepLib_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepLib_MakePolygon_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:50 - `BRepLib_MakeShape::FaceStatus()`
     pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
         unsafe {
             crate::b_rep_lib::ShapeModification::try_from(
@@ -2966,12 +2966,12 @@ impl MakePolygon {
         }
     }
 
-    /// Inherited from BRepLib_MakeShape: HasDescendants()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:53 - `BRepLib_MakeShape::HasDescendants()`
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRepLib_MakePolygon_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
     pub fn descendant_faces(
         &mut self,
         F: &crate::ffi::TopoDS_Face,
@@ -2981,17 +2981,17 @@ impl MakePolygon {
         }
     }
 
-    /// Inherited from BRepLib_MakeShape: NbSurfaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakePolygon_inherited_NbSurfaces(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NewFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakePolygon_inherited_NewFaces(self as *mut Self, I)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
     pub fn faces_from_edges(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,
@@ -3093,12 +3093,12 @@ impl MakeShape {
         unsafe { &mut *(crate::ffi::BRepLib_MakeShape_as_BRepLib_Command_mut(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_Command: IsDone()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_MakeShape_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_Command: Check()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_MakeShape_inherited_Check(self as *const Self) }
     }
@@ -3236,27 +3236,27 @@ impl MakeShell {
         unsafe { &mut *(crate::ffi::BRepLib_MakeShell_as_BRepLib_MakeShape_mut(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_Command: IsDone()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_MakeShell_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_Command: Check()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_MakeShell_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Build()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         unsafe { crate::ffi::BRepLib_MakeShell_inherited_Build(self as *mut Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:45 - `BRepLib_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepLib_MakeShell_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:50 - `BRepLib_MakeShape::FaceStatus()`
     pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
         unsafe {
             crate::b_rep_lib::ShapeModification::try_from(
@@ -3266,12 +3266,12 @@ impl MakeShell {
         }
     }
 
-    /// Inherited from BRepLib_MakeShape: HasDescendants()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:53 - `BRepLib_MakeShape::HasDescendants()`
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRepLib_MakeShell_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
     pub fn descendant_faces(
         &mut self,
         F: &crate::ffi::TopoDS_Face,
@@ -3279,17 +3279,17 @@ impl MakeShell {
         unsafe { &*(crate::ffi::BRepLib_MakeShell_inherited_DescendantFaces(self as *mut Self, F)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NbSurfaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeShell_inherited_NbSurfaces(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NewFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeShell_inherited_NewFaces(self as *mut Self, I)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
     pub fn faces_from_edges(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,
@@ -3409,32 +3409,32 @@ impl MakeSolid {
         unsafe { &mut *(crate::ffi::BRepLib_MakeSolid_as_BRepLib_MakeShape_mut(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_Command: IsDone()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_MakeSolid_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_Command: Check()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_MakeSolid_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Build()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         unsafe { crate::ffi::BRepLib_MakeSolid_inherited_Build(self as *mut Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:45 - `BRepLib_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepLib_MakeSolid_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: HasDescendants()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:53 - `BRepLib_MakeShape::HasDescendants()`
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRepLib_MakeSolid_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
     pub fn descendant_faces(
         &mut self,
         F: &crate::ffi::TopoDS_Face,
@@ -3442,17 +3442,17 @@ impl MakeSolid {
         unsafe { &*(crate::ffi::BRepLib_MakeSolid_inherited_DescendantFaces(self as *mut Self, F)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NbSurfaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeSolid_inherited_NbSurfaces(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NewFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeSolid_inherited_NewFaces(self as *mut Self, I)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
     pub fn faces_from_edges(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,
@@ -3508,27 +3508,27 @@ impl MakeVertex {
         }
     }
 
-    /// Inherited from BRepLib_Command: IsDone()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_MakeVertex_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_Command: Check()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_MakeVertex_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Build()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         unsafe { crate::ffi::BRepLib_MakeVertex_inherited_Build(self as *mut Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:45 - `BRepLib_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepLib_MakeVertex_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:50 - `BRepLib_MakeShape::FaceStatus()`
     pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
         unsafe {
             crate::b_rep_lib::ShapeModification::try_from(
@@ -3538,12 +3538,12 @@ impl MakeVertex {
         }
     }
 
-    /// Inherited from BRepLib_MakeShape: HasDescendants()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:53 - `BRepLib_MakeShape::HasDescendants()`
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRepLib_MakeVertex_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
     pub fn descendant_faces(
         &mut self,
         F: &crate::ffi::TopoDS_Face,
@@ -3553,17 +3553,17 @@ impl MakeVertex {
         }
     }
 
-    /// Inherited from BRepLib_MakeShape: NbSurfaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeVertex_inherited_NbSurfaces(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NewFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeVertex_inherited_NewFaces(self as *mut Self, I)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
     pub fn faces_from_edges(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,
@@ -3755,27 +3755,27 @@ impl MakeWire {
         unsafe { &mut *(crate::ffi::BRepLib_MakeWire_as_BRepLib_MakeShape_mut(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_Command: IsDone()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_MakeWire_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_Command: Check()
+    /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_MakeWire_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Build()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         unsafe { crate::ffi::BRepLib_MakeWire_inherited_Build(self as *mut Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:45 - `BRepLib_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepLib_MakeWire_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FaceStatus()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:50 - `BRepLib_MakeShape::FaceStatus()`
     pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
         unsafe {
             crate::b_rep_lib::ShapeModification::try_from(
@@ -3785,12 +3785,12 @@ impl MakeWire {
         }
     }
 
-    /// Inherited from BRepLib_MakeShape: HasDescendants()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:53 - `BRepLib_MakeShape::HasDescendants()`
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRepLib_MakeWire_inherited_HasDescendants(self as *const Self, F) }
     }
 
-    /// Inherited from BRepLib_MakeShape: DescendantFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
     pub fn descendant_faces(
         &mut self,
         F: &crate::ffi::TopoDS_Face,
@@ -3798,17 +3798,17 @@ impl MakeWire {
         unsafe { &*(crate::ffi::BRepLib_MakeWire_inherited_DescendantFaces(self as *mut Self, F)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NbSurfaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeWire_inherited_NbSurfaces(self as *const Self) }
     }
 
-    /// Inherited from BRepLib_MakeShape: NewFaces()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeWire_inherited_NewFaces(self as *mut Self, I)) }
     }
 
-    /// Inherited from BRepLib_MakeShape: FacesFromEdges()
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
     pub fn faces_from_edges(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,

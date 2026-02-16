@@ -132,7 +132,7 @@ impl ActorOfFinderProcess {
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForFinder: NullResult()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -141,26 +141,26 @@ impl ActorOfFinderProcess {
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForFinder: SetLast()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:80 - `Transfer_ActorOfProcessForFinder::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         unsafe {
             crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetLast(self as *mut Self, mode)
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForFinder: IsLast()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:83 - `Transfer_ActorOfProcessForFinder::IsLast()`
     pub fn is_last(&self) -> bool {
         unsafe { crate::ffi::Transfer_ActorOfFinderProcess_inherited_IsLast(self as *const Self) }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForFinder: SetNext()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:90 - `Transfer_ActorOfProcessForFinder::SetNext()`
     pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
         unsafe {
             crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetNext(self as *mut Self, next)
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForFinder: Next()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:93 - `Transfer_ActorOfProcessForFinder::Next()`
     pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_inherited_Next(
@@ -465,7 +465,7 @@ impl ActorOfTransientProcess {
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForTransient: NullResult()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -476,28 +476,28 @@ impl ActorOfTransientProcess {
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForTransient: SetLast()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         unsafe {
             crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetLast(self as *mut Self, mode)
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForTransient: IsLast()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:82 - `Transfer_ActorOfProcessForTransient::IsLast()`
     pub fn is_last(&self) -> bool {
         unsafe {
             crate::ffi::Transfer_ActorOfTransientProcess_inherited_IsLast(self as *const Self)
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForTransient: SetNext()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
     pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
         unsafe {
             crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetNext(self as *mut Self, next)
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForTransient: Next()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
     pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfTransientProcess_inherited_Next(

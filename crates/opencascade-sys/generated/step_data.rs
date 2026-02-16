@@ -244,34 +244,34 @@ impl StepModel {
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: Destroy()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:71 - `Interface_InterfaceModel::Destroy()`
     pub fn destroy(&mut self) {
         unsafe { crate::ffi::StepData_StepModel_inherited_Destroy(self as *mut Self) }
     }
 
-    /// Inherited from Interface_InterfaceModel: DispatchStatus()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:94 - `Interface_InterfaceModel::DispatchStatus()`
     pub fn dispatch_status(&mut self) -> &mut bool {
         unsafe {
             &mut *(crate::ffi::StepData_StepModel_inherited_DispatchStatus(self as *mut Self))
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: Clear()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:99 - `Interface_InterfaceModel::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::StepData_StepModel_inherited_Clear(self as *mut Self) }
     }
 
-    /// Inherited from Interface_InterfaceModel: ClearEntities()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:103 - `Interface_InterfaceModel::ClearEntities()`
     pub fn clear_entities(&mut self) {
         unsafe { crate::ffi::StepData_StepModel_inherited_ClearEntities(self as *mut Self) }
     }
 
-    /// Inherited from Interface_InterfaceModel: NbEntities()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:113 - `Interface_InterfaceModel::NbEntities()`
     pub fn nb_entities(&self) -> i32 {
         unsafe { crate::ffi::StepData_StepModel_inherited_NbEntities(self as *const Self) }
     }
 
-    /// Inherited from Interface_InterfaceModel: EntityState()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:158 - `Interface_InterfaceModel::EntityState()`
     pub fn entity_state(&self, num: i32) -> crate::interface::DataState {
         unsafe {
             crate::interface::DataState::try_from(
@@ -281,7 +281,7 @@ impl StepModel {
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: IsReportEntity()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:170 - `Interface_InterfaceModel::IsReportEntity()`
     pub fn is_report_entity(&self, num: i32, semantic: bool) -> bool {
         unsafe {
             crate::ffi::StepData_StepModel_inherited_IsReportEntity(
@@ -292,33 +292,33 @@ impl StepModel {
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: IsErrorEntity()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:185 - `Interface_InterfaceModel::IsErrorEntity()`
     pub fn is_error_entity(&self, num: i32) -> bool {
         unsafe { crate::ffi::StepData_StepModel_inherited_IsErrorEntity(self as *const Self, num) }
     }
 
-    /// Inherited from Interface_InterfaceModel: IsRedefinedContent()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:192 - `Interface_InterfaceModel::IsRedefinedContent()`
     pub fn is_redefined_content(&self, num: i32) -> bool {
         unsafe {
             crate::ffi::StepData_StepModel_inherited_IsRedefinedContent(self as *const Self, num)
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: ClearReportEntity()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:197 - `Interface_InterfaceModel::ClearReportEntity()`
     pub fn clear_report_entity(&mut self, num: i32) -> bool {
         unsafe {
             crate::ffi::StepData_StepModel_inherited_ClearReportEntity(self as *mut Self, num)
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: IsUnknownEntity()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:215 - `Interface_InterfaceModel::IsUnknownEntity()`
     pub fn is_unknown_entity(&self, num: i32) -> bool {
         unsafe {
             crate::ffi::StepData_StepModel_inherited_IsUnknownEntity(self as *const Self, num)
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: FillSemanticChecks()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:222 - `Interface_InterfaceModel::FillSemanticChecks()`
     pub fn fill_semantic_checks(
         &mut self,
         checks: &crate::ffi::Interface_CheckIterator,
@@ -333,29 +333,29 @@ impl StepModel {
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: HasSemanticChecks()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:226 - `Interface_InterfaceModel::HasSemanticChecks()`
     pub fn has_semantic_checks(&self) -> bool {
         unsafe { crate::ffi::StepData_StepModel_inherited_HasSemanticChecks(self as *const Self) }
     }
 
-    /// Inherited from Interface_InterfaceModel: Check()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:233 - `Interface_InterfaceModel::Check()`
     pub fn check(&self, num: i32, syntactic: bool) -> &crate::ffi::HandleInterfaceCheck {
         unsafe {
             &*(crate::ffi::StepData_StepModel_inherited_Check(self as *const Self, num, syntactic))
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: Reservate()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:240 - `Interface_InterfaceModel::Reservate()`
     pub fn reservate(&mut self, nbent: i32) {
         unsafe { crate::ffi::StepData_StepModel_inherited_Reservate(self as *mut Self, nbent) }
     }
 
-    /// Inherited from Interface_InterfaceModel: ReverseOrders()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:287 - `Interface_InterfaceModel::ReverseOrders()`
     pub fn reverse_orders(&mut self, after: i32) {
         unsafe { crate::ffi::StepData_StepModel_inherited_ReverseOrders(self as *mut Self, after) }
     }
 
-    /// Inherited from Interface_InterfaceModel: ChangeOrder()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:294 - `Interface_InterfaceModel::ChangeOrder()`
     pub fn change_order(&mut self, oldnum: i32, newnum: i32, count: i32) {
         unsafe {
             crate::ffi::StepData_StepModel_inherited_ChangeOrder(
@@ -367,26 +367,26 @@ impl StepModel {
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: SetCategoryNumber()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:314 - `Interface_InterfaceModel::SetCategoryNumber()`
     pub fn set_category_number(&mut self, num: i32, val: i32) -> bool {
         unsafe {
             crate::ffi::StepData_StepModel_inherited_SetCategoryNumber(self as *mut Self, num, val)
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: CategoryNumber()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:319 - `Interface_InterfaceModel::CategoryNumber()`
     pub fn category_number(&self, num: i32) -> i32 {
         unsafe { crate::ffi::StepData_StepModel_inherited_CategoryNumber(self as *const Self, num) }
     }
 
-    /// Inherited from Interface_InterfaceModel: GlobalCheck()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:344 - `Interface_InterfaceModel::GlobalCheck()`
     pub fn global_check(&self, syntactic: bool) -> &crate::ffi::HandleInterfaceCheck {
         unsafe {
             &*(crate::ffi::StepData_StepModel_inherited_GlobalCheck(self as *const Self, syntactic))
         }
     }
 
-    /// Inherited from Interface_InterfaceModel: SetGlobalCheck()
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:349 - `Interface_InterfaceModel::SetGlobalCheck()`
     pub fn set_global_check(&mut self, ach: &crate::ffi::HandleInterfaceCheck) {
         unsafe { crate::ffi::StepData_StepModel_inherited_SetGlobalCheck(self as *mut Self, ach) }
     }

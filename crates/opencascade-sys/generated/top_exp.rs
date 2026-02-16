@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `TopExp.hxx` - `TopExp::MapShapes`
+/// **Source:** `TopExp.hxx`:54 - `TopExp::MapShapes`
 /// Tool to explore a topological data structure.
 /// Stores in the map <M> all  the sub-shapes of <S>
 /// of type <T>.
@@ -19,7 +19,7 @@ pub fn map_shapes_shape_shapeenum_indexedmapofshape(
 ) {
     unsafe { crate::ffi::TopExp_map_shapes_shape_shapeenum_indexedmapofshape(S, T.into(), M) }
 }
-/// **Source:** `TopExp.hxx` - `TopExp::MapShapes`
+/// **Source:** `TopExp.hxx`:64 - `TopExp::MapShapes`
 /// Stores in the map <M> all  the sub-shapes of <S>.
 /// - If cumOri is true, the function composes all
 /// sub-shapes with the orientation of S.
@@ -34,7 +34,7 @@ pub fn map_shapes_shape_indexedmapofshape_bool2(
 ) {
     unsafe { crate::ffi::TopExp_map_shapes_shape_indexedmapofshape_bool2(S, M, cumOri, cumLoc) }
 }
-/// **Source:** `TopExp.hxx` - `TopExp::MapShapes`
+/// **Source:** `TopExp.hxx`:75 - `TopExp::MapShapes`
 /// Stores in the map <M> all  the sub-shapes of <S>.
 /// - If cumOri is true, the function composes all
 /// sub-shapes with the orientation of S.
@@ -49,7 +49,7 @@ pub fn map_shapes_shape_mapofshape_bool2(
 ) {
     unsafe { crate::ffi::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc) }
 }
-/// **Source:** `TopExp.hxx` - `TopExp::MapShapesAndAncestors`
+/// **Source:** `TopExp.hxx`:85 - `TopExp::MapShapesAndAncestors`
 /// Stores in the map <M> all the subshape of <S> of
 /// type <TS>  for each one append  to  the list all
 /// the ancestors of type <TA>.  For example map all
@@ -63,7 +63,7 @@ pub fn map_shapes_and_ancestors(
 ) {
     unsafe { crate::ffi::TopExp_map_shapes_and_ancestors(S, TS.into(), TA.into(), M) }
 }
-/// **Source:** `TopExp.hxx` - `TopExp::MapShapesAndUniqueAncestors`
+/// **Source:** `TopExp.hxx`:96 - `TopExp::MapShapesAndUniqueAncestors`
 /// Stores in the map <M> all the subshape of <S> of
 /// type <TS> for each one append to the list all
 /// unique ancestors of type <TA>.  For example map all
@@ -87,7 +87,7 @@ pub fn map_shapes_and_unique_ancestors(
         )
     }
 }
-/// **Source:** `TopExp.hxx` - `TopExp::FirstVertex`
+/// **Source:** `TopExp.hxx`:106 - `TopExp::FirstVertex`
 /// Returns the Vertex of orientation FORWARD in E. If
 /// there is none returns a Null Shape.
 /// CumOri = True : taking account the edge orientation
@@ -97,7 +97,7 @@ pub fn first_vertex(
 ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopExp_first_vertex(E, CumOri)) }
 }
-/// **Source:** `TopExp.hxx` - `TopExp::LastVertex`
+/// **Source:** `TopExp.hxx`:112 - `TopExp::LastVertex`
 /// Returns the Vertex of orientation REVERSED in E. If
 /// there is none returns a Null Shape.
 /// CumOri = True : taking account the edge orientation
@@ -107,7 +107,7 @@ pub fn last_vertex(
 ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopExp_last_vertex(E, CumOri)) }
 }
-/// **Source:** `TopExp.hxx` - `TopExp::Vertices`
+/// **Source:** `TopExp.hxx`:118 - `TopExp::Vertices`
 /// Returns in Vfirst, Vlast the  FORWARD and REVERSED
 /// vertices of the edge <E>. May be null shapes.
 /// CumOri = True : taking account the edge orientation
@@ -119,7 +119,7 @@ pub fn vertices_edge_vertex2_bool(
 ) {
     unsafe { crate::ffi::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri) }
 }
-/// **Source:** `TopExp.hxx` - `TopExp::Vertices`
+/// **Source:** `TopExp.hxx`:129 - `TopExp::Vertices`
 /// Returns  in  Vfirst,  Vlast   the first   and last
 /// vertices of the open wire <W>. May be null shapes.
 /// if   <W>  is closed Vfirst and Vlast  are a same
@@ -133,7 +133,7 @@ pub fn vertices_wire_vertex2(
 ) {
     unsafe { crate::ffi::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast) }
 }
-/// **Source:** `TopExp.hxx` - `TopExp::CommonVertex`
+/// **Source:** `TopExp.hxx`:137 - `TopExp::CommonVertex`
 /// Finds   the  vertex <V> common   to  the two edges
 /// <E1,E2>, returns True if this vertex exists.
 ///

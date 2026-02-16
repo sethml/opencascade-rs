@@ -389,7 +389,7 @@ impl DistFunction {
         unsafe { &mut *(crate::ffi::GCPnts_DistFunction_as_math_Function_mut(self as *mut Self)) }
     }
 
-    /// Inherited from math_Function: GetStateNumber()
+    /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::GCPnts_DistFunction_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -439,7 +439,7 @@ impl DistFunctionMV {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::GCPnts_DistFunctionMV_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -502,7 +502,7 @@ impl DistFunction2d {
         unsafe { &mut *(crate::ffi::GCPnts_DistFunction2d_as_math_Function_mut(self as *mut Self)) }
     }
 
-    /// Inherited from math_Function: GetStateNumber()
+    /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::GCPnts_DistFunction2d_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -553,7 +553,7 @@ impl DistFunction2dMV {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::GCPnts_DistFunction2dMV_inherited_GetStateNumber(self as *mut Self) }
     }

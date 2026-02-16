@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::Reverse`
+/// **Source:** `BSplCLib.hxx`:334 - `BSplCLib::Reverse`
 /// Reverses the array of poles. Last is the  index of
 /// the new first pole. On  a  non periodic curve last
 /// is Poles.Upper(). On a periodic curve last is
@@ -20,17 +20,17 @@
 pub fn reverse_array1ofpnt_int(Poles: &mut crate::ffi::TColgp_Array1OfPnt, Last: i32) {
     unsafe { crate::ffi::BSplCLib_reverse_array1ofpnt_int(Poles, Last) }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::Reverse`
+/// **Source:** `BSplCLib.hxx`:337 - `BSplCLib::Reverse`
 /// Reverses the array of poles.
 pub fn reverse_array1ofpnt2d_int(Poles: &mut crate::ffi::TColgp_Array1OfPnt2d, Last: i32) {
     unsafe { crate::ffi::BSplCLib_reverse_array1ofpnt2d_int(Poles, Last) }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::MaxDegree`
+/// **Source:** `BSplCLib.hxx`:352 - `BSplCLib::MaxDegree`
 /// returns the degree maxima for a BSplineCurve.
 pub fn max_degree() -> i32 {
     unsafe { crate::ffi::BSplCLib_max_degree() }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::Eval`
+/// **Source:** `BSplCLib.hxx`:363 - `BSplCLib::Eval`
 /// Perform the Boor  algorithm  to  evaluate a point at
 /// parameter <U>, with <Degree> and <Dimension>.
 ///
@@ -43,7 +43,7 @@ pub fn max_degree() -> i32 {
 pub fn eval(U: f64, Degree: i32, Knots: &mut f64, Dimension: i32, Poles: &mut f64) {
     unsafe { crate::ffi::BSplCLib_eval(U, Degree, Knots, Dimension, Poles) }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::BoorScheme`
+/// **Source:** `BSplCLib.hxx`:398 - `BSplCLib::BoorScheme`
 /// Performs the  Boor Algorithm  at  parameter <U> with
 /// the given <Degree> and the  array of <Knots> on  the
 /// poles <Poles> of dimension  <Dimension>.  The schema
@@ -84,7 +84,7 @@ pub fn boor_scheme(
 ) {
     unsafe { crate::ffi::BSplCLib_boor_scheme(U, Degree, Knots, Dimension, Poles, Depth, Length) }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::AntiBoorScheme`
+/// **Source:** `BSplCLib.hxx`:417 - `BSplCLib::AntiBoorScheme`
 /// Compute  the content of  Pole before the BoorScheme.
 /// This method is used to remove poles.
 ///
@@ -112,7 +112,7 @@ pub fn anti_boor_scheme(
         )
     }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::Derivative`
+/// **Source:** `BSplCLib.hxx`:436 - `BSplCLib::Derivative`
 /// Computes   the   poles of  the    BSpline  giving the
 /// derivatives of order <Order>.
 ///
@@ -133,7 +133,7 @@ pub fn derivative(
 ) {
     unsafe { crate::ffi::BSplCLib_derivative(Degree, Knots, Dimension, Length, Order, Poles) }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::Bohm`
+/// **Source:** `BSplCLib.hxx`:452 - `BSplCLib::Bohm`
 /// Performs the Bohm  Algorithm at  parameter <U>. This
 /// algorithm computes the value and all the derivatives
 /// up to order N (N <= Degree).
@@ -146,14 +146,14 @@ pub fn derivative(
 pub fn bohm(U: f64, Degree: i32, N: i32, Knots: &mut f64, Dimension: i32, Poles: &mut f64) {
     unsafe { crate::ffi::BSplCLib_bohm(U, Degree, N, Knots, Dimension, Poles) }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::BoorIndex`
+/// **Source:** `BSplCLib.hxx`:514 - `BSplCLib::BoorIndex`
 /// Returns the index in  the Boor result array of the
 /// poles <Index>. If  the Boor  algorithm was perform
 /// with <Length> and <Depth>.
 pub fn boor_index(Index: i32, Length: i32, Depth: i32) -> i32 {
     unsafe { crate::ffi::BSplCLib_boor_index(Index, Length, Depth) }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::FactorBandedMatrix`
+/// **Source:** `BSplCLib.hxx`:1254 - `BSplCLib::FactorBandedMatrix`
 /// this  factors  the Banded Matrix in
 /// the LU form with a Banded storage of
 /// components of the L matrix
@@ -176,7 +176,7 @@ pub fn factor_banded_matrix(
         )
     }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::SolveBandedSystem`
+/// **Source:** `BSplCLib.hxx`:1268 - `BSplCLib::SolveBandedSystem`
 /// This solves  the system Matrix.X =  B
 /// with when Matrix is factored in LU form
 /// The  Array   is    an   seen   as    an
@@ -203,7 +203,7 @@ pub fn solve_banded_system_matrix_int3_real(
         )
     }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::SolveBandedSystem`
+/// **Source:** `BSplCLib.hxx`:1282 - `BSplCLib::SolveBandedSystem`
 /// This solves  the system Matrix.X =  B
 /// with when Matrix is factored in LU form
 /// The  Array   has the length of
@@ -227,7 +227,7 @@ pub fn solve_banded_system_matrix_int2_array1ofpnt2d(
         )
     }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::SolveBandedSystem`
+/// **Source:** `BSplCLib.hxx`:1295 - `BSplCLib::SolveBandedSystem`
 /// This solves  the system Matrix.X =  B
 /// with when Matrix is factored in LU form
 /// The  Array   has the length of
@@ -251,7 +251,7 @@ pub fn solve_banded_system_matrix_int2_array1ofpnt(
         )
     }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::SolveBandedSystem`
+/// **Source:** `BSplCLib.hxx`:1300 - `BSplCLib::SolveBandedSystem`
 pub fn solve_banded_system_matrix_int2_bool_int_real2(
     Matrix: &crate::ffi::math_Matrix,
     UpperBandWidth: i32,
@@ -273,21 +273,21 @@ pub fn solve_banded_system_matrix_int2_bool_int_real2(
         )
     }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::PolesCoefficients`
+/// **Source:** `BSplCLib.hxx`:2003 - `BSplCLib::PolesCoefficients`
 pub fn poles_coefficients_array1ofpnt2d2(
     Poles: &crate::ffi::TColgp_Array1OfPnt2d,
     CachePoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
 ) {
     unsafe { crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2d2(Poles, CachePoles) }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::PolesCoefficients`
+/// **Source:** `BSplCLib.hxx`:2011 - `BSplCLib::PolesCoefficients`
 pub fn poles_coefficients_array1ofpnt2(
     Poles: &crate::ffi::TColgp_Array1OfPnt,
     CachePoles: &mut crate::ffi::TColgp_Array1OfPnt,
 ) {
     unsafe { crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2(Poles, CachePoles) }
 }
-/// **Source:** `BSplCLib.hxx` - `BSplCLib::FlatBezierKnots`
+/// **Source:** `BSplCLib.hxx`:2025 - `BSplCLib::FlatBezierKnots`
 /// Returns pointer to statically allocated array representing
 /// flat knots for bezier curve of the specified degree.
 /// Raises OutOfRange if Degree > MaxDegree()

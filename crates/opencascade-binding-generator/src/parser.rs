@@ -555,6 +555,7 @@ fn parse_function(entity: &Entity, namespace: &str, source_header: &str, verbose
         module,
         comment,
         source_header: source_header.to_string(),
+        source_line: get_entity_line(entity),
         params,
         return_type: Some(return_type),
     })

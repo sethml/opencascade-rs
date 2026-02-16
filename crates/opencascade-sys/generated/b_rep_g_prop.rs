@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `BRepGProp.hxx` - `BRepGProp::LinearProperties`
+/// **Source:** `BRepGProp.hxx`:87 - `BRepGProp::LinearProperties`
 /// Computes the linear global properties of the shape S,
 /// i.e. the global properties induced by each edge of the
 /// shape S, and brings them together with the global
@@ -54,7 +54,7 @@ pub fn linear_properties(
 ) {
     unsafe { crate::ffi::BRepGProp_linear_properties(S, LProps, SkipShared, UseTriangulation) }
 }
-/// **Source:** `BRepGProp.hxx` - `BRepGProp::SurfaceProperties`
+/// **Source:** `BRepGProp.hxx`:133 - `BRepGProp::SurfaceProperties`
 /// Computes the surface global properties of the
 /// shape S, i.e. the global properties induced by each
 /// face of the shape S, and brings them together with
@@ -110,7 +110,7 @@ pub fn surface_properties_shape_gprops_bool2(
         )
     }
 }
-/// **Source:** `BRepGProp.hxx` - `BRepGProp::SurfaceProperties`
+/// **Source:** `BRepGProp.hxx`:151 - `BRepGProp::SurfaceProperties`
 /// Updates <SProps> with the shape <S>, that contains its principal properties.
 /// The surface properties of all the faces in <S> are computed.
 /// Adaptive 2D Gauss integration is used.
@@ -133,7 +133,7 @@ pub fn surface_properties_shape_gprops_real_bool(
         crate::ffi::BRepGProp_surface_properties_shape_gprops_real_bool(S, SProps, Eps, SkipShared)
     }
 }
-/// **Source:** `BRepGProp.hxx` - `BRepGProp::VolumeProperties`
+/// **Source:** `BRepGProp.hxx`:198 - `BRepGProp::VolumeProperties`
 ///
 /// Computes the global volume properties of the solid
 /// S, and brings them together with the global
@@ -193,7 +193,7 @@ pub fn volume_properties_shape_gprops_bool3(
         )
     }
 }
-/// **Source:** `BRepGProp.hxx` - `BRepGProp::VolumeProperties`
+/// **Source:** `BRepGProp.hxx`:219 - `BRepGProp::VolumeProperties`
 /// Updates <VProps> with the shape <S>, that contains its principal properties.
 /// The volume properties of all the FORWARD and REVERSED faces in <S> are computed.
 /// If OnlyClosed is True then computed faces must belong to closed Shells.
@@ -221,7 +221,7 @@ pub fn volume_properties_shape_gprops_real_bool2(
         )
     }
 }
-/// **Source:** `BRepGProp.hxx` - `BRepGProp::VolumePropertiesGK`
+/// **Source:** `BRepGProp.hxx`:241 - `BRepGProp::VolumePropertiesGK`
 /// Updates <VProps> with the shape <S>, that contains its principal properties.
 /// The volume properties of all the FORWARD and REVERSED faces in <S> are computed.
 /// If OnlyClosed is True then computed faces must belong to closed Shells.
@@ -253,7 +253,7 @@ pub fn volume_properties_gk_shape_gprops_real_bool5(
         )
     }
 }
-/// **Source:** `BRepGProp.hxx` - `BRepGProp::VolumePropertiesGK`
+/// **Source:** `BRepGProp.hxx`:251 - `BRepGProp::VolumePropertiesGK`
 pub fn volume_properties_gk_shape_gprops_pln_real_bool5(
     S: &crate::ffi::TopoDS_Shape,
     VProps: &mut crate::ffi::GProp_GProps,
@@ -327,17 +327,17 @@ impl Cinert {
         unsafe { &mut *(crate::ffi::BRepGProp_Cinert_as_GProp_GProps_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GProp_GProps: Add()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::ffi::GProp_GProps, Density: f64) {
         unsafe { crate::ffi::BRepGProp_Cinert_inherited_Add(self as *mut Self, Item, Density) }
     }
 
-    /// Inherited from GProp_GProps: Mass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_Cinert_inherited_Mass(self as *const Self) }
     }
 
-    /// Inherited from GProp_GProps: CentreOfMass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Cinert_inherited_CentreOfMass(
@@ -346,7 +346,7 @@ impl Cinert {
         }
     }
 
-    /// Inherited from GProp_GProps: MatrixOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Cinert_inherited_MatrixOfInertia(
@@ -355,19 +355,19 @@ impl Cinert {
         }
     }
 
-    /// Inherited from GProp_GProps: StaticMoments()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         unsafe {
             crate::ffi::BRepGProp_Cinert_inherited_StaticMoments(self as *const Self, Ix, Iy, Iz)
         }
     }
 
-    /// Inherited from GProp_GProps: MomentOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::BRepGProp_Cinert_inherited_MomentOfInertia(self as *const Self, A) }
     }
 
-    /// Inherited from GProp_GProps: PrincipalProperties()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::ffi::GProp_PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Cinert_inherited_PrincipalProperties(
@@ -376,7 +376,7 @@ impl Cinert {
         }
     }
 
-    /// Inherited from GProp_GProps: RadiusOfGyration()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::BRepGProp_Cinert_inherited_RadiusOfGyration(self as *const Self, A) }
     }
@@ -925,17 +925,17 @@ impl MeshCinert {
         unsafe { &mut *(crate::ffi::BRepGProp_MeshCinert_as_GProp_GProps_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GProp_GProps: Add()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::ffi::GProp_GProps, Density: f64) {
         unsafe { crate::ffi::BRepGProp_MeshCinert_inherited_Add(self as *mut Self, Item, Density) }
     }
 
-    /// Inherited from GProp_GProps: Mass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_MeshCinert_inherited_Mass(self as *const Self) }
     }
 
-    /// Inherited from GProp_GProps: CentreOfMass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_MeshCinert_inherited_CentreOfMass(
@@ -944,7 +944,7 @@ impl MeshCinert {
         }
     }
 
-    /// Inherited from GProp_GProps: MatrixOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_MeshCinert_inherited_MatrixOfInertia(
@@ -953,7 +953,7 @@ impl MeshCinert {
         }
     }
 
-    /// Inherited from GProp_GProps: StaticMoments()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         unsafe {
             crate::ffi::BRepGProp_MeshCinert_inherited_StaticMoments(
@@ -965,14 +965,14 @@ impl MeshCinert {
         }
     }
 
-    /// Inherited from GProp_GProps: MomentOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe {
             crate::ffi::BRepGProp_MeshCinert_inherited_MomentOfInertia(self as *const Self, A)
         }
     }
 
-    /// Inherited from GProp_GProps: PrincipalProperties()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::ffi::GProp_PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -981,7 +981,7 @@ impl MeshCinert {
         }
     }
 
-    /// Inherited from GProp_GProps: RadiusOfGyration()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe {
             crate::ffi::BRepGProp_MeshCinert_inherited_RadiusOfGyration(self as *const Self, A)
@@ -1058,17 +1058,17 @@ impl MeshProps {
         unsafe { &mut *(crate::ffi::BRepGProp_MeshProps_as_GProp_GProps_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GProp_GProps: Add()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::ffi::GProp_GProps, Density: f64) {
         unsafe { crate::ffi::BRepGProp_MeshProps_inherited_Add(self as *mut Self, Item, Density) }
     }
 
-    /// Inherited from GProp_GProps: Mass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_MeshProps_inherited_Mass(self as *const Self) }
     }
 
-    /// Inherited from GProp_GProps: CentreOfMass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_MeshProps_inherited_CentreOfMass(
@@ -1077,7 +1077,7 @@ impl MeshProps {
         }
     }
 
-    /// Inherited from GProp_GProps: MatrixOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_MeshProps_inherited_MatrixOfInertia(
@@ -1086,19 +1086,19 @@ impl MeshProps {
         }
     }
 
-    /// Inherited from GProp_GProps: StaticMoments()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         unsafe {
             crate::ffi::BRepGProp_MeshProps_inherited_StaticMoments(self as *const Self, Ix, Iy, Iz)
         }
     }
 
-    /// Inherited from GProp_GProps: MomentOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::BRepGProp_MeshProps_inherited_MomentOfInertia(self as *const Self, A) }
     }
 
-    /// Inherited from GProp_GProps: PrincipalProperties()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::ffi::GProp_PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -1107,7 +1107,7 @@ impl MeshProps {
         }
     }
 
-    /// Inherited from GProp_GProps: RadiusOfGyration()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe {
             crate::ffi::BRepGProp_MeshProps_inherited_RadiusOfGyration(self as *const Self, A)
@@ -1244,17 +1244,17 @@ impl Sinert {
         unsafe { &mut *(crate::ffi::BRepGProp_Sinert_as_GProp_GProps_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GProp_GProps: Add()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::ffi::GProp_GProps, Density: f64) {
         unsafe { crate::ffi::BRepGProp_Sinert_inherited_Add(self as *mut Self, Item, Density) }
     }
 
-    /// Inherited from GProp_GProps: Mass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_Sinert_inherited_Mass(self as *const Self) }
     }
 
-    /// Inherited from GProp_GProps: CentreOfMass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Sinert_inherited_CentreOfMass(
@@ -1263,7 +1263,7 @@ impl Sinert {
         }
     }
 
-    /// Inherited from GProp_GProps: MatrixOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Sinert_inherited_MatrixOfInertia(
@@ -1272,19 +1272,19 @@ impl Sinert {
         }
     }
 
-    /// Inherited from GProp_GProps: StaticMoments()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         unsafe {
             crate::ffi::BRepGProp_Sinert_inherited_StaticMoments(self as *const Self, Ix, Iy, Iz)
         }
     }
 
-    /// Inherited from GProp_GProps: MomentOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::BRepGProp_Sinert_inherited_MomentOfInertia(self as *const Self, A) }
     }
 
-    /// Inherited from GProp_GProps: PrincipalProperties()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::ffi::GProp_PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Sinert_inherited_PrincipalProperties(
@@ -1293,7 +1293,7 @@ impl Sinert {
         }
     }
 
-    /// Inherited from GProp_GProps: RadiusOfGyration()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::BRepGProp_Sinert_inherited_RadiusOfGyration(self as *const Self, A) }
     }
@@ -1458,7 +1458,7 @@ impl UFunction {
         unsafe { &mut *(crate::ffi::BRepGProp_UFunction_as_math_Function_mut(self as *mut Self)) }
     }
 
-    /// Inherited from math_Function: GetStateNumber()
+    /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::BRepGProp_UFunction_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -1878,17 +1878,17 @@ impl Vinert {
         unsafe { &mut *(crate::ffi::BRepGProp_Vinert_as_GProp_GProps_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GProp_GProps: Add()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::ffi::GProp_GProps, Density: f64) {
         unsafe { crate::ffi::BRepGProp_Vinert_inherited_Add(self as *mut Self, Item, Density) }
     }
 
-    /// Inherited from GProp_GProps: Mass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_Vinert_inherited_Mass(self as *const Self) }
     }
 
-    /// Inherited from GProp_GProps: CentreOfMass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Vinert_inherited_CentreOfMass(
@@ -1897,7 +1897,7 @@ impl Vinert {
         }
     }
 
-    /// Inherited from GProp_GProps: MatrixOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Vinert_inherited_MatrixOfInertia(
@@ -1906,19 +1906,19 @@ impl Vinert {
         }
     }
 
-    /// Inherited from GProp_GProps: StaticMoments()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         unsafe {
             crate::ffi::BRepGProp_Vinert_inherited_StaticMoments(self as *const Self, Ix, Iy, Iz)
         }
     }
 
-    /// Inherited from GProp_GProps: MomentOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::BRepGProp_Vinert_inherited_MomentOfInertia(self as *const Self, A) }
     }
 
-    /// Inherited from GProp_GProps: PrincipalProperties()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::ffi::GProp_PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Vinert_inherited_PrincipalProperties(
@@ -1927,7 +1927,7 @@ impl Vinert {
         }
     }
 
-    /// Inherited from GProp_GProps: RadiusOfGyration()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::BRepGProp_Vinert_inherited_RadiusOfGyration(self as *const Self, A) }
     }
@@ -2648,17 +2648,17 @@ impl VinertGK {
         unsafe { &mut *(crate::ffi::BRepGProp_VinertGK_as_GProp_GProps_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GProp_GProps: Add()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::ffi::GProp_GProps, Density: f64) {
         unsafe { crate::ffi::BRepGProp_VinertGK_inherited_Add(self as *mut Self, Item, Density) }
     }
 
-    /// Inherited from GProp_GProps: Mass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_VinertGK_inherited_Mass(self as *const Self) }
     }
 
-    /// Inherited from GProp_GProps: CentreOfMass()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_VinertGK_inherited_CentreOfMass(
@@ -2667,7 +2667,7 @@ impl VinertGK {
         }
     }
 
-    /// Inherited from GProp_GProps: MatrixOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_VinertGK_inherited_MatrixOfInertia(
@@ -2676,19 +2676,19 @@ impl VinertGK {
         }
     }
 
-    /// Inherited from GProp_GProps: StaticMoments()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         unsafe {
             crate::ffi::BRepGProp_VinertGK_inherited_StaticMoments(self as *const Self, Ix, Iy, Iz)
         }
     }
 
-    /// Inherited from GProp_GProps: MomentOfInertia()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::BRepGProp_VinertGK_inherited_MomentOfInertia(self as *const Self, A) }
     }
 
-    /// Inherited from GProp_GProps: PrincipalProperties()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::ffi::GProp_PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_VinertGK_inherited_PrincipalProperties(
@@ -2697,7 +2697,7 @@ impl VinertGK {
         }
     }
 
-    /// Inherited from GProp_GProps: RadiusOfGyration()
+    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::BRepGProp_VinertGK_inherited_RadiusOfGyration(self as *const Self, A) }
     }

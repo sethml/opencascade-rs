@@ -193,43 +193,43 @@ impl LocalOperation {
         }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe {
             crate::ffi::BRepFilletAPI_LocalOperation_inherited_Build(self as *mut Self, theRange)
         }
     }
 
-    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFilletAPI_LocalOperation_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFilletAPI_LocalOperation_inherited_Generated(self as *mut Self, S))
         }
     }
 
-    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
     pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFilletAPI_LocalOperation_inherited_Modified(self as *mut Self, S))
         }
     }
 
-    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe {
             crate::ffi::BRepFilletAPI_LocalOperation_inherited_IsDeleted(self as *mut Self, S)
@@ -700,17 +700,17 @@ impl MakeChamfer {
         }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Shape(self as *mut Self)) }
     }
@@ -1445,17 +1445,17 @@ impl MakeFillet {
         }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_inherited_Shape(self as *mut Self)) }
     }
@@ -1941,29 +1941,29 @@ impl MakeFillet2d {
         }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_Command: Check()
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Check(self as *const Self) }
     }
 
-    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Shape(self as *mut Self)) }
     }
 
-    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Generated(self as *mut Self, S))
         }
     }
 
-    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(self as *mut Self, S) }
     }

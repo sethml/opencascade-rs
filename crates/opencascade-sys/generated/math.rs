@@ -6,11 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `math.hxx` - `math::GaussPointsMax`
+/// **Source:** `math.hxx`:31 - `math::GaussPointsMax`
 pub fn gauss_points_max() -> i32 {
     unsafe { crate::ffi::math_gauss_points_max() }
 }
-/// **Source:** `math.hxx` - `math::KronrodPointsMax`
+/// **Source:** `math.hxx`:40 - `math::KronrodPointsMax`
 /// Returns the maximal number of points for that the values
 /// are stored in the table. If the number is greater then
 /// KronrodPointsMax, the points will be computed.
@@ -1840,7 +1840,7 @@ impl FunctionSetWithDerivatives {
         }
     }
 
-    /// Inherited from math_FunctionSet: GetStateNumber()
+    /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe {
             crate::ffi::math_FunctionSetWithDerivatives_inherited_GetStateNumber(self as *mut Self)
@@ -1903,7 +1903,7 @@ impl FunctionWithDerivative {
         }
     }
 
-    /// Inherited from math_Function: GetStateNumber()
+    /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe {
             crate::ffi::math_FunctionWithDerivative_inherited_GetStateNumber(self as *mut Self)
@@ -3227,7 +3227,7 @@ impl MultipleVarFunctionWithGradient {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe {
             crate::ffi::math_MultipleVarFunctionWithGradient_inherited_GetStateNumber(
@@ -3291,7 +3291,7 @@ impl MultipleVarFunctionWithHessian {
         }
     }
 
-    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe {
             crate::ffi::math_MultipleVarFunctionWithHessian_inherited_GetStateNumber(
@@ -4193,7 +4193,7 @@ impl TrigonometricEquationFunction {
         }
     }
 
-    /// Inherited from math_Function: GetStateNumber()
+    /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe {
             crate::ffi::math_TrigonometricEquationFunction_inherited_GetStateNumber(

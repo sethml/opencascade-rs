@@ -1,4 +1,4 @@
-// Generated OCCT bindings (unified architecture)
+// Generated OCCT bindings
 
 // Core FFI module with all types (pub(crate) to prevent direct access, use module re-exports instead)
 pub(crate) mod ffi;

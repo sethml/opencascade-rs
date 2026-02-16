@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `ShapeUpgrade.hxx` - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
+/// **Source:** `ShapeUpgrade.hxx`:43 - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
 /// Unifies same domain faces and edges of specified shape
 pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(
     BS: &crate::ffi::HandleGeomBSplineCurve,
@@ -16,7 +16,7 @@ pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlet
         crate::ffi::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(BS, seqBS)
     }
 }
-/// **Source:** `ShapeUpgrade.hxx` - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
+/// **Source:** `ShapeUpgrade.hxx`:53 - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
 /// Converts C0 B-Spline curve into sequence of C1 B-Spline curves.
 /// This method splits B-Spline at the knots with multiplicities equal to degree,
 /// i.e. unlike method GeomConvert::C0BSplineToArrayOfC1BSplineCurve
@@ -110,31 +110,31 @@ impl ClosedEdgeDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_EdgeDivide: Clear()
+    /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:39 - `ShapeUpgrade_EdgeDivide::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Clear(self as *mut Self) }
     }
 
-    /// Inherited from ShapeUpgrade_EdgeDivide: SetFace()
+    /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:42 - `ShapeUpgrade_EdgeDivide::SetFace()`
     pub fn set_face(&mut self, F: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetFace(self as *mut Self, F) }
     }
 
-    /// Inherited from ShapeUpgrade_EdgeDivide: HasCurve2d()
+    /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:46 - `ShapeUpgrade_EdgeDivide::HasCurve2d()`
     pub fn has_curve2d(&self) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve2d(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_EdgeDivide: HasCurve3d()
+    /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:48 - `ShapeUpgrade_EdgeDivide::HasCurve3d()`
     pub fn has_curve3d(&self) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve3d(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_EdgeDivide: Knots2d()
+    /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:50 - `ShapeUpgrade_EdgeDivide::Knots2d()`
     pub fn knots2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Knots2d(
@@ -143,7 +143,7 @@ impl ClosedEdgeDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_EdgeDivide: Knots3d()
+    /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:52 - `ShapeUpgrade_EdgeDivide::Knots3d()`
     pub fn knots3d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Knots3d(
@@ -152,12 +152,12 @@ impl ClosedEdgeDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Set()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Set(self as *mut Self, tool) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetPrecision(
@@ -167,14 +167,14 @@ impl ClosedEdgeDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Precision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Precision(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetMinTolerance(
@@ -184,14 +184,14 @@ impl ClosedEdgeDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_MinTolerance(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetMaxTolerance(
@@ -201,14 +201,14 @@ impl ClosedEdgeDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_MaxTolerance(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_LimitTolerance(
@@ -327,12 +327,12 @@ impl ClosedFaceDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
     pub fn init(&mut self, F: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Init(self as *mut Self, F) }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: SetSurfaceSegmentMode()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:67 - `ShapeUpgrade_FaceDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetSurfaceSegmentMode(
@@ -342,21 +342,21 @@ impl ClosedFaceDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:76 - `ShapeUpgrade_FaceDivide::Perform()`
     pub fn perform(&mut self, theArea: f64) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Perform(self as *mut Self, theArea)
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: SplitCurves()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:87 - `ShapeUpgrade_FaceDivide::SplitCurves()`
     pub fn split_curves(&mut self) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SplitCurves(self as *mut Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: Result()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:90 - `ShapeUpgrade_FaceDivide::Result()`
     pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Result(
@@ -365,7 +365,7 @@ impl ClosedFaceDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:99 - `ShapeUpgrade_FaceDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Status(
@@ -375,7 +375,7 @@ impl ClosedFaceDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: SetSplitSurfaceTool()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:102 - `ShapeUpgrade_FaceDivide::SetSplitSurfaceTool()`
     pub fn set_split_surface_tool(
         &mut self,
         splitSurfaceTool: &crate::ffi::HandleShapeUpgradeSplitSurface,
@@ -388,7 +388,7 @@ impl ClosedFaceDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: GetSplitSurfaceTool()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:110 - `ShapeUpgrade_FaceDivide::GetSplitSurfaceTool()`
     pub fn get_split_surface_tool(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
@@ -401,12 +401,12 @@ impl ClosedFaceDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Set()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Set(self as *mut Self, tool) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetPrecision(
@@ -416,14 +416,14 @@ impl ClosedFaceDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Precision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Precision(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetMinTolerance(
@@ -433,14 +433,14 @@ impl ClosedFaceDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_MinTolerance(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetMaxTolerance(
@@ -450,14 +450,14 @@ impl ClosedFaceDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_MaxTolerance(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_LimitTolerance(
@@ -636,7 +636,7 @@ impl ConvertSurfaceToBezierBasis {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         unsafe {
             crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Init(
@@ -646,7 +646,7 @@ impl ConvertSurfaceToBezierBasis {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: SetUSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
     pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
             crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetUSplitValues(
@@ -656,7 +656,7 @@ impl ConvertSurfaceToBezierBasis {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: SetVSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
     pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
             crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetVSplitValues(
@@ -666,7 +666,7 @@ impl ConvertSurfaceToBezierBasis {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Perform(
@@ -676,7 +676,7 @@ impl ConvertSurfaceToBezierBasis {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: USplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:84 - `ShapeUpgrade_SplitSurface::USplitValues()`
     pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_USplitValues(
@@ -685,7 +685,7 @@ impl ConvertSurfaceToBezierBasis {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: VSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:88 - `ShapeUpgrade_SplitSurface::VSplitValues()`
     pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_VSplitValues(
@@ -694,7 +694,7 @@ impl ConvertSurfaceToBezierBasis {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:95 - `ShapeUpgrade_SplitSurface::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Status(
@@ -800,48 +800,48 @@ impl EdgeDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Set()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Set(self as *mut Self, tool) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetPrecision(self as *mut Self, preci)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Precision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Precision(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetMinTolerance(self as *mut Self, mintol)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_inherited_MinTolerance(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetMaxTolerance(self as *mut Self, maxtol)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_inherited_MaxTolerance(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_EdgeDivide_inherited_LimitTolerance(self as *const Self, toler)
@@ -1013,48 +1013,48 @@ impl FaceDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Set()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivide_inherited_Set(self as *mut Self, tool) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetPrecision(self as *mut Self, preci)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Precision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivide_inherited_Precision(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetMinTolerance(self as *mut Self, mintol)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivide_inherited_MinTolerance(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetMaxTolerance(self as *mut Self, maxtol)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivide_inherited_MaxTolerance(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivide_inherited_LimitTolerance(self as *const Self, toler)
@@ -1187,12 +1187,12 @@ impl FaceDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
     pub fn init(&mut self, F: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Init(self as *mut Self, F) }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: SetSurfaceSegmentMode()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:67 - `ShapeUpgrade_FaceDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetSurfaceSegmentMode(
@@ -1202,7 +1202,7 @@ impl FaceDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: SplitSurface()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:83 - `ShapeUpgrade_FaceDivide::SplitSurface()`
     pub fn split_surface(&mut self, theArea: f64) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SplitSurface(
@@ -1212,12 +1212,12 @@ impl FaceDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: SplitCurves()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:87 - `ShapeUpgrade_FaceDivide::SplitCurves()`
     pub fn split_curves(&mut self) -> bool {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SplitCurves(self as *mut Self) }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: Result()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:90 - `ShapeUpgrade_FaceDivide::Result()`
     pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Result(
@@ -1226,7 +1226,7 @@ impl FaceDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:99 - `ShapeUpgrade_FaceDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Status(
@@ -1236,7 +1236,7 @@ impl FaceDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: SetSplitSurfaceTool()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:102 - `ShapeUpgrade_FaceDivide::SetSplitSurfaceTool()`
     pub fn set_split_surface_tool(
         &mut self,
         splitSurfaceTool: &crate::ffi::HandleShapeUpgradeSplitSurface,
@@ -1249,7 +1249,7 @@ impl FaceDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FaceDivide: GetSplitSurfaceTool()
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:110 - `ShapeUpgrade_FaceDivide::GetSplitSurfaceTool()`
     pub fn get_split_surface_tool(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
@@ -1262,24 +1262,24 @@ impl FaceDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Set()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Set(self as *mut Self, tool) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetPrecision(self as *mut Self, preci)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Precision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Precision(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetMinTolerance(
@@ -1289,14 +1289,14 @@ impl FaceDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_MinTolerance(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetMaxTolerance(
@@ -1306,14 +1306,14 @@ impl FaceDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_MaxTolerance(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_LimitTolerance(
@@ -1421,7 +1421,7 @@ impl FixSmallBezierCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FixSmallCurves: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:46 - `ShapeUpgrade_FixSmallCurves::Init()`
     pub fn init(&mut self, theEdge: &crate::ffi::TopoDS_Edge, theFace: &crate::ffi::TopoDS_Face) {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Init(
@@ -1432,7 +1432,7 @@ impl FixSmallBezierCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_FixSmallCurves: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:67 - `ShapeUpgrade_FixSmallCurves::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Status(
@@ -1442,14 +1442,14 @@ impl FixSmallBezierCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Set()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Set(self as *mut Self, tool)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetPrecision(
@@ -1459,14 +1459,14 @@ impl FixSmallBezierCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Precision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Precision(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetMinTolerance(
@@ -1476,7 +1476,7 @@ impl FixSmallBezierCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_MinTolerance(
@@ -1485,7 +1485,7 @@ impl FixSmallBezierCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetMaxTolerance(
@@ -1495,7 +1495,7 @@ impl FixSmallBezierCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_MaxTolerance(
@@ -1504,7 +1504,7 @@ impl FixSmallBezierCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_LimitTolerance(
@@ -1607,24 +1607,24 @@ impl FixSmallCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Set()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Set(self as *mut Self, tool) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetPrecision(self as *mut Self, preci)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Precision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Precision(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetMinTolerance(
@@ -1634,14 +1634,14 @@ impl FixSmallCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_MinTolerance(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetMaxTolerance(
@@ -1651,14 +1651,14 @@ impl FixSmallCurves {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_MaxTolerance(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_LimitTolerance(
@@ -1825,14 +1825,14 @@ impl RemoveInternalWires {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Set()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe {
             crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Set(self as *mut Self, tool)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetPrecision(
@@ -1842,14 +1842,14 @@ impl RemoveInternalWires {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Precision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Precision(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetMinTolerance(
@@ -1859,14 +1859,14 @@ impl RemoveInternalWires {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_MinTolerance(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetMaxTolerance(
@@ -1876,14 +1876,14 @@ impl RemoveInternalWires {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_MaxTolerance(self as *const Self)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_LimitTolerance(
@@ -2274,14 +2274,14 @@ impl ShapeConvertToBezier {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Init(self as *mut Self, S)
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetPrecision(
@@ -2291,7 +2291,7 @@ impl ShapeConvertToBezier {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMaxTolerance(
@@ -2301,7 +2301,7 @@ impl ShapeConvertToBezier {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMinTolerance(
@@ -2311,7 +2311,7 @@ impl ShapeConvertToBezier {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetSurfaceSegmentMode(
@@ -2321,7 +2321,7 @@ impl ShapeConvertToBezier {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
     pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -2330,7 +2330,7 @@ impl ShapeConvertToBezier {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SendMsg()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::ffi::TopoDS_Shape,
@@ -2347,7 +2347,7 @@ impl ShapeConvertToBezier {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Status(
@@ -2357,7 +2357,7 @@ impl ShapeConvertToBezier {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetEdgeMode(
@@ -2562,12 +2562,12 @@ impl ShapeDivideAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Init(self as *mut Self, S) }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetPrecision(
@@ -2577,7 +2577,7 @@ impl ShapeDivideAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMaxTolerance(
@@ -2587,7 +2587,7 @@ impl ShapeDivideAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMinTolerance(
@@ -2597,7 +2597,7 @@ impl ShapeDivideAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetSurfaceSegmentMode(
@@ -2607,7 +2607,7 @@ impl ShapeDivideAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:71 - `ShapeUpgrade_ShapeDivide::Perform()`
     pub fn perform(&mut self, newContext: bool) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Perform(
@@ -2617,7 +2617,7 @@ impl ShapeDivideAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
     pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Result(
@@ -2626,7 +2626,7 @@ impl ShapeDivideAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SendMsg()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::ffi::TopoDS_Shape,
@@ -2643,7 +2643,7 @@ impl ShapeDivideAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Status(
@@ -2653,7 +2653,7 @@ impl ShapeDivideAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetEdgeMode(
@@ -2748,19 +2748,19 @@ impl ShapeDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Init(self as *mut Self, S) }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetPrecision(self as *mut Self, Prec)
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMaxTolerance(
@@ -2770,7 +2770,7 @@ impl ShapeDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMinTolerance(
@@ -2780,7 +2780,7 @@ impl ShapeDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetSurfaceSegmentMode(
@@ -2790,7 +2790,7 @@ impl ShapeDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:71 - `ShapeUpgrade_ShapeDivide::Perform()`
     pub fn perform(&mut self, newContext: bool) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Perform(
@@ -2800,7 +2800,7 @@ impl ShapeDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
     pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Result(
@@ -2809,7 +2809,7 @@ impl ShapeDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SendMsg()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::ffi::TopoDS_Shape,
@@ -2826,7 +2826,7 @@ impl ShapeDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Status(
@@ -2836,7 +2836,7 @@ impl ShapeDivideArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetEdgeMode(
@@ -2898,12 +2898,12 @@ impl ShapeDivideClosed {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Init(self as *mut Self, S) }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetPrecision(
@@ -2913,7 +2913,7 @@ impl ShapeDivideClosed {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMaxTolerance(
@@ -2923,7 +2923,7 @@ impl ShapeDivideClosed {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMinTolerance(
@@ -2933,7 +2933,7 @@ impl ShapeDivideClosed {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetSurfaceSegmentMode(
@@ -2943,7 +2943,7 @@ impl ShapeDivideClosed {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:71 - `ShapeUpgrade_ShapeDivide::Perform()`
     pub fn perform(&mut self, newContext: bool) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Perform(
@@ -2953,7 +2953,7 @@ impl ShapeDivideClosed {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
     pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Result(
@@ -2962,7 +2962,7 @@ impl ShapeDivideClosed {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SendMsg()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::ffi::TopoDS_Shape,
@@ -2979,7 +2979,7 @@ impl ShapeDivideClosed {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Status(
@@ -2989,7 +2989,7 @@ impl ShapeDivideClosed {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetEdgeMode(
@@ -3052,14 +3052,14 @@ impl ShapeDivideClosedEdges {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Init(self as *mut Self, S)
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetPrecision(
@@ -3069,7 +3069,7 @@ impl ShapeDivideClosedEdges {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMaxTolerance(
@@ -3079,7 +3079,7 @@ impl ShapeDivideClosedEdges {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMinTolerance(
@@ -3089,7 +3089,7 @@ impl ShapeDivideClosedEdges {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSurfaceSegmentMode(
@@ -3099,7 +3099,7 @@ impl ShapeDivideClosedEdges {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:71 - `ShapeUpgrade_ShapeDivide::Perform()`
     pub fn perform(&mut self, newContext: bool) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Perform(
@@ -3109,7 +3109,7 @@ impl ShapeDivideClosedEdges {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
     pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -3120,7 +3120,7 @@ impl ShapeDivideClosedEdges {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SendMsg()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::ffi::TopoDS_Shape,
@@ -3137,7 +3137,7 @@ impl ShapeDivideClosedEdges {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Status(
@@ -3147,7 +3147,7 @@ impl ShapeDivideClosedEdges {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetEdgeMode(
@@ -3268,14 +3268,14 @@ impl ShapeDivideContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Init(self as *mut Self, S)
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetPrecision(
@@ -3285,7 +3285,7 @@ impl ShapeDivideContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMaxTolerance(
@@ -3295,7 +3295,7 @@ impl ShapeDivideContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMinTolerance(
@@ -3305,7 +3305,7 @@ impl ShapeDivideContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetSurfaceSegmentMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetSurfaceSegmentMode(
@@ -3315,7 +3315,7 @@ impl ShapeDivideContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:71 - `ShapeUpgrade_ShapeDivide::Perform()`
     pub fn perform(&mut self, newContext: bool) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Perform(
@@ -3325,7 +3325,7 @@ impl ShapeDivideContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Result()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
     pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -3336,7 +3336,7 @@ impl ShapeDivideContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SendMsg()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::ffi::TopoDS_Shape,
@@ -3353,7 +3353,7 @@ impl ShapeDivideContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Status(
@@ -3363,7 +3363,7 @@ impl ShapeDivideContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_ShapeDivide: SetEdgeMode()
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetEdgeMode(
@@ -3643,7 +3643,7 @@ impl SplitCurve2d {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitCurve: SetSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_SetSplitValues(
@@ -3653,26 +3653,26 @@ impl SplitCurve2d {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitCurve: SplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
     pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_SplitValues(self as *const Self))
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitCurve: Compute()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:62 - `ShapeUpgrade_SplitCurve::Compute()`
     pub fn compute(&mut self) {
         unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Compute(self as *mut Self) }
     }
 
-    /// Inherited from ShapeUpgrade_SplitCurve: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Perform(self as *mut Self, Segment)
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitCurve: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Status(
@@ -3779,7 +3779,7 @@ impl SplitCurve3d {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitCurve: SetSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_SetSplitValues(
@@ -3789,26 +3789,26 @@ impl SplitCurve3d {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitCurve: SplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
     pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_SplitValues(self as *const Self))
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitCurve: Compute()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:62 - `ShapeUpgrade_SplitCurve::Compute()`
     pub fn compute(&mut self) {
         unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Compute(self as *mut Self) }
     }
 
-    /// Inherited from ShapeUpgrade_SplitCurve: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Perform(self as *mut Self, Segment)
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitCurve: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Status(
@@ -4076,12 +4076,12 @@ impl SplitSurfaceAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Init(self as *mut Self, S) }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: SetUSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
     pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_SetUSplitValues(
@@ -4091,7 +4091,7 @@ impl SplitSurfaceAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: SetVSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
     pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_SetVSplitValues(
@@ -4101,21 +4101,21 @@ impl SplitSurfaceAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Build()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:73 - `ShapeUpgrade_SplitSurface::Build()`
     pub fn build(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Build(self as *mut Self, Segment)
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Perform(self as *mut Self, Segment)
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: USplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:84 - `ShapeUpgrade_SplitSurface::USplitValues()`
     pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_USplitValues(
@@ -4124,7 +4124,7 @@ impl SplitSurfaceAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: VSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:88 - `ShapeUpgrade_SplitSurface::VSplitValues()`
     pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_VSplitValues(
@@ -4133,7 +4133,7 @@ impl SplitSurfaceAngle {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:95 - `ShapeUpgrade_SplitSurface::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Status(
@@ -4241,12 +4241,12 @@ impl SplitSurfaceArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Init(self as *mut Self, S) }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: SetUSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
     pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_SetUSplitValues(
@@ -4256,7 +4256,7 @@ impl SplitSurfaceArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: SetVSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
     pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_SetVSplitValues(
@@ -4266,21 +4266,21 @@ impl SplitSurfaceArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Build()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:73 - `ShapeUpgrade_SplitSurface::Build()`
     pub fn build(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Build(self as *mut Self, Segment)
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Perform(self as *mut Self, Segment)
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: USplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:84 - `ShapeUpgrade_SplitSurface::USplitValues()`
     pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_USplitValues(
@@ -4289,7 +4289,7 @@ impl SplitSurfaceArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: VSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:88 - `ShapeUpgrade_SplitSurface::VSplitValues()`
     pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_VSplitValues(
@@ -4298,7 +4298,7 @@ impl SplitSurfaceArea {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:95 - `ShapeUpgrade_SplitSurface::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Status(
@@ -4397,14 +4397,14 @@ impl SplitSurfaceContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Init()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Init(self as *mut Self, S)
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: SetUSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
     pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_SetUSplitValues(
@@ -4414,7 +4414,7 @@ impl SplitSurfaceContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: SetVSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
     pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_SetVSplitValues(
@@ -4424,7 +4424,7 @@ impl SplitSurfaceContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Build()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:73 - `ShapeUpgrade_SplitSurface::Build()`
     pub fn build(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Build(
@@ -4434,7 +4434,7 @@ impl SplitSurfaceContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Perform()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Perform(
@@ -4444,7 +4444,7 @@ impl SplitSurfaceContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: USplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:84 - `ShapeUpgrade_SplitSurface::USplitValues()`
     pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_USplitValues(
@@ -4453,7 +4453,7 @@ impl SplitSurfaceContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: VSplitValues()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:88 - `ShapeUpgrade_SplitSurface::VSplitValues()`
     pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_VSplitValues(
@@ -4462,7 +4462,7 @@ impl SplitSurfaceContinuity {
         }
     }
 
-    /// Inherited from ShapeUpgrade_SplitSurface: Status()
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:95 - `ShapeUpgrade_SplitSurface::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Status(
@@ -5045,48 +5045,48 @@ impl WireDivide {
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Set()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_inherited_Set(self as *mut Self, tool) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetPrecision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_WireDivide_inherited_SetPrecision(self as *mut Self, preci)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: Precision()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_inherited_Precision(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_WireDivide_inherited_SetMinTolerance(self as *mut Self, mintol)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MinTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_inherited_MinTolerance(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeUpgrade_WireDivide_inherited_SetMaxTolerance(self as *mut Self, maxtol)
         }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: MaxTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_inherited_MaxTolerance(self as *const Self) }
     }
 
-    /// Inherited from ShapeUpgrade_Tool: LimitTolerance()
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         unsafe {
             crate::ffi::ShapeUpgrade_WireDivide_inherited_LimitTolerance(self as *const Self, toler)

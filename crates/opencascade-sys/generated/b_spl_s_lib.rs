@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `BSplSLib.hxx` - `BSplSLib::RationalDerivative`
+/// **Source:** `BSplSLib.hxx`:174 - `BSplSLib::RationalDerivative`
 /// this is a one dimensional function
 /// typedef  void (*EvaluatorFunction)  (
 /// Standard_Integer     // Derivative Request
@@ -101,7 +101,7 @@ pub fn rational_derivative(
 ) {
     unsafe { crate::ffi::BSplSLib_rational_derivative(UDeg, VDeg, N, M, Ders, RDers, All) }
 }
-/// **Source:** `BSplSLib.hxx` - `BSplSLib::Reverse`
+/// **Source:** `BSplSLib.hxx`:313 - `BSplSLib::Reverse`
 /// Reverses the array of poles. Last is the Index of
 /// the new first Row( Col) of Poles.
 /// On  a  non periodic surface Last is
@@ -118,7 +118,7 @@ pub fn reverse_array2ofpnt_int_bool(
 ) {
     unsafe { crate::ffi::BSplSLib_reverse_array2ofpnt_int_bool(Poles, Last, UDirection) }
 }
-/// **Source:** `BSplSLib.hxx` - `BSplSLib::PolesCoefficients`
+/// **Source:** `BSplSLib.hxx`:647 - `BSplSLib::PolesCoefficients`
 /// Warning! To be used for BezierSurfaces ONLY!!!
 pub fn poles_coefficients_array2ofpnt2(
     Poles: &crate::ffi::TColgp_Array2OfPnt,

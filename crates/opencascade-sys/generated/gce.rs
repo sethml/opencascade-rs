@@ -6,8 +6,70 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-// ========================
-// Additional type re-exports
-// ========================
+/// Indicates the outcome of a construction, i.e.
+/// whether it is successful or not, as explained below.
+/// gce_Done: Construction was successful.
+/// gce_ConfusedPoints: Two points are coincident.
+/// gce_NegativeRadius: Radius value is negative.
+/// gce_ColinearPoints: Three points are collinear.
+/// gce_IntersectionError: Intersection cannot be computed.
+/// gce_NullAxis: Axis is undefined.
+/// gce_NullAngle: Angle value is invalid (usually null).
+/// gce_NullRadius: Radius is null.
+/// gce_InvertAxis: Axis value is invalid.
+/// gce_BadAngle: Angle value is invalid.
+/// gce_InvertRadius: Radius value is incorrect
+/// (usually with respect to another radius).
+/// gce_NullFocusLength: Focal distance is null.
+/// gce_NullVector: Vector is null.
+/// gce_BadEquation: Coefficients are
+/// incorrect (applies to the equation of a geometric object).
+/// C++ enum: `gce_ErrorType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ErrorType {
+    Done = 0,
+    Confusedpoints = 1,
+    Negativeradius = 2,
+    Colinearpoints = 3,
+    Intersectionerror = 4,
+    Nullaxis = 5,
+    Nullangle = 6,
+    Nullradius = 7,
+    Invertaxis = 8,
+    Badangle = 9,
+    Invertradius = 10,
+    Nullfocuslength = 11,
+    Nullvector = 12,
+    Badequation = 13,
+}
 
-pub use crate::ffi::gce_ErrorType as ErrorType;
+impl From<ErrorType> for i32 {
+    fn from(value: ErrorType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ErrorType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ErrorType::Done),
+            1 => Ok(ErrorType::Confusedpoints),
+            2 => Ok(ErrorType::Negativeradius),
+            3 => Ok(ErrorType::Colinearpoints),
+            4 => Ok(ErrorType::Intersectionerror),
+            5 => Ok(ErrorType::Nullaxis),
+            6 => Ok(ErrorType::Nullangle),
+            7 => Ok(ErrorType::Nullradius),
+            8 => Ok(ErrorType::Invertaxis),
+            9 => Ok(ErrorType::Badangle),
+            10 => Ok(ErrorType::Invertradius),
+            11 => Ok(ErrorType::Nullfocuslength),
+            12 => Ok(ErrorType::Nullvector),
+            13 => Ok(ErrorType::Badequation),
+            _ => Err(value),
+        }
+    }
+}

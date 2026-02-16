@@ -136,9 +136,19 @@ impl MakeArcOfCircle {
         unsafe { &mut *(crate::ffi::GC_MakeArcOfCircle_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeArcOfCircle_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeArcOfCircle_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -234,9 +244,19 @@ impl MakeArcOfEllipse {
         unsafe { &mut *(crate::ffi::GC_MakeArcOfEllipse_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeArcOfEllipse_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeArcOfEllipse_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -330,9 +350,19 @@ impl MakeArcOfHyperbola {
         unsafe { &mut *(crate::ffi::GC_MakeArcOfHyperbola_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeArcOfHyperbola_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeArcOfHyperbola_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -423,9 +453,19 @@ impl MakeArcOfParabola {
         unsafe { &mut *(crate::ffi::GC_MakeArcOfParabola_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeArcOfParabola_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeArcOfParabola_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -562,9 +602,19 @@ impl MakeCircle {
         unsafe { &mut *(crate::ffi::GC_MakeCircle_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeCircle_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeCircle_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -696,9 +746,19 @@ impl MakeConicalSurface {
         unsafe { &mut *(crate::ffi::GC_MakeConicalSurface_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeConicalSurface_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeConicalSurface_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -846,9 +906,19 @@ impl MakeCylindricalSurface {
         unsafe { &mut *(crate::ffi::GC_MakeCylindricalSurface_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeCylindricalSurface_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeCylindricalSurface_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -942,9 +1012,19 @@ impl MakeEllipse {
         unsafe { &mut *(crate::ffi::GC_MakeEllipse_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeEllipse_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeEllipse_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1048,9 +1128,19 @@ impl MakeHyperbola {
         unsafe { &mut *(crate::ffi::GC_MakeHyperbola_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeHyperbola_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeHyperbola_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1135,9 +1225,19 @@ impl MakeLine {
         unsafe { &mut *(crate::ffi::GC_MakeLine_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeLine_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeLine_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1311,9 +1411,19 @@ impl MakePlane {
         unsafe { &mut *(crate::ffi::GC_MakePlane_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakePlane_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakePlane_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1493,9 +1603,19 @@ impl MakeSegment {
         unsafe { &mut *(crate::ffi::GC_MakeSegment_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeSegment_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeSegment_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1635,9 +1755,19 @@ impl MakeTrimmedCone {
         unsafe { &mut *(crate::ffi::GC_MakeTrimmedCone_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeTrimmedCone_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeTrimmedCone_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1731,9 +1861,19 @@ impl MakeTrimmedCylinder {
         unsafe { &mut *(crate::ffi::GC_MakeTrimmedCylinder_as_GC_Root_mut(self as *mut Self)) }
     }
 
-    /// Inherited from GC_Root: IsDone()
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_MakeTrimmedCylinder_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_MakeTrimmedCylinder_inherited_Status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 }
 
@@ -1763,5 +1903,17 @@ impl Root {
     /// Returns true if the construction is successful.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_Root_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Returns the status of the construction:
+    /// -   gce_Done, if the construction is successful, or
+    /// -   another value of the gce_ErrorType enumeration
+    /// indicating why the construction failed.
+    pub fn status(&self) -> crate::gce::ErrorType {
+        unsafe {
+            crate::gce::ErrorType::try_from(crate::ffi::GC_Root_status(self as *const Self))
+                .unwrap()
+        }
     }
 }

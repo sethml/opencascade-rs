@@ -647,12 +647,12 @@ impl ElSpine {
         unsafe { &mut *(crate::ffi::ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(self as *mut Self)) }
     }
 
-    /// Inherited from Adaptor3d_Curve: IsClosed()
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:84 - `Adaptor3d_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_ElSpine_inherited_IsClosed(self as *const Self) }
     }
 
-    /// Inherited from Adaptor3d_Curve: DN()
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:123 - `Adaptor3d_Curve::DN()`
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_inherited_DN(
@@ -663,27 +663,27 @@ impl ElSpine {
         }
     }
 
-    /// Inherited from Adaptor3d_Curve: Degree()
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:144 - `Adaptor3d_Curve::Degree()`
     pub fn degree(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_ElSpine_inherited_Degree(self as *const Self) }
     }
 
-    /// Inherited from Adaptor3d_Curve: IsRational()
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:146 - `Adaptor3d_Curve::IsRational()`
     pub fn is_rational(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_ElSpine_inherited_IsRational(self as *const Self) }
     }
 
-    /// Inherited from Adaptor3d_Curve: NbPoles()
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:148 - `Adaptor3d_Curve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_ElSpine_inherited_NbPoles(self as *const Self) }
     }
 
-    /// Inherited from Adaptor3d_Curve: NbKnots()
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:150 - `Adaptor3d_Curve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_ElSpine_inherited_NbKnots(self as *const Self) }
     }
 
-    /// Inherited from Adaptor3d_Curve: OffsetCurve()
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_inherited_OffsetCurve(

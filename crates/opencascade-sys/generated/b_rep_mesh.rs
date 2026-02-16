@@ -200,7 +200,7 @@ impl BoundaryParamsRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe {
             crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_AdjustRange(
@@ -209,14 +209,14 @@ impl BoundaryParamsRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe {
             crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_IsValid(self as *mut Self)
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
@@ -233,7 +233,7 @@ impl BoundaryParamsRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -570,24 +570,24 @@ impl ConeRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe { crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AdjustRange(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_ConeRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
@@ -602,7 +602,7 @@ impl ConeRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Point(
@@ -754,83 +754,83 @@ impl Context {
         unsafe { &mut *(crate::ffi::BRepMesh_Context_as_IMeshTools_Context_mut(self as *mut Self)) }
     }
 
-    /// Inherited from IMeshData_Shape: SetShape()
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepMesh_Context_inherited_SetShape(self as *mut Self, theShape) }
     }
 
-    /// Inherited from IMeshData_Shape: GetShape()
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetShape(self as *const Self)) }
     }
 
-    /// Inherited from IMeshTools_Context: BuildModel()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:40 - `IMeshTools_Context::BuildModel()`
     pub fn build_model(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_Context_inherited_BuildModel(self as *mut Self) }
     }
 
-    /// Inherited from IMeshTools_Context: DiscretizeEdges()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:54 - `IMeshTools_Context::DiscretizeEdges()`
     pub fn discretize_edges(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_Context_inherited_DiscretizeEdges(self as *mut Self) }
     }
 
-    /// Inherited from IMeshTools_Context: HealModel()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:68 - `IMeshTools_Context::HealModel()`
     pub fn heal_model(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_Context_inherited_HealModel(self as *mut Self) }
     }
 
-    /// Inherited from IMeshTools_Context: PreProcessModel()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:83 - `IMeshTools_Context::PreProcessModel()`
     pub fn pre_process_model(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_Context_inherited_PreProcessModel(self as *mut Self) }
     }
 
-    /// Inherited from IMeshTools_Context: DiscretizeFaces()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:97 - `IMeshTools_Context::DiscretizeFaces()`
     pub fn discretize_faces(&mut self, theRange: &crate::ffi::Message_ProgressRange) -> bool {
         unsafe {
             crate::ffi::BRepMesh_Context_inherited_DiscretizeFaces(self as *mut Self, theRange)
         }
     }
 
-    /// Inherited from IMeshTools_Context: PostProcessModel()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:110 - `IMeshTools_Context::PostProcessModel()`
     pub fn post_process_model(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_Context_inherited_PostProcessModel(self as *mut Self) }
     }
 
-    /// Inherited from IMeshTools_Context: Clean()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:123 - `IMeshTools_Context::Clean()`
     pub fn clean(&mut self) {
         unsafe { crate::ffi::BRepMesh_Context_inherited_Clean(self as *mut Self) }
     }
 
-    /// Inherited from IMeshTools_Context: GetEdgeDiscret()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:141 - `IMeshTools_Context::GetEdgeDiscret()`
     pub fn get_edge_discret(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
         unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetEdgeDiscret(self as *const Self)) }
     }
 
-    /// Inherited from IMeshTools_Context: SetEdgeDiscret()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:144 - `IMeshTools_Context::SetEdgeDiscret()`
     pub fn set_edge_discret(&mut self, theEdgeDiscret: &crate::ffi::HandleIMeshToolsModelAlgo) {
         unsafe {
             crate::ffi::BRepMesh_Context_inherited_SetEdgeDiscret(self as *mut Self, theEdgeDiscret)
         }
     }
 
-    /// Inherited from IMeshTools_Context: GetModelHealer()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:150 - `IMeshTools_Context::GetModelHealer()`
     pub fn get_model_healer(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
         unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetModelHealer(self as *const Self)) }
     }
 
-    /// Inherited from IMeshTools_Context: SetModelHealer()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:153 - `IMeshTools_Context::SetModelHealer()`
     pub fn set_model_healer(&mut self, theModelHealer: &crate::ffi::HandleIMeshToolsModelAlgo) {
         unsafe {
             crate::ffi::BRepMesh_Context_inherited_SetModelHealer(self as *mut Self, theModelHealer)
         }
     }
 
-    /// Inherited from IMeshTools_Context: GetPreProcessor()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:159 - `IMeshTools_Context::GetPreProcessor()`
     pub fn get_pre_processor(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
         unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetPreProcessor(self as *const Self)) }
     }
 
-    /// Inherited from IMeshTools_Context: SetPreProcessor()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:162 - `IMeshTools_Context::SetPreProcessor()`
     pub fn set_pre_processor(&mut self, thePreProcessor: &crate::ffi::HandleIMeshToolsModelAlgo) {
         unsafe {
             crate::ffi::BRepMesh_Context_inherited_SetPreProcessor(
@@ -840,24 +840,24 @@ impl Context {
         }
     }
 
-    /// Inherited from IMeshTools_Context: GetFaceDiscret()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:168 - `IMeshTools_Context::GetFaceDiscret()`
     pub fn get_face_discret(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
         unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetFaceDiscret(self as *const Self)) }
     }
 
-    /// Inherited from IMeshTools_Context: SetFaceDiscret()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:171 - `IMeshTools_Context::SetFaceDiscret()`
     pub fn set_face_discret(&mut self, theFaceDiscret: &crate::ffi::HandleIMeshToolsModelAlgo) {
         unsafe {
             crate::ffi::BRepMesh_Context_inherited_SetFaceDiscret(self as *mut Self, theFaceDiscret)
         }
     }
 
-    /// Inherited from IMeshTools_Context: GetPostProcessor()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:177 - `IMeshTools_Context::GetPostProcessor()`
     pub fn get_post_processor(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
         unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetPostProcessor(self as *const Self)) }
     }
 
-    /// Inherited from IMeshTools_Context: SetPostProcessor()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:180 - `IMeshTools_Context::SetPostProcessor()`
     pub fn set_post_processor(&mut self, thePostProcessor: &crate::ffi::HandleIMeshToolsModelAlgo) {
         unsafe {
             crate::ffi::BRepMesh_Context_inherited_SetPostProcessor(
@@ -867,12 +867,12 @@ impl Context {
         }
     }
 
-    /// Inherited from IMeshTools_Context: GetParameters()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:186 - `IMeshTools_Context::GetParameters()`
     pub fn get_parameters(&self) -> &crate::ffi::IMeshTools_Parameters {
         unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetParameters(self as *const Self)) }
     }
 
-    /// Inherited from IMeshTools_Context: ChangeParameters()
+    /// Inherited: **Source:** `IMeshTools_Context.hxx`:189 - `IMeshTools_Context::ChangeParameters()`
     pub fn change_parameters(&mut self) -> &mut crate::ffi::IMeshTools_Parameters {
         unsafe {
             &mut *(crate::ffi::BRepMesh_Context_inherited_ChangeParameters(self as *mut Self))
@@ -1091,7 +1091,7 @@ impl CylinderRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AddPoint(
@@ -1101,19 +1101,19 @@ impl CylinderRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe {
             crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AdjustRange(self as *mut Self)
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
@@ -1128,7 +1128,7 @@ impl CylinderRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Point(
@@ -2218,12 +2218,12 @@ impl Edge {
         unsafe { &mut *(crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(self as *mut Self)) }
     }
 
-    /// Inherited from BRepMesh_OrientedEdge: FirstNode()
+    /// Inherited: **Source:** `BRepMesh_OrientedEdge.hxx`:42 - `BRepMesh_OrientedEdge::FirstNode()`
     pub fn first_node(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_Edge_inherited_FirstNode(self as *const Self) }
     }
 
-    /// Inherited from BRepMesh_OrientedEdge: LastNode()
+    /// Inherited: **Source:** `BRepMesh_OrientedEdge.hxx`:45 - `BRepMesh_OrientedEdge::LastNode()`
     pub fn last_node(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_Edge_inherited_LastNode(self as *const Self) }
     }
@@ -2444,7 +2444,7 @@ impl ExtrusionRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AddPoint(
@@ -2454,19 +2454,19 @@ impl ExtrusionRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe {
             crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AdjustRange(self as *mut Self)
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
@@ -2481,7 +2481,7 @@ impl ExtrusionRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Point(
@@ -2969,19 +2969,19 @@ impl IncrementalMesh {
         }
     }
 
-    /// Inherited from BRepMesh_DiscretRoot: SetShape()
+    /// Inherited: **Source:** `BRepMesh_DiscretRoot.hxx`:31 - `BRepMesh_DiscretRoot::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe {
             crate::ffi::BRepMesh_IncrementalMesh_inherited_SetShape(self as *mut Self, theShape)
         }
     }
 
-    /// Inherited from BRepMesh_DiscretRoot: Shape()
+    /// Inherited: **Source:** `BRepMesh_DiscretRoot.hxx`:33 - `BRepMesh_DiscretRoot::Shape()`
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_inherited_Shape(self as *const Self)) }
     }
 
-    /// Inherited from BRepMesh_DiscretRoot: IsDone()
+    /// Inherited: **Source:** `BRepMesh_DiscretRoot.hxx`:36 - `BRepMesh_DiscretRoot::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepMesh_IncrementalMesh_inherited_IsDone(self as *const Self) }
     }
@@ -3285,38 +3285,38 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: SetStatus()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
     pub fn set_status(&mut self, theStat: crate::message::Status) {
         unsafe {
             crate::ffi::BRepMesh_ModelBuilder_inherited_SetStatus(self as *mut Self, theStat.into())
         }
     }
 
-    /// Inherited from Message_Algorithm: GetStatus()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
     pub fn get_status(&self) -> &crate::ffi::Message_ExecStatus {
         unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_inherited_GetStatus(self as *const Self)) }
     }
 
-    /// Inherited from Message_Algorithm: ChangeStatus()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
     pub fn change_status(&mut self) -> &mut crate::ffi::Message_ExecStatus {
         unsafe {
             &mut *(crate::ffi::BRepMesh_ModelBuilder_inherited_ChangeStatus(self as *mut Self))
         }
     }
 
-    /// Inherited from Message_Algorithm: ClearStatus()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
     pub fn clear_status(&mut self) {
         unsafe { crate::ffi::BRepMesh_ModelBuilder_inherited_ClearStatus(self as *mut Self) }
     }
 
-    /// Inherited from Message_Algorithm: SetMessenger()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
     pub fn set_messenger(&mut self, theMsgr: &crate::ffi::HandleMessageMessenger) {
         unsafe {
             crate::ffi::BRepMesh_ModelBuilder_inherited_SetMessenger(self as *mut Self, theMsgr)
         }
     }
 
-    /// Inherited from Message_Algorithm: GetMessenger()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:155 - `Message_Algorithm::GetMessenger()`
     pub fn get_messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelBuilder_inherited_GetMessenger(
@@ -3325,7 +3325,7 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: SendStatusMessages()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
     pub fn send_status_messages(
         &self,
         theFilter: &crate::ffi::Message_ExecStatus,
@@ -3342,7 +3342,7 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: SendMessages()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
     pub fn send_messages(&self, theTraceLevel: crate::message::Gravity, theMaxCount: i32) {
         unsafe {
             crate::ffi::BRepMesh_ModelBuilder_inherited_SendMessages(
@@ -3353,14 +3353,14 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: AddStatus()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
     pub fn add_status(&mut self, theOther: &crate::ffi::HandleMessageAlgorithm) {
         unsafe {
             crate::ffi::BRepMesh_ModelBuilder_inherited_AddStatus(self as *mut Self, theOther)
         }
     }
 
-    /// Inherited from Message_Algorithm: GetMessageNumbers()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:197 - `Message_Algorithm::GetMessageNumbers()`
     pub fn get_message_numbers(
         &self,
         theStatus: crate::message::Status,
@@ -3375,7 +3375,7 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: GetMessageStrings()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
     pub fn get_message_strings(
         &self,
         theStatus: crate::message::Status,
@@ -3636,19 +3636,19 @@ impl NURBSRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
@@ -3663,7 +3663,7 @@ impl NURBSRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Point(
@@ -4389,24 +4389,24 @@ impl SphereRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe { crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AdjustRange(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_SphereRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
@@ -4421,7 +4421,7 @@ impl SphereRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Point(
@@ -4496,17 +4496,17 @@ impl TorusRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_inherited_AdjustRange(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
@@ -4521,7 +4521,7 @@ impl TorusRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Point(
@@ -4644,7 +4644,7 @@ impl UVParamRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AddPoint(
@@ -4654,19 +4654,19 @@ impl UVParamRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe {
             crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AdjustRange(self as *mut Self)
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
@@ -4681,7 +4681,7 @@ impl UVParamRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Point(
@@ -4768,7 +4768,7 @@ impl UndefinedRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AddPoint()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AddPoint(
@@ -4778,19 +4778,19 @@ impl UndefinedRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: AdjustRange()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe {
             crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AdjustRange(self as *mut Self)
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: IsValid()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     pub fn is_valid(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_IsValid(self as *mut Self) }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Scale()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
         thePoint: &crate::ffi::gp_Pnt2d,
@@ -4805,7 +4805,7 @@ impl UndefinedRangeSplitter {
         }
     }
 
-    /// Inherited from BRepMesh_DefaultRangeSplitter: Point()
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Point(

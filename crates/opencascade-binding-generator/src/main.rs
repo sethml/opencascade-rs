@@ -375,6 +375,7 @@ fn convert_utility_classes_to_functions(
                     module: class.module.clone(),
                     comment: sm.comment.clone(),
                     source_header: class.source_header.clone(),
+                    source_line: sm.source_line,
                     params: sm.params.clone(),
                     return_type,
                 });

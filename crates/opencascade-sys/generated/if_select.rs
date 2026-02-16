@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `IFSelect.hxx` - `IFSelect::SaveSession`
+/// **Source:** `IFSelect.hxx`:47 - `IFSelect::SaveSession`
 /// Saves the state of a WorkSession from IFSelect, by using a
 /// SessionFile from IFSelect. Returns True if Done, False in
 /// case of Error on Writing. <file> gives the name of the File
@@ -15,7 +15,7 @@ pub fn save_session(WS: &crate::ffi::HandleIFSelectWorkSession, file: &str) -> b
     let c_file = std::ffi::CString::new(file).unwrap();
     unsafe { crate::ffi::IFSelect_save_session(WS, c_file.as_ptr()) }
 }
-/// **Source:** `IFSelect.hxx` - `IFSelect::RestoreSession`
+/// **Source:** `IFSelect.hxx`:54 - `IFSelect::RestoreSession`
 /// Restore the state of a WorkSession from IFSelect, by using a
 /// SessionFile from IFSelect. Returns True if Done, False in
 /// case of Error on Writing. <file> gives the name of the File
@@ -764,7 +764,7 @@ impl BasicDumper {
         }
     }
 
-    /// Inherited from IFSelect_SessionDumper: Next()
+    /// Inherited: **Source:** `IFSelect_SessionDumper.hxx`:65 - `IFSelect_SessionDumper::Next()`
     pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSessionDumper> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_BasicDumper_inherited_Next(
@@ -883,29 +883,29 @@ impl CheckCounter {
         }
     }
 
-    /// Inherited from IFSelect_SignatureList: SetList()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
     pub fn set_list(&mut self, withlist: bool) {
         unsafe { crate::ffi::IFSelect_CheckCounter_inherited_SetList(self as *mut Self, withlist) }
     }
 
-    /// Inherited from IFSelect_SignatureList: ModeSignOnly()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:59 - `IFSelect_SignatureList::ModeSignOnly()`
     pub fn mode_sign_only(&mut self) -> &mut bool {
         unsafe {
             &mut *(crate::ffi::IFSelect_CheckCounter_inherited_ModeSignOnly(self as *mut Self))
         }
     }
 
-    /// Inherited from IFSelect_SignatureList: Clear()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:61 - `IFSelect_SignatureList::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::IFSelect_CheckCounter_inherited_Clear(self as *mut Self) }
     }
 
-    /// Inherited from IFSelect_SignatureList: HasEntities()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:94 - `IFSelect_SignatureList::HasEntities()`
     pub fn has_entities(&self) -> bool {
         unsafe { crate::ffi::IFSelect_CheckCounter_inherited_HasEntities(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SignatureList: NbNulls()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:97 - `IFSelect_SignatureList::NbNulls()`
     pub fn nb_nulls(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_CheckCounter_inherited_NbNulls(self as *const Self) }
     }
@@ -1354,29 +1354,29 @@ impl DispGlobal {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: SetRootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::IFSelect_DispGlobal_inherited_SetRootName(self as *mut Self, name) }
     }
 
-    /// Inherited from IFSelect_Dispatch: HasRootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:62 - `IFSelect_Dispatch::HasRootName()`
     pub fn has_root_name(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispGlobal_inherited_HasRootName(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_Dispatch: RootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:66 - `IFSelect_Dispatch::RootName()`
     pub fn root_name(&self) -> &crate::ffi::HandleTCollectionHAsciiString {
         unsafe { &*(crate::ffi::IFSelect_DispGlobal_inherited_RootName(self as *const Self)) }
     }
 
-    /// Inherited from IFSelect_Dispatch: SetFinalSelection()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:69 - `IFSelect_Dispatch::SetFinalSelection()`
     pub fn set_final_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe {
             crate::ffi::IFSelect_DispGlobal_inherited_SetFinalSelection(self as *mut Self, sel)
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: FinalSelection()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:73 - `IFSelect_Dispatch::FinalSelection()`
     pub fn final_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispGlobal_inherited_FinalSelection(
@@ -1385,7 +1385,7 @@ impl DispGlobal {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: Selections()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
     pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispGlobal_inherited_Selections(
@@ -1394,7 +1394,7 @@ impl DispGlobal {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: CanHaveRemainder()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispGlobal_inherited_CanHaveRemainder(self as *const Self) }
     }
@@ -1502,29 +1502,29 @@ impl DispPerCount {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: SetRootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::IFSelect_DispPerCount_inherited_SetRootName(self as *mut Self, name) }
     }
 
-    /// Inherited from IFSelect_Dispatch: HasRootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:62 - `IFSelect_Dispatch::HasRootName()`
     pub fn has_root_name(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerCount_inherited_HasRootName(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_Dispatch: RootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:66 - `IFSelect_Dispatch::RootName()`
     pub fn root_name(&self) -> &crate::ffi::HandleTCollectionHAsciiString {
         unsafe { &*(crate::ffi::IFSelect_DispPerCount_inherited_RootName(self as *const Self)) }
     }
 
-    /// Inherited from IFSelect_Dispatch: SetFinalSelection()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:69 - `IFSelect_Dispatch::SetFinalSelection()`
     pub fn set_final_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe {
             crate::ffi::IFSelect_DispPerCount_inherited_SetFinalSelection(self as *mut Self, sel)
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: FinalSelection()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:73 - `IFSelect_Dispatch::FinalSelection()`
     pub fn final_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerCount_inherited_FinalSelection(
@@ -1533,7 +1533,7 @@ impl DispPerCount {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: Selections()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
     pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerCount_inherited_Selections(
@@ -1542,7 +1542,7 @@ impl DispPerCount {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: CanHaveRemainder()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerCount_inherited_CanHaveRemainder(self as *const Self) }
     }
@@ -1654,29 +1654,29 @@ impl DispPerFiles {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: SetRootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::IFSelect_DispPerFiles_inherited_SetRootName(self as *mut Self, name) }
     }
 
-    /// Inherited from IFSelect_Dispatch: HasRootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:62 - `IFSelect_Dispatch::HasRootName()`
     pub fn has_root_name(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerFiles_inherited_HasRootName(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_Dispatch: RootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:66 - `IFSelect_Dispatch::RootName()`
     pub fn root_name(&self) -> &crate::ffi::HandleTCollectionHAsciiString {
         unsafe { &*(crate::ffi::IFSelect_DispPerFiles_inherited_RootName(self as *const Self)) }
     }
 
-    /// Inherited from IFSelect_Dispatch: SetFinalSelection()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:69 - `IFSelect_Dispatch::SetFinalSelection()`
     pub fn set_final_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe {
             crate::ffi::IFSelect_DispPerFiles_inherited_SetFinalSelection(self as *mut Self, sel)
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: FinalSelection()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:73 - `IFSelect_Dispatch::FinalSelection()`
     pub fn final_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerFiles_inherited_FinalSelection(
@@ -1685,7 +1685,7 @@ impl DispPerFiles {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: Selections()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
     pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerFiles_inherited_Selections(
@@ -1694,7 +1694,7 @@ impl DispPerFiles {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: CanHaveRemainder()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerFiles_inherited_CanHaveRemainder(self as *const Self) }
     }
@@ -1779,29 +1779,29 @@ impl DispPerOne {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: SetRootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::IFSelect_DispPerOne_inherited_SetRootName(self as *mut Self, name) }
     }
 
-    /// Inherited from IFSelect_Dispatch: HasRootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:62 - `IFSelect_Dispatch::HasRootName()`
     pub fn has_root_name(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerOne_inherited_HasRootName(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_Dispatch: RootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:66 - `IFSelect_Dispatch::RootName()`
     pub fn root_name(&self) -> &crate::ffi::HandleTCollectionHAsciiString {
         unsafe { &*(crate::ffi::IFSelect_DispPerOne_inherited_RootName(self as *const Self)) }
     }
 
-    /// Inherited from IFSelect_Dispatch: SetFinalSelection()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:69 - `IFSelect_Dispatch::SetFinalSelection()`
     pub fn set_final_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe {
             crate::ffi::IFSelect_DispPerOne_inherited_SetFinalSelection(self as *mut Self, sel)
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: FinalSelection()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:73 - `IFSelect_Dispatch::FinalSelection()`
     pub fn final_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerOne_inherited_FinalSelection(
@@ -1810,7 +1810,7 @@ impl DispPerOne {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: Selections()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
     pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerOne_inherited_Selections(
@@ -1819,7 +1819,7 @@ impl DispPerOne {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: CanHaveRemainder()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerOne_inherited_CanHaveRemainder(self as *const Self) }
     }
@@ -1926,24 +1926,24 @@ impl DispPerSignature {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: SetRootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe {
             crate::ffi::IFSelect_DispPerSignature_inherited_SetRootName(self as *mut Self, name)
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: HasRootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:62 - `IFSelect_Dispatch::HasRootName()`
     pub fn has_root_name(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerSignature_inherited_HasRootName(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_Dispatch: RootName()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:66 - `IFSelect_Dispatch::RootName()`
     pub fn root_name(&self) -> &crate::ffi::HandleTCollectionHAsciiString {
         unsafe { &*(crate::ffi::IFSelect_DispPerSignature_inherited_RootName(self as *const Self)) }
     }
 
-    /// Inherited from IFSelect_Dispatch: SetFinalSelection()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:69 - `IFSelect_Dispatch::SetFinalSelection()`
     pub fn set_final_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe {
             crate::ffi::IFSelect_DispPerSignature_inherited_SetFinalSelection(
@@ -1953,7 +1953,7 @@ impl DispPerSignature {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: FinalSelection()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:73 - `IFSelect_Dispatch::FinalSelection()`
     pub fn final_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -1962,7 +1962,7 @@ impl DispPerSignature {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: Selections()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
     pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_inherited_Selections(
@@ -1971,7 +1971,7 @@ impl DispPerSignature {
         }
     }
 
-    /// Inherited from IFSelect_Dispatch: CanHaveRemainder()
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe {
             crate::ffi::IFSelect_DispPerSignature_inherited_CanHaveRemainder(self as *const Self)
@@ -3217,12 +3217,12 @@ impl GraphCounter {
         }
     }
 
-    /// Inherited from IFSelect_SignCounter: SetMap()
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:80 - `IFSelect_SignCounter::SetMap()`
     pub fn set_map(&mut self, withmap: bool) {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_SetMap(self as *mut Self, withmap) }
     }
 
-    /// Inherited from IFSelect_SignCounter: AddList()
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:99 - `IFSelect_SignCounter::AddList()`
     pub fn add_list(
         &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
@@ -3233,12 +3233,12 @@ impl GraphCounter {
         }
     }
 
-    /// Inherited from IFSelect_SignCounter: AddModel()
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:109 - `IFSelect_SignCounter::AddModel()`
     pub fn add_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_AddModel(self as *mut Self, model) }
     }
 
-    /// Inherited from IFSelect_SignCounter: AddFromSelection()
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:113 - `IFSelect_SignCounter::AddFromSelection()`
     pub fn add_from_selection(
         &mut self,
         sel: &crate::ffi::HandleIFSelectSelection,
@@ -3249,12 +3249,12 @@ impl GraphCounter {
         }
     }
 
-    /// Inherited from IFSelect_SignCounter: SetSelection()
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:118 - `IFSelect_SignCounter::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_SetSelection(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SignCounter: Selection()
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:121 - `IFSelect_SignCounter::Selection()`
     pub fn selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_GraphCounter_inherited_Selection(
@@ -3263,19 +3263,19 @@ impl GraphCounter {
         }
     }
 
-    /// Inherited from IFSelect_SignCounter: SetSelMode()
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:128 - `IFSelect_SignCounter::SetSelMode()`
     pub fn set_sel_mode(&mut self, selmode: i32) {
         unsafe {
             crate::ffi::IFSelect_GraphCounter_inherited_SetSelMode(self as *mut Self, selmode)
         }
     }
 
-    /// Inherited from IFSelect_SignCounter: SelMode()
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:131 - `IFSelect_SignCounter::SelMode()`
     pub fn sel_mode(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_SelMode(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SignCounter: ComputeSelected()
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:144 - `IFSelect_SignCounter::ComputeSelected()`
     pub fn compute_selected(&mut self, G: &crate::ffi::Interface_Graph, forced: bool) -> bool {
         unsafe {
             crate::ffi::IFSelect_GraphCounter_inherited_ComputeSelected(
@@ -3286,29 +3286,29 @@ impl GraphCounter {
         }
     }
 
-    /// Inherited from IFSelect_SignatureList: SetList()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
     pub fn set_list(&mut self, withlist: bool) {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_SetList(self as *mut Self, withlist) }
     }
 
-    /// Inherited from IFSelect_SignatureList: ModeSignOnly()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:59 - `IFSelect_SignatureList::ModeSignOnly()`
     pub fn mode_sign_only(&mut self) -> &mut bool {
         unsafe {
             &mut *(crate::ffi::IFSelect_GraphCounter_inherited_ModeSignOnly(self as *mut Self))
         }
     }
 
-    /// Inherited from IFSelect_SignatureList: Clear()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:61 - `IFSelect_SignatureList::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_Clear(self as *mut Self) }
     }
 
-    /// Inherited from IFSelect_SignatureList: HasEntities()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:94 - `IFSelect_SignatureList::HasEntities()`
     pub fn has_entities(&self) -> bool {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_HasEntities(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SignatureList: NbNulls()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:97 - `IFSelect_SignatureList::NbNulls()`
     pub fn nb_nulls(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_NbNulls(self as *const Self) }
     }
@@ -4111,17 +4111,17 @@ impl ModifEditForm {
         }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: MayChangeGraph()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         unsafe { crate::ffi::IFSelect_ModifEditForm_inherited_MayChangeGraph(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: SetDispatch()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         unsafe { crate::ffi::IFSelect_ModifEditForm_inherited_SetDispatch(self as *mut Self, disp) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: Dispatch()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
     pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifEditForm_inherited_Dispatch(
@@ -4130,27 +4130,27 @@ impl ModifEditForm {
         }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: Applies()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
     pub fn applies(&self, disp: &crate::ffi::HandleIFSelectDispatch) -> bool {
         unsafe { crate::ffi::IFSelect_ModifEditForm_inherited_Applies(self as *const Self, disp) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: SetSelection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_ModifEditForm_inherited_SetSelection(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: ResetSelection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         unsafe { crate::ffi::IFSelect_ModifEditForm_inherited_ResetSelection(self as *mut Self) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: HasSelection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         unsafe { crate::ffi::IFSelect_ModifEditForm_inherited_HasSelection(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: Selection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
     pub fn selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifEditForm_inherited_Selection(
@@ -4250,17 +4250,17 @@ impl ModifReorder {
         }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: MayChangeGraph()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         unsafe { crate::ffi::IFSelect_ModifReorder_inherited_MayChangeGraph(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: SetDispatch()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         unsafe { crate::ffi::IFSelect_ModifReorder_inherited_SetDispatch(self as *mut Self, disp) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: Dispatch()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
     pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifReorder_inherited_Dispatch(
@@ -4269,27 +4269,27 @@ impl ModifReorder {
         }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: Applies()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
     pub fn applies(&self, disp: &crate::ffi::HandleIFSelectDispatch) -> bool {
         unsafe { crate::ffi::IFSelect_ModifReorder_inherited_Applies(self as *const Self, disp) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: SetSelection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_ModifReorder_inherited_SetSelection(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: ResetSelection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         unsafe { crate::ffi::IFSelect_ModifReorder_inherited_ResetSelection(self as *mut Self) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: HasSelection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         unsafe { crate::ffi::IFSelect_ModifReorder_inherited_HasSelection(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: Selection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
     pub fn selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifReorder_inherited_Selection(
@@ -4352,17 +4352,17 @@ impl Modifier {
         }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: MayChangeGraph()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         unsafe { crate::ffi::IFSelect_Modifier_inherited_MayChangeGraph(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: SetDispatch()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         unsafe { crate::ffi::IFSelect_Modifier_inherited_SetDispatch(self as *mut Self, disp) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: Dispatch()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
     pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Modifier_inherited_Dispatch(
@@ -4371,27 +4371,27 @@ impl Modifier {
         }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: Applies()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
     pub fn applies(&self, disp: &crate::ffi::HandleIFSelectDispatch) -> bool {
         unsafe { crate::ffi::IFSelect_Modifier_inherited_Applies(self as *const Self, disp) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: SetSelection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_Modifier_inherited_SetSelection(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: ResetSelection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         unsafe { crate::ffi::IFSelect_Modifier_inherited_ResetSelection(self as *mut Self) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: HasSelection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         unsafe { crate::ffi::IFSelect_Modifier_inherited_HasSelection(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: Selection()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
     pub fn selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Modifier_inherited_Selection(
@@ -4400,7 +4400,7 @@ impl Modifier {
         }
     }
 
-    /// Inherited from IFSelect_GeneralModifier: Label()
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:96 - `IFSelect_GeneralModifier::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Modifier_inherited_Label(
@@ -4674,27 +4674,27 @@ impl ParamEditor {
         }
     }
 
-    /// Inherited from IFSelect_Editor: SetList()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
     pub fn set_list(&mut self, num: i32, max: i32) {
         unsafe { crate::ffi::IFSelect_ParamEditor_inherited_SetList(self as *mut Self, num, max) }
     }
 
-    /// Inherited from IFSelect_Editor: NbValues()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:65 - `IFSelect_Editor::NbValues()`
     pub fn nb_values(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_ParamEditor_inherited_NbValues(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_Editor: IsList()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:71 - `IFSelect_Editor::IsList()`
     pub fn is_list(&self, num: i32) -> bool {
         unsafe { crate::ffi::IFSelect_ParamEditor_inherited_IsList(self as *const Self, num) }
     }
 
-    /// Inherited from IFSelect_Editor: MaxList()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:76 - `IFSelect_Editor::MaxList()`
     pub fn max_list(&self, num: i32) -> i32 {
         unsafe { crate::ffi::IFSelect_ParamEditor_inherited_MaxList(self as *const Self, num) }
     }
 
-    /// Inherited from IFSelect_Editor: EditMode()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:84 - `IFSelect_Editor::EditMode()`
     pub fn edit_mode(&self, num: i32) -> crate::if_select::EditValue {
         unsafe {
             crate::if_select::EditValue::try_from(
@@ -4704,14 +4704,14 @@ impl ParamEditor {
         }
     }
 
-    /// Inherited from IFSelect_Editor: MaxNameLength()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:99 - `IFSelect_Editor::MaxNameLength()`
     pub fn max_name_length(&self, what: i32) -> i32 {
         unsafe {
             crate::ffi::IFSelect_ParamEditor_inherited_MaxNameLength(self as *const Self, what)
         }
     }
 
-    /// Inherited from IFSelect_Editor: Form()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:106 - `IFSelect_Editor::Form()`
     pub fn form(
         &self,
         readonly: bool,
@@ -4726,7 +4726,7 @@ impl ParamEditor {
         }
     }
 
-    /// Inherited from IFSelect_Editor: ListEditor()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:124 - `IFSelect_Editor::ListEditor()`
     pub fn list_editor(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectListEditor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ParamEditor_inherited_ListEditor(
@@ -4736,7 +4736,7 @@ impl ParamEditor {
         }
     }
 
-    /// Inherited from IFSelect_Editor: ListValue()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:130 - `IFSelect_Editor::ListValue()`
     pub fn list_value(
         &self,
         form: &crate::ffi::HandleIFSelectEditForm,
@@ -4751,7 +4751,7 @@ impl ParamEditor {
         }
     }
 
-    /// Inherited from IFSelect_Editor: Update()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:153 - `IFSelect_Editor::Update()`
     pub fn update(
         &self,
         form: &crate::ffi::HandleIFSelectEditForm,
@@ -4770,7 +4770,7 @@ impl ParamEditor {
         }
     }
 
-    /// Inherited from IFSelect_Editor: UpdateList()
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:159 - `IFSelect_Editor::UpdateList()`
     pub fn update_list(
         &self,
         form: &crate::ffi::HandleIFSelectEditForm,
@@ -4968,12 +4968,12 @@ impl SelectAnyList {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectAnyList_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyList_inherited_Input(
@@ -4982,17 +4982,17 @@ impl SelectAnyList {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectAnyList_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectAnyList_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectAnyList_inherited_FillIterator(self as *const Self, iter)
@@ -5090,12 +5090,12 @@ impl SelectAnyType {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_Input(
@@ -5104,34 +5104,34 @@ impl SelectAnyType {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectAnyType_inherited_FillIterator(self as *const Self, iter)
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_IsDirect(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_SetDirect(self as *mut Self, direct) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_Label(
@@ -5140,7 +5140,7 @@ impl SelectAnyType {
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: ExtractLabel()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:84 - `IFSelect_SelectExtract::ExtractLabel()`
     pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_ExtractLabel(
@@ -5204,7 +5204,7 @@ impl SelectBase {
         }
     }
 
-    /// Inherited from IFSelect_Selection: Label()
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:69 - `IFSelect_Selection::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectBase_inherited_Label(
@@ -5328,7 +5328,7 @@ impl SelectCombine {
         }
     }
 
-    /// Inherited from IFSelect_Selection: Label()
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:69 - `IFSelect_Selection::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectCombine_inherited_Label(
@@ -5443,7 +5443,7 @@ impl SelectControl {
         }
     }
 
-    /// Inherited from IFSelect_Selection: Label()
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:69 - `IFSelect_Selection::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectControl_inherited_Label(
@@ -5544,7 +5544,7 @@ impl SelectDeduct {
         }
     }
 
-    /// Inherited from IFSelect_Selection: Label()
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:69 - `IFSelect_Selection::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDeduct_inherited_Label(
@@ -5629,7 +5629,7 @@ impl SelectDiff {
         }
     }
 
-    /// Inherited from IFSelect_SelectControl: MainInput()
+    /// Inherited: **Source:** `IFSelect_SelectControl.hxx`:47 - `IFSelect_SelectControl::MainInput()`
     pub fn main_input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDiff_inherited_MainInput(
@@ -5638,12 +5638,12 @@ impl SelectDiff {
         }
     }
 
-    /// Inherited from IFSelect_SelectControl: HasSecondInput()
+    /// Inherited: **Source:** `IFSelect_SelectControl.hxx`:52 - `IFSelect_SelectControl::HasSecondInput()`
     pub fn has_second_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectDiff_inherited_HasSecondInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectControl: SecondInput()
+    /// Inherited: **Source:** `IFSelect_SelectControl.hxx`:55 - `IFSelect_SelectControl::SecondInput()`
     pub fn second_input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDiff_inherited_SecondInput(
@@ -5652,17 +5652,17 @@ impl SelectDiff {
         }
     }
 
-    /// Inherited from IFSelect_SelectControl: SetMainInput()
+    /// Inherited: **Source:** `IFSelect_SelectControl.hxx`:58 - `IFSelect_SelectControl::SetMainInput()`
     pub fn set_main_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectDiff_inherited_SetMainInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectControl: SetSecondInput()
+    /// Inherited: **Source:** `IFSelect_SelectControl.hxx`:61 - `IFSelect_SelectControl::SetSecondInput()`
     pub fn set_second_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectDiff_inherited_SetSecondInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectControl: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectControl.hxx`:65 - `IFSelect_SelectControl::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectDiff_inherited_FillIterator(self as *const Self, iter) }
     }
@@ -5770,7 +5770,7 @@ impl SelectEntityNumber {
         }
     }
 
-    /// Inherited from IFSelect_SelectBase: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectEntityNumber_inherited_FillIterator(
@@ -5886,14 +5886,14 @@ impl SelectErrorEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe {
             crate::ffi::IFSelect_SelectErrorEntities_inherited_SetInput(self as *mut Self, sel)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectErrorEntities_inherited_Input(
@@ -5902,19 +5902,19 @@ impl SelectErrorEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectErrorEntities_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe {
             crate::ffi::IFSelect_SelectErrorEntities_inherited_HasAlternate(self as *const Self)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectErrorEntities_inherited_FillIterator(
@@ -5924,19 +5924,19 @@ impl SelectErrorEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectErrorEntities_inherited_IsDirect(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe {
             crate::ffi::IFSelect_SelectErrorEntities_inherited_SetDirect(self as *mut Self, direct)
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectErrorEntities_inherited_Label(
@@ -6049,12 +6049,12 @@ impl SelectExplore {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectExplore_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExplore_inherited_Input(
@@ -6063,17 +6063,17 @@ impl SelectExplore {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectExplore_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectExplore_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectExplore_inherited_FillIterator(self as *const Self, iter)
@@ -6181,12 +6181,12 @@ impl SelectExtract {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectExtract_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExtract_inherited_Input(
@@ -6195,17 +6195,17 @@ impl SelectExtract {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectExtract_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectExtract_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectExtract_inherited_FillIterator(self as *const Self, iter)
@@ -6321,12 +6321,12 @@ impl SelectFlag {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_inherited_Input(
@@ -6335,32 +6335,32 @@ impl SelectFlag {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_FillIterator(self as *const Self, iter) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_IsDirect(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_SetDirect(self as *mut Self, direct) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_inherited_Label(
@@ -6457,7 +6457,7 @@ impl SelectInList {
         }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: SetRange()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:75 - `IFSelect_SelectAnyList::SetRange()`
     pub fn set_range(
         &mut self,
         rankfrom: &crate::ffi::HandleIFSelectIntParam,
@@ -6472,27 +6472,27 @@ impl SelectInList {
         }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: SetOne()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:79 - `IFSelect_SelectAnyList::SetOne()`
     pub fn set_one(&mut self, rank: &crate::ffi::HandleIFSelectIntParam) {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_SetOne(self as *mut Self, rank) }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: SetFrom()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:82 - `IFSelect_SelectAnyList::SetFrom()`
     pub fn set_from(&mut self, rankfrom: &crate::ffi::HandleIFSelectIntParam) {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_SetFrom(self as *mut Self, rankfrom) }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: SetUntil()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:85 - `IFSelect_SelectAnyList::SetUntil()`
     pub fn set_until(&mut self, rankto: &crate::ffi::HandleIFSelectIntParam) {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_SetUntil(self as *mut Self, rankto) }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: HasLower()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:88 - `IFSelect_SelectAnyList::HasLower()`
     pub fn has_lower(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_HasLower(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: Lower()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:91 - `IFSelect_SelectAnyList::Lower()`
     pub fn lower(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectIntParam> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_Lower(
@@ -6501,17 +6501,17 @@ impl SelectInList {
         }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: LowerValue()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:94 - `IFSelect_SelectAnyList::LowerValue()`
     pub fn lower_value(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_LowerValue(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: HasUpper()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:97 - `IFSelect_SelectAnyList::HasUpper()`
     pub fn has_upper(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_HasUpper(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: Upper()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:100 - `IFSelect_SelectAnyList::Upper()`
     pub fn upper(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectIntParam> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_Upper(
@@ -6520,12 +6520,12 @@ impl SelectInList {
         }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: UpperValue()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:103 - `IFSelect_SelectAnyList::UpperValue()`
     pub fn upper_value(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_UpperValue(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: Label()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:124 - `IFSelect_SelectAnyList::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_Label(
@@ -6534,7 +6534,7 @@ impl SelectInList {
         }
     }
 
-    /// Inherited from IFSelect_SelectAnyList: ListLabel()
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:128 - `IFSelect_SelectAnyList::ListLabel()`
     pub fn list_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_ListLabel(
@@ -6543,12 +6543,12 @@ impl SelectInList {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_Input(
@@ -6557,17 +6557,17 @@ impl SelectInList {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectInList_inherited_FillIterator(self as *const Self, iter)
@@ -6694,14 +6694,14 @@ impl SelectIncorrectEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_SetInput(self as *mut Self, sel)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIncorrectEntities_inherited_Input(
@@ -6710,21 +6710,21 @@ impl SelectIncorrectEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_HasInput(self as *const Self)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_HasAlternate(self as *const Self)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_FillIterator(
@@ -6734,14 +6734,14 @@ impl SelectIncorrectEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_IsDirect(self as *const Self)
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_SetDirect(
@@ -6751,7 +6751,7 @@ impl SelectIncorrectEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIncorrectEntities_inherited_Label(
@@ -6760,7 +6760,7 @@ impl SelectIncorrectEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: ExtractLabel()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:84 - `IFSelect_SelectExtract::ExtractLabel()`
     pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -6857,12 +6857,12 @@ impl SelectIntersection {
         }
     }
 
-    /// Inherited from IFSelect_SelectCombine: NbInputs()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:40 - `IFSelect_SelectCombine::NbInputs()`
     pub fn nb_inputs(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectIntersection_inherited_NbInputs(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectCombine: Input()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:43 - `IFSelect_SelectCombine::Input()`
     pub fn input(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIntersection_inherited_Input(
@@ -6872,26 +6872,26 @@ impl SelectIntersection {
         }
     }
 
-    /// Inherited from IFSelect_SelectCombine: InputRank()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:50 - `IFSelect_SelectCombine::InputRank()`
     pub fn input_rank(&self, sel: &crate::ffi::HandleIFSelectSelection) -> i32 {
         unsafe {
             crate::ffi::IFSelect_SelectIntersection_inherited_InputRank(self as *const Self, sel)
         }
     }
 
-    /// Inherited from IFSelect_SelectCombine: Add()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:56 - `IFSelect_SelectCombine::Add()`
     pub fn add(&mut self, sel: &crate::ffi::HandleIFSelectSelection, atnum: i32) {
         unsafe {
             crate::ffi::IFSelect_SelectIntersection_inherited_Add(self as *mut Self, sel, atnum)
         }
     }
 
-    /// Inherited from IFSelect_SelectCombine: Remove()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:60 - `IFSelect_SelectCombine::Remove()`
     pub fn remove(&mut self, sel: &crate::ffi::HandleIFSelectSelection) -> bool {
         unsafe { crate::ffi::IFSelect_SelectIntersection_inherited_Remove(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectCombine: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:68 - `IFSelect_SelectCombine::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectIntersection_inherited_FillIterator(
@@ -6985,7 +6985,7 @@ impl SelectModelEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectBase: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectModelEntities_inherited_FillIterator(
@@ -7081,7 +7081,7 @@ impl SelectModelRoots {
         }
     }
 
-    /// Inherited from IFSelect_SelectBase: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectModelRoots_inherited_FillIterator(self as *const Self, iter)
@@ -7230,7 +7230,7 @@ impl SelectPointed {
         }
     }
 
-    /// Inherited from IFSelect_SelectBase: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectPointed_inherited_FillIterator(self as *const Self, iter)
@@ -7402,12 +7402,12 @@ impl SelectRange {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectRange_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_inherited_Input(
@@ -7416,34 +7416,34 @@ impl SelectRange {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRange_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRange_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRange_inherited_FillIterator(self as *const Self, iter)
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRange_inherited_IsDirect(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectRange_inherited_SetDirect(self as *mut Self, direct) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_inherited_Label(
@@ -7559,12 +7559,12 @@ impl SelectRootComps {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectRootComps_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_inherited_Input(
@@ -7573,36 +7573,36 @@ impl SelectRootComps {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRootComps_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRootComps_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRootComps_inherited_FillIterator(self as *const Self, iter)
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRootComps_inherited_IsDirect(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe {
             crate::ffi::IFSelect_SelectRootComps_inherited_SetDirect(self as *mut Self, direct)
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_inherited_Label(
@@ -7706,12 +7706,12 @@ impl SelectRoots {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectRoots_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_inherited_Input(
@@ -7720,34 +7720,34 @@ impl SelectRoots {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRoots_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRoots_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRoots_inherited_FillIterator(self as *const Self, iter)
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRoots_inherited_IsDirect(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectRoots_inherited_SetDirect(self as *mut Self, direct) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_inherited_Label(
@@ -7910,12 +7910,12 @@ impl SelectSent {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_inherited_Input(
@@ -7924,32 +7924,32 @@ impl SelectSent {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_FillIterator(self as *const Self, iter) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_IsDirect(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_SetDirect(self as *mut Self, direct) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_inherited_Label(
@@ -8036,12 +8036,12 @@ impl SelectShared {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectShared_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectShared_inherited_Input(
@@ -8050,17 +8050,17 @@ impl SelectShared {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectShared_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectShared_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectShared_inherited_FillIterator(self as *const Self, iter)
@@ -8147,12 +8147,12 @@ impl SelectSharing {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectSharing_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSharing_inherited_Input(
@@ -8161,17 +8161,17 @@ impl SelectSharing {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSharing_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSharing_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSharing_inherited_FillIterator(self as *const Self, iter)
@@ -8298,12 +8298,12 @@ impl SelectSignature {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectSignature_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_inherited_Input(
@@ -8312,36 +8312,36 @@ impl SelectSignature {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSignature_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSignature_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSignature_inherited_FillIterator(self as *const Self, iter)
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSignature_inherited_IsDirect(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe {
             crate::ffi::IFSelect_SelectSignature_inherited_SetDirect(self as *mut Self, direct)
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_inherited_Label(
@@ -8464,14 +8464,14 @@ impl SelectSignedShared {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe {
             crate::ffi::IFSelect_SelectSignedShared_inherited_SetInput(self as *mut Self, sel)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedShared_inherited_Input(
@@ -8480,19 +8480,19 @@ impl SelectSignedShared {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSignedShared_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe {
             crate::ffi::IFSelect_SelectSignedShared_inherited_HasAlternate(self as *const Self)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSignedShared_inherited_FillIterator(
@@ -8502,12 +8502,12 @@ impl SelectSignedShared {
         }
     }
 
-    /// Inherited from IFSelect_SelectExplore: Level()
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectSignedShared_inherited_Level(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExplore: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedShared_inherited_Label(
@@ -8630,14 +8630,14 @@ impl SelectSignedSharing {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe {
             crate::ffi::IFSelect_SelectSignedSharing_inherited_SetInput(self as *mut Self, sel)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedSharing_inherited_Input(
@@ -8646,19 +8646,19 @@ impl SelectSignedSharing {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSignedSharing_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe {
             crate::ffi::IFSelect_SelectSignedSharing_inherited_HasAlternate(self as *const Self)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSignedSharing_inherited_FillIterator(
@@ -8668,12 +8668,12 @@ impl SelectSignedSharing {
         }
     }
 
-    /// Inherited from IFSelect_SelectExplore: Level()
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectSignedSharing_inherited_Level(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExplore: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedSharing_inherited_Label(
@@ -8793,12 +8793,12 @@ impl SelectSuite {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectSuite_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSuite_inherited_Input(
@@ -8807,17 +8807,17 @@ impl SelectSuite {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSuite_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSuite_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSuite_inherited_FillIterator(self as *const Self, iter)
@@ -8956,12 +8956,12 @@ impl SelectType {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_SetInput(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_inherited_Input(
@@ -8970,32 +8970,32 @@ impl SelectType {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_HasInput(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_HasAlternate(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_FillIterator(self as *const Self, iter) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_IsDirect(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_SetDirect(self as *mut Self, direct) }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_inherited_Label(
@@ -9082,12 +9082,12 @@ impl SelectUnion {
         }
     }
 
-    /// Inherited from IFSelect_SelectCombine: NbInputs()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:40 - `IFSelect_SelectCombine::NbInputs()`
     pub fn nb_inputs(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectUnion_inherited_NbInputs(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SelectCombine: Input()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:43 - `IFSelect_SelectCombine::Input()`
     pub fn input(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnion_inherited_Input(
@@ -9097,22 +9097,22 @@ impl SelectUnion {
         }
     }
 
-    /// Inherited from IFSelect_SelectCombine: InputRank()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:50 - `IFSelect_SelectCombine::InputRank()`
     pub fn input_rank(&self, sel: &crate::ffi::HandleIFSelectSelection) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectUnion_inherited_InputRank(self as *const Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectCombine: Add()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:56 - `IFSelect_SelectCombine::Add()`
     pub fn add(&mut self, sel: &crate::ffi::HandleIFSelectSelection, atnum: i32) {
         unsafe { crate::ffi::IFSelect_SelectUnion_inherited_Add(self as *mut Self, sel, atnum) }
     }
 
-    /// Inherited from IFSelect_SelectCombine: Remove()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:60 - `IFSelect_SelectCombine::Remove()`
     pub fn remove(&mut self, sel: &crate::ffi::HandleIFSelectSelection) -> bool {
         unsafe { crate::ffi::IFSelect_SelectUnion_inherited_Remove(self as *mut Self, sel) }
     }
 
-    /// Inherited from IFSelect_SelectCombine: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:68 - `IFSelect_SelectCombine::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectUnion_inherited_FillIterator(self as *const Self, iter)
@@ -9225,14 +9225,14 @@ impl SelectUnknownEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: SetInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe {
             crate::ffi::IFSelect_SelectUnknownEntities_inherited_SetInput(self as *mut Self, sel)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: Input()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
     pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnknownEntities_inherited_Input(
@@ -9241,21 +9241,21 @@ impl SelectUnknownEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasInput()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         unsafe {
             crate::ffi::IFSelect_SelectUnknownEntities_inherited_HasInput(self as *const Self)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: HasAlternate()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         unsafe {
             crate::ffi::IFSelect_SelectUnknownEntities_inherited_HasAlternate(self as *const Self)
         }
     }
 
-    /// Inherited from IFSelect_SelectDeduct: FillIterator()
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectUnknownEntities_inherited_FillIterator(
@@ -9265,14 +9265,14 @@ impl SelectUnknownEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: IsDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe {
             crate::ffi::IFSelect_SelectUnknownEntities_inherited_IsDirect(self as *const Self)
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: SetDirect()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe {
             crate::ffi::IFSelect_SelectUnknownEntities_inherited_SetDirect(
@@ -9282,7 +9282,7 @@ impl SelectUnknownEntities {
         }
     }
 
-    /// Inherited from IFSelect_SelectExtract: Label()
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnknownEntities_inherited_Label(
@@ -10884,7 +10884,7 @@ impl SignAncestor {
         }
     }
 
-    /// Inherited from IFSelect_Signature: SetIntCase()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         unsafe {
             crate::ffi::IFSelect_SignAncestor_inherited_SetIntCase(
@@ -10897,7 +10897,7 @@ impl SignAncestor {
         }
     }
 
-    /// Inherited from IFSelect_Signature: IsIntCase()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
     pub fn is_int_case(
         &self,
         hasmin: &mut bool,
@@ -10916,7 +10916,7 @@ impl SignAncestor {
         }
     }
 
-    /// Inherited from IFSelect_Signature: CaseList()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignAncestor_inherited_CaseList(
@@ -10925,7 +10925,7 @@ impl SignAncestor {
         }
     }
 
-    /// Inherited from IFSelect_Signature: Label()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignAncestor_inherited_Label(
@@ -11012,7 +11012,7 @@ impl SignCategory {
         }
     }
 
-    /// Inherited from IFSelect_Signature: SetIntCase()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         unsafe {
             crate::ffi::IFSelect_SignCategory_inherited_SetIntCase(
@@ -11025,7 +11025,7 @@ impl SignCategory {
         }
     }
 
-    /// Inherited from IFSelect_Signature: IsIntCase()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
     pub fn is_int_case(
         &self,
         hasmin: &mut bool,
@@ -11044,7 +11044,7 @@ impl SignCategory {
         }
     }
 
-    /// Inherited from IFSelect_Signature: CaseList()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignCategory_inherited_CaseList(
@@ -11053,7 +11053,7 @@ impl SignCategory {
         }
     }
 
-    /// Inherited from IFSelect_Signature: Label()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignCategory_inherited_Label(
@@ -11263,29 +11263,29 @@ impl SignCounter {
         }
     }
 
-    /// Inherited from IFSelect_SignatureList: SetList()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
     pub fn set_list(&mut self, withlist: bool) {
         unsafe { crate::ffi::IFSelect_SignCounter_inherited_SetList(self as *mut Self, withlist) }
     }
 
-    /// Inherited from IFSelect_SignatureList: ModeSignOnly()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:59 - `IFSelect_SignatureList::ModeSignOnly()`
     pub fn mode_sign_only(&mut self) -> &mut bool {
         unsafe {
             &mut *(crate::ffi::IFSelect_SignCounter_inherited_ModeSignOnly(self as *mut Self))
         }
     }
 
-    /// Inherited from IFSelect_SignatureList: Clear()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:61 - `IFSelect_SignatureList::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::IFSelect_SignCounter_inherited_Clear(self as *mut Self) }
     }
 
-    /// Inherited from IFSelect_SignatureList: HasEntities()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:94 - `IFSelect_SignatureList::HasEntities()`
     pub fn has_entities(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SignCounter_inherited_HasEntities(self as *const Self) }
     }
 
-    /// Inherited from IFSelect_SignatureList: NbNulls()
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:97 - `IFSelect_SignatureList::NbNulls()`
     pub fn nb_nulls(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SignCounter_inherited_NbNulls(self as *const Self) }
     }
@@ -11377,7 +11377,7 @@ impl SignMultiple {
         }
     }
 
-    /// Inherited from IFSelect_Signature: SetIntCase()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         unsafe {
             crate::ffi::IFSelect_SignMultiple_inherited_SetIntCase(
@@ -11390,7 +11390,7 @@ impl SignMultiple {
         }
     }
 
-    /// Inherited from IFSelect_Signature: IsIntCase()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
     pub fn is_int_case(
         &self,
         hasmin: &mut bool,
@@ -11409,7 +11409,7 @@ impl SignMultiple {
         }
     }
 
-    /// Inherited from IFSelect_Signature: CaseList()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignMultiple_inherited_CaseList(
@@ -11418,7 +11418,7 @@ impl SignMultiple {
         }
     }
 
-    /// Inherited from IFSelect_Signature: Label()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignMultiple_inherited_Label(
@@ -11515,7 +11515,7 @@ impl SignType {
         unsafe { &mut *(crate::ffi::IFSelect_SignType_as_MoniTool_SignText_mut(self as *mut Self)) }
     }
 
-    /// Inherited from IFSelect_Signature: SetIntCase()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         unsafe {
             crate::ffi::IFSelect_SignType_inherited_SetIntCase(
@@ -11528,7 +11528,7 @@ impl SignType {
         }
     }
 
-    /// Inherited from IFSelect_Signature: IsIntCase()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
     pub fn is_int_case(
         &self,
         hasmin: &mut bool,
@@ -11547,7 +11547,7 @@ impl SignType {
         }
     }
 
-    /// Inherited from IFSelect_Signature: CaseList()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignType_inherited_CaseList(
@@ -11556,7 +11556,7 @@ impl SignType {
         }
     }
 
-    /// Inherited from IFSelect_Signature: Label()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignType_inherited_Label(
@@ -11645,7 +11645,7 @@ impl SignValidity {
         }
     }
 
-    /// Inherited from IFSelect_Signature: SetIntCase()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         unsafe {
             crate::ffi::IFSelect_SignValidity_inherited_SetIntCase(
@@ -11658,7 +11658,7 @@ impl SignValidity {
         }
     }
 
-    /// Inherited from IFSelect_Signature: IsIntCase()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
     pub fn is_int_case(
         &self,
         hasmin: &mut bool,
@@ -11677,7 +11677,7 @@ impl SignValidity {
         }
     }
 
-    /// Inherited from IFSelect_Signature: CaseList()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignValidity_inherited_CaseList(
@@ -11686,7 +11686,7 @@ impl SignValidity {
         }
     }
 
-    /// Inherited from IFSelect_Signature: Label()
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignValidity_inherited_Label(

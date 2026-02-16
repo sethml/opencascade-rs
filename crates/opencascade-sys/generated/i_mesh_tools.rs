@@ -222,12 +222,12 @@ impl Context {
         unsafe { &mut *(crate::ffi::IMeshTools_Context_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
-    /// Inherited from IMeshData_Shape: SetShape()
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::IMeshTools_Context_inherited_SetShape(self as *mut Self, theShape) }
     }
 
-    /// Inherited from IMeshData_Shape: GetShape()
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::IMeshTools_Context_inherited_GetShape(self as *const Self)) }
     }
@@ -549,7 +549,7 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: SetStatus()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
     pub fn set_status(&mut self, theStat: crate::message::Status) {
         unsafe {
             crate::ffi::IMeshTools_ModelBuilder_inherited_SetStatus(
@@ -559,31 +559,31 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: GetStatus()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
     pub fn get_status(&self) -> &crate::ffi::Message_ExecStatus {
         unsafe { &*(crate::ffi::IMeshTools_ModelBuilder_inherited_GetStatus(self as *const Self)) }
     }
 
-    /// Inherited from Message_Algorithm: ChangeStatus()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
     pub fn change_status(&mut self) -> &mut crate::ffi::Message_ExecStatus {
         unsafe {
             &mut *(crate::ffi::IMeshTools_ModelBuilder_inherited_ChangeStatus(self as *mut Self))
         }
     }
 
-    /// Inherited from Message_Algorithm: ClearStatus()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
     pub fn clear_status(&mut self) {
         unsafe { crate::ffi::IMeshTools_ModelBuilder_inherited_ClearStatus(self as *mut Self) }
     }
 
-    /// Inherited from Message_Algorithm: SetMessenger()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
     pub fn set_messenger(&mut self, theMsgr: &crate::ffi::HandleMessageMessenger) {
         unsafe {
             crate::ffi::IMeshTools_ModelBuilder_inherited_SetMessenger(self as *mut Self, theMsgr)
         }
     }
 
-    /// Inherited from Message_Algorithm: GetMessenger()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:155 - `Message_Algorithm::GetMessenger()`
     pub fn get_messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessenger(
@@ -592,7 +592,7 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: SendStatusMessages()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
     pub fn send_status_messages(
         &self,
         theFilter: &crate::ffi::Message_ExecStatus,
@@ -609,7 +609,7 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: SendMessages()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
     pub fn send_messages(&self, theTraceLevel: crate::message::Gravity, theMaxCount: i32) {
         unsafe {
             crate::ffi::IMeshTools_ModelBuilder_inherited_SendMessages(
@@ -620,14 +620,14 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: AddStatus()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
     pub fn add_status(&mut self, theOther: &crate::ffi::HandleMessageAlgorithm) {
         unsafe {
             crate::ffi::IMeshTools_ModelBuilder_inherited_AddStatus(self as *mut Self, theOther)
         }
     }
 
-    /// Inherited from Message_Algorithm: GetMessageNumbers()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:197 - `Message_Algorithm::GetMessageNumbers()`
     pub fn get_message_numbers(
         &self,
         theStatus: crate::message::Status,
@@ -642,7 +642,7 @@ impl ModelBuilder {
         }
     }
 
-    /// Inherited from Message_Algorithm: GetMessageStrings()
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
     pub fn get_message_strings(
         &self,
         theStatus: crate::message::Status,

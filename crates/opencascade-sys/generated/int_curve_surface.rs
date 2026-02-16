@@ -82,41 +82,41 @@ impl HInter {
         unsafe { crate::ffi::IntCurveSurface_HInter_perform(self as *mut Self, Curve, Surface) }
     }
 
-    /// Inherited from IntCurveSurface_Intersection: IsDone()
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:36 - `IntCurveSurface_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::IntCurveSurface_HInter_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited from IntCurveSurface_Intersection: NbPoints()
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:41 - `IntCurveSurface_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         unsafe { crate::ffi::IntCurveSurface_HInter_inherited_NbPoints(self as *const Self) }
     }
 
-    /// Inherited from IntCurveSurface_Intersection: Point()
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:47 - `IntCurveSurface_Intersection::Point()`
     pub fn point(&self, Index: i32) -> &crate::ffi::IntCurveSurface_IntersectionPoint {
         unsafe {
             &*(crate::ffi::IntCurveSurface_HInter_inherited_Point(self as *const Self, Index))
         }
     }
 
-    /// Inherited from IntCurveSurface_Intersection: NbSegments()
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:53 - `IntCurveSurface_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         unsafe { crate::ffi::IntCurveSurface_HInter_inherited_NbSegments(self as *const Self) }
     }
 
-    /// Inherited from IntCurveSurface_Intersection: Segment()
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:59 - `IntCurveSurface_Intersection::Segment()`
     pub fn segment(&self, Index: i32) -> &crate::ffi::IntCurveSurface_IntersectionSegment {
         unsafe {
             &*(crate::ffi::IntCurveSurface_HInter_inherited_Segment(self as *const Self, Index))
         }
     }
 
-    /// Inherited from IntCurveSurface_Intersection: IsParallel()
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:65 - `IntCurveSurface_Intersection::IsParallel()`
     pub fn is_parallel(&self) -> bool {
         unsafe { crate::ffi::IntCurveSurface_HInter_inherited_IsParallel(self as *const Self) }
     }
 
-    /// Inherited from IntCurveSurface_Intersection: Dump()
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:68 - `IntCurveSurface_Intersection::Dump()`
     pub fn dump(&self) {
         unsafe { crate::ffi::IntCurveSurface_HInter_inherited_Dump(self as *const Self) }
     }

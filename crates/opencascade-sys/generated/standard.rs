@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `Standard.hxx` - `Standard::Purge`
+/// **Source:** `Standard.hxx`:94 - `Standard::Purge`
 /// Deallocates the storage retained on the free list
 /// and clears the list.
 /// Returns non-zero if some memory has been actually freed.

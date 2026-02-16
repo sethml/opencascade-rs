@@ -155,7 +155,7 @@ impl ActorRead {
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForTransient: NullResult()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorRead_inherited_NullResult(
@@ -164,22 +164,22 @@ impl ActorRead {
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForTransient: SetLast()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         unsafe { crate::ffi::STEPControl_ActorRead_inherited_SetLast(self as *mut Self, mode) }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForTransient: IsLast()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:82 - `Transfer_ActorOfProcessForTransient::IsLast()`
     pub fn is_last(&self) -> bool {
         unsafe { crate::ffi::STEPControl_ActorRead_inherited_IsLast(self as *const Self) }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForTransient: SetNext()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
     pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
         unsafe { crate::ffi::STEPControl_ActorRead_inherited_SetNext(self as *mut Self, next) }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForTransient: Next()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
     pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorRead_inherited_Next(
@@ -301,12 +301,12 @@ impl ActorWrite {
         }
     }
 
-    /// Inherited from Transfer_ActorOfFinderProcess: ModeTrans()
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans()`
     pub fn mode_trans(&mut self) -> &mut i32 {
         unsafe { &mut *(crate::ffi::STEPControl_ActorWrite_inherited_ModeTrans(self as *mut Self)) }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForFinder: NullResult()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_inherited_NullResult(
@@ -315,22 +315,22 @@ impl ActorWrite {
         }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForFinder: SetLast()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:80 - `Transfer_ActorOfProcessForFinder::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         unsafe { crate::ffi::STEPControl_ActorWrite_inherited_SetLast(self as *mut Self, mode) }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForFinder: IsLast()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:83 - `Transfer_ActorOfProcessForFinder::IsLast()`
     pub fn is_last(&self) -> bool {
         unsafe { crate::ffi::STEPControl_ActorWrite_inherited_IsLast(self as *const Self) }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForFinder: SetNext()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:90 - `Transfer_ActorOfProcessForFinder::SetNext()`
     pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
         unsafe { crate::ffi::STEPControl_ActorWrite_inherited_SetNext(self as *mut Self, next) }
     }
 
-    /// Inherited from Transfer_ActorOfProcessForFinder: Next()
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:93 - `Transfer_ActorOfProcessForFinder::Next()`
     pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_inherited_Next(
@@ -416,17 +416,17 @@ impl Controller {
         }
     }
 
-    /// Inherited from XSControl_Controller: AutoRecord()
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
     pub fn auto_record(&self) {
         unsafe { crate::ffi::STEPControl_Controller_inherited_AutoRecord(self as *const Self) }
     }
 
-    /// Inherited from XSControl_Controller: WorkLibrary()
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
     pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
         unsafe { &*(crate::ffi::STEPControl_Controller_inherited_WorkLibrary(self as *const Self)) }
     }
 
-    /// Inherited from XSControl_Controller: SetModeWrite()
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:122 - `XSControl_Controller::SetModeWrite()`
     pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
         unsafe {
             crate::ffi::STEPControl_Controller_inherited_SetModeWrite(
@@ -438,7 +438,7 @@ impl Controller {
         }
     }
 
-    /// Inherited from XSControl_Controller: ModeWriteBounds()
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds()`
     pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
         unsafe {
             crate::ffi::STEPControl_Controller_inherited_ModeWriteBounds(
@@ -450,7 +450,7 @@ impl Controller {
         }
     }
 
-    /// Inherited from XSControl_Controller: IsModeWrite()
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:141 - `XSControl_Controller::IsModeWrite()`
     pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
         unsafe {
             crate::ffi::STEPControl_Controller_inherited_IsModeWrite(
@@ -461,7 +461,7 @@ impl Controller {
         }
     }
 
-    /// Inherited from XSControl_Controller: RecognizeWriteShape()
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
     pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
         unsafe {
             crate::ffi::STEPControl_Controller_inherited_RecognizeWriteShape(
@@ -611,7 +611,7 @@ impl Reader {
         unsafe { &mut *(crate::ffi::STEPControl_Reader_as_XSControl_Reader_mut(self as *mut Self)) }
     }
 
-    /// Inherited from XSControl_Reader: Model()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_Model(
@@ -620,7 +620,7 @@ impl Reader {
         }
     }
 
-    /// Inherited from XSControl_Reader: TransferOneRoot()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:168 - `XSControl_Reader::TransferOneRoot()`
     pub fn transfer_one_root(
         &mut self,
         num: i32,
@@ -635,7 +635,7 @@ impl Reader {
         }
     }
 
-    /// Inherited from XSControl_Reader: TransferOne()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:175 - `XSControl_Reader::TransferOne()`
     pub fn transfer_one(
         &mut self,
         num: i32,
@@ -650,7 +650,7 @@ impl Reader {
         }
     }
 
-    /// Inherited from XSControl_Reader: TransferList()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:190 - `XSControl_Reader::TransferList()`
     pub fn transfer_list(
         &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
@@ -665,24 +665,24 @@ impl Reader {
         }
     }
 
-    /// Inherited from XSControl_Reader: TransferRoots()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:197 - `XSControl_Reader::TransferRoots()`
     pub fn transfer_roots(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> i32 {
         unsafe {
             crate::ffi::STEPControl_Reader_inherited_TransferRoots(self as *mut Self, theProgress)
         }
     }
 
-    /// Inherited from XSControl_Reader: ClearShapes()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:201 - `XSControl_Reader::ClearShapes()`
     pub fn clear_shapes(&mut self) {
         unsafe { crate::ffi::STEPControl_Reader_inherited_ClearShapes(self as *mut Self) }
     }
 
-    /// Inherited from XSControl_Reader: NbShapes()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:204 - `XSControl_Reader::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
         unsafe { crate::ffi::STEPControl_Reader_inherited_NbShapes(self as *const Self) }
     }
 
-    /// Inherited from XSControl_Reader: Shape()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:210 - `XSControl_Reader::Shape()`
     pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_Shape(
@@ -692,7 +692,7 @@ impl Reader {
         }
     }
 
-    /// Inherited from XSControl_Reader: OneShape()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:217 - `XSControl_Reader::OneShape()`
     pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_OneShape(
@@ -701,7 +701,7 @@ impl Reader {
         }
     }
 
-    /// Inherited from XSControl_Reader: PrintCheckLoad()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:225 - `XSControl_Reader::PrintCheckLoad()`
     pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
         unsafe {
             crate::ffi::STEPControl_Reader_inherited_PrintCheckLoad(
@@ -712,7 +712,7 @@ impl Reader {
         }
     }
 
-    /// Inherited from XSControl_Reader: PrintCheckTransfer()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:239 - `XSControl_Reader::PrintCheckTransfer()`
     pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
         unsafe {
             crate::ffi::STEPControl_Reader_inherited_PrintCheckTransfer(
@@ -723,7 +723,7 @@ impl Reader {
         }
     }
 
-    /// Inherited from XSControl_Reader: PrintStatsTransfer()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:275 - `XSControl_Reader::PrintStatsTransfer()`
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
         unsafe {
             crate::ffi::STEPControl_Reader_inherited_PrintStatsTransfer(
@@ -734,7 +734,7 @@ impl Reader {
         }
     }
 
-    /// Inherited from XSControl_Reader: GetStatsTransfer()
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
     pub fn get_stats_transfer(
         &self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,

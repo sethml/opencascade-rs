@@ -6,23 +6,23 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `ShapeAnalysis.hxx` - `ShapeAnalysis::OuterWire`
+/// **Source:** `ShapeAnalysis.hxx`:53 - `ShapeAnalysis::OuterWire`
 /// Returns positively oriented wire in the face.
 /// If there is no such wire - returns the last wire of the face.
 pub fn outer_wire(theFace: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_outer_wire(theFace)) }
 }
-/// **Source:** `ShapeAnalysis.hxx` - `ShapeAnalysis::ContourArea`
+/// **Source:** `ShapeAnalysis.hxx`:60 - `ShapeAnalysis::ContourArea`
 /// Returns a total area of 3d wire
 pub fn contour_area(theWire: &crate::ffi::TopoDS_Wire) -> f64 {
     unsafe { crate::ffi::ShapeAnalysis_contour_area(theWire) }
 }
-/// **Source:** `ShapeAnalysis.hxx` - `ShapeAnalysis::IsOuterBound`
+/// **Source:** `ShapeAnalysis.hxx`:63 - `ShapeAnalysis::IsOuterBound`
 /// Returns True if <F> has outer bound.
 pub fn is_outer_bound(face: &crate::ffi::TopoDS_Face) -> bool {
     unsafe { crate::ffi::ShapeAnalysis_is_outer_bound(face) }
 }
-/// **Source:** `ShapeAnalysis.hxx` - `ShapeAnalysis::AdjustByPeriod`
+/// **Source:** `ShapeAnalysis.hxx`:69 - `ShapeAnalysis::AdjustByPeriod`
 /// Returns a shift required to move point
 /// <Val> to the range [ToVal-Period/2,ToVal+Period/2].
 /// This shift will be the divisible by Period.
@@ -30,7 +30,7 @@ pub fn is_outer_bound(face: &crate::ffi::TopoDS_Face) -> bool {
 pub fn adjust_by_period(Val: f64, ToVal: f64, Period: f64) -> f64 {
     unsafe { crate::ffi::ShapeAnalysis_adjust_by_period(Val, ToVal, Period) }
 }
-/// **Source:** `ShapeAnalysis.hxx` - `ShapeAnalysis::AdjustToPeriod`
+/// **Source:** `ShapeAnalysis.hxx`:78 - `ShapeAnalysis::AdjustToPeriod`
 /// Returns a shift required to move point
 /// <Val> to the range [ValMin,ValMax].
 /// This shift will be the divisible by Period
@@ -39,7 +39,7 @@ pub fn adjust_by_period(Val: f64, ToVal: f64, Period: f64) -> f64 {
 pub fn adjust_to_period(Val: f64, ValMin: f64, ValMax: f64) -> f64 {
     unsafe { crate::ffi::ShapeAnalysis_adjust_to_period(Val, ValMin, ValMax) }
 }
-/// **Source:** `ShapeAnalysis.hxx` - `ShapeAnalysis::FindBounds`
+/// **Source:** `ShapeAnalysis.hxx`:91 - `ShapeAnalysis::FindBounds`
 /// Finds the start and end vertices of the shape
 /// Shape can be of the following type:
 /// vertex: V1 and V2 are the same and equal to <shape>,
@@ -56,7 +56,7 @@ pub fn find_bounds(
 ) {
     unsafe { crate::ffi::ShapeAnalysis_find_bounds(shape, V1, V2) }
 }
-/// **Source:** `ShapeAnalysis.hxx` - `ShapeAnalysis::GetFaceUVBounds`
+/// **Source:** `ShapeAnalysis.hxx`:96 - `ShapeAnalysis::GetFaceUVBounds`
 /// Computes exact UV bounds of all wires on the face
 pub fn get_face_uv_bounds(
     F: &crate::ffi::TopoDS_Face,
@@ -3955,7 +3955,7 @@ impl TransferParametersProj {
         }
     }
 
-    /// Inherited from ShapeAnalysis_TransferParameters: SetMaxTolerance()
+    /// Inherited: **Source:** `ShapeAnalysis_TransferParameters.hxx`:61 - `ShapeAnalysis_TransferParameters::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
             crate::ffi::ShapeAnalysis_TransferParametersProj_inherited_SetMaxTolerance(

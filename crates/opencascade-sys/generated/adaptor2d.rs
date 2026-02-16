@@ -598,7 +598,7 @@ impl Line2d {
         unsafe { &mut *(crate::ffi::Adaptor2d_Line2d_as_Adaptor2d_Curve2d_mut(self as *mut Self)) }
     }
 
-    /// Inherited from Adaptor2d_Curve2d: NbSamples()
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:154 - `Adaptor2d_Curve2d::NbSamples()`
     pub fn nb_samples(&self) -> i32 {
         unsafe { crate::ffi::Adaptor2d_Line2d_inherited_NbSamples(self as *const Self) }
     }

@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `Message.hxx` - `Message::DefaultMessenger`
+/// **Source:** `Message.hxx`:50 - `Message::DefaultMessenger`
 /// Defines default messenger for OCCT applications.
 /// This is global static instance of the messenger.
 /// By default, it contains single printer directed to std::cout.
@@ -22,31 +22,31 @@
 pub fn default_messenger() -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_default_messenger()) }
 }
-/// **Source:** `Message.hxx` - `Message::Send`
+/// **Source:** `Message.hxx`:60 - `Message::Send`
 pub fn send(theMessage: &crate::ffi::TCollection_AsciiString, theGravity: crate::message::Gravity) {
     unsafe { crate::ffi::Message_send(theMessage, theGravity.into()) }
 }
-/// **Source:** `Message.hxx` - `Message::SendFail`
+/// **Source:** `Message.hxx`:75 - `Message::SendFail`
 pub fn send_fail(theMessage: &crate::ffi::TCollection_AsciiString) {
     unsafe { crate::ffi::Message_send_fail(theMessage) }
 }
-/// **Source:** `Message.hxx` - `Message::SendAlarm`
+/// **Source:** `Message.hxx`:80 - `Message::SendAlarm`
 pub fn send_alarm(theMessage: &crate::ffi::TCollection_AsciiString) {
     unsafe { crate::ffi::Message_send_alarm(theMessage) }
 }
-/// **Source:** `Message.hxx` - `Message::SendWarning`
+/// **Source:** `Message.hxx`:85 - `Message::SendWarning`
 pub fn send_warning(theMessage: &crate::ffi::TCollection_AsciiString) {
     unsafe { crate::ffi::Message_send_warning(theMessage) }
 }
-/// **Source:** `Message.hxx` - `Message::SendInfo`
+/// **Source:** `Message.hxx`:90 - `Message::SendInfo`
 pub fn send_info(theMessage: &crate::ffi::TCollection_AsciiString) {
     unsafe { crate::ffi::Message_send_info(theMessage) }
 }
-/// **Source:** `Message.hxx` - `Message::SendTrace`
+/// **Source:** `Message.hxx`:95 - `Message::SendTrace`
 pub fn send_trace(theMessage: &crate::ffi::TCollection_AsciiString) {
     unsafe { crate::ffi::Message_send_trace(theMessage) }
 }
-/// **Source:** `Message.hxx` - `Message::FillTime`
+/// **Source:** `Message.hxx`:106 - `Message::FillTime`
 /// Returns the string filled with values of hours, minutes and seconds.
 /// Example:
 /// 1. (5, 12, 26.3345) returns "05h:12m:26.33s",
@@ -59,13 +59,13 @@ pub fn fill_time(
 ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_fill_time(Hour, Minute, Second)) }
 }
-/// **Source:** `Message.hxx` - `Message::DefaultReport`
+/// **Source:** `Message.hxx`:113 - `Message::DefaultReport`
 /// returns the only one instance of Report
 /// When theToCreate is true - automatically creates message report when not exist.
 pub fn default_report(theToCreate: bool) -> crate::OwnedPtr<crate::ffi::HandleMessageReport> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_default_report(theToCreate)) }
 }
-/// **Source:** `Message.hxx` - `Message::MetricToString`
+/// **Source:** `Message.hxx`:126 - `Message::MetricToString`
 /// Returns the string name for a given metric type.
 /// @param theType metric type
 /// @return string identifier from the list of Message_MetricType
@@ -76,7 +76,7 @@ pub fn metric_to_string(theType: crate::message::MetricType) -> String {
             .into_owned()
     }
 }
-/// **Source:** `Message.hxx` - `Message::MetricFromString`
+/// **Source:** `Message.hxx`:131 - `Message::MetricFromString`
 /// Returns the metric type from the given string identifier.
 /// @param theString string identifier
 /// @return metric type or Message_MetricType_None if string identifier is invalid
@@ -1569,12 +1569,12 @@ impl AttributeMeter {
         }
     }
 
-    /// Inherited from Message_Attribute: GetName()
+    /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::ffi::TCollection_AsciiString {
         unsafe { &*(crate::ffi::Message_AttributeMeter_inherited_GetName(self as *const Self)) }
     }
 
-    /// Inherited from Message_Attribute: SetName()
+    /// Inherited: **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
     pub fn set_name(&mut self, theName: &crate::ffi::TCollection_AsciiString) {
         unsafe { crate::ffi::Message_AttributeMeter_inherited_SetName(self as *mut Self, theName) }
     }
@@ -1626,12 +1626,12 @@ impl AttributeObject {
         }
     }
 
-    /// Inherited from Message_Attribute: GetName()
+    /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::ffi::TCollection_AsciiString {
         unsafe { &*(crate::ffi::Message_AttributeObject_inherited_GetName(self as *const Self)) }
     }
 
-    /// Inherited from Message_Attribute: SetName()
+    /// Inherited: **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
     pub fn set_name(&mut self, theName: &crate::ffi::TCollection_AsciiString) {
         unsafe { crate::ffi::Message_AttributeObject_inherited_SetName(self as *mut Self, theName) }
     }
@@ -1696,12 +1696,12 @@ impl AttributeStream {
         }
     }
 
-    /// Inherited from Message_Attribute: GetName()
+    /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::ffi::TCollection_AsciiString {
         unsafe { &*(crate::ffi::Message_AttributeStream_inherited_GetName(self as *const Self)) }
     }
 
-    /// Inherited from Message_Attribute: SetName()
+    /// Inherited: **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
     pub fn set_name(&mut self, theName: &crate::ffi::TCollection_AsciiString) {
         unsafe { crate::ffi::Message_AttributeStream_inherited_SetName(self as *mut Self, theName) }
     }
@@ -2787,7 +2787,7 @@ impl PrinterOStream {
         }
     }
 
-    /// Inherited from Message_Printer: GetTraceLevel()
+    /// Inherited: **Source:** `Message_Printer.hxx`:42 - `Message_Printer::GetTraceLevel()`
     pub fn get_trace_level(&self) -> crate::message::Gravity {
         unsafe {
             crate::message::Gravity::try_from(
@@ -2797,7 +2797,7 @@ impl PrinterOStream {
         }
     }
 
-    /// Inherited from Message_Printer: SetTraceLevel()
+    /// Inherited: **Source:** `Message_Printer.hxx`:46 - `Message_Printer::SetTraceLevel()`
     pub fn set_trace_level(&mut self, theTraceLevel: crate::message::Gravity) {
         unsafe {
             crate::ffi::Message_PrinterOStream_inherited_SetTraceLevel(
@@ -2807,7 +2807,7 @@ impl PrinterOStream {
         }
     }
 
-    /// Inherited from Message_Printer: Send()
+    /// Inherited: **Source:** `Message_Printer.hxx`:51 - `Message_Printer::Send()`
     pub fn send(
         &self,
         theString: &crate::ffi::TCollection_ExtendedString,
@@ -2889,7 +2889,7 @@ impl PrinterSystemLog {
         }
     }
 
-    /// Inherited from Message_Printer: GetTraceLevel()
+    /// Inherited: **Source:** `Message_Printer.hxx`:42 - `Message_Printer::GetTraceLevel()`
     pub fn get_trace_level(&self) -> crate::message::Gravity {
         unsafe {
             crate::message::Gravity::try_from(
@@ -2899,7 +2899,7 @@ impl PrinterSystemLog {
         }
     }
 
-    /// Inherited from Message_Printer: SetTraceLevel()
+    /// Inherited: **Source:** `Message_Printer.hxx`:46 - `Message_Printer::SetTraceLevel()`
     pub fn set_trace_level(&mut self, theTraceLevel: crate::message::Gravity) {
         unsafe {
             crate::ffi::Message_PrinterSystemLog_inherited_SetTraceLevel(
@@ -2909,7 +2909,7 @@ impl PrinterSystemLog {
         }
     }
 
-    /// Inherited from Message_Printer: Send()
+    /// Inherited: **Source:** `Message_Printer.hxx`:51 - `Message_Printer::Send()`
     pub fn send(
         &self,
         theString: &crate::ffi::TCollection_ExtendedString,
@@ -2992,7 +2992,7 @@ impl PrinterToReport {
         }
     }
 
-    /// Inherited from Message_Printer: GetTraceLevel()
+    /// Inherited: **Source:** `Message_Printer.hxx`:42 - `Message_Printer::GetTraceLevel()`
     pub fn get_trace_level(&self) -> crate::message::Gravity {
         unsafe {
             crate::message::Gravity::try_from(
@@ -3002,7 +3002,7 @@ impl PrinterToReport {
         }
     }
 
-    /// Inherited from Message_Printer: SetTraceLevel()
+    /// Inherited: **Source:** `Message_Printer.hxx`:46 - `Message_Printer::SetTraceLevel()`
     pub fn set_trace_level(&mut self, theTraceLevel: crate::message::Gravity) {
         unsafe {
             crate::ffi::Message_PrinterToReport_inherited_SetTraceLevel(
@@ -3012,7 +3012,7 @@ impl PrinterToReport {
         }
     }
 
-    /// Inherited from Message_Printer: Send()
+    /// Inherited: **Source:** `Message_Printer.hxx`:51 - `Message_Printer::Send()`
     pub fn send(
         &self,
         theString: &crate::ffi::TCollection_ExtendedString,

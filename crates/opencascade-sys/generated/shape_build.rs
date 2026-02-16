@@ -158,17 +158,17 @@ impl ReShape {
         }
     }
 
-    /// Inherited from BRepTools_ReShape: Clear()
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:59 - `BRepTools_ReShape::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::ShapeBuild_ReShape_inherited_Clear(self as *mut Self) }
     }
 
-    /// Inherited from BRepTools_ReShape: Remove()
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:62 - `BRepTools_ReShape::Remove()`
     pub fn remove(&mut self, shape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::ShapeBuild_ReShape_inherited_Remove(self as *mut Self, shape) }
     }
 
-    /// Inherited from BRepTools_ReShape: Replace()
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:65 - `BRepTools_ReShape::Replace()`
     pub fn replace(
         &mut self,
         shape: &crate::ffi::TopoDS_Shape,
@@ -179,12 +179,12 @@ impl ReShape {
         }
     }
 
-    /// Inherited from BRepTools_ReShape: IsRecorded()
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:94 - `BRepTools_ReShape::IsRecorded()`
     pub fn is_recorded(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::ShapeBuild_ReShape_inherited_IsRecorded(self as *const Self, shape) }
     }
 
-    /// Inherited from BRepTools_ReShape: Value()
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:100 - `BRepTools_ReShape::Value()`
     pub fn value(
         &self,
         shape: &crate::ffi::TopoDS_Shape,
@@ -197,14 +197,14 @@ impl ReShape {
         }
     }
 
-    /// Inherited from BRepTools_ReShape: ModeConsiderLocation()
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:128 - `BRepTools_ReShape::ModeConsiderLocation()`
     pub fn mode_consider_location(&mut self) -> &mut bool {
         unsafe {
             &mut *(crate::ffi::ShapeBuild_ReShape_inherited_ModeConsiderLocation(self as *mut Self))
         }
     }
 
-    /// Inherited from BRepTools_ReShape: CopyVertex()
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:134 - `BRepTools_ReShape::CopyVertex()`
     pub fn copy_vertex(
         &mut self,
         theV: &crate::ffi::TopoDS_Vertex,
@@ -219,14 +219,14 @@ impl ReShape {
         }
     }
 
-    /// Inherited from BRepTools_ReShape: IsNewShape()
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:148 - `BRepTools_ReShape::IsNewShape()`
     pub fn is_new_shape(&self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe {
             crate::ffi::ShapeBuild_ReShape_inherited_IsNewShape(self as *const Self, theShape)
         }
     }
 
-    /// Inherited from BRepTools_ReShape: History()
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:151 - `BRepTools_ReShape::History()`
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_inherited_History(

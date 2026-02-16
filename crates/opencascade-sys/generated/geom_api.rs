@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `GeomAPI.hxx` - `GeomAPI::To2d`
+/// **Source:** `GeomAPI.hxx`:81 - `GeomAPI::To2d`
 /// This function builds (in the
 /// parametric space of the plane P) a 2D curve equivalent to the 3D curve
 /// C. The 3D curve C is considered to be located in the plane P.
@@ -26,7 +26,7 @@ pub fn to2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAPI_to2d(C, P)) }
 }
-/// **Source:** `GeomAPI.hxx` - `GeomAPI::To3d`
+/// **Source:** `GeomAPI.hxx`:87 - `GeomAPI::To3d`
 /// Builds a 3D curve equivalent to the 2D curve C
 /// described in the parametric space defined by the local
 /// coordinate system of plane P.

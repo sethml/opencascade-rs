@@ -7,6 +7,9 @@ version = "0.2.0"
 edition = "2021"
 repository = "https://github.com/bschwind/opencascade-rs"
 
+[lib]
+doctest = false
+
 [dependencies]
 
 [build-dependencies]

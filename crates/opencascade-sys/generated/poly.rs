@@ -6,13 +6,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `Poly.hxx` - `Poly::ComputeNormals`
+/// **Source:** `Poly.hxx`:112 - `Poly::ComputeNormals`
 /// Compute node normals for face triangulation
 /// as mean normal of surrounding triangles
 pub fn compute_normals(Tri: &crate::ffi::HandlePolyTriangulation) {
     unsafe { crate::ffi::Poly_compute_normals(Tri) }
 }
-/// **Source:** `Poly.hxx` - `Poly::PointOnTriangle`
+/// **Source:** `Poly.hxx`:124 - `Poly::PointOnTriangle`
 /// Computes parameters of the point P on triangle
 /// defined by points P1, P2, and P3, in 2d.
 /// The parameters U and V are defined so that
@@ -32,7 +32,7 @@ pub fn point_on_triangle(
 ) -> f64 {
     unsafe { crate::ffi::Poly_point_on_triangle(P1, P2, P3, P, UV) }
 }
-/// **Source:** `Poly.hxx` - `Poly::Intersect`
+/// **Source:** `Poly.hxx`:138 - `Poly::Intersect`
 /// Computes the intersection between axis and triangulation.
 /// @param[in] theTri   input triangulation
 /// @param[in] theAxis  intersecting ray
@@ -50,7 +50,7 @@ pub fn intersect(
 ) -> bool {
     unsafe { crate::ffi::Poly_intersect(theTri, theAxis, theIsClosest, theTriangle, theDistance) }
 }
-/// **Source:** `Poly.hxx` - `Poly::IntersectTriLine`
+/// **Source:** `Poly.hxx`:152 - `Poly::IntersectTriLine`
 /// Computes the intersection between a triangle defined by three vertexes and a line.
 /// @param[in] theStart  picking ray origin
 /// @param[in] theDir    picking ray direction
@@ -487,66 +487,66 @@ impl CoherentNode {
         unsafe { &mut *(crate::ffi::Poly_CoherentNode_as_gp_XYZ_mut(self as *mut Self)) }
     }
 
-    /// Inherited from gp_XYZ: SetCoord()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:54 - `gp_XYZ::SetCoord()`
     pub fn set_coord(&mut self, theX: f64, theY: f64, theZ: f64) {
         unsafe {
             crate::ffi::Poly_CoherentNode_inherited_SetCoord(self as *mut Self, theX, theY, theZ)
         }
     }
 
-    /// Inherited from gp_XYZ: SetX()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:73 - `gp_XYZ::SetX()`
     pub fn set_x(&mut self, theX: f64) {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_SetX(self as *mut Self, theX) }
     }
 
-    /// Inherited from gp_XYZ: SetY()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:76 - `gp_XYZ::SetY()`
     pub fn set_y(&mut self, theY: f64) {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_SetY(self as *mut Self, theY) }
     }
 
-    /// Inherited from gp_XYZ: SetZ()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:79 - `gp_XYZ::SetZ()`
     pub fn set_z(&mut self, theZ: f64) {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_SetZ(self as *mut Self, theZ) }
     }
 
-    /// Inherited from gp_XYZ: Coord()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:87 - `gp_XYZ::Coord()`
     pub fn coord(&self, theIndex: i32) -> f64 {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Coord(self as *const Self, theIndex) }
     }
 
-    /// Inherited from gp_XYZ: ChangeCoord()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:93 - `gp_XYZ::ChangeCoord()`
     pub fn change_coord(&mut self, theIndex: i32) -> &mut f64 {
         unsafe {
             &mut *(crate::ffi::Poly_CoherentNode_inherited_ChangeCoord(self as *mut Self, theIndex))
         }
     }
 
-    /// Inherited from gp_XYZ: X()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:117 - `gp_XYZ::X()`
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_X(self as *const Self) }
     }
 
-    /// Inherited from gp_XYZ: Y()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:120 - `gp_XYZ::Y()`
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Y(self as *const Self) }
     }
 
-    /// Inherited from gp_XYZ: Z()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:123 - `gp_XYZ::Z()`
     pub fn z(&self) -> f64 {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Z(self as *const Self) }
     }
 
-    /// Inherited from gp_XYZ: Modulus()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:126 - `gp_XYZ::Modulus()`
     pub fn modulus(&self) -> f64 {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Modulus(self as *const Self) }
     }
 
-    /// Inherited from gp_XYZ: SquareModulus()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:129 - `gp_XYZ::SquareModulus()`
     pub fn square_modulus(&self) -> f64 {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_SquareModulus(self as *const Self) }
     }
 
-    /// Inherited from gp_XYZ: IsEqual()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:137 - `gp_XYZ::IsEqual()`
     pub fn is_equal(&self, theOther: &crate::ffi::gp_XYZ, theTolerance: f64) -> bool {
         unsafe {
             crate::ffi::Poly_CoherentNode_inherited_IsEqual(
@@ -557,12 +557,12 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: Add()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:145 - `gp_XYZ::Add()`
     pub fn add(&mut self, theOther: &crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Add(self as *mut Self, theOther) }
     }
 
-    /// Inherited from gp_XYZ: Added()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:159 - `gp_XYZ::Added()`
     pub fn added(&self, theOther: &crate::ffi::gp_XYZ) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentNode_inherited_Added(
@@ -572,12 +572,12 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: Cross()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:171 - `gp_XYZ::Cross()`
     pub fn cross(&mut self, theOther: &crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Cross(self as *mut Self, theOther) }
     }
 
-    /// Inherited from gp_XYZ: Crossed()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:180 - `gp_XYZ::Crossed()`
     pub fn crossed(&self, theOther: &crate::ffi::gp_XYZ) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentNode_inherited_Crossed(
@@ -587,14 +587,14 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: CrossMagnitude()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:191 - `gp_XYZ::CrossMagnitude()`
     pub fn cross_magnitude(&self, theRight: &crate::ffi::gp_XYZ) -> f64 {
         unsafe {
             crate::ffi::Poly_CoherentNode_inherited_CrossMagnitude(self as *const Self, theRight)
         }
     }
 
-    /// Inherited from gp_XYZ: CrossSquareMagnitude()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:195 - `gp_XYZ::CrossSquareMagnitude()`
     pub fn cross_square_magnitude(&self, theRight: &crate::ffi::gp_XYZ) -> f64 {
         unsafe {
             crate::ffi::Poly_CoherentNode_inherited_CrossSquareMagnitude(
@@ -604,7 +604,7 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: CrossCross()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:199 - `gp_XYZ::CrossCross()`
     pub fn cross_cross(&mut self, theCoord1: &crate::ffi::gp_XYZ, theCoord2: &crate::ffi::gp_XYZ) {
         unsafe {
             crate::ffi::Poly_CoherentNode_inherited_CrossCross(
@@ -615,7 +615,7 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: CrossCrossed()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:203 - `gp_XYZ::CrossCrossed()`
     pub fn cross_crossed(
         &self,
         theCoord1: &crate::ffi::gp_XYZ,
@@ -630,12 +630,12 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: Divide()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:211 - `gp_XYZ::Divide()`
     pub fn divide(&mut self, theScalar: f64) {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Divide(self as *mut Self, theScalar) }
     }
 
-    /// Inherited from gp_XYZ: Divided()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:221 - `gp_XYZ::Divided()`
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentNode_inherited_Divided(
@@ -645,12 +645,12 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: Dot()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:232 - `gp_XYZ::Dot()`
     pub fn dot(&self, theOther: &crate::ffi::gp_XYZ) -> f64 {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Dot(self as *const Self, theOther) }
     }
 
-    /// Inherited from gp_XYZ: DotCross()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:240 - `gp_XYZ::DotCross()`
     pub fn dot_cross(&self, theCoord1: &crate::ffi::gp_XYZ, theCoord2: &crate::ffi::gp_XYZ) -> f64 {
         unsafe {
             crate::ffi::Poly_CoherentNode_inherited_DotCross(
@@ -661,12 +661,12 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: Multiply()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:247 - `gp_XYZ::Multiply()`
     pub fn multiply(&mut self, theScalar: f64) {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Multiply(self as *mut Self, theScalar) }
     }
 
-    /// Inherited from gp_XYZ: Multiplied()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:280 - `gp_XYZ::Multiplied()`
     pub fn multiplied(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentNode_inherited_Multiplied(
@@ -676,12 +676,12 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: Normalize()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:320 - `gp_XYZ::Normalize()`
     pub fn normalize(&mut self) {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Normalize(self as *mut Self) }
     }
 
-    /// Inherited from gp_XYZ: Normalized()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:328 - `gp_XYZ::Normalized()`
     pub fn normalized(&self) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentNode_inherited_Normalized(
@@ -690,12 +690,12 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: Reverse()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:341 - `gp_XYZ::Reverse()`
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Reverse(self as *mut Self) }
     }
 
-    /// Inherited from gp_XYZ: Reversed()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:353 - `gp_XYZ::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentNode_inherited_Reversed(
@@ -704,12 +704,12 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: Subtract()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:360 - `gp_XYZ::Subtract()`
     pub fn subtract(&mut self, theOther: &crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::Poly_CoherentNode_inherited_Subtract(self as *mut Self, theOther) }
     }
 
-    /// Inherited from gp_XYZ: Subtracted()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:374 - `gp_XYZ::Subtracted()`
     pub fn subtracted(&self, theOther: &crate::ffi::gp_XYZ) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentNode_inherited_Subtracted(
@@ -719,7 +719,7 @@ impl CoherentNode {
         }
     }
 
-    /// Inherited from gp_XYZ: SetLinearForm()
+    /// Inherited: **Source:** `gp_XYZ.hxx`:385 - `gp_XYZ::SetLinearForm()`
     pub fn set_linear_form(
         &mut self,
         theA1: f64,
@@ -1552,17 +1552,17 @@ impl MakeLoops3D {
         unsafe { &mut *(crate::ffi::Poly_MakeLoops3D_as_Poly_MakeLoops_mut(self as *mut Self)) }
     }
 
-    /// Inherited from Poly_MakeLoops: Perform()
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:211 - `Poly_MakeLoops::Perform()`
     pub fn perform(&mut self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops3D_inherited_Perform(self as *mut Self) }
     }
 
-    /// Inherited from Poly_MakeLoops: GetNbLoops()
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:214 - `Poly_MakeLoops::GetNbLoops()`
     pub fn get_nb_loops(&self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops3D_inherited_GetNbLoops(self as *const Self) }
     }
 
-    /// Inherited from Poly_MakeLoops: GetNbHanging()
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:220 - `Poly_MakeLoops::GetNbHanging()`
     pub fn get_nb_hanging(&self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops3D_inherited_GetNbHanging(self as *const Self) }
     }
@@ -1588,17 +1588,17 @@ impl MakeLoops2D {
         unsafe { &mut *(crate::ffi::Poly_MakeLoops2D_as_Poly_MakeLoops_mut(self as *mut Self)) }
     }
 
-    /// Inherited from Poly_MakeLoops: Perform()
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:211 - `Poly_MakeLoops::Perform()`
     pub fn perform(&mut self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops2D_inherited_Perform(self as *mut Self) }
     }
 
-    /// Inherited from Poly_MakeLoops: GetNbLoops()
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:214 - `Poly_MakeLoops::GetNbLoops()`
     pub fn get_nb_loops(&self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops2D_inherited_GetNbLoops(self as *const Self) }
     }
 
-    /// Inherited from Poly_MakeLoops: GetNbHanging()
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:220 - `Poly_MakeLoops::GetNbHanging()`
     pub fn get_nb_hanging(&self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops2D_inherited_GetNbHanging(self as *const Self) }
     }

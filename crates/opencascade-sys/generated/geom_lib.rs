@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `GeomLib.hxx` - `GeomLib::To3d`
+/// **Source:** `GeomLib.hxx`:56 - `GeomLib::To3d`
 /// Computes     the  curve  3d    from  package  Geom
 /// corresponding to curve 2d  from package Geom2d, on
 /// the plan defined with the local coordinate system
@@ -19,7 +19,7 @@ pub fn to3d_ax2_handlegeom2dcurve(
         crate::OwnedPtr::from_raw(crate::ffi::GeomLib_to3d_ax2_handlegeom2dcurve(Position, Curve2d))
     }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::GTransform`
+/// **Source:** `GeomLib.hxx`:67 - `GeomLib::GTransform`
 /// Computes the    curve    3d  from   package   Geom
 /// corresponding  to the curve  3d from package Geom,
 /// transformed with the transformation <GTrsf>
@@ -34,7 +34,7 @@ pub fn g_transform(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLib_g_transform(Curve, GTrsf)) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::SameRange`
+/// **Source:** `GeomLib.hxx`:76 - `GeomLib::SameRange`
 /// Make the curve Curve2dPtr have the imposed
 /// range First to List the most economic way,
 /// that is if it can change the range without
@@ -62,7 +62,7 @@ pub fn same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve(
         )
     }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::BuildCurve3d`
+/// **Source:** `GeomLib.hxx`:84 - `GeomLib::BuildCurve3d`
 pub fn build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
     Tolerance: f64,
     CurvePtr: &mut crate::ffi::Adaptor3d_CurveOnSurface,
@@ -90,7 +90,7 @@ pub fn build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
         )
     }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::AdjustExtremity`
+/// **Source:** `GeomLib.hxx`:95 - `GeomLib::AdjustExtremity`
 pub fn adjust_extremity(
     Curve: &mut crate::ffi::HandleGeomBoundedCurve,
     P1: &crate::ffi::gp_Pnt,
@@ -100,7 +100,7 @@ pub fn adjust_extremity(
 ) {
     unsafe { crate::ffi::GeomLib_adjust_extremity(Curve, P1, P2, T1, T2) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::ExtendCurveToPoint`
+/// **Source:** `GeomLib.hxx`:115 - `GeomLib::ExtendCurveToPoint`
 /// Extends the bounded curve Curve to the point Point.
 /// The extension is built:
 /// -      at the end of the curve if After equals true, or
@@ -123,7 +123,7 @@ pub fn extend_curve_to_point(
 ) {
     unsafe { crate::ffi::GeomLib_extend_curve_to_point(Curve, Point, Cont, After) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::ExtendSurfByLength`
+/// **Source:** `GeomLib.hxx`:139 - `GeomLib::ExtendSurfByLength`
 /// Extends the bounded surface Surf along one of its
 /// boundaries. The chord length of the extension is equal to Length.
 /// The direction of the extension is given as:
@@ -152,7 +152,7 @@ pub fn extend_surf_by_length(
 ) {
     unsafe { crate::ffi::GeomLib_extend_surf_by_length(Surf, Length, Cont, InU, After) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::AxeOfInertia`
+/// **Source:** `GeomLib.hxx`:151 - `GeomLib::AxeOfInertia`
 /// Compute   axes of inertia,  of some  points --  -- --
 /// <Axe>.Location() is the   BaryCentre -- -- --   -- --
 /// <Axe>.XDirection is the axe of upper inertia -- -- --
@@ -167,7 +167,7 @@ pub fn axe_of_inertia(
 ) {
     unsafe { crate::ffi::GeomLib_axe_of_inertia(Points, Axe, IsSingular, Tol) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::Inertia`
+/// **Source:** `GeomLib.hxx`:158 - `GeomLib::Inertia`
 /// Compute principale axes  of  inertia, and dispersion
 /// value  of some  points.
 pub fn inertia(
@@ -181,7 +181,7 @@ pub fn inertia(
 ) {
     unsafe { crate::ffi::GeomLib_inertia(Points, Bary, XDir, YDir, Xgap, YGap, ZGap) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::CancelDenominatorDerivative`
+/// **Source:** `GeomLib.hxx`:232 - `GeomLib::CancelDenominatorDerivative`
 /// Cancel,on the boundaries,the denominator  first derivative
 /// in  the directions wished by the user and set its value to 1.
 pub fn cancel_denominator_derivative(
@@ -191,7 +191,7 @@ pub fn cancel_denominator_derivative(
 ) {
     unsafe { crate::ffi::GeomLib_cancel_denominator_derivative(BSurf, UDirection, VDirection) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::NormEstim`
+/// **Source:** `GeomLib.hxx`:244 - `GeomLib::NormEstim`
 /// Estimate surface normal at the given (U, V) point.
 /// @param[in]  theSurf input surface
 /// @param[in]  theUV   (U, V) point coordinates on the surface
@@ -208,7 +208,7 @@ pub fn norm_estim(
 ) -> i32 {
     unsafe { crate::ffi::GeomLib_norm_estim(theSurf, theUV, theTol, theNorm) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::IsClosed`
+/// **Source:** `GeomLib.hxx`:251 - `GeomLib::IsClosed`
 /// This method defines if opposite boundaries of surface
 /// coincide with given tolerance
 pub fn is_closed(
@@ -219,7 +219,7 @@ pub fn is_closed(
 ) {
     unsafe { crate::ffi::GeomLib_is_closed(S, Tol, isUClosed, isVClosed) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::IsBSplUClosed`
+/// **Source:** `GeomLib.hxx`:259 - `GeomLib::IsBSplUClosed`
 /// Returns true if the poles of U1 isoline and the poles of
 /// U2 isoline of surface are identical according to tolerance criterion.
 /// For rational surfaces Weights(i)*Poles(i) are checked.
@@ -231,7 +231,7 @@ pub fn is_b_spl_u_closed(
 ) -> bool {
     unsafe { crate::ffi::GeomLib_is_b_spl_u_closed(S, U1, U2, Tol) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::IsBSplVClosed`
+/// **Source:** `GeomLib.hxx`:267 - `GeomLib::IsBSplVClosed`
 /// Returns true if the poles of V1 isoline and the poles of
 /// V2 isoline of surface are identical according to tolerance criterion.
 /// For rational surfaces Weights(i)*Poles(i) are checked.
@@ -243,19 +243,19 @@ pub fn is_b_spl_v_closed(
 ) -> bool {
     unsafe { crate::ffi::GeomLib_is_b_spl_v_closed(S, V1, V2, Tol) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::IsBzUClosed`
+/// **Source:** `GeomLib.hxx`:274 - `GeomLib::IsBzUClosed`
 /// Returns true if the poles of U1 isoline and the poles of
 /// U2 isoline of surface are identical according to tolerance criterion.
 pub fn is_bz_u_closed(S: &crate::ffi::HandleGeomBezierSurface, U1: f64, U2: f64, Tol: f64) -> bool {
     unsafe { crate::ffi::GeomLib_is_bz_u_closed(S, U1, U2, Tol) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::IsBzVClosed`
+/// **Source:** `GeomLib.hxx`:281 - `GeomLib::IsBzVClosed`
 /// Returns true if the poles of V1 isoline and the poles of
 /// V2 isoline of surface are identical according to tolerance criterion.
 pub fn is_bz_v_closed(S: &crate::ffi::HandleGeomBezierSurface, V1: f64, V2: f64, Tol: f64) -> bool {
     unsafe { crate::ffi::GeomLib_is_bz_v_closed(S, V1, V2, Tol) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::isIsoLine`
+/// **Source:** `GeomLib.hxx`:293 - `GeomLib::isIsoLine`
 /// Checks whether the 2d curve is a isoline. It can be represented by b-spline, bezier,
 /// or geometric line. This line should have natural parameterization.
 /// @param theC2D       Trimmed curve to be checked.
@@ -271,7 +271,7 @@ pub fn is_iso_line(
 ) -> bool {
     unsafe { crate::ffi::GeomLib_is_iso_line(theC2D, theIsU, theParam, theIsForward) }
 }
-/// **Source:** `GeomLib.hxx` - `GeomLib::buildC3dOnIsoLine`
+/// **Source:** `GeomLib.hxx`:305 - `GeomLib::buildC3dOnIsoLine`
 /// Builds 3D curve for a isoline. This method takes corresponding isoline from
 /// the input surface.
 /// @param theC2D   Trimmed curve to be approximated.

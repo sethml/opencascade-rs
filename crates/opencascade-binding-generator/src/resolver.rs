@@ -174,6 +174,8 @@ pub struct ResolvedMethod {
     pub cpp_wrapper_name: Option<String>,
     /// Documentation comment
     pub doc_comment: Option<String>,
+    /// Source line number in the header file
+    pub source_line: Option<u32>,
 }
 
 /// Information about a resolved static method
@@ -228,6 +230,8 @@ pub struct ResolvedFunction {
     pub status: BindingStatus,
     /// Source header
     pub source_header: String,
+    /// Source line number in the header file
+    pub source_line: Option<u32>,
     /// Documentation comment
     pub doc_comment: Option<String>,
 }
@@ -994,6 +998,7 @@ fn resolve_method(
         needs_wrapper,
         cpp_wrapper_name,
         doc_comment: method.comment.clone(),
+        source_line: method.source_line,
     }
 }
 
@@ -1120,6 +1125,7 @@ fn resolve_function(
         return_type,
         status,
         source_header: func.source_header.clone(),
+        source_line: func.source_line,
         doc_comment: func.comment.clone(),
     };
     

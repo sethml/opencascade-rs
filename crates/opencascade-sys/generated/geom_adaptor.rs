@@ -1414,7 +1414,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: Value()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:124 - `Adaptor3d_Surface::Value()`
     pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -1427,7 +1427,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: D0()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:127 - `Adaptor3d_Surface::D0()`
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D0(
@@ -1439,7 +1439,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: D1()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:133 - `Adaptor3d_Surface::D1()`
     pub fn d1(
         &self,
         U: f64,
@@ -1460,7 +1460,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: D2()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:143 - `Adaptor3d_Surface::D2()`
     pub fn d2(
         &self,
         U: f64,
@@ -1487,7 +1487,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: D3()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:156 - `Adaptor3d_Surface::D3()`
     pub fn d3(
         &self,
         U: f64,
@@ -1522,7 +1522,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: DN()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:174 - `Adaptor3d_Surface::DN()`
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -1537,35 +1537,35 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: VDegree()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:207 - `Adaptor3d_Surface::VDegree()`
     pub fn v_degree(&self) -> i32 {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_VDegree(self as *const Self)
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: NbVPoles()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:209 - `Adaptor3d_Surface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_NbVPoles(self as *const Self)
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: NbUKnots()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:211 - `Adaptor3d_Surface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_NbUKnots(self as *const Self)
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: NbVKnots()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:213 - `Adaptor3d_Surface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_NbVKnots(self as *const Self)
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: BasisSurface()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:229 - `Adaptor3d_Surface::BasisSurface()`
     pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -1576,7 +1576,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: OffsetValue()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:231 - `Adaptor3d_Surface::OffsetValue()`
     pub fn offset_value(&self) -> f64 {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_OffsetValue(
@@ -1585,7 +1585,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited from GeomAdaptor_Surface: Surface()
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:108 - `GeomAdaptor_Surface::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe {
             &*(crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Surface(
@@ -2022,7 +2022,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: Value()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:124 - `Adaptor3d_Surface::Value()`
     pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Value(
@@ -2033,14 +2033,14 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: D0()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:127 - `Adaptor3d_Surface::D0()`
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D0(self as *const Self, U, V, P)
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: D1()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:133 - `Adaptor3d_Surface::D1()`
     pub fn d1(
         &self,
         U: f64,
@@ -2061,7 +2061,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: D2()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:143 - `Adaptor3d_Surface::D2()`
     pub fn d2(
         &self,
         U: f64,
@@ -2088,7 +2088,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: D3()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:156 - `Adaptor3d_Surface::D3()`
     pub fn d3(
         &self,
         U: f64,
@@ -2123,7 +2123,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: DN()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:174 - `Adaptor3d_Surface::DN()`
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_DN(
@@ -2136,28 +2136,28 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: UDegree()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:203 - `Adaptor3d_Surface::UDegree()`
     pub fn u_degree(&self) -> i32 {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_UDegree(self as *const Self)
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: NbUPoles()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:205 - `Adaptor3d_Surface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_NbUPoles(self as *const Self)
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: NbUKnots()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:211 - `Adaptor3d_Surface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_NbUKnots(self as *const Self)
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: Direction()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:225 - `Adaptor3d_Surface::Direction()`
     pub fn direction(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -2168,7 +2168,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: BasisSurface()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:229 - `Adaptor3d_Surface::BasisSurface()`
     pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -2179,14 +2179,14 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited from Adaptor3d_Surface: OffsetValue()
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:231 - `Adaptor3d_Surface::OffsetValue()`
     pub fn offset_value(&self) -> f64 {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_OffsetValue(self as *const Self)
         }
     }
 
-    /// Inherited from GeomAdaptor_Surface: Surface()
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:108 - `GeomAdaptor_Surface::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe {
             &*(crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Surface(self as *const Self))

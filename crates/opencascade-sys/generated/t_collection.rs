@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `TCollection.hxx` - `TCollection::NextPrimeForMap`
+/// **Source:** `TCollection.hxx`:40 - `TCollection::NextPrimeForMap`
 /// Returns a  prime number greater than  <I> suitable
 /// to dimension a Map.  When  <I> becomes great there
 /// is  a  limit on  the  result (today  the  limit is

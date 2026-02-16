@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `BRepTools.hxx` - `BRepTools::UVBounds`
+/// **Source:** `BRepTools.hxx`:85 - `BRepTools::UVBounds`
 /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
 /// values in the parametric space of F.
 pub fn uv_bounds_face_real4(
@@ -18,7 +18,7 @@ pub fn uv_bounds_face_real4(
 ) {
     unsafe { crate::ffi::BRepTools_uv_bounds_face_real4(F, UMin, UMax, VMin, VMax) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::UVBounds`
+/// **Source:** `BRepTools.hxx`:93 - `BRepTools::UVBounds`
 /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
 /// values of the wire in the parametric space of F.
 pub fn uv_bounds_face_wire_real4(
@@ -31,7 +31,7 @@ pub fn uv_bounds_face_wire_real4(
 ) {
     unsafe { crate::ffi::BRepTools_uv_bounds_face_wire_real4(F, W, UMin, UMax, VMin, VMax) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::UVBounds`
+/// **Source:** `BRepTools.hxx`:102 - `BRepTools::UVBounds`
 /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
 /// values of the edge in the parametric space of F.
 pub fn uv_bounds_face_edge_real4(
@@ -44,13 +44,13 @@ pub fn uv_bounds_face_edge_real4(
 ) {
     unsafe { crate::ffi::BRepTools_uv_bounds_face_edge_real4(F, E, UMin, UMax, VMin, VMax) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::AddUVBounds`
+/// **Source:** `BRepTools.hxx`:111 - `BRepTools::AddUVBounds`
 /// Adds  to  the box <B>  the bounding values in  the
 /// parametric space of F.
 pub fn add_uv_bounds_face_box2d(F: &crate::ffi::TopoDS_Face, B: &mut crate::ffi::Bnd_Box2d) {
     unsafe { crate::ffi::BRepTools_add_uv_bounds_face_box2d(F, B) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::AddUVBounds`
+/// **Source:** `BRepTools.hxx`:115 - `BRepTools::AddUVBounds`
 /// Adds  to the box  <B>  the bounding  values of the
 /// wire in the parametric space of F.
 pub fn add_uv_bounds_face_wire_box2d(
@@ -60,7 +60,7 @@ pub fn add_uv_bounds_face_wire_box2d(
 ) {
     unsafe { crate::ffi::BRepTools_add_uv_bounds_face_wire_box2d(F, W, B) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::AddUVBounds`
+/// **Source:** `BRepTools.hxx`:119 - `BRepTools::AddUVBounds`
 /// Adds to  the box <B>  the  bounding values  of the
 /// edge in the parametric space of F.
 pub fn add_uv_bounds_face_edge_box2d(
@@ -70,59 +70,59 @@ pub fn add_uv_bounds_face_edge_box2d(
 ) {
     unsafe { crate::ffi::BRepTools_add_uv_bounds_face_edge_box2d(F, E, B) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// **Source:** `BRepTools.hxx`:122 - `BRepTools::Update`
 /// Update a vertex (nothing is done)
 pub fn update_vertex(V: &crate::ffi::TopoDS_Vertex) {
     unsafe { crate::ffi::BRepTools_update_vertex(V) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// **Source:** `BRepTools.hxx`:125 - `BRepTools::Update`
 /// Update an edge, compute 2d bounding boxes.
 pub fn update_edge(E: &crate::ffi::TopoDS_Edge) {
     unsafe { crate::ffi::BRepTools_update_edge(E) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// **Source:** `BRepTools.hxx`:128 - `BRepTools::Update`
 /// Update a wire (nothing is done)
 pub fn update_wire(W: &crate::ffi::TopoDS_Wire) {
     unsafe { crate::ffi::BRepTools_update_wire(W) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// **Source:** `BRepTools.hxx`:131 - `BRepTools::Update`
 /// Update a Face, update UV points.
 pub fn update_face(F: &crate::ffi::TopoDS_Face) {
     unsafe { crate::ffi::BRepTools_update_face(F) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// **Source:** `BRepTools.hxx`:134 - `BRepTools::Update`
 /// Update a shell (nothing is done)
 pub fn update_shell(S: &crate::ffi::TopoDS_Shell) {
     unsafe { crate::ffi::BRepTools_update_shell(S) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// **Source:** `BRepTools.hxx`:137 - `BRepTools::Update`
 /// Update a solid (nothing is done)
 pub fn update_solid(S: &crate::ffi::TopoDS_Solid) {
     unsafe { crate::ffi::BRepTools_update_solid(S) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// **Source:** `BRepTools.hxx`:140 - `BRepTools::Update`
 /// Update a composite solid (nothing is done)
 pub fn update_compsolid(C: &crate::ffi::TopoDS_CompSolid) {
     unsafe { crate::ffi::BRepTools_update_compsolid(C) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// **Source:** `BRepTools.hxx`:143 - `BRepTools::Update`
 /// Update a compound (nothing is done)
 pub fn update_compound(C: &crate::ffi::TopoDS_Compound) {
     unsafe { crate::ffi::BRepTools_update_compound(C) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// **Source:** `BRepTools.hxx`:146 - `BRepTools::Update`
 /// Update a shape, call the correct update.
 pub fn update_shape(S: &crate::ffi::TopoDS_Shape) {
     unsafe { crate::ffi::BRepTools_update_shape(S) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::UpdateFaceUVPoints`
+/// **Source:** `BRepTools.hxx`:151 - `BRepTools::UpdateFaceUVPoints`
 /// For each edge of the face <F> reset the UV points
 /// to the bounding points of the parametric curve of the
 /// edge on the face.
 pub fn update_face_uv_points(theF: &crate::ffi::TopoDS_Face) {
     unsafe { crate::ffi::BRepTools_update_face_uv_points(theF) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Clean`
+/// **Source:** `BRepTools.hxx`:162 - `BRepTools::Clean`
 /// Removes all cached polygonal representation of the shape,
 /// i.e. the triangulations of the faces of <S> and polygons on
 /// triangulations and polygons 3d of the edges.
@@ -135,18 +135,18 @@ pub fn update_face_uv_points(theF: &crate::ffi::TopoDS_Face) {
 pub fn clean(theShape: &crate::ffi::TopoDS_Shape, theForce: bool) {
     unsafe { crate::ffi::BRepTools_clean(theShape, theForce) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::CleanGeometry`
+/// **Source:** `BRepTools.hxx`:166 - `BRepTools::CleanGeometry`
 /// Removes geometry (curves and surfaces) from all edges and faces of the shape
 pub fn clean_geometry(theShape: &crate::ffi::TopoDS_Shape) {
     unsafe { crate::ffi::BRepTools_clean_geometry(theShape) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::RemoveUnusedPCurves`
+/// **Source:** `BRepTools.hxx`:170 - `BRepTools::RemoveUnusedPCurves`
 /// Removes all the pcurves of the edges of <S> that
 /// refer to surfaces not belonging to any face of <S>
 pub fn remove_unused_p_curves(S: &crate::ffi::TopoDS_Shape) {
     unsafe { crate::ffi::BRepTools_remove_unused_p_curves(S) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Triangulation`
+/// **Source:** `BRepTools.hxx`:182 - `BRepTools::Triangulation`
 /// Verifies that each Face from the shape has got a triangulation with a deflection smaller or
 /// equal to specified one and the Edges a discretization on this triangulation.
 /// @param[in] theShape    shape to verify
@@ -163,7 +163,7 @@ pub fn triangulation(
 ) -> bool {
     unsafe { crate::ffi::BRepTools_triangulation(theShape, theLinDefl, theToCheckFreeEdges) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::UnloadTriangulation`
+/// **Source:** `BRepTools.hxx`:213 - `BRepTools::UnloadTriangulation`
 /// Releases triangulation data for each face of the shape if there is deferred storage to load it
 /// later
 /// @param[in] theShape             shape to unload triangulations
@@ -176,7 +176,7 @@ pub fn triangulation(
 pub fn unload_triangulation(theShape: &crate::ffi::TopoDS_Shape, theTriangulationIdx: i32) -> bool {
     unsafe { crate::ffi::BRepTools_unload_triangulation(theShape, theTriangulationIdx) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::ActivateTriangulation`
+/// **Source:** `BRepTools.hxx`:229 - `BRepTools::ActivateTriangulation`
 /// Activates triangulation data for each face of the shape
 /// from some deferred storage using specified shared input file system
 /// @param[in] theShape               shape to activate triangulations
@@ -202,7 +202,7 @@ pub fn activate_triangulation(
         )
     }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::UnloadAllTriangulations`
+/// **Source:** `BRepTools.hxx`:247 - `BRepTools::UnloadAllTriangulations`
 /// Releases all available triangulations for each face of the shape if there is deferred storage
 /// to load them later
 /// @param[in] theShape       shape to unload triangulations
@@ -210,37 +210,37 @@ pub fn activate_triangulation(
 pub fn unload_all_triangulations(theShape: &crate::ffi::TopoDS_Shape) -> bool {
     unsafe { crate::ffi::BRepTools_unload_all_triangulations(theShape) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Compare`
+/// **Source:** `BRepTools.hxx`:252 - `BRepTools::Compare`
 /// Returns  True if  the    distance between the  two
 /// vertices is lower than their tolerance.
 pub fn compare_vertex2(V1: &crate::ffi::TopoDS_Vertex, V2: &crate::ffi::TopoDS_Vertex) -> bool {
     unsafe { crate::ffi::BRepTools_compare_vertex2(V1, V2) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Compare`
+/// **Source:** `BRepTools.hxx`:256 - `BRepTools::Compare`
 /// Returns  True if  the    distance between the  two
 /// edges is lower than their tolerance.
 pub fn compare_edge2(E1: &crate::ffi::TopoDS_Edge, E2: &crate::ffi::TopoDS_Edge) -> bool {
     unsafe { crate::ffi::BRepTools_compare_edge2(E1, E2) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::OuterWire`
+/// **Source:** `BRepTools.hxx`:260 - `BRepTools::OuterWire`
 /// Returns the outer most wire of <F>. Returns a Null
 /// wire if <F> has no wires.
 pub fn outer_wire(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_outer_wire(F)) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Map3DEdges`
+/// **Source:** `BRepTools.hxx`:264 - `BRepTools::Map3DEdges`
 /// Stores in the map  <M> all the 3D topology edges
 /// of <S>.
 pub fn map3_d_edges(S: &crate::ffi::TopoDS_Shape, M: &mut crate::ffi::TopTools_IndexedMapOfShape) {
     unsafe { crate::ffi::BRepTools_map3_d_edges(S, M) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::IsReallyClosed`
+/// **Source:** `BRepTools.hxx`:268 - `BRepTools::IsReallyClosed`
 /// Verifies that the edge  <E> is found two  times on
 /// the face <F> before calling BRep_Tool::IsClosed.
 pub fn is_really_closed(E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) -> bool {
     unsafe { crate::ffi::BRepTools_is_really_closed(E, F) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::DetectClosedness`
+/// **Source:** `BRepTools.hxx`:272 - `BRepTools::DetectClosedness`
 /// Detect closedness of face in U and V directions
 pub fn detect_closedness(
     theFace: &crate::ffi::TopoDS_Face,
@@ -249,7 +249,7 @@ pub fn detect_closedness(
 ) {
     unsafe { crate::ffi::BRepTools_detect_closedness(theFace, theUclosed, theVclosed) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Write`
+/// **Source:** `BRepTools.hxx`:329 - `BRepTools::Write`
 /// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1.
 /// This alias writes shape with triangulation data.
 /// @param[in] theShape  the shape to write
@@ -269,7 +269,7 @@ pub fn write_shape_charptr_progressrange(
         )
     }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Write`
+/// **Source:** `BRepTools.hxx`:352 - `BRepTools::Write`
 /// Writes the shape to the file in an ASCII format of specified version.
 /// @param[in] theShape          the shape to write
 /// @param[in] theFile           the path to file to output shape into
@@ -301,7 +301,7 @@ pub fn write_shape_charptr_bool2_formatversion_progressrange(
         )
     }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::Read`
+/// **Source:** `BRepTools.hxx`:362 - `BRepTools::Read`
 /// Reads a Shape  from <File>,  returns it in  <Sh>.
 /// <B> is used to build the shape.
 pub fn read(
@@ -313,7 +313,7 @@ pub fn read(
     let c_File = std::ffi::CString::new(File).unwrap();
     unsafe { crate::ffi::BRepTools_read(Sh, c_File.as_ptr(), B, theProgress) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::EvalAndUpdateTol`
+/// **Source:** `BRepTools.hxx`:374 - `BRepTools::EvalAndUpdateTol`
 /// Evals real tolerance of edge  <theE>.
 /// <theC3d>, <theC2d>, <theS>, <theF>, <theL> are
 /// correspondently 3d curve of edge, 2d curve on surface <theS> and
@@ -330,7 +330,7 @@ pub fn eval_and_update_tol(
 ) -> f64 {
     unsafe { crate::ffi::BRepTools_eval_and_update_tol(theE, theC3d, theC2d, theS, theF, theL) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::OriEdgeInFace`
+/// **Source:** `BRepTools.hxx`:383 - `BRepTools::OriEdgeInFace`
 /// returns the cumul  of the orientation  of <Edge>
 /// and thc containing wire in <Face>
 pub fn ori_edge_in_face(
@@ -344,7 +344,7 @@ pub fn ori_edge_in_face(
         .unwrap()
     }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::RemoveInternals`
+/// **Source:** `BRepTools.hxx`:393 - `BRepTools::RemoveInternals`
 /// Removes internal sub-shapes from the shape.
 /// The check on internal status is based on orientation of sub-shapes,
 /// classification is not performed.
@@ -355,7 +355,7 @@ pub fn ori_edge_in_face(
 pub fn remove_internals(theS: &mut crate::ffi::TopoDS_Shape, theForce: bool) {
     unsafe { crate::ffi::BRepTools_remove_internals(theS, theForce) }
 }
-/// **Source:** `BRepTools.hxx` - `BRepTools::CheckLocations`
+/// **Source:** `BRepTools.hxx`:399 - `BRepTools::CheckLocations`
 /// Check all locations of shape according criterium:
 /// aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec())
 /// All sub-shapes having such locations are put in list theProblemShapes
@@ -2367,51 +2367,51 @@ impl ShapeSet {
         }
     }
 
-    /// Inherited from TopTools_ShapeSet: SetFormatNb()
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:50 - `TopTools_ShapeSet::SetFormatNb()`
     pub fn set_format_nb(&mut self, theFormatNb: i32) {
         unsafe {
             crate::ffi::BRepTools_ShapeSet_inherited_SetFormatNb(self as *mut Self, theFormatNb)
         }
     }
 
-    /// Inherited from TopTools_ShapeSet: FormatNb()
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:53 - `TopTools_ShapeSet::FormatNb()`
     pub fn format_nb(&self) -> i32 {
         unsafe { crate::ffi::BRepTools_ShapeSet_inherited_FormatNb(self as *const Self) }
     }
 
-    /// Inherited from TopTools_ShapeSet: Add()
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:61 - `TopTools_ShapeSet::Add()`
     pub fn add(&mut self, S: &crate::ffi::TopoDS_Shape) -> i32 {
         unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Add(self as *mut Self, S) }
     }
 
-    /// Inherited from TopTools_ShapeSet: Shape()
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:64 - `TopTools_ShapeSet::Shape()`
     pub fn shape(&self, I: i32) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepTools_ShapeSet_inherited_Shape(self as *const Self, I)) }
     }
 
-    /// Inherited from TopTools_ShapeSet: Index()
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:67 - `TopTools_ShapeSet::Index()`
     pub fn index(&self, S: &crate::ffi::TopoDS_Shape) -> i32 {
         unsafe { crate::ffi::BRepTools_ShapeSet_inherited_Index(self as *const Self, S) }
     }
 
-    /// Inherited from TopTools_ShapeSet: Locations()
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:69 - `TopTools_ShapeSet::Locations()`
     pub fn locations(&self) -> &crate::ffi::TopTools_LocationSet {
         unsafe { &*(crate::ffi::BRepTools_ShapeSet_inherited_Locations(self as *const Self)) }
     }
 
-    /// Inherited from TopTools_ShapeSet: ChangeLocations()
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:71 - `TopTools_ShapeSet::ChangeLocations()`
     pub fn change_locations(&mut self) -> &mut crate::ffi::TopTools_LocationSet {
         unsafe {
             &mut *(crate::ffi::BRepTools_ShapeSet_inherited_ChangeLocations(self as *mut Self))
         }
     }
 
-    /// Inherited from TopTools_ShapeSet: DumpExtent()
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:79 - `TopTools_ShapeSet::DumpExtent()`
     pub fn dump_extent(&self, S: &mut crate::ffi::TCollection_AsciiString) {
         unsafe { crate::ffi::BRepTools_ShapeSet_inherited_DumpExtent(self as *const Self, S) }
     }
 
-    /// Inherited from TopTools_ShapeSet: NbShapes()
+    /// Inherited: **Source:** `TopTools_ShapeSet.hxx`:181 - `TopTools_ShapeSet::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
         unsafe { crate::ffi::BRepTools_ShapeSet_inherited_NbShapes(self as *const Self) }
     }

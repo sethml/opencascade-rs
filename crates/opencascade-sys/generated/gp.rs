@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `gp.hxx` - `gp::Resolution`
+/// **Source:** `gp.hxx`:55 - `gp::Resolution`
 /// Method of package gp
 ///
 /// In geometric computations, defines the tolerance criterion
@@ -18,59 +18,59 @@
 pub fn resolution() -> f64 {
     unsafe { crate::ffi::gp_resolution() }
 }
-/// **Source:** `gp.hxx` - `gp::Origin`
+/// **Source:** `gp.hxx`:58 - `gp::Origin`
 /// Identifies a Cartesian point with coordinates X = Y = Z = 0.0.0
 pub fn origin() -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_origin()) }
 }
-/// **Source:** `gp.hxx` - `gp::DX`
+/// **Source:** `gp.hxx`:61 - `gp::DX`
 /// Returns a unit vector with the combination (1,0,0)
 pub fn dx() -> crate::OwnedPtr<crate::ffi::gp_Dir> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dx()) }
 }
-/// **Source:** `gp.hxx` - `gp::DY`
+/// **Source:** `gp.hxx`:64 - `gp::DY`
 /// Returns a unit vector with the combination (0,1,0)
 pub fn dy() -> crate::OwnedPtr<crate::ffi::gp_Dir> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dy()) }
 }
-/// **Source:** `gp.hxx` - `gp::DZ`
+/// **Source:** `gp.hxx`:67 - `gp::DZ`
 /// Returns a unit vector with the combination (0,0,1)
 pub fn dz() -> crate::OwnedPtr<crate::ffi::gp_Dir> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dz()) }
 }
-/// **Source:** `gp.hxx` - `gp::OX`
+/// **Source:** `gp.hxx`:71 - `gp::OX`
 /// Identifies an axis where its origin is Origin
 /// and its unit vector coordinates  X = 1.0,  Y = Z = 0.0
 pub fn ox() -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_ox()) }
 }
-/// **Source:** `gp.hxx` - `gp::OY`
+/// **Source:** `gp.hxx`:75 - `gp::OY`
 /// Identifies an axis where its origin is Origin
 /// and its unit vector coordinates Y = 1.0,  X = Z = 0.0
 pub fn oy() -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_oy()) }
 }
-/// **Source:** `gp.hxx` - `gp::OZ`
+/// **Source:** `gp.hxx`:79 - `gp::OZ`
 /// Identifies an axis where its origin is Origin
 /// and its unit vector coordinates Z = 1.0,  Y = X = 0.0
 pub fn oz() -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_oz()) }
 }
-/// **Source:** `gp.hxx` - `gp::XOY`
+/// **Source:** `gp.hxx`:84 - `gp::XOY`
 /// Identifies a coordinate system where its origin is Origin,
 /// and its "main Direction" and "X Direction" coordinates
 /// Z = 1.0, X = Y =0.0 and X direction coordinates X = 1.0, Y = Z = 0.0
 pub fn xoy() -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_xoy()) }
 }
-/// **Source:** `gp.hxx` - `gp::ZOX`
+/// **Source:** `gp.hxx`:89 - `gp::ZOX`
 /// Identifies a coordinate system where its origin is Origin,
 /// and its "main Direction" and "X Direction" coordinates
 /// Y = 1.0, X = Z =0.0 and X direction coordinates Z = 1.0, X = Y = 0.0
 pub fn zox() -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_zox()) }
 }
-/// **Source:** `gp.hxx` - `gp::YOZ`
+/// **Source:** `gp.hxx`:95 - `gp::YOZ`
 /// Identifies a coordinate system where its origin is Origin,
 /// and its "main Direction" and "X Direction" coordinates
 /// X = 1.0, Z = Y =0.0 and X direction coordinates Y = 1.0, X = Z = 0.0
@@ -78,28 +78,28 @@ pub fn zox() -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
 pub fn yoz() -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_yoz()) }
 }
-/// **Source:** `gp.hxx` - `gp::Origin2d`
+/// **Source:** `gp.hxx`:98 - `gp::Origin2d`
 /// Identifies a Cartesian point with coordinates X = Y = 0.0
 pub fn origin2d() -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_origin2d()) }
 }
-/// **Source:** `gp.hxx` - `gp::DX2d`
+/// **Source:** `gp.hxx`:101 - `gp::DX2d`
 /// Returns a unit vector with the combinations (1,0)
 pub fn dx2d() -> crate::OwnedPtr<crate::ffi::gp_Dir2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dx2d()) }
 }
-/// **Source:** `gp.hxx` - `gp::DY2d`
+/// **Source:** `gp.hxx`:104 - `gp::DY2d`
 /// Returns a unit vector with the combinations (0,1)
 pub fn dy2d() -> crate::OwnedPtr<crate::ffi::gp_Dir2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dy2d()) }
 }
-/// **Source:** `gp.hxx` - `gp::OX2d`
+/// **Source:** `gp.hxx`:108 - `gp::OX2d`
 /// Identifies an axis where its origin is Origin2d
 /// and its unit vector coordinates are: X = 1.0,  Y = 0.0
 pub fn ox2d() -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_ox2d()) }
 }
-/// **Source:** `gp.hxx` - `gp::OY2d`
+/// **Source:** `gp.hxx`:112 - `gp::OY2d`
 /// Identifies an axis where its origin is Origin2d
 /// and its unit vector coordinates are Y = 1.0,  X = 0.0
 pub fn oy2d() -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {

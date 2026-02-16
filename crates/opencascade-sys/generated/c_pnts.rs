@@ -344,7 +344,7 @@ impl MyGaussFunction {
         unsafe { &mut *(crate::ffi::CPnts_MyGaussFunction_as_math_Function_mut(self as *mut Self)) }
     }
 
-    /// Inherited from math_Function: GetStateNumber()
+    /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::CPnts_MyGaussFunction_inherited_GetStateNumber(self as *mut Self) }
     }
@@ -430,7 +430,7 @@ impl MyRootFunction {
         }
     }
 
-    /// Inherited from math_Function: GetStateNumber()
+    /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::CPnts_MyRootFunction_inherited_GetStateNumber(self as *mut Self) }
     }

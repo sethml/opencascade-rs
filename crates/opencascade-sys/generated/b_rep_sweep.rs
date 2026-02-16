@@ -1437,7 +1437,7 @@ impl Rotation {
         unsafe { &mut *(crate::ffi::BRepSweep_Rotation_as_BRepSweep_Trsf_mut(self as *mut Self)) }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: SetContinuity()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:199 - `BRepSweep_NumLinearRegularSweep::SetContinuity()`
     pub fn set_continuity(
         &mut self,
         aGenS: &crate::ffi::TopoDS_Shape,
@@ -1448,7 +1448,7 @@ impl Rotation {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: Shape()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn shape(
         &mut self,
         aGenS: &crate::ffi::TopoDS_Shape,
@@ -1463,17 +1463,17 @@ impl Rotation {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: IsUsed()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Rotation_inherited_IsUsed(self as *const Self, aGenS) }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: GenIsUsed()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Rotation_inherited_GenIsUsed(self as *const Self, theS) }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: FirstShape()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_inherited_FirstShape(
@@ -1482,7 +1482,7 @@ impl Rotation {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: LastShape()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_inherited_LastShape(
@@ -1491,17 +1491,17 @@ impl Rotation {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: Closed()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn closed(&self) -> bool {
         unsafe { crate::ffi::BRepSweep_Rotation_inherited_Closed(self as *const Self) }
     }
 
-    /// Inherited from BRepSweep_Trsf: Init()
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:51 - `BRepSweep_Trsf::Init()`
     pub fn init(&mut self) {
         unsafe { crate::ffi::BRepSweep_Rotation_inherited_Init(self as *mut Self) }
     }
 
-    /// Inherited from BRepSweep_Trsf: Process()
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
     pub fn process(
         &mut self,
         aGenS: &crate::ffi::TopoDS_Shape,
@@ -2022,7 +2022,7 @@ impl Translation {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: SplitShell()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
     pub fn split_shell(
         &self,
         aNewShape: &crate::ffi::TopoDS_Shape,
@@ -2035,7 +2035,7 @@ impl Translation {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: SetContinuity()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:199 - `BRepSweep_NumLinearRegularSweep::SetContinuity()`
     pub fn set_continuity(
         &mut self,
         aGenS: &crate::ffi::TopoDS_Shape,
@@ -2050,7 +2050,7 @@ impl Translation {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: Shape()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn shape(
         &mut self,
         aGenS: &crate::ffi::TopoDS_Shape,
@@ -2065,17 +2065,17 @@ impl Translation {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: IsUsed()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Translation_inherited_IsUsed(self as *const Self, aGenS) }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: GenIsUsed()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Translation_inherited_GenIsUsed(self as *const Self, theS) }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: FirstShape()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_inherited_FirstShape(
@@ -2084,7 +2084,7 @@ impl Translation {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: LastShape()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_inherited_LastShape(
@@ -2093,17 +2093,17 @@ impl Translation {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: Closed()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn closed(&self) -> bool {
         unsafe { crate::ffi::BRepSweep_Translation_inherited_Closed(self as *const Self) }
     }
 
-    /// Inherited from BRepSweep_Trsf: Init()
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:51 - `BRepSweep_Trsf::Init()`
     pub fn init(&mut self) {
         unsafe { crate::ffi::BRepSweep_Translation_inherited_Init(self as *mut Self) }
     }
 
-    /// Inherited from BRepSweep_Trsf: Process()
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
     pub fn process(
         &mut self,
         aGenS: &crate::ffi::TopoDS_Shape,
@@ -2503,7 +2503,7 @@ impl Trsf {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: DirectSolid()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:158 - `BRepSweep_NumLinearRegularSweep::DirectSolid()`
     pub fn direct_solid(
         &mut self,
         aGenS: &crate::ffi::TopoDS_Shape,
@@ -2519,7 +2519,7 @@ impl Trsf {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: SplitShell()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
     pub fn split_shell(
         &self,
         aNewShape: &crate::ffi::TopoDS_Shape,
@@ -2532,7 +2532,7 @@ impl Trsf {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: Shape()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn shape(
         &mut self,
         aGenS: &crate::ffi::TopoDS_Shape,
@@ -2547,17 +2547,17 @@ impl Trsf {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: IsUsed()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Trsf_inherited_IsUsed(self as *const Self, aGenS) }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: GenIsUsed()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Trsf_inherited_GenIsUsed(self as *const Self, theS) }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: FirstShape()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Trsf_inherited_FirstShape(
@@ -2566,7 +2566,7 @@ impl Trsf {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: LastShape()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Trsf_inherited_LastShape(
@@ -2575,7 +2575,7 @@ impl Trsf {
         }
     }
 
-    /// Inherited from BRepSweep_NumLinearRegularSweep: Closed()
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn closed(&self) -> bool {
         unsafe { crate::ffi::BRepSweep_Trsf_inherited_Closed(self as *const Self) }
     }
