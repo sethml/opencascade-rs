@@ -7,13 +7,35 @@
 #![allow(non_snake_case)]
 
 pub use crate::ffi::{
-    activate_triangulation, add_uv_bounds, add_uv_bounds_3, add_uv_bounds_mut, clean,
-    clean_geometry, compare, compare_2, detect_closedness, is_really_closed, map3_d_edges,
-    outer_wire, remove_unused_p_curves, triangulation, unload_all_triangulations,
-    unload_triangulation, update, update_2, update_3, update_4, update_5, update_6, update_7,
-    update_8, update_9, update_face_uv_points, uv_bounds, uv_bounds_3, uv_bounds_mut, write,
+    BRepTools_activate_triangulation as activate_triangulation,
+    BRepTools_add_uv_bounds_face_box2d as add_uv_bounds_face_box2d,
+    BRepTools_add_uv_bounds_face_edge_box2d as add_uv_bounds_face_edge_box2d,
+    BRepTools_add_uv_bounds_face_wire_box2d as add_uv_bounds_face_wire_box2d,
+    BRepTools_clean as clean, BRepTools_clean_geometry as clean_geometry,
+    BRepTools_compare_edge2 as compare_edge2, BRepTools_compare_vertex2 as compare_vertex2,
+    BRepTools_remove_unused_p_curves as remove_unused_p_curves,
+    BRepTools_triangulation as triangulation,
+    BRepTools_unload_all_triangulations as unload_all_triangulations,
+    BRepTools_unload_triangulation as unload_triangulation,
+    BRepTools_update_compound as update_compound, BRepTools_update_compsolid as update_compsolid,
+    BRepTools_update_edge as update_edge, BRepTools_update_face as update_face,
+    BRepTools_update_face_uv_points as update_face_uv_points,
+    BRepTools_update_shape as update_shape, BRepTools_update_shell as update_shell,
+    BRepTools_update_solid as update_solid, BRepTools_update_vertex as update_vertex,
+    BRepTools_update_wire as update_wire,
+    BRepTools_uv_bounds_face_edge_real4 as uv_bounds_face_edge_real4,
+    BRepTools_uv_bounds_face_real4 as uv_bounds_face_real4,
+    BRepTools_uv_bounds_face_wire_real4 as uv_bounds_face_wire_real4,
 };
-pub fn write_2(
+pub fn outer_wire(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_outer_wire(F)) }
+}
+pub use crate::ffi::{
+    BRepTools_detect_closedness as detect_closedness,
+    BRepTools_is_really_closed as is_really_closed, BRepTools_map3_d_edges as map3_d_edges,
+    BRepTools_write_shape_charptr_progressrange as write_shape_charptr_progressrange,
+};
+pub fn write_shape_charptr_bool2_formatversion_progressrange(
     theShape: &crate::ffi::TopoDS_Shape,
     theFile: *const std::ffi::c_char,
     theWithTriangles: bool,
@@ -22,7 +44,7 @@ pub fn write_2(
     theProgress: &crate::ffi::Message_ProgressRange,
 ) -> bool {
     unsafe {
-        crate::ffi::write_2(
+        crate::ffi::BRepTools_write_shape_charptr_bool2_formatversion_progressrange(
             theShape,
             theFile,
             theWithTriangles,
@@ -32,17 +54,23 @@ pub fn write_2(
         )
     }
 }
-pub use crate::ffi::{eval_and_update_tol, read};
+pub use crate::ffi::{
+    BRepTools_eval_and_update_tol as eval_and_update_tol, BRepTools_read as read,
+};
 pub fn ori_edge_in_face(
     theEdge: &crate::ffi::TopoDS_Edge,
     theFace: &crate::ffi::TopoDS_Face,
 ) -> crate::top_abs::Orientation {
     unsafe {
-        crate::top_abs::Orientation::try_from(crate::ffi::ori_edge_in_face(theEdge, theFace))
-            .unwrap()
+        crate::top_abs::Orientation::try_from(crate::ffi::BRepTools_ori_edge_in_face(
+            theEdge, theFace,
+        ))
+        .unwrap()
     }
 }
-pub use crate::ffi::{check_locations, remove_internals};
+pub use crate::ffi::{
+    BRepTools_check_locations as check_locations, BRepTools_remove_internals as remove_internals,
+};
 
 // ========================
 // From BRepTools_CopyModification.hxx

@@ -6,9 +6,15 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+pub fn outer_wire(theFace: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_outer_wire(theFace)) }
+}
 pub use crate::ffi::{
-    adjust_by_period, adjust_to_period, contour_area, find_bounds, get_face_uv_bounds,
-    is_outer_bound, outer_wire_2,
+    ShapeAnalysis_adjust_by_period as adjust_by_period,
+    ShapeAnalysis_adjust_to_period as adjust_to_period, ShapeAnalysis_contour_area as contour_area,
+    ShapeAnalysis_find_bounds as find_bounds,
+    ShapeAnalysis_get_face_uv_bounds as get_face_uv_bounds,
+    ShapeAnalysis_is_outer_bound as is_outer_bound,
 };
 
 // ========================

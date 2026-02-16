@@ -6,7 +6,50 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{mix_bnd, reparametrize, scale, scale_cub};
+pub fn mix_bnd(Lin: &crate::ffi::HandleLawLinear) -> crate::OwnedPtr<crate::ffi::HandleLawBSpFunc> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Law_mix_bnd(Lin)) }
+}
+pub fn reparametrize(
+    Curve: &crate::ffi::Adaptor3d_Curve,
+    First: f64,
+    Last: f64,
+    HasDF: bool,
+    HasDL: bool,
+    DFirst: f64,
+    DLast: f64,
+    Rev: bool,
+    NbPoints: i32,
+) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::Law_reparametrize(
+            Curve, First, Last, HasDF, HasDL, DFirst, DLast, Rev, NbPoints,
+        ))
+    }
+}
+pub fn scale(
+    First: f64,
+    Last: f64,
+    HasF: bool,
+    HasL: bool,
+    VFirst: f64,
+    VLast: f64,
+) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::Law_scale(First, Last, HasF, HasL, VFirst, VLast))
+    }
+}
+pub fn scale_cub(
+    First: f64,
+    Last: f64,
+    HasF: bool,
+    HasL: bool,
+    VFirst: f64,
+    VLast: f64,
+) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::Law_scale_cub(First, Last, HasF, HasL, VFirst, VLast))
+    }
+}
 
 // ========================
 // From Law_BSpFunc.hxx

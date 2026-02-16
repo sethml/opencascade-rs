@@ -7,8 +7,13 @@
 #![allow(non_snake_case)]
 
 pub use crate::ffi::{
-    linear_properties, surface_properties, surface_properties_mut, volume_properties,
-    volume_properties_gk, volume_properties_gk_mut, volume_properties_mut,
+    BRepGProp_linear_properties as linear_properties,
+    BRepGProp_surface_properties_shape_gprops_bool2 as surface_properties_shape_gprops_bool2,
+    BRepGProp_surface_properties_shape_gprops_real_bool as surface_properties_shape_gprops_real_bool,
+    BRepGProp_volume_properties_gk_shape_gprops_pln_real_bool5 as volume_properties_gk_shape_gprops_pln_real_bool5,
+    BRepGProp_volume_properties_gk_shape_gprops_real_bool5 as volume_properties_gk_shape_gprops_real_bool5,
+    BRepGProp_volume_properties_shape_gprops_bool3 as volume_properties_shape_gprops_bool3,
+    BRepGProp_volume_properties_shape_gprops_real_bool2 as volume_properties_shape_gprops_real_bool2,
 };
 
 // ========================

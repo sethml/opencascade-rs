@@ -6,19 +6,34 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::default_messenger;
+pub fn default_messenger() -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_default_messenger()) }
+}
 pub fn send(theMessage: &crate::ffi::TCollection_AsciiString, theGravity: crate::message::Gravity) {
-    unsafe { crate::ffi::send(theMessage, theGravity.into()) }
+    unsafe { crate::ffi::Message_send(theMessage, theGravity.into()) }
 }
 pub use crate::ffi::{
-    default_report, fill_time, send_alarm, send_fail, send_info, send_trace, send_warning,
+    Message_send_alarm as send_alarm, Message_send_fail as send_fail,
+    Message_send_info as send_info, Message_send_trace as send_trace,
+    Message_send_warning as send_warning,
 };
+pub fn fill_time(
+    Hour: i32,
+    Minute: i32,
+    Second: f64,
+) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_fill_time(Hour, Minute, Second)) }
+}
+pub fn default_report(theToCreate: bool) -> crate::OwnedPtr<crate::ffi::HandleMessageReport> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_default_report(theToCreate)) }
+}
 pub fn metric_to_string(theType: crate::message::MetricType) -> *const std::ffi::c_char {
-    unsafe { crate::ffi::metric_to_string(theType.into()) }
+    unsafe { crate::ffi::Message_metric_to_string(theType.into()) }
 }
 pub fn metric_from_string(theString: *const std::ffi::c_char) -> crate::message::MetricType {
     unsafe {
-        crate::message::MetricType::try_from(crate::ffi::metric_from_string(theString)).unwrap()
+        crate::message::MetricType::try_from(crate::ffi::Message_metric_from_string(theString))
+            .unwrap()
     }
 }
 

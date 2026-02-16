@@ -7,8 +7,14 @@
 #![allow(non_snake_case)]
 
 pub use crate::ffi::{
-    anti_boor_scheme, bohm, boor_index, boor_scheme, derivative, eval, flat_bezier_knots,
-    max_degree, poles_coefficients, poles_coefficients_mut, reverse, reverse_mut,
+    BSplCLib_anti_boor_scheme as anti_boor_scheme, BSplCLib_bohm as bohm,
+    BSplCLib_boor_index as boor_index, BSplCLib_boor_scheme as boor_scheme,
+    BSplCLib_derivative as derivative, BSplCLib_eval as eval,
+    BSplCLib_flat_bezier_knots as flat_bezier_knots, BSplCLib_max_degree as max_degree,
+    BSplCLib_poles_coefficients_array1ofpnt2 as poles_coefficients_array1ofpnt2,
+    BSplCLib_poles_coefficients_array1ofpnt2d2 as poles_coefficients_array1ofpnt2d2,
+    BSplCLib_reverse_array1ofpnt2d_int as reverse_array1ofpnt2d_int,
+    BSplCLib_reverse_array1ofpnt_int as reverse_array1ofpnt_int,
 };
 
 /// This enumeration describes the repartition of the

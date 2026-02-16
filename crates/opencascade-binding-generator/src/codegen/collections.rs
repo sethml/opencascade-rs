@@ -1356,9 +1356,14 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
     };
     let next_fn_name = format!("{}{}", iter_name, next_suffix);
     output.push_str(&format!("impl ffi::{} {{\n", iter_name));
-    output.push_str("    /// Get next element (nullptr when done)\n");
-    output.push_str(&format!("    pub fn next(&mut self) -> crate::OwnedPtr<ffi::{}> {{\n", info.element_type));
-    output.push_str(&format!("        unsafe {{ crate::OwnedPtr::from_raw(ffi::{}(self as *mut Self)) }}\n", next_fn_name));
+    output.push_str("    /// Get next element (returns None when done)\n");
+    output.push_str(&format!("    pub fn next(&mut self) -> Option<crate::OwnedPtr<ffi::{}>> {{\n", info.element_type));
+    output.push_str(&format!("        let ptr = unsafe {{ ffi::{}(self as *mut Self) }};\n", next_fn_name));
+    output.push_str("        if ptr.is_null() {\n");
+    output.push_str("            None\n");
+    output.push_str("        } else {\n");
+    output.push_str("            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })\n");
+    output.push_str("        }\n");
     output.push_str("    }\n");
     output.push_str("}\n\n");
     

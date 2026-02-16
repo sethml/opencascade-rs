@@ -168,7 +168,7 @@ impl Wire {
     pub fn fillet(&self, radius: f64) -> Wire {
         // Create a face from this wire
         let face = Face::from_wire(self).fillet(radius);
-        let inner = unsafe { opencascade_sys::OwnedPtr::from_raw(opencascade_sys::b_rep_tools::outer_wire(face.inner.as_ptr())) };
+        let inner = opencascade_sys::b_rep_tools::outer_wire(&*face.inner);
 
         Self { inner }
     }
@@ -177,7 +177,7 @@ impl Wire {
     #[must_use]
     pub fn chamfer(&self, distance_1: f64) -> Wire {
         let face = Face::from_wire(self).chamfer(distance_1);
-        let inner = unsafe { opencascade_sys::OwnedPtr::from_raw(opencascade_sys::b_rep_tools::outer_wire(face.inner.as_ptr())) };
+        let inner = opencascade_sys::b_rep_tools::outer_wire(&*face.inner);
 
         Self { inner }
     }

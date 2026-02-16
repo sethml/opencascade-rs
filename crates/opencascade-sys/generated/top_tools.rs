@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::dummy;
+pub use crate::ffi::TopTools_dummy as dummy;
 
 /// Defined TopTools format version
 /// C++ enum: `TopTools_FormatVersion`
@@ -112,12 +112,13 @@ impl DataMapOfShapeShape {
 }
 
 impl DataMapOfShapeShapeIterator {
-    /// Get next element (returns null when done)
-    pub fn next(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::DataMapOfShapeShapeIterator_next_key(
-                self as *mut Self,
-            ))
+    /// Get next element (returns None when done)
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
+        let ptr = unsafe { crate::ffi::DataMapOfShapeShapeIterator_next_key(self as *mut Self) };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -233,12 +234,15 @@ impl IndexedDataMapOfShapeListOfShape {
 }
 
 impl IndexedDataMapOfShapeListOfShapeIterator {
-    /// Get next element (returns null when done)
-    pub fn next(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IndexedDataMapOfShapeListOfShapeIterator_next_key(self as *mut Self),
-            )
+    /// Get next element (returns None when done)
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
+        let ptr = unsafe {
+            crate::ffi::IndexedDataMapOfShapeListOfShapeIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -297,10 +301,13 @@ impl IndexedMapOfShape {
 }
 
 impl IndexedMapOfShapeIterator {
-    /// Get next element (returns null when done)
-    pub fn next(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IndexedMapOfShapeIterator_next(self as *mut Self))
+    /// Get next element (returns None when done)
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
+        let ptr = unsafe { crate::ffi::IndexedMapOfShapeIterator_next(self as *mut Self) };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -362,10 +369,13 @@ impl ListOfShape {
 }
 
 impl ListOfShapeIterator {
-    /// Get next element (returns null when done)
-    pub fn next(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ListOfShapeIterator_next(self as *mut Self))
+    /// Get next element (returns None when done)
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
+        let ptr = unsafe { crate::ffi::ListOfShapeIterator_next(self as *mut Self) };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -417,9 +427,14 @@ impl MapOfShape {
 }
 
 impl MapOfShapeIterator {
-    /// Get next element (returns null when done)
-    pub fn next(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::MapOfShapeIterator_next(self as *mut Self)) }
+    /// Get next element (returns None when done)
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
+        let ptr = unsafe { crate::ffi::MapOfShapeIterator_next(self as *mut Self) };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -477,10 +492,13 @@ impl SequenceOfShape {
 }
 
 impl SequenceOfShapeIterator {
-    /// Get next element (returns null when done)
-    pub fn next(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::SequenceOfShapeIterator_next(self as *mut Self))
+    /// Get next element (returns None when done)
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
+        let ptr = unsafe { crate::ffi::SequenceOfShapeIterator_next(self as *mut Self) };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }

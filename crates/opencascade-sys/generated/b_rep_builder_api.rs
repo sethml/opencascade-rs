@@ -6,7 +6,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{plane, plane_2, precision, precision_2};
+pub use crate::ffi::BRepBuilderAPI_plane_handlegeomplane as plane_handlegeomplane;
+pub fn plane() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepBuilderAPI_plane()) }
+}
+pub use crate::ffi::{
+    BRepBuilderAPI_precision as precision, BRepBuilderAPI_precision_real as precision_real,
+};
 
 /// Indicates the outcome of the
 /// construction of an edge, i.e. whether it has been successful or

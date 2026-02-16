@@ -774,10 +774,9 @@ pub fn build_symbol_table(
         resolve_function(&mut table, func, &all_enum_names, &all_class_names, &handle_able_classes, &type_to_module_ref);
     }
     
-    // Assign deduplicated names for all included functions.
-    // This must happen after ALL functions are resolved, since CXX requires
-    // unique fn names across the entire bridge module.
-    assign_function_names(&mut table);
+    // Note: Function naming (rust_ffi_name, cpp_wrapper_name) is now handled by
+    // compute_all_function_bindings() in bindings.rs. The placeholder names set
+    // during resolve_function() are no longer used by emitters.
     
     table
 }
@@ -1151,70 +1150,6 @@ fn function_uses_unknown_handle(
         }
     }
     false
-}
-
-/// Assign deduplicated function names after all functions have been resolved.
-///
-/// CXX requires unique `fn` names across the entire bridge module, so we track
-/// name counters globally. The C++ wrapper name includes the namespace prefix
-/// to avoid ambiguity in C++.
-fn assign_function_names(table: &mut SymbolTable) {
-    // Collect all function IDs in a stable order (by module, then insertion order)
-    let mut all_func_ids: Vec<SymbolId> = Vec::new();
-    let mut modules: Vec<String> = table.functions_by_module.keys().cloned().collect();
-    modules.sort();
-    for module in &modules {
-        if let Some(ids) = table.functions_by_module.get(module) {
-            all_func_ids.extend(ids.iter().cloned());
-        }
-    }
-    
-    let mut seen_names: HashMap<String, usize> = HashMap::new();
-    let mut used_names: HashSet<String> = HashSet::new();
-    
-    for func_id in &all_func_ids {
-        let func = match table.functions.get(func_id) {
-            Some(f) => f,
-            None => continue,
-        };
-        
-        // Skip excluded functions — they won't appear in generated code
-        if !func.status.is_included() {
-            continue;
-        }
-        
-        let base_rust_name = &func.rust_name;
-        let is_mut_version = func.params.iter().any(|p| matches!(&p.ty.original, Type::MutRef(_)));
-        
-        let count = seen_names.entry(base_rust_name.clone()).or_insert(0);
-        *count += 1;
-        
-        let rust_ffi_name = if *count > 1 {
-            let candidate = if is_mut_version {
-                format!("{}_mut", base_rust_name)
-            } else {
-                format!("{}_{}", base_rust_name, count)
-            };
-            if used_names.contains(&candidate) {
-                format!("{}_{}", base_rust_name, count)
-            } else {
-                candidate
-            }
-        } else {
-            base_rust_name.clone()
-        };
-        
-        used_names.insert(rust_ffi_name.clone());
-        
-        let namespace = func.namespace.clone();
-        let cpp_wrapper_name = format!("{}_{}", namespace, rust_ffi_name);
-        
-        // Update the function with its final names
-        if let Some(f) = table.functions.get_mut(func_id) {
-            f.rust_ffi_name = rust_ffi_name;
-            f.cpp_wrapper_name = cpp_wrapper_name;
-        }
-    }
 }
 
 /// Resolve a type to its code generation form

@@ -23,11 +23,7 @@ impl Section {
         let list = self.inner.section_edges();
         let mut shapes = Vec::new();
         let mut iter = list.iter();
-        loop {
-            let shape = iter.next();
-            if shape.is_null() {
-                break;
-            }
+        while let Some(shape) = iter.next() {
             shapes.push(Shape::from_shape(&shape));
         }
         shapes

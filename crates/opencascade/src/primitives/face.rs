@@ -140,7 +140,7 @@ impl Face {
         // each vertex once per adjacent edge, so adding a fillet at the same
         // vertex twice causes StdFail_NotDone.
         let mut shape_map = top_tools::IndexedMapOfShape::new();
-        top_exp::map_shapes(face_shape, top_abs::ShapeEnum::Vertex, &mut *shape_map);
+        top_exp::map_shapes_shape_shapeenum_indexedmapofshape(face_shape, top_abs::ShapeEnum::Vertex, &mut *shape_map);
 
         for i in 1..=shape_map.size() {
             let vertex = unsafe { &*topo_ds::vertex(shape_map.find_key(i)) };
@@ -183,11 +183,11 @@ impl Face {
         // Map vertex positions to edge indices
         let mut vertex_edges: HashMap<[i64; 3], Vec<usize>> = HashMap::new();
         for (i, edge) in edges.iter().enumerate() {
-            let first = unsafe { &*top_exp::first_vertex(edge.as_ptr(), false) };
-            let last = unsafe { &*top_exp::last_vertex(edge.as_ptr(), false) };
+            let first = top_exp::first_vertex(&**edge, false);
+            let last = top_exp::last_vertex(&**edge, false);
 
-            let first_pnt = b_rep::Tool::pnt(first);
-            let last_pnt = b_rep::Tool::pnt(last);
+            let first_pnt = b_rep::Tool::pnt(&first);
+            let last_pnt = b_rep::Tool::pnt(&last);
 
             let first_key = pos_key(&first_pnt);
             let last_key = pos_key(&last_pnt);
@@ -268,7 +268,7 @@ impl Face {
         let mut props = g_prop::GProps::new();
 
         let inner_shape = self.inner.as_shape();
-        unsafe { b_rep_g_prop::surface_properties(inner_shape, &mut *props, false, false) };
+        unsafe { b_rep_g_prop::surface_properties_shape_gprops_bool2(inner_shape, &mut *props, false, false) };
 
         let center = props.centre_of_mass();
 
@@ -363,7 +363,7 @@ impl Face {
         let mut props = g_prop::GProps::new();
 
         let inner_shape = self.inner.as_shape();
-        unsafe { b_rep_g_prop::surface_properties(inner_shape, &mut *props, false, false) };
+        unsafe { b_rep_g_prop::surface_properties_shape_gprops_bool2(inner_shape, &mut *props, false, false) };
 
         // Returns surface area, obviously.
         props.mass()
@@ -375,7 +375,7 @@ impl Face {
 
     #[must_use]
     pub fn outer_wire(&self) -> Wire {
-        let inner = unsafe { opencascade_sys::OwnedPtr::from_raw(b_rep_tools::outer_wire(self.inner.as_ptr())) };
+        let inner = b_rep_tools::outer_wire(&*self.inner);
 
         Wire { inner }
     }

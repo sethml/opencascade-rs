@@ -6,7 +6,18 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{to2d, to3d};
+pub fn to2d(
+    C: &crate::ffi::HandleGeomCurve,
+    P: &crate::ffi::gp_Pln,
+) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAPI_to2d(C, P)) }
+}
+pub fn to3d_handlegeom2dcurve_pln(
+    C: &crate::ffi::HandleGeom2dCurve,
+    P: &crate::ffi::gp_Pln,
+) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAPI_to3d_handlegeom2dcurve_pln(C, P)) }
+}
 
 // ========================
 // From GeomAPI_ExtremaCurveCurve.hxx

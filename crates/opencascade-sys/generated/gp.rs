@@ -6,9 +6,52 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
-    dx, dx2d, dy, dy2d, dz, origin, origin2d, ox, ox2d, oy, oy2d, oz, resolution, xoy, yoz, zox,
-};
+pub use crate::ffi::gp_resolution as resolution;
+pub fn origin() -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_origin()) }
+}
+pub fn dx() -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dx()) }
+}
+pub fn dy() -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dy()) }
+}
+pub fn dz() -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dz()) }
+}
+pub fn ox() -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_ox()) }
+}
+pub fn oy() -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_oy()) }
+}
+pub fn oz() -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_oz()) }
+}
+pub fn xoy() -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_xoy()) }
+}
+pub fn zox() -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_zox()) }
+}
+pub fn yoz() -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_yoz()) }
+}
+pub fn origin2d() -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_origin2d()) }
+}
+pub fn dx2d() -> crate::OwnedPtr<crate::ffi::gp_Dir2d> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dx2d()) }
+}
+pub fn dy2d() -> crate::OwnedPtr<crate::ffi::gp_Dir2d> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dy2d()) }
+}
+pub fn ox2d() -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_ox2d()) }
+}
+pub fn oy2d() -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_oy2d()) }
+}
 
 /// Enumerates all 24 possible variants of generalized
 /// Euler angles, defining general 3d rotation by three

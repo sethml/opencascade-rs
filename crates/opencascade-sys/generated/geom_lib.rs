@@ -6,7 +6,21 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{g_transform, same_range, to3d_2};
+pub fn to3d_ax2_handlegeom2dcurve(
+    Position: &crate::ffi::gp_Ax2,
+    Curve2d: &crate::ffi::HandleGeom2dCurve,
+) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::GeomLib_to3d_ax2_handlegeom2dcurve(Position, Curve2d))
+    }
+}
+pub fn g_transform(
+    Curve: &crate::ffi::HandleGeom2dCurve,
+    GTrsf: &crate::ffi::gp_GTrsf2d,
+) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLib_g_transform(Curve, GTrsf)) }
+}
+pub use crate::ffi::GeomLib_same_range as same_range;
 pub fn build_curve3d(
     Tolerance: f64,
     CurvePtr: &mut crate::ffi::Adaptor3d_CurveOnSurface,
@@ -20,7 +34,7 @@ pub fn build_curve3d(
     MaxSegment: i32,
 ) {
     unsafe {
-        crate::ffi::build_curve3d(
+        crate::ffi::GeomLib_build_curve3d(
             Tolerance,
             CurvePtr,
             FirstParameter,
@@ -35,7 +49,35 @@ pub fn build_curve3d(
     }
 }
 pub use crate::ffi::{
-    adjust_extremity, axe_of_inertia, build_c3d_on_iso_line, cancel_denominator_derivative,
-    extend_curve_to_point, extend_surf_by_length, inertia, is_b_spl_u_closed, is_b_spl_v_closed,
-    is_bz_u_closed, is_bz_v_closed, is_closed, is_iso_line, norm_estim,
+    GeomLib_adjust_extremity as adjust_extremity, GeomLib_axe_of_inertia as axe_of_inertia,
+    GeomLib_cancel_denominator_derivative as cancel_denominator_derivative,
+    GeomLib_extend_curve_to_point as extend_curve_to_point,
+    GeomLib_extend_surf_by_length as extend_surf_by_length, GeomLib_inertia as inertia,
+    GeomLib_is_b_spl_u_closed as is_b_spl_u_closed, GeomLib_is_b_spl_v_closed as is_b_spl_v_closed,
+    GeomLib_is_bz_u_closed as is_bz_u_closed, GeomLib_is_bz_v_closed as is_bz_v_closed,
+    GeomLib_is_closed as is_closed, GeomLib_is_iso_line as is_iso_line,
+    GeomLib_norm_estim as norm_estim,
 };
+pub fn build_c3d_on_iso_line(
+    theC2D: &crate::ffi::HandleAdaptor2dCurve2d,
+    theSurf: &crate::ffi::HandleAdaptor3dSurface,
+    theFirst: f64,
+    theLast: f64,
+    theTolerance: f64,
+    theIsU: bool,
+    theParam: f64,
+    theIsForward: bool,
+) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::GeomLib_build_c3d_on_iso_line(
+            theC2D,
+            theSurf,
+            theFirst,
+            theLast,
+            theTolerance,
+            theIsU,
+            theParam,
+            theIsForward,
+        ))
+    }
+}

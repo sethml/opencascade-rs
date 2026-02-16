@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::h_operator;
+pub use crate::ffi::GProp_h_operator as h_operator;
 
 /// C++ enum: `GProp_EquaType`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

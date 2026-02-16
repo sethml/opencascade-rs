@@ -55674,10 +55674,10 @@ extern "C" void Adaptor2d_Line2d_destructor(Adaptor2d_Line2d* self_) { delete se
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
 #include <TopoDS_Shape.hxx>
-extern "C" void BRepBndLib_add(const TopoDS_Shape& S, Bnd_Box& B, Standard_Boolean useTriangulation) { return BRepBndLib::Add(S, B, useTriangulation); }
-extern "C" void BRepBndLib_add_close(const TopoDS_Shape& S, Bnd_Box& B) { return BRepBndLib::AddClose(S, B); }
-extern "C" void BRepBndLib_add_optimal(const TopoDS_Shape& S, Bnd_Box& B, Standard_Boolean useTriangulation, Standard_Boolean useShapeTolerance) { return BRepBndLib::AddOptimal(S, B, useTriangulation, useShapeTolerance); }
-extern "C" void BRepBndLib_add_obb(const TopoDS_Shape& theS, Bnd_OBB& theOBB, Standard_Boolean theIsTriangulationUsed, Standard_Boolean theIsOptimal, Standard_Boolean theIsShapeToleranceUsed) { return BRepBndLib::AddOBB(theS, theOBB, theIsTriangulationUsed, theIsOptimal, theIsShapeToleranceUsed); }
+extern "C" void BRepBndLib_add(const TopoDS_Shape* S, Bnd_Box* B, Standard_Boolean useTriangulation) { BRepBndLib::Add(*S, *B, useTriangulation); }
+extern "C" void BRepBndLib_add_close(const TopoDS_Shape* S, Bnd_Box* B) { BRepBndLib::AddClose(*S, *B); }
+extern "C" void BRepBndLib_add_optimal(const TopoDS_Shape* S, Bnd_Box* B, Standard_Boolean useTriangulation, Standard_Boolean useShapeTolerance) { BRepBndLib::AddOptimal(*S, *B, useTriangulation, useShapeTolerance); }
+extern "C" void BRepBndLib_add_obb(const TopoDS_Shape* theS, Bnd_OBB* theOBB, Standard_Boolean theIsTriangulationUsed, Standard_Boolean theIsOptimal, Standard_Boolean theIsShapeToleranceUsed) { BRepBndLib::AddOBB(*theS, *theOBB, theIsTriangulationUsed, theIsOptimal, theIsShapeToleranceUsed); }
 
 // ========================
 // BRepBuilderAPI namespace functions
@@ -55685,10 +55685,10 @@ extern "C" void BRepBndLib_add_obb(const TopoDS_Shape& theS, Bnd_OBB& theOBB, St
 #include <BRepBuilderAPI.hxx>
 #include <Geom_Plane.hxx>
 #include <Standard_Handle.hxx>
-extern "C" void BRepBuilderAPI_plane(const opencascade::handle<Geom_Plane>& P) { return BRepBuilderAPI::Plane(P); }
-extern "C" opencascade::handle<Geom_Plane>* BRepBuilderAPI_plane_2() { return new opencascade::handle<Geom_Plane>(BRepBuilderAPI::Plane()); }
-extern "C" void BRepBuilderAPI_precision(Standard_Real P) { return BRepBuilderAPI::Precision(P); }
-extern "C" Standard_Real BRepBuilderAPI_precision_2() { return BRepBuilderAPI::Precision(); }
+extern "C" void BRepBuilderAPI_plane_handlegeomplane(const opencascade::handle<Geom_Plane>* P) { BRepBuilderAPI::Plane(*P); }
+extern "C" opencascade::handle<Geom_Plane>* BRepBuilderAPI_plane() { return new opencascade::handle<Geom_Plane>(BRepBuilderAPI::Plane()); }
+extern "C" void BRepBuilderAPI_precision_real(Standard_Real P) { BRepBuilderAPI::Precision(P); }
+extern "C" Standard_Real BRepBuilderAPI_precision() { return BRepBuilderAPI::Precision(); }
 
 // ========================
 // BRepFeat namespace functions
@@ -55701,12 +55701,12 @@ extern "C" Standard_Real BRepBuilderAPI_precision_2() { return BRepBuilderAPI::P
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Solid.hxx>
 #include <gp_Pnt.hxx>
-extern "C" void BRepFeat_barycenter(const TopoDS_Shape& S, gp_Pnt& Pt) { return BRepFeat::Barycenter(S, Pt); }
-extern "C" Standard_Real BRepFeat_parametric_barycenter(const TopoDS_Shape& S, const opencascade::handle<Geom_Curve>& C) { return BRepFeat::ParametricBarycenter(S, C); }
-extern "C" void BRepFeat_parametric_min_max(const TopoDS_Shape& S, const opencascade::handle<Geom_Curve>& C, Standard_Real& prmin, Standard_Real& prmax, Standard_Real& prbmin, Standard_Real& prbmax, Standard_Boolean& flag, Standard_Boolean Ori) { return BRepFeat::ParametricMinMax(S, C, prmin, prmax, prbmin, prbmax, flag, Ori); }
-extern "C" Standard_Boolean BRepFeat_is_inside(const TopoDS_Face& F1, const TopoDS_Face& F2) { return BRepFeat::IsInside(F1, F2); }
-extern "C" void BRepFeat_face_until(const TopoDS_Shape& S, TopoDS_Face& F) { return BRepFeat::FaceUntil(S, F); }
-extern "C" TopoDS_Solid* BRepFeat_tool(const TopoDS_Shape& SRef, const TopoDS_Face& Fac, int32_t Orf) { return new TopoDS_Solid(BRepFeat::Tool(SRef, Fac, static_cast<TopAbs_Orientation>(Orf))); }
+extern "C" void BRepFeat_barycenter(const TopoDS_Shape* S, gp_Pnt* Pt) { BRepFeat::Barycenter(*S, *Pt); }
+extern "C" Standard_Real BRepFeat_parametric_barycenter(const TopoDS_Shape* S, const opencascade::handle<Geom_Curve>* C) { return BRepFeat::ParametricBarycenter(*S, *C); }
+extern "C" void BRepFeat_parametric_min_max(const TopoDS_Shape* S, const opencascade::handle<Geom_Curve>* C, Standard_Real* prmin, Standard_Real* prmax, Standard_Real* prbmin, Standard_Real* prbmax, Standard_Boolean* flag, Standard_Boolean Ori) { BRepFeat::ParametricMinMax(*S, *C, *prmin, *prmax, *prbmin, *prbmax, *flag, Ori); }
+extern "C" Standard_Boolean BRepFeat_is_inside(const TopoDS_Face* F1, const TopoDS_Face* F2) { return BRepFeat::IsInside(*F1, *F2); }
+extern "C" void BRepFeat_face_until(const TopoDS_Shape* S, TopoDS_Face* F) { BRepFeat::FaceUntil(*S, *F); }
+extern "C" TopoDS_Solid* BRepFeat_tool(const TopoDS_Shape* SRef, const TopoDS_Face* Fac, int32_t Orf) { return new TopoDS_Solid(BRepFeat::Tool(*SRef, *Fac, static_cast<TopAbs_Orientation>(Orf))); }
 
 // ========================
 // BRepGProp namespace functions
@@ -55715,13 +55715,13 @@ extern "C" TopoDS_Solid* BRepFeat_tool(const TopoDS_Shape& SRef, const TopoDS_Fa
 #include <GProp_GProps.hxx>
 #include <TopoDS_Shape.hxx>
 #include <gp_Pln.hxx>
-extern "C" void BRepGProp_linear_properties(const TopoDS_Shape& S, GProp_GProps& LProps, Standard_Boolean SkipShared, Standard_Boolean UseTriangulation) { return BRepGProp::LinearProperties(S, LProps, SkipShared, UseTriangulation); }
-extern "C" void BRepGProp_surface_properties(const TopoDS_Shape& S, GProp_GProps& SProps, Standard_Boolean SkipShared, Standard_Boolean UseTriangulation) { return BRepGProp::SurfaceProperties(S, SProps, SkipShared, UseTriangulation); }
-extern "C" Standard_Real BRepGProp_surface_properties_mut(const TopoDS_Shape& S, GProp_GProps& SProps, Standard_Real Eps, Standard_Boolean SkipShared) { return BRepGProp::SurfaceProperties(S, SProps, Eps, SkipShared); }
-extern "C" void BRepGProp_volume_properties(const TopoDS_Shape& S, GProp_GProps& VProps, Standard_Boolean OnlyClosed, Standard_Boolean SkipShared, Standard_Boolean UseTriangulation) { return BRepGProp::VolumeProperties(S, VProps, OnlyClosed, SkipShared, UseTriangulation); }
-extern "C" Standard_Real BRepGProp_volume_properties_mut(const TopoDS_Shape& S, GProp_GProps& VProps, Standard_Real Eps, Standard_Boolean OnlyClosed, Standard_Boolean SkipShared) { return BRepGProp::VolumeProperties(S, VProps, Eps, OnlyClosed, SkipShared); }
-extern "C" Standard_Real BRepGProp_volume_properties_gk(const TopoDS_Shape& S, GProp_GProps& VProps, Standard_Real Eps, Standard_Boolean OnlyClosed, Standard_Boolean IsUseSpan, Standard_Boolean CGFlag, Standard_Boolean IFlag, Standard_Boolean SkipShared) { return BRepGProp::VolumePropertiesGK(S, VProps, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared); }
-extern "C" Standard_Real BRepGProp_volume_properties_gk_mut(const TopoDS_Shape& S, GProp_GProps& VProps, const gp_Pln& thePln, Standard_Real Eps, Standard_Boolean OnlyClosed, Standard_Boolean IsUseSpan, Standard_Boolean CGFlag, Standard_Boolean IFlag, Standard_Boolean SkipShared) { return BRepGProp::VolumePropertiesGK(S, VProps, thePln, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared); }
+extern "C" void BRepGProp_linear_properties(const TopoDS_Shape* S, GProp_GProps* LProps, Standard_Boolean SkipShared, Standard_Boolean UseTriangulation) { BRepGProp::LinearProperties(*S, *LProps, SkipShared, UseTriangulation); }
+extern "C" void BRepGProp_surface_properties_shape_gprops_bool2(const TopoDS_Shape* S, GProp_GProps* SProps, Standard_Boolean SkipShared, Standard_Boolean UseTriangulation) { BRepGProp::SurfaceProperties(*S, *SProps, SkipShared, UseTriangulation); }
+extern "C" Standard_Real BRepGProp_surface_properties_shape_gprops_real_bool(const TopoDS_Shape* S, GProp_GProps* SProps, Standard_Real Eps, Standard_Boolean SkipShared) { return BRepGProp::SurfaceProperties(*S, *SProps, Eps, SkipShared); }
+extern "C" void BRepGProp_volume_properties_shape_gprops_bool3(const TopoDS_Shape* S, GProp_GProps* VProps, Standard_Boolean OnlyClosed, Standard_Boolean SkipShared, Standard_Boolean UseTriangulation) { BRepGProp::VolumeProperties(*S, *VProps, OnlyClosed, SkipShared, UseTriangulation); }
+extern "C" Standard_Real BRepGProp_volume_properties_shape_gprops_real_bool2(const TopoDS_Shape* S, GProp_GProps* VProps, Standard_Real Eps, Standard_Boolean OnlyClosed, Standard_Boolean SkipShared) { return BRepGProp::VolumeProperties(*S, *VProps, Eps, OnlyClosed, SkipShared); }
+extern "C" Standard_Real BRepGProp_volume_properties_gk_shape_gprops_real_bool5(const TopoDS_Shape* S, GProp_GProps* VProps, Standard_Real Eps, Standard_Boolean OnlyClosed, Standard_Boolean IsUseSpan, Standard_Boolean CGFlag, Standard_Boolean IFlag, Standard_Boolean SkipShared) { return BRepGProp::VolumePropertiesGK(*S, *VProps, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared); }
+extern "C" Standard_Real BRepGProp_volume_properties_gk_shape_gprops_pln_real_bool5(const TopoDS_Shape* S, GProp_GProps* VProps, const gp_Pln* thePln, Standard_Real Eps, Standard_Boolean OnlyClosed, Standard_Boolean IsUseSpan, Standard_Boolean CGFlag, Standard_Boolean IFlag, Standard_Boolean SkipShared) { return BRepGProp::VolumePropertiesGK(*S, *VProps, *thePln, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared); }
 
 // ========================
 // BRepTools namespace functions
@@ -55747,42 +55747,42 @@ extern "C" Standard_Real BRepGProp_volume_properties_gk_mut(const TopoDS_Shape& 
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-extern "C" void BRepTools_uv_bounds(const TopoDS_Face& F, Standard_Real& UMin, Standard_Real& UMax, Standard_Real& VMin, Standard_Real& VMax) { return BRepTools::UVBounds(F, UMin, UMax, VMin, VMax); }
-extern "C" void BRepTools_uv_bounds_mut(const TopoDS_Face& F, const TopoDS_Wire& W, Standard_Real& UMin, Standard_Real& UMax, Standard_Real& VMin, Standard_Real& VMax) { return BRepTools::UVBounds(F, W, UMin, UMax, VMin, VMax); }
-extern "C" void BRepTools_uv_bounds_3(const TopoDS_Face& F, const TopoDS_Edge& E, Standard_Real& UMin, Standard_Real& UMax, Standard_Real& VMin, Standard_Real& VMax) { return BRepTools::UVBounds(F, E, UMin, UMax, VMin, VMax); }
-extern "C" void BRepTools_add_uv_bounds(const TopoDS_Face& F, Bnd_Box2d& B) { return BRepTools::AddUVBounds(F, B); }
-extern "C" void BRepTools_add_uv_bounds_mut(const TopoDS_Face& F, const TopoDS_Wire& W, Bnd_Box2d& B) { return BRepTools::AddUVBounds(F, W, B); }
-extern "C" void BRepTools_add_uv_bounds_3(const TopoDS_Face& F, const TopoDS_Edge& E, Bnd_Box2d& B) { return BRepTools::AddUVBounds(F, E, B); }
-extern "C" void BRepTools_update(const TopoDS_Vertex& V) { return BRepTools::Update(V); }
-extern "C" void BRepTools_update_2(const TopoDS_Edge& E) { return BRepTools::Update(E); }
-extern "C" void BRepTools_update_3(const TopoDS_Wire& W) { return BRepTools::Update(W); }
-extern "C" void BRepTools_update_4(const TopoDS_Face& F) { return BRepTools::Update(F); }
-extern "C" void BRepTools_update_5(const TopoDS_Shell& S) { return BRepTools::Update(S); }
-extern "C" void BRepTools_update_6(const TopoDS_Solid& S) { return BRepTools::Update(S); }
-extern "C" void BRepTools_update_7(const TopoDS_CompSolid& C) { return BRepTools::Update(C); }
-extern "C" void BRepTools_update_8(const TopoDS_Compound& C) { return BRepTools::Update(C); }
-extern "C" void BRepTools_update_9(const TopoDS_Shape& S) { return BRepTools::Update(S); }
-extern "C" void BRepTools_update_face_uv_points(const TopoDS_Face& theF) { return BRepTools::UpdateFaceUVPoints(theF); }
-extern "C" void BRepTools_clean(const TopoDS_Shape& theShape, Standard_Boolean theForce) { return BRepTools::Clean(theShape, theForce); }
-extern "C" void BRepTools_clean_geometry(const TopoDS_Shape& theShape) { return BRepTools::CleanGeometry(theShape); }
-extern "C" void BRepTools_remove_unused_p_curves(const TopoDS_Shape& S) { return BRepTools::RemoveUnusedPCurves(S); }
-extern "C" Standard_Boolean BRepTools_triangulation(const TopoDS_Shape& theShape, Standard_Real theLinDefl, Standard_Boolean theToCheckFreeEdges) { return BRepTools::Triangulation(theShape, theLinDefl, theToCheckFreeEdges); }
-extern "C" Standard_Boolean BRepTools_unload_triangulation(const TopoDS_Shape& theShape, Standard_Integer theTriangulationIdx) { return BRepTools::UnloadTriangulation(theShape, theTriangulationIdx); }
-extern "C" Standard_Boolean BRepTools_activate_triangulation(const TopoDS_Shape& theShape, Standard_Integer theTriangulationIdx, Standard_Boolean theToActivateStrictly) { return BRepTools::ActivateTriangulation(theShape, theTriangulationIdx, theToActivateStrictly); }
-extern "C" Standard_Boolean BRepTools_unload_all_triangulations(const TopoDS_Shape& theShape) { return BRepTools::UnloadAllTriangulations(theShape); }
-extern "C" Standard_Boolean BRepTools_compare(const TopoDS_Vertex& V1, const TopoDS_Vertex& V2) { return BRepTools::Compare(V1, V2); }
-extern "C" Standard_Boolean BRepTools_compare_2(const TopoDS_Edge& E1, const TopoDS_Edge& E2) { return BRepTools::Compare(E1, E2); }
-extern "C" TopoDS_Wire* BRepTools_outer_wire(const TopoDS_Face& F) { return new TopoDS_Wire(BRepTools::OuterWire(F)); }
-extern "C" void BRepTools_map3_d_edges(const TopoDS_Shape& S, TopTools_IndexedMapOfShape& M) { return BRepTools::Map3DEdges(S, M); }
-extern "C" Standard_Boolean BRepTools_is_really_closed(const TopoDS_Edge& E, const TopoDS_Face& F) { return BRepTools::IsReallyClosed(E, F); }
-extern "C" void BRepTools_detect_closedness(const TopoDS_Face& theFace, Standard_Boolean& theUclosed, Standard_Boolean& theVclosed) { return BRepTools::DetectClosedness(theFace, theUclosed, theVclosed); }
-extern "C" Standard_Boolean BRepTools_write(const TopoDS_Shape& theShape, const char* theFile, const Message_ProgressRange& theProgress) { return BRepTools::Write(theShape, theFile, theProgress); }
-extern "C" Standard_Boolean BRepTools_write_2(const TopoDS_Shape& theShape, const char* theFile, Standard_Boolean theWithTriangles, Standard_Boolean theWithNormals, int32_t theVersion, const Message_ProgressRange& theProgress) { return BRepTools::Write(theShape, theFile, theWithTriangles, theWithNormals, static_cast<TopTools_FormatVersion>(theVersion), theProgress); }
-extern "C" Standard_Boolean BRepTools_read(TopoDS_Shape& Sh, const char* File, const BRep_Builder& B, const Message_ProgressRange& theProgress) { return BRepTools::Read(Sh, File, B, theProgress); }
-extern "C" Standard_Real BRepTools_eval_and_update_tol(const TopoDS_Edge& theE, const opencascade::handle<Geom_Curve>& theC3d, const opencascade::handle<Geom2d_Curve>& theC2d, const opencascade::handle<Geom_Surface>& theS, Standard_Real theF, Standard_Real theL) { return BRepTools::EvalAndUpdateTol(theE, theC3d, theC2d, theS, theF, theL); }
-extern "C" int32_t BRepTools_ori_edge_in_face(const TopoDS_Edge& theEdge, const TopoDS_Face& theFace) { return static_cast<int32_t>(BRepTools::OriEdgeInFace(theEdge, theFace)); }
-extern "C" void BRepTools_remove_internals(TopoDS_Shape& theS, Standard_Boolean theForce) { return BRepTools::RemoveInternals(theS, theForce); }
-extern "C" void BRepTools_check_locations(const TopoDS_Shape& theS, TopTools_ListOfShape& theProblemShapes) { return BRepTools::CheckLocations(theS, theProblemShapes); }
+extern "C" void BRepTools_uv_bounds_face_real4(const TopoDS_Face* F, Standard_Real* UMin, Standard_Real* UMax, Standard_Real* VMin, Standard_Real* VMax) { BRepTools::UVBounds(*F, *UMin, *UMax, *VMin, *VMax); }
+extern "C" void BRepTools_uv_bounds_face_wire_real4(const TopoDS_Face* F, const TopoDS_Wire* W, Standard_Real* UMin, Standard_Real* UMax, Standard_Real* VMin, Standard_Real* VMax) { BRepTools::UVBounds(*F, *W, *UMin, *UMax, *VMin, *VMax); }
+extern "C" void BRepTools_uv_bounds_face_edge_real4(const TopoDS_Face* F, const TopoDS_Edge* E, Standard_Real* UMin, Standard_Real* UMax, Standard_Real* VMin, Standard_Real* VMax) { BRepTools::UVBounds(*F, *E, *UMin, *UMax, *VMin, *VMax); }
+extern "C" void BRepTools_add_uv_bounds_face_box2d(const TopoDS_Face* F, Bnd_Box2d* B) { BRepTools::AddUVBounds(*F, *B); }
+extern "C" void BRepTools_add_uv_bounds_face_wire_box2d(const TopoDS_Face* F, const TopoDS_Wire* W, Bnd_Box2d* B) { BRepTools::AddUVBounds(*F, *W, *B); }
+extern "C" void BRepTools_add_uv_bounds_face_edge_box2d(const TopoDS_Face* F, const TopoDS_Edge* E, Bnd_Box2d* B) { BRepTools::AddUVBounds(*F, *E, *B); }
+extern "C" void BRepTools_update_vertex(const TopoDS_Vertex* V) { BRepTools::Update(*V); }
+extern "C" void BRepTools_update_edge(const TopoDS_Edge* E) { BRepTools::Update(*E); }
+extern "C" void BRepTools_update_wire(const TopoDS_Wire* W) { BRepTools::Update(*W); }
+extern "C" void BRepTools_update_face(const TopoDS_Face* F) { BRepTools::Update(*F); }
+extern "C" void BRepTools_update_shell(const TopoDS_Shell* S) { BRepTools::Update(*S); }
+extern "C" void BRepTools_update_solid(const TopoDS_Solid* S) { BRepTools::Update(*S); }
+extern "C" void BRepTools_update_compsolid(const TopoDS_CompSolid* C) { BRepTools::Update(*C); }
+extern "C" void BRepTools_update_compound(const TopoDS_Compound* C) { BRepTools::Update(*C); }
+extern "C" void BRepTools_update_shape(const TopoDS_Shape* S) { BRepTools::Update(*S); }
+extern "C" void BRepTools_update_face_uv_points(const TopoDS_Face* theF) { BRepTools::UpdateFaceUVPoints(*theF); }
+extern "C" void BRepTools_clean(const TopoDS_Shape* theShape, Standard_Boolean theForce) { BRepTools::Clean(*theShape, theForce); }
+extern "C" void BRepTools_clean_geometry(const TopoDS_Shape* theShape) { BRepTools::CleanGeometry(*theShape); }
+extern "C" void BRepTools_remove_unused_p_curves(const TopoDS_Shape* S) { BRepTools::RemoveUnusedPCurves(*S); }
+extern "C" Standard_Boolean BRepTools_triangulation(const TopoDS_Shape* theShape, Standard_Real theLinDefl, Standard_Boolean theToCheckFreeEdges) { return BRepTools::Triangulation(*theShape, theLinDefl, theToCheckFreeEdges); }
+extern "C" Standard_Boolean BRepTools_unload_triangulation(const TopoDS_Shape* theShape, Standard_Integer theTriangulationIdx) { return BRepTools::UnloadTriangulation(*theShape, theTriangulationIdx); }
+extern "C" Standard_Boolean BRepTools_activate_triangulation(const TopoDS_Shape* theShape, Standard_Integer theTriangulationIdx, Standard_Boolean theToActivateStrictly) { return BRepTools::ActivateTriangulation(*theShape, theTriangulationIdx, theToActivateStrictly); }
+extern "C" Standard_Boolean BRepTools_unload_all_triangulations(const TopoDS_Shape* theShape) { return BRepTools::UnloadAllTriangulations(*theShape); }
+extern "C" Standard_Boolean BRepTools_compare_vertex2(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) { return BRepTools::Compare(*V1, *V2); }
+extern "C" Standard_Boolean BRepTools_compare_edge2(const TopoDS_Edge* E1, const TopoDS_Edge* E2) { return BRepTools::Compare(*E1, *E2); }
+extern "C" TopoDS_Wire* BRepTools_outer_wire(const TopoDS_Face* F) { return new TopoDS_Wire(BRepTools::OuterWire(*F)); }
+extern "C" void BRepTools_map3_d_edges(const TopoDS_Shape* S, TopTools_IndexedMapOfShape* M) { BRepTools::Map3DEdges(*S, *M); }
+extern "C" Standard_Boolean BRepTools_is_really_closed(const TopoDS_Edge* E, const TopoDS_Face* F) { return BRepTools::IsReallyClosed(*E, *F); }
+extern "C" void BRepTools_detect_closedness(const TopoDS_Face* theFace, Standard_Boolean* theUclosed, Standard_Boolean* theVclosed) { BRepTools::DetectClosedness(*theFace, *theUclosed, *theVclosed); }
+extern "C" Standard_Boolean BRepTools_write_shape_charptr_progressrange(const TopoDS_Shape* theShape, const char* theFile, const Message_ProgressRange* theProgress) { return BRepTools::Write(*theShape, theFile, *theProgress); }
+extern "C" Standard_Boolean BRepTools_write_shape_charptr_bool2_formatversion_progressrange(const TopoDS_Shape* theShape, const char* theFile, Standard_Boolean theWithTriangles, Standard_Boolean theWithNormals, int32_t theVersion, const Message_ProgressRange* theProgress) { return BRepTools::Write(*theShape, theFile, theWithTriangles, theWithNormals, static_cast<TopTools_FormatVersion>(theVersion), *theProgress); }
+extern "C" Standard_Boolean BRepTools_read(TopoDS_Shape* Sh, const char* File, const BRep_Builder* B, const Message_ProgressRange* theProgress) { return BRepTools::Read(*Sh, File, *B, *theProgress); }
+extern "C" Standard_Real BRepTools_eval_and_update_tol(const TopoDS_Edge* theE, const opencascade::handle<Geom_Curve>* theC3d, const opencascade::handle<Geom2d_Curve>* theC2d, const opencascade::handle<Geom_Surface>* theS, Standard_Real theF, Standard_Real theL) { return BRepTools::EvalAndUpdateTol(*theE, *theC3d, *theC2d, *theS, theF, theL); }
+extern "C" int32_t BRepTools_ori_edge_in_face(const TopoDS_Edge* theEdge, const TopoDS_Face* theFace) { return static_cast<int32_t>(BRepTools::OriEdgeInFace(*theEdge, *theFace)); }
+extern "C" void BRepTools_remove_internals(TopoDS_Shape* theS, Standard_Boolean theForce) { BRepTools::RemoveInternals(*theS, theForce); }
+extern "C" void BRepTools_check_locations(const TopoDS_Shape* theS, TopTools_ListOfShape* theProblemShapes) { BRepTools::CheckLocations(*theS, *theProblemShapes); }
 
 // ========================
 // BSplCLib namespace functions
@@ -55790,17 +55790,17 @@ extern "C" void BRepTools_check_locations(const TopoDS_Shape& theS, TopTools_Lis
 #include <BSplCLib.hxx>
 #include <TColgp_Array1OfPnt.hxx>
 #include <TColgp_Array1OfPnt2d.hxx>
-extern "C" void BSplCLib_reverse(TColgp_Array1OfPnt& Poles, Standard_Integer Last) { return BSplCLib::Reverse(Poles, Last); }
-extern "C" void BSplCLib_reverse_mut(TColgp_Array1OfPnt2d& Poles, Standard_Integer Last) { return BSplCLib::Reverse(Poles, Last); }
+extern "C" void BSplCLib_reverse_array1ofpnt_int(TColgp_Array1OfPnt* Poles, Standard_Integer Last) { BSplCLib::Reverse(*Poles, Last); }
+extern "C" void BSplCLib_reverse_array1ofpnt2d_int(TColgp_Array1OfPnt2d* Poles, Standard_Integer Last) { BSplCLib::Reverse(*Poles, Last); }
 extern "C" Standard_Integer BSplCLib_max_degree() { return BSplCLib::MaxDegree(); }
-extern "C" void BSplCLib_eval(Standard_Real U, Standard_Integer Degree, Standard_Real& Knots, Standard_Integer Dimension, Standard_Real& Poles) { return BSplCLib::Eval(U, Degree, Knots, Dimension, Poles); }
-extern "C" void BSplCLib_boor_scheme(Standard_Real U, Standard_Integer Degree, Standard_Real& Knots, Standard_Integer Dimension, Standard_Real& Poles, Standard_Integer Depth, Standard_Integer Length) { return BSplCLib::BoorScheme(U, Degree, Knots, Dimension, Poles, Depth, Length); }
-extern "C" Standard_Boolean BSplCLib_anti_boor_scheme(Standard_Real U, Standard_Integer Degree, Standard_Real& Knots, Standard_Integer Dimension, Standard_Real& Poles, Standard_Integer Depth, Standard_Integer Length, Standard_Real Tolerance) { return BSplCLib::AntiBoorScheme(U, Degree, Knots, Dimension, Poles, Depth, Length, Tolerance); }
-extern "C" void BSplCLib_derivative(Standard_Integer Degree, Standard_Real& Knots, Standard_Integer Dimension, Standard_Integer Length, Standard_Integer Order, Standard_Real& Poles) { return BSplCLib::Derivative(Degree, Knots, Dimension, Length, Order, Poles); }
-extern "C" void BSplCLib_bohm(Standard_Real U, Standard_Integer Degree, Standard_Integer N, Standard_Real& Knots, Standard_Integer Dimension, Standard_Real& Poles) { return BSplCLib::Bohm(U, Degree, N, Knots, Dimension, Poles); }
+extern "C" void BSplCLib_eval(Standard_Real U, Standard_Integer Degree, Standard_Real* Knots, Standard_Integer Dimension, Standard_Real* Poles) { BSplCLib::Eval(U, Degree, *Knots, Dimension, *Poles); }
+extern "C" void BSplCLib_boor_scheme(Standard_Real U, Standard_Integer Degree, Standard_Real* Knots, Standard_Integer Dimension, Standard_Real* Poles, Standard_Integer Depth, Standard_Integer Length) { BSplCLib::BoorScheme(U, Degree, *Knots, Dimension, *Poles, Depth, Length); }
+extern "C" Standard_Boolean BSplCLib_anti_boor_scheme(Standard_Real U, Standard_Integer Degree, Standard_Real* Knots, Standard_Integer Dimension, Standard_Real* Poles, Standard_Integer Depth, Standard_Integer Length, Standard_Real Tolerance) { return BSplCLib::AntiBoorScheme(U, Degree, *Knots, Dimension, *Poles, Depth, Length, Tolerance); }
+extern "C" void BSplCLib_derivative(Standard_Integer Degree, Standard_Real* Knots, Standard_Integer Dimension, Standard_Integer Length, Standard_Integer Order, Standard_Real* Poles) { BSplCLib::Derivative(Degree, *Knots, Dimension, Length, Order, *Poles); }
+extern "C" void BSplCLib_bohm(Standard_Real U, Standard_Integer Degree, Standard_Integer N, Standard_Real* Knots, Standard_Integer Dimension, Standard_Real* Poles) { BSplCLib::Bohm(U, Degree, N, *Knots, Dimension, *Poles); }
 extern "C" Standard_Integer BSplCLib_boor_index(Standard_Integer Index, Standard_Integer Length, Standard_Integer Depth) { return BSplCLib::BoorIndex(Index, Length, Depth); }
-extern "C" void BSplCLib_poles_coefficients(const TColgp_Array1OfPnt2d& Poles, TColgp_Array1OfPnt2d& CachePoles) { return BSplCLib::PolesCoefficients(Poles, CachePoles); }
-extern "C" void BSplCLib_poles_coefficients_mut(const TColgp_Array1OfPnt& Poles, TColgp_Array1OfPnt& CachePoles) { return BSplCLib::PolesCoefficients(Poles, CachePoles); }
+extern "C" void BSplCLib_poles_coefficients_array1ofpnt2d2(const TColgp_Array1OfPnt2d* Poles, TColgp_Array1OfPnt2d* CachePoles) { BSplCLib::PolesCoefficients(*Poles, *CachePoles); }
+extern "C" void BSplCLib_poles_coefficients_array1ofpnt2(const TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt* CachePoles) { BSplCLib::PolesCoefficients(*Poles, *CachePoles); }
 extern "C" Standard_Real BSplCLib_flat_bezier_knots(Standard_Integer Degree) { return BSplCLib::FlatBezierKnots(Degree); }
 
 // ========================
@@ -55808,9 +55808,9 @@ extern "C" Standard_Real BSplCLib_flat_bezier_knots(Standard_Integer Degree) { r
 // ========================
 #include <BSplSLib.hxx>
 #include <TColgp_Array2OfPnt.hxx>
-extern "C" void BSplSLib_rational_derivative(Standard_Integer UDeg, Standard_Integer VDeg, Standard_Integer N, Standard_Integer M, Standard_Real& Ders, Standard_Real& RDers, Standard_Boolean All) { return BSplSLib::RationalDerivative(UDeg, VDeg, N, M, Ders, RDers, All); }
-extern "C" void BSplSLib_reverse_3(TColgp_Array2OfPnt& Poles, Standard_Integer Last, Standard_Boolean UDirection) { return BSplSLib::Reverse(Poles, Last, UDirection); }
-extern "C" void BSplSLib_poles_coefficients_3(const TColgp_Array2OfPnt& Poles, TColgp_Array2OfPnt& CachePoles) { return BSplSLib::PolesCoefficients(Poles, CachePoles); }
+extern "C" void BSplSLib_rational_derivative(Standard_Integer UDeg, Standard_Integer VDeg, Standard_Integer N, Standard_Integer M, Standard_Real* Ders, Standard_Real* RDers, Standard_Boolean All) { BSplSLib::RationalDerivative(UDeg, VDeg, N, M, *Ders, *RDers, All); }
+extern "C" void BSplSLib_reverse_array2ofpnt_int_bool(TColgp_Array2OfPnt* Poles, Standard_Integer Last, Standard_Boolean UDirection) { BSplSLib::Reverse(*Poles, Last, UDirection); }
+extern "C" void BSplSLib_poles_coefficients_array2ofpnt2(const TColgp_Array2OfPnt* Poles, TColgp_Array2OfPnt* CachePoles) { BSplSLib::PolesCoefficients(*Poles, *CachePoles); }
 
 // ========================
 // GProp namespace functions
@@ -55818,7 +55818,7 @@ extern "C" void BSplSLib_poles_coefficients_3(const TColgp_Array2OfPnt& Poles, T
 #include <GProp.hxx>
 #include <gp_Mat.hxx>
 #include <gp_Pnt.hxx>
-extern "C" void GProp_h_operator(const gp_Pnt& G, const gp_Pnt& Q, Standard_Real Mass, gp_Mat& Operator) { return GProp::HOperator(G, Q, Mass, Operator); }
+extern "C" void GProp_h_operator(const gp_Pnt* G, const gp_Pnt* Q, Standard_Real Mass, gp_Mat* Operator) { GProp::HOperator(*G, *Q, Mass, *Operator); }
 
 // ========================
 // GeomAPI namespace functions
@@ -55828,8 +55828,8 @@ extern "C" void GProp_h_operator(const gp_Pnt& G, const gp_Pnt& Q, Standard_Real
 #include <Geom_Curve.hxx>
 #include <Standard_Handle.hxx>
 #include <gp_Pln.hxx>
-extern "C" opencascade::handle<Geom2d_Curve>* GeomAPI_to2d(const opencascade::handle<Geom_Curve>& C, const gp_Pln& P) { return new opencascade::handle<Geom2d_Curve>(GeomAPI::To2d(C, P)); }
-extern "C" opencascade::handle<Geom_Curve>* GeomAPI_to3d(const opencascade::handle<Geom2d_Curve>& C, const gp_Pln& P) { return new opencascade::handle<Geom_Curve>(GeomAPI::To3d(C, P)); }
+extern "C" opencascade::handle<Geom2d_Curve>* GeomAPI_to2d(const opencascade::handle<Geom_Curve>* C, const gp_Pln* P) { return new opencascade::handle<Geom2d_Curve>(GeomAPI::To2d(*C, *P)); }
+extern "C" opencascade::handle<Geom_Curve>* GeomAPI_to3d_handlegeom2dcurve_pln(const opencascade::handle<Geom2d_Curve>* C, const gp_Pln* P) { return new opencascade::handle<Geom_Curve>(GeomAPI::To3d(*C, *P)); }
 
 // ========================
 // GeomLib namespace functions
@@ -55854,24 +55854,24 @@ extern "C" opencascade::handle<Geom_Curve>* GeomAPI_to3d(const opencascade::hand
 #include <gp_Pnt.hxx>
 #include <gp_Pnt2d.hxx>
 #include <gp_Vec.hxx>
-extern "C" opencascade::handle<Geom_Curve>* GeomLib_to3d_2(const gp_Ax2& Position, const opencascade::handle<Geom2d_Curve>& Curve2d) { return new opencascade::handle<Geom_Curve>(GeomLib::To3d(Position, Curve2d)); }
-extern "C" opencascade::handle<Geom2d_Curve>* GeomLib_g_transform(const opencascade::handle<Geom2d_Curve>& Curve, const gp_GTrsf2d& GTrsf) { return new opencascade::handle<Geom2d_Curve>(GeomLib::GTransform(Curve, GTrsf)); }
-extern "C" void GeomLib_same_range(Standard_Real Tolerance, const opencascade::handle<Geom2d_Curve>& Curve2dPtr, Standard_Real First, Standard_Real Last, Standard_Real RequestedFirst, Standard_Real RequestedLast, opencascade::handle<Geom2d_Curve>& NewCurve2dPtr) { return GeomLib::SameRange(Tolerance, Curve2dPtr, First, Last, RequestedFirst, RequestedLast, NewCurve2dPtr); }
-extern "C" void GeomLib_build_curve3d(Standard_Real Tolerance, Adaptor3d_CurveOnSurface& CurvePtr, Standard_Real FirstParameter, Standard_Real LastParameter, opencascade::handle<Geom_Curve>& NewCurvePtr, Standard_Real& MaxDeviation, Standard_Real& AverageDeviation, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) { return GeomLib::BuildCurve3d(Tolerance, CurvePtr, FirstParameter, LastParameter, NewCurvePtr, MaxDeviation, AverageDeviation, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment); }
-extern "C" void GeomLib_adjust_extremity(opencascade::handle<Geom_BoundedCurve>& Curve, const gp_Pnt& P1, const gp_Pnt& P2, const gp_Vec& T1, const gp_Vec& T2) { return GeomLib::AdjustExtremity(Curve, P1, P2, T1, T2); }
-extern "C" void GeomLib_extend_curve_to_point(opencascade::handle<Geom_BoundedCurve>& Curve, const gp_Pnt& Point, Standard_Integer Cont, Standard_Boolean After) { return GeomLib::ExtendCurveToPoint(Curve, Point, Cont, After); }
-extern "C" void GeomLib_extend_surf_by_length(opencascade::handle<Geom_BoundedSurface>& Surf, Standard_Real Length, Standard_Integer Cont, Standard_Boolean InU, Standard_Boolean After) { return GeomLib::ExtendSurfByLength(Surf, Length, Cont, InU, After); }
-extern "C" void GeomLib_axe_of_inertia(const TColgp_Array1OfPnt& Points, gp_Ax2& Axe, Standard_Boolean& IsSingular, Standard_Real Tol) { return GeomLib::AxeOfInertia(Points, Axe, IsSingular, Tol); }
-extern "C" void GeomLib_inertia(const TColgp_Array1OfPnt& Points, gp_Pnt& Bary, gp_Dir& XDir, gp_Dir& YDir, Standard_Real& Xgap, Standard_Real& YGap, Standard_Real& ZGap) { return GeomLib::Inertia(Points, Bary, XDir, YDir, Xgap, YGap, ZGap); }
-extern "C" void GeomLib_cancel_denominator_derivative(opencascade::handle<Geom_BSplineSurface>& BSurf, Standard_Boolean UDirection, Standard_Boolean VDirection) { return GeomLib::CancelDenominatorDerivative(BSurf, UDirection, VDirection); }
-extern "C" Standard_Integer GeomLib_norm_estim(const opencascade::handle<Geom_Surface>& theSurf, const gp_Pnt2d& theUV, Standard_Real theTol, gp_Dir& theNorm) { return GeomLib::NormEstim(theSurf, theUV, theTol, theNorm); }
-extern "C" void GeomLib_is_closed(const opencascade::handle<Geom_Surface>& S, Standard_Real Tol, Standard_Boolean& isUClosed, Standard_Boolean& isVClosed) { return GeomLib::IsClosed(S, Tol, isUClosed, isVClosed); }
-extern "C" Standard_Boolean GeomLib_is_b_spl_u_closed(const opencascade::handle<Geom_BSplineSurface>& S, Standard_Real U1, Standard_Real U2, Standard_Real Tol) { return GeomLib::IsBSplUClosed(S, U1, U2, Tol); }
-extern "C" Standard_Boolean GeomLib_is_b_spl_v_closed(const opencascade::handle<Geom_BSplineSurface>& S, Standard_Real V1, Standard_Real V2, Standard_Real Tol) { return GeomLib::IsBSplVClosed(S, V1, V2, Tol); }
-extern "C" Standard_Boolean GeomLib_is_bz_u_closed(const opencascade::handle<Geom_BezierSurface>& S, Standard_Real U1, Standard_Real U2, Standard_Real Tol) { return GeomLib::IsBzUClosed(S, U1, U2, Tol); }
-extern "C" Standard_Boolean GeomLib_is_bz_v_closed(const opencascade::handle<Geom_BezierSurface>& S, Standard_Real V1, Standard_Real V2, Standard_Real Tol) { return GeomLib::IsBzVClosed(S, V1, V2, Tol); }
-extern "C" Standard_Boolean GeomLib_is_iso_line(const opencascade::handle<Adaptor2d_Curve2d>& theC2D, Standard_Boolean& theIsU, Standard_Real& theParam, Standard_Boolean& theIsForward) { return GeomLib::isIsoLine(theC2D, theIsU, theParam, theIsForward); }
-extern "C" opencascade::handle<Geom_Curve>* GeomLib_build_c3d_on_iso_line(const opencascade::handle<Adaptor2d_Curve2d>& theC2D, const opencascade::handle<Adaptor3d_Surface>& theSurf, Standard_Real theFirst, Standard_Real theLast, Standard_Real theTolerance, Standard_Boolean theIsU, Standard_Real theParam, Standard_Boolean theIsForward) { return new opencascade::handle<Geom_Curve>(GeomLib::buildC3dOnIsoLine(theC2D, theSurf, theFirst, theLast, theTolerance, theIsU, theParam, theIsForward)); }
+extern "C" opencascade::handle<Geom_Curve>* GeomLib_to3d_ax2_handlegeom2dcurve(const gp_Ax2* Position, const opencascade::handle<Geom2d_Curve>* Curve2d) { return new opencascade::handle<Geom_Curve>(GeomLib::To3d(*Position, *Curve2d)); }
+extern "C" opencascade::handle<Geom2d_Curve>* GeomLib_g_transform(const opencascade::handle<Geom2d_Curve>* Curve, const gp_GTrsf2d* GTrsf) { return new opencascade::handle<Geom2d_Curve>(GeomLib::GTransform(*Curve, *GTrsf)); }
+extern "C" void GeomLib_same_range(Standard_Real Tolerance, const opencascade::handle<Geom2d_Curve>* Curve2dPtr, Standard_Real First, Standard_Real Last, Standard_Real RequestedFirst, Standard_Real RequestedLast, opencascade::handle<Geom2d_Curve>* NewCurve2dPtr) { GeomLib::SameRange(Tolerance, *Curve2dPtr, First, Last, RequestedFirst, RequestedLast, *NewCurve2dPtr); }
+extern "C" void GeomLib_build_curve3d(Standard_Real Tolerance, Adaptor3d_CurveOnSurface* CurvePtr, Standard_Real FirstParameter, Standard_Real LastParameter, opencascade::handle<Geom_Curve>* NewCurvePtr, Standard_Real* MaxDeviation, Standard_Real* AverageDeviation, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) { GeomLib::BuildCurve3d(Tolerance, *CurvePtr, FirstParameter, LastParameter, *NewCurvePtr, *MaxDeviation, *AverageDeviation, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment); }
+extern "C" void GeomLib_adjust_extremity(opencascade::handle<Geom_BoundedCurve>* Curve, const gp_Pnt* P1, const gp_Pnt* P2, const gp_Vec* T1, const gp_Vec* T2) { GeomLib::AdjustExtremity(*Curve, *P1, *P2, *T1, *T2); }
+extern "C" void GeomLib_extend_curve_to_point(opencascade::handle<Geom_BoundedCurve>* Curve, const gp_Pnt* Point, Standard_Integer Cont, Standard_Boolean After) { GeomLib::ExtendCurveToPoint(*Curve, *Point, Cont, After); }
+extern "C" void GeomLib_extend_surf_by_length(opencascade::handle<Geom_BoundedSurface>* Surf, Standard_Real Length, Standard_Integer Cont, Standard_Boolean InU, Standard_Boolean After) { GeomLib::ExtendSurfByLength(*Surf, Length, Cont, InU, After); }
+extern "C" void GeomLib_axe_of_inertia(const TColgp_Array1OfPnt* Points, gp_Ax2* Axe, Standard_Boolean* IsSingular, Standard_Real Tol) { GeomLib::AxeOfInertia(*Points, *Axe, *IsSingular, Tol); }
+extern "C" void GeomLib_inertia(const TColgp_Array1OfPnt* Points, gp_Pnt* Bary, gp_Dir* XDir, gp_Dir* YDir, Standard_Real* Xgap, Standard_Real* YGap, Standard_Real* ZGap) { GeomLib::Inertia(*Points, *Bary, *XDir, *YDir, *Xgap, *YGap, *ZGap); }
+extern "C" void GeomLib_cancel_denominator_derivative(opencascade::handle<Geom_BSplineSurface>* BSurf, Standard_Boolean UDirection, Standard_Boolean VDirection) { GeomLib::CancelDenominatorDerivative(*BSurf, UDirection, VDirection); }
+extern "C" Standard_Integer GeomLib_norm_estim(const opencascade::handle<Geom_Surface>* theSurf, const gp_Pnt2d* theUV, Standard_Real theTol, gp_Dir* theNorm) { return GeomLib::NormEstim(*theSurf, *theUV, theTol, *theNorm); }
+extern "C" void GeomLib_is_closed(const opencascade::handle<Geom_Surface>* S, Standard_Real Tol, Standard_Boolean* isUClosed, Standard_Boolean* isVClosed) { GeomLib::IsClosed(*S, Tol, *isUClosed, *isVClosed); }
+extern "C" Standard_Boolean GeomLib_is_b_spl_u_closed(const opencascade::handle<Geom_BSplineSurface>* S, Standard_Real U1, Standard_Real U2, Standard_Real Tol) { return GeomLib::IsBSplUClosed(*S, U1, U2, Tol); }
+extern "C" Standard_Boolean GeomLib_is_b_spl_v_closed(const opencascade::handle<Geom_BSplineSurface>* S, Standard_Real V1, Standard_Real V2, Standard_Real Tol) { return GeomLib::IsBSplVClosed(*S, V1, V2, Tol); }
+extern "C" Standard_Boolean GeomLib_is_bz_u_closed(const opencascade::handle<Geom_BezierSurface>* S, Standard_Real U1, Standard_Real U2, Standard_Real Tol) { return GeomLib::IsBzUClosed(*S, U1, U2, Tol); }
+extern "C" Standard_Boolean GeomLib_is_bz_v_closed(const opencascade::handle<Geom_BezierSurface>* S, Standard_Real V1, Standard_Real V2, Standard_Real Tol) { return GeomLib::IsBzVClosed(*S, V1, V2, Tol); }
+extern "C" Standard_Boolean GeomLib_is_iso_line(const opencascade::handle<Adaptor2d_Curve2d>* theC2D, Standard_Boolean* theIsU, Standard_Real* theParam, Standard_Boolean* theIsForward) { return GeomLib::isIsoLine(*theC2D, *theIsU, *theParam, *theIsForward); }
+extern "C" opencascade::handle<Geom_Curve>* GeomLib_build_c3d_on_iso_line(const opencascade::handle<Adaptor2d_Curve2d>* theC2D, const opencascade::handle<Adaptor3d_Surface>* theSurf, Standard_Real theFirst, Standard_Real theLast, Standard_Real theTolerance, Standard_Boolean theIsU, Standard_Real theParam, Standard_Boolean theIsForward) { return new opencascade::handle<Geom_Curve>(GeomLib::buildC3dOnIsoLine(*theC2D, *theSurf, theFirst, theLast, theTolerance, theIsU, theParam, theIsForward)); }
 
 // ========================
 // IFSelect namespace functions
@@ -55879,8 +55879,8 @@ extern "C" opencascade::handle<Geom_Curve>* GeomLib_build_c3d_on_iso_line(const 
 #include <IFSelect.hxx>
 #include <IFSelect_WorkSession.hxx>
 #include <Standard_Handle.hxx>
-extern "C" Standard_Boolean IFSelect_save_session(const opencascade::handle<IFSelect_WorkSession>& WS, const char* file) { return IFSelect::SaveSession(WS, file); }
-extern "C" Standard_Boolean IFSelect_restore_session(const opencascade::handle<IFSelect_WorkSession>& WS, const char* file) { return IFSelect::RestoreSession(WS, file); }
+extern "C" Standard_Boolean IFSelect_save_session(const opencascade::handle<IFSelect_WorkSession>* WS, const char* file) { return IFSelect::SaveSession(*WS, file); }
+extern "C" Standard_Boolean IFSelect_restore_session(const opencascade::handle<IFSelect_WorkSession>* WS, const char* file) { return IFSelect::RestoreSession(*WS, file); }
 
 // ========================
 // Law namespace functions
@@ -55891,8 +55891,8 @@ extern "C" Standard_Boolean IFSelect_restore_session(const opencascade::handle<I
 #include <Law_BSpline.hxx>
 #include <Law_Linear.hxx>
 #include <Standard_Handle.hxx>
-extern "C" opencascade::handle<Law_BSpFunc>* Law_mix_bnd(const opencascade::handle<Law_Linear>& Lin) { return new opencascade::handle<Law_BSpFunc>(Law::MixBnd(Lin)); }
-extern "C" opencascade::handle<Law_BSpline>* Law_reparametrize(const Adaptor3d_Curve& Curve, Standard_Real First, Standard_Real Last, Standard_Boolean HasDF, Standard_Boolean HasDL, Standard_Real DFirst, Standard_Real DLast, Standard_Boolean Rev, Standard_Integer NbPoints) { return new opencascade::handle<Law_BSpline>(Law::Reparametrize(Curve, First, Last, HasDF, HasDL, DFirst, DLast, Rev, NbPoints)); }
+extern "C" opencascade::handle<Law_BSpFunc>* Law_mix_bnd(const opencascade::handle<Law_Linear>* Lin) { return new opencascade::handle<Law_BSpFunc>(Law::MixBnd(*Lin)); }
+extern "C" opencascade::handle<Law_BSpline>* Law_reparametrize(const Adaptor3d_Curve* Curve, Standard_Real First, Standard_Real Last, Standard_Boolean HasDF, Standard_Boolean HasDL, Standard_Real DFirst, Standard_Real DLast, Standard_Boolean Rev, Standard_Integer NbPoints) { return new opencascade::handle<Law_BSpline>(Law::Reparametrize(*Curve, First, Last, HasDF, HasDL, DFirst, DLast, Rev, NbPoints)); }
 extern "C" opencascade::handle<Law_BSpline>* Law_scale(Standard_Real First, Standard_Real Last, Standard_Boolean HasF, Standard_Boolean HasL, Standard_Real VFirst, Standard_Real VLast) { return new opencascade::handle<Law_BSpline>(Law::Scale(First, Last, HasF, HasL, VFirst, VLast)); }
 extern "C" opencascade::handle<Law_BSpline>* Law_scale_cub(Standard_Real First, Standard_Real Last, Standard_Boolean HasF, Standard_Boolean HasL, Standard_Real VFirst, Standard_Real VLast) { return new opencascade::handle<Law_BSpline>(Law::ScaleCub(First, Last, HasF, HasL, VFirst, VLast)); }
 
@@ -55907,12 +55907,12 @@ extern "C" opencascade::handle<Law_BSpline>* Law_scale_cub(Standard_Real First, 
 #include <Standard_Handle.hxx>
 #include <TCollection_AsciiString.hxx>
 extern "C" opencascade::handle<Message_Messenger>* Message_default_messenger() { return new opencascade::handle<Message_Messenger>(Message::DefaultMessenger()); }
-extern "C" void Message_send(const TCollection_AsciiString& theMessage, int32_t theGravity) { return Message::Send(theMessage, static_cast<Message_Gravity>(theGravity)); }
-extern "C" void Message_send_fail(const TCollection_AsciiString& theMessage) { return Message::SendFail(theMessage); }
-extern "C" void Message_send_alarm(const TCollection_AsciiString& theMessage) { return Message::SendAlarm(theMessage); }
-extern "C" void Message_send_warning(const TCollection_AsciiString& theMessage) { return Message::SendWarning(theMessage); }
-extern "C" void Message_send_info(const TCollection_AsciiString& theMessage) { return Message::SendInfo(theMessage); }
-extern "C" void Message_send_trace(const TCollection_AsciiString& theMessage) { return Message::SendTrace(theMessage); }
+extern "C" void Message_send(const TCollection_AsciiString* theMessage, int32_t theGravity) { Message::Send(*theMessage, static_cast<Message_Gravity>(theGravity)); }
+extern "C" void Message_send_fail(const TCollection_AsciiString* theMessage) { Message::SendFail(*theMessage); }
+extern "C" void Message_send_alarm(const TCollection_AsciiString* theMessage) { Message::SendAlarm(*theMessage); }
+extern "C" void Message_send_warning(const TCollection_AsciiString* theMessage) { Message::SendWarning(*theMessage); }
+extern "C" void Message_send_info(const TCollection_AsciiString* theMessage) { Message::SendInfo(*theMessage); }
+extern "C" void Message_send_trace(const TCollection_AsciiString* theMessage) { Message::SendTrace(*theMessage); }
 extern "C" TCollection_AsciiString* Message_fill_time(Standard_Integer Hour, Standard_Integer Minute, Standard_Real Second) { return new TCollection_AsciiString(Message::FillTime(Hour, Minute, Second)); }
 extern "C" opencascade::handle<Message_Report>* Message_default_report(Standard_Boolean theToCreate) { return new opencascade::handle<Message_Report>(Message::DefaultReport(theToCreate)); }
 extern "C" const char* Message_metric_to_string(int32_t theType) { return Message::MetricToString(static_cast<Message_MetricType>(theType)); }
@@ -55929,10 +55929,10 @@ extern "C" int32_t Message_metric_from_string(const char* theString) { return st
 #include <gp_Dir.hxx>
 #include <gp_XY.hxx>
 #include <gp_XYZ.hxx>
-extern "C" void Poly_compute_normals(const opencascade::handle<Poly_Triangulation>& Tri) { return Poly::ComputeNormals(Tri); }
-extern "C" Standard_Real Poly_point_on_triangle(const gp_XY& P1, const gp_XY& P2, const gp_XY& P3, const gp_XY& P, gp_XY& UV) { return Poly::PointOnTriangle(P1, P2, P3, P, UV); }
-extern "C" Standard_Boolean Poly_intersect(const opencascade::handle<Poly_Triangulation>& theTri, const gp_Ax1& theAxis, Standard_Boolean theIsClosest, Poly_Triangle& theTriangle, Standard_Real& theDistance) { return Poly::Intersect(theTri, theAxis, theIsClosest, theTriangle, theDistance); }
-extern "C" Standard_Integer Poly_intersect_tri_line(const gp_XYZ& theStart, const gp_Dir& theDir, const gp_XYZ& theV0, const gp_XYZ& theV1, const gp_XYZ& theV2, Standard_Real& theParam) { return Poly::IntersectTriLine(theStart, theDir, theV0, theV1, theV2, theParam); }
+extern "C" void Poly_compute_normals(const opencascade::handle<Poly_Triangulation>* Tri) { Poly::ComputeNormals(*Tri); }
+extern "C" Standard_Real Poly_point_on_triangle(const gp_XY* P1, const gp_XY* P2, const gp_XY* P3, const gp_XY* P, gp_XY* UV) { return Poly::PointOnTriangle(*P1, *P2, *P3, *P, *UV); }
+extern "C" Standard_Boolean Poly_intersect(const opencascade::handle<Poly_Triangulation>* theTri, const gp_Ax1* theAxis, Standard_Boolean theIsClosest, Poly_Triangle* theTriangle, Standard_Real* theDistance) { return Poly::Intersect(*theTri, *theAxis, theIsClosest, *theTriangle, *theDistance); }
+extern "C" Standard_Integer Poly_intersect_tri_line(const gp_XYZ* theStart, const gp_Dir* theDir, const gp_XYZ* theV0, const gp_XYZ* theV1, const gp_XYZ* theV2, Standard_Real* theParam) { return Poly::IntersectTriLine(*theStart, *theDir, *theV0, *theV1, *theV2, *theParam); }
 
 // ========================
 // Precision namespace functions
@@ -55943,15 +55943,15 @@ extern "C" Standard_Real Precision_confusion() { return Precision::Confusion(); 
 extern "C" Standard_Real Precision_square_confusion() { return Precision::SquareConfusion(); }
 extern "C" Standard_Real Precision_intersection() { return Precision::Intersection(); }
 extern "C" Standard_Real Precision_approximation() { return Precision::Approximation(); }
-extern "C" Standard_Real Precision_parametric(Standard_Real P, Standard_Real T) { return Precision::Parametric(P, T); }
-extern "C" Standard_Real Precision_p_confusion(Standard_Real T) { return Precision::PConfusion(T); }
+extern "C" Standard_Real Precision_parametric_real2(Standard_Real P, Standard_Real T) { return Precision::Parametric(P, T); }
+extern "C" Standard_Real Precision_p_confusion_real(Standard_Real T) { return Precision::PConfusion(T); }
 extern "C" Standard_Real Precision_square_p_confusion() { return Precision::SquarePConfusion(); }
-extern "C" Standard_Real Precision_p_intersection(Standard_Real T) { return Precision::PIntersection(T); }
-extern "C" Standard_Real Precision_p_approximation(Standard_Real T) { return Precision::PApproximation(T); }
-extern "C" Standard_Real Precision_parametric_2(Standard_Real P) { return Precision::Parametric(P); }
-extern "C" Standard_Real Precision_p_confusion_2() { return Precision::PConfusion(); }
-extern "C" Standard_Real Precision_p_intersection_2() { return Precision::PIntersection(); }
-extern "C" Standard_Real Precision_p_approximation_2() { return Precision::PApproximation(); }
+extern "C" Standard_Real Precision_p_intersection_real(Standard_Real T) { return Precision::PIntersection(T); }
+extern "C" Standard_Real Precision_p_approximation_real(Standard_Real T) { return Precision::PApproximation(T); }
+extern "C" Standard_Real Precision_parametric_real(Standard_Real P) { return Precision::Parametric(P); }
+extern "C" Standard_Real Precision_p_confusion() { return Precision::PConfusion(); }
+extern "C" Standard_Real Precision_p_intersection() { return Precision::PIntersection(); }
+extern "C" Standard_Real Precision_p_approximation() { return Precision::PApproximation(); }
 extern "C" Standard_Boolean Precision_is_infinite(Standard_Real R) { return Precision::IsInfinite(R); }
 extern "C" Standard_Boolean Precision_is_positive_infinite(Standard_Real R) { return Precision::IsPositiveInfinite(R); }
 extern "C" Standard_Boolean Precision_is_negative_infinite(Standard_Real R) { return Precision::IsNegativeInfinite(R); }
@@ -55965,20 +55965,20 @@ extern "C" Standard_Real Precision_infinite() { return Precision::Infinite(); }
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-extern "C" TopoDS_Wire* ShapeAnalysis_outer_wire_2(const TopoDS_Face& theFace) { return new TopoDS_Wire(ShapeAnalysis::OuterWire(theFace)); }
-extern "C" Standard_Real ShapeAnalysis_contour_area(const TopoDS_Wire& theWire) { return ShapeAnalysis::ContourArea(theWire); }
-extern "C" Standard_Boolean ShapeAnalysis_is_outer_bound(const TopoDS_Face& face) { return ShapeAnalysis::IsOuterBound(face); }
+extern "C" TopoDS_Wire* ShapeAnalysis_outer_wire(const TopoDS_Face* theFace) { return new TopoDS_Wire(ShapeAnalysis::OuterWire(*theFace)); }
+extern "C" Standard_Real ShapeAnalysis_contour_area(const TopoDS_Wire* theWire) { return ShapeAnalysis::ContourArea(*theWire); }
+extern "C" Standard_Boolean ShapeAnalysis_is_outer_bound(const TopoDS_Face* face) { return ShapeAnalysis::IsOuterBound(*face); }
 extern "C" Standard_Real ShapeAnalysis_adjust_by_period(Standard_Real Val, Standard_Real ToVal, Standard_Real Period) { return ShapeAnalysis::AdjustByPeriod(Val, ToVal, Period); }
 extern "C" Standard_Real ShapeAnalysis_adjust_to_period(Standard_Real Val, Standard_Real ValMin, Standard_Real ValMax) { return ShapeAnalysis::AdjustToPeriod(Val, ValMin, ValMax); }
-extern "C" void ShapeAnalysis_find_bounds(const TopoDS_Shape& shape, TopoDS_Vertex& V1, TopoDS_Vertex& V2) { return ShapeAnalysis::FindBounds(shape, V1, V2); }
-extern "C" void ShapeAnalysis_get_face_uv_bounds(const TopoDS_Face& F, Standard_Real& Umin, Standard_Real& Umax, Standard_Real& Vmin, Standard_Real& Vmax) { return ShapeAnalysis::GetFaceUVBounds(F, Umin, Umax, Vmin, Vmax); }
+extern "C" void ShapeAnalysis_find_bounds(const TopoDS_Shape* shape, TopoDS_Vertex* V1, TopoDS_Vertex* V2) { ShapeAnalysis::FindBounds(*shape, *V1, *V2); }
+extern "C" void ShapeAnalysis_get_face_uv_bounds(const TopoDS_Face* F, Standard_Real* Umin, Standard_Real* Umax, Standard_Real* Vmin, Standard_Real* Vmax) { ShapeAnalysis::GetFaceUVBounds(*F, *Umin, *Umax, *Vmin, *Vmax); }
 
 // ========================
 // ShapeExtend namespace functions
 // ========================
 #include <ShapeExtend.hxx>
 #include <ShapeExtend_Status.hxx>
-extern "C" void ShapeExtend_init() { return ShapeExtend::Init(); }
+extern "C" void ShapeExtend_init() { ShapeExtend::Init(); }
 extern "C" Standard_Integer ShapeExtend_encode_status(int32_t status) { return ShapeExtend::EncodeStatus(static_cast<ShapeExtend_Status>(status)); }
 extern "C" Standard_Boolean ShapeExtend_decode_status(Standard_Integer flag, int32_t status) { return ShapeExtend::DecodeStatus(flag, static_cast<ShapeExtend_Status>(status)); }
 
@@ -55991,8 +55991,8 @@ extern "C" Standard_Boolean ShapeExtend_decode_status(Standard_Integer flag, int
 #include <Standard_Handle.hxx>
 #include <TColGeom2d_HSequenceOfBoundedCurve.hxx>
 #include <TColGeom_HSequenceOfBoundedCurve.hxx>
-extern "C" Standard_Boolean ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve(const opencascade::handle<Geom_BSplineCurve>& BS, opencascade::handle<TColGeom_HSequenceOfBoundedCurve>& seqBS) { return ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve(BS, seqBS); }
-extern "C" Standard_Boolean ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_mut(const opencascade::handle<Geom2d_BSplineCurve>& BS, opencascade::handle<TColGeom2d_HSequenceOfBoundedCurve>& seqBS) { return ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve(BS, seqBS); }
+extern "C" Standard_Boolean ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(const opencascade::handle<Geom_BSplineCurve>* BS, opencascade::handle<TColGeom_HSequenceOfBoundedCurve>* seqBS) { return ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve(*BS, *seqBS); }
+extern "C" Standard_Boolean ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve(const opencascade::handle<Geom2d_BSplineCurve>* BS, opencascade::handle<TColGeom2d_HSequenceOfBoundedCurve>* seqBS) { return ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve(*BS, *seqBS); }
 
 // ========================
 // Standard namespace functions
@@ -56005,7 +56005,7 @@ extern "C" Standard_Integer Standard_purge() { return Standard::Purge(); }
 // ========================
 #include <StlAPI.hxx>
 #include <TopoDS_Shape.hxx>
-extern "C" Standard_Boolean StlAPI_write_3(const TopoDS_Shape& theShape, const char* theFile, Standard_Boolean theAsciiMode) { return StlAPI::Write(theShape, theFile, theAsciiMode); }
+extern "C" Standard_Boolean StlAPI_write_shape_charptr_bool(const TopoDS_Shape* theShape, const char* theFile, Standard_Boolean theAsciiMode) { return StlAPI::Write(*theShape, theFile, theAsciiMode); }
 
 // ========================
 // TopAbs namespace functions
@@ -56014,7 +56014,7 @@ extern "C" Standard_Boolean StlAPI_write_3(const TopoDS_Shape& theShape, const c
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 extern "C" int32_t TopAbs_compose(int32_t Or1, int32_t Or2) { return static_cast<int32_t>(TopAbs::Compose(static_cast<TopAbs_Orientation>(Or1), static_cast<TopAbs_Orientation>(Or2))); }
-extern "C" int32_t TopAbs_reverse_4(int32_t Or) { return static_cast<int32_t>(TopAbs::Reverse(static_cast<TopAbs_Orientation>(Or))); }
+extern "C" int32_t TopAbs_reverse_orientation(int32_t Or) { return static_cast<int32_t>(TopAbs::Reverse(static_cast<TopAbs_Orientation>(Or))); }
 extern "C" int32_t TopAbs_complement(int32_t Or) { return static_cast<int32_t>(TopAbs::Complement(static_cast<TopAbs_Orientation>(Or))); }
 extern "C" const char* TopAbs_shape_type_to_string(int32_t theType) { return TopAbs::ShapeTypeToString(static_cast<TopAbs_ShapeEnum>(theType)); }
 extern "C" int32_t TopAbs_shape_type_from_string(const char* theTypeString) { return static_cast<int32_t>(TopAbs::ShapeTypeFromString(theTypeString)); }
@@ -56033,22 +56033,22 @@ extern "C" int32_t TopAbs_shape_orientation_from_string(const char* theOrientati
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-extern "C" void TopExp_map_shapes(const TopoDS_Shape& S, int32_t T, TopTools_IndexedMapOfShape& M) { return TopExp::MapShapes(S, static_cast<TopAbs_ShapeEnum>(T), M); }
-extern "C" void TopExp_map_shapes_mut(const TopoDS_Shape& S, TopTools_IndexedMapOfShape& M, Standard_Boolean cumOri, Standard_Boolean cumLoc) { return TopExp::MapShapes(S, M, cumOri, cumLoc); }
-extern "C" void TopExp_map_shapes_3(const TopoDS_Shape& S, TopTools_MapOfShape& M, Standard_Boolean cumOri, Standard_Boolean cumLoc) { return TopExp::MapShapes(S, M, cumOri, cumLoc); }
-extern "C" void TopExp_map_shapes_and_ancestors(const TopoDS_Shape& S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape& M) { return TopExp::MapShapesAndAncestors(S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), M); }
-extern "C" void TopExp_map_shapes_and_unique_ancestors(const TopoDS_Shape& S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape& M, Standard_Boolean useOrientation) { return TopExp::MapShapesAndUniqueAncestors(S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), M, useOrientation); }
-extern "C" TopoDS_Vertex* TopExp_first_vertex(const TopoDS_Edge& E, Standard_Boolean CumOri) { return new TopoDS_Vertex(TopExp::FirstVertex(E, CumOri)); }
-extern "C" TopoDS_Vertex* TopExp_last_vertex(const TopoDS_Edge& E, Standard_Boolean CumOri) { return new TopoDS_Vertex(TopExp::LastVertex(E, CumOri)); }
-extern "C" void TopExp_vertices(const TopoDS_Edge& E, TopoDS_Vertex& Vfirst, TopoDS_Vertex& Vlast, Standard_Boolean CumOri) { return TopExp::Vertices(E, Vfirst, Vlast, CumOri); }
-extern "C" void TopExp_vertices_mut(const TopoDS_Wire& W, TopoDS_Vertex& Vfirst, TopoDS_Vertex& Vlast) { return TopExp::Vertices(W, Vfirst, Vlast); }
-extern "C" Standard_Boolean TopExp_common_vertex(const TopoDS_Edge& E1, const TopoDS_Edge& E2, TopoDS_Vertex& V) { return TopExp::CommonVertex(E1, E2, V); }
+extern "C" void TopExp_map_shapes_shape_shapeenum_indexedmapofshape(const TopoDS_Shape* S, int32_t T, TopTools_IndexedMapOfShape* M) { TopExp::MapShapes(*S, static_cast<TopAbs_ShapeEnum>(T), *M); }
+extern "C" void TopExp_map_shapes_shape_indexedmapofshape_bool2(const TopoDS_Shape* S, TopTools_IndexedMapOfShape* M, Standard_Boolean cumOri, Standard_Boolean cumLoc) { TopExp::MapShapes(*S, *M, cumOri, cumLoc); }
+extern "C" void TopExp_map_shapes_shape_mapofshape_bool2(const TopoDS_Shape* S, TopTools_MapOfShape* M, Standard_Boolean cumOri, Standard_Boolean cumLoc) { TopExp::MapShapes(*S, *M, cumOri, cumLoc); }
+extern "C" void TopExp_map_shapes_and_ancestors(const TopoDS_Shape* S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape* M) { TopExp::MapShapesAndAncestors(*S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), *M); }
+extern "C" void TopExp_map_shapes_and_unique_ancestors(const TopoDS_Shape* S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape* M, Standard_Boolean useOrientation) { TopExp::MapShapesAndUniqueAncestors(*S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), *M, useOrientation); }
+extern "C" TopoDS_Vertex* TopExp_first_vertex(const TopoDS_Edge* E, Standard_Boolean CumOri) { return new TopoDS_Vertex(TopExp::FirstVertex(*E, CumOri)); }
+extern "C" TopoDS_Vertex* TopExp_last_vertex(const TopoDS_Edge* E, Standard_Boolean CumOri) { return new TopoDS_Vertex(TopExp::LastVertex(*E, CumOri)); }
+extern "C" void TopExp_vertices_edge_vertex2_bool(const TopoDS_Edge* E, TopoDS_Vertex* Vfirst, TopoDS_Vertex* Vlast, Standard_Boolean CumOri) { TopExp::Vertices(*E, *Vfirst, *Vlast, CumOri); }
+extern "C" void TopExp_vertices_wire_vertex2(const TopoDS_Wire* W, TopoDS_Vertex* Vfirst, TopoDS_Vertex* Vlast) { TopExp::Vertices(*W, *Vfirst, *Vlast); }
+extern "C" Standard_Boolean TopExp_common_vertex(const TopoDS_Edge* E1, const TopoDS_Edge* E2, TopoDS_Vertex* V) { return TopExp::CommonVertex(*E1, *E2, *V); }
 
 // ========================
 // TopTools namespace functions
 // ========================
 #include <TopTools.hxx>
-extern "C" void TopTools_dummy(Standard_Integer I) { return TopTools::Dummy(I); }
+extern "C" void TopTools_dummy(Standard_Integer I) { TopTools::Dummy(I); }
 
 // ========================
 // TopoDS namespace functions
@@ -56063,22 +56063,22 @@ extern "C" void TopTools_dummy(Standard_Integer I) { return TopTools::Dummy(I); 
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-extern "C" const TopoDS_Vertex& TopoDS_vertex(const TopoDS_Shape& theShape) { return TopoDS::Vertex(theShape); }
-extern "C" TopoDS_Vertex& TopoDS_vertex_mut(TopoDS_Shape& theShape) { return TopoDS::Vertex(theShape); }
-extern "C" const TopoDS_Edge& TopoDS_edge(const TopoDS_Shape& theShape) { return TopoDS::Edge(theShape); }
-extern "C" TopoDS_Edge& TopoDS_edge_mut(TopoDS_Shape& theShape) { return TopoDS::Edge(theShape); }
-extern "C" const TopoDS_Wire& TopoDS_wire(const TopoDS_Shape& theShape) { return TopoDS::Wire(theShape); }
-extern "C" TopoDS_Wire& TopoDS_wire_mut(TopoDS_Shape& theShape) { return TopoDS::Wire(theShape); }
-extern "C" const TopoDS_Face& TopoDS_face(const TopoDS_Shape& theShape) { return TopoDS::Face(theShape); }
-extern "C" TopoDS_Face& TopoDS_face_mut(TopoDS_Shape& theShape) { return TopoDS::Face(theShape); }
-extern "C" const TopoDS_Shell& TopoDS_shell(const TopoDS_Shape& theShape) { return TopoDS::Shell(theShape); }
-extern "C" TopoDS_Shell& TopoDS_shell_mut(TopoDS_Shape& theShape) { return TopoDS::Shell(theShape); }
-extern "C" const TopoDS_Solid& TopoDS_solid(const TopoDS_Shape& theShape) { return TopoDS::Solid(theShape); }
-extern "C" TopoDS_Solid& TopoDS_solid_mut(TopoDS_Shape& theShape) { return TopoDS::Solid(theShape); }
-extern "C" const TopoDS_CompSolid& TopoDS_comp_solid(const TopoDS_Shape& theShape) { return TopoDS::CompSolid(theShape); }
-extern "C" TopoDS_CompSolid& TopoDS_comp_solid_mut(TopoDS_Shape& theShape) { return TopoDS::CompSolid(theShape); }
-extern "C" const TopoDS_Compound& TopoDS_compound(const TopoDS_Shape& theShape) { return TopoDS::Compound(theShape); }
-extern "C" TopoDS_Compound& TopoDS_compound_mut(TopoDS_Shape& theShape) { return TopoDS::Compound(theShape); }
+extern "C" const TopoDS_Vertex& TopoDS_vertex(const TopoDS_Shape* theShape) { return TopoDS::Vertex(*theShape); }
+extern "C" TopoDS_Vertex& TopoDS_vertex_mut(TopoDS_Shape* theShape) { return TopoDS::Vertex(*theShape); }
+extern "C" const TopoDS_Edge& TopoDS_edge(const TopoDS_Shape* theShape) { return TopoDS::Edge(*theShape); }
+extern "C" TopoDS_Edge& TopoDS_edge_mut(TopoDS_Shape* theShape) { return TopoDS::Edge(*theShape); }
+extern "C" const TopoDS_Wire& TopoDS_wire(const TopoDS_Shape* theShape) { return TopoDS::Wire(*theShape); }
+extern "C" TopoDS_Wire& TopoDS_wire_mut(TopoDS_Shape* theShape) { return TopoDS::Wire(*theShape); }
+extern "C" const TopoDS_Face& TopoDS_face(const TopoDS_Shape* theShape) { return TopoDS::Face(*theShape); }
+extern "C" TopoDS_Face& TopoDS_face_mut(TopoDS_Shape* theShape) { return TopoDS::Face(*theShape); }
+extern "C" const TopoDS_Shell& TopoDS_shell(const TopoDS_Shape* theShape) { return TopoDS::Shell(*theShape); }
+extern "C" TopoDS_Shell& TopoDS_shell_mut(TopoDS_Shape* theShape) { return TopoDS::Shell(*theShape); }
+extern "C" const TopoDS_Solid& TopoDS_solid(const TopoDS_Shape* theShape) { return TopoDS::Solid(*theShape); }
+extern "C" TopoDS_Solid& TopoDS_solid_mut(TopoDS_Shape* theShape) { return TopoDS::Solid(*theShape); }
+extern "C" const TopoDS_CompSolid& TopoDS_comp_solid(const TopoDS_Shape* theShape) { return TopoDS::CompSolid(*theShape); }
+extern "C" TopoDS_CompSolid& TopoDS_comp_solid_mut(TopoDS_Shape* theShape) { return TopoDS::CompSolid(*theShape); }
+extern "C" const TopoDS_Compound& TopoDS_compound(const TopoDS_Shape* theShape) { return TopoDS::Compound(*theShape); }
+extern "C" TopoDS_Compound& TopoDS_compound_mut(TopoDS_Shape* theShape) { return TopoDS::Compound(*theShape); }
 
 // ========================
 // gp namespace functions

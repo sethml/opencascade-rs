@@ -4,35 +4,14 @@
 //! plus per-module re-export files with short names and impl blocks.
 
 use crate::model::{ParsedClass, Type};
-use crate::type_mapping::{map_return_type_in_context, map_type_in_context, TypeContext};
 use std::collections::{BTreeSet, HashSet};
 use std::fmt::Write as _;
-
-/// Rust keywords that need special handling
-const RUST_KEYWORDS: &[&str] = &[
-    "as", "break", "const", "continue", "crate", "else", "enum", "extern", "false", "fn", "for",
-    "if", "impl", "in", "let", "loop", "match", "mod", "move", "mut", "pub", "ref", "return",
-    "self", "Self", "static", "struct", "super", "trait", "true", "type", "unsafe", "use",
-    "where", "while", "async", "await", "dyn", "abstract", "become", "box", "do", "final",
-    "macro", "override", "priv", "typeof", "unsized", "virtual", "yield", "try",
-];
 
 /// Generate source attribution for a declaration (header, line number, and C++ identifier)
 fn format_source_attribution(header: &str, line: Option<u32>, cpp_name: &str) -> String {
     match line {
         Some(l) => format!("**Source:** `{}`:{} - `{}`", header, l, cpp_name),
         None => format!("**Source:** `{}` - `{}`", header, cpp_name),
-    }
-}
-
-/// Convert a parameter name to a safe Rust identifier string.
-/// Rust keywords are renamed with trailing underscore (e.g., "where" -> "where_")
-/// because CXX doesn't support r#keyword syntax in FFI declarations.
-fn safe_param_name(name: &str) -> String {
-    if RUST_KEYWORDS.contains(&name) {
-        format!("{}_", name)
-    } else {
-        name.to_string()
     }
 }
 
@@ -153,35 +132,13 @@ pub fn generate_unified_ffi(
     collections: &[super::collections::CollectionInfo],
     symbol_table: &crate::resolver::SymbolTable,
     all_bindings: &[super::bindings::ClassBindings],
+    function_bindings: &[super::bindings::FunctionBinding],
 ) -> String {
-    // Build sets for type context
-    let mut all_class_names: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();
-    // Collection typedefs are known types for filtering purposes
-    all_class_names.extend(collections.iter().map(|c| c.typedef_name.clone()));
-    let all_enum_names = &symbol_table.all_enum_names;
-
-    // Collect classes that will have Handle<T> declarations generated
-    // These are classes that are handle types (inherit from Standard_Transient)
-    // and don't have protected destructors
-    let handle_able_classes: HashSet<String> = all_classes
-        .iter()
-        .filter(|c| c.is_handle_type && !c.has_protected_destructor)
-        .map(|c| c.name.clone())
-        .collect();
-
-    // Create type context for unified module (no specific module)
-    let type_ctx = TypeContext {
-        current_module: "unified",  // Special marker for unified generation
-        module_classes: &all_class_names,
-        all_enums: all_enum_names,
-        all_classes: &all_class_names,
-        handle_able_classes: Some(&handle_able_classes),
-        type_to_module: Some(&symbol_table.type_to_module),
-        enum_rust_types: Some(&symbol_table.enum_rust_types),
-    };
-
     // Get all classes with protected destructors
     let protected_destructor_class_names = symbol_table.protected_destructor_class_names();
+
+    // All enum names (needed for opaque type filtering)
+    let all_enum_names = &symbol_table.all_enum_names;
 
     // Collect collection type names to exclude from class generation
     // Collections are generated separately with specialized wrappers
@@ -197,8 +154,8 @@ pub fn generate_unified_ffi(
         .map(|b| super::bindings::emit_ffi_class(b))
         .collect();
 
-    // Generate namespace-level free functions (using pre-computed names from resolver)
-    let function_items = generate_unified_functions(symbol_table, &type_ctx);
+    // Generate namespace-level free functions from pre-computed FunctionBindings
+    let function_items = generate_unified_functions_from_bindings(function_bindings);
 
     // Generate Handle type declarations
     let handle_decls = generate_unified_handle_declarations(all_classes);
@@ -327,69 +284,41 @@ pub fn generate_unified_ffi(
     out
 }
 
-/// Generate free function declarations for unified mode.
-///
-/// Uses pre-computed names and filtering from the resolver's SymbolTable,
-/// ensuring consistency between ffi.rs and wrappers.hxx.
-fn generate_unified_functions(
-    symbol_table: &crate::resolver::SymbolTable,
-    ctx: &TypeContext,
+/// Generate free function declarations for unified mode from pre-computed FunctionBindings.
+fn generate_unified_functions_from_bindings(
+    function_bindings: &[super::bindings::FunctionBinding],
 ) -> String {
     let mut out = String::new();
+    for func in function_bindings {
+        let params_str: String = func.params.iter()
+            .map(|p| format!("{}: {}", p.rust_name, p.rust_ffi_type))
+            .collect::<Vec<_>>()
+            .join(", ");
 
-    for func in symbol_table.all_included_functions() {
-        generate_unified_function(&mut out, func, ctx);
-    }
+        let ret_str = func.return_type.as_ref()
+            .map(|rt| format!(" -> {}", rt.rust_ffi_type))
+            .unwrap_or_default();
 
-    out
-}
-
-/// Generate a single free function for unified mode
-fn generate_unified_function(
-    out: &mut String,
-    func: &crate::resolver::ResolvedFunction,
-    ctx: &TypeContext,
-) {
-    let params_str: String = func.params.iter().map(|p| {
-        let name = safe_param_name(&p.name);
-        // By-value class/handle params need to be &T at the Rust FFI boundary
-        // (matching the const T& on the C++ wrapper side)
-        let effective_ty = match &p.ty.original {
-            Type::Class(cname) if cname != "char" && !ctx.all_enums.contains(cname) => {
-                Type::ConstRef(Box::new(p.ty.original.clone()))
-            }
-            Type::Handle(_) => {
-                Type::ConstRef(Box::new(p.ty.original.clone()))
-            }
-            _ => p.ty.original.clone(),
-        };
-        let ty = map_type_in_context(&effective_ty, ctx);
-        format!("{}: {}", name, ty.rust_type)
-    }).collect::<Vec<_>>().join(", ");
-
-    let ret_str = func.return_type.as_ref().map(|rt| {
-        let mapped = map_return_type_in_context(&rt.original, ctx);
-        format!(" -> {}", mapped.rust_type)
-    }).unwrap_or_default();
-
-    let source_attr = format_source_attribution(
-        &func.source_header,
-        None,
-        &format!("{}::{}", func.namespace, func.short_name),
-    );
-    writeln!(out, "    /// {}", source_attr).unwrap();
-    if let Some(ref comment) = func.doc_comment {
-        writeln!(out, "    ///").unwrap();
-        for line in comment.lines() {
-            let trimmed = line.trim();
-            if trimmed.is_empty() {
-                writeln!(out, "    ///").unwrap();
-            } else {
-                writeln!(out, "    /// {}", trimmed).unwrap();
+        let source_attr = format_source_attribution(
+            &func.source_header,
+            None,
+            &format!("{}::{}", func.namespace, func.short_name),
+        );
+        writeln!(out, "    /// {}", source_attr).unwrap();
+        if let Some(ref comment) = func.doc_comment {
+            writeln!(out, "    ///").unwrap();
+            for line in comment.lines() {
+                let trimmed = line.trim();
+                if trimmed.is_empty() {
+                    writeln!(out, "    ///").unwrap();
+                } else {
+                    writeln!(out, "    /// {}", trimmed).unwrap();
+                }
             }
         }
+        writeln!(out, "    pub fn {}({}){};", func.cpp_wrapper_name, params_str, ret_str).unwrap();
     }
-    writeln!(out, "    pub fn {}({}){};", func.rust_ffi_name, params_str, ret_str).unwrap();
+    out
 }
 
 /// Generate Handle type declarations for unified mode
@@ -534,123 +463,43 @@ fn emit_rust_enum(output: &mut String, resolved: &crate::resolver::ResolvedEnum)
     writeln!(output).unwrap();
 }
 
-/// Convert a Type to a fully-qualified Rust type string suitable for module re-export files.
-/// Class types get `crate::ffi::ClassName` prefix so they resolve in any module.
-fn type_to_qualified_rust(ty: &crate::model::Type) -> String {
-    use crate::model::Type;
-    match ty {
-        Type::Void => "()".to_string(),
-        Type::Bool => "bool".to_string(),
-        Type::I32 => "i32".to_string(),
-        Type::U32 => "u32".to_string(),
-        Type::I64 => "i64".to_string(),
-        Type::U64 => "u64".to_string(),
-        Type::Usize => "usize".to_string(),
-        Type::F32 => "f32".to_string(),
-        Type::F64 => "f64".to_string(),
-        Type::Class(name) if name == "char" => "std::ffi::c_char".to_string(),
-        Type::Class(name) => format!("crate::ffi::{}", name),
-        Type::Handle(name) => {
-            let handle_name = format!("Handle{}", name.replace('_', ""));
-            format!("crate::ffi::{}", handle_name)
-        }
-        Type::ConstRef(inner) => format!("&{}", type_to_qualified_rust(inner)),
-        Type::MutRef(inner) => {
-            let inner_str = type_to_qualified_rust(inner);
-            format!("&mut {}", inner_str)
-        }
-        // const char* -> *const c_char
-        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
-            "*const std::ffi::c_char".to_string()
-        }
-        Type::ConstPtr(inner) => format!("*const {}", type_to_qualified_rust(inner)),
-        Type::MutPtr(inner) => format!("*mut {}", type_to_qualified_rust(inner)),
-        Type::RValueRef(inner) => format!("&{}", type_to_qualified_rust(inner)),
-    }
-}
-
-/// Emit a wrapper function for a free function that uses value enum types.
-/// Instead of `pub use crate::ffi::fn_name;` we generate a function that
-/// converts enum args with `.into()` and enum returns with `try_from().unwrap()`.
+/// Emit a wrapper function for a free function that uses value enum types
+/// or needs OwnedPtr wrapping.
+/// Uses pre-computed FunctionBinding for all type information.
 fn emit_free_function_wrapper(
     output: &mut String,
-    func: &crate::resolver::ResolvedFunction,
-    symbol_table: &crate::resolver::SymbolTable,
+    func: &super::bindings::FunctionBinding,
 ) {
     use std::fmt::Write;
 
-    // Build parameter list with typed enum params.
-    // Non-enum class types use fully qualified `crate::ffi::ClassName` paths
-    // since this code appears in a module re-export file, not in ffi.rs.
-    // By-value class/handle params are converted to &T to match the FFI signature.
-    let params: Vec<String> = func.params.iter().map(|p| {
-        let ty = if let Some(ref enum_name) = p.ty.enum_cpp_name {
-            symbol_table.enum_rust_types.get(enum_name)
-                .cloned()
-                .unwrap_or_else(|| "i32".to_string())
-        } else {
-            // Convert by-value class/handle params to const-ref to match FFI
-            let effective_ty = match &p.ty.original {
-                Type::Class(name) if name != "char" && !symbol_table.all_enum_names.contains(name) => {
-                    Type::ConstRef(Box::new(p.ty.original.clone()))
-                }
-                Type::Handle(_) => {
-                    Type::ConstRef(Box::new(p.ty.original.clone()))
-                }
-                _ => p.ty.original.clone(),
-            };
-            type_to_qualified_rust(&effective_ty)
-        };
-        format!("{}: {}", p.rust_name, ty)
-    }).collect();
+    // Build parameter list using pre-computed re-export types
+    let params: Vec<String> = func.params.iter()
+        .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type))
+        .collect();
 
     // Build args with .into() for enum params
-    let args: Vec<String> = func.params.iter().map(|p| {
-        if p.ty.enum_cpp_name.as_ref()
-            .map(|n| symbol_table.enum_rust_types.contains_key(n))
-            .unwrap_or(false)
-        {
-            format!("{}.into()", p.rust_name)
-        } else {
-            p.rust_name.clone()
-        }
-    }).collect();
-
-    // Build return type.
-    // Class/Handle types returned by value are wrapped in OwnedPtr.
-    // C-string (const char*) returns are raw pointers.
-    let returns_c_string = func.return_type.as_ref()
-        .map(|rt| rt.original.is_c_string())
-        .unwrap_or(false);
-    let return_type_str = if let Some(ref rt) = func.return_type {
-        if returns_c_string {
-            " -> *const std::ffi::c_char".to_string()
-        } else if let Some(ref enum_name) = rt.enum_cpp_name {
-            if let Some(rust_type) = symbol_table.enum_rust_types.get(enum_name) {
-                format!(" -> {}", rust_type)
+    let args: Vec<String> = func.params.iter()
+        .map(|p| {
+            if p.enum_rust_type.is_some() {
+                format!("{}.into()", p.rust_name)
             } else {
-                format!(" -> i32")
+                p.rust_name.clone()
             }
-        } else if rt.needs_unique_ptr {
-            format!(" -> crate::OwnedPtr<{}>", type_to_qualified_rust(&rt.original))
-        } else {
-            format!(" -> {}", type_to_qualified_rust(&rt.original))
-        }
-    } else {
-        String::new()
-    };
+        })
+        .collect();
+
+    // Build return type string
+    let return_type_str = func.return_type.as_ref()
+        .map(|rt| format!(" -> {}", rt.rust_reexport_type))
+        .unwrap_or_default();
 
     // Build call expression
-    let call_expr = format!("crate::ffi::{}({})", func.rust_ffi_name, args.join(", "));
+    let call_expr = format!("crate::ffi::{}({})", func.cpp_wrapper_name, args.join(", "));
 
-    // Build body with enum return conversion
+    // Build body with enum return conversion or OwnedPtr wrapping
     let body = if let Some(ref rt) = func.return_type {
-        if let Some(ref enum_name) = rt.enum_cpp_name {
-            if let Some(rust_type) = symbol_table.enum_rust_types.get(enum_name) {
-                format!("{}::try_from({}).unwrap()", rust_type, call_expr)
-            } else {
-                call_expr
-            }
+        if let Some(ref rust_type) = rt.enum_rust_type {
+            format!("{}::try_from({}).unwrap()", rust_type, call_expr)
         } else if rt.needs_unique_ptr {
             format!("crate::OwnedPtr::from_raw({})", call_expr)
         } else {
@@ -677,6 +526,7 @@ pub fn generate_module_reexports(
     collections: &[&super::collections::CollectionInfo],
     symbol_table: &crate::resolver::SymbolTable,
     module_bindings: &[&super::bindings::ClassBindings],
+    module_fn_bindings: &[&super::bindings::FunctionBinding],
     extra_types: &[(String, String)], // (ffi_name, short_name) for types not covered by ClassBindings
 ) -> String {
     let mut output = String::new();
@@ -690,35 +540,33 @@ pub fn generate_module_reexports(
     output.push_str("#![allow(dead_code)]\n");
     output.push_str("#![allow(non_snake_case)]\n\n");
 
-    // Generate re-exports for functions using pre-computed names from the resolver.
-    // The resolver assigns globally-unique rust_ffi_name values, so we just look them up.
-    let rust_module = crate::module_graph::module_to_rust_name(module_name);
-    let module_functions = symbol_table.included_functions_for_module(&rust_module);
-    for func in &module_functions {
-        // Check if this function uses any value enum types (needs a wrapper)
-        let has_enum_params = func.params.iter().any(|p| {
-            p.ty.enum_cpp_name.as_ref()
-                .map(|n| symbol_table.enum_rust_types.contains_key(n))
-                .unwrap_or(false)
-        });
+    // Generate re-exports for free functions from pre-computed FunctionBindings.
+    for func in module_fn_bindings {
+        // Check if this function uses any value enum types or needs wrapping
+        let has_enum_params = func.params.iter().any(|p| p.enum_rust_type.is_some());
         let has_enum_return = func.return_type.as_ref()
-            .and_then(|rt| rt.enum_cpp_name.as_ref())
-            .map(|n| symbol_table.enum_rust_types.contains_key(n))
+            .map(|rt| rt.enum_rust_type.is_some())
+            .unwrap_or(false);
+        let has_owned_ptr_return = func.return_type.as_ref()
+            .map(|rt| rt.needs_unique_ptr)
             .unwrap_or(false);
 
-        if has_enum_params || has_enum_return {
-            // Generate a wrapper function that converts enum types
-            emit_free_function_wrapper(&mut output, func, symbol_table);
+        if has_enum_params || has_enum_return || has_owned_ptr_return {
+            // Generate a wrapper function that converts enum types or wraps return
+            emit_free_function_wrapper(&mut output, func);
+        } else if func.cpp_wrapper_name != func.rust_ffi_name {
+            output.push_str(&format!("pub use crate::ffi::{} as {};\n", func.cpp_wrapper_name, func.rust_ffi_name));
         } else {
             output.push_str(&format!("pub use crate::ffi::{};\n", func.rust_ffi_name));
         }
     }
 
-    if !module_functions.is_empty() {
+    if !module_fn_bindings.is_empty() {
         output.push('\n');
     }
 
     // Generate Rust enum definitions for enums in this module
+    let rust_module = crate::module_graph::module_to_rust_name(module_name);
     if let Some(enum_ids) = symbol_table.enums_by_module.get(&rust_module) {
         for enum_id in enum_ids {
             if let Some(resolved_enum) = symbol_table.enums.get(enum_id) {
@@ -1109,7 +957,7 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
             let next_fn = format!("{}{}", iter_type, next_suffix);
             out.push_str(&format!("impl {} {{\n", iter_type));
             out.push_str(&format!(
-                "    /// Get next element (returns null when done)\n    pub fn next(&mut self) -> crate::OwnedPtr<crate::ffi::{}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}(self as *mut Self)) }}\n    }}\n",
+                "    /// Get next element (returns None when done)\n    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::{}>> {{\n        let ptr = unsafe {{ crate::ffi::{}(self as *mut Self) }};\n        if ptr.is_null() {{\n            None\n        }} else {{\n            Some(unsafe {{ crate::OwnedPtr::from_raw(ptr) }})\n        }}\n    }}\n",
                 elem, next_fn
             ));
             out.push_str("}\n\n");

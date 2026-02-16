@@ -9,7 +9,7 @@
 //! All wrapper functions use extern "C" linkage for direct FFI access.
 
 use crate::model::{ParsedClass, Type};
-use crate::resolver::{self, SymbolTable};
+use crate::resolver::SymbolTable;
 use std::collections::HashSet;
 use std::fmt::Write;
 
@@ -120,63 +120,105 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_
     }
 }
 
-fn type_to_cpp_param(ty: &Type) -> String {
-    match ty {
-        // const char* parameters pass through directly
-        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
-            "const char*".to_string()
-        }
-        // By-value class params (non-char): accept const T* (pointer) at the FFI boundary.
-        // The wrapper dereferences when calling the actual OCCT function.
-        Type::Class(name) if name != "char" => {
-            format!("const {}*", name)
-        }
-        // By-value Handle params: accept const handle<T>* (pointer) at the FFI boundary.
-        Type::Handle(name) => {
-            format!("const opencascade::handle<{}>*", name)
-        }
-        _ => type_to_cpp(ty),
+/// Generate wrappers for all namespace-level free functions from pre-computed FunctionBindings
+fn generate_unified_function_wrappers(
+    output: &mut String,
+    function_bindings: &[super::bindings::FunctionBinding],
+    known_headers: &HashSet<String>,
+) {
+    if function_bindings.is_empty() {
+        return;
     }
-}
 
-/// Convert a resolved parameter to the argument form needed when calling OCCT functions
-fn param_to_cpp_arg_resolved(param: &resolver::ResolvedParam) -> String {
-    match &param.ty.original {
-        // const char* passes through directly
-        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
-            param.name.clone()
-        }
-        // By-value class params: dereference const T* -> const T& for OCCT
-        Type::Class(name) if name != "char" => {
-            format!("*{}", param.name)
-        }
-        // By-value Handle params: dereference const handle<T>* -> const handle<T>& for OCCT
-        Type::Handle(_) => {
-            format!("*{}", param.name)
-        }
-        _ => param.name.clone(),
+    // Group functions by namespace
+    let mut by_namespace: std::collections::HashMap<&str, Vec<&super::bindings::FunctionBinding>> =
+        std::collections::HashMap::new();
+    for func in function_bindings {
+        by_namespace
+            .entry(&func.namespace)
+            .or_default()
+            .push(func);
     }
-}
 
-/// Convert our Type to C++ type string
-fn type_to_cpp(ty: &Type) -> String {
-    match ty {
-        Type::Void => "void".to_string(),
-        Type::Bool => "Standard_Boolean".to_string(),
-        Type::I32 => "Standard_Integer".to_string(),
-        Type::U32 => "unsigned int".to_string(),
-        Type::I64 => "long".to_string(),
-        Type::U64 => "unsigned long long".to_string(),
-        Type::Usize => "size_t".to_string(),
-        Type::F32 => "float".to_string(),
-        Type::F64 => "Standard_Real".to_string(),
-        Type::ConstRef(inner) => format!("const {}&", type_to_cpp(inner)),
-        Type::MutRef(inner) => format!("{}&", type_to_cpp(inner)),
-        Type::RValueRef(inner) => format!("{}&&", type_to_cpp(inner)),
-        Type::ConstPtr(inner) => format!("const {}*", type_to_cpp(inner)),
-        Type::MutPtr(inner) => format!("{}*", type_to_cpp(inner)),
-        Type::Handle(name) => format!("opencascade::handle<{}>", name),
-        Type::Class(name) => name.clone(),
+    let mut namespaces: Vec<&&str> = by_namespace.keys().collect();
+    namespaces.sort();
+
+    for namespace in namespaces {
+        let namespace_functions = &by_namespace[namespace];
+
+        writeln!(output, "// ========================").unwrap();
+        writeln!(output, "// {} namespace functions", namespace).unwrap();
+        writeln!(output, "// ========================").unwrap();
+
+        // Collect unique headers for this namespace
+        let mut extra_headers: HashSet<String> = HashSet::new();
+        let ns_header = format!("{}.hxx", namespace);
+        if known_headers.is_empty() || known_headers.contains(&ns_header) {
+            extra_headers.insert(ns_header);
+        }
+        for func in namespace_functions {
+            for h in &func.cpp_headers {
+                extra_headers.insert(h.clone());
+            }
+        }
+
+        let mut sorted_headers: Vec<_> = extra_headers.into_iter().collect();
+        sorted_headers.sort();
+        for header in &sorted_headers {
+            writeln!(output, "#include <{}>", header).unwrap();
+        }
+
+        for func in namespace_functions {
+            let wrapper_name = &func.cpp_wrapper_name;
+
+            // Build param declarations from pre-computed cpp_type
+            let params_cpp: Vec<String> = func.params.iter()
+                .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
+                .collect();
+            let params_str = params_cpp.join(", ");
+
+            // Build argument expressions from pre-computed cpp_arg_expr
+            let args: Vec<String> = func.params.iter()
+                .map(|p| p.cpp_arg_expr.clone())
+                .collect();
+            let args_str = args.join(", ");
+
+            let call = format!("{}::{}({})", namespace, func.short_name, args_str);
+
+            // Determine return pattern from pre-computed return type binding
+            if let Some(ref rt) = func.return_type {
+                if rt.enum_cpp_name.is_some() {
+                    writeln!(
+                        output,
+                        "extern \"C\" {} {}({}) {{ return static_cast<int32_t>({}); }}",
+                        rt.cpp_type, wrapper_name, params_str, call
+                    ).unwrap();
+                } else if rt.needs_unique_ptr {
+                    // Return type is the base C++ type; wrapper returns pointer
+                    // cpp_type for unique_ptr returns is the base type (e.g. "gp_Pnt")
+                    // but the FFI returns a pointer to it
+                    let base_type = &rt.cpp_type;
+                    writeln!(
+                        output,
+                        "extern \"C\" {0}* {1}({2}) {{ return new {0}({3}); }}",
+                        base_type, wrapper_name, params_str, call
+                    ).unwrap();
+                } else {
+                    writeln!(
+                        output,
+                        "extern \"C\" {} {}({}) {{ return {}; }}",
+                        rt.cpp_type, wrapper_name, params_str, call
+                    ).unwrap();
+                }
+            } else {
+                writeln!(
+                    output,
+                    "extern \"C\" void {}({}) {{ {}; }}",
+                    wrapper_name, params_str, call
+                ).unwrap();
+            }
+        }
+        writeln!(output).unwrap();
     }
 }
 
@@ -184,8 +226,9 @@ pub fn generate_unified_wrappers(
     all_classes: &[&ParsedClass],
     collections: &[super::collections::CollectionInfo],
     known_headers: &HashSet<String>,
-    symbol_table: &SymbolTable,
+    _symbol_table: &SymbolTable,
     all_bindings: &[super::bindings::ClassBindings],
+    function_bindings: &[super::bindings::FunctionBinding],
 ) -> String {
     let mut output = String::new();
 
@@ -241,7 +284,7 @@ pub fn generate_unified_wrappers(
     }
 
     // Generate wrappers for ALL namespace-level free functions
-    generate_unified_function_wrappers(&mut output, symbol_table, known_headers);
+    generate_unified_function_wrappers(&mut output, function_bindings, known_headers);
 
     // Generate collection wrappers
     if !collections.is_empty() {
@@ -298,143 +341,3 @@ fn collect_all_required_headers(
     result.sort();
     result
 }
-
-/// Generate wrappers for all namespace-level free functions
-fn generate_unified_function_wrappers(
-    output: &mut String,
-    symbol_table: &SymbolTable,
-    known_headers: &HashSet<String>,
-) {
-    let all_functions = symbol_table.all_included_functions();
-    if all_functions.is_empty() {
-        return;
-    }
-
-    // Group functions by namespace
-    let mut by_namespace: std::collections::HashMap<&str, Vec<&resolver::ResolvedFunction>> =
-        std::collections::HashMap::new();
-    for func in &all_functions {
-        by_namespace
-            .entry(&func.namespace)
-            .or_default()
-            .push(func);
-    }
-
-    let mut namespaces: Vec<&&str> = by_namespace.keys().collect();
-    namespaces.sort();
-
-    for namespace in namespaces {
-        let namespace_functions = &by_namespace[namespace];
-
-        writeln!(output, "// ========================").unwrap();
-        writeln!(output, "// {} namespace functions", namespace).unwrap();
-        writeln!(output, "// ========================").unwrap();
-
-        // Extra headers for this namespace
-        let mut extra_headers: HashSet<String> = HashSet::new();
-        for func in namespace_functions {
-            extra_headers.insert(format!("{}.hxx", namespace));
-            for param in &func.params {
-                collect_type_headers(&Some(param.ty.original.clone()), &mut extra_headers, known_headers);
-            }
-            if let Some(ref ret_ty) = func.return_type {
-                collect_type_headers(&Some(ret_ty.original.clone()), &mut extra_headers, known_headers);
-            }
-        }
-
-        let mut sorted_headers: Vec<_> = extra_headers.into_iter().collect();
-        sorted_headers.sort();
-        for header in &sorted_headers {
-            writeln!(output, "#include <{}>", header).unwrap();
-        }
-
-        for func in namespace_functions {
-            let wrapper_name = &func.cpp_wrapper_name;
-
-            // Check if return type is an enum
-            let return_is_enum = func.return_type.as_ref()
-                .map(|ty| ty.enum_cpp_name.is_some())
-                .unwrap_or(false);
-
-            let return_type_cpp = if return_is_enum {
-                "int32_t".to_string()
-            } else {
-                match &func.return_type {
-                    Some(ty) => type_to_cpp(&ty.original),
-                    None => "void".to_string(),
-                }
-            };
-
-            let params_cpp: Vec<String> = func
-                .params
-                .iter()
-                .map(|p| {
-                    if p.ty.enum_cpp_name.is_some() {
-                        format!("int32_t {}", p.name)
-                    } else {
-                        format!("{} {}", type_to_cpp_param(&p.ty.original), p.name)
-                    }
-                })
-                .collect();
-            let params_str = params_cpp.join(", ");
-
-            let args: Vec<String> = func.params.iter().map(|p| {
-                if let Some(ref enum_name) = p.ty.enum_cpp_name {
-                    format!("static_cast<{}>({})", enum_name, p.name)
-                } else {
-                    param_to_cpp_arg_resolved(p)
-                }
-            }).collect();
-            let args_str = args.join(", ");
-
-            let call = format!("{}::{}({})", namespace, func.short_name, args_str);
-
-            // Check if return type is a by-value class or Handle type (needs unique_ptr wrapping)
-            let returns_by_value_opaque = match &func.return_type {
-                Some(rt) => match &rt.original {
-                    Type::Class(name) => !symbol_table.all_enum_names.contains(name),
-                    Type::Handle(_) => true,
-                    _ => false,
-                },
-                None => false,
-            };
-
-            // Check if return type is const char* (c_string)
-            let returns_c_string = func.return_type.as_ref()
-                .map(|ty| ty.original.is_c_string())
-                .unwrap_or(false);
-
-            if returns_c_string {
-                writeln!(
-                    output,
-                    "extern \"C\" const char* {}({}) {{ return {}; }}",
-                    wrapper_name, params_str, call
-                )
-                .unwrap();
-            } else if return_is_enum {
-                writeln!(
-                    output,
-                    "extern \"C\" {} {}({}) {{ return static_cast<int32_t>({}); }}",
-                    return_type_cpp, wrapper_name, params_str, call
-                )
-                .unwrap();
-            } else if returns_by_value_opaque {
-                writeln!(
-                    output,
-                    "extern \"C\" {0}* {1}({2}) {{ return new {0}({3}); }}",
-                    return_type_cpp, wrapper_name, params_str, call
-                )
-                .unwrap();
-            } else {
-                writeln!(
-                    output,
-                    "extern \"C\" {} {}({}) {{ return {}; }}",
-                    return_type_cpp, wrapper_name, params_str, call
-                )
-                .unwrap();
-            }
-        }
-        writeln!(output).unwrap();
-    }
-}
-

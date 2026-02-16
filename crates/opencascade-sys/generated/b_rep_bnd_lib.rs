@@ -6,4 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{add, add_close, add_obb, add_optimal};
+pub use crate::ffi::{
+    BRepBndLib_add as add, BRepBndLib_add_close as add_close, BRepBndLib_add_obb as add_obb,
+    BRepBndLib_add_optimal as add_optimal,
+};

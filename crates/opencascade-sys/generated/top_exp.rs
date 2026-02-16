@@ -6,21 +6,24 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub fn map_shapes(
+pub fn map_shapes_shape_shapeenum_indexedmapofshape(
     S: &crate::ffi::TopoDS_Shape,
     T: crate::top_abs::ShapeEnum,
     M: &mut crate::ffi::TopTools_IndexedMapOfShape,
 ) {
-    unsafe { crate::ffi::map_shapes(S, T.into(), M) }
+    unsafe { crate::ffi::TopExp_map_shapes_shape_shapeenum_indexedmapofshape(S, T.into(), M) }
 }
-pub use crate::ffi::{map_shapes_3, map_shapes_mut};
+pub use crate::ffi::{
+    TopExp_map_shapes_shape_indexedmapofshape_bool2 as map_shapes_shape_indexedmapofshape_bool2,
+    TopExp_map_shapes_shape_mapofshape_bool2 as map_shapes_shape_mapofshape_bool2,
+};
 pub fn map_shapes_and_ancestors(
     S: &crate::ffi::TopoDS_Shape,
     TS: crate::top_abs::ShapeEnum,
     TA: crate::top_abs::ShapeEnum,
     M: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
 ) {
-    unsafe { crate::ffi::map_shapes_and_ancestors(S, TS.into(), TA.into(), M) }
+    unsafe { crate::ffi::TopExp_map_shapes_and_ancestors(S, TS.into(), TA.into(), M) }
 }
 pub fn map_shapes_and_unique_ancestors(
     S: &crate::ffi::TopoDS_Shape,
@@ -30,10 +33,32 @@ pub fn map_shapes_and_unique_ancestors(
     useOrientation: bool,
 ) {
     unsafe {
-        crate::ffi::map_shapes_and_unique_ancestors(S, TS.into(), TA.into(), M, useOrientation)
+        crate::ffi::TopExp_map_shapes_and_unique_ancestors(
+            S,
+            TS.into(),
+            TA.into(),
+            M,
+            useOrientation,
+        )
     }
 }
-pub use crate::ffi::{common_vertex, first_vertex, last_vertex, vertices, vertices_mut};
+pub fn first_vertex(
+    E: &crate::ffi::TopoDS_Edge,
+    CumOri: bool,
+) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopExp_first_vertex(E, CumOri)) }
+}
+pub fn last_vertex(
+    E: &crate::ffi::TopoDS_Edge,
+    CumOri: bool,
+) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopExp_last_vertex(E, CumOri)) }
+}
+pub use crate::ffi::{
+    TopExp_common_vertex as common_vertex,
+    TopExp_vertices_edge_vertex2_bool as vertices_edge_vertex2_bool,
+    TopExp_vertices_wire_vertex2 as vertices_wire_vertex2,
+};
 
 // ========================
 // From TopExp_Explorer.hxx

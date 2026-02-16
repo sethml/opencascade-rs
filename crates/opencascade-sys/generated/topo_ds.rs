@@ -7,8 +7,12 @@
 #![allow(non_snake_case)]
 
 pub use crate::ffi::{
-    comp_solid, comp_solid_mut, compound, compound_mut, edge, edge_mut, face, face_mut, shell,
-    shell_mut, solid, solid_mut, vertex, vertex_mut, wire, wire_mut,
+    TopoDS_comp_solid as comp_solid, TopoDS_comp_solid_mut as comp_solid_mut,
+    TopoDS_compound as compound, TopoDS_compound_mut as compound_mut, TopoDS_edge as edge,
+    TopoDS_edge_mut as edge_mut, TopoDS_face as face, TopoDS_face_mut as face_mut,
+    TopoDS_shell as shell, TopoDS_shell_mut as shell_mut, TopoDS_solid as solid,
+    TopoDS_solid_mut as solid_mut, TopoDS_vertex as vertex, TopoDS_vertex_mut as vertex_mut,
+    TopoDS_wire as wire, TopoDS_wire_mut as wire_mut,
 };
 
 // ========================

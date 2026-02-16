@@ -767,11 +767,7 @@ impl Shape {
 pub(crate) fn list_of_shape_to_edges(list: &top_tools::ListOfShape) -> Vec<Edge> {
     let mut iter = list.iter();
     let mut edges = Vec::new();
-    loop {
-        let shape = iter.next();
-        if shape.is_null() {
-            break;
-        }
+    while let Some(shape) = iter.next() {
         let edge = unsafe { &*topo_ds::edge(shape.as_ptr()) };
         edges.push(Edge::from_edge(edge));
     }

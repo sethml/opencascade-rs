@@ -6,7 +6,10 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{compute_normals, intersect, intersect_tri_line, point_on_triangle};
+pub use crate::ffi::{
+    Poly_compute_normals as compute_normals, Poly_intersect as intersect,
+    Poly_intersect_tri_line as intersect_tri_line, Poly_point_on_triangle as point_on_triangle,
+};
 
 // ========================
 // From Poly_ArrayOfNodes.hxx

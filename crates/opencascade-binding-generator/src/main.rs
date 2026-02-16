@@ -532,6 +532,11 @@ fn generate_unified(
     let all_bindings =
         codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names);
 
+    // Compute FunctionBindings once for ALL free functions — shared by all three generators
+    let all_function_bindings = codegen::bindings::compute_all_function_bindings(
+        symbol_table, all_classes, &collection_type_names, known_headers,
+    );
+
     // Track generated files for formatting
     let mut generated_rs_files: Vec<PathBuf> = Vec::new();
 
@@ -543,6 +548,7 @@ fn generate_unified(
         &all_collections,
         symbol_table,
         &all_bindings,
+        &all_function_bindings,
     );
     let ffi_path = args.output.join("ffi.rs");
     std::fs::write(&ffi_path, ffi_code)?;
@@ -558,6 +564,7 @@ fn generate_unified(
         known_headers,
         symbol_table,
         &all_bindings,
+        &all_function_bindings,
     );
     let cpp_path = args.output.join("wrappers.cpp");
     std::fs::write(&cpp_path, &cpp_code)?;
@@ -574,6 +581,16 @@ fn generate_unified(
             .entry(b.module.clone())
             .or_default()
             .push(b);
+    }
+
+    // Index function bindings by module for quick lookup
+    let mut fn_bindings_by_module: HashMap<String, Vec<&codegen::bindings::FunctionBinding>> =
+        HashMap::new();
+    for fb in &all_function_bindings {
+        fn_bindings_by_module
+            .entry(fb.module.clone())
+            .or_default()
+            .push(fb);
     }
 
     // Compute ALL types that appear in ffi.rs so we can find unreexported ones
@@ -724,6 +741,11 @@ fn generate_unified(
             .get(&module.name)
             .unwrap_or(&empty_extra);
 
+        let empty_fn_bindings: Vec<&codegen::bindings::FunctionBinding> = Vec::new();
+        let module_fn_bindings = fn_bindings_by_module
+            .get(&module.rust_name)
+            .unwrap_or(&empty_fn_bindings);
+
         let reexport_code = codegen::rust::generate_module_reexports(
             &module.name,
             &module.rust_name,
@@ -731,6 +753,7 @@ fn generate_unified(
             &module_collections,
             symbol_table,
             module_bindings,
+            module_fn_bindings,
             module_extra_types,
         );
 
@@ -749,6 +772,10 @@ fn generate_unified(
     for (module_name, types) in &extra_types_by_module {
         if !graph_module_names.contains(module_name) && !types.is_empty() {
             let rust_name = module_graph::module_to_rust_name(module_name);
+            let empty_fn_bindings: Vec<&codegen::bindings::FunctionBinding> = Vec::new();
+            let module_fn_bindings = fn_bindings_by_module
+                .get(&rust_name)
+                .unwrap_or(&empty_fn_bindings);
             let reexport_code = codegen::rust::generate_module_reexports(
                 module_name,
                 &rust_name,
@@ -756,6 +783,7 @@ fn generate_unified(
                 &[],
                 symbol_table,
                 &[],
+                module_fn_bindings,
                 types,
             );
             let module_path = args.output.join(format!("{}.rs", rust_name));
@@ -769,16 +797,16 @@ fn generate_unified(
     // Generate module files for function-only modules (utility classes converted
     // to free functions that left no classes behind in the module)
     let extra_type_modules: HashSet<String> = extra_only_modules.iter().map(|(_, r)| r.clone()).collect();
-    for (rust_module, _) in &symbol_table.functions_by_module {
+    let _empty_fn_bindings_vec: Vec<&codegen::bindings::FunctionBinding> = Vec::new();
+    for (rust_module, fn_bindings) in &fn_bindings_by_module {
         if graph_rust_names.contains(rust_module) || extra_type_modules.contains(rust_module) {
             continue;
         }
-        let funcs = symbol_table.included_functions_for_module(rust_module);
-        if funcs.is_empty() {
+        if fn_bindings.is_empty() {
             continue;
         }
         // Derive the C++ module name from the namespace of the first function
-        let cpp_name = funcs[0].namespace.clone();
+        let cpp_name = fn_bindings[0].namespace.clone();
         let reexport_code = codegen::rust::generate_module_reexports(
             &cpp_name,
             rust_module,
@@ -786,13 +814,14 @@ fn generate_unified(
             &[],
             symbol_table,
             &[],
+            fn_bindings,
             &[],
         );
         let module_path = args.output.join(format!("{}.rs", rust_module));
         std::fs::write(&module_path, &reexport_code)?;
         generated_rs_files.push(module_path.clone());
         extra_only_modules.push((cpp_name.clone(), rust_module.clone()));
-        println!("  Wrote: {} (function-only module, {} functions)", module_path.display(), funcs.len());
+        println!("  Wrote: {} (function-only module, {} functions)", module_path.display(), fn_bindings.len());
     }
 
     // 4. Generate lib.rs with module declarations

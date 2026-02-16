@@ -6,7 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{poles_coefficients_3, rational_derivative, reverse_3};
+pub use crate::ffi::{
+    BSplSLib_poles_coefficients_array2ofpnt2 as poles_coefficients_array2ofpnt2,
+    BSplSLib_rational_derivative as rational_derivative,
+    BSplSLib_reverse_array2ofpnt_int_bool as reverse_array2ofpnt_int_bool,
+};
 
 // ========================
 // From BSplSLib_Cache.hxx

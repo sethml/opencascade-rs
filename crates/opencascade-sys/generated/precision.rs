@@ -7,8 +7,16 @@
 #![allow(non_snake_case)]
 
 pub use crate::ffi::{
-    angular, approximation, confusion, infinite, intersection, is_infinite, is_negative_infinite,
-    is_positive_infinite, p_approximation, p_approximation_2, p_confusion, p_confusion_2,
-    p_intersection, p_intersection_2, parametric, parametric_2, square_confusion,
-    square_p_confusion,
+    Precision_angular as angular, Precision_approximation as approximation,
+    Precision_confusion as confusion, Precision_infinite as infinite,
+    Precision_intersection as intersection, Precision_is_infinite as is_infinite,
+    Precision_is_negative_infinite as is_negative_infinite,
+    Precision_is_positive_infinite as is_positive_infinite,
+    Precision_p_approximation as p_approximation,
+    Precision_p_approximation_real as p_approximation_real, Precision_p_confusion as p_confusion,
+    Precision_p_confusion_real as p_confusion_real, Precision_p_intersection as p_intersection,
+    Precision_p_intersection_real as p_intersection_real,
+    Precision_parametric_real as parametric_real, Precision_parametric_real2 as parametric_real2,
+    Precision_square_confusion as square_confusion,
+    Precision_square_p_confusion as square_p_confusion,
 };

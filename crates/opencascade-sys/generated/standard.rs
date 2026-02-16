@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::purge;
+pub use crate::ffi::Standard_purge as purge;
 
 /// C++ enum: `Standard_HandlerStatus`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

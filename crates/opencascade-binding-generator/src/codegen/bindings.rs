@@ -284,6 +284,33 @@ pub struct ResolvedReturnTypeBinding {
     pub enum_rust_type: Option<String>,
 }
 
+/// Pre-computed binding decisions for a single free function.
+/// Parallel to `ClassBindings` — all naming, filtering, type mapping, and
+/// conflict resolution happens once during `compute_all_function_bindings()`.
+#[derive(Debug, Clone)]
+pub struct FunctionBinding {
+    /// Rust FFI name (short, used as module re-export alias, e.g. "precision_real")
+    pub rust_ffi_name: String,
+    /// C++ wrapper function name (the extern "C" symbol, e.g. "BRepBuilderAPI_precision_real")
+    pub cpp_wrapper_name: String,
+    /// C++ namespace (e.g. "BRepBuilderAPI")
+    pub namespace: String,
+    /// C++ short function name (e.g. "Precision")
+    pub short_name: String,
+    /// Rust module name (e.g. "b_rep_builder_api")
+    pub module: String,
+    /// Parameters with pre-computed type strings for ffi.rs, re-exports, and wrappers.hxx
+    pub params: Vec<ParamBinding>,
+    /// Return type with pre-computed type strings (None for void)
+    pub return_type: Option<ReturnTypeBinding>,
+    /// Source header file (e.g. "BRepBuilderAPI.hxx")
+    pub source_header: String,
+    /// Documentation comment
+    pub doc_comment: Option<String>,
+    /// C++ headers needed for this function's parameter and return types
+    pub cpp_headers: Vec<String>,
+}
+
 // ── Helper functions ────────────────────────────────────────────────────────
 
 /// Convert a Type to Rust FFI type string using full C++ names.
@@ -1332,13 +1359,22 @@ fn combine_name_suffix(base: &str, suffix: &str) -> String {
 }
 
 fn overload_suffix_for_params(params: &[Param]) -> String {
-    if params.is_empty() {
+    let types: Vec<Type> = params.iter().map(|p| p.ty.clone()).collect();
+    overload_suffix_for_types(&types)
+}
+
+/// Compute an overload suffix from a slice of types.
+/// Uses `Type::short_name()` to generate human-readable suffixes like
+/// `_real`, `_pnt_dir`, `_real3`. Consecutive identical types are compressed:
+/// `[f64, f64, f64]` → `_real3`.
+fn overload_suffix_for_types(types: &[Type]) -> String {
+    if types.is_empty() {
         return String::new();
     }
 
-    let type_names: Vec<String> = params
+    let type_names: Vec<String> = types
         .iter()
-        .map(|p| p.ty.short_name().to_lowercase())
+        .map(|t| t.short_name().to_lowercase())
         .collect();
 
     let mut parts: Vec<String> = Vec::new();
@@ -1358,6 +1394,17 @@ fn overload_suffix_for_params(params: &[Param]) -> String {
     }
 
     format!("_{}", parts.join("_"))
+}
+
+/// Strip const/mut ref qualifiers from a type, leaving inner type intact.
+/// Used to detect const/mut pair overloads (e.g., `const TopoDS_Shape&` vs `TopoDS_Shape&`).
+fn strip_ref_qualifiers(ty: &Type) -> Type {
+    match ty {
+        Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => {
+            strip_ref_qualifiers(inner)
+        }
+        other => other.clone(),
+    }
 }
 
 fn compute_constructor_bindings(
@@ -1881,6 +1928,222 @@ pub fn compute_all_class_bindings(
             compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name)
         })
         .collect()
+}
+
+// ── Free function bindings ──────────────────────────────────────────────────
+
+/// Collect C++ headers needed for a type (for #include directives in wrappers.hxx).
+fn collect_headers_for_type(ty: &Type, headers: &mut HashSet<String>, known_headers: &HashSet<String>) {
+    if ty.is_unbindable() {
+        return;
+    }
+    match ty {
+        Type::Class(name) => {
+            if matches!(name.as_str(),
+                "bool" | "char" | "int" | "unsigned" | "float" | "double" |
+                "void" | "size_t" | "Standard_Address"
+            ) {
+                return;
+            }
+            if !name.contains('_') && !name.starts_with("Standard") {
+                return;
+            }
+            let header = format!("{}.hxx", name);
+            if known_headers.is_empty() || known_headers.contains(&header) {
+                headers.insert(header);
+            }
+        }
+        Type::Handle(name) => {
+            let header = format!("{}.hxx", name);
+            if known_headers.is_empty() || known_headers.contains(&header) {
+                headers.insert(header);
+            }
+            headers.insert("Standard_Handle.hxx".to_string());
+        }
+        Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+            collect_headers_for_type(inner, headers, known_headers);
+        }
+        _ => {}
+    }
+}
+
+/// Compute all binding decisions for every free function.
+///
+/// This is the SINGLE place where naming (overload suffixes, dedup) happens
+/// for free functions, using the same `overload_suffix_for_types` / `combine_name_suffix`
+/// logic as class methods. The result is shared by all three output generators.
+pub fn compute_all_function_bindings(
+    symbol_table: &SymbolTable,
+    all_classes: &[&ParsedClass],
+    collection_names: &HashSet<String>,
+    known_headers: &HashSet<String>,
+) -> Vec<FunctionBinding> {
+    let all_functions = symbol_table.all_included_functions();
+    if all_functions.is_empty() {
+        return Vec::new();
+    }
+
+    // Build TypeContext (same as compute_all_class_bindings)
+    let mut all_class_names: HashSet<String> =
+        all_classes.iter().map(|c| c.name.clone()).collect();
+    all_class_names.extend(collection_names.iter().cloned());
+    let all_enum_names = &symbol_table.all_enum_names;
+
+    let handle_able_classes: HashSet<String> = all_classes
+        .iter()
+        .filter(|c| c.is_handle_type && !c.has_protected_destructor)
+        .map(|c| c.name.clone())
+        .collect();
+
+    let ffi_ctx = TypeContext {
+        current_module: "unified",
+        module_classes: &all_class_names,
+        all_enums: all_enum_names,
+        all_classes: &all_class_names,
+        handle_able_classes: Some(&handle_able_classes),
+        type_to_module: Some(&symbol_table.type_to_module),
+        enum_rust_types: Some(&symbol_table.enum_rust_types),
+    };
+
+    // Group by base rust_name to detect overloads
+    let mut name_groups: HashMap<String, usize> = HashMap::new();
+    for func in &all_functions {
+        *name_groups.entry(func.rust_name.clone()).or_insert(0) += 1;
+    }
+
+    // Pre-pass: identify "const/mut pair" overload groups.
+    // If ALL overloads of a name differ only in ref qualifiers (const vs mutable),
+    // the const variant keeps the base name and the mut variant gets `_mut`.
+    // This handles common patterns like TopoDS::Wire(const Shape&) / Wire(Shape&).
+    let mut const_mut_pair_names: HashSet<String> = HashSet::new();
+    for (base_name, &count) in &name_groups {
+        if count <= 1 {
+            continue;
+        }
+        let members: Vec<_> = all_functions
+            .iter()
+            .filter(|f| f.rust_name == *base_name)
+            .collect();
+        // Check if all members have the same canonical types (ignoring const/mut ref)
+        let canonical_types = |f: &crate::resolver::ResolvedFunction| -> Vec<Type> {
+            f.params
+                .iter()
+                .map(|p| strip_ref_qualifiers(&p.ty.original))
+                .collect()
+        };
+        let first_canonical = canonical_types(members[0]);
+        let all_same_canonical = members.iter().all(|m| canonical_types(m) == first_canonical);
+        if all_same_canonical {
+            const_mut_pair_names.insert(base_name.clone());
+        }
+    }
+
+    let mut used_names: HashSet<String> = HashSet::new();
+    let mut result = Vec::new();
+
+    for func in &all_functions {
+        let base_rust_name = &func.rust_name;
+        let is_overloaded = name_groups.get(base_rust_name).copied().unwrap_or(0) > 1;
+
+        // Compute overload suffix using the same algorithm as class methods
+        let rust_ffi_name = if !is_overloaded {
+            base_rust_name.clone()
+        } else if const_mut_pair_names.contains(base_rust_name) {
+            // Const/mut pair: const variant keeps base name, mut variant gets _mut
+            let has_mut_ref = func
+                .params
+                .iter()
+                .any(|p| matches!(&p.ty.original, Type::MutRef(_)));
+            if has_mut_ref {
+                format!("{}_mut", base_rust_name)
+            } else {
+                base_rust_name.clone()
+            }
+        } else {
+            let param_types: Vec<Type> = func.params.iter()
+                .map(|p| p.ty.original.clone())
+                .collect();
+            let suffix = overload_suffix_for_types(&param_types);
+            let candidate = if suffix.is_empty() {
+                base_rust_name.clone()
+            } else {
+                combine_name_suffix(base_rust_name, &suffix)
+            };
+            // If collision (two overloads with identical param type short names),
+            // try _mut suffix for mutable-ref variants before numeric fallback
+            if used_names.contains(&candidate) {
+                let has_mut_ref = func
+                    .params
+                    .iter()
+                    .any(|p| matches!(&p.ty.original, Type::MutRef(_)));
+                if has_mut_ref {
+                    let mut_candidate = format!("{}_mut", base_rust_name);
+                    if !used_names.contains(&mut_candidate) {
+                        mut_candidate
+                    } else {
+                        let mut counter = 2;
+                        loop {
+                            let numbered = format!("{}_{}", candidate, counter);
+                            if !used_names.contains(&numbered) {
+                                break numbered;
+                            }
+                            counter += 1;
+                        }
+                    }
+                } else {
+                    let mut counter = 2;
+                    loop {
+                        let numbered = format!("{}_{}", candidate, counter);
+                        if !used_names.contains(&numbered) {
+                            break numbered;
+                        }
+                        counter += 1;
+                    }
+                }
+            } else {
+                candidate
+            }
+        };
+
+        used_names.insert(rust_ffi_name.clone());
+        let cpp_wrapper_name = format!("{}_{}", func.namespace, rust_ffi_name);
+
+        // Build ParamBindings using the shared build_param_binding()
+        let params: Vec<ParamBinding> = func.params.iter()
+            .map(|p| build_param_binding(&p.name, &p.ty.original, &ffi_ctx))
+            .collect();
+
+        // Build ReturnTypeBinding
+        let return_type = func.return_type.as_ref()
+            .map(|rt| build_return_type_binding(&rt.original, &ffi_ctx));
+
+        // Collect C++ headers needed for this function's types
+        let mut headers: HashSet<String> = HashSet::new();
+        headers.insert(format!("{}.hxx", func.namespace));
+        for p in &func.params {
+            collect_headers_for_type(&p.ty.original, &mut headers, known_headers);
+        }
+        if let Some(ref rt) = func.return_type {
+            collect_headers_for_type(&rt.original, &mut headers, known_headers);
+        }
+        let mut cpp_headers: Vec<String> = headers.into_iter().collect();
+        cpp_headers.sort();
+
+        result.push(FunctionBinding {
+            rust_ffi_name,
+            cpp_wrapper_name,
+            namespace: func.namespace.clone(),
+            short_name: func.short_name.clone(),
+            module: func.rust_module.clone(),
+            params,
+            return_type,
+            source_header: func.source_header.clone(),
+            doc_comment: func.doc_comment.clone(),
+            cpp_headers,
+        });
+    }
+
+    result
 }
 
 // ── Emit functions ──────────────────────────────────────────────────────────

@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::write_3;
+pub use crate::ffi::StlAPI_write_shape_charptr_bool as write_shape_charptr_bool;
 
 // ========================
 // From StlAPI_Reader.hxx

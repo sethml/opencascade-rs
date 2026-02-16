@@ -6,12 +6,12 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::init;
+pub use crate::ffi::ShapeExtend_init as init;
 pub fn encode_status(status: crate::shape_extend::Status) -> i32 {
-    unsafe { crate::ffi::encode_status(status.into()) }
+    unsafe { crate::ffi::ShapeExtend_encode_status(status.into()) }
 }
 pub fn decode_status(flag: i32, status: crate::shape_extend::Status) -> bool {
-    unsafe { crate::ffi::decode_status(flag, status.into()) }
+    unsafe { crate::ffi::ShapeExtend_decode_status(flag, status.into()) }
 }
 
 /// This enumeration is used in

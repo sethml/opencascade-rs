@@ -6,7 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{restore_session, save_session};
+pub use crate::ffi::{
+    IFSelect_restore_session as restore_session, IFSelect_save_session as save_session,
+};
 
 /// Controls access on Values by an Editor
 /// EditOptional  : normal access, in addition may be removed

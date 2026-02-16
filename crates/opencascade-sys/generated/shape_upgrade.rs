@@ -7,7 +7,8 @@
 #![allow(non_snake_case)]
 
 pub use crate::ffi::{
-    c0b_spline_to_sequence_of_c1b_spline_curve, c0b_spline_to_sequence_of_c1b_spline_curve_mut,
+    ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve as c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve,
+    ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve as c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve,
 };
 
 // ========================
