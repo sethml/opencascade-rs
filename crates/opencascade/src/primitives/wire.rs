@@ -109,7 +109,7 @@ impl Wire {
 
         for index in 1..=wire_len {
             let wire_shape = wire_seq.value(index);
-            let wire = unsafe { &*topo_ds::wire(wire_shape) };
+            let wire = topo_ds::wire(wire_shape);
 
             make_wire.add_wire(wire);
         }
@@ -142,7 +142,7 @@ impl Wire {
             b_rep_builder_api::Transform::new_shape_trsf_bool2(wire_shape, &transform, false, false);
 
         let mirrored_shape = brep_transform.shape();
-        let mirrored_wire = unsafe { &*topo_ds::wire(mirrored_shape) };
+        let mirrored_wire = topo_ds::wire(mirrored_shape);
 
         Self::from_wire(mirrored_wire)
     }
@@ -168,7 +168,7 @@ impl Wire {
     pub fn fillet(&self, radius: f64) -> Wire {
         // Create a face from this wire
         let face = Face::from_wire(self).fillet(radius);
-        let inner = opencascade_sys::b_rep_tools::outer_wire(&*face.inner);
+        let inner = opencascade_sys::b_rep_tools::outer_wire(&face.inner);
 
         Self { inner }
     }
@@ -177,7 +177,7 @@ impl Wire {
     #[must_use]
     pub fn chamfer(&self, distance_1: f64) -> Wire {
         let face = Face::from_wire(self).chamfer(distance_1);
-        let inner = opencascade_sys::b_rep_tools::outer_wire(&*face.inner);
+        let inner = opencascade_sys::b_rep_tools::outer_wire(&face.inner);
 
         Self { inner }
     }
@@ -190,7 +190,7 @@ impl Wire {
         make_offset.perform(distance, 0.0);
 
         let offset_shape = make_offset.shape();
-        let result_wire = unsafe { &*topo_ds::wire(offset_shape) };
+        let result_wire = topo_ds::wire(offset_shape);
 
         Self::from_wire(result_wire)
     }
@@ -202,7 +202,7 @@ impl Wire {
         let mut make_pipe = b_rep_offset_api::MakePipe::new_wire_shape(&path.inner, profile_shape);
 
         let pipe_shape = make_pipe.shape();
-        let result_shell = unsafe { &*topo_ds::shell(pipe_shape) };
+        let result_shell = topo_ds::shell(pipe_shape);
 
         Shell::from_shell(result_shell)
     }

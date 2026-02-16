@@ -35,7 +35,7 @@ impl Solid {
         make_fillet.add_real_edge(radius, &edge.inner);
 
         let filleted_shape = make_fillet.shape();
-        let compound = unsafe { &*topo_ds::compound(filleted_shape) };
+        let compound = topo_ds::compound(filleted_shape);
 
         Compound::from_compound(compound)
     }
@@ -52,7 +52,7 @@ impl Solid {
         make_loft.check_compatibility(true);
 
         let shape = make_loft.shape();
-        let solid = unsafe { &*topo_ds::solid(shape) };
+        let solid = topo_ds::solid(shape);
 
         Self::from_solid(solid)
     }

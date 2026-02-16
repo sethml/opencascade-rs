@@ -135,7 +135,7 @@ impl Iterator for EdgeIterator {
 
     fn next(&mut self) -> Option<Self::Item> {
         if self.explorer.more() {
-            let edge = unsafe { &*topo_ds::edge(self.explorer.current()) };
+            let edge = topo_ds::edge(self.explorer.current());
             let edge = Edge::from_edge(edge);
 
             self.explorer.next();
@@ -215,7 +215,7 @@ impl Iterator for FaceIterator {
 
     fn next(&mut self) -> Option<Self::Item> {
         if self.explorer.more() {
-            let face = unsafe { &*topo_ds::face(self.explorer.current()) };
+            let face = topo_ds::face(self.explorer.current());
             let face = Face::from_face(face);
 
             self.explorer.next();
