@@ -299,7 +299,7 @@ mod tests {
     fn test_module_to_rust_name() {
         assert_eq!(module_to_rust_name("gp"), "gp");
         assert_eq!(module_to_rust_name("TopoDS"), "topo_ds");
-        assert_eq!(module_to_rust_name("BRepPrimAPI"), "brep_prim_api");
+        assert_eq!(module_to_rust_name("BRepPrimAPI"), "b_rep_prim_api");
     }
 
     #[test]

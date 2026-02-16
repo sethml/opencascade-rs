@@ -98,26 +98,15 @@ pub fn resolve_header_dependencies(
 
 /// Check if a header name looks like an OCCT header that should be parsed
 fn is_likely_occt_header(name: &str) -> bool {
-    // OCCT headers typically:
-    // 1. End with .hxx (main headers)
-    // 2. Don't start with lowercase (system headers like <string>)
-    // 3. Often have underscore separating module and class name
-    //
-    // Note: We exclude .lxx and .gxx files as they are inline implementation
-    // files that are #include'd by .hxx files. Parsing them separately causes
-    // redefinition errors.
+    // OCCT headers end with .hxx. System headers use different extensions
+    // (e.g., .h, no extension). We exclude .lxx and .gxx files as they are
+    // inline implementation files #include'd by .hxx files — parsing them
+    // separately causes redefinition errors.
     
     // Only process .hxx files
     if !name.ends_with(".hxx") {
         return false;
     }
-    
-    // OCCT headers usually start with uppercase
-    let first_char = name.chars().next().unwrap_or('a');
-    if !first_char.is_ascii_uppercase() {
-        return false;
-    }
-    
     true
 }
 

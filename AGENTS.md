@@ -7,6 +7,10 @@ documents in that directory describe the progress. Use
 scripts/regenerate-bindings.sh in order to run the generator and regenerate the
 ffi files in opencascade-sys/generated. You must regenerate bindings after modifying opencascade-binding-generator. Avoid using head or tail when running
 the script in order to avoid missing errors.
+Use scripts/run-binding-generator-tests.sh to run the binding generator unit
+tests. It sets up DYLD_LIBRARY_PATH for libclang on macOS. You can pass extra
+args, e.g. `./scripts/run-binding-generator-tests.sh -- --test-threads=1`.
+
 
 Avoid using head or tail when doing builds to avoid missing compile errors. Run
 builds and tests with `time`. When they take more than 5 minutes, stop and ask
