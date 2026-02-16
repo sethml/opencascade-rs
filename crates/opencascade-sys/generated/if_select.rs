@@ -11,22 +11,18 @@
 /// SessionFile from IFSelect. Returns True if Done, False in
 /// case of Error on Writing. <file> gives the name of the File
 /// to be produced (this avoids to export the class SessionFile).
-pub fn save_session(
-    WS: &crate::ffi::HandleIFSelectWorkSession,
-    file: *const std::ffi::c_char,
-) -> bool {
-    unsafe { crate::ffi::IFSelect_save_session(WS, file) }
+pub fn save_session(WS: &crate::ffi::HandleIFSelectWorkSession, file: &str) -> bool {
+    let c_file = std::ffi::CString::new(file).unwrap();
+    unsafe { crate::ffi::IFSelect_save_session(WS, c_file.as_ptr()) }
 }
 /// **Source:** `IFSelect.hxx` - `IFSelect::RestoreSession`
 /// Restore the state of a WorkSession from IFSelect, by using a
 /// SessionFile from IFSelect. Returns True if Done, False in
 /// case of Error on Writing. <file> gives the name of the File
 /// to be used (this avoids to export the class SessionFile).
-pub fn restore_session(
-    WS: &crate::ffi::HandleIFSelectWorkSession,
-    file: *const std::ffi::c_char,
-) -> bool {
-    unsafe { crate::ffi::IFSelect_restore_session(WS, file) }
+pub fn restore_session(WS: &crate::ffi::HandleIFSelectWorkSession, file: &str) -> bool {
+    let c_file = std::ffi::CString::new(file).unwrap();
+    unsafe { crate::ffi::IFSelect_restore_session(WS, c_file.as_ptr()) }
 }
 
 /// Controls access on Values by an Editor
@@ -275,13 +271,17 @@ impl Act {
     /// Creates an Act with a name, help and a function
     /// mode (Add or AddSet) is given when recording
     pub fn new_charptr2_actfunc(
-        name: *const std::ffi::c_char,
-        help: *const std::ffi::c_char,
+        name: &str,
+        help: &str,
         func: &crate::ffi::IFSelect_ActFunc,
     ) -> crate::OwnedPtr<Self> {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        let c_help = std::ffi::CString::new(help).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Act_ctor_charptr2_actfunc(
-                name, help, func,
+                c_name.as_ptr(),
+                c_help.as_ptr(),
+                func,
             ))
         }
     }
@@ -301,8 +301,10 @@ impl Act {
     /// Changes the default group name for the following Acts
     /// group empty means to come back to default from Activator
     /// Also a file name can be precised (to query by getsource)
-    pub fn set_group(group: *const std::ffi::c_char, file: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_Act_set_group(group, file) }
+    pub fn set_group(group: &str, file: &str) {
+        let c_group = std::ffi::CString::new(group).unwrap();
+        let c_file = std::ffi::CString::new(file).unwrap();
+        unsafe { crate::ffi::IFSelect_Act_set_group(c_group.as_ptr(), c_file.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_Act.hxx`:86 - `IFSelect_Act::get_type_name()`
@@ -365,15 +367,21 @@ impl Activator {
     /// **Source:** `IFSelect_Activator.hxx`:69 - `IFSelect_Activator::Add()`
     /// Allows a self-definition by an Activator of the Commands it
     /// processes, call the class method Adding (mode 0)
-    pub fn add(&self, number: i32, command: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_Activator_add(self as *const Self, number, command) }
+    pub fn add(&self, number: i32, command: &str) {
+        let c_command = std::ffi::CString::new(command).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_Activator_add(self as *const Self, number, c_command.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:73 - `IFSelect_Activator::AddSet()`
     /// Same as Add but specifies that this command is candidate for
     /// xset (creation of items, xset : named items; mode 1)
-    pub fn add_set(&self, number: i32, command: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_Activator_add_set(self as *const Self, number, command) }
+    pub fn add_set(&self, number: i32, command: &str) {
+        let c_command = std::ffi::CString::new(command).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_Activator_add_set(self as *const Self, number, c_command.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:107 - `IFSelect_Activator::Help()`
@@ -397,8 +405,16 @@ impl Activator {
     /// Group and SetGroup define a "Group of commands" which
     /// correspond to an Activator. Default is "XSTEP"
     /// Also a file may be attached
-    pub fn set_for_group(&mut self, group: *const std::ffi::c_char, file: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_Activator_set_for_group(self as *mut Self, group, file) }
+    pub fn set_for_group(&mut self, group: &str, file: &str) {
+        let c_group = std::ffi::CString::new(group).unwrap();
+        let c_file = std::ffi::CString::new(file).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_Activator_set_for_group(
+                self as *mut Self,
+                c_group.as_ptr(),
+                c_file.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:118 - `IFSelect_Activator::DynamicType()`
@@ -415,33 +431,37 @@ impl Activator {
     pub fn adding(
         actor: &crate::ffi::HandleIFSelectActivator,
         number: i32,
-        command: *const std::ffi::c_char,
+        command: &str,
         mode: i32,
     ) {
-        unsafe { crate::ffi::IFSelect_Activator_adding(actor, number, command, mode) }
+        let c_command = std::ffi::CString::new(command).unwrap();
+        unsafe { crate::ffi::IFSelect_Activator_adding(actor, number, c_command.as_ptr(), mode) }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:76 - `IFSelect_Activator::Remove()`
     /// Removes a Command, if it is recorded (else, does nothing)
-    pub fn remove(command: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_Activator_remove(command) }
+    pub fn remove(command: &str) {
+        let c_command = std::ffi::CString::new(command).unwrap();
+        unsafe { crate::ffi::IFSelect_Activator_remove(c_command.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:80 - `IFSelect_Activator::Select()`
     /// Selects, for a Command given by its title, an actor with its
     /// command number. Returns True if found, False else
     pub fn select(
-        command: *const std::ffi::c_char,
+        command: &str,
         number: &mut i32,
         actor: &mut crate::ffi::HandleIFSelectActivator,
     ) -> bool {
-        unsafe { crate::ffi::IFSelect_Activator_select(command, number, actor) }
+        let c_command = std::ffi::CString::new(command).unwrap();
+        unsafe { crate::ffi::IFSelect_Activator_select(c_command.as_ptr(), number, actor) }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:85 - `IFSelect_Activator::Mode()`
     /// Returns mode recorded for a command. -1 if not found
-    pub fn mode(command: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::IFSelect_Activator_mode(command) }
+    pub fn mode(command: &str) -> i32 {
+        let c_command = std::ffi::CString::new(command).unwrap();
+        unsafe { crate::ffi::IFSelect_Activator_mode(c_command.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:92 - `IFSelect_Activator::Commands()`
@@ -452,9 +472,15 @@ impl Activator {
     /// By default, it returns the whole list of known commands.
     pub fn commands(
         mode: i32,
-        command: *const std::ffi::c_char,
+        command: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Activator_commands(mode, command)) }
+        let c_command = std::ffi::CString::new(command).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Activator_commands(
+                mode,
+                c_command.as_ptr(),
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:118 - `IFSelect_Activator::get_type_name()`
@@ -886,11 +912,16 @@ impl ContextModif {
     pub fn new_graph_copytool_charptr(
         graph: &crate::ffi::Interface_Graph,
         TC: &crate::ffi::Interface_CopyTool,
-        filename: *const std::ffi::c_char,
+        filename: &str,
     ) -> crate::OwnedPtr<Self> {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::IFSelect_ContextModif_ctor_graph_copytool_charptr(graph, TC, filename),
+                crate::ffi::IFSelect_ContextModif_ctor_graph_copytool_charptr(
+                    graph,
+                    TC,
+                    c_filename.as_ptr(),
+                ),
             )
         }
     }
@@ -907,11 +938,13 @@ impl ContextModif {
     /// transferred entities (no filter active)
     pub fn new_graph_charptr(
         graph: &crate::ffi::Interface_Graph,
-        filename: *const std::ffi::c_char,
+        filename: &str,
     ) -> crate::OwnedPtr<Self> {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_ctor_graph_charptr(
-                graph, filename,
+                graph,
+                c_filename.as_ptr(),
             ))
         }
     }
@@ -1000,8 +1033,9 @@ impl ContextModif {
     /// ValueOriginal and ValueResult) for default trace level >= 2.
     /// To be called on each individual entity really modified
     /// <mess> is an optional additional message
-    pub fn trace(&mut self, mess: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_ContextModif_trace(self as *mut Self, mess) }
+    pub fn trace(&mut self, mess: &str) {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        unsafe { crate::ffi::IFSelect_ContextModif_trace(self as *mut Self, c_mess.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_ContextModif.hxx`:180 - `IFSelect_ContextModif::AddCheck()`
@@ -2061,12 +2095,16 @@ impl EditForm {
         editor: &crate::ffi::HandleIFSelectEditor,
         readonly: bool,
         undoable: bool,
-        label: *const std::ffi::c_char,
+        label: &str,
     ) -> crate::OwnedPtr<Self> {
+        let c_label = std::ffi::CString::new(label).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IFSelect_EditForm_ctor_handleifselecteditor_bool2_charptr(
-                    editor, readonly, undoable, label,
+                    editor,
+                    readonly,
+                    undoable,
+                    c_label.as_ptr(),
                 ),
             )
         }
@@ -2081,10 +2119,11 @@ impl EditForm {
         nums: &crate::ffi::TColStd_SequenceOfInteger,
         readonly: bool,
         undoable: bool,
-        label: *const std::ffi::c_char,
+        label: &str,
     ) -> crate::OwnedPtr<Self> {
+        let c_label = std::ffi::CString::new(label).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_EditForm_ctor_handleifselecteditor_sequenceofinteger_bool2_charptr(editor, nums, readonly, undoable, label))
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_EditForm_ctor_handleifselecteditor_sequenceofinteger_bool2_charptr(editor, nums, readonly, undoable, c_label.as_ptr()))
         }
     }
 
@@ -2178,16 +2217,18 @@ impl EditForm {
     /// of EditForm
     /// If it is not complete, for a recorded (in the Editor) but
     /// non-loaded name, returns negative value (- number)
-    pub fn name_number(&self, name: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::IFSelect_EditForm_name_number(self as *const Self, name) }
+    pub fn name_number(&self, name: &str) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_EditForm_name_number(self as *const Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_EditForm.hxx`:131 - `IFSelect_EditForm::NameRank()`
     /// Returns the Rank of Value in the EditForm for a given Name
     /// i.e. if it is not complete, for a recorded (in the Editor) but
     /// non-loaded name, returns 0
-    pub fn name_rank(&self, name: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::IFSelect_EditForm_name_rank(self as *const Self, name) }
+    pub fn name_rank(&self, name: &str) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_EditForm_name_rank(self as *const Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_EditForm.hxx`:135 - `IFSelect_EditForm::LoadDefault()`
@@ -2555,8 +2596,9 @@ impl Editor {
     /// **Source:** `IFSelect_Editor.hxx`:88 - `IFSelect_Editor::NameNumber()`
     /// Returns the number (ident) of a Value, from its name, short or
     /// complete. If not found, returns 0
-    pub fn name_number(&self, name: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::IFSelect_Editor_name_number(self as *const Self, name) }
+    pub fn name_number(&self, name: &str) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_Editor_name_number(self as *const Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_Editor.hxx`:99 - `IFSelect_Editor::MaxNameLength()`
@@ -2753,11 +2795,9 @@ impl Functions {
     /// **Source:** `IFSelect_Functions.hxx`:52 - `IFSelect_Functions::GiveEntityNumber()`
     /// Same as GetEntity, but returns the number in the model of the
     /// entity. Returns 0 for null handle
-    pub fn give_entity_number(
-        WS: &crate::ffi::HandleIFSelectWorkSession,
-        name: *const std::ffi::c_char,
-    ) -> i32 {
-        unsafe { crate::ffi::IFSelect_Functions_give_entity_number(WS, name) }
+    pub fn give_entity_number(WS: &crate::ffi::HandleIFSelectWorkSession, name: &str) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_Functions_give_entity_number(WS, c_name.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_Functions.hxx`:64 - `IFSelect_Functions::GiveList()`
@@ -2772,11 +2812,17 @@ impl Functions {
     /// If <second> is erroneous, it is ignored
     pub fn give_list(
         WS: &crate::ffi::HandleIFSelectWorkSession,
-        first: *const std::ffi::c_char,
-        second: *const std::ffi::c_char,
+        first: &str,
+        second: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        let c_first = std::ffi::CString::new(first).unwrap();
+        let c_second = std::ffi::CString::new(second).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Functions_give_list(WS, first, second))
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Functions_give_list(
+                WS,
+                c_first.as_ptr(),
+                c_second.as_ptr(),
+            ))
         }
     }
 
@@ -2790,11 +2836,16 @@ impl Functions {
     /// Returns Null Handle if not found not well evaluated
     pub fn give_dispatch(
         WS: &crate::ffi::HandleIFSelectWorkSession,
-        name: *const std::ffi::c_char,
+        name: &str,
         mode: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
+        let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Functions_give_dispatch(WS, name, mode))
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Functions_give_dispatch(
+                WS,
+                c_name.as_ptr(),
+                mode,
+            ))
         }
     }
 
@@ -3274,8 +3325,11 @@ impl IntParam {
     /// Else, it is ignored
     ///
     /// If <statname> is empty, disconnects the IntParam from Static
-    pub fn set_static_name(&mut self, statname: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_IntParam_set_static_name(self as *mut Self, statname) }
+    pub fn set_static_name(&mut self, statname: &str) {
+        let c_statname = std::ffi::CString::new(statname).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_IntParam_set_static_name(self as *mut Self, c_statname.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_IntParam.hxx`:63 - `IFSelect_IntParam::StaticName()`
@@ -3772,8 +3826,11 @@ impl ModelCopier {
     /// Adds the name of a just sent file, if BeginSentFiles
     /// has commanded recording; else does nothing
     /// It is called by methods SendCopied Sending
-    pub fn add_sent_file(&mut self, filename: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_ModelCopier_add_sent_file(self as *mut Self, filename) }
+    pub fn add_sent_file(&mut self, filename: &str) {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_ModelCopier_add_sent_file(self as *mut Self, c_filename.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_ModelCopier.hxx`:221 - `IFSelect_ModelCopier::SentFiles()`
@@ -4250,8 +4307,9 @@ impl PacketList {
     /// **Source:** `IFSelect_PacketList.hxx`:51 - `IFSelect_PacketList::SetName()`
     /// Sets a name to a packet list : this makes easier a general
     /// routine to print it. Default is "Packets"
-    pub fn set_name(&mut self, name: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_PacketList_set_name(self as *mut Self, name) }
+    pub fn set_name(&mut self, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_PacketList_set_name(self as *mut Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_PacketList.hxx`:54 - `IFSelect_PacketList::Name()`
@@ -4382,10 +4440,12 @@ impl ParamEditor {
     /// Creates a ParamEditor, empty, with a maximum count of params
     /// (default is 100)
     /// And a label, by default it will be "Param Editor"
-    pub fn new_int_charptr(nbmax: i32, label: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_int_charptr(nbmax: i32, label: &str) -> crate::OwnedPtr<Self> {
+        let c_label = std::ffi::CString::new(label).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ParamEditor_ctor_int_charptr(
-                nbmax, label,
+                nbmax,
+                c_label.as_ptr(),
             ))
         }
     }
@@ -4393,18 +4453,16 @@ impl ParamEditor {
     /// **Source:** `IFSelect_ParamEditor.hxx`:61 - `IFSelect_ParamEditor::AddConstantText()`
     /// Adds a Constant Text, it will be Read Only
     /// By default, its long name equates its shortname
-    pub fn add_constant_text(
-        &mut self,
-        val: *const std::ffi::c_char,
-        shortname: *const std::ffi::c_char,
-        completename: *const std::ffi::c_char,
-    ) {
+    pub fn add_constant_text(&mut self, val: &str, shortname: &str, completename: &str) {
+        let c_val = std::ffi::CString::new(val).unwrap();
+        let c_shortname = std::ffi::CString::new(shortname).unwrap();
+        let c_completename = std::ffi::CString::new(completename).unwrap();
         unsafe {
             crate::ffi::IFSelect_ParamEditor_add_constant_text(
                 self as *mut Self,
-                val,
-                shortname,
-                completename,
+                c_val.as_ptr(),
+                c_shortname.as_ptr(),
+                c_completename.as_ptr(),
             )
         }
     }
@@ -5980,8 +6038,13 @@ unsafe impl crate::CppDeletable for SelectFlag {
 impl SelectFlag {
     /// **Source:** `IFSelect_SelectFlag.hxx`:44 - `IFSelect_SelectFlag::IFSelect_SelectFlag()`
     /// Creates a Select Flag, to query a flag designated by its name
-    pub fn new_charptr(flagname: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_ctor_charptr(flagname)) }
+    pub fn new_charptr(flagname: &str) -> crate::OwnedPtr<Self> {
+        let c_flagname = std::ffi::CString::new(flagname).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_ctor_charptr(
+                c_flagname.as_ptr(),
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectFlag.hxx`:47 - `IFSelect_SelectFlag::FlagName()`
@@ -8405,8 +8468,9 @@ impl SelectSuite {
 
     /// **Source:** `IFSelect_SelectSuite.hxx`:78 - `IFSelect_SelectSuite::SetLabel()`
     /// Sets a value for the Label
-    pub fn set_label(&mut self, lab: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_SelectSuite_set_label(self as *mut Self, lab) }
+    pub fn set_label(&mut self, lab: &str) {
+        let c_lab = std::ffi::CString::new(lab).unwrap();
+        unsafe { crate::ffi::IFSelect_SelectSuite_set_label(self as *mut Self, c_lab.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SelectSuite.hxx`:92 - `IFSelect_SelectSuite::Label()`
@@ -9249,12 +9313,14 @@ impl SessionFile {
     /// But such a SessionFile may not Read a File to a WorkSession.
     pub fn new_handleifselectworksession_charptr(
         WS: &crate::ffi::HandleIFSelectWorkSession,
-        filename: *const std::ffi::c_char,
+        filename: &str,
     ) -> crate::OwnedPtr<Self> {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IFSelect_SessionFile_ctor_handleifselectworksession_charptr(
-                    WS, filename,
+                    WS,
+                    c_filename.as_ptr(),
                 ),
             )
         }
@@ -9280,8 +9346,9 @@ impl SessionFile {
 
     /// **Source:** `IFSelect_SessionFile.hxx`:93 - `IFSelect_SessionFile::AddLine()`
     /// Adds a line to the list of recorded lines
-    pub fn add_line(&mut self, line: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_SessionFile_add_line(self as *mut Self, line) }
+    pub fn add_line(&mut self, line: &str) {
+        let c_line = std::ffi::CString::new(line).unwrap();
+        unsafe { crate::ffi::IFSelect_SessionFile_add_line(self as *mut Self, c_line.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SessionFile.hxx`:97 - `IFSelect_SessionFile::RemoveLastLine()`
@@ -9296,22 +9363,30 @@ impl SessionFile {
     /// the list of lines.
     /// Returns False (with no clearing) if the file could not be
     /// created
-    pub fn write_file(&mut self, name: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::IFSelect_SessionFile_write_file(self as *mut Self, name) }
+    pub fn write_file(&mut self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_SessionFile_write_file(self as *mut Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SessionFile.hxx`:108 - `IFSelect_SessionFile::ReadFile()`
     /// Reads the recorded lines from a file named <name>, after
     /// having cleared the list (stops if RecognizeFile fails)
     /// Returns False (with no clearing) if the file could not be read
-    pub fn read_file(&mut self, name: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::IFSelect_SessionFile_read_file(self as *mut Self, name) }
+    pub fn read_file(&mut self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_SessionFile_read_file(self as *mut Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SessionFile.hxx`:111 - `IFSelect_SessionFile::RecognizeFile()`
     /// Recognizes the header line. returns True if OK, False else
-    pub fn recognize_file(&mut self, headerline: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::IFSelect_SessionFile_recognize_file(self as *mut Self, headerline) }
+    pub fn recognize_file(&mut self, headerline: &str) -> bool {
+        let c_headerline = std::ffi::CString::new(headerline).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_SessionFile_recognize_file(
+                self as *mut Self,
+                c_headerline.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `IFSelect_SessionFile.hxx`:118 - `IFSelect_SessionFile::Write()`
@@ -9320,8 +9395,9 @@ impl SessionFile {
     /// Returned Value is : 0 for OK, -1 File could not be created,
     /// >0 Error during Write (see WriteSession)
     /// IsDone can be called too (will return True for OK)
-    pub fn write(&mut self, filename: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::IFSelect_SessionFile_write(self as *mut Self, filename) }
+    pub fn write(&mut self, filename: &str) -> i32 {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe { crate::ffi::IFSelect_SessionFile_write(self as *mut Self, c_filename.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SessionFile.hxx`:125 - `IFSelect_SessionFile::Read()`
@@ -9330,8 +9406,9 @@ impl SessionFile {
     /// Returned Value is : 0 for OK, -1 File could not be opened,
     /// >0 Error during Read  (see WriteSession)
     /// IsDone can be called too (will return True for OK)
-    pub fn read(&mut self, filename: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::IFSelect_SessionFile_read(self as *mut Self, filename) }
+    pub fn read(&mut self, filename: &str) -> i32 {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe { crate::ffi::IFSelect_SessionFile_read(self as *mut Self, c_filename.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SessionFile.hxx`:133 - `IFSelect_SessionFile::WriteSession()`
@@ -9385,8 +9462,9 @@ impl SessionFile {
     /// **Source:** `IFSelect_SessionFile.hxx`:172 - `IFSelect_SessionFile::SplitLine()`
     /// Internal routine which processes a line into words
     /// and prepares its exploration
-    pub fn split_line(&mut self, line: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_SessionFile_split_line(self as *mut Self, line) }
+    pub fn split_line(&mut self, line: &str) {
+        let c_line = std::ffi::CString::new(line).unwrap();
+        unsafe { crate::ffi::IFSelect_SessionFile_split_line(self as *mut Self, c_line.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SessionFile.hxx`:190 - `IFSelect_SessionFile::IsDone()`
@@ -9427,8 +9505,9 @@ impl SessionFile {
     /// **Source:** `IFSelect_SessionFile.hxx`:225 - `IFSelect_SessionFile::SendText()`
     /// During a Write action, commands to send a Text without
     /// interpretation. It will be sent as well
-    pub fn send_text(&mut self, text: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_SessionFile_send_text(self as *mut Self, text) }
+    pub fn send_text(&mut self, text: &str) {
+        let c_text = std::ffi::CString::new(text).unwrap();
+        unsafe { crate::ffi::IFSelect_SessionFile_send_text(self as *mut Self, c_text.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SessionFile.hxx`:230 - `IFSelect_SessionFile::SetLastGeneral()`
@@ -9543,8 +9622,13 @@ impl SessionPilot {
     /// Creates an empty SessionPilot, with a prompt which will be
     /// displayed on querying commands. If not precised (""), this
     /// prompt is set to "Test-XSTEP>"
-    pub fn new_charptr(prompt: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SessionPilot_ctor_charptr(prompt)) }
+    pub fn new_charptr(prompt: &str) -> crate::OwnedPtr<Self> {
+        let c_prompt = std::ffi::CString::new(prompt).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SessionPilot_ctor_charptr(
+                c_prompt.as_ptr(),
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:78 - `IFSelect_SessionPilot::Session()`
@@ -9669,11 +9753,12 @@ impl SessionPilot {
     /// either by command x or exit, or by reaching end of file
     /// Return Value follows the rules of Do : RetEnd for normal end,
     /// RetFail if script could not be opened
-    pub fn read_script(&mut self, file: *const std::ffi::c_char) -> crate::if_select::ReturnStatus {
+    pub fn read_script(&mut self, file: &str) -> crate::if_select::ReturnStatus {
+        let c_file = std::ffi::CString::new(file).unwrap();
         unsafe {
             crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_SessionPilot_read_script(
                 self as *mut Self,
-                file,
+                c_file.as_ptr(),
             ))
             .unwrap()
         }
@@ -9735,8 +9820,9 @@ impl SessionPilot {
     /// if it gives an integer, returns its value
     /// else, considers it as ENtityLabel (preferably case sensitive)
     /// in case of failure, returns 0
-    pub fn number(&self, val: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::IFSelect_SessionPilot_number(self as *const Self, val) }
+    pub fn number(&self, val: &str) -> i32 {
+        let c_val = std::ffi::CString::new(val).unwrap();
+        unsafe { crate::ffi::IFSelect_SessionPilot_number(self as *const Self, c_val.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:206 - `IFSelect_SessionPilot::Help()`
@@ -10897,8 +10983,13 @@ impl SignMultiple {
     /// **Source:** `IFSelect_SignMultiple.hxx`:44 - `IFSelect_SignMultiple::IFSelect_SignMultiple()`
     /// Creates an empty SignMultiple with a Name
     /// This name should take expected tabulations into account
-    pub fn new_charptr(name: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignMultiple_ctor_charptr(name)) }
+    pub fn new_charptr(name: &str) -> crate::OwnedPtr<Self> {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignMultiple_ctor_charptr(
+                c_name.as_ptr(),
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SignMultiple.hxx`:71 - `IFSelect_SignMultiple::DynamicType()`
@@ -11327,8 +11418,9 @@ impl Signature {
     /// Value is known when starting
     /// For instance, for CDL types, rather do not fill this,
     /// but for a specific enumeration (such as a status), can be used
-    pub fn add_case(&mut self, acase: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_Signature_add_case(self as *mut Self, acase) }
+    pub fn add_case(&mut self, acase: &str) {
+        let c_acase = std::ffi::CString::new(acase).unwrap();
+        unsafe { crate::ffi::IFSelect_Signature_add_case(self as *mut Self, c_acase.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
@@ -11371,12 +11463,9 @@ impl Signature {
     /// Default procedure to tell if a value <val> matches a text
     /// with a criterium <exact>. <exact> = True requires equality,
     /// else only contained (no reg-exp)
-    pub fn match_value(
-        val: *const std::ffi::c_char,
-        text: &crate::ffi::TCollection_AsciiString,
-        exact: bool,
-    ) -> bool {
-        unsafe { crate::ffi::IFSelect_Signature_match_value(val, text, exact) }
+    pub fn match_value(val: &str, text: &crate::ffi::TCollection_AsciiString, exact: bool) -> bool {
+        let c_val = std::ffi::CString::new(val).unwrap();
+        unsafe { crate::ffi::IFSelect_Signature_match_value(c_val.as_ptr(), text, exact) }
     }
 
     /// **Source:** `IFSelect_Signature.hxx`:103 - `IFSelect_Signature::IntValue()`
@@ -11496,12 +11585,13 @@ impl SignatureList {
     /// begin by <root>
     pub fn list(
         &self,
-        root: *const std::ffi::c_char,
+        root: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        let c_root = std::ffi::CString::new(root).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignatureList_list(
                 self as *const Self,
-                root,
+                c_root.as_ptr(),
             ))
         }
     }
@@ -11522,8 +11612,9 @@ impl SignatureList {
     /// **Source:** `IFSelect_SignatureList.hxx`:101 - `IFSelect_SignatureList::NbTimes()`
     /// Returns the number of times a signature was counted,
     /// 0 if it has not been recorded at all
-    pub fn nb_times(&self, sign: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::IFSelect_SignatureList_nb_times(self as *const Self, sign) }
+    pub fn nb_times(&self, sign: &str) -> i32 {
+        let c_sign = std::ffi::CString::new(sign).unwrap();
+        unsafe { crate::ffi::IFSelect_SignatureList_nb_times(self as *const Self, c_sign.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SignatureList.hxx`:106 - `IFSelect_SignatureList::Entities()`
@@ -11532,20 +11623,22 @@ impl SignatureList {
     /// It is a Null Handle if the list of entities is not known
     pub fn entities(
         &self,
-        sign: *const std::ffi::c_char,
+        sign: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        let c_sign = std::ffi::CString::new(sign).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignatureList_entities(
                 self as *const Self,
-                sign,
+                c_sign.as_ptr(),
             ))
         }
     }
 
     /// **Source:** `IFSelect_SignatureList.hxx`:109 - `IFSelect_SignatureList::SetName()`
     /// Defines a name for a SignatureList (used to print it)
-    pub fn set_name(&mut self, name: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_SignatureList_set_name(self as *mut Self, name) }
+    pub fn set_name(&mut self, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_SignatureList_set_name(self as *mut Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SignatureList.hxx`:113 - `IFSelect_SignatureList::Name()`
@@ -11871,8 +11964,15 @@ impl WorkLibrary {
 
     /// **Source:** `IFSelect_WorkLibrary.hxx`:135 - `IFSelect_WorkLibrary::SetDumpHelp()`
     /// Records a short line of help for a level (0 - max)
-    pub fn set_dump_help(&mut self, level: i32, help: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_WorkLibrary_set_dump_help(self as *mut Self, level, help) }
+    pub fn set_dump_help(&mut self, level: i32, help: &str) {
+        let c_help = std::ffi::CString::new(help).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkLibrary_set_dump_help(
+                self as *mut Self,
+                level,
+                c_help.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `IFSelect_WorkLibrary.hxx`:138 - `IFSelect_WorkLibrary::DumpHelp()`
@@ -12030,8 +12130,14 @@ impl WorkSession {
     /// **Source:** `IFSelect_WorkSession.hxx`:141 - `IFSelect_WorkSession::SetLoadedFile()`
     /// Stores the filename used for read for setting the model
     /// It is cleared by SetModel and ClearData(1)
-    pub fn set_loaded_file(&mut self, theFileName: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_WorkSession_set_loaded_file(self as *mut Self, theFileName) }
+    pub fn set_loaded_file(&mut self, theFileName: &str) {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_set_loaded_file(
+                self as *mut Self,
+                c_theFileName.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:145 - `IFSelect_WorkSession::LoadedFile()`
@@ -12046,14 +12152,12 @@ impl WorkSession {
     /// Returns a integer status which can be :
     /// RetDone if OK,  RetVoid if no Protocol not defined,
     /// RetError for file not found, RetFail if fail during read
-    pub fn read_file(
-        &mut self,
-        filename: *const std::ffi::c_char,
-    ) -> crate::if_select::ReturnStatus {
+    pub fn read_file(&mut self, filename: &str) -> crate::if_select::ReturnStatus {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_WorkSession_read_file(
                 self as *mut Self,
-                filename,
+                c_filename.as_ptr(),
             ))
             .unwrap()
         }
@@ -12075,9 +12179,14 @@ impl WorkSession {
     /// Returns 0 if not found, < 0 if more than one found (first
     /// found in negative).
     /// If <val> just gives an integer value, returns it
-    pub fn number_from_label(&self, val: *const std::ffi::c_char, afternum: i32) -> i32 {
+    pub fn number_from_label(&self, val: &str, afternum: i32) -> i32 {
+        let c_val = std::ffi::CString::new(val).unwrap();
         unsafe {
-            crate::ffi::IFSelect_WorkSession_number_from_label(self as *const Self, val, afternum)
+            crate::ffi::IFSelect_WorkSession_number_from_label(
+                self as *const Self,
+                c_val.as_ptr(),
+                afternum,
+            )
         }
     }
 
@@ -12175,23 +12284,28 @@ impl WorkSession {
 
     /// **Source:** `IFSelect_WorkSession.hxx`:307 - `IFSelect_WorkSession::NameIdent()`
     /// Returns the Ident attached to a Name, 0 if name not recorded
-    pub fn name_ident(&self, name: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::IFSelect_WorkSession_name_ident(self as *const Self, name) }
+    pub fn name_ident(&self, name: &str) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_WorkSession_name_ident(self as *const Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:348 - `IFSelect_WorkSession::RemoveNamedItem()`
     /// Removes an Item from the Session, given its Name
     /// Returns True if Done, False else (Name not recorded)
     /// (Applies only on Item which are Named)
-    pub fn remove_named_item(&mut self, name: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::IFSelect_WorkSession_remove_named_item(self as *mut Self, name) }
+    pub fn remove_named_item(&mut self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_remove_named_item(self as *mut Self, c_name.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:352 - `IFSelect_WorkSession::RemoveName()`
     /// Removes a Name without removing the Item
     /// Returns True if Done, False else (Name not recorded)
-    pub fn remove_name(&mut self, name: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::IFSelect_WorkSession_remove_name(self as *mut Self, name) }
+    pub fn remove_name(&mut self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_WorkSession_remove_name(self as *mut Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:362 - `IFSelect_WorkSession::ClearItems()`
@@ -12262,12 +12376,13 @@ impl WorkSession {
     /// If <label> is empty, returns all Names
     pub fn item_names_for_label(
         &self,
-        label: *const std::ffi::c_char,
+        label: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        let c_label = std::ffi::CString::new(label).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_item_names_for_label(
                 self as *const Self,
-                label,
+                c_label.as_ptr(),
             ))
         }
     }
@@ -12288,11 +12403,12 @@ impl WorkSession {
     /// - 1 : <label> must match the exact beginning (the end is free)
     /// - 2 : <label> must be at least once wherever in the Item Label
     /// - other values are ignored
-    pub fn next_ident_for_label(&self, label: *const std::ffi::c_char, id: i32, mode: i32) -> i32 {
+    pub fn next_ident_for_label(&self, label: &str, id: i32, mode: i32) -> i32 {
+        let c_label = std::ffi::CString::new(label).unwrap();
         unsafe {
             crate::ffi::IFSelect_WorkSession_next_ident_for_label(
                 self as *const Self,
-                label,
+                c_label.as_ptr(),
                 id,
                 mode,
             )
@@ -12324,12 +12440,13 @@ impl WorkSession {
     /// Failure (see AddItem/AddNamedItem)
     pub fn new_int_param(
         &mut self,
-        name: *const std::ffi::c_char,
+        name: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectIntParam> {
+        let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_new_int_param(
                 self as *mut Self,
-                name,
+                c_name.as_ptr(),
             ))
         }
     }
@@ -12378,12 +12495,13 @@ impl WorkSession {
     /// Handle in case of Failure (see AddItem/AddNamedItem)
     pub fn new_text_param(
         &mut self,
-        name: *const std::ffi::c_char,
+        name: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_new_text_param(
                 self as *mut Self,
-                name,
+                c_name.as_ptr(),
             ))
         }
     }
@@ -12394,9 +12512,12 @@ impl WorkSession {
     pub fn set_text_value(
         &mut self,
         par: &crate::ffi::HandleTCollectionHAsciiString,
-        val: *const std::ffi::c_char,
+        val: &str,
     ) -> bool {
-        unsafe { crate::ffi::IFSelect_WorkSession_set_text_value(self as *mut Self, par, val) }
+        let c_val = std::ffi::CString::new(val).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_set_text_value(self as *mut Self, par, c_val.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:472 - `IFSelect_WorkSession::Selection()`
@@ -12657,13 +12778,14 @@ impl WorkSession {
     pub fn new_transform_standard(
         &mut self,
         copy: bool,
-        name: *const std::ffi::c_char,
+        name: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectTransformer> {
+        let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_new_transform_standard(
                 self as *mut Self,
                 copy,
-                name,
+                c_name.as_ptr(),
             ))
         }
     }
@@ -12733,21 +12855,33 @@ impl WorkSession {
 
     /// **Source:** `IFSelect_WorkSession.hxx`:720 - `IFSelect_WorkSession::SetFilePrefix()`
     /// Defines a File Prefix
-    pub fn set_file_prefix(&mut self, name: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_WorkSession_set_file_prefix(self as *mut Self, name) }
+    pub fn set_file_prefix(&mut self, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_set_file_prefix(self as *mut Self, c_name.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:724 - `IFSelect_WorkSession::SetDefaultFileRoot()`
     /// Defines a Default File Root Name. Clears it is <name> = ""
     /// Returns True if OK, False if <name> already set for a Dispatch
-    pub fn set_default_file_root(&mut self, name: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::IFSelect_WorkSession_set_default_file_root(self as *mut Self, name) }
+    pub fn set_default_file_root(&mut self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_set_default_file_root(
+                self as *mut Self,
+                c_name.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:727 - `IFSelect_WorkSession::SetFileExtension()`
     /// Defines a File Extension
-    pub fn set_file_extension(&mut self, name: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_WorkSession_set_file_extension(self as *mut Self, name) }
+    pub fn set_file_extension(&mut self, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_set_file_extension(self as *mut Self, c_name.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:734 - `IFSelect_WorkSession::SetFileRoot()`
@@ -12756,26 +12890,34 @@ impl WorkSession {
     /// This has as effect to inhibit the production of File by <disp>
     /// Returns False if <disp> is not in the WorkSession or if a
     /// root name is already defined for it
-    pub fn set_file_root(
-        &mut self,
-        disp: &crate::ffi::HandleIFSelectDispatch,
-        name: *const std::ffi::c_char,
-    ) -> bool {
-        unsafe { crate::ffi::IFSelect_WorkSession_set_file_root(self as *mut Self, disp, name) }
+    pub fn set_file_root(&mut self, disp: &crate::ffi::HandleIFSelectDispatch, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_set_file_root(self as *mut Self, disp, c_name.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:739 - `IFSelect_WorkSession::GiveFileRoot()`
     /// Extracts File Root Name from a given complete file name
     /// (uses OSD_Path)
-    pub fn give_file_root(&self, file: *const std::ffi::c_char) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_WorkSession_give_file_root(self as *const Self, file) }
+    pub fn give_file_root(&self, file: &str) -> *const std::ffi::c_char {
+        let c_file = std::ffi::CString::new(file).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_give_file_root(self as *const Self, c_file.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:743 - `IFSelect_WorkSession::GiveFileComplete()`
     /// Completes a file name as required, with Prefix and Extension
     /// (if defined; for a non-defined item, completes nothing)
-    pub fn give_file_complete(&self, file: *const std::ffi::c_char) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_WorkSession_give_file_complete(self as *const Self, file) }
+    pub fn give_file_complete(&self, file: &str) -> *const std::ffi::c_char {
+        let c_file = std::ffi::CString::new(file).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_give_file_complete(
+                self as *const Self,
+                c_file.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:747 - `IFSelect_WorkSession::ClearFile()`
@@ -12919,13 +13061,14 @@ impl WorkSession {
     /// Fills LastRunCheckList
     pub fn send_all(
         &mut self,
-        filename: *const std::ffi::c_char,
+        filename: &str,
         computegraph: bool,
     ) -> crate::if_select::ReturnStatus {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_WorkSession_send_all(
                 self as *mut Self,
-                filename,
+                c_filename.as_ptr(),
                 computegraph,
             ))
             .unwrap()
@@ -12945,15 +13088,16 @@ impl WorkSession {
     /// Fills LastRunCheckList
     pub fn send_selected(
         &mut self,
-        filename: *const std::ffi::c_char,
+        filename: &str,
         sel: &crate::ffi::HandleIFSelectSelection,
         computegraph: bool,
     ) -> crate::if_select::ReturnStatus {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::if_select::ReturnStatus::try_from(
                 crate::ffi::IFSelect_WorkSession_send_selected(
                     self as *mut Self,
-                    filename,
+                    c_filename.as_ptr(),
                     sel,
                     computegraph,
                 ),
@@ -12968,13 +13112,14 @@ impl WorkSession {
     /// Done OK, Fail file could not be written, Error no norm is selected
     /// Remark  : It is a simple, one-file writing, other operations are
     /// available (such as splitting ...) which calls SendAll
-    pub fn write_file_charptr(
-        &mut self,
-        filename: *const std::ffi::c_char,
-    ) -> crate::if_select::ReturnStatus {
+    pub fn write_file_charptr(&mut self, filename: &str) -> crate::if_select::ReturnStatus {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::if_select::ReturnStatus::try_from(
-                crate::ffi::IFSelect_WorkSession_write_file_charptr(self as *mut Self, filename),
+                crate::ffi::IFSelect_WorkSession_write_file_charptr(
+                    self as *mut Self,
+                    c_filename.as_ptr(),
+                ),
             )
             .unwrap()
         }
@@ -12989,14 +13134,15 @@ impl WorkSession {
     /// available (such as splitting ...) which calls SendSelected
     pub fn write_file_charptr_handleifselectselection(
         &mut self,
-        filename: *const std::ffi::c_char,
+        filename: &str,
         sel: &crate::ffi::HandleIFSelectSelection,
     ) -> crate::if_select::ReturnStatus {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::if_select::ReturnStatus::try_from(
                 crate::ffi::IFSelect_WorkSession_write_file_charptr_handleifselectselection(
                     self as *mut Self,
-                    filename,
+                    c_filename.as_ptr(),
                     sel,
                 ),
             )
@@ -13116,13 +13262,14 @@ impl WorkSession {
     pub fn new_select_pointed(
         &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        name: *const std::ffi::c_char,
+        name: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_new_select_pointed(
                 self as *mut Self,
                 list,
-                name,
+                c_name.as_ptr(),
             ))
         }
     }
@@ -13158,12 +13305,13 @@ impl WorkSession {
     /// Else, returns a Null Handle
     pub fn give_selection(
         &self,
-        selname: *const std::ffi::c_char,
+        selname: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        let c_selname = std::ffi::CString::new(selname).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_give_selection(
                 self as *const Self,
-                selname,
+                c_selname.as_ptr(),
             ))
         }
     }
@@ -13183,14 +13331,16 @@ impl WorkSession {
     /// the input is given by the remaining ...)
     pub fn give_list(
         &self,
-        first: *const std::ffi::c_char,
-        second: *const std::ffi::c_char,
+        first: &str,
+        second: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        let c_first = std::ffi::CString::new(first).unwrap();
+        let c_second = std::ffi::CString::new(second).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_give_list(
                 self as *const Self,
-                first,
-                second,
+                c_first.as_ptr(),
+                c_second.as_ptr(),
             ))
         }
     }
@@ -13243,8 +13393,11 @@ impl WorkSession {
     /// **Source:** `IFSelect_WorkSession.hxx`:1060 - `IFSelect_WorkSession::ListItems()`
     /// Lists the Labels of all Items of the WorkSession
     /// If <label> is defined, lists labels which contain it
-    pub fn list_items(&self, label: *const std::ffi::c_char) {
-        unsafe { crate::ffi::IFSelect_WorkSession_list_items(self as *const Self, label) }
+    pub fn list_items(&self, label: &str) {
+        let c_label = std::ffi::CString::new(label).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_list_items(self as *const Self, c_label.as_ptr())
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:1066 - `IFSelect_WorkSession::ListFinalModifiers()`

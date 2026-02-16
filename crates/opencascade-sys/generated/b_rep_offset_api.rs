@@ -875,7 +875,7 @@ impl MakeEvolved {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType.into(),
+            theJoinType,
             theIsAxeProf,
             theIsSolid,
             theIsProfOnSpine,
@@ -902,7 +902,7 @@ impl MakeEvolved {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType.into(),
+            theJoinType,
             theIsAxeProf,
             theIsSolid,
             theIsProfOnSpine,
@@ -928,7 +928,7 @@ impl MakeEvolved {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType.into(),
+            theJoinType,
             theIsAxeProf,
             theIsSolid,
             theIsProfOnSpine,
@@ -953,7 +953,7 @@ impl MakeEvolved {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType.into(),
+            theJoinType,
             theIsAxeProf,
             theIsSolid,
             false,
@@ -977,7 +977,7 @@ impl MakeEvolved {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType.into(),
+            theJoinType,
             theIsAxeProf,
             false,
             false,
@@ -1000,7 +1000,7 @@ impl MakeEvolved {
         Self::new_shape_wire_jointype_bool3_real_bool2(
             theSpine,
             theProfile,
-            theJoinType.into(),
+            theJoinType,
             true,
             false,
             false,
@@ -1918,7 +1918,7 @@ impl MakeOffset {
         Spine: &crate::ffi::TopoDS_Face,
         Join: crate::geom_abs::JoinType,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_face_jointype_bool(Spine, Join.into(), false)
+        Self::new_face_jointype_bool(Spine, Join, false)
     }
 
     /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:62 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
@@ -1926,7 +1926,7 @@ impl MakeOffset {
         Spine: &crate::ffi::TopoDS_Wire,
         Join: crate::geom_abs::JoinType,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_wire_jointype_bool(Spine, Join.into(), false)
+        Self::new_wire_jointype_bool(Spine, Join, false)
     }
 
     /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:58 - `BRepOffsetAPI_MakeOffset::Init()`
@@ -2378,7 +2378,7 @@ impl MakePipe {
         Profile: &crate::ffi::TopoDS_Shape,
         aMode: crate::geom_fill::Trihedron,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_wire_shape_trihedron_bool(Spine, Profile, aMode.into(), false)
+        Self::new_wire_shape_trihedron_bool(Spine, Profile, aMode, false)
     }
 
     /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:68 - `BRepOffsetAPI_MakePipe::Pipe()`

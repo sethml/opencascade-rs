@@ -257,11 +257,16 @@ pub fn detect_closedness(
 /// @param theProgress the range of progress indicator to fill in
 pub fn write_shape_charptr_progressrange(
     theShape: &crate::ffi::TopoDS_Shape,
-    theFile: *const std::ffi::c_char,
+    theFile: &str,
     theProgress: &crate::ffi::Message_ProgressRange,
 ) -> bool {
+    let c_theFile = std::ffi::CString::new(theFile).unwrap();
     unsafe {
-        crate::ffi::BRepTools_write_shape_charptr_progressrange(theShape, theFile, theProgress)
+        crate::ffi::BRepTools_write_shape_charptr_progressrange(
+            theShape,
+            c_theFile.as_ptr(),
+            theProgress,
+        )
     }
 }
 /// **Source:** `BRepTools.hxx` - `BRepTools::Write`
@@ -278,16 +283,17 @@ pub fn write_shape_charptr_progressrange(
 /// @param theProgress the range of progress indicator to fill in
 pub fn write_shape_charptr_bool2_formatversion_progressrange(
     theShape: &crate::ffi::TopoDS_Shape,
-    theFile: *const std::ffi::c_char,
+    theFile: &str,
     theWithTriangles: bool,
     theWithNormals: bool,
     theVersion: crate::top_tools::FormatVersion,
     theProgress: &crate::ffi::Message_ProgressRange,
 ) -> bool {
+    let c_theFile = std::ffi::CString::new(theFile).unwrap();
     unsafe {
         crate::ffi::BRepTools_write_shape_charptr_bool2_formatversion_progressrange(
             theShape,
-            theFile,
+            c_theFile.as_ptr(),
             theWithTriangles,
             theWithNormals,
             theVersion.into(),
@@ -300,11 +306,12 @@ pub fn write_shape_charptr_bool2_formatversion_progressrange(
 /// <B> is used to build the shape.
 pub fn read(
     Sh: &mut crate::ffi::TopoDS_Shape,
-    File: *const std::ffi::c_char,
+    File: &str,
     B: &crate::ffi::BRep_Builder,
     theProgress: &crate::ffi::Message_ProgressRange,
 ) -> bool {
-    unsafe { crate::ffi::BRepTools_read(Sh, File, B, theProgress) }
+    let c_File = std::ffi::CString::new(File).unwrap();
+    unsafe { crate::ffi::BRepTools_read(Sh, c_File.as_ptr(), B, theProgress) }
 }
 /// **Source:** `BRepTools.hxx` - `BRepTools::EvalAndUpdateTol`
 /// Evals real tolerance of edge  <theE>.

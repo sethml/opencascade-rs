@@ -109,23 +109,23 @@ impl AbortiveTransaction {
     }
 
     /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Standard_AbortiveTransaction()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_AbortiveTransaction_ctor_charptr(
-                theMessage,
+                c_theMessage.as_ptr(),
             ))
         }
     }
 
     /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Standard_AbortiveTransaction()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_AbortiveTransaction_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -136,8 +136,9 @@ impl AbortiveTransaction {
     }
 
     /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_AbortiveTransaction_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_AbortiveTransaction_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::get_type_name()`
@@ -191,13 +192,12 @@ impl ArrayStreamBuffer {
     /// Passed pointer is stored as is (memory is NOT copied nor released with destructor).
     /// @param theBegin pointer to the beginning of pre-allocated buffer
     /// @param theSize  length of pre-allocated buffer
-    pub fn new_charptr_size(
-        theBegin: *const std::ffi::c_char,
-        theSize: usize,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr_size(theBegin: &str, theSize: usize) -> crate::OwnedPtr<Self> {
+        let c_theBegin = std::ffi::CString::new(theBegin).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ArrayStreamBuffer_ctor_charptr_size(
-                theBegin, theSize,
+                c_theBegin.as_ptr(),
+                theSize,
             ))
         }
     }
@@ -207,8 +207,15 @@ impl ArrayStreamBuffer {
     /// Passed pointer is stored as is (memory is NOT copied nor released with destructor).
     /// @param theBegin pointer to the beginning of pre-allocated buffer
     /// @param theSize  length of pre-allocated buffer
-    pub fn init(&mut self, theBegin: *const std::ffi::c_char, theSize: usize) {
-        unsafe { crate::ffi::Standard_ArrayStreamBuffer_init(self as *mut Self, theBegin, theSize) }
+    pub fn init(&mut self, theBegin: &str, theSize: usize) {
+        let c_theBegin = std::ffi::CString::new(theBegin).unwrap();
+        unsafe {
+            crate::ffi::Standard_ArrayStreamBuffer_init(
+                self as *mut Self,
+                c_theBegin.as_ptr(),
+                theSize,
+            )
+        }
     }
 }
 
@@ -331,23 +338,23 @@ impl ConstructionError {
     }
 
     /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Standard_ConstructionError()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ConstructionError_ctor_charptr(
-                theMessage,
+                c_theMessage.as_ptr(),
             ))
         }
     }
 
     /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Standard_ConstructionError()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ConstructionError_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -358,8 +365,9 @@ impl ConstructionError {
     }
 
     /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_ConstructionError_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_ConstructionError_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::get_type_name()`
@@ -393,21 +401,23 @@ impl DimensionError {
     }
 
     /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Standard_DimensionError()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionError_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionError_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Standard_DimensionError()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionError_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -418,8 +428,9 @@ impl DimensionError {
     }
 
     /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_DimensionError_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_DimensionError_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::get_type_name()`
@@ -453,23 +464,23 @@ impl DimensionMismatch {
     }
 
     /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionMismatch_ctor_charptr(
-                theMessage,
+                c_theMessage.as_ptr(),
             ))
         }
     }
 
     /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionMismatch_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -480,8 +491,9 @@ impl DimensionMismatch {
     }
 
     /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_DimensionMismatch_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_DimensionMismatch_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::get_type_name()`
@@ -515,21 +527,23 @@ impl DivideByZero {
     }
 
     /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Standard_DivideByZero()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_DivideByZero_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_DivideByZero_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Standard_DivideByZero()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DivideByZero_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -540,8 +554,9 @@ impl DivideByZero {
     }
 
     /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_DivideByZero_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_DivideByZero_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::get_type_name()`
@@ -575,21 +590,23 @@ impl DomainError {
     }
 
     /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Standard_DomainError()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_DomainError_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_DomainError_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Standard_DomainError()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DomainError_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -600,8 +617,9 @@ impl DomainError {
     }
 
     /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_DomainError_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_DomainError_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::get_type_name()`
@@ -854,22 +872,24 @@ impl Failure {
     /// **Source:** `Standard_Failure.hxx`:41 - `Standard_Failure::Standard_Failure()`
     /// Creates a status object of type "Failure".
     /// @param[in] theDesc  exception description
-    pub fn new_charptr(theDesc: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_ctor_charptr(theDesc)) }
+    pub fn new_charptr(theDesc: &str) -> crate::OwnedPtr<Self> {
+        let c_theDesc = std::ffi::CString::new(theDesc).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_ctor_charptr(c_theDesc.as_ptr()))
+        }
     }
 
     /// **Source:** `Standard_Failure.hxx`:46 - `Standard_Failure::Standard_Failure()`
     /// Creates a status object of type "Failure" with stack trace.
     /// @param[in] theDesc  exception description
     /// @param[in] theStackTrace  associated stack trace
-    pub fn new_charptr2(
-        theDesc: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theDesc: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theDesc = std::ffi::CString::new(theDesc).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_ctor_charptr2(
-                theDesc,
-                theStackTrace,
+                c_theDesc.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -882,8 +902,14 @@ impl Failure {
 
     /// **Source:** `Standard_Failure.hxx`:64 - `Standard_Failure::SetMessageString()`
     /// Sets error message
-    pub fn set_message_string(&mut self, theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_Failure_set_message_string(self as *mut Self, theMessage) }
+    pub fn set_message_string(&mut self, theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::ffi::Standard_Failure_set_message_string(
+                self as *mut Self,
+                c_theMessage.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `Standard_Failure.hxx`:67 - `Standard_Failure::GetStackString()`
@@ -894,8 +920,11 @@ impl Failure {
 
     /// **Source:** `Standard_Failure.hxx`:70 - `Standard_Failure::SetStackString()`
     /// Sets the stack trace string
-    pub fn set_stack_string(&mut self, theStack: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_Failure_set_stack_string(self as *mut Self, theStack) }
+    pub fn set_stack_string(&mut self, theStack: &str) {
+        let c_theStack = std::ffi::CString::new(theStack).unwrap();
+        unsafe {
+            crate::ffi::Standard_Failure_set_stack_string(self as *mut Self, c_theStack.as_ptr())
+        }
     }
 
     /// **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
@@ -904,8 +933,11 @@ impl Failure {
     }
 
     /// **Source:** `Standard_Failure.hxx`:74 - `Standard_Failure::Reraise()`
-    pub fn reraise_charptr(&mut self, aMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_Failure_reraise_charptr(self as *mut Self, aMessage) }
+    pub fn reraise_charptr(&mut self, aMessage: &str) {
+        let c_aMessage = std::ffi::CString::new(aMessage).unwrap();
+        unsafe {
+            crate::ffi::Standard_Failure_reraise_charptr(self as *mut Self, c_aMessage.as_ptr())
+        }
     }
 
     /// **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
@@ -927,8 +959,9 @@ impl Failure {
     /// Raises an exception of type "Failure" and associates
     /// an error message to it. The message can be printed
     /// in an exception handler.
-    pub fn raise(aMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_Failure_raise(aMessage) }
+    pub fn raise(aMessage: &str) {
+        let c_aMessage = std::ffi::CString::new(aMessage).unwrap();
+        unsafe { crate::ffi::Standard_Failure_raise(c_aMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_Failure.hxx`:93 - `Standard_Failure::NewInstance()`
@@ -936,23 +969,28 @@ impl Failure {
     /// Shall be used to protect against possible construction of exception object in C stack,
     /// which is dangerous since some of methods require that object was allocated dynamically.
     pub fn new_instance_charptr(
-        theMessage: *const std::ffi::c_char,
+        theMessage: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_new_instance_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_new_instance_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_Failure.hxx`:96 - `Standard_Failure::NewInstance()`
     /// Used to construct an instance of the exception object as a handle.
     pub fn new_instance_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
+        theMessage: &str,
+        theStackTrace: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_new_instance_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1032,8 +1070,11 @@ impl GUID {
     /// following format:
     /// Length : 36 char
     /// "00000000-0000-0000-0000-000000000000"
-    pub fn new_charptr(aGuid: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_charptr(aGuid)) }
+    pub fn new_charptr(aGuid: &str) -> crate::OwnedPtr<Self> {
+        let c_aGuid = std::ffi::CString::new(aGuid).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_charptr(c_aGuid.as_ptr()))
+        }
     }
 
     /// **Source:** `Standard_GUID.hxx`:49 - `Standard_GUID::Standard_GUID()`
@@ -1093,8 +1134,9 @@ impl GUID {
     /// **Source:** `Standard_GUID.hxx`:105 - `Standard_GUID::CheckGUIDFormat()`
     /// Check the format of a GUID string.
     /// It checks the size, the position of the '-' and the correct size of fields.
-    pub fn check_guid_format(aGuid: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::Standard_GUID_check_guid_format(aGuid) }
+    pub fn check_guid_format(aGuid: &str) -> bool {
+        let c_aGuid = std::ffi::CString::new(aGuid).unwrap();
+        unsafe { crate::ffi::Standard_GUID_check_guid_format(c_aGuid.as_ptr()) }
     }
 }
 
@@ -1118,21 +1160,23 @@ impl ImmutableObject {
     }
 
     /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Standard_ImmutableObject()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_ImmutableObject_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_ImmutableObject_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Standard_ImmutableObject()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ImmutableObject_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1143,8 +1187,9 @@ impl ImmutableObject {
     }
 
     /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_ImmutableObject_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_ImmutableObject_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::get_type_name()`
@@ -1178,21 +1223,23 @@ impl LicenseError {
     }
 
     /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Standard_LicenseError()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseError_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseError_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Standard_LicenseError()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseError_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1203,8 +1250,9 @@ impl LicenseError {
     }
 
     /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_LicenseError_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_LicenseError_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::get_type_name()`
@@ -1238,21 +1286,23 @@ impl LicenseNotFound {
     }
 
     /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Standard_LicenseNotFound()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseNotFound_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseNotFound_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Standard_LicenseNotFound()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseNotFound_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1263,8 +1313,9 @@ impl LicenseNotFound {
     }
 
     /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_LicenseNotFound_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_LicenseNotFound_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::get_type_name()`
@@ -1459,21 +1510,23 @@ impl MultiplyDefined {
     }
 
     /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Standard_MultiplyDefined()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_MultiplyDefined_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_MultiplyDefined_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Standard_MultiplyDefined()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_MultiplyDefined_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1484,8 +1537,9 @@ impl MultiplyDefined {
     }
 
     /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_MultiplyDefined_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_MultiplyDefined_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::get_type_name()`
@@ -1594,21 +1648,23 @@ impl NegativeValue {
     }
 
     /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Standard_NegativeValue()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_NegativeValue_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NegativeValue_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Standard_NegativeValue()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NegativeValue_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1619,8 +1675,9 @@ impl NegativeValue {
     }
 
     /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_NegativeValue_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_NegativeValue_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::get_type_name()`
@@ -1654,21 +1711,23 @@ impl NoMoreObject {
     }
 
     /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Standard_NoMoreObject()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_NoMoreObject_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NoMoreObject_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Standard_NoMoreObject()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NoMoreObject_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1679,8 +1738,9 @@ impl NoMoreObject {
     }
 
     /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_NoMoreObject_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_NoMoreObject_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::get_type_name()`
@@ -1714,21 +1774,23 @@ impl NoSuchObject {
     }
 
     /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Standard_NoSuchObject()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_NoSuchObject_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NoSuchObject_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Standard_NoSuchObject()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NoSuchObject_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1739,8 +1801,9 @@ impl NoSuchObject {
     }
 
     /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_NoSuchObject_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_NoSuchObject_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::get_type_name()`
@@ -1774,21 +1837,23 @@ impl NotImplemented {
     }
 
     /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Standard_NotImplemented()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_NotImplemented_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NotImplemented_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Standard_NotImplemented()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NotImplemented_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1799,8 +1864,9 @@ impl NotImplemented {
     }
 
     /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_NotImplemented_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_NotImplemented_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::get_type_name()`
@@ -1834,21 +1900,23 @@ impl NullObject {
     }
 
     /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Standard_NullObject()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_NullObject_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NullObject_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Standard_NullObject()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NullObject_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1859,8 +1927,9 @@ impl NullObject {
     }
 
     /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_NullObject_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_NullObject_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::get_type_name()`
@@ -1894,21 +1963,23 @@ impl NullValue {
     }
 
     /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Standard_NullValue()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_NullValue_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NullValue_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Standard_NullValue()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NullValue_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1919,8 +1990,9 @@ impl NullValue {
     }
 
     /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_NullValue_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_NullValue_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::get_type_name()`
@@ -1954,21 +2026,23 @@ impl NumericError {
     }
 
     /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Standard_NumericError()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_NumericError_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NumericError_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Standard_NumericError()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NumericError_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1979,8 +2053,9 @@ impl NumericError {
     }
 
     /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_NumericError_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_NumericError_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::get_type_name()`
@@ -2023,9 +2098,12 @@ unsafe impl crate::CppDeletable for OutOfMemory {
 impl OutOfMemory {
     /// **Source:** `Standard_OutOfMemory.hxx`:54 - `Standard_OutOfMemory::Standard_OutOfMemory()`
     /// Constructor is kept public for backward compatibility
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_OutOfMemory_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_OutOfMemory_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
@@ -2037,8 +2115,14 @@ impl OutOfMemory {
 
     /// **Source:** `Standard_OutOfMemory.hxx`:60 - `Standard_OutOfMemory::SetMessageString()`
     /// Sets error message
-    pub fn set_message_string(&mut self, aMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_OutOfMemory_set_message_string(self as *mut Self, aMessage) }
+    pub fn set_message_string(&mut self, aMessage: &str) {
+        let c_aMessage = std::ffi::CString::new(aMessage).unwrap();
+        unsafe {
+            crate::ffi::Standard_OutOfMemory_set_message_string(
+                self as *mut Self,
+                c_aMessage.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::DynamicType()`
@@ -2048,8 +2132,9 @@ impl OutOfMemory {
 
     /// **Source:** `Standard_OutOfMemory.hxx`:63 - `Standard_OutOfMemory::Raise()`
     /// Raises exception with specified message string
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_OutOfMemory_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_OutOfMemory_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::get_type_name()`
@@ -2083,21 +2168,23 @@ impl OutOfRange {
     }
 
     /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Standard_OutOfRange()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_OutOfRange_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_OutOfRange_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Standard_OutOfRange()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_OutOfRange_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -2108,8 +2195,9 @@ impl OutOfRange {
     }
 
     /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_OutOfRange_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_OutOfRange_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::get_type_name()`
@@ -2143,19 +2231,23 @@ impl Overflow {
     }
 
     /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Standard_Overflow()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Overflow_ctor_charptr(theMessage)) }
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Overflow_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
     }
 
     /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Standard_Overflow()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_Overflow_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -2166,8 +2258,9 @@ impl Overflow {
     }
 
     /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_Overflow_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_Overflow_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::get_type_name()`
@@ -2272,21 +2365,23 @@ impl ProgramError {
     }
 
     /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Standard_ProgramError()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_ProgramError_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_ProgramError_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Standard_ProgramError()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ProgramError_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -2297,8 +2392,9 @@ impl ProgramError {
     }
 
     /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_ProgramError_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_ProgramError_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::get_type_name()`
@@ -2332,21 +2428,23 @@ impl RangeError {
     }
 
     /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Standard_RangeError()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_RangeError_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_RangeError_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Standard_RangeError()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_RangeError_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -2357,8 +2455,9 @@ impl RangeError {
     }
 
     /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_RangeError_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_RangeError_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::get_type_name()`
@@ -2489,9 +2588,13 @@ impl Transient {
 
     /// **Source:** `Standard_Transient.hxx`:78 - `Standard_Transient::IsInstance()`
     /// Returns a true value if this is an instance of TypeName.
-    pub fn is_instance_charptr(&self, theTypeName: *const std::ffi::c_char) -> bool {
+    pub fn is_instance_charptr(&self, theTypeName: &str) -> bool {
+        let c_theTypeName = std::ffi::CString::new(theTypeName).unwrap();
         unsafe {
-            crate::ffi::Standard_Transient_is_instance_charptr(self as *const Self, theTypeName)
+            crate::ffi::Standard_Transient_is_instance_charptr(
+                self as *const Self,
+                c_theTypeName.as_ptr(),
+            )
         }
     }
 
@@ -2509,8 +2612,14 @@ impl Transient {
     /// Returns true if this is an instance of TypeName or an
     /// instance of any class that inherits from TypeName.
     /// Note that multiple inheritance is not supported by OCCT RTTI mechanism.
-    pub fn is_kind_charptr(&self, theTypeName: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::Standard_Transient_is_kind_charptr(self as *const Self, theTypeName) }
+    pub fn is_kind_charptr(&self, theTypeName: &str) -> bool {
+        let c_theTypeName = std::ffi::CString::new(theTypeName).unwrap();
+        unsafe {
+            crate::ffi::Standard_Transient_is_kind_charptr(
+                self as *const Self,
+                c_theTypeName.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -2622,8 +2731,11 @@ impl Type {
     /// **Source:** `Standard_Type.hxx`:141 - `Standard_Type::SubType()`
     /// Returns True if this type is the same as theOther, or inherits from theOther.
     /// Note that multiple inheritance is not supported.
-    pub fn sub_type_charptr(&self, theOther: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::Standard_Type_sub_type_charptr(self as *const Self, theOther) }
+    pub fn sub_type_charptr(&self, theOther: &str) -> bool {
+        let c_theOther = std::ffi::CString::new(theOther).unwrap();
+        unsafe {
+            crate::ffi::Standard_Type_sub_type_charptr(self as *const Self, c_theOther.as_ptr())
+        }
     }
 
     /// **Source:** `Standard_Type.hxx`:174 - `Standard_Type::DynamicType()`
@@ -2689,21 +2801,23 @@ impl TypeMismatch {
     }
 
     /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Standard_TypeMismatch()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_TypeMismatch_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_TypeMismatch_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Standard_TypeMismatch()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_TypeMismatch_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -2714,8 +2828,9 @@ impl TypeMismatch {
     }
 
     /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_TypeMismatch_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_TypeMismatch_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::get_type_name()`
@@ -2749,21 +2864,23 @@ impl Underflow {
     }
 
     /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Standard_Underflow()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_Underflow_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Underflow_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Standard_Underflow()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_Underflow_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -2774,8 +2891,9 @@ impl Underflow {
     }
 
     /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Standard_Underflow_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Standard_Underflow_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::get_type_name()`

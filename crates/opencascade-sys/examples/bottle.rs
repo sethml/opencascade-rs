@@ -256,9 +256,8 @@ pub fn main() {
         false,
     );
     let mut stl_writer = stl_api::Writer::new();
-    let filename = std::ffi::CString::new("bottle.stl").unwrap();
     let success = stl_writer
-        .write(compound.as_shape(), filename.as_ptr(), &progress);
+        .write(compound.as_shape(), "bottle.stl", &progress);
 
     println!("Done! Success = {success}");
 }

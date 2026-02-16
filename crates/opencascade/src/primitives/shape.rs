@@ -13,7 +13,6 @@ use opencascade_sys::{
     if_select, message, shape_upgrade, step_control, stl_api, t_colgp, top_abs, top_exp,
     top_loc, top_tools, topo_ds,
 };
-use std::ffi::CString;
 use std::path::Path;
 
 pub struct Shape {
@@ -491,8 +490,7 @@ impl Shape {
     pub fn read_step(path: impl AsRef<Path>) -> Result<Self, Error> {
         let mut reader = step_control::Reader::new();
         let path_str = path.as_ref().to_string_lossy();
-        let c_path = CString::new(path_str.as_ref()).map_err(|_| Error::StepReadFailed)?;
-        let status = reader.read_file_charptr(c_path.as_ptr());
+        let status = reader.read_file_charptr(&path_str);
         if status != if_select::ReturnStatus::Retvoid {
             return Err(Error::StepReadFailed);
         }
@@ -516,8 +514,7 @@ impl Shape {
             return Err(Error::StepWriteFailed);
         }
         let path_str = path.as_ref().to_string_lossy();
-        let c_path = CString::new(path_str.as_ref()).map_err(|_| Error::StepWriteFailed)?;
-        let status = writer.write(c_path.as_ptr());
+        let status = writer.write(&path_str);
         if status != if_select::ReturnStatus::Retdone {
             return Err(Error::StepWriteFailed);
         }
@@ -527,8 +524,7 @@ impl Shape {
     pub fn read_iges(path: impl AsRef<Path>) -> Result<Self, Error> {
         let mut reader = iges_control::Reader::new();
         let path_str = path.as_ref().to_string_lossy();
-        let c_path = CString::new(path_str.as_ref()).map_err(|_| Error::IgesReadFailed)?;
-        let status = reader.as_xs_control_reader_mut().read_file(c_path.as_ptr());
+        let status = reader.as_xs_control_reader_mut().read_file(&path_str);
         if status != if_select::ReturnStatus::Retvoid {
             return Err(Error::IgesReadFailed);
         }
@@ -547,9 +543,8 @@ impl Shape {
         }
         writer.compute_model();
         let path_str = path.as_ref().to_string_lossy();
-        let c_path = CString::new(path_str.as_ref()).map_err(|_| Error::IgesWriteFailed)?;
         let fnes = true;
-        let success = writer.write(c_path.as_ptr(), fnes);
+        let success = writer.write(&path_str, fnes);
         if success {
             Ok(())
         } else {
@@ -621,8 +616,7 @@ impl Shape {
 
         let mut writer = stl_api::Writer::new();
         let path_str = path.as_ref().to_string_lossy();
-        let c_path = CString::new(path_str.as_ref()).map_err(|_| Error::StlWriteFailed)?;
-        let success = writer.write(&self.inner, c_path.as_ptr(), &progress);
+        let success = writer.write(&self.inner, &path_str, &progress);
 
         if success {
             Ok(())

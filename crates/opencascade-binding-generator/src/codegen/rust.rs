@@ -485,15 +485,23 @@ fn emit_free_function_wrapper(
         .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type))
         .collect();
 
-    // Build args with .into() for enum params
+    // Build args with .into() for enum params, CString conversion for &str params
     let args: Vec<String> = func.params.iter()
         .map(|p| {
-            if p.enum_rust_type.is_some() {
+            if p.rust_reexport_type == "&str" {
+                format!("c_{}.as_ptr()", p.rust_name)
+            } else if p.enum_rust_type.is_some() {
                 format!("{}.into()", p.rust_name)
             } else {
                 p.rust_name.clone()
             }
         })
+        .collect();
+
+    // Generate CString prelude for &str params
+    let prelude: String = func.params.iter()
+        .filter(|p| p.rust_reexport_type == "&str")
+        .map(|p| format!("    let c_{} = std::ffi::CString::new({}).unwrap();\n", p.rust_name, p.rust_name))
         .collect();
 
     // Build return type string
@@ -527,6 +535,7 @@ fn emit_free_function_wrapper(
     };
 
     writeln!(output, "pub fn {}({}){} {{", func.rust_ffi_name, params.join(", "), return_type_str).unwrap();
+    write!(output, "{}", prelude).unwrap();
     writeln!(output, "    unsafe {{ {} }}", body).unwrap();
     writeln!(output, "}}").unwrap();
 }

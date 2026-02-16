@@ -519,13 +519,14 @@ impl Reader {
     /// **Source:** `STEPControl_Reader.hxx`:88 - `STEPControl_Reader::ReadFile()`
     /// Loads a file and returns the read status
     /// Zero for a Model which compies with the Controller
-    pub fn read_file_charptr(
-        &mut self,
-        filename: *const std::ffi::c_char,
-    ) -> crate::if_select::ReturnStatus {
+    pub fn read_file_charptr(&mut self, filename: &str) -> crate::if_select::ReturnStatus {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::if_select::ReturnStatus::try_from(
-                crate::ffi::STEPControl_Reader_read_file_charptr(self as *mut Self, filename),
+                crate::ffi::STEPControl_Reader_read_file_charptr(
+                    self as *mut Self,
+                    c_filename.as_ptr(),
+                ),
             )
             .unwrap()
         }
@@ -536,14 +537,15 @@ impl Reader {
     /// Zero for a Model which compies with the Controller
     pub fn read_file_charptr_parameters(
         &mut self,
-        filename: *const std::ffi::c_char,
+        filename: &str,
         theParams: &crate::ffi::DESTEP_Parameters,
     ) -> crate::if_select::ReturnStatus {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::if_select::ReturnStatus::try_from(
                 crate::ffi::STEPControl_Reader_read_file_charptr_parameters(
                     self as *mut Self,
-                    filename,
+                    c_filename.as_ptr(),
                     theParams,
                 ),
             )
@@ -830,14 +832,12 @@ impl Writer {
 
     /// **Source:** `STEPControl_Writer.hxx`:106 - `STEPControl_Writer::Write()`
     /// Writes a STEP model in the file identified by filename.
-    pub fn write(
-        &mut self,
-        theFileName: *const std::ffi::c_char,
-    ) -> crate::if_select::ReturnStatus {
+    pub fn write(&mut self, theFileName: &str) -> crate::if_select::ReturnStatus {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         unsafe {
             crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Writer_write(
                 self as *mut Self,
-                theFileName,
+                c_theFileName.as_ptr(),
             ))
             .unwrap()
         }

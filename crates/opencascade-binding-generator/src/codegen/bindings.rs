@@ -585,7 +585,7 @@ fn unified_type_to_string(ty: &Type) -> String {
         Type::RValueRef(_) => "()".to_string(),
         Type::ConstPtr(inner) => {
             if matches!(inner.as_ref(), Type::Class(name) if name == "char") {
-                "*const std::ffi::c_char".to_string()
+                "&str".to_string()
             } else {
                 format!("*const {}", unified_type_to_string(inner))
             }
@@ -3226,12 +3226,40 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 /// Produces the `pub use crate::ffi::X as ShortName;` line and the `impl ShortName { ... }`
 /// block with constructor, wrapper, static, upcast, to_owned, and to_handle methods.
 /// Convert a param argument for FFI call: add `.into()` if it's a value enum.
-fn enum_convert_arg(p: &ParamBinding) -> String {
-    if p.enum_rust_type.is_some() {
+fn convert_arg(p: &ParamBinding) -> String {
+    if p.rust_reexport_type == "&str" {
+        format!("c_{}.as_ptr()", p.rust_name)
+    } else if p.enum_rust_type.is_some() {
         format!("{}.into()", p.rust_name)
     } else {
         p.rust_name.clone()
     }
+}
+
+fn convert_arg_resolved(name: &str, p: &ResolvedParamBinding) -> String {
+    if p.rust_reexport_type == "&str" {
+        format!("c_{}.as_ptr()", name)
+    } else if p.enum_rust_type.is_some() {
+        format!("{}.into()", name)
+    } else {
+        name.to_string()
+    }
+}
+
+/// Generate CString let-bindings for all &str parameters.
+/// These must appear before the unsafe block so the CStrings live long enough.
+fn cstr_prelude_params(params: &[ParamBinding]) -> String {
+    params.iter()
+        .filter(|p| p.rust_reexport_type == "&str")
+        .map(|p| format!("        let c_{} = std::ffi::CString::new({}).unwrap();\n", p.rust_name, p.rust_name))
+        .collect()
+}
+
+fn cstr_prelude_resolved(params: &[ResolvedParamBinding], names: &[String]) -> String {
+    params.iter().zip(names.iter())
+        .filter(|(p, _)| p.rust_reexport_type == "&str")
+        .map(|(_, name)| format!("        let c_{} = std::ffi::CString::new({}).unwrap();\n", name, name))
+        .collect()
 }
 
 /// Wrap an FFI call expression with enum return conversion if needed (for ParamBinding-style returns).
@@ -3322,7 +3350,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .iter()
             .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type))
             .collect();
-        let args: Vec<String> = ctor.params.iter().map(|p| enum_convert_arg(p)).collect();
+        let args: Vec<String> = ctor.params.iter().map(|p| convert_arg(p)).collect();
 
         let source_attr = format_source_attribution(
             &bindings.source_header,
@@ -3333,7 +3361,9 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
         if let Some(ref conv) = ctor.convenience_of {
             // Convenience constructor: Rust-only wrapper that delegates to full-arg version
-            let mut all_args = args.clone();
+            // Use raw param names (no CString conversion) since the target method handles it
+            let convenience_args: Vec<String> = ctor.params.iter().map(|p| p.rust_name.clone()).collect();
+            let mut all_args = convenience_args;
             all_args.extend(conv.default_exprs.iter().cloned());
             impl_methods.push(format!(
                 "{}    pub fn {}({}) -> crate::OwnedPtr<Self> {{\n        Self::{}({})\n    }}\n",
@@ -3345,11 +3375,13 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             ));
         } else {
             // Regular constructor: delegates to ffi function
+            let prelude = cstr_prelude_params(&ctor.params);
             impl_methods.push(format!(
-                "{}    pub fn {}({}) -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}({})) }}\n    }}\n",
+                "{}    pub fn {}({}) -> crate::OwnedPtr<Self> {{\n{}        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}({})) }}\n    }}\n",
                 doc,
                 ctor.impl_method_name,
                 params.join(", "),
+                prelude,
                 ctor.ffi_fn_name,
                 args.join(", ")
             ));
@@ -3378,7 +3410,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             )
             .collect();
         let args: Vec<String> = std::iter::once(self_arg)
-            .chain(wm.params.iter().map(|p| enum_convert_arg(p)))
+            .chain(wm.params.iter().map(|p| convert_arg(p)))
             .collect();
 
         let return_type = wm
@@ -3392,6 +3424,8 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let needs_owned_ptr = wm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
         let reexport_rt = wm.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
+        let prelude = cstr_prelude_params(&wm.params);
+
         let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
 
         let source_attr = format_source_attribution(
@@ -3401,11 +3435,12 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         );
         let doc = format_reexport_doc(&source_attr, &wm.doc_comment);
         impl_methods.push(format!(
-            "{}    pub fn {}({}){} {{\n        {}\n    }}\n",
+            "{}    pub fn {}({}){} {{\n{}        {}\n    }}\n",
             doc,
             wm.impl_method_name,
             params.join(", "),
             return_type,
+            prelude,
             body,
         ));
     }
@@ -3432,7 +3467,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             )
             .collect();
         let args: Vec<String> = std::iter::once(self_arg)
-            .chain(dm.params.iter().map(|p| enum_convert_arg(p)))
+            .chain(dm.params.iter().map(|p| convert_arg(p)))
             .collect();
 
         let return_type = dm
@@ -3447,6 +3482,8 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let needs_owned_ptr = dm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
         let reexport_rt = dm.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
+        let prelude = cstr_prelude_params(&dm.params);
+
         let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
 
         let source_attr = format_source_attribution(
@@ -3456,11 +3493,12 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         );
         let doc = format_reexport_doc(&source_attr, &dm.doc_comment);
         impl_methods.push(format!(
-            "{}    pub fn {}({}){} {{\n        {}\n    }}\n",
+            "{}    pub fn {}({}){} {{\n{}        {}\n    }}\n",
             doc,
             dm.rust_name,
             params.join(", "),
             return_type,
+            prelude,
             body,
         ));
     }
@@ -3472,7 +3510,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .iter()
             .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type))
             .collect();
-        let args: Vec<String> = sm.params.iter().map(|p| enum_convert_arg(p)).collect();
+        let args: Vec<String> = sm.params.iter().map(|p| convert_arg(p)).collect();
 
         let return_type = sm
             .return_type
@@ -3500,14 +3538,17 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let needs_owned_ptr = sm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
         let reexport_rt = sm.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
+        let prelude = cstr_prelude_params(&sm.params);
+
         let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
 
         impl_methods.push(format!(
-            "{}    pub fn {}({}){} {{\n        {}\n    }}\n",
+            "{}    pub fn {}({}){} {{\n{}        {}\n    }}\n",
             doc,
             sm.impl_method_name,
             params.join(", "),
             return_type,
+            prelude,
             body,
         ));
     }
@@ -3572,14 +3613,10 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
                     .map(|p| format!("{}: {}", safe_param_name(&p.rust_name), p.rust_reexport_type)),
             )
             .collect();
+        let param_names: Vec<String> = im.params.iter().map(|p| safe_param_name(&p.rust_name)).collect();
         let args: Vec<String> = std::iter::once(self_arg)
-            .chain(im.params.iter().map(|p| {
-                let name = safe_param_name(&p.rust_name);
-                if p.enum_rust_type.is_some() {
-                    format!("{}.into()", name)
-                } else {
-                    name
-                }
+            .chain(im.params.iter().zip(param_names.iter()).map(|(p, name)| {
+                convert_arg_resolved(name, p)
             }))
             .collect();
 
@@ -3594,11 +3631,13 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         let needs_owned_ptr = im.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
         let reexport_rt = im.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
 
+        let prelude = cstr_prelude_resolved(&im.params, &param_names);
+
         let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
 
         let no_doc: Option<String> = None;
         impl_methods.push(format!(
-            "{}    pub fn {}({}){} {{\n        {}\n    }}\n",
+            "{}    pub fn {}({}){} {{\n{}        {}\n    }}\n",
             format_reexport_doc(
                 &format!("Inherited from {}: {}()", im.source_class, im.cpp_method_name),
                 &no_doc,
@@ -3606,6 +3645,7 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             im.impl_method_name,
             params.join(", "),
             return_type,
+            prelude,
             body,
         ));
     }

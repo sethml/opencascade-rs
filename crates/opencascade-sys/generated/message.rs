@@ -76,10 +76,13 @@ pub fn metric_to_string(theType: crate::message::MetricType) -> *const std::ffi:
 /// Returns the metric type from the given string identifier.
 /// @param theString string identifier
 /// @return metric type or Message_MetricType_None if string identifier is invalid
-pub fn metric_from_string(theString: *const std::ffi::c_char) -> crate::message::MetricType {
+pub fn metric_from_string(theString: &str) -> crate::message::MetricType {
+    let c_theString = std::ffi::CString::new(theString).unwrap();
     unsafe {
-        crate::message::MetricType::try_from(crate::ffi::Message_metric_from_string(theString))
-            .unwrap()
+        crate::message::MetricType::try_from(crate::ffi::Message_metric_from_string(
+            c_theString.as_ptr(),
+        ))
+        .unwrap()
     }
 }
 
@@ -989,14 +992,15 @@ impl Algorithm {
     pub fn set_status_status_charptr_bool(
         &mut self,
         theStat: crate::message::Status,
-        theStr: *const std::ffi::c_char,
+        theStr: &str,
         noRepetitions: bool,
     ) {
+        let c_theStr = std::ffi::CString::new(theStr).unwrap();
         unsafe {
             crate::ffi::Message_Algorithm_set_status_status_charptr_bool(
                 self as *mut Self,
                 theStat.into(),
-                theStr,
+                c_theStr.as_ptr(),
                 noRepetitions,
             )
         }
@@ -2132,15 +2136,12 @@ impl Messenger {
     /// Dispatch a message to all the printers in the list.
     /// Three versions of string representations are accepted for
     /// convenience, by default all are converted to ExtendedString.
-    pub fn send_charptr_gravity(
-        &self,
-        theString: *const std::ffi::c_char,
-        theGravity: crate::message::Gravity,
-    ) {
+    pub fn send_charptr_gravity(&self, theString: &str, theGravity: crate::message::Gravity) {
+        let c_theString = std::ffi::CString::new(theString).unwrap();
         unsafe {
             crate::ffi::Message_Messenger_send_charptr_gravity(
                 self as *const Self,
-                theString,
+                c_theString.as_ptr(),
                 theGravity.into(),
             )
         }
@@ -2296,8 +2297,11 @@ impl Msg {
 
     /// **Source:** `Message_Msg.hxx`:63 - `Message_Msg::Message_Msg()`
     /// Create a message using a corresponding entry in Message_MsgFile
-    pub fn new_charptr(theKey: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_Msg_ctor_charptr(theKey)) }
+    pub fn new_charptr(theKey: &str) -> crate::OwnedPtr<Self> {
+        let c_theKey = std::ffi::CString::new(theKey).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_Msg_ctor_charptr(c_theKey.as_ptr()))
+        }
     }
 
     /// **Source:** `Message_Msg.hxx`:66 - `Message_Msg::Message_Msg()`
@@ -2311,8 +2315,9 @@ impl Msg {
     /// **Source:** `Message_Msg.hxx`:70 - `Message_Msg::Set()`
     /// Set a message body text -- can be used as alternative to
     /// using messages from resource file
-    pub fn set_charptr(&mut self, theMsg: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Message_Msg_set_charptr(self as *mut Self, theMsg) }
+    pub fn set_charptr(&mut self, theMsg: &str) {
+        let c_theMsg = std::ffi::CString::new(theMsg).unwrap();
+        unsafe { crate::ffi::Message_Msg_set_charptr(self as *mut Self, c_theMsg.as_ptr()) }
     }
 
     /// **Source:** `Message_Msg.hxx`:74 - `Message_Msg::Set()`
@@ -2411,16 +2416,19 @@ impl MsgFile {
     /// **Source:** `Message_MsgFile.hxx`:59 - `Message_MsgFile::Load()`
     /// Load message file <theFileName> from directory <theDirName>
     /// or its sub-directory
-    pub fn load(theDirName: *const std::ffi::c_char, theFileName: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::Message_MsgFile_load(theDirName, theFileName) }
+    pub fn load(theDirName: &str, theFileName: &str) -> bool {
+        let c_theDirName = std::ffi::CString::new(theDirName).unwrap();
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe { crate::ffi::Message_MsgFile_load(c_theDirName.as_ptr(), c_theFileName.as_ptr()) }
     }
 
     /// **Source:** `Message_MsgFile.hxx`:65 - `Message_MsgFile::LoadFile()`
     /// Load the messages from the given file, additive to any previously
     /// loaded messages. Messages with same keywords, if already present,
     /// are replaced with the new ones.
-    pub fn load_file(theFName: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::Message_MsgFile_load_file(theFName) }
+    pub fn load_file(theFName: &str) -> bool {
+        let c_theFName = std::ffi::CString::new(theFName).unwrap();
+        unsafe { crate::ffi::Message_MsgFile_load_file(c_theFName.as_ptr()) }
     }
 
     /// **Source:** `Message_MsgFile.hxx`:75 - `Message_MsgFile::LoadFromEnv()`
@@ -2432,12 +2440,17 @@ impl MsgFile {
     /// @name theFileName file name without language suffix
     /// @name theLangExt  language file name extension
     /// @return TRUE on success
-    pub fn load_from_env(
-        theEnvName: *const std::ffi::c_char,
-        theFileName: *const std::ffi::c_char,
-        theLangExt: *const std::ffi::c_char,
-    ) -> bool {
-        unsafe { crate::ffi::Message_MsgFile_load_from_env(theEnvName, theFileName, theLangExt) }
+    pub fn load_from_env(theEnvName: &str, theFileName: &str, theLangExt: &str) -> bool {
+        let c_theEnvName = std::ffi::CString::new(theEnvName).unwrap();
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        let c_theLangExt = std::ffi::CString::new(theLangExt).unwrap();
+        unsafe {
+            crate::ffi::Message_MsgFile_load_from_env(
+                c_theEnvName.as_ptr(),
+                c_theFileName.as_ptr(),
+                c_theLangExt.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `Message_MsgFile.hxx`:83 - `Message_MsgFile::LoadFromString()`
@@ -2445,8 +2458,9 @@ impl MsgFile {
     /// @param theContent string containing the messages
     /// @param theLength  length of the buffer;
     /// when -1 specified - theContent will be considered as NULL-terminated string
-    pub fn load_from_string(theContent: *const std::ffi::c_char, theLength: i32) -> bool {
-        unsafe { crate::ffi::Message_MsgFile_load_from_string(theContent, theLength) }
+    pub fn load_from_string(theContent: &str, theLength: i32) -> bool {
+        let c_theContent = std::ffi::CString::new(theContent).unwrap();
+        unsafe { crate::ffi::Message_MsgFile_load_from_string(c_theContent.as_ptr(), theLength) }
     }
 
     /// **Source:** `Message_MsgFile.hxx`:90 - `Message_MsgFile::AddMsg()`
@@ -2468,10 +2482,9 @@ impl MsgFile {
     }
 
     /// **Source:** `Message_MsgFile.hxx`:96 - `Message_MsgFile::Msg()`
-    pub fn msg_charptr(
-        key: *const std::ffi::c_char,
-    ) -> &'static crate::ffi::TCollection_ExtendedString {
-        unsafe { &*(crate::ffi::Message_MsgFile_msg_charptr(key)) }
+    pub fn msg_charptr(key: &str) -> &'static crate::ffi::TCollection_ExtendedString {
+        let c_key = std::ffi::CString::new(key).unwrap();
+        unsafe { &*(crate::ffi::Message_MsgFile_msg_charptr(c_key.as_ptr())) }
     }
 
     /// **Source:** `Message_MsgFile.hxx`:103 - `Message_MsgFile::Msg()`
@@ -2553,15 +2566,12 @@ impl Printer {
     /// Send a string message with specified trace level.
     /// The last Boolean argument is deprecated and unused.
     /// Default implementation redirects to send().
-    pub fn send_charptr_gravity(
-        &self,
-        theString: *const std::ffi::c_char,
-        theGravity: crate::message::Gravity,
-    ) {
+    pub fn send_charptr_gravity(&self, theString: &str, theGravity: crate::message::Gravity) {
+        let c_theString = std::ffi::CString::new(theString).unwrap();
         unsafe {
             crate::ffi::Message_Printer_send_charptr_gravity(
                 self as *const Self,
-                theString,
+                c_theString.as_ptr(),
                 theGravity.into(),
             )
         }
@@ -2649,13 +2659,14 @@ impl PrinterOStream {
     /// appended or rewritten.
     /// For specific file names (cout, cerr) standard streams are used
     pub fn new_charptr_bool_gravity(
-        theFileName: *const std::ffi::c_char,
+        theFileName: &str,
         theDoAppend: bool,
         theTraceLevel: crate::message::Gravity,
     ) -> crate::OwnedPtr<Self> {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Message_PrinterOStream_ctor_charptr_bool_gravity(
-                theFileName,
+                c_theFileName.as_ptr(),
                 theDoAppend,
                 theTraceLevel.into(),
             ))

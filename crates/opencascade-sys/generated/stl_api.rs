@@ -12,10 +12,13 @@
 /// default).
 pub fn write_shape_charptr_bool(
     theShape: &crate::ffi::TopoDS_Shape,
-    theFile: *const std::ffi::c_char,
+    theFile: &str,
     theAsciiMode: bool,
 ) -> bool {
-    unsafe { crate::ffi::StlAPI_write_shape_charptr_bool(theShape, theFile, theAsciiMode) }
+    let c_theFile = std::ffi::CString::new(theFile).unwrap();
+    unsafe {
+        crate::ffi::StlAPI_write_shape_charptr_bool(theShape, c_theFile.as_ptr(), theAsciiMode)
+    }
 }
 
 // ========================
@@ -45,12 +48,11 @@ impl Reader {
     /// **Source:** `StlAPI_Reader.hxx`:32 - `StlAPI_Reader::Read()`
     /// Reads STL file to the TopoDS_Shape (each triangle is converted to the face).
     /// @return True if reading is successful
-    pub fn read(
-        &mut self,
-        theShape: &mut crate::ffi::TopoDS_Shape,
-        theFileName: *const std::ffi::c_char,
-    ) -> bool {
-        unsafe { crate::ffi::StlAPI_Reader_read(self as *mut Self, theShape, theFileName) }
+    pub fn read(&mut self, theShape: &mut crate::ffi::TopoDS_Shape, theFileName: &str) -> bool {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::ffi::StlAPI_Reader_read(self as *mut Self, theShape, c_theFileName.as_ptr())
+        }
     }
 }
 
@@ -92,11 +94,17 @@ impl Writer {
     pub fn write(
         &mut self,
         theShape: &crate::ffi::TopoDS_Shape,
-        theFileName: *const std::ffi::c_char,
+        theFileName: &str,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> bool {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         unsafe {
-            crate::ffi::StlAPI_Writer_write(self as *mut Self, theShape, theFileName, theProgress)
+            crate::ffi::StlAPI_Writer_write(
+                self as *mut Self,
+                theShape,
+                c_theFileName.as_ptr(),
+                theProgress,
+            )
         }
     }
 }

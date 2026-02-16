@@ -54,18 +54,23 @@ impl AsciiString {
 
     /// **Source:** `TCollection_AsciiString.hxx`:56 - `TCollection_AsciiString::TCollection_AsciiString()`
     /// Initializes a AsciiString with a CString.
-    pub fn new_charptr(message: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(message: &str) -> crate::OwnedPtr<Self> {
+        let c_message = std::ffi::CString::new(message).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_charptr(message))
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_charptr(
+                c_message.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:59 - `TCollection_AsciiString::TCollection_AsciiString()`
     /// Initializes a AsciiString with a CString.
-    pub fn new_charptr_int(message: *const std::ffi::c_char, aLen: i32) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr_int(message: &str, aLen: i32) -> crate::OwnedPtr<Self> {
+        let c_message = std::ffi::CString::new(message).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_charptr_int(
-                message, aLen,
+                c_message.as_ptr(),
+                aLen,
             ))
         }
     }
@@ -131,11 +136,13 @@ impl AsciiString {
     /// concatenated with the message string.
     pub fn new_asciistring_charptr(
         astring: &crate::ffi::TCollection_AsciiString,
-        message: *const std::ffi::c_char,
+        message: &str,
     ) -> crate::OwnedPtr<Self> {
+        let c_message = std::ffi::CString::new(message).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_asciistring_charptr(
-                astring, message,
+                astring,
+                c_message.as_ptr(),
             ))
         }
     }
@@ -192,8 +199,14 @@ impl AsciiString {
     /// AsciiString before.
     /// Example: aString += "Hello " + "Dolly"  IS NOT VALID !
     /// But astring += anotherString + "Hello " + "Dolly" is valid.
-    pub fn assign_cat_charptr(&mut self, other: *const std::ffi::c_char) {
-        unsafe { crate::ffi::TCollection_AsciiString_assign_cat_charptr(self as *mut Self, other) }
+    pub fn assign_cat_charptr(&mut self, other: &str) {
+        let c_other = std::ffi::CString::new(other).unwrap();
+        unsafe {
+            crate::ffi::TCollection_AsciiString_assign_cat_charptr(
+                self as *mut Self,
+                c_other.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:140 - `TCollection_AsciiString::AssignCat()`
@@ -265,14 +278,12 @@ impl AsciiString {
     /// So the following example is WRONG !
     /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
     /// This rule is applicable to AssignCat (operator +=) too.
-    pub fn cat_charptr(
-        &self,
-        other: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn cat_charptr(&self, other: &str) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        let c_other = std::ffi::CString::new(other).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_cat_charptr(
                 self as *const Self,
-                other,
+                c_other.as_ptr(),
             ))
         }
     }
@@ -303,8 +314,14 @@ impl AsciiString {
     /// Copy <fromwhere> to <me>.
     /// Used as operator =
     /// Example: aString = anotherCString;
-    pub fn copy_charptr(&mut self, fromwhere: *const std::ffi::c_char) {
-        unsafe { crate::ffi::TCollection_AsciiString_copy_charptr(self as *mut Self, fromwhere) }
+    pub fn copy_charptr(&mut self, fromwhere: &str) {
+        let c_fromwhere = std::ffi::CString::new(fromwhere).unwrap();
+        unsafe {
+            crate::ffi::TCollection_AsciiString_copy_charptr(
+                self as *mut Self,
+                c_fromwhere.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:253 - `TCollection_AsciiString::Copy()`
@@ -386,9 +403,14 @@ impl AsciiString {
     /// Example:
     /// aString contains "O more"
     /// aString.Insert(2,"nce");  gives "Once more"
-    pub fn insert_int_charptr(&mut self, where_: i32, what: *const std::ffi::c_char) {
+    pub fn insert_int_charptr(&mut self, where_: i32, what: &str) {
+        let c_what = std::ffi::CString::new(what).unwrap();
         unsafe {
-            crate::ffi::TCollection_AsciiString_insert_int_charptr(self as *mut Self, where_, what)
+            crate::ffi::TCollection_AsciiString_insert_int_charptr(
+                self as *mut Self,
+                where_,
+                c_what.as_ptr(),
+            )
         }
     }
 
@@ -448,8 +470,14 @@ impl AsciiString {
     /// Returns true if the characters in this ASCII string
     /// are identical to the characters in ASCII string other.
     /// Note that this method is an alias of operator ==.
-    pub fn is_equal_charptr(&self, other: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::TCollection_AsciiString_is_equal_charptr(self as *const Self, other) }
+    pub fn is_equal_charptr(&self, other: &str) -> bool {
+        let c_other = std::ffi::CString::new(other).unwrap();
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_equal_charptr(
+                self as *const Self,
+                c_other.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:366 - `TCollection_AsciiString::IsEqual()`
@@ -466,9 +494,13 @@ impl AsciiString {
     /// Returns true if there are differences between the
     /// characters in this ASCII string and ASCII string other.
     /// Note that this method is an alias of operator !=
-    pub fn is_different_charptr(&self, other: *const std::ffi::c_char) -> bool {
+    pub fn is_different_charptr(&self, other: &str) -> bool {
+        let c_other = std::ffi::CString::new(other).unwrap();
         unsafe {
-            crate::ffi::TCollection_AsciiString_is_different_charptr(self as *const Self, other)
+            crate::ffi::TCollection_AsciiString_is_different_charptr(
+                self as *const Self,
+                c_other.as_ptr(),
+            )
         }
     }
 
@@ -484,8 +516,14 @@ impl AsciiString {
 
     /// **Source:** `TCollection_AsciiString.hxx`:388 - `TCollection_AsciiString::IsLess()`
     /// Returns TRUE if <me> is 'ASCII' less than <other>.
-    pub fn is_less_charptr(&self, other: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::TCollection_AsciiString_is_less_charptr(self as *const Self, other) }
+    pub fn is_less_charptr(&self, other: &str) -> bool {
+        let c_other = std::ffi::CString::new(other).unwrap();
+        unsafe {
+            crate::ffi::TCollection_AsciiString_is_less_charptr(
+                self as *const Self,
+                c_other.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:393 - `TCollection_AsciiString::IsLess()`
@@ -498,9 +536,13 @@ impl AsciiString {
 
     /// **Source:** `TCollection_AsciiString.hxx`:398 - `TCollection_AsciiString::IsGreater()`
     /// Returns TRUE if <me> is 'ASCII' greater than <other>.
-    pub fn is_greater_charptr(&self, other: *const std::ffi::c_char) -> bool {
+    pub fn is_greater_charptr(&self, other: &str) -> bool {
+        let c_other = std::ffi::CString::new(other).unwrap();
         unsafe {
-            crate::ffi::TCollection_AsciiString_is_greater_charptr(self as *const Self, other)
+            crate::ffi::TCollection_AsciiString_is_greater_charptr(
+                self as *const Self,
+                c_other.as_ptr(),
+            )
         }
     }
 
@@ -668,8 +710,11 @@ impl AsciiString {
     /// Example:
     /// aString contains "Sample single test"
     /// aString.Search("le") returns 5
-    pub fn search_charptr(&self, what: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::TCollection_AsciiString_search_charptr(self as *const Self, what) }
+    pub fn search_charptr(&self, what: &str) -> i32 {
+        let c_what = std::ffi::CString::new(what).unwrap();
+        unsafe {
+            crate::ffi::TCollection_AsciiString_search_charptr(self as *const Self, c_what.as_ptr())
+        }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:577 - `TCollection_AsciiString::Search()`
@@ -687,9 +732,13 @@ impl AsciiString {
     /// Example:
     /// aString contains "Sample single test"
     /// aString.SearchFromEnd("le") returns 12
-    pub fn search_from_end_charptr(&self, what: *const std::ffi::c_char) -> i32 {
+    pub fn search_from_end_charptr(&self, what: &str) -> i32 {
+        let c_what = std::ffi::CString::new(what).unwrap();
         unsafe {
-            crate::ffi::TCollection_AsciiString_search_from_end_charptr(self as *const Self, what)
+            crate::ffi::TCollection_AsciiString_search_from_end_charptr(
+                self as *const Self,
+                c_what.as_ptr(),
+            )
         }
     }
 
@@ -713,12 +762,13 @@ impl AsciiString {
     /// Example:
     /// aString contains "abcde"
     /// aString.SetValue(4,"1234567") gives <me> = "abc1234567"
-    pub fn set_value_int_charptr(&mut self, where_: i32, what: *const std::ffi::c_char) {
+    pub fn set_value_int_charptr(&mut self, where_: i32, what: &str) {
+        let c_what = std::ffi::CString::new(what).unwrap();
         unsafe {
             crate::ffi::TCollection_AsciiString_set_value_int_charptr(
                 self as *mut Self,
                 where_,
-                what,
+                c_what.as_ptr(),
             )
         }
     }
@@ -805,13 +855,14 @@ impl AsciiString {
     /// aString.Token("; :,",2) returns "test"
     pub fn token(
         &self,
-        separators: *const std::ffi::c_char,
+        separators: &str,
         whichone: i32,
     ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        let c_separators = std::ffi::CString::new(separators).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_token(
                 self as *const Self,
-                separators,
+                c_separators.as_ptr(),
                 whichone,
             ))
         }
@@ -860,10 +911,14 @@ impl AsciiString {
     /// (Just for HashCode for AsciiString)
     pub fn is_equal_asciistring_charptr(
         string1: &crate::ffi::TCollection_AsciiString,
-        string2: *const std::ffi::c_char,
+        string2: &str,
     ) -> bool {
+        let c_string2 = std::ffi::CString::new(string2).unwrap();
         unsafe {
-            crate::ffi::TCollection_AsciiString_is_equal_asciistring_charptr(string1, string2)
+            crate::ffi::TCollection_AsciiString_is_equal_asciistring_charptr(
+                string1,
+                c_string2.as_ptr(),
+            )
         }
     }
 
@@ -925,13 +980,11 @@ impl ExtendedString {
     /// treated as having UTF-8 coding.  If it is not a UTF-8
     /// then <isMultiByte> is ignored and each character is
     /// copied to ExtCharacter.
-    pub fn new_charptr_bool(
-        astring: *const std::ffi::c_char,
-        isMultiByte: bool,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr_bool(astring: &str, isMultiByte: bool) -> crate::OwnedPtr<Self> {
+        let c_astring = std::ffi::CString::new(astring).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_charptr_bool(
-                astring,
+                c_astring.as_ptr(),
                 isMultiByte,
             ))
         }
@@ -1028,7 +1081,7 @@ impl ExtendedString {
     /// treated as having UTF-8 coding.  If it is not a UTF-8
     /// then <isMultiByte> is ignored and each character is
     /// copied to ExtCharacter.
-    pub fn new_charptr(astring: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(astring: &str) -> crate::OwnedPtr<Self> {
         Self::new_charptr_bool(astring, false)
     }
 
@@ -1278,9 +1331,12 @@ impl HAsciiString {
 
     /// **Source:** `TCollection_HAsciiString.hxx`:49 - `TCollection_HAsciiString::TCollection_HAsciiString()`
     /// Initializes a HAsciiString with a CString.
-    pub fn new_charptr(message: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(message: &str) -> crate::OwnedPtr<Self> {
+        let c_message = std::ffi::CString::new(message).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_charptr(message))
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_charptr(
+                c_message.as_ptr(),
+            ))
         }
     }
 
@@ -1356,8 +1412,14 @@ impl HAsciiString {
 
     /// **Source:** `TCollection_HAsciiString.hxx`:85 - `TCollection_HAsciiString::AssignCat()`
     /// Appends <other>  to me.
-    pub fn assign_cat_charptr(&mut self, other: *const std::ffi::c_char) {
-        unsafe { crate::ffi::TCollection_HAsciiString_assign_cat_charptr(self as *mut Self, other) }
+    pub fn assign_cat_charptr(&mut self, other: &str) {
+        let c_other = std::ffi::CString::new(other).unwrap();
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_assign_cat_charptr(
+                self as *mut Self,
+                c_other.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `TCollection_HAsciiString.hxx`:89 - `TCollection_HAsciiString::AssignCat()`
@@ -1402,12 +1464,13 @@ impl HAsciiString {
     /// This rule is applicable to AssignCat (operator +=) too.
     pub fn cat_charptr(
         &self,
-        other: *const std::ffi::c_char,
+        other: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        let c_other = std::ffi::CString::new(other).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_cat_charptr(
                 self as *const Self,
-                other,
+                c_other.as_ptr(),
             ))
         }
     }
@@ -1499,9 +1562,14 @@ impl HAsciiString {
 
     /// **Source:** `TCollection_HAsciiString.hxx`:205 - `TCollection_HAsciiString::Insert()`
     /// Insert a HAsciiString at position <where>.
-    pub fn insert_int_charptr(&mut self, where_: i32, what: *const std::ffi::c_char) {
+    pub fn insert_int_charptr(&mut self, where_: i32, what: &str) {
+        let c_what = std::ffi::CString::new(what).unwrap();
         unsafe {
-            crate::ffi::TCollection_HAsciiString_insert_int_charptr(self as *mut Self, where_, what)
+            crate::ffi::TCollection_HAsciiString_insert_int_charptr(
+                self as *mut Self,
+                where_,
+                c_what.as_ptr(),
+            )
         }
     }
 
@@ -1725,8 +1793,14 @@ impl HAsciiString {
     /// Example:
     /// aString contains "Sample single test"
     /// aString.Search("le") returns 5
-    pub fn search_charptr(&self, what: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::TCollection_HAsciiString_search_charptr(self as *const Self, what) }
+    pub fn search_charptr(&self, what: &str) -> i32 {
+        let c_what = std::ffi::CString::new(what).unwrap();
+        unsafe {
+            crate::ffi::TCollection_HAsciiString_search_charptr(
+                self as *const Self,
+                c_what.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `TCollection_HAsciiString.hxx`:384 - `TCollection_HAsciiString::Search()`
@@ -1752,9 +1826,13 @@ impl HAsciiString {
     /// Example:
     /// aString contains "Sample single test"
     /// aString.SearchFromEnd("le") returns 12
-    pub fn search_from_end_charptr(&self, what: *const std::ffi::c_char) -> i32 {
+    pub fn search_from_end_charptr(&self, what: &str) -> i32 {
+        let c_what = std::ffi::CString::new(what).unwrap();
         unsafe {
-            crate::ffi::TCollection_HAsciiString_search_from_end_charptr(self as *const Self, what)
+            crate::ffi::TCollection_HAsciiString_search_from_end_charptr(
+                self as *const Self,
+                c_what.as_ptr(),
+            )
         }
     }
 
@@ -1781,12 +1859,13 @@ impl HAsciiString {
     /// Example:
     /// aString contains "Garbake"
     /// astring.Replace(6,'g')  gives <me> = "Garbage"
-    pub fn set_value_int_charptr(&mut self, where_: i32, what: *const std::ffi::c_char) {
+    pub fn set_value_int_charptr(&mut self, where_: i32, what: &str) {
+        let c_what = std::ffi::CString::new(what).unwrap();
         unsafe {
             crate::ffi::TCollection_HAsciiString_set_value_int_charptr(
                 self as *mut Self,
                 where_,
-                what,
+                c_what.as_ptr(),
             )
         }
     }
@@ -1877,13 +1956,14 @@ impl HAsciiString {
     /// aString.Token("; :,",2) returns "test"
     pub fn token(
         &self,
-        separators: *const std::ffi::c_char,
+        separators: &str,
         whichone: i32,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        let c_separators = std::ffi::CString::new(separators).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_token(
                 self as *const Self,
-                separators,
+                c_separators.as_ptr(),
                 whichone,
             ))
         }
@@ -2000,9 +2080,12 @@ impl HExtendedString {
 
     /// **Source:** `TCollection_HExtendedString.hxx`:52 - `TCollection_HExtendedString::TCollection_HExtendedString()`
     /// Initializes a HExtendedString with a CString.
-    pub fn new_charptr(message: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(message: &str) -> crate::OwnedPtr<Self> {
+        let c_message = std::ffi::CString::new(message).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_charptr(message))
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_charptr(
+                c_message.as_ptr(),
+            ))
         }
     }
 

@@ -327,7 +327,7 @@ impl Evolved {
         AxeProf: &crate::ffi::gp_Ax3,
         Join: crate::geom_abs::JoinType,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_wire2_ax3_jointype_bool(Spine, Profile, AxeProf, Join.into(), false)
+        Self::new_wire2_ax3_jointype_bool(Spine, Profile, AxeProf, Join, false)
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:61 - `BRepFill_Evolved::BRepFill_Evolved()`
@@ -339,7 +339,7 @@ impl Evolved {
         AxeProf: &crate::ffi::gp_Ax3,
         Join: crate::geom_abs::JoinType,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_face_wire_ax3_jointype_bool(Spine, Profile, AxeProf, Join.into(), false)
+        Self::new_face_wire_ax3_jointype_bool(Spine, Profile, AxeProf, Join, false)
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:69 - `BRepFill_Evolved::Perform()`
@@ -999,7 +999,7 @@ impl OffsetWire {
         Spine: &crate::ffi::TopoDS_Face,
         Join: crate::geom_abs::JoinType,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_face_jointype_bool(Spine, Join.into(), false)
+        Self::new_face_jointype_bool(Spine, Join, false)
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:60 - `BRepFill_OffsetWire::Init()`
@@ -1143,7 +1143,7 @@ impl Pipe {
         aMode: crate::geom_fill::Trihedron,
         ForceApproxC1: bool,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode.into(), ForceApproxC1, false)
+        Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode, ForceApproxC1, false)
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
@@ -1152,7 +1152,7 @@ impl Pipe {
         Profile: &crate::ffi::TopoDS_Shape,
         aMode: crate::geom_fill::Trihedron,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode.into(), false, false)
+        Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode, false, false)
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:59 - `BRepFill_Pipe::Perform()`

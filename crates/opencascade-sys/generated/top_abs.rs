@@ -82,10 +82,11 @@ pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> *const std::f
 /// Returns the shape type from the given string identifier (using case-insensitive comparison).
 /// @param theTypeString string identifier
 /// @return shape type or TopAbs_SHAPE if string identifier is invalid
-pub fn shape_type_from_string(theTypeString: *const std::ffi::c_char) -> crate::top_abs::ShapeEnum {
+pub fn shape_type_from_string(theTypeString: &str) -> crate::top_abs::ShapeEnum {
+    let c_theTypeString = std::ffi::CString::new(theTypeString).unwrap();
     unsafe {
         crate::top_abs::ShapeEnum::try_from(crate::ffi::TopAbs_shape_type_from_string(
-            theTypeString,
+            c_theTypeString.as_ptr(),
         ))
         .unwrap()
     }
@@ -104,12 +105,11 @@ pub fn shape_orientation_to_string(
 /// comparison).
 /// @param theOrientationString string identifier
 /// @return shape orientation or TopAbs_FORWARD if string identifier is invalid
-pub fn shape_orientation_from_string(
-    theOrientationString: *const std::ffi::c_char,
-) -> crate::top_abs::Orientation {
+pub fn shape_orientation_from_string(theOrientationString: &str) -> crate::top_abs::Orientation {
+    let c_theOrientationString = std::ffi::CString::new(theOrientationString).unwrap();
     unsafe {
         crate::top_abs::Orientation::try_from(crate::ffi::TopAbs_shape_orientation_from_string(
-            theOrientationString,
+            c_theOrientationString.as_ptr(),
         ))
         .unwrap()
     }

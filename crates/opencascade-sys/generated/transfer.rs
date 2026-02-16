@@ -632,15 +632,31 @@ impl Binder {
     /// It has same effect for TransferProcess as raising an exception
     /// during the operation of Transfer, except the Transfer tries to
     /// continue (as if ErrorHandle had been set)
-    pub fn add_fail(&mut self, mess: *const std::ffi::c_char, orig: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Transfer_Binder_add_fail(self as *mut Self, mess, orig) }
+    pub fn add_fail(&mut self, mess: &str, orig: &str) {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Binder_add_fail(
+                self as *mut Self,
+                c_mess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `Transfer_Binder.hxx`:121 - `Transfer_Binder::AddWarning()`
     /// Used to attach a Warning Message to an individual Transfer
     /// It has no effect on the Status
-    pub fn add_warning(&mut self, mess: *const std::ffi::c_char, orig: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Transfer_Binder_add_warning(self as *mut Self, mess, orig) }
+    pub fn add_warning(&mut self, mess: &str, orig: &str) {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Binder_add_warning(
+                self as *mut Self,
+                c_mess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `Transfer_Binder.hxx`:125 - `Transfer_Binder::Check()`

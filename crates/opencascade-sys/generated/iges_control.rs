@@ -795,13 +795,12 @@ impl Writer {
     /// theModecr defines the write mode and may be:
     /// - 0: Faces (default)
     /// - 1: BRep.
-    pub fn new_charptr_int(
-        theUnit: *const std::ffi::c_char,
-        theModecr: i32,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr_int(theUnit: &str, theModecr: i32) -> crate::OwnedPtr<Self> {
+        let c_theUnit = std::ffi::CString::new(theUnit).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Writer_ctor_charptr_int(
-                theUnit, theModecr,
+                c_theUnit.as_ptr(),
+                theModecr,
             ))
         }
     }
@@ -814,7 +813,7 @@ impl Writer {
     /// theModecr defines the write mode and may be:
     /// - 0: Faces (default)
     /// - 1: BRep.
-    pub fn new_charptr(theUnit: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theUnit: &str) -> crate::OwnedPtr<Self> {
         Self::new_charptr_int(theUnit, 0)
     }
 
@@ -849,7 +848,8 @@ impl Writer {
     /// Returns True if the operation was performed correctly and
     /// False if an error occurred (for instance,
     /// if the processor could not create the file).
-    pub fn write(&mut self, file: *const std::ffi::c_char, fnes: bool) -> bool {
-        unsafe { crate::ffi::IGESControl_Writer_write(self as *mut Self, file, fnes) }
+    pub fn write(&mut self, file: &str, fnes: bool) -> bool {
+        let c_file = std::ffi::CString::new(file).unwrap();
+        unsafe { crate::ffi::IGESControl_Writer_write(self as *mut Self, c_file.as_ptr(), fnes) }
     }
 }

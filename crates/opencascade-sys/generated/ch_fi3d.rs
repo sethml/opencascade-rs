@@ -749,7 +749,7 @@ impl FilBuilder {
         S: &crate::ffi::TopoDS_Shape,
         FShape: crate::ch_fi3d::FilletShape,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_shape_filletshape_real(S, FShape.into(), 1.0e-2)
+        Self::new_shape_filletshape_real(S, FShape, 1.0e-2)
     }
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`

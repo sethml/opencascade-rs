@@ -1354,11 +1354,14 @@ impl Color {
     /// Finds color from predefined names.
     /// For example, the name of the color which corresponds to "BLACK" is Quantity_NOC_BLACK.
     /// Returns FALSE if name is unknown.
-    pub fn color_from_name_charptr_nameofcolor(
-        theName: *const std::ffi::c_char,
-        theColor: &mut i32,
-    ) -> bool {
-        unsafe { crate::ffi::Quantity_Color_color_from_name_charptr_nameofcolor(theName, theColor) }
+    pub fn color_from_name_charptr_nameofcolor(theName: &str, theColor: &mut i32) -> bool {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::ffi::Quantity_Color_color_from_name_charptr_nameofcolor(
+                c_theName.as_ptr(),
+                theColor,
+            )
+        }
     }
 
     /// **Source:** `Quantity_Color.hxx`:201 - `Quantity_Color::ColorFromName()`
@@ -1367,11 +1370,15 @@ impl Color {
     /// @param theColor a found color
     /// @return false if the color name is unknown, or true if the search by color name was successful
     pub fn color_from_name_charptr_color(
-        theColorNameString: *const std::ffi::c_char,
+        theColorNameString: &str,
         theColor: &mut crate::ffi::Quantity_Color,
     ) -> bool {
+        let c_theColorNameString = std::ffi::CString::new(theColorNameString).unwrap();
         unsafe {
-            crate::ffi::Quantity_Color_color_from_name_charptr_color(theColorNameString, theColor)
+            crate::ffi::Quantity_Color_color_from_name_charptr_color(
+                c_theColorNameString.as_ptr(),
+                theColor,
+            )
         }
     }
 
@@ -1382,10 +1389,11 @@ impl Color {
     /// @param theColor a color that is a result of parsing
     /// @return true if parsing was successful, or false otherwise
     pub fn color_from_hex(
-        theHexColorString: *const std::ffi::c_char,
+        theHexColorString: &str,
         theColor: &mut crate::ffi::Quantity_Color,
     ) -> bool {
-        unsafe { crate::ffi::Quantity_Color_color_from_hex(theHexColorString, theColor) }
+        let c_theHexColorString = std::ffi::CString::new(theHexColorString).unwrap();
+        unsafe { crate::ffi::Quantity_Color_color_from_hex(c_theHexColorString.as_ptr(), theColor) }
     }
 
     /// **Source:** `Quantity_Color.hxx`:225 - `Quantity_Color::ColorToHex()`

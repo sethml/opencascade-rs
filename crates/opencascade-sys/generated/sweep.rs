@@ -76,7 +76,7 @@ impl NumShape {
         Closed: bool,
         BegInf: bool,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_int_shapeenum_bool3(Index, Type.into(), Closed, BegInf, false)
+        Self::new_int_shapeenum_bool3(Index, Type, Closed, BegInf, false)
     }
 
     /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
@@ -96,7 +96,7 @@ impl NumShape {
         Type: crate::top_abs::ShapeEnum,
         Closed: bool,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_int_shapeenum_bool3(Index, Type.into(), Closed, false, false)
+        Self::new_int_shapeenum_bool3(Index, Type, Closed, false, false)
     }
 
     /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
@@ -112,7 +112,7 @@ impl NumShape {
     /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
     /// other fields have no meanning.
     pub fn new_int_shapeenum(Index: i32, Type: crate::top_abs::ShapeEnum) -> crate::OwnedPtr<Self> {
-        Self::new_int_shapeenum_bool3(Index, Type.into(), false, false, false)
+        Self::new_int_shapeenum_bool3(Index, Type, false, false, false)
     }
 
     /// **Source:** `Sweep_NumShape.hxx`:67 - `Sweep_NumShape::Init()`

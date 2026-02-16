@@ -12535,23 +12535,23 @@ impl VectorWithNullMagnitude {
     }
 
     /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_VectorWithNullMagnitude_ctor_charptr(
-                theMessage,
+                c_theMessage.as_ptr(),
             ))
         }
     }
 
     /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_VectorWithNullMagnitude_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -12562,8 +12562,9 @@ impl VectorWithNullMagnitude {
     }
 
     /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::gp_VectorWithNullMagnitude_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::gp_VectorWithNullMagnitude_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::get_type_name()`

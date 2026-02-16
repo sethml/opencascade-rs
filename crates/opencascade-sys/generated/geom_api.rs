@@ -1370,7 +1370,7 @@ impl PointsToBSpline {
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_array1ofpnt_int2_shape_real(Points, DegMin, DegMax, Continuity.into(), 1.0e-3)
+        Self::new_array1ofpnt_int2_shape_real(Points, DegMin, DegMax, Continuity, 1.0e-3)
     }
 
     /// **Source:** `GeomAPI_PointsToBSpline.hxx`:67 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
@@ -1389,12 +1389,7 @@ impl PointsToBSpline {
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_array1ofpnt_parametrizationtype_int2_shape_real(
-            Points,
-            ParType.into(),
-            DegMin,
-            DegMax,
-            Continuity.into(),
-            1.0e-3,
+            Points, ParType, DegMin, DegMax, Continuity, 1.0e-3,
         )
     }
 
@@ -1416,12 +1411,7 @@ impl PointsToBSpline {
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_array1ofpnt_array1ofreal_int2_shape_real(
-            Points,
-            Parameters,
-            DegMin,
-            DegMax,
-            Continuity.into(),
-            1.0e-3,
+            Points, Parameters, DegMin, DegMax, Continuity, 1.0e-3,
         )
     }
 
@@ -1439,13 +1429,7 @@ impl PointsToBSpline {
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_array1ofpnt_real3_int_shape_real(
-            Points,
-            Weight1,
-            Weight2,
-            Weight3,
-            DegMax,
-            Continuity.into(),
-            1.0e-3,
+            Points, Weight1, Weight2, Weight3, DegMax, Continuity, 1.0e-3,
         )
     }
 
@@ -1750,7 +1734,7 @@ impl PointsToBSplineSurface {
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_array2ofpnt_int2_shape_real(Points, DegMin, DegMax, Continuity.into(), 1.0e-3)
+        Self::new_array2ofpnt_int2_shape_real(Points, DegMin, DegMax, Continuity, 1.0e-3)
     }
 
     /// **Source:** `GeomAPI_PointsToBSplineSurface.hxx`:106 - `GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface()`
@@ -1769,12 +1753,7 @@ impl PointsToBSplineSurface {
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_array2ofpnt_parametrizationtype_int2_shape_real(
-            Points,
-            ParType.into(),
-            DegMin,
-            DegMax,
-            Continuity.into(),
-            1.0e-3,
+            Points, ParType, DegMin, DegMax, Continuity, 1.0e-3,
         )
     }
 
@@ -1792,13 +1771,7 @@ impl PointsToBSplineSurface {
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_array2ofpnt_real3_int_shape_real(
-            Points,
-            Weight1,
-            Weight2,
-            Weight3,
-            DegMax,
-            Continuity.into(),
-            1.0e-3,
+            Points, Weight1, Weight2, Weight3, DegMax, Continuity, 1.0e-3,
         )
     }
 
@@ -1830,15 +1803,7 @@ impl PointsToBSplineSurface {
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_array2ofreal_real4_int2_shape_real(
-            ZPoints,
-            X0,
-            dX,
-            Y0,
-            dY,
-            DegMin,
-            DegMax,
-            Continuity.into(),
-            1.0e-3,
+            ZPoints, X0, dX, Y0, dY, DegMin, DegMax, Continuity, 1.0e-3,
         )
     }
 

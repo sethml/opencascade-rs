@@ -235,8 +235,9 @@ impl BitMap {
     /// Adds a flag, a name can be attached to it
     /// Returns its flag number
     /// Makes required reservation
-    pub fn add_flag(&mut self, name: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::Interface_BitMap_add_flag(self as *mut Self, name) }
+    pub fn add_flag(&mut self, name: &str) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::Interface_BitMap_add_flag(self as *mut Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `Interface_BitMap.hxx`:87 - `Interface_BitMap::AddSomeFlags()`
@@ -258,8 +259,11 @@ impl BitMap {
     /// name can be empty (to erase the name of a flag)
     /// Returns True if done, false if : num is out of range, or
     /// name non-empty already set to another flag
-    pub fn set_flag_name(&mut self, num: i32, name: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::Interface_BitMap_set_flag_name(self as *mut Self, num, name) }
+    pub fn set_flag_name(&mut self, num: i32, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Interface_BitMap_set_flag_name(self as *mut Self, num, c_name.as_ptr())
+        }
     }
 
     /// **Source:** `Interface_BitMap.hxx`:101 - `Interface_BitMap::NbFlags()`
@@ -282,8 +286,9 @@ impl BitMap {
 
     /// **Source:** `Interface_BitMap.hxx`:110 - `Interface_BitMap::FlagNumber()`
     /// Returns the number or a flag given its name, or zero
-    pub fn flag_number(&self, name: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::Interface_BitMap_flag_number(self as *const Self, name) }
+    pub fn flag_number(&self, name: &str) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::Interface_BitMap_flag_number(self as *const Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `Interface_BitMap.hxx`:115 - `Interface_BitMap::Value()`
@@ -412,12 +417,16 @@ impl Check {
     /// Records a new Fail message given as "error text" directly
     /// If <orig> is given, a distinct original form is recorded
     /// else (D), the original form equates <amess>
-    pub fn add_fail_charptr2(
-        &mut self,
-        amess: *const std::ffi::c_char,
-        orig: *const std::ffi::c_char,
-    ) {
-        unsafe { crate::ffi::Interface_Check_add_fail_charptr2(self as *mut Self, amess, orig) }
+    pub fn add_fail_charptr2(&mut self, amess: &str, orig: &str) {
+        let c_amess = std::ffi::CString::new(amess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::Interface_Check_add_fail_charptr2(
+                self as *mut Self,
+                c_amess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `Interface_Check.hxx`:75 - `Interface_Check::AddFail()`
@@ -508,12 +517,16 @@ impl Check {
     /// Records a Warning message given as "warning message" directly
     /// If <orig> is given, a distinct original form is recorded
     /// else (D), the original form equates <amess>
-    pub fn add_warning_charptr2(
-        &mut self,
-        amess: *const std::ffi::c_char,
-        orig: *const std::ffi::c_char,
-    ) {
-        unsafe { crate::ffi::Interface_Check_add_warning_charptr2(self as *mut Self, amess, orig) }
+    pub fn add_warning_charptr2(&mut self, amess: &str, orig: &str) {
+        let c_amess = std::ffi::CString::new(amess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::Interface_Check_add_warning_charptr2(
+                self as *mut Self,
+                c_amess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `Interface_Check.hxx`:116 - `Interface_Check::AddWarning()`
@@ -712,8 +725,9 @@ impl Check {
     /// "CF" : clears Fail(s)
     /// "CW" : clears Warning(s) : here, <num> refers to Warning list
     /// "CA" : clears all messages : here, <num> is ignored
-    pub fn mend(&mut self, pref: *const std::ffi::c_char, num: i32) -> bool {
-        unsafe { crate::ffi::Interface_Check_mend(self as *mut Self, pref, num) }
+    pub fn mend(&mut self, pref: &str, num: i32) -> bool {
+        let c_pref = std::ffi::CString::new(pref).unwrap();
+        unsafe { crate::ffi::Interface_Check_mend(self as *mut Self, c_pref.as_ptr(), num) }
     }
 
     /// **Source:** `Interface_Check.hxx`:237 - `Interface_Check::GetMessages()`
@@ -807,14 +821,20 @@ impl CheckIterator {
     /// **Source:** `Interface_CheckIterator.hxx`:52 - `Interface_CheckIterator::Interface_CheckIterator()`
     /// Creates a CheckIterator with a name (displayed by Print as a
     /// title)
-    pub fn new_charptr(name: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_CheckIterator_ctor_charptr(name)) }
+    pub fn new_charptr(name: &str) -> crate::OwnedPtr<Self> {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_CheckIterator_ctor_charptr(
+                c_name.as_ptr(),
+            ))
+        }
     }
 
     /// **Source:** `Interface_CheckIterator.hxx`:55 - `Interface_CheckIterator::SetName()`
     /// Sets / Changes the name
-    pub fn set_name(&mut self, name: *const std::ffi::c_char) {
-        unsafe { crate::ffi::Interface_CheckIterator_set_name(self as *mut Self, name) }
+    pub fn set_name(&mut self, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::Interface_CheckIterator_set_name(self as *mut Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `Interface_CheckIterator.hxx`:58 - `Interface_CheckIterator::Name()`
@@ -936,15 +956,16 @@ impl CheckIterator {
     /// Each Check which complies is entirely taken
     pub fn extract_charptr_int_checkstatus(
         &self,
-        mess: *const std::ffi::c_char,
+        mess: &str,
         incl: i32,
         status: crate::interface::CheckStatus,
     ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::Interface_CheckIterator_extract_charptr_int_checkstatus(
                     self as *const Self,
-                    mess,
+                    c_mess.as_ptr(),
                     incl,
                     status.into(),
                 ),
@@ -961,14 +982,15 @@ impl CheckIterator {
     /// resp. Warning or Check messages. for CheckAny, considers all
     /// other values are ignored (nothing is done)
     /// Returns True if at least one message has been removed, False else
-    pub fn remove(
-        &mut self,
-        mess: *const std::ffi::c_char,
-        incl: i32,
-        status: crate::interface::CheckStatus,
-    ) -> bool {
+    pub fn remove(&mut self, mess: &str, incl: i32, status: crate::interface::CheckStatus) -> bool {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
         unsafe {
-            crate::ffi::Interface_CheckIterator_remove(self as *mut Self, mess, incl, status.into())
+            crate::ffi::Interface_CheckIterator_remove(
+                self as *mut Self,
+                c_mess.as_ptr(),
+                incl,
+                status.into(),
+            )
         }
     }
 
@@ -2045,16 +2067,12 @@ impl InterfaceModel {
     ///
     /// This method is virtual, hence it can be redefined for a more
     /// efficient search (if exact is true).
-    pub fn next_number_for_label(
-        &self,
-        label: *const std::ffi::c_char,
-        lastnum: i32,
-        exact: bool,
-    ) -> i32 {
+    pub fn next_number_for_label(&self, label: &str, lastnum: i32, exact: bool) -> i32 {
+        let c_label = std::ffi::CString::new(label).unwrap();
         unsafe {
             crate::ffi::Interface_InterfaceModel_next_number_for_label(
                 self as *const Self,
-                label,
+                c_label.as_ptr(),
                 lastnum,
                 exact,
             )
@@ -2069,22 +2087,27 @@ impl InterfaceModel {
     /// **Source:** `Interface_InterfaceModel.hxx`:155 - `Interface_InterfaceModel::ClassName()`
     /// From a CDL Type Name, returns the Class part (package dropped)
     /// WARNING : buffered, to be immediately copied or printed
-    pub fn class_name(typnam: *const std::ffi::c_char) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_InterfaceModel_class_name(typnam) }
+    pub fn class_name(typnam: &str) -> *const std::ffi::c_char {
+        let c_typnam = std::ffi::CString::new(typnam).unwrap();
+        unsafe { crate::ffi::Interface_InterfaceModel_class_name(c_typnam.as_ptr()) }
     }
 
     /// **Source:** `Interface_InterfaceModel.hxx`:408 - `Interface_InterfaceModel::HasTemplate()`
     /// Returns true if a template is attached to a given name
-    pub fn has_template(name: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::Interface_InterfaceModel_has_template(name) }
+    pub fn has_template(name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::Interface_InterfaceModel_has_template(c_name.as_ptr()) }
     }
 
     /// **Source:** `Interface_InterfaceModel.hxx`:411 - `Interface_InterfaceModel::Template()`
     /// Returns the template model attached to a name, or a Null Handle
-    pub fn template(
-        name: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_InterfaceModel_template(name)) }
+    pub fn template(name: &str) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_InterfaceModel_template(
+                c_name.as_ptr(),
+            ))
+        }
     }
 
     /// **Source:** `Interface_InterfaceModel.hxx`:417 - `Interface_InterfaceModel::SetTemplate()`
@@ -2092,11 +2115,9 @@ impl InterfaceModel {
     /// already recorded, the corresponding template is replaced by
     /// the new one. Then, WARNING : test HasTemplate to avoid
     /// surprises
-    pub fn set_template(
-        name: *const std::ffi::c_char,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> bool {
-        unsafe { crate::ffi::Interface_InterfaceModel_set_template(name, model) }
+    pub fn set_template(name: &str, model: &crate::ffi::HandleInterfaceInterfaceModel) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::Interface_InterfaceModel_set_template(c_name.as_ptr(), model) }
     }
 
     /// **Source:** `Interface_InterfaceModel.hxx`:422 - `Interface_InterfaceModel::ListTemplates()`
@@ -2161,8 +2182,9 @@ impl SignType {
     /// **Source:** `Interface_SignType.hxx`:55 - `Interface_SignType::ClassName()`
     /// From a CDL Type Name, returns the Class part (package dropped)
     /// WARNING : buffered, to be immediately copied or printed
-    pub fn class_name(typnam: *const std::ffi::c_char) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_SignType_class_name(typnam) }
+    pub fn class_name(typnam: &str) -> *const std::ffi::c_char {
+        let c_typnam = std::ffi::CString::new(typnam).unwrap();
+        unsafe { crate::ffi::Interface_SignType_class_name(c_typnam.as_ptr()) }
     }
 
     /// **Source:** `Interface_SignType.hxx`:57 - `Interface_SignType::get_type_name()`

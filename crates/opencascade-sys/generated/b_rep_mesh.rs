@@ -1348,9 +1348,13 @@ impl DataStructureOfDelaun {
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:179 - `BRepMesh_DataStructureOfDelaun::Dump()`
-    pub fn dump(&mut self, theFileNameStr: *const std::ffi::c_char) {
+    pub fn dump(&mut self, theFileNameStr: &str) {
+        let c_theFileNameStr = std::ffi::CString::new(theFileNameStr).unwrap();
         unsafe {
-            crate::ffi::BRepMesh_DataStructureOfDelaun_dump(self as *mut Self, theFileNameStr)
+            crate::ffi::BRepMesh_DataStructureOfDelaun_dump(
+                self as *mut Self,
+                c_theFileNameStr.as_ptr(),
+            )
         }
     }
 

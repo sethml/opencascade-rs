@@ -39,13 +39,15 @@ impl Controller {
     /// Changes names
     /// if a name is empty, the formerly set one remains
     /// Remark : Does not call Record or AutoRecord
-    pub fn set_names(
-        &mut self,
-        theLongName: *const std::ffi::c_char,
-        theShortName: *const std::ffi::c_char,
-    ) {
+    pub fn set_names(&mut self, theLongName: &str, theShortName: &str) {
+        let c_theLongName = std::ffi::CString::new(theLongName).unwrap();
+        let c_theShortName = std::ffi::CString::new(theShortName).unwrap();
         unsafe {
-            crate::ffi::XSControl_Controller_set_names(self as *mut Self, theLongName, theShortName)
+            crate::ffi::XSControl_Controller_set_names(
+                self as *mut Self,
+                c_theLongName.as_ptr(),
+                c_theShortName.as_ptr(),
+            )
         }
     }
 
@@ -59,8 +61,9 @@ impl Controller {
     /// **Source:** `XSControl_Controller.hxx`:79 - `XSControl_Controller::Record()`
     /// Records <me> in a general dictionary under a name
     /// Error if <name> already used for another one
-    pub fn record(&self, name: *const std::ffi::c_char) {
-        unsafe { crate::ffi::XSControl_Controller_record(self as *const Self, name) }
+    pub fn record(&self, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::XSControl_Controller_record(self as *const Self, c_name.as_ptr()) }
     }
 
     /// **Source:** `XSControl_Controller.hxx`:88 - `XSControl_Controller::Name()`
@@ -107,17 +110,13 @@ impl Controller {
 
     /// **Source:** `XSControl_Controller.hxx`:127 - `XSControl_Controller::SetModeWriteHelp()`
     /// Attaches a short line of help to a value of modetrans (write)
-    pub fn set_mode_write_help(
-        &mut self,
-        modetrans: i32,
-        help: *const std::ffi::c_char,
-        shape: bool,
-    ) {
+    pub fn set_mode_write_help(&mut self, modetrans: i32, help: &str, shape: bool) {
+        let c_help = std::ffi::CString::new(help).unwrap();
         unsafe {
             crate::ffi::XSControl_Controller_set_mode_write_help(
                 self as *mut Self,
                 modetrans,
-                help,
+                c_help.as_ptr(),
                 shape,
             )
         }
@@ -177,10 +176,11 @@ impl Controller {
     /// **Source:** `XSControl_Controller.hxx`:83 - `XSControl_Controller::Recorded()`
     /// Returns the Controller attached to a given name
     /// Returns a Null Handle if <name> is unknown
-    pub fn recorded(
-        name: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Controller_recorded(name)) }
+    pub fn recorded(name: &str) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Controller_recorded(c_name.as_ptr()))
+        }
     }
 
     /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::get_type_name()`
@@ -269,28 +269,30 @@ impl Reader {
     /// **Source:** `XSControl_Reader.hxx`:83 - `XSControl_Reader::XSControl_Reader()`
     /// Creates a Reader from scratch, with a norm name which
     /// identifies a Controller
-    pub fn new_charptr(norm: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_ctor_charptr(norm)) }
+    pub fn new_charptr(norm: &str) -> crate::OwnedPtr<Self> {
+        let c_norm = std::ffi::CString::new(norm).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_ctor_charptr(c_norm.as_ptr()))
+        }
     }
 
     /// **Source:** `XSControl_Reader.hxx`:96 - `XSControl_Reader::SetNorm()`
     /// Sets a specific norm to <me>
     /// Returns True if done, False if <norm> is not available
-    pub fn set_norm(&mut self, norm: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::XSControl_Reader_set_norm(self as *mut Self, norm) }
+    pub fn set_norm(&mut self, norm: &str) -> bool {
+        let c_norm = std::ffi::CString::new(norm).unwrap();
+        unsafe { crate::ffi::XSControl_Reader_set_norm(self as *mut Self, c_norm.as_ptr()) }
     }
 
     /// **Source:** `XSControl_Reader.hxx`:107 - `XSControl_Reader::ReadFile()`
     /// Loads a file and returns the read status
     /// Zero for a Model which complies with the Controller
-    pub fn read_file(
-        &mut self,
-        filename: *const std::ffi::c_char,
-    ) -> crate::if_select::ReturnStatus {
+    pub fn read_file(&mut self, filename: &str) -> crate::if_select::ReturnStatus {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
             crate::if_select::ReturnStatus::try_from(crate::ffi::XSControl_Reader_read_file(
                 self as *mut Self,
-                filename,
+                c_filename.as_ptr(),
             ))
             .unwrap()
         }
@@ -334,14 +336,16 @@ impl Reader {
     /// If the value given to second is incorrect, it will simply be ignored.
     pub fn give_list(
         &mut self,
-        first: *const std::ffi::c_char,
-        second: *const std::ffi::c_char,
+        first: &str,
+        second: &str,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        let c_first = std::ffi::CString::new(first).unwrap();
+        let c_second = std::ffi::CString::new(second).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_give_list(
                 self as *mut Self,
-                first,
-                second,
+                c_first.as_ptr(),
+                c_second.as_ptr(),
             ))
         }
     }

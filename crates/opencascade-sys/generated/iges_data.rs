@@ -154,8 +154,11 @@ impl BasicEditor {
     /// Returns True if done, False if <name> is incorrect
     /// Remark : if <flag> has been set to 3 (user defined), <name>
     /// is then free
-    pub fn set_unit_name(&mut self, name: *const std::ffi::c_char) -> bool {
-        unsafe { crate::ffi::IGESData_BasicEditor_set_unit_name(self as *mut Self, name) }
+    pub fn set_unit_name(&mut self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::IGESData_BasicEditor_set_unit_name(self as *mut Self, c_name.as_ptr())
+        }
     }
 
     /// **Source:** `IGESData_BasicEditor.hxx`:89 - `IGESData_BasicEditor::ApplyUnit()`
@@ -201,8 +204,9 @@ impl BasicEditor {
     /// **Source:** `IGESData_BasicEditor.hxx`:113 - `IGESData_BasicEditor::UnitNameFlag()`
     /// From the name of unit, computes flag number, 0 if incorrect
     /// (in this case, user defined entity remains possible)
-    pub fn unit_name_flag(name: *const std::ffi::c_char) -> i32 {
-        unsafe { crate::ffi::IGESData_BasicEditor_unit_name_flag(name) }
+    pub fn unit_name_flag(name: &str) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IGESData_BasicEditor_unit_name_flag(c_name.as_ptr()) }
     }
 
     /// **Source:** `IGESData_BasicEditor.hxx`:116 - `IGESData_BasicEditor::UnitFlagValue()`
@@ -584,12 +588,16 @@ impl IGESEntity {
     /// (remark : their content is changed)
     /// returned values are ended by null character in 9th
     /// returned Boolean is False if res1 and res2 are blank, true else
-    pub fn c_res_values(
-        &self,
-        res1: *const std::ffi::c_char,
-        res2: *const std::ffi::c_char,
-    ) -> bool {
-        unsafe { crate::ffi::IGESData_IGESEntity_c_res_values(self as *const Self, res1, res2) }
+    pub fn c_res_values(&self, res1: &str, res2: &str) -> bool {
+        let c_res1 = std::ffi::CString::new(res1).unwrap();
+        let c_res2 = std::ffi::CString::new(res2).unwrap();
+        unsafe {
+            crate::ffi::IGESData_IGESEntity_c_res_values(
+                self as *const Self,
+                c_res1.as_ptr(),
+                c_res2.as_ptr(),
+            )
+        }
     }
 
     /// **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`

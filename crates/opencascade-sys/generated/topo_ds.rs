@@ -1398,21 +1398,23 @@ impl FrozenShape {
     }
 
     /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::TopoDS_FrozenShape()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::TopoDS_FrozenShape()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1423,8 +1425,9 @@ impl FrozenShape {
     }
 
     /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::TopoDS_FrozenShape_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::TopoDS_FrozenShape_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::get_type_name()`
@@ -1681,21 +1684,23 @@ impl LockedShape {
     }
 
     /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::TopoDS_LockedShape()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_ctor_charptr(theMessage))
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
         }
     }
 
     /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::TopoDS_LockedShape()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -1706,8 +1711,9 @@ impl LockedShape {
     }
 
     /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::TopoDS_LockedShape_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::TopoDS_LockedShape_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::get_type_name()`
@@ -3769,23 +3775,23 @@ impl UnCompatibleShapes {
     }
 
     /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::TopoDS_UnCompatibleShapes()`
-    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_UnCompatibleShapes_ctor_charptr(
-                theMessage,
+                c_theMessage.as_ptr(),
             ))
         }
     }
 
     /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::TopoDS_UnCompatibleShapes()`
-    pub fn new_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_UnCompatibleShapes_ctor_charptr2(
-                theMessage,
-                theStackTrace,
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
             ))
         }
     }
@@ -3796,8 +3802,9 @@ impl UnCompatibleShapes {
     }
 
     /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::Raise()`
-    pub fn raise(theMessage: *const std::ffi::c_char) {
-        unsafe { crate::ffi::TopoDS_UnCompatibleShapes_raise(theMessage) }
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::TopoDS_UnCompatibleShapes_raise(c_theMessage.as_ptr()) }
     }
 
     /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::get_type_name()`
